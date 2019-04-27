@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: diberry
 ms.openlocfilehash: e0e8b9f767376db8028a3ac4a2d8659bab69268b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005876"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60829956"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Telepítse és futtassa a Text Analytics tárolók
 
@@ -32,7 +32,7 @@ Annak érdekében, hogy a Text Analytics tárolók futtatásához rendelkeznie k
 
 Szövegelemzés tárolók használata előtt a következő előfeltételeknek kell megfelelnie:
 
-|Szükséges|Cél|
+|Kötelező|Cél|
 |--|--|
 |Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.| 
@@ -110,7 +110,7 @@ Ha a tároló a [gazdaszámítógép](#the-host-computer), a következő eljár�
 
 Használja a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) parancs futtatása bármely három tárolóra. A parancs paraméterei a következők:
 
-| Helyőrző | Value |
+| Helyőrző | Érték |
 |-------------|-------|
 |{BILLING_KEY} | Ezt a kulcsot a tárolót szolgál, és az Azure Portalon elérhető `Cognitive Services` kulcsok oldalán.  |
 |{BILLING_ENDPOINT_URI} | A számlázási végpont URI érték érhető el az Azure-beli `Cognitive Services` – áttekintés oldalra. <br><br>Példa:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|

@@ -12,11 +12,11 @@ ms.reviewer: carlr
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 4e80bbc868376a41212d924bd31df6ac70a52ded
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57901967"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60703011"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Adatbázis-feladatok használata a felügyeleti feladatok automatizálása
 
@@ -34,7 +34,7 @@ Nincsenek számos forgatókönyv feladat automation használhatja:
   - Az indexek újraépítésével javíthatja a lekérdezési teljesítményt. Úgy konfigurálhatja a feladatokat, hogy a rendszer egy adott adatbázis-gyűjteményen rendszeres időközönként hajtsa őket végre, például csúcsidőn kívül.
   - A lekérdezési adatokat az adatbázis-készletekből folyamatosan egy központi táblába gyűjtheti. A teljesítménylekérdezések folyamatosan végrehajthatók, illetve konfigurálhatók úgy, hogy további végrehajtandó feladatokat indítsanak el.
 - Adatokat gyűjthet jelentéskészítéshez
-  - Összesítheti az Azure SQL Database-adatbázisok egy gyűjteményéből származó adatokat egy céltáblában.
+  - Összesítheti az Azure SQL-adatbázisok egy gyűjteményéből származó adatokat egy céltáblában.
   - Olyan hosszabban futó adatfeldolgozási lekérdezéseket hajthat végre nagy adatbáziskészleteken, amilyen például az ügyfél-telemetria gyűjtése. A rendszer az eredményeket egyetlen céltáblában gyűjti össze a további elemzéshez.
 - Adatmozgást
   - Feladatok létrehozására, amelyek más adatbázisok az adatbázisokban végzett módosítások replikálása, vagy a távoli adatbázisokhoz végzett frissítések gyűjtését, és a alkalmazni megváltozott az adatbázisban.
@@ -184,7 +184,7 @@ Az alábbi képen egy feladatügynök látható, amely különböző típusú c�
 |Összetevő  | Leírás (további részletek a táblázat alatt találhatók) |
 |---------|---------|
 |[**Rugalmas feladat ügynöke**](#elastic-job-agent) |  Az az Azure-erőforrás, amelyet a feladatok futtatására és kezelésére hoz létre.   |
-|[**Feladat-adatbázis**](#job-database)    |    A feladatügynök által a feladatadatok, a feladatdefiníciók és egyebek tárolására használt Azure SQL Database.      |
+|[**Feladat-adatbázis**](#job-database)    |    A feladatügynök által a feladatadatok, a feladatdefiníciók és egyebek tárolására használt Azure SQL-adatbázis.      |
 |[**Célcsoport**](#target-group)      |  Azon kiszolgálók, készletek, adatbázisok és szegmenstérképek, amelyeken egy feladatot kíván futtatni.       |
 |[**Feladat**](#job)  |  Már egy feladat egységek, amelyek áll, amelyek egy vagy több [lépéseket feladat](#job-step). A feladatlépések meghatározzák a futtatandó T-SQL-szkriptet, valamint a szkript végrehajtásához szükséges egyéb részleteket.  |
 
@@ -201,9 +201,9 @@ A rugalmasfeladat-ügynök használata ingyenes. A feladat-adatbázis díjszabá
 
 A *feladat-adatbázis* feladatok meghatározására, valamint a feladat-végrehajtások állapotának és előzményeinek nyomon követésére szolgál. A *feladat-adatbázis* emellett az ügynökmetaadatok, a naplók, az eredmények és a feladatdefiníciók tárolására is szolgál, valamint számos hasznos tárolt eljárást és más adatbázis-objektumokat tartalmaz a feladatok T-SQL használatával történő létrehozásához, futtatásához és kezeléséhez.
 
-A jelenlegi előzetes verzióban egy meglévő (S0 vagy magasabb szintű) Azure SQL Database szükséges a rugalmasfeladat-ügynök létrehozásához.
+A jelenlegi előzetes verzióban egy meglévő (S0 vagy magasabb szintű) Azure SQL-adatbázis szükséges a rugalmasfeladat-ügynök létrehozásához.
 
-A *feladat-adatbázisnak* nem kell feltétlenül újnak lennie, azonban fontos, hogy üres legyen, és S0 vagy magasabb szolgáltatásszinten működjön. A *feladat-adatbázis* javasolt szolgáltatásszintje S1 vagy magasabb, ez azonban függ a feladat(ok) teljesítményigényétől, a feladatlépések számától, valamint feladatok futtatásának számától és gyakoriságától. Például egy S0 szintű adatbázis elegendő lehet egy óránként mindössze néhány feladatot futtató feladatügynök számára, percenként futtatott feladatok esetén azonban előfordulhat, hogy ez a teljesítmény nem elegendő, és érdemes magasabb szolgáltatásszintet választani.
+A *feladat-adatbázisnak* nem kell feltétlenül újnak lennie, azonban fontos, hogy üres legyen, és S0 vagy magasabb szolgáltatási szinten működjön. A *feladat-adatbázis* javasolt szolgáltatási szintje S1 vagy magasabb, ez azonban függ a feladat(ok) teljesítményigényétől, a feladatlépések számától, valamint feladatok futtatásának számától és gyakoriságától. Például egy S0 szintű adatbázis elegendő lehet egy óránként mindössze néhány feladatot futtató feladatügynök számára, percenként futtatott feladatok esetén azonban előfordulhat, hogy ez a teljesítmény nem elegendő, és érdemes magasabb szolgáltatási szintet választani.
 
 
 ##### <a name="job-database-permissions"></a>Feladat-adatbázis engedélyei

@@ -1,6 +1,6 @@
 ---
 title: Több tábla növekményes másolása az Azure Data Factory használatával | Microsoft Docs
-description: Az oktatóanyag során egy Azure Data Factory-folyamatot hoz létre, amely egy helyszíni SQL Server több táblájának módosított adatait másolja növekményesen egy Azure SQL Database-be.
+description: Az oktatóanyag során egy Azure Data Factory-folyamatot hoz létre, amely egy helyszíni SQL Server több táblájának módosított adatait másolja növekményesen egy Azure SQL-adatbázisba.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
 ms.openlocfilehash: 244779e647c4b184b036b1a5ea77aac199be5994
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269401"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60570684"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
-Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL Database-be.    
+Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL-adatbázisba.    
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
@@ -107,7 +107,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
     
     ```
 
-### <a name="create-destination-tables-in-your-azure-sql-database"></a>Céltáblák létrehozása az Azure SQL Database-ben
+### <a name="create-destination-tables-in-your-azure-sql-database"></a>Céltáblák létrehozása az Azure SQL-adatbázisban
 1. Nyissa meg az SQL Server Management Studiót, és csatlakozzon az SQL Server-adatbázishoz.
 
 1. A **Kiszolgálókezelőben** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés** elemet.
@@ -130,7 +130,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
     ```
 
-### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Egy másik tábla létrehozása az Azure SQL Database-ben a felső küszöbértékek tárolására
+### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Egy másik tábla létrehozása az Azure SQL-adatbázisban a felső küszöbértékek tárolására
 1. Futtassa a következő SQL-parancsot az SQL-adatbázison egy `watermarktable` nevű, a küszöbértékek tárolására szolgáló tábla létrehozásához: 
     
     ```sql
@@ -152,7 +152,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
     
     ```
 
-### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Tárolt eljárás létrehozása az Azure SQL Database-ben 
+### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Tárolt eljárás létrehozása az Azure SQL-adatbázisban 
 
 Az alábbi parancs futtatásával hozzon létre egy tárolt eljárást az SQL-adatbázisban. Ez a tárolt eljárás minden folyamatfuttatás után frissíti a küszöbértéket. 
 
@@ -170,7 +170,7 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>Adattípusok és további tárolt eljárások létrehozása az Azure SQL Database-ben
+### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>Adattípusok és további tárolt eljárások létrehozása az Azure SQL-adatbázisban
 Az alábbi lekérdezés futtatásával hozzon létre két tárolt eljárást és két adattípust az SQL-adatbázisban. Ezek összevonják a forrástáblák adatait a céltáblákba. 
 
 Annak érdekében, hogy az utazás egyszerűen a következővel kell kezdődnie, azt közvetlenül a tárolt eljárások a változásadatok a passing táblázatváltozó keresztül használja, és majd céltár egyesíti a azokat. Legyen óvatos, hogy, nem a várt "" nagyszámú (több mint 100). a különbözeti sorok a következő táblaváltozót tárolja.  

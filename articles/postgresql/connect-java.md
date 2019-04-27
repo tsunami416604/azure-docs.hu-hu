@@ -9,11 +9,11 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 02/28/2018
 ms.openlocfilehash: c8216c67a912beb9a735c3757520684cc837e989
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544651"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60776462"
 ---
 # <a name="azure-database-for-postgresql-use-java-to-connect-and-query-data"></a>Azure Database for postgresql-hez: Csatlakozás és adatlekérdezés a Java használatával
 Ebben a rövid útmutatóban azt szemléltetjük, hogy miként lehet Java-alkalmazás használatával csatlakozni a PostgreSQL-hez készült Azure Database-hez. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Java használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.

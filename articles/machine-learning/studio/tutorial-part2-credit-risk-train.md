@@ -11,11 +11,11 @@ ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
 ms.openlocfilehash: 45407e183c70fe67e6bd59e3fd86a50a31844c47
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453479"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60735628"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio"></a>2. oktatóanyag: Kockázati kredit - modellek Azure Machine Learning Studióban
 

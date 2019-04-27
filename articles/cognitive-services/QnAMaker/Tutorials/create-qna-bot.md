@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tulasim
 ms.openlocfilehash: 85b0004288a06a834b61f6e3d50017d35d66ce86
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263876"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60599025"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Oktatóanyag: A QnA robotot létrehozása az Azure Bot Service v4
 
@@ -52,7 +52,7 @@ Hozzon létre egy robot a Tudásbázis ügyfélalkalmazást.
     |Robot neve|`my-tutorial-kb-bot`|Ez az az Azure-erőforrás neve a robot.|
     |Előfizetés|Tekintse meg a cél.|Válassza ki a ugyanahhoz az előfizetéshez, a QnA Maker erőforrások létrehozásához használt.|
     |Erőforráscsoport|`my-tutorial-rg`|Az összes bot kapcsolódó Azure-erőforrások használt erőforráscsoport.|
-    |Földrajzi egység|`west us`|A robot Azure-erőforrás helye.|
+    |Location egység|`west us`|A robot Azure-erőforrás helye.|
     |Tarifacsomag|`F0`|Az Azure bot service az ingyenes szintet.|
     |App neve|`my-tutorial-kb-bot-app`|Ez a webes alkalmazás csak a robot támogatásához. Ezzel nem kell az ugyanazon alkalmazás neve, ahogy a QnA Maker szolgáltatás már használja. A QnA Maker webalkalmazás osztanak meg minden egyéb erőforrás nem támogatott.|
     |SDK-nyelv|C#|Ez az az alapul szolgáló programozási nyelv, a bot framework SDK-t használják. A választható lehetőségek: C# vagy node.js nyelven.|

@@ -3,8 +3,8 @@ title: Virtuális gép létrehozása egy statikus nyilvános IP-cím – Azure p
 description: Ismerje meg, hogyan hozhat létre egy virtuális gép statikus nyilvános IP-címet az Azure portal használatával.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: e9546bcc-f300-428f-b94a-056c5bd29035
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
-ms.author: jdial
+ms.author: kumud
 ms.openlocfilehash: 42e035b9dca6168fe77e6982505692cf18bfcb40
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106423"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60743172"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Hozzon létre egy virtuális gépet egy statikus nyilvános IP-címet az Azure portal használatával
 
@@ -43,7 +43,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.|
-    |Hely| Válassza az **USA keleti régiója** lehetőséget.|
+    |Location egység| Válassza az **USA keleti régiója** lehetőséget.|
 
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
 5. A **beállítások**válassza **nyilvános IP-cím**.

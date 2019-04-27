@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 985f1f73fbfc8c75df8393615fca32f5d1c08b9d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 8b1036128755a5218afc35648dfd16f09f559908
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078312"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611770"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Oktatóanyag: Azure Machine Learning, az IoT Edge-modul (előzetes verzió) üzembe helyezése
 
@@ -102,7 +102,7 @@ sudo systemctl restart iotedge
 Ebben a szakaszban betanított machine learning-modell fájlok átalakíthatók, és azokat egy Azure Machine Learning szolgáltatás a tárolót. A Docker-rendszerképhez szükséges összetevők megtalálhatók az [Azure IoT Edge GitHub-adattár AI-eszközkészletében](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial). Kövesse az alábbi lépéseket az adott tárházba feltöltése a Microsoft Azure notebookok a tároló létrehozása és leküldése az Azure Container Registrybe.
 
 
-1. Keresse meg az Azure-jegyzetfüzetek projektek. Beszerezheti a az Azure Machine Learning szolgáltatás munkaterületről a a [az Azure portal](https://portal.azure.com) vagy bejelentkezik a [a Microsoft Azure notebookok](https://notebooks.azure.com/home/projects) az Azure-fiókkal.
+1. Keresse meg az Azure-jegyzetfüzetek projektek. Ehhez úgy juthat el a az Azure Machine Learning szolgáltatás munkaterületről a [az Azure portal](https://portal.azure.com) vagy bejelentkezik a [a Microsoft Azure notebookok](https://notebooks.azure.com/home/projects) az Azure-fiókkal.
 
 2. Válassza ki **töltse fel a GitHub-adattárat**.
 

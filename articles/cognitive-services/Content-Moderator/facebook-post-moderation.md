@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 01/18/2019
 ms.author: pafarley
 ms.openlocfilehash: 662eca2a727f3112f169ab8d669bf18c81700275
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57871028"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60699576"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Oktatóanyag: Mérsékelt Facebook-bejegyzések és -parancsok használata az Azure Content Moderator
 
@@ -65,7 +65,7 @@ Jelentkezzen be a [az Azure Portal](https://portal.azure.com/) , és kövesse az
 2. Nyissa meg az újonnan létrehozott Függvényalkalmazás.
 3. Az alkalmazásban nyissa meg a **platformfunkciók** lapot, és válasszon **Alkalmazásbeállítások**. Az a **Alkalmazásbeállítások** szakaszban a következő lap, görgessen a lista aljára, és kattintson a **új beállítás hozzáadása**. Adja hozzá a következő kulcs-érték párok
     
-    | Alkalmazásbeállítás neve | érték   | 
+    | Alkalmazásbeállítás neve | value   | 
     | -------------------- |-------------|
     | cm:TeamId   | A Content Moderator csapatazonosítójának beállítása  | 
     | cm:SubscriptionKey | A Content Moderator előfizetői azonosítója – lásd: [Hitelesítő adatok](review-tool-user-guide/credentials.md) | 

@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
 ms.openlocfilehash: 74fe2345af5d1249d6704c7560b42323561bc623
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918246"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60578436"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>A Linux és Windows rendszerre készült Azure Data Science Virtual Machine (DSVM, adatelemző virtuális gép) bemutatása
 

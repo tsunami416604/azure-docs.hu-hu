@@ -15,11 +15,11 @@ ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: b80cb0d68e6875881f2a9fc97fa52531525c1cdc
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579189"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60636886"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Oktatóanyag: Egyéni tartomány hozzáadása az Azure CDN-végponthoz
 Ez az útmutató megmutatja, hogyan adható hozzá egyéni tartomány egy Azure Content Delivery Network- (CDN-) végponthoz. Amikor CDN-végpontot használ a tartalom továbbítására, és azt szeretné, hogy a saját tartományneve jelenjen meg a CDN URL-címében, egyéni tartományt kell létrehoznia. A látható tartománynév hasznos lehet az ügyfelei számára, és a vállalati arculat szempontjából is. 
@@ -66,7 +66,7 @@ CNAME rekord létrehozása a cdnverify altartománnyal:
 
 3. Hozzon létre egy CNAME-rekordbejegyzést az egyéni tartományához, és töltse ki a mezőket a következő táblázatban látható módon (a mezők nevei eltérhetnek):
 
-    | Forrás                    | Typo  | Cél                     |
+    | Forrás                    | Típus  | Cél                     |
     |---------------------------|-------|---------------------------------|
     | cdnverify.www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
 
@@ -160,7 +160,7 @@ CNAME rekord létrehozása az egyéni tartományhoz:
 
 3. Hozzon létre egy CNAME-rekordbejegyzést az egyéni tartományához, és töltse ki a mezőket a következő táblázatban látható módon (a mezők nevei eltérhetnek):
 
-    | Forrás          | Typo  | Cél           |
+    | Forrás          | Típus  | Cél           |
     |-----------------|-------|-----------------------|
     | <www.contoso.com> | CNAME | contoso.azureedge.net |
 

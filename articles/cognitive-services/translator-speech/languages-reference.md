@@ -12,11 +12,11 @@ ms.date: 05/18/2018
 ms.author: v-jansko
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 7498ba08b9ce7b6aae10f38a393eb8cba37f3f4e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435762"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60827901"
 ---
 # <a name="translator-speech-api-languages"></a>Beszédfordító API: Languages
 
@@ -132,18 +132,18 @@ Langagues {beszéd (object, nem kötelező), szöveg (object, nem kötelező), s
 
 ### <a name="headers"></a>Fejlécek
 
-|Fejléc|Leírás|Typo|
+|Fejléc|Leírás|Típus|
 :--|:--|:--|
-X-RequestId|Érték a kiszolgáló azonosításához a kérelem által generált, és használják hibaelhárítási célból.|sztring|
+X-RequestId|Érték a kiszolgáló azonosításához a kérelem által generált, és használják hibaelhárítási célból.|string|
 
 ### <a name="parameters"></a>Paraméterek
 
 |Paraméter|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|
-|API-verzió    |Az ügyfél által kért API-verzió. Engedélyezett értékek a következők: `1.0`.|lekérdezés|sztring|
-|scope  |Támogatott nyelvek, vagy térjen vissza az ügyfél beszédhangot részhalmazához. Ez a paraméter van megadva kulcsszavak vesszővel elválasztott listáját. A következő kulcsszavak érhetők el:<ul><li>`speech`: A beszédfelismerés lefényképezze támogatott nyelvek készletét nyújtja.</li><li>`tts`: A szöveg-beszéd átalakítás támogatott beszédhangot biztosít.</li><li>`text`: Szöveg fordítása a támogatott nyelvek készletét nyújtja.</li></ul>Ha az érték nincs megadva, az értékét `scope` alapértelmezés szerint a `text`.|lekérdezés|sztring|
-|X-ClientTraceId    |Egy ügyfél által létrehozott GUID egy kérelmet nyomon követéséhez használható. Megkönnyítése érdekében kapcsolatos hibák elhárítása, ügyfelek kell minden egyes kérelemmel adjon meg új értéket, és azt.|header|sztring|
-|Accept-Language    |A mezők a válaszban némelyike régiók és nyelvek neve. Ez a paraméter használatával határozza meg a nyelvet, amelyben a nevét adja vissza. A nyelv azáltal, hogy megfelelően formázott BCP-47 nyelvi címke van megadva. Válassza ki a címke nyelv azonosítók hibát adott vissza a listából a `text` hatókör. Nem támogatott nyelvek a nevek angol nyelven szerepelnek.<br/>Például használja az értéket `fr` kérése nevek francia nyelvű, vagy használja az értéket `zh-Hant` hagyományos kínai kérelem nevek.|header|sztring|
+|API-verzió    |Az ügyfél által kért API-verzió. Engedélyezett értékek a következők: `1.0`.|lekérdezés|string|
+|scope  |Támogatott nyelvek, vagy térjen vissza az ügyfél beszédhangot részhalmazához. Ez a paraméter van megadva kulcsszavak vesszővel elválasztott listáját. A következő kulcsszavak érhetők el:<ul><li>`speech`: A beszédfelismerés lefényképezze támogatott nyelvek készletét nyújtja.</li><li>`tts`: A szöveg-beszéd átalakítás támogatott beszédhangot biztosít.</li><li>`text`: Szöveg fordítása a támogatott nyelvek készletét nyújtja.</li></ul>Ha az érték nincs megadva, az értékét `scope` alapértelmezés szerint a `text`.|lekérdezés|string|
+|X-ClientTraceId    |Egy ügyfél által létrehozott GUID egy kérelmet nyomon követéséhez használható. Megkönnyítése érdekében kapcsolatos hibák elhárítása, ügyfelek kell minden egyes kérelemmel adjon meg új értéket, és azt.|header|string|
+|Accept-Language    |A mezők a válaszban némelyike régiók és nyelvek neve. Ez a paraméter használatával határozza meg a nyelvet, amelyben a nevét adja vissza. A nyelv azáltal, hogy megfelelően formázott BCP-47 nyelvi címke van megadva. Válassza ki a címke nyelv azonosítók hibát adott vissza a listából a `text` hatókör. Nem támogatott nyelvek a nevek angol nyelven szerepelnek.<br/>Például használja az értéket `fr` kérése nevek francia nyelvű, vagy használja az értéket `zh-Hant` hagyományos kínai kérelem nevek.|header|string|
 
 ### <a name="response-messages"></a>Parancsválasz-üzeneteket
 

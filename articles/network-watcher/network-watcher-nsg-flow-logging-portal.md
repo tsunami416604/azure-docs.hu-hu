@@ -3,8 +3,8 @@ title: Virtuális gép bejövő és kimenő forgalmának naplózása – oktató
 description: Megismerheti, hogyan naplózhatja egy virtuális gép bejövő és kimenő hálózati forgalmát a Network Watcher NSG-folyamatnaplózási funkciójának használatával.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to log the network traffic to and from a VM so I can analyze it for anomalies.
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: bfe4abe4a83a6b22d05942f91f4152d5c0e62be9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124082"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60726754"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Oktatóanyag: Napló hálózati forgalmat, és a egy virtuális gépről az Azure portal használatával
 
@@ -50,7 +50,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a **myResourceGroup** nevet.|
-    |Hely| Válassza az **USA keleti régiója** lehetőséget.|
+    |Location egység| Válassza az **USA keleti régiója** lehetőséget.|
 
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
 5. A **Beállítások** területen fogadja el az összes alapértelmezett beállítást, majd kattintson az **OK** gombra.
@@ -89,7 +89,7 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
     | Beállítás        | Érték                                                        |
     | ---            | ---   |
     | Name (Név)           | A hossza 3–24 karakter lehet, kizárólag kisbetűket és számokat tartalmazhat, és egyedinek kell lennie az összes Azure Storage-fiókban.                                                               |
-    | Hely       | Válassza az **USA keleti régiója** lehetőséget.                                           |
+    | Location egység       | Válassza az **USA keleti régiója** lehetőséget.                                           |
     | Erőforráscsoport | Válassza a **Meglévő használata**, majd a **myResourceGroup** lehetőséget. |
 
     A Storage-fiók létrehozása nagyjából egy percet vesz igénybe. Ne folytassa a további lépésekkel, amíg a tárfiók létrehozása be nem fejeződött. Ha meglévő Storage-fiókot használ új létrehozása helyett, győződjön meg arról, hogy olyan fiókot választ, amely esetében a **BEÁLLÍTÁSOK** területen a **Tűzfalak és virtuális hálózatok** beállítása **Minden hálózat** (alapértelmezett).
@@ -205,7 +205,7 @@ A **mac** érték az előző kimenetben azon hálózati adapter MAC-címét jel�
 | 44931        | Forrásport            | A forrásport, ahonnan a forgalom érkezett.                                           |
 | 443         | Célport       | A célport, ahová a forgalom tartott. Mivel a rendszer felé irányuló 443-as porton, a szabály nevű **UserRule_default-allow-rdp**, a log fájl feldolgozása a folyamatot.                                                |
 | T            | Protokoll               | Azt jelöli, hogy a forgalom protokollja TCP (T) vagy UDP (U) volt-e.                                  |
-| O            | Irány              | Azt jelöli, hogy a forgalom bejövő (I) vagy kimenő (O) volt-e.                                     |
+| O            | Direction              | Azt jelöli, hogy a forgalom bejövő (I) vagy kimenő (O) volt-e.                                     |
 | A            | Műveletek                 | Azt jelöli, hogy a forgalom engedélyezve (A) vagy elutasítva (D) lett-e.  
 | C            | A folyamat állapota **csak 2 verzió** | A folyamat állapotát rögzíti. Lehetséges állapotok a következők **B**: Kezdődik, amikor egy folyamat jön létre. Statisztikák nem biztosított. **C**: Egy folyamatban lévő folyamat folytatása. Statisztika 5 perces időközönként állnak rendelkezésre. **E**: Végződik, amikor a folyamat megszakadt. Statisztika állnak rendelkezésre. |
 | 30 | – Küldött csomagok forrás és a cél **csak verzió 2** | Legutóbbi frissítés óta küldeni a forrás célhelyre TCP vagy UDP-csomagok teljes száma. |

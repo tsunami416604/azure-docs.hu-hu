@@ -3,8 +3,8 @@ title: A PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása – 
 description: Ebben az oktatóanyagban megtanulhatja, hogyan korlátozható az Azure-erőforrásokhoz – például az Azure Storage-hoz és az Azure SQL Database-hez – való hálózati hozzáférés virtuális hálózati szolgáltatásvégpontokkal az Azure Portal használatával.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
@@ -15,15 +15,15 @@ ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 08/23/2018
-ms.author: jdial
-ms.openlocfilehash: b951386fbeca883ae61a7f8040893e55467c8e5d
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.author: kumud
+ms.openlocfilehash: 31fe4c5cd2e61c3312532f05d310d652ecde7e95
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42810084"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60743801"
 ---
-# <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Oktatóanyag: PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása virtuális hálózati szolgáltatásvégpontokkal az Azure Portal használatával
+# <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Oktatóanyag: PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása a virtuális hálózati Szolgáltatásvégpontok az Azure portal használatával
 
 Virtuális hálózati szolgáltatásvégpontokkal egy adott virtuális hálózati alhálózatra korlátozható az egyes Azure-szolgáltatási erőforrásokhoz való hálózati hozzáférés. Emellett teljesen le is tiltható az internetes hozzáférés az erőforrásokhoz. A szolgáltatásvégpontok közvetlen csatlakozást biztosítanak a virtuális hálózat és a támogatott Azure-szolgáltatások között, így lehetővé teszik a virtuális hálózat magáncímterének használatát az Azure-szolgáltatások eléréséhez. A szolgáltatásvégpontokon keresztül az Azure-erőforrások felé irányuló forgalom mindig a Microsoft Azure gerinchálózatán marad. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -55,7 +55,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
    |Címtér| 10.0.0.0/16|
    |Előfizetés| Válassza ki előfizetését.|
    |Erőforráscsoport | Válassza az **Új létrehozása** elemet, és adja meg a *myResourceGroup* nevet.|
-   |Hely| Válassza az **USA keleti régiója** lehetőséget. |
+   |Location egység| Válassza az **USA keleti régiója** lehetőséget. |
    |Alhálózat neve| Nyilvános|
    |Alhálózat címtartománya| 10.0.0.0/24|
    |Szolgáltatásvégpontok| Letiltva|
@@ -95,7 +95,7 @@ Alapértelmezés szerint egy adott alhálózaton belül minden virtuális gép m
     |Name (Név)| myNsgPrivate |
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport | Válassza a **Meglévő használata** lehetőséget, majd a *myResourceGroup* elemet.|
-    |Hely| Válassza az **USA keleti régiója** lehetőséget. |
+    |Location egység| Válassza az **USA keleti régiója** lehetőséget. |
 
 4. Miután a hálózati biztonsági csoport létrejött, írja be a *myNsgPrivate* kifejezést a portál tetején található **Erőforrások, szolgáltatások és dokumentumok keresése** mezőbe. Amikor a **myNsgPrivate** megjelenik a keresési eredmények között, válassza ki.
 5. A **BEÁLLÍTÁSOK** területen válassza a **Kimenő biztonsági szabályok** elemet.
@@ -162,7 +162,7 @@ A szolgáltatásvégpontok használatára képes Azure-szolgáltatásokkal létr
     |----|----|
     |Name (Név)| Olyan nevet adjon meg, amely az összes Azure-helyen egyedi, 3–24 karakter hosszú, és csak számokat és kisbetűket tartalmaz.|
     |Fióktípus|StorageV2 (általános célú v2)|
-    |Hely| Válassza az **USA keleti régiója** lehetőséget. |
+    |Location egység| Válassza az **USA keleti régiója** lehetőséget. |
     |Replikáció| Helyileg redundáns tárolás (LRS)|
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport | Válassza a **Meglévő használata** lehetőséget, majd a *myResourceGroup* elemet.|
@@ -220,7 +220,7 @@ Tárfiókhoz való hálózati hozzáférés teszteléséhez helyezzen üzembe eg
    |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
    |Előfizetés| Válassza ki előfizetését.|
    |Erőforráscsoport| Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.|
-   |Hely| Válassza az **USA keleti régiója** lehetőséget.|
+   |Location egység| Válassza az **USA keleti régiója** lehetőséget.|
 
    ![Virtuális gép alapvető információinak megadása](./media/tutorial-restrict-network-access-to-resources/virtual-machine-basics.png)
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.

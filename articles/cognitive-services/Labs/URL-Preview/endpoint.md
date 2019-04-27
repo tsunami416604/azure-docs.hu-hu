@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh, v-gedod
 ms.openlocfilehash: 7cc52493ec0e2b9c81d52da4bb22102c2c7e5e5c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861987"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60712482"
 ---
 # <a name="project-url-preview-endpoint"></a>Projekt URL-cím előzetes verziójú végpont
 
@@ -31,7 +31,7 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftk
 ```
 
 ### <a name="query-parameters"></a>Lekérdezési paraméterek
-|Name (Név)|Érték|Typo|Szükséges|  
+|Name (Név)|Érték|Típus|Kötelező|  
 |----------|-----------|----------|--------------|  
 |válaszok|Az előzetes verzióra URL-címe|String |Igen|
 |biztonságos keresés|Érvénytelen felnőtt tartalom, vagy a hamisított tartalom le van tiltva, hibakód: 400, és a *isFamilyFriendly* jelző nem ad vissza. <p>Jogi felnőtt tartalom, az alábbi történik. Állapotkód: 200, adja vissza, és a *isFamilyFriendly* jelző false értékre van állítva.<ul><li>safeSearch=strict: Cím, leírás, URL-cím és a lemezkép nem állítható vissza.</li><li>biztonságos keresés = közepes; Cím, URL-cím és leírás, de nem a leíró képet kaphat.</li><li>biztonságos keresés kikapcsolása:; = Minden válasz objektumok/elemet – title, URL-címet, leírást és képet kaphat.</li></ul> |String|Nem kötelező. </br> Biztonságos keresés alapértelmezés szerint szigorú =.| 

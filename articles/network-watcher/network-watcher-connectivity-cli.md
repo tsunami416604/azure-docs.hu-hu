@@ -3,8 +3,8 @@ title: Az Azure Network Watcher – Azure CLI-kapcsolatok hibaelhárítása |} A
 description: Ismerje meg, hogyan használható a kapcsolat hibaelhárítása az Azure CLI használatával az Azure Network Watcher képességét.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: jdial
+ms.author: kumud
 ms.openlocfilehash: a44f46a01bd0c0530ce57ad65464c10a4d2617f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57889964"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60624071"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>Kapcsolatok hibaelhárítása az Azure Network Watcher az Azure CLI használatával
 
@@ -29,7 +29,7 @@ ms.locfileid: "57889964"
 
 Ismerje meg, hogyan használja a kapcsolat ellenőrzése, hogy közvetlen TCP-kapcsolatot a virtuális gépről egy adott végpontot is létesíthető hibaelhárítása.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ez a cikk feltételezi, hogy az alábbi forrásanyagokat:
 

@@ -10,11 +10,11 @@ ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 58fef0357a903f2ab1d238bbab7b2d9dca673eb4
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662057"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60576169"
 ---
 # <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(ELAVULT) Az Azure Container Service Kubernetes-fürt üzembe helyezése
 
@@ -32,7 +32,7 @@ A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Az Az
 
 Az ezt követő oktatóanyagokban üzembe helyezzük az Azure Vote alkalmazást a fürtön, skálázzuk, frissítjük, majd a Log Analyticst a Kubernetes-fürt monitorozására konfiguráljuk.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Az előző oktatóanyagokban létrehoztunk egy tárolórendszerképet, és feltöltöttük egy Azure Container Registry-példányra. Ha ezeket a lépéseket még nem hajtotta végre, és szeretné követni az oktatóanyagot, lépjen vissza az [1. oktatóanyag – Tárolórendszerképek létrehozása](./container-service-tutorial-kubernetes-prepare-app.md) részhez.
 

@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
 ms.openlocfilehash: a83b8a56a8108f86d868e3420d8368c74fba308a
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578191"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60612299"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Oktatóanyag: Az SQL Server-adatbázisok a peremhálózaton data Store
 

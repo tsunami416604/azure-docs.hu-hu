@@ -12,11 +12,11 @@ description: Gyors fejlesztés a tárolók, mikroszolgáltatások és Node.js az
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
 manager: jeconnoc
 ms.openlocfilehash: bc18a06405c0fe620136642a409df576c8e8d8b3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361711"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60706762"
 ---
 # <a name="quickstart-develop-with-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: Fejlesztés node.js nyelven, a Kubernetes Azure fejlesztési tárolóhelyek használatával
 

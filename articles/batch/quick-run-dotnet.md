@@ -11,13 +11,13 @@ ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
 ms.openlocfilehash: c13a01b392b9bbc93fff2e997cb6d168a441ad07
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679919"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60616890"
 ---
-# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rövid útmutató: Az első Azure Batch-feladat futtatása a .NET API használatával
+# <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Gyors útmutató: Az első Azure Batch-feladat futtatása a .NET API-val
 
 Ez a rövid útmutató egy Azure Batch-feladatot futtat egy, az Azure Batch .NET API-ra épülő C#-alkalmazásból. Az alkalmazás feltölt több bemeneti adatfájlt az Azure Storage-ba, majd létrehoz egy Batch számítási csomópontokból (virtuális gépekből) álló *készletet*. Ezután létrehoz egy minta*feladatot*, amely *tevékenységek* futtatásával és egy alapvető parancs használatával minden egyes bemeneti fájlt feldolgoz a készleten. A rövid útmutatóból megismerheti a Batch szolgáltatás fő fogalmait, és készen áll majd a Batch szolgáltatás használatára realisztikusabb számítási feladatokkal, nagyobb léptékben.
 

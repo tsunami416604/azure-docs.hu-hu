@@ -8,11 +8,11 @@ ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 9eab8a29db40118f2a15064c52419ecebcd4aecb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490319"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60749850"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Helyszíni VMware virtuális gépek felderítése és kiértékelése az Azure-ba való migráláshoz
 
@@ -82,9 +82,9 @@ Az Azure Migrate létrehoz egy gyűjtőberendezésnek nevezett helyszíni virtu�
 
     A berendezés csak az folyamatosan teljesítményadatokat gyűjt, semmilyen konfigurálási változást nem észleli a helyszíni környezetben, (, virtuális gép hozzáadása, törlése, lemez hozzáadása stb.). Ha a helyszíni környezet konfigurációja módosul, a következőket teheti a változások tükrözésére a portálon:
 
-    - További elemek (virtuális gépek, lemezek, magok stb.): A változásoknak az Azure Portalon, a felderítés a készülék leállítása és a majd indítsa el újra. Ez biztosítja, hogy a módosítások frissítése megtörténjen az Azure Migrate-projektben.
+    - Elemek (virtuális gépek, lemezek, magok stb.) hozzáadása: Ezeknek a módosításoknak az Azure Portalon való tükrözéséhez állítsa le, majd indítsa újra a felderítést a berendezésen. Ez biztosítja, hogy a módosítások frissítése megtörténjen az Azure Migrate-projektben.
 
-    - Virtuális gépek törlése: Lehet a célja, a készülék virtuális gépek törlése nem tükrözi, akkor is, ha leállítja és elindítja a felderítést. Ennek az oka, hogy a későbbi felderítések adatait a rendszer hozzáfűzi a korábbi felderítések adataihoz, nem pedig felülírja azokat. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a virtuális gépet a portálon. Ehhez távolítsa el a csoportból, és számítsa újra az értékelést.
+    - A virtuális gépek törlése: A berendezés kialakítása miatt a virtuális gépek törlése akkor sem lesz látható, ha leállítja, majd újraindítja a felderítést. Ennek az oka, hogy a későbbi felderítések adatait a rendszer hozzáfűzi a korábbi felderítések adataihoz, nem pedig felülírja azokat. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a virtuális gépet a portálon. Ehhez távolítsa el a csoportból, és számítsa újra az értékelést.
 
 
 3. A **Projekt hitelesítő adatainak másolása** területen másolja ki a projekt azonosítóját és kulcsát. Ezekre a gyűjtő konfigurálásához lesz szüksége.

@@ -12,15 +12,15 @@ ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 2a0cee1ad750144f30b9ab6732e0bbdf8138db28
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038157"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60731515"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Az első tartós függvény létrehozása a C\#
 
-*Durable Functions* kiterjesztése [Azure Functions](../functions-overview.md) , amellyel írási állapot-nyilvántartó functions egy kiszolgáló nélküli környezetben. A bővítmény kezeli a állapot, ellenőrzőpontok és újraindul az Ön számára.
+*Durable Functions* kiterjesztése [Azure Functions](../functions-overview.md) , amellyel írási állapot-nyilvántartó functions egy kiszolgáló nélküli környezetben. A bővítmény automatikusan kezeli az állapotokat, az ellenőrzőpontokat és az újraindításokat.
 
 Ebből a cikkből elsajátíthatja, hogyan használja a Visual Studio 2017-eszközök az Azure Functions helyi létrehozásához és a egy "hello world" tartós függvény tesztelése.  Ez a funkció, amellyel előkészíthető és egyéb funkciók láncok együtt hívások. Ezután közzéteheti a függvénykódot az Azure-ban. Ezek az eszközök a Visual Studio 2017 Azure-fejlesztési számítási feladatának részeként érhetők el.
 
@@ -76,7 +76,7 @@ Az alábbi lépéseket egy sablon használatával a tartós függvénykód létr
 
 Az alkalmazás egy új tartós függvény kerül.  Nyissa meg az új .cs fájlt a tartalom megtekintéséhez. A tartós feladata egy egyszerű függvény láncolás – példa a következő módszerekkel:  
 
-| Módszer | Függvénynév | Leírás |
+| Módszer | FunctionName | Leírás |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | A tartós vezénylési kezeli. Ebben az esetben a vezénylési kezdődik, létrehoz egy listát, és hozzáadja a lista három funkció hívásainak eredményét.  Ha a három függvényhívások befejezése, listáját adja vissza. |
 | **`SayHello`** | `<file-name>_Hello` | A függvény egy hello adja vissza. Ez az a függvény, amely tartalmazza az üzleti logika, amely vezényelt van folyamatban. |

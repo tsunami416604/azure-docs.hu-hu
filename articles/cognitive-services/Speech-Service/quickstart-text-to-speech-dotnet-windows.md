@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 4/03/2019
 ms.author: yinhew
 ms.openlocfilehash: a013189e45b1c1c8eeb88d62a718d495c0c415a2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59012247"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60620454"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Gyors útmutató: Beszédfelismerés, beszédfelismerési SDK-val szintetizálásához Pro rozhraní .NET Framework (Windows)
 

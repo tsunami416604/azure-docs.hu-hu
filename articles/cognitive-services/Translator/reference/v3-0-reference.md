@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
 ms.openlocfilehash: 4a5bed67252c3b87233c8d2e677e3c620adb8a17
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918807"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60605242"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API 3.0-s verzió
 
@@ -49,7 +49,7 @@ Kényszeríti a kérelem egy adott adatközpont kell kezelnie, módosítsa a kí
 |Azure|Ázsia és a Csendes-óceáni térség|    api-apc.cognitive.microsofttranslator.com|
 
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Fizessen elő a Translator Text API vagy [Cognitive Services több szolgáltatás](https://azure.microsoft.com/pricing/details/cognitive-services/) Microsoft Cognitive Services, és az előfizetés key (az Azure Portalon érhető el) hitelesítést használni. 
 

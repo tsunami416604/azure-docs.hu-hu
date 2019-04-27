@@ -13,11 +13,11 @@ ms.topic: tutorial
 ms.date: 06/22/2018
 ms.author: jingwang
 ms.openlocfilehash: 444269aa7ca2b0a82b78e8437b7884ef8833c665
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279788"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60592559"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Táblák tömeges másolása az Azure Data Factory használatával
 Ez az oktatóanyag azt mutatja be, hogyan lehet **táblákat másolni az Azure SQL Database-ből az Azure SQL Data Warehouse-ba**. A minta egyéb másolási forgatókönyvek esetén is alkalmazható. Például táblák másolására az SQL Serverről/Oracle-ből az Azure SQL Database-be/Data Warehouse-ba/Azure Blobba, vagy különböző elérési utak másolására a Blobból Azure SQL Database-táblákba.
@@ -56,7 +56,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 **A forrás Azure SQL Database előkészítése**:
 
-Hozzon létre egy Azure SQL Database-adatbázist az Adventure Works LT mintaadataival az [Azure SQL Database létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikk alapján. Ez az oktatóanyag a mintaadatbázisban található összes táblát átmásolja egy SQL Data Warehouse-ba.
+Hozzon létre egy Azure SQL-adatbázist az Adventure Works LT mintaadataival az [Azure SQL-adatbázis létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikk alapján. Ez az oktatóanyag a mintaadatbázisban található összes táblát átmásolja egy SQL Data Warehouse-ba.
 
 **A fogadó Azure SQL Data Warehouse előkészítése**:
 
@@ -113,7 +113,7 @@ Társított szolgáltatásokat hoz létre az adattárak és a számítási erőf
 Ebben az oktatóanyagban társítani fogja az Azure SQL Database-t, az Azure SQL Data Warehouse-t és az Azure Blob Storage-ot az adat-előállítóhoz. Az Azure SQL Database a forrásadattár. Az Azure SQL Data Warehouse a cél-/fogadóadattár. Az Azure Blob Storage feladata az adatok előkészítése, mielőtt az adatokat a rendszer betöltené az SQL Data Warehouse-ba a PolyBase segítségével. 
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>A forrás Azure SQL Database-beli társított szolgáltatás létrehozása
-Ebben a lépésben létrehoz egy társított szolgáltatást, hogy az Azure SQL Database-t az adat-előállítóhoz kapcsolja. 
+Ebben a lépésben létrehoz egy társított szolgáltatást, hogy az Azure SQL-adatbázist az adat-előállítóhoz kapcsolja. 
 
 1. Kattintson az ablak alján látható **Kapcsolatok** elemre, majd kattintson az eszköztáron az **+ Új** lehetőségre. 
 
@@ -125,13 +125,13 @@ Ebben a lépésben létrehoz egy társított szolgáltatást, hogy az Azure SQL 
 
     1. A **Név** mezőbe írja az **AzureSqlDatabaseLinkedService** nevet. 
     1. A **Kiszolgáló neve** mezőnél válassza ki az Azure SQL Server kiszolgálóját.
-    1. Az **Adatbázis neve** mezőnél válassza ki az Azure SQL Database adatbázisát. 
-    1. Adja meg az Azure SQL Database-hez csatlakoztatni kívánt **felhasználó nevét**. 
+    1. Az **Adatbázis neve** mezőnél válassza ki az Azure SQL-adatbázisát. 
+    1. Adja meg az Azure SQL-adatbázishoz csatlakoztatni kívánt **felhasználó nevét**. 
     1. Adja meg a felhasználóhoz tartozó **jelszót**. 
-    1. Ha tesztelni szeretné az Azure SQL Database-zel létrejövő kapcsolatot a megadott adatok használatával, kattintson a **Kapcsolat tesztelése** elemre.
+    1. Ha tesztelni szeretné az Azure SQL-adatbázissal létrejövő kapcsolatot a megadott adatok használatával, kattintson a **Kapcsolat tesztelése** elemre.
     1. Kattintson a **Save** (Mentés) gombra.
 
-        ![Azure SQL Database beállításai](./media/tutorial-bulk-copy-portal/azure-sql-database-settings.png)
+        ![Az Azure SQL Database beállításai](./media/tutorial-bulk-copy-portal/azure-sql-database-settings.png)
 
 ### <a name="create-the-sink-azure-sql-data-warehouse-linked-service"></a>A fogadó Azure SQL Data Warehouse-beli társított szolgáltatás létrehozása
 
@@ -141,10 +141,10 @@ Ebben a lépésben létrehoz egy társított szolgáltatást, hogy az Azure SQL 
 
     1. A **Név** mezőbe írja be az **AzureSqlDWLinkedService** nevet. 
     1. A **Kiszolgáló neve** mezőnél válassza ki az Azure SQL Server kiszolgálóját.
-    1. Az **Adatbázis neve** mezőnél válassza ki az Azure SQL Database adatbázisát. 
-    1. Adja meg az Azure SQL Database-hez csatlakoztatni kívánt **felhasználó nevét**. 
+    1. Az **Adatbázis neve** mezőnél válassza ki az Azure SQL-adatbázisát. 
+    1. Adja meg az Azure SQL-adatbázishoz csatlakoztatni kívánt **felhasználó nevét**. 
     1. Adja meg a felhasználóhoz tartozó **jelszót**. 
-    1. Ha tesztelni szeretné az Azure SQL Database-zel létrejövő kapcsolatot a megadott adatok használatával, kattintson a **Kapcsolat tesztelése** elemre.
+    1. Ha tesztelni szeretné az Azure SQL-adatbázissal létrejövő kapcsolatot a megadott adatok használatával, kattintson a **Kapcsolat tesztelése** elemre.
     1. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>Az átmeneti Azure Storage-beli társított szolgáltatás létrehozása
@@ -297,7 +297,7 @@ Ez a folyamat két lépést hajt végre:
 1. A **Tevékenységek** eszközkészletben bontsa ki az **Általános** elemet, húzza a **Keresés** tevékenységet a folyamat tervezőfelületére, és tegye a következőket:
 
     1. A **Név** mezőbe írja be a **LookupTableList** nevet. 
-    1. A **Leírásnál** adja meg a következőt: **A táblalista lekérése az Azure SQL Database-ből**.
+    1. A **Leírásnál** adja meg a következőt: **A táblalista lekérése az Azure SQL-adatbázisból**.
 
         ![Keresési tevékenység – általános lap](./media/tutorial-bulk-copy-portal/lookup-general-page.png)
 1. Váltson a **Beállítások** lapra, és végezze el az alábbi lépéseket:

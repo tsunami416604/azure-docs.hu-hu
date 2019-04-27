@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/14/2019
 ms.author: jowargo
 ms.openlocfilehash: 62e72f27e48f7bf220901f4eb36090f926724a2a
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56314118"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60681995"
 ---
 # <a name="create-an-azure-notification-hub-in-the-azure-portal"></a>Az Azure notification hub létrehozása az Azure Portalon 
 Az Azure Notification Hubs egy egyszerűen használható és kibővített leküldéses értesítési alrendszert biztosít, amellyel értesítéseket küldhet bármilyen platformra (iOS, Android, Windows, Kindle, Baidu stb.) bármilyen háttérrendszerből (felhőbeli vagy helyszíni). A szolgáltatással kapcsolatos további információkért lásd: [Mi az Azure Notification Hubs?](notification-hubs-push-notification-overview.md).

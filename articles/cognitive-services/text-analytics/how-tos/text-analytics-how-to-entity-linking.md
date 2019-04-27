@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
 ms.openlocfilehash: c179620d6858658dface5f706f7994d51f1a199b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997308"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60829718"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Megnevezett entitások felismerése Szövegelemzés használata
 
@@ -39,7 +39,7 @@ Entitáskapcsolás különféle nyelveken használatához az egyes nyelvekhez ta
 
 ## <a name="supported-types-for-named-entity-recognition"></a>Nevesített entitások felismerése támogatott típusai
 
-| Typo  | SubType | Példa |
+| Típus  | SubType | Példa |
 |:-----------   |:------------- |:---------|
 | Személy        | N/A\*         | "Jeff", "Bill Gates"     |
 | Location egység      | N/A\*         | "Redmond, Washington", "Párizs"  |

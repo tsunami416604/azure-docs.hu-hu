@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 4/03/2019
 ms.author: aahi
 ms.openlocfilehash: 62d34b859a0cf71320c478b7cab4a2914e5ee308
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011692"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60579864"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Keresési lekérdezéseket küld a Bing Visual Search API
 
@@ -73,7 +73,7 @@ A kérelmeket csak HTTP POST kérelemként lehet elküldeni.
 
 Az alábbiakban azok a lekérdezési paraméterek láthatók, amelyeket a kérelemnek meg kell adnia. Tartalmaznia kell legalább a `mkt` lekérdezési paraméter:
 
-| Name (Név) | Value | Typo | Szükséges |
+| Name (Név) | Érték | Típus | Kötelező |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | A két karakter országkódot jelölő, hogy honnan származnak az eredményeket.<br /><br /> Ha beállítja ezt a paramétert, az [Accept-Language](#acceptlanguage) fejlécet is meg kell adnia. A Bing a nyelvek listájának első támogatott nyelvét használja, és kombinálja azt a megadott országkóddal, hogy meghatározza a piacot, ahonnan vissza fogja adni az eredményeket. Ha a nyelvek listája nem tartalmaz támogatott nyelvet, a Bing megkeresi a kérelmet támogató legközelebbi nyelvet és piacot. Másik lehetőségként a megadott piac helyett egy összesített vagy alapértelmezett piacot is használhat az eredmények megszerzéséhez.<br /><br /> Csak akkor használja ezt lekérdezési paramétert és az `Accept-Language` lekérdezési paramétert, ha több nyelvet ad meg, ellenkező esetben az `mkt` és a `setLang` paramétereket használja.<br /><br /> Ez a paraméter és az [mkt](#mkt) lekérdezési paraméter kölcsönösen kizárják egymást, ne adja meg mindkettőt. | String | Nem       |
 | <a name="mkt" />mkt   | A piac, ahonnan az eredmények származnak. <br /><br /> **MEGJEGYZÉS:** A piacon, mindig meg kell adni, ha ismert. Ha megadja a piacot, azzal elősegíti, hogy a Bing a kérelmet továbbítva megfelelő, optimális választ adjon vissza.<br /><br /> Ez a paraméter és a [cc](#cc) lekérdezési paraméter kölcsönösen kizárják egymást, ne adja meg mindkettőt. | String | Igen      |

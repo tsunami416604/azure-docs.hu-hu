@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
 ms.openlocfilehash: ac1717a8e8a08fcfedc3bc21bb0f03b3e3ca2511
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548081"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60721857"
 ---
 # <a name="what-is-project-answer-search"></a>Mi a Válaszkeresés projekt?
 A Project Answer Search API a Bing v7 végpontot használja a válaszokat váró lekérdezések megválaszolására. Például a „Mekkora a Föld kerülete?” kérdésre a rendszer tényekkel válaszol.  A személyekkel, helyekkel vagy dolgokkal kapcsolatos lekérdezések a lekérdezésben azonosított entitásokkal kapcsolatos információkat adnak vissza. Ezek a forgatókönyvek olyan alkalmazások esetén lehetnek hasznosnak, amilyenek a csevegőrobotok, az üzenőalkalmazások, az olvasók stb.  

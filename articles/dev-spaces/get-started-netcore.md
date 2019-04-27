@@ -10,11 +10,11 @@ ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
 ms.openlocfilehash: 4c759462d603a35e738f76a505abd04b832afc3f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426341"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60687092"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Bevezetés az Azure fejlesztési tárolóhelyek .NET Core használatával
 
