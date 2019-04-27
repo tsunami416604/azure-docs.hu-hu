@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Információk a nyilvános és privát IP-címekről az Azure-ban.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: jdial
-ms.openlocfilehash: 929c8808721140d5275cba4bcf3fbaa567f961e0
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.author: kumud
+ms.openlocfilehash: 69fd70fc45f734f8267db6d770d09b14f3a071f5
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652025"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108144"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-cím-típusok és lefoglalási módszerek az Azure-ban
 
@@ -78,6 +79,9 @@ A standard termékváltozatú nyilvános IP-címek jellemzői:
  
 > [!NOTE]
 > A Standard Termékváltozatú erőforrás bejövő kommunikáció meghiúsul, amíg nem hoz létre, és társíthatja egy [hálózati biztonsági csoport](security-overview.md#network-security-groups) és explicit módon engedélyezi a kívánt bejövő forgalmat.
+
+> [!NOTE]
+> Csak az alapszintű Termékváltozat nyilvános IP-címek használata esetén érhető el [példány-metaadat szolgáltatás IMDS](../virtual-machines/windows/instance-metadata-service.md). A standard Termékváltozat nem támogatott.
 
 ### <a name="allocation-method"></a>Lefoglalási módszer
 
@@ -180,7 +184,7 @@ A következő táblázat bemutatja azokat a konkrét tulajdonságokat, amelyekke
 | Terheléselosztó |Előtér-konfiguráció |Igen |Igen |
 | Alkalmazásátjáró |Előtér-konfiguráció |Igen |Igen |
 
-## <a name="limits"></a>Korlátok
+## <a name="limits"></a>Limits
 Az IP-címkezelésre vonatkozó korlátokat a [hálózati korlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) teljes csomagjában jelezzük az Azure-ban. A korlátok régiónként és előfizetésenként értendőek. [Lépjen kapcsolatba a támogatással](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), ha növelni szeretné az alapértelmezett korlátot üzleti igényei szerint – akár a maximális korlátig.
 
 ## <a name="pricing"></a>Díjszabás

@@ -2,19 +2,20 @@
 title: Azure virtuális gépek replikálása egy másodlagos Azure-régióba az Azure Site Recovery szolgáltatással vész-helyreállítási sikertelen.
 description: Ismerje meg, hogyan végezhet az Azure virtuális gépek az Azure Site Recovery szolgáltatással.
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
+author: rockboyfor
+manager: digimobile
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2019
-ms.author: raynew
+origin.date: 03/18/2019
+ms.date: 04/22/2019
+ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: c8ce05e644ad556542314b17151b808586734824
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315317"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62118179"
 ---
 # <a name="fail-back-azure-vms-between-azure-regions"></a>Nem sikerült az Azure virtuális gépek Azure-régiók között
 
@@ -68,3 +69,6 @@ Után a virtuális gépek a védelem visszaállítása után, is a feladatokat a
 ## <a name="next-steps"></a>További lépések
 
 [További](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection) az ismételt védelem flowról.
+
+<!--Update_Description: new articles on azure to azure tutorial failback -->
+<!--ms.date: 04/22/2019-->

@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 03/01/2019
 ms.author: juliako
 ms.openlocfilehash: 63d036ea4faaf7e24f337fa3956986d165c84854
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244339"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61466969"
 ---
 # <a name="cli-example-create-and-submit-a-job"></a>CLI-példa: Egy feladat létrehozása és elküldése
 
-A Media Services v3-as a videók feldolgozásához feladatok elküldésekor meg kell mondanunk a Media Services, hogy hol található a bemeneti videó. A beállításokat egyik HTTPS URL-címet adja meg a feladat bemeneti (ahogyan az ebben a cikkben látható). 
+A Media Services v3-ban a videófeldolgozási feladatok indításakor meg kell adnia a Media Services számára a bemeneti videó helyét. A beállításokat egyik HTTPS URL-címet adja meg a feladat bemeneti (ahogyan az ebben a cikkben látható). 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 

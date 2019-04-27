@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Egyéni tartomány SSL-lel az Azure CDN – Azure Storage használatával statikus webhely engedélyezése'
+title: 'Oktatóanyag: Engedélyezze az egyéni tartományt állít be egy Azure CDN – Azure Storage-statikus webhely SSL-lel'
 description: 'Útmutató: egyéni tartomány statikus webhelyüzemeltetésre konfigurálja.'
 services: storage
 author: tamram
@@ -9,13 +9,13 @@ ms.date: 12/07/2018
 ms.author: tamram
 ms.custom: seodec18
 ms.openlocfilehash: 6ccd33805fe4b62d3456121321edc4eec3bff2e5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109459"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61427514"
 ---
-# <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>Oktatóanyag: Használja az Azure CDN engedélyezéséhez egy egyéni tartomány statikus webhely SSL-lel
+# <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>Oktatóanyag: Statikus webhely egyéni tartomány SSL engedélyezése az Azure CDN használatával
 
 Ez az oktatóanyag egy sorozat második része. Bemutatja egy egyéni tartomány végpont a statikus webhely SSL-lel való engedélyezéséhez. 
 
@@ -29,7 +29,7 @@ A sorozat második részében az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag elkezdéséhez hajtsa végre az első rész, [oktatóanyag: Blob Storage-statikus webhely üzemeltetése](storage-blob-static-website-host.md). 
+Ez az oktatóanyag elkezdéséhez hajtsa végre az első rész, [oktatóanyag: A Blob Storage statikus webhely üzemeltetése](storage-blob-static-website-host.md). 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 

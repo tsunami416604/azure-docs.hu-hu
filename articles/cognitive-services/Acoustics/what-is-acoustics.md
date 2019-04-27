@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: kegodin
 ms.openlocfilehash: 1fc125322b83a0eb51095fac21dee05c7ffb39c1
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313617"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61432449"
 ---
 # <a name="what-is-project-acoustics"></a>Mi az a Project Acoustics?
 Projekt Akusztika egy olyan wave Akusztika motor 3D interaktív élmény. A modellek wave hatások, például az olyan összetett jelenetekhez diffraction, portaling és visszhang hatások manuális zóna jelölőnyelvi nélkül. Játékmotor és hang közbenső integrációs is tartalmaz. Projekt Akusztika filozófia hasonlít a statikus megvilágítási: os részletes fizika kapcsolat nélküli fizikai alapterv biztosít, és a egy egyszerűsített modult használja kifejező tervezési vezérlőkkel művészi céljai.

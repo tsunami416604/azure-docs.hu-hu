@@ -1,17 +1,18 @@
 ---
 title: Modell és a partíció adatainak az Azure Cosmos DB használatával egy való életből vett példa
 description: Ismerje meg, hogyan modellezheti, és a egy való életből vett példa az Azure Cosmos DB Core API használatával a partíció
-author: ThomasWeiss
+author: rockboyfor
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 3/27/2019
-ms.author: thweiss
+origin.date: 03/27/2019
+ms.date: 04/15/2019
+ms.author: v-yeche
 ms.openlocfilehash: ac1b94de4b439aab202d53b23b0d0da616a9f851
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58919615"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61057485"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modell és a partíció adatainak az Azure Cosmos DB használatával egy való életből vett példa
 
@@ -333,7 +334,7 @@ Ebben a példában a módosítási hírcsatorna a használjuk a `users` , amikor
 ```javascript
 function updateUsernames(userId, username) {
   var collection = getContext().getCollection();
-  
+
   collection.queryDocuments(
     collection.getSelfLink(),
     `SELECT * FROM p WHERE p.userId = '${userId}'`,
@@ -576,3 +577,6 @@ Után ez a bevezető gyakorlati adatok modellezése és particionálás érdemes
 - [Adatbázisok, tárolók és elemek használata](databases-containers-items.md)
 - [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 - [Az Azure Cosmos DB csatorna módosítása](change-feed.md)
+
+<!--Update_Description: new articles on how to model partition example -->
+<!--ms.date: 04/15/2019-->

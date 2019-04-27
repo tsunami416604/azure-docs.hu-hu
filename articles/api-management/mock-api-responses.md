@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 9b9a691cb2bce2357d184420912ab340aee534e8
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412740"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128083"
 ---
 # <a name="mock-api-responses"></a>API-válaszok utánzása
 
@@ -42,7 +42,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 + Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
 + Az [Azure API Management-szabályzatok alapelveinek](api-management-howto-policies.md) ismerete.
-+ Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
++ Hajtsa végre a következő rövid útmutatót: [Az Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
 
 ## <a name="create-a-test-api"></a>Tesztelési API létrehozása 
 
@@ -50,7 +50,7 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan hozható létre egy
 
 ![Üres API létrehozása](./media/mock-api-responses/03-MockAPIResponses-01-CreateTestAPI.png)
 
-1. Az **API Management** szolgáltatásban válassza az **API** lehetőséget.
+1. Az **API Management**t szolgáltatásban válassza az **API** lehetőséget.
 2. A bal oldali menüben válassza az **+ API hozzáadása** elemet.
 3. Válassza az **Üres API** elemet a listából.
 4. A **Megjelenítendő név** mezőben adja meg a „*Tesztelési API*” nevet.
@@ -64,7 +64,7 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan hozható létre egy
 1. Válassza ki az előző lépésben létrehozott API-t.
 2. Kattintson a **+ Művelet hozzáadása** elemre.
 
-    | Beállítás             | Érték                             | Leírás                                                                                                                                                                                   |
+    | Beállítás             | Value (Díj)                             | Leírás                                                                                                                                                                                   |
     |---------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | **Megjelenített név**    | *Teszthívás*                       | A **fejlesztői portálon** megjelenített név.                                                                                                                                       |
     | **URL** (HTTP-művelet) | GET                               | Az előre meghatározott HTTP-műveletek közül választhat.                                                                                                                                         |

@@ -1,7 +1,6 @@
 ---
 title: A HDInsight-alapú Apache Kafka bemutatása – Azure
 description: 'Ismerje meg az Apache Kafka on HDInsight: Leírja, mi ez, mire szolgál, illetve hol találhat példákat és információt a használatának első lépéseiről.'
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 04/11/2018
-ms.openlocfilehash: 4d054542d600f2569170f40b8f6c053e005fc8af
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 50a67ca5c7d1fa3165889b1e59565d1a1030690d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889188"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62115211"
 ---
 # <a name="what-is-apache-kafka-on-hdinsight"></a>Mi az a HDInsight-alapú Apache Kafka?
 

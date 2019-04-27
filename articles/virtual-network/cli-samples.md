@@ -3,8 +3,8 @@ title: Azure CLI-minták virtuális hálózathoz | Microsoft Docs
 description: Azure CLI-minták virtuális hálózathoz.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 03/20/2018
-ms.author: jdial
-ms.openlocfilehash: baa4dbc8f95e068eb1a939fdee53fb2a4ee8117f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: HT
+ms.date: 04/17/2019
+ms.author: kumud
+ms.openlocfilehash: de96f101778b7011a5d3c67905b24908df7a7362
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841360"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098456"
 ---
 # <a name="azure-cli-samples-for-virtual-network"></a>Azure CLI-minták virtuális hálózathoz
 
@@ -32,3 +32,4 @@ A következő táblázat az Azure CLI-parancsok használatával létrehozott Bas
 | [Társviszony létesítése két virtuális hálózat között](./scripts/virtual-network-cli-sample-peer-two-virtual-networks.md) | Két virtuális hálózatot hoz létre és csatlakoztat ugyanabban a régióban. |
 | [Forgalom irányítása hálózati virtuális készüléken keresztül](./scripts/virtual-network-cli-sample-route-traffic-through-nva.md) | Egy virtuális hálózatot hoz létre előtérbeli és háttérbeli alhálózatokkal, valamint egy virtuális gépet, amely képes a két alhálózat közötti forgalom irányítására. |
 | [Virtuális gép kimenő és bejövő hálózati forgalmának szűrése](./scripts/virtual-network-cli-sample-filter-network-traffic.md) | Egy virtuális hálózatot hoz létre előtérbeli és háttérbeli alhálózatokkal. Az előtérbeli alhálózat bejövő hálózati forgalma HTTP-re, HTTPS-re és SSH-ra korlátozódik. A háttérbeli alhálózat felől az internetre irányuló kimenő forgalom nem engedélyezett. |
+|[Konfigurálhatja IPv4 + IPv6 kettős verem virtuális hálózat](./scripts/virtual-network-cli-sample-ipv6-dual-stack.md)|Kettős vermű (IPv4 + IPv6) két virtuális gépet, és az Azure alapszintű Load Balancerhez IPv4 és IPv6 típusú nyilvános IP-címekkel rendelkező virtuális hálózaton üzembe helyezi. |

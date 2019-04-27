@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d27f2495c70dbe6e10fb3adf5370a31903be3abf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 19ed39fac66a7abe4c65cf37ff616ba10fd8d96b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792401"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60875177"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Az ISO 27001, a megosztott szolgáltatások tervezet-minta üzembe helyezése
 
@@ -107,21 +107,21 @@ A következő táblázat felsorolja a tervezet összetevő paraméterek:
 
 |Elemnév|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
-|[Előzetes verzió]: Log Analytics-ügynököket Linux Virtuálisgép-méretezési csoportok (VMSS) üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: Hogy támogatott Linux operációs rendszer hatókör hozzáadása Virtuálisgép-rendszerképek listája|(Nem kötelező) Alapértelmezett érték _["none"]_.|
-|[Előzetes verzió]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: Hogy támogatott Linux operációs rendszer hatókör hozzáadása Virtuálisgép-rendszerképek listája|(Nem kötelező) Alapértelmezett érték _["none"]_.|
-|[Előzetes verzió]: Log Analytics-ügynököket Windows Virtuálisgép-méretezési csoportok (VMSS) üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: Hatókör hozzáadása a Windows operációs rendszer rendelkezik támogatott Virtuálisgép-rendszerképek listája|(Nem kötelező) Alapértelmezett érték _["none"]_.|
-|[Előzetes verzió]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: Hatókör hozzáadása a Windows operációs rendszer rendelkezik támogatott Virtuálisgép-rendszerképek listája|(Nem kötelező) Alapértelmezett érték _["none"]_.|
+|\[Előzetes verzió\]: Log Analytics-ügynököket Linux Virtuálisgép-méretezési csoportok (VMSS) üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: Hogy támogatott Linux operációs rendszer hatókör hozzáadása Virtuálisgép-rendszerképek listája|(Nem kötelező) Alapértelmezett érték _["none"]_.|
+|\[Előzetes verzió\]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: Hogy támogatott Linux operációs rendszer hatókör hozzáadása Virtuálisgép-rendszerképek listája|(Nem kötelező) Alapértelmezett érték _["none"]_.|
+|\[Előzetes verzió\]: Log Analytics-ügynököket Windows Virtuálisgép-méretezési csoportok (VMSS) üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: Hatókör hozzáadása a Windows operációs rendszer rendelkezik támogatott Virtuálisgép-rendszerképek listája|(Nem kötelező) Alapértelmezett érték _["none"]_.|
+|\[Előzetes verzió\]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése|Szabályzat-hozzárendelés|Nem kötelező: Hatókör hozzáadása a Windows operációs rendszer rendelkezik támogatott Virtuálisgép-rendszerképek listája|(Nem kötelező) Alapértelmezett érték _["none"]_.|
 |Engedélyezett erőforrástípusok|Szabályzat-hozzárendelés|Engedélyezett erőforrástípusok|Engedélyezett üzembe helyezhető erőforrástípusok listája. Ebben a listában megosztott szolgáltatásaiban üzembe helyezett összes erőforrástípus tevődik össze.|
 |Engedélyezett tárfiók-termékváltozatok|Szabályzat-hozzárendelés|Engedélyezett termékváltozatok tárhelyet|Diagnosztikai lista engedélyezett termékváltozatok tárolási naplózza. Alapértelmezett érték _["Standard_LRS"]_.|
 |Engedélyezett VM-termékváltozatok|Szabályzat-hozzárendelés|VM-termékváltozatok listájának engedélyezett üzembe helyezni. Alapértelmezett érték _["Standard_DS1_v2", "Standard_DS2_v2"]_.|
 |ISO 27001-alapú tervkezdeményezés|Szabályzat-hozzárendelés|Erőforrástípusok diagnosztikai naplók|Ha diagnosztikai naplót a beállítás nincs engedélyezve a naplózandó erőforrástípusok listája. Elfogadható értékek található [Azure Monitor-diagnosztikai naplók sémák](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
 |Log Analytics-erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolt** -fűzi össze a **szervezetnevet** a `-sharedsvsc-log-rg` , hogy az erőforráscsoport egyedi.|
-|Log Analytics-erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a tervezet paraméterrel.|
+|Log Analytics-erőforráscsoport|Erőforráscsoport|Location egység|**Zárolt** – a tervezet paraméterrel.|
 |Log Analytics-sablon|Resource Manager-sablon|Szolgáltatásszint|A Log Analytics-munkaterület szintjének beállítása. Alapértelmezett érték _PerNode_.|
 |Log Analytics-sablon|Resource Manager-sablon|Naplófájlok megőrzése (nap)|Adatok megőrzése napokban. Alapértelmezett érték _365_.|
-|Log Analytics-sablon|Resource Manager-sablon|Földrajzi egység|A Log Analytics-munkaterület létrehozásához használt régió. Alapértelmezett érték _USA 2. nyugati_.|
+|Log Analytics-sablon|Resource Manager-sablon|Location egység|A Log Analytics-munkaterület létrehozásához használt régió. Alapértelmezett érték _USA 2. nyugati_.|
 |Hálózati erőforrás-csoport|Erőforráscsoport|Name (Név)|**Zárolt** -fűzi össze a **szervezetnevet** a `-sharedsvcs-net-rg` , hogy az erőforráscsoport egyedi.|
-|Hálózati erőforrás-csoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a tervezet paraméterrel.|
+|Hálózati erőforrás-csoport|Erőforráscsoport|Location egység|**Zárolt** – a tervezet paraméterrel.|
 |Azure Firewall-sablon|Resource Manager-sablon|Azure Firewall magánhálózati IP-címe|Konfigurálja a magánhálózati IP-címét a [Azure tűzfal](../../../../firewall/overview.md). Ez az érték a megosztott szolgáltatások alhálózata alapértelmezett útválasztási tábla is szolgál. A meghatározott CIDR jelölésrendszer szerint kell **Azure tűzfal alhálózati cím előtagja**. Alapértelmezett érték _címe: 10.0.4.4_.|
 |Azure Firewall-sablon|Resource Manager-sablon|Naplófájlok megőrzése (nap)|Adatok megőrzése napokban. Alapértelmezett érték _365_.|
 |Hálózati biztonsági csoport – sablon|Resource Manager-sablon|Naplófájlok megőrzése (nap)|Adatok megőrzése napokban. Alapértelmezett érték _365_.|
@@ -133,7 +133,7 @@ A következő táblázat felsorolja a tervezet összetevő paraméterek:
 |Virtuális hálózat és útvonaltábla – sablon|Resource Manager-sablon|Virtuális hálózati átjáró alhálózati címelőtagja|A virtuális hálózati átjáró-alhálózat CIDR-jelölésrendszerben. Alapértelmezett érték _10.0.3.0/24_.|
 |Virtuális hálózat és útvonaltábla – sablon|Resource Manager-sablon|Azure Firewall alhálózati címelőtagja|A CIDR-jelölés a [Azure tűzfal](../../../../firewall/overview.md) alhálózat. Tartalmaznia kell a **Azure tűzfal magánhálózati IP-címe** paraméter.|
 |A Key Vault-erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolt** -fűzi össze a **szervezetnevet** a `-sharedsvcs-kv-rg` , hogy az erőforráscsoport egyedi.|
-|A Key Vault-erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a tervezet paraméterrel.|
+|A Key Vault-erőforráscsoport|Erőforráscsoport|Location egység|**Zárolt** – a tervezet paraméterrel.|
 |Kulcstartósablon|Resource Manager-sablon|Jumpbox-rendszergazda felhasználóneve|A felhasználónév a jumpbox számára. Meg kell egyeznie az azonos tulajdonság értéke **Jumpbox sablon**. Alapértelmezett érték _jb rendszergazda_.|
 |Kulcstartósablon|Resource Manager-sablon|Jumpbox-rendszergazda SSH-kulcsa vagy jelszava|Kulcs vagy a jumpbox fiókjához tartozó jelszót. Meg kell egyeznie az azonos tulajdonság értéke **Jumpbox sablon**. Nem alapértelmezett értékét, és nem lehet üres.|
 |Kulcstartósablon|Resource Manager-sablon|Tartományi rendszergazda felhasználóneve|A felhasználónév az Active Directory virtuális gép eléréséhez, és más virtuális gépek tartományhoz csatlakoztatására. Meg kell egyeznie **tartományi rendszergazda felhasználó** tulajdonságértéket **Active Directory Domain Services sablon**. Alapértelmezett érték _tartományi rendszergazda_.|
@@ -142,13 +142,13 @@ A következő táblázat felsorolja a tervezet összetevő paraméterek:
 |Kulcstartósablon|Resource Manager-sablon|Naplófájlok megőrzése (nap)|Adatok megőrzése napokban. Alapértelmezett érték _365_.|
 |Kulcstartósablon|Resource Manager-sablon|Key Vault-termékváltozat|Adja meg a létrehozott Key Vault-Termékváltozat. Alapértelmezett érték _prémium_.|
 |Jumpbox erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolt** -fűzi össze a **szervezetnevet** a `-sharedsvcs-jb-rg` , hogy az erőforráscsoport egyedi.|
-|Jumpbox erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a tervezet paraméterrel.|
+|Jumpbox erőforráscsoport|Erőforráscsoport|Location egység|**Zárolt** – a tervezet paraméterrel.|
 |Jumpbox-sablon|Resource Manager-sablon|Jumpbox-rendszergazda felhasználóneve|A jumpbox virtuális gép eléréséhez használt felhasználónév. Meg kell egyeznie az azonos tulajdonság értéke **Key Vault sablon**. Alapértelmezett érték _jb rendszergazda_.|
 |Jumpbox-sablon|Resource Manager-sablon|Jumpbox rendszergazdai jelszó (Key Vault erőforrás-azonosító)|A Key Vault erőforrás-Azonosítóját. Használat "/ subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-kv", és cserélje le `{subscriptionId}` meg előfizetési azonosítóját és `{orgName}` együtt a  **Szervezet neve** tervezetet paraméter.|
 |Jumpbox-sablon|Resource Manager-sablon|Jumpbox rendszergazdai jelszó (a kulcstartó titkos kód nevét)|A jumpbox rendszergazda felhasználóneve Egyeznie kell azzal az értékkel **Key Vault sablon** tulajdonság **Jumpbox rendszergazdai felhasználónév**.|
 |Jumpbox-sablon|Resource Manager-sablon|Jumpbox operációs rendszere|A jumpbox virtuális gép operációs rendszere határozza meg. Alapértelmezett érték _Windows_.|
 |Az Active Directory Domain Services-erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolt** -fűzi össze a **szervezetnevet** a `-sharedsvcs-adds-rg` , hogy az erőforráscsoport egyedi.|
-|Az Active Directory Domain Services-erőforráscsoport|Erőforráscsoport|Földrajzi egység|**Zárolt** – a tervezet paraméterrel.|
+|Az Active Directory Domain Services-erőforráscsoport|Erőforráscsoport|Location egység|**Zárolt** – a tervezet paraméterrel.|
 |Active Directory tartományi szolgáltatások sablonja|Resource Manager-sablon|Tartományi rendszergazda felhasználóneve|Az ADDS jumpbox felhasználónév. Meg kell egyeznie az azonos tulajdonság értéke **Key Vault sablon**. Alapértelmezett érték _ad-rendszergazda-user_.|
 |Active Directory tartományi szolgáltatások sablonja|Resource Manager-sablon|Tartományi rendszergazdai jelszó (Key Vault erőforrás-azonosító)|A Key Vault erőforrás-Azonosítóját. Használat "/ subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-kv", és cserélje le `{subscriptionId}` meg előfizetési azonosítóját és `{orgName}` együtt a  **Szervezet neve** tervezetet paraméter.|
 |Active Directory tartományi szolgáltatások sablonja|Resource Manager-sablon|Tartományi rendszergazdai jelszó (a kulcstartó titkos kód nevét)|A tartományi rendszergazda felhasználóneve Egyeznie kell azzal az értékkel **Key Vault sablon** tulajdonság **tartományi rendszergazdai felhasználónév**.|

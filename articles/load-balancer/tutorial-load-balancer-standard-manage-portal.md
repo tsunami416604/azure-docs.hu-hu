@@ -16,11 +16,11 @@ ms.date: 03/11/2019
 ms.author: kumud
 ms.custom: seodec18
 ms.openlocfilehash: 78266e447d1ddf6daf5a9b0ad9172ab6470bf0c6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57845205"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61320825"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Oktatóanyag: Terhelésének elosztása az internetes forgalmat a virtuális gépekhez az Azure portal használatával
 
@@ -53,7 +53,7 @@ Ebben a szakaszban egy Standard Load Balancer, amellyel a virtuális gépek terh
     | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *myResourceGroupSLB* a szövegmezőben.|
     | Name (Név)                   | *myLoadBalancer*                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
-    | Typo          | Válassza ki **nyilvános**.                                        |
+    | Típus          | Válassza ki **nyilvános**.                                        |
     | SKU           | Válassza ki **Standard**.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
     | Nyilvános IP-cím neve              | Típus *myPublicIP* a szövegmezőben.   |
@@ -88,7 +88,7 @@ Engedélyezi a Load Balancer monitorozhassa az alkalmazás állapotát, állapot
     | Name (Név) | Adja meg *myHealthProbe*. |
     | Protokoll | Válassza ki **HTTP**. |
     | Port | Adja meg *80-as*.|
-    | Intervallum | Adja meg *15* számú **időköz** mintavételi kísérletek közötti másodpercek alatt. |
+    | Interval | Adja meg *15* számú **időköz** mintavételi kísérletek közötti másodpercek alatt. |
     | Nem kifogástalan állapot küszöbértéke | Válassza ki *2* számú **nem kifogástalan állapot küszöbértéke** vagy egymást követő mintavételi hiba, amely előtt a virtuális gép nem megfelelő állapotúnak számít.|
     | Állapotadat-mintavétel | Válassza ki *myHealthProbe*. |
     
@@ -128,7 +128,7 @@ Ebben a szakaszban egy virtuális hálózat létrehozása, három virtuális gé
     | Címtér | Adja meg *10.1.0.0/16*. |
     | Előfizetés | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza ki a meglévő erőforrás - *myResourceGroupSLB*. |
-    | Hely | Válassza a **Nyugat-Európa** régiót.|
+    | Location egység | Válassza a **Nyugat-Európa** régiót.|
     | Alhálózat - név | Adja meg a *myBackendSubnet* értéket. |
     | Alhálózat – címtartomány | Adja meg *10.1.0.0/24*. |
     

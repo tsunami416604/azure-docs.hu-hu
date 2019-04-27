@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: aahi
 ms.openlocfilehash: c4c5059bc57ea33357145f6b119456dc6c5bdb7b
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571894"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60946641"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>Gyors útmutató: A Python SDK-val Bing Custom Search-végpont meghívása 
 

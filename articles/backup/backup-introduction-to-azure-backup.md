@@ -11,11 +11,11 @@ ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 98acb6c5b83ce31046b50f744492c518cdf77498
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621651"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60809524"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
 Az Azure Backup olyan Azure-alapú szolgáltatás, amellyel biztonsági másolatot készíthet adatairól (vagy megvédheti adatait), és visszaállíthatja őket a Microsoft-felhőből. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure Recovery Services-tárolójába. Az [Azure Backup-összetevők táblázatában](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (a cikk későbbi részében) azzal kapcsolatban talál információkat, hogy mely összetevőt kell használnia adott adatok, alkalmazások és számítási feladatok védelmére.
@@ -50,7 +50,7 @@ A hagyományos biztonsági mentési megoldások úgy fejlődtek, hogy a felhőt 
 ## <a name="which-azure-backup-components-should-i-use"></a>Melyik Azure Backup-összetevőt használjam?
 Az alábbi táblázatból megtudhatja, hogy az egyes Azure Backup-összetevők minek a védelmét tudják biztosítani.
 
-| Összetevő | Előnyök | Korlátok | Mi van védve? | Hol tárolja a biztonsági mentéseket? |
+| Összetevő | Előnyök | Limits | Mi van védve? | Hol tárolja a biztonsági mentéseket? |
 | --- | --- | --- | --- | --- |
 | Azure Backup (MARS) ügynöke |<li>Elkészíti a fizikai vagy virtuális Windows operációs rendszereken lévő fájlok és mappák biztonsági másolatát (a virtuális gépek lehetnek helyszíniek, vagy lehetnek az Azure-ban is)<li>Nincs szükség különálló biztonsági mentési kiszolgálóra. |<li>Biztonsági mentés naponta 3-szor. <li>Nem alkalmazásfüggő; csak fájl-/mappa-/kötetszintű visszaállítás. <li>  Nincs Linux-támogatás. |<li>Fájlok <li>Mappák <li>Rendszerállapot |Recovery Services-tároló |
 | System Center DPM |<li>Alkalmazásfüggő pillanatképek (VSS)<li>Teljes rugalmasság a biztonsági mentés időpontjának kiválasztásakor<li>Helyreállítás részletessége (összes)<li>Használható a Recovery Services-tároló<li>Linux-támogatás Hyper-V és VMware virtuális gépeken <li>VMware virtuális gépek biztonsági mentése és visszaállítása a DPM 2012 R2-es verziójával |Nem készíthető biztonsági mentés az Oracle számítási feladatról.|<li>Fájlok <li>Mappák<li> Kötetek <li>Virtuális gépek<li> Alkalmazások<li> Számítási feladatok <li>Rendszerállapot |<li>Recovery Services-tároló,<li> Helyileg csatlakoztatott lemez,<li>  Szalag (csak helyszíni) |

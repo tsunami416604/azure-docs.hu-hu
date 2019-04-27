@@ -11,13 +11,13 @@ ms.topic: overview
 ms.date: 04/12/2019
 ms.author: erhopf
 ms.openlocfilehash: 29fcbd058651c428b488f5ce1c767105cb7921a6
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59580407"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61461663"
 ---
-# <a name="swagger-documentation"></a>Swagger-dokumentáció
+# <a name="swagger-documentation"></a>A Swagger dokumentációja
 
 A beszédfelismerési szolgáltatás olyan való kommunikációhoz használt adatok importálása, modelleket hozhat létre, tesztelheti a pontosság, egyéni végpontok létrehozása, várólistára helyezését batch beszédátírás és -előfizetések kezelése a REST API-k és a Swagger-specifikációra. A Custom Speech-portál elérhető a legtöbb műveletek programozott módon az API-k használatával elvégezhető. 
 

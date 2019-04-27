@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 743246881463d9cb5156677a0c3ec719d80a079c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 18ee967d421eb2a170955a4b75939e5f084a65fb
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264352"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62111406"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Promapp
 
@@ -121,7 +121,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Promapp, hajtsa vég
     > [!NOTE] 
     > Jelenleg az Azure AD-integráció Promapp csak lett konfigurálva a szolgáltatás kezdeményezett hitelesítési Promapp URL-címe például fog a hitelesítési folyamatot kezdeményez. Azonban a válasz URL-cím mező kitöltése kötelező.
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<DOMAINNAME>.promapp.com/azuread/saml/authenticate.aspx`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<DOMAINNAME>.promapp.com/TENANTNAME/saml/authenticate.aspx`
 
 5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 

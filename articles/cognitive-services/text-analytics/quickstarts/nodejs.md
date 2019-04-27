@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: a2fdeeab2e8027dc3b548f7004912906d4574ccc
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 4c77477e31e7513cb806dda968a68fc1ac5030ed
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007430"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122138"
 ---
 # <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Text Analytics kognitív szolgáltatás hívásához Node.js használatával  
 <a name="HOLTop"></a>
@@ -156,7 +156,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="analyze-sentiment"></a>Vélemények elemzése
 
-A Sentiment Analysis API a szöveges bejegyzések hangulatát érzékeli a [Sentiment metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2-1/operations/56f30ceeeda5650db055a3c9) használatával. Hangulatelemzés segítségével ismerje meg, hogy alkotott ügyfélvéleményeket a márkájáról vagy a témakör a keresőmotorok pozitív vagy negatív véleményeket kapcsolatos nyers szöveg elemzésével. Az alábbi példa a pontszámok biztosít két dokumentumot, egy angol nyelvű, míg a másik spanyol.
+A Sentiment Analysis API a szöveges bejegyzések hangulatát érzékeli a [Sentiment metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) használatával. Hangulatelemzés segítségével ismerje meg, hogy alkotott ügyfélvéleményeket a márkájáról vagy a témakör a keresőmotorok pozitív vagy negatív véleményeket kapcsolatos nyers szöveg elemzésével. Az alábbi példa a pontszámok biztosít két dokumentumot, egy angol nyelvű, míg a másik spanyol.
 
 1. Hozzon létre egy új Node.JS-projektet a kedvenc IDE vagy az asztal az egyik mappájába.
 2. Adja hozzá a kódot egy új lejjebb `.js` fájlt.
@@ -252,7 +252,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="extract-key-phrases"></a>Kulcsszavak kinyerése
 
-A Key Phrase Extraction API kulcskifejezéseket nyer ki a szöveges dokumentumokból a [Key Phrases metódus](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2-1/operations/56f30ceeeda5650db055a3c6) használatával. Kulcskifejezések kinyerése segítségével gyorsan azonosíthatja a szöveg és a dokumentum a fő pontokat. A következő példa kulcskifejezéseket nyer ki angol és spanyol nyelvű dokumentumokhoz.
+A Key Phrase Extraction API kulcskifejezéseket nyer ki a szöveges dokumentumokból a [Key Phrases metódus](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) használatával. Kulcskifejezések kinyerése segítségével gyorsan azonosíthatja a szöveg és a dokumentum a fő pontokat. A következő példa kulcskifejezéseket nyer ki angol és spanyol nyelvű dokumentumokhoz.
 
 1. Hozzon létre egy új Node.JS-projektet a kedvenc IDE vagy az asztal az egyik mappájába.
 2. Adja hozzá a kódot egy új lejjebb `.js` fájlt.

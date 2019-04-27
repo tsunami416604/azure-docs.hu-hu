@@ -1,7 +1,6 @@
 ---
 title: 'Oktatóanyag: Az Apache kafka platformmal – Azure HDInsight adatok olvasását és írását az Apache Storm használatával'
 description: Megtudhatja, hogyan hozhat létre streamelési folyamatot az Apache Storm és az Apache Kafka on HDInsight használatával. Ebben az oktatóanyagban a KafkaBolt és a KafkaSpout összetevőkkel streamel adatokat a Kafkából.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: dca789a850e5df58024d13b8f592765e55c39485
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: bf62b4f8f8dbfc7df73102bb06e4f16c0fdb806c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316949"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097317"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Kafka on HDInsight az Apache Storm használata
 
@@ -411,7 +410,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
       | --- | --- |
       | Előfizetés | Az Azure-előfizetése |
       | Erőforráscsoport | Az erőforrásokat tartalmazó erőforráscsoport. |
-      | Hely | Az az Azure-régió, amelyben az erőforrások létrejönnek. |
+      | Location egység | Az az Azure-régió, amelyben az erőforrások létrejönnek. |
       | Kafka-fürt neve | A Kafka-fürt neve. |
       | Storm-fürt neve | A Storm-fürt neve. |
       | Fürt bejelentkezési felhasználóneve | A fürtök rendszergazdai felhasználóneve. |

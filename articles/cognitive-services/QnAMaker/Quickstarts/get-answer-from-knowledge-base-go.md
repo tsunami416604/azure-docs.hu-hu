@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
 ms.openlocfilehash: a74d67df55d46376017adbd48f5161d337ebaa0d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879318"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62118043"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-go"></a>A Tudásbázis a Go egy kérdésre választ kaphat
 

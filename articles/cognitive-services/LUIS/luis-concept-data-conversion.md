@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/16/2019
 ms.author: diberry
 ms.openlocfilehash: bdf2d87e558726937fa4221a0d95179216c66051
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859200"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60813812"
 ---
 # <a name="convert-data-format-of-utterances"></a>Beszédmódok adatok formátumának konvertálása
 LUIS a Cognitive Services beszéd szolgáltatást használja a beszélt utterances kimondott szöveg átalakítása előtt előrejelzés szöveges utterances. 

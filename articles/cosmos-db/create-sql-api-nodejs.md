@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: dech
 ms.openlocfilehash: 5a5286695508e46fa24eb5c49cdaf0fe1318fc9d
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585492"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60891333"
 ---
 # <a name="quickstart-build-a-nodejs-app-using-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Azure Cosmos DB SQL API-fiók használata a Node.js-alkalmazás létrehozása
 

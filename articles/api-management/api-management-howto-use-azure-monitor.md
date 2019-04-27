@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: c3148adc42cb4f899a87d894909eedff4c798575
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680239"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127429"
 ---
 # <a name="monitor-published-apis"></a>A közzétett API-k monitorozása
 
@@ -184,42 +184,42 @@ Az API Management jelenleg különálló API-kérelmekről kínál óránként k
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | logikai | Akkor igaz, ha a befejezett HTTP-kérelem válaszának állapotkódja a 2xx vagy 3xx tartományon belülre esik. |
 | time | dátum-idő | Az átjárótól érkező HTTP-kérelem megérkezésének időbélyegzője |
-| operationName | sztring | A „Microsoft.ApiManagement/GatewayLogs” állandó érték |
-| category | sztring | A „GatewayLogs” állandó érték |
+| operationName | string | A „Microsoft.ApiManagement/GatewayLogs” állandó érték |
+| category | string | A „GatewayLogs” állandó érték |
 | durationMs | egész szám | A kérelem átjáróhoz való megérkezése és a teljes válasz elküldése között eltelt ezredmásodpercek száma |
-| callerIpAddress | sztring | Az átjáró közvetlen hívójának IP-címe (közvetítő is lehet) |
-| correlationId | sztring | Az API Management által hozzárendelt HTTP-kérelem egyedi azonosítója |
-| location | sztring | Az Azure-régió neve, ahol a kérelmet feldolgozó átjáró található |
-| httpStatusCodeCategory | sztring | Http-válasz állapotkódjának kategóriája: Sikeres (301 vagy kevesebb 304 vagy 307), jogosulatlan (401, 403, 429), hibás (400, 500 és 600 között), egyéb |
-| resourceId | sztring | ID of the API Management resource /SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> |
+| callerIpAddress | string | Az átjáró közvetlen hívójának IP-címe (közvetítő is lehet) |
+| correlationId | string | Az API Management által hozzárendelt HTTP-kérelem egyedi azonosítója |
+| location | string | Az Azure-régió neve, ahol a kérelmet feldolgozó átjáró található |
+| httpStatusCodeCategory | string | Http-válasz állapotkódjának kategóriája: Sikeres (301 vagy kevesebb 304 vagy 307), jogosulatlan (401, 403, 429), hibás (400, 500 és 600 között), egyéb |
+| resourceId | string | ID of the API Management resource /SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> |
 | properties | objektum | Az aktuális kérelem tulajdonságai |
-| method | sztring | A bejövő kérelem HTTP-metódusa |
-| url | sztring | A bejövő kérelem URL-címe |
-| clientProtocol | sztring | A bejövő kérelem HTTP-protokolljának verziója |
+| method | string | A bejövő kérelem HTTP-metódusa |
+| url | string | A bejövő kérelem URL-címe |
+| clientProtocol | string | A bejövő kérelem HTTP-protokolljának verziója |
 | responseCode | egész szám | Az ügyfélnek küldött HTTP-válasz állapotkódja |
-| backendMethod | sztring | A háttérrendszernek küldött kérelem HTTP-metódusa |
-| backendUrl | sztring | A háttérrendszernek küldött kérelem URL-címe |
+| backendMethod | string | A háttérrendszernek küldött kérelem HTTP-metódusa |
+| backendUrl | string | A háttérrendszernek küldött kérelem URL-címe |
 | backendResponseCode | egész szám | A háttérrendszertől érkezett HTTP-válasz kódja |
-| backendProtocol | sztring | A háttérrendszernek küldött kérelem HTTP-protokolljának verziója | 
+| backendProtocol | string | A háttérrendszernek küldött kérelem HTTP-protokolljának verziója | 
 | requestSize | egész szám | A kérelem feldolgozása során az ügyféltől érkezett bájtok száma | 
 | responseSize | egész szám | A kérelem feldolgozása során az ügyfélnek küldött bájtok száma | 
-| cache | sztring | Az API Management-gyorsítótár kérelemfeldolgozásban való részvételének állapota (pl. találat, tévesztés, nincs) | 
+| cache | string | Az API Management-gyorsítótár kérelemfeldolgozásban való részvételének állapota (pl. találat, tévesztés, nincs) | 
 | cacheTime | egész szám | Az API Management-gyorsítótár I/O-folyamatával töltött teljes idő ezredmásodpercben (csatlakozás, bájtok küldése és fogadása) | 
 | backendTime | egész szám | A háttérrendszer I/O-folyamatával töltött teljes idő ezredmásodpercben (csatlakozás, bájtok küldése és fogadása) | 
 | clientTime | egész szám | Az ügyfél I/O-folyamatával töltött teljes idő ezredmásodpercben (csatlakozás, bájtok küldése és fogadása) | 
-| apiId | sztring | Az aktuális kérelem API-entitásazonosítója | 
-| operationId | sztring | Az aktuális kérelem műveleti entitásának azonosítója | 
-| productId | sztring | Az aktuális kérelem termékentitásának azonosítója | 
-| userId | sztring | Az aktuális kérelem felhasználói entitásának azonosítója | 
-| apimSubscriptionId | sztring | Az aktuális kérelem előfizetési entitásának azonosítója | 
-| backendId | sztring | Az aktuális kérelem háttérentitásának azonosítója | 
-| lastError | objektum | A legutóbbi kérelemfeldolgozási hiba | 
+| apiId | string | Az aktuális kérelem API-entitásazonosítója | 
+| operationId | string | Az aktuális kérelem műveleti entitásának azonosítója | 
+| productId | string | Az aktuális kérelem termékentitásának azonosítója | 
+| userId | string | Az aktuális kérelem felhasználói entitásának azonosítója | 
+| apimSubscriptionId | string | Az aktuális kérelem előfizetési entitásának azonosítója | 
+| backendId | string | Az aktuális kérelem háttérentitásának azonosítója | 
+| LastError | objektum | A legutóbbi kérelemfeldolgozási hiba | 
 | elapsed | egész szám | A kérelem átjáróhoz való megérkezése és a hiba felbukkanása között eltelt ezredmásodpercek száma | 
-| source | sztring | A hibát okozó házirend vagy belső feldolgozáskezelő neve | 
-| scope | sztring | A hibát okozó házirendet tartalmazó szabályzatdokumentum hatóköre | 
-| section | sztring | A hibát okozó szabályzatot tartalmazó szabályzatdokumentum szakasza | 
-| reason | sztring | A hiba oka | 
-| message | sztring | Hibaüzenet | 
+| source | string | A hibát okozó házirend vagy belső feldolgozáskezelő neve | 
+| scope | string | A hibát okozó házirendet tartalmazó szabályzatdokumentum hatóköre | 
+| section | string | A hibát okozó szabályzatot tartalmazó szabályzatdokumentum szakasza | 
+| reason | string | A hiba oka | 
+| message | string | Hibaüzenet | 
 
 ## <a name="next-steps"></a>További lépések
 

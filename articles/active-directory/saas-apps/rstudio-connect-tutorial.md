@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4bda20d9ce06f756913e6dfb3e980399ac7e0a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 32aa7a531de2e236e3941bbe8afd84d845f80f99
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60348254"
+ms.locfileid: "62104748"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>Oktatóanyag: Az RStudio csatlakoztatása az Azure Active Directory-integráció
 
@@ -40,7 +40,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 Az Azure AD-integráció konfigurálása az RStudio Connect, a következőkre van szükség:
 
 * Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* Csatlakozás az RStudio egyszeri bejelentkezés engedélyezve van az előfizetés
+* Csatlakozás az RStudio. Van egy [45 nap ingyenes értékelési.](https://www.rstudio.com/products/connect/)
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -104,22 +104,22 @@ Az Azure AD egyszeri bejelentkezés konfigurálása az RStudio Connect, hajtsa v
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
+4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre a következő lépéseket, és cserélje le `<example.com>` az RStudio csatlakozás kiszolgálóval Cím és port:
 
     ![Az RStudio csatlakozás tartományhoz és URL-címek egyszeri bejelentkezési adatait](common/idp-intiated.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://connect.<example>.com/__login__/saml`
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<example.com>/__login__/saml`
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://connect.<example>.com/__login__/saml/acs`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<example.com>/__login__/saml/acs`
 
 5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
     ![Az RStudio csatlakozás tartományhoz és URL-címek egyszeri bejelentkezési adatait](common/metadata-upload-additional-signon.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://connect.<example>.com/`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<example.com>/`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Kapcsolattartó [RStudio csatlakozás ügyfél-támogatási csapatának](mailto:support@rstudio.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Csatlakozás az RStudio kiszolgáló-címéről megállapították (`https://example.com` a fenti példákban). Forduljon a [támogatási csapatával a csatlakozás az RStudio](mailto:support@rstudio.com) Ha gondja van. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 6. Az RStudio Connect alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. Csatlakozás az RStudio alkalmazás vár **nameidentifier** leképezve a **user.mail**, így kell szerkesztenie a attribútumleképezés kattintva **szerkesztése** ikonra, és módosítsa a Attribútumleképzés.
 
@@ -131,7 +131,36 @@ Az Azure AD egyszeri bejelentkezés konfigurálása az RStudio Connect, hajtsa v
 
 ### <a name="configure-rstudio-connect-single-sign-on"></a>Az RStudio konfigurálása egyszeri bejelentkezéshez csatlakoztatása
 
-Az egyszeri bejelentkezés konfigurálása **RStudio csatlakozás** oldalon kell küldenie a **alkalmazás összevonási metaadatainak URL-címe** a [támogatási csapatával a csatlakozás az RStudio](mailto:support@rstudio.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Konfigurálása egyszeri bejelentkezéshez a **RStudio csatlakozás**, kell használnia a **alkalmazás összevonási metaadatainak URL-címe** és **kiszolgálócím** fent használt. Ez történik a csatlakozás az RStudio konfigurációs fájlban a következő `/etc/rstudio-connect.rstudio-connect.gcfg`.
+
+Ez az egy példa konfigurációs fájlt:
+
+```
+[Server]
+SenderEmail =
+
+; Important! The user-facing URL of your RStudio Connect server.
+Address = 
+
+[Http]
+Listen = :3939
+
+[Authentication]
+Provider = saml
+
+[SAML]
+Logging = true
+
+; Important! The URL where your IdP hosts the SAML metadata or the path to a local copy of it placed in the RStudio Connect server.
+IdPMetaData = 
+
+IdPAttributeProfile = azure
+SSOInitiated = IdPAndSP
+```
+
+Store a **kiszolgálócím** a a `Server.Address` értéket, és a **alkalmazás összevonási metaadatainak URL-címe** a a `SAML.IdPMetaData` értéket.
+
+Ha problémája akad konfigurációs, áttekintheti a [RStudio csatlakozás rendszergazdai útmutató](https://docs.rstudio.com/connect/admin/authentication.html#authentication-saml) vagy e-mailben a [RStudio támogatási csapatának](mailto:support@rstudio.com) segítséget.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 

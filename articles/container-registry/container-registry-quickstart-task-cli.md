@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/02/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 61a17842158326c927f049af893a00818f3acc55
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: be120ea8ae588da486c9a5acd4eb7bfdb4e45dee
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793386"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62109817"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Gyors útmutató: Létrehozhatja és futtathatja egy tárolórendszerképet az Azure Container Registry feladatok használatával
 
@@ -52,7 +52,7 @@ Ez a példa létrehoz egy *alapszintű* beállításjegyzék, a fejlesztők megi
 Most már az Azure Container Registry használatával állítson össze egy rendszerképet. Először hozzon létre egy működő könyvtárba, és hozzon létre egy docker-fájlban nevű *Dockerfile* az alábbi tartalommal. Ez egy egyszerű példa egy Linuxos tárolólemezkép összeállításához, de hozhat létre saját standard docker-fájlban, és más platformokra lemezképeket.
 
 ```bash
-echo "FROM hello-world" > Dockerfile
+echo FROM hello-world > Dockerfile
 ```
 
 Futtassa a [az acr-build] [ az-acr-build] parancsot a rendszerkép létrehozásához. Ha sikeresen létrehozott, a rendszerképet leküldte a tárolójegyzékbe. Az alábbi példa leküldi a `sample/hello-world:v1` kép. A `.` végén található a parancs beállítja a docker-fájl helyét ebben az esetben az aktuális könyvtár.

@@ -8,13 +8,13 @@ ms.topic: overview
 ms.date: 11/20/2017
 ms.author: sngun
 ms.openlocfilehash: 68190ad15ed70ac831c21582d60bc54da5d3c14b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043923"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60913480"
 ---
-# <a name="introduction-to-azure-cosmos-db-table-api"></a>Az Azure Cosmos DB bemutatása: Tábla API
+# <a name="introduction-to-azure-cosmos-db-table-api"></a>Bevezetés: az Azure Cosmos DB: Tábla API
 
 Az [Azure Cosmos DB](introduction.md) Table API-t biztosít olyan, az Azure Table Storage-hoz írt alkalmazások számára, amelyekhez a következő prémium képességek szükségesek:
 

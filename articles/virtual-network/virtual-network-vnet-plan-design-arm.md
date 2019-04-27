@@ -3,8 +3,8 @@ title: Az Azure virtuális hálózatok tervezése |} A Microsoft Docs
 description: Ismerje meg, hogyan tervezi a virtuális hálózatokban az elkülönítés, kapcsolat és helyre vonatkozó követelmények alapján.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 3a4a9aea-7608-4d2e-bb3c-40de2e537200
 ms.service: virtual-network
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
-ms.author: jdial
+ms.author: kumud
 ms.openlocfilehash: acd7a88acb31b9d3bd3ba714387561e91b3524a6
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339516"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61034739"
 ---
 # <a name="plan-virtual-networks"></a>Virtuális hálózatok tervezése
 
@@ -37,7 +37,7 @@ Egy Azure-régióban és az előfizetés az összes Azure-erőforrások jönnek 
 - Adatok fizikai tárolási helye, szuverenitását, megfelelőségi vagy rugalmassági követelmények van? Ha igen, válassza a régióban, amely megfelel a követelményeknek, kritikus fontosságú. További információkért lásd: [Azure régiócsoportjairól](https://azure.microsoft.com/global-infrastructure/geographies/).
 - Van szüksége rugalmasság az Azure rendelkezésre állási zónában üzembe erőforrásokat az Azure ugyanazon a régión belül? Erőforrások, például a virtuális gépek (VM) telepíthet másik rendelkezésre állási zónák ugyanazon virtuális hálózaton belül. Nem minden Azure-régiók rendelkezésre állási zónák azonban támogatják. A rendelkezésre állási zónák és az azokat támogató régiókban kapcsolatos további tudnivalókért lásd: [rendelkezésre állási zónák](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="subscriptions"></a>Előfizetések
+## <a name="subscriptions"></a>Subscriptions
 
 Tetszőleges számú virtuális hálózatok előfizetésenként, szükség szerint akár telepítheti a [korlát](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Egyes szervezetek például rendelkezik a különböző részlegek számára különböző előfizetésekben. További információért és megfontolásokért előfizetések körül, lásd: [előfizetés-irányítás](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy).
 

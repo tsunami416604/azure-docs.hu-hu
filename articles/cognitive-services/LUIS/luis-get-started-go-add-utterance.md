@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
 ms.openlocfilehash: 60594137306bfe58024877947959f2865fffe019
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961805"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61094969"
 ---
 # <a name="quickstart-change-model-using-go"></a>Gyors útmutató: Modell módosítása a Go használatával
 

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
 ms.openlocfilehash: 5fa922cb91d34483256faf4dcf70569aa2f17b97
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522486"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60813826"
 ---
 # <a name="entity-roles-for-contextual-subtypes"></a>Környezetfüggő altípus entitás szerepkörei
 
@@ -37,8 +37,8 @@ Szerepkörök e különbségek adjon meg egy nevet:
 
 |Entitástípus|Entitás neve|Szerepkör|Cél|
 |--|--|--|--|
-|Egyszerű|Földrajzi egység|forrás|Ha az adatsík elhagyja a|
-|Egyszerű|Földrajzi egység|cél|Ha az adatsík hajtanak végre|
+|Egyszerű|Location egység|forrás|Ha az adatsík elhagyja a|
+|Egyszerű|Location egység|cél|Ha az adatsík hajtanak végre|
 
 ## <a name="non-machine-learned-entity-example-of-roles"></a>Szerepkörök nem gép megismert entitások – példa
 

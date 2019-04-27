@@ -4,17 +4,19 @@ description: Ebből a cikkből megtudhatja, hogyan használható együtt az Azur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
-ms.date: 11/15/2017
-author: wmengmsft
-ms.author: wmeng
+origin.date: 11/15/2017
+ms.date: 04/15/2019
+author: rockboyfor
+ms.author: v-yeche
 ms.reviewer: sngun
 ms.openlocfilehash: 1570417cb1c3aa9ec32d12d9209d4c712b50511d
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522298"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130330"
 ---
+<!--Verify sucessfully-->
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>Fejlesztés az Azure Cosmos DB Table API és az Azure Table Storage használatával
 
 Az Azure Cosmos DB Table API és az Azure Table Storage ugyanazt a táblaadatmodellt használja, és ugyanazokat a létrehozási, törlési, frissítési és lekérdezési műveleteket teszik elérhetővé az SDK-kon keresztül. 
@@ -33,7 +35,6 @@ Az [Azure Cosmos DB Table API](table-introduction.md) jelenleg négy SDK-t bizto
 
 * [Node.js SDK](table-sdk-nodejs.md): Ez az Azure Storage SDK képes Azure Cosmos DB-fiókokhoz csatlakozni a Table API használatával.
 
-
 További információ a Table API használatának érhető el a [– gyakori kérdések: Fejlesztés a Table API-val](faq.md#table) cikk.
 
 ## <a name="developing-with-azure-table-storage"></a>Fejlesztés az Azure Table Storage használatával
@@ -49,10 +50,5 @@ Az Azure Table Storage az alábbi SDK-kat biztosítja a fejlesztéshez:
 - [Az Azure Storage Table ügyféloldali kódtára a Rubyhoz](https://github.com/azure/azure-storage-ruby/tree/master/table). Ez a projekt az Azure Storage Table Service elérést megkönnyítő Ruby-csomagot biztosít.
 - [Azure Storage Table ügyféloldali PHP-kódtára](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table). Ez a projekt az Azure Storage Table Service elérést megkönnyítő ügyféloldali PHP-kódtárat biztosít.
 
-
-   
-
-
-
-
-
+<!--Update_Description: new articles on table support -->
+<!--ms.date: 03/18/2019-->

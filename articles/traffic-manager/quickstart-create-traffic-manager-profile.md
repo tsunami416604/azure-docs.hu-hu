@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: kumud
 ms.openlocfilehash: 2cd8830f4b2b7c972ba8972e686be984bb96fd04
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760664"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60885810"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Gyors útmutató: Az Azure portal használatával Traffic Manager-profil létrehozása
 
@@ -52,7 +52,7 @@ Ebben a rövid útmutatóban két különböző Azure-régióban üzembe helyeze
     | Beállítás | Érték |
     | ------- | ----- |
     | App Service-csomag | Enter *myAppServicePlanEastUS*. |
-    | Hely | USA keleti régiója |
+    | Location egység | USA keleti régiója |
     | Tarifacsomag | S1 – Standard |
 
 6. Kattintson az **OK** gombra.
@@ -69,7 +69,7 @@ Ebben a rövid útmutatóban két különböző Azure-régióban üzembe helyeze
     | Operációs rendszer | Válassza ki **Windows** az operációs rendszer. |
     | Közzététel | Válassza ki **kód** a közzétenni kívánt formátumban. |
     | App Service-csomag/hely | Adja meg *myAppServicePlanWestEurope*. |
-    | Hely | Nyugat-Európa |
+    | Location egység | Nyugat-Európa |
     | Tarifacsomag | S1 – Standard |
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
@@ -85,7 +85,7 @@ Hozzon létre egy Traffic Manager-profilt, amely a felhasználói adatforgalmat 
     | Útválasztási metódus | Válassza ki **prioritású**.|
     | Előfizetés | A traffic manager-profilt a alkalmazni kívánt előfizetés kiválasztásához. |
     | Erőforráscsoport | Select *myResourceGroupTM1*.|
-    | Hely |Ez a beállítás az erőforráscsoport helyére vonatkozik. Ez nem befolyásolja a globálisan üzembe helyezendő Traffic Manager-profil.|
+    | Location egység |Ez a beállítás az erőforráscsoport helyére vonatkozik. Ez nem befolyásolja a globálisan üzembe helyezendő Traffic Manager-profil.|
 
 3. Kattintson a **Létrehozás** gombra.
 
@@ -100,7 +100,7 @@ Adja hozzá az *USA keleti régiójában* lévő webhelyt elsődleges végpontk�
 
     | Beállítás | Érték |
     | ------- | ------|
-    | Typo | Válassza ki **Azure-végpont**. |
+    | Típus | Válassza ki **Azure-végpont**. |
     | Name (Név) | Adja meg *myPrimaryEndpoint*. |
     | Célerőforrás típusa | Válassza ki **App Service-ben**. |
     | Célerőforrás | Válassza ki **alkalmazásszolgáltatás kiválasztása** > **USA keleti Régiójában**. |
@@ -113,7 +113,7 @@ Adja hozzá az *USA keleti régiójában* lévő webhelyt elsődleges végpontk�
 
     | Beállítás | Érték |
     | ------- | ------|
-    | Typo | Válassza ki **Azure-végpont**. |
+    | Típus | Válassza ki **Azure-végpont**. |
     | Name (Név) | Adja meg *myFailoverEndpoint*. |
     | Célerőforrás típusa | Válassza ki **App Service-ben**. |
     | Célerőforrás | Válassza ki **alkalmazásszolgáltatás kiválasztása** > **Nyugat-Európa**. |

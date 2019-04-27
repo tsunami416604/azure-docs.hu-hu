@@ -12,11 +12,11 @@ ms.date: 01/14/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: d40330f257694e81704bf6fffa1fd2df8ed86c06
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858042"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61376076"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Csevegési Chit Tudásbázis hozzáadása
 
@@ -24,7 +24,8 @@ A robot chit csevegési hozzáadása megkönnyíti több természetes nyelvi és
 
 Ez az adatkészlet chit csevegési körülbelül 100 forgatókönyvek három személyekre szabott – a Professional és az ismerősök a Comic hanggal tartalmaz. Válassza ki a személy, amely leginkább megfelel a robot hangalapú. Adja meg a felhasználó lekérdezése, QnA Maker megpróbálja egyezik, a legközelebbi ismert chit csevegési QnA. 
 
-A különböző személyiséghez néhány példát: <!-- added quotes so acrolinx doesn't score these sentences -->
+A különböző személyiséghez néhány példát:
+<!-- added quotes so acrolinx doesn't score these sentences -->
 |Felhasználói lekérdezés|A Professional|A typu Friend|A Comic|
 |--|--|--|--|
 |`You are awesome`|`I aim to serve.`|`That's so nice of you!`|`Flattery. I like it.`|

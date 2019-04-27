@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
 ms.openlocfilehash: e9d6badf76efd03c0520a728af7b3e47b25f200a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878952"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61339585"
 ---
 # <a name="field-of-study-entity"></a>Tanulmány entitás mezője
 
 <sub> * A következő attribútumok tanulmány entitás mezője jellemzőek. (Folyó évi = "6") </sub>
 
-Name (Név)    |Leírás                            |Typo       | Műveletek
+Name (Név)    |Leírás                            |Típus       | Műveletek
 ------- | ------------------------------------- | --------- | ----------------------------
 Azonosító      |Entitásazonosító                              |Int64      |Egyenlő
 FN      |Tanulmány normalizált név mező         |String     |Egyenlő

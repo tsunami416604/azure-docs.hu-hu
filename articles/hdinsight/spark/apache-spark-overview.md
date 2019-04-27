@@ -1,7 +1,6 @@
 ---
 title: Mi az Apache Spark – Azure HDInsight
 description: Ez a cikk bemutatja a HDInsight-alapú Spark rendszert, és azokat az eseteket, amelyekben a HDInsight-alapú Spark-fürt használható.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: overview
 ms.date: 01/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 264faaf0168d1604668e3358b1d99bc169d7e2f0
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: ab349018705f173f1b138b854e0773ef3f996f1c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985172"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097308"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Mi az az Azure HDInsight-alapú Apache Spark?
 
@@ -93,7 +92,7 @@ A HDInsight-alapú Spark-fürtök a következő főbb forgatókönyvek megvalós
 
 Használhatja a következő cikkekben talál további információt az Apache Spark on HDInsight:
 
-- [Gyors útmutató: A HDInsight egy Apache Spark-fürt létrehozása és interaktív lekérdezés futtatása a Jupyter használatával](./apache-spark-jupyter-spark-sql-use-portal.md)
+- [Rövid útmutató: A HDInsight egy Apache Spark-fürt létrehozása és interaktív lekérdezés futtatása a Jupyter használatával](./apache-spark-jupyter-spark-sql-use-portal.md)
 - [Oktatóanyag: A Jupyter használatával egy Apache Spark-feladat futtatása](./apache-spark-load-data-run-query.md)
 - [Oktatóanyag: Adatok elemzése BI-eszközökkel](./apache-spark-use-bi-tools.md)
 - [Oktatóanyag: Az Apache Spark használatával a gépi tanulás](./apache-spark-ipython-notebook-machine-learning.md)

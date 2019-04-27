@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
 ms.openlocfilehash: 77dda5f113a10f0bfb59457b1059563c58db0dde
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816937"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62116634"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>A környezet változásainak hibaelhárítása
 
@@ -101,7 +101,7 @@ A **Munkaterület konfigurálása** ablakban adja hozzá a követni kívánt Win
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
-|Engedélyezve     | Meghatározza, hogy a beállítás aktiválva van-e        |
+|Enabled     | Meghatározza, hogy a beállítás aktiválva van-e        |
 |Elem neve     | A nyomon követendő fájl felhasználóbarát neve        |
 |Csoport     | A fájlok logikai csoportosítására szolgáló csoportnév        |
 |Windows-beállításkulcs   | Például ellenőrizze a fájl elérési útja: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User rendszerhéj Folders\Common indítási"      |
@@ -114,7 +114,7 @@ A **Munkaterület konfigurálása** ablakban adja hozzá a követni kívánt Win
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
-|Engedélyezve     | Meghatározza, hogy a beállítás aktiválva van-e        |
+|Enabled     | Meghatározza, hogy a beállítás aktiválva van-e        |
 |Elem neve     | A nyomon követendő fájl felhasználóbarát neve        |
 |Csoport     | A fájlok logikai csoportosítására szolgáló csoportnév        |
 |Elérési út megadása     | A fájl elérési útja, például: „c:\temp\\\*.txt”<br>Környezeti változók is használhatók, például: „%winDir%\System32\\\*.*”         |
@@ -129,7 +129,7 @@ A **Munkaterület konfigurálása** ablakban adja hozzá a követni kívánt Win
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
-|Engedélyezve     | Meghatározza, hogy a beállítás aktiválva van-e        |
+|Enabled     | Meghatározza, hogy a beállítás aktiválva van-e        |
 |Elem neve     | A nyomon követendő fájl felhasználóbarát neve        |
 |Csoport     | A fájlok logikai csoportosítására szolgáló csoportnév        |
 |Elérési út megadása     | A fájl elérési útja, például: „/etc/*.conf”       |

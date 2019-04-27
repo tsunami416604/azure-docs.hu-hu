@@ -12,13 +12,13 @@ ms.reviewer: v-masebo
 manager: craigg
 ms.date: 02/12/2019
 ms.openlocfilehash: 4a53d733b30c06cb48fe2a57f7be232d914dc79c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448958"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61408875"
 ---
-# <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Gyors útmutató: PHP használata Azure SQL Database-adatbázis lekérdezéséhez
+# <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Gyors útmutató: PHP használata Azure SQL-adatbázis lekérdezéséhez
 
 Ez a cikk bemutatja, hogyan használható [PHP](https://php.net/manual/en/intro-whatis.php) csatlakozni egy Azure SQL Database-adatbázishoz. Ezután használhatja a T-SQL-utasítások használatával adatokat lekérdezni.
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan használható [PHP](https://php.net/manual/en/intro-
 
 Ez a minta, győződjön meg arról, hogy rendelkezik a következő előfeltételek vonatkoznak:
 
-- Azure SQL Database-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
+- Azure SQL-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
@@ -103,7 +103,7 @@ Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati informá
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az első SQL Database-adatbázis megtervezése](sql-database-design-first-database.md)
+- [Az első Azure SQL-adatbázis megtervezése](sql-database-design-first-database.md)
 
 - [SQL Serverre készült Microsoft PHP-illesztőprogramok](https://github.com/Microsoft/msphpsql/)
 

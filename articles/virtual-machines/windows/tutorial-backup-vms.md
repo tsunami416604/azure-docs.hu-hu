@@ -17,13 +17,13 @@ ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 7c6f5e199041af7d0ecd829ace2b56f5789f4955
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890449"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60785334"
 ---
-# <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Oktatóanyag: A Windows rendszerű virtuális gépek fájljainak biztonsági mentése és visszaállítása az Azure-ban
+# <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Oktatóanyag: Biztonsági mentése és visszaállítása az Azure-beli Windows virtuális gépek fájljait
 
 Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy bizonyos fájlokat. Ez a cikk azt ismerteti, hogyan állíthat vissza egy fájlt egy Windows Servert és IIS-t futtató virtuális gépre. Ha még nem rendelkezik virtuális géppel, a [windowsos rövid útmutatóval](quick-create-portal.md) létrehozhat egyet. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -79,15 +79,15 @@ Ebben a példában bemutatjuk, hogyan állíthatja helyre az IIS alapértelmezet
 6. A bal oldali menüben válassza a **Virtuális gépek** elemet, majd válassza ki a virtuális gépet a listából.
 8. A virtuális gép paneljének **Beállítások** szakaszában kattintson a **Backup** elemre. Megnyílik a **Biztonsági mentés** panel. 
 9. A panel tetején található menüben válassza a **Fájlhelyreállítás** elemet. Megnyílik a **Fájlhelyreállítás** panel.
-10. Az **1. lépés: Válassza ki a helyreállítási pontot** lépésben válasszon ki egy helyreállítási pontot a legördülő menüből.
-11. A **2. lépés: Töltse le a szkriptet a fájlok megkereséséhez és helyreállításához** lépésben kattintson a **Végrehajtható fájl letöltése** gombra. Mentse a fájlt a **Letöltések** mappába.
+10. A **1. lépés: Válassza ki a helyreállítási pont**, válasszon egy helyreállítási pontot a legördülő listából.
+11. A **2. lépés: Fájlok tallózására és helyreállítására szolgáló szkript letöltése**, kattintson a **végrehajtható fájl letöltése** gombra. Mentse a fájlt a **Letöltések** mappába.
 12. A helyi számítógépen nyissa meg a **Fájlkezelőt**, keresse meg a **Letöltések** mappát, és másolja a letöltött .exe fájlt. A fájlnév a virtuális gép nevét tartalmazó előtaggal lesz ellátva. 
 13. A virtuális gépen (RDP-kapcsolaton keresztül) illessze be az .exe fájlt a virtuális gép asztalára. 
 14. Lépjen a virtuális gép asztalára, és kattintson duplán az .exe fájlra. Ez elindít egy parancssort. Csatlakoztassa a helyreállítási pontot olyan fájlmegosztásként, amelyhez hozzá tud férni. A megosztás létrehozása után írja be a **q** betűt a parancssor bezárásához.
 15. A virtuális gépen nyissa meg a **Fájlkezelőt**, és navigáljon a fájlmegosztáshoz használt meghajtóbetűjelre.
 16. Navigáljon az \inetpub\wwwroot helyre, másolja ki az **iisstart.png** fájlt a fájlmegosztásból, és illessze be az \inetpub\wwwroot helyre. Például másolja az F:\inetpub\wwwroot\iisstart.png fájlt, és illessze be a c:\inetpub\wwwroot helyre a fájl helyreállításához.
 17. A helyi számítógépen nyissa meg azt a böngészőlapot, amelyen az alapértelmezett IIS-weboldalt megjelenítő virtuális gép IP-címéhez csatlakozott. Nyomja le a CTRL + F5 billentyűparancsot a böngészőlap frissítéséhez. Most láthatja, hogy a kép vissza lett állítva.
-18. A helyi számítógépen térjen vissza az Azure Portal böngészőlapjára, és a **3. lépés: Válassza le a lemezeket a helyreállítás után** lépésben kattintson a **Lemezek leválasztása** gombra. Ha elfelejti elvégezni ezt a lépést, a csatlakoztatási ponttal létesített kapcsolat 12 óra elteltével automatikusan lezárul. Amikor letelik a 12 óra, le kell töltenie egy új szkriptet az új csatlakoztatási pont létrehozásához.
+18. A helyi számítógépen térjen vissza az Azure Portalon, majd a böngészőlapon **3. lépés: A lemezek leválasztása a helyreállítás után** kattintson a **lemezek leválasztása** gombra. Ha elfelejti elvégezni ezt a lépést, a csatlakoztatási ponttal létesített kapcsolat 12 óra elteltével automatikusan lezárul. Amikor letelik a 12 óra, le kell töltenie egy új szkriptet az új csatlakoztatási pont létrehozásához.
 
 
 ## <a name="next-steps"></a>További lépések

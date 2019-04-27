@@ -9,11 +9,11 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
 ms.openlocfilehash: c5ecaf5ba893cce38327d38236d593e06b31abb9
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350938"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61226381"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mysql"></a>Azure CLI-példák az Azure Database for MySQL-hez 
 A következő táblázat hivatkozásokat tartalmaz az Azure Database for MySQL-hez elérhető Azure CLI-példaszkriptekre.

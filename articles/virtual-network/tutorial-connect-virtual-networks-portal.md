@@ -3,8 +3,8 @@ title: Virtuális hálózatok összekapcsolása virtuális hálózatok közötti
 description: Ebben az oktatóanyagban megismerheti, hogy kapcsolhat össze virtuális hálózatokat virtuális hálózatok közötti társviszony az Azure Portal használatával történő létesítésével.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 08/16/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: e66747cd350d10a5a66ec54b9aae9e9b485b0ba2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014500"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61487732"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Oktatóanyag: Virtuális hálózatok összekapcsolása virtuális hálózatok közötti társviszony az Azure portal használatával
 
@@ -54,7 +54,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
     |Címtér|10.0.0.0/16|
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a *myResourceGroup* nevet.|
-    |Hely| Válassza az **USA keleti régiója** lehetőséget.|
+    |Location egység| Válassza az **USA keleti régiója** lehetőséget.|
     |Alhálózat neve|Subnet1|
     |Alhálózat címtartománya|10.0.0.0/24|
 

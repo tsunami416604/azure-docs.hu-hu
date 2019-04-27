@@ -5,15 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: sample
-ms.date: 12/26/2018
-author: sivethe
-ms.author: sivethe
+origin.date: 12/26/2018
+ms.date: 03/04/2019
+author: rockboyfor
+ms.author: v-yeche
 ms.openlocfilehash: 28ee64f70cd281a2563a855fb1fca91f229ec7bd
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507518"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61330598"
 ---
 # <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>Létrehozhat egy alkalmazást a mongodb-hez a Node.js és az Azure Cosmos DB API használatával 
 > [!div class="op_single_selector"]
@@ -39,7 +40,7 @@ A példa használatához a következőket kell tennie:
     var MongoClient = require('mongodb').MongoClient;
     var assert = require('assert');
     var ObjectId = require('mongodb').ObjectID;
-    var url = 'mongodb://<username>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
+    var url = 'mongodb://<username>:<password>@<endpoint>.documents.azure.cn:10255/?ssl=true';
 
     var insertDocument = function(db, callback) {
     db.collection('families').insertOne( {
@@ -62,7 +63,7 @@ A példa használatához a következőket kell tennie:
         callback();
     });
     };
-    
+
     var findFamilies = function(db, callback) {
     var cursor =db.collection('families').find( );
     cursor.each(function(err, doc) {
@@ -74,7 +75,7 @@ A példa használatához a következőket kell tennie:
         }
     });
     };
-    
+
     var updateFamilies = function(db, callback) {
     db.collection('families').updateOne(
         { "lastName" : "Andersen" },
@@ -89,7 +90,7 @@ A példa használatához a következőket kell tennie:
         callback();
     });
     };
-    
+
     var removeFamilies = function(db, callback) {
     db.collection('families').deleteMany(
         { "lastName": "Andersen" },
@@ -99,7 +100,7 @@ A példa használatához a következőket kell tennie:
         }
     );
     };
-    
+
     MongoClient.connect(url, function(err, client) {
     assert.equal(null, err);
     var db = client.db('familiesdb');
@@ -114,7 +115,7 @@ A példa használatához a következőket kell tennie:
     });
     });
     ```
-    
+
     **Nem kötelező**: Ha használja a **MongoDB Node.js 2.2-es illesztőprogram**, cserélje le a következő kódrészletet:
 
     Eredeti:
@@ -134,7 +135,7 @@ A példa használatához a következőket kell tennie:
     });
     });
     ```
-    
+
     Amire le kell cserélnie:
 
     ```javascript
@@ -151,7 +152,7 @@ A példa használatához a következőket kell tennie:
     });
     });
     ```
-    
+
 2. Módosítsa a következő változókat az *app.js* fájlban a fiókbeállításainak megfelelően (Hogyan található meg a [kapcsolati karakterlánc](connect-mongodb-account.md)?):
 
     > [!IMPORTANT]
@@ -162,11 +163,11 @@ A példa használatához a következőket kell tennie:
     > A **MongoDB Node.js 2.2 illesztőprogram** nem követeli meg a Cosmos DB-jelszóban lévő speciális karakterek kódolását.
     >
     >
-   
+
     ```javascript
-    var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
+    var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.cn:10255/?ssl=true';
     ```
-     
+
 3. Nyissa meg kedvenc terminálját, futtassa az **npm install mongodb --save** parancsot, majd futtassa alkalmazását a **node app.js** paranccsal.
 
 ## <a name="next-steps"></a>További lépések
@@ -174,3 +175,5 @@ A példa használatához a következőket kell tennie:
 - Ismerje meg, hogyan [a Studio 3T használata](mongodb-mongochef.md) az Azure Cosmos DB API a mongodb-hez.
 - Ismerje meg, hogyan [Robo 3T használata](mongodb-robomongo.md) az Azure Cosmos DB API a mongodb-hez.
 - Ismerkedés a MongoDB [minták](mongodb-samples.md) az Azure Cosmos DB API a mongodb-hez.
+
+<!-- Update_Description: update meta properties, wording update -->

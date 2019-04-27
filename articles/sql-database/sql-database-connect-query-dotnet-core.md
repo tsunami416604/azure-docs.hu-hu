@@ -1,5 +1,5 @@
 ---
-title: A .NET Core használata Azure SQL Database-adatbázisok lekérdezéséhez | Microsoft Docs
+title: A .NET Core használata az Azure SQL Database lekérdezéséhez | Microsoft Docs
 description: Ez a témakör bemutatja, hogyan használható a .NET Core egy olyan program létrehozásához, amely kapcsolódik az Azure SQL Database, és lekérdezi a Transact-SQL-utasításokkal.
 services: sql-database
 ms.service: sql-database
@@ -13,13 +13,13 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
 ms.openlocfilehash: 460f79eb0679dc7d71bc929e4e790b68bd0f6774
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447391"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61410155"
 ---
-# <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Gyors útmutató: A .NET Core (C#) használata Azure SQL Database-adatbázisok lekérdezéséhez
+# <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Gyors útmutató: A .NET Core (C#) használata Azure SQL-adatbázisok lekérdezéséhez
 
 Ez a rövid útmutatóban használni kívánt [.NET Core](https://www.microsoft.com/net/) és C# code egy Azure SQL Database-adatbázishoz csatlakozhat. Majd futtassa a Transact-SQL-utasítás használatával adatokat lekérdezni.
 
@@ -27,7 +27,7 @@ Ez a rövid útmutatóban használni kívánt [.NET Core](https://www.microsoft.
 
 Ebben az oktatóanyagban szüksége lesz:
 
-- Azure SQL Database-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
+- Azure SQL-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|

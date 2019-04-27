@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
 ms.openlocfilehash: 7c444235ed7aa641fe218b4d1667e661ff05d77e
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443665"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61409744"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Gyors útmutató: A .NET használata és C# csatlakozhat, és a egy Azure SQL database lekérdezése a Visual studióban
 
@@ -27,7 +27,7 @@ Ez a rövid útmutató bemutatja, hogyan használhatja a [.NET-keretrendszer](ht
 
 A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
-- Azure SQL Database-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
+- Azure SQL-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
@@ -141,7 +141,7 @@ Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati informá
 
 - Ismerje meg, hogyan [kapcsolódás és lekérdezés a .NET Core használata Azure SQL database](sql-database-connect-query-dotnet-core.md) Windows/Linux/MacOS rendszeren.  
 - További információ [a .NET Core használatának első lépéseiről Windows/Linux/macOS rendszeren a parancssorral](/dotnet/core/tutorials/using-with-xplat-cli).
-- További információ [az első Azure SQL Database-adatbázisának SSMS-sel való megtervezéséről](sql-database-design-first-database.md) és [az első Azure SQL Database-adatbázisának .NET-tel való megtervezéséről](sql-database-design-first-database-csharp.md).
+- További információ [az első Azure SQL-adatbázisának SSMS-sel való megtervezéséről](sql-database-design-first-database.md) és [az első Azure SQL-adatbázisának .NET-tel való megtervezéséről](sql-database-design-first-database-csharp.md).
 - A .NET-ről a [.NET dokumentációjában](https://docs.microsoft.com/dotnet/) talál további információt.
 - Példa újrapróbálkozási: [Logikára kapcsolódni az SQL és ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
 

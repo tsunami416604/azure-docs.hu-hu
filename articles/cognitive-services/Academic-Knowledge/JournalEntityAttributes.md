@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: ffb159dc684b4b6663dcb966706d4745ab88a403
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872577"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61337805"
 ---
 # <a name="journal-entity"></a>Napló entitás
 
 <sub> * A következő attribútumok napló entitás jellemzőek. (Folyó évi = "2") </sub>
 
-Name (Név)    |Leírás                            |Typo       | Műveletek
+Name (Név)    |Leírás                            |Típus       | Műveletek
 ------- | ------------------------------------- | --------- | ----------------------------
 Azonosító      |Entitásazonosító                              |Int64      |Egyenlő
 DJN     |Napló normalizált neve                |String     |nincs

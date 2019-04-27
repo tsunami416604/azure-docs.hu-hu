@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.date: 03/26/2019
 ms.author: juliako
 ms.openlocfilehash: 22b7f2380b509daa4cb9931d6fc57c1297628e3d
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522855"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61233176"
 ---
-# <a name="quickstart-stream-video-files---nodejs"></a>Gyors útmutató: Stream-videó fájlok – Node.js
+# <a name="quickstart-stream-video-files---nodejs"></a>Gyors útmutató: Videófájlok streamelése – Node.js
 
 Ez a rövid útmutató bemutatja, hogy milyen könnyen kezdheti meg a videók kódolását és streamelését számos különféle böngészőben és eszközön az Azure Media Services használatával. A bemenő tartalmak HTTPS- URL- és SAS URL-címekkel vagy az Azure Blob Storage-ban található fájlok elérési útjával határozhatók meg.
 A témakörben szereplő minta olyan tartalmakat kódol, amelyeket HTTPS URL-cím segítségével tehet elérhetővé. Vegye figyelembe, hogy az AMS v3 jelenleg nem támogatja a HTTPS URL-címekkel történő darabolásos átviteli kódolást.

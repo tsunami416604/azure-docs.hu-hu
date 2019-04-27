@@ -1,7 +1,6 @@
 ---
 title: 'Oktatóanyag: Apache Spark strukturált Stream az Apache kafka platformmal – Azure HDInsight'
 description: Megtudhatja, hogyan használhatja az Apache Spark streamelést az adatok az Apache Kafkába való betöltéséhez, illetve az onnan való exportálásához. Ebben az oktatóanyagban egy Jupyter notebookkal streamelünk adatokat a Spark on HDInsightból.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: e470f9d6f33e8b534be22132881f4806bed85f5d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 388ce607cf75a12705c9a32fe19086dbf9f15e71
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078363"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62096147"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Spark strukturált Stream használata a Apache Kafka on HDInsight használata
 
@@ -144,7 +143,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Spark-fürtök 
     | --- | --- |
     | Előfizetés | Az Azure-előfizetése |
     | Erőforráscsoport | Az erőforrásokat tartalmazó erőforráscsoport. |
-    | Hely | Az az Azure-régió, amelyben az erőforrások létrejönnek. |
+    | Location egység | Az az Azure-régió, amelyben az erőforrások létrejönnek. |
     | Spark-fürt neve | A Spark-fürt neve. Az első hat karakternek a Kafka-fürt nevétől eltérőnek kell lennie. |
     | Kafka-fürt neve | A Kafka-fürt neve. Az első hat karakternek a Spark-fürt nevétől eltérőnek kell lennie. |
     | Fürt bejelentkezési felhasználóneve | A fürtök rendszergazdai felhasználóneve. |
