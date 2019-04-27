@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1b09c0e31b217d7d67f936aefe9045d190241389
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: MT
+ms.openlocfilehash: 75ab3baf8638a387defd0e367b4a61c3746794f3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633113"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60544472"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Oktatóanyag: Az Azure Time Series Insights – előzetes környezet beállítása
 
@@ -110,7 +110,7 @@ Ez a szakasz ismerteti, hogyan hozhat létre az Azure Time Series Insights – e
    | **Előfizetés** | Adja meg az előfizetést, ahol szeretné létrehozni az Azure Time Series Insights – előzetes környezet. Akkor célszerű használni az IoT-erőforrások a készülékszimulátort által létrehozott többi ugyanahhoz az előfizetéshez. |
    | **Erőforráscsoport** | Az erőforráscsoport az Azure-erőforrások tárolója. Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy új, az Azure Time Series Insights – előzetes környezet erőforrás. Fontos ajánlott eljárás az, mint a többi az IoT-erőforrások hozta létre a készülékszimulátort ugyanazt az erőforráscsoportot használja. |
    | **Hely** | Válassza ki az Azure Time Series Insights – előzetes környezet egy adatközpont-régiót. A hozzáadott sávszélességgel kapcsolatos költségek és a késés elkerülése érdekében a legjobb, ha az Azure Time Series Insights – előzetes környezet egyéb IoT-erőforrások ugyanabban a régióban. |
-   | **Réteg** |  Válassza ki **PAYG**, amely a használatalapú fizetés rövidítése. Ez a Termékváltozat az Azure Time Series Insights előzetes verziója a termékhez. |
+   | **Tier** |  Válassza ki **PAYG**, amely a használatalapú fizetés rövidítése. Ez a Termékváltozat az Azure Time Series Insights előzetes verziója a termékhez. |
    | **Tulajdonságazonosító** | Adja meg, amely egyedileg azonosítja a time series valami. Vegye figyelembe, hogy ez a mező nem módosítható, és később nem módosítható. A jelen oktatóanyag esetében használja **iothub-kapcsolat-eszközazonosító**. A Time Series azonosító kapcsolatos további információkért olvassa el [kiválasztása a Time Series ID](./time-series-insights-update-how-to-id.md). |
    | **Tárfiók neve** | Adjon meg egy globálisan egyedi nevet a létrehozandó új storage-fiókot. |
 
