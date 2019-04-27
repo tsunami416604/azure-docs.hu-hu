@@ -12,11 +12,11 @@ ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 12/03/2018
 ms.openlocfilehash: de5e853db6c6a0e98dea9251cc07b526288574e1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276832"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60805261"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Gyors útmutató: Ismerkedés az Azure Time Series Insights – előzetes bemutató környezetben
 

@@ -11,11 +11,11 @@ ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 9c3ed6dd79d6225b38751c910253cfa1f0720d1c
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731976"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61475597"
 ---
 # <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Gyors útmutató: Az Azure Portalon az Azure SQL Data Warehouse a számítás szüneteltetése és folytatása
 
@@ -27,7 +27,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Használat [létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) nevű adattárház létrehozásához **mySampleDataWarehouse**. 
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
 ms.openlocfilehash: f00a8a02ac7f9468516506b6e6a376209d24c270
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448884"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60946800"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>A Bing Custom Search példány meghívása a portálról
 
@@ -35,17 +35,17 @@ Néhány fontos paraméter alatt van:
 |---------|---------|
 |Lekérdezés     | Keresse meg a keresett kifejezés. Webes, kép, videó és automatikus kiegészítési végpontokhoz csak érhető el. |
 |Egyéni konfiguráció azonosítója | A kiválasztott egyéni keresési példány konfiguráció azonosítója. Ez a mező csak olvasható. |
-|Piac     | A piacon, amely be fogja származik. Csak a webes, kép, videó és tárolt felhasználói felületén végpontok érhető el.        |
+|Market     | A piacon, amely be fogja származik. Csak a webes, kép, videó és tárolt felhasználói felületén végpontok érhető el.        |
 |Előfizetői azonosító | Az előfizetési kulcsot, a teszteléséhez. A legördülő listából válasszon ki egy kulcsot, vagy manuálisan adjon meg egy másikat.          |
 
 Kattintson a **további paraméterek** tárja fel a következő paraméterekkel:  
 
 |Paraméter  |Leírás  |
 |---------|---------|
-|Biztonságos keresés     | Felnőtt tartalom vonatkozó szűrésére használt szűrő. Csak a webes, kép, videó és tárolt felhasználói felületén végpontok érhető el.        |
+|Safe Search     | Felnőtt tartalom vonatkozó szűrésére használt szűrő. Csak a webes, kép, videó és tárolt felhasználói felületén végpontok érhető el.        |
 |A felhasználói felület nyelve    | A felhasználói felület karakterláncok használt nyelv. Például, ha engedélyezi a képek és videók tárolt felhasználói felületén a **kép** és **videó** lapokon megadott nyelv használata.        |
 |Darabszám     | A válaszban visszaadandó találatok száma. Csak a webes, kép- és végpontok esetén érhető el.         |
-|Eltolás    | A kihagyandó eredmények visszaküldése előtt a keresési eredmények számát. Csak a webes, kép- és végpontok esetén érhető el.        |
+|Offset    | A kihagyandó eredmények visszaküldése előtt a keresési eredmények számát. Csak a webes, kép- és végpontok esetén érhető el.        |
     
 Az összes szükséges beállítások megadása után kattintson a **hívás** a JSON-válasz megtekintéséhez a jobb oldali ablaktáblán. Ha a felhasználói felület üzemeltetett végpontot, az alsó ablaktáblán tesztelheti a keresési funkciót.
 

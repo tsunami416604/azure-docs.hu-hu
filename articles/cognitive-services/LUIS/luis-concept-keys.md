@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: diberry
 ms.openlocfilehash: 1f5aab607c5046df0dee4db5caf36b0b7de53c4d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57998741"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60813936"
 ---
 # <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>Szerzői műveletek és a lekérdezés előrejelzési végpont kulcsok a LUIS
 A LUIS használ két kulcsot: [szerzői](#programmatic-key) és [végpont](#endpoint-key). Az Authoring Tool kulcs az Ön számára automatikusan létrejön a LUIS-fiók létrehozásakor. Amikor készen áll a LUIS-alkalmazás közzététele, meg kell [a végpont kulcs létrehozása](luis-how-to-azure-subscription.md), [rendelje hozzá](luis-how-to-azure-subscription.md) , a LUIS-alkalmazás és [használhatja a végpont lekérdezés](#use-endpoint-key-in-query). 

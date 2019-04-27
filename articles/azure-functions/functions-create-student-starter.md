@@ -13,11 +13,11 @@ ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
 ms.openlocfilehash: 5fd9f51185b8461269d498b254d9e9d9f4118270
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344606"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62107142"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Az Azure diákoknak szóló ajánlatához függvény létrehozása
 
@@ -56,7 +56,7 @@ Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának
     | **[Erőforráscsoport](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. |
    | **[Az App Service-csomag/hely](./functions-scale.md)** | Új | A csomag, hogy szabályozza a függvényalkalmazás üzembe régióját és az erőforrások effektus sűrűségét. Több Függvényalkalmazás ugyanabban a csomagban telepített összes oszt egyetlen ingyenes ugyanezen példányában. Ez a korlátozás a tanulók terv. A teljes üzemeltetési lehetőségek a következők [itt ismertetése.](./functions-scale.md)|
     | **Futtatókörnyezet verme** | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. Válassza a **.NET** lehetőséget a C# és az F# függvényekhez. |
-    |**[Application Insights](./functions-monitoring.md)**| Engedélyezve | Az Application Insights segítségével tárolhatja és elemezheti a függvényalkalmazás naplókat. Ez alapértelmezés szerint engedélyezve van, ha úgy dönt, hogy olyan helyre, amely támogatja az Application Insights. Az Application Insights esetén is engedélyezhető függvényeket egy közeli régiót manuálisan kiválasztásával az Application Insights üzembe helyezéséhez. Az Application Insights, anélkül csak lesz élő streamelési naplók megtekintéséhez.
+    |**[Application Insights](./functions-monitoring.md)**| Enabled | Az Application Insights segítségével tárolhatja és elemezheti a függvényalkalmazás naplókat. Ez alapértelmezés szerint engedélyezve van, ha úgy dönt, hogy olyan helyre, amely támogatja az Application Insights. Az Application Insights esetén is engedélyezhető függvényeket egy közeli régiót manuálisan kiválasztásával az Application Insights üzembe helyezéséhez. Az Application Insights, anélkül csak lesz élő streamelési naplók megtekintéséhez.
 
 3. Válassza ki **App Service-csomag/hely** válasszon másik helyet a fenti
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 108758751b7c8ef5906cb55495a2604f918b2714
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 7f7a203495e35d9e4143fe247a55adaa43bc5d2d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488914"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60817030"
 ---
 # <a name="import-soap-api"></a>SOAP API importálása
 
@@ -33,7 +33,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Végezze el a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
+Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -49,7 +49,7 @@ Végezze el a következő rövid útmutatót: [Azure API Management-példány l�
     ![Továbbítás](./media/import-soap-api/pass-through.png)
 5. Nyomja le a Tab billentyűt.
 
-    A rendszer kitölti a következő mezőket a SOAP API-ból származó adatokkal: Megjelenített név, Név, Leírás.
+    A következő mezőket a SOAP API információval háttérszolgáltatásból: Megjelenített név, a neve, leírása.
 6. Adja hozzá az API URL-cím utótagját. Az utótag lesz a név, amely azonosítja az API-t ebben az APIM-példányban. Egyedinek kell lennie az APIM-példányon belül.
 9. Az API egy termékkel való társítással tehető közzé. Ebben az esetben az „*Unlimited*” terméket használjuk.  Ha közzé szeretné tenni az API-t, hogy elérhető legyen a fejlesztők számára, adja hozzá egy termékhez. Ezt megteheti az API létrehozása során, vagy később is.
 

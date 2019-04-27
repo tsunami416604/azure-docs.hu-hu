@@ -12,11 +12,11 @@ ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
 ms.openlocfilehash: e1574b55f9f14daba1831ba7f73b7f9ebde4c7f6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006896"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61387940"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>A Java-webalkalmazás monitorozásának indítása
 
@@ -54,7 +54,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
    Megjelenik egy konfigurációs mező. Az adatbeviteli mezők kitöltéséhez használja az alábbi táblát.
 
-    | Beállítások        | Value           | Leírás  |
+    | Beállítások        | Érték           | Leírás  |
    | ------------- |:-------------|:-----|
    | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
    | **Alkalmazás típusa** | Java-webalkalmazás | A figyelt alkalmazás típusa |

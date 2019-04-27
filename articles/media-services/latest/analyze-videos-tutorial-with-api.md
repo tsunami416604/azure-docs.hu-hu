@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6508e90f76a374d628fdd5032c475e4dde8ffa78
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 48d08af1c33eaddd8d963d9e1ab0322c3972997e
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351779"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62103541"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3-using-net"></a>Oktatóanyag: Elemezhet videókat a Media Services v3 .NET használatával
 
@@ -166,6 +166,10 @@ az group delete --name amsResourceGroup
 ## <a name="multithreading"></a>Több szál használata
 
 Az Azure Media Services v3 SDK-k nem szálbiztosak. Többszálas alkalmazások használatakor minden szálhoz ajánlott létrehozni egy új AzureMediaServicesClient objektumot.
+
+## <a name="provide-feedback"></a>Visszajelzés küldése
+
+Tekintse meg a [Azure Media Services-Közösség](media-services-community.md) kérdések, küldje el visszajelzését, és tudnivalók a Media Services-frissítések különböző módon olvashatja.
 
 ## <a name="next-steps"></a>További lépések
 

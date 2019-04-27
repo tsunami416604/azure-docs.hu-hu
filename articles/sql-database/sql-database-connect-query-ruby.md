@@ -1,6 +1,6 @@
 ---
-title: Ruby használata Azure SQL Database-adatbázis lekérdezéséhez | Microsoft Docs
-description: Ez a témakör bemutatja, hogyan használhatja a Rubyt egy Azure SQL Database-adatbázishoz csatlakozó program létrehozásához, és hogyan hajthat végre lekérdezést Transact-SQL-utasításokkal.
+title: Ruby használata Azure SQL-adatbázis lekérdezéséhez | Microsoft Docs
+description: Ez a témakör bemutatja, hogyan használhatja a Rubyt egy Azure SQL-adatbázishoz csatlakozó program létrehozásához, és hogyan hajthat végre lekérdezést Transact-SQL-utasításokkal.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -13,13 +13,13 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
 ms.openlocfilehash: 05f3213383c526944a8a1cf51fb92d5186ac7434
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449031"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60861871"
 ---
-# <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>Gyors útmutató: Ruby használata Azure SQL Database-adatbázis lekérdezéséhez
+# <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>Gyors útmutató: Ruby használata Azure SQL-adatbázis lekérdezéséhez
 
 Ez a rövid útmutató azt ismerteti, hogyan használhatja [Ruby](https://www.ruby-lang.org) szeretne csatlakozni egy Azure SQL adatbázishoz és adatok lekérdezése Transact-SQL-utasításokkal.
 
@@ -27,7 +27,7 @@ Ez a rövid útmutató azt ismerteti, hogyan használhatja [Ruby](https://www.ru
 
 Ez a rövid útmutató elvégzéséhez szüksége van a következő előfeltételek vonatkoznak:
 
-- Azure SQL Database-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
+- Azure SQL-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|

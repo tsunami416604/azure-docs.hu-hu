@@ -14,11 +14,11 @@ ms.date: 10/03/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
 ms.openlocfilehash: b8d57a2bbaa53a0291dc9c05ab234c3238322a71
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605444"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61020281"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Az Azure Functions bemutatása  
 Az Azure Functions megoldással egyszerűen futtathatók kisebb kódrészletek, más néven „függvények”, a felhőben. Elég, ha a szóban forgó problémára vonatkozó kódot megírja, nem kell egy egész alkalmazással vagy futtató infrastruktúrával bajlódnia. A függvények használatával még hatékonyabbá válhat a fejlesztés, amelyhez tetszőleges nyelvet használhat, legyen az akár a C#, az F#, a Node.js, a Java vagy a PHP. Csak annyi időért kell fizetnie, amennyit a kódja fut, a szükség szerinti méretezést pedig rábízhatja az Azure szolgáltatásra. Az Azure Functions segítségével [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) alkalmazások fejleszthetők a Microsoft Azure-on.

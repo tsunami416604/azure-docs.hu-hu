@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
 ms.openlocfilehash: 9f4e001909fb739aa368e5201649e85cce9906d3
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521920"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60910617"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Gyors útmutató: Linux rendszerű számítógépek felvétele az Azure Security Centerben
 Az Azure-előfizetései felvétele után a Linux-ügynök kiépítésével engedélyezheti a Security Centert az Azure-on kívül, például a helyszínen vagy más felhőkben futó Linux-erőforrások számára.

@@ -10,11 +10,11 @@ ms.author: tarcher
 ms.topic: tutorial
 ms.date: 1/10/2019
 ms.openlocfilehash: 477b2ec1af4c52f51c3ab20ac2ddf7ef043dfcc7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994345"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60885474"
 ---
 # <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>Kubernetes-fürt létrehozása az Application Gateway bejövőforgalom-vezérlőjéhez Azure Kubernetes Service-ben és a Terraform használatával
 [Az Azure Kubernetes Service (AKS)](/azure/aks/) felügyeli az üzemeltetett Kubernetes környezetet. Az AKS segítségével gyorsan és egyszerűen üzembe és kezelhet tárolóalapú alkalmazásokat tárolóvezénylési szakértelem nélkül is. Ezenkívül a folyamatban lévő műveletek és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és méretezésével anélkül, hogy offline állapotba kellene helyezni az alkalmazásait.

@@ -3,8 +3,8 @@ title: Hálózati kommunikáció monitorozása – oktatóanyag – Azure Portal
 description: Megismerheti, hogyan monitorozhatja a két virtuális gép közötti hálózati kommunikációt az Azure Network Watcher kapcsolatfigyelő funkciójával.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
 ms.openlocfilehash: 1d8a9cf10bf9b4aab02dd5033ecdd4fdc1f9423e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429247"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60790430"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Oktatóanyag: Az Azure portal használatával, két virtuális gép közötti hálózati kommunikáció monitorozása
 
@@ -56,7 +56,7 @@ Hozzon létre két virtuális gépet.
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a **myResourceGroup** nevet.|
-    |Hely| Válassza az **USA keleti régiója** lehetőséget.|
+    |Location egység| Válassza az **USA keleti régiója** lehetőséget.|
 
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
 5. A **BEÁLLÍTÁSOK** területen válassza a **Bővítmények** elemet. Válassza a **Bővítmény hozzáadása**, majd a **Windowshoz készült Network Watcher-ügynök** lehetőséget, ahogyan az az alábbi képen is látható:

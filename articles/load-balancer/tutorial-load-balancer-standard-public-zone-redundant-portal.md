@@ -16,11 +16,11 @@ ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
 ms.openlocfilehash: 912307e6509ea66be887838e875076b7a895ca94
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57888152"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61100131"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terheléselosztása rendelkezésre állási zónák között a Standard Load Balancer az Azure portal használatával
 
@@ -58,7 +58,7 @@ A Standard Load Balancer csak a standard nyilvános IP-címeket támogatja. Ha a
     | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupLBAZ* a szövegmezőben.|
     | Name (Név)                   | *myLoadBalancer*                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
-    | Typo          | Válassza ki **nyilvános**.                                        |
+    | Típus          | Válassza ki **nyilvános**.                                        |
     | SKU           | Válassza ki **Standard**.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
     | Nyilvános IP-cím neve              | Típus *myPublicIP* a szövegmezőben.   |

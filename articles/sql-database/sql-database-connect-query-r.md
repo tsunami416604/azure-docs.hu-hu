@@ -14,11 +14,11 @@ ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 04/11/2019
 ms.openlocfilehash: 2b1206e3087b0573736174d4eed502653d76f7a5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001186"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61408962"
 ---
 # <a name="quickstart-use-r-to-query-an-azure-sql-database-preview"></a>Gyors útmutató: Az R használata Azure SQL Database-adatbázis (előzetes verzió) lekérdezéséhez
 
@@ -30,7 +30,7 @@ ms.locfileid: "60001186"
 
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-- Azure SQL Database-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
+- Azure SQL-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
@@ -83,7 +83,7 @@ Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati informá
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az első SQL Database-adatbázis megtervezése](sql-database-design-first-database.md)
+- [Az első Azure SQL-adatbázis megtervezése](sql-database-design-first-database.md)
 - [Az Azure SQL Database Machine Learning-szolgáltatások (az R)](sql-database-machine-learning-services-overview.md)
 - [Hozzon létre, és egyszerű R-szkriptek futtatása az Azure SQL Database, Machine Learning Services (előzetes verzió)](sql-database-quickstart-r-create-script.md)
 - [Az Azure SQL Database, Machine Learning-Szolgáltatásokoz (előzetes verzió) használatával speciális R-függvények írása](sql-database-machine-learning-services-functions.md)

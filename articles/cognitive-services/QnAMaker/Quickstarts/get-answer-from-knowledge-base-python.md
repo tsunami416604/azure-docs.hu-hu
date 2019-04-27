@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
 ms.openlocfilehash: f74d43d90a288a145887878305a95e1052ab8c05
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880015"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60920041"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Válaszok a kérdést a Tudásbázis Python használatával
 

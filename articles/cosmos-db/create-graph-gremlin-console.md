@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 06601fbad43b3daf00e06efbe95a092e76559e36
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fa7b9289f4fef6962c896dba72a35088134431d9
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849822"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62120363"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Gyors útmutató: Létrehozása, lekérdezése és bejárása a Gremlin-konzol használatával egy Azure Cosmos DB-gráfadatbázis
 
@@ -55,7 +55,7 @@ Emellett a [Gremlin-konzolnak](https://tinkerpop.apache.org/) telepítve kell le
 
     Beállítás|Ajánlott érték|Leírás
     ---|---|---
-    gazdagépek|[*fióknév*.gremlin.cosmosdb.azure.com] vagy [*fióknév*.graphs.azure.com] a 2017. december 20-a előtt létrehozott fiókok esetében|Tekintse meg a következő képernyőképet. Ez a Gremlin URI értéke szögletes zárójelben az Azure Portal Áttekintés oldalán a :443 / végződés nélkül.
+    gazdagépek|[*account-name*.gremlin.cosmos.azure.com]|Tekintse meg a következő képernyőképet. Ez a Gremlin URI értéke szögletes zárójelben az Azure Portal Áttekintés oldalán a :443 / végződés nélkül.
     port|443|Állítsa 443 értékre.
     felhasználónév|*Az Ön felhasználóneve*|A `/dbs/<db>/colls/<coll>` űrlap erőforrása, ahol a `<db>` az adatbázis neve és a `<coll>` a gyűjtemény neve.
     jelszó|*Az Ön elsődleges kulcsa*| Lásd az alábbiakban a második képernyőképet. Ez az Ön elsődleges kulcsa, amelyet az Azure Portal Kulcsok oldalának Elsődleges Kulcs mezőjéből kérdezhet le. Az érték másolásához használja a mező bal oldalán lévő Másolás gombot.
@@ -69,7 +69,7 @@ Emellett a [Gremlin-konzolnak](https://tinkerpop.apache.org/) telepítve kell le
 A remote-secure.yaml fájlnak így kell kinéznie:
 
 ```
-hosts: [your_database_server.gremlin.cosmosdb.azure.com]
+hosts: [your_database_server.gremlin.cosmos.azure.com] 
 port: 443
 username: /dbs/your_database_account/colls/your_collection
 password: your_primary_key

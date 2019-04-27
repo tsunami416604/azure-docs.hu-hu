@@ -10,11 +10,11 @@ ms.date: 03/19/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: 31911c124aeafecb8ee37d14e58d3a0bdc0d4955
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400748"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62112617"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge"></a>Oktatóanyag: Adatátalakítás az Azure Data Box Edge szolgáltatással
 
@@ -112,7 +112,7 @@ Ebben a szakaszban ad hozzá egy egyéni modult, amelyet az IoT Edge-eszköz [De
     |Lemezkép URI-ja     | A kép URI-t a megfelelő tárolórendszerképet a modul.        |
     |Szükséges hitelesítő adatok     | Ha be van jelölve, felhasználónév és jelszó segítségével modulok egy megfelelő URL-cím lekéréséhez.        |
     |A bemeneti megosztás     | Válasszon egy bemeneti megosztást. Az Edge helyi megosztás ebben az esetben a bemeneti megosztás. Az itt használt modul helyezi át fájlokat az Edge helyi megosztás egy Edge-megosztáshoz, azok a rendszer feltölti a felhőbe.        |
-    |Kimeneti megosztás     | Válasszon egy kimeneti megosztást. Az Edge megosztás ebben az esetben a kimenő megosztás.        |
+    |Kimenő megosztás     | Válasszon egy kimeneti megosztást. Az Edge megosztás ebben az esetben a kimenő megosztás.        |
     |Trigger típusa     | Válasszon a **fájl** vagy **ütemezés**. Egy fájl eseményindítót, amikor egy fájl esemény bekövetkeztekor, mint például egy fájl a bemeneti megosztás íródik. Egy ütemezett eseményindítót fel az Ön által megadott ütemezés alapján.         |
     |Trigger neve     | Az eseményindító egyedi név.         |
     |Környezeti változók| Opcionális információk segítségével határozza meg, hogy a környezet, amelyben a modul futni fog.   |

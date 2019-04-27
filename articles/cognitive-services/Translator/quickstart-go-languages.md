@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
 ms.openlocfilehash: bf33860b111900fed850158d6b80d5a9d4404893
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181605"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60879804"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-go"></a>Gyors útmutató: Go használata támogatott nyelvek listáját a Translator Text API használatával
 

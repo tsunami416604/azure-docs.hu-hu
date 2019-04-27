@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
 ms.openlocfilehash: 1bbe89484d72a21c4432d452d4ddae83ea2d2553
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400031"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60870472"
 ---
-# <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Oktatóanyag: Szolgáltatásnevek és szerepkör-hozzárendelések létrehozása a PowerShell használatával
+# <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Oktatóanyag: Szolgáltatásnevek létrehozása és szerepkörök hozzárendelése a PowerShell-lel
 
 Szolgáltatásnevek használata az identitások szerepköröket és engedélyeket rendelhet a meghatározott célra az Azure Active Directoryban is létrehozhat. Windows virtuális asztal előzetes verzióban elérhető szolgáltatás hozhat létre, az egyszerű szolgáltatásnév:
 

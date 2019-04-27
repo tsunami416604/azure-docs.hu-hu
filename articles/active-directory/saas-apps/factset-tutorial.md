@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad0c1ac2ce39fd919cb82ce2bdb0841edf9c777
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e9fa951e50a38b8bc63cc4e26ef54c013531bd7d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60278942"
+ms.locfileid: "62098487"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-factset"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező FactSet
 
@@ -105,12 +105,12 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés FactSet, hajtsa vég
 
     ![FactSet tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://login.factset.com/services/auth-test?idpid=<GUID>`
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<intendedDestinationURL>.factset.com?idpid=<GUID>`
 
     b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://login.factset.com`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [FactSet ügyfél-támogatási csapatának](mailto:support@factset.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Lépjen kapcsolatba a FactSet fiókfelelőséhez beolvasni ezeket az értékeket. Ha nem tudja, aki a FactSet helyi képviselőjéhez, talál segítséget a a [FactSet támogatási számok oldal](https://www.factset.com/support-numbers). Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
@@ -128,7 +128,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés FactSet, hajtsa vég
 
 ### <a name="configure-factset-single-sign-on"></a>FactSet egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **FactSet** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [FactSet támogatási csapatának](mailto:support@factset.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **FactSet** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** , és megfelelő másolt URL-címek az Azure Portalról FactSet támogatási egyének számára az ügyfél . Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -183,7 +183,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 ### <a name="create-factset-test-user"></a>FactSet tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű FactSet hoz létre. Együttműködve [FactSet támogatási csapatának](mailto:support@factset.com) a felhasználók hozzáadása az FactSet platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű FactSet hoz létre. A FactSet fiók ügyfélszolgálati képviselőket a felhasználók hozzáadása az FactSet platformon működik. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

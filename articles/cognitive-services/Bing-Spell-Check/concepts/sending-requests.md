@@ -1,5 +1,5 @@
 ---
-title: Kérések küldését a Bing Spell Check API
+title: Kérelmek küldése a Bing Spell Check API-nak
 titlesuffix: Azure Cognitive Services
 description: További tudnivalók a Bing helyesírás-ellenőrzési mód, beállítások és az API-hoz kapcsolódó egyéb információkat.
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 64025165a5a88370a02ba3b4554b1e12d36c8810
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889956"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60895970"
 ---
-# <a name="sending-requests-to-the-bing-spell-check-api"></a>Kérések küldését a Bing Spell Check API
+# <a name="sending-requests-to-the-bing-spell-check-api"></a>Kérelmek küldése a Bing Spell Check API-nak
 
 Egy szöveges karakterlánc helyesírási és nyelvtani hibáinak megkereséséhez GET kérést kell küldenie a következő végpontra:  
   

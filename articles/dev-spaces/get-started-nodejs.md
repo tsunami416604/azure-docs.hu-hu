@@ -10,11 +10,11 @@ ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
 ms.openlocfilehash: dc84844738e501a30f73104a76ff80bf00adff24
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59425821"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60912701"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Bevezetés az Azure fejlesztési szóközöket a node.js használatával
 

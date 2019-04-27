@@ -16,11 +16,11 @@ ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 59b390776a5e23c08d8793125747742cee4e473e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487023"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60854039"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával
 
@@ -124,7 +124,7 @@ A **Configure App Service Plan** (App Service-csomag konfigurálása) párbeszé
 
 ### <a name="create-a-sql-server-instance"></a>SQL Server-példány létrehozása
 
-Adatbázis létrehozása előtt szüksége van egy [Azure SQL Database logikai kiszolgálóra](../sql-database/sql-database-features.md). A logikai kiszolgálók adatbázisok egy csoportját tartalmazzák, amelyeket a rendszer egy csoportként kezel.
+Adatbázis létrehozása előtt szüksége van egy [logikai Azure SQL-adatbáziskiszolgálóra](../sql-database/sql-database-features.md). A logikai kiszolgálók adatbázisok egy csoportját tartalmazzák, amelyeket a rendszer egy csoportként kezel.
 
 Kattintson az **SQL-adatbázis létrehozása** elemre.
 

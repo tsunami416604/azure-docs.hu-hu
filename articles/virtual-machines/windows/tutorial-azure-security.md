@@ -17,11 +17,11 @@ ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 4c54383df74d9cfd7941dc52d26856bc8da51457
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594712"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60785825"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Oktatóanyag: Az Azure Security Center használata a Windows virtuális gépek figyelése céljából
 

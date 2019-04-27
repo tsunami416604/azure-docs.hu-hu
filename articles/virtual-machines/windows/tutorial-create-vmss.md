@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 90c4db4ac481f3853ca4e8256ce8fdb4c4ae9bd4
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6766dc2b4d99d51e2832a054969697e4e330dd86
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983254"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60785155"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>Oktatóanyag: Hozzon létre egy virtuálisgép-méretezési csoportot, és a Windows Azure PowerShell-lel a magas rendelkezésre állású alkalmazás üzembe helyezése
 Egy virtuálisgép-méretezési csoportot üzembe helyezheti és kezelheti az azonos, automatikus méretezést végző virtuális gépekről teszi lehetővé. Manuálisan a méretezési csoportban található virtuális gépek számát skálázhatja. Megadhatja a szabályok automatikus például Processzorhasználat, memóriaigény vagy hálózati forgalom erőforrás-használat alapján. Ebben az oktatóanyagban az Azure-beli virtuális gép méretezési csoportok üzembe, és ismerje meg, hogyan lehet:

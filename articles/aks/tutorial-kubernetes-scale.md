@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 2a962b5bdb6eeb139275ea6a7f585b36ff84b61f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 74cd73cd7f9d5be9da552fb22ef2a2750ddc8321
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784125"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61029856"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások skálázása az Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ Ha követte az oktatóanyagokat, rendelkezik egy működő Kubernetes-fürttel a
 
 További oktatóanyagok az Azure Vote alkalmazást egy új verzióra frissül.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Az előző oktatóanyagokban egy alkalmazást csomagoltunk egy tárolórendszerképbe. A rendszerképet feltöltöttük az Azure Container Registrybe, és létrehozott egy AKS-fürtöt. Az AKS-fürtöt, majd helyeztünk üzembe az alkalmazást. Ha még nem végezte el ezeket a lépéseket, és szeretné követni, kezdje [1. oktatóanyag – tárolórendszerképek létrehozása][aks-tutorial-prepare-app].
 

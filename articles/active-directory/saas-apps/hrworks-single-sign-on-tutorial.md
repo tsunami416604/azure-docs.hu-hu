@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 06a10cab81b1253658f505b3cd3f2c520ef9cea8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f69ef2c7c260d8df918fb2495bded6910d6b17b1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60275518"
+ms.locfileid: "62123771"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hrworks-single-sign-on"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező HRworks egyszeri bejelentkezés
 
@@ -108,7 +108,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása az HRworks egyszeri bejelent
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://login.hrworks.de/?companyId=<companyId>&directssologin=true`
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [HRworks egyszeri bejelentkezéses ügyfél-támogatási csapatának](mailto:nadja.sommerfeld@hrworks.de) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [HRworks egyszeri bejelentkezéses ügyfél-támogatási csapatának](mailto:support@hrworks.de) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 

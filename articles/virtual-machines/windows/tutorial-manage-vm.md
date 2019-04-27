@@ -17,11 +17,11 @@ ms.date: 11/28/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 94858a147dc0383376a54bc94685d855d37e12d5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57991200"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60784894"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Oktatóanyag: Létrehozása és kezelése Windows virtuális gépek az Azure PowerShell használatával
 
@@ -181,7 +181,7 @@ A virtuális gép mérete határozza meg a számítási erőforrások, például
 
 Az alábbi táblázat a méreteket használati esetek alapján kategorizálja.  
 
-| Typo                     | Gyakori méretek           |    Leírás       |
+| Típus                     | Gyakori méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Általános célú](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
 | [Számításra optimalizált](sizes-compute.md)   | Fsv2, Fs, F             | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |

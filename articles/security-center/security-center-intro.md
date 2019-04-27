@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
 ms.openlocfilehash: 13526268480c69798ee52078f7448605fc1afa9a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242037"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60910209"
 ---
 # <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
 
@@ -106,7 +106,7 @@ A Security Center veszélyforrások elleni védelem tartalmazza a környezetben 
 
 ![A Security Center a támadás javaslat](media/security-center-intro/sc-attack-recommendation.png)
 
-### <a name="advanced-threat-protection"></a>Komplex veszélyforrások elleni védelem
+### <a name="advanced-threat-protection"></a>Speciális fenyegetésvédelem
 
 A Security Centerrel natív integráció a Windows Defender komplex veszélyforrások elleni védelem beépített kap. Ez azt jelenti, hogy bármilyen konfigurálás nélkül a Windows virtuális gépek és kiszolgálók teljesen integrálva van a Security Center javaslatokat és értékeléseket. Speciális fenyegetésészlelés is a Linux rendszerű virtuális gépek és kiszolgálók beépített érhető el.
 

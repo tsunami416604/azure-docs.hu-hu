@@ -9,11 +9,11 @@ ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 9212e065ff7f6b0e3df1b90296f54159762bdaf9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002003"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61030541"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Oktatóanyag: Az alkalmazás előkészítése az Azure Kubernetes Service (AKS)
 
@@ -30,7 +30,7 @@ Miután végzett ezzel, az alábbi alkalmazás a helyi fejlesztői környezetben
 
 A további oktatóanyagokban a tárolórendszerképet feltöltött egy Azure Container registrybe, és majd egy AKS-fürtöt helyezi üzembe.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Az oktatóanyag feltételezi, hogy rendelkezik a Docker fő fogalmaira, például a tárolókra, tárolórendszerképekre és a `docker`-parancsokra vonatkozó alapvető ismeretekkel. A tárolókkal kapcsolatos alapfogalmakért tekintse meg [a Docker használatának első lépéseivel][docker-get-started] foglalkozó témakört.
 

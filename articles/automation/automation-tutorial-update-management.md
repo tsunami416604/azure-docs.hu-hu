@@ -10,11 +10,11 @@ ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
 ms.openlocfilehash: fbca620fca1aeb53acc9bd70561e783b49ff1a60
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822350"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61306068"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Windows-frissítések kezelése az Azure Automationnel
 
@@ -143,7 +143,7 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 
   A választható besorolási típusok a következők:
 
-   |Operációs rendszer  |Typo  |
+   |Operációs rendszer  |Típus  |
    |---------|---------|
    |Windows     | Kritikus frissítések</br>Biztonsági frissítések</br>Kumulatív frissítések</br>Funkciócsomagok</br>Szervizcsomagok</br>Definíciófrissítések</br>Eszközök</br>Frissítések        |
    |Linux     | Kritikus vagy biztonsági frissítések</br>Egyéb frissítések       |

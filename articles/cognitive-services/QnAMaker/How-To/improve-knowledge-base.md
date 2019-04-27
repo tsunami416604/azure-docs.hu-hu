@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
 ms.openlocfilehash: f59f281b1bf7fa2851ab7759a0167b5d39ef44c1
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678989"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61372683"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Aktív tanulás használatával javíthatja a Tudásbázis
 
@@ -169,21 +169,21 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP-kérelem tulajdonság|Name (Név)|Typo|Cél|
+|HTTP-kérelem tulajdonság|Name (Név)|Típus|Cél|
 |--|--|--|--|
-|URL-cím útvonal-paraméter|Tudásbázis-azonosító|sztring|A Tudásbázis GUID azonosítója.|
-|Host subdomain|QnAMaker erőforrás neve|sztring|A QnA Maker, az Azure-előfizetésében az állomásnevet. Ez érhető el a beállítások lapon a Tudásbázis közzététele után. |
-|Fejléc|Content-Type|sztring|Az API-nak küldött törzs médiatípusa. Alapértelmezett érték a következő: `application/json`|
-|Fejléc|Engedélyezés|sztring|A végpont kulcs (EndpointKey: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|URL-cím útvonal-paraméter|Tudásbázis-azonosító|string|A Tudásbázis GUID azonosítója.|
+|Host subdomain|QnAMaker erőforrás neve|string|A QnA Maker, az Azure-előfizetésében az állomásnevet. Ez érhető el a beállítások lapon a Tudásbázis közzététele után. |
+|Fejléc|Content-Type|string|Az API-nak küldött törzs médiatípusa. Alapértelmezett érték a következő: `application/json`|
+|Fejléc|Engedélyezés|string|A végpont kulcs (EndpointKey: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Bejegyzés törzse|JSON-objektum|JSON|A képzési visszajelzés|
 
 JSON-törzse többféle beállításokkal rendelkezik:
 
-|JSON-törzse tulajdonság|Typo|Cél|
+|JSON-törzse tulajdonság|Típus|Cél|
 |--|--|--|--|
 |`feedbackRecords`|tömb|Visszajelzés listája.|
-|`userId`|sztring|A felhasználói azonosító, annak a személynek a javasolt kérdések elfogadásával. Felhasználói azonosító formátuma szerint strukturálhatja. Például egy e-mail-cím lehet a felhasználói azonosító érvénytelen az architektúrához. Választható.|
-|`userQuestion`|sztring|A kérdés pontos szövegét. Kötelező.|
+|`userId`|string|A felhasználói azonosító, annak a személynek a javasolt kérdések elfogadásával. Felhasználói azonosító formátuma szerint strukturálhatja. Például egy e-mail-cím lehet a felhasználói azonosító érvénytelen az architektúrához. Választható.|
+|`userQuestion`|string|A kérdés pontos szövegét. Kötelező.|
 |`qnaID`|szám|Kérdés, talált azonosító a [GenerateAnswer válasz](metadata-generateanswer-usage.md#generateanswer-response-properties). |
 
 Egy példa JSON-törzse hasonlóan néz ki:

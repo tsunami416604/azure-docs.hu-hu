@@ -9,11 +9,11 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 9daf1a7e58af23cb78705691217bf9709359c4d5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496811"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60889862"
 ---
 # <a name="what-is-azure-iot-open-platform-communications-opc-device-management"></a>Mi az Azure IoT nyílt Platform kommunikáció (OPC) Eszközfelügyelet?
 
@@ -28,7 +28,7 @@ Az OPC-Twin lehetővé teszi a feldolgozó kezelők a gyári hálózati megvizsg
 ### <a name="simple-control"></a>Egyszerű vezérlési
 Az OPC-Twin lehetővé teszi a feldolgozó kezelők reagálhat rájuk, és automatikusan vagy manuálisan konfigurálja újra a felhőből emelet gyári gépeik menet közben. Az OPC-Twin el az OPC UA-kiszolgálóval a szolgáltatásokat, keresse meg a címtér olvasási/írási változók és a metódusok végrehajtása, a REST API-kat biztosít. Például egy gép hőmérséklet KPI-t használ a gyártósor vezérlésére. Hőmérséklet-érzékelő a módosítás közzéteszi az adatokat az OPC-közzétevő használatával. A gyári operátor megkapja a riasztást, hogy a hőmérséklet elérte a küszöbértéket. A gyártósor cools automatikusan az OPC-Twin keresztül. A gyári operátor értesítést kap a ritka elérésű le.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 Egyszerű hitelesítés és a egy egyszerű fejlesztői felületet biztosít az OPC-Twin is használhat.
 
 ### <a name="simple-authentication"></a>Egyszerű hitelesítés 

@@ -9,11 +9,11 @@ ms.date: 12/19/2018
 ms.author: zarhoads
 ms.custom: mvc
 ms.openlocfilehash: 5415778713261fbb3e57695573c8486cb32da781
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756119"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61032268"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Az Azure Kubernetes Service (AKS) alkalmazás frissítése
 
@@ -27,7 +27,7 @@ Ebben az oktatóanyagban, amely egy hétrészes sorozat hatodik része, az Azure
 > * A tárolórendszerkép leküldése az Azure Container Registrybe
 > * A frissített tárolórendszerkép üzembe helyezése
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Az előző oktatóanyagokban egy alkalmazást csomagoltunk egy tárolórendszerképbe. A rendszerképet feltöltöttük az Azure Container Registrybe, és létrehozott egy AKS-fürtöt. Az AKS-fürtöt, majd helyeztünk üzembe az alkalmazást.
 

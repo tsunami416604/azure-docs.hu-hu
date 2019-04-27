@@ -1,7 +1,6 @@
 ---
 title: 'Gyors útmutató: Hozzon létre egy Spark-fürt a HDInsight az Azure portal használatával'
 description: Ez a rövid útmutató bemutatja, hogyan használható az Azure Portal egy Azure Spark-fürt létrehozásához az Azure HDInsightban, illetve egy Spark SQL futtatásához.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.custom: mvc
-ms.openlocfilehash: 6f96195197daf026cddee10785e0cadae8096031
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 971e6ab86faec17466f05b41cd1512776e882658
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111769"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124210"
 ---
 # <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-the-azure-portal"></a>Gyors útmutató: Apache Spark-fürt létrehozása HDInsight az Azure portal használatával
 Megtudhatja, hogyan hozhat létre Apache Spark-fürtöt az Azure HDInsightban, és hogyan futtathat Spark SQL-lekérdezéseket a Hive-táblákon. Az Apache Spark a memóriában végzett feldolgozás segítségével teszi lehetővé a gyors adatelemzést és fürtszámítást. A Spark on HDInsight további információkért lásd: [áttekintése: Az Apache Spark on Azure HDInsight](apache-spark-overview.md).

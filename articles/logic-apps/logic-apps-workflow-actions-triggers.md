@@ -10,11 +10,11 @@ ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
 ms.openlocfilehash: bd588eeec8b560411e3fb4b6f84ec8a4a45f08d2
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617919"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60844177"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Az eseményindító és művelet esetében az Azure Logic Apps munkafolyamat-definíciós nyelv leírása
 
@@ -50,7 +50,7 @@ Eseményindítók rendelkezik a legfelső elemeket, bár egyes nem kötelező:
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*trigger-name*> | String | Az eseményindító neve | 
 | <*trigger-type*> | String | A például a "Http" vagy az "ApiConnection" trigger típusa | 
@@ -61,7 +61,7 @@ Eseményindítók rendelkezik a legfelső elemeket, bár egyes nem kötelező:
 
 *Nem kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*array-with-conditions*> | Tömb | Egy tömb, amely tartalmaz egy vagy több [feltételek](#trigger-conditions) , határozza meg, hogy a munkafolyamat futtatásához. Csak a triggerek esetében érhető el. | 
 | <*runtime-config-options*> | JSON-objektum | Módosíthatja a trigger működését beállításával `runtimeConfiguration` tulajdonságait. További információkért lásd: [modul konfigurációs beállítások](#runtime-config-options). | 
@@ -130,7 +130,7 @@ A trigger ellenőriz vagy *polls* végpont használatával [a Microsoft által f
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*APIConnection_trigger_name*> | String | Az eseményindító neve | 
 | <*kapcsolat neve*> | String | A felügyelt API-t a munkafolyamat által használt kapcsolat neve | 
@@ -142,7 +142,7 @@ A trigger ellenőriz vagy *polls* végpont használatával [a Microsoft által f
 
 *Nem kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*újrapróbálkozási-viselkedés*> | JSON-objektum | Az átmeneti hibákra, amelyek rendelkeznek a 408, a 429-es, és az 5XX állapotkód és a minden csatlakozási kivétel újrapróbálkozási viselkedés testreszabása. További információkért lásd: [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*lekérdezés-paraméterek*> | JSON-objektum | Hívja meg a lekérdezési paramétereket tartalmazza az API-val. Például a `"queries": { "api-version": "2018-01-01" }` objektumot ad `?api-version=2018-01-01` a hívást. | 
@@ -154,7 +154,7 @@ A trigger ellenőriz vagy *polls* végpont használatával [a Microsoft által f
 
 *Kimenetek*
  
-| Elem | Typo | Leírás |
+| Elem | Típus | Leírás |
 |---------|------|-------------|
 | A fejlécek | JSON-objektum | A válaszból a fejlécek |
 | törzs | JSON-objektum | A szervezetnek a válaszból |
@@ -224,7 +224,7 @@ Ez az eseményindító előfizetési kérelmet küld a végpont használatával 
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*kapcsolat neve*> | String | A felügyelt API-t a munkafolyamat által használt kapcsolat neve | 
 | <*body-content*> | JSON-objektum | Bármely hasznos a felügyelt API-hoz elküldendő üzenet | 
@@ -232,7 +232,7 @@ Ez az eseményindító előfizetési kérelmet küld a végpont használatával 
 
 *Nem kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*újrapróbálkozási-viselkedés*> | JSON-objektum | Az átmeneti hibákra, amelyek rendelkeznek a 408, a 429-es, és az 5XX állapotkód és a minden csatlakozási kivétel újrapróbálkozási viselkedés testreszabása. További információkért lásd: [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
 | <*lekérdezés-paraméterek*> | JSON-objektum | A lekérdezési paramétereket tartalmazza az API-hívással <p>Például a `"queries": { "api-version": "2018-01-01" }` objektumot ad `?api-version=2018-01-01` a hívást. | 
@@ -303,7 +303,7 @@ A trigger ellenőrzi vagy lekérdezi a megadott végponton, a megadott ismétlő
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*eljárástípus*> | String | A lekérdezés a megadott végpont használata HTTP-metódus: "GET", "PUT", "POST", "JAVÍTÁS", "DELETE" | 
 | <*végpont-URL-címe*> | String | A HTTP vagy HTTPS URL-címet a végpontjához, lekérdezéséhez <p>Karakterlánc maximális mérete: 2 KB | 
@@ -313,7 +313,7 @@ A trigger ellenőrzi vagy lekérdezi a megadott végponton, a megadott ismétlő
 
 *Nem kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*header-content*> | JSON-objektum | A kérés küldése a fejlécek <p>Ha például a nyelvi és a egy kérelem típusa: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*body-content*> | String | A kérelem-adattartalom elküldeni az üzenet tartalma | 
@@ -327,7 +327,7 @@ A trigger ellenőrzi vagy lekérdezi a megadott végponton, a megadott ismétlő
 
 *Kimenetek*
 
-| Elem | Typo | Leírás |
+| Elem | Típus | Leírás |
 |---------|------|-------------| 
 | A fejlécek | JSON-objektum | A válaszból a fejlécek | 
 | törzs | JSON-objektum | A szervezetnek a válaszból | 
@@ -338,7 +338,7 @@ A trigger ellenőrzi vagy lekérdezi a megadott végponton, a megadott ismétlő
 
 Jól működnek a logikai alkalmazást, a végpontot kell egy adott eseményindító minta vagy a szerződés felel meg, és ismeri fel ezeket a tulajdonságokat:  
   
-| Válasz | Szükséges | Leírás | 
+| Válasz | Kötelező | Leírás | 
 |----------|----------|-------------| 
 | Állapotkód | Igen | A "200 OK" állapotkód: elindít egy Futtatás. Minden más állapotkód nem indul el egy Futtatás. | 
 | Retry-after fejléccel | Nem | Mindaddig, amíg a logikai alkalmazás lekérdezi a végpont újra másodpercben | 
@@ -400,7 +400,7 @@ Egyes értékek, mint például <*-eljárástípus*>, is a `"subscribe"` és `"u
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*eljárástípus*> | String | Az előfizetési kérést használandó HTTP-metódus: "GET", "PUT", "Közzététel", "Javítás" vagy "DELETE" | 
 | <*végpontot feliratkozási URL*> | String | A végpont URL-címe, hova küldhetők az előfizetési kérés | 
@@ -408,7 +408,7 @@ Egyes értékek, mint például <*-eljárástípus*>, is a `"subscribe"` és `"u
 
 *Nem kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*eljárástípus*> | String | A megszakítási kérelemre váró használandó HTTP-metódus: "GET", "PUT", "Közzététel", "Javítás" vagy "DELETE" | 
 | <*végpont-előfizetés lemondása – URL-címe*> | String | A végpont URL-címe, hova küldhetők a megszakítási kérelemre váró | 
@@ -422,7 +422,7 @@ Egyes értékek, mint például <*-eljárástípus*>, is a `"subscribe"` és `"u
 
 *Kimenetek* 
 
-| Elem | Typo | Leírás |
+| Elem | Típus | Leírás |
 |---------|------|-------------| 
 | A fejlécek | JSON-objektum | A válaszból a fejlécek | 
 | törzs | JSON-objektum | A szervezetnek a válaszból | 
@@ -494,7 +494,7 @@ A megadott ismétlődési ütemezés alapján fut. erre az eseményindítóra, �
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*time-unit*> | String | Az időegység, amely leírja, hogy milyen gyakran az eseményindító aktiválódik: "A második", "Minute", "Hour", "Day", "Week", "Month" | 
 | <*szám, idő egységek*> | Egész szám | A gyakoriságát, és várja meg, amíg az eseményindítót újra mértékegységét száma alapján, amely meghatározza, hogy milyen gyakran az eseményindítót hodnotu <p>Az alábbiakban a minimális és maximális időközönként: <p>– Hónap: 1 – 16 hónap </br>– Nap: 1-500 nap </br>– Óra: 1 – 12 000 óra </br>– Perc: 1 – 72,000 perc </br>-Másodperc: 1 – 9,999,999 másodperc<p>Például a időköz 6, és a gyakoriság "Month", az ismétlődés esetén minden hatodik hónapban. | 
@@ -502,7 +502,7 @@ A megadott ismétlődési ütemezés alapján fut. erre az eseményindítóra, �
 
 *Nem kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*start-date-time-with-format-YYYY-MM-DDThh:mm:ss*> | String | A kezdő dátum és idő a következő formátumban: <p>ÉÉÉÉ-hh-nnTóó: pp: Ha megad egy időzóna <p>– vagy – <p>ÉÉÉÉ-hh-DDThh:mm:ssZ, ha nem határoz meg időzónát <p>Így például, ha azt szeretné, 2017. szeptember 18., 2:00-kor, majd adja meg "2017-09-18T14:00:00", és adja meg például a "Csendes-óceáni téli idő" időzónát, vagy adja meg "2017-09-18T14:00:00Z" időzóna nélkül. <p>**Megjegyzés:** Hajtsa végre a kezdő időpont a [ISO 8601 dátum-idő specifikáció](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) a [UTC idő dátumformátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de egy [posun UTC místního](https://en.wikipedia.org/wiki/UTC_offset). Ha nem határoz meg időzónát, hozzá kell adnia a levél "Z" végén szóközök nélkül. A "Z" hivatkozik az azzal egyenértékű [hajózási idő](https://en.wikipedia.org/wiki/Nautical_time). <p>Egyszerű ütemezések esetében a kezdési időpont az első előfordulás a összetett ütemezéseknél az eseményindító nem indul el minden korábban, a kezdési időpontnál. További információ a kezdő dátum és idő: [létrehozása és rendszeresen futó feladatok ütemezését](../connectors/connectors-native-recurrence.md). | 
 | <*time-zone*> | String | Csak amikor Ön megadja a kezdési időt, mert ez az eseményindító nem fogadja el érvényes [posun UTC místního](https://en.wikipedia.org/wiki/UTC_offset). Adja meg az időzónát, amely a alkalmazni szeretné. | 
@@ -603,7 +603,7 @@ Szeretne hívásokat indítani erre az eseményindítóra, kell használnia a `l
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*tulajdonság neve*> | String | A JSON-sémáját, amely leírja az adattartalomban szereplő tulajdonság neve | 
 | <*property-type*> | String | A tulajdonság típusa | 
@@ -611,7 +611,7 @@ Szeretne hívásokat indítani erre az eseményindítóra, kell használnia a `l
 
 *Nem kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*eljárástípus*> | String | A bejövő kéréseket kell meghívni a logikai alkalmazás használó módszer: "GET", "PUT", "POST", "JAVÍTÁS", "DELETE" |
 | <*relative-path-for-accepted-parameter*> | String | A paramétert, amely elfogadja a végponti URL-cím relatív elérési útja | 
@@ -776,7 +776,7 @@ Műveletek a fenti magas szintű elemek rendelkezik, bár egyes nem kötelező:
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------|
 | <*action-name*> | String | A művelet neve | 
 | <*action-type*> | String | A művelet típusa, például a "Http" vagy az "ApiConnection"| 
@@ -787,7 +787,7 @@ Műveletek a fenti magas szintű elemek rendelkezik, bár egyes nem kötelező:
 
 *Nem kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------|
 | <*újrapróbálkozási-viselkedés*> | JSON-objektum | Az átmeneti hibákra, amelyek rendelkeznek a 408, a 429-es, és az 5XX állapotkód és a minden csatlakozási kivétel újrapróbálkozási viselkedés testreszabása. További információkért tekintse meg az újrapróbálkozási szabályzatok. | 
 | <*runtime-config-options*> | JSON-objektum | Egyes műveletekhez, módosíthatja a művelet viselkedése futási időben beállításával `runtimeConfiguration` tulajdonságait. További információkért lásd: [modul konfigurációs beállítások](#runtime-config-options). | 
@@ -889,7 +889,7 @@ Ez a művelet egy HTTP-kérést küld egy [API a Microsoft által felügyelt](..
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*action-name*> | String | Az összekötő által biztosított művelet neve | 
 | <*api-name*> | String | A Microsoft által felügyelt API-t, amely a kapcsolathoz használt neve | 
@@ -899,7 +899,7 @@ Ez a művelet egy HTTP-kérést küld egy [API a Microsoft által felügyelt](..
 
 *Nem kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*other-action-specific-input-properties*> | JSON-objektum | Ez a művelet vonatkozó bármely más bemeneti tulajdonságok | 
 | <*újrapróbálkozási-viselkedés*> | JSON-objektum | Az átmeneti hibákra, amelyek rendelkeznek a 408, a 429-es, és az 5XX állapotkód és a minden csatlakozási kivétel újrapróbálkozási viselkedés testreszabása. További információkért lásd: [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies). | 
@@ -969,7 +969,7 @@ Egyes értékek, mint például <*-eljárástípus*>, is a `"subscribe"` és `"u
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*action-name*> | String | Az összekötő által biztosított művelet neve | 
 | <*eljárástípus*> | String | Az előfizetés vagy iratkoznak le a végpont HTTP-metódus: "GET", "PUT", "Közzététel", "Javítás" vagy "DELETE" | 
@@ -978,7 +978,7 @@ Egyes értékek, mint például <*-eljárástípus*>, is a `"subscribe"` és `"u
 
 *Nem kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*api-unsubscribe-URL*> | String | Az URI-t iratkoznak le az API használata | 
 | <*header-content*> | JSON-objektum | A kérés küldése fejlécek <p>Például állítsa a nyelvet, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
@@ -1009,7 +1009,7 @@ Egyéb műveletek ezután használhatja a műveleti kimenet.
 
 *Kötelező* 
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*inputs-to-compose*> | Bármelyik | A bemenet egyetlen kimeneti létrehozásához | 
 |||| 
@@ -1072,7 +1072,7 @@ Ez a művelet meghív egy korábban létrehozott [Azure-függvény](../azure-fun
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------|  
 | <*Azure-function-ID*> | String | Az Azure-függvényhez tartozó erőforrás-azonosító szeretné meghívni. Ez az érték formátuma a következő:<p>"/subscriptions/ <*azure-előfizetés-azonosító*> /resourceGroups/ <*Azure-resource-group*> /providers/Microsoft.Web/sites/ <*Azure-függvény-alkalmazás-neve*> /Functions/ <*azure-függvény-name*> " | 
 | <*eljárástípus*> | String | A függvény hívása használandó HTTP-metódus: "GET", "PUT", "Közzététel", "Javítás" vagy "DELETE" <p>Ha nincs megadva, az alapértelmezett érték a "POST" metódust. | 
@@ -1080,7 +1080,7 @@ Ez a művelet meghív egy korábban létrehozott [Azure-függvény](../azure-fun
 
 *Nem kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------|  
 | <*header-content*> | JSON-objektum | Fejlécek küldése a hívással <p>Például állítsa a nyelvet, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*body-content*> | JSON-objektum | A kérés küldése minden üzenet tartalma | 
@@ -1143,7 +1143,7 @@ Ez a művelet egy kérést küld a megadott végponton, és ellenőrzi a válasz
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*eljárástípus*> | String | A kérelem küldéséhez használt módszer: "GET", "PUT", "Közzététel", "Javítás" vagy "DELETE" | 
 | <*HTTP-or-HTTPS-endpoint-URL*> | String | A HTTP vagy HTTPS-végpont meghívására. Karakterlánc maximális mérete: 2 KB | 
@@ -1151,7 +1151,7 @@ Ez a művelet egy kérést küld a megadott végponton, és ellenőrzi a válasz
 
 *Nem kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*header-content*> | JSON-objektum | A kérés küldése fejlécek <p>Ha például nyelvi és típusa: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*body-content*> | JSON-objektum | A kérés küldése minden üzenet tartalma | 
@@ -1194,7 +1194,7 @@ Ezzel a művelettel egy tömb összes eleme egy karakterláncot számmá, és az
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*Pole*> | Tömb | A tömb vagy kifejezés, amely kiszámítja a forrás-elemeket. Ha megad egy kifejezés, tegye idézőjelek kifejezésből. | 
 | <*delimiter*> | Egyetlen karakterlánc | A karakter, amely elválasztja az egyes elemek a karakterláncban | 
@@ -1238,7 +1238,7 @@ Ez a művelet létrehoz felhasználóbarát mezők vagy *jogkivonatok* , a tulaj
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*JSON-source*> | JSON-objektum | Az elemezni kívánt JSON-tartalmak | 
 | <*JSON-schema*> | JSON-objektum | A JSON-séma, amely leírja, hogy az alapul szolgáló a JSON-tartalom, amely a művelet használja a forrás JSON-tartalmak elemzéséhez. <p>**Tipp**: A Logic Apps Designerben adja meg a séma, vagy adjon meg egy hasznosadat-minta, hogy a művelet a sémát hozhat létre. | 
@@ -1340,7 +1340,7 @@ Ez a művelet létrehoz egy tömböt alapján egy megadott feltétel, vagy a sz�
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*Pole*> | Tömb | A tömb vagy kifejezés, amely kiszámítja a forrás-elemeket. Ha megad egy kifejezés, tegye idézőjelek kifejezésből. |
 | <*condition-or-filter*> | String | A forrás tömbben szereplő elemek szűrési feltétel <p>**Megjegyzés**: Nem teljesítik a feltételt, ha a művelet létrehoz egy üres tömb. |
@@ -1381,14 +1381,14 @@ Ez a művelet létrehoz az a választ egy HTTP-kérelem hasznos adatai.
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*response-status-code*> | Egész szám | A HTTP-állapotkódot, a bejövő kérést küldött. Az alapértelmezett kód "200 OK", de a kód bármilyen állapot érvényes kódot, amely elindítja a 2xx, 4xx vagy 5xx, de nem 3xxx lehet. | 
 |||| 
 
 *Nem kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*response-headers*> | JSON-objektum | A válasz szerepeltetni kívánt egy vagy több fejlécek | 
 | <*választörzs*> | Különböző | A válasz törzse, amely egy karakterlánc, JSON-objektum vagy egy korábbi művelet még bináris tartalom | 
@@ -1456,7 +1456,7 @@ Ez a művelet létrehoz egy tömböt JSON-objektumok átalakításával keletkez
 
 *Kötelező* 
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*Pole*> | Tömb | A tömb vagy kifejezés, amely kiszámítja a forrás-elemeket. Ellenőrizze, hogy egy kifejezés, az idézőjelekkel együtt idézőjelek közé kell tenni. <p>**Megjegyzés**: Ha a forrás tömb üres, a művelet létrehoz egy üres tömb. | 
 | <*key-name*> | String | Annak az eredménye a tulajdonság neve <*kifejezés*> <p>A kimeneti tömbben található összes objektum hozzáadása az új tulajdonság, adja meg egy <*-kulcsnév*> tulajdonság és a egy <*kifejezés*> a tulajdonság értékeként. <p>Tulajdonság eltávolítása a tömbben lévő összes objektumra, hagyja ki ezt a <*-kulcsnév*> az adott tulajdonságnál. | 
@@ -1554,7 +1554,7 @@ Ez a művelet létrehoz egy CSV- vagy HTML-táblázat egy tömbből. Ezzel a mű
 
 *Kötelező* 
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | < CSV *vagy* HTML >| String | A formátum a létrehozni kívánt tábla | 
 | <*Pole*> | Tömb | A tömb vagy kifejezés, amely biztosítja a tábla a forrás-elemek <p>**Megjegyzés**: Ha a forrás tömb üres, a művelet létrehoz egy üres táblát. | 
@@ -1564,7 +1564,7 @@ Ez a művelet létrehoz egy CSV- vagy HTML-táblázat egy tömbből. Ezzel a mű
 
 Adja meg, vagy testre szabhatja oszlopfejlécek és értékeket használja a `columns` tömb. Amikor `header-value` párok azonos legyen a fejléc neve, ugyanazt az oszlopot a fejléc neve alatt jelennek meg azok értékeit. Ellenkező esetben minden egyedi fejléc határozza meg egy egyedi oszlopot.
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*oszlopnév*> | String | Egy oszlopot az állomásfejléc-nevet | 
 | <*column-value*> | Bármelyik | Az érték az adott oszlopban | 
@@ -1667,7 +1667,7 @@ Ez a művelet leállítja a munkafolyamat-példány futtatása, megszakítja a f
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*status*> | String | A Futtatás esetében visszaadandó állapota: "Sikertelen", "Megszakítva" vagy "Sikeres" |
 |||| 
@@ -1676,7 +1676,7 @@ Ez a művelet leállítja a munkafolyamat-példány futtatása, megszakítja a f
 
 A "runStatus" objektum tulajdonságainak a alkalmazni: csak akkor, ha a "runStatus" tulajdonsága "Sikertelen" állapotú.
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*error-code-or-name*> | String | A kód vagy a hiba nevét |
 | <*error-message*> | String | Az üzenet vagy a szöveg, amely leírja a hibát, és azokat a műveleteket az alkalmazás felhasználói is eltarthat | 
@@ -1737,7 +1737,7 @@ Ez a művelet felfüggeszti a munkafolyamat-végrehajtási számára a megadott 
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*number-of-units*> | Egész szám | Az a **késleltetés** művelet, várjon egységek száma | 
 | <*időköz*> | String | Az a **késleltetés** művelet, a várakozási időköz: "A második", "Minute", "Hour", "Day", "Week", "Month" | 
@@ -1810,7 +1810,7 @@ A Logic Apps-motor az eseményindító hívja, ezért ügyeljen arra, hogy az es
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*nested-logic-app-name*> | String | A logikai alkalmazás nevét szeretné meghívni | 
 | <*trigger-name*> | String | A beágyazott logikai alkalmazás szeretné meghívni az eseményindító neve | 
@@ -1821,7 +1821,7 @@ A Logic Apps-motor az eseményindító hívja, ezért ügyeljen arra, hogy az es
 
 *Nem kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------|  
 | <*header-content*> | JSON-objektum | Fejlécek küldése a hívással | 
 | <*body-content*> | JSON-objektum | A hívás küldhet bármely üzenet tartalma | 
@@ -1887,7 +1887,7 @@ Ismétlési művelet végighalad a tömböt, és a tömb mindegyik elemén végr
 
 *Kötelező* 
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*művelet – 1.. n*> | String | A végrehajtandó műveleteket futtatni a tömb mindegyik elemén nevei | 
 | <*action-definition-1...n*> | JSON-objektum | A definíciók futtatott művelet | 
@@ -1896,7 +1896,7 @@ Ismétlési művelet végighalad a tömböt, és a tömb mindegyik elemén végr
 
 *Nem kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*Száma*> | Egész szám | Az ismétlések futtathat egy időben, illetve párhuzamosan akár "for each" iteráció alapértelmezés szerint a [alapértelmezett korlát](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ez a korlát módosítása egy új beállításával <*száma*> érték, lásd: [módosítása "mindegyikre" hurkot egyidejűségi](#change-for-each-concurrency). | 
 | <*művelet – beállítás*> | String | Egy "mindegyikre" hurkot egymás után, hanem párhuzamosan, állítsuk be vagy <*műveletbeállítás*> való `Sequential` vagy <*száma*> való `1`, egyszerre azonban nem. További információkért lásd: [futtassa a "for each" egymás után hurkokat](#sequential-for-each). | 
@@ -1960,7 +1960,7 @@ Ez a művelet, amely egy *feltételes utasítás*, Kiértékel egy kifejezést, 
 }
 ```
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*a feltétel*> | JSON-objektum | A feltétel, amely lehet egy kifejezés kiértékelése | 
 | <*művelet – 1*> | JSON-objektum | A műveletet úgy, hogy futtatható, ha <*feltétel*> igaz értéket ad vissza | 
@@ -2050,7 +2050,7 @@ Ez a művelet logikailag csoportosítja az műveletek *hatókörök*, amelyek a 
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------|  
 | <*belső-művelet-1.. n*> | JSON-objektum | Egy vagy több műveletet, amely hatókörében |
 | <*action-inputs*> | JSON-objektum | A bemenet minden egyes művelethez |
@@ -2091,7 +2091,7 @@ Ez a művelet, más néven egy *utasítás váltson*, rendezi azokat más művel
 
 *Kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*expression-object-or-token*> | Változó | A kifejezés, a JSON-objektum vagy a token kiértékelése | 
 | <*action-name*> | String | A megfelelő esethez futtatni kívánt műveletet neve | 
@@ -2101,7 +2101,7 @@ Ez a művelet, más néven egy *utasítás váltson*, rendezi azokat más művel
 
 *Nem kötelező*
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*default-action-name*> | String | Az alapértelmezett művelet futtatását, amikor nem egyező eset létezik neve | 
 | <*default-action-definition*> | JSON-objektum | A művelet futtatását, amikor nem egyező eset létezik definíciója | 
@@ -2217,7 +2217,7 @@ A hurok művelet futni, amíg a megadott feltétel teljesül műveleteket tartal
 }
 ```
 
-| Érték | Typo | Leírás | 
+| Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*action-name*> | String | A hurok belül futó kívánt művelet neve | 
 | <*action-type*> | String | A futtatni kívánt művelet típusa | 
@@ -2309,7 +2309,7 @@ Módosíthatja a triggereket és műveleteket ezekkel az alapértelmezett műkö
 
 Módosíthatja az eseményindítók és műveletek az alapértelmezett viselkedése a `operationOptions` tulajdonság eseményindítót vagy műveletet-definícióban.
 
-| A művelet lehetőség | Typo | Leírás | Eseményindítót vagy műveletet | 
+| A művelet lehetőség | Típus | Leírás | Eseményindítót vagy műveletet | 
 |------------------|------|-------------|-------------------| 
 | `DisableAsyncPattern` | String | HTTP-alapú műveletek szinkron módon történik, nem pedig aszinkron módon fut. <p><p>Ezzel a beállítással lásd [szinkron műveletek futtatása](#asynchronous-patterns). | Műveletek: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action), <br>[Válasz](#response-action) | 
 | `OptimizedForHighThroughput` | String | Módosítsa a [alapértelmezett korlát](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) száma 5 percenként, műveletvégrehajtások a [maximálisan](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). <p><p>Ezzel a beállítással lásd [magas átviteli módban fusson](#run-high-throughput-mode). | Minden művelet | 

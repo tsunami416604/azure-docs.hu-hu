@@ -10,11 +10,11 @@ ms.date: 10/31/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
 ms.openlocfilehash: ee1150dd146be1f022134ffe6df3ca2fbf84f867
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652150"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123263"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Oktatóanyag: Csomagolja ki, csatlakozzon, és az Azure Data Box-lemezek zárolásának feloldása
 

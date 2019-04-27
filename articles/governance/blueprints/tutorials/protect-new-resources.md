@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
 ms.openlocfilehash: d315fb5fe3ce7844946e6a9405a9a5f6a0be8b9d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791609"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60874529"
 ---
 # <a name="protect-new-resources-with-azure-blueprints-resource-locks"></a>Az Azure-tervek erőforrászárat új erőforrások védelme
 
@@ -152,7 +152,7 @@ Miután sikeresen befejeződött a tervezetdefiníciót **közzétett**, előfiz
      |Elemnév|Összetevő típusa|Paraméter neve|Érték|Leírás|
      |-|-|-|-|-|
      |RGtoLock erőforráscsoport|Erőforráscsoport|Name (Név)|TestingBPLocks|Meghatározza a tervezet zárolások a alkalmazni az új erőforráscsoport nevét.|
-     |RGtoLock erőforráscsoport|Erőforráscsoport|Földrajzi egység|USA nyugati régiója, 2.|Tervrajz zárolások a alkalmazni az új erőforráscsoport helye határozza meg.|
+     |RGtoLock erőforráscsoport|Erőforráscsoport|Location egység|USA nyugati régiója, 2.|Tervrajz zárolások a alkalmazni az új erőforráscsoport helye határozza meg.|
      |Tárfiók|Resource Manager-sablon|storageAccountType (StorageAccount)|Standard_GRS|Válassza ki a tároló-Termékváltozat. Alapértelmezett érték _Standard_LRS_.|
 
 1. Után minden paraméter van megadva, válassza a **hozzárendelése** az oldal alján.

@@ -1,7 +1,6 @@
 ---
 title: 'Oktatóanyag: A Power BI használatával az Azure HDInsight az Apache Spark-adatok elemzése '
 description: A Microsoft Power BI segítségével ábrázolhatja az Apache Spark-adatait tárolja a HDInsight-fürtök
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: c058cfa3bc9fa976726731cedeb80eb76a1f0810
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: ed7beeadc0a550a28d1f936702aabeb45823b677
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999271"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127208"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Oktatóanyag: A Power BI használata a HDInsight az Apache Spark-adatok elemzése 
 
@@ -29,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Végezze el a cikk [oktatóanyag: Adatok betöltése, és lekérdezéseket futtathat az Azure HDInsight az Apache Spark-fürt](./apache-spark-load-data-run-query.md)**.
-* **Power bi-ban**: [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) és [Power BI próba-előfizetés](https://app.powerbi.com/signupredirect?pbi_source=web) (nem kötelező).
+* **Power BI**: [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) és [Power BI próba-előfizetés](https://app.powerbi.com/signupredirect?pbi_source=web) (nem kötelező).
 
 
 ## <a name="verify-the-data"></a>Az adatok ellenőrzése

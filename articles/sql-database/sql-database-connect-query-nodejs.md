@@ -1,5 +1,5 @@
 ---
-title: Node.js használata Azure SQL Database-adatbázis lekérdezéséhez | Microsoft Docs
+title: Node.js használata az Azure SQL Database lekérdezéséhez | Microsoft Docs
 description: Hogyan használható a Node.js egy olyan program létrehozásához, amely egy Azure SQL Database-adatbázishoz kapcsolódik, és T-SQL-utasítások használatával lekérdezni.
 services: sql-database
 ms.service: sql-database
@@ -12,13 +12,13 @@ ms.reviewer: v-masebo
 manager: craigg
 ms.date: 03/25/2019
 ms.openlocfilehash: cd0435ffc27402299da85434693dcdf32a4083ca
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444703"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61408928"
 ---
-# <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Gyors útmutató: Node.js használata Azure SQL Database-adatbázis lekérdezéséhez
+# <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Gyors útmutató: Node.js használata Azure SQL-adatbázis lekérdezéséhez
 
 Ez a cikk bemutatja, hogyan használható [Node.js](https://nodejs.org) csatlakozni egy Azure SQL Database-adatbázishoz. Ezután használhatja a T-SQL-utasítások használatával adatokat lekérdezni.
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan használható [Node.js](https://nodejs.org) csatlako
 
 Ez a minta, győződjön meg arról, hogy rendelkezik a következő előfeltételek vonatkoznak:
 
-- Azure SQL Database-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
+- Azure SQL-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|

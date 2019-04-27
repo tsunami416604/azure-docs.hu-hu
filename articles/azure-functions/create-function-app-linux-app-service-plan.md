@@ -12,11 +12,11 @@ ms.date: 02/28/2019
 ms.author: glenga
 ms.custom: ''
 ms.openlocfilehash: cc99bc4345c388f22e72957590f3917a85e214e0
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339808"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126635"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Egy függvényalkalmazás létrehozása a linuxon futó Azure App Service-csomag
 
@@ -53,7 +53,7 @@ Rendelkeznie kell egy függvényalkalmazással a függvények Linux rendszerben 
     | **Az App Service-csomag/hely** | Csomag létrehozása | Válasszon **új létrehozása** , és adja meg egy **App Service-csomag** nevét. Válasszon egy **hely** a egy [régió](https://azure.microsoft.com/regions/) Önhöz vagy más szolgáltatások közelében a függvények által elért. Válassza ki a kívánt  **[tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/linux/)**. <br/>Az App Service-csomag Linux- és Windows függvényalkalmazások nem futtatható. |
     | **Futtatókörnyezet verme** | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. Válassza a **.NET** lehetőséget a C# és az F# függvényekhez. [Podpora Pythonu](functions-reference-python.md) jelenleg előzetes verzióban érhető el. |
     | **[Tárolás](../storage/common/storage-quickstart-create-account.md)** |  Globálisan egyedi név |  Hozzon létre egy tárfiókot a függvényalkalmazás számára. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat, amennyiben az megfelel a [tárfiókokra vonatkozó követelményeknek](functions-scale.md#storage-account-requirements). |
-    | **[Application Insights](functions-monitoring.md)** | Engedélyezve | Az Application Insights alapértelmezés szerint le van tiltva. Javasoljuk, hogy most már az Application Insights-integráció engedélyezése és az App Service-csomag hely közelében üzemeltetési hely kiválasztása. Ha később szeretné, tekintse meg [figyelése az Azure Functions](functions-monitoring.md).  |
+    | **[Application Insights](functions-monitoring.md)** | Enabled | Az Application Insights alapértelmezés szerint le van tiltva. Javasoljuk, hogy most már az Application Insights-integráció engedélyezése és az App Service-csomag hely közelében üzemeltetési hely kiválasztása. Ha később szeretné, tekintse meg [figyelése az Azure Functions](functions-monitoring.md).  |
 
 3. Kattintson a **Létrehozás** elemre a függvényalkalmazás kiépítéséhez és üzembe helyezéséhez.
 

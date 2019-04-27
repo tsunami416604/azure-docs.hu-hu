@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: victorh
 ms.openlocfilehash: 3b4ee688d6a5606ab6008b459fcf6331c24afaae
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091640"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61429790"
 ---
-# <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Oktatóanyag: Hozzon létre egy aliasrekordot a zónában lévő erőforrásrekordra való hivatkozáshoz
+# <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Oktatóanyag: Hozzon létre egy alias rekord egy zóna erőforrásrekordot hivatkozik
 
 Az aliasrekordok hivatkozhatnak más azonos típusú rekordhalmazokra. Például rendelkezhet egy DNS CNAME-rekordhalmazzal, amely egy ugyanolyan típusú másik CNAME-rekordhalmaz aliasa. Ez a képesség akkor hasznos, ha aliasként és nem aliasként működő rekordok halmazait is létre kívánja hozni.
 
@@ -30,7 +30,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 Elérhetőnek kell lennie egy tartománynévnek, amelyet üzemeltethet az Azure DNS-ben a teszteléshez. Teljes körű irányítással kell rendelkeznie a tartomány felett. A teljes körű irányításba beletartozik a tartomány névkiszolgálói (NS-) rekordjainak beállítására való képesség.
 
-A tartomány Azure DNS-ben való üzemeltetésére vonatkozó utasításokért lásd az [Oktatóanyag: A tartomány üzemeltetése az Azure DNS-ben](dns-delegate-domain-azure-dns.md).
+Üzemeltessen saját tartományt az Azure DNS-ben az utasításokért lásd: [oktatóanyag: Üzemeltessen saját tartományt az Azure DNS](dns-delegate-domain-azure-dns.md).
 
 
 ## <a name="create-an-alias-record"></a>Aliasrekord létrehozása

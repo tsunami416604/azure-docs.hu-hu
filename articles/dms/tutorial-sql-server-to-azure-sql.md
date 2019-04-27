@@ -12,11 +12,11 @@ ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 363377dde6d8f4d5f2e51a223c6315fcb93fe237
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797244"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60797129"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>Oktatóanyag: SQL Server migrálása az önálló adatbázis vagy készletezett Azure SQL Database-adatbázis offline a DMS használatával
 
@@ -123,7 +123,7 @@ Miután nem okoz gondot az értékelés az és DMA meggyőződött arról, hogy 
 
     ![Data Migration Assistant forráskapcsolati adatok](media/tutorial-sql-server-to-azure-sql/dma-source-connect.png)
 
-6. Válassza a **Tovább**, lehetőséget. A **Csatlakozás célkiszolgálóhoz** területen alatt adja meg az Azure SQL Database célkapcsolati adatait, válassza a **Csatlakozás** lehetőséget, majd válassza ki azt az **AdventureWorksAzure** adatbázist, amelyek az Azure SQL Database-ben előzetesen kiépített.
+6. Válassza a **Tovább**, lehetőséget. A **Csatlakozás célkiszolgálóhoz** területen adja meg az Azure SQL Database célkapcsolati adatait, válassza a **Csatlakozás** lehetőséget, majd válassza ki azt az **AdventureWorksAzure** adatbázist, amelyek az Azure SQL Database-ben előzetesen kiépített.
 
     ![Data Migration Assistant célkapcsolati adatok](media/tutorial-sql-server-to-azure-sql/dma-target-connect.png)
 
@@ -224,7 +224,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 ## <a name="specify-target-details"></a>Cél adatainak megadása
 
-1. Válassza a **Mentés** lehetőséget, majd a **Migrálási cél részletei** képernyőn adja meg a célul szolgáló Azure SQL Database Server kapcsolati adatait. Ez a cél az az Azure SQL Database, amelyen üzembe helyezte az **AdventureWorks2012** sémát a Data Migration Assistant szolgáltatással.
+1. Válassza a **Mentés** lehetőséget, majd a **Migrálási cél részletei** képernyőn adja meg a célul szolgáló Azure SQL-adatbáziskiszolgáló kapcsolati adatait. Ez a cél az az Azure SQL Database, amelyen üzembe helyezte az **AdventureWorks2012** sémát a Data Migration Assistant szolgáltatással.
 
     ![Cél kiválasztása](media/tutorial-sql-server-to-azure-sql/dms-select-target2.png)
 
@@ -266,7 +266,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 2. A migrálás befejezése után válassza a **Jelentés letöltése** lehetőséget. A megjelenő jelentés a migrálás folyamatával kapcsolatos részleteket listázza.
 
-3. Ellenőrizze a céladatbázisokat a célként szolgáló Azure SQL Database-kiszolgálón.
+3. Ellenőrizze a céladatbázisokat a célként szolgáló Azure SQL-adatbáziskiszolgálón.
 
 ### <a name="additional-resources"></a>További források
 

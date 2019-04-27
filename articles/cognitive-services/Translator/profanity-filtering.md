@@ -3,19 +3,20 @@ title: Káromkodás szűrése – Translator Text API
 titlesuffix: Azure Cognitive Services
 description: A Translator Text API szűrés cenzúrázása használja.
 services: cognitive-services
-author: v-pawal
+author: Jann-Skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.author: v-jansko
+origin.date: 02/21/2019
+ms.date: 03/12/2019
+ms.author: v-junlch
 ms.openlocfilehash: bd7a05f2f597d1882293387e5aac8e4d7367d051
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916631"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60880030"
 ---
 # <a name="add-profanity-filtering-with-the-translator-text-api"></a>Adja hozzá a Translator Text API szűrés cenzúrázása
 
@@ -35,3 +36,4 @@ A Translate() metódushoz a "beállítások" paramétert, amely az új "Profanit
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [A alkalmazni a Translator API-hívással szűrés cenzúrázása](reference/v3-0-translate.md)
+

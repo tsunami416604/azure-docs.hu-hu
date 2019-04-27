@@ -8,11 +8,11 @@ ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
 ms.openlocfilehash: aed539484ac01d1b18b8374ffb57456364f9bd2c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119264"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61092036"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Oktatóanyag: Azure Database for postgresql-hez az Azure portal használatával tervezése
 
@@ -51,7 +51,7 @@ Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz l
    - Előfizetés: Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amelyen az erőforrás megtalálható vagy terhelve van.
    - Erőforráscsoport: **myresourcegroup**
    - Az Ön által választott kiszolgálói rendszergazdai bejelentkezési név és jelszó
-   - Hely
+   - Location egység
    - PostgreSQL-verzió
 
    > [!IMPORTANT]
@@ -89,7 +89,7 @@ Az Azure Database for PostgreSQL szolgáltatás a kiszolgáló szintjén haszná
 4. Kattintson a **Mentés** gombra, majd kattintson az **X**-re a **Kapcsolatbiztonság** oldal bezárásához.
 
    > [!NOTE]
-   > Azure PostgreSQL-kiszolgáló az 5432-es porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 5432-es porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL Database-kiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 5432-es portot.
+   > Azure PostgreSQL-kiszolgáló az 5432-es porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 5432-es porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 5432-es portot.
    >
 
 ## <a name="get-the-connection-information"></a>Kapcsolatadatok lekérése

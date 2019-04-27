@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: Ebben az oktatóanyagban megismerheti, hogyan szűrheti a hálózati forgalmat alhálózatokra egy hálózati biztonsági csoport és az Azure Portal használatával.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
+author: KumudD
 tags: azure-resource-manager
 Customer intent: I want to filter network traffic to virtual machines that perform similar functions, such as web servers.
 ms.service: virtual-network
@@ -13,13 +13,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
-ms.author: jdial
+ms.author: kumud
 ms.openlocfilehash: caf9b91d5b98d028d7c9e971df30ad1f6ec448ad
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019027"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61456734"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Oktatóanyag: Hálózati forgalom szűrése hálózati biztonsági csoport az Azure Portal használatával
 
@@ -51,7 +51,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
     | Címtér           | 10.0.0.0/16                                        |
     | Előfizetés            | Válassza ki előfizetését.                          |
     | Erőforráscsoport          | Válassza az **Új létrehozása** elemet, és adja meg a *myResourceGroup* nevet. |
-    | Hely                | Válassza az **USA keleti régiója** lehetőséget.                                |
+    | Location egység                | Válassza az **USA keleti régiója** lehetőséget.                                |
     | Alhálózat – név            | mySubnet                                           |
     | Alhálózat – címtartomány  | 10.0.0.0/24                                        |
 
@@ -68,7 +68,7 @@ Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy egy csoportba rendez
     | Name (Név)           | myAsgWebServers                                               |
     | Előfizetés   | Válassza ki előfizetését.                                     |
     | Erőforráscsoport | Válassza a **Meglévő használata**, majd a **myResourceGroup** lehetőséget. |
-    | Hely       | USA keleti régiója                                                       |
+    | Location egység       | USA keleti régiója                                                       |
 
 4. Végezze el ismét a 3. lépést az alábbi értékeket megadva:
 
@@ -77,7 +77,7 @@ Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy egy csoportba rendez
     | Name (Név)           | myAsgMgmtServers                                              |
     | Előfizetés   | Válassza ki előfizetését.                                     |
     | Erőforráscsoport | Válassza a **Meglévő használata**, majd a **myResourceGroup** lehetőséget. |
-    | Hely       | USA keleti régiója                                                       |
+    | Location egység       | USA keleti régiója                                                       |
 
 ## <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
@@ -90,7 +90,7 @@ Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy egy csoportba rendez
     |Name (Név)|myNsg|
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport | Válassza a **Meglévő használata**, majd a *myResourceGroup* lehetőséget.|
-    |Hely|USA keleti régiója|
+    |Location egység|USA keleti régiója|
 
 ## <a name="associate-network-security-group-to-subnet"></a>Hálózati biztonsági csoport társítása alhálózathoz
 
@@ -149,7 +149,7 @@ Hozzon létre két virtuális gépet a virtuális hálózaton.
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.|
-    |Hely| Válassza az **USA keleti régiója** lehetőséget.|
+    |Location egység| Válassza az **USA keleti régiója** lehetőséget.|
 
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
 5. A **Beállítások** területen válassza ki a következő értékeket, fogadja el a fennmaradó alapértelmezett beállításokat, majd kattintson az **OK** gombra:

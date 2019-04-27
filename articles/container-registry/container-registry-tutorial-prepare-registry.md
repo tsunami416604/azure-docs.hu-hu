@@ -9,11 +9,11 @@ ms.date: 04/30/2017
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 7aec257335e3380fa99669c1191ee89857ec975d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533664"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60870447"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: Georeplikált Azure Container Registry előkészítése
 
@@ -29,7 +29,7 @@ A háromrészes sorozat első oktatóanyagának tartalma:
 
 A következő oktatóanyagokban egy két Azure-régióban futó webalkalmazás számára helyezi üzembe a tárolót a privát tárolójegyzékből. Ezután frissíti az alkalmazásban lévő programkódot, és egyetlen `docker push` paranccsal frissíti mindkét webalkalmazás-példányt a tárolójegyzékben.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Az oktatóanyaghoz az Azure CLI (2.0.31-es vagy újabb verzió) helyi telepítésére lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 

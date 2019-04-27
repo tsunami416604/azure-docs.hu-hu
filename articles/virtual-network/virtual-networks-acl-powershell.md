@@ -3,9 +3,7 @@ title: Azure-végpont hozzáférés-vezérlési listák felügyelete |} PowerShe
 description: Ismerje meg, hogyan kezelheti a hozzáférés-vezérlési listák a PowerShell-lel
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: carmonm
-editor: tysonn
+author: genlin
 ms.assetid: c84e40af-f351-4572-b3f0-d572d46bafe7
 ms.service: virtual-network
 ms.devlang: na
@@ -13,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
-ms.author: jdial
+ms.author: genli
 ms.openlocfilehash: 1f6c14c15d4930902ced642bd02d1d1833e0b361
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54154810"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61032537"
 ---
 # <a name="manage-endpoint-access-control-lists-using-powershell-in-the-classic-deployment-model"></a>PowerShell-lel a klasszikus üzemi modellben végponti hozzáférés-vezérlési listák felügyelete
 Hozzon létre, és kezelheti a hálózati hozzáférés-vezérlési listák (ACL) végpontok Azure PowerShell-lel vagy a felügyeleti portálon. Ebben a témakörben eljárásokat találhat a gyakori feladatokhoz ACL, amely a PowerShell használatával is elvégezheti. A lista az Azure PowerShell parancsmagok megtekintéséhez [Azure Management Cmdlets](https://go.microsoft.com/fwlink/?LinkId=317721). ACL-lel kapcsolatos további információkért lásd: [Mi az a hálózati hozzáférés-vezérlési lista (ACL)?](virtual-networks-acl.md). Ha azt szeretné, a hozzáférés-vezérlési listák felügyelete a felügyeleti portál használatával, lásd: [hogyan állítsa be végpontok egy virtuális géphez](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).

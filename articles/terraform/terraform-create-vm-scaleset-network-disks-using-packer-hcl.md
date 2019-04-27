@@ -10,11 +10,11 @@ ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/29/2017
 ms.openlocfilehash: 5aff45b4a6b5da62569e0a39c13239a726e6b80b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001994"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60884914"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Azure-beli virtuálisgép-méretezési csoport létrehozása a Terraformmal egy egyéni Packer-rendszerképből
 
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 > * [A Terraform telepítése és az Azure-hoz való hozzáférés konfigurálása](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure)
 > * [Egy SSH-kulcspár létrehozása](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys), ha még nem rendelkezik kulcspárral
 > * [A Packer telepítése](https://www.packer.io/docs/install/index.html), ha még nincs telepítve a helyi gépen

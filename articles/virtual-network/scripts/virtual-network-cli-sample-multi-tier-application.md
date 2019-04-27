@@ -3,8 +3,8 @@ title: Azure CLI-példaszkript – Hálózat létrehozása többrétegű alkalma
 description: Azure CLI-példaszkript – Virtuális hálózat létrehozása többrétegű alkalmazásokhoz.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
-ms.author: jdial
+ms.author: kumud
 ms.openlocfilehash: 2db43d842ec5656f6f059c240eb9b9cc2376459e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697473"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61487883"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>Hálózat létrehozása többszintű alkalmazásokhoz – példaszkript
 

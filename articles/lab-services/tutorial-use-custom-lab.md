@@ -15,11 +15,11 @@ ms.custom: mvc
 ms.date: 01/18/2019
 ms.author: spelluru
 ms.openlocfilehash: b5abb8d4aad7c58bf673aa578255efe12d32ad4b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422898"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61083536"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Oktatóanyag: Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet elérése
 Ebben az oktatóanyagban létrehozott a labor használata a [oktatóanyag: Labor létrehozása az Azure DevTest Labs](tutorial-create-custom-lab.md) .

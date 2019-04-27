@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/01/2019
-ms.openlocfilehash: 4099d6ea12774fec2b24895b42d8e780bd36e2a4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8600e9c9d8566d3b9f6cd0fbca60d7db904a6265
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917345"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62115261"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Gyors útmutató: Hozzon létre egy Apache Kafka HDInsight-fürtön
 
@@ -59,7 +59,7 @@ Egy Apache Kafka on HDInsight-fürt létrehozásához kövesse az alábbi lépé
     | Beállítás | Érték |
     | --- | --- |
     | Fürt típusa | Kafka |
-    | Verzió | Kafka 1.1.0 (HDI 3.6) |
+    | Version | Kafka 1.1.0 (HDI 3.6) |
 
     Válassza ki **kiválasztása** mentse a fürttípus típus beállításait, és térjen vissza __alapjai__.
 

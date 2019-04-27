@@ -1,22 +1,22 @@
 ---
 title: Az Azure Application Insights gyors üzembe helyezése | Microsoft Docs
-description: A mobilalkalmazások gyors üzembe helyezésével kapcsolatos utasítások az Application Insights és App Center általi monitorozáshoz
+description: Gyorsan beállíthat egy mobilalkalmazást figyelése az Application Insights és App Center ad útmutatást
 services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 07/11/2018
+ms.date: 04/22/2019
 ms.service: application-insights
 ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 6f0a59d2b0954c9847219ad1ac8b2fa805767084
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 67ddedbaca88d46e706c9a143100b215a0d16a90
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081303"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126820"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>A mobilalkalmazás elemzésének első lépései az App Center és az Application Insights használatával
 
@@ -87,7 +87,9 @@ Ha az alkalmazás több platformot (iOS, Android stb.) támogat, érdemes minden
 
 ## <a name="export-to-application-insights"></a>Exportálás az Application Insightsba
 
-Az új Application Insights-erőforrásban másolja ki az erőforrás kialakítási kulcsát az **Áttekintés** oldal **Alapvető szolgáltatások** szakaszának felső részéről.
+Az új Application Insights-erőforrást a a a **áttekintése** lapot. Az erőforrás a kialakítási kulcs másolása.
+
+   ![Elemzés gomb az Application Insightsban](./media/mobile-center-quickstart/overview-01.png)
 
 Az alkalmazáshoz tartozó App Center-példányban:
 
@@ -108,7 +110,7 @@ Az App Center által biztosított elemzőeszközök mellett az Application Insig
 
 1. **Kérdezze le az egyéniesemény-telemetriát.** Az Application Insights **Áttekintés** oldalán válassza az **Elemzés** lehetőséget. 
 
-   ![Elemzés gomb az Application Insightsban](./media/mobile-center-quickstart/analytics.png)
+   ![Elemzés gomb az Application Insightsban](./media/mobile-center-quickstart/analytics-001.png)
 
    Megnyílik az Application Insights-erőforráshoz társított Application Insights Analytics-portál. Az Analytics-portálon közvetlenül lekérdezheti az adatokat a Log Analytics lekérdezési nyelv használatával, így tetszőlegesen bonyolult kérdéseket tehet fel az alkalmazással és a felhasználóival kapcsolatban.
    
@@ -121,7 +123,7 @@ Az App Center által biztosított elemzőeszközök mellett az Application Insig
    | order by dcount_user_Id desc 
    ```
 
-   ![Analytics-portál](./media/mobile-center-quickstart/analytics-portal.png)
+   ![Analytics-portál](./media/mobile-center-quickstart/analytics-portal-001.png)
 
    1. Jelölje ki a lekérdezést úgy, hogy a lekérdezés egy tetszőleges pontjára kattint a szövegszerkesztőben.
    2. Ezután kattintson az **Indítás** lehetőségre a lekérdezés futtatásához. 
@@ -131,17 +133,17 @@ Az App Center által biztosított elemzőeszközök mellett az Application Insig
 
 2. **Szegmentálja és szűrje az egyéniesemény-telemetriát.** Az Application Insights **Áttekintés** oldalán a tartalomjegyzékből válassza ki a **Felhasználók** lehetőséget.
 
-   ![A Felhasználók eszköz ikonja](./media/mobile-center-quickstart/users-icon.png)
+   ![A Felhasználók eszköz ikonja](./media/mobile-center-quickstart/users-icon-001.png)
 
    A Felhasználók eszköz megjeleníti, hogy az alkalmazás hány felhasználója kattintott rá bizonyos gombokra, látogatott meg bizonyos képernyőket vagy hajtott végre bármely más műveletet, amelyet nyomon követ eseményként az App Center SDK-val. Ha megoldást keres az App Center eseményeinek szegmentálására és szűrésére, a Felhasználók eszköz remek választás lehet.
 
-   ![A Felhasználók eszköz](./media/mobile-center-quickstart/users.png) 
+   ![A Felhasználók eszköz](./media/mobile-center-quickstart/users-001.png) 
 
    Például ha az **Ország vagy régió** lehetőséget választja a **Felosztás** legördülő menüben, földrajzi régiók szerint szegmentálhatja a használatot.
 
 3. **Elemezze az alkalmazás átalakítási, megtartási és navigációs mintáit.** Az Application Insights **Áttekintés** oldalán a tartalomjegyzékből válassza ki a **Felhasználói folyamatok** lehetőséget.
 
-   ![A Felhasználói folyamatok eszköz](./media/mobile-center-quickstart/user-flows.png)
+   ![A Felhasználói folyamatok eszköz](./media/mobile-center-quickstart/user-flows-001.png)
 
    A Felhasználói folyamatok eszköz megjeleníti, hogy a felhasználók mely eseményeket küldik el az indítási események után. A segítségével átfogó képet lehet kapni arról, hogy hogyan navigálnak a felhasználók az alkalmazásban. Az eszköz továbbá megmutathatja azokat a helyeket, ahol sok felhasználó megfordul az alkalmazásban, vagy ahol többször is végrehajtják ugyanazokat a műveleteket.
 

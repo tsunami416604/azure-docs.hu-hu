@@ -16,11 +16,11 @@ ms.date: 09/05/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 2762a81c9f366ad4a5d0d6d87cf04490fc10b23c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630584"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60854523"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>ASP.NET Core-webalkalmazás létrehozása az Azure-ban
 
@@ -104,7 +104,7 @@ A **Szolgáltatási csomag konfigurálása** párbeszédpanelen a képernyőkép
 | Beállítás | Ajánlott érték | Leírás |
 |-|-|-|
 |App Service-csomag| myAppServicePlan | Az App Service-csomag neve. |
-| Hely | Nyugat-Európa | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
+| Location egység | Nyugat-Európa | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
 | Méret | Ingyenes | A [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) meghatározza az üzemeltetési funkciókat. |
 
 Kattintson az **OK** gombra.

@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
-ms.openlocfilehash: 44930ad0f941ea174d95658f220db7aa95012133
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7f692c08f8af322bf7e6ab576e2e6f516594a6c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868684"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61336517"
 ---
 # <a name="similarity-method"></a>Hasonlósági metódus
 
@@ -28,26 +28,34 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 ```
 
 ## <a name="request-parameters"></a>A kérés paraméterei
-Paraméter        |Adattípus      |Szükséges | Leírás
+
+Paraméter        |Adattípus      |Kötelező | Leírás
 ----------|----------|----------|------------
 **s1**        |String   |Igen  |Összehasonlítandó karakterlánc *
 **s2**        |String   |Igen  |Összehasonlítandó karakterlánc *
+
 <sub> * Karakterláncok összehasonlítására rendelkezik egy legfeljebb 1MB. </sub>
 <br>
+
 ## <a name="response"></a>Válasz
+
 Name (Név) | Leírás
 --------|---------
 **SimilarityScore**        |Lebegőpontos érték, s1 és s2 értékek közelebb több hasonló 1.0-ás jelentése és értékeket közelebb-1.0, ami azt jelenti, kisebb cosine hasonlóságot
+
 <br>
 
 ## <a name="successerror-conditions"></a>Sikeres/meghiúsult feltételek
+
 HTTP-állapot | Ok | Válasz
 -----------|----------|--------
-**200**         |Siker | Lebegőpontos szám
+**200**         |Sikeres | Lebegőpontos szám
 **400**         | Hibás kérés vagy a kérelem érvénytelen | Hibaüzenet      
 **500**         |Belső kiszolgálóhiba | Hibaüzenet
 **Túllépte az időkorlátot**     | A kérelem túllépte az időkorlátot.  | Hibaüzenet
+
 <br>
+
 ## <a name="example-calculate-similarity-of-two-partial-abstracts"></a>Példa: Hasonlósági, két részben kivonatok számítása
 #### <a name="request"></a>Kérés:
 ```

@@ -14,11 +14,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
 ms.openlocfilehash: 8901855ad68a5edb4710853dcde9311216fa2d61
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357093"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60862134"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Gyors útmutató: A Visual Studio Code használatával csatlakozhat, és Azure SQL Database-adatbázis lekérdezéséhez
 
@@ -26,7 +26,7 @@ ms.locfileid: "59357093"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure SQL Database-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
+- Azure SQL-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
@@ -93,7 +93,7 @@ A Visual Studio Code-ban a nyelvmód beállítása **SQL** mssql-parancsok és a
 
 ## <a name="connect-to-your-database"></a>Csatlakozás az adatbázishoz
 
-A Visual Studio Code segítségével kapcsolatot hozhat létre az Azure SQL Database-kiszolgálóval.
+A Visual Studio Code segítségével kapcsolatot hozhat létre az Azure SQL-adatbáziskiszolgálóval.
 
 > [!IMPORTANT]
 > A folytatás előtt győződjön meg arról, hogy a kiszolgáló, és jelentkezzen be az információkat, készen áll. Ha elkezdi beírni a csatlakozási profil információit, ha módosítja a fókuszt a Visual Studio Code-ból, akkor indítsa újra a profil létrehozásához.

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: diberry
 ms.openlocfilehash: 5abc2026362e19b406b34a4321e766c3229cc0b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894183"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60813631"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Létrehozási és -végpont felhasználói hozzáférés
 Authoring hozzáférés tulajdonosok és a közreműködők érhető el. Saját alkalmazások esetén végponti hozzáférés tulajdonosai és a közreműködők érhető el. Egy nyilvános alkalmazás végponti hozzáférés érhető el mindenki számára, amelyek a saját LUIS-fiókkal rendelkezik, és a nyilvános alkalmazás-azonosítóval rendelkezik. 

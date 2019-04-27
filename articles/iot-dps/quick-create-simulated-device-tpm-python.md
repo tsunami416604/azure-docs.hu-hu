@@ -11,11 +11,11 @@ manager: timlt
 ms.devlang: python
 ms.custom: mvc
 ms.openlocfilehash: 186bd272fdca20475686847dc4e86b8ad50e5e41
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58080964"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61257371"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Szimulált TPM-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült Python eszközoldali SDK-val
 
@@ -74,15 +74,15 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 
 1. Nyissa meg a *cmake* mappában létrehozott `azure_iot_sdks.sln` nevű megoldást, és építse fel azt a Visual Studióban.
 
-1. Kattintson a jobb gombbal a **tpm_device_provision** projektre, és válassza a **Set as Startup Project** (Beállítás kezdőprojektként) lehetőséget. Futtassa a megoldást. A kimeneti ablak megjeleníti az eszközök beléptetéséhez szükséges **_ellenőrzőkulcsot_** és **_regisztrációs azonosítót_**. Jegyezze fel ezeket az értékeket. 
+2. Kattintson a jobb gombbal a **tpm_device_provision** projektre, és válassza a **Set as Startup Project** (Beállítás kezdőprojektként) lehetőséget. Futtassa a megoldást. A kimeneti ablak megjeleníti az eszközök beléptetéséhez szükséges **_ellenőrzőkulcsot_** és **_regisztrációs azonosítót_**. Jegyezze fel ezeket az értékeket. 
 
     ![A TPM beállítása](./media/python-quick-create-simulated-device/tpm-setup.png)
 
-1. Jelentkezzen be az Azure Portalra, a bal oldali menüben kattintson a **Minden erőforrás** gombra, és nyissa meg a Device Provisioning Service-t.
+3. Jelentkezzen be az Azure Portalra, a bal oldali menüben kattintson a **Minden erőforrás** gombra, és nyissa meg a Device Provisioning Service-t.
 
-1. Az eszközkiépítési szolgáltatás összefoglalás panelén válassza a **Beléptetések kezelése** lehetőséget. Válassza az **Egyéni regisztrációk** fület, és kattintson a felül lévő **Egyéni regisztráció hozzáadása** gombra. 
+4. Az eszközkiépítési szolgáltatás összefoglalás panelén válassza a **Beléptetések kezelése** lehetőséget. Válassza az **Egyéni regisztrációk** fület, és kattintson a felül lévő **Egyéni regisztráció hozzáadása** gombra. 
 
-1. A **Regisztráció hozzáadása** alatt adja meg a következő információkat:
+5. A **Regisztráció hozzáadása** alatt adja meg a következő információkat:
    - Válassza a **TPM** elemet az identitás igazolási *Mechanizmusaként*.
    - Írja be a TPM-eszköz *Regisztrációs azonosítóját* és *Ellenőrzőkulcsát*. 
    - Válassza ki a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
@@ -100,7 +100,7 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 1. Töltse le és telepítse a [Python 2.x-es vagy 3.x-es verzióját](https://www.python.org/downloads/). Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változókhoz.
     - Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagra](https://www.microsoft.com/download/confirmation.aspx?id=48145) van szükség a Python natív DLL-jei használatához.
 
-1. A Python-csomagok létrehozásához kövesse [ezeket az utasításokat](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md).
+2. A Python-csomagok létrehozásához kövesse [ezeket az utasításokat](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md).
 
    > [!NOTE]
    > A `build_client.cmd` futtatása esetén mindenképp használja a `--use-tpm-simulator` jelzőt.
@@ -108,13 +108,13 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
    > [!NOTE]
    > A `pip` használata esetén mindenképp telepítse az `azure-iot-provisioning-device-client` csomagot is. Vegye figyelembe, hogy a kiadott PIP-csomagok az igazi TPM-et használják, nem a szimulátort. A szimulátor használatához a fordítást a `--use-tpm-simulator` jelzőt használva a forrásból kell elvégeznie.
 
-1. Lépjen a mintákat tartalmazó mappára.
+3. Lépjen a mintákat tartalmazó mappára.
 
     ```cmd/sh
     cd azure-iot-sdk-python/provisioning_device_client/samples
     ```
 
-1. A Python IDE használatával módosítsa a **provisioning\_device\_client\_sample.py** nevű Python-szkriptet. Módosítsa a *GLOBAL\_PROV\_URI* és az *ID\_SCOPE* változót a korábban feljegyzett értékekre. Arról is győződjön meg, hogy a *SECURITY\_DEVICE\_TYPE* változó `ProvisioningSecurityDeviceType.TPM` értékre van állítva.
+4. A Python IDE használatával módosítsa a **provisioning\_device\_client\_sample.py** nevű Python-szkriptet. Módosítsa a *GLOBAL\_PROV\_URI* és az *ID\_SCOPE* változót a korábban feljegyzett értékekre. Arról is győződjön meg, hogy a *SECURITY\_DEVICE\_TYPE* változó `ProvisioningSecurityDeviceType.TPM` értékre van állítva.
 
     ```python
     GLOBAL_PROV_URI = "{globalServiceEndpoint}"
@@ -125,17 +125,17 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 
     ![Szolgáltatás adatai](./media/python-quick-create-simulated-device/extract-dps-endpoints.png)
 
-1. Futtassa a mintát. 
+5. Futtassa a mintát. 
 
     ```cmd/sh
     python provisioning_device_client_sample.py
     ```
 
-1. Figyelje meg az eszköz rendszerindítását szimuláló és az eszközkiépítési szolgáltatáshoz az IoT Hub információk lekérése érdekében kapcsolódó üzeneteket. 
+6. Figyelje meg az eszköz rendszerindítását szimuláló és az eszközkiépítési szolgáltatáshoz az IoT Hub információk lekérése érdekében kapcsolódó üzeneteket. 
 
     ![Sikeres regisztráció](./media/python-quick-create-simulated-device/registration-success.png)
 
-1. Ha sikeresen kiépíti a szimulált eszközt a kiépítési szolgáltatáshoz csatolt IoT Hubon, az eszköz azonosítója megjelenik a hub **Device Explorer** panelén.
+7. Ha sikeresen kiépíti a szimulált eszközt a kiépítési szolgáltatáshoz csatolt IoT Hubon, az eszköz azonosítója megjelenik a hub **Device Explorer** panelén.
 
     ![Az eszköz regisztrálva van az IoT Hubbal](./media/python-quick-create-simulated-device/hubregistration.png) 
 

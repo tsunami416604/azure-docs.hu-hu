@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 08/10/2018
+origin.date: 08/10/2018
+ms.date: 12/03/2018
 ms.author: apimpm
 ms.openlocfilehash: 0f2b45685d2976c567c16666e2ca89d334914b63
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417293"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62112533"
 ---
 # <a name="create-and-publish-a-product"></a>Termékek létrehozása és közzététele  
 
@@ -36,8 +37,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 + Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
-+ Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
-+ Végezze el a következő oktatóanyagot is: [Az első API importálása és közzététele](import-and-publish.md).
++ Hajtsa végre a következő rövid útmutatót: [Az Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
++ Ezenkívül hajtsa végre a következő oktatóanyaggal: [Az első API importálása és közzététele](import-and-publish.md).
 
 ## <a name="create-and-publish-a-product"></a>Termékek létrehozása és közzététele
 

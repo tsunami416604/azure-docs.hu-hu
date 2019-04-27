@@ -1,6 +1,6 @@
 ---
-title: Go használata Azure SQL Database-adatbázis lekérdezéséhez | Microsoft Docs
-description: Hozzon létre a Go használatával egy programot, amely csatlakozik egy Azure SQL Database-adatbázishoz, majd Transact-SQL-utasítások használatával kérdezze le és módosítsa az adatokat.
+title: Go használata az Azure SQL Database lekérdezéséhez | Microsoft Docs
+description: Hozzon létre a Go használatával egy programot, amely csatlakozik egy Azure SQL-adatbázishoz, majd Transact-SQL-utasítások használatával kérdezze le és módosítsa az adatokat.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -13,11 +13,11 @@ ms.reviewer: MightyPen
 manager: craigg
 ms.date: 02/12/2019
 ms.openlocfilehash: 0014dc0edde0eafc153b40eec06c6bd6dc8446b5
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447865"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61409105"
 ---
 # <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Gyors útmutató: Golang használata Azure SQL Database-adatbázis lekérdezéséhez
 
@@ -27,7 +27,7 @@ Ez a rövid útmutatóban használni kívánt a [Golang](https://godoc.org/githu
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-- Azure SQL Database-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
+- Azure SQL-adatbázis. Az alábbi rövid útmutatókban hozhat létre, és válassza az Azure SQL Database egy adatbázis is használja:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
@@ -328,7 +328,7 @@ Az Azure SQL-adatbázishoz való csatlakozáshoz szükséges kapcsolati informá
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az első SQL Database-adatbázis megtervezése](sql-database-design-first-database.md)
+- [Az első Azure SQL-adatbázis megtervezése](sql-database-design-first-database.md)
 - [A Microsoft SQL Server Golang-illesztőprogram](https://github.com/denisenkom/go-mssqldb)
 - [Problémák jelentése és kérdezés](https://github.com/denisenkom/go-mssqldb/issues)
 

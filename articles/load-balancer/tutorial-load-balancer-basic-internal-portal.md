@@ -16,11 +16,11 @@ ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
 ms.openlocfilehash: 56568cfb8fc659308475e581955e5acbdfd32b44
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489314"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61318450"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Oktatóanyag: Egyenleg belső bejövő forgalmának terhelés egy alapszintű load balancer az Azure Portalon
 
@@ -95,7 +95,7 @@ Alapszintű belső load balancer létrehozása a portál használatával. A név
     | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupLB* a szövegmezőben.|
     | Name (Név)                   | *myLoadBalancer*                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
-    | Typo          | Válassza ki **belső**.                                        |
+    | Típus          | Válassza ki **belső**.                                        |
     | SKU           | Válassza az **Alapszintű** lehetőséget.                          |
     | Virtuális hálózat           | Válassza ki *MyVNet*.                          |    
     | IP-címkiosztás              | Válassza ki **statikus**.   |

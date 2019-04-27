@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: 38b4aa4c899668a68041f042ce6981ddd8c58219
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884919"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61340196"
 ---
 # <a name="conference-series-entity"></a>Konferencia sorozat entitás
 
 <sub> * A következő attribútumok konferencia sorozat entitás jellemzőek. (Folyó évi = "3") </sub>
 
-Name (Név)    |Leírás                            |Typo       | Műveletek
+Name (Név)    |Leírás                            |Típus       | Műveletek
 ------- | ------------------------------------- | --------- | ----------------------------
 Azonosító      |Entitásazonosító                              |Int64      |Egyenlő
 CN      |Konferenciasorozat normalized neve      |String     |Egyenlő
