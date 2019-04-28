@@ -1,19 +1,18 @@
 ---
 title: Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök
 description: Ismerje meg, hogyan használható az Azure Data Lake Storage Gen2 Azure HDInsight-fürtökkel.
-services: hdinsight
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 43f335bdd8b918fa717d9084d3c9c30d97920c10
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 6452e73b2429ab89a466b1c3b59cc892eca31205
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004958"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766919"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtök
 
@@ -69,7 +68,7 @@ A felügyelt identitás hozzárendelése a **Storage Blob adatok tulajdonosa** s
         ![A Data Lake Storage Gen2 használata Azure HDInsight identitás](./media/hdinsight-hadoop-data-lake-storage-gen2/managed-identity-cluster-creation.png)
         
 > [!Note]
-> Egy vagy több Data Lake Storage Gen2 fiók ugyanazon a fürtön másodlagos tárolóként adhat hozzá. Egyszerűen ismételje meg a fenti lépéseket minden Data Lake Storage Gen2-fiókkal, amely szeretne hozzáadni az azonos felügyelt identitások használatával.
+> Adjon hozzá egy másodlagos Data Lake Storage Gen2-fiókot, a storage-fiók szintjén, egyszerűen rendelje hozzá a korábban létrehozott új Data Lake Storage Gen2 storage-fiókhoz hozzáadni kívánt felügyelt identitás. Meg kell azt javasoljuk, hogy a HDInsight ad hozzá egy másodlagos Data Lake Storage Gen2-fiókot a "további tárfiókok" panelen keresztül nem támogatott. 
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>A fürt létrehozása a Data Lake Storage Gen2 az Azure CLI-n keresztül
 

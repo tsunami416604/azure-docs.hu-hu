@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.date: 01/31/2017
-ms.openlocfilehash: 6665ea8bc4016c9d64005f9c742115cf785ed5ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: f06e213dbae31c9d7c4e212d605cc962aba71d2d
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842138"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766521"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>B2B vállalati integráció az Azure Logic Apps Enterprise Integration Pack Exchange X12 üzenete
 
@@ -53,11 +53,11 @@ Miután [integrációs fiók létrehozása](../logic-apps/logic-apps-enterprise-
 4. Válassza ki **áttekintése**, majd válassza ki a **szerződések** csempére. 
    Ha nem rendelkezik egy szerződés-csempét, először adja hozzá a csempét. 
 
-   ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
+   ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-x12/agreement-1.png)
 
 5. A **szerződések**, válassza a **Hozzáadás**.
 
-   ![Válassza az "Add"](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
+   ![Válassza az "Add"](./media/logic-apps-enterprise-integration-x12/agreement-2.png)     
 
 6. Alatt **Hozzáadás**, adjon meg egy **neve** esetében a szerződés hatálya alá. 
    A szerződés típusának kiválasztása **X12**. 
@@ -122,7 +122,7 @@ Válassza ki az egyes tranzakciótípus (ST1) és a küldő alkalmazás (GS2) s�
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Verzió |Válassza ki a X12 verzió |
+| Version |Válassza ki a X12 verzió |
 | Tranzakció típusa (ST01) |Jelölje be a tranzakció típusa |
 | Küldő alkalmazás (GS02) |Válassza ki a küldő alkalmazást |
 | Séma |Válassza ki a használni kívánt fájl. Sémákat az integrációs fiók kerülnek. |
@@ -216,7 +216,7 @@ Most már a szerződés elkészült kezelésére, amelyek megfelelnek a kiválas
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Verzió |Válassza ki a X12 verzió |
+| Version |Válassza ki a X12 verzió |
 | Tranzakció típusa (ST01) |Jelölje be a tranzakció típusa |
 | SCHEMA |Válassza ki a használandó sémát. Sémákat az integrációs fiókjában található. Ha először válassza ki a sémát, a rendszer automatikusan beállítja verziója és a tranzakció típusa  |
 

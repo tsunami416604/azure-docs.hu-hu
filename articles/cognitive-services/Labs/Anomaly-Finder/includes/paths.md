@@ -11,11 +11,11 @@ ms.date: 04/13/2018
 ms.author: chliang
 ms.custom: include file
 ms.openlocfilehash: 80503ad154a9fc4d01614ffd2816f9d5fd497fdb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228891"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309501"
 ---
 <a name="paths"></a>
 ## <a name="paths"></a>Elérési utak
@@ -29,7 +29,7 @@ POST /anomalydetection
 
 #### <a name="parameters"></a>Paraméterek
 
-|Typo|Name (Név)|Leírás|Séma|
+|Típus|Name (Név)|Leírás|Séma|
 |---|---|---|---|
 |**Törzs**|**body**  <br>*Szükséges*|A time series adatpontok és az időszakot, ha szükséges.|[Kérelem](#request)|
 

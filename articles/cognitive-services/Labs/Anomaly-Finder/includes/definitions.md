@@ -11,11 +11,11 @@ ms.date: 04/13/2018
 ms.author: chliang
 ms.custom: include file
 ms.openlocfilehash: 5ad589c4adb60369f81979e214935f73d9eb0755
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228900"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309508"
 ---
 <a name="definitions"></a>
 ## <a name="definitions"></a>Meghatározások
@@ -50,7 +50,7 @@ ms.locfileid: "55228900"
 |**LowerMargin**  <br>*optional*|(ExpectedValue - LowerMargin) meghatározza, hogy az alsó határ értékének adatpont van továbbra is úgy Gondoltuk szokásos módon. Ha a bemeneti adatok pontok növekvő-tárhelyek időbélyegző szerint vannak rendezve, az index a tömb való leképezéséhez a várt érték és az eredeti érték használható.|< szám (dupla) > tömb|
 |**Időszak**  <br>*optional*|Az időszak, amely az API-t az anomáliadetektálási pontok észleléséhez használt.|szám (float)|
 |**UpperMargin**  <br>*optional*|ExpectedValue és UpperMargin összege határozza meg, hogy a felső határa, amely adatpont van továbbra is úgy Gondoltuk szokásos módon. Ha a bemeneti adatok pontok növekvő-tárhelyek időbélyegző szerint vannak rendezve, az index a tömb való leképezéséhez a várt érték és az eredeti érték használható.|< szám (dupla) > tömb|
-|**WarningText**  <br>*optional*|Ha a megadott bemeneti adatok pontok nem követi a szabályt, amely az API-t igényel, és az adatok továbbra is észlelik az API-t, az API az adatok elemzését, és fűzze hozzá a figyelmeztető információkat ebben a mezőben.|sztring|
+|**WarningText**  <br>*optional*|Ha a megadott bemeneti adatok pontok nem követi a szabályt, amely az API-t igényel, és az adatok továbbra is észlelik az API-t, az API az adatok elemzését, és fűzze hozzá a figyelmeztető információkat ebben a mezőben.|string|
 
 
 

@@ -6,14 +6,14 @@ author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 10/04/2018
+ms.date: 04/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 0bc43b82a987ab065677bdbb56de73ef341c249d
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: MT
+ms.openlocfilehash: 233b26b330fabe7da8664114ba1857f74feea4bc
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752126"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764275"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Hozzon létre egy virtuálisgép-készletek egyéni rendszerkép használatával 
 
@@ -48,9 +48,9 @@ A forgatókönyv konfigurált egyéni rendszerkép használatával megadhat töb
 
 Az Azure-ban előkészítheti egy felügyelt rendszerképet egy Azure virtuális gép operációsrendszer- és adatlemezek pillanatképeiből, általánosított virtuális gépből az Azure managed disks szolgáltatással vagy feltöltött helyszíni általánosított virtuális merevlemezből. A Batch-készletek egyéni rendszerképpel megbízhatóan méretezheti, javasoljuk, hogy létrehozása egy felügyelt rendszerképet használó *csak* az első módszer: a Virtuálisgép-lemezek pillanatképei. Lásd az alábbi lépéseket egy virtuális gép előkészítése, a pillanatkép készítése és a rendszerkép létrehozása a pillanatképből. 
 
-### <a name="prepare-a-vm"></a>A virtuális gép előkészítése 
+### <a name="prepare-a-vm"></a>A virtuális gép előkészítése
 
-A lemezkép egy új virtuális Gépet hoz létre, ha használja az Azure Marketplace-rendszerképpel, mint az alaprendszerképet a felügyelt rendszerkép támogatja a kötegelt és testre szabni.  Azure Batch által támogatott Azure Marketplace-en képhivatkozásokkal listájának lekéréséhez tekintse meg a [lista csomóponti ügynök SKU-k](/rest/api/batchservice/account/listnodeagentskus) műveletet. 
+A kép egy új virtuális Gépet hoz létre, ha első fél Azure Marketplace-rendszerkép használata az alaprendszerképet a felügyelt lemezkép számára, támogatja a kötegelt. Belső rendszerképeket csak akár alaprendszerképként is használható. Azure Batch által támogatott Azure Marketplace-en képhivatkozásokkal teljes listájának lekéréséhez tekintse meg a [lista csomóponti ügynök SKU-k](/rest/api/batchservice/account/listnodeagentskus) műveletet.
 
 > [!NOTE]
 > További licenc és az alaplemezkép beszerzési feltételek rendelkező külső lemezképe nem használható. A Marketplace-rendszerképek kapcsolatos információkért tekintse meg az útmutató a [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
@@ -78,6 +78,7 @@ Miután mentette az egyéni rendszerkép, és ismeri az erőforrás-azonosító 
 > [!NOTE]
 > Ha hoz létre a készletet a Batch API-k egyikével, ügyeljen arra, hogy az identitás AAD-hitelesítést használ a jogosult a rendszerkép-erőforráshoz. Lásd: [az Active Directory hitelesítést Batch-szolgáltatási megoldások](batch-aad-auth.md).
 >
+> Az erőforrás a felügyelt rendszerkép léteznie kell a készlet teljes élettartama. Ha az alapul szolgáló erőforrás törölve van, a készlet nem lehet méretezni. 
 
 1. Az Azure portálon lépjen Batch-fiókjára. Ez a fiók az erőforráscsoport, amely tartalmazza az egyéni rendszerkép azonos előfizetésben és régióban kell lennie. 
 2. Az a **beállítások** ablak bal oldalán válassza ki a **készletek** menüpontot.
@@ -109,6 +110,16 @@ Vegye figyelembe a következőket is:
 - **Átméretezés időtúllépése** : Ha a készlet tartalmaz egy rögzített csomópontok száma (nem az automatikus skálázási), növelje a készlet például 20 – 30 perc értékre resizeTimeout tulajdonságát. Ha a készlet nem éri el a cél méretét az időkorláton belül, hajtson végre egy újabb [átméretezési művelet](/rest/api/batchservice/pool/resize).
 
   Ha több mint 300 számításicsomópont-készlet, szüksége lehet elérni a célméretet többször is feldolgozza a készlet átméretezése.
+
+## <a name="considerations-for-using-packer"></a>Szempontok a Packer használatával
+
+Egy felügyelt rendszerképet erőforrás létrehozása közvetlenül a Packer csak a felhasználói előfizetés mód Batch-fiókok teheti meg. A Batch szolgáltatás mód fiókokat kell először hozzon létre egy virtuális Merevlemezt, majd a virtuális Merevlemezt importálhat egy felügyelt rendszerképet erőforrás. Attól függően, a készletlefoglalási mód (felhasználói előfizetés, vagy a Batch szolgáltatás) a lépéseket, hozzon létre egy felügyelt rendszerképet erőforrást függ.
+
+Győződjön meg arról, hogy az egyéni rendszerkép hivatkozó bármely készlet a élettartamának felügyelt rendszerkép létrehozásához használja az erőforrás létezik-e. Ezt is eredményez a készlet lefoglalási hibák és/vagy hibák átméretezése. 
+
+Ha a kép vagy a mögöttes erőforrások távolítja el, előfordulhat, hogy hibaüzenetet kap hasonló: `There was an error encountered while performing the last resize on the pool. Please try resizing the pool again. Code: AllocationFailed`. Ha ez történik, győződjön meg arról, hogy az alapul szolgáló erőforrás nem el lett távolítva.
+
+A virtuális gép létrehozása a Packer használatával további információkért lásd: [hozhat létre egy Linux-rendszerképek létrehozása a Packer](../virtual-machines/linux/build-image-with-packer.md) vagy [hozhat létre egy Windows-rendszerképek létrehozása a Packer](../virtual-machines/windows/build-image-with-packer.md).
 
 ## <a name="next-steps"></a>További lépések
 

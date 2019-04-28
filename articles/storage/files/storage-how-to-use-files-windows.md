@@ -2,18 +2,18 @@
 title: Azure-fájlmegosztás használata Windowson | Microsoft Docs
 description: Az Azure-fájlmegosztások használata Windowson és Windows Serveren.
 services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/07/2018
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 315bad5c4ffc3d5e8909c86cb8de703e9cb941b0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: ae097cb1c778c0ad60512753ae6ef28da04e8004
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048843"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764378"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure-fájlmegosztás használata Windowson
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások zökkenőmentesen használhatóak Windowson és Windows Serveren. Ebben a cikkben az Azure-fájlmegosztások Windowson és Windows Serveren való használatának szempontjairól olvashat.
@@ -237,13 +237,13 @@ A következő táblázat részletes leírást ad az SMB 1 állapotáról minden 
 | Windows Server 2019 (előzetes verzió)             | Letiltva             | Eltávolítás Windows-funkcióval |
 | Windows Server, 1709+ verziók            | Letiltva             | Eltávolítás Windows-funkcióval |
 | Windows 10, 1709+ verziók                | Letiltva             | Eltávolítás Windows-funkcióval |
-| Windows Server 2016                       | Engedélyezve              | Eltávolítás Windows-funkcióval |
-| Windows 10, 1507-es, 1607-es és 1703-as verziók | Engedélyezve              | Eltávolítás Windows-funkcióval |
-| Windows Server 2012 R2                    | Engedélyezve              | Eltávolítás Windows-funkcióval | 
-| Windows 8.1                               | Engedélyezve              | Eltávolítás Windows-funkcióval | 
-| Windows Server 2012                       | Engedélyezve              | Letiltás a beállításjegyzékkel       | 
-| Windows Server 2008 R2                    | Engedélyezve              | Letiltás a beállításjegyzékkel       |
-| Windows 7                                 | Engedélyezve              | Letiltás a beállításjegyzékkel       | 
+| Windows Server 2016                       | Enabled              | Eltávolítás Windows-funkcióval |
+| Windows 10, 1507-es, 1607-es és 1703-as verziók | Enabled              | Eltávolítás Windows-funkcióval |
+| Windows Server 2012 R2                    | Enabled              | Eltávolítás Windows-funkcióval | 
+| Windows 8.1                               | Enabled              | Eltávolítás Windows-funkcióval | 
+| Windows Server 2012                       | Enabled              | Letiltás a beállításjegyzékkel       | 
+| Windows Server 2008 R2                    | Enabled              | Letiltás a beállításjegyzékkel       |
+| Windows 7                                 | Enabled              | Letiltás a beállításjegyzékkel       | 
 
 ### <a name="auditing-smb-1-usage"></a>Az SMB 1 használatának naplózása
 > Érintett kiadások: Windows Server 2019 (előzetes verzió), Windows Server félévi csatorna (1709-es és 1803-as verzió), Windows Server 2016, Windows 10 (1507-es, 1607-es, 1703-as, 1709-es és 1803-as verzió), Windows Server 2012 R2 és Windows 8.1

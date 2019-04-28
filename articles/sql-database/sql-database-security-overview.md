@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 04/11/2019
-ms.openlocfilehash: cb4ff203a69e04aeaff6d446d6ce3719f4158305
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: f466a1c3fd0b2d527fc4ab407d096f6bb9b7d8b9
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001082"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766904"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database biztonsági lehetőségeinek áttekintése
 
@@ -47,7 +47,7 @@ IP-tűzfalszabályainak minden kérés eredeti IP-címe alapján adatbázisokhoz
 > [!IMPORTANT]
 > Adatbázisok és az Azure database-kiszolgálók kezelése a portál felhasználói fiókjának szerepkör-hozzárendelések vezérlik majd. Ez a cikk további információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Portalon](../role-based-access-control/overview.md).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 Hitelesítés az a folyamat, amely igazolja, a felhasználó, akinek lennie. Az Azure SQL Database két hitelesítési típust támogat:
 
@@ -66,19 +66,17 @@ Hitelesítés az a folyamat, amely igazolja, a felhasználó, akinek lennie. Az 
 > [!IMPORTANT]
 > A portál felhasználói fiókjának szerepkör-hozzárendelések kezeléséhez az adatbázisok és kiszolgálók Azure-ban vezérli. Ez a cikk további információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Portalon](../role-based-access-control/overview.md). Hozzáférés-tűzfalszabályokkal does *nem* a alkalmazni **felügyelt példány**. További információt a következő [csatlakozik a felügyelt példány](sql-database-managed-instance-connect-app.md) bővebben a hálózati konfiguráció szükséges.
 
-Engedélyezési hivatkozik az Azure SQL Database a felhasználóhoz rendelt engedélyeket, és meghatározza, hogy mi a felhasználó számára engedélyezett. Engedélyek hozzáadása a felhasználói fiókok által vezérelt [adatbázis-szerepkörök](/sql/relational-databases/security/authentication-access/database-level-roles) adatbázisszintű engedélyeket, vagy a bizonyos felhasználói definiáló [objektumszintű engedélyei](/sql/relational-databases/security/permissions-database-engine). További információkért lásd: [bejelentkezések és felhasználók](sql-database-manage-logins.md)
+## <a name="authorization"></a>Engedélyezés
 
-Ajánlott eljárásként felhasználók hozzáadása a szerepkörhöz a legkevesebb jogosultsággal ehhez a munkakörhöz szükséges. A kiszolgálói rendszergazdai fiók tagja a db_owner szerepkör, amely széles körű engedélyekkel rendelkezik, és kell biztosítani a felhasználók használja. Alkalmazások az Azure SQL Database használatakor használjon [alkalmazás-szerepkörök](/sql/relational-databases/security/authentication-access/application-roles) korlátozott engedélyekkel. Ez biztosítja, hogy az alkalmazás csatlakozik az adatbázishoz az alkalmazás számára szükséges lehető legkevesebb jogosultsággal rendelkezik-e.
+Engedélyezési hivatkozik az Azure SQL Database a felhasználóhoz rendelt engedélyeket, és meghatározza, hogy mi a felhasználó számára engedélyezett. Engedélyek hozzáadása a felhasználói fiókok által vezérelt [adatbázis-szerepkörök](/sql/relational-databases/security/authentication-access/database-level-roles) és adatbázisszintű engedélyek hozzárendelése a ezeket a szerepköröket, vagy azzal a felhasználói bizonyos [objektumszintű engedélyei](/sql/relational-databases/security/permissions-database-engine). További információkért lásd: [bejelentkezések és felhasználók](sql-database-manage-logins.md)
+
+Ajánlott eljárásként hozzon létre egyéni szerepkörök szükség esetén. Felhasználók hozzáadása a szerepkörhöz a legkevesebb jogosultsággal ehhez a munkakörhöz szükséges. Ne rendeljen engedélyeket közvetlenül a felhasználók számára. A kiszolgálói rendszergazdai fiók tagja a beépített db_owner szerepkör, amely széles körű engedélyekkel rendelkezik, és csak jogot kell biztosítani a felügyeleti feladatkörök néhány felhasználó számára. Az Azure SQL Database-alkalmazások esetében használja a [EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql) adja meg a végrehajtási környezetet a nevű modul, vagy használjon [alkalmazás-szerepkörök](/sql/relational-databases/security/authentication-access/application-roles) korlátozott engedélyekkel. Ez az eljárás biztosítja, hogy az alkalmazás, amely csatlakozik az adatbázishoz az alkalmazás számára szükséges lehető legkevesebb jogosultsággal. Ajánlott eljárások követésével elősegíti a feladatkörök.
 
 ### <a name="row-level-security"></a>Sorszintű biztonság
 
-Sorszintű biztonság lehetővé teszi, hogy az ügyfelek számára, hogy szabályozzák egy adatbázistábla soraihoz (például csoporttagság vagy végrehajtási környezet) lekérdezést végrehajtó felhasználó jellemzői alapján való hozzáférést. További információkat a [sorszintű biztonsággal kapcsolatos](/sql/relational-databases/security/row-level-security) részben találhat.
+Sorszintű biztonság lehetővé teszi, hogy az ügyfelek számára, hogy szabályozzák egy adatbázistábla soraihoz (például csoporttagság vagy végrehajtási környezet) lekérdezést végrehajtó felhasználó jellemzői alapján való hozzáférést. Sorszintű biztonság is használható egyéni címke-alapú biztonsági alapelvek megvalósításához. További információkat a [sorszintű biztonsággal kapcsolatos](/sql/relational-databases/security/row-level-security) részben találhat.
 
 ![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
-
-  Ezt a hitelesítési módszert használ, egy felhasználónevet és jelszót. 
-
-Az Azure SQL Database engedélyekkel áttekintését lásd: [bejelentkezések és felhasználók](sql-database-manage-logins.md#permissions)
 
 ## <a name="threat-protection"></a>Fenyegetések elleni védelem
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9b5b151c62c4294563f704dc9a0cf7daeaca874f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: ac7b662bc9ef4f3ae675c4cbde18e159383d3d8e
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279975"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63767011"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Paramétereknek dinamikus tervezetek létrehozása
 
@@ -169,7 +169,7 @@ Létrehozás **statikus paraméterek** összetevőt a hasonló, de használata h
 
 ### <a name="dynamic-parameters"></a>Dinamikus paraméterek
 
-Ennek az ellenkezője, egy statikus paraméter egy **dinamikus paraméterek**. Ez a paraméter nincs definiálva a tervezet, de ehelyett minden egyes a tervezet-hozzárendelés során van definiálva. Használja az erőforrás csoport példában egy **dinamikus paraméterek** megfelel az erőforráscsoport nevét. Biztosít minden a tervezet-hozzárendelés egy másik nevet.
+Ennek az ellenkezője, egy statikus paraméter egy **dinamikus paraméterek**. Ez a paraméter nincs definiálva a tervezet, de ehelyett minden egyes a tervezet-hozzárendelés során van definiálva. Használja az erőforrás csoport példában egy **dinamikus paraméterek** megfelel az erőforráscsoport nevét. Biztosít minden a tervezet-hozzárendelés egy másik nevet. Tervrajz funkciók listáját lásd: a [funkciók tervezetet](../reference/blueprint-functions.md) hivatkozást.
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>A portál dinamikus paraméterek beállítása
 
@@ -185,9 +185,7 @@ Ennek az ellenkezője, egy statikus paraméter egy **dinamikus paraméterek**. E
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>REST API-ból a dinamikus paraméterek beállítása
 
-Beállítás **dinamikus paraméterek** a hozzárendelés során végezhető el közvetlenül írja be az értéket.
-Függvény, mint például helyett `parameters()`, a megadott érték egy megfelelő karakterláncot.
-Összetevők erőforráscsoport van megadva a "sablon neve" **neve**, és **hely** tulajdonságait. A csomagban foglalt összetevő összes többi paraméter meghatározása a **paraméterek** az egy **\<neve\>** és **érték** kulcspárt. Ha a dinamikus paraméterek, amelyek a hozzárendelés során nincs megadva a tervezet van konfigurálva, a hozzárendelés sikertelen lesz.
+Beállítás **dinamikus paraméterek** a hozzárendelés során végezhető el közvetlenül írja be az értéket. Függvény, mint például helyett [parameters()](../reference/blueprint-functions.md#parameters), a megadott érték egy megfelelő karakterláncot. Összetevők erőforráscsoport van megadva a "sablon neve" **neve**, és **hely** tulajdonságait. A csomagban foglalt összetevő összes többi paraméter meghatározása a **paraméterek** az egy **\<neve\>** és **érték** kulcspárt. Ha a dinamikus paraméterek, amelyek a hozzárendelés során nincs megadva a tervezet van konfigurálva, a hozzárendelés sikertelen lesz.
 
 - REST API URI
 
@@ -240,6 +238,7 @@ Függvény, mint például helyett `parameters()`, a megadott érték egy megfel
 
 ## <a name="next-steps"></a>További lépések
 
+- Listájának megtekintéséhez [funkciók tervezetet](../reference/blueprint-functions.md).
 - Tudnivalók a [tervek életciklusáról](lifecycle.md).
 - A [tervekkel kapcsolatos műveleti sorrend](sequencing-order.md) testreszabásának elsajátítása.
 - A [tervek erőforrás-zárolásának](resource-locking.md) alkalmazásával kapcsolatos részletek.

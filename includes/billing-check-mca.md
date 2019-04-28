@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
 ms.openlocfilehash: d3dfe51ce65aa24cf3d0a4d1fa4b6a9cd203b7e4
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57248967"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370936"
 ---
 Ellenőrizze a Szerződés típus megállapításához, hogy a Microsoft vevői szerződéssel rendelkezik számlázási fiókjához való hozzáférés.
 
 1. Jelentkezzen be az [Azure Portalra]( http://portal.azure.com).
 
-2. A Keresés **Cost Management és számlázás**.
+2. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 
    ![Az Azure portál keresési bemutató képernyőkép](./media/billing-check-mca/billing-search-cost-management-billing.png)
 

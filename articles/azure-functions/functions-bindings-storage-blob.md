@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: c1c20e225e15769a8cb09f60dfc371f4ec4d81f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3e67737e26edfee94a5a4d740d6c575817c66ff0
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306866"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766166"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Blob storage-kötések az Azure Functions szolgáltatáshoz
 
@@ -426,7 +426,7 @@ Az Azure Functions-tárolók visszaigazolások nevű tárolóban lévő blob *az
 * A blob neve
 * Az ETag címke (például egy blob verzió azonosítója: "0x8D1DC6E70A277EF")
 
-A blob újrafeldolgozás kényszerítéséhez blob fogadását, hogy a BLOB törlése a *azure-webjobs-gazdagépek* tároló manuálisan.
+A blob újrafeldolgozás kényszerítéséhez blob fogadását, hogy a BLOB törlése a *azure-webjobs-gazdagépek* tároló manuálisan. Amíg újrafeldolgozás előfordulhat, hogy nem történik meg azonnal, garantált arra, hogy később időben történnek.
 
 ## <a name="trigger---poison-blobs"></a>Eseményindító - ártalmas blobok
 
@@ -450,9 +450,13 @@ JavaScript és Java-funkciók a teljes blob betölti a memóriába, és C# funkc
 
 ## <a name="trigger---polling"></a>Trigger - lekérdezés
 
-Ha a figyelt blobtárolóban tartalmaz a több mint 10 000 BLOB (között az összes tárolót), a Functions runtime vizsgálatok a naplófájlok új vagy módosított blobok megtekintéshez. Ez a folyamat az késleltetések eredményezheti. Függvény előfordulhat, hogy nem első indul el, amíg több percet vagy hosszabb a blob létrehozása után. Emellett [tárolási naplók jönnek létre egy "ajánlott beavatkozást"](/rest/api/storageservices/About-Storage-Analytics-Logging) alapját. Nincs garancia arra, hogy rögzítve lesznek-e az összes eseményt. Bizonyos körülmények között a naplók kimaradhatnak.
+Ha a figyelt blobtárolóban tartalmaz a több mint 10 000 BLOB (között az összes tárolót), a Functions runtime vizsgálatok a naplófájlok új vagy módosított blobok megtekintéshez. Ez a folyamat az késleltetések eredményezheti. Függvény előfordulhat, hogy nem első indul el, amíg több percet vagy hosszabb a blob létrehozása után.
 
-Ha a gyorsabb és megbízhatóbb blob feldolgozás van szüksége, érdemes lehet létrehozni egy [üzenetsori üzenet](../storage/queues/storage-dotnet-how-to-use-queues.md) létrehozásakor, a blob. Ezután egy [üzenetsor eseményindító](functions-bindings-storage-queue.md) feldolgozni a blob blob eseményindító helyett. Egy másik lehetőség az, hogy az Event Grid; használata Lásd a következő oktatóanyagot [feltöltött Event Grid használatával képek átméretezésének automatizálása](../event-grid/resize-images-on-storage-blob-upload-event.md).
+> [!WARNING]
+> Emellett [tárolási naplók jönnek létre egy "ajánlott beavatkozást"](/rest/api/storageservices/About-Storage-Analytics-Logging) alapját. Nincs garancia arra, hogy rögzítve lesznek-e az összes eseményt. Bizonyos körülmények között a naplók kimaradhatnak.
+> 
+> Ha a gyorsabb és megbízhatóbb blob feldolgozás van szüksége, érdemes lehet létrehozni egy [üzenetsori üzenet](../storage/queues/storage-dotnet-how-to-use-queues.md) létrehozásakor, a blob. Ezután egy [üzenetsor eseményindító](functions-bindings-storage-queue.md) feldolgozni a blob blob eseményindító helyett. Egy másik lehetőség az, hogy az Event Grid; használata Lásd a következő oktatóanyagot [feltöltött Event Grid használatával képek átméretezésének automatizálása](../event-grid/resize-images-on-storage-blob-upload-event.md).
+>
 
 ## <a name="input"></a>Input (Bemenet)
 

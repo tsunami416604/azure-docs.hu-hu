@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
 ms.openlocfilehash: 2936fd318f08c74675f7e8b382c861f4a28319fc
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58261483"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60386310"
 ---
 Egy több adatlemez csatlakoztathat egy Azure virtuális gépen. A virtuális gép adatlemezek méretezhetőségi és Teljesítménycélok alapján, meghatározhatja a száma és típusa, amely csak szüksége lehet a teljesítményre és kapacitásra vonatkozó lemez.
 

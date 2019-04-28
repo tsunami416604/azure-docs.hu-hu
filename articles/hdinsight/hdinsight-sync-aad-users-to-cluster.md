@@ -1,7 +1,6 @@
 ---
 title: Azure HDInsight - fürthöz az Azure Active Directory-felhasználók szinkronizálása
 description: Egy fürtön az Azure Active Directory hitelesített felhasználók szinkronizálását.
-services: hdinsight
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
@@ -9,14 +8,14 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: ebb1e3614309f92fc21442100a13c53291b3acbb
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
-ms.translationtype: MT
+ms.openlocfilehash: 2be67c604bebbe9b4c4356e241d1480ca0778d4a
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407287"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764053"
 ---
-# <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Egy HDInsight-fürtön az Azure Active Directory-felhasználók szinkronizálása
+# <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory-felhasználók HDInsight-fürttel való szinkronizálása
 
 [HDInsight-fürtön vállalati biztonsági csomag (ESP)](hdinsight-domain-joined-introduction.md) is erős hitelesítés használata a felhasználók Azure Active Directory (Azure AD), valamint használja *szerepköralapú hozzáférés-vezérlés* (RBAC) házirendeket. Az Azure AD-felhasználók és csoportok hozzáadásakor, szinkronizálhatja a felhasználókat, akiknek szükség van a fürthöz való hozzáféréssel.
 
@@ -140,7 +139,7 @@ Nyissa meg a [Apache Ambari webes Kezelőfelületen](hdinsight-hadoop-manage-amb
 
 3. Az új felhasználó szerepelnie kell a felhasználók a táblán belül. A típusuk értéke `LDAP` helyett `Local`.
 
-    ![Felhasználók lapra](./media/hdinsight-sync-aad-users-to-cluster/users.png)
+    ![Felhasználók oldal](./media/hdinsight-sync-aad-users-to-cluster/users.png)
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>Jelentkezzen be az Ambari az új felhasználó
 

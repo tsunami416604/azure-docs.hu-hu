@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9a243dd236a8c499602a9070a7dd61e69541d58d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 7684ae6b4ddb6320efc62ef6f9963bef1b9a66fa
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256821"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62732366"
 ---
 # <a name="advanced-resource-graph-queries"></a>Speciális Resource Graph-lekérdezések
 
@@ -22,7 +22,7 @@ Az Azure Resource Graph-fal végzett lekérdezések megértéséhez először a 
 A következő speciális lekérdezéseken vezetjük végig:
 
 > [!div class="checklist"]
-> - [VMSS kapacitásának és méretének lekérése](#vmss-capacity)
+> - [Virtuális gép méretezési csoport kapacitásának és méret](#vmss-capacity)
 > - [Összes címkenév listázása](#list-all-tags)
 > - [Reguláris kifejezésekkel egyező virtuális gépek](#vm-regex)
 
@@ -38,7 +38,7 @@ Az Azure Resource Graph-ot az Azure CLI (bővítményen keresztül) és az Azure
 
 Ez a lekérdezés a virtuálisgép-méretezési csoportok erőforrásait keresi meg, és különböző adatokat kér le, többet között a méretezési csoport virtuálisgép-méretét és kapacitását. Ez a lekérdezés a `toint()` függvénnyel képezi le a kapacitást egy számmá, amely így rendezhető lesz. Végül a rendszer egyéni elnevezett tulajdonságokká nevezi át az oszlopokat.
 
-```Query
+```kusto
 where type=~ 'microsoft.compute/virtualmachinescalesets'
 | where name contains 'contoso'
 | project subscriptionId, name, location, resourceGroup, Capacity = toint(sku.capacity), Tier = sku.name
@@ -57,7 +57,7 @@ Search-AzGraph -Query "where type=~ 'microsoft.compute/virtualmachinescalesets' 
 
 Ez a lekérdezés a címkével kezdi, majd felépít egy JSON-objektumot, amely listázza az összes egyedi címkét és annak típusát.
 
-```Query
+```kusto
 project tags
 | summarize buildschema(tags)
 ```
@@ -86,7 +86,7 @@ A **blobnévelőtagjaként \@**  lehetővé teszi számunkra, hogy adja meg a k�
 
 A név alapján történő egyezéseket követően a lekérdezés levetíti és ábécé sorrendbe rendezi a neveket.
 
-```Query
+```kusto
 where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$'
 | project name
 | order by name asc

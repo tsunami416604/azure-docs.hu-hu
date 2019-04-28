@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 5552e44fcca056bd4fd5b4fd19559adfbd005444
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: b05a7ce260e8cc1da4ac8a0c186694ae097a3b1e
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266188"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766376"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Az Azure-tervek telepítési sorrendjét ismertetése
 
@@ -41,6 +41,9 @@ Belül **erőforráscsoport** összetevő, a következő feladatütemezési sorr
 - Erőforrás-csoport gyermek **szerepkör-hozzárendelés** összetevők szerelvényösszetevő-név szerint rendezve
 - Erőforrás-csoport gyermek **szabályzat-hozzárendelés** összetevők szerelvényösszetevő-név szerint rendezve
 - Erőforrás-csoport gyermek **Azure Resource Manager-sablon** összetevők szerelvényösszetevő-név szerint rendezve
+
+> [!NOTE]
+> Felhasználása [artifacts()](../reference/blueprint-functions.md#artifacts) hoz létre az implicit függ hivatkozott összetevő.
 
 ## <a name="customizing-the-sequencing-order"></a>Az alkalmazás-előkészítés sorrendjének testreszabása
 

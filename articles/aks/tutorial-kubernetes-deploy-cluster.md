@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 54872a1c5a40cdb3f51c17362daed93c3892001e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 302947ae9e952c0ceb37d9ddbba5ccd3c33c53a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754557"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61031071"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Oktatóanyag: Az Azure Kubernetes Service (AKS)-fürt üzembe helyezése
 
@@ -27,7 +27,7 @@ A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Az ak
 
 További oktatóanyagok az Azure Vote alkalmazást a fürtön üzembe helyezett, van ellátva, és frissíteni.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Az előző oktatóanyagokban létrehoztunk egy tárolórendszerképet, és feltöltöttük egy Azure Container Registry-példányra. Ha még nem végezte el ezeket a lépéseket, és szeretné követni, kezdőpont [1. oktatóanyag – tárolórendszerképek létrehozása][aks-tutorial-prepare-app].
 
