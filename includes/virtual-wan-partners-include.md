@@ -9,11 +9,11 @@ ms.date: 03/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: de9bc91e438ff694c96966486908c54562e93902
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410370"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60459851"
 ---
 Ellenőrizheti a partnerek által kínált szolgáltatásokkal kapcsolatban további információt ebben a szakaszban található hivatkozásokat. Ha a fiókiroda eszköz partner nem szerepel az alábbi szakaszban, rendelkezik a fiókiroda eszközszolgáltató, lépjen kapcsolatba velünk. Akkor is lépjen kapcsolatba velünk az e-mail azurevirtualwan@microsoft.com.
 

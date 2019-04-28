@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
 ms.openlocfilehash: 2627554647c6c20cbdedfec53c1028b3edfa9c9c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53111860"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60541377"
 ---
 Prémium gyorsítótár létrehozásához jelentkezzen be a [az Azure portal](https://portal.azure.com) kattintson **erőforrás létrehozása** > **adatbázisok** > **Azure Cache a Redis**.
 

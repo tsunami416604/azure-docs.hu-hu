@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
 ms.openlocfilehash: 9cad860b8808dd2682995768c282d8376ab5d9be
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671739"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60480514"
 ---
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Minden egyes kérelem engedélyeztetési fejléc van szükség. Ez a táblázat mutatja be, hogy mely fejlécek az egyes szolgáltatások támogatottak:
 

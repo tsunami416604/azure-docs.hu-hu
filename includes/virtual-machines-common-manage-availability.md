@@ -9,11 +9,11 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 42b6dde708e2a1dbda225fd95e3db964267ae48a
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56333980"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60613807"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>A virtuális gépek újraindításának ismertetése – karbantartás és állásidő
 Azure-beli virtuális gép szolgáló három forgatókönyv: nem tervezett hardverkarbantartás, váratlan állásidő és tervezett karbantartás.
@@ -47,7 +47,8 @@ A mögöttes Azure platform a rendelkezésre állási csoportban lévő mindegyi
 
 A tartalék tartományok azonos tápforrással és hálózati kapcsolóval rendelkező virtuális gépek csoportjai. Alapértelmezés szerint a rendelkezésre állási csoportba konfigurált virtuális gépek legfeljebb három tartalék tartományba vannak elkülönítve a Resource Manager-környezetben (két tartalék tartományba a klasszikus környezetben). Bár a virtuális gépek rendelkezésre állási csoportokba rendezése nem védi az alkalmazást az operációs rendszerre vezethető vagy az alkalmazásspecifikus hibáktól, korlátozza a potenciális hardvermeghibásodások, hálózatkimaradások vagy tápellátás-megszakadások hatását.
 
-<!--Image reference--> ![A frissítési és tartalék tartomány konfiguráció elméleti rajza](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
+<!--Image reference-->
+   ![A frissítési és tartalék tartomány konfiguráció elméleti rajza](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
 ## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel
 Ha jelenleg a virtuális gépeket nem felügyelt lemezeken használja, határozottan ajánlott [a rendelkezésre állási csoportban lévő virtuális gépeket átalakítása, hogy felügyelt lemezeken fussanak](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md).
@@ -75,7 +76,8 @@ Ha a virtuális gépek majdnem azonosak, és ugyanaz a rendeltetésük az alkalm
 
 Például az IIS-t, Apache-ot és Nginxet futtató alkalmazás előterében lévő mindegyik virtuális gépet elhelyezheti egyetlen rendelkezésre állási csoportban. Ugyanebbe a rendelkezésre állási csoportba mindenképp csak előtérben futó virtuális gépeket helyezzen. Ugyanígy gondoskodjon róla, hogy csak az adatrétegben futó virtuális gépek kerüljenek a nekik dedikált rendelkezésre állási csoportba, például replikált SQL Server-virtuálisgépek vagy MySQL-virtuálisgépek.
 
-<!--Image reference--> ![Alkalmazásrétegek](./media/virtual-machines-common-manage-availability/application-tiers.png)
+<!--Image reference-->
+   ![Alkalmazásrétegek](./media/virtual-machines-common-manage-availability/application-tiers.png)
 
 ## <a name="combine-a-load-balancer-with-availability-sets"></a>Terheléselosztók és rendelkezésre állási csoportok együttes alkalmazása
 Az [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) a rendelkezésre állási csoportokkal kombinálva a legmagasabb fokú rugalmasságot biztosítja az alkalmazásoknak. Az Azure Load Balancer több virtuális gép között osztja el a forgalmat. A Standard csomagban elérhető virtuális gépek esetében az Azure Load Balancer a csomag részét képezi. Nem mindegyik virtuális gép csomagja tartalmazza az Azure Load Balancert. A virtuális gépek terheléselosztásáról további információkért lásd a [virtuális gépek terheléselosztását](../articles/virtual-machines/virtual-machines-linux-load-balance.md) ismertető témakört.

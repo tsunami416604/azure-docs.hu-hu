@@ -1,15 +1,16 @@
 ---
-author: msmbaldwin
+author: WenJason
 ms.service: security
 ms.topic: include
-ms.date: 04/17/2019
-ms.author: mbaldwin
+origin.date: 03/15/2019
+ms.date: 04/22/2019
+ms.author: v-jay
 ms.openlocfilehash: cd0ab47a46e452701307986d3fbfc7cdfe040c58
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684582"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60461406"
 ---
 Egy biztonsági attribútum egy minőségi vagy egy Azure-szolgáltatás, amely hozzájárul a szolgáltatás képes-e megelőzését, észlelését és válaszadás a biztonsági rések szolgáltatást.
 

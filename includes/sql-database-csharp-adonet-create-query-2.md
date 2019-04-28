@@ -1,15 +1,16 @@
 ---
-author: MightyPen
+author: WenJason
 ms.service: sql-database
 ms.topic: include
-ms.date: 12/10/2018
-ms.author: genemi
+origin.date: 12/10/2018
+ms.date: 01/14/2019
+ms.author: v-jay
 ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728570"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60553191"
 ---
 ## <a name="c-program-example"></a>C#program példa
 
@@ -45,10 +46,10 @@ A C# program logikailag egy .cs fájlt, és számos kódblokkok, hogy minden egy
 
     1. A következő értékeket módosítsa a `Main` módszer:
 
-        - *CB. Adatforrás*
-        - *CB. Felhasználói azonosító*
-        - *CB. Jelszó*
-        - *CB. InitialCatalog*
+        - *cb.DataSource*
+        - *cb.UserID*
+        - *cb.Password*
+        - *cb.InitialCatalog*
 
 1. Ellenőrizze a szerelvény *System.Data.dll* hivatkozik. Annak ellenőrzéséhez, bontsa ki a **hivatkozások** csomópontja a **Megoldáskezelőben** ablaktáblán.
 
@@ -98,7 +99,7 @@ namespace csharp_db_test
             try
             {
                 var cb = new SqlConnectionStringBuilder();
-                cb.DataSource = "your_server.database.windows.net";
+                cb.DataSource = "your_server.database.chinacloudapi.cn";
                 cb.UserID = "your_user";
                 cb.Password = "your_password";
                 cb.InitialCatalog = "your_database";

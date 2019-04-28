@@ -1,15 +1,10 @@
 ---
-author: vladvino
-ms.service: api-management
-ms.topic: include
-ms.date: 11/09/2018
-ms.author: vlvinogr
 ms.openlocfilehash: 2bfa356deeede1c16bd5a464ea7081132a67faf6
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572206"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60798439"
 ---
 ## <a name="append-other-apis"></a>Egyéb API-k hozzáfűzése
 
@@ -24,3 +19,5 @@ A következő lépésekkel fűzhet hozzá egy meglévő API-hoz egy másik API-t
 3. Kattintson a **...** elemre azon API mellett, amelyhez egy másik API-t szeretne hozzáfűzni.
 4. Válassza az **Importálás** elemet a legördülő menüből.
 5. Válasszon egy szolgáltatást, amelyből importálni fogja az API-t.
+
+

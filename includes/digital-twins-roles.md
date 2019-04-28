@@ -9,15 +9,15 @@ ms.date: 12/20/2018
 ms.author: adgera
 ms.custom: include file
 ms.openlocfilehash: 7e4760990229433b2ea40fadd0d17de0b52fcb36
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53795922"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60534109"
 ---
 A következő táblázat ismerteti az Azure digitális Twins elérhető szerepkörök:
 
-| **Szerepkör** | **Leírás** | **azonosító** |
+| **Szerepkör** | **Leírás** | **Identifier** |
 | --- | --- | --- |
 | Hely rendszergazdája | *Hozzon létre*, *OLVASÁSI*, *frissítés*, és *törlése* engedéllyel a megadott hely és az összes csomópont alatt. Globális engedélyt. | 98e44ad7-28d4-4007-853b-b9968ad132d1 |
 | Felhasználói rendszergazda| *Hozzon létre*, *OLVASÁSI*, *frissítés*, és *törlése* engedéllyel a felhasználók és felhasználói biztonsággal kapcsolatos objektumok. *Olvassa el* tárolóhelyek engedély. | dfaac54c-f583-4dd2-b45d-8d4bbc0aa1ac |
@@ -27,4 +27,4 @@ A következő táblázat ismerteti az Azure digitális Twins elérhető szerepk�
 | Felhasználó |  *Olvassa el* tárolóhelyek eszközök, érzékelők és felhasználókat, beleértve a kapcsolódó engedély kapcsolódó objektumok. | b1ffdb77-c635-4e7e-ad25-948237d85b30 |
 | Támogatási szakértő |  *Olvassa el* tárelérési kulcsok kivételével minden engedélyt. | 6e46958b-dc62-4e7c-990c-c3da2e030969 |
 | Eszköz-telepítő | *Olvassa el* és *frissítés* eszközeit és érzékelőit, amely tartalmazza a megfelelő engedély kapcsolódó objektumok. *Olvassa el* tárolóhelyek engedély. | b16dd9fe-4efe-467b-8c8c-720e2ff8817c |
-| Átjáróeszköz | *Hozzon létre* engedély érzékelő számára. *Olvassa el* eszközeit és érzékelőit, amely tartalmazza a megfelelő engedély kapcsolódó objektumok. | d4c69766-e9bd-4e61-BFC1-d8b6e686c7a8 |
+| Átjáróeszköz | *Hozzon létre* engedély érzékelő számára. *Olvassa el* eszközeit és érzékelőit, amely tartalmazza a megfelelő engedély kapcsolódó objektumok. | d4c69766-e9bd-4e61-bfc1-d8b6e686c7a8 |

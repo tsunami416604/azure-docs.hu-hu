@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 7a028f65467c517be59be6f0c6d2c45ef9a7685e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: afe6f1493c7fa8272c67f23d6708ad6e4eea9381
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285761"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60619676"
 ---
 1. Indítsa el a Visual Studio 2017-et.
 
-1. Válassza ki a Visual Studio menüsorára, **eszközök > Get Tools** , és ellenőrizze, hogy a **.Net asztali fejlesztés** számítási feladat érhető el. Ha a munkaterhelés nem lett telepítve, jelölje be a jelölőnégyzetet, majd kattintson a **módosítás** a telepítés elindításához. Töltse le és telepítse néhány percig is eltarthat.
+1. Válassza ki a Visual Studio menüsorára, **eszközök > Get Tools** , és ellenőrizze, hogy a **.NET asztali fejlesztés** számítási feladat érhető el. Ha a munkaterhelés nem lett telepítve, jelölje be a jelölőnégyzetet, majd kattintson a **módosítás** a telepítés elindításához. Töltse le és telepítse néhány percig is eltarthat.
 
    Ha a jelölőnégyzet be **.NET asztali fejlesztés** van kijelölve, a párbeszédpanel most már bezárhatja.
 

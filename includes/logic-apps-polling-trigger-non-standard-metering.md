@@ -1,15 +1,10 @@
 ---
-author: ecfan
-ms.service: logic-apps
-ms.topic: include
-ms.date: 11/09/2018
-ms.author: estfan
 ms.openlocfilehash: 3fa71085d649ace95aa24ac87c8714a7268f5386
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52270362"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60598481"
 ---
 Pontosabb használati költségeinek kiszámításához, érdemes lehet a lehető legkevesebb üzenetek és események, amely lehet bármelyik nap az ügyfélszámítógépekre érkeznek ahelyett, hogy a számítások alapján csak a lekérdezési időköz. Ha egy esemény vagy az üzenet megfelel a indítófeltételek, sok eseményindító azonnal próbálkozzon bármely és minden más várakozó eseményeket, vagy a megadott feltételeknek megfelelő üzenetek olvasásához. Ezzel a módszerrel, amely akkor is, ha kiválaszt egy hosszabb lekérdezési időközt, az eseményindító elindulása várakozó eseményeket, vagy üzeneteket, amelyek indítása a munkafolyamatok száma alapján. Eseményindítókat, amelyek kövesse ezt a viselkedést az Azure Service Bus és az Azure Event Hub tartalmazza.
 

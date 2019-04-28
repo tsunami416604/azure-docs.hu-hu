@@ -9,11 +9,11 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 9c59b98fb615266c193f997c01c83922c18d4408
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890994"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60679787"
 ---
 *A gyorsítótár Bemelegedés*  
 A lemezt a csak olvasható állomás-gyorsítótárazás is biztosítanak a lemez korlátnál magasabb iops-t. A maximális olvasási teljesítmény eléréséhez a gazdagép-gyorsítótárból, először meg kell ízelítőt kapott a gyorsítótár a lemezről. Ez biztosítja, hogy az, hogy a teljesítménymérési eszköz CacheReads köteten vonják olvasási IOs ténylegesen eléri a gyorsítótár, és nem a lemezt közvetlenül. Az egyetlen gyorsítótár további IOPS gyorsítótár-találatok eredményez engedélyezve van a lemez.

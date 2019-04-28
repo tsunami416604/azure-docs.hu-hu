@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
 ms.openlocfilehash: 0dab71b6d169e26a3d7dc208dd09efe1143fbe13
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305300"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60681268"
 ---
 ### <a name="open-the-publish-wizard"></a>A közzétételi varázsló megnyitásához
 
@@ -44,7 +44,7 @@ Az a **konfigurálása csomag** párbeszédpanelen, akkor ezeket a beállításo
 | Beállítás | Ajánlott érték | Leírás |
 |-|-|-|
 |App Service-csomag| MySharingServicePlan | Az App Service-csomag neve. |
-| Hely | USA nyugati régiója | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
+| Location egység | USA nyugati régiója | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
 | Méret | Ingyenes | A [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) , amely meghatározza az üzemeltetési funkciókat. |
 
 Kattintson az **OK** gombra.
