@@ -3,8 +3,8 @@ title: Adatlemez hozzáadása Linux rendszerű virtuális géphez az Azure paran
 description: Ismerje meg, egy állandó adatlemezt hozzáadása a Linux rendszerű virtuális gép az Azure CLI-vel
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 06/13/2018
-ms.author: cynthn
+ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 81805188c72bce6a7ea89496c8036743b29e9075
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1915051380a514cf8143d43bddc0d0d475f43c07
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188228"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63765838"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)
 Ez a cikk bemutatja, hogyan való állandó lemez csatolása a virtuális gép így megőrizheti az adatait – még akkor is, ha a virtuális gép a karbantartás vagy átméretezése miatt van kiépíteni.

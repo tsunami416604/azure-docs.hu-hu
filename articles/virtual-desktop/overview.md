@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 58fb1d73509ab52551bead4526dfb47588cf1ec6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 379b8ee4a78cd8b487407e92ae32a7525f428bf0
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004584"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763855"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Mi a Windows virtuális asztal előzetes verziója? 
 
@@ -55,15 +55,17 @@ Rendelje hozzá is, és csatlakoztatja a felhasználókat a virtuális asztali k
 Néhány dolgot végre kell Windows virtuális asztal beállítását, és sikeresen csatlakozott-e a Windows asztali számítógépek és az alkalmazások a felhasználók számára.
 
 Windows virtuális asztal jelenleg csak támogatja a következő két OSE-kre:
-- Windows 10 Enterprise több munkamenet
-- Windows Server 2016
+
+* Windows 10 Enterprise több munkamenet
+* Windows Server 2016
 
 A következő OSE-kre támogatása, ezért ügyeljen arra, hogy tervezzük a [a megfelelő licencek](https://azure.microsoft.com/pricing/details/virtual-desktop/) az asztal és alkalmazások telepítését tervezi alapján a felhasználók számára:
 
 |Operációs rendszer|Licenc szükséges|
 |---|---|
-
-| Windows 10 Enterprise több munkamenetet vagy a Windows 10 Enterprise |} A Microsoft E3 csomag, E5, A3, a5 méretű, üzleti<br>Windows, E3 és E5, A3, A5 |} |} Windows 7 Enterprise |} A Microsoft E3 csomag, E5, A3, a5 méretű, üzleti<br>Windows, E3 és E5, A3, A5 |} |} A Windows Server 2012 R2, 2016 2019 |} A távoli asztali szolgáltatások ügyfél-hozzáférési licenc (CAL) frissítési garanciával rendelkező |}
+|Windows 10 Enterprise több munkamenetet vagy a Windows 10 Enterprise|A Microsoft E3 csomag, E5, A3, a5 méretű, üzleti<br>Windows E3, E5, A3, a5 csomag|
+|Windows 7 Enterprise |A Microsoft E3 csomag, E5, A3, a5 méretű, üzleti<br>Windows E3, E5, A3, a5 csomag|
+|Windows Server 2012 R2, 2016, 2019|A távoli asztali szolgáltatások ügyfél-hozzáférési licenc (CAL) frissítési garanciával rendelkező|
 
 Az infrastruktúra Windows virtuális asztal támogatásához a következőkre van szüksége:
 

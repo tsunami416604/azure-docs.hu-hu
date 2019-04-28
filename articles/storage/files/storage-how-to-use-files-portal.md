@@ -2,18 +2,18 @@
 title: Rövid útmutató az Azure-fájlmegosztásoknak az Azure Portallal történő felügyeletéhez
 description: Ebből a rövid útmutatóból megtudhatja, hogyan felügyelheti az Azure Files szolgáltatást az Azure Portallal.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/18/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ac78510a3f736d9d5a3f2aafcc1f77ef20e6d81a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: MT
+ms.openlocfilehash: 69e7dba06fce14c2411a82dfade344ba1b14a6d3
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467765"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763878"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Gyors útmutató: Létrehozása és kezelése az Azure-fájlmegosztások az Azure portal használatával 
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások Windows, Linux és macOS rendszeren csatlakoztathatók. Ez az útmutató az Azure-fájlmegosztások [Azure Portallal](https://portal.azure.com/) való használatának alapvető lépéseit mutatja be.

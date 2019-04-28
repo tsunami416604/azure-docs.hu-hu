@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/24/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: c076d425a7740bd0eb6398e6b8720fa873f2fc30
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: MT
+ms.openlocfilehash: 2d42b7ebdee291e7c71351fa2c3a5583a121b79e
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201261"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760676"
 ---
 # <a name="how-to-shape-json-to-maximize-query-performance"></a>Hogyan formázhatja a JSON-lekérdezési teljesítmény maximalizálása 
 
@@ -178,7 +178,7 @@ Time Series Insights esemény tábla (után az egybesimítás):
 | FXXX | pumpRate | SOR\_ADATOK | EU | A folyamat arány | láb3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 |
 | FXXX | oilPressure | SOR\_ADATOK | EU | Olaj nyomás motor | psi | 2018-01-17T01:17:00Z | 34.7 |
 | FXXX | pumpRate | SOR\_ADATOK | EU | A folyamat arány | láb3/s | 2018-01-17T01:17:00Z | 2.445906400680542 |
-| FXXX | oilPressure | SOR\_ADATOK | EU | Olaj nyomás motor | PSI | 2018-01-17T01:17:00Z | 49.2 |
+| FXXX | oilPressure | SOR\_ADATOK | EU | Olaj nyomás motor | Psi | 2018-01-17T01:17:00Z | 49.2 |
 | PÉÉÉ | pumpRate | SOR\_ADATOK | USA | A folyamat arány | láb3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
 | PÉÉÉ | oilPressure | SOR\_ADATOK | USA | Olaj nyomás motor | psi | 2018-01-17T01:18:00Z | 22.2 |
 

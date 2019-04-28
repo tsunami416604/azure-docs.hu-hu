@@ -1,5 +1,5 @@
 ---
-title: Erőforrás-módosítások beolvasása
+title: Erőforrás-módosítások lekérése
 description: Megismerheti, hogyan találhatja meg, amikor egy erőforrás változott, és a módosított tulajdonságok listája.
 services: resource-graph
 author: DCtheGeek
@@ -8,20 +8,20 @@ ms.date: 04/20/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: f4618e945db443e8d7cf9fdcc49e20e5a09ebd39
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 0ae85b45dfcd80056316ed5f2099aab4057d24c8
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60014096"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760811"
 ---
-# <a name="get-resource-changes"></a>Erőforrás-módosítások beolvasása
+# <a name="get-resource-changes"></a>Erőforrás-módosítások lekérése
 
 Erőforrások használ napi újrakonfigurálása és még akkor is, újbóli üzembe helyezés során módosul.
 Változás bármikor visszatérhet, egyéni vagy egy automatikus folyamat alapján. A legtöbb módosítása a rendszer kialakításából fakad, de néha nem. Az elmúlt 14 napban a változások nyomon követése, az Azure-erőforrás Graph teszi lehetővé:
 
-- Ha módosításokat észlelt egy Azure Resource Manager-tulajdonság található.
-- Tekintse meg, milyen tulajdonságok adott esemény részeként megváltozott.
+- Megtudhatja, mikor történtek módosítások az Azure Resource Manager-tulajdonságokban.
+- Megnézheti, mely tulajdonságok változtak meg a módosítási esemény részeként.
 
 Címváltozásának felderítését és a részletek hasznosak az alábbi példák a következők:
 
@@ -39,7 +39,7 @@ Ez a cikk bemutatja, hogyan erőforrás Graph SDK-n keresztül az információk 
 
 ## <a name="find-when-changes-were-detected"></a>Keresse meg, ha módosításokat észlelt
 
-Az első lépés jelenik meg, mi változott, egy erőforráson, hogy az idő időtartamon belül erőforráshoz kapcsolódó események megtalálja. Ebben a lépésben keresztül történik a [resourceChanges](/rest/api/azureresourcegraph/resourceChanges) REST-végpont.
+Az első lépés jelenik meg, mi változott, egy erőforráson, hogy az idő időtartamon belül erőforráshoz kapcsolódó események megtalálja. Ebben a lépésben keresztül történik a **resourceChanges** REST-végpont.
 
 A **resourceChanges** végpont a kérelem törzsében szereplő két paraméter szükséges:
 
@@ -95,7 +95,7 @@ Az esemény történt olyan pont, ebben az ablakban idő.
 
 ## <a name="see-what-properties-changed"></a>Tulajdonságok változott
 
-Az a **changeId** származó a **resourceChanges** végpont, a [resourceChangeDetails](/rest/api/azureresourcegraph/resourceChangeDetails) REST-végpont majd kéri le az esemény tulajdonságairól.
+Az a **changeId** származó a **resourceChanges** végpont, a **resourceChangeDetails** REST-végpont majd kéri le az esemény tulajdonságairól.
 
 A **resourceChangeDetails** végpont a kérelem törzsében szereplő két paraméter szükséges:
 
@@ -108,7 +108,6 @@ A példában a kérés törzse:
 {
     "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
     "changeId": "53dc0515-b86b-4bc2-979b-e4694ab4a556"
-    }
 }
 ```
 

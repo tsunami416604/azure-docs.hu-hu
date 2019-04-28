@@ -1,7 +1,6 @@
 ---
 title: Figyelése és kezelése az Ambari REST API – Azure HDInsight Hadoop
 description: Ismerje meg, hogyan figyelheti és kezelheti az Azure HDInsight Hadoop-fürtök az Ambari használatával. Ebből a dokumentumból megtudhatja hogyan használhatja a mellékelt a HDInsight-fürtök az Ambari REST API.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: hrasheed
-ms.openlocfilehash: 37d4c4dbbe623d68edf1de5454d7752a81fc2bd2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: d15b61c70f1587cdd1c0d76d2e3eab81294674fc
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58801883"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761128"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>HDInsight-fürtök kezelése az Apache Ambari REST API használatával
 
@@ -38,7 +37,7 @@ Ismerje meg, hogyan kezelése és figyelése Apache Hadoop-fürtök Azure HDInsi
 
  A HDInsight az Ambari REST API az alap URI `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, ahol `CLUSTERNAME` a fürt neve.  Fürt neve, az URI-k **kis-és nagybetűket**.  Kis-és a fürt nevét az URI-t (CLUSTERNAME.azurehdinsight.net) teljesen minősített neve (FQDN) részében pedig más előfordulások URI-t a nagybetűk között.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Csatlakozás a HDInsight az Ambari HTTPS van szüksége. A rendszergazdai fiók nevét használja (az alapértelmezett érték **rendszergazdai**) és a fürt létrehozásakor megadott jelszót.
 

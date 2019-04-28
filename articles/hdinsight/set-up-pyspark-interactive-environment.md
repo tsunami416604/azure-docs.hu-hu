@@ -2,19 +2,18 @@
 title: A Visual Studio Code a PySpark interaktív környezetének beállítása az Azure HDInsight-eszközök –
 description: Ismerje meg, hogyan használható az Azure HDInsight Tools for Visual Studio Code létrehozásához és elküldéséhez a lekérdezések és a parancsfájlokat.
 keywords: VScode, az Azure HDInsight-eszközök, Hive, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, interaktív Hive, interaktív lekérdezés
-services: hdinsight
 ms.service: hdinsight
 author: jejiang
 ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 1/17/2019
-ms.openlocfilehash: 8c0b40f0e6204d6cff59d3de3f20604d6913b9cb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 882a071731837b0f7d03ac374a7c831a20a3927e
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111633"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766429"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>A Visual Studio Code a PySpark interaktív környezetének beállítása
 

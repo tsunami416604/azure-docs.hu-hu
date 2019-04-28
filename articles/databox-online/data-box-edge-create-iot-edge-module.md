@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 522dddde4994bb019e6547fcd18465b201f048d8
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: MT
+ms.openlocfilehash: c2803ba598895834bb197f4a06ff0635354fcaca
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401727"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759983"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Fejlesztés a C# áthelyezni a fájlokat a Data Box Edge IoT Edge-modul
 
@@ -36,7 +36,7 @@ A Data Box peremhálózati eszköz telepíthet és futtathat IoT Edge modulok. E
 2. A fájl esemény generátor minden egyes fájl a helyi megosztásra írt fájl eseményt hoz létre. A fájl eseményeket is akkor jön létre, amikor módosul egy fájl. A fájl események majd kapnak IoT Edge hubot (az IoT Edge-futtatókörnyezet).
 3. Az egyéni IoT Edge-modul feldolgozza a fájl eseményt, a fájl relatív elérési utat is tartalmazó fájl esemény objektum létrehozásához. A modul abszolút elérési utat a fájl relatív elérési úton állít elő, és másolja át a fájlt a helyi megosztás a megosztáshoz a felhőbe. A modul ezután törli a fájlt a helyi megosztásból.
 
-![Az Azure IoT Edge-modul a Data Box Edge működése](./media/data-box-edge-create-iot-edge-module/how-module-works.png)
+![Az Azure IoT Edge-modul a Data Box Edge működése](./media/data-box-edge-create-iot-edge-module/how-module-works-1.png)
 
 Ha a fájlt a cloud-megosztásban, azt automatikusan lekérdezi feltöltve az Azure Storage-fiók.
 

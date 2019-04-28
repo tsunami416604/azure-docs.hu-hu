@@ -2,18 +2,18 @@
 title: Gyakori kérdések (GYIK) az Azure Files |} A Microsoft Docs
 description: Azure Files szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat megkeresése
 services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.date: 01/02/2019
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 561c8c9d942210a9bbdc70feff9bc468fa69967e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 77f07394eb895c08ef3e366bd486b4270714c2fc
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57995867"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766261"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Files kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabványnak megfelelő keresztül érhető el a felhőben [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Azure-fájlmegosztások párhuzamosan csatlakoztathatja felhőbeli vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. A Windows Server-gépek Azure-fájlmegosztások közel, ahol az adatok felhasználásának gyors hozzáférés az Azure File Sync használatával képes gyorsítótárazni.

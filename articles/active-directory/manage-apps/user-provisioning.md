@@ -15,12 +15,12 @@ ms.date: 04/02/2019
 ms.author: celested
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40e8aaa60359fcfb85c79c4210f7c5cc14633c7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 516faed0f41ae36079d0f26f0311b35d5582d57a
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291166"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759786"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Kiépítés és megszüntetés SaaS-alkalmazásokhoz az Azure Active Directory felhasználói automatizálása
 
@@ -143,7 +143,7 @@ A kiépítési szolgáltatás indításakor fogja az első szinkronizálás, min
 6. Ha az attribútumleképezések nem tartalmaz "hivatkozás" attribútumok, a szolgáltatás további frissítések a célrendszeren létrehozásához és csatolásához a hivatkozott objektumokat hajtja végre. Például egy felhasználó jogosult a "Manager" attribútum a célrendszeren, amely csatolva van a célrendszeren létrehozott egy másik felhasználó.
 7. A kezdeti szinkronizálás, amely a kiindulási pontot biztosít a később a növekményes szinkronizálás végén vízjel maradnak.
 
-Egyes alkalmazások, például nem csak a felhasználók kiépítése, de a csoportok és azok tagjait is kiépítés ServiceNow, a Google Apps és a Box támogatását. Ezekben az esetekben, ha a csoportos kiépítését engedélyezve van a [leképezések](customize-application-attributes.md), a kiszolgáló üzembe helyezése a felhasználók és csoportok szinkronizálása, és később szinkronizálja a csoporttagságok. 
+Egyes alkalmazások, például nem csak a felhasználók kiépítése, de a csoportok és azok tagjait is kiépítés ServiceNow, a G Suite és a Box támogatását. Ezekben az esetekben, ha a csoportos kiépítését engedélyezve van a [leképezések](customize-application-attributes.md), a kiszolgáló üzembe helyezése a felhasználók és csoportok szinkronizálása, és később szinkronizálja a csoporttagságok. 
 
 ### <a name="incremental-syncs"></a>Növekményes szinkronizálás
 
@@ -196,7 +196,7 @@ A **a kezdeti szinkronizálás**, a feladat ideje függ a sok tényező befolyá
 
 A **növekményes szinkronizálás**, a feladat ideje függ a szinkronizálási ciklus észlelhető módosítások számát. Ha 5000-nél több felhasználó vagy csoport tagsága módosul, a feladat be tudja belül egy növekményes szinkronizálási ciklust. 
 
-A következő táblázat összefoglalja a szinkronizálás időpontjait általános üzembe helyezési forgatókönyvhöz. Ezekben az esetekben a forrásrendszerben Azure ad-ben pedig a célrendszeren egy SaaS-alkalmazáshoz. A szinkronizálási idő származik, a ServiceNow, a munkahelyen, a Salesforce és a Google Apps SaaS-alkalmazásokhoz tartozó szinkronizálási feladatokat statisztikai elemzése.
+A következő táblázat összefoglalja a szinkronizálás időpontjait általános üzembe helyezési forgatókönyvhöz. Ezekben az esetekben a forrásrendszerben Azure ad-ben pedig a célrendszeren egy SaaS-alkalmazáshoz. A szinkronizálási idő származik, a ServiceNow, a munkahelyen, a Salesforce és a G Suite SaaS-alkalmazásokhoz tartozó szinkronizálási feladatokat statisztikai elemzése.
 
 
 | Hatókör-konfiguráció | Felhasználók, csoportok és tagok hatókörében | Kezdeti szinkronizálás ideje | Növekményes szinkronizálás ideje |

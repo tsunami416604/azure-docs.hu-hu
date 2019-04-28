@@ -7,18 +7,20 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: iainfou
-ms.openlocfilehash: 86b9609d5141798be40f53aab8b18897484bbef8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c403d809aa1fc6cdbb0555eef414f79b02ab5a8a
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467578"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764122"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Az Azure Active Directory integrálása az Azure Kubernetes Service-ben az Azure CLI használatával
 
 Az Azure Kubernetes Service (AKS) beállítható úgy, hogy a felhasználók hitelesítéséhez az Azure Active Directory (AD) használja. Ebben a konfigurációban amelyre be tud jelentkezni egy AKS-fürtöt az Azure AD hitelesítési token használatával. Fürt operátorok Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC) a felhasználó identitását, vagy a könyvtár a csoport tagsága alapján is konfigurálható.
 
 Ez a cikk bemutatja, hogyan hozhat létre a szükséges az Azure AD-összetevők, majd fürt üzembe helyezése az Azure AD-kompatibilis, és hozzon létre egy alapszintű RBAC szerepkör az AKS-fürtöt. Emellett [hajtsa végre ezeket a lépéseket az Azure portal használatával][azure-ad-portal].
+
+A teljes minta parancsfájl a cikk ezt használja, lásd: [Azure CLI-minták – AKS-integráció az Azure ad-vel][complete-script].
 
 Az alábbi korlátozások érvényesek:
 

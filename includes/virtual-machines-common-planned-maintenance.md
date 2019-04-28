@@ -9,11 +9,11 @@ ms.date: 12/14/2018
 ms.author: shants
 ms.custom: include file
 ms.openlocfilehash: c26c037455b6d14a906894ec39bf46630826950b
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551613"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60301706"
 ---
 Az Azure platform a megbízhatóságának, teljesítményének és a gazda-infrastruktúrát, a virtuális gépek biztonságának javítása érdekében rendszeres időközönként frissíti. Ezen frissítések köre, a javítás szoftverösszetevőket hardver leszerelésének hálózati összetevők frissítése, a üzemeltetési környezetben. Ezek a frissítések a legtöbb nincs hatással a futtatott virtuális gépek tartalmaz. Előfordulhatnak azonban olyan esetekben, amikor a frissítések hatással vannak, és az Azure úgy dönt, a frissítések legalább hatásos módszer:
 

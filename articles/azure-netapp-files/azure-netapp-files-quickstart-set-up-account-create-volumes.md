@@ -1,5 +1,5 @@
 ---
-title: Állítsa be az Azure NetApp fájljait, és hozzon létre egy kötetet |} A Microsoft Docs
+title: Állítsa be az Azure NetApp Files és az NFS-kötet létrehozása |} A Microsoft Docs
 description: Ismerteti, hogyan lehet gyorsan Azure NetApp fájlok beállítását, és hozzon létre egy kötetet.
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 634f23cf3161fff09f21c79fd8300cb269dcc5b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5b9e85da29b3130d5183f577a7d83d164e217310
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60454490"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759857"
 ---
-# <a name="set-up-azure-netapp-files-and-create-a-volume"></a>Az Azure NetApp Files beállítása és kötet létrehozása 
+# <a name="set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Állítsa be az Azure NetApp Files és az NFS-kötet létrehozása 
 
 Ez a cikk bemutatja, hogyan gyorsan Azure NetApp fájlok beállítását, és hozzon létre egy kötetet. 
 
@@ -88,7 +88,7 @@ Kell tartoznia a nyilvános előzetes program és az engedélyezési listához h
 
 5. Kattintson az **OK** gombra.
 
-## <a name="create-a-volume-for-azure-netapp-files"></a>Kötet létrehozása az Azure NetApp Files számára
+## <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Az NFS-kötet létrehozása a NetApp Azure-fájlok
 
 1. NetApp fiókja az Azure Files-NetApp felügyeleti panelen kattintson az **kötetek**.
 
@@ -100,7 +100,6 @@ Kell tartoznia a nyilvános előzetes program és az engedélyezési listához h
 
 3. A létrehozását egy kötet ablakot adja meg a kötet adatait: 
    1. Adja meg **myvol1** a kötet neveként. 
-   2. Adja meg **myfilepath1** , a fájl elérési útját az exportálási útvonal a kötet létrehozásához használt.
    3. Válassza ki a kapacitás-készletet (**mypool1**).
    4. Használja az alapértelmezett érték a kvótát. 
    5. Kattintson a virtuális hálózat **új létrehozása** hozhat létre egy új Azure virtuális hálózat (Vnet).  Ezután adja meg a következő információkat:
@@ -116,7 +115,13 @@ Kell tartoznia a nyilvános előzetes program és az engedélyezési listához h
 
       ![Virtuális hálózat időszak létrehozása](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
 
-4. Kattintson az **Áttekintés + létrehozás** elemre.
+4. Kattintson a **protokoll**, majd **NFS** , a kötet protokoll típusát.   
+
+    Adja meg **myfilepath1** , a fájl elérési útját az exportálási útvonal a kötet létrehozásához használt. 
+
+    ![Adja meg a rövid útmutató az NFS-protokollt](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
+
+5. Kattintson az **Áttekintés + létrehozás** elemre.
 
     ![Tekintse át és időszak létrehozása](../media/azure-netapp-files/azure-netapp-files-review-and-create-window.png)  
 

@@ -5,15 +5,15 @@ services: storage
 author: MichaelHauss
 ms.service: storage
 ms.topic: article
-ms.date: 07/15/2018
+ms.date: 04/23/2019
 ms.author: mihauss
 ms.subservice: blobs
-ms.openlocfilehash: 08d51b1b6a09bb4df3986bd8c4c44d3834882def
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: MT
+ms.openlocfilehash: d9055b0c0decbeca0bb43969af4e854c396c3bb6
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506125"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764228"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Helyreállítható Törlés az Azure Storage-BLOB
 Azure Storage blob-objektumok a helyreállítható Törlés most kínál, így könnyebben helyreállíthatja az adatokat próbál módosított vagy törölt egy alkalmazás vagy más storage-fiók felhasználó által.
@@ -278,6 +278,9 @@ blockBlob.StartCopy(copySource);
 Ha esély van arra, hogy az adatok akkor véletlenül által módosított vagy törölt egy alkalmazás vagy a storage-fiók egy másik felhasználó, ajánlott bekapcsolni a helyreállítható törlés. Helyreállítható törlés egy adatvédelmi stratégiát egy része, és segít megelőzni a véletlen adatvesztést okoz.
 
 ## <a name="faq"></a>GYIK
+**Vannak különleges beavatkozást, a helyreállítható törlés használata?**  
+Lehetővé teszi a helyreállítható törlés gyakran felülírt adatok vonhat nagyobb kapacitást a tárterületért, és késések blobok listázása során. Ez csökkentheti a gyakori felülírt adatok tárolásával egy önálló tárfiókot a helyreállítható törlés le van tiltva. 
+
 **Milyen tárolási típus esetében használható a helyreállítható törlés?**  
 Jelenleg a helyreállítható törlés csak akkor használható (objektum) a blob Storage.
 

@@ -12,19 +12,19 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 03/26/2018
+ms.date: 04/23/2019
 ms.author: cephalin;robmcm
 ms.custom: seodec18
-ms.openlocfilehash: 3af585ede27536dfb644dd374e54183c3539d585
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: f1411ee28ca4e371f68c375242a2445c8b48f8d7
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007355"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760035"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Az első Java-webalkalmazás létrehozása az Azure-ban
 
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez a gyorsútmutató bemutatja, hogyan helyezhet üzembe Java-webalkalmazásokat az App Service-ben a [Java EE-fejlesztőknek készült Eclipse IDE](https://www.eclipse.org/) használatával.
+Az Azure App Service egy rugalmasan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe Java-webalkalmazás App Service-ben a Java EE-fejlesztőknek készült Eclipse IDE használatával.
 
 > [!IMPORTANT]
 > Linuxon futó Azure App Service Emellett lehetőség az a Java webalkalmazásokat natív módon felügyelt Tomcat, a Java SE és WildFly ajánlatok használatával Linux rendszeren. Ha érdekli, az első lépések a linuxon futó App Service-szel, tekintse meg [a rövid útmutató: Egy Java-alkalmazás létrehozása Linuxon futó App Service-ben](containers/quickstart-java.md).

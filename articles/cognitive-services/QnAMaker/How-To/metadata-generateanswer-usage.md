@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: tulasim
-ms.openlocfilehash: c18ededc428b215720f8a6a6857a2eabd93bff8b
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: b634467381dc97e4a733e862e86632a089bf5f67
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683590"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63765646"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>A Tudásbázis válasz GenerateAnswer API és metaadatok beolvasása
 
@@ -67,24 +67,25 @@ A **kérelem URL-címe** formátuma a következő:
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-|HTTP-kérelem tulajdonság|Name (Név)|Typo|Cél|
+|HTTP-kérelem tulajdonság|Name (Név)|Típus|Cél|
 |--|--|--|--|
-|URL-cím útvonal-paraméter|Tudásbázis-azonosító|sztring|A Tudásbázis GUID azonosítója.|
-|URL-cím útvonal-paraméter|QnAMaker végponti gazdagép|sztring|Az Azure-előfizetésében üzembe helyezve a végpont állomásneve. Ez érhető el a beállítások lapon a Tudásbázis közzététele után. |
-|Fejléc|Content-Type|sztring|Az API-nak küldött törzs médiatípusa. Alapértelmezett érték: ''|
-|Fejléc|Engedélyezés|sztring|A végpont kulcs (EndpointKey: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|URL-cím útvonal-paraméter|Tudásbázis-azonosító|string|A Tudásbázis GUID azonosítója.|
+|URL-cím útvonal-paraméter|QnAMaker végponti gazdagép|string|Az Azure-előfizetésében üzembe helyezve a végpont állomásneve. Ez érhető el a beállítások lapon a Tudásbázis közzététele után. |
+|Fejléc|Content-Type|string|Az API-nak küldött törzs médiatípusa. Alapértelmezett érték: ''|
+|Fejléc|Engedélyezés|string|A végpont kulcs (EndpointKey: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Bejegyzés törzse|JSON-objektum|JSON|A kérdés beállításokkal|
 
 
 JSON-törzse többféle beállításokkal rendelkezik:
 
-|JSON-törzse tulajdonság|Szükséges|Typo|Cél|
+|JSON-törzse tulajdonság|Kötelező|Típus|Cél|
 |--|--|--|--|
-|`question`|szükséges|sztring|Egy felhasználó kérdést kell küldeni a tudásbázist.|
+|`question`|szükséges|string|Egy felhasználó kérdést kell küldeni a tudásbázist.|
 |`top`|választható|egész szám|A kimenetben: rangsorolt eredmények száma. Az alapértelmezett érték az 1.|
-|`userId`|választható|sztring|Azonosíthatja a felhasználó egyedi azonosítója. Ezt az Azonosítót a csevegési naplók lesznek rögzítve.|
+|`userId`|választható|string|Azonosíthatja a felhasználó egyedi azonosítója. Ezt az Azonosítót a csevegési naplók lesznek rögzítve.|
+|`scoreThreshold`|választható|egész szám|Csak azokat a válaszokat, a rendszer magabiztossági pontszámot a küszöbérték fölött lesz visszaadva. Az alapértelmezett érték a 0.|
 |`isTest`|választható|logikai|Ha igaz érték esetén eredményét adja vissza `testkb` Search-index közzétett index helyett.|
-|`strictFilters`|választható|sztring|Ha meg van adva, arra utasítja a QnA Maker, a választ csak, amelyek rendelkeznek a megadott metaadatok. Használat `none` jelzi a válasz nem fájlmetaadat-szűrők kell rendelkeznie. |
+|`strictFilters`|választható|string|Ha meg van adva, arra utasítja a QnA Maker, a választ csak, amelyek rendelkeznek a megadott metaadatok. Használat `none` jelzi a válasz nem fájlmetaadat-szűrők kell rendelkeznie. |
 
 Egy példa JSON-törzse hasonlóan néz ki:
 
@@ -93,6 +94,7 @@ Egy példa JSON-törzse hasonlóan néz ki:
     "question": "qna maker and luis",
     "top": 6,
     "isTest": true,
+    "scoreThreshold": 20,
     "strictFilters": [
     {
         "name": "category",

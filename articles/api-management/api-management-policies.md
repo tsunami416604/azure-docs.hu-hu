@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 7f1352b018fe9ea46b0f0824ba53ee0204c7dc7c
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 711f6395959b3718ca0a094a03c07c4381892104
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005519"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63762859"
 ---
 # <a name="api-management-policies"></a>API Management házirendek
 Ebben a szakaszban egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](api-management-howto-policies.md).  
@@ -53,7 +53,7 @@ Ebben a szakaszban egy hivatkozást kínál a következő az API Management ház
 -   [Hitelesítési házirendek](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [Az alapszintű hitelesítéshez](api-management-authentication-policies.md#Basic) -háttérszolgáltatás alapszintű hitelesítést használ a hitelesítéshez.  
     -   [Ügyféltanúsítvány a hitelesítéshez](api-management-authentication-policies.md#ClientCertificate) -háttérszolgáltatás ügyféltanúsítványok használatát a hitelesítéshez.  
-    -   [Felügyelt identitás a hitelesítéshez](api-management-authentication-policies.md#ManagedIdentity) -háttérszolgáltatás ügyféltanúsítványok használatát a hitelesítéshez.  
+    -   [Felügyelt identitás a hitelesítéshez](api-management-authentication-policies.md#ManagedIdentity) -hitelesítést egy háttérbeli szolgáltatás használata egy [identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).  
 -   [Gyorsítótárazási házirendek](api-management-caching-policies.md#CachingPolicies)  
     -   [Lekérése a gyorsítótárból](api-management-caching-policies.md#GetFromCache) – hajtsa végre a gyorsítótár kereshet meg és adja vissza egy érvényes gyorsítótárazott választ, ha elérhető.  
     -   [Store Cache](api-management-caching-policies.md#StoreToCache) -gyorsítótárazza a választ a megadott gyorsítótár-vezérlő konfigurációjának megfelelően.  

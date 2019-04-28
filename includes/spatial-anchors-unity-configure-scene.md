@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 1/2/2019
 ms.author: crtreasu
 ms.openlocfilehash: e796e836a8250c665ac09b66b51ed32380e56723
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012137"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60342383"
 ---
 A következő lépés, hogy a fiók azonosítóját és kulcsát az alkalmazás konfigurálása. Másolja őket egy szövegszerkesztőbe, amikor [beállítása a térbeli horgonyok erőforrás](#create-a-spatial-anchors-resource).
 

@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 05/22/2017
+ms.date: 04/17/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5583ccb6076dae2f33e265b95387bcd35aa9fa4d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 79b45bd423ed6715cdb7cc7c0e079c150eefede5
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547282"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763693"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Maximalizálja a Batch használatát, egyidejűleg feladatokat futtató számítási csomópontok 
 
@@ -41,7 +41,7 @@ Standard helyett\_D1 csomópontok 1 processzormaggal rendelkező, használhat [S
 ## <a name="enable-parallel-task-execution"></a>Párhuzamos tevékenység-végrehajtás engedélyezése
 Párhuzamos tevékenység-végrehajtás a számítási csomópontok a készlet szintjén konfigurálnia. A .NET-kódtár, állítsa be a [CloudPool.MaxTasksPerComputeNode] [ maxtasks_net] tulajdonság egy készlet létrehozásakor. Ha a Batch REST API-t használ, állítsa be a [maxTasksPerNode] [ rest_addpool] elem készlet létrehozása során, a kérelem törzsében.
 
-Az Azure Batch lehetővé teszi, hogy akár négy alkalommal állítsa be a csomópontonkénti maximális feladatok (4 x) a node-magok számát. Például, ha a készlet csomópontjai állítottak méretezés "Nagy" (négy magot), majd `maxTasksPerNode` 16 lehet beállítani. További információ a csomópontok méretei mindegyike magok száma: [méretű felhőszolgáltatások](../cloud-services/cloud-services-sizes-specs.md). Szolgáltatási korlátok további információkért lásd: [kvóták és korlátozások az Azure Batch szolgáltatás](batch-quota-limit.md).
+Az Azure Batch lehetővé teszi, hogy állítsa be a feladatok (4 x) akár csomópontonként fő csomópontok száma. Például, ha a készlet csomópontjai állítottak méretezés "Nagy" (négy magot), majd `maxTasksPerNode` 16 lehet beállítani. Azonban a csomópontnak hány magunk, függetlenül attól, csomópontonként legfeljebb 256 feladatok nem lehet. További információ a csomópontok méretei mindegyike magok száma: [méretű felhőszolgáltatások](../cloud-services/cloud-services-sizes-specs.md). Szolgáltatási korlátok további információkért lásd: [kvóták és korlátozások az Azure Batch szolgáltatás](batch-quota-limit.md).
 
 > [!TIP]
 > Ügyeljen arra, hogy figyelembe kell venni a `maxTasksPerNode` értéke, ha hozhat létre egy [automatikus skálázási képletet] [ enable_autoscaling] a készlethez. Például, amely kiértékeli a képletet `$RunningTasks` jelentősen befolyásolhatja, csomópontonkénti tevékenységek növekedése. Lásd: [automatikusan méretezni a számítási csomópontok az Azure Batch-készletben](batch-automatic-scaling.md) további információt.

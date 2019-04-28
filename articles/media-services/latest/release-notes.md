@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: de5432c4e04fb0cfaf0517426fe9ee9da2a57b37
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 09f9731f78093354f324f263899519bc5d31fa5d
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266987"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760777"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései
 
@@ -33,6 +33,10 @@ Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 > Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-val](https://aka.ms/ams-v3-rest-sdk), CLI-t, vagy valamelyik támogatott SDK-k.
 
 További információkért lásd: [Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="april-2019"></a>Április 2019
+
+[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) hozzá lett adva a beépített analyzer készletek.
 
 ## <a name="march-2019"></a>2019. március
 
@@ -200,6 +204,10 @@ A következő funkciók válnak elérhetővé a .NET SDK-ban:
 ### <a name="known-issues"></a>Ismert problémák
 
 * Küldjön el egy feladatot, megadhatja, hogy a forrásvideókat, HTTPS URL-címek, SAS URL-címek vagy elérési utak használata az Azure Blob storage-ban található fájlokat. Az AMS v3 jelenleg nem támogatja a HTTPS URL-címekkel történő darabolásos átviteli kódolást.
+
+## <a name="provide-feedback"></a>Visszajelzés küldése
+
+Tekintse meg a [Azure Media Services-Közösség](media-services-community.md) kérdések, küldje el visszajelzését, és tudnivalók a Media Services-frissítések különböző módon olvashatja.
 
 ## <a name="next-steps"></a>További lépések
 

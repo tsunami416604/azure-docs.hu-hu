@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: f69fd7af23c360edc208561f915bd351c3fd373c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 593cd83dab6e0cd93cdd1aedac278f4d94a27cc5
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60336796"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760590"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -42,11 +42,11 @@ A kérelem lekérdezési karakterláncot az átadott paraméterek a következők
   </tr>
   <tr>
     <td>forrás:</td>
-    <td><em>Nem kötelező paraméter</em>.<br/>Meghatározza a bemeneti szöveg nyelvét. Milyen nyelveken érhetők el lefordítani a szavazatait található [támogatott nyelvek](./v3-0-languages.md) használatával a <code>translation</code> hatókör. Ha a <code>from</code> paraméter nincs megadva, az automatikus nyelvfelismerést a Forrásnyelv alkalmazásával.</td>
+    <td><em>Nem kötelező paraméter</em>.<br/>Meghatározza a bemeneti szöveg nyelvét. Milyen nyelveken érhetők el lefordítani a szavazatait található <a href="./v3-0-languages.md">támogatott nyelvek</a> használatával a <code>translation</code> hatókör. Ha a <code>from</code> paraméter nincs megadva, az automatikus nyelvfelismerést a Forrásnyelv alkalmazásával.</td>
   </tr>
   <tr>
     <td>erre:</td>
-    <td><em>Kötelező paraméter</em>.<br/>Meghatározza a kimeneti szöveg nyelvét. A Célnyelv egyikének kell lennie a [támogatott nyelvek](./v3-0-languages.md) szerepel a <code>translation</code> hatókör. Például <code>to=de</code> német fordításához.<br/>Újraindításához ismételje meg a paraméter a lekérdezési karakterláncban egyszerre több nyelvhez lefordítani lehetőség. Például <code>to=de&to=it</code> , német, olasz lefordítja.</td>
+    <td><em>Kötelező paraméter</em>.<br/>Meghatározza a kimeneti szöveg nyelvét. A Célnyelv egyikének kell lennie a <a href="./v3-0-languages.md">támogatott nyelvek</a> szerepel a <code>translation</code> hatókör. Például <code>to=de</code> német fordításához.<br/>Újraindításához ismételje meg a paraméter a lekérdezési karakterláncban egyszerre több nyelvhez lefordítani lehetőség. Például <code>to=de&to=it</code> , német, olasz lefordítja.</td>
   </tr>
   <tr>
     <td>textType</td>
@@ -54,15 +54,15 @@ A kérelem lekérdezési karakterláncot az átadott paraméterek a következők
   </tr>
   <tr>
     <td>category</td>
-    <td><em>Nem kötelező paraméter</em>.<br/>A kategória (tartomány), a fordítás megadó karakterlánc. Ezzel a paraméterrel fordítások beszerezni egy testre szabott rendszer beépített [egyéni a fordítót](../customization.md). Kategóriaazonosító egyéni a fordítót projektjének hozzá ezt a paramétert használni a telepített testre szabott rendszert. Alapértelmezett érték: <code>general</code>.</td>
+    <td><em>Nem kötelező paraméter</em>.<br/>A kategória (tartomány), a fordítás megadó karakterlánc. Ezzel a paraméterrel fordítások beszerezni egy testre szabott rendszer beépített <a href="../customization.md">egyéni a fordítót</a>. Kategóriaazonosító egyéni a fordítót projektjének hozzá ezt a paramétert használni a telepített testre szabott rendszert. Alapértelmezett érték: <code>general</code>.</td>
   </tr>
   <tr>
     <td>ProfanityAction</td>
-    <td><em>Nem kötelező paraméter</em>.<br/>Itt adhatja meg, hogyan kell kezelni profanities fordításokat. Lehetséges értékek a következők: <code>NoAction</code> (alapértelmezett), <code>Marked</code> vagy <code>Deleted</code>. Módon kezelni a vulgáris ismertetése: [Cenzúrázása kezelési](#handle-profanity).</td>
+    <td><em>Nem kötelező paraméter</em>.<br/>Itt adhatja meg, hogyan kell kezelni profanities fordításokat. Lehetséges értékek a következők: <code>NoAction</code> (alapértelmezett), <code>Marked</code> vagy <code>Deleted</code>. Módon kezelni a vulgáris ismertetése: <a href="#handle-profanity">Cenzúrázása kezelési</a>.</td>
   </tr>
   <tr>
     <td>profanityMarker</td>
-    <td><em>Nem kötelező paraméter</em>.<br/>Itt adhatja meg, hogyan profanities kell megjelölni a fordításokat. Lehetséges értékek a következők: <code>Asterisk</code> (alapértelmezés) vagy <code>Tag</code>. Módon kezelni a vulgáris ismertetése: [Cenzúrázása kezelési](#handle-profanity).</td>
+    <td><em>Nem kötelező paraméter</em>.<br/>Itt adhatja meg, hogyan profanities kell megjelölni a fordításokat. Lehetséges értékek a következők: <code>Asterisk</code> (alapértelmezés) vagy <code>Tag</code>. Módon kezelni a vulgáris ismertetése: <a href="#handle-profanity">Cenzúrázása kezelési</a>.</td>
   </tr>
   <tr>
     <td>includeAlignment</td>

@@ -3,8 +3,8 @@ title: Azure konvertálása felügyelt lemezes tárhely standardról prémium va
 description: Azure konvertálása felügyelt lemezek standardról prémium vagy standard Azure PowerShell használatával.
 services: virtual-machines-windows
 documentationcenter: ''
-author: ramankumarlive
-manager: kavithag
+author: roygara
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
-ms.author: ramankum
+ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f97140ffeed9115a0308215ea082baee611501fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: abd893c68f2e9cac713e09dd0bdafb7f277ae889
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009888"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766096"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>A tárolótípus felügyelt lemez frissítése
 
 Az Azure négy lehetőség van a felügyelt lemezek: Ultranagy az Azure Disk Storage, a prémium szintű SSD, a Standard SSD és a Standard HDD. A minimális állásidővel teljesítmény igények alapján tárolási típusok között válthat. Ez a funkció nem támogatott a nem felügyelt lemezek esetén. De könnyen [egy nem felügyelt lemez konvertálása felügyelt lemez](convert-unmanaged-to-managed-disks.md) tudni váltani a lemeztípusok.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 

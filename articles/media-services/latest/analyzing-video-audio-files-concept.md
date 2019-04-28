@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: 8f8af438d4034fc945a717fee0b720e3fe13cf56
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
-ms.translationtype: MT
+ms.openlocfilehash: a4c643ecff5c33ec19c607da6ef8db41cfeb90c6
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58352000"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63762815"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Video- és hangfájlok elemzése
 
@@ -33,8 +33,9 @@ A Media Services a következő beépített analyzer készletek jelenleg támogat
 
 |**Készlet neve**|**Forgatókönyv**|**Részletek**|
 |---|---|---|
-|**AudioAnalyzerPreset**|Hang elemzése|A készlet AI-alapú elemzési műveleteket, köztük a lejegyzés előre meghatározott vonatkozik. A készlet jelenleg feldolgozás tartalom, amely tartalmaz egy nyelven speech egyetlen hangsávra támogatja. A hang hasznos nyelvét megadhatja a bemeneti adatok a "nyelvi címke-régió" BCP-47 formátum használatával. Támogatott nyelvek a következők angol ("en-US" és "en-GB"), spanyol ("es-ES" és "MX-es"), francia ("fr-FR"), ("it-IT") olasz, japán ("ja-JP"), portugál ("pt-BR"), kínai ("zh-CN"), német ("de-DE"), arab ("ar – pl."), orosz ("ru-RU"), Hindi ("hi-IN" ), és koreai ("ko-KR").<br/><br/> Ha a nyelv nincs megadva, illetve NULL értékű, az automatikus nyelvfelismerést észlelt első nyelvének kiválasztása, és a fájl időtartama a kiválasztott nyelvvel feldolgozni. A nyelv automatikus észlelési szolgáltatás jelenleg támogatja az angol, kínai, francia, német, olasz, japán, spanyol, spanyol és portugál. Ez jelenleg nem támogatja dinamikus nyelvek első nyelv észlelése után közötti váltáskor. A nyelv automatikus észlelési funkció működik a legjobban a hangfelvételeket jól észrevehető beszédszolgáltatásokkal. Automatikus nyelvfelismerés nem található a nyelvet, ha a beszédátírási az angol nyelvű vissza fog esni.|
-|**VideoAnalyzerPreset**|Audio- és elemzése|Insights (bőséges metaadatok) kigyűjti a hang- és video, és kiírja egy JSON-formátumú fájlt. Megadhatja, hogy csak szeretné hang információk kinyerése érdekében videofájl feldolgozásakor. További információkért lásd: [elemzés videó](analyze-videos-tutorial-with-api.md).|
+|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Hang elemzése|A készlet AI-alapú elemzési műveleteket, köztük a lejegyzés előre meghatározott vonatkozik. A készlet jelenleg feldolgozás tartalom, amely tartalmaz egy nyelven speech egyetlen hangsávra támogatja. A hang hasznos nyelvét megadhatja a bemeneti adatok a "nyelvi címke-régió" BCP-47 formátum használatával. Támogatott nyelvek a következők angol ("en-US" és "en-GB"), spanyol ("es-ES" és "MX-es"), francia ("fr-FR"), ("it-IT") olasz, japán ("ja-JP"), portugál ("pt-BR"), kínai ("zh-CN"), német ("de-DE"), arab ("ar – pl."), orosz ("ru-RU"), Hindi ("hi-IN" ), és koreai ("ko-KR").<br/><br/> Ha a nyelv nincs megadva, illetve NULL értékű, az automatikus nyelvfelismerést észlelt első nyelvének kiválasztása, és a fájl időtartama a kiválasztott nyelvvel feldolgozni. A nyelv automatikus észlelési szolgáltatás jelenleg támogatja az angol, kínai, francia, német, olasz, japán, spanyol, spanyol és portugál. Ez jelenleg nem támogatja dinamikus nyelvek első nyelv észlelése után közötti váltáskor. A nyelv automatikus észlelési funkció működik a legjobban a hangfelvételeket jól észrevehető beszédszolgáltatásokkal. Automatikus nyelvfelismerés nem található a nyelvet, ha a beszédátírási az angol nyelvű vissza fog esni.|
+|[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Audio- és elemzése|Insights (bőséges metaadatok) kigyűjti a hang- és video, és kiírja egy JSON-formátumú fájlt. Megadhatja, hogy csak szeretné hang információk kinyerése érdekében videofájl feldolgozásakor. További információkért lásd: [elemzés videó](analyze-videos-tutorial-with-api.md).|
+|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)||Annak érdekében, hogy az összes jelenlegi arcok észlelése, ha egy videó elemzése használt beállításokat ismerteti.|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
 
@@ -147,7 +148,7 @@ Példa:
 |id|A face azonosítója.|
 |név|A face neve. "Ismeretlen #0", az azonosított hírességek vagy ügyfél betanított személy is lehet.|
 |magabiztosan|Arcok azonosítása magabiztosan.|
-|leírás|A hírességek leírása. |
+|description|A hírességek leírása. |
 |thumbnailId|A miniatűr képét, arc azonosítója.|
 |knownPersonId|Ha ez egy ismert személy, a belső azonosítója.|
 |referenceId|Ha a Bing hírességek, a Bing-azonosító.|
@@ -437,4 +438,4 @@ Lehet, hogy videókat, amelyek tartalmazzák a felnőtt vagy pikáns tartalmak c
 ```
 ## <a name="next-steps"></a>További lépések
 
-[Oktatóanyag: Az Azure Media Services videók elemzése](analyze-videos-tutorial-with-api.md)
+[Oktatóanyag: Videók elemzése az Azure Media Services segítségével](analyze-videos-tutorial-with-api.md)

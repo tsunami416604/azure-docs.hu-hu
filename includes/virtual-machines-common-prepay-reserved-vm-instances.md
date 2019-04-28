@@ -5,11 +5,11 @@ ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 04/13/2019
 ms.openlocfilehash: d9b9aae8bea323e5aac74a2e317b82d4cb43568f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60118602"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60406879"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel
 
@@ -73,7 +73,7 @@ Fenntartott VM-példányok néhány kivétellel a legtöbb Virtuálisgép-méret
     | Mező      | Leírás|
     |------------|--------------|
     |Name (Név)        |A Foglalás neve.|
-    |Előfizetés|Kell fizetnem a Foglalás használt előfizetés. A fizetési módot, az előfizetés fel van töltve a Foglalás az előzetes költségek. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy a használatalapú fizetés (számok kínálnak: MS-AZR-0003P vagy MS-AZR - 0023 P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Használatalapú fizetéses előfizetéseknél a díjakat az előfizetéshez tartozó hitelkártyára terheljük vagy a számlafizetési módnak megfelelően számlázzuk.|    
+    |Előfizetés|Kell fizetnem a Foglalás használt előfizetés. A fizetési módot, az előfizetés fel van töltve a Foglalás az előzetes költségek. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy a használatalapú fizetés (számok kínálnak: MS-AZR-0003P vagy MS-AZR-0023P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Használatalapú fizetéses előfizetéseknél a díjakat az előfizetéshez tartozó hitelkártyára terheljük vagy a számlafizetési módnak megfelelően számlázzuk.|    
     |Hatókör       |A Foglalás hatóköre egy előfizetés vagy több előfizetés (megosztott hatókör) is foglalkozik. Ha ki: <ul><li>Ebben az előfizetésben virtuális gépek egyetlen előfizetés – a foglalási kedvezményt alkalmazza. </li><li>Közös – a foglalási kedvezményt alkalmazza a rendszer olyan előfizetéseket, a számlázási környezetben futó virtuális gépek. A vállalati ügyfelek a megosztott hatókörrel a regisztráció és a regisztráció belüli összes előfizetésre tartalmazza. Használatalapú fizetéses ügyfelek számára a megosztott hatókörrel a fiók rendszergazdája által létrehozott összes utólagos elszámolású előfizetések.</li></ul>|
     |Régió    |Az Azure-régió, amelyet a Foglalás jelez.|    
     |Virtuális gép mérete     |A Virtuálisgép-példányok méretétől.|

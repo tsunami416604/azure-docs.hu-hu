@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262794"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60202161"
 ---
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>A kapcsolati karakterlánc lekérését az Azure Portalról
 Használja a [az Azure portal](https://portal.azure.com/) beszerzése a kapcsolati karakterláncot, amely az ügyfélprogram és az Azure SQL Database használatához szükség van.

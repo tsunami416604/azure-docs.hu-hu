@@ -7,14 +7,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/15/2018
+origin.date: 04/30/2018
+ms.date: 02/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 03c86aa069300f88b61752ebd3223e424f6e9c96
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
-ms.translationtype: MT
+ms.openlocfilehash: 0361539cefbacb8fc0473a1f863cf2ae4638b444
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382614"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766756"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>Az Apache Ambari webes felület, JobHistory, NameNode, az Apache Oozie és egyéb webes eléréséhez használja a SSH-bújtatással
 
@@ -34,7 +35,7 @@ A következő Web UI SSH-alagút van szükség:
 
 Ha Parancsfájlműveletek segítségével testre szabhatja a fürt, szolgáltatások vagy segédprogramok telepít, amely egy webes szolgáltatás elérhetővé van szükség az SSH-alagút. Például ha szkriptművelettel Hue telepítése egy SSH-alagutat a eléréséhez a Hue webes felhasználói felületen kell használnia.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > Ha HDInsight virtuális hálózaton keresztül közvetlen hozzáféréssel rendelkezik, nem kell SSH-alagutak használatára. Közvetlenül a virtuális hálózaton keresztül férnek hozzá a HDInsight egy példa: a [HDInsight csatlakoztatása a helyszíni hálózathoz](connect-on-premises-network.md) dokumentumot.
 
 ## <a name="what-is-an-ssh-tunnel"></a>Mi az az SSH-alagút
@@ -47,7 +48,7 @@ Ha Parancsfájlműveletek segítségével testre szabhatja a fürt, szolgáltat�
 
 * Egy webes böngésző SOCKS5 proxy használatára konfigurálható.
 
-    > [!WARNING]  
+    > [!WARNING]
     > A beépített Windows Internetbeállítások SOCKS proxy-támogatás nem támogatja a SOCKS5, és nem működik a jelen dokumentumban leírt lépések. Az alábbi böngészők Windows proxybeállítások támaszkodnak, és jelenleg nem működik a jelen dokumentumban leírt lépések:
     >
     > * Microsoft Edge
@@ -110,14 +111,14 @@ Ha befejezte a parancsot, a helyi számítógépen 9876 portra küldött forgalm
 
 ## <a name="use-the-tunnel-from-your-browser"></a>Használja az alagút a böngészőben
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > A jelen szakaszban ismertetett lépések a Mozilla FireFox böngésző ugyanazokat a proxykiszolgáló-beállításokat biztosít minden platformon használja. Egyéb modern böngészők, például a Google Chrome, például az alagút dolgozhat FoxyProxy bővítmény lehet szükség.
 
 1. Konfigurálja a használatát a böngésző számára **localhost** és használhatók, ha a port, az alagút létrehozása egy **SOCKS v5** proxy. Íme, mi a Firefox beállítások a következőhöz hasonlóak. Ha 9876, mint egy másik portot használta, módosítsa a portot, amelyet használ:
    
     ![a Firefox-beállításai](./media/hdinsight-linux-ambari-ssh-tunnel/firefoxproxy.png)
    
-   > [!NOTE]  
+   > [!NOTE]
    > Kiválasztásával **távoli DNS** oldja fel a tartománynévrendszer (DNS) kéréseket a HDInsight-fürt használatával. Ez a beállítás megszünteti a DNS, a fürt fő csomópontjának használatával.
 
 2. Győződjön meg arról, hogy működik-e az alagutat a webhely felkeresésével [ https://www.whatismyip.com/ ](https://www.whatismyip.com/). A visszaadott IP-cím egy használják a Microsoft Azure-adatközpontban kell lennie.
@@ -139,7 +140,7 @@ Miután a fürt létrejött, a következő lépések segítségével győződjö
 
     ![A témakör Gyorshivatkozását menü kibontva lemezkép](./media/hdinsight-linux-ambari-ssh-tunnel/namenodedropdown.png)
 
-   > [!NOTE]  
+   > [!NOTE]
    > Ha bejelöli __Gyorshivatkozások__, várjon mutató kaphat. Ez az állapot akkor fordulhat elő, ha lassú internetkapcsolattal rendelkezik. Várjon néhány percig is az adatok a kiszolgálótól kapott kell, majd próbálkozzon újra a listában.
    >
    > Az egyes bejegyzéseket a **Gyorshivatkozások** menü előfordulhat, hogy elszigeteli a képernyő jobb oldalán. Ha igen, bontsa ki az egér használatával, és használja a jobbra mutató nyílra, görgessen a képernyő jobb látható a menüben a többi.

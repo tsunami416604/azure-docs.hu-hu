@@ -1,30 +1,31 @@
 ---
-title: Linux rendszerű virtuális gép létrehozása az Azure-ban az Ansible használatával
-description: Megtudhatja, hogyan hozhat létre Linux rendszerű virtuális gépeket az Azure-ban az Ansible használatával
-ms.service: virtual-machines-linux
+title: Rövid útmutató – Linux rendszerű virtuális gépek konfigurálása az Azure-ban az Ansible-lel |} A Microsoft Docs
+description: Ebből a gyorsútmutatóból megtudhatja, hogyan Linux rendszerű virtuális gép létrehozása az Azure-ban az Ansible-lel
 keywords: ansible, azure, devops, virtuális gép
+ms.topic: tutorial
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: quickstart
-ms.date: 08/22/2018
-ms.openlocfilehash: 38cc6cd8f375fe7c60a706541bc74313e8ea2c4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 04/22/2019
+ms.openlocfilehash: 4bf7d43b682a2a42d9909f9cd33aa9542a1a9330
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188126"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760514"
 ---
-# <a name="use-ansible-to-create-a-linux-virtual-machine-in-azure"></a>Linux rendszerű virtuális gép létrehozása az Azure-ban az Ansible használatával
-Az Ansible deklaratív nyelv használatával lehetővé válik az Azure-beli erőforrások létrehozásának, konfigurálásának és üzembe helyezésének automatizálása az Ansible *forgatókönyveivel*. A cikk egyes szakaszai bemutatják, hogyan nézhetnek ki az Ansible-forgatókönyvek szakaszai, amelyek a Linux virtuális gépek különböző részeinek létrehozására és konfigurálására szolgálnak. A [teljes Ansible-forgatókönyv](#complete-sample-ansible-playbook) a cikk végén található.
+# <a name="quickstart-configure-linux-virtual-machines-in-azure-using-ansible"></a>Gyors útmutató: Az Azure-ban az Ansible konfigurálása a Linux rendszerű virtuális gépek
+
+Az Ansible deklaratív nyelv használatával lehetővé válik az Azure-beli erőforrások létrehozásának, konfigurálásának és üzembe helyezésének automatizálása az Ansible *forgatókönyveivel*. Ez a cikk bemutatja egy minta Ansible forgatókönyv Linux rendszerű virtuális gépek konfigurálása. A [teljes Ansible-forgatókönyv](#complete-sample-ansible-playbook) a cikk végén található.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Azure-előfizetés** – Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)]
+- [!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../../includes/open-source-devops-prereqs-azure-subscription.md)]
+- [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)]
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+
 Az Ansible használatához szükség van egy erőforráscsoportra, amelyben az erőforrások üzembe lesznek helyezve. Az Ansible-mintaforgatókönyv következő szakasza egy erőforráscsoportot hoz létre `eastus` néven az `myResourceGroup` helyen:
 
 ```yaml
@@ -35,6 +36,7 @@ Az Ansible használatához szükség van egy erőforráscsoportra, amelyben az e
 ```
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
+
 Azure virtuális gép létrehozásakor létre kell hoznia egy [virtuális hálózatot](/azure/virtual-network/virtual-networks-overview), vagy egy meglévőt kell használnia. Arról is döntenie kell, hogy a virtuális gépek milyen módon legyenek elérhetők a virtuális hálózaton. Az Ansible-mintaforgatókönyv következő szakasza egy virtuális hálózatot hoz létre `10.0.0.0/16` néven a `myVnet` címtérben:
 
 ```yaml
@@ -59,7 +61,12 @@ Az Ansible-mintaforgatókönyv következő szakasza egy alhálózatot hoz létre
 ```
 
 ## <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
-A [nyilvános IP-címek](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) lehetővé teszik az internetes erőforrások bejövő kommunikációját az Azure-erőforrásokkal. A nyilvános IP-címek emellett lehetővé teszik az Azure-erőforrások kimenő kommunikációját az internettel és a nyilvános Azure-szolgáltatásokkal, az erőforráshoz rendelt IP-címet használva. A cím az erőforrás számára van kijelölve, ameddig vissza nem vonja a hozzárendelést. Ha az erőforráshoz nem lett nyilvános IP-cím hozzárendelve, az erőforrás továbbra is képes kimenő kommunikációra az internettel, az Azure azonban dinamikusan társít hozzá egy elérhető IP-címet, amely nincs az erőforrás számára kijelölve. 
+
+
+
+
+
+A [nyilvános IP-címek](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) lehetővé teszik az internetes erőforrások bejövő kommunikációját az Azure-erőforrásokkal. Nyilvános IP-címek az Azure-erőforrások kimenő kommunikációját az ezeknek a nyilvánosan elérhető Azure-szolgáltatásokat is engedélyezheti. Mindkét esetben hozzáfér az erőforráshoz hozzárendelt IP-cím. A cím az erőforráshoz van kijelölve, amíg Ön hozzárendeltem. Nyilvános IP-cím nincs hozzárendelve egy erőforráshoz, amennyiben az erőforrás is továbbra is képes kimenő kommunikációra az interneten. A kapcsolat az Azure-ban elérhető IP-cím dinamikus hozzárendelése. A dinamikusan kiosztott címet az erőforrás számára nincs kijelölve.
 
 Az Ansible-mintaforgatókönyv következő szakasza egy nyilvános IP-címet hoz létre `myPublicIP` néven:
 
@@ -72,9 +79,10 @@ Az Ansible-mintaforgatókönyv következő szakasza egy nyilvános IP-címet hoz
 ```
 
 ## <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
-A [hálózati biztonsági csoportokkal](/azure/virtual-network/security-overview) az Azure virtuális hálózatokban lévő erőforrások bejövő és kimenő hálózati forgalmát szűrheti. A hálózati biztonsági csoportok olyan biztonsági szabályokat tartalmaznak, amelyek engedélyezik vagy letiltják a különböző típusú Azure-erőforrások bejövő vagy kimenő hálózati forgalmát. 
 
-Az Ansible-mintaforgatókönyv következő szakasza egy hálózati biztonsági csoportot hoz létre `myNetworkSecurityGroup` néven, továbbá definiál egy szabályt az SSH-forgalom engedélyezéséhez a 22-es TCP-porton:
+[Hálózati biztonsági csoportok](/azure/virtual-network/security-overview) virtuális hálózatban lévő Azure-erőforrások közötti hálózati forgalom szűrése. Biztonsági szabályok vannak meghatározva, amely az Azure-erőforrások bejövő és kimenő forgalom szabályozására. Azure-erőforrások és a hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [virtuális hálózati integráció az Azure-szolgáltatásokhoz](/azure/virtual-network/virtual-network-for-azure-services)
+
+A következő forgatókönyv nevű hálózati biztonsági csoportot hoz létre `myNetworkSecurityGroup`. A hálózati biztonsági csoport tartalmaz egy szabályt, amely lehetővé teszi, hogy SSH-forgalmat a 22-es TCP-portot.
 
 ```yaml
 - name: Create Network Security Group that allows SSH
@@ -90,11 +98,11 @@ Az Ansible-mintaforgatókönyv következő szakasza egy hálózati biztonsági c
         direction: Inbound
 ```
 
-
 ## <a name="create-a-virtual-network-interface-card"></a>Virtuális hálózati kártya létrehozása
+
 A virtuális hálózati kártya a virtuális gépet egy adott virtuális hálózathoz, nyilvános IP-címhez és hálózati biztonsági csoporthoz csatlakoztatja. 
 
-Az Ansible-mintaforgatókönyv következő szakasza egy virtuális hálózati kártyát hoz létre `myNIC` néven, amely a létrehozott virtuális hálózati erőforrásokhoz csatlakozik:
+A következő szakasz egy minta Ansible forgatókönyv szakaszban létrehoz egy virtuális hálózati kártya nevű `myNIC` csatlakozik a létrehozott virtuális hálózati erőforrások:
 
 ```yaml
 - name: Create virtual network inteface card
@@ -108,6 +116,7 @@ Az Ansible-mintaforgatókönyv következő szakasza egy virtuális hálózati k�
 ```
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
+
 Az utolsó lépés egy virtuális gép létrehozása, amely a cikk előző szakaszaiban létrehozott erőforrásokat használja. 
 
 Az Ansible-mintaforgatókönyv a jelen szakaszban bemutatott szakasza egy virtuális gépet hoz létre `myVM` néven, és csatlakoztatja a `myNIC` nevű virtuális hálózati kártyát. Cserélje le a &lt;your-key-data> helyőrzőt a saját teljes nyilvános kulcsának adataira.
@@ -278,5 +287,6 @@ Ez a szakasz végigvezeti a cikkben bemutatott Ansible-mintaforgatókönyv futta
     ```
 
 ## <a name="next-steps"></a>További lépések
+
 > [!div class="nextstepaction"] 
-> [Linux rendszerű virtuális gép felügyelete az Azure-ban az Ansible használatával](./ansible-manage-linux-vm.md)
+> [Rövid útmutató: Az Ansible segítségével Azure-beli Linuxos virtuális gépek kezelése](./ansible-manage-linux-vm.md)

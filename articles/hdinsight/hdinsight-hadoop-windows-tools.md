@@ -1,19 +1,18 @@
 ---
 title: Egy Windows PC-s használata a Hadooppal a HDInsight – Azure
 description: A HDInsight a Hadoop-Windows PC működnek. Kezelheti és lekérdezés-fürt a PowerShell, a Visual Studio és a Linux rendszerű eszközök. .NET-tel big data-megoldások fejlesztése.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 05/17/2017
-ms.openlocfilehash: b8bad1d0f53ce4e4c924734201165e1b050c153f
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
-ms.translationtype: MT
+ms.openlocfilehash: 4d9d1ef6b7906ecebc399948a1ca0dcd590d5910
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361472"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63765820"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>A HDInsight Windows PC-ről az Apache Hadoop-ökoszisztéma működik
 

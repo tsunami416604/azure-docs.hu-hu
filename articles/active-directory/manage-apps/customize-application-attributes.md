@@ -15,15 +15,15 @@ ms.date: 04/03/2019
 ms.author: celested
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a2965fecd3aca17d6c4df7e49ad466377de9762
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b63118a7c5fae49edebe4ae4976a1362781ae8cf
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291651"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759772"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Az SaaS-alkalmazásokhoz az Azure Active Directory-attribútumleképezések testreszabása Felhasználókiépítés
-A Microsoft Azure AD külső SaaS-alkalmazások például a Salesforce, a Google Apps és a másokkal való támogatást nyújt. Ha engedélyezi a felhasználók átadásának egy külső SaaS-alkalmazáshoz, az Azure Portalon szabályozza az attribútumértékek attribútum-leképezések használatával.
+A Microsoft Azure AD külső SaaS-alkalmazások például a Salesforce, a G Suite és a másokkal való támogatást nyújt. Ha engedélyezi a felhasználók átadásának egy külső SaaS-alkalmazáshoz, az Azure Portalon szabályozza az attribútumértékek attribútum-leképezések használatával.
 
 Nincs attribútumokat és az Azure AD felhasználói és minden egyes SaaS-alkalmazás felhasználói objektumok között attribútumleképezések előre konfigurált készletével. Néhány alkalmazás más típusú objektumok és a felhasználók, például a csoportok kezelése.
 
@@ -84,7 +84,7 @@ Ezt a tulajdonságot, valamint attribútum-leképezések is támogatja a követk
 
 ## <a name="editing-group-attribute-mappings"></a>Csoport attribútum-leképezések szerkesztése
 
-Alkalmazások, például a ServiceNow, a Box és a Google Apps, a kiválasztott számú támogatja az objektumok és a felhasználói objektumok létrehozására. Objektumok is tartalmaz a csoport tulajdonságai, például a megjelenített nevek és e-mail-aliasokat, és a csoport tagjai.
+Alkalmazások, például a ServiceNow, a Box és a G Suite, a kiválasztott számú támogatja az objektumok és a felhasználói objektumok létrehozására. Objektumok is tartalmaz a csoport tulajdonságai, például a megjelenített nevek és e-mail-aliasokat, és a csoport tagjai.
 
 ![ServiceNow](./media/customize-application-attributes/24.png)
 

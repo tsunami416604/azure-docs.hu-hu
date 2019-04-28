@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 04/19/2019
-ms.openlocfilehash: cc6c93420e939e90e12b989def491199fd2c6b15
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: ca43a6cff6a32a30d93e42f6a6624439b2fe83a7
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006998"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766810"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Az Azure Machine Learning szolgáltatás munkaterület létrehozása
 
@@ -73,7 +73,7 @@ Ez a cikk utasításait a rövid útmutató és oktatóanyag jegyzetfüzetek fut
 
 ### <a name="create-an-isolated-python-environment"></a>Elkülönített Python-környezet létrehozása
 
-1. Nyisson meg egy parancssori ablakot, majd hozzon létre egy új conda-környezetet nevű *myenv* és telepítik a Pythont 3.6.5. Az Azure Machine Learning-SDK-t fog dolgozhat a Python 3.5.2-es verzióját vagy újabb, de az automatizált machine learning-összetevők nem, teljes körűen működőképes a Python 3.7-es verzióját.  Összetevők és a csomagok letöltése közben a környezet létrehozása több percig tart.
+1. Anaconda parancssor megnyitásához, majd hozzon létre egy új conda-környezetet nevű *myenv* és telepítik a Pythont 3.6.5. Az Azure Machine Learning-SDK-t fog dolgozhat a Python 3.5.2-es verzióját vagy újabb, de az automatizált machine learning-összetevők nem, teljes körűen működőképes a Python 3.7-es verzióját.  Összetevők és a csomagok letöltése közben a környezet létrehozása több percig tart. 
 
     ```shell
     conda create -n myenv python=3.6.5

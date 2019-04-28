@@ -15,12 +15,12 @@ ms.date: 09/09/2018
 ms.author: celested
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a6d1684c4bc0031978fb5e76548a3112b0f1ef2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e293eb555269a1f8beeeccd74000358abe1ef5c8
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60441998"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759765"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Oktatóanyag: -Jelentések automatikus felhasználói fiók kiépítése
 
@@ -43,7 +43,7 @@ Ebben a cikkben alább meghatározott, az alábbi feltételek:
 
 * **Forrás-rendszer** -, akik az Azure AD létesítési szolgáltatás szinkronizálja a tárházban. Az Azure Active Directory a forrásrendszerben előre integrált üzembe helyezési összekötők a legtöbb, a azonban vannak kivételek (Példa: Munkanapi bejövő szinkronizálási).
 
-* **Cél rendszer** -, akik az Azure AD létesítési szolgáltatás szinkronizálja a tárházban. Ez általában az SaaS-alkalmazás (példák: A Salesforce, ServiceNow, a Google Apps, Dropbox Business), de néhány esetben lehet egy helyszíni rendszer, például az Active Directory (Példa: Munkanapi bejövő szinkronizálási az Active Directory).
+* **Cél rendszer** -, akik az Azure AD létesítési szolgáltatás szinkronizálja a tárházban. Ez általában az SaaS-alkalmazás (példák: A Salesforce, ServiceNow, a G Suite, Dropbox Business), de néhány esetben lehet egy helyszíni rendszer, például az Active Directory (Példa: Munkanapi bejövő szinkronizálási az Active Directory).
 
 
 ## <a name="getting-provisioning-reports-from-the-azure-management-portal"></a>Bevezetés a jelentések az Azure felügyeleti portálján a kiépítés

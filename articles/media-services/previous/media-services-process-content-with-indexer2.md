@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: adsolank;juliako;
-ms.openlocfilehash: 6a798d0f33ba4d1960f07e670e6e71916f68eff1
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
-ms.translationtype: MT
+ms.openlocfilehash: 304ecda320e1fdd9573bc961fde74efe03400aa3
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258270"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764174"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Médiafájlokat az Azure Media Indexer 2 előzetes verzió
 ## <a name="overview"></a>Áttekintés
@@ -87,7 +87,7 @@ Az Azure Media Indexer 2 előzetes hang-szöveg transzformációs (amikor a nyel
 * Japán [JaJp]
 * Orosz [RuRu]
 * Brit angol [EnGb]
-* Mexikói spanyol [EsMx] 
+* Spanyol (Mexikó) [EsMx] 
 
 ## <a name="supported-file-types"></a>Támogatott fájltípusok
 

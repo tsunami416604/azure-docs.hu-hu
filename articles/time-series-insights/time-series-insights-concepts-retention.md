@@ -11,18 +11,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: c44b09e15a227e11426d2798fc071778ca47ebd3
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: MT
+ms.openlocfilehash: b230ac48cf2ca14c9ed988f869b5abba3e347215
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557463"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761576"
 ---
 # <a name="understand-data-retention-in-time-series-insights"></a>A Time Series Insightsban az adatmegőrzés ismertetése
 
 Ez a cikk ismerteti a két beállítás, amely hatással van az adatok megőrzésére a Time Series Insights (TSI) környezetben.
 
-## <a name="video"></a>Videó: 
+## <a name="video"></a>Videó
 
 ### <a name="in-this-video-we-cover-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>Ez a videó ismerteti a Time Series Insights-adatok megőrzésére és az azt tervezéséről.</br>
 
@@ -41,25 +41,29 @@ A Váltás megőrzési viselkedések további információért tekintse át [meg
 
 Hasonlítsa össze az adatok megőrzési viselkedés:
 
-## <a name="purge-old-data"></a>Régi adatok törlése
+## <a name="purge-old-data"></a>Régi adatok végleges törlése
+
 - Ez a viselkedés a TSI-környezetek és az azonos viselkedés TSI környezetek felmerült indított nyilvános előzetes verziója óta tárgyi bizonyítékokat alapértelmezett viselkedése.  
 - Ez a viselkedés részesíti előnyben, amikor a felhasználók meg szeretnék bármikor megtekintheti azok *legfrissebb adatok* a TSI környezetben. 
 - Ez a viselkedés *kiürítése* adatok egyszer a környezet korlátait (megőrzési idő, méret, vagy count, amelyiket hamarabb elérik) elérésekor. Adatmegőrzési alapértelmezés szerint 30 nap van beállítva. 
 - A legrégebbi a feldolgozott adatokat van üríti ki az első (FIFO megközelítés).
 
-### <a name="example-1"></a>1. példa:
-Fontolja meg egy példakörnyezetet megőrzési viselkedés **továbbra is a bejövő és a régi adatok törlése**: Ebben a példában **adatmegőrzési idő** 400 napos értékre van állítva. **Kapacitás** S1-egység, amely tartalmazza a teljes kapacitás 30 GB értékre van állítva.   Tegyük fel, a bejövő adatok gyűlnek 500 MB naponta átlagosan. Ebben a környezetben csak is megőrizheti az adatok adott mértéke a bejövő adatokat, mert elérte a maximális kapacitás 60 napon belül 60 napos. A bejövő adatokat összegzi: Minden nap × 60 nap = 30 GB 500 MB. 
+### <a name="example-one"></a>Egy példa
+
+Fontolja meg egy példakörnyezetet megőrzési viselkedés **továbbra is a bejövő és a régi adatok törlése**: Ebben a példában **adatmegőrzési idő** 400 napos értékre van állítva. **Kapacitás** S1-egység, amely tartalmazza a teljes kapacitás 30 GB értékre van állítva.   Tegyük fel, a bejövő adatok gyűlnek 500 MB naponta átlagosan. Ebben a környezetben csak is megőrizheti az adatok adott mértéke a bejövő adatokat, mert elérte a maximális kapacitás 60 napon belül 60 napos. A bejövő adatokat összegzi: Minden nap × 60 nap = 30 GB 500 MB.
 
 Ebben a példában a 61st napon a környezet a legfrissebb adatokat jelenít meg, de a legrégebbi, 60 napnál régebbi adatok kiürítése. A kiürítés, hogy az új adatok továbbra is vizsgálhatók lehetővé teszi a hely számára az új adatok, a streamelési. 
 
 Ha a felhasználó által blokkolni adatokat tovább is megtartja, kiegészítő egységek hozzáadásával a környezet méretének növeléséhez, vagy kevesebb adatot küldhet.  
 
-### <a name="example-2"></a>2. példa
+### <a name="example-two"></a>A példában két
+
 Vegye figyelembe a környezet is konfigurált megőrzési viselkedés **továbbra is a bejövő és a régi adatok törlése**. Ebben a példában **adatmegőrzési idő** 180 napos egy alacsonyabb értékre van állítva. **Kapacitás** S1-egység, amely tartalmazza a teljes kapacitás 30 GB értékre van állítva. Annak érdekében, hogy az adatok tárolásához a teljes, 180 nap a napi bejövő forgalom naponta legfeljebb 0.166 GB (166 MB).  
 
 Amikor ez a környezet napi bejövő forgalom 0.166 GB meghaladja a napi, adatokat nem lehet tárolni 180 napig, mivel bizonyos adatok kiürítése beolvasása. Fontolja meg az ugyanabban a környezetben egy foglalt időszakban. Tegyük fel, hogy egy átlagos 0.189 GB / nap növelhető a környezet bejövő forgalom. A foglalt időkereten belül az adatok körülbelül 158 napos megmaradnak (30GB/0.189 = 158,73 nap). Ezúttal nem éri el a kívánt adatok megőrzési időtartammal.
 
-## <a name="pause-ingress"></a>Felfüggesztés bejövő forgalom
+## <a name="pause-ingress"></a>Bejövő forgalom szüneteltetése
+
 - Ez a viselkedés célja annak érdekében, hogy az adatok nem törlődnek, ha a mérete és száma korlátok elérésekor a megőrzési időszak előtt.  
 - Ez a viselkedés biztosít a felhasználóknak, hogy a környezetükben kapacitásának növelése előtt az adatok akkor törlődnek a megőrzési idő megsértése miatt további időt
 - Ez a viselkedés segít megvédeni az adatvesztés, de lehetőséget nyújt a legújabb adatok elvesztését létrehozza, ha a bejövő forgalom fel van függesztve, az eseményforrás a megőrzési időszak után.
@@ -67,10 +71,12 @@ Amikor ez a környezet napi bejövő forgalom 0.166 GB meghaladja a napi, adatok
    - Növeli a maximális kapacitást a környezetben. További információkért lásd: [méretezése a Time Series Insights-környezet](time-series-insights-how-to-scale-your-environment.md) több skálázási egység hozzáadása.
    - Az adatok megőrzési időtartamot, és adatok törlődnek, így történő visszaállítását a környezet alább a maximális kapacitást.
 
-### <a name="example-3"></a>3. példa:
+### <a name="example-three"></a>A példában három
+
 Vegye figyelembe a környezet konfigurálva adatmegőrzési működése **bejövő szüneteltetése**. Ebben a példában a **Adatmegőrzés időtartama** 60 napra van konfigurálva. **Kapacitás** 3 egységet a S1 értékre van állítva. Tegyük fel, ebben a környezetben rendelkezik 2 GB-os adatforgalom minden nap. Ebben a környezetben a bejövő forgalom szüneteltetve van a maximális kapacitás elérésekor. Ekkor az a környezet bejövő folytatja, vagy amíg a "bejövő continue" engedélyezve van (amely régebbi adatokat, hogy helyet biztosítson az új adatok lenne végleges törlése) bemutatja az ugyanahhoz az adatkészlethez. 
 
 Amikor a bejövő forgalom folytatja:
+
 - Eseményforrás szerint érkezett sorrendben adatfolyamok
 - Az események indexelt alapján időbélyegzőik, kivéve, ha az az eseményforrás túllépte az adatmegőrzési házirendek. További információ az esemény forrása megőrzési konfigurációjában [Event Hubs – gyakori kérdések](../event-hubs/event-hubs-faq.md)
 
@@ -86,4 +92,5 @@ Ha nincsenek megadva tulajdonságok az eseményforrás (timeStampPropertyName) v
 Ha további kapacitást biztosít vagy megnöveli az adatmegőrzés, tekintse meg a környezet vertikális kell [méretezése a Time Series Insights-környezet](time-series-insights-how-to-scale-your-environment.md) további információt.  
 
 ## <a name="next-steps"></a>További lépések
-A Váltás megőrzési viselkedése további információért tekintse át [megőrzés konfigurálása a Time Series Insights](time-series-insights-how-to-configure-retention.md).
+
+- A Váltás megőrzési viselkedése további információért tekintse át [megőrzés konfigurálása a Time Series Insights](time-series-insights-how-to-configure-retention.md).

@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: 8acb75f1cac83595da88a4a5ffa33102136266f2
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427881"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60329486"
 ---
-## <a name="AdditionalServices"></a>Hogyan: további Twilio-szolgáltatások használata
+## <a name="AdditionalServices"></a>kézikönyv: További Twilio-szolgáltatások használata
 Itt látható példák, mellett Twilio kínál a webes API-kat használhatja az Azure-alkalmazásból további Twilio funkciói kihasználhatók. További részletek: a [Twilio API-dokumentáció][twilio_api_documentation].
 
 ## <a name="NextSteps"></a>Következő lépések

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/18/2018
 ms.author: priyamo
 ms.openlocfilehash: d97aa34f8e76a1ea49841f26534b6a5403e6b5d7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58125278"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60251649"
 ---
 ## <a name="register-your-application-with-your-ad-tenant"></a>Alkalmazás regisztrálása az AD-bérlőben
 Először regisztrálnia kell az alkalmazás az Azure Active Directory (Azure AD-) bérlőben. Ekkor kapni fog egy alkalmazásazonosítót az alkalmazáshoz, amely immár képes jogkivonatokat fogadni.

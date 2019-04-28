@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 04/23/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b10be061e015686c68684723fd2d73c1431c7266
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: a440494b183d18c1d888b5d39836eb4317190d02
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699406"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764333"
 ---
 # <a name="automation-with-service-principals"></a>Automatizálás szolgáltatásnevekkel
 
@@ -47,13 +47,37 @@ Szolgáltatás egyszerű appID és jelszó vagy tanúsítvány használható kap
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Egyszerű szolgáltatás használata esetén az erőforrás-felügyeleti műveletek a [Az.AnalysisServices](/powershell/module/az.analysisservices) használja, a modul `Connect-AzAccount` parancsmagot. Kiszolgálói műveletek az egyszerű szolgáltatás használatakor a [SQLServer](https://www.powershellgallery.com/packages/SqlServer) használja, a modul `Add-AzAnalysisServicesAccount` parancsmagot. 
+#### <a name="a-nameazmodule-using-azanalysisservices-module"></a><a name="azmodule" />Az.AnalysisServices modul használatával
+
+Egyszerű szolgáltatás használata esetén az erőforrás-felügyeleti műveletek a [Az.AnalysisServices](/powershell/module/az.analysisservices) használja, a modul `Connect-AzAccount` parancsmagot. 
+
+A következő példában appID és a egy jelszót a csak olvasható replikák szinkronizálását vezérlési síkjával végzett műveletek elvégzéséhez, és horizontális fel-és kimenő használt:
+
+```powershell
+Param (
+        [Parameter(Mandatory=$true)] [String] $AppId,
+        [Parameter(Mandatory=$true)] [String] $PlainPWord,
+        [Parameter(Mandatory=$true)] [String] $TenantId
+       )
+$PWord = ConvertTo-SecureString -String $PlainPWord -AsPlainText -Force
+$Credential = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $AppId, $PWord
+
+# Connect using Az module
+Connect-AzAccount -Credential $Credential -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx"
+
+# Syncronize a database for query scale out
+Sync-AzAnalysisServicesInstance -Instance "asazure://westus.asazure.windows.net/testsvr" -Database "testdb"
+
+# Scale up the server to an S1, set 2 read-only replicas, and remove the primary from the query pool. The new replicas will hydrate from the synchronized data.
+Set-AzAnalysisServicesServer -Name "testsvr" -ResourceGroupName "testRG" -Sku "S1" -ReadonlyReplicaCount 2 -DefaultConnectionMode Readonly
+```
+
+#### <a name="using-sqlserver-module"></a>SQL Server-modullal
 
 A következő példában appID és a egy jelszót használt modell adatbázis-frissítési művelet végrehajtásához:
 
 ```powershell
 Param (
-
         [Parameter(Mandatory=$true)] [String] $AppId,
         [Parameter(Mandatory=$true)] [String] $PlainPWord,
         [Parameter(Mandatory=$true)] [String] $TenantId

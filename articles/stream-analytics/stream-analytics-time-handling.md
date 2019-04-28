@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: 2a59a81b0894cbf58c5d3ab5a5569f4749b64b00
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 0eb4b77964aa3c07bac2af615a26c3a9199525de
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543287"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760844"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Idő kezelése az Azure Stream Analytics ismertetése
 
@@ -26,7 +26,7 @@ A hozzászólás kerethez jobb határozzon meg néhány olyan fogalmat, háttér
 
 - **Feldolgozási idő**: Az az időpont, amikor az esemény eléri a feldolgozási rendszer, és figyelhető meg. Például amikor egy nem ingyenes érzékelőadatainak érzékelő látja, a car és a számítógép rendszer veszi fel az adatokat egy kis ideig.
 
-- **Vízjel**: Egy esemény, amely azt jelzi, hogy milyen pont akár az összes esemény idő jelölő belépő az adatfolyam-feldolgozó lett. A vízjelek, hogy a rendszer jelzi a fürtjét az események törlése folyamatban. Streamek jellege a beérkező eseményadatokon soha nem leállítja, így a vízjelek jelzik, hogy egy bizonyos ponton a Stream.
+- **Vízjel**: Egy esemény idő jelölő, amely azt jelzi, addig a pontig milyen eseményeket az adatfolyam-feldolgozó ingressed lett. A vízjelek, hogy a rendszer jelzi a fürtjét az események törlése folyamatban. Streamek jellege a beérkező eseményadatokon soha nem leállítja, így a vízjelek jelzik, hogy egy bizonyos ponton a Stream.
 
    A vízjel azért lényeges. A vízjelek lehetővé teszik a Stream Analytics használatával határozható meg, hogy a rendszer hozhatnak, teljes körű, helyes-e, és megismételhető eredményeket, amelyeket nem kell kell visszavonni. A feldolgozás garantált úgy, hogy a kiszámítható és megismételhető hajtható végre. Például, ha egy újraszámolás kell tenni a hibakezelési feltétel, vízjelek lesznek biztonságos kezdő és záró pontot.
 

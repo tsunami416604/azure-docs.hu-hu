@@ -9,19 +9,19 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.subservice: common
-ms.openlocfilehash: c45061db77c21b82744f69f00265870d5e1a8d00
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: MT
+ms.openlocfilehash: 9e786aed031d528b8ae574444b71753ac538cf47
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883841"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766195"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>A párhuzamosság kezelése a Microsoft Azure Storage szolgáltatásban
 ## <a name="overview"></a>Áttekintés
 Internet alapú modern alkalmazások megtekintése és adatok frissítése egyszerre több felhasználó általában rendelkeznek. Alaposan gondolja kiszámítható felhasználói élményt nyújtson a végfelhasználóik számára, különösen a forgatókönyvek, ahol több felhasználó is frissítheti a ugyanazokat az adatokat az útmutató segítségével az alkalmazásfejlesztők ehhez. Nincsenek a fejlesztők általában érdemes három fő egyidejűségi stratégiák:  
 
 1. Optimista párhuzamosság – egy kérelem végrehajtása egy frissítést a frissítés részeként ellenőrzi, hogy ha az adatok változtak-e az alkalmazás óta utolsó olvassa el az adatokat. Például ha két a felhasználók számára látható egy wikioldal frissítés ugyanazon az oldalon majd a wiki platform biztosítania kell, hogy a második frissítés nem ír felül az első frissítés – és, hogy mindkét felhasználók megérteni, hogy a frissítés sikeres volt-e vagy sem. Ez a stratégia leggyakrabban használják a webes alkalmazások.
-2. A pesszimista egyidejűségi – zárolást egy objektumot, más felhasználók meggátolja, hogy az adatok frissítése, amíg nem szabadul fel a zárolást a frissítés végrehajtásához egy alkalmazás keresi vesz igénybe. Például egy elsődleges és tartalék kiszolgálók közötti adatok replikációs forgatókönyvben, ahol csak a fő frissítések végrehajtása a fő általában feladatelemeket kizárólagos zárolást hosszabb ideje, annak érdekében, hogy senki más nem frissítheti az adatokat.
+2. A pesszimista egyidejűségi – zárolást egy objektumot, más felhasználók meggátolja, hogy az adatok frissítése, amíg nem szabadul fel a zárolást a frissítés végrehajtásához egy alkalmazás keresi vesz igénybe. Ha például a fölé/alárendelt típusú adatok replikációs forgatókönyvben, ahol csak a fő frissítések végrehajtása a fő általában feladatelemeket kizárólagos zárolást ideje, annak érdekében, hogy senki más nem frissítheti az adatokat hosszabb ideig.
 3. Legutolsó író wins – az adatok beolvasása, amely lehetővé teszi, hogy bármely frissítési műveleteket, ha más alkalmazás az adatok óta frissített az alkalmazás első ellenőrzése nélkül folytatja a műveletet. A stratégia (vagy egy hivatalos stratégia hiánya) általában használt adatok particionálása ahol oly módon, hogy nincs-e nem valószínű, hogy több felhasználó hozzá fog férni ugyanazokat az adatokat. Is lehet hasznos, ahol rövid ideig tartó adatfolyamok feldolgozott.  
 
 Ez a cikk áttekintést hogyan teszi egyszerűbbé a az Azure Storage-platform a fejlesztési, mindhárom alábbi egyidejűségi stratégiák első osztályú támogatást biztosít.  

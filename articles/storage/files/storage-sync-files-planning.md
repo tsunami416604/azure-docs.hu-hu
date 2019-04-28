@@ -2,18 +2,18 @@
 title: Az Azure File Sync üzembe helyezésének megtervezése |} A Microsoft Docs
 description: Ismerje meg az Azure Files üzembe helyezésének tervezése során megfontolandó szempontokat.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 2/7/2019
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e5078176b14835938c190daa031c12055ba9ffc3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: f29625ed8ddd6eabf8b75380d84d7a7b64396d7a
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996356"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766867"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -245,6 +245,8 @@ Az Azure File Sync csak az alábbi régiókban érhető el:
 | Kelet-Ázsia | Hongkong (KKT) |
 | USA keleti régiója | Virginia |
 | USA 2. keleti régiója | Virginia |
+| Korea középső régiója| Szöul |
+| Korea déli régiója| Busan |
 | Kelet-Japán | Tokió, Szaitama |
 | Nyugat-Japán | Oszaka |
 | USA északi középső régiója | Illinois |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 9ee4a9fb5c63061eed32389b5672652aad01208a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c0f8da779ca656cf357c418b8766a53307643695
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994943"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764338"
 ---
 # <a name="api-management-authentication-policies"></a>Az API Management a hitelesítési házirendek
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -49,13 +49,13 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
   
 ### <a name="elements"></a>Elemek  
   
-|Name (Név)|Leírás|Szükséges|  
+|Name (Név)|Leírás|Kötelező|  
 |----------|-----------------|--------------|  
 |hitelesítés – alapszintű|A gyökérelem.|Igen|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Name (Név)|Leírás|Szükséges|Alapértelmezett|  
+|Name (Név)|Leírás|Kötelező|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
 |felhasználónév|Adja meg a felhasználónevet a alapszintű hitelesítés.|Igen|–|  
 |password|Az alapszintű hitelesítés jelszava.|Igen|–|  
@@ -73,26 +73,32 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 ### <a name="policy-statement"></a>Házirendutasítás  
   
 ```xml  
-<authentication-certificate thumbprint="thumbprint" />  
+<authentication-certificate thumbprint="thumbprint" certificate-id="resource name"/>  
 ```  
   
-### <a name="example"></a>Példa  
+### <a name="examples"></a>Példák  
   
+Ez a példa az ügyfél a tanúsítványt az ujjlenyomat alapján azonosítja.
 ```xml  
-<authentication-certificate thumbprint="....." />  
+<authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />  
+``` 
+Ebben a példában ügyféltanúsítvány erőforrás neve azonosítja.
+```xml  
+<authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
 ```  
-  
+
 ### <a name="elements"></a>Elemek  
   
-|Name (Név)|Leírás|Szükséges|  
+|Name (Név)|Leírás|Kötelező|  
 |----------|-----------------|--------------|  
 |hitelesítés – tanúsítvány|A gyökérelem.|Igen|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Name (Név)|Leírás|Szükséges|Alapértelmezett|  
+|Name (Név)|Leírás|Kötelező|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|Az ügyféltanúsítvány ujjlenyomatát.|Igen|–|  
+|thumbprint|Az ügyféltanúsítvány ujjlenyomatát.|Akár `thumbprint` vagy `certificate-id` jelen kell lennie.|–|  
+|certificate-id|A tanúsítvány-erőforrás neve.|Akár `thumbprint` vagy `certificate-id` jelen kell lennie.|–|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -118,13 +124,13 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
   
 ### <a name="elements"></a>Elemek  
   
-|Name (Név)|Leírás|Szükséges|  
+|Name (Név)|Leírás|Kötelező|  
 |----------|-----------------|--------------|  
 |authentication-managed-identity |A gyökérelem.|Igen|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Name (Név)|Leírás|Szükséges|Alapértelmezett|  
+|Name (Név)|Leírás|Kötelező|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
 |erőforrás|karakterlánc. Az Alkalmazásazonosító URI-t a cél webes API-t (védett erőforrás) az Azure Active Directoryban.|Igen|–|  
 |output-token-variable-name|karakterlánc. Neve a környezeti változó, amelyek megkapják a token értékét egy objektumtípust, `string`.|Nem|–|  

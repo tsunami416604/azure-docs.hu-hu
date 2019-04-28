@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f7a14e975a5ca3aee5588f55f43b28081c100074
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e60b202a32745062d2078d9721dfeba7aba69bda
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358143"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763910"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Ajánlott eljárások az Azure Maps a Search Service használata
 
@@ -132,9 +132,9 @@ A `language` paraméter lehetővé teszi, hogy állítsa be a keresési nyelv er
 
 ### <a name="predictive-mode-auto-suggest"></a>Prediktív mód (automatikus kiegészítési)
 
-Részleges lekérdezések több találat található `typeHead` lehet "true" paramétert kell beállítani. A lekérdezés értelmezi a részleges bemenetként, és a keresés prediktív üzemmódba lép. Ellenkező esetben a szolgáltatás feltételezi az összes kapcsolódó információt lett átadva.
+Részleges lekérdezések több találat található `typeahead` lehet "true" paramétert kell beállítani. A lekérdezés értelmezi a részleges bemenetként, és a keresés prediktív üzemmódba lép. Ellenkező esetben a szolgáltatás feltételezi az összes kapcsolódó információt lett átadva.
 
-A minta az alábbi lekérdezés látható, hogy a keresési szolgáltatás lekérik a "Microsoft" és a `typehead` paraméter beállítása **igaz**. A válasz megfigyelte, láthatja, hogy a keresési szolgáltatás értelmezi a lekérdezés as részleges lekérdezés és válasz automatikus által javasolt lekérdezés eredményeit tartalmazza.
+A minta az alábbi lekérdezés látható, hogy a keresési szolgáltatás lekérik a "Microsoft" és a `typeahead` paraméter beállítása **igaz**. A válasz megfigyelte, láthatja, hogy a keresési szolgáltatás értelmezi a lekérdezés as részleges lekérdezés és válasz automatikus által javasolt lekérdezés eredményeit tartalmazza.
 
 **Mintalekérdezés:**
 

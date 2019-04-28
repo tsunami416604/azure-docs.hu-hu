@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 4b6aeb2968d7642881535753cb6c8434cfe10886
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc861b6730e8bf9db6ba2ab005496914f7b9ed89
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60409307"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759814"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>A .NET telepítése az Azure Cloud Services-szerepkörök
 Ez a cikk ismerteti, amelyek nem rendelkeznek Azure vendég operációs rendszer verzió a .NET-keretrendszer telepítése. A vendég operációs rendszer a .NET használatával a felhőalapú szolgáltatás webes és feldolgozói szerepkörök konfigurálása.
@@ -34,6 +34,7 @@ A webes és feldolgozói szerepkörök a .NET telepítéséhez a .NET-telepítő
 ## <a name="add-the-net-installer-to-your-project"></a>A .NET-telepítő hozzáadása a projekthez
 A .NET-keretrendszer webes telepítőjének letöltéséhez válassza ki a telepíteni kívánt verzió:
 
+* [.NET 4.8 webes telepítő](https://dotnet.microsoft.com/download/thank-you/net48)
 * [.NET 4.7.2 webalkalmazás-telepítő](https://go.microsoft.com/fwlink/?LinkId=863262)
 * [A .NET 4.6.2-es webalkalmazás-telepítő](https://www.microsoft.com/download/details.aspx?id=53345)
 
@@ -102,7 +103,8 @@ Indítási feladatok segítségével hajtsa végre a műveleteket a szerepkör e
    REM ***** To install .NET 4.7.1 set the variable netfx to "NDP471" ***** https://go.microsoft.com/fwlink/?LinkId=852095
    REM ***** To install .NET 4.7.2 set the variable netfx to "NDP472" ***** https://go.microsoft.com/fwlink/?LinkId=863262
    set netfx="NDP472"
-   
+   REM ***** To install .NET 4.8 set the variable netfx to "NDP48" ***** https://dotnet.microsoft.com/download/thank-you/net48
+      
    REM ***** Set script start timestamp *****
    set timehour=%time:~0,2%
    set timestamp=%date:~-4,4%%date:~-10,2%%date:~-7,2%-%timehour: =0%%time:~3,2%

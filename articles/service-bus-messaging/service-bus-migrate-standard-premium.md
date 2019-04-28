@@ -1,5 +1,5 @@
 ---
-title: Meglévő Azure Service Bus standard szintű névterek áttelepítéséhez a prémium szintű |} A Microsoft Docs
+title: A prémium szint meglévő standard szintű Azure Service Bus-névterek áttelepítése |} A Microsoft Docs
 description: Útmutató áttelepítéshez a meglévő Azure Service Bus standard szintű névterek prémium
 services: service-bus-messaging
 documentationcenter: ''
@@ -13,132 +13,108 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 7b153c36e10f1d4e2be2a0cf42f998c31cb6473a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: d2aa018566695b5b94cd8a7e64931a8b776b151d
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896425"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766296"
 ---
-# <a name="migrate-existing-azure-service-bus-standard-namespaces-to-premium-tier"></a>A prémium szintű meglévő Azure Service Bus standard szintű névterek áttelepítése
+# <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>A prémium szint meglévő standard szintű Azure Service Bus-névterek áttelepítése
+Korábban az Azure Service Bus névtér csak a standard szinten érhető el. Névterek olyan több-bérlős beállítását, amely az alacsony átviteli sebesség és a fejlesztői környezetben vannak optimalizálva. A prémium szint dedikált erőforrások névterenként előre jelezhető késés és nagyobb átviteli sebesség, fix áron kínál. A prémium szint nagy átviteli sebességű és újabb nagyvállalati funkciókat igényelnek, éles üzemi környezetek van optimalizálva.
 
-Korábban az Azure Service Bus névtér csak a Standard szinten érhető el. Ezek olyan több-bérlős beállítását, amely az alacsony átviteli sebesség és a fejlesztői környezetbe lettek optimalizálva.
-
-A közelmúltban Azure Service Bus névterenként előre jelezhető késés és nagyobb átviteli sebesség, fix áron nagy adattovábbítási kapacitása és az éles környezetekre van optimalizálva, amelyek dedikált erőforrásokat kínáló prémium szintű kínáló kibontva További vállalati szolgáltatásokat igénylő.
-
-Az alábbi eszközök a meglévő Standard szintű névteret át kell helyezni a prémium szint lehetővé teszi.
+Ez a cikk ismerteti a meglévő standard szintű névterek áttelepítése a prémium szint.
 
 >[!WARNING]
-> Áttelepítés célja standard szintű Service Bus-névtérhez kell ***frissített*** a prémium szintre.
->
-> Az áttelepítési eszközkészlet ***nem*** támogatja az alacsonyabb verzióra való visszatérést.
->[!NOTE]
-> Az áttelepítés történik hivatott ***helyen***.
->
-> Ez azt jelenti, hogy meglévő küldő és fogadó-alkalmazások nem igénylik bármilyen kód vagy a konfiguráció módosítása.
->
-> A meglévő kapcsolati karakterlánc az új prémium szintű névtér automatikusan fog mutatni.
->
-> Emellett a standard szintű névtérben lévő összes entitáshoz van **átmásolt** a prémium szintű névtér az áttelepítés során.
->
->
-> Támogatjuk a ***1000 entitások / üzenetkezelési egység*** a prémium szintű, így azonosíthatja a hány üzenetkezelési egység van szüksége, indítsa el az a jelenlegi Standard névtérben rendelkező entitások száma.
+> Áttelepítési frissíteni kell a prémium szintű Service Bus a standard szintű névterek számára készült. Az áttelepítési eszköz alacsonyabb verziójúra változtatása nem támogatja.
+
+Egyes megjegyezni pontok: 
+- Az áttelepítés hivatott történjen a helyet, ami azt jelenti, hogy a már küldői és fogadói alkalmazások **nem szükséges módosítania kódírásra vagy konfigurálásra**. A meglévő kapcsolati karakterlánc az új prémium szintű névtér automatikusan fog mutatni.
+- A **prémium** névteret kell **nincsenek entitások** , az áttelepítés sikeres. 
+- Az összes **entitások** a standard szintű névtérben vannak **másolt** a prémium névtérhez az áttelepítés során. 
+- Áttelepítés által támogatott **1000 entitás / üzenetkezelési egység** a prémium szint. Azonosíthatja a hány üzenetkezelési egység van szüksége, kezdje a jelenlegi standard névtérben rendelkező entitások száma. 
 
 ## <a name="migration-steps"></a>Migrálási lépések
-
->[!IMPORTANT]
-> Nincsenek társított az áttelepítési folyamat bizonyos korlátozásokkal. Minden kért teljes Ismerkedjen meg a folyamat lépései lehetőségeit a hibák csökkentése érdekében.
-
-A konkrét részletes áttelepítési folyamat részleteit az alábbi útmutatók a.
-
-A logikai lépései a következők-
+Az áttelepítési folyamat egyes feltételek tartoznak. Ismerje meg az alábbi lépéseket a hibázás lehetőségét csökkentése érdekében. Ezeket a lépéseket a migrálási folyamatot körvonalazzák, és a következő szakaszok a témakör részletesen láthatók.
 
 1. Hozzon létre egy új névteret.
-2. Párosítsa a Standard és prémium szintű névtér egymáshoz.
-3. Szinkronizálási (másolási hozzáadásánál) entitások standardról prémium szintű névtérre váltani
-4. A migrálás véglegesítése
-5. A standard szintű névtérben, a névtér áttelepítés utáni neve használatával kiürítési entitások
-6. A standard szintű névtér törlése
+1. Párosítsa a standard és prémium szintű névterek egymáshoz.
+1. A prémium szintű névtérre váltani, a standard entitások szinkronizálása (másolási hozzáadásánál).
+1. A migrálás véglegesítése.
+1. A standard szintű névtér entitások kiürítési a névtér áttelepítés utáni nevet használja.
+1. A standard szintű névtér törlése.
 
->[!NOTE]
-> Miután a migrálás véglegesítése után, nagyon fontos a régi Standard névtér eléréséhez, és az üzenetsorok és -előfizetések ki kiürítési.
->
-> Az üzenetek rendelkezik lett ürítve miután azok küldhető az új prémium szintű névtérre váltani a fogadó alkalmazások általi feldolgozásának.
->
-> Miután az üzenetsorok és -előfizetések rendelkezik lett ürítve, javasoljuk, hogy a régi Standard névtér törlése. Ön nem lehet kellene azt!
+>[!IMPORTANT]
+> Miután a migrálás véglegesítése után, eléri a régi standard szintű névteret, és kiürítési az üzenetsorok és -előfizetések. Az üzenetek rendelkezik lett ürítve, miután azok küldhető az új prémium szintű névtérre váltani a fogadó alkalmazások általi feldolgozásának. Miután az üzenetsorok és -előfizetések rendelkezik lett ürítve, javasoljuk, hogy törölje a régi standard névtérben.
 
-### <a name="migrate-using-azure-cli-or-powershell"></a>Migrálása az Azure CLI vagy a PowerShell használatával
+### <a name="migrate-by-using-the-azure-cli-or-powershell"></a>Telepítse át az Azure CLI vagy a PowerShell segítségével
 
-A standard szintű Service Bus-névtér áttelepítése az Azure parancssori felület vagy PowerShell eszközzel prémium, tekintse meg az alábbi útmutató.
+A prémium szintű a standard szintű Service Bus-névtér áttelepítése az Azure parancssori felület vagy PowerShell eszköz használatával, kövesse az alábbi lépéseket.
 
-1. Hozzon létre egy új prémium szintű Service Bus-névteret. Hivatkozhat a [Azure Resource Manager-sablonok](service-bus-resource-manager-namespace.md) vagy [az Azure Portal](service-bus-create-namespace-portal.md). Ügyeljen arra, hogy a "Prémium" Válassza ki a **serviceBusSku** paraméter.
+1. Hozzon létre egy új Service Bus prémium szintű névteret. Hivatkozhat a [Azure Resource Manager-sablonok](service-bus-resource-manager-namespace.md) vagy [az Azure Portal](service-bus-create-namespace-portal.md). Ügyeljen arra, hogy válasszon **prémium szintű** számára a **serviceBusSku** paraméter.
 
-2. Állítsa be az alábbi környezeti változókat, egyszerűsítheti az áttelepítési parancsokat.
-   ```
+1. Állítsa be az alábbi környezeti változókat egyszerűsítése érdekében az áttelepítés parancsokat.
+   ```azurecli
    resourceGroup = <resource group for the standard namespace>
    standardNamespace = <standard namespace to migrate>
-   premiumNamespaceArmId = <Azure Resource Manager ID of the Premium namespace to migrate to>
-   postMigrationDnsName = <post migration DNS name entry to access the Standard namespace>
+   premiumNamespaceArmId = <Azure Resource Manager ID of the premium namespace to migrate to>
+   postMigrationDnsName = <post migration DNS name entry to access the standard namespace>
    ```
 
     >[!IMPORTANT]
-    > Az áttelepítés utáni neve (post_migration_dns_name) a régi standard szintű névtér a migrálás után eléréséhez használható. Ez az üzenetsorok és az előfizetések kiürítési, és ezután törölje a névteret kell használnia.
+    > Az áttelepítés utáni neve (post_migration_dns_name) a régi standard szintű névtér a migrálás után eléréséhez használható. Ezzel a kiürítési, az üzenetsorok és az előfizetések, és ezután törölje a névteret.
 
-3. **Pár** a Standard és prémium szintű névterek és **szinkronizálás indítása** használja az alábbi parancsot:
+1. Párosítsa a standard és prémium szintű névterek, és a szinkronizálás indítása a következő paranccsal:
 
-    ```
+    ```azurecli
     az servicebus migration start --resource-group $resourceGroup --name $standardNamespace --target-namespace $premiumNamespaceArmId --post-migration-name $postMigrationDnsName
     ```
 
 
-4. Az áttelepítés használatával állapotának ellenőrzéséhez az alábbi parancsot:
-    ```
+1. Az áttelepítés állapotának ellenőrzéséhez a következő paranccsal:
+    ```azurecli
     az servicebus migration show --resource-group $resourceGroup --name $standardNamespace
     ```
 
-    Az áttelepítés akkor tekinthető mikor
+    Az áttelepítés akkor tekinthető amikor megjelenik a következő értékeket:
     * MigrationState = "Aktív"
     * pendingReplicationsOperationsCount = 0
     * provisioningState "Succeeded" =
 
-    Ez a parancs a migrálási konfiguráció is megjeleníti. Kérjük, győződjön meg arról, hogy az értékek vannak beállítva az előző ellenőrizze deklarálva.
+    Ez a parancs a migrálási konfiguráció is megjeleníti. Ellenőrizze, hogy a helyesen van-e beállítva az értékeket. A prémium szintű névtér annak érdekében, az üzenetsorok és témakörök létrehozott, és megfeleljenek Mi a standard szintű névtér létezett a portálon is ellenőrizhető.
 
-    Ezenkívül is ellenőrizheti a portálon győződjön meg arról, hogy az üzenetsorok és témakörök létrehozott, és a standard szintű névtér létezett, hogy mi ezek megegyeznek a prémium szintű névtér.
-
-5. A migrálás véglegesítése a teljes az alábbi parancs végrehajtásával:
-   ```
+1. A migrálás véglegesítése a következő teljes parancs végrehajtásával:
+   ```azurecli
    az servicebus migration complete --resource-group $resourceGroup --name $standardNamespace
    ```
 
-### <a name="migrate-using-azure-portal"></a>Migrálása az Azure portal használatával
+### <a name="migrate-by-using-the-azure-portal"></a>Telepítse át az Azure portal segítségével
 
-Áttelepítés az Azure Portalon keresztül ugyanazon logikai folyamata megegyezik a parancsokkal rendelkezik. Tekintse meg a folyamat részletes útmutató a portal használatával történő áttelepítés alatt.
+Az Azure portal használatával történő áttelepítés ugyanazon logikai folyamata megegyezik a parancsokkal rendelkezik. Kövesse az alábbi lépéseket áttelepítése az Azure portal használatával.
 
-1. Válassza ki a **"Áttelepítés prémium szintű"** menüpont a navigációs menüben a bal oldali panelen. Kattintson a **"Első lépések"** gombra kattintva lépjen tovább a következő lapon.
+1. Az a **navigációs** bal oldali panelén válassza a menü **áttelepítés prémium szintű**. Kattintson a **Ismerkedés** gombra a folytatáshoz a következő lapra.
     ![Áttelepítési kezdőlapja][]
 
-2. Teljes **telepítő**.
+1. Teljes **telepítő**.
    ![A telepítő névtér][]
    1. Hozzon létre, és rendelje hozzá a prémium szintű névtér áttelepítése a meglévő standard szintű névtérre.
         ![Névtér beállítása – prémium szintű névtér létrehozása][]
-   2. Válassza ki a **(a Migrálás után name)** a migrálás befejezése után a standard szintű névtér szerint eléréséhez.
+   1. Válasszon egy **a Migrálás után neve**. A migrálás befejezése után a standard szintű névtér el ezt a nevet fogja használni.
         ![Névtér beállítása – válassza ki a post áttelepítési neve][]
-   3. Kattintson a **'Tovább'** a folytatáshoz.
-3. **Szinkronizálási** entitások között a Standard és prémium szintű névtér.
+   1. Válassza ki **'Tovább'** folytatásához.
+1. A standard és prémium szintű névterek közötti entitások szinkronizálása.
     ![Névtér - entitások szinkronizálása – kezdő beállítása][]
 
-   1. Kattintson a **szinkronizálás indítása** megkezdéséhez az entitások szinkronizálása.
-   2. Kattintson a **"Igen"** az előugró megerősíti a szinkronizálás elindításához.
-   3. Várja meg, amíg a **szinkronizálási** befejeződött. Az állapot szeretné elérhetővé tenni az állapotsorban.
+   1. Válassza ki **szinkronizálás indítása** megkezdéséhez az entitások szinkronizálása.
+   1. Válassza ki **Igen** a párbeszédpanel, erősítse meg, és a szinkronizálás elindításához.
+   1. Várjon, amíg a szinkronizálás be nem fejeződik. Az állapot az állapotsor érhető el.
         ![Névtér - szinkronizálás entitások - folyamat beállítása][]
         >[!IMPORTANT]
-        > Ha szeretne **megszakítása** bármilyen okból, tekintse át a megszakítási folyamat a jelen dokumentum a gyakori kérdésekkel foglalkozó szakaszban.
-   4. A szinkronizálás befejeződése után kattintson a **'Tovább'** gombra a lap alján.
+        > Ha bármilyen okból szakítsa meg a migrálást van szüksége, tekintse át a megszakítási folyamat a jelen dokumentum a gyakori kérdésekkel foglalkozó szakaszban.
+   1. A szinkronizálás befejezése után jelölje ki a **tovább** az oldal alján.
 
-4. Tekintse át a módosításokat az összefoglalás lapon.
-    ![Váltson a névtér - kapcsoló menü][]
-
-5. Kattintson a **"Az áttelepítés befejezése"** váltson a névterek és az áttelepítés befejezéséhez.
+1. Tekintse át a módosításokat az összefoglalás lapon. Válassza ki **az áttelepítés befejezése** váltani a névterek és az áttelepítés befejezéséhez.
+    ![Váltson a névtér - kapcsoló menü][] a Megerősítés lapon jelenik meg, ha az áttelepítés akkor fejeződött be.
     ![Kapcsoló névtér - sikeres][]
 
 ## <a name="faqs"></a>Gyakori kérdések
@@ -149,76 +125,70 @@ A migrálás véglegesítése után a standard szintű névtér mutatott kapcsol
 
 A küldő és fogadó alkalmazások bontsa a kapcsolatot a standard szintű Namespace, és a automatikusan újracsatlakozzanak a prémium szintű névtér.
 
-### <a name="what-do-i-do-after-the-standard-to-premium-migration-is-complete"></a>Mit a teendő, a Standard, prémium szintű az áttelepítés befejezése után?
+### <a name="what-do-i-do-after-the-standard-to-premium-migration-is-complete"></a>Mit a teendő, a standard, prémium szintű az áttelepítés befejezése után?
 
-A Standard, prémium szintű áttelepítési biztosítja, hogy az entitás-metaadatok (témakörök, előfizetések, szűrőket, et al.) vannak keresztül másolja a standardról prémium szintű névtérre váltani. Az állapotüzenet-adatokat, amely a standard szintű névtér volt véglegesített nem át van másolva a standardról prémium szintű névtér.
+A standard, prémium szintű áttelepítési biztosítja, hogy az entitás-metaadatok, például a témakörök, előfizetések és szűrőket a prémium szintű névtérre váltani a standard szintű névtér másolódnak. Az állapotüzenet-adatokat, amely a standard szintű névtér véglegesített volt a prémium szintű névtér nem másolja a standard szintű névteret.
 
-Ezért a standard szintű névtér előfordulhat, hogy néhány üzenetet küldött, és miközben folyamatban volt a migrálás véglegesítése. Ezeket az üzeneteket kell manuálisan, a standard szintű Namespace ürítve és keresztül küldött, a prémium szintű Namespace manuálisan.
+A standard szintű névtér előfordulhat, hogy néhány üzenetet küldött, és miközben folyamatban volt a migrálás véglegesítése. Ezeket az üzeneteket a standard szintű Namespace manuálisan kiürítési, és manuálisan küldje el azokat a prémium szintű Namespace. Manuálisan az üzeneteket, használja egy konzolalkalmazás vagy egy parancsfájlt, amely a standard szintű névtér entitások kiüríti a Post áttelepítési DNS-név, amelyet az áttelepítés parancsok a használatával. Ezeket az üzeneteket küldeni a prémium szintű névtér úgy, hogy a hozzáadásuk dolgozhassák fel.
 
-Ehhez, ***kell*** egy konzolalkalmazás vagy parancsfájlt, amely a standard szintű névtér entitások kiürítési a **Post áttelepítési DNS-név** , hogy a migrálás parancsok megadott, és elküldheti ezeket üzeneteket a a prémium szintű Namespace úgy, hogy a hozzáadásuk dolgozhassák fel.
-
-Ha üzeneteket kell lett ürítve, folytassa a standard szintű névtér törlése.
+Az üzenetek rendelkezik lett ürítve, miután a standard szintű névtér törlése
 
 >[!IMPORTANT]
-> Ne feledje, hogy miután a standard szintű névtér üzeneteit rendelkezik lett ürítve, hogy **kell** a standard szintű névtér törlése.
->
-> Ez azért fontos, mert a kapcsolati karakterláncot, amely kezdetben említett a standard szintű névtér most ténylegesen a prémium szintű névtér hivatkozik. Meg nem lehet kellene a standard szintű Namespace többé.
->
-> Egy későbbi időpontban mindebben segítségével telepített át, a standard szintű névtér törlése csökkenti. 
+> Miután a standard szintű névtér üzeneteit rendelkezik lett ürítve, törölje a standard szintű névtér. Ez azért fontos, mert a kapcsolati karakterláncot, amely kezdetben említett a standard szintű névtér már hivatkozik a prémium szintű névtérre váltani. A standard szintű Namespace többé nem szükséges. A standard szintű névtér áttelepített törlése segítségével újabb elkerülése érdekében.
 
 ### <a name="how-much-downtime-do-i-expect"></a>Mennyi állásidő tegye várható?
-Az áttelepítési folyamat a fent leírt célja az alkalmazások a várható állásidő csökkentése érdekében. Ez a kapcsolati karakterláncot, a küldő és fogadó kérelmek átirányítása az új prémium szintű névteret használó felügyelniük történik.
+Az áttelepítési folyamat célja az alkalmazások a várható állásidő csökkentése érdekében. Állásidő csökken a kapcsolati karakterlánc, a küldő és fogadó-alkalmazások használatával az új prémium szintű névtérre mutasson.
 
-Az alkalmazás által tapasztalt üzemszünet, hogy a prémium szintű névtérre mutasson a DNS-bejegyzés frissítéséhez szükséges idő mennyisége korlátozva.
+A prémium szintű névtér átirányítása a DNS-bejegyzés frissítéséhez szükséges idő az állásidő, amely az alkalmazás által bekövetkezik korlátozódik. Állásidőre körülbelül 5 perc.
 
-Ez is kell azt feltételezi, hogy ***körülbelül 5 perc***.
-
-### <a name="do-i-have-to-make-any-configuration-changes-while-performing-the-migration"></a>Rendelkezik a migrálás végrehajtása közben semmilyen konfigurációs módosítást?
-Nem, nem változtak kódokat, illetve konfigurációs az áttelepítés végrehajtásához szükséges. A kapcsolati karakterláncot, amellyel küldői és fogadói alkalmazások hozzáférhetnek a standard szintű Namespace automatikusan hozzá van rendelve, aki egy **alias** a prémium szintű Namespace számára.
+### <a name="do-i-have-to-make-any-configuration-changes-while-doing-the-migration"></a>Rendelkezik semmilyen konfigurációs módosítást a migrálás során?
+Nem, nem változtak kódírásra vagy konfigurálásra az áttelepítés végrehajtásához szükséges. A kapcsolati karakterláncot, amellyel küldői és fogadói alkalmazások hozzáférhetnek a standard szintű Namespace automatikusan a prémium szintű névtér alias-kiszolgálóként van leképezve.
 
 ### <a name="what-happens-when-i-abort-the-migration"></a>Mi történik, ha szeretnék megszakíthatja a migrálást?
-Áttelepítés vagy a "Megszakítás" paranccsal vagy az Azure Portalon is megszakítja. 
+Az áttelepítés is szakadni használatával a `Abort` parancsot vagy a az Azure Portalon. 
 
-#### <a name="azure-cli-or-powershell"></a>Az Azure CLI vagy a PowerShell használatával
+#### <a name="azure-cli"></a>Azure CLI
 
-    az servicebus migration abort --resource-group $resourceGroup --name $standardNamespace
+```azurecli
+az servicebus migration abort --resource-group $resourceGroup --name $standardNamespace
+```
 
 #### <a name="azure-portal"></a>Azure Portal
 
 ![A folyamat megszakítása – a szinkronizálás megszakítása][]
 ![megszakíthatja a folyamat – teljes megszakítása][]
 
-Ha az áttelepítési folyamat végrehajtása megszakadt, ténylegesen az entitásokat (témakörök, előfizetések és szűrők) keresztül másolja a folyamat megszakítása standardról prémium szintű névtérre váltani, és működésképtelenné válik a párosítást.
+Az áttelepítési folyamat leáll, ha megszakítja a szabványostól, a prémium szintű névtérre váltani másolása az entitásokat (témakörök, előfizetések és szűrők), és működésképtelenné válik a párosítást.
 
-A kapcsolati karakterlánc **nem** frissítve, hogy a prémium szintű névtérre mutasson. A meglévő alkalmazások továbbra is működni, mint az áttelepítés megkezdése előtt.
+A kapcsolati karakterlánc nem frissül, hogy a prémium szintű névtérre mutasson. A meglévő alkalmazások továbbra is működni, mint az áttelepítés megkezdése előtt.
 
-Azonban ez **nem** törölheti az entitásokat a prémium szintű névtér vagy a prémium szintű névtér magát. Azt manuálisan hajtható végre, ha Ön döntött, hogy nem halad a migrálást követően.
+Azonban, nem törölheti az entitásokat a prémium szintű névtér vagy a prémium szintű névtér. Manuálisan törölje az entitásokat, ha úgy döntött, hogy nem a a migrálást.
 
 >[!IMPORTANT]
-> Ha úgy dönt, hogy megszakíthatja a migrálást, kérjük, törölje a korábban kiépített az áttelepítés prémium szintű Namespace úgy, hogy az erőforrások nem terheli.
+> Ha úgy dönt, hogy megszakíthatja a migrálást, törölje a korábban kiépített a migráláshoz, hogy az erőforrások nem terheli Namespace premium.
 
 #### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>Nem szeretnék az üzenetek kiürítési kell. Mit tegyek?
 
-Előfordulhat, hogy a küldő alkalmazás által küldött és az áttelepítés során a tárhely a szabványos Namespace véglegesített üzeneteket, és közvetlenül az áttelepítés előtt véglegesítve.
+Előfordulhat, hogy üzeneteket a küldő alkalmazás által küldött és az áttelepítés közben, és elkötelezett a migrálás előtt a tárhely a szabványos Namespace véglegesítve.
 
-Tekintettel arra, hogy az áttelepítés során a tényleges üzenet adattartalom nem át van másolva standardról prémium szintű, ezeket kell manuálisan ürítve, és elküldi a prémium szintű névtérre váltani.
+Az áttelepítés során a tényleges üzenet adattartalom nem másolja a standard a prémium szintű névtér. Az üzenetek kell manuálisan ürítve, és elküldi a prémium szintű névtérre váltani.
 
-Azonban ha egy tervezett karbantartási/housekeeping időszak alatt telepítheti át, és nem szeretné manuálisan kiürítési, és az üzenetek küldéséhez, kövesse az alábbi lépések szükségesek:
+Áttelepítheti a tervezett karbantartás/housekeeping időszak alatt, és nem szeretné manuálisan kiürítési és az üzenetek küldése, ha azonban kövesse az alábbi lépéseket:
 
-1. Állítsa le a küldő alkalmazást, és a fogadók a üzeneteket feldolgoznia, amelyeket jelenleg a standard szintű névtérben, és a várólista kiürítési engedélyezése.
-2. Miután az üzenetsorok és -előfizetések, a standard szintű Namespace az üres, kövesse a hajtsa végre az áttelepítés Standard, prémium szintű névtér a fent leírt eljárást.
-3. Az áttelepítés befejezése után újraindíthatja a küldő alkalmazást.
-4. A küldők és fogadók automatikusan most már csatlakoznak a prémium szintű névtér esetében.
+1. Állítsa le a küldő alkalmazást. A fogadó alkalmazások feldolgozza az üzeneteket, amelyek jelenleg a standard szintű névtérben, és ki fogja üríteni az üzenetsorba.
+1. Után az üzenetsorok és -előfizetések, a standard szintű Namespace az üres, kövesse az áttelepítés a prémium szintű névtérre váltani a standard hajtsa végre a korábban ismertetett eljárás.
+1. Az áttelepítés befejezése után újraindíthatja a küldő alkalmazást.
+1. A küldők és fogadók automatikusan most már csatlakoznak a prémium szintű névtér esetében.
 
     >[!NOTE]
-    > A migrálás a fogadó nem kell leállítani.
+    > Nem kell leállítani a migrálás a fogadó alkalmazások.
     >
-    > Az áttelepítés befejeződése után a fogadók bontsa a kapcsolatot a standard szintű névteret, és a prémium szintű névtér automatikusan csatlakoznak.
+    > Az áttelepítés befejezése után a fogadó alkalmazások bontsa a kapcsolatot a standard szintű névteret, és a prémium szintű névtér automatikusan csatlakoznak.
 
 ## <a name="next-steps"></a>További lépések
 
-* Tudjon meg többet a [Standard és prémium szintű üzenetkezelés közötti különbségek](./service-bus-premium-messaging.md)
-* További információk a magas rendelkezésre állás és a Geo-Diaster helyreállítási szempontjai az Service Bus prémium szintű [Itt](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium)
+* Tudjon meg többet a [standard és prémium szintű üzenetkezelés közötti különbségek](./service-bus-premium-messaging.md).
+* További információ a [magas rendelkezésre állás és a Geo-Disaster recovery szempontjai a Service Bus prémium](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium).
 
 [Áttelepítési kezdőlapja]: ./media/service-bus-standard-premium-migration/1.png
 [A telepítő névtér]: ./media/service-bus-standard-premium-migration/2.png

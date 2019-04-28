@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 59c8effb4c5feae99755b7937f4796e8f11fde46
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 221bcbfb2517efae41005641321a651dfdf8e39f
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895883"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759441"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Az Azure Logic Apps összekötői
 
@@ -117,7 +117,7 @@ Az alábbiakban a vállalatközi (B2B) megoldások fejlesztése a logikai alkalm
 
 |   |   |   |   | 
 |---|---|---|---| 
-| [![API-ikon][as2-icon]<br/>**AS2</br> dekódolás**][as2-decode-doc] | [![API-ikon][as2-icon]<br/>**AS2</br> kódolás**][as2-encode-doc] | [![API-ikon][edifact-icon]<br/>**EDIFACT</br> dekódolás**][edifact-decode-doc] | [![API-ikon][edifact-icon]<br/>**EDIFACT</br> kódolás**][edifact-encode-doc] | 
+| [![API-ikon][as2-icon]<br/>**AS2</br> dekódolás**][as2-doc] | [![API-ikon][as2-icon]<br/>**AS2</br> kódolás**][as2-doc] | [![API-ikon][edifact-icon]<br/>**EDIFACT</br> dekódolás**][edifact-decode-doc] | [![API-ikon][edifact-icon]<br/>**EDIFACT</br> kódolás**][edifact-encode-doc] | 
 | [![API-ikon][flat-file-decode-icon]<br/>**Egybesimított fájl</br> dekódolás**][flat-file-decode-doc] | [![API-ikon][flat-file-encode-icon]<br/>**Egybesimított fájl</br> kódolás**][flat-file-encode-doc] | [![API-ikon][integration-account-icon]<br/>**integrációs<br/>fiók**][integration-account-doc] | [![API-ikon][liquid-icon]<br/>**Liquid**</br>**átalakítások**][json-liquid-transform-doc] | 
 | [![API-ikon][x12-icon]<br/>**X12</br> dekódolás**][x12-decode-doc] | [![API-ikon][x12-icon]<br/>**X12</br> kódolás**][x12-encode-doc] | [![API icon][xml-transform-icon]<br/>**XML**</br>**transforms**][xml-transform-doc] | [![API-ikon][xml-validate-icon]<br/>**XML <br/>érvényesítése**][xml-validate-doc] |  
 ||||| 
@@ -257,8 +257,6 @@ Ahhoz, hogy egyéni API-alkalmazások és összekötők bárki használhatja az 
 
 <!--Enterprise Intregation Pack doc links-->
 [as2-doc]: ../logic-apps/logic-apps-enterprise-integration-as2.md "Megismerheti a vállalati integrációs AS2-t."
-[as2-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-as2-decode.md "Megismerheti a vállalati integrációs AS2-dekódolást."
-[as2-encode-doc]:../logic-apps/logic-apps-enterprise-integration-as2-encode.md "Megismerheti a vállalati integrációs AS2-kódolást."
 [edifact-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "Megismerheti a vállalati integrációs EDIFACT-dekódolást."
 [edifact-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "Megismerheti a vállalati integrációs EDIFACT-kódolást."
 [flat-file-decode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "Megismerheti a vállalati integrációs egybesimított fájlt."

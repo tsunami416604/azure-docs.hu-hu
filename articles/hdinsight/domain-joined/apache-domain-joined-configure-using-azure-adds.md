@@ -1,20 +1,19 @@
 ---
 title: Vállalati biztonsági csomag konfigurációját az Active Directory Domain Servicest – Azure HDInsight segítségével
 description: Megtudhatja, hogyan állíthatja be, és a HDInsight vállalati biztonsági csomag fürt konfigurálása Azure Active Directory Domain Services használatával.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
-ms.reviewer: hrasheed
+ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 03/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2b7364a2bb32f2d38f5cf9ddeddd5e4e1f928e01
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.date: 04/23/2019
+ms.openlocfilehash: 7ad6d4b3a1f465f3d15e00f0164da9f2778f7f1c
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519791"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760802"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>HDInsight-fürt konfigurálása Enterprise Security Package-dzsel az Azure Active Directory Domain Services használatával
 
@@ -22,23 +21,21 @@ Vállalati biztonsági csomag (ESP) fürtök többfelhasználós hozzáférést 
 
 Ebből a cikkből elsajátíthatja egy HDInsight-fürt konfigurálása ESP az Azure Active Directory Domain Services (Azure AD DS) használatával.
 
->[!NOTE]  
->ESP általánosan elérhető a HDI 3.6 Apache Spark, interaktív és Apache Hadoop. Az Apache HBase- és Apache Kafka fürttípusok ESP az előzetes verzióban.
+> [!NOTE]  
+> ESP általánosan elérhető a HDI 3.6 Apache Spark, interaktív és Apache Hadoop. Az Apache HBase- és Apache Kafka fürttípusok ESP az előzetes verzióban.
 
 ## <a name="enable-azure-ad-ds"></a>Engedélyezze az Azure AD-DS-ben
 
 > [!NOTE]  
-> Csak a bérlői rendszergazdák a jogosultság az Azure AD-tartományi szolgáltatások engedélyezése. Ha a fürttárolóhoz-e az Azure Data Lake Storage (ADLS) Gen1 és Gen2, le kell tiltania a multi-factor Authentication (MFA) csak a felhasználók számára, aki a fürtöt Kerberose alapszintű hitelesítés használatával kell. Használhat [megbízható IP-címek](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings#trusted-ips) vagy [feltételes hozzáférési](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) többtényezős hitelesítés letiltása adott felhasználókra vonatkozóan csak amikor érnek el a HDInsight-fürt virtuális hálózat IP-címtartományt. Ha használja a feltételes hozzáférés győződjön meg arról, hogy az AD a szolgáltatási végpont engedélyezve van a HDInsight virtuális hálózaton.
+> Csak a bérlői rendszergazdák a jogosultság az Azure AD-tartományi szolgáltatások engedélyezése. Ha a fürttárolóhoz-e az Azure Data Lake Storage (ADLS) Gen1 és Gen2, le kell tiltania a multi-factor Authentication (MFA) csak a felhasználók számára, aki a fürtöt Kerberose alapszintű hitelesítés használatával kell. Használhat [megbízható IP-címek](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) vagy [feltételes hozzáférési](../../active-directory/conditional-access/overview.md) többtényezős hitelesítés letiltása adott felhasználókra vonatkozóan csak amikor érnek el a HDInsight-fürt virtuális hálózat IP-címtartományt. Ha feltételes hozzáférést használ, ellenőrizze, hogy az adott AD szolgáltatásvégpont engedélyezve van a HDInsight virtuális hálózaton.
 >
->Ha a fürt tároló Azure Blob Storage (WASB), ne tiltsa le az MFA.
-
-
+> Ha a fürt tároló Azure Blob Storage (WASB), ne tiltsa le az MFA.
 
 Azure ad-Tartományi engedélyezése előfeltétele az ESP használata egy HDInsight-fürt létrehozása előtt. További információkért lásd: [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
 
 Az Azure AD-Tartományi engedélyezve van, minden felhasználó és objektumok indítsa el az alapértelmezés szerint az Azure AD-Tartományi szinkronizálása az Azure Active Directory (AAD). Az objektumok száma az Azure ad-ben a szinkronizálási műveletet hossza függ. A szinkronizálás eltarthat pár nappal a több száz, több ezer objektumot tartalmaz. 
 
-Ügyfelek kiválaszthatják a szinkronizálás csak a csoportokat, amelyek a HDInsight-fürtökbe való hozzáférésre van szükségük. Ez a beállítás csak bizonyos csoportokat a szinkronizálás nevezzük *szinkronizálás hatóköre*. Lásd: [konfigurálása hatókörrel rendelkező Azure AD-ből a felügyelt tartományhoz való szinkronizálás](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-scoped-synchronization) útmutatást.
+Kiválaszthatja a szinkronizálni csak azokat a csoportokat, amelyek a HDInsight-fürtökbe való hozzáférésre van szükségük. Ez a beállítás csak bizonyos csoportokat a szinkronizálás nevezzük *szinkronizálás hatóköre*. Lásd: [konfigurálása hatókörrel rendelkező Azure AD-ből a felügyelt tartományhoz való szinkronizálás](../../active-directory-domain-services/active-directory-ds-scoped-synchronization.md) útmutatást.
 
 Secure LDAP engedélyezése, ha a tanúsítvány helyezni a tartománynév a tulajdonos neve és a tulajdonos alternatív neveként. Például, ha a tartománynév *contoso100.onmicrosoft.com*, győződjön meg arról, hogy pontos neve létezik a tanúsítvány tulajdonos neve és a tulajdonos alternatív neveként. További információkért lásd: [a felügyelt tartomány secure LDAP konfigurálása az Azure AD-DS a](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md). Az alábbiakban egy példát egy önaláírt tanúsítvány létrehozása, és rendelkezik a tartomány nevét (*contoso100.onmicrosoft.com*) a tulajdonos neve és a DnsName (tulajdonos alternatív neve):
 
@@ -56,22 +53,22 @@ Megtekintheti az Azure Active Directory Domain Services állapotának **állapot
 
 ## <a name="create-and-authorize-a-managed-identity"></a>Hozzon létre, és a egy felügyelt identitás engedélyezése
 
-A **felhasználó által hozzárendelt felügyelt identitás** egyszerűsítése és biztonságos domain services műveletek szolgál. A HDInsight Domain Services közreműködői szerepkör hozzárendelése a felügyelt identitást, amikor azt is olvassa el, létrehozása, módosítása és törlési műveletek a tartományi szolgáltatások. Bizonyos domain services-műveletek, például a szervezeti egységek létrehozása és a szolgáltatás alapelvek szükséges ahhoz, hogy a HDInsight vállalati biztonsági csomag. Felügyelt identitások bármely előfizetés hozható létre. További információk az általános felügyelt identitások, lásd: [felügyelt identitások az Azure-erőforrások](../../active-directory/managed-identities-azure-resources/overview.md). Felügyelt identitások munka az Azure HDInsight további információkért lásd: [által felügyelt identitásokat az Azure HDInsight](../hdinsight-managed-identities.md).
+A **felhasználó által hozzárendelt felügyelt identitás** egyszerűsítése és biztonságos domain services műveletek szolgál. A HDInsight Domain Services közreműködői szerepkör hozzárendelése a felügyelt identitást, amikor azt is olvassa el, létrehozása, módosítása és törlési műveletek a tartományi szolgáltatások. A HDInsight vállalati biztonsági csomag egyes domain services műveletek, például a szervezeti egységek és az egyszerű szolgáltatások létrehozásához szükséges. Felügyelt identitások bármely előfizetés hozható létre. További információk az általános felügyelt identitások, lásd: [felügyelt identitások az Azure-erőforrások](../../active-directory/managed-identities-azure-resources/overview.md). Felügyelt identitások munka az Azure HDInsight további információkért lásd: [által felügyelt identitásokat az Azure HDInsight](../hdinsight-managed-identities.md).
 
-ESP fürtök beállításához hozzon létre egy felhasználó által hozzárendelt felügyelt identitás, ha már nincs. Lásd: [létrehozás, list, delete vagy egy az Azure portal használatával felügyelt felhasználó által hozzárendelt identitások szerepkör hozzárendelése](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) útmutatást. Ezt követően rendelje hozzá a **HDInsight Domain Services közreműködői** a felügyelt identitás (AAD-Tartományi rendszergazdai jogosultságok szükségesek, hogy a szerepkör-hozzárendelés) az Azure AD-Tartományi hozzáférés-vezérlés a szerepkört.
+ESP fürtök beállításához hozzon létre egy felhasználó által hozzárendelt felügyelt identitás, ha már nincs. Lásd: [létrehozás, list, delete vagy egy az Azure portal használatával felügyelt felhasználó által hozzárendelt identitások szerepkör hozzárendelése](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) útmutatást. Ezt követően rendelje hozzá a **HDInsight Domain Services közreműködői** a felügyelt identitás (AAD-Tartományi rendszergazdai jogosultságok szükségesek, hogy a szerepkör-hozzárendelés) az Azure AD-Tartományi hozzáférés-vezérlés a szerepkört.
 
 ![Az Azure Active Directory tartományi szolgáltatások hozzáférés-vezérlés](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png)
 
 Hozzárendelés a **HDInsight Domain Services közreműködői** szerepkör biztosítja, hogy ez az identitás megfelelő (nevében) domain services műveletek, például a szervezeti egységek létrehozása, törlés, a szervezeti egységek, stb. az AAD-DS-tartományról a végezhetők el.
 
-A felügyelt identitás létrehozása és a megfelelő szerepkört kap, után az AAD-Tartományi rendszergazda beállíthatja ki használhatja a felügyelt identitást. A felhasználók a felügyelt identitás beállítása esetén a rendszergazda kell a felügyelt identitás kiválasztása a portálon, majd kattintson **hozzáférés-vezérlés (IAM)** alatt **áttekintése**. Ezután a jobb oldali rendeljen a **felügyelt identitások üzemeltetője** azon felhasználók vagy csoportok HDInsight ESP-fürtök létrehozása a kívánt szerepkört. Az AAD-Tartományi rendszergazda például a "sjmsi" felügyelt identitás, az alábbi képen látható módon a "MarketingTeam" csoporthoz is hozzárendelhetők ehhez a szerepkörhöz. Ez biztosítja, hogy a megfelelő emberek számára a szervezeten belüli hozzáférjenek a felügyelt identitást ESP-fürtök létrehozása céljából használja.
+A felügyelt identitás létrehozása és a megfelelő szerepkört kap, után az AAD-Tartományi rendszergazda beállíthatja ki használhatja a felügyelt identitást. A felhasználók a felügyelt identitás beállítása esetén a rendszergazda kell a felügyelt identitás kiválasztása a portálon, majd kattintson **hozzáférés-vezérlés (IAM)** alatt **áttekintése**. Ezután a jobb oldali rendeljen a **felügyelt identitások üzemeltetője** azon felhasználók vagy csoportok HDInsight ESP-fürtök létrehozása a kívánt szerepkört. Például az AAD-Tartományi rendszergazda rendelhet hozzá ezt a szerepkört a **MarketingTeam** csoportot ehhez a **sjmsi** felügyelt identitás, az alábbi képen látható módon. Ez biztosítja, hogy a megfelelő emberek számára a szervezeten belüli hozzáférjenek a felügyelt identitást ESP-fürtök létrehozása céljából használja.
 
 ![HDInsight által felügyelt identitás operátor szerepkör-hozzárendelés](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png)
 
 ## <a name="networking-considerations"></a>Hálózati megfontolások
 
 > [!NOTE]  
-> Az Azure AD-Tartományi telepíteni kell egy Azure Resource Manager (ARM) alapú virtuális hálózatban. A klasszikus virtuális hálózatok nem támogatottak az Azure AD-DS-ben. Tekintse meg [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-network) további részletekért.
+> Az Azure AD-Tartományi telepíteni kell egy Azure Resource Manager (ARM) alapú virtuális hálózatban. A klasszikus virtuális hálózatok nem támogatottak az Azure AD-DS-ben. További információkért tekintse meg [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](../../active-directory-domain-services/active-directory-ds-getting-started-network.md).
 
 Miután engedélyezte az Azure AD-Tartományi, egy helyi tartomány neve szolgáltatás (DNS) kiszolgáló fut, az AD virtuális gépeken (VM). Az Azure AD-Tartományi Virtual Network (VNET) ezen egyéni DNS-kiszolgálók használatára konfigurálja. Keresse meg a megfelelő IP-címeket, válasszon **tulajdonságok** alatt a **kezelés** alatt felsorolt kategória és tekintse meg az IP-címek **IP-cím virtuális hálózaton**.
 
@@ -87,10 +84,10 @@ Miután a virtuális hálózatok társviszonyban állnak, konfigurálása a HDIn
 
 ![Egyéni DNS-kiszolgálók beállítása a társított virtuális hálózaton](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
-Ha a hálózati biztonsági csoportok (NSG) szabályai a HDInsight-alhálózat használ, akkor ajánlott engedélyezni a [szükséges IP-címek](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network) listáinak bejövő és kimenő forgalom számára. 
+Ha a hálózati biztonsági csoportok (NSG) szabályai a HDInsight-alhálózat használ, akkor ajánlott engedélyezni a [szükséges IP-címek](../hdinsight-extend-hadoop-virtual-network.md) listáinak bejövő és kimenő forgalom számára. 
 
 **Teszteléséhez** a hálózatkezelés megfelelően van beállítva, ha egy windows rendszerű virtuális gép csatlakozzon a HDInsight virtuális hálózat/alhálózat, és pingelje a tartomány nevét (azt kell feloldhatónak lennie egy IP-cím), majd futtassa **ldp.exe** Azure Active Directory-tartományi szolgáltatások eléréséhez. Majd **a windows rendszerű virtuális gép csatlakoztatása a tartományhoz, győződjön meg arról, hogy** , amely az összes szükséges távoli eljáráshívások sikeres legyen, az ügyfél és kiszolgáló között. Is **nslookup** , erősítse meg a storage-fiók vagy bármilyen külső DB használható (például külső Hive-metaadattár vagy Ranger DB) hálózati hozzáférést.
-Meg kell győződnie arról, hogy minden a [szükséges portok](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) szerepel az engedélyezési listán az AAD-DS-ben alhálózat hálózati biztonsági csoport szabályok vonatkoznak, ha az AAD-DS védi egy NSG-t. Ha a tartományhoz való csatlakozás a Windows virtuális gép létrejött, akkor folytassa a következő lépéssel és ESP-fürtök létrehozása.
+Győződjön meg arról, hogy minden a [szükséges portok](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) szerepel az engedélyezési listán az AAD-DS-ben alhálózat hálózati biztonsági csoport szabályok vonatkoznak, ha az AAD-DS védi egy NSG-t. Ha a tartományhoz való csatlakozás a Windows virtuális gép létrejött, akkor folytassa a következő lépéssel és ESP-fürtök létrehozása.
 
 ## <a name="create-a-hdinsight-cluster-with-esp"></a>ESP-HDInsight-fürt létrehozása
 
@@ -102,7 +99,7 @@ Az előző lépések megfelelően beállítása után a következő lépés az a
 
 ![Az Azure HDInsight vállalati biztonsági csomag tartomány ellenőrzése](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate.png)
 
-Miután engedélyezte a ESP, az Azure AD-Tartományi kapcsolatos gyakori konfigurációs hibáinak lehet automatikusan észlelte és érvényesítve. Ezek a hibák kijavítása után, és folytassa a következő lépés: 
+Miután engedélyezte a ESP, az Azure AD-Tartományi kapcsolatos gyakori konfigurációs hibáinak lehet automatikusan észlelte és érvényesítve. Ezek a hibák kijavítása, után, és folytassa a következő lépés: 
 
 ![Az Azure HDInsight vállalati biztonsági csomag nem sikerült ellenőrizni a tartományt](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate-failed.png)
 

@@ -3,16 +3,16 @@ title: Egyéni szabályzatdefiníció létrehozása
 description: Egyéni szabályzat-definíció egyéni üzleti szabályok érvényesítése az Azure Policy írhat.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/12/2019
+ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: bf3582036a28603c3b6ef33a2af28cb61926d91f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e808bd18e2b23c211f1c5257881fc8a8b72271fc
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267752"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760884"
 ---
 # <a name="create-a-custom-policy-definition"></a>Egyéni szabályzatdefiníció létrehozása
 
@@ -69,9 +69,9 @@ Többféleképpen is meg egy [Resource Manager-sablon](../../../azure-resource-m
 #### <a name="existing-resource-in-the-portal"></a>Meglévő erőforrást a portálon
 
 A legegyszerűbben úgy tulajdonságait, hogy tekintse meg az azonos típusú meglévő erőforrást. Erőforrások már be van állítva a beállítás kényszeríteni szeretné a érték is biztosítanak.
-Tekintse meg a **Automation-szkript** lap (alatt **beállítások**) az Azure Portalon, hogy az adott erőforráshoz.
+Tekintse meg a **sablon exportálása** lap (alatt **beállítások**) az Azure Portalon, hogy az adott erőforráshoz.
 
-![Meglévő erőforrás sablon oldal exportálása](../media/create-custom-policy-definition/automation-script.png)
+![Meglévő erőforrás sablon oldal exportálása](../media/create-custom-policy-definition/export-template.png)
 
 Így a storage-fiókok tárja fel a sablonból példához hasonlóak:
 
@@ -197,8 +197,9 @@ Azure CLI-vel, például az eredmények megjelenítése nevű storage-fiókok á
 
 [Az Azure Erőforrás-grafikon](../../resource-graph/overview.md) egy új szolgáltatás előzetes verzióban érhető el. Keresse meg az Azure-erőforrások tulajdonságait is lehetővé teszi. Itt látható egy minta-lekérdezést az egy tárfiókban megnézzük az Erőforrás-grafikon:
 
-```Query
-where type=~'microsoft.storage/storageaccounts' | limit 1
+```kusto
+where type=~'microsoft.storage/storageaccounts'
+| limit 1
 ```
 
 ```azurecli-interactive
@@ -209,7 +210,23 @@ az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
 Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-Az eredmények mi látható az a Resource Manager-sablonokkal és az Azure erőforrás-kezelőben hasonlóan néz ki. Azonban az Azure Erőforrás-grafikon is kiterjed [alias](../concepts/definition-structure.md#aliases) részleteit. Íme egy példa kimenet aliasok storage-fiókból:
+Az eredmények mi látható az a Resource Manager-sablonokkal és az Azure erőforrás-kezelőben hasonlóan néz ki. Azonban az Azure Erőforrás-grafikon eredmények is tartalmazhatják [alias](../concepts/definition-structure.md#aliases) által részletek _projekci_ a _aliasok_ tömb:
+
+```kusto
+where type=~'microsoft.storage/storageaccounts'
+| limit 1
+| project aliases
+```
+
+```azurecli-interactive
+az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+```
+
+Íme egy példa kimenet aliasok storage-fiókból:
 
 ```json
 "aliases": {

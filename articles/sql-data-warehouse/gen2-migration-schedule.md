@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 1f645a9c9161fb2fd71b2fd9af9ade65bff0be94
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: d642addac36c6f3dbf361ec71102eabc00efd191
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361147"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764255"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Frissítse az adattárház Gen2-re
 
@@ -33,7 +33,7 @@ A következő táblázat összefoglalja régió szerint, amikor a alacsonyabb Ge
 | **Régió** | **Alacsonyabb Gen2 érhető el** | **Az automatikus frissítések megkezdése** |
 |:--- |:--- |:--- |
 | Kelet-Ausztrália |Elérhető |2019. június 1. |
-| Délkelet-Ausztrália |2019. április 15. |2019. május 1. |
+| Délkelet-Ausztrália |2019. április 26. |2019. május 1. |
 | Dél-Brazília |2019. május 15. |2019. június 1. |
 | Közép-Kanada |Elérhető |2019. június 1. |
 | Kelet-Kanada |\* |\* |
@@ -49,16 +49,16 @@ A következő táblázat összefoglalja régió szerint, amikor a alacsonyabb Ge
 | Közép-Németország |\* |\* |
 | Németország nyugati középső régiója |2019. szeptember 1.|2020. január 2. |
 | Közép-India |Elérhető |2019. június 1. |
-| Dél-India |2019. április 15. |2019. június 1. |
+| Dél-India |2019. április 26. |2019. június 1. |
 | Kelet-Japán |Elérhető |2019. június 1. |
 | Nyugat-Japán |Elérhető |2019. május 1. |
-| Korea középső régiója |2019. április 15. |2019. június 1. |
-| Korea déli régiója |2019. április 15. |2019. május 1. |
-| USA északi középső régiója |2019. április 15. |2019. május 1. |
+| Korea középső régiója |2019. április 26. |2019. június 1. |
+| Korea déli régiója |2019. április 26. |2019. május 1. |
+| USA északi középső régiója |2019. április 26. |2019. május 1. |
 | Észak-Európa |Elérhető |2019. június 1. |
 | USA déli középső régiója |Elérhető |2019. június 1. |
 | Délkelet-Ázsia |Elérhető |2019. június 1. |
-| Az Egyesült Királyság déli régiója |2019. április 15. |2019. június 1. |
+| Az Egyesült Királyság déli régiója |2019. április 26. |2019. június 1. |
 | Az Egyesült Királyság nyugati régiója |\*|\* |
 | USA nyugati középső régiója |2019. szeptember 2. |2020. január 2.|
 | Nyugat-Európa |Elérhető |2019. június 1. |
