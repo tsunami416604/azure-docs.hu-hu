@@ -60,7 +60,7 @@ Az alábbi táblázat ismerteti a társított Azure Search szolgáltatás adott 
 | -------- | ----------- | -------- |
 | type | A type tulajdonságot kell beállítani: **Az AzureSearch**. | Igen |
 | url | Az Azure Search szolgáltatás URL-címe. | Igen |
-| kulcs | Az Azure Search szolgáltatás rendszergazdai kulcsa. | Igen |
+| key | Az Azure Search szolgáltatás rendszergazdai kulcsa. | Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
@@ -100,13 +100,13 @@ Az alábbi tábla meghatározza, hogy egy Azure Search adattípus támogatott-e,
 
 | Az Azure Search-adattípus | Az Azure Search fogadó támogatott |
 | ---------------------- | ------------------------------ |
-| Karakterlánc | I |
+| String | I |
 | Int32 | I |
 | Int64 | I |
-| Dupla | I |
-| Logikai | I |
+| Double | I |
+| Boolean | I |
 | DataTimeOffset | I |
-| Karakterlánc-tömbben | N |
+| String Array | N |
 | GeographyPoint | N |
 
 ## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-search-index"></a>JSON-példa: Adatok másolása helyszíni SQL Serverről az Azure Search-indexbe
