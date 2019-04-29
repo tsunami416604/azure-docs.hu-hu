@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
-ms.openlocfilehash: 4617e878f2af446608ede4e0aed644848564a074
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: MT
+ms.openlocfilehash: 044e997703f5b274215fb05c7152186948b331b4
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609075"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761409"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -296,7 +296,7 @@ Az ügynökcsomópontok általában a fürtben lévő újraindítás megszüntet
 ## <a name="azure-dev-spaces-proxy-can-interfere-with-other-pods-running-in-a-dev-space"></a>Az Azure fejlesztői, szóközök proxy zavaró más fejlesztői szóközzel futtató podok
 
 ### <a name="reason"></a>Ok
-Az AKS-fürt az egy névtérhez engedélyezi fejlesztési szóközt, egy kiegészítő tároló hívják _mindaro-proxy_ telepítve van a podok névtéren belül futó minden. Ez a tároló elfogja a pod, amely integrált fejlesztési tárolóhelyek csapat a fejlesztési funkciók; szolgáltatásban rendszertevékenységét azonban bizonyos ezeket a podok futó szolgáltatásokat. Azure Cache Redis fut, a csatlakozási hibát okoz az elsődleges és tartalék kiszolgálók közötti kommunikáció podok zavarja ismert.
+Az AKS-fürt az egy névtérhez engedélyezi fejlesztési szóközt, egy kiegészítő tároló hívják _mindaro-proxy_ telepítve van a podok névtéren belül futó minden. Ez a tároló elfogja a pod, amely integrált fejlesztési tárolóhelyek csapat a fejlesztési funkciók; szolgáltatásban rendszertevékenységét azonban bizonyos ezeket a podok futó szolgáltatásokat. Azure Cache Redis fut, a csatlakozási hibát okoz az elsődleges és másodlagos kommunikációs podok zavarja ismert.
 
 ### <a name="try"></a>Próbálja ki:
 Egy névtér, amely a fürtön belül viheti át az érintett podok _nem_ fejlesztési tárolóhelyek engedélyezve van. Az alkalmazás többi továbbra is egy fejlesztési tárolóhelyek-kompatibilis névterek futtatható. Fejlesztői, szóközök nem telepíti a _mindaro-proxy_ tároló nem fejlesztési tárolóhelyek belül engedélyezett névterek.
