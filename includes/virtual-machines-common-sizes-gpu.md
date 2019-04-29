@@ -9,11 +9,11 @@ ms.date: 11/14/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
 ms.openlocfilehash: c2908ef5c67665b5ba48879626370f977634dc83
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190671"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60776333"
 ---
 GPU-optimalizált virtuális gépek méretek a következők specializált virtuális gépek egy vagy több NVIDIA gpu-k használatával érhető el. Ezeket a méreteket képi megjelenítés, nagy számítási igényű és magas grafikai igényű számítási feladatokhoz tervezték. Ez a cikk ismerteti a száma, és a GPU-k, vcpu-k, az adatlemezeket és a hálózati adapter típusa. Tároló átviteli sebesség és a hálózati sávszélesség is szerepelnek az ennél a csoportosításnál méreteire vonatkoztatva. 
 

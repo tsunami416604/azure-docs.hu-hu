@@ -9,11 +9,11 @@ ms.date: 03/09/2018
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
 ms.openlocfilehash: d76a3bb463452207e4b5b023cfe07dfd156e95f4
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684684"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60731795"
 ---
 A B sorozat Virtuálisgép-család lehetővé teszi, hogy válassza ki, melyik Virtuálisgép-méretet biztosít a számítási feladatok számára szükséges alapszinten teljesítményének a CPU-teljesítmény akár 100 %-a-Intel® Broadwell E5-2673 v4-eszközcsomag lehetővé teszi 2,3 GHz-es és a egy Intel® Haswell 2.4 GHz E5-2673 v3 processzor vCPU.
 

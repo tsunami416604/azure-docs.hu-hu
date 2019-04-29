@@ -9,11 +9,11 @@ ms.date: 11/04/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 037996385f34c5037e0386686e3bdf8dc1b7a37a
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219834"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60731394"
 ---
 Zónaredundáns tárolás (ZRS) replikálja az adatokat három tárolási fürtöket egy régió között. Minden egyes tárolási fürt fizikailag elkülönül a többi, és a saját (AZ) rendelkezésre állási zónában található. Egyes rendelkezésre állási zónában&mdash;és a benne lévő ZRS fürt&mdash;önálló, és külön segédprogramok és hálózati funkciókat tartalmaz.
 

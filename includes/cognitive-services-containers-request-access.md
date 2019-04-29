@@ -1,15 +1,16 @@
 ---
 author: diberry
-ms.author: diberry
+ms.author: v-junlch
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/24/2019
+origin.date: 01/24/2019
+ms.date: 02/21/2019
 ms.openlocfilehash: 11a336bbcf75c6c4de61f1bb681ab6ee7aa05650
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56741166"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60815631"
 ---
 Először végezze el, és küldje el a [Cognitive Services Látástechnológia tárolók kérelem űrlap](https://aka.ms/VisionContainersPreview) hozzáférés kéréséhez a tárolóhoz. Az űrlap kérelmek, a vállalat és a felhasználói forgatókönyvet, amelynek a tároló használni kívánt információkat. Miután elküldte, az Azure Cognitive Services-csapat áttekinti az űrlap győződjön meg arról, hogy megfelel a feltételeknek a privát tárolóregisztrációs adatbázis eléréséhez.
 
@@ -34,3 +35,5 @@ Biztonságossá tett egy szövegfájlt a hitelesítő adatait, ha a szöveges ta
 cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin
 ```
 
+
+<!-- ms.date: 02/21/2019 -->

@@ -2,23 +2,24 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: virtual-network
-author: genlin
+author: rockboyfor
 ms.service: virtual-network
 ms.topic: include
-ms.date: 04/13/2018
-ms.author: genli
+origin.date: 04/13/2018
+ms.date: 06/11/2018
+ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 06591af2115675f531fbd6a85b53b432e011d179
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e2c045501b54b5536ebe7440030676c965a52849
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31805131"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60596321"
 ---
 > [!div class="op_single_selector"]
 > * [Azure Portal](../articles/virtual-network/virtual-networks-static-private-ip-arm-pportal.md)
 > * [PowerShell](../articles/virtual-network/virtual-networks-static-private-ip-arm-ps.md)
 > * [Azure CLI](../articles/virtual-network/virtual-networks-static-private-ip-arm-cli.md)
-> * [(Klasszikus) Azure-portálon](../articles/virtual-network/virtual-networks-static-private-ip-classic-pportal.md)
+> * [Az Azure Portalon (klasszikus)](../articles/virtual-network/virtual-networks-static-private-ip-classic-pportal.md)
 > * [PowerShell (klasszikus)](../articles/virtual-network/virtual-networks-static-private-ip-classic-ps.md)
-> * [Az Azure CLI (klasszikus)](../articles/virtual-network/virtual-networks-static-private-ip-classic-cli.md)
+> * [Az Azure parancssori felület (klasszikus)](../articles/virtual-network/virtual-networks-static-private-ip-classic-cli.md)

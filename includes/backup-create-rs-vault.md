@@ -10,11 +10,11 @@ ms.date: 10/18/2018
 ms.author: raynew
 ms.custom: include file
 ms.openlocfilehash: 74fe531c07aa871b06b5d0773f7e8fb0ade80be4
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946215"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60850634"
 ---
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 Recovery Services-tároló olyan entitás, amely a biztonsági másolatok és az idők során létrehozott helyreállítási pontokat tárolja. A Recovery Services-tárolót is tartalmaz, amely a védett virtuális gépek társítva vannak a biztonsági mentési szabályzatok.
@@ -42,9 +42,9 @@ Egy Recovery Services-tároló létrehozásához:
     ![A Recovery Services-tároló konfigurálása](./media/backup-create-rs-vault/create-new-vault-dialog.png)
 
    - **Név**: Adjon meg egy, a tárolót azonosító rövid nevet. Neve az Azure-előfizetés egyedinek kell lennie. Adjon meg legalább két, de legfeljebb 50 karakter hosszú lehet. A névnek kell betűvel kezdődhet, és tartalmazhatnak csak betűket, számokat és kötőjeleket tartalmazhat.
-   - **Előfizetés**: válassza ki a használni kívánt előfizetést. Ha Ön a tagja, csak egy előfizetéssel, látni fogja, hogy a neve. Ha nem biztos abban, hogy melyik előfizetést szeretné használni, használja az alapértelmezett (javasolt) előfizetést. Nincs több lehetőség csak akkor, ha a munkahelyi vagy iskolai fiókot egynél több Azure-előfizetéssel társítva.
-   - **Erőforráscsoport**: használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Az előfizetésben elérhető erőforráscsoportok listájának megtekintéséhez válasszon **meglévő**, és majd a legördülő listából válasszon ki egy erőforrást. Hozzon létre egy új erőforráscsoportot, válassza a **új létrehozása** , és adja meg a nevét. A erőforráscsoportokkal kapcsolatos részletes információkért lásd: [Azure Resource Manager áttekintése](../articles/azure-resource-manager/resource-group-overview.md).
-   - **Hely**: a tárolóhoz tartozó földrajzi régió kiválasztásához. Hozzon létre egy tárolót a virtuális gépek, a tároló védelmére, **kell** lehet, mint a virtuális gépeknek ugyanabban a régióban.
+   - **Előfizetés**: Válassza ki a használni kívánt előfizetést. Ha Ön a tagja, csak egy előfizetéssel, látni fogja, hogy a neve. Ha nem biztos abban, hogy melyik előfizetést szeretné használni, használja az alapértelmezett (javasolt) előfizetést. Nincs több lehetőség csak akkor, ha a munkahelyi vagy iskolai fiókot egynél több Azure-előfizetéssel társítva.
+   - **Erőforráscsoport**: Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. Az előfizetésben elérhető erőforráscsoportok listájának megtekintéséhez válasszon **meglévő**, és majd a legördülő listából válasszon ki egy erőforrást. Hozzon létre egy új erőforráscsoportot, válassza a **új létrehozása** , és adja meg a nevét. A erőforráscsoportokkal kapcsolatos részletes információkért lásd: [Azure Resource Manager áttekintése](../articles/azure-resource-manager/resource-group-overview.md).
+   - **Hely**: A tárolóhoz tartozó földrajzi régió kiválasztásához. Hozzon létre egy tárolót a virtuális gépek, a tároló védelmére, **kell** lehet, mint a virtuális gépeknek ugyanabban a régióban.
 
       > [!IMPORTANT]
       > Ha nem biztos a virtuális gép helyét, zárja be a párbeszédpanelt. Nyissa meg a portálon lévő virtuális gépek listáját. Ha több régióban rendelkezik virtuális gépekkel, minden régióban hozzon létre egy Recovery Services-tárolót. Hozza létre a tárolót az első helyen, egy másik helyre a tároló létrehozása előtt. Hiba esetén nem kell megadnia a storage-fiókok a biztonsági mentési adatok tárolására. A Recovery Services-tároló és az Azure Backup szolgáltatás, amely automatikusan kezeli.

@@ -1,15 +1,10 @@
 ---
-author: wesmc7777
-ms.author: wesmc
-ms.service: iot-hub
-ms.topic: include
-ms.date: 10/26/2018
 ms.openlocfilehash: 72ccad94301e053d8103ca949d41202e58d9f5bb
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011662"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60780451"
 ---
 > [!div class="op_single_selector"]
 > * [Node.js](../articles/iot-hub/iot-hub-node-node-twin-getstarted.md)
@@ -24,11 +19,8 @@ Az ikereszközök JSON-dokumentumok, amelyek az eszközök állapotinformációi
 Az ikereszközök használata:
 
 * Store az eszköz metaadatait a megoldás háttérrendszerének.
-
 * Például az elérhető funkciókat és feltételeket (például a kapcsolat használt módszer) aktuális állapotadatokat jelentést az eszköz alkalmazásból.
-
 * Hosszan futó munkafolyamatokat (például a belső vezérlőprogram és konfigurációja frissítések) között egy eszközalkalmazás és a egy háttér-alkalmazás állapotának szinkronizálása.
-
 * Az eszközök metaadatait, konfigurációs vagy állapot lekérdezése.
 
 Ikereszközök úgy tervezték, a szinkronizáláshoz és eszközkonfigurációkat és feltételek lekérdezéséhez. További információ az ikereszközök használata található [Ikereszközök](../articles/iot-hub/iot-hub-devguide-device-twins.md).
@@ -36,9 +28,7 @@ Ikereszközök úgy tervezték, a szinkronizáláshoz és eszközkonfigurációk
 Ikereszközök tárolják az IoT hub és kell tartalmaznia:
 
 * *a címkék*, amelyhez csak a megoldás háttérrendszere; eszköz metaadatait
-
 * *kívánt tulajdonságok*, JSON-objektumok módosítható a megoldás háttérrendszere és több rendszernek megfigyelhetőnek az eszköz alkalmazás; és
-
 * *jelentett tulajdonságokként*, JSON-objektumok az eszközalkalmazások által módosítható, és a megoldás háttérrendszere által is olvasható. Címkék és tulajdonságok tömbök nem tartalmazhat, de objektumok ágyazhatók be.
 
 ![Eszköz ikereszköz kép megjelenítése funkció](./media/iot-hub-selector-twin-get-started/twin.png)
@@ -50,5 +40,14 @@ Tekintse meg [Ikereszközök](../articles/iot-hub/iot-hub-devguide-device-twins.
 Ez az oktatóanyag a következőket mutatja be:
 
 * Hozzon létre egy háttér-alkalmazást, amely hozzáadja *címkék* az ikereszközök és a egy szimulált eszközalkalmazás által jelentett, a kapcsolat csatorna egy *jelentett tulajdonság* az ikereszközben.
-
 * A lekérdezés a szűrők használata a címkék és a korábban létrehozott tulajdonságok a háttéralkalmazás-eszközök.
+
+<!-- images -->
+[img-twin]: media/iot-hub-selector-twin-get-started/twin.png
+
+<!-- links -->
+[lnk-query]: ../articles/iot-hub/iot-hub-devguide-query-language.md
+[lnk-twins]: ../articles/iot-hub/iot-hub-devguide-device-twins.md
+[lnk-d2c]: ../articles/iot-hub/iot-hub-devguide-messaging.md#device-to-cloud-messages
+[lnk-methods]: ../articles/iot-hub/iot-hub-devguide-direct-methods.md
+[lnk-devguide-mqtt]: ../articles/iot-hub/iot-hub-mqtt-support.md

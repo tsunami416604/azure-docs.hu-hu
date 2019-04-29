@@ -9,11 +9,11 @@ ms.date: 02/12/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 32032f729283cb3f2a786412b563fdee88ba4c8a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238567"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60729626"
 ---
 Helyileg redundáns tárolás (LRS) biztosít legalább 99,999999999 %-os (11 nines) tárolt objektumok számára egy adott évben. LRS ezen objektum tartósságot biztosít az adatok replikálásával tárolóskálázási egységben. Egy adatközpontban, ahol létrehozta a tárfiókot, a régióban a storage skálázási egység üzemelteti. LRS tárfiók írási kérelem sikeresen visszaadja, csak azt követően az adatok írása az összes replika. Minden egyes replikának külön tartalék tartományokban és frissítési tartományokba, tárolóskálázási egységben belül található.
 

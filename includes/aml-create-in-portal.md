@@ -10,11 +10,11 @@ ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
 ms.openlocfilehash: 05331c710817e575deb7729189c9b2d8ccbafd7d
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54489567"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60753873"
 ---
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) használhatja az Azure-előfizetés hitelesítő adataival. 
 
@@ -39,7 +39,7 @@ ms.locfileid: "54489567"
    Munkaterület neve |Adjon meg egy egyedi nevet, amely azonosítja a munkaterülethez. Ebben a példában használjuk **docs-ws**. Nevének egyedinek kell lennie az erőforráscsoport. Olyan nevet, amely könnyen visszahívása és mások által létrehozott munkaterületek megkülönböztessük használja.  
    Előfizetés |Válassza ki a használni kívánt Azure-előfizetést.
    Erőforráscsoport | Használjon egy meglévő erőforráscsoportot az előfizetésében, vagy adjon meg egy nevet új erőforráscsoport létrehozásához. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. Ebben a példában használjuk **docs-aml**. 
-   Hely | Válassza ki a felhasználók és az adatforrásokhoz legközelebb eső helyet. Ez a hely, ahol a munkaterület létrehozását.
+   Location egység | Válassza ki a felhasználók és az adatforrásokhoz legközelebb eső helyet. Ez a hely, ahol a munkaterület létrehozását.
 
    ![Munkaterület létrehozása](./media/aml-create-in-portal/workspace-create.png)
 
