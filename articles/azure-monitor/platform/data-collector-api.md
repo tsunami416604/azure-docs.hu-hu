@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
 ms.openlocfilehash: 9fd65dc0a6d2a5756acd2de7cb46fbf7943a8758
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264091"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60931794"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Napló adatokat küldeni a HTTP-adatgyűjtő API (nyilvános előzetes verzió) az Azure Monitor
 Ez a cikk bemutatja, hogyan Teljesítménynapló-adatok küldése az Azure monitornak a REST API-ügyfél a HTTP-adatgyűjtő API használatával.  Ismerteti, hogyan formázza a parancsfájl vagy az alkalmazások által gyűjtött adatokat, foglalja bele egy kérelmet, és engedélyezte az Azure Monitor kérelmet.  A példák a PowerShell, a C# és Python.
@@ -142,7 +142,7 @@ Azonosíthatja a tulajdonságadat típusa, az Azure Monitor utótag hozzáadása
 | Tulajdonságadat típusa | Utótag |
 |:--- |:--- |
 | String |_s |
-| Logikai |_b |
+| Boolean |_b |
 | Double |_d |
 | Dátum és idő |_t |
 | GUID |_g |
@@ -171,7 +171,7 @@ A következő bejegyzést, majd a rekord típusa létrehozása előtt elküldve,
 ## <a name="reserved-properties"></a>Fenntartott tulajdonságai
 A következő tulajdonságok fenntartva, és nem használható az egyéni rekord típusát. Egy hibaüzenetet fog kapni, ha a tartalom magában foglalja a tulajdonságnevek.
 
-- bérlő
+- tenant
 
 ## <a name="data-limits"></a>Adatkorlátok
 Vannak bizonyos korlátozások az adatok elküldése az az Azure Monitor adatgyűjtési API körül.

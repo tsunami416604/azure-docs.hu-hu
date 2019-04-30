@@ -10,11 +10,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: c64db6b35aa2f1daa4484f137c8505b1415c5a0b
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521754"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60998455"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Az üzembe helyezés éles környezetben az IoT Edge-megoldás előkészítése
 
@@ -208,7 +208,7 @@ A tároló motor naplóbeállításainak az összes tároló logfiles méreténe
 
 Ezt az információt nevű fájl hozzáadása (vagy hozzáfűző) `daemon.json` , és helyezze a megfelelő helyet az adott eszközplatformon.
 
-| Platform | Hely |
+| Platform | Location egység |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby-data\config\` |

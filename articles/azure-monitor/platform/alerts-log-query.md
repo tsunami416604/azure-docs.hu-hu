@@ -9,11 +9,11 @@ ms.date: 02/19/2019
 ms.author: bwren
 ms.subservice: alerts
 ms.openlocfilehash: 429770b7651a93473c03f5e386d8f7b72692c161
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784381"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60995965"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Az Azure Monitor riasztási lekérdezések naplózása
 [Riasztási szabályok alapján az Azure Monitor naplóira](alerts-unified-log.md) futtatása rendszeres időközönként, ezért győződjön meg arról, hogy azok írt terhelést és a késés minimalizálása érdekében. Ez a cikk naplóriasztások hatékony lekérdezések és a egy folyamat alakítása a meglévő lekérdezések írásáról javaslatokat nyújt. 

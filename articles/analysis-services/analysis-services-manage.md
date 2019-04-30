@@ -9,13 +9,13 @@ ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 0bae06d46c2c96ba9dd058e9c2d380379523811c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993930"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61065195"
 ---
-# <a name="manage-analysis-services"></a>Analysis Services kezelése
+# <a name="manage-analysis-services"></a>Manage Analysis Services
 Miután az Azure-ban létrehozott egy Analysis Services-kiszolgálón, néhány felügyelet és kezelés feladatot kell elvégeznie a azonnal, vagy egy ideig le lehet. Például futtassa a frissítés adatokhoz, el tudja érni a modellek a kiszolgálón, vagy a kiszolgáló állapotának figyeléséhez vezérléséhez feldolgozása. Egyes felügyeleti feladatok csak az Azure Portalon, az SQL Server Management Studio (SSMS), mások hajtható végre, és néhány feladatot végezhető, vagy.
 
 ## <a name="azure-portal"></a>Azure Portal

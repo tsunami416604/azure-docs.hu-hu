@@ -9,11 +9,11 @@ ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
 ms.openlocfilehash: 9ec310ffaa9d2bb297abde9341bf7b6c2dc763b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995797"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60883316"
 ---
 # <a name="troubleshooting-network-performance"></a>A hálózati teljesítmény hibaelhárítása
 ## <a name="overview"></a>Áttekintés
@@ -179,7 +179,7 @@ Beállítások ellenőrzése:
 
 | | | | | | |
 |-|-|-|-|-|-|
-|ExpressRoute<br/>Hely|Azure<br/>Régió|Becsült<br/>Távolságskála (km-re)|Késés|1 munkamenet<br/>Bandwidth|Maximum<br/>Bandwidth|
+|ExpressRoute<br/>Location egység|Azure<br/>Régió|Becsült<br/>Távolságskála (km-re)|Késés|1 munkamenet<br/>Bandwidth|Maximum<br/>Bandwidth|
 | Seattle | USA nyugati régiója, 2.        |    191 km |   5 ms | 262.0 MB/s |  3.74 Gbits/mp |
 | Seattle | USA nyugati régiója          |  1,094 km-re |  18 ms |  82.3 MB/s |  3.70 Gbits/mp |
 | Seattle | USA középső régiója       |  2,357 km-re |  40 ms |  38.8 MB/s |  2.55 Gbits/mp |

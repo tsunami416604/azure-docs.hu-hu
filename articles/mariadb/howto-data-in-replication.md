@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 3897c402e45962836880ccebbeb252d189188d3c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548901"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61038585"
 ---
 # <a name="how-to-configure-azure-database-for-mariadb-data-in-replication"></a>Azure Database MariaDB-adatok a replikáció konfigurálása
 
@@ -62,7 +62,7 @@ Az alábbi lépéseket előkészítése, és konfigurálja a MariaDB futó kiszo
 
    Az alábbi parancsokat a létrehozott új replikációs szerepkör minden olyan gép, nem csak magát a fő futtató géphez, a fő elérhetik. Ez történik, megadásával "syncuser\@(%)" a Létrehozás felhasználói parancsban. A MariaDB dokumentációjában talál további információkat talál [nevének megadásával](https://mariadb.com/kb/en/library/create-user/#account-names).
 
-   **SQL-parancs**
+   **SQL Command**
 
    *Replikációs SSL-lel*
 
@@ -82,7 +82,7 @@ Az alábbi lépéseket előkészítése, és konfigurálja a MariaDB futó kiszo
    GRANT REPLICATION SLAVE ON *.* TO ' syncuser'@'%';
    ```
 
-   **A MySQL Workbench**
+   **MySQL Workbench**
 
    A MySQL Workbench a replikációs szerepkör létrehozásához nyissa meg a **felhasználók és jogosultságok** a panelen a **felügyeleti** panel. Kattintson a **fiók hozzáadása**. 
  
@@ -148,7 +148,7 @@ Az alábbi lépéseket előkészítése, és konfigurálja a MariaDB futó kiszo
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
    ```
 
-   - master_host: a fölérendelt kiszolgáló állomásnevét
+   - master_host: hostname of the master server
    - master_user: a főkiszolgáló felhasználónevét
    - master_password: a főkiszolgáló jelszavát
    - master_log_file: futását bináris naplófájl neve `show master status`

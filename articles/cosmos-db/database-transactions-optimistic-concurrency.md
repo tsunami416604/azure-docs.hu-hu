@@ -8,11 +8,11 @@ ms.date: 04/08/2019
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: 568f47aacf39793d4c2da46798682abc002ca33b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279508"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60889355"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Tranzakciók és optimista egyidejűség vezérlése
 
@@ -34,7 +34,7 @@ Az adatbázismotor, az Azure Cosmos DB támogatja a teljes ACID (atomitást, kon
 | Rendszer által kezdeményezett egy merge eljárás végrehajtása | Írás | Több elem tranzakció |
 | Rendszer által kezdeményezett végrehajtása egy elem lejáratának (TTL) alapján elemek törlése | Írás | Több elem tranzakció |
 | Olvasás | Olvasás | Egyetlen elemből tranzakció |
-| Módosítási hírcsatorna | Olvasás | Több elem tranzakció |
+| Változáscsatorna | Olvasás | Több elem tranzakció |
 | Többoldalas olvasása | Olvasás | Több elem tranzakció |
 | Többoldalas lekérdezések | Olvasás | Több elem tranzakció |
 | Hajtsa végre a többoldalas lekérdezés részeként UDF | Olvasás | Több elem tranzakció |

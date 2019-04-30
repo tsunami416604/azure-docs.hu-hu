@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: a6727ebd-39bd-4298-9e68-2ae98738576e
 ms.date: 10/15/2017
-ms.openlocfilehash: 994e7945a7107815029bd415f4cc0d45bb68e335
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 62a74364939fffb6e06f51f1c0cabb6cce8c10e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123687"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60999806"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-hibák diagnosztizálása és hibáinak elhárítása
 
@@ -40,7 +40,7 @@ Minden logikai alkalmazás az eseményindító kezdődik. Ha az eseményindító
 
    | status | Leírás | 
    | ------ | ----------- | 
-   | **Sikeres volt** | Az eseményindító be van jelölve a végpont, és a rendelkezésre álló adatok találhatók. Általában egy "Fired" állapota is mellett ez az állapot jelenik meg. Ha nem, az eseményindító definíciójában előfordulhat, hogy rendelkezik egy feltétel, vagy `SplitOn` parancsot, amely nem teljesült. <p>Ez az állapot egy manuális eseményindító, ismétlődési eseményindító vagy egy lekérdezés eseményindító alkalmazhatja. A trigger sikeresen futtatható, de maga a Futtatás továbbra is meghiúsulhat, ha a művelet nem kezelt hibát. | 
+   | **Succeeded** | Az eseményindító be van jelölve a végpont, és a rendelkezésre álló adatok találhatók. Általában egy "Fired" állapota is mellett ez az állapot jelenik meg. Ha nem, az eseményindító definíciójában előfordulhat, hogy rendelkezik egy feltétel, vagy `SplitOn` parancsot, amely nem teljesült. <p>Ez az állapot egy manuális eseményindító, ismétlődési eseményindító vagy egy lekérdezés eseményindító alkalmazhatja. A trigger sikeresen futtatható, de maga a Futtatás továbbra is meghiúsulhat, ha a művelet nem kezelt hibát. | 
    | **Kihagyva** | Az eseményindító be van jelölve, a végpont, de adatot nem található. | 
    | **Nem sikerült** | Hiba történt. Tekintse át a sikertelen eseményindítók létrehozott hibaüzeneteket, a trigger kísérlet válassza, majd **kimenetek**. Észreveheti például bemenet nem érvényes. | 
    ||| 
@@ -81,7 +81,7 @@ Minden egyes elindított trigger elindítja egy munkafolyamat-Futtatás. Mi tör
 
    | status | Leírás | 
    | ------ | ----------- | 
-   | **Sikeres volt** | Minden művelet sikeresen befejeződött. <p>Ha hibákat egy adott működés közben történt, a munkafolyamat a következő művelet kezeli, a hiba. | 
+   | **Succeeded** | Minden művelet sikeresen befejeződött. <p>Ha hibákat egy adott működés közben történt, a munkafolyamat a következő művelet kezeli, a hiba. | 
    | **Nem sikerült** | Legalább egy műveletet nem sikerült, és a munkafolyamatban a későbbi műveletek nem állított be a hiba kezelésére. | 
    | **Megszakítva** | A munkafolyamat működő állapotban volt, de a megszakítási kérelem érkezett. | 
    | **Fut** | A munkafolyamat jelenleg fut. <p>Ez az állapot akkor fordulhat elő, szabályozott munkafolyamatokat, akár a jelenlegi díjszabási csomag miatt. További információkért lásd: a [művelet korlátok a díjszabási lapon](https://azure.microsoft.com/pricing/details/logic-apps/). Ha beállította a [diagnosztikai célú naplózásának](../logic-apps/logic-apps-monitor-your-logic-apps.md), bármely történik késleltetési eseményekkel kapcsolatos információkat is kaphat. | 

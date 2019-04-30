@@ -10,11 +10,11 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: 3b234ca37783fe557baf307f198de9636b06a382
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579495"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60904975"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Az adatvezérelt stílusa kifejezés (Web SDK-t)
 
@@ -82,12 +82,12 @@ Adatok kifejezések funkció tulajdonság adataihoz hozzáférést biztosítanak
 | Kifejezés | Visszatérési típusa | Leírás |
 |------------|-------------|-------------|
 | `['at', number, array]` | objektum | Lekérdezi egy elemet egy tömb. |
-| `['geometry-type']` | sztring | Lekérdezi a funkció geometriai típusa: Pont, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon. |
-| `['get', string]` | érték | A tulajdonság értéke az aktuális szolgáltatás tulajdonságainak beolvasása. Ha hiányzik a kért tulajdonsága null értéket ad vissza. |
-| `['get', string, object]` | érték | A tulajdonság értéke a megadott objektum tulajdonságait olvassa be. Ha hiányzik a kért tulajdonsága null értéket ad vissza. |
+| `['geometry-type']` | string | Lekérdezi a funkció geometriai típusa: Pont, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon. |
+| `['get', string]` | value | A tulajdonság értéke az aktuális szolgáltatás tulajdonságainak beolvasása. Ha hiányzik a kért tulajdonsága null értéket ad vissza. |
+| `['get', string, object]` | value | A tulajdonság értéke a megadott objektum tulajdonságait olvassa be. Ha hiányzik a kért tulajdonsága null értéket ad vissza. |
 | `['has', string]` | logikai | Meghatározza, hogy egy szolgáltatás tulajdonságainak van-e a megadott tulajdonságot. |
 | `['has', string, object]` | logikai | Meghatározza, hogy az objektum tulajdonságainak van-e a megadott tulajdonságot. |
-| `['id']` | érték | A Funkcióazonosító lekérdezi, ha rendelkezik ilyennel. |
+| `['id']` | value | A Funkcióazonosító lekérdezi, ha rendelkezik ilyennel. |
 | `['length', string | array]` | szám | A tömb vagy karakterlánc hosszának beolvasása. |
 
 **Példák**
@@ -340,8 +340,8 @@ Típus kifejezés biztosítanak eszközöket teszteléshez és a különböző a
 | `['to-boolean', value]` | logikai | A bemeneti érték konvertálása logikai érték beolvasása. Az eredmény `false` amikor a bemeneti érték egy üres karakterlánc, `0`, `false`, `null`, vagy `NaN`; ellenkező esetben a `true`. |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | szín | A bemeneti érték konvertálása egy színt. Ha több érték van megadva, egyenként értékeli ahhoz, amíg a az első sikeres átalakítás. A bemenetek egyike sem alakítható, ha a kifejezés nem megfelelő. |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | szám | Ha lehetséges alakítja a bemeneti érték egy szám. Ha a bemenet `null` vagy `false`, az eredmény: 0. Ha a bemenet `true`, az eredmény: 1. Ha a bemeneti karakterláncot, akkor egy számot a alakítja át a [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) karakterláncot az ECMAScript nyelvi specifikáció függvény. Ha több érték van megadva, egyenként értékeli ahhoz, amíg a az első sikeres átalakítás. A bemenetek egyike sem alakítható, ha a kifejezés nem megfelelő. |
-| `['to-string', value]` | sztring | A bemeneti érték konvertálása egy karakterláncot. Ha a bemenet `null`, az eredmény `""`. Ha a bemenet egy logikai érték, az eredmény van `"true"` vagy `"false"`. Ha a bemenet több, azt egy karakterlánc használatával alakítja át a [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) az ECMAScript nyelvi specifikáció függvény számot. Ha a bemeneti színt, azt konvertálja CSS RGBA-szín karakterláncnak `"rgba(r,g,b,a)"`. Ellenkező esetben a bemeneti alakítja át egy karakterlánc használata a [JSON.stringify](https://tc39.github.io/ecma262/#sec-json.stringify) a ECMAScript nyelvi specifikáció funkcióját. |
-| `['typeof', value]` | sztring | Egy karakterlánc, amely a megadott érték típusát adja vissza. |
+| `['to-string', value]` | string | A bemeneti érték konvertálása egy karakterláncot. Ha a bemenet `null`, az eredmény `""`. Ha a bemenet egy logikai érték, az eredmény van `"true"` vagy `"false"`. Ha a bemenet több, azt egy karakterlánc használatával alakítja át a [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) az ECMAScript nyelvi specifikáció függvény számot. Ha a bemeneti színt, azt konvertálja CSS RGBA-szín karakterláncnak `"rgba(r,g,b,a)"`. Ellenkező esetben a bemeneti alakítja át egy karakterlánc használata a [JSON.stringify](https://tc39.github.io/ecma262/#sec-json.stringify) a ECMAScript nyelvi specifikáció funkcióját. |
+| `['typeof', value]` | string | Egy karakterlánc, amely a megadott érték típusát adja vissza. |
 
 > [!TIP]
 > Ha egy ehhez hasonló hibaüzenetet `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` jelenik meg a böngészőbeli konzolon ez azt jelenti, hogy nincs-e valahol a kódban, amely rendelkezik egy tömb, amely nem rendelkezik az első értékét egy karakterláncot egy kifejezés. Ha azt szeretné, hogy a kifejezés egy tömböt adnak vissza, a tömb a sortörés a `literal` kifejezés. Az alábbi példa beállítja az ikon `offset` szimbólum réteg, amely kell lennie a két számot tartalmazó tömb beállítás egy `match` két eltolási értéket választhat kifejezés értéke alapján a `entityType` pont tulajdonság a szolgáltatás.
@@ -399,9 +399,9 @@ Karakterlánc operátor kifejezések átalakítási műveletek végrehajtása a 
 
 | Kifejezés | Visszatérési típusa | Leírás |
 |------------|-------------|-------------|
-| `['concat', string, string, …]` | sztring | Több karakterláncokat fűz össze a együtt. Minden egyes értéknek karakterláncnak kell lennie. Használja a `to-string` kifejezés egyéb értéktípusok alakítandó karakterlánc, szükség esetén írja be. |
-| `['downcase', string]` | sztring | A megadott karakterlánc kisbetűvé alakítja. |
-| `['upcase', string]` | sztring | A megadott karakterlánc nagybetűssé alakít át. |
+| `['concat', string, string, …]` | string | Több karakterláncokat fűz össze a együtt. Minden egyes értéknek karakterláncnak kell lennie. Használja a `to-string` kifejezés egyéb értéktípusok alakítandó karakterlánc, szükség esetén írja be. |
+| `['downcase', string]` | string | A megadott karakterlánc kisbetűvé alakítja. |
+| `['upcase', string]` | string | A megadott karakterlánc nagybetűssé alakít át. |
 
 **Példa**
 

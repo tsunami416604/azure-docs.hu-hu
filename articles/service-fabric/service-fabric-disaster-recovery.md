@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7153a6ed4a91e59eea936f1e17d827a40bb99371
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883241"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60948524"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Vészhelyreállítás az Azure Service Fabricben
 Magas rendelkezésre állás biztosítása kritikus része annak ellenőrzése, hogy szolgáltatásokat az összes különböző típusú hibák hibatűrését. Ez különösen fontos a nem tervezett hibák és a hatáskörén kívül esik. Ez a cikk ismerteti az egyes közös hibaállapotra katasztrófák lehet, ha nem modellezése, és megfelelően felügyelt. Megoldások és a teendő, ha vészhelyzet történt ennek ellenére is ismertetjük. A célja, hogy korlátozni vagy kiküszöbölése az állásidőt és az adatvesztés kockázatát, hibák, tervezett felmerülő, vagy ellenkező esetben fordulhat elő.

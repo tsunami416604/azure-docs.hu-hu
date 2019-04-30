@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
 ms.openlocfilehash: 9a4d5acfe16a2fdbb3b631cb8baf6cb8e90a7d58
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016289"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60935704"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Az Azure Data Factory által támogatott rendszerváltozók
 Ez a cikk ismerteti az Azure Data Factory által támogatott rendszerváltozók. Ezeket a változókat használhatja kifejezések Data Factory-entitások meghatározásakor.
@@ -41,14 +41,14 @@ Ezeket a rendszer változókat lehet hivatkozni bárhol az eseményindító JSON
 | Változó neve | Leírás |
 | --- | --- |
 | @trigger.scheduledTime) |Idő, amikor az eseményindító meghívni a folyamat futtatása lett ütemezve. Ha például egy eseményindító, amely akkor aktiválódik, 5 percenként, ezzel a változóval adna vissza `2017-06-01T22:20:00Z`, `2017-06-01T22:25:00Z`, `2017-06-01T22:29:00Z` jelölik.|
-| @trigger.startTime) |Időpontot, amikor az eseményindító **ténylegesen** aktivált meghívni a folyamat futtatását. Például az eseményindító, amely akkor aktiválódik, 5 percenként, ez a változó lehet, hogy visszaadni valami ilyesmit `2017-06-01T22:20:00.4061448Z`, `2017-06-01T22:25:00.7958577Z`, `2017-06-01T22:29:00.9935483Z` jelölik.|
+| @trigger().startTime |Időpontot, amikor az eseményindító **ténylegesen** aktivált meghívni a folyamat futtatását. Például az eseményindító, amely akkor aktiválódik, 5 percenként, ez a változó lehet, hogy visszaadni valami ilyesmit `2017-06-01T22:20:00.4061448Z`, `2017-06-01T22:25:00.7958577Z`, `2017-06-01T22:29:00.9935483Z` jelölik.|
 
 ## <a name="tumbling-window-trigger-scope"></a>Az átfedésmentes ablakos eseményindító hatóköre
 Ezeket a rendszer változókat lehet hivatkozni bárhol az eseményindító JSON típusú trigger esetén: "TumblingWindowTrigger."
 
 | Változó neve | Leírás |
 | --- | --- |
-| @trigger(). outputs.windowStartTime |Az ablakot, amikor az eseményindító lett ütemezve, a folyamat futásának indítása kezdete. Ha az átfedésmentes ablakos eseményindító "óránkénti" gyakoriságú ez lenne az idő, az óra elején.|
-| @trigger(). outputs.windowEndTime |Amikor az eseményindító meghívni a folyamat futtatása lett ütemezve. az ablak végén. "Óránként" gyakorisága az átfedésmentes ablakos eseményindító-e ez lenne az az idő az óra végén.|
+| @trigger().outputs.windowStartTime |Az ablakot, amikor az eseményindító lett ütemezve, a folyamat futásának indítása kezdete. Ha az átfedésmentes ablakos eseményindító "óránkénti" gyakoriságú ez lenne az idő, az óra elején.|
+| @trigger().outputs.windowEndTime |Amikor az eseményindító meghívni a folyamat futtatása lett ütemezve. az ablak végén. "Óránként" gyakorisága az átfedésmentes ablakos eseményindító-e ez lenne az az idő az óra végén.|
 ## <a name="next-steps"></a>További lépések
 Ezek a változók használata a kifejezések kapcsolatos információkért lásd: [kifejezésnyelveket & funkciók](control-flow-expression-language-functions.md).

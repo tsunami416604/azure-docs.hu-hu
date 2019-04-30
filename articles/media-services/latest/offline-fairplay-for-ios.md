@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
 ms.openlocfilehash: 25bc7798853d350139a7802eaad68d52a1d7d99f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834812"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60996606"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay Streaming iOS-hez 
 
@@ -29,7 +29,7 @@ ms.locfileid: "57834812"
 - A Microsoft PlayReady
 - A Google Widevine
 - Az Apple FairPlay
-- AES-128 titkosítást
+- AES-128-titkosítás
 
 Digitális jogkezelési (technológia DRM) / tartalom Advanced Encryption Standard (AES) titkosítást dinamikusan történik a különböző adatfolyam-továbbítási protokollok kérésre. DRM-licenckiszolgáló/AES visszafejtési kulcskézbesítési szolgáltatások is által biztosított Media Services.
 
@@ -47,8 +47,8 @@ Az iOS 10-es és újabb eszközön a fairplay rendszerhez megvalósítása offli
 
 * Tekintse át az online tartalom védelmét a fairplay rendszerhez: 
 
-    - [Apple FairPlay-licenc követelményeit és konfigurációját](fairplay-license-overview.md)
-    - [DRM a dinamikus titkosítás és a licenc kézbesítési szolgáltatás használata](protect-with-drm.md)
+    - [Apple FairPlay-licencek követelményei és konfigurálása](fairplay-license-overview.md)
+    - [A DRM dinamikus titkosítási és licenctovábbítási szolgáltatás használata](protect-with-drm.md)
     - Egy .NET-minta, amely tartalmazza az online FPS streamelési konfiguráció: [ConfigureFairPlayPolicyOptions](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
 * Szerezze be a FPS SDK-t az Apple Developer Network. A FPS SDK két összetevőkből áll:
 

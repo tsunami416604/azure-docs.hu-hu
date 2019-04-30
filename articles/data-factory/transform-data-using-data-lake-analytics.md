@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
 ms.openlocfilehash: d5b074fcf182bcc9bf4dc17ba21215d27e13cbdd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760970"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60888435"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Adatok átalakítása az Azure Data Lake Analytics U-SQL-parancsfájlok futtatásával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -34,7 +34,7 @@ Létrehoz egy **Azure Data Lake Analytics** társított szolgáltatást, az Azur
 
 Az alábbi táblázat ismerteti a JSON-definíciójában használt általános tulajdonságokat. 
 
-| Tulajdonság                 | Leírás                              | Szükséges                                 |
+| Tulajdonság                 | Leírás                              | Kötelező                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | **type**                 | A type tulajdonságot kell beállítani: **AzureDataLakeAnalytics**. | Igen                                      |
 | **accountName**          | Azure Data Lake Analytics Account Name.  | Igen                                      |
@@ -53,7 +53,7 @@ Az Azure Data Lake Anatlyics használatával a szolgáltatás egyszerű engedél
 
 Egyszerű szolgáltatásnév hitelesítése használja a következő tulajdonságok megadásával:
 
-| Tulajdonság                | Leírás                              | Szükséges |
+| Tulajdonság                | Leírás                              | Kötelező |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | Adja meg az alkalmazás ügyfél-azonosítót.     | Igen      |
 | **servicePrincipalKey** | Adja meg az alkalmazáskulcsot.           | Igen      |
@@ -117,10 +117,10 @@ A következő JSON-kódrészlet definiál egy Data Lake Analytics U-SQL-tevéken
 
 A következő táblázat ismerteti a neveket és leírásokat erre a tevékenységre jellemző tulajdonságok. 
 
-| Tulajdonság            | Leírás                              | Szükséges |
+| Tulajdonság            | Leírás                              | Kötelező |
 | :------------------ | :--------------------------------------- | :------- |
 | név                | A folyamat a tevékenység neve     | Igen      |
-| leírás         | A tevékenység leírása leíró szöveg.  | Nem       |
+| description         | A tevékenység leírása leíró szöveg.  | Nem       |
 | type                | Data Lake Analytics U-SQL-tevékenység, a tevékenység típusa van **DataLakeAnalyticsU-SQL**. | Igen      |
 | linkedServiceName   | Az Azure Data Lake Analytics hivatkozott szolgáltatást. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.  |Igen       |
 | scriptPath          | A U-SQL parancsfájlt tartalmazó mappa elérési útja. A fájl neve, a kis-és nagybetűket. | Igen      |

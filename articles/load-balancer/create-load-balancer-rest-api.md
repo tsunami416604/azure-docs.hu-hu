@@ -14,15 +14,15 @@ ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: kumud
 ms.openlocfilehash: 159fe9d6a891858d8d2cc2315e9544b79eb44cff
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079721"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60884979"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Az Azure alapszintű terheléselosztó létrehozása a REST API használatával
 
-Egy Azure Load Balancer osztja el az új bejövő folyamatok, amelyek a terheléselosztó előtérbeli, a háttérbeli készletet példányok, szabályok és az állapotadat-mintavételek alapján az ügyfélszámítógépekre érkeznek. A Load Balancer kétféle termékváltozatban érhető el: alap és Standard. A két SKU-verziók közötti különbségek megértése [Load Balancer Termékváltozat összehasonlítások](load-balancer-overview.md#skus).
+Egy Azure Load Balancer osztja el az új bejövő folyamatok, amelyek a terheléselosztó előtérbeli, a háttérbeli készletet példányok, szabályok és az állapotadat-mintavételek alapján az ügyfélszámítógépekre érkeznek. A Load Balancer kétféle termékváltozatban érhető el: alap- és standard szinten. A két SKU-verziók közötti különbségek megértése [Load Balancer Termékváltozat összehasonlítások](load-balancer-overview.md#skus).
  
 Ez az útmutató bemutatja, hogyan hozzon létre egy Azure alapszintű Load Balancer a [Azure REST API](/rest/api/azure/) egyenleg bejövő kérelem terhelés egy Azure virtuális hálózaton belül több virtuális gép között. Teljes dokumentációt és további példákat érhető el a [Azure Load Balancer – REST-referencia](/rest/api/load-balancer/).
  
@@ -51,7 +51,7 @@ Csak a szükséges paraméter `location`. Ha nem adja meg a *Termékváltozat* v
 | location | sztring | Erőforrás helye. Helyek használatával aktuális listájának lekérése a [lista helyek](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) műveletet. |
 
 
-## <a name="example-create-and-update-a-basic-load-balancer"></a>Példa: Létrehozása, és a egy alapszintű Load Balancer frissítése
+## <a name="example-create-and-update-a-basic-load-balancer"></a>Példa: Létrehozhat és frissíthet egy alapszintű Load Balancer
 
 Ebben a példában először létrehozhat egy alapszintű Load Balancer erőforrásait együtt. Ezután állítsa be a terheléselosztó erőforrásainak, beleértve az előtérbeli IP-konfiguráció, egy háttér címkészletet, a terheléselosztási szabály az állapotfigyelő mintavételező és bejövő NAT-szabály.
 

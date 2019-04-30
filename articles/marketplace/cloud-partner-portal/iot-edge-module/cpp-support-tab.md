@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 9926c9a0443eb5220e7689dfc6e49e4b8d661d65
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49431096"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60909862"
 ---
-# <a name="iot-edge-module-support-tab"></a>IoT Edge-modul támogatási lap
+# <a name="iot-edge-module-support-tab"></a>IoT Edge module Support tab
 
-Használja a **támogatja** lapján a **új ajánlat** lapot, hogy biztosítsa a műszaki és felhasználói erőforrások támogatása az ajánlatot.  A következő bemeneti területeken biztosított a támogatási űrlap: **Engineering Contact**, **ügyfél-támogatási**, és **támogatási URL-címek**. Egy csillag (*) hozzáfűzi a mező nevét jelzi, hogy ez szükséges.
+Használja a **támogatja** lapján a **új ajánlat** lapot, hogy biztosítsa a műszaki és felhasználói erőforrások támogatása az ajánlatot.  A következő bemeneti területeket a támogatási űrlap áll rendelkezésre: **Kapcsolattartó mérnöki**, **ügyfél-támogatási**, és **URL-címeket támogatja**. Egy csillag (*) hozzáfűzi a mező nevét jelzi, hogy ez szükséges.
 
 ![Az új ajánlat képernyőn az IoT Edge-modulok támogatási lapja.](./media/iot-edge-module-support-tab.png)
 
@@ -43,7 +43,7 @@ A következő táblázat ismerteti a mezőket, és minden mező szükséges bevi
 | **Telefonszám**                 | Az ügyfél-támogatási telefonszám                                            |
 | ***Támogatja az URL-címek***  | *Támogatja a Microsoft fogja használni, amikor az ügyfelek nyissa meg a támogatási jegyeket helyekhez* |
 | **Nyilvános Azure**          | Nyilvános internetes támogatási webhely URL-CÍMÉT                                         |
-| **Az Azure Government Cloud**| Kormányzati felhő támogatási webhely URL-CÍMÉT                                        |
+| **Azure Government Cloud**| Kormányzati felhő támogatási webhely URL-CÍMÉT                                        |
 
 ## <a name="next-steps"></a>További lépések
 

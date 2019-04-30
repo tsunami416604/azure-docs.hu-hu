@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 116eb48330381c7560c55ea9535b3c1b7c6a6a70
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809898"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61094395"
 ---
 <a name="cloud-partner-portal-api-reference"></a>Cloud Partner Portal API-referencia
 ==================================
@@ -51,16 +51,16 @@ Ez a hivatkozás API-k az alábbi gyakori feladatait ismerteti.
 -   [Egy adott ajánlat beolvasása](./cloud-partner-portal-api-retrieve-specific-offer.md)
 -   [Ajánlat állapotának lekérése](./cloud-partner-portal-api-retrieve-offer-status.md)
 -   [Ajánlat létrehozása](./cloud-partner-portal-api-creating-offer.md)
--   [Az ajánlat közzététele](./cloud-partner-portal-api-publish-offer.md)
+-   [Ajánlat közzététele](./cloud-partner-portal-api-publish-offer.md)
 
 ### <a name="operations"></a>Műveletek
 
--   [Műveletek beolvasása](./cloud-partner-portal-api-retrieve-operations.md)
--   [Művelet megszakítása](./cloud-partner-portal-api-cancel-operations.md)
+-   [Műveletek lekérése](./cloud-partner-portal-api-retrieve-operations.md)
+-   [Szalagműveletek megszakítása](./cloud-partner-portal-api-cancel-operations.md)
 
 ### <a name="publish-an-app"></a>Alkalmazások közzététele
 
--   [Az élő esemény indításra](./cloud-partner-portal-api-go-live.md)
+-   [Élesítés](./cloud-partner-portal-api-go-live.md)
 
 ### <a name="other-tasks"></a>Egyéb feladatok
 
@@ -68,4 +68,4 @@ Ez a hivatkozás API-k az alábbi gyakori feladatait ismerteti.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
--   [Hitelesítési hibák elhárítása](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)
+-   [Hitelesítési hibák hibaelhárítása](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)

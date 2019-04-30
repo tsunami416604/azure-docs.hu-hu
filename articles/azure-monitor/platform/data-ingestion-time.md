@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 01/24/2019
 ms.author: bwren
 ms.openlocfilehash: ba9a0ab775e062f21a058b537e289fe3ea2b40bb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000046"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61093964"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Naplózási adatok betöltési idő, az Azure monitorban
 Az Azure Monitor egy nagy méretű szolgáltatás, amely több ezer ügyfelünk egyre bővülő ütemben havonta terabájtnyi adatot küldő szolgál. Vannak gyakran kérdések mennyi időt vesz igénybe a naplózási adatokat a begyűjtésük után lesz elérhető. Ez a cikk ismerteti a különböző tényező befolyásolja, a késés.
@@ -30,7 +30,7 @@ Késés a létrehozott adatok a figyelt rendszeren és az idő, hogy előre elem
 A teljes feldolgozási idő egy adott adatkészlet is kell bontani a következő magas szintű területeken. 
 
 - Az ügynök idő – Fedezze fel az esemény, gyűjteni, és majd küldje el az Azure Monitor Adatbetöltési pont, egy naplórekord ideje. A legtöbb esetben ez a folyamat egy ügynök kezeli.
-- Folyamat idő – az idő a betöltési folyamat naplórekord feldolgozásához. Ez magában foglalja az esemény tulajdonságainak elemzés és a lehetséges hozzáadni számított információkat.
+- Folyamatidő – Az az idő, amely alatt a feldolgozási folyamat feldolgozza a naplóbejegyzést. Ez magában foglalja az esemény tulajdonságainak elemzés és a lehetséges hozzáadni számított információkat.
 - Indexelési idő – egy naplórekord Azure Monitor big data store-ba, hogy az idő.
 
 A különböző késést, a folyamat részletei az alábbiakban tekintheti át.

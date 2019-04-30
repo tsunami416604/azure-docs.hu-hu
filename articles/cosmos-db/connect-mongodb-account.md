@@ -9,11 +9,11 @@ ms.date: 12/26/2018
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: 737e179c2c16937d00bc9b6601f12ebe392c1906
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040319"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60892520"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Egy Azure Cosmos DB MongoDB-alkalmazás csatlakoztatása
 Ismerje meg, a MongoDB-alkalmazás csatlakoztatása egy Azure Cosmos DB MongoDB-kapcsolati karakterlánc használatával. Ezután használhatja az Azure Cosmos DB-adatbázis az adatokat, a MongoDB-alkalmazást az áruházból. 
@@ -62,7 +62,7 @@ Ez a karakterlánc értékét érhetők el a **kapcsolati karakterlánc** koráb
 * A gazdagép (kötelező): A Cosmos-fiók teljes Tartományneve.
 * Port (kötelező): 10255.
 * Az adatbázis (nem kötelező): Az adatbázis, amely a kapcsolatot használ. Ha nincs adatbázis van megadva, az alapértelmezett adatbázis-e a "teszt".
-* az SSL = true (kötelező)
+* ssl=true (required)
 
 Vegyük példaként a fiók látható a **kapcsolati karakterlánc** panelen. Egy érvényes kapcsolati karakterláncot a következő:
 

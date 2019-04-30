@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 67ec9765e4334330da04739dd5daa3be0d7c7342
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266886"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60911111"
 ---
-# <a name="all-offers-page"></a>Az összes kínál lap
+# <a name="all-offers-page"></a>Minden ajánlat oldal
 
 A [ **minden ajánlat** ](https://cloudpartner.azure.com/#alloffers) lap lehetővé teszi, hogy a partnerek számára létrehozott ajánlatok, például nevét, típusát, közzétevő és aktuális állapota listájának megtekintéséhez.  Megadhat egy karakterláncot az eredmények szűréséhez.   A lap alján a állapota területen összesítést és a lap számát jeleníti meg, és lehetővé teszi, hogy a lista oldalai között. Ajánlat kiválasztása ebben a listában jeleníti meg, hogy az ajánlat a kapcsolódó ajánlat szerkesztőben. 
 
@@ -30,7 +30,7 @@ A [ **minden ajánlat** ](https://cloudpartner.azure.com/#alloffers) lap lehető
 
 Az alábbi képen látható a **minden ajánlat** oldal szűrve: a karakterlánc `Contoso`.
 
-![Az összes kínál lap](./media/all-offers-page1.png)
+![Minden ajánlat oldal](./media/all-offers-page1.png)
 
 
 ## <a name="next-steps"></a>További lépések

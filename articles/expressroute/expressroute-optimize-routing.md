@@ -1,5 +1,5 @@
 ---
-title: 'Optimalizálható az Útválasztás – az ExpressRoute-Kapcsolatcsoportok: Azure |} A Microsoft Docs'
+title: 'Optimalizálható az Útválasztás – az ExpressRoute-Kapcsolatcsoportok: Azure | Microsoft Docs'
 description: Ez az oldal részletesen ismerteti, hogyan optimalizálható az útválasztás, ha több olyan ExpressRoute-kapcsolatcsoporttal rendelkezik, amely összeköti a Microsoftot a vállalati hálózatával.
 services: expressroute
 author: charwen
@@ -9,11 +9,11 @@ ms.date: 12/07/2018
 ms.author: charwen
 ms.custom: seodec18
 ms.openlocfilehash: 65c23b05cfcb623f8e2870df813f5516b3039d5c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140931"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60883520"
 ---
 # <a name="optimize-expressroute-routing"></a>Az ExpressRoute-útválasztás optimalizálása
 Ha több ExpressRoute-kapcsolatcsoporttal rendelkezik, több útvonalon csatlakozhat a Microsofthoz. Ennek eredményeképpen előfordulhat, hogy az útválasztás nem lesz optimális – azaz a forgalom hosszabb úton jut el a Microsofthoz, illetve a Microsofttól az Ön hálózatába. Minél hosszabb a hálózati útvonal, annál nagyobb a késés. A késés közvetlen hatással van az alkalmazások teljesítményére és a felhasználói élményre. Ez a cikk ezt a problémát mutatja be, és ismerteti, hogyan optimalizálható az útválasztás a standard útválasztási technológiák segítségével.

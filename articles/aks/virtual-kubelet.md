@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
 ms.openlocfilehash: a6a2fb246e407d6ea240ff40f4d2fa2b1b780931
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054012"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61023738"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Virtual Kubelet használata az Azure Kubernetes Service (AKS)
 
@@ -85,12 +85,12 @@ az aks install-connector --resource-group myAKSCluster --name myAKSCluster --con
 
 Ezek az argumentumok érhetők el a `aks install-connector` parancsot.
 
-| Argumentum: | Leírás | Szükséges |
+| Argumentum: | Leírás | Kötelező |
 |---|---|:---:|
 | `--connector-name` | ACI összekötő nevét.| Igen |
 | `--name` `-n` | A felügyelt fürt nevére. | Igen |
 | `--resource-group` `-g` | Erőforráscsoport neve. | Igen |
-| `--os-type` | Container instances operációs rendszer típusa. Megengedett értékek: Mindkét, Linux, Windows. Alapértelmezett: Linux rendszerű. | Nem |
+| `--os-type` | Container instances operációs rendszer típusa. Megengedett értékek: Both, Linux, Windows. Alapértelmezett: Linux. | Nem |
 | `--aci-resource-group` | Az erőforráscsoport, amelyben az ACI-tárolócsoport létrehozásához. | Nem |
 | `--location` `-l` | Az a hely az ACI-tárolócsoport létrehozásához. | Nem |
 | `--service-principal` | Az Azure API-khoz a hitelesítéshez használt egyszerű szolgáltatást. | Nem |
