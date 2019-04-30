@@ -9,11 +9,11 @@ ms.date: 3/19/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: e47a3e1231701f3339057e25ee4388aff0c9fbd7
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227596"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60831953"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-the-portal"></a>Végpontok közötti SSL konfigurálása az Application Gateway használatával a portállal
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan használhatja az Azure portal teljes körű SSL-titk
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Végpontok közötti SSL konfigurálása az application gateway szolgáltatással, egy tanúsítvány szükséges az átjáró és a háttér-kiszolgálók számára tanúsítványokra szükség. Az átjáró tanúsítványa egy szimmetrikus kulcsot, az SSL protokoll specifikációja alapján az használható. A szimmetrikus kulcs titkosításához és visszafejtéséhez az átjáró küldött forgalmat majd szolgál. A végpontok közötti SSL-titkosítás a háttéralkalmazás az Alkalmazásátjáró engedélyezési listán kell lennie. Ehhez töltse fel a nyilvános tanúsítványt a háttér-kiszolgálók, más néven a hitelesítési tanúsítványok, az application gateway. A tanúsítvány hozzáadása biztosítja, hogy az application gateway csak kommunikál a háttér-ismert példányok. Ez további védi a végpontok közötti kommunikációt.
 

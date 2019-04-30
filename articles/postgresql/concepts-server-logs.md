@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.openlocfilehash: 99deef907818ffdb1ce858c8e988e26cbd53a1a1
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195098"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60871541"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Kiszolgálói naplók az Azure Database for postgresql-hez 
 Azure Database for PostgreSQL állít elő, lekérdezés és a hiba naplókat. Lekérdezés és a hiba a naplók segítségével azonosítása, elhárítása és konfigurációs hibák és az optimálisnál rosszabb teljesítmény javításához. (A tranzakciós naplókhoz való hozzáférést lehetőség nem része). 
@@ -40,14 +40,14 @@ A következő táblázat ismerteti, mi az egyes naplókhoz. Attól függően, a 
 | TenantId | A bérlő azonosítója |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Időbélyeg mikor lett rögzítve a napló (UTC) |
-| Typo | A napló típusa. Mindig `AzureDiagnostics` |
+| Típus | A napló típusa. Mindig `AzureDiagnostics` |
 | SubscriptionId | GUID Azonosítóját az előfizetést, amelyhez a kiszolgáló tartozik. |
 | ResourceGroup | A kiszolgáló tartozik az erőforráscsoport neve |
 | ResourceProvider | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Erőforrás-URI |
 | Erőforrás | A kiszolgáló neve |
-| Kategória | `PostgreSQLLogs` |
+| Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
 | errorLevel | Naplózási szint, például: LOG, ERROR, NOTICE |
 | Üzenet | Elsődleges naplófájlüzenetre | 

@@ -18,13 +18,13 @@ ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3772dbdc8582eea1b2eac368784878a8a36d34ad
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339483"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125326"
 ---
-# <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP munkaterhelés-konfigurációk az Azure-beli rendelkezésre állási zónák
+# <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP számításifeladat-konfigurációk az Azure Availability Zones szolgáltatással
 [Azure-beli rendelkezésre állási zónák](https://docs.microsoft.com/azure/availability-zones/az-overview) egyike az Azure által biztosított magas rendelkezésre állású funkciókat. Rendelkezésre állási zónák használatával javítja a rendelkezésre állás az SAP számítási feladatok Azure-ban. Ez a funkció már elérhető néhány [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/). A későbbiekben lesz elérhető több régióban.
 
 A kép SAP magas rendelkezésre állású alapvető architektúráját mutatja be:

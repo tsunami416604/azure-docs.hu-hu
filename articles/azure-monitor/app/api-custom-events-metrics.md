@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
 ms.openlocfilehash: 6e2803590740d84bc99327ce78886f41f3c600df
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630445"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60794438"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikák
 
@@ -1171,7 +1171,7 @@ Ha megadta ezeket az értékeket saját magának, érdemes eltávolítani a megf
 * **Munkamenet**: A felhasználói munkamenetet. Az azonosító értéke egy generált érték, amely megváltozik, amikor a felhasználó nem volt aktív egy ideig.
 * **Felhasználói**: Felhasználói adatok.
 
-## <a name="limits"></a>Korlátok
+## <a name="limits"></a>Limits
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 

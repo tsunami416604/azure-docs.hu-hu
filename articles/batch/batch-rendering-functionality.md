@@ -8,11 +8,11 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: be6c0f9a8874507433606903bcbd58c7723d6a8a
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791800"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62118687"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Az Azure Batch renderelési képességeket
 
@@ -30,7 +30,7 @@ Van egy Windows 2016-rendszerképet és a egy CentOS lemezképet.  Az a [Azure M
 
 Egy példa készletkonfigurációt, lásd: a [Azure CLI-vel renderelési oktatóanyag](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli).  Az Azure portal és a Batch Explorer adja meg a grafikus eszközök renderelési Virtuálisgép-rendszerkép kiválasztása, amikor létrehoz egy készletet.  Ha a Batch API-val, majd adja meg az alábbi tulajdonságértékeit [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) egy készlet létrehozásakor:
 
-| Közzétevő | Ajánlat | SKU | Verzió |
+| Közzétevő | Ajánlat | SKU | Version |
 |---------|---------|---------|--------|
 | kötegelt | rendering-centos73 | Megjelenítés | legújabb |
 | kötegelt | rendering-windows2016 | Megjelenítés | legújabb |

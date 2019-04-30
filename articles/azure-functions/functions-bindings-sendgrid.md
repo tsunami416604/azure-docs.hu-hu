@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 663283c4dff16194dea78afbf5dd393f1fa833b1
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823807"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61437930"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Az Azure Functions SendGrid-kötések
 
@@ -259,7 +259,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**direction**|| Kötelező – kell állítani `out`.|
 |**name**|| Kötelező – a a függvény kódját a kérelem vagy a kérelem törzsében használt változó neve. Ez az érték ```$return``` Ha csak egy visszatérési értéket tartalmaz. |
 |**apiKey**|**ApiKey**| Az API-kulcsot tartalmazó alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett alkalmazás beállítása a név "AzureWebJobsSendGridApiKey".|
-|**to**|**Címzett**| a címzett e-mail címét. |
+|**A**|**Címzett**| a címzett e-mail címét. |
 |**from**|**A**| a feladó e-mail címe. |
 |**subject**|**Tárgy**| az e-mail tárgya. |
 |**text**|**Szöveg**| az e-mail tartalma. |
@@ -288,7 +288,7 @@ Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshe
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|from|n/a|A feladó e-mail-cím közötti összes funkciót.| 
+|forrás:|n/a|A feladó e-mail-cím közötti összes funkciót.| 
 
 
 ## <a name="next-steps"></a>További lépések

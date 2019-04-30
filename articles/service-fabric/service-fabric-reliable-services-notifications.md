@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
 ms.openlocfilehash: a3df5f28475b03f1799dc1e245c3a7e904b49cb3
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662669"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60772924"
 ---
 # <a name="reliable-services-notifications"></a>A Reliable Services-értesítések
 Értesítések engedélyezése az ügyfelek nyomon követheti, hogy érdeklődik az objektumhoz végrehajtott módosításokat. Két típusú objektumok értesítéseket támogatja: *A Reliable State Manager* és *megbízható szótárban*.

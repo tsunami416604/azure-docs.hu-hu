@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 487c142400dc2bfa6f44e17963535051af017196
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116181"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60817764"
 ---
 # <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Oktatóanyag: Stream Analytics és a Power bi-ban: A valós idejű elemzési irányítópultok, a streamelési adatok
 Az Azure Stream Analytics lehetővé teszi, hogy a vezető Üzletiintelligencia-eszközök, egy [Microsoft Power BI](https://powerbi.com/). Ebből a cikkből megtudhatja, hogyan hozzon létre Üzletiintelligencia-eszközök a Power BI kimenetként a az Azure Stream Analytics-feladatokhoz. Azt is megtudhatja, hogyan hozhat létre és használhat a valós idejű irányítópultok.

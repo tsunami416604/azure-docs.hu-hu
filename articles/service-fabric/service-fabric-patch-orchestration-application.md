@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
 ms.openlocfilehash: 6c0aa42cc22d22431d7d0270aca52e089046cb01
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58847745"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60773366"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer a Service Fabric-fürtben
 
@@ -161,13 +161,13 @@ A patch orchestration app viselkedését konfigurálhatja az igényeinek. Alkalm
 |MaxResultsToCache    |Hosszú                              | Windows Update-eredményeket, amely a gyorsítótárba kerüljenek maximális számát. <br>Alapértelmezett érték 3000 feltéve, hogy a: <br> -Csomópontok száma, 20. <br> -Történik a havi csomópont frissítések száma, öt. <br> -Művelet eredmények száma 10 lehet. <br> -Az elmúlt három havi eredmény kell tárolni. |
 |TaskApprovalPolicy   |Enum <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy azt jelzi, hogy a szabályzatot, amely a Windows-frissítések telepítése a Service Fabric-fürt csomópontjain a koordinátor-szolgáltatás által használandó.<br>                         Engedélyezett értékek a következők: <br>                                                           <b>NodeWise</b>. Windows Update telepítve egy csomópont egyszerre. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update egyszerre több frissítési tartományt telepítve. (A maximumot, a frissítési tartományokhoz tartozó összes csomópontját meg a Windows Update.)<br> Tekintse meg [– gyakori kérdések](#frequently-asked-questions) szakasz útmutatást a fürt számára leginkább alkalmas házirend kiválasztásában.
 |LogsDiskQuotaInMB   |Hosszú  <br> (Alapértelmezett: 1024)               |Patch orchestration alkalmazás maximális mérete (MB), amely megőrizhetők a csomópontok helyi naplózza.
-| WUQuery               | sztring<br>(Alapértelmezett: "IsInstalled = 0")                | Windows-frissítések lekérdezése. További információkért lásd: [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-| InstallWindowsOSOnlyUpdates | Logikai <br> (alapértelmezés: hamis)                 | Használja ezt a jelzőt, hogy mely frissítések letölti és telepíti. Következő értékek használata engedélyezett <br>Igaz - telepítése csak a Windows operációs rendszer frissítéseit.<br>hamis – a gép a rendelkezésre álló frissítéseket telepíti.          |
+| WUQuery               | string<br>(Alapértelmezett: "IsInstalled = 0")                | Windows-frissítések lekérdezése. További információkért lásd: [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
+| InstallWindowsOSOnlyUpdates | Boolean <br> (alapértelmezés: hamis)                 | Használja ezt a jelzőt, hogy mely frissítések letölti és telepíti. Következő értékek használata engedélyezett <br>Igaz - telepítése csak a Windows operációs rendszer frissítéseit.<br>hamis – a gép a rendelkezésre álló frissítéseket telepíti.          |
 | WUOperationTimeOutInMinutes | Int <br>(Alapértelmezett: 90)                   | Megadja azt az időtartamot, bármely Windows-frissítési művelet (keresési vagy letöltése vagy telepítése). A művelet a megadott időkorláton belül nem végzi el, ha megszakadt.       |
 | WURescheduleCount     | Int <br> (Alapértelmezett: 5)                  | Maximális száma a szolgáltatás átütemez a Windows update abban az esetben, ha egy művelet meghiúsul, osztályozását.          |
 | WURescheduleTimeInMinutes | Int <br>(Alapértelmezett: 30) | Az időköz, amelyen a a szolgáltatás a Windows update átütemez, abban az esetben, ha hiba továbbra is fennáll. |
 | WUFrequency           | Vesszővel tagolt karakterláncot (alapértelmezett: "Hetente, szerda, 7:00:00")     | Az Windows frissítésének gyakoriságát. A formátum és a lehetséges értékek a következők: <br>-Havi nn óó, például havonta, 5., 12: 22:32.<br>Megengedett értékek mező nn (nap) értékek, amelyek a tartomány 1 – 28 és a "last" között. <br> -Hetente, nap, formátumban, például hetente, kedd, 12:22:32.  <br> – Napi, formátumban, például naponta, 12:22:32.  <br> – Nincs azt jelzi, hogy a Windows Update nem végezhető.  <br><br> Vegye figyelembe, hogy idő (UTC).|
-| AcceptWindowsUpdateEula | Logikai <br>(Alapértelmezett: igaz) | Állít be ezt a jelzőt, az alkalmazás fogad a Windows Update végfelhasználói licenc a gép a tulajdonos nevében.              |
+| AcceptWindowsUpdateEula | Boolean <br>(Alapértelmezett: igaz) | Állít be ezt a jelzőt, az alkalmazás fogad a Windows Update végfelhasználói licenc a gép a tulajdonos nevében.              |
 
 > [!TIP]
 > Ha azt szeretné, hogy a Windows Update azonnal elvégzi, `WUFrequency` az alkalmazás üzembe helyezési idő viszonyítva. Tegyük fel, hogy egy öt csomópontot számláló tesztfürt és tervez üzembe helyezni az alkalmazást, körülbelül 5:00 Órakor (UTC). Ha azt feltételezik, hogy az alkalmazás frissítése vagy telepítése 30 percig tart, a maximális, állítsa be a WUFrequency "Naponta, 17:30:00"

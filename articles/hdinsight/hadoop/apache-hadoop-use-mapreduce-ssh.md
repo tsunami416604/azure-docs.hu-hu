@@ -2,19 +2,27 @@
 title: Az Apache Hadoop, a HDInsight - Azure MapReduce és SSH-kapcsolat
 description: Útmutató az SSH használata a HDInsight segítségével az Apache Hadoop MapReduce-feladatok futtatásához.
 services: hdinsight
-author: hrasheed-msft
-ms.reviewer: jasonh
+documentationcenter: ''
+author: Blackmist
+manager: cgronlunb
+editor: cgronlun
+tags: azure-portal
+ms.assetid: 844678ba-1e1f-4fda-b9ef-34df4035d547
 ms.service: hdinsight
 ms.custom: hdinsightactive
+ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/10/2018
-ms.author: hrasheed
-ms.openlocfilehash: bce79aed49b94071b4e83524de2d599fca182256
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: MT
+ms.tgt_pltfrm: na
+ms.workload: big-data
+origin.date: 04/10/2018
+ms.date: 01/14/2019
+ms.author: v-yiso
+ms.openlocfilehash: 3448a5e89f6930a5bdcb7d0d77b92576e58fc90b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438569"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129382"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>Az ssh-val a HDInsight az Apache Hadoop MapReduce használata
 
@@ -39,13 +47,13 @@ Ismerje meg, hogyan lehet elküldeni a HDInsight a Secure Shell (SSH) kapcsolat 
 Csatlakozhat a fürthöz SSH használatával. Az alábbi parancs például nevű fürthöz csatlakozó **myhdinsight** , a **sshuser** fiók:
 
 ```bash
-ssh sshuser@myhdinsight-ssh.azurehdinsight.net
+ssh sshuser@myhdinsight-ssh.azurehdinsight.cn
 ```
 
 **Ha az SSH-hitelesítési tanúsítvány kulcs használata**, szükség lehet adja meg a titkos kulcs helyét az ügyfél rendszeren:
 
 ```bash
-ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.net
+ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.cn
 ```
 
 **Ha az SSH-hitelesítést használhat olyan jelszót**, meg kell adnia a jelszót, amikor a rendszer kéri.
@@ -80,7 +88,7 @@ Az SSH és a HDInsight további információkért lásd: [az SSH használata a H
 
     Ez a parancs két fájlt megjelenítéséhez `_SUCCESS` és `part-r-00000`. A `part-r-00000` fájl tartalmazza a feladat kimenetét.
 
-    > [!NOTE]  
+    > [!NOTE]
     > Bizonyos MapReduce-feladatok az eredmények lehet, hogy elosztja a több **. rész – az r-###** fájlokat. Ha igen, használja a ### utótagot a fájlok sorrendjét.
 
 4. A kimenet megtekintéséhez használja a következő parancsot:

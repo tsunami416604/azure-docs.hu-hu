@@ -11,11 +11,11 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: d89a701f1d4528e1f3dff08daf31873891778f07
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369190"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60751396"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Adatelemzés kezdőknek – 1. Videó: A 5 kérdés adatelemzés választ ad
 Adatelemzés a gyors bevezetést *adatelemzés kezdőknek* az öt rövid videóban a felső adatszakértő. Ezeket a videókat egyszerű, de hasznos,-e Önt érdeklő adatelemzésre vagy dolgozik, az adatszakértők.

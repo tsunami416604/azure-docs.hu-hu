@@ -1,6 +1,6 @@
 ---
-title: A StorSimple virtuális tömb hibaelhárítása |} Microsoft Docs
-description: Ismerteti a StorSimple Device Manager funkció felderítésére, és ismerteti a StorSimple virtuális tömb hibaelhárítás céljából.
+title: A StorSimple Virtual Array – hibaelhárítás |} A Microsoft Docs
+description: Ismerteti a StorSimple-Eszközkezelő diagnosztizálása képesség, és azt ismerteti, hogyan használhatja a StorSimple Virtual Array hibaelhárítása.
 services: storsimple
 documentationcenter: ''
 author: manuaery
@@ -14,34 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: a75e68c84a50977b162ca4d3a4a02936ca78cb6b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d222097f9fb99a24f6213584a3419ed777f4a22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875255"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61408438"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>A StorSimple Device Manager szolgáltatással a StorSimple virtuális tömb hibaelhárítása
+# <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>A StorSimple-Eszközkezelő szolgáltatás segítségével a StorSimple Virtual Array hibaelhárítása
 ## <a name="overview"></a>Áttekintés
 
-A StorSimple Device Manager biztosít egy **Diagnosztizálás és problémák megoldására** belül a szolgáltatás összefoglaló panel, amelyen néhány gyakran előforduló hibát, ami akkor fordulhat elő, a virtuális tömb és azok megoldási történő beállítását. Ez az oktatóanyag bemutatja a önkiszolgáló hibaelhárítási számára biztosított képesség a StorSimple Device Manager szolgáltatáson belül.
+A StorSimple-Eszközkezelő biztosít egy **diagnosztizálása és a problémák megoldásában** belül a szolgáltatásösszegző panel, amely kiemeli a gyakran előforduló problémák, amelyek a virtuális tömb, és hogyan oldhatók meg azok a beállítást. Ez az oktatóanyag bemutatja a hibaelhárítási önkiszolgáló képességek a StorSimple-Eszközkezelő szolgáltatásban megadott.
 
 ![Problémák diagnosztizálása és megoldása](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-main.png)
 
-## <a name="diagnose-and-solve-issues"></a>Diagnosztizálhatja és a problémák megoldásához
+## <a name="diagnose-and-solve-issues"></a>Diagnosztizálása és a hiba elhárításához nyújthatnak segítséget
 
-Megtekintheti a StorSimple virtuális tömbbel rendelkező gyakori problémák és megoldások a StorSimple Device Manager szolgáltatás összefoglaló panelen tekintse át az jobb ismertetünk.
+Megtekintheti a StorSimple Virtual Array használatának gyakori problémák, és tekintse át a megoldások megfelelő ezeket a hibákat, az a StorSimple-Eszközkezelő szolgáltatás összefoglalás panelén.
 
-#### <a name="to-diagnose-an-issue-with-your-virtual-array"></a>A virtuális tömb problémát felderítéséhez
+#### <a name="to-diagnose-an-issue-with-your-virtual-array"></a>A virtuális tömb probléma diagnosztizálása érdekében
 
-1. Kattintson a **Diagnosztizálás és problémák megoldására** beállítása a StorSimple Device Manager szolgáltatás összefoglalás panelről a bal oldali panelen a gyakori problémák listájának megtekintéséhez.
+1. Kattintson a **diagnosztizálása és a problémák megoldásához** gyakori problémák listája a bal oldali panelen, a StorSimple-Eszközkezelő szolgáltatás összefoglalás panelén beállítást.
 
-2. **Bontsa ki a** meg a probléma áll kapcsolatban tekintse át a tünete **a javasolt lépéseket** támogatási meg a probléma elhárításához. Ha kívánja, tekintse át további hivatkozás részletes dokumentációt hivatkozásokra.
+2. **Bontsa ki a** merültek fel, tekintse át a probléma tünetei a **javasolt lépések** melyek a segítségére lehetnek a probléma elhárítását. Ha szeretné, tekintse át további vonatkozó részletes dokumentációt található hivatkozásokat.
    
-    ![A probléma elhárítása](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-offline.png)
+    ![Egy hiba elhárítása](./media/storsimple-virtual-array-diagnose-problems/diagnose-problems-offline.png)
 
-3. Nem sikerül, a probléma mutató hivatkozás található vagy nem oldható meg, ha elérhetők a Microsoft Support további segítségért.
+3. Ha nem találja a problémát egy hivatkozást vagy oldható meg, forduljon Microsoft Support további segítségért.
 
-## <a name="next-steps"></a>Következő lépések
-Megtudhatja, hogyan [egy támogatási jegy naplózása](storsimple-virtual-array-log-support-ticket.md)
+## <a name="next-steps"></a>További lépések
+Ismerje meg, hogyan [szóló támogatási jegyek rögzítése](storsimple-virtual-array-log-support-ticket.md)
 

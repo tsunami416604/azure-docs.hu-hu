@@ -9,11 +9,11 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: 4bc683908646a5c05fee14f721e2c26482518947
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751395"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61427616"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagálás Blob storage-események
 
@@ -43,24 +43,24 @@ BLOB storage-események összes kell reagálni az igények változásaira az ada
 
 > |Tulajdonság|Típus|Leírás|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |témakör|sztring|Teljes Azure Resource Manager azonosítója, amely az eseményt bocsát ki a tárfiókot.|
-> |tárgy|sztring|Az objektum azonos kiterjesztett Azure Resource Manager formátumban, amelyek bemutatják a storage-fiókok, szolgáltatások és tárolók az Azure RBAC használatával az esemény tárgyát képező relatív erőforrás elérési útja.  Ez a formátum tartalmazza a blob nevét megőrzi.|
-> |eventTime|sztring|Az esemény létrejött, az ISO 8601 formátumú dátum/idő|
-> |eventType|sztring|"Microsoft.Storage.BlobCreated" or "Microsoft.Storage.BlobDeleted"|
-> |Azonosító|sztring|Egyedi azonosító, ha az esemény|
-> |dataVersion|sztring|Az adatobjektum sémaverziója.|
-> |metadataVersion|sztring|A legfelső szintű tulajdonságok sémaverziója.|
+> |témakör|string|Teljes Azure Resource Manager azonosítója, amely az eseményt bocsát ki a tárfiókot.|
+> |tárgy|string|Az objektum azonos kiterjesztett Azure Resource Manager formátumban, amelyek bemutatják a storage-fiókok, szolgáltatások és tárolók az Azure RBAC használatával az esemény tárgyát képező relatív erőforrás elérési útja.  Ez a formátum tartalmazza a blob nevét megőrzi.|
+> |eventTime|string|Az esemény létrejött, az ISO 8601 formátumú dátum/idő|
+> |eventType|string|"Microsoft.Storage.BlobCreated" or "Microsoft.Storage.BlobDeleted"|
+> |Azonosító|string|Egyedi azonosító, ha az esemény|
+> |dataVersion|string|Az adatobjektum sémaverziója.|
+> |metadataVersion|string|A legfelső szintű tulajdonságok sémaverziója.|
 > |adat|objektum|A blob storage-specifikus eseményadatok gyűjtése|
-> |data.contentType|sztring|A BLOB, a Content-Type fejlécében a blobból kellene visszaadnia a tartalom típusa|
+> |data.contentType|string|A BLOB, a Content-Type fejlécében a blobból kellene visszaadnia a tartalom típusa|
 > |data.contentLength|szám|Egész számot jelölő bájt, számos, a Content-Length fejlécet a blobból kellene visszaadnia hasonlóan a blob mérete.  BlobCreated esemény, de nem BlobDeleted küldi.|
-> |Data.URL|sztring|Az URL-cím az objektum, amely az esemény tárgya|
-> |data.eTag|sztring|Az etag címkéje az objektumot, ha ez az esemény történt.  Nem érhető el a BlobDeleted eseményhez.|
-> |Data.API|sztring|Az api-művelet ezt az eseményt kiváltó neve. BlobCreated események az értéke "PutBlob", "PutBlockList" vagy "CopyBlob". BlobDeleted események az értéke "DeleteBlob". Ezeket az értékeket az azonos api nevei, amelyek szerepelnek az Azure Storage-diagnosztikai naplók. Lásd: [naplózott műveletek és az állapotüzenetek](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).|
-> |data.sequencer|sztring|Egy nem átlátszó karakterláncértéket, amely a logikai eseménysorozatát bármely adott blob neve.  Felhasználók szabványos karakterláncok összehasonlítása segítségével megismerheti a relatív eseménysorozat két azonos blob neve.|
-> |data.requestId|sztring|Szolgáltatás által létrehozott kérelemazonosító a storage API-művelet. Az Azure Storage-diagnosztikai naplók "fejléc-kérelem-azonosító" mező a naplók használatával, és adja vissza a megoldásig API-hívás az "x-ms-request-id" fejléc korrelációját használható. Lásd: [naplóformátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format).|
-> |data.clientRequestId|sztring|A storage API-művelet ügyfél által biztosított kérés azonosítója. Használható az Azure Storage diagnosztikai naplókat a naplók "client-request-id" mezője összekapcsolását, és az ügyfélkérések használja az "x-ms-client-request-id" fejléc adható meg. Lásd: [naplóformátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
+> |Data.URL|string|Az URL-cím az objektum, amely az esemény tárgya|
+> |data.eTag|string|Az etag címkéje az objektumot, ha ez az esemény történt.  Nem érhető el a BlobDeleted eseményhez.|
+> |Data.API|string|Az api-művelet ezt az eseményt kiváltó neve. BlobCreated események az értéke "PutBlob", "PutBlockList" vagy "CopyBlob". BlobDeleted események az értéke "DeleteBlob". Ezeket az értékeket az azonos api nevei, amelyek szerepelnek az Azure Storage-diagnosztikai naplók. Lásd: [naplózott műveletek és az állapotüzenetek](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).|
+> |data.sequencer|string|Egy nem átlátszó karakterláncértéket, amely a logikai eseménysorozatát bármely adott blob neve.  Felhasználók szabványos karakterláncok összehasonlítása segítségével megismerheti a relatív eseménysorozat két azonos blob neve.|
+> |data.requestId|string|Szolgáltatás által létrehozott kérelemazonosító a storage API-művelet. Az Azure Storage-diagnosztikai naplók "fejléc-kérelem-azonosító" mező a naplók használatával, és adja vissza a megoldásig API-hívás az "x-ms-request-id" fejléc korrelációját használható. Lásd: [naplóformátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format).|
+> |data.clientRequestId|string|A storage API-művelet ügyfél által biztosított kérés azonosítója. Használható az Azure Storage diagnosztikai naplókat a naplók "client-request-id" mezője összekapcsolását, és az ügyfélkérések használja az "x-ms-client-request-id" fejléc adható meg. Lásd: [naplóformátum](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
 > |data.storageDiagnostics|objektum|Diagnosztikai adatok az Azure Storage szolgáltatás időnként tartalmazza. Ha igen, figyelmen kívül hagyja az eseményfelhasználók által.|
-|data.blobType|sztring|A blob típusa. Érvényes értékek: "BlockBlob" vagy "PageBlob".| 
+|data.blobType|string|A blob típusa. Érvényes értékek: "BlockBlob" vagy "PageBlob".| 
 
 Íme egy példa egy BlobCreated esemény:
 ```json

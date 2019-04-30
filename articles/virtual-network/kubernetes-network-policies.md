@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: b4f8577724781e5df10846a5fc4e30c8320403f2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a5c367402bd1e61485095fd1d565a8582acc3a9e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219770"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60824891"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Az Azure Kubernetes hálózati házirendek – áttekintés
 
@@ -38,11 +38,11 @@ A fürt biztonsági implementálásakor hálózati biztonsági csoportok (NSG-k)
 Az Azure hálózati házirendek podok mikroszegmentációt biztosít az alábbi módon használható.
 
 ### <a name="acs-engine"></a>ACS-motor
-Az ACS-Engine egy olyan eszköz, az Azure-ban hoz létre egy Azure Resource Manager-sablon egy Kubernetes-fürt központi telepítésére vonatkozóan. A fürt konfigurációját a sablon létrehozásakor a eszköz átadott JSON-fájlban van megadva. A fürt támogatott beállítások teljes listáját és a hozzájuk tartozó leírások kapcsolatos további tudnivalókért lásd a Microsoft Azure Container Service-motor - fürt.
+Az ACS-Engine egy olyan eszköz, az Azure-ban hoz létre egy Azure Resource Manager-sablon egy Kubernetes-fürt központi telepítésére vonatkozóan. A fürtkonfiguráció egy JSON-fájlban van meghatározva, amelyet a sablon létrehozásakor a rendszer továbbít az eszköznek. A fürt támogatott beállítások teljes listáját és a hozzájuk tartozó leírások kapcsolatos további tudnivalókért lásd a Microsoft Azure Container Service-motor - fürt.
 
 Ahhoz, hogy a szabályzatok a fürtökön üzembe helyezett acs-engine használatával, adja meg a fürt definíciós fájlt lehet "azure" a networkPolicy beállítás értékét.
 
-#### <a name="example-configuration"></a>Konfigurálása – példa
+#### <a name="example-configuration"></a>Konfigurációs példa
 
 Az alábbi JSON konfigurálása – példa egy új virtuális hálózatot és alhálózatot hoz létre, és az Azure CNI, a Kubernetes-fürt üzembe helyezése. Azt javasoljuk, hogy a JSON-fájl szerkesztése "Jegyzettömb" használja. 
 ```json
@@ -87,7 +87,7 @@ Az alábbi JSON konfigurálása – példa egy új virtuális hálózatot és al
 
 ```
 ### <a name="creating-your-own-kubernetes-cluster-in-azure"></a>A saját Kubernetes-fürt létrehozása az Azure-ban
-A megvalósítás biztosít hálózati házirendek Podok a Kubernetes-fürtök központi telepítését, anélkül, hogy az eszközök, mint például az ACS-Engine használható. Ebben az esetben, először a beépülő modul CNI telepíti és engedélyezi azt az összes virtuális gép egy fürtben. Részletes útmutatásért lásd: [üzembe helyezése a beépülő modul egy Kubernetes-fürthöz úgy, hogy saját maga](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
+A megvalósítás biztosít hálózati házirendek Podok a Kubernetes-fürtök központi telepítését, anélkül, hogy az eszközök, mint például az ACS-Engine használható. Ebben az esetben, először a beépülő modul CNI telepíti és engedélyezi azt az összes virtuális gép egy fürtben. Részletes információ: [A beépülő modul üzembe helyezése saját kezűleg üzembe helyezett Kubernetes-fürthöz](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster).
 
 Miután a fürt üzembe lesz helyezve, futtassa a következő `kubectl` paranccsal töltse le és a alkalmazni az Azure-beli hálózati házirend *daemonset* a fürthöz.
 

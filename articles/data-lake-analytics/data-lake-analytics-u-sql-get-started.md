@@ -10,11 +10,11 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
 ms.openlocfilehash: 9de5c7228944bd0448d9dfa833ef223140ccf0e8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59488711"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60813843"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>U-SQL-lel az Azure Data Lake Analytics használatának első lépései
 U-SQL nyelv, amely egyesíti az SQL deklaratív imperatív C# lehetővé teszi, hogy minden olyan nagy mennyiségű adat feldolgozását. U-SQL skálázható, elosztott lekérdezési képességek segítségével hatékonyan elemezheti adatok például az Azure SQL Database relációs adattárak között. Az U-SQL strukturált adatok feldolgozására olvasási séma alkalmazásának, és egyéni logikát és felhasználói függvények szúr be. Továbbá a U-SQL tartalmazza, amely felkínálja részletesen szabályozhatja, hogyan hajtható végre, ipari méretekben bővíthetőséget. 

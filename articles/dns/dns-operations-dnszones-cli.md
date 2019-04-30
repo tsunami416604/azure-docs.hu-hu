@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: victorh
-ms.openlocfilehash: 7f132c513354a87b4f1bd37db4c6c6ed8e0fd041
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: df741b34e1268c547723af87401760197d395780
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949961"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61293829"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Hogyan kezelheti a DNS-zónák az Azure DNS az Azure CLI használatával
 
@@ -38,7 +38,7 @@ Ez az útmutató kifejezetten a nyilvános DNS-zónák foglalkozik. Kezelheti az
 
 ## <a name="set-up-azure-cli-for-azure-dns"></a>Az Azure parancssori felület (CLI) beállítása az Azure DNS-hez
 
-### <a name="before-you-begin"></a>Előkészületek
+### <a name="before-you-begin"></a>Előzetes teendők
 
 A konfigurálás megkezdése előtt győződjön meg arról, hogy rendelkezik a következőkkel.
 
@@ -68,7 +68,7 @@ Válassza ki, hogy melyik Azure előfizetést fogja használni.
 az account set --subscription "subscription name"
 ```
 
-### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>Választható lehetőség: Telepítése és használata az Azure DNS saját zónák funkció (nyilvános előzetes verzió)
+### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>Nem kötelező: Az Azure DNS saját zónák funkció (nyilvános előzetes verzió) telepítése és használata
 Az Azure DNS saját zóna funkció nyilvános előzetes verziója az Azure CLI bővítményeként jelent meg. A „dns” Azure CLI-bővítmény telepítése 
 ```
 az extension add --name dns

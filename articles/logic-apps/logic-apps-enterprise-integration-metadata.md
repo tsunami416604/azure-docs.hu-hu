@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 01/17/2019
 ms.openlocfilehash: 5ebdf45bec4e7cfceb75354af40c7a21c22c6eef
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54446782"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60846201"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Összetevő metaadatai a az Azure Logic Apps és az Enterprise Integration Pack-integrációs fiókok kezelése
 
@@ -63,7 +63,7 @@ Egyéni összetevők metaadatainak megadása az integrációs fiókok, és a met
 
 1. Adja meg a keresett összetevőre információkat:
 
-   | Tulajdonság | Szükséges | Érték | Leírás | 
+   | Tulajdonság | Szükséges | Value | Leírás | 
    |----------|---------|-------|-------------| 
    | **Összetevő típusa** | Igen | **Séma**, **térkép**, **Partner**, **szerződés**, vagy egy egyéni típus | A kívánt összetevő típusa | 
    | **Összetevő neve** | Igen | <*artifact-name*> | A kívánt összetevő neve | 
@@ -85,7 +85,7 @@ Egyéni összetevők metaadatainak megadása az integrációs fiókok, és a met
 
       Tegyük fel például, hogy szeretne a `routingUrl` témakör korábbi szakaszában felvett metaadatait. Az alábbiakban megadhatja a tulajdonságértékek: 
 
-      | Tulajdonság | Szükséges | Érték | Leírás | 
+      | Tulajdonság | Szükséges | Value | Leírás | 
       |----------|----------|-------|-------------| 
       | **Metódus** | Igen | <*operation-to-run*> | A HTTP-műveletből a lehívandó összetevő fusson. Például a HTTP-művelet használja a **első** metódust. | 
       | **URI-T** | Igen | <*metadata-location*> | Hozzáférés a `routingUrl` metaadatok értéket az összetevőben, beolvassa, egy kifejezés használható, például: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 

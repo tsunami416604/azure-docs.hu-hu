@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 06/15/2018
+ms.date: 04/05/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6fd3eccf3de5d46520dc5a50cab66667c875799e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: MT
+ms.openlocfilehash: ee54d37050991763e60a6feb96c75d80384a42ac
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454607"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60722119"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Alkalmazások-Batch-alkalmazáscsomagokkal számítási csomópontokra üzembe helyezése
 
@@ -29,14 +29,11 @@ Az alkalmazáscsomagokat kezelő funkciója Azure Batch-feladat alkalmazások eg
 Ebből a cikkből megismerheti, hogyan töltheti fel és kezelheti az alkalmazáscsomagok az Azure Portalon. Ezután megismerheti, hogyan, hogy telepítse őket a készlet számítási csomópontjait a számítógépen a [Batch .NET] [ api_net] könyvtár.
 
 > [!NOTE]
-> 
 > Az alkalmazáscsomagok az összes 2017. július 5. után létrehozott Batch-készleten támogatottak. A 2016. március 10. és 2017. július 5. között létrehozott Batch-készletek esetében csak akkor támogatottak, ha a készlet felhőszolgáltatás-konfigurációval lett létrehozva. A 2016. március 10. előtt létrehozott Batch-készletek nem támogatják az alkalmazáscsomagokat.
 >
 > Az API-kat hozhat létre és kezelhet az alkalmazáscsomagok részét képezik a [Batch Management .NET használatával] [ api_net_mgmt] könyvtár. Az API-k egy számítási csomóponton az alkalmazáscsomagok telepítésének részét képezik a [Batch .NET] [ api_net] könyvtár. A rendelkezésre álló Batch API-k más nyelven hasonló funkciók találhatók. 
 >
 > Az itt ismertetett csomagok funkcióval felülírja a Batch-alkalmazások szolgáltatás a szolgáltatás korábbi verzióiban érhető el.
-> 
-> 
 
 ## <a name="application-package-requirements"></a>Csomag alkalmazáskövetelmények
 Az alkalmazáscsomagok használatához kell [Azure Storage-fiókot kapcsol](#link-a-storage-account) a Batch-fiókjához.
@@ -116,6 +113,14 @@ Ebben az ablakban minden alkalmazás azonosítója a fiók és a következő tul
 * **Csomagok**: A jelen alkalmazáshoz rendelt verziók számát.
 * **Alapértelmezett verzió**: Az alkalmazás verziója telepítve van, ha nem azt jelzik a verzió, adja meg az alkalmazás-készlet. Ez a beállítás nem kötelező.
 * **Engedélyezi a frissítéseket**: Az érték, amely meghatározza, hogy csomag frissítései, törléseket és kiegészítéseit engedélyezettek. Ha a beállított érték **nem**, csomag frissítések és törlések le vannak tiltva, az alkalmazás. Csak új alkalmazáscsomag-verziók is hozzáadhatók. Az alapértelmezett érték az **Igen**.
+
+Ha szeretné, tekintse meg az alkalmazáscsomag fájlstruktúra a számítási csomóponton, lépjen a Batch-fiók a portálon. Lépjen a Batch-fiókból **készletek**. Válassza ki a készlet, amely tartalmazza az Önt érdeklő számítási csomópontokon.
+
+![Készletben lévő csomópontok][13]
+
+Miután kiválasztotta a készlet, keresse meg a számítási csomóponton, hogy az alkalmazáscsomag telepítve van. Itt az alkalmazáscsomag részletei találhatók a **alkalmazások** mappát. További mappákat a számítási csomóponton tartalmazhat más fájlok, például az indítási tevékenységeket, a kimeneti fájlokat, a hibakimenet, stb.
+
+![Csomóponton lévő fájlok][14]
 
 ### <a name="view-application-details"></a>Az alkalmazás részleteinek megtekintése
 Az alkalmazás részleteit, jelölje ki az alkalmazás a **alkalmazások** ablak.
@@ -374,3 +379,5 @@ Az alkalmazáscsomagokkal segíthet az ügyfeleknek, válassza ki arra, hogy az 
 [10]: ./media/batch-application-packages/app_pkg_10.png "Az Azure Portalon válassza ki a tárfiók panel"
 [11]: ./media/batch-application-packages/app_pkg_11.png "Frissítési csomag panel az Azure Portalon"
 [12]: ./media/batch-application-packages/app_pkg_12.png "Törlési csomag jóváhagyás az Azure Portalon"
+[13]: ./media/batch-application-packages/package-file-structure.png "Számítási csomópont-információk az Azure Portalon"
+[14]: ./media/batch-application-packages/package-file-structure-node.png "A számítási csomóponton, az Azure Portal webhelyen megjelenő fájlok"

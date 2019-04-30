@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/04/2019
 ms.openlocfilehash: 8cb044397cf439e97f3630b5c1c3f53fbf3f356d
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729923"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61468397"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Az Azure SQL Database és az SQL Data Warehouse hozzáférés-vezérlés
 
@@ -34,7 +34,7 @@ Az Azure SQL Database szolgáltatás kizárólag a 1433-as TCP-porton keresztül
 
 A kapcsolódási folyamat részeként az Azure virtuális gépektől érkező kapcsolatok az egyes feldolgozói szerepkörök egyedi IP-címeire és portjaira lesznek átirányítva. A portszám a 11000-től 11999-ig terjedő tartományban található. TCP-portokkal kapcsolatos további információkért lásd: [ADO.NET 4.5 és a 2. a SQL adatbázis 1433-Ason túli](sql-database-develop-direct-route-ports-adonet-v12.md).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Az SQL Database két hitelesítési típust támogat:
 
@@ -53,7 +53,7 @@ Az ajánlott eljárás az, ha az alkalmazás egy dedikált fiókot használ a hi
 
 ## <a name="authorization"></a>Engedélyezés
 
-Az engedélyezés az Azure SQL Database-adatbázisokban a felhasználók által végrehajtható műveletek körét jelenti, amelyeket a felhasználóifiók-adatbázis [szerepkörtagságai](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) és [objektumszintű engedélyei](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) határoznak meg. Ajánlott eljárásként csak a minimálisan szükséges engedélyeket adja meg a felhasználóknak. A kapcsolódáshoz használt kiszolgálói rendszergazdai fiók a db_owner szerepkör tagja, így teljes körű engedélyekkel rendelkezik az adott adatbázisban. Tartsa meg ezt a fiókot a sémafrissítések üzembe helyezéséhez és egyéb felügyeleti műveletekhez. Használja kevesebb engedéllyel rendelkező „ApplicationUser” fiókot, ha az alkalmazásból kíván csatlakozni az adatbázishoz az alkalmazás által minimálisan igényelt engedélyekkel. További információk: [Bejelentkezések kezelése](sql-database-manage-logins.md).
+Az engedélyezés az Azure SQL-adatbázisokban a felhasználók által végrehajtható műveletek körét jelenti, amelyeket a felhasználóifiók-adatbázis [szerepkörtagságai](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) és [objektumszintű engedélyei](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) határoznak meg. Ajánlott eljárásként csak a minimálisan szükséges engedélyeket adja meg a felhasználóknak. A kapcsolódáshoz használt kiszolgálói rendszergazdai fiók a db_owner szerepkör tagja, így teljes körű engedélyekkel rendelkezik az adott adatbázisban. Tartsa meg ezt a fiókot a sémafrissítések üzembe helyezéséhez és egyéb felügyeleti műveletekhez. Használja kevesebb engedéllyel rendelkező „ApplicationUser” fiókot, ha az alkalmazásból kíván csatlakozni az adatbázishoz az alkalmazás által minimálisan igényelt engedélyekkel. További információk: [Bejelentkezések kezelése](sql-database-manage-logins.md).
 
 A `master` adatbázishoz általában csak a rendszergazdáknak kell hozzáférniük. Az egyes felhasználói adatbázisokhoz való rutinszerű hozzáférést az egyes adatbázisokban létrehozott nem rendszergazdai tartalmazottadatbázis-felhasználókon keresztül végezni. Tartalmazottadatbázis-felhasználók használata esetén nem szükséges bejelentkezési adatokat létrehozni a `master` adatbázisban. További információt a [tartalmazottadatbázis-felhasználókkal kapcsolatos, az adatbázis hordozhatóvá tételével foglalkozó](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) cikkben talál.
 

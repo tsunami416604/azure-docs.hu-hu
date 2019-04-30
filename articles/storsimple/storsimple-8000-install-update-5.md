@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: d6e17c7609fd41b8f4457edda373f6882a1a9d2b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d86e77ef0148c0fac3dfa31153364de153b094ef
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698710"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126749"
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>5. frissítés telepítése a StorSimple-eszköz
 
@@ -61,7 +61,7 @@ A szoftver verziójával, amely a gyorsjavítás metódussal lehet frissíteni a
 * 1., 1.1-es, 1.2-es frissítés
 * 2, 2.1-es, 2.2-es frissítés
 * Update 3, 3.1.
-* 4. frissítés
+* 4-es frissítés
 
 > [!NOTE] 
 > Az ajánlott módszer a telepítendő Update 5 van az Azure Portalon keresztül Update 3 és újabb verzióra való frissítésekor. 3. frissítés előtti verziót futtató eszköz a frissítés során ez az eljárás használható. Is használhatja ezt az eljárást, ha az átjáró ellenőrzése sikertelen, amikor telepíti a frissítéseket az Azure Portalon keresztül. Az ellenőrzés sikertelen, ha az átjáró nem a DATA 0 hálózati adapter rendelt és az eszköz frissítése 1-nél korábbi szoftverfrissítési verziót futtat.
@@ -76,30 +76,30 @@ A gyorsjavítás módszer a következő három lépésből áll:
 
 Le kell töltenie és a gyorsjavítások telepítése által előírt sorrendben, és a javasolt mappák:
 
-| Sorrend | KB | Leírás | Frissítés típusa | Telepítés időpontja |Telepítési mappa|
+| Rendelés | KB | Leírás | Frissítés típusa | Telepítés időpontja |Telepítési mappa|
 | --- | --- | --- | --- | --- | --- |
-| 1. |KB4037264 |Szoftverfrissítés<br> Töltse le mindkét _HcsSoftwareUpdate.exe_ és _CisMSDAgent.exe_ |Rendszeres <br></br>Zavart nem okozó |~ 25 perc |FirstOrderUpdate|
+| 1. |KB4037264 |Szoftverfrissítés<br> Töltse le mindkét _HcsSoftwareUpdate.exe_ és _CisMSDAgent.exe_ |Normál <br></br>Zavart nem okozó |~ 25 perc |FirstOrderUpdate|
 
 Az Update 4-es eszközök frissítése, ha csak az operációs rendszer összegző frissítések telepítésével, a másodrendű frissítések kell.
 
-| Sorrend | KB | Leírás | Frissítés típusa | Telepítés időpontja |Telepítési mappa|
+| Rendelés | KB | Leírás | Frissítés típusa | Telepítés időpontja |Telepítési mappa|
 | --- | --- | --- | --- | --- | --- |
-| 2A. |KB4025336 |Az operációs rendszer az összegző frissítések csomag <br> Töltse le a Windows Server 2012 R2 verzióra |Rendszeres <br></br>Zavart nem okozó |- |SecondOrderUpdate|
+| 2A. |KB4025336 |Az operációs rendszer az összegző frissítések csomag <br> Töltse le a Windows Server 2012 R2 verzióra |Normál <br></br>Zavart nem okozó |- |SecondOrderUpdate|
 
 Ha az Update 3-es eszközök telepítése, illetve a korábbi, telepítse az összegző frissítések mellett az alábbi.
 
-| Sorrend | KB | Leírás | Frissítés típusa | Telepítés időpontja |Telepítési mappa|
+| Rendelés | KB | Leírás | Frissítés típusa | Telepítés időpontja |Telepítési mappa|
 | --- | --- | --- | --- | --- | --- |
-| 2B. |KB4011841 <br> KB4011842 |LSI-illesztőt és a belső vezérlőprogram frissítése <br> USM belső vezérlőprogram frissítése (3.38 verzió) |Rendszeres <br></br>Zavart nem okozó |~ 3 óra <br> (2/a. tartalmazza. + 2B. + 2C.)|SecondOrderUpdate|
-| 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |Az operációs rendszer biztonsági frissítések csomag <br> Töltse le a Windows Server 2012 R2 verzióra |Rendszeres <br></br>Zavart nem okozó |- |SecondOrderUpdate|
-| 2D. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |Az operációs rendszer frissítéseinek csomag <br> Töltse le a Windows Server 2012 R2 verzióra |Rendszeres <br></br>Zavart nem okozó |- |SecondOrderUpdate|
+| 2B. |KB4011841 <br> KB4011842 |LSI-illesztőt és a belső vezérlőprogram frissítése <br> USM belső vezérlőprogram frissítése (3.38 verzió) |Normál <br></br>Zavart nem okozó |~ 3 óra <br> (2/a. tartalmazza. + 2B. + 2C.)|SecondOrderUpdate|
+| 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |Az operációs rendszer biztonsági frissítések csomag <br> Töltse le a Windows Server 2012 R2 verzióra |Normál <br></br>Zavart nem okozó |- |SecondOrderUpdate|
+| 2D. |KB3146621 <br> KB3103616 <br> KB3121261 <br> KB3123538 |Az operációs rendszer frissítéseinek csomag <br> Töltse le a Windows Server 2012 R2 verzióra |Normál <br></br>Zavart nem okozó |- |SecondOrderUpdate|
 
 
 Emellett szükség lehet a frissítések az előző táblázatban látható felett lemezfirmware-frissítések telepítéséhez. Ellenőrizheti, hogy szükséges-e a lemezfirmware-frissítések futtatásával a `Get-HcsFirmwareVersion` parancsmagot. Ezek belső vezérlőprogrammal futtatásakor: `XMGJ`, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N003`, `0107`, akkor nem szükséges telepítenie ezeket a frissítéseket.
 
-| Sorrend | KB | Leírás | Frissítés típusa | Telepítés időpontja | Telepítési mappa|
+| Rendelés | KB | Leírás | Frissítés típusa | Telepítés időpontja | Telepítési mappa|
 | --- | --- | --- | --- | --- | --- |
-| 3. |KB4037263 |Lemezfirmware |Karbantartás <br></br>Azokat a káros |körülbelül 30 perc | ThirdOrderUpdate |
+| 3. |KB4037263 |Lemezfirmware |Karbantartás <br></br>Azokat a káros |~ 30 mins | ThirdOrderUpdate |
 
 <br></br>
 

@@ -1,7 +1,6 @@
 ---
 title: 'Azure-eszközkészlet az IntelliJ-hez: A HDInsight Spark-alkalmazások '
 description: Ismerje meg, hogyan használja VPN-kapcsolaton keresztül HDInsight-fürtökön futó Spark-alkalmazások távoli hibakeresése az IntelliJ-hez HDInsight Tools.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: e57257c6965f0da8c2d6ce990d2425847b73884f
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: MT
+ms.openlocfilehash: 30d52f1ac6a68a3202de59a0b4cab8edfb7ed042
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605790"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124344"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>A VPN-kapcsolaton keresztül a HDInsight az Apache Spark-alkalmazások hibakeresése az IntelliJ-hez készült Azure eszközkészlet használata
 
@@ -32,7 +31,7 @@ Ebben a cikkben részletes útmutatást nyújt az IntelliJ-hez és a egy HDInsig
 * **Azure-előfizetés**. További információkért lásd: [az Azure ingyenes próbaverzió beszerzése](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * **A HDInsight Apache Spark-fürt**. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
 * **Oracle Java development Kitet**. A telepítheti a [Oracle webhely](https://aka.ms/azure-jdks).
-* **Az IntelliJ IDEA**. Ez a cikk 2017.1 verzióját használja. A telepítheti a [eszközt webhely](https://www.jetbrains.com/idea/download/).
+* **IntelliJ IDEA**. Ez a cikk 2017.1 verzióját használja. A telepítheti a [eszközt webhely](https://www.jetbrains.com/idea/download/).
 * **HDInsight-eszközök az IntelliJ-hez készült Azure-eszközkészlet**. IntelliJ-hez készült HDInsight eszközök érhetők el az IntelliJ-hez készült Azure-eszközkészlet részeként. Azure-eszközkészlet telepítésével kapcsolatos útmutatásért lásd: [IntelliJ-hez készült Azure eszközkészlet telepítése](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation).
 * **Jelentkezzen be az Azure-előfizetéshez az IntelliJ IDEA**. Kövesse a [Apache Spark-alkalmazások egy HDInsight-fürt létrehozása az IntelliJ-hez készült Azure eszközkészlet használata](apache-spark-intellij-tool-plugin.md).
 * **Kivétel megoldás**. A Spark Scala-alkalmazás távoli hibakereséshez a Windows-számítógépen fut, miközben kaphat kivételt. Ez a kivétel ezen [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) és a egy hiányzó WinUtils.exe fájlt Windows miatt következik be. Ez a hiba elkerüléséhez kell [a végrehajtható fájl letöltése](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) egy olyan helyre, például **C:\WinUtils\bin**. Adjon hozzá egy **HADOOP_HOME** környezeti változót, majd állítsa be a változó értékét **C\WinUtils**.

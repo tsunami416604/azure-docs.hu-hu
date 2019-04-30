@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: jeffya
 ms.openlocfilehash: 80e4895e0b276e701a6d7f10d8fc67649db0f188
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904491"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122832"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Az MXChip IoT DevKit IoT Hub-regisztráció az Azure IoT Hub Device Provisioning Service automatikus kiépítés használatával
 
@@ -26,7 +26,7 @@ Ez a cikk azt ismerteti, hogyan használható az Azure IoT Hub Device Provisioni
 
 A [MXChip IoT DevKit](https://aka.ms/iot-devkit) egy teljes körű Arduino-kompatibilis tábla a gazdag perifériák és érzékelők van. A használatával is fejleszthet [Azure IoT-eszköz Workbench](https://aka.ms/iot-workbench) vagy [Azure IoT-eszközök](https://aka.ms/azure-iot-tools) bővítőcsomagjának Visual Studio Code-ban. A fejlesztői készlet együttműködik a egyre növekvő [projektek katalógus](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) is, amelyek kihasználják az Azure-szolgáltatások prototípusként Internet of Things (IoT) megoldását.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ez az oktatóanyag lépéseinek végrehajtásához először a következő feladatokat végezheti el:
 

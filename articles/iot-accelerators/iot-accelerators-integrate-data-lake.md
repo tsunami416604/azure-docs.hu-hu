@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 021f18f588613817110539d408f9260fb9247895
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603929"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61449342"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>A távoli figyelési megoldás integrálása az Azure Data Lake Store
 
@@ -93,7 +93,7 @@ Az IoT hub az adatokat az Azure Data Lake store-adatfolyam egy Azure Stream Anal
 
 1. Az Áttekintés oldalon kattintson a **kimenetek**.
 
-    ![Adja hozzá a Data Lake Store](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview-2.png)
+    ![Add Data Lake Store](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview-2.png)
 
 1. Kattintson a **Hozzáadás** válassza **Data Lake Store** a legördülő listából.
 

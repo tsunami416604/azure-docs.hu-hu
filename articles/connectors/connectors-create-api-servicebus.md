@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 68378c87e18df874059579445352b8fd1b2b6c13
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232715"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62105580"
 ---
 # <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>A felhőben az Azure Service Bus és az Azure Logic Apps, az Exchange-üzenetek
 
@@ -74,7 +74,7 @@ Győződjön meg róla, hogy a logikai alkalmazás a Service Bus-névtér való 
 
 1. Hozzáadása egy *eseményindító* üres logikai alkalmazás, a Keresés mezőbe írja be "Az Azure Service Bus" szűrőként. Eseményindítók listája alatt válassza ki a kívánt az eseményindító. 
 
-   A logikai alkalmazás elindításához, ha új elem a Service Bus-üzenetsorba küldi, jelölje be például a trigger: **amikor üzenet érkezik egy üzenetsorban (automatikus lezárás)**
+   Például a logikai alkalmazás elindításához, ha új elem a Service Bus-üzenetsorba küldi, válassza ki a erre az eseményindítóra: **Amikor üzenet érkezik egy üzenetsorban (automatikus lezárás)**
 
    ![A Service Bus-trigger kiválasztása](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
@@ -95,7 +95,7 @@ Győződjön meg róla, hogy a logikai alkalmazás a Service Bus-névtér való 
    1. A keresőmezőbe írja be szűrőként "Az Azure Service Bus". 
    Műveletek listája alatt válassza ki a kívánt művelet. 
  
-      Jelölje be például, hogy ez a művelet: **üzenet küldése**
+      Válassza például a következő műveletet: **Üzenet küldése**
 
       ![Válassza ki a Service Bus-műveletet](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
 
@@ -118,7 +118,7 @@ Győződjön meg róla, hogy a logikai alkalmazás a Service Bus-névtér való 
 
 1. Adja meg a szükséges adatokat az eseményindítót vagy műveletet. Ebben a példában a trigger vagy művelet esetén a megfelelő lépéseket kövesse: 
 
-   * **A minta eseményindító**: lekérdezési időköz és az üzenetsor-ellenőrzési gyakoriságának beállítása.
+   * **A minta eseményindító**: A lekérdezési időköz és az üzenetsor-ellenőrzési gyakoriságának beállítása.
 
      ![Lekérdezési időköz beállítása](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 

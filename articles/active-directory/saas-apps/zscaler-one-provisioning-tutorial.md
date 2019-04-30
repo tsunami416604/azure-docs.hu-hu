@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: A felhasználók automatikus átadása az Azure Active Directoryval Zscaler egy konfigurálása |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és megszüntetésének Zscaler egy felhasználói fiókokat.
+description: Megtudhatja, hogyan konfigurálhatja az Azure Active Directoryban történő automatikus kiépítésének és felhasználói fiókok Zscaler egy megszüntetése.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,80 +15,77 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: v-ant-msft
-ms.openlocfilehash: 26448d5056e58cf1110e825ad04c5123fca20684
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 5319b0ac06c4ddf1a7627a4e7fe0bfb2694f79f6
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59259439"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62114606"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Oktatóanyag: A felhasználók automatikus átadása egy Zscaler konfigurálása
 
-Ez az oktatóanyag célja a lépéseket kell végrehajtania a Zscaler egy és Azure Active Directory (Azure AD) konfigurálása az Azure AD automatikus kiépítésének és megszüntetésének felhasználók és csoportok Zscaler egy bemutatásához.
+Ez az oktatóanyag bemutatja a Zscaler egy és Azure Active Directory (Azure AD) konfigurálása az Azure AD automatikus kiépítése és a felhasználók és csoportok Zscaler egy megszüntetése végrehajtásához szükséges lépéseket.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-felhasználó Provisioning Service-ra épülő összekötők ismerteti. Ez a szolgáltatás leírása, hogyan működik és gyakran ismételt kérdések a fontos tudnivalókat tartalmaz [automatizálhatja a felhasználókiépítés és -átadás megszüntetése SaaS-alkalmazásokban az Azure Active Directory](../active-directory-saas-app-provisioning.md).
+> Ez az oktatóanyag leírja egy összekötőt, amely a kiszolgáló üzembe helyezése az Azure AD felhasználói épül. Ez a szolgáltatás leírása, hogyan működik, és gyakran ismételt kérdések kapcsolatos tudnivalókat lásd: [felhasználói kiépítésének és megszüntetésének biztosítása az Azure Active Directory-as-szoftverszolgáltatások (SaaS) alkalmazások automatizálása](../active-directory-saas-app-provisioning.md).
 >
-
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az általános Microsoft Azure használati feltételek az előzetes verziójú funkciók további információkért lásd: [kiegészítő használati feltételei a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg előzetes verzióban elérhető. Az általános Microsoft Azure használati feltételek az előzetes verziójú funkciók további információkért lásd: [a Microsoft Azure előzetesekre vonatkozó kiegészítő feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik az alábbiakkal:
+Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy rendelkezik:
 
-* Az Azure AD-bérlő
-* A Zscaler egy bérlőt
-* A Zscaler egy rendszergazdai engedélyekkel rendelkező felhasználói fiókkal
+* Egy Azure AD-bérlő.
+* A Zscaler egy bérlőt.
+* Egy felhasználói fiókot a Zscaler egy rendszergazdai jogosultságokkal rendelkezik.
 
 > [!NOTE]
-> Az Azure AD létesítési integráció támaszkodik a Zscaler egy SCIM API, a vállalati csomaggal rendelkező fiókok esetében Zscaler egy fejlesztők számára elérhető.
+> Az Azure AD-integrációs kiépítése a Zscaler egy SCIM API támaszkodik. Az API-t a Zscaler egy fejlesztők számára a vállalati csomaggal rendelkező fiókokhoz érhető el.
 
-## <a name="adding-zscaler-one-from-the-gallery"></a>A katalógusból Zscaler egy hozzáadása
+## <a name="add-zscaler-one-from-the-azure-marketplace"></a>Adjon hozzá egy Zscaler az Azure Marketplace-ről
 
-Az Azure AD-felhasználók automatikus a Zscaler egy konfigurálása előtt hozzá kell Zscaler egy, az Azure AD alkalmazáskatalógusában a felügyelt SaaS-alkalmazások listájára.
+Mielőtt konfigurál egy Zscaler számára az Azure AD-felhasználók automatikus, hozzá Zscaler egy az Azure Marketplace-ről a felügyelt SaaS-alkalmazások listája.
 
-**Adja hozzá a Zscaler egy, az Azure AD alkalmazáskatalógusában, hajtsa végre az alábbi lépéseket:**
+Adja hozzá a Zscaler egy a piactérről, kövesse az alábbi lépéseket.
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az a [az Azure portal](https://portal.azure.com), válassza a bal oldali navigációs panelen, **Azure Active Directory**.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory ikonra](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Lépjen a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához válassza **új alkalmazás** a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Zscaler egy**válassza **Zscaler egy** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Zscaler egy** válassza **Zscaler egy** az eredmény panelen. Az alkalmazás hozzáadásához válassza **Hozzáadás**.
 
     ![Az eredmények listájában egy Zscaler](common/search-new-app.png)
 
-## <a name="assigning-users-to-zscaler-one"></a>Felhasználók hozzárendelése egy Zscaler
+## <a name="assign-users-to-zscaler-one"></a>Felhasználók hozzárendelése egy Zscaler
 
-Az Azure Active Directory "-hozzárendelések" nevű fogalma használatával határozza meg, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus átadása kontextusában csak a felhasználók, illetve "rendelt" egy alkalmazás az Azure AD-csoportok szinkronizálódnak.
+Az Azure Active Directory használ egy fogalom megértéséhez nevű *hozzárendelések* meghatározni, hogy mely felhasználók kell kapnia a kiválasztott alkalmazásokhoz való hozzáférés. Felhasználók automatikus átadása kontextusában csak a felhasználók vagy csoportok, amelyek az alkalmazások az Azure AD hozzá lett rendelve a rendszer szinkronizálja.
 
-Felhasználók automatikus kiépítés engedélyezése és konfigurálása, mielőtt, meg kell határoznia, melyik felhasználók, illetve a csoportok az Azure ad-ben Zscaler egy hozzáférésre van szükségük. Ha úgy döntött, rendelhet a felhasználók és csoportok Zscaler egy utasításokat követve:
-
-* [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+Mielőtt konfigurálása és engedélyezése a felhasználók automatikus átadása, döntse el, mely felhasználók vagy csoportok Azure AD-ben Zscaler egy hozzáférésre van szükségük. Ezek a felhasználók vagy csoportok hozzárendelése egy Zscaler, kövesse a [egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazást](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
 
 ### <a name="important-tips-for-assigning-users-to-zscaler-one"></a>Felhasználók hozzárendelése egy Zscaler fontos tippek
 
-* Javasoljuk, hogy egyetlen Azure AD-felhasználó van rendelve egy Zscaler a felhasználók automatikus konfiguráció teszteléséhez. További felhasználók és csoportok később is rendelhető.
+* Azt javasoljuk, hogy hozzárendelje egyetlen Azure AD-felhasználót Zscaler egy, a felhasználók automatikus konfiguráció teszteléséhez. Hozzárendelhet további felhasználókat vagy csoportokat később.
 
-* Amikor egy felhasználó hozzárendelése egy Zscaler, jelöljön ki bármely érvényes alkalmazás-specifikus szerepkört (ha elérhető) a hozzárendelés párbeszédpanelen. A felhasználók a **alapértelmezett hozzáférési** szerepkör nem tartoznak kiépítése.
+* Zscaler egy felhasználó hozzárendelése, jelölje ki bármely érvényes alkalmazásspecifikus szerepkör érhető el, ha a hozzárendelés párbeszédpanel. A felhasználók a **alapértelmezett hozzáférési** szerepkör nem tartoznak kiépítése.
 
-## <a name="configuring-automatic-user-provisioning-to-zscaler-one"></a>Zscaler egy történő automatikus felhasználókiépítés konfigurálása
+## <a name="configure-automatic-user-provisioning-to-zscaler-one"></a>Felhasználók automatikus átadása egy Zscaler konfigurálása
 
-Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása, frissítése és tiltsa le a felhasználók és csoportok a Zscaler egy Azure AD-ben a felhasználó és/vagy a csoport-hozzárendelések alapján történő konfigurálásáról.
+Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás konfigurálásának lépéseit. Vele létrehozása, frissítése és tiltsa le a felhasználók vagy csoportok Zscaler egy Azure AD-ben a felhasználó vagy csoport-hozzárendelések alapján.
 
 > [!TIP]
-> Előfordulhat, hogy is engedélyezését választja SAML-alapú egyszeri bejelentkezés a Zscaler egy, a biztonsági utasítások megadott a [Zscaler egy egyszeri bejelentkezést az oktatóanyag](zscaler-One-tutorial.md). Egyszeri bejelentkezés konfigurálható függetlenül, hogy a felhasználók automatikus átadása, abban az esetben, ha e két szolgáltatás segítőosztályok egymással.
+> Emellett engedélyezheti az SAML-alapú egyszeri bejelentkezés a Zscaler egy. Kövesse az utasításokat a [Zscaler egy egyszeri bejelentkezést az oktatóanyag](zscaler-One-tutorial.md). Egyszeri bejelentkezés konfigurálható függetlenül, hogy a felhasználók automatikus átadása, azonban ez a két funkció kiegészíti egymást.
 
-### <a name="to-configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus átadása a Zscaler egy Azure AD-ben:
+### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Konfigurálja a felhasználók automatikus átadása a Zscaler egy Azure AD-ben
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és válassza ki **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Zscaler egy**.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **vállalati alkalmazások** > **minden alkalmazás** > **Zscaler egy**.
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
@@ -102,63 +99,65 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 4. Állítsa be a **Kiépítési mód** való **automatikus**.
 
-    ![Zscaler egy kiépítése](./media/zscaler-one-provisioning-tutorial/provisioning-credentials.png)
+    ![Zscaler egy kiépítési mód](./media/zscaler-one-provisioning-tutorial/provisioning-credentials.png)
 
-5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban adjon meg a **bérlői URL-cím** és **titkos jogkivonat** Zscaler egy fiókja 6. lépésben leírtak szerint.
+5. Alatt a **rendszergazdai hitelesítő adataival** területén adja meg a **bérlői URL-cím** és **titkos jogkivonat** négyzeteken beállításait a Zscaler egy fiókot a 6. lépésben leírtak szerint.
 
-6. Beszerzése a **bérlői URL-cím** és **titkos jogkivonat**, navigáljon a **felügyelet > hitelesítési beállítások** a Zscaler egy portál felhasználói felülete, és kattintson a  **SAML** alatt **hitelesítési típus**.
+6. A bérlői URL-CÍMÉT és a titkos jogkivonat beszerzéséhez lépjen a **felügyeleti** > **hitelesítési beállítások** a Zscaler egy portál felhasználói felületén. A **hitelesítési típus**válassza **SAML**.
 
-    ![Zscaler egy kiépítése](./media/zscaler-one-provisioning-tutorial/secret-token-1.png)
+    ![Zscaler egy hitelesítési beállítások](./media/zscaler-one-provisioning-tutorial/secret-token-1.png)
 
-    Kattintson a **SAML konfigurálása** megnyitásához **konfigurációs SAML** beállítások.
+    a. Válassza ki **SAML konfigurálása** megnyitásához a **SAML konfigurálása** beállítások.
 
-    ![Zscaler egy kiépítése](./media/zscaler-one-provisioning-tutorial/secret-token-2.png)
+    ![Zscaler egy SAML konfigurálása](./media/zscaler-one-provisioning-tutorial/secret-token-2.png)
 
-    Válassza ki **Enable SCIM-Based kiépítés** lekéréséhez **alap URL-cím** és **tulajdonosi jogkivonat**, majd mentse a beállításokat. Másolás a **alap URL-cím** való **bérlői URL-cím** és **tulajdonosi jogkivonat** való **titkos jogkivonat** az Azure Portalon.
+    b. Válassza ki **Enable SCIM-Based kiépítés** úgy szerezheti be a beállítások a **alap URL-cím** és **tulajdonosi jogkivonat**. Mentse a beállításokat. Másolás a **alap URL-cím** beállítást **bérlői URL-cím** az Azure Portalon. Másolás a **tulajdonosi jogkivonat** beállítást **titkos jogkivonat** az Azure Portalon.
 
-7. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD csatlakozhat Zscaler egy. Ha a kapcsolódás sikertelen, győződjön meg arról, a Zscaler egy fiók rendszergazdai engedélyekkel rendelkezik, és próbálkozzon újra.
+7. 5. lépés látható a mezők kitöltése után válassza ki a **kapcsolat tesztelése** győződjön meg arról, hogy az Azure AD is képes csatlakozni Zscaler egy. Ha a kapcsolat nem sikerül, ellenőrizze, hogy rendszergazdai engedélyekkel rendelkező a Zscaler egy fiókot, és próbálkozzon újra.
 
-    ![Zscaler egy kiépítése](./media/zscaler-one-provisioning-tutorial/test-connection.png)
+    ![Zscaler-kapcsolat egy tesztelése](./media/zscaler-one-provisioning-tutorial/test-connection.png)
 
-8. Az a **értesítő e-mailt** mezőbe írja be az e-mail-címét egy személyt vagy csoportot, akik üzembe helyezési hiba értesítéseket fogadni, és jelölje be a jelölőnégyzetet kell **e-mail-értesítés küldése, ha hiba történik**.
+8. Az a **értesítő e-mailt** mezőben adja meg a személy e-mail-címét vagy az üzembe helyezési hiba értesítést szeretne kapni a csoportban. Válassza ki a **e-mail-értesítés küldése, ha hiba történik** jelölőnégyzetet.
 
-    ![Zscaler egy kiépítése](./media/zscaler-one-provisioning-tutorial/notification.png)
+    ![Zscaler egy értesítő e-mailt](./media/zscaler-one-provisioning-tutorial/notification.png)
 
-9. Kattintson a **Save** (Mentés) gombra.
+9. Kattintson a **Mentés** gombra.
 
 10. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók Zscaler egy**.
 
-    ![Zscaler egy kiépítése](./media/zscaler-one-provisioning-tutorial/user-mappings.png)
+    ![Zscaler egy felhasználói szinkronizálása](./media/zscaler-one-provisioning-tutorial/user-mappings.png)
 
-11. Tekintse át a Zscaler egy, az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókok a Zscaler egy frissítési műveletek. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
+11. Tekintse át a Zscaler egy, az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképezések** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókok a Zscaler egy frissítési műveletek. Szeretné menteni a módosításokat, válassza ki a **mentése**.
 
-    ![Zscaler egy kiépítése](./media/zscaler-one-provisioning-tutorial/user-attribute-mappings.png)
+    ![Zscaler egy egyező felhasználói attribútumok](./media/zscaler-one-provisioning-tutorial/user-attribute-mappings.png)
 
 12. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-csoportokat, Zscaler egy**.
 
-    ![Zscaler egy kiépítése](./media/zscaler-one-provisioning-tutorial/group-mappings.png)
+    ![Zscaler egy csoport szinkronizálása](./media/zscaler-one-provisioning-tutorial/group-mappings.png)
 
-13. Tekintse át a Zscaler egy, az Azure AD-ből szinkronizált oszlopainál a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a csoportok a Zscaler egy frissítési műveleteket. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
+13. Tekintse át a Zscaler egy, az Azure AD-ből szinkronizált oszlopainál a **attribútumleképezések** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a csoportok a Zscaler egy frissítési műveleteket. Szeretné menteni a módosításokat, válassza ki a **mentése**.
 
-    ![Zscaler egy kiépítése](./media/zscaler-one-provisioning-tutorial/group-attribute-mappings.png)
+    ![Zscaler egy egyező csoportattribútumok](./media/zscaler-one-provisioning-tutorial/group-attribute-mappings.png)
 
-14. Hatókörszűrő konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](./../active-directory-saas-scoping-filters.md).
+14. Hatókörszűrő konfigurálásához kövesse az utasításokat a [hatókörkezelési szűrő oktatóanyag](./../active-directory-saas-scoping-filters.md).
 
-15. Az Azure AD létesítési szolgáltatás a Zscaler egy engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakaszban.
+15. Ahhoz, hogy az Azure AD létesítési szolgáltatás a Zscaler egy, az a **beállítások** területén módosíthatja **üzembe helyezési állapotra** való **a**.
 
-    ![Zscaler egy kiépítése](./media/zscaler-one-provisioning-tutorial/provisioning-status.png)
+    ![Zscaler egy kiépítési állapot](./media/zscaler-one-provisioning-tutorial/provisioning-status.png)
 
-16. A felhasználók és/vagy a csoportok, adja meg definiálása Zscaler egy kiépítéséhez válassza ki a kívánt értékeket a **hatókör** a a **beállítások** szakaszban.
+16. Adja meg a felhasználókat vagy csoportokat, amelyekhez szeretne üzembe helyezni egy Zscaler. Az a **beállítások** területen válassza ki a kívánt értékeket **hatókör**.
 
-    ![Zscaler egy kiépítése](./media/zscaler-one-provisioning-tutorial/scoping.png)
+    ![Zscaler egy hatókör](./media/zscaler-one-provisioning-tutorial/scoping.png)
 
-17. Ha készen áll rendelkezésre, kattintson a **mentése**.
+17. Ha készen áll rendelkezésre, válassza ki a **mentése**.
 
-    ![Zscaler egy kiépítése](./media/zscaler-one-provisioning-tutorial/save-provisioning.png)
+    ![Zscaler egy mentése](./media/zscaler-one-provisioning-tutorial/save-provisioning.png)
 
-Ez a művelet elindítja a kezdeti szinkronizálás, az összes olyan felhasználó és/vagy meghatározott csoportoknak **hatókör** a a **beállítások** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amennyiben az Azure AD létesítési szolgáltatás fut-e több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységgel kapcsolatos jelentés, amely az Azure AD létesítési szolgáltatás az egyik Zscaler által végrehajtott összes műveletet ismerteti.
+Ez a művelet elindítja a kezdeti szinkronizálás, az összes olyan felhasználó vagy csoport meghatározott **hatókör** a a **beállítások** szakaszban. A kezdeti szinkronizálás végrehajtásához, mint az újabb szinkronizálás hosszabb időt vesz igénybe. Mindaddig, amíg az Azure AD létesítési szolgáltatás fut bekövetkezésük körülbelül 40 percenként. 
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../active-directory-saas-provisioning-reporting.md).
+Használhatja a **szinkronizálás részleteivel** előrehaladásának figyeléséhez, és kövesse a hivatkozásokat, a kiépítési tevékenységek jelentésének szakaszt. A jelentés az Azure AD létesítési szolgáltatás az egyik Zscaler által végrehajtott összes műveletet ismerteti.
+
+Olvassa el az Azure AD létesítési naplók információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../active-directory-saas-provisioning-reporting.md).
 
 ## <a name="additional-resources"></a>További források
 

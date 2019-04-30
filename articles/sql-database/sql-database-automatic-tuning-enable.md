@@ -13,11 +13,11 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: f94d731fd7b9a9fa85ae42d22949c7ca4024aabe
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791524"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61416509"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Lekérdezések figyelése és a számítási feladatok teljesítményének javítása automatikus hangolás engedélyezése
 

@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.openlocfilehash: 52fe8c05101f9647549acec276f0bdb9fa52d1c7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256804"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60537903"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>A HDInsight csatlakoztatása a helyszíni hálózathoz
 
@@ -78,7 +78,7 @@ Ezek a lépések használják a [az Azure portal](https://portal.azure.com) egy 
     |Virtuális gép neve | Adjon meg egy rövid nevet, amely azonosítja a virtuális gépet. Ez a példa **DNSProxy**.|
     |Régió | Válasszon ugyanabban a régióban, a korábban létrehozott virtuális hálózatot.  Nem minden Virtuálisgép-méret érhető el minden régióban.  |
     |Rendelkezésre állási beállításai |  Válassza ki a kívánt szintű rendelkezésre állást.  Az Azure kínál lehetőségek rendelkezésre állását és rugalmasságát, az alkalmazások kezeléséhez.  A Megoldástervezés adatközpont szolgáltatáskimaradásokat és karbantartási események az alkalmazások és adatok védelme a replikált virtuális gépek rendelkezésre állási zónák vagy rendelkezésre állási csoportok használatával. Ez a példa **szükséges infrastruktúra redundancia**. |
-    |Kép | Maradjon a **Ubuntu Server 18.04 LTS**. |
+    |Image | Maradjon a **Ubuntu Server 18.04 LTS**. |
     |Hitelesítés típusa | __Jelszó__ vagy __nyilvános SSH-kulcs__: Az SSH-fiókhoz tartozó hitelesítési módszer. Azt javasoljuk, nyilvános kulcsok, mivel ezek biztonságosabb. Ez a példa **jelszó**.  További információkért lásd: a [létrehozása és használata Linux rendszerű virtuális gépek SSH-kulcsok](../virtual-machines/linux/mac-create-ssh-keys.md) dokumentumot.|
     |Felhasználónév |Adja meg a virtuális gép rendszergazdai felhasználóneve.  Ez a példa **sshuser**.|
     |Jelszó vagy SSH nyilvános kulcs | A rendelkezésre álló mező határozza meg a választott **hitelesítési típus**.  Adja meg a megfelelő értékre.|

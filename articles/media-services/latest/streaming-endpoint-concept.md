@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: 4a29da2b070133f87ca5fdab0be607368c83790f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 8b6deadca610916a10f719d715fe6a17e29148bb
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999450"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125423"
 ---
 # <a name="streaming-endpoints"></a>Streamvégpontok
 
@@ -39,7 +39,7 @@ Kétféle **streamvégponttípus** létezik: **Standard** és **Prémium**. A sk
 
 A táblázat a típusokat írja le:  
 
-|Typo|Skálázási egységek|Leírás|
+|Típus|Skálázási egységek|Leírás|
 |--------|--------|--------|  
 |**Standard streamvégpont** (ajánlott)|0|Az alapértelmezett streamvégpont egy **Standard** írja be, de a prémium szintű típusa módosítható.<br/> Standard típus gyakorlatilag az összes streamelési forgatókönyvekhez és bármilyen méretű közönségre a javasolt megoldás. A **Standard** típus automatikusan skálázza a kimenő sávszélességet. Az átviteli sebesség az ilyen típusú Streamvégpont legfeljebb 600 MB/s. A CDN gyorsítótárazza videó töredék ne használja a folyamatos átviteli végponton sávszélességet.<br/>A rendkívül nagy követelményeket támasztó ügyfelek számára a Media Services **Prémium** streamvégpontokat biztosít, amelyekkel a kapacitás még a legnagyobb internetes közönségekre is felskálázható. Ha várhatóan széles és egyidejű megtekintők, lépjen kapcsolatba velünk, amsstreaming\@útmutatást, hogy át kell helyeznie a Microsoft.com webhelyen a **prémium** típusa. |
 |**Prémium streamvégpont**|>0|A **prémium** szintű streamvégpontok a speciális feladatokhoz ideálisak, mert dedikált és méretezhető sávszélesség-kapacitást nyújtanak. Helyez át egy **prémium** típusának a módosításával `scaleUnits`. `scaleUnits` Adja meg, amely vásárolható meg, 200 MB/s-os léptékben dedikált kilépési kapacitáson. A **Prémium** típus használatakor mindegyik engedélyezett egység további sávszélesség-kapacitást nyújt az alkalmazásnak. |
@@ -149,6 +149,10 @@ Az összes az Azure adatközpontjaiban kivéve Kínát és a Szövetségi kormá
 ### <a name="determine-if-dns-change-has-been-made"></a>Határozza meg, ha a DNS-módosítás történt.
 
 Megadhatja, hogy ha a DNS-módosítás történt-e egy folyamatos átviteli végponton, (a folyamatban átirányítja a forgalmat az Azure CDN) használatával https://www.digwebinterface.com. Ha az eredmények azureedge.net tartománynevek az eredmények között, a forgalom van most folyamatban mutatott a CDN-t.
+
+## <a name="provide-feedback"></a>Visszajelzés küldése
+
+Tekintse meg a [Azure Media Services-Közösség](media-services-community.md) kérdések, küldje el visszajelzését, és tudnivalók a Media Services-frissítések különböző módon olvashatja.
 
 ## <a name="next-steps"></a>További lépések
 

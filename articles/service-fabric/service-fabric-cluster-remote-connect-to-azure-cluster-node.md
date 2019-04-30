@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/23/2018
 ms.author: aljo
 ms.openlocfilehash: 4cc2d6355a0147c33048f1c2c27a3648b9223db4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663774"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110923"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Távoli kapcsolódás a virtuálisgép-méretezési készlet példányt vagy egy fürt csomópontja
 Service fabric-fürt az Azure-ban, minden Ön által meghatározott fürtcsomóponttípus futó [állít be egy külön virtuálisgép-méretezési](service-fabric-cluster-nodetypes.md).  Akkor is távoli csatlakozás adott méretezési csoport példányaihoz (fürtcsomópontok).  Egypéldányos virtuális gépek, ellentétben a méretezési csoport példányaihoz a saját virtuális IP-címek nem rendelkezik. Ez kihívást jelenthet, ha a keresett egy IP-címet és portot, amelyen a távoli példányhoz való csatlakozáshoz egy adott használhatja.

@@ -13,11 +13,11 @@ ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: mbullwin
 ms.openlocfilehash: bf19d4f5ce60411413c21fce12f9fe9d2f391bf1
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58094939"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60783957"
 ---
 # <a id="troubleshooting"></a> Application Insights Snapshot Debugger engedélyezése és pillanatképek megtekintése kapcsolatos problémák elhárítása
 Ha engedélyezve van az Application Insights Snapshot Debugger az alkalmazáshoz, de nem jelennek meg a kivételek pillanatképeinek, ezek az utasítások segítségével hibaelhárítása. Számos különféle oka lehet, hogy miért pillanatképeket a rendszer nem hozza létre lehet. Egyes gyakori oka lehet az pillanatkép állapot-ellenőrzés futtatása.

@@ -3,21 +3,22 @@ title: Adatok másolása az Azure Data Factory használatával az SAP ECC |} A M
 description: Megtudhatja, hogyan másolhat adatokat a SAP ECC támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/26/2018
-ms.author: jingwang
+origin.date: 04/26/2018
+ms.date: 04/22/2019
+ms.author: v-jay
 ms.openlocfilehash: d86264b632daa09a899fae28e73e117b16322617
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121961"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128117"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával az SAP ECC
 
@@ -56,7 +57,7 @@ SAP ECC társított szolgáltatás a következő tulajdonságok támogatottak:
 | type | A type tulajdonságot kell beállítani: **SapEcc** | Igen |
 | url | Az SAP ECC OData-szolgáltatás URL-címe | Igen |
 | felhasználónév | A SAP ECC való kapcsolódáshoz használt felhasználónév. | Nem |
-| jelszó | A titkosítatlan szöveges jelszó, a SAP ECC csatlakozásra használt. | Nem |
+| password | A titkosítatlan szöveges jelszó, a SAP ECC csatlakozásra használt. | Nem |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 **Példa**
@@ -88,7 +89,7 @@ Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját
 
 Adatok másolása az SAP ECC, állítsa be a type tulajdonság, az adatkészlet **SapEccResource**. A következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | elérési út | Az SAP ECC OData entitás elérési útja. | Igen |
 

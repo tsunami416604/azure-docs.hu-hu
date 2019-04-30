@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/25/2018
 ms.author: jasonh
 ms.openlocfilehash: 4b4b1f3a52dcbaa01f9fac73bce09a75495408df
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203848"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61476569"
 ---
 > [!IMPORTANT]
 > Támogatás az Azure Service Manager (ASM) Azure PowerShell-lel, az Azure CLI és a HDInsight .NET SDK-t használó HDInsight-erőforrások kezelése **elavult**, és 2017. január 1-től megszűnt. A jelen dokumentumban leírt lépések használja az új Azure PowerShell-parancsmagok, Azure CLI-parancsokat és .NET SDK-t, amely az Azure Resource Managerrel működnek.

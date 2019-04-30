@@ -1,6 +1,6 @@
 ---
-title: A StorSimple virtuális tömb korlátok |} Microsoft Docs
-description: Ismerteti a rendszer korlátozásai és a Microsoft Azure StorSimple virtuális tömb összetevők és a kapcsolatok számára az ajánlott méreteket.
+title: A StorSimple virtuális tömb – korlátozások |} A Microsoft Docs
+description: Ismerteti a rendszer korlátozások és a Microsoft Azure StorSimple Virtual Array összetevők és a kapcsolatok számára az ajánlott méreteket.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,18 +15,18 @@ ms.workload: TBD
 ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43f8d338cf07999d7791cbd5d3e8ddcc0d6b2b59
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 43e8134ede0735c40b18be739f58b7b69e88fce1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875052"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127862"
 ---
-# <a name="what-are-storsimple-virtual-array-limits"></a>A StorSimple virtuális tömb korlátai
+# <a name="what-are-storsimple-virtual-array-limits"></a>Mik a StorSimple Virtual Array korlátai?
 
 ## <a name="overview"></a>Áttekintés
-Ezek a korlátozások megfontolnia tervezése, üzembe helyezéséhez és üzemeltetéséhez a a Microsoft Azure StorSimple virtuális tömbjét. A következő táblázat ismerteti ezeket a virtuális eszköz korlátok.
+Ezek a korlátok megfontolnia tervezése, telepítése és üzemeltetése a Microsoft Azure StorSimple Virtual Array. A következő táblázat ismerteti ezeket a korlátokat, a virtuális eszközhöz.
 
-## <a name="storsimple-virtual-array-limits"></a>A StorSimple virtuális tömb korlátok
+## <a name="storsimple-virtual-array-limits"></a>A StorSimple virtuális tömb – korlátozások
 [!INCLUDE [storsimple-virtual-array-limits](../../includes/storsimple-virtual-array-limits.md)]
 

@@ -9,11 +9,11 @@ ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
 ms.openlocfilehash: b8451a1195ab64d3cd7afda074d786a3209ce785
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793968"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477293"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>A Microsoft Azure Storage teljesítmény- és méretezhetőségi ellenőrzőlistája
 ## <a name="overview"></a>Áttekintés
@@ -29,7 +29,7 @@ Ez a cikk a bevált eljárásokat az alábbi csoportokba rendezik. Bevált gyako
 * Táblák
 * Üzenetsorok  
 
-| Kész | Terület | Kategória | Kérdés |
+| Kész | Terület | Category | Kérdés |
 | --- | --- | --- | --- |
 | &nbsp; | Az összes szolgáltatás |Skálázási célértékei |[Az alkalmazás célja elkerülése érdekében hamarosan eléri a skálázási célértékei?](#subheading1) |
 | &nbsp; | Az összes szolgáltatás |Skálázási célértékei |[Az elnevezési konvenciókba lehetővé teszi, hogy jobban terheléselosztás?](#subheading47) |

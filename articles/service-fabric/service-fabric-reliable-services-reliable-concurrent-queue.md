@@ -15,11 +15,11 @@ ms.workload: required
 ms.date: 5/1/2017
 ms.author: aljo
 ms.openlocfilehash: dbdfa4686c047fa7cf5d74cd9aca768447f9db93
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663645"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60774012"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Az Azure Service Fabric ReliableConcurrentQueue bemutatása
 Megbízható egyidejű üzenetsor egy aszinkron, a tranzakciós és a replikált üzenetsor mely funkciók nagy feldolgozási sorba helyezni a, és eltávolítása a sorból műveletek. Célja a nagy átviteli sebességű és kis késése révén a szigorú FIFO rendezése által biztosított lazítani [megbízható várólista](https://msdn.microsoft.com/library/azure/dn971527.aspx) és a egy legjobb rendezése biztosítja.

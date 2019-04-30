@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/3/2018
 ms.author: victorh
 ms.openlocfilehash: b08eae072c2fbe420401424baf97a25b4cbbe87b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086326"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60790742"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Elosztott terhelésű Azure-alapú webes alkalmazásokat üzemeltethet a zóna legfelső pontján
 
@@ -43,7 +43,7 @@ Hozzon létre egy erőforráscsoportot, amely ebben a cikkben használt összes 
 Hozzon létre két Web App Service-csomagok az erőforráscsoportban, az alábbi táblázat segítségével a konfigurációs adatokat. App Service-csomag létrehozásával kapcsolatos további információkért lásd: [kezelése az Azure App Service-csomag](../app-service/app-service-plan-manage.md).
 
 
-|Name (Név)  |Operációs rendszer  |Hely  |Tarifacsomag  |
+|Name (Név)  |Operációs rendszer  |Location egység  |Tarifacsomag  |
 |---------|---------|---------|---------|
 |ASP-01     |Windows|USA keleti régiója|A D1-közös fejlesztés és tesztelés|
 |ASP-02     |Windows|USA középső régiója|A D1-közös fejlesztés és tesztelés|
@@ -87,7 +87,7 @@ Most már a végpontokat a két webalkalmazást hozhat létre.
 3. Kattintson a **Hozzáadás** parancsra.
 4. Használja az alábbi táblázat a végpontok konfigurálása:
 
-   |Typo  |Name (Név)  |Cél  |Hely  |Egyéni fejléc beállításai|
+   |Típus  |Name (Név)  |Cél  |Location egység  |Egyéni fejléc beállításai|
    |---------|---------|---------|---------|---------|
    |Külső végpont     |End-01|Az alkalmazás-01-es rögzített IP-cím|USA keleti régiója|gazdagép:\<az URL-cím, az alkalmazás-01-es rögzített\><br>Example: **host:app-01.azurewebsites.net**|
    |Külső végpont     |End-02|Az alkalmazás-02 rögzített IP-cím|USA középső régiója|gazdagép:\<az URL-cím, az alkalmazás-02 rögzített\><br>Example: **host:app-02.azurewebsites.net**
@@ -104,7 +104,7 @@ Amikor készen áll a DNS-zónát, hozzáadhat egy aliast rekord a zóna felső 
 2. Kattintson a **Rekordhalmaz** gombra.
 3. Adja hozzá a rekord a következő táblázat használatával:
 
-   |Name (Név)  |Typo  |Alias rekordhalmaz  |Alias típusa  |Azure-erőforrás|
+   |Name (Név)  |Típus  |Alias rekordhalmaz  |Alias típusa  |Azure-erőforrás|
    |---------|---------|---------|---------|-----|
    |@     |A|Igen|Azure-erőforrás|A TRAFFIC Manager - profilját|
 

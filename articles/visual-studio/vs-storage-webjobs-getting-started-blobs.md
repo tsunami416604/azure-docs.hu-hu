@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: 5a7c16e6ac565d1660fee02cb7df178344b195e7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254400"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122923"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Ismerkedés az Azure Blob storage és a Visual Studio csatlakoztatott szolgáltatásainak (webjobs-feladat projektek)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -28,7 +28,7 @@ Ez a cikk a C#-mintakódot biztosít, amelyek bemutatják, hogyan indítható el
 ## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>Hogyan indítható el egy függvényt, ha egy blob létrehozásakor vagy frissítésekor
 Ez a szakasz bemutatja, hogyan használhatja a **BlobTrigger** attribútum.
 
- **Megjegyzés:** a WebJobs SDK megvizsgálja a fájlokat az új vagy módosított blobok megtekintése. Ez a folyamat rendszer természetüknél fogva lassabbak; függvény előfordulhat, hogy nem első indul el, amíg több percet vagy hosszabb a blob létrehozása után.  Az alkalmazása azonnal blobok feldolgozásához szükséges, ha az ajánlott módszer az üzenetsori üzenet létrehozására, amikor a blob létrehozásához, és használja a **QueueTrigger** attribútum helyett a **BlobTrigger** a függvény, amely feldolgozza a blob attribútum.
+ **Megjegyzés:** A WebJobs SDK megvizsgálja a fájlokat az új vagy módosított blobok megtekintése. Ez a folyamat rendszer természetüknél fogva lassabbak; függvény előfordulhat, hogy nem első indul el, amíg több percet vagy hosszabb a blob létrehozása után.  Az alkalmazása azonnal blobok feldolgozásához szükséges, ha az ajánlott módszer az üzenetsori üzenet létrehozására, amikor a blob létrehozásához, és használja a **QueueTrigger** attribútum helyett a **BlobTrigger** a függvény, amely feldolgozza a blob attribútum.
 
 ### <a name="single-placeholder-for-blob-name-with-extension"></a>Egyetlen helyőrző kiterjesztésű blob neve
 Az alábbi kódmintában megjelenő szöveg blobok másolja át a *bemeneti* tárolót, hogy a *kimeneti* tároló:
@@ -193,7 +193,7 @@ A WebJobs SDK gondoskodik róla, hogy nincs **BlobTrigger** függvény egynél t
 
 BLOB visszaigazolások nevű tárolóban tárolt *azure-webjobs-gazdagépek* AzureWebJobsStorage kapcsolati sztring által meghatározott Azure storage-fiókban. Egy blob beérkezési rendelkezik a következő információkat:
 
-* A függvényt, amely a BLOB byla volána ("*{webjobs-feladat neve}*. A műveletek. *{Függvény neve}*", például:"WebJob1.Functions.CopyBlob")
+* A függvényt, amely a BLOB byla volána ("*{webjobs-feladat neve}*. A műveletek. *{Függvény neve}*", például: "WebJob1.Functions.CopyBlob")
 * A tároló neve
 * A blob típusa ("BlockBlob" vagy "PageBlob")
 * A blob neve

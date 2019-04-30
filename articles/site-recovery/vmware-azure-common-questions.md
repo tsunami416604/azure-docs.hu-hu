@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 04/18/2019
+ms.date: 04/23/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: d0e39f9e24b3c486eccd71eb1c19823cfd33391a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: dffbb2c52b4e43eefe6b4f377bd7af529bae8cc5
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004771"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125559"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -245,11 +245,15 @@ Igen, de vegye figyelembe, hogy a fizikai gép csak akkor nem vissza a VMware vi
 
 A Recovery Services-tárolóban kattintson **konfigurációs kiszolgálók** a **Site Recovery-infrastruktúra** > **kezelés**. Ezt a **kiszolgálók**válassza **regisztrációs kulcs letöltése** töltheti le a tároló hitelesítőadat-fájlja.
 
+## <a name="process-server"></a>Folyamatkiszolgáló
 
+### <a name="unable-to-select-process-server-during-enable-replication"></a>Válassza ki a folyamatkiszolgálót a replikáció engedélyezése során nem sikerült
 
+9.24 verzióról fejlesztések lettek végrehajtva adja meg [a termék-útmutatókat](vmware-azure-manage-process-server.md#process-server-selection-guidance) a horizontális felskálázási folyamatkiszolgáló beállításának. Ez a folyamat kiszolgáló szabályozás elkerülése és a folyamatkiszolgáló nem megfelelő állapotú használatának elkerülése érdekében.
 
+### <a name="what-should-i-do-to-obtain-accurate-health-status-of-process-server"></a>Mit tegyen a folyamatkiszolgáló pontos állapotának megszerzése?
 
-
+Frissítse a Site Recovery-összetevőit a [legújabb verziókat](service-updates-how-to.md#links-to-currently-supported-update-rollups) (legalább 9.24 vagy újabb).
 
 ## <a name="failover-and-failback"></a>Feladatátvétel és feladat-visszavétel
 ### <a name="can-i-use-the-process-server-at-on-premises-for-failback"></a>Használható a folyamatkiszolgálót a helyszínen, a feladat-visszavételhez?

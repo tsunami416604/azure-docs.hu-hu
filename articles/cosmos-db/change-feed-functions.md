@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 35639dac0eacd5eae04b7848bdbbc1bc30fbf214
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: 18780deba1910b3ea77f7313bfb6d204dacabd82
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680774"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62112021"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Az Azure Cosmos DB és az Azure Functions kiszolgáló nélküli, eseményalapú architektúrákkal
 
-Az Azure Functions biztosítja a legegyszerűbb módja a csatlakozás a [módosításcsatornáját](). Kis reaktív Azure Functions, amely automatikusan aktiválódik az Azure Cosmos-tároló módosítási hírcsatorna szereplő minden egyes új esemény is létrehozhat.
+Az Azure Functions biztosítja a legegyszerűbb módja a csatlakozás a [módosításcsatornáját](change-feed.md). Kis reaktív Azure Functions, amely automatikusan aktiválódik az Azure Cosmos-tároló módosítási hírcsatorna szereplő minden egyes új esemény is létrehozhat.
 
 ![Kiszolgáló nélküli eseményvezérelt funkciók használata az Azure Cosmos DB-eseményindító](./media/change-feed-functions/functions.png)
 

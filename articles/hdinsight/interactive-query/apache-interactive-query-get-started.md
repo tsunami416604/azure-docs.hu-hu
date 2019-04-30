@@ -1,7 +1,6 @@
 ---
 title: Az Azure HDInsight interaktív lekérdezés használata
 description: Útmutató a HDInsight interaktív lekérdezés (Hive LLAP) használata.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: ae0264c918bb550affe8e694cdb3b9891edea531
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: MT
+ms.openlocfilehash: c7cee3dfd3b091d75f4dadcaa62513fddf0c0e68
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875446"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126596"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>HDInsight interaktív lekérdezés használata
 Interaktív lekérdezés (más néven az Apache Hive LLAP, vagy [alacsony késés Analytical Processing](https://cwiki.apache.org/confluence/display/Hive/LLAP)) van egy Azure HDInsight [fürt típusa](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Interaktív lekérdezés támogatja a memórián belüli gyorsítótárazáshoz, ami lehetővé teszi az Apache Hive-lekérdezések gyorsabb és interaktívabb sokkal.

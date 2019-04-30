@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/12/2019
 ms.openlocfilehash: 6764d8d812789c9f54fa59e10b2a3e416e583a9c
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565852"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129399"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Az Apache Sqoop használata a HDInsight Hadoop-keretrendszerrel
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -45,14 +45,14 @@ HDInsight-fürt mintaadatokat tartalmaz. A következő két mintát használja:
   
   | Mező | Adattípus |
   | --- | --- |
-  | ClientID |sztring |
-  | querytime |sztring |
-  | piaci |sztring |
-  | deviceplatform |sztring |
-  | devicemake |sztring |
-  | devicemodel |sztring |
-  | state |sztring |
-  | Ország |sztring |
+  | ClientID |string |
+  | querytime |string |
+  | piaci |string |
+  | deviceplatform |string |
+  | devicemake |string |
+  | devicemodel |string |
+  | state |string |
+  | Ország |string |
   | querydwelltime |double |
   | munkamenet-azonosító |bigint |
   | sessionpagevieworder |bigint |
@@ -80,7 +80,7 @@ A fürt, az SQL database és más objektumok jönnek létre az Azure Portalon eg
     |---|---|
     |Előfizetés |A legördülő listából válassza ki az Azure-előfizetésében.|
     |Erőforráscsoport |A legördülő listában jelölje ki az erőforráscsoportot, vagy hozzon létre egy újat|
-    |Földrajzi egység |A legördülő listából válassza ki a régiót.|
+    |Location egység |A legördülő listából válassza ki a régiót.|
     |Fürt neve |Adja meg a Hadoop-fürt nevét. Csak kisbetű használja.|
     |Fürt bejelentkezési felhasználóneve |Tartsa az előre megadott értéket `admin`.|
     |Fürt bejelentkezési jelszava |Adja meg a jelszót.|
@@ -91,7 +91,7 @@ A fürt, az SQL database és más objektumok jönnek létre az Azure Portalon eg
     |_artifacts helye | Használja az alapértelmezett értéket, hacsak nem szeretné használni a saját bacpac-fájlt egy másik helyen található.|
     |_artifacts hely Sas-jogkivonat |Hagyja üresen.|
     |Bacpac-fájl neve |Használja az alapértelmezett értéket, hacsak nem szeretné használni a saját bacpac-fájlba.|
-    |Földrajzi egység |Használja az alapértelmezett értéket.|
+    |Location egység |Használja az alapértelmezett értéket.|
 
     Az Azure SQL-kiszolgáló neve lesz `<ClusterName>dbserver`. Az adatbázis neve lesz `<ClusterName>db`. Az alapértelmezett tárfiók neve lesz `e6qhezrh2pdqu`.
 

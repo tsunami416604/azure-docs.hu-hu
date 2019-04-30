@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: magoedte
 ms.openlocfilehash: 27db27d79a05f24461e63242c0395cfd81315432
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276411"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60782769"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Naplóadatok és az Azure monitorban munkaterületek kezelése
 Az Azure Monitor-tárolók adatok jelentkezzen be a Log Analytics-munkaterület, amely lényegében, ha egy tároló, amely adatot és konfigurációs információt tartalmazza. Az adatok hozzáférésének kezelése, munkaterületekhez kapcsolódó különféle adminisztratív feladatokat végezhet. Ön vagy a szervezet más tagjai több munkaterületet is használhatnak az informatikai infrastruktúra egészéből vagy egyes részeiből begyűjtött különböző adatkészletek kezeléséhez.

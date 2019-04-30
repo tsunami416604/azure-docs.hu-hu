@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
 ms.openlocfilehash: c02a9393de72b827b7e38b52d06589f042d581b0
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024773"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60787002"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Az Azure Data Factory – elnevezési szabályok
 Az alábbi táblázat a Data Factory-összetevők elnevezési szabályait biztosít.

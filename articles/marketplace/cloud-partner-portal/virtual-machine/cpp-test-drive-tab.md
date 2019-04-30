@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 97fb21dc390bd365357f6395c72aa282423c83c9
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639793"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61344610"
 ---
 # <a name="virtual-machine-test-drive-tab"></a>Virtuális gép Test Drive lap
 
@@ -48,9 +48,9 @@ A következő táblázat ismerteti a cél és ezek a mezők tartalmát.
 |**Teszt meghajtó ARM-sablon**| Töltse fel a Test Drive társított Azure Resource Manager-sablon. További információkért lásd: [alkalmazásán át a virtuális gép központi telepítési sablont a Test Drive](https://github.com/Azure/AzureTestDrive/wiki/Transforming-Virtual-Machine-Deployment-Template-for-Test-Drive). |
 | **Hozzáférési információk**    | Az Azure Resource Manager-hozzáférés és próba bejelentkezési adatait, egyszerű szöveges vagy egyszerű HTML-ként. |
 | *Tesztelés üzembe helyezési előfizetés részletei* |  |
-| **Azure-előfizetés azonosítója** | Lekérheti, bejelentkezik a [Microsoft Azure-portálon](https://ms.portal.azure.com) kattintva **előfizetések** a bal oldali menüsáv a. (Példa: "a83645ac-1234-5ab6-6789-1h234g764ghty")    Ez az azonosító egy GUID Azonosítót a következő formában kell `a83645ac-1234-5ab6-6789-1h234g764ghty`.|
+| **Azure Subscription Id** | Lekérheti, bejelentkezik a [Microsoft Azure-portálon](https://ms.portal.azure.com) kattintva **előfizetések** a bal oldali menüsáv a. (Példa: "a83645ac-1234-5ab6-6789-1h234g764ghty")    Ez az azonosító egy GUID Azonosítót a következő formában kell `a83645ac-1234-5ab6-6789-1h234g764ghty`.|
 | **Az Azure AD-bérlő azonosítója**    | Az Azure Active Directory-bérlő azonosítója.  Szerezhető be ehhez jelentkezzen be a [Microsoft Azure-portálon](https://ms.portal.azure.com) kattintva **Azure Active Directory** meg a bal oldali menüsáv, majd kattintson **tulajdonságok** a középső menüsávon a Ezután másolja a **címtár-azonosító** az űrlap.  Ez az azonosító is lehet egy GUID Azonosítót.  Ha üres, majd létre kell hoznia egy bérlői azonosító a szervezet számára. |
-| **Azure AD-alkalmazás azonosítója**       | A regisztrált Azure VM-megoldás azonosítója  |
+| **Azure AD App Id**       | A regisztrált Azure VM-megoldás azonosítója  |
 | **Az Azure AD alkalmazás-kulcs**      | Az ajánlott megoldás a hitelesítési kulcs |
 |  |  |
 

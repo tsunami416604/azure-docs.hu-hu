@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 4cc9b0051eaa12eee07f067352126ad159107a83
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007474"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61442927"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Az Azure Time Series Insights integrálása a távoli monitorozással
 
@@ -57,7 +57,7 @@ Ezután helyezze üzembe a Time Series Insights további erőforrásként a táv
 
 1. A Time Series Insights-környezet létrehozásához használja az alábbi táblázatban az értékeket:
 
-    | Beállítás | Value |
+    | Beállítás | Érték |
     | ------- | ----- |
     | Környezet neve | A nevet használja az alábbi képernyőképen **contorosrmtsi**. Válassza ki a saját egyedi nevet, ha e lépés elvégzése után. |
     | Előfizetés | Válassza ki saját Azure-előfizetését a legördülő menüből. |
@@ -86,7 +86,7 @@ Hozzon létre egy új eseményforrás csatlakozni az IoT hubhoz. Győződjön me
 
 1. Az IoT hub új esemény forrásként konfigurálásához használja az alábbi táblázatban az értékeket:
 
-    | Beállítás | Value |
+    | Beállítás | Érték |
     | ------- | ----- |
     | Eseményforrás neve | A nevet használja az alábbi képernyőképen **contosorm-iot-hub**. Használja a saját egyedi névre, ha e lépés elvégzése után. |
     | Forrás | **IoT Hub** |

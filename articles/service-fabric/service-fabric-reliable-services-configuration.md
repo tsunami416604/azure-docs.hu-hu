@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 97cf4fafb53156eec654bcc67cd8dccf3d973c32
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 8ddb5d0566c57dd1d507d543ac53c0975a83dd43
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660697"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60723554"
 ---
 # <a name="configure-stateful-reliable-services"></a>A stateful reliable services konfigurálása
 Nincsenek konfigurációs beállításait a reliable services két csoportját. Egy, a fürt összes reliable Services globális, viszont a többi csoport csak egy adott megbízható szolgáltatás.

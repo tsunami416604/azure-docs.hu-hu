@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.openlocfilehash: 31a902302ba806889854330c6517d9f5745f1c0c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888339"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60551726"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Az Azure Monitor nézetekben szűrők
 A **szűrő** a egy [megtekintése az Azure Monitor](view-designer.md) lehetővé teszi a felhasználóknak az adatok nézetben található szűrés egy adott tulajdonságának értéke maga a nézet módosítása nélkül.  Például az adatok csak egy adott számítógép a nézet szűréséhez a nézet felhasználókat vagy számítógépeket sikerült engedélyezése.  Az, hogy a felhasználók több tulajdonság szerinti szűréshez használandó egyetlen nézetben több szűrőt is létrehozhat.  Ez a cikk bemutatja, hogyan használhatja egy szűrőt, és adjon hozzá egyet, egyéni nézet.

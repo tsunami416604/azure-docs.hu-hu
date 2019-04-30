@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.openlocfilehash: a241f66adecbab1d0b1462f379d3765d6c1de252
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995390"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61466799"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Fájlok feltöltése Media Services-fiók REST használatával
 
@@ -63,4 +63,4 @@ Az Azure Storage API-k és SDK-kkal (például a [Storage REST API-val](../../st
 
 ## <a name="next-steps"></a>További lépések
 
-[Oktatóanyag: URL-cím alapján egy távoli fájl kódolása és streamelése a videó – REST](stream-files-tutorial-with-rest.md)
+[Oktatóanyag: Távoli fájl kódolása URL-cím alapján és videó streamelése – REST](stream-files-tutorial-with-rest.md)

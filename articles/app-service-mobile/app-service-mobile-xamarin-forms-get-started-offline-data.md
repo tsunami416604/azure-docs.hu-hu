@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/04/2016
 ms.author: crdun
 ms.openlocfilehash: 506c59ca24aeafbac59b1508bb78142051302765
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001837"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127879"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>Xamarin.Forms-mobilalkalmazás offline szinkronizálásának engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -40,8 +40,8 @@ A kapcsolat nélküli szinkronizálás – kódot tartalmazza a projekt használ
         #define OFFLINE_SYNC_ENABLED
 3. (Nem kötelező) Támogatja a Windows-eszközöket, telepítse az SQLite következő futtatókörnyezetek közül:
 
-   * **Windows 8.1-modul:** telepítése [for Windows 8.1 SQLite][3].
-   * **Windows Phone 8.1:** telepítése [a Windows Phone 8.1-es SQLite][4].
+   * **Windows 8.1 Runtime:** Telepítés [for Windows 8.1 SQLite][3].
+   * **Windows Phone 8.1:** Telepítés [a Windows Phone 8.1-es SQLite][4].
    * **Univerzális Windows Platform** telepítése [az univerzális Windows Universal az SQLite][5].
 
      Bár ez a rövid útmutató nem tartalmaz egy univerzális Windows-projektet, a Universal Windows platform Xamarin Forms eszközkészlethez használata támogatott.

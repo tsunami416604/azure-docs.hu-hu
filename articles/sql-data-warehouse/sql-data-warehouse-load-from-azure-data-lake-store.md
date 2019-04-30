@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
 ms.openlocfilehash: 32ac5b0841365acfc0a52e343eafc4f3760dffaa
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472227"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61476136"
 ---
 # <a name="load-data-from-azure-data-lake-storage-gen1-to-sql-data-warehouse"></a>Adatok betöltése az Azure Data Lake Storage Gen1 az SQL Data warehouse-bA
 Adatok betöltése az Azure Data Lake Storage Gen1 az Azure SQL Data Warehouse a PolyBase külső táblák használatával. Bár a Data Lake Storage Gen1-ban tárolt adatokkal kapcsolatos ad hoc ad hoc lekérdezéseket is futtathat, javasoljuk, hogy az adatok importálása a legjobb teljesítmény érdekében az SQL Data Warehouse-bA.
@@ -27,7 +27,7 @@ Adatok betöltése az Azure Data Lake Storage Gen1 az Azure SQL Data Warehouse a
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) legújabb verzióját.
 
 Ez az oktatóanyag futtatásához szüksége:

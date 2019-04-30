@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
 ms.openlocfilehash: 17428405a0be45854a2eaaef831864f529ed145a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994480"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60725284"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple biztonsági mentési célként Netbackuppal
 
@@ -540,7 +540,7 @@ Katasztrófa számos tényező okozhatja. Az alábbi táblázat általános vés
 Ez a cikk a hivatkozott az alábbi dokumentumokat:
 
 - [A StorSimple-a többutas i/o-telepítő](storsimple-configure-mpio-windows-server.md)
-- [Storage-forgatókönyv esetében: a dinamikus kiosztás](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [Storage-forgatókönyv esetében: A dinamikus kiosztás](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [Meghajtók GPT használata](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Állítsa be a megosztott mappák árnyékmásolatai](https://technet.microsoft.com/library/cc771893.aspx)
 

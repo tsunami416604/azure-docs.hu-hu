@@ -10,11 +10,11 @@ ms.date: 2/22/2017
 ms.author: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 5e65965678ed042081e4a406d3a207fb7ede299f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313651"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61483485"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Eltérő eredetű erőforrások megosztása (CORS) támogatása az Azure Storage szolgáltatások
 2013-08-15 verzióval kezdve, az Azure storage szolgáltatások támogatja az eltérő eredetű erőforrások megosztása (CORS) a Blob, Table, Queue és fájl szolgáltatások. A CORS egy HTTP-funkció, amely lehetővé teszi egy adott tartományban futó webes alkalmazás egy másik tartományban lévő erőforrások eléréséhez. Webböngészők néven ismert biztonsági korlátozással akadályozzák meg [azonoseredet-](https://www.w3.org/Security/wiki/Same_Origin_Policy) , amely megakadályozza, hogy egy weblap, egy másik tartományban; API-k A CORS biztonságos megoldást nyújt, hogy egy tartomány (a forrástartomány) API-k meghívása egy másik tartományban található. Tekintse meg a [CORS-specifikáció](https://www.w3.org/TR/cors/) CORS részleteiért.

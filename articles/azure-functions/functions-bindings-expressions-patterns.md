@@ -8,14 +8,15 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 02/18/2019
-ms.author: cshoe
+origin.date: 02/18/2019
+ms.date: 03/20/2019
+ms.author: v-junlch
 ms.openlocfilehash: 0c1dbbae5e4be965f195b5ea4fc88b1bc5fb4f87
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887182"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61437871"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Az Azure Functions kötés kifejezés minták
 
@@ -313,3 +314,5 @@ C# és az egyéb .NET nyelven, használhatja az imperatív kötés minta, ellent
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Az Azure-függvény visszaadott értékének használata](./functions-bindings-return-value.md)
+
+<!-- Update_Description: link update -->

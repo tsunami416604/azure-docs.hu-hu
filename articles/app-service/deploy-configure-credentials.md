@@ -14,11 +14,11 @@ ms.date: 03/10/2019
 ms.author: cephalin;byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: df874ab77c88f05b048b1f9d10873943b7bebf36
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884387"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60765448"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Az Azure App Service üzembe helyezési hitelesítő adatok konfigurálása
 [Az Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) hitelesítő adatok kétféle [Git helyi üzemelő példányának](deploy-local-git.md) és [FTP/S üzembe helyezési](deploy-ftp.md). Ezeket a hitelesítő adatokat nem azonosak az Azure Active Directory hitelesítő adatként.

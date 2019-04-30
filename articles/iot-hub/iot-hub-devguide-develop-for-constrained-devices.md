@@ -1,18 +1,26 @@
 ---
 title: Az Azure IoT Hub fejlesztése korlátozott eszközök IoT Hub C SDK-val |} A Microsoft Docs
 description: Fejlesztői útmutató – hogyan fejleszthet az Azure IoT SDK-k segítségével korlátozott eszközök.
-author: yzhong94
-ms.service: iot-hub
 services: iot-hub
-ms.topic: conceptual
-ms.date: 05/24/2018
-ms.author: yizhon
+documentationcenter: c
+author: yzhong94
+manager: timlt
+editor: ''
+ms.assetid: 979136db-c92d-4288-870c-f305e8777bdd
+ms.service: iot-hub
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+origin.date: 05/24/2018
+ms.date: 04/29/2019
+ms.author: v-yiso
 ms.openlocfilehash: 7788bca621a59ec8cdfe36edf73a99efca8c460c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59261394"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61320927"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Fejlesztés az Azure IoT C SDK-val korlátozott eszközök
 
@@ -44,7 +52,6 @@ cmake -Duse_amqp=OFF -Duse_http=OFF <Path_to_cmake>
 ### <a name="remove-sdk-logging-capability"></a>Távolítsa el az SDK naplózási képesség
 
 Az C SDK-t biztosít széles körű naplózás során a hibakeresés érdekében. A naplózási képesség éles eszközökhöz az alábbi cmake paranccsal távolíthatja el:
-
 ```
 cmake -Dno_logging=OFF <Path_to_cmake>
 ```
@@ -80,7 +87,15 @@ Az C SDK két programozási modellen támogatja. Egy készletnek az API-k egy _L
 API-k nélkül egy másik készletét a _LL_ index nevezzük a kényelem réteg, ha egy munkavégző szál automatikusan hoz. Például a kényelem réteg API-k az eszközügyfél ebben található [IoT Device Client fejlécfájlt](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h). A korlátozott eszközök, ahol minden egyes extra szálat is igénybe vehet az erőforrásokat, jelentős százalékos érdemes _LL_ API-k.
 
 ## <a name="next-steps"></a>További lépések
-
 További információ az Azure IoT C SDK-architektúra:
--   [Az Azure IoT C SDK forráskódját](https://github.com/Azure/azure-iot-sdk-c/)
--   [Az Azure IoT eszközoldali SDK-t a C bemutatása](iot-hub-device-sdk-c-intro.md)
+- [Az Azure IoT C SDK forráskódját](https://github.com/Azure/azure-iot-sdk-c/)
+- [Az Azure IoT eszközoldali SDK-t a C bemutatása](iot-hub-device-sdk-c-intro.md)
+
+------
+[lnk-cmake]: https://cmake.org/
+[lnk-devbox-setup]:  https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md
+[lnk-choosing-protocol]: iot-hub-devguide-protocols.md
+[lnk-hub-file-upload]: iot-hub-devguide-file-upload.md
+[lnk-strip]: https://en.wikipedia.org/wiki/Strip_(Unix)
+[lnk-serializer]: https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer
+[lnk-parson]: https://github.com/kgabis/parson

@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: raynew
 ms.openlocfilehash: 35ab150670cdc27efcedca233928e0c2184aeca6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880097"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62116175"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Rendszerállapotának biztonsági mentése és visszaállítása az Azure Backup Server operációs rendszer nélküli
 
 Az Azure Backup Server rendszerállapotának biztonsági mentését, és operációs rendszer nélküli helyreállítás (BMR) védelmet nyújt.
 
-*   **Rendszerállapot biztonsági mentését**: készít biztonsági másolatot operációs rendszer fájljait, így helyreállíthatja a számítógép elindul, de a rendszerfájlok és a beállításjegyzék elvesznek. A rendszerállapot biztonsági mentése tartalmazza:
-    * Tartományi tag: rendszerindító fájlok, COM + osztályok regisztrációs adatbázisa, beállításjegyzék
-    * Tartományvezérlő: Windows Server Active Directory (NTDS), rendszerindító fájlok, COM + osztályok regisztrációs adatbázisa, beállításjegyzék, rendszerkötet (SYSVOL)
+*   **Rendszerállapot biztonsági mentését**: Biztonsági másolatot készít a operációs rendszer fájljait, így helyreállíthatja a számítógép elindul, de a rendszerfájlok és a beállításjegyzék elvesznek. A rendszerállapot biztonsági mentése tartalmazza:
+    * Tartományi tag: Rendszerindító fájlok, COM + osztályok regisztrációs adatbázisa, beállításjegyzék
+    * Tartományvezérlő: A Windows Server Active Directory (NTDS), rendszerindító fájlok, COM + osztályok regisztrációs adatbázisa, beállításjegyzék, rendszerkötet (SYSVOL)
     * Fürt-szolgáltatásokat futtató számítógép: Fürtkiszolgáló metaadatai
     * Tanúsítvány-szolgáltatásokat futtató számítógép: Tanúsítványadatok
-* **Operációs rendszer nélküli biztonsági mentés**: biztonsági mentést készít operációsrendszer-fájlok és az összes adat a kritikus köteteken (kivéve a felhasználói adatok). A BMR biztonsági mentés definíció szerint magában foglalja a rendszerállapot biztonsági. Ha egy számítógép nem indul el, és mindent helyre kell védelmet nyújt.
+* **Operációs rendszer nélküli biztonsági mentés**: Biztonsági másolatot készít a operációsrendszer-fájlok és az összes adat a kritikus köteteken (kivéve a felhasználói adatok). A BMR biztonsági mentés definíció szerint magában foglalja a rendszerállapot biztonsági. Ha egy számítógép nem indul el, és mindent helyre kell védelmet nyújt.
 
 A következő táblázat összefoglalja, mit, biztonsági mentése és helyreállítása. A BMR és rendszerállapot védhető app-verziókkal kapcsolatos részletes információkért lásd: [célja az Azure Backup Server biztonsági mentése?](backup-mabs-protection-matrix.md).
 
-|Backup|Probléma|Azure Backup Server biztonsági mentés helyreállítása|Rendszerállapot helyreállítása|OPERÁCIÓS RENDSZER NÉLKÜLI HELYREÁLLÍTÁS|
+|Backup|Probléma|Azure Backup Server biztonsági mentés helyreállítása|Rendszerállapot helyreállítása|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
 |**Fájladatok**<br /><br />Adatok rendszeres biztonsági mentése<br /><br />BMR/rendszerállapot biztonsági mentése|Elveszett fájladatok|I|N|N|
 |**Fájladatok**<br /><br />Az Azure Backup Server biztonsági másolat a fájladatok<br /><br />BMR/rendszerállapot biztonsági mentése|Elveszett vagy sérült operációs rendszer|N|I|I|
@@ -42,10 +42,10 @@ A következő táblázat összefoglalja, mit, biztonsági mentése és helyreál
 |Hyper-V<br /><br />Az Azure Backup Server biztonsági másolat, a Hyper-V-gazdagép vagy Vendég<br /><br />BMR/rendszerállapot biztonsági mentését gazdagép|Elveszett vagy sérült operációs rendszer|N|I|I|
 |Hyper-V<br /><br />Az Azure Backup Server biztonsági másolat, a Hyper-V-gazdagép vagy Vendég<br /><br />BMR/rendszerállapot biztonsági mentését gazdagép|Elvesztett Hyper-V-gazdagép (VM-EK nem sérültek)|N|N|I|
 |Hyper-V<br /><br />Az Azure Backup Server biztonsági másolat, a Hyper-V-gazdagép vagy Vendég<br /><br />BMR/rendszerállapot biztonsági mentését gazdagép|Elvesztett Hyper-V-gazdagép (a virtuális gépek elvesztek)|N|N|I<br /><br />Operációs rendszer nélküli Helyreállítás, az Azure Backup Server normál helyreállítása követi|
-|Az SQL Server és az Exchange<br /><br />Az Azure Backup Server alkalmazás biztonsági mentése<br /><br />BMR/rendszerállapot biztonsági mentése|Elveszett alkalmazásadatok|I|N|N|
-|Az SQL Server és az Exchange<br /><br />Az Azure Backup Server alkalmazás biztonsági mentése<br /><br />BMR/rendszerállapot biztonsági mentése|Elveszett vagy sérült operációs rendszer|N|Y|I|
-|Az SQL Server és az Exchange<br /><br />Az Azure Backup Server alkalmazás biztonsági mentése<br /><br />BMR/rendszerállapot biztonsági mentése|Elveszett kiszolgáló (az adatbázis és a tranzakciós naplófájlok nem sérültek)|N|N|I|
-|Az SQL Server és az Exchange<br /><br />Az Azure Backup Server alkalmazás biztonsági mentése<br /><br />BMR/rendszerállapot biztonsági mentése|Elveszett kiszolgáló (adatbázis és a tranzakciós naplófájlok elvesztek)|N|N|I<br /><br />BMR helyreállítás, az Azure Backup Server normál helyreállítása követi|
+|SQL Server/Exchange<br /><br />Az Azure Backup Server alkalmazás biztonsági mentése<br /><br />BMR/rendszerállapot biztonsági mentése|Elveszett alkalmazásadatok|I|N|N|
+|SQL Server/Exchange<br /><br />Az Azure Backup Server alkalmazás biztonsági mentése<br /><br />BMR/rendszerállapot biztonsági mentése|Elveszett vagy sérült operációs rendszer|N|y|I|
+|SQL Server/Exchange<br /><br />Az Azure Backup Server alkalmazás biztonsági mentése<br /><br />BMR/rendszerállapot biztonsági mentése|Elveszett kiszolgáló (az adatbázis és a tranzakciós naplófájlok nem sérültek)|N|N|I|
+|SQL Server/Exchange<br /><br />Az Azure Backup Server alkalmazás biztonsági mentése<br /><br />BMR/rendszerállapot biztonsági mentése|Elveszett kiszolgáló (adatbázis és a tranzakciós naplófájlok elvesztek)|N|N|I<br /><br />BMR helyreállítás, az Azure Backup Server normál helyreállítása követi|
 
 ## <a name="how-system-state-backup-works"></a>Hogyan működik a rendszerállapot biztonsági mentése
 
@@ -94,7 +94,7 @@ Ha a biztonsági mentés befejeződött, a fájl átkerül a biztonsági mentés
 
     Ha módosítja a BMR-védelem a rendszerállapot-védelemre, helyre van szüksége a védett számítógépen. Ennek az az oka a rendszerállapot-védelem először írja a replikát a helyi számítógépen, és majd átviszi a Backup Server számítógéphez.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 1.  **Az Azure Backup Server telepítése**. Győződjön meg arról, hogy a Backup-kiszolgáló megfelelően van-e telepítve. További információkért lásd:
     * [Azure Backup Server rendszerre vonatkozó követelmények](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)

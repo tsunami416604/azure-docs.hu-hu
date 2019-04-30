@@ -1,7 +1,6 @@
 ---
 title: 'Azure-eszközkészlet az IntelliJ-hez: Spark-alkalmazások HDInsight-fürt létrehozása '
 description: Spark Scalában írt alkalmazások fejlesztése az IntelliJ-hez készült Azure-eszközkészlet használatával, és küldheti el ezeket a HDInsight Spark-fürt.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: maxluk
-ms.openlocfilehash: 8fa3cd79011ab31349ec44edf52b8fd9048d0d37
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 682b2266442f3aba6696385862844e1b4b93aa3d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077972"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124254"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>IntelliJ-hez készült Azure eszközkészlet használata egy HDInsight-fürtön az Apache Spark-alkalmazások létrehozása
 
@@ -238,7 +237,7 @@ IntelliJ-hez készült Azure-eszközkészlet használatával különféle művel
 
 2. A jobb oldali ablaktáblán a **Spark-feladat nézet** lap megjeleníti a fürtön futó összes alkalmazást. Válassza ki, amelynek meg szeretné tekinteni a további részleteket az alkalmazás nevét.
 
-    ![Alkalmazás adatai](./media/apache-spark-intellij-tool-plugin/view-job-logs.png)
+    ![Alkalmazás részletei](./media/apache-spark-intellij-tool-plugin/view-job-logs.png)
 
 3. Alapszintű futó feladat adatainak megjelenítéséhez vigye a kurzort a feladatgrafikon fölé. A szakaszok graph és minden feladat által létrehozott információk megtekintéséhez válasszon ki egy csomópontot, a feladat ábra a.
 

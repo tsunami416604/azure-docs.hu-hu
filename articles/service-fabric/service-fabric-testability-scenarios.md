@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
 ms.openlocfilehash: d12c5097d4ba5e0ccfe0e2b2cbc8ccd758c32d98
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051289"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60865015"
 ---
 # <a name="testability-scenarios"></a>Testability alkalmazási helyzetek
 Nagy méretű elosztott rendszerek, a felhőalapú infrastruktúrák rendszer természetüknél fogva nem megbízható. Az Azure Service Fabric-ra épülve a nem megbízható hálózathatáron infrastruktúrák szolgáltatások írását lehetővé teszi a fejlesztők számára. Írás a magas színvonalú szolgáltatásokat, a fejlesztők kell tudni idéz elő az ilyen megbízhatatlan infrastruktúra szolgáltatásaik stabilitását teszteléséhez.
@@ -49,11 +49,11 @@ Vegyük példaként egy teszt futtatásához egy órán keresztül, amely legfel
 A jelenlegi formájában a tartalék generációs motor a chaos tesztben kapott csak biztonságos hibák. Ez azt jelenti, hogy külső hibák hiányában egy kvórum vagy adatvesztés soha nem kerül.
 
 ### <a name="important-configuration-options"></a>Fontos konfigurációs beállításai
-* **Timetorun érték**: teljes idő, hogy a teszt sikeres befejezése előtt fog futni. A teszt korábban be tudja helyett egy érvényesítési hiba.
-* **MaxClusterStabilizationTimeout**: legfeljebb ennyi idő múlva a fürt előtt a teszt sikertelen állapotúak lesznek. Az elvégzett fürtállapot-e OK, a service health rendben, a cél másodpéldánykészletének méretét a szolgáltatás partíció érhető el, és nem található InBuild replikák létezik.
-* **MaxConcurrentFaults**: minden egyes ismétléskor okozta egyidejű hibák maximális száma. Minél nagyobb a száma, a agresszívabb a teszt, így összetettebb feladatátvételt és a Váltás kombinációk eredményez. A teszt garantálja, hogy a külső hibák hiányában nem fogja a kvórum vagy adatvesztés, attól függetlenül, a nagy az ebben a konfigurációban.
-* **EnableMoveReplicaFaults**: engedélyezheti vagy letilthatja a hibákat okozó az áthelyezés elsődleges vagy másodlagos replikára. Ezek a hibák alapértelmezés szerint le vannak tiltva.
-* **WaitTimeBetweenIterations**: ismétlések, azaz egy ciklikus hibák és a megfelelő érvényesítése után közötti várakozási idő mennyiségét.
+* **Timetorun érték**: Teljes idő, hogy a teszt sikeres befejezése előtt fog futni. A teszt korábban be tudja helyett egy érvényesítési hiba.
+* **MaxClusterStabilizationTimeout**: A fürt előtt a teszt sikertelen állapotúak lesznek várakozási idő maximális mennyisége. Az elvégzett fürtállapot-e OK, a service health rendben, a cél másodpéldánykészletének méretét a szolgáltatás partíció érhető el, és nem található InBuild replikák létezik.
+* **MaxConcurrentFaults**: Egyidejű hibák maximális száma minden egyes ismétléskor okozta. Minél nagyobb a száma, a agresszívabb a teszt, így összetettebb feladatátvételt és a Váltás kombinációk eredményez. A teszt garantálja, hogy a külső hibák hiányában nem fogja a kvórum vagy adatvesztés, attól függetlenül, a nagy az ebben a konfigurációban.
+* **EnableMoveReplicaFaults**: Engedélyezheti vagy letilthatja a hibákat okozó az áthelyezés elsődleges vagy másodlagos replikára. Ezek a hibák alapértelmezés szerint le vannak tiltva.
+* **WaitTimeBetweenIterations**: Ismétlések, azaz egy ciklikus hibák és a megfelelő érvényesítése után közötti várakozási idő mennyisége.
 
 ### <a name="how-to-run-the-chaos-test"></a>A chaos teszt futtatása
 C#-minta
@@ -160,10 +160,10 @@ A feladatátvételi teszt forgatókönyv, amely egy adott szolgáltatás partíc
 A feladatátvételi teszt a kiválasztott hibát kapott, és érvényesítési majd fut a szolgáltatás stabilitásának biztosításához. A feladatátvételi teszt kapott csak egyetlen tartalék figyelésekor lehetséges egyszerre több hibák a chaos teszt. Ha a szolgáltatás partíció nem stabilizálódhatnak a beállított időkorláton belül minden hiba után, a teszt sikertelen lesz. A vizsgálat csak biztonságos hibákat kapott. Ez azt jelenti, hogy a külső hibák hiányában egy kvórum vagy adatvesztés nem történik.
 
 ### <a name="important-configuration-options"></a>Fontos konfigurációs beállításai
-* **PartitionSelector**: választó objektum, amely meghatározza a partíció, amely kell kapjon.
-* **Timetorun érték**: teljes idő, hogy a teszt befejezése előtt fog futni.
-* **MaxServiceStabilizationTimeout**: legfeljebb ennyi idő múlva a fürt előtt a teszt sikertelen állapotúak lesznek. Az elvégzett a service health e OK, a cél másodpéldánykészletének méretét a érhető el az összes partíciót, és nem található InBuild replikák létezik.
-* **WaitTimeBetweenFaults**: minden tartalék és érvényesítési ciklus közötti várakozási idő.
+* **PartitionSelector**: Választó objektum, amely meghatározza a partíció, amely kell kapjon.
+* **Timetorun érték**: Teljes idő, hogy a teszt befejezése előtt fog futni.
+* **MaxServiceStabilizationTimeout**: A fürt előtt a teszt sikertelen állapotúak lesznek várakozási idő maximális mennyisége. Az elvégzett a service health e OK, a cél másodpéldánykészletének méretét a érhető el az összes partíciót, és nem található InBuild replikák létezik.
+* **WaitTimeBetweenFaults**: Minden tartalék és érvényesítési ciklus közötti várakozási idő mennyisége.
 
 ### <a name="how-to-run-the-failover-test"></a>A feladatátvételi teszt futtatása
 **C#**

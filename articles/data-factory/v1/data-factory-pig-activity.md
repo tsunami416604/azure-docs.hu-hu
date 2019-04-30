@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 78ee2c1ce402a29f1a9dfdd29f31daef09134eba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997015"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611340"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Adatok átalakítása a Pig-tevékenység használatával az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -83,10 +83,10 @@ A HDInsight Pig-tevékenység az adat-előállító [folyamat](data-factory-crea
 
 ## <a name="syntax-details"></a>Szintaxis részletei
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | név |A tevékenység neve |Igen |
-| leírás |Mire használható a tevékenységet leíró szöveg |Nem |
+| description |Mire használható a tevékenységet leíró szöveg |Nem |
 | type |HDinsightPig |Igen |
 | bemenetek |Egy vagy több, a Pig-tevékenység által felhasznált bemeneti |Nem |
 | kimenetek |Egy vagy több, a Pig-tevékenység által előállított kimeneti |Igen |

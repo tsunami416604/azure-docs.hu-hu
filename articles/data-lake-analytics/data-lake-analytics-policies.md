@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: f84cb59e7d4fd7d8301d22348ca066a7f9d9e94e
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 64095f6706bb978cd33b8fe7833fe4e65fc3b0f8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048818"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60813425"
 ---
 # <a name="manage-azure-data-lake-analytics-using-policies"></a>Házirendek használata Azure Data Lake Analytics kezelése
 
@@ -68,8 +68,8 @@ Feladat-szintű szabályzatok szabályozhatja a maximális au-k és a maximális
 
 A Data Lake Analytics van két szabályzat, amely a feladatok szintjén is megadhatja:
 
-* **Foglalási egység korlátja feladatonként**: csak a küldje el feladatokat, amelyeket az AU-k számát. Alapértelmezés szerint ez a korlátozás megegyezik a fiók AU maximális száma.
-* **Prioritás**: csak a küldje el feladatokat, kisebb vagy egyenlő az érték prioritását. Ha nagyobb prioritást jelent alacsonyabb. Alapértelmezés szerint ez a korlátozás értéke 1, amely a lehető legmagasabb prioritású.
+* **Foglalási egység korlátja feladatonként**: Csak a felhasználók elküldhetik a au-k számát kell feladatokat. Alapértelmezés szerint ez a korlátozás megegyezik a fiók AU maximális száma.
+* **Prioritás**: Csak a felhasználók elküldhetik feladatok prioritása kisebb vagy egyenlő, erre az értékre. Ha nagyobb prioritást jelent alacsonyabb. Alapértelmezés szerint ez a korlátozás értéke 1, amely a lehető legmagasabb prioritású.
 
 Nincs beállítva minden fiók alapértelmezett szabályzat. Az alapértelmezett szabályzat vonatkozik, a fiók összes felhasználója számára. További házirendek beállíthatja adott felhasználók és csoportok számára. 
 
@@ -83,9 +83,9 @@ Nincs beállítva minden fiók alapértelmezett szabályzat. Az alapértelmezett
 2. Kattintson a **Tulajdonságok** elemre.
 3. A **feladat küldésére vonatkozó korlátok**, kattintson a **házirend hozzáadása** gombra. Válassza ki, vagy adja meg a következő beállításokat:
     1. **Számítási szabályzat neve**: Adja meg a szabályzat nevét, amely emlékezteti a házirend céljának.
-    2. **Felhasználó vagy csoport kiválasztása**: válassza ki a felhasználót vagy csoportot a házirend vonatkozik.
-    3. **A feladat AU-korlátjának beállítása**: állítsa be a foglalási egység korlátja, amely a kiválasztott felhasználó vagy csoport vonatkozik.
-    4. **A prioritási korlátjának beállítása**: a, amelyekre vonatkozik a kiválasztott felhasználó vagy csoport prioritási korlátjának beállítása.
+    2. **Felhasználó vagy csoport kiválasztása**: Válassza ki a felhasználót vagy csoportot a házirend vonatkozik.
+    3. **A feladat AU-korlátjának beállítása**: Állítsa be a foglalási egység korlátja, amely a kiválasztott felhasználó vagy csoport vonatkozik.
+    4. **A prioritási korlátjának beállítása**: Állítsa be a kiválasztott felhasználó vagy csoport a prioritású korlátozás.
 
 4. Kattintson az **OK** gombra.
 

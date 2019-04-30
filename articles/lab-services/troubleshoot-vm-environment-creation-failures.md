@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.openlocfilehash: a653a785e99619c3e256613d6a4d2c7592f54c8c
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149393"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60848496"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Végezzen hibaelhárítást a virtuális gép (VM) és a környezet létrehozása sikertelen, az Azure DevTest Labs szolgáltatásban
 DevTest Labs lehetővé teszi, figyelmeztetések, ha egy gép neve érvénytelen, vagy ha a kívánt megsértik a labor házirend. Egyes esetekben látja red `X` mellett a labor virtuális gép vagy a környezet állapotát, amely tájékoztatja, hogy probléma merült fel.  Ez a cikk ismerteti, amellyel az alapul szolgáló problémát talál, és, remélhetőleg, a probléma jövőbeni elkerülése néhány trükköket.

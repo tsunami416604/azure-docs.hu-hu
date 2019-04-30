@@ -10,11 +10,11 @@ ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 82007c780a0c9ff3bb2e1a50a4826499f9df9c9f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518966"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60811700"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Python használata Azure Data Lake Analytics kezelése
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -93,11 +93,11 @@ import logging, getpass, pprint, uuid, time
 
 Futtassa ezt a szkriptet, ellenőrizze, hogy a modulok importálhatók.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 ### <a name="interactive-user-authentication-with-a-pop-up"></a>Egy előugró ablak az interaktív felhasználói hitelesítéssel
 
-Ez a metódus nem támogatott.
+A módszer nem támogatott.
 
 ### <a name="interactive-user-authentication-with-a-device-code"></a>Interaktív felhasználói hitelesítéssel rendelkező eszköz
 
@@ -115,7 +115,7 @@ credentials = ServicePrincipalCredentials(client_id = 'FILL-IN-HERE', secret = '
 
 ### <a name="noninteractive-authentication-with-api-and-a-certificate"></a>Az API-t és a egy tanúsítványt a nem interaktív hitelesítés
 
-Ez a metódus nem támogatott.
+A módszer nem támogatott.
 
 ## <a name="common-script-variables"></a>Parancsfájl-változókat
 
