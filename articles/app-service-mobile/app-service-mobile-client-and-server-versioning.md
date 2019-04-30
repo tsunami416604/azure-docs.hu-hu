@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 56c5e0582afe55dcd63aa056817898d3d4942419
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594066"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60859073"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>A Mobile Apps és Mobile Services ügyfél- és szerveroldali verziószámozás
 Az Azure Mobile Services legújabb verziója a **Mobile Apps** Azure App Service szolgáltatásával.
@@ -70,7 +70,7 @@ Az ügyfél SDK-k az alábbi táblázat a kompatibilisek **mobilszolgáltatások
 Megjegyzés: a Mobile Services ügyféloldali SDK-k *nem* elküldeni egy fejléc értéke `ZUMO-API-VERSION`. Ha a szolgáltatás kap a fejléc vagy lekérdezési karakterlánc értéke visszaad egy hiba, kivéve, ha explicit módon ki a fent leírt beleegyezett.
 
 ### <a name="MobileServicesClients"></a> A Mobile *szolgáltatások* ügyféloldali SDK-k
-| Ügyfélplatform | Verzió | A verziófejléc-érték |
+| Ügyfélplatform | Version | A verziófejléc-érték |
 | --- | --- | --- |
 | Felügyelt ügyfelek (Windows, a Xamarin) |[1.3.2](https://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.2) |n/a |
 | iOS |[2.2.2](https://aka.ms/gc6fex) |n/a |
@@ -78,7 +78,7 @@ Megjegyzés: a Mobile Services ügyféloldali SDK-k *nem* elküldeni egy fejléc
 | HTML |[1.2.7](https://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.7.min.js) |n/a |
 
 ### <a name="mobile-services-server-sdks"></a>A Mobile *szolgáltatások* server SDK-k
-| Kiszolgálóplatform | Verzió | Elfogadott verzió fejléce |
+| Kiszolgálóplatform | Version | Elfogadott verzió fejléce |
 | --- | --- | --- |
 | .NET |[WindowsAzure.MobileServices.Backend.* Version 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) |**Nincs verzió fejléce** |
 | Node.js |(hamarosan elérhető) |**Nincs verzió fejléce** |
@@ -96,7 +96,7 @@ Megjegyzés: a Mobile Services ügyféloldali SDK-k *nem* elküldeni egy fejléc
 ### <a name="MobileAppsClients"></a> A Mobile *alkalmazások* ügyféloldali SDK-k
 Az ügyfél-SDK következő verziói kezdve verzió ellenőrzése jelent a **Azure Mobile Apps**:
 
-| Ügyfélplatform | Verzió | A verziófejléc-érték |
+| Ügyfélplatform | Version | A verziófejléc-érték |
 | --- | --- | --- |
 | Felügyelt ügyfelek (Windows, a Xamarin) |[2.0.0](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/2.0.0) |2.0.0 |
 | iOS |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=529823) |2.0.0 |

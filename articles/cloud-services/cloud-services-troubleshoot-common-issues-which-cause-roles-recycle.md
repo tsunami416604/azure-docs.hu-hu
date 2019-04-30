@@ -16,11 +16,11 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 2a9214b918883e493ebe5c93fc7f56e7ce9c77ec
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234494"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60652213"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Gyakori hibák, melyek a szerepkörök újrahasznosítását okozzák
 Ez a cikk ismerteti az egyes alkalmazástelepítéssel kapcsolatos problémák leggyakoribb okait és hibaelhárítási tippekkel szolgál az ilyen problémák megoldásához. Azt jelzi, hogy probléma van egy alkalmazás akkor, ha a szerepkörpéldány nem indul el, vagy azt a inicializálása során, foglalt és leállítása állapotok közötti ciklusok.
@@ -40,7 +40,7 @@ Mielőtt hozhat létre, és az alkalmazás becsomagolása, ellenőrizze a követ
 Az Azure egy 64 bites környezet áll. Ezért egy 32 bites cél lefordított .NET-szerelvények nem fognak működni az Azure-ban.
 
 ## <a name="role-throws-unhandled-exceptions-while-initializing-or-stopping"></a>Szerepkör nem kezelt kivételt jelez inicializálás vagy a leállítás során
-A módszerek által okozott kivételek a [RoleEntryPoint] osztály, amely tartalmazza a [ONSTART érvényesség], [OnStop], és [Futtatás] módszereket, nem kezelt kivételeket. Nem kezelt kivétel lép fel az alábbi módszerek egyikét, ha a szerepkör-újraindítás lesz. A szerepkör mindig többször újraindul, ha, előfordulhat, hogy lehet hívása nem kezelt kivétel minden alkalommal, amikor megpróbálnak elindítani.
+A módszerek által okozott kivételek a [RoleEntryPoint] osztály, amely tartalmazza a [OnStart], [OnStop], és [Futtatás] módszereket, nem kezelt kivételeket. Nem kezelt kivétel lép fel az alábbi módszerek egyikét, ha a szerepkör-újraindítás lesz. A szerepkör mindig többször újraindul, ha, előfordulhat, hogy lehet hívása nem kezelt kivétel minden alkalommal, amikor megpróbálnak elindítani.
 
 ## <a name="role-returns-from-run-method"></a>A szerepkör visszatér a Run metódus
 A [Futtatás] metódus az célja, hogy határozatlan ideig szeretné futtatni. Ha a kód felülírja az [Futtatás] metódus, azt kell alvó határozatlan időre. Ha a [Futtatás] metódus adja vissza, a szerepkör újraindul.
@@ -67,6 +67,6 @@ Továbbiak megtekintése [hibaelhárítási cikkek](https://azure.microsoft.com/
 További szerepkör-újrahasznosítás: forgatókönyvek megtekintése [Kevin Williamson blogsorozatot](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
 
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
-[ONSTART érvényesség]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
+[OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
 [Futtatás]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx

@@ -16,11 +16,11 @@ ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 51a2ac93fd2d863855c820ba147418c5397c2a89
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411066"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60851541"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>Twitter-bejelentkezés használatához App Service-alkalmazás konfigurálása
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -55,7 +55,7 @@ Ebben a témakörben az eljárás végrehajtásához egy hitelesített e-mail c�
 
 Most már készen áll a Twitteren az alkalmazásban hitelesítéshez használandó.
 
-## <a name="related-content"> </a>Kapcsolódó tartalom
+## <a name="related-content"> </a>Related Content
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- Images. -->

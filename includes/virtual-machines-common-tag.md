@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: ccc2b574ea054a1b0ecf32a1e59691050fb66fcf
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227294"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108293"
 ---
 ## <a name="tagging-a-virtual-machine-through-templates"></a>Sablonok virtuális gép címkézése
-Először is lássuk a sablonokban történő címkézése. [Ez a sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) címkék helyez el az alábbi forrásanyagokat: számítási (virtuális gép), a tárolási (Tárfiók) és a hálózaton (a nyilvános IP-címet, a virtuális hálózat és a hálózati adapter). Ez a sablon egy Windows virtuális gép számára, de alkalmazható Linux rendszerű virtuális gépekhez.
+Először is lássuk a sablonokban történő címkézése. [Ez a sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) címkék helyez el az alábbi forrásanyagokat: (Virtuális gép) számítási, tárolási (Tárfiók), és (nyilvános IP-cím, virtuális hálózatot és hálózati adapter). Ez a sablon egy Windows virtuális gép számára, de alkalmazható Linux rendszerű virtuális gépekhez.
 
 Kattintson a **üzembe helyezés az Azure** gombra a [sablon hivatkozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags). Ez nyitja meg a [az Azure portal](https://portal.azure.com/) ahol telepítheti ezt a sablont.
 
 ![Egyszerű üzembe helyezés, a címkék használatával](./media/virtual-machines-common-tag/deploy-to-azure-tags.png)
 
-Ez a sablon tartalmazza a következő címkékkel: *részleg*, *alkalmazás*, és *Created By*. Akkor is hozzáadása/szerkesztése ezekkel a címkékkel, közvetlenül a sablonban Ha szeretné, hogy különböző tartalmaznak a címkenevek.
+Ez a sablon tartalmazza a következő címkékkel: *Részleg*, *alkalmazás*, és *által létrehozott*. Akkor is hozzáadása/szerkesztése ezekkel a címkékkel, közvetlenül a sablonban Ha szeretné, hogy különböző tartalmaznak a címkenevek.
 
 ![A sablonokban Azure címkék](./media/virtual-machines-common-tag/azure-tags-in-a-template.png)
 

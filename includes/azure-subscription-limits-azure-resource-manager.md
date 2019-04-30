@@ -5,15 +5,15 @@ services: billing
 author: rothja
 ms.service: billing
 ms.topic: include
-ms.date: 04/02/2019
+ms.date: 04/22/2019
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: d490cab4d437c30fdb211ea27397777afc27e72e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 712b70960e09a9c2b0e7a998bc0bddbc28c1e112
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804163"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63765880"
 ---
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
@@ -29,13 +29,15 @@ ms.locfileid: "59804163"
 | Egyedi címkeszámítások előfizetésenként<sup>2</sup> | 10,000 | 10,000 |
 | [Felhőszolgáltatások](../articles/cloud-services/cloud-services-choose-me.md) előfizetésenként |N/A<sup>3</sup> |N/A<sup>3</sup> |
 | [Affinitáscsoportok](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) előfizetésenként |N/A<sup>3</sup> |N/A<sup>3</sup> |
-| [Előfizetés-szintű telepítések](../articles/azure-resource-manager/deploy-to-subscription.md) / hely | 800 | 800 |
+| [Előfizetés-szintű telepítések](../articles/azure-resource-manager/deploy-to-subscription.md) / hely | 800<sup>4</sup> | 800 |
 
 <sup>1</sup>alapértelmezett korlátai szerint eltérőek lehetnek, az ajánlat kategóriája ingyenes próbaverziója és az utólagos elszámolású csomagok, például és például Dv2, F és a g sorozat
 
 <sup>2</sup>címkék előfizetésenként korlátlan számú alkalmazhat. Az erőforrásonként vagy erőforráscsoportonként alkalmazható címkék száma legfeljebb 15 lehet. Erőforrás-kezelő adja vissza egy [egyedi címkenevek és értékek listájáról](/rest/api/resources/tags) csak akkor, ha a címkék száma 10 000 vagy kevesebb az előfizetésben. Továbbra is keresheti erőforrás címkét, ha a szám meghaladja a 10 000-et.  
 
 <sup>3</sup>ezek a funkciók nem lesznek az Azure-erőforráscsoportot és a Resource Manager szükséges.
+
+<sup>4</sup>eléri a korlátot, 800 központi telepítések, ha törli a központi telepítések az előzményekben tekintheti át, hogy már nincs rá szükség. Az előfizetés-szintű telepítések törölheti [Remove-AzDeployment](/powershell/module/az.resources/Remove-AzDeployment) vagy [az üzembe helyezés törlése](/cli/azure/deployment?view=azure-cli-latest#az-deployment-delete).
 
 > [!NOTE]
 > Virtuálisgép-magokra egy régió szerinti teljes korlát. Regionális mérete sorozat, mint a Dv2 és a F. határértéket is rendelkeznek Ezek a korlátok külön-külön érvényben vannak. Például tegyük fel, hogy egy előfizetés az USA keleti régiójára vonatkozó teljes magkorlátja 30, az A sorozatú magkorlátja 30, és a D sorozatú magkorlátja is 30. Ez az előfizetés 30 A1 virtuális gépet, vagy 30 D1 virtuális gépet, vagy a kettő kombinációját nem haladja meg az összesen 30 magot telepítheti. Együttes például 10 A1 virtuális gép és 20 D1 virtuális gép.  

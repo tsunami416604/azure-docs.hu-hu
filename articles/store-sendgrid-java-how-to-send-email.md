@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.openlocfilehash: 0cb75c1acb731432ed524560698e3355699b2500
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422082"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60931211"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Hogyan lehet E-mail küldése a SendGrid, a Java használatával
 Ez az útmutató bemutatja, hogyan hajthat végre gyakori programozási feladatokat, a SendGrid e-mail szolgáltatással az Azure-ban. A minták Java nyelven íródtak. Az ismertetett forgatókönyvek között megtalálható **hozhat létre, amely e-mailek**, **e-mail-küldési**, **mellékletek hozzáadása**, **ezekkel a szűrőkkel**, és **tulajdonságainak frissítése**. A SendGrid és az e-mailt küld a további információkért lásd: a [további lépések](#next-steps) szakaszban.
@@ -39,7 +39,7 @@ További információkért lásd: <https://sendgrid.com>.
 ## <a name="create-a-sendgrid-account"></a>A SendGrid-fiók létrehozása
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-## <a name="how-to-use-the-javaxmail-libraries"></a>Hogyan: javax.mail könyvtárak
+## <a name="how-to-use-the-javaxmail-libraries"></a>Útmutató: Javax.mail könyvtárak
 Szerezze be a javax.mail kódtárakat, például <https://www.oracle.com/technetwork/java/javamail> , és importálja őket a kód. Egy magas szintű, az SMTP használatával történő levélküldéshez a javax.mail kódtár használatával történik, tegye a következőket:
 
 1. Adja meg az SMTP-értékeket, többek között az SMTP-kiszolgáló, amely a SendGrid smtp.sendgrid.net.
@@ -80,10 +80,10 @@ Szerezze be a javax.mail kódtárakat, például <https://www.oracle.com/technet
 
        Authenticator auth = new SMTPAuthenticator();
        Session mailSession = Session.getDefaultInstance(properties, auth);
-3. Hozza létre az üzenetet, és rendelje hozzá **való**, **a**, **tulajdonos** és értékeket. Ez látható a [Útmutató: hozzon létre egy e-mailt](#how-to-create-an-email) szakaszban.
-4. A keresztül küldött egy *javax.mail.Transport* objektum. Ez látható a [Útmutató: E-mail küldése] [# útmutatóval-to-egy – e-mail küldésének] szakaszban.
+3. Hozza létre az üzenetet, és rendelje hozzá **való**, **a**, **tulajdonos** és értékeket. Ez látható a [Útmutató: Hozzon létre egy e-mailt](#how-to-create-an-email) szakaszban.
+4. A keresztül küldött egy *javax.mail.Transport* objektum. Ez látható a [Útmutató: E-mail küldése] [# útmutató – egy – e-mail küldésének] szakaszt.
 
-## <a name="how-to-create-an-email"></a>Hogyan: hozzon létre egy e-mailt
+## <a name="how-to-create-an-email"></a>Útmutató: Hozzon létre egy e-mailt
 A következő bemutatja, hogyan adja meg az értékeket egy e-mailt.
 
     MimeMessage message = new MimeMessage(mailSession);
@@ -104,7 +104,7 @@ A következő bemutatja, hogyan adja meg az értékeket egy e-mailt.
     message.setSubject("Your recent order");
     message.setContent(multipart);
 
-## <a name="how-to-send-an-email"></a>Útmutató: e-mail küldése
+## <a name="how-to-send-an-email"></a>Útmutató: E-mail küldése
 Az alábbiakban látható egy e-mailek küldése.
 
     Transport transport = mailSession.getTransport();
@@ -115,7 +115,7 @@ Az alábbiakban látható egy e-mailek küldése.
     // Close the connection.
     transport.close();
 
-## <a name="how-to-add-an-attachment"></a>Útmutató: a melléklet hozzáadása
+## <a name="how-to-add-an-attachment"></a>Útmutató: A melléklet hozzáadása
 A következő kód bemutatja, hogyan mellékletet.
 
     // Local file name and path.
@@ -130,7 +130,7 @@ A következő kód bemutatja, hogyan mellékletet.
     attachmentPart.setFileName(attachmentName);
     multipart.addBodyPart(attachmentPart);
 
-## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Útmutató: a szűrők segítségével élőlábak, nyomon követés és az analytics engedélyezése
+## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Útmutató: A szűrők segítségével élőlábak, nyomon követés és az analytics engedélyezése
 A SendGrid használatával e-mail további funkciókat biztosít *szűrők*. Ezek a beállítások, amelyek e-mailbe ahhoz, hogy bizonyos funkciók, például engedélyezheti a kampányban, a Google analytics, előfizetés nyomon követése és így tovább lehet hozzáadni. Szűrők teljes listáját lásd: [szűrőbeállítások][Filter Settings].
 
 * Az alábbiakban látható, amely az e-mailt küld a rendszer alján megjelenő HTML-szöveg eredményez élőláb szűrőt be, hogyan kell.
@@ -157,7 +157,7 @@ A SendGrid használatával e-mail további funkciókat biztosít *szűrők*. Eze
           {\"settings\":
           {\"enable\":1}}}}");
 
-## <a name="how-to-update-email-properties"></a>Útmutató: e-mail-tulajdonságok frissítése
+## <a name="how-to-update-email-properties"></a>Útmutató: E-mailek tulajdonságainak frissítése
 Néhány e-mail-tulajdonságok használatával lehet felülírni **tulajdonságot** , illetve használatával **tulajdonság hozzáadása**.
 
 Adja meg például **ReplyTo** címek, használja a következő:
@@ -173,13 +173,13 @@ Hozzáadása egy **Cc** címzett, használja a következő:
     message.addRecipient(Message.RecipientType.CC, new
     InternetAddress("john@contoso.com"));
 
-## <a name="how-to-use-additional-sendgrid-services"></a>Hogyan: további SendGrid-szolgáltatások használata
+## <a name="how-to-use-additional-sendgrid-services"></a>Útmutató: További SendGrid-szolgáltatások használata
 A SendGrid kínál a webes API-kat használhatja az Azure-alkalmazásból további SendGrid funkciói kihasználhatók. További részletek: a [SendGrid API-dokumentáció][SendGrid API documentation].
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy megismerte az alapokat, a SendGrid E-mail szolgáltatás, kövesse az alábbi hivatkozások további.
 
-* Ez a minta azt mutatja be a SendGrid használatával az Azure-környezetben: [hogyan e-mail küldése a SendGrid, a Java használatával Azure-környezetben](store-sendgrid-java-how-to-send-email-example.md)
+* Ez a minta azt mutatja be a SendGrid használatával az Azure-környezetben: [Hogyan lehet e-mail küldése a SendGrid, a Java használatával Azure-környezetben](store-sendgrid-java-how-to-send-email-example.md)
 * A SendGrid Java SDK: <https://sendgrid.com/docs/Code_Examples/java.html>
 * A SendGrid API-dokumentáció: <https://sendgrid.com/docs/API_Reference/index.html>
 * A SendGrid a különleges ajánlat Azure-ügyfelek számára: <https://sendgrid.com/windowsazure.html>

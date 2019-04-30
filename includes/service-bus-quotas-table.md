@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: bb5dc4e01a872178af1bc7d5d57fc189424e7e9d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7add8c10fd3224b9c287ea4cc672191157f56a09
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553663"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60861895"
 ---
 Az alábbi táblázat az Azure Service Bus-üzenetkezelés adott kvótákra vonatkozó információk. Díjszabással kapcsolatos információk és a többi Service Bus kvóták: [Service Bus díjszabásáról](https://azure.microsoft.com/pricing/details/service-bus/).
 
 | Kvóta neve | Hatókör | Megjegyzések | Érték |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | Azure-előfizetésenként alapszintű vagy standard szintű névterek maximális száma |Névtér |Az Azure portal által elutasított további alapszintű vagy standard szintű névterekhez későbbi kérelmeket. |100|
 | Prémium szintű névterek Azure-előfizetésenként maximális száma |Névtér |A további prémium szintű névterek későbbi kérelmeket a rendszer elutasítja a portál által. |25 |
 | Üzenetsor vagy témakör mérete |Entitás |Az üzenetsor vagy témakör létrehozásakor meghatározott. <br/><br/> A rendszer elutasítja a további bejövő üzenetek, és a hívó kód által fogadott kivétel. |1, 2, 3, 4 GB-os vagy 5 GB.<br /><br />A prémium szintű Termékváltozat és a Standard Termékváltozat- [particionálás](/azure/service-bus-messaging/service-bus-partitioning) engedélyezve van, a maximális üzenetsor vagy témakör mérete 80 GB. |

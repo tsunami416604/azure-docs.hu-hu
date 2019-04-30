@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421283"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60931704"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Hogyan lehet E-mail küldése a SendGrid, a Node.js használatával
 
@@ -59,7 +59,7 @@ var sendgrid = require('sendgrid')(sendgrid_username, sendgrid_password);
 A SendGrid modul exportálja a **SendGrid** és **E-mail** funkciók.
 **A SendGrid** feladata a webes API-val, e-mail-küldési közben **E-mail** magában foglalja egy e-mail-üzenetet.
 
-## <a name="how-to-create-an-email"></a>How to: hozzon létre egy e-mailt
+## <a name="how-to-create-an-email"></a>Útmutató: Hozzon létre egy e-mailt
 
 A SendGrid modult használó e-mailbe létrehozása magában foglalja a először létrehoz egy e-mail-üzenetet az E-mail funkció segítségével, és elküldi azt a SendGrid függvény használatával. Az alábbiakban látható egy példa az e-mailek függvény használatával egy új üzenet létrehozását:
 
@@ -108,7 +108,7 @@ sendgrid.send(email, function(err, json){
 > ```
 >
 
-## <a name="how-to-add-an-attachment"></a>Útmutató: a melléklet hozzáadása
+## <a name="how-to-add-an-attachment"></a>Útmutató: A melléklet hozzáadása
 Mellékletek lehet hozzáadni egy üzenetet a fájl neve és elérési úton található megadásával a **fájlok** tulajdonság. A következő példa bemutatja a melléklet küldése:
 
 ```javascript
@@ -135,7 +135,7 @@ sendgrid.send({
 > 
 > 
 
-## <a name="how-to-use-filters-to-enable-footers-and-tracking"></a>How to: Enable láblécek és követési szűrők használata
+## <a name="how-to-use-filters-to-enable-footers-and-tracking"></a>Útmutató: Enable láblécek és követési szűrők használata
 
 A SendGrid szűrők használatával e-mail további funkciókat biztosít. Ezek a beállítások, amelyek e-mailbe ahhoz, hogy bizonyos funkciók, például engedélyezheti a kampányban, a Google analytics, előfizetés nyomon követése és így tovább lehet hozzáadni. Szűrők teljes listáját lásd: [szűrőbeállítások][Filter Settings].
 
@@ -186,7 +186,7 @@ email.setFilters({
 sendgrid.send(email);
 ```
 
-## <a name="how-to-update-email-properties"></a>How to: e-mailek tulajdonságainak frissítése
+## <a name="how-to-update-email-properties"></a>Útmutató: E-mailek tulajdonságainak frissítése
 
 Néhány e-mail-tulajdonságok használatával lehet felülírni **setProperty** , illetve használatával **addProperty**. Például hozzáadhat további címzettek használatával
 
@@ -203,7 +203,7 @@ email.addFilter('footer', 'text/html', '<strong>boo</strong>');
 
 További információkért lásd: [sendgrid-nodejs][sendgrid-nodejs].
 
-## <a name="how-to-use-additional-sendgrid-services"></a>How to: további SendGrid-szolgáltatások használata
+## <a name="how-to-use-additional-sendgrid-services"></a>Útmutató: A SendGrid további szolgáltatások használata
 
 A SendGrid kínál a webes API-kat használhatja az Azure-alkalmazásból további SendGrid funkciói kihasználhatók. További részletek: a [SendGrid API-dokumentáció][SendGrid API documentation].
 

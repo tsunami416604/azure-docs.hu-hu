@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 831f6b4bdc99e63859b390f8a9bb88d74301284e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997530"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128100"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>A Mobile Apps Node.js SDK használata
 
@@ -372,7 +372,7 @@ A azureMobile.js fájl beállításai a legtöbb rendelkezik egyenértékű alka
 
 | Alkalmazás-beállítás | azureMobile.js setting | Leírás | Érvényes értékek |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |név |Az alkalmazás neve |sztring |
+| **MS_MobileAppName** |név |Az alkalmazás neve |string |
 | **MS_MobileLoggingLevel** |Logging.level |Minimális naplózási szint üzenetek naplózása |Hiba, figyelmeztetés, információ részletes, hibakeresési, silly |
 | **MS_DebugMode** |hibakeresés |Engedélyezi vagy letiltja a hibakeresési mód |IGAZ, hamis |
 | **MS_TableSchema** |Data.Schema |SQL-táblák alapértelmezett séma neve |karakterlánc (alapértelmezett: dbo) |

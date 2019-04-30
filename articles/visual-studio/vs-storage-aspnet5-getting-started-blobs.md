@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: b2b707585df4a7ec26f689b4213be74bdaab680d
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 388c4d5f28e87f5cfe26336771d30fa44c6f9ef0
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054916"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123008"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Ismerkedés az Azure Blob storage és a Visual Studio csatlakoztatott szolgáltatásainak (ASP.NET-mag)
 
@@ -27,7 +27,7 @@ Ez a cikk azt ismerteti, hogyan kezdheti el az Azure Blob storage a Visual Studi
 
 Az Azure Blob storage szolgáltatás nagy mennyiségű strukturálatlan adat, amely segítségével bárhonnan elérhetők HTTP- vagy HTTPS keresztül a világon tárolásához. Egy blob bármilyen méretű lehet. Blobok lehet többek között a képeket, hang- és videofájlok, nyers adatokat és fájlokat. Ez a cikk bemutatja, hogyan kezdheti el a blob storage, a Visual Studio használatával Azure storage-fiók létrehozása után **csatlakoztatott szolgáltatás** ASP.NET Core-projektben.
 
-Fájlok él, mappák, mint a tárolóblobok élő tárolókban. Miután létrehozott egy blobot, létrehoz egy vagy több tárolók, hogy a blob. Például egy blobba "Lapkivágások" nevű, "rendszerképek" képek tárolásához nevű tárolókat hozhat létre, és más néven "hang" zenei fájlok tárolására. Miután létrehozta a tárolók, egyes fájlokat tölthet fel őket. Lásd: [a rövid útmutató: blobok feltöltése, letöltése, és lista .NET használatával](../storage/blobs/storage-quickstart-blobs-dotnet.md) programozott módon a blobok módosítása további tájékoztatást.
+Fájlok él, mappák, mint a tárolóblobok élő tárolókban. Miután létrehozott egy blobot, létrehoz egy vagy több tárolók, hogy a blob. Például egy blobba "Lapkivágások" nevű, "rendszerképek" képek tárolásához nevű tárolókat hozhat létre, és más néven "hang" zenei fájlok tárolására. Miután létrehozta a tárolók, egyes fájlokat tölthet fel őket. Lásd: [a rövid útmutató: Blobok feltöltése, letöltése, és lista .NET használatával](../storage/blobs/storage-quickstart-blobs-dotnet.md) programozott módon a blobok módosítása további tájékoztatást.
 
 Az Azure Storage API-k némelyike aszinkron, és ebben a cikkben a kód azt feltételezi, hogy az aszinkron módszereket használ. Lásd: [aszinkron programozás](https://docs.microsoft.com/dotnet/csharp/async) további információt.
 
@@ -140,7 +140,7 @@ do
 } while (token != null);
 ```
 
-Lásd: [a rövid útmutató: blobok feltöltése, letöltése, és lista .NET használatával](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container) blob-tároló tartalmának listázását egyéb módjaira vonatkozóan.
+Lásd: [a rövid útmutató: Blobok feltöltése, letöltése, és lista .NET használatával](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container) blob-tároló tartalmának listázását egyéb módjaira vonatkozóan.
 
 ## <a name="download-a-blob"></a>Blob letöltése
 
@@ -157,7 +157,7 @@ using (var fileStream = System.IO.File.OpenWrite(@"path\myfile"))
 }
 ```
 
-Lásd: [a rövid útmutató: feltöltése, letöltése és blobok listázása a .NET használatával](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs) blobok Mentés másként fájlok egyéb módjaira vonatkozóan.
+Lásd: [a rövid útmutató: Blobok feltöltése, letöltése, és lista .NET használatával](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs) blobok Mentés másként fájlok egyéb módjaira vonatkozóan.
 
 ## <a name="delete-a-blob"></a>Blob törlése
 

@@ -12,11 +12,11 @@ ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 7497255dcad55cea86e0c640e2f1423d7d763a7f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713626"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60737967"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Az Azure Portalon a függvényalkalmazás kezelése 
 
@@ -74,7 +74,7 @@ Ez a témakör a következő App Service-szolgáltatások az Azure Portalon, ame
 
 Az App Service-beállításokkal kapcsolatos további információkért lásd: [konfigurálása az Azure App Service beállítások](../app-service/web-sites-configure.md).
 
-### <a name="editor"></a>Az App Service Editor
+### <a name="editor"></a>App Service Editor
 
 | | |
 |-|-|

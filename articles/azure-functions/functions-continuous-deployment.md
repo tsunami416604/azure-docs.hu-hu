@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
 ms.openlocfilehash: fd8fa690c508b8bf748490668c1e9aaa811ac247
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300278"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60731243"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions – folyamatos üzembe helyezés
 Az Azure Functions megkönnyíti az alkalmazás üzembe helyezése a függvény használatával az App Service folyamatos integrációt. Functions integrálható a BitBucket, Dropbox, GitHub és az Azure DevOps. Ez lehetővé teszi egy munkafolyamatot, ahol frissíti a függvénykódot ezek integrált szolgáltatások eseményindító üzembe helyezés az Azure-bA egyikének használatával végzett. Ha most ismerkedik az Azure Functions, kezdje [Azure Functions áttekintése](functions-overview.md).

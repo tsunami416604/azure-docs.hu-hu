@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: b6f93cc3c35ab18ecd50ccd6b3090985497baabf
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121770"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122455"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Hogyan lehet Azure Mobile Apps-Klienskódtárának használata iOS-re
 
@@ -282,7 +282,7 @@ table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
 
 ## <a name="inserting"></a>kézikönyv: Adatok beszúrása
 
-Hozzon létre egy új tábla sor beszúrásához a `NSDictionary` és meghívása `table insert`. Ha [a dinamikus sémák] van engedélyezve, az Azure App Service-mobilháttérmodul automatikusan előállítja az új oszlopok alapján a `NSDictionary`.
+Hozzon létre egy új tábla sor beszúrásához a `NSDictionary` és meghívása `table insert`. Ha [Dynamic Schema] van engedélyezve, az Azure App Service-mobilháttérmodul automatikusan előállítja az új oszlopok alapján a `NSDictionary`.
 
 Ha `id` nincs megadva, a háttérben automatikusan létrehoz egy új egyedi. Adja meg a saját `id` e-mail-címek, felhasználóneveket, vagy saját egyéni értékeket-azonosító néven Megkönnyítése érdekében az biztosítása a saját azonosító előfordulhat, hogy illesztések és üzleti célú adatbázis logikát.
 
@@ -904,7 +904,7 @@ A Google bejelentkezési SDK IOS rendszerhez készült segítségével bejelentk
 [Permissions]: https://msdn.microsoft.com/library/windowsazure/jj193161.aspx
 [Service-side Authorization]: mobile-services-javascript-backend-service-side-authorization.md
 [Use scripts to authorize users]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
-[A dinamikus sémák]: https://go.microsoft.com/fwlink/p/?LinkId=296271
+[Dynamic Schema]: https://go.microsoft.com/fwlink/p/?LinkId=296271
 [How to: access custom parameters]: /develop/mobile/how-to-guides/work-with-server-scripts#access-headers
 [Create a table]: https://msdn.microsoft.com/library/windowsazure/jj193162.aspx
 [NSDictionary object]: https://go.microsoft.com/fwlink/p/?LinkId=301965

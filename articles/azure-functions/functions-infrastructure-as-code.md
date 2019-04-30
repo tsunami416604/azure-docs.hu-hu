@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
 ms.openlocfilehash: 5d028768c062ef7df74d48f83ccc4e27a506f1ac
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270903"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60737057"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>A függvényalkalmazás az Azure Functions erőforrások üzembe helyezésének automatizálása
 
@@ -39,8 +39,8 @@ Ezeket az erőforrásokat általában tartalmaz egy Azure Functions üzembe hely
 
 | Erőforrás                                                                           | Követelmény | Szintaxist és a Tulajdonságok referencia                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| Függvényalkalmazás                                                                     | Szükséges    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
-| Egy [Azure Storage](../storage/index.yml) fiók                                   | Szükséges    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
+| Függvényalkalmazás                                                                     | Kötelező    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
+| Egy [Azure Storage](../storage/index.yml) fiók                                   | Kötelező    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
 | Egy [Application Insights](../azure-monitor/app/app-insights-overview.md) összetevő | Optional    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
 | A [szolgáltatási csomag](./functions-scale.md)                                             | Nem kötelező<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
 

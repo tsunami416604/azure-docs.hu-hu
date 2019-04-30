@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: db701a239aedb312c7671e403cdfde7135130c6d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 644cc2a4175043b523d53b39f17483c6f3acfe96
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089607"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60558401"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Hogyan lehet Azure Active Directory B2C használatával az Azure API Management fejlesztői fiókok engedélyezése
 
@@ -69,29 +69,20 @@ Az Azure Active Directory B2C egy felhőbeli identitáskezelő megoldás a felha
    ![1 alkalmazás azonosítója][api-management-howto-aad-b2c-app-id]
 
 9. Váltson vissza az API Management **Hozzáadás identitásszolgáltató** ablaktábla és a Beillesztés Azonosítóját, a **ügyfél-azonosító** szövegmezőben.
-
-   ![Kérelem azonosítója 2][api-management-howto-aad-b2c-client-id]
-
+    
 10. Váltson vissza a B2C-alkalmazás regisztrációja, kattintson a **kulcsok** gombra, majd **kulcs generálása**. Kattintson a **mentése** a konfiguráció mentéséhez és megjelenítéséhez a **Alkalmazáskulcs**. Másolja a vágólapra a kulcsot.
 
     ![Alkalmazáskulcs 1][api-management-howto-aad-b2c-app-key]
 
 11. Váltson vissza az API Management **Hozzáadás identitásszolgáltató** ablaktáblán, majd illessze be a kulcsot a **titkos Ügyfélkód** szövegmezőben.
+    
+12. Adja meg a tartomány nevét az Azure Active Directory B2C-bérlő **bejelentkezési bérlő**.
 
-    ![2 alkalmazás-kulcs][api-management-howto-aad-b2c-client-secret]
+13. A **hatóság** mező segítségével szabályozható, hogy az Azure AD B2C-vel bejelentkezési URL-cím használatára. Állítsa az értékét **< your_b2c_tenant_name >. a b2clogin.com**.
 
-12. Adja meg a tartomány nevét az Azure Active Directory B2C-bérlő **engedélyezett bérlő**.
+14. Adja meg a **előfizetési szabályzat** és **bejelentkezési házirend** a B2C-bérlő szabályzatokból származó. Igény szerint is megadhatja a **szerkesztési Profilházirendet** és **jelszó-visszaállítási házirend**.
 
-    ![Az engedélyezett bérlő][api-management-howto-aad-b2c-allowed-tenant]
-
-13. Adja meg a **előfizetési szabályzat** és **bejelentkezési házirend** a B2C-bérlő szabályzatokból származó. Igény szerint is megadhatja a **szerkesztési Profilházirendet** és **jelszó-visszaállítási házirend**.
-
-    ![Házirendek][api-management-howto-aad-b2c-policies]
-
-    > [!NOTE]
-    > További információ a házirendek, lásd: [Azure Active Directory B2C: Bővíthető házirend-keretrendszer].
-
-14. A szükséges konfiguráció megadása után kattintson a **mentése**.
+15. A szükséges konfiguráció megadása után kattintson a **mentése**.
 
     A módosítások mentése után a fejlesztők fog tudni új fiókok létrehozásához, és jelentkezzen be a fejlesztői portálra az Azure Active Directory B2C használatával.
 

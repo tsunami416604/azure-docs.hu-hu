@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: f5ffc795e6469971d1eaf335d6683f94d05f0807
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278608"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122438"
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>App Service-ben a .NET Azure meglévő Mobile Service frissítése
 Az App Service Mobile egy új módja a Microsoft Azure mobile alkalmazásokat hozhat létre. További tudnivalókért lásd: [Mi a Mobile Apps szolgáltatás?].
@@ -73,7 +73,7 @@ Valószínűleg érdemes ugyanabban az adatbázisban és értesítési központ 
 Győződjön meg arról, az ASP.NET-projekt az alkalmazás egy példányát, és tegye közzé az új hely. Frissítve az új URL-címmel az ügyfélalkalmazás egy példányát használja, ellenőrizze, hogy minden a várt módon működik.
 
 ## <a name="updating-the-server-project"></a>A kiszolgálói projekt frissítése
-Mobile Apps biztosít egy új [Mobil alkalmazások kiszolgálói SDK] biztosító szinte ugyanazokat a funkciókat biztosítja, mint a Mobile Services modul. Először el kell távolítania minden hivatkozás, amelyben a Mobile Services-csomagokat. A NuGet package manager keressen `WindowsAzure.MobileServices.Backend`. A legtöbb alkalmazás megjelenik itt, több csomagot, beleértve a `WindowsAzure.MobileServices.Backend.Tables` és `WindowsAzure.MobileServices.Backend.Entity`. Ebben az esetben indítsa el a függőségi fán a legalacsonyabb szintű csomag például `Entity`, és távolítsa el azt. Amikor a rendszer kéri, ne távolítsa el az összes függő csomagok. Ismételje meg ezt a folyamatot, amíg nem távolította el `WindowsAzure.MobileServices.Backend` magát.
+Mobile Apps biztosít egy új [Mobile App Server SDK] biztosító szinte ugyanazokat a funkciókat biztosítja, mint a Mobile Services modul. Először el kell távolítania minden hivatkozás, amelyben a Mobile Services-csomagokat. A NuGet package manager keressen `WindowsAzure.MobileServices.Backend`. A legtöbb alkalmazás megjelenik itt, több csomagot, beleértve a `WindowsAzure.MobileServices.Backend.Tables` és `WindowsAzure.MobileServices.Backend.Entity`. Ebben az esetben indítsa el a függőségi fán a legalacsonyabb szintű csomag például `Entity`, és távolítsa el azt. Amikor a rendszer kéri, ne távolítsa el az összes függő csomagok. Ismételje meg ezt a folyamatot, amíg nem távolította el `WindowsAzure.MobileServices.Backend` magát.
 
 Ezen a ponton kell egy projekt, amely már nem hivatkozik a Mobile Services SDK-k.
 
@@ -122,7 +122,7 @@ app.UseAppServiceAuthentication(config);
 
 Nincsenek hitelesítéshez kapcsolódó további módosításokat, amelyek a teljes hitelesítés szakaszban szerepelnek.
 
-### <a name="working-with-data"></a>Adatok használata
+### <a name="working-with-data"></a>Adatokkal végzett munka
 A Mobile Services a mobilalkalmazás neve szolgálja ki, az Entity Framework beállítások alapértelmezett séma nevével.
 
 Annak érdekében, hogy ugyanazzal a sémával előtti, használja a következő beállítása a séma az alkalmazás a DbContext hivatkozik rá:
@@ -165,7 +165,7 @@ IOS-eszközökön akkor módosítani kell a Core sémát az adatok entitások me
 | id |Karakterlánc, kötelezőként megjelölt |Távoli tároló az elsődleges kulcs |
 | createdAt |Dátum |(nem kötelező) vannak leképezve createdAt rendszertulajdonság |
 | updatedAt |Dátum |(nem kötelező) vannak leképezve updatedAt rendszertulajdonság |
-| version |Karakterlánc |(nem kötelező) annak észlelésére használnak, ütközéseket, a maps-verzióra |
+| version |String |(nem kötelező) annak észlelésére használnak, ütközéseket, a maps-verzióra |
 
 #### <a name="querying-system-properties"></a>Lekérdezés tulajdonságai
 Azure Mobile Services, a rendszer tulajdonságai nem kap meg alapértelmezés szerint, de csak akkor, amikor erre felkérést kapnak a lekérdezési karakterlánc használatával `__systemProperties`. Ezzel szemben az Azure Mobile Apps rendszerben a tulajdonságok akkor vannak **mindig kiválasztott** , mivel a kiszolgáló SDK hálózatiobjektum-modellt részét képezik.
@@ -281,7 +281,7 @@ Ha készen áll az új ügyfél verziója, próbálja ki a frissített kiszolgá
 
 [Azure Portal]: https://portal.azure.com/
 [Mi a Mobile Apps szolgáltatás?]: app-service-mobile-value-prop.md
-[Mobil alkalmazások kiszolgálói SDK]: https://www.nuget.org/packages/microsoft.azure.mobile.server
+[Mobile App Server SDK]: https://www.nuget.org/packages/microsoft.azure.mobile.server
 [Add authentication to your mobile app]: app-service-mobile-xamarin-ios-get-started-users.md
 [Azure Scheduler]: /azure/scheduler/
 [Webjobs-feladat]: https://github.com/Azure/azure-webjobs-sdk/wiki

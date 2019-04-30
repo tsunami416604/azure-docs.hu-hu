@@ -1,15 +1,10 @@
 ---
-author: cephalin
-ms.service: app-service-web
-ms.topic: include
-ms.date: 11/03/2016
-ms.author: cephalin
 ms.openlocfilehash: d001d76bca5b9a0837349b6e05b3b0a271ea3a73
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133954"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128522"
 ---
 > [!NOTE]
 > Az Azure DNS segítségével konfigurálhat egy egyéni DNS-nevet az Azure-webalkalmazások számára. További információt az [egyéni tartománybeállítások egy Azure-szolgáltatáshoz az Azure DNS használatával történő megadását](../articles/dns/dns-custom-domain.md#app-service-web-apps) ismertető cikkben talál.
