@@ -1,6 +1,6 @@
 ---
-title: How Azure támogatási jegy biztonsági esemény - bejelentkezni |} Microsoft Docs
-description: Egy értékesítő az Azure piactéren, hogy azonosítani a potenciális biztonsági események esetén, tudja, hogyan kell egy megfelelő jegy naplózni kell.
+title: Bejelentkezéshez támogatási jegy biztonsági esemény – Azure |} A Microsoft Docs
+description: Az eladó kellene azonosítani a potenciális biztonsági esemény, az Azure piactéren, tudja, hogyan kell egy megfelelő jegy naplózása kell.
 services: security
 documentationcenter: na
 author: DavidBosland
@@ -14,39 +14,39 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2017
 ms.author: v-dabosl
-ms.openlocfilehash: 753d6abcdd063d5c092b0c90770396d176bc52e8
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 243b6b7846719d3f848073e3aa973c9406ca59c7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
-ms.locfileid: "26129940"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60586583"
 ---
-# <a name="how-to-log-a-security-event-support-ticket"></a>Napló biztonsági esemény támogatási jegy hogyan
+# <a name="how-to-log-a-security-event-support-ticket"></a>Hogyan lehet egy biztonsági esemény támogatási jegyek rögzítése
 
-1. Navigáljon a [közzétevő támogatási csoportjához](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636450758943226673) , és jelentkezzen be a Microsoft-fiókjával.
-2. Válassza ki a "Biztonsági esemény" a probléma típusa, és válassza a "Biztonsági esemény" és "Biztonsági rés" kategóriák között.
+1. Navigáljon a [közzétevő támogatási](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636450758943226673) , és jelentkezzen be a Microsoft-fiókjával.
+2. A probléma típusaként válassza a "Biztonsági esemény", és válassza a "Biztonsági esemény" és "Biztonsági rések" kategóriák között.
 
-    ![Esemény típusa és a definíciós][1]
+    ![Esemény típusa és a definíció][1]
 
-3. Miután kiválasztotta a probléma típusa és kategóriája, kattintson a "**indítási kérésre**" gombra. Adja meg a következő információk segítenek jobban megérteni a problémát.
+3. Miután kiválasztotta a probléma típusát és kategóriáját, kattintson a "**indítási kérést**" gombra. Adja meg a következő adatokat, és segítsen jobban megismerheti a probléma.
 
-    i. Mi az a probléma és/vagy a biztonsági rés?
+    i. Mi a probléma és/vagy a biztonsági rés?
 
-    II. A biztonsági réseket adja meg a CVE (mitre.org) vagy a kitöltött kimenő CVSS3 v3 Számológép (https://www.first.org/cvss/calculator/3.0).
+    ii. A biztonsági réseket, adja meg a CVE (mitre.org) vagy a kitöltött CVSS3 v3 Számológép ki (https://www.first.org/cvss/calculator/3.0).
 
-    III. A megoldási vagy enyhítési van-e? Ha igen, majd adja meg a javítási lépéseket.
+    III. Van egy megoldási vagy enyhítési? Ha igen, majd adja meg a javítási lépéseket.
 
-    IV. Rendelkezik egy üzenetet szeretne küldeni az ügyfél számára? A Microsoft Önnel együttműködve létrehozható egy megfelelő üzenetet, ha van ilyen.
+    IV. Rendelkezik egy üzenet, amely elküldi az ügyfelek számára? A Microsoft együtt fog működni Önnel egy megfelelő üzenet létrehozható, ha van ilyen.
 
-4. Küldésének megerősítés – Miután elküldte a problémát, rendszer igazolja egy munkanapon belül és rendelje hozzá a problémát, a prioritás és súlyosság.
+4. Beküldött tartalomról – Miután elküldte a problémát, azt fogja igazolhatom egy munkanapon belül, és rendelje hozzá a problémát, a prioritás és súlyosság.
 
-    - A problémával kapcsolatos velünk kommunikálni kell, ha minden levelezés szereplő megerősítő számát használja.
-    - Folyamatban lévő bármikor megtekintheti a problémát.
+    - A problémával kapcsolatban, lépjen velünk kommunikációra van szüksége, ha használja a megerősítő száma minden kommunikációjában.
+    - Folyamat bármikor megtekintheti a problémát.
 
-5. Mi a következő lépés? Attól függően, hogy a problémát és a súlyosság a következő lépések tehetők:
+5. Mi a következő lépés? Attól függően, a problémát, súlyosság a következő lépések tehetők:
 
-    - Igazolnia kell tájékoztatnia az értékelés eredményét. Attól függően, hogy a eredménytől függően a Microsoft távolítsa el vagy módosítására, hogy az ajánlat kérelem. Az esemény azt fog működni Önnel győződjön meg arról, hogy az érintett felhasználók megszakadását másodpercekre csökken.
-    - A Microsoft Önnel együttműködve kölcsönös ügyfeleink incidens/biztonsági rés hatásának csökkentése érdekében.
+    - Azt közli, hogy az értékelés eredményét. Függően az eredménye hogy előfordulhat, hogy távolítsa el, vagy kérje meg az ajánlata módosítására, hogy. Ebben az esetben fogjuk intézni, hogy győződjön meg arról, hogy megszakítás érintett ügyfelek másodpercekre csökken.
+    - A Microsoft együtt fog működni Önnel segítségével az ügyfelek számára az incidens/biztonságirés hatásainak mérséklése érdekében.
 
 
 [1]: ./media/azure-security-event-support-ticket/chart.png

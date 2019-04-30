@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Backup: REST API-val biztonsági mentési feladatok kezelése'
+title: 'Azure Backup: A REST API használatával a biztonsági mentési feladatok kezelése'
 description: biztonsági mentés kezelhetik és visszaállíthatják a feladatokat az Azure Backup – REST API használatával
 services: backup
 author: pvrk
@@ -11,11 +11,11 @@ ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
 ms.openlocfilehash: eb8b7dc77d180eb56c2585e93e60a36742f6c84c
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289679"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60646622"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Nyomon követheti a biztonsági mentési és helyreállítási feladatok REST API használatával
 
@@ -23,7 +23,7 @@ Az Azure Backup szolgáltatás aktiválása, feladatok, amelyek különböző al
 
 ## <a name="fetch-job-information-from-operations"></a>Kéri le a feladat adatait a műveletek
 
-Egy művelet, például a biztonsági mentésének elindítása egy jobID mindig ad vissza. A példa: utolsó válasza egy [aktiválja a biztonsági mentési REST API-művelet](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) a következő:
+Egy művelet, például a biztonsági mentésének elindítása egy jobID mindig ad vissza. A példa: Utolsó válasza egy [aktiválja a biztonsági mentési REST API-művelet](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) a következő:
 
 ```http
 {

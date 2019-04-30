@@ -15,11 +15,11 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: e0454d0124efba04434884fbac9056c5e324710d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670880"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60556372"
 ---
 # <a name="sfctl-service"></a>sfctl service
 Létrehozása, törlése és kezelése a service, a szolgáltatástípusok és a szolgáltatáscsomagok.
@@ -34,7 +34,7 @@ Létrehozása, törlése és kezelése a service, a szolgáltatástípusok és a
 | delete | Törli a már meglévő Service Fabric-szolgáltatást. |
 | üzembe helyezett típusa | Egy megadott szolgáltatás típusú Service Fabric-fürt egyik csomópontján üzembe helyezett alkalmazás adatainak beolvasása. |
 | üzembe helyezett-type-list | A Service Fabric-fürt egyik csomópontján üzembe helyezett alkalmazások szolgáltatástípusok információt tartalmazó lista beolvasása. |
-| leírás | Beolvassa egy meglévő Service Fabric-szolgáltatás leírását. |
+| description | Beolvassa egy meglévő Service Fabric-szolgáltatás leírását. |
 | get-container-logs | Lekéri a tároló naplóit tároló üzembe helyezett egy Service Fabric-csomóponton. |
 | egészségügy | A megadott Service Fabric-szolgáltatás állapotának beolvasása. |
 | információ | A Service Fabric-alkalmazáshoz tartozó szolgáltatás adatainak beolvasása. |

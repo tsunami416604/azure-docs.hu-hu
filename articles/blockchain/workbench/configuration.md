@@ -11,11 +11,11 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
 ms.openlocfilehash: 4d29d8e86a30f105c4aa50ec9615f8165fa238d3
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578747"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60578980"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Az Azure Blockchain Workbench konfiguráció leírása
 
@@ -67,11 +67,11 @@ Egy alkalmazás üzleti logika egy állapotú gép, hol tart a művelet hatásá
 
 Egy vonatkozó példáért lásd: [konfigurációs fájl példa](#configuration-file-example).
 
-## <a name="type"></a>Typo
+## <a name="type"></a>Típus
 
 Támogatott adattípusok.
 
-| Typo | Leírás |
+| Típus | Leírás |
 |-------|-------------|
 | cím  | Blockchain-címtípus, mint például *szerződések* vagy *felhasználók*. |
 | tömb    | Egyetlen szolgáltatói tömb egész szám típusú, logikai, pénzt és időt. Tömbök lehet statikus vagy dinamikus. Használat **ElementType** az elemek a tömbön belüli adattípusának megadásához. Lásd: [konfiguráció például](#example-configuration-of-type-array). |
@@ -79,11 +79,11 @@ Támogatott adattípusok.
 | Szerződés | Cím típusa kontraktu. |
 | Enum     | Névvel ellátott értékek sorszámozott készlete. A számbavételi típus használatakor is EnumValues listáját adja meg. Minden egyes értéke legfeljebb 255 karakter hosszúságú lehet. Érvényes értéket karakterek a következők felső és kisbetűs betűket (A – Z, a – z), és számokat (0 – 9). Lásd: [példa konfigurációját és használatát a Solidity](#example-configuration-of-type-enum). |
 | int      | Integer adattípus. |
-| költséget takaríthat meg    | Pénz adattípus. |
+| money    | Pénz adattípus. |
 | state    | A munkafolyamat állapota. |
-| sztring  | String adattípusú. engedélyezett a 4000 karakter. Lásd: [konfiguráció például](#example-configuration-of-type-string). |
+| string  | String adattípusú. engedélyezett a 4000 karakter. Lásd: [konfiguráció például](#example-configuration-of-type-string). |
 | Felhasználó     | Írja be a felhasználó címe. |
-| idő-     | Idő adattípust. |
+| time     | Idő adattípust. |
 |`[ Application Role Name ]`| Bármely alkalmazás-szerepkör a megadott név. Korlátozza a felhasználók számára az adott szerepkör típusú lehet. |
 
 ### <a name="example-configuration-of-type-array"></a>Példa konfigurációs tömb típusú
@@ -174,7 +174,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 Bemeneti paramétereket a munkafolyamat egy példányát határozza meg.
 
-| Mező | Leírás | Szükséges |
+| Mező | Leírás | Kötelező |
 |-------|-------------|:--------:|
 | Paraméterek | A gyűjtemény [azonosítók](#identifiers) egy intelligens szerződés kezdeményezéséhez szükséges. | Igen |
 
@@ -255,7 +255,7 @@ A munkafolyamat a végrehajtható függvények határozza meg.
 
 Egy munkafolyamaton belül egyedi állapotok gyűjteménye. Minden állapot egyik lépése az üzleti logika átvitelvezérlés rögzíti. 
 
-| Mező | Leírás | Szükséges | Maximális hossz |
+| Mező | Leírás | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
 | Name (Név) | Az állapot egyedi nevét. A megfelelő intelligens szerződést kell használnia az azonos **neve** a megfelelő állapothoz. | Igen | 50 |
 | Megjelenítendő név | Az állapot hangzó megjelenítési nevet. | Igen | 255 |
@@ -324,7 +324,7 @@ Egy munkafolyamaton belül egyedi állapotok gyűjteménye. Minden állapot egyi
 
 A következő állapotban elérhető műveletek. Egy vagy több felhasználói szerepkör egyes állapotokhoz, ahol áttérés a művelet lehetséges, hogy a munkafolyamat állapotát egy másik olyan állapotban található egy művelet végezhet. 
 
-| Mező | Leírás | Szükséges |
+| Mező | Leírás | Kötelező |
 |-------|-------------|:--------:|
 | AllowedRoles | Az átállás kezdeményezése engedélyezett alkalmazások szerepkörök listája. Lehet, hogy minden felhasználó a megadott szerepkör tudni elvégezni a műveletet. | Nem |
 | AllowedInstanceRoles | Való részvétellel vagy az átállás kezdeményezése engedélyezett intelligens szerződésben meghatározott felhasználói szerepkörök listája. Példány szerepkörök meghatározott **tulajdonságok** munkafolyamatok belül. AllowedInstanceRoles egy felhasználó részt vesz egy intelligens szerződés egy példányát jelentik. AllowedInstanceRoles lehetővé teszik, korlátozhatja a felhasználói szerepkörhöz művelet véve egy szerződés-példányban.  Például előfordulhat, hogy csak szeretné, hogy a felhasználó, aki létrehozta a szerződést (InstanceOwner) tudják megszűnik ahelyett, hogy a szerepkör típusa (tulajdonos) lévő összes felhasználó számára, ha a szerepkör AllowedRoles megadott. | Nem |
@@ -369,7 +369,7 @@ A következő állapotban elérhető műveletek. Egy vagy több felhasználói s
 
 Alkalmazás-szerepkörök meghatározhatja egy adott szerepkörök, felhasználók, akik jár el, vagy hogy részt vegyen, az alkalmazáson belül kívánja kell hozzárendelni. Alkalmazás-szerepkörök használható műveletek és a blockchain belül való részvétel korlátozása az alkalmazás és a megfelelő munkafolyamatok. 
 
-| Mező | Leírás | Szükséges | Maximális hossz |
+| Mező | Leírás | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
 | Name (Név) | Az alkalmazás-szerepkör egyedi neve. A megfelelő intelligens szerződést kell használnia az azonos **neve** a alkalmazni szerepkörhöz. Základní typ nevek használata nem engedélyezett. Nem lehet nevezze el az alkalmazás-szerepkör neve megegyezik a [típusa](#type)| Igen | 50 |
 | Leírás | Az alkalmazás-szerepkör leírása. | Nem | 255 |

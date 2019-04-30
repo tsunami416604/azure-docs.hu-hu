@@ -10,11 +10,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 5bc133e81f9917aafb406a6bfb27922cdba48ef5
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190005"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60612239"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Az Azure IoT Edge által támogatott rendszerek
 
@@ -67,7 +67,7 @@ Nyilvános előzetes verzió
 | ---------------- | ----- | ----- |
 | Windows 10 IoT Core, build 17763 | Igen | Nem |
 | A Windows 10 IoT Enterprise, a build 17763 | Igen | Nem |
-| Windows Server 2019 | Igen | Nem |
+| A Windows Server 2019 | Igen | Nem |
 
 A Windows operációs rendszerek fent felsorolt Windows-tárolók a Windows rendszerű eszközök követelmények vonatkoznak. Ez a konfiguráció az egyetlen támogatott konfigurációkra vonatkozó üzemi. Windows Azure IoT Edge-telepítőcsomagok Windows; a Linux-tárolók használatának engedélyezése azonban ez a konfiguráció kizárólag fejlesztési és tesztelési szól. A Windows Linux-tárolók használata nem támogatott konfiguráció éles üzemi környezetek részei. Az alkalmazásfejlesztési forgatókönyvet bármilyen Windows 10-es build 14393 vagy újabb verzió és a Windows Server 2016-os vagy újabb verzió használható.
 

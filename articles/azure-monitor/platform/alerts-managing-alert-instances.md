@@ -9,11 +9,11 @@ ms.date: 09/24/2018
 ms.author: anantr
 ms.subservice: alerts
 ms.openlocfilehash: cb93f38c05156d7ab5acb89ffff810949583e507
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089403"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60551873"
 ---
 # <a name="manage-alert-instances"></a>Riasztáspéldányok kezelése
 Az a [egységes riasztások kezelőfelület](https://aka.ms/azure-alerts-overview) az Azure monitorban, most már megtekintheti a riasztások különböző típusait Azure-on, több előfizetést, egy egyetlen panelen tekinthesse átfedés. Ez a cikk végigvezeti a riasztási példányok megtekintésének és a meghatározott riasztási példányok található hibaelhárítási portálon részletesen.

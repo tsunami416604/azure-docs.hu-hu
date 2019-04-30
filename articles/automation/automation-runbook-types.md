@@ -10,17 +10,17 @@ ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 7a3990366814beda83852fc7c07c896445388c23
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454901"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60737159"
 ---
 # <a name="azure-automation-runbook-types"></a>Az Azure Automation forgatókönyveinek típusai
 
 Az Azure Automation az alábbi táblázatban számos különböző típusú, amely röviden ismerteti a runbookok támogatja.  Az alábbi szakaszok további információt arról, hogy az egyes mikor szempontok többek között.
 
-| Typo | Leírás |
+| Típus | Leírás |
 |:--- |:--- |
 | [Grafikus](#graphical-runbooks)|A Windows PowerShell és a létrehozott és szerkesztett teljes egészében az Azure Portalon grafikus szerkesztő alapján. |
 | [Grafikus PowerShell-munkafolyamat](#graphical-runbooks)|Windows PowerShell-munkafolyamaton alapuló és a létrehozott és szerkesztésük teljes egészében az Azure Portalon a grafikus szerkesztőben. |

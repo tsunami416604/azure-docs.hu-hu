@@ -1,27 +1,22 @@
 ---
-title: Parancsfájlművelet-alapú fejlesztés a Linux-alapú HDInsight – Azure
-description: 'Útmutató: Linux-alapú HDInsight-fürtök testre szabása a Bash-szkriptek használatával. HDInsight parancsfájl műveletet jellemzője lehetővé teszi, hogy a parancsfájlok futtatása közben, vagy a fürt létrehozása után. Parancsprogramok segítségével fürt konfigurációs beállításokat módosítaná, vagy további szoftverek telepíthetők.'
-services: hdinsight
+title: Az Azure HDInsight-fürtök testreszabása szkriptműveletek fejlesztése
+description: Ismerje meg a Bash-szkriptek használata a HDInsight-fürtök testre szabása. Szkriptműveletek lehetővé teszik a parancsfájlok futtatása közben vagy után a fürt létrehozása a fürt konfigurációs beállításokat módosítaná, vagy további szoftverek telepíthetők.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: 0d56d901ca932f044ef71ef2bc24933bcf18c24a
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.date: 04/22/2019
+ms.openlocfilehash: 66132a2a6a7b5b89bca0767efe7c194ca3dec051
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544585"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60590794"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájlművelet-alapú fejlesztés a HDInsight
 
 Ismerje meg, hogyan szabhatja testre a Bash-szkriptek használata a HDInsight-fürt. A szkriptműveletek olyan testreszabhatja a HDInsight fürt létrehozás során vagy után.
-
-> [!IMPORTANT]  
-> A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="what-are-script-actions"></a>Mik azok a Parancsfájlműveletek
 
@@ -61,13 +56,28 @@ Egy HDInsight-fürthöz tartozó egyéni parancsfájl fejlesztésekor van néhá
 
 Különböző verzióit a HDInsight Hadoop-szolgáltatásokhoz és a telepített összetevők különböző verziója van. A szkript egy adott verzióját egy szolgáltatás vagy összetevő vár, ha csak használjon a szkriptet a HDInsight, amely tartalmazza a szükséges összetevők verziójával. A HDInsight használatával mellékelt összetevő verziókról információkat a [HDInsight összetevők verziószámozása](hdinsight-component-versioning.md) dokumentumot.
 
-### <a name="bps10"></a> Cél az operációsrendszer-verzió
+### <a name="checking-the-operating-system-version"></a>Az operációs rendszer verziójának ellenőrzése
+
+HDInsight különböző verzióit Ubuntu adott verzióinak támaszkodnak. Előfordulhat, hogy a parancsfájlban ellenőrizze az operációsrendszer-verziók közötti különbségeket. Ha például szükség lehet bináris vannak kötve, az Ubuntu verzióját telepítse.
+
+Az operációs rendszer verziójának ellenőrzéséhez használja a `lsb_release`. Például az alábbi parancsfájl bemutatja, hogyan adott tar fájlra az operációs rendszer verziójától függően:
+
+```bash
+OS_VERSION=$(lsb_release -sr)
+if [[ $OS_VERSION == 14* ]]; then
+    echo "OS version is $OS_VERSION. Using hue-binaries-14-04."
+    HUE_TARFILE=hue-binaries-14-04.tgz
+elif [[ $OS_VERSION == 16* ]]; then
+    echo "OS version is $OS_VERSION. Using hue-binaries-16-04."
+    HUE_TARFILE=hue-binaries-16-04.tgz
+fi
+```
+
+### <a name="bps10"></a> A cél az operációs rendszer verziója
 
 Linux-alapú HDInsight az Ubuntu Linux-disztribúció alapján történik. HDInsight különböző verzióinak különböző verzióit Ubuntu, előfordulhat, hogy a parancsfájl viselkedésének módosítása támaszkodnak. A HDInsight 3.4-es és korábbi például Ubuntu verziók Upstart használó alapul. 3.5-ös és újabb verziók Ubuntu 16.04, amely Systemd használ alapul. Systemd és Upstart támaszkodnak különböző parancsokat, és így is dolgozhat a parancsfájlt kell írni.
 
-Egy másik fontos HDInsight 3.4-es és 3.5-ös közötti különbség az, hogy `JAVA_HOME` Java 8 most mutat.
-
-Az operációsrendszer-verzió használatával ellenőrizheti `lsb_release`. A következő kód bemutatja, hogyan határozza meg, ha a parancsfájl futása, az Ubuntu 14-es vagy 16:
+Egy másik fontos HDInsight 3.4-es és 3.5-ös közötti különbség az, hogy `JAVA_HOME` Java 8 most mutat. A következő kód bemutatja, hogyan határozza meg, ha a parancsfájl futása, az Ubuntu 14-es vagy 16:
 
 ```bash
 OS_VERSION=$(lsb_release -sr)
@@ -136,10 +146,10 @@ Linux-alapú HDInsight-fürtök, adja meg, amelyek aktív-e a fürtön belül k�
 
 A fürtön telepítendő összetevők lehet alapértelmezett konfigurációja a tárolót az Apache Hadoop elosztott fájlrendszer (HDFS) használja. HDInsight az alapértelmezett tárolóként használ az Azure Storage vagy a Data Lake Storage. Mindkettő biztosít a HDFS-kompatibilis rendszerekben, amely az adatok továbbra is fennáll, akkor is, ha a fürt törlődik. Előfordulhat, hogy kell telepítenie a WASB vagy az ADL használja a HDFS helyett összetevők konfigurálása.
 
-A legtöbb műveletet nem kell megadnia a fájlrendszerben. Ha például a következő másol a giraph-examples.jar fájl a helyi fájlrendszerben fürttároló:
+A legtöbb műveletet nem kell megadnia a fájlrendszerben. Például a következő átmásolja a hadoop-common.jar fájlt a helyi fájlrendszerből fürttároló:
 
 ```bash
-hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
+hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
 ```
 
 Ebben a példában a `hdfs` parancs átlátható módon használja az alapértelmezett fürttárolóhoz. Egyes műveletek esetében szükség lehet az URI-t adja meg. Ha például `adl:///example/jars` az Azure Data Lake Storage Gen1 `abfs:///example/jars` a Data Lake Storage Gen2 vagy `wasb:///example/jars` az Azure Storage.
@@ -289,23 +299,6 @@ Fájlok tárolására az Azure Storage-fiók vagy az Azure Data Lake Storage gyo
 
 > [!NOTE]  
 > A mutató hivatkozás a szkript URI-formátum a használt szolgáltatástól függően eltérő. A HDInsight-fürthöz társított storage-fiókok esetében használjon `wasb://` vagy `wasbs://`. Nyilvánosan olvasható URI-k használata `http://` vagy `https://`. Használja a Data Lake Storage `adl://`.
-
-### <a name="checking-the-operating-system-version"></a>Az operációs rendszer verziójának ellenőrzése
-
-HDInsight különböző verzióit Ubuntu adott verzióinak támaszkodnak. Előfordulhat, hogy a parancsfájlban ellenőrizze az operációsrendszer-verziók közötti különbségeket. Ha például szükség lehet bináris vannak kötve, az Ubuntu verzióját telepítse.
-
-Az operációs rendszer verziójának ellenőrzéséhez használja a `lsb_release`. Például az alábbi parancsfájl bemutatja, hogyan adott tar fájlra az operációs rendszer verziójától függően:
-
-```bash
-OS_VERSION=$(lsb_release -sr)
-if [[ $OS_VERSION == 14* ]]; then
-    echo "OS version is $OS_VERSION. Using hue-binaries-14-04."
-    HUE_TARFILE=hue-binaries-14-04.tgz
-elif [[ $OS_VERSION == 16* ]]; then
-    echo "OS version is $OS_VERSION. Using hue-binaries-16-04."
-    HUE_TARFILE=hue-binaries-16-04.tgz
-fi
-```
 
 ## <a name="deployScript"></a>Ellenőrzőlista a központi telepítése egy parancsprogram-művelet
 

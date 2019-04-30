@@ -2,18 +2,18 @@
 title: Az IoT Device Provisioning Service biztonsági végpontok |} A Microsoft Docs
 description: Alapelvei – hozzáférés az IoT Device Provisioning Service háttérrendszer alkalmazások vezérlése. Biztonsági jogkivonatok kapcsolatos információkat tartalmaz.
 author: wesmc7777
-manager: philmea
+manager: timlt
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 04/09/2019
+ms.date: 09/28/2017
 ms.author: wesmc
 ms.openlocfilehash: 7ff622ceac9c49eda7ba6bca1a8bb3aaabccb816
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495430"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60626644"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Hozzáférés vezérlése az Azure IoT Hub Device Provisioning Service
 
@@ -39,7 +39,7 @@ Biztosítani [engedélyek](#device-provisioning-service-permissions) a következ
 > [!NOTE]
 > Lásd: [engedélyek](#device-provisioning-service-permissions) részletes információkat.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Az Azure IoT Hub Device Provisioning Service-végpontokra irányuló hozzáférést biztosít a megosztott elérési házirendekkel jogkivonat ellenőrzésével. Biztonsági hitelesítő adatok, például a szimmetrikus kulcsokat, a rendszer soha nem elküldve a hálózaton keresztül.
 

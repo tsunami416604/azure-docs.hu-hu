@@ -8,11 +8,11 @@ ms.topic: reference
 ms.date: 01/12/2019
 ms.author: spelluru
 ms.openlocfilehash: 4994063dfc3bce88489f70969c06bf36b591f907
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536249"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561676"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Az előfizetések az Azure Event Grid eseménysémája
 
@@ -236,14 +236,14 @@ Egy esemény a következő legfelső szintű adatokat tartalmaz:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| témakör | sztring | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| tárgy | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
-| eventType | sztring | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
-| eventTime | sztring | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| id | sztring | Az esemény egyedi azonosítója. |
+| témakör | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
+| tárgy | string | Az esemény tárgya közzétevő által megadott elérési útja. |
+| eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
+| eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
+| id | string | Az esemény egyedi azonosítója. |
 | adat | objektum | Előfizetés eseményadatokat. |
-| dataVersion | sztring | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | sztring | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
+| dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
+| metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
 Az objektum a következő tulajdonságokkal rendelkezik:
 
@@ -251,14 +251,14 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | -------- | ---- | ----------- |
 | Engedélyezési | objektum | A kért hitelesítést biztosít a műveletet. |
 | jogcímek | objektum | A jogcímek tulajdonságait. További információkért lásd: [JWT-specifikáció](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
-| correlationId | sztring | A hibaelhárítási művelet azonosítója. |
+| correlationId | string | A hibaelhárítási művelet azonosítója. |
 | httpRequest | objektum | A művelet részleteit. Ez az objektum csak van hozzáadva, amikor egy meglévő erőforrás frissítése vagy töröl egy erőforrást. |
-| resourceProvider | sztring | Az erőforrás-szolgáltató a művelethez. |
-| resourceUri | sztring | A műveletet az erőforrás URI azonosítója. |
-| operationName | sztring | A művelet, amely kerül. |
-| status | sztring | A művelet állapota. |
-| subscriptionId | sztring | Az erőforrás előfizetés-azonosítója. |
-| tenantId | sztring | Az erőforrás Bérlőazonosítója. |
+| resourceProvider | string | Az erőforrás-szolgáltató a művelethez. |
+| resourceUri | string | A műveletet az erőforrás URI azonosítója. |
+| operationName | string | A művelet, amely kerül. |
+| status | string | A művelet állapota. |
+| subscriptionId | string | Az erőforrás előfizetés-azonosítója. |
+| tenantId | string | Az erőforrás Bérlőazonosítója. |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -3,29 +3,33 @@ title: Az Azure Functions függvények letiltása
 description: Ismerje meg, hogyan letiltása és engedélyezése az Azure Functions függvények 1.x és a 2.x.
 services: functions
 documentationcenter: ''
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
-ms.topic: conceptual
-ms.date: 07/24/2018
-ms.author: glenga
-ms.openlocfilehash: ab9cf429a0af69db116fe910ab90b83d404afbb7
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+author: tdykstra
+manager: cfowler
+editor: ''
+ms.service: functions
+ms.workload: na
+ms.devlang: na
+ms.topic: article
+origin.date: 07/24/2018
+ms.date: 08/31/2018
+ms.author: v-junlch
+ms.openlocfilehash: a32b4815a2716428ceeec034ddc5589e3aa062e8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093634"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60710563"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Az Azure Functions függvények letiltása
 
 Ez a cikk bemutatja, hogyan tilthatja le a függvény az Azure Functions szolgáltatásban. A *letiltása* függvény azt jelenti, hogy a futtatókörnyezet figyelmen kívül hagyhatja az automatikus eseményindító, amely a függvény van definiálva. Benne módja attól függ, a futtatókörnyezet-verzió és a programozási nyelvek:
 
-* Functions 1.x
-  * Programozási nyelvek
-  * C#-osztálykódtárakat
-* Functions 2.x
-  * Az összes nyelvet egyik módja
-  * Választható módon a C#-osztálykódtárakat
+- Functions 1.x
+  - Programozási nyelvek
+  - C#-osztálykódtárakat
+- Functions 2.x
+  - Az összes nyelvet egyik módja
+  - Választható módon a C#-osztálykódtárakat
 
 ## <a name="functions-1x---scripting-languages"></a>1.x - parancsnyelven függvények
 
@@ -58,7 +62,7 @@ A második példában a funkció le van tiltva az Alkalmazásbeállítás, amely
 
 Szerkesztheti a fájl a az Azure Portalon vagy a **függvény állapota** váltson a függvény **kezelés** fülre. A portál kapcsoló módosításával működik a *function.json* fájlt.
 
-![Switch függvénynek állapota](media/disable-function/function-state-switch.png)
+![Switch függvénynek állapota](./media/disable-function/function-state-switch.png)
 
 ## <a name="functions-1x---c-class-libraries"></a>1.x – C#-osztálykódtárakat függvények
 
@@ -109,7 +113,7 @@ Ez a módszer lehetővé teszi engedélyezheti vagy letilthatja a függvény az 
 
 A függvények 2.x függvény letiltja az alkalmazás-beállítás használatával. Például letilthatja a függvény neve `QueueTrigger`, létrehozhat egy nevű Alkalmazásbeállítás `AzureWebJobs.QueueTrigger.Disabled`, és állítsa be `true`. A funkció engedélyezéséhez állítsa az alkalmazás beállítást `false`. Is használhatja a **függvény állapota** váltson a függvény **kezelés** fülre. A kapcsoló létrehozása és törlése úgy működik a `AzureWebJobs.<functionname>.Disabled` alkalmazásbeállítást.
 
-![Switch függvénynek állapota](media/disable-function/function-state-switch.png)
+![Switch függvénynek állapota](./media/disable-function/function-state-switch.png)
 
 ## <a name="functions-2x---c-class-libraries"></a>A 2.x - C#-osztálykódtárakat függvények
 
@@ -118,3 +122,4 @@ A Functions 2.x osztálytár azt javasoljuk, hogy a működik módszert az össz
 ## <a name="next-steps"></a>További lépések
 
 Ez a cikk az automatikus eseményindítók letiltása. Eseményindítók kapcsolatos további információkért lásd: [eseményindítók és kötések](functions-triggers-bindings.md).
+

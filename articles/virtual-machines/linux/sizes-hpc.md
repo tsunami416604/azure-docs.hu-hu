@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 70dca655d5300fcd34b4198093e136f6a971963b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: MT
+ms.openlocfilehash: 44b965bd60d976d4d28dc5e31d78a1c838d4ee02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344489"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60542266"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Nagy teljesítményű számítási virtuálisgép-méretek
 
@@ -33,8 +33,10 @@ ms.locfileid: "49344489"
 
 ### <a name="mpi"></a>MPI 
 
-Csak az Intel MPI 5.x verziók támogatottak. Újabb verzió (2017-es, 2018.) az Intel MPI futásidejű kódtár nem kompatibilisek az Azure Linux RDMA-illesztőprogramokat.
+Csak az Intel MPI 5.x verziók támogatottak.
 
+> [!NOTE]
+> Újabb verzió (2017-es, 2018.) az Intel MPI-futtatókörnyezetet könyvtár feltétlenül nem kompatibilis az Azure Linux RDMA-illesztőprogramokat.
 
 ### <a name="distributions"></a>Felosztások
  

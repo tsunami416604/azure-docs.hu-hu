@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
 ms.openlocfilehash: d1cff1011e190e5fbb2874657cbdfbdc68bde0c0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084395"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60619824"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Bővítményt a virtuálisgép-méretezési csoportokat használ alkalmazásállapot
 Az alkalmazás állapotának monitorozása egy fontos jel, kezeléséhez és az üzemelő példány frissítése. Azure-beli virtuálisgép-méretezési csoportok biztosít támogatást [a működés közbeni frissítés](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) beleértve [automatikus operációsrendszer-lemezkép frissítéseinek](virtual-machine-scale-sets-automatic-upgrade.md), amely támaszkodjon szolgáltatásállapot-figyelést az egyes példányainak az üzemelő példány frissítése .
@@ -65,18 +65,18 @@ A következő JSON az alkalmazásállapot bővítmény sémáját jeleníti meg.
 
 | Name (Név) | Érték és példa | Adattípus
 | ---- | ---- | ---- 
-| apiVersion | `2018-10-01` | dátum |
-| publisher | `Microsoft.ManagedServices` | sztring |
-| type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | sztring |
+| apiVersion | `2018-10-01` | date |
+| publisher | `Microsoft.ManagedServices` | string |
+| type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Beállítások
 
 | Name (Név) | Érték és példa | Adattípus
 | ---- | ---- | ----
-| protokoll | `http` vagy `tcp` | sztring |
+| protokoll | `http` vagy `tcp` | string |
 | port | Nem kötelező, ha a protokoll `http`kötelező, ha a protokoll `tcp` | int |
-| requestPath | Kötelező, ha a protokoll `http`, nem engedélyezett, ha a protokoll `tcp` | sztring |
+| requestPath | Kötelező, ha a protokoll `http`, nem engedélyezett, ha a protokoll `tcp` | string |
 
 ## <a name="deploy-the-application-health-extension"></a>Az alkalmazás állapotának bővítmény telepítése
 Többféleképpen is üzembe helyezése a méretezési csoport bővítményének állítja be, ahogy az az alábbi példák az alkalmazás állapotát.

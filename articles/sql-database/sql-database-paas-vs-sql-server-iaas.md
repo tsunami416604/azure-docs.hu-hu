@@ -14,11 +14,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/11/2019
 ms.openlocfilehash: d9cd5ba0b697cbf67f943eb49d66010745d8561e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360820"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60584853"
 ---
 # <a name="choose-the-right-sql-server-option-in-azure"></a>Válassza ki a jobb oldalon az SQL Server beállítása az Azure-ban
 
@@ -164,6 +164,6 @@ Az **Azure virtuális gépeken futó SQL Server** esetében a Microsoft 99,95%-o
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg [az első Azure SQL Database-adatbázissal](sql-database-single-database-get-started.md) foglalkozó témakört, hogy megismerkedhessen az SQL Database használatának első lépéseivel.
+- Tekintse meg [az első Azure SQL-adatbázissal](sql-database-single-database-get-started.md) foglalkozó témakört, hogy megismerkedhessen az SQL Database használatának első lépéseivel.
 - [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
 - Az Azure virtuális gépeken futó SQL Server használatának megkezdésével kapcsolatban lásd: [Provision a SQL Server virtual machine in Azure](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md) (SQL Servert futtató virtuális gép létrehozása az Azure-ban).

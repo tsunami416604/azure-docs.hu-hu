@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: v-sharos
 ms.openlocfilehash: a2f8e75578e396085e7d80f43c1180e158967061
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885587"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60633289"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Telepítse és konfigurálja a StorSimple Adapter for SharePoint
 ## <a name="overview"></a>Áttekintés
@@ -208,7 +208,7 @@ A következő eljárások bemutatják, hogyan helyezze vissza a blobokat a tarta
 > Hogy visszahelyezése a blobokat a tartalom-adatbázisokban az adapter szoftverek eltávolítása előtt.
 
 
-### <a name="before-you-begin"></a>Előkészületek
+### <a name="before-you-begin"></a>Előzetes teendők
 Gyűjtse össze a következő információkat, lépjen vissza az adatokat az SQL Server-adatbázisokhoz és az adapter eltávolító folyamat megkezdése előtt:
 
 * A nevét, amelyhez RBS engedélyezve van minden adatbázis

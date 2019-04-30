@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: monhaber
 ms.openlocfilehash: cede54f69fbeec5e01c17d84436bdc4c9ee91002
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58117055"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60706611"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Az Azure Security Center adaptív hálózati megerősítése
 Ismerje meg, az adaptív hálózati korlátozások konfigurálása az Azure Security Centerben.

@@ -1,6 +1,6 @@
 ---
-title: DATA 0 módosítása a StorSimple 8000 series eszközön található beállítások |} Microsoft Docs
-description: Ismerje meg, hogyan használható Windows PowerShell-lel konfigurálja újra a StorSimple eszköz DATA 0 hálózati adapterén.
+title: Módosítsa a DATA 0 beállításainak a StorSimple 8000 sorozatú eszköz |} A Microsoft Docs
+description: Ismerje meg, hogyan konfigurálja újra a DATA 0 hálózati adapterén, a StorSimple eszköz storsimple-höz készült Windows PowerShell használatával.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,59 +14,59 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 90df43e22f17fd32fe642514df098b72700e77af
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3cf136c5ddec8f4998d15c597914e1f806453945
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23927585"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60631583"
 ---
-# <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>A DATA 0 hálózati kapcsolati beállítások a StorSimple 8000 series eszközön módosítása
+# <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>A DATA 0 hálózati kapcsolati beállítások az a StorSimple 8000 sorozatú eszköz módosítása
 
 ## <a name="overview"></a>Áttekintés
 
-A Microsoft Azure StorSimple eszköz hat hálózati adapterrel, a DATA 0 DATA 5 rendelkezik. A DATA 0 felület mindig konfigurálva van a Windows PowerShell felületéről, sem a soros konzolon keresztül, és automatikusan felhő-kompatibilis. Vegye figyelembe, hogy nem konfigurálhat az Azure portálon keresztül DATA 0 hálózati adapterén.
+A Microsoft Azure StorSimple-eszköz hat hálózati adapterek, a DATA 0 DATA 5 rendelkezik. Az adatok 0 adapter mindig van konfigurálva a Windows PowerShell felületén vagy a soros konzolon keresztül, és automatikusan felhő-t. Vegye figyelembe, hogy a DATA 0 hálózati adapter az Azure Portalon keresztül nem lehet konfigurálni.
 
-A DATA 0, a telepítővarázslót során először konfigurálja a felület telepítési a StorSimple eszköz kezdeti. Ha az eszköz egy üzemeltetési módban van, szükség lehet, hogy engedélyezzék a DATA 0 beállításait. Ez az oktatóanyag biztosít két módszer módosításához a DATA 0 hálózati beállításai, mind a Windows PowerShell-lel.
+Az adatok 0 adapter először során a telepítővarázsló keresztül lehet konfigurálni a kezdeti központi telepítését a StorSimple-eszköz. Ha az eszköz működési módja van, szükség lehet segítségével konfigurálja újra a DATA 0 beállításai. Ez az oktatóanyag ismerteti, hogy két módszer módosításához a DATA 0 hálózati beállítások, mindkét keresztül Windows PowerShell-bővítménye.
 
-Ez az oktatóanyag elolvasása, után fogja tudni:
+Ebben az oktatóanyagban elolvasásával fogja tudni:
 
-* Módosítsa a DATA 0 hálózati beállítás a telepítővarázslót
+* Módosítsa a DATA 0 hálózati beállítása a telepítő varázsló
 * DATA 0 hálózati beállítások módosítása a `Set-HcsNetInterface` parancsmag
 
-## <a name="modify-data-0-network-settings-through-setup-wizard"></a>A telepítő varázsló lépéseinek DATA 0 hálózati beállításainak módosítása
-Olyan módon konfigurálhatja újra DATA 0 hálózati beállítások a Windows PowerShell-felületet a StorSimple eszköz csatlakozik, és a telepítő varázsló munkamenet elindításához. A következő lépésekkel módosíthatja a DATA 0 beállítások:
+## <a name="modify-data-0-network-settings-through-setup-wizard"></a>A telepítő varázsló DATA 0 hálózati beállítások módosítása
+DATA 0 hálózati beállítások a Windows PowerShell felületét a StorSimple eszköz csatlakozik, és a telepítő varázsló munkamenet indítása újrakonfigurálhatja az. A következő lépésekkel módosíthatja a DATA 0 beállításai:
 
-#### <a name="to-modify-data-0-network-settings-through-setup-wizard"></a>A telepítő varázsló lépéseinek DATA 0 hálózati beállításainak módosítása
-1. A soros konzol menüben válassza az 1. lehetőség – **jelentkezzen be a teljes körű hozzáférési**. Amikor a rendszer kéri adja meg a **eszköz rendszergazdai jelszava**. Az alapértelmezett jelszó `Password1`.
-2. A parancssorba írja be:
+#### <a name="to-modify-data-0-network-settings-through-setup-wizard"></a>A telepítő varázsló DATA 0 hálózati beállítások módosítása
+1. A soros konzol menüben válassza az 1. lehetőség – **jelentkezzen be a teljes hozzáféréssel**. Amikor a rendszer kéri adja meg a **eszköz rendszergazdai jelszava**. Az alapértelmezett jelszó az `Password1`.
+2. A parancssorba írja be a következőt:
    
     `Invoke-HcsSetupWizard`
-3. Konfigurálhatja a DATA 0 megjelenik egy telepítővarázsló az eszköz felületén. Adjon meg új értékeket az IP cím, az átjáró és a hálózati maszk.
+3. Segítségével a konfigurálása a DATA 0 megjelenik egy telepítővarázsló az eszköz felületén. Adja meg a IP-cím, az átjáró és a hálózati maszk új értékeit.
 
 > [!NOTE]
-> A rögzített vezérlők IP-címek használatával újra kell konfigurálni kell a **hálózati beállításai** panel a StorSimple eszköz az Azure portálon. További információkért látogasson el [módosítása a hálózati adapterek](storsimple-8000-modify-device-config.md#modify-network-interfaces).
+> A fix vezérlő IP-címek keresztül konfigurálni kell a **hálózati beállítások** panel az Azure Portalon a StorSimple-eszköz. További információért ugorjon [módosítása a hálózati adapterek](storsimple-8000-modify-device-config.md#modify-network-interfaces).
 
-## <a name="modify-data-0-network-settings-through-set-hcsnetinterface-cmdlet"></a>Set-HcsNetInterface parancsmaggal DATA 0 hálózati beállításainak módosítása
-Konfigurálja újra a DATA 0 hálózati adapter használatával megadva is a `Set-HcsNetInterface` parancsmag. A parancsmag végrehajtásának a Windows PowerShell-felületet a StorSimple eszköz. Ez az eljárás használata esetén a vezérlő fix IP-címek is konfigurálható itt. A következő lépésekkel módosíthatja az adatokat 0 beállítások: 
+## <a name="modify-data-0-network-settings-through-set-hcsnetinterface-cmdlet"></a>Set-HcsNetInterface parancsmag DATA 0 hálózati beállítások módosítása
+Konfigurálja újra a DATA 0 hálózati adapter használatával egy másik módszere a `Set-HcsNetInterface` parancsmagot. A parancsmagot a StorSimple eszköz a Windows PowerShell interfészről hajtja végre. Ez az eljárás használata esetén a vezérlő fix IP-cím is megadható itt. A következő lépésekkel módosíthatja a DATA 0 beállításai: 
 
-#### <a name="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet"></a>A Set-HcsNetInterface parancsmaggal DATA 0 hálózati beállításainak módosítása
-1. A soros konzol menüben válassza az 1. lehetőség – **jelentkezzen be a teljes körű hozzáférési**. Amikor a rendszer kéri adja meg az eszköz rendszergazdai jelszava. Az alapértelmezett jelszó `Password1`.
-2. A parancssorba írja be:
+#### <a name="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet"></a>A Set-HcsNetInterface parancsmag DATA 0 hálózati beállítások módosítása
+1. A soros konzol menüben válassza az 1. lehetőség – **jelentkezzen be a teljes hozzáféréssel**. Amikor a rendszer kéri az eszköz rendszergazdai jelszava meg. Az alapértelmezett jelszó az `Password1`.
+2. A parancssorba írja be a következőt:
    
     `Set-HCSNetInterface -InterfaceAlias Data0 -IPv4Address <> -IPv4Netmask <> -IPv4Gateway <> -Controller0IPv4Address <> -Controller1IPv4Address <> -IsiScsiEnabled 1 -IsCloudEnabled 1`
    
-    A csúcsos zárójelek közé írja be a következő értékeket a DATA 0:
+    A csúcsos zárójelek között írja be a DATA 0 a következő értékeket:
    
-   * IPv4-cím
+   * IPv4 address
    * IPv4-átjáró
-   * IPv4 alhálózati maszk
+   * IPv4 subnet mask
    * 0. vezérlő rögzített IPv4-cím
    * A vezérlő 1 fix IPv4-cím
      
-     További információt ennek a parancsmagnak [StorSimple parancsmag-referencia a Windows PowerShell](https://technet.microsoft.com/library/dn688161.aspx).
+     További információk a parancsmag [Windows PowerShell-parancsmag-referencia a StorSimple](https://technet.microsoft.com/library/dn688161.aspx).
 
-## <a name="next-steps"></a>Következő lépések
-* DATA 0 kivételével a hálózati adapterek konfigurálásához használja a [hálózati beállítások konfigurálása az Azure-portálon a](storsimple-8000-modify-device-config.md). 
-* Ha a hálózati adapterek konfigurálásakor esetleges problémákat tapasztal, tekintse meg a [telepítési problémák elhárításához](storsimple-troubleshoot-deployment.md).
+## <a name="next-steps"></a>További lépések
+* Nem a DATA 0 hálózati adapterek konfigurálásához használja a [hálózati beállítások konfigurálása az Azure Portalon](storsimple-8000-modify-device-config.md). 
+* Ha a hálózati adapterek konfigurálásához minden olyan problémákat tapasztal, tekintse meg [üzembe helyezés hibáinak elhárítása](storsimple-troubleshoot-deployment.md).
 

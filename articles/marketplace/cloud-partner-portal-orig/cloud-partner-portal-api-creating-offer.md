@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: c7aed97c442c414e86c9531f9b0a8431e22b8b44
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809697"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60624989"
 ---
 <a name="create-or-modify-an-offer"></a>Létrehozása vagy módosítása egy ajánlatra
 =========================
@@ -34,8 +34,8 @@ A hívás a közzétevő névtéren belül egy adott ajánlat frissíti, vagy l�
 
 |  **Name (Név)**         |  **Leírás**                      |  **Adattípus**  |
 |  --------         |  ----------------                     |  -------------  |
-| publisherId       |  Például a közzétevő azonosítója `contoso` |   Sztring |
-| OfferId           |  Ajánlat azonosítója                     |   Sztring        |
+| publisherId       |  Például a közzétevő azonosítója `contoso` |   String |
+| ajánlatazonosító           |  Ajánlat azonosítója                     |   String        |
 | API-verzió       |  Az API legújabb verziója            |   Dátum           |
 |  |  |  |
 

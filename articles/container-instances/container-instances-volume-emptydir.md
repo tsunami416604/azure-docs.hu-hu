@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/08/2018
 ms.author: danlep
 ms.openlocfilehash: 98a72123a05fa7d8dc16be7ddb787f2a2cf7e4d1
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857652"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60563120"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Az Azure Container Instances szolgáltatásban az emptyDir kötet csatlakoztatási
 
@@ -41,7 +41,8 @@ Első lépésként töltse fel a `volumes` tömb tárolócsoportban `properties`
 
 Például a következő Resource Manager-sablont hoz létre egy tárolócsoportot, két tárolót, amely minden egyes melyik csatlakoztatása a *emptyDir* kötet:
 
-<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-emptydir.json --> [!code-json[volume-emptydir](~/azure-docs-json-samples/container-instances/aci-deploy-volume-emptydir.json)]
+<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-emptydir.json -->
+[!code-json[volume-emptydir](~/azure-docs-json-samples/container-instances/aci-deploy-volume-emptydir.json)]
 
 Tárolópéldány üzembe helyezésének Azure Resource Manager-sablonnal egy példát, olvassa el [többtárolós csoportok az Azure Container Instancesben üzembe helyezése](container-instances-multi-container-group.md).
 

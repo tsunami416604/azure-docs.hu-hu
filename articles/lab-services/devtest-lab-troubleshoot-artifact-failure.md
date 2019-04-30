@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 29af70a2713e7b4aebf611d8f2b547e38c6c5d3d
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546365"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60623109"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>A lab-ben az összetevők hibáinak diagnosztizálása 
 Miután létrehozott egy összetevő, akkor ellenőrizheti, hogy akár sikeres, vagy sikertelen volt. Azure DevTest Labs-összetevő naplók segítségével diagnosztizálhatja az összetevő meghibásodása információkat tartalmaznak. Van egy néhány további lehetőség egy Windows virtuális gép összetevő naplózási adatok megtekintése:

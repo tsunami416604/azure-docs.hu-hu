@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 04e2c32b18e6897d6443fea68587aba9ae294be5
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664488"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60729137"
 ---
 # <a name="enumerate-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors számbavétele
 A Reliable Actors-szolgáltatás lehetővé teszi, hogy egy ügyfél metaadatait, a szereplők a szolgáltatást üzemeltető számbavétele. Mivel az aktorszolgáltatás particionált az állapotalapú szolgáltatások, a enumerálás partíciónként történik. Mindegyik partíció tartalmazhat számos actors, mert az enumerálás sorozataként lapokra bontott eredményeket adja vissza. A lapok vannak beállításpanelen keresztül, addig, amíg az összes olvasható. Az alábbi példa bemutatja, hogyan hozhat létre az összes aktív szereplők listáját egyik partíciójában, az aktorszolgáltatás:

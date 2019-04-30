@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5a8b460441323cb668a3d9939cce434636afc44d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: be3f68a00647840801e7c205d7abb34b718bd61c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38719005"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60630880"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Kicsomagolása, állványra csatlakoztatást és a StorSimple 8600 sorozatú eszköz kábelezése
 ## <a name="overview"></a>Áttekintés
@@ -34,12 +34,12 @@ Mielőtt, az eszköz kicsomagolása, tekintse át a következő információkat.
 ![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **figyelmeztetés!**
 
 1. Győződjön meg arról, hogy a két személynek a súlyt az eszköz kezelése, ha manuálisan is kezelése érhető el. Egy teljes körűen konfigurált ház legfeljebb 32 kg (70 lbs.) is mérjük.
-2. Helyezze el a box egy egybesimított, szolgáltatásiszint-felületen.
+2. Helyezze a csomagot egy sima, vízszintes felületre.
 
 Ezután kövesse az alábbi lépéseket az eszköz kicsomagolása.
 
 #### <a name="to-unpack-your-device"></a>Az eszköz kicsomagolása
-1. Vizsgálja meg a box és a csomagolási habgumiból készült crushes, darabok, víz sérülés vagy bármely más nyilvánvaló sérülések. Ha a lista vagy a csomagolási súlyosan sérült, nem a megnyitása. Adjon [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md) segítséget ellenőrzéséhez, hogy az eszköz működőképes állapotban van.
+1. Vizsgálja meg a dobozt és a térkitöltő anyagot, hogy nincsenek-e rajta ütődés, vágás, nedvesség vagy más egyértelmű sérülés nyomai. Ha a csomagon jelentős sérülések láthatók, ne nyissa ki. Adjon [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md) segítséget ellenőrzéséhez, hogy az eszköz működőképes állapotban van.
 2. Nyissa meg a külső mezőbe, és ezután vegye ki a megfelelő elsődleges és a EBOD házakat két mező. Az elsődleges és a EBOD ház most kicsomagolása. A következő ábrán látható, a házak egyik kicsomagolt nézetét.
    
     ![Csomagolja ki a tárolóeszköz](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
@@ -69,7 +69,7 @@ Ezután kövesse az alábbi lépéseket az eszköz kicsomagolása.
      
      Ha Ön nem kapott az elemek a fent felsorolt [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md).  
 
-A következő lépés, hogy az eszköz állvány-csatlakoztatási.
+A következő lépés az eszköz állványra szerelése.
 
 ## <a name="rack-mount-your-storsimple-8600-device"></a>A StorSimple 8600 sorozatú eszköz állvány-csatlakoztatás
 A következő lépésekkel telepítse a StorSimple 8600-as tárolóeszköz, az első és hátsó bejegyzések standard 19 hüvelyk állvány. Ez az eszköz két ház tartalmaz: egy elsődleges ház és a egy EBOD ház. Mindkét kell lennie állványra szerelt.
@@ -115,7 +115,7 @@ Csatlakoztatási rails készletét biztosítjuk a 19 hüvelyk rack kabinet való
    |  1 |3 x 4 millió csavart gomb-fő |
    |  2 |Váz diák |
 2. A bal oldali sín és a megfelelő sín szerelvények csatolása az állvány kabinet függőleges tagok. A szögletes zárójelek lesznek megjelölve **LH**, **RH**, és **ezt oldal fel** végigvezeti a felhasználót a megfelelő tájolását.
-3. Keresse meg az sín PIN-kód, az első és hátsó sín sestavení. A sín illeszkedjen az állvány-bejegyzések között, és a PIN-kód beillesztése az első és hátsó-rack post függőleges tag lyuk kiterjesztése. Győződjön meg arról, hogy a sín szerelvény szintjét.
+3. Keresse meg a sín csapjait a sínszerelvény elülső és hátsó végénél. A sín illeszkedjen az állvány-bejegyzések között, és a PIN-kód beillesztése az első és hátsó-rack post függőleges tag lyuk kiterjesztése. Győződjön meg arról, hogy a sín szerelvény szintjét.
 4. Gondoskodhat az állványra sín szerelvény függőleges tagok két a metrika csavart megadott. Az előtér és a egy hátsó egy csavart használja.
 5. Ismételje meg ezeket a lépéseket más sín sestavení.
    
@@ -217,12 +217,12 @@ Támogatja a zónaredundáns vezérlő feladatátvétele, az eszköz hálózati 
 | --- | --- |
 | A |Helyi Internet-hozzáféréssel rendelkező hálózat |
 | B |0. vezérlő |
-| C |PCM 0-BAN |
+| C |PCM 0 |
 | D |1. vezérlő |
-| E |A PCM 1 |
+| E |PCM 1 |
 | F |Az EBOD-vezérlő 0 |
 | G |Az EBOD-vezérlő 1 |
-| H I |Gazdagépek (például a fájlkiszolgálók) |
+| H,I |Gazdagépek (például a fájlkiszolgálók) |
 | 0-5 |Hálózati illesztők |
 | 6 |Elsődleges ház |
 | 7 |EBOD ház |
@@ -260,7 +260,7 @@ A következő lépésekkel kábelezése a soros port.
 6. Győződjön meg arról, hogy a kapcsolat működik-e a konzol az Enter billentyű lenyomásával. A soros konzol menüjének kell megjelennie.
 
 > [!NOTE]
-> **Lights-Out felügyeleti:** telepítésekor az eszköz egy távoli adatközpontban vagy a korlátozott hozzáférésű számítógép szoba, győződjön meg arról, a soros kapcsolatokat mindkét vezérlő, mindig csatlakoztatva egy soros konzol kapcsoló vagy egy hasonló berendezések. Ez lehetővé teszi a sávon kívüli a távvezérlés és a támogatási műveletek hálózati megszakítása vagy váratlan meghibásodások esetén.
+> **Lights-Out felügyelet:** Ha az eszköz telepítve van, korlátozott hozzáférésű számítógép szoba vagy egy távoli adatközpontban, győződjön meg arról, hogy mindkét vezérlő soros kapcsolatot mindig csatlakoznak a soros konzol kapcsoló vagy egy hasonló eszközzel. Ez lehetővé teszi a sávon kívüli a távvezérlés és a támogatási műveletek hálózati megszakítása vagy váratlan meghibásodások esetén.
 > 
 > 
 

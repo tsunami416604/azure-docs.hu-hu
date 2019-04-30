@@ -13,17 +13,17 @@ ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
 ms.openlocfilehash: 54578746ea8029a760663edc456660f98358abc5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009310"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60615988"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Önkiszolgáló cseréje és a visszatérítéseket Azure lefoglalási
 
-Az Azure-foglalások a változó igényeinek kielégítése érdekében rugalmasságot biztosítanak. Egy másik, azonos típusú foglalás foglalás tudjon cserélni. Egy foglalást, akár 50 000 USD évben is visszatérítés, ha már nincs szüksége.
+Az Azure-foglalások a változó igényeinek kielégítése érdekében rugalmasságot biztosítanak. A foglalásokat le tudja cserélni azonos típusú foglalásokra. Kérheti egy foglalás díjának visszatérítését is 50 000 USD/év összegig, ha már nincs rá szüksége.
 
-Önkiszolgáló Exchange-hez és a megszakítási lehetőség nem érhető el, US Government nagyvállalati szerződéssel rendelkező ügyfeleknek. Más US Government előfizetéstípusok, beleértve a használatalapú fizetés és a CSP támogatottak.
+Az önkiszolgáló csere- és lemondási lehetőség nem érhető el az Egyesült Államok kormányának nagyvállalati szerződésével rendelkező ügyfelei számára. Más US Government előfizetéstípusok, beleértve a használatalapú fizetés és a CSP támogatottak.
 
 Exchange-vagy egy meglévő foglalás visszatérítés ahhoz a Foglalás tulajdonosi hozzáféréssel kell rendelkeznie.
 
@@ -33,7 +33,7 @@ A Foglalás három gyors lépésben is cserél az [az Azure portal](https://port
 
 1. Válassza a foglalások visszatérítés, és kattintson a kívánt **Exchange**.  
     ![A példában a foglalások való visszatéréshez kép](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-return.png)
-2. Válassza ki a virtuális gép termék, amelyet szeretne vásárolni, és adjon meg egy mennyiséget. Győződjön meg arról, hogy az új vásárlási összes több, mint a visszatérési teljes. [Határozza meg a megfelelő méretű megvásárlása előtt](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy).  
+2. Válassza ki a megvásárolni kívánt virtuálisgép-terméket, és adja meg a mennyiséget. Győződjön meg arról, hogy az új vásárlási összes több, mint a visszatérési teljes. [Határozza meg a megfelelő méretű megvásárlása előtt](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy).  
     ![Példa a virtuális gép terméket egy exchange-beszerzési képe](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-select-purchase.png)
 3. Tekintse át, és a tranzakció elvégzéséhez.  
     ![Meg kell vásárolnia egy Exchange-hez, a visszatérési elvégzése a virtuális gép termék például a kép](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-confirm-exchange.png)

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
 ms.openlocfilehash: dc9b4db37e811d8bac6df2d532fd3629d98c9650
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104766"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60586552"
 ---
 # <a name="azure-infrastructure-security"></a>Azure-infrastruktúra biztonsági
 A Microsoft Azure által felügyelt és a Microsoft által üzemeltetett adatközpontok futtatja. Ezek az földrajzilag elosztott adatközpontok megfelelnek a fő iparági szabványok – például az ISO/IEC 27001:2013 és a NIST SP 800-53 előírásain, a biztonság és megbízhatóság. Az adatközpontok felügyelt, figyelni, és a Microsoft üzemeltetési csapat által felügyelt. Az üzemeltetési csapat tapasztalat biztosítása a világ legnagyobb online szolgáltatásai a 24 x 7 folytonossági rendelkezik.

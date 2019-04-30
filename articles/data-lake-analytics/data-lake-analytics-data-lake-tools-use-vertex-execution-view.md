@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
 ms.topic: conceptual
 ms.date: 10/13/2016
-ms.openlocfilehash: 9f834d697c0d3fe537bbdb190b0ba0d0f294ac87
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 73314c5864e3036d102deee2792021345b80bf2e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041013"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60687763"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>A Vertex végrehajtási nézet a Data Lake Tools for Visual Studio használata
 Ismerje meg, hogyan vizsgára a Data Lake Analytics-feladatok a Vertex végrehajtási nézet használata.
@@ -40,12 +40,12 @@ A felső center panel megjeleníti a **fut, a rendszer állapotának**.
 
 Az alsó középső ablaktáblán minden csúcspont vonatkozó információkat tartalmazza:
 * Název procesu: A vertex-példány nevét. Különböző részei StageName áll |} VertexName |} VertexRunInstance. Például a SV7_Split [62] .v1 csúcspont jelöli, a második futó példány számára (.v1, 0-val kezdődő indexű) szakaszban SV7_Split 62 csúcspont szám.
-* Összesített adatok olvasási/Written: Az adatok nem írt vagy olvasott a csúcspont szerint.
-* Állapot-és kilépési állapotát: A végső állapota a csúcspont véget ér.
-* Kilépési kód/hiba típusa: A hiba, amikor a csúcspont nem sikerült.
+* Összes adat írt vagy olvasott: Az adatok nem írt vagy olvasott a csúcspont szerint.
+* Állapot-és kilépési állapotát: A végső állapota, amikor a csúcspont véget ér.
+* A kilépési kód/hiba típusa: A hiba, amikor a csúcspont nem sikerült.
 * Létrehozási ok: Miért érdemes a csúcspont jött létre.
 * Erőforrás késés/folyamat várakozási ideje vagy PN várólista késés: az idő a csúcspont, erőforrásokra várnia adatok feldolgozásához, és az üzenetsorban maradnak.
-* Folyamat/létrehozója GUID-ja: A jelenlegi futó csúcspont vagy létrehozója GUID azonosítója.
+* GUID folyamat/létrehozója: A jelenlegi futó csúcspont vagy létrehozója GUID azonosítója.
 * Verzió: az N-edik példányát a futó csúcspont (a a rendszer előfordulhat, hogy ütemezése csúcspontot új példányát, számos oka lehet, például feladatátvételi, számítási redundancia stb.)
 * Idő létrehozott verzió.
 * Létrehozás kezdési idő/folyamat várólistán idő/folyamat kezdési idő/folyamat Complete feldolgozni idő: a vertex-folyamat indulásakor létrehozása; a csúcspont folyamat indításakor várólistára; az egyes csúcspont folyamat indításakor; Amikor az egyes csúcspont befejeződött.

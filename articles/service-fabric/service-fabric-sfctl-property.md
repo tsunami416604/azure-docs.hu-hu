@@ -15,11 +15,11 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: 54cb9f604e9d1b817947990e657390387df6c881
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664913"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60556591"
 ---
 # <a name="sfctl-property"></a>sfctl-tulajdonság
 A Service Fabric neve Store és a lekérdezés tulajdonságai.

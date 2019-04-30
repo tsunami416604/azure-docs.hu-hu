@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5a5d462be5555090d1dfced5fa07c9b748eb312
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: f046304121e0aed8efa1bbc2535d34186eba3496
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345658"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60713707"
 ---
 # <a name="how-to-monitor-sap-hana-large-instances-on-azure"></a>Azure-beli SAP HANA (nagyméretű példányok) figyelése
 
@@ -32,13 +32,13 @@ SAP HANA az Azure-ban (nagyméretű példányok) nem különbözik bármely más
 
 Az Azure Virtual Machines, döntse el, hogy elegendő-e a fent megnevezett erőforrásosztályokat kell, vagy azok lekérése elfogytak. Az egyes a különböző osztályokhoz a következő további részletek:
 
-**Processzor-erőforrás-használat:** az SAP HANA elleni bizonyos számítási feladatokhoz definiált arány kényszerítve van, győződjön meg arról, hogy az elegendő Processzor-erőforrások a memóriában tárolt adatokon keresztül elérhető legyen. Mindazonáltal néhány esetben előfordulhat használ fel, ahol HANA miatt indexek vagy hasonló problémák hiányzik a lekérdezések végrehajtása több processzort. Ez azt jelenti, célszerű figyelemmel kísérni a HANA nagyméretű példányok egység, valamint a Processzor-erőforrások megadott konkrét szolgáltatások HANA által igénybe vett erőforrás-használat Processzor.
+**CPU-felhasználás erőforrás:** Győződjön meg arról, hogy az SAP az egyes számítási feladatok HANA ellen definiálva arány kényszerítve van, győződjön meg arról, hogy az elegendő Processzor-erőforrások a memóriában tárolt adatokon keresztül elérhető legyen. Mindazonáltal néhány esetben előfordulhat használ fel, ahol HANA miatt indexek vagy hasonló problémák hiányzik a lekérdezések végrehajtása több processzort. Ez azt jelenti, célszerű figyelemmel kísérni a HANA nagyméretű példányok egység, valamint a Processzor-erőforrások megadott konkrét szolgáltatások HANA által igénybe vett erőforrás-használat Processzor.
 
-**Memóriahasználat:** fontos, hogy az egység a HANA belül, valamint a HANA-en kívül a figyelése. Belül HANA az adatok hogyan fogyassza az lefoglalt memória ahhoz, hogy belül a szükséges méretre irányelveket az SAP HANA figyelése. Is figyelni kívánt memóriát, győződjön meg arról, hogy további telepített nem-HANA szoftver nem túl sok memóriát, és ezért versenyezni HANA memóriában, a nagyméretű példányok szintjén.
+**Memória-felhasználás:** Fontos a egységen belüli HANA, valamint a HANA-en kívül a figyelése. Belül HANA az adatok hogyan fogyassza az lefoglalt memória ahhoz, hogy belül a szükséges méretre irányelveket az SAP HANA figyelése. Is figyelni kívánt memóriát, győződjön meg arról, hogy további telepített nem-HANA szoftver nem túl sok memóriát, és ezért versenyezni HANA memóriában, a nagyméretű példányok szintjén.
 
-**Hálózati sávszélesség:** az Azure VNet-átjáró az adatok áthelyezése az Azure virtuális hálózat, a sávszélesség korlátozott, ezért érdemes figyelni az adatok által fogadott összes az Azure virtuális gépek döntse el, hogy megállapítjuk, amelyek az Azure-átjáró SKU korlátozásait, a virtuális hálózaton belüli – Mappaválasztás ijelölt. A nagyméretű HANA-példány egységen, jelentéssel bírnak a bejövő és kimenő hálózati forgalom figyelésére, valamint és a kötetek idővel kezelt nyomon követéséhez.
+**Hálózati sávszélesség:** Az Azure VNet-átjáró csak korlátozott sávszélesség az adatok helyezi át az Azure virtuális hálózat, ezért érdemes az összes az Azure virtuális gépek egy VNet és döntse el, hogyan zárja be, amelyek az Azure-átjáró kiválasztott Termékváltozat keretein belül által fogadott adatok figyelése. A nagyméretű HANA-példány egységen, jelentéssel bírnak a bejövő és kimenő hálózati forgalom figyelésére, valamint és a kötetek idővel kezelt nyomon követéséhez.
 
-**Lemezterület:** általában növeli a felhasznált lemezterület idővel. Leggyakoribb okok a következők: adatok mennyisége növekszik, a tranzakciónapló biztonsági mentéseivel, nyomkövetési fájlok tárolásához és a pillanatképek tárolási végrehajtása végrehajtásának. Ezért fontos lemezterület-használat figyelése és felügyelete a lemezterület, a nagyméretű HANA-példány egységhez társított.
+**Lemezterület:** Lemezterület-felhasználást általában idővel növekszik. Leggyakoribb okok a következők: adatok mennyisége növekszik, a tranzakciónapló biztonsági mentéseivel, nyomkövetési fájlok tárolásához és a pillanatképek tárolási végrehajtása végrehajtásának. Ezért fontos lemezterület-használat figyelése és felügyelete a lemezterület, a nagyméretű HANA-példány egységhez társított.
 
 Az a **típus II termékváltozatok** HANA nagyméretű példányok az a kiszolgáló tartalmaz az előre betöltött diagnosztikai eszközei. Ezek a diagnosztikai eszközök az állapot-ellenőrzés végrehajtásához használhat. A következő parancsot a health ellenőrzési naplófájl /var/log/health_check állít elő.
 ```

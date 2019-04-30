@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 4282c9e9b660476992ba6f948bc5e408e9b064a5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 33e738f31be493d5890fc972ec71e7c6cd733bf4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968611"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60736448"
 ---
 # <a name="http2-support-in-azure-front-door-service"></a>Az Azure bejárati ajtajának Service HTTP/2-támogatás
 HTTP/2 HTTP/1.1-es főbb felülvizsgálatát. Biztosít gyorsabban webes teljesítmény, a csökkentett válaszidő és a felhasználói élmény, a jól ismert HTTP-metódusok, állapotkódok és szemantika megőrzése mellett. Bár a HTTP/2 a HTTP és HTTPS célja, az számos ügyfél böngésző Transport Layer Security (TLS) keresztül támogatja csak HTTP/2.
@@ -60,5 +60,5 @@ HTTP/2 kapcsolatos további információkért látogasson el az alábbi forrása
 
 - [HTTP/2 specifikáció kezdőlapja](https://http2.github.io/)
 - [Hivatalos HTTP/2 – gyakori kérdések](https://http2.github.io/faq/)
-- Ismerje meg, hogyan [hozzon létre egy bejárati ajtajának](quickstart-create-front-door.md).
-- Ismerje meg, [bejárati ajtajának működése](front-door-routing-architecture.md).
+- [Frontdoor létrehozására](quickstart-create-front-door.md) vonatkozó információk.
+- A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

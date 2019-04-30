@@ -1,6 +1,6 @@
 ---
-title: Megérteni a felhasználói felület létrehozása az Azure-definíció kezelt alkalmazások |} Microsoft Docs
-description: Ismerteti, hogyan lehet az Azure által felügyelt alkalmazások felhasználói felületi-meghatározások létrehozása
+title: Megismerheti a felhasználói felület létrehozása az Azure-definíciót által felügyelt alkalmazások |} A Microsoft Docs
+description: Az Azure Managed Applications Felhasználóifelület-definíciók létrehozása
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 59003e71324f5342cb2b724f670603fd6b67afe4
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: ab777b487159b009bf2cac6086bb09cc71714b0d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34305225"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587750"
 ---
-# <a name="create-azure-portal-user-interface-for-your-managed-application"></a>Azure portál felhasználói felületet a felügyelt alkalmazás létrehozása
-Ez a dokumentum alapvető fogalmait a createUiDefinition.json fájl. Az Azure-portálon használják ezt a fájlt a felhasználói felület létrehozására a kezelt alkalmazás létrehozásához.
+# <a name="create-azure-portal-user-interface-for-your-managed-application"></a>Azure portal felhasználói felületet a felügyelt alkalmazás létrehozása
+Ez a dokumentum az alapfogalmakat, a createUiDefinition.json fájl mutatja be. Az Azure Portalon ezt a fájlt használja egy felügyelt alkalmazás létrehozásához a felhasználói felület létrehozásához.
 
 ```json
 {
@@ -36,30 +36,30 @@ Ez a dokumentum alapvető fogalmait a createUiDefinition.json fájl. Az Azure-po
 }
 ```
 
-Egy CreateUiDefinition mindig három tulajdonságot tartalmazza: 
+A CreateUiDefinition mindig három tulajdonságot tartalmazza: 
 
-* eseménykezelő
-* verzió:
+* Kezelő
+* version
 * paraméterek
 
-Kezelt alkalmazások, mindig kell kezelő `Microsoft.Compute.MultiVm`, és a legfrissebb támogatott verziót `0.1.2-preview`.
+Felügyelt alkalmazások, a kezelő mindig kell `Microsoft.Compute.MultiVm`, és a legújabb támogatott verziót `0.1.2-preview`.
 
-A paraméterek tulajdonság sémájának attól függ, hogy a megadott kezelő és verziót. Kezelt alkalmazások, a támogatott tulajdonságok: `basics`, `steps`, és `outputs`. A alapjait és lépéseket tulajdonságok tartalmaznak a _elemek_ - például a szövegmezőből és a legördülő lista - az Azure portálon megjelenítendő. A kimenetek tulajdonság a megadott elemek kimeneti értékeit hozzárendelése az Azure Resource Manager központi telepítési sablon paramétereinek szolgál.
+A parameters tulajdonság sémája attól függ, hogy a megadott kezelő és a verzió kombinációja. Felügyelt alkalmazások esetén támogatott a tulajdonságok akkor vannak `basics`, `steps`, és `outputs`. Az alapvető beállítások és lépések tulajdonságok tartalmaznak a _elemek_ – például eszköztippek és legördülő listáit – az Azure Portalon megjelenítendő. A kimeneti értékeket a megadott elemek leképezése az Azure Resource Manager központi telepítési sablon paramétereit a kimenetek tulajdonság használható.
 
-Beleértve `$schema` javasolt, de nem kötelező. Ha meg van adva, a következő `version` meg kell egyeznie a verzió belül a `$schema` URI.
+Beleértve a `$schema` javasolt, de nem kötelező. Ha meg van adva, az érték `version` belül a verziószámnak egyeznie kell a `$schema` URI-t.
 
 ## <a name="basics"></a>Alapvető beállítások
-Az alapok lépés mindig az első lépés a varázsló jönnek létre, ha az Azure-portálon elemzi a fájl. A megadott elemek megjelenítése mellett `basics`, a portálon a felhasználók számára előfizetés, erőforráscsoport és a telepítési hely kiválasztása elemek esetében. Általában lekérdezése a központi telepítés kiterjedő paraméterek, például egy fürt vagy a rendszergazdai hitelesítő adatokat, nevét elemeket kell nyissa meg az ebben a lépésben.
+Az alapvető beállítások lépés, mindig az első lépés a varázsló jönnek létre, ha az Azure Portalon elemzi a fájlban. A megadott elemek megjelenítése mellett `basics`, a portálon a felhasználók számára, válassza ki az előfizetést, erőforráscsoportot és helyet a központi telepítés elemek kódtárba. Ebben a lépésben általában elemeket, amelyeket lekérdezni a központi telepítési kiterjedő paraméterek, például egy fürt vagy a rendszergazdai hitelesítő adatokat, nevét kell végezze.
 
-Ha egy elem viselkedés attól függ, a felhasználó előfizetés, erőforráscsoportból vagy helyét, majd, hogy elem nem használható az alapokat. Például **Microsoft.Compute.SizeSelector** attól függ, a felhasználó előfizetésben és helyen meghatározni az elérhető méretek listáját. Ezért **Microsoft.Compute.SizeSelector** csak akkor használható a lépéseket. Általában csak elemeinek a **Microsoft.Common** névtér alapokat is használható. Bár bizonyos elemek más névtérben (például **Microsoft.Compute.Credentials**), amely nem függ a felhasználói környezet, továbbra is engedélyezett.
+Ha egy elem viselkedése attól függ, a felhasználói előfizetés, erőforráscsoport vagy helyét, majd az elem nem használható az alapvető beállítások. Ha például **Microsoft.Compute.SizeSelector** attól függ, a felhasználói előfizetést és helyet az elérhető méretek listáját határozza meg. Ezért **Microsoft.Compute.SizeSelector** csak akkor használható a lépéseket. Általában csak elemeit a **Microsoft.Common** névtér alapokat is használható. Bár bizonyos elemek más névtérben (például **Microsoft.Compute.Credentials**), amelyek nem függnek a felhasználói környezetben, továbbra is.
 
 ## <a name="steps"></a>Lépések
-A lépések tulajdonság nulla vagy több további lépést is végre megjelenítése után alapjai, egy vagy több elemet tartalmaz, amelyek mindegyike tartalmazhat. Fontolja meg egy szerepkör vagy a réteg az alkalmazás telepítése lépést. Például hozzáadhat egy bemenetek a fő csomóponthoz, és egy lépést az ezen csomópontokhoz tartozó fürtben.
+A lépések tulajdonság nulla vagy több további lépést is végre megjeleníteni után alapjait, amelyek mindegyike tartalmaz egy vagy több elemet is tartalmazhat. Fontolja meg egy szerepkör vagy a telepített alkalmazás szintű lépéseket. A bemenet fő csomópontokért, és egy lépést a munkavégző csomópontok például hozzáadhat egy fürtben.
 
 ## <a name="outputs"></a>Kimenetek
-Az Azure-portálon használja a `outputs` tulajdonság elemeket a `basics` és `steps` paramétereinek az Azure Resource Manager központi telepítési sablont. Ehhez a szótárhoz kulcsai a sablon-paraméterek nevei, és a kimeneti objektumokat a hivatkozott elemeket tulajdonságainak értékei.
+Az Azure Portalon használja a `outputs` elemeket a tulajdonság `basics` és `steps` az Azure Resource Manager üzembe helyezési sablon paramétereihez. Tento slovník kulcsainak a sablon-paraméterek nevei, és az értékek a következők a hivatkozott elemeket a kimeneti objektum tulajdonságait.
 
-A kezelt alkalmazás-erőfforás neve beállításához meg kell adni egy értéket `applicationResourceName` kimenetek tulajdonságában. Ha ez az érték nincs megadva, az alkalmazás nevét egy GUID Azonosítót rendeli hozzá. A szövegmezőben megadhat egy nevét kéri le a felhasználó felhasználói felületén.
+Állítsa be a felügyelt alkalmazás erőforrásnév, szerepelnie kell egy értéket `applicationResourceName` a kimenetek tulajdonságban. Ha nem ez az érték, az alkalmazás egy GUID Azonosítót a névhez rendeli hozzá. A felhasználói felület, amely kéri a nevet a felhasználó egy szövegmező is felvehet.
 
 ```json
 "outputs": {
@@ -72,14 +72,14 @@ A kezelt alkalmazás-erőfforás neve beállításához meg kell adni egy érté
 ```
 
 ## <a name="functions"></a>Functions
-Az Azure Resource Manager (a szintaxis és a működésének) sablonfüggvényei hasonló, CreateUiDefinition funkciókat nyújt elem bemenetei és kimenetei, valamint szolgáltatások, mint a conditionals használata.
+Az Azure Resource Manager (mind a szintaxist és a funkciók) sablonfüggvények hasonlóan CreateUiDefinition funkciókat nyújt elemek bemenetek és kimenetek, valamint szolgáltatások, például feltételek használata.
 
 ## <a name="next-steps"></a>További lépések
-Magát a createUiDefinition.json fájlt egy egyszerű sémával rendelkezik. A valós mélysége a támogatott elemek és funkciók származik. Azokat a cikkeket, részletesebben ismertetjük:
+Magát a createUiDefinition.json fájlt egy egyszerű sémával rendelkezik. A valódi mélysége támogatott elemeket és funkciókat származik. Ezekhez az elemekhez, részletesebben ismerteti:
 
 - [Elemek](create-uidefinition-elements.md)
 - [Functions](create-uidefinition-functions.md)
 
 A jelenlegi JSON-séma createUiDefinition érhető el itt: https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json.
 
-Egy példa felhasználói felület fájl, lásd: [createUiDefinition.json](https://github.com/Azure/azure-managedapp-samples/blob/master/samples/201-managed-app-using-existing-vnet/createUiDefinition.json).
+Egy felhasználói felület példafájl, lásd: [createUiDefinition.json](https://github.com/Azure/azure-managedapp-samples/blob/master/samples/201-managed-app-using-existing-vnet/createUiDefinition.json).

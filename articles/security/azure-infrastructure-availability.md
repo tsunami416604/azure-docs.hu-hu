@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
 ms.openlocfilehash: a9a55f61f032512be032897d5f21ece405844634
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105875"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587190"
 ---
 # <a name="azure-infrastructure-availability"></a>Azure-infrastruktúra rendelkezésre állása
 Az Azure robusztus rendelkezésre állás, a virtualizálási technológia érhető el a széles körű redundancia alapján biztosít. Az Azure számos szintű ügyfelek adatok maximális rendelkezésre állást biztosít redundanciát biztosít.

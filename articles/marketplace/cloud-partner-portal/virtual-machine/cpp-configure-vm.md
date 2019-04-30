@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 9cf363bc5f4230306c2fec99eb6287b23e598a4c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57833501"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60744346"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Az Azure-ban üzemeltetett virtuális gép konfigurálása
 
@@ -77,7 +77,7 @@ A sysprep futtatásával kapcsolatos további információkért lásd: [lépése
 
 ### <a name="linux"></a>Linux
 
-A következő két lépésből álló folyamat Linux rendszerű virtuális gép általánosítása és ismételt egy különálló virtuális gép üzembe helyezése.  További információkért lásd: [hogyan hozhat létre virtuális gépet vagy virtuális merevlemez lemezképét](../../../virtual-machines/linux/capture-image.md). 
+A következő két lépésből álló folyamat Linux rendszerű virtuális gép általánosítása és ismételt egy különálló virtuális gép üzembe helyezése.  További információ: [Rendszerkép készítése virtuális gépről vagy virtuális merevlemezről](../../../virtual-machines/linux/capture-image.md). 
 
 #### <a name="remove-the-azure-linux-agent"></a>Az Azure Linux-ügynök eltávolítása
 1.  A Linux virtuális gép egy SSH-ügyfél csatlakozhat.

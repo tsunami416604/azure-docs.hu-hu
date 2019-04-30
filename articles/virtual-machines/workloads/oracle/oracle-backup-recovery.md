@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 93fbd5bbba91b45e1afd123a2466b249302e2354
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: c41f13a6437f69121d3bbb387c96d8e13f2be0b3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492840"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60567087"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Biztonsági mentése és helyreállítása, az Oracle Database 12c adatbázis egy Azure-beli Linuxos virtuális gépen
 
@@ -37,7 +37,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy az Azure CLI telepítve van-e
     Megtudhatja, hogyan hozhat létre egy Oracle database, tekintse meg a [Oracle database gyors üzembe helyezése létrehozása](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).
 
 
-### <a name="step-2-connect-to-the-vm"></a>2. lépés: Kapcsolódás a virtuális Géphez
+### <a name="step-2-connect-to-the-vm"></a>2. lépés: Kapcsolódás a virtuális géphez
 
 *   Secure Shell (SSH)-munkamenetet létrehozni a virtuális géppel, a következő paranccsal. Cserélje le az IP-cím és a gazdagép neve együtt a `publicIpAddress` értéket a virtuális géphez.
 
@@ -266,7 +266,7 @@ Alkalmazáskonzisztens biztonsági mentést egy olyan új szolgáltatás az Azur
 További információkért lásd: [Linux rendszerű virtuális gépek alkalmazáskonzisztens biztonsági mentés](https://azure.microsoft.com/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).
 
 
-### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>5. lépés: Használja az Azure Recovery Services-tárolók biztonsági mentése a virtuális gép
+### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>5. lépés: A virtuális gép biztonsági másolatának használata az Azure Recovery Services-tárolók
 
 1.  Az Azure Portalon keresse meg **Recovery Services-tárolók**.
 
@@ -307,7 +307,7 @@ További információkért lásd: [Linux rendszerű virtuális gépek alkalmazá
 
     ![Biztonsági mentés most parancsot a Recovery Services-tárolók](./media/oracle-backup-recovery/recovery_service_09.png)
 
-10. Kattintson a **Backup** gombra. Várjon, amíg a biztonsági mentési folyamat befejezéséhez. Folytassa a [6. lépés: távolítsa el az adatbázisfájlok](#step-6-remove-the-database-files).
+10. Kattintson a **Backup** gombra. Várjon, amíg a biztonsági mentési folyamat befejezéséhez. Folytassa a [6. lépés: Távolítsa el az adatbázisfájlok](#step-6-remove-the-database-files).
 
     A biztonsági mentési feladat állapotának megtekintéséhez kattintson **feladatok**.
 
@@ -452,17 +452,17 @@ A törölt fájlok visszaállításához kövesse az alábbi lépéseket:
 
 Ahelyett, hogy a törölt fájlok visszaállítása a Recovery Services-tárolók, visszaállíthatja a teljes virtuális Gépet.
 
-### <a name="step-1-delete-myvm"></a>1. lépés: Törlés myVM
+### <a name="step-1-delete-myvm"></a>1. lépés: MyVM törlése
 
 *   Az Azure Portalon nyissa meg a **myVM1** tárba, és válassza ki **törlése**.
 
     ![Tároló törlése paranccsal](./media/oracle-backup-recovery/recover_vm_01.png)
 
-### <a name="step-2-recover-the-vm"></a>2. lépés: A virtuális gép helyreállítása
+### <a name="step-2-recover-the-vm"></a>2. lépés: A virtuális gép helyreállítása
 
 1.  Lépjen a **Recovery Services-tárolók**, majd válassza ki **myVault**.
 
-    ![myVault bejegyzés](./media/oracle-backup-recovery/recover_vm_02.png)
+    ![myVault entry](./media/oracle-backup-recovery/recover_vm_02.png)
 
 2.  Az a **áttekintése** panel alatt **biztonsági mentési elemek**, válassza ki az elemek számát.
 
@@ -519,7 +519,7 @@ A virtuális gép visszaállítása után állítsa be a nyilvános IP-címet.
 
     ![IP-címének értékét](./media/oracle-backup-recovery/create_ip_04.png)
 
-### <a name="step-4-connect-to-the-vm"></a>4. lépés: Kapcsolódás a virtuális Géphez
+### <a name="step-4-connect-to-the-vm"></a>4. lépés: Kapcsolódás a virtuális géphez
 
 *   A virtuális Géphez való csatlakozáshoz, használja a következő szkriptet:
 
@@ -527,7 +527,7 @@ A virtuális gép visszaállítása után állítsa be a nyilvános IP-címet.
     ssh <publicIpAddress>
     ```
 
-### <a name="step-5-test-whether-the-database-is-accessible"></a>5. lépés: Ellenőrizze, hogy az adatbázis érhető el
+### <a name="step-5-test-whether-the-database-is-accessible"></a>5. lépés: Tesztelje, hogy az adatbázis érhető el
 *   Kisegítő lehetőségek teszteléséhez használja a következő szkriptet:
 
     ```bash 
@@ -537,9 +537,9 @@ A virtuális gép visszaállítása után állítsa be a nyilvános IP-címet.
     ```
 
     > [!IMPORTANT]
-    > Ha az adatbázis **indítási** parancs hibát generál, állítsa helyre az adatbázist, lásd: [6. lépés: az adatbázis helyreállításához használja RMAN](#step-6-optional-use-rman-to-recover-the-database).
+    > Ha az adatbázis **indítási** parancs hibát generál, állítsa helyre az adatbázist, lásd: [6. lépés: Az adatbázis helyreállítása RMAN használatával](#step-6-optional-use-rman-to-recover-the-database).
 
-### <a name="step-6-optional-use-rman-to-recover-the-database"></a>6. lépés: (Nem kötelező) használata RMAN az adatbázis helyreállítása
+### <a name="step-6-optional-use-rman-to-recover-the-database"></a>6. lépés: (Nem kötelező) Az adatbázis helyreállítása RMAN használatával
 *   Állítsa helyre az adatbázist, használja a következő parancsfájlt:
 
     ```bash

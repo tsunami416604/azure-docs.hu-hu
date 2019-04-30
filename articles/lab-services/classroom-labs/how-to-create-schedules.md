@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 34bc8263053cd4a701c16ee1832cf1b27340a345
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55501360"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60695996"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Létrehozása és kezelése az Azure Lab Services osztályterem-tesztkörnyezetek ütemezését 
 Ütemezésekkel osztályterem-tesztkörnyezet konfigurálása, hogy a labor virtuális gépeinek automatikusan elindítani, és állítsa le a megadott időpontban. Egyszeri ütemezés szerint vagy ismétlődő ütemezés szerint határozhatja meg. Az alábbi eljárások létrehozásához és kezeléséhez az osztályterem-tesztkörnyezet ütemezések lépéseket biztosít: 

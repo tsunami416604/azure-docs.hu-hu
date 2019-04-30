@@ -1,17 +1,17 @@
 ---
-title: Absztrakt Azure-beli hálózati biztonság
+title: Abstract-Azure Network Security
 description: Az Azure hálózatbiztonsági Meogoldásait ismertető tanulmányt az absztrakt.
 author: TomShinder
 ms.author: TomSh
 ms.date: 08/08/2018
 ms.topic: article
 ms.service: security
-ms.openlocfilehash: f40006b4213becbd65ff2eebe8a098ca00b40180
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: fc7bd2c8e492ee338d279ddb44bb1093d153c360
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840205"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60613067"
 ---
 # <a name="azure-network-security"></a>Azure hálózati biztonság
 ## <a name="abstract"></a>Absztrakt

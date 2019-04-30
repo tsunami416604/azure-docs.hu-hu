@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: jingwang
 ms.openlocfilehash: ee47f464c59bd9deed98671f19cfcc6d2c3c1b39
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762480"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60546641"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával REST-végponton
 
@@ -65,10 +65,10 @@ A társított REST-szolgáltatás a következő tulajdonságok támogatottak:
 
 Állítsa be a **authenticationType** tulajdonságot **alapszintű**. Az előző szakaszban leírt általános tulajdonságaihoz adja meg a következő tulajdonságokkal:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| Felhasználónév | A felhasználónév, a REST-végpont elérésére használhat. | Igen |
-| jelszó | A felhasználó jelszava (a **felhasználónév** érték). Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| userName | A felhasználónév, a REST-végpont elérésére használhat. | Igen |
+| password | A felhasználó jelszava (a **felhasználónév** érték). Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 
 **Példa**
 
@@ -135,7 +135,7 @@ A társított REST-szolgáltatás a következő tulajdonságok támogatottak:
 
 Állítsa be a **authenticationType** tulajdonságot **ManagedServiceIdentity**. Az előző szakaszban leírt általános tulajdonságaihoz adja meg a következő tulajdonságokkal:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | aadResourceId | Adja meg az AAD erőforrás kért használ a hitelesítéshez, pl. `https://management.core.windows.net`.| Igen |
 

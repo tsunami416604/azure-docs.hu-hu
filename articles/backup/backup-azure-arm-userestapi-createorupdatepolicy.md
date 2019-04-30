@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Backup: Hozzon létre biztonsági mentési szabályzatok REST API használatával'
+title: 'Azure Backup: Hozzon létre biztonsági mentési szabályzatok REST API használatával'
 description: (Ütemezése és megőrzése) biztonsági mentési házirendek kezelése a REST API használatával
 services: backup
 author: pvrk
@@ -11,11 +11,11 @@ ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 657a777da0e984a145c1c617a6194bf4ef56306e
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289833"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648805"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Hozzon létre az Azure Recovery Services biztonsági mentési szabályzatok REST API használatával
 
@@ -31,7 +31,7 @@ A lépéseket az Azure Recovery Services-tárolót a biztonsági mentési szabá
 - Egy házirend sok erőforrás is hozzárendelhető. Egy Azure virtuális gép biztonsági mentési szabályzat számos Azure-beli virtuális gépek védelmére használható.
 - Két összetevőből áll: egy házirend
   - Ütemezés: A biztonsági mentés időpontjának kiválasztásakor
-  - Adatmegőrzés: Mennyi ideig fenn kell tartani minden egyes biztonsági másolat.
+  - Adatmegőrzés: Minden egyes biztonsági másolat, hogy mennyi ideig kell megőrizni.
 - Ütemezés "naponta" vagy "hetente", az adott időpontra idő adható meg.
 - A "naponta", "hetente", "havi", "éves" biztonsági mentési pontok megőrzése lehet definiálni.
 - "hetente" hivatkozik egy biztonsági mentés a hét egy bizonyos napon, "havi" azt jelenti, hogy a biztonsági mentés, a hónap adott napon, "éves" hivatkozik egy biztonsági mentés az év egyes napjaira vonatkozó.
@@ -53,7 +53,7 @@ Például az Azure virtuális gépek biztonsági mentését a szabályzat létre
 |Name (Név)  |Szükséges  |Típus  |Leírás  |
 |---------|---------|---------|---------|
 |properties     |   True (Igaz)      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource tulajdonságai        |
-|tags     |         | Objektum        |  Erőforráscímkék       |
+|tags     |         | Object        |  Erőforráscímkék       |
 
 A kérelem törzsében szereplő definíciók teljes listájáért tekintse meg a [biztonsági mentési szabályzat REST API-dokumentumban](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate).
 
@@ -156,7 +156,7 @@ A szabályzat szerint:
 
 A biztonsági mentési szabályzat létrehozása és frissítése az egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy a művelet létrehoz egy másik művelet, külön-külön nyomon kell követni.
 
-Két választ adja vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd a 200 (OK), hogy a művelet befejeződésekor.
+Két választ adja vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), hogy a művelet befejeződésekor.
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|

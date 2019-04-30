@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
 ms.openlocfilehash: ebe344d9f596f862fe5ffbfef083725e6527d0d3
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650206"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60599318"
 ---
 # <a name="requirements-by-listing-type"></a>Típus listázásával követelmények  
 A technikai és marketinganyagokat tartalmi követelmények eltérőek lehetnek, storefront, ajánlat és lista típusa. Tekintse át a következő előírásoknak, a megfelelőség ellenőrzése.  
@@ -37,12 +37,12 @@ A következő táblázat ismerteti a előfeltételeinek közzététele az appsou
 | ***Az Azure Active Directory (Azure AD)*** | Az alkalmazás Azure Active Directory összevont egyszeri bejelentkezés (Azure AD összevont egyszeri bejelentkezés) az engedélyezett hozzájárulásával engedélyeznie kell.<ul> <li>További információ a engedélyezése az Azure AD összevont egyszeri Bejelentkezést, látogasson el a konfigurálása egyszeri bejelentkezéshez olyan alkalmazások, amelyek nem szerepelnek az Azure Active Directory application galériabeli oldalán található [docs.microsoft.com/azure/active-directory/ Active-directory-saas-egyéni-alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps).</li> </ul> | Szükséges |   
 | ***Integráció a Microsoft Felhőszolgáltatásaival*** | Az alkalmazás egyéb Microsoft Cloud services, Microsoft Power BI, a Cortana Intelligence vagy a Microsoft Azure-szolgáltatásokhoz hasonlóan kell integrálható.<ul> <li>Egy példa a Microsoft Cloud service, az eszközök internetes hálózatát.</li> </ul> | Ajánlott |  
 | ***Célközönség*** | Az alkalmazás üzleti – felhasználók és az üzleti tulajdonosai kell lennie. | Szükséges | 
-| ***Szoftverek, mint a szoftverszolgáltatások (SaaS) alkalmazások vállalati*** | Az alkalmazás az alábbi követelményeknek kell megfelelnie.<ul> <li>A sor üzleti SaaS-alkalmazás</li> <li>A fókuszban lévő üzleti folyamat</li> <li>Az üzleti ügyfeleknek megcélzott</li> <li>Engedélyezze a felhasználók számára a munkahelyi hitelesítő adatokat – például felhasználónévvel és jelszóval bejelentkezni</li> </ul> | Szükséges |  
+| ***Szoftverek, mint a szoftverszolgáltatások (SaaS) alkalmazások vállalati*** | Az alkalmazás az alábbi követelményeknek kell megfelelnie.<ul> <li>A sor üzleti SaaS-alkalmazás</li> <li>A fókuszban lévő üzleti folyamat</li> <li>Az üzleti ügyfeleknek megcélzott</li> <li>Engedélyezze a felhasználók számára a munkahelyi hitelesítő adatokat – például felhasználónévvel és jelszóval bejelentkezni</li> </ul> | Kötelező |  
 | ***Ingyenes próbaidőszak és próbaverziója*** | Az alkalmazás tartalmaznia kell egy a következő beállítások ahhoz, hogy egy ügyfél az alkalmazás korlátozott ideig ingyenes használatához.<ul> <li>Adjon meg egy `try` metódust, így az ügyfelek előfordulhat, hogy az alkalmazás az appsource-on belül próbaverzió indítása</li> <li>Adjon meg egy `request trial` lehetőség az az appsource-ban, így a felhasználók kérhetik az alkalmazás próbaverzióját</li> </ul>Az ingyenes próbaverzióra, hogy az ügyfél csak olyan előre megadott, és próbálja ki az alkalmazás további költség nélkül. | Szükséges |  
 | ***Könnyen konfigurálható, használatra kész megoldás*** | Az alkalmazás egyszerű és gyors konfigurálását, és állítsa be a nem szükséges testreszabás kell lennie. | Szükséges |  
-| ***Érdeklődők kezelése*** | Engedélyezze a CRM, fogadja el az érdeklődők adatait ahhoz, hogy vezet a megjelennie.<ul> <li>CRM példák Marketo, a Microsoft Dynamics vagy a Salesforce-ban</li> </ul> | Szükséges |  
-| ***Adatvédelmi szabályzat és a használati feltételeket*** | Az alkalmazás meg kell adnia egy hivatkozást az adatvédelmi szabályzat oldalát, egy nyilvános URL-cím használatával. A használati feltételeket tartalmazó fájl közzététele szövegként során meg kell adni. | Szükséges |  
-| ***Támogatás*** | Az alkalmazás az ügyfél-támogatási oldalát, egy nyilvános URL-hivatkozást kell megadnia. Ha az alkalmazás a próbaverziót, majd, támogatnia kell további költségek nélkül a próbaidőszak alatt. | Szükséges |  
+| ***Érdeklődők kezelése*** | Engedélyezze a CRM, fogadja el az érdeklődők adatait ahhoz, hogy vezet a megjelennie.<ul> <li>CRM példák Marketo, a Microsoft Dynamics vagy a Salesforce-ban</li> </ul> | Kötelező |  
+| ***Adatvédelmi szabályzat és a használati feltételeket*** | Az alkalmazás meg kell adnia egy hivatkozást az adatvédelmi szabályzat oldalát, egy nyilvános URL-cím használatával. A használati feltételeket tartalmazó fájl közzététele szövegként során meg kell adni. | Kötelező |  
+| ***Támogatás*** | Az alkalmazás az ügyfél-támogatási oldalát, egy nyilvános URL-hivatkozást kell megadnia. Ha az alkalmazás a próbaverziót, majd, támogatnia kell további költségek nélkül a próbaidőszak alatt. | Kötelező |  
 
 ## <a name="storefront-requirements-azure-marketplace"></a>Storefront-követelmények: Azure Piactér  
 Az alábbiakban az Azure Marketplace-en típusok listázásához előfeltételeinek.  

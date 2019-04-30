@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
 ms.openlocfilehash: d6ab18d68d6508a18f0b36ab5a39e15fa7c0555a
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311662"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60594484"
 ---
 # <a name="saas-sell-through-azure---apis"></a>SaaS-értékesítési Azure - API-k segítségével
 
@@ -506,7 +506,7 @@ A Get műveletet az előfizetési végpont lehetővé teszi, hogy egy felhaszná
 | **Paraméter neve**     | **Adattípus** | **Leírás**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id                     | String        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |
-| offerId                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett.         |
+| ajánlatazonosító                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett.         |
 | planId                 | String        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.          |
 | saasSubscriptionName   | String        | Az SaaS-előfizetés neve.                |
 | saasSubscriptionStatus | Enum          | A művelet állapotát.  A következők egyikét:  <br/> - `Subscribed`: Előfizetés az aktív.  <br/> - `Pending`: Felhasználó létrehozása az erőforrás, de nem aktiválódik, a független szoftvergyártó.   <br/> - `Unsubscribed`: Felhasználó leiratkoztatva rendelkezik.   <br/> - `Suspended`: Felhasználó felfüggesztette az előfizetést.   <br/> - `Deactivated`:  Azure-előfizetés fel van függesztve.  |
@@ -578,7 +578,7 @@ A Get műveletet előfizetések végponton lehetővé teszi, hogy egy felhaszná
 | **Paraméter neve**     | **Adattípus** | **Leírás**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id                     | String        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |
-| offerId                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett.         |
+| ajánlatazonosító                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett.         |
 | planId                 | String        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.          |
 | saasSubscriptionName   | String        | Az SaaS-előfizetés neve.                |
 | saasSubscriptionStatus | Enum          | A művelet állapotát.  A következők egyikét:  <br/> - `Subscribed`: Előfizetés az aktív.  <br/> - `Pending`: Felhasználó létrehozása az erőforrás, de nem aktiválódik, a független szoftvergyártó.   <br/> - `Unsubscribed`: Felhasználó leiratkoztatva rendelkezik.   <br/> - `Suspended`: Felhasználó felfüggesztette az előfizetést.   <br/> - `Deactivated`:  Azure-előfizetés fel van függesztve.  |
@@ -632,7 +632,7 @@ Egy SaaS-webhook proaktív módon a SaaS-szolgáltatás módosításait értesí
 | id  | String       | A művelet által aktivált egyedi azonosítója.                |
 | Tevékenységazonosító   | String        | A szolgáltatás a kérelem követési egyedi karakterlánc-érték. Bármely egyeztetések szolgál.               |
 | subscriptionId                     | String        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |
-| offerId                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett. Csak a "Frissítés" művelet megadott.        |
+| ajánlatazonosító                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett. Csak a "Frissítés" művelet megadott.        |
 | publisherId                | String        | Az SaaS-ajánlat a Gyártóazonosítóval         |
 | planId                 | String        | Tervezze meg, hogy a felhasználó előfizetett azonosítója. Csak a "Frissítés" művelet megadott.          |
 | action                 | String        | A művelet, amely ezt az értesítést kezdeményezi. A lehetséges értékek - aktiválása, töröl, a felfüggesztés, visszaállítása, frissítés          |

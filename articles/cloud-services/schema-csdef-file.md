@@ -14,11 +14,11 @@ author: jpconnock
 ms.author: jeconnoc
 manager: timlt
 ms.openlocfilehash: 4e018af7df64c9ed8050a3c618cf2645d5509cdd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918501"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60613253"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Az Azure Cloud Services – definíciós séma (.csdef fájl)
 A szolgáltatásdefiníciós fájl határozza meg, hogy a modell egy alkalmazáshoz. A fájl a felhőszolgáltatás számára elérhető szerepköröket definícióit tartalmazza, meghatározza a szolgáltatásvégpontokat, és hozza létre a szolgáltatás konfigurációs beállításait. Konfigurációs beállítás értéke a konfigurációs fájlban, leírtak szerint a [Felhőszolgáltatás (klasszikus) konfigurációs séma](/previous-versions/azure/reference/ee758710(v=azure.100)).

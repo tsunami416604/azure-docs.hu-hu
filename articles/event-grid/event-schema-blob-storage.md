@@ -8,11 +8,11 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 401eb660d7e5ddc68bc7422ef9f2e600295d2aea
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469732"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60614904"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>A Blob Storage Azure Event Grid eseménysémája
 
@@ -90,28 +90,28 @@ Egy esemény a következő legfelső szintű adatokat tartalmaz:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| témakör | sztring | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| tárgy | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
-| eventType | sztring | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
-| eventTime | sztring | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| id | sztring | Az esemény egyedi azonosítója. |
+| témakör | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
+| tárgy | string | Az esemény tárgya közzétevő által megadott elérési útja. |
+| eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
+| eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
+| id | string | Az esemény egyedi azonosítója. |
 | adat | objektum | A BLOB storage-eseményadatok. |
-| dataVersion | sztring | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | sztring | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
+| dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
+| metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
 Az objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| api-t | sztring | A művelet, amely kiváltotta az eseményt. |
-| clientRequestId | sztring | Egy ügyfél által generált, átlátszatlan érték, és a egy 1 KB-os karakter korlátja. Ha engedélyezte a naplózást a storage analytics, az elemzési naplók van rögzítve. |
-| requestId | sztring | A kérelem egyedi azonosítója. Ezzel a kérést a hibaelhárításhoz. |
-| az eTag | sztring | Az érték, amely feltételesen műveletek végrehajtásához használhatja. |
-| contentType | sztring | A blob megadott tartalom típusa. |
+| api-t | string | A művelet, amely kiváltotta az eseményt. |
+| clientRequestId | string | Egy ügyfél által generált, átlátszatlan érték, és a egy 1 KB-os karakter korlátja. Ha engedélyezte a naplózást a storage analytics, az elemzési naplók van rögzítve. |
+| requestId | string | A kérelem egyedi azonosítója. Ezzel a kérést a hibaelhárításhoz. |
+| az eTag | string | Az érték, amely feltételesen műveletek végrehajtásához használhatja. |
+| contentType | string | A blob megadott tartalom típusa. |
 | contentLength | egész szám | A blob (bájt) mérete. |
-| blobType | sztring | A blob típusa. Érvényes értékek: "BlockBlob" vagy "PageBlob". |
-| url | sztring | A blob elérési útja. |
-| sorrendvezérlő | sztring | Egy felhasználó általi érték, amely a kérések nyomon követésére használható. |
+| blobType | string | A blob típusa. Érvényes értékek: "BlockBlob" vagy "PageBlob". |
+| url | string | A blob elérési útja. |
+| sorrendvezérlő | string | Egy felhasználó általi érték, amely a kérések nyomon követésére használható. |
 | storageDiagnostics | objektum | A tárolási diagnosztikai információt. |
  
 ## <a name="next-steps"></a>További lépések

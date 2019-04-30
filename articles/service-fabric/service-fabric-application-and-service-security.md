@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/16/2018
 ms.author: aljo
 ms.openlocfilehash: b4d3699c0327bb2771a358d3e3c2921bdc39ee5e
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670421"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60621555"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric-alkalmazás és szolgáltatás biztonsága
 A mikroszolgáltatási architektúra is átviheti [számos előnnyel jár](service-fabric-overview-microservices.md). Viszont, mikroszolgáltatások, a biztonság kezelése, a kérdés, és eltér a hagyományos monolitikus alkalmazások biztonság kezelése. 
@@ -31,7 +31,7 @@ Ez a cikk nem mikroszolgáltatás-alapú biztonsági útmutatóját, számos for
 ## <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés
 Gyakran szükség az erőforrások és a szolgáltatás által elérhetővé tett API csak bizonyos megbízható felhasználók vagy az ügyfelek számára. Hitelesítés az a folyamat megbízhatóan megismerjük a felhasználó identitását.  Engedély a folyamatot, amely lehetővé teszi az API-k vagy a szolgáltatások számára elérhető egyes hitelesített felhasználók, de nem más.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 Az első lépés az API-szintű megbízhatóság döntéseket hitelesítésre. Hitelesítés az a folyamat megbízhatóan megismerjük a felhasználó identitását.  A mikroszolgáltatás-környezetben hitelesítési általában kezelése központilag. Ha egy API-átjárót használ, akkor [hitelesítési kiürítési](/azure/architecture/patterns/gateway-offloading) az átjáróhoz. Ha ezt a módszert használja, ügyeljen arra, hogy az egyes szolgáltatások nem érhető el közvetlenül (az API-átjáró) nélkül, kivéve, ha további biztonsági üzenetek hitelesítésére helyen e származnak az átjáró-e.
 
 Szolgáltatások közvetlenül is elérhetők, ha olyan hitelesítési szolgáltatás, például az Azure Active Directory vagy egy dedikált hitelesítési mikroszolgáltatások és a egy biztonsági jogkivonat-szolgáltatás (STS) segítségével hitelesítheti a felhasználókat. Megbízható döntéseket hozhat a biztonsági jogkivonatok vagy cookie-k szolgáltatások között vannak megosztva. 

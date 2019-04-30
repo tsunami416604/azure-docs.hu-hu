@@ -14,11 +14,11 @@ ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
 ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798980"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60612541"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Virtuális hálózat integrációja Azure Data Lake Storage Gen1
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja a virtuális hálózat integrációja Azure Data Lake Storag
 
 Ezzel a funkcióval megvédheti Data Lake Storage-fiókját a külső fenyegetésektől.
 
-Az 1. generációs Data Lake Storage-fiókok virtuális hálózati integrációja a virtuális hálózat és az Azure Active Directory (AD) közötti virtuális hálózati szolgáltatási végpont biztonsági funkcióit használja, hogy létrehozza a hozzáférési jogkivonat által tartalmazott további biztonsági jogcímeket. Ezután e jogcímek használatával hitelesíti a virtuális hálózatot az 1. generációs Data Lake Storage-fiókkal, és engedélyezi a hozzáférést.
+Az 1. generációs Data Lake Storage-fiókok virtuális hálózati integrációja a virtuális hálózat és az Azure Active Directory (AD) közötti virtuális hálózati szolgáltatásvégpont biztonsági funkcióit használja, hogy létrehozza a hozzáférési jogkivonat által tartalmazott további biztonsági jogcímeket. Ezután e jogcímek használatával hitelesíti a virtuális hálózatot az 1. generációs Data Lake Storage-fiókkal, és engedélyezi a hozzáférést.
 
 > [!NOTE]
 > A funkció felár nélkül használható. Az 1. generációs Data Lake Storage esetében fiókjánál a standard árat számlázzuk ki. További információt a [díjszabás](https://azure.microsoft.com/pricing/details/data-lake-store/?cdn=disable) tartalmaz. Az összes többi Ön által használt Azure-szolgáltatásról a [díjszabásban](https://azure.microsoft.com/pricing/#product-picker) talál további információt.
@@ -42,7 +42,7 @@ Az 1. generációs Data Lake Storage virtuális hálózati integrációjánál k
 
 ## <a name="optimal-routing-with-data-lake-storage-gen1-virtual-network-integration"></a>Optimális útválasztás a virtuális hálózat integrációjához az 1. generációs Data Lake Storage-ban
 
-A virtuális hálózat szolgáltatásvégpontjainak egyik legfőbb előnye a virtuális hálózat felőli [optimális útválasztás](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview#key-benefits). Ugyanezt az optimális útválasztást az 1. generációs Data Lake Storage-fiókoknál is végrehajthatja. Használja az alábbi, [felhasználó által meghatározott útvonalakat](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) az 1. generációs Data Lake Storage-fiók virtuális hálózatából.
+A virtuális hálózati szolgáltatásvégpontok egyik legfőbb előnye a virtuális hálózat felőli [optimális útválasztás](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview#key-benefits). Ugyanezt az optimális útválasztást az 1. generációs Data Lake Storage-fiókoknál is végrehajthatja. Használja az alábbi, [felhasználó által meghatározott útvonalakat](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) az 1. generációs Data Lake Storage-fiók virtuális hálózatából.
 
 **Data Lake Storage nyilvános IP-címe** – Használja a nyilvános IP-címet az 1. generációs Data Lake Storage-célfiókokhoz. Az 1. generációs Data Lake Storage-fiókok IP-címei a fiókok [DNS-nevének](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-connectivity-from-vnets#enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity) feloldásával azonosíthatók. Hozzon létre külön bejegyzést mindegyik címhez.
 

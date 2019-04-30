@@ -6,16 +6,19 @@ author: tdykstra
 manager: cfowler
 ms.service: functions
 ms.topic: include
-ms.date: 05/17/2018
-ms.author: tdykstra
+origin.date: 05/17/2018
+ms.date: 05/30/2018
+ms.author: v-junlch
 ms.custom: include file
-ms.openlocfilehash: 97c56b07833f7d93541bb0b3747889f5a50a8203
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f8733ef907b8f31ace7ea72f705ba1b37d1adece
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34675275"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60306748"
 ---
-### <a name="azure-storage-sdk-version-in-functions-1x"></a>A funkciók az Azure Storage szolgáltatás SDK-verzió 1.x
+### <a name="azure-storage-sdk-version-in-functions-1x"></a>A Functions az Azure Storage SDK-verzió 1.x
 
-Funkciók 1.x, a tárolási eseményindítók és kötések használja az Azure Storage szolgáltatás SDK 7.2.1 verzióját ([windowsazure.Storage kifejezésre](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1) NuGet-csomag). A Storage szolgáltatás SDK eltérő verziójú hivatkozik, és a függvényaláíráshoz a Storage szolgáltatás SDK típusú kötés, ha a Functions futtatókörnyezete, hogy nem köthető, hogy a típus lehet, hogy jelentést. A megoldás, hogy ellenőrizze, hogy a projekt hivatkozásait [windowsazure.Storage kifejezésre 7.2.1](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1).
+Függvények 1.x, tároló-eseményindítók és kötések használata az Azure Storage SDK 7.2.1 verzióját ([WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1) NuGet-csomag). A Storage SDK-t egy másik verziója hivatkozik, és a függvényfej a kötés Storage SDK-t típusra, a Functions futtatókörnyezete, hogy nem köthető az adott típusú feltétlenül jelentik. A megoldás az, hogy ellenőrizze, hogy a projekt referenciáihoz [WindowsAzure.Storage 7.2.1](https://www.nuget.org/packages/WindowsAzure.Storage/7.2.1).
+
+<!-- ms.date: 05/30/2018 -->

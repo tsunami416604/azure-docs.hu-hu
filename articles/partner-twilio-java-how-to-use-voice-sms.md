@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: 386b4b8440c74f6599e7147996b5843ea0f67e68
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423364"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60623952"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Hogyan lehet a Twilio használata Hanghívási és SMS-funkciókhoz Java nyelven
 Ez az útmutató bemutatja, hogyan hajthat végre gyakori programozási feladatokat, a Twilio API-t szolgáltatással az Azure-ban. Az ismertetett forgatókönyvek között megtalálható, így a telefonhívás, és a egy rövid üzenetet szolgáltatást (SMS) üzenetet küld. A Twilio és az alkalmazások használata hanghívási és SMS további információkért lásd: a [lépések](#NextSteps) szakaszban.
@@ -42,16 +42,16 @@ Az API-t felhasznál Twilio műveleteket; Ha például a **&lt;Say&gt;** művele
 
 Az alábbiakban látható egy Twilio-műveletek listájához.
 
-* **&lt;Tárcsázás&gt;**: a hívó kapcsolódik egy másik telefonszámot.
-* **&lt;Gyűjtse össze&gt;**: összegyűjti a telefon billentyűzeten beírt számjegyeket.
-* **&lt;Vonalbontás&gt;**: ér véget a hívást.
-* **&lt;Play&gt;**: fájlból játszik le egy hangfájlt.
-* **&lt;Várólista&gt;**: Adja hozzá a hívók egy üzenetsorba.
-* **&lt;Felfüggesztés&gt;**: Csendes megvárja a megadott számú másodperc.
-* **&lt;Rekord&gt;**: a hívó hangalapú rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
-* **&lt;Átirányítási&gt;**: átadja a vezérlést a hívást vagy SMS a TwiML egy másik URL-címen.
-* **&lt;Elutasítás&gt;**: a Twilio-számra egy bejövő hívás elutasítása a számlázási, nélkül.
-* **&lt;Tegyük fel, hogy&gt;**: alakíthatók át egymásba szöveg-beszéd átalakítás, amely a hívást.
+* **&lt;Tárcsázás&gt;**: A hívó csatlakozik egy másik telefonon.
+* **&lt;Gyűjtse össze&gt;**: Gyűjti a telefon billentyűzeten beírt számjegyeket.
+* **&lt;Vonalbontás&gt;**: A hívás véget ér.
+* **&lt;Play&gt;**: Hang lejátszása.
+* **&lt;Queue&gt;**: Adja hozzá a hívók egy üzenetsorba.
+* **&lt;Felfüggesztés&gt;**: A megadott számú másodperc vár beavatkozás nélkül.
+* **&lt;Rekord&gt;**: A hívó hangalapú rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
+* **&lt;Redirect&gt;**: Adatátvitel a irányítását tartalmazó hívást vagy SMS-t a TwiML egy másik URL-címen.
+* **&lt;Elutasítás&gt;**: A Twilio-számra bejövő hívás elutasítja, számlázási nélkül.
+* **&lt;Tegyük fel, hogy&gt;**: Szöveg-beszéd átalakítás, amely egy hívást történő alakítja.
 * **&lt;SMS&gt;**: SMS üzenetet küld.
 
 ### <a id="TwiML"></a>TwiML
@@ -104,7 +104,7 @@ Java kiszolgálói oldal (JSP) forrásfájlokhoz:
  
 Attól függően, melyik Twilio-csomagokat vagy osztályok szeretné használni, a **importálása** utasítások eltérőek lehetnek.
 
-## <a id="howto_make_call"></a>Hogyan: végezhet
+## <a id="howto_make_call"></a>kézikönyv: Végezhet
 A következőket mutatja be, hogy egy kimenő hívás használatával a **hívás** osztály. Ez a kód is egy Twilio által biztosított helyet használ a Twilio Markup Language (TwiML) választ adja vissza. Helyettesítse be a saját értékeit a **a** és **való** telefonszámai, és győződjön meg arról, hogy ellenőrizze a **a** telefonszám a Twilio-fiók, a kód futtatása előtt.
 
 ```java
@@ -133,7 +133,7 @@ További információ az átadott paraméterek a **Call.creator** metódus, lás
 
 Ahogy már említettük, ez a kód egy Twilio által biztosított hely használatával TwiML a választ adja. Ehelyett használhatja a saját hely adja meg a TwiML válasz; További információkért lásd: [TwiML válaszok adjon meg egy Java-alkalmazás az Azure-ban hogyan](#howto_provide_twiml_responses).
 
-## <a id="howto_send_sms"></a>Útmutató: az SMS-üzenet küldése
+## <a id="howto_send_sms"></a>kézikönyv: Küldjön SMS-t
 A következő példa használatával SMS üzenet küldése a **üzenet** osztály. A **a** szám **4155992671**, Twilio próbaverziós fiókok küldése SMS-ek biztosítják. A **való** száma a Twilio-fiók, a kód futtatása előtt ellenőrizni kell.
 
 ```java
@@ -157,7 +157,7 @@ A következő példa használatával SMS üzenet küldése a **üzenet** osztál
 
 További információ az átadott paraméterek a **Message.creator** metódus, lásd: [ https://www.twilio.com/docs/api/rest/sending-sms ] [ twilio_rest_sending_sms].
 
-## <a id="howto_provide_twiml_responses"></a>Hogyan: Adja meg a saját webhelyén TwiML válaszok
+## <a id="howto_provide_twiml_responses"></a>kézikönyv: Adja meg a saját webhelyén TwiML válaszok
 Ha az alkalmazás kezdeményezi a hívást a Twilio API-hoz, például keresztül a **CallCreator.create** metódus, Twilio a kérelmet küld egy URL-címet, amely várhatóan egy TwiML választ adja vissza. A fenti példában a Twilio-megadott URL-címet használ [ https://twimlets.com/message ] [ twimlet_message_url]. (Amíg TwiML használata webszolgáltatások lett tervezve, megtekintheti a TwiML a böngészőben. Kattintson például [ https://twimlets.com/message ] [ twimlet_message_url] megtekintéséhez egy üres **&lt;válasz&gt;** elem; másik példaként, kattintson a [ https://twimlets.com/message?Message%5B0%5D=Hello%20World%21 ] [ twimlet_message_url_hello_world] megtekintéséhez egy **&lt;válasz&gt;** elem, amely tartalmazza a **&lt;Say&gt;** elem.)
 
 Így nem kell hagyatkoznia a Twilio-megadott URL-címet, a saját URL-címet a hely által visszaadott HTTP-válaszok is létrehozhat. A hely által visszaadott HTTP-válaszok; bármilyen nyelven hozhat létre Ez a témakör azt feltételezi, hogy fogja üzemeltetni a JSP-oldal URL-CÍMÉT.
@@ -204,7 +204,7 @@ Keresztül van egy másik lehetőség a TwiML válaszol a **VoiceResponse** oszt
 
 Az Azure-ban a Java a Twilio használatával kapcsolatos további információkért lásd: [egy telefonhívás használatával Twilio Java-alkalmazásokban az Azure-on győződjön meg arról, hogyan][howto_phonecall_java].
 
-## <a id="AdditionalServices"></a>How to: további Twilio-szolgáltatások használata
+## <a id="AdditionalServices"></a>kézikönyv: További Twilio-szolgáltatások használata
 Itt látható példák, mellett Twilio kínál a webes API-kat használhatja az Azure-alkalmazásból további Twilio funkciói kihasználhatók. További részletek: a [Twilio API-dokumentáció][twilio_api_documentation].
 
 ## <a id="NextSteps"></a>Következő lépések

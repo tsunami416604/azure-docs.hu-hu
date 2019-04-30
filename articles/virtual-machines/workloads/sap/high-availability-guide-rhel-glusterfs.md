@@ -1,6 +1,6 @@
 ---
 title: GlusterFS az Azure-beli virtuális gépeken a Red Hat Enterprise Linux for SAP NetWeaver |} A Microsoft Docs
-description: A Red Hat Enterprise Linux for SAP NetWeaver-alapú virtuális gépek Azure GlusterFS
+description: Red Hat Enterprise Linuxon futó Azure-beli virtuális gépeken üzemelő GlusterFS SAP NetWeaverhez
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
@@ -16,13 +16,13 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
 ms.openlocfilehash: 484a0043b9b5eefa5491dee75e87244d1c001620
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342323"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60711244"
 ---
-# <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>A Red Hat Enterprise Linux for SAP NetWeaver-alapú virtuális gépek Azure GlusterFS
+# <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>Red Hat Enterprise Linuxon futó Azure-beli virtuális gépeken üzemelő GlusterFS SAP NetWeaverhez
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -91,7 +91,7 @@ Használhatja a gyorsindítási sablonok egyikét a githubon üzembe helyezésé
 
 1. Nyissa meg a [SAP file server sablon] [ template-file-server] az Azure Portalon
 1. Adja meg a következő paraméterek
-   1. Erőforrás-előtag  
+   1. Resource Prefix  
       Adja meg a használni kívánt előtagot. Az érték előtagjaként is szolgál az üzembe helyezett erőforrásokat.
    2. Az SAP-rendszer száma itt adhatja meg a fájlkiszolgáló által használt SAP-rendszerek számát. Ez telepíti a szükséges számú lemezeket stb.
    3. Operációs rendszer típusa  
@@ -235,7 +235,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    # State: Peer in Cluster (Connected)
    </code></pre>
 
-1. **[A]**  LVM létrehozása
+1. **[A]** Create LVM
 
    Ebben a példában a GlusterFS két SAP-rendszereit, NW1 és NW2 szolgál. A következő parancsok segítségével hozza létre ezeket az SAP-rendszerek LVM-konfigurációit.
 

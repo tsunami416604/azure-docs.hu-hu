@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/22/2019
 ms.author: spelluru
 ms.openlocfilehash: 4d2ba11181977f1976b5ae933e8b93a92424fa96
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56808644"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60695275"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>Osztályterem-tesztkörnyezetek használata betanítások
 Beállíthat egy tesztkörnyezetet betanítások. Tanterem Laborgyakorlatok az Azure Lab Services lehetővé teszi a képzési tesztkörnyezetek létrehozása amelyben minden tanuló használ a betanításhoz azonos és elkülönített környezetben. Annak érdekében, hogy képzési környezetek elérhető minden tanuló, csak akkor, amikor szükség van rájuk, és tartalmaz elég erőforrások – például a virtuális gépek – szükséges a képzés-szabályzatok alkalmazása. 

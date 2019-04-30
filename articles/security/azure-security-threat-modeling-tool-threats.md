@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: fd7c5fd929163dc7fcd22fbb045dee0fe3070394
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359034"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611555"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft Threat Modeling Tool fenyegetések
 
@@ -37,7 +37,7 @@ A Threat Modeling Tool segítségével bizonyos kérdésre, például az alábbi
 
 Jobb súgó az ilyen típusú hegyes kérdések megfogalmazása, a Microsoft a STRIDE modellt, amely kategorizálja a különböző típusú fenyegetéseket, és egyszerűbbé teszi az általános biztonsági-beszélgetések használja.
 
-| Kategória | Leírás |
+| Category | Leírás |
 | -------- | ----------- |
 | **Címek hamisítása** | Magában foglalja a jogosulatlan hozzáférés és a egy másik felhasználói hitelesítési adatok, például a felhasználónév és jelszó használata |
 | **Illetéktelen módosítása** | Magában foglalja az adatok rosszindulatú módosítását. Példák az illetéktelen módosítások állandó adatait, például, amely a nyílt hálózaton, például az interneten két számítógép között biztosítani egy adatbázis és az adatok az megváltoztatására tárolt |

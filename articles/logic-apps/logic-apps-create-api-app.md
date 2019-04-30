@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
 ms.openlocfilehash: 620ede672d71338abeff5198fd5f94e92dc193d0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895855"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60681877"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Az Azure Logic Apps segítségével meghívhatja, egyéni API-k létrehozása
 
@@ -168,7 +168,7 @@ Az alábbiakban egy lekérdezési eseményindító, az API-k szempontból leírt
 | Új adatokat és az esemény található?  | API-válasz | 
 | ------------------------- | ------------ |
 | Találat | Adja vissza egy olyan HTTP `200 OK` , ahol a válasz-adattartalomra (bemenet a következő lépésre) állapot. <br/>Ez a válasz létrehoz egy logikaialkalmazás-példányt, és elindítja a munkafolyamatot. | 
-| Nem található | Adja vissza egy olyan HTTP `202 ACCEPTED` állapot egy `location` fejlécet és a egy `retry-after` fejléc. <br/>Az eseményindítók a `location` fejlécnek is tartalmaznia kell egy `triggerState` lekérdezési paraméter, amely általában a "Timestamp"mezőt. Az API-t a Ez az azonosító segítségével nyomon követheti, hogy a logikai alkalmazás aktiválva lett utoljára. | 
+| Nincs találat | Adja vissza egy olyan HTTP `202 ACCEPTED` állapot egy `location` fejlécet és a egy `retry-after` fejléc. <br/>Az eseményindítók a `location` fejlécnek is tartalmaznia kell egy `triggerState` lekérdezési paraméter, amely általában a "Timestamp"mezőt. Az API-t a Ez az azonosító segítségével nyomon követheti, hogy a logikai alkalmazás aktiválva lett utoljára. | 
 ||| 
 
 Például a szolgáltatás új fájlok rendszeres időnként ellenőrzik, felépíthet egy lekérdezési eseményindítói viselkedést:

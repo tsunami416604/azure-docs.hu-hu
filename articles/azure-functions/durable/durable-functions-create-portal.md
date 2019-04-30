@@ -8,14 +8,15 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
-ms.author: azfuncdf, glenga
+origin.date: 10/23/2018
+ms.date: 03/25/2019
+ms.author: v-junlch
 ms.openlocfilehash: 1c60bd4dae6c279ccff637ff0aa798c48ebec6f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108069"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60710860"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Hozzon létre Durable Functions az Azure portal használatával
 
@@ -91,7 +92,7 @@ Tartós JavaScript-függvények létrehozásakor, akkor telepítenie kell a [ `d
 1. Egy HTTP-eszköz, például a Postman vagy a cURL használatával küldünk egy POST kérést másolt URL-CÍMÉT. Az alábbi példa a cURL-parancsot, amely egy POST kérést küld a tartós függvény:
 
     ```bash
-    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
+    curl -X POST https://{your-function-app-name}.chinacloudsites.cn/api/orchestrators/HelloSequence
     ```
 
     Ebben a példában `{your-function-app-name}` az a tartomány, a függvényalkalmazás neve. A válaszüzenet tartalmaz URI végpontok, amelyek segítségével figyelheti és kezelheti a végrehajtási, amely a következő példához hasonlóan néz ki:
@@ -140,3 +141,5 @@ Az első tartós függvény működik-e már az Azure-ban.
 
 > [!div class="nextstepaction"]
 > [Tartós függvény előforduló általános minták megismeréséhez](durable-functions-concepts.md)
+
+<!-- Update_Description: wording update -->

@@ -1,17 +1,18 @@
 ---
 title: Olvasási replikák az Azure Database for PostgreSQL-ben
 description: Ez a cikk ismerteti a olvasható replika szolgáltatást az Azure Database for postgresql-hez.
-author: rachel-msft
-ms.author: raagyema
+author: WenJason
+ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/01/2019
+origin.date: 04/01/2019
+ms.date: 04/22/2019
 ms.openlocfilehash: f340f1e42b6993a1f834ab05570c669d4241222b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789974"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60564357"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql"></a>Olvasási replikák az Azure Database for PostgreSQL-ben
 
@@ -50,7 +51,7 @@ A replika örökli a fölérendelt kiszolgáló a rendszergazdai fiókkal. A fö
 Csatlakozhat a replika használatával, az állomásnév és a egy érvényes felhasználói fiókot, mint egy normál, Azure Database for PostgreSQL-kiszolgálóhoz. A kiszolgáló neve **myreplica** a rendszergazda felhasználóneve a **myadmin**, a replika psql használatával csatlakozhat:
 
 ```
-psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
+psql -h myreplica.postgres.database.chinacloudapi.cn -U myadmin@myreplica -d postgres
 ```
 
 Amikor a rendszer kéri adja meg a felhasználói fiók jelszavát.

@@ -14,23 +14,23 @@ ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
 ms.openlocfilehash: 478b80b021b4df36e2eccc37ac9c74f75e43a5bb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58791626"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60658002"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Megnevezett értékek használata az Azure API Management házirendek
 Az API Management-házirendek olyan egy hatékony képesség, a rendszer, amelyek lehetővé teszik az Azure Portalon keresztül konfigurációs API-változtathatja meg. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. Házirend-utasítások szövegkonstans érték, a házirend-kifejezések, és az értékek nevű lehet létrehozni. 
 
 Minden API Management-szolgáltatáspéldány tulajdonságok gyűjteménye, kulcs/érték párok, nevű értékek, a szolgáltatáspéldány globális nevezett rendelkezik. Ezek az értékek nevű használható állandó karakterlánc-értékek kezelheti minden API konfigurálása és szabályzatokat. Minden egyes tulajdonság veheti fel a következő attribútumokat:
 
-| Attribútum | Typo | Leírás |
+| Attribútum | Típus | Leírás |
 | --- | --- | --- |
-| `Display name` |sztring |Alfanumerikus sztring, amellyel hivatkozni lehet a tulajdonságra a szabályzatokban. |
-| `Value` |sztring |A tulajdonság értéke. Nem lehet üres vagy állhatnak csak térközökből. |
-| `Secret` |logikai|Meghatározza, hogy az érték egy titkos kulcs-e, és a rendszer titkosítsa-e.|
-| `Tags` |sztringek tömbje |Nem kötelező, címkék, akkor használható a tulakdonságlista szűréséhez. |
+| Megjelenített név |string |Alfanumerikus sztring, amellyel hivatkozni lehet a tulajdonságra a szabályzatokban. |
+| Érték |string |A tulajdonság értéke. Nem lehet üres vagy állhatnak csak térközökből. |
+|Titkos|logikai|Meghatározza, hogy az érték egy titkos kulcs-e, és a rendszer titkosítsa-e.|
+| Címkék |sztringek tömbje |Nem kötelező, címkék, akkor használható a tulakdonságlista szűréséhez. |
 
 ![Névvel ellátott értékek](./media/api-management-howto-properties/named-values.png)
 

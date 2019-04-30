@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: b390dc9bd2b690837a85a5bab361a534b9c9d5a5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118139"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587205"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Az Azure information rendszerösszetevők és határok
 Ez a cikk az Azure-architektúra és a felügyeleti általános leírása. A rendszer az Azure-környezet az alábbi hálózatok tevődik össze:

@@ -17,11 +17,11 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
 ms.openlocfilehash: 1d0f3bfa03eb4bafdd10222e28782c318848b7f7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57995183"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60592244"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Teljesítse az előfeltételeket az Always On rendelkezésre állási csoportok létrehozása az Azure-beli virtuális gépeken
 
@@ -190,7 +190,7 @@ Az alábbi táblázat ezek két gép beállításait:
 | **Nyilvános IP-cím** |*Neve megegyezik a virtuális gép* |
 | **Hálózati biztonsági csoport** |*Neve megegyezik a virtuális gép* |
 | **A rendelkezésre állási csoport** |adavailabilityset </br>**Tartalék tartományok**: 2 </br>**Frissítési tartományok**: 2|
-| **Diagnosztika** |Engedélyezve |
+| **Diagnosztika** |Enabled |
 | **Storage-fiók diagnosztikája** |*Automatikusan létrehozott* |
 
    >[!IMPORTANT]

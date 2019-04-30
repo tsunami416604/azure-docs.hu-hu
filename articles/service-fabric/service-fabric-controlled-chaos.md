@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/05/2018
 ms.author: motanv
 ms.openlocfilehash: a1b334b34e8e234d9ce5cc5ad5cd77bf5ba7118c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555523"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60583874"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Szabályozott káosz a Service Fabric-fürtök idéz elő
 Nagy méretű elosztott rendszerek, a felhőalapú infrastruktúrák rendszer természetüknél fogva nem megbízható. Az Azure Service Fabric lehetővé teszi a fejlesztők számára, hogy írja felett egy nem megbízható infrastruktúra megbízható elosztott szolgáltatásokat. Egy nem megbízható infrastruktúra épülő hatékony elosztott szolgáltatások írását, fejlesztőknek kell tesztelheti a szolgáltatásaik stabilitását, míg az alapul szolgáló megbízhatatlan infrastruktúra korszakát bonyolult állapotváltásra hibák miatt.

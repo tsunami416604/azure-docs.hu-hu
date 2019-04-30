@@ -17,11 +17,11 @@ ms.date: 07/16/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1771fe1d94eb64cf1e5227953bdc5defa488e85f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208452"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60639279"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-voyance"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Voyance
 

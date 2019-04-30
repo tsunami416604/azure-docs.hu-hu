@@ -11,11 +11,11 @@ ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
 ms.openlocfilehash: 92546e6aabdf43c2f9cb0339fb21dd2dfc641d44
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314313"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587822"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépést a személyazonosság-infrastruktúra védelme
 
@@ -36,7 +36,7 @@ Az alábbi ellenőrzőlista segít gyorsan üzembe helyezhet a kritikus fontoss�
 
 Az ajánlások a dokumentum összhangban legyenek a [identitás biztonságos pontszám](https://docs.microsoft.com/azure/active-directory/fundamentals/identity-secure-score), egy automatikus az Azure AD-bérlő identitás biztonsági konfigurációfelméréssel. Szervezetek használhatják az identitás biztonságos pontszám oldal az Azure AD portálon való azok aktuális biztonsági beállításait, akkor hajtsa végre az aktuális Microsoft gyakorlati tanácsok a biztonsági a lefedettségi hézagok meghatározása. Minden javaslat megvalósítása a biztonságos pontszám oldalon növelheti a pontszám, és segítségével nyomon követheti az előrehaladást, valamint segítséget nyújtanak az implementáció más hasonló méretű szervezetek vagy az iparág összehasonlítása.
 
-![Biztonságos identitás-pontszám](media/azure-ad/azure-ad-sec-steps0.png)
+![Identitásbiztonsági pontszám](media/azure-ad/azure-ad-sec-steps0.png)
 
 ## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Előkészületek: Az MFA kiemelt jogosultságú fiókok védelméhez
 

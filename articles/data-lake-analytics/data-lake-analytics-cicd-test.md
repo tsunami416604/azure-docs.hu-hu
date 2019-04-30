@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 4532e0c6e8095c9d64897410e0492e2135d8a478
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747932"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60630085"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Az Azure Data Lake Analytics tesztelhetnek
 
-Az Azure Data Lake a U-SQL nyelv, amely egyesíti a deklaratív SQL C-vel imperatív bármilyen méretű adatok feldolgozásához biztosít. Ebből a dokumentumból megismerheti, hogyan vizsgálati eset létrehozása a U-SQL és C# UDO (felhasználó által definiált operátor) kiterjesztett kódot.
+Az Azure Data Lake biztosít a U-SQL nyelv, amely egyesíti az SQL deklaratív imperatív C# bármilyen méretű adatok feldolgozásához. Ebből a dokumentumból megismerheti, hogyan vizsgálati eset létrehozása a U-SQL és C# UDO (felhasználó által definiált operátor) kiterjesztett kódot.
 
 ## <a name="test-u-sql-scripts"></a>U-SQL-parancsfájlok tesztelése
 

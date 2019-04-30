@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
 ms.openlocfilehash: e2e1b2ae354d26c3d9729e3a3fdf39bee43647ca
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663128"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60621462"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Az Azure Resource Manager-erőforrások, alkalmazások és szolgáltatások kezelése
 
-Telepíthet alkalmazásokat és szolgáltatásokat az alakzatot a Service Fabric-fürtön az Azure Resource Manageren keresztül. Ez azt jelenti, hogy üzembe helyezése, és a PowerShell vagy parancssori felület alkalmazások kezelése után készen áll a fürt várnia, helyett mostantól alkalmazásokat és szolgáltatásokat JSON az express és telepíteni kell őket a fürt azonos Resource Manager-sablon. Alkalmazás regisztrálása, kiépítés és üzembe helyezés összes folyamata egy lépésben történik.
+Segítségével az Azure Resource Manageren keresztül helyezhet üzembe alkalmazásokat és szolgáltatásokat a Service Fabric-fürtön. Ez azt jelenti, hogy üzembe helyezése, és a PowerShell vagy parancssori felület alkalmazások kezelése után készen áll a fürt várnia, helyett mostantól alkalmazásokat és szolgáltatásokat JSON az express és telepíteni kell őket a fürt azonos Resource Manager-sablon. Az alkalmazásregisztráció, -kiépítés és -üzembehelyezés folyamata mind egy lépésben valósul meg.
 
 Ez az az ajánlott módszer, hogy bármely telepítés, a cégirányítási vagy a fürt felügyeleti alkalmazások, amelyekre szüksége van a fürtben üzembe helyezhet. Ez magában foglalja a [Patch Orchestration Application](service-fabric-patch-orchestration-application.md), Watchdogs, vagy olyan alkalmazásokat, amelyek a fürt más alkalmazások vagy szolgáltatások telepítése előtt futtatnia kell. 
 

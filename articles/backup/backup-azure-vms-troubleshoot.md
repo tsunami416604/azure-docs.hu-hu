@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: srinathv
 ms.openlocfilehash: 6f10d8bc7f813245a66296988e4bb3792d898e08
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618192"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60550022"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure-beli virtuális gépek biztonsági mentésének hibaelhárítása
 Észlelt, miközben az adatokat az Azure Backup segítségével a következő táblázatban felsorolt hibák elhárítását:
@@ -40,7 +40,7 @@ A biztonsági mentési művelet nem sikerült, mert a virtuális gép hibás ál
 ### <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed – nem sikerült egy vagy több csatlakozási pontját a fájlrendszer konzisztens pillanatképének elkészítéséhez virtuális gép rögzítése
 
 Hibakód: UserErrorFsFreezeFailed <br/>
-Hibaüzenet: Nem sikerült befagyasztani egy vagy több csatlakozási pontját a virtuális Gépet, a fájlrendszer konzisztens pillanatképének elkészítéséhez.
+Hibaüzenet: Nem sikerült a virtuális gép egy vagy több rögzítési pontjának rögzítése a fájlrendszerrel konzisztens pillanatkép készítéséhez.
 
 * Ellenőrizze a fájlrendszer állapota az összes csatlakoztatott eszközök a **tune2fs** parancsot, például **tune2fs -l/dev/sdb1 \\** .\| grep **fájlrendszerállapota**.
 * Válassza le az eszközöket, amelynek a fájlrendszer állapota nem lett eltávolítva, használja a **umount** parancsot.
@@ -82,7 +82,7 @@ Indítsa újra a VSS-írók rossz állapotban lévő. Egy rendszergazda jogú pa
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure – hiba a biztonsági másolat bővítményének konfigurációelemzése
 
 Hibakód: ExtensionConfigParsingFailure<br/>
-Hibaüzenet: Hiba történt a biztonsági másolat bővítményének konfigurációelemzése során.
+Hibaüzenet: Hiba történt a biztonsági mentési bővítmény konfigurációjának elemzése során.
 
 Ez a hiba a módosított engedélyek miatt történik, a **MachineKeys** könyvtár: **%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**.
 Futtassa a következő parancsot, és győződjön meg arról, hogy engedélyeket a **MachineKeys** könyvtár alapértelmezett is:**icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**.

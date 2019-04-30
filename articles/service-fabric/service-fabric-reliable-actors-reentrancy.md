@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 46682787bac2d60d188384a4078ca2fa1f46ae7a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669027"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60725414"
 ---
 # <a name="reliable-actors-reentrancy"></a>A Reliable Actors – újbóli belépés
 A Reliable Actors-futtatókörnyezet, alapértelmezés szerint lehetővé teszi a logikai hívás környezetfüggő – újbóli belépés. Ez lehetővé teszi, hogy ha az azonos környezetben hívásláncot azok ismételten belépő az aktorok esetében. Például egy Aktor üzenetet küld az Aktor B, akik egy üzenetet küld az Aktor c-hez Feldolgozni az üzenetet részeként Aktor C meghívja az Aktor A, az üzenet-e ismételten belépő, így a megengedett, hogy. Bármely más hívási környezet részét képező többi üzenet le lesz tiltva az Aktor A feldolgozás befejezéséig tartó.

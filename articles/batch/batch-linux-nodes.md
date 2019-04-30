@@ -16,11 +16,11 @@ ms.date: 06/01/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e228e73283685988247c8d419ba0a97b8c7b2974
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546965"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60776152"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linuxos számítási csomópontok Batch-készletekben kiépítése
 
@@ -48,7 +48,7 @@ A virtuális gép képhivatkozását konfigurálásakor adja meg a virtuálisgé
 | Közzétevő |Canonical |
 | Ajánlat |UbuntuServer |
 | SKU |14.04.4-LTS |
-| Verzió |legújabb |
+| Version |legújabb |
 
 > [!TIP]
 > Ezek a tulajdonságok és a Marketplace-rendszerképek listázásához többet is megtudhat [navigálása és kiválasztása Linux virtuálisgép-lemezképek az Azure-ban a parancssori felület vagy PowerShell](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Ne feledje, hogy nem minden Marketplace-rendszerképek a Batch jelenleg kompatibilis. További információkért lásd: [csomóponti ügynök SKU](#node-agent-sku).

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572239"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309166"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Struktúrameghatározások négyszögletes adatkészletek esetén
 A struktúra szakasza az adatkészletek JSON- **választható** téglalap alakú táblák (a sorok és oszlopok) szakaszt, és a tábla oszlopait gyűjteményét tartalmazza. A struktúra szakasz vagy biztosító informace o typu típuskonverziók vagy az oszlop-hozzárendelések során fogja használni. A következő szakaszok ismertetik részletesebben ezeket a funkciókat. 
@@ -49,14 +49,14 @@ A Data factory a következő CLS megfelelő .NET-alapú típusú értékeket tá
 * Int16
 * Int32 
 * Int64
-* Önálló
-* Dupla
-* tizedes tört
-* Byte]
-* Logikai
-* Karakterlánc 
-* GUID
-* Dátum és idő
+* Single
+* Double
+* Decimal
+* Byte[]
+* Bool
+* String 
+* Guid
+* DateTime
 * Datetimeoffset
 * Időtartomány 
 

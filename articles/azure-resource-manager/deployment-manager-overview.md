@@ -13,11 +13,11 @@ ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
 ms.openlocfilehash: a615ab26e4ea046ced70ce2c154a0c304b741986
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138347"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60550910"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>Biztonságos üzembe helyezési eljárások az Azure Deployment Manager (privát előzetes verzió) engedélyezése
 
@@ -340,4 +340,4 @@ Ezután használja a paraméter a sablonban:
 Ebben a cikkben megtanulta, Deployment Manager. Folytassa a következő cikkben megtudhatja, hogyan helyezhet üzembe a Deployment Manager.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Használja az Azure Deployment Manager Resource Manager-sablonokkal](./deployment-manager-tutorial.md)
+> [Oktatóanyag: Az Azure Deployment Manager használata a Resource Manager-sablonok](./deployment-manager-tutorial.md)

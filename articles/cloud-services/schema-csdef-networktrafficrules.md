@@ -14,11 +14,11 @@ author: jpconnock
 ms.author: jeconnoc
 manager: timlt
 ms.openlocfilehash: 8925943b0a5d151d55adedcfe3f01b5a14c63c1b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821682"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60613885"
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure Cloud Services – definíciós NetworkTrafficRules séma
 A `NetworkTrafficRules` csomópont egy nem kötelező eleme a szolgáltatásdefiníciós fájlt, amely meghatározza, milyen szerepkörök kommunikálnak egymással. Mely szerepkörök hozzáférhet az adott szerepkör a belső végpontok korlátozza. A `NetworkTrafficRules` nem egy önálló elemet; a szolgáltatásdefiníciós fájlban két vagy több szerepkör kombinálva.
@@ -76,7 +76,7 @@ A `Destinations` elem RoleEndpoints gyűjteménye írja le, mint a továbbíthat
 ##  <a name="RoleEndpoint"></a> RoleEndpoint elem
 A `RoleEndpoint` elem az a végpont egy engedélyezik a kommunikációt a szerepkör írja le. Megadhatja, hogy több `RoleEndpoint` elemeket, ha vannak a szerepkör több végpont.
 
-| Attribútum      | Typo     | Leírás |
+| Attribútum      | Típus     | Leírás |
 | -------------- | -------- | ----------- |
 | `endpointName` | `string` | Kötelező. Engedélyezi az adatforgalmat a végpont neve.|
 | `roleName`     | `string` | Kötelező. Engedélyezi a kommunikációt, a webes szerepkör neve.|
@@ -87,14 +87,14 @@ A `AllowAllTraffic` elem egy szabályt, amely lehetővé teszi, hogy az összes 
 ##  <a name="WhenSource"></a> WhenSource elem
 A `WhenSource` elem szerepkörök gyűjteménye írja le, és a meghatározott végpontok közötti kommunikációhoz, mint a `Destinations` csomópont.
 
-| Attribútum | Typo     | Leírás |
+| Attribútum | Típus     | Leírás |
 | --------- | -------- | ----------- |
 | `matches` | `string` | Kötelező. Megadja a szabály a alkalmazni, ha engedélyezi a kommunikációt. Jelenleg az egyetlen érvényes érték `AnyRule`.|
   
 ##  <a name="FromRole"></a> FromRole elem
 A `FromRole` elem azt határozza meg a szerepköröket, amely képes kommunikálni a meghatározott végpontok a `Destinations` csomópont. Megadhatja, hogy több `FromRole` elemeket, ha több szerepkör, amely képes kommunikálni a végpontok.
 
-| Attribútum  | Typo     | Leírás |
+| Attribútum  | Típus     | Leírás |
 | ---------- | -------- | ----------- |
 | `roleName` | `string` | Kötelező. Szerepkör, amely engedélyezi a kommunikációt a nevét.|
 

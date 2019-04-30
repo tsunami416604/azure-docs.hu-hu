@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: ea3f26d70c4a4ce07c988612890687504a4cf5ac
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594678"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60624972"
 ---
 <a name="go-live"></a>Go Live
 =======
@@ -34,7 +34,7 @@ Ez az API elindítja a folyamatot az éles alkalmazások leküldésének. Ez a m
 |  **Name (Név)**      |   **Leírás**                                                           | **Adattípus** |
 |  --------      |   ---------------                                                           | ------------- |
 | publisherId    | Közzétevő-azonosító lekéréséhez, például az ajánlat `contoso`       |  String       |
-| offerId        | Ajánlat azonosítója, az ajánlat lekéréséhez                                   |  String       |
+| ajánlatazonosító        | Ajánlat azonosítója, az ajánlat lekéréséhez                                   |  String       |
 | API-verzió    | Az API legújabb verziója                                                   |  Dátum         |
 |  |  |  |
 

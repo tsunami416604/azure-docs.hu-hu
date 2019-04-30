@@ -11,11 +11,11 @@ ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: d5820c927b88eba37eaf092dfd4b209180bfc8eb
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775594"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60565436"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Az Azure Portalon az Azure Search szolgáltatás-felügyelet
 > [!div class="op_single_selector"]
@@ -86,7 +86,7 @@ Az index újraépítése, lenne törli azt (feltéve, hogy létezik), hozza lét
 
 <a id="scale"></a>
 
-## <a name="scale-up-or-down"></a>Felfelé és lefelé skálázás
+## <a name="scale-up-or-down"></a>Vertikális fel- és leskálázás
 Minden keresési szolgáltatás legalább egy replika és a egy partíció kezdődik. Ha a regisztrált egy [dedikált erőforrásokkal kínál](search-limits-quotas-capacity.md), kattintson a **MÉRETEZÉSI** erőforrás-használat módosíthatja a szolgáltatás irányítópultjának csempéje.
 
 Kapacitás keresztül vagy az erőforrás hozzáadásakor a szolgáltatás ezeket automatikusan használja. Nincsenek további Önnek nem kell az Ön részéről, de van egy kis idő előtt, hogy az új erőforrás hatása van. 15 percet vagy többet a további erőforrások kiosztása is igénybe vehet.

@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: pbutlerm
 ms.openlocfilehash: fa5280fd834d6defaf2816167a73bf72dc3d0a1c
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355674"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60729868"
 ---
 # <a name="manage-azure-and-appsource-marketplace-offers"></a>Az Azure és az AppSource piactérről ajánlatokat kezelése
 
@@ -35,7 +35,7 @@ A Cloud Partner portálra lehetővé teszi, hogy a közzétevő, ajánlat az al�
 | [Ajánlat létrehozása](./cpp-create-offer.md)   | Egy függőben lévő ajánlat bejegyzést hoz létre bevezetési adattárban, de nem automatikusan közzétenni, a Microsoft Marketplace-en | 
 | [Ajánlat állapotának megtekintése](./cpp-view-status-offer.md)   | Az ajánlat közzétételi állapotának tartalmazza.  Nincsenek a portálon több helyen, ahol megjelenik a állapotadatait. |
 | [Ajánlat közzététele](./cpp-publish-offer.md) | Ellenőrzi, majd közzéteszi egy Befejezett ajánlat bejegyzést a megfelelő Microsoft-piactéren.  Az ajánlat összekapcsolja kell *élő*. |
-| [Az ajánlat frissítése](./cpp-update-offer.md)   | Lehetővé teszi bizonyos meglévő ajánlat jellemzői módosítását.  Függőben lévő és a közzétett ajánlatok vonatkozik. |
+| [Ajánlat frissítése](./cpp-update-offer.md)   | Lehetővé teszi bizonyos meglévő ajánlat jellemzői módosítását.  Függőben lévő és a közzétett ajánlatok vonatkozik. |
 | [Ajánlat törlése](./cpp-delete-offer.md)   | Függőben lévő meglévő vagy élő ajánlat törlése.  | 
 |  |  |
   

@@ -8,11 +8,11 @@ ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/17/2019
 ms.openlocfilehash: c49044d8bd96efb7e86cf54509c32033900be305
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180908"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561751"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Témakörök kezelése és az esemény tartományok használatával közzé az eseményeket
 
@@ -106,7 +106,7 @@ New-AzureRmRoleAssignment `
 
 Event Grid műveletek hozzáférés kezelésével kapcsolatos további információkért lásd: [Event Grid biztonsági és hitelesítési](./security-authentication.md).
 
-## <a name="create-topics-and-subscriptions"></a>Üzenettémák és előfizetések létrehozása
+## <a name="create-topics-and-subscriptions"></a>Témakörök és előfizetések létrehozása
 
 Az Event Grid szolgáltatás automatikusan létrehozza és kezeli az adott témakör egy tartomány alapján hozzon létre egy esemény-előfizetést egy tartományhoz a témakörben a hívást. Nincs semmilyen külön lépést a témakör létrehozásához egy tartományban. Hasonlóképpen egy adott üzenettémához az utolsó esemény-előfizetés törlése esetén a témakör törlődik is.
 

@@ -10,13 +10,13 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
 ms.openlocfilehash: 516cb10fe368334d8fe30d998857d0688dcae972
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57220500"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60726901"
 ---
-# <a name="cloud-solution-providers"></a>Cloud Solution Providers
+# <a name="cloud-solution-providers"></a>Felhőszolgáltatók
 
 Szoftver ajánlatok most már elérheti a minimális Cloud Solution Provider (CSP) partner által kiszolgált minősített Microsoft ügyfélbázisra marketing és értékesítés befektetése jelenti.  A kiadók már kihasználhatják a CSP-partner csatornákon keresztül ajánlatok nyilvános rendelkezésre állás mellett [a Microsoft web kirakattípus](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).
 

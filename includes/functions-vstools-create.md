@@ -5,15 +5,16 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 03/05/2019
-ms.author: glenga
+origin.date: 03/05/2019
+ms.date: 03/25/2019
+ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: 6c430f22a9d4fa0fad95bcaa41675545fffd91ec
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227218"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60403646"
 ---
 A Visual Studio Azure Functions projektsablonja egy olyan projektet hoz létre, amely közzétehető egy Azure-függvényalkalmazásban. Csoport funkciók függvényalkalmazás felügyeleti, üzembe helyezéséhez és erőforrás-megosztás használhatja egy logikai egységet.
 
@@ -38,3 +39,4 @@ A Visual Studio Azure Functions projektsablonja egy olyan projektet hoz létre, 
     > Mindenképpen állítsa be a **hozzáférési jogosultságok** való `Anonymous`. Ha úgy dönt, hogy az alapértelmezett szint, `Function`, módosítania kell mutatnia a [függvénykulcs](../articles/azure-functions/functions-bindings-http-webhook.md#authorization-keys) a kérések a függvény-végpontot.
     
 4. Válassza ki **OK** a Functions-projektet és a HTTP által aktivált függvény létrehozásához.
+

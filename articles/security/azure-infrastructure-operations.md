@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 0099eb61d97f813f7adca320b47c195fa1aabbdc
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104551"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60591482"
 ---
 # <a name="azure-production-operations-and-management"></a>Azure éles környezetben való üzemeltetés és a felügyelet    
 A felügyeleti és az éles Azure-hálózat művelet célja egy koordinált az üzemeltetési csapatok az Azure és az Azure SQL Database között. A teams használatát több rendszer és alkalmazás-teljesítményfigyelési eszköz a környezetben. És megfelelő eszközök használják a hálózati eszközök, kiszolgálók, szolgáltatások és alkalmazási folyamatok figyeléséhez.

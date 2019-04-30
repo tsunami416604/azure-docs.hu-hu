@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: 4e39357a765ec85aa64055b1aa422d8d7a01c116
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669401"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60727131"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>A Reliable Actors – ReliableDictionaryActorStateProvider konfigurálása
 A reliabledictionaryactorstateprovider alapértelmezett konfigurációjának a settings.xml fájlt hoz létre a Visual Studio csomag gyökérkönyvtárába a Config mappában található a megadott aktor módosításával módosíthatja.
@@ -93,7 +93,7 @@ Az alapértelmezett konfiguráció a Visual Studio-sablon által létrehozott é
 | MaxSecondaryReplicationQueueSize |Műveletek száma |16384 |A másodlagos üzenetsor-műveletek maximális száma. Egy művelet fel nem szabadul, az állapot megőrzése révén magas rendelkezésre állású elvégzése után. Ez az érték nagyobb, mint 64 és 2 hatványának kell lennie. |
 | CheckpointThresholdInMB |MB |200 |Az állapot alkulcsaihoz log-fájl terület mennyiségét. |
 | MaxRecordSizeInKB |KB |1024 |Legnagyobb rekord méretet, amely a replikátor írhatnak a naplóban. Ez az érték 4 és 16-nál nagyobb többszörösének kell lennie. |
-| OptimizeLogForLowerDiskUsage |Logikai |true |TRUE érték esetén a napló van konfigurálva, hogy a replika dedikált naplófájlt hoz létre egy ritka NTFS-fájl használatával. Ez csökkenti a tényleges lemezterület-használat a fájlt. Hamis érték esetén a fájl jön létre a rögzített értékesítjük, ami a legjobb írási teljesítményt biztosítanak. |
+| OptimizeLogForLowerDiskUsage |Boolean |true |TRUE érték esetén a napló van konfigurálva, hogy a replika dedikált naplófájlt hoz létre egy ritka NTFS-fájl használatával. Ez csökkenti a tényleges lemezterület-használat a fájlt. Hamis érték esetén a fájl jön létre a rögzített értékesítjük, ami a legjobb írási teljesítményt biztosítanak. |
 | SharedLogId |GUID azonosítója |"" |Adja meg egy egyedi GUID azonosítót a megosztott naplófájlban, és a replika használt azonosítására használható. Szolgáltatások általában, ne használja ezt a beállítást. Azonban ha SharedLogId van megadva, majd SharedLogPath is kötelező. |
 | SharedLogPath |Teljes elérési útja |"" |Itt adhatja meg a teljes elérési útja, ahol létrejön a megosztott naplófájlt a replika. Szolgáltatások általában, ne használja ezt a beállítást. Azonban ha SharedLogPath van megadva, majd SharedLogId is kötelező. |
 

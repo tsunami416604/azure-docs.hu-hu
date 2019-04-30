@@ -17,11 +17,11 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.openlocfilehash: d86538fca907f7181bf58ff236bba8de186641fb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003451"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60593612"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Oktatóanyag: Konfigurálása Always On rendelkezésre állási csoportot az Azure virtuális Gépen manuálisan
 
@@ -31,7 +31,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre egy SQL Server Always On rend
 
 Az ábra az oktatóanyag során létre.
 
-![Rendelkezésre állási csoport](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
+![Rendelkezésreállási csoport](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -402,7 +402,7 @@ A terheléselosztó konfigurálásához szeretne egy háttérkészlet, a mintav�
 
    | Beállítás | Leírás | Példa
    | --- | --- |---
-   | **Name (Név)** | Szöveg | SQLAlwaysOnEndPointProbe |
+   | **Name (Név)** | Text | SQLAlwaysOnEndPointProbe |
    | **Protocol (Protokoll)** | Válassza a TCP | TCP |
    | **Port** | Minden nem használt portot | 59999 |
    | **Intervallum**  | Másodpercek alatt a mintavételi kísérletek közötti idő |5 |
@@ -418,7 +418,7 @@ A terheléselosztó konfigurálásához szeretne egy háttérkészlet, a mintav�
 
    | Beállítás | Leírás | Példa
    | --- | --- |---
-   | **Name (Név)** | Szöveg | SQLAlwaysOnEndPointListener |
+   | **Name (Név)** | Text | SQLAlwaysOnEndPointListener |
    | **Előtérbeli IP-cím** | Válasszon címet |A terheléselosztó létrehozásakor létrehozott címet használja. |
    | **Protocol (Protokoll)** | Válassza a TCP |TCP |
    | **Port** | A port használata a rendelkezésre állási csoport figyelője | 1433 |
@@ -426,7 +426,7 @@ A terheléselosztó konfigurálásához szeretne egy háttérkészlet, a mintav�
    | **Probe** |A mintavétel megadott név | SQLAlwaysOnEndPointProbe |
    | **Munkamenet megőrzését** | Legördülő lista | **Nincsenek** |
    | **Üresjárat időkorlátja** | A TCP-kapcsolat nyitva tartása perc | 4 |
-   | **Nem fix IP (közvetlen kiszolgálói válasz)** | |Engedélyezve |
+   | **Nem fix IP (közvetlen kiszolgálói válasz)** | |Enabled |
 
    > [!WARNING]
    > A közvetlen kiszolgálói válasz létrehozásakor van beállítva. A név nem módosítható.
@@ -445,7 +445,7 @@ A WSFC-IP-cím is kell lennie a terheléselosztón.
 
    | Beállítás | Leírás | Példa
    | --- | --- |---
-   | **Name (Név)** | Szöveg | WSFCEndPointProbe |
+   | **Name (Név)** | Text | WSFCEndPointProbe |
    | **Protocol (Protokoll)** | Válassza a TCP | TCP |
    | **Port** | Minden nem használt portot | 58888 |
    | **Intervallum**  | Másodpercek alatt a mintavételi kísérletek közötti idő |5 |
@@ -459,7 +459,7 @@ A WSFC-IP-cím is kell lennie a terheléselosztón.
 
    | Beállítás | Leírás | Példa
    | --- | --- |---
-   | **Name (Név)** | Szöveg | WSFCEndPoint |
+   | **Name (Név)** | Text | WSFCEndPoint |
    | **Előtérbeli IP-cím** | Válasszon címet |A WSFC-IP-cím konfigurálásakor létrehozott címet használja. Ez a figyelő IP-cím eltér |
    | **Protocol (Protokoll)** | Válassza a TCP |TCP |
    | **Port** | A port használata a fürt IP-címét. Ez az egy szabad portot, amely nem szolgál a figyelő mintavételi portot. | 58888 |
@@ -467,7 +467,7 @@ A WSFC-IP-cím is kell lennie a terheléselosztón.
    | **Probe** |A mintavétel megadott név | WSFCEndPointProbe |
    | **Munkamenet megőrzését** | Legördülő lista | **Nincsenek** |
    | **Üresjárat időkorlátja** | A TCP-kapcsolat nyitva tartása perc | 4 |
-   | **Nem fix IP (közvetlen kiszolgálói válasz)** | |Engedélyezve |
+   | **Nem fix IP (közvetlen kiszolgálói válasz)** | |Enabled |
 
    > [!WARNING]
    > A közvetlen kiszolgálói válasz létrehozásakor van beállítva. A név nem módosítható.

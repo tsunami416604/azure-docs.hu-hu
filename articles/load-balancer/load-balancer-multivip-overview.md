@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: chkuhtz
 ms.openlocfilehash: b9a140314b8eba6386c37bdbcf2bb3de58589335
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163429"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60594123"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Az Azure Load Balancer több Előtérrendszer
 
@@ -72,8 +72,8 @@ Az Azure Load balancerben teljes leképezés most a következőképpen történi
 
 | Szabály | Előtérbeli IP-cím | protokoll | port | Cél | port |
 | --- | --- | --- | --- | --- | --- |
-| ![zöld szabály](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |Dedikált IP-CÍMMEL IP-cím |80 |
-| ![lila szabály](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |Dedikált IP-CÍMMEL IP-cím |81 |
+| ![zöld szabály](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |DIP IP Address |80 |
+| ![lila szabály](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |DIP IP Address |81 |
 
 Minden egyes szabály egy folyamatot egy cél IP-cím és céloldali port egyedi kombinációja révén kell dolgoznia. A folyamat célport vonalszínnel több szabály a különböző portokat azonos DIP folyamatok közvetíti.
 

@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: 7f69d77ac7a6c2a17ef2568f0c7edaef2e1ee3f5
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
-ms.translationtype: MT
+ms.openlocfilehash: 7da382a644c1db92b9915f1d3f1f3a459e8893b8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174415"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60563364"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS-zónák és rekordok áttekintése
 
@@ -34,7 +34,7 @@ A tartománynév regisztrálójánál az olyan szervezet, amely lehetővé teszi
 
 Az Azure DNS a globálisan elosztott, magas rendelkezésre állású neve kiszolgálói infrastruktúrát, amely segítségével üzemeltessen saját tartományt biztosít. A tartományok Azure DNS-ben üzemelteti, mint az egyéb Azure-szolgáltatások is kezelheti a DNS-rekordokat a hitelesítő adatokkal, API-k, eszközök, számlázás és támogatási.
 
-Az Azure DNS jelenleg nem támogatja a tartománynév-vásárlást. Vásároljon egy tartománynevet szeretne, ha szeretné használni egy külső tartománynév regisztrálójánál. A regisztráló általában csekély éves díjért költséget. A tartomány DNS-rekordok kezelését majd az Azure DNS-ben lehet üzemeltetni. Lásd: [tartomány delegálása az Azure DNS](dns-domain-delegation.md) részleteiről.
+Az Azure DNS jelenleg nem támogatja a tartománynév-vásárlást. Vásároljon egy tartománynevet szeretne, ha szeretné használni egy külső tartománynév regisztrálójánál. A regisztráló általában csekély éves díjért költséget. A tartomány DNS-rekordok kezelését majd az Azure DNS-ben lehet üzemeltetni. További információkért tekintse meg a [tartományok az Azure DNS-be való delegálását](dns-domain-delegation.md) ismertető cikket.
 
 ## <a name="dns-zones"></a>DNS-zónák
 
@@ -56,7 +56,7 @@ Az Azure DNS [helyettesítő rekordok](https://en.wikipedia.org/wiki/Wildcard_DN
 
 Helyettesítő rekordhalmazok létrehozásához használja a rekordhalmaz nevének "\*". Másik lehetőségként használhatja egy nevet a "\*"címkeként bal szélső, például"\*.foo".
 
-### <a name="caa-records"></a>A CAA-rekordok
+### <a name="caa-records"></a>CAA records
 
 CAA-rekordok a tartomány tulajdonosai számára mely tanúsítványszolgáltatók (CA) jogosultak a tartományi tanúsítványok engedélyezése. Ez lehetővé teszi a hitelesítésszolgáltatók bizonyos körülmények között esetleg tanúsítványkibocsátás elkerülése érdekében. A CAA-rekordok három jellemzőkkel rendelkeznek:
 * **Jelölők**: Ez az egy egész számot 0 és 255, képviseli, amely kiszolgálónként kulcsszó különleges jelentéssel bír a kritikus zászló között a [RFC](https://tools.ietf.org/html/rfc6844#section-3)
@@ -66,7 +66,7 @@ CAA-rekordok a tartomány tulajdonosai számára mely tanúsítványszolgáltat�
     * **iodef**: Adjon meg egy e-mail cím vagy állomásnév hitelesítésszolgáltatók képes értesíteni a jogosulatlan cert probléma kéréseket
 * **Érték**: az érték az adott címkével ellátott kiválasztása
 
-### <a name="cname-records"></a>CNAME-rekordok
+### <a name="cname-records"></a>CNAME records
 
 CNAME-rekordhalmazok nem létezhetnek egyidejűleg más, velük egyező nevű rekordhalmazokkal. Például nem létrehozott "www" relatív nevű CNAME típusú rekordhalmaz és a egy A rekordot "www" relatív nevű egyszerre.
 
@@ -82,17 +82,17 @@ Az Azure DNS névkiszolgálóit, a zóna nevét tartalmazza, a rekordhalmaz. Hoz
 
 Ez csak a zóna legfelső pontján NS típusú rekordhalmaz vonatkozik. Más Névkiszolgálói rekordhalmazt a zónában (a használt gyermek zónák delegálása) létrehozott, módosított és korlátozás nélkül.
 
-### <a name="soa-records"></a>SOA-rekord
+### <a name="soa-records"></a>SOA records
 
 SOA típusú rekordhalmazok automatikusan jön létre minden zóna tetején található rekordokra (név = "\@"), és a zóna törlésekor a rendszer automatikusan törli.  SOA-rekord nem hozható létre vagy külön-külön törölve.
 
 A SOA típusú rekordját a "host" tulajdonságot, amely előre konfigurálva tekintse meg az Azure DNS által nyújtott elsődleges név kiszolgálónév kivételével az összes tulajdonságait módosíthatja.
 
-### <a name="spf-records"></a>Az SPF-rekordok
+### <a name="spf-records"></a>SPF records
 
 [!INCLUDE [dns-spf-include](../../includes/dns-spf-include.md)]
 
-### <a name="srv-records"></a>SRV-rekordok
+### <a name="srv-records"></a>SRV records
 
 [SRV-rekordok](https://en.wikipedia.org/wiki/SRV_record) különböző szolgáltatások által használt kiszolgáló helyet adhat meg. Amikor ad meg egy SRV-rekordot az Azure DNS-ben:
 
@@ -101,7 +101,7 @@ A SOA típusú rekordját a "host" tulajdonságot, amely előre konfigurálva te
 
 ### <a name="txt-records"></a>Txt típusú rekordok
 
-Txt típusú rekordok tartománynevek leképezése a tetszőleges szöveges karakterláncok használhatók. Több alkalmazás, különösen e-mail-konfigurációval kapcsolatos, például használják őket a [küldő házirend keretrendszer (SPF)](https://en.wikipedia.org/wiki/Sender_Policy_Framework) és [DomainKeys azonosított Mail (DKIM)](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail).
+TXT records are used to map domain names to arbitrary text strings. Több alkalmazás, különösen e-mail-konfigurációval kapcsolatos, például használják őket a [küldő házirend keretrendszer (SPF)](https://en.wikipedia.org/wiki/Sender_Policy_Framework) és [DomainKeys azonosított Mail (DKIM)](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail).
 
 A DNS-szabványok engedélyeznek egy egyetlen txt típusú rekordot tartalmazhat több karakterláncok, amelyek mindegyike legfeljebb 254 karakter hosszúságú lehet. Ha több karakterlánc használnak, az ügyfelek által összefűzött, és egy egyetlen karakterláncként.
 
@@ -136,10 +136,10 @@ Az Azure DNS – REST API a szintjén ETag megadott HTTP-fejlécek használata. 
 | None |PUT mindig sikeres (nincs Etag-ellenőrzések) |
 | IF-match <etag> |PUT csak akkor sikeres, ha az erőforrás létezik, és Etagje megegyezik |
 | IF-match * |PUT csak akkor sikeres, ha az erőforrás létezik |
-| IF-none-match * |PUT csak akkor sikeres, ha az erőforrás nem létezik. |
+| If-none-match * |PUT csak akkor sikeres, ha az erőforrás nem létezik. |
 
 
-## <a name="limits"></a>Korlátok
+## <a name="limits"></a>Limits
 
 Az alábbi alapértelmezett korlátok vonatkoznak az Azure DNS használata esetén:
 

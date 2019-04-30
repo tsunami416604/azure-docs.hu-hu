@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: 446203b45744a95c32cd41d9ded26fd960ac8a22
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561433"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60585578"
 ---
 # <a name="elastic-database-tools-glossary"></a>Rugalmas adatbáziseszközökkel kapcsolatos
 
@@ -27,7 +27,7 @@ Ezek a fogalmak szerepelnek [hozzáadása a rugalmas Adatbáziseszközök haszn�
 
 ![Rugalmas méretezés feltételek][1]
 
-**Adatbázis**: Azure SQL Database-adatbázis. 
+**Adatbázis**: Azure SQL-adatbázis. 
 
 **Adatfüggő útválasztás**: A funkció, amely lehetővé teszi az alkalmazás egy adott horizontális skálázási kulcs megadott szilánk csatlakozni. Lásd: [Adatfüggő útválasztás](sql-database-elastic-scale-data-dependent-routing.md). Második összehasonlítandó  **[Többszegmenses lekérdezés](sql-database-elastic-scale-multishard-querying.md)**.
 

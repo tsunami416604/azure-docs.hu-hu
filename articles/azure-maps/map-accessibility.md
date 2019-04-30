@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.openlocfilehash: ef948b4dca3d3800a81ac52f3a73beee2558d21c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247228"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60769702"
 ---
 # <a name="building-an-accessible-application"></a>Elérhető alkalmazások készítése
 
@@ -37,7 +37,7 @@ Használatával [előugró](https://docs.microsoft.com/javascript/api/azure-maps
 További tudnivalók a helyi menü osztály és az ebben a cikkben használt módszerek:
 
 > [!div class="nextstepaction"]
-> [Helyi menü](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 Tekintse meg a további Kódminták:
 

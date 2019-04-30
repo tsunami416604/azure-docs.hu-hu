@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: c8eeeb0ade6ca002adf3211cbf49127be9b76edb
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667507"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60725652"
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>A Service Fabric Reliable actors – megjegyzések szerializálásával kapcsolatban
 Az összes módszer argumentumok, az aktor illesztőjét az egyes módszerek által visszaadott eredmény típusú a feladatokat, és a egy szereplő állapotkezelője tárolt objektumok kell [adatokat szerződéses szerializálható](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). Ez vonatkozik az argumentumok a meghatározott módszerek [aktor eseményfelület](service-fabric-reliable-actors-events.md). (Az aktorok esemény illesztőmetódusait mindig vrácené hodnoty void.)

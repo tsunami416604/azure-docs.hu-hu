@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Backup: Azure virtuális gépek biztonsági mentése – REST API használatával'
+title: 'Azure Backup: Azure virtuális gépek biztonsági mentése a REST API használatával'
 description: Azure VM Backup – REST API használatával a biztonsági mentési műveletek kezelése
 services: backup
 author: pvrk
@@ -11,11 +11,11 @@ ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 8a47d3cf346d7961e9f8b1c4fa615a2faa6b1da0
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289784"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60646775"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Egy Azure virtuális gép biztonsági mentése a Azure Backup – REST API-n keresztül
 
@@ -45,7 +45,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 A "frissítés" művelet egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy a művelet létrehoz egy másik művelet, külön-külön nyomon kell követni.
 
-Két választ adja vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd a 200 (OK), hogy a művelet befejeződésekor.
+Két választ adja vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), hogy a művelet befejeződésekor.
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
@@ -212,7 +212,7 @@ A `{sourceResourceId}` van a `{virtualMachineId}` a fent említett a [lista véd
 
 A védett elem létrehozása egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy a művelet létrehoz egy másik művelet, külön-külön nyomon kell követni.
 
-Két választ adja vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd a 200 (OK), hogy a művelet befejeződésekor.
+Két választ adja vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), hogy a művelet befejeződésekor.
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
@@ -323,7 +323,7 @@ A következő kérés törzse egy védett elem biztonsági másolatának aktivá
 
 Van egy igény szerinti biztonsági mentésének elindítása egy [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy a művelet létrehoz egy másik művelet, külön-külön nyomon kell követni.
 
-Két választ adja vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd a 200 (OK), hogy a művelet befejeződésekor.
+Két választ adja vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), hogy a művelet befejeződésekor.
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
@@ -393,7 +393,7 @@ Mivel a biztonsági mentési feladat egy hosszú ideig futó művelet, kell köv
 
 ### <a name="changing-the-policy-of-protection"></a>A védelmi házirend módosítása
 
-Ha módosítani szeretné a szabályzatot, amellyel a virtuális gép védett, használhatja ugyanazt a formátumot, [védelem](#enabling-protection-for-the-azure-vm). Csak adja meg az új házirend-azonosító [a kérelem törzsében](#example-request-body) , és küldje el a kérelmet. A példa: 'ProdPolicy', "DefaultPolicy" a testVM, a szabályzat módosításához adja meg a "ProdPolicy" azonosítóját, a kérelem törzsében.
+Ha módosítani szeretné a szabályzatot, amellyel a virtuális gép védett, használhatja ugyanazt a formátumot, [védelem](#enabling-protection-for-the-azure-vm). Csak adja meg az új házirend-azonosító [a kérelem törzsében](#example-request-body) , és küldje el a kérelmet. A példa: Ha módosítani szeretné a szabályzatot, az 'ProdPolicy', "DefaultPolicy" a testVM, adja meg a "ProdPolicy" azonosítóját, a kérelem törzsében.
 
 ```http
 {

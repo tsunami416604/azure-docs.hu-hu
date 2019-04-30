@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: damaerte
 ms.openlocfilehash: 46c9350dd2a33d0d25fe193b2ae50c954f2d1f95
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500617"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60614326"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkciók és eszközök az Azure Cloud Shell
 
@@ -57,7 +57,7 @@ A cloud Shell nyílt forráskódú eszközök, például a Terraform, az Ansible
 
 ## <a name="tools"></a>Eszközök
 
-|Kategória   |Name (Név)   |
+|Category   |Name (Név)   |
 |---|---|
 |Linux rendszerű eszközök            |A bash<br> zsh<br> SH<br> tmux<br> tájékozódjon<br>               |
 |Azure-eszközök            |[Az Azure CLI](https://github.com/Azure/azure-cli) és [Azure klasszikus parancssori felület](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#writing-your-first-azcopy-command)<br> [Service Fabric parancssori felület](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
@@ -70,7 +70,7 @@ A cloud Shell nyílt forráskódú eszközök, például a Terraform, az Ansible
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
-|Nyelv   |Verzió   |
+|Nyelv   |Version   |
 |---|---|
 |.NET Core  |2.0.0       |
 |Indítás         |1.9        |

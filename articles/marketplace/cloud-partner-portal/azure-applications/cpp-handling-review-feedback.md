@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pbutlerm
 ms.openlocfilehash: e5fe076cfe733b4fa0151570603c090af98de0e8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882688"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60745589"
 ---
-# <a name="handling-review-feedback"></a>Felülvizsgálat visszajelzés kezelése
+# <a name="handling-review-feedback"></a>Értékelési visszajelzések kezelése
 
 Ez a cikk bemutatja, hogyan érhető el az Azure DevOps-környezetben használja a Microsoft Azure Marketplace-en csapatától.  Ha az Azure-alkalmazás ajánlatban alatt található kritikus fontosságú problémáit a **Microsoft felülvizsgálati** lépésben is jelentkezik be a rendszer az ezekkel kapcsolatos részletes információkért, (tekintse át a visszajelzés).  Után ezek a problémák elhárításához, újból el kell küldenie az ajánlat az Azure piactéren közzéteheti a folytatáshoz.  A következő ábra szemlélteti, hogyan viszonyul a visszajelzés folyamat a közzétételi folyamat.
 

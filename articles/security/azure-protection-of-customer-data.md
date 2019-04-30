@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 49615dcb2f077d2e1d8b93a4bb900b435e4c87bf
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104490"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60589078"
 ---
 # <a name="azure-customer-data-protection"></a>Az Azure vásárlói adatok védelmére   
 A Microsoft üzemeltetési és támogató személyzete alapértelmezés szerint nem férhet hozzá a vevőadatokhoz. Ha engedélyezett a hozzáférés a vásárlói adatokhoz, a rendszer vezetői jóváhagyásra szükség és a hozzáférés van gondosan felügyelt naplózza. A hozzáférés-vezérlésre vonatkozó követelményeket a következő Azure-biztonsági házirendet állítja be:

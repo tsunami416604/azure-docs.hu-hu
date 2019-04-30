@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
 ms.openlocfilehash: a9629cd14c71a163612c2c4ba3c7b109a52b91ad
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008358"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60622439"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Virtuális gép létrehozása a DevTest Labs szolgáltatással az Azure PowerShell-lel
 Ez a cikk bemutatja, hogyan egy virtuális gép létrehozása az Azure DevTest Labs szolgáltatásban az Azure PowerShell használatával. PowerShell-parancsfájlok segítségével automatizálhatja a virtuális gépek az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet létrehozását. 

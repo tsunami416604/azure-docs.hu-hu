@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
 ms.openlocfilehash: e828a8fc4211a0f0c4b53a9e18fa1c2fb6f6916b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010149"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60593223"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows látható "Kritikus szolgáltatás sikertelen" kék képernyő egy Azure virtuális gép indításakor
 Ez a cikk ismerteti a "Kritikus szolgáltatás sikertelen" hibát tapasztalhat, amikor elindítja a Windows virtuális gép (VM) a Microsoft Azure-ban. A problémák megoldása érdekében hibaelhárítási lépéseket biztosít. 

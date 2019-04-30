@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 80fd593eecf189d516a8c9d7ef2a94ec9f23fc39
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063794"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587920"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition funkciók
 Ez a szakasz tartalmazza az aláírások, a CreateUiDefinition támogatott függvények.
@@ -526,7 +526,7 @@ A következő példa eredménye `2.9`:
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>sztring
+### <a name="string"></a>string
 Egy karakterlánc alakítja át a paramétert. Ez a függvény minden JSON-adattípusú paramétereket támogatja.
 
 A következő példa eredménye `"1"`:
@@ -553,7 +553,7 @@ A következő példa eredménye `"{"foo":"bar"}"`:
 "[string({\"foo\":\"bar\"})]"
 ```
 
-### <a name="bool"></a>Logikai
+### <a name="bool"></a>logikai
 A paraméter alakítja át egy logikai érték. Ez a függvény típusa szám, karakterlánc és logikai paramétereket támogatja. Hasonló a logikai értékek a JavaScript, bármelyik értéke kivételével `0` vagy `'false'` adja vissza `true`.
 
 A következő példa eredménye `true`:
@@ -759,7 +759,7 @@ Az alábbi példa vissza `"1990-12-31T23:59:59.000Z"`:
 "[utcNow()]"
 ```
 
-### <a name="addseconds"></a>masodpercekHozzaadasa
+### <a name="addseconds"></a>addSeconds
 A megadott időbélyeg ad hozzá egy szerves másodpercek száma.
 
 A következő példa eredménye `"1991-01-01T00:00:00.000Z"`:

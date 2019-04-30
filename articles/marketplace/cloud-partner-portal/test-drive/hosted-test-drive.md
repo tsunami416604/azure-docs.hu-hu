@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 5057c0c781cb9ec60ecde7dd3f4bf96089b902df
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312682"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60559789"
 ---
-# <a name="hosted-test-drive"></a>Üzemeltetett kipróbálása
+# <a name="hosted-test-drive"></a>Szolgáltatott tesztverzió
 
 Egy üzemeltetett Test Drive megszűnnek a telepítő által a Microsoft üzemeltetési és karbantartását hajtja végre a Test Drive felhasználói kiépítésének és megszüntetésének biztosítása. Ez a cikk a kiadók, akik az ajánlatot az appsource-on vagy hoz létre egy újat, és kíván kíván felajánlani üzemeltetett próbálja ki, amely csatlakozik egy Dynamics 365 for Customer Engagement, Dynamics 365 for Finance és Operations vagy a Dynamics 365 Business Central a példány.
 

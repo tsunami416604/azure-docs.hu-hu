@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
 ms.openlocfilehash: 02db9f2b8cb2ec71d23ad077b90eeacb905d2a16
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445636"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60565855"
 ---
 # <a name="azure-networking"></a>Az Azure-hálózatok
 
@@ -29,7 +29,7 @@ Az Azure biztosít a különböző hálózati funkciói, amelyek együtt vagy k�
 - [Internetkapcsolat](#internet-connectivity): Az Azure-erőforrások az interneten keresztül kommunikálnak.
 - [Helyszíni kapcsolatok](#on-premises-connectivity): A helyszíni hálózat csatlakoztatása az Azure-erőforrások virtuális magánhálózat (VPN) az interneten keresztül, vagy az Azure-bA egy dedikált kapcsolaton keresztül.
 - [Terheléselosztás és az adatforgalom irányának betöltése](#load-balancing): Bejövő forgalmának terheléselosztása kiszolgálók a ugyanarra a helyre és a forgalom különböző helyeken lévő kiszolgálókra.
-- [Biztonsági](#security): Hálózati alhálózatokhoz vagy az egyes virtuális gépek (VM) közötti hálózati forgalom szűrése.
+- [Biztonság](#security): Hálózati alhálózatokhoz vagy az egyes virtuális gépek (VM) közötti hálózati forgalom szűrése.
 - [Útválasztás](#routing): Használja az alapértelmezett útválasztását, vagy a teljes körűen szabályozhatja az Azure és helyszíni erőforrások között.
 - [Kezelhetőségi](#manageability): Figyelheti, és az Azure hálózati erőforrások kezeléséhez.
 - [Telepítési és konfigurációs eszközök](#tools): Egy olyan webes portál vagy a többplatformos parancssori eszközök segítségével telepítheti és konfigurálhatja a hálózati erőforrásokhoz.

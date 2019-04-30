@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 819e2393619766d46385cdd6fe550fff1e1a7631
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537664"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60720212"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>MAGYARÁZAT használatával profil lekérdezési teljesítmény az Azure Database for MySQL-hez
 **ISMERTETIK** egy hasznos eszköz optimalizálni a lekérdezéseket. ISMERTETIK utasítás használható SQL-utasítások végrehajtásának módját információt szeretne kapni. A következő kimenet magyarázat utasítás a végrehajtás egy példát mutat be.

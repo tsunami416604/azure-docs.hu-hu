@@ -14,11 +14,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 3bb372c4c3ddb79429df20c24c691c847e927e2a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57975610"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60567350"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Adatok másolása és a Data Lake Storage Gen1 Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -91,7 +91,7 @@ Egyszerű szolgáltatásnév hitelesítése alkalmazás entitás regisztrálása
 
 Egyszerű szolgáltatásnév hitelesítése használja a következő tulajdonságok megadásával:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | **servicePrincipalId** | Adja meg az alkalmazás ügyfél-azonosítót. | Igen |
 | **servicePrincipalKey** | Adja meg az alkalmazáskulcsot. | Igen |
@@ -237,7 +237,7 @@ Adjon meg egy Data Lake Store bemeneti adatokat képviselő adatkészlet, akkor 
 
 A **typeProperties** szakasz egy adatkészlet típusú **AzureDataLakeStore** a következő tulajdonságokat tartalmazza:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | **folderPath** |A tároló és a Data Lake Store-mappában elérési útja. |Igen |
 | **fileName** |Az Azure Data Lake Store a fájl nevét. A **fileName** tulajdonság nem kötelező, és a kis-és nagybetűket. <br/><br/>Ha megad **fileName**, a (beleértve a Másolás) tevékenységet az adott fájlon működik.<br/><br/>Amikor **fileName** nincs megadva, másolási tartalmazza az összes fájl **folderPath** a bemeneti adatkészletben.<br/><br/>Amikor **fileName** nincs megadva a kimeneti adatkészlet és **preserveHierarchy** nincs megadva a tevékenység fogadó, a létrehozott fájl neve a következő formátumban van `Data._Guid_.txt`. Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Nem |

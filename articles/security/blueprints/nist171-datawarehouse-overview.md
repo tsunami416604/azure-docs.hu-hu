@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
 ms.openlocfilehash: a1850ecfbb21eb9495bb0e6de362dc8dee3026a2
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242360"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60609597"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-warehouse-for-nist-sp-800-171"></a>Azure biztonsági és megfelelőségi terv – a NIST SP 800-171 Data warehouse-bA
 
@@ -150,7 +150,7 @@ A Security Center rangsorolt biztonsági riasztások és incidensek biztosít. A
 Ez a referenciaarchitektúra is használ a [biztonságirés-értékelési](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations) képesség a Security Centerben. Beállítások konfigurálása után a partnerügynök (például a Qualys) jelenti a biztonsági adatok a partner felügyeleti platformjára. Ezután a partner felügyeleti platformja a biztonsági résekre vonatkozó és állapotmonitorozási adatokat küld vissza a Security Centernek. Ügyfelek használhatják ezeket az adatokat gyorsan azonosíthatja a sebezhető virtuális gépeket.
 
 ### <a name="business-continuity"></a>Az üzletmenet folytonossága
-**Magas rendelkezésre állású**: Server számítási feladatainak szerint vannak csoportosítva egy [rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) az Azure-beli virtuális gépek magas rendelkezésre állás biztosítása érdekében. Legalább egy virtuális gép érhető el egy tervezett vagy nem tervezett karbantartási események, amely megfelel a 99,95 %-os Azure SLA-t.
+**Magas rendelkezésre állás**: Server számítási feladatainak szerint vannak csoportosítva egy [rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) az Azure-beli virtuális gépek magas rendelkezésre állás biztosítása érdekében. Legalább egy virtuális gép érhető el egy tervezett vagy nem tervezett karbantartási események, amely megfelel a 99,95 %-os Azure SLA-t.
 
 **Recovery Services-tároló**: A [Recovery Services-tároló](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) Kezelőkód biztonsági mentési adatokat, és ebben az architektúrában a virtuális gépek minden konfigurációját védi. A Recovery Services-tárolóval, ügyfelek is fájlok és mappák visszaállítása az IaaS virtuális gépről a teljes virtuális gép visszaállítása nélkül. Ez a folyamat felgyorsítja a helyreállítási időt.
 

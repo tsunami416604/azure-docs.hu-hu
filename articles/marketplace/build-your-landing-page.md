@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: d3af6484a2c62a0ffa0a21e2df277ef3255ada84
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: cf7216d5634adf42c2e3435b122dcff58446821a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160858"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60625312"
 ---
 # <a name="build-your-landing-page"></a>Hozhat létre a kezdőlapja
 
@@ -43,7 +43,7 @@ Az egységes Ön az üzenetkezelés és a művelet meghívásához minél egysze
 
 Ha egy kampány terv kész van, hozzon létre a kezdőlapja a Marketplace-en. Az alábbi táblázat ismerteti azokat a módszereket segítségével maximalizálhatja a kezdőlapja hatékonysága: 
 
-| Ajánlott eljárás | Elkerülése érdekében |
+| Ajánlott eljárás | Avoid |
 |:--- |:--- |
 | **Milyen ügyfél probléma megoldását megoldást kínál, és hogyan Azure-t használja már meg is valósult kommunikációhoz** | Nem kommunikál a módszereket, amelyben a megoldás együttműködik az Azure-ral. |
 | **Hozzon létre egy rövid, könnyen megjegyezhető URL-címe** | Hosszú URL-címek használatával. Hosszú URL-címek nem könnyen megjegyezhető és biztonságosak megkereséséhez. |

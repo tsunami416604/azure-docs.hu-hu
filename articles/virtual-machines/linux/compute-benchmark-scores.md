@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn;davberg
 ms.openlocfilehash: 2a558f2cf91907e85bb8b14c7214a63afd1faca0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001396"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60627724"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Számításiteljesítmény-mérési pontszámok számítási Linux rendszerű virtuális gépekhez
 A következő CoreMark számításiteljesítmény-mérési pontszámok megjelenítése az Azure nagy teljesítményű virtuális gép prototípusait Ubuntu rendszert futtató számítási teljesítményt. Számításiteljesítmény-mérési pontszámok számítási is elérhetők az [Windows virtuális gépek](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

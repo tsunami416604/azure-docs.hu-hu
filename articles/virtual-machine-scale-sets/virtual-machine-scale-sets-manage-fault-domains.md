@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/18/2018
 ms.author: rajraj
 ms.openlocfilehash: bab264769576b6e5478236c452d7de920d887c1a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670916"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60617979"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>A megfelelő számú tartalék tartomány a virtuális gép méretezési csoportjának kiválasztása
 A Virtual machine scale sets jönnek létre öt tartalék tartományok az Azure-régióban zónák nélkül alapértelmezés szerint. A régiók, amelyek támogatják a virtuálisgép-méretezési csoportok a zónaszintű telepítését az alapértelmezett érték a tartalék tartományok száma az egyes zónák 1. FD = 1 Ebben az esetben is, hogy a méretezési csoportba tartozó Virtuálisgép-példányok az elérhető legjobb lehetőség alapján számos állványt között lehetnek elosztva.

@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7ee79da6219452ace4f7e71bd670de3cfdc968fb
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232364"
 documentType: LandingData
 title: Az Azure SQL Database - méretezhetőség
 metadata:
@@ -12,49 +6,49 @@ metadata:
   title: Az Azure SQL Database - méretezhetőség
   meta.description: Learn how to scale your Azure SQL Database.
   services: sql-database
-  ms.subservice: scale-out
-  author: jovanpop-msft
-  manager: craigg
+  author: WenJason
+  manager: digimobile
   requires-business-manager-approval: false
   ms.service: sql-database
   ms.tgt_pltfrm: na
-  ms.devlang: 
+  ms.devlang: null
   ms.topic: overview
-  ms.date: 01/25/2019
-  ms.author: jovanpop-msft
+  origin.date: 01/25/2019
+  ms.date: 02/25/2019
+  ms.author: v-jay
 sections:
-- items:
-  - type: paragraph
-    text: Az Azure SQL Database lehetővé teszi, hogy könnyedén méretezheti, adatbázis hozzáadásával a nagyobb számítási teljesítmény (növelheti), vagy további adatbázisegység (horizontális felskálázás) hozzáadása.
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: paragraph
+        text: 'Az Azure SQL Database lehetővé teszi, hogy könnyedén méretezheti, adatbázis hozzáadásával a nagyobb számítási teljesítmény (növelheti), vagy további adatbázisegység (horizontális felskálázás) hozzáadása.'
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - title: Vertikális felskálázás
+            href: /sql-database/sql-database-scale-resources
+            html: '<p>Könnyedén erőforrásainak hozzáadása vagy eltávolítása az SQL-adatbázisban található, a legjobb ár-teljesítmény arányt, vagy kezelheti teljesítményével kapcsolatos problémákat.</p>'
+          - title: Felskálázás olvasása
+            href: /sql-database/sql-database-read-scale-out
+            html: '<p>Kritikus fontosságú üzleti szint egy ingyenes, – ingyenes replika adatbázis, ahol futtathatja jelentéseket, elemzéseket és más csak olvasási lekérdezések adatokat biztosít.</p>'
+          - title: Adatbázis horizontális skálázása
+            href: /sql-database/sql-database-elastic-scale-introduction
+            html: <p>Horizontális felskálázás az adatbázis maximális számítási és tárolási korlátok az önálló adatbázisok számára túl több adatbázisok szegmens segítségével.</p>
+          - title: Rugalmas lekérdezések
+            href: /sql-database/sql-database-elastic-query-overview
+            html: <p>Rugalmas lekérdezések futtatása standard Transact-SQL lekérdezések egy globálisan elosztott adatbázis-szilánkból csoportján engedélyezze.</p>
+          - title: Rugalmas tranzakciók
+            href: /sql-database/sql-database-elastic-transactions-overview
+            html: <p>Használja a globálisan elosztott tranzakciók tranzakciós szempontból konzisztens az elosztott adatok elérhetőségét.</p>
+          - title: Adatbázisközi feladatok
+            href: /sql-database/elastic-jobs-overview
+            html: <p>Adatbázisközi rugalmas feladatok használatával adatbázisok karbantartása.</p>
+  - title: További erőforrások
     items:
-    - title: Vertikális felskálázás
-      href: /azure/sql-database/sql-database-scale-resources
-      html: <p>Könnyedén erőforrásainak hozzáadása vagy eltávolítása az SQL-adatbázisban található, a legjobb ár-teljesítmény arányt, vagy kezelheti teljesítményével kapcsolatos problémákat.</p>
-    - title: Felskálázás olvasása
-      href: /azure/sql-database/sql-database-read-scale-out
-      html: <p>Kritikus fontosságú üzleti szint egy ingyenes, – ingyenes replika adatbázis, ahol futtathatja jelentéseket, elemzéseket és más csak olvasási lekérdezések adatokat biztosít.</p>
-    - title: Adatbázis horizontális skálázása
-      href: /azure/sql-database/sql-database-elastic-scale-introduction
-      html: <p>Horizontális felskálázás az adatbázis maximális számítási és tárolási korlátok az önálló adatbázisok számára túl több adatbázisok szegmens segítségével.</p>
-    - title: Rugalmas lekérdezések
-      href: /azure/sql-database/sql-database-elastic-query-overview
-      html: <p>Rugalmas lekérdezések futtatása standard Transact-SQL lekérdezések egy globálisan elosztott adatbázis-szilánkból csoportján engedélyezze.</p>
-    - title: Rugalmas tranzakciók
-      href: /azure/sql-database/sql-database-elastic-transactions-overview
-      html: <p>Használja a globálisan elosztott tranzakciók tranzakciós szempontból konzisztens az elosztott adatok elérhetőségét.</p>
-    - title: Adatbázisközi feladatok
-      href: /azure/sql-database/elastic-jobs-overview
-      html: <p>Adatbázisközi rugalmas feladatok használatával adatbázisok karbantartása.</p>
-- title: További erőforrások
-  items:
-  - type: paragraph
-    text: Ismerje meg a további funkciók, amelyek segítségével az adatok méretezését.
-  - type: list
-    style: ordered
-    items:
-    - html: <a href="https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine">A csatolt kiszolgáló</a> core SQL Server adatbázismotor-szolgáltatás, amely lehetővé teszi, hogy hajtsa végre az elosztott lekérdezések Transact-SQL-kódot egy másik adatbázismotorokat is.
-    - html: <a href="sql-database-geo-replication-overview.md">Georeplikáció</a> lehetővé teszi tetszőleges számú olvasható replikát helyezni különböző régiókban.
+      - type: paragraph
+        text: 'Ismerje meg a további funkciók, amelyek segítségével az adatok méretezését.'
+      - type: list
+        style: ordered
+        items:
+          - html: '<a href="https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine">A csatolt kiszolgáló</a> core SQL Server adatbázismotor-szolgáltatás, amely lehetővé teszi, hogy hajtsa végre az elosztott lekérdezések Transact-SQL-kódot egy másik adatbázismotorokat is.'
+          - html: <a href="sql-database-geo-replication-overview.md">Georeplikáció</a> lehetővé teszi tetszőleges számú olvasható replikát helyezni különböző régiókban.

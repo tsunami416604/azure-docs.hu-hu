@@ -16,11 +16,11 @@ ms.date: 12/07/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 2233dffabd7c76ca55cf215f8bc04e66134f5799
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338802"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60583604"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>A Service Fabric-háló alkalmazások automatikus skálázási házirendek létrehozása
 Az alkalmazások a Service Fabric Meshben való üzembe helyezésének egyik legfőbb előnye, hogy a szolgáltatásokat egyszerűen lehet horizontálisan le- és felskálázni. Ez akkor hasznos, ha változó mértékű terhelés éri a szolgáltatásokat, vagy ha javítani szeretne a rendelkezésre álláson. Méretezheti a szolgáltatásokat, vagy manuálisan, vagy az automatikus skálázás házirendeket állíthat be.

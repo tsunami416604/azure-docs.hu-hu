@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: ee2ce03fccc3e6556f9d261687edb050c8cfa1cc
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661445"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60628149"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Windows különálló fürt védelme X.509-tanúsítványok használatával
 Ez a cikk ismerteti a különböző csomópontokhoz, a különálló Windows-fürt közötti kommunikáció biztonságossá tételére. Emellett bemutatja, hogyan lehet X.509 tanúsítványok segítségével csatlakozzon a fürt azon ügyfelek hitelesítéséhez. Hitelesítés biztosítja, hogy csak a jogosult felhasználók a fürt és a központilag telepített alkalmazások elérésére, és végrehajthat felügyeleti feladatokat. Tanúsítvány biztonsági szabad engedélyezni a fürtön, a fürt létrehozásakor.  

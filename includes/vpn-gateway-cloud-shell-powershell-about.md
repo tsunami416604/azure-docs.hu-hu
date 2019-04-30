@@ -9,11 +9,11 @@ ms.date: 02/13/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c8f45e4bb16c05c9f322dd04d2c80f6144744e64
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884032"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60320145"
 ---
 Ez a cikk a PowerShell-parancsmagok. A parancsmagok futtatásához használhatja az Azure Cloud Shellben. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület rendelkező közös Azure-eszközök, előre telepítve és konfigurálva a fiókjával való használat. Ehhez egyszerűen kattintson **másolási** másolni a kódot, illessze be a Cloud Shellben, és nyomja meg az enter a futtatáshoz. Néhány módszer a Cloud Shell indításához:
 

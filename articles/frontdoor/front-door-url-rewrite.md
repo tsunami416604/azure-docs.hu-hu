@@ -11,15 +11,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 00fe3aa7a641b9d07aad90a9d008a99efc6e9d97
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dc2126276e3e8e0d35ce8ed1f835544386659eff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993473"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60736181"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL-átírás (egyéni továbbítási útvonal)
-Azure bejárati ajtajának szolgáltatás URL-újraírási támogatja azáltal, hogy egy nem kötelező konfigurálása **egyéni, továbbító elérési útjának** létrehozásakor a kérelem használatával továbbítsa a háttérrendszerhez. Alapértelmezés szerint ha egyéni továbbítási útvonal áll rendelkezésre, majd bejárati ajtajának másolja a bejövő URL-címet az URL-címet, amelyet a továbbított kérés. Az állomásfejlécet, amelyet a továbbított kérés van konfigurálva a kiválasztott háttérrendszer a. Olvasási [háttérrendszer állomásfejléc](front-door-backend-pool.md#hostheader) művelet, és hogyan konfigurálhatja azt.
+Azure bejárati ajtajának szolgáltatás URL-újraírási támogatja azáltal, hogy egy nem kötelező konfigurálása **egyéni, továbbító elérési útjának** létrehozásakor a kérelem használatával továbbítsa a háttérrendszerhez. Ha nincs megadva egyéni továbbítási útvonal, a Front Door alapértelmezés szerint bemásolja a bejövő URL-útvonalat a továbbított kérelemben használt URL-címbe. A továbbított kérelemben használt állomásfejléc megegyezik a kiválasztott háttérrendszer számára konfigurált állomásfejléccel. Olvasási [háttérrendszer állomásfejléc](front-door-backend-pool.md#hostheader) művelet, és hogyan konfigurálhatja azt.
 
 A hatékony URL-címet módosítsa úgy az egyéni, továbbító elérési út része, hogy, másolja a bejövő elérési útja, amely megfelel a helyettesítő karaktert tartalmazó elérési útját a továbbított elérési út bármely része (ezek elérési út szegmens a **zöld** szegmensek az alábbi példában):
 </br>
@@ -30,7 +30,7 @@ Fontolja meg egy útválasztási szabályt a következő előtér-gazdagépek é
 
 | Hosts      | Elérési utak       |
 |------------|-------------|
-| www.contoso.com | /\*         |
+| www\.contoso.com | /\*         |
 |            | /foo        |
 |            | /foo/\*     |
 |            | /foo/sáv /\* |
@@ -40,14 +40,14 @@ Az első oszlop a tábla az alábbi példát láthat a bejövő kérelmeket, és
 Például, hogy olvassa el a második sorban, ha azt van arról, hogy a bejövő kérelem `www.contoso.com/sub`, ha az egyéni, továbbító elérési út `/`, majd a továbbított útvonal `/sub`. Ha az egyéni, továbbító elérési út `/fwd/`, majd a továbbított útvonal `/fwd/sub`. És így tovább, a többi oszlop számára. A **kiemelését** részek az elérési utak jelölik azokat a részeit, amelyek részei a helyettesítő karaktert tartalmazó találatra.
 
 
-| Bejövő kérelem       | A legtöbb-specifikus egyezés elérési útja | /          | /FWD/          | /foo/          | /foo/sáv /          |
+| Bejövő kérelem       | A legtöbb-specifikus egyezés elérési útja | /          | /fwd/          | /foo/          | /foo/sáv /          |
 |------------------------|--------------------------|------------|----------------|----------------|--------------------|
-| www.contoso.com/            | /\*                      | /          | /FWD/          | /foo/          | /foo/sáv /          |
-| www.contoso.com/**sub**     | /\*                      | /**Sub**   | /FWD/**sub**   | /foo/**sub**   | /foo/sáv/**sub**   |
-| www.contoso.com/**a/b és c**   | /\*                      | /**a/b és c** | /FWD/**a/b és c** | /foo/**a/b és c** | /foo/sáv/**a/b és c** |
-| www.contoso.com/foo         | /foo                     | /          | /FWD/          | /foo/          | /foo/sáv /          |
-| www.contoso.com/foo/        | /foo/\*                  | /          | /FWD/          | /foo/          | /foo/sáv /          |
-| www.contoso.com/foo/**sáv** | /foo/\*                  | /**sáv**   | /FWD/**sáv**   | /foo/**sáv**   | /foo/sáv/**sáv**   |
+| www\.contoso.com/            | /\*                      | /          | /fwd/          | /foo/          | /foo/sáv /          |
+| www\.contoso.com/**sub**     | /\*                      | /**sub**   | /fwd/**sub**   | /foo/**sub**   | /foo/bar/**sub**   |
+| www\.contoso.com/**a/b/c**   | /\*                      | /**a/b/c** | /fwd/**a/b/c** | /foo/**a/b/c** | /foo/bar/**a/b/c** |
+| www\.contoso.com/foo         | /foo                     | /          | /fwd/          | /foo/          | /foo/sáv /          |
+| www\.contoso.com/foo/        | /foo/\*                  | /          | /fwd/          | /foo/          | /foo/sáv /          |
+| www\.contoso.com/foo/**bar** | /foo/\*                  | /**bar**   | /fwd/**bar**   | /foo/**bar**   | /foo/bar/**bar**   |
 
 
 ## <a name="optional-settings"></a>Nem kötelező beállítások
@@ -59,8 +59,8 @@ Nincsenek további nem kötelező beállításokat is megadhat az adott útvála
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [hozzon létre egy bejárati ajtajának](quickstart-create-front-door.md).
-- Ismerje meg, [bejárati ajtajának működése](front-door-routing-architecture.md).
+- [Frontdoor létrehozására](quickstart-create-front-door.md) vonatkozó információk.
+- A [Front Door működésének](front-door-routing-architecture.md) ismertetése.
 
 <!--Image references-->
 [1]: ./media/front-door-url-rewrite/front-door-url-rewrite-example.jpg

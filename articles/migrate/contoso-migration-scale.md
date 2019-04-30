@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: bc4673a12ec5b752a513b4a95796f2aeb8b8ce5d
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 9253051d907a811ffedad3a714112c9b25543a35
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991242"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60667414"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso – méretezési csoport egy áttelepítés az Azure-bA
 
@@ -293,6 +293,7 @@ Döntse el, hogyan helyezhet üzembe ezeket az összetevőket, a kapacitás szem
 **Folyamatkiszolgáló** | Contoso 100 – 200 – virtuális gépek replikálhatók a különálló dedikált folyamatkiszolgáló üzembe helyezése:<br/><br/> CPU: 16 vcpu-k (2 sockets * 8 mag, 2,5 GHz-es @)<br/><br/> Memória: 32 GB<br/><br/> Gyorsítótárlemez: 1 TB<br/><br/> A módosult adatok aránya: 1 TB-os 2 TB-ig.<br/><br/> A folyamatkiszolgáló munkát nehéz lesz, és mint ilyen kell elhelyezni, az ESXi-gazdagépen, amely képes kezelni, a lemez i/o, a hálózati forgalom és a CPU, a replikációhoz szükséges. Contoso erre a célra egy dedikált gazdagéppel figyelembe veszi. 
 **Hálózat** | Contoso tekintse át az aktuális site-to-site VPN-infrastruktúrát, és úgy döntött, hogy az Azure ExpressRoute megvalósításához. A megvalósítás fontos, mivel csökkentheti a késést, és növelheti a sávszélességet a Contoso elsődleges East US 2 Azure-régió.<br/><br/> **Figyelés**: Contoso kell kísérje figyelemmel az adatoknak a folyamatkiszolgálóról. Ha az adatok beáll-e a hálózati sávszélesség figyelembe veszi a Contoso [a folyamat a kiszolgáló sávszélesség szabályozása](../site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 **Azure Storage** | Az áttelepítéshez a Contoso azonosítani kell a megfelelő típusú és számú cél Azure-tárfiókot.  A Site Recovery az Azure storage virtuális gépek adatait replikálja.<br/><br/> A Site Recovery standard vagy prémium szintű (SSD) tárfiókok bA végezhet replikálást.<br/><br/> Annak eldöntéséhez, tárolás, a Contoso át kell néznie [tárhelykorlátok](../virtual-machines/windows/disks-types.md), és idővel várható növekedésének és a használat során megnövekedett vennie. Adja meg a sebességet és áttelepítések prioritását, Contoso döntött, hogy prémium szintű SSD-k használata<br/><br/>
+
 Contoso hajtott végre a felügyelt lemezek használata az összes Azure-ban üzembe helyezett virtuális gép mellett.  A szükséges iops-érték határozza meg, ha a Standard HDD, a standard szintű SSD vagy a prémium (SSD) lemezek lesz.<br/><br/>
 
 #### <a name="data-migration-service"></a>Data Migration Service
@@ -341,7 +342,7 @@ Ahhoz, hogy a felhőbefektetések maximális kihasználása, Contoso ingyenes Az
 - [További](https://docs.microsoft.com/azure/cost-management/overview) kapcsolatos Azure Cost Managementbe.
 
     
-![Költségkezelés](./media/contoso-migration-scale/cost-management.png)  
+![Cost Management](./media/contoso-migration-scale/cost-management.png)  
     
  
 ### <a name="native-tools"></a>Natív eszközök

@@ -12,11 +12,11 @@ ms.date: 04/04/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: f4a0cba18f27c9cabfc03d1934469e6899c5cd18
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59010413"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60564741"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Azure Search erőforrás-használat és a lekérdezés tevékenység figyelése
 
@@ -111,10 +111,10 @@ A search service forgalmi naplók tartalmazó blobok struktúrája ebben a szaka
 
 | Name (Név) | Típus | Példa | Megjegyzések |
 | --- | --- | --- | --- |
-| time |dátum/idő |"2018-12-07T00:00:43.6872559Z" |A művelet időbélyeg |
+| time |datetime |"2018-12-07T00:00:43.6872559Z" |A művelet időbélyeg |
 | resourceId |sztring |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>RESOURCEGROUPS/ALAPÉRTELMEZETT/SZOLGÁLTATÓK /<br/> A MICROSOFT. KERESÉS/SEARCHSERVICES/SEARCHSERVICE" |Az erőforrás-azonosító |
 | operationName |sztring |"Query.Search" |A művelet neve |
-| operationVersion |sztring |"2017-11-11" |A használt api-verzió |
+| operationVersion |string |"2017-11-11" |A használt api-verzió |
 | category |sztring |"OperationLogs" |állandó |
 | resultType |sztring |"Sikeres" |Érvényes értékek: Sikeres vagy sikertelen |
 | resultSignature |int |200 |HTTP-eredménykód |
@@ -126,7 +126,7 @@ A search service forgalmi naplók tartalmazó blobok struktúrája ebben a szaka
 | Name (Név) | Típus | Példa | Megjegyzések |
 | --- | --- | --- | --- |
 | Leírás |sztring |"GET /indexes('content')/docs" |A művelet végpont |
-| Lekérdezés |sztring |"?search=AzureSearch&$count=true&api-version=2017-11-11" |A lekérdezési paraméterek |
+| Lekérdezés |string |"?search=AzureSearch&$count=true&api-version=2017-11-11" |A lekérdezési paraméterek |
 | Dokumentumok |int |42 |Feldolgozott dokumentumok száma |
 | indexName |sztring |"testindex" |A művelethez társított az index neve |
 
@@ -138,7 +138,7 @@ Metrika rögzítése a lekérdezésekre vonatkozó kérelmek számára.
 | --- | --- | --- | --- |
 | resourceId |sztring |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>RESOURCEGROUPS/ALAPÉRTELMEZETT/SZOLGÁLTATÓK /<br/>A MICROSOFT. KERESÉS/SEARCHSERVICES/SEARCHSERVICE" |az erőforrás-azonosító |
 | MetricName |sztring |"Késés" |a metrika neve |
-| time |dátum/idő |"2018-12-07T00:00:43.6872559Z" |a művelet időbélyeg |
+| time |datetime |"2018-12-07T00:00:43.6872559Z" |a művelet időbélyeg |
 | átlag |int |64 |Átlagos értéke a metrika időközben a nyers minták |
 | minimum |int |37 |A minimális érték a metrika időközben a nyers minták |
 | maximum |int |78 |A maximális érték a metrika időközben a nyers minták |

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/14/2019
 ms.author: terrylan
 ms.openlocfilehash: 76f5627a28c2c0ab326197893a9b9739628af0fb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108075"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60597842"
 ---
 # <a name="application-architecture-on-azure"></a>Alkalmazásarchitektúra az Azure-on
 Védelme érdekében a felhőalapú megoldások, Microsoft Azure-ban egy erős architekturális foundation, kritikus fontosságú. Tervezők, tervezők és a végrehajtók összes kihasználhatják a alkalmazások és szolgáltatások architektúra erős ismerete. Ezen alapvető ismeretek segítségével megismerheti a felhőalapú megoldások összetevőit, és megkönnyíti a biztonsági integrálhatók a tervezési és megvalósítási minden aspektusát.

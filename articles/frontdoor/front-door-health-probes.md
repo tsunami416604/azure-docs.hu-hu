@@ -11,21 +11,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 256d530590fadc9e2aeb1ea1efb7a52608014978
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 59a3bac39437b91eeee3b005bd23476a34a308b7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988563"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60736581"
 ---
 # <a name="health-probes"></a>Állapotminták
 
-Annak érdekében, hogy meghatározni az egyes háttérrendszerek, bejárati ajtajának környezeteket rendszeres időközönként szintetikus HTTP/HTTPS kérelmet küld az egyes a konfigurált háttérrendszerekre. Bejárati ajtajának majd az ilyen mintavételezők érkező válaszokat használja a "ajánlott" háttérrendszerek, amelyre azt kell irányítania az ügyfélkérelmeket valós meghatározásához.
+Annak érdekében, hogy meghatározni az egyes háttérrendszerek, bejárati ajtajának környezeteket rendszeres időközönként szintetikus HTTP/HTTPS kérelmet küld az egyes a konfigurált háttérrendszerekre. A Front Door ezután a mintavételek válaszai alapján határozza meg, hogy melyek a „legjobb” háttérrendszerek, amelyekre továbbítania kell a valódi ügyfélkéréseket.
 
 
 ## <a name="supported-protocols"></a>Támogatott protokollok
 
-Bejárati ajtajának küldő mintavételek támogatja a HTTP vagy HTTPS protokollokon keresztül. Az ilyen mintavételezők küldése történik az ugyanazon a TCP-portok konfigurált útválasztási az ügyféli kérelmek részére, és nem bírálható felül.
+Bejárati ajtajának küldő mintavételek támogatja a HTTP vagy HTTPS protokollokon keresztül. A rendszer a mintavételeket ugyanazokon az ügyfélkérelmek átirányítására konfigurált, nem felülbírálható TCP-portokon keresztül küldi el.
 
 ## <a name="health-probe-responses"></a>Állapot-mintavételi válaszok
 
@@ -58,5 +58,5 @@ Ha bármely háttérrendszerből ismét Kifogástalan állapotba, bejárati ajta
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [hozzon létre egy bejárati ajtajának](quickstart-create-front-door.md).
-- Ismerje meg, [bejárati ajtajának működése](front-door-routing-architecture.md).
+- [Frontdoor létrehozására](quickstart-create-front-door.md) vonatkozó információk.
+- A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

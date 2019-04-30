@@ -6,15 +6,16 @@ author: ggailey777
 manager: jeconnoc
 ms.service: functions
 ms.topic: include
-ms.date: 10/04/2018
-ms.author: glenga
+origin.date: 10/04/2018
+ms.date: 03/25/2019
+ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: 6a1819e0bbfb8a6ab277721e84dc08cd325c8460
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124576"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60306818"
 ---
 Az alábbi táblázat bemutatja, hogyan lehet ezt a kötést támogatása hozzáadva minden fejlesztési környezetben.
 
@@ -25,3 +26,4 @@ Az alábbi táblázat bemutatja, hogyan lehet ezt a kötést támogatása hozzá
 |A fejlesztői portál| [A bővítmény regisztrálása](../articles/azure-functions/install-update-binding-extensions-manual.md)  |
 
 Megtudhatja, hogyan lehet frissíteni a létező kötés bővítmények a portálon való ismételt közzétételéhez a függvényalkalmazás projektjét nélkül, tekintse meg a [a bővítmények frissítése](../articles/azure-functions/install-update-binding-extensions-manual.md).
+

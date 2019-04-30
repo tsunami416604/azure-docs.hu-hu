@@ -8,11 +8,11 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475407"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561828"
 ---
 # <a name="azure-event-grid-event-schema-for-event-hubs"></a>Az event hubs az Azure Event Grid eseménysémája
 
@@ -59,28 +59,28 @@ Egy esemény a következő legfelső szintű adatokat tartalmaz:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| témakör | sztring | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| tárgy | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
-| eventType | sztring | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
-| eventTime | sztring | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| id | sztring | Az esemény egyedi azonosítója. |
+| témakör | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
+| tárgy | string | Az esemény tárgya közzétevő által megadott elérési útja. |
+| eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
+| eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
+| id | string | Az esemény egyedi azonosítója. |
 | adat | objektum | Event hub eseményadatokat. |
-| dataVersion | sztring | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | sztring | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
+| dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
+| metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
 Az objektum a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| fileUrl | sztring | A capture-fájl elérési útja. |
-| fileType | sztring | A rögzítési fájl fájl típusa. |
-| partitionId | sztring | A szegmens azonosítóját. |
+| fileUrl | string | A capture-fájl elérési útja. |
+| fileType | string | A rögzítési fájl fájl típusa. |
+| partitionId | string | A szegmens azonosítóját. |
 | sizeInBytes | egész szám | A fájl mérete. |
 | eventCount | egész szám | A fájl az események száma. |
 | firstSequenceNumber | egész szám | A legkisebb sorszáma az üzenetsorból. |
 | lastSequenceNumber | egész szám | Az utolsó számát az üzenetsorból. |
-| firstEnqueueTime | sztring | Az első alkalommal az üzenetsorból. |
-| lastEnqueueTime | sztring | A legutóbbi alkalommal az üzenetsorból. |
+| firstEnqueueTime | string | Az első alkalommal az üzenetsorból. |
+| lastEnqueueTime | string | A legutóbbi alkalommal az üzenetsorból. |
 
 ## <a name="next-steps"></a>További lépések
 

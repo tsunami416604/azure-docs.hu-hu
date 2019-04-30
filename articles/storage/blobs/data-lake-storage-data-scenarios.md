@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: normesta
 ms.openlocfilehash: 9deaa2f1e381dffbd85b0ee150c5782098a9db6b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006811"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60628217"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Az Azure Data Lake Storage Gen2 használata big data-követelményekhez
 
@@ -118,7 +118,7 @@ A forrásadatok relációs adatbázisból. Egy időszakon belül a relációs ad
 
 |Eszköz | Útmutatás |
 |---|--|
-|Azure Data Factory | [Az Azure Data Factory másolási tevékenysége](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
+|Azure Data Factory | [Másolási tevékenység az Azure Data Factoryben](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 
 ### <a name="web-server-log-data-upload-using-custom-applications"></a>Web server naplóadatok (feltöltés használó egyéni alkalmazások)
 
@@ -128,7 +128,7 @@ Itt az eszközöket, amelyek használatával Web server naplózási adatok list�
 
 |Eszköz | Útmutatás |
 |---|--|
-|Azure Data Factory | [Az Azure Data Factory másolási tevékenysége](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)  |
+|Azure Data Factory | [Másolási tevékenység az Azure Data Factoryben](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)  |
 
 A web server naplózási adatok feltöltését, valamint is fel más típusú adatok (például közösségi hangulati adatok) egy jó módszer a saját egyéni parancsfájlok vagy alkalmazások írni, mert azt a rugalmasságot biztosít az adatok feltöltése összetevő részeként a nagyobb big data-alkalmazásokat. Bizonyos esetekben ez a kód is igénybe vehet egy parancsfájl vagy egyszerű parancssori segédprogrammal formájában. Más esetekben a kódot egy üzleti alkalmazás vagy megoldás big data-feldolgozáshoz integrálhatók használhatók.
 
@@ -195,5 +195,5 @@ Itt az eszközöket, amelyek segítségével adatokat letölteni a Data Lake Sto
 
 |Eszköz | Útmutatás |
 |---|--|
-|Azure Data Factory | [Az Azure Data Factory másolási tevékenysége](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
+|Azure Data Factory | [Másolási tevékenység az Azure Data Factoryben](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 |Apache DistCop | [Adatok másolása az Azure Storage-blobokat és az Azure Data Lake Storage Gen2 között a DistCp használatával](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |

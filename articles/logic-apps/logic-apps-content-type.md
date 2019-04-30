@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 82eb9c895f016efe569651dc89885d2e4850fd59
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 2a9318317d5a01136a42b4fb6d580bafaf53ec4e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159091"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60685745"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Tartalomtípusok kezelése az Azure Logic Appsben
 
@@ -25,7 +25,7 @@ Tartalomtípusok kezelése megfelelő módszert meghatározni, a Logic Apps tám
 
 * [az Application/json](#application-json) (nativní typ)
 * [text/plain](#text-plain) (nativní typ)
-* [Application/xml és application/octet-stream](#application-xml-octet-stream)
+* [application/xml and application/octet-stream](#application-xml-octet-stream)
 * [Más típusú tartalomhoz](#other-content-types)
 
 <a name="application-json"></a>
@@ -130,7 +130,7 @@ Ha ezután a kérelmet küld egy újabb műveletet egy másik kérelem törzséb
 
 <a name="application-xml-octet-stream"></a>
 
-## <a name="applicationxml-and-applicationoctet-stream"></a>Application/xml és application/octet-stream
+## <a name="applicationxml-and-applicationoctet-stream"></a>application/xml and application/octet-stream
 
 A Logic Apps mindig megőrzi a `Content-Type` kapott HTTP-kérelem vagy válasz. Igen, ha a logikai alkalmazás a tartalmat megkap `Content-Type` beállítása `application/octet-stream`, és azt, hogy tartalom döntő nélkül újabb művelettel, a kimenő kérelem is rendelkezik `Content-Type` beállítása `application/octet-stream`. Ezzel a módszerrel a Logic Apps tud garantálni, hogy adatok nem vesznek el a munkafolyamaton keresztül áthelyezés közben. Azonban a művelet állapotát, vagy bemeneteit és kimeneteit, tárolódik egy JSON-objektum, amíg az állapot keresztül halad át a munkafolyamat. 
 
@@ -144,10 +144,10 @@ Ez a lista ismerteti a Logic Apps hogyan alakítja át a tartalmat a ezek haszn�
 * `xml()`: Adatok típuskonverziók `application/xml`
 * `binary()`: Adatok típuskonverziók `application/octet-stream`
 * `string()`: Adatok típuskonverziók `text/plain`
-* `base64()`: Tartalom alakítja a base64-karakterlánc
-* `base64toString()`: A base64-kódolású sztring átalakítása kisbetűssé `text/plain`
-* `base64toBinary()`: A base64-kódolású sztring átalakítása kisbetűssé `application/octet-stream`
-* `encodeDataUri()`: Egy karakterláncot kódol, egy dataUri bajtového Pole
+* `base64()`: Tartalom alakítja át a base64-karakterlánc
+* `base64toString()`: Base64-kódolású sztring átalakítása kisbetűssé `text/plain`
+* `base64toBinary()`: Base64-kódolású sztring átalakítása kisbetűssé `application/octet-stream`
+* `encodeDataUri()`: Egy karakterlánc kódolja a dataUri bajtového Pole
 * `decodeDataUri()`: Dekódol egy `dataUri` be egy bajtového Pole
 
 Például, ha HTTP-kérést kap ahol `Content-Type` beállítása `application/xml`, például a tartalom:

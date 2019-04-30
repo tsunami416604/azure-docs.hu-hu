@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: a78c03537d7fb3db6afa0c4a4e84c4746146ca85
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486368"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60657830"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Az Azure API Management API-sablonok
 
@@ -345,12 +345,12 @@ Ebben a szakaszban a sablonok lehetővé teszik az API a fejlesztői portál old
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|`apiId`|sztring|A jelenlegi API azonosítója.|  
-|`apiName`|sztring|Az API neve.|  
-|`apiDescription`|sztring|Az API leírása.|  
+|`apiId`|string|A jelenlegi API azonosítója.|  
+|`apiName`|string|Az API neve.|  
+|`apiDescription`|string|Az API leírása.|  
 |`api`|[API összefoglaló](api-management-template-data-model-reference.md#APISummary) entitás.|A jelenlegi API-t.|  
 |`operation`|[Művelet](api-management-template-data-model-reference.md#Operation)|A megjelenített műveletet.|  
-|`sampleUrl`|sztring|Az aktuális művelet URL-CÍMÉT.|  
+|`sampleUrl`|string|Az aktuális művelet URL-CÍMÉT.|  
 |`operationMenu`|[A művelet menü](api-management-template-data-model-reference.md#Menu)|Ez az API műveleteinek menü.|  
 |`consoleUrl`|URI|URI-JÁNAK a **kipróbálás** gombra.|  
 |`samples`|A gyűjtemény [kódminta](api-management-template-data-model-reference.md#Sample) entitásokat.|Az aktuális művelet Kódminták...|  

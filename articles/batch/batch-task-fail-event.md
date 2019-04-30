@@ -2,7 +2,7 @@
 title: Az Azure Batch tevékenység meghiúsult esemény |} A Microsoft Docs
 description: Referencia a Batch-feladat sikertelen esemény.
 services: batch
-author: laurenhughes
+author: dlepow
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -10,14 +10,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 04/20/2017
-ms.author: lahugh
+origin.date: 04/20/2017
+ms.date: 05/15/2018
+ms.author: v-junlch
 ms.openlocfilehash: f37769ceb761b8c8bc4834568813bb1b7af7f66a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458992"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60549988"
 ---
 # <a name="task-fail-event"></a>Tevékenység meghiúsult esemény
 
@@ -52,7 +53,7 @@ ms.locfileid: "55458992"
 }
 ```
 
-|Elem neve|Typo|Megjegyzések|
+|Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
 |jobId|String|A feladat a tevékenységet tartalmazó azonosítója.|
 |id|String|A feladat azonosítója.|
@@ -65,30 +66,32 @@ ms.locfileid: "55458992"
 
 ###  <a name="nodeInfo"></a> nodeInfo
 
-|Elem neve|Typo|Megjegyzések|
+|Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
 |poolId|String|A annak a készletnek azonosítója, amelyen a tevékenység futott.|
 |nodeId|String|A csomópont, amelyen a feladat futott azonosítója.|
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|Elem neve|Typo|Megjegyzések|
+|Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
 |numberOfInstances|Int32|A tevékenységhez szükséges számítási csomópontok száma.|
 
 ###  <a name="constraints"></a> Korlátozások
 
-|Elem neve|Typo|Megjegyzések|
+|Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
 |maxTaskRetryCount|Int32|A maximális száma a próbálhassa. A Batch szolgáltatás feladat újrapróbálkozik, ha annak kilépési kódja nullától eltérő.<br /><br /> Vegye figyelembe, hogy ez az érték kifejezetten határozza meg az újrapróbálkozások számát. A Batch szolgáltatás egyszer megkísérli a feladat, és előfordulhat, hogy próbálkozzon újra legfeljebb ezt a korlátot. Például ha az újrapróbálkozások maximális száma 3, köteg próbálkozás egy feladat legfeljebb 4 alkalommal (kezdeti próbálkozás és 3 újrapróbálás).<br /><br /> Ha az újrapróbálkozások maximális száma 0, a Batch szolgáltatás nem próbálkozik újra a feladatot.<br /><br /> Ha az újrapróbálkozások maximális száma -1, akkor a Batch szolgáltatás korlátozás nélkül feladatok újrapróbálkozik.<br /><br /> Az alapértelmezett érték: 0 (nincs újrapróbálkozás).|
 
 
 ###  <a name="executionInfo"></a> executionInfo
 
-|Elem neve|Typo|Megjegyzések|
+|Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
 |startTime|DateTime|Amikor a feladat elindításának ideje. "Fut" megfelel a **futó** állapotba, így ha a feladat Erőforrásfájlok vagy az alkalmazáscsomagok határozza meg, majd a kezdési időpont tükrözi az idő, amikor a feladat elindult letöltése vagy telepítése ezeket.  Ha a feladat újraindítása, vagy a rendszer megpróbálja újból végrehajtani, akkor a legutóbbi idő, amikor a feladat elindításának.|
 |endTime|DateTime|Az az időpont, amikor a tevékenység befejeződött.|
 |exitCode|Int32|A tevékenység kilépési kódját.|
 |RetryCount|Int32|A száma a feladat rendelkezik lett rendszer megpróbálja újból végrehajtani a Batch szolgáltatás által. A rendszer megpróbálja újból végrehajtani a feladatot, ha egy nem nulla kilépési kóddal, legfeljebb a megadott MaxTaskRetryCount kilép.|
 |requeueCount|Int32|A száma a feladat eredményeként egy felhasználói kérelem rendelkezik a Batch szolgáltatás által lett lefutni.<br /><br /> Amikor a felhasználó eltávolítja csomópontok egy készletet (átméretezése, vagy a készletre kicsinyítésével), vagy ha a feladat letiltása közben, a felhasználó is adja meg, hogy fut a csomópontokon feladatok várólistára kerülnek végrehajtásra. Ez a szám ebből kifolyólag a feladat rendelkezik lett várólistára hány alkalommal követi nyomon.|
+
+<!-- Update_Description: update metedata properties -->

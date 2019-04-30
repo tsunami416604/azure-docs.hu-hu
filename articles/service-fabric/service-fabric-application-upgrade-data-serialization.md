@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 55cbd869e7434469ebddd7af493c91bfedafc594
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665678"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60614447"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Hogyan befolyásolja az adatok szerializálása a egy alkalmazás frissítése
 Az egy [alkalmazás frissítése működés közbeni](service-fabric-application-upgrade.md), a frissítés alkalmazott csomópontok egy része, egyszerre több frissítési tartományt. A folyamat során néhány frissítési tartományok az alkalmazás újabb verziójában, és az alkalmazás régebbi verzióját a rendszer egyes frissítési tartományok. A bevezetés során az alkalmazás új verziója, olvassa el a régi verziót, az adatok képesnek kell lennie, és az alkalmazás régebbi verzióját kell tudni olvasni az adatokat az új verziót. Ha a adatformátum nem előre és visszafelé kompatibilis, a frissítés sikertelen lehet, vagy rosszabb, adatok esetleg elveszett vagy sérült állapotba kerül. Ez a cikk ismerteti, mi a adatformátum alkotja, és annak biztosítása, hogy az adatok előre és hátra ajánlott eljárásai kínál kompatibilis.

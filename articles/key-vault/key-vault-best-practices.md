@@ -2,23 +2,19 @@
 title: Ajánlott eljárások az Azure Key Vault használata a Key Vault - |} A Microsoft Docs
 description: Ez a dokumentum azt ismerteti, néhány ajánlott eljárást a Key vaulttal
 services: key-vault
-documentationcenter: ''
-author: yvprashanth
+author: mbaldwin
 manager: barbkess
 tags: azure-key-vault
-ms.assetid: e5b4e083-4a39-4410-8e3a-2832ad6db405
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/07/2019
-ms.author: prashanthyv
+ms.author: mbaldwin
 ms.openlocfilehash: ee4418700cec5de1dc404c3669dd5de315aab983
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368610"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60640769"
 ---
 # <a name="best-practices-to-use-key-vault"></a>A Key Vault használatának ajánlott eljárásait
 

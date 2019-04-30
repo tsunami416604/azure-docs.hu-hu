@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 09/12/2018
 ms.author: qianw211
 ms.openlocfilehash: 247a45a38d732ace0455c6ca2ebbd5c44c384004
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732328"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60734252"
 ---
-# <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Az appsource-ban és a Piactér listaelem engedélyezése az Azure Active Directoryval
+# <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>AppSource- és Marketplace-termékoldal engedélyezése az Azure Active Directory használatával
 
  Az Azure Active Directory (Azure AD) egy olyan felhőalapú identitásszolgáltatás, amely lehetővé teszi a Microsoft-fiókkal hitelesítést. Azure ad-ben az iparági szabványnak megfelelő keretrendszer használ. [További információ az Azure Active Directory](https://azure.microsoft.com/services/active-directory).
 

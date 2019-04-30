@@ -3,8 +3,8 @@ title: Tudnivalók a titkosítási követelményeket és az Azure VPN-átjárók
 description: Ez a cikk ismerteti a titkosítási követelményeket és az Azure VPN Gateway átjárók
 services: vpn-gateway
 documentationcenter: na
-author: yushwang
-manager: rossort
+author: WenJason
+manager: digimobile
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/22/2017
-ms.author: yushwang
+origin.date: 05/22/2017
+ms.date: 10/01/2018
+ms.author: v-jay
 ms.openlocfilehash: 060e647badcc3bad7b44d7cef3530c36b8ecdf57
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "23884250"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648675"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>Tudnivalók a titkosítási követelményeket és az Azure VPN Gateway átjárók
 
@@ -39,7 +40,7 @@ Ha például az IKEv2 fő módú szabályzatok Azure VPN gatewayek használják-
 ## <a name="custom-ipsecike-policy-with-azure-vpn-gateways"></a>Egyéni IPsec/IKE-házirendet az Azure VPN-átjárókkal
 Az Azure VPN-átjárók mostantól támogatják a kapcsolatok, egyéni IPsec/IKE-házirendet. Helyek közötti és VNet – VNet kapcsolat esetében választhatja titkosítási algoritmusok, adott kombinációk IPsec és az IKE a kívánt kulcs erősségét, az az alábbi példában látható módon:
 
-![IPSec-ike-szabályzat](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
+![ipsec-ike-policy](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
 
 Hozzon létre egy IPsec/IKE-házirendet, és a egy új vagy meglévő kapcsolatot a alkalmazni. 
 

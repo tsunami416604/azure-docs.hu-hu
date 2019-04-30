@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: f71fe9b02765e0fc8fd5f3b7abbd54c87b08132f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264063"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60617935"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>A Microsoft Azure-számla megtekintése és letöltése
 
@@ -136,7 +136,7 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 A számlák és a költségek kapcsolatos további információkért lásd:
 
 - [Megtekintheti és letöltheti a Microsoft Azure-használat és a díj](billing-download-azure-daily-usage.md)
-- [A Microsoft Azure-hoz kapcsolódó számlák magyarázata](billing-understand-your-bill.md)
+- [Microsoft Azure-elszámolások értelmezése](billing-understand-your-bill.md)
 - [Az Azure-számla feltételeinek értelmezése](billing-understand-your-invoice.md)
 - [A feltételeinek értelmezése a Microsoft Azure részletes használat](billing-understand-your-usage.md)
 - [A szervezet az Azure díjszabásának megtekintése](billing-ea-pricing.md)

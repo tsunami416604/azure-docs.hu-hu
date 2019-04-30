@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/08/2018
 ms.author: alkohli
 ms.openlocfilehash: b8e9f12a549f71971c2da3b9865f6a74dad58f61
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300914"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60630138"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>A StorSimple Virtual Array – ajánlott eljárások
 ## <a name="overview"></a>Áttekintés
@@ -77,7 +77,7 @@ Először minden rétegzett kötetet vagy megosztást, a helyi foglalás lenne a
 
 A teljes terület szükséges, amennyiben a helyi rétegen van: 240 GB + 120 GB + 330 GB = 690 GB.
 
-A helyi rétegen legalább annyi szabad helyre második, a legnagyobb egyetlen foglalást végrehajtó kell. A felhasznált többletmennyiségért szolgál abban az esetben vissza kell állítania a felhőbeli pillanatképet. Ebben a példában a legnagyobb helyi foglalás 330 GB (beleértve a Foglalás fájlrendszer esetén), akkor úgy szeretné beállítani, hogy a 690 GB: 690 GB + 330 GB = 1020 GB.
+A helyi rétegen legalább annyi szabad helyre második, a legnagyobb egyetlen foglalást végrehajtó kell. A felhasznált többletmennyiségért szolgál abban az esetben vissza kell állítania a felhőbeli pillanatképet. Ebben a példában a legnagyobb helyi foglalás 330 GB (beleértve a Foglalás fájlrendszer esetén), így a 690 GB jelentene, amely: 690 GB + 330 GB = 1020 GB.
 Ha azt hajtja végre a következő további visszaállítások, azt is mindig ingyenes fel a lemezterületet az előző visszaállítási művelet.
 
 Harmadik kell 15 %, amennyiben a helyi pillanatképek tárolására szolgáló teljes helyi tárhely, hogy csak 85 %, érhető el. Ebben a példában ez lenne az körül 1020 GB = 0.85&ast;kiépített adatok lemezre TB. Tehát az üzembe helyezett adatlemez lesz (1020&ast;(1/0.85)) 1200 GB = 1,20 TB = ~ 1,25 TB (kerekítésre legközelebbi KVARTILIS)

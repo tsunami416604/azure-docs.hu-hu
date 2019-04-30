@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 60a0d7c2da25f63d0728dbb86f9a6c2328def811
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245243"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611026"
 ---
 # <a name="azure-advanced-threat-detection"></a>Az Azure fejlett fenyegetésészlelés
 
@@ -75,7 +75,7 @@ A PIM segítségével:
 
 -   A kiemelt szerepkörű való hozzáféréssel kapcsolatos riasztásokat kaphat.
 
-## <a name="azure-monitor-logs"></a>Az Azure Monitor naplóira
+## <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
 [Az Azure Monitor naplóira](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) van a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. Az Azure Monitor naplóira implementálva van a felhő alapú szolgáltatás, mert rendelkezhet, és gyorsan az infrastrukturális szolgáltatásokra fordítandó minimális kiadások mellett a. Új biztonsági funkciók bevezetése automatikus, mentése folyamatban van a folyamatos karbantartás és frissítés költségei.
 

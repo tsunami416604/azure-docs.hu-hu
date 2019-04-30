@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 5f8378de18796fd679354c88880942df83399ad5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112044"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60586789"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure létesítményekben, a helyi és a fizikai biztonság
 Azure áll, amelyek egy [globálisan elosztott adatközpont-infrastruktúrába](https://azure.microsoft.com/global-infrastructure/), több ezer olyan online szolgáltatások támogatása, és világszerte több mint 100 rendkívül biztonságos létesítményekben átfedés.

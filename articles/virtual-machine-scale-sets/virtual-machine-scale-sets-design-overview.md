@@ -17,11 +17,11 @@ ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
 ms.openlocfilehash: 67bbad7e73f33d73d4c3f1d4f7e5599d2ef914e3
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791047"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60618472"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Kialakítási szempontok a méretezési csoportokhoz
 Ez a cikk ismerteti a Virtual Machine Scale Sets kapcsolatos kialakítási szempontok. Mik azok a Virtual Machine Scale Sets kapcsolatos információkért tekintse meg [virtuálisgép-méretezési csoportok – áttekintés](virtual-machine-scale-sets-overview.md).
@@ -55,7 +55,7 @@ A méretezési csoportok hozhatók [Azure Managed Disks](../virtual-machines/win
 
 Ha rendelkezik egy meglévő sablont, akkor is [a sablont frissítését a felügyelt lemezek használata](virtual-machine-scale-sets-convert-template-to-md.md).
 
-### <a name="user-managed-storage"></a>Felhasználó által felügyelt tárolási
+### <a name="user-managed-storage"></a>User-managed Storage
 Egy méretezési csoportot, amely nincs definiálva az Azure Managed Disks támaszkodik a felhasználó által létrehozott storage-fiókokat, a virtuális gépek operációsrendszer-lemezeinek tárolásához a készletben. Szélesség-magasság arányban tárfiókonként vagy kevesebb mint 20 virtuális gép ajánlott maximális i/o eléréséhez, és kihasználhatja _túlzott_ (lásd alább). A tárfiókok nevének kezdő karaktereit elosztva az ábécé is ajánlott. Ennek során, így segít a terhelés elosztását belső különböző rendszerekből. 
 
 
@@ -66,7 +66,7 @@ Túlzott javítása kiépítési sikerességi arányokat, amíg azt a az alkalma
 
 Ha a méretezési felhasználó által kezelt tárolót használ, és kikapcsolja túlzott, tárfiókonként legfeljebb csak 20 virtuális géppel rendelkezhet, de nem javasoljuk, hogy nyissa meg a fenti 40 i/o-teljesítmény javítása érdekében. 
 
-## <a name="limits"></a>Korlátok
+## <a name="limits"></a>Limits
 Egy méretezési csoportot (más néven platformlemezkép) Piactéri lemezképet épül, és az Azure Managed Disks használatára konfigurált támogatja a legfeljebb 1000 virtuális gépet kapacitását. Ha a méretezési csoport több mint 100 virtuális gép támogatására konfigurálja, nem minden esetben azonos (a példában terheléselosztás) működik. További információkért lásd: [nagyméretű virtuálisgép-méretezési csoportok](virtual-machine-scale-sets-placement-groups.md). 
 
 Egy méretezési csoportot konfigurált, a felhasználó által felügyelt storage-fiókok jelenleg legfeljebb 100 virtuális gép (és 5 tárfiókok használata javasolt a skála).

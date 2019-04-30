@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
 ms.openlocfilehash: 9802296170f07bb8599058e230798f647e900d4d
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093697"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60636242"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Online médialejátszás optimalizálása az Azure CDN-nel 
  
@@ -86,8 +86,8 @@ A rövid negatív gyorsítótárazási időt hasznos forrás-alapú kiszervezés
 
 |   | Általános webes kézbesítés | Általános médiastreaming | Igény szerinti videó online médialejátszás  
 --- | --- | --- | ---
-Gyorsítótárazás: pozitív <br> HTTP 200, 203, 300, <br> 301, 302 és 410 | 7 nap |365 nap | 365 nap   
-Gyorsítótárazás: negatív <br> HTTP 204, 305, 404-ES, <br> és a 405-ös | None | 1 másodperc | 1 másodperc
+Gyorsítótárazás: Pozitív <br> HTTP 200, 203, 300, <br> 301, 302 és 410 | 7 nap |365 nap | 365 nap   
+Gyorsítótárazás: Negatív <br> HTTP 204, 305, 404-ES, <br> és a 405-ös | None | 1 másodperc | 1 másodperc
  
 ### <a name="deal-with-origin-failure"></a>Foglalkoznak, forrása  
 
@@ -104,8 +104,8 @@ A következő táblázatban megtalálható, az online médialejátszás optimali
 Támogatott az adatfolyam-típusok | Fájlkiterjesztések  
 --- | ---  
 Apple HLS | m3u8, m3u, m3ub, kulcsot ts, aac
-Az Adobe HDS | f4m, f4x, drmmeta, rendszerindítási, f4f,<br>Seg-illetheti URL-cím szerkezete <br> (reguláris kifejezéssel egyező: ^(/.*)Seq(\d+)-Frag(\d+)
-KÖTŐJEL | mpd, kötőjelet, divx, ismv, m4s, m4v, mp4, mp4v, <br> sidx, webm, mp4a, m4a, isma
+Adobe HDS | f4m, f4x, drmmeta, rendszerindítási, f4f,<br>Seg-illetheti URL-cím szerkezete <br> (reguláris kifejezéssel egyező: ^(/.*)Seq(\d+)-Frag(\d+)
+DASH | mpd, dash, divx, ismv, m4s, m4v, mp4, mp4v, <br> sidx, webm, mp4a, m4a, isma
 Smooth streaming | / jegyzékfájl//QualityLevels/töredékek száma /
   
  

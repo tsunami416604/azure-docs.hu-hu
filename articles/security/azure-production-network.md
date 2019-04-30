@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: afae7cc6390ea4cd8c18c687e9d99400c8da9da4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116932"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611348"
 ---
 # <a name="the-azure-production-network"></a>Az Azure éles hálózati környezetben
 Az Azure éles hálózati környezetben, a felhasználók közé tartozik a mindkét külső ügyfelek esetében, aki a hozzáférést a saját Azure-alkalmazások és a belső Azure-támogatási személyzetnek kezelheti az éles hálózati környezetben. Ez a cikk ismerteti a biztonsági hozzáférési metódusokat és a védelmi mechanizmus az Azure éles környezetben való hálózati kapcsolatot lehessen létesíteni.

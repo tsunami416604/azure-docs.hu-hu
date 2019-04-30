@@ -13,11 +13,11 @@ ms.date: 02/19/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 2ec2ddbac5d0368aaf1b46208c9ebb44bf12a622
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447310"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60734354"
 ---
 # <a name="assets"></a>Objektumok
 
@@ -34,18 +34,18 @@ A **archív** tárolási réteg csak ajánlott nagyon nagy méretű forrásfájl
 
 A gyakori munkafolyamatokat a Media Services egyik feltöltése, kódolása és streamelése egy fájlt. Ez a szakasz az általános lépéseket ismerteti.
 
-1. A Media Services v3 API használatával hozzon létre egy új "bemeneti" objektumot. Ez a művelet létrehoz egy tárolót a Media Services-fiókjához társított storage-fiókban. Az API-t adja vissza a tároló nevét (például `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`).
+1. Hozzon létre egy új „bemeneti” adategységet a Media Services v3 API használatával. Ez a művelet létrehoz egy tárolót a Media Services-fiókjához társított tárfiókban. Az API-t adja vissza a tároló nevét (például `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`).
    
-    Ha már rendelkezik egy adategység társítani kívánt blob-tárolóba, megadhatja a tároló neve, az eszköz létrehozásakor. Media Services jelenleg csak támogatja a blobok a tároló legfelső szintű és nem a fájlnévben szereplő elérési utakat. Így egy tároló, a "input.mp4" fájl nevével fog működni. Azonban az "videos/inputs/input.mp4" nevű tároló nem fog működni.
+    Ha már rendelkezik egy blobtárolóval, amelyet társítani szeretne az adategységhez, az adategység létrehozásakor megadhatja a tároló nevét. A Media Services jelenleg csak a tároló gyökerében található blobokat támogatja, a fájlnévben elérési utat tartalmazó blobokat nem. Ennélfogva egy „input.mp4” nevű fájlt tartalmazó tároló használható lesz. Azonban a „videos/inputs/input.mp4” nevű fájt tartalmazó tároló nem fog működni.
 
-    Az Azure CLI segítségével feltöltés közvetlenül a tárfiók és tároló, amely megfelelő jogosultságokkal rendelkezik az előfizetésében. <br/>A tároló neve egyedi legyen, és hajtsa végre a tároló elnevezési irányelveinek. A név nem kell hajtsa végre a formázás Media Services eszköz Tárolónév (objektum-GUID). 
+    Az Azure CLI-vel közvetlenül feltölthet bármilyen tárfiókba és tárolóba, amelyhez jogosultsággal rendelkezik az előfizetésében. <br/>A tárolók nevének egyedinek kell lennie, és követnie kell a tárolók elnevezésére vonatkozó irányelveket. A névnek nem kell követnie a Media Services adategység-tárolójának elnevezési formátumát (Adategység-GUID). 
     
     ```azurecli
     az storage blob upload -f /path/to/file -c MyContainer -n MyBlob
     ```
-2. Egy SAS URL-cím olvasási és írási engedélyekkel, hogy a rendszer a digitális fájlok feltöltése az Eszközintelligencia-tároló lekéréséhez. A Media Services API-t is használhatja [eszköz tároló URL-címek listája](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
-3. Az Azure Storage API-k és SDK-kkal (például a [Storage REST API-val](../../storage/common/storage-rest-api-auth.md), [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md), vagy [.NET SDK-val](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) fájlok feltöltése az Eszközintelligencia-tárolóba. 
-4. A Media Services v3 API-k használatával hozzon létre egy-egy átalakítási és a egy feladatot a "bemeneti" Eszközintelligencia feldolgozásához. További információkért lásd: [átalakítások és feladatok](transform-concept.md).
+2. Használjon egy olvasási és írási engedélyekkel rendelkező SAS URL-címet a digitális fájlok az adategység-tárolóba történő feltöltéséhez. A Media Services API segítségével [kilistázhatja az adategység-tárolók URL-címét](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
+3. Használja az Azure Storage API-kat vagy SDK-kat (például a [Storage REST API](../../storage/common/storage-rest-api-auth.md)-t, a [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md)-t vagy a [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)-t) a fájlok az adategység-tárolóba történő feltöltéséhez. 
+4. A Media Services v3 API-k segítségével hozzon létre egy Átalakítást és egy Feladatot a „bemeneti” adategység feldolgozásához. További információt az [átalakításokkal és feladatokkal](transform-concept.md) kapcsolatos cikkben olvashat.
 5. A Stream a tartalom a "kimeneti" objektum.
 
 A teljes .NET-példa bemutatja, hogyan: hozható létre az eszköz, írható SAS URL-cím lekérése a storage-tárolóba az eszköz, a fájl feltöltése a tárolóba, a storage, az SAS URL-cím használatával, lásd: [hozzon létre egy feladat bemenete egy helyi fájlból](job-input-from-local-file-how-to.md).
@@ -60,7 +60,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 A REST-példa: a [hozzon létre egy objektumot a REST segítségével](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples) példa.
 
-A példa bemutatja, hogyan hozhat létre a **kérelem törzse** , ahol megadható hasznos információkat, például leírása, a tároló neve, a storage-fiók és az egyéb információkat.
+A példa bemutatja, hogyan hozhatja létre a **kérelemtörzset**, ahol olyan hasznos információkat adhat meg, mint a leírás, a tároló neve, a tárfiók és egyéb adatok.
 
 #### <a name="curl"></a>cURL
 
@@ -105,5 +105,5 @@ Az inaktív eszközök védelmére, titkosítani kell az eszközök által a sto
 ## <a name="next-steps"></a>További lépések
 
 * [Fájl streamelése](stream-files-dotnet-quickstart.md)
-* [Használatával a felhőalapú DVR-Funkciókkal](live-event-cloud-dvr.md)
+* [Egy felhőalapú DVR használata](live-event-cloud-dvr.md)
 * [Különbségeit a Media Services v2 és v3](migrate-from-v2-to-v3.md)

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
 ms.openlocfilehash: bb186ab2700b147bee3a7dd81474409ccafb76fc
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341716"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60607920"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Megbízható internetes kapcsolatok útmutató
 
@@ -247,7 +247,7 @@ Hozzáférés a Microsoft Azure, Office 365 és Dynamics 365 TIC 2.0 függelék 
 
 ## <a name="appendix-trusted-internet-connections-patterns-for-common-workloads"></a>A függelék: Gyakori munkaterhelés például a megbízható internetes kapcsolatok minták
 
-| Kategória | Számítási feladat | IaaS | PaaS dedikált / virtuális hálózati injektálás  | Szolgáltatásvégpontok  |
+| Category | Számítási feladat | IaaS | PaaS dedikált / virtuális hálózati injektálás  | Szolgáltatásvégpontok  |
 |---------|---------|---------|---------|--------|
 | Compute | Azure-beli Linux rendszerű virtuális gépek | Igen | | |
 | Compute | Azure-beli Windows virtuális gépek | Igen | | |

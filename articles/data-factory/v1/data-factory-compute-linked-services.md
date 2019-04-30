@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 0e0a249c53c90d3d8d03dcdb5fbb4f11f31c54df
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545149"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60565718"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Számítási környezetek Azure Data Factory által támogatott
 > [!NOTE]
@@ -144,7 +144,7 @@ A következő JSON egy Linux-alapú igény szerinti HDInsight társított szolg�
 ### <a name="advanced-properties"></a>Speciális tulajdonságok
 Az igény szerinti HDInsight-fürt részletes konfigurációjáig megadhatja a következő tulajdonságokkal:
 
-| Tulajdonság               | Leírás                              | Szükséges |
+| Tulajdonság               | Leírás                              | Kötelező |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | Megadja a HDInsight-fürt létrehozása az alapvető konfigurációs paramétereket (core-site.xml). | Nem       |
 | hBaseConfiguration     | Megadja a HDInsight-fürt HBase-konfigurációs paramétereket (a hbase-site.xml). | Nem       |
@@ -262,7 +262,7 @@ Létrehozhat egy HDInsight társított szolgáltatás regisztrálni a saját HDI
 | type              | A type tulajdonság beállítása **HDInsight**. | Igen      |
 | clusterUri        | A HDInsight-fürt URI azonosítója.        | Igen      |
 | felhasználónév          | Egy meglévő HDInsight-fürthöz való kapcsolódáshoz használandó felhasználói fiók neve. | Igen      |
-| jelszó          | A felhasználói fiók jelszava.   | Igen      |
+| password          | A felhasználói fiók jelszava.   | Igen      |
 | linkedServiceName | A Blob Storage a HDInsight-fürt által használt a storage-beli társított szolgáltatás neve. <p>Jelenleg nem adhat meg egy Data Lake Store-beli társított szolgáltatást ehhez a tulajdonsághoz. Ha a HDInsight-fürt a Data Lake Store hozzáférése van, előfordulhat, hogy a Data Lake Store adatigénylésekre a Hive és Pig-parancsfájlok alapján. </p> | Igen      |
 
 ## <a name="azure-batch-linked-service"></a>Az Azure Batch-beli társított szolgáltatás
@@ -308,7 +308,7 @@ Egy másik lehetőség az, hogy adja meg a **batchUri** végpont. Példa:
 | Tulajdonság          | Leírás                              | Szükséges |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | A type tulajdonság beállítása **AzureBatch**. | Igen      |
-| accountName       | A Batch-fiók neve.         | Igen      |
+| fióknév       | A Batch-fiók neve.         | Igen      |
 | accessKey         | A Batch-fiók hozzáférési kulcsára.  | Igen      |
 | poolName          | Virtuális gépek készletének neve.    | Igen      |
 | linkedServiceName | Az ebben a kötegben társított storage társított szolgáltatás neve társított szolgáltatást. A társított szolgáltatás átmeneti fájlok, amelyek szükségesek a tevékenység futtatásához, és a tevékenység végrehajtási naplók tárolására szolgál. | Igen      |
@@ -332,9 +332,9 @@ Létrehozhat egy Machine Learning társított szolgáltatás egy Machine Learnin
 ```
 
 ### <a name="properties"></a>Tulajdonságok
-| Tulajdonság   | Leírás                              | Szükséges |
+| Tulajdonság   | Leírás                              | Kötelező |
 | ---------- | ---------------------------------------- | -------- |
-| Typo       | A type tulajdonság beállítása **AzureML**. | Igen      |
+| Típus       | A type tulajdonság beállítása **AzureML**. | Igen      |
 | mlEndpoint | A kötegelt pontozás URL-CÍMÉT.                   | Igen      |
 | apiKey     | A közzétett munkaterület-modell API-t.     | Igen      |
 
@@ -346,7 +346,7 @@ A következő táblázat ismerteti az általános tulajdonságokat a JSON-defin�
 | Tulajdonság                 | Leírás                              | Szükséges                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | type                 | A type tulajdonság beállítása **AzureDataLakeAnalytics**. | Igen                                      |
-| accountName          | A Data Lake Analytics-fiók nevét.  | Igen                                      |
+| fióknév          | A Data Lake Analytics-fiók nevét.  | Igen                                      |
 | dataLakeAnalyticsUri | A Data Lake Analytics URI azonosítója.           | Nem                                       |
 | subscriptionId       | Az Azure-előfizetés azonosítóját.                    | Nem<br /><br />(Ha nincs megadva, a data factory előfizetés szerepel.) |
 | resourceGroupName    | Az Azure-erőforráscsoport nevét.                | Nem<br /><br /> (Ha nincs megadva, a data factory erőforráscsoport szerepel.) |
@@ -366,7 +366,7 @@ Egyszerű szolgáltatásnév hitelesítése használja a következő tulajdonsá
 | :---------------------- | :--------------------------------------- | :------- |
 | servicePrincipalId  | Az alkalmazás ügyfél-azonosítót.     | Igen      |
 | servicePrincipalKey | Az alkalmazás kulcsa.           | Igen      |
-| bérlő              | Ahol az alkalmazás megtalálható bérlői adatok (tartomány neve vagy a bérlő azonosítója). Ezek az információk lekéréséhez az egérrel az Azure portal jobb felső sarkában. | Igen      |
+| tenant              | Ahol az alkalmazás megtalálható bérlői adatok (tartomány neve vagy a bérlő azonosítója). Ezek az információk lekéréséhez az egérrel az Azure portal jobb felső sarkában. | Igen      |
 
 **Példa: Egyszerű szolgáltatásnév hitelesítése**
 ```json
@@ -390,7 +390,7 @@ Egyszerű szolgáltatásnév hitelesítése használja a következő tulajdonsá
 #### <a name="user-credential-authentication"></a>Felhasználói hitelesítő adatok hitelesítése
 A Data Lake Analytics felhasználói hitelesítő adja meg a következő tulajdonságokkal:
 
-| Tulajdonság          | Leírás                              | Szükséges |
+| Tulajdonság          | Leírás                              | Kötelező |
 | :---------------- | :--------------------------------------- | :------- |
 | Engedélyezési | A Data Factory Editorban válassza a **engedélyezés** gombra. Adja meg a hitelesítő adat, amelyet az automatikusan létrehozott engedélyezési URL-címet rendel hozzá ezt a tulajdonságot. | Igen      |
 | sessionId     | Az OAuth munkamenet-azonosító az OAuth hitelesítési munkamenetből. Minden munkamenet-azonosító egyedi, és csak egyszer használhatók fel. Ez a beállítás automatikusan jön létre Data Factory Editor használata esetén. | Igen      |
