@@ -1,6 +1,6 @@
 ---
-title: Azure virtuális gépek vész-helyreállítási eljárással |} Microsoft Docs
-description: Ismerje meg, mi a teendő arra az esetre, ha egy Azure szolgáltatás megszűnésének hatással van az Azure virtuális gépeken.
+title: Az Azure virtuális gépek vész-helyreállítási helyzetekben |} A Microsoft Docs
+description: Ismerje meg, mi a teendő abban az esetben, ha egy Azure-szolgáltatáskimaradás hatással van az Azure-beli virtuális gépek.
 services: virtual-machines
 documentationcenter: ''
 author: kmouss
@@ -15,46 +15,46 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: kmouss;aglick
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70aec41c885ab81371f5318f7557b0e628ac3308
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: dc71e8564b35f4fdd4153a04c66a3d8c5df88c30
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30915415"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478844"
 ---
-# <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Mi a teendő arra az esetre, ha egy Azure szolgáltatás megszűnésének hatással van az Azure virtuális gépeken
-A Microsoft dolgozunk merevlemez győződjön meg arról, hogy a szolgáltatások mindig rendelkezésre álló újból. Kényszeríti a befolyásolható néha hatással velünk, hogy a nem tervezett szolgáltatás megszakadása miatt.
+# <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Mi a teendő abban az esetben, ha egy Azure-szolgáltatáskimaradás hatással van az Azure virtuális gépek
+A Microsoft dolgozunk, hogy szolgáltatásaink mindig elérhető, amikor szüksége van rájuk. Kényszeríti a befolyásolható néha hatással velünk a kapcsolatot, hogy a nem tervezett szolgáltatáskimaradás miatt.
 
-A Microsoft egy szolgáltatási szint szerződés (SLA) biztosít hasznos üzemidő és csatlakozási kötelezettségvállalást a hozzá tartozó szolgáltatások. Az SLA-t az egyes Azure-szolgáltatások található [Azure szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/).
+A Microsoft szolgáltatói szerződés (SLA) biztosít a szolgáltatások üzemidejével és elérhetőségével vonatkozó kötelezettségvállalást. A szolgáltatói szerződés tartalmazza az egyes Azure-szolgáltatások található [Azure szolgáltatásiszint-szerződései](https://azure.microsoft.com/support/legal/sla/).
 
-Azure már számos beépített platform szolgáltatást, amely támogatja a magas rendelkezésre állású alkalmazások. További információk a szolgáltatásokról, olvassa el a [vész-helyreállítási és magas rendelkezésre állás a Azure-alkalmazások](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
+Az Azure már számos beépített platformfunkciók támogatja a magas rendelkezésre állású alkalmazások. Ezek a szolgáltatások kapcsolatos további információkért olvassa el a [vészhelyreállítás és magas rendelkezésre állás az Azure-alkalmazások](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-Ez a cikk egy valódi katasztrófa utáni helyreállítása vonatkozik, amikor egy teljes régió kimaradás jelentős természeti katasztrófa vagy a széles körű szolgáltatás megszakítás miatt. Ezek ritkán fordul elő eseményeket, de előbb elő kell készítenie az, hogy van-e egy teljes terület kimaradás lehetőséget. Ha egy teljes terület a szolgáltatás szüneteltetése, a helyileg redundáns másolatait az adatok akkor ideiglenesen nem érhető el. Ha engedélyezett a georeplikáció, az Azure Storage blobs és táblák három további másolatot tárol egy másik régióban. Teljes regionális kimaradás vagy az elsődleges régióban nincs helyreállítható katasztrófa esetén, Azure amelyek összes DNS-bejegyzéseket, a georeplikált régióban.
+Ez a cikk ismerteti a valódi vész-helyreállítási helyzetekre, amikor egy teljes régió kimaradás jelentős természeti katasztrófa vagy széles körű szolgáltatás megszakadása miatt. Ezek ritkán fordul elő, de a lehetőségét, hogy nincs-e egy teljes régióra kimaradás elő kell készítenie. Ha egy teljes régió a szolgáltatáskimaradás, az adatokat a helyileg redundáns másolatait szeretné ideiglenesen nem érhető el. Ha engedélyezte a georeplikáció, az Azure Storage-blobok és táblák három további másolatot készít egy másik régióban vannak tárolva. Az Azure teljes regionális kimaradás vagy vészhelyzet az elsődleges régió nem helyreállítható, ha ismételten leképezett összes DNS-bejegyzéseket, a georeplikált régióba.
 
-Segítséget az ilyen ritka események kezelésére, az Azure virtuális gépek esetén a szolgáltatás szüneteltetése a teljes régió, ahol a virtuális gép az Azure-alkalmazás központi telepítése a következő útmutatást nyújtunk.
+Könnyebben kezelni ezeket ritkán fordul elő, az alábbi útmutató Azure virtuális gépek esetén a teljes régió, ahol az Azure virtuális gép alkalmazás üzemel egy szolgáltatáskimaradás biztosítunk.
 
-## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>1. lehetőség: A feladatátvétel kezdeményezése Azure Site Recovery segítségével
-Azure Site Recovery konfigurálhatja a virtuális gépek, így helyreállíthatja az alkalmazás, függetlenül attól, hogy az egyetlen kattintással perc alatt. Azure-régió, az Ön által választott képes replikálni, és párosított régiók sincs korlátozva. Elkezdheti által [a virtuális gépek replikálásához](https://aka.ms/a2a-getting-started). Is [helyreállítási terv létrehozása](../site-recovery/site-recovery-create-recovery-plans.md) , hogy a teljes feladatátvételi folyamat automatizálható az alkalmazás. Is [a feladatátvételi tesztek](../site-recovery/site-recovery-test-failover-to-azure.md) előre éles alkalmazásokban vagy a folyamatban lévő replikáció befolyásolása nélkül. Egy elsődleges régió becsukódjon most [kezdeményezzen feladatátvételt](../site-recovery/site-recovery-failover.md) , és az alkalmazás cél régióban.
+## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>Option 1: Kezdeményezzen feladatátvételt az Azure Site Recovery használatával
+A virtuális gépek Azure Site Recovery úgy, hogy helyre tudja állítani az alkalmazás, függetlenül attól, hogy egyetlen kattintással perc konfigurálható. Tetszőleges Azure-régióba képes replikálni, és nem korlátozódik a társított két régió bármelyikén. Úgy kezdheti [a virtuális gépek replikálásához](https://aka.ms/a2a-getting-started). Is [helyreállítási terv létrehozása](../site-recovery/site-recovery-create-recovery-plans.md) úgy, hogy a teljes feladatátvételi folyamat automatizálható az alkalmazás. Is [tesztelheti a feladatátvételeket](../site-recovery/site-recovery-test-failover-to-azure.md) leltárkezelők éles alkalmazásokban vagy a folyamatban lévő replikáció befolyásolása nélkül. Egy elsődleges régióban bekövetkező szolgáltatáskimaradás esetén csak [feladatátvétel](../site-recovery/site-recovery-failover.md) és az alkalmazás a célrégióban.
 
 
-## <a name="option-2-wait-for-recovery"></a>2. lehetőség: Várjon, amíg a helyreállítás
-Ebben az esetben a letöltés intézkedés nem szükséges. Tudja, hogy jelenleg dolgozunk gondossággal szolgáltatás rendelkezésre állása visszaállítására. A szolgáltatás jelenlegi állapota tekintheti meg a [Azure az állapotjelző irányítópulthoz](https://azure.microsoft.com/status/).
+## <a name="option-2-wait-for-recovery"></a>Option 2: Várjon, amíg a helyreállítási
+Ebben az esetben az Ön részéről semmit nem kell. Tudja meg, hogy folyamatban van térségekre való kiterjesztésén szolgáltatás rendelkezésre állásának visszaállítása érdekében. A szolgáltatás aktuális állapotát megtekintheti a [Azure szolgáltatásállapot-irányítópult](https://azure.microsoft.com/status/).
 
-Ez a lehetőség ajánlott, ha nem állított be Azure Site Recovery, írásvédett georedundáns tárolás vagy a megszakítás előtt georedundáns tárolást. Ha állított be georedundáns tárolás vagy írásvédett georedundáns tárolás a tárfiók a virtuális gép virtuális merevlemezek (VHD) tároló, keresse meg az alapjául szolgáló lemezképhez virtuális merevlemez helyreállítása, és próbálkozzon, egy új virtuális gép kiépítése. Ez a beállítás nem előnyben részesített nem garantálja az adatok szinkronizálását, mert. Ezért ezt a beállítást nem biztos, hogy működni.
+Ez a legjobb lehetőség, ha nem állított be az Azure Site Recovery, írásvédett georedundáns tárolás vagy georedundáns tárolást megelőzően a megszakítások időtartamát. Ha állított be georedundáns tárolás vagy írásvédett georedundáns tárolás a tárfiók a virtuális gép virtuális merevlemezek (VHD-k) tárolására, keresse meg az alaprendszerképet virtuális merevlemez helyreállítása, és próbálja meg azt az új virtuális gép kiépítése. Ez a nem előnyben részesített lehetőség, mert az adatok szinkronizálásának garanciát nem jelentenek. Ennek következtében ezt a beállítást nem garantált, hogy működjön.
 
 
 > [!NOTE]
-> Vegye figyelembe, hogy nem tudja befolyásolni bármely ezt a folyamatot, és akkor történik a régió kiterjedő szolgáltatás üzemzavarokhoz vezethet. Ebből kifolyólag kell is használ, más alkalmazás-specifikus biztonsági stratégiák a legmagasabb rendelkezésre állásának eléréséhez. További információkért lásd [vész-helyreállítási adatok stratégiák](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications#data-strategies-for-disaster-recovery).
+> Vegye figyelembe, hogy nem kell minden olyan ezt a folyamatot szabályozhatja, és ez csak akkor történik meg a régióra kiterjedő szolgáltatáskimaradás. Ez az oka meg kell is támaszkodik más alkalmazás-specifikus biztonsági mentési stratégia a legmagasabb szintű rendelkezésre állás elérése érdekében. További információkért lásd a szakasz [vész-helyreállítási stratégiát adatok](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications#data-strategies-for-disaster-recovery).
 >
 >
 
 ## <a name="next-steps"></a>További lépések
 
-- Start [védelme az Azure virtuális gépeken futó alkalmazások](https://aka.ms/a2a-getting-started) Azure Site Recovery segítségével
+- Indítsa el [védelme az Azure-beli virtuális gépeken futó alkalmazások](https://aka.ms/a2a-getting-started) Azure Site Recovery használatával
 
-- A vész-helyreállítási és a magas rendelkezésre állási stratégiájának megvalósításához kapcsolatos további információkért lásd: [vész-helyreállítási és magas rendelkezésre állás a Azure-alkalmazások](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
+- A vészhelyreállítás és magas rendelkezésre állási stratégiájának megvalósításához kapcsolatos további információkért lásd: [vészhelyreállítás és magas rendelkezésre állás az Azure-alkalmazások](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-- A felhő platform képességei részletes műszaki megértése elkészítéséhez lásd [Azure rugalmassági műszaki útmutatót](../resiliency/resiliency-technical-guidance.md).
+- Egy cloud-platform képességei részletes műszaki ismerete fejlesztése, lásd: [műszaki útmutatást az Azure rugalmassága](../resiliency/resiliency-technical-guidance.md).
 
 
-- Ha utasításokat ne törölje a jelet, vagy ha szeretné, hogy a Microsoft az Ön nevében műveletek végrehajtásához, forduljon a [ügyfél-támogatási](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Ha utasításokat ne törölje a jelet, vagy ha szeretné, hajtsa végre a műveleteket az Ön nevében más biztosít a Microsoftnak, lépjen kapcsolatba [ügyfél-támogatási](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

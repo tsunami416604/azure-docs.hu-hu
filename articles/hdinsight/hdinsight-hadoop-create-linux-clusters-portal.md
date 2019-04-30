@@ -1,7 +1,6 @@
 ---
 title: Az Apache Hadoop-fürtök létrehozása a webböngésző, az Azure HDInsight használatával
 description: Ismerje meg, hogyan hozhat létre Apache Hadoop, az Apache HBase, Apache Storm vagy az Apache Spark-fürtök Linux rendszeren a HDInsight egy webböngészőt, és az Azure betekintő portál használatával.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/28/2018
 ms.author: hrasheed
-ms.openlocfilehash: 13d053c14b083390bfdd28fdad616caf13e7e4e0
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
-ms.translationtype: MT
+ms.openlocfilehash: 9da9c6c438aac2c160a9ec7bc658e5d7b4ea207e
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911557"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124798"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>HDInsight Linux-alapú fürtök létrehozása az Azure portal használatával
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]

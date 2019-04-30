@@ -4,18 +4,18 @@ description: EDI ellenőrzése és nyugtázását az EDIFACT-üzenet dekódoló 
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+author: ecfan
+ms.author: estfan
+ms.reviewer: jonfan, divswa, LADocs
 ms.topic: article
 ms.assetid: 0e61501d-21a2-4419-8c6c-88724d346e81
 ms.date: 01/27/2017
-ms.openlocfilehash: b101922d15a3f90c29eff51c223d2ea7dc30ddf2
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: MT
+ms.openlocfilehash: ccad6eab68fff0891ba287a076692f9437495a4c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125352"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097827"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Az Azure Logic Apps és az Enterprise Integration Pack EDIFACT-üzenetek dekódolása
 
@@ -48,8 +48,8 @@ A következő szükséges elemek:
 
     | Tulajdonság | Részletek |
     | --- | --- |
-    | Kapcsolat neve * |Adja meg a kapcsolat bármilyen nevet. |
-    | Integrációs fiók * |Adja meg az integrációs fiók nevét. Győződjön meg arról, hogy az integrációs fiók és a logikai alkalmazás ugyanazon Azure-helyen. |
+    | Connection Name * |Adja meg a kapcsolat bármilyen nevet. |
+    | Integration Account * |Adja meg az integrációs fiók nevét. Győződjön meg arról, hogy az integrációs fiók és a logikai alkalmazás ugyanazon Azure-helyen. |
 
 4. Ha elkészült, a a kapcsolat létrehozásának befejezéséhez válasszon **létrehozás**. A kapcsolat adatait példához hasonlóan kell kinéznie:
 
@@ -81,13 +81,13 @@ Az EDIFACT-dekódolást-összekötő az alábbi feladatokat hajtja végre:
   * A csoport-ellenőrzőszám szemben a többi csoport ellenőrzőszámok az adatcsere ellenőrzi. 
   * Ellenőrzi, hogy a tranzakciókészlet ellenőrzőszáma egyéb tranzakció beállítása, hogy a csoportban ellenőrzőszámok ellen.
 * A tranzakció csoportokba adatcsere felosztása, vagy megőrzi a teljes adatcsere:
-  * Adatcsere felosztása tranzakciókészletekre – tranzakciókészletek felfüggesztése hiba esetén: tranzakció az elágazást adatcsere állítja be, és minden egyes tranzakciókészlet elemzi. 
+  * Adatcsere felosztása tranzakciókészletekre – tranzakciókészletek felfüggesztése hiba esetén: Tranzakció az elágazást adatcsere állítja be, és minden egyes tranzakciókészlet elemzi. 
   A X12 dekódolási műveleti kimenetek csak azokat a tranzakció állítja be, amelyek sikertelen érvényesítést `badMessages`, és beállítja a fennmaradó tranzakciók kimenetek `goodMessages`.
-  * Adatcsere felosztása tranzakciókészletekre – adatcsere felfüggesztése hiba esetén: tranzakció az elágazást adatcsere állítja be, és minden egyes tranzakciókészlet elemzi. 
+  * Adatcsere felosztása tranzakciókészletekre – adatcsere felfüggesztése hiba esetén: Tranzakció az elágazást adatcsere állítja be, és minden egyes tranzakciókészlet elemzi. 
   Ha egy vagy több tranzakció beállítja az adatcsere sikertelen ellenőrzést követően az dekódolási műveleti kimenetek összes tranzakció beállítja, hogy az adatcsere X12 `badMessages`.
-  * Adatcsere megőrzése – tranzakciókészletek felfüggesztése hiba esetén: az adatcsere, és a teljes kötegelt adatcsere feldolgozása. 
+  * Adatcsere megőrzése – tranzakciókészletek felfüggesztése hiba esetén: Az adatcsere, és a teljes kötegelt adatcsere feldolgozása. 
   A X12 dekódolási műveleti kimenetek csak azokat a tranzakció állítja be, amelyek sikertelen érvényesítést `badMessages`, és beállítja a fennmaradó tranzakciók kimenetek `goodMessages`.
-  * Adatcsere megőrzése – adatcsere felfüggesztése hiba esetén: az adatcsere, és a teljes kötegelt adatcsere feldolgozása. 
+  * Adatcsere megőrzése – adatcsere felfüggesztése hiba esetén: Az adatcsere, és a teljes kötegelt adatcsere feldolgozása. 
   Ha egy vagy több tranzakció beállítja az adatcsere sikertelen ellenőrzést követően az dekódolási műveleti kimenetek összes tranzakció beállítja, hogy az adatcsere X12 `badMessages`.
 * Állít elő egy műszaki (vezérlő) és/vagy működési nyugtázása (Ha be van állítva).
   * A műszaki visszaigazolás vagy a CONTRL ACK-jelentések egy teljes kapott adatcsere szintaktikai ellenőrzés eredményeit.

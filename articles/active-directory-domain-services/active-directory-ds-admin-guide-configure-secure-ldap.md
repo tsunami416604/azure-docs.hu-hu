@@ -16,18 +16,18 @@ ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: ergreenl
 ms.openlocfilehash: 66c50d7ec9948b1f2447aadcef4a4a8f321204ef
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177390"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104099"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Biztonságos LDAP (LDAPS-t) az Azure AD Domain Services felügyelt tartomány konfigurálása
 Ez a cikk bemutatja, hogyan engedélyezheti a biztonságos Lightweight Directory Access Protocol (LDAPS) számára az Azure AD tartományi szolgáltatásokkal felügyelt tartományban. A Secure LDAP van más néven "Lightweight Directory Access Protocol (LDAP) Secure Sockets Layer (SSL) rétegen keresztül / Transport Layer Security (TLS)".
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 A cikkben szereplő feladatok elvégzéséhez szüksége:
 
 1. Egy érvényes **Azure-előfizetés**.

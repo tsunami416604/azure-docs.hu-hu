@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
 ms.openlocfilehash: 867d061e46494e5ef65340ce325a71638acc8dfa
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099627"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104133"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Üzembe helyezése az Azure AD-alkalmazásproxy a az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 Az Azure Active Directory (AD) alkalmazásproxy segítségével támogatja a távoli dolgozók tegye közzé a helyszíni alkalmazások számára az interneten keresztül érhető el. Az Azure AD tartományi szolgáltatásokat most lift-and-shift régi alkalmazásait az Azure infrastruktúra-szolgáltatások a helyszínen futó segítségével. Ezután közzéteheti ezeket az alkalmazásokat az Azure AD-alkalmazásproxy segítségével biztonságos távoli hozzáférést biztosít a felhasználók számára a szervezetben.
@@ -29,7 +29,7 @@ Ha most ismerkedik az Azure AD-alkalmazásproxy a, tudjon meg többet ez a szolg
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 A cikkben szereplő feladatok elvégzéséhez szüksége:
 
 1. Egy érvényes **Azure-előfizetés**.

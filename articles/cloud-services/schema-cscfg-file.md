@@ -1,8 +1,9 @@
 ---
 title: Azure Cloud Services – definíciós séma (.cscfg fájl) |} A Microsoft Docs
-services: cloud-services
 ms.custom: ''
-ms.date: 12/07/2016
+origin.date: 12/07/2016
+ms.date: 11/06/2017
+ms.prod: azure
 ms.reviewer: ''
 ms.service: cloud-services
 ms.suite: ''
@@ -10,15 +11,15 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 3ddc7fea-3339-4fc0-bdf9-853c32b25f69
 caps.latest.revision: 35
-author: jpconnock
-ms.author: jeconnoc
+author: thraka
+ms.author: v-yiso
 manager: timlt
-ms.openlocfilehash: 96df87a0d49296280140e392509c0d735f904957
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 424381e2c243420cc2a68dc776d249cb17574f98
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007022"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130313"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure Cloud Services – konfigurációs sémáját (.cscfg fájl)
 A szolgáltatás konfigurációs fájlja meghatározza a szerepkör-példányok üzembe helyezéséhez az egyes szerepkörökhöz a szolgáltatásban, minden olyan konfigurációs beállítást, és a szerepkörhöz társított tanúsítványok ujjlenyomatait. Ha a szolgáltatás egy virtuális hálózathoz, a hálózati konfigurációs adatait a konfigurációs fájlban, valamint a virtuális hálózati konfigurációs fájlban kell adni. A szolgáltatás konfigurációs fájlja az alapértelmezett kiterjesztése .cscfg esetében.

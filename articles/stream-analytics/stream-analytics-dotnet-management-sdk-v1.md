@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 9c4ddb1375154fef3290008a7b981a4e9069ae94
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075202"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104822"
 ---
 # <a name="set-up-and-run-analytics-jobs-using-azure-stream-analytics-api-for-net"></a>Állítsa be, és a .NET-hez készült Azure Stream Analytics API használatával az analytics-feladatok futtatása
 Megtudhatja, hogyan állíthatja be, és a Stream Analytics API használatával a felügyeleti .NET SDK-val .NET-keretrendszerhez készült elemzési feladatok futtatásához. Projekt beállítása, hozzon létre bemeneti és kimeneti források átalakítások és kezdő, és állítsa le a feladatok. Az analytics-feladatokhoz streamelheti a Blob storage-ból, vagy az eseményközpontok adatait.

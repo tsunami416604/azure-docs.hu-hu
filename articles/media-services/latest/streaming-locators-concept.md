@@ -12,15 +12,15 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 51aa33e4ff387a1030dac42bce8d12cf72343b35
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317476"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61466731"
 ---
 # <a name="streaming-locators"></a>Streamelési lokátor
 
-Győződjön meg arról, videók, a kimenetben az eszköz érhető el az ügyfelek számára a lejátszás, létre kell hoznia egy [Streamelési lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators) majd kialakítható a streamelési URL-címek. .NET-minta: [beolvasása egy Streamelési lokátor](stream-files-tutorial-with-api.md#get-a-streaming-locator).
+Ahhoz, hogy a kimeneti adategységben található videók elérhetők legyenek az ügyfelek számára lejátszásra, létre kell hozni egy [streamelési lokátort](https://docs.microsoft.com/rest/api/media/streaminglocators), majd streamelési URL-címeket. Egy .NET-példáért tekintse meg a [streamelési lokátor beszerzését](stream-files-tutorial-with-api.md#get-a-streaming-locator) bemutató cikket.
 
 A folyamat létrehozásának egy **Streamelési lokátor** közzététel nevezzük. Alapértelmezés szerint a **Streamelési lokátor** érvényes az API-hívások végrehajtása után azonnal, és tart, amíg nem törli, ha nem konfigurál a választható kezdő és befejező időpontok. 
 
@@ -42,5 +42,5 @@ Lásd: [szűrése, rendezése, a Media Services entitások lapozás](entities-ov
 
 ## <a name="next-steps"></a>További lépések
 
-* [Oktatóanyag: Feltöltése, kódolása és streamelése a .NET használatával kíván videókat](stream-files-tutorial-with-api.md)
-* [DRM a dinamikus titkosítás és a licenc kézbesítési szolgáltatás használata](protect-with-drm.md)
+* [Oktatóanyag: Videók feltöltése, kódolása és streamelése a .NET használatával](stream-files-tutorial-with-api.md)
+* [A DRM dinamikus titkosítási és licenctovábbítási szolgáltatás használata](protect-with-drm.md)

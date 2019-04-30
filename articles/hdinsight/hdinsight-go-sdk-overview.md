@@ -1,19 +1,18 @@
 ---
 title: Az Azure HDInsight Go SDK
 description: Az Azure HDInsight Go SDK-referencia
-services: hdinsight
 author: tylerfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: tyfox
 ms.custom: seodec18
-ms.openlocfilehash: b430c69f4ed9206b34f8ca66534aa82e85c0b240
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.openlocfilehash: 2e5b7816fda89e25dcb0de26f526e5187e0640b9
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224787"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098558"
 ---
 # <a name="hdinsight-go-management-sdk-preview"></a>HDInsight Go SDK előzetes verziójának
 
@@ -32,7 +31,7 @@ A HDInsight Go SDK nyújt az osztályok, amelyeket a HDInsight-fürtök kezelés
 
 Futtassa a GOPATH helyről `go get github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight`
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Az SDK-t először van szükség az Azure-előfizetésében.  Hajtsa végre az egyszerű szolgáltatás létrehozása és hitelesítését az alábbi példában. Miután ez megtörtént, hogy egy példányát egy `ClustersClient`, tartalmazó számos függvénye nem (ismertetett alábbi szakaszokat) használható kezelési műveletek végrehajtásához.
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
 ms.openlocfilehash: fbaa89140033ee3b07017370e31e69601aa298db
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078760"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62121131"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Tanácsadási szolgáltatások az Azure Marketplace és appsource-ban
 Tanácsadási szolgáltatások az Azure Marketplace és AppSource biztosít a Microsoft-partnerek, a cél támogatja, és bővítheti használata során az Azure-szolgáltatásokkal csatlakozó ügyfelek és az üzleti céljainak megvalósítását. 
@@ -156,7 +156,7 @@ Példák:
 
 Ajánlat leírása és összefoglalók ajánlat áttekintése, ha a csapat hatálya a következő feltételeknek:
 
-|Csomag típusa  |Szükséges |Ajánlott  |
+|Csomag típusa  |Kötelező |Ajánlott  |
 |---------|---------|---------|
 |**Értékelés**    |   Egy többnapos vagy több hét értékelések részletes napirend tartalmazzák, és mi adjuk a terméket az ügyfél várható      |    Az ajánlat a felső keresési keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása     |
 |**Briefing**    |   Mi adjuk a terméket az ügyfél várható. Ne feledje, hogy Briefing személyesen kell kínáljuk. Ha meg van adva egy virtuális szolgáltatást, válasszon egy másik ajánlatra típusa    |  Az ajánlat a felső keresési keresőmotor-optimalizálás kulcsszavas összefoglaló optimalizálása       |

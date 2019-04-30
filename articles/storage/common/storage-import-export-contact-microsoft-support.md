@@ -9,11 +9,11 @@ ms.date: 03/29/2018
 ms.author: alkohli;
 ms.subservice: common
 ms.openlocfilehash: b01c8a3fe9b0c0856dceb5c05f449504ce8c75d6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120363"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61483301"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Nyisson egy támogatási jegyet az importálási/exportálási feladat
 
@@ -22,7 +22,7 @@ Ha problémát tapasztal az Import/Export szolgáltatással, létrehozhat egy sz
 * Hogyan hozzon létre egy támogatási kérést.
 * Hogyan lehet egy támogatási kérést az életciklusnak a kezelésében a portálon belül.
 
-## <a name="create-a-support-request"></a>Támogatáskérés létrehozása
+## <a name="create-a-support-request"></a>Támogatási kérelem létrehozása
 
 A következő lépésekkel hozzon létre egy támogatási kérést:
 

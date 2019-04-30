@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 0c93888af16ed7f7162f38c73be5f6330c886c65
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 2a7a6ed5bd28bcc83500da6e82b6c4ff48b2989c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001575"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097776"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorozás és teljesítmény-finomhangolás
 
@@ -87,7 +87,7 @@ Ha azt állapítja meg, hogy rendelkezik-e a futó kapcsolatos teljesítménybel
 
 ### <a name="ParamSniffing"></a> Lekérdezések paraméter-és nagybetűket lekérdezés végrehajtási terv problémáinak hibaelhárítása
 
-A paraméter kényes terv (PSP) probléma hivatkozik egy forgatókönyvet, ahol a lekérdezésoptimalizáló állít elő, a lekérdezés végrehajtási terv optimális csak egy adott paraméter értéke (vagy értékek) és a gyorsítótárazott tervet majd nem optimális a felhasznált paraméterértékek egymást követő végrehajtások. A nem optimális tervek majd eredményezhet lekérdezési teljesítményproblémákat és általános számítási feladatok átviteli teljesítménycsökkenést. A paraméter-elemző és lekérdezés-feldolgozás további információkért lásd: a [lekérdezés feldolgozása architektúra – útmutató](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide.md7#ParamSniffing).
+A paraméter kényes terv (PSP) probléma hivatkozik egy forgatókönyvet, ahol a lekérdezésoptimalizáló állít elő, a lekérdezés végrehajtási terv optimális csak egy adott paraméter értéke (vagy értékek) és a gyorsítótárazott tervet majd nem optimális a felhasznált paraméterértékek egymást követő végrehajtások. A nem optimális tervek majd eredményezhet lekérdezési teljesítményproblémákat és általános számítási feladatok átviteli teljesítménycsökkenést. A paraméter-elemző és lekérdezés-feldolgozás további információkért lásd: a [lekérdezés feldolgozása architektúra – útmutató](/sql/relational-databases/query-processing-architecture-guide#ParamSniffing).
 
 Nincsenek problémák, egyes társított kompromisszumot kínál a és a hátrányai segítségével több megkerülő megoldások:
 

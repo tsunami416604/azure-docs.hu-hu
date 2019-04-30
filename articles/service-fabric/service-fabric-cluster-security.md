@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
 ms.openlocfilehash: 6d67fa4af031480fda4a91f7356bff69830a654c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667599"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60711503"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric-fürtök biztonsági forgatókönyveit
 Azure Service Fabric-fürt saját erőforrás. A feladata biztonságossá tétele a-fürtök segítségével megakadályozhatja a jogosulatlan felhasználókat csatlakozik hozzájuk. Biztonságos fürt különösen fontos, ha a fürtön futtatnak éles számítási feladatokat. Bár lehetséges hozhat létre nem biztonságos fürtöt, ha a fürt elérhetővé teszi a nyilvános internetre felügyeleti végpontok, névtelen felhasználók csatlakozhatnak hozzá. Nem biztonságos fürtökhöz nem támogatottak a termelési számítási feladatokhoz. 

@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
 ms.openlocfilehash: 463ef5f4a655617074915078fb4ced9e596f8957
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257714"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478365"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Magas rendelkezésre állás és vészhelyreállítás az Azure-beli SQL Server-alapú virtuális gépeken
 
@@ -44,7 +44,7 @@ Az SQL Server HADR támogatott technológiákra van az Azure-ban a következők:
 
 Úgy, hogy a technológiák együttesen egy SQL Server-megoldást, amely magas rendelkezésre állású és vész-helyreállítási lehetőségei is lehetőség. Attól függően, a technológiát használja egy hibrid telepítésben a az Azure virtual network VPN-alagút lehet szükség. Az alábbi szakaszok bemutatják, a példában üzembe helyezési architektúra része.
 
-## <a name="azure-only-high-availability-solutions"></a>Csak az Azure-: magas rendelkezésre állású megoldások
+## <a name="azure-only-high-availability-solutions"></a>Azure-only: Magas rendelkezésre állású megoldások
 
 Egy magas rendelkezésre állású megoldás az SQL Server Always On rendelkezésre állási csoportok – nevű rendelkezésre állási csoportok az adatbázis szintjén is. Is létrehozhat egy magas rendelkezésre állású megoldás egy példány szintjén az mindig a Feladatátvevőfürt-példányok – feladatátvételi fürtbeli példányok. A további redundancia biztosítása érdekében létrehozhat redundancia mindkét szinten rendelkezésre állási csoportok létrehozása a feladatátvételi fürtbeli példányok. 
 
@@ -53,7 +53,7 @@ Egy magas rendelkezésre állású megoldás az SQL Server Always On rendelkezé
 | **Rendelkezésre állási csoportok** |Rendelkezésre állási másodpéldányt futtató Azure virtuális gépek ugyanabban a régióban a magas rendelkezésre állást biztosít. Kell konfigurálása a tartományvezérlő virtuális Gépeket, mivel a Windows feladatátvételi fürtszolgáltatás szükséges Active Directory-tartományban.<br/> ![Rendelkezésre állási csoportok](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_ha_always_on.gif)<br/>További információkért lásd: [rendelkezésre állási csoportok konfigurálása az Azure (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups.md). |
 | **Feladatátvevőfürt-példányok** |A feladatátvevő fürt példány (FCI), megosztott tárolóra van szükség, amely 3 különböző módon hozható létre.<br/><br/>1. Csatolt storage használata az Azure-beli virtuális gépeken futó kétcsomópontos feladatátvevő fürt [Windows Server 2016 közvetlen tárolóhelyek \(S2D\) ](virtual-machines-windows-portal-sql-create-failover-cluster.md) biztosít egy szoftveralapú virtuális SAN.<br/><br/>2. A storage-külső fürtözési megoldások által támogatott Azure-beli virtuális gépeken futó kétcsomópontos feladatátvevő fürt. Egy olyan példát, amely az SIOS DataKeeper használja, lásd: [egy fájlmegosztást a Feladatátvételi fürtszolgáltatás és a 3. fél szoftverek az SIOS DataKeeper magas rendelkezésre állású](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/).<br/><br/>3. Az iSCSI-cél távoli Azure-beli virtuális gépeken futó kétcsomópontos feladatátvevő fürt megosztott blokktárolót expressroute-on keresztül. NetApp Private Storage (NPS) például iSCSI-tároló az Azure virtuális gépekre Equinix expressroute-on keresztül tesz elérhetővé.<br/><br/>A külső megosztott tárolók és a replikációs megoldások, forduljon a szállító feladatátvételi lévő adatok elérésével kapcsolatos problémákkal.<br/><br/>Vegye figyelembe, hogy az FCI-t a [Azure File storage](https://azure.microsoft.com/services/storage/files/) még nem támogatott, mert ez a megoldás nem használja a Premium Storage. Dolgozunk ennek hamarosan támogatása érdekében. |
 
-## <a name="azure-only-disaster-recovery-solutions"></a>Csak az Azure-: a vészhelyreállítási megoldások
+## <a name="azure-only-disaster-recovery-solutions"></a>Azure-only: A vészhelyreállítási megoldások
 A vész-helyreállítási megoldást rendelkezik az SQL Server-adatbázisait az Azure-ban a rendelkezésre állási csoportokkal, az adatbázis-tükrözés vagy biztonsági mentés, és állítsa vissza a storage-blobokat.
 
 | Technológia | Példa-architektúrák |
@@ -64,12 +64,12 @@ A vész-helyreállítási megoldást rendelkezik az SQL Server-adatbázisait az 
 | **Replikálás és feladatátvétel az SQL Server az Azure-bA az Azure Site Recoveryvel** |Éles SQL Server közvetlenül az Azure Storage a különböző Azure-adatközpont vészhelyreállítási replikált egy Azure-adatközpontban.<br/>![Replikálása az Azure Site Recovery használatával](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_standalone_sqlserver-asr.png)<br/>További információkért lásd: [védelme SQL Server az SQL Server-vészhelyreállítás és az Azure Site Recovery használatával](../../../site-recovery/site-recovery-sql.md). |
 
 
-## <a name="hybrid-it-disaster-recovery-solutions"></a>A hibrid informatikai: A vészhelyreállítási megoldások
+## <a name="hybrid-it-disaster-recovery-solutions"></a>Hybrid IT: A vészhelyreállítási megoldások
 Rendelkezik egy vész-helyreállítási megoldás az SQL Server-adatbázisok egy hibrid-IT-környezet rendelkezésre állási csoportok, az adatbázis-tükrözés, a naplóküldés és a biztonsági mentés, és állítsa vissza az Azure-blog storage.
 
 | Technológia | Példa-architektúrák |
 | --- | --- |
-| **Rendelkezésre állási csoportok** |Egyes rendelkezésre állási másodpéldányok futó Azure virtuális gépekkel és más a helyszínen futó webhelyek közötti vész-helyreállítási replika. Az élesben használt helyet is lehet a helyszínen vagy az Azure-adatközpontban.<br/>![Rendelkezésre állási csoportok](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_alwayson.gif)<br/>Az összes rendelkezésre állási másodpéldányok a feladatátvevő fürtön kell lennie, mert a fürt mindkét hálózatok (több alhálózatos feladatátvevő fürtöket) kell kiterjednek. Ehhez a konfigurációhoz szükséges VPN-kapcsolat az Azure és a helyszíni hálózat között.<br/><br/>Sikeres vész-helyreállítási az adatbázisok telepítenie kell, a vész-helyreállítási webhelyként replika tartományvezérlő.<br/><br/>A replika hozzáadása varázsló használható az SSMS egy Azure-replika hozzáadása egy meglévő Always On rendelkezésre állási csoport. További információkért lásd az oktatóanyag: az Always On rendelkezésre állási csoport kiterjesztése az Azure-bA. |
+| **Rendelkezésre állási csoportok** |Egyes rendelkezésre állási másodpéldányok futó Azure virtuális gépekkel és más a helyszínen futó webhelyek közötti vész-helyreállítási replika. Az élesben használt helyet is lehet a helyszínen vagy az Azure-adatközpontban.<br/>![Rendelkezésre állási csoportok](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_alwayson.gif)<br/>Az összes rendelkezésre állási másodpéldányok a feladatátvevő fürtön kell lennie, mert a fürt mindkét hálózatok (több alhálózatos feladatátvevő fürtöket) kell kiterjednek. Ehhez a konfigurációhoz szükséges VPN-kapcsolat az Azure és a helyszíni hálózat között.<br/><br/>Sikeres vész-helyreállítási az adatbázisok telepítenie kell, a vész-helyreállítási webhelyként replika tartományvezérlő.<br/><br/>A replika hozzáadása varázsló használható az SSMS egy Azure-replika hozzáadása egy meglévő Always On rendelkezésre állási csoport. További információkért tekintse meg az oktatóanyag: Az Always On rendelkezésre állási csoport kiterjesztése az Azure-bA. |
 | **Az adatbázis-tükrözés** |Az Azure virtuális gép és a többi futó fut egy partneri helyszíni többhelyes vész-helyreállítási tanúsítványok használatával. Partnerek nem kell lennie az Active Directory-tartományhoz, és nem VPN-kapcsolat nem szükséges.<br/>![Az adatbázis-tükrözés](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_dbmirroring.gif)<br/>Egy másik adatbázis-tükrözési forgatókönyv az Azure virtuális gép és a többi futó helyszíni többhelyes vész-helyreállítási azonos Active Directory tartományban fut egy partneri foglalja magában. A [az Azure virtuális hálózat és a helyszíni hálózat közti VPN-kapcsolat](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) megadása kötelező.<br/><br/>Sikeres vész-helyreállítási az adatbázisok telepítenie kell, a vész-helyreállítási webhelyként replika tartományvezérlő. |
 | **Naplóküldés** |Az Azure virtuális gép és a többi futó helyszíni többhelyes vész-helyreállítási t futtató kiszolgálón. Naplóküldés függ Windows fájlmegosztás, így az Azure virtuális hálózat és a helyszíni hálózat közötti VPN-kapcsolat megadása kötelező.<br/>![Naplóküldés](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_log_shipping.gif)<br/>Sikeres vész-helyreállítási az adatbázisok telepítenie kell, a vész-helyreállítási webhelyként replika tartományvezérlő. |
 | **Biztonsági mentés és visszaállítás Azure Blob Storage szolgáltatással** |A helyszíni éles adatbázisok biztonsági mentését közvetlenül az Azure blob storage vész-helyreállítási.<br/>![Biztonsági mentés és visszaállítás](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_backup_restore.gif)<br/>További információkért lásd: [biztonsági mentése és visszaállítása az SQL Server az Azure Virtual machines gépeken](virtual-machines-windows-sql-backup-recovery.md). |

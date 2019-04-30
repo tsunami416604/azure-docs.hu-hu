@@ -13,11 +13,11 @@ ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
 ms.openlocfilehash: 5b2b7f3cd6bfa219b794edc63d6bf8b2784b713c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58891889"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62120738"
 ---
 # <a name="azure-functions-developers-guide"></a>Az Azure Functions fejlesztői útmutatója
 Az Azure Functions, a speciális szoftverfrissítési funkciókat ossza meg néhány alapvető technikai kapcsolatos fogalmakról és összetevőkről, függetlenül a nyelvet, vagy a kötés használja. Mielőtt megkezdi a munkát egy adott nyelven vagy a kötési adatait tanuló, mindenképpen olvassa végig az áttekintés, amely mindegyik vonatkozik.
@@ -48,9 +48,9 @@ A `bindings` tulajdonság, eseményindítók és kötések is konfigurálhatja. 
 
 | Tulajdonság | Értékek/típusa | Megjegyzések |
 | --- | --- | --- |
-| `type` |sztring |Typ vazby. Például: `queueTrigger`. |
+| `type` |string |Typ vazby. Például: `queueTrigger`. |
 | `direction` |"a" "out" |Azt jelzi, hogy a kötést adatfogadásra a függvénybe vagy adatok küldése a függvénytől. |
-| `name` |sztring |A kötött adatokhoz a függvényben használt neve. C# Ez az argumentumot; a JavaScript esetén a kulcsot a kulcs/érték listáját. |
+| `name` |string |A kötött adatokhoz a függvényben használt neve. C# Ez az argumentumot; a JavaScript esetén a kulcsot a kulcs/érték listáját. |
 
 ## <a name="function-app"></a>Függvényalkalmazás
 A függvényalkalmazás szolgáltat-végrehajtási környezet az Azure-ban, amelyben a függvények futnak. Függvényalkalmazás áll egy vagy több különálló függvények által kezelt, telepített, és együtt van ellátva. A függvényalkalmazás összes ossza meg az azonos díjszabással, a folyamatos üzembe helyezés és a futtatókörnyezet-verzió. Függvényalkalmazás felfoghatók arra, hogy rendszerezése és a függvények együttesen kezelése. 

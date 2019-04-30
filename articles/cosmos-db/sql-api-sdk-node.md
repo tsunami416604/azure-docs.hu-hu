@@ -9,11 +9,11 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
 ms.openlocfilehash: 1cb6889305e5f6bce5728039712a1834dc2e9353
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033587"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60626740"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Node.js SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ ms.locfileid: "54033587"
 | Példák | [NODE.js-Kódminták](sql-api-nodejs-samples.md)
 | Kezdeti lépéseket ismertető oktatóanyag | [A JavaScript SDK használatának első lépései](sql-api-nodejs-get-started.md)
 | Alapú webappokról szóló oktatóanyagunkat | [Az Azure Cosmos DB Node.js webalkalmazás létrehozása](sql-api-nodejs-application.md)
-| Aktuális támogatott platform | [NODE.js 6.x-es](https://nodejs.org/en/blog/release/v6.10.3/) – SDK 2.0.0-s verzió vagy újabb szükséges.<br/>[NODE.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [NODE.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [NODE.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
+| Aktuális támogatott platform | [NODE.js 6.x-es](https://nodejs.org/en/blog/release/v6.10.3/) – SDK 2.0.0-s verzió vagy újabb szükséges.<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -49,7 +49,7 @@ ms.locfileid: "54033587"
 * Hozzájárulás fejlesztői dokumentáció fejlesztései
 * Különböző elgépelte javításai
 
-### <a name="2.0.4"/>2.0.4-es</a>
+### <a name="2.0.4"/>2.0.4</a>
 * Javítások írja be a definíció probléma 2.0.3 rendszerben bevezetett
 
 ### <a name="2.0.3"/>2.0.3</a>
@@ -57,7 +57,7 @@ ms.locfileid: "54033587"
 * Hivatkozási irányelvek AsyncIterable típusra váltani. Typescript felhasználóknak már nem kell testre szabhatja a saját "lib" beállítást.
 * Elírta javításai
 
-### <a name="2.0.2"/>2.0.2-es</a>
+### <a name="2.0.2"/>2.0.2</a>
 * Fontos hivatkozások javítása
 
 ### <a name="2.0.1"/>2.0.1</a>
@@ -201,7 +201,7 @@ ms.locfileid: "54033587"
 * A probléma [#41](https://github.com/Azure/azure-documentdb-node/issues/41) -client.createDocumentAsync hiba.
 
 ### <a name="1.0.0"/>1.0.0</a>
-* ÁLTALÁNOSAN ELÉRHETŐ SDK-T.
+* GA SDK.
 
 ## <a name="release--retirement-dates"></a>Állapot tárolá & kivezetési dátum
 A Microsoft biztosít értesítési legalább **12 hónapig** kivonása egy SDK-t kiegyenlítse az a és újabb támogatott verzióra váltás előtt.
@@ -212,7 +212,7 @@ Egy kivont SDK Cosmos DB használatával bármely kérelem elutasítja a szolgá
 
 <br/>
 
-| Verzió | Kiadás dátuma | Visszavonás dátuma |
+| Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
 | [2.0.0-3 (RC)](#2.0.0-3) |2018. augusztus 2. |--- |
 | [1.14.4](#1.14.4) |2018. május 03. |--- |

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
 ms.openlocfilehash: b515a0b226723989b1cc73356f1377da421dc9aa
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456329"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485648"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Az Azure virtuális gép használatának megismerése
 Az Azure-használati adatok elemzésével hatékony használati adatokba kaphatunk – insights, ami lehetővé teszi a jobban költségek kezelése és a szervezeten belül foglalási. Ez a dokumentum tartalmaz egy részletes ismertetése az Azure Compute használati adatait. Általános Azure használatáról a további részletekért lépjen [a számla értelmezéséhez](../../billing/billing-understand-your-bill.md).

@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 8f110a88558b4479d8fdadb2967c7dedeca60ce9
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 42e58125fcbc3ab411c0d7503c42c14c28178428
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43043557"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62113935"
 ---
 # <a name="run-u-sql-scripts-on-your-local-machine"></a>U-SQL-szkriptek futtatása helyi gépen
 
@@ -25,7 +25,7 @@ Ha a U-SQL-parancsfájlok fejlesztése, időt és költséget takaríthat helyil
 
 A következő diagram mutatja az összetevők a helyi Futtatás és hogyan ezeket az összetevőket leképezése a felhőben futtassa.
 
-|Összetevő|Helyi Futtatás|Felhőbeli futtatása|
+|Összetevő|Helyi futtatás|Felhőbeli futtatása|
 |---------|---------|---------|
 |Storage|Helyi adatok gyökérmappa|Alapértelmezett Azure Data Lake Store-fiók|
 |Compute|U-SQL helyi futtatási motor|Az Azure Data Lake analitikai szolgáltatás|
@@ -92,7 +92,7 @@ A **helyi gép** fiókot egy Azure Data Lake Analytics-fiók a felhasználók he
 
 További különbségeit **helyi gép** és **helyi-projekt** fiókok az alábbi táblázatban láthatók:
 
-|Különbség szög|Helyi gépen|Helyi-projekt|
+|Különbség szög|Helyi gépen|Local-project|
 |----------------|---------------|---------------|
 |Helyi hozzáférési|Az összes projekt hozzáférhető.|Csak a megfelelő projektet hozzáférhet ehhez a fiókhoz.|
 |Helyi adatok gyökérmappa|Egy állandó helyi mappába. Keresztül konfigurált **eszközök** > **a Data Lake** > **lehetőségek és beállítások**.|Minden helyi futtatáskor a munkakönyvtár U-SQL projekt keretében létrehozott egy ideiglenes mappába. A mappa lekérdezi tisztítani, amikor az újjáépítést vagy történik, futtassa újra.|

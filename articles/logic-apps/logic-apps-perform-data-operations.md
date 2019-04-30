@@ -11,11 +11,11 @@ ms.date: 07/30/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 93c24f88fcd6a002493933ef71c5c80bd2ff8c10
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231644"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62120179"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Adatok műveletek végrehajtása az Azure Logic Appsben
 
@@ -62,7 +62,7 @@ Kövesse a cikkben szereplő példákat, ezek az elemek szükségesek:
 
 * A logikai alkalmazás, ahol van szükség az adatok használata a művelet 
 
-  Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+  Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * A [eseményindító](../logic-apps/logic-apps-overview.md#logic-app-concepts) a logikai alkalmazás első lépéseként 
 
@@ -82,7 +82,7 @@ Ha például hozhatnak létre több változókat, például az emberek keresztne
 
 `{"age":35,"fullName":"Owens,Sophie"}`
 
-Példa kipróbálásához, kövesse az alábbi lépéseket a Logikaialkalmazás-Tervező használatával. Vagy, ha inkább a kódszerkesztőben nézetben dolgozik, másolja a példa **összeállítás** és **változó inicializálása** művelet definíciók, ez a cikk azokat a saját logikai alkalmazás munkafolyamat alapjául szolgáló definíció: [adatok művelet hitelesítésikód-példák - összeállítás](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
+Példa kipróbálásához, kövesse az alábbi lépéseket a Logikaialkalmazás-Tervező használatával. Vagy, ha inkább a kódszerkesztőben nézetben dolgozik, másolja a példa **összeállítás** és **változó inicializálása** művelet definíciók, ez a cikk azokat a saját logikai alkalmazás munkafolyamat alapjául szolgáló definíciója: [Adatok művelet hitelesítésikód-példák - összeállítás](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
 
 1. Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a> vagy a Visual Studio, a logikai alkalmazás megnyitása a Logikaialkalmazás-tervezőben. 
 
@@ -95,12 +95,12 @@ Példa kipróbálásához, kövesse az alábbi lépéseket a Logikaialkalmazás-
 
    * Válassza ki az utolsó lépés a művelet hozzáadása, **új lépés** > **művelet hozzáadása**.
 
-     ![Művelet hozzáadása](./media/logic-apps-perform-data-operations/add-compose-action.png)
+     ![Művelet felvétele](./media/logic-apps-perform-data-operations/add-compose-action.png)
 
    * Lépések közötti művelet hozzáadása, vigye az egérmutatót a csatlakozó mutató nyílra, megjelenik a plusz jelre (+). 
    Válassza a plusz jelre, majd válassza ki **művelet hozzáadása**.
 
-3. A Keresés mezőbe írja be "összeállítás" szűrőként. Válassza ezt a műveletet a műveletek listájának: **összeállítás**
+3. A Keresés mezőbe írja be "összeállítás" szűrőként. A műveletek listából válassza a következő műveletet: **Összeállítás**
 
    !["Összeállítás" művelet kiválasztása](./media/logic-apps-perform-data-operations/select-compose-action.png)
 
@@ -142,7 +142,7 @@ Győződjön meg arról, hogy e a **összeállítás** művelet a várt eredmén
 
 Hozzon létre egy vesszővel tagolt (CSV) tábla, amelynek a tulajdonságok és a JavaScript Object Notation (JSON) objektumok értékeit a tömbben, használja a **Adatműveletek – CSV-táblázat létrehozása** művelet. Ezután használhatja az eredményül kapott tábla az alábbi műveleteket a **CSV-táblázat létrehozása** művelet. 
 
-Ha inkább a kódszerkesztőben nézetben dolgozik, másolja a példa **CSV-táblázat létrehozása** és **változó inicializálása** művelet definíciók, ez a cikk azokat a saját logikai alkalmazás munkafolyamat alapjául szolgáló definíció: [adatok művelet hitelesítésikód-példák – CSV-táblázat létrehozása](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example) 
+Ha inkább a kódszerkesztőben nézetben dolgozik, másolja a példa **CSV-táblázat létrehozása** és **változó inicializálása** művelet definíciók, ez a cikk azokat a saját logikai alkalmazás munkafolyamat alapjául szolgáló definíciója: [Adatok művelet hitelesítésikód-példák – CSV-táblázat létrehozása](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example) 
 
 1. Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a> vagy a Visual Studio, a logikai alkalmazás megnyitása a Logikaialkalmazás-tervezőben. 
 
@@ -156,12 +156,12 @@ Ha inkább a kódszerkesztőben nézetben dolgozik, másolja a példa **CSV-táb
 
    * Válassza ki az utolsó lépés a művelet hozzáadása, **új lépés** > **művelet hozzáadása**.
 
-     ![Művelet hozzáadása](./media/logic-apps-perform-data-operations/add-create-table-action.png)
+     ![Művelet felvétele](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
    * Lépések közötti művelet hozzáadása, vigye az egérmutatót a csatlakozó mutató nyílra, megjelenik a plusz jelre (+). 
    Válassza a plusz jelre, majd válassza ki **művelet hozzáadása**.
 
-3. A Keresés mezőbe írja be a "csv-táblázat létrehozása" szűrőként. Válassza ezt a műveletet a műveletek listájának: **CSV-táblázat létrehozása**
+3. A Keresés mezőbe írja be a "csv-táblázat létrehozása" szűrőként. A műveletek listából válassza a következő műveletet: **CSV-táblázat létrehozása**
 
    ![Jelölje be "Create CSV table" művelet](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
 
@@ -211,7 +211,7 @@ Ellenőrizze-e a **CSV-táblázat létrehozása** művelet a várt eredményt ho
 
 Hozzon létre egy HTML-táblázat, amelynek a tulajdonságok és a JavaScript Object Notation (JSON) objektumok értékeit a tömbben, használja a **Adatműveletek – HTML-táblázat létrehozása** művelet. Ezután használhatja az eredményül kapott tábla az alábbi műveleteket a **HTML-táblázat létrehozása** művelet.
 
-Ha inkább a kódszerkesztőben nézetben dolgozik, másolja a példa **HTML-táblázat létrehozása** és **változó inicializálása** művelet definíciók, ez a cikk azokat a saját logikai alkalmazás munkafolyamat alapjául szolgáló definíció: [adatok művelet hitelesítésikód-példák – HTML-táblázat létrehozása](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
+Ha inkább a kódszerkesztőben nézetben dolgozik, másolja a példa **HTML-táblázat létrehozása** és **változó inicializálása** művelet definíciók, ez a cikk azokat a saját logikai alkalmazás munkafolyamat alapjául szolgáló definíciója: [Adatok művelet hitelesítésikód-példák – HTML-táblázat létrehozása](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
 
 1. Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a> vagy a Visual Studio, a logikai alkalmazás megnyitása a Logikaialkalmazás-tervezőben. 
 
@@ -225,12 +225,12 @@ Ha inkább a kódszerkesztőben nézetben dolgozik, másolja a példa **HTML-tá
 
    * Válassza ki az utolsó lépés a művelet hozzáadása, **új lépés** > **művelet hozzáadása**.
 
-     ![Művelet hozzáadása](./media/logic-apps-perform-data-operations/add-create-table-action.png)
+     ![Művelet felvétele](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
    * Lépések közötti művelet hozzáadása, vigye az egérmutatót a csatlakozó mutató nyílra, megjelenik a plusz jelre (+). 
    Válassza a plusz jelre, majd válassza ki **művelet hozzáadása**.
 
-3. A Keresés mezőbe írja be a "html-táblázat létrehozása" szűrőként. Válassza ezt a műveletet a műveletek listájának: **HTML-táblázat létrehozása**
+3. A Keresés mezőbe írja be a "html-táblázat létrehozása" szűrőként. A műveletek listából válassza a következő műveletet: **HTML-táblázat létrehozása**
 
    ![Válassza ki a "Create HTML table" műveletet](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
 
@@ -288,7 +288,7 @@ Hozzon létre egy kisebb tömb, amely rendelkezik a cikkek, amelyek az adott fel
 > 
 > A műveletek kimenete tömb használata a **tömb szűrése** műveletet, vagy a műveletek el kell fogadnia tömbök bemenetként, vagy lehetséges, hogy átalakítja a kimeneti tömbben kompatibilis egy másik formátumba. 
 
-Ha inkább a kódszerkesztőben nézetben dolgozik, másolja a példa **tömb szűrése** és **változó inicializálása** művelet definíciók, ez a cikk azokat a saját logikai alkalmazás munkafolyamat alapjául szolgáló definíció: [adatok művelet hitelesítésikód-példák – tömb szűrése](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example) 
+Ha inkább a kódszerkesztőben nézetben dolgozik, másolja a példa **tömb szűrése** és **változó inicializálása** művelet definíciók, ez a cikk azokat a saját logikai alkalmazás munkafolyamat alapjául szolgáló definíciója: [Adatok művelet hitelesítésikód-példák – tömb szűrése](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example) 
 
 1. Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a> vagy a Visual Studio, a logikai alkalmazás megnyitása a Logikaialkalmazás-tervezőben. 
 
@@ -304,12 +304,12 @@ Ha inkább a kódszerkesztőben nézetben dolgozik, másolja a példa **tömb sz
 
    * Válassza ki az utolsó lépés a művelet hozzáadása, **új lépés** > **művelet hozzáadása**.
 
-     ![Művelet hozzáadása](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
+     ![Művelet felvétele](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
 
    * Lépések közötti művelet hozzáadása, vigye az egérmutatót a csatlakozó mutató nyílra, megjelenik a plusz jelre (+). 
    Válassza a plusz jelre, majd válassza ki **művelet hozzáadása**.
 
-3. A Keresés mezőbe írja be a "tömb szűrése" szűrőként. Válassza ezt a műveletet a műveletek listájának: **tömb szűrése**
+3. A Keresés mezőbe írja be a "tömb szűrése" szűrőként. A műveletek listából válassza a következő műveletet: **Tömb szűrése**
 
    !["A tömb szűrése" művelet kiválasztása](./media/logic-apps-perform-data-operations/select-filter-array-action.png)
 
@@ -357,7 +357,7 @@ Győződjön meg arról, hogy e **tömb szűrése** művelet a várt eredményt 
 
 Hozzon létre egy karakterláncot, amely rendelkezik egy tömb összes elemét, és azok az elemek elválasztására meghatározott elválasztó karakterrel, használja a **Adatműveletek – összekapcsolás** művelet. Ezután használhatja a karakterlánc a műveleteket, amelyeket után kövesse a **csatlakozzon** művelet.
 
-Ha inkább a kódszerkesztőben nézetben dolgozik, másolja a példa **csatlakozzon** és **változó inicializálása** művelet definíciók Ez a cikk a saját logikai alkalmazás be tartozó munkafolyamat-definíció: [ Adatok művelet hitelesítésikód-példák – csatlakozás](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example) 
+Ha inkább a kódszerkesztőben nézetben dolgozik, másolja a példa **csatlakozzon** és **változó inicializálása** művelet definíciók Ez a cikk a saját logikai alkalmazás be tartozó munkafolyamat-definíció: [Adatok művelet hitelesítésikód-példák – csatlakozás](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example) 
 
 1. Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a> vagy a Visual Studio, a logikai alkalmazás megnyitása a Logikaialkalmazás-tervezőben. 
 
@@ -371,12 +371,12 @@ Ha inkább a kódszerkesztőben nézetben dolgozik, másolja a példa **csatlako
 
    * Válassza ki az utolsó lépés a művelet hozzáadása, **új lépés** > **művelet hozzáadása**.
 
-     ![Művelet hozzáadása](./media/logic-apps-perform-data-operations/add-join-action.png)
+     ![Művelet felvétele](./media/logic-apps-perform-data-operations/add-join-action.png)
 
    * Lépések közötti művelet hozzáadása, vigye az egérmutatót a csatlakozó mutató nyílra, megjelenik a plusz jelre (+). 
    Válassza a plusz jelre, majd válassza ki **művelet hozzáadása**.
 
-3. A Keresés mezőbe írja be "Csatlakozás" szűrőként. Válassza ezt a műveletet a műveletek listájának: **csatlakozás**
+3. A Keresés mezőbe írja be "Csatlakozás" szűrőként. A műveletek listából válassza a következő műveletet: **Csatlakozás**
 
    !["Adatok Operations – csatlakoztatás" művelet kiválasztása](./media/logic-apps-perform-data-operations/select-join-action.png)
 
@@ -435,12 +435,12 @@ Ha inkább a kódszerkesztőben nézetben dolgozik, másolja a példa **JSON ele
 
    * Válassza ki az utolsó lépés a művelet hozzáadása, **új lépés** > **művelet hozzáadása**.
 
-     ![Művelet hozzáadása](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
+     ![Művelet felvétele](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
 
    * Lépések közötti művelet hozzáadása, vigye az egérmutatót a csatlakozó mutató nyílra, megjelenik a plusz jelre (+). 
    Válassza a plusz jelre, majd válassza ki **művelet hozzáadása**.
 
-3. A Keresés mezőbe írja be a "json elemzése" szűrőként. Válassza ezt a műveletet a műveletek listájának: **JSON elemzése**
+3. A Keresés mezőbe írja be a "json elemzése" szűrőként. A műveletek listából válassza a következő műveletet: **JSON elemzése**
 
    ![Válassza ki a "JSON elemzése" műveletet](./media/logic-apps-perform-data-operations/select-parse-json-action.png)
 
@@ -513,12 +513,12 @@ Ha inkább a kódszerkesztőben nézetben dolgozik, másolja a példa **kiválas
 
    * Válassza ki az utolsó lépés a művelet hozzáadása, **új lépés** > **művelet hozzáadása**.
 
-     ![Művelet hozzáadása](./media/logic-apps-perform-data-operations/add-select-action.png)
+     ![Művelet felvétele](./media/logic-apps-perform-data-operations/add-select-action.png)
 
    * Lépések közötti művelet hozzáadása, vigye az egérmutatót a csatlakozó mutató nyílra, megjelenik a plusz jelre (+). 
    Válassza a plusz jelre, majd válassza ki **művelet hozzáadása**.
 
-3. A Keresés mezőbe írja be "kijelölése" szűrőként. Válassza ezt a műveletet a műveletek listájának: **kiválasztása**
+3. A Keresés mezőbe írja be "kijelölése" szűrőként. A műveletek listából válassza a következő műveletet: **Kiválasztás**
 
    ![A "Kiválasztás" művelet kiválasztása](./media/logic-apps-perform-data-operations/select-select-action.png)
 

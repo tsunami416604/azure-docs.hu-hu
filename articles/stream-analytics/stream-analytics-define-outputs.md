@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 3/25/2019
 ms.custom: seodec18
 ms.openlocfilehash: 03871c3f3627e85cc2af2f05a5fba38bd8069a15
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609489"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61481193"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 Ez a cikk ismerteti az elérhető az Azure Stream Analytics-feladat kimeneti típusait. Kimenetek segítségével tárolhatja, és a Stream Analytics-feladat eredményének mentése. A kimeneti adatok használatával teheti további üzleti elemzés és az adattárház az adatokat.

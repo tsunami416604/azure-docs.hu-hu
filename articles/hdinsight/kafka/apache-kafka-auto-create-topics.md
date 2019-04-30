@@ -1,25 +1,24 @@
 ---
 title: Az Apache kafka platformmal – Azure HDInsight automatikus témakör-létrehozás engedélyezése
 description: Ismerje meg, hogyan konfigurálhatja az Apache Kafka HDInsight automatikusan létrehozza a témakörök. A Kafka konfigurálhatja úgy, hogy igaz ambarival, vagy a PowerShell vagy a Resource Manager-sablonokkal a fürt létrehozásakor auto.create.topics.enable.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: b9f17ad0ccfd5e58d5b93bde91e6f9c537a15fa6
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: MT
+ms.openlocfilehash: af26bcee08ded8eb66d640f954113be3e7672e1b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606894"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097861"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Az Apache Kafka HDInsight automatikusan létrehozza a témakörök konfigurálása
 
 Alapértelmezés szerint [Apache Kafka](https://kafka.apache.org/) a HDInsight nem engedélyezi az automatikus témakör-létrehozás. Engedélyezheti az automatikus témakör-létrehozás már meglévő fürtök [Apache Ambari](https://ambari.apache.org/). Automatikus témakör-létrehozás egy új Azure Resource Manager-sablon használatával Kafka-fürt létrehozásakor is engedélyezheti.
 
-## <a name="apache-ambari-web-ui"></a>Az Apache Ambari webes Felülettel
+## <a name="apache-ambari-web-ui"></a>Apache Ambari Web UI
 
 Az Ambari webes felhasználói felületen keresztül meglévő fürt automatikus témakör-létrehozás engedélyezése, használja az alábbi lépéseket:
 

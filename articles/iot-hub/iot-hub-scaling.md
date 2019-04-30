@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
-ms.openlocfilehash: 8be2e59898ea5fcca1dbf1710974d0420941973e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 49e0db690818e67f96f5bcefa4f581b1db6da451
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002136"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125576"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>A megoldás a megfelelő IoT Hub-csomag kiválasztása
 
@@ -83,7 +83,7 @@ A támogatott képességek közötti különbség az alapszintű és standard cs
 | [Esemény küldése](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Igen | Igen |
 | A modul esemény küldése | Igen | Igen |
 | [Fájlfeltöltés állapota frissítése](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Igen | Igen |
-| [A tömeges eszköz művelet](/rest/api/iot-dps/runbulkenrollmentoperation/runbulkenrollmentgroupoperation) | Igen, kivéve az IoT Edge-képességek | Igen | 
+| [A tömeges eszköz művelet](/rest/api/iot-dps/runbulkenrollmentgroupoperation/runbulkenrollmentgroupoperation) | Igen, kivéve az IoT Edge-képességek | Igen | 
 | [A parancs üzenetsor kiürítése](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Igen |
 | [Ikereszköz beolvasása](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | Igen |
 | Ikermodul beolvasása |   | Igen |

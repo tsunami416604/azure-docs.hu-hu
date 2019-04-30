@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: cb1b8171dc45c286d3f87a3c33e366d818cfaad9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283409"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61456818"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Adatok másolása, és az SQL Serverről az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -520,27 +520,27 @@ Példatípust az adatok, vagy az SQL Server, a következő hozzárendeléseket h
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
-| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| A FILESTREAM attribútum (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | int |Int32 |
 | money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| numerikus |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
-| rowversion |Byte[] |
+| ROWVERSION |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
+| pénz |Decimal |
 | sql_variant |Object |
-| text |String, Char[] |
+| szöveg |String, Char[] |
 | time |TimeSpan |
-| timestamp |Byte[] |
+| időbélyeg |Byte[] |
 | tinyint |Int16 |
 | uniqueidentifier |Guid |
-| varbinary |Byte[] |
+| Varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |Xml |
 

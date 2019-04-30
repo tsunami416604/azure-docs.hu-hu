@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 662c78fc7074b0dafc53c393962aa4b578779095
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 31e18285bf6211e73d994e037a91adc396972715
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092258"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62106970"
 ---
 # <a name="call-a-function-from-microsoft-flow"></a>Függvény meghívása a Microsoft Flow-ból
 
@@ -132,7 +132,7 @@ Először hozzon létre egy folyamatot sablon nélkül (nélkül egy sablon), é
 
     ![Feltétel hozzáadása](media/functions-flow-scenario/add-condition.png)
 
-    Microsoft Flow a flow hozzáadja a két ág: **Ha Igen** és **Ha nincsenek**. Lépések hozzáadása az egyik vagy mindkét ágak után a feltételt, amely egyeztetni kívánt határoz meg.
+    A folyamat két ág ad hozzá a Microsoft Flow: **Ha Igen** és **Ha nincsenek**. Lépések hozzáadása az egyik vagy mindkét ágak után a feltételt, amely egyeztetni kívánt határoz meg.
 
     ![A feltétel ágak](media/functions-flow-scenario/condition-branches.png)
 

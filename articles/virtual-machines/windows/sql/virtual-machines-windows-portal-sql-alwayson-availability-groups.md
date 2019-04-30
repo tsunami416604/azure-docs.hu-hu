@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: bddc83d55c8909412f7f935a4324a6f316a82cd7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238165"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129553"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Always On rendelkezésre állási csoportok konfigurálása Azure Virtual Machines szolgáltatásban automatikusan: Resource Manager
 
@@ -68,7 +68,7 @@ Az Azure biztosít a katalógus-lemezkép a teljes megoldás. Keresse meg a sabl
 3. Az a **új** ablaktáblán, és keressen **AlwaysOn**.
    ![AlwaysOn sablon keresése](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
 4. Keresse meg a keresési eredmények **SQL Server AlwaysOn fürt**.
-   ![AlwaysOn-sablon](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
+   ![AlwaysOn Template](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
 5. A **telepítési modell kiválasztása**, válassza a **Resource Manager**.
 
 ### <a name="basics"></a>Alapvető beállítások
@@ -115,7 +115,7 @@ A **rendelkezésre állási csoport beállításait**, tekintse át a rendelkez�
 
 Szükség esetén módosíthatja ezeket az értékeket. A jelen oktatóanyag esetében használja az előre megadott értékeket.  
 
-![rendelkezésre állási csoport beállításai](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/3-availabilitygroup.png)
+![Rendelkezésre állási csoport beállításai](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/3-availabilitygroup.png)
 
 Kattintson az **OK** gombra.
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
 ms.openlocfilehash: 5d7dccfecc47b14be62a78600561a8ff0f7ca501
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312257"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62111953"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine androidhoz streaming
 
@@ -44,8 +44,8 @@ A cikket is offline streamelési Widevine védett tartalom kapcsolatos gyakori k
 Mielőtt Widevine offline DRM végrehajtása Android-eszközökön, akkor először:
 
 - Alaposabban megismerheti a használata a Widevine DRM-mel online content protection bemutatott fogalmakkal. Ez az a következő dokumentumok minták részletesen ismertetett:
-    - [Egy DRM-mel a content protection rendszert a hozzáférés-vezérléssel](design-multi-drm-system-with-access-control.md)
-    - [DRM a dinamikus titkosítás és a licenc kézbesítési szolgáltatás használata](protect-with-drm.md)
+    - [Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése](design-multi-drm-system-with-access-control.md)
+    - [A DRM dinamikus titkosítási és licenctovábbítási szolgáltatás használata](protect-with-drm.md)
 - Klónozás https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git.
 
     Módosítsa a kódot kell [titkosítása a .NET használatával DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) Widevine konfigurációk hozzáadása.  

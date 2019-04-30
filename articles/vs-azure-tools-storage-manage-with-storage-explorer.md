@@ -2,24 +2,18 @@
 title: Storage Explorer használatának első lépései |} A Microsoft Docs
 description: Az Azure storage-erőforrások kezelése a Storage Explorerben
 services: storage
-documentationcenter: na
 author: cawaMS
-manager: paulyuk
-editor: ''
-ms.assetid: 1ed0f096-494d-49c4-ab71-f4164ee19ec8
 ms.service: storage
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 07/17/2017
+ms.date: 04/22/2019
 ms.author: cawa
-ms.openlocfilehash: 38a857b1d309b92c48137a46655155e0e131908c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3db1d638aa1e0d8488c310593a593465c2b9b336
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60459435"
+ms.locfileid: "62128279"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer használatának első lépései
 
@@ -115,7 +109,9 @@ Emellett használhatja a tárfiókokat a globális és az országos Azure-ban:
 
 A Storage Explorer használatával használhatja, helyi tárterülettel rendelkező egy emulator használatával. Ez a megközelítés lehetővé teszi szimulálása az Azure Storage használatához egy Azure-ban üzembe helyezett tárfiókra feltétlenül nélkül.
 
-Helyi storage emulator támogatott 1.1.0-s kezdve minden platformon. Storage Explorer csatlakozhat bármely emulált szolgáltatás az alapértelmezett helyi tárterület-végpontokra irányuló figyel.
+1.1.0-s kezdve Storage Explorer támogatja, a helyi storage emulator használatával minden platformon. Storage Explorer csatlakozhat bármely emulált szolgáltatás az alapértelmezett helyi tárterület-végpontokra irányuló figyel.
+
+A [az Azure storage emulator](storage/common/storage-use-emulator.md) csak a Windows jelenleg futtatja. Azok számára, a storage emulatort, Linux esetén a mérlegeli, az egyik lehetőség a Közösség tartható fenn, nyílt forráskódú storage emulator [Azurite](https://github.com/azure/azurite).
 
 > [!NOTE]
 > Tárolási szolgáltatások és funkciók támogatása széles körben emulátor válaszaitól függően változhat. Győződjön meg arról, hogy az emulátor támogatja-e a szolgáltatásokat és funkciókat kíván dolgozni.

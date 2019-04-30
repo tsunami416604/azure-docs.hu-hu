@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 33765d57f1a0e5788011b2d9d9c2f57d06713ddb
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: 8fa43998d0b10eddacdc9e0dd512295559814255
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680689"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62101956"
 ---
 # <a name="common-security-attributes-for-azure-storage"></a>Az Azure Storage közös biztonsági attribútumok
 
@@ -36,10 +36,10 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatásvégpont-támogatás| Igen |  |
+| Szolgáltatási végpont támogatás| Igen |  |
 | vNET-injektálási támogatás| – |  |
-| Hálózatelkülönítés / tűzfalas támogatása| Igen | |
-| Kényszerített bújtatás támogatása | – |  |
+| Hálózatelkülönítés és támogatási optimalizálóként működik| Igen | |
+| Kényszerített bújtatás támogatása| – |  |
 
 ## <a name="detection"></a>Észlelés
 
@@ -47,20 +47,20 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 |---|---|--|
 | Azure monitorozási támogatása (a Log analytics, az App insights, stb.)| Igen | Az Azure Monitor metrikák elérhető, naplózza a kezdeti előzetes verzió |
 
-## <a name="iam-support"></a>IAM-támogatás
+## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hozzáférés-kezelés – hitelesítés| Igen | Az Azure Active Directory, a megosztott kulcsot, a megosztott hozzáférési jogkivonatot. |
-| Hozzáférés-kezelés – engedélyezés| Igen | Engedélyezés a következővel RBAC, a POSIX ACL-EK és a SAS-tokeneket támogatja |
+| Hitelesítés| Igen | Az Azure Active Directory, a megosztott kulcsot, a megosztott hozzáférési jogkivonatot. |
+| Engedélyezés| Igen | Engedélyezés a következővel RBAC, a POSIX ACL-EK és a SAS-tokeneket támogatja |
 
 
 ## <a name="audit-trail"></a>Auditnapló
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Vezérlő/felügyeleti naplózás és a naplózási tervezése | Igen | Az Azure Resource Manager-tevékenységnapló |
-| Adatok naplózása és naplózási adatsík| Igen | Diagnosztikai naplók szolgáltatás és az Azure Monitor Naplózás kezdési előzetes verzió  |
+| Vezérlő és a felügyeleti sík naplózási és naplózása | Igen | Az Azure Resource Manager-tevékenységnapló |
+| Adatsík naplózása és naplózása| Igen | Diagnosztikai naplók szolgáltatás és az Azure Monitor Naplózás kezdési előzetes verzió  |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 

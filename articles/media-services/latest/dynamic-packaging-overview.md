@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: c9254c8dd629230a549dd95aba9afbd932746007
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 90af9d40f797e493696d52e4cd744b99e3b57911
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886454"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104122"
 ---
 # <a name="dynamic-packaging"></a>A dinamikus csomagolás
 
@@ -73,7 +73,7 @@ Egy élő eseményt két típus egyike lehet: csatlakoztatott mind az élő kód
 
 Az alábbi ábrán látható, az élő Stream dinamikus csomagolási munkafolyamat.
 
-![az átmenő](./media/live-streaming/pass-through.svg)
+![átmenő típusú](./media/live-streaming/pass-through.svg)
 
 ## <a name="delivery-protocols"></a>Kézbesítési protokollra
 
@@ -197,6 +197,10 @@ Dinamikus szűrés segítségével nyomon követi, formátum, bitsebességre val
 
 > [!NOTE]
 > Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](developers-guide.md).
+
+## <a name="provide-feedback"></a>Visszajelzés küldése
+
+Tekintse meg a [Azure Media Services-Közösség](media-services-community.md) kérdések, küldje el visszajelzését, és tudnivalók a Media Services-frissítések különböző módon olvashatja.
 
 ## <a name="next-steps"></a>További lépések
 

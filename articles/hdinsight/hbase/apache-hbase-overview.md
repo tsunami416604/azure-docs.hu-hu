@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
 ms.openlocfilehash: d109a1a233aaaf1f3922561106caa15781e31e01
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337346"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62114434"
 ---
 # <a name="what-is-apache-hbase-in-hdinsight-a-nosql-database-that-provides-bigtable-like-capabilities-for-apache-hadoop"></a>Mi az Apache HBase a HDInsight: NoSQL-adatbázis, amely BigTable-szerű képességeket biztosít az Apache Hadoop
 [Az Apache HBase](https://hbase.apache.org/) egy nyílt forráskódú nosql-alapú adatbázis-alapú [Apache Hadoop](https://hadoop.apache.org/) és modellezett után [Google BigTable](https://cloud.google.com/bigtable/). A HBase véletlenszerű hozzáférést és erős konzisztenciát biztosít a nagy mennyiségű strukturálatlan és félig strukturált adatok számára egy séma nélküli adatbázisban oszlopcsaládok szerint rendezve.

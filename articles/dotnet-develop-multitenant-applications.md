@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
 ms.openlocfilehash: 342c7903e58a5c3bc41278152630187fa0c63b7b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425040"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62119147"
 ---
 # <a name="multitenant-applications-in-azure"></a>Több-bérlős alkalmazásokban az Azure-ban
 Egy több-bérlős alkalmazásban, amely lehetővé teszi a különböző felhasználók vagy "bérlőkkel", az alkalmazás megtekintéséhez, mintha az volt a saját megosztott erőforrás. Jellemzően olyan helyzetben, amely egy több-bérlős alkalmazás adatmodelljeinek egyike, amelyben az alkalmazás minden felhasználójának Kezdésként testreszabhatják a felhasználói élményt, de egyébként külön ugyanazon alapvető üzleti követelmények. Nagy több-bérlős alkalmazások olyan Office 365, az Outlook.com-os és a visualstudio.com webhelyen.
@@ -28,16 +28,16 @@ Egy alkalmazás szolgáltatója szempontból a több-bérlős módhoz előnyeine
 
 A következők a legfontosabb célok és a egy szolgáltató szempontjából követelmények listáját tartalmazza.
 
-* **Kiépítés**: meg kell tudni az alkalmazást az új bérlők kiépítése.  Több-bérlős alkalmazások bérlők nagy számú Ez a folyamat automatizálására önkiszolgáló kiépítés engedélyezésével általában szükség.
-* **Karbantarthatóság**: kell frissíteni az alkalmazást, és egyéb karbantartási feladatok végrehajtása, amíg több bérlő használja azt.
-* **Figyelés**: az alkalmazás mindig az esetleges problémák felismeréséhez és elhárításához nyomon kell lennie. Ez magában foglalja, minden bérlő hogyan használja az alkalmazás figyelését.
+* **Kiépítés**: Meg kell tudni az alkalmazást az új bérlők kiépítése.  Több-bérlős alkalmazások bérlők nagy számú Ez a folyamat automatizálására önkiszolgáló kiépítés engedélyezésével általában szükség.
+* **Karbantarthatóság**: Az alkalmazás frissítése és egyéb karbantartási feladatok végrehajtása, amíg több bérlőt használ, azt kell lennie.
+* **Figyelés**: Az alkalmazás mindig az esetleges problémák felismeréséhez és elhárításához nyomon kell lennie. Ez magában foglalja, minden bérlő hogyan használja az alkalmazás figyelését.
 
 Egy megfelelően kivitelezett több-bérlős alkalmazásban a következő előnyöket biztosítja a felhasználók számára.
 
-* **Elkülönítés**: az egyes bérlők tevékenységének nincsenek hatással a többi bérlő által az alkalmazás használatát. Bérlők egymás adataihoz nem fér hozzá. Megjelenik a bérlőhöz, mintha rendelkeznek kizárólagos használja az alkalmazást.
-* **Rendelkezésre állási**: az egyes bérlői szeretnének-e az alkalmazás folyamatosan elérhető legyen, esetleg a garanciákkal meghatározott SLA-t. Más bérlők tevékenységének ismét nem érinti az alkalmazás rendelkezésre állását.
-* **Méretezhetőség**: az alkalmazás az egyes bérlők igény szerint méretezhető. A jelenléti és a többi bérlő műveletek nem érinti az alkalmazás teljesítményét.
-* **Költségek**: költségek alacsonyabbak, mint egy dedikált, egybérlős alkalmazás fut, mert a több-bérlős lehetővé teszi, hogy az erőforrás-megosztás.
+* **Elkülönítés**: Az egyes bérlők tevékenységének nem érinti a többi bérlő által az alkalmazás használatát. Bérlők egymás adataihoz nem fér hozzá. Megjelenik a bérlőhöz, mintha rendelkeznek kizárólagos használja az alkalmazást.
+* **Rendelkezésre állási**: Az egyes bérlői szeretnének az alkalmazás folyamatosan elérhető legyen, esetleg a garanciákkal meghatározott SLA-t. Más bérlők tevékenységének ismét nem érinti az alkalmazás rendelkezésre állását.
+* **Méretezhetőség**: Az alkalmazás az egyes bérlők igény szerint méretezhető. A jelenléti és a többi bérlő műveletek nem érinti az alkalmazás teljesítményét.
+* **Költségek**: Költségek alacsonyabbak, mint egy dedikált, egybérlős alkalmazás fut, mert a több-bérlős lehetővé teszi, hogy az erőforrás-megosztás.
 * **Testreszabhatóság**. Az alkalmazás különböző módokon, például hozzáadása vagy a szolgáltatások eltávolítása, szín és emblémák módosítása vagy akár a saját kódot vagy szkriptet hozzáadása egy adott bérlő testre szabhatók.
 
 Röviden közben számos szempontot kell figyelembe venniük nagy mértékben skálázható szolgáltatás, számos is a célokat és a követelmények, több-bérlős alkalmazások számos közös. Releváns bizonyos forgatókönyvek esetén is, és az egyes célokat és követelményeket fontossága eltérőek lehetnek az egyes esetekben. A több-bérlős alkalmazás szolgáltatója ki is célokat és követelményeket, mint például felel meg a bérlők célok és követelmények, jövedelmezőség, Számlázás, több szolgáltatási szintek, kiépítés, Karbantarthatóság figyelése és automation.

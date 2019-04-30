@@ -10,13 +10,13 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
 ms.openlocfilehash: 3f890e6cabd757fdd38374befaaccd1a10c9bd96
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192462"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62106210"
 ---
-# <a name="monitor-logic-apps-with-azure-monitor-logs"></a>Az Azure Monitor naplóira rendelkező logikai alkalmazások figyelése
+# <a name="monitor-logic-apps-with-azure-monitor-logs"></a>Logikai alkalmazások monitorozása Azure Monitor-naplókkal
 
 Figyelheti, és a logic apps gazdagabb hibakeresési adatainak, kapcsolja be a [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md) a logikai alkalmazás létrehozásakor. Az Azure Monitor naplóira biztosít a diagnosztikai naplózás és figyelés a logic Apps, a Logic Apps Management megoldás telepítésekor, az Azure Portalon. Ez a megoldás is biztosít a jelenít meg összesített adatokat a logikai alkalmazás fut, például az állapotának, végrehajtási idő, futtatásnak az újraküldése állapotát és korrelációs azonosítók részletes. Ez a cikk bemutatja, hogyan kapcsolja be a Azure Monitor naplóira, így runtime az események és a logikai alkalmazás adatok futtatja.
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: ab8fb4a567e4c4a7bf1e884999a4e403a98547a0
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471033"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128015"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Kapcsolat nélküli adatszinkronizálás az Azure Mobile Apps megoldásban
 ## <a name="what-is-offline-data-sync"></a>Mi az offline adatszinkronizálás?
@@ -38,11 +38,11 @@ Offline szinkronizálás több előnye van:
 Az alábbi oktatóanyagok bemutatják, hogyan offline szinkronizálást adhat a mobil ügyfélprogramok Azure Mobile Apps segítségével:
 
 * [Android: Offline szinkronizálás engedélyezése]
-* [Az Apache Cordova: Offline szinkronizálás engedélyezése](app-service-mobile-cordova-get-started-offline-data.md)
-* [iOS: offline szinkronizálás engedélyezése]
-* [Xamarin IOS-es: offline szinkronizálás engedélyezése]
+* [Apache Cordova: Offline szinkronizálás engedélyezése](app-service-mobile-cordova-get-started-offline-data.md)
+* [iOS: Offline szinkronizálás engedélyezése]
+* [Xamarin iOS: Offline szinkronizálás engedélyezése]
 * [Xamarin Android: Offline szinkronizálás engedélyezése]
-* [Xamarin.Forms: Kapcsolat nélküli szinkronizálás – engedélyezése](app-service-mobile-xamarin-forms-get-started-offline-data.md)
+* [Xamarin.Forms: Offline szinkronizálás engedélyezése](app-service-mobile-xamarin-forms-get-started-offline-data.md)
 * [Univerzális Windows Platform: Offline szinkronizálás engedélyezése]
 
 ## <a name="what-is-a-sync-table"></a>Mit jelent a szinkronizálás tábla?
@@ -53,7 +53,7 @@ Offline használatra támogatása érdekében az alkalmazás használja, a *szin
 ## <a name="what-is-a-local-store"></a>Mit jelent a helyi tárolóból?
 Egy helyi tárolóban a adatmegőrző réteget az ügyféleszközön. Az Azure Mobile Apps-ügyfél SDK-k adjon meg egy helyi alapértelmezett megvalósítása. A Windows, a Xamarin és az Android SQLite alapul. Az iOS-legfontosabb adatainak alapul.
 
-A Windows Phone-vagy a Microsoft Store az SQLite-alapú megvalósítás használatához szüksége egy SQLite-bővítmény telepítése. További információkért lásd: [Univerzális Windows Platform: Offline szinkronizálás engedélyezése]. Android és IOS rendszerű szállításra az eszköz operációs rendszere, az SQLite verziójával, így azt nem hivatkozhat saját SQLite verzióját.
+A Windows Phone-vagy a Microsoft Store az SQLite-alapú megvalósítás használatához szüksége egy SQLite-bővítmény telepítése. További információkért lásd: [univerzális Windows Platform: Offline szinkronizálás engedélyezése]. Android és IOS rendszerű szállításra az eszköz operációs rendszere, az SQLite verziójával, így azt nem hivatkozhat saját SQLite verzióját.
 
 A fejlesztők saját helyi tárolóhoz is megvalósíthatja. Például ha szeretné a mobil ügyfelekből a titkosított formában tárolja az adatokat, megadhatja titkosítási SQLCipher használó helyi tároló.
 
@@ -65,9 +65,9 @@ A szinkronizálási környezetet használni például az inicializálási metód
 ## <a name="how-sync-works"></a>Hogyan offline szinkronizálás használata
 Szinkronizálási táblák használata esetén az Ügyfélkód szabályozza, amikor helyi módosítások szinkronizálva van-e az Azure Mobile Apps-háttéralkalmazást. Semmi addig, amíg nincs egy hívás érkezik, a háttérkiszolgáló *leküldéses* helyi módosításokat. Hasonlóképpen, a helyi tárolóban van feltöltve új csak akkor, ha van egy hívás *lekéréses* adatokat.
 
-* **Leküldéses**: leküldéses a szinkronizálási környezet egy olyan műveletet, és minden CUD módosításokat küld az utolsó leküldéses óta. Ne feledje, hogy azt nem lehet elküldeni csak egyes táblákat módosításokat, mert ellenkező esetben műveletek sikerült elküldeni az üzemen kívüli. Leküldéses REST-hívások, az Azure Mobile Apps-háttéralkalmazás, amely ezután módosítja a server-adatbázis egy sorozatát hajtja végre.
-* **Lekéréses**: lekéréses tábla alapon történik, és csak a kiszolgáló adatainak egy része egy lekérdezése szabhatók. Az Azure Mobile ügyfél SDK-k majd beszúrja az eredményül kapott adatokat a helyi tárolóban.
-* **Implicit Leküldések**: egy lekéréses hajtja végre a függőben lévő helyi frissítést tartalmazó tábla szemben, ha a lekéréses először hajt végre egy `push()` a szinkronizálási környezetben. A leküldéses minimálisra már várólistára helyezett módosításokat, a kiszolgáló közötti ütközéseket.
+* **Leküldéses**: Leküldéses a szinkronizálási környezet egy olyan műveletet, és minden CUD módosításokat küld az utolsó leküldéses óta. Ne feledje, hogy azt nem lehet elküldeni csak egyes táblákat módosításokat, mert ellenkező esetben műveletek sikerült elküldeni az üzemen kívüli. Leküldéses REST-hívások, az Azure Mobile Apps-háttéralkalmazás, amely ezután módosítja a server-adatbázis egy sorozatát hajtja végre.
+* **Lekéréses**: A lekéréses tábla alapon történik, és testre szabható lekérdezéssel lekérni a kiszolgáló adatait csak egy részhalmazát. Az Azure Mobile ügyfél SDK-k majd beszúrja az eredményül kapott adatokat a helyi tárolóban.
+* **Implicit Leküldések**: Lekérési hajtja végre a függőben lévő helyi frissítést tartalmazó tábla szemben, ha a lekéréses először hajt végre egy `push()` a szinkronizálási környezetben. A leküldéses minimálisra már várólistára helyezett módosításokat, a kiszolgáló közötti ütközéseket.
 * **A növekményes szinkronizálás**: az első paraméter a pull művelet egy *lekérdezésnév* csak az ügyfélen használt. Ha egy nem null értékű lekérdezési nevet használja, az Azure Mobile SDK hajt végre egy *növekményes szinkronizálás*. Minden alkalommal, amikor egy lekéréses művelet készletet ad vissza, az eredmények, a legújabb `updatedAt` adott eredményhalmaz időbélyege az SDK-t helyi rendszer táblákban vannak tárolva. Későbbi lekéréses műveletek csak a rekordok beolvasása után az időbélyeg.
 
   Növekményes szinkronizálás használatára, a kiszolgáló kell visszaadnia jelentéssel bíró `updatedAt` értéket, majd is támogatnia kell ezt a mezőt a rendezés. Az SDK-t a saját rendezés a updatedAt mezőt ad hozzá, mivel nem használhatja azonban a lekéréses lekérdezés, amely rendelkezik a saját `orderBy` záradékban.
@@ -82,7 +82,7 @@ Szinkronizálási táblák használata esetén az Ügyfélkód szabályozza, ami
             syncTable.Where(u => u.UserId == userid));
 
   Ha azt szeretné, a növekményes szinkronizálás kikapcsolásához, `null` , a lekérdezés azonosítóját. Ebben az esetben az összes rekord lekérése megtörténik a minden meghívásához `PullAsync`, amelyek nem potenciálisan hatékony.
-* **Végleges törlés**: törölheti a tartalmát a helyi tároló használata `IMobileServiceSyncTable.PurgeAsync`.
+* **Végleges törlés**: Törölheti a tartalmát a helyi tároló használata `IMobileServiceSyncTable.PurgeAsync`.
   Végleges törlés szükség lehet, ha elavult adatokat az ügyfél-adatbázisban, vagy ha szeretné elvetni az összes függőben lévő módosítást.
 
   Végleges törlésére törli a helyi tároló tábla. Ha műveletek várnak az adatbázishoz való szinkronizálás, a kiürítés kivételt jelez, kivéve, ha a *kényszerített kiürítés* paraméter értéke.
@@ -90,15 +90,15 @@ Szinkronizálási táblák használata esetén az Ügyfélkód szabályozza, ami
   Az elavult adatok az ügyfélen például tegyük fel, hogy a "teendőlista" példában Device1 csak lekéri az elemek nem fejeződtek be. A todoitem "Vásárlása tej" van megjelölve a kiszolgálón egy másik eszköz befejeződött. Azonban Device1 továbbra is, a "Vásárlás tej" todoitem helyi tároló mert csak, van lehetőség elemek, amelyek nincsenek megjelölve befejeződött. Végleges törlésére törli az elavult elem.
 
 ## <a name="next-steps"></a>További lépések
-* [iOS: offline szinkronizálás engedélyezése]
-* [Xamarin IOS-es: offline szinkronizálás engedélyezése]
+* [iOS: Offline szinkronizálás engedélyezése]
+* [Xamarin iOS: Offline szinkronizálás engedélyezése]
 * [Xamarin Android: Offline szinkronizálás engedélyezése]
 * [Univerzális Windows Platform: Offline szinkronizálás engedélyezése]
 
 <!-- Links -->
 [.NET ügyféloldali SDK-val]: app-service-mobile-dotnet-how-to-use-client-library.md
 [Android: Offline szinkronizálás engedélyezése]: app-service-mobile-android-get-started-offline-data.md
-[iOS: offline szinkronizálás engedélyezése]: app-service-mobile-ios-get-started-offline-data.md
-[Xamarin IOS-es: offline szinkronizálás engedélyezése]: app-service-mobile-xamarin-ios-get-started-offline-data.md
+[iOS: Offline szinkronizálás engedélyezése]: app-service-mobile-ios-get-started-offline-data.md
+[Xamarin iOS: Offline szinkronizálás engedélyezése]: app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Xamarin Android: Offline szinkronizálás engedélyezése]: app-service-mobile-xamarin-android-get-started-offline-data.md
 [Univerzális Windows Platform: Offline szinkronizálás engedélyezése]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md

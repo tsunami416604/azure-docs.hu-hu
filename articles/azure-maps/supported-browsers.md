@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: bc876fbf0eb15f887d57d4ddcca2301ef7233afa
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
-ms.translationtype: MT
+ms.openlocfilehash: 84c5dbcf5073ba8c0ae662af019cde590a9adf10
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577339"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62738388"
 ---
-# <a name="web-sdk-supported-browsers"></a>SDK által támogatott webböngészők
+# <a name="web-sdk-supported-browsers"></a>A webes SDK által támogatott böngészők
 
-Az Azure Maps Web SDK biztosít egy segédfüggvény [atlas.isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest#issupported-boolean-) észleli, hogy egy webes böngésző rendelkezik-e a minimális vagy a Web GL funkciók betöltése és megjelenítése a térkép vezérlőelem támogatásához szükséges. 
+Az Azure Maps Web SDK biztosít egy nevű segítőfüggvény [atlas.isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest#issupported-boolean-). Ez a függvény észleli, hogy egy webes böngésző rendelkezik a minimális vagy a Web GL funkciók be- és a térkép vezérlőelem megjelenítése támogatásához szükséges. A következő példa bemutatja, hogyan használja a függvényt:
 
 ```
 if(!atlas.isSupported()) {
@@ -25,35 +25,35 @@ if(!atlas.isSupported()) {
 } else if(!atlas.isSupported(true)) {
     alert('Your browser is supported by Azure Maps, but may have major performance caveats.');
 } else {
-    //Your browser is supported. Add your map code here.
+    // Your browser is supported. Add your map code here.
 }
 ```
 
 ## <a name="desktop"></a>Asztal
 
-Az Azure Maps Web SDK támogatja a következő asztali böngészők.
+Az Azure Maps Web SDK a következő asztali böngészők használatát támogatja:
 
-- A jelenlegi és korábbi verzióját a Microsoft Edge 
-- A Chrome jelenlegi és korábbi verzióját 
-- A jelenlegi és korábbi verzióját a Firefox 
-- A jelenlegi és korábbi verziót a Safari (Mac OS X) 
+- A Microsoft Edge (jelenlegi és korábbi verzió)
+- Google Chrome (jelenlegi és korábbi verzió)
+- Mozilla Firefox (jelenlegi és korábbi verzió)
+- Apple Safari (Mac OS X) (jelenlegi és korábbi verzió)
 
-Lásd még: [régebbi böngészők cél](#Target-Legacy-Browsers).
+Lásd még: [régebbi böngészők cél](#Target-Legacy-Browsers) a cikk későbbi részében.
 
 ## <a name="mobile"></a>Mobiltelefon
 
-Az Azure Maps Web SDK támogatja a következő mobilböngészők.
+Az Azure Maps Web SDK a következő mobilböngészők használatát támogatja:
 
--  Android
-    * Az Android 6.0 Chrome jelenlegi verziója
-    * Az Android 6.0 Chrome WebView-t
+- Android
+  - Chrome-ban, az Android 6.0 vagy újabb verziója
+  - Chrome WebView-t az Android 6.0-s és újabb verziók
 - iOS
-    * A jelenlegi és korábbi főverziója iOS Mobile Safari
-    * UIWebView és a jelenlegi és korábbi főverziója iOS WKWebView
-    * Chrome-ban iOS-es verziója
+  - A jelenlegi és korábbi főverziója iOS Mobile Safari
+  - UIWebView és a jelenlegi és korábbi főverziója iOS WKWebView
+  - Chrome-ban iOS-es verziója
 
 > [!TIP]
-> Ha egy térkép belül egy mobilalkalmazás WebView-vezérlés használatával végez beágyazást, előfordulhat, hogy inkább használja a [npm-csomag az Azure Maps Web SDK](https://www.npmjs.com/package/azure-maps-control) hivatkozik a CDN üzemeltetett verze sady SDK helyett. Ez csökkenti betöltési idő, az SDK-t fog már a felhasználó eszközén, és nem futásidőben le kell tölteni.
+> Ha a mobilalkalmazás belül térkép beágyazott WebView vezérlőelem használatával, előfordulhat, hogy szeretné használni a [npm-csomag az Azure Maps Web SDK](https://www.npmjs.com/package/azure-maps-control) helyett az SDK-t, amely az Azure Content Delivery verziója hivatkozik Hálózat. Ez a megközelítés csökkenti a betöltési idő, mert az SDK már csak a felhasználó eszközén, és le kell tölteni futási időben nem szükséges.
 
 ## <a name="nodejs"></a>Node.js
 
@@ -63,8 +63,9 @@ Az alábbi Web SDK-modulokat is támogatottak a node.js-ben:
 
 ## <a name="Target-Legacy-Browsers"></a>Örökölt támogatott böngészők
 
-Ha szeretne megcélozni a régebbi böngészőknél előfordulhat, hogy nem támogatja a, vagy csak korlátozottan támogatják a vagy a Web GL, javasoljuk, hogy az Azure Maps szolgáltatás használata egy nyílt forráskódú térkép vezérlőelem együtt például [utasítással](https://leafletjs.com/). 
+Előfordulhat, hogy kívánt cél régebbi böngészők vagy a Web GL, amelyek nem támogatják, vagy csak korlátozott támogatást biztosítunk. Ezekben az esetekben javasoljuk, hogy az Azure Maps szolgáltatás együtt egy nyílt forráskódú térkép vezérlőelem, például a használt [utasítással](https://leafletjs.com/). Például:
 
+<br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Az Azure Maps + tájékoztatón" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>az Azure Maps + tájékoztatón</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
@@ -73,7 +74,7 @@ Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az Azure Maps Web SDK-t.
+További információ az Azure Maps Web SDK:
 
 > [!div class="nextstepaction"]
 > [Térképvezérlő](how-to-use-map-control.md)

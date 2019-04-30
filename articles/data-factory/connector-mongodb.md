@@ -3,21 +3,22 @@ title: Adatok másolása az Azure Data Factory használatával MongoDB |} A Micr
 description: Megtudhatja, hogyan másolhat adatokat a Mongo DB támogatott fogadó adattárakba az Azure Data Factory-folyamatot egy másolási tevékenység használatával.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
-ms.author: jingwang
+origin.date: 12/20/2018
+ms.date: 04/22/2019
+ms.author: v-jay
 ms.openlocfilehash: ca6040bb74839f30a2f1b13297f6037f05240c67
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562218"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61400440"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával MongoDB
 
@@ -49,7 +50,7 @@ Mongodb-hez társított szolgáltatás a következő tulajdonságok támogatotta
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type |A type tulajdonságot kell beállítani: **MongoDbV2** |Igen |
-| kapcsolati Sztringje |Adja meg például a MongoDB kapcsolati sztring `mongodb://[username:password@]host[:port][/[database][?options]]`. Tekintse meg [kapcsolati karakterláncot a MongoDB manuális](https://docs.mongodb.com/manual/reference/connection-string/) további részletekért. <br/><br />Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
+| connectionString |Adja meg például a MongoDB kapcsolati sztring `mongodb://[username:password@]host[:port][/[database][?options]]`. Tekintse meg [kapcsolati karakterláncot a MongoDB manuális](https://docs.mongodb.com/manual/reference/connection-string/) további részletekért. <br/><br />Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
 | adatbázis | Az elérni kívánt adatbázis nevét. | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 

@@ -16,11 +16,11 @@ ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
 ms.openlocfilehash: 9fea914fdf9b025fd5d38219a6bfc81b4a9cc584
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450283"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125616"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Új Linux rendszerű virtuális gép létrehozása az Azure Resource Manager üzembe helyezés hibáinak elhárítása
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "57450283"
 ## <a name="top-issues"></a>Leggyakoribb problémák
 [!INCLUDE [support-disclaimer](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
 
-Más virtuális gép üzembe helyezési problémák és kérdések: [az Azure-beli üzembe helyezése Linux rendszerű virtuális gép hibáinak elhárítása](troubleshoot-deploy-vm-linux.md).
+A virtuális gép üzembe helyezésére vonatkozó egyéb problémáival és kérdéseivel kapcsolatban tekintse meg a [Linux rendszerű virtuális gépek Azure-beli üzembe helyezése során előforduló problémák elhárítása](troubleshoot-deploy-vm-linux.md) című részt.
 
 ## <a name="collect-activity-logs"></a>Collect-Tevékenységnaplók
 Hibaelhárítás indítása, hogy azonosítsa a hibát a probléma társított a vizsgálati naplók összegyűjtése. Az alábbi hivatkozások a folyamat, kövesse a részletes adatokat tartalmaznak.

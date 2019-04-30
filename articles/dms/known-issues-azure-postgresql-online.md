@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 2f3a8237fff052779afee718837e2b72fc33d9a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/23/2019
+ms.openlocfilehash: 2c8a3f36e04fbedfdd127939d55fab376e3e6b30
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60532168"
+ms.locfileid: "62097759"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Ismert problémák és a migrálás korlátozások az online migrálást az Azure-adatbázis PostgreSQL-hez
 
@@ -25,6 +25,10 @@ Ismert problémák és korlátozások online migrálást a PostgreSQL az Azure D
 ## <a name="online-migration-configuration"></a>Online migrálás konfiguráció
 - A PostgreSQL-kiszolgáló forrás 9.5.11, 9.6.7 vagy 10.3 verzióját kell futtatniuk vagy újabb. További információkért tekintse meg a cikket [PostgreSQL-adatbázis verziója támogatott](../postgresql/concepts-supported-versions.md).
 - Csak ugyanazon verzió az áttelepítés támogatott. Például az Azure Database for postgresql-hez 9.6.7 PostgreSQL 9.5.11 áttelepítése nem támogatott.
+
+    > [!NOTE]
+    > PostgreSQL 10-es verzió, a jelenleg DMS csak támogatja az áttelepítést verzió 10.3 az Azure Database for postgresql-hez. Azt tervezi, hogy a nagyon rövid időn a PostgreSQL újabb verzióit támogatja.
+
 - A logikai replikáció engedélyezéséhez a **PostgreSQL postgresql.conf forrás** fájlt, állítsa be a következő paraméterekkel:
     - **wal_level** logikai =
     - **max_replication_slots** = [áttelepítés adatbázisok maximális száma]; Ha azt szeretné, 4 adatbázis áttelepítése, állítsa az értékét 4

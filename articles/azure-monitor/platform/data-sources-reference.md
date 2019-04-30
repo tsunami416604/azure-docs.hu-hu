@@ -9,11 +9,11 @@ ms.date: 06/12/2018
 ms.author: johnkem
 ms.subservice: ''
 ms.openlocfilehash: c703f735f59a8425c2a14641781f482a6e2d1c78
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58848539"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61364511"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Az Azure monitorozási adatok felhasználásához
 
@@ -23,7 +23,7 @@ Az Azure platformon keresztül azt is összevonhatja az Azure Monitor, egyetlen 
 
 ## <a name="options-for-data-consumption"></a>Adathasználat lehetőségei
 
-| Adattípus | Kategória | Támogatott szolgáltatások | Hozzáférési módok |
+| Adattípus | Category | Támogatott szolgáltatások | Hozzáférési módok |
 | --- | --- | --- | --- |
 | Az Azure platform-szintű metrikák figyelése | Mérőszámok | [Itt a lista](metrics-supported.md) | <ul><li>**REST API-VAL:** [Az Azure Monitor mérőszám API](https://docs.microsoft.com/rest/api/monitor/metrics)</li><li>**Storage blob vagy eseményközpont:** [Diagnosztikai beállítások](diagnostic-logs-overview.md#diagnostic-settings)</li></ul> |
 | COMPUTE a vendég operációs rendszer metrikákat (például) teljesítményszámlálók) | Mérőszámok | [Windows](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) és Linux rendszerű virtuális gépek (v2), [Cloud Services](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [Service Fabric](../../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**- Vagy blob Storage-táblába:** [Windows vagy Linux rendszerű Azure-diagnosztika](diagnostics-extension-to-storage.md)</li><li>**Event hubs:** [Windows Azure diagnostics](diagnostics-extension-stream-event-hubs.md)</li></ul> |

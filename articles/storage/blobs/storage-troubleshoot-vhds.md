@@ -2,17 +2,18 @@
 title: Azure virtuális gépekhez csatolt lemezek hibaelhárítása |} A Microsoft Docs
 description: Hibaelhárítással kapcsolatos források az Azure virtuális gép virtuális merevlemezek (VHD) mutató hivatkozásokat tartalmaz.
 services: storage
-author: genlin
+author: WenJason
 ms.service: storage
 ms.topic: article
-ms.date: 10/31/2018
-ms.author: genli
+origin.date: 10/31/2018
+ms.date: 12/10/2018
+ms.author: v-jay
 ms.openlocfilehash: bf1aa75399f28b8dd1732bc9ec09c15e46132939
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414166"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098099"
 ---
 # <a name="troubleshoot-disks-attached-to-azure-vms"></a>Azure virtuális gépekhez csatolt lemezek hibaelhárítása 
 
@@ -22,12 +23,12 @@ Azure-beli virtuális gépek (VM) virtuális merevlemezek (VHD-k) az operációs
 
 Bizonyos esetekben amíg egy tárolási erőforrás törlése, ha egy Resource Manager-alapú virtuális gép tartalmaz csatolt virtuális merevlemezek felmerülhet hiba. Segítségre van szüksége a probléma elhárításához a következő cikkekben talál: 
 
-  * A Linux rendszerű virtuális gépek: [a Resource Manager-alapú tárolási törlésével kapcsolatos hibák](../../virtual-machines/linux/storage-resource-deletion-errors.md)  
-  * A Windows virtuális gépek: [a Resource Manager-alapú tárolási törlésével kapcsolatos hibák](../../virtual-machines/windows/storage-resource-deletion-errors.md)  
+  * Linuxos virtuális gépeken: [A Resource Manager-alapú tárolási törlésével kapcsolatos hibák](../../virtual-machines/linux/storage-resource-deletion-errors.md)  
+  * Windows virtuális gépeken: [A Resource Manager-alapú tárolási törlésével kapcsolatos hibák](../../virtual-machines/windows/storage-resource-deletion-errors.md)  
 
 ## <a name="troubleshoot-unexpected-reboots-of-vms-with-attached-vhds"></a>Virtuális merevlemezekkel rendelkező virtuális gépek váratlan újraindulása hibaelhárítása
 
 Ha nagy számú virtuális merevlemezekkel rendelkező virtuális gépek váratlan újraindulása tapasztal, tekintse meg az alábbi cikkekben:
 
-  * A Linux rendszerű virtuális gépek: [váratlan újraindítja a virtuális merevlemezekkel rendelkező virtuális gépek](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
-  * A Windows virtuális gépek: [váratlan újraindítja a virtuális merevlemezekkel rendelkező virtuális gépek](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
+  * Linuxos virtuális gépeken: [Virtuális merevlemezekkel rendelkező virtuális gépek váratlan újraindulása](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
+  * Windows virtuális gépeken: [Virtuális merevlemezekkel rendelkező virtuális gépek váratlan újraindulása](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)

@@ -6,14 +6,14 @@ author: sachdevaswati
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 03/23/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 5e4bd3647b557b260e65e3fb1ce297892f5d7d78
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
-ms.translationtype: MT
+ms.openlocfilehash: 08eff24dc42f594424d109b82933b01b5c1be454
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578824"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62733900"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -40,12 +40,12 @@ Biztonsági másolatot készíteni az SQL Server-adatbázishoz, mielőtt a köve
 
 ### <a name="establish-network-connectivity"></a>Hálózati kapcsolatok létrehozása
 
-Minden műveletre az SQL Server rendszerű virtuális gép virtuális gép kapcsolatot kell létesítenie az Azure nyilvános IP-címeket. Virtuális gép operations (adatbázis-felderítés, biztonsági mentések konfigurálása, a biztonsági mentések ütemezéséhez, és így tovább visszaállítása a helyreállítási pontok) anélkül, hogy a nyilvános IP-címek való kapcsolódás sikertelen. A kapcsolatot az alábbi lehetőségek közül:
+Minden műveletre az SQL Server rendszerű virtuális gép virtuális gép kapcsolatot kell létesítenie az Azure nyilvános IP-címeket. Virtuális gép operations (adatbázis felderítése, biztonsági mentések konfigurálása, a biztonsági mentések ütemezéséhez, helyreállítási pontok visszaállítása és így tovább) anélkül, hogy a nyilvános IP-címek való kapcsolódás sikertelen. A kapcsolatot az alábbi lehetőségek közül:
 
 - **Lehetővé teszi az Azure-adatközpont IP-címtartományok**: Lehetővé teszi a [IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653) letölthető. Hálózati biztonsági csoport (NSG) elérésére, használja a **Set-AzureNetworkSecurityRule** parancsmagot.
 - **HTTP-proxykiszolgáló üzembe forgalomirányítást**: Egy Azure virtuális gép egy SQL Server-adatbázis biztonsági mentésekor a biztonsági mentési bővítményt a virtuális gépen a HTTPS API-k segítségével felügyeleti parancsokat küldjön az Azure Backup és az Azure Storage-adatok. A biztonsági mentési bővítményt, az Azure Active Directory (Azure AD) is használ. A biztonsági mentési bővítményt forgalom irányítása a ezek három szolgáltatást, a HTTP-proxyn keresztül. A bővítmény az egyetlen olyan összetevő, amely konfigurálva van a nyilvános internet-hozzáférés.
 
-Minden egyes lehetőségeket vannak előnyei és hátrányai
+Mindegyik lehetőségnek van előnyök és hátrányok
 
 **Beállítás** | **Előnyök** | **Disadvantages**
 --- | --- | ---
@@ -60,11 +60,11 @@ Az Azure Backup több minden hajtja végre az SQL Server-adatbázis biztonsági 
 - A virtuális gépen adatbázisok felderítéséhez, az Azure Backup hoz létre a fiók **NT SERVICE\AzureWLBackupPluginSvc**. Ennek a fióknak a biztonsági mentés és visszaállítás szolgál, és az SQL-rendszergazdai engedélyekkel kell rendelkeznie.
 - Az Azure Backup használja a **NT AUTHORITY\SYSTEM** adatbázis felderítési/lekérdezési, így ennek a fióknak kell lennie egy nyilvános bejelentkezés az SQL-fiók.
 
-Ha az SQL Server rendszerű virtuális gép az Azure Marketplace-ről nem hozott létre, akkor előfordulhat, hogy megjelenik egy hibaüzenet **UserErrorSQLNoSysadminMembership**. Ha ez történik [az alábbi lépéseket követve](backup-azure-sql-database.md#fix-sql-sysadmin-permissions).
+Ha az SQL Server rendszerű virtuális gép az Azure Marketplace-ről nem hozott létre, akkor előfordulhat, hogy megjelenik egy hibaüzenet **UserErrorSQLNoSysadminMembership**. Ha ez történik [kövesse az utasításokat](backup-azure-sql-database.md#fix-sql-sysadmin-permissions).
 
 ### <a name="verify-database-naming-guidelines-for-azure-backup"></a>Az Azure Backup database elnevezési irányelvei ellenőrzése
 
-Kerülje az adatbázis neve a következőket:
+Kerülje az alább az adatbázis neve:
 
   * Kezdő/záró szóköz
   * Záró '!'
@@ -106,7 +106,7 @@ Fedezze fel a virtuális gépen futó adatbázisok.
 
     ![Üzembe helyezés a sikert jelző üzenet](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-8. Az Azure Backup a virtuális gép összes SQL Server-adatbázisok deríti fel. A felderítés során a következő a háttérben történik:
+8. Az Azure Backup a virtuális gép összes SQL Server-adatbázisok deríti fel. A felderítés során az alábbiakban a háttérben történik:
 
     - Az Azure Backup regisztrálja a virtuális Gépet a tárolóval, a számítási feladatok biztonsági mentéshez. Ebben a tárolóban csak készíthető a regisztrált virtuális gép összes adatbázist.
     - Az Azure Backup telepíti a **AzureBackupWindowsWorkload** bővítményt a virtuális gépen. Nincs ügynök telepítve van az SQL-adatbázis.
@@ -171,7 +171,7 @@ Biztonsági mentési szabályzat határozza meg, amikor a biztonsági másolatok
 Biztonsági mentési szabályzat létrehozása:
 
 1. Kattintson a tárolóban **biztonsági mentési házirendek** > **Hozzáadás**.
-2. A **Hozzáadás** menüben kattintson a **az SQL Server Azure virtuális gép**. A házirend típusát határozza meg.
+2. A **Hozzáadás** menüben kattintson a **az SQL Server Azure virtuális gép**. Az határozza meg a házirend típusát.
 
    ![Olyan házirendtípus, az új biztonsági mentési házirend kiválasztása](./media/backup-azure-sql-database/policy-type-details.png)
 
@@ -179,7 +179,7 @@ Biztonsági mentési szabályzat létrehozása:
 4. A **teljes biztonsági mentés házirend**, jelölje be a **biztonsági mentés gyakorisága**, válassza a **napi** vagy **heti**.
 
    - A **napi**, válasszon ki és az időzónát, amikor megkezdődik a biztonsági mentési feladat.
-   - Egy teljes biztonsági mentést kell futtatásakor, nem kapcsolhatja ki az **teljes biztonsági mentésre** lehetőséget.
+   - Futtatnia kell egy teljes biztonsági mentés, mivel nem kapcsolhatja ki az **teljes biztonsági mentésre** lehetőséget.
    - Kattintson a **teljes biztonsági mentés** a szabályzat megtekintéséhez.
    - Különbségi biztonsági mentés napi teljes biztonsági mentések esetén nem hozható létre.
    - A **heti**, amikor megkezdődik a biztonsági mentési feladatot, válassza ki a nap, hét, óra és időzóna.

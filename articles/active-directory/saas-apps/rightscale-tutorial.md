@@ -16,11 +16,11 @@ ms.date: 07/08/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 416a98c5f9c5a2ec813206ea9ea7f311b23e86cb
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525578"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61080049"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>Oktatóanyag: Az Azure Active Directory-integráció a Rightscale
 

@@ -2,20 +2,21 @@
 title: Az Azure SQL Data Warehouse olyan tranzakciók használatával |} A Microsoft Docs
 description: Tippek a tranzakciók végrehajtása az Azure SQL Data Warehouse-megoldások fejlesztése.
 services: sql-data-warehouse
-author: ckarst
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 03/22/2019
-ms.author: xiaoyul
+origin.date: 03/22/2019
+ms.date: 04/01/2019
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 0b4ce6f4479552f42d32124149f64614b7e3cb70
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369496"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61439179"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>Az SQL Data Warehouse olyan tranzakciók használatával
 Tippek a tranzakciók végrehajtása az Azure SQL Data Warehouse-megoldások fejlesztése.

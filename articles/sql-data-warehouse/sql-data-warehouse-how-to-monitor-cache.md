@@ -11,11 +11,11 @@ ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 26791aecb2ca57b31358d3385d07230c73c84904
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903862"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61474419"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>A Gen2 cache figyelése
 A tároló-architektúra Gen2 automatikusan rétegezi a leggyakrabban lekérdezett oszlopcentrikus szegmensek egy gyorsítótárban levő NVMe SSD-k alapján készült Gen2 data warehouse-adattárházak. Nagyobb teljesítmény van adatmegfelelőség, ha a lekérdezések beolvasása szegmenset, amely a gyorsítótárban levő vannak. Ez a cikk bemutatja, hogyan monitorozást és hibaelhárítást végezhet a lassú lekérdezések teljesítményének meghatározása, hogy a számítási feladatok optimális kihasználása a Gen2-gyorsítótár.  

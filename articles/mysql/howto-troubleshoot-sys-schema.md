@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.openlocfilehash: 993c77056c09c1dc21d5317ddbfe8e937341718d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542849"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61422371"
 ---
 # <a name="how-to-use-sysschema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Sys_schema használata a teljesítmény hangolása és adatbázis-karbantartás az Azure Database for MySQL-hez
 
@@ -41,7 +41,7 @@ I/o az a leginkább drága művelet az adatbázisban. Azt is megtudhatja, az át
 
 Mivel, Azure Database for MySQL megállapodást tárolás, i/o növelje a felhasznált tárterület 1 TB-os skálázható, saját IO-késés csökkenti a 571 ms.
 
-![IO-késés: 1 TB-OT](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
+![IO-késés: 1TB](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
 
 ### <a name="sysschematableswithfulltablescans"></a>*sys.schema_tables_with_full_table_scans*
 

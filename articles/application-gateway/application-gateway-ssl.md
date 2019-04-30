@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: victorh
 ms.openlocfilehash: 89a88d79b6b93a233dbd4f335d0eb449e49d5289
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001784"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122200"
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>Application gateway SSL-alapú kiszervezés konfigurálása a klasszikus üzemi modell használatával
 
@@ -31,7 +31,7 @@ ms.locfileid: "53001784"
 
 Az Azure Application Gateway konfigurálható úgy, hogy leállítsa a Secure Sockets Layer (SSL) munkamenetét az átjárónál, így elkerülhetők a költséges SSL visszafejtési feladatok a webfarmon. Az SSL-alapú kiszervezés emellett leegyszerűsíti az előtér-kiszolgáló számára webalkalmazás telepítését és kezelését.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 1. Telepítse az Azure PowerShell-parancsmagok legújabb verzióját a Webplatform-telepítővel. A [Letöltések lap](https://azure.microsoft.com/downloads/) **Windows PowerShell** szakaszából letöltheti és telepítheti a legújabb verziót.
 2. Ellenőrizze, hogy rendelkezik-e működő virtuális hálózattal és hozzá tartozó érvényes alhálózattal. Győződjön meg arról, hogy egy virtuális gép vagy felhőalapú telepítés sem használja az alhálózatot. Az Application Gateway-nek egyedül kell lennie a virtuális hálózat alhálózatán.
@@ -99,17 +99,17 @@ Egy application gateway-konfigurációt több értéket tartalmaz. Az értékeke
 
 Az értékek a következők:
 
-* **Háttér-kiszolgálókészlet**: a háttér-kiszolgálók IP-címek listáját. Megadott IP-címek a virtuális hálózat alhálózatához kell tartozniuk, vagy egy nyilvános IP-cím vagy a virtuális IP-címet kell lennie.
-* **Háttér-kiszolgálókészlet beállításai**: minden készletnek vannak beállításai, például port, protokoll vagy cookie-alapú affinitás. Ezek a beállítások egy adott készlethez kapcsolódnak, és a készlet minden kiszolgálójára érvényesek.
+* **Háttér-kiszolgálókészlet**: A háttér-kiszolgálók IP-címek listája. Megadott IP-címek a virtuális hálózat alhálózatához kell tartozniuk, vagy egy nyilvános IP-cím vagy a virtuális IP-címet kell lennie.
+* **Háttér-kiszolgálókészlet beállításai**: Minden készletnek vannak beállításai, például port, protokoll vagy cookie-alapú affinitás. Ezek a beállítások egy adott készlethez kapcsolódnak, és a készlet minden kiszolgálójára érvényesek.
 * **Előtérbeli port**: A port az application gateway-en megnyitott nyilvános port. Amikor a forgalom eléri ezt a portot, a port átirányítja az egyik háttérkiszolgálóra.
-* **Figyelő**: A figyelőt tartalmaz egy előtérbeli porttal, egy protokollal (Http vagy https előtaggal; megkülönböztetésével), és az SSL-tanúsítvány neve (ha az SSL-alapú kiszervezés konfigurálása).
+* **Figyelő**: A figyelő rendelkezik egy előtérbeli porttal, egy protokollal (Http vagy https előtaggal; megkülönböztetésével), és az SSL-tanúsítvány neve (ha az SSL-alapú kiszervezés konfigurálása).
 * **A szabály**: A szabály összeköti a figyelőt és a háttérkiszolgáló-készletet, és meghatározza, melyik háttérkiszolgáló-készletet a forgalmat, ha elér egy adott figyelőt. Jelenleg csak a *basic* szabály támogatott. A *basic* szabály a ciklikus időszeleteléses terheléselosztás.
 
 **További konfigurációs megjegyzések**
 
 Az SSL-tanúsítványok konfigurálásához **Https**-re kell módosítani a **HttpListener** protokollját (megkülönböztetve a kis- és nagybetűket). Adja hozzá a **SslCert** elem **HttpListener** értékre van állítva a használt ugyanazzal a névvel, a [töltse fel az SSL-tanúsítványok](#upload-ssl-certificates) szakaszban. Az előtérbeli portot frissíteni kell, hogy **443-as**.
 
-**Cookie-alapú affinitás engedélyezéséhez**: konfigurálhatja az application gateway, győződjön meg arról, hogy érkező kérelmet mindig van irányítva a webfarm ugyanazon virtuális Géphez. Ennek érdekében a szúrjon be egy munkamenetcookie-t, amely lehetővé teszi az átjáró számára a forgalom megfelelő irányítását. A cookie-alapú affinitás engedélyezéséhez a **CookieBasedAffinity** paraméter beállítása legyen **Enabled** a **BackendHttpSettings** elemen belül.
+**Cookie-alapú affinitás engedélyezéséhez**: Konfigurálhatja az application gateway, győződjön meg arról, hogy érkező kérelmet mindig van irányítva a webfarm ugyanazon virtuális Géphez. Ennek érdekében a szúrjon be egy munkamenetcookie-t, amely lehetővé teszi az átjáró számára a forgalom megfelelő irányítását. A cookie-alapú affinitás engedélyezéséhez a **CookieBasedAffinity** paraméter beállítása legyen **Enabled** a **BackendHttpSettings** elemen belül.
 
 A konfiguráció hozhatnak létre, vagy egy konfigurációs objektumot hoz létre, vagy egy konfigurációs XML-fájl használatával.
 A konfiguráció létrehozására egy konfigurációs XML-fájl használatával, adja meg a következő mintát:

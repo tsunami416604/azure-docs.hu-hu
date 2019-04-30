@@ -3,17 +3,17 @@ title: Az Azure-erőforrások megtekintése
 description: Ismerje meg az Erőforrás-grafikon lekérdezési nyelv segítségével az erőforrások vizsgálata, és Fedezze fel, hogyan vannak csatlakoztatva.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/05/2019
+ms.date: 04/23/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 3174e74dc3fb8c56279c0c9708a67d99ae19724a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0b4a75558f5e82b707ae5d012acef4d2c5c4b7a0
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795970"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62732981"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Az Azure-erőforrások felfedezése a Resource Graph használatával
 
@@ -29,7 +29,7 @@ Az Azure-ban egy közös erőforráshoz egy virtuális gépet. Virtuális gépek
 
 Kezdjük az egyszerű lekérdezés egyetlen virtuális Gépet a környezetre, és tekintse meg a visszaadott tulajdonságait.
 
-```Query
+```kusto
 where type =~ 'Microsoft.Compute/virtualMachines'
 | limit 1
 ```
@@ -50,56 +50,6 @@ A JSON-eredményeket struktúrája a következő példához hasonló:
 ```json
 [
   {
-    "aliases": {
-      "Microsoft.Compute/imageId": null,
-      "Microsoft.Compute/imageOffer": "WindowsServer",
-      "Microsoft.Compute/imagePublisher": "MicrosoftWindowsServer",
-      "Microsoft.Compute/imageSku": "2016-Datacenter",
-      "Microsoft.Compute/imageVersion": "latest",
-      "Microsoft.Compute/licenseType": null,
-      "Microsoft.Compute/virtualMachines/availabilitySet.id": null,
-      "Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics": null,
-      "Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.enabled": null,
-      "Microsoft.Compute/virtualMachines/diagnosticsProfile.bootDiagnostics.storageUri": null,
-      "Microsoft.Compute/virtualMachines/imageOffer": "WindowsServer",
-      "Microsoft.Compute/virtualMachines/imagePublisher": "MicrosoftWindowsServer",
-      "Microsoft.Compute/virtualMachines/imageSku": "2016-Datacenter",
-      "Microsoft.Compute/virtualMachines/imageVersion": "latest",
-      "Microsoft.Compute/virtualMachines/networkInterfaces[*].id": [
-        "/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Network/networkInterfaces/contosovm1535"
-      ],
-      "Microsoft.Compute/virtualMachines/osDisk.Uri": null,
-      "Microsoft.Compute/virtualMachines/osProfile.adminPassword": null,
-      "Microsoft.Compute/virtualMachines/osProfile.adminUsername": "localAdmin",
-      "Microsoft.Compute/virtualMachines/osProfile.linuxConfiguration": null,
-      "Microsoft.Compute/virtualMachines/osProfile.linuxConfiguration.disablePasswordAuthentication": null,
-      "Microsoft.Compute/virtualMachines/osProfile.windowsConfiguration": {
-        "enableAutomaticUpdates": true,
-        "provisionVMAgent": true
-      },
-      "Microsoft.Compute/virtualMachines/osProfile.windowsConfiguration.enableAutomaticUpdates": true,
-      "Microsoft.Compute/virtualMachines/osProfile.windowsConfiguration.provisionVMAgent": true,
-      "Microsoft.Compute/virtualMachines/sku.name": "Standard_B2s",
-      "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].caching": [],
-      "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].createOption": [],
-      "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].diskSizeGB": [],
-      "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].image.uri": [],
-      "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].lun": [],
-      "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].managedDisk.id": [],
-      "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].managedDisk.storageAccountType": [],
-      "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].name": [],
-      "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].vhd.uri": [],
-      "Microsoft.Compute/virtualMachines/storageProfile.osDisk.caching": "ReadWrite",
-      "Microsoft.Compute/virtualMachines/storageProfile.osDisk.createOption": "FromImage",
-      "Microsoft.Compute/virtualMachines/storageProfile.osDisk.encryptionSettings": null,
-      "Microsoft.Compute/virtualMachines/storageProfile.osDisk.encryptionSettings.enabled": null,
-      "Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.id": "/subscriptions/<subscriptionId>/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166",
-      "Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.storageAccountType": "Premium_LRS",
-      "Microsoft.Compute/virtualMachines/storageProfile.osDisk.name": "ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166",
-      "Microsoft.Compute/virtualMachines/storageProfile.osDisk.osType": "Windows",
-      "Microsoft.Compute/virtualMachines/storageProfile.osDisk.vhd": null,
-      "Microsoft.Compute/virtualMachines/storageProfile.osDisk.vhd.uri": null
-    },
     "id": "/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/ContosoVM1",
     "kind": "",
     "location": "westus2",
@@ -160,15 +110,13 @@ A JSON-eredményeket struktúrája a következő példához hasonló:
 ]
 ```
 
-Az első sor tulajdonságból alatt **aliasok** számos kapcsolódó tulajdonságértékeket. Részletes tájékoztatást nyújt aliasok és milyen aliasok elérhetők: [Azure szabályzatdefiníciók struktúrája - aliasok](../../policy/concepts/definition-structure.md#aliases). Aliasok elsősorban az Azure Policy által a szervezeti szabályok és a szabályozási megfelelőség kezelése.
-
-A többi tulajdonság mondja el, további információ a virtuális gép típusú erőforrást, a Termékváltozat, az operációs rendszer, lemezek, címkék, és az erőforráscsoportban és előfizetésben tagja.
+A Tulajdonságok mondja el, további információ a virtuális gép típusú erőforrást, a Termékváltozat, az operációs rendszer, lemezek, címkék, és az erőforráscsoportban és előfizetésben tagja.
 
 ### <a name="virtual-machines-by-location"></a>Virtuális gépek hely szerint
 
 Tart a virtuális gépek erőforrásra vonatkozó tanultakat, használja a **hely** tulajdonságot az összes virtuális gép hely alapján. Frissítse a lekérdezést, azt fogja távolítsa el a korlátot, és összefoglalója hely értékek száma.
 
-```Query
+```kusto
 where type =~ 'Microsoft.Compute/virtualMachines'
 | summarize count() by location
 ```
@@ -206,8 +154,8 @@ Ekkor láthatja, hogy hány virtuális gépet minden egyes Azure-régióban van.
 
 Az eredeti virtuális gép tulajdonságainak visszatérve próbáljon található összes virtuális gépet, amely a Termékváltozat mérete **Standard_B2s**. A visszaadott JSON-t keresi, láthatjuk, hogy a tárolt **properties.hardwareprofile.vmsize**. Frissítjük a lekérdezésben található összes virtuális gépet, amely a méretét, és csak a virtuális gép és a régió nevét adja vissza.
 
-```Query
-where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s
+```kusto
+where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
 | project name, resourceGroup"
 ```
 
@@ -223,7 +171,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' and pro
 
 Ha szerettünk volna a részletek a prémium szintű felügyelt lemezek ezek csatolt **Standard_B2s** virtuális gépeket, hogy kibontásával, a lekérdezést, hogy ossza meg velünk a felügyelt lemez az erőforrás-azonosítója.
 
-```Query
+```kusto
 where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
 | extend disk = properties.storageProfile.osDisk.managedDisk
 | where disk.storageAccountType == 'Premium_LRS'
@@ -231,7 +179,7 @@ where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile
 ```
 
 > [!NOTE]
-> Egy másik módja a Termékváltozat használatával lett volna a **aliasok** tulajdonság **Microsoft.Compute/virtualMachines/sku.name**.
+> Egy másik módja a Termékváltozat használatával lett volna a **aliasok** tulajdonság **Microsoft.Compute/virtualMachines/sku.name**. Tekintse meg a [aliasok megjelenítése](../samples/starter.md#show-aliases) és [eltérő alias értékek megjelenítése](../samples/starter.md#distinct-alias-values) példákat.
 
 ```azurecli-interactive
 az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
@@ -257,7 +205,7 @@ Például, például az előző lekérdezés kimenete:
 ]
 ```
 
-```Query
+```kusto
 where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'
 ```
 
@@ -280,14 +228,6 @@ A JSON-eredményeket struktúrája a következő példához hasonló:
 ```json
 [
   {
-    "aliases": {
-      "Microsoft.Compute/disks/sku.name": "Premium_LRS",
-      "Microsoft.Compute/imageId": null,
-      "Microsoft.Compute/imageOffer": null,
-      "Microsoft.Compute/imagePublisher": null,
-      "Microsoft.Compute/imageSku": null,
-      "Microsoft.Compute/imageVersion": null
-    },
     "id": "/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166",
     "kind": "",
     "location": "westus2",

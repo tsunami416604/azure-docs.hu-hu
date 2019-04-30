@@ -9,11 +9,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: f11034a4970e3fb95333310af82a6b2a2551f1eb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59257280"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61479153"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Az Azure Machine Learning-függvényekkel a Stream Analytics-feladatok méretezése
 Legyen nagyon egyszerű Stream Analytics-feladat beállítását, és néhány Mintaadat végigfuttatása. Mit kell? ha ellenőriznünk kell a magasabb adatkötettel ugyanez a feladat futtatása Ez megköveteli tőlünk, megtudhatja, hogyan konfigurálja a Stream Analytics-feladat, így a méretezés. Ebben a dokumentumban koncentrálunk a Machine Learning-függvényekkel a Stream Analytics-feladatok méretezése különleges szempontjait. A Stream Analytics-feladatok méretezése az általános információkat lásd: a cikk [feladatok méretezése](stream-analytics-scale-jobs.md).

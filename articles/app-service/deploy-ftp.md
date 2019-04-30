@@ -16,11 +16,11 @@ ms.date: 11/30/2018
 ms.author: cephalin;dariac
 ms.custom: seodec18
 ms.openlocfilehash: db8445ec2b3dd8bdefa661d7f186e720c6fada09
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57858877"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130109"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Alkalmazás üzembe helyezése az Azure App Service-be FTP/S
 
@@ -89,7 +89,7 @@ FTP-telepítés a [Azure PowerShell-lel](/cli/azure), lásd: [fájlok feltölté
 ## <a name="troubleshoot-ftp-deployment"></a>FTP telepítési hibáinak elhárítása
 
 - [Hogyan háríthatom el az FTP telepítési?](#how-can-i-troubleshoot-ftp-deployment)
-- [E nem lehet FTP, és tegye közzé a saját kódját. Hogyan lehet megoldani a problémát?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+- [Nem tudok FTP-hez csatlakozni, és közzétenni a kódot. Hogyan lehet megoldani a problémát?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
 - [Hogyan csatlakoztathatom a az Azure App Service-ben FTP passzív mód keresztül?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
 
 ### <a name="how-can-i-troubleshoot-ftp-deployment"></a>Hogyan háríthatom el az FTP telepítési?

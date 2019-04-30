@@ -15,11 +15,11 @@ ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 1c5c5f4c8125f801edc89d47851871d8eb06a2f9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762871"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60591295"
 ---
 # <a name="use-azure-sql-vm-cli-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Azure SQL virtuális gép CLI használatával az Azure virtuális Gépeken futó SQL Server AlwaysOn rendelkezésre állási csoport konfigurálása
 Ez a cikk ismerteti, hogyan használható [Azure SQL virtuális gép CLI](/cli/azure/sql/vm?view=azure-cli-latest/) való üzembe helyezése a Windows feladatátvevő fürt (WSFC), és az SQL Server virtuális gépek hozzáadása a fürthöz, valamint a belső Load Balancer és a egy Always On rendelkezésre állási csoport figyelőjének létrehozásához.  Az Always On rendelkezésre állási csoport a tényleges telepítési továbbra is végezhető el manuálisan az SQL Server Management Studio (SSMS) keresztül. 

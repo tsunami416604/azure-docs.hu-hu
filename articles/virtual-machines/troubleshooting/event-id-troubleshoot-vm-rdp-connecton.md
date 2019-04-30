@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 4c783c70217a84bbe5ccf15accc4a2bec0b7cca8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959682"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485408"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Az Azure-beli virtuális gépek kapcsolati hibáinak elhárítása eseményazonosító alapján 
 
@@ -54,38 +54,38 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-TerminalServices-RemoteConnectionManager'] and EventID=1057 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Napló neve:** rendszer <br />
-**Forrás:** Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Dátum:** *idő* <br />
-**Eseményazonosító:** 1058 <br />
+**Napló neve:**      Rendszer <br />
+**Forrás:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
+**Dátum:***idő* <br />
+**Eseményazonosító:**      1058 <br />
 **Feladat kategóriája:** None <br />
-**Szint:** hiba <br />
-**Kulcsszavak:** klasszikus <br />
-**Felhasználó:** N/A <br />
-**Számítógép:** *számítógép* <br />
-**Leírás:** a távoli asztali munkamenet kiszolgáló nem tudta cserélje le az önaláírt SSL-kapcsolatok a távoli asztali munkamenet kiszolgáló hitelesítéshez használt tanúsítvány lejárt. A megfelelő állapotkód volt, a hozzáférés megtagadva.
+**Szint:**         Hiba <br />
+**Kulcsszavak:**      Klasszikus <br />
+**Felhasználói:**          – <br />
+**Számítógép:***számítógép* <br />
+**Leírás:** A távoli asztali munkamenet kiszolgáló nem tudta cserélje le az önaláírt SSL-kapcsolatok a távoli asztali munkamenet kiszolgáló hitelesítéshez használt tanúsítvány lejárt. A megfelelő állapotkód volt, a hozzáférés megtagadva.
 
-**Napló neve:** rendszer <br />
-**Forrás:** Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Dátum:** *idő* <br />
-**Eseményazonosító:** 1058 <br />
+**Napló neve:**      Rendszer <br />
+**Forrás:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
+**Dátum:***idő* <br />
+**Eseményazonosító:**      1058 <br />
 **Feladat kategóriája:** None <br />
-**Szint:** hiba <br />
-**Kulcsszavak:** klasszikus <br />
-**Felhasználó:** N/A <br />
-**Számítógép:** *számítógép* <br />
-**Leírás:** hozzon létre egy új önaláírt tanúsítvány használható SSL-kapcsolatok a távoli asztali munkamenet gazdagép kiszolgálóhitelesítés távoli asztali munkamenetgazda kiszolgálónak nem sikerült, a megfelelő állapotkód volt az objektum már létezik.
+**Szint:**         Hiba <br />
+**Kulcsszavak:**      Klasszikus <br />
+**Felhasználói:**          – <br />
+**Számítógép:***számítógép* <br />
+**Leírás:** Nem sikerült a távoli asztali munkamenet gazdagép-kiszolgálón hozzon létre egy új önaláírt tanúsítvány használható SSL-kapcsolatok a távoli asztali munkamenet gazdagép kiszolgálóhitelesítés, a megfelelő állapotkód volt az objektum már létezik.
 
-**Napló neve:** rendszer <br />
-**Forrás:** Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
-**Dátum:** *idő* <br />
-**Eseményazonosító:** 1057 <br />
+**Napló neve:**      Rendszer <br />
+**Forrás:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
+**Dátum:***idő* <br />
+**Eseményazonosító:**      1057 <br />
 **Feladat kategóriája:** None <br />
-**Szint:** hiba <br />
-**Kulcsszavak:** klasszikus <br />
-**Felhasználó:** N/A <br />
-**Számítógép:** *számítógép* <br />
-**Leírás:** a távoli asztali munkamenet kiszolgáló nem tudta hozzon létre egy új önaláírt SSL-kapcsolatok a távoli asztali munkamenet kiszolgáló hitelesítéshez használandó tanúsítványt. Az ide tartozó állapotkód kulcskészletet nem létezik.
+**Szint:**         Hiba <br />
+**Kulcsszavak:**      Klasszikus <br />
+**Felhasználói:**          – <br />
+**Számítógép:***számítógép* <br />
+**Leírás:** Nem sikerült a távoli asztali munkamenet kiszolgáló hozzon létre egy új önaláírt SSL-kapcsolatok a távoli asztali munkamenet kiszolgáló hitelesítéshez használandó tanúsítványt. Az ide tartozó állapotkód kulcskészletet nem létezik.
 
 Ellenőrizheti az SCHANNEL-események hiba 36872-es és 36870-es a következő parancsok futtatásával:
 
@@ -94,16 +94,16 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36872 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Napló neve:** rendszer <br />
-**Forrás:** Schannel <br />
+**Napló neve:**      Rendszer <br />
+**Forrás:**        Schannel <br />
 **Dátum:** – <br />
-**Eseményazonosító:** 36870-es <br />
+**Eseményazonosító:**      36870 <br />
 **Feladat kategóriája:** None <br />
-**Szint:** hiba <br />
+**Szint:**         Hiba <br />
 **Kulcsszavak:**       <br />
-**Felhasználó:** rendszer <br />
-**Számítógép:** *számítógép* <br />
-**Leírás:** végzetes hiba történt az SSL kiszolgálói hitelesítő adatok titkos kulcsának elérésekor. A titkosító modul által visszaadott hibakód: 0x8009030d.  <br />
+**Felhasználói:**          RENDSZER <br />
+**Számítógép:***számítógép* <br />
+**Leírás:** Helyreállíthatatlan hiba történt az SSL kiszolgálói hitelesítő adatok titkos kulcsának elérésekor. A titkosító modul által visszaadott hibakód: 0x8009030d.  <br />
 Belső hiba állapota 10001.
 
 ### <a name="cause"></a>Ok
@@ -216,16 +216,16 @@ CMD-példányban futtassa a következő parancsok futtatásával ellenőrizze, h
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36871 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Napló neve:** rendszer <br />
-**Forrás:** Schannel <br />
+**Napló neve:**      Rendszer <br />
+**Forrás:**        Schannel <br />
 **Dátum:** – <br />
-**Eseményazonosító:** 36871 <br />
+**Eseményazonosító:**      36871 <br />
 **Feladat kategóriája:** None <br />
-**Szint:** hiba <br />
+**Szint:**         Hiba <br />
 **Kulcsszavak:**       <br />
-**Felhasználó:** rendszer <br />
-**Számítógép:** *számítógép* <br />
-**Leírás:** végzetes hiba történt egy TLS kiszolgálói hitelesítő adatok létrehozása során. Belső hiba állapota 10013.
+**Felhasználói:**          RENDSZER <br />
+**Számítógép:***számítógép* <br />
+**Leírás:** Végzetes hiba történt a TLS kiszolgálói hitelesítő adatok létrehozása során. Belső hiba állapota 10013.
  
 ### <a name="cause"></a>Ok
 
@@ -246,36 +246,36 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Windows-TerminalServices-SessionBroker-Client '] and EventID=1296 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**Napló neve:** Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
-**Forrás:** Microsoft-Windows-TerminalServices-SessionBroker <br />
-**Dátum:** *idő* <br />
-**Eseményazonosító:** 2056 <br />
+**Napló neve:**      Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
+**Forrás:**        Microsoft-Windows-TerminalServices-SessionBroker <br />
+**Dátum:***idő* <br />
+**Eseményazonosító:**      2056 <br />
 **Feladat kategóriája:** (109) <br />
-**Szint:** hiba <br />
+**Szint:**         Hiba <br />
 **Kulcsszavak:**       <br />
-**Felhasználó:** hálózati szolgáltatás <br />
-**Számítógép:** *számítógép teljes tartományneve* <br />
-**Leírás:** Event ID 2056 forrásból Microsoft-Windows-TerminalServices-SessionBroker leírása nem található. Az összetevő, amely kiváltja ezt az eseményt a helyi számítógépen nincs telepítve, vagy sérült a telepítés. Telepítse, vagy javítsa ki az összetevő a helyi számítógépen. <br />
+**Felhasználói:**          HÁLÓZATI SZOLGÁLTATÁS <br />
+**Számítógép:***számítógép teljes tartományneve* <br />
+**Leírás:** A Microsoft-Windows-TerminalServices-SessionBroker Event ID 2056 forrás leírása nem található. Az összetevő, amely kiváltja ezt az eseményt a helyi számítógépen nincs telepítve, vagy sérült a telepítés. Telepítse, vagy javítsa ki az összetevő a helyi számítógépen. <br />
 Ha az esemény származik, egy másik számítógépen, a megjelenített információk kellett menthető az eseményhez. <br />
 Az esemény lett a következő információkat: <br />
 NULL <br />
 NULL <br />
 Nem sikerült bejelentkezni az adatbázisba.
 
-**Napló neve:** Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
-**Forrás:** Microsoft-Windows-TerminalServices-SessionBroker-ügyfél <br />
-**Dátum:** *idő* <br />
-**Eseményazonosító:** 1296 <br />
+**Napló neve:**      Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
+**Forrás:**        Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
+**Dátum:***idő* <br />
+**Eseményazonosító:**      1296 <br />
 **Feladat kategóriája:** (104) <br />
-**Szint:** hiba <br />
+**Szint:**         Hiba <br />
 **Kulcsszavak:**       <br />
-**Felhasználó:** hálózati szolgáltatás <br />
-**Számítógép:** *számítógép teljes tartományneve* <br />
-**Leírás:** Event ID 1296 forrásból Microsoft-Windows-TerminalServices-SessionBroker-ügyfél leírása nem található. Az összetevő, amely kiváltja ezt az eseményt a helyi számítógépen nincs telepítve, vagy sérült a telepítés. Telepítse, vagy javítsa ki az összetevő a helyi számítógépen.
+**Felhasználói:**          HÁLÓZATI SZOLGÁLTATÁS <br />
+**Számítógép:***számítógép teljes tartományneve* <br />
+**Leírás:** A Microsoft-Windows-TerminalServices-SessionBroker-ügyfél Event ID 1296 forrás leírása nem található. Az összetevő, amely kiváltja ezt az eseményt a helyi számítógépen nincs telepítve, vagy sérült a telepítés. Telepítse, vagy javítsa ki az összetevő a helyi számítógépen.
 Ha az esemény származik, egy másik számítógépen, a megjelenített információk kellett menthető az eseményhez.
 Az esemény lett a következő információkat:  <br />
-*Szöveg* <br />
-*Szöveg* <br />
+*text* <br />
+*text* <br />
 Távoli asztali Kapcsolatszervező nem áll készen a RPC-kommunikációhoz.
 
 ### <a name="cause"></a>Ok

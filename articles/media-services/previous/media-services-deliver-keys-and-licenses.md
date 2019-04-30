@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: dbdfac143cb3254e558622fc1eecfdf95876240e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177738"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61465770"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>DRM-licencek és az AES-kulcsok a Media Services használatával 
 
@@ -347,5 +347,5 @@ namespace DeliverDRMLicenses
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még
-* [PlayReady és/vagy Widevine dynamic common encryption használata](media-services-protect-with-playready-widevine.md)
-* [AES-128, a dinamikus titkosítás és a kulcstovábbítást használata](media-services-protect-with-aes128.md)
+* [PlayReady és/vagy Widevine Dynamic Common Encryption használata](media-services-protect-with-playready-widevine.md)
+* [Az AES-128 dinamikus titkosítás és a kulcskézbesítési szolgáltatás használata](media-services-protect-with-aes128.md)

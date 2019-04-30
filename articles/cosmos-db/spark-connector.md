@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: ramkris
 ms.openlocfilehash: 60afd8128224050d456699e798d814a259e106ae
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59543821"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61330246"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Gyorsítsa fel a big data-elemzés az Azure Cosmos DB-összekötő az Apache Spark használatával
 
@@ -203,7 +203,7 @@ További információt van a `azure-cosmosdb-spark` [wiki](https://github.com/Az
 * [Lekérdezés tesztelések](https://github.com/Azure/azure-documentdb-spark/wiki/Query-Test-Runs)
 * [Írási teszt futtatása](https://github.com/Azure/azure-cosmosdb-spark/wiki/Writing-Test-Runs)
 
-### <a name="change-feed"></a>Módosítási hírcsatorna
+### <a name="change-feed"></a>Változáscsatorna
 
 * [Az Azure Cosmos DB módosítási hírcsatorna és az Apache Spark Stream feldolgozása módosítások](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark)
 * [Módosítási hírcsatorna bemutatók](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)

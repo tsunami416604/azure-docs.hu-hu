@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 5df4c9dfe18b02ade3a37717da9c68acbfcf1853
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106600"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61480983"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>Fejlesztés a .NET Standard, felhasználó által definiált függvények az Azure Stream Analytics Edge-feladatok (előzetes verzió)
 
@@ -134,6 +134,6 @@ Az UDF-előzetes verzió jelenleg a következő korlátozások vonatkoznak:
 
 ## <a name="next-steps"></a>További lépések
 
-* [Oktatóanyag: Írhat egy C# nyelvű felhasználó által definiált függvény egy Azure Stream Analytics Edge-feladat (előzetes verzió)](stream-analytics-edge-csharp-udf.md)
-* [Oktatóanyag: Azure Stream Analytics JavaScript-a felhasználó által definiált függvények](stream-analytics-javascript-user-defined-functions.md)
+* [Oktatóanyag: Írhat egy C# felhasználó által definiált függvény egy Azure Stream Analytics Edge-feladat (előzetes verzió)](stream-analytics-edge-csharp-udf.md)
+* [Oktatóanyag: Az Azure Stream Analytics JavaScript felhasználó által definiált függvények](stream-analytics-javascript-user-defined-functions.md)
 * [A Visual Studio használata az Azure Stream Analytics-feladatok megtekintése](stream-analytics-vs-tools.md)

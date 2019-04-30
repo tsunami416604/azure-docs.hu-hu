@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 6d6f24475497382dd9e04d3335fb89d6f0bdd514
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57528678"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61459518"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Hozzon létre és kezelhető az Azure Database for MySQL-kiszolgálóhoz az Azure portal használatával
 Ez a témakör ismerteti, hogyan gyorsan létrehozhat egy új, Azure Database for MySQL-kiszolgálóhoz. A kiszolgáló kezelése az Azure portal használatával kapcsolatos információkat is tartalmaz. Felügyeleti kiszolgáló többek között a kiszolgáló adatait, és adatbázisok, a jelszó alaphelyzetbe állítása, erőforrások skálázása és a kiszolgáló törlése megtekintésére.

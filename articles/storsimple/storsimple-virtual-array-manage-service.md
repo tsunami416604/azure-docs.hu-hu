@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/29/2016
 ms.author: alkohli
-ms.openlocfilehash: 1881a0625b107ae1a90e5b772f5296a4d728973d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9f6e5b606caa661429a3c4d4a53e2021d57730aa
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38688153"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62116955"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>A StorSimple Virtual Array StorSimple-Eszközkezelő szolgáltatás üzembe helyezése
 ## <a name="overview"></a>Áttekintés
@@ -67,7 +67,7 @@ A következő lépésekkel törölheti a szolgáltatást.
 
 #### <a name="to-delete-a-service"></a>Szolgáltatás törlése
 
-1. Lépjen a **összes erőforrás**. Keresse meg a StorSimple-Eszközkezelő szolgáltatásban. Válassza ki a törölni kívánt szolgáltatást.
+1. Lépjen a **Minden erőforrás** menüpontra. Keresse meg a StorSimple-Eszközkezelő szolgáltatásban. Válassza ki a törölni kívánt szolgáltatást.
    
     ![Válassza ki a szolgáltatás törlése](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
 2. Nyissa meg a szolgáltatási irányítópult nincsenek a szolgáltatáshoz való kapcsolódás eszközök biztosítása érdekében. Ha nincsenek a szolgáltatásban regisztrált eszközök, a hatás szalagcím üzenetet is látni fogja. Kattintson a **Törlés** gombra.

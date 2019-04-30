@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 8b8810d3dc899a87b99422c093b6901ed9683325
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196947"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62101132"
 ---
 # <a name="saas-application-offer-settings-tab"></a>SaaS-alkalmazás ajánlat beállítások lap
 
@@ -29,7 +29,7 @@ A **SaaS-alkalmazás > Új ajánlat** oldal megnyílik az aktuális az a **aján
 
 Az ajánlat beállítások lap segítségével konfigurálhatja a **ajánlat identitás**, a következő képernyőfelvételen látható módon. Egy csillag (*) hozzáfűzi a mező nevét jelzi, hogy ez szükséges.
 
-![Az ajánlat (beállítások) lapján](./media/saas-new-offer.png)
+![Ajánlatbeállítási lap](./media/saas-new-offer.png)
 
 ## <a name="offer-identity-settings"></a>Az ajánlat nastavení Identity
 
@@ -46,4 +46,4 @@ Válassza ki **mentése** a folyamat mentéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-[Technikai információ lap](./cpp-technical-info-tab.md)
+[Technikai információs lap](./cpp-technical-info-tab.md)

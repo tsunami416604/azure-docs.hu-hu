@@ -15,11 +15,11 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 9f81e2b7537a5ecc6778baa93a1bab23dd30ff8a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451909"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61475507"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC bővítmény
 
@@ -100,22 +100,22 @@ A következő JSON Azure Resource Manager-sablon a DSC-bővítmény beállítás
 
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2018-10-01 | dátum |
-| publisher | Microsoft.Powershell.DSC | sztring |
-| type | DSC | sztring |
+| apiVersion | 2018-10-01 | date |
+| publisher | Microsoft.Powershell.DSC | string |
+| type | DSC | string |
 | typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Beállítási tulajdonság értékei
 
 | Name (Név) | Adattípus | Leírás
 | ---- | ---- | ---- |
-| settings.wmfVersion | sztring | Határozza meg a Windows Management Framework a virtuális gépre telepítendő verzióját. Ez a tulajdonság "legújabb" beállítás telepíti a WMF legtöbb frissített verzióját. Ez a tulajdonság csak az aktuális lehetséges értékei: 4.0', "5.0" és "legújabb". Ezek lehetséges értékek a következők vonatkoznak a frissítéseket. Az alapértelmezett érték: "legújabb". |
-| settings.configuration.url | sztring | Itt adhatja meg, ahonnan letölthető a DSC konfigurációs zip-fájl URL-címét. Ha a megadott URL-cím egy SAS-token hozzáférést igényel, szüksége lesz a protectedSettings.configurationUrlSasToken tulajdonsága az SAS-token értékét. A tulajdonságot kötelező megadni, ha settings.configuration.script és/vagy settings.configuration.function van definiálva.
-| settings.configuration.script | sztring | Megadja a fájl nevét, a parancsfájl, amely tartalmazza a DSC-konfiguráció definíciójának. Ez a szkript a gyökérmappában található azon a configuration.url tulajdonság által megadott URL-címéről letöltött zip-fájlt kell lennie. A tulajdonságot kötelező megadni, ha settings.configuration.url és/vagy settings.configuration.script van definiálva.
-| settings.configuration.function | sztring | Megadja a DSC-konfiguráció nevét. A parancsfájl configuration.script által meghatározott tartalmaznia kell a nevű-konfigurációt. A tulajdonságot kötelező megadni, ha settings.configuration.url és/vagy settings.configuration.function van definiálva.
+| settings.wmfVersion | string | Határozza meg a Windows Management Framework a virtuális gépre telepítendő verzióját. Ez a tulajdonság "legújabb" beállítás telepíti a WMF legtöbb frissített verzióját. Ez a tulajdonság csak az aktuális lehetséges értékei: 4.0', "5.0" és "legújabb". Ezek lehetséges értékek a következők vonatkoznak a frissítéseket. Az alapértelmezett érték: "legújabb". |
+| settings.configuration.url | string | Itt adhatja meg, ahonnan letölthető a DSC konfigurációs zip-fájl URL-címét. Ha a megadott URL-cím egy SAS-token hozzáférést igényel, szüksége lesz a protectedSettings.configurationUrlSasToken tulajdonsága az SAS-token értékét. A tulajdonságot kötelező megadni, ha settings.configuration.script és/vagy settings.configuration.function van definiálva.
+| settings.configuration.script | string | Megadja a fájl nevét, a parancsfájl, amely tartalmazza a DSC-konfiguráció definíciójának. Ez a szkript a gyökérmappában található azon a configuration.url tulajdonság által megadott URL-címéről letöltött zip-fájlt kell lennie. A tulajdonságot kötelező megadni, ha settings.configuration.url és/vagy settings.configuration.script van definiálva.
+| settings.configuration.function | string | Megadja a DSC-konfiguráció nevét. A parancsfájl configuration.script által meghatározott tartalmaznia kell a nevű-konfigurációt. A tulajdonságot kötelező megadni, ha settings.configuration.url és/vagy settings.configuration.function van definiálva.
 | settings.configurationArguments | Gyűjtemény | Határozza meg a paramétereket, adja át szeretné a DSC-konfiguráció. Ez a tulajdonság nem lesznek titkosítva.
-| settings.configurationData.url | sztring | Adja meg az URL-cím, ahonnan letölthető a konfigurációs adatfájl (.pds1) való használatra a DSC-konfiguráció bemenetként. Ha a megadott URL-cím egy SAS-token hozzáférést igényel, szüksége lesz a protectedSettings.configurationDataUrlSasToken tulajdonsága az SAS-token értékét.
-| settings.privacy.dataEnabled | sztring | Engedélyezheti vagy letilthatja a telemetriai adatok gyűjtése. Ez a tulajdonság csak lehetséges értékei a következők "Engedélyezése", "Letiltás", ", vagy $null. És ez a tulajdonság üres vagy null értékű lesz telemetria engedélyezése
+| settings.configurationData.url | string | Adja meg az URL-cím, ahonnan letölthető a konfigurációs adatfájl (.pds1) való használatra a DSC-konfiguráció bemenetként. Ha a megadott URL-cím egy SAS-token hozzáférést igényel, szüksége lesz a protectedSettings.configurationDataUrlSasToken tulajdonsága az SAS-token értékét.
+| settings.privacy.dataEnabled | string | Engedélyezheti vagy letilthatja a telemetriai adatok gyűjtése. Ez a tulajdonság csak lehetséges értékei a következők "Engedélyezése", "Letiltás", ", vagy $null. És ez a tulajdonság üres vagy null értékű lesz telemetria engedélyezése
 | settings.advancedOptions.forcePullAndApply | Bool | Ez a beállítás célja a csomópontok regisztrálhat az Azure Automation DSC bővítmény használata élményének fokozása.  Ha az érték `$true`, a bővítmény várakozik az első futtatásakor a lekért sikeres/sikertelen visszaküldése előtt a szolgáltatás konfigurációját.  Ha értékét $false értékre van állítva, a bővítmény által visszaadott állapotot csak hivatkozni, hogy a csomópont regisztrálva lett az Azure Automation Állapotkonfiguráció sikeresen, és a csomópont-konfiguráció nem fog futni a regisztráció során.
 | settings.advancedOptions.downloadMappings | Gyűjtemény | Határozza meg a másodlagos helyek függőségeit, például a .NET és a WMF letöltése
 
@@ -123,9 +123,9 @@ A következő JSON Azure Resource Manager-sablon a DSC-bővítmény beállítás
 
 | Name (Név) | Adattípus | Leírás
 | ---- | ---- | ---- |
-| protectedSettings.configurationArguments | sztring | Határozza meg a paramétereket, adja át szeretné a DSC-konfiguráció. Ez a tulajdonság lesznek titkosítva. |
-| protectedSettings.configurationUrlSasToken | sztring | Adja meg a SAS-jogkivonat a configuration.url által meghatározott URL-címet. Ez a tulajdonság lesznek titkosítva. |
-| protectedSettings.configurationDataUrlSasToken | sztring | Adja meg a SAS-jogkivonat a configurationData.url által meghatározott URL-címet. Ez a tulajdonság lesznek titkosítva. |
+| protectedSettings.configurationArguments | string | Határozza meg a paramétereket, adja át szeretné a DSC-konfiguráció. Ez a tulajdonság lesznek titkosítva. |
+| protectedSettings.configurationUrlSasToken | string | Adja meg a SAS-jogkivonat a configuration.url által meghatározott URL-címet. Ez a tulajdonság lesznek titkosítva. |
+| protectedSettings.configurationDataUrlSasToken | string | Adja meg a SAS-jogkivonat a configurationData.url által meghatározott URL-címet. Ez a tulajdonság lesznek titkosítva. |
 
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés

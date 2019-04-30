@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/14/2018
 ms.author: aschhab
 ms.openlocfilehash: 8f5c1755462d2bbd28dd7f8db427cda141817588
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308856"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61472224"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>A Service Bus hozzáférés-vezérlés közös hozzáférésű jogosultságkódokkal
 

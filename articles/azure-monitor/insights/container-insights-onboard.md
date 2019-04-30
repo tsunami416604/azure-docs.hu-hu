@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 22c063cb4eade00db1e400787aa7e46000bb03d3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b5ba9a0abe8ec0f72cfaf42c747616e733fb3f32
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995336"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62101151"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers"></a>Hogyan előkészítése az Azure Monitor for containers szolgáltatásban  
 
@@ -36,7 +36,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 - **Log Analytics-munkaterületet.** Létrehozhat, engedélyezze a monitorozást az új AKS-fürt, vagy lehetővé teszik az előkészítési folyamatot, hozzon létre egy alapértelmezett munkaterületet az AKS-fürt előfizetés alapértelmezett az erőforráscsoportban. Ha úgy döntött, hogy saját maga létrehozni, azt a létrehozhat [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)segítségével, [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json), vagy a [az Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
 - Ön a tagja, a **Log Analytics közreműködő szerepkör** engedélyezéséhez a tárolók figyelését. A Log Analytics-munkaterülethez való hozzáférésének kapcsolatos további információkért lásd: [munkaterületeinek kezeléséhez](../../azure-monitor/platform/manage-access.md).
-- Ön a tagja, a **[tulajdonosa](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-role.md#owner)** az AKS-fürt erőforrás szerepkört. 
+- Ön a tagja, a **[tulajdonosa](../../role-based-access-control/built-in-roles.md#owner)** az AKS-fürt erőforrás szerepkört. 
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 

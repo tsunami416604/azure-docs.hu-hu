@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: bd39b0aae5b76f37e2153f8e4c4502be994fa5b5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081831"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61462003"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Adatok áthelyezése a postgresql-hez az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -80,7 +80,7 @@ A következő táblázat a JSON-elemeket társított PostgreSQL szolgáltatás l
 | séma |A séma az adatbázis neve. A séma neve a kis-és nagybetűket. |Nem |
 | authenticationType |A PostgreSQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek: Névtelen, alapszintű és a Windows. |Igen |
 | felhasználónév |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |Nem |
-| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
+| password |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
 | átjáró neve |Az átjáró által a Data Factory szolgáltatás a helyi PostgreSQL-adatbázishoz való kapcsolódáshoz használandó neve. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
@@ -306,12 +306,12 @@ Adatok áthelyezése a postgresql-hez, amikor a következő hozzárendeléseket 
 
 | PostgreSQL-adatbázis típusa | PostgresSQL aliasok | .NET-keretrendszer típusa |
 | --- | --- | --- |
-| abstime | |Dátum és idő |
+| abstime | |DateTime |
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte [], karakterlánc |
 | bit különböző [(n)] |varbit |Byte [], karakterlánc |
-| logikai |logikai |Logikai |
+| logikai |logikai |Boolean |
 | Box | |Byte [], karakterlánc |
 | bytea | |Byte [], karakterlánc |
 | [(n)] karakter |char [(n)] |String |
@@ -319,7 +319,7 @@ Adatok áthelyezése a postgresql-hez, amikor a következő hozzárendeléseket 
 | CID | |String |
 | CIDR | |String |
 | Kör | |Byte [], karakterlánc |
-| dátum | |Dátum és idő |
+| date | |DateTime |
 | DateRange | |String |
 | a kétszeres pontosság |FLOAT8 |Double |
 | inet | |Byte [], karakterlánc |
@@ -333,7 +333,7 @@ Adatok áthelyezése a postgresql-hez, amikor a következő hozzárendeléseket 
 | vonal | |Byte [], karakterlánc |
 | lseg | |Byte [], karakterlánc |
 | macaddr | |Byte [], karakterlánc |
-| költséget takaríthat meg | |Decimal |
+| money | |Decimal |
 | numerikus [(p, s)] |tizedes tört [(p, s)] |Decimal |
 | numrange | |String |
 | objektumazonosító | |Int32 |
@@ -341,7 +341,7 @@ Adatok áthelyezése a postgresql-hez, amikor a következő hozzárendeléseket 
 | pg_lsn | |Int64 |
 | pont | |Byte [], karakterlánc |
 | Sokszög | |Byte [], karakterlánc |
-| valódi |float4 |Single |
+| real |float4 |Single |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | gyártási |serial4 |Int32 |

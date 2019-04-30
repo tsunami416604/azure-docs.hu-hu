@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: roiyz
-ms.openlocfilehash: 9d9f634d494c3c88146ab1f243d17609cf30bbcd
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: MT
+ms.openlocfilehash: 5a184c72da8af0d451902a164c8b71a94a01883f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620682"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129076"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA GPU illesztőprogramjának-bővítmény linuxhoz
 
@@ -35,7 +35,7 @@ Egy bővítmény is érhető el az NVIDIA GPU-illesztők telepítése [Windows N
 
 Ez a bővítmény a következő operációs rendszer disztribúciókhoz függően az adott operációsrendszer-verzió támogatja az illesztőprogramokat támogatja.
 
-| Disztribúció | Verzió |
+| Disztribúció | Version |
 |---|---|
 | Linux: Ubuntu | 16.04 LTS, 18.04 LTS |
 | Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
@@ -73,9 +73,9 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | dátum |
-| publisher | Microsoft.HpcCompute | sztring |
-| type | NvidiaGpuDriverLinux | sztring |
+| apiVersion | 2015-06-15 | date |
+| publisher | Microsoft.HpcCompute | string |
+| type | NvidiaGpuDriverLinux | string |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Beállítások
@@ -85,7 +85,7 @@ Minden beállítás nem kötelező. Az alapértelmezett viselkedést, hogy a ker
 | Name (Név) | Leírás | Alapértelmezett érték | Érvényes értékek | Adattípus |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | Frissítse a kernel akkor is, ha az illesztőprogram telepítéséhez nem szükséges | false | IGAZ, hamis | logikai |
-| driverVersion | NV: RÁCS illesztőprogram verziója<br> NC/ND: CUDA-eszközkészlet verzió. A legújabb illesztőprogramokat a kiválasztott CUDA automatikusan települnek. | legújabb | GRID: "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | sztring |
+| driverVersion | NV: RÁCS illesztőprogram verziója<br> NC/ND: CUDA-eszközkészlet verzió. A legújabb illesztőprogramokat a kiválasztott CUDA automatikusan települnek. | legújabb | GRID: "418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | string |
 | installCUDA | Telepítse a CUDA eszközkészlet. Csak akkor érvényes, a hálózati vezérlő/ND sorozatú virtuális gépek. | true | IGAZ, hamis | logikai |
 
 

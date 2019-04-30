@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 32f533d06b7db0284459951e65f9c04fe0bb0285
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735843"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485339"
 ---
 Rendelkezésre állási készlet segít például folyamatosan elérhető leállás, a virtuális gépek karbantartás közben. A redundanciát rendelkezésre állását, alkalmazások vagy szolgáltatások a virtuális gépet futtató két vagy több hasonlóan konfigurált virtuális gépek elhelyezése egy rendelkezésre állási csoportot hoz létre. Ez működésével kapcsolatos részletekért lásd: [virtuális gépek rendelkezésre állásának kezelése][Manage the availability of virtual machines].
 

@@ -9,22 +9,22 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 8f21374ae5da76c9954acc5227f593ab4be19ce9
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
-ms.translationtype: MT
+ms.openlocfilehash: 74a4ee03562963c8a50159f085e4b76b6d461ed9
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630553"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62103849"
 ---
 # <a name="media-services-concepts"></a>A Media Services – alapelvek
 
 Ez a témakör rövid áttekintést nyújt az Azure Media Services – alapelvek és cikkekre mutató hivatkozások magyarázatra van szüksége a Media Services v3 kapcsolatos fogalmakat és funkciókat biztosít. Az alábbi témakörök ismertetik az alapvető fogalmakkal fejlesztés megkezdése előtt át kell tekinteni.
 
 > [!NOTE]
-> Az Azure portal jelenleg nem használható v3-erőforrások kezeléséhez. Használja a [REST API-val](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref), vagy a támogatott valamelyik [SDK-k](developers-guide.md).
+> Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](developers-guide.md).
 
 ## <a name="cloud-upload-and-storage"></a>Felhőbe történő feltöltés és tárolás
 
@@ -89,7 +89,7 @@ Az Azure Media Services lehetővé teszi, hogy az ügyfeleknek az Azure-felhőbe
 
 Az alábbi ábrán az átmenő írja be a munkafolyamat:
 
-![az átmenő](./media/live-streaming/pass-through.svg)
+![átmenő típusú](./media/live-streaming/pass-through.svg)
 
 - [Élő adatfolyam – áttekintés](live-streaming-overview.md)
 - [Élő események és élő kimenetek](live-events-outputs-concept.md)
@@ -115,6 +115,10 @@ Figyelő metrikák és diagnosztikai naplók, amelyek segítenek megérteni, hog
 Az Azure Media Player segítségével streameli a Media Services számos különböző böngészők és eszközök a médiatartalmak lejátszására. Az Azure Media Player iparági szabványok – például HTML5, Media forrás Extensions (MSE) és az Encrypted Media Extensions (EME) adjon meg egy streamelési megoldást használja. 
 
 - [Az Azure Media Player áttekintése](use-azure-media-player.md)
+
+## <a name="provide-feedback"></a>Visszajelzés küldése
+
+Tekintse meg a [Azure Media Services-Közösség](media-services-community.md) kérdések, küldje el visszajelzését, és tudnivalók a Media Services-frissítések különböző módon olvashatja.
 
 ## <a name="next-steps"></a>További lépések
 

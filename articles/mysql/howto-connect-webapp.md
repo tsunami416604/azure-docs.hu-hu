@@ -7,16 +7,16 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.openlocfilehash: eb2fee7c76bcf29aee2dcd70d7975d7631bb23f6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548952"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61459203"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Csatlakozás a meglévő Azure App Service az Azure Database for MySQL-kiszolgáló
 Ez a témakör azt ismerteti, hogyan csatlakozhat az Azure Database for MySQL-kiszolgáló egy meglévő Azure App Service.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Hozzon létre egy Azure Database for MySQL-kiszolgálóhoz. Részletekért tekintse meg a [hogyan hozhat létre az Azure Database for MySQL-kiszolgáló portálról](quickstart-create-mysql-server-database-using-azure-portal.md) vagy [hogyan hozhat létre az Azure Database for MySQL-kiszolgáló CLI-vel](quickstart-create-mysql-server-database-using-azure-cli.md).
 
 Jelenleg nincsenek két megoldás MySQL-hez készült Azure-adatbázis az Azure App Service elérésének engedélyezéséhez. A két megoldás magában foglalja a kiszolgálószintű tűzfalszabályok beállítása.

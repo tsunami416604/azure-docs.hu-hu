@@ -9,14 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 06/20/2018
-ms.author: apimpm
+origin.date: 06/20/2018
+ms.date: 12/31/2018
+ms.author: v-yiso
 ms.openlocfilehash: a01e50debf11daf2f1163a56726f5574f7e3e379
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444802"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123467"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Automatikus skálázása az Azure API Management-példány  
 
@@ -79,7 +80,7 @@ Automatikus skálázás az Azure API Management szolgáltatás konfigurálása a
     | Metrika neve           | Kapacitás          | A kapacitás a metrika egy Azure API Management-metrika tükröző erőforrások az Azure API Management-példány.                                                                                                                                                            |
     | Időfelbontási szint statisztikája  | Átlag           |                                                                                                                                                                                                                                                                                 |
     | Művelet              | Nagyobb, mint      |                                                                                                                                                                                                                                                                                 |
-    | Küszöbérték             | 80 %-os               | A kapacitás átlagolt mérőszám a küszöbértéket.                                                                                                                                                                                                                                 |
+    | Küszöbérték             | 80%               | A kapacitás átlagolt mérőszám a küszöbértéket.                                                                                                                                                                                                                                 |
     | Időtartam (perc) | 30                | Az időtartomány, a kapacitás metrika átlagos csak használati mintákat. Minél hosszabb az adott időszakban, a egyenletesebb lesz reakciója – időnként ugrásszerűen lesz kisebb hatással a horizontális felskálázás döntést. Azonban azt is késleltetni fogja a horizontális felskálázás eseményindító. |
     | *Művelet*              |                   |                                                                                                                                                                                                                                                                                 |
     | Művelet             | Mennyiség növelése a következővel: |                                                                                                                                                                                                                                                                                 |
@@ -106,7 +107,7 @@ Automatikus skálázás az Azure API Management szolgáltatás konfigurálása a
     | Metrika neve           | Kapacitás          | Ez a metrika azonos, amelyet a horizontális felskálázási szabályt használ.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
     | Időfelbontási szint statisztikája  | Átlag           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | Művelet              | Kisebb mint         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Küszöbérték             | 35 %-a               | Hasonlóképpen, a horizontális felskálázási szabály, ezt az értéket az erősen attól függ, a használati minták az Azure API Management. |
+    | Küszöbérték             | 35%               | Hasonlóképpen, a horizontális felskálázási szabály, ezt az értéket az erősen attól függ, a használati minták az Azure API Management. |
     | Időtartam (perc) | 30                | Ugyanazt az értéket, amelyet a horizontális felskálázási szabályt használ.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
     | *Művelet*              |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | Művelet             | Mennyiség csökkentése a következővel: | Milyen leváló használták a horizontális felskálázási szabály.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -128,4 +129,4 @@ Automatikus skálázás az Azure API Management szolgáltatás konfigurálása a
 
 ## <a name="next-steps"></a>További lépések
 
-+ [Az Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban](api-management-howto-deploy-multi-region.md)
++ [Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban](api-management-howto-deploy-multi-region.md)

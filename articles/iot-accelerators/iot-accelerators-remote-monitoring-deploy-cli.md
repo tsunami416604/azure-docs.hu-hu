@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793771"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61447012"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>A távoli figyelési megoldásgyorsító a CLI-vel üzembe helyezése
 
@@ -68,7 +68,7 @@ Az alapszintű telepítés a megoldás bemutatását szolgálja. Költségek cs�
 
 Alapszintű üzembe helyezéséhez az Azure-előfizetésben hoz létre a következő szolgáltatásokat:
 
-| Darabszám | Erőforrás                       | Typo         | Használt |
+| Darabszám | Erőforrás                       | Típus         | Használt |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Linux rendszerű virtuális gép](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 V2  | Mikroszolgáltatás-alapú üzemeltetéséhez |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – Standard csomag | Kezelés és kommunikáció |

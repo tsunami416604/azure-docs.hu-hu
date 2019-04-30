@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 1108265101f37433860d0112e4e80aee0002ab5c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111571"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127225"
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-databases-in-azure-security-center"></a>Naplózás és fenyegetésészlelés engedélyezése az SQL-adatbázisok az Azure Security Centerben
 Az Azure Security Center javasolni fogja, hogy bekapcsolja a naplózás és fenyegetésészlelés az SQL-adatbázisok, ha a naplózás és fenyegetésészlelés már nem érhető. Naplózás és fenyegetés-észlelési segíthet a jogszabályoknak való megfelelőség, adatbázis-tevékenység megértésében, valamint betekintést eltéréseket és rendellenességeket, amelyek üzleti aggályokra vagy biztonsági problémákat.

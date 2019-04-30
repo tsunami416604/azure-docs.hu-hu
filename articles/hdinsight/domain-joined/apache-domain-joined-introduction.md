@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: 8a568302b2fd8ed0140c2ad084495d41cc09ed8f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: deff2aa3cd475a3ed37adc4408a133ed1fd0757e
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60536856"
+ms.locfileid: "62113206"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Bevezetés az Apache Hadoop-biztonság, a vállalati biztonsági csomag
 
@@ -35,7 +35,7 @@ A HDInsight szegélyhálózat-alapú biztonság virtuális hálózatok és az Az
 
 Szegélyhálózat-alapú biztonsági réteget a VPN-átjáró szolgáltatáson keresztül érhető el. Az átjáró védelmet biztosít a HDInsight-fürthöz érkező bármely kérés az első sorában funkcionál. Azt fogadja a kéréseket, ellenőrzi, és csak ezután lehetővé teszi, hogy a kérelem átadása a fürt más csomópontjaira. Ezzel a módszerrel az átjáró biztosítja a fürt más név- és adatcsomópontok szegélyhálózat-alapú biztonságát.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 Vállalati rendszergazda és az ESP hozhat létre egy HDInsight-fürtöt egy [virtuális hálózat](https://azure.microsoft.com/services/virtual-network/). A HDInsight-fürt összes csomópontján csatlakozott a tartományhoz, a vállalat által kezelt. Ez a gazdafájlon keresztül a [Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md). 
 
 Ezzel a beállítással a vállalat alkalmazottai jelentkezhetnek be a fürtcsomópontok tartományi hitelesítő adataik használatával. Tartományi hitelesítő adataik egyéb engedélyezett végpontokban, mint például az Apache Ambari Views, ODBC, JDBC, PowerShell és REST API-k kommunikáljanak a fürttel való hitelesítéshez szolgáltatást is alkalmazhatja. A rendszergazda teljes mértékben vezérelheti a felhasználók száma, akik a fürt ezen végpontokon keresztül kommunikálhat.

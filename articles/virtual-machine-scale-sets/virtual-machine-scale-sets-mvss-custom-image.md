@@ -13,14 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/10/2017
-ms.author: manayar
+origin.date: 05/10/2017
+ms.date: 11/30/2018
+ms.author: v-junlch
 ms.openlocfilehash: 2e3c8177a32082c251be74e597a18730ae1c9d37
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739642"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108377"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Egyéni rendszerkép hozzáadása egy Azure méretezésicsoport-sablon
 
@@ -118,3 +119,5 @@ Ebben a példában használja a `resourceId` függvényt annak a lemezképnek ug
 ## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]
+
+<!-- Update_Description: update metedata properties -->

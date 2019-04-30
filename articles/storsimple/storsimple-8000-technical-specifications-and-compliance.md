@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 855ea6c34082b859bb5b5b6e69b3e3f2fa54eb4a
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b36d721896bd7b4f95d831eded500a96969937c5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056463"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60631889"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Műszaki specifikációkról és a StorSimple-eszköz megfelelőségének
 
@@ -37,13 +37,13 @@ Az EBOD ház egy 580 W PCM, és elsődleges ház egy 764 W PCM használja. Az al
 | --- | --- | --- |
 | Maximális kimeneti összteljesítmény |580 W |764 |
 | Gyakoriság |50/60 Hz |50/60 Hz |
-| Feszültség-tartomány kiválasztása |Automatikus terjedő: 90 – 264 V AC, 47/63 Hz |Automatikus terjedő: 90-264 V AC, 47/63 Hz |
-| Jelenlegi maximális behatolása |20-A |20-A |
+| Feszültség-tartomány kiválasztása |Automatikus terjedő: 90 – 264 V AC, 47/63 Hz |Automatikus terjedő: 90 - 264 V AC, 47/63 Hz |
+| Jelenlegi maximális behatolása |20 A |20 A |
 | Energiagazdálkodási tényező javítása |> 95 %-os névleges bemeneti feszültség |> 95 %-os névleges bemeneti feszültség |
 | Harmonikus |Megfelel-e EN61000-3-2 |Megfelel-e EN61000-3-2 |
 | Kimenet |5 voltos készenléti feszültség \@ 2.0 A |5 voltos készenléti feszültség \@ 2.7 A |
 | + 5 VOLTOS \@ 42 A |+ 5 VOLTOS \@ 40 A | |
-| + 12 \@ 38 A |+ 12 \@ 38 A | |
+| +12V \@ 38 A |+12V \@ 38 A | |
 | A gyakran moduláris |Igen |Igen |
 | Kapcsolók és LED-EK |AC be-/ kikapcsolási kapcsoló és a négy állapotát jelző LED-EK |AC be-/ kikapcsolási kapcsoló és a hat állapotát jelző LED-EK |
 | Hűtés ház |Tengelyirányú hűtés a változó ventilátorvezérlésre sebesség ventilátor |Tengelyirányú hűtés a változó ventilátorvezérlésre sebesség ventilátor |
@@ -104,7 +104,7 @@ Az alábbi táblázat a ház milliméterben és hüvelyk méretét.
 
 A konfigurációtól függően egy teljesen betöltött elsődleges ház is 33 kgs a 21 mérjük, és Felkészült rá két személyek igényli.
 
-| Rendszerház | Súlyozás |
+| Rendszerház | Tömeg |
 | --- | --- |
 | Maximális súly (konfigurációjától függ) |30 kg – 33 kg |
 | Üres (nincs felszerelt meghajtók) |21 – 23 kg |
@@ -117,8 +117,8 @@ Ez a szakasz felsorolja a ház környezettel kapcsolatos előírásoknak. A hőm
 
 | Rendszerház | Környezeti hőmérséklet-tartomány | Környezeti relatív páratartalom | Maximális nedves tartályának |
 | --- | --- | --- | --- |
-| Működik |5 C – 35 C (41° F - 95° F) |80 %-os 20 %-os nem-kondenzációs- |28 C (82° F) |
-| Nem működő |-40 C - 70° C (40° F - 158° F) |100 %-os 5 %-os nem kicsapódó |29 C (84° F) |
+| Működik |5 C – 35 C (41° F - 95° F) |80 %-os 20 %-os nem-kondenzációs- |28°C (82°F) |
+| Nem működő |-40 C - 70° C (40° F - 158° F) |5% - 100% non-condensing |29°C (84°F) |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Légmozgás, tengerszint, megváltani, rezgés, tájolást, biztonsági és EMC
 
@@ -129,7 +129,7 @@ Ez a szakasz felsorolja a ház környezettel kapcsolatos előírásoknak. A hőm
 | Nem működő magasság |-305 mérőszámok 12,192 mérőszámok (40 000 feet-1,000 láb) |
 | Megváltani, a üzemeltetési |5 g. 10 ms ½ szinusza |
 | Nem működő megváltani |30g 10 ms ½ szinusza |
-| Rezgés, a üzemeltetési |0.21g RMS 5-500 Hz véletlenszerű |
+| Rezgés, a üzemeltetési |0.21g RMS 5-500 Hz random |
 | Nem működő rezgés |1.04-es g RMS 2 – 200 Hz véletlenszerű |
 | Rezgés, az adatáthelyezési |3g 2 – 200 Hz szinusza |
 | Tájolás és csatlakoztatása |19" rack csatlakoztatási (2 EIA egység) |
@@ -141,7 +141,7 @@ Ez a szakasz felsorolja a ház környezettel kapcsolatos előírásoknak. A hőm
 
 A következő nemzetközi előírásoknak megfelel a Microsoft Azure StorSimple-eszköz:  
 
-* CE - EN 60950-1
+* CE - EN 60950 - 1
 * CB jelentés IEC 60950-1
 * UL és cUL UL 60950-1
 
@@ -149,7 +149,7 @@ A következő nemzetközi előírásoknak megfelel a Microsoft Azure StorSimple-
 
 A Microsoft Azure StorSimple-eszköz megfelel-e a következő biztonsági besorolások:
 
-* Rendszer termék típus jóváhagyási: UL, cUL, CE
+* Termék típusa jóváhagyási rendszer: UL, cUL, CE
 * Biztonsági megfelelőségi: UL 60950, IEC 60950, EN 60950
 
 ## <a name="emc-compliance"></a>EMC megfelelőség
@@ -160,8 +160,8 @@ A Microsoft Azure StorSimple-eszköz megfelel-e a következő EMC minősítések
 
 Az eszköz EMC megfelelő vezetett és kisugárzott kibocsátási.
 
-* Vezetett mennyiségét korlátozza szintek: CFR 47 15B osztály egy EN55022 osztály egy CISPR osztály a.
-* Kisugárzott mennyiségét korlátozza szintek: CFR 47 15B osztály egy EN55022 osztály egy CISPR osztály a.
+* Kibocsátás korlát szintek végzett: CFR 47 rész 15B a osztály EN55022 a osztály CISPR a osztály
+* Kibocsátás korlát szintek sugárzott: CFR 47 rész 15B a osztály EN55022 a osztály CISPR a osztály
 
 ### <a name="harmonics-and-flicker"></a>Harmonikus és Villódzás
 
@@ -175,7 +175,7 @@ Az eszköz megfelel-e az EN55024.
 
 A Plug and és a teljes körű power kábellel szerelvény meg kell felelnie az előírásoknak megfelelő, az ország, ahol az eszközt használja, és biztonsági jóváhagyások, amelyek elfogadható ebben az országban kell rendelkezniük. Az alábbi táblázatok sorolják fel az USA és Európa szabványainak.
 
-### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>AC tápkábelek – Amerikai Egyesült Államok (a felsorolt NRTL kell lennie)
+### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>AC power cords - USA (must be NRTL listed)
 
 | Összetevő | Specifikáció |
 | --- | --- |

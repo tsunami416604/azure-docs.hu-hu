@@ -2,20 +2,21 @@
 title: Az Azure Stream Analytics használata az SQL Data Warehouse |} A Microsoft Docs
 description: Tippek az Azure Stream Analytics használatával Azure SQL Data Warehouse-megoldások fejlesztése.
 services: sql-data-warehouse
-author: KavithaJonnakuti
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
-ms.date: 03/22/2019
-ms.author: kavithaj
+origin.date: 03/22/2019
+ms.date: 04/01/2019
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 3a260102e9964cfc248ed3dbabab487bd1c5dfc2
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403765"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61474334"
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>Az Azure Stream Analytics használata SQL Data warehouse-bA
 Az Azure Stream Analytics egy teljes körűen felügyelt szolgáltatást, amely kis késleltetésű, magas rendelkezésre állású, méretezhető összetett eseményfeldolgozást keresztül streamelési adatok a felhőben. Olvassa el is alapismeretek a Mobilfunkciók [Azure Stream Analytics bemutatása][Introduction to Azure Stream Analytics]. Ezután megismerheti a Stream Analytics egy teljes körű megoldás létrehozása a következő a [első lépései az Azure Stream Analytics] [ Get started using Azure Stream Analytics] oktatóanyag.
@@ -84,4 +85,6 @@ További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][SQL 
 <!--MSDN references-->
 
 <!--Other Web references-->
-[Azure Stream Analytics documentation]: https://azure.microsoft.com/documentation/services/stream-analytics/
+[Azure Stream Analytics documentation]: /stream-analytics/
+
+<!-- Update_Description: update meta properties, wording update -->

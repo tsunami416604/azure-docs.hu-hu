@@ -1,6 +1,6 @@
 ---
-title: Always On rendelkezésre állási csoportok helyszíni kiterjesztése az Azure-bA |} Microsoft Docs
-description: Ez az oktatóanyag a klasszikus üzembe helyezési modellel létrehozott erőforrást használ, és az SQL Server Management Studio (SSMS) a replika hozzáadása varázsló használata egy Always On rendelkezésre állási csoportnak replika hozzáadása az Azure-ban.
+title: A helyszíni Always On rendelkezésre állási csoportok kiterjesztése az Azure-bA |} A Microsoft Docs
+description: Ebben az oktatóanyagban a klasszikus üzemi modellel létrehozott erőforrásokat használja, és ismerteti, hogyan lehet a replika hozzáadása varázsló segítségével az SQL Server Management Studio (SSMS) egy Always On rendelkezésre állási csoport-replika hozzáadása az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -16,82 +16,82 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.openlocfilehash: d3e56f1741a9cfd3f2d9f786c2ce22eb6a946ef2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29400477"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61481582"
 ---
-# <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Always On rendelkezésre állási csoportok helyszíni kiterjesztése az Azure-bA
-Always On rendelkezésre állási csoportokat magas rendelkezésre állási adatbázis csoportjai számára másodlagos replikák hozzáadásával adja meg. Ezekre a replikákra engedélyezése feladatátvétele adatbázisok meghibásodása esetén. Ezenkívül ezek segítségével olvasási munkaterhelések vagy a biztonsági mentési feladatok kiszervezése.
+# <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>A helyszíni Always On rendelkezésre állási csoportok kiterjesztése az Azure-bA
+Always On rendelkezésre állási csoportokat magas rendelkezésre állás csoportok adatbázis másodlagos replikák hozzáadásával. Ezek a replikák engedélyezése feladatátvétele adatbázisok hiba esetén. Emellett ezek segítségével keresztmetszet vagy a biztonsági mentési feladatok kiszervezése.
 
-Microsoft Azure kiterjesztheti egy vagy több Azure virtuális gépeken futó SQL Server-kiépítés és majd vegye fel őket replikáiként a helyi rendelkezésre állási csoport helyi rendelkezésre állási csoportok.
+A helyi rendelkezésre állási csoportok üzembe helyezésével egy vagy több Azure virtuális gépeken az SQL Server, és ezután hozzáadása azokat a helyi rendelkezésre állási csoportok replikáit kiterjesztheti a Microsoft Azure-bA.
 
-Ez az oktatóanyag feltételezi, hogy rendelkezik a következő:
+Ez az oktatóanyag feltételezi, hogy rendelkezik az alábbiakkal:
 
 * Aktív Azure-előfizetés. Is [regisztráljon egy ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).
-* Egy meglévő Always On rendelkezésre állási csoportnak a helyi. További információ a rendelkezésre állási csoportok: [Always On rendelkezésre állási csoportok](https://msdn.microsoft.com/library/hh510230.aspx).
-* A helyszíni hálózat és az Azure virtuális hálózat közötti kapcsolat. Ez a virtuális hálózat létrehozásával kapcsolatos további információkért lásd: [(klasszikus) Azure portál használatával pont-pont kapcsolatot](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md).
+* Egy meglévő Always On rendelkezésre állási csoport helyi. További információ a rendelkezésre állási csoportok: [Always On rendelkezésre állási csoportok](https://msdn.microsoft.com/library/hh510230.aspx).
+* A helyszíni hálózat és az Azure virtuális hálózatok közötti kapcsolat. Ez a virtuális hálózat létrehozásával kapcsolatos további információkért lásd: [hozzon létre egy helyek közötti kapcsolat az Azure Portalon (klasszikus) használatával](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md).
 
 > [!IMPORTANT] 
-> Azure az erőforrások létrehozására és kezelésére két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus telepítési modell használatát bemutatja. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a klasszikus üzemi modell használatával. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
 
-## <a name="add-azure-replica-wizard"></a>Adja hozzá a replika Azure varázsló
-Ez a szakasz bemutatja, hogyan használható a **replika Azure hozzáadása varázsló** az Always On rendelkezésre állási csoportnak megoldástól tartalmazzák az Azure kiterjeszteni.
+## <a name="add-azure-replica-wizard"></a>Adja hozzá az Azure-replika varázsló
+Ez a szakasz bemutatja, hogyan használható a **Azure replika hozzáadása varázsló** tartalmazzák az Azure az Always On rendelkezésre állási csoport-megoldás bővítése.
 
 > [!IMPORTANT]
-> A **replika Azure hozzáadása varázsló** csak támogatja a klasszikus telepítési modellel létrehozott virtuális gépeket. Új Virtuálisgép-telepítések az újabb Resource Manager modellt kell használja. Ha a virtuális gépek a Resource Manager használatával, majd manuálisan kell hozzáadni a másodlagos Azure replika Transact-SQL commmands (itt nem látható) használatával. Ez a varázsló az Erőforrás-kezelői forgatókönyvek nem fognak működni.
+> A **Azure replika hozzáadása varázsló** csak a klasszikus üzemi modellel létrehozott virtuális gépeket is támogatja. Új virtuális gépek üzembe helyezése a újabb Resource Manager-modellt kell használnia. Ha a virtuális gépek és a Resource Manager használatával, majd manuálisan kell hozzáadni a Transact-SQL commmands (itt nem látható) használatával másodlagos Azure-replika. Ez a varázsló nem fog működni a Resource Manager-forgatókönyvében.
 
-1. Az SQL Server Management Studio, bontsa ki a **magas rendelkezésre állású mindig a** > **rendelkezésre állási csoportok** > **[a következő rendelkezésre állási csoport neve]**.
-2. Kattintson a jobb gombbal **rendelkezésre állási másodpéldányok**, majd kattintson a **adja hozzá a replika**.
-3. Alapértelmezés szerint a **adja hozzá a replika rendelkezésre állási csoport létrehozása varázsló** jelenik meg. Kattintson a **Tovább** gombra.  Ha be van jelölve a **ne jelenjen meg többé ez a lap** lehetőséget a lap alján előző indítása során a varázsló, ez a képernyő nem jelenik meg.
+1. A belül az SQL Server Management Studióban bontsa ki **magas rendelkezésre állást mindig a** > **rendelkezésre állási csoportok** > **[a rendelkezésre állási csoport neve]**.
+2. Kattintson a jobb gombbal **rendelkezésre állási másodpéldányok**, majd kattintson a **hozzáadása replika**.
+3. Alapértelmezés szerint a **hozzáadása-replika rendelkezésre állási csoport varázsló** jelenik meg. Kattintson a **tovább**.  Ha be van jelölve a **többé ne jelenjen meg ez az oldal** lehetőséget az oldal alján előző indítás közben, a varázsló ezen a képernyőn nem jelenik meg.
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742861.png)
-4. Meg kell csatlakozni a meglévő összes másodlagos replikát. Rákattinthat a **Connect...** minden egyes replikának vagy mellett kattintson **összes csatlakozás...** a képernyő alján. A hitelesítés után kattintson **következő** ahhoz, hogy a következő képernyőre.
-5. A a **meg replikák** lapon több lap tetején találhatók: **replikák**, **végpontok**, **biztonsági mentési beállítások**, és  **Figyelő**. Az a **replikák** lapra, majd **Azure replika hozzáadása...** az Azure-replika hozzáadása varázsló elindításához.
+4. Az összes meglévő másodlagos replikák csatlakozni kell adnia. Kattintson a **Connect...** mellett minden egyes replikának, vagy rákattinthat **összes csatlakoztatása...** a képernyő alján. A hitelesítés után kattintson a **tovább** , folytassa a következő képernyőn.
+5. Az a **replikák megadása** lapon több lap tetején jelennek meg: **Replikák**, **végpontok**, **biztonsági mentési beállítások**, és **figyelő**. Az a **replikák** lapra, majd **Azure-replika hozzáadása...** az Azure-replika hozzáadása varázsló elindításához.
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742863.png)
-6. Válassza a helyi Windows-tárolójából egy meglévő Azure felügyeleti tanúsítványt, ha egy előtt telepítette. Válassza ki vagy adja meg Azure-előfizetés azonosítóját, ha egy előtt használt. Töltse le és telepítse az Azure felügyeleti tanúsítvánnyal, és töltse le az Azure-fiók használatával előfizetések listájából Letöltés gombra.
+6. Ha telepítette, mielőtt, válassza ki egy meglévő Azure felügyeleti tanúsítványt a helyi Windows tanúsítványtárolóból. Válassza ki, vagy adja meg az Azure-előfizetés azonosítója, ha egy előtt használt. Kattinthat a letöltési tölthet le és telepítse az Azure felügyeleti tanúsítvánnyal, és töltse le az Azure-fiók használatával előfizetések listáját.
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742864.png)
-7. Az oldalon értékekkel, az Azure virtuális gép (VM), amely üzemelteti a replika létrehozásához használt minden mező fogja majd feltölteni.
+7. Minden mező az oldalon, az Azure virtuális gép (VM), amely üzemelteti a replika létrehozásához használt értékeket fogja majd feltölteni.
    
    | Beállítás | Leírás |
    | --- | --- |
-   | **Image** |Válassza ki a kívánt operációs rendszer és az SQL Server kombinációját |
-   | Virtuálisgép-mérettel |A virtuális Gépet, amely az üzleti igényeknek leginkább megfelelő méretének kiválasztása |
-   | **Virtuális gép neve** |Adjon egyedi nevet az új virtuális gép számára. A név kell csak 3 és 15 karakter közötti lehet, is tartalmazhat, csak betűket, számokat és kötőjeleket tartalmazhat, és kell betűvel kezdődhet és betűvel vagy számmal végződhet. |
-   | **Virtuális gép felhasználónév** |Adjon meg egy felhasználónevet, a rendszergazdai fiókhoz az a virtuális gép lesz |
-   | **Virtuális gép rendszergazdai jelszó** |Adjon meg egy jelszót az új fiók |
+   | **Rendszerkép** |Válassza ki a kívánt operációs rendszer és a SQL Server együttes használata |
+   | **VM Size** |Válassza ki az üzleti igényeinek leginkább megfelelő virtuális gép méretét |
+   | **Virtuális gép neve** |Adjon meg egy egyedi nevet az új virtuális gép számára. A név kell csak 3 és 15 karakter közötti lehet, is csak betűket, számokat és kötőjeleket tartalmazhat, és kell kezdődnie és betűvel vagy számmal végződhet. |
+   | **Virtuális gép felhasználónevét** |Adjon meg egy felhasználónevet, amely a virtuális gépen a rendszergazda fiók lesz |
+   | **Virtuális gép rendszergazdai jelszava** |Adjon meg egy jelszót az új fiók |
    | **Jelszó megerősítése** |Erősítse meg a jelszót az új fiók |
-   | **Virtual Network** |Adja meg az Azure virtuális hálózat, amelyet az új virtuális Gépet kell használnia. További információ a virtuális hálózatok: [virtuális hálózat áttekintése](../../../virtual-network/virtual-networks-overview.md). |
-   | **Virtuális hálózati alhálózat** |Adja meg a virtuális hálózati alhálózat, amelyet az új virtuális Gépet kell használnia. |
-   | **Domain** |Ellenőrizze a tartomány előre megadott érték helyes |
-   | **Tartományi felhasználónév** |Adjon meg egy fiókot, amely a helyi Rendszergazdák csoport tagja a helyi fürt csomópontjain |
-   | **Jelszó** |Adja meg a jelszavát a tartományi felhasználó nevét |
-8. Kattintson a **OK** a központi telepítési beállítások érvényesítéséhez.
-9. Jogi feltételek mellett jelenik meg. Olvassa el, és kattintson a **OK** Ha elfogadja az alábbi feltételeket.
-10. A **meg replikák** oldal akkor jelenik meg újra. Ellenőrizze, hogy az új Azure replika beállításait a **replikák**, **végpontok**, és **biztonsági mentési beállítások** lapokon. Várja meg az üzleti követelményeknek.  A paraméterek ezeken a lapokon található további információ: [replikák lapon adja meg (új rendelkezésre állási csoport varázsló/Add replika varázsló)](https://msdn.microsoft.com/library/hh213088.aspx). Vegye figyelembe, hogy figyelői nem hozható létre, amelyek tartalmazzák az Azure-replikák rendelkezésre állási csoportok figyelő lapján. Emellett ha egy figyelő már létrejött a varázsló indítása előtt, kapni fog egy üzenet, amely azt jelzi, hogy nem támogatott az Azure-ban. A figyelők létrehozása követően áttekintjük a **hozzon létre egy rendelkezésre állási csoport figyelőjének** szakasz.
+   | **Virtual Network** |Adja meg az Azure virtuális hálózat, amely az új virtuális Gépet kell használnia. A virtuális hálózatok további információkért lásd: [a Virtual Network áttekintése](../../../virtual-network/virtual-networks-overview.md). |
+   | **Virtuális hálózat alhálózatának** |Adja meg a virtuális hálózat alhálózatához, amelyet az új virtuális Gépet kell használnia. |
+   | **Tartomány** |Erősítse meg a tartomány előre megadott értéke helyes-e |
+   | **Tartomány felhasználónév** |Adjon meg egy fiókot, amely a helyi Rendszergazdák csoport tagja a helyi fürt csomópontjain |
+   | **Jelszó** |Adja meg a jelszót a tartomány felhasználónév |
+8. Kattintson a **OK** a központi telepítési beállítások ellenőrzéséhez.
+9. Jogi feltételek mellett jelennek meg. Olvassa el, és kattintson a **OK** Ha elfogadja ezeket a feltételeket.
+10. A **replikák megadása** lap jelenik meg újra. Ellenőrizze a beállításokat az új Azure-replika a **replikák**, **végpontok**, és **biztonsági mentési beállítások** lapokon. Módosítsa a beállításait, és az üzleti igényeknek.  A paraméterek ezeken a lapokon található további információért lásd: [replikák lapon adja meg (új rendelkezésre állási csoport varázsló/Add replika varázsló)](https://msdn.microsoft.com/library/hh213088.aspx). Vegye figyelembe, hogy figyelői nem hozható létre, amelyek tartalmazzák az Azure-replikák rendelkezésre állási csoportok számára a figyelőjének lap használatával. Emellett ha egy figyelő már létre van hozva a varázsló indítása előtt, kapni fog egy üzenet arról, hogy nem támogatott az Azure-ban. Áttekintjük, hogyan hozhat létre a figyelők az **hozzon létre egy rendelkezésre állási csoport figyelőjének** szakaszban.
     
      ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742865.png)
-11. Kattintson a **Tovább** gombra.
-12. Válassza ki a használni kívánt adatok szinkronizálási módszert a **kezdeti adatszinkronizálás kiválasztása** lapot, és kattintson **következő**. A legtöbb esetben válassza **teljes adatszinkronizálás**. Adatok szinkronizálási módszerekkel kapcsolatos további információkért lásd: [válasszon kezdeti szinkronizálás lap (mindig a rendelkezésre állási csoport varázslók)](https://msdn.microsoft.com/library/hh231021.aspx).
-13. Tekintse át az eredményeket a a **érvényesítési** lap. Javítsa ki a fennálló problémákat, és újra futtassa az ellenőrzést, ha szükséges. Kattintson a **Tovább** gombra.
+11. Kattintson a **tovább**.
+12. Válassza ki a használni kívánt adatok szinkronizálási módszert a **kezdeti adatszinkronizálás kiválasztása** lapot, és kattintson **tovább**. Válassza ki a legtöbb esetben **teljes adatszinkronizálás**. Adatok szinkronizálási módszerekkel kapcsolatos további információkért lásd: [válassza ki kezdeti szinkronizálás lap (mindig a rendelkezésre állási csoport varázslók)](https://msdn.microsoft.com/library/hh231021.aspx).
+13. Tekintse át az eredményeket a a **érvényesítési** lapot. Javítsa ki a szálankénti függőben lévő problémák, és ismét futtassa az ellenőrzést, ha szükséges. Kattintson a **tovább**.
     
      ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742866.png)
-14. Tekintse át a beállításokat a a **összegzés** lapon, majd kattintson az **Befejezés**.
-15. A kiépítési folyamat elindul. Ha a varázsló sikeresen befejeződött, kattintson **Bezárás** gombra ki a varázslóból való kilépéshez.
+14. Tekintse át a beállításokat a **összefoglalás** lapon, majd kattintson a **Befejezés**.
+15. A kiépítési folyamat elindul. Ha a varázsló sikeresen befejeződött, kattintson **Bezárás** kattintva lépjen ki a varázsló.
 
 > [!NOTE]
-> Az Azure-replika hozzáadása varázsló létrehoz egy naplófájlt az Users\User Name\AppData\Local\SQL Server\AddReplicaWizard. Ez a naplófájl sikertelen Azure replika központi telepítésének hibaelhárítása használható. A varázsló nem sikerül, a művelet végrehajtása, ha az összes korábbi műveletek visszaállít a rendszer, beleértve a kiosztott virtuális gép törlése.
+> Az Azure-replika hozzáadása varázsló létrehoz egy naplófájlt az Users\User Name\AppData\Local\SQL Server\AddReplicaWizard. Ez a naplófájl használható az Azure-replika sikertelen üzembe helyezés hibaelhárítása. A varázsló a következő bármilyen művelet végrehajtása nem sikerül, ha minden előző művelet visszavonásra, beleértve az üzembe helyezett virtuális gép törlése.
 > 
 > 
 
-## <a name="create-an-availability-group-listener"></a>Hozzon létre egy rendelkezésre állási csoport figyelőjének
-A rendelkezésre állási csoport létrehozása után készítsen egy figyelőt a következő ügyfelek csatlakoznak a replikákat. Figyelők irányítja a bejövő kapcsolatokat az elsődleges vagy egy írásvédett másodlagos replikára. A figyelők további információkért lásd: [egy ILB figyelőt az Always On rendelkezésre állási csoportok konfigurálása az Azure-](../classic/ps-sql-int-listener.md).
+## <a name="create-an-availability-group-listener"></a>Hozzon létre egy rendelkezésre állási csoport figyelője
+A rendelkezésre állási csoport létrehozása után létre kell hoznia egy figyelőt a következő csatlakozhatnak a replikákon. Figyelők irányítja a bejövő kapcsolatokat az elsődleges és a egy írásvédett másodlagos replikára. A figyelők további információkért lásd: [Always On rendelkezésre állási csoportok ILB figyelő konfigurálása az Azure-ban](../classic/ps-sql-int-listener.md).
 
 ## <a name="next-steps"></a>További lépések
-Használata mellett a **replika Azure hozzáadása varázsló** Azure kiterjeszteni a Always On rendelkezésre állási csoportnak, előfordulhat, hogy is helyezi át néhány SQL Server számítási feladatait teljes mértékben az Azure-bA. Első lépésként tekintse meg a [Azure SQL Server virtuális gépek kiépítése](../sql/virtual-machines-windows-portal-sql-server-provision.md).
+Használata mellett a **Azure replika hozzáadása varázsló** az Always On rendelkezésre állási csoport kiterjesztése az Azure-ba, is áthelyezheti néhány SQL Server számítási feladatainak teljes egészében az Azure-bA. Első lépésként lásd [kiépítése egy SQL Server virtuális gépet az Azure-ban](../sql/virtual-machines-windows-portal-sql-server-provision.md).
 
-Egyéb Azure virtuális gépeken futó SQL Server kapcsolatos témaköröket, lásd: [SQL Server Azure virtuális gépeken](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Azure virtuális gépeken futó SQL Server rendszerrel kapcsolatos témaköröket talál [SQL Server Azure virtuális gépeken](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
 

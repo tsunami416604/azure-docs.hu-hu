@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/19/2019
+ms.date: 04/23/2019
 ms.author: jingwang
-ms.openlocfilehash: b97d21503e8dcd75906581faf1851533bcd69fa6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8f1e2aebae88d34334200504915be4043f32013b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203369"
+ms.locfileid: "62107379"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -35,9 +35,6 @@ Pontosabban az Azure SQL Data Warehouse-összekötő támogatja ezeket a funkci�
 - Adatok másolása az Azure-erőforrások egy egyszerű vagy felügyelt szolgáltatásidentitások SQL-hitelesítés és Azure Active Directory (Azure AD) alkalmazástoken-hitelesítésének használata által.
 - Forrásként adatok lekérdezése egy SQL-lekérdezést vagy tárolt eljárás használatával.
 - Fogadóként az adatok betöltése a PolyBase vagy a tömeges beszúrás. A PolyBase a jobb másolási teljesítmény érdekében javasoljuk.
-
-> [!IMPORTANT]
-> Vegye figyelembe, hogy a PolyBase támogatja, csak SQL-hitelesítést, de nem Azure AD-hitelesítés.
 
 > [!IMPORTANT]
 > Az Azure Data Factory integrációs modul adatokat másol, konfiguráljon egy [Azure SQL server tűzfal](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) úgy, hogy az Azure-szolgáltatásokhoz férhet hozzá a kiszolgálón.
@@ -539,9 +536,9 @@ Az alábbi táblázat példákat mutat be, hogyan adhat meg a **tableName** JSON
 
 | Adatbázis-séma | Tábla neve | **Táblanév** JSON-tulajdonság |
 | --- | --- | --- |
-| dbo | Táblanév | Táblanév vagy a dbo. Táblanév vagy [dbo]. [Táblanév] |
-| dbo1 | Táblanév | dbo1. Táblanév vagy [dbo1]. [Táblanév] |
-| dbo | My.Table | [My.Table] vagy [dbo]. [My.Table] |
+| dbo | MyTable | MyTable vagy dbo.MyTable vagy [dbo].[MyTable] |
+| dbo1 | MyTable | dbo1.MyTable vagy [dbo1].[MyTable] |
+| dbo | My.Table | [My.Table] vagy [dbo].[My.Table] |
 | dbo1 | My.Table | [dbo1].[My.Table] |
 
 A következő hibát látja, ha a probléma lehet, hogy a megadott érték a **tableName** tulajdonság. Lásd az előző táblázatban adja meg az értékeket a megfelelő módszer az **tableName** JSON-tulajdonságot.

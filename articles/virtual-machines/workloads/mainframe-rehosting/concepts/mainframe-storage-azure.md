@@ -7,11 +7,11 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
 ms.openlocfilehash: 4fea787e7fe20d60de91761811e1b69bebf3a010
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896349"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485527"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>A nagyszámítógépes tár áthelyezése az Azure-bA
 
@@ -51,7 +51,7 @@ Az Azure storage szolgáltatás érhető el, [Azure Disks](/azure/virtual-machin
 
 <table>
 <thead>
-    <tr><th>Typo</th><th>Leírás</th><th>A következő esetekben használja:</th></tr>
+    <tr><th>Típus</th><th>Leírás</th><th>A következő esetekben használja:</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure Files
@@ -94,7 +94,7 @@ A tárolás egy adott rendszerhez típusát attól függ, hogy a rendszer, bele�
 
 SSD-k biztosítanak a legmagasabb szintű tárolási teljesítmény az Azure-ban. A következő lehetőségek állnak rendelkezésre (írásakor a jelen dokumentum):
 
-| Typo         | Méret           | IO                  |
+| Típus         | Méret           | IO                  |
 |--------------|----------------|-----------------------|
 | Ultra SSD    | 4 GB-os 64 TB-ig  | 1200 való 160,000 IOPS |
 | Prémium SSD  | 32 GB-os 32 TB-ig | 12-15 000 iops-érték     |

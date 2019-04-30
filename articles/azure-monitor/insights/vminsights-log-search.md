@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2019
 ms.author: magoedte
 ms.openlocfilehash: 8b6745a2b9afe8d3101585e3f7a13f2fc978c84a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492088"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122591"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Az Azure Monitor naplók lekérdezni a virtuális gépek (előzetes verzió)
 A virtuális gépek az Azure Monitor teljesítmény és a kapcsolati metrika, a számítógép és a folyamat leltáradatok és a állapotinformációkat gyűjt, és továbbítja azokat a Log Analytics-munkaterületet az Azure monitorban.  Ezek az adatok érhető el [lekérdezés](../../azure-monitor/log-query/log-query-overview.md) az Azure monitorban. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
@@ -53,12 +53,12 @@ Kezelheti a költségeket és összetettséget, csatlakozási rekordjainak nem f
 | Tulajdonság | Leírás |
 |:--|:--|
 |Direction |A kapcsolat irányát, értéke *bejövő* vagy *kimenő* |
-|Machine |A számítógép teljes Tartományneve |
-|Process |Identitáskezelési folyamat vagy a csoportok a folyamatok, a kapcsolat kezdeményezése és elfogadása |
+|Gép |A számítógép teljes Tartományneve |
+|Feldolgozás |Identitáskezelési folyamat vagy a csoportok a folyamatok, a kapcsolat kezdeményezése és elfogadása |
 |SourceIp |A forrás IP-címe |
 |DestinationIp |A cél-IP-cím |
 |DestinationPort |A cél-port száma |
-|Protocol |A kapcsolathoz használt protokoll.  Értékek *tcp*. |
+|Protokoll |A kapcsolathoz használt protokoll.  Értékek *tcp*. |
 
 A fiókra a csoportosítás a hatását, csoportosított fizikai kapcsolatok számával kapcsolatos információkat a rekord a következő tulajdonságok:
 
@@ -77,7 +77,7 @@ Mellett száma kapcsolati metrika adatmennyiség kapcsolatos információkat kü
 |:--|:--|
 |BytesSent |A jelentéskészítési időszakban elküldött bájtok száma |
 |BytesReceived |A jelentéskészítési időszakban fogadott bájtok teljes száma |
-|Responses |A jelentéskészítési időszakban megfigyelt válaszok száma. 
+|Válaszok |A jelentéskészítési időszakban megfigyelt válaszok száma. 
 |ResponseTimeMax |A legnagyobb válaszideje (ezredmásodperc) észlelt a jelentéskészítési időszakban. Ha nincs érték a tulajdonság értéke üres.|
 |ResponseTimeMin |A legkisebb válaszideje (ezredmásodperc) észlelt a jelentéskészítési időszakban. Ha nincs érték a tulajdonság értéke üres.|
 |ResponseTimeSum |Az összes válaszidők összege a jelentéskészítési időszakban megfigyelt (ezredmásodperc). Ha nincs érték a tulajdonság értéke üres.|
@@ -112,9 +112,9 @@ Minden RemoteIp tulajdonság *VMConnection* tábla be van jelölve IP-címek ös
 |:--|:--|
 |MaliciousIp |A RemoteIp címe |
 |IndicatorThreadType |Észlelt fenyegetés mutató a következő értékek egyike *Botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos* , *MaliciousUrl*, *kártevő*, *adathalász*, *Proxy*, *elleni*, *Megnézendők*.   |
-|Description |Az észlelt fenyegetés leírása. |
+|Leírás |Az észlelt fenyegetés leírása. |
 |TLPLevel |Közlekedési lámpa protokoll (TLP) szint egyike a meghatározott értékeknek *fehér*, *zöld*, *sárga*, *Red*. |
-|Confidence |Értékek a következők *0 – 100*. |
+|Megbízhatóság |Értékek a következők *0 – 100*. |
 |Severity |Értékek a következők *0 – 5*, ahol *5* van a legsúlyosabb és *0* nem súlyos egyáltalán. Alapértelmezett érték *3*.  |
 |FirstReportedDateTime |Először a szolgáltató jelenteni a kijelző. |
 |LastReportedDateTime |A kijelző Interflow által látott utolsó időpontját. |
@@ -136,10 +136,10 @@ Minden rekord VMBoundPort azonosíthatók a következő mezőket:
 
 | Tulajdonság | Leírás |
 |:--|:--|
-|Process | Identitás, amellyel a port társítva folyamat (vagy a folyamatok csoportok).|
-|Ip | IP-cím-portot (lehet helyettesítő karaktert tartalmazó IP-Címek használatához *0.0.0.0*) |
+|Feldolgozás | Identitás, amellyel a port társítva folyamat (vagy a folyamatok csoportok).|
+|IP | IP-cím-portot (lehet helyettesítő karaktert tartalmazó IP-Címek használatához *0.0.0.0*) |
 |Port |A Port számát |
-|Protocol | A protokoll.  A példában *tcp* vagy *udp* (csak *tcp* jelenleg támogatott).|
+|Protokoll | A protokoll.  A példában *tcp* vagy *udp* (csak *tcp* jelenleg támogatott).|
  
 Az identitás egy portot a fenti öt mezők származik, és a PortId tulajdonságban tárolja. Ez a tulajdonság segítségével gyorsan található rekordok egy adott portot időpontja között. 
 
@@ -162,7 +162,7 @@ Típussal rendelkező rekordok *ServiceMapComputer_CL* leltáradatokat a függő
 
 | Tulajdonság | Leírás |
 |:--|:--|
-| Type | *ServiceMapComputer_CL* |
+| Típus | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | A munkaterületen belül a gépek egyedi azonosítója |
 | ResourceName_s | A munkaterületen belül a gépek egyedi azonosítója |
@@ -187,7 +187,7 @@ Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolatt
 
 | Tulajdonság | Leírás |
 |:--|:--|
-| Type | *ServiceMapProcess_CL* |
+| Típus | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | A munkaterületen belül a folyamat egyedi azonosítója |
 | ResourceName_s | A gépen, amelyen fut a folyamat egyedi azonosítója|
@@ -202,9 +202,9 @@ Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolatt
 | ProductVersion_s | A termék verziója |
 | FileVersion_s | A fájl verziója |
 | CommandLine_s | A parancssorból |
-| ExecutablePath _s | A végrehajtható fájl elérési útja |
+| ExecutablePath z | A végrehajtható fájl elérési útja |
 | WorkingDirectory_s | A munkakönyvtárban |
-| UserName | A fiók, amely alatt a folyamat végrehajtása |
+| Felhasználónév | A fiók, amely alatt a folyamat végrehajtása |
 | UserDomain | A tartományhoz, amelyben a folyamat végrehajtása |
 
 ## <a name="sample-log-searches"></a>Naplókeresési minták

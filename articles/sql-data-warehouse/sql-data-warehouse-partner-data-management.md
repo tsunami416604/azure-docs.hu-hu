@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
 ms.openlocfilehash: 08d168a688935328fb4716b849c70e828545765b
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620070"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61476205"
 ---
 # <a name="sql-data-warehouse-data-management-partners"></a>Az SQL Data Warehouse adatkezelési partnerek
 Az adattárház-megoldást létrehozni, számos különböző iparágvezető eszközök közül választhat. Ez a cikk az adatok felügyeleti eszközöket és megoldásokat támogató Azure SQL Data Warehouse a Microsoft partnervállalatokban emeli ki.

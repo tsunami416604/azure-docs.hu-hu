@@ -1,6 +1,6 @@
 ---
-title: Alkalmazások átjáró integrálása az Azure Security Center |} Microsoft Docs
-description: Ezen a lapon bemutatja, hogyan Alkalmazásátjáró integrálva van-e az Azure Security Center.
+title: Átjáró integrációja az Azure Security Centerrel |} A Microsoft Docs
+description: Ez az oldal nyújt tájékoztatást hogyan Application Gateway integrálva van az Azure Security Center.
 documentationcenter: na
 services: application-gateway
 author: vhorne
@@ -15,74 +15,74 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.author: victorh
-ms.openlocfilehash: b3a4abf4d0f408cdb49020d831b50d943c3467dd
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 10f115b64f0bd3f7e557da2bedbf3327d0ef483d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33205043"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122307"
 ---
-# <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Alkalmazásátjáró és az Azure Security Center közötti integráció áttekintése
+# <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Az Application Gateway és az Azure Security Center közötti integráció áttekintése
 
-Ismerje meg, hogyan Application Gateway és a Security Center védelmét a webes alkalmazás erőforrásaihoz. Alkalmazás átjáró webalkalmazási tűzfal (WAF) integrálható [Security Center](../security-center/security-center-intro.md) megjelenítésére szolgáló zökkenőmentes megelőzése, észlelésében és kezelésében a környezetben nem védett webalkalmazásokhoz fenyegetések ellen.
+Megtudhatja, hogyan az Application Gateway és a Security Center a webalkalmazás-erőforrások védelme. Application gateway webalkalmazási tűzfal (WAF) integrálható [a Security Center](../security-center/security-center-intro.md) adja meg, hogy áttekinthetőségét, észlelése és háríthatja el a fenyegetéseket a környezetben nem védett webalkalmazások számára.
 
 ## <a name="overview"></a>Áttekintés
 
-Alkalmazás átjáró WAF várja, hogy egy érték, a Security Center webalkalmazások biztonsági réseket és biztonsági rések elleni védelme. Magas súlyosságú javaslatok, a security center engedélyezve van a webes erőforrásokat WAF által nem védett megjelenítése. Webalkalmazási tűzfalak javaslatok jelenjenek meg a **áttekintése** lap **alkalmazások**.
+Az Application Gateway WAF egy javaslatot a Security Center olyan webes alkalmazások védelme a biztonsági rések ellen. A security center magas súlyossági szintű ajánlásként megjelenítése engedélyezve webes erőforrások, amelyek a WAF által nem védett. A webalkalmazás-tűzfalak javaslatok láthatók a **áttekintése** lap **alkalmazások**.
 
-![a security Center Integration][1]
+![a security center-integráció][1]
 
-Kattintson a javaslatokkal vonatkozó webalkalmazási tűzfal egy új, az ajánlás részleteit megjelenítő lapon nyílik meg.
+Kattintson a kapcsolódó webalkalmazási tűzfal megnyílik egy új oldalt, az ajánlás részleteit megjelenítő javaslatokkal szolgálni.
 
-## <a name="add-a-web-application-firewall-to-an-existing-resource"></a>Webalkalmazási tűzfal hozzáadása a meglévő erőforrás
+## <a name="add-a-web-application-firewall-to-an-existing-resource"></a>Webalkalmazási tűzfal hozzáadása egy meglévő erőforrás
 
-Navigáljon a **minden szolgáltatás** > **biztonság + identitás szakaszában** > **Security Center** és a **Security Center -áttekintése**, kattintson a **alkalmazások**. A **Security Center - alkalmazások**, a tábla a Security Center az előfizetésében észlelt alkalmazások listáját tartalmazza.
+Navigáljon a **minden szolgáltatás** > **biztonság + identitás** > **a Security Center** és a **Security Center – áttekintés**, kattintson a **alkalmazások**. A **a Security Center - alkalmazások**, a tábla tartalmazza, amelyeket a Security Center észleli az előfizetésében.
 
 ![webalkalmazás][3]
 
-Kattintva kritikus problémát webalkalmazás, azzal a **biztonsági állapotának** lap. Az alábbi képen, a webes alkalmazás webalkalmazási tűzfal által nem védett. 
+A webalkalmazás egy kritikus probléma kattintva a **alkalmazás biztonsági állapota** lapot. Az alábbi képen, a webalkalmazási tűzfal által nem védett webalkalmazás. 
 
-![nem védett webes erőforrások][2]
+![webes erőforrások nem védett][2]
 
-Kattintson a **webalkalmazási tűzfal hozzáadása** alatt **javaslatok** megnyitásához a **webalkalmazási tűzfal hozzáadása** lap.
+Kattintson a **webalkalmazási tűzfal hozzáadása** alatt **javaslatok** megnyitásához a **webalkalmazási tűzfal hozzáadása** lapot.
 
-Ha nem rendelkezik meglévő Alkalmazásátjáró, vagy hozzon létre egy újat szeretne, kattintson a **hozzon létre új** és a **hozzon létre egy új webalkalmazási tűzfal**, és kattintson a **Microsoft - alkalmazás átjáró** . Ez végigvezeti Alkalmazásátjáró létrehozásához szükséges lépéseket. Ezen a ponton a webes alkalmazás meg van adva egy védett erőforrásokhoz, most már a Security Center követi nyomon, hogy ehhez az erőforráshoz webalkalmazási tűzfal védi. Ez nem adja hozzá azt egy háttér címkészletet tag.
+Ha nem rendelkezik meglévő Application Gateway, vagy hozzon létre egy újat szeretne, kattintson a **hozzon létre új** és a **hozzon létre egy új webalkalmazási tűzfal**, és kattintson a **Microsoft – az Application Gateway** . Ez végigvezeti az application gateway létrehozásához szükséges lépéseken. Ezen a ponton a webes alkalmazások hozzáadásakor, védett erőforrások, a Security Centert most követi nyomon, hogy ezt az erőforrást a webalkalmazási tűzfal védi. Ez nem ad hozzá, háttérbeli címkészlet tagként.
 
-Ha egy meglévő Alkalmazásátjáró, kiválaszthatja azt a **meglévő megoldással**
+Ha rendelkezik meglévő application gateway, kiválaszthatja a **meglévő megoldás használata**
 
-![webalkalmazási tűzfal-weblap hozzáadása][4]
+![oldal a webalkalmazási tűzfal hozzáadása][4]
 
-A Security Center keresztül Alkalmazásátjáró webalkalmazások hozzáadása nem adja az erőforrást háttér címkészletet tagja. Ez a kell elvégezni az átjáró-erőforráshoz közvetlenül.
+Egy application gateway a Security Center segítségével webes alkalmazások adása nem adja hozzá az erőforrás háttérbeli címkészlet tagként. Ezt kell elvégezni, az application gateway erőforráshoz a közvetlenül.
 
-## <a name="add-a-resource-to-an-existing-web-application-firewall"></a>Erőforrás hozzáadása egy meglévő webalkalmazási tűzfal
+## <a name="add-a-resource-to-an-existing-web-application-firewall"></a>Adjon hozzá egy erőforrást egy meglévő webalkalmazási tűzfal
 
-Navigáljon a **minden szolgáltatás** > **biztonság + identitás szakaszában** > **Security Center** és a **Security Center -áttekintése**, kattintson a **partneri megoldások**. Meglévő Security Center felismerésre képes alkalmazást átjárók megjelenítése a **partneri megoldások** lap.
+Navigáljon a **minden szolgáltatás** > **biztonság + identitás** > **a Security Center** és a **Security Center – áttekintés**, kattintson a **partneri megoldások**. A Security Center képes alkalmazást meglévő átjárók jelennek meg a **Partnermegoldások** lapot.
 
-![Partneri megoldások][7]
+![Partnermegoldások][7]
 
-Kattintson a **összekapcsolás** megnyitásához **összekapcsolás**, itt lehetősége van a beállítások, jelölje be a meglévő alkalmazásokat. Válassza ki azokat a védelmét, majd **OK**. Ez nem bővíti ki a webalkalmazás a háttérkészletbe az Alkalmazásátjáró. Ez beállítja az erőforrások védett erőforrásként, a Security Center nyomon követheti. Az erőforrás hozzáadása a háttér-készlet tagja, ez a kell elvégezni az alkalmazás-átjárót, kattintson az aktuális oldalon **megoldáskonzol** kell fordítani az alkalmazás átjáró-erőforráshoz, ahol felveheti a webes alkalmazás a háttérkészlet.
+Kattintson a **alkalmazás összekapcsolása** megnyitásához **alkalmazások összekapcsolása**, itt a meglévő alkalmazások választható lehetőségeket vannak megadva. Válassza ki az alkalmazások védelme, és kattintson a **OK**. Ez nem adja hozzá az application Gateway háttérkészlet a webalkalmazást. Ezzel beállítja az erőforrások egy védett erőforrás, a Security Center képes nyomon követni. Az erőforrás hozzáadása a háttérbeli címkészlet tagjaként, ezt kell elvégezni, az application gatewayen az aktuális lapon, rákattinthat a **megoldáskonzol** kattintva megtekinthető az application gateway erőforráshoz, melyben hozzáadhatja a webes alkalmazásba a háttérkészlet.
 
 ![Partneri megoldások alkalmazások][6]
 
-## <a name="finalize-configuration"></a>Konfigurálás lezárásaképpen
+## <a name="finalize-configuration"></a>Konfiguráció véglegesítése
 
-A Security Center nyomon követi az alkalmazások Alkalmazásátjáró védett erőforrásként hozzáadni.  Ez az erőforrás állapotát figyeli, és biztosítja, hogy egy alkalmazás-átjáró által védett. A következő lépés a magánhálózati IP-címe, nyilvános IP-cím vagy a virtuális gép hálózati Adapterének hozzáadása az Alkalmazásátjáró háttérkészlet. Amíg ez történik, egy további ajánlása **alkalmazás védelem véglegesítése** látható, amíg az erőforrás nincs hozzáadva.
+A Security Center az application gateway egy védett erőforrásként hozzáadott alkalmazások követi nyomon.  Ez az erőforrás állapotát figyeli, és biztosítja, hogy az application gateway által védett. A következő lépés, hogy az application Gateway háttérkészlet hozzáadása a privát IP, nyilvános IP-cím vagy a virtuális gép hálózati Adapterén. Amíg ez nem egy további ajánlása **alkalmazásvédelem véglegesítése** jelenik meg, amíg az erőforrás nincs hozzáadva.
 
-![webalkalmazási tűzfal-weblap hozzáadása][5]
+![oldal a webalkalmazási tűzfal hozzáadása][5]
 
 ## <a name="security-alerts"></a>Biztonsági riasztások
 
-A Security Center Ugrás **ÉSZLELÉSI** > **biztonsági riasztások**.  Itt megtalálja az Ön WAF riasztások az alkalmazás átjárók. Riasztások WAF szabály bontásban.
+A Security Center Ugrás **ÉSZLELÉSI** > **biztonsági riasztások**.  Itt találja a WAF-riasztások az application Gateway átjárók esetében. Riasztások WAF szabály bontásban.
 
-![biztonsági riasztások][8]
+![Biztonsági riasztások][8]
 
-Kattintson egy szabály nyújtják adott WAF szabályhoz tartozó riasztások listája. Minden riasztás további részleteket a megállapítás mutatja be. A részleteket az Alkalmazásátjáró mutató hivatkozás biztosítása.
+Kattintson egy szabályt az adott WAF-szabályokat a riasztások listája biztosítja. Minden riasztás a megkereséséről további részleteket jeleníti meg. A részletek adjon meg egy hivatkozást az application gateway.
  
-![riasztás részletei][9]
+![Riasztás részletei][9]
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogy a meglévő Alkalmazásátjáró webalkalmazási tűzfal engedélyezése, látogasson el a [létrehozás vagy frissítés webalkalmazási tűzfal az Azure-Alkalmazásátjáró](application-gateway-web-application-firewall-portal.md).
+A meglévő application gateway webalkalmazási tűzfal engedélyezése talál [létrehozás vagy frissítés az Azure Application Gateway webalkalmazási tűzfallal rendelkező](application-gateway-web-application-firewall-portal.md).
 
 [1]: ./media/application-gateway-integration-security-center/figure1.png
 [2]: ./media/application-gateway-integration-security-center/figure2.png

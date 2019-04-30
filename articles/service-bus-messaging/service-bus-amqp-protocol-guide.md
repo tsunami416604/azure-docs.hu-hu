@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: c99f4491af8fe3e5f0f0ed7a264995ae3ec5911f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658266"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60749391"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Az AMQP 1.0-s verziójában az Azure Service Bus és Event Hubs protokoll – útmutató
 
@@ -361,9 +361,9 @@ A kérelemüzenet a következő alkalmazás tulajdonságokkal rendelkezik:
 
 | Kulcs | Optional | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
-| művelet |Nem |sztring |**put-token** |
-| type |Nem |sztring |A token használatát típusa. |
-| név |Nem |sztring |A "célközönség", amely a token vonatkozik. |
+| művelet |Nem |string |**put-token** |
+| type |Nem |string |A token használatát típusa. |
+| név |Nem |string |A "célközönség", amely a token vonatkozik. |
 | lejárat |Igen |időbélyeg |A jogkivonat lejárati idejét. |
 
 A *neve* tulajdonság azonosítja az entitást, amellyel a token társítva kell lennie. A Service Bus az üzenetsorok vagy üzenettémák/előfizetések elérési útját. A *típus* tulajdonság azonosítja a jogkivonat típusa:
@@ -381,7 +381,7 @@ A válaszüzenet rendelkezik a következő *alkalmazástulajdonságok* értékek
 | Kulcs | Optional | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
 | status-code |Nem |int |HTTP-válaszkód **[RFC2616]**. |
-| status-description |Igen |sztring |Az állapot leírása. |
+| status-description |Igen |string |Az állapot leírása. |
 
 Az ügyfél meghívhat *put-token* ismételt és az üzenetkezelési infrastruktúra bármelyik entitáshoz. A jogkivonatok az aktuális ügyfél hatóköre és az aktuális kapcsolatot, ami azt jelenti, a kiszolgáló megszakítja a megőrzött jogkivonatokat, amikor a kapcsolat csökken a rögzített.
 

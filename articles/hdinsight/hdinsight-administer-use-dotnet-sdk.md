@@ -1,7 +1,6 @@
 ---
 title: A .NET SDK használatával – Azure HDInsight az Apache Hadoop-fürtök kezelése
 description: Ismerje meg, hogyan hajthat végre felügyeleti feladatokat a HDInsight .NET SDK-val a HDInsight az Apache Hadoop-fürtök.
-services: hdinsight
 ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2e57726c3519fbb2660d7dfb4794a885871acc0d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 06e3178e344ee46f67cfd8a6feaf08d56d3c86e7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793937"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62096215"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>A HDInsight Apache Hadoop-fürtök kezelése a .NET SDK-val
 

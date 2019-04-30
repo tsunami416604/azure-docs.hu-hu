@@ -9,11 +9,11 @@ ms.date: 11/28/2018
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 869d2105ccf635a46a21e9b7f382ddbef713d68b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327010"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61483417"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Annak eldöntése, mikor érdemes használni az Azure-Blobok, az Azure Files és az Azure-lemezek
 A Microsoft Azure tárolásához és eléréséhez, az adatok a felhőben az Azure Storage számos funkciót biztosít. Ez a cikk ismerteti az Azure-fájlok, Blobok és lemezek, és célja, hogy ezek a szolgáltatások közötti választás érdekében.
@@ -56,7 +56,7 @@ Az alábbi táblázat hasonlítja össze az Azure Files Azure-lemezek.
 |Hatókör|Csak egyetlen virtuális gép|Több virtuális gép között megosztott hozzáférés|  
 |A pillanatképek és másolása|Igen|Igen|  
 |Konfiguráció|A virtuális gép indításakor csatlakoztatva|Miután elindult a virtuális gép csatlakoztatva|  
-|Authentication|Beépített|Net use beállítása|  
+|Hitelesítés|Beépített|Net use beállítása|  
 |Adatelérési REST használatával|A virtuális merevlemez található fájl nem érhető el|Olyan megosztáson tárolt fájlok elérhetők|  
 |Max. méret|4 TiB-lemez|5 TiB fájlmegosztás és a megosztáson belüli 1 TiB-fájl|  
 |Maximális iops-érték|500 IOps|1000 IOps|  

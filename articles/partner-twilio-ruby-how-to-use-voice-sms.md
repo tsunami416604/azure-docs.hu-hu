@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: 40b633c4e51a34e6640a9557be49bbe30543daf5
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426435"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61457651"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Hogyan lehet a Twilio használata Hanghívási és SMS-funkciókhoz Ruby nyelven
 Ez az útmutató bemutatja, hogyan hajthat végre gyakori programozási feladatokat, a Twilio API-t szolgáltatással az Azure-ban. Az ismertetett forgatókönyvek között megtalálható, így a telefonhívás, és a egy rövid üzenetet szolgáltatást (SMS) üzenetet küld. A Twilio és az alkalmazások használata hanghívási és SMS további információkért lásd: a [lépések](#NextSteps) szakaszban.
@@ -52,15 +52,15 @@ A Twilio-műveletek XML-címkéket, hogy mit kell tudniuk Twilio **tegye**. Ha p
 
 Az alábbiakban látható egy Twilio-műveletek listájához.
 
-* **&lt;Tárcsázás&gt;**: a hívó kapcsolódik egy másik telefonszámot.
-* **&lt;Gyűjtse össze&gt;**: összegyűjti a telefon billentyűzeten beírt számjegyeket.
-* **&lt;Vonalbontás&gt;**: ér véget a hívást.
-* **&lt;Play&gt;**: fájlból játszik le egy hangfájlt.
-* **&lt;Felfüggesztés&gt;**: Csendes megvárja a megadott számú másodperc.
-* **&lt;Rekord&gt;**: a hívó hangalapú rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
-* **&lt;Átirányítási&gt;**: átadja a vezérlést a hívást vagy SMS a TwiML egy másik URL-címen.
-* **&lt;Elutasítás&gt;**: a Twilio-számra egy bejövő hívás elutasítása a számlázási, nélkül
-* **&lt;Tegyük fel, hogy&gt;**: alakíthatók át egymásba szöveg-beszéd átalakítás, amely a hívást.
+* **&lt;Tárcsázás&gt;**: A hívó csatlakozik egy másik telefonon.
+* **&lt;Gyűjtse össze&gt;**: Gyűjti a telefon billentyűzeten beírt számjegyeket.
+* **&lt;Vonalbontás&gt;**: A hívás véget ér.
+* **&lt;Play&gt;**: Hang lejátszása.
+* **&lt;Felfüggesztés&gt;**: A megadott számú másodperc vár beavatkozás nélkül.
+* **&lt;Rekord&gt;**: A hívó hangalapú rögzíti, és a felvétel tartalmazó fájl URL-címet adja vissza.
+* **&lt;Redirect&gt;**: Adatátvitel a irányítását tartalmazó hívást vagy SMS-t a TwiML egy másik URL-címen.
+* **&lt;Elutasítás&gt;**: A Twilio-számra egy bejövő hívás elutasítása a számlázási, nélkül
+* **&lt;Tegyük fel, hogy&gt;**: Szöveg-beszéd átalakítás, amely egy hívást történő alakítja.
 * **&lt;SMS&gt;**: SMS üzenetet küld.
 
 A Twilio műveletek, az attribútumokat és TwiML kapcsolatos további információkért lásd: [TwiML][twiml]. A Twilio API-val kapcsolatos további információkért lásd: [Twilio API-t][twilio_api].
@@ -109,7 +109,7 @@ A parancssorban futtassa `bundle install`. Most nyissa meg a `web.rb` ezt a fels
 
 Most már készen használható a Twilio segítő kódtára a Rubyhoz, a webalkalmazásban.
 
-## <a id="howto_make_call"></a>Hogyan: végezhet
+## <a id="howto_make_call"></a>kézikönyv: Végezhet
 A következő bemutatja, hogyan végezhet. Fő fogalmak használatával a Twilio segítő kódtára a Rubyhoz a REST API-hívásokat, és a renderelési TwiML tartalmazza. Helyettesítse be a saját értékeit a **a** és **való** telefonszámai, és győződjön meg arról, hogy ellenőrizze a **a** telefonszám a Twilio-fiók, a kód futtatása előtt.
 
 Adja hozzá ezt a funkciót `web.md`:
@@ -146,7 +146,7 @@ Ha Ön nyílt felfelé `http://yourdomain.cloudapp.net/make_call` egy böngész�
 
 A harmadik paraméter (`url`) Twilio kéri, hogy mi a teendő, ha van csatlakoztatva van a hívás útmutatást kaphat az URL-cím. Ebben az esetben mi egy URL-cím beállítása (`http://yourdomain.cloudapp.net`), amely egy egyszerű TwiML dokumentumot ad vissza, és használja a `<Say>` néhány szöveg-hang transzformációs és a hívási fogadó személy legyen például "Hello alfaja" művelet.
 
-## <a id="howto_receive_sms"></a>Útmutató: az SMS-üzenet fogadása
+## <a id="howto_receive_sms"></a>kézikönyv: Az SMS-üzenet fogadása
 Az előző példában azt kezdeményezett egy **kimenő** telefonhívás. Ez alkalommal, használja a telefonszámot, amelyet a Twilio megadott során regisztrációs folyamatot egy **bejövő** SMS-üzenet.
 
 Először is, jelentkezzen be a [Twilio-irányítópult][twilio_account]. Kattintson a "Számok" a felső navigációs, és kattintson a a Twilio-szám van megadva. Látni fogja a két URL-címeket, amelyeket konfigurálhat. Egy hang-kérelem URL-CÍMÉT és a egy SMS kérelem URL-címe. Ezek a Twilio-hívások, ha telefonos hívást kezdeményez vagy SMS elküldenék a szám URL-címeket. Az URL-címeket "webhook" is nevezik.
@@ -161,7 +161,7 @@ Azt szeretnénk, bejövő SMS-üzenetek feldolgozása, úgyhogy frissítése az 
 
 A módosítás elvégzése után győződjön meg arról, hogy indítsa újra a webalkalmazást. Most vegye ki a telefonjára, és SMS küldése a Twilio-számra. Azonnal kapja meg az SMS-választ, amely szerint a "Hey, a ping parancs Köszönjük! A Twilio és az Azure rock! ".
 
-## <a id="additional_services"></a>How to: további Twilio-szolgáltatások használata
+## <a id="additional_services"></a>kézikönyv: További Twilio-szolgáltatások használata
 Itt látható példák, mellett Twilio kínál a webes API-kat használhatja az Azure-alkalmazásból további Twilio funkciói kihasználhatók. További részletek: a [Twilio API-dokumentáció][twilio_api_documentation].
 
 ### <a id="NextSteps"></a>Következő lépések

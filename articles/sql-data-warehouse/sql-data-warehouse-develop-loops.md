@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
 ms.openlocfilehash: 5aa26aeb27d962e6e6289a754ef57b49158b68db
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456289"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61439196"
 ---
 # <a name="using-t-sql-loops-in-sql-data-warehouse"></a>Az SQL Data Warehouse a T-SQL-hurkok használatával
 Tippek a T-SQL-hurkok használatával, és cserélje le az Azure SQL Data Warehouse a kurzorok használható megoldások fejlesztéséhez.

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 5392cf5463dd0b11d1ce53856c8e4e2e788892b0
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442413"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60658437"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Hogyan hozhat létre és csoportok használata az Azure API Management fejlesztői fiókok kezelése
 
@@ -40,7 +40,7 @@ Csoportok létrehozása és kezelése a közzétevő portálon, valamint létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben a cikkben a feladatokat: [Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
+Végezze el a cikkben leírt feladatok: [Az Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 

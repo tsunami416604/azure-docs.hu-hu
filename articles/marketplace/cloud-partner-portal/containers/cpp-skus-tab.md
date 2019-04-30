@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 81f7e46e626bb061881be53e8cace36e1478e0e1
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51683978"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61472858"
 ---
 # <a name="container-skus-tab"></a>Tároló termékváltozatok lap
 
@@ -36,7 +36,7 @@ Amikor egy új ajánlat létrehozása, nincsenek bármely a tartozó termékvál
 2. Adja meg a Termékváltozat és a tároló szükséges információkat. Minden SKU felel meg egy tárolórendszerképet. A Termékváltozat két részből áll:
 
     -   Termékváltozat-metaadatok
-    -   Tároló metaadatai
+    -   Container metadata
 
 ### <a name="sku-metadata"></a>Termékváltozat-metaadatok
 
@@ -44,11 +44,11 @@ A Termékváltozat-metaadatokat tároló listáján kirakat megjelenített infor
 
 ![Termékváltozat-metaadatok](./media/containers-sku-details.png)
 
-### <a name="container-metadata"></a>Tároló metaadatai
+### <a name="container-metadata"></a>Container metadata
 
 A tároló metaadatait az adattár részletei belül az Azure Container Registry (ACR)-hivatkozási információi rendelkezik. Az Azure Marketplace-en másolja át a lemezkép egy Marketplace-specifikus, nyilvános regisztrációs adatbázisba, és majd elérhetővé teszi a lemezkép az ügyfelek hitelesítő után. Érkező kérések az Azure felhasználói az Azure Marketplace-en tárolórendszerképet fel a szolgáltatás a nyilvános beállításjegyzék a Marketplace-en, nem ACR szolgálja ki.
 
-![Tároló metaadatai](./media/containers-image-repository.png)
+![Container metadata](./media/containers-image-repository.png)
     
 A **adattár részletei** az előző képernyőn rögzítése a következő mezőket tartalmazzák:
 
@@ -62,7 +62,7 @@ A **adattár részletei** az előző képernyőn rögzítése a következő mez�
     >[!NOTE]
     >A felhasználónév és jelszó szükségesek győződjön meg arról, hogy partnereink férhetnek hozzá az ACR-REL már említettük, a közzétételi folyamat.
 
-### <a name="image-version"></a>Lemezkép verziója
+### <a name="image-version"></a>Rendszerképverzió
 
 Amikor tesz közzé egy tárolórendszerképet, megadhat egy vagy több lemezképet címkét, és SHA digests.
 

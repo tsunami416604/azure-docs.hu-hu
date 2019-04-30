@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 2f500ea127d3f2042e7c97eeace592b4da8d8d0e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0c9b84f31810a4b0cec93738f7ce327bc24d8d0
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60494838"
+ms.locfileid: "62101608"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Az Azure Monitor for containers szolgáltatásban, hogy engedélyezze a mérőszámok frissítése
 Tárolók az Azure Monitor metrikáinak begyűjtését Azure Kubernetes Services-(AKS-) fürt csomópontok és a podok és rögzíti őket az Azure Monitor-metrikák áruház támogatása vezet. Ez a változás célja biztosít továbbfejlesztett aktualitása teljesítménydiagramok, teljesítmény-diagramok az Azure portal irányítópultok, a rögzítés támogatási összesített számítások (Avg, Count, maximális, minimális, Sum) szerkesztésekor és metrikariasztásokat támogatja.
@@ -35,7 +35,7 @@ Ezek a funkciók támogatásához a fürt frissítése elvégezhető az Azure Po
 Vagy feldolgozni rendel a **figyelési metrikákat közzétevő** szerepkört a fürt egyszerű szolgáltatást, hogy az ügynök által gyűjtött adatokat teheti közzé a fürtök erőforrás. Figyelési metrikák közzétevő jogosult csak leküldéses metrikák az erőforráshoz, azt nem lehet megváltoztatni bármilyen állapot, az erőforrás frissítésével, vagy olvassa el az adatokat. A szerepkör kapcsolatos további információkért lásd: [figyelési metrikákat közzétevői szerepkör](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
 ## <a name="prerequisites"></a>Előfeltételek 
-Mielőtt elkezdené, győződjön meg arról, hogy Ön a tagja a **[tulajdonosa](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-role.md#owner)** AKS-fürt erőforráson csomópont gyűjtésének engedélyezéséhez és a pod egyéni teljesítmény-mérőszámok szerepkör. 
+Mielőtt elkezdené, győződjön meg arról, hogy Ön a tagja a **[tulajdonosa](../../role-based-access-control/built-in-roles.md#owner)** AKS-fürt erőforráson csomópont gyűjtésének engedélyezéséhez és a pod egyéni teljesítmény-mérőszámok szerepkör. 
 
 Ha az Azure CLI-vel, akkor először helyi telepítése és használata a parancssori felület. Az Azure CLI 2.0.59 verzióját kell futtatnia vagy újabb. A verzió azonosításához futtassa `az --version`. Ha telepíteni vagy frissíteni szeretné az Azure CLI, lásd: kell [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 

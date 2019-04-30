@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 5587d86cb4b3a213961ce46e77c75e947de2d29e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 26c3466080cb356ca3610d42eaaf5ee4975d3731
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866372"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61471945"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation-runbookok hozzáadása helyreállítási tervekhez
 Ebben a cikkben ismertetünk, hogyan integrálható az Azure Site Recovery Azure Automation segítségével kiterjesztheti a helyreállítási tervek. Helyreállítási tervek vezényelhető helyreállítási védett virtuális gépek Site recoveryvel. Helyreállítási tervek működik replikálása egy másodlagos felhőbe, és az Azure-bA. Helyreállítási tervek is érdekében, a helyreállítás **következetesen pontos**, **megismételhető**, és **automatizált**. Ha átadja a feladatokat a virtuális gépek az Azure-ba, az Azure Automation integrációs kiterjeszti a helyreállítási terv. Runbookok, amelyek kínál hatékony automatizálási feladatok végrehajtásához használható.
@@ -27,9 +27,9 @@ Ebben a cikkben ismertetünk, hogyan integrálható az Azure Automation-runbooko
     ![Kattintson a Testreszabás gombra](media/site-recovery-runbook-automation-new/essentials-rp.png)
 
 
-2. Kattintson a jobb gombbal **csoport 1: Start**, majd válassza ki **utólagos művelet felvétele**.
+2. Kattintson a jobb gombbal **1 csoportban: Indítsa el**, majd válassza ki **utólagos művelet felvétele**.
 
-    ![Kattintson a jobb gombbal csoport 1: Start, és utólagos művelet felvétele](media/site-recovery-runbook-automation-new/customize-rp.png)
+    ![Kattintson a jobb gombbal 1. csoport: Indítsa el, és a post művelet hozzáadása](media/site-recovery-runbook-automation-new/customize-rp.png)
 
 3. Kattintson a **szkript kiválasztása**.
 
@@ -43,7 +43,7 @@ Ebben a cikkben ismertetünk, hogyan integrálható az Azure Automation-runbooko
 
 6. Válassza ki a runbook az Automation-fiók. Ez a runbook a parancsprogramot, amelynek az első csoport a helyreállítás után a helyreállítási terv végrehajtása közben.
 
-7. A parancsfájl mentéséhez kattintson az **OK**. A parancsfájl adnak hozzá **1. csoport: utólagos lépések**.
+7. A parancsfájl mentéséhez kattintson az **OK**. A parancsfájl adnak hozzá **1. csoport: Utólagos lépések**.
 
     ![Műveletcsoport utáni 1:Start](media/site-recovery-runbook-automation-new/addedscript-rp.PNG)
 

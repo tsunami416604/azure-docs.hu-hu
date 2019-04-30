@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
 ms.openlocfilehash: 21758d112cd7eaf45b8b279cf2a6f6060c44c9c1
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515845"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60742037"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Hozzon létre egy IoT hubra az Azure portal használatával
 
@@ -36,11 +36,11 @@ A beállítások egy meglévő IoT hub az IoT Hub panel a létrehozása után m�
 
 **Díjszabás és méretezés**: Ez a tulajdonság segítségével migrálása másik tarifacsomagra vagy csak az IoT Hub-egységek. 
 
-**Műveletek figyelése**: a különböző figyelési kategóriák ki- vagy bekapcsolja, például az eszköz a felhőbe irányuló üzenetek vagy a felhőből az eszközre irányuló üzenetek kapcsolatos események naplózását.
+**Műveletek figyelése**: A különböző figyelési kategóriák be és ki, például az eszköz a felhőbe irányuló üzenetek vagy a felhőből az eszközre irányuló üzenetek kapcsolatos események naplózását.
 
 **IP-szűrő**: Adjon meg egy IP-címtartományt, amely elfogadását, vagy az IoT hub által elutasítva.
 
-**Tulajdonságok**: tulajdonságok listáját jeleníti meg, hogy másolja, majd használja máshol, például az erőforrás-azonosító, erőforráscsoport, helye és így tovább.
+**Tulajdonságok**: Tulajdonságok listáját jeleníti meg, hogy másolja, majd használja máshol, például az erőforrás-azonosító, erőforráscsoport, helye és így tovább.
 
 ### <a name="shared-access-policies"></a>Megosztott elérési házirendek
 

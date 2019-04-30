@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/7/2019
 ms.openlocfilehash: a20030a1dc6cd8b89064731c283f9b462d30ec8f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621397"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61422570"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>Indítsa újra az Azure Database for MySQL-kiszolgálóhoz az Azure portal használatával
 Ez a témakör ismerteti, hogyan újraindítható egy Azure Database for MySQL-kiszolgálóhoz. Indítsa újra a kiszolgálót, a kiszolgáló a műveletet hajt végre egy rövid kimaradás okozó karbantartási okokból szükségessé.

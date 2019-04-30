@@ -1,27 +1,22 @@
 ---
-title: Giraph telepítése és használata a HDInsight (Hadoop) – Azure
-description: Ismerje meg, a Giraph telepítése Linux-alapú HDInsight-fürtökön parancsfájlműveletekkel. A Szkriptműveletek testre szabhatja a fürt létrehozása során, a fürt konfigurációjának módosítása, vagy a szolgáltatások és segédprogramok telepítése teszi lehetővé.
-services: hdinsight
+title: Giraph telepítése és használata az Azure HDInsight
+description: Ismerje meg, a Giraph telepítése HDInsight-fürtökön parancsfájlműveletekkel. A Giraph segítségével hajtsa végre az Apache Hadoop az Azure-felhőben diagramfeldolgozási.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.author: hrasheed
-ms.openlocfilehash: a2f964915efda6ce83439c3c1970de58b0467456
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: MT
+ms.date: 04/22/2019
+ms.openlocfilehash: aa13d8dfc65f020f3f27183423913933cd0b9404
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201721"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61395383"
 ---
 # <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Telepítse az Apache Giraph HDInsight Hadoop-fürtöket, és a Giraph használata nagyméretű gráfok feldolgozásához
 
 Ismerje meg, az Apache Giraph telepítése egy HDInsight-fürtön. A szkript HDInsight művelet funkciója lehetővé teszi, hogy testre szabhatja a fürt egy bash-szkript futtatásával. Fürtök testreszabása során és a fürt létrehozása után használható parancsprogramok.
-
-> [!IMPORTANT]  
-> A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="whatis"></a>Mi az a Giraph
 
@@ -58,7 +53,7 @@ Ez a szakasz útmutatást az Azure portal használatával a fürt létrehozásak
 > [!NOTE]  
 > Az alábbi módszerek bármelyikével szkriptműveletet lehet alkalmazni:
 > * Azure PowerShell
-> * Az Azure klasszikus parancssori felület
+> * Az Azure CLI
 > * The HDInsight .NET SDK
 > * Azure Resource Manager-sablonok
 > 
@@ -148,7 +143,7 @@ Ha a fürt létrejött, használja az alábbi lépéseket a Giraph mellékelt Si
 
     Ezeket és más paramétereket, a Giraph minták használt további információkért lásd: a [Giraph rövid](https://giraph.apache.org/quick_start.html).
 
-6. A feladat befejeztével az eredmények tárolása az **/example/out/shotestpaths** könyvtár. A kimeneti fájl neve kezdődhet **. rész – m -** és az első, a második, stb. fájl jelző szám. A kimenet megtekintéséhez használja az a következő parancsot:
+6. A feladat befejeztével az eredmények tárolása az **/example/out/shortestpaths** könyvtár. A kimeneti fájl neve kezdődhet **. rész – m -** és az első, a második, stb. fájl jelző szám. A kimenet megtekintéséhez használja az a következő parancsot:
 
     ```bash
     hdfs dfs -text /example/output/shortestpaths/*

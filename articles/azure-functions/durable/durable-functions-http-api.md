@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 5bd977826f489ca8452432babe6126b8553450fb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58137708"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60730707"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) HTTP API-k
 
@@ -156,12 +156,12 @@ A válasz-adattartalomra vonatkozó a **HTTP 200** és **HTTP 202** esetben egy 
 
 | Mező                 | Adattípus | Leírás |
 |-----------------------|-----------|-------------|
-| **`runtimeStatus`**   | sztring    | A példány futásidejű állapotát. Értékek: *futó*, *függőben lévő*, *sikertelen*, *megszakított*, *kilépett*, *Befejeződött*. |
+| **`runtimeStatus`**   | string    | A példány futásidejű állapotát. Értékek: *futó*, *függőben lévő*, *sikertelen*, *megszakított*, *kilépett*, *Befejeződött*. |
 | **`input`**           | JSON      | A példány inicializálásához használt JSON-adatokat. Ez a mező `null` Ha a `showInput` lekérdezési karakterlánc paraméterének értéke `false`.|
 | **`customStatus`**    | JSON      | Egyéni vezénylési állapot használt JSON-adatokat. Ez a mező `null` Ha nincs beállítva. |
 | **`output`**          | JSON      | A példány JSON-kimenetét. Ez a mező `null` , ha a példány nem egy befejezett állapotban van. |
-| **`createdTime`**     | sztring    | Az az idő, amikor a példány létrehozása. ISO 8601 jelöléssel kiterjesztett használ. |
-| **`lastUpdatedTime`** | sztring    | Az az időpont, amikor a példány utolsó megőrzött. ISO 8601 jelöléssel kiterjesztett használ. |
+| **`createdTime`**     | string    | Az az idő, amikor a példány létrehozása. ISO 8601 jelöléssel kiterjesztett használ. |
+| **`lastUpdatedTime`** | string    | Az az időpont, amikor a példány utolsó megőrzött. ISO 8601 jelöléssel kiterjesztett használ. |
 | **`historyEvents`**   | JSON      | A vezénylési végrehajtási előzményeket tartalmazó JSON-tömböt. Ez a mező `null` , kivéve, ha a `showHistory` lekérdezési karakterlánc paraméterének értéke `true`. |
 
 Íme egy példa válasz a tartalmat, beleértve a vezénylési futtatási előzmények és tevékenység kimenetek (az olvashatóság érdekében formázva):

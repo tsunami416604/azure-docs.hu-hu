@@ -15,11 +15,11 @@ ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: bcb0c806d916b9dff4461cad829a1d75e8df7cf6
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271895"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60766267"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Tanúsítványok és az App Service-környezet 
 
@@ -83,7 +83,7 @@ A tanúsítvány feltöltése az alkalmazáshoz, az ASE környezetben:
 4. Másolja az ujjlenyomatot.
 5. Nyissa meg az alkalmazás beállításait. Hozzon létre egy alkalmazás beállítás WEBSITE_LOAD_ROOT_CERTIFICATES az ujjlenyomat értéket. Ha több tanúsítvány van, akkor lehet helyezni őket elválasztva vesszővel válassza el egymástól, és nincs szóköz, például ugyanazon beállítás 
 
-    84EC242A4EC7957817B8E48913E50953552DAFA6, 6A5C65DC9247F762FE17BF8D4906E04FE6B31819
+    84EC242A4EC7957817B8E48913E50953552DAFA6,6A5C65DC9247F762FE17BF8D4906E04FE6B31819
 
 A tanúsítvány azonos app service-csomag az alkalmazás, amelynek a beállítást, az összes alkalmazás számára elérhető lesz. Ha kell, hogy egy másik App Service-csomag alkalmazásokhoz érhető el, szüksége lesz a ismételje meg az Alkalmazásbeállítás művelet az alkalmazás az App Service-csomag. Annak ellenőrzéséhez, hogy van-e beállítva a tanúsítványt, nyissa meg a Kudu konzol, és adja ki a parancsot a dir parancs cert: \localmachine\root hibakeresési PowerShell-konzolján. 
 

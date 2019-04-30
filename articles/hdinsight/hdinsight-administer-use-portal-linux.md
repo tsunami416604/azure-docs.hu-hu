@@ -1,7 +1,6 @@
 ---
 title: Az Azure portal használatával HDInsight az Apache Hadoop-fürtök kezelése
 description: Megtudhatja, hogyan hozhat létre és kezelhet a HDInsight-fürtök az Azure portal használatával.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 80c27d588bb8b4c60ae8432fbd3a2ac3d2db1394
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 003aeadba1f4683af40f390d40dd3bbe32e02a83
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58802660"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62096358"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>A HDInsight Apache Hadoop-fürtök kezelése az Azure portal használatával
 
@@ -106,8 +105,8 @@ Az a [fürt kezdőlap](#homePage)alatt **beállítások** válassza **tulajdons�
 |Régió|Azure-helyen. Az Azure a támogatott helyek listáját lásd: a **régió** legördülő lista [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).|
 |Létrehozás dátuma|A dátum a fürtöt helyezett üzembe.|
 |Operációs rendszer|Mindkét **Windows** vagy **Linux**.|
-|Typo|Hadoop, HBase, Storm, Spark.|
-|Verzió|Lásd: [HDInsight-verziók](hdinsight-component-versioning.md).|
+|Típus|Hadoop, HBase, Storm, Spark.|
+|Version|Lásd: [HDInsight-verziók](hdinsight-component-versioning.md).|
 |Előfizetés|Az előfizetés neve.|
 |Alapértelmezett adatforrás|Az alapértelmezett fürt fájlrendszer.|
 |Munkavégző csomópontok mérete|A kiválasztott virtuális gép mérete a feldolgozó csomópontok.|

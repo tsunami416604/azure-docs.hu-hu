@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 7855c2bd45ba35ecb0ede5c60268e6446f37ed5a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58804530"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62121826"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Megismerheti az Azure-erőforrások szerepkör-definíciók
 
@@ -157,7 +157,7 @@ További információ a felügyeleti és az adatsík adatbiztonságot Storage: a
 
 Megtekintheti és az üzemeltetés, az eszközök és SDK-kkal megfelelő verziójával kell rendelkeznie:
 
-| Eszköz  | Verzió  |
+| Eszköz  | Version  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0-ás vagy újabb |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30-as vagy újabb |

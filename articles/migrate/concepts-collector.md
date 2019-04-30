@@ -8,11 +8,11 @@ ms.date: 03/26/2019
 ms.author: snehaa
 services: azure-migrate
 ms.openlocfilehash: 224511b9748c540f2cd48a3d8393a9c74f76ce32
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498417"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60679255"
 ---
 # <a name="about-the-collector-appliance"></a>A gyűjtőberendezés kapcsolatban
 
@@ -36,9 +36,9 @@ A gyűjtőberendezés folyamatosan csatlakozik az Azure Migrate-projektben, és 
 
 A berendezés csak az folyamatosan teljesítményadatokat gyűjt, semmilyen konfigurálási változást nem észleli a helyszíni környezetben (pl. virtuális gép hozzáadása, törlése, lemez hozzáadása stb.). Ha a helyszíni környezet konfigurációja módosul, a következőket teheti a változások tükrözésére a portálon:
 
-- További elemek (virtuális gépek, lemezek, magok stb.): A változásoknak az Azure Portalon, a felderítés a készülék leállítása és a majd indítsa el újra. Ez biztosítja, hogy a módosítások frissítése megtörténjen az Azure Migrate-projektben.
+- Elemek (virtuális gépek, lemezek, magok stb.) hozzáadása: Ezeknek a módosításoknak az Azure Portalon való tükrözéséhez állítsa le, majd indítsa újra a felderítést a berendezésen. Ez biztosítja, hogy a módosítások frissítése megtörténjen az Azure Migrate-projektben.
 
-- Virtuális gépek törlése: Lehet a célja, a készülék virtuális gépek törlése nem tükrözi, akkor is, ha leállítja és elindítja a felderítést. Ennek az oka, hogy a későbbi felderítések adatait a rendszer hozzáfűzi a korábbi felderítések adataihoz, nem pedig felülírja azokat. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a virtuális gépet a portálon. Ehhez távolítsa el a csoportból, és számítsa újra az értékelést.
+- A virtuális gépek törlése: A berendezés kialakítása miatt a virtuális gépek törlése akkor sem lesz látható, ha leállítja, majd újraindítja a felderítést. Ennek az oka, hogy a későbbi felderítések adatait a rendszer hozzáfűzi a korábbi felderítések adataihoz, nem pedig felülírja azokat. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a virtuális gépet a portálon. Ehhez távolítsa el a csoportból, és számítsa újra az értékelést.
 
 > [!NOTE]
 > A felderítés egyszeri felderítés berendezés elavulttá vált, ez a módszer támaszkodtak a vCenter Server statisztikai beállításait teljesítmény adatok pont rendelkezésre állását és virtuális gépek áttelepítése az Azure-ba való korrigáljuk méretezésének eredményezett átlagos teljesítményszámlálók gyűjtése.
@@ -242,11 +242,11 @@ A gyűjtő tartalmaz egy Windows Server 2012 R2 kiértékelési licenc, amely 18
 
 ## <a name="updating-the-os-of-the-collector-vm"></a>A gyűjtő virtuális gép operációs rendszerének frissítése
 
-Habár a gyűjtőberendezés egy próbalicencre 180 napig, a készülék automatikus – leállítás elkerüléséhez le a készülék az operációs rendszer folyamatosan frissíteni szeretné.
+Bár a gyűjtőberendezés próbalicence 180 napig érvényes, a berendezés operációs rendszerét folyamatosan frissítenie kell a berendezés automatikus leállásának elkerüléséhez.
 
-- Ha a gyűjtő 60 napig nem frissül, elindítja a gép automatikus leállítása.
-- Ha fut a felderítést, a gép nem kapcsolható ki, akkor is, ha a 60 nap. A számítógép ki lesz kapcsolva a felderítés befejeződése után.
-- Ha korábban már használta a gyűjtő több mint 60 napig, javasoljuk, a gép frissítés: minden alkalommal futó Windows Update gondoskodik.
+- Ha a gyűjtő 60 napig nem frissül, akkor elkezdi automatikusan leállítani a gépet.
+- Ha fut egy felderítés, a gép nem lesz kikapcsolva akkor sem, ha eltelt a 60 nap. A gép a felderítés befejezése után lesz kikapcsolva.
+- Ha 60 napnál tovább használta a gyűjtőt, javasoljuk, hogy tartsa a gépet naprakész állapotban a Windows Update futtatásával.
 
 ## <a name="upgrading-the-collector-appliance-version"></a>A gyűjtő berendezés verziójának frissítése
 

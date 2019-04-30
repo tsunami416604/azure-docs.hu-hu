@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
 ms.openlocfilehash: 90d576fd00a39f7e871cbe0922ce131dfbe38ff0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862165"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122387"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Egyéni mintavétel létrehozása az Application Gateway a portál használatával
 
@@ -31,7 +31,7 @@ ms.locfileid: "58862165"
 
 Ez a cikk az Azure Portalon keresztül meglévő application gateway vegyen fel egy egyéni mintát. Az alkalmazásokat, egy adott állapotellenőrzési oldalt, vagy az alapértelmezett webalkalmazást a sikeres válasz nem biztosító alkalmazások egyéni minták hasznosak lehetnek.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ha Ön még nem rendelkezik az application gateway, keresse fel [hozzon létre egy Application Gateway](application-gateway-create-gateway-portal.md) szeretne dolgozni egy application gateway létrehozásához.
 

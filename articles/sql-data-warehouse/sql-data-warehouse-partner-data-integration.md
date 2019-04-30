@@ -11,11 +11,11 @@ ms.date: 03/27/2019
 ms.author: jrj
 ms.reviewer: igorstan
 ms.openlocfilehash: 74449f7319f800e8008c5d457351fa49ae1af59a
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621702"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61476738"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>Az SQL Data Warehouse-adatok az integrációs partnerek
 Az adattárház-megoldást létrehozni, számos különböző iparágvezető eszközök közül választhat. Ez a cikk a Microsoft partnervállalatokban hivatalos adatintegrációs megoldásokat támogató Azure SQL Data Warehouse-emeli ki.

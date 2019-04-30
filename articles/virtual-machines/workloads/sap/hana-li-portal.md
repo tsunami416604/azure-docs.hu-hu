@@ -17,11 +17,11 @@ ms.date: 04/02/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8240308b3e0955b1d4d3ef2e82cad215daf95b00
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009368"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61482226"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Az Azure HANA nagyméretű példányok vezérlése az Azure Portalon keresztül
 Ez a dokumentum ismerteti a módja hogyan [HANA nagyméretű példányok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) láthatók [az Azure portal](https://portal.azure.com) és milyen tevékenységeket is végezni a nagyméretű HANA-példány egységekkel az Ön számára üzembe helyezett Azure-portálon keresztül. Nagyméretű HANA-példányokhoz látható-e az Azure Portalon egy Azure-erőforrás-szolgáltatón keresztül biztosítunk HANA nagyméretű példányok, amely jelenleg nyilvános előzetes verzióban érhető el
