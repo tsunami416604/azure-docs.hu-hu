@@ -279,7 +279,7 @@ IoT Edge-eszközök nem kell függvényt, hogy bemenő kapcsolatot, mert az IoT 
 
 Egy átjáró forgatókönyv működjön az IoT Edge hubot támogatott protokollok legalább egyikének meg kell nyitni alsóbb rétegbeli eszközök érkező bejövő forgalmat. A támogatott protokollok a következők: MQTT, AMQP és HTTPS.
 
-| Port | Protokoll |
+| Port | Protocol |
 | ---- | -------- |
 | 8883 | MQTT |
 | 5671 | AMQP |

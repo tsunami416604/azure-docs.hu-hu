@@ -49,13 +49,13 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
   
 ### <a name="elements"></a>Elemek  
   
-|Name (Név)|Leírás|Kötelező|  
+|Name (Név)|Leírás|Szükséges|  
 |----------|-----------------|--------------|  
 |hitelesítés – alapszintű|A gyökérelem.|Igen|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|  
+|Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
 |felhasználónév|Adja meg a felhasználónevet a alapszintű hitelesítés.|Igen|–|  
 |password|Az alapszintű hitelesítés jelszava.|Igen|–|  
@@ -89,13 +89,13 @@ Ebben a példában ügyféltanúsítvány erőforrás neve azonosítja.
 
 ### <a name="elements"></a>Elemek  
   
-|Name (Név)|Leírás|Kötelező|  
+|Name (Név)|Leírás|Szükséges|  
 |----------|-----------------|--------------|  
 |hitelesítés – tanúsítvány|A gyökérelem.|Igen|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|  
+|Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
 |thumbprint|Az ügyféltanúsítvány ujjlenyomatát.|Akár `thumbprint` vagy `certificate-id` jelen kell lennie.|–|  
 |certificate-id|A tanúsítvány-erőforrás neve.|Akár `thumbprint` vagy `certificate-id` jelen kell lennie.|–|  
@@ -124,13 +124,13 @@ Ebben a példában ügyféltanúsítvány erőforrás neve azonosítja.
   
 ### <a name="elements"></a>Elemek  
   
-|Name (Név)|Leírás|Kötelező|  
+|Name (Név)|Leírás|Szükséges|  
 |----------|-----------------|--------------|  
 |authentication-managed-identity |A gyökérelem.|Igen|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|  
+|Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
 |erőforrás|karakterlánc. Az Alkalmazásazonosító URI-t a cél webes API-t (védett erőforrás) az Azure Active Directoryban.|Igen|–|  
 |output-token-variable-name|karakterlánc. Neve a környezeti változó, amelyek megkapják a token értékét egy objektumtípust, `string`.|Nem|–|  
