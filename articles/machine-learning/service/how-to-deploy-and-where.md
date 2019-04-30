@@ -12,11 +12,11 @@ ms.reviewer: larryfr
 ms.date: 04/02/2019
 ms.custom: seoapril2019
 ms.openlocfilehash: a6ef53d56fa293791658b37b16cbaff94aee6ef3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280893"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60819842"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -296,7 +296,7 @@ Az Azure Kubernetes Service az alábbi képességeket biztosítja:
 * A modelladatok gyűjtésének
 * A webes szolgáltatások gyors válaszidők
 * A TLS megszüntetése
-* Authentication
+* Hitelesítés
 
 #### <a name="autoscaling"></a>Automatikus skálázás
 

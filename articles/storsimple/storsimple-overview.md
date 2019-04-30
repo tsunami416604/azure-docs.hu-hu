@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
 ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326926"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60630187"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>A StorSimple 8000 sorozat: a hibrid felhőalapú tárolási megoldás
 ## <a name="overview"></a>Áttekintés
@@ -205,7 +205,7 @@ A deduplikáció csökkenti a tárolt adatkészlet redundanciájának kiküszöb
 ## <a name="storsimple-workload-summary"></a>A StorSimple a számítási feladatok összefoglalása
 A StorSimple elvégezhető feladatok összefoglalása a lenti táblázatban láthatóak.
 
-| Forgatókönyv | Számítási feladat | Támogatott | Korlátozások | Verzió |
+| Forgatókönyv | Számítási feladat | Támogatott | Korlátozások | Version |
 | --- | --- | --- | --- | --- |
 | Együttműködés |Fájlmegosztás |Igen | |Az összes verzió |
 | Együttműködés |Elosztott fájlmegosztás |Igen | |Az összes verzió |
@@ -232,7 +232,7 @@ A StorSimple 8000 sorozatú eszközök nem támogatottak a következő számít�
 
 Az alábbiakban olyan infrastruktúra támogatja a StorSimple-összetevőt.
 
-| Forgatókönyv | Számítási feladat | Támogatott | Korlátozások | Verzió |
+| Forgatókönyv | Számítási feladat | Támogatott | Korlátozások | Version |
 | --- | --- | --- | --- | --- |
 | Általános kérdések |Express Route |Igen | |Az összes verzió |
 | Általános kérdések |FC DataCore |Igen* |Támogatott DataCore SANsymphony |Az összes verzió |

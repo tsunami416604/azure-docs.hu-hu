@@ -9,11 +9,11 @@ ms.date: 4/27/2018
 ms.author: johnkem
 ms.subservice: metrics
 ms.openlocfilehash: df26547132403bfe2f3fb3be74e5d1a3d9400967
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433033"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60776439"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
 Ez a cikk bemutatja, hogyan használhatja egy [Azure Resource Manager-sablon](../../azure-resource-manager/resource-group-authoring-templates.md) Azure metrikákhoz kapcsolódó riasztások konfigurálása. Ez lehetővé teszi, hogy automatikusan riasztásokat állíthat be az erőforrások, annak érdekében, hogy megfelelően figyelt összes erőforrás létrehozásakor.

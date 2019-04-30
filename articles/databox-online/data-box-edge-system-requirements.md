@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 90c60d586d505ca0c9bd787c37e137f7a38ee1f7
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996747"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60756545"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Az Azure Data Box Edge rendszerre vonatkozó követelmények
 
@@ -58,7 +58,7 @@ Az Azure IoT Edge lehetővé teszi, hogy az Azure-felhőben az IoT Hub támogato
 
 Használja az alábbi táblázat port konfigurálása az Azure IoT Edge-futtatókörnyezet üzemeltető kiszolgálók:
 
-| Port nem. | És leskálázása | Port hatókör | Szükséges | Útmutatás |
+| Port nem. | És leskálázása | Port hatókör | Kötelező | Útmutatás |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| Ki       | WAN        | Igen      | Kimenő nyissa meg az IoT Edge-kiépítés. Ez a konfiguráció manuális parancsprogramokkal vagy az Azure IoT Device Provisioning Service (DPS) szükség.|
 

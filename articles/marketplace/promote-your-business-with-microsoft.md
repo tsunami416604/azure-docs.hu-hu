@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
 ms.openlocfilehash: 3bd2361547a8210ae287eabaa67b60e8ba1f26e3
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738147"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60735884"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Népszerűsítse cégét a Microsofttal  
 A Microsoft rendelkezik a cél támogatja a partnerek, (,) és a egyszerűsítése érdekében az alkalmazás értékesítési vagy a kirakattípus a piactéren az ajánlat. A Marketplace-en való felkerüléshez szerint érheti el a programok és erőforrások a marketplace-en. 

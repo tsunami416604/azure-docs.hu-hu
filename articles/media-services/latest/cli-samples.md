@@ -13,11 +13,11 @@ ms.custom: seodec18
 ms.date: 03/11/2019
 ms.author: juliako
 ms.openlocfilehash: dee7f831562dc1f4b2478d13b204aab1d8455e1e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57840630"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60733181"
 ---
 # <a name="azure-cli-examples-for-azure-media-services"></a>Az Azure Media Services az Azure CLI-példák
 
@@ -28,7 +28,7 @@ A következő táblázat az Azure Media Services az Azure CLI-példákra mutató
 |  |  |
 |---|---|
 |**Méretezés**||
-| [Scale a Media szolgáltatás számára fenntartott egységek](media-reserved-units-cli-how-to.md)|A hangelemzés és videó elemzési feladatokat a Media Services v3 által aktivált vagy a Video Indexer azt javasoljuk 10 S3 szintű helyet a fiók kiépítése. <br/>A szkript bemutatja, hogyan skálázhatja a Media szolgáltatás számára fenntartott egységek (helyet) a parancssori felület használatával.|
+| [Scale a Media szolgáltatás számára fenntartott egységek](media-reserved-units-cli-how-to.md)|A Media Services v3 vagy a Video Indexer által aktivált hangelemzési és videoelemzési feladatok esetében javasolt 10 S3 MRU-val ellátni a fiókot. <br/>A szkript bemutatja, hogyan skálázhatja a Media szolgáltatás számára fenntartott egységek (helyet) a parancssori felület használatával.|
 |**Fiók**||
 | [A Media Services-fiók létrehozása](create-account-cli-how-to.md) | A szkript létrehoz az Azure Media Services-fiók. |
 | [Fiók hitelesítő adatainak alaphelyzetbe állítása](./scripts/cli-reset-account-credentials.md)|Alaphelyzetbe állítja a fiók hitelesítő adatait, és megkapja az app.config beállításokat.|
@@ -47,4 +47,4 @@ A következő táblázat az Azure Media Services az Azure CLI-példákra mutató
 ## <a name="see-also"></a>Lásd még
 
 - [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
-- [Rövid útmutató: Stream-videó fájlok – CLI](stream-files-cli-quickstart.md)
+- [Rövid útmutató: Videofájlok streamelése – parancssori felület](stream-files-cli-quickstart.md)

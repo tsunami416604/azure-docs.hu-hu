@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 06/06/2017
 ms.author: KumudD
 ms.openlocfilehash: 9f5206ef5348ee8fd7b3fe981a9cfe4afc1367fb
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337052"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60734541"
 ---
 # <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>Load Balancer-kihasználtsági mérőszámokat a REST API-val beolvasása
 
@@ -50,7 +50,7 @@ A következő fejléceket szükség:
 | loadBalancerName | Az Azure Load Balancer neve. |
 | metricnames | Vesszővel tagolt listája érvényes [Load Balancer metrikái](/azure/load-balancer/load-balancer-standard-diagnostics). |
 | API-verzió | A használandó a kérelem API-verzió.<br /><br /> Ez a dokumentum ismerteti az api-version `2018-01-01`, a fenti URL-címe megtalálható.  |
-| Időtartam | A lekérdezési időtartam. A karakterlánc a következő formátumú `startDateTime_ISO/endDateTime_ISO`. Ez nem kötelező paraméter értéke a példában egy nap alatt az adatok visszaadása. |
+| TimeSpan | A lekérdezési időtartam. A karakterlánc a következő formátumú `startDateTime_ISO/endDateTime_ISO`. Ez nem kötelező paraméter értéke a példában egy nap alatt az adatok visszaadása. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>A kérés törzse

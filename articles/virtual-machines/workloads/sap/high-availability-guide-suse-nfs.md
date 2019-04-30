@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
+ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: da465fb9fe51b2be5ec90df1ac75c50271db87a9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: a91bc1cbb72427205cc558a4b5e655f4aa8083b0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992060"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60710716"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken
 
@@ -179,6 +179,9 @@ Először a virtuális gépek az NFS-fürt létrehozásához. Ezt követően hoz
          * Ismételje meg a fenti lépéseket a 2049-es port és a TCP NW2
       1. 2049-es UDP NW2
          * Ismételje meg a fenti lépéseket a 2049-es port- és UDP NW2
+
+> [!IMPORTANT]
+> Ne engedélyezze a TCP időbélyegeket Azure Load Balancer mögé helyezett Azure virtuális gépeken. Sikertelen állapotadat-mintavételek engedélyezése TCP időbélyegek miatt. A paramétert **net.ipv4.tcp_timestamps** való **0**. További részletekért lásd: [Load Balancer állapot-mintavételei](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview).
 
 ### <a name="create-pacemaker-cluster"></a>Támasztja fürt létrehozása
 

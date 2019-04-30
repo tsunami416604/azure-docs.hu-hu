@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 58007eea9ce25423bc3a9c2847de42db04be43eb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a987239669e7437a179f5f24034f4dbe45535663
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42060830"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60632872"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>A StorSimple-Eszközkezelő szolgáltatás figyelő hardverösszetevők és állapot használata
 
@@ -79,7 +79,7 @@ Hajtsa végre az alábbi lépéseket egy eszköz összetevő hardver állapotán
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>A StorSimple-eszköz elsődleges ház összetevő lista
 Az alábbi táblázat ismerteti a fizikai és logikai összetevők, a helyszíni StorSimple eszköz (8100-as és 8600-as is elérhető) elsődleges ház található.
 
-| Összetevő | Modul | Típus | Hely | Telepen cserélhető egység (FRU)? | Leírás |
+| Összetevő | Modul | Típus | Location egység | Telepen cserélhető egység (FRU)? | Leírás |
 | --- | --- | --- | --- | --- | --- |
 | Meghajtó a [0, 11] bővítőhelyen |Lemezmeghajtók |Fizikai |Közös |Igen |Az SSD vagy HDD meghajtókat a elsődleges ház az egysoros jelennek meg. |
 | Környezeti hőmérséklet-érzékelő |Rendszerház |Fizikai |Közös |Nem |A váz a hőmérsékletet méri. |
@@ -101,7 +101,7 @@ Az alábbi táblázat ismerteti a fizikai és logikai összetevők, a helyszíni
 | Felügyeleti HDD-terület |– |Logikai |Közös |– |A felügyeleti feladatokhoz HDD a tárolókészletben lefoglalt terület. |
 | HDD-kvórumterület |– |Logikai |Közös |– |A HDD-tárolókészlet fürtök kvóruma számára lefoglalt terület. |
 | HDD-bővítőhely |– |Logikai |Közös |– |A HDD vezérlő cseréje a tárolókészletben lefoglalt terület. |
-| SSD-adatterület |– |Logikai |Közös |– |A felhasznált lemezterület a tárolókészletben szemben – tartós állapotú meghajtót (SSD) adatok. |
+| SSD data space |– |Logikai |Közös |– |A felhasznált lemezterület a tárolókészletben szemben – tartós állapotú meghajtót (SSD) adatok. |
 | SSD NVRAM-terület |– |Logikai |Közös |– |A tárolókészlet SSD NVRAM logikai kijelölt tárolóhely. |
 | HDD-tárolókészlet |– |Logikai |Közös |– |Az eszközről HDD-k létrehozása logikai a tárolókészlet állapotát jeleníti meg. |
 | SSD-tárolókészlet |– |Logikai |Közös |– |Az eszközről SSD-k létrehozása logikai a tárolókészlet állapotát jeleníti meg. |
@@ -120,7 +120,7 @@ Az alábbi táblázat ismerteti a fizikai és logikai összetevők, a helyszíni
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>A StorSimple-eszköz EBOD ház összetevő lista
 Az alábbi táblázat ismerteti a fizikai és logikai összetevők, a helyszíni StorSimple eszköz (csak jelen 8600-as modell) EBOD ház található.
 
-| Összetevő | Modul | Típus | Hely | FRU? | Leírás |
+| Összetevő | Modul | Típus | Location egység | FRU? | Leírás |
 | --- | --- | --- | --- | --- | --- |
 | Meghajtó a [0, 11] bővítőhelyen |Lemezmeghajtók |Fizikai |Közös |Igen |Egy sor minden a HDD meghajtókon található a EBOD ház jelennek meg. |
 | Környezeti hőmérséklet-érzékelő |Rendszerház |Fizikai |Közös |Nem |A váz a hőmérsékletet méri. |

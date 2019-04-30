@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: TomSh
-ms.openlocfilehash: 86246d3d580737837ec07ccdc89ed82914cde209
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: MT
+ms.openlocfilehash: b644a175814fb28563a2524e27f52d0285415d66
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118411"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60610962"
 ---
 # <a name="azure-network-security-best-practices"></a>Azure-beli hálózati biztonsági eljárások
 A kapcsolódás [Azure-beli virtuális gépek (VM)](https://azure.microsoft.com/services/virtual-machines/) és más hálózati eszközök szerint áthelyezi őket-készülékek [Azure virtuális hálózatok](https://azure.microsoft.com/documentation/services/virtual-network/). Virtuális hálózati adapterek kapcsolódhatnak, hogy engedélyezik a hálózati eszközök közötti TCP/IP-alapú kommunikációt egy virtuális hálózathoz. Azure-beli virtuális hálózathoz csatlakozó virtuális gépek eszközök ugyanazon a virtuális hálózaton, különböző virtuális hálózatokban, az interneten vagy a saját helyszíni hálózatokhoz csatlakozhat.

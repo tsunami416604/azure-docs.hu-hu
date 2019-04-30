@@ -10,11 +10,11 @@ ms.date: 01/25/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: c30c8bae3e76778a31cdd0695acde52b5b1c6b02
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079664"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60749578"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-search"></a>Forgalmi elemzések keresése megvalósítása az Azure Search szolgáltatásban
 Forgalmi elemzések keresése egy minta megvalósításához egy visszacsatolási hurokba kerülnek a keresési szolgáltatáshoz. Ez a minta azt ismerteti, a szükséges adatokat, és hogyan gyűjtheti az Application Insights, az iparág vezető szolgáltatójától figyeléshez, több platformon szolgáltatások használatával.

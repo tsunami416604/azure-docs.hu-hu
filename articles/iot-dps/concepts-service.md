@@ -3,17 +3,17 @@ title: Szolgáltatás az Azure IoT Hub Device Provisioning Service fogalmak |} A
 description: Szolgáltatás üzembe helyezési kapcsolatos fogalmakat ismerteti a Device Provisioning Service és az IoT Hub-eszközökre vonatkozó
 author: nberdy
 ms.author: nberdy
-ms.date: 04/04/2019
+ms.date: 03/30/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: 4a4f53f991355e634e8139f9e90bec6c508a527d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792747"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60745808"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>IoT Hub Device Provisioning Service-fogalmak
 

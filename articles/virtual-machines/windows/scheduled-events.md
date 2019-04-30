@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
 ms.openlocfilehash: 2ed92486b55aa4fd7dce32f54f0b6567c7bb3cf2
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486733"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60710999"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Az Azure Metadata szolgáltatás: Windows virtuális gépeken ütemezett események
 
@@ -64,7 +64,7 @@ Ha a virtuális gép nem jön létre egy virtuális hálózatban, az alapértelm
 ### <a name="version-and-region-availability"></a>Verzió és -régiók rendelkezésre állása
 Az ütemezett események szolgáltatás nem rendszerverzióval ellátott. Verziók kötelező, és a jelenlegi verzió `2017-11-01`.
 
-| Verzió | Kiadás típusa | Régiók | Kibocsátási megjegyzések | 
+| Version | Kiadás típusa | Régiók | Kibocsátási megjegyzések | 
 | - | - | - | - |
 | 2017-11-01 | Általános rendelkezésre állás | Összes | <li> Alacsony prioritású virtuális gép kiürítési "Preempt" eseménytípus támogatása<br> | 
 | 2017-08-01 | Általános rendelkezésre állás | Összes | <li> Aláhúzás kiegészített távolítva erőforrásnevek IaaS virtuális gépekhez<br><li>Metaadat-fejléc követelmény irányuló kérések kényszerítése | 

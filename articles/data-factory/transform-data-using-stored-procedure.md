@@ -11,11 +11,11 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: 806654b7586895b62b014a49b8b3a00fb18f008f
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575891"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60764407"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Adatok átalakítása az Azure Data Factoryban az SQL Server tárolt eljárási tevékenység használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,10 +65,10 @@ Itt látható a JSON-formátumban, egy tárolt eljárási tevékenység definiá
 
 A következő táblázat ismerteti a JSON-tulajdonságokról:
 
-| Tulajdonság                  | Leírás                              | Szükséges |
+| Tulajdonság                  | Leírás                              | Kötelező |
 | ------------------------- | ---------------------------------------- | -------- |
 | név                      | A tevékenység neve                     | Igen      |
-| leírás               | Mire használható a tevékenységet leíró szöveg | Nem       |
+| description               | Mire használható a tevékenységet leíró szöveg | Nem       |
 | type                      | A tárolt eljárási tevékenység, a tevékenység típusa van **SqlServerStoredProcedure** | Igen      |
 | linkedServiceName         | Hivatkozás a **Azure SQL Database** vagy **Azure SQL Data Warehouse** vagy **SQL Server** regisztrálva a Data Factory társított szolgáltatásként. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk. | Igen      |
 | storedProcedureName       | Adja meg a tárolt eljárás meghívása nevét. | Igen      |

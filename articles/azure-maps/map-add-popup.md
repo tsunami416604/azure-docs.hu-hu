@@ -10,11 +10,11 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: a6c8a8aa954379036ce566a205b8cb4e97952727
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887838"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60769549"
 ---
 # <a name="add-a-popup-to-the-map"></a>A térkép egy előugró ablak hozzáadása
 
@@ -51,7 +51,7 @@ Sok pontok, és csak egy előugró ablak megjelenítése egyszerre szeretné, a 
 További információ az osztályok és módszerek a cikk ezt használja:
 
 > [!div class="nextstepaction"]
-> [Helyi menü](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)

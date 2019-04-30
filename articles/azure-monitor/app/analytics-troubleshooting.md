@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: mbullwin
 ms.openlocfilehash: ecf0638aa999208331603ac30ccf4eb17b3c4500
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960683"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60692292"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Elemzés hibaelhárítása az Application Insights szolgáltatásban
 Problémák [Application Insights-elemzési](analytics.md)? Itt érdemes kezdenie. Analytics az Azure Application Insights hatékony keresési eszközben.
 
-## <a name="limits"></a>Korlátok
+## <a name="limits"></a>Limits
 * Jelenleg a lekérdezési eredmények korlátozva, csak egy adott héten múltbeli adatok.
 * Teszteljük a böngészők: Chrome, a Microsoft Edge és az Internet Explorer legújabb kiadása.
 

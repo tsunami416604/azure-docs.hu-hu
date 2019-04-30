@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: bc695bf8398a39460eff9bbe4f791ba92b0fa7e0
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4f0662a71ee14af3c2c1aafee210641fc8b51f1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019313"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60768654"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Keresési tevékenység az Azure Data Factoryban
 
@@ -53,14 +53,15 @@ Keresési tevékenység a következő adatforrások támogatottak. A sorok, kere
 ```
 
 ## <a name="type-properties"></a>Tulajdonságok
+
 Name (Név) | Leírás | Típus | Kötelező?
 ---- | ----------- | ---- | --------
 Adatkészlet | Az adatkészlet-hivatkozásban biztosít a kereséshez. A részletek a **adatkészlet tulajdonságai** minden megfelelő összekötő cikk szakaszában talál. | Kulcs/érték pár | Igen
 source | Tartalmazza az adatkészlet-specifikus forrás tulajdonságait, ugyanaz, mint a másolási tevékenység forrása. A részletek a **másolási tevékenység tulajdonságai** szakasz mindegyik megfelelő összekötő a cikkben. | Kulcs/érték pár | Igen
-firstRowOnly | Azt jelzi, hogy csak az első sort vagy minden sort adja vissza. | Logikai | Nem. A mező alapértelmezett értéke: `true`.
+firstRowOnly | Azt jelzi, hogy csak az első sort vagy minden sort adja vissza. | Boolean | Nem. A mező alapértelmezett értéke: `true`.
 
 > [!NOTE]
-
+> 
 > * Az oszlopok forrás **ByteArray** típusa nem támogatott.
 > * **Struktúra** nem támogatott adatkészlet-definíciókban. A szöveges formátumú fájlok esetében a fejlécsor használatával adja meg az oszlop neve.
 > * Ha a keresési forrás egy JSON-fájlt a `jsonPathDefinition` beállítása átalakításakor a JSON-objektum nem támogatott. A teljes objektumokat a rendszer lekéri.

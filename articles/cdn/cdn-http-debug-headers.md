@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: magattus
 ms.openlocfilehash: 4ba42850ee28e2e212d9bc2b7b64be103218757c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094224"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60736972"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Az Azure CDN szabálymotorral X-EK-Debug HTTP-fejlécek
 A hibakeresési gyorsítótár kérelem fejlécét, `X-EC-Debug`, a gyorsítótár-szabályzat, amely a kért objektum érvényes további információkat tartalmaz. Ezek a fejlécek csak az adott **verizon Azure CDN Premium** termékek.
@@ -36,10 +36,10 @@ A hibakeresési gyorsítótár adatai, a válaszban szereplő használja a megad
 Kérelem fejléce | Leírás |
 ---------------|-------------|
 X-EK-Debug: x-EK-gyorsítótár | [Gyorsítótár-állapotkód:](#cache-status-code-information)
-X-EK-Debug: x-EK-gyorsítótár-távoli | [Gyorsítótár-állapotkód:](#cache-status-code-information)
-X-EK-Debug: x-EK – jelölőnégyzet-gyorsítótárazható | [Gyorsítótárazható](#cacheable-response-header)
-X-EK-Debug: x-EK-gyorsítótár-key | [Gyorsítótár-kulcs](#cache-key-response-header)
-X-EK-Debug: x-EK-gyorsítótár-állapot | [Gyorsítótár állapota](#cache-state-response-header)
+X-EC-Debug: x-ec-cache-remote | [Gyorsítótár-állapotkód:](#cache-status-code-information)
+X-EC-Debug: x-ec-check-cacheable | [Cacheable](#cacheable-response-header)
+X-EK-Debug: x-EK-gyorsítótár-key | [Cache-key](#cache-key-response-header)
+X-EC-Debug: x-ec-cache-state | [Gyorsítótár állapota](#cache-state-response-header)
 
 ### <a name="syntax"></a>Szintaxis
 
@@ -57,7 +57,7 @@ Az X-EK-Debug válaszfejléc azonosíthatja a kiszolgáló és a válasz az alá
 Fejléc | Leírás
 -------|------------
 X-EK-Debug: x-EK-gyorsítótár | Ezt a fejlécet, amikor tartalmat továbbít a CDN jelentett. A kiszolgáló a kérelmet teljesítő webhelypéldány POP azonosítja.
-X-EK-Debug: x-EK-gyorsítótár-távoli | Ez a fejléc jelentett csak akkor, ha a kért tartalom gyorsítótárazva lett egy forrás pajzs vagy egy ADN-átjáró kiszolgálón.
+X-EC-Debug: x-ec-cache-remote | Ez a fejléc jelentett csak akkor, ha a kért tartalom gyorsítótárazva lett egy forrás pajzs vagy egy ADN-átjáró kiszolgálón.
 
 ### <a name="response-header-format"></a>A válasz fejléce formátuma
 
@@ -106,7 +106,7 @@ A fenti válasz fejléce szintaxisban használt kifejezés a következőképpen 
 Érték  | Leírás
 -------| --------
 IGEN    | Azt jelzi, hogy jogosult a gyorsítótárazás volt-e a kért tartalmat.
-NEM     | Azt jelzi, hogy a kért tartalom gyorsítótárazása nem lehet áttelepíteni. Ez az állapot a következő okok egyike miatt lehet: <br /> -Ügyfél-specifikus konfigurációs: egy adott fiókra konfigurációs megakadályozhatja a pop-kiszolgálók egy eszköz gyorsítótárazás. Például Szabálymodult megakadályozhatja az eszköz a Mellőzés gyorsítótárának a feltételeknek megfelelő kérelmek engedélyezésével a gyorsítótárba.<br /> -Gyorsítótár válaszfejlécek: A kért objektum Expires és a Cache-Control fejléceket megakadályozhatja a POP-kiszolgálókat, gyorsítótárazás.
+NO     | Azt jelzi, hogy a kért tartalom gyorsítótárazása nem lehet áttelepíteni. Ez az állapot a következő okok egyike miatt lehet: <br /> -Ügyfél-specifikus konfigurációs: Egy adott fiókra konfigurációs megakadályozhatja, hogy a pop-kiszolgálók egy eszköz gyorsítótárazás. Például Szabálymodult megakadályozhatja az eszköz a Mellőzés gyorsítótárának a feltételeknek megfelelő kérelmek engedélyezésével a gyorsítótárba.<br /> -Gyorsítótár a válaszfejlécek: A kért objektum Expires és a Cache-Control fejléceket megakadályozhatja, hogy a POP-kiszolgálók, a gyorsítótárazás.
 ISMERETLEN | Azt jelzi, hogy sikerült-e a kiszolgálók annak ellenőrzéséhez, hogy a kért objektum lett gyorsítótárazható. Ez az állapot általában akkor fordul elő, amikor a jogkivonat-alapú hitelesítés miatt a kérelem megtagadva.
 
 ### <a name="sample-response-header"></a>Minta válaszfejléc
@@ -147,17 +147,17 @@ A `X-EC-Debug` válaszfejléc jelentések állapot információk gyorsítótára
 
 A fenti válasz fejléce szintaxis használt kifejezések meghatározása a következő:
 
-- MASeconds: A max-age (másodpercben) azt jelzi, ahogyan a Cache-Control fejléc a kért tartalmat.
+- MASeconds: Azt jelzi a max-age (másodpercben), ahogyan a Cache-Control fejléc a kért tartalmat.
 
-- MATimePeriod: (Például, nap) alakítja hozzávetőleges felel meg egy nagyobb egységet (azaz MASeconds) max-age értékét. 
+- MATimePeriod: Max-age értékét (azaz MASeconds) alakítja át egy nagyobb egység hozzávetőleges megfelelője (például, nap). 
 
 - UnixTime: Azt jelzi, hogy a gyorsítótár időbélyeg a lekért tartalom a Unix-ideje (más néven) POSIX idő- vagy UNIX rendszerű alapidőpont). A gyorsítótár időbélyeg azt jelzi, hogy a kezdő dátumot és időt, amelyből egy eszköz TTL fog számítani. 
 
-    Ha a forráskiszolgáló nem használja a kiszolgálón, vagy ha a kiszolgáló nem ad vissza az életkor válaszfejléc gyorsítótárazás külső HTTP, a gyorsítótár időbélyeg lesz a dátum/idő amikor az eszköz beolvasni vagy újra érvényesítve. Ellenkező esetben a POP-kiszolgálókat az életkor mező kiszámításához használja az eszköz TTL a következő: lekérés/RevalidateDateTime - kor.
+    Ha a forráskiszolgáló nem használja a kiszolgálón, vagy ha a kiszolgáló nem ad vissza az életkor válaszfejléc gyorsítótárazás külső HTTP, a gyorsítótár időbélyeg lesz a dátum/idő amikor az eszköz beolvasni vagy újra érvényesítve. Ellenkező esetben a POP-kiszolgálókat az életkor mező kiszámításához használja az eszköz TTL módon: Lekérés/RevalidateDateTime - kor.
 
-- nnn, NN ÓÓ GMT yyyy. mmm: azt jelzi, hogy a gyorsítótár időbélyegzője a kért tartalmat. További információkért tekintse át a fenti UnixTime kifejezés.
+- nnn, NN ÓÓ GMT yyyy. mmm: Azt jelzi, hogy a gyorsítótár időbélyegzője a kért tartalmat. További információkért tekintse át a fenti UnixTime kifejezés.
 
-- CASeconds: Azt jelzi, hogy a gyorsítótár időbélyeg óta eltelt másodpercek számát.
+- CASeconds: A gyorsítótár időbélyeg óta eltelt másodpercek számát jelöli.
 
 - RTSeconds: Másodperc van hátra, amelynek a gyorsítótárazott tartalom minősülnek friss számát jelzi. Ez az érték számítása a következőképpen: RTSeconds max-age - = gyorsítótár élettartama.
 

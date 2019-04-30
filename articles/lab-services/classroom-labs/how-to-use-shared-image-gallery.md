@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: spelluru
 ms.openlocfilehash: 93136c7d685bd9fc8ec4bcdea3a900b28029059b
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58653067"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60695215"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Egy megosztott kép katalógus az Azure Lab Services használatával
 Ez a cikk bemutatja, hogyan tanárok/lab rendszergazdai takaríthat meg, hogy a mások által felhasználható sablonnal virtuálisgép-lemezkép. Ezek a lemezképek lesznek mentve az Azure-ban [megosztott lemezkép-katalógusában](../../virtual-machines/windows/shared-image-galleries.md). Első lépésként a labor rendszergazda csatolja egy meglévő megosztott lemezkép-katalógusában a labor-fiók. A csatolást a megosztott lemezkép-katalógusában labs labor-fiókban létrehozott megosztott lemezkép-katalógus rendszerképek mentse. Más tanárok ezt a képet, létrehozhat egy sablont a saját osztályok megosztott lemezkép-katalógus választhatók ki. 

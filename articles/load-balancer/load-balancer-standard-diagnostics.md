@@ -14,18 +14,18 @@ ms.workload: infrastructure-services
 ms.date: 10/11/2018
 ms.author: Kumud
 ms.openlocfilehash: 77c3c595994092ff2ca68f3cefa5eb3c8a54bcd6
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189047"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60735155"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>A Standard Load Balancer metrikák és egészségügyi diagnosztikája
 
 Az Azure Standard Load Balancer az Azure Standard Load Balancer lehetővé teszi az erőforrások az alábbi diagnosztikai képességeket tesz elérhetővé:
 * **Többdimenziós metrikák**: Olyan új többdimenziós diagnosztikai funkciók révén [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) nyilvános, mind a belső terheléselosztó konfigurációjában betölteni. Figyelése, kezelése és a load balancer-erőforrások hibaelhárítása.
 
-* **A Resource health**: A Load Balancer lap az Azure Portalon, és a Resource Health lap (figyelő) teszi közzé a Resource Health szakaszban, a Standard Load Balancer nyilvános load balancer konfigurációját.
+* **Az erőforrás állapota**: A Load Balancer lap az Azure Portalon, és a Resource Health lap (figyelő) teszi közzé a Resource Health szakaszban, a Standard Load Balancer nyilvános load balancer konfigurációját.
 
 Ez a cikk végigvesszük az ezeket a képességeket nyújt, és azt használni őket a Standard Load Balancer lehetőséget kínál.
 
@@ -40,7 +40,7 @@ A Standard Load Balancer különböző konfigurációkban adja meg a következő
 | Virtuális IP-cím rendelkezésre állási (adatok elérési út elérhető) | Nyilvános load balancer | Standard Load Balancer folyamatosan gyakorol az adatok útvonalat egy adott régión belül a terheléselosztó előtérrendszerhez, egészen az SDN-verem, amely támogatja a virtuális Géphez való. Kifogástalan állapotú példányok továbbra is, a mérés követi az alkalmazás elosztott terhelésű forgalmat az adott elérési úton. Az adatok elérési útja, az ügyfelek által használt is ellenőrzi. A mérték az alkalmazás számára, és nem ütközik más műveleteket.| Átlag |
 | Dedikált IP-CÍMMEL, rendelkezésre állás (mintavételi állapot) |  Nyilvános és a belső terheléselosztó | A standard Load Balancer állapot-ellenőrzés elvégzése egy elosztott szolgáltatás, amely figyeli az alkalmazás végponti állapotát a konfigurációs beállításoknak megfelelően használja. Ez a metrika megadja egy összesítés vagy a végpont szűrt nézete a load balancer készletben minden példány végpont. Láthatja hogyan a Load Balancer megtekinti az alkalmazás állapotát a állapot-mintavételi konfigurációt jelzett módon. |  Átlag |
 | Szinkronizálás a Mi (szinkronizálás) csomagok |  Nyilvános load balancer | A standard Load Balancer nem megszakítja az Transmission Control Protocol (TCP), és együttműködik a TCP vagy UDP-csomag folyamatok. Folyamatok és azok kézfogások mindig a forrás- és a Virtuálisgép-példány között vannak. A TCP protokoll forgatókönyvek hatékonyabb elhárításához végezhet SZIN felhasználása csomagok számlálók tudni, hogy hány TCP-kapcsolat kísérletet tesz. A metrika a fogadott TCP SZIN csomagok számát jelenti.| Átlag |
-| SNAT-kapcsolatok |  Nyilvános Load Balancer |A standard Load Balancer a kimenő forgalom, amely a nyilvános IP-cím előtérrendszerhez vannak masqueraded számát jelenti. Forrás hálózati cím címfordítás (SNAT) portjait egy kimeríthető erőforrást. Ez a metrika biztosíthat az arra utalhat, hogy hogyan érdemes az alkalmazás van szüksége az SNAT a kimenő folyamatokhoz. Sikeres és sikertelen kimenő SNAT folyamatok számlálói készül jelentés, és használható ismertetünk az elhárításukkal és a kimenő forgalom állapotának ismertetése.| Átlag |
+| SNAT-kapcsolatok |  Nyilvános terheléselosztó |A standard Load Balancer a kimenő forgalom, amely a nyilvános IP-cím előtérrendszerhez vannak masqueraded számát jelenti. Forrás hálózati cím címfordítás (SNAT) portjait egy kimeríthető erőforrást. Ez a metrika biztosíthat az arra utalhat, hogy hogyan érdemes az alkalmazás van szüksége az SNAT a kimenő folyamatokhoz. Sikeres és sikertelen kimenő SNAT folyamatok számlálói készül jelentés, és használható ismertetünk az elhárításukkal és a kimenő forgalom állapotának ismertetése.| Átlag |
 | Bájt számlálók |  Nyilvános és a belső terheléselosztó | A standard Load Balancer az adatokat az előtérbeli feldolgozott jelentések.| Átlag |
 | Csomag-számlálók |  Nyilvános és a belső terheléselosztó | A standard Load Balancer a csomagok előtér feldolgozott jelentések.| Átlag |
 

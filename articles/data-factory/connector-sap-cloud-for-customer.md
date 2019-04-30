@@ -3,21 +3,22 @@ title: Adatok másolása Azure blobból vagy az SAP-felhő ügyfél az Azure Dat
 description: Megtudhatja, hogyan másolhat adatokat az ügyfél a támogatott fogadó adattárakba SAP-felhő (vagy) támogatott forrás adattárakból származó SAP-felhő ügyfél Data Factory használatával.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/17/2018
-ms.author: jingwang
+origin.date: 04/17/2018
+ms.date: 04/22/2019
+ms.author: v-jay
 ms.openlocfilehash: e4625b934f9e1cf98254f3dee59f9c26e8e16fb5
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353379"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60578708"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory használatával az ügyfél (C4C) SAP-felhő adatok másolása
 
@@ -44,7 +45,7 @@ A következő tulajdonságok SAP-felhő az ügyfélszolgálat társított támog
 | type | A type tulajdonságot kell beállítani: **SapCloudForCustomer**. | Igen |
 | url | Az SAP C4C OData-szolgáltatás URL-címe | Igen |
 | felhasználónév | Adja meg a felhasználónevet, a SAP C4C csatlakozni. | Igen |
-| jelszó | Adja meg a felhasználónév megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| password | Adja meg a felhasználónév megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nincs forrás, a fogadó Igen |
 
 >[!IMPORTANT]
@@ -58,7 +59,7 @@ A következő tulajdonságok SAP-felhő az ügyfélszolgálat társított támog
     "properties": {
         "type": "SapCloudForCustomer",
         "typeProperties": {
-            "url": "https://<tenantname>.crm.ondemand.com/sap/c4c/odata/v1/c4codata/" ,
+            "url": "https://<tenantname>.crm.ondemand.cn/sap/c4c/odata/v1/c4codata/" ,
             "username": "<username>",
             "password": {
                 "type": "SecureString",
@@ -156,8 +157,8 @@ Adatok másolása az SAP Cloud ügyfél, állítsa be a fogadó típusa a másol
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **SapCloudForCustomerSink**  | Igen |
-| WriteBehavior | A művelet írási viselkedését. "Insert", "Frissítés" lehet. | Nem. Alapértelmezett "Insert". |
-| WriteBatchSize | A Köteg mérete írási művelet. A legjobb teljesítmény kötegméret különböző tábla vagy a kiszolgáló eltérő lehet. | Nem. Alapértelmezés szerint a 10. |
+| writeBehavior | A művelet írási viselkedését. "Insert", "Frissítés" lehet. | Nem. Alapértelmezett "Insert". |
+| writeBatchSize | A Köteg mérete írási művelet. A legjobb teljesítmény kötegméret különböző tábla vagy a kiszolgáló eltérő lehet. | Nem. Alapértelmezés szerint a 10. |
 
 **Példa**
 
@@ -204,20 +205,20 @@ Az adatok másolása az SAP Cloud ügyfél számára, amikor a következő hozz�
 
 | SAP C4C OData Data Type | Data factory közbenső adattípus |
 |:--- |:--- |
-| Edm.Binary | Byte] |
-| Edm.Boolean | Logikai |
-| Edm.Byte | Byte] |
+| Edm.Binary | Byte[] |
+| Edm.Boolean | Bool |
+| Edm.Byte | Byte[] |
 | Edm.DateTime | DateTime |
-| Edm.Decimal | Tizedes tört |
-| Edm.Double | Dupla |
-| Edm.Single | Önálló |
-| Edm.Guid | GUID |
+| Edm.Decimal | Decimal |
+| Edm.Double | Double |
+| Edm.Single | Single |
+| Edm.Guid | Guid |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | Karakterlánc |
-| Edm.Time | Időtartam |
+| Edm.String | String |
+| Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 

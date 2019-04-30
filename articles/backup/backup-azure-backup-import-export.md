@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
 ms.openlocfilehash: b6f0ce1939b2a78ca191d2feb0140506d130b9b0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107457"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648350"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Offline biztonsági mentési munkafolyamat az Azure Backupban
 Az Azure Backup rendelkezik, amely a hálózati és tárolási költségek csökkentése az Azure-ban adatok kezdeti teljes biztonsági mentés során számos beépített hatékonyság. Kezdeti teljes biztonsági mentés általában nagy mennyiségű adat átvitele, és azt követő biztonsági mentéseket, hogy csak a változásokat/szalagnak transfer képest nagyobb hálózati sávszélesség szükséges. Kapcsolat nélküli beültetéssel is a folyamatot az Azure Backup lemez is használható az offline biztonsági mentési adatok feltöltése az Azure-bA.
@@ -175,7 +175,7 @@ Az alábbi eljárás frissít az Azure importálási feladat naplóküldése ré
 5. Ha a szállítási szolgáltató a nyomkövetési azonosító szám, kattintson a szalagcímre az Azure importálási feladat Áttekintés lapon, és adja meg a következő adatokat:
 
    > [!IMPORTANT] 
-   > Győződjön meg arról, hogy a szolgáltató információkat és követési szám frissítve lett az Azure-beli importálási feladat létrehozása két héten belül. Ellenőrizze az adatokat két héten belül nem sikerült a feladat törlése folyamatban van, és nem dolgozza fel a meghajtók eredményezhet.
+   > Győződjön meg arról, hogy az Azure importálási feladat létrehozásától számított két héten belül frissítve legyenek a szolgáltató adatai és a nyomkövetési azonosító szám. Ellenőrizze az adatokat két héten belül nem sikerült a feladat törlése folyamatban van, és nem dolgozza fel a meghajtók eredményezhet.
 
    ![Szállítási adatok tárolása](./media/backup-azure-backup-import-export/joboverview.png)<br/>
 

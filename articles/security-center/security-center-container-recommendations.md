@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
 ms.openlocfilehash: 782c769bc7825dc9b6bd3ba3b8e36885bf150eaa
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112580"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60705273"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Az Azure Security Center tároló kapcsolatos javaslatok megértése
 
@@ -51,13 +51,13 @@ Használja az alábbi táblázatokban referenciaként segítenek megérteni a re
 ## <a name="next-steps"></a>További lépések
 Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos további információkért tekintse meg a következőket:
 
-* [Identitás és hozzáférés az Azure Security Center figyelése](security-center-identity-access.md)
+* [Identitás és hozzáférés figyelése az Azure Security Centerben](security-center-identity-access.md)
 * [Hálózat védelme az Azure Security Centerben](security-center-network-recommendations.md)
 * [Az Azure SQL-szolgáltatás az Azure Security Center védelme](security-center-sql-service-recommendations.md)
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [A gépek és az alkalmazások az Azure Security Center védelme](security-center-virtual-machine-protection.md)
+* [A gépek és alkalmazások védelme az Azure Security Centerben](security-center-virtual-machine-protection.md)
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.

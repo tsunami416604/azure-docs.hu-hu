@@ -15,11 +15,11 @@ ms.workload: required
 ms.date: 04/20/2017
 ms.author: suchiagicha
 ms.openlocfilehash: 26d34f0473dec5e0767041df400b84887a0d1778
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664820"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60725584"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>Biztonságos kommunikáció a WCF-alapú szolgáltatás
 Biztonsági az egyik legfontosabb szempontja kommunikáció. A Reliable Services alkalmazási keretrendszer tartalmaz néhány előre létrehozott kommunikációs implementációt, eszközök, amelyek a biztonság növelése érdekében használhatja. Ez a cikk ismerteti hogyan szolgáltatás távelérésének lehetővé tétele használatakor a biztonság növelése érdekében.

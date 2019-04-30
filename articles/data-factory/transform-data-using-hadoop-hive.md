@@ -13,11 +13,11 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: 3852b2d18b48be63cbc612159facb6273f23dc2b
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575579"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60848097"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Adatok átalakítása Hadoop Hive-tevékenység használatával az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -59,7 +59,7 @@ Ha most ismerkedik az Azure Data Factory, olvassa el az [az Azure Data Factory b
 | Tulajdonság            | Leírás                                                  | Szükséges |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | név                | A tevékenység neve                                         | Igen      |
-| leírás         | Mire használható a tevékenységet leíró szöveg                | Nem       |
+| description         | Mire használható a tevékenységet leíró szöveg                | Nem       |
 | type                | A Hive-tevékenység a tevékenység típusát HDinsightHive        | Igen      |
 | linkedServiceName   | Referencia a HDInsight-fürthöz társított szolgáltatásként a Data Factory regisztrálva. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk. | Igen      |
 | scriptLinkedService | A Hive-szkriptet futtatandó tárolására használt Azure Storage társított szolgáltatás hivatkozik. Ha nem adja meg ezt a társított szolgáltatást, az Azure Storage társított szolgáltatás a HDInsight társított szolgáltatásban meghatározott használja. | Nem       |

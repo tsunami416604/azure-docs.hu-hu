@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: yegu
 ms.openlocfilehash: 6757a038a945bf153cb62662bee8c715c87baf19
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237740"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60829820"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Bevezetés az Azure Cache redis Cache prémium szint
 A Redis Azure Cache olyan elosztott, felügyelt gyorsítótár, amely segítséget nyújt az adatok a villámgyors adathozzáférésnek köszönhetően gyors és hatékonyan méretezhető alkalmazások készítését. 

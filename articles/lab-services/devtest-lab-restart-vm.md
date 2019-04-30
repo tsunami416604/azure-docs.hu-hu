@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 34c08a79abf6acb5ae8582ecd0743a890d850fc8
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149877"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60864397"
 ---
 # <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Indítsa újra a virtuális gép az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet
 Gyorsan és egyszerűen indítsa újra a virtuális gépek DevTest Labs szolgáltatásban Ez a cikk lépéseit követve. Vegye figyelembe a következő virtuális gép újraindítása előtt:

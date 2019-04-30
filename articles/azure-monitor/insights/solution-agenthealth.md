@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
 ms.openlocfilehash: f431613d9fa1020f523e03c90cbe31f4d42ccf42
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426222"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60596065"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Ügynökállapot megoldás az Azure monitorban
 Az Azure-ban az Agent Health megoldás segít átlátni, közvetlenül az Azure monitorban Log Analytics-munkaterületnek jelentő ügynökök közül, vagy a System Center Operations Manager felügyeleti csoport csatlakoztatva az Azure Monitor, melyek nem válaszol, és működési adatokat küldjön.  Azt is nyomon követheti, hogy hány ügynök lett üzembe helyezve, és milyen a földrajzi eloszlásuk, illetve egyéb lekérdezéseket hajthat végre, amelyekkel megismerheti az Azure-ban, egyéb felhőkörnyezetekben, illetve helyszínen üzembe helyezett ügynökök eloszlását.    

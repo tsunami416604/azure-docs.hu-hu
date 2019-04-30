@@ -15,17 +15,17 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: pbutlerm
 ms.openlocfilehash: 49bbe5dcf17a9aa20cb47f477c59e7115d29dacc
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819599"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60727938"
 ---
 # <a name="power-bi-apps-offer-settings-tab"></a>A Power BI alkalmazások ajánlat beállítások lap
 
 Amikor megnyitja a **új ajánlat** lapon szolgáltatás alkalmazásokhoz, először tekintse meg a **ajánlat beállítások** lapon. Ezen a lapon meg az elsődleges azonosítókat és az ajánlat nevét. Egy csillag (*) azt jelzi, hogy a kötelező kitölteni.
 
-![Az ajánlat (beállítások) lapján](./media/offer-settings-tab.png)
+![Ajánlatbeállítási lap](./media/offer-settings-tab.png)
 
 
 ## <a name="offer-settings-fields"></a>Az ajánlat beállításainak mezők 

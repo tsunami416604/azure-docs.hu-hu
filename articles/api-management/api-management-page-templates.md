@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/09/2018
 ms.author: apimpm
 ms.openlocfilehash: 1fbafcdab938a0f8653df48631d7733cc58a3668
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441910"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60656793"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Az Azure API Management sablonokat
 Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfigurálása a tartalom-sablonok használatával tartalmának testreszabása. Használatával [DotLiquid](http://dotliquidmarkup.org/) szintaxist és a szerkesztő szerkesztőprogramban, például [DotLiquid tervezők számára](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), és a egy megadott készlete honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), [szimbóluma erőforrások](api-management-template-resources.md#glyphs), és [vezérlők lapon](api-management-page-controls.md), konfigurálhatja a lapok tartalmát, igény szerint ezek a sablonok használatával nagy rugalmasságot biztosít.  
@@ -101,7 +101,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
 ### <a name="controls"></a>Vezérlők  
  Ez a sablon előfordulhat, hogy használja a következő [vezérlők lapon](api-management-page-controls.md).  
   
--   [Basic-bejelentkezés](api-management-page-controls.md#basic-signin)  
+-   [basic-signin](api-management-page-controls.md#basic-signin)  
   
 -   [Szolgáltatók](api-management-page-controls.md#providers)  
   
@@ -160,7 +160,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
 ### <a name="controls"></a>Vezérlők  
  Ez a sablon előfordulhat, hogy használja a következő [vezérlők lapon](api-management-page-controls.md).  
   
--   [Regisztráció](api-management-page-controls.md#sign-up)  
+-   [sign-up](api-management-page-controls.md#sign-up)  
   
 ### <a name="data-model"></a>Adatmodell  
  [Felhasználói regisztráció](api-management-template-data-model-reference.md#UserSignUp) entitás.  
@@ -228,11 +228,11 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
   
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|referenceCode|sztring|Ha ezen a lapon azt egy belső hiba eredményeként generált kódot.|  
-|errorCode|sztring|Ha ezen a lapon azt egy belső hiba eredményeként generált kódot.|  
-|emailBody|sztring|E-mail törzse, ha ezen a lapon azt egy belső hiba eredményeként jön létre.|  
-|requestedUrl|sztring|Ha az oldal nem található a kért URL-címe.|  
-|referrerUrl|sztring|A kért URL-címre hivatkozó URL.|  
+|referenceCode|string|Ha ezen a lapon azt egy belső hiba eredményeként generált kódot.|  
+|Hibakód|string|Ha ezen a lapon azt egy belső hiba eredményeként generált kódot.|  
+|emailBody|string|E-mail törzse, ha ezen a lapon azt egy belső hiba eredményeként jön létre.|  
+|requestedUrl|string|Ha az oldal nem található a kért URL-címe.|  
+|referrerUrl|string|A kért URL-címre hivatkozó URL.|  
   
 ### <a name="sample-template-data"></a>Mintaadatok sablon  
   

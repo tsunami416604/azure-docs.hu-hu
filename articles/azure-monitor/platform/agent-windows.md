@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: magoedte
 ms.openlocfilehash: c7031e54c354392379fee83dbf2a777ba726c5e7
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480053"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60777353"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows-számítógépek csatlakoztatása az Azure Monitor
 
@@ -182,7 +182,7 @@ Közvetlenül az ügynök telepítési csomagból lekérdezheti a termékkód, h
 
 Az ügynök telepítésének befejezése után a annak ellenőrzésére, hogy sikeresen csatlakozott, és a reporting kétféleképpen végezhető.  
 
-A számítógépről a **Vezérlőpult**, keresse meg az elemet **Microsoft Monitoring Agent**.  Válassza ki, és az a **Azure Log Analytics** lapon jelenítsék meg az ügynök a következő üzenetet: **A Microsoft Monitoring Agent sikeresen csatlakozott a Microsoft Operations Management Suite szolgáltatásban.**<br><br> ![MMA kapcsolati állapota a Log Analytics felé](media/agent-windows/log-analytics-mma-laworkspace-status.png)
+A számítógép **Vezérlőpultjában** keresse meg a **Microsoft Monitoring Agent** elemet.  Jelölje ki, ami után az **Azure Log Analytics** lapon az ügynök a következő üzenetet jeleníti meg: **A Microsoft Monitoring Agent sikeresen csatlakozott a Microsoft Operations Management Suite szolgáltatásban.**<br><br> ![MMA kapcsolati állapota a Log Analytics felé](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
 Egy egyszerű naplóbeli lekérdezést az Azure Portalon is elvégezheti.  
 

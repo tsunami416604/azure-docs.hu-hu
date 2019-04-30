@@ -1,6 +1,6 @@
 ---
-title: Az Azure alkalmazás átjáró Azure CLI minták |} Microsoft Docs
-description: Alkalmazás átjáró Azure CLI-minták
+title: Az Azure Application Gateway az Azure CLI-minták |} A Microsoft Docs
+description: Application Gateway az Azure CLI-minták
 services: application-gateway
 documentationcenter: networking
 author: vhorne
@@ -11,22 +11,24 @@ ms.service: application-gateway
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 01/30/2018
-ms.author: victorh
+origin.date: 01/30/2018
+ms.date: 07/02/2018
+ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 10857e248382156f7f65b343e3eedb65229f6639
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 90e5c52c9efae7538308371a157b552d4e4d12ee
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33201011"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60831129"
 ---
-# <a name="azure-application-gateway-azure-cli-samples"></a>Azure Application Gateway Azure CLI-minták
+# <a name="azure-application-gateway-azure-cli-samples"></a>Azure Application Gateway az Azure CLI-minták
 
-A következő táblázat az Azure parancssori felület parancsfájl minták által létrehozott alkalmazásátjárót mutató hivatkozásokat tartalmaz.
+Az alábbi táblázat, amely az application Gateway átjárók létrehozása az Azure CLI-példaszkripteket mutató hivatkozásokat tartalmaz.
 
 | | |
 |---|---|
-| [Webes forgalom kezelése](./scripts/create-vmss-cli.md) | Alkalmazásátjáró és minden kapcsolódó erőforrás hoz létre. |
-| [Webes forgalom korlátozása](./scripts/create-vmss-waf-cli.md) | Alkalmazásátjáró forgalmát OWASP szabályok használatával hoz létre.|
+| [Webes forgalom kezelése](./scripts/create-vmss-cli.md) | Létrehoz egy application gateway és az összes kapcsolódó erőforrás. |
+| [Webes forgalom korlátozása](./scripts/create-vmss-waf-cli.md) | Létrehoz egy application gateway, amely korlátozza a forgalmat az OWASP szabályok használatával.|
 | | |
+

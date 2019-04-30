@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
-ms.subservice: autoscale
+ms.component: autoscale
 ms.openlocfilehash: 05f20aec536ebdb702caea37051a65af9bbc659f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085643"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60787578"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Az automatikus méretezés a Microsoft Azure Virtual Machines, Cloud Services és a Web Apps áttekintése
 Ez a cikk azt ismerteti, milyen a Microsoft Azure automatikus méretezési funkciójával, annak előnyeit, és hogyan kezdheti el használni.  
@@ -102,6 +102,7 @@ Beállíthat automatikus skálázási keresztül
 * [Az Azure Monitor REST API-val](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 
 ## <a name="supported-services-for-autoscale"></a>Támogatott szolgáltatások, az automatikus méretezéshez
+
 | Szolgáltatás | Séma és a dokumentumok |
 | --- | --- |
 | Web Apps |[Webes alkalmazások skálázása](../../azure-monitor/platform/autoscale-get-started.md) |
@@ -120,4 +121,3 @@ További információ az automatikus méretezés, használja az automatikus ská
 * [Automatikus skálázási műveletek használatával küldjön e-mailt és webhookot riasztási értesítések](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [Az automatikus méretezés – REST API](https://msdn.microsoft.com/library/dn931953.aspx)
 * [Hibaelhárítási virtuális gép méretezési csoportok automatikus skálázási](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
-

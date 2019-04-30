@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 0dac86a696599a391cb243ad11e16931e00b8921
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238930"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60629986"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>A StorSimple Virtual Array üzembe helyezése a Cloud Solution Provider Program számára
 
@@ -44,7 +44,7 @@ Ha egy ügyfél ad hozzá, automatikusan létrejön egy előfizetést. Ügyfél 
 
      ![A Partner Center irányítópultján](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. A bal oldali ablaktáblán kattintson **ügyfelek**. Kattintson a jobb oldali ablaktáblában **adja hozzá az ügyfelek**. Adja meg az ügyfél adatait. Kattintson a **tovább: előfizetések** ügyfél-előfizetés létrehozásához.
+2. A bal oldali ablaktáblán kattintson **ügyfelek**. Kattintson a jobb oldali ablaktáblában **adja hozzá az ügyfelek**. Adja meg az ügyfél adatait. Kattintson a **tovább: Előfizetések** ügyfél-előfizetés létrehozásához.
 
     ![Ügyfél hozzáadása](./media/storsimple-partner-csp-deploy/image2.png)
 
@@ -103,5 +103,5 @@ Bizonyos esetekben előfordulhat, hogy egy meglévő ügyfél, és a egy előfiz
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha a CSP a StorSimple kapcsolatban további kérdése van, lépjen a [StorSimple CSP: gyakran ismételt kérdések](storsimple-partner-csp-faq.md).
+- Ha a CSP a StorSimple kapcsolatban további kérdése van, lépjen a [StorSimple CSP: Gyakori kérdések](storsimple-partner-csp-faq.md).
 - Ha készen áll a StorSimple üzembe helyezése, lépjen a [a CSP a StorSimple üzembe helyezése](storsimple-partner-csp-deploy.md).

@@ -9,11 +9,11 @@ ms.date: 02/22/2016
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 6da653bc94c8b549282ab9124dba23b08771c5f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080777"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60787782"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Automatikus méretezés speciális konfigurálása Resource Manager-sablonok használata Virtuálisgép-méretezési csoportok
 Horizontális le- és a Virtual Machine Scale Sets alapuló teljesítmény-mérőszám küszöbértékén, ismétlődő ütemezés szerint, vagy egy adott dátumot kibővített is. Skálázási műveletek értesítései e-mailt és webhookot is konfigurálhatja. Ez az útmutató bemutatja egy példa az összes ezeket az objektumokat a Virtuálisgép-méretezési Resource Manager-sablon használatával.

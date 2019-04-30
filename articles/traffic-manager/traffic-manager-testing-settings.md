@@ -2,20 +2,21 @@
 title: Az Azure Traffic Manager beállításainak ellenőrzése
 description: Ez a cikk segítséget nyújt a Traffic Manager beállításainak ellenőrzése.
 services: traffic-manager
-author: kumudd
+author: rockboyfor
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/16/2017
-ms.author: kumud
+origin.date: 03/16/2017
+ms.date: 02/18/2019
+ms.author: v-yeche
 ms.openlocfilehash: 1e954e3c4ebba245d91cfb84ab583b314150e5b2
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200785"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60771617"
 ---
 # <a name="verify-traffic-manager-settings"></a>Traffic Manager-beállítások ellenőrzése
 
@@ -35,7 +36,7 @@ Az alábbi példák segítenek a Traffic Manager-profil teszteléséhez.
 2. Típus `ipconfig /flushdns` kiüríteni a DNS-gyorsítótárban.
 3. Gépelje be: `nslookup <your Traffic Manager domain name>`. Például az a következő parancs ellenőrzi a tartomány nevét a előtaggal *myapp.contoso*
 
-        nslookup myapp.contoso.trafficmanager.net
+        nslookup myapp.contoso.trafficmanager.cn
 
     Egy tipikus eredményt jeleníti meg a következő információkat:
 
@@ -71,3 +72,5 @@ Azt is megteheti, ingyenes webes DNS-címkeresés és vannak további elérhető
 * [Tudnivalók a Traffic Manager útválasztási módszerei](traffic-manager-routing-methods.md)
 * [A Traffic Manager teljesítményével kapcsolatos megfontolások](traffic-manager-performance-considerations.md)
 * [A Traffic Manager csökkentett teljesítményének elhárítása](traffic-manager-troubleshooting-degraded.md)
+
+<!-- Update_Description: update meta properties -->

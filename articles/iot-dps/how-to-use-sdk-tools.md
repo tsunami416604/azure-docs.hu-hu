@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: arjmands
 ms.openlocfilehash: dc8c29b1c7d4e5056cb6aeee6335e32687fd547f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58123674"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60627321"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Az SDK-k ismertetett eszközök segítségével leegyszerűsítheti a fejlesztést kialakítási útmutató
 Az IoT Hub Device Provisioning Service leegyszerűsíti a kiépítési folyamat beavatkozás nélküli, just-in-time [automatikus kiépítés](concepts-auto-provisioning.md) biztonságos és méretezhető módon.  Biztonsági tanúsítvány X.509-tanúsítvány vagy a platformmegbízhatósági modul (TPM) formájában szükség.  A Microsoft emellett partneri együttműködés a [más biztonsági a hardvergyártó partnerektől](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) magabiztosan az IoT-környezet biztonságossá tétele javítása érdekében. A hardveres biztonsági követelmények ismertetése meglehetősen nehéz fejlesztőknek lehet. Az Azure IoT Provisioning Service SDK-k készlete biztosítják, hogy a fejlesztők használhatják a kényelem réteg írása ügyfelek kommunikálhatnak a kiépítési szolgáltatáshoz. Az SDK-k is adja meg a minták gyakori forgatókönyvek, valamint a biztonsági igazolási fejlesztés egyszerűsítése eszközöket.

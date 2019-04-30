@@ -10,11 +10,11 @@ ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
 ms.openlocfilehash: 41f0607908cde94ca08a4c4dfce0a47032eefbb3
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578441"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60739230"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Előkészítése az Update Management, Change Tracking és Inventory megoldásainak
 
@@ -32,7 +32,7 @@ Válassza ki a Log Analytics-munkaterületet és Automation-fiók, és kattintso
 
 ![Előkészítheti az Inventory megoldás](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
 
-Ha engedélyezte a megoldásokat, Log Analytics-munkaterületet és Automation-fiók összekapcsolása csak bizonyos régiókban támogatottak.
+A megoldások engedélyezésekor csak bizonyos régiók esetén lehet összekapcsolni egy Log Analytics-munkaterületet és egy Automation-fiókot.
 
 Az alábbi táblázat bemutatja a támogatott leképezések:
 
@@ -82,7 +82,7 @@ A Frissítésfelügyeleti vagy a Change Tracking és Inventory megoldásainak sz
 
 Az Automation-fiókjában keresse meg és válassza **mentett keresések** alatt **általános**. A két mentett keresések, ezek a megoldások által használt az alábbi táblázatban láthatók:
 
-|Name (Név)     |Kategória  |Alias  |
+|Name (Név)     |Category  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  Change Tracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Frissítések        | Updates__MicrosoftDefaultComputerGroup         |

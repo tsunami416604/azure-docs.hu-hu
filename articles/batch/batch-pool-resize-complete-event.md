@@ -13,11 +13,11 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
 ms.openlocfilehash: 87c98b89a49adbad88841dccbd4ba47d370b2be7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474309"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60776422"
 ---
 # <a name="pool-resize-complete-event"></a>Készlet átméretezése kész esemény
 
@@ -40,7 +40,7 @@ ms.locfileid: "55474309"
 }
 ```
 
-|Elem|Typo|Megjegyzések|
+|Elem|Típus|Megjegyzések|
 |-------------|----------|-----------|
 |id|String|A készlet azonosítója.|
 |nodeDeallocationOption|String|Itt adható meg, amikor csomópontok lehet, hogy eltávolítja a készletből, ha a készlet méretének csökkenésekor.<br /><br /> Lehetséges értékek:<br /><br /> **újbóli várólistázás** – futó tevékenységek leállítása és újbóli várólistázása. A tevékenységek a feladat engedélyezésekor fognak újra futni. Távolítsa el a csomópontokat, amint a tevékenységek leállítása után.<br /><br /> **leállítja** – futó tevékenységek leállítása. A tevékenységek nem fognak újra futni. Távolítsa el a csomópontokat, amint a tevékenységek leállítása után.<br /><br /> **taskcompletion** – engedélyezése jelenleg futó feladatok végrehajtásához. Ne ütemezzen új feladatokat való várakozás során. Távolítsa el a csomópontok, feladatok befejezését.<br /><br /> **Retaineddata** – lehetővé teszi a futó tevékenységek befejeződését, majd megvárja, hogy minden tevékenység adatmegőrzési ideje leteljen lejár. Ne ütemezzen új feladatokat való várakozás során. Távolíthat el csomópontokat, amikor az összes feladat megőrzési időszak lejárt.<br /><br /> Az alapértelmezett érték: újbóli várólistázás.<br /><br /> Ha a készlet méretét növekszik, akkor a értéke **érvénytelen**.|

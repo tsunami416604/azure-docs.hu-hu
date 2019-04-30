@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 8fb3b4ac748fcae2e3aad5b3bfb2a893340dc61a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256136"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60694822"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Virtuális hálózat konfigurálása az Azure DevTest Labs szolgáltatásban
 A cikkben leírtak szerint [virtuális gép hozzáadása egy laborhoz](devtest-lab-add-vm.md), amikor egy virtuális Gépet hoz létre a tesztkörnyezetben, megadhat egy konfigurált virtuális hálózatot. Szüksége lehet például a virtuális gépek a virtuális hálózat az ExpressRoute- vagy site-to-site VPN használatára konfigurált használata a vállalati hálózaton kívüli erőforrások eléréséhez.

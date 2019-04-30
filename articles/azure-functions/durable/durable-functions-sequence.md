@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 4657bd136592c66b5dab9a712f5f1d6df898876c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043957"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60730539"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions - Hello feladatütemezési minta a láncolási függvény
 
@@ -37,7 +37,7 @@ Az alábbi szakaszok ismertetik a konfiguráció és a C# a parancsfájlkezelés
 
 ## <a name="e1hellosequence"></a>E1_HelloSequence
 
-### <a name="functionjson-file"></a>Function.JSON fájlt
+### <a name="functionjson-file"></a>function.json file
 
 Ha Visual Studio Code vagy az Azure portal-fejlesztéshez, Íme a tartalmát a *function.json* az orchestrator függvény fájlt. A legtöbb orchestrator *function.json* fájlokat, így szinte teljesen jelennek meg.
 
@@ -74,7 +74,7 @@ A `context` az objektum tartalmaz egy `df` objektum teszi lehetővé más hívá
 
 ## <a name="e1sayhello"></a>E1_SayHello
 
-### <a name="functionjson-file"></a>Function.JSON fájlt
+### <a name="functionjson-file"></a>function.json file
 
 A *function.json* fájl a tevékenység függvény `E1_SayHello` a hasonló `E1_HelloSequence` azzal a különbséggel, hogy használja egy `activityTrigger` kötéstípus helyett egy `orchestrationTrigger` typ vazby.
 

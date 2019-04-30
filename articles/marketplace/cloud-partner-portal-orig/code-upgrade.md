@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 787d9ef509bcafeb6a21d4b0ec952ea1eb4fd52b
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810617"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60776811"
 ---
 # <a name="upgrading-code-to-the-latest-platform"></a>A legújabb platformot a kód frissítése
 
@@ -32,9 +32,9 @@ A Microsoft Dynamics 365 for Operations platform az alábbi összetevőkből ál
 Dynamics 365 for Operations platform bináris fájlokat, például az objektum AOS Server (-), az adatok keretrendszert, a jelentéskészítési és üzleti intelligenciára épülő (BI) keretrendszer, fejlesztői eszközöket és elemzési szolgáltatásokat. A következő alkalmazás objektum fa Alkalmazásobjektum csomagok:
 
 1. Alkalmazásplatform
-2. Alkalmazás Foundation
+2. Application Foundation
 3. Alapvető szolgáltatások tesztelése
 
-**Fontos**: szeretne áthelyezni a legújabb Dynamics 365 for Operations platform, a Dynamics 365-műveletek végrehajtásához, az alkalmazásobjektum-fa csomagok tartozó platform a testreszabások (overlayering) nem lehet. Ez a korlátozás bevezetett 3, frissítés, hogy a platform zökkenőmentes folyamatos frissítések módosíthatók. Ha futtat egy platform, amely régebbi, mint a platform 3, a frissítés egy korábbi build szakaszban Ez a cikk végén található 3-as frissítés platformra.
+**Fontos**: Szeretne áthelyezni a legújabb Dynamics 365 for Operations platform, a Dynamics 365-műveletek végrehajtásához minden testre szabott elem (Felülrétegzési) bármely tartoznak a platform az alkalmazásobjektum-fa-csomagokat nem lehet. Ez a korlátozás bevezetett 3, frissítés, hogy a platform zökkenőmentes folyamatos frissítések módosíthatók. Ha futtat egy platform, amely régebbi, mint a platform 3, a frissítés egy korábbi build szakaszban Ez a cikk végén található 3-as frissítés platformra.
 
 További információ a kód frissítése, tekintse meg [Itt](https://docs.microsoft.com/dynamics365/operations/dev-itpro/migration-upgrade/upgrade-latest-platform-update).

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: szark
 ms.openlocfilehash: c0124d133fe2db9acb16251bc21ffb19f1b1268f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992184"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60743445"
 ---
 # <a name="linux-distributions-endorsed-on-azure"></a>Az Azure által támogatott Linux-disztribúciók
 Partnerek az Azure Marketplace-en elérhető Linux-lemezképekhez adja meg. Jelenleg is dolgozunk, a különböző Linux közösségekkel, hogy még tovább bővíthesse a támogatott terjesztési listára. Addig is, amelyek nem érhetők el a piactérről disztribúciók, akkor is mindig saját Linux használata az alábbi az irányelveket, [létrehozása és feltöltése a Linux operációs rendszert tartalmazó virtuális merevlemez](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
@@ -33,7 +33,7 @@ A Linux Integration Services (LIS) illesztőprogramokat, a Hyper-V és az Azure 
 Az Azure Linux-ügynök már előre telepítve van az Azure Marketplace-rendszerképek, és a terjesztési csomag adattárból általában érhető el. Forráskód találhatók [GitHub](https://github.com/azure/walinuxagent).
 
   
-| Disztribúció | Verzió | Illesztőprogramok | Ügynök |
+| Disztribúció | Version | Illesztőprogramok | Ügynök |
 | --- | --- | --- | --- |
 | CentOS |A centOS 6.3 + 7.0 + |CentOS 6.3: [LIS letöltése](https://www.microsoft.com/en-us/download/details.aspx?id=55106)<p>CentOS 6.4+: A kernel |Csomag: A [tárház](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) "WALinuxAgent" alatt <br/>Forráskód: [GitHubon](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |A kernel |Forráskód: [GitHubon](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |

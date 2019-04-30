@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
 ms.openlocfilehash: 682c9e209c4fa4a9f4971af5da901faf1ec58c22
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57889743"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60735800"
 ---
-# <a name="register-in-dev-center"></a>A fejlesztői központban regisztrálása  
+# <a name="register-in-dev-center"></a>Regisztrálás a fejlesztői központban  
 Annak érdekében, győződjön meg arról, hogy nem jelentkezve egy böngésző személyes fiók, nyisson meg egy új Internet Explorer InPrivate vagy Chrome Inkognitó böngészési munkamenetében.  
 1.  A fejlesztői központban eladó regisztrálásához.  
     *   Jelentkezzen be, és a egy értékesítő regisztrálásához, látogasson el a lapon található Azure-fejlesztői központhoz [dev.windows.com/registration?accountprogram=azure](https://dev.windows.com/registration?accountprogram=azure).  

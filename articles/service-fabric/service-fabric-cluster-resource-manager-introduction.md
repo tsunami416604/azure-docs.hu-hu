@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: e9b1cc8b66be36a0a77118f4de672c9411433ba5
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660885"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60743657"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>A Service Fabric fürterőforrás-kezelő bemutatása
 Hagyományosan a IT-rendszereit és online szolgáltatások kezelésére hivatott adott fizikai vagy virtuális gépek dedikálni ezeket adott szolgáltatások vagy a rendszer. Szolgáltatások rétegek szerint lettek tervezésnek. A "webes" réteg és a egy "adatok" vagy "tároló" réteget lenne. Alkalmazások kellene egy üzenetkezelési szinttel, ahol kérelmek érkezett be és ki, valamint dedikált gyorsítótár-csoportokon. Minden szintet vagy a számítási feladat volt dedikált, meghatározott gépek: az adatbázis van kijelölve, a webkiszolgálók egy néhány néhány gépek. Ha egy adott típusú számítási feladatok miatt az volt a gépek futtassa túl gyakori elérésű, majd a további gépek ugyanazt a konfigurációt az adott réteg hozzáadott. Azonban nem minden munkaterhelésről így könnyen sikerült terjeszthető ki – különösen az adatréteg-cserélje általában a nagyobb gépek rendelkező gépek. Egyszerű. Ha egy gép elindítása nem sikerült, mindaddig, amíg a gép sikerült visszaállítani a kisebb kapacitással futott, hogy a teljes alkalmazás részét. Továbbra is könnyen (Ha ez nem feltétlenül szórakoztató).

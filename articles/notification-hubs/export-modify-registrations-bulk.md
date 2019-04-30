@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: jowargo
 ms.openlocfilehash: c24fcd5f007b641bb594bb07348491f70c03ea41
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490843"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60623986"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Exportálása és importálása az Azure Notification Hubs regisztrációk tömeges
 Vannak olyan forgatókönyvek, amelyben létrehozása vagy módosítása egy értesítési központ regisztrációk nagy számú van szükség. Ezek a forgatókönyvek némelyike címke frissítések kötegelt számításokat a következő, vagy a Notification Hubs használata leküldéses meglévő implementációjával áttelepítés.

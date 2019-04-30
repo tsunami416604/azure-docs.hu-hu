@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: shlo
 ms.openlocfilehash: 46447bdbea93d1f99c5682cf878c2035e6f49b78
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522949"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60764322"
 ---
 # <a name="validation-activity-in-azure-data-factory"></a>Az Azure Data Factoryban érvényesítési tevékenység
 Használhatja egy érvényesítési a folyamat a folyamat csak zavartalan végrehajtási, miután megtörtént a csatolt adatkészlet-hivatkozásban létezik, hogy megfelel-e a megadott feltételeknek megfelelő, vagy elérte az időkorlát.
@@ -66,7 +66,7 @@ type | Meg kell **érvényesítési**. | String | Igen |
 Adatkészlet | Tevékenység futtatásának letiltása, amíg az adatkészlet-hivatkozásban érvényesített létezik, és, hogy megfelel-e a megadott feltételeknek megfelelő, vagy elérte az időtúllépési lesz. A megadott adatkészlet támogatnia kell a "MinimumSize" vagy "ChildItems" tulajdonság. | Adatkészlet-hivatkozásban | Igen |
 timeout | Megadja a futtatni kívánt tevékenység időtúllépését. Ha nem ad meg értéket, az alapértelmezett érték: 7 nap ("7.00:00:00"). Formátuma d.hh:mm:ss | String | Nem |
 Alvó állapot | A késleltetés, másodpercben ellenőrzési kísérletek között. Ha nem ad meg értéket, az alapértelmezett érték: 10 másodperc. | Egész szám | Nem |
-childItems | Ellenőrzi, hogy a mappa rendelkezik-e a gyermekelemek. Adható meg az igaz: Ellenőrizze, hogy a mappa létezik-e, és arról, hogy vannak-e elemeket. Letiltja, amíg legalább egy elem szerepel a mappa vagy időtúllépési érték elérésekor.-false (hamis): Ellenőrizze, hogy létezik-e a mappát, és üres. Blokkok amíg mappa nem üres, vagy amíg időtúllépési érték elérésekor. Ha nem ad meg értéket, tevékenység le fogja tiltani, amíg a mappa létezik, vagy időtúllépését. | Logikai | Nem |
+childItems | Ellenőrzi, hogy a mappa rendelkezik-e a gyermekelemek. Adható meg az igaz: Ellenőrizze, hogy a mappa létezik-e, és arról, hogy vannak-e elemeket. Letiltja, amíg legalább egy elem szerepel a mappa vagy időtúllépési érték elérésekor.-false (hamis): Ellenőrizze, hogy létezik-e a mappát, és üres. Blokkok amíg mappa nem üres, vagy amíg időtúllépési érték elérésekor. Ha nem ad meg értéket, tevékenység le fogja tiltani, amíg a mappa létezik, vagy időtúllépését. | Boolean | Nem |
 minimumSize | Minimális fájlméret (bájt). Ha nem ad meg értéket, alapértelmezett értéke 0 bájt | Egész szám | Nem |
 
 

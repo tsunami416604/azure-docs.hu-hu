@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: saurse
 ms.openlocfilehash: 8d15eb03055aed32c8a99121b750ee5767a87b50
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094973"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60648044"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>A DPM és az Azure Backup Server offline biztonsági mentés munkafolyamata
 Az Azure Backup rendelkezik, amely a hálózati és tárolási költségek csökkentése az Azure-ban adatok kezdeti teljes biztonsági mentés során számos beépített hatékonyság. Kezdeti teljes biztonsági mentés általában nagy mennyiségű adat átvitele, és azt követő biztonsági mentéseket, hogy csak a változásokat/szalagnak transfer képest nagyobb hálózati sávszélesség szükséges. Az Azure Backup tömöríti a kezdeti biztonsági mentés. Kapcsolat nélküli beültetéssel is a folyamatot az Azure Backup lemez is használható a tömörített kezdeti biztonsági mentési adatok offline feltöltése az Azure-bA.

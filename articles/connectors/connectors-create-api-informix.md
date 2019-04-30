@@ -12,11 +12,11 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 6004c02f190bbfcf374b3b5d2a5c478f0e52c961
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58165900"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60690905"
 ---
 # <a name="get-started-with-the-informix-connector"></a>Az Informix-összekötő használatának első lépései
 Informix-összekötő a Microsoft a Logic Apps csatlakozik IBM Informix-adatbázisban tárolt erőforrásokhoz. Az Informix-összekötő tartalmazza a Microsoft felé történő Informix-kiszolgáló távoli számítógépek egy TCP/IP-hálózaton keresztül. Ez magában foglalja a felhőalapú adatbázisok, például a virtualizálás az Azure-ban futó Windows IBM Informix, és a helyszíni adatbázisok a helyszíni adatátjáró használatával. Tekintse meg a [lista támogatott](connectors-create-api-informix.md#supported-informix-platforms-and-versions) IBM Informix-platformok és verziók (az ebben a témakörben).
@@ -86,7 +86,7 @@ Ez az összekötő támogatja a kapcsolatok a helyszíni adatbázis és a felhő
 | adatbázis |Kötelező. Egy karakterláncértéket, amely a DRDA relációs adatbázis nevét (RDBNAM) fogad el. Informix-128 bájt-karakterláncot fogad el (adatbázis-IBM Informix-adatbázis neve (adatbázisnév) nevezik). |
 | hitelesítés |Választható. Fogadja el a lista elem értéke, egyszerű vagy Windows (kerberos). |
 | felhasználónév |Kötelező. Egy karakterlánc értéket fogad el. |
-| jelszó |Kötelező. Egy karakterlánc értéket fogad el. |
+| password |Kötelező. Egy karakterlánc értéket fogad el. |
 | átjáró |Kötelező. Egy lista elem értéket, a helyszíni átjáró az tárolócsoportot a Logic Apps használatával meghatározott jelölő fogad el. |
 
 ## <a name="create-the-on-premises-gateway-connection"></a>A helyszíni átjáró kapcsolat létrehozása

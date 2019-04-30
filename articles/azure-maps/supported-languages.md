@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: ad5913224724dcb9cb9033d89010cefb4d9e1f89
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784160"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60769192"
 ---
 # <a name="azure-maps-supported-languages"></a>Az Azure Maps támogatott nyelvek
 A szolgáltatások között az Azure Maps honosított a különböző nyelveken.  Az alábbi táblázat a támogatott nyelvkódok biztosít az egyes szolgáltatások.  

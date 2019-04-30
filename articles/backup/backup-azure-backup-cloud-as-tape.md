@@ -10,11 +10,11 @@ ms.date: 1/10/2017
 ms.author: saurse
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 59236774f98af927082c78f4b75a1f5880a7cac4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259604"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60646966"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Szalag a hosszú távú tárolás áthelyezése az Azure-felhőben
 Azure Backup és a System Center Data Protection Manager-ügyfelek a következőket teheti:
@@ -44,10 +44,10 @@ Ebben a házirendben megadott "adatmegőrzési pontokat" teljes száma a 90 (nap
 ## <a name="example--putting-both-together"></a>Példa – bármik lehetnek, mindkettő
 ![Mintaképernyő](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
-1. **Napi adatmegőrzési**: naponta készített biztonsági másolatok hét napig tárolja.
-2. **Zabály hetenkénti megőrzéshez**: négy hétig minden nap, éjfélkor és 18 Órakor szombat készített biztonsági másolatok megmaradnak
-3. **Y havonkénti megőrzéshez**: minden hónap utolsó szombat 6 óra és éjfél mentésekre megmaradnak, 12 hónapig
-4. **Abály évenkénti megőrzéshez**: 10 évig minden márciusának utolsó szombaton éjfélkor készített biztonsági másolatok megmaradnak
+1. **Napi adatmegőrzési**: Napi készített biztonsági másolatok hét napon tárolódnak.
+2. **Zabály hetenkénti megőrzéshez**: Négy hétig minden nap, éjfélkor és 18 Órakor szombat készített biztonsági másolatok megmaradnak
+3. **Y havonkénti megőrzéshez**: Minden hónap utolsó szombat 6 óra és éjfél mentésekre megmaradnak, 12 hónapig
+4. **Abály évenkénti megőrzéshez**: Minden márciusának utolsó szombaton éjfélkor biztonsági másolatokat a rendszer megőrzi 10 évre
 
 "Adatmegőrzési pontokat" teljes száma (a pont, amelyről a vásárlói adatokat állíthatja) a fenti ábrán az kiszámítása a következőképpen:
 

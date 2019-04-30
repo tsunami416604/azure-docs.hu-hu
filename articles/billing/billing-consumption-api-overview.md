@@ -15,27 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/07/2018
 ms.author: erikre
-ms.openlocfilehash: 88b7909e78f8bd36ce456eee60587acbbb94b6cd
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 16e0bdfa0fc70d5239cb4127e61891a013bf54a3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286748"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60615883"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure-használati API – áttekintés 
 
-Az Azure szolgáltatáshasználati API-jai programozás alapú hozzáférést költségeihez és használati adatok biztosítanak az Azure-erőforrások. Ezen API-k jelenleg csak támogatja a vállalati Belépéseket és a Web Direct-előfizetésekhez (néhány kivételtől eltekintve). Az API-kat folyamatosan frissülnek, hogy más típusú Azure-előfizetések támogatják.
+Az Azure használati API-k programozott hozzáférést biztosítanak az Azure-erőforrások költség- és használati adataihoz. Ezen API-k jelenleg csak támogatja a vállalati Belépéseket és a Web Direct-előfizetésekhez (néhány kivételtől eltekintve). Az API-kat folyamatosan frissülnek, hogy más típusú Azure-előfizetések támogatják.
 
-Az Azure szolgáltatáshasználati API-jai hozzáférést biztosítanak:
-- Enterprise és a webes közvetlen ügyfelek 
-    - Használat részletei 
-    - Piactér-díjak 
-    - Foglalás javaslatok 
-    - Foglalás részletei 
-    - Foglalás összefoglaló 
-- Csak a vállalati felhasználók 
+Az Azure használati API-k a következőkhöz biztosítanak hozzáférést:
+- Vállalati és Web Direct-ügyfelek 
+    - Használati adatok 
+    - A Marketplace díjai 
+    - Foglalási javaslatok 
+    - Foglalási adatok 
+    - Foglalási összegzések 
+- Csak vállalati ügyfelek számára 
     - Árlista 
-    - Költségkeret 
+    - Költségvetések 
     - Egyenlegek 
 
 ## <a name="usage-details-api"></a>Használat részletei API

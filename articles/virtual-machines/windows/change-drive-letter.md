@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
 ms.openlocfilehash: cfd46d5e9750a81d89ed6d3a79bcc9bffdc3d0dd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007289"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60844199"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Használja a D: meghajtó adatmeghajtóként egy Windows virtuális gépen
 Ha az alkalmazás a D meghajtó használata adatok tárolására van szüksége, kövesse ezeket az utasításokat az ideiglenes lemez egy másik meghajtóbetűjelet használja. Soha ne használja az ideiglenes lemez továbbra is szeretné adatokat tárolhat.

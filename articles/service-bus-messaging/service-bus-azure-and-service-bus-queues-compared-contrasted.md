@@ -15,11 +15,11 @@ ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 2086813b01de6cd06f3714477e56864b36196382
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699047"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60714574"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Tároló-üzenetsorok és Service Bus-üzenetsorok összehasonlítása
 Ez a cikk elemzi a közötti különbségeket és hasonlóságokat a Microsoft Azure jelenleg elérhető két típusa: Tároló-üzenetsorok és Service Bus-üzenetsorok. Ezekre az információkra alapozva összehasonlíthatók az egyes technológiák, és megfontoltabb döntéseket lehet hozni arról, hogy melyik megoldás felel meg leginkább az igényeknek.
@@ -174,7 +174,7 @@ Ez a szakasz bemutatja a tároló-üzenetsorok és Service Bus-üzenetsorok ált
 
 | Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus-üzenetsorok |
 | --- | --- | --- |
-| Authentication |**Szimmetrikus kulcs** |**Szimmetrikus kulcs** |
+| Hitelesítés |**Szimmetrikus kulcs** |**Szimmetrikus kulcs** |
 | Biztonsági modell |Delegált hozzáférés SAS-jogkivonatok használatával. |SAS |
 | Identitás-összevonási szolgáltató |**Nem** |**Igen** |
 

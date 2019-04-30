@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
 ms.openlocfilehash: 924154a64673b4ff646f3b6ece373b278ee37181
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754846"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60773264"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>A REST API-val a virtuális gép használati metrikák beolvasása
 
@@ -49,7 +49,7 @@ A következő fejléceket szükség:
 | vmname | Az Azure virtuális gép neve. |
 | metricnames | Vesszővel tagolt listája érvényes [Load Balancer metrikái](/azure/load-balancer/load-balancer-standard-diagnostics). |
 | API-verzió | A használandó a kérelem API-verzió.<br /><br /> Ez a dokumentum ismerteti az api-version `2018-01-01`, a fenti URL-címe megtalálható.  |
-| Időtartam | A következő formátumú karakterlánc- `startDateTime_ISO/endDateTime_ISO` , amely meghatározza, hogy a visszaadott metrikák időtartománya. Ez nem kötelező paraméter értéke a példában egy nap alatt az adatok visszaadása. |
+| TimeSpan | A következő formátumú karakterlánc- `startDateTime_ISO/endDateTime_ISO` , amely meghatározza, hogy a visszaadott metrikák időtartománya. Ez nem kötelező paraméter értéke a példában egy nap alatt az adatok visszaadása. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>A kérés törzse

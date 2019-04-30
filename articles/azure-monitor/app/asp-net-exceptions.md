@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
 ms.openlocfilehash: cb32069de295b883cdc6d3a9fa495b1bea719c39
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116986"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60691814"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Az Application insights segítségével a webalkalmazások kivételeinek diagnosztizálása
 Az élő webalkalmazását kivételek által jelentett [Application Insights](../../azure-monitor/app/app-insights-overview.md). Sikertelen kérelmek kapcsolhatja össze a kivételek és az ügyfél és a kiszolgáló, az eseményeket, hogy gyorsan diagnosztizálhatja a okok.
@@ -25,7 +25,7 @@ Az élő webalkalmazását kivételek által jelentett [Application Insights](..
 ## <a name="set-up-exception-reporting"></a>Kivétel jelentéskészítés beállítása
 * A kiszolgálóalkalmazás által jelentett kivételek rendelkezik:
   * Telepítés [Application Insights SDK](../../azure-monitor/app/asp-net.md) az alkalmazáskód, vagy
-  * IIS-kiszolgálók: Futtatás [Application Insights-ügynökkel](../../azure-monitor/app/monitor-performance-live-website-now.md); vagy
+  * IIS web servers: Futtatás [Application Insights-ügynökkel](../../azure-monitor/app/monitor-performance-live-website-now.md); vagy
   * Az Azure web apps: Adja hozzá a [Application Insights-bővítmény](../../azure-monitor/app/azure-web-apps.md)
   * Java-webalkalmazások: Telepítse a [Java-ügynök](../../azure-monitor/app/java-agent.md)
 * Telepítse a [JavaScript-kódrészletet](../../azure-monitor/app/javascript.md) a weblapok a böngésző kivételeket.
@@ -298,7 +298,7 @@ Minden kivétel *kezelt* alkalmazás továbbra is nyomon kell követni manuális
 ### <a name="prior-versions-support"></a>Korábbi verziók támogatása
 Ha WebAPI-1 (és az előzetes) és Application Insights webes SDK 2.5-ös (előzetes) használ, tekintse meg az alábbi példák kivételeinek követéséről.
 
-#### <a name="web-api-1x"></a>Webes API-t 1.x
+#### <a name="web-api-1x"></a>Web API 1.x
 Override System.Web.Http.Filters.ExceptionFilterAttribute:
 
 ```csharp
@@ -348,7 +348,7 @@ Felülbírált attribútum hozzáadása adott tartományvezérlőket, vagy adja 
 
 [Minta](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
-#### <a name="web-api-2x"></a>Webes API 2.x
+#### <a name="web-api-2x"></a>Web API 2.x
 Módszer az iexceptionlogger felület egy megvalósításának hozzáadása:
 
 ```csharp

@@ -1,6 +1,6 @@
 ---
-title: HTTP/2-támogatás az Azure CDN |} Microsoft Docs
-description: Ismerje meg a HTTP/2 és a CDN támogatása.
+title: HTTP/2-támogatás az Azure CDN-ben |} A Microsoft Docs
+description: Ismerje meg a HTTP/2 és a CDN-támogatás.
 services: cdn
 documentationcenter: ''
 author: lichard
@@ -13,39 +13,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
 ms.author: rli
-ms.openlocfilehash: b4751320af82a29fb13dc6012c1b197ebc2b1f9b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2d27cd54486a08e18fe74c852af29d5cf6432023
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33764842"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60737074"
 ---
-# <a name="http2-support-in-azure-cdn"></a>Az Azure CDN HTTP/2-támogatás
+# <a name="http2-support-in-azure-cdn"></a>HTTP/2-támogatás az Azure CDN-ben
 
-A HTTP/2 HTTP/1.1\ nagyobb javítása. Biztosít gyorsabban webes teljesítmény, a csökkentett válaszidő és a jobb felhasználói élmény, a megszokott HTTP-metódus állapotkódok és szemantikáját megőrzésével. Bár a HTTP/2 célja, hogy a HTTP és HTTPS használata, számos ügyfél webböngészőben csak támogatja a HTTP/2 TLS feletti.
+HTTP/2 HTTP/1.1\ fő felülvizsgálatát. Biztosít gyorsabban webes teljesítmény, a csökkentett válaszidő és a felhasználói élmény, a jól ismert HTTP-metódusok, állapotkódok és szemantika megőrzése mellett. Bár a HTTP/2 a HTTP és HTTPS célja, sok ügyfél webböngészővel csak támogatja a HTTP/2 TLS protokollon keresztüli.
 
-### <a name="http2-benefits"></a>A HTTP/2 előnyei
+### <a name="http2-benefits"></a>HTTP/2 előnyei
 
-A HTTP/2 előnyei a következők:
+HTTP/2 előnyei a következők:
 
-*   **Multiplexáló és feldolgozási**
+*   **Multiplexálási és egyidejűség**
 
-    HTTP 1.1 több erőforrás kérést több TCP-kapcsolatot igényel, és minden egyes kapcsolathoz teljesítményigény társítva van. HTTP/2 lehetővé teszi, hogy több erőforrás vonatkozó egyetlen TCP-kapcsolatot.
+    A HTTP 1.1 több erőforrás-kérelem indítására több TCP-kapcsolatot igényel, és minden egyes kapcsolat rendelkezik teljesítménybeli terhelést társítva. HTTP/2 lehetővé teszi, hogy több erőforrást vonatkozó egyetlen TCP-kapcsolatot.
 
 *   **Fejléc tömörítése**
 
-    A HTTP-fejlécek szolgálatban erőforrások tömörítésével vezetéken lévő idő jelentősen csökkent.
+    A HTTP-fejlécek szolgálatban erőforrások tömörítésével az átviteli idő jelentősen csökkent.
 
-*   **Adatfolyam-függőségek**
+*   **Stream-függőségek**
 
-    Adatfolyam-függőségek engedélyezi az ügyfél megjelenítésével jelzi a kiszolgáló, mely erőforrásokat prioritással rendelkezik.
+    Stream-függőségek lehetővé teszik az ügyfél számára, amelyek jelzik, hogy mely erőforrások prioritással a kiszolgáló.
 
 
-## <a name="http2-browser-support"></a>A HTTP/2 webböngésző támogatása
+## <a name="http2-browser-support"></a>HTTP/2 böngésző támogatása
 
-Az összes ismertebb böngésző alkalmaztunk, hogy HTTP/2-támogatás az aktuális verzióban. Nem támogatott böngészők automatikusan tartalék HTTP/1.1.
+Minden főbb böngésző a valósította meg a HTTP/2-támogatás a jelenlegi verzióban. Nem támogatott böngészők automatikusan tartalék HTTP/1.1.
 
-|Böngésző|Minimális verzió|
+|Böngésző|Minimális verziója|
 |-------------|------------|
 |Microsoft Edge| 12|
 |Google Chrome| 43|
@@ -53,18 +53,18 @@ Az összes ismertebb böngésző alkalmaztunk, hogy HTTP/2-támogatás az aktuá
 |Opera| 32|
 |Safari| 9|
 
-## <a name="enabling-http2-support-in-azure-cdn"></a>Az Azure CDN HTTP/2-támogatás engedélyezése
+## <a name="enabling-http2-support-in-azure-cdn"></a>HTTP/2-támogatás az Azure CDN engedélyezése
 
-A HTTP/2 támogatási jelenleg aktív, az összes Azure CDN-profil. Az ügyfelek semmilyen további műveletet kell biztosítania.
+HTTP/2-támogatás jelenleg aktív, az összes Azure CDN-profil számára. Semmilyen további műveletet nem kell az ügyfelektől származó.
 
 ## <a name="next-steps"></a>További lépések
 
-A HTTP/2 előnyeit működés közben, olvassa el [ebben a bemutatóban a Akamai](https://http2.akamai.com/demo).
+A HTTP/2 előnyeit működés közben, olvassa el [a bemutatóhoz az Akamaitól](https://http2.akamai.com/demo).
 
-A HTTP/2 kapcsolatos további információkért látogasson el a következőket:
+HTTP/2 kapcsolatos további információkért látogasson el az alábbi forrásanyagokat:
 
-*   [A HTTP/2 specification-kezdőlap](https://http2.github.io/)
+*   [HTTP/2 specifikáció kezdőlapja](https://http2.github.io/)
 *   [Hivatalos HTTP/2 – gyakori kérdések](https://http2.github.io/faq/)
 *   [Akamai HTTP/2-információk](https://http2.akamai.com/)
 
-Azure CDN elérhető funkciókkal kapcsolatos további tudnivalókért tekintse meg a [Azure CDN áttekintése](https://azure.microsoft.com/documentation/articles/cdn-overview/).
+Elérhető az Azure CDN-funkciókkal kapcsolatos további tudnivalókért tekintse meg a [Azure CDN áttekintése](https://azure.microsoft.com/documentation/articles/cdn-overview/).

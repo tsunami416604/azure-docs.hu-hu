@@ -13,11 +13,11 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
 ms.openlocfilehash: 176f00de77c2d353d6efeb8b5a535a607b8f3204
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470593"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60776507"
 ---
 # <a name="pool-create-event"></a>Készlet létrehozása esemény
 
@@ -47,7 +47,7 @@ ms.locfileid: "55470593"
 }
 ```
 
-|Elem|Typo|Megjegyzések|
+|Elem|Típus|Megjegyzések|
 |-------------|----------|-----------|
 |id|String|A készlet azonosítója.|
 |displayName|String|A készlet megjelenítendő neve.|
@@ -65,14 +65,14 @@ ms.locfileid: "55470593"
 
 ###  <a name="bk_csconf"></a> cloudServiceConfiguration
 
-|Elem neve|Typo|Megjegyzések|
+|Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
 |operációsrendszer-család|String|Az Azure vendég operációs rendszerek kell telepíteni a virtuális gépek a készletben.<br /><br /> Lehetséges értékek:<br /><br /> **2** – operációs rendszer termékcsalád 2, Windows Server 2008 R2 SP1 egyenértékű.<br /><br /> **3** – operációs rendszer termékcsalád 3, egyenértékű a Windows Server 2012-re.<br /><br /> **4** – operációs rendszer termékcsalád 4, Windows Server 2012 R2 egyenértékű.<br /><br /> További információkért lásd: [Azure Vendégoperációsrendszer-kiadásainak listáját](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
 |targetOSVersion|String|A kell telepíteni a virtuális gépek, a készlet Azure vendég operációs rendszer verziója.<br /><br /> Az alapértelmezett érték **\*** amely megadja, hogy a megadott termékcsalád legújabb operációs rendszerre.<br /><br /> További egyéb engedélyezett értékek: [Azure Vendégoperációsrendszer-kiadásainak listáját](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
 
 ###  <a name="bk_vmconf"></a> virtualMachineConfiguration
 
-|Elem neve|Typo|Megjegyzések|
+|Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
 |[imageReference](#bk_imgref)|Komplex típus|Adja meg a platform vagy a Piactéri rendszerkép használatára.|
 |nodeAgentSKUId|String|Az a kiépítése a számítási csomóponton a Batch-csomóponti ügynök SKU.|
@@ -80,7 +80,7 @@ ms.locfileid: "55470593"
 
 ###  <a name="bk_imgref"></a> imageReference
 
-|Elem neve|Typo|Megjegyzések|
+|Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
 |publisher|String|A lemezkép kiadója.|
 |az ajánlat|String|Az ajánlatot a lemezkép.|
@@ -89,12 +89,12 @@ ms.locfileid: "55470593"
 
 ###  <a name="bk_winconf"></a> windowsConfiguration
 
-|Elem neve|Typo|Megjegyzések|
+|Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
-|enableAutomaticUpdates|Logikai|Azt jelzi, hogy a virtuális gépen engedélyezve van-e az automatikus frissítések. Ha ez a tulajdonság nincs megadva, alapértelmezett értéke true.|
+|enableAutomaticUpdates|Boolean|Azt jelzi, hogy a virtuális gépen engedélyezve van-e az automatikus frissítések. Ha ez a tulajdonság nincs megadva, alapértelmezett értéke true.|
 
 ###  <a name="bk_netconf"></a> networkConfiguration
 
-|Elem neve|Typo|Megjegyzések|
+|Elem neve|Típus|Megjegyzések|
 |------------------|--------------|----------|
 |subnetId|String|Itt adhatja meg az alhálózatot, amelyben a készlet számítási csomópontjainak létrehozása erőforrás-azonosítója.|

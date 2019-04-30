@@ -12,11 +12,11 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: ccc194dd4120762a30da3ad28cdabed6faf53ba2
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576395"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611502"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Adatok átalakítása Hadoop MapReduce-tevékenység használatával az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -60,10 +60,10 @@ Lásd: [Pig](transform-data-using-hadoop-pig.md) és [Hive](transform-data-using
 
 ## <a name="syntax-details"></a>Szintaxis részletei
 
-| Tulajdonság          | Leírás                              | Szükséges |
+| Tulajdonság          | Leírás                              | Kötelező |
 | ----------------- | ---------------------------------------- | -------- |
 | név              | A tevékenység neve                     | Igen      |
-| leírás       | Mire használható a tevékenységet leíró szöveg | Nem       |
+| description       | Mire használható a tevékenységet leíró szöveg | Nem       |
 | type              | A Mapreduce a tevékenység típusát HDinsightMapReduce | Igen      |
 | linkedServiceName | Referencia a HDInsight-fürthöz társított szolgáltatásként a Data Factory regisztrálva. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk. | Igen      |
 | Osztálynév         | A futtatandó osztály neve         | Igen      |

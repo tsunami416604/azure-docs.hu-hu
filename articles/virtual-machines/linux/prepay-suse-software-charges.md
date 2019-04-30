@@ -13,13 +13,13 @@ ms.workload: na
 ms.date: 04/12/2019
 ms.author: banders
 ms.openlocfilehash: e15dcdbbcaed32d836bb751ef93ce17e90bd6905
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011095"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60771243"
 ---
-# <a name="prepay-for-azure-software-plans"></a>Fizessen elő az Azure szoftvercsomagok – alap
+# <a name="prepay-for-azure-software-plans"></a>Előre fizetés Azure-szoftvercsomagokért
 
 Fizessen elő a SUSE és a RedHat szoftver kihasználtságát az Azure-ban, ha pénzt takaríthat meg el a használatalapú fizetéses költségekhez képest. A kedvezmények csak a SUSE és RedHat mérőszámok, és nem a virtuális gép használatát a alkalmazni. Megvásárolhatja a foglalásokat a virtuális gépek külön-külön is a további helymegtakarítás érdekében.
 
@@ -35,7 +35,7 @@ SUSE és RedHat szoftverfrissítési csomagok az Azure Portalon vásárolhat. A 
 2. Kattintson a **Hozzáadás** , és válassza ki a szoftver tervet, amely szeretne vásárolni.
 Adja meg a kötelező mezőket. SUSE Linux rendszerű virtuális gép vagy a RedHat rendszerű virtuális Gépet, amely megfelel az Ön a vásárlás attribútumait lekérdezi a kedvezményt. A tényleges száma üzemelő példánya, amely a kedvezményt lekérése a hatókör és a kiválasztott mennyiség függenek.
 3. Válasszon egy előfizetést. Azt a csomagot szolgál.
-Az előfizetés fizetési módja az előzetes költségek, a Foglalás díját. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy a használatalapú fizetés (számok kínálnak: MS-AZR-0003P vagy MS-AZR - 0023 P).
+Az előfizetés fizetési módja az előzetes költségek, a Foglalás díját. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy a használatalapú fizetés (számok kínálnak: MS-AZR-0003P vagy MS-AZR-0023P).
     - Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva.
     - Használatalapú fizetéses előfizetésre az előfizetés bankkártyával vagy számla ellenében a fizetési módot, a díjakat számlázzuk ki.
 4. Válassza ki a hatókört. A hatókör egy előfizetést vagy több előfizetés (megosztott hatókör) is foglalkozik.

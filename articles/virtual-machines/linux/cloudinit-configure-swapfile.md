@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: 626fd4739daf2506854c42f16ac986a361ebab38
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769912"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60729817"
 ---
 # <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>A lapozófájl konfigurálása a Linux rendszerű virtuális gépen a cloud-init használatával
 Ez a cikk bemutatja, hogyan használható [a cloud-init](https://cloudinit.readthedocs.io) különböző Linux-disztribúciókon a lapozófájl konfigurálása. A lapozófájl hagyományosan konfigurálása által a Linuxos ügynök (WALA) melyik disztribúció szükséges egyik alapján.  Ez a dokumentum igény szerinti üzembe helyezés ideje a cloud-init használata során a lapozófájl létrehozásához fog vázoltuk.  A cloud-init működése natív módon az Azure és a támogatott Linux-disztribúciók kapcsolatos további információkért lásd: [cloud-init áttekintése](using-cloud-init.md)

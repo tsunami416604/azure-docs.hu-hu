@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 590aa440f35f97e854fa827b0d8db1c3f9211faf
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231937"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60749647"
 ---
-# <a name="offer-settings-tab"></a>Az ajánlat (beállítások) lapján
+# <a name="offer-settings-tab"></a>Ajánlatbeállítási lap
 
 Az a **új ajánlat** képernyő, az első lépése, hogy az ajánlat identitás létrehozása. Az ajánlat identitás három részből áll: **Ajánlat azonosítója**, **közzétevő-azonosító**, és **neve**. A következő szakaszok ezeket a részeket mindegyike foglalkozik.
 
@@ -63,7 +63,7 @@ Az alábbi lista tartalmazza a több jól elnevezett ajánlat neve:
 -   Professzionális szolgáltatások alapok: 1 – hr Briefing
 -   Felhőplatform-áttelepítés: 1 – hr Briefing
 -   A PowerApps és Microsoft Flow: 1 napos Workshop
--   Az Azure Machine Learning-szolgáltatások: 3 – hét PoC
+-   Azure Machine Learning Services: 3-Wk PoC
 -   A tégla, majd kattintson a kiskereskedelmi megoldást: 1 – hr Briefing
 -   Saját adatok importálása: 1 – hét Workshop
 -   Felhőbeli elemzési: 3 napos Workshop

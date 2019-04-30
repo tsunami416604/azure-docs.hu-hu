@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 18f00391beded0744c80eab73bb1efe1c6ab8dbc
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809707"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60625040"
 ---
 <a name="cancel-operation"></a>A művelet megszakítása 
 =================
@@ -35,8 +35,8 @@ A kérelem hozzá lehet adni e-mail címeket vesszővel tagolt listáját, és a
 
 |  **Name (Név)**    |      **Leírás**                                  |    **Adattípus**  |
 | ------------ |     ----------------                                  |     -----------   |
-| publisherId  |  Közzétevő azonosítója, például `contoso`         |   Sztring          |
-| OfferId      |  Ajánlat azonosítója                                     |   Sztring          |
+| publisherId  |  Közzétevő azonosítója, például `contoso`         |   String          |
+| ajánlatazonosító      |  Ajánlat azonosítója                                     |   String          |
 | API-verzió  |  API jelenlegi verziója                               |    Dátum           |
 |  |  |  |
 
@@ -92,6 +92,6 @@ A kérelem hozzá lehet adni e-mail címeket vesszővel tagolt listáját, és a
 |  200      | oké. A kérés feldolgozása sikeresen megtörtént, és a művelet megszakadt, szinkron módon történik. |
 |  202      | Elfogadva. A kérés feldolgozása sikeresen megtörtént, és a művelet folyamatban megszakítása folyamatban van. A válasz fejléce a megszakítási művelet helyét adja vissza. |
 |  400      | Rossz vagy Excel-hibásan létrehozott kérelem. A hiba-válasz törzsében sikerült adhat meg további információt.  |
-|  403      | Hozzáférés megtiltva. Az ügyfél nem rendelkezik hozzáféréssel a kérésben megadott névtérrel. |
+|  403      | Access Forbidden. Az ügyfél nem rendelkezik hozzáféréssel a kérésben megadott névtérrel. |
 |  404      | Nem található. A megadott entitás nem létezik. |
 |  |  |

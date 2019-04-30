@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 90b2dfdbec0d6dc81a05b845832fda92fe36d98c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403091"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60656591"
 ---
 # <a name="api-management-policy-expressions"></a>Az API Management házirend-kifejezések
 Ez a cikk ismerteti a házirend-kifejezések szintaxisa C# 7. Minden egyes kifejezés férhet hozzá a implicit módon megadott [környezet](api-management-policy-expressions.md#ContextVariables) változót és a egy engedélyezett [részhalmazát](api-management-policy-expressions.md#CLRTypes) .NET-keretrendszer típusú.
@@ -74,7 +74,7 @@ Kifejezések használhatók vagy az összes API Management a szöveges értékek
 ## <a name="CLRTypes"></a> .NET-keretrendszer típusok engedélyezett a házirend-kifejezések
 A következő táblázat felsorolja a .NET-keretrendszer és a tagok, amelyek a házirend-kifejezések engedélyezettek.
 
-|Typo|Támogatott tagok|
+|Típus|Támogatott tagok|
 |--------------|-----------------------|
 |Newtonsoft.Json.Formatting|Összes|
 |Newtonsoft.Json.JsonConvert|SerializeObject, DeserializeObject|

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.author: ancav
-ms.subservice: autoscale
+ms.component: autoscale
 ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474829"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60787495"
 ---
 # <a name="understand-autoscale-settings"></a>Ismerkedés az automatikus méretezési beállításokkal
 Az automatikus méretezési beállítások segítségével, győződjön meg arról, hogy a megfelelő mennyiségű erőforrást fut az alkalmazás változó terhelés kezelésére. Konfigurálhatja az automatikus méretezési beállítások betöltése vagy a teljesítmény jelző mérőszámok alapján, vagy aktivált, ütemezett dátum és idő aktiválását. Ez a cikk részletes tekintse meg az automatikus skálázási beállítás felhőtámadások vesz igénybe. A cikk a séma és a egy beállítás tulajdonságait kezdődik, és ezután bemutatja a konfigurálható különböző típusaival. Végül a cikk azt ismerteti, hogyan értékeli ki az automatikus skálázási funkció az Azure-ban a profilt egy adott időpontban végrehajtásához.
@@ -110,7 +110,7 @@ Az automatikus skálázási beállítás séma mutatja be, a következő automat
 | metricTrigger | timeAggregation | Az összesítési módszer összesíthetők a mintavételezett metrikák. Ha például **TimeAggregation = "Average"** kell összesíteni a mintavételezett metrikák átlaga. Az előző esetben a tíz 1 perces mintát venni, és az átlagos őket. |
 | szabály | scaleAction | A szabály a metricTrigger kezdeményezése esetén végrehajtandó műveletet. |
 | scaleAction | irány | "Növelni" horizontális felskálázás, vagy "Csökkentéséhez" méret esetén.|
-| scaleAction | érték | Mennyi növelése vagy csökkentése érdekében az erőforrás kapacitását. |
+| scaleAction | value | Mennyi növelése vagy csökkentése érdekében az erőforrás kapacitását. |
 | scaleAction | utáni | Mennyi ideig eltelte után a skálázási művelet újbóli skálázás előtt. Például ha **utáni = "PT10M"**, automatikus méretezés nem kísérli meg méretezését, ezáltal újra egy másik 10 perc. A utáni, hogy hozzáadását és eltávolítását a példányok után stabilizálódhatnak a metrikák engedélyezése. |
 
 ## <a name="autoscale-profiles"></a>Automatikus méretezési profilok
@@ -310,4 +310,3 @@ További információ az automatikus méretezés lépésként tekintse át a kö
 * [Ajánlott eljárások az Azure Monitor automatikus skálázása](../../azure-monitor/platform/autoscale-best-practices.md)
 * [Automatikus skálázási műveletek használatával küldjön e-mailt és webhookot riasztási értesítések](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [Az automatikus méretezés – REST API](https://msdn.microsoft.com/library/dn931953.aspx)
-

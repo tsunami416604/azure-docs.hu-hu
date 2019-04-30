@@ -10,11 +10,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 8aadddbc9ae13a87f89db4d7e7189ea7aa8aeef5
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883504"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60612033"
 ---
 # <a name="security-standards-for-azure-iot-edge"></a>Az Azure IoT Edge biztonsági szabványait
 
@@ -28,7 +28,7 @@ Ez a cikk az IoT Edge biztonsági keretrendszer áttekintést nyújt. További 
 
 Szabványok támogatása alapos könnyű és az implementáció, mindkettő biztonsági hallmarks egyszerű. Egy biztonsági megoldás kell jellegűvé alatt hozhat létre megbízható értékelési vizsgálat, és nem lehet üzemelő példány egy küszöbértéket. A kialakítás biztonságossá tétele az Azure IoT Edge-keretrendszer alapul tesztelt, és az iparágban már bizonyított biztonsági protokollok ismerete és újbóli felhasználáshoz. 
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Amikor egy IoT-megoldás üzembe helyezésekor kell, hogy csak megbízható actors, eszközök és modulok, hogy a megoldás a hozzáférést. Az ilyen ismeretek kínál a résztvevőket biztonságos feladatai. Az Azure IoT Edge teljesítsük a Tudásbázis-hitelesítésen keresztül. Tanúsítvány alapú hitelesítést az elsődleges mechanizmusa hitelesítéshez az Azure IoT Edge-platform. Ez a mechanizmus szabványokat fogalmaz meg a nyilvános kulcsú infrastruktúra (PKiX) az Internet Engineering Task Force (IETF) által meghatározott használatából.     
 

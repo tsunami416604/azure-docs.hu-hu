@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.openlocfilehash: 672635c8d8c84fa16c106ae79e97332fd740928d
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53541081"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60745162"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>A profil lekérdezési teljesítmény az Azure Database for MariaDB magyarázat használata
 **ISMERTETIK** egy hasznos eszköz optimalizálni a lekérdezéseket. ISMERTETIK utasítás használható SQL-utasítások végrehajtásának módját információt szeretne kapni. A következő kimenet magyarázat utasítás a végrehajtás egy példát mutat be.

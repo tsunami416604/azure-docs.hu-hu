@@ -1,22 +1,24 @@
 ---
 title: Hozzon létre/beszúrási művelet adatait az Azure Cosmos DB Cassandra API Spark rendszerből
 description: Ez a cikk részletesen bemutatja az Azure Cosmos DB Cassandra API táblák Mintaadat beszúrásához
-author: kanshiG
-ms.author: govindk
+author: rockboyfor
+ms.author: v-yeche
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 09/24/2018
+origin.date: 09/24/2018
+ms.date: 03/18/2019
 ms.openlocfilehash: aea646e7a390d5b53f0d4b388cfecd0c80fb19da
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036613"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60894045"
 ---
+<!--Verify sucessfully-->
 # <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Hozzon létre/beszúrási művelet adatait az Azure Cosmos DB Cassandra API Spark rendszerből
- 
+
 Ez a cikk ismerteti, hogyan lehet egy Azure Cosmos DB Cassandra API a Spark-táblára Mintaadat beszúrásához.
 
 ## <a name="cassandra-api-configuration"></a>Cassandra API konfigurálása
@@ -31,7 +33,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -137,10 +139,13 @@ select * from books;
 ## <a name="next-steps"></a>További lépések
 
 Adatok beszúrása az Azure Cosmos DB Cassandra API-tábla, után folytassa a Cosmos DB Cassandra API-ban tárolt adatokkal kapcsolatos egyéb műveletek végrehajtásához a következő cikkeket:
- 
+
 * [olvasási műveletek](cassandra-spark-read-ops.md)
 * [Upsert művelet](cassandra-spark-upsert-ops.md)
 * [Törlési műveletek](cassandra-spark-delete-ops.md)
 * [Összesítési műveletek](cassandra-spark-aggregation-ops.md)
 * [Tábla másolási műveletek](cassandra-spark-table-copy-ops.md)
 
+<!--Verify sucessfully-->
+<!--Update_Description: new articles on  -->
+<!--ms.date: 03/18/2019-->

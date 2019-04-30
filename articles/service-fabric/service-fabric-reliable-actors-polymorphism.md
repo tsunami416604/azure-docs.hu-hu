@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: c14b3006184f7bd6dcd1eb67be11bd0214957d72
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662958"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60725490"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>A Reliable Actors keretrendszerben polimorfizmus
 A Reliable Actors-keretrendszer lehetővé teszi ugyanazokat a technikákat szeretné használni Tervező objektumorientált többféle actors hozhat létre. Ezek a módszerek egyike polimorfizmus, amellyel típusok és felületek több öröklése az szülők általánosítva. A Reliable Actors keretrendszerben öröklési általában néhány további korlátozások a .NET-modell követi. Java/Linux, esetén, a Java modelljét követi.

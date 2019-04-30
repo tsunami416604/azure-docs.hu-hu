@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 2a3f8ee5cba3110d392555fad78c1cb2513b5d4e
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232443"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60683134"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Switch-utasítások, amely alapján az adott értékekre Azure Logic Apps munkafolyamat-műveletek létrehozása
 
@@ -32,7 +32,7 @@ Például tegyük fel, hogy egy logikai alkalmazást, amely a különböző lép
 
 * Kövesse az ebben a cikkben szereplő példa [a minta logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md) Outlook.com-os vagy Office 365 Outlook-fiókkal.
 
-  1. Amikor hozzáadja a műveletet az e-mailt, keresse meg és válassza inkább a következő műveletet: **jóváhagyási e-mail küldése**
+  1. Amikor hozzáadja a műveletet az e-mailt, keresse meg és válassza inkább a következő műveletet: **Jóváhagyási e-mail küldése**
 
      ![Válassza a "Jóváhagyási e-mail küldése"](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
 
@@ -47,7 +47,7 @@ Például tegyük fel, hogy egy logikai alkalmazást, amely a különböző lép
 
    Ha szeretne hozzáadni egy switch utasítás lépések közötti, vigye az egérmutatót a nyíl felett oda, ahol a switch utasítás hozzá szeretné. Válassza ki a **plusz jelre** (**+**), amely akkor jelenik meg, majd válassza a **művelet hozzáadása**.
 
-1. A Keresés mezőbe írja be "kapcsoló" szűrőként. Válassza a következő műveletet: **váltás – szabályozza**
+1. A Keresés mezőbe írja be "kapcsoló" szűrőként. Ez a művelet kiválasztása: **Switch - vezérlő**
 
    ![Kapcsoló hozzáadása](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
 

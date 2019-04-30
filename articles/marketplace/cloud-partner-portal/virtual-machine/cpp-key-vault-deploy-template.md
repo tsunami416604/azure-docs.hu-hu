@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 01aedadfed1ce24b8b6ae75a9163dfe0629ac7c0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197123"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60844125"
 ---
-# <a name="key-vault-deployment-template"></a>A Key vault központi telepítési sablon
+# <a name="key-vault-deployment-template"></a>Key Vault üzembehelyezési sablonja
 
 Az alábbi Azure Resource Manager-sablont egy új Azure Key Vault-példány határozza meg.  A cikk szerepel [a key vault-tanúsítvány létrehozása](cpp-create-key-vault-cert.md). 
 
