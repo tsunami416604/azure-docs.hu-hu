@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/24/2019
+ms.date: 04/23/2019
 ms.author: raynew
-ms.openlocfilehash: aacfe725310b3c8e4785e24b80728f0e60694814
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: eaad582dc6484cb62d0bebf1af447ff61301a3bb
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496095"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62733967"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM backup-támogatási mátrixa
 Használhatja a [Azure Backup szolgáltatás](backup-overview.md) a helyszíni gépek és a számítási feladatok és Azure-beli virtuális gépek (VM) biztonsági mentése. Ez a cikk összegzi a támogatási beállításait és korlátozások biztonsági mentésekor az Azure-beli virtuális gépek az Azure Backup szolgáltatással.
@@ -168,7 +168,7 @@ A védett virtuális gépek a lemez átméretezése | Támogatott.
 Megosztott tároló| A fürt megosztott kötete (CSV) vagy a Scale-Out File Server virtuális gépek biztonsági mentésének nem ajánlott. Fürt megosztott kötetei szolgáltatás írók várhatóan sikertelen biztonsági mentés során. A visszaállítás tartalmazó CSV-köteteket lemezek előfordulhat, hogy nem érkeznek felfelé.
 
 > [!NOTE]
-> Az Azure Backup nem támogatja a csíkozott lemez. Lemez átméretezése az Azure Backup nem ajánlott.
+> Lemez átméretezése az Azure Backup nem ajánlott.
 
 
 ## <a name="vm-network-support"></a>Virtuálisgép-hálózatok támogatása

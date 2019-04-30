@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 6dffc7a24bb0c6b006d06a1018364f08abaaee41
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266954"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128668"
 ---
-# <a name="audit-history-page"></a>Naplózási előzmények lapon
+# <a name="audit-history-page"></a>Naplózási előzmények oldal
 
 A [ **naplózási előzmények** ](https://cloudpartner.azure.com/#history) lap minden marketplace-ajánlat közzététele eseményeihez listáját jeleníti meg.  Az oszlopokat tartalmazzák, eseménytípus, előfordulás dátum és idő, ajánlat nevét, kiadóját, és kezdeményezte a felhasználó.  Az eredmények lehet oszlop szerint rendezve vagy a megadott karakterlánc szűrve.  Ezen a lapon is lehetővé teszi a felhasználó az aktuális naplózási listaelem vesszővel tagolt (.csv) fájlok letöltéséhez.
 

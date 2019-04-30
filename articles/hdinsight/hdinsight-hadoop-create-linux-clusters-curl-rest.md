@@ -1,7 +1,6 @@
 ---
 title: Azure REST API – Azure használatával az Apache Hadoop-fürtök létrehozása
 description: Ismerje meg, hogyan hozhat létre HDInsight-fürtök Azure Resource Manager-sablonok az Azure REST API elküldésével.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: fec87bf3af7f215b69a891c2d75cdd979a7b5a52
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: MT
+ms.openlocfilehash: acf121c2954b3f324682578dd3ab2b4d8b1f63f2
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789211"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124912"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Az Azure REST API használatával az Apache Hadoop-fürtök létrehozása
 

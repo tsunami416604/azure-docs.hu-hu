@@ -9,11 +9,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
 ms.openlocfilehash: 7f9748a4e4f1c86362781aa80d8958237c97106a
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555438"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60816955"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Referenciaarchitektúra: Valós idejű eseményfeldolgozás a Microsoft Azure Stream Analytics
 A referenciaarchitektúra az Azure Stream Analytics valós idejű eseményfeldolgozás a funkcionalitást biztosít egy általános tervezet üzembe helyezéséhez egy valós idejű platformjával a Microsoft Azure platformszolgáltatás (PaaS) streamfeldolgozó megoldás.

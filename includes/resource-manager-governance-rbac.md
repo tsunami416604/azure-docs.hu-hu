@@ -2,22 +2,24 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: azure-resource-manager
-author: tfitzmac
+author: rockboyfor
+manager: digimobile
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 02/16/2018
-ms.author: tomfitz
+origin.date: 02/16/2018
+ms.date: 04/30/2018
+ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: b4b06119b9d46781b967fc8d98808c60d2b41ccb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f77a5d482c3f8632a3d86bd8e027fbb4418168c3
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38753675"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122907"
 ---
 Győződjön meg arról, hogy az intézmény felhasználói megfelelő hozzáférési szinttel rendelkeznek ezekhez az erőforrásokhoz. Nem ajánlott korlátlan hozzáférést nyújtania a felhasználóknak, de fontos biztosítania, hogy el tudják végezni a munkájukat. Szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi egy hatókörben bizonyos műveletek elvégzéséhez jogosult felhasználók kezelését. Egy szerepkör engedélyezett műveletek egy csoportját határozza meg. Rendelje hozzá a szerepkört egy hatókört, és adja meg, hogy mely felhasználók tartoznak a hatókör szerepkörhöz.
 
-Hozzáférés-vezérlési stratégia tervezésekor biztosítson felhasználó számára a legalacsonyabb szintű, hogy elvégezhessék munkájukat. Az alábbi képen egy javasolt minta RBAC hozzárendeléséhez.
+A hozzáférés-vezérlési stratégia megtervezésekor csak a munkájuk elvégzéséhez minimálisan szükséges jogosultságokat biztosítsa a felhasználók számára. Az alábbi képen az RBAC használatának egy javasolt mintája látható.
 
 ![Hatókör](./media/resource-manager-governance-rbac/role-examples.png)
 
@@ -28,3 +30,4 @@ A legtöbb felhasználók kapjanak [erőforrás-specifikus szerepkörökhöz](..
 ### <a name="who-can-assign-roles"></a>Akik rendelhet szerepköröket
 
 A szerepkör-hozzárendelések létrehozásához és eltávolításához a felhasználóknak `Microsoft.Authorization/roleAssignments/*` hozzáféréssel kell rendelkezniük. Ez a hozzáférés a tulajdonosi vagy a felhasználói hozzáférés rendszergazdájának szerepkörével adható meg.
+<!--ms.date: 04/30/2018-->

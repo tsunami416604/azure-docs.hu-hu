@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 3fea858f23c6b271a117f2edcc749e0c6b737e27
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 346ebd9636623a2fc8b08d42c2170a21a5e9a316
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159993"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62121078"
 ---
 # <a name="enable-lead-sharing"></a>Érdeklődő megosztásának engedélyezése
 Annak biztosítása, hogy lead felügyelet engedélyezve van a nyilvántartásba vételre a [Azure Marketplace-en](https://azuremarketplace.microsoft.com) vagy [Microsoft AppSource](https://appsource.microsoft.com) kap kapcsolattartási adatokat a következő célcsoportok számára nyújt segítséget:
@@ -27,7 +27,7 @@ Annak biztosítása, hogy lead felügyelet engedélyezve van a nyilvántartásba
 | Storefront | Célközönség |
 |:--- |:--- |
 | AppSource | Üzleti ügyfeleink |
-| Azure Piactér | Minden ügyfél |
+| Azure Piactér | Az összes ügyfél |
 
 Az érdeklődők hasznosság alapját adja meg a kapcsolódó értékesítési mozdulatok a mező értékesítési munkatársak számára az alábbi táblázatban felsorolt kampányt, és további információ az alkalmazás vagy az ajánlat hajt végre:
 
@@ -52,8 +52,8 @@ Teljesülnek az alábbi táblázatban leírtak szerint, a potenciális követés
 
 | Storefront | Érdeklődők |
 |:--- |:--- |
-| AppSource | <table> <tr><td>A CRM</td></tr> <tr><td>A Microsoft mező értékesítői CRM</td></tr> </table> |
-| Azure Piactér | <table> <tr><td>Azure Piactér</td></tr> <tr><td>A Microsoft mező értékesítői CRM</td></tr> </table> |
+| AppSource | <table> <tr><td>A CRM</td></tr> <tr><td>Microsoft field seller CRM</td></tr> </table> |
+| Azure Piactér | <table> <tr><td>Azure Piactér</td></tr> <tr><td>Microsoft field seller CRM</td></tr> </table> |
 
 Az érdeklődők kirakattípus a Marketplace-en a Microsoft értékesítői minősített érdeklődőket, érhetők el a közös értékesítési programunkhoz különböznek.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 7a0b679ef7a1a468c8a849b0a3fb9f744a392dd3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: MT
+ms.openlocfilehash: 52fafa7e9dd46b6c78af3776797bae48b22ea8df
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243603"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62736664"
 ---
 # <a name="load-balancer-outbound-rules"></a>A terheléselosztó kimenő szabályok
 
@@ -84,7 +84,7 @@ Használja a következő paramétert 10 000 SNAT lefoglalni a portokat a virtuá
 
           "allocatedOutboundPorts": 10000
 
-Minden egyes nyilvános IP-címét az kimenő szabályt, minden előtérrendszer, SNAT portok járul hozzá akár 51,200 elmúló port használatra.  Load Balancer SNAT portot többszörösei 8 foglal le. Ha egy érték nem osztható 8, a konfigurációs műveletet elutasítva.  Ha megpróbálja lefoglalni a portokat további SNAT mint amennyi rendelkezésre áll a nyilvános IP-címek száma alapján, a rendszer elutasítja a konfigurációs műveletet.  Például ha 10 000 portok száma a virtuális gép és a 7 virtuális gép foglal le a háttérrendszernek a készlet egyetlen nyilvános IP-cím megosztásához, a konfiguráció visszautasított (7 x 10,0000 SNAT portok > 51,200 SNAT portok).  Több nyilvános IP-címeket adhat hozzá az előtér a kimenő szabály engedélyezése a forgatókönyvet.
+Minden egyes nyilvános IP-címét az kimenő szabályt, minden előtérrendszer, SNAT portok járul hozzá akár 51,200 elmúló port használatra.  Load Balancer SNAT portot többszörösei 8 foglal le. Ha egy érték nem osztható 8, a konfigurációs műveletet elutasítva.  Ha megpróbálja lefoglalni a portokat további SNAT mint amennyi rendelkezésre áll a nyilvános IP-címek száma alapján, a rendszer elutasítja a konfigurációs műveletet.  Például ha 10 000 portok száma a virtuális gép és a 7 virtuális gép foglal le a háttérrendszernek a készlet egyetlen nyilvános IP-cím megosztásához, a konfiguráció visszautasított (7 x 10 000 SNAT portok > 51,200 SNAT portok).  Több nyilvános IP-címeket adhat hozzá az előtér a kimenő szabály engedélyezése a forgatókönyvet.
 
 Térhet vissza a [háttérkiszolgáló-készlet mérete alapján automatikus SNAT portkiosztással](load-balancer-outbound-connections.md#preallocatedports) 0-portok számának megadásával.
 

@@ -8,17 +8,17 @@ ms.service: service-health
 ms.workload: Supportability
 ms.date: 11/16/2018
 ms.openlocfilehash: d2a77e831290aa1ee0fcb6d4addf8f6e90786d52
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858909"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62119849"
 ---
 # <a name="azure-resource-health-overview"></a>Az Azure Resource Health áttekintése
  
 Az Azure Resource Health segítségével diagnosztizálhatja és a támogatás igénylésében, ha egy Azure-szolgáltatási probléma hatással van az erőforrások. Figyelmeztet az erőforrások jelenlegi és korábbi állapotát. És a problémák megoldásához nyújt segítséget a technikai támogatási biztosít.
 
-Mivel a [Azure állapotlapján](https://status.azure.com) szolgáltatási problémák, amelyek hatással vannak az Azure-ügyfelek széles körét nyújt tájékoztatást, a Resource Health kínál az erőforrások állapotának személyre szabott irányítópult. A Resource Health az Azure-szolgáltatási problémák miatt nem érhető el, az elmúlt volt az erőforrások mindig látható. Ezután használata egyszerű érthető, ha az SLA-t megsértettek. 
+Mivel a [Azure állapotlapján](https://status.azure.com) szolgáltatási problémák, amelyek hatással vannak az Azure-ügyfelek széles körét nyújt tájékoztatást, a Resource Health kínál az erőforrások állapotának személyre szabott irányítópult. A Resource Health segítségével az összes olyan alkalmat áttekintheti, amikor az erőforrásai Azure-szolgáltatásproblémák miatt nem voltak elérhetők. Ezután használata egyszerű érthető, ha az SLA-t megsértettek. 
 
 ## <a name="resource-definition-and-health-assessment"></a>Erőforrás-definíció- és egészségügyi értékelés
 Egy erőforrás egy adott példányán, az Azure-szolgáltatások: például egy virtuális gép, egy webalkalmazás vagy egy SQL-adatbázist.

@@ -1,7 +1,6 @@
 ---
 title: 'Oktatóanyag: Az Apache Spark on Azure HDInsight az Azure Event Hubsból származó adatok feldolgozása '
 description: Csatlakozás az Apache Spark on Azure HDInsight az Azure Event Hubs és a streamelési adatok dolgozhatók.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: conceptual
 ms.date: 12/28/2018
-ms.openlocfilehash: 81104c7b206d4fe158df1ae9d329084ad88c3bdd
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
-ms.translationtype: MT
+ms.openlocfilehash: 02f7bbca127ba33fcfdd15d6f00d1660bf72970c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976630"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124356"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Oktatóanyag: Tweetek feldolgozása a HDInsight az Azure Event Hubs és az Apache Spark használatával
 

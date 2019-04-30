@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: kumud
 ms.openlocfilehash: 280a8df6849360fda57bd29590f45421dc2c8164
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229098"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62119230"
 ---
 # <a name="azure-powershell-samples-for-traffic-manager"></a>Azure PowerShell-minták a Traffic Managerhez
 
 A következő táblázat Azure PowerShell használatával létrehozott Traffic Manager-parancsfájlok mutató hivatkozásokat tartalmaz.
 
-|Beosztás  |Leírás |
+|Cím  |Leírás |
 |---------|---------|
 |[Közvetlen forgalom több régióban a magas rendelkezésre állása](./scripts/traffic-manager-powershell-websites-high-availability.md)   |    Két app service-csomagot, két webalkalmazást, egy traffic manager-profilt és két traffic manager-végpontot hoz létre.     |
 |    |         |

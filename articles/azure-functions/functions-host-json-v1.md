@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
 ms.openlocfilehash: 44bc5a245d1bcbc8ff53991af4193ef86f7cd704
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436319"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62107074"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>az Azure Functions – Host.JSON referencia 1.x
 
@@ -165,7 +165,7 @@ A konfigurációs beállítások [gazdagép állapotfigyelőjét](https://github
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|enabled|true|Itt adhatja meg, hogy engedélyezve van-e a szolgáltatás. | 
+|engedélyezve|true|Itt adhatja meg, hogy engedélyezve van-e a szolgáltatás. | 
 |healthCheckInterval|10 másodperc|A háttérben történő rendszeres egészségügyi közötti időintervallum ellenőrzi. | 
 |healthCheckWindow|2 perc|Egy változó időablakban együtt használható a `healthCheckThreshold` beállítás.| 
 |healthCheckThreshold|6|Az állapot-ellenőrzés maximálisan megengedett számú meghiúsulhat a rendszer kezdeményezi a gazdagép újraindítása előtt.| 

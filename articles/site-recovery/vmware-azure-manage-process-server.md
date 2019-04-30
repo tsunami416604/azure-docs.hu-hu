@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: ramamill
-ms.openlocfilehash: ba80c8ce57495eaa46e915cb0c472eb4aabcee57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0a0b6c83f800c0a479ba7a16c91b497d1a11da9e
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60318576"
+ms.locfileid: "62732485"
 ---
 # <a name="manage-process-servers"></a>Folyamatkiszolgálók kezelése
 
@@ -68,6 +68,19 @@ Keresztül ezt a beállítást a folyamatkiszolgáló védett teljes munkaterhel
 2. A feladat előrehaladásának figyeléséhez **Recovery Services-tároló** > **figyelés** > **Site Recovery-feladatok**.
 3. A közzététel sikeres befejezését a művelet megfelelően módosítások 15 percet vesz igénybe vagy [frissítse a konfigurációs kiszolgáló](vmware-azure-manage-configuration-server.md#refresh-configuration-server) az azonnali hatállyal.
 
+## <a name="process-server-selection-guidance"></a>Kiszolgáló kiválasztása útmutatást feldolgozása
+
+Az Azure Site Recovery automatikusan annak jelzése, hogy a Folyamatkiszolgáló közeledik a használati korlátok. Útmutató ismerteti, amikor létrehozása egy kibővíthető folyamatkiszolgáló.
+
+|Állapotadatok  |Magyarázat  | Erőforrás rendelkezésre állása  | Ajánlás|
+|---------|---------|---------|---------|
+| Kifogástalan (zöld)    |   Folyamatkiszolgáló csatlakozik, és kifogástalan      |CPU és memória kihasználtságáról nem éri a 80 %. Rendelkezésre álló szabad hely a 30 % felett van| A folyamatkiszolgálóhoz további kiszolgálók védelméhez használható. Győződjön meg arról, hogy az új számítási feladatok belül van-e a [folyamat kiszolgálói korlátok definiált](vmware-azure-set-up-process-server-scale.md#sizing-requirements).
+|Figyelmeztetés (narancs)    |   Folyamatkiszolgáló csatlakozik, de bizonyos erőforrások készül, hogy eléri a maximális korlát  |   CPU és memória kihasználtságáról van 80 % - 95 % között; Rendelkezésre álló szabad hely van közötti 25 – 30 %       | A folyamatkiszolgáló használati küszöbértékeket közelében van. Új kiszolgálók hozzáadása a folyamatkiszolgáló azonos lesz a küszöbértékek átlépését, és hatással lehet a meglévő védett elemek. Javasolt [beállítása kibővíthető folyamatkiszolgáló](vmware-azure-set-up-process-server-scale.md#before-you-start) új replikációk számára.
+|Figyelmeztetés (narancs)   |   Folyamatkiszolgáló csatlakozik, de nem történt adatfeltöltés az Azure-bA az elmúlt 30 perc  |   Erőforrás-felhasználás küszöbértéke határértékeken belül van       | Hibaelhárítás [adatok feltöltési hibák](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues) új számítási feladatok hozzáadása előtt **vagy** [beállítása kibővíthető folyamatkiszolgáló](vmware-azure-set-up-process-server-scale.md#before-you-start) az új replikációk.
+|Kritikus (piros)    |     A folyamatkiszolgáló lecsatlakozhat  |  Erőforrás-felhasználás küszöbértéke határértékeken belül van      | Hibaelhárítás [a Folyamatkiszolgáló kapcsolódási problémái](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues) vagy [beállítása kibővíthető folyamatkiszolgáló](vmware-azure-set-up-process-server-scale.md#before-you-start) az új replikációk.
+|Kritikus (piros)    |     Erőforrás-felhasználása elért küszöbérték-korlátok |  CPU és memória kihasználtságáról 95 %-os; felett van Rendelkezésre álló szabad hely, 25 %-nál kisebb.   | Új számítási feladatok ugyanazon folyamatkiszolgáló hozzáadása le van tiltva, már teljesülnek-e korlátok erőforrás küszöbértéket. Tehát [beállítása kibővíthető folyamatkiszolgáló](vmware-azure-set-up-process-server-scale.md#before-you-start) új replikációk számára.
+Kritikus (piros)    |     Nem történt adatfeltöltés az Azure-bA az elmúlt 45 perc. |  Erőforrás-felhasználás küszöbértéke határértékeken belül van      | Hibaelhárítás [adatok feltöltési hibák](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues) új számítási feladatok ugyanazon folyamatkiszolgáló való felvétele előtt vagy [horizontális felskálázási folyamatkiszolgáló beállítása](vmware-azure-set-up-process-server-scale.md#before-you-start)
+
 ## <a name="reregister-a-process-server"></a>A folyamatkiszolgáló regisztrálása
 
 Ha szeretné a helyszínen futó folyamatkiszolgáló regisztrálása, vagy az Azure-ban, a konfigurációs kiszolgálóval, tegye a következőket:
@@ -109,7 +122,6 @@ Ha a folyamatkiszolgáló csatlakozni az Azure Site Recovery egy proxyt használ
    exit
    ```
 
-
 ## <a name="remove-a-process-server"></a>Távolítsa el a folyamatkiszolgáló
 
 [!INCLUDE [site-recovery-vmware-unregister-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
@@ -126,4 +138,3 @@ Ha víruskereső szoftver egy különálló folyamatkiszolgálót vagy a fő cé
 - C:\ProgramData\LogUploadServiceLogs
 - C:\ProgramData\Microsoft Azure Site Recovery
 - Folyamat kiszolgáló telepítési mappájában, például: C:\Program Files (x86)\Microsoft Azure Site Recovery
-

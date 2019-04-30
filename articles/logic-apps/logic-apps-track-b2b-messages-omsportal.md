@@ -10,13 +10,13 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
 ms.openlocfilehash: 8cf5d9f3ee1503769a2ec199847175899bcd86bf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193211"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62120126"
 ---
-# <a name="track-b2b-messages-with-azure-monitor-logs"></a>Az Azure Monitor naplóira B2B üzenetek nyomon követése
+# <a name="track-b2b-messages-with-azure-monitor-logs"></a>B2B-üzenetek nyomon követése Azure Monitor-naplókkal
 
 Miután beállította a kereskedelmi partnerek az integrációs fiókban lévő B2B kommunikációját, ezek a partnerek is exchange-protokollok, például az AS2, X 12 és EDIFACT-üzenetek. Ellenőrizze, hogy ezek az üzenetek feldolgozása megfelelően, ezeket az üzeneteket a követheti [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md). Például üzenetek nyomon követése a webes követési képességek is használhatja:
 
@@ -153,7 +153,7 @@ Az alábbiakban az egyes AS2-üzenet tulajdonság leírása.
 | Logikai alkalmazás | A logikai alkalmazást, amennyiben vannak beállítva az AS2-műveletek |
 | status | Az AS2-üzenet állapota <br>Sikeres = fogadott vagy küldött egy érvényes AS2-üzenet. Nincs MDN be van állítva. <br>Sikeres = fogadott vagy küldött egy érvényes AS2-üzenet. MDN beállítása és kapott, vagy az MDN zajlik. <br>Nem sikerült = érvénytelen AS2-üzenet érkezett. Nincs MDN be van állítva. <br>Függőben lévő = fogadott vagy küldött egy érvényes AS2-üzenet. MDN be van állítva, és MDN várt. |
 | Nyomon követés | Az MDN-üzenet állapota <br>Elfogadott = fogadott vagy küldött pozitív MDN. <br>Függőben lévő Várakozás fogadni, vagy az MDN küldésének cél =. <br>Elutasított = fogadott vagy küldött negatív MDN. <br>Nem szükséges = MDN nincs beállítva a szerződés. |
-| Irány | Az AS2-üzenet iránya |
+| Direction | Az AS2-üzenet iránya |
 | Korrelációs azonosító | Az azonosítója, amely az összes eseményindítók és műveletek, a logikai alkalmazás |
 | Üzenet azonosítója | Az AS2-üzenetek fejlécének az AS2-Üzenetazonosító |
 | Időbélyeg | Az idő, az üzenet az AS2-művelet feldolgozásakor |
@@ -184,7 +184,7 @@ Az egyes X12 tulajdonság leírása az alábbiakban üzenet.
 | Logikai alkalmazás | A logikai alkalmazást, a X12 műveletek beállítása |
 | status | A X12 üzenet állapota <br>Sikeres = fogadott vagy küldött egy érvényes X12 üzenet. Nem funkcionális ack be van állítva. <br>Sikeres = fogadott vagy küldött egy érvényes X12 üzenet. Funkcionális ack beállítása és kapott, vagy egy funkcionális ack zajlik. <br>Nem sikerült = fogadott vagy küldött érvénytelen X12 üzenet. <br>Függőben lévő = fogadott vagy küldött egy érvényes X12 üzenet. Funkcionális ack be van állítva, és a egy funkcionális ack várt. |
 | Nyomon követés | Funkcionális (997) nyugtázási állapot <br>Elfogadott = fogadott vagy küldött egy pozitív működési ACK-ra. <br>Elutasított = fogadott vagy küldött egy negatív működési ACK-ra. <br>Függőben lévő = a egy működési ack várt, de nem érkezett meg. <br>Függőben lévő = jön létre a egy működési ack, de nem tud küldeni a partner. <br>Nem szükséges funkcionális = ack nincs beállítva. |
-| Irány | A X12 üzenet iránya |
+| Direction | A X12 üzenet iránya |
 | Korrelációs azonosító | Az azonosítója, amely az összes eseményindítók és műveletek, a logikai alkalmazás |
 | Üzenettípus | Az EDI, X 12-üzenet típusa |
 | ICN | Az adatcsere Ellenőrzőszámának a X12 az üzenet |
@@ -217,7 +217,7 @@ Az alábbiakban az egyes EDIFACT-üzenet tulajdonság leírása.
 | Logikai alkalmazás | A logikai alkalmazás, ahol az EDIFACT-műveletek beállítása |
 | status | Az EDIFACT-üzenet állapota <br>Sikeres = fogadott vagy küldött egy érvényes EDIFACT-üzenet. Nem funkcionális ack be van állítva. <br>Sikeres = fogadott vagy küldött egy érvényes EDIFACT-üzenet. Funkcionális ack beállítása és kapott, vagy egy funkcionális ack zajlik. <br>Nem sikerült = fogadott vagy egy érvénytelen EDIFACT-üzenet elküldve <br>Függőben lévő = fogadott vagy küldött egy érvényes EDIFACT-üzenet. Funkcionális ack be van állítva, és a egy funkcionális ack várt. |
 | Nyomon követés | Funkcionális (997) nyugtázási állapot <br>Elfogadott = fogadott vagy küldött egy pozitív működési ACK-ra. <br>Elutasított = fogadott vagy küldött egy negatív működési ACK-ra. <br>Függőben lévő = a egy működési ack várt, de nem érkezett meg. <br>Függőben lévő = jön létre a egy működési ack, de nem tud küldeni a partner. <br>Nem szükséges = működési Ack nincs beállítva. |
-| Irány | Az EDIFACT-üzenet iránya |
+| Direction | Az EDIFACT-üzenet iránya |
 | Korrelációs azonosító | Az azonosítója, amely az összes eseményindítók és műveletek, a logikai alkalmazás |
 | Üzenettípus | Az EDIFACT-üzenet típusa |
 | ICN | Az adatcsere Ellenőrzőszámának az EDIFACT-üzenet |

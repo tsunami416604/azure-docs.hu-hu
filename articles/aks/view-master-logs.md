@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
 ms.openlocfilehash: 77908e24a19a48bf9b84d5d5b664bf0443159118
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537762"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128702"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Engedélyezze, és tekintse át a Kubernetes Azure Kubernetes Service (AKS) naplózza a fő csomópont
 
 Az Azure Kubernetes Service (AKS), mint például a fő összetevőket a *kube-apiserver* és *kube-tartományvezérlő-manager* felügyelt szolgáltatásként biztosított. Létrehozásához és kezeléséhez a csomópontokat, amelyeken a *kubelet* és tároló-futtatókörnyezet, és a felügyelt Kubernetes API-kiszolgálón keresztül alkalmazások üzembe helyezése. Az alkalmazások és szolgáltatások hibáinak elhárítása érdekében szükség lehet a fő összetevői által létrehozott naplók megtekintése. Ez a cikk bemutatja, hogyan engedélyezése, és a fő Kubernetes-összetevők naplóinak lekérdezése az Azure Monitor naplóira használatával.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ez a cikk egy meglévő AKS-fürtöt az Azure-fiókban futó igényel. Ha Ön még nem rendelkezik egy AKS-fürtöt, hozzon létre egyet a [Azure CLI-vel] [ cli-quickstart] vagy [az Azure portal][portal-quickstart]. Az Azure Monitor works naplózza mindkét RBAC használata, és nem RBAC engedélyezve van az AKS-fürt.
 

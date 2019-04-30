@@ -1,15 +1,16 @@
 ---
-author: genlin
+author: rockboyfor
 ms.service: virtual-network
 ms.topic: include
-ms.date: 11/09/2018
-ms.author: genli
+origin.date: 11/09/2018
+ms.date: 01/21/2019
+ms.author: v-yeche
 ms.openlocfilehash: 096f46e22c87e609e875e5e44943e5d1c2ccb0ed
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279668"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60869976"
 ---
 > [!IMPORTANT]
-> Az Azure-erőforrásokkal való munka megkezdése előtt fontos megérteni, hogy az Azure jelenleg két üzembe helyezési modellel rendelkezik, a Resource Managerrel és a klasszikussal. Bizonyosodjon meg arról, hogy megfelelő ismeretekkel rendelkezik az [üzembe helyezési modellekről és eszközökről](../articles/azure-classic-rm.md), mielőtt elkezdene dolgozni az Azure-erőforrásokkal. A különféle eszközök dokumentációit a cikk tetején található fülekre kattintva tekintheti meg.
+> Az Azure-erőforrásokkal való munka előtt fontos megérteni, hogy az Azure jelenleg két üzembe helyezési modellel rendelkezik: Az Azure Resource Manager és klasszikus. Bizonyosodjon meg arról, hogy megfelelő ismeretekkel rendelkezik az [üzembe helyezési modellekről és eszközökről](../articles/azure-classic-rm.md), mielőtt elkezdene dolgozni az Azure-erőforrásokkal. A különféle eszközök dokumentációit a cikk tetején található fülekre kattintva tekintheti meg.
