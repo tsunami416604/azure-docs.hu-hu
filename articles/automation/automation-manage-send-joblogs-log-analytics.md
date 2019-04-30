@@ -10,11 +10,11 @@ ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 82baef7ce0d91713c8bef202ab0ea0925d290f3a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496590"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60739113"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Feladat állapota és a feladatstreamek továbbítja automatizálást az Azure Monitor naplóira
 
@@ -97,7 +97,7 @@ Diagnosztika az Azure Automation két rekordtípust hoz létre az Azure Monitor 
 | Tenant_g | A hívónak a bérlői azonosító GUID. |
 | JobId_g |GUID, a runbook-feladat azonosítója. |
 | ResultType |A runbook-feladat állapota. Lehetséges értékek:<br>– Új<br>- Elindítva<br>- Leállítva<br>- Felfüggesztve<br>- Sikertelen<br>-Befejeződött |
-| Kategória | Az adattípus besorolása. Az Automation esetében az érték JobLogs. |
+| Category | Az adattípus besorolása. Az Automation esetében az érték JobLogs. |
 | OperationName | Meghatározza az Azure-ban végrehajtott művelet típusát. Az Automation esetében az érték feladat. |
 | Erőforrás | Az Automation-fiók neve |
 | SourceSystem | Hogyan naplózza az Azure Monitor összegyűjti az adatokat. Mindig *Azure* Azure Diagnostics. |
@@ -120,7 +120,7 @@ Diagnosztika az Azure Automation két rekordtípust hoz létre az Azure Monitor 
 | Tenant_g | A hívónak a bérlői azonosító GUID. |
 | JobId_g |GUID, a runbook-feladat azonosítója. |
 | ResultType |A runbook-feladat állapota. Lehetséges értékek:<br>– Folyamatban |
-| Kategória | Az adattípus besorolása. Az Automation esetében az érték JobStreams. |
+| Category | Az adattípus besorolása. Az Automation esetében az érték JobStreams. |
 | OperationName | Meghatározza az Azure-ban végrehajtott művelet típusát. Az Automation esetében az érték feladat. |
 | Erőforrás | Az Automation-fiók neve |
 | SourceSystem | Hogyan naplózza az Azure Monitor összegyűjti az adatokat. Mindig *Azure* Azure Diagnostics. |

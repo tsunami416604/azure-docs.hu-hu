@@ -9,11 +9,11 @@ ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: db1af4f046bd8849fddee299e949d6edbdaae86a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53609089"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61448398"
 ---
 ## <a name="access-the-virtual-machine"></a>Hozzáférés a virtuális gép
 
@@ -23,7 +23,7 @@ A következő lépések bemutatják, hogyan konfigurálhatja az Azure virtuális
 
 1. A megoldás gyorsító erőforrásokat tartalmazó erőforráscsoportot tartalmának listázásához:
 
-    ```azurecli-interactive
+    ```azurecli
     az resource list -g contoso-simulation -o table
     ```
 
@@ -31,7 +31,7 @@ A következő lépések bemutatják, hogyan konfigurálhatja az Azure virtuális
 
 1. Frissítse a hálózati biztonsági csoportot, hogy az SSH-hozzáférést. Az alábbi parancs feltételezi, hogy a hálózati biztonsági csoport neve **contoso-szimuláció-nsg** – ezt az értéket cserélje le a hálózati biztonsági csoport neve:
 
-    ```azurecli-interactive
+    ```azurecli
     az network nsg rule update --name SSH --nsg-name contoso-simulation-nsg -g contoso-simulation --access Allow -o table
     ```
 
@@ -39,13 +39,13 @@ A következő lépések bemutatják, hogyan konfigurálhatja az Azure virtuális
 
 1. Frissítse a jelszavát a **azureuser** tudja fiók egy jelszót a virtuális gépen. Válassza ki a saját jelszavát, a következő parancs futtatásakor:
 
-    ```azurecli-interactive
+    ```azurecli
     az vm user update --name vm-vikxv --username azureuser --password YOURSECRETPASSWORD  -g contoso-simulation
     ```
 
 1. Keresse meg a virtuális gép nyilvános IP-címét. Az alábbi parancs feltételezi, hogy a virtuális gép neve **vm-vikxv** – ezt az értéket cserélje le a korábban végrehajtott egy megjegyzés, virtuális gép neve:
 
-    ```azurecli-interactive
+    ```azurecli
     az vm list-ip-addresses --name vm-vikxv -g contoso-simulation -o table
     ```
 

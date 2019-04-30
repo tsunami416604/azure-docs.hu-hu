@@ -9,17 +9,17 @@ ms.date: 05/18/2018
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: e6a0ded137162328fd446b65ddb4a15fa6f1db88
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36313880"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478753"
 ---
 ## <a name="deleting-personal-information"></a>Személyes adatok törlése
 
 [!INCLUDE [gdpr-intro-sentence.md](gdpr-intro-sentence.md)]
 
-Személyes adatok esetében az importálási/exportálási releváns importálása során (keresztül a portál és API) szolgáltatást, és kiviteli művelet. Ezek az eljárások során használt adatok a következők:
+Személyes adatokat, az importálási/exportálási fontos az importálás során (keresztül a portál és API-t) szolgáltatást, és exportálási műveletet. Ezek a folyamatok során használt adatok a következők:
 
 - Kapcsolattartó neve
 - Telefonszám
@@ -28,21 +28,21 @@ Személyes adatok esetében az importálási/exportálási releváns importálá
 - Város
 - Irányítószám
 - Állapot
-- Tartomány/ország
-- Meghajtó azonosítója
-- Portvívő számát
-- Szállítási követési száma
+- Ország/tartomány/régió
+- Meghajtóazonosító
+- Szállítmányozó fiókszáma
+- Szállítmány nyomkövetési száma
 
-Importálási/exportálási feladatok létrehozásakor felhasználók kapcsolattartási adatokat és a szállítási címet adjon meg. Személyes adatokat legfeljebb két különböző helyen tárolja: a feladat, és opcionálisan a portál beállításai. Személyes adatokat csak tárolódik a portálbeállítások között, ha bejelöli a jelölőnégyzetet, **szolgáltatója és visszaállítja a cím mentése alapértelmezettként** során a *szállítási információ vissza* az exportálási folyamat szakasza.
+Importálási/exportálási feladat létrehozásakor a felhasználók adja meg a kapcsolattartási adatokat és a szállítási cím. Akár két különböző helyeken tárolt személyes adatokat: a feladat és igény szerint a portál beállításaiban. Személyes adatokat csak tárolódik a portál beállításaiban, ha bejelöli a jelölőnégyzetet, **az alapértelmezett szolgáltatója, és lépjen vissza cím mentése** során a *szállítási adatok visszaadása* az exportálási folyamat szakaszában.
 
-Kapcsolattartási adatait a következőképpen törölhető:
+Személyes adatait a következőképpen törölheti:
 
-- A feladat a mentett adatok törlődik a feladathoz. Felhasználók manuális feladatok törlése és a befejezett feladatokhoz 90 nap múlva automatikusan törli. Manuálisan törölheti a feladatokat, a REST API-t vagy az Azure-portálon keresztül. Törli a feladatot az Azure portálon, nyissa meg az importálási/exportálási feladat, és kattintson a *törlése* a parancssávon. Importálási/exportálási feladatok REST API-n keresztül törlésével kapcsolatos részletekért tekintse meg [importálási/exportálási feladatok törlése](../articles/storage/common/storage-import-export-cancelling-and-deleting-jobs.md).
+- A feladat a mentett adatok törlődik a feldolgozás. A felhasználók törölhetik feladatok manuálisan, és a befejezett feladatok automatikusan 90 nap után törlődnek. Manuálisan törölheti a feladatokat a REST API-t vagy az Azure Portalon keresztül. Az Azure Portalon a feladat törléséhez nyissa meg az importálási/exportálási feladat, és kattintson a *törlése* a parancssávon. REST API-n keresztül az importálási/exportálási feladat törlése. a részletekért tekintse meg a [az importálási/exportálási feladat törlése](../articles/storage/common/storage-import-export-cancelling-and-deleting-jobs.md).
 
-- A portálbeállítások törlésével eltávolíthatja a kapcsolattartási adatait a portál beállításai mentve. Portálbeállítások törölheti a következő lépések végrehajtásával:
+- Kapcsolattartási adatait a portál beállításaiban mentett el kell távolítani a portálbeállítások törlésével. Portálbeállítások törölheti az alábbi lépéseket:
   - Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
   - Kattintson a *beállítások* ikon ![Azure beállítások ikon](media/storage-import-export-delete-personal-info/azure-settings-icon.png)
-  - Kattintson a *összes beállítások exportálása* (az aktuális beállítások mentéséhez egy `.json` fájlt).
-  - Kattintson a *törli az összes beállítás és személyes irányítópultok* minden olyan beállításokat, beleértve a mentett kapcsolattartási adatait is törli.
+  - Kattintson a *az összes beállítás exportálása* (a jelenlegi beállítások mentésére szolgáló egy `.json` fájlt).
+  - Kattintson a *törli az összes beállítás és saját irányítópult* törli az összes beállítást, beleértve a mentett kapcsolattartási adatokat.
 
-További információkért tekintse át a Microsoft Privacy házirendje [biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter)
+További információkért tekintse át a Microsoft Privacy szabályzatokban [biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter)

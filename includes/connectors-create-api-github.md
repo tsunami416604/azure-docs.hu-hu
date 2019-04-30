@@ -8,37 +8,37 @@ ms.topic: include
 ms.date: 03/02/2018
 ms.author: mandia
 ms.custom: include file
-ms.openlocfilehash: ec5b3ca9ccd139cbdf17768056eb1d835336e7a7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 11280e1678f52ede928cb2a85ea83add222e15fa
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
-ms.locfileid: "29764177"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61462556"
 ---
-1. Az a [Azure-portálon](https://portal.azure.com), egy üres logikai alkalmazás létrehozása. 
+1. Az a [az Azure portal](https://portal.azure.com), hozzon létre egy üres logikai alkalmazást. 
 
-2. A Logic Apps tervezőben írja be a "github" szűrőként. 
+2. A Logic Apps Designerben adja meg a "github" szűrőként. 
 
-3. Válassza ki a GitHub-összekötő és a használni kívánt eseményindító.
+3. Válassza ki a GitHub-összekötő és az eseményindító, amelyet használni szeretne.
 
-   ![Válassza ki a GitHub-összekötő, és egy eseményindító](./media/connectors-create-api-github/github-connector.png)
+   ![A GitHub-összekötő és eseményindító kiválasztása](./media/connectors-create-api-github/github-connector.png)
 
    > [!NOTE]
-   > Minden logic app munkafolyamat eseményindítót kell kezdődnie. Műveletek csak akkor, ha az eseményindító már elindul a logikai munkafolyamat választhatja ki. 
+   > Minden logikai alkalmazás munkafolyamat-trigger kell kezdődnie. Kiválaszthatja a műveleteket csak akkor, ha a logikai munkafolyamata egy eseményindítóval már indul. 
 
-4. Ha korábban a kapcsolat nem hozott létre, válassza a **bejelentkezés** , megadhatja a Githubon hitelesítő adatokat.  
+4. Válassza a korábban létrehozott egy kapcsolatot, **jelentkezzen be a** , megadhatja a Githubhoz használt hitelesítő adatait, amikor a rendszer kéri.  
 
-   ![Jelentkezzen be a GitHub-fiókjával](./media/connectors-create-api-github/github-connector-sign-in-credentials.png)
+   ![Jelentkezzen be GitHub hitelesítő adataival](./media/connectors-create-api-github/github-connector-sign-in-credentials.png)
 
-   A Logic Apps alkalmazást engedélyezése a kapcsolódás, illetve a GitHub-fiókjában az adatok elérése ezeket a hitelesítő adatokat használ. 
+   A logikai alkalmazás csatlakoztatása és a GitHub-fiókhoz az adathozzáférés engedélyezéséhez ezeket a hitelesítő adatokat használ. 
 
-5. Adja meg a GitHub-felhasználónevét és jelszavát, majd erősítse meg az engedélyt.
+5. Adja meg a GitHub-felhasználónevét és jelszavát, majd adja meg az engedélyt.
 
-   ![Adjon meg hitelesítő adatokat, majd erősítse meg az engedélyt](./media/connectors-create-api-github/github-connector-authorize.png)   
+   ![Adja meg hitelesítő adatokat és az Engedélyezés megerősítése](./media/connectors-create-api-github/github-connector-authorize.png)   
 
-   A kapcsolat az Azure portálon megtörtént, és használatra kész.
+   A kapcsolat ekkor létrejön az Azure Portalon, és készen áll a használatra.
 
-6. Továbbra is a logic app munkafolyamat meghatározása.
+6. Továbbra is a logikai alkalmazás munkafolyamatának meghatározása.
 
-   ![Adjon hozzá további műveleteket a logic app munkafolyamat](./media/connectors-create-api-github/github-connector-logic-app.png)
+   ![További műveletek hozzáadása a logikai alkalmazás munkafolyamata](./media/connectors-create-api-github/github-connector-logic-app.png)
 

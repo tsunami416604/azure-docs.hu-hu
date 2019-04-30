@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 49ac1a7585ddf2a6500c7e9382880109c3f7f431
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50134159"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61025710"
 ---
 ## <a name="export-an-api-definition"></a>API-definíció exportálása
 OpenAPI-definíció rendelkezik a függvény [függvény OpenAPI definíció létrehozása](../articles/azure-functions/functions-openapi-definition.md). Ez a folyamat következő lépése, hogy az API-definíció exportálása, hogy a PowerApps és a Microsoft Flow is használhassák az egyéni API-t.

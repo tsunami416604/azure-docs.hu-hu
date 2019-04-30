@@ -2,18 +2,19 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: virtual-machines-windows, virtual-machines-linux
-author: dlepow
+author: rockboyfor
 ms.service: multiple
 ms.topic: include
-ms.date: 10/09/2018
-ms.author: danlep
+origin.date: 10/09/2018
+ms.date: 11/26/2018
+ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 4d2235eaea457c89d01a632afa5dd5a862bec344
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49437033"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60880546"
 ---
 ## <a name="deploy-an-image-with-marketplace-terms"></a>Rendszerkép üzembe helyezése a Marketplace használati feltételei
 
@@ -27,3 +28,4 @@ A következő szakaszok show hogyan:
 * Fogadja el a használati programozott módon
 * Adja meg a beszerzési terv paramétereket, virtuális gépek programozott módon üzembe
 
+<!-- Update_Description: update meta properties, wording update -->

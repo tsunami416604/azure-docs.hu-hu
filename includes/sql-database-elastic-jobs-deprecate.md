@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/14/2018
 ms.author: sstein
 ms.custom: include file
-ms.openlocfilehash: 0d85353e2ebd63247e810460880c362153ccf211
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: c0e4ff43c3112848cbf9a095c4e258d7fffe4780
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "35591799"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61435396"
 ---
 > [!IMPORTANT]
 > Ez a cikk az ügyfél futtatott verziójának megfelelő *rugalmas adatbázis-feladatok*. Folyamatban van az elastic Database-feladatok elavult, és a helyére az új Azure-ban üzemeltetett **rugalmas adatbázis-feladatok**. Új feladatokhoz használhatja [legújabb **rugalmas adatbázis-feladatok**](../articles/sql-database/elastic-jobs-overview.md). Ha jelenleg használja a régebbi ügyfél futtatott feladatok, lásd: [áttelepítése az új rugalmas adatbázis-feladatok](../articles/sql-database/elastic-jobs-migrate.md) utasításokat és az áttelepítési parancsfájlok gyors frissítése a legújabb verzióra.

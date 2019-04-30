@@ -9,11 +9,11 @@ ms.date: 04/04/2018
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: 30c6fc189ebcd497a214828f65213a55cefdf03f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632830"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61464740"
 ---
 Tárhelyet a lemezterület vagy rögzített korlátja korlátozza a a *maximális* indexek, a dokumentum vagy egyéb magas szintű erőforrásokat, amelyik előbb bekövetkezik. Az alábbi táblázat a tárhelykorlátok dokumentumok. Indexek, dokumentumok és egyéb objektumok maximális korlátozásairól lásd: [erőforrás korlátok](../articles/search/search-limits-quotas-capacity.md#index-limits).
 
