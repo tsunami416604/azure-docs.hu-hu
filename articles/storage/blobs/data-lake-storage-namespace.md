@@ -2,18 +2,19 @@
 title: Az Azure Data Lake Storage Gen2 hierarchikus Namespace
 description: Az Azure Data Lake Storage Gen2 a hierarchikus névtér ismerteti
 services: storage
-author: jamesbak
+author: WenJason
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: jamesbak
+origin.date: 12/06/2018
+ms.date: 02/25/2019
+ms.author: v-jay
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: b423d40884dd9132312e79ba0cbff00b8771b207
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877031"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60747540"
 ---
 # <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Az Azure Data Lake Storage Gen2 hierarchikus névtér
 

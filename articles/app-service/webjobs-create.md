@@ -16,11 +16,11 @@ ms.date: 10/16/2018
 ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
 ms.custom: seodec18
 ms.openlocfilehash: 0f2053e978b7c890f4e175515ed54f69694950c6
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749919"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60833471"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Háttérfeladatok futtatása a WebJobs Azure App Service-ben
 
@@ -125,7 +125,7 @@ when making changes in one don't forget the other two.
    | **Név** | myTriggeredWebJob | Az App Service-alkalmazáson belül egyedi neve. Betűvel vagy számmal kell kezdődnie, és más, nem tartalmazhat különleges karaktereket "-" és "_".|
    | **Fájl feltöltése** | ConsoleApp.zip | A *.zip* fájlt, amely tartalmazza a végrehajtható fájlt vagy parancsfájlt, valamint minden kiegészítő fájlt, a program vagy parancsfájl futtatásához szükséges. A támogatott végrehajtható vagy parancsfájlokat fájltípusokat szerepelnek a [támogatott fájltípusok](#acceptablefiles) szakaszban. |
    | **Típusa** | Triggerrel indított | A [webjobs-feladat típusok](#webjob-types) korábban ebben a cikkben ismertetett. |
-   | **Eseményindítók** | Manuális | |
+   | **Eseményindítók** | Kézi | |
 
 4. Kattintson az **OK** gombra.
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: spelluru
 ms.openlocfilehash: b54bc52a2feaf4646d801265ddb273c2c86158ee
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477906"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60823519"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Fizessen elő az eseményekre a portálon keresztül
 
@@ -36,7 +36,7 @@ Bármelyik támogatott az Event Grid-előfizetés létrehozása [eseményforrás
 
 1. Válassza ki a létrehozni kívánt előfizetést. Feliratkozás az Azure-előfizetés eseményeire, például válassza ki a **Azure-előfizetések** és a cél előfizetésben.
 
-   ![Válassza ki az Azure-előfizetés](./media/subscribe-through-portal/azure-subscription.png)
+   ![Azure-előfizetés kiválasztása](./media/subscribe-through-portal/azure-subscription.png)
 
 1. Fizessen elő az összes eseménytípusra ehhez eseményre adatforráshoz, hagyja a **fizessen elő az összes eseménytípusra** lehetőség be van jelölve. Ellenkező esetben válassza az eseménytípusok, ehhez az előfizetéshez.
 

@@ -17,11 +17,11 @@ ms.date: 07/25/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 89412040fdea32746574d8ae5bada9c017617b80
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184992"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129302"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TOPdesk – nyilvános
 

@@ -3,17 +3,17 @@ title: A Microsoft Power BI-munkaterületcsoportok bemutatása
 description: Az Azure-szolgáltatások körébe tartozó Power BI-munkaterületcsoportok segítségével az alkalmazásfejlesztők interaktív Power BI-jelentéseket vehetnek fel saját alkalmazásaikba.
 services: power-bi-workspace-collections
 ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+author: rkarlin
+ms.author: rkarlin
 ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.openlocfilehash: 751d69cd9b52cf88bb54900e67283fdff3d90579
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: d1011a8fd8f181233be8e1fa27c3bfaea3d86141
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520479"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110448"
 ---
 # <a name="get-started-with-microsoft-power-bi-workspace-collections"></a>A Microsoft Power BI-munkaterületcsoportok bemutatása
 

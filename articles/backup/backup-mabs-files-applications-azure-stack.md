@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: adigan
 ms.openlocfilehash: 67d79f2aa41bab8a14d693098538d22ffeb05a4e
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301475"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60848769"
 ---
 # <a name="back-up-files-on-azure-stack"></a>Az Azure Stacken fájlok biztonsági mentése
 Az Azure Backup segítségével védelme (vagy felhatolásra) fájlok és alkalmazások az Azure Stack. Fájlok és alkalmazások biztonsági mentése, telepítse a Microsoft Azure Backup Server az Azure Stacken futó virtuális gépként. Bármely Azure Stack-kiszolgálón az azonos virtuális hálózatba a fájlok védelmét. Miután telepítette az Azure Backup Server, a rövid távú biztonsági mentési adatok érhető el helyi tárhely bővítése érdekében az Azure lemezeket ad hozzá. Az Azure Backup Server az Azure storage hosszú távú megőrzésének használ.

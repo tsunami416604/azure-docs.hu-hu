@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096673"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62095489"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Az Azure AD Connect szinkronizálása: UserCertificate attribútum által okozott LargeObject hibák kezelése
 
@@ -92,7 +92,7 @@ Meglévő szinkronizálási szabály, amely engedélyezve és konfigurálva user
 
     | Attribútum | Érték |
     | --- | --- |
-    | Irány |**Kimenő** |
+    | Direction |**Kimenő** |
     | MV-objektum típusa |**Személy** |
     | Összekötő |*az Azure AD-összekötő* |
     | Összekötő-objektum típusa |**user** |

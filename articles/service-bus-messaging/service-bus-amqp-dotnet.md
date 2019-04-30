@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 82301a17bb461b6d8733d5f046fe791ffbcf3ecb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885706"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60749257"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>A Service Bus, a .NET használata az AMQP 1.0 használatával
 
@@ -75,19 +75,19 @@ Csak a közvetlenül az üzenet törzse AMQP típusainak szerializálására .NE
 | lebegőpontos |lebegőpontos |Az AMQP-érték |
 | double |double |Az AMQP-érték |
 | tizedes tört |decimal128 |Az AMQP-érték |
-| CHAR |CHAR |Az AMQP-érték |
+| char |char |Az AMQP-érték |
 | DateTime |időbélyeg |Az AMQP-érték |
 | Guid |uuid |Az AMQP-érték |
-| byte[] |Bináris |Az AMQP-érték |
-| sztring |sztring |Az AMQP-érték |
+| byte[] |binary |Az AMQP-érték |
+| string |string |Az AMQP-érték |
 | System.Collections.IList |lista |AMQP érték: a gyűjteményben szereplő elemek csak lehet, amelyek a táblában. |
 | System.Array |tömb |AMQP érték: a gyűjteményben szereplő elemek csak lehet, amelyek a táblában. |
 | System.Collections.IDictionary |térkép |AMQP érték: a gyűjteményben szereplő elemek csak lehet, amelyek a táblában. Megjegyzés: a csak karakterlánc-kulcsok használata támogatott. |
 | URI |Karakterlánc leírt (lásd az alábbi táblázatban) |Az AMQP-érték |
 | DateTimeOffset |Mennyi ideig leírt (lásd az alábbi táblázatban) |Az AMQP-érték |
 | TimeSpan |Mennyi ideig leírt (lásd az alábbi) |Az AMQP-érték |
-| Stream |Bináris |Az AMQP-adatok (több is lehet). Az adatok szakaszok a nyers bájt, olvassa el a Stream-objektumból. |
-| Egyéb objektum |Bináris |Az AMQP-adatok (több is lehet). Az objektum, amely a DataContractSerializer vagy az alkalmazás által biztosított serializátor használ a szerializált bináris tartalmazza. |
+| Stream |binary |Az AMQP-adatok (több is lehet). Az adatok szakaszok a nyers bájt, olvassa el a Stream-objektumból. |
+| Egyéb objektum |binary |Az AMQP-adatok (több is lehet). Az objektum, amely a DataContractSerializer vagy az alkalmazás által biztosított serializátor használ a szerializált bináris tartalmazza. |
 
 | .NET Type | A csatlakoztatott AMQP leírt típusa | Megjegyzések |
 | --- | --- | --- |

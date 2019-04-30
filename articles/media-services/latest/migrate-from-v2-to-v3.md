@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/27/2019
 ms.author: juliako
-ms.openlocfilehash: 70e28377b19b682f2191e0a8fb95792101fa8ec7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ae094ddf1bfc55ce793995f60f1694be6eb19c1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60326394"
+ms.locfileid: "62103801"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3
 
@@ -114,6 +114,10 @@ Az alábbi táblázat a v2 és v3 szabhatják kódjának különbségeiről.
 
 > [!NOTE]
 > Ezen a lapon, a Media Services-csapat folyamatos fejlesztéseket hajt végre a v3 API-k és a verziók között a hiányosságait kell fenntartani.
+
+## <a name="provide-feedback"></a>Visszajelzés küldése
+
+Tekintse meg a [Azure Media Services-Közösség](media-services-community.md) kérdések, küldje el visszajelzését, és tudnivalók a Media Services-frissítések különböző módon olvashatja.
 
 ## <a name="next-steps"></a>További lépések
 

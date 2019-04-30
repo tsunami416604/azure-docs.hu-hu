@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 74fe4f7c4c231f80c7555f39f840a85baae310e9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662023"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60809443"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Terheléselosztás a service fabric-fürt
 A Service Fabric-fürt Resource Manager támogatja a dinamikus terhelésének változásaihoz igazodik, bővítésekkel vagy a csomópontok vagy szolgáltatások eltávolítására való reagálás. Automatikusan kijavítja a megkötés megsértésének, és proaktív módon rebalances a fürtöt. De gyakoriságát. Ezek a műveletek megnyílik, és mi elindítja őket?

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
 ms.openlocfilehash: ede2092be4e4eaf201e15307a7d9934ea267ae37
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980703"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61481513"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Windows virtuális gép áthelyezése egy másik Azure előfizetés vagy a resource group
 Ez a cikk végigvezeti egy Windows virtuális gép (VM) áthelyezése erőforráscsoportok vagy előfizetések között. Az előfizetések közötti áthelyezése lehet hasznos, ha egy személyes előfizetés egy virtuális Gépet eredetileg létrehozták, és most át kívánja helyezni a vállalati előfizetésre, és folytatni a munkáját.

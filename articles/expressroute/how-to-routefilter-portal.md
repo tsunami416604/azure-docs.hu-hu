@@ -1,5 +1,5 @@
 ---
-title: 'Microsoft társviszony-létesítés útvonalszűrőinek konfigurálása: Azure ExpressRoute - portálon |} A Microsoft Docs'
+title: 'Microsoft társviszony-létesítés útvonalszűrőinek konfigurálása: Az Azure ExpressRoute - portálon |} A Microsoft Docs'
 description: Ez a cikk ismerteti a Microsoft társviszony-létesítés az Azure portal használatával útvonalszűrőinek konfigurálása.
 services: expressroute
 author: ganesr
@@ -9,13 +9,13 @@ ms.date: 09/26/2018
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 0515b5e85c3bcf56f1f238620d6036d1be0bec7e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104204"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60839281"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Microsoft társviszony-létesítés útvonalszűrőinek konfigurálása: az Azure Portalon
+# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Microsoft társviszony-létesítés útvonalszűrőinek konfigurálása: Azure Portal
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
@@ -71,7 +71,7 @@ A konfigurálás elkezdése előtt ellenőrizze a következő feltételeknek:
  - Rendelkeznie kell egy aktív Microsoft társviszony-létesítés. Kövesse az utasításokat, [létrehozása és a társviszony-létesítési konfigurációjának módosítása](expressroute-howto-routing-portal-resource-manager.md)
 
 
-## <a name="prefixes"></a>1. lépés: Az előtagok és BGP-Közösség értékét listájának lekérése
+## <a name="prefixes"></a>1. lépés: Előtagok és BGP-Közösség értékét listájának lekérése
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1. A BGP-Közösség értékét tartalmazó lista beolvasása
 

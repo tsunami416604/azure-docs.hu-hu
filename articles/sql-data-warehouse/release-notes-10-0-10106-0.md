@@ -11,11 +11,11 @@ ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.openlocfilehash: 10d703ad613a340a0f99c4d5dd8f4c748ff3e6bd
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684106"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61475099"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Az Azure SQL Data Warehouse kibocsátási megjegyzései
 

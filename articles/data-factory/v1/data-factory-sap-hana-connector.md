@@ -14,14 +14,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 96d16552cfadca9b345d0f0cd0a344249897f571
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020948"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61258436"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Adatok áthelyezése az SAP HANA az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](data-factory-sap-hana-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-sap-hana.md)
 
@@ -58,14 +58,14 @@ A következő szakaszok az SAP HANA-adattárba adott Data Factory-entitások def
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a JSON-elemeket az SAP HANA-beli társított szolgáltatás leírását.
 
-Tulajdonság | Leírás | Megengedett értékek | Szükséges
+Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-kiszolgáló | A kiszolgálóra, amelyen az SAP HANA-példány neve. Ha a kiszolgáló egy egyéni portot használ, adja meg a `server:port`. | sztring | Igen
+kiszolgáló | A kiszolgálóra, amelyen az SAP HANA-példány neve. Ha a kiszolgáló egy egyéni portot használ, adja meg a `server:port`. | string | Igen
 authenticationType | Hitelesítés típusa. | karakterlánc. "Alapszintű" vagy "Windows" | Igen 
-felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | sztring | Igen
-jelszó | A felhasználó jelszava. | sztring | Igen
-átjáró neve | Az átjáró által a Data Factory szolgáltatás a helyszíni SAP HANA-példányhoz való csatlakozáshoz használandó neve. | sztring | Igen
-encryptedCredential | A titkosított hitelesítő adatok karakterlánca. | sztring | Nem
+felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | string | Igen
+jelszó | A felhasználó jelszava. | string | Igen
+átjáró neve | Az átjáró által a Data Factory szolgáltatás a helyszíni SAP HANA-példányhoz való csatlakozáshoz használandó neve. | string | Igen
+encryptedCredential | A titkosított hitelesítő adatok karakterlánca. | string | Nem
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Szakaszok & adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például a szerkezetet, rendelkezésre állást és szabályzatát adatkészlet JSON szakaszok hasonlóak az összes adatkészlet esetében (az Azure SQL, az Azure blob-, az Azure table-, stb.).
@@ -164,7 +164,7 @@ Gyakorisággal és időközzel tulajdonságait határozza meg az ütemezést. Eb
 ```
 
 ### <a name="azure-blob-output-dataset"></a>Azure Blob kimeneti adatkészlet
-Ez az adatkészlet határozza meg, hogy a kimenet az Azure Blob-adatkészlet. A tulajdonság beállítása az Azure Blobba. A typeProperties szakasz tartalmazza, az SAP HANA-példány másolt adatokat tároló. Az adatok írása egy új blob minden órában (frequency: óra, interval: 1.). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
+Ez az adatkészlet határozza meg, hogy a kimenet az Azure Blob-adatkészlet. A tulajdonság beállítása az Azure Blobba. A typeProperties szakasz tartalmazza, az SAP HANA-példány másolt adatokat tároló. Az adatok írása egy új blob minden órában (frequency: óra, interval: 1). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
 
 ```json
 {
@@ -284,21 +284,21 @@ Adatok áthelyezése az SAP HANA-ból, ha a következő hozzárendeléseket hasz
 
 Az SAP HANA típusa | .NET-alapú típusa
 ------------- | ---------------
-TINYINT | Bájt
+TINYINT | Byte
 SMALLINT | Int16
 INT | Int32
 BIGINT | Int64
-VALÓDI | Önálló
-DUPLA | Önálló
-TIZEDES TÖRT | Tizedes tört
-LOGIKAI ÉRTÉK | Bájt
-VARCHAR | Karakterlánc
-NVARCHAR | Karakterlánc
-CLOB | Byte]
-ALPHANUM | Karakterlánc
-BLOB | Byte]
+VALÓDI | Single
+DUPLA | Single
+DECIMAL | Decimal
+LOGIKAI ÉRTÉK | Byte
+VARCHAR | String
+NVARCHAR | String
+CLOB | Byte[]
+ALPHANUM | String
+BLOB | Byte[]
 DATE | DateTime
-TIME | Időtartam
+TIME | TimeSpan
 IDŐBÉLYEG | DateTime
 SECONDDATE | DateTime
 

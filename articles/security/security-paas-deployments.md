@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/05/2019
 ms.author: terrylan
 ms.openlocfilehash: e833317fa16576fa0006a774226d12974fd93ed8
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404807"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62107443"
 ---
 # <a name="securing-paas-deployments"></a>PaaS üzemelő példányainak biztonságossá tétele
 
@@ -111,8 +111,8 @@ Az alábbi táblázat STRIDE fenyegetések listázása, és bizonyos Azure-funkc
 
 | Fenyegetés | Biztonsági tulajdonság | Az Azure platform lehetséges kezelésükre |
 | --- | --- | --- |
-| Címek hamisítása | Authentication | HTTPS-kapcsolatokat igényelnek. |
-| Illetéktelen módosítása | Integritás | SSL-tanúsítványok ellenőrzése. |
+| Címek hamisítása | Hitelesítés | HTTPS-kapcsolatokat igényelnek. |
+| Módosítás | Integritás | SSL-tanúsítványok ellenőrzése. |
 | Letagadhatóság | Letagadhatatlanság | Engedélyezze az Azure [monitorozási és diagnosztikai](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). |
 | Információk felfedése | Bizalmas | Az inaktív bizalmas adatok titkosítása az [szolgáltatási tanúsítványok](https://docs.microsoft.com/rest/api/appservice/certificates). |
 | Szolgáltatásmegtagadás | Rendelkezésre állás | Teljesítmény-mérőszámok a lehetséges szolgáltatásmegtagadás-feltételek figyelése Kapcsolat szűrők megvalósításához. |

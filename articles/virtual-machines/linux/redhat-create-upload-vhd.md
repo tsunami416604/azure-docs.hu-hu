@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: szark
 ms.openlocfilehash: 01acdf23c3113c3c4d185263b5cab75f3efd34a2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001648"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60771175"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Red Hat-alapú virtuális gép előkészítése Azure-beli használatra
 Ebből a cikkből megtudhatja, Red Hat Enterprise Linux (RHEL) virtuális gép előkészítése Azure-beli használatra. Ebben a cikkben ismertetett RHEL-verziók a következők: 6.7 + és 7.1 +. Előkészítésekor a hipervizorok, amelyekre ez a cikk a Hyper-V, a kernel-alapú virtuális gép (KVM), és a VMware rendszer. Red Hat Cloud Access programban való részvételre vonatkozó jogosultság követelményeivel kapcsolatos további információkért lásd: [Red Hat Cloud Access webhely](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) és [az Azure-ban futó RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).

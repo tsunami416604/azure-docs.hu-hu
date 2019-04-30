@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f8590c9ef89e68a823beefd7e74a894edd219359
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0975b23a8f96da6fc2dfcc8bd9ad046847a68aa9
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779385"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104829"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics hozzáadása mentett keresések és a riasztások felügyeleti megoldásra (előzetes verzió)
 
@@ -120,11 +120,13 @@ Mentett keresés minden ütemezés egy külön riasztási szabály jelölő egy 
         }
     }
 Az alábbi táblázatban ismertetett ütemezés erőforrások tulajdonságait.
+
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
 | engedélyezve       | Igen | Adja meg a riasztás engedélyezve van-e a létrehozásakor. |
 | interval      | Igen | Milyen gyakran a lekérdezés fut, percek alatt. |
 | queryTimeSpan | Igen | Eltelt idő percben, amelyen végre szeretné kiértékelni az eredményeket. |
+
 Az ütemezés erőforrás a mentett keresés függ, hogy azt az ütemezést előtt hozza létre.
 > [!NOTE]
 > Ütemezés nevének egyedinek kell lennie az egy adott munkaterület; két ütemezések nem rendelkezhet ugyanazzal az Azonosítóval, még akkor is, ha azok a különböző mentett keresések. Minden mentett keresést, ütemezéseihez és a Log Analytics API-val létrehozott nevet is kisbetűs kell lennie.
@@ -174,7 +176,7 @@ A riasztási művelet erőforrás tulajdonságait az alábbi táblázatok ismert
 
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
-| Typo | Igen | A művelet típusa.  Ez a **riasztás** riasztási műveletek esetében. |
+| Típus | Igen | A művelet típusa.  Ez a **riasztás** riasztási műveletek esetében. |
 | Name (Név) | Igen | A riasztás megjelenítendő neve.  Ez a riasztási szabályt a konzolon megjelenített nevet. |
 | Leírás | Nem | A riasztás leírását. |
 | Severity | Igen | A következő értékek közül a riasztásbejegyzést súlyossága:<br><br> **critical**<br>**warning**<br>**Tájékoztató**
@@ -231,9 +233,9 @@ Minden ütemezve van egy **riasztási** művelet. Ez meghatározza, hogy a riasz
 
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
-| Címzettek | Igen | Értesítés küldése, ha riasztás jön létre például a következő példában az e-mail-címeket vesszővel tagolt listája.<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
-| Tárgy | Igen | Az e-mail tárgysora. |
-| Melléklet | Nem | Jelenleg nem támogatja a mellékleteket. Ha ez az elem megtalálható, kell lennie **None**. |
+| Recipients | Igen | Értesítés küldése, ha riasztás jön létre például a következő példában az e-mail-címeket vesszővel tagolt listája.<br><br>**[ "recipient1\@contoso.com", "recipient2\@contoso.com" ]** |
+| Subject | Igen | Az e-mail tárgysora. |
+| Attachment | Nem | Jelenleg nem támogatja a mellékleteket. Ha ez az elem megtalálható, kell lennie **None**. |
 
 ##### <a name="remediation"></a>Szervizelés
 Ez a szakasz nem kötelező adja meg, ha azt szeretné, hogy egy runbookot, hogy a riasztásra adott válaszként indítandók. 
@@ -242,7 +244,7 @@ Ez a szakasz nem kötelező adja meg, ha azt szeretné, hogy egy runbookot, hogy
 |:--|:--|:--|
 | RunbookName | Igen | A runbook elindításához neve. |
 | WebhookUri | Igen | URI-ját a webhookot a runbookhoz. |
-| Lejárat | Nem | Dátum és idő, amely a szervizelés lejár. |
+| Expiry | Nem | Dátum és idő, amely a szervizelés lejár. |
 
 ##### <a name="webhook-actions"></a>Webhook-műveletek
 
@@ -266,6 +268,7 @@ Ha a riasztás egy webhookot hív, akkor egy művelet erőforrás típusú kell 
       }
     }
 A Webhook művelet erőforrás tulajdonságait az alábbi táblázatok ismertetik.
+
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
 | type | Igen | A művelet típusa. Ez a **Webhook** webhook-műveletek esetében. |

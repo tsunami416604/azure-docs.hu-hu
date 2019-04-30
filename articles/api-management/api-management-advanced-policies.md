@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
 ms.openlocfilehash: 43cbeea554f43e4db7d5440af83a9b414741d2f6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756629"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60795880"
 ---
 # <a name="api-management-advanced-policies"></a>Az API Management speciális szabályzatok
 
@@ -127,7 +127,7 @@ Ez a példa bemutatja, hogyan hajthat végre, tartalomszűrés adatelem távolí
 
 ### <a name="elements"></a>Elemek
 
-| Elem   | Leírás                                                                                                                                                                                                                                                               | Szükséges |
+| Elem   | Leírás                                                                                                                                                                                                                                                               | Kötelező |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | Válassza a    | A gyökérelem.                                                                                                                                                                                                                                                             | Igen      |
 | mikor      | Az állapotot, használja a `if` vagy `ifelse` részei a `choose` házirend. Ha a `choose` házirend rendelkezik több `when` szakaszok, azok egymás után értékeli. Egyszer a `condition` egy akkor, ha az elem kiértékelése `true`, nincs további `when` értékeli ki a feltételeket. | Igen      |
@@ -302,9 +302,9 @@ Az alábbi példa bemutatja, hogyan korlátozhatja a környezeti változók ért
 
 ### <a name="attributes"></a>Attribútumok
 
-| Attribútum | Leírás                                                                                        | Szükséges | Alapértelmezett |
+| Attribútum | Leírás                                                                                        | Kötelező | Alapértelmezett |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
-| kulcs       | Egy karakterlánc. A kifejezés engedélyezett. Meghatározza azt a párhuzamosság hatókört. Több szabályzat is megoszthatók. | Igen      | –     |
+| key       | Egy karakterlánc. A kifejezés engedélyezett. Meghatározza azt a párhuzamosság hatókört. Több szabályzat is megoszthatók. | Igen      | –     |
 | maximális darabszám | Egész szám. Adja meg a szabályzat engedélyezett kérelmek maximális száma határozza meg.           | Igen      | –     |
 
 ### <a name="usage"></a>Használat
@@ -355,7 +355,7 @@ Event hubs szolgáltatás bekerülhet bármilyen karakterlánc használható ér
 
 ### <a name="attributes"></a>Attribútumok
 
-| Attribútum     | Leírás                                                               | Szükséges                                                             |
+| Attribútum     | Leírás                                                               | Kötelező                                                             |
 | ------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | logger-id     | A naplózó azonosítóját az API Management szolgáltatás regisztrálva.         | Igen                                                                  |
 | partition-id  | Itt adhatja meg, ahol az üzenetek küldése történik a partíció indexét.             | Választható. Ez az attribútum nem használható, ha `partition-key` szolgál. |
@@ -394,7 +394,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="elements"></a>Elemek
 
-| Elem       | Leírás   | Szükséges |
+| Elem       | Leírás   | Kötelező |
 | ------------- | ------------- | -------- |
 | helyettem – válasz | A gyökérelem. | Igen      |
 
@@ -510,7 +510,7 @@ A `return-response` házirend megszakítása folyamat-végrehajtás és egy alap
 
 ### <a name="elements"></a>Elemek
 
-| Elem         | Leírás                                                                               | Szükséges |
+| Elem         | Leírás                                                                               | Kötelező |
 | --------------- | ----------------------------------------------------------------------------------------- | -------- |
 | a visszaadandó-válasz | A gyökérelem.                                                                             | Igen      |
 | set-fejléc      | A [set-fejléc](api-management-transformation-policies.md#SetHTTPheader) házirendutasítás. | Nem       |
@@ -580,7 +580,7 @@ Ez a minta-házirend használatával példán látható a `send-one-way-request`
 
 ### <a name="elements"></a>Elemek
 
-| Elem                    | Leírás                                                                                                 | Szükséges                        |
+| Elem                    | Leírás                                                                                                 | Kötelező                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | send-one-way-request       | A gyökérelem.                                                                                               | Igen                             |
 | url                        | A kérelem URL-címe                                                                                     | Ha nincs mód = copy; Ellenkező esetben igen. |
@@ -664,7 +664,7 @@ Ez a példa bemutatja egy hivatkozás ellenőrzése egyik módja jogkivonat egy 
 
 ### <a name="elements"></a>Elemek
 
-| Elem                    | Leírás                                                                                                 | Szükséges                        |
+| Elem                    | Leírás                                                                                                 | Kötelező                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | send-request               | A gyökérelem.                                                                                               | Igen                             |
 | url                        | A kérelem URL-címe                                                                                     | Ha nincs mód = copy; Ellenkező esetben igen. |
@@ -675,7 +675,7 @@ Ez a példa bemutatja egy hivatkozás ellenőrzése egyik módja jogkivonat egy 
 
 ### <a name="attributes"></a>Attribútumok
 
-| Attribútum                       | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Szükséges | Alapértelmezett  |
+| Attribútum                       | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Kötelező | Alapértelmezett  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | mode="string"                   | Meghatározza, hogy ez egy új kérelmet, vagy egy másolatot a jelenlegi kérelem. A kimenő mód mód = másolása nem sikerült inicializálni a kérelem törzsében.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nem       | Új      |
 | response-variable-name="string" | Környezeti változó, amelyek megkapják a válasz objektum neve. Ha a változó nem létezik, akkor a házirend sikeres végrehajtása után jön létre, és -en keresztül elérhető lesz [ `context.Variable` ](api-management-policy-expressions.md#ContextVariables) gyűjtemény.                                                                                                                                                                                                                                                                                                                          | Igen      | –      |
@@ -714,13 +714,13 @@ Figyeljük meg [tulajdonságok](api-management-howto-properties.md) értékekké
 
 ### <a name="elements"></a>Elemek
 
-| Elem | Leírás  | Szükséges |
+| Elem | Leírás  | Kötelező |
 | ------- | ------------ | -------- |
 | Proxy   | Legfelső szintű elem | Igen      |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Attribútum         | Leírás                                            | Szükséges | Alapértelmezett |
+| Attribútum         | Leírás                                            | Kötelező | Alapértelmezett |
 | ----------------- | ------------------------------------------------------ | -------- | ------- |
 | url="string"      | Proxykiszolgáló URL-cím formájában http://host:port.             | Igen      | –     |
 | username="string" | A proxy-hitelesítéshez használandó felhasználónév. | Nem       | –     |
@@ -777,7 +777,7 @@ Ez a minta házirend által használt a `set-method` házirend üzenetet küld e
 
 ### <a name="elements"></a>Elemek
 
-| Elem    | Leírás                                                       | Szükséges |
+| Elem    | Leírás                                                       | Kötelező |
 | ---------- | ----------------------------------------------------------------- | -------- |
 | Set-metódus | A gyökérelem. Az elem értékét adja meg a HTTP-metódus. | Igen      |
 
@@ -820,13 +820,13 @@ Ez a példa bemutatja, hogyan 401-es választ ad vissza, ha a hitelesítési jog
 
 ### <a name="elements"></a>Elemek
 
-| Elem    | Leírás   | Szükséges |
+| Elem    | Leírás   | Kötelező |
 | ---------- | ------------- | -------- |
 | állapot beállítása | A gyökérelem. | Igen      |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Attribútum       | Leírás                                                | Szükséges | Alapértelmezett |
+| Attribútum       | Leírás                                                | Kötelező | Alapértelmezett |
 | --------------- | ---------------------------------------------------------- | -------- | ------- |
 | code="integer"  | A HTTP-állapotkód: való visszatéréshez.                            | Igen      | –     |
 | reason="string" | Az az oka az állapotkódot visszaadó leírása. | Igen      | –     |
@@ -864,10 +864,10 @@ A következő példa bemutatja a változó szabály beállítása a bejövő sza
 
 ### <a name="attributes"></a>Attribútumok
 
-| Attribútum | Leírás                                                              | Szükséges |
+| Attribútum | Leírás                                                              | Kötelező |
 | --------- | ------------------------------------------------------------------------ | -------- |
 | név      | A változó neve.                                                | Igen      |
-| érték     | A változó értékét. Ez lehet konstans érték vagy egy kifejezés. | Igen      |
+| value     | A változó értékét. Ez lehet konstans érték vagy egy kifejezés. | Igen      |
 
 ### <a name="usage"></a>Használat
 
@@ -934,7 +934,7 @@ A `trace` házirendet be egy karakterláncot ad hozzá a [API Inspectorral](http
 
 ### <a name="attributes"></a>Attribútumok
 
-| Attribútum | Leírás                                                                             | Szükséges | Alapértelmezett |
+| Attribútum | Leírás                                                                             | Kötelező | Alapértelmezett |
 | --------- | --------------------------------------------------------------------------------------- | -------- | ------- |
 | source    | A karakterlánc-literál jelentéssel bíró a trace viewer, és adja meg az üzenet forrása. | Igen      | –     |
 
@@ -998,13 +998,13 @@ Az alábbi példában kettő `choose` közvetlenül alárendelt szabályzat, sza
 
 ### <a name="elements"></a>Elemek
 
-| Elem | Leírás                                                                                                   | Szükséges |
+| Elem | Leírás                                                                                                   | Kötelező |
 | ------- | ------------------------------------------------------------------------------------------------------------- | -------- |
 | várj    | A gyökérelem. Csak a gyermek elemként tartalmazhat `send-request`, `cache-lookup-value`, és `choose` házirendeket. | Igen      |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Attribútum | Leírás                                                                                                                                                                                                                                                                                                                                                                                                            | Szükséges | Alapértelmezett |
+| Attribútum | Leírás                                                                                                                                                                                                                                                                                                                                                                                                            | Kötelező | Alapértelmezett |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | időtartam:       | Meghatározza, hogy a `wait` házirend megvárja, amíg az összes közvetlenül alárendelt szabályzatok befejezett vagy egyszerűen az egy. Engedélyezett értékek a következők:<br /><br /> - `all` -minden közvetlenül alárendelt szabályzat befejezéséhez várjon<br />-bármely – amíg bármilyen közvetlenül alárendelt házirend végrehajtásához. Az első közvetlenül alárendelt házirend befejezését követően a `wait` házirend befejeződött, és bármely más közvetlenül alárendelt házirendek végrehajtása megszakadt. | Nem       | összes     |
 

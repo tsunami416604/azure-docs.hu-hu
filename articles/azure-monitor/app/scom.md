@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
 ms.openlocfilehash: a08a67a78362325e29b1002b44f390a94e78888a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54028638"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60784820"
 ---
 # <a name="application-performance-monitoring-using-application-insights-for-scom"></a>Alkalmazásteljesítmény-figyelés az Application Insights az SCOM-hoz használatával
 Ha a System Center Operations Manager (SCOM) használatával felügyelheti kiszolgálóit, teljesítmény figyelheti és diagnosztizálhatja a teljesítménnyel kapcsolatos problémák segítségével. [Azure Application Insights](../../azure-monitor/app/asp-net.md). Az Application Insights figyeli a bejövő kéréseket a webes alkalmazás, REST és SQL-hívások, kivételek és nyomkövetési naplók kimenő. Ez biztosítja, irányítópultokat mérőszám-diagramok és intelligens riasztások, valamint hatékony diagnosztikai keresés és elemző lekérdezések képest ezt a telemetriát. 

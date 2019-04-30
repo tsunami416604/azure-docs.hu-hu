@@ -14,11 +14,11 @@ ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 433a8b2f9fb1f4c4599afbb807e9270992a98a52
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331537"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60824184"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Adatok áthelyezése a mongodb-hez az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,7 +71,7 @@ A következő táblázat tartalmazza a megadott JSON-elemek leírását **OnPrem
 | port |A MongoDB-kiszolgáló az ügyfélkapcsolatok figyeléséhez használt TCP-port. |Nem kötelező, csak az alapértelmezett érték: 27017 |
 | authenticationType |Alapszintű vagy névtelen. |Igen |
 | felhasználónév |Felhasználói fiók MongoDB eléréséhez. |Igen (alapszintű hitelesítés használata esetén). |
-| jelszó |A felhasználó jelszava. |Igen (alapszintű hitelesítés használata esetén). |
+| password |A felhasználó jelszava. |Igen (alapszintű hitelesítés használata esetén). |
 | authSource |A MongoDB-adatbázis, amely a hitelesítéshez a hitelesítő adatok ellenőrzésére használni kívánt nevét. |Nem kötelező, (ha az alapszintű hitelesítés használata). alapértelmezett: a rendszergazdai fiókkal és -databaseName tulajdonsággal megadott adatbázis használja. |
 | databaseName |Az elérni kívánt MongoDB-adatbázis neve. |Igen |
 | átjáró neve |Az átjáró, amely hozzáfér az adattár neve. |Igen |
@@ -82,7 +82,7 @@ Szakaszok & adatkészletek definiálását tulajdonságainak teljes listáját l
 
 A **typeProperties** szakasz eltérő az egyes adatkészlet, és az adattárban lévő adatok helyét ismerteti. A typeProperties szakasz típusú adatkészlet **MongoDbCollection** tulajdonságai a következők:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | collectionName |MongoDB-adatbázisban szereplő gyűjtemény neve. |Igen |
 
@@ -295,16 +295,16 @@ Ha adatok áthelyezése a mongodb-hez a következő hozzárendeléseket a rendsz
 
 | MongoDB-típus | .NET-keretrendszer típusa |
 | --- | --- |
-| Bináris |Byte] |
-| Logikai |Logikai |
+| binary |Byte[] |
+| Boolean |Boolean |
 | Dátum |DateTime |
-| NumberDouble |Dupla |
+| NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |Karakterlánc |
-| Karakterlánc |Karakterlánc |
-| UUID |GUID |
-| Objektum |Renormalized be simítja egybe az oszlopok, "_" beágyazott elválasztóként |
+| ObjectID |String |
+| Karakterlánc |String |
+| UUID |Guid |
+| Object |Renormalized be simítja egybe az oszlopok, "_" beágyazott elválasztóként |
 
 > [!NOTE]
 > Virtuális táblák használata tömbök támogatása kapcsolatos további információkért tekintse meg [virtuális tábla használatával összetett típusok támogatása](#support-for-complex-types-using-virtual-tables) szakaszt.

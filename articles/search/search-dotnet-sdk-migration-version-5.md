@@ -11,11 +11,11 @@ ms.date: 01/24/2019
 ms.author: brjohnst
 ms.custom: seodec2018
 ms.openlocfilehash: d7684aa79ac9f58c2a047b01a6d9f5263795221d
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912050"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61291707"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>Az Azure Search .NET SDK 5-ös verzió frissítése
 Ha a 4.0-preview jelű verziót vagy a régebbi verziót használja a [Azure Search .NET SDK](https://aka.ms/search-sdk), ez a cikk segít az alkalmazás használhatja a 5-ös verzió frissítése.

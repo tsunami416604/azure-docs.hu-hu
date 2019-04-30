@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: roiyz
 ms.openlocfilehash: 6bd3ea4e664523fe8014be40c51d573ed5158ecf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089165"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60800271"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>A Linux és Windows Chef Virtuálisgép-bővítmény
 
@@ -71,8 +71,8 @@ A következő JSON-ra a sémát a Chef Virtuálisgép-bővítmény mutatja be. A
 | Name (Név) | Érték és példa | Adattípus
 | ---- | ---- | ---- 
 | apiVersion | `2017-12-01` | karakterlánc (dátum) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | sztring |
-| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | sztring |
+| publisher | `Chef.Bootstrap.WindowsAzure` | string |
+| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
 | typeHandlerVersion | `1210.12` | karakterlánc (kétirányú) |
 
 ### <a name="settings"></a>Beállítások
@@ -80,14 +80,14 @@ A következő JSON-ra a sémát a Chef Virtuálisgép-bővítmény mutatja be. A
 | Name (Név) | Érték és példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | karakterlánc (url) | I |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | sztring | I |
-| settings/runlist | `recipe[mycookbook::default]` | sztring | I |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | I |
+| settings/runlist | `recipe[mycookbook::default]` | string | I |
 
 ### <a name="protected-settings"></a>Védett beállításai
 
 | Name (Név) | Példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | sztring | I |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | I |
 
 <!--
 ### Linux-specific settings

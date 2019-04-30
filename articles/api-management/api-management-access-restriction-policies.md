@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: apimpm
 ms.openlocfilehash: acc9f83923c8fdaae98cc55bc6baf62f56f2116b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663145"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60798606"
 ---
 # <a name="api-management-access-restriction-policies"></a>Az API Management hozzáférés-korlátozási szabályzatok
 
@@ -61,11 +61,11 @@ Használja a `check-header` szabályzat kényszerítéséhez, hogy egy kérés r
 | Name (Név)         | Leírás                                                                                                                                   | Szükséges |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | ellenőrzés-fejléc | A gyökérelem.                                                                                                                                 | Igen      |
-| érték        | Engedélyezett HTTP-fejléc értéke. Ha több elemet is érték meg van adva, az ellenőrzés sikeres számít az értékek közül bármelyik egyezés esetén. | Nem       |
+| value        | Engedélyezett HTTP-fejléc értéke. Ha több elemet is érték meg van adva, az ellenőrzés sikeres számít az értékek közül bármelyik egyezés esetén. | Nem       |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Name (Név)                       | Leírás                                                                                                                                                            | Szükséges | Alapértelmezett |
+| Name (Név)                       | Leírás                                                                                                                                                            | Kötelező | Alapértelmezett |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | failed-check-error-message | Hibaüzenet jelenik meg, a HTTP-válasz törzsében ad vissza, ha a fejléc nem létezik vagy érvénytelen értékkel rendelkezik. Ez az üzenet blobnév különleges karaktereket kell rendelkeznie. | Igen      | –     |
 | failed-check-httpcode      | HTTP-állapot kódot ad vissza, ha a fejléc nem létezik, vagy má neplatnou hodnotu.                                                                                        | Igen      | –     |
@@ -123,7 +123,7 @@ A `rate-limit` szabályzat megakadályozza, hogy minden előfizetés az API hasz
 
 ### <a name="attributes"></a>Attribútumok
 
-| Name (Név)           | Leírás                                                                                           | Szükséges | Alapértelmezett |
+| Name (Név)           | Leírás                                                                                           | Kötelező | Alapértelmezett |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | név           | Az API-t, amelyhez a alkalmazni a sávszélesség-korlátjának neve.                                                | Igen      | –     |
 | hívás          | A megadott időtartam során megengedett maximális száma a `renewal-period`. | Igen      | –     |
@@ -177,7 +177,7 @@ A következő példában a sávszélesség-korlátjának ellátva a hívó IP-c�
 
 ### <a name="elements"></a>Elemek
 
-| Name (Név)      | Leírás   | Szükséges |
+| Name (Név)      | Leírás   | Kötelező |
 | --------- | ------------- | -------- |
 | korlát beállítása | A gyökérelem. | Igen      |
 
@@ -232,7 +232,7 @@ A következő példában a szabályzat csak lehetővé teszi, hogy az egyetlen I
 
 ### <a name="attributes"></a>Attribútumok
 
-| Name (Név)                                      | Leírás                                                                                 | Szükséges                                           | Alapértelmezett |
+| Name (Név)                                      | Leírás                                                                                 | Kötelező                                           | Alapértelmezett |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
 | address-range from="address" to="address" | Engedélyezi vagy megtagadja a hozzáférést egy IP-címeket.                                        | Szükséges, ha a `address-range` elem szolgál. | –     |
 | IP-szűrési művelet = "engedélyezése &#124; megtiltsa"    | Megadja a hívások engedélyezni kell-e, vagy a megadott IP-címek és tartományok esetében nem. | Igen                                                | –     |
@@ -279,7 +279,7 @@ A `quota` a szabályzat kötelezővé teszi a megújuló vagy élettartama hív�
 
 ### <a name="elements"></a>Elemek
 
-| Name (Név)      | Leírás                                                                                                                                                                                                                                                                                  | Szükséges |
+| Name (Név)      | Leírás                                                                                                                                                                                                                                                                                  | Kötelező |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | kvóta     | A gyökérelem.                                                                                                                                                                                                                                                                                | Igen      |
 | api-t       | Adjon hozzá egy vagy több ezeknek az elemeknek írnak elő a terméken belüli API-k a hívási kvótát. Egymástól függetlenül termék- és API-hívás kvóták érvényesek. API-t is lehet hivatkozni, akár `name` vagy `id`. Ha az attribútumok vannak megadva, `id` fogja használni, és `name` figyelmen kívül hagyja.                    | Nem       |
@@ -287,7 +287,7 @@ A `quota` a szabályzat kötelezővé teszi a megújuló vagy élettartama hív�
 
 ### <a name="attributes"></a>Attribútumok
 
-| Name (Név)           | Leírás                                                                                               | Szükséges                                                         | Alapértelmezett |
+| Name (Név)           | Leírás                                                                                               | Kötelező                                                         | Alapértelmezett |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | név           | Az API-t vagy a kvóta vonatkozik, amelyhez a művelet neve.                                             | Igen                                                              | –     |
 | Sávszélesség      | A megadott időtartam során engedélyezett kilobájt maximális száma a `renewal-period`. | Mindkét `calls`, `bandwidth`, vagy együttesen kell megadni. | –     |
@@ -343,13 +343,13 @@ A következő példában a kvóta a hívó IP-címe van ellátva.
 
 ### <a name="elements"></a>Elemek
 
-| Name (Név)  | Leírás   | Szükséges |
+| Name (Név)  | Leírás   | Kötelező |
 | ----- | ------------- | -------- |
 | kvóta | A gyökérelem. | Igen      |
 
 ### <a name="attributes"></a>Attribútumok
 
-| Name (Név)                | Leírás                                                                                               | Szükséges                                                         | Alapértelmezett |
+| Name (Név)                | Leírás                                                                                               | Kötelező                                                         | Alapértelmezett |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | Sávszélesség           | A megadott időtartam során engedélyezett kilobájt maximális száma a `renewal-period`. | Mindkét `calls`, `bandwidth`, vagy együttesen kell megadni. | –     |
 | hívás               | A megadott időtartam során megengedett maximális száma a `renewal-period`.     | Mindkét `calls`, `bandwidth`, vagy együttesen kell megadni. | –     |
@@ -514,7 +514,7 @@ Ez a példa bemutatja, hogyan használhatja a [ellenőrzése JWT](api-management
 
 ### <a name="elements"></a>Elemek
 
-| Elem             | Leírás                                                                                                                                                                                                                                                                                                                                           | Szükséges |
+| Elem             | Leírás                                                                                                                                                                                                                                                                                                                                           | Kötelező |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | validate-jwt        | A gyökérelem.                                                                                                                                                                                                                                                                                                                                         | Igen      |
 | Célközönség           | Elfogadható célközönség lehet, hogy a jogkivonatban található jogcímeket listáját tartalmazza. Ha több célközönségértékek találhatók, akkor minden értéket a rendszer megpróbálkozik amíg újra nem indítják az összes kimerültek (ebben az esetben az érvényesítés sikertelen), vagy amíg sikerrel. Legalább egy célközönség meg kell adni.                                                                     | Nem       |
@@ -527,7 +527,7 @@ Ez a példa bemutatja, hogyan használhatja a [ellenőrzése JWT](api-management
 
 ### <a name="attributes"></a>Attribútumok
 
-| Name (Név)                            | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                                            | Szükséges                                                                         | Alapértelmezett                                                                           |
+| Name (Név)                            | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                                            | Kötelező                                                                         | Alapértelmezett                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | időbeállításainak                      | Időtartam. Adja meg a maximális várt időeltérése a jogkivonat kibocsátója rendszerideje és az API Management-példány használatával.                                                                                                                                                                                                                                                                                                               | Nem                                                                               | 0 másodperc                                                                         |
 | failed-validation-error-message | A HTTP-válasz törzsében adja vissza, ha a JWT nem felel meg az érvényesítési hibaüzenet. Ez az üzenet blobnév különleges karaktereket kell rendelkeznie.                                                                                                                                                                                                                                                                                                 | Nem                                                                               | Alapértelmezett hibaüzenet függ érvényesítési probléma, például "JWT nem található." |

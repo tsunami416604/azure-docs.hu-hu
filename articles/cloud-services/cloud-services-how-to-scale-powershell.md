@@ -1,6 +1,6 @@
 ---
-title: Azure-felhőszolgáltatás méretezése a Windows PowerShell |} Microsoft Docs
-description: (klasszikus) Megtudhatja, hogyan lehet egy webes vagy feldolgozói szerepkör bejövő vagy kimenő skálázása az Azure PowerShell használatával.
+title: Az Azure cloud Services méretezése a Windows PowerShellben |} A Microsoft Docs
+description: (klasszikus) Ismerje meg, hogyan használható a PowerShell használatával egy webes szerepkör és a feldolgozói szerepkör vagy az Azure-ban.
 services: cloud-services
 documentationcenter: ''
 author: mmccrory
@@ -14,38 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: mmccrory
-ms.openlocfilehash: a7ae8ff202d403dff19b8c9a6a09492235db27ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 240b34abd2f9b937c8a7ea449ad7f148870a9d33
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23842950"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61433268"
 ---
-# <a name="how-to-scale-a-cloud-service-in-powershell"></a>Egy felhőalapú szolgáltatás méretezése a PowerShellben
+# <a name="how-to-scale-a-cloud-service-in-powershell"></a>Cloud service skálázása a PowerShellben
 
-A Windows PowerShell segítségével egy webes vagy feldolgozói szerepkör bejövő vagy kimenő hozzáadásával vagy eltávolításával a példány méretezése.  
+Windows PowerShell használatával méretezheti a webes szerepkör vagy a feldolgozói szerepkör vagy hozzáadásával vagy eltávolításával példányok.  
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Az előfizetés, a PowerShell segítségével bármilyen műveletet elvégzése előtt be kell jelentkeznie:
+Az előfizetés Powershellen keresztül műveleteket elvégzése előtt be kell jelentkeznie:
 
 ```powershell
 Add-AzureAccount
 ```
 
-Ha a fiókjához társított több előfizetéssel rendelkezik, szükség lehet attól függően, hogy hol helyezkedik el a felhőalapú szolgáltatás jelenlegi módosítása. A jelenlegi előfizetés ellenőrzéséhez futtassa:
+Ha a fiókjához társított több előfizetéssel rendelkezik, szükség lehet az aktuális előfizetést, attól függően, ahol a felhőszolgáltatás található. Az aktuális előfizetésben ellenőrzéséhez futtassa:
 
 ```powershell
 Get-AzureSubscription -Current
 ```
 
-Ha módosítania kell a jelenlegi előfizetés, futtassa:
+Ha módosítania kell az aktuális előfizetésben, futtassa:
 
 ```powershell
 Set-AzureSubscription -SubscriptionId <subscription_id>
 ```
 
-## <a name="check-the-current-instance-count-for-your-role"></a>Ellenőrizze a szerepkör az aktuális példányszám
+## <a name="check-the-current-instance-count-for-your-role"></a>Ellenőrizze a szerepkör a jelenlegi példányszám
 
 A szerepkör aktuális állapotának ellenőrzéséhez futtassa:
 
@@ -53,30 +53,30 @@ A szerepkör aktuális állapotának ellenőrzéséhez futtassa:
 Get-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>'
 ```
 
-Kell visszakapnia információt a szerepkör, beleértve az aktuális operációs rendszer verziója és a példány száma. Ebben az esetben a szerepkörhöz egyetlen példányt.
+Szerezheti vissza a szerepkört, beleértve a jelenlegi operációs rendszer verziója és a példány szám kapcsolatos információkat. Ebben az esetben a szerepkör rendelkezik egyetlen példányt.
 
 ![A szerepkör kapcsolatos információk](./media/cloud-services-how-to-scale-powershell/get-azure-role.png)
 
-## <a name="scale-out-the-role-by-adding-more-instances"></a>A szerepkör horizontális felskálázása ismételt felvételével
+## <a name="scale-out-the-role-by-adding-more-instances"></a>A szerepkör horizontális felskálázása további példányok hozzáadása révén
 
-A szerepkör horizontális, továbbítja a példányok, a kívánt számát a **száma** paramétert a **Set-AzureRole** parancsmagot:
+Horizontális felskálázás a szerepköre, át kell adnia a kívánt számú példányok, a **száma** paramétert a **Set-AzureRole** parancsmagot:
 
 ```powershell
 Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -Slot <target_slot> -Count <desired_instances>
 ```
 
-A parancsmag blokkolja az új példányok közben rövid ideig üzembe helyezve, és elindult. Ebben az időszakban, ha megnyit egy új PowerShell-ablakot, és hívás **Get-AzureRole** mint korábban, megjelenik az új cél-példányok száma. És a szerepkör állapota a portálon vizsgálja meg, ha az új példány elindítása láthatja:
+A parancsmag blokkok rövid ideig során az új példányok üzembe helyezett és használatába. Ebben az időszakban, ha megnyit egy új PowerShell-ablakot, és az első hívás **Get-AzureRole** , ahogy ezt korábban, látni fogja az új cél-példányok száma. Nézze meg a szerepkör állapota a portálon, ha, és megjelenik az új példány indítása folyamatban:
 
-![Virtuálisgép-példány a portál indítása](./media/cloud-services-how-to-scale-powershell/role-instance-starting.png)
+![Virtuálisgép-példány indítása a portálon](./media/cloud-services-how-to-scale-powershell/role-instance-starting.png)
 
-Miután az új példány indult el, a parancsmag sikeresen vissza:
+Miután elindította az új példányok, a parancsmag sikeresen adja vissza:
 
-![Szerepkör példány növekedése sikeres](./media/cloud-services-how-to-scale-powershell/set-azure-role-success.png)
+![Szerepkör-példány növekedés sikeres](./media/cloud-services-how-to-scale-powershell/set-azure-role-success.png)
 
-## <a name="scale-in-the-role-by-removing-instances"></a>Bővítse a szerepkör a példányok eltávolítása
+## <a name="scale-in-the-role-by-removing-instances"></a>A szerepkör eltávolításával példányok skálázása
 
-Példányok ugyanúgy eltávolításával szerepkör méretezheti. Állítsa be a **száma** paraméter **Set-AzureRole** kíván használni a méretezési művelet befejeződése után példányok száma.
+Példányok ugyanúgy eltávolításával skálázhatja a szerepkör. Állítsa be a **száma** paraméterrel **Set-AzureRole** szeretne biztosítani a horizontális leskálázási művelet befejeződése után példányok száma.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Nincs automatikus méretezése a powershellből felhőszolgáltatások konfigurálása lehetséges. Ehhez tekintse meg a [automatikus méretezési egy felhőalapú szolgáltatás hogyan](cloud-services-how-to-scale-portal.md).
+Nem alkalmas konfigurálása az automatikus méretezés a cloud services, a Powershellből. Ehhez lásd [automatikus méretezése egy felhőalapú szolgáltatás](cloud-services-how-to-scale-portal.md).

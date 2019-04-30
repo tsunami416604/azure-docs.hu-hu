@@ -11,11 +11,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: 87dc1dab0670f69ff8c418be476986baec2821fb
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310879"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60871353"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Dokumentumok indexelése az Azure Blob Storage, az Azure Search szolgáltatással
 Ez a cikk bemutatja, hogyan használható az Azure Search index dokumentumok (például PDF-, Microsoft Office-dokumentumok, és számos egyéb gyakori formátum) az Azure Blob storage-ban tárolja. Első lépésként beállítása és konfigurálása a blob indexelőjével alapjait ismerteti. Ezután egy mélyebb feltárása viselkedéseket, kínál, és esetekben valószínűleg találkozik.

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: 746d21c7ff4d5b939eea7690193ac07425b4001c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602630"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61447910"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Távoli figyelési megoldásgyorsító kapcsolatos gyakori kérdések
 
@@ -32,7 +32,7 @@ Amellett, hogy a két differenciált üzembe helyezés, az új távoli figyelés
 
 ### <a name="what-is-the-difference-between-the-basic-and-standard-deployment-options-how-do-i-decide-between-the-two-deployment-options"></a>Mi a különbség az alapszintű és standard szintű üzembe helyezési beállítások? Hogyan válasszak a két telepítési lehetőségek között?
 
-Különböző igényekre különböző telepítési lehetőségek válaszol. Az alapszintű üzemelő példányhoz első lépései és fejleszthet PoC és kisméretű próbakörnyezetek célja. A minimálisan szükséges erőforrásokat és a egy alacsonyabb költségű egy korszerű architektúrát biztosít. A normál központi telepítés célja, hogy hozhat létre, és a egy éles használatra kész megoldás testreszabása, és biztosítja a szükséges elemeket, vegye figyelembe, hogy a telepítésben. A megbízhatóság és a méretezési csoport alkalmazás mikroszolgáltatások Docker-tárolókként épülnek, és egy orchestrator (alapértelmezés szerint a Kubernetes) használatával üzembe helyezett. Az orchestrator telepítési, méretezését és felügyeletét, az alkalmazás feladata. Válassza a beállítást, a jelenlegi igények alapján. Használhat egy, a másik vagy mindkettőt, attól függően, a projekt szakasza.
+Különböző igényekre különböző telepítési lehetőségek válaszol. Az alapszintű üzemelő példányhoz első lépései és fejleszthet PoC és kisméretű próbakörnyezetek célja. A minimálisan szükséges erőforrásokat és a egy alacsonyabb költségű egy korszerű architektúrát biztosít. A normál központi telepítés célja, hogy hozhat létre, és a egy éles használatra kész megoldás testreszabása, és biztosítja a szükséges elemeket, vegye figyelembe, hogy a telepítésben. A megbízhatóság és a méretezési csoport alkalmazás mikroszolgáltatások Docker-tárolókként épülnek, és egy orchestrator (alapértelmezés szerint a Kubernetes) használatával üzembe helyezett. A vezénylő felelős az alkalmazás üzembe helyezéséért, méretezéséért és felügyeletéért. Válassza a beállítást, a jelenlegi igények alapján. Használhat egy, a másik vagy mindkettőt, attól függően, a projekt szakasza.
 
 ### <a name="how-do-i-configure-a-dynamic-map-on-the-dashboard"></a>Hogyan konfigurálható a dinamikus térképen az irányítópult?
 

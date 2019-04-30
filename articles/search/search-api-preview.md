@@ -13,11 +13,11 @@ ms.date: 06/28/2018
 ms.author: HeidiSteen
 ms.custom: seodec2018
 ms.openlocfilehash: 524c1a6d083db02349c7dae9a0131228613dc170
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997610"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61127093"
 ---
 # <a name="azure-search-service-rest-api-version-2017-11-11-preview"></a>Az Azure Search szolgáltatás REST api-verzió 2017. 11. 11 – előzetes verzió
 Ez a cikk ismerteti a `api-version=2017-11-11-Preview` verzióját az Azure Search szolgáltatás REST API-t kínáló kísérleti funkciók nem általánosan érhetők el.

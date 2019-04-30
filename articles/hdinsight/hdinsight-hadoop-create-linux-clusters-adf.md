@@ -1,7 +1,6 @@
 ---
 title: 'Oktatóanyag: Igény szerinti Apache Hadoop-fürtök létrehozása az Azure HDInsight a Data Factory segítségével '
 description: Ismerje meg, hogyan hozhat létre Apache Hadoop-fürtök igény szerinti HDInsight az Azure Data Factory használatával.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/29/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8b65cb05643ffca3cbf25a207dce683d2d60fd64
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
-ms.translationtype: MT
+ms.openlocfilehash: 11827d8e355483b278a4c5ab5fcce41c03f0565a
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361574"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62102033"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Oktatóanyag: Az Azure Data Factory használatával HDInsight igény szerinti Apache Hadoop-fürtök létrehozása
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -242,7 +241,7 @@ Ebben a szakaszban két társított szolgáltatást belül az adat-előállító
     | Tulajdonság | Leírás |
     | --- | --- |
     | Name (Név) | Adjon meg egy nevet a HDInsight társított szolgáltatás |
-    | Typo | Válassza ki **igény szerinti HDInsight** |
+    | Típus | Válassza ki **igény szerinti HDInsight** |
     | Azure Storage társított szolgáltatás | Válassza ki a korábban létrehozott Storage-beli társított szolgáltatást. |
     | Fürttípus | Válassza ki **hadoop** |
     | Élettartam | Adja meg az időtartamot, amelyek esetében szeretne a HDInsight-fürt automatikusan törlést megelőzően érhető el.|

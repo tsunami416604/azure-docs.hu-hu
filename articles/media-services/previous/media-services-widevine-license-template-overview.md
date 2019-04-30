@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: d0bb72361e1bff3615f6785ac4c91a10ea773498
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312971"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60825536"
 ---
 # <a name="widevine-license-template-overview"></a>Widevine-licencsablon áttekintése 
 Az Azure Media Services segítségével a konfigurálása és a Google Widevine-licenceket kérnek. Ha Widevine-védelemmel ellátott tartalom lejátszása a Media player próbál, egy kérelem érkezik a szolgáltatásra vonatkozó licencet beszereznie. A szolgáltatás jóváhagyja a kérést, ha a szolgáltatásproblémák a licencet. Ez van az ügyfélnek küldött, és a megadott tartalom lejátszása és visszafejtésére szolgál.
@@ -63,8 +63,8 @@ A Widevine-licenc kérelem egy JSON-ként van formázva.
 | --- | --- | --- |
 | hasznos adat |Base64-kódolású karakterlánc |Az ügyfelek által küldött licenc kérelem. |
 | content_id |Base64-kódolású karakterlánc |A kulcs azonosítója és a tartalom létrehozására használt azonosító minden content_key_specs.track_type kulcsával. |
-| szolgáltató |sztring |Tartalom kulcsok és szabályzatok keresésére használt. A Microsoft kulcskézbesítési használata a Widevine-licenckézbesítés, a rendszer figyelmen kívül hagyja ezt a paramétert. |
-| policy_name |sztring |Egy korábban regisztrált házirend nevét. Választható. |
+| szolgáltató |string |Tartalom kulcsok és szabályzatok keresésére használt. A Microsoft kulcskézbesítési használata a Widevine-licenckézbesítés, a rendszer figyelmen kívül hagyja ezt a paramétert. |
+| policy_name |string |Egy korábban regisztrált házirend nevét. Választható. |
 | allowed_track_types |Enum |SD_ONLY vagy SD_HD. Kulcsok tartalmakat vezérlők licenc szerepelnek. |
 | content_key_specs |JSON-tömb struktúrák, tekintse meg a következő szakaszt: "Content key specifikációihoz."  |Részletesebben vezérlő a melyik tartalomkulcs való visszatéréshez. További információkért lásd: a szakasz "Content key specifikációihoz." Csak a allowed_track_types és content_key_specs értékek egyike adható meg. |
 | use_policy_overrides_exclusively |Logikai érték true vagy FALSE (hamis) |Házirend attribútumainak policy_overrides által megadott használja, és hagyja ki az összes korábban tárolt házirend. |
@@ -79,10 +79,10 @@ Minden egyes content_key_specs értéknek meg kell adni az összes nyomon követ
 
 | Name (Név) | Érték | Leírás |
 | --- | --- | --- |
-| content_key_specs. track_type |sztring |Track típusnév. Ha content_key_specs van megadva, a licenc-kérelemben, ügyeljen arra, hogy adja meg az összes nyomon típusokat explicit módon. Amennyiben ezt nem sikerült lejátszani elmúlt 10 másodperc eredményez. |
+| content_key_specs. track_type |string |Track típusnév. Ha content_key_specs van megadva, a licenc-kérelemben, ügyeljen arra, hogy adja meg az összes nyomon típusokat explicit módon. Amennyiben ezt nem sikerült lejátszani elmúlt 10 másodperc eredményez. |
 | content_key_specs  <br/> security_level |UInt32 |A lejátszás vonatkozó ügyfélkövetelmények robusztusság határozza meg. <br/> -Fehér-box cryptography szoftveralapú megadása kötelező. <br/> -Szoftver titkosítás és a egy rejtjelezett dekóder szükség. <br/> – A kulcsfontosságú anyagok és a titkosítási műveletek egy megbízható végrehajtási hardveres biztonsági környezetben kell végrehajtani. <br/> – A titkosítás és a tartalom dekódolás egy megbízható végrehajtási hardveres biztonsági környezetben kell végrehajtani.  <br/> – A titkosítás, a dekódolás és az összes kezelése a media (tömörített és tömörítetlen) egy megbízható végrehajtási hardveres biztonsági környezetben kell kezelni. |
 | content_key_specs <br/> required_output_protection.hdc |karakterlánc, HDCP_NONE, HDCP_V1, HDCP_V2 egyik |Azt jelzi, hogy szükség-e HDCP. |
-| content_key_specs <br/>kulcs |Base64-<br/>a kódolt karakterlánc |A track használandó tartalomkulcsot. Ha meg van adva, a track_type vagy key_id szükség. A tartalomszolgáltató Ez a beállítás segítségével beszúrása a tartalomkulcsot a követése helyett, ami lehetővé teszi a Widevine-licenckiszolgáló készítése vagy kereshet meg egy kulcsot. |
+| content_key_specs <br/>key |Base64-<br/>a kódolt karakterlánc |A track használandó tartalomkulcsot. Ha meg van adva, a track_type vagy key_id szükség. A tartalomszolgáltató Ez a beállítás segítségével beszúrása a tartalomkulcsot a követése helyett, ami lehetővé teszi a Widevine-licenckiszolgáló készítése vagy kereshet meg egy kulcsot. |
 | content_key_specs.key_id |Base-64 kódolású karakterláncot bináris, 16 bájtos |A kulcs egyedi azonosítója. |
 
 ## <a name="policy-overrides"></a>A házirend felülbírálások
@@ -94,7 +94,7 @@ Minden egyes content_key_specs értéknek meg kell adni az összes nyomon követ
 | policy_overrides. license_duration_seconds |Int64 |Azt jelzi, hogy az adott licenc időtartományából. 0 érték azt jelzi, hogy nincs-e az időtartam nincs korlátozva. Alapértelmezett érték a 0. |
 | policy_overrides. rental_duration_seconds |Int64 |Azt jelzi, az időtartomány, a lejátszás pedig engedélyezett. 0 érték azt jelzi, hogy nincs-e az időtartam nincs korlátozva. Alapértelmezett érték a 0. |
 | policy_overrides. playback_duration_seconds |Int64 |A lejátszás elindítása a licenc időtartamának belül követő megtekintése ablakot. 0 érték azt jelzi, hogy nincs-e az időtartam nincs korlátozva. Alapértelmezett érték a 0. |
-| policy_overrides. renewal_server_url |sztring |A licencek minden Szívveréses (megújítás) kérések a megadott URL-címre irányítja. Csak akkor, ha teljesül can_renew használja ezt a mezőt. |
+| policy_overrides. renewal_server_url |string |A licencek minden Szívveréses (megújítás) kérések a megadott URL-címre irányítja. Csak akkor, ha teljesül can_renew használja ezt a mezőt. |
 | policy_overrides. renewal_delay_seconds |Int64 |Hány másodperc után license_start_time megújítása először megkísérlése előtt. Csak akkor, ha teljesül can_renew használja ezt a mezőt. Alapértelmezett érték a 0. |
 | policy_overrides. renewal_retry_interval_seconds |Int64 |Adja meg a késleltetés között későbbi licenc megújítási kérések hiba esetén. Csak akkor, ha teljesül can_renew használja ezt a mezőt. |
 | policy_overrides. renewal_recovery_duration_seconds |Int64 |Az ablak, mely lejátszás közben kísérlet történik a megújítási továbbra is az idő, de a licenckiszolgáló háttér-problémák miatt volt sikertelen. 0 érték azt jelzi, hogy nincs-e az időtartam nincs korlátozva. Csak akkor, ha teljesül can_renew használja ezt a mezőt. |
@@ -197,5 +197,5 @@ Az alábbi példa bemutatja, hogyan használható a .NET API-k egyszerű Widevin
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még
-[PlayReady és/vagy Widevine dynamic common encryption használata](media-services-protect-with-playready-widevine.md)
+[PlayReady és/vagy Widevine Dynamic Common Encryption használata](media-services-protect-with-playready-widevine.md)
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: roiyz
 ms.openlocfilehash: f56cfeeede393dbdb9632ea4120d3a81e89f3f7c
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451969"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61484035"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Erőforrás-csoportok, amelyek tartalmazzák a Virtuálisgép-bővítmények exportálása
 
@@ -36,10 +36,10 @@ A következő kiterjesztések exportálhatók az automatizálási parancsfájl s
 
 | Mellék ||||
 |---|---|---|---|
-| Acronis biztonsági mentés | Datadoggal Windows-ügynök | Az operációs rendszer javításai a Linux rendszerre | VM-pillanatkép Linux
+| Acronis biztonsági mentés | Datadoggal Windows-ügynök | Az operációs rendszer javításai a Linux rendszerre | VM Snapshot Linux
 | Linux Acronis biztonsági mentés | Docker-bővítmény | Puppet ügynök |
 | BG adatai | DSC-bővítmény | Hely 24 x 7 Apm Insight |
-| BMC CTM ügynök Linux | Linux a dynatrace-szel | 24 x 7 Linux helykiszolgáló |
+| BMC CTM Agent Linux | Linux a dynatrace-szel | 24 x 7 Linux helykiszolgáló |
 | BMC CTM ügynök Windows | Windows a dynatrace-szel | Hely 24 x 7, Windows Server |
 | Chef-ügyfél | HPE biztonsági alkalmazás Defender | Trend Micro DSA |
 | Egyéni szkript | IaaS kártevőirtó | Trend Micro DSA Linux |

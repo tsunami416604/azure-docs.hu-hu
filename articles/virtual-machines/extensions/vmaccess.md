@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: roiyz
 ms.openlocfilehash: 71aecc1748e70e2119b1f54c21a0f705afc5d5d0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731308"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60800056"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Kezelheti a rendszergazda felhasználókat, az SSH és az ellenőrzés, vagy javítsa ki a VMAccess bővítmény használata az Azure CLI-vel Linux rendszerű virtuális gépek lemezeinek
 ## <a name="overview"></a>Áttekintés
@@ -36,7 +36,7 @@ Ez a cikk bemutatja, hogyan használhatja az Azure VMAccess bővítmény ellenő
 
 A Virtuálisgép-hozzáférési bővítmény ezen Linux-disztribúció futtatható:
 
-| Disztribúció | Verzió |
+| Disztribúció | Version |
 |---|---|
 | Ubuntu | 16.04 LTS, 14.04 LTS, 12.04 LTS és |
 | Debian | Debian 7.9 +, 8.2 + |

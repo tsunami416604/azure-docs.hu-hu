@@ -10,11 +10,11 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ae732ab5c73dbec4a2aef6521b9edb490079112e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797107"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60740670"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafikus létrehozás az Azure Automationben
 
@@ -326,7 +326,7 @@ Egyes bemeneti paramétereket határozzák meg a tulajdonságait az alábbi táb
 |:--- |:--- |
 | Name (Név) |A paraméternek egyedi neve. Ez csak alfanumerikus karaktereket tartalmazhat, és nem tartalmazhat szóközt. |
 | Leírás |A bemeneti paraméter leírását. |
-| Typo |A paraméter értéke a várt adattípus. Az Azure Portalon kimondása a bemeneti biztosít az egyes paraméterekhez tartozó adattípus egy megfelelő vezérlőt. |
+| Típus |A paraméter értéke a várt adattípus. Az Azure Portalon kimondása a bemeneti biztosít az egyes paraméterekhez tartozó adattípus egy megfelelő vezérlőt. |
 | Kötelező |Itt adhatja meg, hogy értéket kell adni a paraméter. A runbook nem indítható el, ha nem ad meg értéket minden kötelező paraméter, amely nem rendelkezik meghatározott alapértelmezett értéket. |
 | Alapértelmezett érték |Itt adhatja meg, milyen értéket a paraméterhez szolgál, ha nincs megadva. Ez lehet null értékű vagy egy adott érték. |
 

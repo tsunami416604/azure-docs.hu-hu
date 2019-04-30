@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 6/10/2018
 ms.author: aljo, subramar
 ms.openlocfilehash: b8012cbdad02995c3fc98a3ea1fa02a3a08bd2dc
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665899"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60870876"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Service Fabric az Azure Files kötet illesztőprogram (előzetes verzió)
-Az Azure Files kötet beépülő modul van egy [Docker kötet beépülő modul](https://docs.docker.com/engine/extend/plugins_volume/) biztosít [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) köteteket a Docker-tárolók alapján. A Docker-kötet beépülő modult, a Service Fabric-alkalmazás telepítését követően a Service Fabric-fürtök van csomagolva. Ez azt szolgál az Azure Files-alapú más Service Fabric-tárolóalkalmazások a fürtön üzembe helyezett köteteket.
+Az Azure Files kötet beépülő modul van egy [Docker kötet beépülő modul](https://docs.docker.com/engine/extend/plugins_volume/) biztosít [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) köteteket a Docker-tárolók alapján. A Dockerbeli kötetes beépülő modul Service Fabric-alkalmazásként van csomagolva, amely Service Fabric-fürtökön helyezhető üzembe. Segítségével Azure Files-alapú kötetekhez férhetnek hozzá a fürtön üzembe helyezett egyéb Service Fabric-tárolóalkalmazások.
 
 > [!NOTE]
 > Az Azure Files kötet beépülő modul 6.4.571.9590 verziója egy előzetes kiadásban ez a dokumentum elérhető. Előzetes kiadás, mint a **nem** az éles környezetben használata támogatott.

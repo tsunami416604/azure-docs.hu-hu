@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 04/30/2018
 ms.openlocfilehash: d80ffa862546f56e93a338a7a1db031e2cb55990
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616798"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60845740"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-definíciós nyelv séma referenciája
 
@@ -37,7 +37,7 @@ A magas szintű munkafolyamat-definíció struktúráját a következő:
 }
 ```
 
-| Elem | Szükséges | Leírás |
+| Elem | Kötelező | Leírás |
 |---------|----------|-------------|
 | definíció | Igen | A kezdő elem esetében a munkafolyamat-definíció |
 | $schema | Csak akkor, ha a külsőleg hivatkozik egy munkafolyamat-definíció | A JSON-fájl, amely leírja a munkafolyamat-definíciós nyelv verziót, amely itt találja a helye: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
@@ -69,7 +69,7 @@ Az a `parameters` területén adja meg a központi telepítési bemenetek fogad�
 },
 ```
 
-| Elem | Szükséges | Típus | Leírás |
+| Elem | Kötelező | Típus | Leírás |
 |---------|----------|------|-------------|
 | type | Igen | int, lebegőpontos, string, securestring, bool, tömböt, JSON-objektum, secureobject <p><p>**Megjegyzés**: Az összes jelszavak, kulcsok és titkos kulcsokat, használja a `securestring` és `secureobject` típusokat, mert a `GET` művelet nem ad vissza ezeket a típusokat. Paraméterek védelmével kapcsolatos további információkért lásd: [a logikai alkalmazás védelme](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | A paraméter típusa |
 | DefaultValue érték | Igen | Ugyanaz, mint `type` | Az alapértelmezett paraméter értéke, ha nem ad meg értéket, ha a munkafolyamat példányosítja |
@@ -99,11 +99,11 @@ Az általános struktúráját egy kimeneti definíciót a következő:
 }
 ```
 
-| Elem | Szükséges | Típus | Leírás |
+| Elem | Kötelező | Típus | Leírás |
 |---------|----------|------|-------------|
 | <*key-name*> | Igen | String | A kulcs nevét, a kimeneti értéket adnak vissza. |
 | type | Igen | int, lebegőpontos, string, securestring, bool, tömböt, JSON-objektum | A kimeneti visszatérési érték típusát |
-| érték | Igen | Ugyanaz, mint `type` | A kimeneti visszatérési érték |
+| value | Igen | Ugyanaz, mint `type` | A kimeneti visszatérési érték |
 |||||
 
 Egy munkafolyamat-futtatási lekérheti a kimenetét, tekintse át a logikai alkalmazás futtatási előzmények és részletek az Azure Portalon, vagy használja a [munkafolyamat REST API-val](https://docs.microsoft.com/rest/api/logic/workflows). Is átadhat kimeneti a külső rendszerekkel, például a Power bi-ban, hogy irányítópultokat hozhat létre.

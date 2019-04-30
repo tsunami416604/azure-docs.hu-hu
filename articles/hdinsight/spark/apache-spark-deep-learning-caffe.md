@@ -1,19 +1,18 @@
 ---
 title: Caffe elosztott deep learning az Azure HDInsight Spark használata
 description: Caffe elosztott deep learning az Azure HDInsight Spark használata
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: c79f840becce43c47287ef38bd39ed3ac9168b73
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: MT
+ms.openlocfilehash: d0d68263485c5ab6e57a349317b1975862470cc2
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891079"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124390"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Caffe elosztott deep learning az Azure HDInsight Spark használata
 
@@ -69,7 +68,7 @@ Első lépésként mindössze futtathatja a parancsprogram-művelet a fürtre k�
 ![Szkriptműveletek függőségek telepítése](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
 
 
-## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>2. lépés: Épülnek Caffe Apache Spark for HDInsight az átjárócsomóponthoz
+## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>2. lépés: Épülnek Caffe Apache Spark for HDInsight az átjárócsomóponthoz
 
 A második lépéseként, az átjárócsomópont Caffe buildet, és a lefordított tárak a feldolgozó csomópontokat, majd terjesztheti. Ebben a lépésben kell [ssh, az átjárócsomópont](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix). Ezt követően kell követnie a [CaffeOnSpark összeállítása folyamatban](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn). Alább a parancsfájl segítségével CaffeOnSpark készíthet néhány további lépést van. 
 

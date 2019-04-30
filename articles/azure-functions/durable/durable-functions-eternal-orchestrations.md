@@ -2,20 +2,21 @@
 title: Durable Functions – az Azure a külső vezénylések
 description: Ismerje meg, hogy külső vezénylések megvalósítása az Azure Functions a Durable Functions bővítmény használatával.
 services: functions
-author: ggailey777
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: azfuncdf
+origin.date: 12/07/2018
+ms.date: 12/25/2018
+ms.author: v-junlch
 ms.openlocfilehash: c4adffd457338ffebfd1c9c7727023f82088dc57
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607738"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60732416"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) a külső vezénylések
 
@@ -84,3 +85,4 @@ Ha egy orchestrator-függvényt egy végtelen ciklust, és igényeinek megfelel�
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan valósíthat meg egyszeres vezénylések](durable-functions-singletons.md)
+

@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.openlocfilehash: 9c0283081bd7245b1b886ed82ba03130a7a3bf2c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495328"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61342037"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Nézettervező csempe az Azure monitorban a referencia-útmutató
 Nézettervező az Azure Monitor használatával létrehozhat egyéni nézetek számos az Azure Portalon, amelyek segítségével adatokat a Log Analytics-munkaterület megjelenítése. Ez a cikk egy referencia-útmutató a csempék az egyéni nézetekben elérhető beállításai.
@@ -58,7 +58,7 @@ A **szám** csempe mindkét naplófájl lekérdezés és a egy címkét a rekord
 | Jelmagyarázat |A szöveg, amely alatt az érték jelenik meg. |
 | Lekérdezés |A lekérdezés futtatásakor. A lekérdezés által visszaadott rekordok száma jelenik meg. |
 | **Speciális** |**> Adatfolyam-ellenőrzés** |
-| Engedélyezve |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
+| Enabled |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
 | Lekérdezés |A lekérdezés, amely elérhető a nézet adatok meghatározásához. Ha a lekérdezés eredménytelen, megjelenik egy üzenet, az érték a fő lekérdezés helyett. |
 | Üzenet |Az üzenet jelenik meg, ha az adatfolyam-ellenőrzési lekérdezés visszaadja az adatot nem. Ha ad meg semmilyen üzenet egy *értékelés folyamatban* állapotüzenet jelenik meg. |
 
@@ -79,7 +79,7 @@ Ez a csempe minden két különböző naplófájl-lekérdezések és a egy címk
 | Jelmagyarázat |A szöveg, amely alatt az érték jelenik meg. |
 | Lekérdezés |A lekérdezés futtatásakor. A lekérdezés által visszaadott rekordok száma jelenik meg. |
 | **Speciális** |**> Adatfolyam-ellenőrzés** |
-| Engedélyezve |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
+| Enabled |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
 | Lekérdezés |A lekérdezés, amely elérhető a nézet adatok meghatározásához. Ha a lekérdezés eredménytelen, megjelenik egy üzenet, az érték a fő lekérdezés helyett. |
 | Üzenet |Az üzenet jelenik meg, ha az adatfolyam-ellenőrzési lekérdezés visszaadja az adatot nem. Ha ad meg semmilyen üzenet egy *értékelés folyamatban* állapotüzenet jelenik meg. |
 
@@ -96,14 +96,14 @@ A **Fánkdiagram** csempe egyetlen szám, amely összefoglalja a log lekérdezé
 | **fánkdiagram** | |
 | Lekérdezés |A lekérdezés, amely a fánkdiagram számára. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. Ez a lekérdezés parancsmagokéval használ a *mérték* kulcsszó összefoglalva az eredményeket. |
 | **fánkdiagram** |**> Center** |
-| Szöveg |A szöveg, amely alatt a fánkdiagram belül az érték jelenik meg. |
+| Text |A szöveg, amely alatt a fánkdiagram belül az érték jelenik meg. |
 | Művelet |A műveletet, hogy együtt, egyetlen értékként a value tulajdonság.<ul><li>Összeg: Adja hozzá a tulajdonság értéke az összes rekord értékeit.</li><li>Százalékos aránya: A tulajdonság értéke az összes rekord összegzett értékek képest rekordokból az összegzett értékek százalékos értéke.</li></ul> |
 | A fánkdiagram közepén megjelenített eredményértékek |Kiválaszthat egy vagy több érték hozzáadása a plusz jelre (+). A lekérdezés eredményeit rögzíti a megadott tulajdonság értékek korlátozódnak. Nincsenek értékek vesznek fel, ha a lekérdezés szereplő összes rekordok. |
 | **fánkdiagram** |**> További beállítások** |
 | Színek |Minden, a három leggyakoribb tulajdonságainak megjelenő szín. Másodlagos színe tulajdonságértékeket megadásához használja *szín leképezési speciális*. |
 | Speciális színleképezés |Megjeleníti egy adott tulajdonság értéket jelölő szín. Ha a megadott értéket az első három, a másodlagos színt helyett a standard szintű szín jelenik meg. Ha a tulajdonság nem szerepel az első három, a szín nem jelenik meg. |
 | **Speciális** |**> Adatfolyam-ellenőrzés** |
-| Engedélyezve |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
+| Enabled |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
 | Lekérdezés |A lekérdezés, amely elérhető a nézet adatok meghatározásához. Ha a lekérdezés eredménytelen, megjelenik egy üzenet, az érték a fő lekérdezés helyett. |
 | Üzenet |Az üzenet jelenik meg, ha az adatfolyam-ellenőrzési lekérdezés visszaadja az adatot nem. Ha ad meg semmilyen üzenet egy *értékelés folyamatban* állapotüzenet jelenik meg. |
 
@@ -124,7 +124,7 @@ Ez a csempe nem egy vonaldiagramot, amely megjeleníti a log lekérdezésből sz
 | Egység |Adja meg a lekérdezés által visszaadott értékek használt mértékegységet. Ez az információ segítségével megjeleníthesse a címkéket a diagramon, érték jelző és opcionálisan alakítása. az értékeket. A **egység típusa** meghatározza, melyik az egységet, és meghatározza a **aktuális egység típusa** elérhető értékek. Ha kiválaszt egy értéket a **átalakítása** a numerikus értékek konvertálja, majd a **aktuális egység** írja be a **átalakítása** típusa. |
 | Egyéni felirat |A szöveg, amelyben az y-tengely a címke mellett jelenik meg a *egység* típusa. Ha nincs címke van megadva, csak a *egység* típus jelenik meg. |
 | **Speciális** |**> Adatfolyam-ellenőrzés** |
-| Engedélyezve |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
+| Enabled |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
 | Lekérdezés |A lekérdezés, amely elérhető a nézet adatok meghatározásához. Ha a lekérdezés eredménytelen, megjelenik egy üzenet, az érték a fő lekérdezés helyett. |
 | Üzenet |Az üzenet jelenik meg, ha az adatfolyam-ellenőrzési lekérdezés visszaadja az adatot nem. Ha ad meg semmilyen üzenet egy *értékelés folyamatban* állapotüzenet jelenik meg. |
 
@@ -149,7 +149,7 @@ Ez a csempe rendelkezik mindkét egy sor diagram azt mutatja, hogy a naplóból 
 | Egység |Adja meg az egységeket a lekérdezés által visszaadott értékek. Ezt az információt használja megjelenített vonaldiagram-címkék, amelyek jelzik a értéktípusok, és szükség esetén történő átalakítása az értékeket. A *egység* típusát adja meg a kategória az egység, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha kiválaszt egy értéket a *átalakítása*, a numerikus értékek konvertálja a *aktuális egység* írja be a *átalakítása* típusa. |
 | Egyéni felirat |A szöveg, amelyben az y-tengely a címke mellett jelenik meg a *egység* típusa. Ha nincs címke van megadva, csak a *egység* típus jelenik meg. |
 | **Speciális** |**> Adatfolyam-ellenőrzés** |
-| Engedélyezve |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
+| Enabled |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
 | Lekérdezés |A lekérdezés, amely elérhető a nézet adatok meghatározásához. Ha a lekérdezés eredménytelen, megjelenik egy üzenet, az érték a fő lekérdezés helyett. |
 | Üzenet |Az üzenet jelenik meg, ha az adatfolyam-ellenőrzési lekérdezés visszaadja az adatot nem. Ha ad meg semmilyen üzenet egy *értékelés folyamatban* állapotüzenet jelenik meg. |
 
@@ -174,7 +174,7 @@ A **két idősor** csempe oszlopdiagramként idővel két naplófájl lekérdez�
 | Diagramlekérdezés |A lekérdezés, amely a második adatsorozathoz. Minden egyes idő alatt a rekordok számát a tábla oszlopainak képviseli. |
 | Művelet |A művelet együtt, egyetlen értékként az a kihívás értékének tulajdonság végrehajtott műveletek.<ul><li>Átlagos: Az összes rekord értékek átlaga.</li><li>Száma: A lekérdezés által visszaadott összes rekord száma.</li><li>Legutóbbi minta: Az utolsó időközt, amely megtalálható a diagramon értéke.</li><li>Max: A maximális érték a diagramon szereplő időszakok. |
 | **Speciális** |**> Adatfolyam-ellenőrzés** |
-| Engedélyezve |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
+| Enabled |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
 | Lekérdezés |A lekérdezés, amely elérhető a nézet adatok meghatározásához. Ha a lekérdezés eredménytelen, megjelenik egy üzenet, az érték a fő lekérdezés helyett. |
 | Üzenet |Az üzenet jelenik meg, ha az adatfolyam-ellenőrzési lekérdezés visszaadja az adatot nem. Ha ad meg semmilyen üzenet egy *értékelés folyamatban* állapotüzenet jelenik meg. |
 

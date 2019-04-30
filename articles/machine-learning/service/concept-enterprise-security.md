@@ -11,11 +11,11 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/10/2019
 ms.openlocfilehash: b950e7d38235d089c6236c76136d8ec2fc7a1f74
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731328"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60821332"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatás nagyvállalati szintű biztonság
 
@@ -23,7 +23,7 @@ Ebben a cikkben ismertetik elérhető biztonsági funkciók és az Azure Machine
 
 Ha a használt felhő alapú szolgáltatás, korlátozhatja a hozzáférést a felhasználók, akiknek szükség van, ajánlott eljárás. Ekkor elindul a hitelesítési és engedélyezési modellje a szolgáltatás által használt megismerése. Előfordulhat, hogy a is szeretné korlátozni a hálózati hozzáférés, vagy biztonságosan csatlakozzon a helyszíni hálózat szervezhet marketingkampányokat, felhőalapú erőforrásokat. Adattitkosítás létfontosságú is, inaktív és az adatok szolgáltatások közötti áthelyezése közben. Végül, képeseknek kell lenniük a szolgáltatás figyelésére, és minden tevékenység egy naplók.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 Ha az Azure Active Directory (Azure AD) van konfigurálva a többtényezős hitelesítés támogatott.
 * Ügyfél bejelentkezik az Azure ad-ben, és Azure Resource Manager-token beolvasása.  Felhasználók és az egyszerű szolgáltatások teljes mértékben támogatottak.
 * Ügyfél bemutatja az Azure Resource Manager-token & az összes Azure Machine Learning-szolgáltatások
@@ -86,7 +86,7 @@ A felügyelt identitásokból további információkért lásd: [felügyelt iden
 | Erőforrás | Engedélyek |
 | ----- | ----- |
 | Munkaterület | Közreműködő | 
-| Tárfiók | Storage-Blobadatok Közreműködője | 
+| Tárfiók | Storage-blobadatok közreműködője | 
 | Key Vault | Kulcsok, titkos kódok, összes tanúsítványhoz hozzá | 
 | Azure Container Registry | Közreműködő | 
 | A munkaterületet tartalmazó erőforráscsoport | Közreműködő | 

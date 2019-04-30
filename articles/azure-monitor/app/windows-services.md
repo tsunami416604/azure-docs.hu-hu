@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
 ms.openlocfilehash: 85764c0ee5b8ed117fb191657d54abe5bd10a703
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116551"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60784429"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Az Application Insights manuális beállítása a .NET-alkalmazásokhoz
 
@@ -36,7 +36,7 @@ A következők szükségesek:
 
 Az „erőforrás” az adatok összegyűjtésének és megjelenítésének helye az Azure Portalon. Választhat, hogy újat hoz-e létre, vagy megoszt egy már meglévőt.
 
-### <a name="part-of-a-larger-app-use-existing-resource"></a>Egy nagyobb alkalmazás része: Létező erőforrás használata
+### <a name="part-of-a-larger-app-use-existing-resource"></a>Egy nagyobb alkalmazás része: Meglévő erőforrás használata
 
 Ha a webalkalmazás több részből áll – például egy előtéri webalkalmazásból és egy vagy több háttérszolgáltatásból –, akkor minden helyről ugyanarra az erőforrásra kell telemetriát küldenie. Ez lehetővé teszi, hogy egyetlen alkalmazástérképen megjeleníthetőek legyenek, valamint nyomon követhetőek legyenek a kérések az egyes összetevők közt.
 

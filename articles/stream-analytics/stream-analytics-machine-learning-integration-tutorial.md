@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: b06fec8ab726f48e1937bae4cfbdbd9842788d0a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109307"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61480817"
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Hangulatelemzés végrehajtása az Azure Stream Analytics és az Azure Machine Learning használatával
 Ez a cikk bemutatja, hogyan gyorsan beállíthat egy egyszerű Azure Stream Analytics-feladatot, amely integrálható az Azure Machine Learning. Segítségével elemzési modell Machine Learning vélemények a Cortana Intelligence-katalógusban a streamadatok szöveg elemzése, és döntse el, valós idejű értelmezhetőségi pontszámot. A Cortana Intelligence Suite használatával teszi lehetővé a feladatnak a róluk szóló véleményeket elemzési modellek létrehozásához jainak részleteivel kellene bajlódnia.

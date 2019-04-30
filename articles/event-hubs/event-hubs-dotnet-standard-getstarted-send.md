@@ -15,12 +15,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: ce98502113e75aea8deef7dbc7363662827634f3
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: e572a9e19da144be61faefacc370cf512f5079ac
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682236"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62738405"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core"></a>Események küldése vagy események fogadása az Azure Event Hubsba a .NET Core használatával
 Az Event Hubs szolgáltatás a csatlakoztatott eszközökről és alkalmazásokból származó nagy mennyiségű eseményadatot dolgoz fel (telemetria). Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT). Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
@@ -195,8 +195,7 @@ Adja hozzá a [ `Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Mic
 6. Futtassa a programot, és ellenőrizze, hogy nincsenek-e hibák.
 
 ## <a name="receive-events"></a>Események fogadása
-Ez a szakasz bemutatja, hogyan írhat egy .NET Core-konzolalkalmazást, amely egy event hub használatával üzeneteket fogad a [Event Processor Host](event-hubs-event-processor-host.md). Az [Event Processor Host](event-hubs-event-processor-host.md) egy .NET-osztály, amely leegyszerűsíti az események fogadását az Event Hubsból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az adott Event Hubs-eseményközpontokból. Az Event Processor Host használatával több fogadó között oszthatja el az eseményeket, még akkor is, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az Event Processor Host egyetlen fogadóhoz. A [horizontálisan felskálázott Eseményfeldolgozási](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) minta bemutatja, hogyan használhatja az Event Processor Host több fogadóval.
-
+Ez a szakasz bemutatja, hogyan írhat egy .NET Core-konzolalkalmazást, amely egy event hub használatával üzeneteket fogad a [Event Processor Host](event-hubs-event-processor-host.md). Az [Event Processor Host](event-hubs-event-processor-host.md) egy .NET-osztály, amely leegyszerűsíti az események fogadását az Event Hubsból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az adott Event Hubs-eseményközpontokból. Az Event Processor Host használatával több fogadó között oszthatja el az eseményeket, még akkor is, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az Event Processor Host egyetlen fogadóhoz.
 > [!NOTE]
 > Letöltheti ezt a rövid útmutatót mintaként a [GitHubról](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver), és miután lecserélte az `EventHubConnectionString`, `EventHubName`, `StorageAccountName`, `StorageAccountKey` és `StorageContainerName` sztringeket az eseményközpontja értékeire, futtathatja. Vagy létrehozhatja saját megoldását is az oktatóanyag lépései alapján.
 

@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/10/2018
+ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca4d5912d75dd7b33737f61737a209284b7a5a47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76d8bb816bdf229d13a49fa61337899a8bf29ecd
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60338517"
+ms.locfileid: "62098286"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Vészhelyreállítási feladatátvételi eljárás
 
@@ -35,34 +35,20 @@ Nincsenek figyelembe kell venni a DR-helyre feladatátvétele két kapcsolattíp
 >[!NOTE]
 >Az alábbi lépéseket kell hajtható végre, a nagyméretű HANA-példány egységen, amely DR egységét jelöli. 
  
-A legújabb replikált tárhelyet pillanatképek visszaállításához hajtsa végre az alábbi lépéseket: 
+A legújabb replikált tároló pillanatképek visszaállításához hajtsa végre a lépéseket a szakaszban felsorolt **"Hajtsa végre a teljes Vészhelyreállítási feladatátvétel - azure_hana_dr_failover"** a dokumentum [a Microsoft Azure-beli SAP Hana pillanatkép-eszközök ](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf). 
 
-1. Állítsa le a nem éles üzemi példány Hana HANA nagyméretű példányok, Ön által futtatott vész-helyreállítási egységen. Ennek oka az, egy előre telepített inaktív HANA éles példánya.
-1. Győződjön meg arról, hogy futnak-e egyetlen SAP HANA-folyamat. Ezt az ellenőrzést a következő paranccsal: `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`. A kimenet meg kell jelenítenie a **hdbdaemon** feldolgozása a leállított állapotba, és nincs más HANA folyamatok futó vagy elindított állapotú.
-1. A DR hely nagyméretű HANA-példány egységen a szkript végrehajtása *azure_hana_dr_failover.pl*. A parancsfájl által kért egy SAP HANA biztonsági azonosítója, vissza kell állítani. Kérés esetén írja be az egyik vagy az egyetlen SAP HANA biztonsági azonosítója, amely a rendszer replikálta és megőrződik a a *HANABackupCustomerDetails.txt* fájl a nagyméretű HANA-példány egységen a DR-helyen. 
+Ha több SAP HANA-példányok feladatátvételt szeretne használni, több alkalommal a azure_hana_dr_failover parancs futtatásához szükséges. Kérés esetén írja be a SAP HANA biztonsági azonosító átadja a feladatokat, és állítsa vissza. 
 
-      Több SAP HANA-példányok feladatátvételt szeretne használni, ha több alkalommal a parancsfájl futtatásához szükséges. Kérés esetén írja be a SAP HANA biztonsági azonosító átadja a feladatokat, és állítsa vissza. A művelet befejeződött a parancsfájl a csatlakoztatási pontokról a nagyméretű HANA-példány egység felvett kötetek látható. Ez a lista tartalmazza, valamint a visszaállított DR köteteket.
 
-1. A visszaállított vész-helyreállítási kötet csatlakoztatási parancsokkal Linux operációs rendszer, a nagyméretű HANA-példány egység a vész-helyreállítási helyként. 
-1. Indítsa el az inaktív SAP HANA éles üzemelő példányok.
-1. Ha úgy döntött, hogy másolja a tranzakciós napló biztonsági mentési naplók csökkenteni az RPO, kell ezeket a tranzakciós napló biztonsági mentéseket egyesítse az újonnan csatlakoztatott DR/hana/logbackups könyvtár. Ne írja felül a meglévő biztonsági másolatok. Másolja az újabb biztonsági mentések, amelyek nem replikálta a legutóbbi replikációs tárolási pillanatkép.
-1. A pillanatképek replikálta a /hana/shared/PRD kötetre, a Vészhelyreállítás Azure-régióban egyetlen fájljait is helyreállíthatja. 
-
-A tényleges replikációs kapcsolat befolyásolása nélkül is tesztelheti a Vészhelyreállítási feladatátvétel. Feladatátvételi teszt végrehajtásához kövesse a fenti lépéseket, 1. és 2, és folytassa a 3. a következő lépés.
+A tényleges replikációs kapcsolat befolyásolása nélkül is tesztelheti a Vészhelyreállítási feladatátvétel. Feladatátvételi teszt végrehajtásához kövesse **"DR feladatátvételének - azure_hana_test_dr_failover ellenőrzést végez a"** a dokumentum [a Microsoft Azure-beli SAP HANA eszközök pillanatfelvétel](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf). 
 
 >[!IMPORTANT]
->Tegye *nem* éles tranzakciók futtassa a folyamatot a DR helyen létrehozott példányon **tesztelési feladatátvétel** a szkript jelent meg a 3. lépésben. Ez a parancs létrehoz egy csoportot kötetek, amelyek semmiféle kapcsolatban nem az elsődleges helyhez. Ennek eredményeképpen a szinkronizálás az elsődleges hely van *nem* lehetséges. 
+>Tegye *nem* éles tranzakciók futtassa a folyamatot a DR helyen létrehozott példányon **tesztelési feladatátvétel**. A parancs azure_hana_test_dr_failover jönnek létre a köteteket, amelyek semmiféle kapcsolatban nem az elsődleges helyre. Ennek eredményeképpen a szinkronizálás az elsődleges hely van *nem* lehetséges. 
 
-A feladatátvételi teszthez. 3. lépés:
+Több SAP HANA-példányok tesztelni szeretne használni, ha több alkalommal a parancsfájl futtatásához szükséges. Kérés esetén írja be a feladatátvételhez tesztelni kívánt példány SAP HANA biztonsági azonosítója. 
 
-A DR hely nagyméretű HANA-példány egységen a szkript végrehajtása **azure_hana_test_dr_failover.pl**. Ez a szkript akkor *nem* leállítása folyamatban van a replikációs kapcsolatot az elsődleges hely és a DR-webhely között. Ehelyett ez a szkript a DR köteteinek a Klónozás. Után a Klónozási folyamat sikeres, a klónozott kötetek helyreállítása a legutolsó pillanatfelvétel állapota és a DR egység majd csatlakoztatva. A parancsfájl által kért egy SAP HANA biztonsági azonosítója, vissza kell állítani. Írjon be egy vagy az egyetlen SAP HANA biztonsági azonosítója, amely a rendszer replikálta és megőrződik a a *HANABackupCustomerDetails.txt* fájl a nagyméretű HANA-példány egységen a DR-helyen. 
-
-Több SAP HANA-példányok tesztelni szeretne használni, ha több alkalommal a parancsfájl futtatásához szükséges. Kérés esetén írja be a feladatátvételhez tesztelni kívánt példány SAP HANA biztonsági azonosítója. Befejezéskor a parancsfájl a csatlakoztatási pontok, a nagyméretű HANA-példány egység felvett kötetek listáját tartalmazza. Ez a lista tartalmazza a klónozott DR köteteket is.
-
-Folytassa a 4. lépés.
-
-   >[!NOTE]
-   >Ha átadja a feladatokat a DR helyet, hogy néhány adat, amely órája törölték, és a DR-kötetek kell beállítani egy korábbi pillanatkép kell mentési van szüksége, ez az eljárás alkalmazható. 
+>[!NOTE]
+>Ha átadja a feladatokat a DR hely mentési néhány órával ezelőtt törölt adatokat, és a DR-kötetek kell beállítani egy korábbi pillanatkép kell módosítania, ez az eljárás alkalmazható. 
 
 1. Állítsa le a nem éles üzemi példány Hana HANA nagyméretű példányok, Ön által futtatott vész-helyreállítási egységen. Ennek oka az, egy előre telepített inaktív HANA éles példánya.
 1. Győződjön meg arról, hogy futnak-e egyetlen SAP HANA-folyamat. Ezt az ellenőrzést a következő paranccsal: `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`. A kimenet meg kell jelenítenie a **hdbdaemon** feldolgozása a leállított állapotba, és nincs más HANA folyamatok futó vagy elindított állapotú.
@@ -121,34 +107,8 @@ Ez a lépés a feladatütemezés:
 
 ## <a name="monitor-disaster-recovery-replication"></a>Vész-helyreállítási replikálás figyeléséről
 
-A storage replikáció folyamatának állapotát figyelemmel hajtsa végre a parancsprogramot `azure_hana_replication_status.pl`. Ez a szkript a várt módon működik a vész-helyreállítási hely futó egységből kell futtatni. A parancsfájl működik, függetlenül attól, hogy replikálás aktív-e. A parancsfájlt a vész-helyreállítási hely található a bérlő minden nagyméretű HANA-példány egységéhez. A rendszerindító kötet kapcsolatos részletek beszerzése érdekében nem használható.
+A storage replikáció folyamatának állapotát figyelemmel hajtsa végre a parancsprogramot `azure_hana_replication_status`. Ez a parancs a várt módon működik a vész-helyreállítási hely futó egységből kell futtatni. A parancs működik, függetlenül attól, hogy replikálás aktív-e. A parancs futtatható a vész-helyreállítási hely található a bérlő minden nagyméretű HANA-példány egységéhez. A rendszerindító kötet kapcsolatos részletek beszerzése érdekében nem használható. A parancs és a kimenetét részleteit olvassa el a **"DR replikációs állapotának beolvasása – azure_hana_replication_status"** a dokumentum [a Microsoft Azure-beli SAP HANA eszközök pillanatfelvétel](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf).
 
-Hívja meg a szkript a következő paranccsal:
-```
-./azure_hana_replication_status.pl
-```
 
-A kimenet van bontásban, kötet, a következő szakaszokra osztottuk:  
-
-- Kapcsolat állapota
-- Az aktuális replikációs tevékenység
-- Replikált pillanatképe 
-- A legújabb pillanatkép mérete
-- Aktuális késéssel-pillanatképek közötti (az utolsó befejezett pillanatkép-replikációt között, és most)
-
-A hivatkozás állapota **aktív** , kivéve ha helyek közötti kapcsolat nem működik, vagy nincs az aktuálisan folyamatban lévő feladatátvételi esemény. A replikálási műveletek címek adatok jelenleg éppen replikált vagy inaktív-e, vagy ha más tevékenységek pillanatnyilag folyamatban levő a hivatkozás. A legutolsó pillanatfelvétel replikált csak meg kell jelennie `snapmirror…`. Ekkor megjelenik a legutolsó pillanatfelvétel méretét. Végül a késéssel jelenik meg. Az időbeli idejét a replikáció befejeztével ütemezett replikálás jelöli. Késéssel lehet nagyobb, mint a adatreplikációt, különösen a kezdeti replikációt, és a egy órát, annak ellenére, hogy a replikáció. Az időbeli továbbra is fennáll, növelheti a folyamatban lévő replikáció befejezéséig.
-
-Az alábbiakban látható egy példa a kimenetre:
-
-```
-hana_data_hm3_mnt00002_t020_dp
--------------------------------------------------
-Link Status: Broken-Off
-Current Replication Activity: Idle
-Latest Snapshot Replicated: snapmirror.c169b434-75c0-11e6-9903-00a098a13ceb_2154095454.2017-04-21_051515
-Size of Latest Snapshot Replicated: 244KB
-Current Lag Time between snapshots: -   ***Less than 90 minutes is acceptable***
-```
-
-**Következő lépések**
+## <a name="next-steps"></a>További lépések
 - Tekintse meg [Monitorozás és hibaelhárítás a HANA ügyféloldali](hana-monitor-troubleshoot.md).

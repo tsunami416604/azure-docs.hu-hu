@@ -11,11 +11,11 @@ ms.date: 06/28/2018
 ms.author: brjohnst
 ms.custom: seodec2018
 ms.openlocfilehash: c07a0c8f5440033455c69fe40806adf9b548c16f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631154"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61126959"
 ---
 # <a name="api-versions-in-azure-search"></a>Az Azure Search API-verziók
 Az Azure Search rendszeresen funkciófrissítések bevezetésekor. Előfordulhat, de nem mindig a frissítések megkövetelik az előző verziókkal való kompatibilitás megőrzése érdekében API új verziója. Közzététel az új verzió lehetővé teszi szabályozhatja, mikor és hogyan keresési szolgáltatásfrissítések integrálása a kódban.

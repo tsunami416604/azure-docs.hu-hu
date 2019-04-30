@@ -11,11 +11,11 @@ ms.date: 08/13/2018
 ms.author: twounder
 ms.reviewer: twounder
 ms.openlocfilehash: 9547380d4636c1a72add9dab7a9eed850abd0307
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57889709"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61474997"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Mi az új Azure SQL Data warehouse? 2018. augusztus
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 augusztus.

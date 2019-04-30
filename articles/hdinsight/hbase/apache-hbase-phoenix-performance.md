@@ -2,19 +2,27 @@
 title: Az Azure HDInsight Phoenix-teljesítmény
 description: Ajánlott eljárások a Phoenix teljesítmény optimalizálása érdekében.
 services: hdinsight
+documentationcenter: ''
+tags: azure-portal
 author: ashishthaps
-ms.reviewer: jasonh
+manager: jhubbard
+editor: cgronlun
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: ashishth
-ms.openlocfilehash: da227151dd056dd5e852ae8790b6f20ac3c0c790
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: MT
+ms.workload: big-data
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+origin.date: 01/22/2018
+ms.date: 01/14/2019
+ms.author: v-yiso
+ms.openlocfilehash: 4fc4d1843ddb8d007ca062d928ebbddf90909583
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653305"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62114307"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Az Apache Phoenix teljesítményével kapcsolatos ajánlott eljárások
 
@@ -32,30 +40,30 @@ A Phoenix egy tábla definiálva elsődleges kulcs határozza meg, hogyan a rowk
 
 Például egy tábla a névjegyek, a Utónév, utolsó nevét, telefonszámát és címét, mind az azonos oszlopcsalád. Megadhat egy elsődleges kulcs egy növekvő sorozatszám alapján:
 
-|rowkey tulajdonságok esetén|       Cím|   telefon| Keresztnév| Vezetéknév|
+|rowkey tulajdonságok esetén|       cím|   telefon| Keresztnév| Vezetéknév|
 |------|--------------------|--------------|-------------|--------------|
-|  1000|A San Gabriel Dr 1111.|1-425-000-0002|    János|Dole|
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    János|Dole|
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji|
 
 Azonban ha gyakori lekérdezési pedig Vezetéknév szerint az elsődleges kulcs nem végezhet, mert egyes lekérdezések teljes tábla beolvasásával minden lastName értékének olvasásához szükséges. Ehelyett a lastName, firstName és társadalombiztosítási szám oszlop elsődleges kulcs adhatja meg. Ebben az utolsó oszlopban az elem egyértelműségének biztosításához két lakosai ugyanazzal a névvel, például a father és lányomtól ugyanaz címen.
 
-|rowkey tulajdonságok esetén|       Cím|   telefon| Keresztnév| Vezetéknév| socialSecurityNum |
+|rowkey tulajdonságok esetén|       cím|   telefon| Keresztnév| Vezetéknév| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  1000|A San Gabriel Dr 1111.|1-425-000-0002|    János|Dole| 111 |
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    János|Dole| 111 |
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 Ez az új elsődleges kulcs a sor a Phoenix által létrehozott kulcsok a következő lesz:
 
-|rowkey tulajdonságok esetén|       Cím|   telefon| Keresztnév| Vezetéknév| socialSecurityNum |
+|rowkey tulajdonságok esetén|       cím|   telefon| Keresztnév| Vezetéknév| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Dole – John-111|A San Gabriel Dr 1111.|1-425-000-0002|    János|Dole| 111 |
+|  Dole – John-111|1111 San Gabriel Dr.|1-425-000-0002|    János|Dole| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 A fenti első sorában az adatokat a rowkey tulajdonságok esetén jelölt látható módon:
 
-|rowkey tulajdonságok esetén|       kulcs|   érték| 
+|rowkey tulajdonságok esetén|       key|   value| 
 |------|--------------------|---|
-|  Dole – John-111|Cím |A San Gabriel Dr 1111.|  
+|  Dole – John-111|cím |1111 San Gabriel Dr.|  
 |  Dole – John-111|telefon |1-425-000-0002|  
 |  Dole – John-111|Keresztnév |János|  
 |  Dole – John-111|Vezetéknév |Dole|  
@@ -114,9 +122,9 @@ Az érintett indexek közé tartoznak a sor mellett az indexelt értékek adatai
 
 A példában például létrehozhat egy másodlagos indexet csak socialSecurityNum oszlopában táblázatban forduljon. A másodlagos index lenne felgyorsítása socialSecurityNum értékek szerint szűrő lekérdezéseket, de más mezőértékek beolvasása lesz szükség, egy másik olvassa el a fő táblázaton.
 
-|rowkey tulajdonságok esetén|       Cím|   telefon| Keresztnév| Vezetéknév| socialSecurityNum |
+|rowkey tulajdonságok esetén|       cím|   telefon| Keresztnév| Vezetéknév| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Dole – John-111|A San Gabriel Dr 1111.|1-425-000-0002|    János|Dole| 111 |
+|  Dole – John-111|1111 San Gabriel Dr.|1-425-000-0002|    János|Dole| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 Ha szeretné általában, a Vezetéknév és az socialSecurityNum megadott lastName kereséséhez, létrehozhat egy kezelt index, amely tartalmazza a Keresztnév és Vezetéknév szerint a tényleges adatok az indextáblában:

@@ -2,20 +2,21 @@
 title: Séma áttelepítése az SQL Data Warehouse |} A Microsoft Docs
 description: A séma migrálása az Azure SQL Data Warehouse-megoldások fejlesztése a tippek.
 services: sql-data-warehouse
-author: jrowlandjones
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: jrj
+ms.component: implement
+origin.date: 04/17/2018
+ms.date: 10/15/2018
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 4139ea776f6947eeacf4620c3676606d6535dd2b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461684"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60748152"
 ---
 # <a name="migrate-your-schemas-to-sql-data-warehouse"></a>A sémák áttelepítése az SQL Data Warehouse
 Útmutató az SQL Data Warehouse-ba való migrálás az SQL-sémák. 
@@ -40,13 +41,6 @@ A legjobb teljesítmény érdekében minimalizálja a táblák sor hossza. Mivel
 
 A tábla sor szélesség a PolyBase esetében 1 MB.  Adatok betöltése az SQL Data Warehouse a polybase-zel tervezi, ha frissíteni szeretné, hogy kevesebb mint 1 MB maximális szélessége a táblák. 
 
-<!--
-- For example, this table uses variable length data but the largest possible size of the row is still less than 1 MB. PolyBase will load data into this table.
-
-- This table uses variable length data and the defined row width is less than one MB. When loading rows, PolyBase allocates the full length of the variable-length data. The full length of this row is greater than one MB.  PolyBase will not load data into this table.  
-
--->
-
 ## <a name="specify-the-distribution-option"></a>A telepítési lehetőség kiválasztása
 Az SQL Data Warehouse egy elosztott adatbázis rendszer. Minden tábla elosztott vagy replikált számítási csomópontjai között. Nincs a table kapcsoló, amely lehetővé teszi a adja meg, hogyan terjesztheti az adatait. A választási lehetőségek: Ciklikus időszeleteléses replikálja, vagy kivonatoló elosztott. Minden egyes vannak előnyei és hátrányai. Ha nem adja meg a-terjesztési beállítást, az SQL Data Warehouse alapértelmezett használjon ciklikus időszeletelést.
 
@@ -55,7 +49,6 @@ Az SQL Data Warehouse egy elosztott adatbázis rendszer. Minden tábla elosztott
 - Kivonatterjesztés a kivonatolási függvény használatával az összes csomópont között osztja el a sorokat. Mivel a célja, hogy a lekérdezési teljesítményt nyújtanak nagy táblák elosztott kivonattáblák, nem az SQL Data Warehouse legfontosabb céljait segítik. Ez a beállítás szükséges néhány tervezi, hogy válassza ki a legjobb oszlopot, amelyen az adatok elosztására. Azonban ha nem a legjobb oszlop először, könnyen újra juttathatja el az adatokat egy másik oszlop alapján. 
 
 Válassza ki a legjobb-terjesztési beállítást minden egyes, lásd: [elosztott táblákról](sql-data-warehouse-tables-distribute.md).
-
 
 ## <a name="next-steps"></a>További lépések
 Miután sikeresen migrálva az adatbázissémát az SQL Data Warehouse, folytassa a következő cikkekben:
@@ -78,5 +71,6 @@ Az SQL Data Warehouse – gyakorlati tanácsok kapcsolatos további információ
 
 <!--MSDN references-->
 
-
 <!--Other Web references-->
+
+<!--Update_Description: update meta properties, add new content about Migrate schemas to SQL Data Warehouse -->

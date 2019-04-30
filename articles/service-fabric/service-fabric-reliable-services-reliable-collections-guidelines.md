@@ -15,11 +15,11 @@ ms.workload: required
 ms.date: 12/10/2017
 ms.author: aljo
 ms.openlocfilehash: 810427c394c3912142e0a21cf1b5c29b81620afb
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549020"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60774097"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Irányelvek és javaslatok az Azure Service Fabric megbízható gyűjteményeihez
 Ez a szakasz útmutatást nyújt a a Reliable State Manager és a Reliable Collections használata. A célja segítség a felhasználóknak a közös alkalmazásmegoldásokra elkerülése érdekében.

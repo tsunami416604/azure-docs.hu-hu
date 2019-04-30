@@ -14,11 +14,11 @@ ms.author: abnarain
 manager: craigg
 robots: noindex
 ms.openlocfilehash: 0ddc235064d99e9d6385ab48e78f893952eefa15
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487481"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61254659"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -48,7 +48,7 @@ A következő forgatókönyv részletes útmutatást nyújt a .NET egyéni tevé
 * Az [Azure .NET SDK](https://azure.microsoft.com/downloads/) letöltése és telepítése.
 
 ### <a name="azure-batch-prerequisites"></a>Az Azure Batch előfeltételei
-A forgatókönyv futtatása az Azure Batch számítási erőforrásai használatával egyéni .NET-tevékenységek. **Az Azure Batch** van egy platform szolgáltatást futtató nagy méretű párhuzamos és nagy teljesítményű számítástechnika (HPC) alkalmazásokat futtathat hatékonyan a felhőben. Az Azure Batch számításigényes munkák futtatását egy felügyelt ütemezi **virtuális gépek gyűjteményét**, és képes automatikusan méretezni a számítási erőforrásokat a feladatok igényeinek kielégítése érdekében. Lásd: [Azure Batch alapjai] [ batch-technical-overview] cikk részletes áttekintést az Azure Batch szolgáltatás.
+A forgatókönyv futtatása az Azure Batch számítási erőforrásai használatával egyéni .NET-tevékenységek. Az **Azure Batch** platformszolgáltatás lehetővé teszi, hogy hatékonyan futtasson nagyméretű párhuzamos és nagy teljesítményű feldolgozási (HPC) alkalmazásokat a felhőben. Az Azure Batch számításigényes munkák futtatását egy felügyelt ütemezi **virtuális gépek gyűjteményét**, és képes automatikusan méretezni a számítási erőforrásokat a feladatok igényeinek kielégítése érdekében. Lásd: [Azure Batch alapjai] [ batch-technical-overview] cikk részletes áttekintést az Azure Batch szolgáltatás.
 
 Az oktatóanyag az Azure Batch-fiók létrehozása készletét, virtuális gépeket. A lépések a következők:
 

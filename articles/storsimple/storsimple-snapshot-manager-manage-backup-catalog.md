@@ -1,6 +1,6 @@
 ---
-title: StorSimple Snapshot Manager biztonságimásolat-katalógus |} Microsoft Docs
-description: Ismerteti a StorSimple Snapshot Manager MMC beépülő modul segítségével megtekintheti, és a biztonságimásolat-katalógus kezelése.
+title: A StorSimple Snapshot Manager biztonságimásolat-katalógus |} A Microsoft Docs
+description: Megtekintéséhez és a biztonságimásolat-katalógus kezelése a StorSimple Snapshot Manager MMC beépülő modul használatát ismerteti.
 services: storsimple
 documentationcenter: NA
 author: SharS
@@ -14,154 +14,154 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.openlocfilehash: b97753e6f1b67e3c8d247281c5e5208033a56eca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc24ebd59fd977ef35766c304aec5824e2c7bb4c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23876711"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127196"
 ---
-# <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>Használja a StorSimple Snapshot Manager a biztonságimásolat-katalógus kezelése
+# <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>Használja a StorSimple Snapshot Manager, a biztonságimásolat-katalógus kezelése
 
 ## <a name="overview"></a>Áttekintés
-Az elsődleges a StorSimple Snapshot Manager funkciója lehetővé teszi a StorSimple-köteteket alkalmazáskonzisztens biztonsági másolatot készíteni a pillanatfelvételek formájában. A pillanatképek majd szereplő nevű XML-fájl egy *biztonságimásolat-katalógus*. A biztonságimásolat-katalógus rendezi a pillanatképek a kötet csoportot, majd a helyi pillanatfelvétel és felhőbeli pillanatfelvétel.
+A StorSimple Snapshot Manager elsődleges funkciója, lehetővé téve a StorSimple-kötetek alkalmazáskonzisztens biztonsági másolatot készíteni a pillanatfelvételek formájában. A pillanatképek szerepelnek majd nevű XML-fájl egy *biztonságimásolat-katalógus*. A biztonságimásolat-katalógus rendszerezi a pillanatképek a kötet csoportot, majd a helyi pillanatfelvétel és felhőbeli pillanatkép.
 
-Ez az oktatóanyag leírja, hogyan használhatja a **biztonságimásolat-katalógus** csomópont a következő feladatok elvégzéséhez:
+Ez az oktatóanyag leírja, hogyan használhatja a **biztonságimásolat-katalógus** csomópont hajtsa végre a következő feladatokat:
 
-* A kötet visszaállítása
+* Egy kötet visszaállítása
 * Egy kötet vagy kötet klónozása
-* Biztonsági
-* A fájl helyreállításához
+* A biztonsági másolat törlése
+* Fájl helyreállítása
 * A Storsimple Snapshot Manager-adatbázis visszaállítása
 
-A biztonságimásolat-katalógus kibontásával megtekintheti a **biztonságimásolat-katalógus** csomópontja a **hatókör** ablaktáblán, és a kötet csoport majd bővíteni.
+A biztonságimásolat-katalógus kibontásával is megtekintheti a **biztonságimásolat-katalógus** csomópontja a **hatókör** panelre, és ezután kibontása a kötet csoport.
 
-* Ha a kötet csoport nevére kattint a **eredmények** ablaktábla megjeleníti azokat a helyi pillanatképeket és felhőbeli pillanatképeket kötet csoport számát. 
-* Ha **helyi pillanatfelvétel** vagy **felhőalapú pillanatfelvétel**, a **eredmények** ablaktábla megjeleníti azokat a következő információkat minden egyes biztonsági mentési pillanatképet (attól függően a  **Megtekintése** beállítások):
+* Ha kattint, a kötet csoport nevét, a **eredmények** panelen a helyi pillanatképeket és felhőbeli pillanatképek a kötet csoport elérhető számát jeleníti meg. 
+* Ha rákattint **helyi pillanatkép** vagy **Felhőbeli pillanatkép**, a **eredmények** panel megjeleníti az egyes biztonsági mentési pillanatképet a következő információkat (attól függően, a  **Megtekintése** beállításokat):
   
-  * **Név** – az idő során létrehozott pillanatképen.
-  * **Típus** – hogy ez-e a helyi pillanatfelvétel vagy egy felhőalapú pillanatfelvétel.
-  * **Tulajdonos** – a tartalom tulajdonosa. 
-  * **Rendelkezésre álló** – hogy jelenleg rendelkezésre áll a pillanatkép. **Igaz** jelzi, hogy a pillanatkép érhető el, és visszaállítása végezhető el; **Hamis** azt jelzi, hogy a pillanatkép nem érhető el. 
-  * **Importált** – hogy a biztonsági mentés lett importálva. **Igaz** azt jelzi, hogy a biztonsági mentés a StorSimple Device Manager szolgáltatásból importálta az eszköz konfigurálása a StorSimple Snapshot Manager; időpontjában **Hamis** azt jelzi, hogy nem lett importálva, de a StorSimple Snapshot Manager által lett létrehozva. (Egyszerűbb azonosítani egy importált kötet csoport egy utótagot ad hozzá, amely azonosítja az eszközt, amelyből a kötet csoport lett importálva, mert.)
+  * **Név** – az idő a pillanatkép.
+  * **Típus** – Ez a helyi pillanatfelvétel és felhőbeli pillanatkép-e.
+  * **Tulajdonos** – a tartalom tulajdonosához. 
+  * **Rendelkezésre álló** – jelenleg érhető el a pillanatkép-e. **Igaz** jelzi, hogy a pillanatkép érhető el, és vissza tudja állítani; **Hamis** azt jelzi, hogy a pillanatkép már nem érhető el. 
+  * **Importált** – a biztonsági mentés importálta-e. **Igaz** azt jelzi, hogy a biztonsági mentés időpontjában az eszközt a StorSimple Snapshot Managerben; lett konfigurálva a StorSimple-Eszközkezelő szolgáltatás szolgáltatásból importált **Hamis** azt jelzi, hogy azt nem lett importálva, de a StorSimple Snapshot Managerben lett létrehozva. (Könnyen azonosíthatja az importált kötetcsoport, mert egy utótagot ad hozzá, amely azonosítja, hogy az eszköz, amelyről a kötet csoport lett importálva.)
     
-    ![Biztonságimásolat-katalógus](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Backup_catalog.png)
-* Ha kibontja **helyi pillanatfelvétel** vagy **felhőalapú pillanatfelvétel**, az egyes pillanatkép nevét, majd kattintson a **eredmények** ablaktábla megjeleníti azokat a következő információkat a pillanatkép kijelölt:
+    ![a biztonságimásolat-katalógus](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Backup_catalog.png)
+* Ha kibontja **helyi pillanatkép** vagy **Felhőbeli pillanatkép**, és a egy pillanatkép egyedi nevét, majd kattintson a **eredmények** panelen látható a következő információkat a pillanatkép a kijelölt:
   
   * **Név** – a kötet meghajtóbetűjellel azonosított. 
-  * **Helyi** – a meghajtó (ha elérhető) helyi nevét. 
-  * **Eszköz** – a név az eszköz, amelyen a köteten található. 
-  * **Rendelkezésre álló** – hogy jelenleg rendelkezésre áll a pillanatkép. **Igaz** jelzi, hogy a pillanatkép érhető el, és visszaállítása végezhető el; **Hamis** azt jelzi, hogy a pillanatkép nem érhető el. 
+  * **Helyi név** – a meghajtó (ha elérhető) helyi nevét. 
+  * **Eszköz** – az a név az eszköz, amelyen a köteten található. 
+  * **Rendelkezésre álló** – jelenleg érhető el a pillanatkép-e. **Igaz** jelzi, hogy a pillanatkép érhető el, és vissza tudja állítani; **Hamis** azt jelzi, hogy a pillanatkép már nem érhető el. 
 
-## <a name="restore-a-volume"></a>A kötet visszaállítása
+## <a name="restore-a-volume"></a>Egy kötet visszaállítása
 A következő eljárással egy kötetet biztonsági másolatból történő visszaállítását.
 
 #### <a name="prerequisites"></a>Előfeltételek
-Ha még nem tette meg, hozzon létre egy kötet és a kötet csoport, és törölje a kötet. Alapértelmezés szerint a StorSimple Snapshot Manager biztonsági mentést készít egy kötet előtt, amely lehetővé teszi annak törölhető. A okokból előfordulhat, hogy az adatveszteség, ha a kötet véletlenül törölték, vagy ha az adatokat helyre kell állítani a bármilyen okból kell. 
+Ha még nem tette meg, hozzon létre egy kötetet és egy kötetcsoport, és ezután törölje a kötetet. Alapértelmezés szerint a StorSimple Snapshot Managerrel biztonsági másolatot készít egy kötet előtt, amely lehetővé teszi annak törölhető. Ez az eszközeikről is megakadályozni az adatvesztést, ha a kötet véletlenül törölnek, vagy ha bármilyen okból lehet helyreállítani az adatokat kell. 
 
-StorSimple Snapshot Manager a következő üzenetet jeleníti meg, amikor létrehozza a megelőző biztonsági mentés.
+A StorSimple Snapshot Manager a következő üzenetet jeleníti meg, amikor létrehozza a elővigyázatosság biztonsági mentés.
 
-![Automatikus pillanatkép üzenet](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Automatic_snap.png) 
+![Automatikus pillanatfelvétel-készítési üzenet](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Automatic_snap.png) 
 
 > [!IMPORTANT]
-> A kötet olyan kötet csoport részét képező nem törölhető. A törlési beállítás nem érhető el. <br>
+> Egy kötet csoport részét képező kötet nem lehet törölni. A törlési beállítás nem érhető el. <br>
 > 
 > 
 
 #### <a name="to-restore-a-volume"></a>A kötet visszaállítása
-1. Kattintson az asztal ikonra kattintva indítsa el a StorSimple Snapshot Manager. 
-2. Az a **hatókör** ablaktáblában bontsa ki a **biztonságimásolat-katalógus** csomópontot, bontsa ki a kötet csoportot, és kattintson a **helyi pillanatképeket** vagy **felhőalapú pillanatfelvételek**. A biztonsági mentési pillanatképek listája jelenik meg a **eredmények** ablaktáblán.
-3. Keresse meg a biztonsági mentésből szeretné visszaállítani, kattintson a jobb gombbal, és kattintson **visszaállítása**.
+1. Kattintson az asztali ikonra a StorSimple Snapshot Manager elindításához. 
+2. Az a **hatókör** ablaktáblán bontsa ki a **biztonságimásolat-katalógus** csomópontot, bontsa ki a kötet csoportot, és kattintson **helyi pillanatképeket** vagy **Felhőbeli pillanatképek**. Megjelenik egy biztonsági mentési pillanatképek listáját a **eredmények** ablaktáblán.
+3. Keresse meg a használt biztonsági másolatot vissza kívánja állítani, kattintson a jobb gombbal, és kattintson **visszaállítása**.
    
-    ![Állítsa vissza a biztonságimásolat-katalógus](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_BU_catalog.png) 
-4. A jóváhagyó lapon tekintse át a részletes adatait, típus **megerősítése**, és kattintson a **OK**. StorSimple Snapshot Manager a biztonsági másolat használatával állítsa vissza a kötetet.
+    ![A biztonságimásolat-katalógus visszaállítása](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_BU_catalog.png) 
+4. A megerősítő oldalon tekintse át a részleteket, típus **megerősítése**, és kattintson a **OK**. A StorSimple Snapshot Manager használ a biztonsági mentés a kötet visszaállítása.
    
-    ![Állítsa vissza a jóváhagyást kérő üzenet](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_volume_msg.png) 
-5. Figyelheti a visszaállítási művelet futtatása közben. Az a **hatókör** ablaktáblában bontsa ki a **feladatok** csomópontra, majd **futtató**. A feladat részletei megjelennek a **eredmények** ablaktáblán. Ha a visszaállítási feladat befejeződött, a feladat adatai átkerülnek a **utolsó 24 óra** listája.
+    ![Megerősítő üzenet visszaállítása](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_volume_msg.png) 
+5. Figyelheti a visszaállítási művelet futása során. Az a **hatókör** ablaktáblán bontsa ki a **feladatok** csomópontban, és kattintson **futó**. A feladat részletei megjelennek a **eredmények** ablaktáblán. Ha a visszaállítási feladat befejeződött, a program átviszi a feladat részleteit a **az elmúlt 24 órából** listája.
 
 ## <a name="clone-a-volume-or-volume-group"></a>Egy kötet vagy kötet klónozása
-A következő eljárással hozhat létre egy kötet vagy a kötet csoport duplikált (Klónozás).
+Az alábbi eljárással hozhat létre egy kötetet vagy kötetcsoport ismétlődése (Klónozás).
 
 #### <a name="to-clone-a-volume-or-volume-group"></a>Egy kötet vagy kötet klónozása
-1. Kattintson az asztal ikonra kattintva indítsa el a StorSimple Snapshot Manager.
-2. Az a **hatókör** ablaktáblában bontsa ki a **biztonságimásolat-katalógus** csomópontot, bontsa ki a kötet csoportot, és kattintson a **felhőalapú pillanatfelvételek**. A biztonsági mentések listája jelenik meg a **eredmények** ablaktáblán.
-3. Keresse meg a kötet vagy klónozáshoz, kattintson a jobb gombbal a kötetre vagy a kötet csoport nevét, majd kattintson a kívánt kötet csoportot **Klónozás**. A **klón felhő pillanatkép** párbeszédpanel jelenik meg.
+1. Kattintson az asztali ikonra a StorSimple Snapshot Manager elindításához.
+2. Az a **hatókör** ablaktáblán bontsa ki a **biztonságimásolat-katalógus** csomópontot, bontsa ki a kötet csoportot, és kattintson **Felhőbeli pillanatképek**. A biztonsági mentések egy lista jelenik meg a **eredmények** ablaktáblán.
+3. Keresse meg a kötet vagy a klónozza, kattintson a jobb gombbal a kötetre vagy a kötet neve, és kattintson a kívánt kötetcsoport **Klónozás**. A **Klónozás Felhőbeli pillanatkép** párbeszédpanel jelenik meg.
    
-    ![Egy felhőalapú pillanatfelvétel klónozása](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Clone.png) 
-4. Fejezze be a **klón felhő pillanatkép** párbeszédpanel az alábbiak szerint: 
+    ![Klónozza a felhőbeli pillanatkép](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Clone.png) 
+4. Végezze el a **Klónozás Felhőbeli pillanatkép** párbeszédpanel az alábbiak szerint: 
    
-   1. Az a **neve** szövegmezőbe írja be a klónozott kötet nevét. Ez a név fog megjelenni a **kötetek** csomópont. 
-   2. (Nem kötelező) jelölje ki **meghajtó**, és a legördülő listából válassza ki egy meghajtóbetűjelet.
-   3. (Nem kötelező) jelölje ki **mappa (NTFS)**, és írja be a mappa elérési útját vagy kattintson a Tallózás gombra, és jelölje ki a mappa helyét. 
+   1. Az a **neve** szövegmezőbe írjon be egy nevet a klónozott kötet. Ez a név fog megjelenni a **kötetek** csomópont. 
+   2. (Választható) válassza **meghajtó**, és ezután válasszon egy meghajtóbetűjelet a legördülő listából.
+   3. (Választható) válassza **mappa (NTFS)**, és írja be a mappa elérési útja, vagy kattintson a Tallózás gombra, és válassza ki a mappa helyét. 
    4. Kattintson a **Create** (Létrehozás) gombra.
-5. A Klónozási folyamat befejezésekor inicializálnia kell a klónozott kötet. Indítsa el a Kiszolgálókezelőt, és indítsa el a Lemezkezelés eszközben. Részletes útmutatásért lásd: [csatlakoztassa köteteket](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). Az inicializált, miután a kötet alatt jelenik meg a **kötetek** csomópontja a **hatókör** ablaktáblán. Ha nem látja a kötet felsorolt, a kötetek listájának frissítése (kattintson a jobb gombbal a **kötetek** csomópontra, majd **frissítése**).
+5. A Klónozási folyamat befejezésekor inicializálnia kell a klónozott kötet. Indítsa el a Kiszolgálókezelőt, és indítsa el a Lemezkezelés eszközben. Részletes útmutatásért lásd: [kötetek csatlakoztatása](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). Után inicializálva van, a kötet területen fog megjelenni a **kötetek** csomópontja a **hatókör** ablaktáblán. Ha nem látja, akkor a kötet felsorolt, a kötetek listájának frissítése (kattintson a jobb gombbal a **kötetek** csomópontban, és kattintson **frissítése**).
 
-## <a name="delete-a-backup"></a>Biztonsági
-A következő eljárással pillanatkép törlése a biztonságimásolat-katalógusból. 
+## <a name="delete-a-backup"></a>A biztonsági másolat törlése
+Az alábbi eljárás segítségével egy pillanatképet törölni a biztonságimásolat-katalógust. 
 
 > [!NOTE]
-> A pillanatképek törlésével törli a pillanatkép társított a biztonsági másolatban szereplő adatokkal. Azonban törli az adatokat a felhőből az a folyamat eltarthat egy ideig.<br>
+> Pillanatkép törlése törli a pillanatkép tartozó biztonsági adatokat. Azonban az adatok a felhőből törlése, a folyamat eltarthat egy ideig.<br>
 
 
-#### <a name="to-delete-a-backup"></a>Biztonsági
-1. Kattintson az asztal ikonra kattintva indítsa el a StorSimple Snapshot Manager.
-2. Az a **hatókör** ablaktáblában bontsa ki a **biztonságimásolat-katalógus** csomópontot, bontsa ki a kötet csoportot, és kattintson a **helyi pillanatképeket** vagy **felhőalapú pillanatfelvételek**. A pillanatképek listája jelenik meg a **eredmények** ablaktáblán.
+#### <a name="to-delete-a-backup"></a>Biztonsági másolat törlése
+1. Kattintson az asztali ikonra a StorSimple Snapshot Manager elindításához.
+2. Az a **hatókör** ablaktáblán bontsa ki a **biztonságimásolat-katalógus** csomópontot, bontsa ki a kötet csoportot, és kattintson **helyi pillanatképeket** vagy **Felhőbeli pillanatképek**. A pillanatképek listája jelenik meg a **eredmények** ablaktáblán.
 3. Kattintson a jobb gombbal a pillanatkép törlése, és kattintson a kívánt **törlése**.
-4. A jóváhagyást kérő üzenet megjelenésekor kattintson **OK**.
+4. A megerősítést kérő üzenet megjelenésekor kattintson **OK**.
 
-## <a name="recover-a-file"></a>A fájl helyreállításához
-Ha egy fájl véletlenül törli a kötetről, helyreállíthatja a fájl beolvasása, amely a törlés előtti dátumokat pillanatkép, a pillanatkép használatával klónozhatja a kötet, és majd a fájl másolása a klónozott kötetről, az eredeti köteten.
+## <a name="recover-a-file"></a>Fájl helyreállítása
+Ha véletlenül töröl egy fájlt a kötetről, helyreállíthatja a fájlt, amely a törlés előtti dátumok pillanatkép beolvasása, a pillanatkép a kötet egy klón létrehozására és majd a klónozott kötet a fájl az eredeti kötet másolását.
 
 #### <a name="prerequisites"></a>Előfeltételek
-Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik-e a kötet csoport aktuális biztonsági másolata. Törölje az egyik kötet csoport köteten tárolt fájl. Végezetül a következő lépésekkel visszaállítani a törölt fájlt a biztonsági mentésből. 
+Mielőtt elkezdené, győződjön meg arról, hogy a kötet csoport aktuális biztonsági másolata. Törölje az egyik kötet benne a köteteken tárolt fájlhoz. Végül a következő lépések használatával állítsa vissza a törölt fájlt a biztonsági másolatból. 
 
-#### <a name="to-recover-a-deleted-file"></a>A törölt fájl helyreállításához
-1. Kattintson a StorSimple Snapshot Manager ikonra az asztalon. A StorSimple Snapshot Manager console ablakban jelenik meg. 
-2. Az a **hatókör** ablaktáblában bontsa ki a **biztonságimásolat-katalógus** csomópont, és keresse meg a törölt fájlt tartalmazó pillanatképet. Ki kell jelölni általában csak a törlés előtt készült pillanatképet.
-3. A kötet, amelyet a klón található kattintson a jobb gombbal, majd kattintson **Klónozás**. A **klón felhő pillanatkép** párbeszédpanel jelenik meg.
+#### <a name="to-recover-a-deleted-file"></a>Egy törölt fájl helyreállítása
+1. Kattintson a StorSimple Snapshot Manager ikonra az asztalon. A StorSimple Snapshot Manager konzolablakban jelenik meg. 
+2. Az a **hatókör** ablaktáblán bontsa ki a **biztonságimásolat-katalógus** csomópontot, és tallózással keresse meg a törölt fájlt tartalmazó pillanatképet. Általában akkor válassza a törlés előtt készült pillanatképet.
+3. Keresse meg a kötet, amelyet szeretne klónozza, kattintson a jobb gombbal, majd kattintson **Klónozás**. A **Klónozás Felhőbeli pillanatkép** párbeszédpanel jelenik meg.
    
-    ![Egy felhőalapú pillanatfelvétel klónozása](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Clone.png) 
-4. Fejezze be a **klón felhő pillanatkép** párbeszédpanel az alábbiak szerint: 
+    ![Klónozza a felhőbeli pillanatkép](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Clone.png) 
+4. Végezze el a **Klónozás Felhőbeli pillanatkép** párbeszédpanel az alábbiak szerint: 
    
-   1. Az a **neve** szövegmezőbe írja be a klónozott kötet nevét. Ez a név fog megjelenni a **kötetek** csomópont. 
-   2. (Választható) Válassza ki **meghajtó**, és a legördülő listából válassza ki egy meghajtóbetűjelet. 
-   3. (Választható) Válassza ki **mappa (NTFS)**, és írja be a mappa elérési útját, vagy kattintson a **Tallózás** és a mappa helyének kiválasztására. 
+   1. Az a **neve** szövegmezőbe írjon be egy nevet a klónozott kötet. Ez a név fog megjelenni a **kötetek** csomópont. 
+   2. (Nem kötelező) Válassza ki **meghajtó**, és ezután válasszon egy meghajtóbetűjelet a legördülő listából. 
+   3. (Nem kötelező) Válassza ki **mappa (NTFS)**, és írja be a mappa elérési útját, vagy kattintson a **Tallózás** , és válassza ki a mappa helyét. 
    4. Kattintson a **Create** (Létrehozás) gombra. 
-5. A Klónozási folyamat befejezésekor inicializálnia kell a klónozott kötet. Indítsa el a Kiszolgálókezelőt, és indítsa el a Lemezkezelés eszközben. Részletes útmutatásért lásd: [csatlakoztassa köteteket](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). Az inicializált, miután a kötet alatt jelenik meg a **kötetek** csomópontja a **hatókör** ablaktáblán. 
+5. A Klónozási folyamat befejezésekor inicializálnia kell a klónozott kötet. Indítsa el a Kiszolgálókezelőt, és indítsa el a Lemezkezelés eszközben. Részletes útmutatásért lásd: [kötetek csatlakoztatása](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). Után inicializálva van, a kötet területen fog megjelenni a **kötetek** csomópontja a **hatókör** ablaktáblán. 
    
-    Ha nem látja a kötet felsorolt, a kötetek listájának frissítése (kattintson a jobb gombbal a **kötetek** csomópontra, majd **frissítése**).
-6. Nyissa meg a klónozott kötetet tartalmazó NTFS-mappába, és bontsa ki a **kötetek** csomópont, és nyissa meg a klónozott kötet. Keresse meg a helyreállítani kívánt fájlt, és másolja az elsődleges köteten.
-7. A fájl visszaállítása után törölheti a klónozott kötetet tartalmazó NTFS-mappába.
+    Ha nem látja, akkor a kötet felsorolt, a kötetek listájának frissítése (kattintson a jobb gombbal a **kötetek** csomópontban, és kattintson **frissítése**).
+6. Nyissa meg az NTFS-mappába, amely tartalmazza a klónozott kötet, bontsa ki a **kötetek** csomópontot, és nyissa meg a klónozott kötet. Keresse meg a helyreállítani kívánt fájlt, és másolja az elsődleges kötet.
+7. Miután visszaállította a fájlt, törölheti az NTFS-mappába, amely tartalmazza a klónozott kötet.
 
 ## <a name="restore-the-storsimple-snapshot-manager-database"></a>A StorSimple Snapshot Manager-adatbázis visszaállítása
-Rendszeresen készítsen biztonsági másolatot a StorSimple Snapshot Manager-adatbázis az állomáson. Ha katasztrófa történik, vagy a számítógép bármilyen okból nem sikerül, majd visszaállíthatja a biztonsági mentésből. Az adatbázis biztonsági másolatot készít az egy manuális folyamat.
+Rendszeresen készítsen biztonsági másolatot a StorSimple Snapshot Manager-adatbázis a gazdagépen. Ha katasztrófa történik, vagy a számítógép bármely okból meghiúsul, majd visszaállíthatja azt a biztonsági mentésből. Az adatbázis-másolat létrehozása egy olyan manuális folyamat.
 
 #### <a name="to-back-up-and-restore-the-database"></a>Készítsen biztonsági másolatot, és állítsa vissza az adatbázist
-1. A Microsoft a StorSimple szolgáltatás leállításához:
+1. A Microsoft StorSimple felügyeleti szolgáltatás leállításához:
    
    1. Indítsa el a Kiszolgálókezelőt.
-   2. A Kiszolgálókezelő irányítópultján a a **eszközök** menü **szolgáltatások**.
+   2. A Kiszolgálókezelő irányítópultján található a **eszközök** menüjében válassza **szolgáltatások**.
    3. Az a **szolgáltatások** ablakban válassza ki a **Microsoft StorSimple szolgáltatás**.
-   4. A jobb oldali ablaktáblában a **Microsoft StorSimple szolgáltatás**, kattintson a **állítsa le a szolgáltatást**.
-2. Az állomáson tallózással C:\ProgramData\Microsoft\StorSimple\BACatalog. 
+   4. A jobb oldali ablaktáblában alatt **Microsoft StorSimple szolgáltatás**, kattintson a **állítsa le a szolgáltatást**.
+2. Az állomáson keresse meg C:\ProgramData\Microsoft\StorSimple\BACatalog. 
    
    > [!NOTE]
    > ProgramData mappa rejtett.
    > 
    > 
-3. A katalógus XML-fájl található, másolja a fájlt, és a példány tárolja biztonságos helyen, vagy a felhőben. Ha a gazdagép meghibásodik, a biztonságimásolat-fájl segítségével létrehozott StorSimple Snapshot Manager biztonsági mentési házirend helyreállítását.
+3. Keresse meg a katalógus XML-fájlt, másolja a fájlt, és a másolat tárolása egy biztonságos helyre, vagy a felhőben. Ha a gazdagép meghibásodik, használhatja a biztonságimásolat-fájlt a biztonsági mentési szabályzatok a StorSimple Snapshot Managerben létrehozott helyreállítását segíti.
    
-    ![Az Azure StorSimple biztonsági mentési katalógusfájl](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_bacatalog.png)
-4. Indítsa újra a Microsoft a StorSimple szolgáltatás: 
+    ![Az Azure StorSimple a biztonságimásolat-katalógus fájl](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_bacatalog.png)
+4. A Microsoft StorSimple felügyeleti szolgáltatás újraindítása: 
    
-   1. A Kiszolgálókezelő irányítópultján a a **eszközök** menü **szolgáltatások**.
+   1. A Kiszolgálókezelő irányítópultján található a **eszközök** menüjében válassza **szolgáltatások**.
    2. Az a **szolgáltatások** ablakban válassza ki a **Microsoft StorSimple szolgáltatás**.
-   3. A jobb oldali ablaktáblában a **Microsoft StorSimple szolgáltatás**, kattintson a **indítsa újra a szolgáltatást**.
-5. Az állomáson tallózással C:\ProgramData\Microsoft\StorSimple\BACatalog. 
-6. Törölje a katalógus XML-fájlt, és cserélje le a biztonsági másolatot, amelyet létrehozott. 
-7. Kattintson a start StorSimple Snapshot Manager asztali StorSimple Snapshot Manager ikonra. 
+   3. A jobb oldali ablaktáblában alatt **Microsoft StorSimple szolgáltatás**, kattintson a **indítsa újra a szolgáltatást**.
+5. Az állomáson keresse meg C:\ProgramData\Microsoft\StorSimple\BACatalog. 
+6. Törölje a katalógus XML-fájlt, és cserélje le a biztonsági másolat verzióját, amelyet Ön hozott létre. 
+7. Kattintson az asztali a StorSimple Snapshot Manager ikonra a StorSimple Snapshot Manager elindításához. 
 
-## <a name="next-steps"></a>Következő lépések
-* További információ [StorSimple Snapshot Manager segítségével felügyelheti a StorSimple megoldásban](storsimple-snapshot-manager-admin.md).
-* További információ [StorSimple Snapshot Manager feladatok és a munkafolyamatok](storsimple-snapshot-manager-admin.md#storsimple-snapshot-manager-tasks-and-workflows).
+## <a name="next-steps"></a>További lépések
+* Tudjon meg többet [felügyelete a StorSimple megoldás StorSimple Snapshot Manager használata](storsimple-snapshot-manager-admin.md).
+* Tudjon meg többet [a StorSimple Snapshot Manager-feladatok és a munkafolyamatok](storsimple-snapshot-manager-admin.md#storsimple-snapshot-manager-tasks-and-workflows).
 

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: saurse
 ms.openlocfilehash: 6d8cbac7eab797662896a96ed588c9d6370cb230
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105199"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60782537"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>A Resource Manager-alapú Windows rendszerállapotának biztonsági mentése
 Ez a cikk bemutatja, hogyan biztonsági mentése a Windows Server rendszerállapotának az Azure-bA. Ez az oktatóanyag végigvezeti az alapokon.

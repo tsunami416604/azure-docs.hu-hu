@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: 8abb2e3ac4f62a3ea51cc686bbf23260fccc4077
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441372"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61475677"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>Horizontálisan felskálázott felhőalapú adatbázisok kezelése
 
@@ -50,7 +50,7 @@ Egyszerűen tegye sémamódosítások, hitelesítő adatok kezelése, referencia
 
 ### <a name="reports"></a>Jelentések
 
-Összesítheti az Azure SQL Database-adatbázisok egy gyűjteményéből származó adatokat egy céltáblában.
+Összesítheti az Azure SQL-adatbázisok egy gyűjteményéből származó adatokat egy céltáblában.
 
 ### <a name="reduce-overhead"></a>Csökkentheti a többletterhelést
 
@@ -62,7 +62,7 @@ Feladatok futtassa a szkriptet, és jelentkezzen az egyes adatbázisok végrehaj
 
 ### <a name="flexibility"></a>Rugalmasság
 
-Meghatározhatja Azure SQL Database-adatbázisok egyéni csoportjait, valamint a feladatok futtatásának ütemezését.
+Meghatározhatja Azure SQL-adatbázisok egyéni csoportjait, valamint a feladatok futtatásának ütemezését.
 
 > [!NOTE]
 > Az Azure Portalon az SQL Azure rugalmas készletek korlátozott funkciók csak egy csökkentett készletét érhető el. A PowerShell API-k eléréséhez a jelenlegi funkciók teljes készletét használja.

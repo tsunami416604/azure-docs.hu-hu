@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 6e041e41372c72c6792c1fb4a1fbdc3bbe475b21
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661650"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60844397"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Lemeztöredezettség-mentesítés metrikái és betöltése a Service Fabricben
 A Service Fabric fürt Resource Manager alapértelmezett stratégiát terhelési mérőszámok a fürt kezelésére szolgáló, hogy a terhelés. Annak biztosítása, hogy a csomópontok egyenletesen felhasználtuk elkerülhető a gyakran és ritkán használt kritikus pontok elkerülése érdekében, hogy a versengés és az elpazarolt erőforrások mennyisége is. Terjesztése a számítási feladatokat a fürt akkor is a legbiztonságosabb fennmaradó hibák, mivel biztosítja, hogy a hiba nem használ egy adott számítási feladatok nagy részét meg tekintetében. 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: d285461aef1e56dfd08a162e51ada0340d6eeae4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108275"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62095421"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Az Azure Security Centerben lemeztitkosítás alkalmazása
 Az Azure Security Center javasolja lemeztitkosítás alkalmazása Windows vagy Linux rendszerű virtuális gép lemez nem az Azure Disk Encryption használatával titkosított. Disk Encryption lehetővé teszi a Windows és Linux rendszerű IaaS VM-lemezek titkosítása.  A titkosítás elvégzése az operációs rendszer és az adatkötetek esetében egyaránt javasolt a virtuális gépen.

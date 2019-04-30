@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 4bd143b37e4403d039108b4349b27604b6503e0e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415219"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123025"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Hibaelhárítás: Nem sikerült törölni a virtuális hálózat az Azure-ban
 
@@ -78,7 +78,7 @@ A javasolt törlési sorrend a következőképpen történik:
 2. Átjárók
 3. IP-címek
 4. Virtuális társhálózatok
-5. Az App Service Environment (ASE)
+5. App Service Environment (ASE)
 
 ### <a name="check-whether-a-virtual-machine-is-still-running-in-the-virtual-network"></a>Ellenőrizze a virtuális gép továbbra is fut-e a virtuális hálózatban
 

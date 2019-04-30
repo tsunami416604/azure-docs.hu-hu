@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
 ms.openlocfilehash: 9e7a5772dd1e10abf43eddf0548833d625ecfb24
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652167"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60742121"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>IP-cím-típusok és lefoglalási módszereket (klasszikus) Azure-ban
 IP-címeket rendelhet az Azure-erőforrásokhoz a többi Azure-erőforrással, a helyszíni hálózattal és az internettel való kommunikáció céljából. Az IP-címek is használhatja az Azure-ban két típusa van: a nyilvános és privát.
@@ -144,7 +144,7 @@ Az alábbi táblázat a lehetséges lefoglalási módszereket (dinamikus/statiku
 | Belső terheléselosztó előtérrendszerhez |Igen |Igen |Igen |
 | Application gateway-kezelőfelület |Igen |Igen |Igen |
 
-## <a name="limits"></a>Korlátok
+## <a name="limits"></a>Limits
 Az alábbi táblázat IP-korlátozások az Azure-előfizetésenként címzés. [Lépjen kapcsolatba a támogatással](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade), ha növelni szeretné az alapértelmezett korlátot üzleti igényei szerint – akár a maximális korlátig.
 
 |  | Alapértelmezett korlát | Felső korlát |

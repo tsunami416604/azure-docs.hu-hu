@@ -10,11 +10,11 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.openlocfilehash: 3bcc511ec6ad8a246c2b1b3a33eb59043a45830e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138361"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60784707"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Az Azure Databricks kapcsolatos gyakori kérdések
 
@@ -40,11 +40,11 @@ További információkért lásd: [használata Data Lake Store az Azure Databric
 
 Az alábbiakban néhány, a Databricks esetleg felmerülő problémák.
 
-### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>Probléma: Az előfizetés nincs regisztrálva a "Microsoft.Databricks" névtér használatára
+### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>Probléma: Ez az előfizetés nincs regisztrálva a "Microsoft.Databricks" névtér használatára
 
 #### <a name="error-message"></a>Hibaüzenet
 
-"Ez az előfizetés nincs regisztrálva a"Microsoft.Databricks"névtér használatára. Lásd: https://aka.ms/rps-not-found előfizetések esetében. (Code: MissingSubscriptionRegistration) "
+"Ez az előfizetés nincs regisztrálva a"Microsoft.Databricks"névtér használatára. Lásd: https://aka.ms/rps-not-found előfizetések esetében. (Kód: MissingSubscriptionRegistration)"
 
 #### <a name="solution"></a>Megoldás
 
@@ -84,22 +84,22 @@ Az alábbiakban néhány probléma megoldása:
 
 Ha nem hozott létre a munkaterületet, és Ön hozzá szeretné adni a felhasználó, lépjen kapcsolatba a munkaterületet létrehozó személy. Vegye fel Önt az Azure Databricks felügyeleti konzol az adott személy rendelkezik. Útmutatásért lásd: [felhasználók kezelése és felvétele](https://docs.azuredatabricks.net/administration-guide/admin-settings/users.html). Ha a munkaterületet hozott létre, és továbbra is megjelenik a hibaüzenet, próbálkozzon **munkaterület inicializálása** újra az Azure Portalról.
 
-### <a name="issue-cloud-provider-launch-failure-while-setting-up-the-cluster-publicipcountlimitreached"></a>Probléma: A felhő szolgáltatóhiba indítsa el a fürt (PublicIPCountLimitReached) beállítása közben
+### <a name="issue-cloud-provider-launch-failure-while-setting-up-the-cluster-publicipcountlimitreached"></a>Probléma: Szolgáltatóhiba indítsa el a fürt (PublicIPCountLimitReached) beállítása közben a felhő
 
 #### <a name="error-message"></a>Hibaüzenet
 
-"A felhő-szolgáltató indítása sikertelen: A felhőbeli szolgáltató hiba történt a fürt beállítása. További információkért tekintse meg a Databricks útmutató. Az Azure-hibakód: PublicIPCountLimitReached. Azure-hibaüzenet: nem hozható létre több mint 60 nyilvános IP-címeket, ehhez az előfizetéshez ebben a régióban. "
+"A felhő-szolgáltató indítása sikertelen: A felhőbeli szolgáltató hiba történt a fürt beállítása. További információkért tekintse meg a Databricks útmutató. Az Azure hibakód: PublicIPCountLimitReached. Azure-hibaüzenet: Nem hozható létre több mint 60 nyilvános IP-címeket, ehhez az előfizetéshez ebben a régióban."
 
 #### <a name="solution"></a>Megoldás
 
-Databricks-fürtök csomópontonként egy nyilvános IP-címet használja. Ha az előfizetés már használatban van az összes hozzá tartozó nyilvános IP-címek, meg kell [kérelmet a kvóta növeléséhez](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request). Válassza ki **kvóta** , a **Problématípus**, és **Hálózatkezelés: ARM** , a **Kvótatípus**. A **részletek**, nyilvános IP-címet a kvóta növelésére. Például ha a korlát jelenleg 60, és szeretne létrehozni egy 100 csomópontos fürtre, korlátozás megnövelésére 160 való.
+Databricks-fürtök csomópontonként egy nyilvános IP-címet használja. Ha az előfizetés már használatban van az összes hozzá tartozó nyilvános IP-címek, meg kell [kérelmet a kvóta növeléséhez](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request). Válasszon **kvóta** , a **Problématípus**, és **Hálózatkezelés: ARM** , a **Kvótatípus**. A **részletek**, nyilvános IP-címet a kvóta növelésére. Például ha a korlát jelenleg 60, és szeretne létrehozni egy 100 csomópontos fürtre, korlátozás megnövelésére 160 való.
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Probléma: A második típusú indítási szolgáltatóhiba felhő beállításakor a fürt (MissingSubscriptionRegistration)
 
 #### <a name="error-message"></a>Hibaüzenet
 
 "A felhő-szolgáltató indítása sikertelen: A felhőbeli szolgáltató hiba történt a fürt beállítása. További információkért tekintse meg a Databricks útmutató.
-Az Azure-hibakód: MissingSubscriptionRegistration Azure-hibaüzenet: az előfizetés nincs regisztrálva a névtér "Microsoft.Compute". Lásd: https://aka.ms/rps-not-found előfizetések számára. "
+Az Azure hibakód: MissingSubscriptionRegistration Azure-hibaüzenet: Az előfizetés nincs regisztrálva a Microsoft.Compute névtér használatára. Lásd: https://aka.ms/rps-not-found előfizetések számára. "
 
 #### <a name="solution"></a>Megoldás
 
@@ -121,6 +121,6 @@ Jelentkezzen be az Azure Portalra globális rendszergazdaként. Az Azure Active 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Gyors útmutató: Azure Databricks használatának első lépései](quickstart-create-databricks-workspace-portal.md)
+- [Rövid útmutató: Az Azure Databricks használatának első lépései](quickstart-create-databricks-workspace-portal.md)
 - [Mi az Azure Databricks?](what-is-azure-databricks.md)
 

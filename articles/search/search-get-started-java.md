@@ -10,11 +10,11 @@ ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018
 ms.openlocfilehash: d16f20e3c2dfa3d670006e44f0072a3871d41c3f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629901"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61289801"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Bevezetés az Azure Search használatába Java nyelven
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ A minta összeállításához és teszteléséhez a következő szoftvereket has
 
 * [Eclipse IDE for Java EE Developers](https://www.eclipse.org/downloads/packages/release/photon/r/eclipse-ide-java-ee-developers). Ügyeljen arra, hogy az EE-verziót töltse le. Az ellenőrzési lépések egyikének olyan funkcióra van szüksége, amely csak ebben a kiadásban található.
 * [JDK 8u181](https://aka.ms/azure-jdks)
-* [Az Apache Tomcat 8.5.33](https://tomcat.apache.org/download-80.cgi#8.5.33)
+* [Apache Tomcat 8.5.33](https://tomcat.apache.org/download-80.cgi#8.5.33)
 
 ## <a name="about-the-data"></a>Tudnivalók az adatokról
 A mintaalkalmazás az [Amerikai Egyesült Államok geológiai szolgáltatásainak (United States Geological Services, USGS)](https://geonames.usgs.gov/domestic/download_data.htm) adatait használja, az adatkészlet méretének csökkentése érdekében Rhode Island államra szűrve. Ezeket az adatokat fogjuk használni egy olyan keresőalkalmazás létrehozásához, amely jellegzetes épületeket, például kórházakat és iskolákat, valamint geológiai jellegzetességeket, például folyókat, tavakat és hegycsúcsokat ad vissza eredményül.
@@ -52,7 +52,7 @@ Az alábbi lista a példához kapcsolódó fájlokat ismerteti.
 * SearchServiceHelper.java: Egy statikus módszereket biztosító segítőosztály
 * Document.Java: Az adatmodellt biztosítja
 * a Config.Properties: Beállítja a Search szolgáltatás URL-CÍMÉT és api-kulcsát
-* pom.XML: Maven-függőség
+* pom.xml: Maven-függőség
 
 <a id="sub-2"></a>
 

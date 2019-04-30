@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/20/2017
 ms.author: apimpm
 ms.openlocfilehash: d87293d89e4009512494bf47f9742ea5901f909a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445362"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60656925"
 ---
 # <a name="azure-api-management-page-controls"></a>Az Azure API Management Lapvezérlők
 Az Azure API Management a következő vezérlőelemeket biztosítja használható a fejlesztői portál sablonjainak.  
@@ -37,13 +37,13 @@ Szeretne használni egy vezérlőelemet, helyezze el a kívánt helyre a fejlesz
   
 ## <a name="developer-portal-template-page-controls"></a>Fejlesztői portál sablon Lapvezérlők  
   
--   [App-műveletek](#app-actions)  
--   [Basic-bejelentkezés](#basic-signin)  
--   [lapozófájl-vezérlő](#paging-control)  
+-   [app-actions](#app-actions)  
+-   [basic-signin](#basic-signin)  
+-   [paging-control](#paging-control)  
 -   [Szolgáltatók](#providers)  
--   [Keresés-vezérlő](#search-control)  
--   [Regisztráció](#sign-up)  
--   [előfizetés button](#subscribe-button)  
+-   [search-control](#search-control)  
+-   [sign-up](#sign-up)  
+-   [subscribe-button](#subscribe-button)  
 -   [előfizetés-Mégse](#subscription-cancel)  
   
 ##  <a name="app-actions"></a> App-műveletek  

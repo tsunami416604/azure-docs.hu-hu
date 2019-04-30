@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/10/2019
+ms.date: 04/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 5f9a225e8a256dd55feadf97f0a7b9f922487a6f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 328433664d22925b4e991f2f18c858c5505cade1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492804"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60781993"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Az Azure Log Analytics-ügynököket a naplóadatok gyűjtése
 
-Az Azure Log Analytics ügynök, a Microsoft Monitoring Agent (MMA) vagy az OMS Linux-ügynök, mint korábban említett kifejlesztett átfogó felügyeletét nyújtja a helyszíni gépeken által felügyelt számítógépek [System Center Operations Manager ](https://docs.microsoft.com/system-center/scom/), és a virtuális gépek bármilyen felhőben. A Windows és Linux-ügynökök csatlakoztatása a Log Analytics-munkaterület különböző forrásokból, valamint minden olyan egyedi naplók adatainak összegyűjtése, illetve metrikák, meghatározott figyelési megoldásban. 
+Az Azure Log Analytics ügynök, a Microsoft Monitoring Agent (MMA) vagy az OMS Linux-ügynök, mint korábban említett kifejlesztett átfogó felügyeletét nyújtja a helyszíni gépeken által felügyelt számítógépek [System Center Operations Manager ](https://docs.microsoft.com/system-center/scom/), és a virtuális gépek bármilyen felhőben. A Windows és Linux-ügynökök csatolása az Azure Monitor, és a Log Analytics-munkaterületen, valamint bármely egyedi naplók vagy egy figyelési megoldást a metrikák összegyűjtött napló adatok különböző forrásokból származó tárolására. 
 
 Ez a cikk részletes áttekintést nyújt az ügynök, a rendszer és a hálózati követelmények és a különböző központi telepítési módszer.   
 
@@ -30,13 +30,15 @@ Ez a cikk részletes áttekintést nyújt az ügynök, a rendszer és a hálóza
 
 ![Log Analytics ügynök kommunikációs diagramja](./media/log-analytics-agent/log-analytics-agent-01.png)
 
-Mielőtt elemzése, és az összegyűjtött adatokat működő, meg kell telepítése és csatlakozás ügynökök összes adatokat küldeni a Log Analytics szolgáltatás kívánt gépek. Ügynökök telepíthető Azure virtuális gépeken az Azure Log Analytics Virtuálisgép-bővítmény használata a Windows és Linux rendszereken, valamint a gépek telepítővel, parancssor, hibrid környezetben, vagy a Desired State Configuration (DSC) az Azure Automationben. 
+Mielőtt elemzése, és az összegyűjtött adatokat működő, meg kell telepítése és csatlakozás ügynökök összes adatokat küldeni az Azure Monitor szolgáltatás kívánt gépek. Ügynökök telepíthető Azure virtuális gépeken az Azure Log Analytics Virtuálisgép-bővítmény használata a Windows és Linux rendszereken, valamint a gépek telepítővel, parancssor, hibrid környezetben, vagy a Desired State Configuration (DSC) az Azure Automationben. 
 
-Az ügynök Linux és Windows 443-as TCP-porton keresztül kommunikál a Log Analytics szolgáltatás kimenő, és ha való kommunikációhoz az interneten keresztül, egy tűzfalon vagy proxykiszolgálón keresztül csatlakozik a gép tudni, hogy a hálózati konfigurációt az alábbi követelmények áttekintése szükséges. Ha az informatikai biztonsági szabályzatok nem engedélyezik a számítógépek a hálózat csatlakozik az internethez, beállíthat egy [Log Analytics-átjáró](gateway.md) , majd konfigurálja az ügynök csatlakoztatása a Log Analytics-átjárón keresztül. Az ügynök ezután fogadni a konfigurációs adatokat, és attól függően, hogy milyen adatokat gyűjtött adatok gyűjtési szabályok és figyelési megoldások engedélyezte. 
+A Linux és Windows-ügynököt 443-as TCP-porton keresztül kommunikál az Azure Monitor szolgáltatásba kimenő, és ha való kommunikációhoz az interneten keresztül, egy tűzfalon vagy proxykiszolgálón keresztül csatlakozik a gép tudni, hogy a hálózati konfigurációt az alábbi követelmények áttekintése szükséges. Ha az informatikai biztonsági szabályzatok nem engedélyezik a számítógépek a hálózat csatlakozik az internethez, beállíthat egy [Log Analytics-átjáró](gateway.md) , majd konfigurálja az ügynököt, hogy csatlakozzon az Azure Monitor naplóira átjárón keresztül. Az ügynök ezután fogadni a konfigurációs adatokat, és attól függően, hogy milyen adatokat gyűjtött adatok gyűjtési szabályok és figyelési megoldások engedélyezve van a munkaterülethez. 
 
-Ha a számítógép és a System Center Operations Manager 2012 R2 vagy újabb, az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is figyeli a Log Analytics szolgáltatással többhelyű lehet [az Operations Manager](../../azure-monitor/platform/om-agents.md). Az Operations Manager felügyeleti csoport integrálva van a Log Analytics által figyelt Linux rendszerű számítógépek konfigurációját az adatforrásokat és a továbbítás összegyűjtött adatokat a felügyeleti csoporton nem jelenik meg. A Windows-ügynök legfeljebb négy Log Analytics-munkaterületek, jelentheti a közben csak támogatja a Linux-ügynök, egy egyetlen-munkaterületre jelentő.  
+Ha egy számítógép és a System Center Operations Manager 2012 R2 vagy újabb, az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is figyeli az Azure Monitor szolgáltatással többhelyű lehet [az Operations Manager](../../azure-monitor/platform/om-agents.md). A Linux rendszerű számítógépek az ügynök nem tartalmaz egy szolgáltatás-összetevő, a Windows-ügynök nem, és információkat gyűjtik, és a egy felügyeleti kiszolgáló nyújtsanak a nevében dolgozza fel. Linux rendszerű számítógépek eltérően figyelt az Operations Managerrel, mert ezek nem fogadni a konfigurációs vagy közvetlenül az adatok gyűjtéséhez, és továbbítja a felügyeleti csoporton keresztül, például egy Windows-ügynök által felügyelt rendszer. Ennek eredményeképpen ebben a forgatókönyvben a Linux rendszerű számítógépek Operations Manager jelentéskészítő nem támogatott.  
 
-A Linux és Windows-ügynököt nem csak a Log Analyticshez való kapcsolódás, azt is támogatja a hibrid forgatókönyv-feldolgozói szerepkör és más szolgáltatások üzemeltetésére, mint például az Azure Automation [Change Tracking](../../automation/automation-change-tracking.md) és [kezelése](../../automation/automation-update-management.md). A hibrid forgatókönyv-feldolgozói szerepkör kapcsolatos további információkért lásd: [Azure Automation hibrid Runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md).  
+A Windows-ügynök legfeljebb négy Log Analytics-munkaterületek, jelentheti a közben csak támogatja a Linux-ügynök, egy egyetlen-munkaterületre jelentő.  
+
+A Linux és Windows-ügynököt nem csak az Azure Monitor csatlakozik, akkor is támogatja a hibrid forgatókönyv-feldolgozói szerepkör és más szolgáltatások üzemeltetésére, mint például az Azure Automation [Change Tracking](../../automation/automation-change-tracking.md) és [kezelése](../../automation/automation-update-management.md). A hibrid forgatókönyv-feldolgozói szerepkör kapcsolatos további információkért lásd: [Azure Automation hibrid Runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="supported-windows-operating-systems"></a>A támogatott Windows operációs rendszerek
 A Windows-ügynök hivatalosan támogatott a Windows operációs rendszer következő verziói:
@@ -72,10 +74,10 @@ Ha a disztribúció vagy a verziója, amely jelenleg nem támogatott, és a tám
 >
 
 ## <a name="tls-12-protocol"></a>A TLS 1.2 protokoll
-A Log Analytics az átvitt adatok biztonságának biztosítása érdekében, erősen javasoljuk, hogy legalább az ügynök konfigurálása Transport Layer Security (TLS) 1.2-es. Biztonsági rés található régebbi verziói a TLS/Secure Sockets Layer (SSL), és jelenleg továbbra is működnek, hogy a visszamenőleges kompatibilitás, amíg azok **nem ajánlott**.  További információkért tekintse át a [biztonságosan a TLS 1.2 használatával az adatok küldésének](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
+Az Azure Monitor naplóira átvitt adatok biztonságának biztosítása érdekében, erősen javasoljuk, hogy legalább az ügynök konfigurálása Transport Layer Security (TLS) 1.2-es. Biztonsági rés található régebbi verziói a TLS/Secure Sockets Layer (SSL), és jelenleg továbbra is működnek, hogy a visszamenőleges kompatibilitás, amíg azok **nem ajánlott**.  További információkért tekintse át a [biztonságosan a TLS 1.2 használatával az adatok küldésének](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
 ## <a name="network-firewall-requirements"></a>Hálózati tűzfalra vonatkozó követelmények
-Az alábbi listában a proxy- és tűzfalbeállítások szükséges konfigurációs információkat, a Linux és Windows-ügynök kommunikáljon a Log Analytics információkat.  
+Az alábbi listában a proxy- és tűzfalbeállítások szükséges konfigurációs információkat, a Linux és Windows-ügynök kommunikálni az Azure Monitor naplóira adatokat.  
 
 |Ügynök erőforrása|Portok |Irány |HTTPS-ellenőrzés kihagyása|
 |------|---------|--------|--------|   
@@ -88,7 +90,7 @@ Az Azure Government szükséges tűzfal információkért lásd: [Azure Governme
 
 Ha azt tervezi, használja az Azure Automation hibrid Runbook-feldolgozó kapcsolódni és regisztrálni az Automation szolgáltatással a runbookok használatához a környezetben, azt a portszámot és a leírt URL-címek hozzáféréssel kell rendelkeznie [a hálózat beállítása a Hibrid Runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
 
-A Windows és Linux-ügynök támogatja a proxykiszolgáló vagy a Log Analytics-átjáró a Log Analytics szolgáltatás a HTTPS protokoll használatával keresztül kommunikál.  Névtelen és alapszintű hitelesítés (felhasználónév és jelszó) támogatottak.  A Windows-ügynök közvetlenül csatlakozik a szolgáltatáshoz, a proxy konfigurációs van megadva a telepítés során vagy [üzembe helyezés után](agent-manage.md#update-proxy-settings) a Vezérlőpultot vagy a PowerShell használatával.  
+A Windows és Linux-ügynök támogatja a proxykiszolgáló vagy a HTTPS protokoll használatával az Azure Monitor Log Analytics-átjáró keresztül kommunikál.  Névtelen és alapszintű hitelesítés (felhasználónév és jelszó) támogatottak.  A Windows-ügynök közvetlenül csatlakozik a szolgáltatáshoz, a proxy konfigurációs van megadva a telepítés során vagy [üzembe helyezés után](agent-manage.md#update-proxy-settings) a Vezérlőpultot vagy a PowerShell használatával.  
 
 A Linux-ügynök a proxykiszolgáló van megadva a telepítés során vagy [a telepítés után](agent-manage.md#update-proxy-settings) a proxy.conf konfigurációs fájljának módosításával.  A Linuxos ügynök proxykonfiguráció értékének szintaxisa a következő:
 
@@ -111,14 +113,14 @@ Például:`https://user01:password@proxy01.contoso.com:30443`
 > Ha például a speciális karakterek használata "\@" meg a jelszót, egy proxy kapcsolat hibaüzenetet kapja, mert az érték nem megfelelően elemzi.  A probléma megkerüléséhez kódolása a jelszót az URL-címet, például egy eszközzel [URLDecode](https://www.urldecoder.org/).  
 
 ## <a name="install-and-configure-agent"></a>Telepítse és konfigurálja az ügynököt 
-Az Azure-előfizetés vagy hibrid környezetben gépek csatlakoztatása közvetlenül az Azure Log Analytics követelményektől függően különböző módszerekkel lehet elvégezni. Az alábbi táblázat minden egyes metódus határozza meg, amely leginkább megfelel a szervezet emeli ki.
+Az Azure-előfizetés vagy hibrid környezetben gépek csatlakoztatása közvetlenül az Azure Monitor naplóira követelményektől függően különböző módszerekkel lehet elvégezni. Az alábbi táblázat minden egyes metódus határozza meg, amely leginkább megfelel a szervezet emeli ki.
 
 |Forrás | Módszer | Leírás|
 |-------|-------------|-------------|
 |Azure VM| -Log Analytics Virtuálisgép-bővítmény [Windows](../../virtual-machines/extensions/oms-windows.md) vagy [Linux](../../virtual-machines/extensions/oms-linux.md) Azure CLI-vel vagy egy Azure Resource Manager-sablonnal<br>- [Az Azure Portalról manuálisan](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json). | A bővítmény a Log Analytics-ügynököket telepíti az Azure-beli virtuális gépeken, és regisztrálja őket egy meglévő Azure Monitor-munkaterületet.|
 | Windows rendszerű hibrid számítógép|- [Manuális telepítés](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Az Azure Stack Resource Manager-sablon](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |A Microsoft Monitoring agent telepítése a parancssorból vagy egy Azure Automation DSC, például automatikus módszer használatával [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications), vagy ha telepítette a Microsoft Azure Resource Manager-sablonnal Az Azure Stack az adatközpontban.| 
 | Linux rendszerű hibrid számítógép| [Manuális telepítés](../../azure-monitor/learn/quick-collect-linux-computer.md)|Telepítse az ügynököt a Linux rendszerre, a Githubon található burkoló-parancsfájl hívása során. | 
-| System Center Operations Manager|[Az Operations Manager integrálása a Log Analytics használatával](../../azure-monitor/platform/om-agents.md) | Az Operations Manager és a Log Analytics továbbítani közötti integráció beállítása összegyűjti az adatokat a felügyeleti csoportnak jelentő Linux és Windows-számítógépekről.|  
+| System Center Operations Manager|[Az Operations Manager integrálása a Log Analytics használatával](../../azure-monitor/platform/om-agents.md) | Az Operations Manager és az Azure Monitor naplók közötti integráció beállítása előre összegyűjti az adatokat a felügyeleti csoportnak jelentő Windows-számítógépekről.|  
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: e7dcdb960fbd9196aca8b667269a4c6e5a1fb8f9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788938"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60794958"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Nagyítási szintek és csemperács
 Az Azure Maps használata a gömbös Mercator leképezése koordináta-rendszerére (EPSG: 3857).

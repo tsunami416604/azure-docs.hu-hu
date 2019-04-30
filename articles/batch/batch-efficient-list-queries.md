@@ -16,11 +16,11 @@ ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: ff3e95a603b8f9a188c7839578cd12287935de90
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918535"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60778254"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Hozzon létre hatékony lekérdezések Batch-erőforrások listája
 
@@ -179,7 +179,7 @@ A tulajdonságnevek a szűrőt, válassza ki, és bontsa ki a karakterláncok *k
 ## <a name="example-construct-a-filter-string"></a>Példa: egy szűrési karakterláncot hozhatnak létre.
 Amikor egy szűrési karakterláncot a hozhat létre [ODATADetailLevel.FilterClause][odata_filter], tekintse meg a fenti táblázat szerinti "Hozzárendelések szűrő-karakterlánc" Keresés a REST API dokumentáció lap, amely megfelel a lista a végrehajtani kívánt művelet. Az első többsoros tábla az adott oldalon megtalálja a szűrhető tulajdonságok és azok támogatott operátorok. Ha szeretné, amelynek kilépési kód: nem nulla összes feladat olvasható be, például a sor a [a feladathoz hozzárendelt feladatok felsorolása] [ rest_list_tasks] alkalmazható tulajdonság karakterlánc és engedélyezett operátorok adja meg:
 
-| Tulajdonság | Engedélyezett műveletek | Typo |
+| Tulajdonság | Engedélyezett műveletek | Típus |
 |:--- |:--- |:--- |
 | `executionInfo/exitCode` |`eq, ge, gt, le , lt` |`Int` |
 
@@ -190,7 +190,7 @@ Amikor egy szűrési karakterláncot a hozhat létre [ODATADetailLevel.FilterCla
 ## <a name="example-construct-a-select-string"></a>Példa: select karakterlánc hozhatnak létre
 Összeállításához [ODATADetailLevel.SelectClause][odata_select], tekintse meg a fenti táblázat "Válassza karakterláncok leképezéseit" alatt, és keresse meg a REST API-val oldalt, amely megfelel az entitás, amely listázásakor típusát. Az első többsoros tábla az adott oldalon megtalálja a választható tulajdonságok és azok támogatott operátorok. Ha szeretné lekérni, csak az Azonosítót és a egy lista minden egyes tevékenység parancssora, például megtalálja ezeket a sorokat a alkalmazni táblában a [feladat információinak lekérése][rest_get_task]:
 
-| Tulajdonság | Typo | Megjegyzések |
+| Tulajdonság | Típus | Megjegyzések |
 |:--- |:--- |:--- |
 | `id` |`String` |`The ID of the task.` |
 | `commandLine` |`String` |`The command line of the task.` |

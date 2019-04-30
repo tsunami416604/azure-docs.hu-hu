@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: shlo
 ms.openlocfilehash: c5c12a66e8f66195a096588d779648d7486ab47b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092004"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60808767"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach tevékenység az Azure Data Factoryban
 A ForEach tevékenység ismétlődő átvitelvezérlést határoz meg a folyamatban. Ez a tevékenység egy gyűjtemény megismétlésére, valamint egy megadott ciklustevékenység végrehajtására szolgál. E tevékenység ciklusos megvalósítása hasonló a Foreach ciklusos szerkezetéhez a programozási nyelvek esetében.
@@ -69,11 +69,11 @@ A cikk későbbi részében tulajdonságait ismerteti. Az elemek tulajdonság a 
 
 ## <a name="type-properties"></a>Tulajdonságok
 
-Tulajdonság | Leírás | Megengedett értékek | Szükséges
+Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
 név | A for-each tevékenység neve. | String | Igen
 type | Meg kell **ForEach** | String | Igen
-isSequential | Itt adhatja meg, akár a hurok egymás után vagy a párhuzamos végrehajtja.  Legfeljebb 20 ciklus ismétléseinek is végrehajtható egyszerre párhuzamosan). Például, ha rendelkezik egy ForEach tevékenység léptetés keresztül egy másolási tevékenységgel ellátott 10 különböző forrás és fogadó adatkészleteit a **isSequential** értéke HAMIS, minden példány tevékenységében egyszerre. Alapértelmezett érték a False. <br/><br/> Ha "isSequential" hamis értékre van állítva, győződjön meg arról, hogy nincs-e a megfelelő konfigurációs több végrehajtható fájlok futtatását. Ellenkező esetben ez a tulajdonság használandó körültekintően írási ütközések elkerüléséhez. További információkért lásd: [párhuzamos végrehajtása](#parallel-execution) szakaszban. | Logikai | Nem. Alapértelmezett érték a False.
+isSequential | Itt adhatja meg, akár a hurok egymás után vagy a párhuzamos végrehajtja.  Legfeljebb 20 ciklus ismétléseinek is végrehajtható egyszerre párhuzamosan). Például, ha rendelkezik egy ForEach tevékenység léptetés keresztül egy másolási tevékenységgel ellátott 10 különböző forrás és fogadó adatkészleteit a **isSequential** értéke HAMIS, minden példány tevékenységében egyszerre. Alapértelmezett érték a False. <br/><br/> Ha "isSequential" hamis értékre van állítva, győződjön meg arról, hogy nincs-e a megfelelő konfigurációs több végrehajtható fájlok futtatását. Ellenkező esetben ez a tulajdonság használandó körültekintően írási ütközések elkerüléséhez. További információkért lásd: [párhuzamos végrehajtása](#parallel-execution) szakaszban. | Boolean | Nem. Alapértelmezett érték a False.
 batchCount | Kötegek száma való párhuzamos végrehajtás száma (ha isSequential hamis értékre van állítva) használható. | Egész szám (legfeljebb 50) | Nem. Alapértelmezett érték 20.
 Elemek | Egy kifejezés, amely megismételhető, egy JSON-tömböt ad vissza. | Kifejezés (amely egy JSON-tömböt ad vissza) | Igen
 Tevékenységek | A tevékenységek végrehajtását. | Tevékenységek listája | Igen

@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.openlocfilehash: dead1fae9bc3287ed0fc80c6120914e965ef96dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59493025"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61341877"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Nézettervező vizualizációs részére az Azure monitorban referencia-útmutató
 Nézettervező az Azure Monitor használatával létrehozhat egyéni nézetek számos az Azure Portalon, amelyek segítségével adatokat a Log Analytics-munkaterület megjelenítése. Ez a cikk egy referencia-útmutató a beállítások a vizualizációs rész, amely szerepel az egyéni nézetek.
@@ -143,7 +143,7 @@ A fejléc egyetlen szám, amely összefoglalja a log lekérdezésben érték osz
 | Lekérdezés |A lekérdezés futtatása a fánkdiagram. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. |
 | Átkattintásos navigáció | A fejlécére kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
 | **fánkdiagram** |**> Center** |
-| Szöveg |A szöveg, amely alatt a fánkdiagram belül az érték jelenik meg. |
+| Text |A szöveg, amely alatt a fánkdiagram belül az érték jelenik meg. |
 | Művelet |A value tulajdonság együtt, egyetlen értékként kell elvégezni a műveletet.<ul><li>Összeg: Hozzáadja az összes rekord értékeit.</li><li>Százalékos aránya: A rekordok szereplő értékek által visszaadott aránya **center művelet során használt értékek eredmény** a teljes rekordot a lekérdezésben.</li></ul> |
 | A fánkdiagram közepén megjelenített eredményértékek |Kiválaszthat egy vagy több érték hozzáadása a plusz jelre (+). A lekérdezés eredményeit rögzíti a megadott tulajdonság értékek korlátozódnak. Nincsenek értékek vesznek fel, ha a lekérdezés szereplő összes rekordok. |
 | **További beállítások** |**> Színek** |
@@ -209,7 +209,7 @@ A fejléc statikus szöveget és a egy nem kötelező hivatkozást jeleníti meg
 | Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
 | Szín |A fejléc háttérszíne. |
 | **Header** | |
-| Kép |A fejléc megjelenik a képfájl. |
+| Image |A fejléc megjelenik a képfájl. |
 | Címke |A fejlécében megjelenő szöveg. |
 | **Header** |**> Link** |
 | Címke |A hivatkozás szövege. |

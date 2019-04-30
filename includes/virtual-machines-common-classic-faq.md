@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: bc3590e90cacfa4966f0d1f64aa1c8d49483cb1b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883778"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485456"
 ---
 Ez a cikk néhány, a felhasználók által a klasszikus üzemi modellel létrehozott Azure-beli virtuális gépekkel kapcsolatban gyakran feltett kérdéssel foglalkozik.
 

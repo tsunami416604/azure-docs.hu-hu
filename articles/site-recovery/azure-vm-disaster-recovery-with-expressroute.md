@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 90388d570d027aea3c897f7306a1714fd7e847b3
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618086"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60772382"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Vészhelyreállítás az Azure virtuális gépek Azure ExpressRoute integrálása
 
@@ -32,7 +32,7 @@ Az ExpressRoute segítségével kiterjesztheti helyszíni hálózatait a Microso
 - **Az Azure-régiók közötti feladatátvétel**: Ha valamilyen okból kimaradás lép fel, a rendszer átadja a feladatokat Azure virtuális gépek az elsődleges kiszolgálóról másodlagos Azure-régióba. Miután-ba irányuló feladatátvétel egy másodlagos régióba, a program több lépést ahhoz, hogy az ExpressRoute-tal tudjon másodlagos régióban az Azure virtuális gépek eléréséhez.
 
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Mielőtt elkezdené, győződjön meg arról, hogy megértette a következő fogalmak:
 
@@ -106,10 +106,10 @@ Nagyvállalati környezetben általában a számítási feladatok elosztja a tö
 
 **Direction (Irány)** | **Beállítás** | **állapot**
 --- | --- | ---
-A küllőt a központtal | Lehetővé teszi a virtuális hálózati cím | Engedélyezve
-A küllőt a központtal | Továbbított forgalom engedélyezése | Engedélyezve
+A küllőt a központtal | Lehetővé teszi a virtuális hálózati cím | Enabled
+A küllőt a központtal | Továbbított forgalom engedélyezése | Enabled
 A küllőt a központtal | Átjárótranzit engedélyezése | Letiltva
-A küllőt a központtal | Remove-átjárók használata | Engedélyezve
+A küllőt a központtal | Remove-átjárók használata | Enabled
 
  ![Hub társviszony-létesítési konfigurációjának küllő](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
 
@@ -117,9 +117,9 @@ A küllőt a központtal | Remove-átjárók használata | Engedélyezve
 
 **Direction (Irány)** | **Beállítás** | **állapot**
 --- | --- | ---
-A központot a küllővel | Lehetővé teszi a virtuális hálózati cím | Engedélyezve
-A központot a küllővel | Továbbított forgalom engedélyezése | Engedélyezve
-A központot a küllővel | Átjárótranzit engedélyezése | Engedélyezve
+A központot a küllővel | Lehetővé teszi a virtuális hálózati cím | Enabled
+A központot a küllővel | Továbbított forgalom engedélyezése | Enabled
+A központot a küllővel | Átjárótranzit engedélyezése | Enabled
 A központot a küllővel | Remove-átjárók használata | Letiltva
 
  ![A társviszony-létesítési konfigurációjának küllő hub](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)

@@ -10,11 +10,11 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: d4dc6f0c8fd2dff74a1997c9dca5a31abc70c03a
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580823"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60795931"
 ---
 # <a name="clustering-point-data"></a>Fürtszolgáltatás pont adatait
 
@@ -84,12 +84,12 @@ Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>
 
 Egér-események előfordulásakor egy rétegen fürtözött adatok pontokat tartalmazó fürtözött adatpont küldi vissza a rendszer az eseményre egy GeoJSON-pont funkció objektumot. A pont funkció az alábbi tulajdonságokkal fog rendelkezni:
 
-| Tulajdonság neve | Typo | Leírás |
+| Tulajdonság neve | Típus | Leírás |
 |---------------|------|-------------|
 | fürt | logikai | Azt jelzi, ha a szolgáltatás egy fürt jelöli. |
-| cluster_id | sztring | Egy egyedi Azonosítót a fürt, amely használható a DataSource `getClusterExpansionZoom`, `getClusterChildren`, és `getClusterLeaves` módszereket. |
+| cluster_id | string | Egy egyedi Azonosítót a fürt, amely használható a DataSource `getClusterExpansionZoom`, `getClusterChildren`, és `getClusterLeaves` módszereket. |
 | point_count | szám | A fürt tartalmaz pontok száma. |
-| point_count_abbreviated | sztring | Egy karakterlánc, amely lerövidíti a point_count értéket, ha hosszú. (például 4000 lesz 4 KB-os) |
+| point_count_abbreviated | string | Egy karakterlánc, amely lerövidíti a point_count értéket, ha hosszú. (például 4000 lesz 4 KB-os) |
 
 Ebben a példában egy buborék réteg jelenik meg a fürt pontok, és hozzáad egy kattintással eseményt vesz igénybe, amely bárkinek, kiszámítása, és a térkép zoom nagyítás szintre, ahol a fürt közötti használatával megszakítja a `getClusterExpansionZoom` módszere a `DataSource` osztály és a `cluster_id` tulajdonsága az való kattintás fürtözött adatpont. 
 

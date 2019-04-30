@@ -1,7 +1,6 @@
 ---
 title: Egyéni Maven-csomagok használata Jupyterrel, a Spark on Azure HDInsight
 description: Lépésenkénti útmutató HDInsight Spark-fürtökkel elérhető Jupyter-notebookok konfigurálása egyéni Maven-csomagok használata.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: c0394025fef15b987f0777d157c465e83d860601
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: MT
+ms.openlocfilehash: 6af25b95aa3a38c4a2e9f3bd8147604dccae0abb
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652132"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124176"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Külső csomagok használata Jupyter notebookok a HDInsight az Apache Spark-fürtök
 > [!div class="op_single_selector"]

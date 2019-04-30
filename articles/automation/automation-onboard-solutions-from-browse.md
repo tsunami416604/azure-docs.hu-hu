@@ -10,11 +10,11 @@ ms.topic: article
 manager: carmonm
 ms.custom: mvc
 ms.openlocfilehash: df59342bebae3ac0f6e80e5b58f429fedf3c3336
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578492"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60739047"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Az Update Management, Change Tracking és Inventory megoldások a több virtuális gépen
 
@@ -59,7 +59,7 @@ Ha a kiválasztott munkaterület nincs Automation-fiók van csatolva, látni fog
 
 ![Nincs munkaterület](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
-Ha engedélyezte a megoldásokat, Log Analytics-munkaterületet és Automation-fiók összekapcsolása csak bizonyos régiókban támogatottak.
+A megoldások engedélyezésekor csak bizonyos régiók esetén lehet összekapcsolni egy Log Analytics-munkaterületet és egy Automation-fiókot.
 
 Az alábbi táblázat bemutatja a támogatott leképezések:
 

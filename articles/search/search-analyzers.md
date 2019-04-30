@@ -10,11 +10,11 @@ manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
 ms.openlocfilehash: e3738980206277587ca367339d75da4f3faa643a
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651821"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61316829"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Az Azure Search szövegfeldolgozást elemzők
 
@@ -40,7 +40,7 @@ Használható automatikusan az összes kereshető mezőt. Felülbírálhatja az 
 
 Az alábbi lista ismerteti, hogy melyik elemzők az Azure Search szolgáltatásban érhetők el.
 
-| Kategória | Leírás |
+| Category | Leírás |
 |----------|-------------|
 | [Standard Lucene-elemzőt](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Default (Alapértelmezett): Nincs meghatározása vagy a konfiguráció nem szükséges. Az általános célú analyzer és a legtöbb nyelvek és forgatókönyvek hajt végre.|
 | Előre definiált elemzők | Érhető el, ha egy kész termék kívánják használható – van. <br/>Két típusa van: speciális és a nyelvet. Miből őket "előre meghatározott" neve, konfigurálása és testreszabása nélkül hivatkozhat. <br/><br/>[Specializált (nyelvtől) elemzők](index-add-custom-analyzers.md#AnalyzerTable) használatosak, amikor a bemeneti szöveg speciális feldolgozó vagy a minimális feldolgozást igényelnek. Például nem előre definiált nyelvelemzők **Asciifolding**, **kulcsszó**, **minta**, **egyszerű**, **leállítása**, **Szóköz**.<br/><br/>[Nyelvi elemzők](index-add-language-analyzers.md) használatosak, amikor az egyes nyelveket a gazdag nyelvi támogatás szükséges. Az Azure Search 35 Lucene nyelvi elemzőkkel és a Microsoft természetes nyelvek feldolgozása 50 elemzők támogatja. |

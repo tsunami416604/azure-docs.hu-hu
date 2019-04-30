@@ -1,7 +1,6 @@
 ---
 title: A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - storage ajánlott eljárásai
 description: Ismerje meg a tároló áttelepítése a helyszíni Hadoop-fürtöket az Azure HDInsight ajánlott eljárásai.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: f3ac60eb45c86b6cd2ded0340ac6bde478086464
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c62a5384edf66fd9309bc7afcb50ada48e3fca7d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000062"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62095285"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - storage ajánlott eljárásai
 
@@ -172,11 +171,11 @@ Alapértelmezés szerint a HDInsight a fürthöz társított Azure Storage-fiók
 
 5. Egy tároló közös hozzáférésű Jogosultságkód való hozzáférés korlátozásához adjon egy egyéni bejegyzést a hely konfigurációjának a fürthöz, a hely hozzáadása az Ambari HDFS Configs speciális egyéni tulajdonság.
 
-6. A következő értékeket használja a **kulcs** és **érték** mezők:
+6. A következő értékeket használja a **kulcs** és **érték** mezők:
 
     **kulcs**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **Érték**: A SAS-KULCSÁT adja vissza a Python alkalmazást FROM fenti 4. lépéssel.
 
-7. Kattintson a **Hozzáadás** gombra kattintva mentse a kulcs-érték, majd kattintson a **mentése** gombot a konfigurációs módosítások mentéséhez. Amikor a rendszer kéri, adjon meg egy leírást a változás ("Hozzáadás SAS-tároló hozzáférés" például), és kattintson a **mentése**.
+7. Kattintson a **Hozzáadás** gombra kattintva mentse a kulcs-érték, majd kattintson a **mentése** gombot a konfigurációs módosítások mentéséhez. Amikor a rendszer kéri, adjon meg egy leírást a változás ("Hozzáadás SAS-tároló hozzáférés" például), és kattintson a **mentése**.
 
 8. Az az Ambari webes felhasználói Felületét, HDFS válassza a bal oldali listából, és válassza **indítsa újra az összes érintett** a a szolgáltatási műveletek legördülő menü a jobb oldali listából. Amikor a rendszer kéri, válassza ki a **megerősítése indítsa újra az összes**.
 

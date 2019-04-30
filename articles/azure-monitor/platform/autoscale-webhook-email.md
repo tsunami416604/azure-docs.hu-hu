@@ -9,11 +9,11 @@ ms.date: 04/03/2017
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 25ef2541dfa0b4cbd6e11d64381da645acfe653a
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259295"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60787297"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Automatikus skálázási műveletek segítségével szeretne küldeni az e-mailt és webhookot riasztási értesítéseket az Azure monitorban
 Ez a cikk bemutatja, hogyan lehet beállítani eseményindítók, hogy hívás meghatározott webes URL-címek, vagy küldjön e-mailek automatikus skálázási műveletek az Azure-ban alapján.  

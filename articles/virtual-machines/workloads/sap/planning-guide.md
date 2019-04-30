@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d4798f8c3e262129135a6677ccf90dc0fb3be7f2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 097b5e8ee69d945e0a9e24ba1c62b0ae82dd896b
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999535"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62732417"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Az Azure virtuális gépek tervezése és megvalósítása SAP NetWeaver
 
@@ -451,7 +451,11 @@ Olvasási [Ez a cikk] [ vpn-gateway-create-site-to-site-rm-powershell] bővebben
 >
 > Ez a korlátozás oka belüli egy SAP-rendszerhez, különösen az alkalmazáspéldányok és a DBMS réteg az SAP-rendszer között közel valós idejű, nagy teljesítményű hálózat vonatkozó követelmény.
 >
->
+> Rendszerek és régiók speciális tervezési kell történnie, több SAP-rendszereit, amely magas integrált használata esetén. Ellenőrizze, hogy ezek a rendszerek egymáshoz a hálózati késés minimalizálása érdekében a lehető legközelebb telepíteni. Magas integrált SAP-rendszerek a következők:
+> * SAP BW SAP OLTP rendszerek ERP és CRM és SRM; az adatok olvasása vagy
+> * Adatok replikálása több SPA-rendszer vagy akár az SAP és az SAP rendszerek; között használt SAP SLT vagy
+> * SAP S/4 csatlakozik az SAP ERP-rendszerek; stb.
+
 
 ### <a name="supported-os-and-database-releases"></a>Támogatott operációs rendszer és adatbázis-kiadások
 * A Microsoft szerverszoftver, Azure Virtual Machine Services ebben a cikkben szerepel a támogatott: <https://support.microsoft.com/kb/2721672>.

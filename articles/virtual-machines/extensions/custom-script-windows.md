@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 04/15/2019
 ms.author: gwallace
 ms.openlocfilehash: e2b36633996f961d100f0a98abb09135fd4393e4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007083"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60869860"
 ---
 # <a name="custom-script-extension-for-windows"></a>A Windows egyéni szkriptek futtatására szolgáló bővítmény
 
@@ -46,15 +46,15 @@ Ha a parancsfájl egy helyi kiszolgálón, majd továbbra is szükség lehet tov
 
 * A legmagasabb Hibaarány esetén ez a bővítmény a parancsfájl hiba nélkül fut a parancsfájl tesztelési szintaktikai hibák miatt, és is helyezheti további naplózási műveleteket a parancsfájlba, hogy könnyebben megtalálja, ahol nem sikerült.
 * Parancsfájlokat írhat, amelyek idempotens. Ez biztosítja, hogy véletlenül újra futnak, ha nem okoz rendszer változásait.
-* Győződjön meg arról, a parancsfájlok futtatásakor. nem szükséges felhasználói bevitel.
-* A parancsfájl futtatása engedélyezett 90 perc, semmit hosszabb egy sikertelen a bővítmény kiépítése eredményez.
-* A parancsfájl belül újraindítások ne helyezzen, ez a művelet lesz okozhat problémát más bővítményeket, amelyek telepítése folyamatban van. Utáni újraindítás, a bővítmény nem továbbra is az újraindítás után.
+* Gondoskodjon arról, hogy a szkriptek futtatásához ne legyen szükség felhasználói beavatkozásra.
+* A szkript futtatásának engedélyezett időtartama 90 perc. Ha egy szkript ennél tovább fut, az a bővítmény üzembe helyezésének meghiúsulását eredményezi.
+* A szkript ne váltson ki újraindításokat, mert ez a művelet problémákat okoz a telepítés alatt álló többi bővítményben. Újraindítás után a bővítmény nem fog tovább működni.
 * Ha egy parancsfájl, amely egy újraindítás szükséges, ezután-alkalmazások telepítése és parancsfájlok futtatására, az újraindítás a Windows ütemezett feladat használatával ütemezheti, vagy használja az eszközök, például a DSC, Chef vagy Puppet bővítmények.
-* A bővítmény csak fut egy parancsfájl egyszer, ha azt szeretné, parancsfájl futtatása a naplózásra kerül minden rendszerindításkor, akkor a bővítmény használata a Windows ütemezett feladat létrehozásához szükséges.
-* Ha azt szeretné, meghatározhatja, mikor egy parancsprogram futtatása, a bővítmény Windows ütemezett feladat létrehozásához használjon.
-* A szkript fut, amikor egy "átviteli" bővítmény állapotát az Azure Portalon vagy a parancssori felület csak akkor jelenik meg. Ha azt szeretné, hogy a futó parancsfájl gyakoribb ügyfélállapot-frissítés, szüksége saját megoldást hozhat létre.
+* A bővítmény egy szkriptet csak egyszer futtat. Ha egy szkriptet minden indításkor futtatni szeretne, létre kell hoznia egy ütemezett Windows-feladatot a bővítménnyel.
+* Ha ütemezni szeretné, hogy mikor fusson egy szkript, hozzon létre egy ütemezett Windows-feladatot a bővítménnyel.
+* Amikor a szkript fut, az Azure Portalon vagy a CLI-n a bővítmény „átmeneti” állapotát fogja látni. Ha gyakoribb állapotfrissítést szeretne egy futó szkripthez, létre kell hoznia a saját megoldását.
 * Egyéni szkriptek futtatására szolgáló bővítmény nem támogatja natív módon proxykiszolgálókat, azonban egy fájlátviteli eszköz, amely támogatja a proxykiszolgálók a parancsfájlban, például használhatja *Curl*
-* Nem alapértelmezett vegye figyelembe, hogy a parancsfájlok vagy parancsok függhet, directory-hely rendelkezik logikai a helyzet kezeléséhez.
+* Vegye figyelembe, hogy vannak olyan nem alapértelmezett könyvtárhelyek, amelyekre a szkriptjei és a parancsai támaszkodhatnak, és amelyek rendelkeznek a helyzet kezeléséhez szükséges logikával.
 
 ## <a name="extension-schema"></a>Bővítményséma
 

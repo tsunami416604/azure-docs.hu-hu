@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: bfbdb05e8d2764d2b878e22d236cae30519da176
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666792"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62113971"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>A fürt resource manager-architektúra áttekintése
 A Service Fabric fürterőforrás-kezelő középső szolgáltatást, amely a fürt. A szolgáltatások a fürtben, különös tekintettel az erőforrás-használat és elhelyezési szabályok kívánt állapotát kezeli azt. 

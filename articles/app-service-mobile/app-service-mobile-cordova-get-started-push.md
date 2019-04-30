@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 40a7552ffd0bfcab173d2e35c52313a94ec3d0bb
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960328"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62114338"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Az Apache Cordova-alkalmazáshoz a leküldéses értesítések hozzáadása
 
@@ -38,7 +38,7 @@ Ez az oktatóanyag feltételezi, hogy az Apache Cordova-alkalmazáshoz, amelyek 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * A számítógép [Visual Studio Community 2015] [ 2] vagy újabb
-* [A Visual Studio Nástroje Pro Apache Cordova][4]
+* [Visual Studio Tools for Apache Cordova][4]
 * Egy [aktív Azure-fiók][3]
 * A befejezett [Apache Cordova rövid] [ 5] projekt
 * (Android) A [Google-fiók] [ 6] ellenőrzött e-mail-címmel
@@ -240,11 +240,11 @@ A jelenlegi szükséges kódtárak szerepelnek a [phonegap-beépülő modul – 
 
 Így most teszt leküldéses értesítések az alkalmazás futtatása és az elem beszúrása a TodoItem táblába. Ugyanazon az eszközön, illetve egy második eszköz, amennyiben az ugyanazon háttérrendszer használata tesztelheti. Az Android platformon a Cordova-alkalmazás teszteléséhez a következő módszerek egyikével:
 
-* *A fizikai eszközön:* Android-eszköz csatlakoztatása a fejlesztési számítógép USB-kábellel.  Helyett **Google Android Emulator**válassza **eszköz**. Visual Studio telepíti az alkalmazást az eszközön, és futtatja az alkalmazást. Ezután használhatja az alkalmazást az eszközön.
+* *A fizikai eszközön:* Az Android-eszköz csatlakoztatása a fejlesztési számítógép USB-kábellel.  Helyett **Google Android Emulator**válassza **eszköz**. Visual Studio telepíti az alkalmazást az eszközön, és futtatja az alkalmazást. Ezután használhatja az alkalmazást az eszközön.
 
   Képernyő-megosztási alkalmazások, mint például [Mobizen] [ 20] is segítséget nyújt a Android-alkalmazások fejlesztéséhez használható. Mobizen-projektek, az Android képernyő egy webböngészőt a számítógépen.
 
-* *Egy Android-emulátor:* vannak további konfigurációs lépések, amelyek szükségesek, amikor az emulátor használata.
+* *Egy Android-emulátor:* Nincsenek további konfigurációs lépések, amelyek szükségesek, amikor az emulátor használata.
 
     Ellenőrizze, hogy a virtuális eszköz, amely rendelkezik a Google API-kat, állítsa be a cél, ahogyan az az Android virtuális eszközt (AVD) kezelő végzi.
 

@@ -15,13 +15,13 @@ ms.date: 11/20/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a8131bc953c2aba3c8d33f866cbbe9b1e232e168
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819088"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61481037"
 ---
-# <a name="know-the-terms"></a>A használati tudja
+# <a name="know-the-terms"></a>A feltételek megismerése
 
 Több közös definíciók széles körben használják az architektúra és üzembe helyezési útmutatót. Vegye figyelembe a következő kifejezéseket és azok jelentését ismerteti:
 

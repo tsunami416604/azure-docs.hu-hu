@@ -1,6 +1,6 @@
 ---
 title: Alapvető jelentések a Verizontól |} A Microsoft Docs
-description: 'Az alábbi jelentések használatával a CDN használati mintáinak is megtekintheti: a sávszélesség, átvitt adatok, a találatok, gyorsítótárak állapota, gyorsítótár találati aránya, IPV4/IPV6 átvitt adatok.'
+description: 'A CDN használati minták használatával a következő jelentéseket tekintheti meg: A sávszélesség, az adatátvitel, a találatok, gyorsítótárak állapota, a gyorsítótárbeli találatok arányát, IPV4/IPV6 adatátvitelre.'
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: d10a40d03f0f76676e70afdec94e9adfaa0dd09f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 6eb0fe592196466f7f49c21ce38afdf13b254d86
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162070"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61061544"
 ---
 # <a name="core-reports-from-verizon"></a>Alapvető jelentések a Verizontól
 
@@ -32,7 +32,7 @@ A Verizon alapvető jelentések a kezelés portálján a Verizon profilok, a CDN
 * Találatok
 * Gyorsítótárak Allapota
 * Gyorsítótárbeli találatok arányát
-* Átvitt adatok IPv4/IPV6
+* IPV4/IPV6 Data Transferred
 
 ## <a name="accessing-verizon-core-reports"></a>Verizon alapvető jelentések elérése
 1. A CDN-profil panelje, kattintson a **kezelés** gombra.
@@ -86,9 +86,9 @@ Lejárt gyorsítótárbeli találatok csökkentése érdekében állítsa be az 
 ![Gyorsítótár-állapotok jelentés](./media/cdn-reports/cdn-cache-statuses.png)
 
 ### <a name="main-cache-statuses-include"></a>Fő gyorsítótárak állapota a következők:
-* TCP_HIT: A peremhálózati kiszolgáló szolgáltatja. Az objektum a gyorsítótárban volt, és nem lépte túl a max-age.
+* TCP_HIT: Peremhálózati kiszolgáló szolgáltatja. Az objektum a gyorsítótárban volt, és nem lépte túl a max-age.
 * TCP_MISS: Szolgálja ki a forráskiszolgálóról. Az objektum nem volt a gyorsítótárban, és a válasz vissza a forrás.
-* TCP_EXPIRED _MISS: forráskiszolgálóról után a forrás újraérvényesítésre szolgálja ki. Az objektum a gyorsítótárban volt, de a max-age nagyobb volt. A forrás egy újraérvényesítésre váltja fel egy új válasz forrásból gyorsítótár-objektumát eredményezett.
+* TCP_EXPIRED _MISS: Forráskiszolgáló után a forrás újraérvényesítésre szolgálja ki. Az objektum a gyorsítótárban volt, de a max-age nagyobb volt. A forrás egy újraérvényesítésre váltja fel egy új válasz forrásból gyorsítótár-objektumát eredményezett.
 * TCP_EXPIRED _HIT: Edge után a forrás újraérvényesítésre szolgálja ki. Az objektum a gyorsítótárban, de a max-age nagyobb volt. Egy együtt a forráskiszolgáló újbóli ellenőrzése alatt álló kívánja módosítani a gyorsítótár-objektumát eredményezett.
 
 ### <a name="full-list-of-cache-statuses"></a>Gyorsítótárak allapota teljes listája
@@ -96,17 +96,17 @@ Lejárt gyorsítótárbeli találatok csökkentése érdekében állítsa be az 
   
   * A Cache-Control: s-maxage
   * A Cache-Control: max-age
-  * Lejárat
+  * Elévül
 * TCP_MISS: Ez az állapot azt jelzi, hogy a gyorsítótárazott verziót, a kért objektum nem található a legközelebbi az ügyfélnek a jelenléti pont. Az eszköz az eredeti kiszolgálóra vagy-forráskiszolgáló pajzs kérik. Ha a forráskiszolgáló és a forráskiszolgáló pajzs ad vissza egy eszköz, az ügyfélprogram és az ügyfél és a peremhálózati kiszolgáló gyorsítótárazza. Ellenkező esetben nem – 200-as állapotkódot (például 403 Tiltott vagy 404-es nem található) adja vissza.
-* TCP_EXPIRED_HIT: Ezt az állapotot jelentett egy kérelmet, amely az eszköz egy lejárt TTL-célozza az ügyfél közvetlenül a jelenléti pontra Irányíthatja a kiszolgálása során. Például, ha az eszköz által a max-age lejárt. 
+* TCP_EXPIRED_HIT: Ez az állapot, amikor az ügyfél egy kérelem egy eszköz és a egy lejárt TTL célzó kiszolgálása közvetlenül a jelenléti pontra Irányíthatja a rendszer jelenti. Például, ha az eszköz által a max-age lejárt. 
   
    Egy lejárt kérelem általában eredményez újraérvényesítésre kérelmet az eredeti kiszolgálóra. Egy TCP_EXPIRED_HIT állapot következik be a forráskiszolgáló jeleznie kell, hogy egy újabb verzióra, az eszköz nem létezik. Ez a helyzet általában egy frissítést, az eszköz Cache-Control és Expires fejlécet eredményez.
-* TCP_EXPIRED_MISS: Ez az állapot rendszer jelenti, amikor egy lejárt gyorsítótárazott objektumot egy újabb verziója rendereléséhez a jelenléti pontra Irányíthatja a szükséges az ügyfél. Ez az állapot akkor jelentkezik, ha egy gyorsítótárazott objektum Élettartama lejárt (például lejárt max-age) és a forráskiszolgáló visszaküldi az adott eszköz egy újabb verzióra. Ez az eszköz új verziója helyett a gyorsítótárazott verziót az ügyfél biztosítja. Ezenkívül gyorsítótárazza a peremhálózati kiszolgáló és az ügyfélen.
+* TCP_EXPIRED_MISS: Amikor egy lejárt gyorsítótárazott objektumot egy újabb verziója rendereléséhez a jelenléti pontra Irányíthatja a szükséges az ügyfél ezt az állapotot jelentett. Ez az állapot akkor jelentkezik, ha egy gyorsítótárazott objektum Élettartama lejárt (például lejárt max-age) és a forráskiszolgáló visszaküldi az adott eszköz egy újabb verzióra. Ez az eszköz új verziója helyett a gyorsítótárazott verziót az ügyfél biztosítja. Ezenkívül gyorsítótárazza a peremhálózati kiszolgáló és az ügyfélen.
 * CONFIG_NOCACHE: Ez az állapot azt jelzi, hogy egy ügyfél-specifikus konfigurációs a jelenléti pont peremhálózati. Ebben az esetben az eszköz a gyorsítótárba.
 * Nincs – Ez azt jelzi, hogy egy gyorsítótár-tartalom frissessége ellenőrzést nem lett végrehajtva.
-* TCP_CLIENT_REFRESH_MISS: Ez az állapot jelent, ha egy HTTP-ügyfelet, például a böngésző arra kényszeríti az edge beolvasni egy elavult eszköz új verziója a forráskiszolgálóról a jelenléti pontra Irányíthatja. Alapértelmezés szerint a kiszolgálók megakadályozása egy HTTP-ügyfél kényszerítése a peremhálózati kiszolgálókon a forráskiszolgáló beolvasni az eszköz új verziója.
-* TCP_PARTIAL_HIT: Ez az állapot a küldött bájt tartomány kérelem részlegesen gyorsítótárazott objektumhoz találat eredményez. A kért bájttartomány az ügyfél azonnal szolgáltatja a jelenléti pont.
-* UNCACHEABLE: Ez az állapot jelent, ha egy eszköz `Cache-Control` és `Expires` fejlécek azt jelzik, hogy azt nem gyorsítótárazza a POP- vagy HTTP-ügyfél által. Az ilyen típusú kérelmeket szolgáltatás szolgálja ki a forráskiszolgálóról.
+* TCP_CLIENT_REFRESH_MISS: Ez az állapot jelentett, amikor egy HTTP-ügyfelet, például a böngésző arra kényszeríti az edge beolvasni egy elavult eszköz új verziója a forráskiszolgálóról a jelenléti pontra Irányíthatja. Alapértelmezés szerint a kiszolgálók megakadályozása egy HTTP-ügyfél kényszerítése a peremhálózati kiszolgálókon a forráskiszolgáló beolvasni az eszköz új verziója.
+* TCP_PARTIAL_HIT: Ez az állapot küldött bájt tartomány kérelem részlegesen gyorsítótárazott objektumhoz találat eredményez. A kért bájttartomány az ügyfél azonnal szolgáltatja a jelenléti pont.
+* UNCACHEABLE: Ez az állapot, amikor az eszköz jelentett `Cache-Control` és `Expires` fejlécek azt jelzik, hogy azt nem gyorsítótárazza a POP- vagy HTTP-ügyfél által. Az ilyen típusú kérelmeket szolgáltatás szolgálja ki a forráskiszolgálóról.
 
 ## <a name="cache-hit-ratio"></a>Gyorsítótárbeli találatok arányát
 Ez a jelentés gyorsítótárazott, amely közvetlenül a gyorsítótárból is kiszolgált kérések arányát jelzi.

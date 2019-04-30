@@ -7,16 +7,15 @@ manager: jillfra
 ms.prod: visual-studio
 ms.technology: vs-azure
 ms.custom: vs-azure
-ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: ghogen
 ms.openlocfilehash: d95bd114be712953b79ef5afbb0915173f6de26c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339278"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60764522"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault hozzáadása a webalkalmazás a Visual Studio csatlakoztatott szolgáltatásai segítségével
 
@@ -152,7 +151,7 @@ Ez a szakasz azonosítja a pontos változások ASP.NET-projekt hozzáadása a Ke
 
 A projekt fájl .NET-referenciák és az alkalmazáscsomag-hivatkozások NuGet van hatással.
 
-| Typo | Leírások |
+| Típus | Leírások |
 | --- | --- |
 | NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
 
@@ -188,7 +187,7 @@ Ez a szakasz azonosítja a pontos változások ASP.NET-projekt hozzáadása a Ke
 
 Hatással van a .NET projekt fájlhivatkozásokat és `packages.config` (NuGet-hivatkozás).
 
-| Typo | Leírások |
+| Típus | Leírások |
 | --- | --- |
 | .NET; NuGet | Microsoft.Azure.KeyVault |
 | .NET; NuGet | Microsoft.Azure.KeyVault.WebKey |

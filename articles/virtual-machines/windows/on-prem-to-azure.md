@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05e687ab31b6c19193076033e1350952549d26e0
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 42ad7bc10cb7b93bd4db9260f950ae4ca12aba44
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330749"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61126894"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Az Amazon Web Services (AWS) és más platformokra át az Azure Managed Disks
 
@@ -55,7 +55,7 @@ Ez a szakasz segít, hogy a legjobb döntést a virtuális gép és a lemez típ
 
 Ha azt tervezi, nem felügyeltről felügyelt lemezessé szolgáltatásba, célszerű tisztában lennie a felhasználók által a [virtuális gépek Közreműködője](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör nem tudják módosítani a Virtuálisgép-méret (mivel azok sikerült előzetes átalakítás). Ennek az az oka a felügyelt lemezekkel rendelkező virtuális gépek a felhasználót, hogy az operációsrendszer-lemezek Microsoft.Compute/disks/write engedélye szükséges.
 
-### <a name="location"></a>Hely
+### <a name="location"></a>Location egység
 
 Jelöljön ki egy helyet, ahol érhetők el az Azure Managed Disks. Ha az áttelepítés a Premium Managed Disks szolgáltatásba, is elérhető legyen a Premium storage a régióban, ahol kíván áttelepíteni. Lásd: [Azure-szolgáltatások régió szerint](https://azure.microsoft.com/regions/#services) naprakész információk az elérhető helyek.
 

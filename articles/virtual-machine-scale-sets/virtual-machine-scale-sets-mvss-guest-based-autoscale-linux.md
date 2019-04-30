@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: manayar
 ms.openlocfilehash: deddcc8623803f9d003f3fafcef5252ebd34b813
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438336"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60803364"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Az automatikus méretezés egy Linux rendszerű méretezési csoport sablonjában Vendég mérőszámok segítségével
 

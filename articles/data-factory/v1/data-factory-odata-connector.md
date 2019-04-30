@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b2c665de94750c4c6f41bda47960fdb9ba17e819
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905630"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60824032"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Helyezze át az adatok Azure Data Factory használatával az OData-Adatcsatornából forrás
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -67,7 +67,7 @@ A következő táblázat a JSON-elemeket társított OData-szolgáltatás leír�
 | url |Az OData-szolgáltatás URL-címe. |Igen |
 | authenticationType |Az OData-forráshoz való kapcsolódáshoz használt hitelesítés típusa. <br/><br/> Felhőalapú OData a lehetséges értékek: névtelen, alapszintű és OAuth (Megjegyzés: az Azure Data Factory jelenleg csak támogatás az Azure Active Directory-alapú OAuth). <br/><br/> A helyszíni OData a lehetséges értékek: névtelen, alapszintű és a Windows. |Igen |
 | felhasználónév |Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. |Igen (csak akkor, ha az egyszerű hitelesítés használata esetén) |
-| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Igen (csak akkor, ha az egyszerű hitelesítés használata esetén) |
+| password |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Igen (csak akkor, ha az egyszerű hitelesítés használata esetén) |
 | authorizedCredential |Ha OAuth használ, kattintson a **engedélyezés** gombra a Data Factory Copy varázslót vagy a szerkesztőben, és adja meg a hitelesítő adatok a tulajdonság értéke lesz automatikusan létrehozott. |Igen (csak akkor, ha OAuth-hitelesítés használata esetén) |
 | átjáró neve |Az átjáró, amely a Data Factory szolgáltatás segítségével csatlakozhat a helyszíni OData-szolgáltatás neve. Csak adja meg, ha a másolt adatok helyi OData-forráshoz. |Nem |
 
@@ -157,7 +157,7 @@ A tevékenység a typeProperties szakasz tulajdonságai másrészről tevékenys
 
 Ha a forrás típusa van **RelationalSource** (amely tartalmazza az OData) typeProperties szakasz érhető el az alábbi tulajdonságokat:
 
-| Tulajdonság | Leírás | Példa | Szükséges |
+| Tulajdonság | Leírás | Példa | Kötelező |
 | --- | --- | --- | --- |
 | lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |"?$select=Name, Description&$top=5" |Nem |
 

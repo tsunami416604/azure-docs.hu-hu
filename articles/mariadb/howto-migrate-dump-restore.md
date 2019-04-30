@@ -7,18 +7,18 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: bcb76fcbba02bf53b48cc462e3dad8f264db02ed
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540443"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60745943"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>A MariaDB-adatbázis migrálása az Azure Database for MariaDB memóriakép és visszaállítás használatával
 Ez a cikk azt ismerteti, biztonsági mentése és visszaállítása az Azure Database-adatbázisok a MariaDB-hez két gyakori módjai
 - Memóriakép és visszaállítás a parancssorból (használatával az mysqldump) 
 - Memóriakép és visszaállítás PHPMyAdmin használatával
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 Ez az útmutató elvégezhető, szüksége lesz:
 - [Hozzon létre az Azure Database for MariaDB-kiszolgáló – az Azure portal](quickstart-create-mariadb-server-database-using-azure-portal.md)
 - [mysqldump](https://mariadb.com/kb/en/library/mysqldump/) parancssori segédprogram olyan gépre telepíteni.
@@ -107,7 +107,7 @@ $ mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p te
 
 ## <a name="export-using-phpmyadmin"></a>Exportálás PHPMyAdmin használatával
 Szeretné exportálni, előfordulhat, hogy a már telepített helyi környezete általános eszköz phpMyAdmin használhatja. A PHPMyAdmin használatával MariaDB-adatbázis exportálása:
-1. Nyissa meg a phpMyAdmin.
+1. Open phpMyAdmin.
 2. Válassza ki az adatbázist. Kattintson a bal oldali listában található az adatbázis nevét. 
 3. Kattintson a **exportálása** hivatkozásra. Az adatbázis-memóriakép megtekintéséhez megjelenik egy új lap.
 4. Az exportálási területen kattintson a **válassza ki az összes** hivatkozás kiválasztása a táblák az adatbázisban. 
@@ -116,7 +116,7 @@ Szeretné exportálni, előfordulhat, hogy a már telepített helyi környezete 
 
 ## <a name="import-using-phpmyadmin"></a>Importálás PHPMyAdmin használatával
 Az adatbázis importálása a hasonló exportálása. A következő műveleteket hajthatja végre:
-1. Nyissa meg a phpMyAdmin. 
+1. Open phpMyAdmin. 
 2. A phpMyAdmin telepítőjében kattintson **Hozzáadás** hozzáadása az Azure Database for MariaDB-kiszolgáló. Adja meg a kapcsolat adatait, és a bejelentkezési adatait.
 3. Hozzon létre egy megfelelő nevű lapfüleken adatbázist, és jelölje ki a képernyő a bal oldalon. A meglévő adatbázis újraírási, kattintson az adatbázis nevét, jelölje be a tábla neve melletti jelölőnégyzeteket, majd válassza **Drop** törli a meglévő táblákat. 
 4. Kattintson a **SQL** hivatkozásra kattintva megjelenítheti az oldal, ahol az SQL-parancsokat beírhatja, vagy az SQL-fájl feltöltése. 

@@ -10,11 +10,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.openlocfilehash: f4307da2e74846507cafb9f767a6ccae855e42a2
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554673"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60816814"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Azure Stream Analytics-feladat, növelheti a teljesítményt méretezése
 Ez a cikk bemutatja, hogyan finomhangolása egy Stream Analytics-lekérdezés növeléséhez a Streaming Analytics-feladatokhoz. Ez az útmutató segítségével méretezheti a feladatot, amely magasabb terhelés kezeléséhez, és több rendszererőforrást (például a nagyobb sávszélességet, több Processzor-erőforrások, több memória) előnyeit.

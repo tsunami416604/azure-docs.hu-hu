@@ -1,7 +1,6 @@
 ---
 title: Az Apache Pig használata egy HDInsight-fürtön – Azure SSH-n keresztül
 description: Ismerje meg, hogyan csatlakozhat egy Linux-alapú Apache Hadoop-fürtöt, az SSH és a Pig parancs futása Pig Latin utasításokkal majd használja, vagy egy batch-feladat.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: a674ee52ae5e8f8f800d4584a53c808ceae70156
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: MT
+ms.openlocfilehash: 503449e36b2b11e5663449dd732fdaf785417570
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435055"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110750"
 ---
 # <a name="run-apache-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>A Pig-parancsot (SSH) rendelkező Linux-alapú fürt Apache Pig-feladatok futtatása
 

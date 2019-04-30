@@ -11,18 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 2646941e2384acf6d303615f564b65d616931180
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: c00f703c5cfa606eaeb6ea0dea5fe5d754d3de5d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794252"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108084"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metrikák az Azure Monitorban
 
 > [!NOTE]
 > Az Azure Monitor adatplatform két alapvető adattípusok alapján: Metrikák és naplók. Ez a cikk ismerteti a metrikákat. Tekintse meg [naplók az Azure Monitor](data-platform-logs.md) naplók és a egy részletes leírása a [Azure Monitor adatok platforn](data-platform.md) a két összehasonlítását.
-
 
 Metrikák az Azure monitorban, könnyen használható, és képes a közel valós idejű felhasználói helyzetek, így különösen a problémák riasztási és gyors észlelése. Ez a cikk azt ismerteti, hogyan metrikák struktúrája, mi mindent velük, és azonosítja az adatok tárolása a metrikák különböző adatforrásokból.
 
@@ -42,7 +41,6 @@ Az alábbi táblázat a különböző módon, hogy használhatja az Azure monito
 | Lekérés | A parancssor használatával metrikaértékek elérését [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>Egyéni alkalmazást a metrikaértékek elérését [REST API-val](rest-api-walkthrough.md).<br>A parancssor használatával metrikaértékek elérését [CLI](/cli/azure/monitor/metrics). |
 | Archívum | [Archív](..//learn/tutorial-archive-data.md) az erőforrás megfelelőségét, naplózás, vagy offline jelentéskészítésre teljesítmény vagy egészségügyi előzményeit. |
 
-
 ## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>Hogyan alakul az Azure Monitor-metrikák strukturált adatok?
 Az Azure-metrikák figyelése által gyűjtött adatokat egy idősorozat-adatbázis, amely időbélyeggel ellátott adatelemzés optimalizált tárolódik. Minden egyes metrikaértékek készlete áll egy idősorozat, az alábbi tulajdonságokkal:
 
@@ -52,8 +50,6 @@ Az Azure-metrikák figyelése által gyűjtött adatokat egy idősorozat-adatbá
 * Metrika neve
 * Maga az érték
 * Bizonyos metrikák rendelkezhet több dimenzióban leírtak szerint [többdimenziós metrikák](#multi-dimensional-metrics). Egyéni metrikák dimenziók legfeljebb 10 lehet.
-
-Az Azure-ban mérőszámok 93 napig tárolódnak. Is [az erőforrások figyelése az Azure platform mérőszámok küldése a Log Analytics-munkaterülethez](diagnostic-logs-stream-log-store.md) a hosszú távú trendek.
 
 ## <a name="multi-dimensional-metrics"></a>Többdimenziós metrikák
 A legnagyobb kihívás a metrikaadatok, hogy milyen gyakran korlátozott összegyűjtött értékek segítséget nyújt információt. Az Azure Monitor-címek a többdimenziós metrikák mutatták. Dimenzió egy metrikát a név-érték párok megadásával írhatja le a metrikaérték további adatot áll. Például egy metrika _rendelkezésre álló lemezterület_ nevű dimenzió rendelkezhet _meghajtó_ értékekkel _C:_, _D:_, amelyek lehetővé teszik a megtekintése vagy összes rendelkezésre álló lemezterület-meghajtók, vagy minden meghajtó külön-külön.
@@ -101,6 +97,13 @@ Nincsenek Azure-figyelése által gyűjtött metrikák három alapvető forrása
 
 **Egyéni metrikák** meghatározó felül a standard mérőszámok automatikusan elérhető metrikák vannak. Is [egyéni-metrikáinak definiálása az alkalmazásban](../app/api-custom-events-metrics.md) , amely figyel az Application Insights, vagy hozzon létre egy Azure-szolgáltatások használatára vonatkozó egyéni metrikákat az [egyéni metrikák API](metrics-store-custom-rest-api.md).
 
+## <a name="retention-of-metrics"></a>Metrikák megőrzése
+A legtöbb erőforrást az Azure-ban a metrikák 93 napig tárolódnak. Van néhány kivétel:
+  * **Klasszikus vendég operációs rendszer metrikák**. Klasszikus vendég operációs rendszer mérőszámok 14 napig megőrződnek. A hosszabb adatmegőrzés megadásához, javasoljuk a gyűjtött új vendég operációs rendszer-metrikák [Windows diagnosztikai bővítmény (WAD)](../platform/diagnostics-extension-overview.md) és a Linux rendszerű virtuális gépek [InfluxData Telegraf ügynök](https://www.influxdata.com/time-series-platform/telegraf/).
+  * **Application Insights-log-alapú metrikáinak**. A helyszín mögött [log mérőszámok](../app/pre-aggregated-metrics-log-metrics.md) naplólekérdezések lefordítása. A megőrzési megegyezik a megőrzési ideje az alapul szolgáló naplók eseményeit. Az Application Insights-erőforrást a naplók 90 napig tárolódnak. 
+
+> [!NOTE]
+> Is [az erőforrások figyelése az Azure platform mérőszámok küldése a Log Analytics-munkaterülethez](diagnostic-logs-stream-log-store.md) a hosszú távú trendek.
 
 ## <a name="next-steps"></a>További lépések
 

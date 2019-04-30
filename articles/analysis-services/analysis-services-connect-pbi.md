@@ -9,13 +9,13 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: cb93c29ae4cb8d365cd128c52ee726c10c94bc19
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189337"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61023574"
 ---
-# <a name="connect-with-power-bi"></a>A Power BI
+# <a name="connect-with-power-bi"></a>Kapcsolódás Power BI-jal
 
 Miután létrehozott egy kiszolgálót az Azure-ban, és üzembe helyezett egy táblázatos modellhez, a szervezet felhasználói csatlakozhat, és megkezdje az adatok készen állnak. 
 

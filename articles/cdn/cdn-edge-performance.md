@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7dfa252c29121adca2ecc77c08b2fca81d56e575
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320074"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61070004"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Az élcsomópontok teljesítményének elemzése a Microsoft Azure CDN szolgáltatásban
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -111,7 +111,7 @@ Ezek a metrikák célja nyújt betekintést az alábbi általános költségek m
 | A bájtok |Azt jelzi, hogy igénylők (pl. webböngésző) által küldött adatok (bájt) mennyisége és a CDN (edge kiszolgálók). |
 | Távoli bájt |Azt jelzi, hogy a CDN-t (peremhálózati kiszolgálókon) a CDN-t és az ügyfelek szerverek küldött bájtok, az adatok mennyisége. |
 
-#### <a name="performance-metrics"></a>Teljesítmény-mérőszámok
+#### <a name="performance-metrics"></a>Teljesítmény-metrikák
 Ezek a metrikák célja a forgalom általános CDN teljesítményének nyomon követéséhez.
 
 | Mező | Leírás |

@@ -3,21 +3,22 @@ title: Adatok másolása a Google BigQuery-ből az Azure Data Factory használat
 description: Megtudhatja, hogyan másolhat adatokat a Google BigQuery támogatott fogadó adattárakba egy data factory-folyamatot egy másolási tevékenység használatával.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: jingwang
+origin.date: 12/07/2018
+ms.date: 04/22/2019
+ms.author: v-jay
 ms.openlocfilehash: c9320c8d0cf512bc9145accc07ab4c79630a7c84
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301356"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60808885"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Adatok másolása a Google BigQuery-ből az Azure Data Factory használatával
 

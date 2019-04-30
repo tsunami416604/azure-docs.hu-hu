@@ -13,11 +13,11 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: d299a785d50657ef40c0c49cb2dce33b8939fd02
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575868"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60860985"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Adatok átalakítása egy Jar tevékenység futtatja az Azure Databricksben
 
@@ -59,7 +59,7 @@ A következő táblázat ismerteti a JSON-definíciójában használt JSON-tulaj
 |Tulajdonság|Leírás|Szükséges|
 |:--|---|:-:|
 |név|A folyamat a tevékenység neve.|Igen|
-|leírás|A tevékenység leírása leíró szöveg.|Nem|
+|description|A tevékenység leírása leíró szöveg.|Nem|
 |type|Databricks Jar tevékenységhez a tevékenység típus DatabricksSparkJar.|Igen|
 |linkedServiceName|A Jar-tevékenység fut, amelyen a Databricks társított szolgáltatás neve. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk.|Igen|
 |mainClassName|Az osztály, amely tartalmazza a fő módszert hajtható végre teljes neve. Ez az osztály egy JAR kódtárként megadott tartalmaznia kell.|Igen|

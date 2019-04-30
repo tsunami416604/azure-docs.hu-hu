@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
 ms.date: 02/23/2019
-ms.openlocfilehash: 067ea8eee297eb8572bd37e240b8d13afe458ca7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a027e6c0afd526139484240f288205fa946d557
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60331859"
+ms.locfileid: "62111799"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Az Azure SQL Database szolgáltatási csomagjai
 
@@ -63,5 +63,5 @@ Az adatbázis biztonsági másolatait lefoglalta a pont támogatja az idő-vissz
 
 ## <a name="next-steps"></a>További lépések
 
-- Részletek az adott számítási méretek és a tároló mérete lehetőségek önálló adatbázis az általános célú és a kritikus fontosságú üzleti szolgáltatási szinten érhető el, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok az önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)
+- Részletek az adott számítási méretek és a tároló mérete lehetőségek önálló adatbázis az általános célú és a kritikus fontosságú üzleti szolgáltatási szinten érhető el, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok az önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier)
 - Részletek az adott számítási méretek és a tároló mérete lehetőségek az általános célú és a kritikus fontosságú üzleti szolgáltatási szinten a rugalmas készletek számára elérhető, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok a rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).

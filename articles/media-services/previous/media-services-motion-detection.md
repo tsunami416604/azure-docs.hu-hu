@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: milanga;juliako;
 ms.openlocfilehash: e0b083cba575f4d1c0eb19afb76fca29431ae75e
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259098"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61463531"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Az Azure Media Analytics mozdulatok észlelése
 ## <a name="overview"></a>Áttekintés
@@ -94,16 +94,16 @@ A következő táblázat ismerteti a kimeneti JSON-fájl elemeinek.
 
 | Elem | Leírás |
 | --- | --- |
-| Verzió |Ez vonatkozik a Video API verziója. A jelenlegi verzió: 2. |
+| Version |Ez vonatkozik a Video API verziója. A jelenlegi verzió: 2. |
 | Időskála |"Órajel során végbemenő" a videó másodpercenként. |
-| Eltolás |Időbélyegeket "órajelben." az idő eltolása Videó API-k 1.0-s verziójában ez mindig 0 lesz. A jövőben támogatott forgatókönyveket, ez az érték változhatnak. |
+| Offset |Időbélyegeket "órajelben." az idő eltolása Videó API-k 1.0-s verziójában ez mindig 0 lesz. A jövőben támogatott forgatókönyveket, ez az érték változhatnak. |
 | Képkockasebesség |Képkockák másodpercenkénti száma a videóban. |
 | Szélesség, Hosszúság |A szélességét és magasságát (képpontban) hivatkozik. |
 | Indítás |A "órajel során végbemenő" a start időbélyegző. |
 | Időtartam |Az esemény, a "órajel során végbemenő" hossza. |
-| Intervallum |Az időköz az egyes bejegyzések az eseményben szereplő "órajel során végbemenő". |
+| Interval |Az időköz az egyes bejegyzések az eseményben szereplő "órajel során végbemenő". |
 | Események |Minden egyes esemény töredék idő töltött belül észlelt a mozgásban lévő adatoknak egyaránt tartalmazza. |
-| Typo |A jelenlegi verzióban ez a "2" általános mozgásban lévő adatoknak egyaránt. A címke ad Video API-k a rugalmasság kategorizálásának mozgási későbbi verziók. |
+| Típus |A jelenlegi verzióban ez a "2" általános mozgásban lévő adatoknak egyaránt. A címke ad Video API-k a rugalmasság kategorizálásának mozgási későbbi verziók. |
 | RegionID |Amint azt fent kifejtettük, ez mindig 0 lesz ebben a verzióban. Ez a címke rugalmasságot biztosít Video API a mozgásban lévő keresése a későbbi verziókban különböző régiókban. |
 | Régiók |A videó a terület, ahol konkrét mozgásban lévő adatoknak egyaránt vonatkozik. <br/><br/>– az "id" jelöli a régió terület – ebben a verzióban van csak egy, azonosító: 0. <br/>– "type" az Ön számára a mozgásban lévő adatoknak egyaránt régió az alakzat jelöli. Jelenleg a "téglalap" és "sokszög" támogatottak.<br/> "Téglalap" adott meg, ha a régió dimenziók rendelkezik X, Y szélessége és magassága. Az X és Y koordinátái a 0,0 és 1,0 normalizált méretezési régió felső bal XY koordináták képviseli. A szélesség és magasság képviselik a 0,0 és 1,0 a normalizált méretezési terület méretét. A jelenlegi verzió X, Y, szélesség és magasság mindig rögzíteni, 0, 0 és 1, 1. <br/>"Sokszög" adott meg, ha a régió dimenziók pontokat tartalmaz. <br/> |
 | Töredékek |A metaadatok nevű töredék különböző részekre van darabolásos fel. Minden töredék tartalmaz kezdési időpontot, időtartamot, intervallumszámot és esemény(eke)t. Egy kódrészletet az események nem azt jelenti, hogy semmilyen adott kezdő időpontja és időtartama során észlelt. |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 6f8fadc42d1c725002f2552a3fc1fc98e8564437
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 7cb8d494d32f2a9c192418bfab2d5ca9b679c5fe
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098772"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60704928"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Identitás és hozzáférés az Azure Security Centerben (előzetes verzió) figyelése
 Ez a cikk útmutatást nyújt a felhasználók identitási és hozzáférési tevékenységeinek az Azure Security Center segítségével történő figyeléséhez.
@@ -119,7 +119,7 @@ Referenciaként az alábbi táblázat segítségével segítenek megérteni a re
 |Előfizetés|5|Elavult fiókok eltávolítása az előfizetésből|Elavult fiókok eltávolítása az csak az aktuális felhasználó hozzáférésének engedélyezése az előfizetések közül. |
 |Előfizetés|5|Az előfizetéshez legalább egy tulajdonos kijelölése|Több mint egy előfizetés-tulajdonost kijelölni a rendszergazdai hozzáférés redundanciájának biztosításához.|
 |Előfizetés|5|Legfeljebb 3 előfizetéstulajdonos kijelölése|Kevesebb mint 3 előfizetés-tulajdonost kijelölni az esetleges illetéktelen behatolás feltört tulajdonosa.|
-|Key Vault|5|A Key Vault-diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
+|Key Vault|5|Diagnosztikainapló-használat engedélyezése a Key Vaultban|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
 |Előfizetés|15|Olvasási engedélyekkel rendelkező külső fiókok eltávolítása az előfizetésből|Az olvasási jogosultsággal rendelkező külső fiókok eltávolítása az előfizetésből a nem monitorozott hozzáférések megelőzése céljából.|
 |Előfizetés|1|Biztonsági kapcsolattartói adatok megadása|Biztonsági kapcsolattartó adatainak megadása minden egyes előfizetésnél. Kapcsolattartási adatok, e-mail címét és telefonszámát szám. Az adatok kapcsolatba lépni Önnel, ha a biztonsági csoportunk, hogy az erőforrások kerülnek veszélybe|
 
@@ -129,7 +129,7 @@ Referenciaként az alábbi táblázat segítségével segítenek megérteni a re
 ## <a name="next-steps"></a>További lépések
 Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos további információkért tekintse meg a következőket:
 
-- [A gépek és az alkalmazások az Azure Security Center védelme](security-center-virtual-machine-recommendations.md)
+- [A gépek és alkalmazások védelme az Azure Security Centerben](security-center-virtual-machine-recommendations.md)
 - [Hálózat védelme az Azure Security Centerben](security-center-network-recommendations.md)
 - [Az Azure SQL-szolgáltatás és az adatok az Azure Security Center védelme](security-center-sql-service-recommendations.md)
 

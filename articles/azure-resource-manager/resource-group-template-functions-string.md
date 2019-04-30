@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
 ms.openlocfilehash: bf9faa34c1f0923761ce583c22ba4084d7bd42a8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278785"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60782922"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Karakterlánc-függvények az Azure Resource Manager-sablonok
 
@@ -67,7 +67,7 @@ A bemeneti karakterláncot a base64 kódolású karakterláncként adja vissza.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| inputString |Igen |sztring |A visszaadandó értéket, mint a base64-ábrázolásból. |
+| inputString |Igen |string |A visszaadandó értéket, mint a base64-ábrázolásból. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -120,7 +120,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | egy két há' |
-| toJsonOutput | Objektum | {"egy": "a", "2": "b"} |
+| toJsonOutput | Object | {"egy": "a", "2": "b"} |
 
 ## <a name="base64tojson"></a>base64ToJson
 
@@ -132,7 +132,7 @@ A base64-ábrázolásból konvertálja JSON-objektum.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| base64Value |Igen |sztring |A base64-ábrázolásból átalakítása JSON-objektum. |
+| base64Value |Igen |string |A base64-ábrázolásból átalakítása JSON-objektum. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -185,7 +185,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | egy két há' |
-| toJsonOutput | Objektum | {"egy": "a", "2": "b"} |
+| toJsonOutput | Object | {"egy": "a", "2": "b"} |
 
 ## <a name="base64tostring"></a>base64ToString
 
@@ -197,7 +197,7 @@ Egy karakterláncot egy base64-ábrázolásból alakítja át.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| base64Value |Igen |sztring |A base64-ábrázolásból alakítandó karakterlánc. |
+| base64Value |Igen |string |A base64-ábrázolásból alakítandó karakterlánc. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -250,7 +250,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | ---- | ---- | ----- |
 | base64Output | String | b25lLCB0d28sIHRocmVl |
 | toStringOutput | String | egy két há' |
-| toJsonOutput | Objektum | {"egy": "a", "2": "b"} |
+| toJsonOutput | Object | {"egy": "a", "2": "b"} |
 
 ## <a name="concat"></a>Concat
 
@@ -263,7 +263,7 @@ Több karakterlánc-értékek egyesíti, és a összefűzött karakterláncot ad
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Igen |karakterlánc- vagy tömb |Összefűzés első értéke. |
-| További argumentumok |Nem |sztring |További értékek összefűzésével sorrendben. |
+| További argumentumok |Nem |string |További értékek összefűzésével sorrendben. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 Egy karakterlánc- vagy összefűzött értékek tömbje.
@@ -430,7 +430,7 @@ Adat-URI alakít egy értéket.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Igen |sztring |Az adat-URI átalakítandó érték. |
+| stringToConvert |Igen |string |Az adat-URI átalakítandó érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -485,7 +485,7 @@ Egy adat-URI érték karakterlánc formátumú.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Igen |sztring |Az adatok átalakítása URI értéket. |
+| dataUriToConvert |Igen |string |Az adatok átalakítása URI értéket. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -605,8 +605,8 @@ Azt határozza meg, hogy egy karakterláncot egy adott értékre végződik-e. A
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Igen |sztring |Az érték, amely tartalmazza az elem található. |
-| stringToFind |Igen |sztring |Keresendő érték. |
+| stringToSearch |Igen |string |Az érték, amely tartalmazza az elem található. |
+| stringToFind |Igen |string |Keresendő érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -723,7 +723,7 @@ Bemeneti értékek-formátumú karakterláncot hoz létre.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| formatString | Igen | sztring | Összetett formázó karakterlánc. |
+| formatString | Igen | string | Összetett formázó karakterlánc. |
 | arg1 | Igen | karakterlánc, egész szám vagy logikai érték | A formázott karakterláncot foglalandó értéke. |
 | További argumentumok | Nem | karakterlánc, egész szám vagy logikai érték | További értékek a formázott karakterláncot. |
 
@@ -780,8 +780,8 @@ Létrehoz egy értéket a paraméterként megadott értékek alapján globálisa
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| baseString |Igen |sztring |A GUID létrehozásához a kivonatolási függvény a használt érték. |
-| További paraméterek szükséges |Nem |sztring |Tetszőleges számú karakterláncok létrehozása, amely az egyediség szintjét határozza meg az érték szükség szerint adhat hozzá. |
+| baseString |Igen |string |A GUID létrehozásához a kivonatolási függvény a használt érték. |
+| További paraméterek szükséges |Nem |string |Tetszőleges számú karakterláncok létrehozása, amely az egyediség szintjét határozza meg az érték szükség szerint adhat hozzá. |
 
 ### <a name="remarks"></a>Megjegyzések
 
@@ -851,8 +851,8 @@ Egy sztringbeli érték első pozícióját adja vissza. Az összehasonlítás e
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Igen |sztring |Az érték, amely tartalmazza az elem található. |
-| stringToFind |Igen |sztring |Keresendő érték. |
+| stringToSearch |Igen |string |Az érték, amely tartalmazza az elem található. |
+| stringToFind |Igen |string |Keresendő érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -964,8 +964,8 @@ Egy sztringbeli érték utolsó pozícióját adja vissza. Az összehasonlítás
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Igen |sztring |Az érték, amely tartalmazza az elem található. |
-| stringToFind |Igen |sztring |Keresendő érték. |
+| stringToSearch |Igen |string |Az érték, amely tartalmazza az elem található. |
+| stringToFind |Igen |string |Keresendő érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1125,7 +1125,7 @@ Az előző példa kimenetében az egyes központi telepítések az érték, de h
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| guidOutput | sztring | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
+| guidOutput | string | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
 Az alábbi példa a newGuid függvény segítségével hozzon létre egy storage-fiók egy egyedi nevet. Ez a sablon előfordulhat, hogy működik a tesztkörnyezetben, ahol a tárfiók egy rövid ideig létezik, és nem újratelepítése.
 
@@ -1168,7 +1168,7 @@ Az előző példa kimenetében az egyes központi telepítések az érték, de h
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| nameOutput | sztring | storagenziwvyru7uxie |
+| nameOutput | string | storagenziwvyru7uxie |
 
 
 ## <a name="padleft"></a>padLeft
@@ -1231,9 +1231,9 @@ Egy karakterlánc egy másik karakterláncot lecserélve az összes példányát
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| originalString |Igen |sztring |Az érték, amelynek egy karakterlánc egy másik karakterláncot lecserélve az összes példányát. |
-| oldString |Igen |sztring |A karakterlánc távolítható el az eredeti karakterláncot. |
-| Újkarakterlánc |Igen |sztring |A karakterlánc hozzáadása az eltávolított karakterlánc helyett. |
+| originalString |Igen |string |Az érték, amelynek egy karakterlánc egy másik karakterláncot lecserélve az összes példányát. |
+| oldString |Igen |string |A karakterlánc távolítható el az eredeti karakterláncot. |
+| Újkarakterlánc |Igen |string |A karakterlánc hozzáadása az eltávolított karakterlánc helyett. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1352,7 +1352,7 @@ Karakterláncok tömbje, amely tartalmazza a oszt fel a bemeneti karakterláncot
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| inputString |Igen |sztring |A felosztandó karakterlánc. |
+| inputString |Igen |string |A felosztandó karakterlánc. |
 | elválasztó karakter |Igen |karakterláncot vagy karakterláncok tömbje |A sztring felosztásához használt elválasztó karaktert. |
 
 ### <a name="return-value"></a>Vrácená hodnota
@@ -1411,8 +1411,8 @@ Azt határozza meg, hogy egy karakterláncot egy adott értékkel kezdődik-e. A
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Igen |sztring |Az érték, amely tartalmazza az elem található. |
-| stringToFind |Igen |sztring |Keresendő érték. |
+| stringToSearch |Igen |string |Az érték, amely tartalmazza az elem található. |
+| stringToFind |Igen |string |Keresendő érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1467,7 +1467,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | endsCapTrue | Bool | True (Igaz) |
 | endsFalse | Bool | False (Hamis) |
 
-## <a name="string"></a>sztring
+## <a name="string"></a>string
 
 `string(valueToConvert)`
 
@@ -1548,7 +1548,7 @@ Egy részét, amely a megadott Karakterpozíció kezdődik, és tartalmazza a me
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Igen |sztring |Az eredeti karakterláncot, amely az a karakterláncrészletet ki kell olvasni. |
+| stringToParse |Igen |string |Az eredeti karakterláncot, amely az a karakterláncrészletet ki kell olvasni. |
 | startIndex |Nem |int |A nulla alapú kezdő karakter pozíciójának a karakterláncrészletet. |
 | Hossza |Nem |int |A substring karakterek száma. A karakterláncon belüli helyre kell hivatkoznia. Lehet nulla vagy nagyobb. |
 
@@ -1677,7 +1677,7 @@ Kisbetűsre alakítja át a megadott karakterlánc.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Igen |sztring |Kisbetű alakítandó érték. |
+| stringToChange |Igen |string |Kisbetű alakítandó érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1728,7 +1728,7 @@ A megadott karakterlánc nagybetűs konvertálja.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Igen |sztring |A nagybetűs alakítandó érték. |
+| stringToChange |Igen |string |A nagybetűs alakítandó érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1779,7 +1779,7 @@ A megadott karakterlánc eltávolítja az összes kezdő és záró elválasztó
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Igen |sztring |Az érték, amelyből törölni kell. |
+| stringToTrim |Igen |string |Az érték, amelyből törölni kell. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -1825,8 +1825,8 @@ A paraméterként megadott értékek alapján determinisztikus kivonat karakterl
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| baseString |Igen |sztring |Hozzon létre egy egyedi karakterlánccá, a kivonatoló függvényt a használt érték. |
-| További paraméterek szükséges |Nem |sztring |Tetszőleges számú karakterláncok létrehozása, amely az egyediség szintjét határozza meg az érték szükség szerint adhat hozzá. |
+| baseString |Igen |string |Hozzon létre egy egyedi karakterlánccá, a kivonatoló függvényt a használt érték. |
+| További paraméterek szükséges |Nem |string |Tetszőleges számú karakterláncok létrehozása, amely az egyediség szintjét határozza meg az érték szükség szerint adhat hozzá. |
 
 ### <a name="remarks"></a>Megjegyzések
 
@@ -1903,8 +1903,8 @@ Egyesíti a baseUri és a relativeUri karakterláncot hoz létre absolutní iden
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| baseUri |Igen |sztring |Az alap uri karakterlánc. |
-| relativeUri |Igen |sztring |A relatív uri karakterlánc hozzáadása az alap uri-karakterláncot. |
+| baseUri |Igen |string |Az alap uri karakterlánc. |
+| relativeUri |Igen |string |A relatív uri karakterlánc hozzáadása az alap uri-karakterláncot. |
 
 Az érték a **baseUri** paraméter egy adott fájlt is tartalmazhat, de csak az alapútvonal létrehozásakor az URI-t használja. Például passing `http://contoso.com/resources/azuredeploy.json` egy alap URI-ját baseUri paraméter eredményként `http://contoso.com/resources/`.
 
@@ -1967,7 +1967,7 @@ Kódol egy URI-t.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Igen |sztring |A kódolni kívánt érték. |
+| stringToEncode |Igen |string |A kódolni kívánt érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -2022,7 +2022,7 @@ Visszaadása egy URI karakterláncként kódolt érték.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |Igen |sztring |Az URI-ként kódolt karakterlánc alakítandó érték. |
+| uriEncodedString |Igen |string |Az URI-ként kódolt karakterlánc alakítandó érték. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -2077,7 +2077,7 @@ A megadott formátumban az aktuális (UTC) dátum/idő értéket ad vissza. Ha n
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| Formátum |Nem |sztring |Az URI-ként kódolt karakterlánc alakítandó érték. Mindkét [standard formázási karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [egyéni formázási karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| Formátum |Nem |string |Az URI-ként kódolt karakterlánc alakítandó érték. Mindkét [standard formázási karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [egyéni formázási karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Megjegyzések
 
@@ -2136,9 +2136,9 @@ Az előző példa kimenetében az egyes központi telepítések az érték, de h
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| utcOutput | sztring | 20190305T175318Z |
-| utcShortOutput | sztring | 03/05/2019 |
-| utcCustomOutput | sztring | 3 5 |
+| utcOutput | string | 20190305T175318Z |
+| utcShortOutput | string | 03/05/2019 |
+| utcCustomOutput | string | 3 5 |
 
 A következő példa bemutatja, hogyan használható olyan érték, a függvény, amely címkeértékkel beállításakor.
 

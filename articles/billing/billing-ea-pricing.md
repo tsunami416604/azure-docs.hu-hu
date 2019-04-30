@@ -16,11 +16,11 @@ ms.date: 02/22/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: d4c64433089f14d845cea8be9adf0ef13675cfd1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892472"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127633"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Megtekintheti és letöltheti a szervezet az Azure díjszabása
 
@@ -51,7 +51,7 @@ A számlázási profil tulajdonos, közreműködő, olvasó vagy számla manager
 ### <a name="download-price-sheets-for-the-current-billing-period"></a>Töltse le az árlisták az aktuális elszámolási időszakban
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A Keresés **Cost Management és számlázás**.
+1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 1. Válassza ki a számlázási profilt. A hozzáférést, attól függően szükség lehet először ki kell választania egy számlázási fiókot.
 1. Az a **áttekintése** panelen keresse meg a letöltési hivatkozások a hónap elejétől számított díjakat alatt.
 1. Válassza ki **Azure árlista**.
@@ -60,9 +60,9 @@ A számlázási profil tulajdonos, közreműködő, olvasó vagy számla manager
 ### <a name="download-price-sheets-for-billed-charges"></a>Töltse le az árlisták számlázott díjak
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A Keresés **Cost Management és számlázás**.
+1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 1. Válassza ki a számlázási profilt. A hozzáférést, attól függően szükség lehet először ki kell választania egy számlázási fiókot.
-1. Válassza ki **számlákat**.
+1. Válassza ki a **Számlák** elemet.
 1. A számla rács megkeresi a letölteni kívánt árlistát tartozó számla.
 1. Kattintson a három (`...`) a sor végén található.
 ![A három pontot kiválasztva bemutató képernyőkép](./media/billing-ea-pricing/billingprofile-invoicegrid.png)

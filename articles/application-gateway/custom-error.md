@@ -5,14 +5,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 2/14/2019
-ms.author: victorh
+origin.date: 02/14/2019
+ms.date: 02/26/2019
+ms.author: v-junlch
 ms.openlocfilehash: abfe33ff679bef125d9bf5b78e1790a1a4c64863
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301604"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60832040"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Egyéni hibalapok Application Gateway létrehozása
 
@@ -34,7 +35,6 @@ Egyéni hibalapok a globális szinten és a figyelő szintjén adható meg:
 - **Mindkét** – az egyéni hibalap, a figyelő szintjén definiált felülbírálások globális szinten az egy csoport.
 
 Hozzon létre egy egyéni Hibaoldal, kell rendelkeznie:
-
 - a válasz HTTP-állapotkódot.
 - a hibalaphoz tartozó megfelelő hely. 
 - a nyilvánosan elérhető Azure storage blob helyéhez.
@@ -48,10 +48,10 @@ Miután megadott egy hibalap, az application gateway a tárolási blob helyről,
 
 1. Application gatewayhez a portálon keresse meg és válassza ki az application gateway.
 
-    ![rendelkezésre állási csoport – áttekintés](media/custom-error/ag-overview.png)
+    ![rendelkezésre állási csoport – áttekintés](./media/custom-error/ag-overview.png)
 2. Kattintson a **figyelői** , és keresse meg, ahol egy hibalap adja meg szeretné egy adott figyelőt.
 
-    ![Application Gateway figyelők](media/custom-error/ag-listener.png)
+    ![Application Gateway figyelők](./media/custom-error/ag-listener.png)
 3. A WAF 403-as hibaüzenet egyéni hibalap vagy egy 502 karbantartás oldalon konfigurálja a figyelő szintjén.
 
     > [!NOTE]
@@ -59,7 +59,7 @@ Miután megadott egy hibalap, az application gateway a tárolási blob helyről,
 
 4. Egy adott hiba állapotkód egy nyilvánosan elérhető-e a blob URL-címet, és kattintson a **mentése**. Az Application Gateway mostantól az egyéni hibalap van konfigurálva.
 
-   ![Application Gateway-hibakódok](media/custom-error/ag-error-codes.png)
+   ![Application Gateway-hibakódok](./media/custom-error/ag-error-codes.png)
 
 ## <a name="azure-powershell-configuration"></a>Azure PowerShell-konfigurálás
 
@@ -76,3 +76,5 @@ További információkért lásd: [Add-AzApplicationGatewayCustomError](https://
 ## <a name="next-steps"></a>További lépések
 
 Application Gateway-diagnosztika kapcsolatos információkért lásd: [háttérrendszer állapota, diagnosztikai naplók és mérőszámok az Application Gateway](application-gateway-diagnostics.md).
+
+<!-- Update_Description: wording update -->

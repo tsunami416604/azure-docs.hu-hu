@@ -12,11 +12,11 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: 0d8267f1cd65f78d5e98ae9d288d5fa5c4214420
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576429"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60848248"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Adatok átalakítása Hadoop Streamelési tevékenységben használatával az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,7 +71,7 @@ Ha most ismerkedik az Azure Data Factory, olvassa el az [az Azure Data Factory b
 | Tulajdonság          | Leírás                              | Szükséges |
 | ----------------- | ---------------------------------------- | -------- |
 | név              | A tevékenység neve                     | Igen      |
-| leírás       | Mire használható a tevékenységet leíró szöveg | Nem       |
+| description       | Mire használható a tevékenységet leíró szöveg | Nem       |
 | type              | A Hadoop Streamelési tevékenységben a tevékenység típusa a HDInsightStreaming | Igen      |
 | linkedServiceName | Referencia a HDInsight-fürthöz társított szolgáltatásként a Data Factory regisztrálva. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk. | Igen      |
 | eseményleképező            | A végrehajtható eseményleképező neve | Igen      |

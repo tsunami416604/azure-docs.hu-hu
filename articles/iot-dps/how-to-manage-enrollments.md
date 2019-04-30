@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: 51b072bfd0827528a5504133dff8c1cdd7a7ca86
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089386"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122783"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Hogyan eszközök beléptetésének kezelése az Azure Portalon
 
@@ -29,8 +29,8 @@ Regisztrálhatja az eszközöket a kiépítési szolgáltatás két módja van:
     A portálon az alábbi lépéseket követve eszközök egy csoportját, egy regisztrációs csoportot hozhat létre:
 
   1. Jelentkezzen be az Azure Portalon, és kattintson a **összes erőforrás** elemet a bal oldali menüben.  
-  1. Kattintson a Device Provisioning service szeretne regisztrálni az eszközt az erőforrások listájából.  
-  1. A kiépítési szolgáltatás:  
+  2. Kattintson a Device Provisioning service szeretne regisztrálni az eszközt az erőforrások listájából.  
+  3. A kiépítési szolgáltatás:  
      a. Kattintson a **beléptetések kezelése**, majd válassza ki a **regisztrációs csoportok** fülre.  
      b. Kattintson a felül lévő **Hozzáadás** gombra.  
      c. Ha az "A regisztrációs csoport hozzáadása" panel jelenik meg, írja be a beléptetési listabejegyzés adatait.  **Csoport neve** megadása kötelező. Kiválaszthatja a "CA vagy a köztes" lehetőséget a **tanúsítványtípus**, és töltse fel a legfelső szintű **elsődleges tanúsítvány** eszközök csoportja.  

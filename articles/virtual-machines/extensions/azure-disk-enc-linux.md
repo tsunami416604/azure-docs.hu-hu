@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 36e8875e91e2f04dbb60bab3211f07b2053e78f5
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 3ce881da4b683cf7034100d5044dd0f3c93edb52
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414772"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60800189"
 ---
-# <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Az Azure Disk Encryption (Microsoft.Azure.Security.AzureDiskEncryptionForLinux) Linux rendszeren
+# <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption for Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -74,21 +74,21 @@ Az Azure Disk Encryption for Linux internetkapcsolatra van szükség az Active D
 
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | dátum |
-| publisher | Microsoft.Azure.Security | sztring |
-| type | AzureDiskEncryptionForLinux | sztring |
+| apiVersion | 2015-06-15 | date |
+| publisher | Microsoft.Azure.Security | string |
+| type | AzureDiskEncryptionForLinux | string |
 | typeHandlerVersion | 0.1-ES FRISSÍTÉS, 1.1-ES (VMSS) | int |
-| AADClientID | : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID azonosítója | 
-| AADClientSecret | jelszó | sztring |
-| AADClientCertificate | ujjlenyomat | sztring |
-| DiskFormatQuery | {"dev_path": "", "name": "","file_system": ""} | JSON-szótárt |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | sztring | 
-| KeyEncryptionAlgorithm | "AZ RSA-OAEP", 'RSA-OAEP – 256', "RSA1_5" | sztring |
-| KeyEncryptionKeyURL | url | sztring |
-| KeyVaultURL | url | sztring |
-| Hozzáférési kód | jelszó | sztring | 
-| SequenceVersion | UniqueIdentifier | sztring |
-| VolumeType | Az operációs rendszer, az adatok, az összes | sztring |
+| AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID azonosítója | 
+| AADClientSecret | password | string |
+| AADClientCertificate | thumbprint | string |
+| DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON-szótárt |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
+| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
+| KeyEncryptionKeyURL | url | string |
+| KeyVaultURL | url | string |
+| Hozzáférési kód | password | string | 
+| SequenceVersion | uniqueidentifier | string |
+| VolumeType | Az operációs rendszer, az adatok, az összes | string |
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 

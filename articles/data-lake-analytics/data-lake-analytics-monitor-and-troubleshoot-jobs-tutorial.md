@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 1e18addc43e53cb45e92966607ad5d1db2b42c3c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 40864bab068659be016161f7dc40243ebbd45174
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046719"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60812586"
 ---
 # <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Az Azure Portal használata az Azure Data Lake Analytics-feladatok figyelése
 
@@ -42,7 +42,7 @@ ms.locfileid: "43046719"
 6. Kattintson a **parancsfájl ismétlődő**.
 7. Frissítés a **FROM** elérési útja:
 
-    "/ Samples/Data/SearchLog.tsv"
+    "/Samples/Data/SearchLog.tsv"
 8. Kattintson a **Feladat elküldése** elemre.
 
 ## <a name="see-also"></a>Lásd még

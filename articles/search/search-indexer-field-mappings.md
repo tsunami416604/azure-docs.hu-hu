@@ -11,11 +11,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: 9bb8a168f54658ea14b174d19a1795e575646304
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310386"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60749342"
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Mezőleképezések az indexelőkben Azure Search
 Azure Search-indexelők használatakor az időnként találhatja meg saját maga helyzetekben, ahol a bemeneti adatok nem teljesen felel meg a célindex sémája. Ezekben az esetekben használható **mezőleképezéseivel** átalakítja az adatokat a kívánt formázásához.

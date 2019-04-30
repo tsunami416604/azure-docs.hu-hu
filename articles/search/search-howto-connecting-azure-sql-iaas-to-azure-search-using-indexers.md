@@ -10,11 +10,11 @@ ms.date: 02/04/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 90e5a133bac519cbc5ab2d7b112d51a019e8f698
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751378"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60871280"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Az SQL Server az Azure Search indexelők a kapcsolat konfigurálása egy Azure-beli virtuális gépen
 Leírtaknak [csatlakoztatása az Azure SQL Database az Azure Search indexelők használatával](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), szemben az indexelők létrehozása **SQL Server Azure virtuális gépeken** (vagy **SQL Azure-beli virtuális gépek** röviden) használata támogatott az Azure Search de van néhány biztonsággal kapcsolatos előfeltételek irányuló első. 

@@ -14,11 +14,11 @@ ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
 ms.openlocfilehash: d8a11a3289037602535d1b5727d041e376012bd8
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502440"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60837841"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Csatlakozzon a fordított proxy egy biztonságos szolgáltatáshoz
 
@@ -35,14 +35,14 @@ A fordított proxy szolgáltatásokhoz a tanúsítvány használatával azonosí
 Szolgáltatások ellenőrizni a fordított proxy által bemutatott tanúsítványt logikát valósíthat meg. A szolgáltatások konfigurációs beállításokat a konfigurációs csomag megadható az elfogadható ügyfél-tanúsítvány részletei. Ez futásidőben olvashatók és a fordított proxy által bemutatott tanúsítványt érvényesítéséhez használt. Tekintse meg [alkalmazásparaméterek kezelése](service-fabric-manage-multiple-environment-app-configuration.md) fel a konfigurációs beállításokat. 
 
 ### <a name="reverse-proxy-verifying-the-services-identity-via-the-certificate-presented-by-the-service"></a>Fordított proxyn keresztül a szolgáltatás által bemutatott tanúsítványt a szolgáltatás identitás ellenőrzése:
-Fordított proxy támogatja a kiszolgálói tanúsítvány hitelesítése a szolgáltatások által bemutatott tanúsítványok végrehajtásához a következő házirendek: None, ServiceCommonNameAndIssuer és ServiceCertificateThumbprints.
+Fordított proxy támogatja a kiszolgálói tanúsítvány hitelesítése a szolgáltatások által bemutatott tanúsítványok végrehajtásához a következő szabályzatokat: None, ServiceCommonNameAndIssuer, and ServiceCertificateThumbprints.
 Szabályzat kiválasztása a fordított proxy használni, adja meg a **ApplicationCertificateValidationPolicy** a a **ApplicationGateway/Http** szakaszba [fabricSettings](service-fabric-cluster-fabric-settings.md).
 
 A következő szakasz ezeket a beállításokat minden konfigurációs részleteket jeleníti meg.
 
 ### <a name="service-certificate-validation-options"></a>Tanúsítvány érvényességi Szolgáltatásbeállítások 
 
-- **Nincs**: fordított proxy kihagyja a proxy tanúsítvány ellenőrzése és a biztonságos kapcsolatot létesít. Ez az az alapértelmezett viselkedést.
+- **Nincs**: Fordított proxy kihagyja a proxy tanúsítvány ellenőrzése és a biztonságos kapcsolatot létesít. Ez az az alapértelmezett viselkedést.
 Adja meg a **ApplicationCertificateValidationPolicy** értékkel **nincs** a a [ **ApplicationGateway/Http** ](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban.
 
    ```json
@@ -63,7 +63,7 @@ Adja meg a **ApplicationCertificateValidationPolicy** értékkel **nincs** a a [
    }
    ```
 
-- **ServiceCommonNameAndIssuer**: fordított proxy ellenőrzi a tanúsítvány köznapi nevéből és azonnali kibocsátói ujjlenyomat alapján a szolgáltatás által bemutatott tanúsítványt: Adja meg a **ApplicationCertificateValidationPolicy** értékkel **ServiceCommonNameAndIssuer** a a [ **ApplicationGateway/Http** ](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban.
+- **ServiceCommonNameAndIssuer**: Fordított proxy ellenőrzi a tanúsítvány köznapi nevéből és azonnali kibocsátói ujjlenyomat alapján a szolgáltatás által bemutatott tanúsítványt: Adja meg a **ApplicationCertificateValidationPolicy** értékkel **ServiceCommonNameAndIssuer** a a [ **ApplicationGateway/Http** ](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban.
 
    ```json
    {
@@ -110,7 +110,7 @@ Adja meg a **ApplicationCertificateValidationPolicy** értékkel **nincs** a a [
    }
    ```
 
-- **ServiceCertificateThumbprints**: fordított proxy ellenőrzi, hogy a proxy tanúsítvány az ujjlenyomat alapján. Dönthet úgy, hogy nyissa meg ezt az útvonalat, amikor a szolgáltatás úgy van konfigurálva, a saját önaláírt tanúsítványok: Adja meg a **ApplicationCertificateValidationPolicy** értékkel **ServiceCertificateThumbprints** a a [ **ApplicationGateway/Http** ](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban.
+- **ServiceCertificateThumbprints**: Fordított proxy ellenőrzi, hogy a proxy tanúsítvány az ujjlenyomat alapján. Választhat, hogy ezt az útvonalat, amikor a szolgáltatás úgy van konfigurálva, a saját önaláírt tanúsítványok: Adja meg a **ApplicationCertificateValidationPolicy** értékkel **ServiceCertificateThumbprints** a a [ **ApplicationGateway/Http** ](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban.
 
    ```json
    {

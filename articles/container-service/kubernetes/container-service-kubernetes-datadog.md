@@ -10,11 +10,11 @@ ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: 6a682c199b40035bfd44fc5611a7d44b49f7b3ab
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995357"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60712338"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-datadog"></a>(ELAVULT) A figyelő az Azure Container Service-fürt a Datadoggal
 
@@ -45,7 +45,7 @@ Ha nem rendelkezik `kubectl` telepítve, futtatható:
 $ az acs kubernetes install-cli
 ```
 
-## <a name="datadog"></a>Datadoggal
+## <a name="datadog"></a>DataDog
 Datadoggal egy olyan megfigyelő szolgáltatás, amely figyelési adatait gyűjti össze az Azure Container Service-fürtben található tárolókat. Datadoggal rendelkezik, ahol megtekintheti az adott mérőszámok belül a tárolókat a Docker integrációs irányítópult. A tárolók gyűjtött metrikák CPU, memória, hálózati és i/o szerint vannak rendezve. Datadoggal metrikák felosztja a tárolók és a képeket.
 
 Először létre kell [-fiók létrehozása](https://www.datadoghq.com/lpg/)

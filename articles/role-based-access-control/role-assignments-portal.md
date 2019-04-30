@@ -15,11 +15,11 @@ ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: bb23cbc275e01eab5361504c547c020b0a29f4c3
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805290"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60532956"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Rbac-RÓL és az Azure portal segítségével Azure-erőforrásokhoz való hozzáférés kezelése
 
@@ -208,4 +208,4 @@ Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést ke
 * [Oktatóanyag: Egy felhasználó hozzáférést rbac-RÓL és az Azure portal segítségével Azure-erőforrások](quickstart-assign-role-user-portal.md)
 * [Oktatóanyag: Egy felhasználó hozzáférést biztosítani Azure-erőforrások RBAC és az Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)
 * [Az RBAC hibaelhárítása az Azure-erőforrásokhoz](troubleshooting.md)
-* [Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../governance/management-groups/index.md)
+* [Erőforrások rendszerezése az Azure-beli felügyeleti csoportokkal](../governance/management-groups/index.md)

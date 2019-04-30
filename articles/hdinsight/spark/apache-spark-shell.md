@@ -1,7 +1,6 @@
 ---
 title: Az Azure HDInsight interaktív Spark Shell használata
 description: Interaktív Spark Shell biztosít egy olvasási végrehajtása nyomtatási folyamat egyszerre egy parancsok futtatása a Spark és az eredmények jelennek meg.
-services: hdinsight
 ms.service: hdinsight
 author: maxluk
 ms.author: maxluk
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
-ms.openlocfilehash: 3da6260faa87aecb7eb13f16386006e0c856d46b
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: MT
+ms.openlocfilehash: 9044ed3ad9cf9ffa2f54d130bb50b37df121b86f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653849"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62116073"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>Futtassa az Apache Spark a Spark-Shell
 
@@ -40,7 +39,7 @@ A fürt teljes SSH-parancs kaphat az Azure Portalról:
 
 SSH használatával csatlakozhat a HDInsight a részletekért lásd: [az SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="run-an-apache-spark-shell"></a>Az Apache Spark-Shell futtatása
+## <a name="run-an-apache-spark-shell"></a>Run an Apache Spark Shell
 
 Spark – ismertetése (spark-shell) Scala, Python (pyspark) és az R (sparkR) biztosít. Az SSH-munkamenet, a HDInsight-fürt fő csomópontjának adja meg a következő parancsok egyikét:
 
@@ -60,7 +59,7 @@ Adja meg a SparkSession-példány eléréséhez, `spark`. Adja meg a sparkcontex
 
 A Spark-Shell-parancs (`spark-shell`, `pyspark`, vagy `sparkR`) számos parancssori paramétereket támogatja. Paraméterek teljes listájának megtekintéséhez indítsa el a Spark-Shell váltást `--help`. Vegye figyelembe, hogy ezek a paraméterek némelyike csak érvényesek az `spark-submit`, amely a Spark-Shell burkolja.
 
-| Kapcsoló | leírás | Példa |
+| Kapcsoló | description | Példa |
 | --- | --- | --- |
 | --MASTER_URL fő | Meghatározza a fő URL-CÍMÉT. A HDInsight, az értéke mindig `yarn`. | `--master yarn`|
 | --jars JAR_LIST | Helyi JAR-fájlok kivételével az illesztőprogram és feladat-végrehajtó osztályútvonalakkal elhelyezni a vesszővel tagolt listája. A HDInsight a lista elérési útját az alapértelmezett fájlrendszer az Azure Storage vagy a Data Lake Storage tevődik össze. | `--jars /path/to/examples.jar` |

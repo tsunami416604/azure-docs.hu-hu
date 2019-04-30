@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: f169c411-1bd7-4554-80c1-84351247bf94
 ms.date: 01/27/2017
 ms.openlocfilehash: 180d90450497b38f107f3601944385a003f50282
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193513"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60845783"
 ---
 # <a name="create-schemas-for-tracking-as2-messages-and-mdns-in-integration-accounts-for-azure-logic-apps"></a>Sémák nyomon követési AS2-üzenetek és visszaigazolással integrációs fiókok az Azure Logic Apps létrehozása
 
@@ -67,15 +67,15 @@ Segítségével nyomon, hogy sikeres, a hibákat, és a vállalatközi (B2B) tra
 | messageId | String | AS2-Üzenetazonosító, a a fejlécek az AS2-üzenet (nem kötelező) |
 | dispositionType |String | Üzenet Disposition-Notification (MDN) típusú érték. (Választható lehetőség) |
 | fileName | String | Az AS2-üzenet fejlécének a fájl neve. (Választható lehetőség) |
-| isMessageFailed |Logikai | Hogy az AS2-üzenet nem sikerült. (Kötelező) |
-| isMessageSigned | Logikai | Hogy az AS2-üzenet alá van írva. (Kötelező) |
-| isMessageEncrypted | Logikai | Hogy az AS2-üzenet titkosítva van. (Kötelező) |
-| isMessageCompressed |Logikai | Hogy az AS2-üzenet tömörítve volt. (Kötelező) |
+| isMessageFailed |Boolean | Hogy az AS2-üzenet nem sikerült. (Kötelező) |
+| isMessageSigned | Boolean | Hogy az AS2-üzenet alá van írva. (Kötelező) |
+| isMessageEncrypted | Boolean | Hogy az AS2-üzenet titkosítva van. (Kötelező) |
+| isMessageCompressed |Boolean | Hogy az AS2-üzenet tömörítve volt. (Kötelező) |
 | correlationMessageId | String | AS2-Üzenetazonosító, üzenetek korrelációját, ha a visszaigazolással. (Választható lehetőség) |
 | incomingHeaders |Tartalmazó JToken | Bejövő AS2 üzenet részletei. (Választható lehetőség) |
 | outgoingHeaders |Tartalmazó JToken | Kimenő AS2-üzenet fejléc részleteit. (Választható lehetőség) |
-| isNrrEnabled | Logikai | Használja az alapértelmezett értéket, ha az érték nem ismert. (Kötelező) |
-| isMdnExpected | Logikai | Használja az alapértelmezett értéket, ha az érték nem ismert. (Kötelező) |
+| isNrrEnabled | Boolean | Használja az alapértelmezett értéket, ha az érték nem ismert. (Kötelező) |
+| isMdnExpected | Boolean | Használja az alapértelmezett értéket, ha az érték nem ismert. (Kötelező) |
 | mdnType | Enum | Engedélyezett értékek a következők **NotConfigured**, **szinkronizálási**, és **aszinkron**. (Kötelező) |
 ||||
 
@@ -120,9 +120,9 @@ Segítségével nyomon, hogy sikeres, a hibákat, és a vállalatközi (B2B) tra
 | messageId | String | AS2-üzenet azonosítója. (Választható lehetőség) |
 | originalMessageId |String | AS2 eredeti üzenet azonosítója. (Választható lehetőség) |
 | dispositionType | String | MDN típusú érték. (Választható lehetőség) |
-| isMessageFailed |Logikai | Hogy az AS2-üzenet nem sikerült. (Kötelező) |
-| isMessageSigned |Logikai | Hogy az AS2-üzenet alá van írva. (Kötelező) |
-| isNrrEnabled | Logikai | Használja az alapértelmezett értéket, ha az érték nem ismert. (Kötelező) |
+| isMessageFailed |Boolean | Hogy az AS2-üzenet nem sikerült. (Kötelező) |
+| isMessageSigned |Boolean | Hogy az AS2-üzenet alá van írva. (Kötelező) |
+| isNrrEnabled | Boolean | Használja az alapértelmezett értéket, ha az érték nem ismert. (Kötelező) |
 | statusCode | Enum | Engedélyezett értékek a következők **elfogadva**, **elutasítva**, és **AcceptedWithErrors**. (Kötelező) |
 | micVerificationStatus | Enum | Engedélyezett értékek a következők **NotApplicable**, **sikeres**, és **sikertelen**. (Kötelező) |
 | correlationMessageId | String | Korrelációs azonosító. Az eredeti messaged azonosítója (az üzenet azonosítója az üzenet MDN van konfigurálva). (Választható lehetőség) |

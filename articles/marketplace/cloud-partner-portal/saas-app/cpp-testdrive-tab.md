@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 04/24/2019
 ms.author: pbutlerm
 ms.openlocfilehash: b12ba53f847b46479b3100c088c29372b58c1b8e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649033"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60594250"
 ---
 # <a name="saas-application-test-drive-tab"></a>SaaS-alkalmazás Tesztverziós lapon
 
@@ -31,9 +31,11 @@ Egy próbaverziós megoldást vezet be az ügyfelek számára az ajánlott eljá
 
 Próbálja ki a termék főbb funkciók és előnyök, mutatja be egy való életből vett megvalósítási forgatókönyv gyakorlati, önálló irányítású próbaverzióra rendelkező ügyfelek biztosít.
 
+
 ## <a name="how-a-test-drive-works"></a>Próbálja ki az működése
 
 A potenciális ügyfelek keres, és felderíti az alkalmazás a Marketplace-en. Az ügyfél jelentkezik be, és elfogadja a használati feltételeket. Ezen a ponton az ügyfél megkapja az előre konfigurált környezet rögzített számú óra, próbálja ki a szerepeltetendő magas minősített érdeklődő kap közben. További információkért lásd: [Mi a Test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+
 
 ## <a name="publishing-steps"></a>Közzétételi lépéseket
 
@@ -43,6 +45,7 @@ A test Drive hozzáadásának a fő közzétételi lépései a következők:
 2. Hozhat létre és/vagy a Resource Manager-sablon módosítása
 3. A Test Drive részletes manuális létrehozása
 4. Tegye közzé újra az ajánlatot
+
 
 ## <a name="setting-up-a-test-drive"></a>A test drive beállítása
 
@@ -54,6 +57,8 @@ Nincsenek elérhető Tesztverzió négy különböző típusú, minden egyes ter
 |       Szolgáltatott             |       Egy üzemeltetett Test Drive megszűnnek a telepítő által a Microsoft üzemeltetési és karbantartását hajtja végre a Test Drive felhasználói kiépítésének és megszüntetésének biztosítása.             |         [Szolgáltatott tesztverzió](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/hosted-test-drive)          |
 |      Logikai alkalmazás              |       A logikai alkalmazás Tesztverziós olyan központi telepítési sablont, amely magában foglalja az összes összetett megoldások létrehozására szolgáló architektúrák hivatott. Az összes Dynamics-alkalmazások vagy egyéni termékek Test Drive az ilyen típusú kell használnia.            |      [Logikai alkalmazás kipróbálása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)             |
 |       Power BI             |         A Power BI Test Drive egy személyre szabott irányítópult mutató beágyazott hivatkozást tartalmaz. Minden olyan terméket, amely egy interaktív Power BI vizuális kell használnia a Test Drive az ilyen típusú bemutatásához szeretne. A feltöltendő szüksége a Power BI embedded URL-CÍMÉT.          |        [Power BI Test Drive](#power-bi-test-drive)           |
+|   |   |   |
+
 
 ### <a name="power-bi-test-drive"></a>A Power BI kipróbálása
 

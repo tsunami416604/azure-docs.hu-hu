@@ -2,20 +2,21 @@
 title: Az Azure-beli adattárház fejlesztéséhez használható forrásanyagok |} A Microsoft Docs
 description: Fejlesztői fogalmak, tervezési döntéseket, javaslatokat és az SQL Data Warehouse programozási technikákat.
 services: sql-data-warehouse
-author: kevinvngo
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
-ms.date: 08/29/2018
-ms.author: kevinvngo
+ms.component: implement
+origin.date: 08/29/2018
+ms.date: 10/15/2018
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 8c04e0409faa3b63a8a2957284ac7aa96740ae03
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468376"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60747829"
 ---
 # <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>Tervezési döntéseket és a kódolási módszereket az SQL Data warehouse-hoz
 Figyelje a fejlesztéssel kapcsolatos cikket jobb megértése érdekében hozott kulcsfontosságú, a javaslatokat és a kódolási módszereket az SQL Data Warehouse segítségével.

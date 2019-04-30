@@ -17,11 +17,11 @@ ms.date: 02/23/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 91d5bbe66c7eb74dbd3f9a441ffffdc9a0153f0f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192812"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60868776"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zwayam"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Zwayam
 

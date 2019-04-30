@@ -12,11 +12,11 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: 914bc37552a80886df16ed69fba4e31b3f22ac22
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57574916"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61399522"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Adatok átalakítása Hadoop Pig-tevékenység használatával az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -56,10 +56,10 @@ Ha most ismerkedik az Azure Data Factory, olvassa el az [az Azure Data Factory b
 ```
 ## <a name="syntax-details"></a>Szintaxis részletei
 
-| Tulajdonság            | Leírás                              | Szükséges |
+| Tulajdonság            | Leírás                              | Kötelező |
 | ------------------- | ---------------------------------------- | -------- |
 | név                | A tevékenység neve                     | Igen      |
-| leírás         | Mire használható a tevékenységet leíró szöveg | Nem       |
+| description         | Mire használható a tevékenységet leíró szöveg | Nem       |
 | type                | A Hive-tevékenység a tevékenység típusát HDinsightPig | Igen      |
 | linkedServiceName   | Referencia a HDInsight-fürthöz társított szolgáltatásként a Data Factory regisztrálva. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk. | Igen      |
 | scriptLinkedService | A Pig-parancsprogram végrehajtását tárolására használt Azure Storage társított szolgáltatás hivatkozik. Ha nem adja meg ezt a társított szolgáltatást, az Azure Storage társított szolgáltatás a HDInsight társított szolgáltatásban meghatározott használja. | Nem       |

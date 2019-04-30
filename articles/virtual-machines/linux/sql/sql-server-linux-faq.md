@@ -14,11 +14,11 @@ ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: fb1cafcf9405576749ea91aeea033c6ee783a026
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330432"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60739267"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Gyakori kérdések az SQL Server Linux Azure Virtual Machines gépeken
 
@@ -63,7 +63,7 @@ Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszo
 
 ## <a name="licensing"></a>Licencek
 
-1. **Hogyan telepíthetem saját licenccel rendelkező példány az SQL Server-beli virtuális gépen?**
+1. **Hogyan telepíthetem az SQL Server egy licencelt példányát egy Azure-beli virtuális gépen?**
 
    Először hozzon létre egy Linux operációs rendszer csak a virtuális gép. Ezután futtassa a [SQL Server telepítési lépéseket](https://docs.microsoft.com/sql/linux/sql-server-linux-setup#platforms) a Linux-disztribúció. Kivéve, ha telepíti az SQL Server szabadon licenccel rendelkező kiadásainak egyikét, az SQL Server licenccel is rendelkeznie kell és [az Azure frissítési garancián keresztüli Licenchordozhatóság](https://azure.microsoft.com/pricing/license-mobility/).
 
@@ -71,7 +71,7 @@ Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszo
 
    Jelenleg nincsenek az SQL Server nincs BYOL Linux virtuálisgép-lemezképeket. Azonban manuálisan telepítheti az SQL Server csak Linux rendszerű virtuális gépen a fenti kérdések leírt módon.
 
-1. **Módosíthatja a saját SQL Server-licencét használja, ha létrehozták a használatalapú fizetéses katalógus rendszerképek közül egy virtuális Gépet?**
+1. **Módosíthatok egy virtuális gépet, hogy a saját SQL Server-licencemet használja, ha az a használatalapú fizetéses katalógus egyik rendszerképéből lett létrehozva?**
 
    Nem. Másodpercenkénti használatalapú licencelés saját licenc használata nem válthat. Kell új Linux rendszerű virtuális gép létrehozása, az SQL Server telepítése és az adatok áttelepítését. Tekintse meg az előző kérdésnél saját licence kapcsolatos további részletekért.
 
@@ -81,15 +81,15 @@ Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszo
 
    Igen, de az ssms-ben jelenleg csak Windows eszköz. Meg kell távoli csatlakozás SSMS használata Linux rendszerű SQL Server virtuális gépek Windows gépről. Helyileg, Linux az új [mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) eszköz számos rendszergazdai feladatot végrehajthatnak. Platformfüggetlen adatbázis felügyeleti eszköz, lásd: [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is).
 
-1. **Eltávolítható az SQL Server teljesen az SQL virtuális gép?**
+1. **Eltávolíthatom teljesen az SQL Servert egy SQL-alapú virtuális gépről?**
 
-   Igen, de továbbra is az SQL virtuális gép kell fizetnie, leírtak szerint [az SQL Server Azure virtuális gépek díjszabási útmutatóját](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json). Ha már nincs szüksége az SQL Server, az új virtuális gépek üzembe helyezése, és az adatai és alkalmazásai számára az új virtuális gép áttelepítése. Az SQL Server virtuális gép távolíthatja el.
+   Igen, de továbbra is az SQL virtuális gép kell fizetnie, leírtak szerint [az SQL Server Azure virtuális gépek díjszabási útmutatóját](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json). Ha már nincs szüksége az SQL Serverre, üzembe helyezhet egy új virtuális gépet, majd oda migrálhatja az adatokat és az alkalmazásokat. Ezt követően már eltávolíthatja az SQL Servert futtató virtuális gépet.
 
 ## <a name="updating-and-patching"></a>Frissítések és javítások
 
 1. **Hogyan frissíthetem az SQL Server egy Azure-beli virtuális gépen új verzióra vagy kiadásra?**
 
-   Jelenleg nincs Azure-beli virtuális gépen futó SQL Server helyszíni frissítését. Egy új Azure virtuális gép létrehozása a kívánt SQL Server verziójához/kiadásához, és ezután adatbázisok migrálása az új kiszolgálóra történő [szokásos adatáttelepítési eljárásokkal](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview).
+   Jelenleg nincs helyszíni frissítés az Azure-beli virtuális gépeken futtatott SQL Serverhez. Hozzon létre egy új Azure-beli virtuális gépet a kívánt SQL Server-verzióval vagy -kiadással, majd migrálja az adatbázisait az új kiszolgálóra [a szokásos adatmigrálási eljárásokkal](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview).
 
 ## <a name="general"></a>Általános kérdések
 

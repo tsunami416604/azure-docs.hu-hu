@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311528"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60824014"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Adatok áthelyezése az Azure Data Factory másolási tevékenység használatával DB2
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -95,7 +95,7 @@ A szakaszok és definiálása az adatkészletek rendelkezésre álló tulajdons�
 
 A **typeProperties** szakasz eltérő az egyes adatkészlet, és az adattárban lévő adatok helyét ismerteti. A **typeProperties** szakasz egy adatkészlet típusú **RelationalTable**, amely tartalmazza a DB2-adathalmaz rendelkezik a következő tulajdonság:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | **Táblanév** |A tábla a DB2-adatbázispéldányban, amely hivatkozik a társított szolgáltatás neve. Ez a tulajdonság nem kis-és nagybetűket. |Nem (Ha a **lekérdezés** egy másolási tevékenységgel típusú tulajdonsága **RelationalSource** van megadva) |
 
@@ -313,19 +313,19 @@ A következő hozzárendeléseket használják, amikor a másolási tevékenysé
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
-| Lebegőpontos |Double |
+| Float |Double |
 | tizedes tört |Decimal |
 | DecimalFloat |Decimal |
-| Numerikus |Decimal |
+| Numeric |Decimal |
 | Dátum |DateTime |
 | Time |TimeSpan |
 | Időbélyeg |DateTime |
 | Xml |Byte[] |
-| CHAR |String |
+| char |String |
 | VarChar |String |
 | LongVarChar |String |
 | DB2DynArray |String |
-| Bináris |Byte[] |
+| binary |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
 | Kép |String |
@@ -339,15 +339,15 @@ A következő hozzárendeléseket használják, amikor a másolási tevékenysé
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
-| Lebegőpontos |Double |
+| Float |Double |
 | tizedes tört |Decimal |
 | DecimalFloat |Decimal |
-| Numerikus |Decimal |
+| Numeric |Decimal |
 | Dátum |DateTime |
 | Time |TimeSpan |
 | Időbélyeg |DateTime |
 | Xml |Byte[] |
-| CHAR |String |
+| char |String |
 
 ## <a name="map-source-to-sink-columns"></a>A fogadó-oszlopok térkép forrása
 A forrásadatkészlet oszlopok leképezése a fogadó-adatkészlet az oszlopok kapcsolatban lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).

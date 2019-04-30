@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
 ms.openlocfilehash: e11d541f0450c0de4ba6d60f889fc7471b1fa1aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011142"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60724320"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>A biztonsági mentési Exec a StorSimple mint biztonsági mentési cél
 
@@ -483,7 +483,7 @@ Katasztrófa számos tényező okozhatja. Az alábbi táblázat általános vés
 Ez a cikk a hivatkozott az alábbi dokumentumokat:
 
 - [A StorSimple-a többutas i/o-telepítő](storsimple-configure-mpio-windows-server.md)
-- [Storage-forgatókönyv esetében: a dinamikus kiosztás](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [Storage-forgatókönyv esetében: A dinamikus kiosztás](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [Meghajtók GPT használata](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Állítsa be a megosztott mappák árnyékmásolatai](https://technet.microsoft.com/library/cc771893.aspx)
 

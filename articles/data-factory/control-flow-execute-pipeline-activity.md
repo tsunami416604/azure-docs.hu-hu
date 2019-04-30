@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: a0ece499262464bc28f55c37188698a3313e2c04
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57998722"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60808848"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Folyamat végrehajtása tevékenység az Azure Data Factoryban
 A folyamat végrehajtása tevékenység lehetővé teszi egy Data Factory-folyamatot egy másik folyamat meghívását.
@@ -66,7 +66,7 @@ név | A folyamat végrehajtása tevékenység neve. | String | Igen
 type | Értékre kell állítani: **ExecutePipeline**. | String | Igen
 adatcsatorna | Folyamat-hivatkozás a függő folyamat, amely ebben az adatcsatornában hív meg. Egy folyamat hivatkozási objektumot két tulajdonságokkal rendelkezik: **hivatkozásnév** és **típus**. A hivatkozásnév tulajdonság határozza meg, hogy az a folyamat nevét a hivatkozást. A type tulajdonság PipelineReference kell állítani. | PipelineReference | Igen
 paraméterek | A meghívott folyamatnak átadandó paramétereket | JSON-objektum, amely leképezi a paraméter nevének argumentumértékként | Nem
-waitOnCompletion | Meghatározza, hogy tevékenység-végrehajtási megvárja, amíg befejeződik a függő folyamat-végrehajtást. Az alapértelmezett érték a false (hamis). | Logikai | Nem
+waitOnCompletion | Meghatározza, hogy tevékenység-végrehajtási megvárja, amíg befejeződik a függő folyamat-végrehajtást. Az alapértelmezett érték a false (hamis). | Boolean | Nem
 
 ## <a name="sample"></a>Sample
 Ebben a forgatókönyvben két folyamatot rendelkezik:

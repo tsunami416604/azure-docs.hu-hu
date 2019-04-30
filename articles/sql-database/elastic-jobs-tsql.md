@@ -13,11 +13,11 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 59e0e4cf82af9851dacf3ec030575ed392571331
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523766"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61475813"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Rugalmas adatbázis-feladatok létrehozása és kezelése Transact-SQL (T-SQL) használatával
 
@@ -1213,9 +1213,9 @@ Látható feladat-végrehajtási előzményei.
 
 |Oszlop neve|   Adattípus   |Leírás|
 |---------|---------|---------|
-|**job_execution_id**   |UniqueIdentifier|  A feladat-végrehajtás egy példányát egyedi azonosítója.
+|**job_execution_id**   |uniqueidentifier|  A feladat-végrehajtás egy példányát egyedi azonosítója.
 |**job_name**   |nvarchar(128)  |A feladat nevét.
-|**job_id** |UniqueIdentifier|  A feladat egyedi azonosítója.
+|**job_id** |uniqueidentifier|  A feladat egyedi azonosítója.
 |**job_version**    |int    |A feladat (automatikusan frissül minden alkalommal, amikor módosul, a feladat) verziója.
 |**step_id**    |int|   (A feladathoz) egyedi azonosítója a lépéssel. NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
 |**is_active**| bit |Azt jelzi, hogy adatokat az aktív vagy inaktív. 1 aktív feladatok azt jelzi, és a 0 azt jelzi, hogy inaktív.
@@ -1227,7 +1227,7 @@ Látható feladat-végrehajtási előzményei.
 |**current_attempt_start_time** |datetime2(7)|  Dátum és idő a feladat végrehajtási elindult. NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
 |**last_message**   |nvarchar(max)| Feladat és lépés előzmények üzenet. 
 |**target_type**|   nvarchar(128)   |Céladatbázis vagy az adatbázis összes adatbázissal egy kiszolgálót, egy rugalmas készletben található összes adatbázis vagy egy adatbázis-gyűjtemény típusa. Target_type érvényes értékei a következők: "SqlServer", "SqlElasticPool" vagy "SqlDatabase". NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
-|**target_id**  |UniqueIdentifier|  A célként megadott csoport tagja egyedi azonosítója.  NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
+|**target_id**  |uniqueidentifier|  A célként megadott csoport tagja egyedi azonosítója.  NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
 |**target_group_name**  |nvarchar(128)  |A célcsoport neve. NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
 |**target_server_name**|    nvarchar(256)|  A célként megadott csoportban lévő SQL Database-kiszolgáló neve. A megadott csak target_type "SqlServer"-e. NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
 |**target_database_name**   |nvarchar(128)| A célként megadott csoportban szereplő adatbázis nevét. Megadott csak amikor target_type "SqlDatabase". NULL azt jelzi, hogy ez az a szülő feladat végrehajtása.
@@ -1242,7 +1242,7 @@ Az összes feladat látható.
 |Oszlop neve|   Adattípus|  Leírás|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |A feladat nevét.|
-|**job_id**|    UniqueIdentifier    |A feladat egyedi azonosítója.|
+|**job_id**|    uniqueidentifier    |A feladat egyedi azonosítója.|
 |**job_version**    |int    |A feladat (automatikusan frissül minden alkalommal, amikor módosul, a feladat) verziója.|
 |**description**    |nvarchar(512)| A feladat leírását. engedélyezett bit azt jelzi, hogy a feladat engedélyezve van-e vagy le van tiltva. 1 azt jelzi, hogy engedélyezett feladatok, és a 0 azt jelzi, hogy letiltott feladatok.|
 |**schedule_interval_type** |nvarchar(50)   |Érték, amely jelzi, ha a feladat végrehajtását van: az "egyszeri", "Percek", "Hours", "Nap", "hét", "Hónap"
@@ -1260,7 +1260,7 @@ Az összes feladat verzió látható.
 |Oszlop neve|   Adattípus|  Leírás|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |A feladat nevét.|
-|**job_id**|    UniqueIdentifier    |A feladat egyedi azonosítója.|
+|**job_id**|    uniqueidentifier    |A feladat egyedi azonosítója.|
 |**job_version**    |int    |A feladat (automatikusan frissül minden alkalommal, amikor módosul, a feladat) verziója.|
 
 
@@ -1273,7 +1273,7 @@ Minden egyes feladat jelenlegi verziója minden lépéseit mutatja be.
 |Oszlop neve    |Adattípus| Leírás|
 |------|------|-------|
 |**job_name**   |nvarchar(128)| A feladat nevét.|
-|**job_id** |UniqueIdentifier   |A feladat egyedi azonosítója.|
+|**job_id** |uniqueidentifier   |A feladat egyedi azonosítója.|
 |**job_version**|   int|    A feladat (automatikusan frissül minden alkalommal, amikor módosul, a feladat) verziója.|
 |**step_id**    |int    |(A feladathoz) egyedi azonosítója a lépéssel.|
 |**step_name**  |nvarchar(128)  |(A feladathoz) egyedi neve a lépéshez.|
@@ -1282,15 +1282,15 @@ Minden egyes feladat jelenlegi verziója minden lépéseit mutatja be.
 |**command**|   nvarchar(max)|  Rugalmas feladatok command_type keresztül hajtja végre a parancsokat.|
 |**credential_name**|   nvarchar(128)   |Végrehajtási a feladat segítségével az adatbázishoz kötődő hitelesítő adat nevét.|
 |**target_group_name**| nvarchar(128)   |A célcsoport neve.|
-|**target_group_id**|   UniqueIdentifier|   A célként megadott csoport egyedi azonosítója.|
+|**target_group_id**|   uniqueidentifier|   A célként megadott csoport egyedi azonosítója.|
 |**initial_retry_interval_seconds**|    int |A késleltetés az első újrapróbálkozási kísérlet előtt. Alapértelmezett érték az 1.|
 |**maximum_retry_interval_seconds** |int|   Az újrapróbálkozási kísérletek közötti maximális késleltetés. Ha az újrapróbálkozások közötti késleltetés nagyobb, mint ez az érték akkor növekszik, azt a maximumon erre az értékre helyette. Alapértelmezett értéke 120.|
-|**retry_interval_backoff_multiplier**  |valódi|  A alkalmazni újrapróbálkozási késleltetéshez, ha több feladat végrehajtási lépés szorzó kísérletek sikertelenek. Alapértelmezett érték a 2.0-s.|
+|**retry_interval_backoff_multiplier**  |real|  A alkalmazni újrapróbálkozási késleltetéshez, ha több feladat végrehajtási lépés szorzó kísérletek sikertelenek. Alapértelmezett érték a 2.0-s.|
 |**retry_attempts** |int|   Az újrapróbálkozási kísérletek száma használhat, ha ez a lépés sikertelen lesz. Alapértelmezett érték 10, amely azt jelzi, hogy nem az újrapróbálkozási kísérletek.|
 |**step_timeout_seconds**   |int|   Az újrapróbálkozási kísérletek közötti percek időtartama. Az alapértelmezett érték 0, amely azt jelzi, hogy egy 0 perces időszakban.|
 |**output_type**    |nvarchar(11)|  A parancs helye. Az aktuális előzetes verzióban érhető el "Beágyazott" az alapértelmezett beállítás, és csak elfogadható érték.|
 |**output_credential_name**|    nvarchar(128)   |Neve a tárolja az eredményeket a célkiszolgálóra való kapcsolódáshoz használt hitelesítő adatok megadása|
-|**output_subscription_id**|    UniqueIdentifier|   Az előfizetés, az eredményeket adja meg a lekérdezés végrehajtása a cél server\database egyedi azonosítója.|
+|**output_subscription_id**|    uniqueidentifier|   Az előfizetés, az eredményeket adja meg a lekérdezés végrehajtása a cél server\database egyedi azonosítója.|
 |**output_resource_group_name** |nvarchar(128)| A célkiszolgáló tartalmazó erőforráscsoport neve.|
 |**output_server_name**|    nvarchar(256)   |Az eredménykészletet a célkiszolgáló nevét.|
 |**output_database_name**   |nvarchar(128)| Az eredménykészletet a céladatbázis neve.|
@@ -1314,7 +1314,7 @@ Az összes cél csoportok listája.
 |Oszlop neve|Adattípus| Leírás|
 |-----|-----|-----|
 |**target_group_name**| nvarchar(128)   |A célcsoportot, egy adatbázis-gyűjtemény neve. 
-|**target_group_id**    |UniqueIdentifier   |A célként megadott csoport egyedi azonosítója.
+|**target_group_id**    |uniqueidentifier   |A célként megadott csoport egyedi azonosítója.
 
 ### <a name="targetgroupsmembers-view"></a>target_groups_members view
 
@@ -1325,12 +1325,12 @@ Minden célként megadott csoport minden tagját mutatja.
 |Oszlop neve|Adattípus| Leírás|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar (128|A célcsoportot, egy adatbázis-gyűjtemény neve. |
-|**target_group_id**    |UniqueIdentifier   |A célként megadott csoport egyedi azonosítója.|
+|**target_group_id**    |uniqueidentifier   |A célként megadott csoport egyedi azonosítója.|
 |**membership_type**    |int|   Itt adhatja meg, ha a célként megadott csoport tagja tartalmaz, vagy a célcsoportban kizárt. Target_group_name érvényes értékei a következők: "Include" vagy "Kizárása".|
 |**target_type**    |nvarchar(128)| Céladatbázis vagy az adatbázis összes adatbázissal egy kiszolgálót, egy rugalmas készletben található összes adatbázis vagy egy adatbázis-gyűjtemény típusa. Target_type érvényes értékei a következők: "SqlServer", "SqlElasticPool", "SqlDatabase" vagy "SqlShardMap".|
-|**target_id**  |UniqueIdentifier|  A célként megadott csoport tagja egyedi azonosítója.|
+|**target_id**  |uniqueidentifier|  A célként megadott csoport tagja egyedi azonosítója.|
 |**refresh_credential_name**    |nvarchar(128)  |Az adatbázis nevét a célként megadott csoport tagja való kapcsolódáshoz használt hitelesítő adatok hatókörét.|
-|**subscription_id**    |UniqueIdentifier|  Az előfizetés egyedi azonosítója.|
+|**subscription_id**    |uniqueidentifier|  Az előfizetés egyedi azonosítója.|
 |**resource_group_name**    |nvarchar(128)| Neve az erőforráscsoport, amelyben megtalálható a célként megadott csoport tagja.|
 |**server_name**    |nvarchar(128)  |A célként megadott csoportban lévő SQL Database-kiszolgáló neve. A megadott csak target_type "SqlServer"-e. |
 |**database_name**  |nvarchar(128)  |A célként megadott csoportban szereplő adatbázis nevét. Megadott csak amikor target_type "SqlDatabase".|

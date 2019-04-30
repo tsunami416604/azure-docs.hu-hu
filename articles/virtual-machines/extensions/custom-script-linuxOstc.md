@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
 ms.openlocfilehash: fe3803b7dc75ab13831a5e42d4b1a96f5aa894e5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882429"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60800302"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Az Azure egyéni parancsfájl bővítmény 1. verzió használata Linux rendszerű virtuális gépek
 
@@ -65,15 +65,15 @@ Ha a parancsfájl egy helyi kiszolgálón, akkor továbbra is szükség lehet to
 
 ### <a name="tips-and-tricks"></a>tippek és trükkök
 
-* Ehhez a kiterjesztéshez legmagasabb Hibaarány miatt a parancsfájl tesztelési hiba nélkül fut a parancsfájl szintaxishibáinak és is helyezheti további jelentkezik be, hogy könnyebben megtalálja, ahol nem sikerült a parancsfájl.
-* Parancsfájlokat írhat, amelyek idempotensek, így az első futás egynél többször véletlenül, ha módosításokat a rendszer nem okoz.
+* A bővítmény meghibásodásai legnagyobb arányban a szkriptben található szintaktikai hibák miatt jelentkeznek. Tesztelje, hogy a szkript fut-e hiba nélkül, és lássa el további naplózással a szkriptet, hogy könnyebb legyen a hiba helyét azonosítani.
+* Írjon idempotens szkripteket, hogy ne okozzanak változásokat a rendszerben, ha véletlenül többször is futtatják őket.
 * Győződjön meg arról, a parancsfájlok nem igényelnek felhasználói bevitel futtatás esetén.
 * A parancsfájl futtatása engedélyezett 90 perc, semmit hosszabb egy sikertelen a bővítmény kiépítése eredményez.
 * Ne telepítse a parancsfájl belül újraindul, ez lesz okozhat problémát más bővítményeket, amelyek telepítése folyamatban van, és utáni újraindítás, a bővítmény nem továbbra is az újraindítás után. 
-* Ha egy parancsfájl, amely hatására az újraindítás, alkalmazásokat telepíthet, és futtassa a parancsfájlok stb. Olyan időszakra ütemezze az újraindítás egy Cron feladat használatával, vagy a DSC, vagy a Chef, Puppet, bővítmények.
+* Ha egy szkript újraindítást vált ki, telepítenie kell az alkalmazásokat, futtatnia kell a szkripteket stb. Olyan időszakra ütemezze az újraindítás egy Cron feladat használatával, vagy a DSC, vagy a Chef, Puppet, bővítmények.
 * A bővítmény csak akkor fog futni egy parancsfájl egyszer, ha azt szeretné, naplózásra kerül minden rendszerindításkor, a parancsfájl futtatásához használhatja [a cloud-init lemezkép](../linux/using-cloud-init.md) , és egy [parancsfájlokat egy rendszerindító](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modul. A parancsfájl segítségével azt is megteheti, hozzon létre egy Systemd szolgáltatás egységet.
 * Ha azt szeretné, meghatározhatja, mikor egy parancsprogram futtatása, a bővítmény egy Cron feladat létrehozásához használjon.
-* A szkript fut, amikor egy "átviteli" bővítmény állapotát az Azure Portalon vagy a parancssori felület csak akkor jelenik meg. Ha azt szeretné, hogy a futó parancsfájl gyakoribb ügyfélállapot-frissítés, szüksége lesz a saját megoldást hozhat létre.
+* Amikor a szkript fut, az Azure Portalon vagy a CLI-n a bővítmény „átmeneti” állapotát fogja látni. Ha azt szeretné, hogy a futó parancsfájl gyakoribb ügyfélállapot-frissítés, szüksége lesz a saját megoldást hozhat létre.
 * Egyéni szkriptek futtatására szolgáló bővítmény nem támogatja natív módon proxykiszolgálókat, azonban egy fájlátviteli eszköz, amely támogatja a proxykiszolgálók a parancsfájlban, például használhatja *Curl*.
 * Vegye figyelembe, hogy a parancsfájlok vagy parancsok függő előfordulhat, hogy nem alapértelmezett directory-helyeken, a logikai ennek kezelése rendelkezik.
 
@@ -121,15 +121,15 @@ Ezeket az elemeket kell kezelni, mint a bizalmas adatok és a bővítmények vé
 
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | dátum |
-| publisher | Microsoft.OSTCExtensions | sztring |
-| type | CustomScriptForLinux | sztring |
+| apiVersion | 2015-06-15 | date |
+| publisher | Microsoft.OSTCExtensions | string |
+| type | CustomScriptForLinux | string |
 | typeHandlerVersion | 1.5 | int |
 | fileUris (például:) | https://github.com/MyProject/Archive/MyPythonScript.py | tömb |
-| commandToExecute (például:) | python MyPythonScript.py \<my-param1\> | sztring |
+| commandToExecute (például:) | python MyPythonScript.py \<my-param1\> | string |
 | enableInternalDNSCheck | true | logikai |
-| storageAccountName (e.g) | examplestorageacct | sztring |
-| storageAccountKey (például:) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | sztring |
+| storageAccountName (e.g) | examplestorageacct | string |
+| storageAccountKey (például:) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 
 ### <a name="property-value-details"></a>A tulajdonság értéke részletei
 

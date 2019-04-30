@@ -1,5 +1,5 @@
 ---
-title: Azure-Windows-alapú virtuális gépek biztonsági mentési beállításainak áttekintése |} Microsoft Docs
+title: Azure Windows virtuális gépek biztonsági mentési beállításainak áttekintése |} A Microsoft Docs
 description: Azure Windows virtuális gépek biztonsági mentési beállításainak áttekintése.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/13/2017
 ms.author: cynthn
-ms.openlocfilehash: ec3bd5666e6282554e3d242f8ff56019ee41011b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b8f63d2a0f69f1eb1b8a1b9c645b1a0bcb3d9469
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30915218"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61456308"
 ---
-# <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Az Azure virtuális gépek biztonsági mentési és visszaállítási beállításait
-Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. Nincsenek elérhető virtuális gépekhez, attól függően, hogy a használati eset több biztonsági mentési beállítások.
+# <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek biztonsági mentési és helyreállítási lehetőségek
+Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. Nincsenek elérhető virtuális gépek esetében, attól függően, a használatieset-több biztonsági mentési beállítások.
 
 [!INCLUDE [virtual-machines-common-backup-recovery](../../../includes/virtual-machines-common-backup-recovery.md)]

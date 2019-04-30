@@ -1,6 +1,6 @@
 ---
-title: Facebook - Azure Logic Apps csatlakozni |} Microsoft Docs
-description: Az ütemterv és a lap Facebook REST API-k és az Azure Logic Apps kezelése
+title: Csatlakozhat a Facebookhoz – Azure Logic Apps |} A Microsoft Docs
+description: Kezelheti a határidőt és a Facebook REST API-k és az Azure Logic Apps-lap
 author: ecfan
 manager: jeconnoc
 ms.author: estfan
@@ -11,27 +11,27 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 985f3cf70a07b3080f34181e64c5bb1419d530bd
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 25595127d913d3cd093e0af3d7916e33fc7cb352
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295006"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62105975"
 ---
-# <a name="get-started-with-the-facebook-connector"></a>A Facebook-összekötő az első lépései
-Csatlakozni a Facebookhoz és idővonalon, hírcsatorna oldal, és több. A Facebook a következőket teheti:
+# <a name="get-started-with-the-facebook-connector"></a>A Facebook-összekötő használatának első lépései
+Csatlakozhat a Facebookhoz, és közzé az idővonalon, laptartalmakat és egyéb beolvasása. A Facebook, a következőket teheti:
 
-* Az üzleti folyamat Facebook származó adatok alapján történő létrehozása. 
-* Egy eseményindító használni, új post fogadásakor.
-* Küldje el a ütemterv használatát műveleteket hírcsatorna oldal, és több kapják meg. Ezeket a műveleteket válaszol, és végezze el a kimeneti más műveletek érhető el. Például, ha van egy új post az ütemterven, igénybe a feladás egy vagy több, és hogy a Twitter hírcsatorna. 
+* Az adatok facebookról kap az üzleti folyamatot hozhat létre. 
+* Trigger akkor használja, ha új hozzászólás érkezik.
+* Használható műveletek közzé az idővonalon, laptartalmakat és egyéb beolvasása. Ezek a műveletek válaszol, és végezze el a kimenetet más műveletek esetében érhető el. Például ha új bejegyzés van az eseményeket egy idővonalon megjelenítve, elvégezhető a szükséges, hogy a post és küldje le a Twitter-hírcsatornát. 
 
-Most hozzon létre egy logic app kezdheti, lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Hozzon létre egy logikai alkalmazás most már megkezdheti, lásd: [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-a-connection-to-facebook"></a>Kapcsolatot létesíthet a Facebook-on
-Ezt az összekötőt a logic apps hozzáadásakor engedélyeznie kell a logic apps csatlakozni a Facebookhoz.
+## <a name="create-a-connection-to-facebook"></a>Hozzon létre egy kapcsolatot a Facebookon
+Ha ezt az összekötőt a logic apps hozzáad, engedélyeznie kell a logic apps szeretne csatlakozni a Facebookhoz.
 
-1. Jelentkezzen be a Facebook-fiókba
-2. Válassza ki **engedélyezés**, és teszi lehetővé a logic Apps alkalmazásokat csatlakozzon, és használja a Facebook-on. 
+1. Jelentkezzen be a Facebook-fiókban
+2. Válassza ki **engedélyezés**, és lehetővé teszi a logic apps való csatlakozáshoz és a Facebook. 
 
 > [!INCLUDE [Steps to create a connection to Facebook](../../includes/connectors-create-api-facebook.md)]
 > 
@@ -39,7 +39,7 @@ Ezt az összekötőt a logic apps hozzáadásakor engedélyeznie kell a logic ap
 
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
 
-Bármely eseményindítók és a swagger definiált műveletek megtekintése, és semmilyen határnak a Lásd még: a [connector részleteket](/connectors/facebook/).
+Megtekintheti a valamennyi eseményindítót és műveletet a swaggerben meghatározott, és emellett a korlátozott a [összekötő részletei](/connectors/facebook/).
 
 ## <a name="more-connectors"></a>További összekötők
-Lépjen vissza a [API-k lista](apis-list.md).
+Lépjen vissza a [API-k listája](apis-list.md).

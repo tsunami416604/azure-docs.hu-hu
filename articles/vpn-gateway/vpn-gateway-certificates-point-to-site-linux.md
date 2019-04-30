@@ -2,17 +2,18 @@
 title: 'Tanúsítványok létrehozása és exportálása pont – hely számára: Linux: CLI: Azure | Microsoft Docs'
 description: Hozzon létre egy önaláírt főtanúsítványt, exportálja a nyilvános kulcsot és a Linux (strongSwan) parancssori felület használatával ügyféltanúsítványokat.
 services: vpn-gateway
-author: cherylmc
+author: WenJason
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/31/2019
-ms.author: cherylmc
+origin.date: 01/31/2019
+ms.date: 03/04/2019
+ms.author: v-jay
 ms.openlocfilehash: b673be47d4951adab08f04efc56410095f549356
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564790"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60766168"
 ---
 # <a name="generate-and-export-certificates"></a>Tanúsítványok létrehozása és exportálása
 

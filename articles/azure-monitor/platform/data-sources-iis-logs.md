@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
 ms.openlocfilehash: 402cd4723791c0bc33db22c8857d1b785862f596
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797842"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60614505"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Az Azure monitorban gyűjtése IIS-naplók
 Az Internet Information Services (IIS) felhasználói tevékenység tárolja az Azure Monitor által összegyűjtött és tárolt és naplófájlok [adatok](data-platform.md).

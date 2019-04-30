@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 319f9cba23d088553f361b6a0d648bbde94e0743
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: be3c31951c4721a861f9239c5220419dec11b6bf
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968561"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60799147"
 ---
 # <a name="extending-geojson-geometries"></a>Kiterjesztése GeoJSON geometriája
 
@@ -25,12 +25,12 @@ A [GeoJSON specifikációja] [ 1] csak az a következő geometriája támogatja:
 * GeometryCollection
 * LineString
 * MultiLineString
-* A multiPoint
+* MultiPoint
 * MultiPolygon
 * Pont
 * Sokszög
 
-Néhány Azure Maps API-k (például: [keresési belül geometriai](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)) fogadja el a "Kör", például geometriája nem része a [GeoJSON specifikációja][1].
+Néhány Azure Maps API-k (például: [Keresés belül geometriai](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)) fogadja el a "Kör", például geometriája nem része a [GeoJSON specifikációja][1].
 
 Ez a cikk részletes leírást nyújt a hogyan terjeszti ki az Azure Maps a [GeoJSON specifikációja] [ 1] képviseletére geometriája bizonyos.
 
@@ -46,7 +46,7 @@ A `Circle` geometriai jelölt használatával a `GeoJSON Feature` objektum __kel
 2. Sugár
    >A kör `radius` használatával jelölt `GeoJSON Feature`a tulajdonságai. A radius-érték _mérőszámok_ típusúnak kell lennie, és `double`.
 
-3. Altípus
+3. SubType
    >A körgeometriának a `subType` tulajdonságot is tartalmaznia kell. Ennek a tulajdonságnak szerepelnie kell a `GeoJSON Feature` tulajdonságai között, és _Circle_ értékűnek kell lennie
 
 

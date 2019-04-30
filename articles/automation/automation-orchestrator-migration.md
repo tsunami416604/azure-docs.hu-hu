@@ -10,11 +10,11 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: ae47cba8f8e9a7cdf914c0b3ea5dfb9fa6c259a9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432897"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60738213"
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Az Orchestrator-ről az Azure Automation szolgáltatásban (bétaverzió)
 A Runbookok [System Center Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) közben az Azure Automation runbookjai Windows Powershellen alapulnak kifejezetten az Orchestrator számára írt integrációs csomag alapulnak.  [Grafikus runbookok](automation-runbook-types.md#graphical-runbooks) az Azure Automationben rendelkezik egy hasonló megjelenési az Orchestrator runbookjai az eszközök, a PowerShell parancsmagok és a gyermek runbookok jelölő tevékenységeik.

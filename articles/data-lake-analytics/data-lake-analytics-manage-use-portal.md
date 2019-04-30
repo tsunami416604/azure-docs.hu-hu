@@ -10,11 +10,11 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8b2f16f45be1d095e9be8042611de328af36f064
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724060"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60813439"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Az Azure Portalon az Azure Data Lake Analytics kezelése
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -32,11 +32,11 @@ Ez a cikk ismerteti az Azure Data Lake Analytics-fiókok, adatforrások, felhasz
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Kattintson a **erőforrás létrehozása** > **intelligencia és elemzés** > **Data Lake Analytics**.
 3. Adja meg az alábbi elemek értékeit: 
-   1. **Név**: a Data Lake Analytics-fiók nevét.
-   2. **Előfizetés**: a fiók az Azure-előfizetés.
-   3. **Erőforráscsoport**: az Azure-erőforráscsoportot, amelyben a fiók létrehozásához. 
-   4. **Hely**: a Data Lake Analytics-fiók az Azure-adatközpontban. 
-   5. **Data Lake Store**: az alapértelmezett tároló a Data Lake Analytics-fiók használandó. Az Azure Data Lake Store-fiók és a Data Lake Analytics-fiók ugyanazon a helyen kell lennie.
+   1. **Név**: A Data Lake Analytics-fiók neve.
+   2. **Előfizetés**: Az Azure-előfizetés a használ.
+   3. **Erőforráscsoport**: Az Azure-erőforráscsoportot, amelyben a fiókot létrehozza. 
+   4. **Hely**: Az Azure-adatközpontba a Data Lake Analytics-fiók. 
+   5. **Data Lake Store**: Az alapértelmezett tároló a Data Lake Analytics-fiók használandó. Az Azure Data Lake Store-fiók és a Data Lake Analytics-fiók ugyanazon a helyen kell lennie.
 4. Kattintson a **Create** (Létrehozás) gombra. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Data Lake Analytics-fiók törlése
@@ -98,9 +98,9 @@ Használhatja a **felhasználó hozzáadása varázsló** , könnyedén üzembe 
 Más Azure-szolgáltatásokhoz hasonlóan a szerepköralapú hozzáférés-vezérlés (RBAC) segítségével szabályozhatja, hogy a felhasználók hogyan használják a szolgáltatással.
 
 A standard szintű RBAC-szerepkör az alábbi képességekkel rendelkezik:
-* **Tulajdonos**: feladatok elküldéséhez, figyelheti a feladatokat, bármely felhasználó a feladatok megszakítása, és konfigurálja a fiókot.
-* **Közreműködői**: feladatok elküldéséhez, figyelheti a feladatokat, bármely felhasználó a feladatok megszakítása, és konfigurálja a fiókot.
-* **Olvasó**: figyelheti a feladatokat.
+* **Tulajdonos**: Is feladatok elküldéséhez, figyelheti a feladatokat, bármely felhasználó a feladatok megszakítása és konfigurálja a fiókot.
+* **Közreműködői**: Is feladatok elküldéséhez, figyelheti a feladatokat, bármely felhasználó a feladatok megszakítása és konfigurálja a fiókot.
+* **Olvasó**: Figyelheti a feladatokat.
 
 A Data Lake Analytics-fejlesztő szerepkör használatával a Data Lake Analytics szolgáltatással a U-SQL fejlesztők. Használhatja a Data Lake Analytics-fejlesztő szerepkört a következőre:
 * Feladatok elküldéséhez.
@@ -113,7 +113,7 @@ A Data Lake Analytics-fejlesztő szerepkör használatával a Data Lake Analytic
 1. Az Azure Portalon nyissa meg a Data Lake Analytics-fiók.
 2. Kattintson a **hozzáférés-vezérlés (IAM)** > **szerepkör-hozzárendelés hozzáadása**.
 3. Válasszon ki egy szerepkört.
-4. Felhasználó hozzáadása.
+4. Adjon hozzá egy felhasználót.
 5. Kattintson az **OK** gombra.
 
 >[!NOTE]
@@ -131,9 +131,9 @@ A Data Lake Analytics-fejlesztő szerepkör használatával a Data Lake Analytic
 
 2. Kattintson a **új feladat**. Konfigurálja az egyes feladatokhoz:
 
-    1. **Feladat neve**: a feladat nevét.
-    2. **Prioritás**: alacsonyabb sorszámok magasabb prioritással. Ha két feladatok várólistára kerülnek, az egy alacsonyabb prioritási értékkel rendelkező első futtatja.
-    3. **Párhuzamosság**: lefoglalni a feladat a számítási feladatok maximális számát.
+    1. **Feladat neve**: A feladat neve.
+    2. **Prioritás**: Alacsonyabb sorszámok magasabb prioritást kell. Ha két feladatok várólistára kerülnek, az egy alacsonyabb prioritási értékkel rendelkező első futtatja.
+    3. **Párhuzamosság**: Ez a feladat számára fenntartandó számítási feladatok maximális száma.
 
 3. Kattintson a **Feladat elküldése** elemre.
 

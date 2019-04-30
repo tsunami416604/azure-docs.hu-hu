@@ -2,20 +2,21 @@
 title: Az oszlopcentrikus index teljesítmény – Azure SQL Data Warehouse javítása |} A Microsoft Docs
 description: Memóriakövetelményei csökkentse vagy növelje a szabad memória a maximalizálása érdekében az oszlopcentrikus index tömöríti az egyes sorcsoportokba sorok számát.
 services: sql-data-warehouse
-author: ronortloff
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 03/22/2019
-ms.author: rortloff
+origin.date: 03/22/2019
+ms.date: 04/01/2019
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: e7ab09522184f5c2d1c5168b24b2948f58e5189e
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368965"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60748789"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Oszlopcentrikus minőségű sorcsoportokba maximalizálása
 

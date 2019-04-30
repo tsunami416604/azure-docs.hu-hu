@@ -9,11 +9,11 @@ ms.date: 02/14/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 4850dd82ca52a060c921569433035256f5b74cce
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58164926"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478760"
 ---
 # <a name="what-is-azure-importexport-service"></a>Mi az Azure Import/Export szolgáltatás?
 
@@ -29,7 +29,7 @@ Fontolja meg az Azure Import/Export szolgáltatás használatát, amikor feltöl
 
 * **Adatok migrálása a felhőbe**: Nagy mennyiségű adat áthelyezése az Azure-ban gyorsan és költséghatékonyan.
 * **A tartalom terjesztési**: Az ügyfelek telephelyeire pedig gyorsan elküldheti adatait.
-* **Biztonsági mentés**: Az Azure Storage szolgáltatásban tárolja a helyszíni adatok biztonsági másolatok készítése.
+* **biztonsági mentési**: Az Azure Storage szolgáltatásban tárolja a helyszíni adatok biztonsági másolatok készítése.
 * **Adat-helyreállítás**: Nagy mennyiségű storage-ban tárolt adatok helyreállításához és szállítását a helyszíni helyre.
 
 ## <a name="importexport-components"></a>Importálási/exportálási összetevők

@@ -17,11 +17,11 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ddbaed6704fd32f7fd4fe5a790424cbf829d2f1c
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932857"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60540402"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Windows virtuális gépek Azure-infrastruktúra bemutató példa
 Ez a cikk bemutatja a például alkalmazás-infrastruktúrák létrehozását. A Microsoft részletes információkat talál, egy egyszerű online áruházban, amely egyesíti az irányelvek és elnevezési konvenciók, a rendelkezésre állási csoportok, virtuális hálózatok és terheléselosztók döntések infrastruktúra tervezése és ténylegesen üzembe helyezése a virtuális gépek (VM).
@@ -72,15 +72,15 @@ Mivel a virtuális hálózat nem kell a folyamatban lévő kapcsolódástól az 
 
 Általuk létrehozott egy kizárólag felhőalapú virtuális hálózatot az Azure portal használatával a következő beállításokkal:
 
-* Name: AZOS-USE-VN01
-* Hely: East US 2
-* Virtuális hálózat címtere: 10.0.0.0/8
+* Név: AZOS-USE-VN01
+* Hely: USA 2. keleti régiója
+* virtuális hálózat címtere: 10.0.0.0/8
 * Első alhálózat:
-  * Neve: FrontEnd
+  * Név: Előtér
   * Címtér: 10.0.1.0/24
 * Második alhálózatot:
-  * Neve: BackEnd
-  * Címtere: 10.0.2.0/24
+  * Név: Háttér
+  * Címtér: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Rendelkezésre állási csoportok
 Az Adventure Works Cycles magas rendelkezésre állásának összes négy szinten az online áruház fenntartására, úgy döntött, négy rendelkezésre állási csoportok:

@@ -9,11 +9,11 @@ ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
 ms.openlocfilehash: 93e74eb6aefbaeeddf7c4f15d62f4a9ee3d617d4
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622212"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60777389"
 ---
 # <a name="azure-activity-log-event-schema"></a>Az Azure tevékenységnapló eseménysémája
 A **Azure-tevékenységnapló** , amely bármely Azure-ban bekövetkezett előfizetés-szintű eseményeit betekintést nyújt a bejelentkezés. Ez a cikk ismerteti a eseménysémája egy adatkategóriát. Az adatok sémája eltér attól függően, ha az adatok a portal, PowerShell, CLI-t, vagy közvetlenül a REST API és a segítségével olvas [streamelési adatok a storage vagy az Event Hubs használatával egy Naplóprofil](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Az alábbi példák a séma szerint a portal, PowerShell, CLI és REST API-n keresztül elérhetővé tett. Ezen tulajdonságok leképezése a [Azure diagnosztikai naplók séma](./diagnostic-logs-schema.md) van megadva a cikk végén található.
@@ -117,7 +117,7 @@ A kategória tartalmazza az összes rekordot létrehozni, frissítési, törlés
 | csatornák |A következő értékek egyikét: "Admin", "Művelet" |
 | jogcímek |A JWT jogkivonat a felhasználó vagy az alkalmazásnak, hogy ezt a műveletet az erőforrás-kezelőben hitelesítéséhez az Active Directory által használandó. |
 | correlationId |Általában egy GUID Azonosítót a karakterláncként. Ugyanaz a uber művelet eseményeket, amelyek megosztása a korrelációs azonosító tartozik. |
-| leírás |Statikus szöveg egy esemény leírása. |
+| description |Statikus szöveg egy esemény leírása. |
 | eventDataId |Az esemény egyedi azonosítója. |
 | EventName | A felügyeleti esemény rövid neve. |
 | category | Mindig "rendszergazda" |
@@ -261,7 +261,7 @@ Ebben a kategóriában a az Azure-erőforrások előfordult resource health esem
 | --- | --- |
 | csatornák | Mindig "rendszergazda, a művelet" |
 | correlationId | GUID, amely a karakterlánc-formátum. |
-| leírás |A figyelmeztetési esemény statikus szöveges leírása. |
+| description |A figyelmeztetési esemény statikus szöveges leírása. |
 | eventDataId |A figyelmeztetési esemény egyedi azonosítója. |
 | category | Mindig Resource "Health" |
 | eventTimestamp |Időbélyeg, ha az esemény jött létre az Azure-szolgáltatás a megfelelő esemény kérelem feldolgozása. |
@@ -356,7 +356,7 @@ Ez a kategória összes aktiválás az Azure-riasztások rekordot tartalmaz. Itt
 | csatornák | Mindig "rendszergazda, a művelet" |
 | jogcímek | Az egyszerű szolgáltatásnév (szolgáltatásnév), vagy az erőforrás típusa, a riasztás motor JSON-blobját. |
 | correlationId | GUID, amely a karakterlánc-formátum. |
-| leírás |A figyelmeztetési esemény statikus szöveges leírása. |
+| description |A figyelmeztetési esemény statikus szöveges leírása. |
 | eventDataId |A figyelmeztetési esemény egyedi azonosítója. |
 | category | Mindig "értesítés" |
 | szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés" és "Tájékoztató" |
@@ -466,7 +466,7 @@ Ez a kategória tartalmazza a rekord a meghatározott az előfizetés automatiku
 | csatornák | Mindig "rendszergazda, a művelet" |
 | jogcímek | Az egyszerű szolgáltatásnév (szolgáltatásnév), vagy az erőforrás típusa, az automatikus skálázási motor JSON-blobját. |
 | correlationId | GUID, amely a karakterlánc-formátum. |
-| leírás |Az automatikus skálázási esemény statikus szöveges leírása. |
+| description |Az automatikus skálázási esemény statikus szöveges leírása. |
 | eventDataId |Az automatikus skálázási esemény egyedi azonosítója. |
 | szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés" és "Tájékoztató" |
 | resourceGroupName |Az automatikus skálázási beállítás az erőforráscsoport neve. |
@@ -554,7 +554,7 @@ Ez a kategória tartalmazza azt a rekordot, bármely Azure Security Center álta
 | --- | --- |
 | csatornák | Mindig "művelet" |
 | correlationId | GUID, amely a karakterlánc-formátum. |
-| leírás |A biztonsági események statikus szöveges leírása. |
+| description |A biztonsági események statikus szöveges leírása. |
 | eventDataId |A biztonsági esemény egyedi azonosítója. |
 | EventName |A biztonsági események rövid neve. |
 | category | Mindig a "Security" |
@@ -635,7 +635,7 @@ Ez a kategória tartalmazza a rekord az új javaslatok, amelyek akkor jönnek l�
 | --- | --- |
 | csatornák | Mindig "művelet" |
 | correlationId | GUID, amely a karakterlánc-formátum. |
-| leírás |Az ajánlás esemény statikus szöveges leírása |
+| description |Az ajánlás esemény statikus szöveges leírása |
 | eventDataId | Az ajánlás esemény egyedi azonosítója. |
 | category | Mindig "javaslat" |
 | id |Az ajánlás esemény egyedi erőforrás-azonosítója. |
@@ -748,7 +748,7 @@ Ez a kategória összes érvénybe művelet műveletek által végrehajtott reko
 | csatornák | Házirend-események csak a "Művelet" csatorna használatára. |
 | jogcímek | A JWT jogkivonat a felhasználó vagy az alkalmazásnak, hogy ezt a műveletet az erőforrás-kezelőben hitelesítéséhez az Active Directory által használandó. |
 | correlationId | Általában egy GUID Azonosítót a karakterláncként. Ugyanaz a uber művelet eseményeket, amelyek megosztása a korrelációs azonosító tartozik. |
-| leírás | A négyzet nincs bejelölve, a házirend-események. |
+| description | A négyzet nincs bejelölve, a házirend-események. |
 | eventDataId | Az esemény egyedi azonosítója. |
 | EventName | "BeginRequest" vagy "EndRequest". "BeginRequest" késleltetett auditIfNotExists és deployIfNotExists értékeléseket és a egy sablon telepítésének indításakor az egy deployIfNotExists hatást használatos. Minden egyéb művelet "EndRequest" visszaadása. |
 | category | Deklarálja a tevékenységnaplóbeli esemény, hogy a "Policy" tartoznak. |
@@ -783,7 +783,7 @@ Az Azure-tevékenységnapló egy tárfiókhoz vagy az Event Hubs-névtér közve
 | category | Művelet neve része | Kiscsoportos művelet típusa – "Írás" / "Törlés" / "Action" |
 | resultType | Status.Value | |
 | resultSignature | substatus.Value | |
-| resultDescription | leírás |  |
+| resultDescription | description |  |
 | durationMs | – | Mindig 0 |
 | callerIpAddress | httpRequest.clientIpAddress |  |
 | correlationId | correlationId |  |

@@ -14,11 +14,11 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0a3adbd082c68121e762fd03c2221a0c800f0bc5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892642"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60823980"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával a helyszíni Cassandra-adatbázis
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,7 +71,7 @@ Az alábbi táblázatban a JSON-elemeket Cassandra-beli társított szolgáltat�
 | port |A Cassandra-kiszolgáló az ügyfélkapcsolatok figyeléséhez használt TCP portra. |Nem, az alapértelmezett érték: 9042 |
 | authenticationType |Alapszintű vagy névtelen |Igen |
 | felhasználónév |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha authenticationType beállítása alapszintű. |
-| jelszó |Adja meg a felhasználói fiókhoz tartozó jelszót. |Igen, ha authenticationType beállítása alapszintű. |
+| password |Adja meg a felhasználói fiókhoz tartozó jelszót. |Igen, ha authenticationType beállítása alapszintű. |
 | átjáró neve |Az átjáró a helyszíni Cassandra-adatbázishoz való csatlakozáshoz használt neve. |Igen |
 | encryptedCredential |A hitelesítő adatok titkosítva, az átjáró. |Nem |
 
@@ -95,7 +95,7 @@ Mivel a tevékenység a typeProperties szakasz tulajdonságai tevékenységek mi
 
 Ha a forrás típusa van **CassandraSource**, typeProperties szakasz érhető el az alábbi tulajdonságokat:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
 | lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-92 vagy CQL lekérdezés. Lásd: [CQL referencia](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>SQL-lekérdezés használata esetén adja meg a **kulcstér name.table neve** a lekérdezni kívánt tábla ábrázolásához. |Nem (ha van megadva a tableName és kulcstér adatkészlet). |
 | consistencyLevel |A konzisztencia szintjét adja meg, hány replikák válaszolnia kell egy olvasási kérést előtt adatokat ad vissza az ügyfélalkalmazásnak. Cassandra ellenőrzi a megadott számú replikákat az adatok az olvasási kérelem teljesítéséhez. |EGY, KETTŐ, HÁROM, KVÓRUM, AZ ÖSSZES, LOCAL_QUORUM EACH_QUORUM, LOCAL_ONE. Lásd: [adatkonzisztencia konfigurálása](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) részleteiről. |Nem. Alapértelmezett érték: az egyik. |
@@ -265,7 +265,7 @@ Lásd: [RelationalSource tulajdonságait](#copy-activity-properties) a Relationa
 | ASCII |String |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
-| LOGIKAI ÉRTÉK |Logikai |
+| LOGIKAI ÉRTÉK |Boolean |
 | DECIMAL |Decimal |
 | DUPLA |Double |
 | LEBEGŐPONTOS |Single |

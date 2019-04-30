@@ -11,11 +11,11 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
 ms.openlocfilehash: 5f488811e57ee20cb25db56b2d9e04202b17ffb2
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579529"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60869645"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Az Azure Blockchain Workbench üzembe helyezése
 
@@ -86,7 +86,7 @@ Az előfeltételként felsorolt lépéseket befejezése után készen áll a Blo
     | Az üzembe helyezés régiójában | Adja meg az üzembe helyezés a Blockchain Workbenchet erőforrásokat. A legjobb rendelkezésre állás érdekében ennek meg kell egyeznie a **hely** beállítás. |
     | Előfizetés | Adja meg a központi telepítéshez használni kívánt Azure-előfizetést. |
     | Erőforráscsoportok | Hozzon létre egy új erőforráscsoportot kiválasztásával **új létrehozása** , és adja meg egy egyedi erőforráscsoport-nevet. |
-    | Földrajzi egység | Adja meg a régiót kívánja telepíteni a keretrendszer. |
+    | Location egység | Adja meg a régiót kívánja telepíteni a keretrendszer. |
 
 7. Válassza ki **OK** az alapszintű konfigurációs szakasz befejezéséhez.
 

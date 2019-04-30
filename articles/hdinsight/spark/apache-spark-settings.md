@@ -1,7 +1,6 @@
 ---
 title: Spark-beállítások – Azure HDInsight konfigurálása
 description: Hogyan konfigurálhatja a Spark az Azure HDInsight-fürt.
-services: hdinsight
 author: maxluk
 ms.author: maxluk
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 91f706b882c4f245dbd111b0f9cac269db6fd65f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: MT
+ms.openlocfilehash: 77f4ec9cce5d02ea4cbcc4968d02773a13edfe5b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652235"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098379"
 ---
 # <a name="configure-apache-spark-settings"></a>Az Apache Spark beállításainak konfigurálása
 
@@ -69,9 +68,9 @@ Az Apache Spark konfigurációs értékek megtekintéséhez válasszon **Config 
 Tekintse meg, és módosítsa az egyes Spark konfigurációs értékeket, válassza a hivatkozás cím "spark" szót tartalmazó minden olyan hivatkozás.  Spark konfigurációi ezekben a kategóriákban található mindkét egyéni és speciális konfigurációs értékeket tartalmaznak:
 
 * Egyéni Spark2 – alapértelmezett érték
-* Egyéni Spark2-mérőszámok – tulajdonságok
-* Speciális Spark2 – alapértelmezett érték
-* Speciális Spark2-env
+* Custom Spark2-metrics-properties
+* Advanced Spark2-defaults
+* Advanced Spark2-env
 * Speciális spark2 – hive-webhely – felülbírálás
 
 Ha a konfigurációs értékeket, nem alapértelmezett csoportját hozhatja létre, akkor megtekintheti a konfigurációfrissítések előzményeit is.  A korábbi konfigurációkat, mely nem alapértelmezett konfiguráció tartozik-e optimális teljesítmény érdekében hasznos lehet.
@@ -111,8 +110,8 @@ Attól függően, a Spark számítási meghatározhatják, hogy egy nem alapért
 Az alábbi lista kulcs Spark-végrehajtó memória paramétereket mutatja be.
 
 * `spark.executor.memory` határozza meg a rendelkezésre álló memória teljes összege egy végrehajtó.
-* `spark.storage.memoryFraction` (~ 60 % -os alapértelmezés szerint) a megőrzött rdd-k tárolására szolgáló rendelkezésre álló memória mennyiségét határozza meg.
-* `spark.shuffle.memoryFraction` (~ 20 % -os alapértelmezés szerint) a shuffle számára lefoglalt memória mennyiségét határozza meg.
+* `spark.storage.memoryFraction` (alapértelmezett ~ 60 %) a megőrzött rdd-k tárolására szolgáló rendelkezésre álló memória mennyiségét határozza meg.
+* `spark.shuffle.memoryFraction` (alapértelmezett körülbelül 20 %) a shuffle számára lefoglalt memória mennyiségét határozza meg.
 * `spark.storage.unrollFraction` és `spark.storage.safetyFraction` (teljes memória KB. 30 % -át összegzését) – ezek az értékek belsőleg Spark és nem módosítható.
 
 YARN a Spark-csomópontokon a tárolók által használt memória maximális összegét szabályozza. Az alábbi ábrán látható, a csomópontonkénti kapcsolatokat és a Spark a YARN konfigurációs objektumok között.

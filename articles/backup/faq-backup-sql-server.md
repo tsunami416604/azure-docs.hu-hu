@@ -6,18 +6,22 @@ author: sachdevaswati
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/23/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 8d6323c73e5313a29b7b0df09ebdd24a190879f5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 649e50634d901ab48f1cb36c39d7331401c0cc51
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791893"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62733548"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Egy Azure virtuális gépek biztonsági mentésének futó SQL Server-adatbázisok – gyakori kérdések
 
 Ez a cikk az SQL Server-adatbázisok biztonsági mentésével kapcsolatos általános kérdéseket válaszol meg futtató Azure virtuális gépeken (VM), és használják a [Azure Backup](backup-overview.md) szolgáltatás.
+
+## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>Használható az Azure backup az IaaS virtuális gépek, valamint az SQL Server ugyanazon a számítógépen?
+Igen, virtuális gépek biztonsági mentését és az SQL biztonsági mentési is rendelkezik az azonos virtuális gépen. Ebben az esetben a Microsoft belső indítson csak másolatot teljes biztonsági mentést a virtuális gép nem csonkolja a naplókat.
+
 
 ## <a name="does-the-solution-retry-or-auto-heal-the-backups"></a>Nem a megoldás próbálkozzon újra, vagy automatikus javítása a biztonsági mentéseket?
 
@@ -45,7 +49,8 @@ Igen. A sebesség, amellyel a biztonsági mentési szabályzat fut, és egy SQL 
   `{"DefaultBackupTasksThreshold": 5}`
 
 3. Mentse a módosításokat, és zárja be a fájlt.
-4. Nyissa meg az SQL Server-példány **Feladatkezelő**. Indítsa újra a **AzureWLBackupCoordinatorSvc** szolgáltatás.
+4. Nyissa meg az SQL Server-példány **Feladatkezelő**. Indítsa újra a **AzureWLBackupCoordinatorSvc** szolgáltatás.<br/> <br/>
+ Amíg ez a módszer segít, ha a biztonsági mentést végző alkalmazás fogyassza az erőforrásokat, az SQL Server rengeteg [erőforrás-vezérlő](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017) általánosabb érvényűvé úgy adja meg a korlátok a Processzor, fizikai IO és, amelyeket a beérkező kérelem memória mennyisége használjon.
 
 > [!NOTE]
 > Felhasználói továbbra is lépjen tovább, és tetszőleges számú biztonsági mentések ütemezése az egy adott időpontban azonban fog feldolgozása egy csúszóablakban tegyük fel, 5, a fenti példa szerint.

@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
 ms.openlocfilehash: 4bf4c5c8339c8c56d91737fa1ff62f55b9c38696
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019622"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60786373"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Adatok másolása DB2 az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-onprem-db2-connector.md)
 > * [Aktuális verzió](connector-db2.md)
 
@@ -32,8 +32,8 @@ DB2-adatbázisból származó adatok másolhatja bármely támogatott fogadó ad
 
 Pontosabban a DB2-összekötő a következő IBM DB2-platformokat és verziókat az elosztott relációs adatbázis architektúra (DRDA) SQL Access Manager (SQLAM) 9, 10, 11 verzió támogatja:
 
-* Z/os 11.1 IBM DB2-höz
-* Z/OS 10.1 IBM DB2-höz
+* IBM DB2 for z/OS 11.1
+* IBM DB2 for z/OS 10.1
 * Az IBM DB2-höz i 7.2
 * Az IBM DB2-höz i 7.1
 * IBM DB2 LUW 11
@@ -66,7 +66,7 @@ DB2-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 | adatbázis |A DB2-adatbázis neve. |Igen |
 | authenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Megengedett értéke: **Alapszintű**. |Igen |
 | felhasználónév |Adja meg a felhasználónevet, a DB2-adatbázishoz való csatlakozáshoz. |Igen |
-| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
+| password |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 **Példa**
@@ -174,31 +174,31 @@ Ha az adatok másolása a DB2, Azure Data Factory-közbenső adattípusok a köv
 | DB2-adatbázis típusa | Data factory közbenső adattípus |
 |:--- |:--- |
 | BigInt |Int64 |
-| Bináris |Byte] |
-| Blob |Byte] |
-| CHAR |Karakterlánc |
-| CLOB |Karakterlánc |
-| Dátum |Dátum és idő |
-| DB2DynArray |Karakterlánc |
-| DbClob |Karakterlánc |
-| Tizedes tört |Tizedes tört |
-| DecimalFloat |Tizedes tört |
-| Dupla |Dupla |
-| Lebegőpontos |Dupla |
-| Kép |Karakterlánc |
+| binary |Byte[] |
+| Blob |Byte[] |
+| char |String |
+| CLOB |String |
+| Dátum |DateTime |
+| DB2DynArray |String |
+| DbClob |String |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
+| Double |Double |
+| Float |Double |
+| Kép |String |
 | Egész szám |Int32 |
-| LongVarBinary |Byte] |
-| LongVarChar |Karakterlánc |
-| LongVarGraphic |Karakterlánc |
-| Numerikus |Tizedes tört |
-| Real |Önálló |
+| LongVarBinary |Byte[] |
+| LongVarChar |String |
+| LongVarGraphic |String |
+| Numeric |Decimal |
+| Real |Single |
 | SmallInt |Int16 |
-| Time |Időtartam |
+| Time |TimeSpan |
 | Időbélyeg |DateTime |
-| VarBinary |Byte] |
-| VarChar |Karakterlánc |
-| VarGraphic |Karakterlánc |
-| Xml |Byte] |
+| VarBinary |Byte[] |
+| VarChar |String |
+| VarGraphic |String |
+| Xml |Byte[] |
 
 
 ## <a name="next-steps"></a>További lépések

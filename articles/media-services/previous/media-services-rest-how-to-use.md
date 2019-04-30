@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako;johndeu
 ms.openlocfilehash: 549554521570d1d2f27b2da2b36ca1dfde25562f
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293614"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60762514"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>A Media Services REST API áttekintése 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
@@ -55,7 +55,7 @@ A következő szempontokat kell figyelembe REST használata esetén.
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>A Media Services által támogatott szabványos HTTP-kérelem fejlécek
 Minden hívás választja ki a Media Services szolgáltatásba szerepelnie kell a kérés szükséges fejlécek egy halmaza, és is választható fejlécek készletét érdemes felvenni. Az alábbi táblázat felsorolja a szükséges fejlécek:
 
-| Fejléc | Typo | Érték |
+| Fejléc | Típus | Érték |
 | --- | --- | --- |
 | Engedélyezés |Tulajdonosi |Tulajdonosi az egyetlen elfogadott engedélyezési mechanizmusa. Az értéket is tartalmaznia kell az Azure Active Directory által biztosított jogkivonat. |
 | x-ms-version |Decimal |2.17 (vagy a legújabb verzió)|
@@ -69,7 +69,7 @@ Minden hívás választja ki a Media Services szolgáltatásba szerepelnie kell 
 
 A következő olyan opcionális fejlécek:
 
-| Fejléc | Typo | Érték |
+| Fejléc | Típus | Érték |
 | --- | --- | --- |
 | Dátum |RFC 1123 dátuma |A kérelem időbélyege |
 | Elfogadás |Tartalom típusa |A kért tartalom típusa a válaszhoz, például a következő:<p> -application/json;odata=verbose<p> - application/atom+xml<p> Válaszok különböző tartalom típusa, például egy blob fetch előfordulhat, ahol a sikeres válasz tartalmazza a blob adatfolyamot, a hasznos. |
@@ -83,7 +83,7 @@ A következő olyan opcionális fejlécek:
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>A Media Services által támogatott szabványos HTTP-válaszfejléceket
 A következő olyan készlete, az erőforrás is kér, és a végrehajtani kívánt művelet attól függően, hogy visszaadott fejlécek.
 
-| Fejléc | Typo | Érték |
+| Fejléc | Típus | Érték |
 | --- | --- | --- |
 | kérelem azonosítója |String |Az aktuális művelethez létrehozott szolgáltatás egyedi azonosítója. |
 | client-request-id |String |Ha az eredeti kérés esetén a hívó által megadott azonosítója. |

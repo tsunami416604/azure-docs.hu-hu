@@ -17,13 +17,13 @@ ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 101710b5a57faa37be77ff4b059fa0d494f4e617
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878064"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60835651"
 ---
-# <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business egy on Azure Virtual machines szolgáltatásban
+# <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One az Azure Virtual Machinesban
 Ez a dokumentum nyújt útmutatást, üzembe helyezéséhez SAP Business One az Azure Virtual machines szolgáltatásban. A dokumentáció nem helyettesíti a üzleti SAP-dokumentáció áll. A dokumentáció az Azure-infrastruktúra egy üzleti alkalmazások futtatásához az alapvető tervezési és telepítési irányelveket kell kiterjednie.
 
 Üzleti egy két különböző adatbázisokat támogatja:

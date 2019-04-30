@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
 ms.openlocfilehash: e284a0492774e02cab79db6d9006c1718a7fcfc9
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58623183"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60809239"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Hogyan méretezése a SignalR Service több példányra?
 A legújabb SignalR Service SDK támogatja a több végpontot SignalR Service-példányokhoz. Ez a funkció segítségével méretezheti az egyidejű kapcsolatok, vagy a régiók közötti üzenetkezelés használata.

@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 04/15/2019
 ms.author: tomfitz
 ms.openlocfilehash: 2ccdd337d5c01a0ac0253fe1d1e131fa4e6d51a7
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608912"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60782990"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok logikai függvények
 
@@ -190,7 +190,7 @@ Az előző példából kimenete:
 | ---- | ---- | ----- |
 | yesOutput | String | igen |
 | noOutput | String | nem |
-| objectOutput | Objektum | {"teszt": "érték1"} |
+| objectOutput | Object | {"teszt": "érték1"} |
 
 A következő [példasablonja](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) kifejezésekkel, amelyek csak feltételesen érvényes ez a funkció használatát ismerteti.
 

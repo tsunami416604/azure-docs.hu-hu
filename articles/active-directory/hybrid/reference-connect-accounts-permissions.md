@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d145407331ed652f21510483b51a4617bf28e2fa
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879118"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62096170"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Fiókok és engedélyek
 
@@ -73,7 +73,7 @@ Ezek a hitelesítő adatok csak a telepítés során használt, és nem használ
 ### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>Az AD DS-összekötő fiókhoz tartozó gyorsbeállítások szükséges engedélyek
 Az AD DS-összekötő fiók jön létre olvasását és írását a Windows Server AD és a gyorsbeállítások létrehozásakor a következő engedélyekkel rendelkezik:
 
-| Engedély | Használt |
+| Engedély | Alkalmazási cél |
 | --- | --- |
 | <li>Címtárváltozások replikálása</li><li>Replikálás könyvtár összes változik |Jelszókivonat-szinkronizálás |
 | Olvasási/írási felhasználó az összes tulajdonság |Importálás és az Exchange hibrid |
@@ -146,7 +146,7 @@ Amikor frissít egy verziójáról az Azure AD Connect új kiadása, a következ
 >Build 1.1.484 verziótól kezdődően az Azure AD Connect bevezetett egy regressziós hiba, amely az SQL-adatbázis frissítéséhez rendszergazdai engedélyekkel kell rendelkeznie.  Build 1.1.647 javítja ezt a hibát.  Ha frissíti a buildre, szüksége lesz a sysadmin (rendszergazda) engedélyekkel.  Dbo engedélyek nem elegendőek.  Azure AD Connect frissítése a rendszergazdai engedélyek nélkül kísérli meg, ha a frissítés sikertelen lesz, és az Azure AD Connect már nem működik megfelelően, ezt követően.  A Microsoft tisztában, és dolgozik azon, hogy a probléma megoldása.
 
 
-| Rendszerbiztonsági tag | Szükséges engedélyek | Használt |
+| Rendszerbiztonsági tag | Szükséges engedélyek | Alkalmazási cél |
 | --- | --- | --- |
 | A felhasználó a telepítési varázsló futtatása |A helyi kiszolgáló rendszergazdája |Bináris fájlok frissítése. |
 | A felhasználó a telepítési varázsló futtatása |ADSyncAdmins tagja |Szinkronizálási szabályok és egyéb konfigurációs módosítások. |

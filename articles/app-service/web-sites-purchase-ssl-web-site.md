@@ -16,11 +16,11 @@ ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 3e113639dbe4220b943d49dc610ee22b6416e12a
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216577"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60832774"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Vásárlása és konfigurálása az Azure App Service SSL-tanúsítvány
 
@@ -72,7 +72,7 @@ Az a **Key Vault-állapot** kattintson **Key Vault-tárház** hozzon létre egy 
 |-|-|
 | Name (Név) | Egy egyedi nevet, amely alfanumerikus karaktereket és kötőjeleket tartalmazhat. |
 | Erőforráscsoport | Egy javaslat, válassza ki ugyanazt az erőforráscsoportot, az App Service-tanúsítvány. |
-| Hely | Válassza ki ugyanazt a helyet, az App Service-alkalmazást. |
+| Location egység | Válassza ki ugyanazt a helyet, az App Service-alkalmazást. |
 | Tarifacsomag | További információ: [Azure Key Vault díjszabását](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Hozzáférési szabályzatok| Határozza meg az alkalmazások és az engedélyezett hozzáférést a tároló-erőforrások. Beállíthatja, később ismertető [több alkalmazások hozzáférést key vault](../key-vault/key-vault-group-permissions-for-apps.md). |
 | Virtuális hálózati hozzáférés | Tároló hozzáférés korlátozása az egyes Azure virtuális hálózatokhoz. Beállíthatja, később ismertető [konfigurálása az Azure Key Vault tűzfalak és virtuális hálózatok](../key-vault/key-vault-network-security.md) |

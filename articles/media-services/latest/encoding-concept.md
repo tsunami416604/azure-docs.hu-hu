@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 532701eb2c5e92e5443f69c464b561d6fa242598
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
-ms.translationtype: MT
+ms.openlocfilehash: ed798995807f4037f0127b08e25e04bdd0340d42
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617631"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62103600"
 ---
 # <a name="encoding-with-media-services"></a>Kódolás a Media Services használatával
 
@@ -90,6 +90,10 @@ A Media Services teljes körűen támogatja az adott kódolási igények és kö
 ## <a name="scaling-encoding-in-v3"></a>V3 a kódolás méretezése
 
 Méretezhető médiafeldolgozás, lásd: [CLI-vel méretezési](media-reserved-units-cli-how-to.md).
+
+## <a name="provide-feedback"></a>Visszajelzés küldése
+
+Tekintse meg a [Azure Media Services-Közösség](media-services-community.md) kérdések, küldje el visszajelzését, és tudnivalók a Media Services-frissítések különböző módon olvashatja.
 
 ## <a name="next-steps"></a>További lépések
 

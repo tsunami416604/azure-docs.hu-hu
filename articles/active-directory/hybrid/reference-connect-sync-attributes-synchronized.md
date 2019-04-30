@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fb7010ec16592fea2f530329916e00056ca03a70
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176390"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62096123"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Az Azure AD Connect szinkronizálása: Az Azure Active Directoryval szinkronizált attribútumok
 Ez a témakör az Azure AD Connect sync szinkronizált attribútumok listája.  
@@ -64,7 +64,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | Vállalati |X |X | | |
 | Országhívószám |X |X | | |
 | Szervezeti egység |X |X | | |
-| leírás |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -186,7 +186,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | Vállalati |X |X | | |
 | Országhívószám |X |X | | |
 | Szervezeti egység |X |X | | |
-| leírás |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -266,7 +266,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | CO |X |X | | |
 | Vállalati |X |X | | |
 | Szervezeti egység |X |X | | |
-| leírás |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X |X | |
 | givenName |X |X | | |
@@ -328,7 +328,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | accountEnabled |X | | |Meghatározza, hogy a fiók engedélyezve van. |
 | c |X |X | | |
 | CN |X | |X | |
-| leírás |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | levelezés |X |X |X | |
 | mailnickname |X |X |X | |
@@ -350,7 +350,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | CO |X |X | | |
 | Vállalati |X |X | | |
 | Országhívószám |X |X | | |
-| leírás |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |

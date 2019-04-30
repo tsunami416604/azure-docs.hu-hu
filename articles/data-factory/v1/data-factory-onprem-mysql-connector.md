@@ -14,14 +14,14 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: de1263d68e96a23bd6b5eca4297e74b56ba22e40
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021638"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60823946"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Adatok áthelyezése a MySQL Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](data-factory-onprem-mysql-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-mysql.md)
 
@@ -68,13 +68,13 @@ Az alábbi táblázatban a JSON-elemeket társított MySQL szolgáltatás leír�
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| type |A type tulajdonságot kell beállítani: **A OnPremisesMySql** |Igen |
+| type |A type tulajdonságot kell beállítani: **OnPremisesMySql** |Igen |
 | kiszolgáló |A MySQL-kiszolgáló neve. |Igen |
 | adatbázis |A MySQL-adatbázis neve. |Igen |
 | séma |A séma az adatbázis neve. |Nem |
 | authenticationType |A MySQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: `Basic`. |Igen |
 | felhasználónév |Adja meg a felhasználónevet, a MySQL-adatbázishoz való csatlakozáshoz. |Igen |
-| jelszó |Adja meg a megadott felhasználói fiókhoz tartozó jelszót. |Igen |
+| password |Adja meg a megadott felhasználói fiókhoz tartozó jelszót. |Igen |
 | átjáró neve |Az átjáró által a Data Factory szolgáltatás a helyi MySQL-adatbázishoz való kapcsolódáshoz használandó neve. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
@@ -93,7 +93,7 @@ Mivel a tulajdonságok érhetők el a **typeProperties** a tevékenység szakasz
 
 Ha a másolási tevékenység forrása típusa **RelationalSource** (amely tartalmazza a MySQL), a következő tulajdonságok typeProperties szakasz érhető el:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
 | lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterláncot. Például: válassza ki * from tábla. |Nem (Ha **tableName** , **adatkészlet** van megadva) |
 
@@ -182,7 +182,7 @@ Beállítás az "external": "true" tájékoztatja a Data Factory szolgáltatásb
 
 **Azure blobkimeneti adatkészlet:**
 
-Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
+Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
 
 ```JSON
     {
@@ -301,44 +301,44 @@ Ha helyez át adatokat a MySQL-hez, a következő hozzárendeléseket a rendszer
 
 | MySQL-adatbázis típusa | .NET-keretrendszer típusa |
 | --- | --- |
-| aláíratlan bigint |Tizedes tört |
+| aláíratlan bigint |Decimal |
 | bigint |Int64 |
-| bit |Tizedes tört |
-| blob |Byte] |
-| Logikai |Logikai |
-| CHAR |Karakterlánc |
-| dátum |Dátum és idő |
-| dátum/idő |Dátum és idő |
-| tizedes tört |Tizedes tört |
-| a kétszeres pontosság |Dupla |
-| double |Dupla |
-| Enum |Karakterlánc |
-| lebegőpontos |Önálló |
+| bit |Decimal |
+| blob |Byte[] |
+| logikai |Boolean |
+| char |String |
+| date |DateTime |
+| datetime |DateTime |
+| tizedes tört |Decimal |
+| a kétszeres pontosság |Double |
+| double |Double |
+| Enum |String |
+| lebegőpontos |Single |
 | aláíratlan int |Int64 |
 | int |Int32 |
 | egész szám aláíratlan |Int64 |
 | egész szám |Int32 |
-| hosszú varbinary |Byte] |
-| hosszú varchar |Karakterlánc |
-| longblob |Byte] |
-| LONGTEXT |Karakterlánc |
-| mediumblob |Byte] |
+| hosszú varbinary |Byte[] |
+| hosszú varchar |String |
+| longblob |Byte[] |
+| LONGTEXT |String |
+| mediumblob |Byte[] |
 | aláíratlan mediumint |Int64 |
 | mediumint |Int32 |
-| mediumtext |Karakterlánc |
-| numerikus |Tizedes tört |
-| valódi |Dupla |
-| halmaz |Karakterlánc |
+| mediumtext |String |
+| numeric |Decimal |
+| real |Double |
+| halmaz |String |
 | aláíratlan smallint |Int32 |
 | smallint |Int16 |
-| szöveg |Karakterlánc |
-| time |Időtartam |
-| időbélyeg |Dátum és idő |
-| tinyblob |Byte] |
-| aláíratlan tinyint |Int16 |
+| szöveg |String |
+| time |TimeSpan |
+| időbélyeg |DateTime |
+| tinyblob |Byte[] |
+| tinyint unsigned |Int16 |
 | tinyint |Int16 |
-| tinytext |Karakterlánc |
-| varchar |Karakterlánc |
+| tinytext |String |
+| varchar |String |
 | év |Int |
 
 ## <a name="map-source-to-sink-columns"></a>A fogadó-oszlopok térkép forrása

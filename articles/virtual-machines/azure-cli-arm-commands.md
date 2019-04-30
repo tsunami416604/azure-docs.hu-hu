@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
 ms.openlocfilehash: 8b76e1a168d39d2f39098754f43bae73c21c2049
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155814"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60799820"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Resource Manager módban az Azure CLI-parancsok
 A cikk ismerteti a szintaxist és a beállítások létrehozása és kezelése az Azure-erőforrások Azure Resource Manager-alapú üzemi modellben használata általában az Azure parancssori felület (CLI) parancsok. Ezeket a parancsokat a parancssori felület futtatásával Resource Manager (arm) módban érhető el. Ez a nem teljes, és a parancssori felület verziójának valószínűleg eltérő parancsok és paraméterek. Azure-erőforrások és -erőforráscsoportok általános áttekintéséért lásd: [Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).  
@@ -48,7 +48,7 @@ A következő paranccsal engedélyezze az Azure CLI Resource Manager módban par
 > 
 > 
 
-## <a name="azure-account-manage-your-account-information"></a>Azure-fiók: a fiók adatainak kezelése
+## <a name="azure-account-manage-your-account-information"></a>az Azure-fiók: A fiókadatok kezelése
 Az Azure-előfizetése adatait használják az eszközt a fiókhoz való csatlakozáshoz.
 
 **Az importált előfizetések listája**
@@ -75,7 +75,7 @@ Az Azure-előfizetése adatait használják az eszközt a fiókhoz való csatlak
     account env set [options] [environment]
     account env delete [options] [environment]
 
-## <a name="azure-ad-commands-to-display-active-directory-objects"></a>Azure ad-ben: az Active Directory-objektumok megjelenítéséhez parancsok
+## <a name="azure-ad-commands-to-display-active-directory-objects"></a>Azure ad-ben: Az Active Directory-objektumok megjelenítéséhez parancsok
 **Active directory-alkalmazások megjelenítésére szolgáló parancsok**
 
     ad app create [options]
@@ -150,7 +150,7 @@ Az Azure-előfizetése adatait használják az eszközt a fiókhoz való csatlak
 
     feature register [options] <providerName> <featureName>
 
-## <a name="azure-group-commands-to-manage-your-resource-groups"></a>az Azure-csoportot: az erőforráscsoportok kezelésére szolgáló parancsokat
+## <a name="azure-group-commands-to-manage-your-resource-groups"></a>Azure-csoportok: Az erőforráscsoportok kezelését végző parancsokról
 **Létrehoz egy erőforráscsoportot**
 
     group create [options] <name> <location>
@@ -189,7 +189,7 @@ Az Azure-előfizetése adatait használják az eszközt a fiókhoz való csatlak
     group template download [options] [name] [file]
     group template validate [options] <resource-group>
 
-## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>az Azure hdinsight: a HDInsight-fürtök kezelését végző parancsokról
+## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>azure hdinsight: A HDInsight-fürtök kezelését végző parancsokról
 **Parancsok létrehozásához vagy egy fürt konfigurációs fájl hozzáadása**
 
     hdinsight config create [options] <configFilePath> <overwrite>
@@ -205,7 +205,7 @@ Példa: Hozzon létre egy fürtöt hoz létre futtatandó szkriptműveletet tart
 
     hdinsight cluster create [options] <clusterName>
 
-Példa: A Storm létrehozása Linux-fürtön
+Példa: Hozzon létre egy Storm a Linux-fürt
 
     azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Storm --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 myNewCluster01
 
@@ -213,7 +213,7 @@ Példa: A Storm létrehozása Linux-fürtön
     + Submitting the request to create cluster...
     info:    hdinsight cluster create command OK
 
-Példa: Egy parancsfájlművelet-fürt létrehozása
+Példa: A parancsfájlművelet-fürt létrehozása
 
     azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Hadoop --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 –configurationPath "C:\myFiles\configFile.config" myNewCluster01
 
@@ -307,17 +307,17 @@ A paraméterbeállításokkal:
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>Azure insights: Insights (események, riasztási szabályok, az automatikus méretezési beállítások, metrikák) monitoring szolgáltatással kapcsolatos parancsok
+## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>azure insights: Insights (események, riasztási szabályok, az automatikus méretezési beállítások, metrikák) monitoring szolgáltatással kapcsolatos parancsok
 **Az előfizetés, a korrelációs azonosító, egy erőforráscsoport, erőforrás vagy erőforrás-szolgáltató műveletnaplók beolvasása**
 
     insights logs list [options]
 
-## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>az Azure-helyen: parancsokat minden erőforrástípus esetén az elérhető helyek beolvasása
+## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>Azure-beli hely: Minden erőforrástípus esetén az elérhető helyek get-parancsok
 **Az elérhető helyek listája**
 
     location list [options]
 
-## <a name="azure-network-commands-to-manage-network-resources"></a>az Azure network: parancsokat a hálózati erőforrások kezelése
+## <a name="azure-network-commands-to-manage-network-resources"></a>azure network: Hálózati erőforrások kezelését végző parancsokról
 **Virtuális hálózatok kezelését végző parancsokról**
 
     network vnet create [options] <resource-group> <name> <location>
@@ -1504,7 +1504,7 @@ A paraméterbeállításokkal:
 
     network gateway list [options] <resource-group>
 
-## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>az Azure szolgáltatói: erőforrás-szolgáltató regisztrációk kezelését végző parancsokról
+## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>az Azure-szolgáltató: Erőforrás-szolgáltató regisztrációk kezelését végző parancsokról
 **Lista jelenleg regisztrált szolgáltatók a Resource Managerben**
 
     provider list [options]
@@ -1521,7 +1521,7 @@ A paraméterbeállításokkal:
 
     provider unregister [options] <namespace>
 
-## <a name="azure-resource-commands-to-manage-your-resources"></a>Azure-erőforrás: parancsokat az erőforrások kezeléséhez
+## <a name="azure-resource-commands-to-manage-your-resources"></a>Azure-erőforrás: Parancsok az erőforrások kezeléséhez
 **Létrehoz egy erőforrást egy erőforráscsoportban**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>
@@ -1542,7 +1542,7 @@ A paraméterbeállításokkal:
 
     resource delete [options] <resource-group> <name> <resource-type> <api-version>
 
-## <a name="azure-role-commands-to-manage-your-azure-roles"></a>Azure szerepkör: az Azure-szerepkörök kezelésére szolgáló parancsokat
+## <a name="azure-role-commands-to-manage-your-azure-roles"></a>Azure szerepkör: Az Azure-szerepkörök kezelésére szolgáló parancsokat
 **Az összes rendelkezésre álló szerepkör-definíciók beolvasása**
 
     role list [options]
@@ -1557,7 +1557,7 @@ A paraméterbeállításokkal:
     role assignment list [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
     role assignment delete [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
 
-## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>az Azure storage: a tárolási objektum kezelését végző parancsokról
+## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>az Azure storage: A tárolási objektum kezelését végző parancsokról
 **A tárfiókok kezelését végző parancsokról**
 
     storage account list [options]
@@ -1680,7 +1680,7 @@ A paraméterbeállításokkal:
     storage table policy set [options] [table] [name]
     storage table policy delete [options] [table] [name]
 
-## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>a címke az Azure: a resource manager-címke kezelését végző parancsokról
+## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>az Azure címkét: A resource manager-címke kezelését végző parancsokról
 **Egy címke hozzáadása**
 
     tag create [options] <name> <value>
@@ -1697,7 +1697,7 @@ A paraméterbeállításokkal:
 
     tag show [options] [name]
 
-## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>az Azure virtuális gép: az Azure virtuális gépek kezelése parancsokkal
+## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>Azure virtuális gépen: Az Azure virtuális gépek kezelése parancsokkal
 **Virtuális gép létrehozása**
 
     vm create [options] <resource-group> <name> <location> <os-type>

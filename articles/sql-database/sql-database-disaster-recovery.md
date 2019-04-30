@@ -13,11 +13,11 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 1e1bc92c684bf6ddbb7dc4ff0f882ad61ddeb27e
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540482"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61075812"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Visszaállítása egy Azure SQL Database vagy feladatátvétel a másodlagos kiszolgálóra
 

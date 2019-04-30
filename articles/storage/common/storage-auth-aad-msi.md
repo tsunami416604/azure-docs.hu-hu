@@ -9,11 +9,11 @@ ms.date: 04/21/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 9209161f9c9e34320b1388e0e1edbd5069e73727
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60148849"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61438290"
 ---
 # <a name="authenticate-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Blobok és üzenetsorok az Azure Active Directory és a felügyelt identitásokból való hozzáférés hitelesítése az Azure-erőforrások
 

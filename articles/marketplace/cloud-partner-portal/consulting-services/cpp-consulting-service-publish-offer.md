@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
 ms.openlocfilehash: dae86dcdd3ada10164be0120b49a8f5f7b642ccd
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231631"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60865425"
 ---
 # <a name="publish-a-consulting-service-offer"></a>A tanácsadási szolgáltatási ajánlat közzététele
 
@@ -35,7 +35,7 @@ A megfelelő URL-cím alapján úgy dönt, a CRM-rendszerrel, válassza ki a ré
 
 Válassza ki [Azure Table](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) Ha rendelkezik ilyennel, a következő CRM rendszereket:  
 * [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo)
-* [A Microsoft Dynamics CRM](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)
+* [Microsoft Dynamics CRM](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)
 * [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce)
 
 ## <a name="next-steps"></a>További lépések

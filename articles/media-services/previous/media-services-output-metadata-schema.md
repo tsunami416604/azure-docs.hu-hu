@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 42227095c69924cd2922673d020b349aa29f2daa
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259516"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61129746"
 ---
 # <a name="output-metadata"></a>Kimeneti metaadatok
 ## <a name="overview"></a>Áttekintés
@@ -47,7 +47,7 @@ XML-példát talál [XML-példa](#xml).
 ### <a name="attributes"></a>Attribútumok
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **Name (Név)**<br/><br/> Szükséges |**xs:string** |A média az eszközintelligencia-fájl neve. |
+| **Name (Név)**<br/><br/> Kötelező |**xs:string** |A média az eszközintelligencia-fájl neve. |
 | **Méret**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:Long** |Mérete bájtban adategységfájlon. |
 | **Időtartam**<br/><br/> Szükséges |**DURATION típusú** |Tartalom play vissza időtartama. |
 
@@ -96,18 +96,18 @@ XML-példát talál [XML-példa](#xml).
 ### <a name="attributes"></a>Attribútumok
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **Azonosító**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |A videó követése nulla alapú indexét. **Megjegyzés:**  Ez **azonosító** nem feltétlenül a TrackID a MP4-fájlokat. |
-| **FourCC**<br/><br/> Szükséges |**xs:string** |Videó kodek FourCC kódot. |
+| **Azonosító**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:int** |A videó követése nulla alapú indexét. **Megjegyzés:**  Ez **azonosító** nem feltétlenül a TrackID a MP4-fájlokat. |
+| **FourCC**<br/><br/> Kötelező |**xs:string** |Videó kodek FourCC kódot. |
 | **Profil** |**xs:string** |H264 profil (H264 kodek csak érvényes). |
 | **Szint** |**xs:string** |H264 szintje (H264 kodek csak érvényes). |
-| **Szélesség**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |A kódolt videó szélességét (képpontban). |
+| **Szélesség**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:int** |A kódolt videó szélességét (képpontban). |
 | **Magasság**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |A kódolt videó magasságát (képpontban). |
 | **DisplayAspectRatioNumerator**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:Double** |Oldalarány számlálójának képmegjelenítő. |
 | **DisplayAspectRatioDenominator**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:Double** |Oldalarány nevező képmegjelenítő. |
-| **Képkockasebesség**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:decimal** |Mért videó képkockasebessége .3f formátumban. |
-| **TargetFramerate**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:decimal** |Az előre beállított céloldali videó képkockasebessége .3f formátumban. |
-| **Átviteli sebesség**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |Videó átlagos átviteli sebessége a kilobit / másodperc, a AssetFile a kiszámított módon. Csak a elemi stream hasznos számolja, és nem tartalmazza a csomagolási terhelését. |
-| **TargetBitrate**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |A videó nyomon követése, az átlagos átviteli TARGET kért keresztül a kódolási beállításkészletet, a kilobit / másodperc. |
+| **Képkockasebesség**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:decimal** |Mért videó képkockasebessége .3f formátumban. |
+| **TargetFramerate**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:decimal** |Az előre beállított céloldali videó képkockasebessége .3f formátumban. |
+| **Átviteli sebesség**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:int** |Videó átlagos átviteli sebessége a kilobit / másodperc, a AssetFile a kiszámított módon. Csak a elemi stream hasznos számolja, és nem tartalmazza a csomagolási terhelését. |
+| **TargetBitrate**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:int** |A videó nyomon követése, az átlagos átviteli TARGET kért keresztül a kódolási beállításkészletet, a kilobit / másodperc. |
 | **MaxGOPBitrate**<br/><br/> minInclusive ="0" |**xs:int** |Maximális Képcsoporttal átlagos bitsebességű a a videó nyomon követése a kilobit / másodperc. |
 
 ## <a name="AudioTracks"></a> AudioTracks elem
@@ -128,13 +128,13 @@ XML-példát talál [XML-példa](#xml).
 ### <a name="attributes"></a>Attribútumok
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **Azonosító**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |Ez hangsávra nulla alapú indexét. **Megjegyzés:**  Ez nem feltétlenül a TrackID a MP4-fájlokat. |
+| **Azonosító**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:int** |Ez hangsávra nulla alapú indexét. **Megjegyzés:**  Ez nem feltétlenül a TrackID a MP4-fájlokat. |
 | **Kodek** |**xs:string** |Hangsávra kodek karakterlánc. |
 | **EncoderVersion** |**xs:string** |Nem kötelező kódoló verziószám-karakterlánc, EAC3 szükséges. |
 | **csatornák**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |Hang csatornák száma. |
-| **Érvénytelen a SamplingRate**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |Hang mintavételi ráta samples/mp vagy Hz. |
+| **Érvénytelen a SamplingRate**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:int** |Hang mintavételi ráta samples/mp vagy Hz. |
 | **Átviteli sebesség**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |Bit / másodperc, a AssetFile a kiszámított hang átlagos átviteli sebessége. Csak a elemi stream hasznos számolja, és nem tartalmazza a csomagolási terhelését. |
-| **Bitspersample obsahuje neplatnou Hodnotu**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |Bit / minta wFormatTag formátumban írja be. |
+| **Bitspersample obsahuje neplatnou Hodnotu**<br/><br/> minInclusive ="0"<br/><br/> Kötelező |**xs:int** |Bit / minta wFormatTag formátumban írja be. |
 
 ### <a name="child-elements"></a>Gyermekelemek
 | Name (Név) | Leírás |
@@ -152,12 +152,12 @@ XML-példát talál [XML-példa](#xml).
 | **DPLMVersionInformation** |**xs:string** |**Dolby** szakmai hangerő mérési development kit verzió. |
 | **DialogNormalization**<br/><br/> minInclusive "-31" maxInclusive = "1"<br/><br/> Szükséges |**xs:int** |Kötelező, ha a LoudnessMetering van beállítva, DPLM keresztül létrehozott DialogNormalization |
 | **IntegratedLoudness**<br/><br/> minInclusive = "-70" maxInclusive "10" =<br/><br/> Szükséges |**xs:float** |Integrált hangerő |
-| **IntegratedLoudnessUnit**<br/><br/> Szükséges |**xs:string** |Integrált hangerő egység. |
-| **IntegratedLoudnessGatingMethod**<br/><br/> Szükséges |**xs:string** |Korhatáralapú hozzáférés-korlátozás azonosítója |
+| **IntegratedLoudnessUnit**<br/><br/> Kötelező |**xs:string** |Integrált hangerő egység. |
+| **IntegratedLoudnessGatingMethod**<br/><br/> Kötelező |**xs:string** |Korhatáralapú hozzáférés-korlátozás azonosítója |
 | **IntegratedLoudnessSpeechPercentage**<br/><br/> minInclusive ="0" maxInclusive="100" |**xs:float** |A program százalékos keresztül beszédtartalomból. |
 | **SamplePeak**<br/><br/> Szükséges |**xs:float** |Csúcsidőszak abszolút Mintaérték, alaphelyzetbe állítása óta, vagy utolsó óta nincs bejelölve, csatornánként.  Egységek dBFS. |
-| **SamplePeakUnit**<br/><br/> fixed="dBFS"<br/><br/> Szükséges |**xs:anySimpleType** |Minta csúcs egység. |
-| **TruePeak**<br/><br/> Szükséges |**xs:float** |Maximális valós Csúcsérték, megfelelően ITU-R BS.1770-2, alaphelyzetbe állítása óta, vagy utolsó óta nincs bejelölve, csatornánként. Egységek dBTP. |
+| **SamplePeakUnit**<br/><br/> fixed="dBFS"<br/><br/> Kötelező |**xs:anySimpleType** |Minta csúcs egység. |
+| **TruePeak**<br/><br/> Kötelező |**xs:float** |Maximális valós Csúcsérték, megfelelően ITU-R BS.1770-2, alaphelyzetbe állítása óta, vagy utolsó óta nincs bejelölve, csatornánként. Egységek dBTP. |
 | **TruePeakUnit**<br/><br/> fixed="dBTP"<br/><br/> Szükséges |**xs:anySimpleType** |Igaz csúcs egység. |
 
 ## <a name="schema-code"></a>Séma kódjának

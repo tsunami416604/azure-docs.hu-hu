@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 04cac492fd044471a646444afc21bc70f92537d2
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656851"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60849178"
 ---
 # <a name="new-offer-menu"></a>Új ajánlat menü
 
@@ -34,7 +34,7 @@ A **új ajánlat** menü lehetővé teszi, hogy a partnerek által támogatott t
 | ![Dynamics 365 Customer Engagement menüelem](./media/new-offer-menu5.png) | [Dynamics 365 for Customer Engagement ajánlat](./../../cloud-partner-portal-orig/cpp-customer-engagement-offer.md) |
 | ![Dynamics 365 for Operations menüpont](./media/new-offer-menu6.png) | [Dynamics 365 for Operations ajánlat](./../../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) |
 | ![IoT Edge-modulok menüpont](./media/new-offer-menu7.png) | [IoT Edge-modul ajánlat](./../iot-edge-module/cpp-offer-process-parts.md) |
-| ![A Power BI alkalmazás menüpont](./media/new-offer-pbi.png)   |  [A Power BI alkalmazás ajánlat](../power-bi/cpp-power-bi-offer.md)  |
+| ![A Power BI alkalmazás menüpont](./media/new-offer-pbi.png)   |  [Power BI-alkalmazásajánlat](../power-bi/cpp-power-bi-offer.md)  |
 | ![ Saas-alapú alkalmazások menüpont](./media/new-offer-menu8.png) | [Saas-alapú alkalmazásra vonatkozó ajánlat](../saas-app/cpp-saas-offer.md) |
 | ![ Virtuális gépek menüpont](./media/new-offer-menu9.png) | [Virtuálisgép-ajánlat](./../virtual-machine/cpp-virtual-machine-offer.md) |
 |  |  |

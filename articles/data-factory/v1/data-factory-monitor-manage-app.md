@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 5b70edd4f65538b52c70881258bc500a34b04d80
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025419"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60826564"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Folyamatok figyelése és felügyelete az Azure Data Factory a Monitoring and Management app használatával
 > [!div class="op_single_selector"]
@@ -194,7 +194,7 @@ Tevékenységablakok lehet a következő állapotok valamelyikében:
 <td>A tevékenységek ablak feldolgozása folyamatban van.</td>
 </tr>
 <tr>
-<td rowspan="4">Meghiúsult</td><td>Időtúllépés miatt megszakadt</td><td>A tevékenység-végrehajtási a tevékenység által engedélyezett hosszabb időt vett igénybe.</td>
+<td rowspan="4">Meghiúsult</td><td>TimedOut</td><td>A tevékenység-végrehajtási a tevékenység által engedélyezett hosszabb időt vett igénybe.</td>
 </tr>
 <tr>
 <td>Megszakítva</td><td>A tevékenységek ablak felhasználói művelet megszakította.</td>

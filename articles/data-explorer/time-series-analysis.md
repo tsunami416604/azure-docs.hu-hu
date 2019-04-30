@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
 ms.openlocfilehash: 8492f736e64366802b3601f9b5fc8bd1d9b6ea79
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273073"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60827441"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Az Azure Data Explorer idősoros elemzés
 
@@ -72,7 +72,7 @@ A fenti táblázatban három partíció van. Létrehozhatunk egy külön idősor
 Ebben a szakaszban azt feldolgozási funkciók jellemző sorozat kell végrehajtani.
 A time series készletét létrehozása után ADX támogatja az egyre nagyobb számban elérhető függvények feldolgozására és elemzésére azokat, amelyek megtalálhatók a [sorozat dokumentációja idő](/azure/kusto/query/machine-learning-and-tsa). Néhány reprezentatív funkciók feldolgozásához és elemzéséhez a time series bemutatunk néhányat.
 
-### <a name="filtering"></a>Szűrés
+### <a name="filtering"></a>Filtering
 
 Szűrés egy gyakori eljárás a jel feldolgozási és hasznos idősorozat-feldolgozási feladatokat (például zajos jel smooth, észlelés módosításához).
 - Nincsenek két általános szűrési funkciók:

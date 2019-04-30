@@ -11,11 +11,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seofeb2018
 ms.openlocfilehash: e95eff015340659b642dff800a03f615e22c1577
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57220570"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60871199"
 ---
 # <a name="indexing-blobs-producing-multiple-search-documents"></a>Dokumentumok keresése több előállító-blobok indexelése
 Alapértelmezés szerint egy blob indexelőjével egyetlen keresési dokumentumként kezeli a blob tartalmát. Bizonyos **parsingMode** értékeket támogatja a forgatókönyvek, ahol az egyes blob több keresési dokumentumok eredményezhet. A különböző típusú **parsingMode** , amelyek engedélyezik a rendszer-, csomagolja ki indexer, amely több, mint egy keresési dokumentum-ból:

@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
 ms.openlocfilehash: 46699fb1add42d23a11234d5cd05e4a9627a91fd
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983467"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60800044"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption for Windows (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -79,21 +79,21 @@ Az Azure Disk Encryption internetkapcsolatra van szükség az Active Directory, 
 
 | Name (Név) | Érték és példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | dátum |
-| publisher | Microsoft.Azure.Security | sztring |
-| type | AzureDiskEncryptionForWindows| sztring |
+| apiVersion | 2015-06-15 | date |
+| publisher | Microsoft.Azure.Security | string |
+| type | AzureDiskEncryptionForWindows| string |
 | typeHandlerVersion | 1.0, 1.1, 2.2 (VMSS) | int |
 | (optional) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID azonosítója | 
-| (optional) AADClientSecret | jelszó | sztring |
-| (nem kötelező) AADClientCertificate | ujjlenyomat | sztring |
-| EncryptionOperation | EnableEncryption | sztring | 
-| KeyEncryptionAlgorithm | RSA-OAEP, RSA1_5 | sztring |
-| KeyEncryptionKeyURL | url | sztring |
-| KeyVaultResourceId | erőforrás-uri | sztring |
-| KekVaultResourceId | erőforrás-uri | sztring |
-| KeyVaultURL | url | sztring |
-| SequenceVersion | UniqueIdentifier | sztring |
-| VolumeType | Az operációs rendszer, az adatok, az összes | sztring |
+| (optional) AADClientSecret | password | string |
+| (nem kötelező) AADClientCertificate | thumbprint | string |
+| EncryptionOperation | EnableEncryption | string | 
+| KeyEncryptionAlgorithm | RSA-OAEP, RSA1_5 | string |
+| KeyEncryptionKeyURL | url | string |
+| KeyVaultResourceId | erőforrás-uri | string |
+| KekVaultResourceId | erőforrás-uri | string |
+| KeyVaultURL | url | string |
+| SequenceVersion | uniqueidentifier | string |
+| VolumeType | Az operációs rendszer, az adatok, az összes | string |
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 Sablon telepítése egy példa: [ új titkosított Windows virtuális gép létrehozása katalógus-lemezkép](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image).

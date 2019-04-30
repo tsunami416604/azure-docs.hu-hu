@@ -11,11 +11,11 @@ ms.author: sgilleye
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: d38a5066304a11ff2cd53a0168e51a0d74fda555
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370346"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60751450"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Készen állnak adatai az elemzésre?
 ## <a name="video-2-data-science-for-beginners-series"></a>2. Videó: Adatelemzés kezdőknek sorozat

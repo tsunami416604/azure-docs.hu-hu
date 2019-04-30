@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 4629b52f3b2c9e351ddc2a68a40c5178a9a73950
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: d3601fd8c32c70cf828cd08fada71258ec8fa5d4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048255"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60812669"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Kvóták és korlátozások az Azure Data Lake Analytics beállítása
 
@@ -22,7 +22,7 @@ Megtudhatja, hogyan módosíthatja, vagy növelje a kvóták és -korlátok a fi
 
 ## <a name="azure-subscriptions-limits"></a>Az Azure-előfizetések korlátai
 
-**ADLA maximális száma előfizetésenként és régiónként fiókok:** 5
+**Előfizetésenként és régiónként ADLA-fiókok maximális száma:**  5
 
 Ha a hatodik ADLA-fiók létrehozásához, megjelenik egy hibaüzenet "Elérte a maximális Data Lake Analytics fiókjainak engedélyezett számát (5) régióban előfizetés neve alatt található". 
 
@@ -43,7 +43,7 @@ Ez az egyidejűleg futtatható a fiók au-k maximális száma. Ha a futó össze
 
 Ez az alapértelmezett maximális számának au-k minden egyes feladat rendelhető a fiókjában. Ezt a határt több rendelt feladatok rendszer elutasítja, kivéve, ha a küldő érintett egy számítási házirend (feladat beküldése limit), amely több au-k száma alapján történik. Ez az érték felső határértéke a fiók a foglalási egység korlátja.
 
-**Egyidejű U-SQL feladatok száma fiókonként maximális számát:** 20
+**Egyidejű U-SQL feladatok száma fiókonként maximális száma:** 20
 
 Ez a fiókjában található egyidejűleg futtatható feladatok maximális számát. Ez az érték feletti újabb feladatok várólistára kerülnek automatikusan.
 

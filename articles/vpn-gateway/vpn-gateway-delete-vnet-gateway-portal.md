@@ -3,17 +3,17 @@ title: 'Virtuális hálózati átjáró törlése: Az Azure Portalon: Erőforrá
 description: Az Azure portal használatával a Resource Manager-alapú üzemi modellben virtuális hálózati átjáró törlése.
 services: vpn-gateway
 documentationcenter: na
-author: cherylmc
+author: WenJason
 ms.service: vpn-gateway
-ms.date: 10/23/2018
-ms.author: cherylmc
-ms.topic: conceptual
+origin.date: 10/23/2018
+ms.date: 03/04/2019
+ms.author: v-jay
 ms.openlocfilehash: 387b4e982772f22453876e1ea8b9e7c4039601c4
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790577"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60845689"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>A portál használatával virtuális hálózati átjáró törlése
 
@@ -63,3 +63,5 @@ Ha csak át szeretné újrakezdeni, amelyek nem azok tartja az erőforrásokat a
 1. A **összes erőforrás**, keresse meg az erőforráscsoportot, és kattintson a panel megnyitásához.
 2. Kattintson a **Törlés** gombra. A Delete panelen megtekintheti az érintett erőforrások. Győződjön meg arról, hogy szeretné-e törölni az összes ezeket az erőforrásokat. Ha nem, kövesse a lépéseket törlése a VPN-átjáró Ez a cikk elején.
 3. A folytatáshoz adja meg a az erőforráscsoportot törölje, majd kattintson a kívánt **törlése**.
+
+<!--Update_Description: wording update-->

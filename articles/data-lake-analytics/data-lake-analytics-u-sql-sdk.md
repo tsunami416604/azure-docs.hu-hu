@@ -9,11 +9,11 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
 ms.openlocfilehash: 14908225e78b79cb748e712ae23643ddde4a4242
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089964"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60813476"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Futtatása és tesztelése a U-SQL az Azure Data Lake U-SQL SDK-val
 
@@ -332,7 +332,7 @@ LocalRunHelper.exe az alkalmazásprogramozási felületek biztosít a U-SQL hely
 
 nyilvános LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 
-|Paraméter|Typo|Leírás|
+|Paraméter|Típus|Leírás|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|kimeneti üzenetek esetében be null értékre, a konzol használata|
 
@@ -340,26 +340,26 @@ nyilvános LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 
 |Tulajdonság|Típus|Leírás|
 |--------|----|-----------|
-|AlgebraPath|sztring|A fájl elérési útját algebra (algebra fájl egyike a fordítás eredménye)|
-|CodeBehindReferences|sztring|Ha a parancsfájl mögött hivatkozások további kódot tartalmaz, adja meg az elérési utak elválasztva ';'|
-|CppSdkDir|sztring|CppSDK directory|
-|CurrentDir|sztring|Aktuális címtár|
-|DataRoot|sztring|Adatok elérési útjának gyökeréhez|
-|DebuggerMailPath|sztring|A hibakereső mailslot elérési útja|
+|AlgebraPath|string|A fájl elérési útját algebra (algebra fájl egyike a fordítás eredménye)|
+|CodeBehindReferences|string|Ha a parancsfájl mögött hivatkozások további kódot tartalmaz, adja meg az elérési utak elválasztva ';'|
+|CppSdkDir|string|CppSDK directory|
+|CurrentDir|string|Aktuális címtár|
+|DataRoot|string|Adatok elérési útjának gyökeréhez|
+|DebuggerMailPath|string|A hibakereső mailslot elérési útja|
 |GenerateUdoRedirect|logikai|Szeretnénk szerelvénybetöltési átirányítás felülbírálás konfiguráció létrehozása|
 |HasCodeBehind|logikai|Ha a parancsfájl mögötti kódban|
-|InputDir|sztring|Bemeneti adataihoz tartozó könyvtár|
-|MessagePath|sztring|Üzenet memóriakép-fájl elérési útja|
-|OutputDir|sztring|A kimeneti adatokat könyvtár|
+|InputDir|string|Bemeneti adataihoz tartozó könyvtár|
+|MessagePath|string|Üzenet memóriakép-fájl elérési útja|
+|OutputDir|string|A kimeneti adatokat könyvtár|
 |Párhuzamosság|int|Futtassa a algebra párhuzamosságot|
 |ParentPid|int|PID azonosítója, amelyen a szolgáltatás a kilépéshez figyeli a szülő állítsa 0-ra, vagy negatív figyelmen kívül hagyása|
-|ResultPath|sztring|Eredmény memóriakép-fájl elérési útja|
-|RuntimeDir|sztring|Futásidejű könyvtár|
-|ScriptPath|sztring|Hol találhatók a parancsprogram|
+|ResultPath|string|Eredmény memóriakép-fájl elérési útja|
+|RuntimeDir|string|Futásidejű könyvtár|
+|ScriptPath|string|Hol találhatók a parancsprogram|
 |Sekély|logikai|Fordítási sekély, vagy sem|
-|TempDir|sztring|Átmeneti könyvtár|
-|UseDataBase|sztring|Adja meg az ideiglenes szerelvényregisztráló, alapértelmezés szerint fő háttérkód használni kívánt adatbázis|
-|WorkDir|sztring|Előnyben részesített munkakönyvtár|
+|TempDir|string|Átmeneti könyvtár|
+|UseDataBase|string|Adja meg az ideiglenes szerelvényregisztráló, alapértelmezés szerint fő háttérkód használni kívánt adatbázis|
+|WorkDir|string|Előnyben részesített munkakönyvtár|
 
 
 **Metódus**

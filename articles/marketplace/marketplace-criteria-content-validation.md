@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
 ms.openlocfilehash: e72b115420e49a50f18ae9a27c6243394427ea4a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000402"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61093199"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Az Azure Marketplace piactéren irányelvek
 
@@ -95,7 +95,7 @@ Minden ajánlat meg kell felelnie a [ajánlati követelményeinek](https://docs.
 | 7 | Adatvédelmi szabályzat és a használati feltételek érhető el  |  Feltételes házirendek vagy nem szükséges feltételek  | | 
 | 8 | Szolgáltatástípusok | Győződjön meg arról, szolgáltatás típusának megfelelő címe | |
 | 9 | Kompetenciák |<br>• A következő legalább egyikének kell lennie:<br>• Fejlesztés <br>• Alkalmazásintegráció <br>• Alkalmazáséletciklus-kezelés <br>• Felhőplatform <br>• Adatelemzés <br>• Data Center <br>• Adatplatform <br>• DevOps |
-| 10 | Termékek | Azure kell lennie. | |
+| 10 | Products | Azure kell lennie. | |
 | 11 | Ország/régió | Győződjön meg, hogy ki currency ország és régió egyezés | |
 | 12 | További információ  | <br>• Hivatkozások (a leírás, nem a Marketplace-en hivatkozások a bal oldali) alján vezet, a megoldás további információt és nyilvánosan elérhető és megjelenítésének megfelelően. <br>• Hivatkozások rendelkeznie kell egy "felhasználóbarát neve", és nem jelennek meg, bármely letöltött fájl neve | |
 

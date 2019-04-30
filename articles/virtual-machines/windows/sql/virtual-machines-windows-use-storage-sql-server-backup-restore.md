@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 1b6660a1565b3c119cc1dec0823870c7dd5bd24f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654087"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477144"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Azure Storage használata az SQL Server biztonsági mentés és visszaállítás
 ## <a name="overview"></a>Áttekintés
@@ -37,7 +37,7 @@ Nincsenek több esetleges problémát is, amelyek biztonsági mentése az SQL Se
 * **Felügyelt hardveres**: Nincs nem hardver kezelése az Azure-szolgáltatásokkal járó többletterhelést. Azure-szolgáltatások kezelése a hardvert, és adja meg a georeplikáció a redundancia és a hardverhibák elleni védelem.
 * **Korlátlan tárolási**: Engedélyezi a közvetlen biztonsági mentést az Azure-blobok, gyakorlatilag korlátlan Storage elérhető lesz. Azt is megteheti biztonsági mentést egy Azure-beli virtuálisgép-lemez korlátozások vonatkoznak a mérete alapján. Az Azure virtuális gép biztonsági mentésekhez csatlakoztathat lemezeket száma korlátozva van. Ez a korlátozás egy nagyon nagy példány esetében 16 lemez és a kisebb méretű példányok kevesebb.
 * **Biztonsági mentés a rendelkezésre állási**: Az Azure-blobokban tárolt biztonsági másolatok bárhonnan és bármikor elérhető és könnyen elérhető lesz a visszaállítás vagy egy helyszíni SQL Server, vagy egy másik SQL Server futtatása az Azure virtuális gépként, nincs szükség adatbázis csatlakoztatási/leválasztási vagy letöltése és a virtuális merevlemez csatlakoztatása.
-* **Költség**: Csak azért fizet a szolgáltatás használt. Költséghatékony telephelyen és a biztonsági mentési archív beállítás lehet. Tekintse meg a [Azure díjkalkulátorát](https://go.microsoft.com/fwlink/?LinkId=277060 "Díjkalkulátor"), és a [Azure díjszabását ismertető cikk](https://go.microsoft.com/fwlink/?LinkId=277059 "díjszabási cikk") további információt.
+* **Költségek**: Csak azért fizet a szolgáltatás használt. Költséghatékony telephelyen és a biztonsági mentési archív beállítás lehet. Tekintse meg a [Azure díjkalkulátorát](https://go.microsoft.com/fwlink/?LinkId=277060 "Díjkalkulátor"), és a [Azure díjszabását ismertető cikk](https://go.microsoft.com/fwlink/?LinkId=277059 "díjszabási cikk") további információt.
 * **A pillanatképek tárolási**: Ha az adatbázis fájljai egy Azure-blobból, és használja az SQL Server 2016-ra, [fájlpillanatkép-biztonsági mentés](https://msdn.microsoft.com/library/mt169363.aspx) szinte azonnali biztonsági mentéseket és a rendkívül gyors helyreállítást végez.
 
 További részletekért lásd: [SQL Server biztonsági mentése és visszaállítása az Azure Blob Storage szolgáltatás](https://go.microsoft.com/fwlink/?LinkId=271617).
@@ -70,8 +70,8 @@ A következő SQL Server-összetevők biztonsági mentése az Azure Blob storage
 1. Ha még nem rendelkezik egy Azure-fiók létrehozása. Ha éppen kipróbálja az Azure, fontolja meg a [az ingyenes próbaidőszak](https://azure.microsoft.com/free/).
 2. Folytassa, amelyek végigvezetik egy storage-fiók létrehozása és a visszaállítás végrehajtása a következő oktatóanyagok egyikével.
    
-   * **Az SQL Server 2014**: [Oktatóanyag: SQL Server 2014 biztonsági mentése és visszaállítása a Microsoft Azure Blob Storage szolgáltatás](https://msdn.microsoft.com/library/jj720558\(v=sql.120\).aspx).
-   * **Az SQL Server 2016**: [Oktatóanyag: A Microsoft Azure Blob storage szolgáltatás használata az SQL Server 2016-adatbázisok](https://msdn.microsoft.com/library/dn466438.aspx)
+   * **SQL Server 2014**: [Oktatóanyag: SQL Server 2014 biztonsági mentése és visszaállítása a Microsoft Azure Blob Storage szolgáltatás](https://msdn.microsoft.com/library/jj720558\(v=sql.120\).aspx).
+   * **SQL Server 2016**: [Oktatóanyag: A Microsoft Azure Blob storage szolgáltatás használata az SQL Server 2016-adatbázisok](https://msdn.microsoft.com/library/dn466438.aspx)
 3. Tekintse át a további dokumentáció kezdve [SQL Server biztonsági mentés és helyreállítás a Microsoft Azure Blob Storage szolgáltatás](https://msdn.microsoft.com/library/jj919148.aspx).
 
 Ha bármilyen problémába ütközik, tekintse át a témakör [SQL Server biztonsági másolat URL-cím ajánlott eljárások és hibaelhárítás](https://msdn.microsoft.com/library/jj919149.aspx).

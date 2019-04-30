@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: magoedte
 ms.openlocfilehash: 76a789bd4f9167344fcc240e3f3fdbf3a00aa5a3
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540754"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60742522"
 ---
 # <a name="collect-azure-activity-logs-into-a-log-analytics-workspace-across-subscriptions-in-different-azure-active-directory-tenants"></a>Log Analytics-munkaterület Azure-tevékenységnaplóinak gyűjtése a különböző Azure Active Directory-bérlők előfizetések között
 
@@ -131,7 +131,7 @@ Az eseményközpont nevének és a kapcsolati sztringjének lekéréséhez köve
    | Name (Név)           | A logikai alkalmazás egyedi neve. |
    | Előfizetés   | Válassza ki azt az Azure-előfizetést, amely a logikai alkalmazást tartalmazni fogja. |
    | Erőforráscsoport | Válasszon ki egy meglévő Azure-erőforráscsoportot, vagy hozzon létre egy újat a logikai alkalmazás számára. |
-   | Hely       | Válassza ki az adatközpont-régiót a logikai alkalmazás üzembe helyezéséhez. |
+   | Földrajzi egység       | Válassza ki az adatközpont-régiót a logikai alkalmazás üzembe helyezéséhez. |
    | Log Analytics  | Válassza ki, ha azt szeretné, állapotát, a logikai alkalmazás minden egyes futtatásához jelentkezzen be a Log Analytics-munkaterületet.  |
 
     
@@ -301,11 +301,11 @@ A [Azure Log Analytics Data Collector](https://docs.microsoft.com/connectors/azu
 
     ![Az adatküldési művelet konfigurálása](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-configuration.png)
 
-   |Beállítás        | Érték           | Leírás  |
+   |Beállítás        | Value (Díj)           | Leírás  |
    |---------------|---------------------------|--------------|
    |JSON-kérelem törzse  | Az **Összeállítás** művelet **kimenete** | Lekéri a rekordokat az Összeállítás művelet törzséből. |
    | Egyéni napló neve | AzureActivity | A Log Analytics-munkaterületet az importált adatok tárolására létrehozni kívánt egyéni Naplótábla neve. |
-   | Time-generated-field | time | Ne válassza ki a **time** JSON-mezőt, csak írja be a „time” szót. Ha kiválasztja a JSON-mezőt, a tervező egy **For each** iterációba helyezi az *Adatküldés* műveletet, amely nem felel meg a szándékainak. |
+   | Time-generated-field | idő- | Ne válassza ki a **time** JSON-mezőt, csak írja be a „time” szót. Ha kiválasztja a JSON-mezőt, a tervező egy **For each** iterációba helyezi az *Adatküldés* műveletet, amely nem felel meg a szándékainak. |
 
 
 
