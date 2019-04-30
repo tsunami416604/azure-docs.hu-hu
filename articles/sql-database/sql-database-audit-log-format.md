@@ -13,11 +13,11 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 01/03/2019
 ms.openlocfilehash: 0fefe01e413e30e4aa3c1fa90de77cbdece39c38
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001688"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61417388"
 ---
 # <a name="sql-database-audit-log-format"></a>Az SQL Database naplózási naplóformátum
 
@@ -45,49 +45,49 @@ Naplózás konfigurálása során meghatározott a Log Analytics-munkaterület �
 
 | Name (Blob) | Név (Event Hubs és a Log Analytics) | Leírás | Blob Type | Event Hubs/Log Analytics típusa |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
-| action_id | action_id_s | A művelet azonosítója | varchar(4) | sztring |
-| action_name | action_name_s | Művelet neve | – | sztring |
-| additional_information | additional_information_s | További információt az esemény tárolt XML-fájlként | nvarchar(4000) | sztring |
+| action_id | action_id_s | A művelet azonosítója | varchar(4) | string |
+| action_name | action_name_s | Művelet neve | – | string |
+| additional_information | additional_information_s | További információt az esemény tárolt XML-fájlként | nvarchar(4000) | string |
 | affected_rows | affected_rows_d | A lekérdezés által érintett sorok száma | bigint | int |
-| application_name | application_name_s| Az ügyfél-alkalmazás neve | nvarchar(128) | sztring |
+| application_name | application_name_s| Az ügyfél-alkalmazás neve | nvarchar(128) | string |
 | audit_schema_version | audit_schema_version_d | Mindig 1 | int | int |
-| class_type | class_type_s | A naplózási következik be naplózható entitás típusa | varchar(2) | sztring |
-| class_type_desc | class_type_description_s | Naplózható entitás, amely a naplózási előfordulás leírása | – | sztring |
-| client_ip | client_ip_s | Forrás IP-cím, az ügyfélalkalmazás | nvarchar(128) | sztring |
+| class_type | class_type_s | A naplózási következik be naplózható entitás típusa | varchar(2) | string |
+| class_type_desc | class_type_description_s | Naplózható entitás, amely a naplózási előfordulás leírása | – | string |
+| client_ip | client_ip_s | Forrás IP-cím, az ügyfélalkalmazás | nvarchar(128) | string |
 | connection_id | – | A kapcsolat a kiszolgáló azonosítója | GUID | – |
-| data_sensitivity_information | data_sensitivity_information_s | Adattípusok és az adatbázis osztályozott oszlopok alapján, a naplózott lekérdezés által visszaadott bizalmassági címke. Tudjon meg többet [Azure SQL Database adatok felderítése és besorolása](sql-database-data-discovery-and-classification.md) | nvarchar(4000) | sztring |
-| database_name | database_name_s | Az adatbázis-környezet, amelyben a művelet történt. | sysname | sztring |
+| data_sensitivity_information | data_sensitivity_information_s | Adattípusok és az adatbázis osztályozott oszlopok alapján, a naplózott lekérdezés által visszaadott bizalmassági címke. Tudjon meg többet [Azure SQL Database adatok felderítése és besorolása](sql-database-data-discovery-and-classification.md) | nvarchar(4000) | string |
+| database_name | database_name_s | Az adatbázis-környezet, amelyben a művelet történt. | sysname | string |
 | database_principal_id | database_principal_id_d | Az adatbázis, amely a művelet végrehajtását a felhasználói környezet azonosítója | int | int |
-| database_principal_name | database_principal_name_s | Az adatbázis-felhasználói környezetet, amelyben a művelet végrehajtását neve | sysname | sztring |
+| database_principal_name | database_principal_name_s | Az adatbázis-felhasználói környezetet, amelyben a művelet végrehajtását neve | sysname | string |
 | duration_milliseconds | duration_milliseconds_d | Lekérdezés-végrehajtási idő ezredmásodpercben | bigint | int |
-| event_time | event_time_t | Dátum és idő, amikor a naplózható művelet aktiválódik. | datetime2 | dátum/idő |
-| host_name | – | Ügyfél-állomásnév | sztring | – |
-| is_column_permission | is_column_permission_s | Ez a jelző azt jelzi, ha egy oszlop szintű engedéllyel. 1 = igaz, 0 = false | bit | sztring |
-| – | is_server_level_audit_s | Jelzi, hogy a kiszolgáló szintjén van ehhez az ellenőrzéshez | – | sztring |
+| event_time | event_time_t | Dátum és idő, amikor a naplózható művelet aktiválódik. | datetime2 | datetime |
+| host_name | – | Ügyfél-állomásnév | string | – |
+| is_column_permission | is_column_permission_s | Ez a jelző azt jelzi, ha egy oszlop szintű engedéllyel. 1 = igaz, 0 = false | bit | string |
+| – | is_server_level_audit_s | Jelzi, hogy a kiszolgáló szintjén van ehhez az ellenőrzéshez | – | string |
 | object_ azonosítója | object_id_d | A naplózási lépett fel az entitás azonosítója. Ez magában foglalja a: kiszolgáló, adatbázisok, adatbázis-objektumok és séma objektumok. Ha az entitás magát a kiszolgálót, vagy ha az ellenőrzés nem az objektumok szintjén végzett 0 | int | int |
-| object_name | object_name_s | A naplózási lépett fel az entitás neve. Ez magában foglalja a: kiszolgáló, adatbázisok, adatbázis-objektumok és séma objektumok. Ha az entitás magát a kiszolgálót, vagy ha az ellenőrzés nem az objektumok szintjén végzett 0 | sysname | sztring |
-| permission_bitmask | permission_bitmask_s | Ha alkalmazható, jeleníti meg az engedélyeket, megtagadva, vagy visszavonták | varbinary(16) | sztring |
+| object_name | object_name_s | A naplózási lépett fel az entitás neve. Ez magában foglalja a: kiszolgáló, adatbázisok, adatbázis-objektumok és séma objektumok. Ha az entitás magát a kiszolgálót, vagy ha az ellenőrzés nem az objektumok szintjén végzett 0 | sysname | string |
+| permission_bitmask | permission_bitmask_s | Ha alkalmazható, jeleníti meg az engedélyeket, megtagadva, vagy visszavonták | varbinary(16) | string |
 | response_rows | response_rows_d | Az eredményhalmaz visszaadott sorok száma | bigint | int |
-| schema_name | schema_name_s | A séma környezet, amelyben a művelet történt. A séma kívül bekövetkező eseményeket NULL | sysname | sztring |
-| – | securable_class_type_s | Biztonságos, a naplózott class_type leképező objektum | – | sztring |
-| sequence_group_id | sequence_group_id_g | Egyedi azonosító | varbinary | GUID |
+| schema_name | schema_name_s | A séma környezet, amelyben a művelet történt. A séma kívül bekövetkező eseményeket NULL | sysname | string |
+| – | securable_class_type_s | Biztonságos, a naplózott class_type leképező objektum | – | string |
+| sequence_group_id | sequence_group_id_g | Egyedi azonosító | Varbinary | GUID |
 | sequence_number | sequence_number_d | Nyomon követi a rekordok, amelyek túl nagy volt ahhoz, hogy az írási puffert naplózások elférjen egyetlen naplórekordot belül sorrendje | int | int |
-| server_instance_name | server_instance_name_s | Ahol a naplózási történt server-példány neve | sysname | sztring |
+| server_instance_name | server_instance_name_s | Ahol a naplózási történt server-példány neve | sysname | string |
 | server_principal_id | server_principal_id_d | A bejelentkezési környezet, amelyben a művelet végrehajtását azonosítója | int | int |
-| server_principal_name | server_principal_name_s | Az aktuális bejelentkezési | sysname | sztring |
-| server_principal_sid | server_principal_sid_s | Az aktuális bejelentkezési biztonsági azonosítója | varbinary | sztring |
+| server_principal_name | server_principal_name_s | Az aktuális bejelentkezési | sysname | string |
+| server_principal_sid | server_principal_sid_s | Az aktuális bejelentkezési biztonsági azonosítója | Varbinary | string |
 | session_id | session_id_d | Az esemény történt, amelyen a munkamenet azonosítója | smallint | int |
-| session_server_principal_name | session_server_principal_name_s | Munkamenethez tartozó kiszolgálói tag | sysname | sztring |
-| Utasítás | statement_s | T-SQL-utasítás (ha vannak) végrehajtott | nvarchar(4000) | sztring |
-| Sikeres volt | succeeded_s | Azt jelzi, hogy sikerült-e az eseményt előidéző műveletet végrehajtó. Események, bejelentkezési és a batch kivételével ez csak a jelentés-e a engedélyeinek ellenőrzése sikeres, vagy nem, a művelet nem sikerült. 1 = sikeres, 0 = sikertelen | bit | sztring |
+| session_server_principal_name | session_server_principal_name_s | Munkamenethez tartozó kiszolgálói tag | sysname | string |
+| Utasítás | statement_s | T-SQL-utasítás (ha vannak) végrehajtott | nvarchar(4000) | string |
+| Sikeres volt | succeeded_s | Azt jelzi, hogy sikerült-e az eseményt előidéző műveletet végrehajtó. Események, bejelentkezési és a batch kivételével ez csak a jelentés-e a engedélyeinek ellenőrzése sikeres, vagy nem, a művelet nem sikerült. 1 = sikeres, 0 = sikertelen | bit | string |
 | target_database_principal_id | target_database_principal_id_d | Az adatbázis rendszerbiztonsági tagjához a GRANT/DENY/REVOKE művelet történik. 0, ha nem alkalmazható | int | int |
-| target_database_principal_name | target_database_principal_name_s | Célfelhasználó művelet. NULL értékű, ha nem alkalmazható | sztring | sztring |
+| target_database_principal_name | target_database_principal_name_s | Célfelhasználó művelet. NULL értékű, ha nem alkalmazható | string | string |
 | target_server_principal_id | target_server_principal_id_d | Kiszolgálói tag a GRANT/DENY/REVOKE műveletet végrehajtó. 0 értéket adja vissza, ha nem alkalmazható | int | int |
-| target_server_principal_name | target_server_principal_name_s | Cél bejelentkezési művelet. NULL értékű, ha nem alkalmazható | sysname | sztring |
-| target_server_principal_sid | target_server_principal_sid_s | Cél bejelentkezési biztonsági azonosítója. NULL értékű, ha nem alkalmazható | varbinary | sztring |
+| target_server_principal_name | target_server_principal_name_s | Cél bejelentkezési művelet. NULL értékű, ha nem alkalmazható | sysname | string |
+| target_server_principal_sid | target_server_principal_sid_s | Cél bejelentkezési biztonsági azonosítója. NULL értékű, ha nem alkalmazható | Varbinary | string |
 | transaction_id | transaction_id_d | Csak az SQL Server (2016-tól induló) – az Azure SQL DB 0 | bigint | int |
 | user_defined_event_id | user_defined_event_id_d | Felhasználó által definiált sp_audit_write argumentumként átadott eseményazonosító. NULL értékű, a rendszer események (alapértelmezett) és a felhasználó által meghatározott esemény nem nulla. További információkért lásd: [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | smallint | int |
-| user_defined_information | user_defined_information_s | Felhasználó által definiált sp_audit_write argumentumként átadott adatokat. NULL értékű, a rendszer események (alapértelmezett) és a felhasználó által meghatározott esemény nem nulla. További információkért lásd: [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | nvarchar(4000) | sztring |
+| user_defined_information | user_defined_information_s | Felhasználó által definiált sp_audit_write argumentumként átadott adatokat. NULL értékű, a rendszer események (alapértelmezett) és a felhasználó által meghatározott esemény nem nulla. További információkért lásd: [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | nvarchar(4000) | string |
 
 ## <a name="next-steps"></a>További lépések
 

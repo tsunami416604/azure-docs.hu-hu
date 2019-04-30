@@ -10,11 +10,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: b6eb0c5b0d52bba3d34c9853a73b1f3e07b112a7
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230288"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61322727"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Az IoT Edge-ügynök és az IoT Edge hubot ikermodulokkal tulajdonságai
 
@@ -82,9 +82,9 @@ A következő táblázat nem tartalmazza a kívánt tulajdonságok, másolja az 
 | systemModules.edgeHub.runtimeStatus | IoT Edge hubot állapota: {"fut" \| "leállított" \| "sikertelen" \| "leállítási" \| "nem kifogástalan"} |
 | systemModules.edgeHub.statusDescription | Az IoT Edge hub, ha a nem kifogástalan állapotát szöveges leírása. |
 | systemModules.edgeHub.exitCode | Ha kilépett, az IoT Edge hubot tároló által jelentett a kilépési kód |
-| systemModules.edgeHub.startTimeUtc | Amikor az IoT Edge hubot legutóbbi Indítás ideje |
-| systemModules.edgeHub.lastExitTimeUtc | Amikor az IoT Edge-központ legutóbbi kilépett idő |
-| systemModules.edgeHub.lastRestartTimeUtc | Idő, amikor az IoT Edge hubot utolsó újraindítása |
+| systemModules.edgeHub.startTimeUtc | Time when IoT Edge hub was last started |
+| systemModules.edgeHub.lastExitTimeUtc | Time when IoT Edge hub last exited |
+| systemModules.edgeHub.lastRestartTimeUtc | Time when IoT Edge hub was last restarted |
 | systemModules.edgeHub.restartCount | Ez a modul újra lett indítva, az újraindítási házirend részeként hányszor. |
 | modules.{moduleId}.runtimeStatus | A modul állapota: {"fut" \| "leállított" \| "sikertelen" \| "leállítási" \| "nem kifogástalan"} |
 | modules.{moduleId}.statusDescription | Szöveges leírása a modult, ha a nem kifogástalan állapotát. |
@@ -101,7 +101,7 @@ Az IoT Edge hub az ikermodul nevezzük `$edgeHub` és koordinálja a kommunikác
 | Tulajdonság | Leírás | Manifest nasazení szükséges |
 | -------- | ----------- | -------- |
 | sémaverzióval | "1.0" kell lennie | Igen |
-| útvonalak. {routeName} | Egy karakterlánc, amely az IoT Edge hubot útvonalat. | A `routes` elem létezik, de üres is lehet. |
+| útvonalak. {routeName} | A string representing an IoT Edge hub route. | A `routes` elem létezik, de üres is lehet. |
 | storeAndForwardConfiguration.timeToLiveSecs | Például az IoT Hub, vagy a helyi modul kapcsolódik az időtartam másodpercben, hogy a hub tartja az üzeneteket az IoT Edge útválasztási végpontok leválasztva | Igen |
 
 ## <a name="edgehub-reported-properties"></a>EdgeHub jelentett tulajdonságok

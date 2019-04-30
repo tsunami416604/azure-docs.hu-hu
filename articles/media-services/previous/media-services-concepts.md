@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 3b7b821227478d8c6b5859f24c50407f9eb213fe
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312342"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61235280"
 ---
 # <a name="azure-media-services-concepts"></a>Az Azure Media Services – alapelvek 
 
@@ -105,7 +105,7 @@ A Media Services ebben a cikkben a következő igény szerinti kódolók ismerte
 
 További információ a támogatott kódolók: [kódolók](media-services-encode-asset.md).
 
-## <a name="live-streaming"></a>Élő adások online közvetítése
+## <a name="live-streaming"></a>Élő streamelés
 Az Azure Media Services esetén a csatorna egy olyan folyamatot jelent élőben közvetített tartalmak feldolgozása. Egy csatorna bemeneti élő Streamek kap a két módszer egyikével:
 
 * A helyszíni élő kódoló és többféle sávszélességű RTMP vagy Smooth Streaming (töredékes MP4) küld a csatornát. Használhatja a következő élő kódolók, és többféle sávszélességű Smooth Streaming-kimenetre: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco és Elemental. A következő élő kódolók RTMP-kimenetre: Az Adobe Flash Live Encoder, Telestream Wirecast, Teradek, Haivision és Tricaster kódolókkal történő továbbítását. A feldolgozott adatfolyamok további átkódolása és kódolás nélkül csatornákon keresztül adja át. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.

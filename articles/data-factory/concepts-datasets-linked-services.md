@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 ms.openlocfilehash: 9e5da96cb02e681c83bd707fc038117050712ccf
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044246"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61261937"
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Adatkészletek és társított szolgáltatások, az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -122,7 +122,7 @@ A következő táblázat ismerteti a fenti JSON-tulajdonságok:
 Tulajdonság | Leírás | Szükséges |
 -------- | ----------- | -------- |
 név | Az adatkészlet nevét. Lásd: [Azure Data Factory – elnevezési szabályok](naming-rules.md). |  Igen |
-type | Az adatkészlet típusa. Adja meg a Data Factory által támogatott típusú (például: Azure Blobba, AzureSqlTable). <br/><br/>További információkért lásd: [típus](#dataset-type). | Igen |
+type | Az adatkészlet típusa. Adja meg a Data Factory által támogatott típusú (például: AzureBlob, AzureSqlTable). <br/><br/>További információkért lásd: [típus](#dataset-type). | Igen |
 struktúra | Az adatkészlet sémája. További információkért lásd: [adatkészlet-szerkezetekben](#dataset-structure). | Nem |
 typeProperties | A típus tulajdonságokat különböznek az egyes (például: Az Azure Blob, az Azure SQL-tábla). További információ a támogatott típusok és a hozzájuk tartozó tulajdonságok: [adatkészlettípus](#dataset-type). | Igen |
 

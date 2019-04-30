@@ -1,18 +1,19 @@
 ---
 title: A JavaScript nyelvintegrált lekérdezési API-t az Azure Cosmos DB használata
 description: Ez a cikk fogalmait a JavaScript nyelvintegrált lekérdezési API-t az Azure Cosmos DB-ben tárolt eljárások és eseményindítók létrehozásához.
-author: markjbrown
+author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/08/2018
-ms.author: mjbrown
+origin.date: 12/08/2018
+ms.date: 03/04/2019
+ms.author: v-yeche
 ms.reviewer: sngun
 ms.openlocfilehash: 101b5382eaa01ed87f05d83c82002fa1b93144b7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463939"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61043234"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Az Azure Cosmos DB API a JavaScript-lekérdezés
 
@@ -69,3 +70,5 @@ További fogalmakat és útmutató írási és tárolt eljárások, eseményind�
 - [Az Azure Cosmos DB-ben tárolt eljárások, eseményindítók, felhasználó által definiált függvények használata](how-to-use-stored-procedures-triggers-udfs.md)
 - [Az Azure Cosmos DB a JavaScript kiszolgálóoldali API-referencia](https://azure.github.io/azure-cosmosdb-js-server)
 - [JavaScript ES6 (ECMA 2015)](https://www.ecma-international.org/ecma-262/6.0/)
+
+<!-- Update_Description: update meta properties -->

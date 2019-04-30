@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: dech
 ms.openlocfilehash: d50bf7d865cb286f2a1421156b477dc92dc978d1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453603"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60889458"
 ---
-# <a name="work-with-data-using-azure-cosmos-explorer"></a>Az adatok Azure-Cosmos-explorer használatával 
+# <a name="work-with-data-using-azure-cosmos-explorer"></a>Adatok kezelése az Azure Cosmos Explorerrel 
 
 Az Azure Cosmos DB explorer egy önálló webes felület, amely lehetővé teszi, hogy az Azure Cosmos DB-ben tárolt adatok megtekintése és kezelése. Az Azure Cosmos DB explorer megegyezik a meglévő **adatkezelő** lap, amely az Azure Portalon érhető el, az Azure Cosmos DB-fiók létrehozásakor. A meglévő adatkezelő keresztül Azure Cosmos DB explorer főbb előnyei a következők:
 

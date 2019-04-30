@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/30/2019
+ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: 00dab8381c26a6331dd325eacd4a550892bd3411
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a36ca880387ee1a3c5f749dbd6b9d7dcb9e6d79d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325833"
+ms.locfileid: "62103795"
 ---
 # <a name="live-events-and-live-outputs"></a>Élő események és élő kimenetek
 
@@ -143,6 +143,10 @@ A **élő kimeneti** objektum olyan, mintha egy felvevő, amely a tényleges és
 Miután közzétette a **élő kimeneti**a **eszköz** használatával egy **Streamelési lokátor**, a **élő esemény** lesz (akár a DVR időszak hossza) továbbra is megtekinthető a Streamelési lokátor lejárati vagy törlését, amelyiket hamarabb.
 
 További információkért lásd: [használatával egy felhőalapú DVR-Funkciókkal](live-event-cloud-dvr.md).
+
+## <a name="provide-feedback"></a>Visszajelzés küldése
+
+Tekintse meg a [Azure Media Services-Közösség](media-services-community.md) kérdések, küldje el visszajelzését, és tudnivalók a Media Services-frissítések különböző módon olvashatja.
 
 ## <a name="next-steps"></a>További lépések
 

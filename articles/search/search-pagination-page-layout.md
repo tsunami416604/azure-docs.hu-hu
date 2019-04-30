@@ -11,11 +11,11 @@ ms.date: 02/14/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 7a4423449931b74afa15ca238c611f54b071402f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339295"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61283791"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>Hogyan használható a keresési eredmények az Azure Search szolgáltatásban
 Ez a cikk útmutatást nyújt a-keresési eredmények, például a teljes száma, a dokumentum lekéréséhez, a rendezési sorrend és navigációs oldal szokásos megoldások szabványos elemeit megvalósításához. Keresztül megadott oldal kapcsolatos beállításokat, adatokat vagy a keresési eredmények információkat közreműködik a [dokumentum keresése](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) az Azure Search szolgáltatás küldött kérelmeket. 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 4/3/2019
 ms.author: geetha
 ms.openlocfilehash: 893a22fb9f325625707869c8f6571d572b8f6b33
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358230"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61216979"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Biztonsági mentése és visszaállítása titkosított Azure virtuális Gépen
 

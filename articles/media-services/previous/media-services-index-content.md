@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: adsolank;juliako;johndeu
 ms.openlocfilehash: a11ae0414d6737f1588515ec19524bcf499f0c74
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189104"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61215805"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>A médiafájlokat az Azure Media Indexerrel
 Az Azure Media Indexer lehetővé teszi a médiafájlok tartalom kereshetővé és a egy lezárt a feliratozás és a kulcsszavak teljes szövegű átiratot létrehozása érdekében. Feldolgozható egyetlen médiafájl is, vagy egy kötegben több médiafájl is.  

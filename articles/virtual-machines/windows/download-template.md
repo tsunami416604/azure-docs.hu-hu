@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
 ms.openlocfilehash: 4ef0c09d2d2ea2ed06708342ab45abcaf149c23e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798827"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61075880"
 ---
 # <a name="download-the-template-for-a-vm"></a>Virtuálisgép-sablon letöltése
 Az Azure-ban a portál vagy a PowerShell használatával egy virtuális Gépet hoz létre, amikor egy Resource Manager-sablon automatikusan létrejön az Ön számára. Ez a sablon használatával gyorsan ismétlődő egy központi telepítést. A sablon egy erőforráscsoportba tartozó összes információt tartalmazza. Virtuális gép esetén ez azt jelenti, a sablon tartalmaz mindent, ami jön létre a virtuális Gépet, az erőforráscsoport, beleértve a hálózati erőforrások támogatásához.

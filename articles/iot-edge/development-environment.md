@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: f3d1fb393138aeb590bc0645d6abe93652a52a5b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052581"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61247548"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>A fejlesztési és tesztelési környezet előkészítése az IoT Edge-hez
 
@@ -55,14 +55,14 @@ Az egyes nyelvekhez és a szolgáltatások modul sablonok rendelkezik a projekt 
 
 | A modul sablon | Előfeltétel |
 | --------------- | ------------ |
-| Azure Functions | [A .NET core SDK 2.1-es](https://www.microsoft.com/net/download) |
+| Azure Functions | [.NET Core 2.1 SDK](https://www.microsoft.com/net/download) |
 | C | [Git](https://git-scm.com/) |
-| C# | [A .NET core SDK 2.1-es](https://www.microsoft.com/net/download) |
+| C# | [.NET Core 2.1 SDK](https://www.microsoft.com/net/download) |
 | Java | <ul><li>[Java SE Development Kit 10](https://aka.ms/azure-jdks) <li> [A JAVA_HOME környezeti változó beállítása](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven 3](https://maven.apache.org/)</ul> |
 | Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Az Azure IoT Edge Node.js modult generator](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
-| Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [a pip](https://pip.pypa.io/en/stable/installing/#installation) <li> [Cookiecutteru](https://cookiecutter.readthedocs.io/en/latest/installation.html) <li> [Git](https://git-scm.com/) </ul> |
+| Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [Pip](https://pip.pypa.io/en/stable/installing/#installation) <li> [Cookiecutteru](https://cookiecutter.readthedocs.io/en/latest/installation.html) <li> [Git](https://git-scm.com/) </ul> |
 
-### <a name="visual-studio-2017-extension"></a>Visual Studio 2017-bővítmény
+### <a name="visual-studio-2017-extension"></a>Visual Studio 2017 extension
 
 A Azure IoT Edge-eszközök Visual Studióhoz készült adja meg az IoT Edge, a modul sablon épülő C#. 
 
@@ -83,9 +83,9 @@ Csak az IoT Edge-futtatókörnyezet éles környezetekben üzemelő példányok 
 | Eszköz | Más néven | Támogatott platformok | A következőkre alkalmas |
 | ---- | ------------- | ------------------- | --------- |
 | IoT EdgeHub fejlesztési eszközt  | iotedgehubdev | Windows, Linux, MacOS | Modulok hibakeresése egy eszközt szimulál. |
-| IoT Edge fejlesztői tároló | a Microsoft/iotedgedev | Windows, Linux, MacOS | Fejlesztés a függőségek telepítése nélkül. |
+| IoT Edge fejlesztői tároló | microsoft/iotedgedev | Windows, Linux, MacOS | Fejlesztés a függőségek telepítése nélkül. |
 | IoT Edge-futtatókörnyezet-tárolóban | iotedgec | Windows, Linux, MacOS, ARM | Az eszközön, amely nem támogatja a futtatókörnyezet tesztelése. |
-| IoT Edge-eszköz tároló | toolboc/azure-iot-edge-eszköz-tároló | Windows, Linux, MacOS, ARM | Egy olyan forgatókönyvet tesztel az sok nagy mennyiségű IoT Edge-eszközökön. |
+| IoT Edge-eszköz tároló | toolboc/azure-iot-edge-device-container | Windows, Linux, MacOS, ARM | Egy olyan forgatókönyvet tesztel az sok nagy mennyiségű IoT Edge-eszközökön. |
 
 ### <a name="iot-edgehub-dev-tool"></a>IoT EdgeHub fejlesztési eszközt
 

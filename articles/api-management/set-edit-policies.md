@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
 ms.openlocfilehash: 3d1847b6001ef8e32f00a4e1cd9728d5ca0662f8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008266"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097196"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Útmutató az Azure API Management házirendek beállítása vagy szerkesztése
 
@@ -34,7 +34,7 @@ Szabályzatokkal kapcsolatos részletes információkért lásd: [az Azure API M
 2. Tallózzon az APIM-példányra.
 3. Kattintson az **API-k** lapfülre.
 
-    ![Házirend szerkesztése](./media/set-edit-policies/code-editor.png)
+    ![A szabályzat szerkesztése](./media/set-edit-policies/code-editor.png)
 
 4. Válassza ki az egyik korábban importált API-t.
 5. Válassza ki a **Tervezés** fület.

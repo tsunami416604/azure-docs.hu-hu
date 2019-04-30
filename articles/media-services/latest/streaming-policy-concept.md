@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 02/03/2019
 ms.author: juliako
 ms.openlocfilehash: 10600d8f3ff4e08b8d90f28ec15d3cb0c56bcae0
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746744"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61230896"
 ---
 # <a name="streaming-policies"></a>Streamelési szabályok
 
@@ -70,5 +70,5 @@ Lásd: [szűrése, rendezése, a Media Services entitások lapozás](entities-ov
 ## <a name="next-steps"></a>További lépések
 
 * [Fájl streamelése](stream-files-dotnet-quickstart.md)
-* [AES-128, a dinamikus titkosítás és a kulcstovábbítást használata](protect-with-aes128.md)
+* [Az AES-128 dinamikus titkosítás és a kulcskézbesítési szolgáltatás használata](protect-with-aes128.md)
 * [DRM a dinamikus titkosítás és a licenc kézbesítési szolgáltatás használata](protect-with-drm.md)

@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
 ms.openlocfilehash: ad4839a1b9e951a2bb206518254826a066330000
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620859"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61426731"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Az Azure Monitor naplóira szöveges adatok elemzése
 Bizonyos Azure Monitor által gyűjtött naplóadatok egyetlen tulajdonsággal több információt tartalmazza. Ezek az adatok elemzése több tulajdonságot be megkönnyíti a lekérdezések használata. Ilyenek például a [egyéni napló](../../log-analytics/log-analytics-data-sources-custom-logs.md) , amely egy teljes naplóbejegyzés több értékkel rendelkező gyűjti be egy-egy tulajdonság. Hozzon létre külön tulajdonságait a különböző értékeket, kereshet és az egyes összesített.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 41d9f21688df6f32918500365bc88f3f168604d2
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 1bcec37e7642ae0cb5bd68de1426c8cc62085d38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869649"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61475524"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok Desired State Configuration bővítmény
 
@@ -178,35 +178,35 @@ Használja a következő sémának a **beállítások** szakasz a Resource Manag
 
 ## <a name="details"></a>Részletek
 
-| Tulajdonság neve | Typo | Leírás |
+| Tulajdonság neve | Típus | Leírás |
 | --- | --- | --- |
-| settings.wmfVersion |sztring |Adja meg a verziót a Windows Management Framework (WMF), amely a virtuális Gépen kell telepíteni. Ez a tulajdonság **legújabb** a WMF legújabb verzióját telepíti. Ez a tulajdonság csak lehetséges értékei jelenleg **4.0**, **5.0**, **5.1**, és **legújabb**. Ezek lehetséges értékek a következők vonatkoznak a frissítéseket. Az alapértelmezett érték **legújabb**. |
-| settings.configuration.url |sztring |Itt adhatja meg, ahonnan letölthető a DSC-konfiguráció .zip fájl URL-címét. Ha a megadott URL-cím egy SAS-tokent igényel hozzáférést, állítsa be a **protectedSettings.configurationUrlSasToken** tulajdonság értéke az SAS-jogkivonatot. Ez a tulajdonság nem kötelező, ha **settings.configuration.script** vagy **settings.configuration.function** vannak definiálva. Ha nincs érték megadva ezekhez a tulajdonságokhoz, a bővítményt meghívja az alapértelmezett konfigurációs parancsfájl helye Configuration Manager (LCM) Konfigurálása metaadatok beállítása és argumentumot kell megadni. |
-| settings.configuration.script |sztring |Megadja a fájl nevét, a parancsfájl, amely tartalmazza a DSC-konfiguráció definíciójának. Ez a parancsfájl a megadott URL-címről letöltött .zip fájl a gyökérmappában kell lennie a **settings.configuration.url** tulajdonság. Ez a tulajdonság nem kötelező, ha **settings.configuration.url** vagy **settings.configuration.script** vannak definiálva. Ha nincs érték megadva ezekhez a tulajdonságokhoz, a bővítményt meghívja az alapértelmezett konfigurációs parancsfájl LCM metaadatok beállítása és argumentumot kell megadni. |
-| settings.configuration.function |sztring |Megadja a DSC-konfiguráció nevét. A konfiguráció nevű szerepelnie kell a parancsfájlt, amely **settings.configuration.script** határozza meg. Ez a tulajdonság nem kötelező, ha **settings.configuration.url** vagy **settings.configuration.function** vannak definiálva. Ha nincs érték megadva ezekhez a tulajdonságokhoz, a bővítményt meghívja az alapértelmezett konfigurációs parancsfájl LCM metaadatok beállítása és argumentumot kell megadni. |
+| settings.wmfVersion |string |Adja meg a verziót a Windows Management Framework (WMF), amely a virtuális Gépen kell telepíteni. Ez a tulajdonság **legújabb** a WMF legújabb verzióját telepíti. Ez a tulajdonság csak lehetséges értékei jelenleg **4.0**, **5.0**, **5.1**, és **legújabb**. Ezek lehetséges értékek a következők vonatkoznak a frissítéseket. Az alapértelmezett érték **legújabb**. |
+| settings.configuration.url |string |Itt adhatja meg, ahonnan letölthető a DSC-konfiguráció .zip fájl URL-címét. Ha a megadott URL-cím egy SAS-tokent igényel hozzáférést, állítsa be a **protectedSettings.configurationUrlSasToken** tulajdonság értéke az SAS-jogkivonatot. Ez a tulajdonság nem kötelező, ha **settings.configuration.script** vagy **settings.configuration.function** vannak definiálva. Ha nincs érték megadva ezekhez a tulajdonságokhoz, a bővítményt meghívja az alapértelmezett konfigurációs parancsfájl helye Configuration Manager (LCM) Konfigurálása metaadatok beállítása és argumentumot kell megadni. |
+| settings.configuration.script |string |Megadja a fájl nevét, a parancsfájl, amely tartalmazza a DSC-konfiguráció definíciójának. Ez a parancsfájl a megadott URL-címről letöltött .zip fájl a gyökérmappában kell lennie a **settings.configuration.url** tulajdonság. Ez a tulajdonság nem kötelező, ha **settings.configuration.url** vagy **settings.configuration.script** vannak definiálva. Ha nincs érték megadva ezekhez a tulajdonságokhoz, a bővítményt meghívja az alapértelmezett konfigurációs parancsfájl LCM metaadatok beállítása és argumentumot kell megadni. |
+| settings.configuration.function |string |Megadja a DSC-konfiguráció nevét. A konfiguráció nevű szerepelnie kell a parancsfájlt, amely **settings.configuration.script** határozza meg. Ez a tulajdonság nem kötelező, ha **settings.configuration.url** vagy **settings.configuration.function** vannak definiálva. Ha nincs érték megadva ezekhez a tulajdonságokhoz, a bővítményt meghívja az alapértelmezett konfigurációs parancsfájl LCM metaadatok beállítása és argumentumot kell megadni. |
 | settings.configurationArguments |Gyűjtemény |Határozza meg, amely a DSC-konfiguráció átadni kívánt paramétereket. Ez a tulajdonság nincs titkosítva. |
-| settings.configurationData.url |sztring |Adja meg az URL-cím, ahonnan letölthető a konfigurációs adatfájl (.psd1) való használatra a DSC-konfiguráció bemenetként. Ha a megadott URL-cím egy SAS-tokent igényel hozzáférést, állítsa be a **protectedSettings.configurationDataUrlSasToken** tulajdonság értéke az SAS-jogkivonatot. |
-| settings.privacy.dataCollection |sztring |Engedélyezheti vagy letilthatja a telemetriai adatok gyűjtése. Ez a tulajdonság az egyetlen lehetséges értékei a következők **engedélyezése**, **letiltása**, **''**, vagy **$null**. És ez a tulajdonság üres vagy null értékű lehetővé teszi, hogy a telemetria. Az alapértelmezett érték **''**. További információkért lásd: [Azure DSC bővítmény adatgyűjtés](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/). |
+| settings.configurationData.url |string |Adja meg az URL-cím, ahonnan letölthető a konfigurációs adatfájl (.psd1) való használatra a DSC-konfiguráció bemenetként. Ha a megadott URL-cím egy SAS-tokent igényel hozzáférést, állítsa be a **protectedSettings.configurationDataUrlSasToken** tulajdonság értéke az SAS-jogkivonatot. |
+| settings.privacy.dataCollection |string |Engedélyezheti vagy letilthatja a telemetriai adatok gyűjtése. Ez a tulajdonság az egyetlen lehetséges értékei a következők **engedélyezése**, **letiltása**, **''**, vagy **$null**. És ez a tulajdonság üres vagy null értékű lehetővé teszi, hogy a telemetria. Az alapértelmezett érték **''**. További információkért lásd: [Azure DSC bővítmény adatgyűjtés](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/). |
 | settings.advancedOptions.downloadMappings |Gyűjtemény |Határozza meg a másodlagos helyeket, ahonnan letölthető a WMF. További információkért lásd: [Azure DSC bővítmény 2.8-as és a bővítmény függőségi letöltések leképezése a saját helyét](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx). |
 | protectedSettings.configurationArguments |Gyűjtemény |Határozza meg, amely a DSC-konfiguráció átadni kívánt paramétereket. Ez a tulajdonság titkosított. |
-| protectedSettings.configurationUrlSasToken |sztring |Adja meg a SAS-jogkivonat használatával a URL-címet, amely **settings.configuration.url** határozza meg. Ez a tulajdonság titkosított. |
-| protectedSettings.configurationDataUrlSasToken |sztring |Adja meg a SAS-jogkivonat használatával a URL-címet, amely **settings.configurationData.url** határozza meg. Ez a tulajdonság titkosított. |
+| protectedSettings.configurationUrlSasToken |string |Adja meg a SAS-jogkivonat használatával a URL-címet, amely **settings.configuration.url** határozza meg. Ez a tulajdonság titkosított. |
+| protectedSettings.configurationDataUrlSasToken |string |Adja meg a SAS-jogkivonat használatával a URL-címet, amely **settings.configurationData.url** határozza meg. Ez a tulajdonság titkosított. |
 
 ## <a name="default-configuration-script"></a>Alapértelmezett konfigurációs parancsfájl
 
 A következő értékeket kapcsolatos további információkért lásd: [helyi Configuration Manager alapbeállítások](/powershell/dsc/metaconfig#basic-settings).
 A DSC-bővítmény alapértelmezett konfigurációs parancsfájl segítségével az alábbi táblázat csak a felsorolt LCM tulajdonságok konfigurálása.
 
-| Tulajdonság neve | Typo | Leírás |
+| Tulajdonság neve | Típus | Leírás |
 | --- | --- | --- |
 | protectedSettings.configurationArguments.RegistrationKey |PSCredential |Kötelező tulajdonság. Megadja a kulcsot, amellyel egy csomópont regisztrálása az Azure Automation szolgáltatással a PowerShell hitelesítő objektumot jelszóként. Ezt az értéket automatikusan felderített használatával a **listkeys műveletének** metódus az Automation-fiók ellen.  Tekintse meg a [példa](#example-using-referenced-azure-automation-registration-values). |
-| settings.configurationArguments.RegistrationUrl |sztring |Kötelező tulajdonság. Adja meg a végpont URL-címét az Automation, a csomópont próbál meg regisztrálni. Ezt az értéket automatikusan felderített használatával a **referencia** metódus az Automation-fiók ellen. |
-| settings.configurationArguments.NodeConfigurationName |sztring |Kötelező tulajdonság. Adja meg a csomópont-konfiguráció hozzárendelése a csomópontot az Automation-fiókot. |
-| settings.configurationArguments.ConfigurationMode |sztring |Az LCM meghatározza a módját. Érvényes lehetőségek a következők **ApplyOnly**, **ApplyandMonitor**, és **ApplyandAutoCorrect**.  Az alapértelmezett érték **ApplyandMonitor**. |
+| settings.configurationArguments.RegistrationUrl |string |Kötelező tulajdonság. Adja meg a végpont URL-címét az Automation, a csomópont próbál meg regisztrálni. Ezt az értéket automatikusan felderített használatával a **referencia** metódus az Automation-fiók ellen. |
+| settings.configurationArguments.NodeConfigurationName |string |Kötelező tulajdonság. Adja meg a csomópont-konfiguráció hozzárendelése a csomópontot az Automation-fiókot. |
+| settings.configurationArguments.ConfigurationMode |string |Az LCM meghatározza a módját. Érvényes lehetőségek a következők **ApplyOnly**, **ApplyandMonitor**, és **ApplyandAutoCorrect**.  Az alapértelmezett érték **ApplyandMonitor**. |
 | settings.configurationArguments.RefreshFrequencyMins | UInt32 | Megadja, hogy milyen gyakran LCM ellenőrizze a frissítéseket az Automation-fiókot.  Alapértelmezett érték **30**.  Minimális érték **15**. |
 | settings.configurationArguments.ConfigurationModeFrequencyMins | UInt32 | Itt adhatja meg, milyen gyakran az LCM ellenőrzi az aktuális konfigurációt. Alapértelmezett érték **15**. Minimális érték **15**. |
 | settings.configurationArguments.RebootNodeIfNeeded | logikai | Itt adhatja meg, e csomópont is automatikusan újraindul, ha egy DSC művelet azt kéri. Alapértelmezett érték **hamis**. |
-| settings.configurationArguments.ActionAfterReboot | sztring | Itt adhatja meg, mi történik, a rendszer újraindítása után a konfiguráció alkalmazásakor. Az érvényes beállítások: **ContinueConfiguration** és **StopConfiguration**. Alapértelmezett érték **ContinueConfiguration**. |
+| settings.configurationArguments.ActionAfterReboot | string | Itt adhatja meg, mi történik, a rendszer újraindítása után a konfiguráció alkalmazásakor. Az érvényes beállítások: **ContinueConfiguration** és **StopConfiguration**. Alapértelmezett érték **ContinueConfiguration**. |
 | settings.configurationArguments.AllowModuleOverwrite | logikai | Itt adhatja meg, hogy LCM felülírja a meglévő modulok a csomóponton. Alapértelmezett érték **hamis**. |
 
 ## <a name="settings-vs-protectedsettings"></a>beállítások és protectedSettings összehasonlítása

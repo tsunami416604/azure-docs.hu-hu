@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: kumud;tyao
 ms.openlocfilehash: 17cf6629aca6c73bc96e4cf0c172a2e87a7aafb8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799167"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61459342"
 ---
 # <a name="what-is-azure-web-application-firewall-for-azure-front-door-preview"></a>Mi az Azure webalkalmazás-tűzfal Azure bejárati ajtajának? (Előzetes verzió)
 

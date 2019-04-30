@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: juliako
 ms.openlocfilehash: 1c2ec576211741390ef91233101261a7881e4180
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652212"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61466748"
 ---
 # <a name="transforms-and-jobs"></a>Átalakítások és feladatok
 
@@ -67,7 +67,7 @@ A **átalakítása** hozhat létre a recept egyszer (1. lépés), és küldje el
 
 Lásd: [hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
-## <a name="paging"></a>Lapozás
+## <a name="paging"></a>Paging
 
 Lásd: [szűrése, rendezése, a Media Services entitások lapozás](entities-overview.md).
 
@@ -79,5 +79,5 @@ További információkért lásd: [méretezhető médiafeldolgozás a parancssor
 
 ## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: Feltöltése, kódolása és streamelése a .NET használatával kíván videókat](stream-files-tutorial-with-api.md)
+- [Oktatóanyag: Videók feltöltése, kódolása és streamelése a .NET használatával](stream-files-tutorial-with-api.md)
 - [Oktatóanyag: Elemezhet videókat a Media Services v3 .NET használatával](analyze-videos-tutorial-with-api.md)

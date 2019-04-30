@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.author: cynthn
 ms.openlocfilehash: 65d4326763ef9754159e94c9426f3aee69f80ffd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253363"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61095654"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Gyakori kérdések a Windows Virtual Machines szolgáltatásról
 Ez a cikk foglalkozik az Azure Resource Manager-alapú üzemi modellel létrehozott Windows virtuális gépek kapcsolatos gyakori kérdésekre. Ez a témakör Linux-verzióját, lásd: [gyakori kérdést Linux Virtual Machines szolgáltatásról](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -33,7 +33,7 @@ Windows 7, Windows 8.1 és Windows 10 egyes verzióit MSDN Azure előfizetői el
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Mennyi tárhelyet használhatok egy virtuális gép esetén?
 Minden adatlemez akár 4 TB-ig (4095 GB) lehet. A használható adatlemezek száma a virtuális gép méretétől függ. Részletek: [Virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Azure Managed Disks szolgáltatást ajánljuk lemezes tárolás ajánlatokra használatra az Azure Virtual Machines hosszú távú adattárolásra az adatok. Egy-egy virtuális géppel több felügyelt lemez is használható. A Managed Disks kétféle tartós tárolási lehetőséget kínál: Premium és Standard szintű Managed Disks. Díjszabási információkért tekintse meg a [Managed Disks díjszabását ismertető](https://azure.microsoft.com/pricing/details/managed-disks).
+Azure Managed Disks szolgáltatást ajánljuk lemezes tárolás ajánlatokra használatra az Azure Virtual Machines hosszú távú adattárolásra az adatok. Egy-egy virtuális géppel több felügyelt lemez is használható. A felügyelt lemezek ajánlat kétféle tartós tárolási lehetőséget kínál: Premium and Standard Managed Disks. Díjszabási információkért tekintse meg a [Managed Disks díjszabását ismertető](https://azure.microsoft.com/pricing/details/managed-disks).
 
 Az Azure storage-fiókok storage is lehetővé teszi az operációsrendszer-lemez és bármely adatlemez számára. Minden lemez egy lapblobként tárolt .vhd-fájl. A díjszabás részleteiért lásd [a Storage szolgáltatás díjszabását](https://azure.microsoft.com/pricing/details/storage/).
 
@@ -92,9 +92,9 @@ A következő felhasználónevek nem engedélyezettek:
         <td style="text-align:center">1</td><td style="text-align:center">123</td><td style="text-align:center">a</td><td style="text-align:center">actuser</td>
     </tr>
     <tr>
-        <td style="text-align:center">ADM –</td><td style="text-align:center">rendszergazda</td><td style="text-align:center">rendszergazda1</td><td style="text-align:center">admin2</td>
+        <td style="text-align:center">adm</td><td style="text-align:center">admin</td><td style="text-align:center">admin1</td><td style="text-align:center">admin2</td>
     </tr>   <tr>
-        <td style="text-align:center">Rendszergazda</td><td style="text-align:center">aspnet</td><td style="text-align:center">biztonsági mentés</td><td style="text-align:center">konzol</td>
+        <td style="text-align:center">rendszergazda</td><td style="text-align:center">aspnet</td><td style="text-align:center">biztonsági mentés</td><td style="text-align:center">konzol</td>
     </tr>
     <tr>
         <td style="text-align:center">David </td><td style="text-align:center">Vendég</td><td style="text-align:center">János</td><td style="text-align:center">tulajdonos</td>

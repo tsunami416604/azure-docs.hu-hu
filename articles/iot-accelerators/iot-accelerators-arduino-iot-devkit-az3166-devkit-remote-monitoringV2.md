@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
 ms.openlocfilehash: 3551d088c1d02715bf9ace09d7eb0048bc10111e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105250"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61451526"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>Egy IoT DevKit eszköz csatlakoztatása a távoli figyelési megoldásgyorsító
 
@@ -24,7 +24,7 @@ Ez az útmutató bemutatja, hogyan futtathat egy mintaalkalmazást az IoT DevKit
 
 A [MXChip IoT DevKit](https://aka.ms/iot-devkit) egy teljes körű Arduino kompatibilis tábla a gazdag perifériák és érzékelők van. A használatával is fejleszthet [Azure IoT-eszköz Workbench](https://aka.ms/iot-workbench) vagy [Azure IoT-eszközök](https://aka.ms/azure-iot-tools) bővítőcsomagjának Visual Studio Code-ban. A [projektek katalógus](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) mintaalkalmazások prototípus IoT-megoldások segítségével tartalmazza.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ez az oktatóanyag lépéseinek végrehajtásához először a következő feladatokat végezheti el:
 

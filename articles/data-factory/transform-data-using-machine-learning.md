@@ -12,11 +12,11 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 ms.openlocfilehash: aaf1d72a0c9c56e7d140fb615caf014507ebf263
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840562"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60928084"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Az Azure Machine Learning és az Azure Data Factory prediktív adatcsatornák létrehozása
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -124,10 +124,10 @@ A következő JSON-kódrészlet definiál egy Azure Machine Learning Batch Execu
 }
 ```
 
-| Tulajdonság          | Leírás                              | Szükséges |
+| Tulajdonság          | Leírás                              | Kötelező |
 | :---------------- | :--------------------------------------- | :------- |
 | név              | A folyamat a tevékenység neve     | Igen      |
-| leírás       | A tevékenység leírása leíró szöveg.  | Nem       |
+| description       | A tevékenység leírása leíró szöveg.  | Nem       |
 | type              | Data Lake Analytics U-SQL-tevékenység, a tevékenység típusa van **AzureMLBatchExecution**. | Igen      |
 | linkedServiceName | Társított szolgáltatások, az Azure Machine Learning társított szolgáltatást. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk. | Igen      |
 | webServiceInputs  | Kulcs érték párok, leképezése az Azure Machine Learning Web Service bemenetek nevei. Kulcsot meg kell egyeznie a közzétett Azure Machine Learning Web Service a definiált bemeneti paraméterek. A bemeneti Blob helyének megadása egy Azure Storage társított szolgáltatásokat és a fájl elérési útja tulajdonságok pár értéke. | Nem       |

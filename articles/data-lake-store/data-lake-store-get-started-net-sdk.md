@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 8ab051d49e7ed67e642ef656dfb382ed07763ed2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879709"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60877445"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Fiókkezelési műveletek az Azure Data Lake Storage Gen1 .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Adatok felügyeleti műveletek végrehajtása a Data Lake Storage Gen1 .NET SDK-
 
    | Tulajdonság | Érték |
    | --- | --- |
-   | Kategória |Sablonok/Visual C#/Windows |
+   | Category |Sablonok/Visual C#/Windows |
    | Sablon |Konzolalkalmazás |
    | Name (Név) |CreateADLApplication |
 4. A projekt létrehozásához kattintson az **OK** gombra.
@@ -99,7 +99,7 @@ Adatok felügyeleti műveletek végrehajtása a Data Lake Storage Gen1 .NET SDK-
 
 A cikk fennmaradó részéből megtudhatja, hogyan használhatja az elérhető .NET-metódusokat az olyan műveletek elvégzésére, mint a hitelesítés, a fájlok feltöltése stb.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 * Az alkalmazás végfelhasználói hitelesítésével kapcsolatban lásd: [végfelhasználói hitelesítés a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-end-user-authenticate-net-sdk.md).
 * Az alkalmazás szolgáltatások közötti hitelesítésével kapcsolatban lásd: [szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-service-to-service-authenticate-net-sdk.md).

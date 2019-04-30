@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 90a103bcdfdcd5d61433c05d4cadfa746c67e192
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979770"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61472736"
 ---
 # <a name="container-support-tab"></a>Tároló támogatási lap
 
-Használja a **támogatja** lapján a **új ajánlat** lapot, hogy biztosítsa a műszaki és felhasználói erőforrások támogatása az ajánlatot.  A következő bemeneti területeken biztosított a támogatási űrlap: **Engineering Contact**, **ügyfél-támogatási**, és **támogatási URL-címek**. Egy csillag (*) hozzáfűzi a mező nevét jelzi, hogy ez szükséges.
+Használja a **támogatja** lapján a **új ajánlat** lapot, hogy biztosítsa a műszaki és felhasználói erőforrások támogatása az ajánlatot.  A következő bemeneti területeket a támogatási űrlap áll rendelkezésre: **Kapcsolattartó mérnöki**, **ügyfél-támogatási**, és **URL-címeket támogatja**. Egy csillag (*) hozzáfűzi a mező nevét jelzi, hogy ez szükséges.
 
 ## <a name="support-form-fields"></a>Támogatási űrlap mezőit
 

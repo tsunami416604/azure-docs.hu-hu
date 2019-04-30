@@ -7,14 +7,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/05/2018
-ms.author: maxluk
-ms.openlocfilehash: 8c37093b5369d2390942bc00c1531248bc4424c8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: MT
+orgin.date: 02/05/2018
+ms.date: 04/01/2019
+ms.author: v-yiso
+ms.openlocfilehash: 0e9d87e5b344b7091a2a0cf41d6f7fa3484dfcf3
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869088"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098575"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Az Apache Spark strukturált Stream áttekintése
 
@@ -24,9 +25,9 @@ Structured Streaming-alkalmazások HDInsight Spark-fürtökön futó, és csatla
 
 Strukturált Streamelés óraszáma műveleteket alkalmaz a bemeneti adatok, például a kijelölés, leképezése, összesítési, ablakkezelési és a streamelési DataFrame hivatkozással DataFrames csatlakoztatása hosszan futó lekérdezést hoz létre. Következő lépésként, az eredményeket a file storage (Azure Storage Blobsba vagy a Data Lake Storage) vagy minden adattárhoz egyéni kódot (például SQL-adatbázis vagy a Power BI) használatával. Strukturált Streamelés a helyi hibakeresési konzolt, és egy memórián belüli tábla kimeneti is biztosít, így láthatja a létrehozott HDInsight a hibakeresési adatokat. 
 
-![A Stream feldolgozása a HDInsight és a Spark strukturált Stream](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
+![A Stream feldolgozása a HDInsight és a Spark strukturált Stream ](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
 
-> [!NOTE]  
+> [!NOTE]
 > A Spark strukturált Stream lecseréli a Spark Streaming (DStreams). Továbbítja, strukturált Stream kap megjelent fejlesztéseit és a karbantartás, amíg DStreams lesz csak a karbantartási módban. Strukturált Streamelés jelenleg nem, a szolgáltatás teljes körű DStreams, az adatforrásokhoz, és hogy támogatja a beépített fogadók, ezért a választani a megfelelő Spark stream feldolgozási beállítás kapcsolatos követelmények kiértékeléséhez. 
 
 ## <a name="streams-as-tables"></a>Streamek táblákként

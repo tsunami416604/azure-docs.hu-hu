@@ -15,11 +15,11 @@ ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
 ms.openlocfilehash: 1e0955ef2a52a6313f0449b956229e03f0a5b5e8
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662431"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61038448"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh szolgáltatásreplika
 Kérje le egy alkalmazás-erőforrást replikáinak részleteit és a egy adott szolgáltatás lista replikáját.

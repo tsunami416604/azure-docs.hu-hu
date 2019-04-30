@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: 19cbd921-7071-4221-ab86-b44d0fc0ecef
 ms.date: 08/25/2018
 ms.openlocfilehash: 1d3c4039ae823d3797e768af5892333d4d925268
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57789941"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60996106"
 ---
 # <a name="scenario-trigger-logic-apps-with-azure-functions-and-azure-service-bus"></a>Forgatókönyv: Az eseményindító logikai alkalmazások az Azure Functions és az Azure Service Bus
 
@@ -115,7 +115,7 @@ Ezután hozzon létre a függvényt, amely az eseményindító funkcionál, és 
    
    private static string logicAppUri = @"https://prod-05.westus.logic.azure.com:443/.........";
    
-   // Re-use instance of http clients if possible - https://docs.microsoft.com/en-us/azure/azure-functions/manage-connections
+   // Re-use instance of http clients if possible - https://docs.microsoft.com/azure/azure-functions/manage-connections
    private static HttpClient httpClient = new HttpClient();
    
    public static void Run(string myQueueItem, TraceWriter log)

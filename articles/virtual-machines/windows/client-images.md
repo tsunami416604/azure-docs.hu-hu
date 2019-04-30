@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: f791b17f2729af3efd2dff5d7884a168f8377154
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999752"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61403096"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Windows-ügyfél használata az Azure-ban fejlesztési/tesztelési célra
 Használhatja a Windows 7, Windows 8, Windows 10 Enterprise (x64) az Azure-ban fejlesztési/tesztelési célra Ön által vagy egy megfelelő (korábbi nevén MSDN) a Visual Studio-előfizetéssel rendelkezik. Ez a cikk ismerteti a megfelelőségi feltételek Windows 7, Windows 8.1, Windows 10 Enterprise futtatásához az Azure és a következő Azure-katalógus-rendszerképek használata.

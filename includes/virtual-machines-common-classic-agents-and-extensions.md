@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 9158e6bfe07fc5d06b0685d77eff26644b594a8b
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735787"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485271"
 ---
 A virtuálisgép-bővítmények a következőkben lehetnek a segítségére:
 

@@ -18,11 +18,11 @@ ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 37f5040585681a53743fb3426b7f7ffac36de51c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58008691"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60936279"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver számára
 
@@ -232,7 +232,7 @@ ms.locfileid: "58008691"
 
 ## <a name="terminology-definitions"></a>Terminológiai definíciók
 
-**Magas rendelkezésre állású**: Informatikai fennakadások minimálisra azáltal, hogy az informatikai szolgáltatások összetevőit redundáns, hibatűrő vagy feladatátvételi védett keresztül üzletmenet technológiák csoportja hivatkozik a *ugyanazon* adatközpontban. Ebben az esetben, az adatközpontban található, egy Azure-régióban.
+**Magas rendelkezésre állás**: Informatikai fennakadások minimálisra azáltal, hogy az informatikai szolgáltatások összetevőit redundáns, hibatűrő vagy feladatátvételi védett keresztül üzletmenet technológiák csoportja hivatkozik a *ugyanazon* adatközpontban. Ebben az esetben, az adatközpontban található, egy Azure-régióban.
 
 **Vész-helyreállítási**: Is hivatkozik a minimálisra csökkentik az informatikai szolgáltatások megszakítás és a helyreállítási de keresztben *különböző* , lehet, hogy több száz mérföld forrásadatok egy másik adatközpontban. A mi esetünkben az adatközpontok különböző Azure-régióban egy geopolitikai régión belül, vagy a Microsoft az Ön által létrehozott helyeken előfordulhat, hogy találhatók.
 

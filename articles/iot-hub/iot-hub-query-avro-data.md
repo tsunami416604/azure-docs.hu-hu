@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: asrastog
 ms.openlocfilehash: 69c890cfc3db04fe625ed7ad008f545c01844834
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993484"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61441590"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Az Avro-adatok lekérdezése az Azure Data Lake Analytics használatával
 
@@ -56,7 +56,7 @@ Ebben a szakaszban az Avro-adatok lekérdezése és exportálása az Azure Blob 
 
 6. A Visual Studióban hozzon létre egy U-SQL projekt.
  
-   ! Hozzon létre egy U-SQL project](./media/iot-hub-query-avro-data/query-avro-data-6.png)
+   !Create a U-SQL project](./media/iot-hub-query-avro-data/query-avro-data-6.png)
 
 7. Illessze be az újonnan létrehozott fájlt a következő parancsfájl tartalmát. Módosítsa a kiemelt három szakaszra osztható: a Data Lake Analytics-fiók, a kapcsolódó DLL-fájlok elérési útja és a tárfiók a helyes elérési útra.
     

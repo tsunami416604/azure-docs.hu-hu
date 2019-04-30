@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
 ms.openlocfilehash: 07da7f8905d7b8952db852d3da1dab12884de509
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041798"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60932918"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Teljesítménnyel kapcsolatos tippek Async Javához pedig az Azure Cosmos DB
 
@@ -151,7 +151,7 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
 
 12. **Natív SSL végrehajtására használható netty** Netty OpenSSL közvetlenül az SSL-megvalósítási stackhez használható jobb teljesítményt érhet el. Ennek hiányában konfigurációs netty fog térhet vissza a Java alapértelmezett SSL-megvalósítás.
 
-    az ubuntu rendszeren:
+    on Ubuntu:
     ```bash
     sudo apt-get install openssl
     sudo apt-get install libapr1

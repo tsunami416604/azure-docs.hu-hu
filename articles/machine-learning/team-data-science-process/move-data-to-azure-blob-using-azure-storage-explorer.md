@@ -12,11 +12,11 @@ ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8ec4289c641b3f140950575ac2f8016f894f2c9c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57879854"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61430818"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Adatok importálására és az Azure Blob Storage Azure Storage Explorer használatával
 Az Azure Storage Explorer egy olyan ingyenes eszköz, a Microsoft, amely lehetővé teszi, hogy az Azure Storage-adatokkal Windows, macOS és Linux rendszereken. Ez a témakör ismerteti, hogyan használható a fel- és letöltése az adatok Azure blob storage-ból. Az eszköz letölthető a [Microsoft Azure Storage Explorer](https://storageexplorer.com/).

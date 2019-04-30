@@ -9,11 +9,11 @@ ms.date: 09/06/2017
 ms.author: dineshmurthy
 ms.subservice: common
 ms.openlocfilehash: ae6ceee33aa6d96c360782c33232e0c7561cf209
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58015328"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61483111"
 ---
 # <a name="azure-storage-client-tools"></a>Azure Storage-ügyféleszközök
 Az Azure Storage felhasználói gyakran szeretné tudni megtekintése/felhasználhatja azok adatait egy Azure Storage ügyféloldali eszközzel. Az alábbi táblázatokban látható számos olyan eszközt, amely lehetővé teszi ezt. Az "X" elhelyezni a minden egyes Ha, lehetővé teszi a számba venni, illetve az adatok absztrakciós eléréséhez. A táblázatban is látható, ha az eszközök ingyenes-e vagy sem. "Próbaverzió" jelzi, hogy van egy ingyenes próbaverzióra, de a teljes termékkiadásban használata nem ingyenes. "Y/N", az azt jelzi, hogy egy verzió érhető el ingyenes, amíg egy másik verzió elérhető és megvásárolható kiadása.

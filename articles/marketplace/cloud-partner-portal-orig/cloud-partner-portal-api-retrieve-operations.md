@@ -15,13 +15,13 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: pbutlerm
 ms.openlocfilehash: a7666ada6c4535010297415eac8b0bd9e5226d9e
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974467"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61094211"
 ---
-<a name="retrieve-operations"></a>Műveletek beolvasása
+<a name="retrieve-operations"></a>Műveletek lekérése
 ===================
 
 Olvassa be az ajánlat vagy lekérni egy adott művelet a megadott műveletazonosító: az összes műveletet. Az ügyfél lekérdezési paraméterek segítségével szűrheti a futó műveletek.
@@ -40,10 +40,10 @@ Olvassa be az ajánlat vagy lekérni egy adott művelet a megadott műveletazono
 
 |  **Name (Név)**          |      **Leírás**                                                                                           | **Adattípus** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  publisherId       |  Például a közzétevő azonosítója `Contoso`                                                                   |  Karakterlánc       |
-|  OfferId           |  Ajánlat azonosítója                                                                                              |  Karakterlánc       |
-|  operationId       |  GUID azonosítója, amely egyedileg azonosítja az ajánlatot a műveletet. Az operationId lehet beolvasni az API-val, és is adja vissza minden olyan hosszú ideig futó művelet esetén a válasz HTTP-fejléchez például a [közzététel ajánlat](./cloud-partner-portal-api-publish-offer.md) API-t.  |   GUID   |
-|  filteredStatus    | Szűrés állapot szerint használt opcionális lekérdezési paraméter (például `running`) az API által visszaadott a gyűjteményen.  |   Karakterlánc |
+|  publisherId       |  Például a közzétevő azonosítója `Contoso`                                                                   |  String       |
+|  ajánlatazonosító           |  Ajánlat azonosítója                                                                                              |  String       |
+|  operationId       |  GUID azonosítója, amely egyedileg azonosítja az ajánlatot a műveletet. Az operationId lehet beolvasni az API-val, és is adja vissza minden olyan hosszú ideig futó művelet esetén a válasz HTTP-fejléchez például a [közzététel ajánlat](./cloud-partner-portal-api-publish-offer.md) API-t.  |   Guid   |
+|  filteredStatus    | Szűrés állapot szerint használt opcionális lekérdezési paraméter (például `running`) az API által visszaadott a gyűjteményen.  |   String |
 |  API-verzió       | API legújabb verziója                                                                                           |    Dátum      |
 |  |  |  |
 

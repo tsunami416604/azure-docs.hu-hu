@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: xpouyat;anilmur;juliako
 ms.openlocfilehash: 608ca4bc3b58dd3c718d6239f90260154d2f6c3a
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189478"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61465542"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Több bemeneti fájlok és összetevő tulajdonságai párbeszédpanel használata a prémium szintű kódoló
 ## <a name="overview"></a>Áttekintés
@@ -469,9 +469,9 @@ Kódolás, kövesse ezeket a lépéseket:
 * [Introducing Premium Encoding in Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 * [Az Azure Media Services prémium szintű Encoding használata](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 * [Az Azure Media Services az igény szerinti tartalomterjesztésről kódolás](media-services-encode-asset.md#media-encoder-premium-workflow)
-* [Media Encoder Premium munkafolyamat formátumai és kodekei](media-services-premium-workflow-encoder-formats.md)
+* [A Media Encoder Premium-munkafolyamat formátumai és kodekjei](media-services-premium-workflow-encoder-formats.md)
 * [Minta munkafolyamat-fájlok](https://github.com/Azure/azure-media-services-samples)
-* [Az Azure Media Services Explorer eszköz](https://aka.ms/amse)
+* [Azure Media Services Explorer eszköz](https://aka.ms/amse)
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

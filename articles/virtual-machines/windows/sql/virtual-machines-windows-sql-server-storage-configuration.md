@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: ninarn
 ms.openlocfilehash: da850b8ff9174fa310c5247cd7e99af69db28a8b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328435"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477417"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Tárolási konfiguráció SQL Server rendszerű virtuális gépekhez
 
@@ -69,8 +69,8 @@ Ha használja a következő Resource Manager-sablonok, két premium adatlemezek 
 
 Meglévő SQL Server virtuális gépekhez módosíthatja az egyes tárolási beállításai az Azure Portalon. Válassza ki a virtuális Gépet, és nyissa meg a beállítások területen válassza ki az SQL Server Configuration. Az SQL Server-konfigurációs panelen jelenik meg a jelenlegi storage használata a virtuális gép. Minden meghajtó, amely létezik a virtuális gép ezen a diagramon jelennek meg. Minden meghajtó a ténylegesen felhasznált tárterület jeleníti meg a négy részből áll:
 
-* SQL data
-* SQL log
+* SQL-adatok
+* SQL-napló
 * Egyéb (az SQL tároló)
 * Elérhető
 
@@ -129,8 +129,8 @@ Azure a következő beállításokat használja a tárolókészlet létrehozás�
 | Lemezméretek |1 TB |
 | Gyorsítótár |Olvasás |
 | Foglalási mérete |64 KB-os NTFS foglalási egységek mérete |
-| Azonnali fájl inicializálása |Engedélyezve |
-| Memórialapok zárolása a memóriában |Engedélyezve |
+| Azonnali fájl inicializálása |Enabled |
+| Memórialapok zárolása a memóriában |Enabled |
 | Helyreállítás |A helyreállítási egyszerű (rugalmasság nélküli) |
 | Oszlopok száma |Adatlemezek száma<sup>1</sup> |
 | A TempDB helye |Az adatlemezek tárolása<sup>2</sup> |

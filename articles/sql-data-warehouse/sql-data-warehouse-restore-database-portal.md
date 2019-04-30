@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 2d59235b067d9571bc8b64c33799431be6489502
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087210"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61421395"
 ---
 # <a name="restore-azure-sql-data-warehouse-portal"></a>Állítsa vissza az Azure SQL Data Warehouse (portál)
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "58087210"
 > 
 > Ebben a cikkben megtudhatja hogyan állíthatja vissza az Azure SQL Data Warehouse az Azure portal használatával.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 **A dtu-k kapacitásának ellenőrzése.** Az SQL Data Warehouse minden példánya egy SQL Servert (például a myserver.database.windows.net) rendelkezik egy alapértelmezett data átviteli egységek (DTU) kvóta üzemelteti. Az SQL Data Warehouse a visszaállításhoz, győződjön meg arról, hogy az SQL-kiszolgáló rendelkezik-e elég fennmaradó DTU-kvótával az adatbázis, amely már visszaállítása. DTU-kvóta kiszámítása vagy kérjen további dtu-k kezelésével kapcsolatos információkért lásd: [DTU-kvóta módosítási kérése][Request a DTU quota change].
 
 ## <a name="restore-an-active-or-paused-database"></a>Egy aktív vagy szüneteltetett adatbázis visszaállítása

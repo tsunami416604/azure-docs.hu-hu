@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 7d3283b03d15278d1f7fd42a72b154dab1a442b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878527"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60878766"
 ---
 # <a name="copy-data-between-azure-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Adatok másolása az Azure Data Lake Storage Gen1 és a Sqoop használata Azure SQL database között
 Ismerje meg, hogyan Apache Sqoop használatával Azure SQL Database és az Azure Data Lake Storage Gen1 közötti adatok importálása és exportálása.

@@ -9,11 +9,11 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: 42e4b545a48bcbd0ad4b7faf077ebdbfe21648b1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006692"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61002681"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Az Azure Data Catalog fejlesztői fogalmak
 A Microsoft **Azure Data Catalog** egy teljes körűen felügyelt felhőszolgáltatás, amely lehetőségeket kínál az adatforrások felderítését és a közösségi adatforrás-metaadatokat. A fejlesztők a a szolgáltatás a REST API-kon keresztül. A fejlesztők számára, hogy sikeresen integrálása a service-ben megvalósított fogalmak értelmezéséhez fontos **Azure Data Catalog**.
@@ -224,7 +224,7 @@ Támogatott protokollok csoportját programozott módon is kiterjeszthető (lás
 <tr><td>DataSourceProtocolIdentityProperty</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>név</td><td>string</td><td>A tulajdonság nevét. Neve 1 – 100 karakter hosszúságú, betűvel kezdődhet kell lennie, és csak betűket és számokat tartalmazhat.</td></tr>
 <tr><td></td><td>type</td><td>string</td><td>A tulajdonság típusa. Támogatott értékek: "logikai" logikai ","bájtos","guid","int","egész szám","hosszú","string","url"</td></tr>
-<tr><td></td><td>ignoreCase</td><td>bool</td><td>Azt jelzi, hogy esetben figyelmen kívül lehet hagyni tulajdonság értékét használatakor. Csak akkor adható "string" típusú tulajdonságok esetében. Alapértelmezett értéke FALSE (hamis).</td></tr>
+<tr><td></td><td>ignoreCase</td><td>logikai</td><td>Azt jelzi, hogy esetben figyelmen kívül lehet hagyni tulajdonság értékét használatakor. Csak akkor adható "string" típusú tulajdonságok esetében. Alapértelmezett értéke FALSE (hamis).</td></tr>
 <tr><td></td><td>urlPathSegmentsIgnoreCase</td><td>logikai]</td><td>Azt jelzi, hogy esetben figyelmen kívül lehet hagyni minden egyes szegmens az URL-cím elérési út. Csak akkor adható "url" típusú tulajdonságok esetében. Alapértelmezett érték: [false].</td></tr>
 
 <tr><td>DataSourceProtocolIdentitySet</td><td></td><td></td><td></td></tr>

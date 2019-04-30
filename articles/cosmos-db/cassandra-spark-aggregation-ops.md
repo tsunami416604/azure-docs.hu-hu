@@ -1,20 +1,22 @@
 ---
 title: A Spark az Azure Cosmos DB Cassandra API táblákon összesített műveletek
 description: Ez a cikk ismerteti az Azure Cosmos DB Cassandra API táblák Spark kapcsolatos művelet-végrehajtási egyszerű aggregálástól
-author: kanshiG
-ms.author: govindk
+author: rockboyfor
+ms.author: v-yeche
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 09/24/2018
+origin.date: 09/24/2018
+ms.date: 04/15/2019
 ms.openlocfilehash: 4fbb86f4fbda9b8e521f7465bb8bb3d18602ca13
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877465"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60894186"
 ---
+<!--Verify sucessfully-->
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>A Spark az Azure Cosmos DB Cassandra API táblákon összesített műveletek 
 
 Ez a cikk ismerteti az egyszerű aggregálástól műveleteket végeznek az Azure Cosmos DB Cassandra API táblák Spark rendszerből. 
@@ -34,7 +36,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -69,7 +71,6 @@ booksDF.write
 
 ## <a name="count-operation"></a>A művelet száma
 
-
 ### <a name="rdd-api"></a>RDD-API
 
 ```scala
@@ -101,28 +102,28 @@ Válasszon egy [tárolási lehetőség]( https://spark.apache.org/docs/2.2.0/rdd
 
 * (Kísérleti funkció) OFF_HEAP: Hasonló MEMORY_ONLY_SER, de a halommemória memóriában tárolja az adatokat, és engedélyezni kell a kívánt időben halommemória memóriát igényel. 
 
-```scala
-//Workaround
-import org.apache.spark.storage.StorageLevel
+    ```scala
+    //Workaround
+    import org.apache.spark.storage.StorageLevel
 
-//Read from source
-val readBooksDF = spark
-  .read
-  .cassandraFormat("books", "books_ks", "")
-  .load()
+    //Read from source
+    val readBooksDF = spark
+      .read
+      .cassandraFormat("books", "books_ks", "")
+      .load()
 
-//Explain plan
-readBooksDF.explain
+    //Explain plan
+    readBooksDF.explain
 
-//Materialize the dataframe
-readBooksDF.persist(StorageLevel.MEMORY_ONLY)
+    //Materialize the dataframe
+    readBooksDF.persist(StorageLevel.MEMORY_ONLY)
 
-//Subsequent execution against this DF hits the cache 
-readBooksDF.count
+    //Subsequent execution against this DF hits the cache 
+    readBooksDF.count
 
-//Persist as temporary view
-readBooksDF.createOrReplaceTempView("books_vw")
-```
+    //Persist as temporary view
+    readBooksDF.createOrReplaceTempView("books_vw")
+    ```
 
 ### <a name="sql"></a>SQL
 
@@ -369,3 +370,6 @@ select book_name,book_price from books_vw order by book_price desc limit 3;
 Tábla másolási műveletek végrehajtásához lásd:
 
 * [Tábla másolási műveletek](cassandra-spark-table-copy-ops.md)
+
+<!--Verify sucessfully-->
+<!--Update_Description: wording update -->

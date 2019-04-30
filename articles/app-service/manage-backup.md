@@ -16,11 +16,11 @@ ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 7e697329e83b530157e490b04f5155d28d243bb6
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549488"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61271704"
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
 A biztonsági mentési és visszaállítási funkciójának [Azure App Service](overview.md) könnyedén hozhat létre alkalmazást biztonsági mentések manuális vagy ütemezett teszi lehetővé. Az alkalmazás írja felül a meglévő alkalmazás vagy egy másik alkalmazásba való visszaállítása visszaállíthatja egy korábbi állapotáról pillanatképet. 

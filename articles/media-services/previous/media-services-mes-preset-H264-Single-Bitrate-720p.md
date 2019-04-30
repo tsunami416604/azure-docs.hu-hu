@@ -1,8 +1,8 @@
 ---
 title: H264 egyféle sávszélességű 720p Media Encoder Standard előre beállított – Azure |} A Microsoft Docs
 description: A témakör áttekintést nyújt a **H264 egyféle sávszélességű 720p** feladat előbeállítást.
-author: Juliako
-manager: femila
+author: WenJason
+manager: digimobile
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
+origin.date: 03/19/2019
+ms.date: 04/01/2019
+ms.author: v-jay
 ms.openlocfilehash: d43b78b83ca1dcb60dc6afb17424354975681494
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58260162"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61129596"
 ---
-# <a name="h264-single-bitrate-720p"></a>H264 Egyféle sávszélességű 720p
+# <a name="h264-single-bitrate-720p"></a>H264 Single Bitrate 720p
 `Media Encoder Standard` határozza meg a kódolási készletek is használhatja a kódolási feladat létrehozásakor. Használhatja egy `preset name` mely formátumba, amelyet szeretne kódolása a media-fájl megadásához. Vagy létrehozhat saját JSON vagy XML-alapú készletek (UTF-8 és UTF-16 kódolást használatával. Az egyéni készletet a kódoló majd kellene átadnia. Ez által támogatott összes előre definiált nevek a lista `Media Encoder Standard` kódoló, lásd: [feladat készletek Media Encoder standard](media-services-mes-presets-overview.md).  
   
  Ez a témakör bemutatja a `H264 Single Bitrate 720p` előre definiált XML és JSON formátumban.  

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: snehaa
 ms.openlocfilehash: 17cead93325da903161d95b315435d6e7b106dbb
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578917"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61292977"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Az Azure Migrate – gyakori kérdések (GYIK)
 
@@ -132,11 +132,11 @@ A függőségi ügynökök által gyűjtött adatok is a titkosított átvitel (
 
 ### <a name="how-does-the-collector-communicate-with-the-vcenter-server-and-the-azure-migrate-service"></a>A gyűjtő miként nem kommunikál a vCenter-kiszolgáló és az Azure Migrate szolgáltatás?
 
-A gyűjtőberendezés csatlakozik a vCenter-kiszolgáló (a 443-as port) a készülék a felhasználó által megadott hitelesítő adatokkal. A vCenter Server használatával a VMware PowerCLI gyűjtéséhez a vCenter-kiszolgáló által kezelt virtuális gépek metaadatait kérdezi le. Azt is konfigurációs adatokat gyűjti össze (magok, memória, lemezek, hálózati adapter stb.) virtuális gépek és az egyes virtuális gépek korábbi teljesítménye az utolsó egy hónap a vCenter Server alkalmazásból. Az összegyűjtött metaadatok majd érkezik az Azure Migrate szolgáltatás (interneten keresztül https) az értékeléshez. [További információ](concepts-collector.md)
+A gyűjtőberendezés a felhasználó a berendezésben megadott hitelesítő adataival csatlakozik a vCenter-kiszolgálóhoz (443-as port). A berendezés a VMware PowerCLI használatával kérdezi le a vCenter-kiszolgálót annak érdekében, hogy metaadatokat gyűjtsön a vCenter-kiszolgáló által felügyelt virtuális gépekről. A berendezés konfigurációs adatokat gyűjt a virtuális gépekről (a magokról, a memóriáról, a lemezekről, a hálózati adapterekről stb.) és a virtuális gépek utolsó egy havi teljesítményelőzményeiről a vCenter-kiszolgálóról. A rendszer értékelés céljából elküldi az összegyűjtött metaadatokat az Azure Migrate szolgáltatásnak (interneten, https-kapcsolaton keresztül). [További információ](concepts-collector.md)
 
 ### <a name="can-i-connect-the-same-collector-appliance-to-multiple-vcenter-servers"></a>Csatlakozhatok az azonos gyűjtőberendezés több vCenter-kiszolgáló?
 
-Igen, egy gyűjtőberendezés segítségével több vCenter-kiszolgálók felderítéséhez, de nem egy időben. A felderítés futtatása után kell.
+Igen, egyetlen gyűjtőberendezés több vCenter-kiszolgáló felderítéséhez is használható, de nem egyszerre. A felderítéseket egymás után kell futtatnia.
 
 ### <a name="is-the-ova-template-used-by-site-recovery-integrated-with-the-ova-used-by-azure-migrate"></a>A Site Recovery által használt OVA sablon integrálva van az Azure Migrate által használt OVA?
 
@@ -144,7 +144,7 @@ Jelenleg nincs nincs integráció. A. A Site Recovery OVA-sablon beállítása a
 
 ### <a name="i-changed-my-machine-size-can-i-rerun-the-assessment"></a>Módosítottam a saját gép méretét. Futtathatja az értékelést?
 
-Ha módosítja az értékelni kívánt virtuális gép beállításait, az eseményindító Fedezze fel a gyűjtőberendezés segítségével újból. A berendezés, használja a **gyűjtés újbóli elindítása** ehhez lehetőséget. Miután elkészült a gyűjtemény, válassza az **Újraszámítás** lehetőséget az értékeléshez a portálon, hogy megkapja a frissített értékelési eredményeket.
+Ha módosítja a beállításokat egy értékelni kívánt virtuális gépen, aktiválja újra az észlelést a gyűjtőberendezés használatával. Ehhez használja a **Gyűjtés újbóli elindítása** lehetőséget a berendezésben. Miután elkészült a gyűjtemény, válassza az **Újraszámítás** lehetőséget az értékeléshez a portálon, hogy megkapja a frissített értékelési eredményeket.
 
 ### <a name="how-can-i-discover-a-multi-tenant-environment-in-azure-migrate"></a>Hogyan képes felderíteni egy több-bérlős környezetben az Azure Migrate?
 

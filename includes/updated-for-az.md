@@ -9,7 +9,7 @@ ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188327"
+ms.locfileid: "62090035"
 ---
 > [!NOTE]
 > Ez a cikk az Azure PowerShell-lel Az új modul használatára frissítve lett. Továbbra is használhatja az AzureRM-modul, amely hibajavításokat, amíg nem legalább díjaira továbbra is December 2020-ra.

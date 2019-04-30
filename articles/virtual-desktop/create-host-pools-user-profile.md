@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 04/05/2019
 ms.author: helohr
 ms.openlocfilehash: 0cb4df099faad8ca482fd15cf0bb50504c1528ab
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276388"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60883870"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Felhasználói profil megosztásának beállítása a gazdagépcsoporton
 
@@ -62,9 +62,9 @@ Konfigurálja a virtuális gépek a FSLogix szoftverrel, tegye a következőt az
 6. Hozzon létre egy kulcsot nevű **profilok**.
 7. Hozza létre a profilok kulcs a következő értékeket:
 
-| Name (Név)                | Typo               | Data/Value                        |
+| Name (Név)                | Típus               | Data/Value                        |
 |---------------------|--------------------|-----------------------------------|
-| Engedélyezve             | DWORD              | 1                                 |
+| Enabled             | DWORD              | 1                                 |
 | VHDLocations        | Karakterláncsoros érték | "A fájlmegosztás hálózati elérési út"     |
 
 >[!IMPORTANT]

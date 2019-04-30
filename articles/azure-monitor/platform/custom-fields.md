@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: bwren
 ms.openlocfilehash: 974a3391c592a1caf7bdcc6d9e01032f0c73aaa6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002867"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61461816"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Egyéni mezőket hozhat létre a Log Analytics-munkaterületet az Azure monitorban
 

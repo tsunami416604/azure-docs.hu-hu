@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 3fdb0f566789382a1606b19e4fac179f9ecf40cd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887459"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122957"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Megtekintése és módosítása az állomásnevek
 Ahhoz, hogy a szerepkörpéldány állomásnév szerint lehet hivatkozni, állítsa az értékét az állomásnév a szolgáltatáskonfigurációs fájlban az egyes szerepkörökhöz. Ezt teheti, hogy adja hozzá a kívánt állomás nevét a **vmName** attribútuma a **szerepkör** elemet. Értékét a **vmName** attribútuma minden egyes szerepkör-példány állomásneve szolgál alapul. Például ha **vmName** van *webrole* , de az adott szerepkör három példányban, a gazdagép-nevek a példányok lesznek *webrole0*, *webrole1*, és *webrole2*. Nem kell megadnia egy virtuálisgép-nevet a konfigurációs fájlban, mert a virtuális gép az állomásnév a virtuális gép neve alapján van feltöltve. Microsoft Azure-szolgáltatás konfigurálásával kapcsolatos további információkért lásd: [Azure szolgáltatás konfigurációs sémáját (.cscfg fájl)](https://msdn.microsoft.com/library/azure/ee758710.aspx)

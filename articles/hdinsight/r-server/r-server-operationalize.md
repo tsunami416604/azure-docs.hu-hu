@@ -1,7 +1,6 @@
 ---
 title: A HDInsight - Azure Machine Learning-szolgáltatások üzembe helyezése
 description: Útmutató az Azure HDInsight Machine Learning-szolgáltatások üzembe helyezése.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: d0cae4210fa313c5d6e1f33987422e7b0d53e76a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
-ms.translationtype: MT
+ms.openlocfilehash: 916c4fae8eed9451080f92e97743876e89bd25ea
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579957"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124577"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Machine Learning-szolgáltatások az Azure HDInsight-fürt üzembe helyezése
 
@@ -79,7 +78,7 @@ Után végezze el az adatok modellezése a HDInsight fürt Machine Learning-szol
 
     d. A menüelemekért jelenik meg, adja meg a **E** térjen vissza a főmenübe, majd **8** , lépjen ki az admin segédprogramból.
 
-### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Hosszú késések használatakor az Apache Spark-webszolgáltatása
+### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Long delays when consuming web service on Apache Spark
 
 Ha hosszú késleltetést tapasztal, amikor a létrehozott webszolgáltatások használata próbál számítási környezetben mrsdeploy függvényekkel egy Apache Spark, szükség lehet hozzá néhány hiányzó mappát. A Spark-alkalmazás egy *rserve2* nevű felhasználóhoz tartozik, ha egy mrsdeploy függvényeket használó webszolgáltatásból hívja meg. Megkerülő megoldás a problémára:
 

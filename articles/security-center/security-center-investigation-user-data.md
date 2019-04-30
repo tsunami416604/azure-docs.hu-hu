@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rkarlin
 ms.openlocfilehash: bec9be627937913c268d65bb6cdadcf68c7a3fb4
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244298"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60909213"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Az Azure Security Center vizsgálat található felhasználói adatok kezelése
 Ez a cikk az Azure Security Center vizsgálati funkciójáról található felhasználói adatok kezelése ismertetése. Vizsgálat adatok tárolása [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md) és a Security Centerben elérhető. Felhasználói adatok kezelése lehetőség törölje vagy exportálhat adatokat.

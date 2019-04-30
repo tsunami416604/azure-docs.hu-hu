@@ -1,20 +1,22 @@
 ---
 title: Az Azure Cosmos DB Gremlin API adatparticionálás
 description: Ismerje meg, hogyan használhatja egy particionált graph Azure Cosmos DB-ben. Ez a cikk is ismerteti a követelmények és ajánlott eljárások a particionált grafikon.
-author: luisbosquez
-ms.author: lbosq
+author: rockboyfor
+ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: conceptual
-ms.date: 12/06/2018
+origin.date: 12/06/2018
+ms.date: 03/18/2019
 ms.custom: seodec18
 ms.openlocfilehash: f1e486a302b440d819e15ef86f8d76ea5e50d201
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036324"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60888410"
 ---
+<!--Verify sucessfully-->
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Az Azure Cosmos DB egy particionált graph használatával
 
 Az Azure Cosmos DB Gremlin API-legfontosabb funkcióit egyik képes kezelni a nagyméretű gráfok vízszintes méretezés során. Horizontális skálázás a gazdafájlon keresztül, a [képességek az Azure Cosmos DB particionálási](partition-data.md). A tárolók egymástól függetlenül méretezhetők a tárolás és átviteli sebesség tekintetében. Létrehozhat tárolókat az Azure Cosmos dB-ben, amely a grafikon adatainak tárolásához automatikusan skálázhatók. Az adatok automatikusan kiegyensúlyozott alapján a megadott **partíciókulcs**.
@@ -37,27 +39,26 @@ Részletek, amelyek egy particionált gráftárolót létrehozásakor konfigurá
 
     - `/id` és `/label` egy tárolóhoz, a Gremlin API partíciókulcsok nem támogatottak.
 
-
     - Csúcs azonosítója, majd kiválasztja **használatával a `.has()` lépéssel megadhatja azokat a partíciós kulcs tulajdonságát**: 
-    
+
         ```
         g.V('vertex_id').has('partitionKey', 'partitionKey_value')
         ```
-    
+
     - A csúcspont kiválasztásával **egy rekord, beleértve a partíciókulcs-értékkel, és az azonosító megadása**: 
-    
+
         ```
         g.V(['partitionKey_value', 'vertex_id'])
         ```
-        
+
     - Adjon meg egy **partíciókulcs és azonosítók rekordokat tartalmazó tömb**:
-    
+
         ```
         g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
         ```
-        
+
     - Csúcspontok készletét kiválasztása és **partíciókulcs-értékek listáját megadó**: 
-    
+
         ```
         g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
         ```
@@ -81,3 +82,6 @@ Ezután folytassa a következő cikkekben:
 * Ismerje meg [particionálási és horizontális az Azure Cosmos DB](partition-data.md).
 * További információ a [Gremlin-támogatás a Gremlin API](gremlin-support.md).
 * Ismerje meg [Gremlin API bemutatása](graph-introduction.md).
+
+<!--Update_Description: new articles on  -->
+<!--ms.date: 03/18/2019-->

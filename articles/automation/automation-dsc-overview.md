@@ -11,11 +11,11 @@ ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: da746d80e3ae1fa5cc02683a8bb0ff0402722b8e
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524939"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61071482"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation konfiguráló áttekintése
 
@@ -62,7 +62,7 @@ A Linux operációs rendszert futtató csomópontok esetében a következő disz
 
 A DSC Linux-bővítmény támogatja a Linux-disztribúciók [által támogatott Azure-beli](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) kivételével:
 
-Disztribúció | Verzió
+Disztribúció | Version
 -|-
 Debian  | Az összes verzió
 Ubuntu  | 18.04

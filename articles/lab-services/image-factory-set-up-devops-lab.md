@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: abb85d568e26e4b6f85b960a2560aae570daf201
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149180"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61320624"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Rendszerkép-előállító futtatása az Azure DevOpsból
 Ez a cikk ismerteti az Azure DevOps (korábbi nevén Visual Studio Team Services) a rendszerkép gyári futtatásához szükséges összes előkészített.
@@ -78,7 +78,7 @@ Ezen a ponton rendelkezik egy Git-adattárból az Azure DevOps tárolt forrásf�
 Egyszerűsítése érdekében a parancssori paraméterek, a lemezkép gyári meghajtó build változók készletét kulcsértékeit beágyazására. Válassza ki a **változók** lapra, és megjelenik több alapértelmezett változók listáját. Itt látható a listában, adja meg az Azure DevOps változók:
 
 
-| Változó neve | Value | Megjegyzések |
+| Változó neve | Érték | Megjegyzések |
 | ------------- | ----- | ----- |
 | ConfigurationLocation | /Scripts/ImageFactory/Configuration | Ez a teljes elérési útja a tárházban, a **konfigurációs** mappát. Ha importálta a fenti egész tárházban, a bal oldali értéke helyes-e. Ellenkező esetben frissítse, hogy a konfigurációs helyre mutasson. |
 | DevTestLabName | MyImageFactory | A labor létrehozása az Azure DevTest Labs szolgáltatásban, mivel az előállító rendszerképek létrehozásához használt név. Ha még nincs fiókja, hozzon létre egyet. Győződjön meg arról, hogy a labor ugyanahhoz az előfizetéshez tartozik, amely hozzáfér a szolgáltatásvégpontot. |

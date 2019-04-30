@@ -5,27 +5,29 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/11/2019
+ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 5c8f70ff76da458fcc1433226a51012fb7ccd18e
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: 81947baccf723ab759f2dc24df40b81af4502e09
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544636"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61004010"
 ---
 # <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
 Ez a cikk segít jobban megismerheti, mit tartalmaz az Azure Cost Managementben. És ismerteti, hogy milyen gyakran adatot dolgoz fel, összegyűjtött megjelenített és lezárt. A számlázás az Azure-használat havonta. Azonban az Azure-előfizetés típusa határozza meg, ha az elszámolási hónap vége. Különféle tényezők alapján, hogy milyen gyakran a Cost Management kap a használati adatok változik. E tényezők közé tartozik, mennyi ideig tart az adatok feldolgozásához, és hogy milyen gyakran Azure-szolgáltatások használati a számlázási rendszerhez gridre bocsáthatja ki.
 
+A Cost Management minden használati és beszerzési, beleértve a foglalásokat és a nagyvállalati szerződés (EA) fiókok külső ajánlatokat tartalmaz. A Microsoft ügyfél-szerződés (MCA) fiókok és a használatalapú fizetéses előfizetéseket csak az Azure és a Marketplace-szolgáltatások használati tartalmazza. Támogatás és más költségei nem szerepelnek. Költségek becslése mindaddig, amíg a számla alapján jön létre, és nem kéttényezős kredittel jutalmazzuk.
+
 ## <a name="supported-microsoft-offers"></a>Támogatott Microsoft-ajánlatok
 
 Az alábbi információkat jeleníti meg a jelenleg támogatott [Microsoft Azure-ajánlatokról](https://azure.microsoft.com/support/legal/offer-details/) az Azure Cost Managementben.  Azure-ajánlatot az Azure-előfizetés, amely rendelkezik a típusa.
 
-| Kategória  | **Ajánlat neve** | **Kvóta azonosítója** | **Csomag száma** |
+| Category  | **Ajánlat neve** | **Kvóta azonosítója** | **Csomag száma** |
 | --- | --- | --- | --- |
 | **Azure Germany** | [Azure Germany Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-de-0003p)      | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
 | **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P |
@@ -49,7 +51,7 @@ Az alábbi információkat jeleníti meg a jelenleg támogatott [Microsoft Azure
 
 Az alábbi táblázat az ajánlatok nem támogatott.
 
-| Kategória  | **Ajánlat neve** | **Kvóta azonosítója** | **Csomag száma** |
+| Category  | **Ajánlat neve** | **Kvóta azonosítója** | **Csomag száma** |
 | --- | --- | --- | --- |
 | **Cloud Solution Provider (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **Cloud Solution Provider (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
@@ -86,6 +88,7 @@ Az alábbi táblázatokban foglalt, vagy nem Költségkezelés az adatokat. Mind
 |   | Kreditek – további információkért lásd: [feltételek magyarázni a számlához](../billing/billing-understand-your-invoice.md). |
 
 <sup>1</sup> azure-szolgáltatás használati foglalás alapul, és egyeztetett árak.
+
 <sup>2</sup> marketplace-ajánlat használati nem érhető el a használatalapú fizetés, MSDN-Előfizetők, és Visual Studio jelenleg kínál.
 
 **Metadata**
@@ -113,7 +116,7 @@ Használatalapú fizetéses előfizetések – Ha az elszámolási hónap május
 
 ### <a name="rerated-data"></a>Rerated adatok
 
-Ha használja a [Cost Management API-k](https://aka.ms/costmgmt/docs), a Power BI, vagy az Azure Portalon adatok lekéréséhez, várható első újra értékelik, és ennek megfelelően módosítja, a számla bezárásáig a jelenlegi számlázási időszak fel díjat.
+Ha használja a [Cost Management API-k](https://aka.ms/costmgmt/docs), Power bi-ban, vagy az Azure Portalon adatok lekéréséhez, várható első újra értékelik, és ennek megfelelően módosítja, a számla bezárásáig a jelenlegi számlázási időszak fel díjat.
 
 ## <a name="usage-data-update-frequency-varies"></a>Használati adatok frissítési gyakoriság változik
 

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: sngun
 ms.openlocfilehash: 1a63de4642850e425cc785e0d89197178ceec1a6
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041016"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60889789"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Cosmos DB és az Azure App Service Web Apps használatával egy Azure Resource Manager-sablon üzembe helyezése
 Az oktatóanyag bemutatja, hogyan használhatja az Azure Resource Manager-sablon üzembe helyezése és integrálása [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), egy [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) web app és a egy minta-webalkalmazáshoz.

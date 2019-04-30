@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 10/6/2018
 ms.author: victorh
 ms.openlocfilehash: 891adfacde6e46b1d8fe8e2f6b5fb39c90ce27a0
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853708"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61296378"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>DNS-rekordok kezelése és a rekordhalmazok az Azure portal használatával
 
@@ -91,7 +91,7 @@ Az Azure portal segítségével egy rekordhalmaz rekordok eltávolítása. Vegye
 
 A további rekordtípusok NS és SOA típusú rekordoknak, automatikusan létrehozott eltérően kezelik.
 
-### <a name="modify-soa-records"></a>SOA típusú rekordok módosítása
+### <a name="modify-soa-records"></a>Modify SOA records
 
 Nem adhat hozzá és rekordok eltávolítása az automatikusan létrehozott, állítsa be a zóna legfelső pontján SOA típusú rekordját (név = "\@"). Azonban módosíthatja a SOA típusú rekordját (kivéve a "Host") belül paraméterek egyikét, és a rekordhalmaz TTL.
 

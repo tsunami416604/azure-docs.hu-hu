@@ -17,18 +17,18 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: manayar
 ms.openlocfilehash: 3d472aeaae7e7f02eba58aadea1df042d6c0f27b
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741422"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108072"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Egy virtuálisgép-méretezési csoportban létrehozása a Visual Studióval
 Ez a cikk bemutatja, hogyan helyezhet üzembe egy Azure Virtual Machine Scale Set használatával a Visual Studio erőforráscsoport üzemelő példányához.
 
 [Az Azure Virtual Machine Scale Sets](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/) van olyan Azure Compute-erőforrások üzembe helyezése és az automatikus skálázás hasonló virtuális gépek gyűjteményét kezelheti és terheléselosztási funkciók. Építse ki, és üzembe helyezése a Virtual Machine Scale Sets használatával [Azure Resource Manager-sablonok](https://github.com/Azure/azure-quickstart-templates). Az Azure Resource Manager-sablonok is üzembe helyezhetők az Azure CLI, PowerShell, REST használatával, és emellett közvetlenül a Visual Studióból. A Visual Studio biztosít, például sablonokat, amelyek egy Azure erőforráscsoport-telepítés projekt részeként telepíthető.
 
-Azure-erőforráscsoport központi telepítések, amelyek egy csoportot, és tegye közzé a kapcsolódó Azure-erőforrások egy csoportját egyetlen központi telepítési művelettel. Többet is megtudhat velük kapcsolatban itt: [létrehozása és telepítése az Azure erőforráscsoport-sablonok a Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+Azure-erőforráscsoport központi telepítések, amelyek egy csoportot, és tegye közzé a kapcsolódó Azure-erőforrások egy csoportját egyetlen központi telepítési művelettel. További velük kapcsolatban itt: [Létrehozása és telepítése az Azure erőforráscsoport-sablonok a Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
 ## <a name="pre-requisites"></a>Előfeltételek
 A Visual Studióban a Virtual Machine Scale Sets üzembe helyezésének első lépései, a következőkre lesz szüksége:
@@ -63,7 +63,7 @@ A terheléselosztó lehetővé teszi, hogy az SSH (Linux) vagy RDP (Windows) a V
 
  Egy jó módszer a Visual Studio-sablonok szerkesztésekor, hogy a JSON-vázlat a paraméterek, a változók és az erőforrások rendszerezéséhez. A Visual Studio a séma ismeretében mutathat hibák a sablonban meg az üzembe helyezés előtt.
 
-![JSON-Explorer][json_explorer]
+![JSON Explorer][json_explorer]
 
 ## <a name="deploy-the-project"></a>A projekt telepítése
 1. Telepítse az Azure Resource Manager-sablon a Virtual Machine Scale Set-erőforrás létrehozásához. Kattintson a jobb gombbal a projektcsomópontra, majd válassza **üzembe helyezés |} Új központi telepítés**.

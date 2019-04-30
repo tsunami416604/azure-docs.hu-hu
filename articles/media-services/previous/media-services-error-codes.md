@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f3c362730e7908e88b363659b7fa580b6f2cddf1
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189461"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61217233"
 ---
 # <a name="azure-media-services-error-codes"></a>Az Azure Media Services-hibakódok
 A Microsoft Azure Media Services használata esetén a HTTP-hibakódok a szolgáltatástól függően például a hitelesítési tokenek lejár, a Media Services szolgáltatásban nem támogatott műveleteket is megjelenhet. A következő lista **HTTP-hibakódok** , amely által visszaadott Media Services és a lehetséges okok a számukra.  

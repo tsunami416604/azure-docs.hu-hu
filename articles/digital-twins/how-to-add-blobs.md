@@ -10,11 +10,11 @@ ms.date: 01/11/2019
 ms.author: adgera
 ms.custom: seodec18
 ms.openlocfilehash: ffd7d71c33b569b396b9f8babf8105968ee525b9
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263067"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60926428"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Blobok hozzáadása az Azure digitális Twins objektumok
 
@@ -53,14 +53,14 @@ JSON-blob metaadatainak megfelel a következő modellhez:
 
 | Attribútum | Típus | Leírás |
 | --- | --- | --- |
-| **parentId** | Karakterlánc | A szülőentitás a blob társítandó (szóköz, eszközök vagy felhasználók) |
-| **name** |Karakterlánc | A blob emberi mobilbarát nevét |
-| **type** | Karakterlánc | Blob - típusa nem használható *típus* és *typeId*  |
+| **parentId** | String | A szülőentitás a blob társítandó (szóköz, eszközök vagy felhasználók) |
+| **name** |String | A blob emberi mobilbarát nevét |
+| **type** | String | Blob - típusa nem használható *típus* és *typeId*  |
 | **typeId** | Egész szám | A blob azonosítója – nem használható *típus* és *typeId* |
-| **Altípus** | Karakterlánc | A blob - altípusa nem használható *altípus* és *subtypeId* |
+| **Altípus** | String | A blob - altípusa nem használható *altípus* és *subtypeId* |
 | **subtypeId** | Egész szám | A blob - altípus azonosítója nem használható *altípus* és *subtypeId* |
-| **description** | Karakterlánc | A blob testre szabott leírása |
-| **megosztás** | Karakterlánc | E megoszthatók a blob - számbavételi [`None`, `Tree`, `Global`] |
+| **description** | String | A blob testre szabott leírása |
+| **megosztás** | String | E megoszthatók a blob - számbavételi [`None`, `Tree`, `Global`] |
 
 BLOB metaadatainak mindig van megadva az első adatrészletben a **Content-Type** `application/json` vagy mint egy `.json` fájlt. A fájlokban tárolt adatokhoz a második adattömb van megadva, és bármely támogatott MIME-típusát.
 
@@ -110,18 +110,18 @@ Külön-külön visszaadott blobok felelnek meg a következő JSON-séma:
 
 | Attribútum | Típus | Leírás |
 | --- | --- | --- |
-| **id** | Karakterlánc | A BLOB egyedi azonosítója |
-| **name** |Karakterlánc | A blob emberi mobilbarát nevét |
-| **parentId** | Karakterlánc | A szülőentitás a blob társítandó (szóköz, eszközök vagy felhasználók) |
-| **type** | Karakterlánc | Blob - típusa nem használható *típus* és *typeId*  |
+| **id** | String | A BLOB egyedi azonosítója |
+| **name** |String | A blob emberi mobilbarát nevét |
+| **parentId** | String | A szülőentitás a blob társítandó (szóköz, eszközök vagy felhasználók) |
+| **type** | String | Blob - típusa nem használható *típus* és *typeId*  |
 | **typeId** | Egész szám | A blob azonosítója – nem használható *típus* és *typeId* |
-| **Altípus** | Karakterlánc | A blob - altípusa nem használható *altípus* és *subtypeId* |
+| **Altípus** | String | A blob - altípusa nem használható *altípus* és *subtypeId* |
 | **subtypeId** | Egész szám | A blob - altípus azonosítója nem használható *altípus* és *subtypeId* |
-| **megosztás** | Karakterlánc | E megoszthatók a blob - számbavételi [`None`, `Tree`, `Global`] |
-| **description** | Karakterlánc | A blob testre szabott leírása |
+| **megosztás** | String | E megoszthatók a blob - számbavételi [`None`, `Tree`, `Global`] |
+| **description** | String | A blob testre szabott leírása |
 | **contentInfos** | Tömb | Adja meg a strukturálatlan metaadat-információkat, beleértve a verzió |
-| **fullName** | Karakterlánc | A blob teljes neve |
-| **spacePaths** | Karakterlánc | A terület elérési útja |
+| **fullName** | String | A blob teljes neve |
+| **spacePaths** | String | A terület elérési útja |
 
 BLOB metaadatainak mindig van megadva az első adatrészletben a **Content-Type** `application/json` vagy mint egy `.json` fájlt. A fájlokban tárolt adatokhoz a második adattömb van megadva, és bármely támogatott MIME-típusát.
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
 ms.openlocfilehash: dfbaabd3d27804909334a7a370bcc89115e625c4
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119170"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60900059"
 ---
 # <a name="using-search-in-application-insights"></a>Az Application Insights keresés használata
 Keresés az egyik szolgáltatása [Application Insights](../../azure-monitor/app/app-insights-overview.md) keresse meg és Fedezze fel a telemetriai elem, például a lapmegtekintések, kivételek, vagy webes kérelmek küldéséhez használt. És megtekintheti a nyomkövetési naplók és eseményeket, amelyek van kódolva.
@@ -112,7 +112,7 @@ A tulajdonságértékek bármelyikét feltételek kereshet. Ez különösen hasz
 
 Teljes szavakat, nem a karakterláncrész keresése. Speciális karakterek adni tegye idézőjelek közé.
 
-| sztring | van *nem* által észlelt | Ezek találja |
+| string | van *nem* által észlelt | Ezek találja |
 | --- | --- | --- |
 | HomeController.About |kezdőlap<br/>tartományvezérlő<br/>ki | homecontroller<br/>névjegy<br/>"homecontroller.about"|
 |Egyesült Államok|UNI<br/>TED|Egyesült<br/>állapotok<br/>Egyesült Államok és<br/>"Egyesült Államok"

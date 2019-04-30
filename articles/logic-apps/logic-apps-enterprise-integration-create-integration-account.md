@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: estfan
 ms.openlocfilehash: 43ecdafac4f0a5cdc9e619537cdbe2a42ff7fe1b
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57191918"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60999611"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-with-logic-apps"></a>A logic apps B2B-megoldásoktól az integrációs fiókok létrehozása és kezelése
 
@@ -52,13 +52,13 @@ Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Port
 
    ![Adja meg adatait az integrációs fiók](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | Tulajdonság | Szükséges | Példaérték | Leírás | 
+   | Tulajdonság | Kötelező | Példaérték | Leírás | 
    |----------|----------|---------------|-------------|
    | Name (Név) | Igen | test-integration-account | Az integrációs fiók neve. Ebben a példában a megadott nevet használja. | 
    | Előfizetés | Igen | <*Azure-előfizetés-neve*> | Neve az Azure-előfizetés használata | 
    | Erőforráscsoport | Igen | test-integration-account-rg | A nevet a [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) kapcsolódó erőforrások rendezéséhez használt. Ebben a példában a megadott nevű hozzon létre egy új erőforráscsoportot. | 
    | Tarifacsomag | Igen | Ingyenes | A tarifacsomag, amelyet használni szeretne. Ebben a példában válassza **ingyenes**, de további információkért lásd: [Logic Apps-korlátozások és konfiguráció](../logic-apps/logic-apps-limits-and-config.md) és [Logic Apps díjszabási](https://azure.microsoft.com/pricing/details/logic-apps/). | 
-   | Hely | Igen | USA nyugati régiója | A régió az integrációs fiók információk tárolására. Válassza ki ugyanazt a helyet, a logikai alkalmazás, vagy hozzon létre egy logikai alkalmazást az integrációs fiók ugyanazon a helyen. | 
+   | Location egység | Igen | USA nyugati régiója | A régió az integrációs fiók információk tárolására. Válassza ki ugyanazt a helyet, a logikai alkalmazás, vagy hozzon létre egy logikai alkalmazást az integrációs fiók ugyanazon a helyen. | 
    | Log Analytics-munkaterület | Nem | Ki | A diagnosztikai naplózáshoz maradjon a **Ki** beállításnál. | 
    ||||| 
 

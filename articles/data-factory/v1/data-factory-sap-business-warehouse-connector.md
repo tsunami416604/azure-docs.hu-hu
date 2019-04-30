@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 1823c2ec28b342d41371eb6677e0330d7f885087
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57893254"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61258658"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Adatok áthelyezése az SAP Business Warehouse Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -62,15 +62,15 @@ A következő szakaszok az SAP BW-adattárba adott Data Factory-entitások defin
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a JSON-elemeket az SAP Business Warehouse (BW) társított szolgáltatás leírását.
 
-Tulajdonság | Leírás | Megengedett értékek | Szükséges
+Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-kiszolgáló | A kiszolgálóra, amelyen az SAP BW-példány neve. | sztring | Igen
+kiszolgáló | A kiszolgálóra, amelyen az SAP BW-példány neve. | string | Igen
 systemNumber | Az SAP BW-rendszer rendszer száma. | Kétjegyű tizedes tört egy karakterláncból. | Igen
 clientId | Az SAP W rendszerben az ügyfél ügyfél-azonosítója. | Három számjegyű tizedes tört egy karakterláncból. | Igen
-felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | sztring | Igen
-jelszó | A felhasználó jelszava. | sztring | Igen
-átjáró neve | Az átjáró által a Data Factory szolgáltatás a helyszíni SAP BW-példányhoz való csatlakozáshoz használandó neve. | sztring | Igen
-encryptedCredential | A titkosított hitelesítő adatok karakterlánca. | sztring | Nem
+felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | string | Igen
+jelszó | A felhasználó jelszava. | string | Igen
+átjáró neve | Az átjáró által a Data Factory szolgáltatás a helyszíni SAP BW-példányhoz való csatlakozáshoz használandó neve. | string | Igen
+encryptedCredential | A titkosított hitelesítő adatok karakterlánca. | string | Nem
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Szakaszok & adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például a szerkezetet, rendelkezésre állást és szabályzatát adatkészlet JSON szakaszok hasonlóak az összes adatkészlet esetében (az Azure SQL, az Azure blob-, az Azure table-, stb.).

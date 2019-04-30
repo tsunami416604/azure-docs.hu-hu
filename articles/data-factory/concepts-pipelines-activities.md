@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
 ms.openlocfilehash: 845544a2062b43f0d9f883ddecbc2589b3357221
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997933"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61261941"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Az Azure Data Factory folyamatai és tevékenységei
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -94,10 +94,10 @@ Egy folyamat JSON-formátumban való meghatározása a következő módon tört�
 }
 ```
 
-Címke | Leírás | Typo | Szükséges
+Címke | Leírás | Típus | Kötelező
 --- | ----------- | ---- | --------
 név | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>Karakterek maximális száma: 140</li><li>Betűvel, számmal vagy aláhúzásjellel kell kezdődnie (\_)</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\”</li></ul> | String | Igen
-leírás | Adjon meg egy, az adott folyamat alkalmazását leíró szöveget. | String | Nem
+description | Adjon meg egy, az adott folyamat alkalmazását leíró szöveget. | String | Nem
 tevékenységek | A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A tevékenységek JSON-elemeiről részletes információkat a [Tevékenység JSON-fájlja](#activity-json) szakaszban talál. | Tömb | Igen
 paraméterek | Az adott folyamat **paraméterek** szakaszában egy vagy több paraméter adható meg, így a folyamat rugalmasan újrafelhasználható. | Lista | Nem
 
@@ -130,7 +130,7 @@ Az alábbi táblában a tevékenység JSON-definíciójában lévő tulajdonság
 Címke | Leírás | Szükséges
 --- | ----------- | ---------
 név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>Karakterek maximális száma: 55</li><li>Betűvel, számmal vagy aláhúzásjellel kell kezdődnie (\_)</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\” | Igen</li></ul>
-leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
+description | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
 type | A tevékenység típusa. A különböző tevékenységtípusokkal kapcsolatban lásd az [adattovábbítási tevékenységeket](#data-movement-activities), az [adat-átalakítási tevékenységeket](#data-transformation-activities) és a [vezérlési tevékenységeket](#control-activities). | Igen
 linkedServiceName | A tevékenység által használt társított szolgáltatás neve.<br/><br/>Egy adott tevékenység megkövetelheti annak a társított szolgáltatásnak a megadását, amely a szükséges számítási környezethez kapcsolódik. | HDInsight-tevékenységek, Azure Machine Learning kötegelt pontozási tevékenységek, tárolt eljárási tevékenységek esetében: igen. <br/><br/>Minden egyéb esetében: nem
 typeProperties | A typeProperties szakasz tulajdonságai az egyes tevékenységtípusoktól függenek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | Nem
@@ -168,12 +168,12 @@ A szabályzatok az adott tevékenység futásidejű viselkedését befolyásolj�
 }
 ```
 
-JSON-név | Leírás | Megengedett értékek | Szükséges
+JSON-név | Leírás | Megengedett értékek | Kötelező
 --------- | ----------- | -------------- | --------
 timeout | Megadja a futtatni kívánt tevékenység időtúllépését. | Időtartomány | Nem. Az alapértelmezett időtúllépés 7 nap.
 retry | Újrapróbálkozási kísérletek maximális száma | Egész szám | Nem. Az alapértelmezett érték: 0
 retryIntervalInSeconds | Az újrapróbálkozási kísérletek közötti késleltetés, másodpercben | Egész szám | Nem. Az alapértelmezett érték: 20 másodperc
-secureOutput | Ha az értéke igaz, a tevékenység kimenete biztonságosnak minősül, és a rendszer nem naplózza a monitorozáshoz. | Logikai | Nem. Az alapértelmezett érték a false (hamis).
+secureOutput | Ha az értéke igaz, a tevékenység kimenete biztonságosnak minősül, és a rendszer nem naplózza a monitorozáshoz. | Boolean | Nem. Az alapértelmezett érték a false (hamis).
 
 ### <a name="control-activity"></a>Vezérlési tevékenység
 A vezérlési tevékenységek az alábbi felső szintű struktúrával rendelkeznek:
@@ -195,7 +195,7 @@ A vezérlési tevékenységek az alábbi felső szintű struktúrával rendelkez
 Címke | Leírás | Szükséges
 --- | ----------- | --------
 név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet.<br/><ul><li>Karakterek maximális száma: 55</li><li>Betűvel, számmal vagy aláhúzásjellel kell kezdődnie (\_)</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\” | Igen</li><ul>
-leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
+description | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
 type | A tevékenység típusa. A különböző tevékenységtípusokkal kapcsolatban lásd az [adattovábbítási tevékenységeket](#data-movement-activities), az [adat-átalakítási tevékenységeket](#data-transformation-activities) és a [vezérlési tevékenységeket](#control-activities). | Igen
 typeProperties | A typeProperties szakasz tulajdonságai az egyes tevékenységtípusoktól függenek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | Nem
 dependsOn | Ez a tulajdonság a tevékenységfüggőség, valamint az egymást követő tevékenységek függőségeinek meghatározására szolgál. További információért lásd: [tevékenységfüggőség](#activity-dependency). | Nem

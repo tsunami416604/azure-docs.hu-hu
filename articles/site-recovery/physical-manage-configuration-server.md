@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: 10bec01a3b90776c8dd8c32a74ba7754264da131
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050135"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62119730"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fizikai kiszolgáló vészhelyreállításhoz használt konfigurációs kiszolgáló kezelése
 
@@ -108,21 +108,21 @@ Futtassa a telepítőfájlt az alábbiak szerint:
 
 ### <a name="parameters"></a>Paraméterek
 
-|Paraméter neve| Typo | Leírás| Értékek|
+|Paraméter neve| Típus | Leírás| Értékek|
 |-|-|-|-|
-| /ServerMode|Szükséges|Megadja, hogy a konfigurációs és folyamatkiszolgálót is, vagy csak a folyamatkiszolgálót kell-e telepíteni.|CS<br>PS|
-|/InstallLocation|Szükséges|Az összetevők telepítési mappája| A számítógép bármely mappája|
+| /ServerMode|Kötelező|Megadja, hogy a konfigurációs és folyamatkiszolgálót is, vagy csak a folyamatkiszolgálót kell-e telepíteni.|CS<br>PS|
+|/InstallLocation|Kötelező|Az összetevők telepítési mappája| A számítógép bármely mappája|
 |/MySQLCredsFilePath|Szükséges|A fájl elérési útja, amelyen a MySQL-kiszolgáló hitelesítő adatai tárolva vannak|A fájlnak az alább megadott formátumúnak kell lennie|
-|/VaultCredsFilePath|Szükséges|A tároló hitelesítőadat-fájljának elérési útja|Érvényes fájlelérési út|
-|/EnvType|Szükséges|Védeni kívánt környezet típusa |VMware<br>NonVMware|
-|/PSIP|Szükséges|A replikációs adatátvitelhez használni kívánt hálózati adapter IP-címe| Bármilyen érvényes IP-cím|
+|/VaultCredsFilePath|Kötelező|A tároló hitelesítőadat-fájljának elérési útja|Érvényes fájlelérési út|
+|/EnvType|Kötelező|Védeni kívánt környezet típusa |VMware<br>NonVMware|
+|/PSIP|Kötelező|A replikációs adatátvitelhez használni kívánt hálózati adapter IP-címe| Bármilyen érvényes IP-cím|
 |/CSIP|Szükséges|Annak a hálózati adapternek az IP-címe, amelyen a konfigurációs kiszolgáló figyel| Bármilyen érvényes IP-cím|
 |/PassphraseFilePath|Szükséges|A jelszófájl teljes elérési útja|Érvényes fájlelérési út|
 |/BypassProxy|Optional|Megadja, hogy a konfigurációs kiszolgáló proxy nélkül csatlakozik az Azure-hoz.|Az érték beszerzése innen: Venu|
 |/ProxySettingsFilePath|Optional|Proxybeállítások (Az alapértelmezett proxyhoz hitelesítés vagy egyéni proxy szükséges).|A fájlnak az alább megadott formátumúnak kell lennie|
 |DataTransferSecurePort|Optional|Az adatreplikációhoz használni kívánt PSIP-port száma| Érvényes portszám (az alapértelmezett érték 9433)|
 |/SkipSpaceCheck|Optional|Gyorsítótárlemez terület-ellenőrzésének kihagyása| |
-|/AcceptThirdpartyEULA|Szükséges|Ez a jelölő a külső féltől származó végfelhasználói licencszerződés elfogadását jelzi| |
+|/AcceptThirdpartyEULA|Kötelező|Ez a jelölő a külső féltől származó végfelhasználói licencszerződés elfogadását jelzi| |
 |/ShowThirdpartyEULA|Optional|Külső felektől származó végfelhasználói licenszszerződés megjelenítése. Bemenetként való megadása esetén figyelmen kívül hagyja a többi paramétert.| |
 
 

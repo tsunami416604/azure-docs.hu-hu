@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: bwren
 ms.openlocfilehash: c80736dcd8be0c7ff3aae850aaaf9659f47daf36
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234794"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60996355"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Egyéni naplók az Azure monitorban
 Az egyéni naplókat adatforrás az Azure Monitor lehetővé teszi, hogy események gyűjtését a Windows és a Linux rendszerű számítógépek szöveges fájlok. Számos alkalmazás adatokat szöveges fájlok nem szabványos naplózási szolgáltatásokkal, például a Windows Eseménynapló vagy a Syslog naplófájlba. Követően az adatok elemzése az egyes mezők a lekérdezéseiben, vagy az adatokat nyerhet ki az egyes mezők a gyűjtés során.

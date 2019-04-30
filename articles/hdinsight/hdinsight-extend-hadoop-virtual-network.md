@@ -1,19 +1,18 @@
 ---
 title: A Virtual Network – Azure HDInsight kiterjesztése
 description: Ismerje meg, hogyan csatlakozhat Azure Virtual Network HDInsight egyéb felhőalapú erőforrások, vagy az adatközpontban található erőforrások
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/29/2019
-ms.openlocfilehash: a2d06cdbcc6ce995c55c858cb7a50a93ef6b3fb1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: f97c07c522dfb22818aca84d41d30c023f564d84
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883564"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097337"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -259,7 +258,7 @@ Ha hálózati biztonsági csoportokat használ, engedélyeznie kell az Azure ál
 
 1. Mindig engedélyeznie kell a következő IP-címekről érkező forgalmat:
 
-    | Forrás IP-címe | Célport | Irány |
+    | Forrás IP-címe | Célport | Direction |
     | ---- | ----- | ----- |
     | 168.61.49.99 | 443 | Bejövő |
     | 23.99.5.239 | 443 | Bejövő |
@@ -271,7 +270,7 @@ Ha hálózati biztonsági csoportokat használ, engedélyeznie kell az Azure ál
     > [!IMPORTANT]  
     > Ha nem szerepel az Azure-régiót használ, csak használja az 1. lépésben négy IP-címek.
 
-    | Ország | Régió | Engedélyezett forrás IP-címei | Engedélyezett a céloldali port | Irány |
+    | Ország | Régió | Engedélyezett forrás IP-címei | Engedélyezett a céloldali port | Direction |
     | ---- | ---- | ---- | ---- | ----- |
     | Ázsia | Kelet-Ázsia | 23.102.235.122</br>52.175.38.134 | 443 | Bejövő |
     | &nbsp; | Délkelet-Ázsia | 13.76.245.160</br>13.76.136.249 | 443 | Bejövő |

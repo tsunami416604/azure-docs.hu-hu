@@ -9,11 +9,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: ad789a597da759b9a2d58138c7ed441389a12adb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103132"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61479983"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Bevezetés a Stream Analytics a térinformatikai függvények
 
@@ -27,7 +27,7 @@ A térinformatikai függvények is kihasználó forgatókönyvek például:
 * Geokerítés-
 * Telefonos követési cella helyek között
 
-Stream Analytics lekérdezési nyelv hét beépített térinformatikai függvényekkel rendelkezik: **CreateLineString**, **CreatePoint**, **CreatePolygon**, **ST_DISTANCE** , **ST_OVERLAPS**, **ST_INTERSECTS**, és **ST_WITHIN**.
+Stream Analytics lekérdezési nyelv hét beépített térinformatikai függvényekkel rendelkezik: **CreateLineString**, **CreatePoint**, **CreatePolygon**, **ST_DISTANCE**, **ST_OVERLAPS**, **ST_ Metszi saját**, és **ST_WITHIN**.
 
 ## <a name="createlinestring"></a>CreateLineString
 

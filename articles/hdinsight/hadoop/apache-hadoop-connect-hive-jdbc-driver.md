@@ -1,7 +1,6 @@
 ---
 title: Az Apache Hive-lekérdezés a JDBC-illesztőprogram – Azure HDInsight segítségével
 description: A Java-alkalmazás JDBC-illesztőprogram segítségével Hadoop on HDInsight az Apache Hive-lekérdezések elküldéséhez. Programozott módon, és az SQuirrel SQL-ügyfél csatlakoztatása.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: dc088d3a6baa4198a1d5cb566b968c631ae5f2c4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: aaf54907ca0cf218b126fc9fc74080c02ef6cf6c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113817"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122115"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Lekérdezés az Apache Hive a HDInsight a JDBC-illesztőprogram segítségével
 
@@ -39,7 +38,7 @@ JDBC-kapcsolatok az Azure HDInsight-fürthöz a 443-as porton keresztül törté
 
 Cserélje le a `CLUSTERNAME` kifejezést a HDInsight-fürt nevére.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 A kapcsolat létrehozásakor, a fürt átjáró hitelesítése a HDInsight-fürt felügyeleti nevét és jelszavát kell használnia. Amikor JDBC-ügyfelek, például a SQuirreL SQL csatlakoztat, adjon meg a rendszergazdai felhasználónevét és jelszavát az ügyfélbeállításokban.
 

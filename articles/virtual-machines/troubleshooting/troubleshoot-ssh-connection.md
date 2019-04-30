@@ -16,11 +16,11 @@ ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
 ms.openlocfilehash: 81e00c4a3b9490a05667d58952f7bdf8945bacdb
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446581"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61405254"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Az Azure Linux VM, amely nem sikerül, hibák, vagy elutasítják az SSH-kapcsolatok hibaelhárítása
 Ez a cikk segítségével megkeresheti és kijavíthatja a Secure Shell (SSH) hibák, az SSH-kapcsolati hibák, miatt előforduló problémákat, vagy az SSH elutasítják, amikor megpróbál kapcsolódni egy Linux rendszerű virtuális géphez (VM). Az Azure Portalon, az Azure CLI vagy a Linux VM-hozzáférési bővítmény használatával hibaelhárításához és kapcsolati problémák megoldásához.

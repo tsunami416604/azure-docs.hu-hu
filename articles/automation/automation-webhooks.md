@@ -10,11 +10,11 @@ ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 153bb0304102906f7be64ae55dd0e0f6bb8d7146
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224891"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61305020"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Azure Automation-runbook kezdve egy webhook
 
@@ -35,7 +35,7 @@ A következő táblázat ismerteti a tulajdonságokat, amelyeket konfigurálnia 
 | Name (Név) |Egy webhook azt szeretné, mivel ez az ügyfél nem elérhetővé tett bármilyen nevet megadhat. Ez csak az Ön számára azonosítására szolgál a runbookot, az Azure Automationben. <br> Ajánlott eljárásként meg kell nevezze el a webhook az azokat használó ügyfél kapcsolatos. |
 | URL-cím |A webhook URL-címe az az egyedi cím, egy HTTP POST-indítani a runbookot, a webhook csatolva a meghívó ügyfél. A webhook létrehozásakor automatikusan létrejön. Egy egyéni URL-cím nem adható meg. <br> <br> Az URL-címet tartalmaz egy biztonsági jogkivonatot, amely lehetővé teszi a runbook által egy külső rendszer további hitelesítésre. Ezért azt kell kezelni, mint egy jelszó. Biztonsági okokból csak megtekintheti az URL-cím az Azure Portalon a webhook létrehozásakor. Megjegyzés: az URL-címet egy biztonságos helyre későbbi használat céljából. |
 | Lejárati dátum |Egy tanúsítványt, mint például az egyes webhookok van ekkor már nem használható lejárati dátuma. A lejárati dátum után a a webhook létrehozásakor mindaddig, amíg a webhook lejárt nem módosítható. |
-| Engedélyezve |Webhook alapértelmezés szerint engedélyezve van, a létrehozásakor. Ha beállította azt le van tiltva, akkor nincs ügyfél is használhassák. Beállíthatja a **engedélyezve** tulajdonság a webhookot, vagy bármikor egyszer létrehozásakor jön létre. |
+| Enabled |Webhook alapértelmezés szerint engedélyezve van, a létrehozásakor. Ha beállította azt le van tiltva, akkor nincs ügyfél is használhassák. Beállíthatja a **engedélyezve** tulajdonság a webhookot, vagy bármikor egyszer létrehozásakor jön létre. |
 
 ### <a name="parameters"></a>Paraméterek
 
@@ -110,7 +110,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 Az ügyfél a következő visszatérési kódok a POST-kérelmet fogad.
 
-| Kód | Szöveg | Leírás |
+| Kód | Text | Leírás |
 |:--- |:--- |:--- |
 | 202 |Elfogadva |A kérést elfogadták, és a runbook sikeresen várólistára került. |
 | 400 |Hibás kérelem |A kérés nem lett elfogadva a következő okok valamelyike: <ul> <li>A webhook lejárt.</li> <li>A webhook le van tiltva.</li> <li>A jogkivonat az URL-cím érvénytelen.</li>  </ul> |

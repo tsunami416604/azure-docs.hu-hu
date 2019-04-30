@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/15/2019
 ms.author: bwren
 ms.openlocfilehash: f6617a504bbda666ce9ece018ccb0cf02635c360
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355601"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61425846"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>A log Analytics intelligens elemzési példák
 Ez a cikk példákat intelligens elemzési funkciók használata a Log Analytics felhasználói tevékenység elemzését. Ezek a példák segítségével elemezheti a saját Application Insights által figyelt alkalmazások, vagy használja ezeket a lekérdezéseket a fogalmak hasonló egyéb adatok elemzése. 

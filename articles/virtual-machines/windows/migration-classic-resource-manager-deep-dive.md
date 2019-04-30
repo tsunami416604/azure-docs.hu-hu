@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
 ms.openlocfilehash: 5bc7e618b047660992d631eb77ddbf9009266a79
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579851"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127531"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Részletes technikai útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról
-Vessünk egy részletesen a klasszikus Azure üzemi modellből az Azure Resource Manager-alapú üzemi modellbe való migrálás. Áttekintjük, források segítségével megismerheti, hogyan telepíti át az Azure platform az erőforrásokat az üzemi modellek között erőforrás és szolgáltatás szintjén. További információkért olvassa el a szolgáltatás közlemény cikket: [Platform által támogatott áttelepítés IaaS-erőforrások klasszikusból Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Vessünk egy részletesen a klasszikus Azure üzemi modellből az Azure Resource Manager-alapú üzemi modellbe való migrálás. Áttekintjük, források segítségével megismerheti, hogyan telepíti át az Azure platform az erőforrásokat az üzemi modellek között erőforrás és szolgáltatás szintjén. További információkért olvassa el a szolgáltatás a közlemény cikk: [A platform által támogatott áttelepítés IaaS-erőforrások klasszikusból Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-migration-deep-dive](../../../includes/virtual-machines-common-classic-resource-manager-migration-deep-dive.md)]
 

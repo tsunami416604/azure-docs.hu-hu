@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 3/13/2019
 ms.author: banders
 ms.openlocfilehash: b910cb3061b1451ea80b9843e2aa4047a784548f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57876867"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60918735"
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Hozzáadása, frissítése vagy hitelkártya vagy bankkártya eltávolítása az Azure-hoz
 
@@ -35,12 +35,12 @@ Az Azure Portalon adjon hozzá egy új hitelkártya, frissítse a meglévő bank
 ## <a name="add-a-new-credit-or-debit-card-to-an-azure-subscription"></a>Új hitelkártya vagy bankkártya kártya hozzáadása egy Azure-előfizetéshez
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) fiók rendszergazdaként.
-1. A Keresés **Cost Management és számlázás**.
+1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 
     ![Keresés bemutató képernyőkép](./media/billing-how-to-change-credit-card/search.png)
 
 1. Válassza ki az előfizetést, amelyet szeretne a hitelkártya vagy bankkártya kártya hozzáadása.
-1. Válassza ki **fizetési módok**.
+1. Válassza a **Fizetési módok** elemet.
 
     ![Képernyőkép a kezelés fizetési módszereket lehetőség van kijelölve.](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 
@@ -60,11 +60,11 @@ Miután hozzáadta a hitelkártya hibaüzenetet kap, ha [Azure-előfizetés elut
 Ha hitelkártyáját megújítani lekérdezi és változatlan marad, a szám, frissítse a meglévő hitelkártya adatait, például a lejárati dátum. Ha a hitelkártya száma módosításokat, mert a kártya elveszik, ellopják, vagy lejárt, kövesse a a [hitelkártya hozzáadásához a fizetési módként alkalmazott](#addcard) szakaszban. Nem kell frissíteni a CVV.
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) fiók rendszergazdaként.
-1. A Keresés **Cost Management és számlázás**.
+1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 
     ![Keresés bemutató képernyőkép](./media/billing-how-to-change-credit-card/search.png)
 
-1. Válassza ki **fizetési módok**.
+1. Válassza a **Fizetési módok** elemet.
 
     ![Képernyőkép a kezelés fizetési módszereket lehetőség van kijelölve.](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 
@@ -80,12 +80,12 @@ Ha hitelkártyáját megújítani lekérdezi és változatlan marad, a szám, fr
 Ha egynél több előfizetés nincs aktív fizetési módját, majd módosítja az aktív fizetési mód bármelyik ezeket az előfizetéseket is frissíti a többinél pedig az aktív fizetési módot.
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) fiók rendszergazdaként.
-1. A Keresés **Cost Management és számlázás**.
+1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
 
     ![Keresés bemutató képernyőkép](./media/billing-how-to-change-credit-card/search.png)
 
 1. Válassza ki az előfizetést, amelyet szeretne a hitelkártya vagy bankkártya kártya hozzáadása.
-1. Válassza ki **fizetési módok**.
+1. Válassza a **Fizetési módok** elemet.
 
     ![Képernyőkép a kezelés fizetési módszereket lehetőség van kijelölve.](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 

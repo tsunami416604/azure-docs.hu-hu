@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: bb43a75b6a221c15c8724302797d04c22e04c8d2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113639"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61086129"
 ---
 # <a name="create-a-netapp-account"></a>NetApp-fiók létrehozása
 A NetApp-fiókok létrehozásával lehetősége lesz kapacitáskészleteket beállítani, majd azt követően köteteket létrehozni. NetApp-fiókokat az Azure NetApp Files panelen hozhat létre.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 Az előfizetést a NetApp erőforrás-szolgáltató és a nyilvános előzetes verziójú funkció használatával van regisztrálva.
 
 [Regisztráljon a Azure NetApp-fájlok](azure-netapp-files-register.md)

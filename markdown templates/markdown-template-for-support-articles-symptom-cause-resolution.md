@@ -1,6 +1,6 @@
 ---
-title: A böngésző lapon és a keresési eredményeket megjelenítő lap címe
-description: A cikk leírása, amely érkezési oldalak és a legtöbb keresési eredmények között megjelenik
+title: A böngésző lapra, és a keresési eredményeket megjelenítő lap címe
+description: A cikk leírást, amely a főoldalakon történő és a legtöbb keresési eredmények között megjelenik
 services: service-name
 documentationcenter: dev-center-name
 author: GitHub-alias-of-only-one-author
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: may be required
 ms.workload: required
 ms.date: mm/dd/yyyy
 ms.author: Your MSFT alias or your full email address;semicolon separates two or more
-ms.openlocfilehash: 1f86194857a54ed3a903c2696efc9b23d482c274
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: ae89f8e4c501e62ce70f9dddc00e45f4d9fdaae1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
-ms.locfileid: "23886259"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61215966"
 ---
-# <a name="title-maximum-120-characters-target-the-primary-keyword"></a>Cím (legfeljebb 120 karakter, célként megadott elsődleges kulcsszó)
-*A leírás másodlagos kulcsszavak 2-3 használható.*
+# <a name="title-maximum-120-characters-target-the-primary-keyword"></a>Cím (a cél elsődleges kulcsszó legfeljebb 120 karakter)
+*Használja a 2-3 másodlagos kulcsszavak leírásában.*
 
-*Válasszon egyet a következő nyilatkozatok a forgatókönyvtől függően. Ha a cikk telepítési modell független, figyelmen kívül hagyja ezt.*
+*Válasszon egyet a következő nyilatkozatok a forgatókönyvtől függően. Ha a cikkben üzembe helyezési modell független, figyelmen kívül hagyja ezt.*
 
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]klasszikus üzembe helyezési modellben.
+[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] klasszikus üzemi modellben.
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 [!INCLUDE [learn-about-deployment-models](../../learn-about-deployment-models-both-include.md)]
 
-## <a name="summary-optional-especially-when-the-article-is-short"></a>(Nem kötelező, különösen akkor, ha a cikk rövid) összegzés
+## <a name="summary-optional-especially-when-the-article-is-short"></a>(Nem kötelező, különösen akkor, ha a cikk rövid) összegzése
 * *Röviden ismertesse a problémát.*
-* *Az összefoglaló szakasz célszerű azoktól, amelyeket a cím a különböző kulcsszavak használhatják, de győződjön meg arról, hogy nem nagyon Terjengős. A mondatok flow is kell, és könnyen érthető.*
-* *(Nem kötelező) – a kivételek a megfelelő helyzetek, amelyekre nem vonatkozik ez a cikk a listában. Például "Linux/OSS forgatókönyvek nem kezelt ebben a cikkben".*
+* *Az összefoglalás szakasza remek azoktól, amelyeket a cím a különböző kulcsszó, de győződjön meg arról, hogy nem nagyon Terjengős. A mondatok flow is kell, és könnyen érthető.*
+* *(Nem kötelező) – a kivételek listázza a kapcsolódó forgatókönyveket, amelyek nem szerepelnek ebben a cikkben. Például "Linux/nyílt Forráskódú forgatókönyvek nem terjed ki ebben a cikkben".*
 
-*Ha ez a cikk a számlázási témakör, a következő Megjegyzés: a (az alábbi megjegyzést némileg eltérnek a Ez a cikk alján) a következők:*
+*Ha ez a cikk a számlázási témakörben, az alábbi megjegyzésben (az alábbi megjegyzést a némileg eltérnek a Ez a cikk alján) a következők:*
 
 > [!NOTE]
 > Ha a cikk olvasása során bármikor további segítségre lenne szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldásához.
@@ -48,27 +48,27 @@ ms.locfileid: "23886259"
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="symptom"></a>Jelenség
-* *Milyen műveletek lenne a felhasználó megpróbál végrehajtani?*
+* *Milyen műveletek lenne a felhasználó lehet próbálja meg végrehajtani?*
 * *Melyek voltak sikertelenek?*
-* *Milyen rendszerek és szoftverek lenne a felhasználó használja?*
-* *Milyen hiba volt kimutatták, üzenetek?*
-* *Képernyőkép felvétele, ha lehetséges.*
+* *Milyen rendszerek és szoftverek lenne a felhasználó már használja?*
+* *Milyen hiba sikerült kimutatták, üzeneteket?*
+* *Képernyőfelvétel küldése, ha lehetséges.*
 
 ## <a name="cause"></a>Ok
 * *Mi okozza a problémát.*
 
 ## <a name="solution"></a>Megoldás
-* *Ha lehetséges adja hozzá a pillanatképek.*
-* *Ha nincsenek a több megoldások, helyezze őket sorrendjében összetettségét, és utasításokkal láthatja el közülük kiválasztásával.*
+* *Ha lehetséges adja hozzá a képernyőképek.*
+* *Ha több megoldásból, helyezi őket bonyolultságát sorrendjében, és választhat közülük vonatkozó utasítások.*
 
-| <em>1. verzió: A cikk: független a központi telepítési modell</em> | <em>2. verziójú: Resource Manager és klasszikus lépései megegyeznek nagymértékben</em> | <em>3. verzió: Többnyire eltérőek a Resource Manager és klasszikus lépéseit. <br />Ebben az esetben használja a <a href="https://github.com/Azure/azure-content-pr/blob/master/contributor-guide/custom-markdown-extensions.md#simple-selectors">egyszerű választók módszer a Githubon</a>. <br />Megjegyzés: Virtuális gép cikkek ARM kivételekhez és ne használja az ARM/klasszikus választó.</em> |
+| <em>1. verzió: A cikk az üzembe helyezési modell független</em> | <em>2. verzió: A Resource Manager és klasszikus lépések ugyanazok, nagymértékben</em> | <em>3. verzió: A lépések a Resource Manager és klasszikus többnyire eltérőek. <br />Ebben az esetben használja a <a href="https://github.com/Azure/azure-content-pr/blob/master/contributor-guide/custom-markdown-extensions.md#simple-selectors">egyszerű választók módszer a GitHub</a>. <br />Megjegyzés: Virtuális gép cikkek ARM-kivételekhez és ne használja az ARM/klasszikus választó.</em> |
 |:--- |:--- |:--- |
-| <p><h3>1 megoldás</h3><em>(a legegyszerűbb és leghatékonyabb)</em></p><ol><li>[1. lépés]</li><li>[2. lépés]</li></ol><p><h3>Megoldás 2</h3><em>(a kisebb egyszerű és hatékony)</em></p><ol><li>[1. lépés]</li><li>[2. lépés]</li></ol><br /><br /><br /><br /><br /><br /><br /><br /> |<p><h3>1 megoldás</h3><em>(a legegyszerűbb és leghatékonyabb)</em></p><ol><li>[1. lépés]</li><li>Ha a klasszikus üzembe helyezési modellt használ [ehhez információ].<br />Ha a Resource Manager üzembe helyezési modellben [ehhez információ].</li><li>[3. lépés]</li></ol><p><h3>Megoldás 2</h3><em>(a kisebb egyszerű és hatékony)</em></p><ol><li>[1. lépés]</li><li>Ha a klasszikus üzembe helyezési modellt használ [ehhez információ].<br />Ha a Resource Manager üzembe helyezési modellben [ehhez információ].</li><li>[3. lépés]</li></ol> |<img src="media/markdown-template-for-support-articles-symptom-cause-resolution/rm-classic.png" alt="ARM-Classic"><p><h3>1 megoldás</h3><em>(a legegyszerűbb és leghatékonyabb)</em></p><ol><li>[1. lépés]</li><li>[2. lépés]</li></ol><p><h3>Megoldás 2</h3><em>(a kisebb egyszerű és hatékony)</em></p><ol><li>[1. lépés]</li><li>[2. lépés]</li></ol><br /><br /><br /><br /> |
+| <p><h3>1. megoldás</h3><em>(a legegyszerűbb és leghatékonyabb)</em></p><ol><li>[1. lépés]</li><li>[2. lépés]</li></ol><p><h3>2. megoldás</h3><em>(a kevésbé egyszerű és hatékony)</em></p><ol><li>[1. lépés]</li><li>[2. lépés]</li></ol><br /><br /><br /><br /><br /><br /><br /><br /> |<p><h3>1. megoldás</h3><em>(a legegyszerűbb és leghatékonyabb)</em></p><ol><li>[1. lépés]</li><li>Ha a klasszikus üzemi modell [ehhez információ].<br />A Resource Manager üzemi modell használatakor [ehhez információ].</li><li>[3. lépés]</li></ol><p><h3>2. megoldás</h3><em>(a kevésbé egyszerű és hatékony)</em></p><ol><li>[1. lépés]</li><li>Ha a klasszikus üzemi modell [ehhez információ].<br />A Resource Manager üzemi modell használatakor [ehhez információ].</li><li>[3. lépés]</li></ol> |<img src="media/markdown-template-for-support-articles-symptom-cause-resolution/rm-classic.png" alt="ARM-Classic"><p><h3>1. megoldás</h3><em>(a legegyszerűbb és leghatékonyabb)</em></p><ol><li>[1. lépés]</li><li>[2. lépés]</li></ol><p><h3>2. megoldás</h3><em>(a kevésbé egyszerű és hatékony)</em></p><ol><li>[1. lépés]</li><li>[2. lépés]</li></ol><br /><br /><br /><br /> |
 
 ## <a name="next-steps"></a>További lépések
-*Ezt a szakaszt, ha nincsenek konkrét 1 -3, a felhasználó gyorsabban magas vonatkozó lépéseket tartalmazza. Ha nem a következő lépést törlése. Ez az vonatkozó hivatkozásokat. Ha további lépések mutató hivatkozásokat tartalmaz, győződjön meg arról, annak magyarázata, hogy miért a következő lépésekre vonatkozó / fontos tartalmazza.*
+*Ezt a szakaszt, ha nincsenek konkrét 1 -3, a felhasználó megtétele magas vonatkozó következő lépések tartalmazzák. Ha a következő lépést nem törölhető. Ez nem egy helyen történő mutató hivatkozásokat. Ha további lépések mutató hivatkozásokat is, ügyeljen arra, hogy annak magyarázata, hogy miért érdemes a következő lépések-e a megfelelő / fontos tartalmazza.*
 
-*Ha ez a cikk a számlázási témakör, a következő Megjegyzés: a (az alábbi megjegyzést némileg eltérnek a elején Ez a cikk) a következők:*
+*Ha ez a cikk a számlázási témakörben, az alábbi megjegyzésben (az alábbi megjegyzést a némileg eltérnek a elején található ez a cikk) a következők:*
 
 > [!NOTE]
 > Ha további kérdései is vannak, kérjük, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

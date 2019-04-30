@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.openlocfilehash: eb16f5e1e72e5a9379ad530ab9677adba2ccbbcd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57899563"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61465677"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Az Azure Media Content Moderator segítségével lehetséges a felnőtt és szexuális tartalom észlelése 
 
 ## <a name="overview"></a>Áttekintés
-A **Azure Media a Content Moderator** médiafeldolgozót. (pont) lehetővé teszi, hogy gépi támogatású képmoderálás a videókhoz. Például érdemes észlelheti a videók lehetséges felnőtt és szexuális tartalom, és tekintse át a megjelölt tartalom az emberi moderálás csoportok.
+A **Azure Media a Content Moderator** médiafeldolgozót. (pont) lehetővé teszi, hogy gépi támogatású képmoderálás a videókhoz. Például előfordulhat, hogy szeretné észlelni az esetleges felnőtt vagy kényes tartalmakat a videókban, majd egy emberi moderátorcsapattal kívánja felülvizsgáltatni a megjelölt tartalmakat.
 
 A **Azure Media a Content Moderator** felügyeleti csomag jelenleg előzetes verzióban érhető el.
 

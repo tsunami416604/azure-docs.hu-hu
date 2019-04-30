@@ -9,11 +9,11 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.openlocfilehash: dfb1e0093893fadf22c7a92ef5f351ae8920a977
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036460"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60929287"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Hogyan terjessze globálisan olvassa be az Azure Cosmos DB API használatával a mongodb-hez
 
@@ -79,7 +79,7 @@ MongoDB-protokoll biztosítja az ügyfelek számára a következő olvasási be�
 2. PRIMARY_PREFERRED
 3. MÁSODLAGOS
 4. SECONDARY_PREFERRED
-5. LEGKÖZELEBBI
+5. NEAREST
 
 Tekintse meg a részletes [MongoDB olvasási beállítás viselkedése](https://docs.mongodb.com/manual/core/read-preference-mechanics/#replica-set-read-preference-behavior) ezekről a működését a dokumentációt, olvassa el előnyben módokat. Cosmos dB-ben elsődleges írási régiót és a másodlagos OLVASÁSI régióban leképezések rendeli hozzá.
 

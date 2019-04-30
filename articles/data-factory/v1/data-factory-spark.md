@@ -15,11 +15,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 95c49eec6964984894f75ecd0a9e50c9c947683b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015814"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61257568"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Az Azure Data Factory-folyamatok Spark-programok meghívása
 
@@ -267,7 +267,8 @@ Ebben a lépésben létrehoz egy folyamatot egy olyan HDInsightSpark tevékenys�
 
     ![Jupyter-lekérdezés eredményei](media/data-factory-spark/jupyter-notebook-results.png)
 
-<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article --> Részletes útmutatásért lásd a szakasz [futtatása Spark SQL-lekérdezés](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
+<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
+Részletes útmutatásért lásd a szakasz [futtatása Spark SQL-lekérdezés](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 Mivel Ön getDebugInfo beállítása **mindig**, láthatja a pyFiles mappában a blobtárolókban található napló almappája. A log mappában a naplófájl további információkat tartalmaz. Ez a naplófájl különösen hasznos, ha hiba történik. Éles környezetben érdemes állítani **hiba**.
@@ -329,7 +330,7 @@ A következő táblázat ismerteti a JSON-definíciójában használt JSON-tulaj
 | Tulajdonság | Leírás | Szükséges |
 | -------- | ----------- | -------- |
 | név | A folyamat a tevékenység neve. | Igen |
-| leírás | Az szöveg, amely leírja, hogy a tevékenység leírása. | Nem |
+| description | Az szöveg, amely leírja, hogy a tevékenység leírása. | Nem |
 | type | Ez a tulajdonság a HDInsightSpark kell beállítani. | Igen |
 | linkedServiceName | A HDInsight társított szolgáltatás, amelyen futtatja a Spark-program neve. | Igen |
 | rootPath | A blobtárolót és a Spark-fájlt tartalmazó mappát. A fájlnév formátuma a kis-és nagybetűket. | Igen |
@@ -346,7 +347,7 @@ A Spark-tevékenység nem támogatja a Pig, egy beágyazott parancsfájlja, és 
 
 A következő mappa-struktúra létrehozása a blob Storage a HDInsight társított szolgáltatás által hivatkozott. Ezután töltse fel a függő fájlokat a megfelelő almappákba által képviselt gyökérmappájában **entryFilePath**. Python-fájlok feltöltése a pyFiles almappa és a jar-fájlok a JAR-fájlok kivételével almappába a gyökérmappa. Futásidőben a Data Factory szolgáltatás vár a következő mappastruktúra a blob storage-ban: 
 
-| Útvonal | Leírás | Szükséges | Típus |
+| Útvonal | Leírás | Kötelező | Típus |
 | ---- | ----------- | -------- | ---- |
 | . | A meghajtógyökér elérési útja a Spark-feladat, a storage-beli társított szolgáltatás. | Igen | Mappa |
 | &lt;felhasználó által definiált &gt; | A Spark-feladat fájlja mutató elérési utat. | Igen | Fájl |

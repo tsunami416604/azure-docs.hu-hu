@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/29/2017
 ms.author: suchiagicha
 ms.openlocfilehash: e4c698dc5aa8a07d09835adeac39db6ee35f720c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666154"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123178"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnosztikai és a Reliable Service szolgáltatás táveléréséhez alkalmazásteljesítmény-figyelés
 A megbízható ServiceRemoting futásidejű bocsát ki [teljesítményszámlálók](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Ezek hogyan működik a ServiceRemoting betekintést nyújtson, és a hibaelhárítás és alkalmazásteljesítmény-figyelés segítségével.
@@ -28,7 +28,7 @@ A megbízható ServiceRemoting futásidejű bocsát ki [teljesítményszámlál�
 ## <a name="performance-counters"></a>Teljesítményszámlálók
 A megbízható ServiceRemoting futásidejű határozza meg a következő teljesítményszámláló-kategóriák:
 
-| Kategória | Leírás |
+| Category | Leírás |
 | --- | --- |
 | Service Fabric-szolgáltatás |Az Azure Service Fabric Service Remoting vonatkozó számlálókat például átlagos kérelem feldolgozásához szükséges idő |
 | Service Fabric-szolgáltatási metódus |Módszerek vonatkozó számlálókat által megvalósított Fabric Service Remoting Service, például egy metódus meghívásainak gyakoriságát. |

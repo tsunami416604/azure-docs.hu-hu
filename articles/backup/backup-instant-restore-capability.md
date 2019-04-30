@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 04/23/2019
 ms.author: sogup
-ms.openlocfilehash: 3aceffa719ef8938aa049f126231f8628822566b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c375eac0de3dd89986421f8c6628d0a13784a60d
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794777"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62733873"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentés, és állítsa vissza a teljesítmény az Azure Backup azonnali visszaállítási képesség
 
@@ -24,7 +24,7 @@ Az új modellre azonnali visszaállítása a következő szolgáltatás fejleszt
 
 * Lehetővé teszi a biztonsági mentési feladatot, amely elérhető a helyreállítás befejezéséhez a tárolóban való adatátvitel várakozás nélkül részeként készített pillanatkép használata. Ez csökkenti a várakozási idő a pillanatképek visszaállításának előtt a tárolóba másolja.
 * Csökkenti a biztonsági mentési és helyreállítási idő szerint helyileg, a pillanatképek megőrzik alapértelmezés szerint két napig. Az alapértelmezett pillanatkép adatmegőrzési érték az 1-5 nap között bármilyen érték konfigurálható.
-* Támogatja a lemez mérete 4 TB-ig. Az Azure Backup nem támogatja a csíkozott lemez. Lemez átméretezése az Azure Backup nem ajánlott.
+* Támogatja a lemez mérete 4 TB-ig. Lemez átméretezése az Azure Backup nem ajánlott.
 * Standard SSD-lemezeket Standard HDD és a prémium szintű SSD-lemezek mellett támogatja.
 *   Használhat egy nem felügyelt virtuális gép eredeti tárfiókokban (lemezenként) visszaállítása során. Ez a lehetőség létezik, akkor is, ha a virtuális gép lemezei tárfiókokban vannak elosztva. Ez felgyorsítja a visszaállítási műveletek számos különböző Virtuálisgép-konfigurációk esetében.
 
@@ -47,7 +47,7 @@ Alapértelmezés szerint a pillanatfelvételek megmaradnak két napig. Ez a funk
 * A pillanatképek és a lemezek a helyreállítási pont létrehozása növelése érdekében, és visszaállítási műveletek felgyorsítása érdekében tárolja. Ennek eredményeképpen látni fogja, amelyek megfelelnek a pillanatképekhez, ebben az időszakban végrehajtott tárolási költségeket.
 * Növekményes pillanatképek lapblobként tárolt. Nem felügyelt lemezeket használó összes felhasználó a saját helyi tárfiókban tárolt pillanatképek díjat számítunk fel. Mivel a visszaállítási pont gyűjtemények által felügyelt virtuális gép biztonsági mentéseinek használt blobpillanatképeket használja az alapul szolgáló tárolási szinten, a felügyelt lemezek látni fogja a blob-pillanatkép díjszabás megfelelő költségeket és a növekményes.
 * Prémium szintű tárfiókok esetén az azonnali helyreállítási pontok száma legfeljebb 10 TB-os felé készített pillanatképeket lefoglalt terület.
-* Lehetővé teszi a visszaállítási igényeinek megfelelően pillanatképek megőrzésének konfigurálása kap. A követelmény, attól függően beállíthatja a pillanatkép megőrzési legalább egy napot a biztonsági mentési házirend panel, kövesse az alábbi utasításokat. Ez segíthet csökkenthetők a költségek pillanatképek megőrzésének, ha nem végezhet helyreállítást gyakran.
+* Lehetővé teszi a visszaállítási igényeinek megfelelően pillanatképek megőrzésének konfigurálása kap. A követelmény, attól függően beállíthatja a pillanatkép megőrzési legalább egy napot a biztonsági mentési házirend panel, kövesse az alábbi utasításokat. Ez segít csökkenthetők a költségek pillanatképek megőrzésének, ha nem végezhet helyreállítást gyakran.
 * Ez a frissítés után az azonnali helyreállítás egy irányt frissítése, már nem válthat vissza.
 
 >[!NOTE]
@@ -55,7 +55,7 @@ Alapértelmezés szerint a pillanatfelvételek megmaradnak két napig. Ez a funk
 
 ## <a name="cost-impact"></a>A Cost gyakorolt hatás
 
-A növekményes pillanatképek vannak a virtuális gép tárfiókban tárolja, az azonnali helyreállítás használt. Növekményes pillanatkép azt jelenti, hogy a pillanatkép által elfoglalt hely megegyezik a pillanatkép létrehozása után írt lapok által elfoglalt terület. Számlázás továbbra is a rendszer a GB-onként használt elfoglalt hely által a pillanatkép és a GB-onkénti ár azonos módon a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/managed-disks/).
+A növekményes pillanatképek a virtuális gépek storage-fiók, amely azonnali helyreállítás használható vannak tárolva. Növekményes pillanatkép azt jelenti, hogy a pillanatkép által elfoglalt hely megegyezik a pillanatkép létrehozása után írt lapok által elfoglalt terület. Számlázás továbbra is a rendszer a GB-onként használt elfoglalt hely által a pillanatkép és a GB-onkénti ár azonos módon a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 >[!NOTE]
 > Pillanatkép adatmegőrzési szabályzatok heti 5 napon rögzítik.

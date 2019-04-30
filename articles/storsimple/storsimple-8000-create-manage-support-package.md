@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: dfc2d8d763a1eb64a37af73e03992f2d948a6856
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254366"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61481873"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Létrehozása és kezelése a StorSimple 8000 sorozat támogatási csomag
 
@@ -121,7 +121,7 @@ Szerkesztheti a támogatási csomagot a Microsoft Support helyen, először viss
         Supply values for the following parameters:EncryptionPassphrase: ****
 9. Jegyezze fel az új jelszót, úgy, hogy a Microsoft Support kért megoszthatja azt.
 
-### <a name="example-editing-files-in-a-support-package-on-a-password-protected-share"></a>Példa: Egy támogatási csomagot a jelszóval védett megosztáson található fájlok szerkesztése
+### <a name="example-editing-files-in-a-support-package-on-a-password-protected-share"></a>Példa: A támogatási csomagot jelszóval védett megosztáson található fájlok szerkesztése
 
 Az alábbi példa bemutatja, hogyan visszafejteni, szerkesztheti és újra titkosítja egy támogatási csomagot.
 

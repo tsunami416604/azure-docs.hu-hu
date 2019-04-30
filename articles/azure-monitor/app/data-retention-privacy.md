@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3c74d3a6c5b66053fb968ad52f72eca181799a3c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0f8f1c5585eb13506baea1e5ddbe611cc931758e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003576"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60899233"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
 
@@ -28,7 +28,7 @@ Első, a rövid választ:
 * A normál telemetriai "a kezdő" verzióról futtató modulokra nem valószínű, hogy a bizalmas adatokat küldeni a szolgáltatásnak. A telemetria feladata a terhelés, teljesítmény- és használati metrikák, kivételjelentéseket és más diagnosztikai adatokat. A fő felhasználói adatok láthatók a diagnosztikai jelentéseket a rendszer URL-címek; azonban az alkalmazás nem minden esetben helyezze a bizalmas adatok szövegként egy URL-címben.
 * Írhat kódot, amely segítséget nyújt a diagnosztikai és használati figyelési további egyéni telemetriát küld. (A bővíthetőség az Application Insights egy nagyszerű szolgáltatása.) Ki lehet, véletlen, ezt a kódot írni, hogy személyes és egyéb bizalmas adatokat tartalmazza. Ha az alkalmazás működésével az ilyen adatok, egy alapos felülvizsgálati folyamatok vonatkozik írt kódot.
 * Fejlesztés és tesztelés az alkalmazás közben könnyedék vizsgálja meg, mit küld a rendszer az SDK-ban. Az adatokat a hibakeresési kimeneti Windows-IDE és böngészőben jelenik meg. 
-* Az adatokat a tároló [Microsoft Azure](https://azure.com) kiszolgálók, az USA vagy Európa. (De az alkalmazás bárhol futhat.) Az Azure rendelkezik [erős biztonságot dolgozza fel, és megfelel a számos különböző megfelelőségi szabványok](https://azure.microsoft.com/support/trust-center/). Csak Ön és csapata kijelölt érheti el az adatokat. A Microsoft-alkalmazottak is korlátozott hozzáféréssel rendelkező, hogy csak adott korlátozott körülmények kapcsolatos ismereteit. Az átvitel során, bár nem az a kiszolgáló titkosított.
+* Az adatokat a tároló [Microsoft Azure](https://azure.com) kiszolgálók, az USA vagy Európa. (De az alkalmazás bárhol futhat.) Az Azure rendelkezik [erős biztonságot dolgozza fel, és megfelel a számos különböző megfelelőségi szabványok](https://azure.microsoft.com/support/trust-center/). Csak Ön és csapata kijelölt érheti el az adatokat. A Microsoft-alkalmazottak is korlátozott hozzáféréssel rendelkező, hogy csak adott korlátozott körülmények kapcsolatos ismereteit. Az átvitel során, míg az inaktív titkosítva van.
 
 Ez a cikk teljes körűen alapuló, ezek a válaszok. Feladata, hogy önálló, lehet, hogy nem azonnali csapata részét munkatársaknak megjelenítése.
 
@@ -127,12 +127,9 @@ Igen, használjuk https gyakorlatilag az összes SDK-k, beleértve a webkiszolg�
 
 Igen, bizonyos Telemetriai csatornák addig megmarad adatok helyben, ha a végpont nem érhető el. Tekintse át alább megtekintheti, mely keretrendszerek és a telemetria csatornák érinti.
 
-
 Telemetria csatornák, amelyek ténylegesen használják a helyi tároló ideiglenes fájlokat hoz létre a TEMP vagy APPDATA címtárakban, amely korlátozódnak az alkalmazást futtató fiók. Ez akkor fordulhat elő, ha átmenetileg nem érhető el a végpont vagy eléri a sávszélesség-szabályozási korlátot. Ha a probléma nem oldódik meg, a telemetriai adatok csatorna folytatódik az új és a megőrzött adatokat küldi.
 
-
-A megőrzött adatok **nem titkosított** és az adatgyűjtési szabályzat letiltja a személyes adatoknak a gyűjtését átalakításának erősen ajánlott. (Lásd: [és törlése a személyes adatok exportálása](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data) további információt.)
-
+A megőrzött adatok nem titkosítottak helyileg. Ha ez a veszélye, tekintse át az adatokat, és korlátozhatja a személyes adatoknak a gyűjtését. (Lásd: [és törlése a személyes adatok exportálása](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data) további információt.)
 
 Ha egy ügyfél be kell állítania ebben a könyvtárban az adott biztonsági követelményeknek, keretrendszerrel is konfigurálható. Győződjön meg arról, hogy a folyamat, az alkalmazás futtatásának rendelkezik írási hozzáféréssel a könyvtárhoz, de ügyeljen arra, hogy ez a könyvtár védett telemetriai adatok olvasása a nem kívánt felhasználók elkerülése érdekében.
 

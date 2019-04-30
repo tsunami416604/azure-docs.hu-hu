@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.openlocfilehash: 7a3d9a5f87a565625052fc54e3ecccc99fd928a7
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259498"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61386808"
 ---
 # <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>MariaDB-illesztőprogramok és a felügyeleti eszközök, Azure Database for MariaDB-kompatibilis
 
@@ -29,7 +29,7 @@ PHP | https://secure.php.net/downloads.php | 5.5, 5.6, 7.x | 5.3 | Adjon hozzá 
 .NET | [MySqlConnector on GitHub](https://github.com/mysql-net/MySqlConnector) <br> [Nuget csomag telepítését](https://www.nuget.org/packages/MySqlConnector/) | 0.27 és után | 0.26.5 és előtt |
 MySQL Connector/NET | [MySQL Connector/NET](https://github.com/mysql/mysql-connector-net) | 8.0, 7.0, 6.10 |  | Egy kódolási hiba okozhatja a kapcsolódás meghiúsulását bizonyos UTF8 Windows rendszereken.
 Node.js |  [MySQLjs on GitHub](https://github.com/mysqljs/mysql/) <br> Az npm-ből telepítőcsomagot:<br> Futtatás `npm install mysql` az npm-ből | 2.15 | 2.14.1 és előtt
-UGRÁS | https://github.com/go-sql-driver/mysql/releases | 1.3, 1.4 | 1.2-es és előtt | Használat `allowNativePasswords=true` 1.3-as verzió esetében a kapcsolati karakterláncban. 1.4-es verziójának javítást tartalmaz, és `allowNativePasswords=true` már nem szükséges.
+GO | https://github.com/go-sql-driver/mysql/releases | 1.3, 1.4 | 1.2-es és előtt | Használat `allowNativePasswords=true` 1.3-as verzió esetében a kapcsolati karakterláncban. 1.4-es verziójának javítást tartalmaz, és `allowNativePasswords=true` már nem szükséges.
 Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2.0, 2.1, 2.2 | 1.2.2 és előtt |
 Java | https://downloads.mariadb.org/connector-java/ | 2.1, 2.0, 1.6 | 1.5.5 és előtt |
 

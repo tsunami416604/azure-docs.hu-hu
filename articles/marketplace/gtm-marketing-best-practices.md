@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
 ms.openlocfilehash: bdae273506a238c4d47c1cdce004cdd92b2d58a1
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355649"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62121024"
 ---
-# <a name="marketing-best-practices"></a>Marketing-ajánlott eljárások
+# <a name="marketing-best-practices"></a>Marketingre vonatkozó ajánlott eljárások
 
 Az ajánlat közzététele a piactéren csak első lépése. Ezenkívül meg kell határoznia, hogyan optimalizálható a tőzsdei maximális hatás meghajtóra. A jó hír az, hogy tegye közzé a lista a Marketplace-en, megkezdése a Microsoft jelentős közös piaci segítő (GTM) tevékenységek zárolásának feloldásához.  Annak érdekében, hogy kihasználhassa az új GTM-kezdeményezéshez, és valóban vállalatfejlesztés fel szeretne venni a meglévő részeként az új listaelem marketing és értékesítés tevékenységeket.
 

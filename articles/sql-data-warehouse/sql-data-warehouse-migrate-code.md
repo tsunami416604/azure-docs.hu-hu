@@ -2,20 +2,21 @@
 title: Az SQL Data Warehouse SQL kódok migrálása |} A Microsoft Docs
 description: Migrálás az SQL-kódot az Azure SQL Data Warehouse-megoldások fejlesztése a tippek.
 services: sql-data-warehouse
-author: jrowlandjones
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: jrj
+origin.date: 04/17/2018
+ms.date: 04/01/2019
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: fae3ae16ee0100ad446c0b6c7851553a3376bb4f
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400979"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61126787"
 ---
 # <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>Az SQL Data Warehouse az SQL kód áttelepítése
 
@@ -139,3 +140,5 @@ Az összes támogatott T-SQL utasítást teljes listáját lásd: [Transact-SQL-
 <!--MSDN references-->
 
 <!--Other Web references-->
+
+<!--Update_Description: update meta properties, wording update-->

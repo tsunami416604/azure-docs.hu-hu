@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: fa4487b07f130947ac5da2a5dbae6776b06acbe7
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009902"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61463769"
 ---
 # <a name="input-metadata"></a>Bemeneti metaadatok 
 
@@ -50,12 +50,12 @@ Ez a cikk végén található XML példaként lásd: [XML-példa](media-services
 ### <a name="attributes"></a>Attribútumok
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **Name (Név)**<br /><br /> Szükséges |**xs:string** |Az eszközintelligencia-fájl neve. |
-| **Méret**<br /><br /> Szükséges |**xs:Long** |Mérete bájtban adategységfájlon. |
-| **Időtartam**<br /><br /> Szükséges |**DURATION típusú** |Tartalom play vissza időtartama. Példa: Duration="PT25M37.757S". |
+| **Name (Név)**<br /><br /> Kötelező |**xs:string** |Az eszközintelligencia-fájl neve. |
+| **Méret**<br /><br /> Kötelező |**xs:Long** |Mérete bájtban adategységfájlon. |
+| **Időtartam**<br /><br /> Kötelező |**DURATION típusú** |Tartalom play vissza időtartama. Példa: Duration="PT25M37.757S". |
 | **NumberOfStreams**<br /><br /> Szükséges |**xs:int** |Az eszközintelligencia fájlban adatfolyam száma. |
-| **FormatNames**<br /><br /> Szükséges |**xs: karakterlánc** |Nevek formázása. |
-| **FormatVerboseNames**<br /><br /> Szükséges |**xs: karakterlánc** |Részletes formátumnevek. |
+| **FormatNames**<br /><br /> Kötelező |**xs: karakterlánc** |Nevek formázása. |
+| **FormatVerboseNames**<br /><br /> Kötelező |**xs: karakterlánc** |Részletes formátumnevek. |
 | **StartTime** |**DURATION típusú** |Tartalom kezdete. Példa: StartTime="PT2.669S". |
 | **OverallBitRate** |**xs: int** |Az eszköz fájl kbit/s átlagos átviteli sebesség. |
 
@@ -78,10 +78,10 @@ Ez a cikk végén található XML példaként lásd: [XML-példa](media-services
 ### <a name="attributes"></a>Attribútumok
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **Azonosító**<br /><br /> Szükséges |**xs:int** |A hang- vagy követése nulla alapú indexét.<br /><br /> Ez nem feltétlenül, hogy a TrackID, mint az MP4-fájlokat használja. |
+| **Azonosító**<br /><br /> Kötelező |**xs:int** |A hang- vagy követése nulla alapú indexét.<br /><br /> Ez nem feltétlenül, hogy a TrackID, mint az MP4-fájlokat használja. |
 | **Kodek** |**xs:string** |Videó követése kodek karakterlánc. |
 | **CodecLongName** |**xs: karakterlánc** |Hang- vagy követése kodek hosszú neve. |
-| **TimeBase**<br /><br /> Szükséges |**xs:string** |Idő alapja. Példa: TimeBase="1/48000" |
+| **TimeBase**<br /><br /> Kötelező |**xs:string** |Idő alapja. Példa: TimeBase="1/48000" |
 | **NumberOfFrames** |**xs:int** |A keretek (videó nyomon követi a jelen) száma. |
 | **StartTime** |**xs: időtartam** |Kezdési idő nyomon követése. Példa: StartTime="PT2.669S" |
 | **Időtartam** |**DURATION típusú** |Nyomon követheti a időtartama. Példa: Duration="PTSampleFormat M37.757S". |
@@ -109,7 +109,7 @@ Ez a cikk végén található XML példaként lásd: [XML-példa](media-services
 | --- | --- | --- |
 | **SampleFormat** |**xs:string** |Minta formátumával. |
 | **ChannelLayout** |**xs: karakterlánc** |Csatorna elrendezés. |
-| **csatornák**<br /><br /> Szükséges |**xs:int** |(0 vagy több) hang csatornák száma. |
+| **csatornák**<br /><br /> Kötelező |**xs:int** |(0 vagy több) hang csatornák száma. |
 | **Érvénytelen a SamplingRate**<br /><br /> Szükséges |**xs:int** |Hang mintavételi ráta samples/mp vagy Hz. |
 | **Átviteli sebesség** |**xs:int** |Átlagos átviteli sebességű bit / másodperc, számított az eszközintelligencia-fájlból. Ez a szám nem szerepel a csomagolási terhelését, és csak a elemi stream hasznos tranzakciónak. |
 | **Bitspersample obsahuje neplatnou Hodnotu** |**xs:int** |Bit / minta wFormatTag formátumban írja be. |
@@ -124,18 +124,18 @@ Ez a cikk végén található XML példaként lásd: [XML-példa](media-services
 ### <a name="attributes"></a>Attribútumok
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **FourCC**<br /><br /> Szükséges |**xs:string** |Videó kodek FourCC kódot. |
+| **FourCC**<br /><br /> Kötelező |**xs:string** |Videó kodek FourCC kódot. |
 | **Profil** |**xs: karakterlánc** |Videó követése profil. |
 | **Szint** |**xs: karakterlánc** |Videó követése szintje. |
 | **PixelFormat** |**xs: karakterlánc** |Videó követése képpont formátuma. |
-| **Szélesség**<br /><br /> Szükséges |**xs:int** |A kódolt videó szélességét (képpontban). |
-| **Magasság**<br /><br /> Szükséges |**xs:int** |A kódolt videó magasságát (képpontban). |
-| **DisplayAspectRatioNumerator**<br /><br /> Szükséges |**xs: dupla** |Oldalarány számlálójának képmegjelenítő. |
+| **Szélesség**<br /><br /> Kötelező |**xs:int** |A kódolt videó szélességét (képpontban). |
+| **Magasság**<br /><br /> Kötelező |**xs:int** |A kódolt videó magasságát (képpontban). |
+| **DisplayAspectRatioNumerator**<br /><br /> Kötelező |**xs: dupla** |Oldalarány számlálójának képmegjelenítő. |
 | **DisplayAspectRatioDenominator**<br /><br /> Szükséges |**xs:Double** |Oldalarány nevező képmegjelenítő. |
 | **DisplayAspectRatioDenominator**<br /><br /> Szükséges |**xs: dupla** |Videó minta oldalarány osztandót. |
 | **SampleAspectRatioNumerator** |**xs: dupla** |Videó minta oldalarány osztandót. |
 | **SampleAspectRatioNumerator** |**xs:Double** |Videó minta oldalarány nevező. |
-| **Képkockasebesség**<br /><br /> Szükséges |**xs:decimal** |Mért videó képkockasebessége .3f formátumban. |
+| **Képkockasebesség**<br /><br /> Kötelező |**xs:decimal** |Mért videó képkockasebessége .3f formátumban. |
 | **Átviteli sebesség** |**xs:int** |Videó átlagos átviteli sebessége a kilobit / másodperc, számított az eszközintelligencia-fájlból. A csomagolási terhelését a lehetőség nem része, és csak a elemi stream hasznos tranzakciónak. |
 | **MaxGOPBitrate** |**xs: int** |Maximális Képcsoporttal átlagos bitsebességű a a videó nyomon követése a kilobit / másodperc. |
 | **HasBFrames** |**xs:int** |B keretek videó követése száma. |
@@ -157,10 +157,10 @@ Ez a cikk végén található XML példaként lásd: [XML-példa](media-services
 ### <a name="attributes"></a>Attribútumok
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **ProgramId**<br /><br /> Szükséges |**xs:int** |Program azonosítója |
+| **ProgramId**<br /><br /> Kötelező |**xs:int** |Program azonosítója |
 | **NumberOfPrograms**<br /><br /> Szükséges |**xs:int** |Programok száma. |
-| **PmtPid**<br /><br /> Szükséges |**xs:int** |Program térkép táblák (PMTs) programok vonatkozó adatokat tartalmaznak.  További információkért lásd: [részlet](https://en.wikipedia.org/wiki/MPEG_transport_stream#PMT). |
-| **PcrPid**<br /><br /> Szükséges |**xs: int** |Dekódoló által használt. További információkért lásd: [PCR](https://en.wikipedia.org/wiki/MPEG_transport_stream#PCR) |
+| **PmtPid**<br /><br /> Kötelező |**xs:int** |Program térkép táblák (PMTs) programok vonatkozó adatokat tartalmaznak.  További információkért lásd: [részlet](https://en.wikipedia.org/wiki/MPEG_transport_stream#PMT). |
+| **PcrPid**<br /><br /> Kötelező |**xs: int** |Dekódoló által használt. További információkért lásd: [PCR](https://en.wikipedia.org/wiki/MPEG_transport_stream#PCR) |
 | **StartPTS** |**xs: hosszú** |Bemutatási időbélyege indítása. |
 | **EndPTS** |**xs: hosszú** |A befejező bemutató időbélyeg. |
 
@@ -174,15 +174,15 @@ Ez a cikk végén található XML példaként lásd: [XML-példa](media-services
 | --- | --- | --- |
 | **Alapértelmezett**<br /><br /> Szükséges |**xs: int** |Ez az attribútum értéke 1 azt, hogy ez az alapértelmezett megjelenítése. |
 | **Dub**<br /><br /> Szükséges |**xs:int** |Ez az attribútum értéke 1 azt, hogy ez a szinkronizált bemutatót. |
-| **Original**<br /><br /> Szükséges |**xs: int** |Ez az attribútum értéke 1 azt, hogy ez az eredeti bemutató. |
+| **Original**<br /><br /> Kötelező |**xs: int** |Ez az attribútum értéke 1 azt, hogy ez az eredeti bemutató. |
 | **Megjegyzés**<br /><br /> Szükséges |**xs:int** |Ez az attribútum értéke 1 a track tartalmaz mellékmondatokkal jelzi. |
 | **Szöveg**<br /><br /> Szükséges |**xs:int** |Ez az attribútum értéke 1 a track tartalmaz szöveg jelzi. |
-| **Karaokézom**<br /><br /> Szükséges |**xs:int** |Ez az attribútum értéke 1, ez jelenti az karaokézom nyomon követése (háttérben zene, nincs énekhez) jelzi. |
-| **Kényszerített**<br /><br /> Szükséges |**xs:int** |Ez az attribútum értéke 1 azt, hogy ez a kényszerített bemutatót. |
-| **HearingImpaired**<br /><br /> Szükséges |**xs:int** |Ez az attribútum értéke 1 jelzi a nagyothalló személyek számára legyen. |
+| **Karaokézom**<br /><br /> Kötelező |**xs:int** |Ez az attribútum értéke 1, ez jelenti az karaokézom nyomon követése (háttérben zene, nincs énekhez) jelzi. |
+| **Kényszerített**<br /><br /> Kötelező |**xs:int** |Ez az attribútum értéke 1 azt, hogy ez a kényszerített bemutatót. |
+| **HearingImpaired**<br /><br /> Kötelező |**xs:int** |Ez az attribútum értéke 1 jelzi a nagyothalló személyek számára legyen. |
 | **VisualImpaired**<br /><br /> Szükséges |**xs:int** |Ez az attribútum értéke 1 a gyengén látók számára ez követése jelzi. |
-| **CleanEffects**<br /><br /> Szükséges |**xs: int** |Ez az attribútum értéke 1 a track rendelkezik tiszta hatások jelzi. |
-| **AttachedPic**<br /><br /> Szükséges |**xs: int** |Ez az attribútum értéke 1 a track rendelkezik képek jelzi. |
+| **CleanEffects**<br /><br /> Kötelező |**xs: int** |Ez az attribútum értéke 1 a track rendelkezik tiszta hatások jelzi. |
+| **AttachedPic**<br /><br /> Kötelező |**xs: int** |Ez az attribútum értéke 1 a track rendelkezik képek jelzi. |
 
 ## <a name="Programs"></a> Programok elem
 Több tároló burkoló elem **Program** elemeket.  

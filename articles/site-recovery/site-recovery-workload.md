@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
 ms.openlocfilehash: 3ad3438f02ead9063a683a39d4ac5823274d55f7
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155169"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61276137"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Milyen számítási feladatokat tud védeni az Azure Site Recovery?
 
@@ -146,7 +146,7 @@ Az Azure Site Recovery úgy gondoskodik a vészhelyreállításról, hogy a kör
 ## <a name="protect-citrix-xenapp-and-xendesktop"></a>A Citrix XenApp és a XenDesktop védelme
 A Site Recovery szolgáltatással az alábbi módokon biztosíthatja az üzemelő Citrix XenApp- és XenDesktop-példány védelmét:
 
-* Az üzemelő Citrix XenApp- és XenDesktop-példányok védelmének engedélyezése a különféle környezeti szintek (például AD DNS-kiszolgáló, SQL Database-kiszolgáló, Citrix kézbesítési vezérlő, StoreFront-kiszolgáló, XenApp Master (VDA), Citrix XenApp licenckiszolgáló) az Azure-ba való replikálásával történik.
+* Az üzemelő Citrix XenApp- és XenDesktop-példányok védelmének engedélyezése a különféle környezeti szintek (például AD DNS-kiszolgáló, SQL-adatbáziskiszolgáló, Citrix kézbesítési vezérlő, StoreFront-kiszolgáló, XenApp Master (VDA), Citrix XenApp licenckiszolgáló) az Azure-ba való replikálásával történik.
 * Megkönnyíti a felhőre való áttelepítést, mivel az üzemelő Citrix XenApp- és XenDesktop-példányok a Site Recovery segítségével is áttelepíthetők az Azure-ba.
 * Leegyszerűsíti a Citrix XenApp-/XenDesktop-fejlesztést és -tesztelést, mivel segítségével az éleshez hasonló, igény szerinti másolat hozható létre az alkalmazások teszteléséhez és a hibakereséséhez.
 * Ez a megoldás kizárólag a Windows Server operációs rendszer virtuális asztali környezeteire alkalmazható, az ügyfelek virtuális asztali környezetei esetében nem, mivel azok licencelése az Azure-ban még nem támogatott.

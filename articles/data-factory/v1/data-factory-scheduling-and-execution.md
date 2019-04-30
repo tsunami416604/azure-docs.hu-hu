@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 2d7fc45faf1fb77c7d9181e5a2419096dd1ad0f1
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817420"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61258959"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory ütemezés és végrehajtás
 > [!NOTE]
@@ -232,7 +232,7 @@ Egy adatkészlet tartozhat egy meghatározott érvényesség-ellenőrzési szab�
 
 A **házirend** az adatkészlet-definícióban szakasz definiálja a feltételeket és a feltétellel, hogy az adatkészlet szeleteit meg kell felelniük. A következő táblázat ismerteti a használható tulajdonságok a **házirend** szakaszban:
 
-| Házirend neve | Leírás | A alkalmazni | Szükséges | Alapértelmezett |
+| Házirend neve | Leírás | A alkalmazni | Kötelező | Alapértelmezett |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB | Azt ellenőrzi, hogy az adatok egy **az Azure blob** megfelel a minimális méret (megabájtban). |Azure-blob |Nem |NA |
 | minimumRows | Azt ellenőrzi, hogy az adatok egy **Azure SQL database** vagy egy **Azure-tábla** sorok legkisebb számát tartalmazza. |<ul><li>Azure SQL Database</li><li>Azure-tábla</li></ul> |Nem |NA |

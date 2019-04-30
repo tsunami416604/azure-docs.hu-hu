@@ -3,18 +3,18 @@ title: Az Azure IoT Edge-modulok fejlesztése |} A Microsoft Docs
 description: Kifejleszthet egyedi modulokat az Azure IoT Edge, amely képes kommunikálni a futtatókörnyezetet és az IoT Hub
 author: kgremban
 manager: philmea
-ms.author: kgremban
-ms.date: 02/25/2019
+ms.author: v-yiso
+origin.date: 02/25/2019
+ms.date: 03/25/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
 ms.openlocfilehash: ea2d1dbcf991ce858f07905bc1bb41809f9bcdd8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882739"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61322443"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>A saját IoT Edge-modulok fejlesztése
 

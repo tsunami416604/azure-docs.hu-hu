@@ -12,11 +12,11 @@ ms.date: 02/20/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: ceda22394aab27f27740bb999b36e2cc46a6bd06
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568888"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61126909"
 ---
 #    <a name="text-merge-cognitive-skill"></a>Szöveg egyesítési cognitive szakértelem
 

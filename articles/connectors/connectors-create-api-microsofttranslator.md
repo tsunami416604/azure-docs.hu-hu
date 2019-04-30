@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódás a Microsoft Translator – az Azure Logic Apps |} Microsoft Docs
-description: Szöveg fordítása, és az egyéb Microsoft Translator REST API-k és az Azure Logic Apps nyelvi feladatok végrehajtása
+title: Kapcsolódás a Microsoft Translatorhoz – Azure Logic Apps |} A Microsoft Docs
+description: Szöveg fordítása és a Microsoft Translator REST API-k és az Azure Logic Apps más nyelv feladatok végrehajtása
 author: ecfan
 manager: jeconnoc
 ms.author: estfan
@@ -11,29 +11,29 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: f6b8d96b7be3c87692b9a3db47e7e8e7d8e2649c
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 29212cf1c1f06ecae9892e0fc8aaaa4a01b2612b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295744"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62105785"
 ---
-# <a name="get-started-with-the-microsoft-translator-connector"></a>A Microsoft Translator összekötő az első lépései
-Kapcsolódás Microsoft Translator lefordítani a szöveg, a nyelvet, és több észlelése. A Microsoft Translator segítségével: 
+# <a name="get-started-with-the-microsoft-translator-connector"></a>A Microsoft Translator-összekötő használatának első lépései
+Kapcsolódás a Microsoft Translatorhoz való szöveg lefordítása, hogy észlelje a nyelvet, és egyéb. A Microsoft Translator segítségével: 
 
-* A Microsoft Translator származó adatok alapján üzleti folyamatot létrehozni. 
-* Műveletek segítségével lefordítani a szöveg, a nyelvet, és több észleli. Ezeket a műveleteket válaszol, és végezze el a kimeneti más műveletek érhető el. Amikor egy új fájl jön létre a dropbox-ba, például lehet a szöveget a fájlt egy másik nyelv használatával a Microsoft Translator fordítani.
+* Az üzleti folyamat kap a Microsoft Translator adatok alapján történő létrehozása. 
+* Szöveg fordítása, hogy észlelje a nyelvet, és egyéb műveletek használatával. Ezek a műveletek válaszol, és végezze el a kimenetet más műveletek esetében érhető el. Például egy új fájl létrehozásakor a Dropboxban lefordíttathatja a szöveget a fájlt egy másik nyelvre a Microsoft Translator használatával.
 
-Most hozzon létre egy logic app kezdheti, lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Hozzon létre egy logikai alkalmazás most már megkezdheti, lásd: [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-a-connection-to-microsoft-translator"></a>A Microsoft Translator kapcsolat létrehozása
+## <a name="create-a-connection-to-microsoft-translator"></a>Hozzon létre egy kapcsolatot a Microsoft Translatorhoz
 > [!INCLUDE [Steps to create a connection to Microsoft Translator](../../includes/connectors-create-api-microsofttranslator.md)]
 > 
 > 
 
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
 
-Bármely eseményindítók és a swagger definiált műveletek megtekintése, és semmilyen határnak a Lásd még: a [connector részleteket](/connectors/microsofttranslator/).
+Megtekintheti a valamennyi eseményindítót és műveletet a swaggerben meghatározott, és emellett a korlátozott a [összekötő részletei](/connectors/microsofttranslator/).
 
 ## <a name="more-connectors"></a>További összekötők
-Lépjen vissza a [API-k lista](apis-list.md).
+Lépjen vissza a [API-k listája](apis-list.md).

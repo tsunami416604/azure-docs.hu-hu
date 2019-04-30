@@ -14,13 +14,13 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 837235e04ce190a4481e1f19789d8e9ff9cb7578
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259242"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61131581"
 ---
-# <a name="media-encoder-standard-schema"></a>A Media Encoder Standard-séma
+# <a name="media-encoder-standard-schema"></a>Media Encoder Standard-séma
 Ez a cikk azt ismerteti, egyes elemek és az XML-séma típusú, amelyen [Media Encoder Standard készletek](media-services-mes-presets-overview.md) alapulnak. A cikk nyújt elemek és érvényes értékekre ismertetése.  
 
 ## <a name="Preset"></a> Készlet (gyökérelem)
@@ -38,7 +38,7 @@ Határozza meg egy kódolási beállításkészletet.
 
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| **Verzió**<br/><br/> Szükséges |**xs: tizedes tört** |Az előre megadott verzió. Az alábbi korlátozások érvényesek: xs:fractionDigits érték = "1" és a xs:minInclusive érték például = "1" **verzió = "1.0"**. |
+| **Verzió**<br/><br/> Kötelező |**xs: tizedes tört** |Az előre megadott verzió. Az alábbi korlátozások érvényesek: xs:fractionDigits érték = "1" és a xs:minInclusive érték például = "1" **verzió = "1.0"**. |
 
 ## <a name="Encoding"></a> Kódolás
 Sorozata, a következő elemeket tartalmazza:  

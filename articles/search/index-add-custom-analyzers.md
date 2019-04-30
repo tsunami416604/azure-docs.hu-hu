@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 9a15078c953c1fab40ad521eff079a623c93b9d9
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577543"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60914908"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Egyéni elemzők az Azure Search-index hozzáadása
 
@@ -214,7 +214,7 @@ Az elemzők, indexattribútumokat eltérőek lehetnek attól függően, hogy az 
 |||  
 |-|-|  
 |Name (Név)|Csak tartalmazhat betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásjeleket tartalmazhat, azonban csak kezdő és záró betűket és számokat tartalmazhatnak, és legfeljebb 128 karakter hosszúságú lehet.|  
-|Typo|Elemző listájából támogatott elemzőket. Tekintse meg a **analyzer_type** oszlopa a [elemzők](#AnalyzerTable) az alábbi táblázat.|  
+|Típus|Elemző listájából támogatott elemzőket. Tekintse meg a **analyzer_type** oszlopa a [elemzők](#AnalyzerTable) az alábbi táblázat.|  
 |Beállítások|Kell egy előre meghatározott elemző eszköz szerepel az érvényes beállítások a [elemzők](#AnalyzerTable) az alábbi táblázat.|  
 
 #### <a name="custom-analyzers"></a>Egyéni elemzők
@@ -222,7 +222,7 @@ Az elemzők, indexattribútumokat eltérőek lehetnek attól függően, hogy az 
 |||  
 |-|-|  
 |Name (Név)|Csak tartalmazhat betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásjeleket tartalmazhat, azonban csak kezdő és záró betűket és számokat tartalmazhatnak, és legfeljebb 128 karakter hosszúságú lehet.|  
-|Typo|Must be "#Microsoft.Azure.Search.CustomAnalyzer".|  
+|Típus|Must be "#Microsoft.Azure.Search.CustomAnalyzer".|  
 |CharFilters|Állítsa a felsorolt előre meghatározott char szűrők egyikét a [Char szűrők](#CharFilter) tábla vagy az index definícióját a megadott egyéni char szűrőt.|  
 |Jogkivonatokat létrehozó|Kötelező. Vagy az előre meghatározott tokenizers szereplő egyik beállítása a [Tokenizers](#Tokenizers) az alábbi táblázat vagy egy egyéni tokenizer, az index definícióját megadott.|  
 |TokenFilters|Állítsa a felsorolt előre meghatározott token szűrők egyikét a [jogkivonat-szűrők](#TokenFilters) tábla vagy az index definícióját a megadott egyéni token szűrő.|  
@@ -236,7 +236,7 @@ Az elemzők, indexattribútumokat eltérőek lehetnek attól függően, hogy az 
 |||  
 |-|-|  
 |Name (Név)|Csak tartalmazhat betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásjeleket tartalmazhat, azonban csak kezdő és záró betűket és számokat tartalmazhatnak, és legfeljebb 128 karakter hosszúságú lehet.|  
-|Typo|Támogatott char szűrőt a listából Char szűrőtípust. Lásd: **char_filter_type** oszlopa a [Char szűrők](#CharFilter) az alábbi táblázat.|  
+|Típus|Támogatott char szűrőt a listából Char szűrőtípust. Lásd: **char_filter_type** oszlopa a [Char szűrők](#CharFilter) az alábbi táblázat.|  
 |Beállítások|Az érvényes beállítások kell lennie egy adott [Char szűrők](#CharFilter) típusa.|  
 
 ### <a name="tokenizers"></a>Tokenizers
@@ -249,7 +249,7 @@ Egyéni elemző használható egy előre meghatározott jogkivonatokat létrehoz
 |||  
 |-|-|  
 |Name (Név)|Csak tartalmazhat betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásjeleket tartalmazhat, azonban csak kezdő és záró betűket és számokat tartalmazhatnak, és legfeljebb 128 karakter hosszúságú lehet.|  
-|Typo|A támogatott tokenizers listájából jogkivonatokat létrehozó neve. Lásd: **tokenizer_type** oszlopa a [Tokenizers](#Tokenizers) az alábbi táblázat.|  
+|Típus|A támogatott tokenizers listájából jogkivonatokat létrehozó neve. Lásd: **tokenizer_type** oszlopa a [Tokenizers](#Tokenizers) az alábbi táblázat.|  
 |Beállítások|Kell egy adott jogkivonatokat létrehozó típusú szerepel az érvényes beállítások a [Tokenizers](#Tokenizers) az alábbi táblázat.|  
 
 ### <a name="token-filters"></a>Token szűrők
@@ -260,7 +260,7 @@ Több jogkivonat-szűrőt használhat egyéni elemző. A listán sorrendben futn
 |||  
 |-|-|  
 |Name (Név)|Csak tartalmazhat betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásjeleket tartalmazhat, azonban csak kezdő és záró betűket és számokat tartalmazhatnak, és legfeljebb 128 karakter hosszúságú lehet.|  
-|Typo|Támogatott token-szűrők listája token szűrő nevét. Lásd: **token_filter_type** oszlopa a [jogkivonat-szűrők](#TokenFilters) az alábbi táblázat.|  
+|Típus|Támogatott token-szűrők listája token szűrő nevét. Lásd: **token_filter_type** oszlopa a [jogkivonat-szűrők](#TokenFilters) az alábbi táblázat.|  
 |Beállítások|Meg kell [jogkivonat-szűrők](#TokenFilters) egy adott token szűrő típusa.|  
 
 <a name="PropertyReference"></a>  

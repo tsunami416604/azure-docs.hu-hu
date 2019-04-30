@@ -1,17 +1,17 @@
 ---
 title: Az Azure Cosmos DB PDF-lekérdezés adatlapok
 description: Nyomtatható PDF adatlapok, amely segítséget nyújt az Azure Cosmos DB SQL, MongoDB, gráf és tábla API-k segítségével az adatok lekérdezése
-author: SnehaGunda
+author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/20/2018
-ms.author: sngun
+ms.date: 03/18/2019
+ms.author: v-yeche
 ms.openlocfilehash: 848b5a75e4e957b2ad61072ff2e229cacdba2019
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035081"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60928200"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Az Azure Cosmos DB lekérdezési adatlapok
 

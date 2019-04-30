@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 6/08/2018
 ms.author: v-jamebr
 ms.openlocfilehash: 5ae2ca352c6d3cbe02b659a97fe3147c1a31128f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664573"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60947431"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Az Apache Tomcat kiszolgálót a linuxon futó Service Fabric-tároló létrehozása
 Az Apache Tomcat a Java Servlet és a Java-kiszolgáló technológiák egy népszerű, nyílt forráskódú megvalósítását. Ez a cikk bemutatja, hogyan hozhat létre egy tárolót az Apache Tomcat és a egy egyszerű webalkalmazást, a tároló üzembe Linux operációs rendszert futtató Service Fabric-fürt és a webes alkalmazásba való csatlakozáshoz.  

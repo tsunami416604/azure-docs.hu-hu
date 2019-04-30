@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: alinast
 ms.openlocfilehash: e93811a56f934a95dde45633c4fb64312b3696df
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994821"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60924805"
 ---
 # <a name="egress-and-endpoints"></a>Kimenő forgalom és a végpontok
 
@@ -49,14 +49,14 @@ IoT-objektumok (például az eszközök és érzékelők) eseményt küld az Azu
 
 | Attribútum | Típus | Leírás |
 | --- | --- | --- |
-| id | sztring | Az esemény egyedi azonosítója. |
-| tárgy | sztring | Az esemény tárgya közzétevő által megadott elérési útja. |
+| id | string | Az esemény egyedi azonosítója. |
+| tárgy | string | Az esemény tárgya közzétevő által megadott elérési útja. |
 | adat | objektum | Eseményadatok adott erőforrás-szolgáltatónál. |
-| eventType | sztring | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
-| eventTime | sztring | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| dataVersion | sztring | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | sztring | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
-| témakör | sztring | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
+| eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
+| eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
+| dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
+| metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
+| témakör | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
 
 További információ az Event Grid-esemény séma:
 

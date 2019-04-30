@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/28/2019
 ms.author: rkarlin
 ms.openlocfilehash: 882d4e0592b74e8af30ff5bf110a41e403c3bf7d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789651"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60906475"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Az Azure Security Center végpontvédelmi problémák kezelése
 Az Azure Security Center figyeli a kártevőkkel szembeni védelem állapotát, és ezt jelzi az Endpoint protection problémák panel alatt. A Security Center problémákról, például az észlelt fenyegetések és a nem megfelelő védelemmel, amely sérülékennyé teheti a virtuális gépek (VM) és a számítógépek kártevőirtó fenyegetések emeli ki. Az információk használatával **végpontvédelem**, azonosíthatja a terv azonosított problémák elhárítása.

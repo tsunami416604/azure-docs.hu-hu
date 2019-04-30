@@ -13,11 +13,11 @@ ms.reviewer: ninarn, carlrab
 manager: craigg
 ms.date: 02/28/2019
 ms.openlocfilehash: 96160745fa8702fc6f931904098c28d8968de2c1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010238"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60936368"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Rugalmas készletek kezelése és a több Azure SQL-adatbázisok horizontális Súgó
 
@@ -138,7 +138,7 @@ További információk a több adatbázissal dolgozó további adatbázis-eszkö
 
 ### <a name="business-continuity-options-for-databases-in-an-elastic-pool"></a>A rugalmas készletben található adatbázisok üzletmenet-folytonossági funkciókat
 
-A készletezett adatbázisok általánosságban ugyanazokat [az üzletmenet-folytonossági funkciókat](sql-database-business-continuity.md) támogatják, amelyek az önálló adatbázisokhoz is elérhetők.
+A rugalmas készletbe helyezett adatbázisok általánosságban ugyanazokat [az üzletmenet-folytonossági funkciókat](sql-database-business-continuity.md) támogatják, amelyek az önálló adatbázisokhoz is elérhetők.
 
 - **Pont – történő visszaállítás**
 
@@ -146,7 +146,7 @@ A készletezett adatbázisok általánosságban ugyanazokat [az üzletmenet-foly
 
 - **Geo-restore**
 
-  GEO-visszaállítás az alapértelmezett helyreállítási lehetőséget biztosít, amikor a miatt incidens a régióban, az adatbázist üzemeltető adatbázis nem érhető el. Lásd: [Az Azure SQL Database visszaállítása vagy feladatátvétel a másodlagos kiszolgálóra](sql-database-disaster-recovery.md)
+  GEO-visszaállítás az alapértelmezett helyreállítási lehetőséget biztosít, amikor a miatt incidens a régióban, az adatbázist üzemeltető adatbázis nem érhető el. Lásd: [Az Azure SQL-adatbázis visszaállítása vagy feladatátvétel a másodlagos kiszolgálóra](sql-database-disaster-recovery.md)
 
 - **Aktív georeplikáció**
 

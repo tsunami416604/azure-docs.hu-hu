@@ -2,7 +2,6 @@
 title: Az Apache Spark az Apache kafka platformmal – Azure HDInsight streaming
 description: Ismerje meg, hogyan használható az Apache Spark adatok, vagy onnan máshová az Apache Kafka használatával DStreams. Ebben a példában Jupyter notebookkal streamel adatokat a Spark on HDInsightból.
 keywords: a kafka-például kafka zookeeper, spark-streamelés a kafka, a spark Stream kafka példa
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5f4b7994ad5061c64021f3625f42ac028cbee859
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
-ms.translationtype: MT
+ms.openlocfilehash: e0c39ae5f5c23ae0715ef1eee38b6dd34704538a
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653407"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097147"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Spark Stream (DStream) például az Apache Kafka on HDInsight
 

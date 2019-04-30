@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/25/2018
 ms.author: jasonh
 ms.openlocfilehash: 60ea945a70f7660fb0f3b8b8c82d9317eabadeb2
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59685863"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61476584"
 ---
 > [!IMPORTANT]
 > A HDInsight-erőforrások Azure Service Managerrel történő kezelésének Azure parancssori felületi támogatása **elavult**, így 2017. január 1-től megszűnt. A jelen dokumentumban leírt lépések az új Azure CLI parancssori felület parancsait használják, amelyek az Azure Resource Managerrel működnek.

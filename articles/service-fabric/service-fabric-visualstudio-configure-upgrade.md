@@ -15,11 +15,11 @@ ms.workload: multiple
 ms.date: 06/29/2017
 ms.author: mikkelhegn
 ms.openlocfilehash: 79120371ca2a62e5ef9f2bf38476635db12e9fcc
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055091"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61082840"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Service Fabric-alkalmazás verziófrissítésének konfigurálása Visual studióban
 Visual Studio-eszközök az Azure Service Fabric frissítési támogatást nyújt a helyi vagy távoli fürtökhöz való közzététel beállításait. Nincsenek három forgatókönyv, amelyben meg szeretné frissíteni az alkalmazást egy újabb verzióra, és cserélje le az alkalmazás tesztelése és hibakeresése során helyett:
@@ -31,7 +31,7 @@ Visual Studio-eszközök az Azure Service Fabric frissítési támogatást nyúj
 ## <a name="parameters-needed-to-upgrade"></a>Frissítés szükséges paraméterek
 Két típusú központi közül választhat: rendszeres vagy a verziófrissítésre. Egy normál központi telepítés egy frissítés telepítése megőrzi, amíg a korábbi központi telepítési információk és az adatokat a fürtön törli. Amikor frissít egy Service Fabric-alkalmazás a Visual Studióban, meg kell adnia a alkalmazásfrissítési paraméterek és egészségügyi ellenőrizheti a szabályzatokat. Alkalmazásfrissítési paraméterek segítségével szabályozhatja a frissítés állapotának ellenőrzése szabályzatok határozzák meg, hogy sikeres volt-e a frissítés közben. Lásd: [Service Fabric-alkalmazás frissítése: frissítési paraméterek](service-fabric-application-upgrade-parameters.md) további részletekért.
 
-Három frissítési módot: *figyelt*, *UnmonitoredAuto*, és *UnmonitoredManual*.
+Nincsenek három frissítési mód: *Figyelt*, *UnmonitoredAuto*, és *UnmonitoredManual*.
 
 * A figyelt frissítés automatizálja a frissítés és az alkalmazás állapotának ellenőrzése.
 * UnmonitoredAuto frissítés automatizálja a frissítést, de kihagyja az állapot-ellenőrzés.

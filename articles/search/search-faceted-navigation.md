@@ -10,11 +10,11 @@ ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 3b31e796b07bea8c11bccb3f2bb306a4279f2ca3
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523715"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61291607"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jellemzőalapú navigáció megvalósítása az Azure Search-ben
 Jellemzőalapú navigáció egy szűrési mechanizmus, amely alkalmazások keresése az önállóan irányított drilldown navigációs biztosít. A kifejezés "jellemzőalapú navigáció" ismeretlen, de valószínűleg felhasználta előtt. Ahogy az alábbi példa bemutatja, a jellemzőalapú navigáció má hodnotu nothing több, mint az eredmények szűréséhez használt kategóriák.

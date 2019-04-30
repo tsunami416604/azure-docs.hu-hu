@@ -11,11 +11,11 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
 ms.openlocfilehash: 860c00b876427af7395e3c04e0626131c27aca67
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878081"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60896421"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Az Azure Blockchain Workbench integrációs üzenetkezelés
 
@@ -477,7 +477,7 @@ A szerződés kapcsolatos információt tartalmazza. Az üzenet tartalmaz egy sz
 |--------------------|-------------|
 | workflowPropertyId | A munkafolyamat-tulajdonság az Azure Blockchain Workbench egyedi azonosítója |
 | név | A munkafolyamat-tulajdonság neve |
-| érték | A munkafolyamat tulajdonság értéke |
+| value | A munkafolyamat tulajdonság értéke |
 
 Példa egy *ContractMessage* a Blockchain Workbenchet:
 
@@ -588,7 +588,7 @@ Ha például a függvény nevét, a bemeneti paramétereket és a hívónak a f�
 | Name (Név) | Leírás |
 |------|-------------|
 | név | Paraméter neve |
-| érték | Paraméter értéke |
+| value | Paraméter értéke |
 
 #### <a name="event-message-transaction-information"></a>Esemény üzenet tranzakcióinformációi:
 

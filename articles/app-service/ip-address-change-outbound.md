@@ -12,11 +12,11 @@ ms.date: 06/28/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: ac62217af096653d61a79ff29ae352c8e950f8af
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719302"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61269769"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Hogyan készíti elő a kimenő IP-cím módosítása
 
@@ -24,9 +24,9 @@ Ha módosítja a kimenő IP-címek az Azure App Service-alkalmazás értesítés
 
 ## <a name="determine-if-you-have-to-do-anything"></a>Ha meg semmit sem kell tennie meghatározása
 
-* 1. lehetőség: Ha az App Service-alkalmazás nem használja az IP-szűrés, explicit listában vagy a kimenő forgalom-útválasztást vagy a tűzfal például különleges kezelést, semmit nem kell.
+* Option 1: Ha az App Service-alkalmazás nem használja az IP-szűrés, explicit listában vagy a kimenő forgalom-útválasztást vagy a tűzfal például különleges kezelést, semmit nem kell.
 
-* 2. lehetőség: Ha az alkalmazása különleges kezelést a kimenő IP-címeit (lásd az alábbi példákat), az új kimenő IP-címek hozzáadása, bárhol is a meglévőket jelennek meg. Ne cserélje le a meglévő IP-címek. Az új kimenő IP-címek az alábbi utasításokat a következő szakaszban találja.
+* Option 2: Ha az alkalmazása különleges kezelést a kimenő IP-címeit (lásd az alábbi példákat), az új kimenő IP-címek hozzáadása, bárhol is a meglévőket jelennek meg. Ne cserélje le a meglévő IP-címek. Az új kimenő IP-címek az alábbi utasításokat a következő szakaszban találja.
 
   Például előfordulhat, hogy kimenő IP-cím explicit módon szerepel az alkalmazáson kívüli tűzfal, vagy egy külső fizetési szolgáltatás előfordulhat, hogy rendelkezik, amely tartalmazza a kimenő IP-címet az alkalmazás engedélyezett listával. Ha a kimenő címét egy listában bárhol az alkalmazáson kívül van konfigurálva, hogy kell módosítani.
 

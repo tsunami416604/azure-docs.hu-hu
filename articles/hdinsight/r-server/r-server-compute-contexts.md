@@ -1,7 +1,6 @@
 ---
 title: Számítási környezeti beállítások a Machine Learning-szolgáltatásokhoz a HDInsight – Azure
 description: További információ a különböző számítási környezeti beállítások a Machine Learning-szolgáltatásokkal a felhasználók rendelkezésére a HDInsight
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 1e01a3db2c0ca1f9024afb3faecf677ac4e3131b
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
-ms.translationtype: MT
+ms.openlocfilehash: 9dac7aa19e428c964bd10c3ef62df949393e8d1f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52494471"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124635"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Számítási környezeti beállítások a HDInsight a Machine Learning-szolgáltatások
 
@@ -63,7 +62,7 @@ Adja meg ezeket az alapelveket, az alábbi szakaszok nyújtanak néhány által�
 ### <a name="apache-spark"></a>Apache Spark
 * Ha nagy adatmennyiség elemzését, majd importálni kell a Spark DataFrame használatával **RxHiveData** vagy **RxParquetData**, vagy a HDFS-ben XDF (kivéve, ha a tároló a hiba), és elemezheti a Spark számítási a környezet.
 
-### <a name="apache-hadoop-map-reduce"></a>Az Apache Hadoop Mapreduce
+### <a name="apache-hadoop-map-reduce"></a>Apache Hadoop Map Reduce
 * A Mapreduce számítási környezetet használja, ha általánosságban lassabb lesz, mivel a Spark számítási környezet megoldhatatlan hibát tapasztal.  
 
 ## <a name="inline-help-on-rxsetcomputecontext"></a>Beágyazott segítséget rxSetComputeContext

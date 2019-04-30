@@ -1,6 +1,6 @@
 ---
-title: Replikák és az Azure Service Fabric-példány |} Microsoft Docs
-description: Replikák és példányok--a funkció és életciklusának megismerése
+title: Replikák és példányok az Azure Service Fabricben |} A Microsoft Docs
+description: Replikák és példányok--a funkció és életciklusának ismertetése
 services: service-fabric
 documentationcenter: .net
 author: appi101
@@ -15,134 +15,134 @@ ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: 7f8638365b40395a5dd82457c40e5c15209ba1a7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211388"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60882414"
 ---
 # <a name="replicas-and-instances"></a>Replikák és példányok 
-Ez a cikk áttekintést nyújt az életciklus replikák állapotalapú szolgáltatások és állapot nélküli services példányát.
+Ez a cikk áttekintést nyújt az életciklus állapotalapú szolgáltatások és állapotmentes szolgáltatások példányainak replikával.
 
 ## <a name="instances-of-stateless-services"></a>Az állapotmentes szolgáltatások példányok
-Az állapotmentes szolgáltatások egy példány a szolgáltatás logika, amely a fürt a csomópontok egyikét futtatja egy példányát. A partíción belül példánya egyedileg azonosítja a **InstanceId**. Az egyik példány életciklus van modellezve, az alábbi diagram szemlélteti:
+Állapotmentes szolgáltatás egy példányának a szolgáltatás logika, amely a fürt csomópontjait futtat egy példányát. Egy példány egy partíción belül egyedileg azonosítja a **InstanceId**. Az életciklus-példány van modellezve a következő diagram mutatja:
 
 ![Példány életciklusa](./media/service-fabric-concepts-replica-lifecycle/instance.png)
 
 ### <a name="inbuild-ib"></a>Található InBuild (IB)
-Miután a fürt erőforrás-kezelő egy példány elhelyezés határozza meg, az életciklus állapotba lép. A példány el van indítva a csomópont. Alkalmazásgazda elindul, a példány létrejött, és majd. Az indítási befejezése után a példány átkerül a kész állapotba. 
+A fürterőforrás-kezelő egy példány elhelyezés határozza meg, miután azt a életciklus állapotba lép. A példány a csomópont elindult. Az alkalmazásgazda elindult, a példány létrehozott, majd megnyitni. Az indítás befejezése után a példány átkerül a kész állapotú. 
 
-Ha a gazda vagy az adott példány csomópont összeomlik, átkerül az eldobott állapotra.
+Ha az alkalmazás gazdagép vagy a csomópont a példány leáll, átirányítja az eldobott állapotra.
 
-### <a name="ready-rd"></a>Készültség (RD)
-A kész állapotú példány működik, és a csomóponton. Ha ezt a példányt egy megbízható szolgáltatás **RunAsync** hivatkoznak. 
+### <a name="ready-rd"></a>Kész (RD)
+A kész állapotú a példány működik-e a csomóponton. Ha ezt a példányt egy megbízható szolgáltatás **RunAsync** meghívása. 
 
-Ha a gazda vagy az adott példány csomópont összeomlik, átkerül az eldobott állapotra.
+Ha az alkalmazás gazdagép vagy a csomópont a példány leáll, átirányítja az eldobott állapotra.
 
 ### <a name="closing-cl"></a>Záró (CL)
-Lezárt állapotban Azure Service Fabric ezen a csomóponton a példány leállítása folyamatban van. A leállítás oka lehet számos oka – például az alkalmazásfrissítés, terheléselosztást vagy a szolgáltatás törlése folyamatban. Leállítás befejezése után átkerül az eldobott állapotra.
+Lezárt állapotban az Azure Service Fabric ezen a csomóponton a példány leállítása folyamatban van. A leállítás oka lehet számos oka lehet – például egy alkalmazás frissítése, terheléselosztási vagy a szolgáltatás törlése folyamatban van. Leállítás befejezése után átirányítja az eldobott állapotra.
 
 ### <a name="dropped-dd"></a>Az eldobott (nn)
-Az eldobott állapotában a példány már nem fut. a csomóponton. Ezen a ponton a Service Fabric ebben a példában a rendszer végül törli a metaadatait tárolja.
+Az eldobott állapotban a példány már nem fut a csomóponton. Ezen a ponton a Service Fabric megőrzi a metaadatokat, ez a példány, amely végül szintén törölve.
 
 > [!NOTE]
-> Már lehetséges való áttéréssel eldobott állapotára bármely állapotból használatával a **ForceRemove** beállítást `Remove-ServiceFabricReplica`.
+> Lehetőség arra átmenet bármely állapotból az eldobott állapotra használatával a **ForceRemove** beállítást `Remove-ServiceFabricReplica`.
 >
 
-## <a name="replicas-of-stateful-services"></a>Replikák állapotalapú szolgáltatások
-Az állapotalapú szolgáltatás egy replikája a fürt a csomópontok egyikén futó szolgáltatás logika egy példányát. Továbbá a replika fenntart egy adott szolgáltatás állapotát. Két kapcsolódó fogalmak életciklusának és állapot-nyilvántartó replikák viselkedését mutatják be:
-- A replika életciklusa
-- A replika szerepkör
+## <a name="replicas-of-stateful-services"></a>Az állapotalapú szolgáltatások replikák
+Az állapotalapú szolgáltatások replikája a fürt a csomópontok egyikén futó szolgáltatás logika egy példányát. Emellett a replika megőrzi a szolgáltatás állapotát. Két kapcsolódó fogalom írja le, életciklusát és állapot-nyilvántartó replikák viselkedését:
+- Replika életciklusa
+- Replika szerepkör
 
-A következő vitafórum a megőrzött állapot-nyilvántartó szolgáltatások ismerteti. "Volatile" (vagy a memóriában) állapotalapú szolgáltatások esetén a le, és az eldobott állapotok egyenértékűek.
+A következő vitafórum megőrzött állapot-nyilvántartó-szolgáltatásokat részletezi. Az ideiglenes (vagy a memóriában) állapotalapú szolgáltatások esetében a le, és az eldobott állapot a következő egyenértékű.
 
-![A replika életciklusa](./media/service-fabric-concepts-replica-lifecycle/replica.png)
+![Replika életciklusa](./media/service-fabric-concepts-replica-lifecycle/replica.png)
 
 ### <a name="inbuild-ib"></a>Található InBuild (IB)
-Található InBuild replikájának létrehozása vagy csatlakoztatása a replikakészlethez készített replika. Attól függően, hogy a replika szerepkör a IB szemantikájú különböző. 
+Található InBuild replikájának létrehozott vagy való csatlakozáshoz a replikakészlethez készített replika. A replika szerepkörtől függően a IB különböző szemantikával rendelkezik. 
 
-Ha az alkalmazást vagy a csomópont egy található InBuild másodpéldány összeomlik, átmenetek lefelé állapotát.
+Ha összeomlik a gazda, vagy egy található InBuild replika a csomópont, átirányítja az állapota.
 
-   - **Elsődleges található InBuild replikák**: elsődleges található InBuild egy partíció első replikáit. Ez a másodpéldány általában akkor történik, ha a partíció létrehozása folyamatban van. Elsődleges található InBuild replikák is merülhetnek fel, ha egy partíció összes replika újraindítása vagy van dobva.
+   - **Elsődleges található InBuild replikák**: Elsődleges található InBuild az első partíció replikáit. Ez a másodpéldány általában akkor fordul elő, ha a partíció létrehozása folyamatban van. Elsődleges található InBuild replikák is merülnek fel, ha egy partíció összes replika indítsa újra, vagy a rendszer eltávolítja.
 
-   - **IdleSecondary található InBuild replikák**: ezek vagy a fürt-kezelő által létrehozott új replikákat, vagy meglévő replikák állt le, és hozzá kell adni a készlet vissza. Ezekre a replikákra rendezés vagy az elsődleges létrehozva ahhoz, hogy csatlakozzon a replikakészlethez ActiveSecondary, és kvórum nyugtázása műveletek részt.
+   - **IdleSecondary található InBuild replikák**: Ezek a fürt Resource Manager által létrehozott új replikákat, vagy a meglévő replikákat, amelyek a csökkent, és hozzá kell adni a készlet be újra. Ezek a replikák áttöltésekor vagy az elsődleges által készített, csatlakozzon a replikakészlethez ActiveSecondary, és részt venni a kvórum nyugtázása a műveletek előtt.
 
-   - **ActiveSecondary található InBuild replikák**: Ebben az állapotban lévő egyes lekérdezések követi. Az optimalizálás, amelyen a replika meg nem változik, de a replika kell kialakítani, akkor. A replika magát a következő a gép szokásos Állapotváltások (a szakaszban leírtak a replika szerepköre).
+   - **ActiveSecondary található InBuild replikák**: Ebben az állapotban az egyes lekérdezések valósul meg. Fontos, hogy egy optimalizálási, ahol a replikakészlet nem módosul, de egy replikának továbbítania kell építeni. A replika magát a gép szokásos állapotváltásra követi, (ahogyan az a szakasz a replika szerepköre).
 
-### <a name="ready-rd"></a>Készültség (RD)
-Készen áll a replika egy replikát, amely részt vesz műveletek replikációs és kvórum nyugtázása. A kész állapot nem elsődleges és aktív másodlagos replikák alkalmazandó.
+### <a name="ready-rd"></a>Kész (RD)
+Kész replika egy replikát, amely részt vesz a replikáció és a kvórum nyugtázása műveleteket. Elsődleges és aktív másodlagos replikákra akkor üzemkész állapotba kerül.
 
-Ha az alkalmazást vagy a csomópont készen áll a replika összeomlik, átmenetek lefelé állapotát.
+Ha az alkalmazás gazdagép- vagy kész replika a csomópont leáll, akkor átkerül állapota.
 
 ### <a name="closing-cl"></a>Záró (CL)
-A replika a záró állapotba kerül, a következő esetekben:
+A replika záró állapotba lép, a következő esetekben:
 
-- **A kód a replika leállítása**: a Service Fabric módosítania kell a replika kódfuttatásra le kell állítania. A Leállítás számos oka lehet. Ez például akkor fordulhat elő, egy alkalmazás, hálóhoz vagy infrastruktúrafrissítése miatt, vagy a replika által jelentett hiba miatt. A replika befejeződik zárja be, amikor a replika átmenetek lefelé állapotát. A megőrzött állapot, a lemezen tárolt replika társított nem törlődnek.
+- **A kód a replika leáll**: A Service Fabric állítsa le a futó kód replika lehet szükség. Előfordulhat, hogy a leállás ennek számos oka lehet. Ez például akkor fordulhat elő, egy alkalmazást, a fabric vagy az infrastruktúra frissítése miatt, vagy a replika által jelentett hiba miatt. A replika végeztével zárja be, amikor a replika állapota a értékre vált. Ez a lemezen tárolt replika társított a megőrzött állapot nem törlődnek.
 
-- **A replika eltávolítása a fürtről**: a Service Fabric módosítania kell a megőrzött állapot eltávolítása, és állítsa le a futó kód replika. A leállítás okait, számos, például hálózati terheléselosztást lehet.
+- **A replika eltávolítása a fürtből**: Távolítsa el a megőrzött állapot, és állítsa le a futó kód replika szükség lehet a Service Fabric. Előfordulhat, hogy a leállás lehetséges okai például terheléselosztási.
 
 ### <a name="dropped-dd"></a>Az eldobott (nn)
-Az eldobott állapotában a példány már nem fut. a csomóponton. A csomópontot a bal oldali állapot nélküli is van. Ezen a ponton a Service Fabric ebben a példában a rendszer végül törli a metaadatait tárolja.
+Az eldobott állapotban a példány már nem fut a csomóponton. Nincs állapot, a csomóponton left is van. Ezen a ponton a Service Fabric megőrzi a metaadatokat, ez a példány, amely végül szintén törölve.
 
 ### <a name="down-d"></a>Lefelé (D)
-Alsó állapotban a replika kód nem fut, de a megőrzött állapot, hogy a replika létezik ezen a csomóponton. A replika le számos oka lehet – például a csomópont alatt, a replika kódot, az alkalmazásfrissítés vagy replika hibák crash.
+A állapota a replika kódot nem fut, de a replika a megőrzött állapot létezik ezen a csomóponton. A replika leállása ennek számos oka lehet – például a csomópont alatt, a replika kód, egy alkalmazás frissítése vagy replika hibák összeomlás.
 
-Lefelé replika már meg van nyitva a Service Fabric szükséges, mint például a frissítés befejezése után a csomóponton.
+Lefelé replika nyitja meg a Service Fabric szükséges, mint például a csomóponton a frissítés befejeztével.
 
-A replika szerepköre nem megfelelő alsó állapotban.
+A replika szerepkör nem szerepel megfelelő az állapota.
 
-### <a name="opening-op"></a>A nyitó (m)
-Lefelé replika a nyitó állapotba kerül, ha a Service Fabric kell elindítani a replika vissza újra. Ebben az állapotban lehet például egy kódot frissítés alkalmazásához a csomópont befejeződése után. 
+### <a name="opening-op"></a>Nyitó (művelet)
+Lefelé replika nyitó állapotba lép, amikor a Service Fabric kell újra viszi, készítsen biztonsági másolatot a replikát. Ebben az állapotban lehet például egy kód a frissítést az alkalmazás egy csomóponton befejeződése után. 
 
-Ha az alkalmazást vagy a csomópont egy nyitó másodpéldány összeomlik, átmenetek lefelé állapotát.
+Ha összeomlik a gazda és a egy nyitó replika a csomópont, akkor átkerül állapota.
 
-A replika szerepkör nincs megfelelő állapotban a megnyitásakor.
+A replika szerepkör nem szerepel megfelelő nyitó állapotát.
 
 ### <a name="standby-sb"></a>A készenléti (SB)
-A készenléti replikája egy replikát készít egy megőrzött szolgáltatás, amely csökkent, és ezután nyitották meg. Ennek a replikának szüksége lehet a Service Fabric, ha a másik replika hozzáadása (mert a replika már rendelkezik egy részét az állapot és a létrehozási folyamat gyorsabb). A StandByReplicaKeepDuration lejárta után a rendszer törli a készenléti állapotban lévő replikát.
+Készenléti replika csökkent, és ezután nyitotta meg megőrzött szolgáltatás replikáját. Ez a másodpéldány lehet a Service Fabric, ha egy másik replikára hozzáadása (mert a replika már rendelkezik bizonyos részének állapotát, és a kiépítési folyamat éppen gyorsabb). A StandByReplicaKeepDuration lejárata után a rendszer elveti a készenléti replika.
 
-Ha az alkalmazást vagy a csomópont egy készenléti replika összeomlik, átmenetek lefelé állapotát.
+Ha az alkalmazás gazdagép- vagy készenléti replika a csomópont leáll, átirányítja az állapota.
 
-A replika szerepköre nem megfelelő a készenléti állapotban.
+A replika szerepkör nem szerepel megfelelő a készenléti állapotot.
 
 > [!NOTE]
-> Bármely replika, amely nem nem működik, vagy kihagyott tekinthető *be*.
+> Bármely replika, amely le nem módosítható és nem tekinthető *mentése*.
 >
 
 > [!NOTE]
-> Már lehetséges való áttéréssel eldobott állapotára bármely állapotból használatával a **ForceRemove** beállítást `Remove-ServiceFabricReplica`.
+> Lehetőség arra átmenet bármely állapotból az eldobott állapotra használatával a **ForceRemove** beállítást `Remove-ServiceFabricReplica`.
 >
 
-## <a name="replica-role"></a>A replika szerepkör 
-A replika szerepkörét az határozza meg a replika funkciójához:
+## <a name="replica-role"></a>Replika szerepkör 
+A replika szerepkör meghatározza, hogy a függvény a replika:
 
-- **Elsődleges (P)**: van egy elsődleges a replika, amely hajt végre az olvasási és írási műveletet. 
-- **ActiveSecondary (S)**: ezek a állapot frissítések fogadása az elsődleges, őket, és elküldheti-e vissza a nyugtázás a replikákat. A replikakészlet több aktív másodlagos adatbázisok szerepelnek. Ezek aktív másodlagos adatbázisok száma meghatározza, hogy kezelni tud a szolgáltatás a hibák száma.
-- **(I) IdleSecondary**: ezekre a replikákra az elsődleges által épített alatt. Kapják állapota az elsődleges, mielőtt azok aktív másodlagos tartományvezérlővé. 
-- **Nincs (N)**: ezekre a replikákra a replika nem rendelkezik a felelős.
-- **Ismeretlen (U)**: Ez az a kezdeti replika szerepkörét az egy, mielőtt bármelyik kap **ChangeRole** API-hívás a Service Fabric.
+- **Elsődleges (P)**: Van egy elsődleges hajtják végre, a replika olvasási és írási műveletek. 
+- **(S) ActiveSecondary**: Ezek a állapot frissítések fogadása az elsődleges, alkalmazza őket, és küldje vissza a nyugtázás a replikákat. A replikakészlet nincsenek több aktív másodlagos példány hozható létre. Ezek aktív másodlagos adatbázisok száma határozza meg, a hibák száma a szolgáltatás képes kezelni.
+- **(I) IdleSecondary**: Ezek a replikák szerint az elsődleges beépített folyamatban van. Ezek azért küldtük Önnek, állapota az elsődleges kiszolgálóról, mielőtt azok előléptetése aktív másodlagos. 
+- **Egyik sem (N)**: Ezeket a replikákat a replika nem rendelkezik a felelős.
+- **Ismeretlen (U)**: Ez a kezdeti replika szerepköre, mielőtt megkap minden **ChangeRole** API-hívás a Service Fabric.
 
-Az alábbi ábrán látható, a replika szerepkör átmenetek és néhány példát, amelyek akkor fordulhatnak elő:
+A következő ábra szemlélteti a replika szerepkör átmenetek és néhány példa forgatókönyvet, amelyben fordulhat:
 
-![A replika szerepkör](./media/service-fabric-concepts-replica-lifecycle/role.png)
+![Replika szerepkör](./media/service-fabric-concepts-replica-lifecycle/role.png)
 
-- U -> új elsődleges replika P: létrehozását.
-- U -> új inaktív replika I: létrehozását.
-- U -> N: készenléti állapotban lévő replika törlését.
-- I -> %s előléptetés aktív másodlagos tétlen másodlagos, hogy a nyugtázásokhoz közre kvórum felé.
-- I -> a tétlen másodlagos elsődleges P: előléptetése. Ez akkor fordulhat elő különleges újrakonfigurálás alatt a tétlen másodlagos elsődleges kell a megfelelő jelölt esetén.
-- I -> N: a tétlen másodlagos replika törlését.
-- S -> az elsődleges aktív másodlagos P: előléptetése. Az elsődleges vagy a fürt-kezelő által kezdeményezett egy elsődleges adatátviteli valószínűleg. Például lehet egy alkalmazás frissítése vagy a terheléselosztás adott válaszként.
-- S -> N: az aktív másodlagos replika törlését.
-- P -> %s lefokozás az elsődleges replika. Ez okozhatja, hogy a fürt-kezelő által kezdeményezett egy elsődleges adatátviteli. Például lehet egy alkalmazás frissítése vagy a terheléselosztás adott válaszként.
-- P -> N: az elsődleges replika törlését.
+- U-P: &GT; Egy új elsődleges replika létrehozása.
+- U -> I: Egy új inaktív replika létrehozása.
+- U-N: &GT; Készenléti replika törlését.
+- I -> S: Az üresjárati előléptetése másodlagos aktív másodlagos úgy, hogy a nyugtázás a közreműködés kvórum felé.
+- E-P: &GT; A tétlen másodlagos elsődleges támogatása. Ez akkor fordulhat elő a speciális reconfigurations a tétlen másodlagos esetén a megfelelő jelölt elsődlegessé.
+- E-N: &GT; A tétlen másodlagos replika törlését.
+- S-P: &GT; Az aktív másodlagos elsődleges támogatása. Ez lehet az elsődleges és a egy elsődleges áthelyezése a fürt Resource Manager által kezdeményezett feladatátvétele miatt. Például lehet egy alkalmazás frissítése vagy a terheléselosztás adott válaszként.
+- S-N: &GT; Az aktív másodlagos replika törlését.
+- P -> S: Az elsődleges replika lefokozása. Ez lehet a fürt Resource Manager által kezdeményezett egy elsődleges mozgása miatt. Például lehet egy alkalmazás frissítése vagy a terheléselosztás adott válaszként.
+- P-N: &GT; Az elsődleges replika törlését.
 
 > [!NOTE]
-> Mint a magasabb szintű programozási modellek [Reliable Actors](service-fabric-reliable-actors-introduction.md) és [Reliable Services](service-fabric-reliable-services-introduction.md), a fejlesztőtől származó replika szerepkörök koncepciójának elrejtése. Szereplője a szerepkör fogalmát nem szükséges. A szolgáltatások, nagy mértékben egyszerűsítve a legtöbb forgatókönyvhöz.
+> A magasabb szintű programozási modellek, mint például [Reliable Actors](service-fabric-reliable-actors-introduction.md) és [Reliable Services](service-fabric-reliable-services-introduction.md), a replika szerepkörök a fejlesztőtől származó fogalmát elrejtése. Actors a szerepkör fogalma nem szükséges. A szolgáltatások, nagymértékben egyszerűsödött, a legtöbb forgatókönyvhöz.
 >
 
 ## <a name="next-steps"></a>További lépések
-A Service Fabric fogalmakat további információkért tekintse meg a következő cikkben:
+A Service Fabric fogalmakról további információkért tekintse meg a következő cikket:
 
 [A Reliable Services életciklusa – C#](service-fabric-reliable-services-lifecycle.md)
 

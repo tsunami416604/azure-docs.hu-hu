@@ -1,7 +1,6 @@
 ---
 title: HBase-fürtök létrehozása a virtuális hálózat – Azure
 description: Az Azure HDInsight HBase használatának első lépései. Útmutató a HDInsight HBase-fürtök létrehozása az Azure Virtual Network.
-services: hdinsight,virtual-network
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 73ac2072a087f0931b6c9c776d3ad0bfedb4320b
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: MT
+ms.openlocfilehash: 85eaa81a0cfd7ccfe8ad3ae818f89966280d279e
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199528"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123110"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Az Azure virtuális hálózaton található HDInsight az Apache HBase-fürtök létrehozása
 Ismerje meg, hogyan hozhat létre az Azure HDInsight az Apache HBase-fürtök egy [Azure Virtual Network][1].

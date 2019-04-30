@@ -1,6 +1,6 @@
 ---
-title: Használati statisztikák elemezheti Azure CDN speciális HTTP-jelentések |} Microsoft Docs
-description: Ismerje meg, speciális HTTP-jelentések létrehozása a Microsoft Azure CDN szolgáltatás használata. Ezek a jelentések részletes információkkal CDN tevékenység.
+title: Az Azure CDN fejlett HTTP-jelentések kihasználtságának statisztikai adatai elemzéséhez |} A Microsoft Docs
+description: Ismerje meg, a Microsoft Azure CDN fejlett HTTP-jelentések létrehozása. Ezek a jelentések CDN tevékenység részletes tájékoztatást nyújt.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,194 +14,194 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 2dfbc046674b2da692f30c945aee3ea25ae524eb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: c8cb4713e38ca0da610c687325f3810f57da2b26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23843615"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61216151"
 ---
-# <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Használati statisztikák elemezheti Azure CDN speciális HTTP-jelentések
+# <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Az Azure CDN fejlett HTTP-jelentések kihasználtságának statisztikai adatai elemzéséhez
 ## <a name="overview"></a>Áttekintés
-Ez a dokumentum ismerteti a Microsoft Azure CDN speciális HTTP jelentéskészítés. Ezek a jelentések részletes információkkal CDN tevékenység.
+Ez a dokumentum ismerteti a Microsoft Azure CDN fejlett HTTP jelentéskészítés. Ezek a jelentések CDN tevékenység részletes tájékoztatást nyújt.
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="accessing-advanced-http-reports"></a>Speciális HTTP-jelentések használata
-1. A CDN-profil panelje, kattintson a **kezelése** gombra.
+## <a name="accessing-advanced-http-reports"></a>Speciális HTTP-jelentések elérése
+1. A CDN-profil panelje, kattintson a **kezelés** gombra.
    
     ![CDN-profil panelje kezelése gomb](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
    
-    Megnyitja a CDN-felügyeleti portálon.
-2. Vigye a **Analytics** lapra, és vigye a **speciális HTTP-jelentések** menü.  Kattintson a **HTTP nagy Platform**.
+    Megnyílik a CDN felügyeleti portálját.
+2. A kurzort a **Analytics** lapfülre, majd mutasson a **speciális HTTP-jelentések** úszó menü.  Kattintson a **HTTP nagy Platform**.
    
-    ![CDN management portal - jelentések Speciális menüben](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
+    ![CDN felügyeleti portálját - jelentések Speciális menü](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
    
-    A jelentés beállítások jelennek meg.
+    Jelentésbeállítások jelennek meg.
 
-## <a name="geography-reports-map-based"></a>A földrajzi jelentések (térkép-alapú)
-Nincsenek öt jelentések hasznát a leképezés a régiók, amelyről a tartalmat kért jelzi. Ezek a jelentések a következők: globális térkép, az Amerikai Egyesült Államok térkép, Kanada térkép, Európa térkép és Ázsia Csendes-óceáni térkép.
+## <a name="geography-reports-map-based"></a>Földrajzi hely jelentések (térkép-alapú)
+Nincsenek öt jelentéseket, amelyek kihasználják a leképezés jelzi a régiók, amelyről a tartalmat kéri. Ezek a jelentések Világtérkép, Egyesült Államok térkép, Kanada térkép, térkép Európa és Ázsia Csendes-óceáni térkép.
 
-Minden egyes térkép-alapú jelentés egyes holtversenyekben földrajzi entitások (azaz országok, állapotok és tartományok) régió származó találatok százaléka alapján. Emellett olyan térképet jelenítheti meg a helyeket, ahonnan a tartalmat kért segítségével valósul meg. Ehhez minden egyes régió igény szerint az adott régióban tapasztalt milyen mértékű színkódolás tudni. Bárka árnyékolt régiók a tartalom alacsonyabb igény szerint azt jelzik, amíg sötétebb régiók jelzi a tartalmak iránti igénye nagyobb mértékű.
+Minden egyes térképes jelentés holtversenyben földrajzi entitások (azaz a országok, államok és tartományok) százalékos aránya, amelyek adott régióból származik, a találatok alapján. Ezenkívül egy térkép segítségével vizualizálhatja a helyek, amelyről a tartalmat kért biztosítunk. Fontos tudni. Ehhez minden egyes régió mértékű igény szerint az adott régióban tapasztalt színkódolás. Bárka árnyékolt régiók-tartalomra vonatkozó alacsonyabb igény szerint azt jelzik, miközben sötétebb régiók jelzi a tartalmak iránti kereslet magasabb szintű.
 
-Mindegyik régióhoz és a sávszélesség tájékoztatáshoz közvetlenül a térkép alább. Így megtekintheti a teljes száma a találatok, a találatok százaléka, a teljes adatmennyiség elküldése (gigabájtban), és mindegyik régióhoz átvitt adatok hány százalékát. Megtekintheti a leírásukat az egyes metrikákat. Végül ha egy régiót (azaz ország, állam vagy megye) mutat, nevét és az régióban történt találatok jelenik meg elemleírásként.
+Részletes és sávszélesség-információk minden olyan régió esetében közvetlenül a térkép lentebb. Ez lehetővé teszi, hogy a találatok, a találatok aránya, az adatok teljes mennyisége teljes számának megtekintéséhez történik (gigabájtban), és minden olyan régió esetében átvitt adatok aránya. Megtekintheti a leírásukat minden ezeket a metrikákat. Végül ha az egérmutatót egy régió (azaz a ország, állam vagy megye), a nevét és a találatok régióban bekövetkezett százalékos megjelenik elemleírásként.
 
-Egy rövid leírást az egyes földrajzi térképen-alapú jelentés alább.
+Egy rövid leírást az egyes földrajzi hely térképes jelentés lejjebb találja.
 
-| Jelentés neve. | Leírás |
+| Jelentés neve | Leírás |
 | --- | --- |
-| A globális térkép |Ez a jelentés lehetővé teszi a világ igény szerint a CDN-tartalom megtekintését. Az egyes országok Itt a színkódolás a világ térképen jelzi az adott régióban származó találatok. |
-| Az Amerikai Egyesült Államok térkép |Ez a jelentés lehetővé teszi az Amerikai Egyesült Államokban a CDN-tartalom terhelését. Az egyes ezen a térképen jelzi az adott régióban származó találatok színekkel jelölve témájával. |
-| Kanadában térkép |Ez a jelentés lehetővé teszi a CDN-tartalom iránti igény Kanada területén. Minden tartomány ezen a térképen jelzi az adott régióban származó találatok színekkel jelölve témájával. |
-| Európa térkép |Ez a jelentés lehetővé teszi az Európai a CDN-tartalom terhelését. Az egyes országok ezen a térképen jelzi az adott régióban származó találatok színekkel jelölve témájával. |
-| Ázsia Csendes-óceáni térkép |Ez a jelentés lehetővé teszi a CDN-tartalom iránti igény Ázsiában. Az egyes országok ezen a térképen jelzi az adott régióban származó találatok színekkel jelölve témájával. |
+| World Map |Ez a jelentés lehetővé teszi a világszerte igény szerint a CDN-tartalom megtekintése. Egyes országok a világ térképen jelzi, hogy az adott régióban származik a találatok színkódolt. |
+| Egyesült Államok térkép |Ez a jelentés lehetővé teszi az Egyesült Államokban iránti igény a CDN-tartalom megtekintését. A színekkel állapotaiban végrehajtható ezen a térképen jelzi, hogy az adott régióban származik a találatok jelölve témájával. |
+| Kanada térkép |Ez a jelentés lehetővé teszi az igény a CDN-tartalom megtekintését Kanadában. Minden tartományban a színekkel jelölve témájával százalékos aránya, amelyek adott régióból származik, a találatok jelzi ezen a térképen. |
+| Európa-térkép |Ez a jelentés lehetővé teszi az igény a CDN-tartalom megtekintését Európában. Minden ország a színekkel jelölve témájával százalékos aránya, amelyek adott régióból származik, a találatok jelzi ezen a térképen. |
+| Ázsia Csendes-óceáni térség térkép |Ez a jelentés lehetővé teszi az ázsiai iránti igény a CDN-tartalom megtekintését. Minden ország a színekkel jelölve témájával százalékos aránya, amelyek adott régióból származik, a találatok jelzi ezen a térképen. |
 
-## <a name="geography-reports-bar-charts"></a>A földrajzi jelentések (sávdiagramok)
-Két jelentés áll rendelkezésre további megfelelően geográfiai, statisztikai adatokat biztosító felső városokat és felső országokban. Ezek a jelentések rangsorolja városokat és országok, osztályban, azokban a régiókban származó találatok száma szerint. Az ilyen típusú jelentés generálásához, akkor a sávdiagram jelzi, a felső 10 várost vagy országok, amely a kért tartalom egy adott platform keresztül. A sávdiagram lehetővé teszi, hogy gyorsan felmérheti a régiókban, amelyek létrehozzák a legnagyobb száma a tartalomhoz.
+## <a name="geography-reports-bar-charts"></a>Földrajzi hely jelentések (sávdiagramok)
+Nincsenek két további jelentéseket statisztikai megfelelően földrajzi hely, amelyek felső város és a Top országok. Ezek a jelentések rangsor város és ország, osztályban, ezekben a régiókban származó találatok száma szerint. Esetén az ilyen típusú jelentés létrehozásáról, a sávdiagram jelzi, a felső 10 városok vagy országok, amely a kért tartalom egy adott platformon keresztül. Ezen a sávdiagramon segítségével mérheti fel gyorsan a régiók, amelyek létrehozzák-tartalomra vonatkozó kérelmek számát vesszük figyelembe.
 
-A bal oldalon a grafikon (y-tengely) azt jelzi, hogy hány találatok történt a megadott régión belül. Közvetlenül a grafikon (x-tengely) alatt található a címke a felső 10 régióban.
+A bal oldalon a gráf (y tengely) azt jelzi, hogy hány találatok történt a megadott régióban. Közvetlenül a diagram (x tengely) alatt található egy címkét a felső 10 régióban.
 
 ### <a name="using-the-bar-charts"></a>A sávdiagramok használatával
-* Ha a sáv mutat, a nevét és a régióban történt találatok száma jelenik meg elemleírásként.
-* A hozzájuk tartozó a felső városokat jelentés nevét, az állam/megye és ország rövidítése által a város azonosítja.
-* Vagy a régiót (azaz, az állam/megye), ahonnan a kérés származik nem határozható meg, majd azt jelzik, hogy azok ismeretlen. Ha az ország ismeretlen, akkor a két kérdőjel (azaz??), fog megjelenni.
-* A jelentésben metrikák "Európa" vagy a "Ázsia/Csendes-óceáni térség." Ezen elemekre nem jogosultak a összes IP-azokban a régiókban statisztikai adatok megadása. Ehelyett csak vonatkoznak, amelyek helyezkednek el Európa vagy Ázsia/Csendes-óceáni ahelyett, hogy egy adott város vagy ország IP-címekről kérelmekkel.
+* Ha a kurzort egy, a nevét és az összes régióban bekövetkezett a találatok elemleírásként megjelennek.
+* A felső városok jelentés elemleírásában azonosítja egy város nevét, államot/megyét, és az ország kifejezés rövidítését jelöli.
+* Nem sikerült meghatározni a város vagy régió (azaz a állam/megye), amelyből egy kérés származik, majd azt jelzik, hogy azok ismeretlen. Ha az ország, ismeretlen, akkor két kérdőjel (azaz??) fog megjelenni.
+* Jelentések tartalmazhatják metrikáinak "Európa" vagy "Ázsiai és csendes-óceáni térség." Azok az elemek nem jelentenek a statisztikai információkat ezekben a régiókban összes IP-címet. Ehelyett csak kell alkalmazni az IP-címekről, futó Európa vagy Ázsia és csendes-óceáni helyett egy adott városban vagy ország kérelmekkel.
 
-Az adatok a sávdiagram létrehozásához használt alatt tekintheti meg. Nem található (gigabájtban) átvitt találatok, százalékos aránya a találatok száma, adatmennyiség teljes száma, és a felső 250 régiókhoz átvitt adatok hány százalékát. Megtekintheti a leírásukat az egyes metrikákat.
+A sávdiagram létrehozásához használt adatok alá is megtekinthetők. Hiba található a találatok, a találatok aránya, adatmennyiség teljes száma (gigabájtban) történik, és az első 250 régióinak átvitt adatok aránya. Megtekintheti a leírásukat minden ezeket a metrikákat.
 
-Rövid leírása az alábbi jelentések mindkét típusú valósul meg.
+Az alábbi jelentések mindkét típusú biztosítunk egy rövid leírást.
 
-| Jelentés neve. | Leírás |
+| Jelentés neve | Leírás |
 | --- | --- |
-| Felső város tartozik. |Ez a jelentés városokat származó találatok száma szerint rangsorolja régió. |
-| Felső országok |Ez a jelentés országokból származó találatok száma szerint rangsorolja régió. |
+| Felső városok |Ez a jelentés városok, adja meg a találatok száma szerint rangsorolja a régió. |
+| Leggyakoribb országok |Ez a jelentés országok, adja meg a találatok száma szerint rangsorolja a régió. |
 
-## <a name="daily-summary"></a>Napi összegzése
-A napi összegző jelentés lehetővé teszi a találatok és a naponta egy adott platformon keresztül továbbított adatok teljes száma. Ez az információ segítségével gyorsan megfejteni a CDN tevékenység minták behatolók. Például a jelentés segítségével napokat tapasztalt magasabb vagy alacsonyabb, mint a várt forgalom észlelésére.
+## <a name="daily-summary"></a>Napi összesítés
+A napi összegző jelentés lehetővé teszi teljes száma a találatok és a egy adott platformon keresztül naponta továbbított adatok megtekintését. Ez az információ segítségével gyorsan tesz különbséget az adatok CDN tevékenységi mintáit. Például ez a jelentés segítségével melyik nappal tapasztalt magasabb vagy alacsonyabb, mint a várt forgalom észleléséhez.
 
-Esetén az ilyen típusú jelentés létrehozása, a sávdiagram nyújtják a platform-specifikus igény szerinti tapasztalt mennyisége visual feltüntetése naponta a jelentés által lefedett időszakon. Akkor lesz ehhez a sáv megjelenítése a jelentésben szereplő minden nap. Például az adott időszakban kiválasztásával neve "Elmúlt hét" hét sávokkal sávdiagram hoz létre. Minden egyes sáv jelzi az adott napon tapasztalt találatok teljes száma.
+Esetén az ilyen típusú jelentés létrehozásáról, a sávdiagram biztosít egy visual tapasztalt platformspecifikus igény mennyisége feltüntetése naponta a jelentés által lefedett időszakon. Ez fog. Ehhez egy sáv megjelenítése a jelentésben szereplő minden egyes nap. Ha például kiválasztja az adott időszakban nevű "Elmúlt hét" egy oszlopdiagram a hét sávok hoz létre. Minden egyes sáv jelzi, hogy az adott napon tapasztalt találatok teljes száma.
 
-A bal oldalon a grafikon (y-tengely) azt jelzi, hogy hány találatok történt a megadott dátum. Közvetlenül a grafikon (x-tengely) alatt található dátumát címkéjét (formátum: éééé-hh-nn) a jelentésben szereplő minden nap.
+A bal oldalon a gráf (y tengely) azt jelzi, hogy hány találatok történt a megadott dátum. Közvetlenül a diagram (x tengely) alatt található egy címke, amely azt jelzi, hogy a dátum (formátum: YYYY-MM-DD) szerepelnek a jelentésben minden nap.
 
 > [!TIP]
-> Ha az egérmutatót egy sávot, elemleírásként által történt a dátumnak a találatok száma jelenik meg.
+> Ha a kurzort egy sáv, azon a napon bekövetkezett találatok száma elemleírásként jelenik meg.
 > 
 > 
 
-Az adatok a sávdiagram létrehozásához használt alatt tekintheti meg. Nem található a találatok összesített száma és a (gigabájtban) átvitt adatok mennyisége minden nap, a jelentés által lefedett.
+A sávdiagram létrehozásához használt adatok alá is megtekinthetők. Hiba található a találatok teljes száma és a (gigabájtban) továbbított adatok mennyisége minden nap, a jelentés által lefedett.
 
 ## <a name="by-hour"></a>Óránként
-Az óra által a jelentés lehetővé teszi a találatok és a óránként egy adott platformon keresztül továbbított adatok teljes száma. Ez az információ segítségével gyorsan megfejteni a CDN tevékenység minták behatolók. Például a jelentés segítségével az időszakok a nap folyamán, hogy a magasabb vagy alacsonyabb, mint a várt forgalom észlelésére.
+A által óra jelentés lehetővé teszi, hogy a találatok és a egy adott platform átvitt óránként összesített számának megtekintéséhez. Ez az információ segítségével gyorsan tesz különbséget az adatok CDN tevékenységi mintáit. Például ez a jelentés segítségével az időszakok a nap folyamán, hogy a magasabb vagy alacsonyabb, mint a várt forgalom észleléséhez.
 
-Az ilyen típusú jelentés generálásához, akkor sávdiagram platform-specifikus igény szerint a jelentés által lefedett időszakon óránként észlelt mennyisége visual feltüntetése ad meg. Azt fogja ehhez a sáv megjelenítése a jelentés által lefedett óránként. Például kiválasztása egy 24 órás időszakban hoz létre a sávdiagram erdőtopológia kezelésre négy sávokkal. Minden egyes sáv jelzi, hogy az óra során tapasztalt találatok teljes száma.
+Esetén az ilyen típusú jelentés létrehozásáról, a sávdiagram platformspecifikus igény szerint a jelentés által lefedett időszakon óránként észlelt mennyisége visual feltüntetése biztosít. Akkor teszi ezt, egy sáv minden órában, a jelentés által lefedett megjelenítésével. Például kiválasztása egy 24 órás időszakban generál egy oszlopdiagram a huszonnégy sávok. Minden egyes sáv jelzi, hogy az adott órában tapasztalt találatok teljes száma.
 
-A bal oldalon a grafikon (y-tengely) azt jelzi, hogy hány találatok történt a megadott órát. Közvetlenül a grafikon (x-tengely) alatt található a címke, amely jelzi a dátum/idő (formátum: éééé-hh-nn óó: PP) számára minden órában szerepelnek a jelentésben. Időt jelenti a 24 órás formátumban, és UTC/GMT időzónájának használatával van megadva.
+A bal oldalon a gráf (y tengely) azt jelzi, hogy hány találatok száma az adott órában történt. Közvetlenül a diagram (x tengely) alatt található egy címke, amely azt jelzi, hogy a dátum/idő (formátum: YYYY-MM-DD óó: PP) minden egyes órában szerepelnek a jelentésben. Idő jelentett 24 órás formátumban, és az UTC/GMT időzóna használatával van megadva.
 
 > [!TIP]
-> Ha az egérmutatót egy sávot, adott óra során bekövetkezett találatok száma elemleírásként jelenik meg.
+> Ha a kurzort egy sáv, órában fellépő találatok száma elemleírásként jelenik meg.
 > 
 > 
 
-Az adatok a sávdiagram létrehozásához használt alatt tekintheti meg. Nincs megtalálja a találatok összesített száma és a (gigabájtban) átvitt adatok mennyisége az óránként, a jelentés által lefedett.
+A sávdiagram létrehozásához használt adatok alá is megtekinthetők. Hiba található találatok száma és a (gigabájtban) továbbított adatok mennyisége az adott órában, a jelentés által lefedett.
 
-## <a name="by-file"></a>Fájl segítségével
-A fájl által a jelentés lehetővé teszi igény szerint és a legtöbbek által kért eszközök platformon keresztül felmerülő forgalom mennyisége. Az ilyen típusú jelentés generálásához, akkor a sávdiagram jön létre, a felső 10 leginkább kért eszközök a megadott idő alatt.
+## <a name="by-file"></a>A fájl
+A fájl által a jelentés lehetővé teszi igény és a felmerült a leginkább kért eszközök platformon keresztül a forgalom mennyisége megtekintését. Esetén az ilyen típusú jelentés létrehozásáról, a sávdiagram jön létre, a felső 10 leginkább kért eszközök a megadott időszakra.
 
 > [!NOTE]
-> Ez a jelentés az alkalmazásában peremhálózati CNAME URL-címeket az egyenértékű CDN URL-címek alakulnak. Ez lehetővé teszi egy pontos egyeztetési találatok kapcsolódó a CDN és a peremhálózati CNAME URL-cím kérésére, függetlenül az eszköz teljes számát.
+> Ez a jelentés az alkalmazásában edge CNAME URL-címek URL-címeik azonos CDN konvertálja. Ez lehetővé teszi egy pontos tally a CDN- vagy peremtábla CNAME URL-cím kérésére, függetlenül az eszközhöz társított találatok teljes számát.
 > 
 > 
 
-A bal oldalon a grafikon (y-tengely) azt jelzi, az egyes eszközökre vonatkozó kérelmek száma a megadott idő alatt. Közvetlenül a grafikon (x-tengely) alatt található a címke, amely minden a felső 10 kért eszközhöz a fájl nevét jelzi.
+A bal oldalon a gráf (y tengely) azt jelzi, hogy az egyes eszközökre vonatkozó kérelmek száma a megadott időszakra. Közvetlenül a grafikon (x tengely) alatt található egy címke, amely azt jelzi, hogy a felső 10 kért objektumok mindegyike a fájl nevét.
 
-Az adatok a sávdiagram létrehozásához használt alatt tekintheti meg. Nem található a következő információkat az egyes a felső 250 kért eszközök: relatív elérési útja, a találatok, százalékos aránya a találatok száma, adatmennyiség száma elküldése (gigabájtban), és a továbbított adatok hány százalékát.
+A sávdiagram létrehozásához használt adatok alá is megtekinthetők. Nincs megtalálja az egyes felső 250 kért eszközök a következő információkat: relatív elérési út, a találatok, a találatok aránya, adatmennyiség száma történik (gigabájtban), és a továbbított adatok aránya.
 
 ## <a name="by-file-detail"></a>Fájl részletei
-A által részletei jelentés lehetővé teszi igény szerint és a forgalmat egy adott eszközhöz egy adott platformon keresztül felmerülő összege. A jelentés legfelső szintjén a részletek a fájl beállítás. Ezt a beállítást a kiválasztott platformon a legtöbbek által kért eszközök listáját tartalmazza. Ahhoz, hogy által részletei jelentés készítése, szüksége lesz a részletek a fájl lehetőséget válassza ki a kívánt eszköz. Amely után a sávdiagram azt fogja jelezni, ami akkor jön létre, a megadott időszakra napi igény mennyisége.
+A szerint részletei jelentés igény és a egy adott eszközhöz egy adott platformon keresztül felmerült a forgalom mennyisége megtekintését teszi lehetővé. Ez a jelentés nagyon tetején a fájl részleteit a beállítás. Ez a beállítás a kiválasztott platformon a leginkább kért eszközök listáját tartalmazza. Annak érdekében, hogy a fájl részletei jelentés készítése, szüksége lesz, válassza ki a kívánt eszközt a fájl részleteit a beállításhalmazok. Utána sávdiagram fogja jelezni a napi igény szerint a megadott időszakban előállított mennyiségét.
 
-A bal oldalon a grafikon (y-tengely) azt jelzi, hogy egy eszköz észlelt egy adott napon kérelmek teljes száma. Közvetlenül a grafikon (x-tengely) alatt található dátumát címkéjét (formátum: éééé-hh-nn) mely CDN az eszköz igény szerint történt.
+A bal oldalon a gráf (y tengely) azt jelzi, hogy az eszköz egy bizonyos napon észlelt kérelmek teljes száma. Közvetlenül a diagram (x tengely) alatt található egy címke, amely azt jelzi, hogy a dátum (formátum: YYYY-MM-DD) mely CDN igény szerint az eszköz jelentett.
 
-Az adatok a sávdiagram létrehozásához használt alatt tekintheti meg. Nem található a találatok összesített száma és a (gigabájtban) átvitt adatok mennyisége minden nap, a jelentés által lefedett.
+A sávdiagram létrehozásához használt adatok alá is megtekinthetők. Hiba található a találatok teljes száma és a (gigabájtban) továbbított adatok mennyisége minden nap, a jelentés által lefedett.
 
 ## <a name="by-file-type"></a>Fájltípus
-A fájl típus szerint a jelentés lehetővé teszi igény szerint és a fájl típusa felmerült forgalom mennyisége. Az ilyen típusú jelentés generálásához, akkor fánk diagram százalékos aránya a felső 10 fájltípusokat által generált találatok jelzi.
+A fájl típusa szerint-jelentés igény és a felmerült fájltípus forgalom mennyisége megtekintését teszi lehetővé. Esetén az ilyen típusú jelentés létrehozásához, egy fánkdiagramon találatok száma a felső 10 fájltípusokat által generált aránya jelzi.
 
 > [!TIP]
-> Ha a fánk diagram szelet mutat, Internet médiatípusa, hogy megjelenik-e a fájl típusa elemleírásként.
+> Ha a kurzort a fánkdiagram szeletet, az internetes média típusa, hogy fájltípus elemleírásként jelenik meg.
 > 
 > 
 
-Az adatok a fánk diagram létrehozásához használt alatt tekintheti meg. Nem található a fájl neve bővítmény/Internet adathordozó-típus, a találatok összesített száma, a találatok, aránya (gigabájtban) átvitt adatok mennyiségét, és minden, a felső 250 típusú átvitt adatok hány százalékát.
+Alatta a fánkdiagram létrehozásához használt adatokat tekinthet meg. Hiba található a fájl neve bővítmény/internetes média típusa, a találatok teljes száma, a találatok, aránya (gigabájtban) továbbított adatok mennyisége, és minden, a felső 250 típusú átvitt adatok aránya.
 
-## <a name="by-directory"></a>Directory
-A Directory által a jelentés lehetővé teszi igény szerint és a tartalmat egy adott könyvtár platformon keresztül felmerülő forgalom mennyisége. A sávdiagram esetén az ilyen típusú jelentés generálásához, felső 10 könyvtárak tartalom állítja elő a találatok száma jelzi.
+## <a name="by-directory"></a>Címtár
+A könyvtár által a jelentés lehetővé teszi igény és a egy adott címtárhoz tartalmat egy adott platformon keresztül felmerült a forgalom mennyisége megtekintését. Esetén az ilyen típusú jelentés létrehozásáról, a sávdiagram jelzi, találatok száma a felső 10 címtárat a tartalom által generált teljes száma.
 
 ### <a name="using-the-bar-chart"></a>A sávdiagram használatával
-* A sáv a megfelelő könyvtár relatív elérési útjának megtekintéséhez mutasson.
-* Egy könyvtár almappájában tárolt tartalmat nem számít, igény szerinti Directory számításakor. A számítás kizárólag támaszkodik a tényleges címtárban tárolt tartalom létrehozott kérelmek száma.
-* Ez a jelentés az alkalmazásában peremhálózati CNAME URL-címeket az egyenértékű CDN URL-címek alakulnak. Ez lehetővé teszi egy pontos egyeztetési az összes kapcsolódó a CDN és a peremhálózati CNAME URL-cím kérésére, függetlenül az eszköz statisztikáját.
+* A kurzort egy sáv a megfelelő könyvtár relatív elérési útjának megtekintéséhez.
+* Egy könyvtár almappájában tárolt tartalmat nem számít, ha igény szerint kiszámításának Directory. Ehhez a számításhoz kizárólag támaszkodik a tényleges címtárban tárolt tartalom generált kérelmek száma.
+* Ez a jelentés az alkalmazásában edge CNAME URL-címek URL-címeik azonos CDN konvertálja. Ez lehetővé teszi, hogy a CDN- vagy peremtábla CNAME URL-cím kérésére, függetlenül az eszközhöz társított összes statistics egy pontos tally.
 
-A bal oldalon a grafikon (y-tengely) azt jelzi, hogy a felső 10 címtárakban tárolt tartalmat kérelmek teljes száma. A diagram minden sávján egy könyvtárat jelöl. A color-coding séma segítségével egy sáv felső 250 teljes könyvtárak szakaszában felsorolt könyvtárra felel meg.
+A bal oldalon a gráf (y tengely) azt jelzi, hogy a teljes száma a felső 10 címtárakban tárolt tartalomhoz. A diagramon a sávok könyvtár jelöli. A color-coding séma használatával egy sáv ahhoz a könyvtárhoz, az első 250 teljes könyvtárak szakaszban felsorolt egyeztetni.
 
-Az adatok a sávdiagram létrehozásához használt alatt tekintheti meg. Nem található a következő információkat az egyes a felső 250 könyvtárak: relatív elérési útja, a találatok, százalékos aránya a találatok száma, adatmennyiség száma elküldése (gigabájtban), és a továbbított adatok hány százalékát.
+A sávdiagram létrehozásához használt adatok alá is megtekinthetők. Nincs megtalálja a következő információkat az első 250 könyvtárak mindegyike esetében: relatív elérési út, a találatok, a találatok aránya, adatmennyiség száma történik (gigabájtban), és a továbbított adatok aránya.
 
-## <a name="by-browser"></a>Böngésző
-A böngésző által a jelentés lehetővé teszi a tartalmat igénylő használt böngészők felmérésére. A kördiagram esetén az ilyen típusú jelentés generálásához, a felső 10 böngészők által kezelt kérelem azon százaléka jelzi.
+## <a name="by-browser"></a>Böngésző szerint
+A böngésző által a jelentés megtekintéséhez a böngészők szolgáló tartalomkérelem teszi lehetővé. Kördiagram esetén az ilyen típusú jelentés létrehozásáról, a 10 leggyakoribb böngészők által kezelt kérések aránya jelzi.
 
 ### <a name="using-the-pie-chart"></a>A tortadiagram használatával
-* A kördiagram megtekintése a böngészőben neve és verziója szelet mutasson.
-* Ez a jelentés alkalmazásában minden egyedi böngészőverzió kombinációja tekinthető egy másik böngészőben.
-* A szelet "Egyéb" nevű azt jelzi, hogy minden más böngészők és verziók által kezelt kérelem azon százaléka.
+* A szelet megtekintéséhez a böngészőben neve és verziója a tortadiagram a kurzort.
+* Ez a jelentés az alkalmazásában minden egyedi böngészőverzió kombináció számít egy másik böngészőben.
+* Az "Egyéb" nevű szelet más böngészőkkel és verziók által kezelt kérések arányát jelzi.
 
-Az adatok a kördiagram létrehozásához használt alatt tekintheti meg. Nem található a böngésző típus-/ verziószám, a találatok összesített száma és a találatok aránya az egyes a felső 250 böngészők.
+A tortadiagram létrehozásához használt adatok alá is megtekinthetők. Hiba található a böngésző alkalmazástípus-verzió számát, a találatok száma és százalékos aránya a találatok az első 250 böngészők mindegyikéhez.
 
-## <a name="by-referrer"></a>Hivatkozó által
-A hivatkozó által jelentés lehetővé teszi, hogy a felső hivatkozó kérelmei tartalom megtekintése a kiválasztott platformon. A hivatkozó azt jelzi, hogy az állomásnevet, ahonnan a kérés jött létre. Esetén az ilyen típusú jelentés létrehozásakor, a sávdiagram igény szerinti (azaz a találatok) a felső 10 hivatkozó kérelmei által generált mennyisége jelzi.
+## <a name="by-referrer"></a>Hivatkozó szerint
+A hivatkozó a jelentés lehetővé teszi, hogy a felső hivatkozók tartalom megtekintése a kiválasztott platformon. A hivatkozó azt jelzi, hogy az állomásnevet, amelyről a kérelmek jött létre. Sávdiagram esetén ez a jelentés típusú generálása, igény szerinti (azaz a találatok) a felső 10 hivatkozók által generált mennyisége jelzi.
 
-A bal oldalon a grafikon (y-tengely) azt jelzi, hogy egy eszköz észlelt az egyes hivatkozó kérelmek teljes száma. A diagram minden sávban a hivatkozó jelöli. A color-coding séma használatával a menüsávon a hivatkozó, a felső 250 hivatkozó szakaszban felsorolt felel meg.
+A bal oldalon a gráf (y tengely) azt jelzi, hogy az eszköz az egyes hivatkozó ütközött kérelmek teljes száma. Minden egyes sávot a diagramon egy hivatkozó jelöli. Hasonlítsa össze a hivatkozó, az első 250 hivatkozó szakaszban felsorolt, egy sáv color-coding sémát használó.
 
-Az adatok a sávdiagram létrehozásához használt alatt tekintheti meg. Nem található az URL-cím, a találatok összesített száma és a felső 250 hivatkozó kérelmei generált találatok százaléka.
+A sávdiagram létrehozásához használt adatok alá is megtekinthetők. Hiba az URL-cím, a találatok teljes száma és százalékos aránya találatok száma a felső 250 hivatkozók minden egyes létrehozott lesz található.
 
 ## <a name="by-download"></a>Letöltés
-A le a jelentés lehetővé teszi a legtöbbek által kért tartalom letöltése minták elemzéséhez. A jelentés a legfontosabb, hogy az hasonlítja össze a felső 10 kért eszközök befejezett letöltött letöltések megkísérelt sávdiagram tartalmazza. Minden egyes itt a színkódolás megfelelően, hogy-e az megkísérelt letöltése (kék) vagy egy befejezett letöltés (zöld).
+A le a jelentés lehetővé teszi, hogy a legtöbbet kért tartalom letöltése mintáinak elemzése. A jelentés felső részén a sávdiagramot oszlopdiagramra cseréli, hogy összehasonlítja megkísérelt letöltések felső 10 kért eszközök befejezett frissítéseket tartalmazza. Sávok színkódolt megfelelően, hogy-e az megkísérelt letöltése (kék) vagy a letöltés befejeződött (zöld).
 
 > [!NOTE]
-> Ez a jelentés az alkalmazásában peremhálózati CNAME URL-címeket az egyenértékű CDN URL-címek alakulnak. Ez lehetővé teszi egy pontos egyeztetési az összes kapcsolódó a CDN és a peremhálózati CNAME URL-cím kérésére, függetlenül az eszköz statisztikáját.
+> Ez a jelentés az alkalmazásában edge CNAME URL-címek URL-címeik azonos CDN konvertálja. Ez lehetővé teszi, hogy a CDN- vagy peremtábla CNAME URL-cím kérésére, függetlenül az eszközhöz társított összes statistics egy pontos tally.
 > 
 > 
 
-A bal oldalon a grafikon (y-tengely) azt jelzi, hogy a fájl nevét az egyes a felső 10 kért eszközök. Közvetlenül a grafikon (x-tengely) alatt található címkékhez, amelyek próbált/befejezett letöltések teljes számát jelzi.
+A bal oldalon a gráf (y tengely) azt jelzi, hogy a felső 10 kért objektumok mindegyike a fájl nevét. Közvetlenül a diagram (x tengely) alatt található címkék, amelyek jelzik a letöltések megkísérelt/befejeződött teljes száma.
 
-Közvetlenül alatt a sávdiagram, az alábbi információk jelennek meg a felső 250 kért eszközök: relatív elérési út (beleértve a fájl nevét), hányszor befejezését letöltött, kérték ennyiszer és eredményező teljes letöltési kérelem azon százaléka.
+Közvetlenül a sáv diagram alatt a következő információkat fog szerepelni a felső 250 kért eszközök: relatív elérési út (beleértve a fájl neve), befejezését lett letöltve hányszor, a kért száma és százalékos aránya a teljes letöltési eredményező kérelmek.
 
 > [!TIP]
-> A CDN nem arról tájékoztatja a HTTP-ügyfél (pl. webböngésző) Ha az eszköz teljesen letöltötte. Ennek eredményeképpen kell kiszámítani, hogy az eszköz teljesen fel van töltve megfelelően állapot- és bájttartomány kérelmeket. Elsőként azt keresse meg a számítási meghozásakor, hogy eredményezi, a kérés 200 OK állapotkódot. Ha igen, akkor tekintse meg bájttartomány kérelmeket annak érdekében, hogy a teljes eszköz terjed ki. Végül azt hasonlítsa össze a kért objektum mérete átvitt adatok mennyiségét. Ha az átvitt adatok egyenlő vagy nagyobb, mint a fájlméret és a bájttartomány kérések használata az adott eszköz számára megfelelő, majd a találati megszámlálandó teljes letölthető.
+> CDN-en nem szerez egy HTTP-ügyfél (pl. webböngésző) Ha az eszköz teljes mértékben letöltötte. Ennek eredményeképpen van alapján számítja ki, hogy az eszköz teljesen letöltötte állapotkódok és bájttartomány-kérelmeket. Áttekintjük az ehhez a számításhoz létrehozásakor először is, hogy eredményezi, a kérés 200 OK állapotkódot. Ha igen, majd áttekintjük, győződjön meg arról, hogy a teljes eszköz fedhetik bájttartomány-kérelmeket. Végül összehasonlítva a kért objektum mérete továbbított adatok mennyisége. Ha az átvitt adatok egyenlő vagy nagyobb, mint a fájl méretét és a bájttartomány-kérelmeket is, hogy az eszköz megfelelő, majd a találati számít egy teljes letöltési.
 > 
-> Ez a jelentés interpretive jellege miatt kell figyelembe venni az alábbiakat, amelyek megváltoztathatják a konzisztencia és a jelentés pontosságára.
+> Ez a jelentés értelmező jellege miatt érdemes megtartani szem előtt az alábbi pontokat, amelyek megváltoztathatják a konzisztencia és a jelentés pontosságára.
 > 
-> * Forgalmi minták nem tudták pontosan előre jelezni, amikor a felhasználó-ügynökök eltérően viselkednek. Ez nagyobb, mint 100 %-os befejezett letöltési eredményeket hozhat.
-> * HTTP progresszív letöltés előnyeit eszközök nem fogják pontosan képviselheti Ez a jelentés. Ez a videó különböző helyre kérő felhasználók okozza.
+> * Forgalmi minták nem lehet tudták pontosan előre jelezni, amikor a felhasználó-ügynökök eltérően viselkednek. Ez eredményekhez vezethet letöltés befejeződött, amely 100 %-nál nagyobb.
+> * Eszközök, amelyek kihasználják a progresszív letöltés HTTP, előfordulhat, hogy nem kell pontosan jönnek létre ez a jelentés. Felhasználók keresése egy videóban különböző helyre okozza.
 > 
 > 
 
-## <a name="by-404-errors"></a>404-es hibák által
-A 404-es hibák által a jelentés lehetővé teszi a tartalomtípushoz, amely hoz létre a legtöbb 404-es nem található állapotkódok száma azonosítását. A jelentés felső tartalmazza a sávdiagram az első 10-eszközök, amelynek a 404-es nem található állapotkódot adott vissza. A sávdiagram hasonlítja össze, amelyek a 404-es nem található állapotkódja azok az eszközök által érintett kérelmek teljes száma. Minden itt a színkódolás. Egy sárga sáv jelzi, hogy a kérelem a 404-es nem található állapotkód eredményezte szolgál. Egy piros sáv segítségével jelzi az eszköz kérelmek teljes száma.
+## <a name="by-404-errors"></a>404-es hibát szerint
+A 404-es hiba a jelentés lehetővé teszi, hogy azonosíthatja a legtöbb száma 404-es nem található állapotkódok által létrehozott tartalom típusát. A jelentés felső részén a sávdiagramot oszlopdiagramra cseréli, amelynek 404-es nem található állapotkódot adott vissza az első 10-eszközök tartalmazza. Ezen a sávdiagramon hasonlítja össze a kérelmek, a 404-es nem található állapotkódot adott eszközökön eredményező kérelmek teljes száma. Sávok színkódolt. Egy sárga sáv jelzi, hogy a kérést eredményezett a 404-es nem található állapotkódot szolgál. Egy piros színű sáv jelzi az eszköz kérelmek teljes száma szolgál.
 
 > [!NOTE]
-> Ez a jelentés alkalmazásában vegye figyelembe a következőket:
+> Ez a jelentés az alkalmazásában vegye figyelembe a következőket:
 > 
-> * Találat függetlenül állapotkód eszköz kérésének jelöli.
-> * Peremhálózati CNAME URL-címeket az egyenértékű CDN URL-címek lesznek átalakítva. Ez lehetővé teszi egy pontos egyeztetési az összes kapcsolódó a CDN és a peremhálózati CNAME URL-cím kérésére, függetlenül az eszköz statisztikáját.
+> * Találat állapotkód függetlenül az adott eszköz számára bármilyen kérelmet jelöl.
+> * Edge CNAME URL-címek URL-címeik azonos CDN konvertálja. Ez lehetővé teszi, hogy a CDN- vagy peremtábla CNAME URL-cím kérésére, függetlenül az eszközhöz társított összes statistics egy pontos tally.
 > 
 > 
 
-A bal oldalon a grafikon (y-tengely) azt jelzi, hogy a fájl nevét az egyes felső 10 kért eszközök 404-es nem található állapotkód eredményezett. Közvetlenül a grafikon (x-tengely) alatt található címkékhez, amelyek jelzik, hogy a kérelmek teljes száma és a 404-es nem található állapotkód eredményező kérelmek számát jelenti.
+A bal oldalon a gráf (y tengely) azt jelzi, hogy a fájl nevét az egyes felső 10 kért eszközök, amelyek 404-es nem található állapotkódot eredményezett. Közvetlenül a diagram (x tengely) alatt található címkék, amelyek jelzik, hogy a kérelmek teljes számának és a 404-es nem található állapotkódot eredményező kérések száma.
 
-Közvetlenül alatt a sávdiagram, az alábbi információk jelennek meg a felső 250 kért eszközök: relatív elérési út (beleértve a fájl nevét), a 404-es nem található állapotkód eredményezett kérelmek száma, a teljes száma az eszköz a kért és 404-es nem található állapotkód eredményező kérelem azon százaléka.
+Közvetlenül a sáv diagram alatt a következő információkat fog szerepelni a felső 250 kért eszközök: relatív elérési út (beleértve a fájlnév), a 404-es nem található állapotkódot, teljes száma, hogy az eszköz a kért, hányszor eredményező kérések száma és a 404-es nem található állapotkódot eredményező kérelmek aránya.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [Az Azure CDN áttekintése](cdn-overview.md)
-* [A Microsoft Azure CDN valós idejű statisztikák](cdn-real-time-stats.md)
-* [A szabályok használata alapértelmezett HTTP működés felülbírálata](cdn-rules-engine.md)
-* [Peremhálózati teljesítményének elemzése](cdn-edge-performance.md)
+* [A Microsoft Azure CDN Szolgáltatásban valós idejű statisztikák](cdn-real-time-stats.md)
+* [A rules engine használatával a HTTP alapértelmezés felülbírálása](cdn-rules-engine.md)
+* [Edge-teljesítmény elemzése](cdn-edge-performance.md)
 

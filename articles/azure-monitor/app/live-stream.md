@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 588b8b11a02551a790145aafb013759699004267
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: bc85de0c8ec89ea88d2bae8e3f226da7d3163f53
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009965"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62115346"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Élő Stream metrikák: Figyelő & 1 másodperc késéssel diagnosztizálása
 
@@ -50,10 +50,13 @@ Az élő Stream metrikák a következőket teheti:
 
 4. [A vezérlő csatornát](#secure-the-control-channel) használatakor előfordulhat, hogy bizalmas adatok, például az ügyfél-nevek a szűrőket.
 
+### <a name="nodejs"></a>Node.js
+
+Élő metrikák használata a node.js környezettel frissítenie kell 1.30 vagy nagyobb, mint az SDK-verzióra. Élő mérőszámok a Node.js SDK alapértelmezés szerint le van tiltva. Ahhoz, hogy élő metrikák hozzáadása `setSendLiveMetrics(true)` , a [konfigurálásának módját](https://github.com/Microsoft/ApplicationInsights-node.js#configuration) módon, inicializálja az SDK-t.
+
 ### <a name="no-data-check-your-server-firewall"></a>Nincs adat? Ellenőrizze a kiszolgáló tűzfalán
 
 Ellenőrizze a [kimenő portok az élő metrikák Stream](../../azure-monitor/app/ip-addresses.md#outgoing-ports) nyitva a tűzfalon a kiszolgálók. 
-
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Élő metrikák Stream Miben különbözik a Metrikaböngésző és az Analytics?
 
@@ -65,7 +68,6 @@ Ellenőrizze a [kimenő portok az élő metrikák Stream](../../azure-monitor/ap
 |Ingyenes|Semmilyen díjat nem az élő Stream adatok|Státuszban [díjszabása](../../azure-monitor/app/pricing.md)
 |Mintavételezés|Az összes kijelölt mérőszámok és -számlálók továbbít. Hibák és a hívásláncokat mintát. TelemetryProcessors sem lépnek érvénybe.|Lehet, hogy eseményeket [mintavételezés](../../azure-monitor/app/api-filtering-sampling.md)|
 |Vezérlőcsatorna|Szűrő vezérlőelem jelekkel kell küldeni az SDK-t. Azt javasoljuk, hogy ez a csatorna biztonságossá tenni.|Kommunikációs még csak egyirányú, a portálra|
-
 
 ## <a name="select-and-filter-your-metrics"></a>Válassza ki, és a mérőszámok szűrése
 

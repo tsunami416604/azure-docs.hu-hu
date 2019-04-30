@@ -12,11 +12,11 @@ ms.date: 02/22/2019
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: 5e2c92c22f98913da0e3668ceb84b212cc48396a
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650988"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61341704"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Kép elemzése cognitive szakértelem
 
@@ -43,7 +43,7 @@ A paraméterei a kis-és nagybetűket.
 
 ## <a name="skill-inputs"></a>Ismeretek bemenetek
 
-| Bemeneti név      | Leírás                                          |
+| Bemenet neve      | Leírás                                          |
 |---------------|------------------------------------------------------|
 | image         | Komplex típus. Az Azure Blob indexelőjével által előállított jelenleg csak akkor működik a "/ dokumentum/normalized_images" mezőt, amikor ```imageAction``` értékre van állítva egy eltérő ```none```. Tekintse meg a [minta](#sample-output) további információt.|
 

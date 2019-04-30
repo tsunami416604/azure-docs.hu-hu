@@ -16,11 +16,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 88f100bc780d8df0202cfcce9b390085a71fc905
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310470"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130602"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó használata App Service-környezet
 
@@ -46,7 +46,7 @@ Cserébe többek között az alábbiakat teheti meg:
 #### <a name="disabled-functionality"></a>Letiltott funkciók
 Néhány dolog, amely egy ILB ASE használata esetén nem hajtható végre. Ezeket a beállításokat a következők:
 
-* IPSSL használatával
+* using IPSSL
 * IP-címek hozzárendelése meghatározott alkalmazások
 * mentesülhet, és olyan tanúsítványt használ az alkalmazás a portálon keresztül. Természetesen továbbra is közvetlenül a hitelesítésszolgáltató tanúsítványokat szerezzenek be és használhatja az alkalmazásaihoz, de nem az Azure Portalon keresztül.
 
@@ -127,7 +127,7 @@ A további felügyeleti elemek tanúsítványkezelés és a DNS-kezelési rendsz
 Egy külső virtuális IP-cím használata esetén az Azure kezeli a DNS-ben. Az ASE környezetben létrehozott összes alkalmazás automatikusan hozzáadódik Azure DNS-hez, amely egy nyilvános DNS. Az ILB ASE környezetben Önnek kell kezelnie a saját DNS-ét. For a given subdomain, such as contoso.corp.net, you must create DNS A records that point to your ILB address for:
 
     * 
-    *.SCM ftp-közzététel 
+    *.scm ftp publish 
 
 
 ## <a name="getting-started"></a>Első lépések

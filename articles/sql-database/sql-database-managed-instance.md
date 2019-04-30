@@ -13,11 +13,11 @@ ms.reviewer: sstein, carlrab, vanto
 manager: craigg
 ms.date: 04/16/2019
 ms.openlocfilehash: 46c6972e20df69da236c151516d7d889f9db6084
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002748"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098546"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Speciális biztonsági adatokat, a virtuális hálózatok és a közel 100 %-os kompatibilitást SQL Database használata
 
@@ -161,7 +161,7 @@ Egy új szintaxis létrehozása az Azure AD kiszolgáló rendszerbiztonsági tag
 
 A felügyelt példány üzembe helyezési lehetőség lehetővé teszi, hogy az adatbázis-felhasználók és a más Microsoft-szolgáltatások identitásainak központi kezelését [Azure Active Directory-integráció](sql-database-aad-authentication.md). Ez a funkció egyszerűsíti az engedélyek kezelését és fokozza a biztonságot. Az Azure Active Directory a [többtényezős hitelesítés](sql-database-ssms-mfa-authentication-configure.md) (MFA) támogatásával javítja az adatok és alkalmazások biztonságát, miközben támogatja az egyszeri bejelentkezést.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 Felügyelt példány hitelesítés azt jelenti, hogy felhasználók személyazonossága az adatbázishoz való csatlakozáskor. Az SQL Database két hitelesítési típust támogat:  
 
@@ -226,7 +226,7 @@ A felügyelt példány üzembe helyezési beállítás lehetővé teszi a rendsz
 
 Az alábbi táblázat Transact SQL-n keresztül elérhető számos tulajdonság, hogy észleli, hogy az alkalmazás a felügyelt példány működik, és fontos tulajdonságok beolvasása.
 
-|Tulajdonság|Value|Megjegyzés|
+|Tulajdonság|Érték|Megjegyzés|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Ez ugyanaz, mint az SQL Database értéke.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Ez ugyanaz, mint az SQL Database értéke.|

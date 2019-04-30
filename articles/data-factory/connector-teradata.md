@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
 ms.openlocfilehash: e9fd818990c8a985a77c2e7eeea19bf63c440e4e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018993"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61347751"
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Teradata
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,7 +58,7 @@ Teradata-beli társított szolgáltatás a következő tulajdonságok támogatot
 | kiszolgáló | A Teradata-kiszolgáló neve. | Igen |
 | authenticationType | A Teradata-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Alapszintű**, és **Windows**. | Igen |
 | felhasználónév | Adja meg a felhasználónevet a Teradata-adatbázishoz való csatlakozáshoz. | Igen |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| password | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Egy helyi Integration Runtime szükség, az említett [Előfeltételek](#prerequisites). |Igen |
 
 **Példa**
@@ -164,44 +164,44 @@ Ha az adatok másolása a Teradata, Azure Data Factory-közbenső adattípusok a
 | Teradata-adattípus | Data factory közbenső adattípus |
 |:--- |:--- |
 | BigInt |Int64 |
-| Blob |Byte] |
-| Bájt |Byte] |
+| Blob |Byte[] |
+| Byte |Byte[] |
 | ByteInt |Int16 |
-| CHAR |Karakterlánc |
-| CLOB |Karakterlánc |
+| char |String |
+| CLOB |String |
 | Dátum |DateTime |
-| Tizedes tört |Tizedes tört |
-| Dupla |Dupla |
-| Kép |Karakterlánc |
+| Decimal |Decimal |
+| Double |Double |
+| Kép |String |
 | Egész szám |Int32 |
-| Napi időköz |Időtartam |
-| Intervallum nap – óra |Időtartam |
-| Intervallum nap – perc |Időtartam |
-| Intervallum nap – másodperc |Időtartam |
-| Intervallum óra |Időtartam |
-| Intervallum óra – perc |Időtartam |
-| Intervallum óra – másodperc |Időtartam |
-| Időköz percben |Időtartam |
-| Második időköz percben |Időtartam |
-| Intervallum hónap |Karakterlánc |
-| Intervallum második |Időtartam |
-| Intervallum év |Karakterlánc |
-| Intervallum év, hónap |Karakterlánc |
-| Szám |Dupla |
-| Period(date) |Karakterlánc |
-| Period(Time) |Karakterlánc |
-| Időszak (idő időzónával együtt) |Karakterlánc |
-| Period(Timestamp) |Karakterlánc |
-| Időszak (Timestamp időzónával együtt) |Karakterlánc |
+| Napi időköz |TimeSpan |
+| Intervallum nap – óra |TimeSpan |
+| Intervallum nap – perc |TimeSpan |
+| Intervallum nap – másodperc |TimeSpan |
+| Intervallum óra |TimeSpan |
+| Intervallum óra – perc |TimeSpan |
+| Intervallum óra – másodperc |TimeSpan |
+| Időköz percben |TimeSpan |
+| Második időköz percben |TimeSpan |
+| Intervallum hónap |String |
+| Intervallum második |TimeSpan |
+| Intervallum év |String |
+| Intervallum év, hónap |String |
+| Szám |Double |
+| Period(date) |String |
+| Period(Time) |String |
+| Időszak (idő időzónával együtt) |String |
+| Period(Timestamp) |String |
+| Időszak (Timestamp időzónával együtt) |String |
 | SmallInt |Int16 |
-| Time |Időtartam |
-| Idő időzónával együtt |Karakterlánc |
+| Time |TimeSpan |
+| Idő időzónával együtt |String |
 | Időbélyeg |DateTime |
 | Az időzóna időbélyeg |DateTimeOffset |
-| VarByte |Byte] |
-| VarChar |Karakterlánc |
-| VarGraphic |Karakterlánc |
-| Xml |Karakterlánc |
+| VarByte |Byte[] |
+| VarChar |String |
+| VarGraphic |String |
+| Xml |String |
 
 
 ## <a name="next-steps"></a>További lépések

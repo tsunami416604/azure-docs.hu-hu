@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: b6c63a868b7697522c708a4db483395a537a82cf
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: MT
+ms.openlocfilehash: eef4681626c5e0aa0c5d8a67dbd0d19bcfd7121e
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823450"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108298"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Az Azure-beli Windows virtuális gép címkézése
 Ez a cikk ismerteti a különböző módjait a Windows virtuális gép címkézése Azure-ban a Resource Manager-alapú üzemi modellel. A címkék olyan felhasználó által definiált kulcs/érték párok, amelyeket közvetlenül az erőforrás vagy erőforráscsoport helyezhető. Az Azure jelenleg támogatja az erőforrás és erőforráscsoport legfeljebb 15 címkék. Címkék erőforrás elhelyezve a létrehozásakor vagy hozzáadni egy meglévő erőforrást. Vegye figyelembe, hogy a címkék csak a Resource Manager üzemi modell használatával létrehozott erőforrások támogatottak. Ha szeretne Linux virtuális gép címkézése, [Linux rendszerű virtuális gép címkézése Azure-ban](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -30,7 +30,7 @@ Ez a cikk ismerteti a különböző módjait a Windows virtuális gép címkéz�
 ## <a name="tagging-with-powershell"></a>Címkézés, a PowerShell-lel
 Szeretne létrehozni, hozzáadása és törlése a PowerShell, először meg kell állíthat be címkéket az [az Azure Resource Manager PowerShell környezetet][PowerShell environment with Azure Resource Manager]. Miután végzett a telepítő, elhelyezhet címkék számítási, hálózati és tárolási erőforrások létrehozásakor, vagy a Powershellen keresztül az erőforrás létrehozása után. Ez a cikk megtekintéséhez vagy szerkesztéséhez címkék elhelyezni a virtuális gépek összpontosít.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 Először keresse meg a virtuális gép a `Get-AzVM` parancsmagot.
 

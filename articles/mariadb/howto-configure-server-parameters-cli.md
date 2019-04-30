@@ -8,11 +8,11 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.openlocfilehash: 4e0bf45f1c67a5e07d6ed632f6560d094b673c0a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547152"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61040052"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Kiszolgáló konfigurációs paramétereinek testreszabása az Azure CLI-vel
 Lista, megjelenítése és konfigurációs paramétereket egy Azure Database for MariaDB-kiszolgáló frissítése az Azure CLI, az Azure parancssori segédprogram használatával. Motor konfigurációk egy részét a kiszolgálói szinten érhető el, és módosíthatók.

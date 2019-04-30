@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: d3d1769766053b513a98df153cb635ae148f26b1
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: fc35077e00bc6322a815a52ca6ab3571a4e06d3d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867370"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60937722"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>Az SAP HANA az Azure Backup a fájlok szintjén
 
@@ -36,7 +36,7 @@ Ezen az ábrán a párbeszédpanelen, a biztonsági mentési menüelem az SAP HA
 
 Ez a választás úgy érzi, egyszerű és nagyon egyszerű, amíg nincsenek szempontokat. Ahogy korábban említettük, egy Azure virtuális gép korlátozott számú adatlemez csatolható. Nem tárolja az SAP HANA biztonsági mentési fájlokat a virtuális gép, a lemez és az adatbázis átviteli sebességet megkövetelő, amelyek között több adatlemez szoftver csíkozást is járhat méretétől függően a fájl rendszereken kapacitás lehet. Különböző lehetőség e biztonságimásolat-fájlokat, és kezelését fájl mérete korlátozások és teljesítmény kezelésekor a terabájtnyi adatot, a cikk későbbi részében találhatók.
 
-Egy másik lehetőség, amellyel kapcsolatban teljes kapacitás nagyobb szabadságot kínál, az Azure blob storage-bA. Egy blob is 1 TB-os korlátozva, amíg a teljes kapacitás egyetlen blob-tároló jelenleg 500 TB. Ezenkívül biztosít ügyfeleink választhatja úgynevezett &quot;ritkán használt adatok&quot; a blob storage, amely rendelkezik egy költségmegtakarítást jelent. Lásd: [Azure Blob Storage: gyakran és ritkán használt adatok tárolási rétege](../../../storage/blobs/storage-blob-storage-tiers.md) ritka elérésű blobtároló részleteit.
+Egy másik lehetőség, amellyel kapcsolatban teljes kapacitás nagyobb szabadságot kínál, az Azure blob storage-bA. Egy blob is 1 TB-os korlátozva, amíg a teljes kapacitás egyetlen blob-tároló jelenleg 500 TB. Ezenkívül biztosít ügyfeleink választhatja úgynevezett &quot;ritkán használt adatok&quot; a blob storage, amely rendelkezik egy költségmegtakarítást jelent. Lásd: [Azure Blob Storage: Gyakori és ritka elérésű tárolási szintet](../../../storage/blobs/storage-blob-storage-tiers.md) ritka elérésű blobtároló részleteit.
 
 További biztonsági georeplikált storage-fiók használatával az SAP HANA biztonsági másolatok tárolására. Lásd: [Azure Storage replikáció](../../../storage/common/storage-redundancy.md) tárfiók replikációjának részleteit.
 
@@ -70,7 +70,7 @@ Ismételje meg a szoftver azonos biztonsági másolatának öt szétosztottsága
 
 ## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>SAP HANA biztonsági mentési fájlok másolása az Azure blob storage-bA
 
-Egy másik lehetőség, gyorsan az SAP HANA biztonsági másolatok tárolására, az Azure blob storage-bA. Egy egyetlen blobtároló 500 TB-os, néhány kisebb az SAP HANA-rendszerek esetén elegendő M32ts, M32ls, M64ls és GS5 virtuális gép típusú Azure-használatával, hogy elegendő az SAP HANA biztonsági másolatok esetében. Az ügyfelek választhatnak között &quot;gyakori elérésű&quot; és &quot;hideg&quot; blob storage-ban (lásd: [Azure Blob Storage: gyakran és ritkán használt adatok tárolási rétege](../../../storage/blobs/storage-blob-storage-tiers.md)).
+Egy másik lehetőség, gyorsan az SAP HANA biztonsági másolatok tárolására, az Azure blob storage-bA. Egy egyetlen blobtároló 500 TB-os, néhány kisebb az SAP HANA-rendszerek esetén elegendő M32ts, M32ls, M64ls és GS5 virtuális gép típusú Azure-használatával, hogy elegendő az SAP HANA biztonsági másolatok esetében. Az ügyfelek között választhatnak &quot;gyakori elérésű&quot; és &quot;hideg&quot; blob storage-ban (lásd: [Azure Blob Storage: Gyakori és ritka elérésű tárolási szintet](../../../storage/blobs/storage-blob-storage-tiers.md)).
 
 A blobxfer eszközzel az SAP HANA biztonsági mentési fájlok másolása a közvetlenül az Azure blob storage-könnyebbé vált.
 

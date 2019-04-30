@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 9233a5919ad86adcbb7947cd095945654ed015a7
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810773"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61093981"
 ---
 <a name="retrieve-offer-status"></a>Ajánlat állapotának lekérése 
 =====================
@@ -33,8 +33,8 @@ Az ajánlat aktuális állapotát kérdezi le.
 
 |  **Name (Név)**       |   **Leírás**                            |  **Adattípus** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | Például a közzétevő azonosítója `Contoso`  |     Sztring     |
-|  OfferId        | GUID, amely egyedileg azonosítja az ajánlatot      |     Sztring     |
+|  publisherId    | Például a közzétevő azonosítója `Contoso`  |     String     |
+|  ajánlatazonosító        | GUID, amely egyedileg azonosítja az ajánlatot      |     String     |
 |  API-verzió    | API legújabb verziója                        |     Dátum       |
 |  |  |
 
@@ -137,7 +137,7 @@ Az ajánlat aktuális állapotát kérdezi le.
 |  estimatedTimeFrame   | Mennyi időt vesz igénybe, rövid formátumban lépés végrehajtásához becslése                       |
 |  id                   | A lépés azonosítója                                                                         |
 |  stepName             | A lépés neve                                                                               |
-|  leírás          | A lépés leírása                                                                        |
+|  description          | A lépés leírása                                                                        |
 |  status               | A lépés állapotát. A lehetséges értékek listáját lásd: [. lépés: állapot](#step-status) alatt.    |
 |  üzenet             | A lépés kapcsolatos üzenetek tömbje                                                          |
 |  processPercentage    | A lépés befejezése után készítsen százalékos aránya                                                              |

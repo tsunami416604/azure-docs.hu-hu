@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 9484cf0f549db94be8f1ac2363addca952a3cff3
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810772"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61096063"
 ---
 <a name="retrieve-a-specific-offer"></a>Egy adott ajánlat beolvasása
 =========================
@@ -47,8 +47,8 @@ Is lekérni egy adott verzióját az ajánlatot, vagy a draft, nézetben vagy ü
 
 | **Name (Név)**    | **Leírás**                                                                          | **Adattípus** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
-| publisherId | publisherId. Például Contoso                                                        | Sztring        |
-| OfferId     | GUID azonosítója, amely egyedileg azonosítja az ajánlatot.                                                 | Sztring        |
+| publisherId | publisherId. Például Contoso                                                        | String        |
+| ajánlatazonosító     | GUID azonosítója, amely egyedileg azonosítja az ajánlatot.                                                 | String        |
 | version     | Az ajánlat lekérése folyamatban verziója. Alapértelmezés szerint a rendszer lekéri a legújabb ajánlat. | Egész szám       |
 | Helyet      | A tárolóhely, amelyről a az ajánlatot, hogy a rendszer lekéri a egyike lehet:      <br/>  - `Draft` (alapértelmezett) az ajánlat verzió jelenleg a draft kérdezi le.  <br/>  -  `Preview` az ajánlat verzió jelenleg még előzetes verzióként kérdezi le.     <br/>  -  `Production` olvassa be az ajánlat verziója jelenleg éles környezetben.          |      Enum |
 | API-verzió | API legújabb verziója                                                                    | Dátum          |

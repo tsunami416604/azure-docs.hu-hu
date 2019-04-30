@@ -9,11 +9,11 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 75d2930363b6ad1aeace22d7529df04f31deefe5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037225"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60893636"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Csatlakozás a Spark az Azure Cosmos DB Cassandra API-hoz
 
@@ -42,14 +42,14 @@ A következő táblázat felsorolja az Azure Cosmos DB Cassandra API-specifikus 
 
 | **Tulajdonság neve** | **Alapértelmezett érték** | **Leírás** |
 |---------|---------|---------|
-| Spark.cassandra.Output.Batch.size.Rows |  1 |Egyetlen kötegenkénti sorok száma. Ez a paraméter értéke 1. Ezt a paramétert a nehéz számítási feladatokhoz magasabb átviteli sebesség eléréséhez használja. |
-| Spark.cassandra.connection.connections_per_executor_max  | None | Csomópontonként engedélyezett végrehajtó kapcsolatok maximális számát. 10 * n megegyezik a csomópontonként Cassandra-n csomópontos fürtben 10 kapcsolatot. Tehát 5 kapcsolatot végrehajtó csomópontonként egy Cassandra-fürt 5 csomópontos van szükség, ha majd kell beállítania ezt a konfigurációt a 25. Módosítsa ezt az értéket a párhuzamosság foka vagy a spark-feladatok konfigurált végrehajtóval száma alapján.   |
-| Spark.cassandra.Output.concurrent.writes  |  100 | A párhuzamos írások száma végrehajtó előforduló számát határozza meg. Mivel "batch.size.rows" értéke 1, ügyeljen arra, hogy ennek megfelelően vertikális felskálázás ezt az értéket. Módosítsa ezt az értéket a párhuzamosság vagy az átviteli sebességet, amelyeket szeretne eléréséhez a számítási feladatok alapján. |
-| Spark.cassandra.concurrent.reads |  512 | A párhuzamos olvasások száma végrehajtó előforduló számát határozza meg. Ez az érték alapján a párhuzamosság vagy az átviteli sebességet a számítási feladatok elérni kívánt módosítása  |
-| Spark.cassandra.Output.throughput_mb_per_sec  | None | A teljes olvasási sebességet végrehajtó határozza meg. Ez a paraméter használható, valamint a felső korlátja. a spark-feladat átviteli alapja, az átviteli sebesség a Cosmos DB-gyűjtemények.   |
-| Spark.cassandra.input.reads_per_sec| None   | A teljes olvasási sebességet végrehajtó határozza meg. Ez a paraméter használható, valamint a felső korlátja. a spark-feladat átviteli alapja, az átviteli sebesség a Cosmos DB-gyűjtemények.  |
-| Spark.cassandra.Output.Batch.Grouping.Buffer.size |  1000  | Cassandra API küldése előtt a memóriában tárolt egyetlen spark feladatonként kötegeknek a száma határozza meg |
-| Spark.cassandra.connection.keep_alive_ms | 60000 | Határozza meg az az időtartam, ameddig a fel nem használt kapcsolatok érhetők el. | 
+| spark.cassandra.output.batch.size.rows |  1 |Egyetlen kötegenkénti sorok száma. Ez a paraméter értéke 1. Ezt a paramétert a nehéz számítási feladatokhoz magasabb átviteli sebesség eléréséhez használja. |
+| spark.cassandra.connection.connections_per_executor_max  | None | Csomópontonként engedélyezett végrehajtó kapcsolatok maximális számát. 10 * n megegyezik a csomópontonként Cassandra-n csomópontos fürtben 10 kapcsolatot. Tehát 5 kapcsolatot végrehajtó csomópontonként egy Cassandra-fürt 5 csomópontos van szükség, ha majd kell beállítania ezt a konfigurációt a 25. Módosítsa ezt az értéket a párhuzamosság foka vagy a spark-feladatok konfigurált végrehajtóval száma alapján.   |
+| spark.cassandra.output.concurrent.writes  |  100 | A párhuzamos írások száma végrehajtó előforduló számát határozza meg. Mivel "batch.size.rows" értéke 1, ügyeljen arra, hogy ennek megfelelően vertikális felskálázás ezt az értéket. Módosítsa ezt az értéket a párhuzamosság vagy az átviteli sebességet, amelyeket szeretne eléréséhez a számítási feladatok alapján. |
+| spark.cassandra.concurrent.reads |  512 | A párhuzamos olvasások száma végrehajtó előforduló számát határozza meg. Ez az érték alapján a párhuzamosság vagy az átviteli sebességet a számítási feladatok elérni kívánt módosítása  |
+| spark.cassandra.output.throughput_mb_per_sec  | None | A teljes olvasási sebességet végrehajtó határozza meg. Ez a paraméter használható, valamint a felső korlátja. a spark-feladat átviteli alapja, az átviteli sebesség a Cosmos DB-gyűjtemények.   |
+| spark.cassandra.input.reads_per_sec| None   | A teljes olvasási sebességet végrehajtó határozza meg. Ez a paraméter használható, valamint a felső korlátja. a spark-feladat átviteli alapja, az átviteli sebesség a Cosmos DB-gyűjtemények.  |
+| spark.cassandra.output.batch.grouping.buffer.size |  1000  | Cassandra API küldése előtt a memóriában tárolt egyetlen spark feladatonként kötegeknek a száma határozza meg |
+| spark.cassandra.connection.keep_alive_ms | 60000 | Határozza meg az az időtartam, ameddig a fel nem használt kapcsolatok érhetők el. | 
 
 Állítsa be az átviteli sebesség és a ezeket a paramétereket a számítási feladatok várt a spark-feladatok és az átviteli sebesség a Cosmos DB-fiók kiépítése a párhuzamosság szintjét.
 
@@ -57,7 +57,7 @@ A következő táblázat felsorolja az Azure Cosmos DB Cassandra API-specifikus 
 
 ### <a name="cqlsh"></a>cqlsh
 A következő parancsok bemutatják, hogyan csatlakozhat az Azure cosmos DB Cassandra API cqlsh.  Ez akkor hasznos, haladjon végig a minták a Spark ellenőrzés céljából.<br>
-**A Linux/Unix/Mac:**
+**From Linux/Unix/Mac:**
 
 ```bash
 export SSL_VERSION=TLSv1_2

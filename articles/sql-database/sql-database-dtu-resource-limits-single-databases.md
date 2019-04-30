@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/20/2019
 ms.openlocfilehash: b3514eca8db5d5b68b3e5784ee95e8583813945c
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008970"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61075237"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>A DTU-alapú vásárlási modell segítségével az önálló adatbázisok számára erőforráskorlátok
 
@@ -32,7 +32,7 @@ Az alábbi táblázatok az önálló adatbázis rendelkezésre álló erőforrá
 > [!IMPORTANT]
 > Skálázás útmutatást és szempontokat, lásd: [önálló adatbázis méretezése](sql-database-single-database-scale.md)
 
-### <a name="basic-service-tier"></a>Alapszintű szolgáltatásszint
+### <a name="basic-service-tier"></a>Alapszintű szolgáltatási szint
 
 | **Számítási mérete** | **Basic** |
 | :--- | --: |
@@ -44,7 +44,7 @@ Az alábbi táblázatok az önálló adatbázis rendelkezésre álló erőforrá
 | Egyidejű munkamenetek maximális száma | 300 |
 |||
 
-### <a name="standard-service-tier"></a>Standard szolgáltatásszint
+### <a name="standard-service-tier"></a>Standard szolgáltatási szint
 
 | **Számítási mérete** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
@@ -68,7 +68,7 @@ Az alábbi táblázatok az önálló adatbázis rendelkezésre álló erőforrá
 | Egyidejű munkamenetek maximális száma |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
 
-### <a name="premium-service-tier"></a>Prémium szolgáltatásszint
+### <a name="premium-service-tier"></a>Prémium szolgáltatási szint
 
 | **Számítási mérete** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|

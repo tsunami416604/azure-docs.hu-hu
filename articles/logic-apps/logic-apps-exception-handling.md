@@ -11,11 +11,11 @@ ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 3f812c1142b5cd40169f7340163295b0f7ea6a4d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779147"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60996595"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibák és az Azure Logic Appsben kivételek kezelése
 
@@ -29,7 +29,7 @@ A legalapvetőbb kivétel és a hibakezelés, használhat egy *újrapróbálkoz�
 
 Az újrapróbálkozási szabályzat típusok a következők: 
 
-| Typo | Leírás | 
+| Típus | Leírás | 
 |------|-------------| 
 | **Alapértelmezett** | Ez a szabályzat legfeljebb négy újrapróbálkozás küld *ezzel exponenciálisan növelve* időközök, méretezhető, 7.5 másodperc, de 5 és 45 másodperc között vannak korlátozzuk. | 
 | **Exponenciális időköz**  | Ez a szabályzat kiválasztott exponenciálisan egyre bővülő tartományból a kérések elküldése előtt egy véletlenszerű időköz vár. | 
@@ -71,7 +71,7 @@ Vagy manuálisan is megadhatja az újrapróbálkozási szabályzat a `inputs` eg
 
 *Kötelező*
 
-| Érték | Typo | Leírás |
+| Érték | Típus | Leírás |
 |-------|------|-------------|
 | <*retry-policy-type*> | String | A használni kívánt újrapróbálkozási házirendtípus: `default`, `none`, `fixed`, vagy `exponential` | 
 | <*újrapróbálkozási-időköz*> | String | Az újrapróbálkozási időköz, ahol az értéket kell használnia [ISO 8601 formátumú](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Az alapértelmezett minimális gyakoriság `PT5S` és a maximális időköz `PT1D`. Az exponenciális időköz szabályzat használatakor különböző minimális és maximális értékeket is megadhat. | 
@@ -80,7 +80,7 @@ Vagy manuálisan is megadhatja az újrapróbálkozási szabályzat a `inputs` eg
 
 *Nem kötelező*
 
-| Érték | Typo | Leírás |
+| Érték | Típus | Leírás |
 |-------|------|-------------|
 | <*minimum-interval*> | String | Az exponenciális időköz házirend, a legkisebb időköze a véletlenszerűen kiválasztott időköz [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
 | <*maximum-interval*> | String | Az exponenciális időköz házirend, a véletlenszerűen kiválasztott időszakban a legnagyobb időközönként [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 

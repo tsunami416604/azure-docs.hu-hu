@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 0466265ad5a24e8ea6dc5079e2b4006d74e7dde0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0e6a52ea2fdd05546a4da9f8cd1165b41ed27944
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452532"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097687"
 ---
 # <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Always On rendelkezésre állási csoportokra vonatkozó ILB figyelő konfigurálása az Azure-ban
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "38452532"
 ## <a name="overview"></a>Áttekintés
 
 > [!IMPORTANT]
-> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Azure Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzemi modell használatát ismerteti. Azt javasoljuk, hogy az új telepítések esetén a Resource Manager modellt használja.
+> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Az Azure Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzemi modell használatát ismerteti. Azt javasoljuk, hogy az új telepítések esetén a Resource Manager modellt használja.
 
 Egy Always On rendelkezésre állási csoporthoz figyelő beállítása a Resource Manager-modellben: [egy Always On rendelkezésre állási csoport terheléselosztó konfigurálása az Azure-ban](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
 

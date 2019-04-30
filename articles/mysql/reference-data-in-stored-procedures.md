@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.openlocfilehash: a3c88953eea95871529e8ab257f52b694db443a9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544855"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61244310"
 ---
 # <a name="azure-database-for-mysql-data-in-replication-stored-procedures"></a>Azure Database for MySQL-adatok a replikálási tárolt eljárások
 
@@ -21,10 +21,10 @@ A következő tárolt eljárások segítségével állítsa be, vagy távolítsa
 
 |**Tárolt eljárás neve**|**Bemeneti paraméterek**|**A kimeneti paraméterek**|**Használati Megjegyzés**|
 |-----|-----|-----|-----|
-|*MySQL.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|–|Adatok áthelyezése az SSL-mód, át kell adnia a hitelesítésszolgáltató tanúsítványát a környezetben be master_ssl_ca paraméter. </br><br>SSL nélküli adatátvitelhez, adja át egy üres karakterlánc master_ssl_ca paraméter be.|
-|*MySQL.az_replication _indítása*|–|–|Elindítja a replikáció.|
-|*MySQL.az_replication _stop*|–|–|Replikáció leállítása.|
-|*MySQL.az_replication _remove_master*|–|–|Eltávolítja a replikációs kapcsolatot a master és a replika között.|
-|*MySQL.az_replication_skip_counter*|–|–|Egy replikációs hiba kihagyja.|
+|*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|–|Adatok áthelyezése az SSL-mód, át kell adnia a hitelesítésszolgáltató tanúsítványát a környezetben be master_ssl_ca paraméter. </br><br>SSL nélküli adatátvitelhez, adja át egy üres karakterlánc master_ssl_ca paraméter be.|
+|*mysql.az_replication _start*|–|–|Elindítja a replikáció.|
+|*mysql.az_replication _stop*|–|–|Replikáció leállítása.|
+|*mysql.az_replication _remove_master*|–|–|Eltávolítja a replikációs kapcsolatot a master és a replika között.|
+|*mysql.az_replication_skip_counter*|–|–|Egy replikációs hiba kihagyja.|
 
 Állítsa be adatokat a közötti replikáció egy fő- és a egy replikát, az Azure Database for MySQL-hez, tekintse meg [adatok a replikáció konfigurálása](howto-data-in-replication.md).

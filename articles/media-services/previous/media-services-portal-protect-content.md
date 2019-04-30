@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: c0571e202448951de0994d34f68e1649eabd5519
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259074"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61128144"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>A content protection-szabályzatok konfigurálása az Azure portal használatával
  Az Azure Media Services akkor hagyja, hogy a számítógép tárolási, feldolgozási és kézbesítési kezdve a media gondoskodhat. A Media Services segítségével a 128 bites titkosítás kulcsok használatával dinamikusan és az Advanced Encryption Standard (AES) titkosított tartalmat. Is használhatja az általános titkosítás (CENC) a PlayReady és/vagy Widevine digitális jogkezelési (technológia DRM), és az Apple FairPlay használatával. 

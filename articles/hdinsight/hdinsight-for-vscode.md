@@ -2,7 +2,6 @@
 title: Az Azure HDInsight-eszközök – Visual Studio Code-ot használja a Hive, LLAP vagy PySpark |} A Microsoft Docs
 description: Ismerje meg, hogyan használható az Azure HDInsight Tools for Visual Studio Code létrehozásához és elküldéséhez a lekérdezések és a parancsfájlokat.
 Keywords: Visual Studio Code-ot, az Azure HDInsight-eszközök, Hive, Python, PySpark, Spark, HDInsight, Hadoop LLAP, interaktív Hive, interaktív lekérdezés
-services: HDInsight
 documentationcenter: ''
 author: hrasheed-msft
 ms.author: hrasheed
@@ -10,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/04/2019
-ms.openlocfilehash: 71e12e661c704af028ac4dc48f255bdee980619c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 04e607517bc806b60d7e76e5076f9d3518e530eb
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100326"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098337"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Az Azure HDInsight Tools for Visual Studio Code használata
 
@@ -307,35 +306,35 @@ Fájl elküldése, figyelje meg, hogy a .vscode mappa automatikusan bekerül a m
     **POST /batches**   
     A kérelem törzse
 
-    | név | leírás | type | 
+    | név | description | type | 
     | :- | :- | :- | 
     | fájl | Hajtsa végre az alkalmazást tartalmazó fájlt | elérési út (kötelező) | 
-    | proxyUser | Felhasználó megszemélyesítése a feladat futtatásakor | sztring | 
-    | Osztálynév | Alkalmazás Java/Spark main osztály | sztring |
+    | proxyUser | Felhasználó megszemélyesítése a feladat futtatásakor | string | 
+    | Osztálynév | Alkalmazás Java/Spark main osztály | string |
     | args | Az alkalmazás a parancssori argumentumok | karakterláncok | 
     | JAR-fájlok kivételével | Ebben a munkamenetben használandó jars | Karakterlánc listája | 
     | pyFiles | Ebben a munkamenetben használandó Python-fájlok | Karakterlánc listája |
     | fájl megjelenítése | Ebben a munkamenetben használni kívánt fájlok | Karakterlánc listája |
-    | driverMemory | Az illesztőprogram-folyamathoz használandó memória mennyisége | sztring |
+    | driverMemory | Az illesztőprogram-folyamathoz használandó memória mennyisége | string |
     | driverCores | Az illesztőprogram-folyamathoz használandó magok száma | int |
-    | executorMemory | Memória / végrehajtó folyamat használata | sztring |
+    | executorMemory | Memória / végrehajtó folyamat használata | string |
     | executorCores | Minden egyes végrehajtó használandó magok száma | int |
     | numExecutors | A munkamenet elindításához végrehajtóval száma | int |
     | archívum | Ebben a munkamenetben használandó archívum | Karakterlánc listája |
-    | üzenetsor | A neve, amelyhez a YARN várólista elküldve | sztring |
-    | név | A munkamenet neve | sztring |
+    | üzenetsor | A neve, amelyhez a YARN várólista elküldve | string |
+    | név | A munkamenet neve | string |
     | megerősítési | Spark-konfiguráció tulajdonságai | Térkép kulcs = érték |
 
     Választörzs   
     A létrehozott Batch-objektum.
 
-    | név | leírás | type | 
+    | név | description | type | 
     | :- | :- | :- | 
     | id | A munkamenet-azonosító | int | 
     | appId | Ez a munkamenet-alkalmazás alkalmazásazonosítója |  String |
     | appInfo | Az alkalmazás részletes adatai | Térkép kulcs = érték |
     | napló | A napló sorok | karakterláncok |
-    | state |   A batch-állapot | sztring |
+    | state |   A batch-állapot | string |
 
 >[!NOTE]
 >A hozzárendelt livy-konfigurációs megjelennek a tesztkimenet ablaktáblán amikor küldje el a szkriptet.

@@ -9,17 +9,17 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: af6d66d2e3eae80477a151323578b930dcd7727a
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617852"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60886635"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>A Windows IoT Core-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
 Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők, a Windows IoT Core-eszköz csatlakoztatása a Microsoft Azure IoT Central alkalmazáshoz.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
@@ -104,10 +104,10 @@ Numerikus beállításai
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Typo            | Megjelenített név | Mező neve | Adattípus |
+| Típus            | Megjelenített név | Mező neve | Adattípus |
 | --------------- | ------------ | ---------- | --------- |
 | Eszköztulajdonság | Die száma   | dieNumber  | szám    |
-| Szöveg            | Földrajzi egység     | location   | –       |
+| Text            | Location egység     | location   | –       |
 
 ## <a name="next-steps"></a>További lépések
 

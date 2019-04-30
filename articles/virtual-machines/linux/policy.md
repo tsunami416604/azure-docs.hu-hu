@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: singhkay
 ms.openlocfilehash: 8ad1bf371c5d5dbcbf3657ad69eace2003a8dda9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342011"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61473858"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Linux rendszerű virtuális gépek az Azure Resource Manager-szabályzatok alkalmazása
 Házirendek segítségével egy szervezet különböző konvenciók és szabályokat a vállalaton kényszeríthető. A kívánt viselkedés kényszerítésének segíthet hozzájárul a sikeres, a szervezet kockázatok. Ebben a cikkben ismertetünk, hogyan használhatja az Azure Resource Manager-házirendek a szervezet virtuális gépek számára a kívánt viselkedés meghatározására.

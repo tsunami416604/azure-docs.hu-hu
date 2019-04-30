@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 05/01/2017
 ms.custom: seodec2018
 ms.openlocfilehash: 973623d6c4cb57518af2012bccf67c969146d23c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311983"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61076193"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>Összetett adattípusok modellezése az Azure Search hogyan
 Azure Search-index feltöltéséhez néha használt külső adathalmazok, amelyek nem felosztása eligazíthatja táblázatos sorhalmaz hierarchikus vagy beágyazott alépítményeit tartalmazza. Példák ilyen struktúrák előfordulhat, hogy több helyről és telefonszámok tartalmazza az egyetlen ügyfél több színt és méretet egyetlen termékváltozat, több készítői könyvet, és így tovább. Feltételek modellező, láthatja a továbbiakban ezen szerkezetek *összetett adattípusok*, *összetett adattípusok*, *összetett adattípusok*, vagy *összesített az adattípusok*, hogy néhányat említsünk.

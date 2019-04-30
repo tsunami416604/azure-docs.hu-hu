@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
 ms.openlocfilehash: deb5595ac6a8b0d189e5594fda8e4b60480d038c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357403"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61318386"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Környezetek integrálása az Azure DevOps CI/CD-folyamatok
 Használhatja az Azure DevTest Labs-feladatok-bővítmény, amely könnyen integrálható a folyamatos integrációs (CI) települ az Azure DevOps-szolgáltatásokkal (korábbi nevén Visual Studio Team Services) / folyamatos készregyártás (CD) build kibocsátási folyamat az Azure-ral DevTest Labs szolgáltatásban. Ezek a bővítmények könnyebb gyorsan üzembe helyezhet egy [környezet](devtest-lab-test-env.md) egy adott feladat tesztelése, és törölje a vizsgálat befejezésekor. 
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan létrehozásához és üzembe helyezése a környeze
 - Környezet létrehozása
 - Egy környezet törlése
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 A CI/CD-folyamat integrálható az Azure DevTest Labs szolgáltatással, mielőtt telepíteni [Azure DevTest Labs-feladatok](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) bővítményt a Visual Studio-piactéren. 
 
 ## <a name="create-and-configure-the-lab-for-environments"></a>Létrehozhat és konfigurálhat a labor létrehozása környezetekhez

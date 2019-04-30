@@ -8,14 +8,15 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 02/18/2019
-ms.author: cshoe
+origin.date: 02/18/2019
+ms.date: 04/26/2019
+ms.author: v-junlch
 ms.openlocfilehash: 5534086d5754691f650370e465fa2c63210e0dc7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739610"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61437854"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Az Azure Functions kötési bővítményeket regisztrálása
 
@@ -37,7 +38,7 @@ A következő kötéstípusok kivételek, amelyek nem igényelnek explicit regis
 
 ## <a name="azure-portal-development"></a>Azure portal-fejlesztés
 
-Hozzon létre egy függvényt, vagy a felvenni egy kötést, ha kéri a bővítmény számára az eseményindítóval vagy kötéssel van szükség a regisztráció során. A gombra kattintva megismert **telepítése** regisztrálni a bővítményt. Telepítés akár 10 percet is igénybe a használatalapú csomag is.
+Hozzon létre egy függvényt, vagy a felvenni egy kötést, ha kéri a bővítmény számára az eseményindítóval vagy kötéssel van szükség a regisztráció során. A gombra kattintva megismert **telepítése** regisztrálni a bővítményt. Telepítés akár 10 percet is igénybe a használatalapú csomag is. 
 
 Csak telepítenie kell minden egyes bővítmény megadott függvényalkalmazás egy alkalommal. Támogatott kötések, amelyek nem állnak rendelkezésre a portálon, vagy frissíteni a telepített kiterjesztést is [manuálisan telepíteni vagy frissíteni a kötési bővítményeket a portálról az Azure Functions](install-update-binding-extensions-manual.md).  
 
@@ -75,4 +76,5 @@ Cserélje le `<target_version>` a példában a csomaghoz, egy adott verzióját 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Azure függvény eseményindítót és a kötési – példa](./functions-bindings-example.md)
+
 

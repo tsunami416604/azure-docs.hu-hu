@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 642353218960e2e995d717260ae82b6dbd7c2612
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727060"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60880111"
 ---
 # <a name="managing-azure-api-management-using-azure-automation"></a>Kezelés az Azure API Management az Azure Automationnel
 Ez az útmutató bemutatja, hogyan használható az Azure API Management kezelésének egyszerűsítéséhez, és az Azure Automation szolgáltatást.
@@ -36,7 +36,7 @@ Az API Management segítségével kezelhetők az Azure Automationben a [Windows 
 
 Íme néhány példa az API Management a PowerShell-lel:
 
-* [Az API Management az Azure PowerShell-minták](https://docs.microsoft.com/azure/api-management/powershell-samples)
+* [Azure PowerShell-minták az API Managementhez](https://docs.microsoft.com/azure/api-management/powershell-samples)
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy megismerte az alapokat, az Azure Automationben, és hogyan használható az Azure API Management kezeléséhez, kövesse az alábbi hivatkozások további.

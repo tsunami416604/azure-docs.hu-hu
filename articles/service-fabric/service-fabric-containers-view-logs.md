@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 05/15/2018
 ms.author: aljo
 ms.openlocfilehash: 0408010a49b8ec83aa02c74887139f663788ad80
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662822"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60881492"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>A Service Fabric-tároló szolgáltatás naplók megtekintése
 Az Azure Service Fabric egy tárolóvezénylő, és mindkettő támogatja [Linux és Windows-tárolók](service-fabric-containers-overview.md).  Ez a cikk azt ismerteti, hogy a futó tároló szolgáltatás vagy a kézbesíthetetlen tároló tárolónaplók megtekintése, így diagnosztizálhatja és elháríthatja.

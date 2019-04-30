@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
 ms.openlocfilehash: 26f25a0dcbeef0d5b7456d42caaca392c3ca6a1a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075612"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098862"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Telepítése és az Azure Backup Server frissítése
 > [!div class="op_single_selector"]
@@ -51,7 +51,7 @@ Ha nem szeretné, hogy a kiszolgáló futtatása az Azure-ban, a Hyper-V virtuá
 
 | Operációs rendszer | Platform | SKU |
 |:--- | --- |:--- |
-| Windows Server 2019 |64 bit |Standard, Datacenter, Essentials (MABS v3-as és újabb verziók) |
+| A Windows Server 2019 |64 bit |Standard, Datacenter, Essentials (MABS v3-as és újabb verziók) |
 | A Windows Server 2016 és a legújabb szervizcsomagok |64 bit |Standard, Datacenter, Essentials (MABS V2 és újabb verziók) |
 | Windows Server 2012 R2 és a legújabb szervizcsomagok |64 bit |Standard, Datacenter, Foundation |
 | Windows Server 2012 és a legújabb szervizcsomagok |64 bit |Datacenter, Foundation, Standard |

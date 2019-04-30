@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: danlep
 ms.openlocfilehash: 4c0845b9cf5194ecbd0ab813997e17e070840f44
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099899"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61331341"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Az Azure Container Registry webhookok leírása
 
@@ -40,7 +40,7 @@ A Webhook aktiválódik, ha egy adattár át lett helyezve egy tárolórendszerk
 
 ### <a name="push-event-payload"></a>Leküldéses eseménytartalom
 
-|Elem|Typo|Leírás|
+|Elem|Típus|Leírás|
 |-------------|----------|-----------|
 |`id`|String|A webhook-esemény azonosítója.|
 |`timestamp`|DateTime|Az idő, amikor a webhook-esemény lett elindítva.|
@@ -50,7 +50,7 @@ A Webhook aktiválódik, ha egy adattár át lett helyezve egy tárolórendszerk
 
 ### <a name="target"></a>Cél
 
-|Elem|Typo|Leírás|
+|Elem|Típus|Leírás|
 |------------------|----------|-----------|
 |`mediaType`|String|A hivatkozott objektum MIME-típusát.|
 |`size`|Int32|A tartalom bájtok száma. Ugyanaz, mint a Hossz mezőben.|
@@ -61,7 +61,7 @@ A Webhook aktiválódik, ha egy adattár át lett helyezve egy tárolórendszerk
 
 ### <a name="request"></a>Kérelem
 
-|Elem|Typo|Leírás|
+|Elem|Típus|Leírás|
 |------------------|----------|-----------|
 |`id`|String|Az esemény által kezdeményezett kérelem azonosítója.|
 |`host`|String|A kívülről elérhető-példányának gazdagépnevét a beállításjegyzék, a bejövő kérelem HTTP-állomásfejlécet által megadott.|
@@ -104,7 +104,7 @@ A Webhook aktiválódik, ha egy tárház egy Helm-diagramot a rendszer továbbí
 
 ### <a name="chart-push-event-payload"></a>Diagram leküldéses eseménytartalom
 
-|Elem|Typo|Leírás|
+|Elem|Típus|Leírás|
 |-------------|----------|-----------|
 |`id`|String|A webhook-esemény azonosítója.|
 |`timestamp`|DateTime|Az idő, amikor a webhook-esemény lett elindítva.|
@@ -113,7 +113,7 @@ A Webhook aktiválódik, ha egy tárház egy Helm-diagramot a rendszer továbbí
 
 ### <a name="helm_target"></a>Cél
 
-|Elem|Typo|Leírás|
+|Elem|Típus|Leírás|
 |------------------|----------|-----------|
 |`mediaType`|String|A hivatkozott objektum MIME-típusát.|
 |`size`|Int32|A tartalom bájtok száma.|
@@ -154,7 +154,7 @@ Webhook által aktivált, amikor egy lemezképtárban, vagy a jegyzékfájl tör
 
 ### <a name="delete-event-payload"></a>Eseménytartalom törlése
 
-|Elem|Typo|Leírás|
+|Elem|Típus|Leírás|
 |-------------|----------|-----------|
 |`id`|String|A webhook-esemény azonosítója.|
 |`timestamp`|DateTime|Az idő, amikor a webhook-esemény lett elindítva.|
@@ -164,7 +164,7 @@ Webhook által aktivált, amikor egy lemezképtárban, vagy a jegyzékfájl tör
 
 ### <a name="delete_target"></a> Cél
 
-|Elem|Typo|Leírás|
+|Elem|Típus|Leírás|
 |------------------|----------|-----------|
 |`mediaType`|String|A hivatkozott objektum MIME-típusát.|
 |`digest`|String|A tartalom, ahogyan a beállításjegyzék V2 HTTP API-specifikációnak a kivonat.|
@@ -172,7 +172,7 @@ Webhook által aktivált, amikor egy lemezképtárban, vagy a jegyzékfájl tör
 
 ### <a name="delete_request"></a> Kérelem
 
-|Elem|Typo|Leírás|
+|Elem|Típus|Leírás|
 |------------------|----------|-----------|
 |`id`|String|Az esemény által kezdeményezett kérelem azonosítója.|
 |`host`|String|A kívülről elérhető-példányának gazdagépnevét a beállításjegyzék, a bejövő kérelem HTTP-állomásfejlécet által megadott.|
@@ -216,7 +216,7 @@ Webhook által aktivált, amikor egy Helm-diagram vagy a tárház törlődik.
 
 ### <a name="chart-delete-event-payload"></a>Diagram törlése eseménytartalom
 
-|Elem|Typo|Leírás|
+|Elem|Típus|Leírás|
 |-------------|----------|-----------|
 |`id`|String|A webhook-esemény azonosítója.|
 |`timestamp`|DateTime|Az idő, amikor a webhook-esemény lett elindítva.|
@@ -225,7 +225,7 @@ Webhook által aktivált, amikor egy Helm-diagram vagy a tárház törlődik.
 
 ### <a name="chart_delete_target"></a> Cél
 
-|Elem|Typo|Leírás|
+|Elem|Típus|Leírás|
 |------------------|----------|-----------|
 |`mediaType`|String|A hivatkozott objektum MIME-típusát.|
 |`size`|Int32|A tartalom bájtok száma.|

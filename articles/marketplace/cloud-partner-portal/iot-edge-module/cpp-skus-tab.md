@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 370d8160661c1f73124151a3a49d0bb3170dfb77
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276040"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60910931"
 ---
 # <a name="iot-edge-module-skus-tab"></a>IoT Edge-modul termékváltozatok lapon
 
@@ -41,13 +41,13 @@ A **termékváltozatok** lap frissülnek, és szerkesztheti a Termékváltozat k
 
 |  **Mező**       |     **Leírás**                                                          |
 |  ---------       |     ---------------                                                          |
-| **SKU-AZONOSÍTÓJA**       | Ez a Termékváltozat azonosítója. Ez a név legfeljebb 50 karakter hosszú lehet, amely rendelkezik kisbetűs alfanumerikus karaktereket és kötőjeleket (-), de nem végződhet kötőjellel. **Megjegyzés:** az ajánlat közzétételének után nem módosíthatja ezt a nevet. A név termék URL-címek az országom. |
+| **SKU-AZONOSÍTÓJA**       | Ez a Termékváltozat azonosítója. Ez a név legfeljebb 50 karakter hosszú lehet, amely rendelkezik kisbetűs alfanumerikus karaktereket és kötőjeleket (-), de nem végződhet kötőjellel. **Megjegyzés:** Ez a név nem módosítható, miután az ajánlat közzétételének. A név termék URL-címek az országom. |
 
 ## <a name="sku-details"></a>Termékváltozat részletei
 
 Konfigurálja a **Termékváltozatának adatait** hogyan a Termékváltozat jelenik meg az Azure Marketplace-en és az Azure Portal webhely meghatározásához.
 
-![IoT Edge-modul termékváltozat metaadatok](media/iot-edge-module-skus-tab-metadata.png)
+![IoT Edge module sku metadata](media/iot-edge-module-skus-tab-metadata.png)
 
 A következő táblázat ismerteti a célja, tartalom, és a mezők területen formázás **Termékváltozatának adatait**.
 
@@ -96,7 +96,7 @@ Ossza meg velünk a hozzáférést a [Azure Container Registry](https://azure.mi
 
 Célozhat meg több platformot, és adja meg a címkék segítségével különböző verzióiban. Tudjon meg többet [címkéket és a verziókezelés "előkészítése az IoT Edge modul technikai eszközök"](./cpp-create-technical-assets.md).
 
-![Az IoT Edge-modul képek](./media/iot-edge-module-skus-tab-acr.png)
+![IoT Edge Module Images](./media/iot-edge-module-skus-tab-acr.png)
 
 A következő táblázat ismerteti a célja, a tartalmát, és a mezők formázása:
 
@@ -109,7 +109,7 @@ A következő táblázat ismerteti a célja, a tartalmát, és a mezők formáz�
 | **előfizetés-azonosító**        | Az ACR Azure-előfizetés azonosítója.|
 | **Erőforráscsoport neve**      | Az erőforráscsoport neve, az ACR.|
 | **Beállításjegyzék neve**  | Az ACR-beállításjegyzék neve. Csak másolja a beállításjegyzék neve, nem a bejelentkezési kiszolgáló nevét (például nélkül a `azurecr.io`.) |
-| **Adattár neve**  | Az ACR, amely tartalmazza az IoT Edge-modul adattár neve. **Megjegyzés:** után a név beállítása, azt később már nem módosítható. Az egyedi név, hogy ne legyen semmilyen egyéb ajánlattal-fiókjában található ugyanazzal a névvel. |
+| **Adattár neve**  | Az ACR, amely tartalmazza az IoT Edge-modul adattár neve. **Megjegyzés:** A név beállítása után azt később már nem módosítható. Az egyedi név, hogy ne legyen semmilyen egyéb ajánlattal-fiókjában található ugyanazzal a névvel. |
 | **Felhasználónév** | Az ACR (rendszergazdai felhasználónév) tartozó felhasználónév. |
 | **Jelszó** | Az ACR-tartozó jelszót. |
 |  ***Lemezkép verziója***   |  |

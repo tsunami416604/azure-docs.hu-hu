@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 9c9f7dfd9ecbf085da19fc010e497caef8c18629
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917311"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61432636"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Mi a Cloud Service-modell, és hogyan tegye Becsomagolhatja azt?
 Egy felhőalapú szolgáltatás létrehozása az három összetevőt, a szolgáltatás definíciós *(.csdef)*, a szolgáltatás konfigurációs *(.cscfg)*, és a egy szolgáltatáscsomag *(.cspkg)*. Mindkét a **ServiceDefinition.csdef** és **ServiceConfig.cscfg** fájlok XML-alapú, és ismertetik a felhőalapú szolgáltatás, és hogyan van konfigurálva; szerkezete együttesen: a modell. A **ServicePackage.cspkg** egy zip-fájl, amely jön létre a **ServiceDefinition.csdef** , és többek között tartalmazza a szükséges bináris alapú függőségeket. Az Azure egy felhőalapú szolgáltatás létrehozása is a **ServicePackage.cspkg** és a **ServiceConfig.cscfg**.

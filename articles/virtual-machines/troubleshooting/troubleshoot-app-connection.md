@@ -17,11 +17,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 81535d51617a419174331dbf9b18ea558913dfa9
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413162"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60922241"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépeken alkalmazások csatlakozási hibáinak elhárítása
 
@@ -69,7 +69,7 @@ Az alkalmazás egy helyek közötti VPN vagy ExpressRoute-kapcsolaton keresztül
 
 A problémáról és annak javítási okának meghatározása, kövesse az alábbi lépéseket.
 
-## <a name="step-1-access-application-from-target-vm"></a>1. lépés: Alkalmazás elérését a cél virtuális Gépen
+## <a name="step-1-access-application-from-target-vm"></a>1. lépés: Hozzáférési kérelem a cél virtuális gép
 Próbálja meg elérni az alkalmazást a megfelelő ügyféloldali-program, amelyen fut a virtuális gépről. Használja a helyi gazdagép nevét, a helyi IP-címet, vagy a visszacsatolási cím (127.0.0.1).
 
 ![Indítsa el az alkalmazást közvetlenül a virtuális gépről](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access2.png)
@@ -85,7 +85,7 @@ Ha nem tudja elérni az alkalmazást, ellenőrizze a következő beállításoka
 
 A Windows és Linux-alapú virtuális gépek használata a **netstat - a** parancsot az aktív figyelőportjait megjelenítéséhez. Vizsgálja meg a várt portokat, amelyeken az alkalmazás figyelésére kell kimenetét. Indítsa újra az alkalmazást, vagy konfigurálja úgy, hogy a várt portokat használja, szükség szerint, és próbálja meg újból elérni az alkalmazás helyi.
 
-## <a id="step2"></a>2. lépés: Alkalmazás elérését egy másik virtuális Géphez ugyanazon a virtuális hálózaton
+## <a id="step2"></a>2. lépés: Az azonos virtuális hálózatban lévő másik virtuális gépről hozzáférési alkalmazás
 Próbálja meg elérni az alkalmazást, egy másik virtuális gépről, de az azonos virtuális hálózatba, a virtuális gép állomásnevét vagy az Azure által hozzárendelt nyilvános, magán vagy a szolgáltató IP-címének használatával. A klasszikus üzemi modellel létrehozott virtuális gépek ne használja a felhőalapú szolgáltatás nyilvános IP-címét.
 
 ![Indítsa el az alkalmazást egy másik virtuális gépről](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
@@ -105,7 +105,7 @@ Ha nem tudja elérni az alkalmazást, ellenőrizze a következő beállításoka
 
 Windows-alapú virtuális gépen fokozott biztonságú Windows tűzfal segítségével határozza meg, hogy a tűzfalszabályok kizárása az alkalmazás bejövő és kimenő forgalmat.
 
-## <a id="step3"></a>3. lépés: A virtuális hálózaton kívül az alkalmazás eléréséhez
+## <a id="step3"></a>3. lépés: A virtuális hálózaton kívülről származó hozzáférés alkalmazás
 Próbálja meg elérni az alkalmazást a virtuális hálózaton kívüli számítógépről, mint a virtuális gép, amelyen fut az alkalmazás. Egy másik hálózatot használja az eredeti ügyfélszámítógépen.
 
 ![Indítsa el az alkalmazást a virtuális hálózaton kívüli számítógépről](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 85ab5e3bb963ee692e5b70af3eb90cc68cec361f
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
-ms.translationtype: MT
+ms.openlocfilehash: 86fa7f62230c0ae0530b67ff2384942c876083d4
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593386"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098592"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Service Bus-entitások autoforwarding láncolás
 
@@ -47,6 +47,10 @@ Különítse el a fogadók üzenetküldők autoforwarding használhatja. Vegyük
 
 Ha Alice megfelelően a szabadság, saját személyes várólista ahelyett, hogy az ERP-témakörben, tölti. Ebben a forgatókönyvben egy értékesítési képviselő nem kapta meg az üzeneteket, mert az ERP-témakörök egyike minden eddiginél elérni kvótát.
 
+> [!NOTE]
+> Autoforwarding be állítva, ha a cél-AutoDeleteOnIdle értéke értéke automatikusan adattípus maximális értéke.
+> Ez történik, győződjön meg arról, hogy mindig van egy cél továbbítsa az üzenetet.
+
 ## <a name="autoforwarding-considerations"></a>Autoforwarding szempontok
 
 A célentitás gyűlnek túl sok üzenet van, és túllépi a kvótát, vagy a célentitás le van tiltva, ha a forrásentitás hozzáadja az üzeneteket a [kézbesítetlen levelek várólistájára](service-bus-dead-letter-queues.md) a cél (vagy az entitás a rendelkezésre álló helyet újra engedélyezve van). Ezeket az üzeneteket továbbra is a kézbesítetlen levelek várólistájára vonatkozik, az élő kell explicit módon fogadni és feldolgozni azokat a kézbesítetlen levelek várólistájára vonatkozik.
@@ -67,7 +71,7 @@ Autoforwarding kapcsolatos részletes információkért lásd a következő tém
 
 A Service Bus teljesítménnyel kapcsolatos fejlesztések kapcsolatos további információkért lásd: 
 
-* [Ajánlott eljárások a teljesítmény Service Bus-üzenetkezelés használatával](service-bus-performance-improvements.md)
+* [Ajánlott eljárások a teljesítmény javításához a Service Bus-üzenetkezelés használatával](service-bus-performance-improvements.md)
 * [Particionált üzenetküldési entitások][Partitioned messaging entities].
 
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo

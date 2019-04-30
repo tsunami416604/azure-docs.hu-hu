@@ -8,11 +8,11 @@ ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 07d5aa752d6613f6733a44c9b34e48f537eb67ae
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245235"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60889590"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Adatok titkosítása az Azure Cosmos DB-ben 
 
@@ -36,25 +36,25 @@ Egy felhasználói kérelem használt alapvető folyamat a következőképpen t�
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>KÉRDÉS: Több IP-címek fenntartási az Azure Storage szolgáltatás Ha engedélyezve van a Storage Service Encryption szolgáltatással?
+### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>K: Több IP-címek fenntartási az Azure Storage szolgáltatás Ha engedélyezve van a Storage Service Encryption szolgáltatással?
 V: Nincs további költség nélkül.
 
-### <a name="q-who-manages-the-encryption-keys"></a>KÉRDÉS: Akik kezeli a titkosítási kulcsokat?
+### <a name="q-who-manages-the-encryption-keys"></a>K: Akik kezeli a titkosítási kulcsokat?
 V: A Microsoft által felügyelt kulcsok.
 
-### <a name="q-how-often-are-encryption-keys-rotated"></a>KÉRDÉS: Milyen gyakran elforgatott a titkosítási kulcsokat?
+### <a name="q-how-often-are-encryption-keys-rotated"></a>K: Milyen gyakran elforgatott a titkosítási kulcsokat?
 V: A Microsoft rendelkezik egy belső irányelveket rögzített a titkosítási kulcs kulcsrotálás, amely a Cosmos DB a következő. A megadott irányelveket nem tesszük közzé. A Microsoft közzététele a [biztonságos fejlesztési Életciklussal (SDL)](https://www.microsoft.com/sdl/default.aspx), amely belső útmutató egy részét, látható, és fejlesztők számára hasznos ajánlott eljárásokat tartalmaz.
 
-### <a name="q-can-i-use-my-own-encryption-keys"></a>KÉRDÉS: Használhatja a saját titkosítási kulcsokat?
+### <a name="q-can-i-use-my-own-encryption-keys"></a>K: Használhatja a saját titkosítási kulcsokat?
 V: A cosmos DB egy PaaS szolgáltatás, és azt keményen dolgozott, hogy a szolgáltatás egyszerűen használható. Azt észleltük, hogy ezt a kérdést gyakran feltesznek, például a PCI DSS megfelelőségi követelménynek proxy kérdést. Ez a szolgáltatás létrehozásának részeként működtünk együtt, győződjön meg arról, hogy ügyfeleink, akik Cosmos DB követelményeinek saját maguk kulcsok kezelése nélkül a megfelelőségi auditorok.
 
-### <a name="q-what-regions-have-encryption-turned-on"></a>KÉRDÉS: Mely régiók titkosítási bekapcsolta?
+### <a name="q-what-regions-have-encryption-turned-on"></a>K: Mely régiók titkosítási bekapcsolta?
 V: Azure Cosmos DB minden régióban van a titkosítás engedélyezve van a összes felhasználói adatot.
 
-### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>KÉRDÉS: Befolyásolja-e a titkosítás, teljesítmény késésével és átviteli SLA-kat?
+### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>K: Befolyásolja-e a titkosítás, teljesítmény késésével és átviteli SLA-kat?
 V: Nem gyakorolt hatás vagy a módosítások a teljesítmény most, hogy az összes meglévő és új fiók engedélyezve van a titkosítás inaktív állapotban SLA-kat. Tudjon meg többet a a [a Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) oldalon tekintheti meg a legújabb garanciákat.
 
-### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>KÉRDÉS: A helyi emulátor támogatja az inaktív adatok titkosítását?
+### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>K: A helyi emulátor támogatja az inaktív adatok titkosítását?
 V: Az emulátor egy önálló fejlesztési-tesztelési eszköz, és nem használja a kulcskezelési szolgáltatások, a felügyelt Cosmos DB szolgáltatás által használt. Azt javasoljuk, hogy hol tárolja bizalmas emulátor Tesztadatok meghajtók engedélyezheti a Bitlockert. A [emulátor támogatja az alapértelmezett adatkönyvtárát módosítása](local-emulator.md) valamint a jól ismert hely használatát.
 
 ## <a name="next-steps"></a>További lépések

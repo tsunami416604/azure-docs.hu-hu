@@ -3,17 +3,18 @@ title: Szolgáltatás hozzáadása a távoli figyelési megoldás felhasználói
 description: Ez a cikk bemutatja, hogyan adhat hozzá egy új szolgáltatás a távoli figyelési megoldás gyorsító webes felhasználói felületen.
 author: dominicbetts
 manager: timlt
-ms.author: dobett
+ms.author: v-yiso
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/02/2018
+origin.date: 10/02/2018
+ms.date: 11/26/2018
 ms.topic: conceptual
 ms.openlocfilehash: e44aa8ade512a6005959e795cb1d4ad861da1338
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094577"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61447046"
 ---
 # <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egy egyéni szolgáltatás hozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületen
 
@@ -47,13 +48,13 @@ Az első lépésekhez, a **src/forgatókönyv/szolgáltatások** mappa a fájlok
 
 **exampleService.js**
 
-[!code-javascript[Example service](~/remote-monitoring-webui/src/walkthrough/services/exampleService.js?name=service "Example service")]
+
 
 Szolgáltatások bevezetése hogyan kapcsolatos további információkért lásd: [a reaktív programozási bemutatása, hogy hiányzó](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754).
 
 **model/exampleModels.js**
 
-[!code-javascript[Example model](~/remote-monitoring-webui/src/walkthrough/services/models/exampleModels.js?name=models "Example model")]
+
 
 Másolás **exampleService.js** , a **src/szolgáltatások** mappát, és átmásolja **exampleModels.js** , a **src-services-modellekhez** mappát.
 
@@ -75,7 +76,7 @@ Az első lépésekhez, a **csökkentő src/forgatókönyv/tároló** mappa tarta
 
 **exampleReducer.js**
 
-[!code-javascript[Example reducer](~/remote-monitoring-webui/src/walkthrough/store/reducers/exampleReducer.js?name=reducer "Example reducer")]
+
 
 Másolás **exampleReducer.js** , a **src/tároló/csökkentő** mappát.
 

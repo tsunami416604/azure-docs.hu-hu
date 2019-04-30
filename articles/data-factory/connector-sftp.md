@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: jingwang
 ms.openlocfilehash: 9540a82933337dab112119cc791fa12d98b30aff
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405011"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61042934"
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával az SFTP-kiszolgáló
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -59,10 +59,10 @@ SFTP-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 
 Alapszintű hitelesítés használatához állítsa "authenticationType" tulajdonságot **alapszintű**, és adja meg az SFTP-összekötővel az előző szakaszban bemutatott általános eszközök mellett a következő tulajdonságokkal:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| Felhasználónév | SFTP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó. |Igen |
-| jelszó | A felhasználó (felhasználónév) jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| userName | SFTP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó. |Igen |
+| password | A felhasználó (felhasználónév) jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 
 **Példa**
 
@@ -98,7 +98,7 @@ SSH nyilvános kulcsos hitelesítés használatához állítsa a "authentication
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| Felhasználónév | SFTP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó |Igen |
+| userName | SFTP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó |Igen |
 | privateKeyPath | Adja meg a titkos kulcs fájlját, az Integration Runtime eléréséhez abszolút elérési útját. Csak akkor, ha a saját üzemeltetésű integrációs modulok típusának van megadva a "connectVia" vonatkozik. | Adja meg a `privateKeyPath` vagy `privateKeyContent`.  |
 | privateKeyContent | Base64 kódolású SSH titkos kulcs tartalmát. Titkos SSH-kulcs OpenSSH formátumban kell lennie. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Adja meg a `privateKeyPath` vagy `privateKeyContent`. |
 | passPhrase | Adja meg a pass kifejezés/jelszót a titkos kulcs visszafejtésére, ha a kulcs fájlját egy hozzáférési kódot védi. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen, ha a titkos kulcs fájlját egy hozzáférési kódot védi. |

@@ -14,11 +14,11 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084606"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61462411"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Adatok másolása, vagy a helyszíni Oracle az Azure Data Factory használatával
 
@@ -104,7 +104,7 @@ A következő táblázat ismerteti, amelyek adott, az Oracle-beli társított sz
 | --- | --- | --- |
 | type |A **típus** tulajdonságot állítsa **OnPremisesOracle**. |Igen |
 | driverType | Adja meg az illesztőprogramok másolhat adatokat, vagy az Oracle-adatbázishoz. Engedélyezett értékek a következők **Microsoft** és **ODP** (alapértelmezett). Lásd: [verziójától és a telepítés támogatott](#supported-versions-and-installation) illesztőprogram adatai számára. | Nem |
-| kapcsolati Sztringje | Adja meg az információkat, amelyeket szeretne csatlakozni az Oracle database-példány a **connectionString** tulajdonság. | Igen |
+| connectionString | Adja meg az információkat, amelyeket szeretne csatlakozni az Oracle database-példány a **connectionString** tulajdonság. | Igen |
 | átjáró neve | Az átjáró a helyszíni Oracle-kiszolgálóhoz való csatlakozáshoz használt neve. |Igen |
 
 **Példa: A Microsoft-illesztő használatával**
@@ -170,7 +170,7 @@ Az elérhető tulajdonságok köre az **typeProperties** a tevékenység szakasz
 
 A másolási tevékenység, ha a forrás a **OracleSource** típusa, a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
 | oracleReaderQuery |Az egyéni lekérdezés segítségével olvassa el az adatokat. |Egy SQL-lekérdezési karakterláncot. Például "kiválasztása \* a **MyTable**". <br/><br/>Ha nincs megadva, az SQL-utasítás végrehajtása: "kiválasztása \* a **MyTable**" |Nem<br />(Ha **tableName** , **adatkészlet** van megadva) |
 
@@ -181,7 +181,7 @@ A másolási tevékenység, ha a forrás a **OracleSource** típusa, a következ
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | writeBatchTimeout |A várakozási idő a köteg beszúrási művelet befejezését, mielőtt azt az időkorlátot. |**timespan**<br/><br/> Példa: 00:30:00 (30 minutes) |Nem |
-| WriteBatchSize |Szúr be adatokat az SQL-táblába, amikor a puffer mérete eléri a értékét **writeBatchSize**. |Egész szám (sorok száma) |Nem (alapértelmezett: 100) |
+| writeBatchSize |Szúr be adatokat az SQL-táblába, amikor a puffer mérete eléri a értékét **writeBatchSize**. |Egész szám (sorok száma) |Nem (alapértelmezett: 100) |
 | sqlWriterCleanupScript |Adja meg egy lekérdezést a másolási tevékenység végrehajtásához, hogy az adott szeletre vonatkozó adatok törlődnek. |A lekérdezési utasítást. |Nem |
 | sliceIdentifierColumnName |Meghatározza a másolási tevékenységhez egy automatikusan létrehozott szelet azonosító töltse ki az oszlop neve. Az érték **sliceIdentifierColumnName** mikor futtassa újra a adott szeletre adatainak szolgál. |Az oszlop nevét, amely rendelkezik az adattípus oszlop **binary(32)**. |Nem |
 

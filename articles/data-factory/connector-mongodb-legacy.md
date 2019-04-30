@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.openlocfilehash: 86dcd39ad7b9f1e207e9254ec72698db3998bbd6
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320480"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61400474"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával MongoDB
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -60,7 +60,7 @@ Mongodb-hez társított szolgáltatás a következő tulajdonságok támogatotta
 | databaseName |Az elérni kívánt MongoDB-adatbázis neve. |Igen |
 | authenticationType | A MongoDB-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Alapszintű**, és **névtelen**. |Igen |
 | felhasználónév |Felhasználói fiók MongoDB eléréséhez. |Igen (alapszintű hitelesítés használata esetén). |
-| jelszó |A felhasználó jelszava. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen (alapszintű hitelesítés használata esetén). |
+| password |A felhasználó jelszava. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen (alapszintű hitelesítés használata esetén). |
 | authSource |A MongoDB-adatbázis, amely a hitelesítéshez a hitelesítő adatok ellenőrzésére használni kívánt nevét. |Nem. Az alapszintű hitelesítés alapértelmezés szerint a rendszer a rendszergazdai fiókkal és -databaseName tulajdonsággal megadott adatbázis használata. |
 | enableSsl | Itt adhatja meg, e-kiszolgálóhoz a rendszer SSL használatával titkosítja. Az alapértelmezett értéke FALSE (hamis).  | Nem |
 | allowSelfSignedServerCert | Megadja, hogy, hogy a kiszolgáló önaláírt tanúsítványokat. Az alapértelmezett értéke FALSE (hamis).  | Nem |
@@ -176,16 +176,16 @@ Az adatok másolása a mongodb-hez, amikor a következő hozzárendeléseket has
 
 | MongoDB adatok típusa | Data factory közbenső adattípus |
 |:--- |:--- |
-| Bináris |Byte] |
-| Logikai |Logikai |
+| binary |Byte[] |
+| Boolean |Boolean |
 | Dátum |DateTime |
-| NumberDouble |Dupla |
+| NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |Karakterlánc |
-| Karakterlánc |Karakterlánc |
-| UUID |GUID |
-| Objektum |Renormalized be simítja egybe az oszlopok, "_" beágyazott elválasztóként |
+| ObjectID |String |
+| Karakterlánc |String |
+| UUID |Guid |
+| Object |Renormalized be simítja egybe az oszlopok, "_" beágyazott elválasztóként |
 
 > [!NOTE]
 > Virtuális táblák használata tömbök támogatása kapcsolatos további információkért tekintse meg [virtuális tábla használatával összetett típusok támogatása](#support-for-complex-types-using-virtual-tables) szakaszban.

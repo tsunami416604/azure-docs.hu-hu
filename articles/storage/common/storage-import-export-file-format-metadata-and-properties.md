@@ -9,11 +9,11 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 2066d4a2ed6db97285d92d15e14dbd21629dbdfa
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457003"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478555"
 ---
 # <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Az Azure Import/Export szolgáltatás metaadat- és tulajdonságfájljainak formátuma
 Metaadatok és a egy vagy több blobot tulajdonságait is adja meg az importálási feladat vagy exportálási feladat részeként. Metaadatok és az importálási feladat részeként létrehozott blobok tulajdonságainak beállításához adja meg a metaadatok vagy tulajdonságok fájlt importálni kívánt adatokat tartalmazó merevlemez. Exportálási feladatokhoz metaadat- és tulajdonságfájljainak írt metaadatok vagy tulajdonságok fájlba, amely tartalmazza a merevlemezen, vissza.  
@@ -30,7 +30,7 @@ A metaadatfájl formátuma a következő:
 </Metadata>  
 ```
   
-|XML-elem|Typo|Leírás|  
+|XML-elem|Típus|Leírás|  
 |-----------------|----------|-----------------|  
 |`Metadata`|Legfelső szintű elem|A metaadatfájl gyökérelem.|  
 |`metadata-name`|String|Választható. Az XML-elem metaadatait a BLOB nevét adja meg, és az érték határozza meg, a metaadatok beállítás értékét.|  
@@ -52,7 +52,7 @@ Egy tulajdonságfájljainak formátuma a következő:
 </Properties>  
 ```
   
-|XML-elem|Typo|Leírás|  
+|XML-elem|Típus|Leírás|  
 |-----------------|----------|-----------------|  
 |`Properties`|Legfelső szintű elem|A tulajdonságok fájl gyökérelem.|  
 |`Last-Modified`|String|Választható. Utolsó módosítás időpontja a BLOB. Csak export-feladatok.|  

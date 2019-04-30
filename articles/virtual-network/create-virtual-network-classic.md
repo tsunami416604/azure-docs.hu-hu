@@ -17,11 +17,11 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: ''
 ms.openlocfilehash: e40648ef47b108050486d43eefdb1564786c053e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421390"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098116"
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Több alhálózattal rendelkező virtuális hálózat (klasszikus) létrehozása
 
@@ -98,7 +98,7 @@ Létrehozhat egy virtuális hálózat (klasszikus) használatával a [az Azure p
     azure network vnet show --vnet myVnet
     ```
 
-7. **Nem kötelező**: érdemes törölni a létrehozott erőforrásokat, ez az oktatóanyag befejezésekor, hogy ne használati díjak merülhetnek fel:
+7. **Nem kötelező**: Előfordulhat, hogy törölni kívánja a létrehozott erőforrásokat, ez az oktatóanyag befejezésekor, hogy ne használati díjak merülhetnek fel:
 
     ```azurecli-interactive
     azure network vnet delete --vnet myVnet --quiet
@@ -153,7 +153,7 @@ Létrehozhat egy virtuális hálózat (klasszikus) használatával a [az Azure p
     Get-AzureVNetSite -VNetName "myVnet"
     ```
 
-8. **Nem kötelező**: érdemes törölni a létrehozott erőforrásokat, ez az oktatóanyag befejezésekor, hogy ne használati díjak merülhetnek fel. A virtuális hálózat törlése, teljes körű lépések 4 – 6 újra, ez idő eltávolítása a **VirtualNetworkSite** az 5. lépésben hozzáadott elem.
+8. **Nem kötelező**: Előfordulhat, hogy törölni kívánja a létrehozott erőforrásokat, ez az oktatóanyag befejezésekor, hogy ne használati díjak merülhetnek fel. A virtuális hálózat törlése, teljes körű lépések 4 – 6 újra, ez idő eltávolítása a **VirtualNetworkSite** az 5. lépésben hozzáadott elem.
  
 > [!NOTE]
 > Bár nem adhat meg egy erőforráscsoportot, egy virtuális hálózat (klasszikus) létrehozása a PowerShell-lel, az Azure nevű erőforráscsoportban létrehozza a virtuális hálózatot *alapértelmezett hálózati*.

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.openlocfilehash: 00658b650cdc0b1752bb9f2f205420018c1d6edd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881783"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61346343"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Az Azure Data Factory tevékenység törlése
 
@@ -79,7 +79,7 @@ Az alábbiakban a törlése tevékenység használatára vonatkozó ajánlásoka
 
 ## <a name="type-properties"></a>Tulajdonságok
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
 | Adatkészlet | Itt az adatkészlet-hivatkozásban, határozza meg, hogy mely fájlok vagy törlődnek mappa | Igen |
 | a rekurzív | Azt jelzi, hogy a fájlokat a törölt rekurzív módon az almappák vagy csak a megadott mappába.  | Nem. A mező alapértelmezett értéke: `false`. |
@@ -115,7 +115,7 @@ Nincsenek két helyen, ahol megtekintheti és az eredmények a törlése tevéke
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Minta log fájl törlése tevékenység
 
-| Name (Név) | Kategória | status | Hiba |
+| Name (Név) | Category | status | Hiba |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.json | Fájl | Törölve |  |
 | test2/hello789.txt | Fájl | Törölve |  |

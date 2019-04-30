@@ -1,5 +1,5 @@
 ---
-title: Mi az Azure hálózati hozzáférés-vezérlési listaként?
+title: Mi az Azure-beli hálózati hozzáférés-vezérlési lista?
 description: További tudnivalók az Azure-ban a hozzáférés-vezérlési listák
 services: virtual-network
 documentationcenter: na
@@ -15,81 +15,81 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 6265a7f9f60b60d7b79e15a04feb0ec76dc59f6d
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 3a7155380a51273d376226c6be7a004f386181ce
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293118"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61035263"
 ---
-# <a name="what-is-an-endpoint-access-control-list"></a>Mi az a végpont hozzáférés-vezérlési listaként?
+# <a name="what-is-an-endpoint-access-control-list"></a>Mit jelent a végponti hozzáférés-vezérlési lista?
 
 > [!IMPORTANT]
-> Azure két különböző rendelkezik [üzembe helyezési modellel](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) az erőforrások létrehozására és kezelésére vonatkozó: Resource Manager és klasszikus. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén használja a Resource Manager üzembe helyezési modellben. 
+> Az Azure két különböző rendelkezik [üzembe helyezési modellek](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) számára az erőforrások létrehozásához és használatához: Resource Manager és klasszikus. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén használja a Resource Manager üzemi modell. 
 
-Végpont hozzáférés-vezérlési listaként (ACL) egy biztonsági fejlesztés az Azure-telepítés érhető el. Hozzáférés-vezérlési Listában lehetővé teszi a szelektív módon engedélyezheti vagy megtagadhatja a forgalom egy virtuális gép végpont számára. Ez a csomag szűrési lehetőség egy további biztonsági réteget biztosít. Csak hálózati ACL-listát is megadhat. Nem adhat meg egy hozzáférés-vezérlési listája egy virtuális hálózathoz vagy egy bizonyos alhálózat virtuális hálózat található. Javasoljuk, hogy hálózati biztonsági csoportokkal (NSG-k) helyett a hozzáférés-vezérlési listákat, amikor csak lehetséges. Az NSG-k használatakor végpont hozzáférés-vezérlési lista helyett, és érvényüket vesztik. Az NSG-k kapcsolatos további információkért lásd: [hálózati biztonsági csoport – áttekintés](security-overview.md)
+Végponti hozzáférés-vezérlési lista (ACL) egy biztonsági fejlesztések az Azure-alapú érhető el. Egy ACL lehetővé teszi a szelektív engedélyezéséhez, vagy megtagadják a forgalmat a virtuálisgép-végpont. A csomag szűrési képességek egy további biztonsági réteget nyújt. Végpontok csak hálózati hozzáférés-vezérlési is megadhat. Egy virtuális hálózat vagy virtuális hálózaton található megadott alhálózat ACL nem adható meg. Javasoljuk, hogy a hálózati biztonsági csoportok (NSG-k) használata helyett az ACL-EK, amikor csak lehetséges. Az NSG-k használatakor a végponti hozzáférés-vezérlési lista helyén, és érvényüket vesztik. NSG-kkel kapcsolatos további információkért lásd: [hálózati biztonsági csoportok áttekintése](security-overview.md)
 
-Hozzáférés-vezérlési listákat a PowerShell vagy az Azure portál segítségével konfigurálhatók. A hálózati hozzáférés-vezérlési lista beállítása a PowerShell használatával: [kezelése hozzáférés-vezérlési lista PowerShell-lel végpontok](virtual-networks-acl-powershell.md). A hálózati hozzáférés-vezérlési lista beállítása az Azure portál használatával: [beállítása végpontok egy virtuális géphez](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+ACL-ek konfigurálhatók a PowerShell vagy az Azure portal használatával. A hálózati hozzáférés-szabályozási beállítása PowerShell-lel: [kezelése hozzáférés-vezérlési listák a PowerShell-lel végpontok](virtual-networks-acl-powershell.md). A hálózati hozzáférés-szabályozási beállítása az Azure portal használatával: [beállítása a virtuális gép végpontjainak](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-Használ a hálózati hozzáférés-vezérlési listákat, a következőket teheti:
+Hálózati hozzáférés-vezérlési listák használatával, akkor a következőket teheti:
 
-* Választhatóan engedélyezheti vagy letilthatja a távoli alhálózati IPv4-címtartomány a virtuális gép bemeneti végponthoz alapján bejövő forgalmat.
+* Szelektív vagy megtagadhatja a bejövő forgalmat a távoli alhálózat IPv4-címtartomány egy virtuális gép bemeneti végpontjára alapján.
 * Blacklist IP-címek
 * Virtuális gép végpontonként több szabály létrehozása
-* Egy adott virtuális gép végpontjának (legalacsonyabb, legmagasabb és) használata a szabály kívánt szabályok biztosításához rendezés alkalmazzák
-* Adjon meg egy hozzáférés-vezérlési listája egy adott távoli alhálózat IPv4-címet.
+* Egy adott virtuális gép végpontja (legalacsonyabb és legmagasabb) használata a szabály rendezése annak biztosítása érdekében a megfelelő szabálykészletet alkalmazandók
+* Adjon meg egy ACL-t egy adott távoli alhálózat IPv4-címet.
 
-Tekintse meg a [Azure korlátozza](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) ACL korlátok a cikkben találhat.
+Tekintse meg a [Azure korlátairól](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) hozzáférés-szabályozási korlátok ismertető cikket.
 
-## <a name="how-acls-work"></a>Hozzáférés-vezérlési listák működése
-Az ACL szabályok listáját tartalmazó objektum. Hozzáférés-vezérlési Listában létrehozásakor, és alkalmazza azt a virtuális gép végpontjának, hálózaticsomag-szűrés akkor történik meg a virtuális gép gazdagép-csomóponton. Ez azt jelenti, hogy a távoli IP-címekről érkező forgalmat a virtuális Gépet a megfelelő ACL-szabályok ahelyett, hogy a gazdagép csomópont szűrve van. Ez megakadályozza, hogy a virtuális gép hálózaticsomag-szűrés az értékes CPU-ciklusok beszállítói költségeit.
+## <a name="how-acls-work"></a>Hogyan működik a hozzáférés-vezérlési listák
+ACL-szabályok listáját tartalmazó objektum. Hozzon létre egy ACL-t, és alkalmazza azt a virtuális gép végpontjának, hálózaticsomag-szűrés történik a virtuális gép gazdagép-csomóponton. Ez azt jelenti, hogy a távoli IP-címekről érkező forgalom a virtuális gép megfelelő ACL-szabályok helyett a gazdacsomópont szerint van szűrve. Ez megakadályozza, hogy a virtuális gép fordítania az értékes CPU-ciklusok hálózaticsomag-szűrés.
 
-Amikor egy virtuális gépet hoz létre, egy alapértelmezett hozzáférés-vezérlési lista kerül, hogy minden bejövő forgalom blokkolása. Azonban ha egy végpontot hoz létre (3389-es port), majd az alapértelmezett hozzáférés-vezérlési lista úgy módosul, hogy az adott végpontra minden bejövő forgalom engedélyezése. Bejövő forgalom bármely távoli alhálózatból majd engedélyezve van az adott végpontra, és nincs tűzfal kiépítése szükség. Más portok blokkolják a bejövő forgalom, kivéve, ha azokat a portokat végpontokat hoz létre. Kimenő forgalom alapértelmezés szerint engedélyezett.
+Virtuális gép létrehozásakor a hely, ahol minden bejövő forgalom blokkolása egy alapértelmezett ACL-JÉBEN helyezze el. Azonban ha egy végpont jön létre (3389-es port), majd az alapértelmezett ACL-t, hogy minden bejövő forgalom számára, hogy a végpont módosul. Az adott végpontra majd engedélyezett a bejövő forgalom az összes távoli alhálózatot, és nincs tűzfal kiépítése nem szükséges. Minden más port le lesznek tiltva a bejövő forgalmat, ha ezeket a portokat végpontok jön létre. Kimenő forgalom alapértelmezés szerint engedélyezett.
 
-**Példa alapértelmezett hozzáférés-vezérlési lista tábla**
+**Példa alapértelmezett ACL-tábla**
 
-| **# Szabály** | **Távoli alhálózati** | **végpont** | **Engedélyezési vagy megtagadási** |
+| **# Szabály** | **Távoli alhálózat** | **Végpont** | **Engedélyezési vagy megtagadási** |
 | --- | --- | --- | --- |
 | 100 |0.0.0.0/0 |3389 |Engedély |
 
-## <a name="permit-and-deny"></a>Engedélyezi és elutasítása
-Akkor is szelektív módon engedélyezheti vagy megtagadhatja a hálózati forgalom egy virtuális gép bemeneti végpont szabályokat, amelyek adja meg az "Engedélyezés" vagy "Elutasítás" létrehozásával. Fontos megjegyezni, hogy alapértelmezés szerint a végpont jön létre, amikor minden forgalom engedélyezett a végpontnak. Ezért fontos annak megértése, hogyan engedélyezési vagy megtagadási szabályokat hozhat létre és helyezze el őket a megfelelő, fontossági sorrendben Ha azt szeretné, hogy a hálózati forgalmat, amely engedélyezi a virtuális gép végpontjának eléréséhez részletes szabályozását.
+## <a name="permit-and-deny"></a>Engedélyezése és tiltása
+Engedélyezheti szelektív vagy megtagadják a hálózati forgalmat egy virtuális gép bemeneti végponton szabályokat, amelyek adja meg az "engedélyezve" vagy "Elutasítás" létrehozásával. Fontos megjegyezni, hogy alapértelmezés szerint egy végpont létrehozását követően az összes forgalom számára engedélyezett a végpontot. Éppen ezért fontos megérteni engedélyezési és megtagadási szabályokat hozhat létre és elhelyezése a megfelelő, fontossági sorrendben, ha azt szeretné, hogy a virtuálisgép-végpont elérését engedélyezi, hogy a hálózati adatforgalom pontos szabályozása.
 
 Megfontolandó szempontok:
 
-1. **Nincs hozzáférés-vezérlési lista –** alapértelmezés szerint a végpont jön létre, ha azt teszi lehetővé a végpont az összes.
-2. **Lehetővé teszik -** egy vagy több "Engedélyezés" tartományok hozzáadásakor megtagadása az összes tartomány alapértelmezés szerint. Csak az engedélyezett IP-címtartományt a csomagokat tudnak a virtuális gép végponttal való kommunikációhoz.
-3. **Megtagadási -** ad hozzá egy vagy több "Elutasítás" tartományokhoz, ha engedélyezi az összes többi forgalom tartomány alapértelmezés szerint.
-4. **Engedélyezési és megtagadási -** "Engedélyezés" és "Elutasítás" helyzet ki egy adott IP-címtartomány engedélyezett vagy letiltott carve is használhatja.
+1. **Nincs hozzáférés-szabályozási –** alapértelmezés szerint a végpont létrehozásakor azt engedélyezzen minden az a végpont.
+2. **Lehetővé teszik -** hozzáadásakor egy vagy több "engedélyezve" tartományt, megtagadása minden más tartományok alapértelmezés szerint. Csak az engedélyezett IP-címtartományból csomagok fog tudni kommunikálni a virtuális gép végpontjának.
+3. **Elutasítás -** egy vagy több "Elutasítás" címtartományok hozzáadásakor engedélyező forgalom összes tartományát alapértelmezés szerint.
+4. **Engedélyezési és megtagadási - kombinációja** "engedélyezve" és "Elutasítás" Ha azt szeretné, hogy különítsen el egy adott IP-címtartomány engedélyezett vagy letiltott kombinációját használhatja.
 
-## <a name="rules-and-rule-precedence"></a>Szabályok és a szabály prioritását
-Hálózati hozzáférés-vezérlési listákat az adott virtuális gép végpontokon is beállítható. Megadhatja például, hogy egy RDP-végpontot létrehozni egy virtuális gépen, hogy mely zárolások hozzáférés az egyes IP-címek a hálózati hozzáférés-vezérlési lista. Az alábbi táblázat oly módon, hogy hozzáférést biztosítson a nyilvános virtuális IP-címek (VIP) egy bizonyos tartomány való hozzáférés engedélyezése az RDP. Minden más távoli IP-címeket a rendszer megtagadja. Hajtsa végre az azt egy *legalacsonyabb elsőbbséget* szabály sorrendje.
+## <a name="rules-and-rule-precedence"></a>Szabályok és a szabály fontossági sorrend
+Hálózati hozzáférés-vezérlési listák az adott virtuális gépek végpontjaihoz állíthat be. Ha például egy RDP-végpontot, létrehozott egy virtuális gépen, hogy melyik zárolások le a hozzáférést az egyes IP-címek a hálózati hozzáférés-szabályozási is megadhat. Az alábbi táblázat olyan módon, hozzáférés biztosítása a nyilvános virtuális IP-címek (VIP) bizonyos tartománya, hogy engedélyezze a hozzáférést az RDP. Minden más távoli IP-címet a rendszer megtagadta. Követjük a *legalacsonyabb elsőbbséget* rendelés szabály.
 
 ### <a name="multiple-rules"></a>Több szabály
-Az alábbi példában az RDP-végpontot való hozzáférés engedélyezése csak a két nyilvános IPv4-címtartományokat (65.0.0.0/8, és 159.0.0.0/8), ha a elérése megadó két *engedélyezése* szabályok. Ebben az esetben mivel RDP alapértelmezés szerint a virtuális gép jön létre, érdemes lehet a távoli alhálózati alapján RDP-porthoz való hozzáférés zárolását. Az alábbi példában látható módon való hozzáférés biztosítása a nyilvános virtuális IP-címek (VIP) egy bizonyos tartomány való hozzáférés engedélyezése az RDP. Minden más távoli IP-címeket a rendszer megtagadja. Ez működik, mert a hálózati hozzáférés-vezérlési listák egy adott virtuális gép végpont állítható be, és alapértelmezés szerint a hozzáférés megtagadva.
+Az alábbi példában engedélyezi a hozzáférést az RDP-végpontot, csak a két nyilvános IPv4-címtartományokat (65.0.0.0/8, és 159.0.0.0/8), ha a elérése megadása két *lehetővé* szabályokat. Ebben az esetben RDP egy virtuális gép alapértelmezés szerint létrejön, mert előfordulhat, hogy szeretné zárolását, így az RDP-portra egy távoli alhálózat alapján való hozzáférést. Az alábbi példa szemlélteti a nyilvános virtuális IP-címek (VIP) bizonyos tartományának elérésének RDP-hez való hozzáférést biztosít egy módját. Minden más távoli IP-címet a rendszer megtagadta. Ez működik, mert a hálózati hozzáférés-vezérlési listák beállíthatja egy adott virtuális gép végponton, és alapértelmezés szerint nem férhet hozzá.
 
 **Példa – több szabály**
 
-| **# Szabály** | **Távoli alhálózati** | **végpont** | **Engedélyezési vagy megtagadási** |
+| **# Szabály** | **Távoli alhálózat** | **Végpont** | **Engedélyezési vagy megtagadási** |
 | --- | --- | --- | --- |
 | 100 |65.0.0.0/8 |3389 |Engedély |
 | 200 |159.0.0.0/8 |3389 |Engedély |
 
-### <a name="rule-order"></a>A szabály sorrendje
-A végpont több szabály adható meg, mert olyan módon nem rendszerezhetik a szabály annak megállapítására, hogy melyik szabály élvez kell. A szabály rendelés sorrend határozza meg. Hálózati hozzáférés-vezérlési listák hajtsa végre a *legalacsonyabb elsőbbséget* szabály sorrendje. Az alábbi példában a 80-as portot a végponton szelektív hozzáférést csak bizonyos IP-címtartományokra. Ennek konfigurálásához olyan megtagadási szabályt kell (szabály \# 100) a címek a 175.1.0.1/24 területen. Egy második szabály a kötelező prioritással 200 175.0.0.0/8 alatt más címek hozzáférést tesz lehetővé.
+### <a name="rule-order"></a>A szabály sorrend
+A végpont több szabály adható meg, mert rendszerezését szabályokat annak meghatározásához, hogy melyik szabály lép érvénybe kell. A szabály rendelés a sorrend határozza meg. Hálózati hozzáférés-vezérlési listák kövesse a *legalacsonyabb elsőbbséget* rendelés szabály. Az alábbi példában a 80-as portot a végponton szelektív hozzáférést csak bizonyos IP-címtartományok. Ennek konfigurálásához rendelkezünk egy megtagadási szabályt (szabály \# 100) a címek a 175.1.0.1/24 területen. A második szabály majd prioritással 200-as, amellyel hozzáférést adhat a 175.0.0.0/8 más címek van megadva.
 
-**Példa – szabály sorrendje**
+**Példa – szabály sorrend**
 
-| **# Szabály** | **Távoli alhálózati** | **végpont** | **Engedélyezési vagy megtagadási** |
+| **# Szabály** | **Távoli alhálózat** | **Végpont** | **Engedélyezési vagy megtagadási** |
 | --- | --- | --- | --- |
 | 100 |175.1.0.1/24 |80 |Megtagadás |
 | 200 |175.0.0.0/8 |80 |Engedély |
 
-## <a name="network-acls-and-load-balanced-sets"></a>Hálózati hozzáférés-vezérlési listákat, és betölti az elosztott terhelésű készletek
-Hálózati hozzáférés-vezérlési listák egy elosztott terhelésű készlet végpont lehet megadni. Ha hozzáférés-vezérlési Listában elosztott terhelésű készlet van megadva, a hálózati hozzáférés-vezérlési lista vonatkozik, hogy elosztott terhelésű készlet összes virtuális gépnek. Például ha egy elosztott terhelésű készlet jön létre a "Port a 80-as" és az elosztott terhelésű készlet 3 virtuális gép, a hálózati hozzáférés-vezérlési lista létrehozott végponton "80-as Port" egy virtuális gép automatikusan települ a többi virtuális gépe.
+## <a name="network-acls-and-load-balanced-sets"></a>Hálózati hozzáférés-vezérlési listák és az elosztott terhelésű készletek
+Hálózati hozzáférés-vezérlési listák egy elosztott terhelésű készlet végponton adható meg. Ha egy ACL elosztott terhelésű készlet van megadva, a hálózati hozzáférés-szabályozási alkalmazza a elosztott terhelésű készletben lévő összes virtuális gépen. Például ha egy elosztott terhelésű csoportot hozott létre a "80-as Port" és az elosztott terhelésű készlet 3 virtuális gépeket tartalmaz, a hálózati hozzáférés-szabályozási létrehozott végponton "80-as Port" egy virtuális gép automatikusan érvénybe lépnek a többi virtuális géphez.
 
-![Hálózati hozzáférés-vezérlési listákat, és betölti az elosztott terhelésű készletek](./media/virtual-networks-acl/IC674733.png)
+![Hálózati hozzáférés-vezérlési listák és az elosztott terhelésű készletek](./media/virtual-networks-acl/IC674733.png)
 
 ## <a name="next-steps"></a>További lépések
-[Hozzáférés-vezérlési listák PowerShell-lel végpontok kezelése](virtual-networks-acl-powershell.md)
+[PowerShell-lel végpontok hozzáférés-vezérlési listák felügyelete](virtual-networks-acl-powershell.md)
 

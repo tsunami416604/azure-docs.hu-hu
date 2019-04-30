@@ -9,12 +9,12 @@ ms.author: jonfan
 ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: f27e82e780917e00625ef6a14ab8317d1f5b8ae8
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f813cb5d8d5c442fc17f126c3a2ff6de7b0bdde1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124799"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61321259"
 ---
 # <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>Az Azure Logic Apps-alkalmazások áttelepítése a BizTalk Services
 
@@ -36,7 +36,7 @@ Ez a táblázat a Logic Apps a BizTalk Services lehetőségei képez le.
 | BizTalk Services   | Logic Apps            | Cél                      |
 | ------------------ | --------------------- | ---------------------------- |
 | Összekötő          | Összekötő             | Adatokat küldeni és fogadni   |
-| Híd             | Logikai alkalmazás             | Folyamat processzor           |
+| Bridge             | Logikai alkalmazás             | Folyamat processzor           |
 | Fázis ellenőrzése     | XML-érvényesítés művelet | Az XML-dokumentum, a séma érvényesítése | 
 | Bővítés a szakaszában       | Adatjogkivonatok           | Tulajdonságok előléptetése üzenetek vagy a útválasztási döntéseket hozhat |
 | Átalakítás fázis    | A művelet átalakítása      | Átalakítása XML-üzenetek egy adott formátumból egy másikba |
@@ -106,7 +106,7 @@ A BizTalk Services feldolgozása, a Enrich szakaszban további tulajdonságokkal
 
 A BizTalk Services révén [egyéni kóddal](https://msdn.microsoft.com/library/azure/dn232389.aspx) , amelyek a saját szerelvényekben töltenek fel. Ez a funkció valósít meg a [IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector) felületet. Minden egyes fázisában a híd tartalmaz két tulajdonságait (adja meg vizsgáló a és a kilépési vizsgáló), amely a .NET-típus hozott létre, amely ezt a felületet valósítja meg. Egyéni kód lehetővé teszi a összetettebb feldolgozási adatokon végrehajtandó, és újra felhasználhatja a meglévő kód a közös üzleti logikát végrehajtó szerelvényeket. 
 
-A Logic Apps egyéni kódot két elsődleges lehetőséget biztosít: az Azure Functions és az API Apps. Az Azure Functions létre, és a logic apps-fájlból. Lásd: [hozzáadása és a logic apps segítségével az Azure Functions futtatása egyéni kód](../logic-apps/logic-apps-azure-functions.md). A saját eseményindítók és műveletek létrehozásához használja az API-alkalmazások Azure App Service része. Tudjon meg többet [használata a Logic Apps egyéni API létrehozásával](../logic-apps/logic-apps-create-api-app.md). 
+A Logic Apps egyéni kódot két elsődleges lehetőséget biztosít: Az Azure Functions és az API Apps. Az Azure Functions létre, és a logic apps-fájlból. Lásd: [hozzáadása és a logic apps segítségével az Azure Functions futtatása egyéni kód](../logic-apps/logic-apps-azure-functions.md). A saját eseményindítók és műveletek létrehozásához használja az API-alkalmazások Azure App Service része. Tudjon meg többet [használata a Logic Apps egyéni API létrehozásával](../logic-apps/logic-apps-create-api-app.md). 
 
 Ha egyéni kódot szerelvényekben a BizTalk Services hívják meg, akkor ez a kód áthelyezése az Azure Functions, vagy is létrehozhat egyéni API-k az API Apps függően mi implementálja. Például ha kódot, amely egy másik szolgáltatás, amelynek a Logic Apps-összekötő nem rendelkezik, majd API-alkalmazás létrehozása, és a műveletek az API-alkalmazás biztosítja a logikai alkalmazásban használja. Ha már segédfüggvények és a könyvtárakat, majd az Azure Functions, valószínűleg a legmegfelelőbb.
 
@@ -124,7 +124,7 @@ A Logic Apps esetében kap ezt a funkciót a [Enterprise Integration Pack (EIP)]
 
 BizTalk Services-ellentétben ezek a műveletek vannak választva a az átviteli protokollokat. Így amikor hoz létre a logic apps, sokkal rugalmasabban mely összekötők az, hogy küldeni és fogadni az adatokat használja. Például kaphat mellékletként e-mailt, és ezután folyamat a fájlok X12 ezeket a fájlokat, a logikai alkalmazás. 
 
-## <a name="manage-and-monitor"></a>Kezelése és figyelése
+## <a name="manage-and-monitor"></a>Kezelés és monitorozás
 
 A BizTalk Services szolgáltatásban egy dedikált portál megadott nyomkövetési lehetőségeket biztosítanak, monitorozásának és hibaelhárításának problémákat. A Logic Apps gazdagabb nyomon követése és monitorozási lehetőségeket keresztül biztosítja a [az Azure portal](../logic-apps/logic-apps-monitor-your-logic-apps.md), és tartalmaz egy mobilalkalmazást szemmel tartja a dolgokat, az áthelyezés közben.
 
