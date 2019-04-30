@@ -14,11 +14,11 @@ ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
 ms.openlocfilehash: d27c0e9570959e01267d83a768ead45b48b7cea1
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267232"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60903270"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights az Azure cloud services
 [Az Application Insights] [ start] figyelheti [Azure felhőszolgáltatásbeli alkalmazások](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állási, teljesítmény, hibák és használati adatok az Application Insights SDK-k egyesül [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) a cloud Services szolgáltatások adatait. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.

@@ -7,15 +7,16 @@ ms.reviewer: jasonh
 keywords: az Apache storm, az apache storm-példa, a storm java, a storm-topológia példa
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.author: hrasheed
+origin.date: 03/14/2019
+ms.date: 04/29/2019
+ms.author: v-yiso
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 32a8c81cd7b2078f4866d4c7311ea5ac0d0b3439
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: 43f68908c8549c2f1d8322b5c4ad3985618cfe6e
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448297"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125170"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Az Apache Storm-topológia létrehozása Java nyelven
 
