@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: a3fe14436a569a8354e4bfd58a9ba164881d8fe2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 956dfe54cec910a09ed16d7387bc3d32babd0876
+ms.sourcegitcommit: 1aab8b764d767d86fbf262bda34996189d00c7bb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878681"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "64405097"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Gyors útmutató: A beszédfelismerés SDK-val a Windows a C++ beszédfelismerést
 
@@ -29,7 +29,7 @@ A rövid útmutató elvégzéséhez beszédszolgáltatások előfizetési kulcs 
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
+[!INCLUDE [Quickstart C++ project](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
