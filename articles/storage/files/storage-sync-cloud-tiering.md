@@ -9,11 +9,11 @@ ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 1851e9b2bb5ff86583228136dee977001cf0a3fd
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63763490"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714943"
 ---
 # <a name="cloud-tiering-overview"></a>A cloud rétegezési áttekintése
 Felhőbeli rétegezés egy olyan opcionális szolgáltatás, az Azure File Sync, amelyben gyakran használt gyorsítótárba helyileg a kiszolgálón, míg minden más fájlnál számítógépen rétegzett az Azure Files házirend-beállításai alapján. A rétegzett egy fájlt, az Azure File Sync fájlrendszerszűrő (StorageSync.sys) helyettesíti a fájlt helyileg egy mutatót, vagy az újraelemzési pont. Az újraelemzési pontot az Azure Files-fájlra mutató URL-címet jelöli. Egy rétegzett fájlt a "offline" attribútum és a beállítása az NTFS, harmadik féltől származó alkalmazások biztonságosan azonosíthassa a rétegzett fájlok FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS attribútum is rendelkezik.

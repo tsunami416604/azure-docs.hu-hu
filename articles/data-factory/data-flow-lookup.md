@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: ef473ea5f88b9108894787785fe1e9083fab1b0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 197f5ba9d6921f4a9921b7074b9e05162d3e37b8
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61348175"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868129"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Az Azure Data Factory-folyamat keresési adatátalakítás leképezése
 
@@ -25,6 +25,10 @@ Keresés használatával más forrásból származó referenciaadatokkal hozzáa
 Válassza ki a bejövő adatfolyam mezőket és a mezőket a referencia-forrás között egyezés kívánt kulcsmezők. Kell először hozott létre egy új forrás a vásznon adatfolyam tervező használatára, a jobb oldalon a kereséshez.
 
 Egyezés, ha az eredményül kapott sorokat és oszlopokat a referencia-forrásból hozzáadódik az adatfolyam. Kiválaszthatja, hogy a lényeges, az adatfolyam végén található a fogadó szerepeltetni kívánt mezőket.
+
+## <a name="match--no-match"></a>Megfelelő és nem egyezik meg az
+
+A keresési átalakítás után használhatja ezt követő átalakítások egyezés sorokban eredményeinek vizsgálata a kifejezés függvény használatával `isMatch()` kattintva további lehetőségek a logikai alapul-e a keresési eredményezett sor egyezést vagy sem.
 
 ## <a name="optimizations"></a>Optimalizálási lehetőségek
 

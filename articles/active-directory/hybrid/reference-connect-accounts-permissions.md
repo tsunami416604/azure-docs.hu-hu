@@ -13,22 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/24/2019
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d145407331ed652f21510483b51a4617bf28e2fa
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 466b1aadb84bc92981b9adf1b1affa69f5f2ec25
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62096170"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919170"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Fiókok és engedélyek
 
 ## <a name="accounts-used-for-azure-ad-connect"></a>Az Azure AD Connect használt fiókok
 
-![](media/reference-connect-accounts-permissions/account5.png)
+![szolgáltatásfiókok – áttekintés](media/reference-connect-accounts-permissions/account5.png)
 
 Az Azure AD Connect 3 fiókokat használ, annak érdekében, hogy az Azure Active Directory a helyszíni vagy a Windows Server Active Directory információk szinkronizálásához.  Ezek a fiókok a következők:
 
@@ -111,10 +111,10 @@ A következő található egy összefoglaló az egyéni telepítési varázsló 
 | Szinkronizálási szolgáltatások, a szolgáltatás fiók lehetőséget telepítése |AD vagy a helyi felhasználói fiók hitelesítő adatait |Felhasználók, engedélyek a telepítő varázsló |Ha a rendszergazda határozza meg egy fiókot, ezt a fiókot lesz a fiók a szinkronizálási szolgáltatás. |
 | Csatlakozás az Azure AD szolgáltatáshoz |Az Azure Active directory hitelesítő adatok |A globális rendszergazdai szerepkörű Azure AD-ben |<li>Az Azure AD-címtárban a szinkronizálás engedélyezése.</li>  <li>Létrehozás az Azure AD-összekötő fiókhoz tartozó Azure AD-ben a folyamatban lévő szinkronizálási műveletek elvégzéséhez használható.</li> |
 | Csatlakoztassa a címtárakat |A helyszíni Active Directory hitelesítő adatait, amely csatlakozik az Azure AD-erdőhöz |Az engedélyek attól függenek, a szolgáltatások engedélyezése és található létrehozás az AD DS-összekötő fiók |Ennek a fióknak olvasási és írási címtár szinkronizálása során szolgál. |
-| AD FS-kiszolgálók |A lista minden egyes kiszolgáló esetén a a varázsló hitelesítő adatait gyűjti, amikor a bejelentkezési hitelesítő adatok a varázslót futtató felhasználó nem elegendőek csatlakoztatása |Tartományi rendszergazda |Telepítés és konfigurálás a az AD FS kiszolgálói szerepkör. |
-| Webalkalmazás-proxy kiszolgálók |A lista minden egyes kiszolgáló esetén a a varázsló hitelesítő adatait gyűjti, amikor a bejelentkezési hitelesítő adatok a varázslót futtató felhasználó nem elegendőek csatlakoztatása |Helyi rendszergazda a célgépen |Telepítés és konfigurálás a WAP-kiszolgálói szerepkör. |
+| AD FS-kiszolgálók |A lista minden egyes kiszolgáló esetén a a varázsló hitelesítő adatait gyűjti, amikor a varázslót futtató felhasználó bejelentkezési hitelesítő adatai nem elegendőek való csatlakozáshoz |Tartományi rendszergazda |Telepítés és konfigurálás a az AD FS kiszolgálói szerepkör. |
+| Webalkalmazás-proxy kiszolgálók |A lista minden egyes kiszolgáló esetén a a varázsló hitelesítő adatait gyűjti, amikor a varázslót futtató felhasználó bejelentkezési hitelesítő adatai nem elegendőek való csatlakozáshoz |Helyi rendszergazda a célgépen |Telepítés és konfigurálás a WAP-kiszolgálói szerepkör. |
 | Proxy megbízhatósági hitelesítő adatai |Összevonási szolgáltatás bizalmi kapcsolat hitelesítő adatait (a hitelesítő adatok egy megbízható tanúsítványt az FS regisztrálásához használja a proxy |Tartományi fiók, amely az AD FS-kiszolgáló helyi rendszergazdája |A regisztráció FS – WAP megbízható tanúsítvány. |
-| Az AD FS-szolgáltatásfiókot lap, "Használata egy tartományi felhasználói fiókot választja" |AD felhasználói fiók hitelesítő adatait |Domain user |Az AD-felhasználói fiókot, amelynek hitelesítő adatok megadása az AD FS szolgáltatás bejelentkezési fiókként szolgál. |
+| Az AD FS-szolgáltatásfiókot lap, "Használata egy tartományi felhasználói fiókot választja" |AD felhasználói fiók hitelesítő adatait |Domain user |Az Azure AD-felhasználói fiókot, amelynek hitelesítő adatok megadása az AD FS szolgáltatás bejelentkezési fiókként szolgál. |
 
 ### <a name="create-the-ad-ds-connector-account"></a>Az AD DS-összekötő fiók létrehozása
 
@@ -239,6 +239,11 @@ A fiók létrejön egy hosszú összetett jelszót, amely nem jár le. Egy kül�
 Nincs maximális hossza 20 sync service-fiókoknak az Azure ad-ben. Meglévő Azure AD-szolgáltatásfiókot listájának lekérése az Azure AD-ben, futtassa a következő Azure AD PowerShell-parancsmagot: `Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
 Távolítsa el a nem használt Azure ad-ben a szolgáltatásfiókok, futtassa az alábbi Azure AD PowerShell-parancsmagot: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
+
+>[!NOTE]
+>A fenti PowerShell-parancsok használata előtt kell telepíteni a [Azure Active Directory PowerShell modul a Graph](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) és a példány az Azure AD-t kapcsolódás [Connect-AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0)
+
+Hogyan felügyelheti, és az Azure AD-összekötő fiók jelszava további információkat lásd: [az Azure AD Connect-fiók kezelése](how-to-connect-azureadaccount.md)
 
 ## <a name="related-documentation"></a>Kapcsolódó dokumentáció
 Ha a dokumentáció a nem olvasta [a helyszíni identitások integrálása az Azure Active Directory](whatis-hybrid-identity.md), az alábbi táblázat a kapcsolódó témakörökre mutató hivatkozásokat tartalmaz.

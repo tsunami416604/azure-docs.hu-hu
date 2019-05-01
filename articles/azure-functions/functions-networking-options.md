@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: b7af0149a690e3cc3a357a5cb769751e3674d374
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 49f89d39b3b917ec6357b241d7c413c2790eca25
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61437684"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575601"
 ---
 # <a name="azure-functions-networking-options"></a>Érvényes hálózati beállításairól az Azure Functions
 
@@ -31,15 +31,14 @@ Függvényalkalmazások a többféle módon is üzemeltethet:
 
 ## <a name="matrix-of-networking-features"></a>A hálózati funkciók mátrix
 
-|                |[Használatalapú csomag](functions-scale.md#consumption-plan)|⚠ [Prémium szintű csomag](functions-scale.md#premium-plan-public-preview)|[App Service-csomag](functions-scale.md#app-service-plan)|[App Service-környezet](../app-service/environment/intro.md)|
+|                |[Használatalapú csomag](functions-scale.md#consumption-plan)|[Prémium szintű csomag (előzetes verzió)](functions-scale.md#premium-plan-public-preview)|[App Service-csomag](functions-scale.md#app-service-plan)|[App Service-környezet](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[Bejövő IP-korlátozások](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
+|[Kimenő IP-korlátozások](#private-site-access)|❌No| ❌No|❌No|✅Yes|
 |[Virtuális hálózat integrációja](#virtual-network-integration)|❌No|❌No|✅Yes|✅Yes|
-|[(Az Azure ExpressRoute- és végpontok) virtuális hálózati integráció előzetes verzió](#preview-version-of-virtual-network-integration)|❌No|⚠igen|⚠igen|✅Yes|
+|[(Az Azure ExpressRoute- és kimenő Szolgáltatásvégpontok) virtuális hálózati integráció előzetes verzió](#preview-version-of-virtual-network-integration)|❌No|✅Yes|✅Yes|✅Yes|
 |[Hibrid kapcsolatok](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
-|[privát hozzáférést](#private-site-access)|❌No| ❌No|❌No|✅Yes|
-
-⚠ Az előzetes verziójú funkció nem éles környezetben való használathoz tartozik.
+|[privát hozzáférést](#private-site-access)|❌No| ✅Yes|✅Yes|✅Yes|
 
 ## <a name="inbound-ip-restrictions"></a>Bejövő IP-korlátozások
 
@@ -49,6 +48,10 @@ Az IP-korlátozások használatával engedélyezett/elutasított érhető el az 
 > Az Azure portal-szerkesztő segítségével, a portálon érhetik el közvetlenül a futó függvényalkalmazást kell lennie. Az eszköz, amely elérhető a portál használata is, rendelkeznie kell az IP-engedélyezési listán. A korlátozásait a hálózati helyen, továbbra is hozzáférhet a szolgáltatásokat a a **platformfunkciók** fülre.
 
 További tudnivalókért lásd: [Azure App Service statikus hozzáférési korlátozások](../app-service/app-service-ip-restrictions.md).
+
+## <a name="outbound-ip-restrictions"></a>Kimenő IP-korlátozások
+
+Kimenő IP-korlátozások csak az App Service-környezet üzembe helyezett függvények érhetők el. Konfigurálhatja a virtuális hálózat, ahol telepíti az App Service-környezet kimenő korlátozások.
 
 ## <a name="virtual-network-integration"></a>Virtuális hálózat integrációja
 
@@ -88,7 +91,10 @@ További tudnivalókért lásd: a [App Service – dokumentáció a hibrid kapcs
 
 ## <a name="private-site-access"></a>Hozzáférés személyes oldalakhoz
 
-Privát hozzáférést utal, hogy az alkalmazás csak elérhetőnek magánhálózaton például az Azure virtuális hálózatban. Privát hozzáférést csak az App Service-környezet belső terheléselosztóval (ILB) konfigurált érhető el. További információkért lásd: [létrehozása és használata az App Service-környezet belső terheléselosztó](../app-service/environment/create-ilb-ase.md).
+Privát hozzáférést utal, hogy az alkalmazás csak elérhetőnek magánhálózaton például az Azure virtuális hálózatban. 
+* A prémium szintű és az App Service-ben érhető el privát hozzáférést tervezze, amikor **Szolgáltatásvégpontok** vannak konfigurálva. További információkért lásd: [virtuális hálózati Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md)
+    * Ne feledje, hogy a Szolgáltatásvégpontok használatakor a függvény továbbra is teljes kimenő hozzáféréssel rendelkezik az internethez, VNET-integráció konfigurálása mellett is.
+* Privát hozzáférést csak az App Service-környezet belső terheléselosztóval (ILB) konfigurált érhető el. További információkért lásd: [létrehozása és használata az App Service-környezet belső terheléselosztó](../app-service/environment/create-ilb-ase.md).
 
 Számos módon más üzemeltetési lehetőségek a virtuális hálózati erőforrások eléréséhez. Azonban az App Service-környezet az egyetlen módja, hogy a virtuális hálózaton keresztül történjen-függvény eseményindítók.
 

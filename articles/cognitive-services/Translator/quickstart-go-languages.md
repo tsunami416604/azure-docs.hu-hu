@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: bf33860b111900fed850158d6b80d5a9d4404893
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 93cc20c303d6c8ba0592651064790d83919b2948
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60879804"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916636"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-go"></a>Gyors útmutató: Go használata támogatott nyelvek listáját a Translator Text API használatával
 
@@ -135,7 +135,7 @@ Ha szeretné összevetni a saját kódját a miénkkel, a teljes mintakódot meg
 
 ## <a name="sample-response"></a>Mintaválasz
 
-Az ország rövidítés találja a jelen [nyelvek listája](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
+Az ország rövidítés találja a jelen [nyelvek listája](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 

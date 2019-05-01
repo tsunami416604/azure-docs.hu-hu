@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/18/2018
+ms.date: 04/25/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8fefc2eb2e642b5c7ac93b8a1cfc25a54c3b646
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fdf28418e7e1335dcb1f664964fa6ef03174aa1f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60437148"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64709198"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Bejelentkezési tevékenységre vonatkozó jelentések hibakódjai 
 
@@ -177,6 +177,7 @@ Szoftveresen is segítségével végezheti el a bejelentkezési adatokat a [repo
 |90051| Érvénytelen meghatalmazási jogkivonatot. Érvénytelen az országos Felhőbeli azonosítója ({cloudId}) van megadva.|
 |90072| A fióknak rendelkeznie kell adni a bérlőn külső felhasználóként először. Kijelentkezés és bejelentkezés újra egy másik Azure AD-fiókot.|
 |90094| A támogatás rendszergazdai engedélyekkel kell rendelkeznie. Kérje meg a bérlői rendszergazda történő ehhez az alkalmazáshoz.|
+|500121| Hitelesítés meghiúsult az erős hitelesítés során.|
 |500133| A helyességi feltétel nem esik az érvényes idő. Győződjön meg arról, hogy a hozzáférési jogkivonat nem járt le, a felhasználó helyességi feltétel használata előtt, vagy kérje meg egy új jogkivonatot.|
 |530021|Alkalmazás nem felel meg a jóváhagyott feltételes hozzáférés alkalmazás követelményeinek.|
 

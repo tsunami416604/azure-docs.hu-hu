@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: bc38b4457179c11f9d6b2656aacb8aa66848c444
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3628670d2393d7b6921c60317719ccf8e72a451
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60581037"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866361"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Helyi üzleti keresési Bing-API 7-es referencia
 
-A helyi üzleti Search API egy keresési lekérdezést küld a Bing éttermek, szállodákban, illetve más helyi üzletek lekéréséhez. A helyeket a lekérdezés is adja meg a helyi az üzleti és a egy kategóriát (például éttermek a közelben) nevét. Az entitástalálatok személyek, helyek vagy dolgok lehetnek. Ebben a környezetben helyen, üzleti entitásokat, állapotok, országban, stb.  
+A helyi üzleti Search API egy keresési lekérdezést küld a Bing éttermek, szállodákban, illetve más helyi üzletek lekéréséhez. A helyeket a lekérdezés is adja meg a helyi az üzleti és a egy kategóriát (például éttermek a közelben) nevét. Az entitástalálatok személyek, helyek vagy dolgok lehetnek. Ebben a környezetben helyen, üzleti entitásokat, állapotok, országok/régiók, stb.  
 
 Ez a szakasz a válaszobjektumok, és a lekérdezési paraméterek és a fejlécek, amelyek befolyásolják a keresési eredmények vonatkozó technikai részleteket ismertet. Példák azt mutatják be, hogyan kéréseit: [helyi üzleti keresési C# rövid](quickstarts/local-quickstart.md) vagy [helyi üzleti keresési Java a rövid útmutató](quickstarts/local-search-java-quickstart.md). 
   
@@ -70,7 +70,7 @@ Az alábbiakban a fejlécek, köztük a kérést és választ.
 A kérelem lekérdezési paraméterek tartalmazhat. Tekintse meg a szükséges oszlop, paraméter szükséges. URL-címet kell kódolása a lekérdezési paramétereket.  
   
   
-|Name (Név)|Érték|Típus|Kötelező|  
+|Name (Név)|Érték|Típus|Szükséges|  
 |----------|-----------|----------|--------------|
 |<a name="count" />Száma|Az eredményeket adja vissza, kezdve az index által megadott száma a `offset` paraméter.|String|Nem|   
 |<a name="localCategories" />localCategories|Keresés üzleti kategória szerint meghatározó beállítások listája.  Lásd: [helyi üzleti kategóriák keresése](local-categories.md)|String|Nem|  

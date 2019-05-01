@@ -1,36 +1,36 @@
 ---
 title: Az Azure Machine Learning számítási feladatokat futtatni, hogy automatizált a machine learning (AutoML) az Apache Spark on Azure HDInsight
 description: Ismerje meg, hogyan futtathat az Azure Machine Learning számítási feladatok automatizált a machine learning (AutoML) az Apache Spark on Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: 896cae9b7fc43765e340ba3b92351e04b5512efd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5135de0fc87af227073f96c653d928ace1a50fd0
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762551"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917036"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Az Azure Machine Learning számítási feladatokat futtatni, hogy automatizált a machine learning (AutoML) az Apache Spark on Azure HDInsight
 
-Az Azure Machine Learning egy olyan használatával hozhat létre, tesztelheti és üzembe helyezése az adataihoz prediktív elemzési megoldások által biztosított együttműködési környezettel, fogd és vidd eszköz. Az Azure Machine Learning modellek egyszerűen egyéni alkalmazások vagy Üzletiintelligencia-eszközökkel, mint például az Excel által igénybe vehető webszolgáltatásként teszi közzé. Automatizált a machine learning (AutoML) segítségével hozzon létre magas színvonalú machine learning-modellek az intelligens automatizálás és optimalizálás segítségével. AutoML úgy dönt, hogy a megfelelő algoritmus és adott Problématípusok használandó hyper paramétereket.
+Az Azure Machine Learning leegyszerűsíti és felgyorsítja a létrehozását, a képzés és a machine learning-modellek üzembe. A Machine learning (AutoML) automatizált betanítási adatok, amelyek egy meghatározott célhoz funkció kezdődhet, és majd iterálódnak algoritmusok és a szolgáltatások kiválasztása ki automatikusan a legoptimálisabb modellt, a képzési pontszámok alapján az adatok kombinációját. HDInsight lehetővé teszi, hogy az ügyfelek számára, hogy több száz csomópont-fürtök kiépítése. A Spark HDInsight-fürtben futó AutoML lehetővé teszi a felhasználóknak betanítási feladatok futtatása a kibővíthető módon, és párhuzamosan futnak több betanítási feladat a számítási kapacitást ezek a csomópontok között. Ez lehetővé teszi a felhasználók AutoML kísérletek során a számítási osztanak meg más big data számítási feladataik végrehajtásához.
+ 
 
 ## <a name="install-azure-machine-learning-on-an-hdinsight-cluster"></a>Telepítse az Azure Machine Learning egy HDInsight-fürtön
 
-> [!Note]
-> Az Azure ML-munkaterület érhető el jelenleg a következő régiókban: USA keleti régiója, eastus2 és régiója. A HDInsight-fürt is ezek a régiók egyikében kell létrehozni.
-
-Lásd: általános oktatóanyagok az Azure Machine Learning és az automatizált gépi tanulási és [oktatóanyag: Az első adatelemzési kísérlet létrehozása az Azure Machine Learning Studio](../../machine-learning/studio/create-experiment.md) és [oktatóanyag: Automatizált a gépi tanulási a regressziós modell létrehozásához](../../machine-learning/service/tutorial-auto-train-models.md).
-Az AzureML telepíthető az Azure HDInsight-fürtöt, futtatja a parancsfájlművelet - [install_aml](https://commonartifacts.blob.core.windows.net/automl/install_aml.sh) – fő csomópontból és a egy (ajánlott) HDInsight 3.6-os Spark 2.3.0-át fürt munkavégző csomópontjaira. A parancsprogram-művelet futtatható a fürt létrehozását, vagy egy meglévő fürt részeként az Azure Portalon keresztül.
-
-A Parancsfájlműveletek kapcsolatos további információkért olvassa el a [testreszabása Linux-alapú HDInsight-fürtök parancsfájlműveletekkel](../hdinsight-hadoop-customize-cluster-linux.md). Az Azure Machine Learning-csomagok és függőségek telepítése, valamint a parancsfájl is letölt egy mintául szolgáló Jupyter Notebook (útvonalon `HdiNotebooks/PySpark` az alapértelmezett tároló). A Jupyter Notebook használata egy automatizált machine learning-osztályozó egy egyszerű osztályozási probléma mutatja be.
+Automatizált gépi tanulás általános oktatóanyagokban talál [oktatóanyag: Automatizált a gépi tanulási a regressziós modell létrehozásához](../../machine-learning/service/tutorial-auto-train-models.md).
+Minden új HDInsight-alapú Spark-fürtök előre telepített AzureML-AutoML SDK-val rendelkeznek. Megkezdheti az AutoML a HDInsight a [minta Jupyter notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/azure-hdi). A Jupyter Notebook használata egy automatizált machine learning-osztályozó egy egyszerű osztályozási probléma mutatja be.
 
 > [!Note]
 > Az Azure Machine Learning-csomagok települnek Python3 conda-környezetbe. A telepített Jupyter notebookot a PySpark3 kernel használatával kell futtatni.
+
+Zeppelin notebookok használatával AutoML is használhatja azt is megteheti.
+
+> [!Note]
+> A Zeppelin rendelkezik egy [ismert hiba](https://community.hortonworks.com/content/supportkb/207822/the-livypyspark3-interpreter-uses-python-2-instead.html) ahol PySpark3 nem válasszon a Python megfelelő verzióját. A dokumentált megkerülő használja.
 
 ## <a name="authentication-for-workspace"></a>Hitelesítés a munkaterülethez
 
@@ -42,8 +42,8 @@ Az alábbi kódrészlet létrehoz egy hitelesítési tokent a egy **Azure AD-alk
 from azureml.core.authentication import ServicePrincipalAuthentication
 auth_sp = ServicePrincipalAuthentication(
                 tenant_id = '<Azure Tenant ID>',
-                username = '<Azure AD Application ID>',
-                password = '<Azure AD Application Key>'
+                service_principal_id = '<Azure AD Application ID>',
+                service_principal_password = '<Azure AD Application Key>'
                 )
 ```
 Az alábbi kódrészlet létrehoz egy hitelesítési tokent a egy **az Azure AD-felhasználó**.
@@ -69,9 +69,10 @@ Az adattár is regisztrálhatja az személyenként egy regisztrációt a munkate
 
 ## <a name="experiment-submission"></a>Kísérlet beküldése
 
-Az automatikus machine learning konfigurációjában, a tulajdonság `spark_context` kell beállítani, a csomag elosztott módban fusson. A tulajdonság `concurrent_iterations`, azaz végrehajtható párhuzamosan, az ismétlések maximális számának kell megadni, kisebb a végrehajtó magok, a Spark-alkalmazás.
+Az a [automatizált machine learning configuration](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig), a tulajdonság `spark_context` kell beállítani, a csomag elosztott módban fusson. A tulajdonság `concurrent_iterations`, azaz végrehajtható párhuzamosan, az ismétlések maximális számának kell megadni, kisebb a végrehajtó magok, a Spark-alkalmazás.
 
 ## <a name="next-steps"></a>További lépések
 
-* A motiváció mögötti automatikus gépi tanulási további információkért lásd: [kiadási modellek lépést használatával a Microsoft machine learning automatikus!](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/).
+* A motiváció mögötti automatikus gépi tanulási további információkért lásd: [kiadási modellek lépést használatával a Microsoft machine learning automatikus!](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)
+* Az Azure Machine Learning automatizált gépi Tanulási képességek használata további részletekért lásd: [új automatizált gépi tanulási funkciók az Azure Machine Learning szolgáltatásban.](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)
 * [A Microsoft Research AutoML projekt](https://www.microsoft.com/research/project/automl/)

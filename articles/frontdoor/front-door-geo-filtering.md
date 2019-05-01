@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: 1d6343705e8d27fb2d22827cf792de332861456e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: da56c9664ce533709676ded677add4a2391dce03
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736598"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64865865"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Mi az a földrajzi szűrés Azure bejárati ajtajának tartomány?
 
-Alapértelmezés szerint az Azure Front Door Service a kérelmet küldő felhasználó a tartózkodási helytől függetlenül válaszol a felhasználói kérelmekre. Bizonyos esetekben azonban érdemes ország alapján korlátozni a webalkalmazásokhoz való hozzáférést. Webes alkalmazás tűzfal (WAF) szolgáltatás bejárati ajtajának, lehetővé teszi meghatározhat egy olyan szabályzatot, a végpont a megadott elérési úthoz tartozó egyéni hozzáférési szabályok segítségével engedélyezheti vagy letilthatja a hozzáférést a megadott országok. 
+Alapértelmezés szerint az Azure Front Door Service a kérelmet küldő felhasználó a tartózkodási helytől függetlenül válaszol a felhasználói kérelmekre. Azonban bizonyos esetekben előfordulhat, hogy szeretné a webes alkalmazásokhoz való hozzáférés korlátozása ország/régió szerint. Webes alkalmazás tűzfal (WAF) szolgáltatás, bejárati ajtajának lehetővé teszi egy adott elérési úthoz, a végpont egyéni hozzáférési szabályok segítségével engedélyezheti vagy letilthatja a hozzáférést a megadott országok/régiók szabályzat meghatározása. 
 
 A WAF-szabályzat általában egyéni szabályok készletét tartalmazza. A szabályok egy egyeztetési feltételből, egy műveletből és egy prioritásból állnak. Az egyeztetési feltételben egy egyeztetési változót, egy operátort és egy egyeztetési értéket kell megadni.  A geoszűrési szabályok esetében az egyeztetési változó a REMOTE_ADDR, az operátor a GeoMatch, az érték pedig az érintett kétbetűs országkód. Egy GeoMatch feltételt és egy REQUEST_URI sztringegyeztetési feltételt kombinálva elérésiút-alapú geoszűrési szabályokat hozhat létre.
 
@@ -72,7 +72,7 @@ Konfigurálhatja a földrajzi szűrés házirend számára a bejárati ajtajána
 | CO | Kolumbia|
 | CR | Costa Rica|
 | CU | Kuba|
-| CV | Cabo Verde Köztársaság|
+| CV | Cabo Verde|
 | CY | Ciprus|
 | CZ | Cseh Köztársaság|
 | DE | Németország|

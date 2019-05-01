@@ -12,17 +12,16 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 04/29/2019
 ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 04f08965d161e35a9ae4423ad5d3cf80cb407b8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b704e9074c8ef88d8fefd97f466884af952c46f8
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60396685"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919610"
 ---
-# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Egy Python-alkalmazás létrehozása az Azure App Service Linux (előzetes verzió)
+# <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Egy Python-alkalmazás létrehozása Linuxon futó Azure App Service-ben
 
 Ebben a rövid útmutatóban üzembe helyezi egy egyszerű Python-alkalmazást a [Linuxon futó App Service](app-service-linux-intro.md), amely egy rugalmasan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Az Azure parancssori felületének használata (a [Azure CLI-vel](/cli/azure/install-azure-cli)) keresztül az interaktív, böngészőalapú Azure Cloud Shellt, ezért kövesse a lépéseket Mac, Linux vagy Windows számítógépet használni.
 
@@ -198,8 +197,6 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>További lépések
-
-A Linuxon futó App Service beépített Python rendszerképe jelenleg előzetes verzióban érhető el, és lehetőség van az alkalmazásindítási parancs testreszabására. Éles Python-alkalmazásokat egyéni tároló használatával is létrehozhat.
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Python-alkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)

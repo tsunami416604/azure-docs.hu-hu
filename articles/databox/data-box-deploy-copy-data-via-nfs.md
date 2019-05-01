@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása az NFS-n keresztül a Microsoft Azure Data Box |} A Microsoft Docs
+title: 'Oktatóanyag: adatok másolása az Azure Data Box segítségével az NFS |} A Microsoft Docs'
 description: Ismerje meg, hogyan másolhat adatokat az Azure Data Box NFS-n keresztül
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 423db264c8035f9b089524eb4b19a13baccdf2e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55c880d0e795873a759ba121b6de0c98c5249061
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60462443"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924488"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Oktatóanyag: Adatok másolása az Azure Data Box NFS-n keresztül
 

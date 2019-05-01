@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: ae92a5c894b186a1c8b471c1b446a88299742aec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 04ed95317311b81af49f5d96addb203b7cfeb74a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466375"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725650"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>– Azure Kubernetes Service (AKS) kapcsolatos gyakori kérdések
 
@@ -53,10 +53,27 @@ Kured használatával kapcsolatos további információkért lásd: [biztonsági
 
 Minden egyes az AKS üzembe helyezési kiterjedő két erőforráscsoport:
 
-- Az első erőforráscsoport jön létre, és csak a Kubernetes szolgáltatás-erőforrást tartalmaz. Az AKS erőforrás-szolgáltató automatikusan létrehozza a központi telepítése során a másodikat például *MC_myResourceGroup_myAKSCluster_eastus*.
+- Az első erőforráscsoport jön létre, és csak a Kubernetes szolgáltatás-erőforrást tartalmaz. Az AKS erőforrás-szolgáltató automatikusan létrehozza a központi telepítése során a másodikat például *MC_myResourceGroup_myAKSCluster_eastus*. Az erőforráscsoport nevét, a második adhatja meg a további információkért lásd: a következő szakaszban.
 - A második erőforráscsoportja, mint például *MC_myResourceGroup_myAKSCluster_eastus*, a fürthöz társított infrastruktúrát erőforrásokat tartalmaz. Ilyen erőforrások többek között a Kubernetes csomópont virtuális gépek, virtuális hálózati és storage. Erőforrás-karbantartása leegyszerűsítése érdekében külön ebben az erőforráscsoportban jön létre.
 
 Az AKS-fürt használatra erőforrásokat hoz létre, ha például a storage-fiókok vagy fenntartott nyilvános IP-címeket elhelyezése egy az automatikusan létrehozott erőforráscsoportot.
+
+## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>Biztosíthat a saját nevét az AKS-infrastruktúra erőforráscsoport?
+
+Igen. Alapértelmezés szerint az AKS erőforrás-szolgáltató automatikusan létrehoz egy másodlagos erőforráscsoport üzembe helyezése során például *MC_myResourceGroup_myAKSCluster_eastus*. Ahhoz, hogy megfeleljenek a vállalati házirenddel, adja meg a saját felügyelt fürt nevét (*MC_*) erőforráscsoportot.
+
+Adja meg a saját erőforráscsoport neve, telepítse a [aks előzetes] [ aks-preview-cli] Azure CLI-bővítmény verziója *0.3.2-es verzióra* vagy újabb. Létrehozásakor egy AKS fürt használatával a [az aks létrehozása] [ az-aks-create] parancsot, használja a *– csomópont-resource-group* paraméter, és adja meg az erőforráscsoport nevét. Ha Ön [egy Azure Resource Manager-sablonnal] [ aks-rm-template] AKS-fürt üzembe helyezéséhez határozhatja meg az erőforrás csoport nevének használatával a *nodeResourceGroup* tulajdonság.
+
+* Ez az erőforráscsoport automatikusan létrejön a Azure-erőforrás-szolgáltató saját előfizetésében.
+* Csak adhat egy egyéni erőforráscsoport-nevet, amikor létrehozza a fürtöt.
+
+A következő helyzetek nem támogatottak:
+
+* Nem adhat meg egy meglévő erőforráscsoportot, a *MC_* csoport.
+* Nem adhat meg egy másik előfizetéshez tartozó a *MC_* erőforráscsoportot.
+* Nem módosítható a *MC_* erőforráscsoport-nevet a fürt létrehozása után.
+* Nem adható meg belül a felügyelt erőforrások nevét a *MC_* erőforráscsoportot.
+* Nem lehet módosítani vagy törölni a felügyelt erőforrások címkék a *MC_* resource-group (lásd a további információkat a következő szakaszban).
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>Címkék és egyéb tulajdonságait az AKS a MC_ * erőforráscsoportban lévő erőforrásokat is módosíthatja?
 
@@ -100,6 +117,9 @@ A egy szolgáltatásiszint-szerződés (SLA) a szolgáltató vállalja, hogy meg
 [aks-advanced-networking]: ./configure-azure-cni.md
 [aks-rbac-aad]: ./azure-ad-integration.md
 [node-updates-kured]: node-updates-kured.md
+[aks-preview-cli]: /cli/azure/ext/aks-preview/aks
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[aks-rm-template]: /rest/api/aks/managedclusters/createorupdate#managedcluster
 
 <!-- LINKS - external -->
 
@@ -108,4 +128,3 @@ A egy szolgáltatásiszint-szerződés (SLA) a szolgáltató vállalja, hogy meg
 [hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
 [keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol
-

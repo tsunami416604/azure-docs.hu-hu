@@ -7,22 +7,22 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 09/24/2018
-ms.date: 12/29/2018
-ms.author: v-junlch
+ms.date: 09/24/2018
+ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 4c15890a5693235e8f2554ba8d0fdefc161770f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5e37e40cd0dbba7961cbde75b5dde44f2666dc21
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443899"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918620"
 ---
 # <a name="native-apps"></a>A natív alkalmazások
 
@@ -52,10 +52,10 @@ Tekintse meg a Kódminták natív alkalmazás webes API-forgatókönyvekhez. És
 
 ## <a name="app-registration"></a>Appok regisztrálása
 
-Alkalmazás regisztrálása az Azure AD-1.0-s verziójú végpont, lásd: [alkalmazás regisztrálása az Azure AD-1.0-s verziójú végpont](quickstart-v1-add-azure-ad-app.md).
+Alkalmazás regisztrálása az Azure AD-1.0-s verziójú végpont, lásd: [alkalmazás regisztrálása](quickstart-register-app.md).
 
-- Egyetlen bérlő – mind a natív alkalmazás és a webes API-t kell regisztrálni az ugyanabban a címtárban az Azure ad-ben. A webes API elérhetővé engedélykészletet, a natív alkalmazás férjenek hozzá az erőforrásokhoz használt konfigurálható. Az ügyfélalkalmazás ezután kiválasztja a kívánt engedélyekkel a "Engedélyeket az egyéb alkalmazások" legördülő menüből az Azure Portalon.
-- Több-bérlős – először a natív alkalmazás csak a fejlesztői vagy regisztrált kiadó könyvtár. A második a natív alkalmazás jelzi a megfelelő működéséhez szükséges engedélyekkel van konfigurálva. Szükséges engedélyek listája egy párbeszédpanel jelenik meg, amikor egy felhasználó vagy rendszergazda a célkönyvtárban duplikátum beleegyezésével az alkalmazáshoz, ami lehetővé teszi a szervezet számára elérhető. Egyes alkalmazások csak a felhasználói szintű engedélyeket, amelyeket a szervezet bármely felhasználója jóváhagyhat van szükségük. Más alkalmazások szükséges rendszergazdai engedélyekkel, amelyek a szervezet egy felhasználója nem járulhatnak hozzá. Csak egy könyvtár rendszergazda engedélyezheti, hogy ez a jogosultsági szint szükséges alkalmazásokat. A felhasználó vagy rendszergazda hozzájárul, csak a webes API regisztrálva lesz a címtárban. 
+* Egyetlen bérlő – mind a natív alkalmazás és a webes API-t kell regisztrálni az ugyanabban a címtárban az Azure ad-ben. A webes API elérhetővé engedélykészletet, a natív alkalmazás férjenek hozzá az erőforrásokhoz használt konfigurálható. Az ügyfélalkalmazás ezután kiválasztja a kívánt engedélyekkel a "Engedélyeket az egyéb alkalmazások" legördülő menüből az Azure Portalon.
+* Több-bérlős – először a natív alkalmazás csak a fejlesztői vagy regisztrált kiadó könyvtár. A második a natív alkalmazás jelzi a megfelelő működéséhez szükséges engedélyekkel van konfigurálva. Szükséges engedélyek listája egy párbeszédpanel jelenik meg, amikor egy felhasználó vagy rendszergazda a célkönyvtárban duplikátum beleegyezésével az alkalmazáshoz, ami lehetővé teszi a szervezet számára elérhető. Egyes alkalmazások csak a felhasználói szintű engedélyeket, amelyeket a szervezet bármely felhasználója jóváhagyhat van szükségük. Más alkalmazások szükséges rendszergazdai engedélyekkel, amelyek a szervezet egy felhasználója nem járulhatnak hozzá. Csak egy könyvtár rendszergazda engedélyezheti, hogy ez a jogosultsági szint szükséges alkalmazásokat. A felhasználó vagy rendszergazda hozzájárul, csak a webes API regisztrálva lesz a címtárban. 
 
 ## <a name="token-expiration"></a>Jogkivonat lejáratáról
 
@@ -65,5 +65,3 @@ A natív alkalmazás eléréséhez a JWT jogkivonat a hozzáférési kód haszn�
 
 - További információk egyéb [alkalmazástípusok és forgatókönyvek](app-types.md)
 - További tudnivalók az Azure AD [hitelesítés alapjai](authentication-scenarios.md)
-
-<!-- Update_Description: link update -->

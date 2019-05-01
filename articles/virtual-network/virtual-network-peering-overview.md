@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: b65bad57a300d941774f5d3e5d01967f0c13d684
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 22521abbc341fa9999738dd51301d3f84c18627a
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60186825"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919311"
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
@@ -78,7 +78,7 @@ Megpróbálhatja a [virtuális hálózati társviszony-létesítési hibák elh�
 ## <a name="requirements-and-constraints"></a>Követelmények és korlátozások
 
 A következő korlátozások vonatkoznak, csak ha virtuális hálózatok globálisan társviszonyban állnak:
-- Egy virtuális hálózatban lévő erőforrásokra globálisan két társviszonyban álló virtuális hálózatban lévő alapvető belső terheléselosztó előtérbeli IP-címe nem lehet kommunikálni. Alapszintű Load Balancer támogatása csak az azonos régión belüli létezik. A Standard Load Balancer támogatja a globális virtuális társhálózatok létesítésének létezik.
+- Egy virtuális hálózatban lévő erőforrásokra globálisan két társviszonyban álló virtuális hálózatban lévő alapvető belső terheléselosztó előtérbeli IP-címe nem lehet kommunikálni. Alapszintű Load Balancer támogatása csak az azonos régión belüli létezik. A Standard Load Balancer támogatását is, a virtuális hálózatok közötti Társviszony és a globális virtuális társhálózatok létesítésének létezik. Egy alapszintű load balancer, amely nem fog működni a globális virtuális hálózatok közötti társviszony-Létesítésen keresztül használó szolgáltatások vannak dokumentálva [itt.](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
 
 További információ a követelményekről és a korlátozásokról: [A virtuális hálózatok közötti társviszony követelményei és korlátozásai](virtual-network-manage-peering.md#requirements-and-constraints). A virtuális hálózatok közötti társviszonyok számának korlátozásairól az [Azure hálózati korlátait](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) ismertető szakaszban talál további információt. 
 

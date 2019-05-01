@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1686b52c9dacf5c78335f76bd19b41c4c7d15cee
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: df94290c5e62b898b6490c78ef0ae1ee79437240
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555404"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716946"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Adatok modellezése az Azure Time Series Insights előzetes verziója
 
@@ -132,7 +132,9 @@ Válassza ki azt a példányt, és válassza ki **törlése**. Ha nincsenek esem
 ## <a name="next-steps"></a>További lépések
 
 - Time Series modellek kapcsolatos további információkért olvassa el a [adatmodellezés](./time-series-insights-update-tsm.md).
+
 - További tudnivalók az előzetes verzióra, olvassa el [adatok megjelenítése az az Azure Time Series Insights – előzetes explorer](./time-series-insights-update-explorer.md).
+
 - Támogatott JSON-alakzatok kapcsolatos további információkért olvassa el a [támogatott JSON-alakzatok](./time-series-insights-send-events.md#json).
 
 <!-- Images -->

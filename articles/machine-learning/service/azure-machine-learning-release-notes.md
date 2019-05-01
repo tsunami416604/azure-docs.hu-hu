@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: e79e610638b5ff271607da2e8855003707ea5932
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: cdd639f690d98651661226fbd340964dfdc7861f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821296"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64914926"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -69,7 +69,7 @@ Megjegyzés: Data Prep Python SDK már nem telepíti a `numpy` és `pandas` csom
 + **Új funkciók**
   + Az Azure Machine Learning SDK már támogatja a Python 3.7-es verzióját.
   + Az Azure Machine Learning DNN Estimators többverziós beépített támogatást biztosít. Például `TensorFlow`  estimator már elfogad egy `framework_version` paraméter és a felhasználók adhat meg a "1.10" vagy "1.12" verzió. Az SDK jelenlegi kiadása támogatja a verziók listája, hívja `get_supported_versions()` a kívánt keretrendszer osztályról (pl. `TensorFlow.get_supported_versions()`).
-  Az SDK legújabb kiadása által támogatott verziók listáját lásd: a [DNN Estimator dokumentáció](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py).
+  Az SDK legújabb kiadása által támogatott verziók listáját lásd: a [DNN Estimator dokumentáció](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py).
 
 ### <a name="azure-machine-learning-data-prep-sdk-v111"></a>Az Azure Machine Learning adat-előkészítési SDK 1.1.1-es
 
@@ -143,13 +143,13 @@ Megjegyzés: Data Prep Python SDK már nem telepíti a `numpy` és `pandas` csom
 
 + **Új funkciók**
 
-  + Az Azure Machine Learning most már elterjedt DNN keretrendszer Chainer első osztályú támogatást nyújt. Használatával [ `Chainer` ](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) osztály felhasználók könnyedén betanítása és Chainer modellek üzembe helyezése.
+  + Az Azure Machine Learning most már elterjedt DNN keretrendszer Chainer első osztályú támogatást nyújt. Használatával [ `Chainer` ](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) osztály felhasználók könnyedén betanítása és Chainer modellek üzembe helyezése.
     + Ismerje meg, hogyan [ChainerMN elosztott betanítási Futtatás](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/distributed-chainer/distributed-chainer.ipynb)
     + Ismerje meg, hogyan [hiperparaméter finomhangolása a Chainer HyperDrive használatával futtassa](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)
   + Az Azure Machine Learning-folyamatokat Folyamatfuttatás adattárolója módosítások alapján lehetővé teszi az eseményindító hozzáadása. A folyamat [ütemezés notebook](https://aka.ms/pl-schedule) frissül, és ez a funkció bemutatására.
 
 + **Hibajavítások és kapcsolatos fejlesztések**
-  + Hozzáadtuk a támogatást az Azure Machine Learning-folyamatokat a source_directory_data_store tulajdonság egy kívánt adattár (például egy blob storage) állítja a [RunConfigurations](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) , amely megadott a [ PythonScriptStep](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py). Alapértelmezés szerint az lépéseket az Azure fájltároló használjuk a biztonsági adattár, amely megadtuk szabályozási problémák lépések nagy számú párhuzamosan végrehajtásakor.
+  + Hozzáadtuk a támogatást az Azure Machine Learning-folyamatokat a source_directory_data_store tulajdonság egy kívánt adattár (például egy blob storage) állítja a [RunConfigurations](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) , amely megadott a [ PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py). Alapértelmezés szerint az lépéseket az Azure fájltároló használjuk a biztonsági adattár, amely megadtuk szabályozási problémák lépések nagy számú párhuzamosan végrehajtásakor.
 
 ### <a name="azure-portal"></a>Azure Portal
 

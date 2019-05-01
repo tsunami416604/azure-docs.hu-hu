@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ca3fd76cfeb09fe4e18a04bff38e166928ef38b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: da7fe9310f50d2d2a3c247a410db204903d3412b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60313351"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64715883"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata konfigurálása az Azure AD B2C-vel
 
@@ -68,7 +68,7 @@ A kedvenc API-fejlesztési alkalmazás használatával létrehozhat egy olyan AP
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Kulcs | Value |
+| Kulcs | Érték |
 | --- | ----- |
 | felhasználónév | leadiocl@outlook.com |
 | password | Passxword1 |
@@ -108,7 +108,7 @@ A POST híváson a kérelem törzse a következő táblázatban a információka
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Kulcs | Value |
+| Kulcs | Érték |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

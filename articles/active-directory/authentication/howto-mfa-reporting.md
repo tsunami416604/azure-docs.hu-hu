@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f78a3135fca290d50370652b33fe0a4d16a6f83
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 64d4c48697d38cfa5942e09cb672af37c27eede2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358803"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688676"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication jelentései
 
@@ -122,7 +122,9 @@ Az MFA bejelentkezési tevékenységeinek jelentéseiben a következő adatokhoz
 - Munkamenet-vezérlők
 - Eredmény
 
-## <a name="powershell-reporting"></a>PowerShell-jelentéskészítés
+## <a name="powershell-reporting-on-users-registered-for-mfa"></a>PowerShell-jelentések a multi-factor Authentication regisztrált felhasználók
+
+Először is győződjön meg arról, hogy a [MSOnline V1 PowerShell-modul](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0) telepítve.
 
 A multi-factor Authentication az alábbi PowerShell-lel regisztráló felhasználók azonosításához.
 

@@ -5,14 +5,14 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/26/2019
 ms.author: raynew
-ms.openlocfilehash: d9fdd6f42e1443c0515c2c38496e9d474c87715c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c91629d24267d280edefdb7530e2614eb7be89fd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60837429"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704880"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware – Azure vészhelyreállítási recovery architektúrájáról
 
@@ -53,6 +53,7 @@ A következő táblázat és grafikus adja meg a VMware-vészhelyreállításhoz
     - A konfigurációs kiszolgáló koordinálja a replikációt az Azure-ral HTTPS 443-as kimenő porton keresztül.
     - Virtuális gépek a replikációs adatokat a folyamatkiszolgálónak (a konfigurációs kiszolgáló gépen futó) HTTPS 9443-as porton bejövő küldése. Ez a port módosítható.
     - A folyamatkiszolgáló fogadja a replikált adatokat, optimalizálja a és titkosítja azokat, és elküldi azt az Azure storage 443-as porton keresztüli kimenő.
+5. A replikációs adatok első föld bejelentkezik egy gyorsítótárfiókot, az Azure-ban. Ezek a naplók dolgozza fel, és az adatok tárolódnak az Azure Managed Disk (az asr kezdőérték lemezként is nevezik). A helyreállítási pontok ezen a lemezen jönnek létre.
 
 
 

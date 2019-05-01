@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: 9258b58783d4670620a251fef866211f7634480f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: cc598afbbdf7f3a1b12089b50ba747c5220ba1fa
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61020384"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922930"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Az Azure Functions Java fejlesztői útmutatója
 
@@ -111,7 +111,7 @@ Itt látható a létrehozott megfelelő `function.json` által a [azure-function
 
 Töltse le és használja a [Azul Zulu Enterprise Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8 segítségével a [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) helyi függvény Java-alkalmazások fejlesztéséhez. Az Azure Functions az Azul Java 8 JDK-modul használ, a függvényalkalmazásokat a felhőbe való központi telepítésekor.
 
-[Az Azure-támogatás](https://azure.microsoft.com/en-us/support/) a segítségével és a függvény problémáinak alkalmazások érhető el egy [minősített támogatási csomag](https://azure.microsoft.com/support/plans/).
+[Az Azure-támogatás](https://azure.microsoft.com/support/) a segítségével és a függvény problémáinak alkalmazások érhető el egy [minősített támogatási csomag](https://azure.microsoft.com/support/plans/).
 
 ## <a name="third-party-libraries"></a>Külső gyártó kódtárait 
 

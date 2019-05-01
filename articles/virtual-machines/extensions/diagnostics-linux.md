@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: agaiha
-ms.openlocfilehash: af5d4e21bb5b41df4bcb88dc2f9eb7901fcaa597
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: e43ba83581b6ce012c619036317361a7c1c0bf4f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129217"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710414"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux diagnosztikai bővítmény használatával figyelheti a metrikák és naplók
 
@@ -500,7 +500,9 @@ ReadsPerSecond | Olvasási műveletek száma másodpercenként
 WritesPerSecond | Írási műveletek száma másodpercenként
 TransfersPerSecond | Olvasási vagy írási műveletek száma másodpercenként
 
-Az összes fájl rendszerekből összesített értékeket is beszerezhetők beállításával `"condition": "IsAggregate=True"`. Például egy adott csatlakoztatott fájlrendszer értékei "/ mnt", beállításával szerezhető `"condition": 'Name="/mnt"'`.
+Az összes fájl rendszerekből összesített értékeket is beszerezhetők beállításával `"condition": "IsAggregate=True"`. Például egy adott csatlakoztatott fájlrendszer értékei "/ mnt", beállításával szerezhető `"condition": 'Name="/mnt"'`. 
+
+**MEGJEGYZÉS**: JSON helyett az Azure Portal használatával, ha a megfelelő feltétel mezőt képernyő-e a név = "/ mnt"
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>a lemez osztály beépített metrikái
 

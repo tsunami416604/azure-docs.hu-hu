@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3fe839de8cbaa0b321b0b0602b000b7575224dde
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7b3d579e9d4ceb92ee961778ba6083292461c144
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60361098"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699827"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy OAuth1 technikai profil meghatározása
 
@@ -23,7 +23,7 @@ ms.locfileid: "60361098"
 
 Az Azure Active Directory (Azure AD) B2C támogatást biztosít a [OAuth 1.0-s protokollt](https://tools.ietf.org/html/rfc5849) identitásszolgáltató. Ez a cikk ismerteti, amely támogatja a szabványos protokoll Jogcímszolgáltatók folytatott interakcióra szolgáló technikai profil adatait. OAuth1 műszaki profillal OAuth1 alapján Identitásszolgáltatóként, mint például a Twitter használatával is összevonható. Összevonás az identitásszolgáltató lehetővé teszi a felhasználóknak, hogy jelentkezzen be a meglévő közösségi vagy vállalati identitásokat.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol
 
 A **neve** attribútuma a **protokoll** elemet hozzá kell beállítani `OAuth1`. Például a protokoll a **Twitter-OAUTH1** technikai profil `OAuth1`.
 

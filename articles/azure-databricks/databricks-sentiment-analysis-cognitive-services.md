@@ -1,20 +1,20 @@
 ---
 title: 'Oktatóanyag: Streamelési adatok hangulatelemzése az Azure Databricks használatával'
-description: Ismerje meg, hogyan használhatja az Azure Databricks szolgáltatást az Event Hubs szolgáltatással és a Cognitive Services API-val streamelési adatok közel valós idejű hangulatelemzéséhez.
+description: Megtanulhatja, hogyan használhatja az Azure Databricks az Event Hubs és a Cognitive Services API-t a streamelési adatok közel valós idejű hangulatelemzéséhez.
 services: azure-databricks
 author: lenadroid
 ms.author: alehall
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 12/07/2018
-ms.openlocfilehash: 54a7f308163cb2463554da32f0fae8b897c0742f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/29/2019
+ms.openlocfilehash: a4762f78b16b7798ff746770f1ea69ccebd30130
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60786159"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919014"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: Streamelési adatok hangulatelemzése az Azure Databricks használatával
 
@@ -55,7 +55,7 @@ Mielőtt nekilát az oktatóanyagnak, ellenőrizze, hogy megfelel-e a következ�
 
 Ezeket az előfeltételeket az [Azure Event Hubs-névtér és eseményközpont létrehozását](../event-hubs/event-hubs-create.md) ismertető cikk lépéseit követve teljesítheti.
 
-## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
+## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -154,7 +154,7 @@ Ez az oktatóanyag bemutatja, hogyan küldhet tweeteket az Event Hubsnak a Twitt
 
 ## <a name="get-a-cognitive-services-access-key"></a>Cognitive Services hozzáférési kulcs beszerzése
 
-Ebben az oktatóanyagban használja a [Microsoft Cognitive Services Text Analytics API-k](../cognitive-services/text-analytics/overview.md) hangulatelemzést közel valós idejű tweetstream való. Az API-k használatához a Microsoft Cognitive Services-fiók létrehozása az Azure-ban, és szereznie egy hozzáférési kulcsot a Text Analytics API-k használatához.
+Ebben az oktatóanyagban használja a [Azure Cognitive Services Text Analytics API-k](../cognitive-services/text-analytics/overview.md) hangulatelemzést közel valós idejű tweetstream való. Mielőtt az API-k használatát, az Azure Cognitive Services-fiók létrehozása az Azure-ban, és szereznie egy hozzáférési kulcsot a Text Analytics API-k használatához.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -227,7 +227,7 @@ val connStr = new ConnectionStringBuilder()
             .setSasKeyName(sasKeyName)
             .setSasKey(sasKey)
 
-val pool = Executors.newFixedThreadPool(1)
+val pool = Executors.newScheduledThreadPool(1)
 val eventHubClient = EventHubClient.create(connStr.toString(), pool)
 
 def sendEvent(message: String) = {

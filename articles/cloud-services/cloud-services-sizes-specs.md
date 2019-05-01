@@ -15,11 +15,11 @@ ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 21fbfe22901de677209b55639cd8871ab408375b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60406420"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719033"
 ---
 # <a name="sizes-for-cloud-services"></a>A Cloud Services méretei
 Ez a témakör ismerteti az elérhető méretek és a Cloud Service-szerepkörpéldányok (webes és feldolgozói szerepkörök) beállításokat. Telepítési szempontok figyelembe ezeket az erőforrásokat használatának tervezésekor is tartalmazza. Minden méretét rendelkezik egy Azonosítót, amely helyezi a [szolgáltatásdefiníciós fájl](cloud-services-model-and-package.md#csdef). Árak méreteire vonatkoztatva érhetők az [Cloud Services díjszabása](https://azure.microsoft.com/pricing/details/cloud-services/) lapot.

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 20ebcb502e03f2d817fe18624d8c790e920c667f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ea2381287729579e10d457912c4147f59716bcc4
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61371923"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875711"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>A QnA Maker interaktív módon a Tudásbázis tesztelése
 
@@ -24,8 +24,8 @@ A QnA Maker Tudásbázis tesztelése egy, a visszaadott válaszokat pontosságá
 
 ## <a name="test-answer-matching"></a>Válasz megfelelő tesztelése
 
-1.  A Tudásbázis eléréséhez válassza a neve a a **saját tudásbázisok** lapot.
-2.  A teszt dia kibővített panel eléréséhez, válassza ki a **teszt** az alkalmazás tetején található.
+1.  A Tudásbázis eléréséhez válassza a neve a a **saját tudásbázisok** lapot.
+2.  A teszt dia kibővített panel eléréséhez, válassza ki a **teszt** az alkalmazás tetején található.
 
     ![Teszt panel eléréséhez](../media/qnamaker-how-to-test-kb/access-test.png)
 
@@ -35,17 +35,17 @@ A QnA Maker Tudásbázis tesztelése egy, a visszaadott válaszokat pontosságá
 
 ## <a name="clear-test-panel"></a>Egyértelmű teszt panel
 
-Törölje az összes megadott teszt lekérdezés és a test-konzolról eredményeit, válassza ki a **újrakezdés** a teszt panel bal felső sarkában.
+Törölje az összes megadott teszt lekérdezés és a test-konzolról eredményeit, válassza ki a **újrakezdés** a teszt panel bal felső sarkában.
 
 ## <a name="close-test-panel"></a>Zárja be a teszt panel
 
-A teszt panel bezárásához kattintson a **teszt** újra gombra. Miközben a teszt panel meg nyitva, már nem szerkesztheti a Tudásbázis-tartalmat.
+A teszt panel bezárásához kattintson a **teszt** újra gombra. Miközben a teszt panel meg nyitva, már nem szerkesztheti a Tudásbázis-tartalmat.
 
 ## <a name="inspect-score"></a>Vizsgálja meg a pontszám
 
 Nézze meg a teszt eredménye a vizsgálat panelen részleteit.
 
-1.  A panelen nyissa meg a teszt dia kibővített, válassza ki a **vizsgálat** a válasszal kapcsolatos további részletekért.
+1.  A panelen nyissa meg a teszt dia kibővített, válassza ki a **vizsgálat** a válasszal kapcsolatos további részletekért.
 
     ![Vizsgálja meg a válaszok](../media/qnamaker-how-to-test-kb/inspect.png)
 

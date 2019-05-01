@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 9603c45443c6339a127f977600eeff2ba57a283f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2bc32e28ffd6dd9dab2da61078684791a04709cc
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61228127"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922984"
 ---
 # <a name="configure-application-insights-profiler"></a>Az Application Insights Profiler konfigurálása
 
@@ -41,7 +41,7 @@ Az Azure App Service-környezet konfigurációjától függően érdemes lehet b
 ## <a id="profileondemand"></a> Profiler aktiválása manuálisan
 
 ### <a name="minimum-requirements"></a>Minimális követelmények 
-Egy felhasználó manuálisan indítható a profiler munkamenet igényelnek legalább "write" hozzáférés az Application Insights-összetevő a szerepkör. A legtöbb esetben ez hozzáférést kap automatikusan, és nincs további feladata van szükség. Ha problémák merülnek fel, az előfizetés hatókör szerepkör hozzáadása az "Application Insights-összetevő közreműködő" szerepkör lesz. [Talál további információt a szerepkör hozzáférés-vezérlés az Azure Monitoring](https://docs.microsoft.com/en-us/azure/azure-monitor/app/resources-roles-access-control).
+Egy felhasználó manuálisan indítható a profiler munkamenet igényelnek legalább "write" hozzáférés az Application Insights-összetevő a szerepkör. A legtöbb esetben ez hozzáférést kap automatikusan, és nincs további feladata van szükség. Ha problémák merülnek fel, az előfizetés hatókör szerepkör hozzáadása az "Application Insights-összetevő közreműködő" szerepkör lesz. [Talál további információt a szerepkör hozzáférés-vezérlés az Azure Monitoring](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control).
 
 Profiler manuálisan is aktiválhatja egyetlen kattintással. Tegyük fel, hogy a webes teljesítménytesztelési futtat. Nyomkövetési információk segítségével megismerheti, hogyan működik a webes alkalmazás terhelés alatt kell. Szabályozhatja, mikor rögzítve lesznek a nyomkövetések kellene elengedhetetlen, mivel a terhelési teszt futtatásakor. De a véletlenszerű mintavételi időköz előfordulhat, hogy hagyja ki.
 

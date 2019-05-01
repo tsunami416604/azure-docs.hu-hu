@@ -9,19 +9,20 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: sstein
+ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: ec9bd3ee106571484c513c2d005a374a90c1d17e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/26/2019
+ms.openlocfilehash: 74a52df4eab8a3e471e541889cde74846af00fb8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359712"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574185"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Fizessen elő az SQL-adatbázis számítási erőforrásokat, hogy az Azure SQL Database szolgáltatás számára fenntartott kapacitás
 
 Pénzt takaríthat meg az Azure SQL Database előre a számítási erőforrások a használatalapú fizetéshez képest. Azure SQL Database szolgáltatás számára fenntartott kapacitás esetén módosítani egy előzetes kötelezettségvállalás az SQL Database egy vagy három évig, jelentős árkedvezményeket lekérni a számítási költségek. SQL Database szolgáltatás számára fenntartott kapacitás vásárlása, meg kell adnia az Azure-régió, a központi telepítési típus, a teljesítményszint és a kifejezés.
+
 
 Nem kell a Foglalás hozzárendelése meghatározott SQL Database-példányok (önálló adatbázisok, rugalmas készletek vagy felügyelt példányok). SQL Database-példány, amelyeken már fut, vagy azokat, amelyeket újonnan telepített, automatikusan megkapja a juttatás megfelelő. A Foglalás megvásárlásával Ön előre fizetés a számítási költségek egy vagy három éves időszakra. Amint vásárol egy foglalást, a számítási díjakat, amelyek megfelelnek a Foglalás attribútumok már nem számoljuk el a használatalapú-as-, SQL Database díjszabása nyissa meg. A foglalás nem fedi le szoftvereket, hálózati vagy tárolási díjak az SQL Database-példányhoz társított. A Foglalás időtartamára végén a számlázási ellátás lejár, és az SQL-adatbázisok számlázása a használatalapú – mint-akkor lépjen díj ellenében. Foglalások nem automatikus megújítási. Díjszabási információkért tekintse meg a [SQL Database szolgáltatás számára fenntartott kapacitás ajánlat](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 
@@ -51,7 +52,7 @@ Például tegyük fel, hogy futtatja egy általános célú, Gen5 – 16 virtuá
     | Mező      | Leírás|
     |:------------|:--------------|
     |Name (Név)        |A Foglalás neve.|
-    |Előfizetés|Az SQL Database szolgáltatás számára fenntartott kapacitás foglalási díjfizetéséhez használt előfizetés. A fizetési módot, az előfizetés fel van töltve az SQL Database szolgáltatás számára fenntartott kapacitás foglalás az előzetes költségek. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy a használatalapú fizetés (számok kínálnak: MS-AZR-0003P vagy MS-AZR - 0023 P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Használatalapú fizetéses előfizetéseknél a díjakat az előfizetéshez tartozó hitelkártyára terheljük vagy a számlafizetési módnak megfelelően számlázzuk.|
+    |Előfizetés|Az SQL Database szolgáltatás számára fenntartott kapacitás foglalási díjfizetéséhez használt előfizetés. A fizetési módot, az előfizetés fel van töltve az SQL Database szolgáltatás számára fenntartott kapacitás foglalás az előzetes költségek. Az előfizetés típusúnak kell lennie a nagyvállalati szerződés (számok kínálnak: MS-AZR-0017P vagy MS-AZR - 0148 P) vagy a használatalapú fizetés (számok kínálnak: MS-AZR-0003P vagy MS-AZR-0023P). Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó keretek egyenlegeiből lesznek levonva, illetve túlhasználatként lesznek számlázva. Használatalapú fizetéses előfizetéseknél a díjakat az előfizetéshez tartozó hitelkártyára terheljük vagy a számlafizetési módnak megfelelően számlázzuk.|
     |Hatókör       |A virtuális mag foglalás hatóköre egy előfizetés vagy több előfizetés (megosztott hatókör) is foglalkozik. Ha ki: <br/><br/>**Egy előfizetés** -rendszer alkalmazza a virtuális mag foglalási kedvezményt SQL Database-példány ebben az előfizetésben. <br/><br/>**Előfizetés megosztott** – a virtuális mag foglalási kedvezményt a számlázási környezetben előfizetésekkel példányai az SQL Database vonatkozik. A vállalati ügyfelek a megosztott hatókörrel a regisztráció és a regisztráció belüli összes előfizetésre tartalmazza. Használatalapú fizetéses ügyfelek számára a megosztott hatókörrel a fiók rendszergazdája által létrehozott összes utólagos elszámolású előfizetések.|
     |Régió      |Az Azure-régióban, az SQL Database által fenntartott kapacitás foglalás.|
     |Központi telepítés típusa|Az SQL erőforrás típusa, amely szeretné megvásárolni a foglalást.|

@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 409c1abd7e9f532bb243ecab00228b402215c77e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c8d5df0f83a7ae37b9f06a5e255e9809288b6d67
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61313673"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917033"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Egyetlen, a tranzakciós replikáció készletezett és adatbázisokat az Azure SQL Database-példány
 
@@ -79,7 +79,7 @@ Különböző [replikációtípusok](https://docs.microsoft.com/sql/relational-d
   > - Próbál egy régebbi verzióját használja, a replikáció konfigurálása számának MSSQL_REPL20084 (a folyamat nem tudott kapcsolódni előfizető.) és MSSQ_REPL40532 hibát eredményez (nem nyitható meg a kiszolgáló \<név > a bejelentkezés által kért. A bejelentkezés sikertelen volt.)
   > - Azure SQL Database összes funkciójának használatához kell használnia a legújabb [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).
   
-  ### <a name="supportabilty-matrix-for-instance-databases-and-on-premises-systems"></a>Példányok adatbázisai és a helyszíni rendszerek Supportabilty mátrix
+  ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>Példányok adatbázisai és a helyszíni rendszerek támogatási mátrix
   A replikációs támogathatóság mátrix, például adatbázisok pedig ugyanaz, mint a helyszíni SQL Server esetében. 
   
   | **Közzétevő**   | **Terjesztő** | **Előfizető** |
@@ -140,7 +140,7 @@ Ebben a konfigurációban az Azure SQL Database (egyetlen, készletezett és ada
 
 ## <a name="next-steps"></a>További lépések
 
-1. [Konfigurálja a felügyelt példány tranzakciós replikáció](replication-with-sql-database-managed-instance.md#configure-publishing-and-distribution-example). 
+1. [Konfigurálja a felügyelt példány tranzakciós replikáció](replication-with-sql-database-managed-instance.md). 
 1. [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
 1. [Hozzon létre egy leküldéses előfizetés](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) az előfizetők az Azure SQL Database-kiszolgáló neve használatával (például `N'azuresqldbdns.database.windows.net` és a cél adatbázis az Azure SQL Database nevére (például **Adventureworks**. )
 

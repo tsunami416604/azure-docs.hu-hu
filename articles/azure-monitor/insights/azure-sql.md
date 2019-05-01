@@ -10,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: c68c278b2a7afa8287845c452e3bec5380cf05c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 03f330f429be583d3a400eb1ee00875f7c305e74
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498463"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64923016"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Az Azure SQL Database megfigyelése az Azure SQL Analytics (előzetes verzió)
 
@@ -287,7 +287,7 @@ AzureDiagnostics
 
 ### <a name="pricing"></a>Díjszabás
 
-Bár a megoldás használata ingyenes, vonatkozik-e az diagnostics telemetriai adatainak fent az adatbetöltés lefoglalva minden hónapban ingyenes egységek felhasználását, lásd: [Log Analytics díjszabása](https://azure.microsoft.com/en-us/pricing/details/monitor). Az adatbetöltés foglalt ingyenes egységek ingyenes figyelés engedélyezése több adatbázis minden hónapban. Vegye figyelembe, hogy a nagyobb számítási feladatok több aktív adatbázisok betöltési inaktív adatbázisokat és további adatokat. Az adathasználat Adatbetöltési a megoldás az OMS-munkaterület kiválasztásával az Azure SQL Analytics, a navigációs menü, és kiválasztja a használat és becsült költségek egyszerűen figyelheti.
+Bár a megoldás használata ingyenes, vonatkozik-e az diagnostics telemetriai adatainak fent az adatbetöltés lefoglalva minden hónapban ingyenes egységek felhasználását, lásd: [Log Analytics díjszabása](https://azure.microsoft.com/pricing/details/monitor). Az adatbetöltés foglalt ingyenes egységek ingyenes figyelés engedélyezése több adatbázis minden hónapban. Vegye figyelembe, hogy a nagyobb számítási feladatok több aktív adatbázisok betöltési inaktív adatbázisokat és további adatokat. Az adathasználat Adatbetöltési a megoldás az OMS-munkaterület kiválasztásával az Azure SQL Analytics, a navigációs menü, és kiválasztja a használat és becsült költségek egyszerűen figyelheti.
 
 ## <a name="next-steps"></a>További lépések
 

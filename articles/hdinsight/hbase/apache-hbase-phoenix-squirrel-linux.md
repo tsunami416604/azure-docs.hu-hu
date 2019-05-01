@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: hrasheed
 ms.openlocfilehash: 0bef586540635ee1bada3475f6316c84dea4308c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123161"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722683"
 ---
 # <a name="use-apache-phoenix-with-linux-based-apache-hbase-clusters-in-hdinsight"></a>Az Apache HBase Linux-alapú Apache Phoenix használata a HDInsight-fürtök
 Ismerje meg, hogyan használható [Apache Phoenix](https://phoenix.apache.org/) az Azure HDInsight és az SQLLine használata. A Phoenix kapcsolatos további információkért lásd: [kevesebb mint 15 perc alatt az Apache Phoenix](https://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). A Phoenix szintaxis megtekintéséhez [Apache Phoenix nyelvtani](https://phoenix.apache.org/language/index.html).

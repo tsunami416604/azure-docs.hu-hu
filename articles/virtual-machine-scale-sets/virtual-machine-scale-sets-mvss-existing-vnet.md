@@ -13,25 +13,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 06/27/2017
-ms.date: 11/30/2018
-ms.author: v-junlch
-ms.openlocfilehash: 1dcb97a94bd5790edc2e40acf890bb47baec7a4b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.date: 04/26/2019
+ms.author: manayar
+ms.openlocfilehash: 8b75b9898eb767866c0843594a82570cfb65d122
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62108027"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868959"
 ---
 # <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Adjon hozzá egy meglévő virtuális hálózatot a hivatkozást az egy Azure méretezésicsoport-sablon
 
-Ez a cikk bemutatja, hogyan lehet módosítani a [minimális működőképes méretezési csoport sablon](./virtual-machine-scale-sets-mvss-start.md) helyezheti üzembe egy meglévő virtuális hálózatot egy új létrehozása helyett.
+Ez a cikk bemutatja, hogyan lehet módosítani a [egyszerű méretezési csoport sablonját](virtual-machine-scale-sets-mvss-start.md) helyezheti üzembe egy meglévő virtuális hálózatot egy új létrehozása helyett.
 
 ## <a name="change-the-template-definition"></a>A Sablondefiníció módosítása
 
-A minimális működőképes méretezési csoport sablonjának látható [Itt](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), és láthatja a sablon üzembe helyezéséhez a méretezési csoport meglévő virtuális hálózatban [Itt](https://raw.githubusercontent.com/gatneil/mvss/existing-vnet/azuredeploy.json). Most vizsgálja meg a sablon létrehozásához használt diff (`git diff minimum-viable-scale-set existing-vnet`) darab által darab:
+Az egy [előző cikk](virtual-machine-scale-sets-mvss-start.md) korábban létrehoztunk egy alapszintű méretezési csoport sablonjában. Mi most a régebbi sablonban használja, és módosítsa úgy, hogy hozzon létre egy sablont, amely üzembe helyez egy méretezési csoport meglévő virtuális hálózatban. 
 
-Először adja hozzá a `subnetId` paraméter. Ez a karakterlánc átad a méretezésicsoport-konfigurációt, lehetővé téve a méretezési csoport azonosításához az előre létrehozott alhálózat, virtuális gépek telepítéséhez. Ez a karakterlánc a következő formában kell lennie: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`. Például a méretezési csoport üzembe helyezése állítsa nevű meglévő virtuális hálózatban `myvnet`, alhálózat `mysubnet`, erőforráscsoport `myrg`, és az előfizetés `00000000-0000-0000-0000-000000000000`, a subnetId lenne: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
+Először adja hozzá a `subnetId` paraméter. Ez a karakterlánc átad a méretezésicsoport-konfigurációt, lehetővé téve a méretezési csoport azonosításához az előre létrehozott alhálózat, virtuális gépek telepítéséhez. Ez a karakterlánc a következő formában kell lennie: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
+
+Például a méretezési csoport üzembe helyezése állítsa nevű meglévő virtuális hálózatban `myvnet`, alhálózat `mysubnet`, erőforráscsoport `myrg`, és az előfizetés `00000000-0000-0000-0000-000000000000`, a subnetId lenne: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
 
 ```diff
      },
@@ -53,7 +54,7 @@ Ezután törölje a virtuális hálózati erőforrás a `resources` tömbben, me
 -      "type": "Microsoft.Network/virtualNetworks",
 -      "name": "myVnet",
 -      "location": "[resourceGroup().location]",
--      "apiVersion": "2016-12-01",
+-      "apiVersion": "2018-11-01",
 -      "properties": {
 -        "addressSpace": {
 -          "addressPrefixes": [
@@ -79,7 +80,7 @@ A virtuális hálózat már létezik a sablon üzembe helyezése előtt, így ne
        "type": "Microsoft.Compute/virtualMachineScaleSets",
        "name": "myScaleSet",
        "location": "[resourceGroup().location]",
-       "apiVersion": "2016-04-30-preview",
+       "apiVersion": "2019-03-01",
 -      "dependsOn": [
 -        "Microsoft.Network/virtualNetworks/myVnet"
 -      ],
@@ -88,7 +89,7 @@ A virtuális hálózat már létezik a sablon üzembe helyezése előtt, így ne
          "capacity": 2
 ```
 
-Végül adja át a `subnetId` a felhasználó által megadott paraméter (használata helyett `resourceId` beolvasni a virtuális hálózat Azonosítóját az egyazon telepítésben, azaz, hogy mi a minimális működőképes méretezési csoport sablon does).
+Végül adja át a `subnetId` a felhasználó által megadott paraméter (használata helyett `resourceId` beolvasni a virtuális hálózat Azonosítóját az egyazon telepítésben, azaz, hogy mi az alapszintű működőképes méretezési csoport sablon does).
 
 ```diff
                        "name": "myIpConfig",
@@ -107,5 +108,3 @@ Végül adja át a `subnetId` a felhasználó által megadott paraméter (haszn�
 ## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]
-
-<!-- Update_Description: update metedata properties -->

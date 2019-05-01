@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/13/2017
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c5cad3f735494ee74156e22a9bf150911c36eb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 05c1575781f280b3be1843abee0469af52baeb2d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381659"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918429"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Adja meg a hibrid identitáskezelési megoldás az adatvédelmi stratégiát?
 Ebben a feladatban az adatvédelmi stratégiát a hibrid identitáskezelési megoldás az üzleti szükségletek kielégítése céljából, amelyet a megadott fogja definiálni:
@@ -89,7 +89,7 @@ A Tartalomkezelés alapvető része, hogy ismerje meg, melyik erőforrást hozz�
 ## <a name="define-access-control-options"></a>Hozzáférés-vezérlési lehetőségek meghatározása
 A hitelesítési, engedélyezési és hozzáférés-vezérlési funkciókkal az Azure ad-ben elérhető kihasználva a vállalat egy központi identitástárház használata közben, így a felhasználók számára engedélyezheti és partnerek használata egyszeri bejelentkezéses (SSO) az alábbi ábrán látható módon:
 
-![](./media/plan-hybrid-identity-design-considerations/centralized-management.png)
+![központi felügyelet](./media/plan-hybrid-identity-design-considerations/centralized-management.png)
 
 Központi felügyeletet, és teljesen más címtár-integráció
 
@@ -115,7 +115,7 @@ A az Azure AD-támogatás, mobil üzleti alkalmazások használatával az azonos
 
 Miután a felhasználó hitelesítése az Azure AD-vel, fontos értékelheti ki a hozzáférési szintet, amelyet a felhasználó rendelkezik. A hozzáférési szintet, amelyet a felhasználó rendelkezik az adott erőforráson eltérőek lehetnek. Bár az Azure AD bizonyos erőforrásokhoz való hozzáférés szabályozása is hozzáadhat egy további biztonsági réteget, vegye figyelembe, hogy a erőforrásán is lehet a saját hozzáférés-vezérlési lista külön-külön, például a hozzáférés-vezérlés a fájlkiszolgálón található fájlokat. A következő ábra összefoglalja a szintű hozzáférés-vezérlés, amely egy hibrid forgatókönyvben is rendelkezik:
 
-![](./media/plan-hybrid-identity-design-considerations/accesscontrol.png)
+![Hozzáférés-vezérlés](./media/plan-hybrid-identity-design-considerations/accesscontrol.png)
 
 Minden interakció x. ábra bemutatta a diagram egy szerint az Azure AD hozzáférési adatvezérlési forgatókönyvek jelöli. Az alábbiakban az egyes forgatókönyvek leírását rendelkezik:
 

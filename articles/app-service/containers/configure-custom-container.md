@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 1e5faa8d356b891d825586414c0a1a1b9fa47090
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: feeb9ae4472fb3439ecc5d6505860cc407f9e4d3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60853320"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919738"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Egyéni Linux-tárolóban konfigurálása az Azure App Service-ben
 
@@ -109,7 +109,6 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
 - [Tartós tároláshoz használjon a Docker Compose](#use-persistent-storage-in-docker-compose)
 - [Előzetes verzió korlátozásai](#preview-limitations)
 - [A docker Compose-beállítások](#docker-compose-options)
-- [Kubernetes konfigurációs lehetőségek](#kubernetes-configuration-options)
 
 ### <a name="use-persistent-storage-in-docker-compose"></a>Tartós tároláshoz használjon a Docker Compose
 
@@ -132,19 +131,6 @@ wordpress:
   - ${WEBAPP_STORAGE_HOME}/site/wwwroot:/var/www/html
   - ${WEBAPP_STORAGE_HOME}/phpmyadmin:/var/www/phpmyadmin
   - ${WEBAPP_STORAGE_HOME}/LogFiles:/var/log
-```
-
-### <a name="use-custom-storage-in-docker-compose"></a>Egyéni storage használata a Docker Compose
-
-Az Azure Storage (Azure Blob vagy az Azure-fájlok) az egyéni-azonosító használatával többtárolós alkalmazások csatlakoztathatók. Az egyéni-azonosító neve megtekintéséhez futtassa [ `az webapp config storage-account list --name <app_name> --resource-group <resource_group>` ](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list).
-
-Az a *docker-compose.yml* fájlt, és leképezheti a `volumes` beállítást `custom-id`. Példa:
-
-```yaml
-wordpress:
-  image: wordpress:latest
-  volumes:
-  - <custom-id>:<path_in_container>
 ```
 
 ### <a name="preview-limitations"></a>Előzetes verzió korlátozásai
@@ -179,22 +165,6 @@ A következő listákban támogatott és nem támogatott a Docker Compose konfig
 
 > [!NOTE]
 > Nem kifejezetten feltüntettük az egyéb beállításokat figyelmen kívül hagyja a nyilvános előzetes verzióban érhető el.
-
-### <a name="kubernetes-configuration-options"></a>Kubernetes konfigurációs lehetőségek
-
-Az alábbi konfigurációs lehetőségeket a Kubernetes támogatja:
-
-- args
-- command
-- tárolók
-- image
-- név
-- ports
-- spec
-
-> [!NOTE]
-> Az egyéb beállításokat nem kifejezetten emelte ki a nyilvános előzetes verzióban nem támogatottak.
->
 
 ## <a name="next-steps"></a>További lépések
 

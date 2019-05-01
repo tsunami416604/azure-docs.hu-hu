@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 90f832319fa2343003af58bd99eb64c0cbd94dd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 284480ab8b9973c02f365dbf3ebfd3a103ef4b42
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60371811"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919155"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>A Microsoft vevői szerződés számlázási fiók beállítása
 
@@ -108,7 +108,7 @@ Az Azure Active Directory-bérlő van kiválasztva az új számlázási fiók a 
 
 Az új fiók csak a felhasználók a Microsoft vevői szerződés aláírása közben kiválasztott bérlőtől támogatja. Ha a nagyvállalati szerződés rendszergazdai engedéllyel rendelkező felhasználók a bérlő részét képezik, azok az új számlázási fiók hozzáférést fog kapni a telepítés során. Ha nem a bérlő egy része, nem érhetik el az új számlázási fiók, kivéve, ha felkéri őket.
 
-Amikor meghívja a felhasználókat, azokat hozzá szeretné adni a bérlő vendégfelhasználók, és hozzáférhet a számlázási fiókba. A felhasználókat meghívni, a vendéghozzáférés bekapcsolva kell lennie a bérlő számára. További információkért lásd: [szabályozhatja a vendéghozzáférés az Azure Active Directoryban](https://docs.microsoft.com/en-us/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory). Ha a vendéghozzáférés ki van kapcsolva, lépjen kapcsolatba a kapcsolhatja be a bérlő globális rendszergazdája. <!-- Todo - How can they find their global administrator -->
+Amikor meghívja a felhasználókat, azokat hozzá szeretné adni a bérlő vendégfelhasználók, és hozzáférhet a számlázási fiókba. A felhasználókat meghívni, a vendéghozzáférés bekapcsolva kell lennie a bérlő számára. További információkért lásd: [szabályozhatja a vendéghozzáférés az Azure Active Directoryban](https://docs.microsoft.com/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory). Ha a vendéghozzáférés ki van kapcsolva, lépjen kapcsolatba a kapcsolhatja be a bérlő globális rendszergazdája. <!-- Todo - How can they find their global administrator -->
 
 ## <a name="view-features-replaced-by-the-new-billing-account"></a>Megtekintheti a funkciókat váltotta fel az új számlázási fiók
 

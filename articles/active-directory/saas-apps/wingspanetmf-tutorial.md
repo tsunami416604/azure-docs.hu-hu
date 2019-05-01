@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: a41bdda303c9e636929fba00a2fe4279002e42b3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6c3a7a8644e0e391f8817a7ae3a4cb9b8af5dab7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280757"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920374"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Wingspan eTMF
 
@@ -112,7 +112,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Wingspan eTMF, hajts
     c. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<customer name>.<instance name>.mywingspan.com/`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-, azonosítóját és válasz URL-cím. Kapcsolattartó [Wingspan eTMF ügyfél-támogatási csapatának](http://www.wingspan.com/contact-us/) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-, azonosítóját és válasz URL-cím. Kapcsolattartó [Wingspan eTMF ügyfél-támogatási csapatának](https://www.wingspan.com/contact-us/) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
@@ -130,7 +130,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Wingspan eTMF, hajts
 
 ### <a name="configure-wingspan-etmf-single-sign-on"></a>Wingspan eTMF egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **Wingspan eTMF** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Wingspan eTMF támogatási csoport ](http://www.wingspan.com/contact-us/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **Wingspan eTMF** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Wingspan eTMF támogatási csoport ](https://www.wingspan.com/contact-us/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -184,7 +184,7 @@ Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejel
 
 ### <a name="create-wingspan-etmf-test-user"></a>Wingspan eTMF tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Wingspan eTMF hoz létre. Együttműködve [Wingspan eTMF támogatási csapatának](http://www.wingspan.com/contact-us/) a felhasználók hozzáadása az Wingspan eTMF platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű Wingspan eTMF hoz létre. Együttműködve [Wingspan eTMF támogatási csapatának](https://www.wingspan.com/contact-us/) a felhasználók hozzáadása az Wingspan eTMF platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

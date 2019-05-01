@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 3e2c6a550a9358656fd0870c7e785d131c5b6380
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9799914cdabf1f64fccfd6bfd891f9498b860e39
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894393"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64923002"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services-(MARS) ügynök biztonsági mentés támogatási mátrixa
 
@@ -24,14 +24,14 @@ Használhatja a [Azure Backup szolgáltatás](backup-overview.md) a helyszíni g
 Az Azure Backup biztonsági másolatokat a helyszíni gépek és Azure virtuális gépek az Azure-beli biztonsági mentési Recovery Services-tárolót használ a MARS-ügynök. A MARS-ügynök a következőket teheti:
 - Futtassa a helyi Windows-gépeken, hogy azok biztonsági másolatot készíthet közvetlenül az Azure-beli biztonsági mentési Recovery Services-tárolóba.
 - Futtassa a Windows virtuális gépeken, hogy azok biztonsági másolatot készíthet közvetlenül egy tárolót.
-- Futtassa a Microsoft Azure Backup Server (MABS) vagy a System Center Data Protection Manager (DPM) kiszolgáló. Ebben a forgatókönyvben gépeket és számítási feladatok biztonsági mentése a MABS vagy a DPM-kiszolgálóhoz. A MARS-ügynök ezután menti a kiszolgáló egy tárolót az Azure-ban. 
+- Futtassa a Microsoft Azure Backup Server (MABS) vagy a System Center Data Protection Manager (DPM) kiszolgáló. Ebben a forgatókönyvben gépeket és számítási feladatok biztonsági mentése a MABS vagy a DPM-kiszolgálóhoz. A MARS-ügynök ezután menti a kiszolgáló egy tárolót az Azure-ban.
 
 A biztonsági mentési lehetőségek attól függnek, ahová az agent telepítve van. További információkért lásd: [a MARS-ügynök használatával az Azure Backup architektúrájának](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). További információ a MABS és a DPM biztonsági mentési architektúra: [biztonsági mentést a DPM- vagy MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). További tájékoztatás [követelmények](backup-support-matrix-mabs-dpm.md) a biztonsági mentési architektúra.
 
 **Telepítés** | **Részletek**
 --- | ---
 A legújabb MARS-ügynök letöltése | Az ügynök legújabb verzióját letöltheti a tárolóból vagy [töltenie közvetlenül](https://aka.ms/azurebackup_agent).
-Telepítse a gépen közvetlenül | A MARS-ügynök közvetlenül egy helyszíni Windows server vagy bármely futó Windows virtuális gépen telepítheti a [támogatott operációs rendszerek](https://docs.microsoft.com/en-us/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems).
+Telepítse a gépen közvetlenül | A MARS-ügynök közvetlenül egy helyszíni Windows server vagy bármely futó Windows virtuális gépen telepítheti a [támogatott operációs rendszerek](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems).
 Telepítse a tartalék kiszolgáló | Ha beállította a DPM- vagy MABS biztonsági mentése az Azure-ba, töltse le és telepítse a MARS-ügynököt a kiszolgálón. Telepítheti az ügynököt [támogatott operációs rendszerek](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems) a backup server támogatási mátrixa.
 
 > [!NOTE]
@@ -45,8 +45,8 @@ A MARS-ügynök használatakor a biztonsági másolatokat az ügynök pillanatk�
 
 **Cache** | **Részletek**
 --- | ---
-Méret |  Az ügyfélgyorsítótár mappájában található szabad hely a biztonsági mentési adatok teljes mérete legalább 5-10 %-os lehet. 
-Hely | A gyorsítótármappa helyben kell tárolni, amelyek másolat készül a gépen, és online állapotban kell lennie. A gyorsítótár mappája nem lehet a hálózati megosztás, cserélhető adathordozón vagy egy kapcsolat nélküli köteten. 
+Méret |  Az ügyfélgyorsítótár mappájában található szabad hely a biztonsági mentési adatok teljes mérete legalább 5-10 %-os lehet.
+Location egység | A gyorsítótármappa helyben kell tárolni, amelyek másolat készül a gépen, és online állapotban kell lennie. A gyorsítótár mappája nem lehet a hálózati megosztás, cserélhető adathordozón vagy egy kapcsolat nélküli köteten.
 Mappa | A gyorsítótármappa titkosítani kell a deduplikált kötetek vagy tömörített, Ez ritka vagy egy újraelemzési pontot tartalmazó mappában.
 Helyadatok módosításainak | A gyorsítótár helyének módosításához a biztonságimásolat-készítő motor leállítása (`net stop bengine`) és a gyorsítótármappa másolása az új meghajtó. (Győződjön meg arról, az új meghajtó nincs elegendő lemezterület.) Frissítse a két beállításjegyzékbeli bejegyzést **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**Config/ScratchLocation** és **Config/CloudBackupProvider/ScratchLocation**) az új helyre, és indítsa újra a motor.
 
@@ -103,9 +103,9 @@ Windows 7   | 1,700 GB
 
 ## <a name="supported-file-types-for-backup"></a>Biztonsági mentés támogatott fájltípusok
 
-**Típus** | **Támogatás** 
---- | --- 
-Titkosított   | Támogatott. 
+**Típus** | **Támogatás**
+--- | ---
+Titkosított   | Támogatott.
 Tömörített | Támogatott.
 Ritka | Támogatott.
 Tömörített és ritka | Támogatott.
@@ -114,7 +114,7 @@ Rögzített hivatkozások  | Nem támogatott. Kihagyva.
 Titkosított és ritka |  Nem támogatott. Kihagyva.
 Tömörített adatfolyam   | Nem támogatott. Kihagyva.
 Ritka adatfolyam   | Nem támogatott. Kihagyva.
-A onedrive vállalati verzió (szinkronizált fájlok olyan ritka adatfolyam)  | Nem támogatott. 
+A onedrive vállalati verzió (szinkronizált fájlok olyan ritka adatfolyam)  | Nem támogatott.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Támogatott meghajtók vagy kötetek biztonsági mentés
 

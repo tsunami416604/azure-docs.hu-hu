@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag az Azure Data Box Edge fizikai eszköz telepítése |} A Microsoft Docs
+title: Telepítése – oktatóanyag kicsomagolása, állványra, kábel fizikai eszköz az Azure Data Box Edge |} A Microsoft Docs
 description: A második oktatóanyagban az Azure Data Box Edge telepítésével kapcsolatos kicsomagolása, állványra és a fizikai eszköz bekábelezése foglalja magában.
 services: databox
 author: alkohli
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 46192d32e70e371325abeafd4da26fa29e491b13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7062e9d829242a62dfa4f661c21ce6c56b0db69c
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60758324"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924527"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>Oktatóanyag: Az Azure Data Box Edge telepítése
 
@@ -145,7 +145,8 @@ Keresse meg az összetevők telepítésének sín kit sestavení:
 
 ### <a name="engage-and-release-the-slam-latch"></a>Léphet, és engedje el a slam zárolás
 
-MEGJEGYZÉS: A rendszerek nem slam zárolás van életben felszerelt biztonságos csavart, a rendszer ez az eljárás 3. lépésében leírtak szerint.
+> [!NOTE]
+> A rendszerek nem slam zárolás van életben felszerelt biztonságos csavart, a rendszer ez az eljárás 3. lépésében leírtak szerint.
 
 1. A rendszer egyik oldalán az első elérhető, keresse meg a slam zárolás.
 2. A zárolás van életben automatikusan léphet, a rendszer leküldéssel kerülnek az állványra szerelt, és a zárolás van életben a kiindulásként kiadott.

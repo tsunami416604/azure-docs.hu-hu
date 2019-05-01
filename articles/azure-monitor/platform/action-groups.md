@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/12/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 3d06024b7fa4356d4ad0e8b52c45c2ead62ef784
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1c772756a90c3eee4e2b3fb4fd4a0ec9e98fa0da
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60778337"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919089"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure Portalon a műveleti csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés ##
@@ -78,7 +78,7 @@ Miután létrehozta a műveletcsoport, is látható, az a **Műveletcsoportok** 
 
 Előfordulhat, hogy e-mailes műveletek csak korlátozott számú tartalmaz műveletcsoport. Tekintse meg a [sebessége korlátozza az információk](./../../azure-monitor/platform/alerts-rate-limiting.md) cikk
 
-**ITSM** -műveletcsoport ITSM-műveletek korlátozott számú korlátozott számú lehet. ITSM-művelethez egy ITSM-kapcsolat szükséges. Ismerje meg, hogyan hozhat létre egy [ITSM-kapcsolat](../../azure-monitor/platform/itsmc-overview.md).
+**ITSM** -műveletcsoport ITSM-műveletek csak korlátozott számú lehet. ITSM-művelethez egy ITSM-kapcsolat szükséges. Ismerje meg, hogyan hozhat létre egy [ITSM-kapcsolat](../../azure-monitor/platform/itsmc-overview.md).
 
 **Logikai alkalmazás** -Logic App-műveletek csak korlátozott számú műveletcsoport lehet.
 
@@ -105,15 +105,12 @@ Forrás IP-címtartományok
  - 51.5.148.86
  - 51.5.149.19
 
-Fogadni ezen IP-címek, azt javasoljuk, hogy a változásokat frissítések konfigurálása [Service állapotriasztás, amely figyeli a Műveletcsoportok szolgáltatással kapcsolatos tájékoztató értesítések.
-
+Ezen IP-címek érintő változásokról a frissítések fogadásához javasoljuk egy szolgáltatás állapotát figyeli a tájékoztató értesítések, a Műveletcsoportok szolgáltatással kapcsolatos riasztás konfigurálja.
 
 ## <a name="next-steps"></a>További lépések ##
-
 * Tudjon meg többet [SMS-riasztás viselkedése](../../azure-monitor/platform/alerts-sms-behavior.md).  
 * Szerezzen egy [megértése a tevékenység log riasztási webhookséma](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
 * Tudjon meg többet [ITSM-összekötő](../../azure-monitor/platform/itsmc-overview.md)
 * Tudjon meg többet [sebességkorlátozással](../../azure-monitor/platform/alerts-rate-limiting.md) a riasztásokat.
 * Get- [tevékenységnapló-riasztások áttekintése](../../azure-monitor/platform/alerts-overview.md), és a riasztások fogadása.  
 * Ismerje meg, hogyan [riasztások konfigurálása, ha a szolgáltatás állapotával kapcsolatos értesítés közzétételekor](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
-

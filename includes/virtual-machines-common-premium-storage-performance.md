@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c81b0926b88ad2f1dbb3af7c1a2c51e8a79430f9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ee721558e0e643a4b5fdcfa4cf0fe9c2195fa479
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59737120"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64736971"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Az Azure premium storage: nagy teljesítményű rendszer tervezése
 
@@ -299,7 +299,7 @@ Tegyük fel, alkalmazhatja ezeket az irányelveket az SQL Server a Premium Stora
 1. Konfigurálja a prémium szintű tárolólemezeket a naplófájlokat tároló "None" gyorsítótárazni.  
    a.  Naplófájlok elsősorban az írási műveletek rendelkezik. Ezért azok nem tudják igénybe a csak olvasható gyorsítótárának.
 
-### <a name="optimize-performance-on-linux-vms"></a>A Linux rendszerű virtuális gépek teljesítményének optimalizálása
+## <a name="optimize-performance-on-linux-vms"></a>A Linux rendszerű virtuális gépek teljesítményének optimalizálása
 
 Minden prémium szintű SSD-k vagy állítsa be gyorsítótár-ultranagy lemezek **ReadOnly** vagy **None**, ha csatlakoztatja a fájlrendszer le kell tiltania "korlátok". Mivel a prémium szintű tárolólemezeket írási műveletek ezeket a gyorsítótár-beállításokat a tartós megszüntesse az ebben a forgatókönyvben nem szükséges. Ha az írási kérelem sikeresen befejeződik, adatok állandó tárolóján lett írva. "Korlátok" letiltásához használja a következő módszerek egyikét. A fájlrendszer közül választhat:
   
@@ -313,7 +313,7 @@ A következő Linux-disztribúciók ellenőrzése a prémium szintű SSD-kkel. A
 
 A legújabb Linux Integration Services (LIS), 4.0, az Azure-hoz szükséges néhány verziójára. Töltse le, és a egy terjesztési telepítéséhez, az alábbi táblázatban szereplő hivatkozásra. Hogy képek hozzáadása a listához, hogy végezze el az érvényesítési. Az ellenőrzések bemutatják, hogy a teljesítmény változhat az egyes lemezképek. Teljesítmény függ a számítási feladatok jellemzői, és a lemezkép-beállításokat. Különböző képek amelyek ideálisak a különböző típusú számítási feladatokat.
 
-| Disztribúció | Verzió | Támogatott kernelverzióra | Részletek |
+| Disztribúció | Version | Támogatott kernelverzióra | Részletek |
 | --- | --- | --- | --- |
 | Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
 | Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
@@ -328,7 +328,7 @@ A legújabb Linux Integration Services (LIS), 4.0, az Azure-hoz szükséges néh
 | Oracle | 7.0-7.1 | &nbsp; | UEK4 vagy RHCK használatával[4.1 + LIS](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 | Oracle | 6.4-6.7 | &nbsp; | UEK4 vagy RHCK használatával[4.1 + LIS](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 
-## <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS típusú LIS illesztőprogramok
+### <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS típusú LIS illesztőprogramok
 
 Ha futtatja az OpenLogic CentOS-beli virtuális gépek legújabb illesztőprogramok telepítéséhez a következő parancsot:
 

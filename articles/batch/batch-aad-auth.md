@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: lahugh
-ms.openlocfilehash: 4ecee0e4f01da329e44c0f65b2c204520f2da87f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 0ca22cfe99e77cd2ed3c5a966fb2412444103d71
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60722369"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922444"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>A Batch szolgáltatási megoldások és az Active Directory hitelesítést
 
@@ -68,7 +68,7 @@ Az első lépés az Azure AD-vel történő hitelesítéséhez az Azure AD-bérl
 
 Ha regisztrálja az alkalmazást, adja meg információkat az alkalmazásról, az Azure ad-hez. Az Azure AD majd biztosít egy Alkalmazásazonosítót (más néven egy *ügyfél-azonosító*), hogy használhatja-e az alkalmazás társítása az Azure ad-vel futásidőben. Az Alkalmazásazonosítót kapcsolatos további információkért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md).
 
-A Batch-alkalmazás regisztrálásához kövesse a [egy alkalmazás hozzáadása](../active-directory/develop/quickstart-v1-add-azure-ad-app.md) szakasz [alkalmazások integrálása az Azure Active Directory][aad_integrate]. Natív alkalmazás regisztrálhatja alkalmazását, ha bármely érvényes URI-azonosítóját is megadhat a **átirányítási URI-t**. Nem kell valódi végpontnak lennie.
+A Batch-alkalmazás regisztrálásához kövesse a [egy alkalmazás hozzáadása](../active-directory/develop/quickstart-register-app.md) szakasz [alkalmazások integrálása az Azure Active Directory][aad_integrate]. Natív alkalmazás regisztrálhatja alkalmazását, ha bármely érvényes URI-azonosítóját is megadhat a **átirányítási URI-t**. Nem kell valódi végpontnak lennie.
 
 Miután regisztrálta az alkalmazást, látni fogja az alkalmazás azonosítója:
 

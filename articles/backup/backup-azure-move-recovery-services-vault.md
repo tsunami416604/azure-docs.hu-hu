@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sogup
-ms.openlocfilehash: 8d5d6ed6c14927c57279cf500518f3b3a86d591d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 72bfbc34f57e7725ae9556e893825900474317cb
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60699760"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64876848"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services-tároló áthelyezése az Azure-előfizetések és -erőforráscsoportok között
 
@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan helyezheti át a több Azure-előfizetés, vagy egy 
 
 ## <a name="supported-region"></a>Támogatott régióban
 
-Erőforrás-áthelyezés a Recovery Services-tároló használata támogatott Kelet-Ausztrália, Kelet-Ausztrália Dél-India, közép-Kanada, kelet-Kanada, Délkelet-Ázsia, Kelet-Ázsia, USA középső RÉGIÓJA, USA északi középső Régiója, USA keleti RÉGIÓJA, 2. keleti régiója, USA déli középső USA nyugati középső Régiója, USA nyugati középső régiója 2 régiója, USA nyugati RÉGIÓJA, Közép-India, Dél-India, kelet-japán, Nyugat-japán, Korea középső régiója, Korea déli régiója, Észak-Európa, Nyugat-Európa, Dél-Afrika északi régiója, Dél-Afrika nyugati régiója, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Egyesült Arab Emírségek középső régiója és az Egyesült Arab Emírségek északi.
+Erőforrás-áthelyezés a Recovery Services-tároló használata támogatott Kelet-Ausztrália, Kelet-Ausztrália Dél-India, közép-Kanada, kelet-Kanada, Délkelet-Ázsia, Kelet-Ázsia, USA középső RÉGIÓJA, USA északi középső Régiója, USA keleti RÉGIÓJA, 2. keleti régiója, USA déli középső USA nyugati középső Régiója, USA nyugati középső régiója 2 régiója, USA nyugati RÉGIÓJA, Közép-India, Dél-India, kelet-japán, Nyugat-japán, Korea középső régiója, Korea déli régiója, Észak-Európa, Nyugat-Európa, Dél-Afrika északi régiója, Dél-Afrika nyugati régiója, Egyesült Királyság déli régiója és Egyesült Királyság nyugati régiója.
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>Recovery Services-tárolóba történő áthelyezésének előfeltételei
 

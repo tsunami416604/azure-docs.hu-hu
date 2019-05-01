@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: ''
 author: chackdan
 ms.author: chackdan
-ms.date: 12/12/2018
+ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 27cf4d31f11eaf861d1cafc093d912aa15c8bec0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 7f3bed454bce90d797ca5829043c7e5f8ce5b051
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979751"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728578"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Gyakori kérdések Service Fabric-háló
 
@@ -77,7 +77,9 @@ Példa:
 
 Az erőforráscsoport törléséhez használja a `az group delete <nameOfResourceGroup>` parancsot.
 
-## <a name="supported-container-os-images"></a>Támogatott operációs rendszer tárolórendszerképek
+## <a name="deployments"></a>Központi telepítés
+
+### <a name="what-container-images-are-supported"></a>Milyen tárolórendszerképek támogatottak?
 
 Egy Windows Fall Creators Update (1709-es verzió) gépen fejleszt, használhatja a Windows verzió 1709-es docker-rendszerképek csak.
 
@@ -90,6 +92,10 @@ A következő operációs rendszer tárolórendszerképeket a szolgáltatások �
     - A Windows Server verzió 1803-as verzióban
 - Linux
     - Nem ismert korlátozások
+
+### <a name="what-types-of-applications-can-i-deploy"></a>Milyen típusú alkalmazásokat is üzembe? 
+
+Telepíthet, amelyeket egy alkalmazás-erőforrást (lásd fent további információ a kvóták) helyezett tárolókat, amelyek elférnek a korlátozások futtatást. Ha azt észleli, hogy szabálytalan számítási feladatok futtatásához használja a háló vagy visszaélnek a rendszer (pl. adatbányászati), majd fenntartjuk a jogot a központi telepítések és a tiltólista le nem fut a szolgáltatás az előfizetésében. Vegye fel velünk a kapcsolatot, ha kérdései vannak az adott számítási feladatot futtat. 
 
 ## <a name="developer-experience-issues"></a>Fejlesztői élmény kapcsolatos problémák
 

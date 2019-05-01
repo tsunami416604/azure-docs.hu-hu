@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b50d0c0ca9a4000cc0c725453a3ef04b4bed9275
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9c48703676dad16f5f86035400056a8c90f28f60
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61282510"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64873121"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Válasszon egy tarifacsomagot az Azure Search
 
@@ -60,7 +60,7 @@ A következő táblázat felsorolja az elérhető tarifacsomag. Egyéb informác
 
 ## <a name="how-billing-works"></a>A számlázás működése
 
-Az Azure Search szolgáltatásban az Azure Search szolgáltatásban a személy költségei három módja van, és a rögzített és változó összetevőből áll. Ez a szakasz a megvizsgálja az egyes számlázási összetevők.
+Az Azure Search szolgáltatásban az Azure Search szolgáltatásban a személy költségei három módja van, és rögzített és változó összetevőből áll. Ez a szakasz a megvizsgálja az egyes számlázási összetevők.
 
 ### <a name="1-core-service-costs-fixed-and-variable"></a>1. Core szolgáltatási költségei (rögzített és változó)
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 08/23/2018
 ms.author: kumud
-ms.openlocfilehash: 31fe4c5cd2e61c3312532f05d310d652ecde7e95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 4d3fd152782c65c7f63e459a1c35dee6ae764361
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60743801"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708844"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Oktatóanyag: PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása a virtuális hálózati Szolgáltatásvégpontok az Azure portal használatával
 
@@ -109,7 +109,7 @@ Alapértelmezés szerint egy adott alhálózaton belül minden virtuális gép m
     |Cél | Válassza a **Service Tag** lehetőséget.|
     |Cél szolgáltatáscímkéje | Válassza a **Storage** lehetőséget.|
     |Célporttartományok| * |
-    |Protokoll|Bármelyik|
+    |Protocol|Bármelyik|
     |Műveletek|Engedélyezés|
     |Prioritás|100|
     |Name (Név)|Allow-Storage-All|
@@ -123,7 +123,7 @@ Alapértelmezés szerint egy adott alhálózaton belül minden virtuális gép m
     |Cél | Válassza a **Service Tag** lehetőséget.|
     |Cél szolgáltatáscímkéje| Válassza az **Internet** lehetőséget.|
     |Célporttartományok| * |
-    |Protokoll|Bármelyik|
+    |Protocol|Bármelyik|
     |Műveletek|Megtagadás|
     |Prioritás|110|
     |Name (Név)|Deny-Internet-All|
@@ -138,7 +138,7 @@ Alapértelmezés szerint egy adott alhálózaton belül minden virtuális gép m
     |Forrásporttartományok| * |
     |Cél | Válassza a **VirtualNetwork** lehetőséget.|
     |Célporttartományok| 3389 |
-    |Protokoll|Bármelyik|
+    |Protocol|Bármelyik|
     |Műveletek|Engedélyezés|
     |Prioritás|120|
     |Name (Név)|Allow-RDP-All|

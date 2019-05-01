@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: f8894132dae179be2d5d9d9b6887851be78d7746
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7bbbe9629404733a76064d270480a0e162e2612b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60854892"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919889"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Az Azure App Service Linux Python-alkalmazás konfigurálása
 
@@ -182,8 +182,6 @@ Népszerű webes keretrendszerek, hozzáférést biztosítanak a `X-Forwarded-*`
 - [A naplózási adatfolyam eléréséhez](#access-diagnostic-logs).
 
 ## <a name="next-steps"></a>További lépések
-
-A beépített Python-rendszerkép a linuxon futó App Service-ben jelenleg előzetes verzióban érhető el, és testre szabhatja a parancsot az alkalmazás indításához. Éles Python-alkalmazásokat egyéni tároló használatával is létrehozhat.
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Python-alkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)

@@ -4,270 +4,235 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés HR2
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 853d08c9-27b1-48d4-b8e7-3705140eb67f
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/24/2017
+ms.topic: tutorial
+ms.date: 03/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 378aab82fac5298c3785f752478e3bfc3c6e325b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 491f1704cf08bd31a1b089d178afb3c281d636e6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60275457"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723486"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Oktatóanyag: HR2day Merces által az Azure Active Directory-integráció
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan által Merces HR2day integrálása az Azure Active Directory (Azure AD).
-
 Által Merces HR2day integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, ki férhet hozzá HR2day Merces által az Azure AD-ben.
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett HR2day Merces által az Azure AD-fiókjukat.
-- A fiókok egyetlen központi helyen--az Azure Portalon kezelheti.
+* Szabályozhatja, ki férhet hozzá HR2day Merces által az Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve HR2day Merces (egyszeri bejelentkezés) által az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 HR2day Merces által az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetés.
-- Egy HR2day által Merces egyszeri bejelentkezés előfizetés engedélyezve van.
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket tesztelése éles környezetben használata nem ajánlott.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez hajtsa végre ezeket a javaslatokat:
-
-- Ne használja éles környezetben, csak szükség esetén.
-- Get- [egy hónapos ingyenes próbaverzió az Azure AD](https://azure.microsoft.com/pricing/free-trial/) Ha már nincs.  
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
+* HR2day Merces egyszeri bejelentkezés által engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az itt ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Által Merces HR2day hozzáadása a katalógusból.
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés.
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
 
-## <a name="add-hr2day-by-merces-from-the-gallery"></a>Által Merces HR2day hozzáadása a katalógusból
-Által Merces HR2day integrálása az Azure AD beállításához adja hozzá a katalógus HR2day Merces által a felügyelt SaaS-alkalmazások listájában.
+* Által Merces HR2day támogatja **SP** által kezdeményezett egyszeri bejelentkezés
+
+## <a name="adding-hr2day-by-merces-from-the-gallery"></a>Által Merces HR2day hozzáadása a katalógusból
+
+Által Merces HR2day integrálása az Azure AD beállítása, hozzá kell HR2day Merces által a galériából a felügyelt SaaS-alkalmazások listájára.
 
 **Által Merces HR2day hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a [az Azure portal](https://portal.azure.com), a bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Active Directory][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-1. Lépjen a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![Alkalmazások][2]
-    
-1. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a párbeszédpanel tetején.
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![Alkalmazások][3]
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-1. A Keresés mezőbe írja be a **által Merces HR2day**.
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/hr2day-tutorial/tutorial_hr2daybymerces_search.png)
+4. A Keresés mezőbe írja be a **HR2day Merces által**, jelölje be **HR2day Merces által** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-1. Az eredmények panelen válassza ki a **HR2day Merces által**, majd válassza ki a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+     ![Az eredmények listájában Merces által HR2day](common/search-new-app.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/hr2day-tutorial/tutorial_hr2daybymerces_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az HR2day Merces a teszt "Britta Simon." nevű felhasználó által
-
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, akik HR2day Merces által a partner felhasználót, hogy egy felhasználó Azure AD-ben. Más szóval kell HR2day Merces által az Azure AD-felhasználót és a kapcsolódó felhasználó közötti kapcsolatot létesít.
-
-HR2day által Merces, rendelje hozzá a **felhasználónév** az Azure AD- **felhasználónév** a kapcsolat létrehozásához.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés HR2day nevű tesztfelhasználó alapján Merces által a **Britta Simon**.
+Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó HR2day Merces szerint a hivatkozás kapcsolata kell hozható létre.
 
 Az Azure AD egyszeri bejelentkezés az HR2day Merces által tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
-1. Az Azure AD egyszeri bejelentkezés konfigurálása: Engedélyezze a felhasználók a funkció használatához.
-1. Hozzon létre egy Azure ad-ben tesztfelhasználó: Tesztelje az Azure AD egyszeri bejelentkezés az Britta Simon.
-1. Hozzon létre egy HR2day Merces tesztfelhasználó szerint: Hozzon létre egy megfelelője a Britta Simon HR2day által Merces, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-1. Az Azure ad-ben tesztfelhasználó hozzárendelése: Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezése.
-1. Egyszeri bejelentkezés vizsgálata: Győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[HR2day által Merces egyszeri bejelentkezés konfigurálása](#configure-hr2day-by-merces-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre HR2day Merces teszt felhasználó által](#create-hr2day-by-merces-test-user)**  – egy megfelelője a Britta Simon HR2day, amely kapcsolódik az Azure AD felhasználói ábrázolása Merces által van.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Merces alkalmazás által a HR2day konfigurálása egyszeri bejelentkezéshez.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés HR2day Merces által, az alábbi lépéseket:**
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés által Merces HR2day, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portalon az a **HR2day Merces által** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), a a **HR2day Merces által** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-1. Egyszeri bejelentkezéssel, engedélyeznie a **egyszeri bejelentkezési** párbeszédpanelen jelölje ki **mód** , **SAML-alapú bejelentkezés**.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hr2day-tutorial/tutorial_hr2daybymerces_samlbase.png)
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-1. Az a **Merces tartomány és URL-címek HR2day** területén az alábbi lépéseket:
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hr2day-tutorial/tutorial_hr2daybymerces_url.png)
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    a. Az a **bejelentkezési URL-** mezőbe írja be egy URL-cím használatával a következő mintának: `https://<tenantname>.force.com/<instancename>`.
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    b. Az a **azonosító** mezőbe írja be egy URL-cím használatával a következő mintának: `https://hr2day.force.com/<companyname>`.
+4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-cím és azonosító. Forduljon a [Merces ügyfél-támogatási csapata által HR2day](mailto:servicedesk@merces.nl) beolvasni ezeket az értékeket. 
- 
+    ![HR2day által Merces tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
 
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<tenantname>.force.com/<instancename>`
 
-1. Az a **SAML-aláíró tanúsítvány** szakaszban jelölje be **Certificate(Base64)**, majd mentse a tanúsítványfájlt, a számítógépen.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/hr2day-tutorial/tutorial_hr2daybymerces_certificate.png) 
-
-1. Ez a szakasz ismerteti, hogyan engedélyezhet felhasználókat a hitelesítésre által Merces HR2day fiókkal az Azure ad-ben. Ezek a SAML-protokoll alapján összevonási segítségével hajthatja végre.
-
-    A HR2day Merces alkalmazás által a SAML helyességi feltételek vár egy megadott formátumban, amelyhez egyéni attribútum-leképezéshez az SAML-jogkivonat hozzáadása. Az alábbi képernyőképen Ez egy példát mutat be. 
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/hr2day-tutorial/tutorial_hr2day_00.png)
-    
-   > [!NOTE]
-   >  Az SAML-előfeltétel konfigurálása előtt, kapcsolatba kell lépnie a [HR2day Merces ügyfél-támogatási csapata által](mailto:servicedesk@merces.nl) és az egyedi azonosító attribútum értékét a bérlő számára. Ez az érték a következő szakaszban szereplő lépések végrehajtásához szüksége lesz. 
-
-1. Az a **egyszeri bejelentkezési** párbeszédpanel a **felhasználói attribútumok** területen konfigurálja az SAML-jogkivonat attribútum, az alábbi képen látható módon. Ezután az alábbi lépéseket.
-    
-      | Attribútum neve    |   Hodnota atributu |  
-    | ------------------- | -------------------- |    
-    | ATTR_LOGINCLAIM | `join([mail],"102938475Z","@"` |
-    
-      a. Megnyitásához a **attribútum hozzáadása** párbeszédablakban válassza **attribútum hozzáadása**.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/hr2day-tutorial/tutorial_attribute_04.png)
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/hr2day-tutorial/tutorial_attribute_05.png)
-
-    b. Az a **neve** mezőbe írja be **ATTR_LOGINCLAIM**.
-
-    c. Az a **érték** listáról válassza ki **Join()**.
-
-    d. Az a **szöveg1** listáról válassza ki **user.mail**.
-
-    e. A **karakterlánc2**, írja be a HR2day csapata által biztosított egyedi azonosítója.
-
-    f. Az a **elválasztó** mezőbe írja be **\@**.
-    
-    g. Kattintson az **OK** gombra.
-
-1. Válassza ki a **Mentés** gombot.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/hr2day-tutorial/tutorial_general_400.png)
-
-1. Az a **Merces konfigurációja HR2day** szakaszban jelölje be **konfigurálása HR2day Merces által** megnyitásához a **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-cím**, **SAML Entitásazonosító**, és **SAML egyszeri bejelentkezési szolgáltatás URL-cím** a a **rövid összefoglaló** szakaszban.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/hr2day-tutorial/tutorial_hr2daybymerces_configure.png) 
-
-1. Egyszeri bejelentkezés konfigurálása az alkalmazáshoz, lépjen kapcsolatba a [Merces ügyfél-támogatási csapata által HR2day](mailTo:servicedesk@merces.nl). Csatlakoztassa a letöltött **Certificate(Base64)** fájlt az e-maileket. Is biztosítanak a **kijelentkezéses URL-cím**, **SAML Entitásazonosító**, és **SAML egyszeri bejelentkezési szolgáltatás URL-cím** , hogy az egyszeri bejelentkezés integráció konfigurálható.
+    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://hr2day.force.com/<companyname>`
 
     > [!NOTE]
-    >A Merces csapatának megemlíteni, hogy ez az integráció kell állítani a mintával az entitás azonosítója **https://hr2day.force.com/INSTANCENAME**.
+    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [Merces ügyfél-támogatási csapata által HR2day](mailto:servicedesk@merces.nl) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-    > [!TIP]
-    >Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory** > **vállalati alkalmazások** szakaszban jelölje be a **egyszeri bejelentkezés** fülre. A beágyazott dokumentáció majd hozzáférni a **konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásáról a [Azure ad-ben a beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985).
-   > 
+5. A HR2day Merces alkalmazás által a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+
+    ![image](common/edit-attribute.png)
+
+    > [!NOTE]
+    > Az SAML-előfeltétel konfigurálása előtt, kapcsolatba kell lépnie a [HR2day Merces ügyfél-támogatási csapata által](mailto:servicedesk@merces.nl) és az egyedi azonosító attribútum értékét a bérlő számára. Ez az érték a következő szakaszban szereplő lépések végrehajtásához szüksége lesz.
+
+6. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
+
+    | Name (Név) |  Adatforrás-attribútum |
+    | ---------- | ----------- |
+    | ATTR_LOGINCLAIM | `join([mail],"102938475Z","@"` |
+    | | |
+
+    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+
+    ![image](common/new-save-attribute.png)
+
+    ![image](common/new-attribute-details.png)
+
+    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+
+    c. Hagyja a **Namespace** üres.
+
+    d. Válassza ki a forrás, **attribútum**.
+
+    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+
+    f. Kattintson a **Ok**
+
+    g. Kattintson a **Save** (Mentés) gombra.
+
+7. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+
+8. Az a **Merces HR2day létrehozott** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+
+    a. Bejelentkezési URL
+
+    b. Azure AD-azonosító
+
+    c. Kijelentkezési URL
+
+### <a name="configure-hr2day-by-merces-single-sign-on"></a>HR2day által Merces egyszeri bejelentkezés konfigurálása
+
+Az egyszeri bejelentkezés konfigurálása **által Merces HR2day** oldalon kell küldenie a letöltött **tanúsítvány (Base64)** és az Azure Portalról másolt URL-címek megfelelő [HR2day Merces támogatja csapat](mailto:servicedesk@merces.nl). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+
+> [!NOTE]
+> A Merces csapatának megemlíteni, hogy ez az integráció kell állítani a mintával az entitás azonosítója **https://hr2day.force.com/INSTANCENAME**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-![Az Azure AD-felhasználó létrehozása][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Az a **az Azure portal**, a bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** ikonra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/hr2day-tutorial/create_aaduser_01.png) 
+    ![Új felhasználó gomb](common/new-user.png)
 
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, majd válassza ki **minden felhasználó**.
-    
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/hr2day-tutorial/create_aaduser_02.png) 
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-1. Megnyitásához a **felhasználói** párbeszédpanelen jelölje ki **Hozzáadás** a párbeszédpanel tetején.
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/hr2day-tutorial/create_aaduser_03.png) 
-
-1. Az a **felhasználói** párbeszédpanel mezőbe az alábbi lépéseket:
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/hr2day-tutorial/create_aaduser_04.png) 
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőtípus `brittasimon@yourcompanydomain.extension`  
+    Például: BrittaSimon@contoso.com
 
-    b. Az a **felhasználónév** mezőbe írja be a **e-mail-cím** BrittaSimon az.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
-    c. Válassza ki **jelszó megjelenítése**, majd írja le a jelszót.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
-    d. Kattintson a **Létrehozás** gombra.
- 
-### <a name="create-an-hr2day-by-merces-test-user"></a>Hozzon létre egy HR2day Merces tesztfelhasználó szerint
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ez a szakasz célja Britta Simon HR2day Merces szerint nevű felhasználó létrehozásához. A felhasználók hozzáadása a HR2day fiókban, dolgozni a [Merces ügyfél-támogatási csapata által HR2day](mailto:servicedesk@merces.nl). 
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés HR2day Merces által használandó Azure egyszeri bejelentkezést.
+
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **HR2day Merces által**.
+
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+
+2. Az alkalmazások listájában jelölje ki a **által Merces HR2day**.
+
+    ![A HR2day Merces csatlakozásonkénti alkalmazásainak listájában](common/all-applications.png)
+
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
+
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+
+### <a name="create-hr2day-by-merces-test-user"></a>HR2day Merces teszt felhasználó létrehozása
+
+Ebben a szakaszban egy felhasználói Britta Simon hívja a HR2day Merces hoz létre. Együttműködve [által Merces HR2day támogatási csoportjának](mailto:servicedesk@merces.nl) felhasználót is hozzáadhat a a HR2day Merces platformja. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 > [!NOTE]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, lépjen kapcsolatba a [Merces ügyfél-támogatási csapata által HR2day](mailto:servicedesk@merces.nl).
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
-
-Ebben a szakaszban engedélyezze Britta Simon számára a hozzáférés biztosításával HR2day Merces által az Azure egyszeri bejelentkezés használatára.
-
-![Felhasználó hozzárendelése][200] 
-
-**Britta Simon hozzárendelése HR2day Merces által, az alábbi lépéseket:**
-
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, nyissa meg a könyvtár nézet, és folytassa a **vállalati alkalmazások**. Majd **minden alkalmazás**.
-
-    ![Felhasználó hozzárendelése][201] 
-
-1. Az alkalmazások listájában jelölje ki a **által Merces HR2day**.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/hr2day-tutorial/tutorial_hr2daybymerces_app.png) 
-
-1. A bal oldali menüben válassza **felhasználók és csoportok**.
-
-    ![Felhasználó hozzárendelése][202] 
-
-1. Válassza ki a **Hozzáadás** gombra. Ezt követően a a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **felhasználók és csoportok**.
-
-    ![Felhasználó hozzárendelése][203]
-
-1. Az a **felhasználók és csoportok** párbeszédpanel a **felhasználók** listáról válassza ki **Britta Simon**.
-
-1. Kattintson a **kiválasztása** gombra.
-
-1. Az a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **hozzárendelése**.
-    
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ez a szakasz célja az Azure AD egyszeri bejelentkezési konfigurációjának tesztelése a hozzáférési Panel használatával.  
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-A HR2day által a hozzáférési panelen Merces csempe kiválasztásakor automatikusan első jelentkezett be a HR2day Merces alkalmazás.
+A HR2day által a hozzáférési panelen Merces csempére kattintva, meg kell lehet automatikusan bejelentkezett a HR2day Merces, amelynek beállítása egyszeri bejelentkezés által. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directoryval kapcsolatos oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/hr2day-tutorial/tutorial_general_01.png
-[2]: ./media/hr2day-tutorial/tutorial_general_02.png
-[3]: ./media/hr2day-tutorial/tutorial_general_03.png
-[4]: ./media/hr2day-tutorial/tutorial_general_04.png
-
-[100]: ./media/hr2day-tutorial/tutorial_general_100.png
-
-[200]: ./media/hr2day-tutorial/tutorial_general_200.png
-[201]: ./media/hr2day-tutorial/tutorial_general_201.png
-[202]: ./media/hr2day-tutorial/tutorial_general_202.png
-[203]: ./media/hr2day-tutorial/tutorial_general_203.png
-
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

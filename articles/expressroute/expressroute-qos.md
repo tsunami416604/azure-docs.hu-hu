@@ -1,19 +1,19 @@
 ---
-title: 'A QoS - követelmények: az ExpressRoute: Azure |} A Microsoft Docs'
+title: 'A QoS - követelmények: az ExpressRoute: Azure | Microsoft Docs'
 description: Ezen a lapon konfigurálásához és kezeléséhez a QoS részletes követelményeit ismerteti. Skype vállalati verzió üzleti és hangvétel szolgáltatások ismertetése.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 04/22/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: bc946587cf54142278472652449db40096ca27b8
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 9bdeb91b145f8c7f31be8c1dcd5c5158d50ff2f6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117214"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712310"
 ---
 # <a name="expressroute-qos-requirements"></a>Az ExpressRoute QoS-követelményei
 A Skype Vállalati verzió különböző számítási feladatokat tartalmaz, amelyek különböző QoS-kezelést igényelnek. Ha hangszolgáltatásokat tervez használni az ExpressRoute-on keresztül, teljesítenie kell az alábbiakban ismertetett követelményeket.
@@ -25,9 +25,9 @@ A Skype Vállalati verzió különböző számítási feladatokat tartalmaz, ame
 > 
 > 
 
-A következő táblázat a Skype Vállalati verzió által használt DSCP-jelöléseket sorolja fel. További információkért lásd: [A QoS kezelése a Skype Vállalati verzióhoz](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/managing-quality-of-service-QoS).
+A következő táblázat felsorolja a vállalati Microsoft Teams és a Skype által használt DSCP-jelöléseket. További információkért lásd: [A QoS kezelése a Skype Vállalati verzióhoz](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/managing-quality-of-service-QoS).
 
-| **Forgalomosztály** | **Kezelés (DSCP-jelölés)** | **Skype Vállalati verzió számítási feladata** |
+| **Forgalomosztály** | **Kezelés (DSCP-jelölés)** | **Microsoft Teams és a Skype vállalati verzió számítási feladata** |
 | --- | --- | --- |
 | **Hang** |EF (46) |Skype- / Lync-hang |
 | **Interaktív** |AF41 (34) |Videó, VBSS |

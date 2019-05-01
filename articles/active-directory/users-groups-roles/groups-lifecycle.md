@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c19ee3bdd14ee6a2c5b59294f475f6c18b570fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1be88f0938a16302be4cf2308ba463900c067104
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60471964"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920154"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Az Office 365-csoportok-elévülési szabályzatának konfigurálása
 
@@ -86,7 +86,7 @@ A törléstől számított 30 napon belül tudja állítani a csoport kiválaszt
 Ha a csoportban van visszaállítása dokumentumokat, SharePoint-webhelyek vagy más állandó objektumok, teljes körűen visszaállítani a csoportot és annak tartalma akár 24 órát igénybe vehet.
 
 ## <a name="how-to-retrieve-office-365-group-expiration-date"></a>Hogyan kérheti le az Office 365-csoport lejárati dátuma
-A Microsoft Graph REST API béta mellett a hozzáférési panelen, ahol a felhasználók megtekinthetik a csoport adatait, például a lejárat és utolsó megújított dátuma, Office 365-csoport lejárati dátuma lekérhetők. a Microsoft Graph béta expirationDateTime csoport tulajdonság engedélyezve van. Egy GET kéréssel lekérhetők. További részletekért tekintse meg [ebben a példában](https://docs.microsoft.com/en-us/graph/api/group-get?view=graph-rest-beta#example).
+A Microsoft Graph REST API béta mellett a hozzáférési panelen, ahol a felhasználók megtekinthetik a csoport adatait, például a lejárat és utolsó megújított dátuma, Office 365-csoport lejárati dátuma lekérhetők. a Microsoft Graph béta expirationDateTime csoport tulajdonság engedélyezve van. Egy GET kéréssel lekérhetők. További részletekért tekintse meg [ebben a példában](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example).
 
 > [!NOTE]
 > Annak érdekében, hogy kezelhetik a csoporttagságokat, a hozzáférési panelen, "Hozzáférés korlátozása a csoportok a hozzáférési Panel" kell, az Azure Active Directory csoportokat általános beállítást "nem" értékűre kell beállítani.
@@ -101,10 +101,10 @@ A megőrzési házirend úgy van konfigurálva, a biztonsági és megfelelőség
 ## <a name="powershell-examples"></a>PowerShell-példák
 Az alábbiakban példát, hogyan használhatja PowerShell-parancsmagok az Office 365-csoportok lejáratának beállításainak konfigurálása a bérlőben:
 
-1. Telepítse a PowerShell 2.0 előzetes verzió modult (2.0.0.137), és jelentkezzen be a PowerShell-parancssorba:
+1. Telepítse a PowerShell 2.0-s verziójú modult, és jelentkezzen be a PowerShell-parancssorba:
    ```powershell
-   Install-Module -Name AzureADPreview
-   connect-azuread 
+   Install-Module -Name AzureAD
+   Connect-AzureAD
    ```
 2. Configure the expiration settings New-AzureADMSGroupLifecyclePolicy:  Ez a parancsmag az élettartam a bérlőben, 365 nappal minden Office 365-csoportok állítja be. A megújítására vonatkozó értesítéseket az Office 365 csoportok nélkül tulajdonosok küld "emailaddress@contoso.com"
   

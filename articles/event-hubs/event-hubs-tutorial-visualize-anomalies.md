@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 02/26/2019
-ms.openlocfilehash: 4ade1b05b1ec5c81774b5340cfdceb97e41218f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d6786e4e3382c7c4d7a6a6a28c3cd3621df221c1
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60369424"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867134"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Oktatóanyag: Valós idejű események az Azure Event hubs szolgáltatásba küldött adatok protokollmegvalósításokat megjelenítése
 
-Az Azure Event Hubsban az Azure Stream Analytics használatával ellenőrizheti a bejövő adatokat, és azonosíthatja az anomáliákat, amelyeket ezután megjeleníthet a Power BI-ban. Tegyük fel, hogy van több ezer eszköze, amelyek folyamatosan valós idejű adatokat küldenek egy eseményközpontba. Ez több millió eseményt jelent másodpercenként. Hogyan lehet anomáliákat vagy hibákat keresni ennyi adatban? Például mi van akkor, ha az eszközök hitelkártya-tranzakciókat küldenek, és rögzítenie kell, ha egy 5 másodperces időintervallumban több tranzakció is történik, több országban? Ez akkor történhet, ha valaki hitelkártyákat lop, majd a világ különböző pontjain több dolgot vásárol velük egyszerre. 
+Az Azure Event Hubsban az Azure Stream Analytics használatával ellenőrizheti a bejövő adatokat, és azonosíthatja az anomáliákat, amelyeket ezután megjeleníthet a Power BI-ban. Tegyük fel, hogy van több ezer eszköze, amelyek folyamatosan valós idejű adatokat küldenek egy eseményközpontba. Ez több millió eseményt jelent másodpercenként. Hogyan lehet anomáliákat vagy hibákat keresni ennyi adatban? Például Lehetőségelemzési az eszközök küldenek hitelkártya-tranzakciók, és rögzítheti bárhol több tranzakció több országban és régióban egy 5 másodperces időintervallumon belül van szüksége? Ez akkor történhet, ha valaki hitelkártyákat lop, majd a világ különböző pontjain több dolgot vásárol velük egyszerre. 
 
 Ebben az oktatóanyagban ezt a példát szimulálja. Futtatni fog egy alkalmazást, amely hitelkártya-tranzakciókat hoz létre, és elküldi őket egy eseményközpontba. Ezután valós időben be fogja olvasni az adatstreamet az Azure Stream Analytics segítségével, amely elkülöníti az érvényes tranzakciókat az érvénytelenektől, majd a Power BI használatával vizuálisan azonosítani fogja az érvénytelenként megjelölt tranzakciókat.
 

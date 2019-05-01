@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9bf4f604386b47e4ca36df69fb140124b097f548
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2573ad64830247d232bbd6d156fac7f50d65f410
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60912569"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925089"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Egyéni riasztási szabályok az Azure Security Centerben (előzetes verzió)
 Ebből a dokumentumból megismerheti az Azure Security Center egyéni riasztási szabályainak létrehozásához szükséges lépéseket.
@@ -29,17 +29,17 @@ Ebből a dokumentumból megismerheti az Azure Security Center egyéni riasztási
 
 ## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Használatból való kivonást egyaránt az egyéni riasztási szabályok az Azure Security Centerben
 
-Egyéni riasztásainak kivonjuk a forgalomból 2019. június 30., használatból való kivonást egyaránt az Azure Monitor klasszikus riasztások szolgáltatás miatt. Amíg elavult időkeretét, a felhasználók tudni meglévő egyéni riasztási szabályok szerkesztése, de nem fogja tudni újakat vehet fel.
-Ahhoz, hogy a felhasználók végigvitelével [Azure Sentinel-](https://azure.microsoft.com/en-us/services/azure-sentinel/) automatikus áttelepítése a meglévő figyelmeztetéseket és újakat hoz létre, vagy másik lehetőségként létre újból a figyelmeztetéseket, és az Azure Monitor egy kattintással üzembe helyezésében naplóriasztások.
+Egyéni riasztásainak kivonjuk a forgalomból 2019. június 30., használatból való kivonást egyaránt az alapul szolgáló infrastruktúra-alapú miatt. Amíg elavult időkeretét, a felhasználók tudni meglévő egyéni riasztási szabályok szerkesztése, de nem fogja tudni újakat vehet fel.
+Ahhoz, hogy a felhasználók végigvitelével [Azure Sentinel-](https://azure.microsoft.com/services/azure-sentinel/) automatikus áttelepítése a meglévő figyelmeztetéseket és újakat hoz létre, vagy másik lehetőségként létre újból a figyelmeztetéseket, és az Azure Monitor egy kattintással üzembe helyezésében naplóriasztások.
                                      
 Tartani a meglévő riasztásokat, és Azure Sentinel-telepítheti át őket, kérjük, [indítsa el az Azure-Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview). Első lépésként válassza ki a munkaterületet, az egyéni értesítések tárolására, és válassza a "Analytics" menüpontot a riasztások automatikusan át.
 
 > [!NOTE]
 > Egyéni riasztások áttelepítése az Azure-Sentinel egy egyszeri áttelepítést az egyéni riasztások a kiválasztott munkaterületen. Áttelepítés befejezése után az egyéni értesítések, a kijelölt munkaterület nem elérhetők lesznek az Azure Security Center.
 >
-> Egyéni riasztások használatával [keresési](https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/search-queries) vagy [Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) utasítások lekérdezések nem támogatottak az Azure-Sentinel, és nem lesznek áttelepítve. Ezek a riasztások kérjük, módosítsa az áttelepítés előtt.
+> Egyéni riasztások használatával [keresési](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) vagy [Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) utasítások lekérdezések nem támogatottak az Azure-Sentinel, és nem lesznek áttelepítve. Ezek a riasztások kérjük, módosítsa az áttelepítés előtt.
 
-Újra létre az Azure Monitor riasztások riasztásokról, tekintse meg: [Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-log) riasztások létrehozásával kapcsolatos útmutatást. Kattintson az Azure Monitor riasztások általános áttekintéséért [Itt](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-unified-log).
+Újra létre az Azure Monitor riasztások riasztásokról, tekintse meg: [Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) riasztások létrehozásával kapcsolatos útmutatást. Kattintson az Azure Monitor riasztások általános áttekintéséért [Itt](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
 ## <a name="what-are-custom-alert-rules-in-security-center"></a>Mire szolgálnak a Security Center egyéni riasztási szabályai?
 

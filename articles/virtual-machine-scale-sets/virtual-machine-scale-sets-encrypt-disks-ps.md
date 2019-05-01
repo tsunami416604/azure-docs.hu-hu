@@ -13,50 +13,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 04/26/2019
 ms.author: cynthn
-ms.openlocfilehash: cc1405d2dd972aff6091a9d5b60ff9da18185286
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 7ebb88317da45ff496385b72c603a44d628b0202
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978102"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869080"
 ---
-# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell-preview"></a>Az operációs rendszer és az Azure PowerShell használatával (előzetes verzió) egy virtuálisgép-méretezési csoport a csatlakoztatott adatlemezekkel titkosítása
+# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>Az operációs rendszer és a egy virtuálisgép-méretezési csoport az Azure PowerShell használatával a csatlakoztatott adatlemezekkel titkosítása
 
 És iparági szabványos titkosítási technológiával az inaktív adatok megvédeni, a virtual machine scale sets támogatja az Azure Disk Encryption (ADE). Titkosítási Windows és Linux rendszerű virtuális gép esetén is engedélyezhető a méretezési csoportokat. További információkért lásd: [Azure Disk Encryption a Windows és Linux rendszerű](../security/azure-security-disk-encryption.md).
-
-> [!NOTE]
->  Virtuálisgép-méretezési csoportokhoz az Azure disk encryption jelenleg nyilvános előzetes verzióként, elérhető minden nyilvános Azure-régióban.
 
 Az Azure disk encryption támogatják:
 - a méretezési csoportok felügyelt lemezekkel létrehozott, és natív (vagy nem felügyelt) lemezek méretezési csoportok esetében nem támogatott.
 - Windows méretezési csoportokban lévő operációsrendszer- és kötetek. Tiltsa le titkosítás támogatott operációsrendszer- és kötetek Windows-méretezési csoportokhoz.
-- a Linux rendszerű méretezési adatkötetnél. Az operációs rendszer lemeztitkosítás nem támogatott a Linux rendszerű méretezési csoportokhoz az aktuális előzetes verzióban érhető el.
+- a Linux rendszerű méretezési adatkötetnél. Az operációs rendszer lemeztitkosítás Linux méretezési csoportok jelenleg nem támogatott.
 
-Skálázási készlet virtuális gép rendszerkép alaphelyzetbe állítását és a frissítési műveletek nem támogatottak az aktuális előzetes verzióban érhető el. A virtuális gép méretezési csoportok előzetes verzióra az Azure disk encryption csak tesztelési környezetben ajánlott. Az előzetes verzióban ne engedélyezze a lemeztitkosítás az éles környezetben, ahol előfordulhat, hogy frissíteni szeretne egy titkosított méretezési csoportban lévő egy operációsrendszer-lemezképben.
-
-[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
-
-
-## <a name="register-for-disk-encryption-preview"></a>Lemez titkosítása előzetes regisztráció
-
-Az Azure disk encryption virtuálisgép-méretezési csoportokhoz előzetes kell önálló regisztrálja az előfizetését [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature). Csak akkor kell hajtsa végre a következő lépéseket a lemeztitkosítási előzetes szolgáltatás első használatakor:
-
-```azurepowershell-interactive
-Register-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
-```
-
-
-A regisztrációs kérelem propagálása akár 10 percet is igénybe vehet. A regisztrációs állapot ellenőrzéséhez [Get-AzProviderFeature](/powershell/module/az.resources/Get-AzProviderFeature). Ha a `RegistrationState` jelentések *regisztrált*, regisztrálja újra a *Microsoft.Compute* szolgáltató [Register-AzResourceProvider](/powershell/module/az.resources/Register-AzResourceProvider):
-
-
-```azurepowershell-interactive
-Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
 
 ## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>Hozzon létre egy Azure Key Vault engedélyezve a lemeztitkosítás
 
@@ -125,6 +102,26 @@ Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vm
 
 Amikor a rendszer kéri, írja be a *y* folytatja, a titkosítási folyamat a méretezési csoport a virtuális gép beállítása példányok.
 
+### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>Engedélyezze a titkosítást KEK használata a kulcs becsomagolása
+
+A Kulcsalapú titkosítás kulcsa a fokozott biztonság használhatja a virtuálisgép-méretezési csoportot titkosításakor.
+
+```azurepowershell-interactive
+$diskEncryptionKeyVaultUrl=(Get-AzKeyVault -ResourceGroupName $rgName -Name $vaultName).VaultUri
+$keyVaultResourceId=(Get-AzKeyVault -ResourceGroupName $rgName -Name $vaultName).ResourceId
+$keyEncryptionKeyUrl = (Get-AzKeyVaultKey -VaultName $vaultName -Name $keyEncryptionKeyName).Key.kid;
+
+Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vmssName `
+    -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId `
+    -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId –VolumeType "All"
+```
+
+> [!NOTE]
+>  A lemez-titkosítás-keyvault paraméter értékének szintaxisa a teljes azonosító karakterlánc:</br>
+/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br></br>
+> A kulcs-titkosítás – key paraméter értékének szintaxisa a KEK, mint a teljes URI Azonosítóját:</br>
+https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]
+
 ## <a name="check-encryption-progress"></a>Ellenőrizheti a titkosítási folyamatot
 
 Lemeztitkosítás állapotának ellenőrzéséhez használja [Get-AzVmssDiskEncryption](/powershell/module/az.compute/Get-AzVmssDiskEncryption):
@@ -165,4 +162,5 @@ Disable-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssNam
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben, az Azure PowerShell titkosításához használt virtuálisgép-méretezési csoportot. Is használhatja a [Azure CLI-vel](virtual-machine-scale-sets-encrypt-disks-cli.md) vagy sablonok [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) vagy [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).
+- Ebben a cikkben, az Azure PowerShell titkosításához használt virtuálisgép-méretezési csoportot. Is használhatja a [Azure CLI-vel](virtual-machine-scale-sets-encrypt-disks-cli.md) vagy sablonok [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) vagy [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).
+- Ha azt szeretné, hogy az Azure Disk Encryption alkalmazása egy másik bővítmény kiépítése után, akkor használhatja [sorrendről](virtual-machine-scale-sets-extension-sequencing.md). Használhat [ezek a minták](../security/azure-security-disk-encryption-extension-sequencing.md#sample-azure-templates) a kezdéshez.

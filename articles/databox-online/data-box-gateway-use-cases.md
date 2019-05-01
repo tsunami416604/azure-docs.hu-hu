@@ -1,18 +1,19 @@
 ---
 title: A Microsoft Azure Data Box Gateway használati esetek |} A Microsoft Docs
-description: A használati esetek ismerteti az Azure Data Box átjáró, egy virtuális készülék tárolási megoldás, amely lehetővé teszi az adatok átviteléhez az Azure-bA
+description: A használati esetek ismerteti az Azure Data Box Gateway, egy virtuális készülék tárolási megoldás, amely lehetővé teszi az adatok átvitele az Azure
 services: databox
 author: alkohli
 ms.service: databox
+ms.subservice: gateway
 ms.topic: article
-ms.date: 03/2/2019
+ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 37ec1d05d07f33343b9ff21380a277d00b242b7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: cdc1b07b93386c0225c1e6c5f570ea1247e450b5
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60754148"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924394"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Az Azure Data Box Gateway alkalmazási helyzetei
 

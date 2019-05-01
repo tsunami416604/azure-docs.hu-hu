@@ -9,11 +9,11 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/22/2019
 ms.openlocfilehash: a0d0544601bfc6ce0c7ef642f576ed780c8642ba
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63763360"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64720217"
 ---
 # <a name="quickstart-run-ansible-playbooks-via-bash-in-azure-cloud-shell"></a>Gyors útmutató: Keresztül az Azure Cloud Shell Bash Ansible-forgatókönyvek futtatása
 

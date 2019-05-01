@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: 75d6fb063a6cb5336a4d9945bf6a79a65ed25d40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 640c65b1f6995a6c5fb7a3a1fcfeb580aecf5c43
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60324512"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869408"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Az eszközjogkivonattal történő hitelesítés az Azure CDN-eszközök védelme
 
@@ -33,7 +33,7 @@ Jogkivonat-hitelesítés olyan mechanizmus, amely lehetővé teszi, hogy megakad
 
 Jogkivonat-hitelesítés ellenőrzi, hogy kérelmeket alapján jönnek létre a megbízható helyek úgy, hogy visszatartással kódolású a kérelmező információ token értéket tartalmazó kérelmek. Tartalomkézbesítés egy kérelmezőnek csak akkor, ha a kódolt információt kielégíti; Ellenkező esetben kérelmek elutasítva. A követelmények beállítása egy vagy több, a következő paraméterek közül:
 
-- Ország/régió: Engedélyezi vagy megtagadja a által meghatározott országokból kérelmekkel azok [országkód](/previous-versions/azure/mt761717(v=azure.100)).
+- Ország/régió: Engedélyezi vagy megtagadja a megadott országokból/régiókból származó kérelmekkel azok [országkód](/previous-versions/azure/mt761717(v=azure.100)).
 - URL-cím: Csak azok a kérelmek, amelyek megfelelnek a megadott eszköz vagy az elérési út engedélyezése.
 - Gazdagép: Engedélyezése vagy letiltása a kérelem fejlécében a megadott gazdagépek kérelmeket.
 - Hivatkozó: Engedélyezi vagy elutasítja a kérelmet, a megadott hivatkozó.
@@ -86,7 +86,7 @@ A következő folyamatábra szemlélteti azt ismerteti, hogyan Azure CDN érvén
 
       ![CDN jogkivonat hitelesítési telepítési kulcs](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
     
-   4. A titkosítás eszközzel titkosítási paraméterek beállítása és a egy jogkivonatot. A titkosítás eszközzel engedélyezheti vagy megtagadja a kérelmet lejárati idő, az ország, a hivatkozó, a protokoll és a ügyfél IP-Címét (a tetszőleges kombinációjának) alapján. Bár nincs korlátozva a számát és kombinációja, amely az űrlap-token paraméterek, a teljes jogkivonat hossza legfeljebb 512 karakter hosszúságú lehet. 
+   4. A titkosítás eszközzel titkosítási paraméterek beállítása és a egy jogkivonatot. A titkosítás eszközzel engedélyezheti vagy megtagadhatja a kérések a lejárati időt, ország/régió, hivatkozó, protokoll és ügyfél IP-Címét (a tetszőleges kombinációjának) alapján. Bár nincs korlátozva a számát és kombinációja, amely az űrlap-token paraméterek, a teljes jogkivonat hossza legfeljebb 512 karakter hosszúságú lehet. 
 
       ![CDN eszköz titkosítása](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
 
@@ -120,11 +120,11 @@ A következő folyamatábra szemlélteti azt ismerteti, hogyan Azure CDN érvén
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>Csak lehetővé teszi, hogy egy vagy több megadott országokból kérelmekkel. A rendszer megtagadta a más országokból kérelmekkel. Használja a kétbetűs [ISO 3166 országkód](/previous-versions/azure/mt761717(v=azure.100)) országokra, és mindegyiket egy-egy vesszővel tagolt külön; ne vegyen fel egy helyet. Ha azt szeretné, engedélyezze a hozzáférést csak az Egyesült Államokban és Franciaország, írja be például `US,FR`.</td>
+      >    <td>Csak lehetővé teszi, hogy egy vagy több megadott országokból/régiókból származó kérelmekkel. A rendszer megtagadta a minden más országokból/régiókból származó kérelmekkel. Használja a kétbetűs [ISO 3166 országkód](/previous-versions/azure/mt761717(v=azure.100)) országokra, és mindegyiket egy-egy vesszővel tagolt külön; ne vegyen fel egy helyet. Ha azt szeretné, engedélyezze a hozzáférést csak az Egyesült Államokban és Franciaország, írja be például `US,FR`.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 
-      >    <td>Egy vagy több megadott országokból kérelmekkel megtagadja. Más országokból kérelmekkel engedélyezettek. A megvalósítás pedig ugyanaz, mint a <b>ec_country_allow</b> paraméter. Ha az országkódot is megtalálható a <b>ec_country_allow</b> és <b>ec_country_deny</b> paraméterek, a <b>ec_country_allow</b> paraméter élvez elsőbbséget.</td>
+      >    <td>Egy vagy több megadott országokból/régiókból származó kérelmekkel megtagadja. Minden más országokból/régiókból származó kérelmekkel engedélyezettek. A megvalósítás pedig ugyanaz, mint a <b>ec_country_allow</b> paraméter. Ha az országkódot is megtalálható a <b>ec_country_allow</b> és <b>ec_country_deny</b> paraméterek, a <b>ec_country_allow</b> paraméter élvez elsőbbséget.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_ref_allow</b></td>

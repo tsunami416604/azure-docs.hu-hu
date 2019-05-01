@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: dd6148d2d817b1f2465b6beaba5fd488b16ead21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 968bb5317e06b5cf9ac1f939eaf56288122a1ae0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60518441"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724405"
 ---
 # <a name="manage-your-application-preferences"></a>Az alkalmazás-beállítások kezelése
 
@@ -36,4 +36,4 @@ Támogatja a sötét téma és világos téma van. Alapértelmezés szerint a vi
 Most, hogy már megtanulta, hogyan kezelheti az Azure IoT Central profilját, Íme a javasolt következő lépésre:
 
 > [!div class="nextstepaction"]
-> [Az alkalmazás irányítópult konfigurálása](howto-configure-homepage.md)
+> [Élő csevegés be-vagy kikapcsolása](howto-show-hide-chat.md)

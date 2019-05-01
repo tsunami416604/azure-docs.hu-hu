@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/30/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d64cac3812d8daf8ac34b93c91338e1dfab88a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 39495e11e42853bf3cf9481475d970667c56223f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381964"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919103"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>A hibrid identitás bevezetési stratégia kidolgozása
 Ebben a feladatban a hibrid identitáskezelési megoldás, amely aktorcsoportot tárgyalt, az üzleti igényeknek hibrid identitás bevezetési stratégiája határozza meg:
@@ -37,7 +37,7 @@ Az első feladat címeket, amely meghatározza, hogy a szervezetek üzleti van s
 ## <a name="define-an-integration-strategy"></a>Egy integrációs stratégia kidolgozása
 A Microsoft rendelkezik három fő integrációs forgatókönyvek, melyek felhőbeli identitások, a szinkronizált identitások és a összevont identitások kialakítása.  Meg kell terveznie az alábbi integrációs stratégiák egyikét bevezetése.  A választott stratégia eltérőek lehetnek, és a döntések megválasztásához egy tartalmazhatnak, milyen típusú felhasználói élményt szeretne biztosítani, rendelkezik egy meglévő infrastruktúra, és mi az a leginkább költséghatékony.  
 
-![](./media/plan-hybrid-identity-design-considerations/integration-scenarios.png)
+![Integrációs forgatókönyvek](./media/plan-hybrid-identity-design-considerations/integration-scenarios.png)
 
 A fenti ábrán meghatározott a következők:
 
@@ -111,14 +111,14 @@ Az évek során több szinkronizálási eszközök létezett, és különféle f
 ### <a name="supported-topologies"></a>Támogatott topológiák
 A szinkronizálás stratégia meghatározásakor a használt topológia kell meghatározni. A lépésben meghatározott információknak 2 lehet meghatározni, hogy melyik topológiát megállapítsuk, melyiket érdemes használni. Egyetlen erdő, egyetlen Azure AD-topológia a leggyakoribb, és egyetlen Active Directory-erdő és az Azure ad-ben egyetlen példánya áll.  Ez a legtöbb forgatókönyv használni fog, és a várt topológia az Azure AD Connect Expressz telepítés használatakor, az alábbi ábrán látható módon.
 
-![](./media/plan-hybrid-identity-design-considerations/single-forest.png) Egyetlen erdő forgatókönyv szokás több erdővel rendelkezik, akár kis és nagy szervezetek számára az 5. ábrán látható módon.
+![Támogatott topológiák](./media/plan-hybrid-identity-design-considerations/single-forest.png) egyetlen erdőben forgatókönyv szokás több erdővel rendelkezik, akár kis és nagy szervezetek számára az 5. ábrán látható módon.
 
 > [!NOTE]
 > További információ a különböző helyszíni és az Azure AD Connect-topológiák az Azure AD sync olvassa [az Azure AD Connect-topológiák](plan-connect-topologies.md).
 > 
 > 
 
-![](./media/plan-hybrid-identity-design-considerations/multi-forest.png) 
+![Többerdős topológia](./media/plan-hybrid-identity-design-considerations/multi-forest.png) 
 
 Többerdős forgatókönyv
 
@@ -140,7 +140,7 @@ Ha ez a helyzet, akkor a több erdőt egyetlen Azure AD-topológia kell alkalmaz
 
 Ha a fenti nem teljesülnek, és több aktív fiók vagy postaláda egynél több, az Azure AD Connect válasszon egyet, és a többi mellőzése.  Ha postaládák, de nincs más fiók, ezek a fiókok nem lesznek exportálva az Azure AD és, hogy a felhasználó nem egy csoportnak sem tagja.  Ez eltér a módját a DirSync korábban volt, és azt szándékos jobb támogatása Többerdős forgatókönyvekben. Egy Többerdős forgatókönyv az alábbi ábrán látható.
 
-![](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
+![Több Azure AD-bérlő](./media/plan-hybrid-identity-design-considerations/multiforest-multipleAzureAD.png) 
 
 **Többerdős több Azure AD-forgatókönyv**
 
@@ -148,7 +148,7 @@ Javasoljuk, hogy a szervezet Azure AD-ben csak egyetlen címtárral rendelkezik,
 
 Ez a módszer lehetséges és támogatott Active Directory helyszíni példányát egy több Azure AD-címtár csatlakozni, az alábbi ábrán látható módon:
 
-![](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
+![egyetlen erdő szűrése](./media/plan-hybrid-identity-design-considerations/single-forest-flitering.png) 
 
 **Egyerdős szűrési forgatókönyv**
 

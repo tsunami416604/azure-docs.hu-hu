@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0a82c2ba8bdf3d01041aa06f55eaaecab29817b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3d14200faa06bc30df45a2100635ed7dc697a339
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60696783"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868614"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>A beszédfelismerési szolgáltatás nyelvéhez és régiójához támogatása
 
@@ -29,7 +29,7 @@ A Microsoft beszédfelismerési API-t a következő nyelveket támogatja. Az egy
   Kód | Nyelv | [Akusztikai betanítás](how-to-customize-acoustic-models.md) | [Nyelvi órái](how-to-customize-language-model.md) | [Adaptációs kiejtése](how-to-customize-pronunciation.md)
  ------|----------|---------------------|---------------------|-------------------------
  ar – példa | Arab (Egyiptom), a modern standard | Nem | Igen | Nem
- CA-ES | Katalán | Nem | Nem | Nem
+ CA-ES | katalán | Nem | Nem | Nem
  da-DK | dán (Dánia) | Nem | Nem | Nem
  de-DE | német (Németország) | Igen | Igen | Nem
  en-Ausztrália | angol (Ausztrália) | Nem | Igen | Igen
@@ -98,7 +98,7 @@ Területi beállítás | Nyelv | Nem | A felhasználónév-leképezés
 ar – példa\* | arab (Egyiptom) | Nő | "A Microsoft Server hang-szöveg, beszédfelismerés, beszédfelismerési (ar-működtek az Adatbázisok, Hoda)"
 ar-SA | arab (Szaúd-Arábia) | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (ar-SA, Naayf)"
 bg-BG | bolgár | Férfi | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (bg-BG, Ivan)"
-CA-ES | Katalán | Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (ca-ES, HerenaRUS)"
+CA-ES | katalán | Nő | "A Microsoft Server beszéd szöveg-beszéd átalakítás Voice (ca-ES, HerenaRUS)"
 cs-CZ | cseh | Férfi | "A Microsoft Server hang-szöveg, beszédfelismerés, beszédfelismerési (cs-CZ, Jakub)"
 da-DK | dán | Nő | "A Microsoft Server beszéd szöveg Speech Voice (da-DK, HelleRUS)"
 Németország-AT | német (Ausztria) | Férfi | "A Microsoft Server beszéd szöveg Speech Voice (Németország-AT, Michael)"

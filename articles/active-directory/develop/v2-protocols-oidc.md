@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f4a7f2a4fe0e1ca455b1140e83f31f6b30a7511
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bfac577d7582caa5b538f05273a02e4c3baf71ff
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250078"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918462"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>A Microsoft identity platform és az OpenID Connect protokollal
 
@@ -32,7 +32,7 @@ OpenID Connect nem épül, amely segítségével biztonságosan jelentkezzen be 
 > [!NOTE]
 > A Microsoft identity platform végpont nem támogatja az összes Azure Active Directory (Azure AD-) forgatókönyveket és funkciókat. Annak megállapításához, hogy a Microsoft identity platform végpontot kell használnia, olvassa el [a Microsoft identity platform korlátozásai](active-directory-v2-limitations.md).
 
-[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) kibővíti az OAuth 2.0 *engedélyezési* protokollt használja, mint egy *hitelesítési* protokoll, megteheti, hogy egyszeri bejelentkezés OAuth használatával. OpenID Connect bemutatja a egy *azonosító jogkivonat*, amelynek egy biztonsági jogkivonatot, amely lehetővé teszi, hogy az ügyfél számára, hogy a felhasználó identitásának ellenőrzéséhez. Az azonosító jogkivonat is lekéri a felhasználóval kapcsolatos főbb profiladatait. OpenID Connect kibővíti az OAuth 2.0, mert az alkalmazások biztonságos beszerezhető *hozzáférési jogkivonatokat*, által védett erőforrások eléréséhez használható egy [az engedélyezési kiszolgáló](active-directory-v2-protocols.md#the-basics). A Microsoft identity platform végpont lehetővé teszi a külső alkalmazások, amelyek az Azure AD hozzáférési jogkivonatok a védett erőforrások – például a webes API-k kiadására is. Hogyan állítható be egy alkalmazás hozzáférési jogkivonatok kiállításához kapcsolatos további információkért lásd: [alkalmazás regisztrálása a Microsoft identity platform végponttal](quickstart-v2-register-an-app.md). Javasoljuk, hogy használjon OpenID Connect készítésekor egy [webes alkalmazás](v2-app-types.md#web-apps) , amelyet a kiszolgáló által üzemeltetett és böngészőalapú hozzáférést biztosít.
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) kibővíti az OAuth 2.0 *engedélyezési* protokollt használja, mint egy *hitelesítési* protokoll, megteheti, hogy egyszeri bejelentkezés OAuth használatával. OpenID Connect bemutatja a egy *azonosító jogkivonat*, amelynek egy biztonsági jogkivonatot, amely lehetővé teszi, hogy az ügyfél számára, hogy a felhasználó identitásának ellenőrzéséhez. Az azonosító jogkivonat is lekéri a felhasználóval kapcsolatos főbb profiladatait. OpenID Connect kibővíti az OAuth 2.0, mert az alkalmazások biztonságos beszerezhető *hozzáférési jogkivonatokat*, által védett erőforrások eléréséhez használható egy [az engedélyezési kiszolgáló](active-directory-v2-protocols.md#the-basics). A Microsoft identity platform végpont lehetővé teszi a külső alkalmazások, amelyek az Azure AD hozzáférési jogkivonatok a védett erőforrások – például a webes API-k kiadására is. Hogyan állítható be egy alkalmazás hozzáférési jogkivonatok kiállításához kapcsolatos további információkért lásd: [alkalmazás regisztrálása a Microsoft identity platform végponttal](quickstart-register-app.md). Javasoljuk, hogy használjon OpenID Connect készítésekor egy [webes alkalmazás](v2-app-types.md#web-apps) , amelyet a kiszolgáló által üzemeltetett és böngészőalapú hozzáférést biztosít.
 
 ## <a name="protocol-diagram-sign-in"></a>Diagram protokoll: Sign-in
 
@@ -52,7 +52,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 A `{tenant}` négy értékek valamelyikét hajthatja végre:
 
-| Value | Leírás |
+| Érték | Leírás |
 | --- | --- |
 | `common` |Személyes Microsoft-fiókkal és az Azure AD-ből egy munkahelyi vagy iskolai fiókkal rendelkező felhasználók jelentkezhetnek be az alkalmazáshoz. |
 | `organizations` |Csak a felhasználók munkahelyi vagy iskolai fiókok Azure AD-ből az alkalmazás jelentkezhetnek be. |

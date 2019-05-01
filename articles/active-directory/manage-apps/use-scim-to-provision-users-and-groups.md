@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a404b5e6769c7bb91b4f7b5830cea18372ec456d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0bb7032c2741cc8c407c8d7d0285e58647f0bfd5
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291416"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918540"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A rendszer a tartományok közötti Identity Management (SCIM) használatával automatikus kiépítésére a felhasználók és csoportok alkalmazásokhoz az Azure Active Directoryból
 
@@ -128,7 +128,7 @@ Egy SCIM-végpontot, az Azure AD-kompatibilitás érdekében megvalósításáho
      - `and`
 * Nincs szükségük az SCIM adott Patch szerkezeti elemeket a nagybetűk megkülönböztetésével `op` művelet értékek, ahogyan az az https://tools.ietf.org/html/rfc7644#section-3.5.2. Az Azure AD másként "művelet" értékét bocsát ki `Add`, `Replace`, és `Remove`.
 * A Microsoft Azure AD lehetővé teszi a kérelmek beolvasni egy véletlenszerű felhasználó és csoport, győződjön meg arról, hogy a végpont és a hitelesítő adatok érvényesek. Részeként is befejeződéséről **kapcsolat tesztelése** a flow a [az Azure portal](https://portal.azure.com). 
-* Az attribútumot, amely az erőforrásokat a kérhetők le kell beállítani: egy egyező attribútum a az alkalmazás a [az Azure portal](https://portal.azure.com). További információkért lásd: [felhasználó kiépítési attribútumleképezések testreszabása](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
+* Az attribútumot, amely az erőforrásokat a kérhetők le kell beállítani: egy egyező attribútum a az alkalmazás a [az Azure portal](https://portal.azure.com). További információkért lásd: [felhasználó kiépítési attribútumleképezések testreszabása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
 
 ### <a name="user-provisioning-and-de-provisioning"></a>Felhasználói üzembe helyezést és megszüntetést
 A következő ábra azt mutatja, hogy az Azure Active Directory által SCIM szolgáltatásba küldött üzeneteket egy felhasználó a ügyfélidentitás-tárolóval, az alkalmazás életciklusának kezeléséhez.  

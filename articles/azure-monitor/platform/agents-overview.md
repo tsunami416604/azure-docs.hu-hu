@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 89e73a4578134493a25ec3cbd2385433a2b36156
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 58abe3a3973986ab489456be7958361ad8ab06f4
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775880"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922827"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Az Azure monitorozási ügynökök 
 A Microsoft Azure több módszert is biztosít a különböző típusú adatok gyűjtésére a Microsoft Windows és az Azure, a helyi adatközpontban vagy egyéb felhőszolgáltatók üzemeltetett Linux rendszerű virtuális gépek. Három különböző típusa érhető el a virtuális gép figyelése ügynökök a következők:
@@ -66,7 +66,7 @@ Korábban, a több Azure-szolgáltatások kötegelve is a *Operations Management
 
 * [Az Azure Automation Update management](../../automation/automation-update-management.md) operációsrendszer-frissítések.
 * [Azure Automation Desired State Configuration](../../automation/automation-dsc-overview.md) konzisztens konfiguráció-állapot karbantartásához.
-* Konfigurációs változások követése a [Azure Automation Change Tracking and Inventory](../../automation/automation-change-tracking.md).
+* Konfigurációs változások követése a [Azure Automation Change Tracking and Inventory](../../automation/change-tracking.md).
 * Azure-szolgáltatások például [Application Insights](https://docs.microsoft.com/azure/application-insights/) és [az Azure Security Center](https://docs.microsoft.com/azure/security-center/), amelyek natív módon tárolja az adatokat közvetlenül a Log Analytics.  
 
 ## <a name="dependency-agent"></a>Függőségi ügynök

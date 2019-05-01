@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3485639062f33d013152cd30f6785df4d1c79790
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7ae0e87fddabee9f42cbb5506dce4cd7a5f4f082
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60350329"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918856"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect-adatbázis áthelyezése SQL Server Expressről SQL Serverre 
 
@@ -25,7 +25,7 @@ Ez a dokumentum azt mutatja be, hogyan helyezhető át az Azure AD Connect-adatb
 ## <a name="about-this-scenario"></a>A forgatókönyv ismertetése
 Szeretnénk néhány információval kezdeni, amelyek erre a forgatókönyvre vonatkoznak.  Az Azure AD Connect 1.1.819.0-s verziója van telepítve egy önálló Windows Server 2016 tartományvezérlőn,  amely az adatbázishoz a beépített SQL Server 2012 Express Editiont használja.  Az adatbázis egy SQL Server 2017 kiszolgálóra lesz áthelyezve.
 
-![](media/how-to-connect-install-move-db/move1.png)
+![Forgatókönyv-architektúra](media/how-to-connect-install-move-db/move1.png)
 
 ## <a name="move-the-azure-ad-connect-database"></a>Az Azure AD Connect-adatbázis áthelyezése
 Az alábbi lépésekkel áthelyezheti az Azure AD Connect-adatbázist egy távoli SQL Serverre.
@@ -37,7 +37,7 @@ Az alábbi lépésekkel áthelyezheti az Azure AD Connect-adatbázist egy távol
 5. A távoli SQL Serveren nyissa meg az SQL Server Management Studio alkalmazást.
 6. Kattintson a jobb gombbal a Databases (Adatbázisok) elemre, majd válassza ki az Attach (Csatolás) lehetőséget.
 7. Az **Attach Databases** (Adatbázisok csatolása) képernyőn kattintson az **Add** (Hozzáadás) gombra, és keresse meg az ADSync.mdf fájlt.  Kattintson az **OK** gombra.
-   ![](media/how-to-connect-install-move-db/move2.png)
+   ![adatbázis csatolása](media/how-to-connect-install-move-db/move2.png)
 
 8. Az adatbázis csatolása után lépjen vissza az Azure AD Connect-kiszolgálóhoz, és telepítse az Azure AD Connectet.
 9. Miután az MSI-telepítés befejeződött, az Azure AD Connect varázslója elindítja az expressz módú telepítést. A Kilépés ikonra kattintva zárja be a képernyőt.

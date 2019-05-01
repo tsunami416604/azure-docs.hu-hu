@@ -3,19 +3,19 @@ title: Az Azure Active Directory technikai profil meghatározása egy egyéni h�
 description: Adja meg az Azure Active Directory B2C-vel egyéni szabályzatok az Azure Active Directory technikai profil.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b8dac47d1aa91eb8a8ee1ef9515809607b267437
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 433307791201e3799b3bc9e54aec765d9fbeb4af
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190701"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718708"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Az Azure Active Directory technikai profil meghatározása az Azure Active Directory B2C egyéni házirendek
 
@@ -23,7 +23,7 @@ ms.locfileid: "55190701"
 
 Az Azure Active Directory (Azure AD) B2C támogatást nyújt az Azure Active Directory-felhasználók kezelése. Ez a cikk ismerteti, amely támogatja a szabványos protokoll Jogcímszolgáltatók folytatott interakcióra szolgáló technikai profil adatait.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol
 
 A **neve** attribútuma a **protokoll** elemet hozzá kell beállítani `Proprietary`. A **kezelő** attribútum kell tartalmaznia a teljes nevet, a protokoll-kezelő szerelvény `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
 

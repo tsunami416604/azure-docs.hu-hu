@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 9e4308eea3384b20f21ffcf378f711a705f9f9e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c9cef479c1d4af55ae58c61a07ff1d5348ed7183
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405460"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868263"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Gyakori kérdések
 
@@ -50,7 +50,7 @@ A. A Data Box 10 napig egy névleges díj fejében érhető el. Amikor az Azure 
 A. A Data Box összes kapacitása 100 TB, használható kapacitása pedig 80 TB. Az adatok Data Box akár 80 TB lehet átvinni. Több adat átviteléhez több eszköz megrendelése szükséges.
 
 ### <a name="q-how-can-i-check-if-data-box-is-available-in-my-region"></a>K. Honnan tudhatom meg, hogy a Data Box elérhető-e a régiómban? 
-A.  A Data Box az egyes országokban való elérhetőségéről további információt a [regionális elérhetőséget](data-box-overview.md#region-availability) ismertető témakörben talál.  
+A.  Információk a mely országokban és régiókban érhető el a Data Box, [régiók rendelkezésre állása](data-box-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>K. Mely régiókban tárolhatok adatokat a Data Box segítségével?
 A. A Data Box támogatott az USA minden régiójában, Nyugat-Európában, Észak-Európában, Franciaországban és az Egyesült Királyságban. Csak a nyilvános Azure-felhőrégiók támogatottak. Az Azure Government és más független felhők nem támogatottak. További információt a [Regionális elérhetőség](data-box-overview.md#region-availability) témakörben talál.

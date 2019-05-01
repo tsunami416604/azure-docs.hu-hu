@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
 ms.date: 01/15/2019
-ms.openlocfilehash: 660d785baf12052bddf5206d8641116c9ac606aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5f82c654b443d58c9ce38c2fb0f48c1654daeb34
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60537700"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922245"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Figyelheti, létrehozása és kezelése az SFTP-fájlok az SSH és az Azure Logic Apps használatával
 
@@ -32,7 +32,7 @@ Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic
 
 ## <a name="limits"></a>Limits
 
-* SFTP-SSH műveletek olvashatja vagy írhatja a fájlokat, amelyek *1 GB-os vagy kisebb* , mivel kezeli az adatok *50 MB-os darab*, nem 1 GB-os darab.
+* SFTP-SSH műveletek olvashatja vagy írhatja a fájlokat, amelyek *1 GB-os vagy kisebb* , mivel kezeli az adatok *15 MB darab*, nem 1 GB-os darab.
 
 * A fájlok *1 GB-nál nagyobb*, műveleteket használhatja [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md). Az SFTP-SSH-eseményindítók jelenleg nem támogatja a darabolás.
 
@@ -44,7 +44,7 @@ További különbségekről, tekintse át a [hasonlítsa össze az SFTP-SSH és 
 
 Az alábbiakban az egyéb az SFTP-SSH-összekötő és az SFTP-összekötővel, ahol az SFTP-SSH-összekötő rendelkezik-e ezek a képességek közötti fő különbségeket:
 
-* Használja a <a href="https://github.com/sshnet/SSH.NET" target="_blank"> **SSH.NET** </a> könyvtár, amely egy nyílt forráskódú Secure Shell (SSH) kódtár, amely támogatja a .NET.
+* Használja a [SSH.NET könyvtár](https://github.com/sshnet/SSH.NET), amely egy nyílt forráskódú Secure Shell (SSH) kódtár, amely támogatja a .NET rendszer.
 
   > [!NOTE]
   >
@@ -54,7 +54,7 @@ Az alábbiakban az egyéb az SFTP-SSH-összekötő és az SFTP-összekötővel, 
   > * **Titkosítási algoritmusok**: DES-EDE3-CBC, DES-EDE3-CFB, DES-CBC, AES-128-CBC, AES-192-CBC, and AES-256-CBC
   > * **Ujjlenyomattal történő**: MD5
 
-* Műveletek olvashatja vagy írhatja fájlok *legfeljebb 1 GB-os* az SFTP-összekötővel, de leíró adatok darabokban 50 MB-ot, nem 1 GB-os darab képest. 1 GB-nál nagyobb méretű fájlokhoz, műveletek is használhatja [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md). Az SFTP-SSH-eseményindítók jelenleg nem támogatja a darabolás.
+* Műveletek olvashatja vagy írhatja fájlok *legfeljebb 1 GB-os* az SFTP-összekötővel, de a 15 MB darab 1 GB-os nem kezeli adatok darab képest. 1 GB-nál nagyobb méretű fájlokhoz, műveletek is használhatja [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md). Az SFTP-SSH-eseményindítók jelenleg nem támogatja a darabolás.
 
 * Itt a **mappa létrehozása** művelet, amely egy mappát hoz létre az SFTP-kiszolgáló a megadott elérési úton.
 
@@ -136,7 +136,7 @@ Az SFTP-SSH eseményindítók működnek az SFTP-fájlrendszer lekérdezésével
 
 Ha az eseményindító egy új fájlt talál, a trigger ellenőrzi, hogy az új fájl teljes és részlegesen írásos. Például egy fájl előfordulhat módosítások folyamatban, amikor a trigger ellenőriz a fájlkiszolgálón. Részlegesen írásos fájl visszaadó elkerüléséhez az eseményindító feljegyzi az időbélyeg, amely rendelkezik a legutóbbi módosítások, de nem ad vissza a fájlt közvetlenül a fájl. A trigger a fájl adja vissza, csak akkor, ha a kiszolgáló ismét lekérdezés. Egyes esetekben ez a viselkedés, amely legfeljebb kétszer az eseményindító a lekérdezési időköz késleltetés okozhatja. 
 
-Fájl tartalmának kérésekor eseményindítók nem kap fájlok 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát: 
+Fájl tartalmának kérésekor eseményindítók nem kap fájlok 15 MB-nál nagyobb. Első 15 MB-nál nagyobb fájlokat, hajtsa végre ezt a mintát: 
 
 * Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)**.
 
@@ -152,7 +152,7 @@ Ez az eseményindító indul el a logikai alkalmazás munkafolyamata egy fájl h
 
 **Példa vállalati**: Ez az eseményindító használatával figyelheti az SFTP-mappába, új fájlok, amelyek a vevői rendelések jelölésére. Ezután használhatja az SFTP-művelet például **fájl tartalmának beolvasása** úgy, hogy a rendelés tartalmának beolvasása a további feldolgozás céljából, és a egy rendelési adatbázisba sorrendben tárolja.
 
-Fájl tartalmának kérésekor eseményindítók nem kap fájlok 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát: 
+Fájl tartalmának kérésekor eseményindítók nem kap fájlok 15 MB-nál nagyobb. Első 15 MB-nál nagyobb fájlokat, hajtsa végre ezt a mintát: 
 
 * Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)**.
 
@@ -164,7 +164,7 @@ Fájl tartalmának kérésekor eseményindítók nem kap fájlok 50 MB-nál nagy
 
 Ez a művelet a tartalom olvas be egy fájl az SFTP-kiszolgálóra. Így például az előző példában és a egy feltételt, amely a fájl tartalmának meg kell felelnie az eseményindító is hozzáadhat. Ha a feltétel teljesül, a műveletet, amely lekérdezi a tartalmat futtathatja. 
 
-Fájl tartalmának kérésekor eseményindítók nem kap fájlok 50 MB-nál nagyobb. 50 MB-nál nagyobb fájlok lekéréséhez kövesse az ezt a mintát: 
+Fájl tartalmának kérésekor eseményindítók nem kap fájlok 15 MB-nál nagyobb. Első 15 MB-nál nagyobb fájlokat, hajtsa végre ezt a mintát: 
 
 * Használjon egy eseményindítót, amely visszaadja a fájl tulajdonságait, például **fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)**.
 

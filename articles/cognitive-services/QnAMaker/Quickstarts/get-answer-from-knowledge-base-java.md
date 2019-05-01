@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: a8e51534fec3dacb577ef9b79bb42c48557dc15b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 746551cf05634427f839bf33af641bc4615179fa
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60920161"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916894"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Válaszok a kérdést a Tudásbázis javával
 
@@ -24,7 +24,7 @@ Ez a rövid útmutató végigvezeti programozott módon első válasz a QnA Make
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java fejlesztői készlet, Standard Edition)
-* Ebben a példában az Apache [HTTP-alapú](http://hc.apache.org/httpcomponents-client-ga/) HTTP Components. Az alábbi Apache HTTP-ügyfélkönyvtárak hozzáadása a projekthez kell: 
+* Ebben a példában az Apache [HTTP-alapú](https://hc.apache.org/httpcomponents-client-ga/) HTTP Components. Az alábbi Apache HTTP-ügyfélkönyvtárak hozzáadása a projekthez kell: 
     * httpclient-4.5.3.jar
     * httpcore-4.4.6.jar
     * Commons-naplózás – 1.2.jar

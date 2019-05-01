@@ -3,19 +3,19 @@ title: Állítsa be a bejelentkezést a LinkedIn-fiók egyéni szabályzatok –
 description: Állítsa be jelentkezzen be a LinkedIn-fiók az Azure Active Directory B2C-vel egyéni szabályzatok használatával.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/23/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5bf1126a7015e668f3770835535b81c93d01cbda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 204e6ef27e4e8db89bdeb22a25ad847ec5c6bcfc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387077"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706787"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Állítsa be a bejelentkezést a LinkedIn-fiók az Azure Active Directory B2C-vel egyéni szabályzatok használatával
 
@@ -51,7 +51,7 @@ LinkedIn használni Identitásszolgáltatóként az Azure AD B2C-ben, meg kell a
 Az ügyfél titkos kulcsát, az Azure AD B2C-bérlő korábban rögzített tárolni kívánt.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
+2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő tartalmazó könyvtárba. Válassza ki a **címtár és előfizetés-szűrő** a felső menüben, és válassza ki a bérlő tartalmazó könyvtárra.
 3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
 4. Az Áttekintés oldalon válassza ki a **identitás-kezelőfelületi keretrendszer**.
 5. Válassza ki **Szabályzatbejegyzések** majd **Hozzáadás**.
@@ -95,8 +95,8 @@ Meghatározhatja a LinkedIn-fiók egy jogcímszolgáltatótól, adja hozzá, hog
           </CryptographicKeys>
           <OutputClaims>
             <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="id" />
-            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName" />
-            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName.localized" />
+            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName.localized" />
             <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="linkedin.com" />
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
           </OutputClaims>
@@ -225,67 +225,6 @@ Frissítse a függő entitásonkénti (RP) fájl, amely az Ön által létrehozo
 5. A módosítások mentéséhez, feltöltheti a fájlt, és válassza ki az új házirendet a listában.
 6. Győződjön meg arról, hogy a létrehozott Azure AD B2C-alkalmazást az van kiválasztva, a **válassza ki az alkalmazás** mezőben, majd tesztelje kattintva **Futtatás most**.
 
-
-## <a name="register-the-claims-provider"></a>A jogcím-szolgáltató regisztrálása
-
-Ezen a ponton az identitásszolgáltató be lett állítva, de nem érhető el az összes regisztrációs vagy bejelentkezési képernyőt. Elérhető legyen, hozzon létre egy meglévő sablon felhasználói interakciósorozat másolatát, és ezután módosítsa, hogy a LinkedIn-identitásszolgáltató is rendelkezik.
-
-1. Nyissa meg a *TrustFrameworkBase.xml* az alapszintű csomag fájlt.
-2. Keresse meg és másolja ki a teljes tartalmát a **UserJourney** , amely tartalmazza az elem `Id="SignUpOrSignIn"`.
-3. Nyissa meg a *TrustFrameworkExtensions.xml* , és keresse meg a **UserJourneys** elemet. Ha az elem nem létezik, adjon hozzá egyet.
-4. Illessze be a teljes tartalmát a **UserJourney** gyermekeként kimásolt elem a **UserJourneys** elemet.
-5. Nevezze át a felhasználói út azonosítója. Például: `SignUpSignInLinkedIn`.
-
-### <a name="display-the-button"></a>A gomb megjelenítése
-
-A **hiányzik a ClaimsProviderSelection** elem ehhez hasonló regisztrálási vagy bejelentkezési képernyőn egy identitás szolgáltató a gombhoz. Ha hozzáad egy **hiányzik a ClaimsProviderSelection** elem a LinkedIn-fiók, egy új gomb megjelenik-e, amikor egy felhasználó hajtanak végre az oldalon.
-
-1. Keresse meg a **OrchestrationStep** , amely tartalmazza az elem `Order="1"` az Ön által létrehozott felhasználói interakciósorozat.
-2. A **ClaimsProviderSelects**, adja hozzá a következő elemet. Állítsa az értékét **TargetClaimsExchangeId** egy megfelelő értéket, például a `LinkedInExchange`:
-
-    ```XML
-    <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
-    ```
-
-### <a name="link-the-button-to-an-action"></a>A gomb összekapcsolása egy műveletet
-
-Most, hogy egyetlen helyen, amelyekkel hozzákapcsolhatja egy műveletet kell. A művelet, ebben az esetben pedig az Azure AD B2C-vel való kommunikációhoz a LinkedIn-fiók kaphat jogkivonatot.
-
-1. Keresse meg a **OrchestrationStep** tartalmazó `Order="2"` a felhasználói interakciósorozatban szereplő.
-2. Adja hozzá a következő **ClaimsExchange** tétele, hogy a használt azonosító ugyanazt az értéket használja-e elem **TargetClaimsExchangeId**:
-
-    ```XML
-    <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
-    ```
-    
-    Frissítse az értéket a **TechnicalProfileReferenceId** , a korábban létrehozott technikai profil azonosítója. Például: `LinkedIn-OAUTH`.
-
-3. Mentse a *TrustFrameworkExtensions.xml* fájlt, és töltse fel újra az ellenőrzéshez.
-
-## <a name="create-an-azure-ad-b2c-application"></a>Az Azure AD B2C-alkalmazás létrehozása
-
-Kommunikáció az Azure AD B2C-vel hoz létre a bérlő alkalmazás keresztül történik. Ez a szakasz felsorolja a nem kötelező lépések is elvégezheti egy test-alkalmazás létrehozása, ha ezt még nem tette meg.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő tartalmazó könyvtárba. Válassza ki a **címtár és előfizetés-szűrő** a felső menüben, és válassza ki a bérlő tartalmazó könyvtárra.
-3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
-4. Válassza ki **alkalmazások**, majd válassza ki **Hozzáadás**.
-5. Adja meg egy nevet az alkalmazásnak, például *testapp1*.
-6. A **Web App / Web API**, jelölje be `Yes`, majd adja meg `https://jwt.ms` a a **válasz URL-cím**.
-7. Kattintson a **Create** (Létrehozás) gombra.
-
-## <a name="update-and-test-the-relying-party-file"></a>Frissítse és a függő entitás fájl tesztelése
-
-Frissítse a függő entitásonkénti (RP) fájl, amely az Ön által létrehozott felhasználói interakciósorozat kezdeményezi.
-
-1. Készítsen másolatot *SignUpOrSignIn.xml* a munkakönyvtárban, és nevezze át. Például nevezze át, hogy *SignUpSignInLinkedIn.xml*.
-2. Nyissa meg az új fájlt, és frissítse az értéket, a **PolicyId** az attribútum **TrustFrameworkPolicy** egyedi értékkel. Például: `SignUpSignInLinkedIn`.
-3. Frissítse az értéket a **PublicPolicyUri** URI-a szabályzat. Ha például`http://contoso.com/B2C_1A_signup_signin_linkedin`
-4. Frissítse az értéket, a **hivatkozásazonosító** attribútum **DefaultUserJourney** megfelelően (SignUpSignLinkedIn) létrehozott új felhasználói interakciósorozat azonosítója.
-5. A módosítások mentéséhez, feltöltheti a fájlt, és válassza ki az új házirendet a listában.
-6. Győződjön meg arról, hogy a létrehozott Azure AD B2C-alkalmazást az van kiválasztva, a **válassza ki az alkalmazás** mezőben, majd tesztelje kattintva **Futtatás most**.
-
-
 ## <a name="migration-from-v10-to-v20"></a>Áttelepítés 1.0-s verziója a 2.0-s verzió
 
 Nemrég LinkedIn [frissíteni az API-k az 1.0-s verziója a 2.0-s verziójú](https://engineering.linkedin.com/blog/2018/12/developer-program-updates). A meglévő konfiguráció át az új konfigurációt, az alábbi szakaszokban található információk segítségével frissítheti az elemeket a technikai profilban.
@@ -385,14 +324,56 @@ A **BuildingBlocks** elemet kell adni a fájl elején. Tekintse meg a *Trustfram
 
 ### <a name="obtain-an-email-address"></a>Szerezzen be egy e-mail-cím
 
-A LinkedIn áttelepítési 1.0-s verziója a 2.0-s verzió része egy extra egy másik API-hívás szerezze be az e-mail-cím szükséges. Ha szeretné az e-mail-cím beszerzése a regisztráció során, tegye a következőket:
+A LinkedIn áttelepítési 1.0-s verziója a 2.0-s verzió része egy további egy másik API-hívás szerezze be az e-mail-cím szükséges. Ha szeretné az e-mail-cím beszerzése a regisztráció során, tegye a következőket:
 
-1. Az Azure AD B2C-vel LinkedIn jelentkezzen be a felhasználók összevonják rendelkezik. Ha ez történik, a hozzáférési jogkivonat is küld LinkedIn Azure AD B2C-t.
+1. Jelentkezzen be a felhasználók a LinkedIn összevonni kívánt Azure AD B2C lehetővé teszi a fenti lépéseket. Az összevonási részeként az Azure AD B2C-vel linkedinre a hozzáférési jogkivonatot kap.
 2. Mentse a LinkedIn-hozzáférési jogkivonatot a jogcímet. [Az utasításokat lásd itt](idp-pass-through-custom.md).
-3. Meghívhat egy Azure-függvényt, és átadni a függvény a hozzáférési jogkivonat összegyűjtött az előző lépésben. [Az utasításokat lásd itt](active-directory-b2c-rest-api-step-custom.md)
-    1. Az Azure-függvény kell vennie a hozzáférési jogkivonatot és a LinkedIn API meghívásához (`https://api.linkedin.com/v2/emailAddress?q=members&projection=(elements*(handle~))`).
-    2. Az Azure-függvény vesz igénybe a választ, és elemzi az e-mail cím.
-    3. Az e-mail-cím vissza a házirend küld vissza.
-4. Az e-mail-cím tárolja a e-mail követelés, és a felhasználói út tárgyaló.
+3. Adja hozzá a következő kérést küld a Linkedinen a jogcímszolgáltató `/emailAddress` API-t. A kérelem engedélyezéséhez, a LinkedIn-hozzáférési jogkivonatot kell.
 
-Az e-mail-cím beszerzése a LinkedIn a regisztráció során nem kötelező. Ha nem kívánja beszerezni az e-mailt, a felhasználó manuálisan adja meg az e-mail címét, és érvényesítse azt szükség.
+    ```XML
+    <ClaimsProvider> 
+      <DisplayName>REST APIs</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="API-LinkedInEmail">
+          <DisplayName>Get LinkedIn email</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+              <Item Key="ServiceUrl">https://api.linkedin.com/v2/emailAddress?q=members&amp;projection=(elements*(handle~))</Item>
+              <Item Key="AuthenticationType">Bearer</Item>
+              <Item Key="UseClaimAsBearerToken">identityProviderAccessToken</Item>
+              <Item Key="SendClaimsIn">Url</Item>
+              <Item Key="ResolveJsonPathsInJsonTokens">true</Item>
+          </Metadata>
+          <InputClaims>
+              <InputClaim ClaimTypeReferenceId="identityProviderAccessToken" />
+          </InputClaims>
+          <OutputClaims>
+              <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="elements[0].handle~.emailAddress" />
+          </OutputClaims>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    ```
+
+4. Adja hozzá a következő vezénylési lépés a felhasználói út be, úgy, hogy az API jogcímszolgáltatótól akkor aktiválódik, ha a felhasználó bejelentkezik a LinkedIn használatával. Győződjön meg arról, hogy frissítette a `Order` number megfelelően. Adja hozzá ezt a lépést, amely elindítja a LinkedIn technikai profil vezénylési lépés után azonnal.
+
+    ```XML
+    <!-- Extra step for LinkedIn to get the email -->
+    <OrchestrationStep Order="4" Type="ClaimsExchange">
+      <Preconditions>
+        <Precondition Type="ClaimEquals" ExecuteActionsIf="false">
+          <Value>identityProvider</Value>
+          <Value>linkedin.com</Value>
+          <Action>SkipThisOrchestrationStep</Action>
+        </Precondition>
+      </Preconditions>
+      <ClaimsExchanges>
+        <ClaimsExchange Id="GetEmail" TechnicalProfileReferenceId="API-LinkedInEmail" />
+      </ClaimsExchanges>
+    </OrchestrationStep>
+    ```
+
+Az e-mail-cím beszerzése a LinkedIn a regisztráció során nem kötelező. Ha nem kíván LinkedIn szerezze be az e-mailt, de a jelszó használata kötelezővé tehető, bejelentkezés során, a felhasználó manuálisan adja meg az e-mail címét, és érvényesítse azt szükség.
+
+Egy szabályzatot, amely a LinkedIn identitásszolgáltatót használja a teljes minta: a [egyéni szabályzat Kezdőcsomag](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/linkedin-identity-provider).

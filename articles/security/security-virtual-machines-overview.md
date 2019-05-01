@@ -1,5 +1,5 @@
 ---
-title: Az Azure-beli virtuális gépek használt Azure biztonsági szolgáltatásait |} A Microsoft Docs
+title: Az Azure virtual machines - használt biztonsági funkciókat az Azure security |} A Microsoft Docs
 description: Ez a cikk az alapvető áttekintést nyújt az Azure biztonsági funkciókat, amelyeket az Azure Virtual Machines segítségével.
 services: security
 documentationcenter: na
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: c0a4a8ae270c8d8f6f3c2e86db9deed4e14f668e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3467050214cba6ce5723c2747d2c13e40e86609b
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60444248"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872015"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Az Azure virtuális gépek biztonsági áttekintése
+Ez a cikk az alapvető áttekintést nyújt az Azure biztonsági szolgáltatások virtuális gépekkel is használható.
 
 Azure Virtual Machines használatával a legkülönbözőbb számítástechnikai megoldások széles üzembe. A szolgáltatás támogatja a Microsoft Windows, Linux, a Microsoft SQL Server, Oracle, IBM, SAP és az Azure BizTalk Services. Telepíthet tehát bármilyen számítási feladatot és programnyelvtől függetlenül, szinte bármely operációs rendszeren.
 
@@ -33,9 +34,7 @@ Az Azure-ral hozhat létre biztonságos, előírásoknak megfelelő megoldások,
 * Bizalmas adatok titkosítása.
 * Hálózati forgalmának biztonságossá tétele.
 * Fenyegetések azonosítása és felderítése.
-* Megfelelőségi követelmények teljesítése érdekében.
-
-Ez a cikk célja az alapvető áttekintést biztosít az Azure biztonsági szolgáltatások virtuális gépekkel is használható. Cikkek hivatkozásainak egyes szolgáltatások részletei adjon meg, hogy többet is megtudhat.  
+* Megfelelőségi követelmények teljesítése érdekében.  
 
 ## <a name="antimalware"></a>Kártevőirtó
 
@@ -77,14 +76,14 @@ Még hatékonyabb védelme érdekében fontolja meg [Windows Defender komplex ve
 * [Felügyeleti és API-k](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/management-apis)
 * [Microsoft Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
 
-További információ: 
+További információ:
 
 * [WDATP használatának első lépései](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/get-started)  
 * [WDATP képességek áttekintése](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview)  
 
 ## <a name="hardware-security-module"></a>Hardveres biztonsági modul
 
-Kulcs biztonságának növelése javíthatja a titkosítási és hitelesítési védelmet. A kezelését és a létfontosságú kulcsok és titkok biztonságos tárolása az Azure Key Vault egyszerűsítheti. 
+Kulcs biztonságának növelése javíthatja a titkosítási és hitelesítési védelmet. A kezelését és a létfontosságú kulcsok és titkok biztonságos tárolása az Azure Key Vault egyszerűsítheti.
 
 A Key Vault segítségével a kulcsokat a 2-es szintű FIPS 140-2 szabványnak megfelelő hardveres biztonsági modulokban (HSM) őrizheti. Az SQL Server titkosítási kulcsok biztonsági mentése vagy [transzparens adattitkosítás](https://msdn.microsoft.com/library/bb934049.aspx) összes tárolható a Key Vault- és az alkalmazások titkos. Engedélyek és a hozzáférést ezekhez a védett elemekhez kezelhető [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
 
@@ -133,7 +132,7 @@ További információ:
 
 ## <a name="virtual-networking"></a>Virtuális hálózat
 
-Virtuális gépek hálózati kapcsolat szükséges. Ezt a követelményt támogatása érdekében az Azure-beli virtuális hálózathoz csatlakoztatni kívánt virtuális gépek van szüksége. 
+Virtuális gépek hálózati kapcsolat szükséges. Ezt a követelményt támogatása érdekében az Azure-beli virtuális hálózathoz csatlakoztatni kívánt virtuális gépek van szüksége.
 
 Azure-beli virtuális hálózathoz egy logikai szerkezet, a fizikai az Azure hálózati háló épülnek. Minden logikai Azure virtuális hálózat el különítve a minden más Azure virtuális hálózatokkal. Elkülönítés segítségével biztosítja, hogy a központi telepítések a hálózati forgalom nem érhető el a más Microsoft Azure-ügyfelek.
 
@@ -169,14 +168,13 @@ További információ:
 
 ## <a name="confidential-computing"></a>Bizalmas számítástechnika
 
-Bizalmas nem része technikailag virtuális gép biztonsági számítástechnika, amíg a témakör a virtuális gép biztonsági "compute" biztonsági magasabb szintű tárgya tartozik. Bizalmas számítási "compute" biztonsági kategóriájába tartozik. 
+Bizalmas nem része technikailag virtuális gép biztonsági számítástechnika, amíg a témakör a virtuális gép biztonsági "compute" biztonsági magasabb szintű tárgya tartozik. Bizalmas számítási "compute" biztonsági kategóriájába tartozik.
 
 Bizalmas számítási biztosítja, hogy "az a titkosítatlan" adatok esetén azért szükség a hatékony feldolgozás, az adatok védelmét egy megbízható végrehajtási környezetet https://en.wikipedia.org/wiki/Trusted_execution_environment (TEE – más néven az enklávé), az alábbi ábrán látható egy példa .  
 
-T-idomok győződjön meg arról, nem lehet adatokat vagy a művelet kívülről, még a hibakereső megtekintéséhez. Ezek még akkor is győződjön meg arról, hogy csak akkor engedélyezett, ha a kód számára engedélyezett hozzáférési adatokat. Ha a kódot módosítva vagy illetéktelen módosítás, a műveleteket a rendszer megtagadja, és a környezet le van tiltva. A TEE kikényszeríti a védelem a benne található kód végrehajtása során. 
+T-idomok győződjön meg arról, nem lehet adatokat vagy a művelet kívülről, még a hibakereső megtekintéséhez. Ezek még akkor is győződjön meg arról, hogy csak akkor engedélyezett, ha a kód számára engedélyezett hozzáférési adatokat. Ha a kódot módosítva vagy illetéktelen módosítás, a műveleteket a rendszer megtagadja, és a környezet le van tiltva. A TEE kikényszeríti a védelem a benne található kód végrehajtása során.
 
 További információ:
 
 * [Introducing Azure bizalmas számítástechnika](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Az Azure bizalmas számítástechnika](https://azure.microsoft.com/blog/azure-confidential-computing/)  
-

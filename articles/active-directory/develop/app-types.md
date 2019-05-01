@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef180fb444e32e8b055837fd418e21162ff58339
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa4b68d48ec3f4fbb61c7144a133d9c42938c723
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411199"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917283"
 ---
 # <a name="application-types-in-v10"></a>Alkalmazástípusok az 1.0-s verzió
 
@@ -63,7 +63,7 @@ Minden olyan alkalmazás, amely az Azure AD-hitelesítés outsources regisztrál
   * **Kulcs** -együtt küldött egy Alkalmazásazonosítót hitelesítéséhez az Azure AD a webes API-hívás a kulcsot.
 * Az Azure AD meg kell győződnie arról az alkalmazás rendelkezik a szükséges engedélyekkel hozzáférhet a címtár adataihoz, más alkalmazásokat a szervezeten belül, és így tovább.
 
-Részletekért megtudhatja, hogyan [alkalmazás regisztrálása az Azure AD-1.0-s verziójú végpont](quickstart-v1-add-azure-ad-app.md).
+Részletekért megtudhatja, hogyan [alkalmazás regisztrálása](quickstart-register-app.md).
 
 ## <a name="single-tenant-and-multi-tenant-apps"></a>Egybérlős és több-bérlős alkalmazások
 

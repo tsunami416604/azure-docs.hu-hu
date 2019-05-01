@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/18/2019
+ms.date: 04/29/2019
 ms.author: mlottner
-ms.openlocfilehash: 49decb2d67c8ff16f9912fea8e8ece1a3bd9feb5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 253585d71ab2704efa0b3e4a06456e1d505b46ad
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60232809"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919669"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Az IoT Azure Security Center bemutatása
 
@@ -33,7 +33,7 @@ Biztonsági felügyelet egységesítése és a hibrid felhőbeli számítási fe
 
 ## <a name="protect-iot-and-hybrid-cloud-workloads-against-evolving-cyber-attacks"></a>IoT és a hibrid felhőbeli számítási feladatok folyamatosan fejlődő kibertámadások elleni védelme
 
-Az IOT-gyorsan alkalmazásán át a világ realitásainak. Észlelésétől insights lehetővé teszi az a csatlakoztatott eszközök és a háttér-rendszerek most alakíthatja át nagy teljesítményű alkalmazások és szolgáltatások segítségével a szervezet üzleti és a működési szintje páratlan elérése információkat teljesítmény. Azonban, amint az új eszközök milliárdjait csatlakozik az internethez, és akár napi és a cégek; integrálva Győződjön meg arról, hogy azok biztonsági stratégiák elég gyorsan ezen új támadási felületek fedik fejlődnek kell a biztonsági üzemeltetési csapatokra. Mint bármely más rendszer biztonságossá tétele az IoT-megoldás minden egyes fázisában védelméről a megvalósítás van szüksége. 
+Az IOT-gyorsan alkalmazásán át a világ realitásainak. A csatlakoztatott eszközök és a háttér-rendszerek származó információk feltárásában lehetővé teszi mostantól alakíthatja át nagy teljesítményű alkalmazásokat és szolgáltatásokat nyújtanak szervezetének, páratlan szintű működési és üzleti teljesítmény érhető el az információkat. Azonban, amint az új eszközök milliárdjait csatlakozik az internethez, és akár napi és a cégek; integrálva Győződjön meg arról, hogy azok biztonsági stratégiák elég gyorsan ezen új támadási felületek fedik fejlődnek kell a biztonsági üzemeltetési csapatokra. Mint bármely más rendszer biztonságossá tétele az IoT-megoldás minden egyes fázisában védelméről a megvalósítás van szüksége. 
 
 Az Azure Security Center (ASC) az IoT egyszerűbbé teszi a hibrid számítási feladatok védelmét azáltal, hogy egységes láthatóságát és a vezérlő, adaptív fenyegetések megelőzése, és intelligens fenyegetésészlelés és a válaszok számítási feladatok futtatása az Edge-ben, a helyszínen, az Azure-ban, és a más felhőkben. 
 

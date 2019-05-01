@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Ismerje meg, hogyan létrehozása, módosítása vagy az Azure-beli virtuális hálózat törlése.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
-ms.author: jdial
-ms.openlocfilehash: 6e393bf9c08eaa656a1c9b2302cde937a87ccc9a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: kumud
+ms.openlocfilehash: 235a82c6bba4165790c370c2641ee6cd41f10840
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088502"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64700483"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Létrehozása, módosítása vagy egy virtuális hálózat törlése
 
@@ -25,7 +25,7 @@ ms.locfileid: "58088502"
 
 Ismerje meg, hogyan hozhat létre és a virtuális hálózat törlése és a beállításokat, például a DNS-kiszolgálók és az IP-címtereket, meglévő virtuális hálózat. Ha most ismerkedik a virtuális hálózatok, többet is megtudhat a velük kapcsolatos a [virtuális hálózatok áttekintése](virtual-networks-overview.md) vagy; Ehhez hajtsa végre egy [oktatóanyag](quick-create-portal.md). A virtuális hálózatok alhálózatokat tartalmaznak. Ismerje meg, hogyan létrehozása, módosítása és alhálózatok törlése, lásd: [alhálózatok kezelését](virtual-network-manage-subnet.md).
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ez a cikk bármely szakaszban ismertetett lépések elvégzése előtt hajtsa végre a következőket:
 

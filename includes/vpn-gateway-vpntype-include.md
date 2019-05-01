@@ -2,22 +2,23 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: vpn-gateway
-author: cherylmc
+author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
-ms.author: cherylmc
+origin.date: 03/21/2018
+ms.date: 12/24/2018
+ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 5de227e5de5ef9b41f6e0f64db86b7195259f7d6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b3907882df09bfae1d6453fbffbd3e7562554f7c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "30196774"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "64859057"
 ---
-* **PolicyBased:** PolicyBased VPN korábban megnevezése statikus útválasztó átjáró volt a klasszikus üzembe helyezési modellben. Házirendalapú VPN titkosításához, és irányítják a csomagokat a helyszíni hálózat és az Azure VNet közötti címelőtag-kombinációkkal konfigurált IPsec-házirendek alapján IPsec-alagutakon keresztül. A házirend (vagy forgalomválasztó) általában egy hozzáférési listaként van megadva a VPN-eszköz konfigurációjában. Egy szabályalapú VPN-típus értéke *PolicyBased*. Ha egy szabályalapú VPN-kapcsolattal, vegye figyelembe a következő korlátozások vonatkoznak:
+* **Házirendalapú:** Házirendalapú VPN-eket korábban megnevezése statikus útválasztó átjáró volt a klasszikus üzemi modellben. Házirendalapú VPN-eket titkosítják és irányítják a csomagokat a helyszíni hálózat és az Azure VNet közötti címelőtag-kombinációkkal konfigurált IPsec-házirendek alapján IPsec-alagutakon keresztül. A házirend (vagy forgalomválasztó) általában egy hozzáférési listaként van megadva a VPN-eszköz konfigurációjában. Házirendalapú VPN-típus értéke *PolicyBased*. Ha használ a házirendalapú VPN, vegye figyelembe a következő korlátozások vonatkoznak:
   
-  * A VPN-hálózatokhoz PolicyBased is **csak** használni, az alapszintű átjáró-Termékváltozat. A VPN-típus nem kompatibilis más átjáró SKU.
-  * Akkor is csak 1 bújtatási beállítása PolicyBased VPN használatakor.
-  * Csak használhat PolicyBased VPN S2S-kapcsolatok, és csak bizonyos konfigurációk. Legtöbb VPN Gateway-konfiguráció RouteBased VPN kell.
-* **RouteBased**: VPN RouteBased korábban megnevezése dinamikus útválasztó átjáró volt a klasszikus üzembe helyezési modellben. RouteBased VPN-EK "útvonalakat" meg az IP-továbbítási vagy útvonalválasztási táblán, hogy a csomagokat a megfelelő alagútkapcsolatokhoz irányítsák a használja. Az alagútkapcsolatok ezután titkosítják vagy visszafejtik az alagutakba bemenő vagy onnan kijövő csomagokat. A házirend (vagy forgalomválasztója) VPN RouteBased konfigurált bármely elem közöttiként (vagy helyettesítő karakterek). Egy RouteBased VPN-típus értéke *RouteBased*.
+  * Házirendalapú VPN-eket is **csak** az alapszintű átjáró-Termékváltozatot kell használni. A VPN típus nem kompatibilis a más átjáró-termékváltozatokat használják.
+  * Ha használ a házirendalapú VPN csak 1 alagút rendelkezhet.
+  * Házirendalapú VPN-eket S2S-kapcsolatokat, és csak bizonyos konfigurációk csak használható. A legtöbb VPN Gateway-konfigurációk egy Útvonalalapú VPN van szükség.
+* **Útvonalalapú**: Útvonalalapú VPN-ekre korábban megnevezése dinamikus útválasztó átjáró volt a klasszikus üzemi modellben. Útvonalalapú VPN-EK "útvonalakat" használnak az IP-továbbítási vagy útvonalválasztási táblán a csomagokat, azokat a megfelelő alagútkapcsolatokhoz irányítsák. Az alagútkapcsolatok ezután titkosítják vagy visszafejtik az alagutakba bemenő vagy onnan kijövő csomagokat. A házirend (vagy forgalomválasztó) Útvonalalapú VPN-EK megtörténik-bármely, (vagy helyettesítő karakterekként). Útvonalalapú VPN-típus értéke *RouteBased*.

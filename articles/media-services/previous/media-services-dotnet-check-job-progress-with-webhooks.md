@@ -14,14 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 36ef27dfb4a5d77ec2e595013a82f55cdf240c0b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3b4c3bac1a2d62246fa5a7ff3a348c6cb2652ea1
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61465694"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868165"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure Webhookok használata a .NET-keretrendszerrel történő Media Services feladatértesítések figyelése 
+
+> [!NOTE]
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
 
 Feladatok futtatásakor gyakran igényelnek olyan módon, a feladat előrehaladásának nyomon követéséhez. Az Azure-Webhookok használatával figyelheti a Media Services feladatértesítések vagy [Azure Queue storage](media-services-dotnet-check-job-progress-with-queues.md). Ez a cikk bemutatja, hogyan használható a webhookok.
 
@@ -31,7 +34,7 @@ Ez a cikk bemutatja, hogyan lehet
     
     Ebben az esetben a webhook által aktivált Media Services a kódolási feladat állapotának változásakor. A függvény visszaküldi a Media Services-értesítések a webhook hívásához figyeli, és közzéteszi a kimeneti objektum, a feladat befejezése után. 
     
-    >[!NOTE]
+    >[!TIP]
     >A folytatás előtt győződjön meg arról, hogy hogyan [Azure Functions – HTTP- és webhookkötések](../../azure-functions/functions-bindings-http-webhook.md) működik.
     >
     

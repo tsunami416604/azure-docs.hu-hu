@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: add3521a3961f230188e04ff23dda5aac537571a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 15d195361b9fe8523ae6e46ba035ca5927c4d242
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61418403"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924756"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -90,7 +90,7 @@ Az alábbi szakasz ismerteti a konfigurációt, a naplózás az Azure portal has
 5. **Új** – most már több lehetőség áll rendelkezésére konfigurálásához ahol auditnaplók lesz írva. Naplók az Azure storage-fiók, egy Log Analytics-munkaterületet a memóriafogyasztást úgy, hogy az Azure Monitor naplóira vagy kínál az event hubs az eseményközpont írhat. Az alábbi lehetőségek közül bármelyiket is beállíthat, és minden egyes auditnaplók lesz írva.
 
    > [!WARNING]
-   > Engedélyezve van a naplózás a Log Analytics Adatbetöltési díjait számoljuk fel alapján számítunk fel. Vegye figyelembe, ez a járulékos költsége [beállítás](https://azure.microsoft.com/en-us/pricing/details/monitor/), vagy fontolja meg a naplózási tároló Azure storage-fiókkal bejelentkezik.
+   > Engedélyezve van a naplózás a Log Analytics Adatbetöltési díjait számoljuk fel alapján számítunk fel. Vegye figyelembe, ez a járulékos költsége [beállítás](https://azure.microsoft.com/pricing/details/monitor/), vagy fontolja meg a naplózási tároló Azure storage-fiókkal bejelentkezik.
 
     ![tárolási lehetőségek](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 

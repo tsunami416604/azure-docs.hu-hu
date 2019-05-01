@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: 7e37d8e732408e70dbcdc86d3e21556f553506cd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 26306489b11e24ab50f0ae893f11137d279c6127
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768484"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719801"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows kék képernyő hibát jeleníti meg, ha egy Azure virtuális gép elindítása
 Ez a cikk ismerteti, amely felmerülhet, amikor elindítja a Windows virtuális gép (VM) a Microsoft Azure-ban kék képernyő hibákat. Ismerteti egy támogatási jegyet az adatgyűjtéshez nyújt segítséget. 
@@ -56,7 +56,7 @@ A probléma megoldásához, gyűjtse össze az összeomlási memóriakép fájlt
 ### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Keresse meg a memóriakép-fájl, és a egy támogatási jegyet is küldhet
 
 1. A helyreállítási virtuális Gépet lépjen a csatlakoztatott operációsrendszer-lemez a windows-mappában. Ha van rendelve a csatlakoztatott operációsrendszer-lemez meghajtóbetűjelét F, kell F:\Windows Ugrás.
-2. Th memory.dmp fájlt, keresse meg, majd [támogatási jegyet is küldhet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) memóriakép-fájllal. 
+2. Keresse meg a memory.dmp fájlt, majd [támogatási jegyet is küldhet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) memóriakép-fájllal. 
 
 Ha nem találja a memóriakép-fájl, helyezze át a következő lépéssel engedélyezheti a memóriakép naplóját és a soros konzol.
 

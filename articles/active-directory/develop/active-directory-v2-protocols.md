@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dad05221376fa5871aadf6d89dcb15dff55a6dfa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7471bb82aece2b4c11f5071b6b3746f1a55a4a60
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60300171"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917338"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>A Microsoft identity platform protokollok
 
@@ -51,7 +51,7 @@ Minden alkalmazás, amely fogadja el a személyes és munkahelyi vagy iskolai fi
 * A **átirányítási URI-t** vagy **csomagazonosítót** , amely közvetlen válaszokhoz az alkalmazáshoz használható
 * Néhány más forgatókönyv-specifikus értékeket.
 
-További részletekért ismerkedjen meg az [alkalmazások regisztrálásának folyamatával](quickstart-v2-register-an-app.md).
+További részletekért ismerkedjen meg az [alkalmazások regisztrálásának folyamatával](quickstart-register-app.md).
 
 ## <a name="endpoints"></a>Végpontok
 
@@ -64,7 +64,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 Ha a `{tenant}` négy különböző értékek valamelyikét hajthatja végre:
 
-| Value | Leírás |
+| Érték | Leírás |
 | --- | --- |
 | `common` | Lehetővé teszi, hogy a személyes Microsoft-fiókok és a munkahelyi vagy iskolai fiókokkal rendelkező felhasználók jelentkezhetnek be az alkalmazás Azure AD-ből. |
 | `organizations` | Lehetővé teszi, hogy csak a munkahelyi vagy iskolai fiókkal rendelkező felhasználók jelentkezhetnek be az alkalmazás Azure AD-ből. |

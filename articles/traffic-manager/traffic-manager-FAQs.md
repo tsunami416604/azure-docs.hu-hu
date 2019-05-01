@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
-ms.openlocfilehash: 6086c182763885b62f28ab093be2a7f3f8282b8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b89e9a48ce20c7c00bd3282623919b8066e34b25
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60803038"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717062"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>A TRAFFIC Manager – gyakori kérdések (GYIK)
 
@@ -320,7 +320,7 @@ Igen. A TRAFFIC Manager támogatja a HTTPS-kapcsolaton keresztül-tesztelés. Ko
 A TRAFFIC manager nem tud biztosítani az összes tanúsítvány érvényesítése többek között:
 
 * Nem ellenőrzi a kiszolgálóoldali tanúsítványokat
-* SNI kiszolgáló oldali tanúsítványok nem támogatottak.
+* SNI kiszolgáló oldali tanúsítványokat a rendszer nem érvényesíti
 * Ügyfél-tanúsítványok nem támogatottak.
 
 ### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>Használható IP-cím vagy egy DNS-nevet a végpont hozzáadása során?

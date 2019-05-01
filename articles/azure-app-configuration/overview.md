@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: a76eab5d51dd73fb6b38ebebaa8421e789274f84
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f2019dd5a810a9e9099fd9f9e171fd5af21d1dc5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60201310"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64715058"
 ---
 # <a name="what-is-azure-app-configuration"></a>Mi az Azure-alkalmazások konfigurálása?
 
@@ -68,5 +68,8 @@ A legegyszerűbben úgy, hogy adjon hozzá egy ügyfélkódtáron egy alkalmazá
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Az ASP.NET Core-webalkalmazás létrehozása](./quickstart-aspnet-core-app.md)  
+* [ASP.NET Core a rövid útmutató](./quickstart-aspnet-core-app.md)
+* [.NET core rövid útmutató](./quickstart-dotnet-core-app.md)
+* [.NET-keretrendszer rövid útmutató](./quickstart-dotnet-app.md)
+* [Java Spring a rövid útmutató](./quickstart-java-spring-app.md)
+* [Azure függvény rövid útmutató](./quickstart-azure-function-csharp.md)

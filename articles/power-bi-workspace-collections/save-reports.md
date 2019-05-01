@@ -1,22 +1,19 @@
 ---
 title: Jelentések mentése a Power BI-Munkaterületcsoportok |} A Microsoft Docs
 description: Megtudhatja, hogyan menteni a Power BI-Munkaterületcsoportok jelentéseihez. Ehhez a megfelelő engedélyekkel ahhoz, hogy sikeresen működik.
-services: power-bi-embedded
-author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: ''
-ms.service: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
-origin.date: 09/26/2018
-ms.date: 03/05/2019
-ms.author: v-junlch
+ms.date: 09/20/2017
 ms.openlocfilehash: b61abee3382697d50b9a18de763c8a4d01e1ccba
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103882"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64701845"
 ---
 # <a name="save-reports-in-power-bi-workspace-collections"></a>Jelentések mentése a Power BI munkaterületi gyűjteményekkel
 
@@ -29,15 +26,15 @@ Belül a Power BI-Munkaterületcsoportok szerkesztheti a meglévő jelentések, 
 
 Ahhoz, hogy a jelentést, először az adott jelentéshez token létrehozása a megfelelő hatókörökkel:
 
-- Ahhoz, hogy mentse Report.ReadWrite hatókörét kötelező megadni.
-- Engedélyezi a Mentés másként, Report.Read és Workspace.Report.Copy hatókörök szükségesek
-- Mentés másként engedélyezéséhez Report.ReadWrite és Workspace.Report.Copy szükség
+* Ahhoz, hogy mentse Report.ReadWrite hatókörét kötelező megadni.
+* Engedélyezi a Mentés másként, Report.Read és Workspace.Report.Copy hatókörök szükségesek
+* Mentés másként engedélyezéséhez Report.ReadWrite és Workspace.Report.Copy szükség
 
 Jelölik, és engedélyezze a jobb save/save gombként meg kell adnia a beágyazás konfigurációjában a megfelelő engedéllyel a jelentés beágyazása a Fájl menüben:
 
-- models.Permissions.ReadWrite
-- modellek. Permissions.Copy
-- modellek. Permissions.All
+* models.Permissions.ReadWrite
+* modellek. Permissions.Copy
+* modellek. Permissions.All
 
 > [!NOTE]
 > A hozzáférési jogkivonatot kell a megfelelő hatókörök is. További információkért lásd: [hatókörök](app-token-flow.md#scopes).
@@ -62,7 +59,7 @@ Ha például a JavaScript:
     var config= {
         type: 'report',
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MI',
-        embedUrl: 'https://embedded.powerbi.cn/appTokenReportEmbed',
+        embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
         id:  '5dac7a4a-4452-46b3-99f6-a25915e0fe55',
         permissions: models.Permissions.All /*both save & save as buttons will be visible*/,
         viewMode: models.ViewMode.Edit,
@@ -77,7 +74,7 @@ Ha például a JavaScript:
 
     // Embed the report and display it within the div container.
     var report = powerbi.embed(reportContainer, config);
-    </script>    
+    </script>
 ```
 
 Mostantól egy jelentés beágyazott szerkesztési módban az alkalmazásban.
@@ -115,10 +112,10 @@ Kell betölteni az új jelentés után egy *Mentés másként*. Az új jelentés
 
 ```html
 <div id="reportContainer"></div>
-<script>  
+<script>
 var embedConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MJ',
-        embedUrl: 'https://embedded.powerbi.cn/appTokenReportEmbed',
+        embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
         reportId: '5dac7a4a-4452-46b3-99f6-a25915e0fe54',
     };
     
@@ -127,7 +124,7 @@ var embedConfiguration = {
 
     // Embed report
     var report = powerbi.embed(reportContainer, embedConfiguration);
-</script>    
+</script>
 ```
 
 ## <a name="see-also"></a>Lásd még
@@ -141,5 +138,3 @@ var embedConfiguration = {
 
 További kérdései vannak? [Tegye próbára a Power BI közösségét](https://community.powerbi.com/)
 
-
-<!-- Update_Description: update metedata properties -->

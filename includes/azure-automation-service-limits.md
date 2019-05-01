@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: b701183fa270b1aad9a622a21c5ce0795fc8057f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 04929de241ff36e4d67f24907747d89a16a73898
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012501"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64733767"
 ---
 #### <a name="process-automation"></a>Folyamatautomatizálás
 
@@ -31,6 +31,7 @@ ms.locfileid: "60012501"
 | Maximálisan engedélyezett tesztkörnyezet hálózati szoftvercsatornák számát<sup>1</sup> |1,000 |Csak Azure próbakörnyezetbe lefordítja vonatkozik.|
 | Runbook engedélyezett maximális futásideje<sup>1</sup> |3 óra |Csak Azure próbakörnyezetbe lefordítja vonatkozik.|
 | Egy adott előfizetés az Automation-fiókok maximális száma |Korlátlan ||
+| Automation-fiókonként Hibridfeldolgozó-csoportok maximális száma|4,000||
 |Egyetlen hibrid Runbook-feldolgozón futtatható egyidejű feladatok maximális száma|50 ||
 | Maximális runbook feladat paraméter mérete   | legalább 512 kilobit||
 | Maximális runbook-paraméterek   | 50|Ha eléri az 50-paraméter korlátot, JSON vagy XML-karakterlánc át a paramétert, és elemezni, a runbook.|

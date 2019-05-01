@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 8f5a6187b0a651da9dd8de1cb5670a8faffded1a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c0a5e04b91d79b99935b52fd7f24752fb5d1b115
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61358403"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919626"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Válassza ki, és a egy IoT-eszközök a biztonsági ügynök telepítése
 
@@ -49,7 +49,7 @@ A C-alapú biztonsági ügynök tartozik egy alacsonyabb memóriaigényét, és 
 | Nyílt forráskód | A rendelkezésre álló [MIT licenccel](https://en.wikipedia.org/wiki/MIT_License) a [Github](https://aka.ms/iot-security-github-cs) | A rendelkezésre álló [MIT licenccel](https://en.wikipedia.org/wiki/MIT_License) a [Github](https://aka.ms/iot-security-github-c) |
 | Fejlesztői nyelvek    | C | C# |
 | A támogatott Windows platformok? | Nem | Igen |
-| Windows-Előfeltételek | --- | [WMI](https://docs.microsoft.com/en-us/windows/desktop/wmisdk/) |
+| Windows-Előfeltételek | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | Támogatott Linux platformon? | Igen, x64 és x86 | Igen, csak x64 |
 | A Linux előfeltételei | libunwind8, libcurl3, uuid-futtatókörnyezet, auditd, audispd – beépülő modulok | libunwind8, libcurl3, uuid-futtatókörnyezet, auditd, audispd – beépülő modulok, sudo, netstat, engedélyezze az iptables |
 | Lemez erőforrásigényét | 10,5 MB | 90MB |

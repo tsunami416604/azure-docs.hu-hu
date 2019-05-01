@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: dc5bfe6b431659b7b99140eb29a0e64922a42275
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fddea12d4c6b7d09d87174d29c645ef6da54af6f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61364500"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917427"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Használja az IoT Hub üzenet-útválasztása eszköz – felhő üzeneteket küldeni a különböző végpontok
 
@@ -119,7 +119,7 @@ A legtöbb esetben az átlagos késés növekedése kevesebb, mint 500 ms. Figye
 
 IoT Hub által biztosított több útválasztási, és a végpont kapcsolódó metrikák, hogy a hub és elküldött üzenetek állapotának áttekintése. Több metrika azonosíthatja a problémák kiváltó információkat kombinálhatók. Például használja a metrikát **útválasztás: eldobott telemetriai üzeneteket** vagy **d2c.telemetry.egress.dropped** azonosításához, amelyek el lettek dobva, amikor azok az útvonalak valamelyik lekérdezések nem egyeztek üzenetek száma és a tartalék útvonal le lett tiltva. [Az IoT Hub-metrikák](iot-hub-metrics.md) felsorolja az összes metrikát, amely az IoT hub alapértelmezés szerint engedélyezve vannak.
 
-A REST API-hoz [végpont állapotának lekérése](https://docs.microsoft.com/de-de/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) beolvasni [állapot](iot-hub-devguide-endpoints.md#custom-endpoints) a végpontok. Javasoljuk, hogy használja a [az IoT Hub-metrikák](iot-hub-metrics.md) útválasztási üzenet késése alapján azonosíthatja és elháríthatja a hibákat, amikor végpontonkénti állapotot kézbesíthetetlen vagy nem megfelelő állapotú kapcsolódó. Ha például az Event Hubs típusú végpont, figyelheti **d2c.endpoints.latency.eventHubs**. Nem megfelelő állapotú végpont állapota kifogástalanra frissül, az IoT Hub állapotának egy végül konzisztens állapotba létrejöttekor.
+A REST API-hoz [végpont állapotának lekérése](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) beolvasni [állapot](iot-hub-devguide-endpoints.md#custom-endpoints) a végpontok. Javasoljuk, hogy használja a [az IoT Hub-metrikák](iot-hub-metrics.md) útválasztási üzenet késése alapján azonosíthatja és elháríthatja a hibákat, amikor végpontonkénti állapotot kézbesíthetetlen vagy nem megfelelő állapotú kapcsolódó. Ha például az Event Hubs típusú végpont, figyelheti **d2c.endpoints.latency.eventHubs**. Nem megfelelő állapotú végpont állapota kifogástalanra frissül, az IoT Hub állapotának egy végül konzisztens állapotba létrejöttekor.
 
 Használatával a **útvonalak** diagnosztikai naplók az Azure Monitor [diagnosztikai beállítások](../iot-hub/iot-hub-monitor-resource-health.md), akkor is, például az IoT Hub, által érzékelt egy útválasztási lekérdezés és a végpont állapotának kiértékelése során felmerülő hibák nyomon követi Ha a végpont nem működik. Ezek a diagnosztikai naplók küldhetők az Azure Monitor naplók, az Event Hubs vagy Azure Storage egyéni feldolgozáshoz.
 

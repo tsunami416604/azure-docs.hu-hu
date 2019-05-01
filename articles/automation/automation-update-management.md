@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/22/2019
+ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f49b8ef3717675ae6d93d07218a00f2c22890de0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b39d9788372fb0f682bc1e5b737542b400dd4035
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61306537"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919712"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -54,7 +54,9 @@ Jelentések, hogy mennyire naprakész a számítógép az alapján, hogy milyen 
 
 A szoftverfrissítések központi telepítéséhez vagy telepítéséhez létrehozhat egy ütemezett üzembe helyezést a frissítést igénylő számítógépeken. Besorolású frissítések *nem kötelező* nem része a Windows-számítógépek esetében az üzembe helyezés hatálya. Csak a szükséges frissítéseket az üzembe helyezés hatálya szerepelnek.
 
-Az ütemezett telepítés határozza meg, mely célszámítógépek kapni az alkalmazható frissítéseket, vagy explicit módon adja meg a számítógépeket, vagy kiválasztásával egy [számítógépcsoport](../azure-monitor/platform/computer-groups.md) , amelyek naplókeresésekkel, a számítógépek adott halmazára alapul. Is adjon meg egy ütemezést, jóváhagyásához, és állítsa be a frissítések telepítése során, amelyek adott időszakban. Ennyi ideig a karbantartási időszak neve. A karbantartási időszak tíz percnyi újraindítások számára van fenntartva, ha újraindítás szükséges, és a megfelelő újraindítás lehetőséget választotta. Javítás a vártnál hosszabb ideig tart, és kevesebb mint 10 perc alatt a karbantartási időszakban, ha az újraindítás nem történik meg.
+Az ütemezett telepítés határozza meg, mely célszámítógépek kapni az alkalmazható frissítéseket, vagy explicit módon adja meg a számítógépeket, vagy kiválasztásával egy [számítógépcsoport](../azure-monitor/platform/computer-groups.md) alapuló naplókeresések meghatározott, számítógépeket, vagy egy [Azure lekérdezés](#azure-machines) , amely dinamikusan kiválasztja, hogy az Azure virtuális gépeket a megadott feltételek alapján. Ezek a csoportok nem azonosak [hatókör-konfiguráció](../azure-monitor/insights/solution-targeting.md), amely csak azt határozza meg, milyen gépek lekérése a felügyeleti csomagokat, amelyek a megoldás engedélyezéséhez. 
+
+Is adjon meg egy ütemezést, jóváhagyásához, és állítsa be a frissítések telepítése során, amelyek adott időszakban. Ennyi ideig a karbantartási időszak neve. A karbantartási időszak tíz percnyi újraindítások számára van fenntartva, ha újraindítás szükséges, és a megfelelő újraindítás lehetőséget választotta. Javítás a vártnál hosszabb ideig tart, és kevesebb mint 10 perc alatt a karbantartási időszakban, ha az újraindítás nem történik meg.
 
 A telepítést az Azure Automation runbookjai végzik. A runbookok nem tekinthetők, és a runbookok nem igényelnek semmilyen konfigurálást. Frissítéstelepítés létrehozásakor a központi telepítési ütemezés, amely a megadott időben az érintett számítógépekre irányuló frissítési mester runbookot elindítja hoz létre. A mester runbook egy gyermek runbookot indít az egyes ügynököket, a szükséges frissítések telepítéséhez.
 
@@ -76,6 +78,9 @@ Az alábbi táblázat bemutatja a támogatott operációs rendszerek listáját:
 |Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |Ubuntu 14.04 LTS, 16.04 LTS és 18.04 (x86/x64)      |A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.         |
+
+> [!NOTE]
+> Azure-beli virtuálisgép-méretezési csoportok az Update Management kezelhetők. Az Update Management magukat, és nem az alaprendszerképet a példányok működik. A frissítések ütemezése egy növekményes módon, hogy nem egyszerre az összes Virtuálisgép-példányt frissíteni kell.
 
 ### <a name="unsupported-client-types"></a>Nem támogatott ügyfélalkalmazás típusa
 

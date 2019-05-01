@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 547b6a629677830b6f37883a4be835c12a62e599
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0faad91e9e3ff9384dcae57ed27c21fa21946b5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60234003"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573773"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>A prediktív karbantartási megoldásokat az Azure AI útmutatója
 
@@ -92,7 +92,7 @@ Ez a szakasz a PdM alkalmazási helyzetek, például a légi közlekedésben, se
 |**Pénzügyi** |                         |
 |_ATM hiba_ gyakran okoz problémát a banki iparágon belül van. A probléma itt, hogy a jelentés a valószínűsége annak, hogy egy ATM készpénz kivonási tranzakció az készpénz adagolót egy tanulmány és részben vagy egészben hiba miatt beolvasása megszakítva. Tranzakciós hibák előrejelzésen alapuló, adatközponthoz karbantarthatók a proaktív módon megakadályozza, hogy a hiba lépett fel.| Hanem engedélyezi a gép midway keresztül egy tranzakció sikertelen, a kívánatos Ez esetben a program, szolgáltatás megtagadása a gép az előrejelzések alapján.|
 |**Energiafogyasztás** |                          |
-|_Megszünteti a turbina hibák_: A szél turbina a fő energiaforrás kímélő országban, és olyan magas tőkeköltségek terén. A szél turbina legfontosabb összetevője a készítő motor. a hiba jelenik meg a turbina hatástalanok. Emellett akkor is rendkívül költséges javításához.|Előrejelzésére MTTF (átlagos idő) például KPI-k segítségével az energiaszolgáltató vállalatok számára turbina hibák megelőzése, valamint a minimális üzemen kívüli idővel. Hiba valószínűségek figyelésére, amelyek várhatóan hamarosan sikertelen turbina szerelők értesíti, és karbantartási idő-alapú rendszerek ütemezése. Prediktív modelleket adjon meg másik tényező befolyásolja a hiba, amely segítségével a technikusok betekintést jobban megismerheti az esetleges problémák okait.|
+|_Megszünteti a turbina hibák_: A szél turbina a fő energiaforrás kímélő országban és régióban, és olyan magas tőkeköltségek terén. A szél turbina legfontosabb összetevője a készítő motor. a hiba jelenik meg a turbina hatástalanok. Emellett akkor is rendkívül költséges javításához.|Előrejelzésére MTTF (átlagos idő) például KPI-k segítségével az energiaszolgáltató vállalatok számára turbina hibák megelőzése, valamint a minimális üzemen kívüli idővel. Hiba valószínűségek figyelésére, amelyek várhatóan hamarosan sikertelen turbina szerelők értesíti, és karbantartási idő-alapú rendszerek ütemezése. Prediktív modelleket adjon meg másik tényező befolyásolja a hiba, amely segítségével a technikusok betekintést jobban megismerheti az esetleges problémák okait.|
 |_Áramkör-megszakító hibák_: Terjesztés a lakhelyek és vállalkozások számára szükséges power sorok garantálja az energia kézbesítési mindig működőképes legyen. Áramkör-megszakítók segítségével korlátozható vagy power sérülésének elkerülése érdekében az időjárási viszonyok során terhelve vagy káros sorokat. Itt az üzleti problémát az áramkör-megszakító előforduló hibák előrejelzésében.| PdM megoldások javítási költségek csökkentése és a gyűjteményszintű az eszközökre, például az áramkör-megszakítók növelése érdekében. Segítik az energiagazdálkodási hálózati minőségének javítása a váratlan meghibásodások és szolgáltatáskiesések csökkentésével.|
 |**Szállítási és logisztikai** |    |
 |_Itt ajtó hibák_: Itt nagy méretű vállalatok számára működési elevator világszerte több millió teljes verem szolgáltatást biztosítanak. Itt biztonságát, megbízhatóságát és üzemidő olyan ügyfelek számára, akik fő területtel kell foglalkoznunk. Ezek a vállalatok keresztül érzékelők, javítási és megelőző jellegű karbantartással segítségével nyomon követheti ezeket és más jellemzők különböző. Az itt található a legjelentősebb ügyfél probléma itt ajtók hibásan működik. Az üzleti problémát ebben az esetben, hogy egy Tudásbázis prediktív alkalmazás, amely előrejelzi a lehetséges okai ajtó hibák.| Elevator tőkeberuházás potenciálisan egy 20-30 éves időtartama van a rendszer. Így lehet, hogy minden lehetséges értékesítés versenyhelyzetében; ezért a keresésről szolgáltatás és a támogatási. Prediktív karbantartás is ezek a vállalatok a termékeikben versenytársaik használhatóságát és szolgáltatásajánlatok.|

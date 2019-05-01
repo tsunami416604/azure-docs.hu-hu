@@ -1,20 +1,20 @@
 ---
-title: 'Oktatóanyag: Az Azure Portal előkészítése a Data Box Edge üzembe helyezésére | Microsoft Docs'
+title: Az oktatóanyag az Azure Data Box Edge üzembe helyezése az Azure portál, datacenter környezet előkészítése a |} A Microsoft Docs
 description: Az első oktatóanyagban helyezhető üzembe az Azure Data Box Edge magában foglalja a előkészítése az Azure Portalon.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/07/2019
+ms.date: 04/23/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 19c4fc96653f966ea5642149d944886e4b7f4483
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: d7e66970db3397531c798bc37bf7c1f346e999bf
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401680"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924775"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>Oktatóanyag: Az üzembe helyezés az Azure Data Box Edge előkészítése  
 
@@ -55,6 +55,8 @@ Az alábbiakban az adatközponti hálózathoz, a Data Box Edge erőforrás és a
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 - A Microsoft Azure-előfizetés engedélyezve van a Data Box Edge erőforrás. Utólagos elszámolású előfizetések nem támogatottak.
+- Rendelkezik tulajdonosi vagy közreműködői hozzáférés az előfizetéshez.
+- Rendszergazdai vagy a felhasználó hozzáférhet az Azure Active Directory Graph API-val rendelkezik. További információkért lásd: [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 - Rendelkezik Microsoft Azure Storage-fiókkal és a hozzá szükséges hozzáférési hitelesítő adatokkal.
 
 ### <a name="for-the-data-box-edge-device"></a>Data Box Edge-eszköz esetén
@@ -87,11 +89,15 @@ Hozzon létre egy Data Box Edge erőforrást, az alábbi lépéseket az Azure Po
 
 1. Jelentkezzen be a hitelesítő adatait a Microsoft Azure használatával 
     
-    - Az Azure Portalon a következő URL-címen: [ https://portal.azure.com ](http://portal.azure.com).
-    - Vagy az Azure Government portálra az URL-címen: [https://portal.azure.us](https://portal.azure.us)
+    - Az Azure Portalon a következő URL-címen: [ https://portal.azure.com ](https://portal.azure.com).
+    - Vagy az Azure Government portálra az URL-címen: [ https://portal.azure.us ](https://portal.azure.us). További részletekért látogasson el [csatlakozhat az Azure Government a portál használatával](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
 2. A bal oldali ablaktáblán válassza **+ erőforrás létrehozása**. Keresse meg **Data Box-Edge / Data Box-átjáró**. Válassza ki **Data Box-Edge / Data Box-átjáró**. Kattintson a **Létrehozás** gombra.
-3. Válassza ki az előfizetést, amelyet a Data Box peremhálózati eszköz használni szeretne. Válassza ki a régiót, ahol üzembe szeretné helyezni a Data Box Edge-erőforrást. Ebben a kiadásban az USA keleti RÉGIÓJA, Délkelet-Ázsia és Nyugat-Európa érhetők el. Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon. Az a **Data Box Edge** beállításnál válassza **létrehozás**.
+3. Válassza ki az előfizetést, amelyet a Data Box peremhálózati eszköz használni szeretne. Válassza ki a régiót, ahol üzembe szeretné helyezni a Data Box Edge-erőforrást. Ebben a kiadásban az USA keleti RÉGIÓJA, Délkelet-Ázsia és Nyugat-Európa érhetők el. 
+
+    Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon. A régió csak eszközfelügyeleti metaadatait tárolja. A tényleges adatok minden olyan storage-fiókban tárolhatók. 
+    
+    Az a **Data Box Edge** beállításnál válassza **létrehozás**.
 
     ![A Data Box Edge szolgáltatás megkeresése](media/data-box-edge-deploy-prep/data-box-edge-sku.png)
 

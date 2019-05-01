@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: jegeib
-ms.openlocfilehash: 502c1e8a422eb9e74586e5a6820d5b12ec4ae2a4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 6ad6eca20827e1683237b2c668eba71acedfaade
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60610615"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917622"
 ---
 # <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool frissítés kiadása 7.1.60408.1 – 4/9/2019
 
@@ -53,7 +53,7 @@ Az összes támogatási oldalak hivatkozásai belül az eszköz frissítve lett-
 - Támogatott operációs rendszerek
   - [A Microsoft Windows 10 Évfordulós frissítés](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) vagy újabb
 - .NET-verzió megadása kötelező
-  - [.NET 4.7.1](http://go.microsoft.com/fwlink/?LinkId=863262) vagy újabb
+  - [.NET 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) vagy újabb
 - További követelmények
   - Internetkapcsolat szükséges az eszköz, valamint a sablonok a frissítések fogadásához.
 

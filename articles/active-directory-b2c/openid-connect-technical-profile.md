@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e8bfa5a3e60efe860b5e7197d96ebe5ce3a86030
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9ec323d4596c866da33c4a8ff5499bf2ad92a8bd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60418275"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710311"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Az OpenId Connect technikai profil meghatározása az Azure Active Directory B2C egyéni házirendek
 
@@ -23,7 +23,7 @@ ms.locfileid: "60418275"
 
 Az Azure Active Directory (Azure AD) B2C támogatást biztosít a [OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) protokoll identitásszolgáltató. OpenID Connect 1.0 határozza meg az identitási rétegben OAuth 2.0-s felett, és a legmodernebb a modern hitelesítési protokollok jelöli. OpenId Connect műszaki profillal az OpenId Connect alapú személyazonosság-szolgáltató, például az Azure AD használatával is összevonható. Összevonás az identitásszolgáltatót lehetővé teszi a felhasználóknak, hogy jelentkezzen be a meglévő közösségi vagy vállalati identitásokat.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol
 
 A **neve** attribútuma a **protokoll** elemet hozzá kell beállítani `OpenIdConnect`. Például a protokoll a **MSA-OIDC** technikai profil `OpenIdConnect`:
 

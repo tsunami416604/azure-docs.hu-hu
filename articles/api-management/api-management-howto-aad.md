@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 95e501eca0f7765cc5201f7b315703c3ca43df8f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 422c2a8a61b1df36b452c153aa6cd78ba7e2dcef
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60529454"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723642"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Az Azure Active Directoryval az Azure API Management fejlesztői fiókok engedélyezése
 
@@ -79,12 +79,12 @@ Ez a cikk bemutatja, hogyan hozzáférés engedélyezése a felhasználók szám
 
 Miután menti a módosításokat, felhasználók a megadott Azure ad-példány bejelentkezhet a fejlesztői portál által leírt lépések végrehajtásával [egy olyan Azure AD felhasználói fiókkal jelentkezzen be a fejlesztői portál](#log_in_to_dev_portal).
 
-
 ## <a name="add-an-external-azure-ad-group"></a>Adjon hozzá egy külső Azure AD-csoport
 
 Miután engedélyezte a hozzáférést a felhasználók számára az Azure AD-példányban, az API Management az Azure AD-csoportokat is hozzáadhat. Ezt követően könnyebben kezelheti a társítást a csoportban a fejlesztők a kívánt termékeket.
 
-Egy külső konfigurálása az Azure AD-csoporthoz, először konfigurálnia kell az Azure AD-példányt a **identitások** lapon az alábbi eljárást az előző szakaszban. 
+ > [!IMPORTANT]
+ > Egy külső hozzáadása az Azure AD-csoporthoz, először konfigurálnia kell az Azure AD-példányt a **identitások** lapon az alábbi eljárást az előző szakaszban. Ezenkívül az alkalmazás rendelkeznie kell a hozzáférést az Azure AD Graph API `Directory.Read.All` engedéllyel. 
 
 Hozzáadhat külső Azure AD csoportkezelési származó a **csoportok** lap az API Management-példány.
 

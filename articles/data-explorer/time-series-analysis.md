@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
-ms.openlocfilehash: 8492f736e64366802b3601f9b5fc8bd1d9b6ea79
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: cb5e41feb9be978592a1c1708ade0188ba20d504
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60827441"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64873150"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Az Azure Data Explorer idősoros elemzés
 
@@ -260,3 +260,8 @@ demo_many_series1
 Kevesebb mint két perc alatt ADX közel 20 000 idősorozat elemzett, és azt észlelte, amelyben az olvasási száma hirtelen eldobott két rendellenes idősorozat.
 
 Speciális képességek ADX gyors teljesítményt kombinálva adja meg a idősoros elemzés egyedi és hatékony megoldást.
+
+## <a name="next-steps"></a>További lépések
+
+* Ismerje meg [alkalommal sorozat rendellenességek észlelése és előrejelzés](/azure/data-explorer/anomaly-detection) az Azure Data Explorer.
+* Ismerje meg [gépi tanulási funkciókat](/azure/data-explorer/machine-learning-clustering) az Azure Data Explorer.

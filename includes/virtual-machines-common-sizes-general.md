@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/08/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: b4e255f35761924f46714f1844d8fbe1b2e70956
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: eaa6ff1384116064d88061b6eaf7f448e2222cd3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542109"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64744220"
 ---
 Általános célú virtuális gépek méreteit adja meg a kiegyensúlyozott Processzor-memória arány. Ideális választás tesztelési-fejlesztési feladatokhoz, kis és közepes méretű adatbázisokhoz, valamint kis és közepes adatforgalmú webkiszolgálókhoz. Ez a cikk ismerteti a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint az ennél a csoportosításnál méretek esetében a tárterületek átviteli sebességének számát. 
 

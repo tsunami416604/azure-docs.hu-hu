@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 9f47ba44e7940414932371ef1b7a360d0b01e1ff
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 1c744e0063d5c56b2ca17f2b6c6fa694ad13a26c
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483862"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872576"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrikákhoz kapcsolódó riasztások létrehozása az Azure Monitor-naplók
 
@@ -57,7 +57,7 @@ A metrika a naplókhoz gyűjtött a Log Analytics data működéséről, mielőt
 
 1. **Aktív Log Analytics-munkaterület**: Érvényes és aktív Log Analytics-munkaterület elérhetőnek kell lennie. További információkért lásd: [Log Analytics-munkaterület létrehozása az Azure Portalon](../../azure-monitor/learn/quick-create-workspace.md).
 2. **Ügynök úgy van beállítva, a Log Analytics-munkaterület**: Az ügynök kell konfigurálni az Azure virtuális gépek (és/vagy) a helyszíni virtuális gépek is küldhet adatokat azokat a Log Analytics-munkaterületet a korábbi lépésben használt. További információkért lásd: [Log Analytics - ügynök – áttekintés](../../azure-monitor/platform/agents-overview.md).
-3. **Telepítve van a támogatott Log Analytics Solutions**: Log Analytics megoldást kell lennie állítva és küldő adatok Log Analytics-munkaterület - támogatott megoldások [teljesítményszámlálók a Windows és Linux-környezetekkel](../../azure-monitor/platform/data-sources-performance-counters.md), [szívverési rekordok Agent Health](../../azure-monitor/insights/solution-agenthealth.md) , [Update management, és [eseményadatok](../../azure-monitor/platform/data-sources-windows-events.md).
+3. **Telepítve van a támogatott Log Analytics Solutions**: Log Analytics megoldást kell lennie állítva és küldő adatok Log Analytics-munkaterület - támogatott megoldások [teljesítményszámlálók a Windows és Linux-környezetekkel](../../azure-monitor/platform/data-sources-performance-counters.md), [szívverési rekordok Agent Health](../../azure-monitor/insights/solution-agenthealth.md) , [Frissítéskezelés](../../automation/automation-update-management.md), és [eseményadatok](../../azure-monitor/platform/data-sources-windows-events.md).
 4. **Log Analytics megoldások, amely naplókat küld**: Log Analytics megoldás rendelkeznie kell a szükséges naplók és adatok megfelelő [Log Analytics-munkaterületek a támogatott mérőszámok](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) engedélyezve van. Például *rendelkezésre álló memória %* kell konfigurálni, hogy a számláló [teljesítményszámlálók](../../azure-monitor/platform/data-sources-performance-counters.md) megoldás első.
 
 ## <a name="configuring-metric-alert-for-logs"></a>Metrikariasztás naplók konfigurálása

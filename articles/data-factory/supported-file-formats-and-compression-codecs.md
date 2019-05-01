@@ -3,18 +3,18 @@ title: Támogatott fájlformátumok az Azure Data Factoryban |} A Microsoft Docs
 description: Ez a témakör ismerteti a fájlformátumokat és a fájl alapú összekötők az Azure Data Factory által támogatott tömörítési kódokat.
 author: linda33wj
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: d7e2ecd9c9c27140fff4d483e01eaaca632e929a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f117e02a063b93b8b1badbd9868f78da95c3c671
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394429"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925137"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Támogatott fájlformátumok és az Azure Data Factoryban tömörítési kodek
 
@@ -29,9 +29,12 @@ Ha azt szeretné, hogy **, a fájlok másolása a-rendszer** közötti fájlalap
 * [Az Avro formátum](#avro-format)
 
 > [!TIP]
-> Ismerje meg, hogyan képezi le a másolási tevékenység a forrásadatokat a fogadó [séma hozzárendelése a másolási tevékenység](copy-activity-schema-and-type-mapping.md), beleértve a hogyan a metaadatokat meghatározott a fájlformátum beállításai alapján, és arról, hogy adja meg, mikor tippek a [adatkészlet `structure` ](concepts-datasets-linked-services.md#dataset-structure) szakaszban.
+> Ismerje meg, hogyan képezi le a másolási tevékenység a forrásadatokat a fogadó [séma hozzárendelése a másolási tevékenység](copy-activity-schema-and-type-mapping.md), beleértve a hogyan a metaadatokat meghatározott a fájlformátum beállításai alapján, és arról, hogy adja meg, mikor tippek a [adatkészlet `structure` ](concepts-datasets-linked-services.md#dataset-structure-or-schema) szakaszban.
 
 ## <a name="text-format"></a>Szöveges formátum
+
+>[!NOTE]
+>A Data Factory bevezetett új tagolt szöveges formátum datset, lásd: [tagolt szövegformátum](format-delimited-text.md) cikk adatokkal. A fájlalapú adatok store adatkészlet a következő konfigurációk továbbra is támogatott – az előző verziókkal való compabitility. Használata javasolt, a jövőben az új modell használata.
 
 Ha szeretne egy szövegfájlba olvasni vagy írni egy szövegfájlba, állítsa be a `type` tulajdonságot a `format` az adatkészlet szakaszában **TextFormat**. Emellett megadhatja a következő **választható** tulajdonságokat a `format` szakaszban. A konfigurálással kapcsolatban lásd [A TextFormat használatát bemutató példa](#textformat-example) című szakaszt.
 
@@ -97,7 +100,7 @@ Ha meg szeretné elemezni a JSON-fájlok vagy JSON formátumban szeretne adatoka
 | nestingSeparator |A beágyazási szinteket elválasztó karakter. Az alapértelmezett érték a „.” (pont). |Nem |
 
 >[!NOTE]
->A kis-és a kereszt-adatokra vonatkoznak a tömbben több sorokra (-> 2. példa az 1. eset [jsonformat használatát bemutató példák](#jsonformat-example)), bontsa ki az egyetlen olyan tömböt tulajdonságot csak választhat `jsonNodeReference`. 
+>A kis-és a kereszt-adatokra vonatkoznak a tömbben több sorokra (-> 2. példa az 1. eset [jsonformat használatát bemutató példák](#jsonformat-example)), bontsa ki az egyetlen olyan tömböt tulajdonságot csak választhat `jsonNodeReference`.
 
 ### <a name="json-file-patterns"></a>JSON-fájlminták
 
@@ -196,7 +199,7 @@ Másolási tevékenység a JSON-fájlok következő mintáit tudja elemezni:
 
 **1. példa: adatok kigyűjtése objektumból és tömbből**
 
-Ebben a példában egy JSON-gyökérobjektum képződik le egyetlen rekordba táblázatos nézetben. Ha a JSON-fájl a következőt tartalmazza:  
+Ebben a példában egy JSON-gyökérobjektum képződik le egyetlen rekordba táblázatos nézetben. Ha a JSON-fájl a következőt tartalmazza:
 
 ```json
 {
@@ -408,6 +411,9 @@ A **JsonFormat** típusú kimeneti adatkészlet a következőképpen van meghat�
 
 ## <a name="parquet-format"></a>Parquet formátum
 
+>[!NOTE]
+>A Data Factory bevezetett új Parquet formátum datset, lásd: [Parquet formátum](format-delimited-text.md) cikk adatokkal. A fájlalapú adatok store adatkészlet a következő konfigurációk továbbra is támogatott – az előző verziókkal való compabitility. Használata javasolt, a jövőben az új modell használata.
+
 Ha elemezni szeretné a Parquet-fájlokat, vagy Parquet formátumban szeretne adatokat írni, állítsa a `format` `type` tulajdonságot **ParquetFormat** értékre. Nem kell meghatároznia semmilyen tulajdonságot a Format szakaszban a typeProperties szakaszon belül. Példa:
 
 ```json
@@ -426,13 +432,13 @@ Vegye figyelembe a következő szempontokat:
 > [!IMPORTANT]
 > A példány által felhatalmazott helyi integrációs modul például a helyszíni és a felhő között adatokat tárolja, ha nem másol Parquet-fájlokat **,-van**, telepítenie kell a **64 bites JRE 8 (Java-futtatókörnyezet) vagy Openjdk csomagját** az integrációs modul gépen. Olvassa el az alábbi részletekkel kapcsolatban.
 
-Futó helyi IR a parquet eszközökben fájl szerializálás/deszerializálás másolásához, ADF a Java-futtatókörnyezet megkeresi a beállításjegyzék először is ellenőrzésével *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* a JRE, ha nem talál, másodszor ellenőrzése rendszerváltozó *`JAVA_HOME`* az openjdk csomagját. 
+Futó helyi IR a parquet eszközökben fájl szerializálás/deszerializálás másolásához, ADF a Java-futtatókörnyezet megkeresi a beállításjegyzék először is ellenőrzésével *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* a JRE, ha nem talál, másodszor ellenőrzése rendszerváltozó *`JAVA_HOME`* az openjdk csomagját.
 
 - **JRE használandó**: A 64 bites integrációs modul 64 bites JRE szükséges. Annak a [Itt](https://go.microsoft.com/fwlink/?LinkId=808605).
 - **Openjdk csomagját használandó**: IR 3.13 verziója óta támogatott. A jvm.dll, az összes többi csomagot annak megfelelően szükséges szerelvények openjdk csomagját, helyi integrációs modul gép és a rendszer környezeti változó beállítása JAVA_HOME.
 
 >[!TIP]
->Ha másolja és a parquet vagy egyéb adatok formázása a helyi integrációs modul használatával, és hiba üzenettel találati "hiba történt a java meghívásakor üzenet: **java.lang.OutOfMemoryError:Java halommemória terület**", hozzáadhat egy környezeti változó `_JAVA_OPTIONS` a gépen, amelyen a helyi integrációs modul beállításához JVM megjelenő új ilyen példány a minimális/maximális halommemória mérete, majd futtassa újra a folyamatot. 
+>Ha másolja és a parquet vagy egyéb adatok formázása a helyi integrációs modul használatával, és hiba üzenettel találati "hiba történt a java meghívásakor üzenet: **java.lang.OutOfMemoryError:Java halommemória terület**", hozzáadhat egy környezeti változó `_JAVA_OPTIONS` a gépen, amelyen a helyi integrációs modul beállításához JVM megjelenő új ilyen példány a minimális/maximális halommemória mérete, majd futtassa újra a folyamatot.
 
 ![Állítsa be a JVM-halommemória mérete a helyi integrációs modul](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
@@ -483,7 +489,7 @@ Vegye figyelembe a következő szempontokat:
 > [!IMPORTANT]
 > A példány által felhatalmazott helyi integrációs modul például a helyszíni és a felhő között adatokat tárolja, ha nem másol ORC-fájlokat **,-van**, telepítenie kell a **64 bites JRE 8 (Java-futtatókörnyezet) vagy openjdk csomagját**  az integrációs modul gépen. Olvassa el az alábbi részletekkel kapcsolatban.
 
-Fut a helyi integrációs modul az ORC fájl szerializálás/deszerializálás másolásához, ADF a Java-futtatókörnyezet megkeresi a beállításjegyzék először is ellenőrzésével *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* a JRE, ha nem talál, másodszor ellenőrzése rendszerváltozó *`JAVA_HOME`* az openjdk csomagját. 
+Fut a helyi integrációs modul az ORC fájl szerializálás/deszerializálás másolásához, ADF a Java-futtatókörnyezet megkeresi a beállításjegyzék először is ellenőrzésével *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* a JRE, ha nem talál, másodszor ellenőrzése rendszerváltozó *`JAVA_HOME`* az openjdk csomagját.
 
 - **JRE használandó**: A 64 bites integrációs modul 64 bites JRE szükséges. Annak a [Itt](https://go.microsoft.com/fwlink/?LinkId=808605).
 - **Openjdk csomagját használandó**: IR 3.13 verziója óta támogatott. A jvm.dll, az összes többi csomagot annak megfelelően szükséges szerelvények openjdk csomagját, helyi integrációs modul gép és a rendszer környezeti változó beállítása JAVA_HOME.
@@ -538,7 +544,7 @@ Az Azure Data Factory támogatja az adatok tömörítése és kibontása másol�
 * FTP-kiszolgálóról a .zip fájl olvasása kibontása található fájlokat, és ezeket a fájlokat az Azure Data Lake Store megnyitja azt. Meghatározhatja az FTP bemeneti adatkészlet a `compression` `type` ZipDeflate tulajdonság.
 * Olvassa el a GZIP-tömörített adatok egy Azure-blobból, azt kibontani, tömörítése BZIP2 használatával és eredmény adatokat írni az Azure-blobba. Meghatározhatja az Azure Blob bemeneti adatkészlet `compression` `type` állítsa a GZIP és a kimeneti adatkészlet `compression` `type` BZIP2 értékre.
 
-Egy adatkészlet-tömörítése megadásához használja a **tömörítési** tulajdonságot az adatkészlet JSON az alábbi példában látható módon:   
+Egy adatkészlet-tömörítése megadásához használja a **tömörítési** tulajdonságot az adatkészlet JSON az alábbi példában látható módon:
 
 ```json
 {
@@ -579,11 +585,12 @@ A **tömörítési** szakaszban két tulajdonságokkal rendelkezik:
 
 ## <a name="unsupported-file-types-and-compression-formats"></a>Nem támogatott fájltípusok és tömörítési formátumok
 
-A bővítési funkciók az Azure Data Factory segítségével átalakíthatja a fájlokat, amelyek nem támogatottak. Két lehetőség Azure Functions és az egyéni tevékenységek közé tartozik az Azure Batch használatával.
+A bővítési funkciók az Azure Data Factory segítségével átalakíthatja a fájlokat, amelyek nem támogatottak.
+Két lehetőség Azure Functions és az egyéni tevékenységek közé tartozik az Azure Batch használatával.
 
 Láthatja, hogy egy Azure-függvényt használó minta [tar fájl tartalmának kibontásához](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction). További információkért lásd: [Azure Functions-tevékenység](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity).
 
-A funkció egy egyéni dotnet tevékenységi használatával is létrehozható. További információt [Itt](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-dotnet-custom-activity)
+A funkció egy egyéni dotnet tevékenységi használatával is létrehozható. További információt [Itt](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)
 
 ## <a name="next-steps"></a>További lépések
 

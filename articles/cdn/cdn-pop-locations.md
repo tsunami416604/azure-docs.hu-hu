@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2019
 ms.author: magattus
-ms.openlocfilehash: 53002fba9883d4ae0276ee1d91e915587f89177b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ae316749d3e88bc8bfd99d0f4856d5386916a27f
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60627581"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869639"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Az Azure CDN lefedettség Metro szerint 
 > [!div class="op_single_selector"]
@@ -43,8 +43,8 @@ Ez a cikk felsorolja az aktuális metrót tartalmazó jelenléti pontok (POP) he
 | Európa | Bécs, Ausztria<br />Brüsszel, Belgium<br />Prága, Cseh Köztársaság<br />Koppenhága, Dánia<br /> Helsinki, Finnország<br />Marseille, France<br />Párizs, Franciaország<br />Berlin, Németország<br />Frankfurt, Németország<br />Athén, Görögország<br />Budapest, Magyarország<br />Dublin, Írország<br />Milánó, Olaszország<br />Amszterdam, Hollandia<br />Varsó, Lengyelország<br />Barcelona, Spanyolország<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />Zürich, Svájc<br />London, Egyesült Királyság<br />Manchester, UK | Bécs, Ausztria<br />Koppenhága, Dánia<br />Helsinki, Finnország<br />Marseille, France<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Milánó, Olaszország<br />Riga, Lettország<br />Amszterdam, Hollandia<br />Varsó, Lengyelország<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />London, Egyesült Királyság | Ausztria<br />Bulgária<br />Dánia<br />Finnország<br />Franciaország<br />Németország<br />Görögország<br />Írország<br />Olaszország<br />Hollandia<br />Lengyelország<br />Oroszország<br />Spanyolország<br />Svédország<br />Svájc<br />Egyesült Királyság |
 | Afrika | Fokváros, Dél-Afrika<br />Johannesburg, Dél-Afrika | Johannesburg, Dél-Afrika | Dél-Afrika |
 | Közel-Kelet | Dubai, Egyesült Arab Emírségek | Muscat, Omán<br />Fujirah, United Arab Emirates | Katar<br />Egyesült Arab Emírségek |
-| India | Csennai, India<br />Mumbai, India<br />Új-Delhi, India | Bangalore, India<br />Csennai, India<br />Mumbai, India<br />Új-Delhi, India<br /> | India |
-| Ázsia | Hongkong (KKT)<br />Osaka, Japan<br />Tokió, Japán<br />Kuala Lumpur, Malaysia<br />Manila, Fülöp-szigetek<br />Szingapúr<br />Busan, Dél-Korea<br />Szöul, Dél-Korea<br />Tajpej, Tajvan<br />Bangkok, Thaiföld | Hongkong (KKT)<br />Batam, Indonézia<br />Dzsakarta, Indonézia<br />Osaka, Japan<br />Tokió, Japán<br />Szingapúr<br />Busan, Dél-Korea<br />Szöul, Dél-Korea<br />Kaohsziung, Tajvan | Hongkong (KKT)<br />Indonézia<br />Izrael<br />Japán<br />Makaó (KKT)<br />Malajzia<br />Fülöp-szigetek<br />Szingapúr<br />Dél-Korea<br />Tajvan<br />Thaiföld<br />Törökország<br />Vietnam |
+| India | Csennai, India<br />Mumbai, India<br />Új-Delhi, India | Bengaluru (Bangalore), India<br />Csennai, India<br />Mumbai, India<br />Új-Delhi, India<br /> | India |
+| Ázsia | Hongkong KKT<br />Osaka, Japan<br />Tokió, Japán<br />Kuala Lumpur, Malaysia<br />Manila, Fülöp-szigetek<br />Szingapúr<br />Busan, Dél-Korea<br />Szöul, Dél-Korea<br />Tajpej, Tajvan<br />Bangkok, Thaiföld | Hongkong KKT<br />Batam, Indonézia<br />Dzsakarta, Indonézia<br />Osaka, Japan<br />Tokió, Japán<br />Szingapúr<br />Busan, Dél-Korea<br />Szöul, Dél-Korea<br />Kaohsziung, Tajvan | Hongkong KKT<br />Indonézia<br />Izrael<br />Japán<br />Makao<br />Malajzia<br />Fülöp-szigetek<br />Szingapúr<br />Dél-Korea<br />Tajvan<br />Thaiföld<br />Törökország<br />Vietnam |
 | Ausztrália és Új-Zéland | Brisbane, Ausztrália<br />Melbourne, Australia<br />Perth, Ausztrália<br />Sydney, Ausztrália<br />Aucklandi, Új-Zéland | Melbourne, Australia<br />Sydney, Ausztrália<br />Aucklandi, Új-Zéland | Ausztrália<br />Új-Zéland |
 
 

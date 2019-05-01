@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 6cca6692da37714c76f5241ed14e24c967b00563
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5850b683189136eac70451075933b0c57ecc37cd
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467697"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920446"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Az Azure Advisorral az Azure-alkalmazások teljesítményének növelése
 
@@ -88,11 +88,11 @@ Hosszabb időn keresztül a processzor nagyon magas kihasználtság okozhat a la
 Egy alacsony gyorsítótárának találati aránya lassabb lekérdezési teljesítmény és a megnövekedett IOPS eredményezhet. Ezt okozhatja egy hibás lekérdezési terv vagy a memória-intenzív számítási feladatot futtat. A lekérdezésterv kijavítása vagy [a memória bővítését](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) az Azure Database for PostgreSQL adatbázis-kiszolgáló, az Azure-beli MySQL-adatbázis-kiszolgáló vagy az Azure MariaDB-kiszolgáló segítségével optimalizálhatja az adatbázis számítási feladatok végrehajtását. Az Azure Advisor azonosítja az alkalmazáskészlet magas puffer kihagyásával miatt az érintett kiszolgálókon, és javasolja, kijavítása vagy a lekérdezésterv áthelyezése egy magasabb szintű termékváltozatra, több memória, vagy tárolási megoldást, hogy további iops-érték beolvasása.
 
 ### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Egy Azure-beli MySQL vagy az Azure PostgreSQL írásvédett Replikapéldány használatával horizontális felskálázása olvasási olvasási-igényű számítási feladatokhoz
-Az Azure Advisor például olvasási és írási a kiszolgálón az elmúlt hét napban olvasásigényű munkaterhelésekhez azonosításához aránya a munkaterhelés-alapú heurisztika használja. Az Azure database for PostgreSQL erőforrás vagy az Azure database MySQL erőforrás egy nagyon magas olvasási/írási arány a lekérdezési teljesítmény lassú vezető Processzor-és/vagy memória versenyt eredményezhet. Hozzáadás egy [replika](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) segít a horizontális felskálázás olvasási és a replikakiszolgáló az elsődleges kiszolgálón a Processzor-és/vagy memória megkötések miatt. Az Advisor azonosítja azokat a kiszolgálókat az ilyen nagy olvasásigényű munkaterhelésekhez és ajánlott hozzáadása egy [olvasható replika](https://docs.microsoft.com/en-us/azure/postgresql/concepts-read-replicas) kiszervezésére olvasási tevékenységprofilok egy része.
+Az Azure Advisor például olvasási és írási a kiszolgálón az elmúlt hét napban olvasásigényű munkaterhelésekhez azonosításához aránya a munkaterhelés-alapú heurisztika használja. Az Azure database for PostgreSQL erőforrás vagy az Azure database MySQL erőforrás egy nagyon magas olvasási/írási arány a lekérdezési teljesítmény lassú vezető Processzor-és/vagy memória versenyt eredményezhet. Hozzáadás egy [replika](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) segít a horizontális felskálázás olvasási és a replikakiszolgáló az elsődleges kiszolgálón a Processzor-és/vagy memória megkötések miatt. Az Advisor azonosítja azokat a kiszolgálókat az ilyen nagy olvasásigényű munkaterhelésekhez és ajánlott hozzáadása egy [olvasható replika](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) kiszervezésére olvasási tevékenységprofilok egy része.
 
 
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Egy magasabb szintű termékváltozatra, hogy a kapcsolati korlátozások az Azure-beli MySQL, Azure PostgreSQL vagy Azure MariaDB kiszolgáló méretezése
-Minden egyes új kapcsolatot az adatbázis-kiszolgáló által elfoglalt memória. Az adatbázis-kiszolgáló teljesítményét csökkenti, ha a kiszolgáló felé irányuló kapcsolatot miatt nem működik egy [felső korlátja](https://docs.microsoft.com/en-us/azure/postgresql/concepts-limits) a memóriában. Az Azure Advisor azonosítja azokat a számos csatlakozási hibák és futtató kiszolgálók, és frissíti a kiszolgálói kapcsolatok korlátok a kiszolgálóhoz több memóriát biztosít számítási vertikális felskálázásával, vagy a memória optimalizált SKU-k, amelyek magonként további számítási használatával javasoljuk.
+Minden egyes új kapcsolatot az adatbázis-kiszolgáló által elfoglalt memória. Az adatbázis-kiszolgáló teljesítményét csökkenti, ha a kiszolgáló felé irányuló kapcsolatot miatt nem működik egy [felső korlátja](https://docs.microsoft.com/azure/postgresql/concepts-limits) a memóriában. Az Azure Advisor azonosítja azokat a számos csatlakozási hibák és futtató kiszolgálók, és frissíti a kiszolgálói kapcsolatok korlátok a kiszolgálóhoz több memóriát biztosít számítási vertikális felskálázásával, vagy a memória optimalizált SKU-k, amelyek magonként további számítási használatával javasoljuk.
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Az Advisor teljesítményajánlásainak elérése
 

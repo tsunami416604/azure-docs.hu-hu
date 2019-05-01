@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: c211d479efe086bb739b91034c6d9e349358b2d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f371376a7c801eecb6231d551546b13dbc68dd26
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303672"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916813"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Korlátozások és konfigurációs adatokat az Azure Logic Apps
 
@@ -179,45 +179,18 @@ Az alábbiakban a webes API-kat hozhat létre egyéni összekötőket vonatkozó
 
 Az alábbiakban az összetevők az egyes integrációs fiókok számára vonatkozó korlátok. További információkért lásd: [Logic Apps díjszabási](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-*Ingyenes szint*
+> [!NOTE] 
+> Az ingyenes szinten csak felderítő forgatókönyvek esetén nem termelési forgatókönyvekhez használja. Ez a szint korlátozza az átviteli sebesség és a használat, és nincs szolgáltatásszint-szerződés (SLA) rendelkezik.
 
-Az ingyenes szinten csak felderítő forgatókönyvek esetén nem termelési forgatókönyvekhez használja. Ez a szint korlátozza az átviteli sebesség és a használat, és nincs szolgáltatásszint-szerződés (SLA) rendelkezik.
-
-| Összetevő | Korlát | Megjegyzések |
-|----------|-------|-------|
-| Szerelvények | 10 | |
-| Kötegkonfigurációk | 5 |
-| Tanúsítványok | 25 | |
-| Kereskedelmi EDI-szerződést | 10 | |
-| Kereskedelmi EDI-partnerek | 25 | |
-| Maps | 25 | |
-| Sémák | 25 |
-||||
-
-*Alapszintű csomag*
-
-| Összetevő | Korlát | Megjegyzések |
-|----------|-------|-------|
-| Szerelvények | 25 | |
-| Kötegkonfigurációk | 1 | |
-| Tanúsítványok | 2 | |
-| Kereskedelmi EDI-szerződést | 1 | |
-| Kereskedelmi EDI-partnerek | 2 | |
-| Maps | 500 | |
-| Sémák | 500 |
-||||
-
-*Standard csomag*
-
-| Összetevő | Korlát | Megjegyzések |
-|----------|-------|-------|
-| Szerelvények | 50 | |
-| Kötegkonfigurációk | 50 |
-| Tanúsítványok | 500 | |
-| Kereskedelmi EDI-szerződést | 500 | |
-| Kereskedelmi EDI-partnerek | 500 | |
-| Maps | 1,000 | |
-| Sémák | 1,000 |
+| Összetevő | Ingyenes | Alapszintű | Standard |
+|----------|------|-------|----------|
+| Kereskedelmi EDI-szerződést | 10 | 1 | 500 |
+| Kereskedelmi EDI-partnerek | 25 | 2 | 500 |
+| Maps | 25 | 500 | 1,000 |
+| Sémák | 25 | 500 | 1,000 |
+| Szerelvények | 10 | 25 | 50 |
+| Tanúsítványok | 25 | 2 | 500 |
+| Kötegkonfigurációk | 5 | 1 | 50 |
 ||||
 
 <a name="artifact-capacity-limits"></a>
@@ -304,7 +277,7 @@ A Logic Apps nem támogatja az Azure storage-fiókok tűzfalon keresztül közve
 | Dél-India | 52.172.9.47, 52.172.49.43, 52.172.51.140, 104.211.225.152 |
 | Délkelet-Ázsia | 52.163.93.214, 52.187.65.81, 52.187.65.155, 104.215.181.6 |
 | USA nyugati középső régiója | 13.78.137.247, 52.161.8.128, 52.161.19.82, 52.161.26.172 |
-| Nyugat-Európa | 13.95.155.53, 52.174.49.6, 52.174.49.6, 52.174.54.218 |
+| Nyugat-Európa | 13.95.155.53, 51.144.176.185, 52.174.49.6, 52.174.54.218 |
 | Nyugat-India | 104.211.157.237, 104.211.164.25, 104.211.164.112, 104.211.165.81 |
 | USA nyugati régiója | 13.91.252.184, 52.160.90.237, 138.91.188.137, 157.56.160.212 |
 | USA nyugati régiója, 2. | 13.66.128.68, 13.66.224.169, 52.183.30.10, 52.183.39.67 |

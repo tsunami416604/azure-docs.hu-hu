@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/18/2019
+ms.date: 04/29/2019
 ms.author: mlottner
-ms.openlocfilehash: cac2f740c1b2ae109f29ce44cd035fc6a83dd148
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0236050ffcf7ad1d18ff3a8a763d0469d91eeeb5
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60505427"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919927"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Gyors útmutató: Az IoT Hub szolgáltatás engedélyezése
 
@@ -39,6 +39,7 @@ Ez a cikk az Azure Security Center (ASC) az IoT hub IoT-előzetes szolgáltatás
   - Két típusú adatok tárolódnak a Log Analytics-munkaterület az ASC alapértelmezés szerint az IoT; **biztonsági riasztások** és **javaslatok**. 
   - Dönthet úgy, hogy adjon hozzá további információk típusa, a storage **nyers események**. Vegye figyelembe, hogy tárolására **nyers események** a Log Analytics sorozatéhoz további tárolási költségeket. 
 - Az IoT Hub (standard szintű vagy újabb)
+- Igazíthatja [prerequities szolgáltatás](service-prerequisites.md) 
 
 ## <a name="enable-asc-for-iot-on-your-iot-hub"></a>Az IoT hub IoT ASC engedélyezése 
 
@@ -50,8 +51,7 @@ Ahhoz, hogy az IoT hub biztonsági, tegye a következőket:
 4. Adja meg a Log Analytics-munkaterület adatait. 
    - Tárolhatja **nyers események** mellett az alapértelmezett típusokat. Ha tárolási a **nyers események** váltógomb **a**. 
    - Dönthet úgy, hogy engedélyezze, hogy **ikereszköz gyűjtemény** távozó a **ikereszköz gyűjtemény** váltógomb **a**. 
-5. Kattintson az **OK** gombra. 
-6. Kattintson a **Save** (Mentés) gombra. 
+5. Kattintson a **Save** (Mentés) gombra. 
 
 Gratulálunk! Ön teljesítette az IoT hub IoT ASC engedélyezéséhez. 
 

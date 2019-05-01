@@ -5,26 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 02/01/2019
+ms.date: 04/23/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 660bbf50e1a8ae73bd7bbe1f7c42691ed62d276a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 40c8cb41ad3bcd46e9973a5f96134ff1bfd02fd2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552969"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64744230"
 ---
-Ha még nem rendelkezik virtuális hálózattal, gyorsan létrehozhat egyet a PowerShell használatával. Vagy az Azure Portalon is létrehozhat egy virtuális hálózatot.
+Gyorsan hozhat létre egy Vnetet, nyisson meg egy PowerShell-konzolt, ebben a cikkben kattinthat "Kipróbálom". Állítsa be az értékeket, majd másolja és illessze be a parancsokat a konzolablakba. Az új modul és AzureRM kompatibilitási kapcsolatos további tudnivalókért lásd: [az Azure PowerShell-lel Az új modul bevezetése](/powershell/azure/new-azureps-module-az). Az modul telepítési utasításokért lásd: [Azure PowerShell telepítése](/powershell/azure/install-az-ps).
 
-* Mindenképp ellenőrizze, hogy a létrehozott virtuális hálózat címtere nincs-e átfedésben a többi virtuális hálózat címterével, amelyekhez csatlakozni szeretne, vagy a helyszíni hálózat címterével. 
-* Ha már rendelkezik virtuális hálózattal, győződjön meg arról, hogy megfelel a követelményeknek, és nem rendelkezik virtuális hálózati átjáróval.
-
-A cikkben lévő „Kipróbálás” lehetőségre kattintva megnyíló PowerShell-konzollal könnyen létrehozhat egy virtuális hálózatot. Állítsa be az értékeket, majd másolja és illessze be a parancsokat a konzolablakba.
+Mindenképp ellenőrizze, hogy a létrehozott virtuális hálózat címtere nincs-e átfedésben a többi virtuális hálózat címterével, amelyekhez csatlakozni szeretne, vagy a helyszíni hálózat címterével.
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Módosítsa a PowerShell-parancsokat, majd hozzon létre egy erőforráscsoportot.
+Ha még nem rendelkezik egy erőforráscsoportot, amelyet használni szeretne, hozzon létre egy újat. Állítsa be a PowerShell-parancsok tükrözi az erőforráscsoport nevét is használni szeretné, majd futtassa a következő parancsmagot:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName WANTestRG -Location WestUS
@@ -32,7 +29,7 @@ New-AzResourceGroup -ResourceGroupName WANTestRG -Location WestUS
 
 ### <a name="create-a-vnet"></a>Virtuális hálózat létrehozása
 
-Módosítsa a PowerShell-parancsokat, hogy egy olyan virtuális hálózatot hozzon létre, amely kompatibilis a környezettel.
+Állítsa be, amely kompatibilis a környezet VNet létrehozása a PowerShell-parancsokat.
 
 ```azurepowershell-interactive
 $fesub1 = New-AzVirtualNetworkSubnetConfig -Name FrontEnd -AddressPrefix "10.1.0.0/24"

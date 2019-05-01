@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: 50bb13ecaa9e6076f00749d54b492a1e6663a93e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 2708efc22d373db6ee55dfee6b8adfa35bd450ef
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62110066"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924343"
 ---
 # <a name="quickstart-use-net-to-create-a-blob-in-object-storage"></a>Gyors útmutató: Blob létrehozása objektumtárban .NET használatával
 
@@ -48,13 +48,13 @@ A .NET Core és a .NET-keretrendszer közötti választással kapcsolatos továb
 
 A rövid útmutatóban használt mintaalkalmazás egy egyszerű konzolalkalmazás. A mintaalkalmazást megismerheti a [GitHubon](https://github.com/Azure-Samples/storage-blobs-dotnet-quickstart).
 
-A [git](https://git-scm.com/) használatával töltse le az alkalmazás egy másolatát a fejlesztői környezetbe. 
+A [git](https://git-scm.com/) használatával töltse le az alkalmazás egy másolatát a fejlesztői környezetbe.
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-dotnet-quickstart.git
 ```
 
-Ez a parancs a helyi git mappába klónozza az adattárat. A Visual Studio-megoldás megnyitásához keresse meg a *storage-blobs-dotnet-quickstart* mappát, nyissa meg, és kattintson duplán a *storage-blobs-dotnet-quickstart.sln* fájlra. 
+Ez a parancs a helyi git mappába klónozza az adattárat. A Visual Studio-megoldás megnyitásához keresse meg a *storage-blobs-dotnet-quickstart* mappát, nyissa meg, és kattintson duplán a *storage-blobs-dotnet-quickstart.sln* fájlra.
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -70,7 +70,7 @@ A kapcsolati sztring másolása után írja azt egy új környezeti változóba 
 setx storageconnectionstring "<yourconnectionstring>"
 ```
 
-Miután hozzáadta a környezeti változót, előfordulhat, hogy újra kell indítania minden futó programot, amelynek szüksége lehet a környezeti változó beolvasására, beleértve a konzolablakot is. Ha például Visual Studiót használt szerkesztőként, indítsa újra a minta futtatása előtt. 
+Miután hozzáadta a környezeti változót, előfordulhat, hogy újra kell indítania minden futó programot, amelynek szüksége lehet a környezeti változó beolvasására, beleértve a konzolablakot is. Ha például Visual Studiót használt szerkesztőként, indítsa újra a minta futtatása előtt.
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
@@ -85,7 +85,7 @@ A környezeti változó hozzáadását követően futtassa a `source ~/.bashrc` 
 Módosítsa a .bash_profile fájlt, és adja hozzá a környezeti változót:
 
 ```bash
-export STORAGE_CONNECTION_STRING=<yourconnectionstring>
+export storageconnectionstring=<yourconnectionstring>
 ```
 
 A környezeti változó hozzáadását követően futtassa a `source .bash_profile` parancsot a konzolablakban a módosítások érvénybe léptetéséhez.
@@ -94,15 +94,15 @@ A környezeti változó hozzáadását követően futtassa a `source .bash_profi
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-Ez a minta egy tesztfájlt hoz létre a helyi **MyDocuments** mappában, és feltölti a Blob Storage-ba. A minta ezután kilistázza a tárolóban található blobokat, majd letölti a fájlt egy új néven, hogy össze lehessen hasonlítani a régi és az új fájlt. 
+Ez a minta egy tesztfájlt hoz létre a helyi **MyDocuments** mappában, és feltölti a Blob Storage-ba. A minta ezután kilistázza a tárolóban található blobokat, majd letölti a fájlt egy új néven, hogy össze lehessen hasonlítani a régi és az új fájlt.
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
-Ha Visual Studiót használt szerkesztőként, a futtatáshoz nyomja le az **F5** billentyűt. 
+Ha Visual Studiót használt szerkesztőként, a futtatáshoz nyomja le az **F5** billentyűt.
 
 Máskülönben lépjen az alkalmazás könyvtárába, majd futtassa az alkalmazást a `dotnet run` paranccsal.
 
-```
+```console
 dotnet run
 ```
 
@@ -110,7 +110,7 @@ dotnet run
 
 Lépjen az alkalmazás könyvtárába, majd futtassa az alkalmazást a `dotnet run` paranccsal.
 
-```
+```console
 dotnet run
 ```
 
@@ -118,7 +118,7 @@ dotnet run
 
 Lépjen az alkalmazás könyvtárába, majd futtassa az alkalmazást a `dotnet run` paranccsal.
 
-```
+```console
 dotnet run
 ```
 
@@ -126,7 +126,7 @@ dotnet run
 
 A mintaalkalmazás kimenete az alábbihoz hasonló lesz:
 
-```
+```output
 Azure Blob storage - .NET Quickstart sample
 
 Created container 'quickstartblobs33c90d2a-eabd-4236-958b-5cc5949e731f'
@@ -144,7 +144,7 @@ Press any key to delete the sample files and example container.
 
 Az **Enter** billentyű lenyomása után az alkalmazás törli a Storage-tárolót és a fájlokat. Mielőtt törölné ezeket, ellenőrizze a két fájlt a **MyDocuments** mappában. Ha megnyitja őket, láthatja, hogy megegyeznek. Másolja ki a blob URL-címét a konzolablakból, és másolja be egy böngészőbe a blob tartalmának a megtekintéséhez.
 
-A fájlok ellenőrzése után nyomja le bármelyik billentyűt a bemutató befejezéséhez és a tesztfájlok törléséhez. Most, hogy tisztában van a minta működésével, nyissa meg a Program.cs fájlt, és tekintse meg a kódot. 
+A fájlok ellenőrzése után nyomja le bármelyik billentyűt a bemutató befejezéséhez és a tesztfájlok törléséhez. Most, hogy tisztában van a minta működésével, nyissa meg a Program.cs fájlt, és tekintse meg a kódot.
 
 ## <a name="understand-the-sample-code"></a>A mintakód értelmezése
 
@@ -184,23 +184,22 @@ else
 
 A minta ezután létrehoz egy tárolót, és beállítja annak engedélyeit, hogy a tárolóban lévő minden blob nyilvános legyen. A nyilvános blobok névtelenül elérhetők bármely ügyfél által.
 
-Tároló létrehozásához előbb hozza létre a [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient) objektum egy példányát, amely a tárfiókban található Blob Storage-ra mutat. Ezután hozza létre a [CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer) objektum egy példányát, majd a tárolót. 
+Tároló létrehozásához előbb hozza létre a [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient) objektum egy példányát, amely a tárfiókban található Blob Storage-ra mutat. Ezután hozza létre a [CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer) objektum egy példányát, majd a tárolót.
 
 Esetünkben a minta a [CreateAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createasync) metódus meghívásával hozza létre a tárolót. A rendszer egy GUID azonosítót fűz a tároló nevének végéhez, hogy biztosítsa annak egyediségét. Éles környezetben érdemes inkább a [CreateIfNotExistsAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createifnotexistsasync) metódust alkalmazni, mivel ez csak akkor hozza létre a tárolót, ha az még nem létezik, és így elkerülhetők a névütközések.
 
 > [!IMPORTANT]
 > A tárolók nevei csak kisbetűket tartalmazhatnak. A tárolók és blobok elnevezésével kapcsolatos további információkért lásd a [tárolók, blobok és metaadatok elnevezését és hivatkozását](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-
 ```csharp
 // Create the CloudBlobClient that represents the Blob storage endpoint for the storage account.
 CloudBlobClient cloudBlobClient = storageAccount.CreateCloudBlobClient();
 
-// Create a container called 'quickstartblobs' and append a GUID value to it to make the name unique. 
+// Create a container called 'quickstartblobs' and append a GUID value to it to make the name unique.
 CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference("quickstartblobs" + Guid.NewGuid().ToString());
 await cloudBlobContainer.CreateAsync();
 
-// Set the permissions so the blobs are public. 
+// Set the permissions so the blobs are public.
 BlobContainerPermissions permissions = new BlobContainerPermissions
 {
     PublicAccess = BlobContainerPublicAccessType.Blob
@@ -210,7 +209,7 @@ await cloudBlobContainer.SetPermissionsAsync(permissions);
 
 ### <a name="upload-blobs-to-the-container"></a>Blobok feltöltése a tárolóba
 
-A minta ezután feltölt egy helyi fájlt egy blokkblobba. A példakód lekér egy **CloudBlockBlob** objektumra mutató hivatkozást a [GetBlockBlobReference](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.getblockblobreference) metódus az előző szakaszban létrehozott tárolón történő meghívásával. Ezután az [UploadFromFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromfileasync) metódus meghívásával feltölti a kiválasztott fájlt a blobba. Ez a metódus létrehozza a blobot, ha az még nem létezett, vagy felülírja, ha már igen. 
+A minta ezután feltölt egy helyi fájlt egy blokkblobba. A példakód lekér egy **CloudBlockBlob** objektumra mutató hivatkozást a [GetBlockBlobReference](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.getblockblobreference) metódus az előző szakaszban létrehozott tárolón történő meghívásával. Ezután az [UploadFromFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromfileasync) metódus meghívásával feltölti a kiválasztott fájlt a blobba. Ez a metódus létrehozza a blobot, ha az még nem létezett, vagy felülírja, ha már igen.
 
 ```csharp
 // Create a file in your local MyDocuments folder to upload to a blob.
@@ -248,7 +247,7 @@ do
     {
         Console.WriteLine(item.Uri);
     }
-} while (blobContinuationToken != null); // Loop while the continuation token is not null. 
+} while (blobContinuationToken != null); // Loop while the continuation token is not null.
 
 ```
 
@@ -257,7 +256,7 @@ do
 Ezután a [DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync) metódus használatával töltse le az imént létrehozott blobokat a helyi fájlrendszerre. A mintakód a blob nevét kiegészíti a „_DOWNLOADED” (Letöltve) utótaggal, így mindkét fájl látható lesz a helyi fájlrendszeren.
 
 ```csharp
-// Download the blob to a local file, using the reference created earlier. 
+// Download the blob to a local file, using the reference created earlier.
 // Append the string "_DOWNLOADED" before the .txt extension so that you can see both files in MyDocuments.
 destinationFile = sourceFile.Replace(".txt", "_DOWNLOADED.txt");
 Console.WriteLine("Downloading blob to {0}", destinationFile);
@@ -288,7 +287,7 @@ Blob Storage-tárolókat alkalmazó .NET-alkalmazások fejlesztéséhez tekintse
 
 ### <a name="binaries-and-source-code"></a>Bináris fájlok és forráskód
 
-- Az Azure Storage-hoz készült [.NET ügyféloldali kódtár](https://www.nuget.org/packages/WindowsAzure.Storage/) legújabb verziójáért töltse le a NuGet-csomagot. 
+- Az Azure Storage-hoz készült [.NET ügyféloldali kódtár](https://www.nuget.org/packages/WindowsAzure.Storage/) legújabb verziójáért töltse le a NuGet-csomagot.
 - A [.NET ügyféloldali kódtár forráskódját](https://github.com/Azure/azure-storage-net) a GitHubon tekintheti meg.
 
 ### <a name="client-library-reference-and-samples"></a>Ügyféloldali kódtár – referencia és minták
@@ -298,7 +297,7 @@ Blob Storage-tárolókat alkalmazó .NET-alkalmazások fejlesztéséhez tekintse
 
 ## <a name="next-steps"></a>További lépések
 
-Ennek a rövid útmutatónak a segítségével megismerkedett a blobok a .NET használatával való fel- és letöltésével, valamint kilistázásával. 
+Ennek a rövid útmutatónak a segítségével megismerkedett a blobok a .NET használatával való fel- és letöltésével, valamint kilistázásával.
 
 Ha szeretné megtudni, hogyan lehet olyan webalkalmazásokat létrehozni, amelyek rendszerképeket töltenek fel Blob Storage-tárolókba, lépjen tovább a [rendszerképadatok az Azure Storage segítségével a felhőbe történő feltöltését](storage-upload-process-images.md) ismertető szakaszra.
 
@@ -307,4 +306,3 @@ Ha szeretné megtudni, hogyan lehet olyan webalkalmazásokat létrehozni, amelye
 
 - A .NET Core keretrendszerrel kapcsolatos további információért lásd [a .NET használatának első lépéseit 10 percben](https://www.microsoft.com/net/learn/get-started/) ismertető szakaszt.
 - Ha szeretne megtekinteni egy olyan mintaalkalmazást, amely a Windowshoz készült Visual Studióból helyezhető üzembe, tekintse meg [az Azure Blob Storage-et használó .NET fényképgaléria-mintawebalkalmazást](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/).
- 

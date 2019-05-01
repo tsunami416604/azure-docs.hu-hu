@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 04/24/2019
 ms.author: iainfou
-ms.openlocfilehash: 42f6fefa930a36fbfcca7b3f792cc749723f7b99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1c20e7796d152c9198786c491f9a61752d88ea6f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464491"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726622"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Hitelesítés és engedélyezés az Azure Kubernetes Service (AKS) ajánlott eljárásai
 
@@ -108,7 +108,8 @@ A következő példában egy fejlesztői igényelhet hozzáférést egy Azure SQ
 1. A fejlesztő üzembe helyezi egy felügyelt identitás, amely a NMI kiszolgálón keresztül egy hozzáférési jogkivonatot kér rendelkező podot.
 1. A jogkivonat a pod vissza, és a egy Azure SQL Server-példány eléréséhez használt.
 
-A pod felügyelt identitások egy AKS nyílt forráskódú projekt, és nem támogatja a technikai Azure-támogatást. A visszajelzések és a hibák gyűjtsön közösségünkhöz nyújtja. A projekt nem ajánlott éles környezetben való használatra.
+> [!NOTE]
+> A pod felügyelt identitások egy nyílt forráskódú projekt, és nem támogatja a technikai Azure-támogatást.
 
 A pod-identitásokat használ, tekintse meg a [Kubernetes-alkalmazások Azure Active Directory identitásainak][aad-pod-identity].
 

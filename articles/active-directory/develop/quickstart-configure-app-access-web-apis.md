@@ -1,5 +1,5 @@
 ---
-title: Alkalmazás konfigurálása webes API-k elérésére (előzetes verzió) | Azure
+title: Egy alkalmazás hozzáférését a webes API-k – a Microsoft identity platform konfigurálása
 description: Megtudhatja, hogyan konfigurálhatja a Microsoft Identity Platformon regisztrált alkalmazást úgy, hogy átirányítási URI-t vagy URI-kat, hitelesítő adatokat vagy webes API-k elérésére vonatkozó engedélyeket is tartalmazzon.
 services: active-directory
 documentationcenter: ''
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
+ms.date: 04/30/2019
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93e88cedfd098f450e8faeea894f7fdfc796cf17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5e5adafc251735fd25b819921514bf6d1d3c3955
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443575"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918865"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis-preview"></a>Gyors útmutató: Webes API-k (előzetes verzió) eléréséhez ügyfélalkalmazás konfigurálása
+# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Gyors útmutató: Ügyfélalkalmazás konfigurálása a webes API-k elérésére
 
 Ahhoz, hogy egy webes/bizalmas ügyfélalkalmazás részt vehessen egy hitelesítést (és hozzáférési jogkivonat beszerzését) előíró engedélyezési folyamatban, biztonságos hitelesítő adatokat kell létesítenie. Az Azure Portal által támogatott alapértelmezett hitelesítési módszer egy ügyfél-azonosítót és egy titkos kulcsot igényel.
 

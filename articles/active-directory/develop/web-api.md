@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b477171be0f306431b0f7c5965ebede4f4680c22
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f344a4f928030c07f59c2f7aba201d153da123f1
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249933"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918718"
 ---
 # <a name="web-api"></a>Webes API
 
@@ -69,7 +69,7 @@ Tekintse meg a Kódminták webalkalmazás, webes API-forgatókönyvekhez. És t�
 
 ## <a name="app-registration"></a>Appok regisztrálása
 
-Alkalmazás regisztrálása az Azure AD-1.0-s verziójú végpont, lásd: [alkalmazás regisztrálása az Azure AD-1.0-s verziójú végpont](quickstart-v1-add-azure-ad-app.md).
+Alkalmazás regisztrálása az Azure AD-1.0-s verziójú végpont, lásd: [alkalmazás regisztrálása](quickstart-register-app.md).
 
 * Egyetlen bérlő – az alkalmazás azonosítóját és delegált felhasználói identitás esetek, a webalkalmazás és a webes API regisztrálni kell ugyanabban a címtárban az Azure ad-ben. A webes API elérhetővé engedélykészletet, a webes alkalmazás férjenek hozzá az erőforrásokhoz használt konfigurálható. A delegált felhasználói identitástípus használja, ha a webalkalmazás kell válassza ki a kívánt engedélyeket, a **egyéb alkalmazások engedélyei** legördülő menüből az Azure Portalon. Ebben a lépésben nincs szükség, ha az identitás alkalmazástípus használatban van.
 * Több-bérlős – először a webalkalmazás jelzi a megfelelő működéséhez szükséges engedélyekkel van konfigurálva. Szükséges engedélyek listája egy párbeszédpanel jelenik meg, amikor egy felhasználó vagy rendszergazda a célkönyvtárban duplikátum beleegyezésével az alkalmazáshoz, ami lehetővé teszi a szervezet számára elérhető. Egyes alkalmazások csak a felhasználói szintű engedélyeket, amelyeket a szervezet bármely felhasználója jóváhagyhat van szükségük. Más alkalmazások szükséges rendszergazdai engedélyekkel, amelyek a szervezet egy felhasználója nem járulhatnak hozzá. Csak egy könyvtár rendszergazda engedélyezheti, hogy ez a jogosultsági szint szükséges alkalmazásokat. Járul hozzá a felhasználó vagy rendszergazda, ha a webalkalmazás és a webes API egyaránt regisztrálva vannak a címtárban.

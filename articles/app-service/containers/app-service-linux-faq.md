@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: e3b6eed6f70eb2803ef4fa4e6b5d32fb0a4d843a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7cc3a4d98901e618369c98ceee8125d2abbe94e3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60851153"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919972"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Az Azure App Service linuxon – gyakori kérdések
 
@@ -136,7 +136,7 @@ Adja hozzá a teljes rendszerképnevet, beleértve a privát tárolójegyzék UR
 
 **Tehetők több port is közzé a saját egyéni tároló rendszerképét?**
 
-A Microsoft jelenleg nem támogatja egynél több-es port.
+Több-es port nem támogatottak.
 
 **Hozzáadhatom a saját storage?**
 
@@ -154,11 +154,11 @@ Port automatikus észlelési van. Azt is megadhatja az alkalmazás nevű beáll�
 
 Nem, a platform kezeli a megosztott előtérrendszerek HTTPS-lezárást.
 
-## <a name="multi-container-with-docker-compose-and-kubernetes"></a>Többtárolós docker Compose és a Kubernetes
+## <a name="multi-container-with-docker-compose"></a>Többtárolós docker Compose
 
 **Hogyan konfigurálhatom az Azure Container Registry (ACR) többtárolós használata?**
 
-Többtárolós, az ACR használatához **összes tárolórendszerkép** kell-e üzemeltetni az ACR beállításjegyzék ugyanarra a kiszolgálóra. Ha ugyanarra a beállításjegyzék-kiszolgálóra, szüksége lesz a Alkalmazásbeállítások létrehozása, és frissítse a Docker Compose- vagy Kubernetes konfigurációs fájl ACR rendszerkép neve is.
+Többtárolós, az ACR használatához **összes tárolórendszerkép** kell-e üzemeltetni az ACR beállításjegyzék ugyanarra a kiszolgálóra. Ha ugyanarra a beállításjegyzék-kiszolgálóra, szüksége lesz a Alkalmazásbeállítások létrehozása, és frissítse a Docker Compose konfigurációs fájl ACR rendszerkép neve is.
 
 Hozza létre az alkalmazás következő beállításait:
 

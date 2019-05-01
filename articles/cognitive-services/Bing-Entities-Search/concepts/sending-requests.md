@@ -10,16 +10,16 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 8eab941f9589e84d7193cc32f91d080d7cda7c08
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8fd0ccff9875086f46ca001660b0ee954d3e539b
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60803288"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869959"
 ---
 # <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Keresési kérések küldését a Bing Entity Search API
 
-A Bing Entity Search API egy keresési lekérdezést küld a Bingnek, majd entitásokat és helyeket tartalmazó találatokat kap vissza. A helytalálatok lehetnek éttermek, szállodák vagy egyéb helyi vállalkozások. A helyekre vonatkozó lekérdezések meghatározhatják egy helyi vállalkozás nevét, vagy egy listát is lekérhetnek (például „éttermek a közelben”). Az entitástalálatok személyek, helyek vagy dolgok lehetnek. A hely ebben a vonatkozásban látnivalókat, államokat, országokat stb. jelent. 
+A Bing Entity Search API egy keresési lekérdezést küld a Bingnek, majd entitásokat és helyeket tartalmazó találatokat kap vissza. A helytalálatok lehetnek éttermek, szállodák vagy egyéb helyi vállalkozások. A helyekre vonatkozó lekérdezések meghatározhatják egy helyi vállalkozás nevét, vagy egy listát is lekérhetnek (például „éttermek a közelben”). Az entitástalálatok személyek, helyek vagy dolgok lehetnek. Ebben a környezetben idegenforgalmi létesítmények, állapotok, országok/régiók, stb. 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bc4118e54b2049f7e5d6cf4ed3b92bfc5e41ae7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 011991a3951adde9a0d062b40584caa74d172023
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280522"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918737"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-domo"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Domo
 
@@ -174,7 +174,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Domo, hajtsa végre 
 
 ### <a name="configure-domo-single-sign-on"></a>Domo egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **Domo** oldalán, nyissa meg a Domo Tudásbázis megfelelő cikkében található [Itt](http://knowledge.domo.com?cid=azuread), és kövesse az utasításokat.
+Az egyszeri bejelentkezés konfigurálása **Domo** oldalán, nyissa meg a Domo Tudásbázis megfelelő cikkében található [Itt](https://knowledge.domo.com?cid=azuread), és kövesse az utasításokat.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 

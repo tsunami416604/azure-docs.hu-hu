@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 11d0648ee5090f02cb96c2d42a8d90cc3ea0ed28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: dc6d3fd2239624e6fccecfbd565eb815b372ed3d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60853303"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920430"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Az Azure App Service Linux PHP-alkalmazás konfigurálása
 
@@ -141,7 +141,7 @@ Népszerű webes keretrendszerek, hozzáférést biztosítanak a `X-Forwarded-*`
 
 ## <a name="customize-phpini-settings"></a>A php.ini fájl beállítások testre szabása
 
-Ha módosítania kell a PHP-telepítés, bármelyikét módosíthatja a [php.ini irányelvek](http://www.php.net/manual/ini.list.php) az alábbi lépéseket.
+Ha módosítania kell a PHP-telepítés, bármelyikét módosíthatja a [php.ini irányelvek](https://www.php.net/manual/ini.list.php) az alábbi lépéseket.
 
 > [!NOTE]
 > A legjobb módszer, a PHP-verzió és az aktuális *php.ini* konfigurálás az, hogy a hívás [phpinfo()](https://php.net/manual/function.phpinfo.php) az alkalmazásban.
@@ -149,7 +149,7 @@ Ha módosítania kell a PHP-telepítés, bármelyikét módosíthatja a [php.ini
 
 ### <a name="customize-non-phpinisystem-directives"></a>Nem PHP_INI_SYSTEM irányelvek testreszabása
 
-PHP_INI_USER PHP_INI_PERDIR és PHP_INI_ALL irányelvek testreszabása (lásd: [php.ini irányelvek](http://www.php.net/manual/ini.list.php)), adjon hozzá egy *.htaccess* fájlt az alkalmazás gyökérkönyvtárára.
+PHP_INI_USER PHP_INI_PERDIR és PHP_INI_ALL irányelvek testreszabása (lásd: [php.ini irányelvek](https://www.php.net/manual/ini.list.php)), adjon hozzá egy *.htaccess* fájlt az alkalmazás gyökérkönyvtárára.
 
 Az a *.htaccess* fájlt, adja hozzá a használatával irányelveket a `php_value <directive-name> <value>` szintaxist. Példa:
 
@@ -165,11 +165,11 @@ php_value upload_max_filesize 10M
 
 Telepítse újra az alkalmazást, az a módosításokat, és indítsa újra. Ha az üzembe helyezés a kudu használatával (például [Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)), üzembe helyezés után automatikusan újraindul.
 
-Az alternatív *.htaccess*, használható [ini_set()](http://www.php.net/manual/function.ini-set.php) ezeket az irányelveket nem PHP_INI_SYSTEM szabhatja testre az alkalmazásban.
+Az alternatív *.htaccess*, használható [ini_set()](https://www.php.net/manual/function.ini-set.php) ezeket az irányelveket nem PHP_INI_SYSTEM szabhatja testre az alkalmazásban.
 
 ### <a name="customize-phpinisystem-directives"></a>PHP_INI_SYSTEM irányelvek testreszabása
 
-PHP_INI_SYSTEM irányelvek testreszabása (lásd: [php.ini irányelvek](http://www.php.net/manual/ini.list.php)), nem használhatja a *.htaccess* megközelítést. Az App Service biztosítja, hogy egy külön mechanizmus használatával a `PHP_INI_SCAN_DIR` alkalmazásbeállítást.
+PHP_INI_SYSTEM irányelvek testreszabása (lásd: [php.ini irányelvek](https://www.php.net/manual/ini.list.php)), nem használhatja a *.htaccess* megközelítést. Az App Service biztosítja, hogy egy külön mechanizmus használatával a `PHP_INI_SCAN_DIR` alkalmazásbeállítást.
 
 Először futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com) nevű beállítása alkalmazás hozzáadása `PHP_INI_SCAN_DIR`:
 
@@ -237,7 +237,7 @@ Amikor működő PHP-alkalmazás működését eltérően az App Service-ben, va
     - Attól függően, a *composer.json*, különböző csomagokban megtalál mindent éles üzemmódhoz előfordulhat, hogy telepíteni (`require` és `require-dev`).
     - Bizonyos webes keretrendszerek statikus fájlok eltérően éles módban helyezheti üzembe.
     - Bizonyos webes keretrendszerek egyéni indítási parancsfájlok felhasználhatja az éles módban való futtatáskor.
-- Hibakeresési módban futtatja az alkalmazást az App Service-ben. Például a [Laravel](http://meanjs.org/), konfigurálhatja az alkalmazás hibakeresési üzeneteket által éles környezetben kimeneti [beállítás a `APP_DEBUG` Alkalmazásbeállítás `true` ](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+- Hibakeresési módban futtatja az alkalmazást az App Service-ben. Például a [Laravel](https://meanjs.org/), konfigurálhatja az alkalmazás hibakeresési üzeneteket által éles környezetben kimeneti [beállítás a `APP_DEBUG` Alkalmazásbeállítás `true` ](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 ### <a name="robots933456"></a>robots933456
 

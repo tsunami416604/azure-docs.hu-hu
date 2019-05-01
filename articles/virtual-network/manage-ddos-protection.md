@@ -4,8 +4,8 @@ titlesuffix: Azure Virtual Network
 description: Ismerje meg, hogyan használhatja az Azure DDoS Protection normál telemetriai az Azure monitorban támadás.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
-ms.author: jdial
-ms.openlocfilehash: 32c4516c7dc68b04826b362d34841160936d682d
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.author: kumud
+ms.openlocfilehash: 6b1d62f4cedb7add843a5ddae24125019130d58f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244519"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728342"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Kezelheti az Azure DDoS Protection szabványos az Azure portal használatával
 
@@ -47,7 +47,7 @@ Több csomag létrehozása nem kötelező a legtöbb szervezet számára. A csom
     |Name (Név)           | myDdosProtectionPlan                              |
     |Előfizetés   | Válassza ki előfizetését.                         |
     |Erőforráscsoport | Válassza ki **új létrehozása** , és adja meg *myResourceGroup* |
-    |Hely       | USA keleti régiója                                           |
+    |Location egység       | USA keleti régiója                                           |
 
 ## <a name="enable-ddos-for-a-new-virtual-network"></a>Új virtuális hálózat DDoS engedélyezése
 
@@ -60,7 +60,7 @@ Több csomag létrehozása nem kötelező a legtöbb szervezet számára. A csom
     | Name (Név)            | myVirtualNetwork                                             |
     | Előfizetés    | Válassza ki előfizetését.                                    |
     | Erőforráscsoport  | Válassza a **Meglévő használata**, majd a **myResourceGroup** lehetőséget. |
-    | Hely        | USA keleti régiója                                                      |
+    | Location egység        | USA keleti régiója                                                      |
     | A DDos protection | Válassza ki **Standard** , majd a **a DDoS protection**válassza **myDdosProtectionPlan**. A kiválasztott csomag lehet, mint a virtuális hálózat azonos vagy eltérő előfizetésben, de mindkét előfizetéshez kell tartoznia ugyanahhoz az Azure Active Directory-bérlőhöz.|
 
 Virtuális hálózat nem helyezhető át egy másik erőforráscsoportba vagy előfizetésbe, ha a virtuális hálózat DDoS Standard engedélyezve van. Ha át kell helyeznie egy virtuális hálózat DDoS standard engedélyezve van, először tiltsa le a DDoS Standard, helyezze át a virtuális hálózat és engedélyeznie kell a DDoS-szabvány. Az áthelyezés után az összes védett nyilvános IP-címek a virtuális hálózatban automatikusan beállított szabályzat küszöbértékeinek állnak vissza.

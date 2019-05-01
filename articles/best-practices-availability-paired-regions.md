@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmon
 ms.service: multiple
 ms.topic: article
-ms.date: 04/17/2019
+ms.date: 04/28/2019
 ms.author: raynew
-ms.openlocfilehash: ecbe73e02631e3c3601bd929282d467cb05b41e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e23b5ff9917eda7272e378aa70d6e2dd79f4b9f1
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60616848"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918972"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Üzleti folytonosság és vészhelyreállítás recovery (BCDR): Azure – párosított régiók
 
@@ -38,7 +38,6 @@ Minden egyes Azure-régió párban áll egy regionális párokból érdemes egy�
 | Európa |Észak-Európa |Nyugat-Európa |
 | Franciaország |Közép-Franciaország|Dél-Franciaország|
 | Németország |Közép-Németország |Északkelet-Németország |
-| Németország |Észak-Németország | Németország nyugati középső régiója
 | India |Közép-India |Dél-India |
 | India |Nyugat-India |Dél-India |
 | Japán |Kelet-Japán |Nyugat-Japán |
@@ -47,13 +46,8 @@ Minden egyes Azure-régió párban áll egy regionális párokból érdemes egy�
 | Észak-Amerika |USA 2. keleti régiója |USA középső régiója |
 | Észak-Amerika |USA északi középső régiója |USA déli középső régiója |
 | Észak-Amerika |USA nyugati régiója, 2. |USA nyugati középső régiója 
-| Észak-Amerika |USA nyugati Régiójában, 3 |USA keleti régiója
-| Norvégia |Norvégia keleti régiója |Norvégia nyugati régiója
 | Dél-Afrika | Dél-Afrika északi régiója | Dél-Afrika nyugati régiója
-| Svédország |Svéd közép-India |Svéd Dél-India
-| Svájc | Svájc északi régiója | Svájc nyugati régiója
 | Egyesült Királyság |Az Egyesült Királyság nyugati régiója |Az Egyesült Királyság déli régiója |
-| Egyesült Királyság |Egyesült Királyság északi régiója |Egyesült Királyság 2. déli régiója
 | Egyesült Arab Emírségek | Az Egyesült Arab Emírségek északi régiója | UAE Center
 | Védelmi Minisztérium, USA |US DoD – Kelet |US DoD – Középső régió |
 | Az USA kormányzata |USA-beli államigazgatás – Arizona |USA-beli államigazgatás – Texas |

@@ -12,18 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 09/24/2018
-ms.date: 04/08/2019
-ms.author: v-junlch
+ms.date: 09/24/2018
+ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0337f3de40e75ada86c0a5265fc99b34f1c2ecae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ea3e1b951a683d7ee1def09024e531e94dd905b4
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60296817"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918531"
 ---
 # <a name="web-apps"></a>Webalkalmazások
 
@@ -46,7 +45,7 @@ Tekintse meg a webes alkalmazás-forgatókönyvek a webböngésző Kódminták. 
 
 ## <a name="app-registration"></a>Appok regisztrálása
 
-Webes alkalmazás regisztrálni, lásd: [alkalmazás regisztrálása az Azure AD-1.0-s verziójú végpont](quickstart-v1-add-azure-ad-app.md).
+Webes alkalmazás regisztrálni, lásd: [alkalmazás regisztrálása](quickstart-register-app.md).
 
 * Egyetlen bérlő – Ha egy alkalmazás csak a szervezet számára hoz létre, azt regisztrálni kell a vállalati címtárban az Azure portal használatával.
 * Több-bérlős – Ha olyan alkalmazás, amely a szervezeten kívüli felhasználók által használható épít, a vállalati címtárban szerepelnie kell, de is regisztrálni kell az alkalmazást használó minden egyes szervezet címtárában. Elérhetővé teszi az alkalmazás a címtárban, megadhatja a regisztrációs folyamat, amely lehetővé teszi, hogy engedélyt adjanak az alkalmazásnak az ügyfelek számára. Amikor regisztrál az alkalmazáshoz, akkor megjelenik egy párbeszédpanel, amely tartalmazza az alkalmazáshoz szükséges engedélyeket, majd a beállítást, hogy engedélyt adjanak. Attól függően, a szükséges engedélyekkel a másik szervezet rendszergazda is szükség beleegyezés. A felhasználó vagy rendszergazda beleegyezik, az alkalmazás regisztrálva lesz a címtárban.
@@ -59,5 +58,3 @@ A felhasználói munkamenet lejár, ha lejár az Azure AD által kiállított jo
 
 * További információk egyéb [alkalmazástípusok és forgatókönyvek](app-types.md)
 * További tudnivalók az Azure AD [hitelesítés alapjai](authentication-scenarios.md)
-
-<!-- Update_Description: wording update -->

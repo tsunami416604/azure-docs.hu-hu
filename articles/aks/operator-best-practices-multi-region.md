@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: lastcoolnameleft
-ms.openlocfilehash: 926f470b8a4dbdb6d6cbfe09ee61349a819600e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5cac42505cd015cb018664b765e88f40667b1759
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464547"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920461"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az üzleti folytonossági és vészhelyreállítási recovery az Azure Kubernetes Service (AKS)
 
@@ -33,7 +33,7 @@ A gyakorlati tanácsok cikk összpontosít, amelyek segítségével szempontok t
 
 Egy AKS-fürtöt helyezünk üzembe egy adott régióban. Saját kezűleg régió hibákkal szembeni, különböző régióban üzembe helyezheti az alkalmazást több AKS-fürt. Ha azt tervezi, hogy mely régiókban az AKS-fürt üzembe helyezéséhez, a következő szempontokat kell figyelembe venni:
 
-* [AKS-régiók rendelkezésre állása](https://docs.microsoft.com/azure/aks/container-service-quotas#region-availability)
+* [AKS-régiók rendelkezésre állása](https://docs.microsoft.com/azure/aks/quotas-skus-regions#region-availability)
   * Válassza ki a felhasználók közel régióban. Az AKS folyamatosan bővíti új régiókba.
 * [Az Azure párosított régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
   * A földrajzi területen válassza a két régióban, amely a rendszer megfeleltetni egymással. Ezekben a régiókban platform frissítéseket koordinálja, és priorizálhatja helyreállítási erőfeszítések ahol szükséges.
@@ -62,7 +62,7 @@ A végpontok és útválasztási, lásd: útmutatást [a földrajzi forgalom-út
 
 ### <a name="layer-7-application-routing-with-azure-front-door"></a>7. rétegbeli alkalmazás útválasztás az Azure bejárati ajtó
 
-Az Azure Traffic Manager DNS (3. réteg) alakzat forgalom használ. [(Jelenleg előzetes verzióban érhető el) az Azure bejárati ajtajának](https://docs.microsoft.com/azure/frontdoor/front-door-overview) HTTP/HTTPS (7. réteg) útválasztási lehetőséget biztosít. További bejárati ajtó jellemzők SSL megszüntetése, az egyéni tartomány, webalkalmazás-tűzfal, URL-újraíró és munkamenet-affinitás.
+Az Azure Traffic Manager DNS (3. réteg) alakzat forgalom használ. [Az Azure bejárati ajtajának](https://docs.microsoft.com/azure/frontdoor/front-door-overview) HTTP/HTTPS (7. réteg) útválasztási lehetőséget biztosít. További bejárati ajtó jellemzők SSL megszüntetése, az egyéni tartomány, webalkalmazás-tűzfal, URL-újraíró és munkamenet-affinitás.
 
 Tekintse át, melyik megoldás a legmegfelelőbb van az alkalmazás forgalmának igényeit.
 

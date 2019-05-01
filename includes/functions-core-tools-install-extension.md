@@ -2,33 +2,48 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: functions
-author: ggailey777
+author: craigshoemaker
 ms.service: functions
 ms.topic: include
-ms.date: 09/21/2018
-ms.author: glenga
+ms.date: 09/25/2018
+ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: f1b53c53b1e5fb089eb9b8a9b816b11a1eea126d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: fc5b43dcdee394fea023124171fb42c1a18224dc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47044509"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64733271"
 ---
-A függvények helyi fejlesztésekor a bővítmények segítségével az Azure Functions Core Tools, a terminálról, vagy a parancssorból is telepítheti.
+Bővítmény csomagjaiból győződjön meg arról, a beállítás keresztül elérhető Azure Functions csapata által közzétett összes kötése a *host.json* fájlt. A helyi fejlesztési, gondoskodjon arról, hogy a legújabb verziójának [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md#install-the-azure-functions-core-tools).
 
-Miután frissítette a *function.json* -fájl, amely a függvénynek szüksége van, futtassa a következő parancsot a projektmappában összes kötését.
+Bővítmény csomagok használatához frissítse a *host.json* -fájl a következő bejegyzés `extensionBundle`:
 
-```bash
-func extensions install
+```json
+{
+    "version": "2.0",
+    "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[1.*, 2.0.0)"
+    }
+}
 ```
 
-A parancs beolvassa a *function.json* fájlra kattintva látható, mely csomagokat kell, telepíti őket, és ismét létrehozza a bővítmények projekt. Az új kötések felveszi a jelenlegi verzió, hanem nem frissíti a meglévő kötéseit. Használja a `--force` lehetőséget, ha meglévő kötések a legújabb verzióra újakat telepítésekor.
+- A `id` tulajdonság hivatkozik, a Microsoft Azure Functions bővítmény csomagjaiból névterét.
+- A `version` hivatkozik a csomag verzióját.
 
-Ha egy adott verzióját a csomag telepítéséhez, vagy szerkesztése előtt csomagokat telepíteni szeretné a *function.json* fájlt, használja a `func extensions install` parancsot a csomag nevével, az alábbi példában látható módon:
+Verziók növekmény csomagot a csomag módosításokat csomagként. Főverzió változások történhetnek, csak ha a csomag-csomagok áthelyezése egy főverzió. A `version` tulajdonságot használ a [időköz jelölése verzió tartományok megadása](https://docs.microsoft.com/nuget/reference/package-versioning#version-ranges-and-wildcards). A Functions futtatókörnyezete mindig választja, a verziótartományon vagy időköz által meghatározott maximális megengedhető verziójára.
 
-```bash
-func extensions install --package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
-```
+Után a bővítmény csomagjaiból hivatkozik a projektben, majd az összes alapértelmezett kötéseket érhetők el az funkciók. A kötések érhető el a [kiterjesztésű csomag](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json) vannak:
 
-Cserélje le `<target_version>` a csomaghoz, egy adott verziójával például `3.0.0-beta5`. Érvényes verzió szerepel az egyes csomagot oldalakon [NuGet.org](https://nuget.org).
+|Csomag  |Version  |
+|---------|---------|
+|Microsoft.Azure.WebJobs.Extensions.CosmosDB|3.0.3|
+|Microsoft.Azure.WebJobs.Extensions.DurableTask|1.8.0-as|
+|Microsoft.Azure.WebJobs.Extensions.EventGrid|2.0.0|
+|Microsoft.Azure.WebJobs.Extensions.EventHubs|3.0.3|
+|Microsoft.Azure.WebJobs.Extensions.SendGrid|3.0.0|
+|Microsoft.Azure.WebJobs.Extensions.ServiceBus|3.0.3|
+|Microsoft.Azure.WebJobs.Extensions.SignalRService|1.0.0|
+|Microsoft.Azure.WebJobs.Extensions.Storage|3.0.4|
+|Microsoft.Azure.WebJobs.Extensions.Twilio|3.0.0|

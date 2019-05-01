@@ -3,20 +3,19 @@ title: Felügyelete egyszeri Bejelentkezéssel és egyéni szabályzatok haszná
 description: Ismerje meg az egyszeri Bejelentkezést és a jogkivonat testreszabása az Azure Active Directory B2C-vel egyéni szabályzatok használatával.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 10/09/2018
-ms.date: 04/01/2019
-ms.author: v-junlch
+ms.date: 10/09/2018
+ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c0f5be7fd77ae195b66f8a8fb052ab8573d48171
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2033d37a4a847380003fb95243138082df804bbf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60317173"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703378"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Egyszeri bejelentkezés és egyéni szabályzatok használatával az Azure Active Directory B2C jogkivonat testreszabása kezelése
 
@@ -24,7 +23,11 @@ Ez a cikk ismerteti, hogyan kezelheti a jogkivonat, munkamenet és egyszeri beje
 
 ## <a name="token-lifetimes-and-claims-configuration"></a>Jogkivonat élettartama, és a jogcímek konfigurációja
 
-A beállításokat módosítani a jogkivonatok élettartamának, hozzá kell adnia egy [ClaimsProviders](claimsproviders.md) elem befolyásolhatja a kívánt házirendet, a függő entitás fájlban.  A **ClaimsProviders** elem gyermeke a [TrustFrameworkPolicy](trustframeworkpolicy.md) elemet. Belső kell helyezni, amely befolyásolja a jogkivonatok élettartamának. Az XML-fájl az alábbihoz hasonlít:
+A beállításokat módosítani a jogkivonatok élettartamának, hozzá kell adnia egy [ClaimsProviders](claimsproviders.md) elem befolyásolhatja a kívánt házirendet, a függő entitás fájlban.  A **ClaimsProviders** elem gyermeke a [TrustFrameworkPolicy](trustframeworkpolicy.md) elemet. 
+
+Helyezze be a ClaimsProviders elem BasePolicy elem és a RelyingParty elem a függő entitás fájl között.
+
+Belső kell helyezni, amely befolyásolja a jogkivonatok élettartamának. Az XML-fájl az alábbihoz hasonlít:
 
 ```XML
 <ClaimsProviders>
@@ -101,4 +104,3 @@ A következő értékeket az előző példában vannak konfigurálva:
 - **Egyszeri bejelentkezés (SSO)** – egyszeri bejelentkezés van konfigurálva a **SingleSignOn**. Az érvényes értékek a következők `Tenant`, `Application`, `Policy`, és `Suppressed`. 
 - **Webalkalmazás munkamenet élettartama (perc)** – a web app-munkamenet élettartama van beállítva a **SessionExpiryInSeconds** elemet. Az alapértelmezett érték 86 400 másodperc (1440 perc).
 - **Webes alkalmazás munkamenet időtúllépésének** – a webes alkalmazás munkamenet időkorlátja van beállítva a **SessionExpiryType** elemet. Az érvényes értékek a következők `Absolute` és `Rolling`.
-

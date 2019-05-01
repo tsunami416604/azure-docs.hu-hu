@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.openlocfilehash: 935c6ff03485c2b8e4d3e2f3df51c740ec1e8371
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7ac4b54740b03a8b3fa09486a8e09f3262f67555
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60770254"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866882"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB gyakori alkalmazási helyzetek
 Ez a cikk számos gyakori alkalmazási helyzetek áttekintést nyújt az Azure Cosmos DB.  Ebben a cikkben szereplő ajánlások szolgálhat a kiindulási pontként, a Cosmos DB az alkalmazás fejlesztését.   
@@ -108,7 +108,7 @@ Vagy, ha többet szeretne azokról az ügyfelekről a Cosmos DB használatával,
 * [A Citrix](https://customers.microsoft.com/story/citrix). A Citrix fejlesztett single-sign-on megoldás az Azure Service Fabric és Azure Cosmos DB használatával
 * [TEXA](https://customers.microsoft.com/story/texaspa) TEXA a Forradalmi IoT-megoldás jármű-tulajdonosok segít időt, költséget takaríthat meg, gáz mentés – és esetleg helyén.
 * [A Domino Kétpizzás](https://www.dominos.com). A Domino Kétpizzás Inc.-amerikai kétpizzás étteremlánc.
-* [Azt szabályozza, Johnson](https://www.johnsoncontrols.com). Johnson vezérlők egy globális változatos technológia és az ügyfelek már több mint 150 országban számos szolgáltató több ipari vezető.
+* [Azt szabályozza, Johnson](https://www.johnsoncontrols.com). Johnson vezérlők egy globális változatos technológia és az ügyfelek számos szolgáltató több mint 150 országban és régióban több ipari vezető.
 * [A Microsoft Windows, univerzális Store, az Azure IoT Hub, az Xbox Live és más szolgáltatások](https://azure.microsoft.com/blog/how-azure-documentdb-planet-scale-nosql-helps-run-microsoft-s-own-businesses/). A Microsoft hogyan hoz létre az Azure Cosmos DB használatával nagy mértékben méretezhető szolgáltatásokkal.
 * [A Microsoft Data- és elemzési csoport](https://customers.microsoft.com/story/microsoftdataandanalytics). A Microsoft Data- és elemzési csoport éri el az Azure Cosmos DB globális big-data gyűjtemény
 * [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india). Sulekha az Azure Cosmos DB ügyfeleket és a cégeket összekapcsolásához India.

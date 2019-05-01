@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/27/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47273bf687d88e82afba5de878f08bd53422479c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7711c3476ac9118406a86430e5ade238bec2c028
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381329"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918628"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás az identitáskezelési követelmények meghatározása
 A hibrid identitáskezelési megoldás kialakításának első lépéseként feladata annak megállapítása, hogy ez a megoldás kihasználva lesz az üzleti szervezet követelményeinek.  Hibrid identitás (támogatott összes egyéb felhőalapú megoldások azáltal, hogy hitelesítés) támogató szerepkörként elindul, és mutat be olyan új és érdekes képességeket biztosítanak, zárolásának feloldása új számítási feladatok, a felhasználók számára.  Ezek a számítási feladatok vagy szolgáltatások, a felhasználók elfogadják kívánt fogja diktálni a hibrid identitás követelményeinek.  Ezek a szolgáltatások és számítási feladatok kell kihasználva hibrid identitás a helyszínen és a felhőben.  
 
 Meg kell vizsgálni kulcsfontosságú elemeit azonosítására, hogy mi az üzleti mostantól a követelmény, és mi a vállalat a jövőben tervez. Ha nem rendelkezik a hosszú távú stratégiát hibrid identitás tervezési láthatóságát, valószínűleg, hogy a megoldás nem lesz méretezhető az üzleti igények növekedésének és változásának megfelelően.   T, akkor az alábbi ábra egy példát a számítási feladatok vannak folyamatban feloldotta a felhasználók számára és a egy hibrid identitás architektúra. Ez a csak egy példa az új lehetőségeket, amelyek oldhatja fel és egy szilárd hibrid identitás stratégia előtelepítve. 
 
-Néhány összetevőt, amelyek részei a hibrid identitás-architektúra ![](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
+Néhány összetevőt, a hibrid identitás architektúrájának részét képező ![hibrid identitás-architektúra](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
 
 ## <a name="determine-business-needs"></a>Üzleti igények meghatározása
 Minden vállalat különböző követelményekkel, rendelkezik akkor is, ha ezek a vállalatok azonos iparágba, a valódi üzleti követelmények jelentősen változhat a részét képezik. Az iparág ajánlott eljárásait felhasználhatja, de végső soron a vállalat üzleti igényei, amelyek a hibrid identitás követelményeinek meghatározását. 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: f033f8e8e686165febdd2262953b2aa871686a12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7e3ea1d2a0c3e8501222d57a92fad917d465022e
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60330108"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866996"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>A földrajzi forgalom-útválasztási módszer az Azure Traffic Manager által használt ország/régió-hierarchia
 
@@ -481,8 +481,6 @@ Ez a cikk felsorolja az országok és régiók használják a **Geographic** for
         - CD (Kongó (KDK))
 
         - CF-hez (közép-afrikai Köztársaság)
-
-        - CG(Congo)
 
         - CI(Côte d’Ivoire)
 

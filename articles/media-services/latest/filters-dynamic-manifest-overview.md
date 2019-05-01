@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2da4ee5d60290485d87af86885dda0d72a625fef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 44894694bab7d34ed9e6a71fe5e47c9e41144bca
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323086"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716281"
 ---
 # <a name="dynamic-manifests"></a>Dinamikus jegyzékek
 
@@ -26,7 +26,7 @@ Media Services által **dinamikus jegyzékfájlok** előre definiált szűrők a
 
 Az alábbi táblázatban néhány példa az URL-címek szűrőket jeleníti meg:
 
-|Protokoll|Példa|
+|Protocol|Példa|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
@@ -131,7 +131,7 @@ Megadhatja, hogy az eszköz vagy a fiók szűrők, a Streamelési lokátor is é
 - A tartozó értékeket **forceEndTimestamp**, **presentationWindowDuration**, és **liveBackoffDuration** VoD szűrő nem kell beállítani. Csak élő szűrő célokra szolgálnak. 
 - Dinamikus jegyzékfájl működik, Képcsoporttal határok (kulcs keretek), ezért vágást rendelkezik Képcsoporttal pontosságát. 
 - Használhatja ugyanazt a fiókot és az Eszközintelligencia szűrők szűrő nevet. Eszközintelligencia szűrők rendelkezik nagyobb prioritással, és felülírja a fiók szűrők.
-- Ha frissíti a szűrőt, folyamatos átviteli végponton, a szabályok frissítése akár 2 percet is igénybe vehet. Ha a tartalom kiszolgálása egyes szűrők használatával (és a proxyk és a CDN gyorsítótárazza a gyorsítótárak), player hibák frissítése ezeket a szűrőket eredményezhet. Javasoljuk, hogy a gyorsítótár ürítése a szűrő frissítése után. Ha ezt a beállítást nem lehetséges, fontolja meg egy másik szűrővel.
+- Ha frissíti a szűrőt, a folyamatos átviteli végponton, a szabályok frissítése akár 2 percet is igénybe vehet. Ha a tartalom kiszolgálása egyes szűrők használatával (és a proxyk és a CDN gyorsítótárazza a gyorsítótárak), player hibák frissítése ezeket a szűrőket eredményezhet. Javasoljuk, hogy a gyorsítótár ürítése a szűrő frissítése után. Ha ezt a beállítást nem lehetséges, fontolja meg egy másik szűrővel.
 - Az ügyfeleknek kell manuálisan a jegyzékfájl letöltése és elemzése, a pontos startTimestamp és időskálára.
     
     - A számok az adategység tulajdonságainak meghatározásához [lekérése, és vizsgálja meg a jegyzékfájl](#get-and-examine-manifest-files).

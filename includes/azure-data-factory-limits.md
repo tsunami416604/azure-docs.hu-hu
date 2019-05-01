@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 1/10/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 42c1856f30484532e1ace2e84187bcaaacdf4c72
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6d06ac6efd08c14f77fd963ddf2c67de54260959
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553516"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64733761"
 ---
 Az Azure Data Factory egy több-bérlős szolgáltatás, amely a következő alapértelmezett korlátokkal rendelkeznek, hogy az ügyfél-előfizetések védettek, a többi összes számítási feladatokat a helyen. A korlátok a maximális az előfizetéshez tartozó növeléséhez forduljon az ügyfélszolgálathoz.
 
@@ -26,7 +26,7 @@ Az Azure Data Factory egy több-bérlős szolgáltatás, amely a következő ala
 | Egy előfizetéshez tartozó Azure-SSIS integrációs modulok esetében teljes Processzormagok | 256 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Egyidejű folyamatfuttatások száma, amelyet használ az összes folyamatok előállító a data factory | 10,000  | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Egy folyamatot, amely tartalmazza a tárolók a belső tevékenységek maximális tevékenységek | 40 | 40 |
-| Hozható létre a saját üzemeltetésű integrációs ellen társított integrációs modulok maximális száma | 20 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Hozható létre a saját üzemeltetésű integrációs ellen társított integrációs modulok maximális száma | 100 | [Forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Egy folyamat maximális paraméterek | 50 | 50 |
 | ForEach-elemek | 100 000 | 100 000 |
 | ForEach-párhuzamosság | 20 | 50 |

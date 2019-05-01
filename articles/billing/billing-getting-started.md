@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: d215e2ba5d650b532b9d7554ccca9ad5537cf4de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 146c74fe751e75fb85563378be6f812802928fe2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60919320"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918939"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése
 
@@ -203,7 +203,7 @@ SLA-küszöbértékek szolgáltatás eltérőek lehetnek. Például SQL webes r�
 
 Egyes szolgáltatások nincsenek előfeltételei a szolgáltatói szerződés érvénybe lépéséhez. Például a virtuális gépek két vagy több példánya azonos rendelkezésre állási csoportban kell rendelkeznie.
 
-További információkért lásd: a [szolgáltatásiszint-szerződései](https://azure.microsoft.com/en-us/support/legal/sla/) dokumentáció és a [SLA összefoglalás az Azure-szolgáltatások](https://azure.microsoft.com/en-us/support/legal/sla/summary/) dokumentációját.
+További információkért lásd: a [szolgáltatásiszint-szerződései](https://azure.microsoft.com/support/legal/sla/) dokumentáció és a [SLA összefoglalás az Azure-szolgáltatások](https://azure.microsoft.com/support/legal/sla/summary/) dokumentációját.
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 

@@ -13,11 +13,11 @@ ms.custom: mvc
 ms.date: 04/22/2019
 ms.author: juliako
 ms.openlocfilehash: 54e52cfc60c42cc48a5c2d33cc6b7e64e75cf27c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125389"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707647"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Oktatóanyag: URL-cím alapján egy távoli fájl kódolása és streamelése a videó – REST
 

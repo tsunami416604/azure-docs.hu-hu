@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 5c393916bc977f4e0bc51913bdb2dfbbd6677c97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c26c9021637b1b6ec2b3808db1307de9955bb660
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323912"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922392"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>Gyors útmutató: Azure CDN-profil és -végpont használatával a Resource Manager-sablon létrehozása
 
@@ -51,7 +51,7 @@ az group create --name cdn --location eastus
 
 Ebben a lépésben hozzon létre egy sablon fájlt, amely üzembe helyezi az erőforrásokat.
 
-Ebben a példában egy általános webhely-gyorsítás forgatókönyv bemutatja, amíg nincsenek számos egyéb beállítást is konfigurálható. Ezek a beállítások az Azure Resource Manager sablonreferenciája érhető el. Tekintse át a hivatkozások [CDN-profil](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles) és [profil CDN-végpont](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints).
+Ebben a példában egy általános webhely-gyorsítás forgatókönyv bemutatja, amíg nincsenek számos egyéb beállítást is konfigurálható. Ezek a beállítások az Azure Resource Manager sablonreferenciája érhető el. Tekintse át a hivatkozások [CDN-profil](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles) és [profil CDN-végpont](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints).
 
 Vegye figyelembe, hogy a Microsoft CDN nem támogatja a módosítása a tartalomtípusok listája.
 
@@ -224,8 +224,8 @@ az group delete --name cdn
 
 ## <a name="references"></a>Referencia
 
-* CDN-profil - [az Azure Resource Manager Sablonreferenciája](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles)
-* CDN-végpont - [az Azure Resource Manager Sablonreferenciája dokumentációja](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
+* CDN-profil - [az Azure Resource Manager Sablonreferenciája](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)
+* CDN-végpont - [az Azure Resource Manager Sablonreferenciája dokumentációja](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
 
 ## <a name="next-steps"></a>További lépések
 

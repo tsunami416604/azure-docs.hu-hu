@@ -1,5 +1,5 @@
 ---
-title: Az Azure Media Services segítségével élő Streamelés áttekintése |} A Microsoft Docs
+title: Élő adások online közvetítése az Azure Media Services v3 áttekintése |} A Microsoft Docs
 description: Ez a cikk nyújt áttekintést élő adatfolyam továbbítása az Azure Media Services v3 használatával.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: juliako
-ms.openlocfilehash: ad8e84d84665b20bfff53cf09473bc8bce9760d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 0157cdc8062d7c53aaeb3ff01762e9562aa9c394
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322487"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866339"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő Stream a az Azure Media Services v3
 
@@ -26,7 +26,7 @@ Az Azure Media Services lehetővé teszi, hogy az ügyfeleknek az Azure-felhőbe
 
 - Egy kamera, amely az élő esemény rögzítéséhez.<br/>A telepítő ötleteket, tekintse meg [egyszerű és hordozható esemény videó fogaskerék beállítása]( https://link.medium.com/KNTtiN6IeT).
 
-    Ha nem rendelkezik a kamerához való hozzáférés, eszközök, mint például [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) segítségével hozzon létre egy élő adás videót.
+    Ha nem rendelkezik a kamerához való hozzáférés, eszközök, mint például [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) segítségével hozzon létre egy élő adás videót.
 - Egy élő videókódoló, amely a fényképezőgép (vagy egy másik eszközt, például egy laptop) jelek alakítja át, amelyet elküld a Media Services-hírcsatorna hozzájárulás. A közreműködői hírcsatorna hirdetési, például a SCTE – 35 jelölők kapcsolatos jelek is tartalmazhatnak.<br/>Ajánlott élő streamelési kódolók listáját lásd: [valós idejű kódolók](recommended-on-premises-live-encoders.md). Emellett tekintse meg ezt a blogot: [Élő streamelés az éles üzemre OBS](https://link.medium.com/ttuwHpaJeT).
 - A Media Services szolgáltatásban, amelyek lehetővé teszik, hogy, összetevők előzetes verzió, csomag, jegyezze fel, titkosítása és az élő esemény szórási, az ügyfelek számára, vagy egy CDN későbbi terjesztés.
 
@@ -37,7 +37,7 @@ Ez a cikk áttekintést és útmutatást az élő adások online közvetítése 
 
 ## <a name="dynamic-packaging"></a>A dinamikus csomagolás
 
-A Media Services igénybe veheti a dinamikus Packaging](dynamic-packaging-overview.md), amely lehetővé teszi az előzetes verzió és az élő adatstreameket [MPEG DASH, HLS és Smooth Streaming formátumban](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) származó a hozzájárulást hírcsatorna küldése a szolgáltatáshoz. A nézők vissza az élő stream továbbítása bármely HLS, DASH vagy Smooth Streaming kompatibilis lejátszók játszhatja le. Használhat [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) a web- vagy mobilalkalmazásokat, hogy a stream bármelyik ezeket a protokollokat.
+A Media Services igénybe veheti [dinamikus csomagolási](dynamic-packaging-overview.md), amely lehetővé teszi az élő adatstreameket és előzetes verzió [MPEG DASH, HLS és Smooth Streaming formátumban](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) hírcsatorna a hozzájárulását a a szolgáltatásnak küldött. A nézők vissza az élő stream továbbítása bármely HLS, DASH vagy Smooth Streaming kompatibilis lejátszók játszhatja le. Használhat [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) a web- vagy mobilalkalmazásokat, hogy a stream bármelyik ezeket a protokollokat.
 
 ## <a name="dynamic-encryption"></a>A dinamikus titkosítás
 
@@ -73,7 +73,7 @@ Szeretné megtudni, a Media Services v3 élő adatfolyam-továbbítási munkafol
 
 ### <a name="general-steps"></a>Általános lépései
 
-1. A Media Services-fiók, ellenőrizze, hogy a **folyamatos átviteli végponton** fut-e. 
+1. A Media Services-fiók, ellenőrizze, hogy a **folyamatos átviteli végponton** (forrás) fut-e. 
 2. Hozzon létre egy [élő esemény](live-events-outputs-concept.md). <br/>Az esemény létrehozásakor megadhat autostart azt. Másik lehetőségként megkezdése az eseményt, amikor készen áll a streamelés elindításához.<br/> Autostart Ha értéke igaz, az élő esemény fogja elindítani a megfelelő létrehozása után. A számlázás elindul, amint az élő esemény elindult. Leállítás explicit módon kell meghívnia, további számlázási megállítani az élő esemény erőforráson. További információkért lásd: [élő esemény állapotok és számlázási](live-event-states-billing.md).
 3. A betöltés URL-címe és a konfigurálása a helyszíni kódolót, a hírcsatorna-hozzájárulás küldése az URL-cím használatával.<br/>Lásd: [élő kódolók ajánlott](recommended-on-premises-live-encoders.md).
 4. Előnézeti URL-címére, és a segítségével ellenőrizheti, hogy a kódoló a bemeneti ténylegesen fogadja.
@@ -81,7 +81,7 @@ Szeretné megtudni, a Media Services v3 élő adatfolyam-továbbítási munkafol
 6. Hozzon létre egy **élő kimeneti** , és használja az Ön által létrehozott objektum nevét.<br/>A **élő kimeneti** archiválja a streamet, a **eszköz**.
 7. Hozzon létre egy **Streamelési lokátor** a beépített **Streamelési házirend** típusokat.<br/>Ha azt tervezi, a tartalmak, tekintse át a [Content protection áttekintése](content-protection-overview.md).
 8. Az útvonalak listájában a **Streamelési lokátor** visszatéréshez használandó URL-címek (ezek a determinisztikus).
-9. A gazdanevének beszerzése a **folyamatos átviteli végponton** érkező adatfolyam szeretné.
+9. A gazdanevének beszerzése a **folyamatos átviteli végponton** (forrás) szeretné az adatfolyam.
 10. Az URL-címet a 8. lépés kombinálva a teljes URL-Címének lekéréséhez 9. lépésben az állomásnevet.
 11. Ha szeretné állítani, így a **élő esemény** megtekinthető, le kell állítania az esemény-és törlése a **Streamelési lokátor**.
 
@@ -92,6 +92,10 @@ Szeretné megtudni, a Media Services v3 élő adatfolyam-továbbítási munkafol
 - [Élő esemény típusú szolgáltatások összehasonlítása](live-event-types-comparison.md)
 - [Állapotok és számlázás](live-event-states-billing.md)
 - [Késés](live-event-latency.md)
+
+## <a name="provide-feedback"></a>Visszajelzés küldése
+
+Tekintse meg a [Azure Media Services-Közösség](media-services-community.md) kérdések, küldje el visszajelzését, és tudnivalók a Media Services-frissítések különböző módon olvashatja.
 
 ## <a name="next-steps"></a>További lépések
 

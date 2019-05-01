@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: monhaber
-ms.openlocfilehash: 79faab0dcf2dd4c5592fe0543fa63f2538facf36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e21ed77a80892da22c380787dc64ea07db756fdf
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60909573"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917635"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center egy szolgáltatás, amellyel megelőzését, észlelését és háríthatja el a fenyegetéseket átláthatóbbá és a Microsoft Azure-erőforrások kézben kapcsolatos kérdésekre ad választ.
@@ -77,7 +77,7 @@ Windows vagy Linux rendszerű IaaS virtuális gépek jogosultak, ha:
 
 - A Microsoft Monitoring Agent bővítményt jelenleg nem települ a virtuális gépen.
 - A virtuális gép futó állapotban van.
-- A Windows vagy Linux rendszerű [Azure-beli virtuálisgép-ügynök](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/agent-windows) telepítve van.
+- A Windows vagy Linux rendszerű [Azure-beli virtuálisgép-ügynök](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) telepítve van.
 - A virtuális gép nem használatos, például a webalkalmazási tűzfal vagy új generációs tűzfal telepíthetőek.
 
 ### <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>A Security Center által létrehozott alapértelmezett munkaterületet is törli?

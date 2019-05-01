@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: v-gedod
-ms.openlocfilehash: a3badf7772c6be6509608fbdb305dc3bc225acc0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b4a1ba7536f0e899ef845bbac54b551125d35fb7
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879990"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868538"
 ---
 # <a name="bing-news-search-api-endpoints"></a>A Bing News Search API-végpontok
 
@@ -39,7 +39,7 @@ Keresési lekérdezés alapján hírek elemeket adja vissza. Ha a keresési lek�
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-Kategória szerint a híreket elemeket adja vissza. Kifejezetten kérheti a legfontosabb üzleti, sport vagy értéket használó cikkeket Szórakozás `category=business`, `category=sports`, vagy `category=entertainment`.  A `category` paraméter csak akkor használható együtt a `/news` URL-CÍMÉT. Néhány hivatalos követelmények megadása a kategóriák; Tekintse meg `category` a a [lekérdezési paraméter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters) dokumentációját. Kódolás a keresési kifejezést, és való hozzáfűzésével URL-cím alapján egy lekérdezés küldése a`q=""` paraméter. Tekintse meg a rendelkezésre állás érdekében [támogatott országok/régiókés piacok](language-support.md#supported-markets-for-news-endpoint).
+Kategória szerint a híreket elemeket adja vissza. Kifejezetten kérheti a legfontosabb üzleti, sport vagy értéket használó cikkeket Szórakozás `category=business`, `category=sports`, vagy `category=entertainment`.  A `category` paraméter csak akkor használható együtt a `/news` URL-CÍMÉT. Néhány hivatalos követelmények megadása a kategóriák; Tekintse meg `category` a a [lekérdezési paraméter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters) dokumentációját. Kódolás a keresési kifejezést, és való hozzáfűzésével URL-cím alapján egy lekérdezés küldése a`q=""` paraméter. Tekintse meg a rendelkezésre állás érdekében [támogatott országok/régiók és piacok](language-support.md#supported-markets-for-news-endpoint).
 
 ### <a name="trending-news-topics"></a>Népszerű hírek témakörök 
 

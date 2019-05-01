@@ -1,5 +1,5 @@
 ---
-title: Alkalmazás konfigurálása webes API-k közzétételére (előzetes verzió) | Azure
+title: Egy alkalmazás közzé a webes API-k – a Microsoft identity platform konfigurálása
 description: Megtudhatja, hogyan konfigurálhat alkalmazást új engedély/hatókör és szerepkör közzétételére, hogy elérhetővé tegye az alkalmazást az ügyfélalkalmazások számára.
 services: active-directory
 documentationcenter: ''
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
+ms.date: 04/30/2019
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a8ff17656978e6e4e8741c19cda79743560481a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a0b31aebfe431aca43dc763c2f168f123889b72
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443652"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918876"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>Gyors útmutató: Egy alkalmazást úgy teszi közzé a webes API-k (előzetes verzió)
+# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Gyors útmutató: A webes API-kat közzétenni egy alkalmazást
 
 Fejleszthet saját webes API-kat,és [engedélyek/hatókörök](developer-glossary.md#scopes) és [szerepkörök](developer-glossary.md#roles) közzétételével elérhetővé teheti azokat az ügyfélalkalmazások számára. A megfelelően konfigurált webes API-k a Microsoft többi webes API-jához hasonlóan érhetők el, mint például a Graph API vagy az Office 365 API-k.
 

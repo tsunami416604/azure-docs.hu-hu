@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sanpil
 author: sanpil
-ms.date: 01/08/2019
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2e6bc0fd9de4fdba1188b40c49ebf9459d684d38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3ec3e915c26abf38653d1bddfe0a5ba44d5e6de1
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819905"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64914896"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Hozzon létre, és a egy machine learning-folyamat futtatása az Azure Machine Learning-SDK használatával
 
@@ -359,6 +359,7 @@ response = requests.post(published_pipeline1.endpoint,
     json={"ExperimentName": "My_Pipeline",
         "ParameterAssignments": {"pipeline_arg": 20}})
 ```
+
 ## <a name="view-results"></a>Eredmények megtekintése
 
 A folyamatok minden és azok részleteinek listáját lásd:
@@ -368,6 +369,25 @@ A folyamatok minden és azok részleteinek listáját lásd:
  ![gépi tanulási folyamatok listája](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. Válassza ki az adott folyamatot a futtatási eredmények megtekintéséhez.
+
+## <a name="caching--reuse"></a>Gyorsítótárazás & újrafelhasználása  
+
+Annak érdekében, hogy optimalizálása és testre szabható a folyamatok köré gyorsítótárazás néhány dolgot tegye, és újra felhasználhatja a viselkedése. Például hogy választhat:
++ **Kapcsolja ki a kimeneti futtatása lépés alapértelmezett ismételt** beállításával `allow_reuse=False` során [lépés definíciója](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)
++ **Kiterjesztheti a parancsfájl túli kivonatoláshoz**, hogy az abszolút elérési utat, vagy relatív elérési útjai a forráskönyvtár más fájlok és könyvtárak használatával is tartalmazza a `hash_paths=['<file or directory']` 
++ **Kimeneti újragenerálása az összes lépés futtatása kényszerítése** az `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
+
+Alapértelmezés szerint engedélyezve van a lépés újbóli használata, és csak a fő parancsfájl kivonatolt. Ha a parancsfájl egy adott lépés változatlan marad (`script_name`, bemenetei között, valamint a paramétereket), a kimenet egy előző lépés futtatása újrahasznosított, a feladat nem elküldve a számítási és az előző futtatásból származó eredmények érhetők el közvetlenül a következő lépéssel inkább .  
+
+```python
+step = PythonScriptStep(name="Hello World", 
+                        script_name="hello_world.py",  
+                        compute_target=aml_compute,  
+                        source_directory= source_directory, 
+                        allow_reuse=False, 
+                        hash_paths=['hello_world.ipynb']) 
+```
+ 
 
 ## <a name="next-steps"></a>További lépések
 - Használat [ezek Jupyter notebookok a Githubon](https://aka.ms/aml-pipeline-readme) való ismerkedés a machine learning-további folyamatokat.

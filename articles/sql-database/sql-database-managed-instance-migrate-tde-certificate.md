@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 43793380fab2bcece215c53b82e09a3c3a849af3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/25/2019
+ms.openlocfilehash: f54950ab96664b17aab056b468db0644216e8654
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57833913"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706102"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Tanúsítvány TDE védett adatbázis áttelepítése az Azure SQL Database felügyelt példánya
 
@@ -31,7 +31,7 @@ ms.locfileid: "57833913"
 Alternatív megoldásként használhat egy teljes körűen felügyelt szolgáltatást a TDE-vel védett adatbázis és a kapcsolódó tanúsítvány zökkenőmentes migrálásához. További információért olvassa el a cikket, amely részletesen ismerteti a [helyszíni adatbázis egy felügyelt példányra való migrálását az Azure Database Migration Service használatával](../dms/tutorial-sql-server-to-managed-instance.md).
 
 > [!IMPORTANT]
-> Transzparens adattitkosítás az Azure SQL Database felügyelt példánya a szolgáltatás által felügyelt módban működik. A migrált tanúsítvány csak a TDE-vel védett adatbázis visszaállítására használható. A visszaállítást követően a migrált tanúsítvány helyét egy másik, a rendszer által felügyelt tanúsítvány veszi át.
+> A migrált tanúsítvány csak a TDE-vel védett adatbázis visszaállítására használható. Visszaállítás történik, miután a migrált tanúsítvány beolvasása váltotta fel egy másik védelmi modulra vonatkozó, vagy a szolgáltatás által kezelt tanúsítvány, vagy az aszimmetrikus kulcs a transzparens adattitkosítás, megadhatja a példányon típusától függően a kulcstartóból.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

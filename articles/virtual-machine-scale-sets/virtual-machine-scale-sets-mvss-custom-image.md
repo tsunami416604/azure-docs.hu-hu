@@ -4,7 +4,7 @@ description: 'Útmutató: egyéni rendszerkép hozzáadása egy meglévő Azure 
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
-manager: jeconnoc
+manager: drewm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -13,23 +13,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 05/10/2017
-ms.date: 11/30/2018
-ms.author: v-junlch
-ms.openlocfilehash: 2e3c8177a32082c251be74e597a18730ae1c9d37
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.date: 04/26/2018
+ms.author: manayar
+ms.openlocfilehash: 2415d0dc2b9a2c4229d9910b42eb8ec9309ac7a7
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62108377"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869109"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Egyéni rendszerkép hozzáadása egy Azure méretezésicsoport-sablon
 
-Ez a cikk bemutatja, hogyan lehet módosítani a [minimális működőképes méretezési csoport sablon](./virtual-machine-scale-sets-mvss-start.md) egyéni lemezkép alapján üzembe helyezéséhez.
+Ez a cikk bemutatja, hogyan lehet módosítani a [egyszerű méretezési csoport sablonját](virtual-machine-scale-sets-mvss-start.md) egyéni lemezkép alapján üzembe helyezéséhez.
 
 ## <a name="change-the-template-definition"></a>A Sablondefiníció módosítása
-
-A minimális működőképes méretezési csoport sablonjának látható [Itt](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), és a sablon üzembe helyezése a méretezési csoport egyéni rendszerképpel beállítása látható [Itt](https://raw.githubusercontent.com/gatneil/mvss/custom-image/azuredeploy.json). Most vizsgálja meg a sablon létrehozásához használt diff (`git diff minimum-viable-scale-set custom-image`) darab által darab:
+Az egy [előző cikk](virtual-machine-scale-sets-mvss-start.md) korábban létrehoztunk egy alapszintű méretezési csoport sablonjában. Mi most a régebbi sablonban használja, és módosítsa úgy, hogy hozzon létre egy sablont, amely üzembe helyez egy méretezési csoport egyéni rendszerképpel.  
 
 ### <a name="creating-a-managed-disk-image"></a>Felügyelt lemez lemezkép létrehozása
 
@@ -59,7 +57,7 @@ Ezután adjon hozzá egy típusú erőforrás `Microsoft.Compute/images`, azaz a
    "resources": [
      {
 +      "type": "Microsoft.Compute/images",
-+      "apiVersion": "2016-04-30-preview",
++      "apiVersion": "2019-03-01",
 +      "name": "myCustomImage",
 +      "location": "[resourceGroup().location]",
 +      "properties": {
@@ -84,7 +82,7 @@ A méretezésicsoport-erőforrás, adjon hozzá egy `dependsOn` az egyéni rends
 
 ```diff
        "location": "[resourceGroup().location]",
-       "apiVersion": "2016-04-30-preview",
+       "apiVersion": "2019-03-01-preview",
        "dependsOn": [
 -        "Microsoft.Network/virtualNetworks/myVnet"
 +        "Microsoft.Network/virtualNetworks/myVnet",
@@ -119,5 +117,3 @@ Ebben a példában használja a `resourceId` függvényt annak a lemezképnek ug
 ## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]
-
-<!-- Update_Description: update metedata properties -->

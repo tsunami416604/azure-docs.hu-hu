@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: vinigam
-ms.openlocfilehash: 29826f7f842f8dfbd7cd2a754c919f06542a161c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a5d5a9e07c28ab3059872f4d187c96586456a200
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60401944"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916759"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -263,8 +263,8 @@ Ha Ön egy NPM-felhasználó hoz létre riasztást, az Azure Portalon keresztül
 3. Ha Műveletcsoportok használata mellett dönt, akkor kiválaszthat egy korábban létrehozott művelet. Műveletcsoport létrehozása tudhat [itt.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 
 4. Ha a riasztás sikeresen létrejött, a riasztások kezelése hivatkozás segítségével a riasztásokat. 
 
-Minden alkalommal, amikor létrehoz egy riasztás npm-et az Azure Monitor egy lekérdezés alapú riasztási szabály hoz létre. Ez a lekérdezés akkor aktiválódik, alapértelmezés szerint 5 percenként. Az Azure monitor nem kell fizetni az első 250 létrehozott riasztási szabályok jelentkezik, és korlátozza a 250 naplóriasztási szabály riasztási szabályok fenti lesznek kiszámlázva, [riasztást küld, az Azure monitorban díjszabását ismertető lapon díjszabás](https://azure.microsoft.com/en-us/pricing/details/monitor/).
-Értesítések megfelelően külön számoljuk [díjszabás az Azure monitorban díjszabását ismertető lapon értesítések](https://azure.microsoft.com/en-us/pricing/details/monitor/).
+Minden alkalommal, amikor létrehoz egy riasztás npm-et az Azure Monitor egy lekérdezés alapú riasztási szabály hoz létre. Ez a lekérdezés akkor aktiválódik, alapértelmezés szerint 5 percenként. Az Azure monitor nem kell fizetni az első 250 létrehozott riasztási szabályok jelentkezik, és korlátozza a 250 naplóriasztási szabály riasztási szabályok fenti lesznek kiszámlázva, [riasztást küld, az Azure monitorban díjszabását ismertető lapon díjszabás](https://azure.microsoft.com/pricing/details/monitor/).
+Értesítések megfelelően külön számoljuk [díjszabás az Azure monitorban díjszabását ismertető lapon értesítések](https://azure.microsoft.com/pricing/details/monitor/).
 
 
 ## <a name="pricing"></a>Díjszabás

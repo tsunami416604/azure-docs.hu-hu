@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 04/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 520aeb8e47b5e94e6346e682f21f46cb0814f8f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a3c6eca548eb61d6b7b239b4292b9c77ca2dec6f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60389647"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702705"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-erőforrás-szolgáltatók és típusaik
 
@@ -31,6 +31,8 @@ Erőforrások üzembe helyezésekor, gyakran kell az erőforrás-szolgáltatóka
 * Megtekintheti az erőforrástípushoz érvényes API-verziók
 
 Lépések az Azure Portalon, az Azure PowerShell vagy az Azure CLI segítségével teheti meg.
+
+Erőforrás-szolgáltatók az Azure-szolgáltatások leképező, lásd: [erőforrás-szolgáltatók az Azure-szolgáltatásokhoz](azure-services-resource-providers.md).
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -291,5 +293,5 @@ West US
 
 * Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md). 
 * Az erőforrás-szolgáltató sablonsémák megtekintése: [sablonreferenciája](/azure/templates/).
-* Erőforrások üzembe helyezése kapcsolatos további információkért lásd: [alkalmazás üzembe helyezése Azure Resource Manager-sablonnal](resource-group-template-deploy.md).
+* Erőforrás-szolgáltatók az Azure-szolgáltatások leképező, lásd: [erőforrás-szolgáltatók az Azure-szolgáltatásokhoz](azure-services-resource-providers.md).
 * A műveletek esetében egy erőforrás-szolgáltató megtekintése: [Azure REST API](/rest/api/).

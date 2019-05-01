@@ -8,26 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
-ms.date: 03/01/2018
+ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 013467cb64220b525d429c901c48028bf65b3852
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7da146cafaf9af5c91bbbb2a3a23d8a90d49d8cd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864927"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699338"
 ---
-# <a name="example-how-to-identify-faces-in-images"></a>Példa: Arcok, képek azonosítása
+# <a name="example-identify-faces-in-images"></a>Példa: Arcazonosítás képeken
 
 Ez az útmutató bemutatja, hogyan lehet ismeretlen arcokat azonosítani az előre, ismert emberek alapján létrehozott PersonGroups használatával. A példák a Face API ügyfélkódtár használatával C# nyelven íródtak.
-
-## <a name="concepts"></a>Alapelvek
-
-Ha nem ismeri az útmutatóban használt alábbi fogalmakat, a [szószedetben](../Glossary.md) bármikor utánanézhet a jelentésüknek:
-
-- Face – Detect
-- Face – Identify
-- PersonGroup
 
 ## <a name="preparation"></a>Előkészítés
 
@@ -38,7 +30,7 @@ Ebben a példában bemutatjuk a következőket:
 
 A minta bemutató elvégzéséhez szüksége lesz egy csomó képre:
 
-- Néhány kép az illető arcáról. [Ide kattintva letöltheti a minta fényképeket](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) Anna, Bill és Clare képeivel.
+- Néhány kép az illető arcáról. [Töltse le a minta fényképek](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) Anna, számlázási és Clare.
 - Egy sor tesztelési fényképre az azonosítási próbákhoz, amelyek vagy tartalmazzák Anna, Bill és Clare arcát vagy nem. Néhány mintaképeket a fenti hivatkozások közül is választhat.
 
 ## <a name="step-1-authorize-the-api-call"></a>1. lépés: Engedélyezze az API-hívás
@@ -57,7 +49,7 @@ faceServiceClient = new FaceServiceClient("<Subscription Key>");
  
 Az előfizetési kulcs az Azure Portal Marketplace oldaláról szerezhető be. Lásd az [előfizetéseket](https://azure.microsoft.com/try/cognitive-services/).
 
-## <a name="step-2-create-the-persongroup"></a>2. lépés: Az is lehet PersonGroup létrehozása
+## <a name="step-2-create-the-persongroup"></a>2. lépés: Az is lehet PersonGroup létrehozása
 
 Ebben a lépésben létrehoztunk egy "MyFriends", amely tartalmazza a három személyek nevű is lehet PersonGroup: Anna, számlázási és Clare. Mindegyikükhöz több arcot jegyeztünk be. Az arcokat fel kell ismerni a képekről. Minden lépés elvégzése után, a kapott PersonGroup az alábbi ábrához hasonló:
 
@@ -187,6 +179,7 @@ Ebben az útmutatóban megismerte, hogyan történik a PersonGroup létrehozása
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 
+- [Arcok felismerése fogalmak](../concepts/face-recognition.md)
 - [Hogyan lehet arcokat megtalálni a képen](HowtoDetectFacesinImage.md)
 - [Hogyan lehet arcokat hozzáadni](how-to-add-faces.md)
 - [Hogyan használható a nagy léptékű funkció](how-to-use-large-scale.md)

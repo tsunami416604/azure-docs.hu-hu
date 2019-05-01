@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 1107842444ad0ac77ab890f07e65c8b489030461
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1fbe5b0a49960248133c35fb4a0401a31b95fb35
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60721708"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64700936"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
 
@@ -132,7 +132,7 @@ A Batch-készlet létrehozásakor megadhatja az Azure virtuálisgép-konfigurác
 
 - A **Virtuális gépek konfigurációja** megadja, hogy a készlet Azure virtuális gépekből áll. Ezek a virtuális gépek Linux- vagy Windows-rendszerképből is létrehozhatók. 
 
-    Ha a virtuálisgép-konfiguráción alapuló készletet hoz létre, a csomópontok mérete és a létrehozásukhoz használt rendszerképek forrása mellett a **virtuális gép képhivatkozását** és a csomópontokra telepítendő **Batch-csomóponti ügynök SKU-ját** is meg kell adnia. A készlet e tulajdonságainak megadásával kapcsolatos további információk: [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md) (Linuxos számítási csomópontok kiépítése Azure Batch-készletekben). Csatolhat egy vagy több üres adatlemezt a Marketplace-ről származó lemezképekből létrehozott virtuális gépek készletté alakításához, vagy adatlemezeket foglalhat az egyéni rendszerképekbe a virtuális gépek létrehozásához.
+    Ha a virtuálisgép-konfiguráción alapuló készletet hoz létre, a csomópontok mérete és a létrehozásukhoz használt rendszerképek forrása mellett a **virtuális gép képhivatkozását** és a csomópontokra telepítendő **Batch-csomóponti ügynök SKU-ját** is meg kell adnia. A készlet e tulajdonságainak megadásával kapcsolatos további információk: [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md) (Linuxos számítási csomópontok kiépítése Azure Batch-készletekben). Csatolhat egy vagy több üres adatlemezt a Marketplace-ről származó lemezképekből létrehozott virtuális gépek készletté alakításához, vagy adatlemezeket foglalhat az egyéni rendszerképekbe a virtuális gépek létrehozásához. Az adatlemezeket is beleértve, amikor kell csatlakoztatni és formázni a lemezeket használni őket virtuális Gépen belül.
 
 - A **Cloud Services-konfiguráció**, amely megadja, hogy a készlet Azure Cloud Services-csomópontokból áll. A Cloud Services *kizárólag* windowsos számítási csomópontok létrehozására használható.
 

@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 3e26365c4273611c81682a760695522575f3875d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 385eee6223487e9d7ca5cc3b213d180bb0f1da46
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483386"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710868"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Az Azure Storage Explorer hibaelhárítási útmutatója
 
@@ -96,10 +96,10 @@ Ha nem talál önaláírt tanúsítványokat használ a fenti lépéseket, a vis
 
 Üres bejelentkezési párbeszédpanelek leggyakrabban okozzák ADFS kéri a Storage Explorer egy átirányítási, amely nem támogatja a Electron végrehajtásához. A probléma megkerüléséhez megpróbálhatja eszköz kód Flow használni a bejelentkezéshez. Ehhez végezze el az alábbi lépéseket:
 
-1. "Ugrás az előzetes verzió" -> "Eszköz kód bejelentkezés használata".
+1. Menü: Előnézet -> "Eszköz kód bejelentkezés használata".
 2. Nyissa meg a Csatlakozás párbeszédpanel (akár a Plug and ikonra a bal oldali függőleges vonal vagy a "Fiók hozzáadása" fiók panelen keresztül).
 3. Válassza ki, milyen jelentkezzen be a kívánt környezet.
-4. Kattintson a "bejelentkezés" gomb.
+4. Kattintson a "Bejelentkezés" gombra.
 5. Kövesse a következő panelen megjelenő utasításokat.
 
 Ha azt segítségre van szüksége a fiók használható, mert az alapértelmezett böngészőben már bejelentkezett egy másik fiókkal szeretne bejelentkezni, választhatja:

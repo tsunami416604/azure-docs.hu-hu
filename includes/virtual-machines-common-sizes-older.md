@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: d89a9c4c4498e249dbfbd453ef9772d18ffd213f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7196a2ea794c1d17a2c55c05accb447d83929972
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60541624"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64744233"
 ---
 Ez a szakasz a virtuálisgép-méretek régebbi generációs szoftvereknél jobban információkat biztosít. Ezeket a méreteket továbbra is támogatottak, de nem kap további kapacitást. Nincsenek újabb vagy alternatív méret általánosan elérhető. Tekintse meg [méretek a Windows virtuális gépek az Azure-ban](../articles/virtual-machines/windows/sizes.md) vagy [az Azure-ban Linux rendszerű virtuális gépek méretei](../articles/virtual-machines/linux/sizes.md) , válassza ki a virtuális gép méretét, amely a legjobb igényeinek.  
 

@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/30/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e734b932976896b2fb4d86e2627b7827d40a2545
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 056d0caf2bfc6e99d5d659a2561bc41844feb79a
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60454887"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918778"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>Egy erős identitása-megoldáson keresztül adatbiztonság továbbfejlesztésének tervezése
 Az adatok védelmének első lépése az azonosíthatja férhet hozzá az adatokat. Emellett szüksége lesz egy identitás-megoldás, amely integrálható a hitelesítési és engedélyezési képességeket biztosít a rendszer. Hitelesítési és engedélyezési gyakran összetéveszteni egymással, és azok szerepköreivel böngésző. A valóságban a végzett ezek eltérnek, az alábbi ábrán látható módon:
 
-![](./media/plan-hybrid-identity-design-considerations/mobile-devicemgt-lifecycle.png)
+![mobil eszközök életciklusa](./media/plan-hybrid-identity-design-considerations/mobile-devicemgt-lifecycle.png)
 
 **Mobileszköz-kezelés életciklusának szakaszai**
 
@@ -44,7 +44,7 @@ Az Age of mobilitás, a legtöbb vállalat rendelkezik közös célja: engedély
 Vannak azonban bizonyos biztonsági szempontok megvizsgálta és érvényesítve, iparágtól függetlenül.
 
 ## <a name="data-protection-paths"></a>Data protection elérési utak
-![](./media/plan-hybrid-identity-design-considerations/data-protection-paths.png)
+![Data protection elérési utak](./media/plan-hybrid-identity-design-considerations/data-protection-paths.png)
 
 **Data protection elérési utak**
 

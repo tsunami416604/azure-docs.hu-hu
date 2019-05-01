@@ -8,14 +8,14 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 9daf1a7e58af23cb78705691217bf9709359c4d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 15deadad3b53b64c619933db76d28f012c85d6d1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889862"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64730269"
 ---
-# <a name="what-is-azure-iot-open-platform-communications-opc-device-management"></a>Mi az Azure IoT nyílt Platform kommunikáció (OPC) Eszközfelügyelet?
+# <a name="what-is-opc-twin"></a>Mi az OPC-Twin?
 
 Az OPC-Twin áll, amelyek az Azure IoT Edge és IoT Hub használata a felhőben és a gyári hálózathoz csatlakozni. Az OPC-Twin felderítési, regisztrációs és távvezérlési ipari eszközök REST API-kon keresztül biztosít. Az OPC-Twin nem szükséges egy OPC egyesített architektúra (OPC UA) SDK-t és a programozási nyelvtől és egy kiszolgáló nélküli munkafolyamatot tartalmazhat. Ez a cikk ismerteti az OPC-Twin több felhasználási eset.
 

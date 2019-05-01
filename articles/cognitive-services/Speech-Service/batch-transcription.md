@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: b389d86fe4d23e3f4ee1c66e4270a74351098129
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1a2d24be00b0e1224b5f8d52105e2969d64e5f64
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61059605"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922483"
 ---
 # <a name="why-use-batch-transcription"></a>Miért érdemes használni a Batch beszédátírási?
 
@@ -29,7 +29,7 @@ Batch beszédátírási ideális, ha azt szeretné, a storage szolgáltatással,
 A beszédfelismerési szolgáltatás összes funkcióját, és egy előfizetési kulcsot a létrehozásakor a [az Azure portal](https://portal.azure.com) a következő a [útmutató első lépésekhez](get-started.md). Ha azt tervezi, a beszédátírás kérhet az eredeti modellt, a kulcs létrehozása még minden kell tennie.
 
 >[!NOTE]
-> Beszédszolgáltatások (S0) standard előfizetést kell használnia a batch beszédátírási. Ingyenes előfizetési kulcsok (F0) nem fog működni. További információkért lásd: [díjszabás és korlátok](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/).
+> Beszédszolgáltatások (S0) standard előfizetést kell használnia a batch beszédátírási. Ingyenes előfizetési kulcsok (F0) nem fog működni. További információkért lásd: [díjszabás és korlátok](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ### <a name="custom-models"></a>Egyéni modellek
 
@@ -72,7 +72,8 @@ Konfigurációs paraméterek JSON-fájlként áll rendelkezésre:
   "properties": {
     "ProfanityFilterMode": "Masked",
     "PunctuationMode": "DictatedAndAutomatic",
-    "AddWordLevelTimestamps" : "True"
+    "AddWordLevelTimestamps" : "True",
+    "AddSentiment" : "True"
   }
 }
 ```
@@ -87,6 +88,7 @@ Konfigurációs paraméterek JSON-fájlként áll rendelkezésre:
 | `ProfanityFilterMode` | Adja meg a felismerési eredményeket cenzúrázása kezelése. Elfogadott értékek a következők `none` amely letiltja a vulgáris szűréshez `masked` csillag, amely lecseréli cenzúrázása `removed` amely eltávolítja az összes cenzúrázása az eredményből vagy `tags` ami ad "cenzúrázása" címkék. Az alapértelmezett beállítás `masked`. | Optional |
 | `PunctuationMode` | Adja meg a felismerési eredményeket írásjelek kezelése. Elfogadott értékek a következők `none` ami letiltja az absztrakt, `dictated` explicit írásjelek, amiből `automatic` , amellyel a dekóder írásjelek, kezelése vagy `dictatedandautomatic` írásjelek vagy automatikus azt jelenti, amely során. | Optional |
  | `AddWordLevelTimestamps` | Itt adhatja meg, ha word szintű időbélyeggel kell adni a kimenetet. Elfogadott értékek a következők `true` lehetővé teszi a word szintű időbélyegeket és `false` (az alapértelmezett érték) letiltja azt. | Optional |
+ | `AddSentiment` | Megadja a vélemény hozzá kell adni az utterance (kifejezés). Elfogadott értékek a következők `true` ami lehetővé teszi az utterance (kifejezés) / vélemények és `false` (az alapértelmezett érték) letiltja azt. | Optional |
 
 ### <a name="storage"></a>Storage
 
@@ -97,6 +99,57 @@ Batch-átírási támogatja [Azure Blob storage](https://docs.microsoft.com/azur
 A beszédátírási állapotának lekérdezése nem, a legtöbb nagy teljesítményű, vagy a legjobb felhasználói élményt. A állapotának lekérdezéséhez, regisztrálhat visszahívást, amelyet az ügyfél értesíti, amikor a hosszú ideig futó beszédátírási tevékenységei befejeződtek.
 
 További részletekért lásd: [Webhookok](webhooks.md).
+
+## <a name="sentiment"></a>Hangulat
+
+Vélemények Batch Beszédátírási API-ban új funkció, a hívás center tartomány egyik fontos szolgáltatása. Az ügyfelek használhatják a `AddSentiment` paramétereket saját kérelmek 
+
+1.  Elemzések lekérése az ügyfél-elégedettséget
+2.  Ismerkedjen meg a teljesítményét, az ügynökök (team a hívások fogadása)
+3.  Kiszűrheti a pontosan az idő, amikor egy hívás tartott negatív irányba egy kapcsolja
+4.  Kiszűrheti a hiba okát is pozitív negatív hívásainak bekapcsolásakor
+5.  Azonosíthatja a vevők hasonló, és mi, tetszik a termék vagy szolgáltatás
+
+Vélemények ahol egy hang szegmensek közötti időtartam (eltolásnak) az utterance (kifejezés) kezdete és az észlelési csend bájt adatfolyam-részlete hang szegmensenként sorolódik. A teljes szöveg a szegmensen belüli rendszer kiszámítja a róluk szóló véleményeket. Ne kiszámítása bármely összesített véleményértékeket a teljes hívás vagy az egyes csatornák teljes speech. Ezek a további a alkalmazni a tartomány tulajdonosa van hátra.
+
+Vélemények alkalmazza a lexikális képernyőn található.
+
+JSON kimeneti mintát alábbi hasonlóan néz ki:
+
+```json
+{
+  "AudioFileResults": [
+    {
+      "AudioFileName": "Channel.0.wav",
+      "AudioFileUrl": null,
+      "SegmentResults": [
+        {
+          "RecognitionStatus": "Success",
+          "ChannelNumber": null,
+          "Offset": 400000,
+          "Duration": 13300000,
+          "NBest": [
+            {
+              "Confidence": 0.976174,
+              "Lexical": "what's the weather like",
+              "ITN": "what's the weather like",
+              "MaskedITN": "what's the weather like",
+              "Display": "What's the weather like?",
+              "Words": null,
+              "Sentiment": {
+                "Negative": 0.206194,
+                "Neutral": 0.793785,
+                "Positive": 0.0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+Az funkciók jelenleg bétaverzióban vélemények modellt használ.
 
 ## <a name="sample-code"></a>Mintakód
 

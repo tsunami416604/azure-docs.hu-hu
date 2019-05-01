@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 01/28/2019
+ms.date: 04/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7617aec2739daa4f84bcecab060ae0f8e28fabe
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 76567db7362298b5cd35b544bf7952ebc54a2b66
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361591"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723208"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Oktatóanyag: Betanításához egy kép osztályozási modell Azure Machine Learning szolgáltatással
 
@@ -315,18 +315,16 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 Figyelje meg, hogyan kéri le a szkript az adatokat, és menti a modelleket:
 
-+ Képzési beolvassa az adatokat tartalmazó könyvtár található argumentumként. Ha később a feladat elküldéséhez, mutasson az adattárral ehhez az argumentumhoz: `parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`.
++ Képzési beolvassa az adatokat tartalmazó könyvtár található argumentumként. Amikor később elküldi a feladatot, az adattárban a következő argumentumra kell mutatnia: ```parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')```
 
-+ A tanítási szkriptet menti a modell egy könyvtárba nevű **kimenete**: <br/>
-`joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`.<br/>
-Az ebbe a könyvtárba írt összes fájl automatikusan fel lesz töltve a munkaterületére. Az oktatóanyag későbbi részében ezen könyvtár eléréséhez a modellt.
-A rendszer a betanítási szkript alapján hivatkozik a `utils.py` fájlra az adathalmaz megfelelő betöltéséhez. Másolja a parancsfájl mappába, ez a szkript, úgy, hogy a tanítási szkriptet a távoli erőforrás együtt is elérhető.
++ A tanítási szkriptet menti a modell egy könyvtárba nevű **kimenete**. Az ebbe a könyvtárba írt összes fájl automatikusan fel lesz töltve a munkaterületére. Az oktatóanyag későbbi részében ezen könyvtár eléréséhez a modellt. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
 
++ A tanítási szkriptet megköveteli a fájl `utils.py` megfelelően az adatkészlet betöltése. A következő kód másolatok `utils.py` be `script_folder` , hogy a fájl mellett a tanítási szkriptet a távoli erőforrás érhető el.
 
-```python
-import shutil
-shutil.copy('utils.py', script_folder)
-```
+  ```python
+  import shutil
+  shutil.copy('utils.py', script_folder)
+  ```
 
 
 ### <a name="create-an-estimator"></a>Becslő létrehozása

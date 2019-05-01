@@ -1,6 +1,6 @@
 ---
-title: Állítsa be az Azure NetApp Files és az NFS-kötet létrehozása |} A Microsoft Docs
-description: Ismerteti, hogyan lehet gyorsan Azure NetApp fájlok beállítását, és hozzon létre egy kötetet.
+title: Gyors útmutató – Azure NetApp fájlok mentése és a egy NFS-kötet létrehozása |} A Microsoft Docs
+description: Rövid útmutató – útmutató gyors beállítása Azure NetApp fájlok, és hozzon létre egy kötetet.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,27 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 4/16/2019
 ms.author: b-juche
-ms.openlocfilehash: 5b9e85da29b3130d5183f577a7d83d164e217310
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: f0f3dea1c30790bb109d7cb7af07abd8fbb1ace4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63759857"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702878"
 ---
-# <a name="set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Állítsa be az Azure NetApp Files és az NFS-kötet létrehozása 
+# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Gyors útmutató: Állítsa be az Azure NetApp Files és az NFS-kötet létrehozása 
 
 Ez a cikk bemutatja, hogyan gyorsan Azure NetApp fájlok beállítását, és hozzon létre egy kötetet. 
+
+Ebben a rövid, állítsa be a következő elemek:
+
+- A Azure NetApp-fájlok és a NetApp erőforrás-szolgáltató regisztrálása
+- A NetApp fiók
+- A kapacitás-készletben
+- Az NFS-kötet NetApp Azure-fájlok
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="before-you-begin"></a>Előzetes teendők 
 
@@ -33,7 +42,7 @@ Kell tartoznia a nyilvános előzetes program és az engedélyezési listához h
 
 1. Az Azure Portalon kattintson a jobb felső sarokban található Azure Cloud Shell ikonjára.
 
-      ![Az Azure Cloud Shell ikon](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
+    ![Az Azure Cloud Shell ikon](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell-window.png)
 
 2. Adja meg az előfizetést, amely már szerepel az engedélyezési listán NetApp Azure-fájlok:
     
@@ -130,7 +139,31 @@ Kell tartoznia a nyilvános előzetes program és az engedélyezési listához h
 
     ![Kötet létrehozása](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)  
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Amikor elkészült, és ha szeretné, törölheti az erőforráscsoportot. Egy erőforráscsoport törlésekor a művelet nem vonható vissza.  
+
+> [!IMPORTANT]
+> Az erőforráscsoportok összes erőforrásának véglegesen törölve lesz, és nem vonható vissza. 
+
+1. Az Azure Portalon a keresőmezőbe írja be a **Azure NetApp fájlok** majd **Azure NetApp fájlok** a listából, amely akkor jelenik meg.
+
+2. Az előfizetések listáján kattintson a törölni kívánt erőforráscsoportot (myRG1). 
+
+    ![Keresse meg az erőforráscsoportok](../media/azure-netapp-files/azure-netapp-files-azure-navigate-to-resource-groups.png)
+
+
+3. Az erőforráscsoport oldalán kattintson **erőforráscsoport törlése**.
+
+    ![Erőforráscsoport törlése](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+
+    Ekkor megnyílik egy ablak, mely figyelmezteti az erőforráscsoporttal törölt erőforrásokról.
+
+4. Adja meg a nevét, győződjön meg arról, hogy szeretné-e véglegesen törli az erőforráscsoportot és a benne lévő összes erőforrást, és kattintson az erőforráscsoport (myRG1) **törlése**.
+
+    ![Erőforráscsoport törlése](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+
 ## <a name="next-steps"></a>További lépések  
 
-* [Megismerheti a NetApp Azure-fájlok hierarchiája](azure-netapp-files-understand-storage-hierarchy.md)
-* [Kötetek kezelése az Azure Files-NetApp használatával](azure-netapp-files-manage-volumes.md) 
+> [!div class="nextstepaction"]
+> [Kötetek kezelése az Azure Files-NetApp használatával](azure-netapp-files-manage-volumes.md)  

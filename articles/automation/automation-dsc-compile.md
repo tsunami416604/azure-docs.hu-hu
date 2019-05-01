@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f2c6f45081b78d330033570ff322f90cd06e50dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 847c928681451b4fef93198e2f2272d5bb04b1b8
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61074142"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919802"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Az Azure Automation konfiguráló DSC-konfigurációk fordítása
 
@@ -287,11 +287,11 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 
 ## <a name="partial-configuration"></a>Részleges konfiguráció
 
-Azure Automation állapota a konfiguráció támogatja a használati [részleges konfigurációk](https://docs.microsoft.com/en-us/powershell/dsc/pull-server/partialconfigs).
+Azure Automation állapota a konfiguráció támogatja a használati [részleges konfigurációk](https://docs.microsoft.com/powershell/dsc/pull-server/partialconfigs).
 Ebben a forgatókönyvben DSC egymástól függetlenül kezelheti a több-konfiguráció van konfigurálva, és minden egyes konfigurációs az Azure Automation retreieved.
 Azonban csak egy konfigurációs egy automation-fiókot egy csomóponthoz rendelhető.
 Ez azt jelenti, hogy ha két csomópont használ két automation-fiókra lesz szükség.
-További információ a teams működését is együtt dolgozzanak a kiszolgálók kezelése konfigurációs kódként való használatával lásd: [a CI/CD-folyamat ismertetése DSC szerepkör](https://docs.microsoft.com/en-us/powershell/dsc/overview/authoringadvanced).
+További információ a teams működését is együtt dolgozzanak a kiszolgálók kezelése konfigurációs kódként való használatával lásd: [a CI/CD-folyamat ismertetése DSC szerepkör](https://docs.microsoft.com/powershell/dsc/overview/authoringadvanced).
 
 ## <a name="importing-node-configurations"></a>Csomópont-konfigurációk importálása
 

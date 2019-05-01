@@ -1,28 +1,24 @@
 ---
 title: Újabb verzióra való frissítési HDInsight-fürt – Azure
 description: Ismerje meg, hogyan frissítse HDInsight-fürt egy újabb verzióra.
-services: hdinsight
 ms.service: hdinsight
 author: omidm1
-ms.author: v-yiso
+ms.author: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 04/04/2017
-ms.date: 02/04/2019
+ms.date: 04/04/2017
 ms.openlocfilehash: b5048266fe17bc16fba8228f7cc17d0ee9f3bc0b
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63763993"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714778"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>HDInsight-fürt frissítése újabb verzióra
 A legújabb HDInsight-funkciók előnyeit, azt javasoljuk, hogy a HDInsight-fürtök frissíthető-e a legújabb verzióra. Kövesse az alábbi irányelvek frissítése a HDInsight-fürt verziók.
 
-> [!NOTE]
+> [!NOTE]  
 > A HDInsight a támogatott verziókról további információkért lásd: [HDInsight összetevő verziók](hdinsight-component-versioning.md#supported-hdinsight-versions).
->
->
 
 ## <a name="upgrade-tasks"></a>Frissítési feladatok
 A munkafolyamatot, hogy a HDInsight-fürt frissítése a következőképpen történik.

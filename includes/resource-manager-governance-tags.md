@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/20/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: f411504b0f4b7872e92a64c57fecbde863f532c6
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: c426df2293cfb2d8ba4dc02e8fc5519c3d822168
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52270359"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868773"
 ---
 Az Azure-erőforrások jogosultságot ad a metaadatok őket logikailag szervezheti a besorolás a címkékkel. Minden címke egy névből és a egy érték pár áll. Alkalmazhatja például a „Környezet” nevet és az „Éles” értéket az összes éles üzemben használt erőforrásra.
 
@@ -26,7 +26,7 @@ Az alábbi korlátozások érvényesek a címkékre:
 * Nem minden erőforrástípus támogatja a címkék. Ha alkalmazhat egy címkét egy erőforrástípus megállapításához lásd: [címkézése Azure-erőforrások támogatása](../articles/azure-resource-manager/tag-support.md).
 * Minden egyes erőforrás vagy erőforráscsoport legfeljebb 15 címkenév/érték párral rendelkezhet. A korlátozás csak a közvetlenül az erőforráscsoportra vagy erőforrásra alkalmazott címkékre érvényes. Az erőforráscsoportok sok olyan erőforrást tartalmazhatnak, amelyek mindegyike 15 címkenév/érték párral rendelkezik. Ha több mint 15 értéket kell társítania egy erőforráshoz, használjon JSON-sztringet a címke értékéhez. A JSON-sztring sok olyan értéket tartalmazhat, amelyek egyetlen címkenévre vannak alkalmazva. Ez a cikk arra mutat be egy példát, hogyan rendelhető hozzá egy JSON-sztring a címkéhez.
 * A címke neve legfeljebb 512 karakter, a címke értéke pedig legfeljebb 256 karakter hosszúságú lehet. A tárfiókok esetében a címke neve legfeljebb 128 karakter, a címke értéke pedig legfeljebb 256 karakter hosszúságú lehet.
-* Virtuális gépek, legfeljebb 2048 karakter minden tartalmaznak a címkenevek és értékek összesen.
+* Virtuális gépek és a Virtual Machine Scale Sets 2048 karakter minden tartalmaznak a címkenevek és értékek összesen korlátozódnak.
 * Az egyes erőforráscsoportokra alkalmazott címkéket nem öröklik az adott erőforráscsoportba tartozó erőforrások.
 * Klasszikus erőforrások, például a Cloud Services címkék nem alkalmazható.
 * A címke neve nem tartalmazhatja a következő karaktereket: `<`, `>`, `%`, `&`, `\`, `?`, `/`

@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 232a235cdbf9dc3934bdac14f9612d6865718823
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 44a9368f82e95641d3df893ba0958c6bf8cf696f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120840"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724959"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C#-szkript (.csx) fejlesztői referencia
 
@@ -57,7 +57,7 @@ FunctionsProject
 
 Van egy megosztott [host.json](functions-host-json.md) fájlt, amely a függvényalkalmazás konfigurálása használható. Minden függvény saját kódfájl (.csx) és a kötési konfigurációs fájl (function.json) rendelkezik.
 
-A kötési bővítményeket szükséges [verzió 2.x](functions-versions.md) a Functions runtime vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](./functions-bindings-register.md#local-development-azure-functions-core-tools). Amikor fejlesztéséről az Azure Portalon, a regisztrációt, készen áll.
+A kötési bővítményeket szükséges [verzió 2.x](functions-versions.md) a Functions runtime vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](./functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Amikor fejlesztéséről az Azure Portalon, a regisztrációt, készen áll.
 
 ## <a name="binding-to-arguments"></a>Argumentumok kötést
 

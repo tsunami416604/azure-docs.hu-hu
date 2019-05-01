@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7bb25aa1f77a49363fe2e08d1430282b9b33caae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 87f86f861ffc036077b25a2514fbd2d0c57da735
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311641"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716767"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -66,7 +66,7 @@ A következő JSON például olyan szabályzatot, amely korlátozza, hogy üzemb
 }
 ```
 
-Az összes Azure Policy minta vannak [házirend minták](../samples/index.md).
+Az összes Azure Policy minta vannak [Azure Policy minták](../samples/index.md).
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
@@ -99,6 +99,7 @@ A paraméter a következő tulajdonságokat a szabályzat-definícióban haszná
   - `description`: A paraméter mire való a leírását. Példák az elfogadható értékek használható.
   - `displayName`: A rövid név jelenik meg a paraméter a portálon.
   - `strongType`: (Nem kötelező) Használja a portálon keresztül a szabályzatdefiníció hozzárendelésekor. Környezet figyelembe listáját tartalmazza. További információkért lásd: [strongType](#strongtype).
+  - `assignPermissions`: (Nem kötelező) Beállítás _igaz_ szeretné, hogy a szerepkör-hozzárendelések létrehozása a szabályzat-hozzárendelés során az Azure Portalon. Ez a tulajdonság akkor hasznos, abban az esetben, ha szeretne hozzárendelni kívánt hozzárendelési hatókör kívül engedélyeket. Egy szerepkör-hozzárendelés a házirendben a szerepkör-definíció (időszakonkénti, vagy minden kezdeményezésére a szabályzatokat a szerepkör-definíció) van. A paraméter értéke egy érvényes erőforrás vagy -hatókörön kell lennie.
 - `defaultValue`: (Nem kötelező) Beállítja a hozzárendelés a paraméter értékét, ha nincs érték megadva. Szükséges, amikor frissíti egy meglévő szabályzat-definíció, amely hozzá van rendelve.
 - `allowedValues`: (Nem kötelező) Itt egy olyan értéktömböt, paraméterben hozzárendelés során.
 
@@ -148,6 +149,7 @@ Belül a `metadata` tulajdonság, használhat **strongType** biztosít az Azure 
 - `omsWorkspace`
 - `Microsoft.EventHub/Namespaces/EventHubs`
 - `Microsoft.EventHub/Namespaces/EventHubs/AuthorizationRules`
+- `Microsoft.EventHub/Namespaces/AuthorizationRules`
 - `Microsoft.RecoveryServices/vaults`
 - `Microsoft.RecoveryServices/vaults/backupPolicies`
 
@@ -287,7 +289,7 @@ A következő példában `concat` a címkék a mező keresési értékét nevű 
 }
 ```
 
-### <a name="value"></a>Value
+### <a name="value"></a>Érték
 
 Feltételek is alakítható használatával **érték**. **érték** feltételek alapján ellenőrzi [paraméterek](#parameters), [sablonfüggvények támogatott](#policy-functions), vagy literálok lehetnek.
 **érték** van párosítva bármely támogatott [feltétel](#conditions).
@@ -375,7 +377,7 @@ A módosított szabályzatot szabállyal `if()` hosszát ellenőrzi **neve** beo
 
 ### <a name="effect"></a>Következmény
 
-A házirend hatása a következő típusú támogatja:
+Az Azure Policy hatása a következő típusokat támogatja:
 
 - **Megtagadási**: a tevékenységnapló eseményt hoz létre, és a kérelem meghiúsul
 - **Naplózási**: állít elő, egy figyelmeztető esemény tevékenységnaplóban, de nem sikertelen a kérelem
@@ -410,7 +412,7 @@ A **DeployIfNotExists** hatása van szükség a **roleDefinitionId** tulajdonsá
 }
 ```
 
-Minden egyes hatás, értékelési, tulajdonságokat és példákat sorrendje a részleteket lásd: [ismertetése házirend hatások](effects.md).
+Minden egyes hatás, értékelési, tulajdonságokat és példákat sorrendje a részleteket lásd: [ismertetése Azure házirend hatások](effects.md).
 
 ### <a name="policy-functions"></a>A házirend-funkciók
 
@@ -593,9 +595,9 @@ A következő példa bemutatja, hogyan hozhat létre a kezdeményezés két cím
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át a következő példák [Azure Policy-minták](../samples/index.md)
-- Felülvizsgálat [házirend hatások ismertetése](effects.md)
-- Megismerheti, hogyan [szabályzatok létrehozása programozott módon](../how-to/programmatically-create.md)
-- Ismerje meg, hogyan [megfelelőségi adatok lekérése](../how-to/getting-compliance-data.md)
-- Ismerje meg, hogyan [javítani a nem megfelelő erőforrások](../how-to/remediate-resources.md)
-- A felügyeleti csoportok áttekintéséért lásd [az erőforrások az Azure Felügyeleti csoportok segítségével való rendszerezését](../../management-groups/overview.md) ismertető részt.
+- Tekintse át a következő példák [Azure Policy minták](../samples/index.md).
+- A [Szabályzatok hatásainak ismertetése](effects.md).
+- Megismerheti, hogyan [szabályzatok létrehozása programozott módon](../how-to/programmatically-create.md).
+- Ismerje meg, hogyan [megfelelőségi adatok](../how-to/getting-compliance-data.md).
+- Ismerje meg, hogyan [javítani a nem megfelelő erőforrások](../how-to/remediate-resources.md).
+- Tekintse át a felügyeleti csoport van [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../../management-groups/overview.md).

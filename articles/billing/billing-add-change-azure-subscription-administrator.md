@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 6cc965f8e775e02e9dec9f610516739a9a2c1936
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 000315a2d751a05d3e401ee1bb9f593c6e321194
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127717"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922900"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Adja hozzá, vagy az Azure-előfizetések rendszergazdáinak módosításáról
 
 Az Azure-erőforrások hozzáférésének kezeléséhez megfelelő rendszergazdai szerepkörrel kell rendelkeznie. Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) nevű engedélyezési rendszert közül választhat, több beépített szerepkörrel rendelkező rendelkezik. Ezekkel a szerepkörökkel különféle hatókörökben, például a felügyeleti csoportban, előfizetéshez vagy erőforráscsoporthoz rendelhet hozzá.
 
-A Microsoft azt javasolja, hogy az RBAC-erőforrások hozzáférésének kezelése. Azonban ha továbbra is a klasszikus üzemi modellel és a klasszikus erőforrások kezelése [Azure Service Management PowerShell-modul](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure), használja a hagyományos adminisztrátor kell. 
+A Microsoft azt javasolja, hogy az RBAC-erőforrások hozzáférésének kezelése. Azonban ha továbbra is a klasszikus üzemi modellel és a klasszikus erőforrások kezelése [Azure Service Management PowerShell-modul](https://docs.microsoft.com/powershell/module/servicemanagement/azure), használja a hagyományos adminisztrátor kell. 
 
 > [!TIP]
 > Használatakor csak az Azure Portalon a klasszikus erőforrásokat felügyelnie, akkor nincs szükség a hagyományos adminisztrátor.

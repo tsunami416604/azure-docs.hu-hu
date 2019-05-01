@@ -1,5 +1,5 @@
 ---
-title: Név vagy az Azure Active Directory vállalati alkalmazás emblémájának módosítása |} A Microsoft Docs
+title: Név vagy az Azure Active Directoryban egy vállalati alkalmazás emblémájának módosítása |} A Microsoft Docs
 description: A név vagy egy egyéni vállalati alkalmazást az Azure Active Directory emblémája módosítása
 services: active-directory
 documentationcenter: ''
@@ -11,39 +11,43 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2017
+ms.date: 04/05/2019
 ms.author: celested
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62578fe037dc1c9672bd0a4cf28500c658344c53
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dbebc528227ebb06bd66e31b802dd4fd618d6a99
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60440371"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718750"
 ---
-# <a name="change-the-name-or-logo-of-an-enterprise-app-in-azure-active-directory"></a>Név vagy az Azure Active Directory vállalati alkalmazás emblémájának módosítása
+# <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>Név vagy az Azure Active Directoryban egy vállalati alkalmazás emblémájának módosítása
+
 Módosítsa a nevét vagy az Azure Active Directoryban (Azure AD) egy egyéni vállalati alkalmazás emblémája, könnyebbé vált. A módosítások a megfelelő engedélyekkel kell rendelkeznie, és az egyéni alkalmazás készítőjét, kell lennie.
 
-## <a name="how-do-i-change-an-enterprise-apps-name-or-logo"></a>Hogyan változtatható meg egy vállalati alkalmazás nevére vagy emblémájára?
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-2. Válassza ki **minden szolgáltatás**, adja meg **Azure Active Directory** a szövegmezőbe, és válassza ki a **Enter**.
-3. Az a **Azure Active Directory - *directoryname***  (azt jelenti, az Azure ad-ben ablaktáblán kezeli a könyvtár) ablaktáblában válassza **vállalati alkalmazások**.
+## <a name="how-do-i-change-an-enterprise-applications-name-or-logo"></a>Hogyan változtatható meg egy vállalati alkalmazás nevére vagy emblémájára?
 
-    ![Vállalati alkalmazások megnyitása](./media/change-name-or-logo-portal/open-enterprise-apps.png)
-4. Az a **vállalati alkalmazások** ablaktáblán válassza előbb **minden alkalmazás**. Kezelheti az alkalmazások listáját láthatja.
-5. Az a **nagyvállalati alkalmazások – minden alkalmazás** ablaktáblán jelöljön ki egy alkalmazást.
-6. Az a ***appname*** (azaz a panelen címében szerepel a kijelölt alkalmazás nevét) ablaktáblában válassza **tulajdonságok**.
+1. Jelentkezzen be a [Azure Active Directory portálon](https://aad.portal.azure.com/) egy olyan fiókkal, amely a címtár globális rendszergazdája. A **Azure Active Directory felügyeleti központ** lap jelenik meg.
+2. A bal oldali panelen válassza ki a **Vállalati alkalmazások** elemet. A vállalati alkalmazások listája jelenik meg.
+3. Válasszon ki egy alkalmazást. Az alkalmazás áttekintőlapján jelenik meg.
+4. Az alkalmazás áttekintése panelen alatt a **kezelés** szakaszban kattintson **tulajdonságok**. A **tulajdonságok** lap jelenik meg.
+5. Ha azt szeretné, módosítsa a nevet, válassza ki a **neve** be, írja be az új nevet, és nyomja meg **Enter**.
+6. Ha szeretné módosítani az embléma, keresse meg a **embléma** mezőben, majd válassza ki a mappaikont a a **válasszon ki egy fájlt** mezőbe, amely az alkalmazás aktuális embléma kép alatt.
 
-    ![A Tulajdonságok parancs kiválasztása](./media/change-name-or-logo-portal/select-app.png)
-7. Az a ***appname*** **-tulajdonságok** ablaktáblán, keresse meg a fájlt használja, mint egy új embléma, vagy szerkesztheti az alkalmazás nevét, vagy mindkettőt.
+   ![A Tulajdonságok parancs kiválasztása](./media/change-name-or-logo-portal/change-logo.png)
 
-    ![Az alkalmazás emblémáját vagy nameproperties parancs módosítása](./media/change-name-or-logo-portal/change-logo.png)
-8. Válassza ki a **mentése** parancsot.
+   Ha az embléma nem változnak, ellenkező esetben nyissa meg a 8. lépés.
+7. A Fájlkereső válassza a kívánt fájlt, az új emblémát. A fájl nevét a mezőbe az aktuális embléma kép alatt jelenik meg.
+
+   > [!NOTE]
+   > Azure megköveteli a emblémakép PNG-fájl, és a szélességét, a magasságra és a fájlméret korlátok vonatkozik.
+8. Kattintson a **Mentés** gombra. Ha úgy döntött, hogy egy új embléma a **embléma** mező kép módosításai tükrözik az új embléma fájlt.
 
 ## <a name="next-steps"></a>További lépések
-* [Megjelenik az összes saját csoportok](../fundamentals/active-directory-groups-view-azure-portal.md)
+
+* [Rövid útmutató: A munkahelyi csoportok és tagok megtekintése az Azure Active Directoryban](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](assign-user-or-group-access-portal.md)
 * [Egy felhasználó vagy csoport-hozzárendelés eltávolítása a vállalati alkalmazás](remove-user-or-group-access-portal.md)
 * [Tiltsa le a felhasználók bejelentkezési folyamatába egy vállalati alkalmazás](disable-user-sign-in-portal.md)

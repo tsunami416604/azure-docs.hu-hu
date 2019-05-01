@@ -10,21 +10,19 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: da321aa2a4db441fa5bb51e4986d00889cb7482d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 178747ffddbadb06751ce0db7d16701c3cea7416
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60513708"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712819"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>A Collaborative Translation Framework (CTF) jelentéskészítés használata
 
 > [!NOTE]
 > Tato metoda se zamítá. Nem érhető a 3.0-s verzió, a Translator Text API.
 > 
-> Az együttműködésen alapuló fordítások Framework (CTF), 2.0-s verziójú, a Translator Text API, a korábban elérhető volt elavult 2018. február 1. A AddTranslation és AddTranslationArray funkciók lehetővé teszik a felhasználók engedélyezhetik a javításokat az együttműködésen alapuló fordítás keretrendszeren keresztül. 2018. január 31. után két függvényekhez nem fogadta el új mondat jelentkezés, és a felhasználók hibaüzenetet kapnak. Ezek a függvények is kivezetjük, és nem pótolhatók.
-> 
-> Elérhető a Translator Hub API, lehetővé téve a terminológia és stílus, egyéni fordítási rendszer hasonló funkciókat és hívhatja meg a kategória-azonosítója használatával a Translator Text API. Translator Hub: [ https://hub.microsofttranslator.com ](https://hub.microsofttranslator.com). Translator Hub API: [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger).
+> Az együttműködésen alapuló fordítások Framework (CTF), 2.0-s verziójú, a Translator Text API, a korábban elérhető volt elavult 2018. február 1. A AddTranslation és AddTranslationArray funkciók lehetővé teszik a felhasználók engedélyezhetik a javításokat az együttműködésen alapuló fordítás keretrendszeren keresztül. 2018. január 31. után két függvényekhez nem fogadta el új mondat jelentkezés, és a felhasználók hibaüzenetet kapnak. Ezek a függvények visszavontuk, és nem pótolhatók.
 
 Az együttműködési Translation Framework (CTF) Reporting API CTF áruházbeli statisztikák és a tényleges tartalmat adja vissza. Ez az API eltér a GetTranslations() metódus mert azt:
 * A fordított tartalomban és a számuk csak a fiókból (appId vagy az Azure Marketplace-fiók) adja vissza.

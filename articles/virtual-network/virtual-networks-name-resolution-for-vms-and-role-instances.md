@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: fe63b76589c841706ae335c61e56a57c3c33fb3e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 763fc2952d7a1e2eac209cc9df53713c58ad83c9
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60640457"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925253"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Erőforrások az Azure virtual networkök névfeloldása
 
@@ -96,7 +96,7 @@ Számos különböző DNS-gyorsítótárazást (például dnsmasq) elérhető cs
   * Indítsa el a dnsmasq szolgáltatást a `systemctl start dnsmasq.service`. 
   * Szerkesztés **/etc/sysconfig/network/config**, és módosítsa *NETCONFIG_DNS_FORWARDER = ""* való *dnsmasq*.
   * A resolv.conf frissítése `netconfig update`, hogy a gyorsítótár állítja be a helyi DNS-feloldási.
-* **OpenLogic (NetworkManager használ)**:
+* **CentOS (használ NetworkManager)**:
   * Telepítse a dnsmasq csomagot `sudo yum install dnsmasq`.
   * Engedélyezze a dnsmasq szolgáltatást a `systemctl enable dnsmasq.service`.
   * Indítsa el a dnsmasq szolgáltatást a `systemctl start dnsmasq.service`.
@@ -129,7 +129,7 @@ A resolv.conf fájlt általában automatikusan létrehozott, és nem szerkeszthe
 * **SUSE** (netconf használja):
   1. Adjon hozzá *timeout:1 kísérletek: 5* , a **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** paraméter **/etc/sysconfig/network/config**.
   2. Futtatás `netconfig update` frissíteni.
-* **OpenLogic** (NetworkManager használja):
+* **CentOS** (NetworkManager használja):
   1. Adjon hozzá *echo "beállítások timeout:1 kísérletek: 5"* való **/etc/NetworkManager/dispatcher.d/11-dhclient**.
   2. Frissítse `service network restart`.
 

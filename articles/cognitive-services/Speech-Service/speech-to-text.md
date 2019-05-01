@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 9e6bc1264e668ba5c6593ce36e721f54e685c391
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6b144f126e097a8db9fbbf29e47162fd6a1c2fbe
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461255"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916824"
 ---
 # <a name="what-is-speech-to-text"></a>Mit jelent a hang-szöveg transzformációs?
 
-Hang-szöveg transzformációs Azure Speech Services, más néven hang-szöveg transzformációs, lehetővé teszi, hogy a valós idejű beszédátírási-audiostreamek lejátszásával, szöveg, amelyet felhasználhat az alkalmazások, eszközök és eszközök, az megjelenítéséhez, és a művelet végrehajtása a parancs bemenetként. Ez a szolgáltatás ugyanazon felismerés technológia, amely a Microsoft Cortana és az Office-termékek használ, és zökkenőmentesen együttműködik a fordítás és a szöveg-hang transzformációs működteti.  Hang-szöveg transzformációs elérhető nyelvek teljes listáját lásd: [támogatott nyelvek](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#speech-to-text).
+Hang-szöveg transzformációs Azure Speech Services, más néven hang-szöveg transzformációs, lehetővé teszi, hogy a valós idejű beszédátírási-audiostreamek lejátszásával, szöveg, amelyet felhasználhat az alkalmazások, eszközök és eszközök, az megjelenítéséhez, és a művelet végrehajtása a parancs bemenetként. Ez a szolgáltatás ugyanazon felismerés technológia, amely a Microsoft Cortana és az Office-termékek használ, és zökkenőmentesen együttműködik a fordítás és a szöveg-hang transzformációs működteti.  Hang-szöveg transzformációs elérhető nyelvek teljes listáját lásd: [támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-to-text).
 
 Alapértelmezés szerint a hang-szöveg transzformációs szolgáltatás univerzális nyelvi modellt használja. Ez a modell a Microsoft tulajdonában lévő adatok felhasználásával lett betanított, és a felhőben üzembe helyezett. Az optimális legyen természetes nyelvi és Diktálás forgatókönyvek. Hang-szöveg transzformációs használatakor felismerése és a egy egyedi környezetben beszédátírási létrehozása, és címet a zajszint vagy iparág-specifikus szókincsből eredőket egyéni írásmódja, akusztikai és nyelvi modelleket taníthat be. 
 

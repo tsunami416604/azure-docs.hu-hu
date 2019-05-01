@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/19/2019
+ms.date: 04/26/2019
 ms.author: pareshmu
-ms.openlocfilehash: 8c61a3276ebe58c86827b32c6bd33ae4689e35dc
-ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
-ms.translationtype: HT
+ms.openlocfilehash: cb01824ec592f6d2a266bea239ee8080c49958ea
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62732527"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869038"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -50,7 +50,7 @@ A következő tábla az egyes geopolitikai régiókban lévő Azure-régiók és
 | **India** | 2 |Nyugat-India, Közép-India, Dél-India |Csennai, Csennai2, Mumbai, Mumbai2 |
 | **Japán** | 2 |Nyugat-Japán, Kelet-Japán |Oszaka, Tokió |
 | **Dél-Korea** | 2 |Korea középső régiója, Korea déli régiója |Busan, Szöul|
-| **AZ EGYESÜLT ARAB EMÍRSÉGEK** | 2 | Az Egyesült Arab Emírségek középső régiója, Egyesült Arab Emírségek északi régiója | Dubai |
+| **AZ EGYESÜLT ARAB EMÍRSÉGEK** | 3 | Az Egyesült Arab Emírségek középső régiója, Egyesült Arab Emírségek északi régiója | Dubai |
 | **Dél-Afrika** | 3 |Dél-Afrika nyugati régiója, Dél-Afrika északi régiója |Fokváros, Johannesburg |
 | **Dél-Amerika** | 3 |Dél-Brazília |Sao Paulo |
 

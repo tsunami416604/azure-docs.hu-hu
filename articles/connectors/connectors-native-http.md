@@ -11,26 +11,28 @@ ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 01da06ca55199989a3a27012bec101580f5ef853
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 22b21512c78a06f2639ca9339f3b7a20c7f5bfa3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60447613"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713814"
 ---
 # <a name="call-http-or-https-endpoints-with-azure-logic-apps"></a>Az Azure Logic Apps HTTP vagy HTTPS-végpontokat
 
-Az Azure Logic Apps és a Hypertext Transfer Protocol (HTTP) összekötőt akkor automatizálhatja, amely minden HTTP vagy HTTPS-végpont kommunikálni a logikai alkalmazások létrehozásával. A szolgáltatásvégpont figyelheti például a webhely. Ha egy esemény történik, ha a webhely leáll, például, hogy a végpont az esemény elindítja a logikai alkalmazás munkafolyamat, és futtatja a megadott műveleteket. 
+Az Azure Logic Apps és a Hypertext Transfer Protocol (HTTP) összekötőt akkor automatizálhatja, amely minden HTTP vagy HTTPS-végpont kommunikálni a logikai alkalmazások létrehozásával. A szolgáltatásvégpont figyelheti például a webhely. Ha egy esemény történik, ha a webhely leáll, például, hogy a végpont az esemény elindítja a logikai alkalmazás munkafolyamat, és futtatja a megadott műveleteket.
 
 Használhatja a HTTP-eseményindítóval első lépéseként a munkamenet-ellenőrzési vagy *lekérdezési* egy végpontot, rendszeres ütemezés szerint. Az eseményindító minden ellenőrzés hívást küld vagy *kérelem* a végponthoz. A végpont válasz határozza meg, hogy fut-e a logikai alkalmazás munkafolyamat. Az eseményindító a műveleteknek a logikai alkalmazásban a válaszból továbbítja a tartalmat. 
 
-Használható a HTTP-művelet további lépésként a munkafolyamatban a végpontot hív, ha szeretne. Koncového bodu válasz határozza meg, hogyan fennmaradó a munkafolyamat-műveletek futtatása.
+Használható a HTTP-művelet további lépésként a munkafolyamatban a végpontot hív, ha szeretne. Koncového bodu válasz határozza meg, hogyan fennmaradó a munkafolyamat-műveletek futtatása. 
+
+A céloldali végpont funkció alapján ez az összekötő támogatja a Transport Layer Security (TLS) 1.0, 1.1 és 1.2-es. A Logic Apps egyezteti a végponttal keresztül lehetséges legmagasabb támogatott verzióját használja. Így például, ha a végpont támogatja az 1.2-es, az összekötő az 1.2 verziót használja először. Ellenkező esetben az összekötő használja a következő legújabb támogatott verziót.
 
 Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
 * A cél-végpont URL-CÍMÉT szeretné meghívni 
 
@@ -77,7 +79,7 @@ Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic
 
 1. Ha elkészült, győződjön meg arról, hogy a logikai alkalmazás mentése. A tervező eszköztárán válassza a **Mentés** parancsot. 
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Hitelesítés beállításához válassza **speciális beállítások megjelenítése** művelettel vagy eseményindítóval belül. Az elérhető hitelesítési típusok HTTP-eseményindítók és műveletek kapcsolatos további információkért lásd: [eseményindító és művelet típusok hivatkozási](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
 

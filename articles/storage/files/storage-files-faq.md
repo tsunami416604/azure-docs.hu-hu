@@ -8,12 +8,12 @@ ms.date: 01/02/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 77f07394eb895c08ef3e366bd486b4270714c2fc
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 4186af31e17acea09e6b3c1a0121d2fcbe63f800
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63766261"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917611"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Files kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabványnak megfelelő keresztül érhető el a felhőben [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Azure-fájlmegosztások párhuzamosan csatlakoztathatja felhőbeli vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. A Windows Server-gépek Azure-fájlmegosztások közel, ahol az adatok felhasználásának gyors hozzáférés az Azure File Sync használatával képes gyorsítótárazni.
@@ -249,7 +249,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 * <a id="port-445-blocked"></a>
 **Az Internetszolgáltató vagy informatikai blokkok 445-ös Port, amely nem működik az Azure Files csatlakoztatása. Mit tegyek?**
 
-    Megismerkedhet a [blokkolt megoldás különféle módokon itt az 445-ös portot](https://docs.microsoft.com/en-us/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked). Az Azure Files csak engedélyezi az SMB 3.0 használata (a titkosítás támogatása) kapcsolatokat a kívül a régiónak vagy datacenter. Az SMB 3.0 protokoll vezetett be számos biztonsági funkció, beleértve a csatorna titkosítás, mely rendkívül biztonságos, az interneten keresztül használja. Azonban a biztonsági rések található alacsonyabb SMB-verziókról a korábbi okból le van tiltva a lehetséges, hogy a 445-ös portot. Ideális esetben a port le kell tiltani a csak az SMB 1.0-forgalom számára, és ki kell kapcsolni az SMB 1.0 az összes ügyfél esetében.
+    Megismerkedhet a [blokkolt megoldás különféle módokon itt az 445-ös portot](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked). Az Azure Files csak engedélyezi az SMB 3.0 használata (a titkosítás támogatása) kapcsolatokat a kívül a régiónak vagy datacenter. Az SMB 3.0 protokoll vezetett be számos biztonsági funkció, beleértve a csatorna titkosítás, mely rendkívül biztonságos, az interneten keresztül használja. Azonban a biztonsági rések található alacsonyabb SMB-verziókról a korábbi okból le van tiltva a lehetséges, hogy a 445-ös portot. Ideális esetben a port le kell tiltani a csak az SMB 1.0-forgalom számára, és ki kell kapcsolni az SMB 1.0 az összes ügyfél esetében.
 
 * <a id="expressroute-not-required"></a>
 **Kell az Azure Files csatlakozás az Azure ExpressRoute használatával vagy az Azure File Sync használata a helyszínen?**  

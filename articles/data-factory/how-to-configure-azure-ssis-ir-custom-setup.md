@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d146027ea3a21ab8df3750014c02893bc2f50dd6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cfa9d6a1a287281bec91facf04c73506db81f84a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097729"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711568"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>A telepítő az Azure-SSIS integrációs modul testreszabása
 
@@ -82,7 +82,7 @@ Testre szabhatja az Azure-SSIS integrációs modul, a következőkre van szüks�
 
       ![Blobtároló létrehozása](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
 
-   1. Jelölje ki az új tárolót, és töltse fel az egyéni telepítési parancsfájl és az ahhoz tartozó fájlokat. Győződjön meg arról, hogy feltöltött `main.cmd` a tároló nem bármelyik mappájában, a legfelső szinten. Emellett győződjön meg, hogy a tároló csak a szükséges egyéni telepítés fájlokat tartalmazza, így letöltése őket az Azure-SSIS integrációs modul az alakzatot később fogja nem hosszú ideig tarthat.
+   1. Jelölje ki az új tárolót, és töltse fel az egyéni telepítési parancsfájl és az ahhoz tartozó fájlokat. Győződjön meg arról, hogy feltöltött `main.cmd` a tároló nem bármelyik mappájában, a legfelső szinten. Emellett győződjön meg, hogy a tároló csak a szükséges egyéni telepítés fájlokat tartalmazza, így letöltése őket az Azure-SSIS integrációs modul az alakzatot később fogja nem hosszú ideig tarthat. A maximális idő az egyéni telepítés jelenleg beállított 45 percet, mielőtt azt az időkorlátot, és ez magában foglalja az idő, töltse le az összes fájlt a tárolóból, és telepítheti az Azure-SSIS integrációs modult. Ha hosszabb ideig van szüksége, hozzon létre egy támogatási jegyet.
 
       ![Fájlok feltöltése a blob-tárolóba](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
 

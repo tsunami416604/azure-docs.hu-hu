@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: magattus
-ms.openlocfilehash: eac699a68558f0a8c9f94f0a8b75aabee561ebb3
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 3de7f36228bba4cfc84e17dd056683a1a76df684
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62113885"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869609"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Az Azure CDN POP-helyek rövidítés alapján
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ AMS | Amszterdam, Hollandia | Európa
 ARN | Stockholm, Svédország | Európa
 ATL | Atlanta, Grúzia, USA | Észak-Amerika esetén: USA keleti parti
 BAQ | Barranquilla, Kolumbia | Latin-Amerika
-BLR | Bangalore, India | Ázsia
+BLR | Bengaluru (Bangalore), India | Ázsia
 BNJ | Amerikai Egyesült Államok New Jersey zártuk | Észak-Amerika esetén: USA keleti parti
 BOS | Boston, Massachusetts, USA | Észak-Amerika esetén: USA keleti parti
 BTH | Batam, Indonézia | Ázsia

@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 1f950841946b65d618c7335ea3d8d42993a89481
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 773d4dd28da3165261d75e4f800750c1f54377d0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58805261"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702288"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert az Azure Active Directory hibrid identitáskezelési megoldás 
 
@@ -49,7 +49,7 @@ Az Azure AD hibrid identitáskezelési megoldások az alábbi hitelesítési mó
 ### <a name="cloud-authentication"></a>Felhőalapú hitelesítés
 Ha ezt a hitelesítési módszert választja, az Azure AD felhasználói bejelentkezési folyamat kezeli. Közvetlen egyszeri bejelentkezés (SSO) szolgáltatással párosítva, felhasználók jelentkezhetnek be a felhőalkalmazások írja be újra a hitelesítő adatok nélkül. A felhőalapú hitelesítés a két lehetőség közül választhat: 
 
-**Az Azure AD a Jelszókivonat-szinkronizálás**. A legegyszerűbben a helyszíni címtárobjektumok az Azure AD-hitelesítés engedélyezése. A felhasználók használhatják ugyanazt a felhasználónevet és jelszót használják-e a helyszíni további infrastruktúra üzembe helyezése nélkül. Egyes prémium szintű funkciók az Azure AD Identity Protection, például a Jelszókivonat-szinkronizálás szükséges, függetlenül attól, hogy mely hitelesítési módszert válasszon.
+**Az Azure AD a Jelszókivonat-szinkronizálás**. A legegyszerűbben a helyszíni címtárobjektumok az Azure AD-hitelesítés engedélyezése. A felhasználók használhatják ugyanazt a felhasználónevet és jelszót használják-e a helyszíni további infrastruktúra üzembe helyezése nélkül. Egyes prémium szintű funkciók az Azure AD Identity Protection például és [Azure AD tartományi szolgáltatások](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync), szükséges a Jelszókivonat-szinkronizálás, függetlenül attól, hogy mely hitelesítési módszert választja.
 
 > [!NOTE] 
 > Jelszavak soha nem szövegként tárolt és az Azure ad-ben visszafejthető algoritmus titkosított. A Jelszókivonat-szinkronizálás folyamatáról további információk: [Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization). 
@@ -92,7 +92,7 @@ Döntési kérdések adatai:
 
 * **Felhasználói élmény**. Felhasználói bejelentkezési élmény javítása érdekében a Jelszókivonat-szinkronizálás közvetlen egyszeri bejelentkezés üzembe. Közvetlen egyszeri bejelentkezés használata esetén nem szükségtelen utasításokat, ha a felhasználó be van jelentkezve.
 
-* **Speciális forgatókönyvek**. Ha szervezetek választja, akkor lehet is használható elemzéseket készítsenek identitások használata az Azure AD Premium P2 szintű Azure AD Identity Protection jelentéseket. Ilyen például, a kiszivárgott hitelesítő adatok a jelentés. Windows Hello for Business rendelkezik [konkrét követelmények, a Jelszókivonat-szinkronizálás használata esetén](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). 
+* **Speciális forgatókönyvek**. Ha szervezetek választja, akkor lehet is használható elemzéseket készítsenek identitások használata az Azure AD Premium P2 szintű Azure AD Identity Protection jelentéseket. Ilyen például, a kiszivárgott hitelesítő adatok a jelentés. Windows Hello for Business rendelkezik [konkrét követelmények, a Jelszókivonat-szinkronizálás használata esetén](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Az Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync) üzembe helyezése felhasználók a felügyelt tartomány vállalati hitelesítő adataikkal történő Jelszókivonat-szinkronizálás szükséges.
 
     A Jelszókivonat-szinkronizálás a többtényezős hitelesítést igénylő szervezeteknek az Azure AD többtényezős hitelesítést kell használnia. Azon szervezetek külső vagy a helyszíni többtényezős hitelesítési módszer nem használható.
 

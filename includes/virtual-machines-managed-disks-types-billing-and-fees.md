@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3e303ce2b6f28500406bacf5b66d26f9c78ba46d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 42ab8be45d4086589f0793531003700e7552a440
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60618035"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64744212"
 ---
 **Kimenő adatforgalom**: [Kimenő adatforgalom](https://azure.microsoft.com/pricing/details/bandwidth/) (adatok csak az Azure adatközpontok kimenő adatforgaloma) díjak lépnek fel a sávszélesség-használat.
 
-**Tranzakciók**: A tranzakciók, amely tartalmazza a standard szintű felügyelt lemez díjköteles.
+**Tranzakciók**: A tranzakciók, amely tartalmazza a standard szintű felügyelt lemez díjköteles. Standard SSD-k 256 KiB i/o-egység méretét a tranzakciók számlázás használatos. Nagyobb méretű i/o-méretek számítanak több i/o-mérete 256 KiB. Standard HDD minden egyes i/o-művelet különálló tranzakcióként, függetlenül az i/o-mérete számít történik.
 
 Részletes információk a Managed Disks, többek között a tranzakciós költségek, a díjszabással: [Managed Disks díjszabását ismertető](https://azure.microsoft.com/pricing/details/managed-disks).
 

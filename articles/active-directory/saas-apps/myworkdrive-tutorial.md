@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 04/26/2019
 ms.author: jeedes
-ms.openlocfilehash: d16aa8442f71845e7b46377c6c290212f9c400a3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 494284d32b48b810143f8c483278b2efbfb0dbc2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280502"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922303"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-myworkdrive"></a>Oktatóanyag: A MyWorkDrive Azure Active Directory-integráció
 
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 A MyWorkDrive Azure AD-integráció konfigurálásához lesz szüksége a következő elemek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
 * MyWorkDrive egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
@@ -66,7 +66,7 @@ Az Azure AD integrálása a MyWorkDrive konfigurálásához hozzá kell MyWorkDr
 
 4. A Keresés mezőbe írja be a **MyWorkDrive**válassza **MyWorkDrive** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-     ![Az eredmények listájában MyWorkDrive](common/search-new-app.png)
+    ![Az eredmények listájában MyWorkDrive](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
@@ -123,11 +123,11 @@ A MyWorkDrive konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre
 
 6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** és mentse a számítógép.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozás](common/copy-metadataurl.png)
 
 ### <a name="configure-myworkdrive-single-sign-on"></a>MyWorkDrive egyszeri bejelentkezés konfigurálása
 
-1. Egy másik böngészőablakban, jelentkezzen be a MyWorkDrive-Security-rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be MyWorkDrive-Security-rendszergazdaként.
 
 2. A MyWorkDrive kiszolgálón a rendszergazda panelen, kattintson a **vállalati** , és hajtsa végre az alábbi lépéseket:
 
@@ -141,10 +141,10 @@ A MyWorkDrive konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre
 
     d. Kattintson a **Mentés** gombra.
 
-    >[!NOTE]
-    >További információkat tekintse át a [MyWorkDrive Azure AD-támogatási cikk](https://www.myworkdrive.com/support/saml-single-sign-on-azure-ad/).
+    > [!NOTE]
+    > További információkat tekintse át a [MyWorkDrive Azure AD-támogatási cikk](https://www.myworkdrive.com/support/saml-single-sign-on-azure-ad/).
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
@@ -162,8 +162,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
+    b. Az a **felhasználónév** mezőbe írja be `brittasimon\@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com.
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
@@ -199,7 +198,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű MyWorkDrive hoz létre. Együttműködve [MyWorkDrive támogatási csapatának](mailto:support@myworkdrive.com) a felhasználók hozzáadása az MyWorkDrive platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -212,4 +211,3 @@ Ha a hozzáférési panelen a MyWorkDrive csempére kattint, meg kell lehet auto
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

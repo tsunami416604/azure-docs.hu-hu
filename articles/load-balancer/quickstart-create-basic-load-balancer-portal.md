@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: fe095b8f5a0080c0f28ec570303c9dc23962dfc8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db781899a3fe0d13d030943ed3ab4ebd3d105ad1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60507925"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64727574"
 ---
 # <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Gyors útmutató: Alapszintű Load Balancer létrehozása az Azure portal használatával
 
@@ -37,13 +37,13 @@ Először hozzon létre egy alapszintű nyilvános Load Balancer a portál haszn
 1. A képernyő bal felső részén kattintson az **Erőforrás létrehozása** > **Hálózatkezelés** > **Terheléselosztó** elemre.
 2. Az a **alapjai** lapján a **terheléselosztó létrehozása** lap, adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, és válassza **felülvizsgálat +létrehozása**:
 
-    | Beállítás                 | Value                                              |
+    | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupLB* a szövegmezőben.|
     | Name (Név)                   | *myLoadBalancer*                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
-    | Typo          | Válassza ki **nyilvános**.                                        |
+    | Típus          | Válassza ki **nyilvános**.                                        |
     | SKU           | Válassza az **Alapszintű** lehetőséget.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
     | Nyilvános IP-cím neve              | *MyPublicIP*   |
@@ -235,21 +235,27 @@ Telepítse az Internet Information Services (IIS) a virtuális gépeken a terhel
    
    A virtuális gép asztalához egy új ablakban nyílik meg. 
    
-**Az IIS telepítése a virtuális gépen:**
+**Az IIS telepítése**
 
-1. Ha **Kiszolgálókezelő** még nincs nyissa meg a kiszolgáló asztalán, keresse meg a **Windows felügyeleti eszközök** > **Kiszolgálókezelő**.
-   
-1. A **Kiszolgálókezelő**válassza **szerepkörök és szolgáltatások hozzáadása**.
-   
-   ![Szerepkör hozzáadása](./media/load-balancer-get-started-internet-portal/servermanager.png)
-   
-1. Az a **szerepkörök és szolgáltatások hozzáadása varázsló**:
-   1. A **Telepítés típusának kiválasztása** lapon kattintson a **Szerepköralapú vagy szolgáltatásalapú telepítés** elemre.
-   1. Az a **célkiszolgáló kijelölése** lapra, jelölje be **MyVM1**.
-   1. A **Kiszolgáló-szerepkör kiválasztása** lapon kattintson a **Webkiszolgáló (IIS)** lehetőségre. 
-   1. Amikor a rendszer telepítéséhez szükséges eszközöket, válassza ki a **szolgáltatások hozzáadása**. 
-   1. Elfogadhatja az alapértelmezett beállításokat, és válassza ki **telepítése**. 
-   1. Amikor befejezte volna a szolgáltatások telepítését, jelölje ki **Bezárás**. 
+1. Válassza ki **minden szolgáltatás** a bal oldali menüben válassza ki a **összes erőforrás**, majd az erőforrások listájában válassza ki **myVM1** található a  *myResourceGroupSLB* erőforráscsoportot.
+2. Az **Áttekintés** oldalon a **Csatlakozás** gombra kattintva hozzon létre RDP-kapcsolatot a virtuális géppel.
+5. Jelentkezzen be a virtuális gépre az adott virtuális gép létrehozásakor megadott hitelesítő adatokkal. Ez elindít egy távoli asztali munkamenetet a *myVM1* virtuális géppel.
+6. A kiszolgáló asztalán lépjen a **Windows felügyeleti eszközök**>**Windows PowerShell** elemre.
+7. A PowerShell-ablakban futtassa az alábbi parancsokat az IIS-kiszolgáló telepítéséhez, távolítsa el az alapértelmezett iisstart.htm fájlt, majd adjon hozzá egy új iisstart.htm fájt, amely megjeleníti a virtuális gép nevét:
+
+   ```azurepowershell
+    
+    # install IIS server role
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    
+    # remove default htm file
+    remove-item  C:\inetpub\wwwroot\iisstart.htm
+    
+    # Add a new htm file that displays server name
+    Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
+   ```
+6. Szüntesse meg a távoli asztali munkamenetet a *myVM1*-gyel.
+7. Az 1–6. lépés megismétlésével telepítse az IIS-t és a frissített iisstart.htm fájlt a *myVM2* gépen.
    
 1. Ismételje meg a virtuális gép **MyVM2**, kivéve a célkiszolgáló beállítása **MyVM2**.
 
@@ -257,9 +263,9 @@ Telepítse az Internet Information Services (IIS) a virtuális gépeken a terhel
 
 Nyisson meg egy böngészőt, és illessze be a terheléselosztó nyilvános IP-címet a böngésző címsorában. Az IIS kiszolgáló alapértelmezett weblap kell megjelennie a böngészőben.
 
-![IIS-webkiszolgáló](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
+![IIS-webkiszolgáló](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
 
-Annak megtekintéséhez, hogyan osztja el a terheléselosztó az alkalmazást futtató három virtuális gép között a forgalmat, kényszerítheti a webböngésző frissítését.
+Annak megtekintéséhez, hogyan osztja el a Load Balancer az alkalmazást futtató két virtuális gép között a forgalmat, kényszerítheti a webböngésző frissítését.
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Törli a terheléselosztó és az összes kapcsolódó erőforrást, ha már nincs szüksége, nyissa meg a **MyResourceGroupLB** erőforrás-csoport, és válassza **erőforráscsoport törlése**.

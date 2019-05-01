@@ -8,12 +8,12 @@ ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 42e4b545a48bcbd0ad4b7faf077ebdbfe21648b1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3cfd6bd453cd06be4676a806997697a71afb0b59
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61002681"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64727410"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Az Azure Data Catalog fejlesztői fogalmak
 A Microsoft **Azure Data Catalog** egy teljes körűen felügyelt felhőszolgáltatás, amely lehetőségeket kínál az adatforrások felderítését és a közösségi adatforrás-metaadatokat. A fejlesztők a a szolgáltatás a REST API-kon keresztül. A fejlesztők számára, hogy sikeresen integrálása a service-ben megvalósított fogalmak értelmezéséhez fontos **Azure Data Catalog**.
@@ -174,9 +174,9 @@ Jegyzet típusú metaadatokat, amelyek a többi átveheti a katalógusban rendel
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>protokoll</td><td>string</td><td>Kötelező. Azt ismerteti, hogy az adatforrás folytatott kommunikációhoz használt protokoll. Például: "tds" az SQl Server, az "oracle" Oracle stb. Tekintse meg <a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">adatforrás-hivatkozás megadása - DSL struktúra</a> jelenleg támogatott protokollok listáját.</td></tr>
-<tr><td></td><td>cím</td><td>Szótár<string, object></td><td>Kötelező. Cím olyan készlete, a protokoll, amely azonosítja az adatforrás hivatkozik rá jellemző adatok. A cím egy adott protokollhoz kötődő, ami azt jelenti, hogy adata összegnek nincs valós jelentése a protokoll ismerete nélkül.</td></tr>
+<tr><td></td><td>cím</td><td>Szótár&lt;karakterlánc, objektum&gt;</td><td>Kötelező. Cím olyan készlete, a protokoll, amely azonosítja az adatforrás hivatkozik rá jellemző adatok. A cím egy adott protokollhoz kötődő, ami azt jelenti, hogy adata összegnek nincs valós jelentése a protokoll ismerete nélkül.</td></tr>
 <tr><td></td><td>hitelesítés</td><td>string</td><td>Választható. A hitelesítési sémát az adatforrás folytatott kommunikáció során használt. Például: windows, oauth, stb.</td></tr>
-<tr><td></td><td>connectionProperties</td><td>Szótár<string, object></td><td>Választható. További információk hogyan csatlakozhat egy adatforráshoz.</td></tr>
+<tr><td></td><td>connectionProperties</td><td>Szótár&lt;karakterlánc, objektum&gt;</td><td>Választható. További információk hogyan csatlakozhat egy adatforráshoz.</td></tr>
 
 <tr><td>SecurityPrincipal</td><td></td><td></td><td>A háttérrendszer adatellenőrzése nem bármely elleni aad-ben megadott tulajdonságok közzététele során.</td></tr>
 <tr><td></td><td>egyszerű felhasználónév</td><td>string</td><td>Felhasználó egyedi e-mail címe. Meg kell adni, ha nincs megadva az objectId, vagy a "lastregisteredby nem azonos" tulajdonságot, ellenkező esetben kötelező kontextusában.</td></tr>

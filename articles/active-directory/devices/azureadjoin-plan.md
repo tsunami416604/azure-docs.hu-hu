@@ -17,12 +17,12 @@ ms.date: 11/21/2018
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b59471cd8af02513186fa4437a2249b056cc324
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 12d603ddbba9e36d562c8dcd6e3844af28c91255
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60354527"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918833"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: Az Azure AD-csatlakozás implementálásának megtervezése
 
@@ -135,7 +135,11 @@ Az Azure AD join:
 
 ### <a name="management-platform"></a>Felügyeleti platform
 
-Az Azure AD-csatlakoztatott eszközök kezelési alapján egy MDM-platformmal, például az Intune) és a mobileszköz-kezelési CSP-k. Windows 10-es rendelkezik egy beépített MDM-ügynököt, amely az összes kompatibilis MDM-megoldás működik.
+Kezelés az Azure AD-hez csatlakoztatott eszközök esetében egy MDM-platformmal, például az Intune-ban, és a mobileszköz-kezelési CSP-k alapján történik. Windows 10-es rendelkezik egy beépített MDM-ügynököt, amely az összes kompatibilis MDM-megoldás működik.
+
+> [!NOTE]
+> Csoportházirendek használata nem támogatott az Azure AD-csatlakoztatott eszközök nem csatlakoznak a helyszíni Active Directoryban. Csak akkor lehetséges, MDM-en keresztül az Azure AD-hez csatlakoztatott eszközök kezelése
+
 
 Kétféleképpen kezelése az Azure AD-hez csatlakoztatott eszközök esetében:
 
@@ -143,7 +147,6 @@ Kétféleképpen kezelése az Azure AD-hez csatlakoztatott eszközök esetében:
 
 - **Megosztott kezelés** – az MDM-szolgáltató és az SCCM által kezelt eszköz. Ebben a megközelítésben az SCCM-ügynök telepítve van egy MDM által felügyelt eszközök felügyeletéhez bizonyos szempontokat.
 
-Mivel az Azure AD-hez eszközök nem csatlakoznak a helyszíni Active Directory, a csoport szabályzatok nem támogatottak.
 
 
 Csoportházirendek használja, ha a mobileszköz-kezelési házirend paritásos kiértékelése használatával a [MDM áttelepítési elemző eszköz (MMAT)](https://github.com/WindowsDeviceManagement/MMAT). 

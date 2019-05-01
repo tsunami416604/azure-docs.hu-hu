@@ -7,14 +7,14 @@ author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 25f620cb36c2bfb548ecf08c33dc04b37118a256
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c447a14f72c56e3e1e244011aa215a33b3f222a6
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489622"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922461"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
@@ -40,6 +40,10 @@ Alkalmazások figyelése az Azure App Servicesben üzemeltetett alkalmazások en
 > Az ügynök-alapú figyelési és a manuális SDK-alapú instrumentation észlel csak a manuális instrumentation beállításait fogja lesz érvényes. Ez az, hogy a duplikált adatok, küldeni. További információ a tekintse meg a [hibaelhárítás szakaszhoz](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting) alatt.
 
 ## <a name="enable-agent-based-monitoring-net"></a>Az ügynök-alapú figyelés .NET engedélyezése
+
+> [!NOTE]
+> APPINSIGHTS_JAVASCRIPT_ENABLED és urlCompression együttes használata nem támogatott. További információ a magyarázatának megtekintéséhez a [hibaelhárítás szakaszhoz](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
+
 
 1. **Válassza az Application Insights** az app service az Azure Vezérlőpultján.
 
@@ -352,6 +356,15 @@ Az alábbi táblázat ezek az értékek jelentése több részletes leírását 
 |`AppContainsAspNetTelemetryCorrelationAssembly: true` | Ez az érték azt jelzi, hogy a bővítmény mutató hivatkozásokat észlelt `Microsoft.AspNet.TelemetryCorrelation` az alkalmazásban, és a rendszer visszatartás. | Távolítsa el a hivatkozást.
 |`AppContainsDiagnosticSourceAssembly**:true`|Ez az érték azt jelzi, hogy a bővítmény mutató hivatkozásokat észlelt `System.Diagnostics.DiagnosticSource` az alkalmazásban, és a rendszer visszatartás.| Távolítsa el a hivatkozást.
 |`IKeyExists:false`|Ez az érték azt jelzi, hogy a kialakítási kulcsot nem szerepel az Alkalmazásbeállítás `APPINSIGHTS_INSTRUMENTATIONKEY`. Lehetséges okok: Az értékek véletlenül eltávolításra kerültek, elfelejtette állítsa az értékeket az automation-szkript stb. | Ellenőrizze, hogy a beállítás szerepel az App Service-alkalmazás beállításait.
+
+### <a name="appinsightsjavascriptenabled-and-urlcompression-is-not-supported"></a>APPINSIGHTS_JAVASCRIPT_ENABLED és urlCompression nem támogatott
+
+Ha APPINSIGHTS_JAVASCRIPT_ENABLED = true azokban az esetekben, ahol a tartalom van kódolva, hibaüzenet jelenik meg lehet hasonló: 
+
+- URL-újraírási 500-as hiba
+- 500.53 URL rewrite modul hibája kimenő újraírási szabályokkal üzenettel nem alkalmazható, ha a tartalom HTTP-válasz kódolt ("gzip"). 
+
+This is due to the APPINSIGHTS_JAVASCRIPT_ENABLED application setting being set to true and content-encoding being present at the same time. Ez a forgatókönyv még nem támogatott. A megoldás, hogy APPINSIGHTS_JAVASCRIPT_ENABLED eltávolítása az alkalmazás beállításait. Sajnos ez jelenti, hogy/böngésző ügyféloldali JavaScript-kialakítási továbbra is szükség, ha manuális SDK hivatkozásokat a weblapok van szükség. Kérjük, kövesse a [utasításokat](https://github.com/Microsoft/ApplicationInsights-JS#snippet-setup-ignore-if-using-npm-setup) manuális Instrumentation a JavaScript SDK-val.
 
 Az Application Insights-ügynök/bővítményt a legfrissebb információkért tekintse meg a [kibocsátási megjegyzések](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md).
 

@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: a2bb8f5d27f1829f891a0638642093df1fa35b81
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3f27e10c47b84b6f037c0d9422e9fba40e0315f7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088451"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717047"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>Parancssori felület használatával egy ExpressRoute-kapcsolatcsoport társviszony létesítése és módosítása
 
@@ -322,6 +322,10 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
 ## <a name="public"></a>Az Azure nyilvános társviszony-létesítés
 
 Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissíteni és törölni az ExpressRoute-kapcsolatcsoport Azure nyilvános társviszony-létesítési konfigurációjának.
+
+> [!Note]
+> Azure nyilvános társviszony-létesítés esetén új kapcsolatcsoportot elavultnak számít. További információkért lásd: [ExpressRoute-társviszony](expressroute-circuit-peerings.md).
+>
 
 ### <a name="to-create-azure-public-peering"></a>Azure nyilvános társviszony-létesítés létrehozása
 

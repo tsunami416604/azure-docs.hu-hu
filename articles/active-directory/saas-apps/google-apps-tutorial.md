@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d48977c60fb4a13e1fc0dbd294fa4e7708f1cd5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a7462536443b2be23eef0f8b4c6f6b6412fb7032
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60277489"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724877"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Oktatóanyag: Az Azure Active Directory-integráció, a G Suite-tal
 
@@ -239,11 +239,11 @@ A G Suite konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre az 
 
     a. Válassza ki **külső identitásszolgáltató beállítása az SSO**.
 
-    b. Az a **lap URL-címe be** G Suite mezőbe illessze be az értéket a **bejelentkezési URL-cím** Azure Portalról másolt.
+    b. Az a **lap URL-címe be** G Suite mezőbe illessze be az értéket a **bejelentkezési URL-cím** Azure Portalról másolt.
 
-    c. Az a **kijelentkezési URL-címe** G Suite mezőbe illessze be az értéket a **kijelentkezési URL-címe** Azure Portalról másolt.
+    c. Az a **kijelentkezési URL-címe** G Suite mezőbe illessze be az értéket a **kijelentkezési URL-címe** Azure Portalról másolt.
 
-    d. Az a **jelszó URL-Címének módosítása** G Suite mezőbe illessze be az értéket a **jelszó URL-Címének módosítása** Azure Portalról másolt.
+    d. Az a **jelszó URL-Címének módosítása** G Suite mezőbe illessze be az értéket a **jelszó URL-Címének módosítása** Azure Portalról másolt.
 
     e. A G Suite az a **ellenőrző tanúsítvány**, az Azure Portalról letöltött tanúsítvány feltöltése.
 

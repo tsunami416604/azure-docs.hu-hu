@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database Managed Instance Time Zone | Microsoft Docs"
-description: Ismerje meg az Azure SQL Database felügyelt példányain időzóna tulajdonságairól
+title: Az Azure SQL Database felügyelt példányain időzónák |} A Microsoft Docs"
+description: További tudnivalók az Azure SQL Database felügyelt példányain időzóna tulajdonságairól
 services: sql-database
 ms.service: sql-database
 ms.custom: ''
@@ -10,46 +10,46 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/10/2019
-ms.openlocfilehash: 23314e97051da95ab164baeab6e9d089f486351a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/25/2019
+ms.openlocfilehash: 6d7d065f45bca38cedd2c276bdd9b98dfd9675df
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61487400"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866951"
 ---
-# <a name="time-zone-in-azure-sql-database-managed-instance-preview"></a>Az Azure SQL Database felügyelt példány (előzetes verzió) időzóna
+# <a name="time-zones-in-azure-sql-database-managed-instance-preview"></a>Idő zónák az Azure SQL Database felügyelt példány (előzetes verzió)
 
-Noha az egyezményes világidő (UTC) használatával felhőalapú megoldások az adatréteg számára ajánlott gyakorlat, az Azure SQL Database felügyelt példányain kínál időzóna többféle, ha a meglévő alkalmazásokat, amelyek dátum és idő értékét tárolja, és hívás dátuma és egy adott időzóna implicit kontextusában idő együttműködik.
+Egyezményes világidő (UTC) a felhőalapú megoldások adatrétegének ajánlott időzónáját. Az Azure SQL Database felügyelt példánya is kínál időzónák többféle dátum és idő értékét tárolja, és a egy adott időzóna implicit kontextusában a date és time függvények hívása már meglévő alkalmazások igényeinek.
 
-T-SQL-funkciók, például [GETDATE()](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) , illetve CLR-beli kódot, tekintse át az adott időzóna szolgáltatásiszint-példányon állítsa. SQL-ügynök feladatot is hajtsa végre az ütemezés a példány időzónájának megfelelően.
+T-SQL-funkciók, például [GETDATE()](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) , illetve CLR-beli kódot, tekintse át az adott időzóna szolgáltatásiszint-példányon állítsa. Az SQL Server-ügynök feladatot is hajtsa végre az ütemezéseket a példány időzónájának megfelelően.
 
   >[!NOTE]
   > Felügyelt példány egyetlen központi telepítési lehetőség az Azure SQL Database, amely támogatja az időzóna-beállítását. Egyéb telepítési lehetőségekért mindig kövesse (UTC).
-Használat [AT TIME ZONE](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql) egyetlen vagy készletezett SQL-adatbázisokban ilyenkor nem UTC időzóna szerint dátum és idő adatok értelmezése.
+Használat [AT TIME ZONE](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql) egyetlen vagy készletezett SQL-adatbázisokban ha értelmezhető dátum és idő információ nem UTC időzónában van szüksége.
 
 ## <a name="supported-time-zones"></a>Támogatott időzónák
 
-A felügyelt példány az alapul szolgáló operációs rendszer támogatott időzónák készletét öröklődnek, és rendszeresen frissül új definíciókat, és változásainak és a meglévő.
+Támogatott időzónákban egy készletét az alapul szolgáló operációs rendszer a felügyelt példány öröklődik. Új definíciókat, és változásainak és a meglévő rendszeresen frissítjük. 
 
 A támogatott időzónák neveinek listáját keresztül közzétett a [sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) rendszernézet.
 
-## <a name="setting-time-zone"></a>A beállítás időzóna
+## <a name="set-a-time-zone"></a>Időzóna beállítása
 
-Felügyelt példány időzónát beállítható csak a példány létrehozása során. Az alapértelmezett időzóna az egyezményes világidő (UTC).
+A felügyelt példány időzónát beállítható csak a példány létrehozása során. Az alapértelmezett időzóna UTC.
 
   >[!NOTE]
   > Meglévő felügyelt példány az adott időzóna nem lehet módosítani.
 
-### <a name="setting-the-time-zone-through-azure-portal"></a>Az Azure Portalon keresztül időzóna beállítása
+### <a name="set-the-time-zone-through-the-azure-portal"></a>Állítsa be az időzónát, az Azure Portalon keresztül
 
-Az új példány paraméterek megadása, miközben időzónát kijelölhet a listában, a támogatott időzónák:
+Paraméterek egy új példányt ad meg, amikor támogatott időzónák listájából válassza ki az időzónát. 
   
 ![Időzóna beállítása során példány létrehozása](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
-Adja meg az időzóna azonosítója tulajdonságot a [Resource Manager-sablon](https://aka.ms/sql-mi-create-arm-posh) példány létrehozása során az időzóna beállítása.
+Adja meg a időzóna azonosítója tulajdonságot a [Resource Manager-sablon](https://aka.ms/sql-mi-create-arm-posh) példány létrehozása során az időzóna beállítása.
 
 ```json
 "properties": {
@@ -66,36 +66,35 @@ Adja meg az időzóna azonosítója tulajdonságot a [Resource Manager-sablon](h
 
 ```
 
-Ez a cikk végén található időzóna azonosítója tulajdonság támogatott értékei listája.
+Az időzóna azonosítója tulajdonság támogatott értékei listáját van ez a cikk végén található.
 
-Ha nincs megadva, a rendszer időzóna UTC-re állítja.
+Ha nincs megadva, az adott időzóna UTC-re van állítva.
 
-## <a name="checking-the-time-zone-of-instance"></a>Az időzóna-példány ellenőrzése
+## <a name="check-the-time-zone-of-an-instance"></a>Ellenőrizze az időzóna-példány
 
-[CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql) függvény az időzóna-példány egy megjelenített nevét adja vissza.
+A [CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql) függvény az időzóna-példány egy megjelenített nevét adja vissza.
 
 ## <a name="cross-feature-considerations"></a>Kereszt-funkciók kapcsolatos megfontolások
 
 ### <a name="restore-and-import"></a>Visszaállítás és importálása
 
-Visszaállítás biztonsági másolatból, vagy adatokat importálhat a felügyelt példány egy példányt, vagy a kiszolgáló más időzónában beállításokkal. Azonban ügyeljen arra, hogy ehhez kellő körültekintéssel járjon el, és elemezheti az alkalmazás viselkedése, és az eredményeket a lekérdezéseket és jelentéseket, ugyanúgy, mint a különböző időzóna-beállítások két SQL Server-példányok közötti adatátvitel során.
+Visszaállítás biztonsági másolatból, vagy adatokat importálhat egy felügyelt példányra egy példányt, vagy a kiszolgáló más időzónában beállításokkal. Ellenőrizze, hogy ehhez kellő körültekintéssel járjon el. Elemezheti az alkalmazás viselkedése és az eredményeket a lekérdezéseket és jelentéseket, csakúgy, mint két másik időzónában beállításokkal rendelkező SQL Server-példányok közötti adatátvitel esetén.
 
 ### <a name="point-in-time-restore"></a>Adott időpontnak megfelelő helyreállítás
 
-Időponthoz visszaállítás végrehajtásakor történő helyreállításához szükséges időt a rendszer értelmezi UTC időnek nyári időszámítás és az esetleges változások miatt a félreérthetőség elkerülése érdekében.
+Egy időponthoz visszaállítást hajt végre, amikor a helyreállításához szükséges időt UTC idő kerül értelmezésre. Ezzel a beállítással elkerülheti a kétértelműséget, nyári időszámítás és a hozzá tartozó esetleges módosítások miatt.
 
 ### <a name="auto-failover-groups"></a>Automatikus feladatátvételi csoportok
 
-Feladatátvétel az elsődleges és másodlagos példány között ugyanabban az időzónában használatával csoport nincs érvényes, de erősen ajánlott.
-  >[!IMPORTANT]
-  > Bár vannak forgatókönyvek esetén másik időzónában kellene földrajzilag másodlagos példányt használja a csak olvasási méretezhető, vegye figyelembe, hogy a másodlagos példány manuális vagy automatikus feladatátvétel esetén sem megtartja annak eredeti időzóna.
+Ugyanabban az időzónában használatával között egy elsődleges és másodlagos példány a feladatátvételi csoportban nincs kényszerítve, de javasoljuk, hogy azt.
+
+  >[!WARNING]
+  > Javasoljuk, hogy az elsődleges és másodlagos példány egy feladatátvételi csoportot használjon ugyanabban az időzónában. Egyes ritka esetekben miatt ugyanabban az időzónában tartja az elsődleges és másodlagos példányok között nincs kényszerítve. Fontos tudni, hogy manuális vagy automatikus feladatátvétel esetén a másodlagos példány megőrzik az eredeti időzóna.
 
 ## <a name="limitations"></a>Korlátozások
 
-- A meglévő felügyelt példány időzóna nem lehet módosítani.
-- Az SQL Agent-feladatok elindítása külső folyamatok időzóna-példány nem veszik figyelembe.
-- Felügyelt példány natív felhasználói [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance) PowerShell-parancsmag nem támogatási megadásának időzónájában paraméter még. PowerShell-burkoló használata, [Resource Manager-sablon](https://aka.ms/sql-mi-create-arm-posh) helyette.
-- CLI-paranccsal [létrehozása az sql buszpéldány](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-create) még nem támogatja időzóna-paraméter.
+- A meglévő felügyelt példány az adott időzóna nem lehet módosítani.
+- Külső folyamatok, az SQL Server Agent-feladatok elindítása nem veszik figyelembe az adott időzóna-példány.
 
 ## <a name="list-of-supported-time-zones"></a>Támogatott időzónákat
 
@@ -240,7 +239,7 @@ Feladatátvétel az elsődleges és másodlagos példány között ugyanabban az
 | Szamoai téli idő | (UTC+13:00) Szamoa |
 | Line-szigetek téli idő | (UTC+14:00) Kiritimati-sziget |
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még 
 
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
 - [AT TIME ZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)

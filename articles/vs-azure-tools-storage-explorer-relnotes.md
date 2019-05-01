@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: fc05c5c5917667d4bd9c869c9370ac952893ab26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68d16a7e25e6f9a294dee1f077d53aa4551cda5e
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60456207"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924799"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>A Microsoft Azure Storage Explorer kibocsátási megjegyzései
 
@@ -38,7 +38,7 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
 ### <a name="new"></a>Új
 
 * Mostantól módosíthatja a tulajdonos és a tulajdonoscsoport, amikor kezelik az ADLS Gen2-tároló, fájlra vagy mappára vonatkozóan.
-* A Windows a Storage Explorer frissítése a terméken belüli már növekményes telepítését. Ennek eredménye egy gyorsabb frissítési élmény. Ha inkább egy tiszta telepítését, akkor letöltheti a [telepítő](https://azure.microsoft.com/en-us/features/storage-explorer/) saját maga és manuális telepítése. #1089
+* A Windows a Storage Explorer frissítése a terméken belüli már növekményes telepítését. Ennek eredménye egy gyorsabb frissítési élmény. Ha inkább egy tiszta telepítését, akkor letöltheti a [telepítő](https://azure.microsoft.com/features/storage-explorer/) saját maga és manuális telepítése. #1089
 
 ### <a name="preview-features"></a>Előzetes állapotú szolgáltatások
 
@@ -59,7 +59,7 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
 
 ### <a name="known-issues"></a>Ismert problémák
 
-* Az RBAC használatával, a Tártallózó engedélyekkel kell rendelkeznie a néhány felügyeleti réteg a tárolási erőforrások eléréséhez. Tekintse meg a [hibaelhárítási útmutató](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting) további információ.
+* Az RBAC használatával, a Tártallózó engedélyekkel kell rendelkeznie a néhány felügyeleti réteg a tárolási erőforrások eléréséhez. Tekintse meg a [hibaelhárítási útmutató](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) további információ.
 * ADLS Gen2 Blobok rendszer proxy mögött elérésére tett kísérlet sikertelen lehet.
 * Például egy blob-tároló SAS URI-t, összekapcsolnia erőforrás leválasztása okozhatja, hogy a hiba, amely megakadályozza más megfelelően jelenik meg a mellékleteket. A probléma megkerüléséhez frissítse a a csoport csomópontot. Tekintse meg a #537 további információt.
 * Például egy blob-tároló SAS URI-t, összekapcsolnia erőforrás leválasztása okozhatja, hogy a hiba, amely megakadályozza más megfelelően jelenik meg a mellékleteket. A probléma megkerüléséhez frissítse a a csoport csomópontot. További információkért tekintse meg a #537.

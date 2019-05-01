@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 0dd8d7c1e004472d230337b72d55ac7ced905b41
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 965d1ace2afdad21a069193b508fc2b10fdf4700
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490928"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64697232"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Metrikákhoz kapcsolódó riasztások az Azure monitorban támogatott erőforrások
 
@@ -68,6 +68,10 @@ A következő teljes listája megtalálható az Azure monitor metrika források 
 
 
 ## <a name="payload-schema"></a>Adattartalom-séma
+
+> [!NOTE]
+> Is használhatja a [gyakori riasztási séma](https://aka.ms/commonAlertSchemaDocs), amely biztosítja az előnyt, hogy a bővíthető egyetlen, és a webhook Integrációk az Azure monitorban szolgáltatások között az összes riasztás egységes riasztási hasznos. [Ismerje meg a gyakori riasztási sémadefiníciók.](https://aka.ms/commonAlertSchemaDefinitions)
+
 
 A POST művelet a következő JSON-adattartalom és séma tartalmazza a közelében újabb metrikákhoz kapcsolódó riasztások, amikor egy megfelelően konfigurált összes [műveletcsoport](../../azure-monitor/platform/action-groups.md) szolgál:
 

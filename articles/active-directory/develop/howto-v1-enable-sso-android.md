@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5085acad8a82394340892a3a67a3d1e5d85384b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 46537ac1ca0ee8b1a163656d14f325a93f3a8717
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60410365"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917245"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Útmutató: Az ADAL használatával Android alkalmazások közötti SSO engedélyezése
 
@@ -39,7 +39,7 @@ Ebben az útmutatóban megismerheti, hogyan egyszeri Bejelentkezést biztosítan
 
 Ebben az útmutatóban azt feltételezi, hogy tudja, hogyan lehet:
 
-- A régi portál használata az Azure Active Directory (Azure AD) az alkalmazás üzembe helyezése. További információ: [alkalmazás regisztrálása az Azure AD-1.0-s verziójú végpont](quickstart-v1-add-azure-ad-app.md)
+- A régi portál használata az Azure Active Directory (Azure AD) az alkalmazás üzembe helyezése. További információ: [alkalmazás regisztrálása](quickstart-register-app.md)
 - Az alkalmazás integrálja az [Azure AD Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android).
 
 ## <a name="single-sign-on-concepts"></a>Egyszeri bejelentkezés fogalmak

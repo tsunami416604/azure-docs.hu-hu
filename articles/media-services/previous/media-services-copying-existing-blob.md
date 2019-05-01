@@ -13,25 +13,27 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 36bfd1787e9f35ac4eaa8b8418df1e592386e8f4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 15d2f16b2c4133e40c7f77390e83504397c47980
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61243350"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868159"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>Meglévő blobok másolása egy Media Services objektumba
+
+> [!NOTE]
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+
 Ez a cikk bemutatja, hogyan másolhat át blobokat egy tárfiókból egy új Azure Media Services (AMS) eszköz használatával történő [Azure Media Services .NET SDK-bővítményeket](https://github.com/Azure/azure-sdk-for-media-services-extensions/).
+
+Meg nem próbálja meg módosítani a Media Services Media Service API-k használata nélkül létrehozott blob-tárolók tartalmát.
 
 A bővítmény módszerek használata:
 
 - Rendszeres eszközök.
 - Élő archiválás eszközök (FragBlob formátumban).
 - Forrás és cél eszközök tartozó különböző Media Services-fiókok (akár különböző adatközpontokban) keresztül. Előfordulhat azonban, így felmerülő díjak. Díjszabással kapcsolatos további információkért lásd: [adatforgalom](https://azure.microsoft.com/pricing/#header-11).
-
-> [!NOTE]
-> Meg nem próbálja meg módosítani a Media Services Media Service API-k használata nélkül létrehozott blob-tárolók tartalmát.
-> 
 
 A cikk bemutatja, két Kódminták:
 

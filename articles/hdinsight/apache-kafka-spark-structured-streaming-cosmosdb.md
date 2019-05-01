@@ -1,26 +1,19 @@
 ---
 title: Az Apache Spark strukturált Stream az Apache Kafkából az Azure Cosmos DB használatával – Azure HDInsight
 description: Ismerje meg, hogyan használható az Apache Spark strukturált Stream adatokat olvasni az Apache Kafka és az Azure Cosmos DB-be tárolja majd. Ebben a példában Jupyter notebookkal streamel adatokat a Spark on HDInsightból.
-services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
-origin.date: 11/06/2018
-ms.author: v-yiso
-ms.date: 01/21/2019
+ms.date: 11/06/2018
+ms.author: hrasheed
 ms.openlocfilehash: c2f3d882ac01427ea017d4f9b81edc3c64cc932d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128398"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728721"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Az Apache Spark strukturált Stream az Apache Kafka és Azure Cosmos DB használata
 
@@ -30,7 +23,7 @@ Ismerje meg, hogyan használható [Apache Spark](https://spark.apache.org/) [str
 
 A Spark strukturált stream egy Spark SQL-alapú streamfeldolgozó rendszer. Lehetővé teszi, hogy ugyanúgy fejezze ki a streamszámításokat, mint a kötegelt számításokat a statikus adatok esetében. A strukturált Streamelésről további információkért lásd: a [strukturált Streamelés programozási útmutató](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) az Apache.org webhelyen.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ebben a példában a HDInsight 3.6-os Spark 2.2 használja.
 >
 > A dokumentum lépései olyan Azure-erőforráscsoportot hoznak létre, amely Spark on HDInsight- és Kafka on HDInsight-fürtöt is tartalmaz. Mindkét fürt Azure virtuális hálózatban található, így a Spark-fürt közvetlenül kommunikálhat a Kafka-fürttel.
@@ -43,14 +36,14 @@ Az Apache Kafka on HDInsight nem nyújt hozzáférést a Kafka-közvetítőkhöz
 
 ![Azure virtuális hálózatban lévő Spark- és Kafka-fürtök ábrája](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > A Kafka szolgáltatás a virtuális hálózaton belüli kommunikációra van korlátozva. A fürtön lévő többi szolgáltatás, például az SSH és az Ambari az interneten keresztül is elérhető. További információ a HDInsighttal elérhető nyilvános portokról: [A HDInsight által használt portok és URI-k](hdinsight-hadoop-port-settings-for-services.md).
 
 Bár létrehozhat egy Azure virtuális hálózatra, a Kafka, és a Spark-fürtök manuális, egyszerűbb legyen a használata az Azure Resource Manager-sablon. Az alábbi lépések segítségével üzembe helyezése az Azure virtuális hálózat, a Kafka és Spark-fürtök az Azure-előfizetéshez.
 
 1. Az alábbi gombbal jelentkezzen be az Azure szolgáltatásba, és nyissa meg a sablont az Azure Portalon.
     
-    <a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-spark-scala-kafka-cosmosdb%2Fmaster%2Fazuredeploy.json" target="_blank">
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-spark-scala-kafka-cosmosdb%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="https://azuredeploy.net/deploybutton.png"/>
     </a>
 
@@ -64,12 +57,12 @@ Bár létrehozhat egy Azure virtuális hálózatra, a Kafka, és a Spark-fürtö
 
    * Egy Azure virtuális hálózat, amely tartalmazza a HDInsight-fürtöket.
 
-       > [!NOTE]
+       > [!NOTE]  
        > A sablon által létrehozott virtuális hálózat a 10.0.0.0/16 címteret használja.
 
    * Egy Azure Cosmos DB SQL API-adatbázis.
 
-     > [!IMPORTANT]
+     > [!IMPORTANT]  
      > Az ebben a példában használt strukturált stream a Spark on HDInsight 3.6-os verzióját igényli. Ha a Spark on HDInsight korábbi verzióját használja, hibák lépnek fel a notebook használatakor.
 
 2. Az alábbi információk segítségével feltöltik a a **egyéni üzembe helyezés** szakaszban:
@@ -88,7 +81,7 @@ Bár létrehozhat egy Azure virtuális hálózatra, a Kafka, és a Spark-fürtö
 
     * **Fürt verziója**: A HDInsight-fürt verziója.
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > Ebben a példában a HDInsight 3.6-os szolgáltatás tesztelése, és egyéb fürttípusok esetleg nem fog.
 
     * **A fürt bejelentkezési név**: Az a Spark és Kafka-fürtök rendszergazdai felhasználójának neve.
@@ -103,7 +96,7 @@ Bár létrehozhat egy Azure virtuális hálózatra, a Kafka, és a Spark-fürtö
 
 4. Végül válassza **beszerzési**. Körülbelül 20 perc alatt létrehozni a fürtöket vesz igénybe.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A fürtök, a virtuális hálózat és a Cosmos DB-fiók létrehozása akár 45 percig is eltarthat.
 
 ## <a name="create-the-cosmos-db-database-and-collection"></a>A Cosmos DB-adatbázis és gyűjtemény létrehozása
@@ -146,7 +139,7 @@ A dokumentum végpont és az elsődleges kulcsra az alábbi szöveghez hasonlít
 "YqPXw3RP7TsJoBF5imkYR0QNA02IrreNAlkrUMkL8EW94YHs41bktBhIgWq4pqj6HCGYijQKMRkCTsSaKUO2pw=="
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A végpont és a kulcs értékeit, mentse a Jupyter notebookok a szükség van rájuk.
 
 ## <a name="get-the-apache-kafka-brokers"></a>Az Apache Kafka-közvetítőkhöz beolvasása
@@ -164,20 +157,20 @@ $brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
 ($brokerHosts -join ":9092,") + ":9092"
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > A Bash példa vár `$CLUSTERNAME` tartalmazza a Kafka-fürt nevére.
 >
 > Ez a példa a [jq](https://stedolan.github.io/jq/) elemezni az adatokat a JSON-dokumentum segédprogramot.
 
 ```bash
-curl -u admin -G "https://$CLUSTERNAME.azurehdinsight.cn/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2
+curl -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2
 ```
 
 Amikor a rendszer kéri, adja meg a jelszót a fürt bejelentkezési (rendszergazdai) fiókjának
 
 A kimenet az alábbi szöveghez hasonló:
 
-`wn0-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.chinacloudapp.cn:9092,wn1-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.chinacloudapp.cn:9092`
+`wn0-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092,wn1-kafka.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net:9092`
 
 Mentse ezt az információt, az alábbi szakaszok a dokumentum szolgál.
 
@@ -191,7 +184,7 @@ Az alábbi lépések segítségével a Spark on HDInsight-fürt a projektből a 
 
 1. A webböngészőben csatlakozzon a Spark-fürtön lévő Jupyter notebookhoz. A következő URL-címben cserélje le a `CLUSTERNAME` elemet a __Spark__-fürt nevére.
 
-        https://CLUSTERNAME.azurehdinsight.cn/jupyter
+        https://CLUSTERNAME.azurehdinsight.net/jupyter
 
     Amikor a rendszer kéri, írja be a fürt létrehozásakor használt bejelentkezési (rendszergazdai) nevet és jelszót.
 

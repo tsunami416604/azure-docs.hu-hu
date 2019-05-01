@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 9efaaa6bdd0f2b51efca398464dbf08de56d831d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1dfa81ad7981578d4f296de1b421c7e064819718
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60712742"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867296"
 ---
 # <a name="currency-prebuilt-entity-for-a-luis-app"></a>Pénznem a LUIS-alkalmazásokon előre összeállított entitások
-Az előre összeállított pénznem entitás számos megnevezések és országokban, függetlenül a LUIS alkalmazás kulturális környezettől pénznem észleli. Az entitás már be van tanítva, mert nem kell az alkalmazás-leképezések a pénznem tartalmazó példa beszédmódok hozzáadása. Pénznem entitás támogatott [számos országban](luis-reference-prebuilt-entities.md). 
+Az előre összeállított pénznem entitás számos megnevezések és országok/régiók, függetlenül a LUIS alkalmazás kulturális környezettől pénznem észleli. Az entitás már be van tanítva, mert nem kell az alkalmazás-leképezések a pénznem tartalmazó példa beszédmódok hozzáadása. Pénznem entitás támogatott [számos országban](luis-reference-prebuilt-entities.md). 
 
 ## <a name="types-of-currency"></a>Pénznem típusa
 Pénznem felügyelje a [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L26) GitHub-adattár

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82afadef58310f46046c8c3168ed93a34769b316
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c0811ce1509b7886bf0061cba955ca5e18990cd1
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472396"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920499"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Az Azure Active Directory rendszergazdája szerepkör engedélyei
 
@@ -58,6 +58,18 @@ A következő rendszergazdai szerepkörök érhetők el:
   * Biztonsági csoport és az Office 365-csoport tulajdonosainak, csoport tagságának kezelésére jogosult. Ezeket a csoportokat a bizalmas vagy titkos információk, vagy a kritikus konfigurálása az Azure ad-ben és a máshol hozzáférést biztosíthat.
   * A rendszergazdák az Azure AD-en kívül más szolgáltatásokkal, például Exchange online-hoz, Office biztonsági és megfelelőségi központban és emberi erőforrások rendszerek.
   * A nem rendszergazdák, például a vezetők, a védőt és a személyzeti osztályon dolgozóknak, akik esetleg bizalmas vagy személyes információkhoz való hozzáférés.
+
+* **[B2C felhasználói folyamat rendszergazdája](#b2c-user-flow-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók létrehozhatják és B2C felhasználói folyamatok (más néven "beépített" szabályzatokat) az Azure Portalon kezelheti. Létrehozásával, vagy a felhasználói folyamatok szerkesztésével, ezek a felhasználók a felhasználói élmény a html/CSS és javascript tartalmának módosítása, módosítsa a felhasználói folyamat / az MFA-követelmények, módosíthatja a jogkivonat jogcímeiben és a bérlő összes házirend beállítása a munkamenet. Másrészről ez a szerepkör nem ízelítő a tekintse át a felhasználói adatok, vagy módosítja az attribútumokat, amelyek szerepelnek a bérlői séma. Identitás-kezelőfelületi keretrendszer változik (más néven egyéni) házirendeket is ez a szerepkör hatókörén kívül van.
+
+* **[B2C felhasználói folyamat attribútum rendszergazdája](#b2c-user-flow-attribute-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók hozzáadása vagy törlése az egyéni attribútumokat a bérlőben lévő összes felhasználói folyamatok számára elérhető. Mint ilyen ezzel a szerepkörrel rendelkező felhasználók módosíthatja vagy új elemeket ad hozzá a végfelhasználó sémát, és hatással van az összes felhasználói folyamatok viselkedését és közvetve módosítását eredményezi milyen adatokat előfordulhat, hogy a végfelhasználók a gyakori és végső soron alkalmazások jogcímekként küld. Ez a szerepkör felhasználói folyamatok nem szerkeszthető.
+
+* **[B2C IEF kulcskészlet rendszergazda](#b2c-ief-keyset-administrator)**:    Felhasználó létrehozása és kezelése szabályzatbejegyzések, és titkos kulcsok a jogkivonat-titkosításhoz, jogkivonat-aláírás és jogcím-titkosítási/visszafejtési. Új kulcsok hozzáadása meglévő kulcstárolók, a korlátozott rendszergazda képes helyettesítő titkos kulcsok meglévő alkalmazások befolyásolása nélkül igény szerint. Ez a felhasználó teljes tartalmát, a titkos kulcsok és a lejárati dátumát, a létrehozás után is látható.
+    
+  <b>Fontos:</b> bizalmas szerepkör. A kulcskészletet rendszergazda szerepkör gondosan kell naplózni és körültekintően és az éles üzem előtti gyűjteményben kiosztott.
+
+* **[B2C IEF csoportházirendet felügyelő rendszergazda](#b2c-ief-policy-administrator)**: A szerepkör felhasználói jogosultak a létrehozását, olvasását, frissítése, és törölje az összes egyéni szabályzatok Azure AD B2C-ben és teljes körűen felügyelve az identitás-kezelőfelületi keretrendszer ezért rendelkezik a megfelelő Azure AD B2C-bérlő. Házirendek szerkesztésével a felhasználó is külső identitásszolgáltatókkal közvetlen összevonás létesítéséhez, váltson a címtársémának, módosítsa a felhasználó által használt összes tartalmat (HTML, CSS, JavaScript-), végezze el a hitelesítést, az új felhasználók létrehozása, küldése követelményei a külső rendszerekkel, beleértve a felhasználói adatok teljes áttelepítés, és szerkesztheti az összes olyan felhasználó adatai, beleértve a bizalmas mezőket is, például a jelszavak és telefonszámokat. Ezzel szemben ez a szerepkör nem módosítható a titkosítási kulcsokat, és a titkos kulcsok a bérlő összevonási használt szerkesztése.
+
+  <b>Fontos:</b> B2 IEF csoportházirendet felügyelő rendszergazda egy szigorúan bizalmas szerepkört, amely hozzá kell rendelni egy rendkívül szűk körben bocsátjuk rendelkezésre az éles környezetben a bérlők számára. Ezek a felhasználók által tevékenységek szorosan naplózni, különösen az éles üzemi bérlők esetén.
 
 * **[Számlázási adminisztrátor](#billing-administrator)**: Vásárol, kezeli az előfizetéseket és a támogatási jegyeket, és figyeli a szolgáltatás állapotát.
 
@@ -110,6 +122,9 @@ A következő rendszergazdai szerepkörök érhetők el:
   > [!NOTE]
   > A Microsoft Graph API, Azure AD Graph API és az Azure AD PowerShell a szerepkör azonosítja, "Exchange-szolgáltatások rendszergazdája". Az "Exchange-rendszergazda" a [az Azure portal](https://portal.azure.com). Az "Az Exchange Online rendszergazdai" a [Exchange felügyeleti központban](https://go.microsoft.com/fwlink/p/?LinkID=529144). 
 
+* **[Külső azonosító nyújtó rendszergazdája](#external-identity-provider-administrator)**: Ez a rendszergazda kezeli az összevonást az Azure Active Directory-bérlők és a külső Identitásszolgáltatók között. Ezzel a szerepkörrel rendelkező felhasználók új Identitásszolgáltatók felveheti és konfigurálhatja az összes rendelkezésre álló beállítások (például a hitelesítési útvonal, szolgáltatásazonosító kulcstárolók hozzárendelt). Ez a felhasználó engedélyezheti a bérlő számára, hogy megbízzon a külső identitás-szolgáltatóktól származó hitelesítések. Az eredményül kapott végfelhasználói élményt hatása attól függ, hogy a bérlő típusát:
+  * Az Azure Active Directory bérlők számára az alkalmazottak és partnerek számára: Egy összevonási (például a Gmail) is azonnal hatással van minden Vendég meghívók még nem válthatók be. Lásd: [Identitásszolgáltatóként B2B vendégfelhasználó hozzáadása Google](https://docs.microsoft.com/azure/active-directory/b2b/google-federation).
+  * Az Azure Active Directory B2C-bérlők: Egy összevonási (pl. a Facebookkal vagy egy másik Azure Active Directoryval) is nem befolyásolja közvetlenül a végfelhasználói folyamatok mindaddig, amíg az identitásszolgáltató adnak lehetőséget a felhasználói folyamat (más néven beépített házirend). Lásd: [Microsoft-fiók konfigurálása identitás-szolgáltatóként](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app) példaként. Felhasználói folyamatok módosításához a "B2C felhasználói folyamat rendszergazda" korlátozott szerepe szükség.
 
 * **[Globális / vállalati rendszergazda](#company-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók férhetnek hozzá az Azure Active Directoryval, valamint a szolgáltatások, például a security center a Microsoft 365, Azure Active Directory-identitásokat használó összes rendszergazdai funkciójához Microsoft 365 megfelelőségi központ, az Exchange Online, SharePoint online-hoz, és Skype vállalati Online verzióhoz. A személy, aki regisztrál az Azure Active Directory-bérlő globális rendszergazdája lesz. Csak a globális rendszergazdák más rendszergazdai szerepköröket rendelhet hozzá. A vállalat a egynél több globális rendszergazda is lehet. A globális rendszergazdák bármely felhasználó és minden más rendszergazdák jelszavát is alaphelyzetbe.
 
@@ -314,6 +329,34 @@ Megtekintheti, állítsa be, és alaphelyzetbe állítása hitelesítési módsz
 | microsoft.office365.webPortal/allEntities/basic/read | A microsoft.office365.webPortal összes erőforrása alapvető terméktulajdonságainak olvasása. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
+
+### <a name="b2c-user-flow-administrator"></a>B2C felhasználói folyamat rendszergazdája
+Létrehozhat és kezelhet felhasználói folyamatok minden aspektusát.
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.aad.b2c/userFlows/allTasks | Olvassa el, és a felhasználói folyamatok konfigurálása az Azure Active Directory B2C-t. |
+
+### <a name="b2c-user-flow-attribute-administrator"></a>B2C felhasználói folyamat attribútum rendszergazdája
+Hozzon létre, és az összes felhasználói folyamatok számára elérhető attribútum séma kezelése.
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.aad.b2c/userAttributes/allTasks | Olvassa el, és a felhasználói attribútumok konfigurálása az Azure Active Directory B2C-t. |
+
+### <a name="b2c-ief-keyset-administrator"></a>B2C IEF kulcskészlet rendszergazda
+Összevonási és a titkosítás az identitás-kezelőfelületi keretrendszer a titkos kulcsok kezeléséhez.
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.aad.b2c/trustFramework/keySets/allTasks | Olvassa el, és az Azure Active Directory B2C kulcsfontosságú csoportjainak konfigurálása. |
+
+### <a name="b2c-ief-policy-administrator"></a>B2C IEF csoportházirendet felügyelő rendszergazda
+Szabályzatok létrehozása és kezelése bizalmi keretrendszer az az identitás-kezelőfelületi keretrendszer.
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.aad.b2c/trustFramework/policies/allTasks | Olvassa el, és az Azure Active Directory B2C-vel egyéni szabályzatok konfigurálása. |
 
 ### <a name="billing-administrator"></a>Számlázási adminisztrátor
 Számlázással kapcsolatos általános feladatokat hajthat végre, például frissítheti a fizetési adatokat.
@@ -675,6 +718,13 @@ Az Exchange termékkel kapcsolatos összes felügyeleti jogosultsággal rendelke
 | microsoft.office365.exchange/allEntities/allTasks | Az Exchange Online teljes körű felügyelete. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
+
+### <a name="external-identity-provider-administrator"></a>Külső azonosító nyújtó rendszergazdája
+Közvetlen összevonási Identitásszolgáltatók használatra konfigurálja.
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.aad.b2c/identityProviders/allTasks | Olvassa el, és az Azure Active Directory B2C Identitásszolgáltatók konfigurálása. |
 
 ### <a name="guest-inviter"></a>Vendég meghívója
 A tagok vendégmeghívási jogosultágát szabályozó beállítástól függetlenül meghívhat vendégeket.

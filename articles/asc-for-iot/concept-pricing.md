@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 41b2d012ef2f6dd1ca5f57e04da43eb1a06dafde
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 00666e27c9251248aa6ecff75d88908baabf71f3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61360149"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919706"
 ---
 # <a name="pricing-and-associated-costs"></a>Díjszabás és kapcsolódó költségek
 
@@ -40,7 +40,7 @@ Az ASC IOT díjszabási modell áll két részből és történik, ha az IoT hub
   >[!Note]
   > Biztonsági üzeneteket az IoT hub kvóta fogyasztás is számítunk fel.
 
-További információkért lásd: [a Security Center díjszabási](https://azure.microsoft.com/en-us/pricing/details/security-center/).
+További információkért lásd: [a Security Center díjszabási](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="associated-costs"></a>Kapcsolódó költségek
 
@@ -65,7 +65,7 @@ A következő táblázat összegzését a kapcsolódó költségek és az egyes 
 |     | Használat | Megjegyzés |
 | --- | --- | --- |
 | **Az IoT Hub kvóta fogyasztás** |  |
-| [Eszköz exportálása](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) feladat (ikereszköz exportálás) | Naponta egyszer | Tiltsa le _ikereszköz metaadat-gyűjtemény_ |
+| [Eszköz exportálása](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) feladat (ikereszköz exportálás) | Naponta egyszer | Tiltsa le _ikereszköz metaadat-gyűjtemény_ |
 | **Log Analytics-tároló** |  |
 | Eszköz javaslatok és riasztások| Biztonsági javaslatok és a szolgáltatás által létrehozott riasztások | Nem kötelező |
 | Nyers biztonsági adatok| IoT-eszközökről, amelyek biztonsági ügynök által gyűjtött biztonsági nyers adatok | Tiltsa le _nyers eszköz biztonsági eseményeket_ |

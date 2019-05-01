@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 03/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8bcb0372ebb60ac3a46cf06bf85322b288e153ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd93166cb878fbd961795492ed9a035c919429a8
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60511497"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916624"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Mi az a Bing Visual Search API?
 
@@ -47,7 +47,7 @@ A Bing vizuális keresési eredmények határoló hasznos helyhez az ábrán ré
 
 A Bing Visual Search API egy olyan webes RESTful szolgáltatás, így könnyen hívása minden programozási nyelvet, amely HTTP-kérelmeket és JSON elemzése. A szolgáltatás a REST API vagy az SDK-t használhat.
 
-1. Hozzon létre egy [Cognitive Services-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing keresési API-k eléréséhez. Ha nem rendelkezik Azure-előfizetéssel, akkor [-fiók létrehozása ingyen](https://azure.microsoft.com/free/). Megtekintheti az előfizetési kulcs, a [az Azure portal](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account#access-your-resource) a fiók létrehozását követően vagy [Azure-webhelyen](https://azure.microsoft.com/try/cognitive-services/my-apis) ingyenes próbaverzió aktiválása után.
+1. Hozzon létre egy [Cognitive Services-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Bing keresési API-k eléréséhez. Ha nem rendelkezik Azure-előfizetéssel, akkor [-fiók létrehozása ingyen](https://azure.microsoft.com/free/). Megtekintheti az előfizetési kulcs, a [az Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#access-your-resource) a fiók létrehozását követően vagy [Azure-webhelyen](https://azure.microsoft.com/try/cognitive-services/my-apis) ingyenes próbaverzió aktiválása után.
 2. Az API-t egy érvényes keresési lekérdezést egy kérés küldése.
 3. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 

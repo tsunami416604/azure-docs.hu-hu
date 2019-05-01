@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 3dbf0aea50f382a0b325bf068a200cde42098733
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 337f2a31d60d54b47c692b06b5d63c28c0964061
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60679870"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64876219"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Cors-támogatással rendelkező Azure CDN szolgáltatás használata
 ## <a name="what-is-cors"></a>Mit jelent a CORS?
@@ -30,9 +30,9 @@ CORS-kérések két típusa van *egyszerű kérelmek* és *összetett kérelmeke
 
 ### <a name="for-simple-requests"></a>Egyszerű kérések:
 
-1. A böngésző elküldi a CORS-kérést és a egy további **forrás** HTTP-kérelem fejléce. Ez a fejléc értéke a forrás, amely a szülő oldal, amely kombinációja típusúként van definiálva kiszolgált *protokoll* *tartomány,* és *port.*  Ha egy lapot https://www.contoso.com megpróbál hozzáférni egy felhasználói adatokat a fabrikam.com forrás, a következő kérés fejlécében a fabrikam.com küldi el:
+1. A böngésző elküldi a CORS-kérést és a egy további **forrás** HTTP-kérelem fejléce. Ez a fejléc értéke a forrás, amely a szülő oldal, amely kombinációja típusúként van definiálva kiszolgált *protokoll* *tartomány,* és *port.*  Ha egy lap HTTPS\:/ / www.contoso.com próbál meg elérni a fabrikam.com forrás a felhasználó adatait, a következő kérés fejlécében küldendő fabrikam.com:
 
-   `Origin: https:\//www.contoso.com`
+   `Origin: https://www.contoso.com`
 
 2. A kiszolgáló a következő jelenhetnek meg:
 

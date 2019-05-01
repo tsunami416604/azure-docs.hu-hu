@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 88a5a1bcff8542ac500bbb5e0da790f77c90a825
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 999d44e394d47e350187f9175389e04e68567d5e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60809664"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724665"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Gyors útmutató: Valós idejű üzenetek szórási konzol alkalmazásból
 
@@ -181,4 +181,4 @@ Version | API HTTP-metódus | Kérés URL-címe
 Ebből a gyors útmutatóból megtudhatta, hogyan REST API használatával valós idejű üzenetek szórási SignalR Service az ügyfelek számára. Ezután megtudhatja, hogyan fejleszthet és helyezhet üzembe Azure Functions SignalR Service kötést, amely a REST API-val épül.
 
 > [!div class="nextstepaction"]
-> [Fejlesztés az Azure Functions Azure SignalR Service kötések használata](signalr-quickstart-azure-functions-csharp.md)
+> [Fejlesztés az Azure Functions az Azure SignalR Service kötések használata](signalr-quickstart-azure-functions-csharp.md)

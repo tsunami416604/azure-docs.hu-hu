@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 09b219fe173be9ba2fd515facce9964b5edc67af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a4195d7c292100712e6d68831443369ab793bb95
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60316231"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726119"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Felhasználói áttelepítése
 Az Azure Active Directory B2C az identitásszolgáltató áttelepítéskor (Azure AD B2C-vel), szükség lehet a felhasználói fiók áttelepítéséhez. Ez a cikk bemutatja, hogyan telepítheti át meglévő felhasználói fiókok bármely identitásszolgáltatótól az Azure AD B2C-vel. A cikk nem szinkronban kell lennie az előírásoknak megfelelő, de néhány forgatókönyv bemutatja. A fejlesztő feladata mindkét megközelítés megfelelőségét.

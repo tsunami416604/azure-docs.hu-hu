@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: bonova, sstein
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 857b1059df2edf34e58d38d335725e27159977a0
-ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
-ms.translationtype: HT
+ms.openlocfilehash: 3fe6eae5f9f7d1ff318aa96bee7e1ab9a96a6870
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62738805"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867933"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Az Azure SQL Database és az SQL Server összehasonlítása
 
@@ -48,14 +48,14 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 | [BACPAC-fájl (Exportálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Igen – lásd: [SQL Database-adatbázis exportálása](sql-database-export.md) | Igen |
 | [BACPAC-fájl (importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Igen – lásd: [SQL-adatbázis importálása](sql-database-import.md) | Igen |
 | [Biztonsági MENTÉSI parancs](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | Nem, csak rendszer által kezdeményezett automatikus biztonsági mentések - látható [automatizált biztonsági mentések](sql-database-automated-backups.md) | Rendszer által kezdeményezett automatikus biztonsági másolatokat és a felhasználó által kezdeményezett csak másolatot biztonsági mentések – lásd: [különbségek biztonsági mentése](sql-database-managed-instance-transact-sql-information.md#backup) |
-| [Beépített függvények](https://docs.microsoft.com/sql/t-sql/functions/functions) | Most – tekintse meg az egyes függvények | Igen – lásd: [tárolt eljárások, függvények, eseményindítók különbségek](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |
+| [Beépített függvények](https://docs.microsoft.com/sql/t-sql/functions/functions) | Most – tekintse meg az egyes függvények | Igen – lásd: [tárolt eljárások, függvények, eseményindítók különbségek](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) |
 | [Adatváltozások rögzítése](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Nem | Igen |
 | [Változások követése](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) | Igen |Igen |
 | [Rendezés - adatbázis](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation) | Igen | Igen |
 | [Rendezés - server-példány](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | Nem, alapértelmezett `SQL_Latin1_General_CP1_CI_AS` mindig használatban van. | Igen, képes állítható be, amikor a [példány létrehozásakor](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md) és nem lehet frissíteni. |
 | [Az Oszlopcentrikus indexek](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Igen – [prémium szintű, a Standard szint – S3-as vagy újabb, általános célú csomagban és a kritikus fontosságú üzleti szint](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Igen |
 | [Közös nyelvi futtatókörnyezet (CLR)](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Nem | Igen, de a fájlrendszer - hozzáférés nélküli lásd [CLR-beli különbségek](sql-database-managed-instance-transact-sql-information.md#clr) |
-| [Tartalmazott adatbázisok](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Igen | Nem [többek között az időponthoz VISSZAÁLLÍTÁSI VISSZAÁLLÍTÁSI hiba miatt](sql-database-managed-instance-transact-sql-information.md#cannot-restore-contained-database) |
+| [Tartalmazott adatbázisok](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Igen | Nem [többek között az időponthoz VISSZAÁLLÍTÁSI VISSZAÁLLÍTÁSI hiba miatt](sql-database-managed-instance-transact-sql-information.md#cant-restore-contained-database) |
 | [Tartalmazott felhasználók](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | Igen | Igen |
 | [Vezérlőnyelvi kulcsszavak ellenőrzése](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | Igen | Igen |
 | [Adatbázisközi lekérdezések](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nem – lásd: [rugalmas lekérdezések](sql-database-elastic-query-overview.md) | Igen, valamint [rugalmas lekérdezések](sql-database-elastic-query-overview.md) |
@@ -86,7 +86,7 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 [Fájlok és fájlcsoportok](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | Elsődleges fájlcsoport | Igen |
 | [Filestream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | Nem | Nem |
 | [Teljes szöveges keresés](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  Külső szóhatároló nem támogatottak. |Külső szóhatároló nem támogatottak. |
-| [Functions](https://docs.microsoft.com/sql/t-sql/functions/functions) | Most – tekintse meg az egyes függvények | Igen – lásd: [tárolt eljárások, függvények, eseményindítók különbségek](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |
+| [Functions](https://docs.microsoft.com/sql/t-sql/functions/functions) | Most – tekintse meg az egyes függvények | Igen – lásd: [tárolt eljárások, függvények, eseményindítók különbségek](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) |
 | [Geo-restore](sql-database-recovery-using-backups.md#geo-restore) | Igen – az összes szolgáltatáshoz eltérő nagy kapacitású | Igen – használja [Azure PowerShell-lel](https://medium.com/azure-sqldb-managed-instance/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa). |
 | [Graph-feldolgozás](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Igen | Igen |
 | [Memóriabeli optimalizálás](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Igen – [csak a prémium és üzletileg kritikus szintet](sql-database-in-memory.md) | Igen – [üzleti csak a kritikus szintű](sql-database-managed-instance.md) |
@@ -137,8 +137,8 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 | [SQL Server Replication](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [Kizárólag tranzakciós és pillanatkép-replikációs előfizetők](sql-database-single-database-migrate.md) | Igen, a [nyilvános előzetes verzió](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance) |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nem - [tekintse meg a Power BI](https://docs.microsoft.com/power-bi/) | Nem - [tekintse meg a Power BI](https://docs.microsoft.com/power-bi/) |
 | [Tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) | Igen | Igen |
-| [A rendszer tárolt függvényei](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) | Most – tekintse meg az egyes függvények | Igen – lásd: [tárolt eljárások, függvények, eseményindítók különbségek](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |
-| [Rendszerszintű tárolt eljárásokra](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/system-stored-procedures-transact-sql) | Néhány – lásd: az egyes tárolt eljárások | Igen – lásd: [tárolt eljárások, függvények, eseményindítók különbségek](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |
+| [A rendszer tárolt függvényei](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) | Most – tekintse meg az egyes függvények | Igen – lásd: [tárolt eljárások, függvények, eseményindítók különbségek](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) |
+| [Rendszerszintű tárolt eljárásokra](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/system-stored-procedures-transact-sql) | Néhány – lásd: az egyes tárolt eljárások | Igen – lásd: [tárolt eljárások, függvények, eseményindítók különbségek](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) |
 | [Rendszertáblák](https://docs.microsoft.com/sql/relational-databases/system-tables/system-tables-transact-sql) | Néhány – lásd: az egyes táblák | Igen – lásd: [a T-SQL eltérései](sql-database-managed-instance-transact-sql-information.md) |
 | [Rendszerkatalógus-nézetek](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/catalog-views-transact-sql) | Néhány – lásd: az egyes nézetek | Igen – lásd: [a T-SQL eltérései](sql-database-managed-instance-transact-sql-information.md) |
 | [ideiglenes táblákkal](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql#database-scoped-global-temporary-tables-azure-sql-database) | A helyi és adatbázishoz kötődő globális ideiglenes táblák | Helyi és a példány hatókörű globális ideiglenes táblák |

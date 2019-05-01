@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/22/2018
 ms.author: jeconnoc
 ms.openlocfilehash: bc861b6730e8bf9db6ba2ab005496914f7b9ed89
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63759814"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699685"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>A .NET telepítése az Azure Cloud Services-szerepkörök
 Ez a cikk ismerteti, amelyek nem rendelkeznek Azure vendég operációs rendszer verzió a .NET-keretrendszer telepítése. A vendég operációs rendszer a .NET használatával a felhőalapú szolgáltatás webes és feldolgozói szerepkörök konfigurálása.

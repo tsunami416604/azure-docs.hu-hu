@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 43dc76e6d1e1ec2a6167f1d3e3cc7b8780f843db
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3074048dd4426a10e706e37e6d375ea4995fcbbb
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60850241"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919778"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Az Azure App Service Linux Node.js-alkalmazás konfigurálása
 
@@ -55,7 +55,7 @@ Ezzel a beállítással a Node.js-verzió használatához futásidőben, és a K
 
 ## <a name="configure-nodejs-server"></a>Node.js-kiszolgáló konfigurálása
 
-A Node.js-tárolók kapható [PM2](http://pm2.keymetrics.io/), egy üzem folyamatkezelő. Az alkalmazás elindításához a PM2, vagy az npm-mel, vagy egy egyéni paranccsal konfigurálhatja.
+A Node.js-tárolók kapható [PM2](https://pm2.keymetrics.io/), egy üzem folyamatkezelő. Az alkalmazás elindításához a PM2, vagy az npm-mel, vagy egy egyéni paranccsal konfigurálhatja.
 
 - [Egyéni parancs futtatása](#run-custom-command)
 - [Futtatásához npm start](#run-npm-start)
@@ -99,12 +99,12 @@ Egy közös Node.js fájlt a projektben található a tároló automatikusan eli
 - *app.js*
 - *index.js*
 - *hostingstart.js*
-- Az alábbi [PM2 fájlok](http://pm2.keymetrics.io/docs/usage/application-declaration/#process-file): *process.json* és *ecosystem.config.js*
+- Az alábbi [PM2 fájlok](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file): *process.json* és *ecosystem.config.js*
 
 Egy egyéni indítási fájlt a következő kiterjesztésű is konfigurálhatja:
 
 - A *.js* fájl
-- A [PM2 fájl](http://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) kiterjesztésű *.json*, *. config.js*, *.yaml*, vagy *yml*
+- A [PM2 fájl](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) kiterjesztésű *.json*, *. config.js*, *.yaml*, vagy *yml*
 
 Adjon hozzá egy egyéni indítási fájlt, futtassa a következő parancsot a [Cloud Shell](https://shell.azure.com):
 
@@ -226,7 +226,7 @@ fi
 
 Az App Service-ben [SSL-lezárást](https://wikipedia.org/wiki/TLS_termination_proxy) történik, ha a hálózati terheléselosztók, így az összes HTTPS-kérelmek elérni az alkalmazás nem titkosított HTTP-kérések. Ha az alkalmazás logikai igényeinek megfelelően, ellenőrizze, hogy ha a felhasználói kérelmek titkosítottak-e vagy sem, vizsgálja meg a `X-Forwarded-Proto` fejléc.
 
-Népszerű webes keretrendszerek, hozzáférést biztosítanak a `X-Forwarded-*` a szabványos mintában információkat. A [Express](https://expressjs.com/), használhat [proxyk megbízható](http://expressjs.com/guide/behind-proxies.html). Példa:
+Népszerű webes keretrendszerek, hozzáférést biztosítanak a `X-Forwarded-*` a szabványos mintában információkat. A [Express](https://expressjs.com/), használhat [proxyk megbízható](https://expressjs.com/guide/behind-proxies.html). Példa:
 
 ```javascript
 app.set('trust proxy', 1)
@@ -253,7 +253,7 @@ Amikor egy működő Node.js-alkalmazás működését eltérően az App Service
     - Attól függően, a *package.json*, különböző csomagokban megtalál mindent éles üzemmódhoz előfordulhat, hogy telepíteni (`dependencies` és `devDependencies`).
     - Bizonyos webes keretrendszerek statikus fájlok eltérően éles módban helyezheti üzembe.
     - Bizonyos webes keretrendszerek egyéni indítási parancsfájlok felhasználhatja az éles módban való futtatáskor.
-- Az alkalmazás futtatása az App Service-ben a fejlesztői módban. Például a [MEAN.js](http://meanjs.org/), fejlesztői mód által futtatókörnyezetben is beállíthatja az alkalmazás [beállítás a `NODE_ENV` Alkalmazásbeállítás](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+- Az alkalmazás futtatása az App Service-ben a fejlesztői módban. Például a [MEAN.js](https://meanjs.org/), fejlesztői mód által futtatókörnyezetben is beállíthatja az alkalmazás [beállítás a `NODE_ENV` Alkalmazásbeállítás](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
 ## <a name="next-steps"></a>További lépések
 

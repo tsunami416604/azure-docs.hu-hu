@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/30/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81a1ab0ee411f05b353317b0d781e0cb292c7d6a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0d970fd133f8c43319e7f1fdb6b3a50c3c05f687
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60455857"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918441"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás a kezelési követelmények meghatározása
 A vállalkozása számára a kezelési követelmények ismertetése közvetlen hatással lehet a döntést a melyik hibrid identitáskezelési megoldás használata. Több eszköz és a saját eszközeiket használják a felhasználók képességét elterjedése ([BYOD](https://aka.ms/byodcg)), a vállalat a saját adatok kell védelme, de azt is kell érintetlenül felhasználók adatait. Általában akkor, amikor egy felhasználó a saját eszköz rendelkezik, azok is szükség lehet, hogy a rendszer a szerint az alkalmazás által használt váltakozó több hitelesítő adatok. Fontos különbséget tenni a tartalmat a saját hitelesítő adataival, és a vállalati hitelesítő adatok használatával létrehozottakra használatával hoztak. Az identitáskezelési megoldás tudnia kell interakcióba felhőalapú szolgáltatások zökkenőmentes élményt biztosít a végfelhasználók számára, miközben adataikhoz biztosítására, és növelje az adatszivárgás elleni védelem. 
 
 Az identitáskezelési megoldás lesz adatbáziscsoportok különböző technikai vezérlők, annak érdekében, hogy a Tartalomkezelés az alábbi ábrán látható módon:
 
-![](./media/plan-hybrid-identity-design-considerations/securitycontrols.png)
+![Biztonsági vezérlők](./media/plan-hybrid-identity-design-considerations/securitycontrols.png)
 
 **Biztonsági ellenőrzéseket, amelyeket az identitáskezelési rendszerekkel kihasználva lesz**
 

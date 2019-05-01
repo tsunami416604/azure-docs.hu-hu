@@ -1,5 +1,5 @@
 ---
-title: Adatok átalakítása az Azure Data Box Edge segítségével | Microsoft Docs
+title: Az oktatóanyag szűréséhez,-adatok elemzése az Azure Data Box Edge számítási |} A Microsoft Docs
 description: Megismerheti, hogyan konfigurálhatja a számítási szerepköröket a Data Box Edge-ben, és hogyan alakíthatja át az adatokat, mielőtt beküldené őket az Azure-nak.
 services: databox
 author: alkohli
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 31911c124aeafecb8ee37d14e58d3a0bdc0d4955
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 7b3d725eb05c811d3fdd44516c1bde9a8dfbaaac
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62112617"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924330"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge"></a>Oktatóanyag: Adatátalakítás az Azure Data Box Edge szolgáltatással
 

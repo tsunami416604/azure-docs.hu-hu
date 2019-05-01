@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 253a5e247dbbea5fc7e0e556d8619328b43bff58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cc38e2096b6a761060fab09a8ce2518808b370e1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60300144"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713352"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Útmutató: Adja meg a választható jogcímeket, az Azure AD-alkalmazás
 
@@ -57,7 +57,7 @@ Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem k
 | `auth_time`                | Amikor a felhasználó legutóbbi hitelesített ideje. Lásd: OpenID Connect specifikációja.| JWT        |           |  |
 | `tenant_region_scope`      | Az erőforrás-bérlő régió | JWT        |           | |
 | `home_oid`                 | A vendégfelhasználók számára, a felhasználó bérlőjének a felhasználó Objektumazonosítóját.| JWT        |           | |
-| `sid`                      | Munkamenet-azonosító, a munkamenet-felhasználó a Kijelentkezés használt. | JWT        |           |         |
+| `sid`                      | Munkamenet-azonosító, a munkamenet-felhasználó a Kijelentkezés használt. | JWT        |  Személyes és az Azure AD-fiókokat.   |         |
 | `platf`                    | Eszközplatform    | JWT        |           | Eszköztípus ellenőrizheti a felügyelt eszközökre korlátozva.|
 | `verified_primary_email`   | A felhasználó PrimaryAuthoritativeEmail forrása      | JWT        |           |         |
 | `verified_secondary_email` | A felhasználó SecondaryAuthoritativeEmail forrása   | JWT        |           |        |
@@ -91,7 +91,6 @@ Ezeket a jogcímeket 1.0-s verziójú Azure AD-jogkivonatok mindig szerepel, de 
 | `family_name` | Vezetéknév                       | Az utolsó neve, Vezetéknév vagy felhasználó családnév biztosít a user objektum a. <br>"family_name":"Miller" | Az MSA és aad-ben támogatott   |
 | `given_name`  | Utónév                      | Itt az első vagy az "adott" a felhasználó nevét a user objektum készletként.<br>"given_name": "Frank"                   | Az MSA és aad-ben támogatott  |
 | `upn`         | Felhasználó egyszerű neve | Egy azonosítóval, a felhasználó a username_hint paraméterrel használható.  A felhasználó nem egy tartós azonosítót, és nem használható a fontos adatokat. | Lásd: [további tulajdonságok](#additional-properties-of-optional-claims) alább a jogcím-konfigurációhoz. |
-| `sid`         | Munkamenet azonosítója                      | GUID munkamenet,-hoz használt azonosító követés hitelesítési MSA-munkamenetet. | Csak MSA.  Nem fogja tartalmazni az Azure AD-fiókok esetében. | 
 
 
 ### <a name="additional-properties-of-optional-claims"></a>Nem kötelező jogcímek további tulajdonságok

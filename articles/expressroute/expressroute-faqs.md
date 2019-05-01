@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 3c8a068e2f68dcd53ad7ee6cdf3a1f39524c0fa4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 17f596abda4febbd6e532adcb44d544cd4d104df
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60367881"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924673"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -43,7 +43,7 @@ Nem. A szolgáltató egy VPN-kapcsolat bármely sebességű vásárolhatnak. Az 
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>Az adott sávszélesség ExpressRoute-kapcsolatcsoport kell fizetnem, ha kell a nagyobb sebesség, szükség esetén akár eszközcsomag lehetővé teszi?
 
-Igen. Az ExpressRoute-Kapcsolatcsoportok legfeljebb kétszer a sávszélességre vonatkozó korlátját kétszereséig további költségek nélkül is. engedélyezésére vannak konfigurálva. Ellenőrizze a szolgáltató megtekintéséhez, hogy támogatja-e ezt a funkciót.
+Igen. Az ExpressRoute-Kapcsolatcsoportok legfeljebb kétszer a sávszélességre vonatkozó korlátját kétszereséig további költségek nélkül is. engedélyezésére vannak konfigurálva. Ellenőrizze a szolgáltató megtekintéséhez, hogy támogatja-e ezt a funkciót. Ez nem egy huzamosabb ideig és nem garantált. 
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Használhatom ugyanazt a magánhálózati kapcsolatot rendelkező virtuális hálózatot és más Azure-szolgáltatások egyszerre?
 
@@ -119,11 +119,11 @@ Ha egyik közötti kapcsolat nem sikerül nem megszakad a kapcsolat. Redundáns 
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Hogyan implementálhatom redundancia a privát társviszony-létesítés?
 
-Több ExpressRoute-Kapcsolatcsoportok társviszony-létesítési különböző helyekről csatlakoztatható ugyanahhoz a virtuális hálózathoz, magas rendelkezésre állású abban az esetben adja meg, hogy egyetlen kapcsolatcsoport elérhetetlenné válik. Ezután [nagyobb súly hozzárendelése](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) az alkalmazást a helyi kapcsolathoz inkább adott expressroute-kapcsolatcsoporthoz. Erősen ajánlott, hogy az ügyfelek beállítása kritikus hibapontok elkerülése érdekében legalább két ExpressRoute-Kapcsolatcsoportok. 
+Több ExpressRoute-Kapcsolatcsoportok társviszony-létesítési különböző helyekről csatlakoztatható ugyanahhoz a virtuális hálózathoz, magas rendelkezésre állású abban az esetben adja meg, hogy egyetlen kapcsolatcsoport elérhetetlenné válik. Ezután [nagyobb súly hozzárendelése](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) az alkalmazást a helyi kapcsolathoz inkább adott expressroute-kapcsolatcsoporthoz. Erősen ajánlott, hogy az ügyfelek beállítása kritikus hibapontok elkerülése érdekében legalább két ExpressRoute-Kapcsolatcsoportok. 
 
 ### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Hogyan tudok megvalósítása a redundanciát a Microsoft társviszony-létesítés?
 
-Erősen ajánlott, ha használják az ügyfelek a Microsoft társviszony-létesítést úgy, mint például az Azure Storage vagy Azure SQL, valamint a Microsoft Office 365-höz, hogy a másik társviszony-létesítés megvalósítása során több Kapcsolatcsoportok társviszony-létesítést használó ügyfelek számára az Azure nyilvános szolgáltatások eléréséhez helyek faiure annak elkerülése érdekében. Ügyfelek vagy meghirdeti mindkét Kapcsolatcsoportok az ugyanazon előtaggal, és használjon [AS PATH előtag-Beillesztés](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) vagy határozza meg a helyi elérési útja eltérő előtagokat hirdet meg.
+Erősen ajánlott, ha használják az ügyfelek a Microsoft társviszony-létesítést úgy, mint például az Azure Storage vagy Azure SQL, valamint a Microsoft Office 365-höz, hogy a másik társviszony-létesítés megvalósítása során több Kapcsolatcsoportok társviszony-létesítést használó ügyfelek számára az Azure nyilvános szolgáltatások eléréséhez helyek faiure annak elkerülése érdekében. Ügyfelek vagy meghirdeti mindkét Kapcsolatcsoportok az ugyanazon előtaggal, és használjon [AS PATH előtag-Beillesztés](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) vagy határozza meg a helyi elérési útja eltérő előtagokat hirdet meg.
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Hogyan biztosítja a magas rendelkezésre állás az expressroute-hoz csatlakoztatott virtuális hálózaton?
 

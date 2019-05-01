@@ -10,16 +10,16 @@ ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 02/01/2019
 ms.author: scottwhi
-ms.openlocfilehash: 96bb11dad34d6ebcfebe0956d2a08b954a37e843
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0755688d1cc2f00ffef253b7695d9cb504f9e169
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60576125"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866838"
 ---
 # <a name="what-is-bing-entity-search-api"></a>Mi az a Bing Entity Search API?
 
-A Bing Entity Search API egy keresési lekérdezést küld a Bingnek, majd entitásokat és helyeket tartalmazó találatokat kap vissza. A helytalálatok lehetnek éttermek, szállodák vagy egyéb helyi vállalkozások. A Bing helyeket ad vissza, ha a lekérdezés a helyi vállalkozás nevét adja meg, vagy egy vállalkozástípus iránt érdeklődik (például „éttermek a közelben”). A Bing entitásokat ad vissza, ha a lekérdezés közismert személyeket, helyeket (látnivalókat, államokat, országokat stb.) vagy dolgokat ad meg.
+A Bing Entity Search API egy keresési lekérdezést küld a Bingnek, majd entitásokat és helyeket tartalmazó találatokat kap vissza. A helytalálatok lehetnek éttermek, szállodák vagy egyéb helyi vállalkozások. A Bing helyeket ad vissza, ha a lekérdezés a helyi vállalkozás nevét adja meg, vagy egy vállalkozástípus iránt érdeklődik (például „éttermek a közelben”). A Bing entitásokat ad vissza, ha a lekérdezés a jól ismert személyek, helyek (idegenforgalmi létesítmények, állapotok, országok/régiók, stb.) vagy dolgot határoz meg.
 
 |Szolgáltatás  |Leírás  |
 |---------|---------|

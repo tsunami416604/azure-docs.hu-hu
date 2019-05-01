@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: a067d83c32f11e0bf091b0efc5528995ab6a021a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/26/2019
+ms.openlocfilehash: cae806953721f3cedead023f013c7d1d585efeb6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60341642"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573383"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Az Azure SQL Database szószedet
 
@@ -39,6 +39,7 @@ Adatbázis-objektumok|Azure SQL-adatbázis|Bármely Azure SQL Database-adatbázi
 ||Általános célú adatbázis|Belül létrehozott egy adatbázist, vagy az általános célú szolgáltatáscsomagjától a Virtuálismag-alapú vásárlási modell helyezve|
 ||Nagy kapacitású adatbázis|Belül létrehozott egy adatbázist, vagy a nagy kapacitású szolgáltatási szinten a Virtuálismag-alapú vásárlási modell helyezve|
 ||Kritikus fontosságú üzleti adatbázis|Belül létrehozott egy adatbázist, vagy kritikus fontosságú üzleti szolgáltatáscsomagjától a Virtuálismag-alapú vásárlási modell helyezve|
+||Üzembe helyezett adatbázis|A kiépített számítási rétegben konfigurált adatbázis|
 |[Vásárlási modellek és erőforrások](sql-database-purchase-models.md)|DTU-alapú vásárlási modell|[DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md)|
 ||Virtuálismag-alapú vásárlási modell|[Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md)|
 ||Virtuális mag|Egy alapszintű, a hipervizor a vendég operációs rendszer biztosítja.|

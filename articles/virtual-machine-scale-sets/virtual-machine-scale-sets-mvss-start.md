@@ -1,10 +1,10 @@
 ---
 title: További információ a virtuális gép méretezésicsoport-sablon |} A Microsoft Docs
-description: Ismerje meg, hogyan hozzon létre egy virtuálisgép-méretezési csoportokhoz tartozó minimális működőképes méretezési csoport sablon
+description: Egy virtuálisgép-méretezési csoportokhoz tartozó alapvető méretezésicsoport-sablon létrehozása
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
-manager: jeconnoc
+manager: drewm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -13,27 +13,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2017
+ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: d4a3dd6ae390fd48a8085cca33063a6bb74bd96c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8b6a6b78dc74572b22d397b5536efa1394401bbc
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60805576"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868896"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>További információ a virtuális gép méretezési csoportok sablonjairól
-Az [Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) remek megoldást kínálnak egymáshoz kapcsolódó erőforráscsoportok üzembe helyezésére. Az oktatóanyag-sorozat bemutatja egy minimális működőképes méretezési csoport sablonjának létrehozása és módosítása a sablon igény szerint a különböző forgatókönyvekben. Valamennyi példa származnak, ez [GitHub-adattár](https://github.com/gatneil/mvss). 
+Az [Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) remek megoldást kínálnak egymáshoz kapcsolódó erőforráscsoportok üzembe helyezésére. Az oktatóanyag-sorozat bemutatja egy egyszerű méretezési csoport sablonjának létrehozása és módosítása a sablon igény szerint a különböző forgatókönyvekben. Valamennyi példa származnak, ez [GitHub-adattár](https://github.com/gatneil/mvss).
 
 Ez a sablon készült egyszerű. A skála teljes példákat sablonok, olvassa el a [Azure gyorsindítási sablonok GitHub-tárház](https://github.com/Azure/azure-quickstart-templates) , és keresse meg a karakterláncot tartalmazó mappák `vmss`.
 
 Ha már ismeri a sablonok létrehozásával, kihagyhatja a "Következő lépések" szakaszban megtudhatja, hogyan módosíthatja ezt a sablont.
-
-## <a name="review-the-template"></a>Tekintse át a sablon
-
-Tekintse át a minimális működőképes méretezési csoport sablonjában, a GitHub használatával [azuredeploy.json](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json).
-
-Ebben az oktatóanyagban most vizsgálja meg a diff (`git diff master minimum-viable-scale-set`) a minimális működőképes méretezési csoport létrehozása sablon darab által darab beállítása.
 
 ## <a name="define-schema-and-contentversion"></a>$Schema és contentVersion megadása
 Először határozzon meg `$schema` és `contentVersion` a sablonban. A `$schema` elem határozza meg a sablon nyelvi verzióját, és a Visual Studio Szintaxiselemek kiemelése és hasonló érvényesítési szolgáltatások használatos. A `contentVersion` elem nem használja az Azure-ban. Ehelyett segít is nyomon követheti a tanúsítványsablon verziójának.
@@ -43,6 +37,7 @@ Először határozzon meg `$schema` és `contentVersion` a sablonban. A `$schema
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
 ```
+
 ## <a name="define-parameters"></a>Paraméterek megadása
 Ezt követően adja meg a két paramétert `adminUsername` és `adminPassword`. A paraméterek olyan értékek, megadhatja a központi telepítési idején. A `adminUsername` paraméter egyszerűen egy `string` típusa, de mivel `adminPassword` egy titkos, adja meg, írja be a `securestring`. Később ezek a paraméterek vannak átadott a méretezésicsoport-konfigurációt.
 
@@ -70,13 +65,13 @@ Ezután a rendszer a sablon erőforrás szakaszába. Itt akkor megadhatja, hogy 
    "resources": [
 ```
 
-Összes erőforrást igényelnek `type`, `name`, `apiVersion`, és `location` tulajdonságait. Ez a példa első erőforrás típusa rendelkezik [Microsoft.Network/virtualnetworks típusú virtuális hálózattal](/azure/templates/microsoft.network/virtualnetworks)nevű `myVnet`, és API-verzió `2016-03-30`. (A legújabb API-verzió az erőforrástípushoz, lásd: a [Azure Resource Manager sablonreferenciája](/azure/templates/).)
+Összes erőforrást igényelnek `type`, `name`, `apiVersion`, és `location` tulajdonságait. Ez a példa első erőforrás típusa rendelkezik [Microsoft.Network/virtualnetworks típusú virtuális hálózattal](/azure/templates/microsoft.network/virtualnetworks)nevű `myVnet`, és API-verzió `2018-11-01`. (A legújabb API-verzió az erőforrástípushoz, lásd: a [Azure Resource Manager sablonreferenciája](/azure/templates/).)
 
 ```json
      {
        "type": "Microsoft.Network/virtualNetworks",
        "name": "myVnet",
-       "apiVersion": "2016-12-01",
+       "apiVersion": "2018-11-01",
 ```
 
 ## <a name="specify-location"></a>Hely megadása
@@ -117,7 +112,7 @@ Ebben az esetben nincs csak egy elemet a listában, az előző példában a virt
      {
        "type": "Microsoft.Compute/virtualMachineScaleSets",
        "name": "myScaleSet",
-       "apiVersion": "2016-04-30-preview",
+       "apiVersion": "2019-03-01",
        "location": "[resourceGroup().location]",
        "dependsOn": [
          "Microsoft.Network/virtualNetworks/myVnet"
@@ -136,7 +131,7 @@ A méretezési csoport a virtuális gép létrehozása ("sku name") milyen mére
 ```
 
 ### <a name="choose-type-of-updates"></a>A frissítések típusának kiválasztása
-A méretezési csoportot is tudnia kell, hogyan kezelje a frissítések a méretezési csoportban. Két lehetőség van jelenleg `Manual` és `Automatic`. A kettő közötti különbségekről további információkért tekintse meg a dokumentációt [frissítése a méretezési](./virtual-machine-scale-sets-upgrade-scale-set.md).
+A méretezési csoportot is tudnia kell, hogyan kezelje a frissítések a méretezési csoportban. Jelenleg három lehetőség áll rendelkezésre, `Manual`, `Rolling` és `Automatic`. A kettő közötti különbségekről további információkért tekintse meg a dokumentációt [frissítése a méretezési](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model).
 
 ```json
        "properties": {

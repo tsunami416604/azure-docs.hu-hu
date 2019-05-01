@@ -5,15 +5,15 @@ manager: kfile
 description: Ismerje meg, hogyan csatlakozhat az Azure Analysis Services a Power BI Desktopban.
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 04/25/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 5d021aa7a6d55bb071340ebcd8e7090a4b0c2e2f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ea2a6612a568d4080a8df2c569f79aaaa283e9c4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60788240"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702840"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Oktatóanyag: Csatlakozás a Power BI Desktopban
 
@@ -71,4 +71,4 @@ Másolja a kiszolgáló nevét az **Azure Portal** > kiszolgáló > **Áttekint�
 Ha többé nincs szüksége rá, akkor ne mentse a jelentést, vagy törölje a fájlt, ha már kimentette.
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban a Power BI Desktop használatát sajátította el egy kiszolgálón lévő adatmodellhez való csatlakozásra és egy egyszerű jelentés létrehozására. Ha nem járatos az adatmodellek létrehozásában, akkor olvassa el az [Oktatóanyag az Adventure Works Internet Sales adatmodellhez](aas-adventure-works-tutorial.md) című cikket.
+Ebben az oktatóanyagban a Power BI Desktop használatát sajátította el egy kiszolgálón lévő adatmodellhez való csatlakozásra és egy egyszerű jelentés létrehozására. Ha még nem ismeri, hogyan hozhat létre egy olyan modell, tekintse meg a [Adventure Works internetes értékesítési adatok táblázatos modellezésről szóló oktatóanyag](https://docs.microsoft.com/sql/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) az SQL Server Analysis Services-dokumentumokhoz.

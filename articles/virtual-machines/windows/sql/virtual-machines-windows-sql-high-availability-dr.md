@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: 463ef5f4a655617074915078fb4ced9e596f8957
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8a9d4699ba625f575cdcba2a85af900a7c04843e
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61478365"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924463"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Magas rendelkezésre állás és vészhelyreállítás az Azure-beli SQL Server-alapú virtuális gépeken
 
@@ -59,7 +59,7 @@ A vész-helyreállítási megoldást rendelkezik az SQL Server-adatbázisait az 
 | Technológia | Példa-architektúrák |
 | --- | --- |
 | **Rendelkezésre állási csoportok** |Rendelkezésre állási másodpéldányt futtató több adatközpontra elosztva több Azure-beli virtuális gépeken vész-helyreállítási. A régiók közötti megoldás védi a webhely teljes üzemkimaradások esetére. <br/> ![Rendelkezésre állási csoportok](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_alwayson.png)<br/>Egy adott régión belül az összes replika ugyanazon a felhőszolgáltatáson, és ugyanazon a Vneten belül kell lennie. Minden egyes régió egy külön virtuális hálózatot fog működni, mert ezek a megoldások virtuális hálózat virtuális hálózatok közötti kapcsolat szükséges. További információkért lásd: [az Azure Portalon a virtuális hálózatok közötti kapcsolat konfigurálása](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md). Részletes útmutatásért lásd: [egy SQL Server rendelkezésre állási csoport konfigurálása Azure-beli virtuális gépeken különböző régiókban lévő](virtual-machines-windows-portal-sql-availability-group-dr.md).|
-| **Az adatbázis-tükrözés** |Egyszerű és a tükrözött és a vész-helyreállítási különböző adatközpontokban futó kiszolgálók. Kiszolgálói tanúsítványok használatával, mert egy active directory-tartomány nem ívelhet át több adatközpontban kell telepítenie.<br/>![Az adatbázis-tükrözés](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_dbmirroring.gif) |
+| **Az adatbázis-tükrözés** |Egyszerű és a tükrözött és a vész-helyreállítási különböző adatközpontokban futó kiszolgálók. Kiszolgálói tanúsítványok használatával kell telepítenie. <br/>![Az adatbázis-tükrözés](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_dbmirroring.gif) |
 | **Biztonsági mentés és visszaállítás Azure Blob Storage szolgáltatással** |Éles adatbázisok biztonsági mentését közvetlenül vész-helyreállítási egy másik adatközpontban lévő blobtárolóba.<br/>![Biztonsági mentés és visszaállítás](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_backup_restore.gif)<br/>További információkért lásd: [biztonsági mentése és visszaállítása az SQL Server az Azure Virtual machines gépeken](virtual-machines-windows-sql-backup-recovery.md). |
 | **Replikálás és feladatátvétel az SQL Server az Azure-bA az Azure Site Recoveryvel** |Éles SQL Server közvetlenül az Azure Storage a különböző Azure-adatközpont vészhelyreállítási replikált egy Azure-adatközpontban.<br/>![Replikálása az Azure Site Recovery használatával](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_standalone_sqlserver-asr.png)<br/>További információkért lásd: [védelme SQL Server az SQL Server-vészhelyreállítás és az Azure Site Recovery használatával](../../../site-recovery/site-recovery-sql.md). |
 

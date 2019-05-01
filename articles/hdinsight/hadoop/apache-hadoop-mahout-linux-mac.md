@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/01/2018
-ms.openlocfilehash: 63f1cfbf697f9cb1211e2c4671f64b19f933bc94
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.openlocfilehash: d566b57ae12520b9eee26334a67d2e10c05f8040
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129350"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64709079"
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-apache-hadoop-in-hdinsight-ssh"></a>Filmajánlók Apache Mahout az Apache Hadoop Linux-alapú HDInsight (SSH) használatával
 
@@ -21,16 +21,13 @@ ms.locfileid: "62129350"
 
 Ismerje meg, hogyan használható a [Apache Mahout](https://mahout.apache.org) gépi tanulási kódtár, az Azure HDInsight a filmajánlók.
 
-Mahout egy [gépi tanulás] [ ml] library for Apache Hadoop. Mahout adatok feldolgozásával, például szűréshez, osztályozáshoz és fürtözéshez algoritmusokat tartalmaz. Ez a cikk segítségével egy ajánlattételi modul beépítését az ismerősök látott filmek alapuló filmajánlók.
+Mahout egy [gépi tanulás](https://en.wikipedia.org/wiki/Machine_learning) library for Apache Hadoop. Mahout adatok feldolgozásával, például szűréshez, osztályozáshoz és fürtözéshez algoritmusokat tartalmaz. Ez a cikk segítségével egy ajánlattételi modul beépítését az ismerősök látott filmek alapuló filmajánlók.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Linux-alapú HDInsight-fürt. Az egyik létrehozásával kapcsolatos információkért lásd: [HDInsight Linux-alapú Hadoop használatának első lépései][getstarted].
+* Egy HDInsight az Apache Hadoop-fürtöt. Lásd: [HDInsight Linux első lépések](./apache-hadoop-linux-tutorial-get-started.md).
 
-> [!IMPORTANT]  
-> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
-* Egy SSH-ügyfél. További információ: [SSH használata a HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információkért lásd: [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="apache-mahout-versioning"></a>Az Apache Mahout verziószámozás
 
@@ -50,7 +47,7 @@ Az alábbi munkafolyamat egy egyszerű példa film adatait használó:
 
 ### <a name="understanding-the-data"></a>Az adatok megismerése
 
-Kényelmesen [GroupLens kutatási] [ movielens] adja meg, amely kompatibilis a mahout használatával formátumú filmek minősítés adatait. Ezek az adatok érhető el a fürt alapértelmezett tárolója, `/HdiSamples/HdiSamples/MahoutMovieData`.
+Kényelmesen [GroupLens kutatási](https://grouplens.org/datasets/movielens/) adja meg, amely kompatibilis a mahout használatával formátumú filmek minősítés adatait. Ezek az adatok érhető el a fürt alapértelmezett tárolója, `/HdiSamples/HdiSamples/MahoutMovieData`.
 
 Két fájl `moviedb.txt` és `user-ratings.txt`. A `user-ratings.txt` fájl elemzése során használatos. A `moviedb.txt` felhasználóbarát szöveges információkat biztosít, amikor az eredmények megtekintése.
 
@@ -200,15 +197,3 @@ Most, hogy, hogyan használható a Mahout hogyan, Fedezze fel az adatok használ
 * [Az Apache Hive a HDInsight](hdinsight-use-hive.md)
 * [A HDInsight Apache Pig](hdinsight-use-pig.md)
 * [A MapReduce és a HDInsight](hdinsight-use-mapreduce.md)
-
-[build]: https://mahout.apache.org/developers/buildingmahout.html
-[movielens]: https://grouplens.org/datasets/movielens/
-[100k]: https://files.grouplens.org/datasets/movielens/ml-100k.zip
-[getstarted]:apache-hadoop-linux-tutorial-get-started.md
-[upload]: hdinsight-upload-data.md
-[ml]: https://en.wikipedia.org/wiki/Machine_learning
-[forest]: https://en.wikipedia.org/wiki/Random_forest
-[enableremote]: ./media/hdinsight-mahout/enableremote.png
-[connect]: ./media/hdinsight-mahout/connect.png
-[hadoopcli]: ./media/hdinsight-mahout/hadoopcli.png
-[tools]: https://github.com/Blackmist/hdinsight-tools

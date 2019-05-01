@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: a6304a93b1409cff871ed1c4c1d7e66d6c8c6f53
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 496f7c75e6633089d4ca88a9e3cd7c76ee415780
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736710"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922408"
 ---
 # <a name="language-support-for-qna-maker"></a>A QnA Maker nyelvi támogatás
 
@@ -41,7 +41,7 @@ Ha a felhasználó több nyelv támogatása tervek, kell rendelkezniük nekik a 
 
 Ellenőrizze az alábbi lépéseket követve elsődleges nyelve:
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).  
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).  
 1. Keresse meg és válassza ki az Azure Search-erőforrást a QnA Maker erőforrás részeként létrehozott. Az Azure Search-erőforrás neve a neve megegyezik a QnA Maker erőforrás kezdődik, és a típus lesz **keresési szolgáltatás**. 
 1. Az a **áttekintése** lapon a keresési erőforrás, jelölje be **indexek**. 
 1. Válassza ki a **testkb** index.

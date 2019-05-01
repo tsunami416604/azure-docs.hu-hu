@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 09f452a0971e2a0e74e51edd2db44eecda39c204
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 810d19a697e32f2d8e389bf58d52e82529bdd66b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60258037"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917440"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>Oktatóanyag: Az Azure Active Directory-integráció, Marketo-
 
@@ -109,7 +109,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Marketo, hajtsa végre
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://login.marketo.com/saml/assertion/\<munchkinid\>`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [Marketo-ügyfél-támogatási csapatának](http://investors.marketo.com/contactus.cfm) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [Marketo-ügyfél-támogatási csapatának](https://investors.marketo.com/contactus.cfm) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 

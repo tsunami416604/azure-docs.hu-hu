@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 5c9f70650f518c72a75d9a7826e7cbc30a95a00c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f19d193bef718bd4ad3d98f2112a7e705051b729
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60852707"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920066"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>A linuxon futó App Service-hez Java fejlesztői útmutatója
 
@@ -112,7 +112,7 @@ Az egyetlen alkalmazást futtató és egy üzembe helyezési pont az App Service
 
 Amikor alkalmazás halommemória finomhangolásának beállításai, tekintse át az App Service-csomag részletei, és több alkalmazás és üzembe helyezési pont figyelembe kell keresnie a optimális lefoglalt memória.
 
-Ha helyez üzembe egy JAR-alkalmazást, azt kell elnevezni `app.jar` , hogy a beépített rendszerképpel helyesen azonosítani tudja az alkalmazás. (A Maven bővítménnyel nem, automatikusan az Átnevezés.) Ha nem szeretné, a JAR átnevezése `app.jar`, feltöltheti azt a héjparancsfájlt, a parancs futtatása a JAR. Illessze be a parancsfájl teljes elérési útja a [indítási fájl](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-faq#startup-file) szövegmezőben, hogy a portál konfigurációs szakaszban.
+Ha helyez üzembe egy JAR-alkalmazást, azt kell elnevezni `app.jar` , hogy a beépített rendszerképpel helyesen azonosítani tudja az alkalmazás. (A Maven bővítménnyel nem, automatikusan az Átnevezés.) Ha nem szeretné, a JAR átnevezése `app.jar`, feltöltheti azt a héjparancsfájlt, a parancs futtatása a JAR. Illessze be a parancsfájl teljes elérési útja a [indítási fájl](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#startup-file) szövegmezőben, hogy a portál konfigurációs szakaszban.
 
 ### <a name="turn-on-web-sockets"></a>Kapcsolja be a web sockets
 

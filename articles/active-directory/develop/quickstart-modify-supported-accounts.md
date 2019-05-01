@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
+ms.date: 04/30/2019
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a2c68d607e7afc2e3eac675511734c8d054c427
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e3a4d4293eeea06e30189e0bccce488a8f44b199
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299532"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918813"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application-preview"></a>Gyors útmutató: Egy alkalmazás (előzetes verzió) támogatja a fiókok módosítása
+# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Gyors útmutató: Az alkalmazás által támogatott fiókok módosítása
 
 Az alkalmazások Microsoft Identity Platformon való regisztrálásakor esetenként az a cél, hogy az alkalmazást csak a szervezethez tartozó felhasználók érhessék el. Előfordulhat az is, hogy az alkalmazást olyan felhasználók számára is szeretné elérhetővé tenni, akik külső szervezetekhez tartoznak, vagy nem feltétlenül tartoznak valamely szervezethez (a személyes fiókok).
 

@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre virtuális hálózatot az Azure Portal használatával. Virtuális hálózat lehetővé teszi, hogy az Azure-erőforrások, például virtuális gépeket, privát módon kommunikáljanak egymással, és az interneten.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
+author: KumudD
 tags: azure-resource-manager
 Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
 ms.service: virtual-network
@@ -13,13 +13,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 11/30/2018
-ms.author: jdial
-ms.openlocfilehash: 346299dff8354bfca56a1f348c8f66e90da89632
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: kumud
+ms.openlocfilehash: 995bc8e7b2eb4e9160b2b625067f20324df2cbfd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60391403"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717020"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Gyors útmutató: Virtuális hálózat létrehozása az Azure Portallal
 
@@ -59,7 +59,7 @@ Hozzon létre két virtuális gépet a virtuális hálózaton:
 
 1. A **hozzon létre egy virtuális gép – alapvető**, adja meg vagy válassza ki ezt az információt:
 
-    | Beállítás | Value |
+    | Beállítás | Érték |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
     | Előfizetés | Válassza ki előfizetését. |

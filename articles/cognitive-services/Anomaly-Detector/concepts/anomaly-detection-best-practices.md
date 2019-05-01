@@ -1,5 +1,5 @@
 ---
-title: Ajánlott eljárások az Anomáliadetektálási detector használatával API használatához
+title: Az Anomaly Detector API használatával kapcsolatos ajánlott eljárások
 description: Bevált gyakorlatok megismeréséhez, amikor az érzékelő Anomáliadetektálás API-val rendellenességek észlelése.
 services: cognitive-services
 author: aahill
@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 467ac4e475a1c23e25b62c76cfbc959e7ed49465
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 766d009be3cd664d928a3c12f5fea38c26bbbdde
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484034"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64692195"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Az Anomáliadetektálási detector használatával API használatának ajánlott eljárásai
 
@@ -25,6 +25,29 @@ Az Anomáliadetektálási detector használatával API egy olyan állapot nélk�
 * Az API-kérelem szereplő adatpontok száma. 
 
 Ez a cikk segítségével az API-t a legjobb eredmények elérése érdekében az adatok beolvasása a bevált gyakorlatok megismeréséhez. 
+
+## <a name="when-to-use-batch-entire-or-latest-last-point-anomaly-detection"></a>Mikor érdemes használni a batch (teljes) vagy a legújabb (utolsó) pont a rendellenességek észlelése
+
+Az Anomáliadetektálási detector használatával API batch-észlelési végpontja észlelje a rendellenességeket a teljes időpontokban idősorozat-adatok révén teszi lehetővé. Ebben az észlelési üzemmódban egyetlen statisztikai modellt létrejött, és alkalmazza az adatkészlet minden pontján. Az idősorozat-e az alábbi jellemzőkkel, javasoljuk a batch-észlelési található egy API-hívás az adatok előnézetének megtekintéséhez.
+
+* Egy szezonális idősorozat, az alkalmi rendellenességeket.
+* Egy egybesimított trend idősorozat, az alkalmi adatforgalmi csúcsokhoz/DIP. 
+
+Batch anomáliadetektálás valós idejű adatok figyelése, vagy használja, amely nem rendelkezik a fenti jellemzők idősorozat-adatok használata nem ajánlott. 
+
+* Batch-észlelési hoz létre, és csak egy modell vonatkozik, az észlelés az egyes pontok teljes sorozatot keretében történik. Ha az idő sorozat adattrendek felfelé és lefelé szezonalitás, néhány pontokat anélkül módosíthatja (DIP és az adatok kiugrások) a modell által kimaradhatnak. Hasonlóképpen néhány pont módosítása, amelyek kevésbé jelentős kiépítettektől későbbi szakaszában adatokat, mint előfordulhat, hogy nem számítanak bele a elég jelentős ahhoz, be kell építeni a modell.
+
+* Batch-észlelés a lassabb, mint a legutóbbi időpontra anomáliadetektálási állapotának észlelése esetén figyelési valós idejű adatok elemzése folyamatban pontok száma miatt.
+
+A valós idejű adatok figyelése, javasoljuk, hogy csak a legújabb adatpont anomáliadetektálási állapotának észlelése. Utolsó pont észlelés folyamatosan alkalmazásával streamelési adatok figyelése elvégezhető hatékonyabban, pontosan.
+
+Az alábbi példa e észlelési mód is van a teljesítményre gyakorolt hatását ismerteti. Az első képen látható folyamatosan észlelése az anomáliadetektálási állapot utolsó pont mentén 28 korábban látott adatpontok eredménye látható. A piros pontok rendellenességeket.
+
+![Rendellenességek észlelése, a legújabb pont használatát bemutató kép](../media/last.png)
+
+Alább az azonos adatkészlet batch anomáliadetektálás használatával. A művelet a modellnek több rendellenességek téglalapok által jelölt figyelmen kívül hagyta.
+
+![Rendellenességek észlelése, a batch metódussal egy kép](../media/entire.png)
 
 ## <a name="data-preparation"></a>Adatok előkészítése
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: thweiss
-ms.openlocfilehash: 67bc3076be91ade140b39b7dd8037299902546a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a089d8bd4f2197c93d43e70742743db29944b910
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61046318"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872670"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatok
 
@@ -68,6 +68,8 @@ A gyökér elérési útját tartalmazza rendelkezik minden olyan indexelési h�
 
 - Elérési utak, amelyeket nem lehet indexelni kell kizárhatja a gyökér elérési útját tartalmazza. Ez a lehetőség az ajánlott módszer lehetővé teszi az Azure Cosmos DB proaktív módon index minden új tulajdonság, amely a modell adhatók hozzá.
 - Zárja ki a gyökér elérési úthoz szelektív elérési utakat indexelni kell felvenni.
+
+- Normál karakterek, amelyek tartalmazzák az elérési utakra: alfanumerikus karaktereket és _ (aláhúzás), nem kell az elérési útvonal karakterláncának körüli idézőjeleket (például "/ path /?") karaktert. Az elérési utakat speciális karaktereket, escape-körüli dupla idézőjelek között az elérési útvonal karakterláncának kell (például "/\"elérési út – abc\"/?"). Ha különleges karaktereket az elérési úthoz, akkor is escape-minden biztonsági elérési útját. Funkcionálisan nem létrehozni, akkor eltérést Ha escape-e minden elérési út csak az azokat, amelyeket speciális karakterek Vs.
 
 Lásd: [ebben a szakaszban](how-to-manage-indexing-policy.md#indexing-policy-examples) házirend példák az indexelés.
 

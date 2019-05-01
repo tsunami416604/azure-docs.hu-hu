@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 96656da078b79474dbf6576455a485d17868db49
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fecf6759dd7b277dda10fa2656e6ae9407490370
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60406753"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922967"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
 [Az Azure Functions](functions-overview.md) biztosít beépített integráció [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) functions figyelése. Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Functions szolgáltatást a rendszer által létrehozott naplófájlok küldeni az Application Insights.
 
-Azt javasoljuk, hogy az Application Insights használatát, mert a napló, a teljesítmény és a hiba az adatok gyűjtésével. Automatikusan felismeri a teljesítményanomáliákat és segítséget nyújt a problémák diagnosztizálása és megérteni, hogyan használhatók a függvényeit hatékony elemzőeszközöket tartalmaz. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Az Application Insights helyi függvény projekt alkalmazásfejlesztés során is használható. További információkért lásd: [Mi az Application Insights?](../azure-monitor/app/app-insights-overview.md)
+Azt javasoljuk, hogy az Application Insights használatát, mert a napló, a teljesítmény és a hiba az adatok gyűjtésével. Automatikusan felismeri a teljesítményanomáliákat és segítséget nyújt a problémák diagnosztizálása és megérteni, hogyan használhatók a függvényeit hatékony elemzőeszközöket tartalmaz. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Az Application Insights helyi függvény projekt alkalmazásfejlesztés során is használható. További információkért lásd: [Mi az Application Insights?](../azure-monitor/app/app-insights-overview.md).
 
 A szükséges az Application Insights-kialakítási Azure Functions be van építve, mert szüksége egy érvényes kialakítási kulcsot a függvényalkalmazás csatlakozni az Application Insights-erőforrás.
 
@@ -626,7 +626,7 @@ Ez az alkalmazás csatlakozik a napló streamelési szolgáltatás, és az alkal
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Folyamatos átviteli naplók használatával engedélyezheti a [Azure parancssori felület (CLI)](/cli/azure/install-azure-cli). Az Azure CLI használatával az alábbi parancsok jelentkezzen be, válassza ki az előfizetést és a stream naplófájlokat:
+Folyamatos átviteli naplók használatával engedélyezheti a [Azure CLI-vel](/cli/azure/install-azure-cli). A következő parancsok használatával jelentkezzen be, válassza ki az előfizetést és a stream naplófájlokat:
 
 ```azurecli
 az login
