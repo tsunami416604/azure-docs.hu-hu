@@ -14,7 +14,7 @@ metadata:
   ms.author: jovanpop-msft
   ms.reviewer: carlrab
   manager: craigg
-  ms.date: 05/06/2019
+  ms.date: 04/26/2019
 abstract:
   description: 'Az Azure SQL Database egy relációs adatbázis (DBaaS) szolgáltatás a Microsoft SQL Server adatbázismotor legújabb stabil verziója alapján. SQL-adatbázis nem egy nagy teljesítményű, könnyen használható, megbízható és biztonságos adatbázis, amely segítségével hozhat létre új alkalmazások, webhelyek és az Ön által választott programozási nyelven mikroszolgáltatás-alapú infrastruktúra kezelése nélkül. Ismerje meg, hogyan használhatja az Azure SQL Database szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.'
   aside:

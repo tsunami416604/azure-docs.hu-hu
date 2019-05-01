@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 62356ee35631373b5a5d38ed356bbb2fb489807b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 0758105c7e2a18e976bc0c210eaf4e55e418a22d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60710648"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925724"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A SUSE Linux Enterprise Server az Azure-ban támasztja beállítása
 
@@ -578,7 +578,7 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Az Azure az ütemezett események támasztja konfigurációja
 
-Azure-ajánlatok [ütemezett események](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/scheduled-events). Az ütemezett események metaadatok szolgáltatáson keresztül, ha elegendő idő marad az alkalmazás előkészítése az eseményekről, mint a virtuális gép leállítása, a virtuális gép újbóli üzembe helyezése, stb. Erőforrás-ügynök **[azure-események](https://github.com/ClusterLabs/resource-agents/pull/1161)** figyeli az Azure az ütemezett események. Események észlelése esetén az ügynök megpróbálja az összes erőforrás leállítása az érintett virtuális gépre, és helyezze át őket a fürt egy másik csomópontra. A további támasztja erőforrások eléréséhez kell konfigurálni. 
+Azure-ajánlatok [ütemezett események](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events). Az ütemezett események metaadatok szolgáltatáson keresztül, ha elegendő idő marad az alkalmazás előkészítése az eseményekről, mint a virtuális gép leállítása, a virtuális gép újbóli üzembe helyezése, stb. Erőforrás-ügynök **[azure-események](https://github.com/ClusterLabs/resource-agents/pull/1161)** figyeli az Azure az ütemezett események. Események észlelése esetén az ügynök megpróbálja az összes erőforrás leállítása az érintett virtuális gépre, és helyezze át őket a fürt egy másik csomópontra. A további támasztja erőforrások eléréséhez kell konfigurálni. 
 
 1. **[A]**  Telepítse a **azure-események** ügynök. 
 

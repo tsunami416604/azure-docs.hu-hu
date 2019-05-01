@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 673101ad7f55969c216adf7e970402a2109f8254
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 35f8a766c6d260e23ff854284d5b8ee047e64b42
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60864281"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926228"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Hagyományos tároló erőforrás törlésével kapcsolatos hibák elhárítása
 Ez a cikk nyújt hibaelhárítási útmutatót, ha hibák a következők egyike történik az Azure klasszikus tárfiókot, tárolót vagy *.vhd lapozófájl blob törlésének megkísérlésekor. 
@@ -37,7 +37,7 @@ A "Lemez" erőforrás-operációsrendszer-lemez és az adatlemez egy *.vhd page 
 3. A lemez(ek) bérlet megszakad, a lap BLOB(ok) maga törölhetők. A storage-fiók vagy a tároló összes bennük található "Lemez" erőforrás törlése után lehet törölni.
 
 >[!NOTE] 
->Ha a felhasználó törli a virtuális Gépet, de nem a virtuális merevlemez, tárolási díjakat továbbra is elkezdjük számolni a blob *.vhd lapozófájl. A díjak lesznek megfelelően ellenőrizze a tárfiók típusát a [díjszabását ismertető lapon](https://azure.microsoft.com/en-us/pricing/details/storage/) további részletekért. Ha a felhasználó már nem kíván használni a virtuális, törölje a informatikai/azokat későbbi díjak elkerülése érdekében. 
+>Ha a felhasználó törli a virtuális Gépet, de nem a virtuális merevlemez, tárolási díjakat továbbra is elkezdjük számolni a blob *.vhd lapozófájl. A díjak lesznek megfelelően ellenőrizze a tárfiók típusát a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/storage/) további részletekért. Ha a felhasználó már nem kíván használni a virtuális, törölje a informatikai/azokat későbbi díjak elkerülése érdekében. 
 
 ## <a name="unable-to-delete-storage-account"></a>Nem sikerült törölni a storage-fiók 
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d1ed16465efb6c70b4426f22e8b9983112142c79
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ce9c6a83d664bc9ad1798792f7762556c9a0d541
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162645"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690273"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Az Event Hubs – gyakori kérdések
 
@@ -50,6 +50,47 @@ Event Hubs Standard csomag jelenleg támogatja a maximális adatmegőrzési idő
 
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Hogyan követhetem figyelemmel az Event Hubs?
 Az Event Hubs bocsát ki, amelyek az erőforrásokat az állapotát az alábbi mérőszámok [Azure Monitor](../azure-monitor/overview.md). Emellett segítségével felmérheti az általános állapotát, az Event Hubs szolgáltatás nem csak a névterek szintjén, hanem az entitások szintjén. Ismerje meg, milyen figyelésével kapcsolatos kínáljuk [Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
+
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Milyen portokat tegye kell megnyitni a tűzfalon? 
+Segítségével az alábbi protokollok Azure Service Bus-üzenetek küldése és fogadása:
+
+- Advanced Message Queueing Protocol (AMQP)
+- HTTP
+- Apache Kafka
+
+Tekintse meg a következő táblázat tartalmazza a kimenő portokat, meg kell nyitnia ezeket a protokollokat használata az Azure Event Hubs való kommunikációhoz. 
+
+| Protocol | Portok | Részletek | 
+| -------- | ----- | ------- | 
+| AMQP | 5671, 5672 és | Lásd: [AMQP protokoll-útmutató](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
+| HTTP, HTTPS | 80, 443 |  |
+| Kafka | 9092 | Lásd: [használata az Event Hubs, Kafka-alkalmazásokból](event-hubs-for-kafka-ecosystem-overview.md)
+
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Milyen IP-címeket engedélyezési lista kell?
+A kapcsolat a megfelelő IP-címek engedélyezési lista megkereséséhez kövesse az alábbi lépéseket:
+
+1. Futtassa a következő parancsot a parancssorba: 
+
+    ```
+    nslookup <YourNamespaceName>.servicebus.windows.net
+    ```
+2. Jegyezze fel a visszaadott IP-címet `Non-authoritative answer`. Az IP-címet a statikus. A csak időben megváltozna azt, hogy ha egy másik fürtön be a névtér visszaállítását.
+
+A zone redudancy a névteret használja, ha néhány további lépések végrehajtásához szüksége: 
+
+1. Először futtassa a nslookup a névtérhez.
+
+    ```
+    nslookup <yournamespace>.servicebus.windows.net
+    ```
+2. Jegyezze fel a neve a **nem mérvadó válasz** szakaszt, amely a következő formátumok egyikében: 
+
+    ```
+    <name>-s1.servicebus.windows.net
+    <name>-s2.servicebus.windows.net
+    <name>-s3.servicebus.windows.net
+    ```
+3. Az nslookup futtassa egyesével az utótagok s1, s2 és s3 három rendelkezésre állási zónában futó összes három példány IP-címeket 
 
 ## <a name="apache-kafka-integration"></a>Az Apache Kafka-integráció
 

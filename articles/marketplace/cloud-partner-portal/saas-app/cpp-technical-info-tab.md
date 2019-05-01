@@ -1,25 +1,18 @@
 ---
-title: Azure SaaS alkalmazás ajánlat műszaki konfigurálása |} A Microsoft Docs
+title: Azure SaaS alkalmazás ajánlat műszaki konfigurálása |} Az Azure Marketplace-en
 description: Technikai információ konfigurálja a SaaS-alkalmazás ajánlat az Azure Marketplace-en.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 891d9b7b34e3d30efb46b69ef1aa75566fe634c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: 46dcf4aeb7ddb67028eb23dde9236f2b7709f86d
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60594346"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64941726"
 ---
 # <a name="saas-application-technical-info-tab"></a>SaaS-alkalmazás technikai információ lapon
 
@@ -27,9 +20,11 @@ A technikai információ lapon találhatók a műszaki konfigurációs képerny�
 
 ![Technikai konfigurációs űrlapján](./media/saas-techinfo-techconfig.png)
 
+
 ## <a name="technical-configuration-form"></a>Technikai konfigurációs űrlapján
 
 Az űrlap 2 mezőt tartalmaz: Termék- és a művelet meghívásához.
+
 
 ### <a name="product-field"></a>Termék mező
 
@@ -37,6 +32,7 @@ A következő kirakattípus mindkét megadhat egy SaaS-alkalmazás:
 - Kiválasztásával üzleti felhasználók a **ajánlati** lehetőséget.
 - Egy informatikai rendszergazda felhasználó kiválasztásával **értékesítsen Rajuk keresztül a Microsoft**.
 Segítségével eldöntheti, hogy milyen típusú SaaS-alkalmazásokat fejleszt, olvassa el [kirakat kijelölés ismertetése](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#understand-storefront-selection).
+
 
 #### <a name="sell-through-microsoft"></a>Értékesítsen rajuk keresztül a Microsoft
 A felhasználói élményt hozhat létre, konfigurálnia kell az alábbi adatokra:
@@ -46,16 +42,17 @@ A felhasználói élményt hozhat létre, konfigurálnia kell az alábbi adatokr
 
   ![Értékesítsen rajuk keresztül Microsoft űrlap](./media/saas-techinfo-sellthrough-ms.png)
 
-A következő táblázat ismerteti a kötelező mezőket a Microsoft értékesítési.
+A következő táblázat ismerteti a kötelező mezők **értékesítsen Rajuk keresztül a Microsoft**.  Kötelező mezőt csillag (*) rendszer feltehetően.
 
 |  **Mező neve**   |  **Leírás**  |
 |  ---------------  |  ---------------  |
-|    Előfizetés azonosítókat előzetes verzió               |    Minden Azure-előfizetési azonosítók tesztelésére előzetes verzióban érhető el az ajánlatot, előtt a nyilvánosan elérhető.               |
-|     Első lépések útmutató              |   Az ügyfelekkel, amelyekkel csatlakozhat a SaaS-alkalmazás megosztásához irányban. Alapszintű HTML-címkéket engedélyezettek, például: &lt;p&gt;, &lt;h1&gt;, &lt;li&gt;stb.                |
-|    Kezdőlap URL-címe  |   A webhely URL-cím lesz ügyfelei számára, hogy az Azure Portalról beszerzése után megjelenni irányítja. Az URL-cím is a végpontot, amely fog kapni a kapcsolat API-k a Microsoft kereskedelmi megkönnyítése érdekében.                |
-|  Connection Webhook    |  Az összes aszinkron esemény, amelyet a Microsoft küld Önnek a vásárló nevében (például: Azure-előfizetés felment érvénytelen), kérjük, adja meg a kapcsolat webhook. Ha még nem rendelkezik egy webhook rendszer helyben, a legegyszerűbb konfiguráció, hogy egy HTTP végpont logikai alkalmazást, amely minden, az csökkentheti a közzétett események figyelésére és majd őket megfelelően kezelni. További információkért lásd: <a href="https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint">hívása, eseményindító, vagy HTTP-végpontokat, a logic apps-munkafolyamatok beágyazása</a>                |
-|  Az Azure AD-bérlő és alkalmazás-azonosító      |   Az Azure-portálon belül szükség van egy Active Directory-alkalmazást hoz létre, hogy mi is a kapcsolat ellenőrzése a kettő közötti szolgáltatások egy hitelesített kommunikáció mögött helyezkedik el. Az alábbi mezők AD-alkalmazás létrehozása, és illessze be a megfelelő bérlői azonosító és az alkalmazásazonosító megadása kötelező. Vegye figyelembe, hogy a publisherID társítva-e alkalmazás-azonosítóját. Ezért győződjön meg arról, hogy azonos App ID hasonlóan minden ajánlat.             |
-
+|  **Előfizetés azonosítókat előzetes verzió\***   |  Minden Azure-előfizetési azonosítók tesztelésére előzetes verzióban érhető el az ajánlatot, előtt a nyilvánosan elérhető.  |
+|  **Előzetes verzió AAD/MSA-fiókok\***   |  Az Azure AD/MSA-fiókok, vesszővel elválasztva, amelyek hozzáférést kaptak az előzetes verziójára. |
+|  **Első lépések útmutató** |  Az ügyfelekkel, amelyekkel csatlakozhat a SaaS-alkalmazás megosztásához irányban. Alapszintű HTML-címkéket engedélyezettek, például: &lt;p&gt;, &lt;h1&gt;, &lt;li&gt;stb.    |
+|  **Kezdőlap URL-címe\***           |  A webhely URL-cím lesz ügyfelei számára, hogy az Azure Portalról beszerzése után megjelenni irányítja. Az URL-cím is a végpontot, amely fog kapni a kapcsolat API-k a Microsoft kereskedelmi megkönnyítése érdekében.   |
+| **Connection Webhook\***            |  Az összes aszinkron esemény, amelyet a Microsoft küld Önnek a vásárló nevében (például: Azure-előfizetés felment érvénytelen), kérjük, adja meg a kapcsolat webhook. Ha még nem rendelkezik egy webhook rendszer helyben, a legegyszerűbb konfiguráció, hogy egy HTTP végpont logikai alkalmazást, amely minden, az csökkentheti a közzétett események figyelésére és majd őket megfelelően kezelni. További információkért lásd: <a href="https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint">hívása, eseményindító, vagy HTTP-végpontokat, a logic apps-munkafolyamatok beágyazása</a>    |
+|  **Az Azure AD-bérlő azonosítója\***  és **alkalmazás azonosítója\***      |   Az Azure-portálon belül szükség van egy Active Directory-alkalmazást hoz létre, hogy mi is a kapcsolat ellenőrzése a kettő közötti szolgáltatások egy hitelesített kommunikáció mögött helyezkedik el. Az alábbi mezők AD-alkalmazás létrehozása, és illessze be a megfelelő bérlői azonosító és az alkalmazásazonosító megadása kötelező. Vegye figyelembe, hogy a publisherID társítva-e alkalmazás-azonosítóját. Ezért győződjön meg arról, hogy azonos App ID hasonlóan minden ajánlat.   |
+|   |   |
 
 Végül ha **értékesítsen Rajuk keresztül a Microsoft**, van egy másik új ajánlat eseménykifejezést **csomagok**. 
 

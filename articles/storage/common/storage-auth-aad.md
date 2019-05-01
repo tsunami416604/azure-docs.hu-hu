@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 12598f3866cd1041cdf3cb89dac985b8d2caafce
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.openlocfilehash: 2a632ef79c0e9bb925689456d682e7f22504806b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60148806"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707841"
 ---
 # <a name="authenticate-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Hitelesíti a hozzáférést az Azure-blobok és üzenetsorok az Azure Active Directoryval
 
@@ -21,15 +21,15 @@ Az Azure Storage támogatja a hitelesítés és engedélyezés az Azure Active D
 
 Felhasználók vagy az Azure AD hitelesítő adatait használó alkalmazások hitelesítése készít felső szintű biztonság és a könnyű használat más engedélyezési módot. Miközben továbbra is megosztott kulcsos engedélyezési használata az alkalmazások, Azure AD-vel megkerüli ügyféladataik tárolásának a kód a hozzáférési kulcsára. Közös hozzáférésű jogosultságkódok (SAS) használata a minden részletre kiterjedő hozzáférést biztosítani a tárfiókban lévő erőforrásokhoz folytathatja, de az Azure AD kezelése SAS-tokeneket vagy sérült biztonságú SAS visszavonása foglalkoznia kellene hasonló funkciókat kínál. A Microsoft javasolja, hogy az Azure AD-hitelesítés használata az Azure Storage-alkalmazásokhoz, amikor csak lehetséges.
 
-Hitelesítés és engedélyezés az Azure AD-beli hitelesítő érhető el az összes általános célú és a Blob storage-fiókok az összes nyilvános régióban. Csak a tárfiókok az Azure Resource Manager üzembe helyezési modell támogatása az Azure AD engedélyezési hoz létre.
+Hitelesítés és engedélyezés az Azure AD-beli hitelesítő érhető el az összes általános célú és a Blob storage-fiókok az összes nyilvános régióban és az országos felhők. Csak a tárfiókok az Azure Resource Manager üzembe helyezési modell támogatása az Azure AD engedélyezési hoz létre.
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>Blobok és üzenetsorok az Azure ad-ben – áttekintés
 
 Amikor egy blob és üzenetsor-erőforrás eléréséhez megpróbál egy rendszerbiztonsági tag (egy felhasználó, csoport vagy alkalmazás), a kérelem kell engedélyezni, kivéve, ha egy blob érhető el a névtelen hozzáférés. Az Azure AD-erőforrásokhoz való hozzáférést két lépésből áll. Először a rendszerbiztonsági tag identitás hitelesítve van, és a egy OAuth 2.0 jogkivonat adja vissza. Ezután a jogkivonatot egy kérés részeként továbbítja a Blob és üzenetsor-szolgáltatás és a szolgáltatás a megadott erőforráshoz való hozzáférés engedélyezésére használja.
 
-A hitelesítési lépés szükséges, hogy egy vagy több RBAC-szerepkörök a rendszerbiztonsági tag rendelni. Az Azure Storage blob és üzenetsor adatok közös jogosultságkészletek építőelemekkel RBAC-szerepkörök biztosít. A hozzárendelt rendszerbiztonsági szerepköröket határozza meg, hogy a hozzáférést, amely a rendszerbiztonsági tag fog rendelkezni. RBAC-szerepkörök hozzárendelése az Azure Storage kapcsolatos további információkért lásd: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC tárolási adatok](storage-auth-aad-rbac.md).
+A hitelesítési lépés szükséges, hogy egy alkalmazás kérése futásidőben az OAuth 2.0 hozzáférési jogkivonatot. Ha egy alkalmazás például egy Azure virtuális gép, virtuálisgép-méretezési csoportot vagy egy Azure Functions-alkalmazás egy Azure entitáson belül fut, használhat egy [identitás](../../active-directory/managed-identities-azure-resources/overview.md) való hozzáférés blobok vagy üzenetsorok. Megtudhatja, hogyan engedélyezheti a kérést hoz létre egy felügyelt identitás az Azure Blob- vagy várólista szolgáltatáshoz, talál [hitelesíti a blobok és üzenetsorok az Azure Active Directory és a felügyelt identitásokból hozzáférést az Azure-erőforrások](storage-auth-aad-msi.md).
 
-Az engedélyezési lépés szükséges, hogy egy alkalmazás futásidőben az OAuth 2.0 hozzáférési jogkivonatot kér-e. Ha egy alkalmazás például egy Azure virtuális gép, virtuálisgép-méretezési csoportot vagy egy Azure Functions-alkalmazás egy Azure entitáson belül fut, használhat egy [identitás](../../active-directory/managed-identities-azure-resources/overview.md) való hozzáférés blobok vagy üzenetsorok. Megtudhatja, hogyan engedélyezheti a kérést hoz létre egy felügyelt identitás az Azure Blob- vagy várólista szolgáltatáshoz, talál [hitelesíti a blobok és üzenetsorok az Azure Active Directory és a felügyelt identitásokból hozzáférést az Azure-erőforrások](storage-auth-aad-msi.md).
+Az engedélyezési lépés szükséges, hogy egy vagy több RBAC-szerepkört kell rendelni a rendszerbiztonsági tagot. Az Azure Storage blob és üzenetsor adatok közös jogosultságkészletek építőelemekkel RBAC-szerepkörök biztosít. A hozzárendelt rendszerbiztonsági szerepköröket határozza meg, hogy az engedélyeket, az egyszerű lesz. RBAC-szerepkörök hozzárendelése az Azure Storage kapcsolatos további információkért lásd: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC tárolási adatok](storage-auth-aad-rbac.md).
 
 Az Azure ad-vel is hitelesítheti a natív alkalmazások és webalkalmazások, amelyek a kéréseket küld az Azure Blob vagy a Queue szolgáltatás. Hozzáférési jogkivonat kérése, és engedélyezze az adatok blob és üzenetsor használatával kapcsolatban lásd: [hitelesítés az Azure Storage-alkalmazás Azure AD-vel](storage-auth-aad-app.md).
 
@@ -69,14 +69,9 @@ Az Azure portal használatával vagy az Azure AD-fiókot, vagy a hozzáférési 
 
 Amikor megpróbálja blob és üzenetsor-adatok elérése, az Azure Portalon először ellenőrzi e van hozzájuk rendelve egy RBAC szerepkör- **Microsoft.Storage/storageAccounts/listkeys/action**. Ha Ön egy szerepkört rendeltek ezt a műveletet, ezután az Azure Portalon a fiókkulcs keresztül megosztott kulcsos engedélyezési blob és üzenetsor adatainak eléréséhez. Ha rendelkezik nincs hozzárendelve egy szerepkörhöz, ezt a műveletet, majd az Azure Portalon megpróbál hozzáférni adatokat az Azure AD-fiók használatával.
 
-Blob és üzenetsor adatok eléréséhez az Azure Portalról az Azure AD-fiókot használ, mindkét az alábbi utasításokat kell teljesülniük az Ön számára:
+Blob- vagy várólista eléréséhez blob és üzenetsor-adatokhoz való hozzáféréshez engedélyek szükségesek az Azure portal használata az Azure AD-fiók adatait, és nyissa meg a tárfiók erőforrásainak az Azure Portalon keresztül engedélyek is szükségesek. Az Azure Storage által biztosított beépített szerepkörök blob és üzenetsor-erőforrásokhoz való hozzáférés biztosítása, de azok nem adja meg a tárfiók erőforrásainak engedélyeket. Ebből kifolyólag a portáljához való hozzáférésre is szükséges a hozzárendelés egy Azure Resource Manager-szerepkör például a [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkör hatóköre a storage-fiók vagy magasabb szintre. A **olvasó** szerepkör engedélyt ad a legtöbb korlátozott, de egy másik Azure Resource Manager-szerepkör, amely hozzáférést biztosít a tárfiók kezelési erőforrásainak is fogadható el. Engedélyek hozzárendelése a felhasználók számára az adatok eléréséhez az Azure Portalon az Azure AD-fiókkal kapcsolatos további információkért lásd: [hozzáférést biztosít az Azure blob és üzenetsor az adatokat az RBAC az Azure Portalon](storage-auth-aad-rbac-portal.md).
 
-- Az Azure Resource Manager társított meg [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkör minimális szintre a tárfiók hatókörrel rendelkező vagy újabb. A **olvasó** szerepkör engedélyt ad a legtöbb korlátozott, de egy másik Azure Resource Manager-szerepkör, amely hozzáférést biztosít a tárfiók kezelési erőforrásainak is fogadható el.
-- Akár egy beépített vagy egyéni RBAC szerepkör, amely hozzáférést biztosít a blob- vagy várólista adataihoz Önhöz rendelve.
-
-Az Azure portal jelzi, hogy melyik séma használatban van, amikor átvált egy tároló vagy egy üzenetsor. Az adatok elérése a portálon további információkért lásd: [az Azure Portallal blob és üzenetsor adatok elérését](storage-access-blobs-queues-portal.md).
-
-Engedélyek hozzárendelése a felhasználók számára az adatok eléréséhez az Azure Portalon az Azure AD-fiókkal kapcsolatos további információkért lásd: [hozzáférést biztosít az Azure blob és üzenetsor az adatokat az RBAC az Azure Portalon](storage-auth-aad-rbac-portal.md).
+Az Azure Portalon azt jelzi, hogy mely hitelesítési séma a tároló vagy üzenetsor lépve használatban. Az adatok elérése a portálon további információkért lásd: [az Azure Portallal blob és üzenetsor adatok elérését](storage-access-blobs-queues-portal.md).
 
 ### <a name="data-access-from-powershell-or-azure-cli"></a>Adatelérési Powershellből vagy az Azure CLI-vel
 

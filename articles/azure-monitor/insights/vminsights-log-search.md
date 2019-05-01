@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 8b6745a2b9afe8d3101585e3f7a13f2fc978c84a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: bca1b96e7dc5673cabef26fe6b2cfb8daa41fbf5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122591"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702518"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Az Azure Monitor naplók lekérdezni a virtuális gépek (előzetes verzió)
 A virtuális gépek az Azure Monitor teljesítmény és a kapcsolati metrika, a számítógép és a folyamat leltáradatok és a állapotinformációkat gyűjt, és továbbítja azokat a Log Analytics-munkaterületet az Azure monitorban.  Ezek az adatok érhető el [lekérdezés](../../azure-monitor/log-query/log-query-overview.md) az Azure monitorban. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
@@ -58,7 +58,7 @@ Kezelheti a költségeket és összetettséget, csatlakozási rekordjainak nem f
 |SourceIp |A forrás IP-címe |
 |DestinationIp |A cél-IP-cím |
 |DestinationPort |A cél-port száma |
-|Protokoll |A kapcsolathoz használt protokoll.  Értékek *tcp*. |
+|Protocol |A kapcsolathoz használt protokoll.  Értékek *tcp*. |
 
 A fiókra a csoportosítás a hatását, csoportosított fizikai kapcsolatok számával kapcsolatos információkat a rekord a következő tulajdonságok:
 
@@ -139,7 +139,7 @@ Minden rekord VMBoundPort azonosíthatók a következő mezőket:
 |Feldolgozás | Identitás, amellyel a port társítva folyamat (vagy a folyamatok csoportok).|
 |IP | IP-cím-portot (lehet helyettesítő karaktert tartalmazó IP-Címek használatához *0.0.0.0*) |
 |Port |A Port számát |
-|Protokoll | A protokoll.  A példában *tcp* vagy *udp* (csak *tcp* jelenleg támogatott).|
+|Protocol | A protokoll.  A példában *tcp* vagy *udp* (csak *tcp* jelenleg támogatott).|
  
 Az identitás egy portot a fenti öt mezők származik, és a PortId tulajdonságban tárolja. Ez a tulajdonság segítségével gyorsan található rekordok egy adott portot időpontja között. 
 
@@ -202,7 +202,7 @@ Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolatt
 | ProductVersion_s | A termék verziója |
 | FileVersion_s | A fájl verziója |
 | CommandLine_s | A parancssorból |
-| ExecutablePath z | A végrehajtható fájl elérési útja |
+| ExecutablePath_s | A végrehajtható fájl elérési útja |
 | WorkingDirectory_s | A munkakönyvtárban |
 | Felhasználónév | A fiók, amely alatt a folyamat végrehajtása |
 | UserDomain | A tartományhoz, amelyben a folyamat végrehajtása |

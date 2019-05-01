@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Azure térbeli horgonyok iOS Unity-alkalmazás létrehozása |} A Microsoft Docs
+title: Rövid útmutató – Azure térbeli horgonyok Unity iOS-alkalmazás létrehozása |} A Microsoft Docs
 description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre iOS-alkalmazás használatával térbeli horgonyok Unity.
 author: craigktreasure
 manager: aliemami
@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e3320cd6131497d0b2c794646bae7fae578488cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 41189d4945ef22f8a587a51717b7dd6f40ac39ce
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60235264"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690551"
 ---
-# <a name="quickstart-create-an-ios-unity-app-with-azure-spatial-anchors"></a>Gyors útmutató: Egy IOS-es Unity-alkalmazás létrehozása az Azure térbeli horgonyok
+# <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Gyors útmutató: Az Azure térbeli horgonyok Unity iOS-alkalmazás létrehozása
 
-Ez a rövid útmutató bemutatja, hogyan hozzon létre egy IOS-es Unity alkalmazás [Azure térbeli horgonyok](../overview.md). Az Azure térbeli horgonyok platformfüggetlen fejlesztői szolgáltatása lehetővé teszi, hogy a vegyes valóság élmény helyükre kivonatuk eszközök idővel-objektumok segítségével. Ha elkészült, egy ARKit a Unity, menthet és egy térbeli kapcsolati alapot visszahívása használatával létrehozott iOS-alkalmazás lesz.
+Ez a rövid útmutató bemutatja, hogyan hozzon létre egy Unity iOS app [Azure térbeli horgonyok](../overview.md). Az Azure térbeli horgonyok platformfüggetlen fejlesztői szolgáltatása lehetővé teszi, hogy a vegyes valóság élmény helyükre kivonatuk eszközök idővel-objektumok segítségével. Ha elkészült, egy ARKit a Unity, menthet és egy térbeli kapcsolati alapot visszahívása használatával létrehozott iOS-alkalmazás lesz.
 
 A következőket fogja megtanulni:
 

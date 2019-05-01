@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 01d982d91d772ccfd468ccdac6391f971be4f43b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7e4364a06a3d20edc7aafd54a4dcd86dfd039043
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60765054"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573570"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
@@ -56,7 +56,7 @@ Néhány dolog, amit nem tehet meg ILB ASE használata esetén:
 
 Az ILB ASE létrehozása:
 
-1. Az Azure Portalon válassza ki a **erőforrás létrehozása** > **webes** > **App Service Environment-környezet**.
+1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Web** > **App Service Environment** elemet.
 
 2. Válassza ki előfizetését.
 
@@ -66,7 +66,7 @@ Az ILB ASE létrehozása:
 
 5. Ha már létező virtuális hálózatot választ, létre kell hoznia egy alhálózatot az ASE környezethez. Gondoskodjon arról, hogy az alhálózat mérete elég nagy legyen az ASE jövőbeli növekedésének biztosítására. Mi a `/24` méretet javasoljuk, amely 256 címet tartalmaz, és képes kezelni egy maximális méretű ASE környezetet és tetszőleges skálázási igényeket. 
 
-6. Válassza ki **virtuális hálózat/hely** > **virtuális hálózati konfiguráció**. A **VIP típust** állítsa **Belsőre**.
+6. Válassza a **Virtuális hálózat/hely** > **Virtuális hálózati konfiguráció** elemet. A **VIP típust** állítsa **Belsőre**.
 
 7. Adjon meg egy tartománynevet. Ezt a tartományt használják az ASE környezetben létrehozott alkalmazások. Van néhány korlátozás. A név nem lehet:
 
@@ -96,14 +96,14 @@ A **Virtuális hálózat** panelen található a **Virtuális hálózat konfigur
 
 A **Belső** lehetőség kiválasztását követően további IP-címek nem adhatók hozzá az ASE környezethez. Ehelyett tartományt kell biztosítania az ASE részére. Külső virtuális IP-címmel rendelkező ASE esetén az ASE környezeten belül létrehozott alkalmazások az ASE nevét használják tartományként.
 
-Ha a **VIP típusa** beállítást **Belsőre** állítja, akkor nem az ASE neve lesz az ASE környezet tartománya. Külön megadhatja a tartományt. Ha a tartomány *contoso.corp.net* és létrehozott egy alkalmazást, hogy ASE nevű *timereporting*, alkalmazás URL-címe timereporting.contoso.corp.net lesz.
+Ha a **VIP típusa** beállítást **Belsőre** állítja, akkor nem az ASE neve lesz az ASE környezet tartománya. Külön megadhatja a tartományt. Ha a tartomány *contoso.corp.net* és az ASE környezetben létrehoz egy *timereporting* nevű alkalmazást, akkor az alkalmazás URL-címe timereporting.contoso.corp.net lesz.
 
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>Alkalmazás létrehozása az ILB ASE környezetben ##
 
 Az ILB ASE környezetben a sima ASE környezettel megegyező módon hozhat létre alkalmazást.
 
-1. Az Azure Portalon válassza ki a **erőforrás létrehozása** > **Web + mobil** > **webalkalmazás**.
+1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Web + mobil** > **Webes alkalmazás** elemet.
 
 1. Adja meg az alkalmazás nevét.
 
@@ -117,7 +117,7 @@ Az ILB ASE környezetben a sima ASE környezettel megegyező módon hozhat létr
 
 1. Válassza ki vagy hozzon létre egy App Service-csomagot. Amennyiben új App Service-csomagot szeretne létrehozni, válassza az ASE környezetet helyként. Válassza ki a feldolgozókészletet, amelyben az App Service-csomagot szeretné létrehozni. Amikor létrehozza az új App Service-csomagot, válassza az ASE környezetet helyként és feldolgozókészletként. Az alkalmazás nevének megadásakor az alkalmazás tartománya az ASE tartománynevére cserélődik.
 
-1. Kattintson a **Létrehozás** gombra. Ha azt szeretné, hogy az alkalmazásnak, hogy megjelenjen az irányítópulton, válassza ki a **rögzítés az irányítópulton** jelölőnégyzetet.
+1. Kattintson a **Létrehozás** gombra. Ha szeretné, hogy az alkalmazás megjelenjen az irányítópulton, jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet.
 
     ![App Service-csomag létrehozása][2]
 
@@ -127,7 +127,7 @@ Az ILB ASE környezetben a sima ASE környezettel megegyező módon hozhat létr
 
 Az ILB ASE kissé különbözik az ILB nélküli ASE környezettől. A fenti információknak megfelelően Önnek kell kezelnie a saját DNS-ét. A HTTPS-csatlakozáshoz is saját tanúsítványt kell biztosítania.
 
-Az ASE létrehozását követően a tartomány az Ön által megadott tartománynevet jeleníti meg. Egy új elem jelenik meg a **beállítás** nevű menü **ILB-tanúsítvány**. Az ASE olyan tanúsítvánnyal jött létre, amely nem határozza meg az ILB ASE tartományát. Amennyiben ezzel a tanúsítvánnyal használja az ASE környezetet, a böngészője érvénytelennek fogja nyilvánítani. A tanúsítvány egyszerűbbé teszi a HTTPS tesztelését, de fel kell töltenie saját, az ILB ASE környezethez kötött rögzített tanúsítványát. Ez a lépés szükséges, függetlenül attól, hogy a tanúsítvány önaláírt vagy hitelesítésszolgáltatótól származik.
+Az ASE létrehozását követően a tartomány az Ön által megadott tartománynevet jeleníti meg. A **Beállítás** menüben egy **ILB-tanúsítvány** nevű új elem jelenik meg. Az ASE olyan tanúsítvánnyal jött létre, amely nem határozza meg az ILB ASE tartományát. Amennyiben ezzel a tanúsítvánnyal használja az ASE környezetet, a böngészője érvénytelennek fogja nyilvánítani. A tanúsítvány egyszerűbbé teszi a HTTPS tesztelését, de fel kell töltenie saját, az ILB ASE környezethez kötött rögzített tanúsítványát. Ez a lépés szükséges, függetlenül attól, hogy a tanúsítvány önaláírt vagy hitelesítésszolgáltatótól származik.
 
 ![ILB ASE tartománynév][3]
 
@@ -154,7 +154,7 @@ A böngészők megjelölik a PowerShell-parancs által létrehozott tanúsítvá
 
 Saját tanúsítványának feltöltéséhez és a hozzáférés teszteléséhez tegye a következőket:
 
-1. Az ASE létrehozása után keresse fel az ASE felhasználói felületét. Válassza az **ASE** > **Beállítások** > **ILB-tanúsítvány** lehetőséget.
+1. Az ASE létrehozása után keresse fel az ASE felhasználói felületét. Válassza az **ASE** > **Beállítások** > **ILB-tanúsítvány** lehetőséget.
 
 1. Az ILB-tanúsítvány beállításához válassza ki a tanúsítvány .pfx fájlját, majd adja meg a jelszót. Ennek a lépésnek a feldolgozása beletelhet egy kis időbe. Egy üzenet jelzi, hogy egy feltöltési művelet van folyamatban.
 

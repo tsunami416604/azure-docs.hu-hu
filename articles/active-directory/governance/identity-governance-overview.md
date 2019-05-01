@@ -1,6 +1,6 @@
 ---
-title: Identitáskezelést – Azure Active Directory |} A Microsoft Docs
-description: Az Azure Active Directory identitáskezelést lehetővé teszi, hogy azt biztonság és az alkalmazottak a termelékenység a megfelelő folyamatokat és látható-e szükség a szervezet elosztása érdekében.
+title: Identitáskezelést – az Azure Active Directory |} A Microsoft Docs
+description: Az Azure Active Directory Identitáskezelést lehetővé teszi, hogy azt biztonság és az alkalmazottak a termelékenység a megfelelő folyamatokat és látható-e szükség a szervezet elosztása érdekében.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 09/25/2018
+ms.date: 04/29/2019
 ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4e2f564de254c2aea779b30286183d0a4e17db6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d30bbddd044d1aea70e43825035c94b69a46f1f8
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60350983"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935830"
 ---
-# <a name="what-is-azure-ad-identity-governance"></a>Mi az Azure ad-ben identitáskezelést?
+# <a name="what-is-azure-ad-identity-governance"></a>Mi az Azure AD Identitáskezelést?
 
-Az Azure Active Directory (Azure AD) identitáskezelést lehetővé teszi, hogy azt biztonság és az alkalmazottak a termelékenység a megfelelő folyamatokat és látható-e szükség a szervezet elosztása érdekében. Győződjön meg arról, hogy a megfelelő felhasználók megfelelő hozzáférése legyen a megfelelő erőforrásokat, és lehetővé teszi, így megvédheti, monitorozhatja és naplózhatja a kritikus fontosságú eszközeit – miközben termelékenységének lehetőségeket biztosít.  
+Az Azure Active Directory (Azure AD) Identitáskezelést lehetővé teszi, hogy azt biztonság és az alkalmazottak a termelékenység a megfelelő folyamatokat és látható-e szükség a szervezet elosztása érdekében. Győződjön meg arról, hogy a megfelelő felhasználók megfelelő hozzáférése legyen a megfelelő erőforrásokat, és lehetővé teszi, így megvédheti, monitorozhatja és naplózhatja a kritikus fontosságú eszközeit – miközben termelékenységének lehetőségeket biztosít.  
 
-Identitáskezelést lehetővé teheti a szervezet alkalmazottai, üzleti partnerek és szállítók, és a szolgáltatások és alkalmazások között a következőket:
+Identitáskezelést lehetővé teheti a szervezet alkalmazottai, üzleti partnerek és szállítók, és a szolgáltatások és alkalmazások között a következő feladatokat végezheti el:
 
 - Az identitás-életciklus szabályozása
 - Életciklus hozzáférés szabályozása
@@ -42,7 +42,9 @@ Pontosabban a célja, hogy megkönnyíti a szervezetek számára, oldja meg ezek
 
 ## <a name="identity-lifecycle"></a>Identitás-életciklus
 
-Identitáskezelést segítségével a szervezetek közötti egyensúly elérése *termelékenység* -milyen gyorsan egy személy férhet erőforrások szükségük van, például ha a szervezetem csatlakoznak? És *biztonsági* – hogyan kell hozzáférésüket időbeli változásait, például a változások miatt az, hogy a címzett állapota?  Identitás-életciklus-felügyelet identitáskezelést alapját, és hatékony szabályzását nagy méretekben igényel modernizálhatja alkalmazások identitás-életciklus felügyeleti infrastruktúrát.
+Identitáskezelést segítségével a szervezetek közötti egyensúly elérése *termelékenység* -milyen gyorsan egy személy férhet erőforrások szükségük van, például ha a szervezetem csatlakoznak? És *biztonsági* – hogyan kell hozzáférésüket időbeli változásait, például a változások miatt az, hogy a címzett állapota?  Identitás-életciklus-felügyelet Identitáskezelést alapját, és hatékony szabályzását nagy méretekben igényel modernizálhatja alkalmazások identitás-életciklus felügyeleti infrastruktúrát.
+
+![Identitás-életciklus](./media/identity-governance-overview/identity-lifecycle.png)
 
 A legtöbb szervezet számára az alkalmazottak identitás-életciklus kötődik leképezése az, hogy a felhasználó egy HCM (Emberierőforrás-kezelési) rendszerben.  Az Azure AD Premium automatikusan is kezeli felhasználói identitások WORKDAY az Active Directory és az Azure Active Directory, a jelölt felhasználók leírtak szerint a [Workday bejövő provisioning (előzetes verzió) oktatóanyag](../saas-apps/workday-inbound-tutorial.md).  Az Azure AD Premium is tartalmaz [Microsoft Identity Manager](/microsoft-identity-manager/), amely rekordok importálhatja a helyszíni HCM rendszerekből, például SAP, Oracle eBusiness, és az Oracle PeopleSoft.
 
@@ -52,6 +54,8 @@ Egyre több forgatókönyvek igényelnek, a szervezeten kívüli személyekkel v
 
 Egy folyamatot, hogy milyen eredetileg kiosztott egy felhasználó a felhasználói identitás létrehozásakor túli hozzáférés kezelése a cégeknek szükségük van.  Emellett vállalati szervezetek képeseknek kell lenniük hatékony a skálázás fejlesztése és hozzáférési szabályzatot, és folyamatosan vezérlők kényszerítésére.
 
+![Access-életciklus](./media/identity-governance-overview/access-lifecycle.png)
+
 Általában az informatikai delegáltak eléréséhez jóváhagyási döntéseket hozhat, üzleti döntéshozók számára.  Továbbá informatikai a felhasználók maguk is magában foglalhat.  Például a vállalat marketing alkalmazás Európai bizalmas felhasználói adatokhoz hozzáférő felhasználók kell tudni, hogy a cég szabályzatait. Előfordulhat, hogy vendégfelhasználók nélkül is működőképesek maradhatnak a kezelési követelmények, amelyhez meghívásuk olyan szervezeti adatokat.
 
 Szervezetek számára a hozzáférés életciklus folyamat technológiákkal például automatizálható [dinamikus csoportok](../users-groups-roles/groups-dynamic-membership.md), összekapcsolt az való [SaaS-alkalmazások](../saas-apps/tutorial-list.md) vagy [alkalmazások integrált SCIM-mel](../manage-apps/use-scim-to-provision-users-and-groups.md).  Szervezetek is meghatározhatja, amely [vendég felhasználók férhetnek hozzá a helyszíni alkalmazások](../b2b/hybrid-cloud-to-on-premises.md).  Ezek a hozzáférési jogok is, majd rendszeresen ismétlődő használata vizsgálni [az Azure AD hozzáférési felülvizsgálatok](access-reviews-overview.md).
@@ -60,29 +64,26 @@ Amikor egy felhasználó megpróbál hozzáférni az alkalmazásokhoz, az Azure 
 
 ## <a name="privileged-access-lifecycle"></a>Emelt szintű hozzáférés életciklusa
 
-Hagyományosan emelt szintű hozzáférés a fentiekben leírtak más gyártók szerint külön az identitáskezelést. Azonban a Microsoft azt gondolja, hogy emelt szintű hozzáférést szabályozó identitáskezelést--különösen azokat rendszergazdai jogok okozhat nyújtva a cég társított visszaélés megadott a lehetséges kulcsfontosságú része. Az alkalmazottak, a szállítók és az alvállalkozók, a rendszergazdai jogosultságokkal kell az irányadó.
+Hagyományosan emelt szintű hozzáférés a fentiekben leírtak más gyártók szerint külön az Identitáskezelést. Azonban a Microsoft azt gondolja, hogy emelt szintű hozzáférést szabályozó Identitáskezelést--különösen azokat rendszergazdai jogok okozhat nyújtva a cég társított visszaélés megadott a lehetséges kulcsfontosságú része. Az alkalmazottak, a szállítók és az alvállalkozók, a rendszergazdai jogosultságokkal kell az irányadó.
+
+![Emelt szintű hozzáférés életciklusa](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
 Az Azure AD Privileged Identity Management (PIM) szabott több eszközt biztosít a hozzáférés biztosítása a rights erőforrások, az Azure ad-ben, az Azure és más Microsoft Online Services.  Az igény szerinti hozzáférés és a szerepkör módosítása a multi-factor authentication és a feltételes hozzáférés mellett az Azure AD PIM által biztosított képességek riasztási biztosít átfogó készlete cégirányítási vezérlők segítségével biztonságos (directory, a vállalati erőforrásokhoz Az Office 365 és Azure-erőforrások szerepköreihez). Hozzáférés más formáinak a szervezetek használhatják a hozzáférési felülvizsgálatok az összes felhasználó számára az ismétlődő hozzáférés tanúsításra konfigurálása a rendszergazdai szerepköröket.
 
 ## <a name="getting-started"></a>Első lépések
 
-Nem áll fenn tökéletes megoldás vagy javaslat, minden ügyfél számára, miközben a következő konfigurációk biztosítanak egy útmutató, amellyel a Microsoft azt javasolja, annak biztosítására, egy további biztonságosan és hatékonyan munkaerő alapkonfiguráció szabályzatokat.
+Nem áll fenn tökéletes megoldás vagy javaslat, minden ügyfél számára, míg a következő konfigurációk egy útmutató, amellyel a referenciakonfiguráció szabályzatok a Microsoft azt javasolja, hogy kövesse egy több biztonságosan és hatékonyan munkaerő biztosításához adja meg.
 
 - [Identitás- és eszköz-hozzáférési konfigurációk](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Emelt szintű hozzáférés biztonsága](../users-groups-roles/directory-admin-roles-secure.md)
 
+Az első lépéseket ismertető lapján is megtekinthet **Identitáskezelést** használatához tagjogosultság-kezelés az Azure Portalon, hozzáférési felülvizsgálatok, a Privileged Identity Management és a használati feltételeket tartalmazó fájl.
 
-### <a name="access-reviews"></a>Hozzáférési felülvizsgálatok
+![Első lépések Identitáskezelést](./media/identity-governance-overview/getting-started.png)
 
-- [Mi az a hozzáférési felülvizsgálat?](access-reviews-overview.md)
-- [Felhasználói hozzáférés kezelése hozzáférési felülvizsgálatokkal](manage-user-access-with-access-reviews.md)
-- [Vendéghozzáférés kezelése hozzáférési felülvizsgálatokkal](manage-guest-access-with-access-reviews.md)
-- [Az Azure AD-szerepkörök hozzáférési felülvizsgálat indítása](../privileged-identity-management/pim-how-to-start-security-review.md)
+## <a name="next-steps"></a>További lépések
 
-### <a name="terms-of-use"></a>Használati feltételek
-
-- [Mire használhatom a Használati feltételek funkciót?](../conditional-access/terms-of-use.md)
-
-### <a name="privileged-identity-management"></a>Privileged identity management
-
-- [Mi az Azure AD PIM?](../privileged-identity-management/pim-configure.md)
+- [Mi az Azure ad-ben tagjogosultság-kezelés? előzetes verziója?](entitlement-management-overview.md)
+- [Mik az Azure AD hozzáférési felülvizsgálatok?](access-reviews-overview.md)
+- [Mi az Azure AD Privileged Identity Management?](../privileged-identity-management/pim-configure.md)
+- [Mire használhatom a Használati feltételek funkciót?](active-directory-tou.md)

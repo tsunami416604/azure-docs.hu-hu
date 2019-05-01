@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: aljo, subramar
-ms.openlocfilehash: 6f14b3184cabd1dfd84f04260f6b8c831037cbcf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ecb7ac4d3359142d3aef247e4b918f517e10c3bb
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60718155"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926132"
 ---
 # <a name="service-fabric-container-networking-modes"></a>A Service Fabric tárolóalapú hálózatkezelés módjai
 
@@ -30,7 +30,7 @@ Ha egy container service-ben egy statikus végpont a szolgáltatásjegyzékben, 
 Ha egy tárolószolgáltatás újraindítja vagy áthelyezi egy másik csomópontra a fürtben, az IP-cím megváltozik. Ezen okból kifolyólag nem ajánlott a dinamikusan kiosztott IP-cím használatával próbálják felderíteni, container services. Csak a Service Fabric elnevezési szolgáltatásban, vagy a DNS-szolgáltatás szolgáltatásfelderítési használandó. 
 
 >[!WARNING]
->Az Azure lehetővé teszi, hogy 65356 IP-címek száma virtuális hálózatonként összesen. A csomópontok számát és a container service-példányok (, nyissa meg az módot használ) nem lehet hosszabb 65356 IP-címek egy virtuális hálózaton belül. Nagy sűrűségű forgatókönyvek esetén ajánlott nat hálózati mód. Emellett egyéb függőségek, például a terheléselosztó lesz más [korlátozások](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits) kell figyelembe venni. A jelenleg legfeljebb 50 IPs csomópontonként teszteltük és bevált stabil. 
+>Az Azure lehetővé teszi, hogy 65356 IP-címek száma virtuális hálózatonként összesen. A csomópontok számát és a container service-példányok (, nyissa meg az módot használ) nem lehet hosszabb 65356 IP-címek egy virtuális hálózaton belül. Nagy sűrűségű forgatókönyvek esetén ajánlott nat hálózati mód. Emellett egyéb függőségek, például a terheléselosztó lesz más [korlátozások](https://docs.microsoft.com/azure/azure-subscription-service-limits) kell figyelembe venni. A jelenleg legfeljebb 50 IPs csomópontonként teszteltük és bevált stabil. 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Nyissa meg a hálózati mód beállítása

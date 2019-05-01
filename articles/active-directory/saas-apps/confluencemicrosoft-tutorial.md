@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/10/2019
+ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44f0c99a66088aeb54ba061308fefb111610d4dc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 45c9268495ed42ca67f815615b441986cf03332f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501229"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683652"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Oktatóanyag: Az Azure Active Directory-integráció a Microsoft által való összefolyás felett SAML SSO-val
 
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="description"></a>Leírás:
 
-A Microsoft Azure Active Directory-fiók használata Atlassian való összefolyás felett kiszolgáló egyszeri bejelentkezés engedélyezéséhez. Ezzel a módszerrel a munkahely összes felhasználója számára való összefolyás felett alkalmazás használható az Azure AD bejelentkezési hitelesítő adatokat. Ez a beépülő modul SAML 2.0 összevonási használ.
+A Microsoft Azure Active Directory-fiók használata Atlassian való összefolyás felett kiszolgáló egyszeri bejelentkezés engedélyezéséhez. Ezzel a módszerrel a szervezet minden felhasználó bejelentkezni az alkalmazásba való összefolyás felett használhatja az Azure AD hitelesítő adatait. Ez a beépülő modul SAML 2.0 összevonási használ.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -80,7 +80,7 @@ Jelen pillanatban való összefolyás felett következő verziói támogatottak:
 - Való összefolyás felett: 6.12.0
 
 > [!NOTE]
-> Vegye figyelembe, hogy való összefolyás felett is támogatja a Linux Ubuntu 16.04 verzió
+> Vegye figyelembe, hogy az való összefolyás felett beépülő modult is működik az Ubuntu 16.04-verzió
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c6c552a6605278d8ab31264f5d180206e0badac
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4715ec92c4ee45733cc0eb2839c533f9ee8968fe
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490036"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694113"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Az Azure Disk Encryption – hibaelhárítási útmutató
 
@@ -52,7 +52,7 @@ uname -a
 
 ## <a name="update-the-azure-virtual-machine-agent-and-extension-versions"></a>Az Azure-beli virtuálisgép-ügynök és a bővítmény-verzió frissítése
 
-Az Azure Disk Encryption műveletei meghiúsulhatnak a virtuálisgép-lemezképek az Azure virtuálisgép-ügynök nem támogatott verzióját használja. További információkért tekintse meg [minimális verzió támogatása az Azure-beli virtuálisgép-ügynökök](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).  
+Az Azure Disk Encryption műveletei meghiúsulhatnak a virtuálisgép-lemezképek az Azure virtuálisgép-ügynök nem támogatott verzióját használja. Linux-rendszerképeket az ügynökök verzióinak rendszernél korábbi 2.2.38 titkosítás engedélyezése előtt kell frissíteni. További információkért lásd: [egy virtuális gépen az Azure Linux-ügynök frissítése](../virtual-machines/extensions/update-linux-agent.md) és [minimális verzió támogatása az Azure-beli virtuálisgép-ügynökök](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 
 A Microsoft.Azure.Security.AzureDiskEncryption vagy Microsoft.Azure.Security.AzureDiskEncryptionForLinux Vendég ügynök bővítmény megfelelő verziója is szükség. Bővítmény-verziók kezeli és automatikusan frissítheti a platform az Azure virtuálisgép-ügynök előfeltételek teljesülnek, és a virtuálisgép-ügynök támogatott verzióját használja.
 

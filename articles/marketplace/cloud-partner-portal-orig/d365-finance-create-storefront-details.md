@@ -1,25 +1,18 @@
 ---
-title: Az áruház oldala részletes űrlap kitöltésére |} A Microsoft Docs
+title: Hogyan kell kitölteni a kirakat részletek képernyő
 description: Azt ismerteti, hogy egy új Dynamics 365 Business Central-alkalmazást kirakat részleteit tartalmazó űrlap értékeit.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.author: pbutlerm
-ms.openlocfilehash: f69a7f9ca94c0a83098300f01e9413b342bd4ae8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: a22a2ebe870280ddcdf18c037141b92894742400
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60397941"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935026"
 ---
 <a name="how-to-fill-out-the-storefront-details-form"></a>Hogyan kell kitölteni a kirakat részletek képernyő
 ===========================================
@@ -57,9 +50,9 @@ Egy aktív Súgó hivatkozásra, amely segíti az ügyfeleket az alkalmazáshoz 
 
 ### <a name="supported-countriesregions"></a>Támogatott országok/régiók
 
-Ez a mező határozza meg, amelyben az ajánlat lesz elérhető, próba országok vagy régiók. Csak választhat országban, ahol a Microsoft Dynamics 365 Business Central már elérhető vagy előzetes verzióban érhető el. Az aktuális listáját lásd: [országok és a fordítások támogatott](https://docs.microsoft.com/dynamics-nav/compliance/apptest-countries-and-translations).
+Ez a mező határozza meg, amelyben az ajánlat lesz elérhető, próba országok vagy régiók. Csak választhat országban/régióban, ahol a Microsoft Dynamics 365 Business Central már rendelkezésre álló vagy előzetes verzióban érhető el. Az aktuális listáját lásd: [országok/régiók és a fordítások támogatott](https://docs.microsoft.com/dynamics-nav/compliance/apptest-countries-and-translations).
 
-![Válassza ki, és a fordítások támogatott országok](./media/d365-financials/image008.png)
+![Válassza ki az országok/régiók és a támogatott fordítások](./media/d365-financials/image008.png)
 
 
 ### <a name="supported-languages"></a>Támogatott nyelvek

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 944a111ac0c31e755b3991f9ea101ba652c676d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fbb855db1ff5a2cf79826294365733614259e4b0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60799383"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575746"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
 
@@ -123,7 +123,7 @@ Az Azure Maps kulcsalapú hitelesítési sémát használ. A fiókhoz két előr
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-Jelenleg az Azure Maps API érhető el a következő régiókban kivételével minden ország:
+Az Azure Maps API jelenleg az összes országban és régióban kivételével az alábbi régiókban érhető el:
 
 * Argentína
 * Kína
@@ -132,7 +132,7 @@ Jelenleg az Azure Maps API érhető el a következő régiókban kivételével m
 * Pakisztán
 * Dél-Korea
 
-Győződjön meg arról, hogy az aktuális IP-címe helye nem a fenti nem támogatott országok valamelyikében.
+Győződjön meg arról, hogy az aktuális IP-címe helye nem a nem támogatott országok/régiók fenti egyikében.
 
 ## <a name="next-steps"></a>További lépések
 

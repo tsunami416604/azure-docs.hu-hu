@@ -1,25 +1,18 @@
 ---
-title: A Microsoft Azure virtuális gép előfeltételei |} A Microsoft Docs
+title: A Microsoft Azure virtuális gép előfeltételei |} Az Azure Marketplace-en
 description: Egy Virtuálisgép-ajánlat közzététele az Azure piactéren szükséges előfeltételek listája.
 services: Azure, Marketplace, Cloud Partner Portal
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: 5c26fd3d6c2593217aef8588e2a58377a86412ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 65ff96ba3aea889ff5b2e2431578f9344f6d840b
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60844040"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938069"
 ---
 # <a name="virtual-machine-prerequisites"></a>A virtuális gép előfeltételei
 
@@ -49,7 +42,7 @@ Az üzleti követelmények eljárási szerződéses és jogi kötelezettségek t
     > Jelentkezzen be a Microsoft Developer Center regisztrációs ugyanazt a fiókot kell használnia a [Cloud Partner Portalon](https://cloudpartner.azure.com).
     > Az Azure piactér-i ajánlatainak közzétételéhez egyetlen Microsoft-fiókkal kell rendelkeznie. Nem lehet adott egyes szolgáltatásokat vagy ajánlatokat.
     
-- A vállalatnak (vagy az leányvállalatának) kell működnie egy értékesítési-a-ország az Azure piactér által támogatott.  Ezekben az országokban aktuális listáját lásd: [a Microsoft Azure Marketplace részvételi szabályzata](https://azure.microsoft.com/support/legal/marketplace/participation-policies/).
+- A vállalatnak (vagy az leányvállalatának) kell működnie egy értékesítési-a-országot/régiót az Azure piactér által támogatott.  Ezekben az országokban/régiókban aktuális listáját lásd: [a Microsoft Azure Marketplace részvételi szabályzata](https://azure.microsoft.com/support/legal/marketplace/participation-policies/).
 - A termék úgy, hogy az Azure piactér által támogatott számlázási modellek kompatibilis licenccel kell rendelkezniük.  További információkért lásd: [számlázási lehetőségek az Azure Marketplace-en](https://docs.microsoft.com/azure/marketplace/billing-options-azure-marketplace). 
 - Ön felelős az ügyfelek számára elérhetővé tétele az műszaki támogatást, olyan üzletileg ésszerű módon. Ez a támogatás ingyenes, fizetős, vagy közösségi megközelítések keresztül lehet.
 - Ön felelős a szoftver- és külső függőségek licencelése.

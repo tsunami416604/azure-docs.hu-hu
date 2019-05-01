@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8ab2c73030c0860fc709a774b9fd84d20a6d7c99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 497ffb5acf6262dfb42f490efe68e1ea26c777cb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60904142"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572372"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Keresse meg egy címet az Azure Maps search szolgáltatással
 
@@ -68,7 +68,7 @@ Alapértelmezés szerint a legtöbb keresési lekérdezések `maxFuzzyLevel=1` t
 
     A nem egyértelmű lekérdezési karakterlánc a "kétpizzás" visszaadott 10 [pont az érdeklődés eredmény](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) (KOORDINÁTÁIIG) eredménye az alá tartozó, a "kétpizzás" és "éttermi" kategóriák. Minden eredményt adja vissza egy utca, házszám, szélességi / hosszúsági értékeket, megtekintheti a port és a hely elérésére.
   
-    Az eredmények ebben a lekérdezésben nem kötődik bármely adott hivatkozás helyére a különböző. Használhatja a **countrySet** paraméterrel adja meg a csak az országok, amelynek az alkalmazásnak kell lefedettség, mivel alapértelmezés szerint kereshet az egész világ, potenciálisan a szükségtelen eredményt adnak vissza.
+    Az eredmények ebben a lekérdezésben nem kötődik bármely adott hivatkozás helyére a különböző. Használhatja a **countrySet** paraméterrel adja meg a csak az országok/régiók, amelynek az alkalmazásnak kell lefedettség, mivel alapértelmezés szerint kereshet az egész világ, potenciálisan a szükségtelen eredményt adnak vissza.
 
 5. Adja hozzá a következő kulcs / érték-pár, a **paraméterei** szakaszt, és kattintson a **küldése**:
 

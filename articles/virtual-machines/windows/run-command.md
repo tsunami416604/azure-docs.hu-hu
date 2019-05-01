@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: d199a9db879263bbca49298df190c5a127444c42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 23973445992ceaeb0cd3bc0589665f2fac5b64e5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60251245"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575334"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>PowerShell-szkriptek futtatása a Windows virtuális gép futtatása paranccsal
 
@@ -83,9 +83,9 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="limiting-access-to-run-command"></a>Futtatása paranccsal való hozzáférés korlátozása
 
-A futtatási parancsok listázása és a egy parancs részleteit megjelenítő szükséges a `Microsoft.Compute/locations/runCommands/read` engedéllyel, amely a beépített [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört, és magasabb.
+A futtatási parancsok listázása és a egy parancs részleteit megjelenítő szükséges a `Microsoft.Compute/locations/runCommands/read` engedélyt az előfizetés szintjén, amely a beépített [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkör, és magasabb.
 
-A parancs futtatásához szükség van a `Microsoft.Compute/virtualMachines/runCommand/action` engedéllyel, amely a [virtuális gépek Közreműködője](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör, és magasabb.
+Parancs futtatásához szükség van a `Microsoft.Compute/virtualMachines/runCommand/action` engedélyt az előfizetés szintjén, amely a [virtuális gépek Közreműködője](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör és újabb.
 
 Használhatja az egyik a [beépített](../../role-based-access-control/built-in-roles.md) szerepkörök, vagy hozzon létre egy [egyéni](../../role-based-access-control/custom-roles.md) szerepkör-parancs futtatása.
 

@@ -1,25 +1,18 @@
 ---
-title: Az Azure és Dynamics 365 tanácsadási szoltátatás ajánlat - közzétételi |} A Microsoft Docs
-description: Útmutató az Azure-ban vagy a Dynamics 365 tanácsadási szolgáltatási ajánlat közzététele a Cloud Partner portálra.
+title: Az Azure és Dynamics 365 tanácsadási szoltátatás ajánlat közzététele |} Az Azure Marketplace-en
+description: A Cloud Partner portálra egy Azure-ban vagy a Dynamics 365 tanácsadási szolgáltatási ajánlat közzéteheti az Azure Marketplace piactéren vagy az appsource-ban.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: dae86dcdd3ada10164be0120b49a8f5f7b642ccd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 44fe7f11d365761c351e488d834a63392ea9cac1
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60865425"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942792"
 ---
 # <a name="publish-a-consulting-service-offer"></a>A tanácsadási szolgáltatási ajánlat közzététele
 

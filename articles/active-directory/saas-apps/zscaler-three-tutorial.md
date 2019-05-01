@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/09/2019
+ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 4a7ddc6b9f4a8638d18262e458d61108c00b618d
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: e2729a47771f2c3073d91cb5b0de4684b51badbd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564553"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681877"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>Oktatóanyag: A Zscaler három Azure Active Directory-integráció
 
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az Azure AD-integráció konfigurálása a Zscaler három, a következőkre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
 * Zscaler három egyszeri bejelentkezéses engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
@@ -154,9 +154,17 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Zscaler három, hajtsa
 
 ### <a name="configure-zscaler-three-single-sign-on"></a>Zscaler három egyszeri bejelentkezés konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a Zscaler három vállalati hely rendszergazdaként.
+1. Automatizálhatja a Zscaler három konfigurációra, telepítenie kell **saját alkalmazások biztonságos bejelentkezési böngészőbővítmény** kattintva **a bővítmény telepítése**.
 
-2. Lépjen a **Adminisztráció > hitelesítés > hitelesítési beállítások** , és hajtsa végre az alábbi lépéseket:
+    ![Saját alkalmazások kiterjesztése](common/install-myappssecure-extension.png)
+
+2. A felvett bővítmény a böngészőre, kattintson a **telepítő Zscaler három** fog irányítja át a Zscaler három alkalmazást. Itt adja meg a rendszergazdai hitelesítő adataival bejelentkezni a Zscaler három. A webböngésző-bővítmény automatikusan konfigurálja az alkalmazást, és 3 – 6. lépések automatizálásához.
+
+    ![Egyszeri bejelentkezés beállítása](common/setup-sso.png)
+
+3. Ha manuálisan szeretne a telepítő Zscaler három, nyisson meg egy új böngészőablakban, és jelentkezzen be rendszergazdaként a Zscaler három vállalati hely, és hajtsa végre az alábbi lépéseket:
+
+4. Lépjen a **Adminisztráció > hitelesítés > hitelesítési beállítások** , és hajtsa végre az alábbi lépéseket:
    
     ![Felügyeleti](./media/zscaler-three-tutorial/ic800206.png "felügyelete")
 
@@ -164,7 +172,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Zscaler három, hajtsa
 
     b. Kattintson a **SAML konfigurálása**.
 
-3. Az a **szerkesztése SAML** ablakban hajtsa végre az alábbi lépéseket: kattintson a Mentés gombra.  
+5. Az a **szerkesztése SAML** ablakban hajtsa végre az alábbi lépéseket: kattintson a Mentés gombra.  
             
     ![Felhasználók és hitelesítés kezeléséhez](./media/zscaler-three-tutorial/ic800208.png "felhasználók és hitelesítés kezeléséhez")
     
@@ -184,7 +192,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a Zscaler három, hajtsa
 
     h. Kattintson a **Save** (Mentés) gombra.
 
-4. Az a **felhasználói hitelesítés konfigurálása** párbeszédpanel lapon, a következő lépésekkel:
+6. Az a **felhasználói hitelesítés konfigurálása** párbeszédpanel lapon, a következő lépésekkel:
 
     ![Adminisztráció](./media/zscaler-three-tutorial/ic800207.png)
 
@@ -241,7 +249,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
+    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 

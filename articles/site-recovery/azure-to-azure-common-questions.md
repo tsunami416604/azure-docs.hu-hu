@@ -1,22 +1,22 @@
 ---
-title: 'Gyakori kérdések: Az Azure Site Recoveryvel Azure – Azure vészhelyreállítási |} A Microsoft Docs'
-description: Ez a cikk gyakori kérdésekre foglalja össze, üzembe helyezésekor meg az Azure virtuális gépek vészhelyreállítása egy másik Azure-régióba az Azure Site Recovery használatával
+title: Azure – Azure vészhelyreállítási az Azure Site Recoveryvel kapcsolatos gyakori kérdésekre
+description: Ez a cikk az Azure virtuális gépek vészhelyreállítása egy másik Azure-régióba az Azure Site Recovery használatával kapcsolatos általános kérdéseket válaszol
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.date: 03/29/2019
+ms.date: 04/29/2019
 ms.topic: conceptual
-ms.author: asgang
-ms.openlocfilehash: 52a5022b49bac990321c3cf8661aa2a04e93b39a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: asgan
+ms.openlocfilehash: 1a13bda37c5bfac4efe6bd6109cb1dfcd5f7d2a9
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60790872"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925670"
 ---
-# <a name="common-questions-azure-to-azure-replication"></a>Gyakori kérdések: Azure – Azure replikálás
+# <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure – Azure vészhelyreállítási
 
-Ez a cikk a vészhelyreállítás (DR) Azure-beli virtuális üzembe helyezése egy másik Azure-régióba az Azure Site Recovery használatával kapcsolatos gyakori kérdésekre adott válaszokat ismerteti. Ha kérdése van a cikk elolvasása után, el őket az a [Azure Recovery Services fórumban](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
+Ez a cikk ismerteti az Azure virtuális gépek vészhelyreállítása egy másik Azure-régióba kapcsolatos gyakori kérdésekre adott válaszok segítségével [Site Recovery](site-recovery-overview.md). 
 
 
 ## <a name="general"></a>Általános kérdések
@@ -28,15 +28,15 @@ Az Azure Site Recovery szolgáltatás által védett példányok a védelem els�
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Az első 31 nap során kell valamilyen más Azure-díjat fizetni?
 Igen. Bár az Azure Site Recovery szolgáltatás a védett példányok tekintetében díjmentes az első 31 nap során, az Azure Storage szolgáltatás, a tárolási tranzakciók és az adatforgalom díjkötelesek lehetnek. Továbbá a helyreállított virtuális gépekre is vonatkozhatnak Azure-díjak a számítási idő alapján. Kész részletek a díjszabási [Itt](https://azure.microsoft.com/pricing/details/site-recovery)
 
-### <a name="what-are-the-best-practices-for-configuring-site-recovery-on-azure-vms"></a>Mik azok a Site Recovery konfigurálása az Azure virtuális gépekhez ajánlott eljárásai?
+### <a name="where-can-i-find-best-practices-for-azure-vm-disaster-recovery"></a>Hol találhatok ajánlott eljárások az Azure-beli virtuális gépek vészhelyreállításához? 
 1. [Azure – Azure architektúrájának ismertetése](azure-to-azure-architecture.md)
 2. [Tekintse át a támogatott és nem támogatott konfigurációk](azure-to-azure-support-matrix.md)
 3. [Vészhelyreállítás beállítása az Azure virtuális gépek](azure-to-azure-how-to-enable-replication.md)
 4. [Feladatátvételi teszt futtatása](azure-to-azure-tutorial-dr-drill.md)
 5. [Feladatátadás és feladatátvétel az elsődleges régióba](azure-to-azure-tutorial-failover-failback.md)
 
-### <a name="how-is-capacity-guaranteed-in-target-region-for-azure-vms"></a>Hogyan kapacitás garantáltan a célrégióban az Azure virtuális gépek?
-Az Azure Site Recovery (ASR) csapat működik együtt a kapacitás Azure fiókkezelési csapat nyújtson hatékony elegendő infrastruktúra kapacitásának tervezése, egy kísérlet annak érdekében, hogy az ASR-hez a vészhelyreállítási védett virtuális gépek helyreállítási sikeresen telepíthető a vész-helyreállítási régióban minden alkalommal, amikor az ASR feladatátvételi műveletek kezdeményeztek.
+### <a name="how-is-capacity-guaranteed-in-the-target-region"></a>Hogyan garantáltan a célrégióban a kapacitásának?
+A Site Recovery csapata együttműködik az Azure-kapacitás csapat megtervezheti az infrastruktúra-kapacitása elegendő, és annak biztosítására, hogy a Site Recovery által védett virtuális gépek sikeresen lesz üzembe helyezett célrégió, amikor a feladatátvétel indításáig.
 
 ## <a name="replication"></a>Replikáció
 
@@ -54,6 +54,16 @@ Igen, akkor is [. zóna – rögzíthetők a virtuális gépek replikálása](ht
 
 Igen, olyan lemezeket zárhat a védelem idején PowerShell használatával. További információkért tekintse meg [cikk](azure-to-azure-exclude-disks.md)
 
+### <a name="can-i-add-new-disks-to-replicated-vms-and-enable-replication-for-them"></a>Adjon hozzá új lemezeket replikált virtuális gépekhez és engedélyezi azok replikációját?
+
+Igen, ez támogatott Azure-beli virtuális gépek felügyelt lemezekkel rendelkező. Egy új lemezt ad hozzá egy Azure virtuális Gépen, amely a replikáció engedélyezve van, a virtuális gép replikációjának állapota jelenít meg figyelmeztetést, és a egy megjegyzés, adja meg, hogy a virtuális gép egy vagy több lemez érhetők el védelemre. Engedélyezheti a hozzáadott lemezek.
+- Ha engedélyezte a védelmet a hozzáadott lemezek, a figyelmeztetés a kezdeti replikációt követően véglegesen eltűnik.
+- Ha nem szeretné a lemez replikációja választja, kiválaszthatja a figyelmeztetés bezárása.
+- Amikor feladatátvételt hajt végre egy virtuális Gépet, amelyhez hozzá egy lemezt, és engedélyezze a replikációját, replikációs pontok jelennek meg a lemezeket, amelyek a helyreállításhoz elérhető. Például ha egy virtuális Gépet egy egyetlen lemezzel rendelkezik, és hozzáadhat egy új, replikációs pontok, a lemez hozzáadása előtt létrehozott jeleníti meg, hogy a replikációs pont áll "1 / 2 lemezt".
+
+A Site Recovery nem támogatja a "gyakori eltávolítása a" lemez replikált virtuális gép. Ha eltávolít egy Virtuálisgép-lemez, kell tiltsa le, majd engedélyezze újra a virtuális gép replikálását.
+
+
 ### <a name="how-often-can-i-replicate-to-azure"></a>Milyen gyakran replikálhatja az Azure-bA?
 Replikációs akkor folyamatos, ha az Azure virtuális gépeket replikál egy másik Azure-régióba. További információkért lásd: a [Azure – Azure replikációs architektúra](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture#replication-process).
 
@@ -69,7 +79,7 @@ A Site Recovery nem, nem szükséges az internetkapcsolat. Hozzáférést igény
 
 ### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>Replikálhatok külön szinteket külön erőforráscsoportot kellene az alkalmazást?
 Igen, replikálja az alkalmazást, és ne a vész-helyreállítási konfiguráció külön erőforráscsoportot túl.
-Például egy alkalmazást a minden alkalmazás, db, és külön erőforráscsoportot a webes szint esetében, akkor a elemre kell kattintania, a [replikálás varázsló](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) háromszor való védelme minden szinten. Az ASR replikálja ezeket mindhárom szintet három másik erőforráscsoportban található.
+Például egy alkalmazást a minden alkalmazás, db, és külön erőforráscsoportot a webes szint esetében, akkor a elemre kell kattintania, a [replikálás varázsló](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) háromszor való védelme minden szinten. Site Recovery három eltérő erőforráscsoportokban három szintek replikálja.
 
 ## <a name="replication-policy"></a>Replikációs szabályzat
 
@@ -147,8 +157,8 @@ Intenzív CPU, mert több virtuális gépre kiterjedő konzisztencia engedélyez
 
 ## <a name="failover"></a>Feladatátvétel
 
-### <a name="how-is-capacity-guaranteed-in-target-region-for-azure-vms"></a>Hogyan kapacitás garantáltan a célrégióban az Azure virtuális gépek?
-Az Azure Site Recovery (ASR) csapat működik együtt a kapacitás Azure fiókkezelési csapat nyújtson hatékony elegendő infrastruktúra kapacitásának tervezése, egy kísérlet annak érdekében, hogy az ASR-hez a vészhelyreállítási védett virtuális gépek helyreállítási sikeresen telepíthető a vész-helyreállítási régióban minden alkalommal, amikor az ASR feladatátvételi műveletek kezdeményeztek.
+### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>Hogyan kapacitás biztosítható a célrégióban az Azure virtuális gépek?
+A Site Recovery csapata együttműködik az Azure-kapacitás fiókkezelési csapat nyújtson hatékony infrastruktúra-kapacitása elegendő tervezése, ellenőrizze, hogy engedélyezve van a vész-helyreállítási virtuális gépek segítségével telepíti sikeresen a célrégióban, amikor a feladatátvétel indításáig.
 
 ### <a name="is-failover-automatic"></a>Automatikus a feladatátvétel?
 
@@ -156,15 +166,19 @@ A feladatátvétel nem automatikus. A portálon egyetlen kattintással megkezdé
 
 ### <a name="can-i-retain-a-public-ip-address-after-failover"></a>Nyilvános IP-cím megőrizhetem a feladatátvételt követően?
 
-A nyilvános IP-címét a termelési alkalmazások *nem őrzi meg a feladatátvételi*. A számítási feladatok kerülnek sorra, a feladatátvételi folyamat során hozzá kell rendelni az Azure nyilvános IP-erőforrás, amely a célként megadott régióban érhető el. Hajtsa végre ezt a lépést manuálisan vagy automatikusan a helyreállítási terv keretében is. Nyilvános IP-cím hozzárendelése a helyreállítási terv használatával, lásd: [a feladatátvételt követően nyilvános IP-címek beállítása](https://docs.microsoft.com/azure/site-recovery/concepts-public-ip-address-with-site-recovery#public-ip-address-assignment-using-recovery-plan).  
+A nyilvános IP-címét a termelési alkalmazások nem őrzi meg a feladatátvételt követően.
+- A számítási feladatok kerülnek sorra, a feladatátvételi folyamat során hozzá kell rendelni az Azure nyilvános IP-erőforrás, amely a célként megadott régióban érhető el.
+- Ehhez manuálisan, vagy a helyreállítási terv az automatizáláshoz.
+- Ismerje meg, hogyan [a feladatátvételt követően nyilvános IP-címek beállítása](concepts-public-ip-address-with-site-recovery.md#public-ip-address-assignment-using-recovery-plan).  
 
 ### <a name="can-i-retain-a-private-ip-address-during-failover"></a>Magánhálózati IP-cím megőrizhetem feladatátvétel során?
-Igen, őrizheti meg magánhálózati IP-cím. Alapértelmezés szerint a Vészhelyreállítás Azure-beli virtuális gépek engedélyezésekor Site Recovery létrehoz célerőforrások adatforrás-erőforrás beállítások alapján. Az Azure virtuális gépek statikus IP-címmel konfigurálva a Site Recovery megpróbálja kiépítése a cél virtuális Gépen, azonos IP-címét, ha nem használja. Eltérő körülmények között a privát IP-cím megőrzése, lásd: [megőrzése IP-címek feladatátvétel során](site-recovery-retain-ip-azure-vm-failover.md).
+Igen, beállíthatja, hogy magánhálózati IP-cím. Alapértelmezés szerint a vész-helyreállítási engedélyezése az Azure-beli virtuális gépek esetén a Site Recovery létrehoz célerőforrások adatforrás-erőforrás beállítások alapján. – A konfigurált statikus IP-címekkel rendelkező Azure virtuális gépek a Site Recovery megpróbálja kiépítése a cél virtuális Gépen, azonos IP-címét, ha nem használja.
+Ismerje meg [IP-cím megőrzése feladatátvétel során](site-recovery-retain-ip-azure-vm-failover.md).
 
-### <a name="after-failover-the-server-doesnt-have-the-same-ip-address-as-the-source-vm-why-is-it-assigned-a-new-ip-address"></a>A feladatátvételt követően a kiszolgáló nem rendelkezik a azonos IP-címét a forrásoldali virtuális Géppel. Miért van, egy új IP-cím hozzárendelve?
+### <a name="after-failover-why-is-the-server-assigned-a-new-ip-address"></a>A feladatátvételt követően miért van a kiszolgáló új IP-címmel?
 
 A Site Recovery megpróbálja adja meg az IP-címet a feladatátvétel időpontjában. Ha egy másik virtuális gépet tart, hogy a cím, a Site Recovery és a cél állítja be a következő elérhető IP-címe.
-Hogyan kezeli a Site Recovery-címzés teljes ismertetése, lásd: [hálózatleképezés és virtuális hálózatok IP-címzés beállítása](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-network-mapping#set-up-ip-addressing-for-target-vms).
+Tudjon meg többet [hálózatleképezés és a virtuális hálózatok IP-címzés beállítása](azure-to-azure-network-mapping.md#set-up-ip-addressing-for-target-vms).
 
 ### <a name="what-are-latest-lowest-rpo-recovery-points"></a>Mik a **legutóbbi (legkisebb helyreállítási Időkorlát)** helyreállítási pontok?
 A **legutóbbi (legkisebb helyreállítási Időkorlát)** lehetőség először feldolgozza a helyreállítási pont létrehozása az egyes virtuális Gépekhez,-ba irányuló feladatátvétel előtt a Site Recovery szolgáltatásba küldött összes adatot. Ezt a lehetőséget biztosít a a legalacsonyabb helyreállítási időkorlátot (RPO), mert a virtuális gép létrehozása után a feladatátvételi rendelkezik a feladatátvétel elindításakor a Site Recoverybe replikált összes adattal.
@@ -175,10 +189,10 @@ Igen. A Site Recovery feladatátvétele, mielőtt dolgozza fel az összes függ�
 ### <a name="what-does-the-latest-processed-option-in-recovery-points-mean"></a>Mire jó a **legutóbb feldolgozott** lehetőség a helyreállítási pontok mean?
 A **utoljára feldolgozva** lehetőséget minden virtuális gépre a legújabb helyreállítási tervben feladatátvételt hajt végre a Site Recovery feldolgozott mutasson. Tekintse meg a legutóbbi helyreállítási pont egy adott virtuális géphez, ellenőrizze a következőket **legutóbbi helyreállítási pontok** a virtuális gép beállításaiban. Ezt a lehetőséget biztosít egy alacsony RTO, mert a rendszer nem tölt időt a feldolgozatlan adatok feldolgozása.
 
-### <a name="if-im-replicating-between-two-azure-regions-what-happens-if-my-primary-region-experiences-an-unexpected-outage"></a>Ha a két Azure-régiók között végzek, mi történik, ha a elsődleges régiómban esetleges váratlan leállásakor?
+### <a name="what-happens-if-my-primary-region-experiences-an-unexpected-outage"></a>Mi történik, ha az elsődleges régió esetleges váratlan leállásakor?
 A feladatátvétel után a szolgáltatáskimaradás elhárítása után is indíthat. A Site Recovery nem követeli meg, hajtsa végre a feladatátvételt az elsődleges régióból.
 
-### <a name="what-is-a-rto-of-a-virtual-machine-failover-"></a>Mi az a virtuális gép feladatátvétel RTO?
+### <a name="what-is-a-rto-of-a-vm-failover-"></a>Mi az a virtuális gép feladatátvétel RTO?
 A Site Recovery rendelkezik egy [2 óra RTO szolgáltatásiszint-szerződés](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). Azonban az esetek többségében a Site Recovery virtuális gépek feladatátvétele percen belül. Kiszámíthatja az RTO nyissa meg a feladatátvételt feladatok, amely az időt jeleníti meg a virtuális Géphez csatlakozva tartottak. Helyreállítási terv az RTO, tekintse meg a szakasz alatt.
 
 ## <a name="recovery-plans"></a>Helyreállítási tervek
@@ -214,25 +228,27 @@ Nem. Ha Ön [átadja a feladatokat](https://docs.microsoft.com/azure/site-recove
 Azt az adott helyzettől függ. Például ha a forrásrégióban virtuális gép létezik, csak között a forrás és a cél lemezzel változtatások vannak szinkronizálva. A Site Recovery a különbözeti kiszámítja a lemezek összehasonlításával, és ezután az adatok átvitele. Ez a folyamat általában néhány órát vesz igénybe. Ismételt védelem során történtekkel kapcsolatos további információkért lásd: [ismételt védelem sikertelen volt az Azure virtuális gépen az elsődleges régióba]( https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection).
 
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Mennyi idő mindezt végezze el a feladat-visszavételt?
-Ismételt védelem, miután idő a feladat-visszavételhez hasonlít általában az idő a feladatátvételhez az elsődleges régióból egy másodlagos régióba.
+Ismételt védelem, miután idő a feladat-visszavételhez a általában hasonló volt szükség a feladatátvétel az elsődleges régióból egy másodlagos régióba idő.
 
 ## <a name="capacity"></a>Kapacitás
 
 ### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>Hogyan kapacitás biztosítható a célrégióban az Azure virtuális gépek?
-Az Azure Site Recovery (ASR) csapat működik együtt a kapacitás Azure fiókkezelési csapat nyújtson hatékony elegendő infrastruktúra kapacitásának tervezése, egy kísérlet annak érdekében, hogy az ASR-hez a vészhelyreállítási védett virtuális gépek helyreállítási sikeresen telepíthető a vész-helyreállítási régióban minden alkalommal, amikor az ASR feladatátvételi műveletek kezdeményeztek.
+A Site Recovery csapata együttműködik az Azure-kapacitás fiókkezelési csapat nyújtson hatékony infrastruktúra-kapacitása elegendő tervezése, annak biztosítására, hogy engedélyezve van a vész-helyreállítási virtuális gépek sikeresen telepíti a célrégióban, amikor a feladatátvétel indításáig.
 
 ### <a name="does-site-recovery-work-with-reserved-instances"></a>A fenntartott példányok működik a Site Recovery?
-Igen, akkor is vásárolható [fenntartott példányok](https://azure.microsoft.com/pricing/reserved-vm-instances/) a DR régióban, és automatikus feladatátvételi műveletek fogja használni őket. </br> További konfiguráció nélkül nem szükséges, hogy az ügyfeleknek.
+Igen, akkor is vásárolható [fenntartott példányok](https://azure.microsoft.com/pricing/reserved-vm-instances/) a vészhelyreállítási régióban és a Site Recovery feladatátvételi műveletek fogja használni őket. </br> További konfiguráció nélkül van szükség.
 
 
 ## <a name="security"></a>Biztonság
+
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>A replikációs adatok el lesznek küldve a Site Recovery szolgáltatáshoz?
-Nem, a Site Recovery nem intercept a replikált adatokat, és nem rendelkezik a virtuális gépeken futó bármilyen információ. A Site Recovery szolgáltatás csak a replikáció és a feladatátvétel levezényléséhez szükséges metaadatokat kapja meg.  
+Nem, a Site Recovery nem intercept a replikált adatokat, és nem rendelkezik semmilyen információval, hogy a virtuális gépeken futó. A Site Recovery szolgáltatás csak a replikáció és a feladatátvétel levezényléséhez szükséges metaadatokat kapja meg.  
 Site Recovery szolgáltatás ISO 27001:2013, 27018, a HIPAA, DPA hitelesített, és SOC2 és FedRAMP JAB folyamatban van.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>A Site Recovery titkosítja a replikációt?
-Igen, mindkét – az átvitel közbeni titkosítás és [titkosítás az Azure-ban](https://docs.microsoft.com/azure/storage/storage-service-encryption) támogatottak.
+Igen, mindkét – az átvitel közbeni titkosítás és [titkosítás inaktív az Azure-ban](https://docs.microsoft.com/azure/storage/storage-service-encryption) támogatottak.
 
 ## <a name="next-steps"></a>További lépések
 * [Felülvizsgálat](azure-to-azure-support-matrix.md) követelmények támogatására.
 * [Állítsa be a](azure-to-azure-tutorial-enable-replication.md) replikáció Azure-bA.
+- Ha kérdése van a cikk elolvasása után, el őket az a [Azure Recovery Services fórumban](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).

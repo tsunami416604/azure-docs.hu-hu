@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 3c078f7246140ee966f1d202d2248758dde49059
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: c922556417ac92cc3667927fc8f846ace960a14a
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121521"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935882"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Biztonsági keret: Engedélyezési |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -280,7 +280,7 @@ Vegye figyelembe, hogy az RLS-a-beépített adatbázis-szolgáltatásként egyar
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | StorageType - tábla |
 | **Hivatkozások**              | [Hogyan delegálása SAS használatával az Azure storage-fiókjában található objektumok elérése](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_data-plane-security) |
-| **Lépések** | Bizonyos üzleti forgatókönyvek esetén az Azure Table Storage fiókdíjat caters másik fél bizalmas adatokat tárolhat. Például bizalmas adatokat kérelmekre vonatkozó különböző országokban megvalósítható. Ezekben az esetekben SAS-aláírás lehet létrehozni a partíció- és sorkulcsot kulcstartományokkal, megadásával a felhasználók érhetik el egy adott ország jellemző adatok.| 
+| **Lépések** | Bizonyos üzleti forgatókönyvek esetén az Azure Table Storage fiókdíjat caters másik fél bizalmas adatokat tárolhat. Például bizalmas adatokat kérelmekre vonatkozó különböző országokban vagy régiókban. Ezekben az esetekben SAS-aláírás lehet létrehozni a partíció- és sorkulcsot kulcstartományokkal, megadásával a felhasználók érhetik el egy adott ország/régió jellemző adatok.| 
 
 ## <a id="rbac-azure-manager"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) az Azure storage-fiókba az Azure Resource Manager engedélyezése
 

@@ -1,28 +1,28 @@
 ---
 title: 'Azure AD Connect: Mi az a PowerShell-modul ADConnectivityTool |} A Microsoft Docs'
-description: Ez a dokumentum bemutatja az új ADConnectivity PowerShell-modul
+description: Ez a dokumentum bemutatja az új ADConnectivity PowerShell-modult, és hogyan használható hibaelhárításához.
 services: active-directory
 author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 4/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b2471b28132b26c41844b620f6dcf49e3802a6e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd5340cd8c802df4ffbe0207b5401d2fee4e207e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60245658"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571115"
 ---
-# <a name="what-is-the-adconnectivitytool-powershell-module"></a>Mi az a ADConnectivityTool PowerShell-modult?
+# <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>A ADConnectivityTool PowerShell-modult az Azure AD-kapcsolatának hibaelhárítása
 
 A ADConnectivity eszköz el egy PowerShell-modul, amely szerepel az alábbi lehetőségek közül:
 
-- Telepítéskor megakadályozza a sikeres érvényesítésének feltétele lesz az Active Directory hitelesítő adatok a felhasználó a varázslóban megadott hálózati csatlakozási probléma esetén.
+- A telepítés során, ha a hálózati kapcsolati probléma megakadályozza a sikeres érvényesítésének feltétele lesz az Active Directory hitelesítő adatok a felhasználó a varázslóban megadott.
 - Meghívja a függvényt, egy PowerShell-munkamenetet a felhasználó által a telepítés után.
 
 Az eszköz található: **C:\Program Files\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1** 

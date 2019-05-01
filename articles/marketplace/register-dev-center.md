@@ -2,24 +2,18 @@
 title: Register in Dev Center | Azure
 description: Hogyan kell regisztrálni (Dev Center)-fejlesztői központban.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 682c9e209c4fa4a9f4971af5da901faf1ec58c22
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 559b5a519a48d4aa8022961a59f6f29cef28f948
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60735800"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937600"
 ---
 # <a name="register-in-dev-center"></a>Regisztrálás a fejlesztői központban  
 Annak érdekében, győződjön meg arról, hogy nem jelentkezve egy böngésző személyes fiók, nyisson meg egy új Internet Explorer InPrivate vagy Chrome Inkognitó böngészési munkamenetében.  
@@ -34,7 +28,7 @@ Annak érdekében, győződjön meg arról, hogy nem jelentkezve egy böngésző
     ![Ország/régió be a fiók adatai](./media/marketplace-publishers-guide/devcenterregistrationaccountinfo.png)  
    
     >[!WARNING]
-    >Hogy a szolgáltatások az Azure Marketplace-en, győződjön meg arról, hogy a regisztrált entitást a jóváhagyott egyik *értékesítői* országok. A hely korlátozás küldenie jóváhagyásra cége kifizetési és adózási szempontok miatt szükség. 
+    >Hogy a szolgáltatások az Azure Marketplace-en, győződjön meg arról, hogy a regisztrált entitást a jóváhagyott egyik *értékesítői* országokban vagy régiókban. A hely korlátozás küldenie jóváhagyásra cége kifizetési és adózási szempontok miatt szükség. 
     >*   További információért látogasson el az Azure Marketplace részvételi szabályzatában található oldal [azure.microsoft.com/support/legal/marketplace/participation-policies](https://azure.microsoft.com/support/legal/marketplace/participation-policies).  
 
 4.  A *fióktípus*, jelölje be a `Company` választógombot.  

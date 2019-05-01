@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 3b938f07ef5b1feb9d5859f27423eaa79c2937cc
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 8de9d7e6aac052ca24f1eef5f99c3146029bddbb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59577591"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690148"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvéhez és régiójához támogatása
 
@@ -28,7 +28,7 @@ A Translator Text API a következő nyelveket támogatja a szöveg a fordítás.
 **V2 Translator API**
 
 > [!NOTE]
-> V2 elavulttá 2018. április 30., és a 2019. április 30. ezt megszüntetjük.
+> 2018. április 30. v2 kivezettük. Telepítse át az alkalmazások V3 kizárólag a v3-as elérhető új funkciók előnyeinek kihasználásához.
 
 * Csak statisztikai: Nincs Neurális rendszer nem érhető el ehhez a nyelvhez.
 * Neurális érhető el: Egy Neurális rendszeren érhető el. Használja ezt a paramétert `category=generalnn` hozzáférhetnek a Neurális rendszerhez.
@@ -230,14 +230,17 @@ Az alábbi nyelveken érhetők el, vagy az angol nyelvű testreszabási [egyéni
 | indonéz|   `id`    |
 | olasz      | `it`          |
 | japán      | `ja`          |
+|szuahéli| `sw`    |
 | koreai      | `ko`          |
 | lett      | `lv`          |
 | litván      | `lt`          |
+|malgas|  `mg`    |
 | norvég      | `nb`          |
 | lengyel      | `pl`          |
 | portugál      | `pt`          |
 | román      | `ro`          |
 | orosz      | `ru`          |
+|szamoai|    `sm`    |
 | szerb (latin betűs)      | `sr-Latn`          |
 | szlovák     | `sk`          |
 | szlovén      | `sl`          |

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e92378cca445191f42708bd6348b1c75b29da1a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 65634cb6573a0f163f7a0ca07bf26af9512e240b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60361064"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683888"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Az OAuth2 technikai profil meghatározása az Azure Active Directory B2C egyéni házirendek
 
@@ -23,7 +23,7 @@ ms.locfileid: "60361064"
 
 Az Azure Active Directory (Azure AD) B2C az OAuth2 protokoll identitásszolgáltató támogatja. Az OAuth2 olyan delegált hitelesítési és engedélyezési elsődleges protokollja. További információkért lásd: a [RFC 6749 az OAuth 2.0 engedélyezési keretrendszer](https://tools.ietf.org/html/rfc6749). Az OAuth2 technikai profil az OAuth2 alapján Identitásszolgáltatóként, többek között a Facebookhoz használatával is összevonható. Összevonás az identitásszolgáltatót lehetővé teszi a felhasználóknak, hogy jelentkezzen be a meglévő közösségi vagy vállalati identitásokat.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol
 
 A **neve** attribútuma a **protokoll** elemet hozzá kell beállítani `OAuth2`. Például a protokoll a **Facebook-OAUTH** technikai profil `OAuth2`:
 

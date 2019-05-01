@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: a887c79a51c7a239e7057171e51e67a53af2f84b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f83eb87d2eecb91aa18b1caceb42f9d8bd6c2a0e
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60580230"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939593"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Az SQL Data Sync szolgáltatással több felhőalapú és helyszíni adatbázis közötti adatszinkronizálás
 
@@ -32,7 +32,7 @@ Adatszinkronizálás esetekben hasznos, ahol adatokat kell több Azure SQL Datab
 
 - **Hibrid adatok szinkronizálása:** Az adatszinkronizálás beállíthatja, hogy a helyszíni adatbázisok és a hibrid alkalmazások az Azure SQL-adatbázisok között szinkronizált adatok. Ez a képesség is konfigurálja, hogy a ügyfelek, akik használatát fontolgatja a felhőre, és szeretné helyezni néhány alkalmazását az Azure-ban.
 - **Az elosztott alkalmazások:** Sok esetben akkor előnyös, ha különböző számítási feladatok egymástól a különböző adatbázisok között. Például ha olyan nagy méretű éles adatbázist, de szükség erre az egy jelentésben vagy elemzési számítási feladatok futtatásához, hasznos ahhoz, hogy a további számítási második adatbázis. Ez a megközelítés minimálisra csökkenti a éles számítási feladatokra gyakorolt hatást. Használhatja a Data Syncet, hogy a két adatbázis szinkronizálva.
-- **Globálisan elosztott alkalmazások:** Számos vállalat span számos régióban, és még több országban. Hálózati késés minimalizálása érdekében a legjobb, ha az adatok egy régióban Önhöz. Az adatszinkronizálás könnyedén tarthatja adatbázisok szinkronizálása a világ különböző pontjain található régiókban.
+- **Globálisan elosztott alkalmazások:** Számos vállalat span számos régióban, és még számos országokban vagy régiókban. Hálózati késés minimalizálása érdekében a legjobb, ha az adatok egy régióban Önhöz. Az adatszinkronizálás könnyedén tarthatja adatbázisok szinkronizálása a világ különböző pontjain található régiókban.
 
 Adatok szinkronizálása nem az előnyben részesített megoldás a következő forgatókönyvekhez:
 

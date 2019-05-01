@@ -11,136 +11,169 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2017
+ms.date: 04/17/2019
 ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0880ad2ab02fad574f5204741b0fa03e4ef0338
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3143dfafdd402bd9eeb2f201f4e728d84c4b9f09
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443287"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691167"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Az Azure AD-alkalmazásproxy használatával állítsa be a közzétett alkalmazások egy egyéni kezdőlapja
 
-Ez a cikk ismerteti az alkalmazások számára a felhasználók számára egy egyéni kezdőlap konfigurálása. Amikor közzétesz egy alkalmazást a proxyval, beállíthat egy belső URL-cím azonban néha, amely nem a lapon, a felhasználók először kell megjelennie. Állíthat be egy egyéni kezdőlap, így a felhasználók nyissa meg a jobb oldalon az alkalmazások elérésekor. A felhasználók e férnek hozzá az alkalmazást az Azure Active Directory hozzáférési paneljére vagy az Office 365 appindítóban beállított egyéni kezdőlap jelenik meg.
+Ez a cikk ismerteti, hogyan konfigurálhat egy alkalmazást arra, hogy a felhasználót, hogy egy egyéni kezdőlap, amelyek eltérőek lehetnek attól függően, hogy azok belső vagy külső közvetlen. Amikor közzétesz egy alkalmazást a proxyval, beállíthat egy belső URL-cím, de egyes esetekben ez nem az oldal a felhasználó először kell megjelennie. Állítsa be egy egyéni kezdőlap, úgy, hogy egy felhasználó lekéri a jobb oldalon, ha szeretne hozzáférni az alkalmazáshoz. A felhasználó az egyéni kezdőlap jelenik meg, hogy beállította, függetlenül attól, hogy férnek hozzá az alkalmazást az Azure Active Directory hozzáférési paneljére vagy az Office 365 appindítóban.
 
-Amikor a felhasználók indítsa el az alkalmazást, azokat a legfelső szintű tartomány URL-címe, a közzétett alkalmazás alapértelmezés szerint a van irányítva. A kezdőlap általában a kezdőlap URL-címe van beállítva. Az Azure AD PowerShell-modul segítségével egyéni kezdőlap URL-címek megadása, ha azt szeretné, hogy a felhasználók számára a megjelenni az alkalmazásban egy adott oldalra. 
+Amikor egy felhasználó elindítja az alkalmazást, azokat a legfelső szintű tartomány URL-címet a közzétett alkalmazás alapértelmezés szerint van irányítva. A kezdőlap általában a kezdőlap URL-címe van beállítva. Az Azure AD PowerShell-modul segítségével határozza meg egy egyéni kezdőlap URL-címe, ha azt szeretné, hogy egy alkalmazás felhasználói kerül az alkalmazáson belül egy adott oldalon.
 
-Ezért egy vállalat állíthatja be egy egyéni kezdőlap, Íme egy példa:
-- A vállalati hálózaton belüli felhasználók Ugrás `https://ExpenseApp/login/login.aspx` jelentkezik be, és az alkalmazás eléréséhez.
-- Más tartalmaktól, például képek, amelynek a legfelső szinten, a gyökérmappa-szerkezetében hozzá kell Application Proxy van, mert az alkalmazást közzéteszi `https://ExpenseApp` , a belső URL-cím.
-- A külső URL-címét `https://ExpenseApp-contoso.msappproxy.net`, amely nem használ a felhasználók a bejelentkezési lapot.  
-- Állítsa be `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` kezdőlap URL-címként. 
+Az alábbiakban egy forgatókönyv, amely azt ismerteti, miért érdemes a vállalat állíthatja be egy egyéni kezdőlap, és miért érdemes lenne a felhasználó típusától függően eltérő:
+
+- Egyéb eszközök (például képek), amelynek a legfelső szinten, a gyökérmappa-szerkezetében hozzá kell Application Proxy van, mert az alkalmazást közzéteszi `https://ExpenseApp` , a belső URL-cím.
+- Azonban a vállalati hálózaton belüli egy felhasználó megnyitja a `https://ExpenseApp/login/login.aspx` jelentkezik be, és az alkalmazás eléréséhez.
+- A külső URL-címét `https://ExpenseApp-contoso.msappproxy.net`, amely nem használ egy külső felhasználó a bejelentkezési lapot.
+- Szeretné állítani, `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` külső kezdőlap URL-címként, így egy külső felhasználó látja a bejelentkezési oldal először.
 
 >[!NOTE]
->Amikor engedélyezi a felhasználók elérését a közzétett alkalmazásokat, az alkalmazások megjelennek a [Azure AD hozzáférési Panel](../user-help/active-directory-saas-access-panel-introduction.md) és a [Office 365 appindítóban](https://blogs.office.com/2016/09/27/introducing-the-new-office-365-app-launcher).
+>Amikor engedélyezi a felhasználók elérését a közzétett alkalmazásokat, az alkalmazások megjelennek a [Azure AD hozzáférési Panel](../user-help/my-apps-portal-end-user-access.md) és a [Office 365 appindítóban](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/).
 
 ## <a name="before-you-start"></a>Előkészületek
 
 Mielőtt beállítaná a kezdőlap URL-címe, vegye figyelembe az alábbi követelményeknek:
 
-* Győződjön meg arról, hogy a megadott elérési út egy altartomány elérési útját a legfelső szintű tartomány URL-címe.
+- Az Ön által megadott elérési út egy altartomány elérési útját a legfelső szintű tartomány URL-címének kell lennie.
 
-  Ha a legfelső szintű tartományi URL-CÍMÉT, például https://apps.contoso.com/app1/, a kezdőlap URL-címe, konfigurálnia kell kezdődnie https://apps.contoso.com/app1/.
+  Például, ha a legfelső szintű tartományi URL-cím `https://apps.contoso.com/app1/`, a kezdőlap URL-címe, konfigurálnia kell kezdődnie `https://apps.contoso.com/app1/`.
 
-* Ha módosítja a közzétett alkalmazáshoz, a módosítás a kezdőlap URL-Címének értékét előfordulhat, hogy alaphelyzetbe. Ha a jövőben frissíti az alkalmazást, akkor kell újbóli ellenőrzése ennyi idő, és ha szükséges, frissítse a kezdőlap URL-címe.
+- Ha módosítja a közzétett alkalmazáshoz, a módosítás a kezdőlap URL-Címének értékét előfordulhat, hogy alaphelyzetbe. Ha a jövőben frissíti az alkalmazást, akkor kell újbóli ellenőrzése ennyi idő, és ha szükséges, frissítse a kezdőlap URL-címe.
+
+A külső vagy belső kezdőlap az Azure Portalon keresztül, vagy a PowerShell használatával módosíthatja.
 
 ## <a name="change-the-home-page-in-the-azure-portal"></a>Az Azure Portalon a kezdőlap módosítása
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) felületére rendszergazdaként.
-2. Navigáljon a **Azure Active Directory** > **alkalmazásregisztrációk** , és válassza ki az alkalmazást a listából. 
-3. Válassza ki **tulajdonságok** beállításokkal.
-4. Frissítés a **kezdőlap URL-címe** az új elérési út mezőben. 
+Ha módosítani szeretné a külső és belső kezdőlapján az alkalmazás az Azure AD portálon keresztül, kövesse az alábbi lépéseket:
 
-   ![Adja meg az új kezdőlap URL-címe](./media/application-proxy-configure-custom-home-page/homepage.png)
-
-5. Válassza ki **mentése**
+1. Jelentkezzen be a [Azure Active Directory portálon](https://aad.portal.azure.com/). Az Azure Active Directory felügyeleti központ az irányítópulton jelenik meg.
+2. Válassza ki az oldalsávon **Azure Active Directory**. Az Azure ad-ben – Áttekintés lap jelenik meg.
+3. Az Áttekintés oldalsávon válassza **alkalmazásregisztrációk**. Megjelenik a regisztrált alkalmazások listája.
+4. Válassza ki az alkalmazást a listából. A regisztrált alkalmazás részleteit megjelenítő lap jelenik meg.
+5. Jelölje ki a kapcsolatot a **átirányítási URI azonosítója**, amely átirányítási URI-nak a webes és a nyilvános ügyféltípusok számát jeleníti meg. A hitelesítési lapon a regisztrált alkalmazás jelenik meg.
+6. Az utolsó sorát a **átirányítási URI-k** táblát, és állítsa a **típusa** oszlop **nyilvános ügyfél (mobil és asztali)**, és a a **ÁTIRÁNYÍTÁSI URI**oszlop, írja be a használni kívánt belső URL-cím. Új üres sor jelenik meg az imént módosított sor.
+7. Az új sorban állítsa be a **típusa** oszlop **webes**, majd a a **ÁTIRÁNYÍTÁSI URI-t** oszlop, írja be a használni kívánt külső URL-CÍMÉT.
+8. Ha bármely meglévő átirányítási URI-t sorokat törölni szeretne, válassza ki a **törlése** mellett minden egyes nemkívánatos sort (egy szemetes) ikonra.
+9. Kattintson a **Mentés** gombra.
 
 ## <a name="change-the-home-page-with-powershell"></a>Módosítsa a kezdőlapon a PowerShell-lel
 
+A kezdőlap PowerShell-lel az alkalmazás konfigurálásához kell tennie:
+
+1. Az Azure AD PowerShell modul telepítése.
+2. Az alkalmazás ObjectId értékének megkeresése
+3. Frissítse az alkalmazás kezdőlap URL-címe PowerShell-parancsokkal.
+
 ### <a name="install-the-azure-ad-powershell-module"></a>Az Azure AD PowerShell modul telepítése
 
-PowerShell-lel megadhat egy egyéni kezdőlap URL-címe, előtt telepítse az Azure AD PowerShell-modul. Letöltheti a csomagot a [PowerShell-galériából](https://www.powershellgallery.com/packages/AzureAD/2.0.0.131), amely használja, a Graph API-végpont. 
+PowerShell-lel megadhat egy egyéni kezdőlap URL-címe, előtt telepítse az Azure AD PowerShell-modul. Letöltheti a csomagot a [PowerShell-galériából](https://www.powershellgallery.com/packages/AzureAD/2.0.2.16), amely használja, a Graph API-végpont.
 
 A csomag telepítéséhez kövesse az alábbi lépéseket:
 
 1. Nyisson meg egy standard szintű PowerShell-ablakot, és futtassa a következő parancsot:
 
-    ```powershell
-     Install-Module -Name AzureAD
-    ```
+   ```powershell
+   Install-Module -Name AzureAD
+   ```
 
     Ha a parancsot futtatja, nem rendszergazda, a `-scope currentuser` lehetőséget.
-2. A telepítés során válasszon **Y** Nuget.org a két csomagok telepítéséhez. Mindkét csomagot szükség. 
+
+2. A telepítés során válasszon **Y** Nuget.org a két csomagok telepítéséhez. Mindkét csomagot szükség.
 
 ### <a name="find-the-objectid-of-the-app"></a>Az ObjectId azonosítóját, az alkalmazás keresése
 
-Szerezze be az ObjectId azonosítóját, az alkalmazást, és keressen rá az alkalmazás által a kezdőlapon.
+Keresés az alkalmazás által megjelenített név vagy kezdőlapja kap az ObjectId azonosítóját, az alkalmazást.
 
 1. Ugyanebben a PowerShell ablakban az Azure AD-modul importálásához.
 
-    ```powershell
-    Import-Module AzureAD
-    ```
+   ```powershell
+   Import-Module AzureAD
+   ```
 
 2. Jelentkezzen be az Azure AD-modul a bérlői rendszergazda.
 
-    ```powershell
-    Connect-AzureAD
-    ```
+   ```powershell
+   Connect-AzureAD
+   ```
 
-3. Keresse meg az alkalmazást, a kezdőlap URL-címe alapján. Annak az URL-címet a portálon a **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás**. Ez a példa *sharepoint-iddemo*.
+3. Keresse meg az alkalmazást. Ez a példa Powershellt használja az alkalmazás megjelenítendő neve és keressen rá az ObjectId található `SharePoint`.
 
-    ```powershell
-    Get-AzureADApplication | Where-Object { $_.Homepage -like "sharepoint-iddemo" } | Format-List DisplayName, Homepage, ObjectID
-    ```
+   ```powershell
+   Get-AzureADApplication | Where-Object { $_.DisplayName -eq "SharePoint" } | Format-List DisplayName, Homepage, ObjectId
+   ```
 
-4. Az itt látható egy hasonló eredményt kell kapnia. Másolja a következő szakaszban az ObjectID GUID Azonosítót.
+   Az itt látható egy hasonló eredményt kell kapnia. Másolja a következő szakaszban az ObjectId GUID Azonosítót.
 
-    ```
-    DisplayName : SharePoint
-    Homepage    : https://sharepoint-iddemo.msappproxy.net/
-    ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
-    ```
+   ```console
+   DisplayName : SharePoint
+   Homepage    : https://sharepoint-iddemo.msappproxy.net/
+   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
+   ```
+
+   Azt is megteheti, sikerült csak kérje le az összes alkalmazás listájára, az alkalmazás egy adott megjelenítési névvel vagy kezdőlapja a listában, és másolja az alkalmazás ObjectId után az alkalmazás található.
+
+   ```powershell
+   Get-AzureADApplication | Format-List DisplayName, Homepage, ObjectId
+   ```
 
 ### <a name="update-the-home-page-url"></a>A kezdőlap URL-Címének frissítése
 
-A kezdőlap URL-cím létrehozása, és frissítse az alkalmazás ezt az értéket. Továbbra is az ugyanebben a PowerShell-ablakban, futtassa a következő parancsokat. Vagy, ha egy új PowerShell-ablakot használja, jelentkezzen be az Azure AD-modul segítségével újból `Connect-AzureAD`. 
+Hozzon létre a kezdőlap URL-címe, és az alkalmazást frissíti az értéket. Ugyanebben a PowerShell ablakban használatának folytatásához, vagy ha egy új PowerShell-ablakot használja, jelentkezzen be az Azure AD-modul segítségével újból `Connect-AzureAD`. Ezután kövesse az alábbi lépéseket:
 
-1. Győződjön meg arról, hogy a megfelelő alkalmazáshoz, és cserélje le *8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4* az az előző szakaszban kimásolt objektumazonosító.
+1. Hozzon létre egy változót az előző szakaszban kimásolt érték ObjectId tárolásához. (Cserélje le az alkalmazás ObjectId értékkel rendelkező SharePoint példában használt érték ObjectId.)
 
-    ```powershell
-    Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4.
-    ```
+   ```powershell
+   $objguid = "8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4"
+   ```
 
-   Most, hogy az alkalmazást jóváhagyta, készen áll a kezdőlap módon frissíteni.
+2. Győződjön meg arról, hogy rendelkezik-e a megfelelő alkalmazást a következő parancs futtatásával. A kimenet meg kell egyezniük a kimenet az előző szakaszban látott ([objectid azonosítóját, az alkalmazás keresése](#find-the-objectid-of-the-app)).
 
-2. Hozzon létre egy üres alkalmazás-objektumot a kívánt módosításokat, győződjön meg arról, hogy tartsa. Ez a változó tárolja a frissíteni kívánt értékeket. Semmi nem jön létre ebben a lépésben.
+   ```powershell
+   Get-AzureADApplication -ObjectId $objguid | Format-List DisplayName, Homepage, ObjectId
+   ```
 
-    ```powershell
-    $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
-    ```
+3. Hozzon létre egy üres alkalmazás-objektumot a kívánt módosításokat, győződjön meg arról, hogy tartsa.
 
-3. A kezdőlap URL-Címének beállítása a kívánt értéket. Az értéknek kell lennie a közzétett alkalmazás altartomány mutató elérési utat. Például, ha módosítja a kezdőlap URL-címe a `https://sharepoint-iddemo.msappproxy.net/` való `https://sharepoint-iddemo.msappproxy.net/hybrid/`,. alkalmazás felhasználóinak lépjen közvetlenül az egyéni kezdőlapja.
+   ```powershell
+   $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
+   ```
 
-    ```powershell
-    $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
-    ```
+4. A kezdőlap URL-Címének beállítása a kívánt értéket. Az értéknek kell lennie a közzétett alkalmazás altartomány mutató elérési utat. Például, ha módosítja a kezdőlap URL-címe a `https://sharepoint-iddemo.msappproxy.net/` való `https://sharepoint-iddemo.msappproxy.net/hybrid/`,. alkalmazás felhasználóinak lépjen közvetlenül az egyéni kezdőlapja.
 
-4. A frissítés, amely a másolt GUID (ObjectID) használatával győződjön meg arról, "1. lépés: Az ObjectId azonosítóját, az alkalmazás található."
+   ```powershell
+   $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
+   ```
 
-    ```powershell
-    Set-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4 -Homepage $homepage
-    ```
+5. Győződjön meg a frissítést, a kezdőlap.
 
-5. Győződjön meg arról, hogy sikeres volt-e a módosítást, indítsa újra az alkalmazást.
+   ```powershell
+   Set-AzureADApplication -ObjectId $objguid -Homepage $homepage
+   ```
 
-    ```powershell
-    Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
-    ```
+6. Annak ellenőrzéséhez, hogy sikeres volt-e a módosítást, a következő parancsot a 2. lépés újra.
+
+   ```powershell
+   Get-AzureADApplication -ObjectId $objguid | Format-List DisplayName, Homepage, ObjectId
+   ```
+
+   A jelen példában a kimeneti meg kell jelennie a következő:
+
+   ```console
+   DisplayName : SharePoint
+   Homepage    : https://sharepoint-iddemo.msappproxy.net/hybrid/
+   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
+   ```
+
+7. Indítsa újra az alkalmazást, meggyőződhet arról, hogy a kezdőlapon az első képernyőt elvárt módon.
 
 >[!NOTE]
 >Módosításokat hajt végre az alkalmazás előfordulhat, hogy állítsa alaphelyzetbe a kezdőlap URL-címe. Ha alaphelyzetbe állítja a kezdőlap URL-címe, ismételje meg a állítja vissza a jelen szakaszban.
@@ -148,4 +181,4 @@ A kezdőlap URL-cím létrehozása, és frissítse az alkalmazás ezt az érték
 ## <a name="next-steps"></a>További lépések
 
 - [Távoli hozzáférés a Sharepointhoz, az Azure AD-alkalmazásproxy engedélyezése](application-proxy-integrate-with-sharepoint-server.md)
-- [Alkalmazásproxy engedélyezése az Azure Portalon](application-proxy-add-on-premises-application.md)
+- [Oktatóanyag: A távoli hozzáféréshez alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure Active Directoryban](application-proxy-add-on-premises-application.md)

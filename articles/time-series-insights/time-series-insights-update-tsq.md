@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7885473d029556e10663675a9886c7ea3b9c709c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 0b1c43cb82d6dc2b7f0708dee8471f077befe349
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555421"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722154"
 ---
 # <a name="data-querying"></a>Adatok lekérdezése
 
@@ -75,11 +75,11 @@ A következő alkalommal sorozat lekérdezési API-k érhetők el:
 
 ## <a name="next-steps"></a>További lépések
 
-További információ:
+- Tudjon meg többet [tárolási a bejövő és kimenő](./time-series-insights-update-storage-ingress.md) a az Azure Time Series Insights előzetes verziója.
 
-- [Az Azure Time Series Insights előzetes verziója storage és a bejövő forgalom](./time-series-insights-update-storage-ingress.md)
-- [Adatmodellezés](./time-series-insights-update-tsm.md)
-- [Ajánlott eljárások a Time Series ID kiválasztásakor](./time-series-insights-update-how-to-id.md)
+- Olvassa el a Time Series Insights előzetes verziója [adatmodellezés](./time-series-insights-update-tsm.md) cikk.
+
+- Fedezze fel [ajánlott eljárások a Time Series ID kiválasztásakor](./time-series-insights-update-how-to-id.md).
 
 <!-- Images -->
 [1]: media/v2-update-tsq/tsq.png

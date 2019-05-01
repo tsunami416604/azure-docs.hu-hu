@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 04/26/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1f174229da565627c0e5791f53031b338880cb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45252cc4d45e96c2bde4a4600630ea578a8d3009
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299028"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64946729"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Gyors útmutató: A felhasználók és a Microsoft Graph API hívása Androidos alkalmazásokból
 
@@ -34,8 +34,8 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 
 > [!NOTE]
 > **Előfeltételek**
-> * Android Studio 3+
-> * Android 21 + megadása kötelező 
+> * Android Studio 
+> * Android 16 + megadása kötelező 
 
 
 > [!div renderon="docs"]
@@ -56,19 +56,20 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 > #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 > Az alkalmazás regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való kézi hozzáadásához kövesse az alábbi lépéseket:
 >
-> 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-> 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-> 1. Keresse meg a fejlesztők a Microsoft identity platform [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapot.
+> 1. Keresse meg a fejlesztők a Microsoft identity platform [alkalmazásregisztrációk](https://aka.ms/MobileAppReg) lapot.
 > 1. Válassza ki **új regisztrációs**.
 > 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
->      - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `Android-Quickstart`).
+>      - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `AndroidQuickstart`).
+>      - Egyéb konfigurációk kihagyhatja ezen az oldalon. 
 >      - Nyomja le az `Register` gombra.
-> 1. Lépjen a `Authentication`  >  `Redirect URIs`  >  `Suggested Redirect URIs for public clients`, és válassza ki az átirányítási URI-formátum **msal {AppId} :/ / auth**. A módosítás mentéséhez.
-
+> 1. Kattintson az új alkalmazás a > lépjen a `Authentication`  >  `Add Platform`  >  `Android`.    
+>      - Adja meg az Android studio-projektet a csomag nevét. 
+>      - Hozzon létre egy aláírás-kivonatoló. Tekintse meg a portálon talál útmutatást.
+> 1. Válassza ki `Configure` , és mentse a ***MSAL konfigurációs*** JSON későbbi használatra. 
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>1. lépés: Az alkalmazás konfigurálása
-> Ahhoz, hogy a rövid útmutatóban szereplő kódminta működjön, hozzá kell adnia egy válasz URL-címet a következő formában: **msal{AppId}://auth** (ahol az {AppId} az alkalmazás azonosítója).
+> Az ebben a rövid működéséhez kódmintájához hozzá kell átirányítási URI-t a hitelesítési ügynök kompatibilis. 
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítás alkalmazása]()
 >
@@ -77,24 +78,34 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 
 #### <a name="step-2-download-the-project"></a>2. lépés: Töltse le a projekt
 
-* [Az Android Studio-projekt letöltése](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)
+* [A mintakód letöltése](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-project"></a>3. lépés: A projekt konfigurálása
 
 > [!div renderon="docs"]
-> Ha a fenti beállítás 1, akkor kihagyhatja ezeket a lépéseket. Nyissa meg a projekt az Android Studióban, és futtassa az alkalmazást. 
+> Ha a fenti beállítás 1, akkor kihagyhatja ezeket a lépéseket. 
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 1. Csomagolja ki és nyissa meg a projektet az Android Studióban.
-> 1. Belül **alkalmazás** > **res** > **nyers**, nyissa meg **auth_config.json**.
-> 1. Szerkesztés **auth_config.json** , és cserélje le a `client_id` és `tenant_id`:
+> 1. Belül **alkalmazás** > **src** > **fő** > **res**  >   **nyers**, nyissa meg **auth_config.json**.
+> 1. Szerkesztés **auth_config.json** és cserélje le a JSON az Azure Portalról. Ha inkább manuálisan szeretné hajtsa végre a módosításokat:
 >    ```javascript
->    "client_id" : "Enter_the_Application_Id_Here",
->    "type": "Enter_the_Audience_Info_Here",
->    "tenant_id" : "Enter_the_Tenant_Info_Here"
->    ```
-> 1. Belül **alkalmazás** > **jegyzékfájlok**, nyissa meg **AndroidManifest.xml**.
-> 1. Adja hozzá az alábbi tevékenységet a **manifest\application** csomóponthoz. Ez a kód lehetővé teszi, hogy a Microsoft visszahívási az alkalmazáshoz:   
+>    {
+>       "client_id" : "Enter_the_Application_Id_Here",
+>       "authorization_user_agent" : "DEFAULT",
+>       "redirect_uri" : "Enter_the_Redirect_Uri_Here",
+>       "authorities" : [
+>          {
+>             "type": "AAD",
+>             "audience": {
+>                "type": "Enter_the_Audience_Info_Here",
+>                "tenant_id": "Enter_the_Tenant_Info_Here"
+>             }
+>          }
+>       ]
+>    }
+> 1. Inside **app** > **manifests**, open  **AndroidManifest.xml**.
+> 1. Paste the following activity to the **manifest\application** node: 
 >    ```xml
 >    <!--Intent filter to catch Microsoft's callback after Sign In-->
 >    <activity
@@ -103,19 +114,18 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 >            <action android:name="android.intent.action.VIEW" />
 >            <category android:name="android.intent.category.DEFAULT" />
 >            <category android:name="android.intent.category.BROWSABLE" />
-> 
->            <!--Add in your scheme/host from registered redirect URI-->
->            <!--By default, the scheme should be similar to 'msal[appId]' -->
->            <data android:scheme="msalEnter_The_Application_Id_Here"
->                android:host="auth" />
+>            <data android:scheme="msauth"
+>                android:host="Enter_the_Package_Name"
+>                android:path="/Enter_the_Signature_Hash" />
 >        </intent-filter>
 >    </activity>
 >    ```
+> > 1. Az alkalmazás futtatása! 
 
 > [!div renderon="docs"]
 > 1. Csomagolja ki és nyissa meg a projektet az Android Studióban.
 > 1. Belül **alkalmazás** > **res** > **nyers**, nyissa meg **auth_config.json**.
-> 1. Szerkesztés **auth_config.json** , és cserélje le a `client_id` és `redirect_uri`:
+> 1. Szerkesztés **auth_config.json** és cserélje le a JSON az Azure Portalról. Ha inkább manuálisan szeretné tenni a módosításokat:
 >    ```javascript
 >    "client_id" : "ENTER_YOUR_APPLICATION_ID",
 >    "redirect_uri": "ENTER_YOUR_REDIRECT_URI", 
@@ -130,27 +140,26 @@ A jelen rövid útmutatóban található kódmintán azt mutatjuk be, hogyan tud
 >            <action android:name="android.intent.action.VIEW" />
 >            <category android:name="android.intent.category.DEFAULT" />
 >            <category android:name="android.intent.category.BROWSABLE" />
-> 
->            <!--Add in your scheme/host from registered redirect URI-->
->            <!--By default, the scheme should be similar to 'msal[appId]' -->
->            <data android:scheme="msal<ENTER_YOUR_APPLICATION_ID>"
->                android:host="auth" />
+>            <data android:scheme="msauth"
+>                android:host="Enter_the_Package_Name"
+>                android:path="/Enter_the_Decoded_Signature_Hash" />
 >        </intent-filter>
 >    </activity>
 >    ```
-> 1. Az `<ENTER_THE_APPLICATION_ID_HERE>` sztringet cserélje le az alkalmazás *azonosítójára*. Az *alkalmazásazonosítót* az *áttekintési* oldalon találja.
+> 1. Cserélje le `Enter_the_Package_Name` és `Enter_the_Signature_Hash` azokra az értékekre, hogy regisztrált az Azure Portalon. 
+> 1. Az alkalmazás futtatása! 
 
 ## <a name="more-information"></a>További információ
 
 Az alábbi szakaszok a rövid útmutatóhoz kapcsolódód további információkat tartalmaznak.
 
-### <a name="msal"></a>MSAL
+### <a name="getting-msal"></a>Az MSAL beolvasása
 
-Az MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) segítségével a felhasználók, és egy API-t a Microsoft identity platform által védett eléréséhez használt jogkivonatokat kérhetnek a könyvtár. A telepítést a Gradle segítségével végezheti el. Ehhez a **Dependencies** (Függőségek) területen hozzá kell adnia a **Gradle Scripts** > **build.gradle (Module: app)** elemhez a következőket:
+Az MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) segítségével a felhasználók, és egy API-t a Microsoft identity platform által védett eléréséhez használt jogkivonatokat kérhetnek a könyvtár. Gradle 3.0 + segítségével telepítheti a következő hozzáadásával **Gradle-szkriptek** > **build.gradle (modul: alkalmazás)** alatt **függőségek**:
 
 ```gradle  
 implementation 'com.android.volley:volley:1.1.1'
-implementation 'com.microsoft.identity.client:msal:0.2.+'
+implementation 'com.microsoft.identity.client:msal:0.3.+'
 ```
 
 ### <a name="msal-initialization"></a>Az MSAL inicializálása
@@ -171,20 +180,22 @@ Ezután inicializálja az MSAL-t az alábbi kóddal:
 
 > |Az elemek magyarázata: ||
 > |---------|---------|
-> |`R.raw.auth_config` | Ez a fájl tartalmazza a konfigurációkat az alkalmazáshoz, beleértve az alkalmazás/ügyfél-azonosító, jelentkezzen be a célközönség és számos egyéb testreszabási lehetőségek. |
+> |`R.raw.auth_config` | Ez a fájl tartalmazza a konfigurációkat az alkalmazáshoz, beleértve az alkalmazás/ügyfél-azonosító, bejelentkezési célközönség, átirányítási URI-t és számos egyéb testreszabási lehetőségek. |
 
 ### <a name="requesting-tokens"></a>Jogkivonatok lekérése
 
 Az MSAL a következő két metódust használja a jogkivonatok beszerzéséhez: `acquireToken` és `acquireTokenSilentAsync`
 
-#### <a name="getting-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
+#### <a name="acquiretoken-getting-a-token-interactively"></a>acquireToken: Interaktív módon jogkivonatának beolvasása
 
-Bizonyos helyzetekben szükséges együttműködhet a Microsoft identity platform végpont, mely eredmények egy környezetben. Váltson vagy érvényesíteni a felhasználók hitelesítő adatait a rendszer böngészőben vagy a beleegyezést a felhasználók. Néhány példa:
+Bizonyos helyzetekben megköveteli a felhasználóktól, együttműködhet a Microsoft identitásplatformjához. Ezekben az esetekben kiválaszthatják a fiókjukat, adja meg a hitelesítő adataik vagy beleegyezik abba az engedélyeket, az alkalmazás kéri, hogy a végfelhasználó is szükség. Például: 
 
 * Az első alkalommal, amikor felhasználók bejelentkeznek az alkalmazásba
-* Ha a felhasználóknak újból meg kell adniuk a hitelesítési adataikat, mert lejárt a jelszó
-* Amikor az alkalmazás olyan erőforráshoz kér hozzáférést, amelyhez szükséges a felhasználó hozzájárulása
-* Ha kétfaktoros hitelesítésre van szükség
+* Ha a felhasználó alaphelyzetbe állítja a jelszavát, kell adnia a hitelesítő adatait 
+* Ha a jóváhagyási visszavonva 
+* Ha az alkalmazás explicit módon kell kapnia. 
+* Ha az alkalmazás erőforrásokhoz való hozzáférést az első alkalommal
+* Ha az MFA vagy más feltételes hozzáférési házirendek szükségesek
 
 ```java
 sampleApp.acquireToken(this, SCOPES, getAuthInteractiveCallback());
@@ -195,24 +206,29 @@ sampleApp.acquireToken(this, SCOPES, getAuthInteractiveCallback());
 > | `SCOPES` | Tartalmazza a kért hatóköröket (azaz `{ "user.read" }` Microsoft Graph és `{ "<Application ID URL>/scope" }` egyéni webes API-k esetében) (például `api://<Application ID>/access_as_user`) |
 > | `getAuthInteractiveCallback` | Visszahívás, amelyre akkor kerül sor, amikor a hitelesítés után visszakerül a vezérlés az alkalmazáshoz |
 
-#### <a name="getting-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
+#### <a name="acquiretokensilent-getting-a-user-token-silently"></a>acquireTokenSilent: Felhasználói jogkivonat csendes beszerzése
 
-Nem érdemes minden egyes alkalommal megkövetelni a felhasználóktól a hitelesítő adatok érvényesítését, amikor hozzá kell férniük egy erőforráshoz. Általában szerencsésebb, ha a jogkivonatok beszerzéséhez és megújításához nincs szükség felhasználói beavatkozásra. Kezdetben használja az `acquireToken` metódust, majd a védett erőforrásokhoz való hozzáféréshez szükséges jogkivonatok beszerzéséhez az `AcquireTokenSilentAsync` metódust használhatja:
+Alkalmazások a felhasználók jelentkezhetnek be minden alkalommal, amikor a jogkivonat kérnek elvégzéséhez nem szükséges. Ha a felhasználó már bejelentkezett, ez a módszer engedélyezi, hogy csendes kérelem jogkivonatokat.
 
 ```java
-List<IAccount> accounts = sampleApp.getAccounts();
-if (sample.size() == 1) {
-    sampleApp.acquireTokenSilentAsync(SCOPES, accounts.get(0), getAuthSilentCallback());
-} else {
-    // No or multiple accounts
-}
+    sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
+        @Override
+        public void onAccountsLoaded(final List<IAccount> accounts) {
+
+            if (!accounts.isEmpty()) {
+                sampleApp.acquireTokenSilentAsync(SCOPES, accounts.get(0), getAuthSilentCallback());
+            } else {
+                /* No accounts */
+            }
+        }
+    });
 ```
 
 > |Az elemek magyarázata:||
 > |---------|---------|
 > | `SCOPES` | Tartalmazza a kért hatóköröket (azaz `{ "user.read" }` Microsoft Graph és `{ "<Application ID URL>/scope" }` egyéni webes API-k esetében) (például `api://<Application ID>/access_as_user`) |
-> | `accounts.get(0)` | A fiók tokenekhez tartozó csendes kívánt tartalmaz |
-> | `getAuthInteractiveCallback` | Visszahívás, amelyre akkor kerül sor, amikor a hitelesítés után visszakerül a vezérlés az alkalmazáshoz |
+> | `getAccounts(...)` | A fiók tokenekhez tartozó csendes kívánt tartalmaz |
+> | `getAuthSilentCallback()` | Visszahívás, amelyre akkor kerül sor, amikor a hitelesítés után visszakerül a vezérlés az alkalmazáshoz |
 
 ## <a name="next-steps"></a>További lépések
 

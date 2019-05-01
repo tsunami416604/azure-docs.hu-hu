@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fcf2ef10cbc8f6f54a65e596ea003a98f410a7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 78889cb3c04b9854a4cebb27c35488d5142ad3a7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415004"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694836"
 ---
 # <a name="what-is-password-writeback"></a>Mi a jelszóvisszaíró?
 
@@ -85,9 +85,6 @@ Amikor összevont vagy a jelszó kivonatát szinkronizálja a felhasználói kí
    * Az Active Directory-összekötő objektum történő hivatkozás a MV rendelkeznie kell a szinkronizálási szabály `Microsoft.InfromADUserAccountEnabled.xxx` hivatkozásra.
    
    A hívást a felhőben érhető el, ha a szinkronizálási motor használja a **cloudAnchor** keresse ki az Azure Active Directory összekötőtér objektuma attribútum. Majd követi a hivatkozást az MV objektumra, és ezután követi a hivatkozást az Active Directory-objektumra. Több Active Directory-objektumok (Többerdős) ugyanaz a felhasználó számára is lehet, mert a szinkronizálási motor támaszkodik a `Microsoft.InfromADUserAccountEnabled.xxx` hivatkozást választja ki a megfelelőt.
-
-   > [!Note]
-   > Eredményeként a logikai jelszó a jelszóvisszaíró működjön az Azure AD Connect képesnek kell lennie az elsődleges tartományvezérlő (PDC) emulátor folytatott kommunikációhoz. Ezt manuálisan engedélyezni kell, ha az Azure AD Connect csatlakozhat a PDC-emulátor. Kattintson a jobb gombbal a **tulajdonságok** az Active Directory szinkronizálási összekötőjének, majd válassza ki **könyvtárpartíciók konfigurálásának**. Itt keresse meg a **tartományvezérlő kapcsolati beállításainak** szakaszt, és válassza a jelölőnégyzetét **csak az előnyben részesített tartományvezérlők használatának**. Akkor is, ha az előnyben részesített tartományvezérlő nem egy PDC-emulátor, az Azure AD Connect megpróbál kapcsolódni az elsődleges tartományvezérlő jelszóvisszaíró.
 
 1. Miután a felhasználók fiókot talál, a jelszót a megfelelő Active Directory-erdő közvetlenül a kísérlet történik.
 1. Ha a jelszó set művelet sikeres, a felhasználó van, hogy rendelkezik a jelszó megváltozott.

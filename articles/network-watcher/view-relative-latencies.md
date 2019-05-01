@@ -3,8 +3,8 @@ title: Relatív késések megtekintése az Azure-régiókhoz való adott helyekr
 description: Útmutató megtekintéséhez relatív késések internetszolgáltatók különböző Azure-régiókhoz való adott helyekről.
 services: network-watcher
 documentationcenter: ''
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
-ms.author: jdial
+ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 895e29d9855372e418ad5ebf2a3949dc01ddb8de
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b4a50657442422786f49c931aa6c2610d49846b1
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792418"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939878"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Nézet relatív késés-Azure-régiókhoz való adott helyekről
 
@@ -60,7 +60,7 @@ Get-AzNetworkWatcherReachabilityReport `
 ```
 
 > [!NOTE]
-> A régiót, adja meg, ha az előző parancs nem kell lennie, ugyanaz, mint a lekért a network watcher megadott régióban. Az előző parancs egyszerűen szükséges egy meglévő a network watcher adjon meg. A network watcher bármelyik régióban is lehetnek. Ha értékeket ad meg `-Country` és `-State`, érvényesnek kell lennie. Az értékek: kis-és nagybetűket. Adatok országok, államok és városok korlátozott számú érhető el. Futtassa a parancsokat [elérhető országok, államok, város és szolgáltatók megtekintése](#view-available) országban érhető el, város és az előző parancs használata Államokban listájának megtekintéséhez. 
+> A régiót, adja meg, ha az előző parancs nem kell lennie, ugyanaz, mint a lekért a network watcher megadott régióban. Az előző parancs egyszerűen szükséges egy meglévő a network watcher adjon meg. A network watcher bármelyik régióban is lehetnek. Ha értékeket ad meg `-Country` és `-State`, érvényesnek kell lennie. Az értékek: kis-és nagybetűket. Adatok országok/régiók, államok és városok korlátozott számú érhető el. Futtassa a parancsokat [elérhető országok/régiók, államok, város és szolgáltatók megtekintése](#view-available) elérhető országok/régiók, város és az előző parancs használata Államokban listájának megtekintéséhez. 
 
 > [!WARNING]
 > Adjon meg egy dátumot, az elmúlt 30 napon belül `-StartTime` és `-EndTime`. Meghatároz egy korábbi dátumot a visszaadott adatok nem eredményez.
@@ -125,15 +125,15 @@ Get-AzNetworkWatcherReachabilityReport `
 > [!NOTE]
 > Ellentétben egyetlen helyen megadásakor, ha nem adja meg egy helyet, vagy adja meg a több helyen, például az "USA nyugati 2 régiója", "West US", meg kell adnia egy internetszolgáltató parancs futtatásakor. 
 
-## <a name="view-available"></a>Rendelkezésre álló országok, államok, város és szolgáltatók megtekintése
+## <a name="view-available"></a>Rendelkezésre álló országok/régiók, államok, város és szolgáltatók megtekintése
 
-Adatok bizonyos internetszolgáltatók, országok, államok és városok érhető el. Az összes elérhető internetszolgáltatók listájának megtekintéséhez országok, államok és városok, megtekintheti az adatait, adja meg a következő parancsot:
+Adatok bizonyos internetszolgáltatók, országok/régiók, államok és városok érhető el. Az összes rendelkezésre álló internetes listájának megtekintéséhez szolgáltatók, országok/régiók, államok és városok, megtekintheti az adatait, adja meg a következő parancsot:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
 ```
 
-Adatok csak az országok, államok és városok az előző parancs által visszaadott számára érhető el. Az előző parancs megköveteli, hogy adjon meg egy meglévő hálózati figyelő. A megadott példa a *NetworkWatcher_eastus* network watcher nevű erőforráscsoportot a *NetworkWatcherRG*, de megadhat minden olyan meglévő hálózati figyelő. Ha egy meglévő a network watcher nincs, hozzon létre egyet a feladatok végrehajtásával [egy network watcher létrehozásához](#create-a-network-watcher). 
+Az országok/régiók, államok és városok az előző parancs által visszaadott adatok csak érhető el. Az előző parancs megköveteli, hogy adjon meg egy meglévő hálózati figyelő. A megadott példa a *NetworkWatcher_eastus* network watcher nevű erőforráscsoportot a *NetworkWatcherRG*, de megadhat minden olyan meglévő hálózati figyelő. Ha egy meglévő a network watcher nincs, hozzon létre egyet a feladatok végrehajtásával [egy network watcher létrehozásához](#create-a-network-watcher). 
 
 Az előző parancs futtatása után a kimenet adott vissza érvényes értékeinek megadásával szűrheti **ország**, **állapot**, és **Város**, ha szükséges.  Írja be például a Seattle, Washington, elérhető internetszolgáltatók listájának megtekintéséhez az Egyesült Államokban, a következő parancsot:
 

@@ -5,15 +5,15 @@ services: storage
 author: yzheng-msft
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/20/2019
+ms.date: 4/29/2019
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: 2de194e501c05ba0bdb9971ca6045e67a42b0fd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f1fdd1b239301a5340716e1d5d098487afe27f9f
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392466"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938568"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob storage, életciklus kezelése
 
@@ -42,7 +42,7 @@ Az életciklus szolgáltatást minden nyilvános Azure-régióban érhető el.
 
 ## <a name="add-or-remove-a-policy"></a>Adja hozzá, vagy távolítsa el a szabályzat 
 
-Hozzáadása, szerkesztése vagy eltávolítani egy házirendet az Azure portal használatával [Azure PowerShell-lel](https://github.com/Azure/azure-powershell/releases), az Azure CLI- [REST API-k](https://docs.microsoft.com/en-us/rest/api/storagerp/managementpolicies), vagy az ügyféleszközökben. Ez a cikk bemutatja, hogyan házirend kezelése a portálon és a PowerShell-módszer használatával.  
+Hozzáadása, szerkesztése vagy eltávolítani egy házirendet az Azure portal használatával [Azure PowerShell-lel](https://github.com/Azure/azure-powershell/releases), az Azure CLI- [REST API-k](https://docs.microsoft.com/rest/api/storagerp/managementpolicies), vagy az ügyféleszközökben. Ez a cikk bemutatja, hogyan házirend kezelése a portálon és a PowerShell-módszer használatával.  
 
 > [!NOTE]
 > Ha engedélyezi a tűzfalszabályok a tárfiók, lifecycle management kérelmek blokkolhatja. Ezek a kérelmek azáltal, hogy kivételek blokkolásának feloldásához. A szükséges Mellőzés vannak: `Logging,  Metrics,  AzureServices`. További információkért tekintse meg a kivételek szakaszában [tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
@@ -80,7 +80,47 @@ $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Fi
 $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 
 ```
+## <a name="arm-template-with-lifecycle-management-policy"></a>Életciklus-kezelési szabályzat ARM-sablonnal
 
+Adja meg, és üzembe helyezése ARM-sablonok használatával, az Azure-megoldás központi telepítésének részeként életciklus-felügyeletét. A követés mintasablon üzembe helyezéséhez egy életciklus-kezelési szabályzat az RA-GRS GPv2-tárfiókra. 
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {
+    "storageAccountName": "[uniqueString(resourceGroup().id)]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccountName')]",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2019-04-01",
+      "sku": {
+        "name": "Standard_RAGRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "networkAcls": {}
+      }
+    },
+    {
+      "name": "[concat(variables('storageAccountName'), '/default')]",
+      "type": "Microsoft.Storage/storageAccounts/managementPolicies",
+      "apiVersion": "2019-04-01",
+      "dependsOn": [
+        "[variables('storageAccountName')]"
+      ],
+      "properties": {
+        "policy": {...}
+      }
+    }
+  ],
+  "outputs": {}
+}
+```
 
 ## <a name="policy"></a>Szabályzat
 
@@ -305,8 +345,8 @@ Módosítva, és rendszeresen élettartama során elért adatok esetén pillanat
   ]
 }
 ```
-## <a name="faq---i-created-a-new-policy-why-are-the-actions-not-run-immediately"></a>Gyakori kérdések – hoztam létre egy új házirendet, miért van a műveleteket nem azonnali futtatása? 
-
+## <a name="faq"></a>GYIK 
+**Létrehozott egy új házirendet, miért van a műveleteket nem azonnali futtatása?**  
 A platform naponta egyszer fut, az életciklus-szabályzat. Után konfigurálhat egy szabályzatot, az első alkalommal történő futtatása bizonyos műveletek (például a rétegezést és törlése) esetében akár 24 óráig is eltarthat.  
 
 ## <a name="next-steps"></a>További lépések

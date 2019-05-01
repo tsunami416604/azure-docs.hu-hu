@@ -1,22 +1,19 @@
 ---
 title: Jelentések kezelése a JavaScript API használatával | Microsoft Docs
 description: A Power BI JavaScript API segítségével egyszerűen beágyazhatja a Power BI-jelentéseket az alkalmazásokba.
-services: power-bi-embedded
-author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: bdd885d3-1b00-4dcf-bdff-531eb1f97bfb
-ms.service: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
+author: rkarlin
+ms.author: rkarlin
 ms.topic: conceptual
 ms.workload: powerbi
-origin.date: 09/26/2018
-ms.date: 03/05/2019
-ms.author: v-junlch
+ms.date: 09/20/2017
 ms.openlocfilehash: 252296af8b2065ae22bed8b421d4d00718b78287
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62110463"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705514"
 ---
 # <a name="interact-with-power-bi-reports-using-the-javascript-api"></a>Power BI-jelentések kezelése a JavaScript API használatával
 
@@ -27,11 +24,11 @@ A Power BI JavaScript API segítségével egyszerűen beágyazhatja a Power BI-j
 
 A Power BI-jelentések olyan iframe elemek használatával ágyazhatók be az alkalmazásokba, amelyek üzemeltetése az alkalmazások részeként történik. Az iframe elemek az alkalmazás és a jelentés közötti határként viselkednek, ahogyan az a következő képen is látható:
 
-![A Power BI munkaterületi gyűjtemény iframe eleme JavaScript API nélkül](./media/interact-with-reports/iframe-without-javacript.png)
+![A Power BI munkaterületi gyűjtemény iframe eleme JavaScript API nélkül](media/interact-with-reports/iframe-without-javacript.png)
 
 Az iframe elemek lényegesen leegyszerűsítik a beágyazási folyamatot, a JavaScript API nélkül azonban a jelentés és az alkalmazás nem képesek együttműködni. Az interaktivitás hiánya miatt úgy tűnhet, mintha a jelentés valójában nem lenne az alkalmazás része. A jelentésnek és az alkalmazásnak képesnek kell lennie a kétirányú kommunikációra, ahogyan az a következő képen is látható:
 
-![A Power BI munkaterületi gyűjtemény iframe eleme JavaScript API-val](./media/interact-with-reports/iframe-with-javascript.png)
+![A Power BI munkaterületi gyűjtemény iframe eleme JavaScript API-val](media/interact-with-reports/iframe-with-javascript.png)
 
 A Power BI JavaScript API segítségével olyan kód írható, amely biztonságosan áthalad az iframe-határolón. Ez teszi lehetővé az alkalmazás számára a műveletek programozott módon történő végrehajtását a jelentésekben, valamint olyan műveleti események figyelését, amelyeket a felhasználók a jelentésen belül létrehoznak.
 
@@ -39,17 +36,17 @@ A Power BI JavaScript API segítségével olyan kód írható, amely biztonságo
 
 A JavaScript API segítségével jelentéseket kezelhet, a jelentések adott lapjaira navigálhat, szűrheti a jelentéseket, és kezelheti a beágyazási eseményeket is. Az alábbi ábrán az API szerkezete látható.
 
-![A Power BI JavaScript API-t bemutató ábra](./media/interact-with-reports/javascript-api-diagram.png)
+![A Power BI JavaScript API-t bemutató ábra](media/interact-with-reports/javascript-api-diagram.png)
 
 ### <a name="manage-reports"></a>Jelentések kezelése
 A JavaScript API-val az alábbi jelentés- és lapszintű viselkedések kezelhetők:
 
-- Adott Power BI-jelentés biztonságos beágyazása az alkalmazásba – próbálja ki a [beágyazási bemutatóalkalmazást](https://azure-samples.github.io/powerbi-angular-client/#/scenario1)
-  - Hozzáférési jogkivonat beállítása
-- A jelentés konfigurálása
-  - A szűrőpanel és a lapnavigációs panel engedélyezése és letiltása – próbálja ki a [beállításfrissítési bemutatóalkalmazást](https://azure-samples.github.io/powerbi-angular-client/#/scenario6)
-  - Alapértelmezett beállítások megadása a lapok és a szűrők számára – próbálja ki az [alapértelmezett értékek megadására szolgáló bemutatóalkalmazást](https://azure-samples.github.io/powerbi-angular-client/#/scenario5)
-- Teljes képernyős mód vagy kilépés a teljes képernyős módból
+* Adott Power BI-jelentés biztonságos beágyazása az alkalmazásba – próbálja ki a [beágyazási bemutatóalkalmazást](https://azure-samples.github.io/powerbi-angular-client/#/scenario1)
+  * Hozzáférési jogkivonat beállítása
+* A jelentés konfigurálása
+  * A szűrőpanel és a lapnavigációs panel engedélyezése és letiltása – próbálja ki a [beállításfrissítési bemutatóalkalmazást](https://azure-samples.github.io/powerbi-angular-client/#/scenario6)
+  * Alapértelmezett beállítások megadása a lapok és a szűrők számára – próbálja ki az [alapértelmezett értékek megadására szolgáló bemutatóalkalmazást](https://azure-samples.github.io/powerbi-angular-client/#/scenario5)
+* Teljes képernyős mód vagy kilépés a teljes képernyős módból
 
 [További információ jelentések beágyazásáról](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embedding-Basics)
 
@@ -79,19 +76,19 @@ const basicFilter: pbi.models.IBasicFilter = {
 #### <a name="advanced-filters"></a>Speciális szűrők
 A speciális szűrők AND vagy OR logikai operátorokat használnak, és egy vagy több feltételt fogadnak el, azok operátoraival és értékeivel együtt. Támogatott feltételek:
 
-- None
-- LessThan
-- LessThanOrEqual
-- GreaterThan
-- GreaterThanOrEqual
-- Contains
-- DoesNotContain
-- StartsWith
-- DoesNotStartWith
-- Is
-- IsNot
-- IsBlank
-- IsNotBlank
+* None
+* LessThan
+* LessThanOrEqual
+* GreaterThan
+* GreaterThanOrEqual
+* Contains
+* DoesNotContain
+* StartsWith
+* DoesNotStartWith
+* Is
+* IsNot
+* IsBlank
+* IsNotBlank
 
 ```typescript
 const advancedFilter: pbi.models.IAdvancedFilter = {
@@ -120,12 +117,12 @@ const advancedFilter: pbi.models.IAdvancedFilter = {
 
 Az iframe elembe történő információküldés mellett az alkalmazás az alábbi, az iframe elemből érkező eseményekhez kapcsolódó információk fogadására is képes:
 
-- Beágyazás
-  - loaded
-  - error
-- Jelentések
-  - pageChanged
-  - dataSelected (hamarosan)
+* Beágyazás
+  * loaded
+  * error
+* Jelentések
+  * pageChanged
+  * dataSelected (hamarosan)
 
 [További tudnivalók az események kezeléséről](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Handling-Events)
 
@@ -133,8 +130,6 @@ Az iframe elembe történő információküldés mellett az alkalmazás az aláb
 
 Az alábbi hivatkozásokra kattintva további információkhoz juthat a Power BI JavaScript API-ról:
 
-- [JavaScript API wiki](https://github.com/Microsoft/PowerBI-JavaScript/wiki)
-- [Objektummodell-hivatkozás](https://microsoft.github.io/powerbi-models/modules/_models_.html)
-- [Élő bemutató](https://microsoft.github.io/PowerBI-JavaScript/demo/)
-
-<!-- Update_Description: update metedata properties -->
+* [JavaScript API wiki](https://github.com/Microsoft/PowerBI-JavaScript/wiki)
+* [Objektummodell-hivatkozás](https://microsoft.github.io/powerbi-models/modules/_models_.html)
+* [Élő bemutató](https://microsoft.github.io/PowerBI-JavaScript/demo/)

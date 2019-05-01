@@ -1,20 +1,20 @@
 ---
-title: 'Gyors útmutató: Beállítása és lekérése egy titkos kulcsot az Azure Key vaultból egy csomópont webalkalmazás – az Azure Key Vault használatával |} A Microsoft Docs'
+title: 'Gyors útmutató: Beállítása és lekérése a titkos kulcs Azure Key vault használatával a .NET-webalkalmazás – Azure Key Vault |} A Microsoft Docs'
 description: Ezt a gyorsútmutatót követve állítsa be, és titkos kulcs lekérése az Azure Key Vault használatával a .NET-webalkalmazás
 services: key-vault
-author: prashanthyv
+author: mbaldwin
 manager: sumedhb
 ms.service: key-vault
 ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 346d97e6e3dad6ebacaae6c789137df4f33e2e72
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0d2b3f16086bc3dc653124ecfa9e7116f71bc585
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316387"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925428"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Gyors útmutató: Beállítása és lekérése a titkos kulcs Azure Key vault használatával a .NET-webalkalmazás
 

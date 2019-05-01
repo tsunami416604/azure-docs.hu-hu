@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 04/29/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 67d3dcad4ec73ee09ec40282b2fbdea945daefe4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 21944c62f09518e20619313cd6ac28fb2ad600c7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122676"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925283"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 Az Azure Storage GPv2-fiókok lehetővé teszik statikus tartalom (HTML, CSS, JavaScript és képfájlok) nevű tárolót történő közvetlen *$web*. Kihasználhatja a üzemeltetése az Azure Storage lehetővé teszi, hogy például kiszolgáló nélküli architektúrák [Azure Functions](/azure/azure-functions/functions-overview) és egyéb PaaS-szolgáltatások.
@@ -52,16 +52,21 @@ A kijelölt alapértelmezett név szolgál a legfelső szintű és alkönyvtára
 
 ## <a name="cdn-and-ssl-support"></a>CDN-t és az SSL-támogatás
 
-Hogy a statikus webhely fájlok elérhető HTTPS-kapcsolaton keresztül, lásd: [az Azure CDN használatával HTTPS-kapcsolaton keresztül egyéni tartománnyal rendelkező blobok elérése](storage-https-custom-domain-cdn.md). Ez a folyamat részeként kell *mutasson a CDN a webes végpontra* ellentétben a blob végpontja. Szükség lehet néhány percet, mielőtt a tartalmak jelenik meg a CDN-konfiguráció végrehajtása nem azonnal, várjon.
+A statikus webhely fájlok elérhetővé tenni az egyéni tartomány és a HTTPS, lásd: [az Azure CDN használatával HTTPS-kapcsolaton keresztül egyéni tartománnyal rendelkező blobok elérése](storage-https-custom-domain-cdn.md). Ez a folyamat részeként kell *mutasson a CDN a webes végpontra* ellentétben a blob végpontja. Szükség lehet néhány percet, mielőtt a tartalmak jelenik meg a CDN-konfiguráció végrehajtása nem azonnal, várjon.
 
 Amikor frissíti a statikus webhelye, mindenképpen törölje a gyorsítótárazott tartalom a CDN peremhálózati kiszolgálókon a CDN-végpont végleges törlése a. További információkért lásd az [Azure CDN-végpontok végleges törléséről](../../cdn/cdn-purge-endpoint.md) szóló cikket.
+
+> [!NOTE]
+> HTTPS natív módon támogatott a fiók webes végponton keresztül. Az egyéni tartományok HTTPS-kapcsolaton keresztül használatához jelenleg az Azure CDN használata. 
+>
+> Nyilvános fiók webes végpont HTTPS-kapcsolaton keresztül: `https://<ACCOUNT_NAME>.<ZONE_NAME>.web.core.windows.net/<FILE_NAME>`
 
 ## <a name="custom-domain-names"></a>Egyéni tartománynevek
 
 Is [az Azure Storage-fiókhoz tartozó egyéni tartománynév beállítása](storage-custom-domain-name.md) a statikus webhelye egy egyéni tartományt keresztül elérhetővé. A tartomány üzemeltetésének a szűrőtípusok a [Azure, lásd: üzemeltessen saját tartományt az Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
 
 ## <a name="pricing"></a>Díjszabás
-Statikus webhely üzemeltetése további költségek nélkül biztosított. Az Azure Blob Storage-díjak a további részletekért tekintse meg a [Azure Blob Storage díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Statikus webhelyüzemeltetésre engedélyezése az ingyenesen elérhető. A túl magas kihasználtsággal rendelkező blob storage és a műveletek költségei ügyfelek díjkötelesek. Az Azure Blob Storage-díjak a további részletekért tekintse meg a [Azure Blob Storage díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="quickstart"></a>Első lépések
 
@@ -159,7 +164,10 @@ Nem, statikus webhelyüzemeltetésre érhető el csak a GPv2-tárfiókok standar
 Igen, az új webes végpont obeys a virtuális hálózat és tűzfal szabályokat a tárfiók számára beállított.
 
 **Az a webes végpont kis-és nagybetűket?**  
-Igen, a webes végpont kis-és nagybetűket csakúgy, mint a blob végpontja. 
+Igen, a webes végpont kis-és nagybetűket csakúgy, mint a blob végpontja.
+
+**Az a webes végpont a HTTP és HTTPS-en keresztül elérhető?**
+Igen, a webes végpont a HTTP és HTTPS-en keresztül elérhető. Azonban ha a tárfiók biztonságos átvitel megkövetelése a HTTPS-kapcsolaton keresztül van konfigurálva, majd felhasználókat kell használnia a HTTPS-végpont. További információkért lásd: [az Azure Storage-ban biztonságos átvitel megkövetelése](../common/storage-require-secure-transfer.md).
 
 ## <a name="next-steps"></a>További lépések
 * [Egyéni tartománnyal rendelkező blobok elérése az Azure CDN használatával HTTPS-kapcsolaton keresztül](storage-https-custom-domain-cdn.md)

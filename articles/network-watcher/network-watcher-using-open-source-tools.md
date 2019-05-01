@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 7c239bbf577645ddb8ab12c525d1b3a8832421df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3a0ae782d3fe97752ca8b9e786c3c2672f554277
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60680532"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64936007"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Hálózati forgalmi minták a nyílt forráskódú eszközöket használó virtuális gépek megjelenítése
 
@@ -76,9 +76,9 @@ CapAnalysis megjelenítése a csomagrögzítés, minden más szempontból biztos
 
 1. Földrajzi térképet
 
-    Ezen a panelen biztosít egy térkép-nézet a hálózati forgalom a színek az egyes országok méretezési lehetőségek érhetők el a forgalom mennyisége. Kiválaszthatja például az az időarány, amíg az adatok küldött és fogadott az adott országban IP-címekről további folyamat statisztika megtekintése kijelölt országokban.
+    Ezen a panelen biztosít egy térkép-nézet a hálózati forgalom a színek egyes országból/régióból méretezési lehetőségek érhetők el a forgalom mennyisége. Kiválaszthatja a kijelölt országokban vagy régiókban például az az időarány, amíg az adatok küldött és fogadott IP-címekről az adott ország/régió további folyamat statisztika megtekintése.
 
-    ![földrajzi térképet][8]
+    ![Földrajzi térképet][8]
 
 1. Szűrők
 

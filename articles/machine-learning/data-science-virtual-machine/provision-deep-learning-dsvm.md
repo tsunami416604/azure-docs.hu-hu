@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 42430c847149f7eda2f0dbed1cff006a92f372ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1fc4a4024893c29c35b4369d13227830cfbbca84
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60578605"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943922"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Deep Learning-Azure-beli virtuális gép kiépítése 
 
@@ -35,7 +35,8 @@ Hozzon létre egy példányt, a Deep Learning virtuális gép a lépései a köv
 ).
 2. Válassza ki a **létrehozás** gombra az alsó kell figyelembe venni a varázslót.![ Hozzon létre dlvm](./media/dlvm-provision-wizard.PNG)
 3. A varázsló a DLVM létrehozásához használt szükséges **bemenetek** minden a **négy lépést** jobb oldalán Ez az ábra számba. Az alábbiakban a bemeneti adatok konfigurálása az egyes lépéseket:
-   
+
+   <a name="basics"></a>   
    1. **Alapvető beállítások**
       
       1. **Név**: Neve az adatelemzési kiszolgálót hoz létre.
@@ -46,13 +47,14 @@ Hozzon létre egy példányt, a Deep Learning virtuális gép a lépései a köv
       5. **Erőforráscsoport**: Létrehozhat egy újat, vagy használjon egy **üres** meglévő Azure-erőforráscsoport az előfizetésben.
       6. **Hely**: Válassza ki az Adatközpont leginkább megfelelő. Általában az adatközpont, amely tartalmazza a legtöbb az adatokat, vagy a leggyorsabb hálózati hozzáféréshez a fizikai helyéhez legközelebbi. 
       
-> [!NOTE]
-> A DLVM támogatja az összes hálózati vezérlő és ND sorozatú GPU VM-példányokon. A DLVM kiépítésekor választania kell a helyek gpu-kkal rendelkező Azure-ban. Ellenőrizze a [régió lap által az Azure-termékekkel](https://azure.microsoft.com/regions/services/) lapon az elérhető helyeket, és keressen **NC sorozat**, **NCv2 sorozat**, **az NCv3 sorozatú** , vagy **ND sorozat** alatt **számítási**. 
+      > [!NOTE]
+      > A DLVM támogatja az összes hálózati vezérlő és ND sorozatú GPU VM-példányokon. A DLVM kiépítésekor választania kell a helyek gpu-kkal rendelkező Azure-ban. Ellenőrizze a [régió lap által az Azure-termékekkel](https://azure.microsoft.com/regions/services/) lapon az elérhető helyeket, és keressen **NC sorozat**, **NCv2 sorozat**, **az NCv3 sorozatú** , vagy **ND sorozat** alatt **számítási**. 
 
-1. **Beállítások**: Válasszon ki egy az NC sorozat (NC, NCv2, az NCv3) vagy az ND sorozat virtuálisgép-méretek GPU, amely megfelel a funkcionális és a költségek megkötések. Hozzon létre egy tárfiókot a virtuális géphez.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+   1. **Beállítások**: Válasszon ki egy az NC sorozat (NC, NCv2, az NCv3) vagy az ND sorozat virtuálisgép-méretek GPU, amely megfelel a funkcionális és a költségek megkötések. Hozzon létre egy tárfiókot a virtuális géphez.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
-1. **Összefoglalás**: Győződjön meg arról, hogy minden, a megadott adatok helyesek.
-1. **Vásároljon**: Kattintson a **vásárlása** a kiépítésének megkezdéséhez. A tranzakció feltételeiben szerepel egy hivatkozás. A virtuális gép nem rendelkezik a kiválasztott kiszolgáló méretét a számítási túl további díjakat a **mérete** . lépés. 
+   1. **Összefoglalás**: Győződjön meg arról, hogy minden, a megadott adatok helyesek.
+
+   1. **Vásároljon**: Kattintson a **vásárlása** a kiépítésének megkezdéséhez. A tranzakció feltételeiben szerepel egy hivatkozás. A virtuális gép nem rendelkezik a kiválasztott kiszolgáló méretét a számítási túl további díjakat a **mérete** . lépés. 
 
 > [!NOTE]
 > A kiépítés körülbelül 10 – 20 percet vesz igénybe. A kiépítési állapota jelenik meg az Azure Portalon.
@@ -66,7 +68,7 @@ A virtuális gép létrehozása után azokat a rendszergazdai fiók hitelesítő
 
 ### <a name="linux-edition"></a>Linux Edition
 
-Ha a virtuális gép létrejött, bejelentkezhet hozzá SSH használatával. A fiók hitelesítő adataival, amelyet a **alapjai** szakasz 3. lépésben a szöveg shell felületén. Windows-ügyfél letöltheti egy SSH-ügyfél eszköz, például [Putty](https://www.putty.org). Ha inkább egy grafikus desktop (X Windows rendszer), használhatja a Putty-továbbítás X11 vagy X2Go ügyfél telepítése.
+Ha a virtuális gép létrejött, bejelentkezhet hozzá SSH használatával. A fiók hitelesítő adataival, amelyet a [ **alapjai** ](#basics) szakasz 3. lépésben a szöveg shell felületén. Azure virtuális gépekre SSH-kapcsolatok kapcsolatos további információkért lásd: [telepítése és konfigurálása az Azure-beli Linuxos virtuális gép kapcsolódni a távoli asztal](/azure/virtual-machines/linux/use-remote-desktop). Egy Windows-ügyfélen, töltse le egy SSH-ügyfél eszköz, például [Putty](http://www.putty.org). Ha inkább egy grafikus desktop (X Windows rendszer), használhatja a Putty-továbbítás X11 vagy X2Go ügyfél telepítése. 
 
 > [!NOTE]
 > A X2Go ügyfél jobban teljesített, mint a tesztelés továbbítás X11. Azt javasoljuk, hogy az asztali grafikus felület X2Go ügyfél használatával.

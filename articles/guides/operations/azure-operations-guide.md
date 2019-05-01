@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 1222395fd8efb7cf189ae6678f6c39f5a6c63157
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1f8972c89ecb0fc7d8cc7ceb9bfdeab9e905e862
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60537997"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570605"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Ismerkedés az Azure-operátorok
 
@@ -145,7 +145,7 @@ Az Azure-szolgáltatások részletes dokumentációjáért lásd: [Azure szolgá
 
 Az Azure világszerte számos régióban általánosan elérhető globális felhő platformon el. Egy szolgáltatás, alkalmazás vagy az Azure-beli virtuális gép üzembe helyezésekor, a rendszer felkéri a válasszon ki egy régiót. A kiválasztott régióban egy speciﬁc adatközpontba, ahol az alkalmazás fut jelöli. További információkért lásd: [Azure-régiók](https://azure.microsoft.com/regions/).
 
-Az Azure használatának beneﬁts egyike, hogy a világ különböző pontjain azokat az alkalmazásokat helyezhet üzembe. A választott régióban is aﬀect az alkalmazás teljesítményét. Válasszon régiót, amely leginkább az ügyfelek hálózati kéréseket a késés csökkentése érdekében közelebb van az optimális. Is választhat egy régió esetében az egyes országokban az alkalmazás terjesztése a jogi követelmények teljesítéséhez.
+Az Azure használatának beneﬁts egyike, hogy a világ különböző pontjain azokat az alkalmazásokat helyezhet üzembe. A választott régióban is aﬀect az alkalmazás teljesítményét. Válasszon régiót, amely leginkább az ügyfelek hálózati kéréseket a késés csökkentése érdekében közelebb van az optimális. Is választhat egy régiót a terjesztéséhez az alkalmazás bizonyos országokban vagy régiókban jogi követelmények teljesítéséhez.
 
 ### <a name="azure-portal"></a>Azure Portal
 

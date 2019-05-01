@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: f431613d9fa1020f523e03c90cbe31f4d42ccf42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 568ff99364923c43b7199bed1dacd32cf0d18ab9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596065"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571158"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Ügynökállapot megoldás az Azure monitorban
 Az Azure-ban az Agent Health megoldás segít átlátni, közvetlenül az Azure monitorban Log Analytics-munkaterületnek jelentő ügynökök közül, vagy a System Center Operations Manager felügyeleti csoport csatlakoztatva az Azure Monitor, melyek nem válaszol, és működési adatokat küldjön.  Azt is nyomon követheti, hogy hány ügynök lett üzembe helyezve, és milyen a földrajzi eloszlásuk, illetve egyéb lekérdezéseket hajthat végre, amelyekkel megismerheti az Azure-ban, egyéb felhőkörnyezetekben, illetve helyszínen üzembe helyezett ügynökök eloszlását.    
@@ -63,7 +63,7 @@ Kattintson az **Ügynökállapot** csempére az **Ügynökállapot** irányító
 | Eloszlás ügynökverzió szerint | A környezetben telepített különböző ügynökverziók eloszlása és mennyisége.|
 | Eloszlás ügynökkategória szerint | A szívverés eseményeket küldő különböző ügynökök kategóriáinak eloszlása: közvetlen ügynökök, OpsMgr-ügynökök és az OpsMgr felügyeleti kiszolgáló.|
 | Eloszlás felügyeleti csoport szerint | A partíció a különböző Operations Manager felügyeleti csoportok a környezetben.|
-| Az ügynökök földrajzi helye | A különböző országok eloszlása, ahol ügynökök találhatók, és az egyes országokban telepített ügynökök teljes mennyisége.|
+| Az ügynökök földrajzi helye | A partíció a különböző országokból vagy régiókból ahol ügynökök találhatók, és minden ország/régió telepített ügynökök teljes száma.|
 | Telepített átjárók száma | A Log Analytics-átjáró telepítésével rendelkező kiszolgálók számát, és ezek a kiszolgálók listáját.|
 
 ![Ügynökállapot megoldás irányítópultja – példa](./media/solution-agenthealth/agenthealth-solution-dashboard.png)  

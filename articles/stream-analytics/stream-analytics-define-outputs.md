@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 03871c3f3627e85cc2af2f05a5fba38bd8069a15
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f9663fb502d9eda4810c54a89a94481b7d00cd43
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61481193"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926060"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 Ez a cikk ismerteti az elérhető az Azure Stream Analytics-feladat kimeneti típusait. Kimenetek segítségével tárolhatja, és a Stream Analytics-feladat eredményének mentése. A kimeneti adatok használatával teheti további üzleti elemzés és az adattárház az adatokat.
@@ -182,7 +182,7 @@ A Power BI az első, érkezési idősorrendben történő (FIFO) megőrzési sza
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>Konvertálja az adattípust a Stream Analytics a Power bi-bA
 Az Azure Stream Analytics frissíti az adatmodell dinamikusan, futásidőben, ha a kimeneti sémával megváltozik. Oszlop neve megváltozik, oszlopok adattípus-módosítások, és hozzáadását és eltávolítását, az oszlopok összes nyomon követett.
 
-Ez a táblázat ismerteti az adatok típuskonverziók a [Stream Analytics adattípusok](https://msdn.microsoft.com/library/azure/dn835065.aspx) a Power bi-bA [Entity Data Model (EDM) típusok](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/entity-data-model), ha egy Power BI-adatkészlet és a tábla nem létezik.
+Ez a táblázat ismerteti az adatok típuskonverziók a [Stream Analytics adattípusok](https://msdn.microsoft.com/library/azure/dn835065.aspx) a Power bi-bA [Entity Data Model (EDM) típusok](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model), ha egy Power BI-adatkészlet és a tábla nem létezik.
 
 A Stream Analytics | A Power bi-bA
 -----|-----

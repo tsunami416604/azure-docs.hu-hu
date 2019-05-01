@@ -1,6 +1,6 @@
 ---
-title: Számítási csomópont környezeti változói – Azure Batch |} A Microsoft Docs
-description: Számítási csomópont környezeti változó referencia az Azure Batch használatával.
+title: Futásidejű környezeti változói – Azure Batch |} A Microsoft Docs
+description: Tevékenység futásidejű környezeti változó útmutatást és referencia az Azure Batch használatával.
 services: batch
 author: laurenhughes
 manager: jeconnoc
@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 02/07/2019
+ms.date: 04/23/2019
 ms.author: lahugh
-ms.openlocfilehash: 9902f38ddfd3035adcce697c2eb5b77bdc1d8c9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c46f75c447becc8b15d4a6b8f979330db7ab95c7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60782229"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575586"
 ---
-# <a name="azure-batch-compute-node-environment-variables"></a>Az Azure Batch számítási csomópont környezeti változói
+# <a name="azure-batch-runtime-environment-variables"></a>Az Azure Batch futásidejű környezeti változók
 
 A [Azure Batch szolgáltatás](https://azure.microsoft.com/services/batch/) állítja be az alábbi környezeti változókat a számítási csomópontokon. Ezeket a környezeti változókat a tevékenységek parancssorában, és a Programok telepítése és törlése is lehet hivatkozni, és a parancssorok által futtatott parancsfájlok.
 
@@ -28,6 +28,12 @@ A Batch környezeti változók használatával kapcsolatos további információ
 ## <a name="environment-variable-visibility"></a>Környezeti változó láthatósága
 
 Ezeket a környezeti változókat csak kontextusában láthatók a **tevékenység felhasználójának**, a csomóponton, amelyben a feladat végrehajtása a felhasználói fiókot. Ha RDP vagy SSH segítségével [távolról csatlakozik](https://azure.microsoft.com/documentation/articles/batch-api-basics/#connecting-to-compute-nodes) a számítási csomóponthoz, ezek a környezeti változók *nem* fognak megjelenni. Ez azért van, mert a távoli kapcsolat kialakításához használt felhasználói fiók nem egyezik a tevékenységhez használt fiókkal.
+
+Indítsa el a jelenlegi érték környezeti változó lekéréséhez `cmd.exe` számítási csomóponton a Windows vagy `/bin/sh` egy Linux-csomóponton:
+
+`cmd /c set <ENV_VARIABLE_NAME>`
+
+`/bin/sh printenv <ENV_VARIABLE_NAME>`
 
 ## <a name="command-line-expansion-of-environment-variables"></a>A környezeti változók parancssori kiegészítése
 

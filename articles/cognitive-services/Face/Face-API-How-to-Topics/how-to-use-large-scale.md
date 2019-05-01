@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 2d96a04b1287033999dd5f026dd7d8d017259eb4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 52631d0b25527d204baa11a90401b60e437137a0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859046"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691045"
 ---
 # <a name="example-how-to-use-the-large-scale-feature"></a>Példa: A nagy méretű szolgáltatás használata
 
@@ -37,7 +37,7 @@ Azonban a hátránya az, hogy az újonnan hozzáadott személyek és arcok nem f
 
 ## <a name="concepts"></a>Alapelvek
 
-Ha nem ismeri az útmutatóban használt alábbi fogalmakat, a definíciók megtalálhatók a [szószedetben](../Glossary.md):
+Ismernie kell a következő fogalmak a jövőben előtt:
 
 - LargePersonGroup: Egy gyűjtemény személyek legfeljebb 1 000 000 kapacitással.
 - LargeFaceList: Gyűjteménye arcok legfeljebb 1 000 000 kapacitással.
@@ -59,7 +59,7 @@ FaceServiceClient FaceServiceClient = new FaceServiceClient(SubscriptionKey, Sub
 Az előfizetési kulcs és a hozzátartozó végpont az Azure portál Marketplace oldaláról szerezhető be.
 Lásd az [előfizetéseket](https://azure.microsoft.com/services/cognitive-services/directory/vision/).
 
-## <a name="step-2-code-migration-in-action"></a>2. lépés: Kód áttelepítése működés közben
+## <a name="step-2-code-migration-in-action"></a>2. lépés: Kód áttelepítése működés közben
 
 Ez a szakasz csak a PersonGroup és a FaceList alapú megvalósítások LargePersonGroup és LargeFaceList használatára történő áttelepítési folyamatával foglalkozik.
 Bár a LargePersonGroup/LargeFaceList kialakításában és belső megvalósításában más, mint a PersonGroup/FaceList, az API-felületek hasonlóak a visszafelé kompatibilitás érdekében.
@@ -78,11 +78,11 @@ Az adat migráció tekintetében lásd referenciaként lásd: [Hogyan lehet arco
 
 | FaceList API-k | LargeFaceList API-k |
 |:---:|:---:|
-| Hozzon létre | Hozzon létre |
+| Létrehozás | Létrehozás |
 | Törlés | Törlés |
 | Lekérés | Lekérés |
 | Lista | Lista |
-| frissítés | frissítés |
+| Frissítés | Frissítés |
 | - | Betanítás |
 | - | Betanítási állapot lekérdezése |
 
@@ -221,7 +221,7 @@ A különböző méretek esetén becsült betanítási időt sorolja fel a köve
 |:---:|:---:|
 | 1,000 | 1–2 s |
 | 10,000 | 5–10 s |
-| 100,000 | 1–2 perc |
+| 100 000 | 1–2 perc |
 | 1,000,000 | 10–30 perc |
 
 A nagy léptékű funkció jobb kihasználására célszerű néhány stratégiát megfontolni.
@@ -233,7 +233,7 @@ A több arcot tartalmazó LargeFaceList esetén nagyobb időköz választása cs
 Az időközt a LargeFaceList várt kapacitásának függvényében kell beállítani.
 
 Ugyanez a stratégia vonatkozik a LargePersonGroup esetére is.
-Például az 1 000 000 személyt tartalmazó LargePersonGroup betanításakor a `timeIntervalInMilliseconds` lehetne 60 000 (azaz 1-perces az időköz).
+Például, amikor egy LargePersonGroup képzési 1 000 000 személyekkel a `timeIntervalInMilliseconds` 60 000 (1 perces intervallum) lehet.
 
 ## <a name="step-32-small-scale-buffer"></a>3.2. lépés: Kisméretű puffer
 
@@ -251,7 +251,7 @@ Példa munkafolyamat:
 1. Amikor a puffer kollekció mérete elér egy határt vagy a rendszer holt idejében, hozzon létre egy új puffer kollekciót és indítsa el a betanítást a fő kollekcióra.
 1. Amikor a fő kollekción véget ér a betanítás, törölje a régi puffer kollekciót.
 
-## <a name="step-33-standalone-training"></a>3.3. lépés: Önálló betanítás
+## <a name="step-33-standalone-training"></a>3.3. lépés önálló képzés
 
 Ha viszonylag hosszú várakozási idő is elfogadható, akkor nincs szükség közvetlenül az új adatok felvétele után elindítani a betanítás műveletet.
 Ehelyett a betanítás művelet a fő működésről leválasztva indítható rendszeresen.
@@ -296,7 +296,9 @@ Ebben az útmutatóban megtanulta, hogyan történhet a meglevő PersonGroup/Fac
 - A LargePersonGroup és a LargeFaceList hasonlóan működik, mint a PersonGroup/FaceList, azzal a különbséggel, hogy a LargeFaceList esetén betanítási művelet szükséges.
 - A nagy méretű adathalmazoknál az adatok dinamikus frissítésére megfelelő betanítási stratégiát kell választani.
 
-## <a name="related-topics"></a>Kapcsolódó témakörök
+## <a name="next-steps"></a>További lépések
 
-- [Hogyan lehet arcokat azonosítani a képen](HowtoIdentifyFacesinImage.md)
+Hajtsa végre az arcok ad hozzá egy is lehet PersonGroup vagy hajtsa végre a műveletet egy is lehet PersonGroup azonosítása megismeréséhez használati útmutatója.
+
 - [Hogyan lehet arcokat hozzáadni](how-to-add-faces.md)
+- [Hogyan lehet arcokat azonosítani a képen](HowtoIdentifyFacesinImage.md)

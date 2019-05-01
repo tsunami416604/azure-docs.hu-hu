@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 11e92b4c6b8799cde489369a202f8f7c8c05ca6c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 964e6235923402814879fe59a204985b8aaac2b4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60568256"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573819"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Oktatóanyag: Az első data factory létrehozása az Azure portal használatával
 > [!div class="op_single_selector"]
@@ -209,16 +209,16 @@ Ebben a lépésben adatkészleteket hoz létre, amelyek a Hive-feldolgozás beme
     ```
     Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságokat.
 
-   | Tulajdonság | Leírás |
-   |:--- |:--- |
-   | type |A tulajdonság beállítása **AzureBlob**, mert az adatok blobtárolóban találhatók. |
-   | linkedServiceName |Az előzőleg létrehozott AzureStorageLinkedService szolgáltatásra hivatkozik. |
-   | folderPath | A bemeneti blobokat tartalmazó blobtárolót és mappát adja meg. | 
-   | fileName |Ez a tulajdonság nem kötelező. Ha kihagyja, az összes fájl ki lesz választva a folderPath útvonalról. Ebben az oktatóanyagban csak az input.log fájl feldolgozása történik meg. |
-   | type |A naplófájlok szövegformátumúak, ezért a **TextFormat** típust használjuk. |
-   | columnDelimiter |A naplófájlokban az oszlopok vesszővel (`,`) vannak elválasztva. |
-   | frequency/interval |A gyakoriság beállítás értéke **Hónap**, az időköz beállítás értéke **1**, tehát a bemeneti szeletek havonta érhetők el. |
-   | external | Ez a tulajdonság **igaz** értékre van állítva, ha a bemeneti adatokat nem ez a folyamat hozta létre. Mivel ebben az oktatóanyagban a bemeneti naplófájlt nem ez a folyamat hozta létre, a tulajdonság értéke **igaz**. |
+   | Tulajdonság | A beágyazott | Leírás |
+   |:--- |:--- |:--- |
+   | type | properties |A tulajdonság beállítása **AzureBlob**, mert az adatok blobtárolóban találhatók. |
+   | linkedServiceName | Formátum |Az előzőleg létrehozott AzureStorageLinkedService szolgáltatásra hivatkozik. |
+   | folderPath | typeProperties | A bemeneti blobokat tartalmazó blobtárolót és mappát adja meg. | 
+   | fileName | typeProperties |Ez a tulajdonság nem kötelező. Ha kihagyja, az összes fájl ki lesz választva a folderPath útvonalról. Ebben az oktatóanyagban csak az input.log fájl feldolgozása történik meg. |
+   | type | Formátum |A naplófájlok szövegformátumúak, ezért a **TextFormat** típust használjuk. |
+   | columnDelimiter | Formátum |A naplófájlokban az oszlopok vesszővel (`,`) vannak elválasztva. |
+   | frequency/interval | rendelkezésre állás |A gyakoriság beállítás értéke **Hónap**, az időköz beállítás értéke **1**, tehát a bemeneti szeletek havonta érhetők el. |
+   | external | properties | Ez a tulajdonság **igaz** értékre van állítva, ha a bemeneti adatokat nem ez a folyamat hozta létre. Mivel ebben az oktatóanyagban a bemeneti naplófájlt nem ez a folyamat hozta létre, a tulajdonság értéke **igaz**. |
 
     További információ ezekről a JSON-tulajdonságokról: [Azure Blob-összekötő](data-factory-azure-blob-connector.md#dataset-properties).
 

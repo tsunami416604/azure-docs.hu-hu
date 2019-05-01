@@ -18,12 +18,12 @@ ms.date: 03/23/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a92d10f67533efc2f5893b012aefbcb92efee59a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a5c6f1064d2d73ab3d99ca341cffd9b296723e97
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411679"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571101"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Mik a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés?
 
@@ -113,7 +113,7 @@ Védett ügyfélalkalmazások, a támogatott házirend listájáért lásd [alka
 
 ### <a name="custom-controls-preview"></a>Egyéni vezérlők (előzetes verzió)
 
-Feltételes hozzáférés, hogy a felhasználók átirányítása egy kompatibilis szolgáltatás megfelelnek a további Azure Active Directory-en kívül is létrehozhat egyéni vezérlők. Ez lehetővé teszi, hogy az egyes külső többtényezős hitelesítés és hitelesítési szolgáltatók kényszerítésére feltételes hozzáférési szabályokat vagy hozhat létre saját egyéni szolgáltatás. Ez a vezérlő eleget kell tenniük a felhasználók a külső szolgáltatást a rendszer átirányítja, hajtja végre a szükséges hitelesítés vagy érvényesítési tevékenységek és vissza az Azure Active Directory átirányítja. Ha a felhasználó sikeresen hitelesített vagy érvényesítve, a felhasználó továbbra is a feltételes hozzáférési folyamat. 
+Egyéni vezérlők a feltételes hozzáférés, hogy a felhasználók átirányítása egy kompatibilis szolgáltatás megfelelnek a további Azure Active Directory-en kívül is hozzáadhat. Ez lehetővé teszi, hogy egyes külső többtényezős hitelesítés és hitelesítési szolgáltatók feltételes hozzáférési követelmények lépjenek. Ez a vezérlő eleget kell tenniük a felhasználók a külső szolgáltatást a rendszer átirányítja, hajtja végre a szükséges hitelesítés vagy érvényesítési tevékenységek és vissza az Azure Active Directory átirányítja. Ha a felhasználó sikeresen hitelesített vagy érvényesítve, a felhasználó továbbra is a feltételes hozzáférési folyamat. 
 
 ## <a name="custom-controls"></a>Egyéni vezérlők
 
@@ -137,6 +137,8 @@ Ezeket a szolgáltatásokat a további információkért forduljon közvetlenül
 ### <a name="creating-custom-controls"></a>Egyéni vezérlők létrehozását
 
 Egyéni vezérlő létrehozására, hogy kapcsolatba kell lépni a használni kívánt szolgáltató. Minden nem Microsoft-szolgáltató saját folyamat és a követelmények, regisztráció, előfizethet, vagy ellenkező esetben a szolgáltatás részévé váltak, valamint azt, hogy szeretné-e a feltételes hozzáférés integrálása rendelkezik. Ezen a ponton a szolgáltató biztosít Önnek egy adatblokk JSON formátumban. Ezek az adatok lehetővé teszi, hogy a szolgáltató és a feltételes hozzáférés működjön együtt a bérlő számára, hoz létre az új vezérlőt, és határozza meg a feltételes hozzáférés is megadhatja, hogy ha a felhasználók sikeresen végeztek ellenőrzést-szolgáltatóval.
+
+Egyéni vezérlők csak akkor használható, az Identity Protection Automation szolgáltatással többtényezős hitelesítés megkövetelésével vagy a Privileged Identity Manager (PIM) szerepkörök megszerzését.
 
 A JSON-adatokat másolja és illessze be a kapcsolódó szövegmezőbe. Nem ne módosítsa a JSON-ná, kivéve, ha explicit módon megismeri a módosítást hajt végre. Bármilyen módosítást sikerült megszünteti a kapcsolatot a szolgáltató és a Microsoft és potenciálisan zárolása és a felhasználók a fiókok nem.
 

@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 03/27/2019
 ms.author: magoedte
 ms.openlocfilehash: f0c9b84f31810a4b0cec93738f7ce327bc24d8d0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101608"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685622"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Az Azure Monitor for containers szolgáltatásban, hogy engedélyezze a mérőszámok frissítése
 Tárolók az Azure Monitor metrikáinak begyűjtését Azure Kubernetes Services-(AKS-) fürt csomópontok és a podok és rögzíti őket az Azure Monitor-metrikák áruház támogatása vezet. Ez a változás célja biztosít továbbfejlesztett aktualitása teljesítménydiagramok, teljesítmény-diagramok az Azure portal irányítópultok, a rögzítés támogatási összesített számítások (Avg, Count, maximális, minimális, Sum) szerkesztésekor és metrikariasztásokat támogatja.

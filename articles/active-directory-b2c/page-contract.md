@@ -1,5 +1,5 @@
 ---
-title: Válassza ki a lapon szerződést az Azure Active Directory B2C |} A Microsoft Docs
+title: Válassza ki a lapon szerződést – Azure Active Directory B2C |} A Microsoft Docs
 description: Útmutató az Azure Active Directory B2C lap szerződés kiválasztása.
 services: active-directory-b2c
 author: davidmu1
@@ -7,24 +7,24 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 04/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 39198c0093f018b64a1292f023914651b51b4faf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 4cd29df19179f07fd9b61a2f484b1d49cc05c4cf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60361047"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570576"
 ---
 # <a name="select-a-page-contract-in-azure-active-directory-b2c-using-custom-policies"></a>Válassza ki a lap szerződés az Azure Active Directory B2C-vel egyéni szabályzatok használatával
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Ügyféloldali JavaScript-kódot engedélyezheti az Azure Active Directory (Azure AD) B2C-szabályzatok, legyen szó a felhasználói folyamatok vagy egyéni szabályzatokkal. Ez a cikk bemutatja, miként lap szerződés kiválasztása az Azure AD B2C-ben azáltal, az egy [egyéni házirendet](active-directory-b2c-overview-custom.md). Egy lap szerződés álló elemeket, amelyeket az Azure AD B2C biztosít, és az Ön által megadott tartalom. Ha a használni kívánt [Javascript](javascript-samples.md), meg kell határoznia egy oldal szerződés verziót a tartalom-definíciók minden az egyéni házirendek.
+Ügyféloldali JavaScript-kódot engedélyezheti az Azure Active Directory (Azure AD) B2C-szabályzatok, legyen szó a felhasználói folyamatok vagy egyéni szabályzatokkal. JavaScript engedélyezése az alkalmazások számára, hozzá kell adnia egy elem a [egyéni házirendet](active-directory-b2c-overview-custom.md), válassza ki a lap szerződést, és használja [b2clogin.com](b2clogin.md) a kérelmek a. Egy lap szerződés álló elemeket, amelyeket az Azure AD B2C biztosít, és az Ön által megadott tartalom. Ez a cikk leírja, hogyan lap szerződés kiválasztása az Azure AD B2C egy egyéni házirendek konfigurálásával.
 
 > [!NOTE]
-> Ha a felhasználói folyamatok JavaScript engedélyezni szeretné, tekintse meg [JavaScript és a lap szerződés verziók használata a felhasználói folyamat](user-flow-javascript-overview.md).
+> Ha a felhasználói folyamatok JavaScript engedélyezni szeretné, tekintse meg [JavaScript és a lap szerződés az Azure Active Directory B2C verziók](user-flow-javascript-overview.md).
 
 ## <a name="replace-datauri-values"></a>DataUri értékek lecserélése
 

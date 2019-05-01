@@ -2,26 +2,23 @@
 title: Az Azure Application Gateway HTTP-fejlécek újraírása
 description: Ez a cikk információt nyújt az Azure Application Gateway létrehozása, és írja újra az Azure PowerShell-lel HTTP-fejlécek
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 4/30/2019
 ms.author: absha
-ms.openlocfilehash: 4747d824dcf531ed883d476a0daad182ea081c39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ba74bb8970949a15425a66f7cd4475749fd183df
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60715096"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947091"
 ---
-# <a name="tutorial-create-an-application-gateway-and-rewrite-http-headers"></a>Oktatóanyag: Application gateway létrehozása, és a HTTP-fejlécek újraírása
+# <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Application gateway létrehozása, és a HTTP-fejlécek újraírása
 
 Azure PowerShell-lel való konfigurálásához használható [HTTP-kérelmek és válaszfejlécek újraírási szabályok](rewrite-http-headers.md) létrehozásakor, az új [automatikus skálázást és zónaredundáns application gateway Termékváltozat](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
 
-> [!IMPORTANT] 
-> Az Application Gateway automatikus skálázású és zónaredundáns termékváltozata jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 >
@@ -37,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez az oktatóanyaghoz az Azure PowerShellt helyileg kell futtatnia. Rendelkeznie kell Az 1.0.0-s verziójának modul, vagy újabb verziója van telepítve. Futtatás `Import-Module Az` , majd`Get-Module Az` a verzió megkereséséhez. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Login-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
+Ehhez a cikkhez az Azure PowerShell helyi futtatása. Rendelkeznie kell Az 1.0.0-s verziójának modul, vagy újabb verziója van telepítve. Futtatás `Import-Module Az` , majd`Get-Module Az` a verzió megkereséséhez. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. A PowerShell-verzió ellenőrzése után futtassa az `Login-AzAccount` parancsot az Azure-hoz való kapcsolódáshoz.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -178,5 +175,4 @@ Először Fedezze fel az erőforrásokat, az application gateway-ekkel hozta lé
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Alkalmazásátjáró létrehozása URL-alapú útválasztási szabályokkal](./tutorial-url-route-powershell.md)
+- [Alkalmazásátjáró létrehozása URL-alapú útválasztási szabályokkal](./tutorial-url-route-powershell.md)

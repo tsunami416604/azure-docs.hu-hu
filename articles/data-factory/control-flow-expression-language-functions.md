@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 8a2a080ee87d48d25d7d793ca0aca463f25e52eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 4c51974498539a0305312d6501bcfa9ebc3b2e88
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60808837"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573549"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Kifejezések és függvények az Azure Data Factoryben
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -66,7 +66,7 @@ Kifejezések is bárhol megjelenhet egy JSON-karakterlánc értéken, és mindig
 ### <a name="examples"></a>Példák
 
 #### <a name="a-dataset-with-a-parameter"></a>Egy adatkészlet-paraméter
-A következő példában a BlobDataset nevű paraméter szükséges **elérési út**. Az érték beállítható egy érték szolgál a **folderPath** tulajdonság a következő kifejezés használatával: `@{dataset().path}`. 
+A következő példában a BlobDataset nevű paraméter szükséges **elérési út**. Az érték beállítható egy érték szolgál a **folderPath** tulajdonság kifejezés használatával: `dataset().path`. 
 
 ```json
 {

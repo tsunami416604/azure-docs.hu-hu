@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 1913cf8d5fa367cc97dfac0a1ecfdf1edf06e298
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 5c790d39ea471a599e8a6b46004b3e350834c318
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758657"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573952"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-device"></a>Gyors útmutató: Az első IoT Edge-modul üzembe egy Linux rendszerű eszközön
 
@@ -119,7 +119,7 @@ Indítsa el az Azure IoT Edge-futtatókörnyezet az IoT Edge-eszközön.
 
 ![Diagram - indítása a futtatókörnyezet az eszközön](./media/quickstart-linux/start-runtime.png)
 
-Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Három összetevőből áll. Az **IoT Edge biztonsági démon** az Edge-eszközök indulásakor lép működésbe, és az IoT Edge-ügynök elindításával elvégzi az eszköz rendszerindítását. Az **IoT Edge-ügynök** a modulok üzembe helyezését és monitorozását segíti az IoT Edge-eszközön, beleértve az IoT Edge-központot is. Az **IoT Edge-központ** az IoT Edge-eszközön lévő modulok, valamint az eszköz és az IoT Hub közötti kommunikációt kezeli.
+Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Három összetevőből áll. A **IoT Edge biztonsági démon** minden alkalommal, amikor egy IoT Edge-eszköz indul el, és csatlakoztatja az eszközt az IoT Edge-ügynök elindításával kezdődik. Az **IoT Edge-ügynök** a modulok üzembe helyezését és monitorozását segíti az IoT Edge-eszközön, beleértve az IoT Edge-központot is. Az **IoT Edge-központ** az IoT Edge-eszközön lévő modulok, valamint az eszköz és az IoT Hub közötti kommunikációt kezeli.
 
 A futtatókörnyezet konfigurálása során meg kell adnia egy eszközkapcsolati sztringet. Ez esetben az Azure CLI-ről lekért sztringet használja. Ez a sztring társítja a fizikai eszközt az IoT Edge-eszköz identitásához az Azure-ban.
 
@@ -146,13 +146,13 @@ Győződjön meg arról, hogy sikeres volt-e telepítve a modul, és az IoT Edge
 >[!TIP]
 >Az `iotedge` parancsok futtatásához megemelt jogosultsági szint szükséges. Amikor az IoT Edge-futtatókörnyezet telepítése után kijelentkezik, majd először újra bejelentkezik a gépre, az engedélyei automatikusan frissülnek. Addig alkalmazza a **sudo** kifejezést a parancsok előtt.
 
-1. Ellenőrizze, hogy az Edge biztonsági démon rendszerszolgáltatásként fut-e.
+1. Ellenőrizze, hogy az IoT Edge biztonsági démon fut-e a rendszer szolgáltatásként.
 
    ```bash
    sudo systemctl status iotedge
    ```
 
-   ![Az Edge démon rendszerszolgáltatásként való futásának megtekintése](./media/quickstart-linux/iotedged-running.png)
+   ![Tekintse meg az IoT Edge démon rendszer szolgáltatásként fut.](./media/quickstart-linux/iotedged-running.png)
 
 2. Ha hibaelhárításra van szükség, kérje le a szolgáltatás naplóit.
 
@@ -206,38 +206,22 @@ Az üzeneteket az IoT hub kiszolgálófarmban használatával is megtekintheti a
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebben a rövid útmutatóban regisztrált és létrehozott eszközt. Ha nem, törölheti a létrehozott Azure-erőforrásokat, és eltávolíthatja az IoT Edge-futtatókörnyezetet az eszközről.
-
-### <a name="delete-azure-resources"></a>Azure-erőforrások törlése
+Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebben a rövid útmutatóban regisztrált és létrehozott eszközt. Ellenkező esetben az Azure-erőforrások, Ön által létrehozott díjak elkerülése érdekében törölheti.
 
 Ha a virtuális gépet és az IoT Hubot egy új erőforráscsoportban hozta létre, törölheti azt a csoportot és az összes társított erőforrást. Ellenőrizze a győződjön meg arról, hogy ott az erőforráscsoportot, amelybe a tartalmát a semmi meg szeretné tartani. A teljes csoport törlése nem szeretné, ha ehelyett törölheti az egyes erőforrásokat.
 
 Távolítsa el az **IoTEdgeResources** csoportot.
 
-   ```azurecli-interactive
-   az group delete --name IoTEdgeResources
-   ```
-
-### <a name="remove-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet eltávolítása
-
-Ha el szeretné távolítani a telepítéseket az eszközéről, azt a következő parancsokkal teheti meg.  
-
-Távolítsa el az IoT Edge-futtatókörnyezetet.
-
-   ```bash
-   sudo apt-get remove --purge iotedge
-   ```
-
-Távolítsa el a tároló-futtatókörnyezetet.
-
-   ```bash
-   sudo apt-get remove --purge moby-cli
-   sudo apt-get remove --purge moby-engine
-   ```
+```azurecli-interactive
+az group delete --name IoTEdgeResources
+```
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a rövid útmutató minden IoT Edge-oktatóanyag előfeltétele. Továbbléphet bármely másik oktatóanyagra, és megtudhatja, hogyan alakíthatja üzleti megállapításokká ezeket az adatokat a peremhálózaton az Azure IoT Edge segítségével.
+
+Ebben a rövid útmutatóban létrehozott egy IoT Edge-eszközön, és az eszközre kód üzembe helyezése az Azure IoT Edge felhőalapú interfésze használt. Most már van egy teszteszköze, amely nyers adatokat állít elő a környezetéről.
+
+A következő lépés az, hogy, hozzákezdhet az IoT Edge modulokról az üzleti logikát a helyi fejlesztési környezet beállítása. 
 
 > [!div class="nextstepaction"]
-> [Érzékelők adatainak szűrése Azure Functions-függvényekkel](tutorial-deploy-function.md)
+> [A fejlesztési munka a Linux rendszerű eszközök IoT Edge-modulok](tutorial-develop-for-linux.md)

@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 04/23/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: dffbb2c52b4e43eefe6b4f377bd7af529bae8cc5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 22d3bdf8c60e6682c360395b44fe6f1dcc1207b0
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125559"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925524"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -93,8 +93,8 @@ Minden virtuális Géphez szeretne replikálni, többféle használatával telep
 
 A Site Recovery replikálja a helyszíni VMware virtuális gépek és fizikai kiszolgálók Azure-ban felügyelt lemezekre.
 - A Site Recovery folyamatkiszolgáló replikációs naplók ír a gyorsítótárfiók a célrégióban.
-- Ezek a naplók segítségével hozza létre a helyreállítási pontokat a felügyelt lemezeken.
-- Feladatátvétel esetén a helyreállítási pontot választja szolgál a cél felügyelt lemez létrehozása.
+- Ezek a naplók segítségével helyreállítási pontok létrehozása az Azure-ban felügyelt lemezekkel rendelkező asrseeddisk előtagja.
+- Feladatátvétel esetén a helyreállítási pontot választja segítségével hozzon létre egy új cél felügyelt lemezt. A felügyelt lemez csatolva van a virtuális gép az Azure-ban.
 - Virtuális gépek, amelyek korábban lettek replikálva egy storage-fiókba (előtt 2019. március) a szabályzat nem vonatkozik.
 
 
@@ -111,7 +111,7 @@ Storage-fiókba új virtuális gépek replikálását csak akkor használható a
 
 ### <a name="can-i-change-the-managed-disk-type-after-machine-is-protected"></a>Módosíthatom a felügyelt lemez típusa, után a gép védelméhez?
 
-Igen, egyszerűen [felügyelt lemez típusának módosítása](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Típusának módosítása előtt győződjön meg arról, hogy az Azure Portalon nyissa meg a felügyelt lemez erőforrás visszavonja az SAS URL-címet a lemez. Az Áttekintés panelen bármely folyamatos Exportálás megszakítása Miután visszavonja a SAS URL-címet, a lemez típusának módosítása a postafiókjába pár percen belül. Azonban ha módosítja a felügyelt lemez típusa, várjon, amíg új helyreállítási pontot kell létrehozni az Azure Site Recovery. Az új helyreállítási pontok használata bármilyen feladatátvételi teszt vagy feladatátvétel a jövőben.
+Igen, egyszerűen [felügyelt lemez típusának módosítása](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) folyamatban lévő replikáció esetében. Típusának módosítása előtt győződjön meg arról, hogy nincs SAS URL-címe jön létre a felügyelt lemez. Az Azure Portalon nyissa meg a felügyelt lemez erőforrás, és ellenőrizze az áttekintési panelen, hogy egy SAS URL-cím szalagcím. Ha jelen, kattintson rá a folyamatos Exportálás megszakítása. Ha végzett, a lemez típusának módosítása a postafiókjába pár percen belül. Azonban ha módosítja a felügyelt lemez típusa, várjon, amíg új helyreállítási pontot kell létrehozni az Azure Site Recovery. Az új helyreállítási pontok használata bármilyen feladatátvételi teszt vagy feladatátvétel a jövőben.
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>Válthatok-e a felügyelt lemezekre történő replikálás nem felügyelt lemezek?
 
@@ -133,6 +133,10 @@ A kiterjesztett vagy láncolt replikáció nem támogatott. Ennek a funkciónak 
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>Használhatom az offline kezdeti replikációt?
 Ez a funkció nem támogatott. Ennek a funkciónak a kérelem a [Visszajelzési fórum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
+
+
+### <a name="what-is-asrseeddisk"></a>Mit jelent a asrseeddisk?
+Minden forráslemezt, az adatok replikálódnak a felügyelt lemezt az Azure-ban. Ez a lemez rendelkezik asrseeddisk előtagja. Forráslemez és a helyreállítási pontok pillanatképeiből másolatát tárolja.
 
 ### <a name="can-i-exclude-disks-from-replication"></a>Kizárhatok lemezeket a replikációból?
 Igen, lemezeket zárhat ki.
@@ -249,7 +253,7 @@ A Recovery Services-tárolóban kattintson **konfigurációs kiszolgálók** a *
 
 ### <a name="unable-to-select-process-server-during-enable-replication"></a>Válassza ki a folyamatkiszolgálót a replikáció engedélyezése során nem sikerült
 
-9.24 verzióról fejlesztések lettek végrehajtva adja meg [a termék-útmutatókat](vmware-azure-manage-process-server.md#process-server-selection-guidance) a horizontális felskálázási folyamatkiszolgáló beállításának. Ez a folyamat kiszolgáló szabályozás elkerülése és a folyamatkiszolgáló nem megfelelő állapotú használatának elkerülése érdekében.
+9.24 verzióról fejlesztések lettek végrehajtva adja meg [kiszolgálóriasztások feldolgozni](vmware-physical-azure-monitor-process-server.md#process-server-alerts) a horizontális felskálázási folyamatkiszolgáló beállításának. Ez a folyamat kiszolgáló szabályozás elkerülése és a folyamatkiszolgáló nem megfelelő állapotú használatának elkerülése érdekében.
 
 ### <a name="what-should-i-do-to-obtain-accurate-health-status-of-process-server"></a>Mit tegyen a folyamatkiszolgáló pontos állapotának megszerzése?
 

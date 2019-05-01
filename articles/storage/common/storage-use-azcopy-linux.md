@@ -8,18 +8,22 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0f87645537576f49ee04b823341acf8853798f88
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ad6d7a60700727b73b87a78e364fde3fa1caa8c3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730055"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572567"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Adatok áthelyezése az Azcopyval Linux rendszeren
 
 Az AzCopy egy parancssori segédprogram, és a Microsoft Azure Blob- és File storage, az adatok másolása szolgál az optimális teljesítmény érdekében tervezett egyszerű parancs használatával. Az adatokat egy fájlrendszer és egy tárfiók, illetve több tárfiók között is másolhatja.  
 
-Nincsenek töltheti le, Azcopynak két verziója. AzCopy linuxon célozza meg benne POSIX stílusú parancssori lehetőségeket kínál Linux platformokról. [Az AzCopy Windows](../storage-use-azcopy.md) Windows stílusú parancssori lehetőségeket kínál. Ez a cikk ismerteti az AzCopy linuxon. 
+> [!IMPORTANT]
+> Ez a cikk ismerteti az AzCopy egy régebbi verzióját.
+>Telepítse az AzCopy legújabb verzióját, lásd: [AzCopy v10](storage-use-azcopy-v10.md).
+
+A régebbi verziót, az AzCopy (AzCopy v8.1) telepítését választja, majd van-e több verziója is letölthető AzCopy v8.1. AzCopy linuxon célozza meg benne POSIX stílusú parancssori lehetőségeket kínál Linux platformokról. [Az AzCopy Windows](../storage-use-azcopy.md) Windows stílusú parancssori lehetőségeket kínál. Ez a cikk ismerteti az AzCopy linuxon. 
 
 > [!NOTE]  
 > AzCopy 7.2 verzió kezdődően a .NET Core függőségei vannak csomagolva az AzCopy-csomaggal. Ha a 7,2 verzióját használja, vagy később már nem telepítenie kell a .NET Core előfeltételként.

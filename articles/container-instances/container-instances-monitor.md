@@ -1,54 +1,58 @@
 ---
 title: Tárolók figyelése az Azure Container Instances-ben
-description: Részletesen ismerteti, hogyan lehet figyelni a számítási erőforrások, mint a CPU és memória fogyasztását az Azure Container Instances tárolóiban.
+description: Hogyan lehet a számítási erőforrások, például a Processzor- és az Azure Container Instances a tárolók által a használat figyeléséhez.
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
-ms.date: 04/24/2018
+ms.date: 04/24/2019
 ms.author: danlep
-ms.openlocfilehash: 950d8b4b5ec1a55e2054039a01d6807915b5c714
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7b46ea0518038eeb908591b8438acc2a9095242c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60580169"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570900"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Tároló-erőforrások figyelése az Azure Container Instances-ben
 
-Az Azure Monitor betekintést biztosít a tárolópéldányok által használt számítási erőforrásokba. Az Azure Monitor segítségével nyomon követheti a tárolócsoportok és tárolóik CPU- és memóriafelhasználását. Ezek az erőforrás-használati adatok segítenek meghatározni a tárolócsoportok számára legjobb CPU- és memóriabeállításokat.
+[Az Azure Monitor] [ azure-monitoring] a tárolók példányok által használt számítási erőforrások betekintést nyújt. Az erőforrás-használati adatok segít meghatározni, hogy a legjobb erőforrás-beállításai a tárolócsoportok. Az Azure Monitor mérőszámok, amelyek nyomon követik a tárolópéldányok hálózati tevékenységet is tartalmaz.
 
-Ez a dokumentum részletesen ismerteti a tárolópéldányok CPU- és memóriahasználatának az Azure Portalon és az Azure CLI-vel történő gyűjtését.
+Ez a dokumentum részletesen gyűjtése az Azure Monitor metrikáinak container Instances szolgáltatásban az Azure Portalon és az Azure CLI használatával.
 
 > [!IMPORTANT]
-> Jelenleg erőforrás-használati metrikák csak Linux-tárolókhoz állnak rendelkezésre.
->
+> Az Azure Container Instances szolgáltatásban az Azure Monitor-metrikák jelenleg előzetes verzióban érhető el, és néhány [korlátozások érvényesek a](#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+
+## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
+
+Jelenleg az Azure Monitor-metrikák érhetők el csak Linux-tárolók esetén.
 
 ## <a name="available-metrics"></a>Rendelkezésre álló metrikák
 
-Az Azure Monitor metrikák biztosít a **CPU-** és **memória**használat méréséhez az Azure Container Instances-ben. Mindkét metrika rendelkezésre áll tárolócsoporthoz és különálló tárolókhoz is.
+Az Azure Monitor biztosítja a következő [mérőszámok az Azure Container Instances][supported-metrics]. Ezeket a metrikákat egy tárolócsoport és az egyes tárolók érhetők el.
 
-A CPU-metrikák kifejezése **millicore-ban** történik. Egy millicore a processzormag 1/1000 része, tehát 500 millicore (vagy 500 m) a CPU-mag 50%-os kihasználtságát jelenti.
+* **CPU-használat** – mérve **millicore**. Egy millicore: 1/1000th, a CPU-magot, így 500 millicore (vagy 500 millió) a CPU-magot 50 %-os használatát jelöli. Összesítjük **átlagos használat** összes magon.
 
-A memóriametrikák kifejezése **bájtban** történik.
+* **Memóriahasználat** – mint összesített **bájtok átlagos**.
+
+* **Hálózati bájtok másodpercenként fogadott** és **hálózati bájtok továbbított másodpercenként** – mint összesített **bájtok másodpercenkénti átlagos**. 
 
 ## <a name="get-metrics---azure-portal"></a>Metrika beolvasása – Azure Portal
 
-Tárolócsoport létrehozásakor az Azure Monitor adatai elérhetők az Azure Portalon. Tárolócsoport metrikáinak megtekintéséhez jelölje ki az erőforráscsoportot, majd a tárolócsoport. Itt előre létrehozott diagramokat talál a CPU- és a memóriahasználathoz is.
+Tárolócsoport létrehozásakor az Azure Monitor adatai elérhetők az Azure Portalon. A tárolócsoport metrikák megtekintéséhez nyissa meg a **áttekintése** a tárolócsoport lap. Itt láthatja el az egyes elérhető metrikáinak előre létrehozott diagramok.
 
 ![kettős diagram][dual-chart]
 
-Ha több tárolót tartalmazó tárolócsoporttal rendelkezik, használjon [dimenziót] [ monitor-dimension] az egyes tárolók metrikáinak bemutatásához. Az egyes tárolómetrikák diagramjának létrehozásához hajtsa végre az alábbi lépéseket:
+Tárolócsoport, amely több tárolót tartalmaz, használjon egy [dimenzió] [ monitor-dimension] metrikák a tároló nyújtjuk. Az egyes tárolómetrikák diagramjának létrehozásához hajtsa végre az alábbi lépéseket:
 
-1. Válassza a **Monitor** lehetőséget a bal oldali navigációs menüből.
-2. Válasszon tárolócsoportot és egy metrikát (CPU vagy memória).
-3. Kattintson a zöld dimenzió gombra, majd válassza a **Tárolónév** lehetőséget.
+1. Az a **áttekintése** lapon válassza ki a metrikus diagramok egyikének például **CPU**. 
+1. Válassza ki a **alkalmazni a felosztás** gombra, és válassza **Tárolónév**.
 
 ![dimenzió][dimension]
 
 ## <a name="get-metrics---azure-cli"></a>Metrika beolvasása – Azure CLI
 
-A tárolópéldányok a CPU- és memóriahasználat is begyűjthető az Azure CLI használatával. Első lépésként olvassa be a csoport azonosítóját az alábbi paranccsal. Cserélje le a `<resource-group>` kifejezést az erőforráscsoport-nevével, a `<container-group>` kifejezést pedig a tárolócsoport nevével.
+Container Instances metrikák az Azure CLI használatával is megtörtént. Első lépésként olvassa be a csoport azonosítóját az alábbi paranccsal. Cserélje le a `<resource-group>` kifejezést az erőforráscsoport-nevével, a `<container-group>` kifejezést pedig a tárolócsoport nevével.
 
 
 ```console
@@ -60,80 +64,81 @@ Használja az alábbi parancsot a **CPU**-használati metrikák lekérésére.
 ```console
 $ az monitor metrics list --resource $CONTAINER_GROUP --metric CPUUsage --output table
 
-Timestamp            Name              Average
--------------------  ------------  -----------
-2018-04-22 04:39:00  CPU Usage
-2018-04-22 04:40:00  CPU Usage
-2018-04-22 04:41:00  CPU Usage
-2018-04-22 04:42:00  CPU Usage
-2018-04-22 04:43:00  CPU Usage      0.375
-2018-04-22 04:44:00  CPU Usage      0.875
-2018-04-22 04:45:00  CPU Usage      1
-2018-04-22 04:46:00  CPU Usage      3.625
-2018-04-22 04:47:00  CPU Usage      1.5
-2018-04-22 04:48:00  CPU Usage      2.75
-2018-04-22 04:49:00  CPU Usage      1.625
-2018-04-22 04:50:00  CPU Usage      0.625
-2018-04-22 04:51:00  CPU Usage      0.5
-2018-04-22 04:52:00  CPU Usage      0.5
-2018-04-22 04:53:00  CPU Usage      0.5
+Timestamp            Name       Average
+-------------------  ---------  ---------
+2019-04-23 22:59:00  CPU Usage
+2019-04-23 23:00:00  CPU Usage
+2019-04-23 23:01:00  CPU Usage  0.0
+2019-04-23 23:02:00  CPU Usage  0.0
+2019-04-23 23:03:00  CPU Usage  0.5
+2019-04-23 23:04:00  CPU Usage  0.5
+2019-04-23 23:05:00  CPU Usage  0.5
+2019-04-23 23:06:00  CPU Usage  1.0
+2019-04-23 23:07:00  CPU Usage  0.5
+2019-04-23 23:08:00  CPU Usage  0.5
+2019-04-23 23:09:00  CPU Usage  1.0
+2019-04-23 23:10:00  CPU Usage  0.5
 ```
 
-Az alábbi parancsot pedig a **memória**használati metrikák lekérésére.
+Módosítsa a `--metric` paramétert a parancsba beolvasni a többi [támogatott mérőszámok][supported-metrics]. Például a következő parancs használatával első **memória** metrikáit. 
 
 ```console
 $ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table
 
-Timestamp            Name              Average
--------------------  ------------  -----------
-2018-04-22 04:38:00  Memory Usage
-2018-04-22 04:39:00  Memory Usage
-2018-04-22 04:40:00  Memory Usage
-2018-04-22 04:41:00  Memory Usage
-2018-04-22 04:42:00  Memory Usage  6.76915e+06
-2018-04-22 04:43:00  Memory Usage  9.22061e+06
-2018-04-22 04:44:00  Memory Usage  9.83552e+06
-2018-04-22 04:45:00  Memory Usage  8.42906e+06
-2018-04-22 04:46:00  Memory Usage  8.39526e+06
-2018-04-22 04:47:00  Memory Usage  8.88013e+06
-2018-04-22 04:48:00  Memory Usage  8.89293e+06
-2018-04-22 04:49:00  Memory Usage  9.2073e+06
-2018-04-22 04:50:00  Memory Usage  9.36243e+06
-2018-04-22 04:51:00  Memory Usage  9.30509e+06
-2018-04-22 04:52:00  Memory Usage  9.2416e+06
-2018-04-22 04:53:00  Memory Usage  9.1008e+06
+Timestamp            Name          Average
+-------------------  ------------  ----------
+2019-04-23 22:59:00  Memory Usage
+2019-04-23 23:00:00  Memory Usage
+2019-04-23 23:01:00  Memory Usage  0.0
+2019-04-23 23:02:00  Memory Usage  8859648.0
+2019-04-23 23:03:00  Memory Usage  9181184.0
+2019-04-23 23:04:00  Memory Usage  9580544.0
+2019-04-23 23:05:00  Memory Usage  10280960.0
+2019-04-23 23:06:00  Memory Usage  7815168.0
+2019-04-23 23:07:00  Memory Usage  7739392.0
+2019-04-23 23:08:00  Memory Usage  8212480.0
+2019-04-23 23:09:00  Memory Usage  8159232.0
+2019-04-23 23:10:00  Memory Usage  8093696.0
 ```
 
-Több tárolót tartalmazó csoportnál a `containerName` dimenziót fel lehet venni ezeknek az adatoknak a tárolónkénti visszaadására.
+Többtárolós csoport a `containerName` dimenzió lehet hozzáadni tárolónként metrikákat adja vissza.
 
 ```console
-$ az monitor metrics list --resource $CONTAINER_GROUP --metric CPUUsage --dimension containerName --output table
+$ az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --dimension containerName --output table
 
 Timestamp            Name          Containername             Average
 -------------------  ------------  --------------------  -----------
-2018-04-22 17:03:00  Memory Usage  aci-tutorial-app      1.95338e+07
-2018-04-22 17:04:00  Memory Usage  aci-tutorial-app      1.93096e+07
-2018-04-22 17:05:00  Memory Usage  aci-tutorial-app      1.91488e+07
-2018-04-22 17:06:00  Memory Usage  aci-tutorial-app      1.94335e+07
-2018-04-22 17:07:00  Memory Usage  aci-tutorial-app      1.97714e+07
-2018-04-22 17:08:00  Memory Usage  aci-tutorial-app      1.96178e+07
-2018-04-22 17:09:00  Memory Usage  aci-tutorial-app      1.93434e+07
-2018-04-22 17:10:00  Memory Usage  aci-tutorial-app      1.92614e+07
-2018-04-22 17:11:00  Memory Usage  aci-tutorial-app      1.90659e+07
-2018-04-22 16:12:00  Memory Usage  aci-tutorial-sidecar  1.35373e+06
-2018-04-22 16:13:00  Memory Usage  aci-tutorial-sidecar  1.28614e+06
-2018-04-22 16:14:00  Memory Usage  aci-tutorial-sidecar  1.31379e+06
-2018-04-22 16:15:00  Memory Usage  aci-tutorial-sidecar  1.29536e+06
-2018-04-22 16:16:00  Memory Usage  aci-tutorial-sidecar  1.38138e+06
-2018-04-22 16:17:00  Memory Usage  aci-tutorial-sidecar  1.41312e+06
-2018-04-22 16:18:00  Memory Usage  aci-tutorial-sidecar  1.49914e+06
-2018-04-22 16:19:00  Memory Usage  aci-tutorial-sidecar  1.43565e+06
-2018-04-22 16:20:00  Memory Usage  aci-tutorial-sidecar  1.408e+06
+2019-04-23 22:59:00  Memory Usage  aci-tutorial-app
+2019-04-23 23:00:00  Memory Usage  aci-tutorial-app
+2019-04-23 23:01:00  Memory Usage  aci-tutorial-app      0.0
+2019-04-23 23:02:00  Memory Usage  aci-tutorial-app      16834560.0
+2019-04-23 23:03:00  Memory Usage  aci-tutorial-app      17534976.0
+2019-04-23 23:04:00  Memory Usage  aci-tutorial-app      18329600.0
+2019-04-23 23:05:00  Memory Usage  aci-tutorial-app      19742720.0
+2019-04-23 23:06:00  Memory Usage  aci-tutorial-app      14786560.0
+2019-04-23 23:07:00  Memory Usage  aci-tutorial-app      14651392.0
+2019-04-23 23:08:00  Memory Usage  aci-tutorial-app      15470592.0
+2019-04-23 23:09:00  Memory Usage  aci-tutorial-app      15450112.0
+2019-04-23 23:10:00  Memory Usage  aci-tutorial-app      15339520.0
+2019-04-23 22:59:00  Memory Usage  aci-tutorial-sidecar
+2019-04-23 23:00:00  Memory Usage  aci-tutorial-sidecar
+2019-04-23 23:01:00  Memory Usage  aci-tutorial-sidecar  0.0
+2019-04-23 23:02:00  Memory Usage  aci-tutorial-sidecar  884736.0
+2019-04-23 23:03:00  Memory Usage  aci-tutorial-sidecar  827392.0
+2019-04-23 23:04:00  Memory Usage  aci-tutorial-sidecar  831488.0
+2019-04-23 23:05:00  Memory Usage  aci-tutorial-sidecar  819200.0
+2019-04-23 23:06:00  Memory Usage  aci-tutorial-sidecar  843776.0
+2019-04-23 23:07:00  Memory Usage  aci-tutorial-sidecar  827392.0
+2019-04-23 23:08:00  Memory Usage  aci-tutorial-sidecar  954368.0
+2019-04-23 23:09:00  Memory Usage  aci-tutorial-sidecar  868352.0
+2019-04-23 23:10:00  Memory Usage  aci-tutorial-sidecar  847872.0
 ```
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure-alapú figyelésről további információt az [Azure-alapú figyelés áttekintése][azure-monitoring] szakaszban talál.
+
+Ismerje meg, hogyan hozhat létre [metrikákhoz kapcsolódó riasztások] [ metric-alert] , értesítést kaphat, amikor az Azure Container Instances egy metrika átlépi a küszöbértéket.
 
 <!-- IMAGES -->
 [cpu-chart]: ./media/container-instances-monitor/cpu-multi.png
@@ -141,6 +146,11 @@ Az Azure-alapú figyelésről további információt az [Azure-alapú figyelés 
 [dual-chart]: ./media/container-instances-monitor/metrics.png
 [memory-chart]: ./media/container-instances-monitor/memory-multi.png
 
+<!-- LINKS - External -->
+[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+
 <!-- LINKS - Internal -->
-[azure-monitoring]: ../monitoring-and-diagnostics/monitoring-overview.md
+[azure-monitoring]: ../azure-monitor/overview.md
+[metric-alert]: ..//azure-monitor/platform/alerts-metric.md
 [monitor-dimension]: ../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics
+[supported-metrics]: ../azure-monitor/platform/metrics-supported.md#microsoftcontainerinstancecontainergroups

@@ -1,6 +1,6 @@
 ---
-title: Azure létesítményekben, a helyi és a fizikai biztonság |} A Microsoft Docs
-description: A cikk ismerteti az Azure-adatközpontokhoz, beleértve a fizikai infrastruktúra, biztonsági és megfelelőségi ajánlatok.
+title: Fizikai biztonság Azure-adatközpontok – Microsoft Azure |} A Microsoft Docs
+description: A cikk a Microsoft nem biztonságos, az Azure-adatközpontokhoz, beleértve a fizikai infrastruktúra, biztonsági és megfelelőségi ajánlatok.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,19 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 5f8378de18796fd679354c88880942df83399ad5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d1b95695de809668987ebb6ef6720a3751205171
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60586789"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939834"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure létesítményekben, a helyi és a fizikai biztonság
+Ez a cikk ismerteti a Microsoft célja az Azure-infrastruktúra biztonságossá tételéhez.
+
+## <a name="datacenter-infrastructure"></a>Adatközpont-infrastruktúrába
 Azure áll, amelyek egy [globálisan elosztott adatközpont-infrastruktúrába](https://azure.microsoft.com/global-infrastructure/), több ezer olyan online szolgáltatások támogatása, és világszerte több mint 100 rendkívül biztonságos létesítményekben átfedés.
 
-Az infrastruktúra ahhoz, hogy a felhasználók alkalmazásokat közelebb szerte a világon, megőrzi az adatok fizikai tárolási helye, és átfogó megfelelőségi és bővíthetőségét lehetőségek, ügyfelek számára tervezték. Azure 52 régióval rendelkezik világszerte, és amely 140 országban érhető el.
+Az infrastruktúra ahhoz, hogy a felhasználók alkalmazásokat közelebb szerte a világon, megőrzi az adatok fizikai tárolási helye, és átfogó megfelelőségi és bővíthetőségét lehetőségek, ügyfelek számára tervezték. Azure 52 régióval rendelkezik világszerte, és 140 országban és régióban elérhető.
 
 A régió olyan adatközpontok, amely egy nagy és rugalmas hálózaton keresztül kapcsolódnak egymáshoz. A hálózat tartalomterjesztéshez, terheléselosztás, a redundancia és titkosítási alapértelmezés szerint tartalmazza. Minden más felhőszolgáltatónál több globális régióval az Azure lehetőséget kínál rugalmasan üzembe helyezheti az alkalmazást, szüksége lesz rájuk.
 
@@ -67,9 +70,9 @@ A Microsoft használja, gyakorlati ajánlott eljárásokat és a egy wiping mego
 Esetén a rendszer teljes életciklusa a Microsoft üzemeltetési személyzetének hajtsa végre a szigorú adatkezelési és hardver kivezetési eljárások ahhoz, hogy biztosítsa, hogy az Ön adatait tartalmazó hardver nem szeretné elérhetővé tenni nem megbízható feleknek. Merevlemez-meghajtókat, amelyek támogatják ezt a biztonságos törlése megközelítést használunk. Merevlemez-meghajtók, amely nem törölhetők egy megsemmisítését folyamat, amely a meghajtó megsemmisít, és rendereli a helyreállítási információk lehetetlen használ. Ez a folyamat megsemmisítését darabokra, zúzására szolgálnak, pulverize vagy hamvasszuk is lehet. Azt határozza meg, az azt jelenti, hogy az eszköz típusa szerint kivezetési. Azt megőrizni a megsemmisítését rekordjait. Azure-szolgáltatásokhoz jóváhagyott media tárolási és kivezetési szolgáltatásokat használja.
 
 ## <a name="compliance"></a>Megfelelőség
-Hogy tervezheti meg és kezelheti az Azure-infrastruktúra számos nemzetközi és iparági megfelelőségi szabványok – például az ISO 27001, a HIPAA, a FedRAMP, a SOC 1 és SOC 2 kielégítése érdekében. Emellett megfelelünk országspecifikus szabványokhoz is, például az ausztrál IRAP, az Egyesült Királyságbeli G-Cloud és a szingapúri MTCS. Szigorú külső naplózások, például a British Standards Institute által ellenőrizze a szigorú biztonsági ellenőrzés megszabják ezeknek a szabványoknak való megfelelést.
+Hogy tervezheti meg és kezelheti az Azure-infrastruktúra számos nemzetközi és iparági megfelelőségi szabványok – például az ISO 27001, a HIPAA, a FedRAMP, a SOC 1 és SOC 2 kielégítése érdekében. Azt is szabványainak ország vagy régió-specifikus, beleértve az ausztrál IRAP, az Egyesült Királyságbeli G-Cloud és a szingapúri MTCS. Szigorú külső naplózások, például a British Standards Institute által ellenőrizze a szigorú biztonsági ellenőrzés megszabják ezeknek a szabványoknak való megfelelést.
 
-Megfelelőségi szabvány, amely Azure betartja teljes listáját lásd: a [megfelelőségi ajánlatok](https://www.microsoft.com/trustcenter/compliance/complianceofferings). 
+Megfelelőségi szabvány, amely Azure betartja teljes listáját lásd: a [megfelelőségi ajánlatok](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
 
 ## <a name="next-steps"></a>További lépések
 A Microsoft nem biztonságossá tétele az Azure-infrastruktúra kapcsolatos további információkért lásd:

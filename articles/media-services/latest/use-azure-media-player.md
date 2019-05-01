@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: juliako
-ms.openlocfilehash: 6de626323c82689d0ead4f5aaad2a2e43187ebd0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fd5bf9f7bca9c667191d0d3f83be6e29a96c8dbe
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466646"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926516"
 ---
 # <a name="azure-media-player-overview"></a>Az Azure Media Player áttekintése
 
@@ -24,7 +24,7 @@ Az Azure Media Player egy webes videólejátszó médiatartalmak lejátszására
 
 A Microsoft Azure Media Services lehetővé teszi, hogy a tartalom kiszolgálása HLS, DASH, Smooth Streaming formátumban vissza tartalom lejátszása. Az Azure Media Player a különféle formátumokat figyelembe veszi, és automatikusan játszik a legjobb hivatkozás, a platformjától és böngészői képességeitől alapján. A Media Services emellett lehetővé teszi, hogy a dinamikus titkosítást, PlayReady-titkosítást az eszközök, vagy a 128 bites AES-boríték-titkosítást. Az Azure Media Player lehetővé teszi a PlayReady-titkosítás visszafejtésére és 128 bites AES-titkosított tartalmat, ha megfelelően konfigurálva. 
 
-[Az ingyenes próbaverzió használatának megkezdéséhez](https://azure.microsoft.com/en-us/pricing/free-trial/)
+[Az ingyenes próbaverzió használatának megkezdéséhez](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="use-azure-media-player-demo-page"></a>Az Azure Media Player demó lapon
 

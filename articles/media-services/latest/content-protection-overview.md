@@ -15,11 +15,11 @@ ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 40e7ebcddb5cc215e071f1a34dfa8f3f4ea95141
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103716"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64684566"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>A Content protection, a dinamikus titkosítás segítségével
 
@@ -128,7 +128,7 @@ Az MPEG-DASH-protokoll támogatja a következő tároló formátumok és a titko
 
 A Smooth Streaming protokoll támogatja a következő tároló formátumok és a titkosítási sémát.
 
-|Protokoll|Tároló-formátum|Titkosítási sémával|
+|Protocol|Tároló-formátum|Titkosítási sémával|
 |---|---|---|
 |fMP4|AES||
 |fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(encryption=cenc)`|

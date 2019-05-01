@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2019
 ms.author: aljo, subramar
-ms.openlocfilehash: ae8c5c8ec1e16669b3cbdde8b3eaa3d5dbb7c4de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fc4edf4cb411ea2872437f4909f06e5ac2b9f622
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60837459"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926374"
 ---
 # <a name="set-up-gmsa-for-windows-containers-running-on-service-fabric"></a>A Service Fabricen futó Windows-tárolók csoportosan felügyelt szolgáltatásfiók beállítása
 
-Csoportosan felügyelt szolgáltatásfiókok (felügyelt szolgáltatásfiókok csoportot), a hitelesítő adatok specifikáció fájl beállítása (`credspec`) a fürt minden csomópontján el van helyezve. A fájl átmásolható egy Virtuálisgép-bővítménnyel minden csomóponton.  A `credspec` fájlnak tartalmaznia kell a gMSA-fiók adatait. További információ a `credspec` fájlt [hozzon létre egy hitelesítőadat-specifikációja](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec). A hitelesítő adatok meghatározása és a `Hostname` az alkalmazásjegyzékben megadott címkével. A `Hostname` címkének egyeznie kell a tároló fut a gMSA-fiók neve.  A `Hostname` címke lehetővé teszi, hogy a tároló hitelesítse magát a tartományban, a Kerberos-hitelesítést használó más szolgáltatásokhoz.  Adjon meg egy minta a `Hostname` és a `credspec` jegyzékfájlt, az alkalmazás az alábbi kódrészletben látható:
+Csoportosan felügyelt szolgáltatásfiókok (felügyelt szolgáltatásfiókok csoportot), a hitelesítő adatok specifikáció fájl beállítása (`credspec`) a fürt minden csomópontján el van helyezve. A fájl átmásolható egy Virtuálisgép-bővítménnyel minden csomóponton.  A `credspec` fájlnak tartalmaznia kell a gMSA-fiók adatait. További információ a `credspec` fájlt [hozzon létre egy hitelesítőadat-specifikációja](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec). A hitelesítő adatok meghatározása és a `Hostname` az alkalmazásjegyzékben megadott címkével. A `Hostname` címkének egyeznie kell a tároló fut a gMSA-fiók neve.  A `Hostname` címke lehetővé teszi, hogy a tároló hitelesítse magát a tartományban, a Kerberos-hitelesítést használó más szolgáltatásokhoz.  Adjon meg egy minta a `Hostname` és a `credspec` jegyzékfájlt, az alkalmazás az alábbi kódrészletben látható:
 
 ```xml
 <Policies>

@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 29d53c7fbd26d3c8e2356ce82ff25c7e1b165728
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 998fcba50636cd92b14bdbe1633c2548e84a6bfc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60540979"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696418"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>Csatlakozás az SQL Server vagy az Azure SQL Database az Azure Logic Apps
 
@@ -116,23 +116,26 @@ Az Azure Logic Apps- [művelet](../logic-apps/logic-apps-overview.md#logic-app-c
 
 [!INCLUDE [Create a connection to SQL Server or Azure SQL Database](../../includes/connectors-create-api-sqlazure.md)]
 
-## <a name="process-data-in-bulk"></a>Tömeges dolgozza fel az adatokat
+## <a name="handle-bulk-data"></a>Adatok kötegelt kezeléséhez
 
-Eredményhalmazt rendkívül nagy méretűek, hogy az összekötő nem ad vissza az összes eredmény egyszerre, vagy az eredménykészlet méretétől és felépítésétől jobban kézben szeretne dolgozni, ha *tördelés*, amelyek segítségével kezelheti azokat kisebb mint eredményeket. 
+Előfordulhat hogy előfordulhat, hogy az összekötő nem ad vissza az összes eredmény egyszerre, vagy szeretné jobban kézben méretétől és felépítésétől a eredmény csoportjai nagy eredményhalmazt dolgozhat. Íme néhány módszer, hogy az ilyen nagy eredményhalmazt kezelheti:
 
-[!INCLUDE [Set up pagination for results exceeding default page size](../../includes/connectors-pagination-bulk-data-transfer.md)]
+* Könnyebben kisebb mint eredmények kezelése, kapcsolja be a *tördelés*. További információkért lásd: [beszerezni a tömeges adatok, a rekordokat és az elemek a tördelés](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md).
 
-### <a name="create-a-stored-procedure"></a>Tárolt eljárás létrehozása
+* Hozzon létre egy tárolt eljárást, amely az eredményeket a kívánt módon rendezi.
 
-Első, vagy több sort szúr be, a logikai alkalmazás is végigvenni ezeket az elemeket használatával egy [ *until ciklus* ](../logic-apps/logic-apps-control-flow-loops.md#until-loop) belül ezek [korlátok](../logic-apps/logic-apps-limits-and-config.md). Azonban, egyes esetekben a logikai alkalmazás rendkívül nagy méretűek, például a több ezer vagy millió sort, az adatbázis-hívások kapcsolódó költségek minimalizálása érdekében kívánt rekordhalmazok dolgozhat. 
+  Első, vagy több sort szúr be, a logikai alkalmazás is végigvenni ezeket a sorokat használatával egy [ *until ciklus* ](../logic-apps/logic-apps-control-flow-loops.md#until-loop) belül ezek [korlátok](../logic-apps/logic-apps-limits-and-config.md). 
+  Azonban, ha a logikai alkalmazás rendelkezik dolgozhat rekordhalmazok rendkívül nagy méretűek, például a több ezer vagy millió sort, hogy szeretné-e az adatbázis-hívások felmerülő költségek minimalizálása érdekében.
 
-Ehelyett létrehozhat egy <a href="https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine" target="blank"> *tárolt eljárás* </a> , amely az SQL-példány fut, és használja a **kiválasztása – ORDER BY** utasítással rendezheti az eredményeket a kívánt módon. Ez a megoldás révén, méretétől és felépítésétől az eredmények további szabályozhatja. A logikai alkalmazás az SQL Server-összekötő használatával meghívja a tárolt eljárás **tárolt eljárás végrehajtása** művelet. 
+  Az eredményeket a kívánt módon rendszerezheti, létrehozhat egy [ *tárolt eljárás* ](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) , amely az SQL-példány fut, és használja a **kiválasztása – ORDER BY** utasítást. 
+  Ez a megoldás révén, méretétől és felépítésétől az eredmények további szabályozhatja. 
+  A logikai alkalmazás az SQL Server-összekötő használatával meghívja a tárolt eljárás **tárolt eljárás végrehajtása** művelet.
 
-A megoldás részletei tanulmányozza a következő cikkeket:
+  A megoldás részletei tanulmányozza a következő cikkeket:
 
-* <a href="https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx" target="_blank">SQL tördelés a tömeges adatátviteli Logic Apps szolgáltatással</a>
+  * [SQL tördelés a tömeges adatátviteli Logic Apps szolgáltatással](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
 
-* <a href="https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql" target="_blank">Válassza ki – az ORDER BY záradék</a>
+  * [Válassza ki – az ORDER BY záradék](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
 
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletei
 

@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 21ddeb9cb0621f0f11ca23a7b12a82df0b7aa8ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5d7ff8513a0659ca1107b9baf07cdf4bac4b807
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60528289"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688633"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL-hez tarifacsomagok
 
@@ -40,31 +40,25 @@ Miután létrehozott egy kiszolgálót, a virtuális magok, a hardver generáci�
 
 A számítási erőforrások szolgálnak, amelyek jelölik az alapul szolgáló hardver logikai CPU, a virtuális magok. Jelenleg két számítási generáció, 4. generációs és a Gen 5 közül választhat. Gen 4 logikai CPU k Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorral. Gen 5 logikai CPU k Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzorral. A gen 4 és a Gen 5 ("X" azt jelzi, hogy elérhető), a következő régiókban érhetők el.
 
-> [!IMPORTANT]
-> 2018. December 12., kezdve új ügyfeleket nem helyezhetik üzembe a számítási generáció 4 kiszolgálók Dél-Brazília, közép-Kanada, kelet-Kanada, Kelet-Ázsia, USA 2. keleti régiója, közép-India, Nyugat-India, Nyugat-japán, USA északi középső Régiója, USA nyugati RÉGIÓJA. Korábban létrehozott számítási generáció 4 kiszolgáló számítási generáció 5-től 2019. február 1. ezekben a régiókban migrálása.
->
-> [!IMPORTANT]
-> 2019. február 15., kezdve új ügyfelek nem tudják üzembe a számítási generáció 4 kiszolgálókat az USA középső RÉGIÓJA, USA keleti RÉGIÓJA, kelet-japán, Észak-Európa, USA déli középső Régiója, Délkelet-Ázsia, Nyugat-Európa. Korábban létrehozott számítási generáció 4 kiszolgáló számítási generáció 5-től 2019. április 1. ezekben a régiókban migrálása.
-
 | **Az Azure-régió** | **A gen 4** | **A gen 5** |
 |:---|:----------:|:--------------------:|
 | USA középső régiója |  | X |
 | USA keleti régiója |  | X |
 | USA 2. keleti régiója |  | X |
 | USA északi középső régiója |  | X |
-| USA déli középső régiója | X | X |
+| USA déli középső régiója |  | X |
 | USA nyugati régiója |  | X |
 | USA nyugati régiója, 2. |  | X |
 | Dél-Brazília |  | X |
 | Közép-Kanada |  | X |
 | Kelet-Kanada |  | X |
-| Észak-Európa | X | X |
+| Észak-Európa |  | X |
 | Nyugat-Európa |  | X |
 | Közép-Franciaország |  | X |
 | Az Egyesült Királyság déli régiója |  | X |
 | Az Egyesült Királyság nyugati régiója |  | X |
 | Kelet-Ázsia |  | X |
-| Délkelet-Ázsia | X | X |
+| Délkelet-Ázsia |  | X |
 | Kelet-Ausztrália |  | X |
 | Ausztrália középső régiója |  | X |
 | Ausztrália 2. középső régiója |  | X |
@@ -72,7 +66,7 @@ A számítási erőforrások szolgálnak, amelyek jelölik az alapul szolgáló 
 | Közép-India |  | X |
 | Dél-India |  | X |
 | Nyugat-India |  | X |
-| Kelet-Japán | X | X |
+| Kelet-Japán |  | X |
 | Nyugat-Japán |  | X |
 | Korea középső régiója |  | X |
 | Korea déli régiója |  | X |

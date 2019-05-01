@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/26/2019
-ms.openlocfilehash: 7746d7256add185be0c67123edf63ea09b6b05a4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 679de1d5accbd0f4f955bf5af95bc8dcc97e3b78
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111832"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574286"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Az Azure SQL nagy kapacitású adatbázisokkal kapcsolatos gyakori kérdések
 
@@ -132,7 +132,7 @@ Nem.
 
 ### <a name="can-i-provision-a-compute-with-extra-ram-for-my-memory-intensive-workload"></a>Is üzembe helyezhető egy extra RAM memóriával rendelkező számítási a memóriaigényes számítási feladathoz
 
-Nem. Több RAM Memóriát kap, a nagyobb számítási méretre frissíteni kell. Gen4 Gen5 hardver képest több RAM Memóriát biztosít. További információkért lásd: [tárolási és számítási méretek rendkívüli](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-preview-for-provisioned-compute-tier).
+Nem. Több RAM Memóriát kap, a nagyobb számítási méretre frissíteni kell. Gen4 Gen5 hardver képest több RAM Memóriát biztosít. További információkért lásd: [tárolási és számítási méretek rendkívüli](sql-database-vcore-resource-limits-single-databases.md).
 
 ### <a name="can-i-provision-multiple-compute-nodes-of-different-sizes"></a>Több számítási csomópontok különböző méretű helyezhetek üzembe
 

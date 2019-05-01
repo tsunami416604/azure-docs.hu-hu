@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: jowargo
-ms.openlocfilehash: c24fcd5f007b641bb594bb07348491f70c03ea41
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d7e38e8eca58c06fc6896887522b320a797fc42e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60623986"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575296"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Exportálása és importálása az Azure Notification Hubs regisztrációk tömeges
 Vannak olyan forgatókönyvek, amelyben létrehozása vagy módosítása egy értesítési központ regisztrációk nagy számú van szükség. Ezek a forgatókönyvek némelyike címke frissítések kötegelt számításokat a következő, vagy a Notification Hubs használata leküldéses meglévő implementációjával áttelepítés.
@@ -34,7 +34,7 @@ Ez a szakasz feltételezi, hogy a következő entitásokat:
 
 - A kiépített értesítési központban.
 - Egy Azure Storage blob-tárolóba.
-- A hivatkozik a [Azure Storage NuGet-csomagot](https://www.nuget.org/packages/windowsazure.storage/) és [Notification Hubs NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.9).
+- A hivatkozik a [Azure Storage NuGet-csomagot](https://www.nuget.org/packages/windowsazure.storage/) és [Notification Hubs NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 ### <a name="create-input-file-and-store-it-in-a-blob"></a>Hozzon létre a bemeneti fájlt, és tárolja a blob
 Egy bemeneti fájlt az XML-ben, egy sor egy szerializált regisztrációk listáját tartalmazza. Az Azure SDK-val, az alábbi példakód bemutatja, hogyan szerializálni a regisztrációkat, és feltölteni őket a blob-tárolóba.

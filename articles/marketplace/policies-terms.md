@@ -3,17 +3,16 @@ title: Az Azure piactér szabályzata és feltételeket |} Az Azure
 description: A Microsoft Azure Marketplace-en házirendek és a feltételek a alkalmazni az összes kiadóra és ajánlatra a Microsoft Azure Marketplace-en.
 services: Azure, Marketplace, AppSource
 author: qianw211
-manager: Patrick.Butler
 ms.service: marketplace
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 9dc4bfa1f2435488f7d6513f9c14e82da33a4d64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c5041e9f7b19508480ff27311ba61d180f4a5a01
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322753"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937635"
 ---
 # <a name="azure-marketplace-policies-and-terms"></a>Azure Marketplace – szabályzatok és feltételek
 
@@ -26,9 +25,12 @@ Ajánlatokat a piactéren meg kell felelnie a házirendek és a feltételeket. F
 
 ## <a name="policies-and-terms"></a>Szabályzatok és feltételek
 
-* [Általános listázása és az ajánlat házirendek](https://docs.microsoft.com/legal/marketplace/general-policies)
+* [Az Azure Marketplace-en hitelesítési házirendek](https://docs.microsoft.com/legal/marketplace/certification-policies)
+
 * [Részvételi szabályzata](https://docs.microsoft.com/legal/marketplace/participation-policy)
+
 * [Minősítési és felülvizsgálati szabályzatok](https://docs.microsoft.com/legal/marketplace/rating-review-policies)
+
 * [Az Azure Marketplace használati feltételei](https://docs.microsoft.com/legal/marketplace/terms)
 
 ## <a name="next-steps"></a>További lépések

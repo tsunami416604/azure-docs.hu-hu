@@ -8,12 +8,12 @@ ms.date: 03/01/2019
 ms.author: normesta
 ms.topic: article
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: d0908e9edce8efb7a378ee04b6076b61cae2d2bf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1eac7ecce88dc817b9bd7bd5330d10b019cc7dd2
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60708679"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939263"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Azure Data Box használatával a helyszíni HDFS adattárba adatok áttelepítése az Azure Storage
 
@@ -70,14 +70,32 @@ Kövesse az alábbi lépéseket az adatok a REST API -k a Blob/objektumtár kere
     ```
     Ha a DNS-néhány egyéb mechanizmust használ, győződjön meg, amely a Data Box végpont feloldható.
     
-3. Állítsa be egy felületváltozóban `azjars` átirányítása a `hadoop-azure` és a `microsoft-windowsazure-storage-sdk` jar-fájlok. Ezeket a fájlokat a Hadoop a telepítési könyvtárban van (ha ezek a fájlok vannak a következő paranccsal ellenőrizheti `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure` ahol `<hadoop_install_dir>` a könyvtár, ha telepítette a Hadoop) használata a teljes elérési útját. 
+4. Állítsa be egy felületváltozóban `azjars` átirányítása a `hadoop-azure` és a `microsoft-windowsazure-storage-sdk` jar-fájlok. Ezeket a fájlokat a Hadoop a telepítési könyvtárban van (ha ezek a fájlok vannak a következő paranccsal ellenőrizheti `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure` ahol `<hadoop_install_dir>` a könyvtár, ha telepítette a Hadoop) használata a teljes elérési útját. 
     
     ```
     # azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar
     # azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar
     ```
 
-4. Adatok másolása a Hadoop a HDFS-ből a Data Box blobtárolóba.
+5. Hozzon létre az adatok másolása használni kívánt tárolót. Ez a parancs részeként kell adnia a célmappába. Ez egy helyőrző célmappát ezen a ponton lehet.
+
+    ```
+    # hadoop fs -libjars $azjars \
+    -D fs.AbstractFileSystem.wasb.Impl=org.apache.hadoop.fs.azure.Wasb \
+    -D fs.azure.account.key.[blob_service_endpoint]=[account_key] \
+    -mkdir -p  wasb://[container_name]@[blob_service_endpoint]/[destination_folder]
+    ```
+
+6. Győződjön meg arról, hogy a tároló és a mappában létrehozott lista-parancs futtatása.
+
+    ```
+    # hadoop fs -libjars $azjars \
+    -D fs.AbstractFileSystem.wasb.Impl=org.apache.hadoop.fs.azure.Wasb \
+    -D fs.azure.account.key.[blob_service_endpoint]=[account_key] \
+    -ls -R  wasb://[container_name]@[blob_service_endpoint]/
+    ```
+
+7. Adatok másolása a Hadoop a HDFS-ből a Data Box Blob storage, a tárolóba, amelyet korábban hozott létre. Nem található a mappát, másolja be, ha a parancs automatikusan létrehozza.
 
     ```
     # hadoop distcp \

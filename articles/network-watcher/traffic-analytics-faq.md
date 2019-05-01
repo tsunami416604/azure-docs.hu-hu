@@ -3,8 +3,8 @@ title: Az Azure traffic analytics – gyakori kérdések |} A Microsoft Docs
 description: Tudnivalók a traffic analytics leggyakrabban feltett kérdésekre választ kaphat.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
-ms.author: jdial
-ms.openlocfilehash: 0a5bbc0bb4b934ae9e60cbd8233b5efbae2a6e6e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: kumud
+ms.openlocfilehash: 88acfebcc6dd8489703014d790f09313ab9302ec
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60236620"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939910"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>A TRAFFIC Analytics – gyakori kérdések
 
@@ -241,7 +241,7 @@ Ha például forgalomért a [tarifacsomagjának](https://azure.microsoft.com/pri
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>Milyen gyakran a Traffic Analytics adatok feldolgozása?
 
-Tekintse meg a [összesítési adatszakasz](https://docs.microsoft.com/en-us/azure/network-watcher/traffic-analytics-schema#data-aggregation) a Traffic Analytics séma és adatok összesítési dokumentum
+Tekintse meg a [összesítési adatszakasz](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation) a Traffic Analytics séma és adatok összesítési dokumentum
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Hogyan nem a Traffic Analytics eldönteni, hogy egy IP-cím rosszindulatú? 
 
@@ -253,14 +253,14 @@ A TRAFFIC Analytics nincs beépített támogatás riasztásokat. Azonban mivel a
 - A Traffic Analytics Log Analytics is használhat a rövid hivatkozás. 
 - Használja a [séma itt dokumentált](traffic-analytics-schema.md) a lekérdezések írása 
 - Kattintson az "Új riasztási szabály" a riasztás létrehozása
-- Tekintse meg [log riasztások dokumentáció](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-log) a riasztás létrehozása
+- Tekintse meg [log riasztások dokumentáció](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) a riasztás létrehozása
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Hogyan navigálhat a földrajzi nézet a billentyűzet használatával?
 
 A földrajzi térképen lap két fő szakaszokat tartalmazza:
     
-- **Banner**: A földrajzi térkép felső szalagja gombok segítségével válassza ki a terjesztési forgalomszűrőinek (például üzembe helyezés, országok érkező forgalmat, és rosszindulatú) biztosít. Amikor kiválaszt egy gombot, a megfelelő szűrő alkalmazása a térképen. Például ha az aktív gombot választja, a térkép kiemeli a központi telepítésben az aktív adatközpontokban.
-- **Térkép**: A szalagcím alatt a térkép szakasz bemutatja, az adatforgalom eloszlása az Azure-adatközpontok és az országok között.
+- **Banner**: A földrajzi térkép felső szalagja gombok segítségével válassza ki a terjesztési forgalomszűrőinek (például üzembe helyezés, országokból/régiókból származó forgalom és a rosszindulatú) biztosít. Amikor kiválaszt egy gombot, a megfelelő szűrő alkalmazása a térképen. Például ha az aktív gombot választja, a térkép kiemeli a központi telepítésben az aktív adatközpontokban.
+- **Térkép**: A szalagcím alatt a térkép szakasz bemutatja, az adatforgalom eloszlása az Azure-adatközpontok és országok/régiók között.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>A szalagcím a billentyűzetnavigációt
     

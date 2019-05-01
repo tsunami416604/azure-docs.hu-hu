@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: 246c5256f56fd0b891d4e7d642c421b1e340fc6d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 491f19abfd87c28ede45e98a24f31fe7e599b18b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799331"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691417"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>A Traffic Analytics séma és adatok összesítése
 
@@ -35,7 +35,7 @@ A TRAFFIC Analytics egy felhőalapú megoldás, amely a felhőbeli hálózatok f
 1. Egy NSG-t "FlowIntervalStartTime_t" és "FlowIntervalEndTime_t" között található összes Folyamatnaplók rögzítve lesznek a tárfiókban lévő perces időközönként blobként előtt a Traffic Analytics által feldolgozott. 
 2. Traffic Analytics feldolgozási időköz alapértelmezett értéke 60 másodperc. Ez azt jelenti, hogy a Traffic Analytics választja ki a BLOB storage összesítés 60 percenként.
 3. Folyamatok, amelyek a forrás IP-címe, cél IP-címe, Célport, NSG neve, NSG-szabályt, folyamat iránya, és Transport layer protocol (TCP vagy UDP) (Megjegyzés: Forrásport összesítés ki van zárva) vannak clubbed egy flow-bA a Traffic Analytics
-4. Ez egyetlen rekord kitüntetett (a részleteket az alábbi szakaszban), és a Log Analytics által a Traffic Analytics betöltött.
+4. Ez a rekord egyetlen leírással ellátott (részleteit az alábbi szakaszban) és a fogadott adatokat a Log Analytics forgalom Analytics.This folyamat is igénybe vehet legfeljebb 1 óra max.
 5. FlowStartTime_t jelzi a első előfordulása ilyen egy összesített folyamat (azonos négy rekordos) a folyamat napló feldolgozása "FlowIntervalStartTime_t" és "FlowIntervalEndTime_t" közötti időköz. 
 6. A TA bármilyen erőforrás a flow, a felhasználói felületen megadott teljes folyamatok alapegységét az NSG-t, de Log Anlaytics felhasználó csak az egyetlen, csökkentett rekordot fog megjelenni. Összes folyamat megtekintéséhez használja a blob_id mező, amely a Storage-ból lehet rá hivatkozni. Teljes száma, hogy rekord megegyeznek az egyes folyamatok, a blob látható.
 
@@ -60,7 +60,7 @@ Az alábbiakban a séma- és azok jelölésére mezői
 | SrcIP_s | Forrás IP-címe | AzurePublic esetén üres lesz, és ExternalPublic folyamatok |
 | DestIP_s | Cél IP-cím | AzurePublic esetén üres lesz, és ExternalPublic folyamatok |
 | VMIP_s | IP-címét a virtuális gép | Használt AzurePublic és ExternalPublic folyamatok |
-| PublicIP_S | Nyilvános IP-címek | Használt AzurePublic és ExternalPublic folyamatok |
+| PublicIP_s | Nyilvános IP-címek | Használt AzurePublic és ExternalPublic folyamatok |
 | DestPort_d | Célport | Amikor a forgalom nem bejövő port | 
 | L4Protocol_s  | * T <br> * U  | Átviteli protokoll. T = TCP <br> U = UDP | 
 | L7Protocol_s  | Protokollnév | Célport származik |
@@ -121,6 +121,7 @@ Az alábbiakban a séma- és azok jelölésére mezői
 1. MaliciousFlow – az IP-címek egyike tartozik az azure virtual network egy nyilvános IP-címet, amely nem az Azure-ban és az elvártnak megfelelően az ASC-hírcsatornák, a Traffic Analytics feldolgozó között a feldolgozás alatt lévő kártevő IP-címe pedig" FlowIntervalStartTime_t"és"FlowIntervalEndTime_t". 
 1. UnknownPrivate – az IP-címek egyike tartozik Azure virtuális hálózaton az IP-cím tartozik, magánhálózati IP-címtartományt, ahogyan az az RFC 1918, és nem sikerült leképezni a Traffic Analytics által birtokolt, hely vagy az Azure Virtual Network ügyfél számára.
 1. Ismeretlen – nem lehet hozzárendelni, vagy az IP-címek a folyamatokban a vásárlói topológia az Azure-ban, valamint a helyszíni (hely).
+1. Egyes mezőnevek z vagy _d lesz hozzáfűzve. Ezek nem jelölésére a forrás és cél.
 
 ### <a name="next-steps"></a>További lépések
 Válaszok a gyakori kérdésekre, lásd: [Traffic analytics – gyakori kérdések](traffic-analytics-faq.md) funkció kapcsolatos részletekért lásd: [Traffic analytics – dokumentáció](traffic-analytics.md)

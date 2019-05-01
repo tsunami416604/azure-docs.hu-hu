@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: bfe4abe4a83a6b22d05942f91f4152d5c0e62be9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 550755b1215dd25045845d78ab3d6248ef840062
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726754"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705948"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Oktatóanyag: Napló hálózati forgalmat, és a egy virtuális gépről az Azure portal használatával
 
@@ -204,7 +204,7 @@ A **mac** érték az előző kimenetben azon hálózati adapter MAC-címét jel�
 | 13.67.143.118     | Cél IP-cím | A cél IP-cím, ahová a forgalom tartott.                                                                                  |
 | 44931        | Forrásport            | A forrásport, ahonnan a forgalom érkezett.                                           |
 | 443         | Célport       | A célport, ahová a forgalom tartott. Mivel a rendszer felé irányuló 443-as porton, a szabály nevű **UserRule_default-allow-rdp**, a log fájl feldolgozása a folyamatot.                                                |
-| T            | Protokoll               | Azt jelöli, hogy a forgalom protokollja TCP (T) vagy UDP (U) volt-e.                                  |
+| T            | Protocol               | Azt jelöli, hogy a forgalom protokollja TCP (T) vagy UDP (U) volt-e.                                  |
 | O            | Direction              | Azt jelöli, hogy a forgalom bejövő (I) vagy kimenő (O) volt-e.                                     |
 | A            | Műveletek                 | Azt jelöli, hogy a forgalom engedélyezve (A) vagy elutasítva (D) lett-e.  
 | C            | A folyamat állapota **csak 2 verzió** | A folyamat állapotát rögzíti. Lehetséges állapotok a következők **B**: Kezdődik, amikor egy folyamat jön létre. Statisztikák nem biztosított. **C**: Egy folyamatban lévő folyamat folytatása. Statisztika 5 perces időközönként állnak rendelkezésre. **E**: Végződik, amikor a folyamat megszakadt. Statisztika állnak rendelkezésre. |

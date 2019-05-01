@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: aef77f121f20d867c8ec5e764d8c9639c961713d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 94b1048befc8716caf5f7f51adb1f95d047d4077
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60446584"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925657"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-bővítmény parancsai használatával a mongodb-hez az Azure Cosmos DB API-ban tárolt adatok kezelése 
 
@@ -162,7 +162,7 @@ A következő táblázat ismerteti a paraméterek belül a parancsot:
 
 |**Mező**|**Típus** |**Leírás** |
 |---------|---------|---------|
-| CustomAction    | string | Az egyéni parancs neve. "CreateDatabase" kell lennie.     |
+| CustomAction    | string | Az egyéni parancs neve. "CreateCollection" kell lennie.     |
 | gyűjtemény      | string | A gyűjtemény neve                                   |
 | offerThroughput | int    | Kiosztott átviteli sebesség beállítása az adatbázison. Ez egy nem kötelező paraméter |
 | shardKey        | string | Szilánkleképezés-kulcs elérési útja horizontálisan skálázott gyűjtemények. Ez egy nem kötelező paraméter |

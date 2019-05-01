@@ -3,8 +3,8 @@ title: Az Azure traffic analytics |} A Microsoft Docs
 description: Ismerje meg, hogyan elemezheti az Azure-beli hálózati biztonsági csoport folyamatnaplóinak traffic Analytics.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
-ms.author: yagup;jdial
-ms.openlocfilehash: 2f283421a851914822f5b0c9d05ed6bc929d28c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: yagup;kumud
+ms.openlocfilehash: a4ae997398c85dc99af8711f1c6ce4e743592d73
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60429860"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939894"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -176,7 +176,7 @@ Válassza ki a következő beállításokat, amint a képen látható:
 
     ![Kijelölés tárfiókba, Log Analytics-munkaterület és a Traffic Analytics engedélyezése](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement-nsg-flowlogs-v2.png)
 
-Ismételje meg az előző lépéseket bármely más NSG-k, amelyhez hozzá szeretné a traffic analytics engedélyezéséhez. A folyamat-naplók továbbítja a munkaterület, ezért győződjön meg arról, hogy a helyi jogszabályoknak és előírásoknak, az Ön országában lehetővé teszik az adattárolás a régióban, ahol a munkaterület létezik.
+Ismételje meg az előző lépéseket bármely más NSG-k, amelyhez hozzá szeretné a traffic analytics engedélyezéséhez. A folyamat-naplók továbbítja a munkaterület, ezért győződjön meg arról, hogy a helyi jogszabályoknak és előírásoknak, ebben az országban vagy régióban teszi lehetővé az adattárolás a régióban, ahol a munkaterület létezik.
 
 Traffic analytics segítségével is konfigurálhatja a [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) az Azure PowerShell PowerShell-parancsmagot. Futtatás `Get-Module -ListAvailable Az` a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
 
@@ -270,13 +270,13 @@ Az insights után a Traffic Analytics teljes körűen konfigurálva van, így é
 
     ![Irányítópult listanézetben láthatók az adatforgalom eloszlása](./media/traffic-analytics/dashboard-showcasing-traffic-distribution.png)
 
-- A földrajzi térképen jeleníti meg a felső szalagon paraméterek kiválasztásának például az adatközpontokban (telepített/nem – üzembe helyezés/Active/Inactive/Traffic Analytics engedélyezve/nincs engedélyezve a Traffic Analytics) és az aktív Benign/rosszindulatú adatforgalmat lebonyolított országok telepítés:
+- A földrajzi térképen jeleníti meg a felső szalagon paraméterek kiválasztásának például az adatközpontokban (telepített/nem – üzembe helyezés/Active/Inactive/Traffic Analytics engedélyezve/nincs engedélyezve a Traffic Analytics), és az aktív Benign/rosszindulatú adatforgalmat lebonyolított országok vagy régiók telepítés:
 
     ![Georedundáns térképnézet, amely azt mutatja be az aktív központi telepítés](./media/traffic-analytics/geo-map-view-showcasing-active-deployment.png)
 
-- A földrajzi térképen jeleníti meg, más országokból és kontinensen kommunikál a sorok színes a kék (jóindulatú forgalom) és vörös (rosszindulatú forgalom), az adatforgalom eloszlása egy adatközpontba:
+- A földrajzi térképen forgalom elosztását mutatja egy adatközpontba országok/régiók és kommunikál a azt a kék (jóindulatú forgalom) és vörös (rosszindulatú forgalom) sorok színes kontinensen:
 
-    ![Amely azt mutatja be az adatforgalom eloszlása országban és kontinensen földrajzi nézet](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
+    ![Az adatforgalom eloszlása országok/régiók és a kontinensen, amely a földrajzi nézet](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
 
     ![Folyamat részletei az adatforgalom eloszlása a naplókeresésben](./media/traffic-analytics/flow-details-for-traffic-distribution-in-log-search.png)
 

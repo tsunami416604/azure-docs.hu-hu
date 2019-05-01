@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/28/2019
+ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: c3e2102b5794fb3770b1c77e241320fa7d2222c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: cc333cc1a46d6d7e72faeeb8a4e59a70cc0f27ed
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60613943"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925531"
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás
 
 Az Azure Instance Metadata szolgáltatás fut, amelyek segítségével kezelheti és konfigurálhatja a virtuális gépek virtuálisgép-példányok információkat biztosít.
-Ide tartoznak a Termékváltozat, a hálózati konfiguráció vagy az események a közelgő karbantartásokról. Milyen típusú információkat érhető el a további információkért lásd: [metaadat-kategóriák](#instance-metadata-data-categories).
+Ide tartoznak a Termékváltozat, a hálózati konfiguráció vagy az események a közelgő karbantartásokról. Milyen típusú információkat érhető el a további információkért lásd: [metaadatok API-k](#metadata-apis).
 
 Az Azure Instance Metadata szolgáltatás REST-végponton keresztül létrehozott IaaS virtuális gépek számára elérhető a [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/).
 A végpont egy jól ismert nem átirányítható IP-címen érhető el (`169.254.169.254`), amelyek elérhetők csak a virtuális gépen.
 
 > [!IMPORTANT]
-> Ez a szolgáltatás **általánosan elérhető** az Azure-régióban.  Rendszeresen megkapja az új információ a virtuálisgép-példányok elérhetővé a frissítéseket. Ezen a lapon tükrözi a legfrissebb [adatkategóriák](#instance-metadata-data-categories) érhető el.
+> Ez a szolgáltatás **általánosan elérhető** az összes Azure-régióban.  Rendszeresen megkapja az új információ a virtuálisgép-példányok elérhetővé a frissítéseket. Ezen a lapon tükrözi a legfrissebb [metaadatok API-k](#metadata-apis) érhető el.
 
 ## <a name="service-availability"></a>Elérhető szolgáltatások
 
@@ -39,12 +39,16 @@ A szolgáltatás általánosan elérhető Azure-régióban érhető el. Lehet, h
 
 Régiók                                        | Rendelkezésre állási?                                 | Támogatott verziók
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Az összes általánosan elérhető globális Azure-régiók](https://azure.microsoft.com/regions/)     | Mindenki számára elérhető   | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
+[Az összes általánosan elérhető globális Azure-régiók](https://azure.microsoft.com/regions/)     | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
-[Azure China](https://www.azure.cn/)                                                           | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
+[Azure China](https://www.azure.cn/)                                                     | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
 [Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
+[Nyilvános USA nyugati középső RÉGIÓJA](https://azure.microsoft.com/regions/)                           | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01
 
 Ez a táblázat frissítésekor a szolgáltatásfrissítések, és vagy új támogatott verziók érhetők el.
+
+> [!NOTE]
+> a 2019-02-01 jelenleg első jelennek meg, és hamarosan elérhető más régiókban. 
 
 Próbálja ki a Instance Metadata szolgáltatás, hozzon létre egy virtuális gépről [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) vagy a [az Azure portal](https://portal.azure.com) az újabb régiókban, és kövesse az alábbi példák.
 
@@ -96,6 +100,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 > Az összes példány metaadatok lekérdezés-és nagybetűk.
 
 ### <a name="data-output"></a>Kimeneti adatok
+
 Alapértelmezés szerint a Instance Metadata szolgáltatás adatokat ad vissza JSON formátumban (`Content-Type: application/json`). Azonban más API-k adja vissza, adatok különböző formátumokban.
 Az alábbi táblázat a más API-kkal támogathatják adatformátumok a célnyelven eszköztáblára.
 
@@ -266,6 +271,7 @@ curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-versio
 Vagy a `Invoke-RestMethod` parancsmagot:
 
 ```powershell
+
 Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2018-10-01 -Method get 
 ```
 
@@ -330,42 +336,61 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 }
 ```
 
-## <a name="instance-metadata-data-categories"></a>Példány-metaadat adatkategóriák
+## <a name="metadata-apis"></a>Metaadatok API-k
 
-Az alábbi adatkategóriákat a Instance Metadata szolgáltatás keresztül érhetők el:
+#### <a name="the-following-apis-are-available-through-the-metadata-endpoint"></a>A következő API-kat a metaadatok végpontján keresztül érhetők el:
+
+Adatok | Leírás | Bevezetett verzió
+-----|-------------|-----------------------
+attested | Lásd: [igazolt adatok](#attested-data) | 2018-10-01
+identity | Felügyelt identitások az Azure-erőforrásokhoz. Lásd: [hozzáférési jogkivonat beszerzése](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
+példány | Lásd: [API-példány](#instance-api) | 2017-04-02
+scheduledevents | Lásd: [ütemezett események](scheduled-events.md) | 2017-08-01
+
+#### <a name="instance-api"></a>Példány API
+##### <a name="the-following-compute-categories-are-available-through-the-instance-api"></a>A következő számítási kategóriák a példány API-n keresztül érhetők el:
+
+> [!NOTE]
+> A metaadatok végpontján keresztül a következő kategóriákban érhetők el példány/számítási
 
 Adatok | Leírás | Bevezetett verzió
 -----|-------------|-----------------------
 azEnvironment | Ahol a virtuális gép fut az Azure-környezet | 2018-10-01
+a customData | Lásd: [egyéni adatok](#custom-data) | 2019-02-01
 location | Azure-régió, a virtuális gép fut. | 2017-04-02
 név | A virtuális gép neve | 2017-04-02
 az ajánlat | A Virtuálisgép-lemezkép információkat kínálnak. Ez az érték csak megtalálható az Azure lemezkép-katalógus-ről üzembe helyezett rendszerképeket. | 2017-04-02
-publisher | A Virtuálisgép-lemezkép közzétevője | 2017-04-02
-termékváltozat | Adott Termékváltozat a Virtuálisgép-lemezkép | 2017-04-02
-version | A Virtuálisgép-lemezkép verziója | 2017-04-02
 osType | Linux vagy Windows | 2017-04-02
-platformUpdateDomain |  [Frissítési tartomány](manage-availability.md) a virtuális gép fut. | 2017-04-02
-platformFaultDomain | [Tartalék tartomány](manage-availability.md) a virtuális gép fut. | 2017-04-02
-vmId | [Egyedi azonosító](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) a virtuális gép | 2017-04-02
-vmSize | [Virtuális gép mérete](sizes.md) | 2017-04-02
-subscriptionId | A virtuális gép Azure-előfizetés | 2017-08-01
-tags | [A címkék](../../azure-resource-manager/resource-group-using-tags.md) a virtuális gép  | 2017-08-01
-resourceGroupName | [Erőforráscsoport](../../azure-resource-manager/resource-group-overview.md) a virtuális gép | 2017-08-01
 placementGroupId | [Elhelyezési csoport](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) a virtuálisgép-méretezési csoport beállítása | 2017-08-01
 csomag | [Terv](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) a virtuális gép az Azure Piactéri lemezkép neve, a termékek és a közzétevő tartalmaz | 2018-04-02
+platformUpdateDomain |  [Frissítési tartomány](manage-availability.md) a virtuális gép fut. | 2017-04-02
+platformFaultDomain | [Tartalék tartomány](manage-availability.md) a virtuális gép fut. | 2017-04-02
 szolgáltató | A virtuális gép szolgáltató | 2018-10-01
 publicKeys | [Nyilvános kulcsok gyűjteményét](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) rendelve a virtuális gép és az elérési út | 2018-04-02
+publisher | A Virtuálisgép-lemezkép közzétevője | 2017-04-02
+resourceGroupName | [Erőforráscsoport](../../azure-resource-manager/resource-group-overview.md) a virtuális gép | 2017-08-01
+termékváltozat | Adott Termékváltozat a Virtuálisgép-lemezkép | 2017-04-02
+subscriptionId | A virtuális gép Azure-előfizetés | 2017-08-01
+tags | [A címkék](../../azure-resource-manager/resource-group-using-tags.md) a virtuális gép  | 2017-08-01
+version | A Virtuálisgép-lemezkép verziója | 2017-04-02
+vmId | [Egyedi azonosító](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) a virtuális gép | 2017-04-02
 vmScaleSetName | [Virtuálisgép-méretezési csoport neve](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) a virtuálisgép-méretezési csoport beállítása | 2017-12-01
+vmSize | [Virtuális gép mérete](sizes.md) | 2017-04-02
 zóna | [Rendelkezésre állási zónában](../../availability-zones/az-overview.md) a virtuális gép | 2017-12-01
+
+##### <a name="the-following-network-categories-are-available-through-the-instance-api"></a>A következő hálózati kategóriák a példány API-n keresztül érhetők el:
+
+> [!NOTE]
+> A metaadatok végpontján keresztül a következő kategóriákban érhetők el példány/hálózati/felületén keresztül
+
+Adatok | Leírás | Bevezetett verzió
+-----|-------------|-----------------------
 ipv4/privateIpAddress | A virtuális gép helyi IPv4-cím | 2017-04-02
 ipv4/publicIpAddress | A virtuális gép nyilvános IPv4-cím | 2017-04-02
 subnet/address | Alhálózati cím a virtuális gép | 2017-04-02
 alhálózat/előtag | Alhálózati előtag, például 24 | 2017-04-02
 ipv6/ipAddress | A virtuális gép helyi IPv6-cím | 2017-04-02
 macAddress | Virtuális gép mac-cím | 2017-04-02
-scheduledevents | Lásd: [ütemezett események](scheduled-events.md) | 2017-08-01
-identity | Felügyelt identitások az Azure-erőforrásokhoz. Lásd: [hozzáférési jogkivonat beszerzése](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
-attested | Lásd: [igazolt adatok](#attested-data) | 2018-10-01
 
 ## <a name="attested-data"></a>Igazolt adatok
 
@@ -373,11 +398,10 @@ Instance Metadata válaszol 169.254.169.254 a http-végponton. Instance Metadata
 
 ### <a name="example-attested-data"></a>Példa igazolt adatok
 
- > [!NOTE]
+> [!NOTE]
 > Minden API-válasz JSON-sztringek. A rendszer a következő példa válaszok pretty nyomtatott az olvashatóság érdekében.
 
  **Kérés**
-
 
  ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
@@ -388,6 +412,7 @@ API-verzió kötelező mező pedig az adatok igazolt támogatott verzió 2018-10
 Egyszeri egy nem kötelező a megadott 10 számjegyű karakterlánc. Egyszeri segítségével nyomon követheti a kérelmet, és ha nincs megadva, a válasz kódolású karakterlánc az aktuális UTC időbélyeget adja vissza.
 
  **Válasz**
+
 > [!NOTE]
 > A válasz egy JSON-karakterlánc. A következő példa választ, Igen nyomtatott az olvashatóság érdekében.
 
@@ -397,7 +422,7 @@ Egyszeri egy nem kötelező a megadott 10 számjegyű karakterlánc. Egyszeri se
 }
 ```
 
- > Az aláírás blob van egy [pkcs7](https://aka.ms/pkcs7) aláírt dokumentum verzióját. A létrehozása és a dokumentum és a tervet a kép lejárati együtt a virtuális gép adatait, például vmId, egyszeri, időbélyegző aláírására szolgáló tanúsítvány tartalmazza. A terv adatainak Azure piaci helyen lemezképek csak fel van töltve. A tanúsítvány a válasz kinyert is, és a rendszer azt ellenőrzi, hogy a válasz érvényes, és az Azure-ból várható.
+> Az aláírás blob van egy [pkcs7](https://aka.ms/pkcs7) aláírt dokumentum verzióját. A létrehozása és a dokumentum és a tervet a kép lejárati együtt a virtuális gép adatait, például vmId, egyszeri, időbélyegző aláírására szolgáló tanúsítvány tartalmazza. A terv adatainak Azure piaci helyen lemezképek csak fel van töltve. A tanúsítvány a válasz kinyert is, és a rendszer azt ellenőrzi, hogy a válasz érvényes, és az Azure-ból várható.
 
 #### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>Windows virtuális gép metaadatainak igazolt beolvasása
 
@@ -430,6 +455,7 @@ Egyszeri egy nem kötelező a megadott 10 számjegyű karakterlánc. Egyszeri se
 ```
 
 > Az aláírás blob van egy [pkcs7](https://aka.ms/pkcs7) aláírt dokumentum verzióját. A létrehozása és a dokumentum és a tervet a kép lejárati együtt a virtuális gép adatait, például vmId, egyszeri, időbélyegző aláírására szolgáló tanúsítvány tartalmazza. A terv adatainak Azure piaci helyen lemezképek csak fel van töltve. A tanúsítvány a válasz kinyert is, és a rendszer azt ellenőrzi, hogy a válasz érvényes, és az Azure-ból várható.
+
 
 ## <a name="example-scenarios-for-usage"></a>Példa használati forgatókönyvek  
 
@@ -505,18 +531,18 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 Az Azure rendelkezik a különböző szuverén felhők például [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Néha szüksége a Azure-környezet néhány futásidejű döntéseket hozhat. A következő minta bemutatja, hogyan érheti el ezt a viselkedést.
 
 **Kérés**
-``` bash
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 **Válasz**
-```
+```bash
 AZUREPUBLICCLOUD
 ```
 
 ### <a name="getting-the-tags-for-the-vm"></a>A címkék beolvasása a virtuális gép
 
-Előfordulhat, hogy hozzárendelt címkék logikailag egy besorolást rendezze őket az Azure virtuális gépeken. Az alábbi kérelem használatával lehet beolvasni a virtuális géphez hozzárendelt címkék.
+A címkék előfordulhat, hogy alkalmazása az Azure virtuális géphez logikailag szervezés érdekében egy besorolást. Az alábbi kérelem használatával lehet beolvasni a virtuális géphez hozzárendelt címkék.
 
 **Kérés**
 
@@ -535,12 +561,12 @@ Department:IT;Environment:Test;Role:WebRole
 
 ### <a name="validating-that-the-vm-is-running-in-azure"></a>Annak ellenőrzése, hogy a virtuális gép fut-e az Azure-ban
 
- Marketplace-en szállítók szeretne győződjön meg arról, hogy a szoftvert csak az Azure-ban futtatni. Ha valaki másolja a VHD-t a helyszíni, majd kell rendelkezniük, amely észlelése. Instance Metadata szolgáltatás-be irányuló hívás aláírt adatokat, amely garantálja a választ csak az Azure piactér szállítók juthat.
+Marketplace-en szállítók szeretne győződjön meg arról, hogy a szoftvert csak az Azure-ban futtatni. Ha valaki másolja a VHD-t a helyszíni, akkor azok kell azt észleli, hogy lehetővé teszi. Instance Metadata szolgáltatás-be irányuló hívás aláírt adatokat, amely garantálja a választ csak az Azure piactér szállítók juthat.
 
- > [!NOTE]
+> [!NOTE]
 > Jq telepíteni kell.
 
- **Kérés**
+**Kérés**
 
  ```bash
   # Get the signature
@@ -581,7 +607,7 @@ Verification successful
 Adatok | Leírás
 -----|------------
 egyszeri | Felhasználók megadott karakterlánc nem kötelező, a kérelem. Ha nincs egyszeri lett megadva a kérelemben szereplő, a rendszer visszaadja-e az aktuális UTC-időbélyeg
-csomag | [Csomag](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) egy virtuális Géphez, az Azure Marketplace-lemezkép van, neve, a termékek és a közzétevő tartalmazza.
+csomag | [Csomag](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) egy virtuális Géphez, az Azure Marketplace-lemezkép van, neve, termék és közzétevő tartalmaz.
 timestamp/createdOn | Az időbélyeg, amely az első aláírt dokumentum létrehozása
 timestamp/expiresOn | Az időbélyeg az aláírt dokumentum jár le
 vmId |  [Egyedi azonosító](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) a virtuális gép
@@ -613,6 +639,7 @@ openssl x509 -noout -issuer -in intermediate.pem
 # Verify the certificate chain
 openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
 ```
+
 ### <a name="failover-clustering-in-windows-server"></a>A Feladatátvételi fürtszolgáltatás a Windows Server
 
 Az egyes forgatókönyvek esetén Instance Metadata szolgáltatás feladatátvételi fürtszolgáltatás, a lekérdezés esetén szükséges útvonal hozzáadása az útválasztási táblázathoz.
@@ -656,6 +683,27 @@ Network Destination        Netmask          Gateway       Interface  Metric
 
 ```bat
 route add 169.254.169.254/32 10.0.1.10 metric 1 -p
+```
+
+### <a name="custom-data"></a>Egyéni adatok
+Instance Metadata szolgáltatás lehetővé teszi a virtuális gép rendelkezik hozzáféréssel a saját egyéni adataihoz. A bináris adatok 64KB-nál kisebbnek kell lennie, és a virtuális gép base64-kódolású formában megadott. További információ a virtuális gép létrehozása egyéni adatokkal: [virtuális gép üzembe helyezése a CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+
+#### <a name="retrieving-custom-data-in-virtual-machine"></a>A virtuális gép egyéni adatok beolvasása
+Instance Metadata szolgáltatás egyéni adatokat biztosít a virtuális géphez a base64-kódolású képernyőn. Az alábbi példa a base64-kódolású karakterlánc dekódolása.
+
+> [!NOTE]
+> Az ebben a példában szereplő egyéni adatoknak ASCII-karakterláncra, amely beolvassa a "Saját szupertitkos data." kerül értelmezésre.
+
+**Kérés**
+
+```bash
+curl -H "Metadata:true" "http://169.254.169.254/metadata/instance/compute/customData?api-version=2019-02-01&&format=text" | base64 --decode
+```
+
+**Válasz**
+
+```text
+My super secret data.
 ```
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Példák a virtuális gép több különböző nyelvet használó metadata szolgáltatás hívása

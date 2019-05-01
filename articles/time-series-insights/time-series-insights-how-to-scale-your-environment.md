@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.custom: seodec18
-ms.openlocfilehash: f6c2c8c49f34c707c7b0fb4d525337fbfa169a3e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: fcdfc78a62d901bdaf50c18e9286e6f2d30c5b13
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692425"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714127"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>A Time Series Insights-környezet méretezése
 
@@ -60,5 +60,5 @@ Kapacitások költségráfordításokkal egyenes arányban, méretezhető, így 
 4. Válassza ki **mentése** a környezet méretezése. A folyamatjelző jelenik meg, amíg a módosítás véglegesítve lesz, rövid ideig. 
 
 ## <a name="next-steps"></a>További lépések
-> [!div class="nextstepaction"]
-> [Győződjön meg arról, hogy az új kapacitást elegendő szabályozás elkerülése érdekében](time-series-insights-diagnose-and-solve-problems.md).
+
+- Győződjön meg arról, hogy az új kapacitást [elegendő szabályozás elkerülése érdekében](time-series-insights-diagnose-and-solve-problems.md).

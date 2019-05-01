@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Data Box Disk üzembe helyezése | Microsoft Docs
+title: Csomagolja ki, csatlakozni, az Azure Data Box-lemezek feloldásához oktatóanyag |} A Microsoft Docs
 description: Az oktatóanyag az Azure Data Box Disk üzembe helyezését mutatja be
 services: databox
 author: alkohli
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: ee1150dd146be1f022134ffe6df3ca2fbf84f867
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 34d62df989da80c84bad92a90fc2253c416a4924
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123263"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939651"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Oktatóanyag: Csomagolja ki, csatlakozzon, és az Azure Data Box-lemezek zárolásának feloldása
 
@@ -208,12 +208,12 @@ A meghajtók csatlakoztatásához és a zárolás feloldásához kövesse az al�
 
     Írja be a következő parancsot.
  
-    `sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’ /Volumes:’<list of volumes>’`         
+    `sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’          
 
     Az alábbiakban látható a mintakimenet. 
  
     ```
-    [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Passkey:’qwerqwerqwer’ /Volumes:’/dev/sdbl’ 
+    [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Passkey:’qwerqwerqwer’  
     
     START: Mon Aug 13 14:25:49 2018 
     Volumes: /dev/sdbl 

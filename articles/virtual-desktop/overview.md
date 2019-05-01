@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 379b8ee4a78cd8b487407e92ae32a7525f428bf0
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 0d606a489a069c4265088d8e07301693dc2f1c83
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63763855"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694277"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Mi a Windows virtuális asztal előzetes verziója? 
 
@@ -63,8 +63,8 @@ A következő OSE-kre támogatása, ezért ügyeljen arra, hogy tervezzük a [a 
 
 |Operációs rendszer|Licenc szükséges|
 |---|---|
-|Windows 10 Enterprise több munkamenetet vagy a Windows 10 Enterprise|A Microsoft E3 csomag, E5, A3, a5 méretű, üzleti<br>Windows E3, E5, A3, a5 csomag|
-|Windows 7 Enterprise |A Microsoft E3 csomag, E5, A3, a5 méretű, üzleti<br>Windows E3, E5, A3, a5 csomag|
+|Windows 10 Enterprise több munkamenetet vagy a Windows 10 Enterprise|A Microsoft 365 E3, E5, A3, a5 méretű, F1, üzleti<br>Windows E3, E5, A3, a5 csomag|
+|Windows 7 Enterprise |A Microsoft 365 E3, E5, A3, a5 méretű, F1, üzleti<br>Windows E3, E5, A3, a5 csomag|
 |Windows Server 2012 R2, 2016, 2019|A távoli asztali szolgáltatások ügyfél-hozzáférési licenc (CAL) frissítési garanciával rendelkező|
 
 Az infrastruktúra Windows virtuális asztal támogatásához a következőkre van szüksége:

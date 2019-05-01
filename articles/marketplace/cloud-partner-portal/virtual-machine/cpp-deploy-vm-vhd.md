@@ -1,25 +1,18 @@
 ---
-title: Virtuális gép üzembe helyezése a VHD-ből az Azure Marketplace-en |} A Microsoft Docs
+title: Virtuális gép üzembe helyezése a VHD-ből az Azure Marketplace-en
 description: Azt ismerteti, hogyan kell regisztrálni a virtuális gép Azure által üzembe helyezett virtuális merevlemezről.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: f37ab1b9eef5be4aff6e5f8aecebc3688592f040
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: a393620f28d45ec494c4e899f01e7e9a92b3ceba
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046682"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938285"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Virtuális gép üzembe helyezése a VHD-ből
 
@@ -71,7 +64,7 @@ A virtuális gép üzembe helyezését követően készen áll [igazolja, a Virt
    | Rendszergazdai jelszó              | Új virtuális gép rendszergazdai fiók jelszavát                                  |
    | Operációs rendszer típusa                     | Virtuális gép operációs rendszer: `Windows` \| `Linux`                                    |
    | Előfizetés azonosítója             | A kiválasztott előfizetés azonosítója                                      |
-   | Földrajzi egység                    | Az üzembe helyezés földrajzi helye                                        |
+   | Location egység                    | Az üzembe helyezés földrajzi helye                                        |
    | Virtuális gép mérete                     | [Az Azure Virtuálisgép-méret](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), például `Standard_A2` |
    | Nyilvános IP-cím neve      | A nyilvános IP-cím neve                                               |
    | Virtuális gép neve                     | Az új virtuális gép neve                                                           |

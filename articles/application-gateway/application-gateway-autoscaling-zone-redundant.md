@@ -1,37 +1,104 @@
 ---
-title: Automatikus skálázás és zónaredundáns Application Gateway az Azure-ban (nyilvános előzetes verzió)
-description: Ez a cikk bemutatja az Azure-alkalmazás v2 szintű Termékváltozatot, automatikus skálázást és zónaredundáns szolgáltatást tartalmaz.
+title: Automatikus skálázás és zónaredundáns Application Gateway az Azure-ban
+description: Ez a cikk bemutatja, az Azure Application Standard_v2 és WAF_v2 SKU, az automatikus skálázás és zónaredundáns szolgáltatást tartalmaz.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 3/6/2019
+ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: 95b14a0028134e522206f3595bc3b9ebf9aaf396
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 86693e829ab08c3cb7befc6f0047472e8faa61fa
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128488"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947227"
 ---
-# <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatikus skálázás és zónaredundáns az Application Gateway (nyilvános előzetes verzió)
+# <a name="autoscaling-and-zone-redundant-application-gateway"></a>Automatikus skálázás és zónaredundáns az Application Gateway 
 
-Az Application Gateway és a webalkalmazási tűzfal (WAF) egy új v2 szintű Termékváltozatot kínál a nagyobb teljesítmény és a kritikus fontosságú új funkciók, például a statikus virtuális IP-címek támogatása, az automatikus skálázás és a zone redudancy támogatásának hozzáadása a nyilvános előzetes verziója mostantól elérhetők. Az általánosan elérhető Termékváltozat a meglévő szolgáltatás néhány kivételtől eltekintve ismert korlátozások szakaszban felsorolt támogatott az új v2 szintű Termékváltozatot, az továbbra is. Új v2 SKU-ja a következő fejlesztéseket tartalmazza:
+Az Application Gateway és a webalkalmazási tűzfal (WAF) egy Standard_v2 és WAF_v2 Termékváltozatot kínál a nagyobb teljesítmény és a kritikus fontosságú új funkciók, például a statikus virtuális IP-címek támogatása, az automatikus skálázás és a zone redudancy támogatásának hozzáadása alatt is elérhetők. A Standard és a WAF Termékváltozat meglévő szolgáltatás néhány kivételtől eltekintve összehasonlító szakaszban felsorolt támogatott az új v2 szintű Termékváltozatot, az továbbra is. 
 
-- **Az automatikus skálázás**: Az automatikus skálázás Termékváltozat az Application Gateway vagy WAF üzembe helyezésekre alapuló forgalmi terhelés minták módosítása vagy is méretezhetők. Az automatikus skálázással elkerülhető, hogy már a kiépítés során meg kelljen határozni az üzemelő példány méretét vagy a példányszámot. Ez a Termékváltozat valódi rugalmasságot nyújt. Az új termékváltozatban az Application Gateway rögzített kapacitás (az automatikus skálázás le van tiltva) és az automatikus skálázás engedélyezése mellett módban is működhet. Rögzített kapacitás mód hasznos forgatókönyvek egységes és kiszámítható számítási feladatokkal. Az automatikus skálázási mód akkor előnyös, amelyeket a nagy mennyiségű eltérések az alkalmazás forgalmának az alkalmazásokban.
+Az új v2 szintű Termékváltozatot a következő fejlesztéseket tartalmazza:
 
-- **A redundancia zóna**: Egy Application Gateway vagy WAF üzembe helyezés több rendelkezésre állási zónában, minden zónában egy Traffic Manager üzembe helyezése és léptetéses külön Application Gateway-példány eltávolítása is kiterjedhetnek. Egy zóna vagy több zónában, az Application Gateway-példány telepítve vannak, így biztosítása hiba zónarugalmasságot választhat. A háttérkészlet alkalmazások hasonló módon – szét lehetnek osztva a rendelkezésre állási zónák.
-- **Nagyobb teljesítmény**: Az automatikus skálázás Termékváltozatot kínál legfeljebb 5 X nagyobb SSL kiszervezheti a teljesítmény az általánosan elérhető Termékváltozat képest.
-- **Központi telepítési és frissítési gyorsabb** az automatikus skálázás Termékváltozat biztosít, mint a korábban megszokott Termékváltozat általánosan elérhető üzembe helyezési és frissítési gyorsabb.
-- **Statikus virtuális IP-CÍMEK**: Az application gateway virtuális IP-CÍMEK mostantól támogatja a statikus VIP típusa kizárólag. Ez biztosítja, hogy az application gateway társított virtuális IP-CÍMEK újraindítás után is nem változik.
-
-> [!IMPORTANT]
-> Az Application Gateway automatikus skálázású és zónaredundáns termékváltozata jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+- **Az automatikus skálázás**: Az automatikus skálázás Termékváltozat az Application Gateway vagy WAF üzembe helyezésekre alapuló forgalmi terhelés minták módosítása vagy is méretezhetők. Az automatikus skálázással elkerülhető, hogy már a kiépítés során meg kelljen határozni az üzemelő példány méretét vagy a példányszámot. Ez a Termékváltozat valódi rugalmasságot nyújt. A Standard_v2 és WAF_v2 Termékváltozat az Application Gateway rögzített kapacitás (az automatikus skálázás le van tiltva) és az automatikus skálázás engedélyezése mellett módban is működhet. Rögzített kapacitás mód hasznos forgatókönyvek egységes és kiszámítható számítási feladatokkal. Az automatikus skálázási mód akkor előnyös az alkalmazások, amelyeket az alkalmazás forgalmának eltérés.
+- **A redundancia zóna**: Egy Application Gateway vagy a waf-védelem is kiterjedhetnek több rendelkezésre állási zónában, eltávolítás, minden zónában egy Traffic Manager külön Application Gateway-példány üzembe kell. Egy zóna vagy több zónában, az Application Gateway-példány telepítve vannak, így biztosítása hiba zónarugalmasságot választhat. A háttérkészlet alkalmazások hasonló módon – szét lehetnek osztva a rendelkezésre állási zónák.
+- **Statikus virtuális IP-CÍMEK**: Application gateway v2 Termékváltozat támogatja a statikus virtuális IP-cím kizárólag írja be. Ez biztosítja, hogy az application gateway társított virtuális IP-CÍMEK a telepítéshez, akár az újraindítás után élettartama nem változik.
+- **Fejléc Újraírási**: Az Application Gateway lehetővé teszi hozzáadása, eltávolítása vagy frissítse a HTTP-kérelmek és válaszfejlécek v2 szintű Termékváltozatot. További információkért lásd: [Újraírási HTTP-fejlécek az Application Gateway segítségével](rewrite-http-headers.md)
+- **Key Vault-integráció (előzetes verzió)**: Application Gateway v2 HTTPS-kompatibilis figyelői csatolt kiszolgálói tanúsítványokat a Key Vault integration (a nyilvános előzetes verzió) támogatja. További információkért lásd: [Key Vault tanúsítványokkal rendelkező SSL-lezárást](key-vault-certs.md).
+- **Az Azure Kubernetes Service Bejövőforgalom-vezérlőt (előzetes verzió)**: Az Application Gateway v2 Bejövőforgalom-vezérlőjéhez lehetővé teszi, hogy az Azure Application Gateway használható a bejövő forgalom számára az Azure Kubernetes Service (AKS) néven az AKS-fürtöt. További információkért lásd: a [dokumentációs oldalon](https://azure.github.io/application-gateway-kubernetes-ingress/).
+- **Nagyobb teljesítmény**: A v2 Termékváltozatot kínál legfeljebb 5 X nagyobb SSL kiszervezheti a teljesítmény, mint a Standard és a WAF Termékváltozat a korábban megszokott.
+- **Központi telepítési és frissítési gyorsabb** a v2 szintű Termékváltozatot biztosít, mint a korábban megszokott Standard/WAF Termékváltozatban gyorsabb üzembe helyezési és frissítési idő. Ez a WAF konfigurációmódosításokat is tartalmaz.
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
+## <a name="supported-regions"></a>Támogatott régiók
+
+A Standard_v2 és WAF_v2 Termékváltozat az alábbi régiókban érhető el: USA északi középső RÉGIÓJA, USA déli középső RÉGIÓJA, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA középső RÉGIÓJA, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, Franciaország, közép-India, Egyesült Királyság nyugati, kelet-japán, Nyugat-japán. További régiók támogatása a későbbi.
+
+## <a name="pricing"></a>Díjszabás
+
+A v2 termékváltozatú a díjszabási modell határozzák meg a felhasználás, és már nincs csatolva a példányok számát és méretét. A v2 a Termékváltozat díjszabása két összetevőből áll:
+
+- **Rögzített ár** – Ez az óránként (vagy a megkezdett órák) Standard_v2 vagy WAF_v2 átjáró kiépítése árát.
+- **A kapacitás Egységár** – Ez a fogyasztás alapú költségeit, amelyet az állandó költség mellett díjat számítunk fel. Kapacitásegység díj is számított óránkénti vagy részleges óránként. Kapacitásegység három dimenziókat, – a számítási egység, állandó kapcsolat és átviteli sebességet. A számítási egység a processzor kapacitásának felhasznált mérték. Számítási egység befolyásoló tényezők TLS kapcsolatok/mp-ben, az URL Rewrite számítások és WAF szabály feldolgozása. Állandó kapcsolatot létrehozott TCP-kapcsolatot az application gateway mértékegysége szerepel egy adott elszámolási időszakban. Átviteli sebesség átlagos megabit/mp dolgozza fel a rendszer az egy adott elszámolási időszakban.
+
+Egy kapacitás elszámolási egység legfeljebb áll: 1 számítási egység, vagy állandó 2500-kapcsolatokat, vagy 2.22 MB/s átviteli sebesség.
+
+Számítási egység útmutatást:
+
+- **Standard_v2** – egyes számítási egység körülbelül 50 kapcsolatok másodpercenként az RSA 2048 bites kulcs TLS-tanúsítvány alkalmas állapotban.
+- **WAF_v2** – egyes számítási egység a következőkre képes körülbelül 10 egyidejű kérelmek / másodperc, a forgalom 70 %-os 70 – 30 % vegyesen kérelmek kisebb, mint 2 KB GET/közzététele és a fennmaradó magasabb. WAF teljesítményét nem befolyásolja válasz mérete jelenleg.
+
 > [!NOTE]
-> Az automatikus skálázás és zónaredundáns az application gateway mostantól támogatja-e Termékváltozat [alapértelmezett állapotadat-mintavétel](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe) automatikusan a háttér-készletben található összes erőforrás állapotának figyelésére, és jelölje ki a háttérrendszer a tagokkal szolgálnak nem megfelelő állapotú. Az alapértelmezett állapot mintavételi még a összes-e, amelyhez nem állított be egyéni mintavétel konfigurációra háttérrendszerek automatikusan megtörténik. További tudnivalókért lásd: [állapotadat-mintavételek az application gatewayben](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview).
+> Minden példány jelenleg képes támogatni az körülbelül 10 kapacitásegységek.
+> Képes kezelni a számítási egység kérések száma attól függ, például a TLS-tanúsítvány kulcsának mérete, a kulcscsere-algoritmus, a fejléc újraírások, és a WAF bejövő kérelem méret esetén különféle feltételek. Azt javasoljuk, hogy a számítási egység kérelmek arányának meghatározása az alkalmazás az egységteszteket végezhet. Kapacitás és a számítási egység lesz elérhető metrikaként számlázási indítása előtt.
+
+**Az USA keleti régiójában díjszabás**:
+
+|              SKU-név                             | Rögzített díj (USD/óra)  | A kapacitás Egységár ($/ CU-óra)   |
+| ------------------------------------------------- | ------------------- | ------------------------------- |
+| Standard_v2                                       |    0.20             | 0.0080                          |
+| WAF_v2                                            |    0.36             | 0.0144                          |
+
+A [díjszabását ismertető lapon](https://azure.microsoft.com/en-us/pricing/details/application-gateway/) 2019. május 14. a regionális árakról megfelelően frissülnek. A számlázás a 2019. június 1. történő futásra van ütemezve.
+
+**1. példa**
+
+Egy Application Gateway Standard_v2 nélkül szeretné kiosztani az automatikus skálázás manuális skálázásához módban a rögzített öt példányok kapacitását.
+
+Rögzített ár = 744(hours) * 0,20 $ $148.8 = <br>
+Kapacitásegységek 744 (óra) 10 kapacitásegységet példányonként = * öt példányban * kapacitás egység óránként 0.008 $ $297.6 =
+
+Teljes ár = $148.8 + 297.6 $ $446.4 =
+
+**2. példa**
+
+Egy Application Gateway standard_v2 ki van építve, egy hónapig, és ebben az időszakban 25 új SSL kapcsolatok másodpercenkénti átlagos 8.88 MB/s adatátviteli kap. Ha kapcsolatok rövid életűek, az ára lesz:
+
+Rögzített ár = 744(hours) * 0,20 $ $148.8 =
+
+Kapacitás egységár = 744(hours) * Max (25/50 számítási egység a kapcsolatok másodpercenként, 8.88/2.22 kapacitásegységet átviteli sebességet) * $0.008 = 744 * 4 * 0.008 $23.81 =
+
+Teljes ár $148 =. 23.81 8 + = $172.61
+
+**3. példa**
+
+Egy Application Gateway WAF_v2 ki van építve, egy hónapig, és ebben az időszakban 25 új SSL kapcsolatok másodpercenkénti átlagos 8.88 MB/s adatátviteli kap, és másodpercenként 80 kérelem does. Feltéve, hogy kapcsolatok rövid életűek, és, hogy a számítási egység számítási az alkalmazás támogatja a 10 RPS számítási egység, az ár lenne:
+
+Rögzített ár = 744(hours) * 0.36 $ $267.84 =
+
+Kapacitás egységár = 744(hours) * Max (számítási egység Max(25/50 for connections/sec, 80/10 WAF RPS), átviteli sebességet 8.88/2.22 kapacitásegységgel) * $0.0144 = 744 * 8 * 0.0144 $85.71 =
+
+Teljes ár = $267.84 + 85.71 $ $353.55 =
+
+A [díjszabását ismertető lapon](https://azure.microsoft.com/en-us/pricing/details/application-gateway/) 2019. május 14. a regionális árakról megfelelően frissülnek. A számlázás a 2019. június 1. történő futásra van ütemezve.
+
+## <a name="scaling-application-gateway-and-waf-v2"></a>Az Application Gateway és a WAF v2 méretezése
+
+Az Application Gateway és a WAF konfigurálható a méretezési csoport két módban:
+
+- **Az automatikus skálázás** – az automatikus skálázás engedélyezése mellett az Application Gateway és a WAF v2 termékváltozatok fog kisebbre vagy nagyobbra méretezhetők a alkalmazás forgalom követelményeknek megfelelően. Ebben a módban az alkalmazás nagyobb rugalmasságot biztosít, és szükségtelenné teszi a dolgát, az application gateway méretét vagy példányszámot. Ebben a módban is lehetővé teszi csökkenthetők a költségek átjárók futtatását a maximális kiosztott kapacitás várható maximális forgalmi terhelés nem igényli. Ügyfeleknek meg kell adnia egy minimális és igény szerint maximális példányszámot. Kapacitásérték-minimumot biztosítja, hogy az Application Gateway és a WAF v2-es nem tartoznak a megadott még érhető el a forgalmat a példányok minimális száma alatt. Akkor kell fizetnie a kapacitásérték-minimumot még akkor is, az adatforgalom hiányát. Adja meg a példányok maximális száma, amely biztosítja, hogy az Application Gateway nem méretezhető meghaladja a megadott számú példányok emellett, ha szükséges. Továbbra is az átjáró által kiszolgált forgalom mennyiségének felszámítjuk. A példányok számát 125 0 terjedhet. Alapértelmezett érték a példányok maximális száma 20, ha nincs megadva.
+- **Manuális** – másik lehetőségként kiválaszthatja a manuális módban, ahol az átjáró fogja-e nem automatikus skálázási. Ebben a módban további adatforgalom milyen Application Gateway és a WAF rendszer képes legyen kezelni, mint ha azt eredményezheti forgalom adatvesztés. A manuális mód példányszám megadása kötelező. Példányok száma 1 eltérőek lehetnek a 125-példányokhoz.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Termékváltozat v1 és v2 szintű Termékváltozatot közötti funkcióinak összehasonlítása
 
@@ -41,7 +108,10 @@ Az alábbi táblázat az egyes Termékváltozat szolgáltatásait hasonlítja ö
 | ------------------------------------------------- | -------- | -------- |
 | Automatikus skálázás                                       |          | &#x2713; |
 | A Zone redudancy                                   |          | &#x2713; |
-| &nbsp;Statikus virtuális IP-cím&nbsp;&nbsp;                      |          | &#x2713; |
+| Statikus virtuális IP-cím                                        |          | &#x2713; |
+| Az Azure Kubernetes Service (AKS) Bejövőforgalom-vezérlőt |          | &#x2713; |
+| Azure Key Vault-integráció                       |          | &#x2713; |
+| HTTP (S) fejlécek újraírása                           |          | &#x2713; |
 | URL-alapú útválasztás                                 | &#x2713; | &#x2713; |
 | Több hely üzemeltetése                             | &#x2713; | &#x2713; |
 | Forgalom átirányítása                               | &#x2713; | &#x2713; |
@@ -50,35 +120,30 @@ Az alábbi táblázat az egyes Termékváltozat szolgáltatásait hasonlítja ö
 | Végpontok közötti SSL-titkosítás                         | &#x2713; | &#x2713; |
 | Munkamenet-affinitás                                  | &#x2713; | &#x2713; |
 | Egyéni hibalapok                                | &#x2713; | &#x2713; |
-| HTTP (S) fejlécek újraírása                           |          | &#x2713; |
 | WebSocket támogatás                                 | &#x2713; | &#x2713; |
 | HTTP/2-támogatás                                    | &#x2713; | &#x2713; |
 | Kapcsolatkiürítés                               | &#x2713; | &#x2713; |
-| Az Azure Kubernetes Service (AKS) Bejövőforgalom-vezérlőt |          | &#x2713; |
 
-## <a name="supported-regions"></a>Támogatott régiók
+> [!NOTE]
+> Az automatikus skálázás és zónaredundáns az application gateway mostantól támogatja-e Termékváltozat [alapértelmezett állapotadat-mintavételek](application-gateway-probe-overview.md#default-health-probe) automatikusan a háttér-készletben található összes erőforrás állapotának figyelésére, és jelölje ki a háttérrendszer a tagokkal szolgálnak nem megfelelő állapotú. Az alapértelmezett állapot mintavételi még a összes-e, amelyhez nem állított be egyéni mintavétel konfigurációra háttérrendszerek automatikusan megtörténik. További tudnivalókért lásd: [állapotadat-mintavételek az application gatewayben](application-gateway-probe-overview.md).
 
-Az automatikus skálázás Termékváltozat érhető el ezekben a régiókban: USA északi középső RÉGIÓJA, USA déli középső RÉGIÓJA, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA középső RÉGIÓJA, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, Franciaország, közép-India, Egyesült Királyság nyugati, kelet-japán, Nyugat-japán.
+## <a name="differences-with-v1-sku"></a>Különbségek a v1 Termékváltozatot
 
-## <a name="pricing"></a>Díjszabás
-
-Az előzetes időszakban nem jár költségekkel. Fizetnie kell application Gateway átjáróhoz is a Key Vault, a virtuális gépek, például naplóátvitelen kívüli egyéb erőforrásokra, és így tovább.
-
-## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
-
-|Probléma|Részletek|
+|Különbség|Részletek|
 |--|--|
 |Hitelesítési tanúsítvány|Nem támogatott.<br>További információkért lásd: [az Application Gateway teljes körű SSL áttekintése](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
 |Standard_v2 és a Standard Application Gateway keverve ugyanazon az alhálózaton|Nem támogatott|
 |Felhasználó által megadott útvonal (UDR) az Application Gateway-alhálózat|Nem támogatott|
 |NSG bejövő port-tartomány| -65200 – 65535 Standard_v2 Termékváltozat<br>-65503 65534 Standard Termékváltozat esetében.<br>További információkért lásd: a [– gyakori kérdések](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Teljesítmény az Azure-beli diagnosztikai naplók|Nem támogatott.<br>Az Azure-metrikák kell használni.|
-|Számlázás|Nincs, jelenleg nincs számlázási.|
+|Számlázás|A számlázás a tervek szerint indítsa el a 2019. június 1.|
 |FIPS-módban|Ezek jelenleg nem támogatottak.|
 |ILB mód|Ez jelenleg nem támogatott. Nyilvános és ILB mód együtt használható.|
-|Netwatcher integráció|A nyilvános előzetes verzióban nem támogatott.|
+|Netwatcher integráció|Nem támogatott.|
 
 ## <a name="next-steps"></a>További lépések
+
+- [Rövid útmutató: A közvetlen webes forgalom az Azure Application Gatewayjel – Azure portal](quick-create-portal.md)
 - [Az automatikus skálázás, a zóna redundáns az application gateway létrehozása foglalt virtuális IP-címmel rendelkező Azure PowerShell-lel](tutorial-autoscale-ps.md)
 - Tudjon meg többet [Application Gateway](overview.md).
 - Tudjon meg többet [Azure tűzfal](../firewall/overview.md).

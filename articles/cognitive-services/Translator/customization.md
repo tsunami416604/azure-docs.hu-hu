@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: b9a182da0ce03bf3964b6da30f1ed68de38c8141
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 71856865eb7a0445cdcf39def9c0fc89c1f8dcec
+ms.sourcegitcommit: 807c318f5c034f8256f91c241e9d6f8f4d7de90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61468363"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64951427"
 ---
 # <a name="customize-your-text-translations"></a>A szöveg fordítások testreszabása
 
@@ -43,7 +43,7 @@ További információt a rendelkezésre álló adatok alapján testreszabási k�
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
 
 > [!NOTE]
-> A régebbi Microsoft Translator Hub a 2019. április 30-án megszűnik. [Fontos állapotTelepítési információit és a dátumok](https://www.microsoft.com/translator/business/hub/).  
+> A Microsoft Translator Hub jén kivonjuk a forgalomból 2019. május 17. örökölt. [Fontos állapotTelepítési információit és a dátumok](https://www.microsoft.com/translator/business/hub/).  
 
 ## <a name="custom-translator-versus-hub"></a>Eseményközpont és egyéni fordító
 
@@ -60,8 +60,6 @@ További információt a rendelkezésre álló adatok alapján testreszabási k�
 
 > [!NOTE]
 > 2018. február 1. AddTranslation() és AddTranslationArray() nem lesznek elérhetők a Translator Text API V2.0 való használatra. Ezek a metódusok sikertelen lesz, és semmi sem lesz írva. A Translator Text API 3.0-s verzió nem támogatja ezeket a metódusokat.
-> 
-> Hasonló funkciókat a Translator Hub API-ban érhető el. Lásd: [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger).
 
 ## <a name="next-steps"></a>További lépések
 

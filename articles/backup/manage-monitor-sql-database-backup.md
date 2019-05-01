@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: raynew
-ms.openlocfilehash: ea5495867d5f453db014e000e01d533d049dc628
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f5ec5a64f1de39cd0d196242fb1a93669dbab15d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60849368"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681840"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Kezelése és figyelése biztonsági mentés az SQL Server-adatbázisok
 
@@ -31,7 +31,7 @@ Az Azure Backup az összes manuálisan aktivált feladat megjelenik a **biztons�
 > A **biztonsági mentési feladatok** portál nem jelenik meg az ütemezett biztonsági mentési feladatot. Az SQL Server Management Studio figyelése ütemezett biztonsági mentési feladatok, a következő szakaszban leírtak szerint.
 >
 
-Figyelés forgatókönyvek részletes ismertetéséért tekintse [Monitorozás az Azure Portal](backup-azure-monitoring-built-in-monitor.md) és [figyelése az Azure Monitor használatával](backup-azure-monitoring-use-azuremonitor.md).  
+Figyelés forgatókönyvek részletes ismertetéséért tekintse [figyelése az Azure Portalon](backup-azure-monitoring-built-in-monitor.md) és [figyelése az Azure Monitor használatával](backup-azure-monitoring-use-azuremonitor.md).  
 
 
 ## <a name="view-backup-alerts"></a>Biztonsági mentési riasztások megtekintése
@@ -129,9 +129,9 @@ SQL Server-példány regisztrációját a védelem letiltása után, de a tárol
 
 3. A **védett kiszolgálók**, válassza ki a kiszolgáló regisztrációjának törlése. A tároló törléséhez az összes kiszolgáló kell regisztrációját.
 
-4. Kattintson a jobb gombbal a védett kiszolgálón, és válassza ki **törlése**.
+4. Kattintson a jobb gombbal a védett kiszolgálón, és válassza ki **Unregister**.
 
-   ![Válassza a Törlés](./media/backup-azure-sql-database/delete-protected-server.png)
+   ![Válassza a Törlés](./media/backup-azure-sql-database/delete-protected-server.jpg)
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>Regisztrálja újra az SQL Server rendszerű virtuális gép futtatására szolgáló bővítmény
 

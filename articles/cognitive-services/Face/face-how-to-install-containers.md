@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5028a05fe74f1d19ed5e43ac797df87bbe3382e8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: a3087718a3eece1e19f05757ace64ba00aa0dc58
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680723"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682674"
 ---
 # <a name="install-and-run-face-containers"></a>Telepítse és futtassa a Face tárolók
 
@@ -34,10 +34,9 @@ Face API-tárolók használata előtt a következő előfeltételeknek kell megf
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.| 
 |Azure `Cognitive Services` erőforrás |A tároló használatához rendelkeznie kell:<br><br>A _Cognitive Services_ Azure-erőforrás és a kapcsolódó számlázási kulcs a számlázási végpont URI azonosítója. Mindkét értéket érhetők el az erőforrás áttekintése és a kulcsok lapjain, és a tároló indításához szükséges. Hozzá kell adnia a `face/v1.0` útválasztás az a végpont URI-t, a következő BILLING_ENDPOINT_URI példában látható módon. <br><br>**{BILLING_KEY}** : erőforrás-kulcs<br><br>**{BILLING_ENDPOINT_URI}** : végpont URI-példa: `https://westus.api.cognitive.microsoft.com/face/v1.0`|
 
-
 ## <a name="request-access-to-the-private-container-registry"></a>A privát tárolóregisztrációs hozzáférés kérése
 
-[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-request-access.md)]
+[!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>A számítógép
 
@@ -162,5 +161,4 @@ Ebben a cikkben megtanulta, fogalmak és letöltése, telepítése és futtatás
 * Felülvizsgálat [tárolók konfigurálása](face-resource-container-config.md) a konfigurációs beállítások
 * Felülvizsgálat [Face áttekintése](Overview.md) további észlelése és arcok azonosítása  
 * Tekintse meg a [Face API](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) részleteiről a tároló által támogatott különböző módszereit.
-* Tekintse meg [– gyakori kérdések (GYIK)](FAQ.md) Arcfelismerési funkciókat kapcsolatos problémák megoldásához.
 * Több [Cognitive Services-tárolók](../cognitive-services-container-support.md)

@@ -1,22 +1,28 @@
 ---
-title: Támogatott nyelvek az Azure Maps |} A Microsoft Docs
+title: Honosítási támogatás az Azure Maps |} A Microsoft Docs
 description: További tudnivalók az Azure Maps szolgáltatásban támogatott nyelvek
-author: juliekohler
-ms.author: julieko
-ms.date: 04/08/2019
+author: walsehgal
+ms.author: v-musehg
+ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: ad5913224724dcb9cb9033d89010cefb4d9e1f89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1928185521419006a487a933e2ecba79894a09d3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769192"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686782"
 ---
-# <a name="azure-maps-supported-languages"></a>Az Azure Maps támogatott nyelvek
-A szolgáltatások között az Azure Maps honosított a különböző nyelveken.  Az alábbi táblázat a támogatott nyelvkódok biztosít az egyes szolgáltatások.  
+# <a name="localization-support-in-azure-maps"></a>Honosítási támogatás az Azure Maps-Közösséghez
+
+Az Azure Maps támogatja a különböző nyelveken és nézetek ország/régió alapján. A cikk ismerteti a támogatott nyelvek és a nézetek az Azure Maps koordinálása érdekében.
+
+
+## <a name="azure-maps-supported-languages"></a>Az Azure Maps támogatott nyelvek
+
+A szolgáltatások között az Azure Maps honosított a különböző nyelveken. Az alábbi táblázat a támogatott nyelvkódok biztosít az egyes szolgáltatások.  
   
 
 | ID (Azonosító)         | Name (Név)                   |  Maps | Keresés | Útválasztás | Forgalom incidensek | A térkép vezérlőelem-JS | Időzóna |
@@ -75,3 +81,30 @@ A szolgáltatások között az Azure Maps honosított a különböző nyelveken.
 | tr-TR      | török                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | Egyesült Királyság – UA      | ukrán               |       |    ✓   |         |                   |                |     ✓     |
 | vi-VN      | vietnami             |       |    ✓   |         |                   |                |     ✓     |
+
+
+## <a name="azure-maps-supported-views"></a>Az Azure Maps támogatott nézetek
+
+Az Azure Maps nézet paraméter (más néven "felhasználói régió paraméter") egy 2 kétbetűs ISO-3166 országkód, amelyek bemutatják a megfelelő leképezések az adott ország/régió megadása, amelynek beállítása a geopolitikai határokon vitatott és címkék jelennek meg a térképen.  Alapértelmezés szerint nézet paraméter értéke **"Egyesített"**.  Ország/régió, amely nem a nézet listát alapértelmezés szerint az "Egyesített" nézetre. A feladata, hogy a felhasználók helyének meghatározásához, és adja meg a nézet paraméter az adott hely megfelelően. Azure Maps a nézet paramétert kell használni, megfelel a vonatkozó törvényeket, beleértve az ország, ahol a térképeket, képeket és egyéb adatok és a külső tartalmakat, amelynek Ön a jogosult az Azure Maps-n keresztül elérésére vonatkozó leképezés legyen elérhető.
+
+A következő táblázat a támogatott nézetek.
+
+| Nézet         | Leírás                            |  Maps | Keresés | JS-térkép vezérlőelem |
+|--------------|----------------------------------------|:-----:|:------:|:--------------:|
+| AE           | Egyesült Arab Emírségek (arab nézet)    |   ✓   |        |     ✓          |
+| AR           | Argentína (argentin nézet)           |   ✓   |    ✓   |     ✓          |
+| BH           | Bahrein (arab nézet)                 |   ✓   |        |     ✓          |
+| IN           | India (indiai nézet)                    |   ✓   |   ✓     |     ✓          |
+| IQ           | Irak (arab nézet)                    |   ✓   |        |     ✓          |
+| JO           | Jordánia (arab nézet)                  |   ✓   |        |     ✓          |
+| KW           | Kuvait (arab nézet)                  |   ✓   |        |     ✓          |
+| LB           | Libanon (arab nézet)                 |   ✓   |        |     ✓          |
+| MA           | Marokkói (Tamazight nézet)                |   ✓   |   ✓     |     ✓          |
+| OM           | Omán (arab nézet)                    |   ✓   |        |     ✓          |
+| PK           | Pakisztáni (pakisztáni nézet)              |   ✓   |    ✓    |     ✓          |
+| PS           | Palesztin Hatóság (arab nézet)    |   ✓   |        |     ✓          |
+| QA           | (Arab nézet) Katar                   |   ✓   |        |     ✓          |
+| SA           | Szaúd-Arábia (arab nézet)            |   ✓   |        |     ✓          |
+| SY           | (Arab nézet) Szíria                   |   ✓   |        |     ✓          |
+| YE           | Jemen (arab nézet)                   |   ✓   |        |     ✓          |
+| Egyesített      | Egységes nézet (egyéb)                  |   ✓   |   ✓     |     ✓          |

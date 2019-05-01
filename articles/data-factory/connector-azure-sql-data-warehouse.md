@@ -10,25 +10,30 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 8f1e2aebae88d34334200504915be4043f32013b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 319ea3eaac2fcaa3c8e29680e125b7e29018ecc3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107379"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926598"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
 > * [Verzió1](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [Aktuális verzió](connector-azure-sql-data-warehouse.md)
 
-Ez a cikk azt ismerteti, hogyan Azure Data Factory másolási tevékenység használatával másolja az adatokat, vagy az Azure SQL Data Warehouse-ból. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk ismerteti, hogyan másolhat adatokat, és az Azure SQL Data Warehouse-ból. Azure Data Factory szolgáltatásról, olvassa el a [bevezető cikk](introduction.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-Az Azure SQL Data Warehouse-ból adatokat másolhatja bármely támogatott fogadó adattárba. És másolhat bármely támogatott forrásadattárból adatokat az Azure SQL Data Warehouse. A másolási tevékenység által források vagy fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak és formátumok](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Az Azure Blob-összekötő a következő tevékenységek esetén támogatott:
+
+- [Másolási tevékenység](copy-activity-overview.md) a [támogatott forrás/fogadó mátrix](copy-activity-overview.md) tábla
+- [Az adatfolyam-leképezés](concepts-data-flow-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [GetMetadata tevékenység](control-flow-get-metadata-activity.md)
 
 Pontosabban az Azure SQL Data Warehouse-összekötő támogatja ezeket a funkciókat:
 
@@ -136,12 +141,12 @@ Szolgáltatás egyszerűszolgáltatás-alapú Azure AD alkalmazástoken-hiteles�
 2. **[Az Azure Active Directory-rendszergazda kiépítése](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  az Azure SQL Serverhez, az Azure Portalon, ha ezt még nem tette meg. Az Azure AD-rendszergazda lehet egy Azure AD-felhasználó vagy az Azure AD-csoporthoz. Ha a csoport felügyelt identitás rendszergazda szerepkörrel rendelkező biztosít, hagyja ki a 3. és 4. A rendszergazda az adatbázis teljes hozzáféréssel fog rendelkezni.
 
 3. **[Hozzon létre tartalmazottadatbázis-felhasználók](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  egyszerű szolgáltatás számára. A data warehouse-bA a, vagy amely adatok másolása az Azure AD identitás, amelynek legalább az ssms-ben, más eszközök használatával szeretné bármely felhasználó ALTER engedéllyel. Futtassa a következő T-SQL:
-    
+  
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-4. **Adja meg a szükséges engedélyekkel a szolgáltatásnév** szokásos módon SQL-felhasználók vagy mások számára. Futtassa a következő kódot, vagy a további beállítások [Itt](https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
+4. **Adja meg a szükséges engedélyekkel a szolgáltatásnév** szokásos módon SQL-felhasználók vagy mások számára. Futtassa a következő kódot, vagy a további beállítások [Itt](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
 
     ```sql
     EXEC sp_addrolemember [role name], [your application name];
@@ -186,12 +191,12 @@ Felügyelt identitás-hitelesítést használ, kövesse az alábbi lépéseket:
 1. **[Az Azure Active Directory-rendszergazda kiépítése](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  az Azure SQL Serverhez, az Azure Portalon, ha ezt még nem tette meg. Az Azure AD-rendszergazda lehet egy Azure AD-felhasználó vagy az Azure AD-csoporthoz. Ha a csoport felügyelt identitás rendszergazda szerepkörrel rendelkező biztosít, hagyja ki a 3. és 4. A rendszergazda az adatbázis teljes hozzáféréssel fog rendelkezni.
 
 2. **[Hozzon létre tartalmazottadatbázis-felhasználók](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**  a Data Factory által felügyelt identitás. A data warehouse-bA a, vagy amely adatok másolása az Azure AD identitás, amelynek legalább az ssms-ben, más eszközök használatával szeretné bármely felhasználó ALTER engedéllyel. Futtassa a következő T-SQL. 
-    
+  
     ```sql
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-3. **Adja meg a szükséges engedélyekkel a Data Factory a felügyelt identitást** szokásos módon SQL-felhasználók és mások. Futtassa a következő kódot, vagy a további beállítások [Itt](https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
+3. **Adja meg a szükséges engedélyekkel a Data Factory a felügyelt identitást** szokásos módon SQL-felhasználók és mások. Futtassa a következő kódot, vagy a további beállítások [Itt](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017).
 
     ```sql
     EXEC sp_addrolemember [role name], [your Data Factory name];
@@ -416,7 +421,7 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
     | [1. generációs Azure Data Lake Storage](connector-azure-data-lake-store.md) | Egyszerű szolgáltatásnév hitelesítése |
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Fiók kulcsos hitelesítés |
 
-2. A **forrás adatkészlet formátumú** azonban **ParquetFormat**, **OrcFormat**, vagy **TextFormat**, az alábbi konfigurációkkal:
+2. A **Forrás-adatformátum** azonban **Parquet**, **ORC**, vagy **tagolt szöveg**, az alábbi konfigurációkkal:
 
    1. `folderPath` és `fileName` helyettesítő karaktert tartalmazó szűrő nem tartalmaznak.
    2. `rowDelimiter` meg kell **\n**.
@@ -424,20 +429,6 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
    4. `encodingName` értéke **utf-8**, amelynek alapértelmezett értéke.
    5. `escapeChar`, `quoteChar` és `skipLineCount` nincsenek megadva. A PolyBase támogatási kihagyása fejlécsort, amely konfigurálható `firstRowAsHeader` az ADF-ben.
    6. `compression` lehet **tömörítés nélküli**, **GZip**, vagy **Deflate**.
-
-      ```json
-      "typeProperties": {
-        "folderPath": "<path>",
-        "format": {
-            "type": "TextFormat",
-            "columnDelimiter": "<any delimiter>",
-            "rowDelimiter": "\n",
-            "nullValue": "",
-            "encodingName": "utf-8",
-            "firstRowAsHeader": <any>
-        }
-      },
-      ```
 
 ```json
 "activities":[
@@ -556,6 +547,10 @@ All columns of the table must be specified in the INSERT BULK statement.
 ```
 
 A NULL érték az alapértelmezett érték formája. Ha az oszlop nullázható, a bemeneti adatokat az a blob az adott oszlop lehet üres. De hiányzik a bemeneti adatkészlet a nem lehet. PolyBase az Azure SQL Data Warehouse a hiányzó értékeket szúr be NULL.
+
+## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok hozzárendelése
+
+A részletek [átalakítási forrás](data-flow-source.md) és [átalakítási fogadó](data-flow-sink.md) az adatfolyam-leképezés.
 
 ## <a name="data-type-mapping-for-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse adattípus-leképezés
 

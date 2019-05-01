@@ -2,18 +2,17 @@
 title: Operátor ajánlott eljárások – speciális scheduler szolgáltatások az Azure Kubernetes-szolgáltatások (AKS)
 description: Ismerje meg, a fürt operátor használatának ajánlott eljárásai elkerülésére és a tolerations, a csomópont választók és a kapcsolat, vagy a pod közötti kapcsolat és a affinitást speciális scheduler funkciókat az Azure Kubernetes Service (AKS)
 services: container-service
-author: rockboyfor
+author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-origin.date: 11/26/2018
-ms.date: 04/08/2019
-ms.author: v-yeche
-ms.openlocfilehash: 27c9c872f4dfb82b4a1389189d62c4e1f06ee272
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 11/26/2018
+ms.author: iainfou
+ms.openlocfilehash: 9aa394a405e5b4392f900d1e7520d93e6d152e49
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464968"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690468"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Gyakorlati tanácsok a speciális scheduler funkciók az Azure Kubernetes Service (AKS)
 
@@ -37,7 +36,7 @@ A Kubernetes a scheduler használatával elkerülésére, valamint tolerations m
 * A **vágófelülettel** alkalmazott egy csomópont, amely jelzi, hogy csak adott podok ütemezett rajtuk.
 * A **toleration** a rendszer ezután alkalmazza, amely lehetővé teszi, hogy podot *lekérés* egy csomópont mellékíz.
 
-Amikor telepít egy pod egy AKS-fürtöt, Kubernetes csak ütemezi csomópontokon podok, ahol egy toleration igazítva van-e a mellékíz. Tegyük fel fel, hogy az AKS-fürt csomópontok grafikus processzort tartalmaz egy nodepool, támogatja. Név, például meghatározhat *gpu*, majd ütemezés értékét. Ha ez az érték *NoSchedule*, a Kubernetes-ütemező nem lehet ütemezni a csomóponton podok, ha a pod nem adja meg a megfelelő toleration.
+Amikor telepít egy pod egy AKS-fürtöt, Kubernetes csak ütemezi csomópontokon podok, ahol egy toleration igazítva van-e a mellékíz. Tegyük fel fel, hogy csomópontkészletek a GPU-csomópont esetében az AKS-fürt támogatása. Név, például meghatározhat *gpu*, majd ütemezés értékét. Ha ez az érték *NoSchedule*, a Kubernetes-ütemező nem lehet ütemezni a csomóponton podok, ha a pod nem adja meg a megfelelő toleration.
 
 ```console
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
@@ -53,7 +52,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: dockerhub.azk8s.cn/microsoft/samples-tf-mnist-demo:gpu
+    image: microsoft/samples-tf-mnist-demo:gpu
   resources:
     requests:
       cpu: 0.5
@@ -73,6 +72,23 @@ Ha a pod üzembe lett helyezve, például `kubectl apply -f gpu-toleration.yaml`
 Amikor alkalmazza elkerülésére, az alkalmazásfejlesztők és tulajdonosok, hogy azok tudjanak határozhat meg a szükséges tolerations telepítések együttműködve.
 
 Elkerülésére, valamint tolerations kapcsolatos további információkért lásd: [elkerülésére, valamint tolerations alkalmazása][k8s-taints-tolerations].
+
+### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Elkerülésére, valamint az aks-ben tolerations viselkedését
+
+Amikor az aks-ben csomópontkészletek-elkerülésére, valamint tolerations set mintát követi, új csomópontokat használ alkalmazza őket:
+
+- **Alapértelmezett fürtök virtuálisgép-méretezési csoport támogatás nélkül**
+  - Tegyük fel, hogy egy két csomópontos fürt - *csomópont1* és *csomópont2*. Amikor frissít, egy további fürtcsomópontra (*csomópont3*) jön létre.
+  - A elkerülésére a *csomópont1* érvényesek *csomópont3*, majd *csomópont1* majd törlődik.
+  - Egy másik új csomópont jön létre (nevű *csomópont1*, mivel az előző *csomópont1* törölve lett), és a *csomópont2* elkerülésére érvényesek az új *csomópont1*. Ezt követően *csomópont2* törlődik.
+  - Lényegében *csomópont1* válik *csomópont3*, és *csomópont2* válik *csomópont1*.
+
+- **A méretezési csoportokat virtuális gépet használó fürtök** (jelenleg előzetes verzióban érhető el az aks-ben)
+  - Ismét tegyük fel, hogy egy két csomópontos fürt - *csomópont1* és *csomópont2*. A csomópont készlethez frissít.
+  - Két további csomópontjainak létrehozása, *csomópont3* és *csomópont4*, és a elkerülésére továbbítva lesznek jelölik.
+  - Az eredeti *csomópont1* és *csomópont2* törlődnek.
+
+Amikor az aks-ben csomópontkészletek méretezéséhez, elkerülésére, valamint tolerations nem biztosítunk pénzügyi tervezési irányítást.
 
 ## <a name="control-pod-scheduling-using-node-selectors-and-affinity"></a>Vezérlő pod ütemezés csomópont választók-kapcsolat használatával
 
@@ -96,7 +112,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: dockerhub.azk8s.cn/microsoft/samples-tf-mnist-demo:gpu
+    image: microsoft/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -126,7 +142,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: dockerhub.azk8s.cn/microsoft/samples-tf-mnist-demo:gpu
+    image: microsoft/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5

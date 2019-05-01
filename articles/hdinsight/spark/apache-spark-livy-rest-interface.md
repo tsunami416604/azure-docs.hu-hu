@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 99175f79e030a55991947313e4a7e32a738d6adb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: c8504c6bf25b186a4bc87c4e7565444dd3e57209
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097396"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570497"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Az Apache Spark REST API használata egy HDInsight Spark-fürt távoli feladatok elküldéséhez
 
@@ -164,16 +164,6 @@ HDInsight 3.5-fürtök, és a fenti alapértelmezés szerint letiltja a hozzáf�
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Egy Azure virtuális hálózaton belüli fürt Livy-feladatok elküldése
 
 Ha egy Azure virtuális hálózaton belül egy HDInsight Spark-fürthöz csatlakozik, közvetlenül csatlakozhat Livy a fürtön. Ebben az esetben a Livy-végpont URL-je `http://<IP address of the headnode>:8998/batches`. Itt **8998** a portot, amelyen Livy a fürt átjárócsomópontjával futtat. A nem nyilvános portot a szolgáltatások eléréséhez további információkért lásd: [HDInsight az Apache Hadoop-szolgáltatások által használt portok](../hdinsight-hadoop-port-settings-for-services.md).
-
-## <a name="troubleshooting"></a>Hibaelhárítás
-
-Az alábbiakban néhány problémát, miközben a távoli feladatok elküldéséhez a Spark-fürtök a Livy használatával mutatjuk be.
-
-### <a name="using-an-external-jar-from-the-additional-storage-is-not-supported"></a>Egy külső jar, a további tárhely használata nem támogatott.
-
-**Probléma:** Ha a Livy Spark-feladat a fürthöz társított további tárfiókból egy külső jar hivatkozik, a feladat sikertelen lesz.
-
-**Megoldás:** Győződjön meg arról, hogy a használni kívánt jar érhető el az alapértelmezett Storage a HDInsight-fürthöz társított.
 
 
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sujayt
-ms.openlocfilehash: c7c91a2cf9a25d0a5a4aeed6621e89f9c7cc18f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fafa791039397e93e9bf8ab6be04a2190e8ed784
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60789906"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699083"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure – Azure virtuális gép replikálási problémák elhárítása
 
@@ -221,7 +221,17 @@ Győződjön meg arról, hogy az adatlemezek inicializálása megtörtént, és 
 
 Ha a probléma tartósan fennáll, forduljon az ügyfélszolgálathoz.
 
+## <a name="one-or-more-disks-are-available-for-protectionerror-code-153039"></a>Egy vagy több (eke) t érhetők el a védelmet (hibakód: 153039)
+- **Lehetséges ok** </br>
+  - Ha egy vagy több (eke) t nemrégiben hozzáadott a virtuális gép védelme után. 
+  - Ha egy vagy több (eke) t a védelmet a virtuális gép után később lett inicializálva.
 
+### <a name="fix-the-problem"></a>A probléma megoldása
+Választhat a lemezek védelméhez, vagy figyelmen kívül hagyhatja a figyelmeztetést, győződjön meg arról, a virtuális gép replikációs állapota kifogástalan újra.</br>
+1. A lemezek védelméhez. Navigáljon a replikált elemek > virtuális gépek > lemezek > kattintson a védelem nélküli lemezt > replikáció engedélyezése.
+ ![add_disks](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
+2. A figyelmeztető üzenet elvetéséhez. Lépjen a replikált elemek > virtuális gép > kattintson az Áttekintés szakaszban Elvetés riasztásához.
+![dismiss_warning](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
 ## <a name="unable-to-see-the-azure-vm-for-selection-in-enable-replication"></a>Nem látja az Azure virtuális gép kiválasztása a "replikáció engedélyezése"
 
  **1. ok:  Erőforráscsoport és a forrás virtuális gép máshol helyezkedik el** <br>

@@ -2,24 +2,18 @@
 title: Határozza meg a közzététel lehetőséget az Azure Marketplace-en |} Az Azure
 description: Ez a cikk ismerteti a megfelelőségi feltételeket, és szeretné ismerni az alkalmazások közzététele az Azure piactér közzétételi követelmények partnerek.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 2755232ea81f1551477431f4eb1f0aeab8b8bfe8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb306a32a9388113a9c81fa363a6e1ee2c3b30ad
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726646"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938113"
 ---
 # <a name="determine-your-publishing-option"></a>A közzétételi lehetőség meghatározása
 Az Ön által választott az ajánlat közzétételi lehetőség közvetlenül kapcsolódik a jogosultsági követelményeknek és a piactér GTM előnyeit. Ami még fontosabb a közzététel lehetőséget és ajánlat írja be a Cloud Partner portálra a választott határozza meg, hogyan működjön együtt a marketplace-ajánlat felhasználók.

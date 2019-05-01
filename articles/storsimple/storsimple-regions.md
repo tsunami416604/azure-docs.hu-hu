@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: ff2ea89c257a4941c801f3056450e005a9b37039
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e290feb278a1cddf1cfecfcb66458d8290ec122a
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60628875"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943592"
 ---
 # <a name="available-regions-for-your-storsimple"></a>A StorSimple az elérhető régiók
 
@@ -32,7 +32,7 @@ Egy Azure-régió kiválasztásával nagyon fontos, és befolyásolja a kiválas
 A StorSimple megoldás a kiválasztott régióban kifejezetten határozza meg a következő tényezőktől függ:
 
 - Régióban, ahol a StorSimple-Eszközkezelő szolgáltatás érhető el.
-- Az országok, ahol a StorSimple fizikai eszközök, a felhőben és a virtuális eszköz érhető el.
+- Az országban vagy régióban, ahol a StorSimple fizikai eszközök, a felhőben és a virtuális eszköz érhető el.
 - A régiók, ahol kell lennie az optimális teljesítmény érdekében a StorSimple-adatok tárolására szolgáló tárfiókot.
 
 Ez az oktatóanyag azt ismerteti, hogy a régiók rendelkezésre állása a StorSimple-Eszközkezelő szolgáltatás, a helyszíni fizikai és a felhőbeli eszközöket. Az ebben a cikkben szereplő információ egyaránt vonatkozik az a StorSimple 8000-es és az 1200-as sorozatú eszközöket.
@@ -61,36 +61,36 @@ Ha egy StorSimple Cloud Appliance használ, majd azt javasoljuk, hogy a szolgál
 
 ## <a name="availability-of-storsimple-device"></a>StorSimple-eszköz elérhetősége
 
-Függően a modellt, a StorSimple-eszközök is érhetők el az különböző földrajzi vagy országok.
+Függően a modellt, a StorSimple-eszközök is érhetők el az különböző földrajzi vagy országok vagy régiók.
 
 ### <a name="storsimple-physical-device-models-81008600"></a>A StorSimple fizikai eszköz (8100-as vagy 8600 modelleket)
 
-A StorSimple 8100-as vagy 8600-as fizikai eszköz használata esetén az eszköz érhető el az alábbi országokban.
+A StorSimple 8100-as vagy 8600-as fizikai eszköz használata esetén az eszköz az alábbi országokban/régiókban érhető el.
 
-| #  | Ország        | #  | Ország     | #  | Ország      | #  | Ország              |
-|----|----------------|----|-------------|----|--------------|----|----------------------|
-| 1  | Ausztrália      | 16 | Hongkong (KKT)| 31 | Új-Zéland  | 46 | Dél-Afrika         |
-| 2  | Ausztria        | 17 | Magyarország     | 32 | Nigéria      | 47 | Dél-Korea          |
-| 3  | Bahrein        | 18 | Izland     | 33 | Norvégia       | 48 | Spanyolország                |
-| 4  | Belgium        | 19 | India       | 34 | Peru         | 49 | Srí Lanka            |
-| 5  | Brazília         | 20 | Indonézia   | 35 | Fülöp-szigetek  | 50 | Svédország               |
-| 6  | Kanada         | 21 | Írország     | 36 | Lengyelország       | 51 | Svájc          |
-| 7  | Chile          | 22 | Izrael      | 37 | Portugália     | 52 | Tajvan               |
-| 8  | Kolumbia       | 23 | Olaszország       | 38 | Puerto Rico  | 53 | Thaiföld             |
-| 9  | Cseh Köztársaság | 24 | Japán       | 39 | Katar        | 54 | Törökország               |
-| 10 | Dánia        | 25 | Kenya       | 40 | Románia      | 55 | Ukrajna              |
-| 11 | Egyiptom          | 26 | Kuvait      | 41 | Oroszország       | 56 | Egyesült Arab Emírségek |
-| 12 | Finnország        | 27 | Makaó (KKT)   | 42 | Szaúd-Arábia | 57 | Egyesült Királyság       |
-| 13 | Franciaország         | 28 | Malajzia    | 43 | Szingapúr    | 58 | Egyesült Államok        |
-| 14 | Németország        | 29 | Mexikó      | 44 | Szlovákia     | 59 | Vietnam              |
-| 15 | Görögország         | 30 | Hollandia | 45 | Szlovénia     | 60 | Horvátország              |
+| #  | Ország/régió        | #  | Ország/régió     | #  | Ország/régió      | #  | Ország/régió             |
+|----|-----------------------|----|--------------------|----|---------------------|----|----------------------------|
+| 1  | Ausztrália             | 16 | Hongkong (KKT)      | 31 | Új-Zéland         | 46 | Dél-Afrika               |
+| 2  | Ausztria               | 17 | Magyarország            | 32 | Nigéria             | 47 | Dél-Korea                |
+| 3  | Bahrein               | 18 | Izland            | 33 | Norvégia              | 48 | Spanyolország                      |
+| 4  | Belgium               | 19 | India              | 34 | Peru                | 49 | Srí Lanka                  |
+| 5  | Brazília                | 20 | Indonézia          | 35 | Fülöp-szigetek         | 50 | Svédország                     |
+| 6  | Kanada                | 21 | Írország            | 36 | Lengyelország              | 51 | Svájc                |
+| 7  | Chile                 | 22 | Izrael             | 37 | Portugália            | 52 | Tajvan                     |
+| 8  | Kolumbia              | 23 | Olaszország              | 38 | Puerto Rico         | 53 | Thaiföld                   |
+| 9  | Cseh Köztársaság        | 24 | Japán              | 39 | Katar               | 54 | Törökország                     |
+| 10 | Dánia               | 25 | Kenya              | 40 | Románia             | 55 | Ukrajna                    |
+| 11 | Egyiptom                 | 26 | Kuvait             | 41 | Oroszország              | 56 | Egyesült Arab Emírségek       |
+| 12 | Finnország               | 27 | Makaó (KKT)          | 42 | Szaúd-Arábia        | 57 | Egyesült Királyság             |
+| 13 | Franciaország                | 28 | Malajzia           | 43 | Szingapúr           | 58 | Egyesült Államok              |
+| 14 | Németország               | 29 | Mexikó             | 44 | Szlovákia            | 59 | Vietnam                    |
+| 15 | Görögország                | 30 | Hollandia        | 45 | Szlovénia            | 60 | Horvátország                    |
 
-Ebben a listában több országban kerülnek változik. A régiócsoportok legfrissebb listáját, nyissa meg a tárolási tömb feltételek függelék: az a [használati feltételeiben](https://www.microsoft.com/en-us/licensing/product-licensing/products).
+Ebben a listában a további országok/régiók hozzáadása során módosul. A régiócsoportok legfrissebb listáját, nyissa meg a tárolási tömb feltételek függelék: az a [használati feltételeiben](https://www.microsoft.com/en-us/licensing/product-licensing/products).
 
 A Microsoft is fizikai hardvereszközöket, és adja meg a tartalék hardveralkatrészek cseréje a storsimple, a fenti listán szereplő földrajzi területeken.
 
 > [!IMPORTANT]
-> Ne helyezze a StorSimple fizikai eszköz egy régióban, ahol a StorSimple nem támogatott. A Microsoft nem tud minden olyan országban, ahol nem támogatott a StorSimple cserealkatrészekre szállításra.
+> Ne helyezze a StorSimple fizikai eszköz egy régióban, ahol a StorSimple nem támogatott. A Microsoft nem tudta cserealkatrészekre országok/régiók, ahol a StorSimple nem támogatott.
 
 ### <a name="storsimple-cloud-appliance-models-80108020"></a>A StorSimple Cloud Appliance (8010/8020-as modellek)
 

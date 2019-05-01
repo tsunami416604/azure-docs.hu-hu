@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/10/2018
-ms.openlocfilehash: f34e32b9bda83ac1185d0c7b7dcaaaa7b47161a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/29/2019
+ms.openlocfilehash: babe2ac55953940370daa0731463ed6ed8988502
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60332804"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925911"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Figyelés az Azure Database for MariaDB
 A kiszolgálók adatainak segítségével hibaelhárítása és optimalizálhatja a számítási feladatok számára. Azure Database for MariaDB különböző mérőszámokat, amelyek a kiszolgáló viselkedését betekintést biztosít.
@@ -41,7 +41,7 @@ Ezek a metrikák az Azure Database for MariaDB érhetők el:
 |network_bytes_ingress|Bejövő hálózat|Bájt|Hálózati az aktív kapcsolatok között.|
 
 ## <a name="server-logs"></a>Kiszolgálói naplók
-Engedélyezheti a naplózást a kiszolgáló a lassú lekérdezések. Naplózásával kapcsolatos további tudnivalókért látogasson el a [kiszolgálónaplók](concepts-server-logs.md) lapot.
+Engedélyezheti a naplózást a kiszolgáló a lassú lekérdezések. Ezek a naplók keresztül is elérhetőek az Azure diagnosztikai naplók a Azure Monitor naplók, az Event Hubs és a Storage-fiókot. Naplózásával kapcsolatos további tudnivalókért látogasson el a [kiszolgálónaplók](concepts-server-logs.md) lapot.
 
 ## <a name="next-steps"></a>További lépések
 - Elérése és exportálása a metrikák az Azure Portalon, a REST API vagy a parancssori felület használatával kapcsolatos további információkért lásd: a [Azure metrikáinak áttekintésében](../monitoring-and-diagnostics/monitoring-overview-metrics.md).

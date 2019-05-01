@@ -1,25 +1,18 @@
 ---
-title: Piactér – gyakori kérdések |} Az Azure
+title: Az Azure piactér – gyakori kérdések
 description: Válaszok az Microsoft Azure Marketplace-szel kapcsolatos gyakori kérdésekre
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: ellacroi
-ms.openlocfilehash: 34b9fadc976d3f37612f59a7fc8520c48b178f5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3e1bad5902bb35ce0c037835359c267582cc8bc7
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709376"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938655"
 ---
 # <a name="marketplace-faqs"></a>Marketplace – gyakori kérdések
 
@@ -92,9 +85,9 @@ A függőségek kezelése nem automatikus az Azure Piactér-beli előfizetések 
 
 Ha a kiadó konfigurált kínál a CSP-csatornán keresztül elérhető legyen, keresztül elérhető lesz.
 
-**Mely országokban alkalmazásokat és szolgáltatásokat az Azure piactéren értékesített/létesített megvásárlásával kapcsolatos támogatottak?**
+**Milyen országokból/régiókból alkalmazásokat és szolgáltatásokat az Azure piactéren értékesített/létesített megvásárlásával kapcsolatos támogatottak?**
 
-Az Azure piactér a Microsoft Azure-ügyfelek a felsorolt országokban érhető el a [részvételi szabályzatában](https://docs.microsoft.com/legal/marketplace/participation-policy).
+Az Azure Marketplace-en érhető el ezekben az országokban vagy régiókban szerepel a Microsoft Azure-ügyfelek a [részvételi szabályzatában](https://docs.microsoft.com/legal/marketplace/participation-policy).
 
 **Milyen pénznemben támogat az Azure Marketplace-en?**
 
@@ -134,7 +127,7 @@ A kiadó független gyártók (ISV) megoldás díjszabása Azure-előfizetés r�
 
 *Havi díj:* Díjszabás szerint számítjuk fel, vagy (az a kezdő dátum az előfizetés terv) az ajánlat előfizetéshez tartozó fix havidíjat számítunk fel. A havi díj hóközi lemondás vagy fel nem használt szolgáltatások esetén a használattal arányosan kerülhet elszámolásra.
 
-Egyes ajánlatok árképzése a megoldást ismertető lapon található [ https://azure.microsoft.com/en-us/pricing/ ](https://azure.microsoft.com/pricing/) vagy belül a [Microsoft Azure felügyeleti portálján](https://portal.azure.com/).
+Egyes ajánlatok árképzése a megoldást ismertető lapon található [ https://azure.microsoft.com/pricing/ ](https://azure.microsoft.com/pricing/) vagy belül a [Microsoft Azure felügyeleti portálján](https://portal.azure.com/).
 
 >[!Note]
 > Havidíjakat kivéve Azure használati díjak minden díjszabási modellre való alkalmazható, ha másként nincs jelezve.
@@ -381,7 +374,7 @@ Az ajánlat befejezése és a egy érdeklődő cél beállítása után a listae
 
 **Milyen országokból/régiókból azok a kiadók értékesíthetnek az Azure Marketplace-en?**
 
-Jelenleg is az alábbi országokban kiadók értékesíthetnek az Azure piactéren: Afganisztán, Albánia, Algéria, Angola, Antigua és Barbuda, Argentína, Örményország, Ausztrália, Ausztria, Azerbajdzsán, Bahrein, Banglades, Belarusz, Belgium, Benin, Bolívia, Bosznia-Hercegovina, Botswana, Brazília, Bulgária, Burkina Faso, Burundi, Kambodzsa, Kamerun, Kanada, közép-afrikai Köztársaság, Csád, Chile, Kolumbia, Comore-szigetek, Kongói, Kongó (KDK), Costa Rica, Cote D'Ivoire, Horvátország, Ciprus, Cseh Köztársaság, Dánia, Dominika, Dominikai Köztársaság, Ecuador, Egyiptom, El Salvador, Eritrea, Észtország, Etiópia, Fidzsi-szigetek -Szigetek, Finnország, Franciaország, Grúzia, Németország, Ghána, Görögország, Guatemala, Guinea, Haiti, Honduras, Hongkong (KKT), Magyarország, Izland, India, Indonézia, Irak, Írország, Izrael, Olaszország, Jamaica, japán, Jordánia, Kazahsztán, Kenya, Korea (KKT), Kuvait, Laosz, Lettország, Libanon, Libéria, Liechtenstein, Litvánia, Luxemburg, Madagaszkár, Malawi, Malajzia, Mali, Málta, Mauritius, Mexikó, Monaco, Mongólia, Montenegró, Marokkó, Mozambik, Nepál, a Hollandia, Új-Zélandon, Nicaragua, Niger, Nigéria, Norvégia, Omán, Pakisztán, Panama, Paraguay, Peru, Fülöp-szigetek, Olaszország, Portugália, Katar, Románia, orosz, Ruanda, Szaúd-Arábia, Szenegál, Szerbia, Sierra Leone, Szingapúr, Szlovákia, Szlovénia, Szomália, Dél-Afrika, Spanyolország, Srí Lanka, Svédország, Svájc, Tádzsikisztán, Tanzánia, Thaiföld, Timor-Leste, Togo, Tonga, Trinidad és Tobago, Tunézia, Törökország, Türkmenisztán, Uganda, Ukrajna, Egyesült Arab Emírségek, Egyesült Királyság, Egyesült Államok, Uruguay, Üzbegisztán, Venezuela, Vietnam, Zambia, és Zimbabwe.
+Jelenleg is az alábbi országokban vagy régiókban lévő kiadók értékesíthetnek az Azure piactéren: Afganisztán, Albánia, Algéria, Angola, Antigua és Barbuda, Argentína, Örményország, Ausztrália, Ausztria, Azerbajdzsán, Bahrein, Banglades, Belarusz, Belgium, Benin, Bolívia, Bosznia-Hercegovina, Botswana, Brazília, Bulgária, Burkina Faso, Burundi, Kambodzsa, Kamerun, Kanada, közép-afrikai Köztársaság, Csád, Chile, Kolumbia, Comore-szigetek, Kongói, Kongó (KDK), Costa Rica, Cote D'Ivoire, Horvátország, Ciprus, Cseh Köztársaság, Dánia, Dominika, Dominikai Köztársaság, Ecuador, Egyiptom, El Salvador, Eritrea, Észtország, Etiópia, Fidzsi-szigetek -Szigetek, Finnország, Franciaország, Grúzia, Németország, Ghána, Görögország, Guatemala, Guinea, Haiti, Honduras, Hongkong (KKT), Magyarország, Izland, India, Indonézia, Irak, Írország, Izrael, Olaszország, Jamaica, japán, Jordánia, Kazahsztán, Kenya, Korea (KKT), Kuvait, Laosz, Lettország, Libanon, Libéria, Liechtenstein, Litvánia, Luxemburg, Madagaszkár, Malawi, Malajzia, Mali, Málta, Mauritius, Mexikó, Monaco, Mongólia, Montenegró, Marokkó, Mozambik, Nepál, a Hollandia, Új-Zélandon, Nicaragua, Niger, Nigéria, Norvégia, Omán, Pakisztán, Panama, Paraguay, Peru, Fülöp-szigetek, Olaszország, Portugália, Katar, Románia, orosz, Ruanda, Szaúd-Arábia, Szenegál, Szerbia, Sierra Leone, Szingapúr, Szlovákia, Szlovénia, Szomália, Dél-Afrika, Spanyolország, Srí Lanka, Svédország, Svájc, Tádzsikisztán, Tanzánia, Thaiföld, Timor-Leste, Togo, Tonga, Trinidad és Tobago, Tunézia, Törökország, Türkmenisztán, Uganda, Ukrajna, Egyesült Arab Emírségek, Egyesült Királyság, Egyesült Államok, Uruguay, Üzbegisztán, Venezuela, Vietnam, Zambia, és Zimbabwe.
 
 **Hogyan törölhetek egy listát az Azure Marketplace-ről?**
 
@@ -486,19 +479,19 @@ A függőségek kezelése nem automatikus az Azure Piactér-beli előfizetések 
 
 **Kik vásárolhatnak alkalmazásokat és szolgáltatásokat az Azure piactéren értékesített/létesített?**
 
-Az Azure Piacteret a következő országokban érhetik el a Microsoft Azure-ügyfelek:
+Az Azure piactér a Microsoft Azure ügyfelei számára az alábbi országokban/régiókban érhető el:
 
 Algéria, Argentína, Ausztrália, Ausztria, Bahrein, Belarusz, Belgium, Brazília, Bulgária, Kanada, Chile, Kolumbia, Costa Rica, Horvátország, Ciprus, Cseh Köztársaság, Dánia, Dominikai Köztársaság, Ecuador, Egyiptom, El Salvador, Észtország, Finnország, Franciaország, Németország, Görögország , Guatemala, Hongkong KKT, Magyarország, Izland, India, Indonézia, Írország, Izrael, Olaszország, japán, Jordánia, Kazahsztán, Kenya, Kuvait, Lettország, Liechtenstein, Litvánia, Luxemburg, Macedónia Észak, Malajzia, Málta, Mexikó, Montenegró, Marokkó, Hollandia, új Zélandi, Nigéria, Norvégia, Omán, Pakisztán, Panama, Paraguay, Peru, Fülöp-szigetek, Olaszország, Portugália, Puerto Rico, Katar, Románia, orosz, Szaúd-Arábia, Szerbia, Szingapúr, Szlovákia, Szlovénia, Dél-Afrika, Dél-Korea, Spanyolország, Srí Lanka, Svédország, Svájc, Tajvan, Thaiföld, Trinidad és Tobago, Tunézia, Törökország, Ukrajna, Egyesült Arab Emírségek, Egyesült Királyság, Egyesült Államok, Uruguay, Venezuela.
 
-**Hogyan határozza meg a földrajzi elérhetőséggel foglalkozó részét ahhoz, hogy a különböző országokban értékesítése?**
+**Hogyan határozza meg a földrajzi elérhetőséggel foglalkozó részét engedélyezéséhez a hozzá tartozó különböző országokban vagy régiókban?**
 
-1.  A Cloud Partner portálra keresse meg a Termékváltozat, amelyhez hozzáadandó új országok.  Belül az "SKU"Details "Ország/régió availability" keresse meg, és kattintson a "Minden régióban."
+1.  A Cloud Partner portálra keresse meg az SKU-t, amelyhez új országok/régiók hozzáadása.  Belül az "SKU"Details "Ország/régió availability" keresse meg, és kattintson a "Minden régióban."
 
     ![Régiók kiválasztása](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 
-1.  Egy lista jelenik meg, hogy az összes elérhető országok.  Kattintson a jelölőnégyzetbe, ez a Termékváltozat elérhetővé tenni kívánt minden ország mellett. Az "OK" gombra.
+1.  Egy lista jelenik meg az összes rendelkezésre álló országok/régiók számára.  Kattintson a minden ország/régió, ez a Termékváltozat elérhetővé tenni kívánt melletti jelölőnégyzetet. Az "OK" gombra.
 
-    ![Válassza ki az országot listája](media/marketplace-publishers-guide/FAQ-select-countries.png)
+    ![Válassza ki az országot/régiót listája](media/marketplace-publishers-guide/FAQ-select-countries.png)
 
 1.  Végül pedig a módosítások az élő ajánlat alkalmazható, kattintson a "Közzététel".  
 
@@ -509,11 +502,11 @@ Algéria, Argentína, Ausztrália, Ausztria, Bahrein, Belarusz, Belgium, Brazíl
 
 **Hogyan módosíthatja a közzétevő a földrajzi elérhetőséggel foglalkozó részét egy meglévő ajánlat?**
 
-A közzétevő szerkesztheti a meglévő ajánlat, válassza ki az új országok, és a letöltési vagy feltölteni függvény használatával állítsa be a díjszabás.
+A közzétevő szerkesztheti a meglévő ajánlat, válassza ki az új országokban vagy régiókban, és a letöltési vagy feltölteni függvény használatával állítsa be a díjszabás.
 
-**Ügyfelek milyen országban vásárolhatnak az Azure piactér-beli előfizetések?**
+**Ügyfelek milyen országokból/régiókból elérhető vásárolhat Azure Piactéri ajánlatok elérhetőségének?**
 
-Az Azure piactér számlázási címét a felhasználó által definiált 141 közül földrajzi támogatja. Lásd: [részvételi szabályzatában](https://docs.microsoft.com/legal/marketplace/participation-policy) országok listája.
+Az Azure piactér számlázási címét a felhasználó által definiált 141 közül földrajzi támogatja. Lásd: [részvételi szabályzatában](https://docs.microsoft.com/legal/marketplace/participation-policy) országok/régiók listája.
 
 **Milyen pénznemben támogat az Azure Marketplace-en?**
 
@@ -545,7 +538,7 @@ A díjszabás a terméktípusoktól és a kiadók specifikációitól függ. A s
 
 * **Havi díj**: Számlázunk ki vagy az, hogy adott csomag kezdetétől az ajánlat előfizetéshez tartozó fix havidíjat számítunk fel. A havi díj hóközi lemondás vagy fel nem használt szolgáltatások esetén a használattal arányosan kerülhet elszámolásra.
 
-Díjszabás részletei találhatók a megoldást ismertető lapon [ https://azure.microsoft.com/en-us/pricing/ ](https://azure.microsoft.com/pricing/), vagy a Microsoft Azure felügyeleti portálon.
+Díjszabás részletei találhatók a megoldást ismertető lapon [ https://azure.microsoft.com/pricing/ ](https://azure.microsoft.com/pricing/), vagy a Microsoft Azure felügyeleti portálon.
 
 >[!Note]
 >Havidíjakat kivéve Azure használati díjak minden díjszabási modellre való alkalmazható, ha másként nincs jelezve.

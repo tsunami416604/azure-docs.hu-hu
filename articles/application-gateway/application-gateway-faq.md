@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 3/20/2019
+ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: 3c8a2fe9f4486fe4d33754b58f4e7ebec1b3252d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 72eaa18d570e85274efbea80f12e9a7301eecbfa
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682950"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947070"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Az Application Gateway kapcsolatos gyakori kérdések
 
@@ -119,7 +119,7 @@ A Traffic Manager használatával elosztani a forgalmat több application Gatewa
 
 ### <a name="does-application-gateway-support-autoscaling"></a>Az Application Gateway támogatja az automatikus skálázás?
 
-Igen, az Application Gateway v2 szintű Termékváltozatot támogatja az automatikus skálázás. További információkért lásd: [automatikus skálázás és zónaredundáns Application Gateway (nyilvános előzetes verzió)](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant).
+Igen, az Application Gateway v2 szintű Termékváltozatot támogatja az automatikus skálázás. További információkért lásd: [automatikus skálázás és zónaredundáns Application Gateway](application-gateway-autoscaling-zone-redundant.md).
 
 ### <a name="does-manual-scale-up-or-scale-down-cause-downtime"></a>Manuális skálázás nem, és vertikális leskálázás OK állásidő?
 
@@ -267,7 +267,7 @@ Az Application Gateway támogatja a legfeljebb 10 hitelesítési tanúsítványo
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Nem az Application Gateway natív módon integrálja az Azure Key Vault?
 
-Nem.
+Igen, az Application Gateway v2 szintű Termékváltozatot támogatja a Key Vault. További információkért lásd: [Key Vault tanúsítványokkal rendelkező SSL-lezárást](key-vault-certs.md).
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>Hogyan konfigurálható a HTTPS-figyelőként .com-és .net? 
 

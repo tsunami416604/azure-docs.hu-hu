@@ -10,12 +10,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0b544bfcb59bf4c2b44e6b666fcd33e9fb493692
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 96d4c2c8d6c2dd7722b7377dd7a0ffd42acd3126
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60256674"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572511"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Napló-alapú és előre összesített mérőszámok az Application insights szolgáltatásban
 
@@ -63,7 +63,7 @@ Egyéni metrikák dimenziók a gyűjtemény ki van kapcsolva alapértelmezés sz
 
 ## <a name="creating-charts-and-exploring-log-based-and-standard-pre-aggregated-metrics"></a>Diagramok létrehozása és a napló- és a standard előre összesített metrikák felfedezése
 
-Az Azure Monitor Metrikaböngészőjének használatával diagramokat előzetes összesítésére és a napló-alapú metrikákat, és a szerző irányítópultok diagramokkal. Miután kiválasztotta a kívánt Application Insights-erőforrást, a névtér-választó használatával Váltás normál (előzetes verzió) és a napló mérőszámok, vagy válasszon egy egyéni metrika névteret:
+Használat [Azure Monitor Metrikaböngészőjének](../platform/metrics-getting-started.md) diagram előzetes összesítésére és a napló-alapú metrikákat, és a szerző irányítópultok diagramokkal ábrázolásához. Miután kiválasztotta a kívánt Application Insights-erőforrást, a névtér-választó használatával Váltás normál (előzetes verzió) és a napló mérőszámok, vagy válasszon egy egyéni metrika névteret:
 
 ![Metrika névtér](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: 9e29b08da35b9fd2f479f1d4e3b0d89ed881344b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d3ff97dc86ea6932ba51a4a30e53edf1082d5305
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60326421"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937471"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Offline PlayReady Windows 10-es Streaming
 
@@ -32,9 +32,9 @@ Az Azure Media Services támogatja a DRM-védelemmel rendelkező offline letölt
 
 Ez a szakasz áttekintést nyújt a bizonyos tapasztalattal a lejátszás kapcsolat nélküli üzemmódban különösen miért:
 
-* Egyes országokban Internet rendelkezésre állási és/vagy a sávszélesség korlátozva. Előfordulhat, hogy a felhasználók megadhatják nézheti elég nagy felbontású kielégítő élményt a tartalom letöltéséhez először. Ebben az esetben gyakrabban, a probléma nem hálózat rendelkezésre állásának, hanem azt korlátozott a sávszélesség. OTT/OVP szolgáltatók arra utasítja a kapcsolat nélküli módban támogatás.
+* Egyes országokban/régiókban Internet rendelkezésre állási és/vagy a sávszélesség korlátozva. Előfordulhat, hogy a felhasználók megadhatják nézheti elég nagy felbontású kielégítő élményt a tartalom letöltéséhez először. Ebben az esetben gyakrabban, a probléma nem hálózat rendelkezésre állásának, hanem azt korlátozott a sávszélesség. OTT/OVP szolgáltatók arra utasítja a kapcsolat nélküli módban támogatás.
 * Közzétett Netflix 2016 3. negyedévi részvényes konferencián, letölti a tartalmat egy olyan "szélén a kért funkció" és "vagyunk rá nyissa meg" kifejezés utal Reed Hastings, a Netflix Vezérigazgató által.
-* Néhány tartalomszolgáltatók előfordulhat, hogy ne engedélyezze a DRM-licenckézbesítés túl egy ország szegély. Ha a felhasználó továbbítani a külföldön van szüksége, és tekintse meg a tartalom továbbra is szeretné, offline letöltési van szükség.
+* Néhány tartalomszolgáltatók előfordulhat, hogy ne engedélyezze a DRM-licenckézbesítés túl egy adott ország/régió szegély. Ha a felhasználó továbbítani a külföldön van szüksége, és tekintse meg a tartalom továbbra is szeretné, offline letöltési van szükség.
  
 A kihívás, mi a face megvalósításában kapcsolat nélküli módban a következő:
 

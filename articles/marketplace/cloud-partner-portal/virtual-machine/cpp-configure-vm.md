@@ -1,25 +1,18 @@
 ---
-title: A Microsoft Azure-ban üzemeltetett virtuális gép konfigurálása az Azure Marketplace-en |} A Microsoft Docs
+title: A Microsoft Azure-ban üzemeltetett virtuális gép konfigurálása az Azure Marketplace-en
 description: Méretezés, frissítése és az Azure-ban üzemeltetett virtuális gép általánosítása a módját ismerteti.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 9cf363bc5f4230306c2fec99eb6287b23e598a4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 3d38efadfb8ad13d072056ef851be99d9540ad4b
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60744346"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938431"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Az Azure-ban üzemeltetett virtuális gép konfigurálása
 

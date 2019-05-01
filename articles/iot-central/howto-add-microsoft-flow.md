@@ -4,16 +4,16 @@ description: Az IoT Central-összekötő a Microsoft Flow használatával aktiv�
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/26/2019
+ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: 2c4ee6a2feb737bcafc64b1c8503c03757a53364
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5d1e9941244defbf84b20f95e9f2e0402bbe19f2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60887673"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64693595"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Hozzon létre munkafolyamatokat az IoT Central-összekötő a Microsoft Flow
 
@@ -101,9 +101,12 @@ Ez a szakasz bemutatja, hogyan eszközbeállítások, illetve egy mobileszközö
 
 1. Adjon meg új műveletet. Keresse meg a **egy eszköz frissítése az Azure IoT Central -** művelet.
 
-1. Válassza ki az alkalmazás a legördülő listából. Most szüksége lesz a frissíteni kívánt meglévő eszköz Azonosítóját. Kérheti, hogy az eszköz azonosítója, az IoT-központ az a **Device Explorer**.
+1. Válassza ki az alkalmazás a legördülő listából. Most szüksége lesz a frissíteni kívánt meglévő eszköz Azonosítóját. 
 
-    ![IoT-központ device explorer eszköz azonosítója](./media/howto-add-microsoft-flow/iotcdeviceid.png)
+    > [!NOTE] 
+    > **Az URL-cím található Azonosítóval kell használnia** meg az eszköz frissíti az eszköz részleteit tartalmazó oldalra. Az eszköz azonosítója, találhatók meg a device Explorerben az eszközök nem a Microsoft Flow használatához a megfelelőt.
+
+    ![IoT-központ azonosító URL-címről](./media/howto-add-microsoft-flow/iotcdeviceidurl.png)
 
 1. Frissítheti az eszköz nevét. Az eszköz tulajdonságok és a beállítások bármelyikét frissítéséhez válassza ki a frissíteni kívánt az eszköz az eszköz sablon a **eszköz sablon** legördülő listából. A művelet csempe kibontása a tulajdonságok és frissítheti beállítások megjelenítése.
 
@@ -117,19 +120,32 @@ Ez a szakasz bemutatja, hogyan eszközbeállítások, illetve egy mobileszközö
 
 ## <a name="get-device-information-in-a-workflow"></a>A munkafolyamat eszközadatok beolvasása
 
-Az eszköz azonosítója az eszköz információkat szerezhet a **az Azure IoT Central - eszközök beszerzése** művelet. Például eszköznév, eszköz sablon neve, tulajdonságértékeket és a munkafolyamat későbbi műveletekben átadása beállításértékeket adatai olvashatók be. Íme egy példa-munkafolyamat, amely továbbítja az ügyfél neve tulajdonság értéke az eszközről a Microsoft Teams.
+Az azonosító használatával eszköz információkat szerezhet a **az Azure IoT Central - eszközök beszerzése** művelet. 
+> [!NOTE] 
+> **Az URL-cím található Azonosítóval kell használnia** meg az eszköz frissíti az eszköz részleteit tartalmazó oldalra. Az eszköz azonosítója, találhatók meg a device Explorerben az eszközök nem a Microsoft Flow használatához a megfelelőt.
+
+Például eszköznév, eszköz sablon neve, tulajdonságértékeket és a munkafolyamat későbbi műveletekben átadása beállításértékeket adatai olvashatók be. Íme egy példa-munkafolyamat, amely továbbítja az ügyfél neve tulajdonság értéke az eszközről a Microsoft Teams.
 
    ![A folyamat get eszköz munkafolyamat](./media/howto-add-microsoft-flow/flowgetdevice.png)
 
 
 ## <a name="run-a-command-on-a-device-in-a-workflow"></a>A munkafolyamat egy eszközön a parancs futtatása
-A parancs futtatható egy eszközön, az eszköz azonosítója használatával a **Azure IoT Central - parancs futtatása** művelet. Kiválaszthatja, hogy a parancs futtatásához, és továbbítja a parancs paraméterei ezt a műveletet. Íme egy példa-munkafolyamat, amely egy újraindítási parancsot futtatja, a Microsoft Flow mobilalkalmazásban egy gomb.
+A parancs futtatható egy eszközön, az azonosító használatával a **Azure IoT Central - parancs futtatása** művelet. 
+
+> [!NOTE] 
+> **Az URL-cím található Azonosítóval kell használnia** meg az eszköz frissíti az eszköz részleteit tartalmazó oldalra. Az eszköz azonosítója, találhatók meg a device Explorerben az eszközök nem a Microsoft Flow használatához a megfelelőt.
+    
+Kiválaszthatja, hogy a parancs futtatásához, és továbbítja a parancs paraméterei ezt a műveletet. Íme egy példa-munkafolyamat, amely egy újraindítási parancsot futtatja, a Microsoft Flow mobilalkalmazásban egy gomb.
 
    ![A folyamat get eszköz munkafolyamat](./media/howto-add-microsoft-flow/flowrunacommand.png)
 
 ## <a name="delete-a-device-in-a-workflow"></a>A munkafolyamat eszköz törlése
 
-Egy eszközt a device ID használatával törölheti az **eszköz törlése az Azure IoT Central -** művelet. Íme egy példa-munkafolyamat, amely törli egy eszköz a Microsoft Flow mobilalkalmazásban egy gombra a leküldéses.
+Egy eszköz az azonosító használatával törölheti az **eszköz törlése az Azure IoT Central -** művelet. 
+> [!NOTE] 
+> **Az URL-cím található Azonosítóval kell használnia** meg az eszköz frissíti az eszköz részleteit tartalmazó oldalra. Az eszköz azonosítója, találhatók meg a device Explorerben az eszközök nem a Microsoft Flow használatához a megfelelőt.
+
+Íme egy példa-munkafolyamat, amely törli egy eszköz a Microsoft Flow mobilalkalmazásban egy gombra a leküldéses.
 
    ![A folyamat törlése eszköz munkafolyamat](./media/howto-add-microsoft-flow/flowdeletedevice.png)
 

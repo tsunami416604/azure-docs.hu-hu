@@ -11,30 +11,25 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 46a620900896d07273da22e53171330b85d3f1ec
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.date: 04/26/2019
+ms.openlocfilehash: 89ff11246c7cd36732df1332da94ec5318d7f1d7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360195"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574095"
 ---
-# <a name="azure-sql-database-purchasing-models"></a>Az Azure SQL Database vásárlási modellek
+# <a name="choose-between-the-vcore-and-the-dtu-purchasing-model"></a>A vcore magok és a DTU-vásárlási modell közül választhat
 
 Az Azure SQL Database lehetővé teszi, hogy teljes körűen felügyelt PaaS adatbázismotor, válassza ki a teljesítménnyel és költségekkel igényeinek megfelelő könnyű vásárlás. Az Azure SQL Database üzembe helyezési modelltől, függően válassza ki a vásárlási modell, amely a legjobban az igényeinek:
-
-- [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) (ajánlott), amely lehetővé teszi, hogy válassza ki a tárolási kapacitás pontos mennyisége és a számítási, hogy a számítási feladathoz szükséges.
-- [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) adja meg a csomagokban a leggyakoribb munkaterhelésekhez elosztott terhelésű számítási és tárolási csomagokat.
 
 Az Azure SQL Database üzemi modellekben található különböző vásárlási modell érhetők el:
 
 - A [önálló adatbázis](sql-database-single-databases-manage.md) és [rugalmas készlet](sql-database-elastic-pool.md) üzembe helyezési lehetőségei a [Azure SQL Database](sql-database-technical-overview.md) egyaránt kínál a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
 - A [felügyelt példány](sql-database-managed-instance.md) csak kínál az Azure SQL Database üzembe helyezési lehetősége a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
 
-> [!IMPORTANT]
-> A [szolgáltatásszint nagy kapacitású (előzetes verzió)](sql-database-service-tier-hyperscale.md) csak az önálló adatbázisok használata a virtuális mag modell megvásárlása nyilvános előzetes verzióban érhető el.
 
-Az alábbi táblázatos és hasonlítsa össze két vásárlási modell.
+Az alábbi táblázatos és hasonlítsa össze a vcore magok és a dtu-k vásárlási modell.
 
 |**Beszerzési modell**|**Leírás**|**A legjobb**|
 |---|---|---|
@@ -46,7 +41,10 @@ Az alábbi táblázatos és hasonlítsa össze két vásárlási modell.
 
 ## <a name="compute-costs"></a>Számítási költségeit
 
-A számítási költségeket tükrözi az összes számítási kapacitás, amely ki van építve az alkalmazás. Az üzleti kritikus szolgáltatási rétegben hogy automatikusan lefoglalni a legalább 3 replika. A számítási erőforrások a további lefoglalási megfelelően, a 2.7 x nagyobb az üzleti kritikus szolgáltatási rétegben, mint az általános célú szolgáltatásszinten lévő szolgáltatás díja az a Virtuálismag-alapú vásárlási modell. Ugyanezen okból, magasabb tárolási ár GB-onként kritikus fontosságú üzleti szolgáltatásszinten tartalmazza a nagy i/o és alacsony késést az SSD-tárhelyet. Egy időben a költség, a biztonsági mentési tár nem áll két szolgáltatási szintek között különböző mert mindkét esetben a standard szintű tárterülettel osztály használjuk.
+### <a name="provisioned-compute-costs"></a>Kiépített számítási költségei
+
+A kiépített számítási kapacitás a számítási költségeket az összes számítási kapacitás, amely ki van építve az alkalmazás jeleníti meg.  Az üzleti kritikus szolgáltatási rétegben hogy automatikusan lefoglalni a legalább 3 replika. A számítási erőforrások a további lefoglalási megfelelően, a 2.7 x nagyobb az üzleti kritikus szolgáltatási rétegben, mint az általános célú szolgáltatásszinten lévő szolgáltatás díja az a Virtuálismag-alapú vásárlási modell. Ugyanezen okból, magasabb tárolási ár GB-onként kritikus fontosságú üzleti szolgáltatásszinten tartalmazza a nagy i/o és alacsony késést az SSD-tárhelyet. Egy időben a költség, a biztonsági mentési tár nem áll két szolgáltatási szintek között különböző mert mindkét esetben a standard szintű tárterülettel osztály használjuk.
+
 
 ## <a name="storage-costs"></a>Tárolási költségek
 
@@ -110,7 +108,7 @@ Ha meg szeretne áttelepítést végezni egy meglévő helyszíni vagy SQL Serve
 
 A készleteket nagy számú, speciális felhasználási mintákkal rendelkező adatbázishoz tervezték. Egy adott adatbázis esetében ez a minta egy viszonylag rendszertelen kiugró kihasználtság jellemzi az alacsony kihasználtságú átlagos jellemzi. Az SQL Database automatikusan kiértékeli az SQL-adatbáziskiszolgálók adatbázisainak erőforrás-használati előzményeit, és felajánlja a megfelelő készletkonfigurációt az Azure Portalon. További információkért lásd: [Mikor érdemes rugalmas készletet használni?](sql-database-elastic-pool.md)
 
-## <a name="purchase-model-frequently-asked-questions-faq"></a>Beszerzési modell – gyakori kérdések (GYIK)
+## <a name="purchase-models-frequently-asked-questions-faq"></a>Beszerzési modell: gyakori kérdések (GYIK)
 
 ### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-database-to-a-vcore-based-service-tier"></a>Kell az alkalmazásom átalakítása a Virtuálismag-alapú szolgáltatási szinten a DTU-alapú adatbázis
 

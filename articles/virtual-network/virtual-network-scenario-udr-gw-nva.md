@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
-ms.openlocfilehash: c959ee3bea24955e3281feb9db66e4e0cadc8bf9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1bdc485dfb352144e8a8d0fb75965cbb78288e2c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61034163"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575579"
 ---
 # <a name="virtual-appliance-scenario"></a>Virtuális berendezés forgatókönyv
 Nagyobb méretű Azure-ügyfelek körében gyakran előfordul, hogy meg kell adni egy kétszintű alkalmazás csatlakozik az internethez, miközben lehetővé teszi a hozzáférést a háttérrendszer szintre helyszíni adatközpontból elérhetővé tett. Ez a dokumentum végigvezeti egy forgatókönyvet, felhasználó által megadott útvonalak (UDR), a VPN-átjáró és a hálózati virtuális berendezések üzembe helyezése egy kétrétegű környezet, amely megfelel a következő használatával:
@@ -30,14 +30,14 @@ Nagyobb méretű Azure-ügyfelek körében gyakran előfordul, hogy meg kell adn
 * Az Alkalmazáskiszolgáló teljes forgalmat a virtuális készüléken keresztül kell lépnie. A virtuális készülék és a háttérkiszolgáló teljes hozzáférés és a egy VPN-átjárót a helyszíni hálózatról érkező hozzáféréshez használható.
 * A rendszergazdák a tűzfal virtuális készülékek felügyelete a helyi számítógépükön képesnek kell lennie, a harmadik tűzfal kizárólag felügyeleti célokra használt virtuális berendezés.
 
-Ez a DMZ-t és a egy védett hálózati DMZ-t standard forgatókönyv. Ilyen forgatókönyv lehet létrehozni az Azure-ban az NSG-k, tűzfal virtuális berendezések vagy mindkettőt. Az alábbi táblázat néhány és a hátrányai NSG-k és a tűzfal virtuális berendezések között.
+Ez a DMZ-t és a egy védett hálózati standard szegélyhálózat (is knowns DMZ-t) hálózati forgatókönyv. Ilyen forgatókönyv lehet létrehozni az Azure-ban az NSG-k, tűzfal virtuális berendezések vagy mindkettőt. Az alábbi táblázat néhány és a hátrányai NSG-k és a tűzfal virtuális berendezések között.
 
 |  | Szakemberek számára | Hátrányok |
 | --- | --- | --- |
-| NSG |Költségek nélkül. <br/>Az Azure RBAC integrálva. <br/>Az ARM-sablonokat is létrehozhatók. |A nagyobb méretű környezetek eltérőek lehetnek a összetettségét. |
+| NSG |Költségek nélkül. <br/>Az Azure RBAC integrálva. <br/>Az Azure Resource Manager-sablonokban is létrehozhatók. |A nagyobb méretű környezetek eltérőek lehetnek a összetettségét. |
 | Tűzfal |Teljes körűen felügyelve az adatsíkhoz. <br/>Központi felügyeleti tűzfal konzolon keresztül. |Tűzfal készülék díja. <br/>Nincs integrálva az Azure RBAC. |
 
-A megoldás az alábbi tűzfal virtuális berendezések hálózati DMZ-t/védett Ez a forgatókönyv megvalósításához használja.
+A megoldás az alábbi tűzfal virtuális berendezések használja a szegélyhálózaton (DMZ) megvalósítása, illetve védett hálózati forgatókönyv.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 A környezet azt fent kifejtettük, az Azure-ban elérhető különböző funkcióit még ma, az alábbiak szerint telepítheti.
@@ -167,5 +167,5 @@ Ez a forgatókönyv üzembe helyezéséhez kövesse az alábbi magas szintű lé
 2. Ha azt szeretné, a virtuális hálózat üzembe helyezése referenciaszámítógépnek a helyszíni hálózat részét képező-erőforrások kiépítése **ONPREMRG**.
 3. Részét képező-erőforrások kiépítése **AZURERG**.
 4. Az alagút a kiépítése **onpremvnet** való **azurevnet**.
-5. Minden erőforrás kiosztása után jelentkezzen be **onpremvm2** és közötti kapcsolat teszteléséhez 10.0.3.101 pingelni **onpremsn2** és **azsn3**.
+5. Minden erőforrás kiosztása után jelentkezzen be a **onpremvm2** és közötti kapcsolat teszteléséhez 10.0.3.101 pingelni **onpremsn2** és **azsn3**.
 

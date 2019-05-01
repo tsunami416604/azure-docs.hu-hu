@@ -2,17 +2,17 @@
 title: Az Azure Application Gateway konfigurálása – áttekintés
 description: Ez a cikk ismerteti az Azure Application Gateway összetevői konfigurálása
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 4/30/2019
 ms.author: absha
-ms.openlocfilehash: 4b8e04babfffaf49d3719d8a7e90af16598814f4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 5bfd1f930c190e717e435856f424f0cdf80deb2c
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998906"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64946811"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfigurálása – áttekintés
 
@@ -71,7 +71,7 @@ A jelen esetben használja az Application Gateway-alhálózat NSG-k. Az alábbi 
 
 Felhasználó által megadott útvonalak (udr-EK) esetében a v1 Termékváltozatot támogatottak az Application Gateway-alhálózat, mindaddig, amíg azok kérés/válasz végpontok közötti kommunikáció nem módosítható. Ha például állíthat be egy UDR az Application Gateway-alhálózat, hogy a csomagok vizsgálata készülékként egy tűzfalat mutasson. Azonban meg kell győződnie arról, hogy a csomagot a vizsgálat után elérje a kívánt rendeltetési. Ezt a helytelen állapotmintát vagy forgalom-útválasztási viselkedés eredményezhet. Ez magában foglalja a megismert vagy alapértelmezett 0.0.0.0/0 útvonalakat, amelyek a virtuális hálózat az Azure ExpressRoute vagy VPN Gateway átjárók által lépnek.
 
-A v2 termékváltozat az udr-EK az Application Gateway-alhálózat nem támogatottak. További információkért lásd: [automatikus skálázást és az Application Gateway zóna redundancia](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#known-issues-and-limitations).
+A v2 termékváltozat az udr-EK az Application Gateway-alhálózat nem támogatottak. További információkért lásd: [Azure Application Gateway v2 szintű Termékváltozatot](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku).
 
 > [!NOTE]
 > Az állapot ellenőrzése az udr-EK használata az Application Gateway-alhálózat hatására a [háttérrendszer állapota nézet](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) megjelenik az "Ismeretlen". Az Application Gateway-naplók és mérőszámok sikertelen generációja is okoz. Azt javasoljuk, hogy nem használja udr-EK az Application Gateway-alhálózat, hogy a háttérrendszer állapota, naplók és metrikák is megtekintheti.
@@ -84,7 +84,7 @@ Nyilvános IP-cím nem az internettel nem érintkező belső végpont szüksége
 
 Csak 1 nyilvános IP-cím vagy 1 privát IP-cím támogatott. Az application gateway létrehozásakor kiválaszthatja az előtérbeli IP-címet.
 
-- Egy nyilvános IP-címek használatához hozzon létre egy új nyilvános IP-címet, vagy egy meglévő nyilvános IP-címet használja az application gateway ugyanazon a helyen. Ha létrehoz egy új nyilvános IP-címet, a kiválasztott IP-cím típusa (statikus vagy dinamikus) később nem módosítható. További információkért lásd: [statikus vagy dinamikus nyilvános IP-cím](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip-address).
+- Egy nyilvános IP-címek használatához hozzon létre egy új nyilvános IP-címet, vagy egy meglévő nyilvános IP-címet használja az application gateway ugyanazon a helyen. Ha létrehoz egy új nyilvános IP-címet, a kiválasztott IP-cím típusa (statikus vagy dinamikus) később nem módosítható. További információkért lásd: [statikus vagy dinamikus nyilvános IP-cím](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip-address).
 
 - Egy magánhálózati IP-címhez megadhat egy magánhálózati IP-címet az alhálózatról, ahol az application gateway létrejön. Ha nem ad meg egy, a rendszer automatikusan kiválasztja tetszőleges IP-címet az alhálózatról. További információkért lásd: [application gateway létrehozása belső terheléselosztóval](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
 
@@ -118,7 +118,7 @@ Válassza ki az előtérbeli IP-cím, amelyet szeretne társítani ehhez a figye
 
 Válassza ki az előtérbeli portot. Válassza ki a meglévő port, vagy hozzon létre egy újat. Válassza ki az értéket a [engedélyezett portok tartományát](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports). Nem csak a jól ismert portot, például a 80-as és 443-as, de a bármely engedélyezett, amely lehetővé teszi egyéni portot is használhat. Port figyelői nyilvános vagy privát néző figyelői is használható.
 
-### <a name="protocol"></a>Protokoll
+### <a name="protocol"></a>Protocol
 
 Válassza ki a HTTP vagy HTTPS:
 
@@ -259,7 +259,7 @@ Ez a funkció akkor hasznos, ha meg szeretné tartani a felhasználói munkamene
 
 A kapcsolat kiürítése segítségével szabályosan tervezett szolgáltatás frissítései során a háttérkészlet-tagok eltávolítása. Ezzel a beállítással egy háttér-készlet összes tagjának alkalmazhat szabály létrehozása során. Ez biztosítja, hogy egy háttérkészlet megszüntetéséhez regisztrálása példányai nem kapja meg új kérések. Ugyanakkor meglévő kérelmek engedélyezettek a beállított időn belül befejezni. Háttérkiszolgáló-példányokhoz, amely explicit módon törlődnek a háttérkészlet-egy API-hívás által a kapcsolat kiürítése vonatkozik. Háttérkiszolgáló-példányokhoz jelentett is vonatkozik *nem megfelelő állapotú* által az állapot-mintavételei.
 
-### <a name="protocol"></a>Protokoll
+### <a name="protocol"></a>Protocol
 
 Az Application Gateway támogatja a HTTP és HTTPS a háttérkiszolgálók érkező kérések útválasztására. Ha úgy dönt, hogy a HTTP, a forgalmat a háttér-kiszolgálókon nem titkosítottak. Ha a titkosítatlan kommunikáció nem elfogadható, válassza ki a HTTPS.
 

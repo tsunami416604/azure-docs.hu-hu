@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 28f2b395c7f9be1b194b500ef20456be8ff405b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 039b0951484a6bf57703d9a91d604c9c5e5c9a66
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61021282"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571172"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Az Azure Functions Python fejlesztői útmutatója
 
@@ -28,7 +28,7 @@ Ez a cikk bevezetést tapasztalatlan a Python használatával Azure Functions. A
 
 ## <a name="programming-model"></a>A programozási modell
 
-Egy Azure-függvényt egy állapot nélküli metódus az a Python-szkript, amely dolgozza fel a bemenetet és kimenetet kell lennie. Alapértelmezés szerint a futtatókörnyezet vár, ez egy globális módszerként nevű végrehajtandó `main()` a a `__init__.py` fájlt.
+Egy Azure-függvényt egy állapot nélküli metódus az a Python-szkript, amely dolgozza fel a bemenetet és kimenetet kell lennie. Alapértelmezés szerint a futtatókörnyezet vár a metódus egy globális módszerként nevű végrehajtandó `main()` a a `__init__.py` fájlt.
 
 Az alapértelmezett konfiguráció megadásával módosíthatja a `scriptFile` és `entryPoint` tulajdonságait a `function.json` fájl. Például a _function.json_ alábbi arra utasítja a modul használatához a _customentry()_ metódus az a _main.py_ fájlt, az Azure-függvény belépési pontját.
 
@@ -109,15 +109,16 @@ Megosztott kód egy külön mappában kell tárolni. Modulok SharedCode mappába
 from ..SharedCode import myFirstHelperFunction
 ```
 
-A Functions futtatókörnyezete által használt kötési bővítményeket vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](./functions-bindings-register.md#local-development-azure-functions-core-tools) Azure Functions Core Tools használatával. 
+A Functions futtatókörnyezete által használt kötési bővítményeket vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](./functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles) Azure Functions Core Tools használatával. 
 
 A függvényalkalmazáshoz az Azure Functions-projekt telepítésekor a FunctionApp mappa teljes tartalmát szerepelnie kell a csomag, de nem maga a mappa.
 
-## <a name="inputs"></a>Bemenetek
+## <a name="triggers-and-inputs"></a>Eseményindítók és a bemenetek
 
-Bemenetei között meg vannak osztva az Azure Functions két kategóriába sorolhatók: triggerbemenete és további adatokat. Bár ezek eltérnek a `function.json`, a használat értéke megegyezik a Python-kódban. Vegyük a következő kódrészlet például:
+Bemenetei között meg vannak osztva az Azure Functions két kategóriába sorolhatók: triggerbemenete és további adatokat. Bár ezek eltérnek a `function.json`, a használat értéke megegyezik a Python-kódban.  Kapcsolati karakterláncok eseményindító és a bemeneti források leképezhető értékek a `local.settings.json` helyileg a fájlt, és az alkalmazás beállításait, ha az Azure-ban futtatja. Vegyük a következő kódrészlet például:
 
 ```json
+// function.json
 {
   "scriptFile": "__init__.py",
   "bindings": [
@@ -139,7 +140,19 @@ Bemenetei között meg vannak osztva az Azure Functions két kategóriába sorol
 }
 ```
 
+```json
+// local.settings.json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "<azure-storage-connection-string>"
+  }
+}
+```
+
 ```python
+# __init__.py
 import azure.functions as func
 import logging
 
@@ -149,7 +162,8 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-Ha a függvény meghívása HTTP-kérelem a függvényt, átadott `req`. Egy bejegyzés az Azure Blob Storage alapján lehet beolvasni a _id_ URL-útvonal és lehetőségként elérhetővé tegyen `obj` függvény törzsében.
+Ha a függvény meghívása HTTP-kérelem a függvényt, átadott `req`. Egy bejegyzés az Azure Blob Storage alapján lehet beolvasni a _azonosító_ URL-útvonal és lehetőségként elérhetővé tegyen `obj` függvény törzsében.  Itt a storage-fiók megadva a kapcsolati karakterlánc található `AzureWebJobsStorage` Ez ugyanazt a tárfiókot a függvényalkalmazás által használt.
+
 
 ## <a name="outputs"></a>Kimenetek
 

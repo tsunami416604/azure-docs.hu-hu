@@ -1,64 +1,60 @@
 ---
-title: A Cloud Partner portálra, az Azure piactér lapján a virtuális gép |} A Microsoft Docs
+title: Virtuális gép piactér lapján a Cloud Partner portálra, az Azure Marketplace-en
 description: A piactér lapján az Azure piactér-beli Virtuálisgép-ajánlat létrehozásakor használt ismerteti.
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
-ms.date: 10/19/2018
-ms.author: pbutlerm
-ms.openlocfilehash: b1b62c68ef4e18f4d4d36a78078ad7431717b754
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/25/2019
+ms.author: pabutler
+ms.openlocfilehash: d9b259ba93be369658638d034f109a3a6ba4c4a4
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60332755"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938190"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Virtuális gép Marketplace lap
 
-A **Marketplace** lapján a **új ajánlat** lap lehetővé teszi, hogy adja meg a leendő ügyfelek-szerződések marketinges, értékesítési és jogi információk és származó érdeklődők kezeléséhez a Marketplace-en. A hosszú űrlap négy szakaszokból áll: **Áttekintés**, **Marketing-összetevők**, **felügyeleti vezethet**, és **jogi**. 
+A **Marketplace** lapján a **új ajánlat** lap lehetővé teszi, hogy adja meg a leendő ügyfelek-szerződések marketinges, értékesítési és jogi információk és származó érdeklődők kezeléséhez a Marketplace-en. A hosszú űrlap négy szakaszokból áll: **Áttekintés**, **Marketing-összetevők**, **felügyeleti vezethet**, és **jogi**.
+
 
 ## <a name="overview-section"></a>A szakasz áttekintése
 Ebben a szakaszban, az Azure Marketplace-ajánlat kapcsolatos általános információkat adja meg.  A hozzáfűzött csillag (*) az a mező nevét jelzi, hogy szükséges.
 
-![A piactér lapján a virtuális gépek az új ajánlat űrlap szakaszában – áttekintés](./media/publishvm_008.png)
+![A piactér lapján a virtuális gépek szakaszában – áttekintés](./media/publishvm_008.png)
 
-A következő táblázat ismerteti a cél és ezek a mezők tartalmát.
+A következő táblázat ismerteti a cél és ezek a mezők tartalmát. Kötelező mezőt csillag (*) rendszer feltehetően.
 
 |  **Mező**                |     **Leírás**                                                          |
 |  ---------                |     ---------------                                                          |
-| **Cím**                 | Az ajánlat, gyakran hosszabb, formális neve címe. Ezzel a beállítással hangsúlyosan a cím fog megjelenni a Marketplace-en.  Legfeljebb 50 karakter hosszúságú. |
-| **összegzés**               | Rövid célját vagy függvény megoldás.  A hosszabb 100 karakternél. |
-| **Hosszú összegzése**          | Cél vagy függvény megoldás.  Legfeljebb 256 karakter hosszúságú. |
-| **Leírás**           | Megoldás leírása.  Legfeljebb 3000 karakter hosszúságú támogatja az egyszerű HTML-formázás. |
-| **A Microsoft CSP viszonteladói csatornát** | Cloud Solution Providers (CSP) partner csatorna vehetnek részt már elérhető.  Lásd: [Cloud Solution Providers](../../cloud-solution-providers.md) további tájékoztatást a marketing, az ajánlat keretében a Microsoft CSP partner-csatornákon. |
-| **Marketing-azonosító**  | Egyedi URL-címet rendelni ehhez az ajánlathoz, jellemzően a szervezet és a megoldás nevét, legfeljebb 50 karakter hosszú lehet.  Példa: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
-| **Előfizetés azonosítókat előzetes verzió** | Adjon hozzá egy és 100 közötti előfizetési azonosítók a dokumentummegjelenítők. Ezek fehér felsorolt előfizetéssel hozzáfér az ajánlatra való közzététel után, mielőtt élő kerül. |
+| **Cím\***                 | Az ajánlat, gyakran hosszabb, formális neve címe. Ezzel a beállítással hangsúlyosan a cím fog megjelenni a Marketplace-en.  Legfeljebb 50 karakter hosszúságú. |
+| **Összefoglalás\***               | Rövid célját vagy függvény megoldás.  A hosszabb 100 karakternél. |
+| **Hosszú összegzése\***          | Cél vagy függvény megoldás.  Legfeljebb 256 karakter hosszúságú. |
+| **Leírás\***           | Megoldás leírása.  Legfeljebb 3000 karakter hosszúságú támogatja az egyszerű HTML-formázás. |
+| **A Microsoft CSP viszonteladói csatornát\*** | Cloud Solution Providers (CSP) partner csatorna vehetnek részt már elérhető.  Lásd: [Cloud Solution Providers](../../cloud-solution-providers.md) további tájékoztatást a marketing, az ajánlat keretében a Microsoft CSP partner-csatornákon. |
+| **Marketing-azonosító\***  | Egyedi URL-címet rendelni ehhez az ajánlathoz, jellemzően a szervezet és a megoldás nevét, legfeljebb 50 karakter hosszú lehet.  Példa: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
+| **Előfizetés azonosítókat előzetes verzió\*** | Adjon hozzá egy és 100 közötti előfizetési azonosítók a dokumentummegjelenítők. Ezek fehér felsorolt előfizetéssel hozzáfér az ajánlatra való közzététel után, mielőtt élő kerül. |
 | **Hasznos hivatkozások**          | URL-címek hozzáadása a dokumentációra, kibocsátási megjegyzései, – gyakori kérdések és így tovább. |
-| **Javasolt kategóriák (max. 5)** | Lehet, hogy az üzleti és technikai kategóriák kínáló többszörös kijelölés legjobb társítva.  Legfeljebb 5 engedélyezett.  |
+| **Javasolt kategóriák (max. 5)\*** | Lehet, hogy az üzleti és technikai kategóriák kínáló többszörös kijelölés legjobb társítva.  Legfeljebb 5 engedélyezett.  |
 |  |  |
 
 
 ## <a name="marketing-artifacts-section"></a>Marketing-összetevők szakasz
 
-Ez a második szakasz három alszakaszok oszlik: **Emblémák**, **képernyőkép**, és **videók**. Emblémák az egyetlen szükséges összetevőket, marketing, azonban az összes ajánlott ügyfél jogorvoslati erősen ajánlott.
+Ez a második szakasz három alszakaszok oszlik: **Emblémák**, **képernyőkép**, és **videók**. Emblémák az egyetlen szükséges összetevőket, marketing, azonban az összes ajánlott ügyfél jogorvoslati erősen ajánlott. 
 
 ![A piactér lapján a virtuális gépek az új ajánlat űrlap összetevők szakaszában marketing](./media/publishvm_009.png)
+
+A következő táblázat ismerteti a cél és ezek a mezők tartalmát. Kötelező mezőt csillag (*) rendszer feltehetően.
 
 |  **Mező**                |     **Leírás**                                                          |
 |  ---------                |     ---------------                                                          |
 | *Emblémát*  |  |
-| **Kis**                 | 40 x 40 képpontos .ico bitkép                                                      |
-| **Közepes**                | 90 x 90 képpontos .ico bitkép                                                      |
-| **Nagy méretű**                 | 115 x 115 képpontos .ico bitkép                                                   |
-| **Széles körű**                  | 255 x 115 képpontos .ico bitkép                                                    |
+| **Kis\***                 | 40 x 40 képpontos .ico bitkép                                                      |
+| **Közepes\***                | 90 x 90 képpontos .ico bitkép                                                      |
+| **Nagy méretű\***                 | 115 x 115 képpontos .ico bitkép                                                   |
+| **Széles körű\***                  | 255 x 115 képpontos .ico bitkép                                                    |
 | **Fő kép**                  | 815 x 290 bitkép.  Nem kötelező, azonban egyszer feltöltött a hero ikon nem lehet törölni. |
 | *Képernyőképek*  | Nem kötelező, de legfeljebb öt képernyőképek kiszolgálónként Termékváltozat. |
 | **Name (Név)**                  | Neve vagy címe <!-- TODO - max char length? none specified in UI -->                               |
@@ -67,8 +63,7 @@ Ez a második szakasz három alszakaszok oszlik: **Emblémák**, **képernyőké
 | **Name (Név)**                  | Neve vagy címe  <!-- TODO - max char length? -->                              |
 | **Hivatkozás**                  | Videó URL-címe, YouTube vagy Vimeo tárolt                                        |
 | **Miniatűr**             | 533 x 324 bitkép                                                               |
-|  |  |
-
+|   |   |
 
 ### <a name="logo-guidelines"></a>Emblémával kapcsolatos irányelvek
 
@@ -105,7 +100,6 @@ Az alábbi képen láthatja, hogyan Marketinginformáció jelenjen meg a Microso
 
 
 ## <a name="lead-management-section"></a>Elégtelen területén
-<!-- this all should be referenced in a common location for lead management, not in this file. nothing unique for a vm specifically. -->
 
 A harmadik szakasz lehetővé teszi, hogy összegyűjtse az ügyfelek az Azure Marketplace-ajánlat az új potenciális ügyfeleket. A következő tárolási lehetőségek (lehetőséget a legördülő listából) az érdeklődők adatait kínál.
 
@@ -122,15 +116,16 @@ Után az ajánlat közzététele sikeresen megtörtént, az érdeklődő kapcsol
 
 ## <a name="legal-section"></a>Jogi szakasz
 
-Ez a szakasz utolsó lehetővé teszi, hogy a két jogi dokumentumok ajánlatok szükséges: Adatvédelmi szabályzat és a használati feltételeket.
+Ez a szakasz utolsó lehetővé teszi, hogy a szükséges jogi dokumentumok ajánlatok szükséges.  
 
-|  **Mező**                |     **Leírás**                                                          |
-|  ---------                |     ---------------                                                          |
-| **Adatvédelmi szabályzat URL-címe**    | A közzétett adatvédelmi szabályzat URL-címe                                            |
-| **Használati feltételek**          | egyszerű szöveg vagy egyszerű HTML házirend.  <!-- TODO - max char length? -->       |
+|  **Mező**                    |     **Leírás**                                        |
+|  ---------                    |     ---------------                                        |
+| **Adatvédelmi szabályzat URL-címe\***      | A közzétett adatvédelmi szabályzat URL-címe                          |
+| **Általános szerződési használni?\***  |   |
+| **Használati feltételek\***            | egyszerű szöveg vagy egyszerű HTML házirend.                       |
 |  |  |
 
-<br/>
+
+## <a name="next-steps"></a>További lépések
 
 A következő [támogatja](./cpp-support-tab.md) lap, Ön biztosítja műszaki és felhasználói támogatási információk az ajánlatban.
-

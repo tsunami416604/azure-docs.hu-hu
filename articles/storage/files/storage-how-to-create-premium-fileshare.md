@@ -1,6 +1,6 @@
 ---
-title: A prémium szintű Azure file storage-fiók létrehozása
-description: Ebből a cikkből megismerheti, hogyan hozhat létre egy prémium szintű Azure file storage-fiókot és a egy prémium szintű fájlmegosztást.
+title: Filestorage az Azure storage-fiók létrehozása
+description: Ebben a cikkben megismerheti, hogyan hozhat létre egy filestorage (előzetes verzió) és a egy prémium szintű fájlmegosztást.
 services: storage
 author: roygara
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 72dec14dde47580313e57bb3b8d7315604929277
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 0eca706c9082b1fa60e13a0878fbb3061425c9bf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60844552"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574422"
 ---
 # <a name="how-to-create-an-azure-premium-file-share"></a>Egy prémium szintű Azure-fájlmegosztás létrehozása
 
-A FileStorage (előzetes verzió) tárfióktípus Azure Files lehetővé teszi a prémium szintű teljesítményt nyújt a fájlmegosztásokat hozhat létre egy új csomag jelöli. Ezeket a fájlmegosztásokat a magas teljesítmény és a vállalati alkalmazásokat, így konzisztens alacsony késleltetésű, magas iops-érték és nagy átviteli sebességű megosztások tervezték.
+A filestorage (előzetes verzió) tárfióktípus Azure Files lehetővé teszi a prémium szintű teljesítményt nyújt a fájlmegosztásokat hozhat létre egy új csomag jelöli. Ezeket a fájlmegosztásokat a magas teljesítmény és a vállalati alkalmazásokat, így konzisztens alacsony késleltetésű, magas iops-érték és nagy átviteli sebességű megosztások tervezték.
 
 Ez a cikk bemutatja, hogyan hozzon létre az új fiók típusa [az Azure portal](https://portal.azure.com/), az Azure PowerShell és az Azure CLI.
 
@@ -31,7 +31,7 @@ Hozzáférhet az Azure Storage, Azure-előfizetésre lesz szüksége. Ha még ni
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-### <a name="create-a-filestorage-preview-storage-account"></a>FileStorage (előzetes verzió) storage-fiók létrehozása
+### <a name="create-a-filestorage-preview-storage-account"></a>Filestorage (előzetes verzió) storage-fiók létrehozása
 
 Most már készen áll a tárfiók létrehozásához.
 
@@ -115,7 +115,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ### <a name="create-a-filestorage-preview-storage-account"></a>Filestorage (előzetes verzió) storage-fiók létrehozása
 
-A PowerShell (előzetes verzió) FileStorage storage-fiók létrehozásához használja a [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) parancsot:
+A PowerShell (előzetes verzió) filestorage storage-fiók létrehozásához használja a [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) parancsot:
 
 ```powershell
 $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fileshowto" -SkuName "Premium_LRS" -Location "westus2" -Kind "FileStorage"
@@ -123,7 +123,7 @@ $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fil
 
 ### <a name="create-a-premium-file-share"></a>Prémium szintű fájlmegosztás létrehozása
 
-Most, hogy van egy FileStorage fiókja, létrehozhat egy prémium szintű fájlmegosztást. Használja a [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) parancsmaggal hozzon létre egyet.
+Most, hogy van egy filestorage fiókja, létrehozhat egy prémium szintű fájlmegosztást. Használja a [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) parancsmaggal hozzon létre egyet.
 
 > [!NOTE]
 > Létesített megosztás méretek által meghatározott a fájlmegosztás kvótájának fájlmegosztások számlázása a kiosztott méretét, tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/storage/files/) további részletekért.
@@ -168,9 +168,9 @@ az group create `
     --location westus2
 ```
 
-### <a name="create-a-filestorage-preview-storage-account"></a>FileStorage (előzetes verzió) storage-fiók létrehozása
+### <a name="create-a-filestorage-preview-storage-account"></a>Filestorage (előzetes verzió) storage-fiók létrehozása
 
-Az Azure parancssori felületen FileStorage (előzetes verzió) storage-fiók létrehozásához használja a [az tárfiók létrehozása](/cli/azure/storage/account) parancsot.
+Az Azure parancssori felületen filestorage (előzetes verzió) storage-fiók létrehozásához használja a [az tárfiók létrehozása](/cli/azure/storage/account) parancsot.
 
 ```azurecli-interactive
 az storage account create `
@@ -194,7 +194,7 @@ STORAGEKEY=$(az storage account keys list \
 
 ### <a name="create-a-premium-file-share"></a>Prémium szintű fájlmegosztás létrehozása
 
-Most, hogy van egy FileStorage fiókja, létrehozhat egy prémium szintű fájlmegosztást. Használja a [az tárolási fájlmegosztás létrehozása](/cli/azure/storage/share) parancs használatával hozzon létre egyet.
+Most, hogy van egy filestorage fiókja, létrehozhat egy prémium szintű fájlmegosztást. Használja a [az tárolási fájlmegosztás létrehozása](/cli/azure/storage/share) parancs használatával hozzon létre egyet.
 
 > [!NOTE]
 > Létesített megosztás méretek által meghatározott a fájlmegosztás kvótájának fájlmegosztások számlázása a kiosztott méretét, tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/storage/files/) további részletekért.

@@ -1,25 +1,18 @@
 ---
-title: Az Azure Application ajánlat előfeltételei |} A Microsoft Docs
+title: Az Azure Application ajánlat előfeltételei |} Az Azure Marketplace-en
 description: Az előfeltételek az Azure-alkalmazások közzététele az Azure Marketplace-en kínálnak.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: pbutlerm
-ms.openlocfilehash: df127eec662f8598246f276ef9b1608ae3021512
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: 296f843f9d09b57e12e867700f456126eca128b3
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60744924"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942883"
 ---
 # <a name="azure-application-prerequisites"></a>Az Azure application Előfeltételek
 
@@ -36,7 +29,7 @@ A technikai követelményekről a következő elemeket tartalmazza:
 * Az Azure gyorsindítási sablonok.<br> További információkért lásd:
 
   * [Az Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/). A közösségtől származó sablonok révén hatékonyabban helyezheti üzembe az Azure-erőforrásokat az Azure Resource Managerrel. Az Azure Resource Manager lehetővé teszi, hogy alkalmazásait egy deklaratív sablon használatával helyezze üzembe. Egyetlen sablonnal több szolgáltatást is üzembe helyezhet azok függőségeivel együtt. Ugyanazt a sablont újra és újra, az alkalmazás életciklusának minden fázisában felhasználhatja az alkalmazás üzembe helyezéséhez.
-  * [GitHub: Az Azure Resource Manager gyorsindítási sablonok](https://github.com/azure/azure-quickstart-templates). Ebben a tárházban az összes jelenleg elérhető Azure Resource Manager sablon a Közösség által biztosított tartalmazza. Egy sablon kereshető indexet kell tartani, https://azure.microsoft.com/en-us/documentation/templates/.
+  * [GitHub: Az Azure Resource Manager gyorsindítási sablonok](https://github.com/azure/azure-quickstart-templates). Ebben a tárházban az összes jelenleg elérhető Azure Resource Manager sablon a Közösség által biztosított tartalmazza. Egy sablon kereshető indexet kell tartani, https://azure.microsoft.com/documentation/templates/.
 * UI-definíció létrehozása<br>
 További információkért lásd: [létrehozása az Azure portal felhasználói felületet a felügyelt alkalmazás](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview). Ez a cikk az alapfogalmakat, a createUiDefinition.json fájl mutatja be. Az Azure Portalon ezt a fájlt használja egy felügyelt alkalmazás létrehozásához a felhasználói felület létrehozásához.
 
@@ -50,7 +43,7 @@ Az üzleti követelmények a következők a következő eljárási, és a jogi s
 >[!NOTE]
 >A Cloud Partner portálra való bejelentkezéshez ugyanazt a Microsoft Developer Center regisztrációs fiókot kell használnia. Az Azure piactér-i ajánlatainak közzétételéhez egyetlen Microsoft-fiókkal kell rendelkeznie. Ez a fiók nem lehet adott egyes szolgáltatásokat vagy ajánlatokat.
 
-* A vállalatnak (vagy az leányvállalatának) kell lennie egy értékesítési-a-ország az Azure piactér által támogatott. Ezekben az országokban aktuális listáját lásd: [a Microsoft Azure Marketplace részvételi szabályzata](https://azure.microsoft.com/support/legal/marketplace/participation-policies/).
+* A vállalatnak (vagy az leányvállalatának) értékesítési-a-országot/régiót az Azure piactér által támogatott kell lennie. Ezekben az országokban/régiókban aktuális listáját lásd: [a Microsoft Azure Marketplace részvételi szabályzata](https://azure.microsoft.com/support/legal/marketplace/participation-policies/).
 * A termék úgy, hogy az Azure piactér által támogatott számlázási modellek kompatibilis licenccel kell rendelkezniük. További információkért lásd: [számlázási lehetőségekkel](https://docs.microsoft.com/azure/marketplace/marketplace-commercial-transaction-capabilities-and-considerations) az Azure piactéren.
 * Ön felelős az ügyfelek számára elérhetővé tétele az műszaki támogatást, olyan üzletileg ésszerű módon. Ez a támogatás ingyenes, fizetős, vagy közösségi megközelítések keresztül lehet.
 * Ön felelős a szoftver- és külső függőségek licencelése.

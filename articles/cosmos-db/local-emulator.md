@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 1db103fe46db292e2aa41b648c0ace16fd450d90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ac2510b97e083cbbcd6529feb6f02fa17455fcb8
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61043185"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925509"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulatort használja a helyi fejlesztési és tesztelési célra
 
@@ -153,7 +153,7 @@ Indítsa el az emulátor egy rendszergazdai parancssorból az "/ EnableCassandra
 
 * [Telepítse a Python 2.7-es](https://www.python.org/downloads/release/python-2716/)
 
-* [Cassandra CLI/CQLSH telepítése](http://cassandra.apache.org/download/)
+* [Cassandra CLI/CQLSH telepítése](https://cassandra.apache.org/download/)
 
 * Egy normál parancssori ablakban futtassa a következő parancsokat:
 
@@ -181,7 +181,7 @@ Indítsa el az emulátor egy rendszergazdai parancssorból az "/ EnableCassandra
 
 Indítsa el az emulátor egy rendszergazdai parancssorból az "/ EnableGremlinEndpoint". Azt is megteheti azt is beállíthatja a környezeti változó `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
 
-* [Az apache-tinkerpop-gremlin-konzol-3.3.4 telepítése](http://tinkerpop.apache.org/downloads.html)
+* [Az apache-tinkerpop-gremlin-konzol-3.3.4 telepítése](https://tinkerpop.apache.org/downloads.html)
 
 * Az Adatkezelőben az emulátorban hozzon létre egy adatbázist a "db1" és a egy gyűjtemény "coll1"; a partíciós kulcs válassza a "/ nevezze el"
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: df987d1e13cb5330842fbab41dae96b24b581ddb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2b9706241bd65ee75869d8b1fe58c6922d9e246a
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60765571"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64951534"
 ---
 ## <a name="prepare-your-repository"></a>A tárház előkészítése
 
@@ -29,7 +29,7 @@ A Azure App Service Kudu-buildelési kiszolgáló automatikus buildek lekérés�
 | Python (csak Windows) | _\*.PY_, _requirements.txt_, vagy _runtime.txt_ |
 | HTML | _default.htm_, _default.html_, _default.asp_, _index.htm_, _index.html_, vagy  _Iisstart.htm_ |
 | WebJobs | _\<job_name > / run. \<bővítmény >_ alatt _alkalmazás\_Data/feladatok/folyamatos_ (a folyamatos webjobs-feladatok) vagy _alkalmazás\_Data/feladatok/triggered_ (az aktivált Webjobs-feladatok). További információkért lásd: [Kudu WebJobs-dokumentáció](https://github.com/projectkudu/kudu/wiki/WebJobs). |
-| Functions | Lásd: [Azure Functions – folyamatos üzembe helyezés](../articles/azure-functions/functions-continuous-deployment.md#continuous-deployment-requirements). |
+| Functions | Lásd: [Azure Functions – folyamatos üzembe helyezés](../articles/azure-functions/functions-continuous-deployment.md#requirements-for-continuous-deployment). |
 
 Az üzembe helyezés testreszabásához, például egy _.deployment_ fájlt az adattár gyökérkönyvtárában. További információkért lásd: [testre szabhatja a központi telepítések](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) és [egyéni telepítési parancsfájl](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script).
 

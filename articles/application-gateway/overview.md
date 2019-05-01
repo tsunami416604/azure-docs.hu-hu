@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 4/18/2019
+ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: 91e94c70444430725ffec836d1663aef99eb5496
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 78dd4b31991a15d3d946c47c5394f64bb3afea95
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60715945"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947270"
 ---
 # <a name="what-is-azure-application-gateway"></a>Mi az Azure Application Gateway?
 
@@ -21,48 +21,29 @@ Az Azure Application Gateway egy webes forgalomra vonatkozó terheléselosztó, 
 
 ![Az Application Gateway fogalmi](media/overview/figure1-720.png)
 
-Az Application Gateway segítségével azonban még részletesebben kezelheti mindezt. A forgalmat például a bejövő URL-cím alapján irányíthatja. Tehát ha a bejövő URL-cím a `/images` kifejezést tartalmazza, a forgalmat adott, képekre konfigurált kiszolgálókra irányíthatja (azaz egy készletbe). Ha az URL-cím a `/video` kifejezést tartalmazza, a forgalom egy másik, videók számára optimalizált készlethez kerül.
+Az Application Gateway átjáróhoz is teheti további attribútumok HTTP-kérések, például URI elérési útját vagy a gazdagép fejlécek alapján útválasztási döntéseket hozhat. A forgalmat például a bejövő URL-cím alapján irányíthatja. Tehát ha a bejövő URL-cím a `/images` kifejezést tartalmazza, a forgalmat adott, képekre konfigurált kiszolgálókra irányíthatja (azaz egy készletbe). Ha `/video` van az URL-címben a adatforgalmat egy másik készlet, amely videók van optimalizálva.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1-720.png)
 
-Ezt a fajta útválasztást alkalmazásrétegbeli (OSI 7. réteg) terheléselosztásnak nevezzük. Az Azure Application Gateway URL-alapú és egyéb útválasztásra is képes. 
+Ezt a fajta útválasztást alkalmazásrétegbeli (OSI 7. réteg) terheléselosztásnak nevezzük. Az Azure Application Gateway URL-alapú és egyéb útválasztásra is képes.
 
 Az Azure Application Gateway a következő funkciókkal rendelkezik:
 
-## <a name="autoscaling-public-preview"></a>Az automatikus skálázás nyilvános előzetes verziója
-
-A jelen cikkben ismertetett szolgáltatások mellett az Application Gateway nyilvános előzetes verziója egy új Termékváltozatban [Standard_V2], így az automatikus skálázás és egyéb fontos teljesítményjavítás is kínál.
-
-- **Automatikus skálázás** – Az automatikus skálázású termékváltozat lehetővé teszi az üzemelő Application Gateway- vagy WAF-példányok esetében a változó adatforgalmi terhelési mintázatok alapján történő vertikális fel- és leskálázást. Az automatikus skálázással elkerülhető, hogy már a kiépítés során meg kelljen határozni az üzemelő példány méretét vagy a példányszámot. 
-
-- **Zónaredundancia**  – Az üzemelő Application Gateway- vagy WAF-példányok átfoghatnak több rendelkezésre állási zónát is, így nem kell minden egyes zónában külön Application Gateway-példányokat kiépíteni és átléptetni a Traffic Managerrel.
-
-- **Statikus virtuális IP-cím** – Az Application Gateway virtuális IP-címe mostantól kizárólag statikus virtuális IP-cím lehet. Így biztosítható, hogy az Application Gatewayhez társított virtuális IP-cím újraindítást követően se módosuljon.
-
-- **Gyorsabb üzembe helyezés és frissítés** az általánosan elérhető termékváltozathoz képest. 
-
-- **Ötször hatékonyabb SSL-kiszervezés** az általánosan elérhető termékváltozathoz képest.
-
-Az Application Gateway nyilvános előzetes verziójú funkcióival kapcsolatban további információt az [automatikus skálázású és zónaredundáns Application Gatewayt (nyilvános előzetes verzió)](application-gateway-autoscaling-zone-redundant.md) bemutató cikk tartalmaz.
-
 ## <a name="secure-sockets-layer-ssl-termination"></a>Secure Sockets Layer- (SSL-) lezárás
 
-Az Application Gateway támogatja az SSL-lezárást az átjárónál, ami után a forgalom rendszerint titkosítatlanul áramlik a háttérkiszolgálókhoz. Ez a funkció lehetővé teszi, hogy a webkiszolgálók megszabaduljanak a magas titkosítási és visszafejtési üzemeltetési költségektől. Azonban a kiszolgálókhoz néha titkosítatlan kommunikáció nem elfogadható megoldás. Ezt okozhatja a biztonsági követelmények, megfelelőségi előírások, vagy az alkalmazás csak biztonságos kapcsolatot fogad el. Ezekhez az alkalmazásokhoz az application gateway támogatja a teljes körű SSL-titkosítást.
+Az Application Gateway támogatja az SSL-lezárást az átjárónál, ami után a forgalom rendszerint titkosítatlanul áramlik a háttérkiszolgálókhoz. Ez a funkció lehetővé teszi, hogy a webkiszolgálók megszabaduljanak a magas titkosítási és visszafejtési üzemeltetési költségektől. Azonban a kiszolgálókhoz néha titkosítatlan kommunikáció nem elfogadható megoldás. Ez lehet miatt a biztonsági követelmények, megfelelőségi előírások, vagy az alkalmazás csak biztonságos kapcsolatot fogad el. Ezekhez az alkalmazásokhoz az application gateway támogatja a teljes körű SSL-titkosítást.
 
-## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Az Azure Kubernetes Service (AKS) bejövőforgalom-vezérlője (előzetes verzió) 
+## <a name="autoscaling"></a>Automatikus skálázás
 
-Az Application Gateway bejövőforgalom-vezérlője podként fut az AKS-fürtön belül, és lehetővé teszi az Application Gateway egy AKS-fürt bemeneti pontjaként való üzemeltetését. Ez az csak az Application Gateway v2 is támogatja.
+Az Application Gateway vagy WAF történő üzembe helyezésekre Standard_v2 vagy WAF_v2 Termékváltozat támogatja az automatikus skálázást, és elvégezhetik a különféle skálázási vagy alapuló forgalmi terhelés minták módosítása. Az automatikus skálázással elkerülhető, hogy már a kiépítés során meg kelljen határozni az üzemelő példány méretét vagy a példányszámot. Az Application Gateway standard_v2 és WAF_v2 szolgáltatásokkal kapcsolatos további információkért lásd: [az automatikus skálázás v2 szintű Termékváltozatot](application-gateway-autoscaling-zone-redundant.md).
 
-További információt az [Azure Application Gateway bejövőforgalom-vezérlőjét](https://azure.github.io/application-gateway-kubernetes-ingress/) ismertető részben talál.
+## <a name="zone-redundancy"></a>A Zone redudancy
 
-## <a name="connection-draining"></a>Kapcsolatkiürítés
+Egy Application Gateway vagy WAF történő üzembe helyezésekre Standard_v2 vagy WAF_v2 Termékváltozat több rendelkezésre állási zónák, tartalék rugalmasságot kínál, és szükségtelenné kiépítése külön Application Gateway átjárók, minden zónában is kiterjedhetnek.
 
-A kapcsolatkiürítéssel zökkenőmentesen végrehajtható a háttérkészlettagok eltávolítása a tervezett szolgáltatásfrissítések során. E beállítás engedélyezése háttérbeli HTTP-beállítással történik, és a szabálylétrehozás keretében az adott háttérkészlet összes tagjára alkalmazható. Az engedélyezést követően az Application Gateway gondoskodik arról, hogy azon háttérkészletbeli példányok, amelyek regisztrációja megszüntetés alatt áll, ne fogadjanak új kéréseket, a meglévő kérések viszont végre legyenek hajtva a megadott időkorláton belül. Ez egyaránt vonatkozik azokra a háttérpéldányokra, amelyek API-hívással, explicit módon lettek eltávolítva a háttérkészletből, és azokra is, amelyeket az állapot-mintavételek „Nem kifogástalan” állapotúnak minősítenek.
+## <a name="static-vip"></a>Statikus virtuális IP-cím
 
-## <a name="custom-error-pages"></a>Egyéni hibalapok
-Az Application Gatewayjel testreszabhatók a hibaoldalak. Az egyéni hibaoldalakon feltüntetheti saját védjegyeit, és egyéni elrendezést használhat.
-
-További információt az [egyéni Application Gateway-hibaoldalak létrehozását ismertető részben](custom-error.md) talál.
+Az application gateway virtuális IP-CÍMEK Standard_v2 vagy WAF_v2 Termékváltozat kizárólag támogatja a statikus VIP típusa. Ez biztosítja, hogy az application gateway társított virtuális IP-CÍMEK az Application Gateway életciklusa alatt még nem változik.
 
 ## <a name="web-application-firewall"></a>Web application firewall (Webalkalmazási tűzfal)
 
@@ -92,9 +73,9 @@ További információkért lásd: [több helyen üzemeltetése az Application Ga
 
 ## <a name="redirection"></a>Átirányítás
 
-Számos webalkalmazás esetében gyakori eset az automatikus HTTP–HTTPS átirányítás annak érdekében, hogy az alkalmazás és a felhasználói közötti kommunikáció titkosított útvonalon történjen. 
+Számos webalkalmazás esetében gyakori eset az automatikus HTTP–HTTPS átirányítás annak érdekében, hogy az alkalmazás és a felhasználói közötti kommunikáció titkosított útvonalon történjen.
 
-Régebben olyan technikákat alkalmaztak ehhez, mint egy dedikált készlet létrehozása, amelynek egyetlen célja a bejövő HTTP-kérelmek átirányítása HTTPS-re. Az Application Gateway támogatja a forgalom az Application Gateway alapján való átirányításának lehetőségét. Ez leegyszerűsíti az alkalmazáskonfigurációt, optimalizálja az erőforrás-használatot, és új átirányítási forgatókönyveket támogat, például a globális és útvonalalapú átirányítást. Az Application Gateway átirányítási támogatása nem csak a HTTP–HTTPS átirányításra vonatkozik. Ez egy általános átirányítási mechanizmus, így a szabályokkal bármilyen megadott portról és portra átirányíthat. A szolgáltatás a külső webhelyre való átirányítást is támogatja.
+Korábban használt módszerek például a dedikált készlet létrehozásához, amelynek egyetlen célja, hogy megkapja a HTTP – HTTPS kérelmek átirányítása. Az Application Gateway támogatja a forgalom az Application Gateway alapján való átirányításának lehetőségét. Ez leegyszerűsíti az alkalmazáskonfigurációt, optimalizálja az erőforrás-használatot, és új átirányítási forgatókönyveket támogat, például a globális és útvonalalapú átirányítást. Application Gateway átirányítás-támogatás nem korlátozódik a HTTP – HTTPS átirányításról önálló. Ez egy általános átirányítási mechanizmus, így a szabályokkal bármilyen megadott portról és portra átirányíthat. A szolgáltatás a külső webhelyre való átirányítást is támogatja.
 
 Az Application Gateway átirányítási támogatása a következő funkciókat nyújtja:
 
@@ -112,24 +93,43 @@ A Cookie-alapú munkamenet-affinitás akkor hasznos, ha egy felhasználói munka
 
 Az Application Gateway natív támogatást nyújt a Websocket- és HTTP/2-protokollok számára. Kizárólag WebSocket-támogatásra vonatkozó felhasználói beállítás nem létezik.
 
-A WebSocket és a HTTP/2 protokollok teljes körű duplex kommunikációt tesznek lehetővé egy kiszolgáló és egy ügyfél között egy hosszú ideig futó TCP-kapcsolaton. Ez interaktívabb kommunikációt eredményez a webkiszolgáló és az ügyél között, amely anélkül marad kétirányú, hogy a HTTP-alapú implementációkban kötelező lekérdezésekre lenne szükség. A HTTP-vel ellentétben ezek a protokollok alacsony többletterheléssel bírnak, és több kérelem/válasz típusú forgalomhoz is használhatják ugyanazt a TCP-kapcsolatot, ami az erőforrások hatékonyabb kihasználását eredményezi. Ezek a protokollok a hagyományos, 80-as és 443-as HTTP-portokon működnek.
+A WebSocket és a HTTP/2 protokollok teljes körű duplex kommunikációt tesznek lehetővé egy kiszolgáló és egy ügyfél között egy hosszú ideig futó TCP-kapcsolaton. Ez interaktívabb kommunikációt eredményez a webkiszolgáló és az ügyél között, amely anélkül marad kétirányú, hogy a HTTP-alapú implementációkban kötelező lekérdezésekre lenne szükség. Ezeket a protokollokat rendelkeznek alacsony többletterhelést okoz, ellentétben a HTTP-n, és felhasználhatja az azonos TCP-kapcsolat a több kérés/válasz hatékonyabb erőforrás-használat eredményez. Ezek a protokollok a hagyományos, 80-as és 443-as HTTP-portokon működnek.
 
-További információkért lásd: [WebSocket-támogatás](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) és [HTTP/2-támogatás](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support). 
+További információkért lásd: [WebSocket-támogatás](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) és [HTTP/2-támogatás](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http2-support).
 
-## <a name="rewrite-http-headers-public-preview"></a>Újraírási HTTP-fejléceket (nyilvános előzetes verzió)
+## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Az Azure Kubernetes Service (AKS) bejövőforgalom-vezérlője (előzetes verzió) 
+
+Az Application Gateway bejövőforgalom-vezérlője podként fut az AKS-fürtön belül, és lehetővé teszi az Application Gateway egy AKS-fürt bemeneti pontjaként való üzemeltetését. Ez az csak az Application Gateway v2 is támogatja.
+
+További információt az [Azure Application Gateway bejövőforgalom-vezérlőjét](https://azure.github.io/application-gateway-kubernetes-ingress/) ismertető részben talál.
+
+## <a name="connection-draining"></a>Kapcsolatkiürítés
+
+A kapcsolatkiürítéssel zökkenőmentesen végrehajtható a háttérkészlettagok eltávolítása a tervezett szolgáltatásfrissítések során. E beállítás engedélyezése háttérbeli HTTP-beállítással történik, és a szabálylétrehozás keretében az adott háttérkészlet összes tagjára alkalmazható. Engedélyezve van, az Application Gateway biztosítja a háttérkészlet megszüntetéséhez regisztrálása példányainak miközben lehetővé teszi a meglévő kérések végrehajtásához beállított időkorláton belül nem kap minden új kérelem. Ez vonatkozik, amelyek egy API-hívás által a a háttérkészlet explicit módon törlődnek mind háttérpéldányokkal jelentett nem megfelelő állapot-mintavételei határoz meg.
+
+## <a name="custom-error-pages"></a>Egyéni hibalapok
+
+Az Application Gatewayjel testreszabhatók a hibaoldalak. Az egyéni hibaoldalakon feltüntetheti saját védjegyeit, és egyéni elrendezést használhat.
+
+További információkért lásd: [Újraírási HTTP-fejlécek](rewrite-http-headers.md).
+
+## <a name="rewrite-http-headers"></a>HTTP-fejlécek átírása
 
 HTTP-fejlécek engedélyezése az ügyfél és kiszolgáló át a kérelem vagy válasz további információkat. Ezek a HTTP-fejlécek újraírását segítségével számos fontos forgatókönyv megvalósítását, például elvégezni:
+
 - Biztonsági fejléc mezők hozzáadásával például HSTS / X-XSS-védelmet.
 - Válasz üzenetfejlécének mezői, amelyek hozzáférhetnek a bizalmas adatok eltávolítása.
 - Ezért az X-továbbított – a fejlécek portra vonatkozó adatait.
 
 Az Application Gateway támogatja a funkció hozzáadása, eltávolítása vagy HTTP-kérelmek és válaszfejlécek, frissítés, amíg az ügyfél és a háttérkészlet közötti áthelyezése a kérések és válaszok csomagokat. Azt is nyújt teszi, hogy adja meg annak érdekében, hogy a megadott fejlécek a rendszer újraírja csak bizonyos feltételek teljesülése esetén feltételeket.
 
-Az nyilvános előzetes funkcióval kapcsolatos további információkért lásd: [Újraírási HTTP-fejlécek](rewrite-http-headers.md).
+További információkért lásd: [Újraírási HTTP-fejlécek](rewrite-http-headers.md).
 
 ## <a name="sizing"></a>Méretezés
 
-Az Application Gateway jelenleg három méretben érhető el: **Kis**, **Közepes**, és **nagy**. A Kicsi méret ideális fejlesztési és tesztelési célokra.
+Application Gateway Standard_v2 és WAF_v2 Termékváltozat beállítható az automatikus skálázáshoz vagy rögzített méretű központi telepítések. Termékváltozatokban nem érhető el különböző példányméretek.
+
+Az Application Gateway Standard és a WAF Termékváltozat van jelenleg három méretben érhető el: **Kis**, **Közepes**, és **nagy**. A Kicsi méret ideális fejlesztési és tesztelési célokra.
 
 Az Application Gateway korlátainak teljes listáját lásd: [Az Application Gateway szolgáltatási korlátozásai](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
@@ -147,6 +147,6 @@ Az alábbi táblázatban az egyes SSL-alapú kiszervezéshez engedélyezett alka
 
 Az igényeitől és a környezetétől függően az Azure Portallal, az Azure PowerShellel vagy az Azure CLI-vel hozhat létre egy Application Gateway-tesztet:
 
-- [Rövid útmutató: Az Azure Application Gatewayjel – Azure portal webes forgalom irányítása](quick-create-portal.md).
+- [Rövid útmutató: A közvetlen webes forgalom az Azure Application Gatewayjel – Azure portal](quick-create-portal.md)
 - [Rövid útmutató: A közvetlen webes forgalom az Azure Application Gatewayjel – Azure PowerShell-lel](quick-create-powershell.md)
 - [Rövid útmutató: A közvetlen webes forgalom az Azure Application Gatewayjel – Azure CLI-vel](quick-create-cli.md)

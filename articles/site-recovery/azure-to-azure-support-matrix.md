@@ -1,23 +1,22 @@
 ---
 title: Azure virtuális gépek vészhelyreállítása az Azure Site Recoveryvel Azure-régiók között-támogatási mátrixa |} A Microsoft Docs
-description: Foglalja össze a támogatott operációs rendszerek és konfigurációk az Azure Site Recovery-replikációja az Azure-beli virtuális gépek (VM) egy adott régióban található, egy másik a vész-helyreállítási igényeit.
-services: site-recovery
+description: Összefoglalja az előfeltételeket és támogatás az Azure virtuális gépek vészhelyreállítása egy adott régióban található a másikra az Azure Site Recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/22/2019
+ms.date: 04/29/2019
 ms.author: raynew
-ms.openlocfilehash: c64148fbc0432bd25c5b02fb20b3e44134c1d9d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9b905d532dfe71fea7c4ec0377eb53b9e3073907
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60502094"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926591"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Azure virtuális gépek replikálása egyik régióból a másikba-támogatási mátrixa
 
-Ez a cikk összefoglalja támogatott konfigurációk és összetevők replikálása, feladatátvétele és helyreállítása Azure virtuális gépek egy Azure-régióból egy másikba, a vész-helyreállítási telepítésekor használja a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás.
+Ez a cikk összegzi támogatási és előfeltételek beállításakor az Azure virtuális gépek vészhelyreállítása egy Azure-régióból egy másik, a használatával a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás.
 
 
 ## <a name="deployment-method-support"></a>Üzembe helyezési módszer támogatása
@@ -96,7 +95,7 @@ Windows Server 2008 R2 | Az SP1 vagy újabb
 Red Hat Enterprise Linux | 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6  
 CentOS | 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6
 Ubuntu 14.04 LTS Server | [Támogatott kernel-verzióknál](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
-Ubuntu 16.04 LTS Server | [Támogatott kernel verziója](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Előfordulhat, hogy Ubuntu-kiszolgálók jelszó alapú hitelesítési és bejelentkezési és a cloud-init-csomag konfigurálása a cloud-beli virtuális gépek jelszóalapú bejelentkezés le van tiltva, a feladatátvétel (függően a cloudinit konfigurálása). Jelszóalapú bejelentkezés újból engedélyezhető a virtuális gépen az ügyfélszolgálattól a jelszó alaphelyzetbe állításával > Hibaelhárítás > Beállítások menüjében (a feladatátvételen átesett virtuális gép az Azure Portalon.
+Ubuntu 16.04 LTS Server | [Támogatott kernel verziója](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Ubuntu kiszolgáló jelszóalapú hitelesítés, a bejelentkezés, és a cloud-init-csomag konfigurálása a cloud-beli virtuális gépek esetleg tartalmaz jelszóalapú bejelentkezés le van tiltva, a feladatátvétel (függően a cloudinit konfigurálása). Jelszóalapú bejelentkezés újból engedélyezhető a virtuális gépen az ügyfélszolgálattól a jelszó alaphelyzetbe állításával > Hibaelhárítás > Beállítások menüjében (a feladatátvételen átesett virtuális gép az Azure Portalon.
 Debian 7 | [Támogatott kernel-verzióknál](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | [Támogatott kernel-verzióknál](#supported-debian-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 12 | SP1, SP2-T AZ SP3 SP4. [(Támogatott kernel-verzióknál)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
@@ -148,7 +147,7 @@ SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.21 | SP1 3.12.49-11-default 3
 **Beállítás** | **Támogatás** | **Részletek**
 --- | --- | ---
 Méret | Minden olyan Azure virtuális gép méretét legalább 2 processzormag és 1 GB RAM | Győződjön meg arról [Azure virtuálisgép-méretek](../virtual-machines/windows/sizes.md).
-Rendelkezésre állási csoportok | Támogatott | Ha engedélyezi az alapértelmezett beállításokat az Azure virtuális gép replikációját, egy rendelkezésre állási csoportot a forrás területi beállítások alapján automatikusan jön létre. Ezek a beállítások módosítása
+Rendelkezésre állási csoportok | Támogatott | Ha engedélyezi az alapértelmezett beállításokat az Azure virtuális gép replikációját, a rendelkezésre állási csoport automatikusan jön létre a forrás területi beállításokat. Ezek a beállítások módosítása
 Rendelkezésre állási zónák | Támogatott |
 Hybrid Use Benefit (HUB) | Támogatott | Ha a forrásoldali virtuális gép van engedélyezve, HUB licence feladatátvételi teszt vagy feladatátvétel a virtuális gép is használ a HUB licenc.
 Virtuális gépek méretezési csoportjai | Nem támogatott |
@@ -191,7 +190,8 @@ A tárolóhelyek | Támogatott |
 Titkosítás inaktív állapotban (SSE) | Támogatott | Az SSE az alapértelmezett beállítás, a storage-fiókok.   
 Az Azure Disk Encryption (ADE) a Windows operációs rendszer | Engedélyezve van a virtuális gépek [az Azure AD-alkalmazást encryption](https://aka.ms/ade-aad-app) támogatottak |
 Az Azure Disk Encryption (ADE) a Linux operációs rendszer | Nem támogatott |
-Gyakori elérésű hozzáadása/eltávolítása lemez | Nem támogatott | Ha ad hozzá, vagy távolítsa el az adatlemezt a virtuális gépen, tiltsa le a replikációt, és engedélyezze újra a virtuális gép replikációját szüksége.
+Gyakori elérésű hozzáadása | Támogatott | Adja hozzá az Azure virtuális gép replikált adatlemez engedélyezése a felügyelt lemezeket használó virtuális gépek esetén támogatott.
+Gyakori elérésű távolítsa el a lemezt | Nem támogatott | Ha eltávolítja az adatlemezt a virtuális gépen, tiltsa le a replikációt, és engedélyezze újra a virtuális gép replikációját szüksége.
 Lemez kizárása | Támogatás. Használjon [Powershell](azure-to-azure-exclude-disks.md) konfigurálásához. |  Ideiglenes lemezek alapértelmezés szerint ki vannak zárva.
 Közvetlen tárolóhelyek  | Összeomlás-konzisztens helyreállítási pontok esetében támogatott. Alkalmazás-konzisztens helyreállítási pontok nem támogatottak. |
 Kibővített fájlkiszolgáló  | Összeomlás-konzisztens helyreállítási pontok esetében támogatott. Alkalmazás-konzisztens helyreállítási pontok nem támogatottak. |
@@ -241,7 +241,7 @@ Azure DNS | Támogatott |
 Egyéni DNS  | Támogatott |
 Hitelesített proxykiszolgálói | Támogatott | [Learn more].(site-recovery-azure-to-azure-networking-guidance.md)   
 Authenticated Proxy | Nem támogatott | Ha a virtuális gép egy hitelesített proxyt használ a kimenő hálózati kapcsolatot, azt nem lehet replikálni az Azure Site Recovery használatával.    
-A helyszíni VPN-helyek közötti kapcsolat<br/><br/>(a vagy ExpressRoute nélkül)| Támogatott | Győződjön meg arról, hogy úgy, hogy a Site recovery nem adatforgalmat helyszíni az udr-EK és NSG-k vannak konfigurálva. [További információ](site-recovery-azure-to-azure-networking-guidance.md)    
+A helyszíni VPN-helyek közötti kapcsolat<br/><br/>(a vagy ExpressRoute nélkül)| Támogatott | Győződjön meg arról, hogy úgy, hogy a Site Recovery nem adatforgalmat helyszíni az udr-EK és NSG-k vannak konfigurálva. [További információ](site-recovery-azure-to-azure-networking-guidance.md)    
 Virtuális hálózatok közötti kapcsolat | Támogatott | [További információ](site-recovery-azure-to-azure-networking-guidance.md)  
 Virtuális hálózati szolgáltatásvégpontok | Támogatott | Ha a tárfiókok vannak, a virtuális hálózati hozzáférés korlátozása, győződjön meg arról, hogy a megbízható Microsoft-szolgáltatások engedélyezettek-e a tárfiókhoz való hozzáférést.
 Gyorsított hálózatkezelés | Támogatott | A forrásoldali virtuális gép gyorsított hálózatkezelés engedélyezni kell. [További információk](azure-vm-disaster-recovery-with-accelerated-networking.md).

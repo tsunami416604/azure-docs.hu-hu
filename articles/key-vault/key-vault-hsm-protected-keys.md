@@ -2,23 +2,19 @@
 title: Generate and transfer HSM által védett kulcsok az Azure Key Vault – Azure Key Vault és hogyan |} A Microsoft Docs
 description: Ez a cikk segítségével tervezése, létrehozása, és utána a saját HSM által védett kulcsok az Azure Key Vault használata. Más néven BYOK vagy a saját kulcs használata.
 services: key-vault
-documentationcenter: ''
 author: barclayn
 manager: barbkess
 tags: azure-resource-manager
-ms.assetid: 51abafa1-812b-460f-a129-d714fdc391da
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: 70a33b0ec55705c6fb00671cc801415cd7459558
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: a013e0091e1a955672c1f16a4ac6300281d277b3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522728"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573011"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Generate and transfer HSM-védelemmel ellátott és hogyan lehet az Azure Key Vault-kulcsok
 
@@ -45,7 +41,7 @@ További információ és a egy HSM által védett kulcs átvitele az interneten
 
 ## <a name="more-information-about-thales-hsms-and-microsoft-services"></a>További információt a Thales HSM-ekről és a Microsoft-szolgáltatások
 
-A Thales e-Security vezető globális szolgáltató, amely adattitkosítási és internetes biztonsági megoldásokat a pénzügyi szolgáltatások, a csúcstechnológiai, a gyártási, a kormányzati és a technológiai szektorok részére. Egy 40 éves követése rekord, védi a vállalati és kormányzati információk a Thales megoldásait négy az öt legnagyobb energetikai és a légi közlekedésben cég által használt. Megoldásaikat is használja a 22 NATO országok, és biztonságos globális fizetési tranzakciók több mint 80 %-át.
+A Thales e-Security vezető globális szolgáltató, amely adattitkosítási és internetes biztonsági megoldásokat a pénzügyi szolgáltatások, a csúcstechnológiai, a gyártási, a kormányzati és a technológiai szektorok részére. Egy 40 éves követése rekord, védi a vállalati és kormányzati információk a Thales megoldásait négy az öt legnagyobb energetikai és a légi közlekedésben cég által használt. Megoldásaikat is használja a 22 NATO országok/régiók és biztonságáról a globális fizetési tranzakciók több mint 80 %-át.
 
 A Microsoft rendelkezik Thales vállalattal együttműködve folyamatosan javíthatja a legkorszerűbb HSM-eket. Ezeknek a fejlesztéseknek köszönhetően, hogy feláldoznia a kulcsai nélkül üzemeltetett szolgáltatások szokásos előnyeit. Pontosabban a fejlesztéseknek köszönhetően a Microsoft felügyelje a HSM-eket, hogy az nem rendelkezik. Felhőalapú szolgáltatásként az Azure Key Vault felskálázással, a szervezet használati csúcsok növekedésekhez. Egy időben a kulcs HSM által védett: Meg kell őriznie a kulcs életciklusa fölötti ellenőrzés, mert a kulcs létrehozásához, és vigye át a Microsoft HSM-EK.
 

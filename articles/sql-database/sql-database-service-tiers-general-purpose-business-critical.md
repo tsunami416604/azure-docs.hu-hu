@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
 ms.date: 02/23/2019
-ms.openlocfilehash: 6a027e6c0afd526139484240f288205fa946d557
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: e2230bc8adf13825692f93b1e2bc33a4b79076e2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111799"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574368"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Az Azure SQL Database szolgáltatási csomagjai
 
@@ -63,5 +63,5 @@ Az adatbázis biztonsági másolatait lefoglalta a pont támogatja az idő-vissz
 
 ## <a name="next-steps"></a>További lépések
 
-- Részletek az adott számítási méretek és a tároló mérete lehetőségek önálló adatbázis az általános célú és a kritikus fontosságú üzleti szolgáltatási szinten érhető el, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok az önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier)
-- Részletek az adott számítási méretek és a tároló mérete lehetőségek az általános célú és a kritikus fontosságú üzleti szolgáltatási szinten a rugalmas készletek számára elérhető, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok a rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).
+- Részletek az adott számítási méretek és a tároló mérete lehetőségek önálló adatbázis az általános célú és a kritikus fontosságú üzleti szolgáltatási szinten érhető el, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok az önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md)
+- Részletek az adott számítási méretek és a tároló mérete lehetőségek az általános célú és a kritikus fontosságú üzleti szolgáltatási szinten a rugalmas készletek számára elérhető, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok a rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).

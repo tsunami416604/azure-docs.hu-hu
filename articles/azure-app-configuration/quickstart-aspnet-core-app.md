@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b527199fd7b61609f292b13c73bfc1d6e0a6b896
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 90a39693778e01da76baf19765be8801f55813b7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203761"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683053"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Gyors útmutató: ASP.NET Core-alkalmazás létrehozása az Azure-alkalmazás konfigurációja
 
@@ -28,6 +28,8 @@ Az Azure App konfigurálása felügyelt konfigurációs szolgáltatása az Azure
 ASP.NET Core egy vagy több olyan adatforrások, amelyek az alkalmazások által megadott beállítások használatával hoz létre egy egyetlen kulcs-érték-alapú konfigurációs objektumot. Ezeket az adatforrásokat nevezzük *konfigurációszolgáltatók*. Alkalmazások konfigurálása a .NET Core-ügyfél megvalósított ilyen egy szolgáltatót, mert a szolgáltatás egy másik adatforrás jelenik meg.
 
 Bármely Kódszerkesztő segítségével ebben a rövid útmutatóban található lépések elvégzése. [A Visual Studio Code](https://code.visualstudio.com/) kiváló lehetőség a Windows, macOS és Linux platformokon az érhető el.
+
+![A rövid útmutató alkalmazások indítása helyi](./media/quickstarts/aspnet-core-app-launch-local.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +43,7 @@ Ez a rövid útmutató elvégzéséhez telepítse a [.NET Core SDK](https://dotn
 
 6. Válassza ki **kulcs/érték Explorer** > **+ létrehozás** a következő kulcs-érték párok hozzáadásához:
 
-    | Kulcs | Value |
+    | Kulcs | Érték |
     |---|---|
     | TestApp:Settings:BackgroundColor | Fehér |
     | TestApp:Settings:FontSize | 24 |
@@ -118,15 +120,12 @@ Adja hozzá a [Secret Manager eszköz](https://docs.microsoft.com/aspnet/core/se
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
-                config.AddAzureAppConfiguration(options => {
-                    options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .SetOfflineCache(new OfflineFileCache());
-                });
+                config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
             })
             .UseStartup<Startup>();
     ```
 
-6. Nyissa meg a nézetek Index.cshtml > directory otthoni, és cserélje le annak tartalmát az alábbira:
+6. Nyissa meg *Index.cshtml* a nézetek > directory otthoni, és cserélje le annak tartalmát az alábbira:
 
     ```html
     @using Microsoft.Extensions.Configuration
@@ -152,7 +151,7 @@ Adja hozzá a [Secret Manager eszköz](https://docs.microsoft.com/aspnet/core/se
     </html>
     ```
 
-7. Nyissa meg a nézetek _Layout.cshtml > directory megosztva, és cserélje le annak tartalmát az alábbira:
+7. Nyissa meg *_Layout.cshtml* a nézetek > directory megosztva, és cserélje le annak tartalmát az alábbira:
 
     ```html
     <!DOCTYPE html>
@@ -190,8 +189,6 @@ Adja hozzá a [Secret Manager eszköz](https://docs.microsoft.com/aspnet/core/se
         dotnet run
 
 3. Nyisson meg egy böngészőablakot, és váltson `http://localhost:5000`, azaz a helyileg üzemeltetett webes alkalmazás alapértelmezett URL-CÍMÉT.
-
-    ![A rövid útmutató alkalmazások indítása helyi](./media/quickstarts/aspnet-core-app-launch-local.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

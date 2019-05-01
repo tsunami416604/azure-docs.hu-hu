@@ -8,19 +8,16 @@ ms.topic: tutorial
 ms.date: 2/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 616a710237c31ef2b4a19c3e1e61838164a78530
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 8ee43a54df019b862d1f8698363d8b0a022bdcb4
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308567"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947149"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Oktatóanyag: Hozzon létre egy application gateway, amely javítja a webes alkalmazás-hozzáférés
 
 Ha Ön rendszergazda a webes alkalmazás-hozzáférés javítása az érintett, optimalizálhatja az application gateway az alapján ügyfél méretezése igény és a span több rendelkezésre állási zónában. Ez az oktatóanyag segítséget nyújt, amely ehhez az Azure Application Gateway-szolgáltatások konfigurálása: az automatikus skálázás, a redundancia zónát, és a fenntartott virtuális IP-címek (statikus IP-cím). Azure PowerShell-parancsmagok és az Azure Resource Manager üzemi modell fogja használni, ha a probléma megoldásához.
-
-> [!IMPORTANT] 
-> Az Application Gateway automatikus skálázású és zónaredundáns termékváltozata jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

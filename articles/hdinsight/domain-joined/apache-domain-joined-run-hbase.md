@@ -6,14 +6,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: tutorial
 ms.date: 02/01/2019
-ms.openlocfilehash: 61d3256ca169952ab3dda76914293a06a044d6eb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: d1f2a2b24e6f1856d021911e6f2e9c107bd38b72
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62113153"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926096"
 ---
-# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Az Apache HBase-házirendek konfigurálása a HDInsight vállalati biztonsági csomaggal (előzetes verzió)
+# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Oktatóanyag: Az Apache HBase-házirendek konfigurálása a HDInsight vállalati biztonsági csomaggal
 
 Megtudhatja, hogyan konfigurálhatja a vállalati biztonsági csomag (ESP) az Apache HBase-fürtök az Apache Ranger-házirendet. Az ESP-fürtök egy tartományhoz csatlakoznak, lehetővé téve a felhasználók számára a tartományi hitelesítő adatokkal való hitelesítést. Ebben az oktatóanyagban létrehozhat két Ranger-házirendek különböző oszlopcsaláddal egy HBase-táblában való hozzáférés korlátozásához.
 

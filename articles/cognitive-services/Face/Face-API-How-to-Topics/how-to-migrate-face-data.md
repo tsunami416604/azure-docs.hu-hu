@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: lewlu
-ms.openlocfilehash: 30ceb0e396597530071c70c4448761d914acb4ac
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 02e9b64c89eda1471d644e0116bbf8c1c061ccc3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548404"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682519"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Az arcfelismerés adatmigrálás Face másik előfizetésbe való
 
 Ez az útmutató bemutatja, hogyan face adatáthelyezést (például egy mentett **is lehet PersonGroup** téglalapot) egy másik Face API-előfizetésbe, a pillanatkép funkció használatát. Ez lehetővé teszi, hogy ne kelljen ismételten hozhat létre és betanítunk egy **is lehet PersonGroup** vagy **FaceList** áthelyezése vagy a tevékenységek kibontása. Például előfordulhat, hogy létrehozott egy **is lehet PersonGroup** használatával egy ingyenes próba-előfizetését, és most szeretné áttelepíteni a díjköteles előfizetésre, vagy szükség lehet arcfelismerési adatokat szinkronizálhat a nagyvállalati művelet régióban.
 
-Ez ugyanolyan stratégiájának is vonatkozik **LargePersonGroup** és **LargeFaceList** objektumokat. Ha nem ismeri a jelen útmutatóban fogalmait, tekintse meg a definíciójukat a a [szószedet](../Glossary.md). Ez az útmutató a Face API .NET ügyféloldali kódtárat használja C#.
+Ez ugyanolyan stratégiájának is vonatkozik **LargePersonGroup** és **LargeFaceList** objektumokat. Ha nem ismeri a jelen útmutatóban fogalmait, tekintse meg a definíciójukat a a [felismerés fogalmak arc](../concepts/face-recognition.md) útmutató. Ez az útmutató a Face API .NET ügyféloldali kódtárat használja C#.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,15 +29,13 @@ Ez ugyanolyan stratégiájának is vonatkozik **LargePersonGroup** és **LargeFa
 - A Face API előfizetési azonosító karakterláncát a célként megadott előfizetés (megtalálható a **áttekintése** panel az Azure Portalon). 
 - A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
 
-
 ## <a name="create-the-visual-studio-project"></a>A Visual Studio-projekt létrehozása
 
 Ez az útmutató egy egyszerű Konzolalkalmazás használatával hajtsa végre a face adatok migrálása. Teljes körű, tekintse meg a [Face API-pillanatkép minta](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) a Githubon.
 
-1. A Visual Studióban hozzon létre egy új **Console app (.NET Framework)** projektre, és adja neki **FaceApiSnapshotSample**. 
+1. A Visual Studióban hozzon létre egy új **Console app (.NET Framework)** projektre, és adja neki **FaceApiSnapshotSample**.
 1. Szerezze be a szükséges NuGet-csomagokat. Kattintson a jobb gombbal a projektre a Megoldáskezelőben, és válassza ki **NuGet-csomagok kezelése**. Kattintson a **Tallózás** lapot, és válasszon **előzetes verzió**; majd keresse meg és telepítse a következő csomagot:
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.3.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
-
 
 ## <a name="create-face-clients"></a>Face ügyfelek létrehozása
 
@@ -226,7 +224,9 @@ Miután végzett a face adatok áttelepítését végzi, javasoljuk, hogy manuá
 await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 ```
 
-## <a name="related-topics"></a>Kapcsolódó témakörök
+## <a name="next-steps"></a>További lépések
+
+Ezután tekintse meg a megfelelő API referenciadokumentációt tartalmaz, ismerje meg egy mintaalkalmazást, amely a pillanatkép funkciót használja, vagy hajtsa végre a használatához itt említett egyéb API műveletek használati útmutatója.
 
 - [Pillanatkép dokumentációja (.NET SDK-val)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)
 - [Face API pillanatkép minta](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)

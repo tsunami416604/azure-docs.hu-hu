@@ -2,24 +2,17 @@
 title: Piaci megjelenést szolgáltatások – útmutató első kiemelt, Marketplace-en |} Az Azure
 description: Piaci megjelenést Services – Ez a szakasz ismerteti, hogyan lehet kiemelt Azure Marketplace-en lista lekérése
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: bda94e648891ad5c4de810195e874a5774d6b498
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5194bdcd5b77b0527ccdefc1af85bf03bdac2cab
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736346"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938176"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>Hogyan lehet az appsource-ban és az Azure Marketplace-en kiemelt beolvasása
 

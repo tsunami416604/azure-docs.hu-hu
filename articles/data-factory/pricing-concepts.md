@@ -3,19 +3,18 @@ title: Azure Data Factory díjszabása a példákon keresztül ismertetése |} A
 description: Ez a cikk azt ismerteti, és bemutatja az Azure Data Factory díjszabási modell részletes példák
 documentationcenter: ''
 author: shlo
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: shlo
-ms.openlocfilehash: 80b1f90ee0d9f5003c39eb6a853a07d2d64ca482
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 454899cd7cc592b87f96233d73ca8c4ed6ac333f
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60787459"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935767"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>A Data Factory díjszabása a példákon keresztül ismertetése
 
@@ -122,6 +121,45 @@ Ehhez a forgatókönyvhöz, létrehoz egy folyamatot a következő elemeket kell
   - Adattovábbítási tevékenységek = $0.166 (Prorated végrehajtási idő 10 percig. az Azure integrációs modul$ 0,25/óra)
   - Folyamat-tevékenység = $0.00003 (Prorated végrehajtási idő 1 perce. az Azure integrációs modul$ 0,002/óra)
   - Külső a folyamatok tevékenységeit = $0.000041 (Prorated végrehajtási idő 10 percig. az Azure integrációs modul$ 0.00025/óra)
+
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Leképezési adatok folyamat hibakeresési használja a normál munkanap
+
+Egy adat-mérnök, mint Ön felelős tervezése, létrehozása és tesztelése a leképezési adatfolyamok minden nap. Jelentkezzen be az ADF felhasználói felületén a reggel, és az adatok elkezdenek beérkezni a hibakeresési mód engedélyezéséhez. Az alapértelmezett élettartam hibakeresési munkamenetek érték 60 perc. Hogy működik 10 óra, a nap folyamán, így a hibakeresési munkamenet soha nem jár le. Így a díj az adott napra vonatkozóan a következő lesz:
+
+**10 (óra) x 8 (mag) x 0.112 $ $8.96 =**
+
+## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>Adatok átalakítása a blobtár az adatfolyamok leképezése
+
+Ebben a forgatókönyvben a kívánt adatok átalakítása a Blob Store vizuálisan az ADF-leképezés adatfolyamok egy óránkénti ütemezés szerint.
+
+Ehhez a forgatókönyvhöz, létrehoz egy folyamatot a következő elemeket kell:
+
+1. Egy adatfolyam-tevékenységet az Adatátalakítási logikát.
+
+2. Az Azure Storage az adatok bemeneti adatkészlet.
+
+3. Az adatok Azure Storage a kimeneti adatkészletet.
+
+4. Ütemezési eseményindító óránként a folyamat végrehajtásához.
+
+| **Műveletek** | **Típusok és egységek** |
+| --- | --- |
+| Társított szolgáltatás létrehozása | 2 olvasási/írási entitás  |
+| Adatkészletek létrehozása | 4 olvasási/írási entitások (2 adatkészlet létrehozásához, a társított szolgáltatás hivatkozik 2) |
+| Folyamat létrehozása | 3/olvasási entitások (1. a folyamat létrehozása, az adatkészlet hivatkozások 2) |
+| Folyamatok beolvasása | 1 olvasási/írási entitás |
+| Folyamat futtatása | 2 tevékenység-végrehajtás (1. az eseményindító-futtatás, 1. a tevékenység-végrehajtás) |
+| Data Flow feltételezések: végrehajtási idő = 10 perc + 10 perc élettartam | 10 \* általános számítási 10 TTL-8 mag |
+| A figyelő folyamat feltételezzük: Csak 1 történt futtatása | 2 futtatása figyelés rekordok újrapróbált (1. a folyamat futtatásához, 1. a tevékenység-végrehajtásonként) |
+
+**Teljes forgatókönyv díjszabás: $0.3011**
+
+- Data Factory műveletek = **$0,0001**
+  - Olvasási/írási = 10\*00001 $0,0001 = [1 R/W $ 0,50/50000 = 0,00001 =]
+  - Figyelés = 2\*000005 $0,00001 = [1 figyelési $ 0,25/50000 = = 0.000005]
+- Vezénylési folyamat &amp; végrehajtási = **$0.301**
+  - Tevékenység-végrehajtás = 001\*2 = 0,002 [Futtatás 1 = $1 és 1000 0,001 =]
+  - Data Flow tevékenységek $0.299 Prorated = 20 percig (10 percre megállítja végrehajtási ideje + 10 percre megállítja TTL). $0.112/ óra Azure integrációs modul az általános 8 maggal rendelkező számítási
 
 ## <a name="next-steps"></a>További lépések
 

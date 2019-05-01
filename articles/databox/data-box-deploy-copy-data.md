@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása az SMB-n keresztül a Microsoft Azure Data Box |} A Microsoft Docs
+title: Az oktatóanyag az Azure Data Box SMB-n keresztül az adatok másolása |} A Microsoft Docs
 description: Ismerje meg, hogyan másolhat adatokat az Azure Data Box SMB-n keresztül
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 3474d4ee8751bcd472aa109e9e541d639344276d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 04f7710d95f5ce7a2b6195383c2737ff3b1fbf04
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466181"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925557"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Oktatóanyag: Adatok másolása az Azure Data Box SMB-n keresztül
 
@@ -41,8 +41,8 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 A kiválasztott tárfiók alapján a Data Box hoz létre, akár:
 - Három megosztás minden társított tárfiókhoz, GPv1-hez és GPv2-höz.
-- Egy prémium szintű Storage-megosztást. 
-- Blob storage-fiók egy megosztást. 
+- Egy prémium szintű Storage-megosztást.
+- Blob storage-fiók egy megosztást.
 
 A blokkblob- és lapblobmegosztások alatti első szintű entitások tárolók, a második szintű entitások pedig blobok. Az Azure Files-megosztások alatti első szintű entitások megosztások, a második szintű entitások pedig fájlok.
 
@@ -91,7 +91,7 @@ Ha a gazdagép Windows Server számítógépet használ, kövesse az alábbi lé
 
     **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. Blokkblob típusú a mappában létrehozott, és a blob megosztások lap egy tárolóban, amelyhez data nahrávají blobként jelöli. Nem lehet másolni a fájlokat közvetlenül a *legfelső szintű* mappát a storage-fiókban.
     
-Egy Linux-ügyfél használata esetén a következő paranccsal csatlakoztatni az SMB-fájlmegosztást. Az alábbi "vers" paraméter, amely támogatja a Linux-állomáshoz SMB verziója. Beépülő modul az alábbi parancsot a megfelelő verzióját. SMB, hogy a Data Box támogatja-e további verziói [fájlrendszerek támogatott Linux-ügyfelek](https://docs.microsoft.com/en-us/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) 
+Egy Linux-ügyfél használata esetén a következő paranccsal csatlakoztatni az SMB-fájlmegosztást. Az alábbi "vers" paraméter, amely támogatja a Linux-állomáshoz SMB verziója. Beépülő modul az alábbi parancsot a megfelelő verzióját. SMB, hogy a Data Box támogatja-e további verziói [fájlrendszerek támogatott Linux-ügyfelek](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) 
 
     `sudo mount -t nfs -o vers=2.1 10.126.76.172:/devicemanagertest1_BlockBlob /home/databoxubuntuhost/databox`
     
@@ -132,7 +132,7 @@ Miután csatlakozott az SMB-megosztás, megkezdheti az adatok másolását. Az a
 |/z    | A fájlokat újraindítási módban másolja; akkor lehet rá szükség, ha a környezet instabil. Ez a beállítás a fokozott naplózás miatt csökkenti az átviteli sebességet.      |
 | /zb     | Az újraindítási mód használata. A hozzáférés megtagadása esetén áttér a biztonsági mentési mód használatára. Ez a beállítás csökkenti az átviteli sebességet az ellenőrzőpontok létrehozása miatt.         |
 |/efsraw     | Az összes titkosított fájlt EFS feldolgozatlan módban másolja át. Csak titkosított fájlokhoz használja.         |
-|log+:<LogFile>| Hozzáfűzi a kimenetet a meglévő naplófájlhoz.|    
+|napló +:\<naplófájl >| Hozzáfűzi a kimenetet a meglévő naplófájlhoz.|    
  
 Az alábbi minta a fájloknak a Data Boxra történő másolásához használt Robocopy-parancs kimenetét mutatja be.
     

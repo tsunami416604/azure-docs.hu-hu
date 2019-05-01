@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8793f6f4d135d6099541d24aa5f5cfc0b6c21b30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec87bdadc0e7f77cdeebb16403758026fd956c30
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61290056"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939853"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Az Azure Search értékkorlátozás szűrő létrehozása 
 
@@ -35,7 +35,7 @@ További részletek új, a jellemzőalapú navigáció, és szeretné? Lásd: [j
 
 ## <a name="choose-fields"></a>Mezők kiválasztása
 
-Egyetlen érték mezők, valamint a gyűjtemények értékkorlátozással is vetítve. Mezőkkel, amelyek működnek a legjobban a jellemzőalapú navigáció alacsony Számosság rendelkezik: egy kis számú különböző értékeket, amelyek ismételje meg a keresési forrásgyűjteményébe (például egy lista a színeket, országok vagy márkanevek) található dokumentumok teljes. 
+Egyetlen érték mezők, valamint a gyűjtemények értékkorlátozással is vetítve. Mezőkkel, amelyek működnek a legjobban a jellemzőalapú navigáció alacsony Számosság rendelkezik: egy kis számú különböző értékeket, amelyek ismételje meg a keresési forrásgyűjteményébe (például a színeket, országok/régiók vagy márkanevek listájában) található dokumentumok teljes. 
 
 Jellemzőalapú mező szerint alapon engedélyezve van, az index létrehozásakor a következő attribútumok igaz értékre állításával: `filterable`, `facetable`. Csak a szűrhető mezők értéke korlátozható.
 

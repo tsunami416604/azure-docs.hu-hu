@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7c45b0581a03e280c7dbd6d998059f1e4bff5345
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: d88bf309d2afeb4e6fdd09ff1317bec3fec2fe75
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556050"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64695853"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>A Time Series Insightsban megőrzés konfigurálása
 Ez a cikk bemutatja, hogyan konfigurálhatja **adatmegőrzési idő** és **tárolási kapacitása túllépve viselkedés** az Azure Time Series Insightsban.
@@ -46,4 +46,5 @@ Jobb megértése érdekében ezek a beállítások részletes információkért 
 7. Válassza ki **mentése** konfigurálása a módosításokat.
 
 ## <a name="next-steps"></a>További lépések
-További információkért tekintse át a [a Time Series Insights ismertetése megőrzési](time-series-insights-concepts-retention.md).
+
+- További információkért tekintse át a [a Time Series Insights ismertetése megőrzési](time-series-insights-concepts-retention.md).

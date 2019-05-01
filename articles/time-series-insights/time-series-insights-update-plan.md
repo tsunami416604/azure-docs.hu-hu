@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 251e95744f57d9b5e42df9bdc3743f4880ff5381
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0472f53d11ec4c990fcf6face633444fe66ba937
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076996"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702345"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Az Azure Time Series Insights – előzetes környezet megtervezése
 
@@ -90,9 +90,7 @@ A Time Series Insights egy magas rendelkezésre állású szolgáltatás, amely 
 Az üzletmenet-folytonosság és vészhelyreállítás (BCDR) az Azure-ban a beépített funkciók további információkért lásd: [Azure üzleti folytonossági műszaki útmutatást](https://docs.microsoft.com/azure/resiliency/resiliency-technical-guidance). Architektúra-útmutató az Azure-alkalmazások elérjék a magas rendelkezésre állású és vész-helyreállítási stratégiát, tekintse meg a papír [vészhelyreállítás és magas rendelkezésre állás az Azure-alkalmazások](https://docs.microsoft.com/azure/architecture/resiliency/index).
 
 > [!NOTE]
-> 
->  A Time Series Insights nem rendelkezik beépített BCDR.
-> Alapértelmezés szerint az Azure Storage, Azure IoT Hub és az Azure Event Hubs a beépített helyreállítási rendelkeznek.
+> A Time Series Insights nem rendelkezik beépített BCDR. Alapértelmezés szerint az Azure Storage, Azure IoT Hub és az Azure Event Hubs a beépített helyreállítási rendelkeznek.
 
 További tudnivalókért olvassa el:
 
@@ -115,7 +113,6 @@ Kövesse az alábbi lépéseket hozhat létre és használhat egy másodlagos Ti
 
 ## <a name="next-steps"></a>További lépések
 
-További tudnivalókért olvassa el:
+- Tudjon meg többet [tárolási a bejövő és kimenő](./time-series-insights-update-storage-ingress.md) a Time Series Insights előzetes verziója.
 
-- [Az Azure Time Series Insights előzetes verziója storage és a bejövő forgalom](./time-series-insights-update-storage-ingress.md)
-- [Adatmodellezés](./time-series-insights-update-tsm.md)
+- Ismerje meg [adatmodellezés](./time-series-insights-update-tsm.md) a Time Series Insights előzetes verziója.

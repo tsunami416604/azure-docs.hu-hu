@@ -4,248 +4,223 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Shm
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 1d75560a-55b3-42e9-bda1-92b01c572d8e
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/23/2018
+ms.topic: tutorial
+ms.date: 03/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4091b20e97ca76629260a7420beecb77412b0d39
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 39b7d251f1d6d75ac22d50f1b62a3581f9d343c7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60310693"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687253"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Oktatóanyag: Az Azure Active Directory integrációja az Shmoop az iskolák
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Shmoop az iskolák integrálása az Azure Active Directory (Azure AD).
-
 Shmoop az iskolák integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Az Azure ad-ben Shmoop az iskolák hozzáféréssel rendelkező szabályozhatja.
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Shmoop az iskolák az Azure AD-fiókjukat.
-- A fiókok egyetlen központi helyen--az Azure Portalon kezelheti.
+* Az Azure ad-ben Shmoop az iskolák hozzáféréssel rendelkező szabályozhatja.
+* Engedélyezheti a felhasználóknak, hogy a rendszer automatikusan bejelentkezve Shmoop az iskolák (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Shmoop az iskolák konfigurálni az Azure AD-integráció, a következőkre van szükség:
 
-- Azure AD-előfizetés
-- Egy Shmoop az iskolák egyszeri bejelentkezés engedélyezve van az előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket tesztelése éles környezetben használata nem ajánlott.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez a következőket javasoljuk:
-
-- Csak akkor, ha szükséges, használja az éles környezetben.
-- Bevezetés a [ingyenes egy hónapos próbaidőszak](https://azure.microsoft.com/pricing/free-trial/) Ha még nem rendelkezik egy Azure ad-ben a próbakörnyezet.
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
+* Az iskolák Shmoop egy bejelentkezési engedélyezett előfizetés
+* Csak akkor, ha szükséges, használja az éles környezetben.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Ebben az oktatóanyagban a forgatókönyv két fő építőelemeket áll:
 
-1. Az iskolák Shmoop hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
 
-## <a name="add-shmoop-for-schools-from-the-gallery"></a>Az iskolák Shmoop hozzáadása a katalógusból
+* Shmoop az iskolák támogatja **SP** által kezdeményezett egyszeri bejelentkezés
+* Shmoop az iskolák támogatja **igény szerinti** felhasználók átadása
+
+## <a name="adding-shmoop-for-schools-from-the-gallery"></a>Az iskolák Shmoop hozzáadása a katalógusból
+
 Az Azure AD-be az iskola Shmoop integráció konfigurálásához, hozzá kell Shmoop az iskolák a galériából a felügyelt SaaS-alkalmazások listájára.
 
 **Az iskolák Shmoop hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a [az Azure portal](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen][2]
-    
-3. Új alkalmazás hozzáadásához válassza a **új alkalmazás** gombra a párbeszédpanel tetején.
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![Az új alkalmazás gomb][3]
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-4. A Keresés mezőbe írja be a **Shmoop az iskolák**. Válassza ki **Shmoop az iskolák** az eredmények közül válassza ki a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-    ![Az eredmények listájában Shmoop az iskolák](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_addfromgallery.png)
+4. A Keresés mezőbe írja be a **Shmoop az iskolák**, jelölje be **Shmoop az iskolák** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+
+    ![Az eredmények listájában Shmoop az iskolák](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban konfigurálni, és a teszt "Britta Simon." nevű felhasználó iskolák részére Shmoop az Azure AD egyszeri bejelentkezés tesztelése
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés Shmoop az iskolák nevű tesztfelhasználó alapján a **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Shmoop az iskolák hivatkozás kapcsolata kell létrehozni.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, akik a partner felhasználó Shmoop a iskolákban, hogy egy felhasználó Azure AD-ben. Más szóval kell létesítenie egy Azure AD-felhasználót és a kapcsolódó felhasználó Shmoop az iskolák közötti kapcsolat.
+Az Azure AD egyszeri bejelentkezés az Shmoop az iskolák tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
-Az Azure AD egyszeri bejelentkezés az Shmoop az iskolák tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
-
-1. [Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on) ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. [Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user) az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. [Az iskolák Shmoop tesztfelhasználó létrehozása](#create-a-shmoop-for-schools-test-user) egy megfelelője a Britta Simon Shmoop az iskolák részére, amely a felhasználó Azure ad-ben reprezentációja van csatolva van.
-4. [Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user) Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. [Egyszeri bejelentkezés tesztelése](#test-single-sign-on) , hogy működik-e a konfiguráció ellenőrzéséhez.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Shmoop az iskolák egyszeri bejelentkezés konfigurálása](#configure-shmoop-for-schools-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Iskolák tesztfelhasználó Shmoop létrehozni](#create-shmoop-for-schools-test-user)**  – egy megfelelője a Britta Simon Shmoop az iskolák részére, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Shmoop az iskolák alkalmazását az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Shmoop az iskolák, hajtsa végre az alábbi lépéseket:**
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Shmoop az iskolák, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portalon az a **Shmoop az iskolák** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), a a **Shmoop az iskolák** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési** párbeszédpanel, a legördülő menü alatt **egyszeri bejelentkezési mód**válassza **SAML-alapú bejelentkezés**.
- 
-    ![Egyszeri bejelentkezési párbeszédpanel](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_samlbase.png)
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-3. Az a **Shmoop az iskolák tartomány és URL-címek** területén az alábbi lépéseket:
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_url.png)
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    a. Az a **bejelentkezési URL-** mezőbe írja be egy URL-CÍMÉT a következő mintának: `https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    b. Az a **azonosító** mezőbe írja be egy URL-CÍMÉT a következő mintának: `https://schools.shmoop.com/<uniqueid>`
+4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-cím és azonosító. Forduljon a [Shmoop az iskolák ügyfél-támogatási csapatának](mailto:support@shmoop.com) beolvasni ezeket az értékeket. 
- 
-4. A Shmoop az iskolák alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakaszban az alkalmazás integrációs oldalán található. Az alábbi képernyőfelvételen a helyességi feltételek konfigurálása:
+    ![Shmoop az iskolák tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/shmoopforschools-tutorial/tutorial_attribute.png)
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`
+
+    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://schools.shmoop.com/<uniqueid>`
+
+    > [!NOTE]
+    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [Shmoop az iskolák ügyfél-támogatási csapatának](mailto:support@shmoop.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+
+5. A Shmoop az iskolák alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakaszban az alkalmazás integrációs oldalán található. Az alábbi képernyőfelvételen a helyességi feltételek konfigurálása:
+
+    ![image](common/edit-attribute.png)
 
     > [!NOTE]
     > Iskolai Shmoop két szerepkör támogatja a felhasználók számára: **Oktatói** és **tanulói**. Állítsa be ezeket a szerepköröket az Azure ad-ben, hogy a felhasználók a megfelelő szerepkörök rendelhetők. Az Azure AD-szerepkörök konfigurálása ismertetése: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md).
-    
-5. Az a **felhasználói attribútumok** című rész a **egyszeri bejelentkezési** párbeszédpanel az SAML-jogkivonat attribútum adja meg az előző képen látható módon.  Ezután az alábbi lépéseket:
 
-    | Attribútum neve | Hodnota atributu |
-    | -------------- | --------------- |
-    | szerepkör           | user.assignedroles |
+6. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket: 
 
-    a. Megnyitásához a **attribútum hozzáadása** párbeszédpanelen jelölje ki **attribútum hozzáadása**.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/shmoopforschools-tutorial/tutorial_attribute_04.png)
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/shmoopforschools-tutorial/tutorial_attribute_05.png)
-    
-    b. Az a **neve** mezőbe írja be azon attribútum nevét, amely a sorhoz látható.
-    
-    c. Az a **érték** listájához, válassza ki az attribútum értéke, amely a sorhoz látható.
+    | Name (Név) |  Adatforrás-attribútum|
+    | --------- | --------------- |
+    | szerepkör      | user.assignedroles |
 
-    d. Hagyja a **Namespace** mező üres.
-    
-    e. Kattintson az **OK** gombra.
+    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
-6. Válassza ki a **Mentés** gombot.
+    ![image](common/new-save-attribute.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/shmoopforschools-tutorial/tutorial_general_400.png)
+    ![image](common/new-attribute-details.png)
 
-7. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
+    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
 
-    ![A tanúsítvány letöltési hivatkozás](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_certificate.png)
+    c. Hagyja a **Namespace** üres.
 
-8. Az egyszeri bejelentkezés konfigurálásához a **Shmoop az iskolák** oldalon kell küldenie a **alkalmazás összevonási metaadatainak URL-címe** , a [Shmoop az iskolák támogatási csoportjának](mailto:support@shmoop.com).
+    d. Válassza ki a forrás, **attribútum**.
+
+    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+
+    f. Kattintson a **Ok**
+
+    g. Kattintson a **Save** (Mentés) gombra.
+
+7. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** és mentse a számítógép.
+
+    ![A tanúsítvány letöltési hivatkozás](common/copy-metadataurl.png)
+
+### <a name="configure-shmoop-for-schools-single-sign-on"></a>Shmoop iskolák egyszeri bejelentkezés konfigurálása
+
+Az egyszeri bejelentkezés konfigurálása **Shmoop az iskolák** oldalon kell küldenie a **alkalmazás összevonási metaadatainak URL-címe** való [Shmoop az iskolák támogatási csoportjának](mailto:support@shmoop.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja hozzon létre egy tesztfelhasználót Britta Simon nevű az Azure Portalon.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory** gombra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure Active Directory gomb](./media/shmoopforschools-tutorial/create_aaduser_01.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
-2. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**. Válassza ki **minden felhasználó**.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/shmoopforschools-tutorial/create_aaduser_02.png)
-
-3. Megnyitásához a **felhasználói** párbeszédpanelen jelölje ki **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
-
-    ![A Hozzáadás gombra.](./media/shmoopforschools-tutorial/create_aaduser_03.png)
-
-4. Az a **felhasználói** párbeszédpanel mezőbe az alábbi lépéseket:
-
-    ![A felhasználó párbeszédpanel](./media/shmoopforschools-tutorial/create_aaduser_04.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőtípus `brittasimon@yourcompanydomain.extension`  
+    Például: BrittaSimon@contoso.com
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
-    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
-
-    d. Kattintson a **Létrehozás** gombra.
- 
-### <a name="create-a-shmoop-for-schools-test-user"></a>Az iskolák Shmoop tesztfelhasználó létrehozása
-
-Ez a szakasz célja egy Shmoop az iskolák Britta Simon nevű felhasználó létrehozásához. Shmoop az iskolák támogatja a just-in-time-kiépítés, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha egy új felhasználó még nem létezik, a rendszer létrehozza Shmoop az iskolák elérésére tett kísérlet során.
-
->[!NOTE]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, lépjen kapcsolatba a [Shmoop az iskolák támogatási csoportjának](mailto:support@shmoop.com).
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Shmoop az iskolák Azure egyszeri bejelentkezés használatára.
 
-![A felhasználói szerepkör hozzárendelése][200] 
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Shmoop az iskolák**.
 
-**Britta Simon hozzárendelése Shmoop az iskolák, tegye a következőket:**
-
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése. Ezután lépjen a **vállalati alkalmazások** a könyvtár nézetben.  Majd **minden alkalmazás**.
-
-    ![Felhasználó hozzárendelése][201] 
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
 2. Az alkalmazások listájában jelölje ki a **Shmoop az iskolák**.
 
-    ![Az alkalmazások listáját a Shmoop az iskolák hivatkozás](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_app.png)  
+    ![Az alkalmazások listáját a Shmoop az iskolák hivatkozás](common/all-applications.png)
 
 3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-    ![A "Felhasználók és csoportok" hivatkozásra][202]
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Válassza ki a **Hozzáadás** gombra. Ezt követően a a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **felhasználók és csoportok**.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A hozzárendelés hozzáadása panel][203]
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen jelölje ki **Britta Simon** a felhasználók listában.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Az a **felhasználók és csoportok** párbeszédpanelen kattintson a **kiválasztása** gombra. 
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen válassza ki a **hozzárendelése** gombra.
-    
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+
+### <a name="create-shmoop-for-schools-test-user"></a>Shmoop az iskolák tesztfelhasználó létrehozása
+
+Ebben a szakaszban egy Britta Simon nevű felhasználó Shmoop az iskolák jön létre. Shmoop az iskolák támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik Shmoop a iskolákban, egy új jön létre a hitelesítés után.
+
+> [!NOTE]
+> Ha manuálisan hozzon létre egy felhasználót van szüksége, lépjen kapcsolatba a [Shmoop az iskolák támogatási csoportjának](mailto:support@shmoop.com).
+
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési Panel segítségével tesztelheti.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Amikor kiválaszt a **Shmoop az iskolák** csempére a hozzáférési panelen kell lekérése automatikusan bejelentkezett Shmoop az iskolák alkalmazását.
-
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a Shmoop az iskolák csempére kattint, meg kell kell automatikusan bejelentkezett a Shmoop az iskolák, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [Az SaaS-alkalmazások integrálása az Azure Active Directory oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/shmoopforschools-tutorial/tutorial_general_01.png
-[2]: ./media/shmoopforschools-tutorial/tutorial_general_02.png
-[3]: ./media/shmoopforschools-tutorial/tutorial_general_03.png
-[4]: ./media/shmoopforschools-tutorial/tutorial_general_04.png
-
-[100]: ./media/shmoopforschools-tutorial/tutorial_general_100.png
-
-[200]: ./media/shmoopforschools-tutorial/tutorial_general_200.png
-[201]: ./media/shmoopforschools-tutorial/tutorial_general_201.png
-[202]: ./media/shmoopforschools-tutorial/tutorial_general_202.png
-[203]: ./media/shmoopforschools-tutorial/tutorial_general_203.png
-
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

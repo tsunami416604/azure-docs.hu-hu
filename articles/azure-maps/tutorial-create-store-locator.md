@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f53e21b8121006a6a6a1d2099b26e7cb28ca0ed9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1d3099da3d449e29d378e2f350fdc87ce5166f2e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60692662"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574401"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Egy tároló-lokátor létrehozása az Azure Maps használatával
 
@@ -71,7 +71,7 @@ A wireframes viszonylag egyszerű alkalmazás megjelenítése. Az alkalmazás eg
 
 ## <a name="create-the-store-location-dataset"></a>A tároló helye adatkészlet létrehozása
 
-Egy kereső áruházbeli alkalmazás kifejlesztett, mielőtt kell a tárolók a térképen megjelenítendő szeretnénk az adatkészlet létrehozása. Ebben az oktatóanyagban egy adatkészletet egy kitalált, Contoso kávé nevű kávézóban használunk. Ez egyszerű store keresőként az adatkészlet egy Excel-munkafüzet kezelik. Az adatkészlet 10,213 kilenc országok elosztva Contoso kávé kávézóban helyeket tartalmaz: az Egyesült Államokban, Kanadában, az Egyesült Királyság, Franciaország, Németország, Olaszország, Hollandia, Dánia, és Spanyolország. A következő képernyőkép: az adatok a következőhöz hasonló:
+Egy kereső áruházbeli alkalmazás kifejlesztett, mielőtt kell a tárolók a térképen megjelenítendő szeretnénk az adatkészlet létrehozása. Ebben az oktatóanyagban egy adatkészletet egy kitalált, Contoso kávé nevű kávézóban használunk. Ez egyszerű store keresőként az adatkészlet egy Excel-munkafüzet kezelik. Az adatkészlet 10,213 kilenc országok/régiók elosztva Contoso kávé kávézóban helyeket tartalmaz: az Egyesült Államokban, Kanadában, az Egyesült Királyság, Franciaország, Németország, Olaszország, Hollandia, Dánia, és Spanyolország. A következő képernyőkép: az adatok a következőhöz hasonló:
 
 <br/>
 <center>
@@ -403,7 +403,7 @@ Ezen a ponton minden van beállítva a felhasználói felületen. Most hogy kell
 
 1. Adja hozzá kódot *index.js*. A következő kódot a térkép inicializálja, hozzáad egy [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , amely megvárja, amíg befejeződik az oldal betöltése, másolatot események figyelése a Betöltés a térkép kábeleket, és használja a Keresés és a saját helyét gomb.
 
-   Amikor a felhasználó kiválasztja a Keresés gombra, vagy ha a felhasználó lenyomja a billentyűt után kifejezést a keresőmezőbe írja be egy olyan helyre, szemben a felhasználó lekérdezése egy intelligens keresés kezdeményezik. Ország ISO 2 értékeket tömbjét adja át a `countrySet` beállítással korlátozhatja a keresési eredmények között, az adott országban. Korlátozza az országok keresés segítségével növelheti a visszaadott eredmények pontosságát. 
+   Amikor a felhasználó kiválasztja a Keresés gombra, vagy ha a felhasználó lenyomja a billentyűt után kifejezést a keresőmezőbe írja be egy olyan helyre, szemben a felhasználó lekérdezése egy intelligens keresés kezdeményezik. Ország ISO 2 értékeket tömbjét adja át a `countrySet` beállítással korlátozhatja a keresési eredményeket ezen országok vagy régiók. Korlátozza az országokban vagy régiókban való keresés segítségével növelheti a visszaadott eredmények pontosságát. 
   
    Ha a keresés befejeződött, az első eredmény igénybe vehet, és állítsa be a térkép kamera a terület fölé. Amikor a felhasználó a saját helyét gombot választja, a HTML5-alapú földrajzi hely meghatározásának API, amely a böngészőbe, és a felhasználó földrajzi helye a térkép középre helyükre keresztül használja.  
 

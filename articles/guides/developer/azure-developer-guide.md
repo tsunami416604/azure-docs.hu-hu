@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: dc44cfbd24bd04caeede03dcbcfc60da06f61135
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 99e043adeac9a43432fb1eba85527b561c477354
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60921776"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570563"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
 
@@ -199,7 +199,7 @@ Az Azure világszerte számos régióban általánosan elérhető globális felh
 
 ### <a name="choose-the-best-region-for-your-application-and-data"></a>Válassza ki a legjobb régióban, az alkalmazások és adatok
 
-Az Azure használatának előnyei egyik helyezheti üzembe az alkalmazásokat a világ különböző pontjain. Az Ön által választott régióban hatással lehet az alkalmazás teljesítményét. Ha például célszerűbb válasszon, amely az ügyfelek hálózati kéréseket a késés csökkentése érdekében a legtöbb közelebb régiót. Érdemes azt is, válassza ki a régiót az egyes országokban az alkalmazás terjesztése a jogi követelmények teljesítéséhez. Mindig az alkalmazások adatainak tárolására, ugyanabban az adatközpontban vagy adatközpontba, közel az adatközpont, amelyen az alkalmazás a lehető legjobb.
+Az Azure használatának előnyei egyik helyezheti üzembe az alkalmazásokat a világ különböző pontjain. Az Ön által választott régióban hatással lehet az alkalmazás teljesítményét. Ha például célszerűbb válasszon, amely az ügyfelek hálózati kéréseket a késés csökkentése érdekében a legtöbb közelebb régiót. Érdemes azt is, válassza ki a régiót a terjesztéséhez az alkalmazás bizonyos országokban vagy régiókban jogi követelmények teljesítéséhez. Mindig az alkalmazások adatainak tárolására, ugyanabban az adatközpontban vagy adatközpontba, közel az adatközpont, amelyen az alkalmazás a lehető legjobb.
 
 ### <a name="multi-region-apps"></a>Többrégiós alkalmazás
 

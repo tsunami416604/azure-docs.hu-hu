@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 5d7dccfecc47b14be62a78600561a8ff0f7ca501
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 5102720242edd3ffc0a377bbddf0f7f3ade68b63
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111953"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937222"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine androidhoz streaming
 
 Online streamelés tartalmának védelme, mellett a multimédiás tartalom előfizetés és a bérleti szolgáltatások ajánlat letölthető tartalom, amely akkor működik, ha nem csatlakoznak az internethez. Szüksége lehet letölteni a tartalmat a telefon az alakzatot vagy lejátszható repülőgépes módra, amikor hajózó a tábla nem kapcsolódik a hálózathoz. További forgatókönyvek, ahol érdemes letölteni a tartalmat:
 
-- Néhány tartalomszolgáltatók előfordulhat, hogy ne engedélyezze a DRM-licenckézbesítés túl egy ország szegély. Ha a felhasználó szeretné, tekintse meg a tartalom külföldön utazás közben, offline letöltési van szükség.
-- Egyes országokban Internet rendelkezésre állási és/vagy a sávszélesség korlátozva. Előfordulhat, hogy a felhasználók megadhatják tudja, hogy megtekintse a megfelelő engedélymegtekintési elég nagy felbontású tartalmat töltenek le.
+- Néhány tartalomszolgáltatók előfordulhat, hogy ne engedélyezze a DRM-licenckézbesítés túl egy adott ország/régió szegély. Ha a felhasználó szeretné, tekintse meg a tartalom külföldön utazás közben, offline letöltési van szükség.
+- Egyes országokban/régiókban Internet rendelkezésre állási és/vagy a sávszélesség korlátozva. Előfordulhat, hogy a felhasználók megadhatják tudja, hogy megtekintse a megfelelő engedélymegtekintési elég nagy felbontású tartalmat töltenek le.
 
 Ez a cikk ismerteti, hogyan valósíthat meg a kapcsolat nélküli módban lejátszás DASH tartalom Widevine védi az Android-eszközökön. A kapcsolat nélküli DRM lehetővé teszi, hogy adja meg az előfizetés, bérbeadás és beszerzési modelleket a tartalom, így az ügyfelek a szolgáltatások egyszerűen igénybe a tartalmat a őket, ha az internethez csatlakozik.
 

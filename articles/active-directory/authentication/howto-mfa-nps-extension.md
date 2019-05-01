@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a945316df27460fef48a8bb4d43e46d412d2ae81
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 080a37a88e46117a9963f07c14d64f00c6bae6d5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359228"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570472"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication
 
@@ -184,6 +184,8 @@ Hacsak nem szeretné a saját (helyett az önaláírt tanúsítványokat, a Powe
 
 Ismételje meg ezeket a lépéseket minden olyan további hálózati házirend-kiszolgálókat, amelyeket szeretne a terheléselosztás beállítása.
 
+Ha az előző számítógép-tanúsítvány lejárt, és a egy új tanúsítvány lett létrehozva, a lejárt tanúsítványok törölni kell. Lejárt tanúsítványokat problémákat okozhatnak az NPS-bővítmény indítása kellene.
+
 > [!NOTE]
 > Ha a PowerShell-parancsfájlt a tanúsítványok generálása helyett a saját tanúsítványok használ, győződjön meg arról, a hálózati házirend-kiszolgáló elnevezési egyezmény igazítása. A tulajdonos nevének kell **CN =\<TenantID\>, OU = Microsoft NPS-bővítményének**. 
 
@@ -207,7 +209,7 @@ Miután engedélyezte a többtényezős hitelesítés egy RADIUS-ügyfél, az NP
 
 Ha a multi-factor Authentication nem regisztrált felhasználók, megadhatja, hogy mi történik, ha megpróbálnak hitelesíteni. A beállításjegyzék-beállítással *REQUIRE_USER_MATCH* a beállításjegyzékbeli elérési út *HKLM\Software\Microsoft\AzureMFA* funkció viselkedését vezérlő. Ez a beállítás olyan egyetlen konfigurációs beállítással rendelkezik:
 
-| Kulcs | Value | Alapértelmezett |
+| Kulcs | Érték | Alapértelmezett |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE/FALSE | Nincs beállítva (egyenértékű, True) |
 

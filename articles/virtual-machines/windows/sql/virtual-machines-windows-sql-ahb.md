@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c68bae87440bddf704d18b575aeb1f4ba4760bbb
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 3f62557d024f56b7014784b6956f15a950f8cca7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578243"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926248"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Az Azure-beli SQL Server virtuális gép licencelési modelljét módosítása
 Ez a cikk bemutatja, hogyan módosíthatja az Azure-ban az új SQL Server virtuális gép licencelési modelljét SQL virtuális gép erőforrás-szolgáltató – **Microsoft.SqlVirtualMachine**. Kettő licencelési üzemeltető SQL Server – használatalapú fizetés, egy virtuális gépet (VM) modellt és a hozott licences (BYOL). És most az Azure portal, az Azure parancssori felület vagy PowerShell használatával módosíthatja licencelési modellt az SQL Server virtuális gép használja. 
@@ -33,10 +33,13 @@ Váltás a két licenc modell között felmerülő **állásidő nélkül**, nem
 
 ## <a name="remarks"></a>Megjegyzések
 
+
  - CSP-ügyfeleknek a AHB juttatás képes használni, először a használatalapú fizetést biztosító virtuális gépek telepítése, majd a bring-your-saját licenc által. 
  - Az erőforrás-szolgáltató az SQL Server rendszerű virtuális gép egyéni rendszerkép regisztráció során adja meg a licenc típusa = "AHUB". Hagyja a licenc adja meg, üres, vagy adja meg a "Használatalapú" okoz a regisztráció sikertelen lesz. 
  - Törölte-e az SQL Server VM-erőforrás, állítja vissza a kódolt licenc beállításait, a kép. 
+ - Egy SQL Server rendszerű virtuális gép hozzáadása egy rendelkezésre állási csoportban van szükség a virtuális gép újbóli létrehozását. Mint ilyen, minden olyan virtuális gépeket hozzáadni egy funkciónként set kattintva visszatérhet az alapértelmezett használatalapú licenctípus és AHB újra engedélyezni kell. 
  - Megváltoztathatja a licencelési modell funkciója az SQL virtuális gép erőforrás-szolgáltató. Az erőforrás-szolgáltató SQL Server virtuális gép üzembe helyezése az Azure Portalon keresztül Piactéri lemezképet automatikusan regisztrálja. Azonban ügyfelek, akik saját telepíti az SQL Server rendszer manuálisan kell [regisztrálja az SQL Server rendszerű virtuális gép](#register-sql-server-vm-with-the-sql-vm-resource-provider). 
+ 
 
  
 ## <a name="limitations"></a>Korlátozások
@@ -172,7 +175,7 @@ Regisztrálja az SQL Server rendszerű virtuális gép PowerShell használata a 
 # Register your existing SQL Server VM with the new resource provider
 # example: $vm=Get-AzVm -ResourceGroupName AHBTest -Name AHBTest
 $vm=Get-AzVm -ResourceGroupName <ResourceGroupName> -Name <VMName>
-New-AzResource -ResourceName $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines -Proper
+New-AzResource -ResourceName $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines -Properties @{virtualMachineResourceId=$vm.Id}
 ```
 
 
@@ -190,7 +193,7 @@ A probléma megoldásához telepítse az SQL IaaS-bővítményt az SQL Server vi
   > Az SQL IaaS telepítése bővítmény újraindítja az SQL Server szolgáltatást, és csak akkor ajánlott végrehajtani egy karbantartási időszak alatt. További információkért lásd: [SQL IaaS-bővítmény telepítése](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension#installation). 
 
 
-### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found-the-property-sqlserverlicensetype-cannot-be-found-on-this-object-verify-that-the-property-exists-and-can-be-set"></a>A "Microsoft.SqlVirtualMachine/SqlVirtualMachines/ < erőforráscsoport >' '< erőforráscsoport >' erőforráscsoportba tartozó erőforrás nem található. A "sqlServerLicenseType" tulajdonság nem található ehhez az objektumhoz. Győződjön meg arról, hogy a tulajdonság létezik-e, és akkor állítható be.
+### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found-the-property-sqlserverlicensetype-cannot-be-found-on-this-object-verify-that-the-property-exists-and-can-be-set"></a>Az erőforrás "Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<erőforráscsoport->" erőforráscsoportba tartozó "\<erőforráscsoport->" nem található. A "sqlServerLicenseType" tulajdonság nem található ehhez az objektumhoz. Győződjön meg arról, hogy a tulajdonság létezik-e, és akkor állítható be.
 Ez a hiba akkor fordul elő, amikor próbál módosítani a licencelési modellt, amely nincs regisztrálva az erőforrás-szolgáltató SQL az SQL Server virtuális gépen. Az erőforrás-szolgáltatót regisztrálnia kell az [előfizetés](#register-sql-vm-resource-provider-with-subscription), majd regisztrálja az SQL Server virtuális gép az SQL-lel [erőforrás-szolgáltató](#register-sql-server-vm-with-sql-resource-provider). 
 
 ### <a name="cannot-validate-argument-on-parameter-sku"></a>"Sku" paraméter nem lehet érvényesíteni.

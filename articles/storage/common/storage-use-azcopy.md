@@ -8,29 +8,35 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 6ae3ec566c05d2460747439d61c87c995a90b19c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a91910d474b13fe8cc5306c53109575d2883224e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60728984"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572933"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Adatok áthelyezése az AzCopy az Windows rendszeren
+
 Az AzCopy egy parancssori segédprogram, és a Microsoft Azure Blob, fájl és Table storage, az adatok másolása szolgál az optimális teljesítmény érdekében tervezett egyszerű parancs használatával. Az adatokat egy fájlrendszer és egy tárfiók, illetve több tárfiók között is másolhatja.  
 
-Nincsenek töltheti le, Azcopynak két verziója. Az AzCopy Windows az Windows stílusú parancssori lehetőségeket kínál. [AzCopy linuxon](storage-use-azcopy-linux.md) POSIX stílusú parancssori lehetőségeket kínál Linux platformokra. Ez a cikk ismerteti az AzCopy Windows.
+> [!IMPORTANT]
+> Ez a cikk ismerteti az AzCopy egy régebbi verzióját.
+>Telepítse az AzCopy legújabb verzióját, lásd: [AzCopy v10](storage-use-azcopy-v10.md).
 
-## <a name="download-and-install-azcopy-on-windows"></a>Töltse le és telepítse az AzCopy Windows
+A régebbi verziót, az AzCopy (AzCopy v8.1) telepítését választja, majd van-e több verziója is letölthető. Az AzCopy Windows az Windows stílusú parancssori lehetőségeket kínál. [AzCopy linuxon](storage-use-azcopy-linux.md) POSIX stílusú parancssori lehetőségeket kínál Linux platformokra. Ez a cikk ismerteti az AzCopy Windows.
 
-### <a name="latest-version-v81"></a>Legújabb verzióját (v8.1)
-Töltse le a [Windows az AzCopy legújabb verzióját](https://aka.ms/downloadazcopy).
+## <a name="download-and-install-azcopy-v81-on-windows"></a>Töltse le és telepítse (v8.1) az AzCopy Windows
+
+Töltse le a [AzCopy (v8.1) a Windows](https://aka.ms/downloadazcopy).
 
 #### <a name="azcopy-on-windows-81-release-notes"></a>Az AzCopy Windows 8.1 kibocsátási megjegyzései
+
 - TABLE Storage-szolgáltatás a legújabb verzió már nem támogatott. Tábla exportálása szolgáltatását használja, ha az AzCopy 7.3 verzió letöltéséhez.
 - A .NET Core 2.1 használatával létrehozott, és minden .NET Core-függőség most már a telepítés vannak csomagolva.
 - OAuth hitelesítési támogatás hozzáadva. Használat ```azcopy login``` , jelentkezzen be az Azure Active Directory használatával.
 
 ### <a name="azcopy-with-table-support-v73"></a>Az Azcopy (v7.3) tábla támogatásával
+
 Töltse le a [tábla támogatásával, az AzCopy 7.3](https://aka.ms/downloadazcopynet).
 
 ### <a name="post-installation-step"></a>Telepítés utáni lépés

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 04/2/2019
 ms.author: alkohli
-ms.openlocfilehash: ed6d567be255fe9b72be564c31d734541a1ffa73
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f9d01b56da2650be395878ce07e4aae73495061f
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564934"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939642"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk"></a>Az Azure Data Box-lemezek hibáinak elhárítása
 
@@ -54,12 +54,12 @@ A naplómásolási útvonal megkereséséhez lépjen a Data Box-rendeléshez tá
 A tevékenységnaplókból hibaelhárításkor megkeresheti a hibákat, vagy nyomon követheti, hogy a szervezete felhasználói hogyan módosították az erőforrásokat. A tevékenységnaplókból a következők állapíthatók meg:
 
 - Az előfizetésben lévő erőforrásokon végrehajtott műveletek.
-- A művelet kezdeményezője. 
+- A művelet kezdeményezője.
 - A művelet végrehajtásának időpontja.
 - A művelet állapota.
 - A művelet felderítése során hasznosítható egyéb tulajdonságok értékei.
 
-A tevékenységnapló tartalmazza az erőforrásokon végrehajtott összes írási műveletet (például PUT, POST, DELETE), az olvasási műveleteket (például GET) azonban nem. 
+A tevékenységnapló tartalmazza az erőforrásokon végrehajtott összes írási műveletet (például PUT, POST, DELETE), az olvasási műveleteket (például GET) azonban nem.
 
 A tevékenységnaplók 90 napon keresztül érhetők el. Bármilyen dátumtartományt lekérdezhet, amíg a kezdő dátum legfeljebb 90 nappal korábbra esik. Emellett az Insights beépített lekérdezéseivel is szűrheti az eredményeket. Például ha a hibára kattint, ezután kiválaszthatja a különféle meghibásodásokat, és rájuk kattinthat a kiváltó okok elemzéséhez.
 
@@ -79,7 +79,7 @@ A tevékenységnaplók 90 napon keresztül érhetők el. Bármilyen dátumtartom
 
 |Hibaüzenet/figyelmeztetések  |Javaslatok |
 |---------|---------|
-|[Információ] Bitlocker-jelszó lekérése ehhez a kötethez: m <br>[Hiba] Kivétel történt a Bitlocker-kulcs ehhez a kötethez történő lekérése során: m<br> A szekvencia nem tartalmaz elemeket.|Ez a hibaüzenet azt jelzi, hogy a Data Box Disk célhelye offline állapotú. <br> A lemezek online állapotúvá tételéhez használja a `diskmgmt.msc` eszközt.|
+|[Információ] Kötet BitLocker-jelszó beolvasása: m <br>[Hiba] Kivétel történt a kötet m: BitLocker-kulcs beolvasása közben<br> A szekvencia nem tartalmaz elemeket.|Ez a hibaüzenet azt jelzi, hogy a Data Box Disk célhelye offline állapotú. <br> A lemezek online állapotúvá tételéhez használja a `diskmgmt.msc` eszközt.|
 |[Hiba] Kivétel lépett fel: Nem sikerült a WMI-műveletet:<br> Method=UnlockWithNumericalPassword, ReturnValue=2150694965, <br>Win32Message=A megadott helyreállítási jelszó formátuma érvénytelen. <br>A Bitlocker helyreállítási jelszavai 48 számjegyűek. <br>Ellenőrizze a helyreállítási jelszó formátumát, majd próbálkozzon újra.|Először oldja fel a lemezek zárolását a Data Box Disk lemezzárolás-feloldó eszközével, majd próbálja újból végrehajtani a parancsot. További információért lásd: <li> [a Data Box Disk lemezzárolás-feloldó eszközének Windows-ügyfélen való használatát ismertető részt](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client). </li><li> [a Data Box Disk lemezzárolás-feloldó eszközének Linux-ügyfélen való használatát ismertető részt](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client). </li>|
 |[Hiba] Kivétel lépett fel: DriveManifest.xml fájl létezik a cél-meghajtón. <br> Ez azt jelezheti, hogy a célmeghajtót más naplófájllal készítették elő. <br>Ha további adatokat szeretne hozzáadni ugyanahhoz a meghajtóhoz, használja az előző naplófájlt. Ha törölni szeretné a meglévő adatokat, és a célmeghajtót új importálási feladathoz szeretné használni, törölje a DriveManifest.xml fájlt a meghajtóról. Futtassa újra ezt a parancsot egy új naplófájllal.| Ez a hiba akkor fordulhat elő, ha több importálási munkamenethez is ugyanazt a meghajtókészletet próbálja használni. <br> Egy adott meghajtókészletet csak egyetlen másolásfelosztási munkamenethez használjon.|
 |[Hiba] Kivétel lépett fel: CopySessionId importadatokat szeptembertől-teszt – 1. egy előző másolási munkamenet hivatkozik, és nem használható fel újra egy új példányt munkamenethez.|Ez a hiba akkor fordulhat elő, ha egy új feladat neveként egy korábban már sikeresen befejeződött feladat nevét próbálja megadni.<br> Egyedi nevet adjon meg az új feladat számára.|
@@ -96,7 +96,7 @@ Ebben a szakaszban egy Linux-ügyfél használata az adatok másolása a Data Bo
 
 Ezt okozhatja egy kernelverziója fájlrendszer. 
 
-Data Box-lemezek írási-olvasási egy meghajtón szolgáltatással nem működik. Ez a forgatókönyv nem támogatott meghajtókkal dislocker visszafejteni. Előfordulhat, hogy rendelkezik sikerült csatlakoztatni az eszköz a következő paranccsal: 
+Data Box-lemezek írási-olvasási egy meghajtón szolgáltatással nem működik. Ez a forgatókönyv nem támogatott meghajtókkal dislocker visszafejteni. Előfordulhat, hogy rendelkezik sikerült csatlakoztatni az eszköz a következő paranccsal:
 
     `# mount -o remount, rw /mnt/DataBoxDisk/mountVol1`
 
@@ -104,15 +104,37 @@ Bár a szolgáltatással sikeres volt, az adatok nem megmaradnak.
 
 **Felbontás**
 
-Ha a fenti hibaüzenetet jelenik meg, próbálkozzon az alábbi megoldások valamelyikét:
+Az alábbi lépéseket a Linux rendszeren:
 
-- Telepítse [ `ntfsfix` ](https://linux.die.net/man/8/ntfsfix) (elérhető `ntfsprogs` csomag), majd futtassa a megfelelő partíció ellen.
+1. Telepítse a `ntfsprogs` a ntfsfix segédprogram-csomagja.
+2. Válassza le a csatlakoztatási pontok, a meghajtó a feloldás eszköz által biztosított. A csatlakoztatási pontok száma változhat meghajtókhoz.
 
-- Ha rendelkezik hozzáféréssel a Windows rendszerhez
+    ```
+    unmount /mnt/DataBoxDisk/mountVol1
+    ```
 
-    - Töltse be a meghajtón a Windows rendszer.
-    - Nyisson meg egy parancssort rendszergazdai jogosultságokkal. Futtatás `chkdsk` a köteten.
-    - Biztonságosan távolítsa el a kötetet, és próbálkozzon újra.
+3. Futtatás `ntfsfix` a megfelelő elérési úton. A kiemelt számot kell megadni, 2. lépés.
+
+    ```
+    ntfsfix /mnt/DataBoxDisk/bitlockerVol1/dislocker-file
+    ```
+
+4. Futtassa a következő paranccsal távolítható el a hibernálási metaadatokat, amelyek a csatlakozási problémát okozhatnak.
+
+    ```
+    ntfs-3g -o remove_hiberfile /mnt/DataBoxDisk/bitlockerVol1/dislocker-file /mnt/DataBoxDisk/mountVol1
+    ```
+
+5. Ezt egy tiszta leválasztás.
+
+    ```
+    ./DataBoxDiskUnlock_x86_64 /unmount
+    ```
+
+6. Hajtsa végre egy tiszta zárolásának feloldása, és csatlakoztassa.
+7. Tesztelje a csatlakoztatási pont egy fájl írása.
+8. Válassza le és csatlakoztassa újra a fájlmegőrzéssel ellenőrzése.
+9. Folytassa az adatok másolását.
  
 ### <a name="issue-error-with-data-not-persisting-after-copy"></a>Probléma: Hiba történt az adatok másolása után nem megőrzése
  

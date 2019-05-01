@@ -5,15 +5,15 @@ services: virtual-machines
 author: jpconnock
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/18/2018
+ms.date: 04/25/2019
 ms.author: jeconnoc
 ms.custom: include file
-ms.openlocfilehash: ca4063d31d93aab3814abed202b6b91b7726185f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f60b5421f2bc66cf09ede4178ce18e2394030264
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542925"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64929397"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>A platform által támogatott áttelepítés IaaS-erőforrások klasszikusból Azure Resource Manager
 Ez a cikk bemutatja az infrastruktúra áttelepítése egy szolgáltatás (IaaS) erőforrásokat a klasszikusból Resource Manager üzembe helyezési modellek és részleteivel kapcsolatban, a virtual network használatával az előfizetésében fennálló két üzemi modellekből származó erőforrások összekapcsolása helyek közötti átjárók. További információ [Azure Resource Manager-funkciók és előnyök](../articles/azure-resource-manager/resource-group-overview.md). 
@@ -74,7 +74,20 @@ A storage-fiók nem rendelkezik társított lemezek vagy a virtuális gépek ada
 
 > [!NOTE]
 > A Resource Manager üzemi modell nem rendelkezik a klasszikus lemezképek és lemezek fogalmát. Ha a tárfiók áttelepített, klasszikus lemezképek és lemezek nem láthatók a Resource Manager-készletben, de a mögöttes VHD-k a tárfiókban maradnak.
->
+
+Az alábbi képernyőfelvételnek megfelelően klasszikus tárfiók frissítése az Azure portal használatával egy Azure Resource Manager-tárfiókba megjelenítése:
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Nyissa meg a tárfiókot.
+3. Az a **beállítások** területén kattintson **ARM átállás**.
+4. Kattintson a **ellenőrzése** migrálási megvalósíthatósági meghatározásához.
+5. Ha az ellenőrzés eredménye, kattintson a **előkészítése** áttelepített tárfiók létrehozásához.
+6. Típus **Igen** a migrálás jóváhagyásához, és kattintson az **véglegesítése** az áttelepítés befejezéséhez.
+
+    ![Storage-fiók érvényesítése](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-1.png)
+    
+    ![Készítse elő a Storage-fiók](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-2.png)
+    
+    ![Tárfiók Migrálásához véglegesítése](../includes/media/storage-account-upgrade-classic/storage-migrate-resource-manager-3.png)
 
 ### <a name="migration-of-unattached-resources"></a>Nem csatolt erőforrások migrálása
 Nincs társított lemezek vagy a virtuális gépek adatainak a Storage-fiókok egymástól függetlenül is telepíthető át.
@@ -102,7 +115,7 @@ A következő konfigurációk jelenleg nem támogatottak.
 
 | Szolgáltatás | Konfiguráció | Ajánlás |
 | --- | --- | --- |
-| Resource Manager |Szerepkör alapú hozzáférés-vezérlés (RBAC) a klasszikus erőforrások |Mivel URI-ját az erőforrásokat az áttelepítés után módosult, javasoljuk, hogy az RBAC szabályzatok történjen a migrálás után szükséges frissítését tervezi. |
+| Resource Manager |Szerepköralapú hozzáférés-vezérlés (RBAC) a klasszikus erőforrások |Mivel URI-ját az erőforrásokat az áttelepítés után módosult, javasoljuk, hogy az RBAC szabályzatok történjen a migrálás után szükséges frissítését tervezi. |
 | Compute |Több alhálózattal társított virtuális gép |Frissítse az alhálózati konfigurációt való hivatkozáshoz csak egy alhálózat. Ez előfordulhat, hogy távolítsa el a másodlagos hálózati adapter (amely egy másik alhálózatra hivatkozik) a virtuális gépről, és csatlakoztassa újra a migrálás befejezése után. |
 | Compute |Virtuális gépek, virtuális hálózathoz tartozó, de még nincs hozzárendelve egy explicit alhálózat |Szükség esetén törölheti a virtuális Gépet. |
 | Compute |Riasztások, szabályzatok automatikus skálázási rendelkező virtuális gépek |Az áttelepítés halad végig, és ezeket a beállításokat a rendszer elveti. Azt javasoljuk, hogy a környezet kiértékelése, az áttelepítés előtt. Újrakonfigurálhatja azt is megteheti, a riasztási beállítások az áttelepítés befejezése után. |

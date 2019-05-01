@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 0887f58ca455dfec0474c8d6a1acba584224f0d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1838dbb627a6dec46f817101fc1d0cca0961ef77
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60929450"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574177"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySQL-adatbázisok használata az Azure App Service szolgáltatásban – gyakori kérdések
 Ez a GYIK használatával, és az Azure Web Appshez az adatbázisok a ClearDB MySQL vásárlásával kapcsolatos gyakori kérdésekre ad választ.
@@ -49,7 +49,7 @@ Az alapértelmezett adatbázis-beállítás Titan $3.50. Hogy ne jelenjen meg a 
 ## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>MySQL futtatok saját Azure virtuális gépen. Csatlakozhatok az Azure webalkalmazás adatbázisom?
 Igen. Mindaddig, amíg az Azure virtuális gép távoli hozzáférést adott a webalkalmazásra a webalkalmazás képes kapcsolódni az adatbázishoz. További információkért lásd: [MySQL telepítése virtuális gépen](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-## <a name="in-which-countries-are-cleardb-premium-mysql-clusters-supported"></a>Országban, amelyben támogatott prémium szintű MySQL a ClearDB-fürtök, amelyek?
+## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>Országok/régiók, amelyben támogatja a prémium szintű MySQL a ClearDB-fürtök, amelyek?
 ClearDB MySQL-prémium fürtért az összes Azure-régiókban világszerte India, Ausztrália, Dél-Brazília és Kína kivételével.
 
 ## <a name="can-i-create-a-new-cluster-prior-to-creating-a-database-with-cleardb-premium-cluster-solution"></a>A prémium szintű megoldást a ClearDB-adatbázis létrehozása előtt egy új fürtöt hozhat létre?
@@ -68,7 +68,7 @@ Web Apps alapszintű vagy egy magasabb díjszabási csomagot használja. A Clear
 Az a [az Azure portal](https://portal.azure.com), megosztott üzemeltetési adatbázis a ClearDB vertikálisan felskálázhatja. Olvassa el ezt [cikk](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/) további. Jelenleg nem támogatjuk frissítés ClearDB prémium fürtök az Azure Portalon.
 
 ## <a name="i-cant-see-my-cleardb-database-in-azure-portal"></a>Nem látom a ClearDB-adatbázis Azure Portalon?
-A ClearDB-adatbázis a klasszikus hozta létre, ha nem lesz megtekinthető az adatbázis a [az Azure Portal](https://portal.azure.com). Nincs nincs megkerülő ehhez a forgatókönyvhöz.
+A ClearDB-adatbázis a klasszikus hozta létre, ha nem lesz megtekinthető az adatbázis a [az Azure portal](https://portal.azure.com). Nincs nincs megkerülő ehhez a forgatókönyvhöz.
 
 ## <a name="who-do-i-contact-for-support-when-my-database-is-down"></a>Kihez fordulhatok támogatás, ha nem működik az adatbázis?
 Kapcsolattartó [ClearDB támogatási](https://www.cleardb.com/developers/help/support) kapcsolódó problémák adatbázisok mindegyike esetében. Készüljön fel szolgálnak az Azure-előfizetés adatait.

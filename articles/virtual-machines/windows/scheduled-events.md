@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 2ed92486b55aa4fd7dce32f54f0b6567c7bb3cf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ab0aefd5650aada9c301115813a80747ddd1f2ac
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60710999"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926323"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Az Azure Metadata szolgáltatás: Windows virtuális gépeken ütemezett események
 
@@ -48,7 +48,7 @@ Az ütemezett események biztosítja az események a következő esetekben haszn
 - A platform által kezdeményezett karbantartás (pl. gazdagép operációsrendszer-frissítés)
 - Csökkentett teljesítményű hardver
 - Felhasználó által kezdeményezett karbantartás (például felhasználói újraindítása vagy újbóli üzembe helyezése egy virtuális gép)
-- [Alacsony prioritású virtuális gép kiürítési](https://azure.microsoft.com/en-us/blog/low-priority-scale-sets) beállítja a méretezési csoportban
+- [Alacsony prioritású virtuális gép kiürítési](https://azure.microsoft.com/blog/low-priority-scale-sets) beállítja a méretezési csoportban
 
 ## <a name="the-basics"></a>Alapismeretek  
 

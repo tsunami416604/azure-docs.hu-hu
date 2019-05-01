@@ -11,20 +11,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: edba858f9be3350034ff48ea16d3c9137254bb97
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/26/2019
+ms.openlocfilehash: 0f7765e5b13f2d9c1e1213064d778ce6db5ef115
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357945"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572685"
 ---
-# <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>virtuális mag szolgáltatásszintek, Azure Hybrid Benefit és migrálása
+# <a name="choose-among-the-vcore-service-tiers-and-migrate-from-dtu-service-tiers"></a>A virtuális mag szolgáltatási szintek közül választhat, és áttelepíteni a DTU-szolgáltatásszintek
 
 A Virtuálismag-alapú vásárlási modell lehetővé teszi, hogy egymástól függetlenül méretezheti a számítási és tárolási erőforrások, a helyszíni teljesítmény és optimalizálás ár. Lehetővé teszi hardvertől kiválasztása:
 
 - A Gen4 – akár 24 logikai CPU-alapú Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzor, a virtuális mag = 1 PP (fizikai mag), egy mag, 7 GB-os csatlakoztatott SSD
 - A Gen5 – akár 80 logikai CPU-alapú Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzor, a virtuális mag = 1. LP (a hyper-szál), 5.1-es GB / core, gyors eNVM SSD
+
 
 Gen4 hardver / virtuális mag lényegesen több memóriát biztosít. Azonban Gen5 hardver lehetővé teszi a vertikális felskálázása a számítási erőforrások sokkal magasabb.
 
@@ -40,9 +41,9 @@ Az alábbi táblázat segítséget nyújt a három réteg közötti különbség
 ||**Általános célú**|**Üzletileg kritikus**|**Nagy kapacitású (előzetes verzió)**|
 |---|---|---|---|
 |A következőkre alkalmas|A legtöbb üzleti számítási feladathoz. Ajánlatok költségvetés-orientált elosztott és skálázható számítási és tárolási lehetőségek.|Magas I/O-igényű üzleti alkalmazások. Több elkülönített replika használatával ez biztosítja a legmagasabb hibatűrést.|A legtöbb üzleti célú a rugalmasan skálázható a tárolás és olvasási szintű követelmények|
-|Compute|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|
-|Memory (Memória)|Gen4: Magonként 7 GB<br>Gen5: 5.1 GB / mag | Gen4: Magonként 7 GB<br>Gen5: 5.1 GB / mag |Gen4: Magonként 7 GB<br>Gen5: 5.1 GB / mag|
-|Storage|Távoli tároló használja:<br/>Önálló adatbázis: 5 GB – 4 TB-IG<br/>Felügyelt példány: 32 GB - 8 TB |Helyi SSD-alapú tárolást használ:<br/>Önálló adatbázis: 5 GB – 4 TB-IG<br/>Felügyelt példány: 32 GB - 4 TB |Az automatikus növekedési rugalmas, igény szerint tárhelyet. Támogatja az akár 100 TB tárterület és más alkalmazásokhoz. Helyi SSD-tárhely a helyi puffer készlet cache és a helyi adatok tárolását. Az Azure távoli tárhely végső hosszú távú adatok tárolását. |
+|CPU|**Üzembe helyezett számítási**:<br/>Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag<br/>**Kiszolgáló nélküli számítási**<br/>Gen5: 0,5 - 4 virtuális mag|**Üzembe helyezett számítási**:<br/>Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|**Üzembe helyezett számítási**:<br/>Gen4: 1-24 virtuális mag<br/>Gen5: 1 és 80 virtuális mag|
+|Memory (Memória)|**Üzembe helyezett számítási**:<br/>Gen4: Magonként 7 GB<br/>Gen5: 5.1 GB / mag<br/>**Kiszolgáló nélküli számítási**<br/>Gen5: Magonként/3 GB|**Üzembe helyezett számítási**:<br/>Gen4: Magonként 7 GB<br/>Gen5: 5.1 GB / mag |**Üzembe helyezett számítási**:<br/>Gen4: Magonként 7 GB<br/>Gen5: 5.1 GB / mag|
+|Storage|Távoli tároló használja:<br/>**Önálló adatbázis kiépítése a számítási**:<br/>5 GB – 4 TB-IG<br/>**Önálló adatbázis, kiszolgáló nélküli számítási**:<br/>5 GB - 1 TB<br/>**Felügyelt példány**: 32 GB - 8 TB |Helyi SSD-alapú tárolást használ:<br/>**Önálló adatbázis kiépítése a számítási**:<br/>5 GB – 4 TB-IG<br/>**Felügyelt példány**:<br/>32 GB - 4 TB |Az automatikus növekedési rugalmas, igény szerint tárhelyet. Támogatja az akár 100 TB tárterület és más alkalmazásokhoz. Helyi SSD-tárhely a helyi puffer készlet cache és a helyi adatok tárolását. Az Azure távoli tárhely végső hosszú távú adatok tárolását. |
 |IO-átviteli sebesség (becsült)|Önálló adatbázis: A 7000-es maximális IOPS / virtuális mag 500 IOPS</br>Felügyelt példány: Attól függ, [fájl méretét](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|A maximális iops-érték 200 000 magonként 5000 IOPS|TBD|
 |Rendelkezésre állás|1 replika, nincs olvasási szintű|3 replika, 1 [olvasási szintű replika](sql-database-read-scale-out.md),<br/>zóna redundáns magas rendelkezésre ÁLLÁS|?|
 |Biztonsági másolatok|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 nap (alapértelmezés szerint 7 nap)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 nap (alapértelmezés szerint 7 nap)|pillanatkép-alapú biztonsági mentés az Azure távoli tároló és a helyreállításokat ezeket a pillanatképeket használni a gyors helyreállítás. A biztonsági mentéseket azonnali, és nincs hatással a számítási i/o-teljesítményét. Visszaállítás nagyon gyors és nem egy adatművelet (véve a perc helyett órák vagy napok) méretét.|
@@ -56,16 +57,18 @@ Az alábbi táblázat segítséget nyújt a három réteg közötti különbség
 - További információ az általános célú és a kritikus fontosságú üzleti szolgáltatási szintekről: [általános célú és a kritikus fontosságú üzleti szolgáltatási szintekről](sql-database-service-tiers-general-purpose-business-critical.md).
 - A Virtuálismag-alapú vásárlási modell a nagy kapacitású szolgáltatásszintre vonatkozó részletekért lásd: [nagy kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md).  
 
-> [!IMPORTANT]
-> Ha a számítási kapacitás kevesebb mint 1 virtuális magra van szüksége, használja a DTU-alapú vásárlási modell.
+
 
 ## <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit
 
-A Virtuálismag-alapú vásárlási modell, az exchange is kedvezményes díjszabást kínál az SQL Database-adatbázishoz a meglévő licenceit a [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/). Az Azure-értékelemek lehetővé teszi, hogy a helyszíni SQL Server-licenceivel akár 30 %-os mentése az Azure SQL Database használatával a helyszíni SQL Server-licenceit frissítési garanciával rendelkező.
+A Virtuálismag-alapú vásárlási modell kiépített számítógép szintjén, a meglévő licenceit a kedvezményes díjszabást kínál az SQL Database-adatbázishoz tudjon cserélni a [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/). Az Azure-értékelemek lehetővé teszi, hogy a helyszíni SQL Server-licenceivel akár 30 %-os mentése az Azure SQL Database használatával a helyszíni SQL Server-licenceit frissítési garanciával rendelkező.
 
 ![díjszabás](./media/sql-database-service-tiers/pricing.png)
 
-Az Azure Hybrid benefittel lehet váltani, csak az alapul szolgáló Azure infrastruktúra az SQL-adatbázismotor magát a meglévő SQL Server-licenc használatával kell fizetnie (**BasePrice**) vagy az alapul szolgáló infrastruktúra kell fizetnie, és az SQL Server-licenc (**LicenseIncluded**). Válassza ki, vagy módosítsa a licencelési modellt, az Azure portal használatával, vagy a következő API-k egyikével.
+Az Azure Hybrid benefittel lehet váltani, csak az alapul szolgáló Azure infrastruktúra az SQL-adatbázismotor magát a meglévő SQL Server-licenc használatával kell fizetnie (**BasePrice**) vagy az alapul szolgáló infrastruktúra kell fizetnie, és az SQL Server-licenc (**LicenseIncluded**).
+
+
+Válassza ki, vagy módosítsa a licencelési modellt, az Azure portal használatával, vagy a következő API-k egyikével.
 
 - Állítsa be, vagy frissítse a PowerShell-lel licenc típusa:
 
@@ -130,5 +133,5 @@ Minden adatbázis DTU-alapú számítási méretű másolhatja vagy speciális a
 
 ## <a name="next-steps"></a>További lépések
 
-- Részletek az adott számítási méretek és a tároló mérete lehetőségek önálló adatbázis elérhető, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok az önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)
+- Részletek az adott számítási méretek és a tároló mérete lehetőségek önálló adatbázis elérhető, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok az önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md)
 - Részletek az adott számítási méretek és a tároló mérete választható rugalmas készletek számára elérhető, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok a rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).

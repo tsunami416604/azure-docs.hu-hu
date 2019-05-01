@@ -1,25 +1,18 @@
 ---
-title: SKU-k konfigurálása az Azure-alkalmazás ajánlat |} A Microsoft Docs
+title: SKU-k konfigurálása az Azure-alkalmazás ajánlat |} Az Azure Marketplace-en
 description: Azure-beli a termékváltozatok konfigurálása felügyelt alkalmazás és a egy Azure-megoldás sablont.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 5d6ec0197699f603c79f414e015cdebcde6b9f60
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/23/2019
+ms.author: pabutler
+ms.openlocfilehash: ef4ea2419c64d0376023ea5d291460df48a51c63
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60745076"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943388"
 ---
 # <a name="azure-application-skus-tab"></a>Az Azure application termékváltozatok lapja
 
@@ -44,22 +37,25 @@ Ezeket a lépéseket követve hozzon létre egy új Termékváltozatban:
 
 ### <a name="sku-details-for-a-solution-template"></a>A Megoldássablon Termékváltozatának adatait
 
-Adja meg a következő SKU-beállításokat:
+A következő képernyőfelvétel-készítés Megoldássablon Termékváltozatának adatait formájában jeleníti meg.
 
-- **Cím** -termékváltozat címét. Ez a cím a katalógusban, az elem jelenik meg.
-- **Összefoglaló** – egy rövid a termékváltozat összefoglaló leírását. (Legfeljebb 100 karakterből állhat.)
-- **Leírás** – egy részletes leírást a termékváltozat.
-- **Termékváltozatának típusa** – egy legördülő lista ezekkel az értékekkel: "Sablon" és "Felügyelt alkalmazás". A jelen esetben válassza ki a **Megoldássablon**.
-- **A felhő rendelkezésre állási** -helyét, a Termékváltozat. Az alapértelmezett érték **nyilvános Azure**.
-Nyilvános Azure-ban – a virtuális gép lesz az ügyfelek számára minden nyilvános Azure-régióban, amely rendelkezik a Marketplace-integráció üzembe helyezhető.
-- **Az Azure Government felhőalapú** – Ez a virtuális gép lesz telepítve, az Azure Government Cloud. Közzététel előtt [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners), a Microsoft javasolja a kiadók és hitelesíti a megoldás együttműködik a környezet a vártnak. Előkészítéséhez és tesztelése, a kérelem egy [próbafiókot](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/).
+![Termékváltozat adatai űrlapot a megoldássablon](./media/azureapp-sku-details-solutiontemplate.png)
 
-  >[!NOTE] 
-  >A Microsoft Azure Government egy kormányzati célú felhőalapú rendelkező ügyfeleknek az USA szövetségi, állami, helyi vagy törzsi közösségi és partnerek jelölhetők meg ezeket az entitásokat a szabályozott hozzáférést.
+Adja meg a következő Termékváltozat.  Kiegészítve a csillag a mező kitöltése kötelező.
 
-- **Az egy privát Termékváltozat?** – Válassza az Igen lehetőséget, ha ez a Termékváltozat csak felhasználók bizonyos csoportjaira rendelkezésére áll.
+|    Mező         |       Leírás                                                            |
+|  ---------       |     ---------------                                                          |
+|  **Cím\***     | A Termékváltozat címét. Ez a cím a katalógusban, az elem jelenik meg.   |
+| **Összefoglalás\***    | A termékváltozat rövid összefoglaló leírását. (Legfeljebb 100 karakterből állhat.)  |
+| **Leírás\*** | A Termékváltozat részletes leírását. Alapszintű HTML használata támogatott.                 | 
+| **Termékváltozatának típusa\***   | Válassza ki az Azure application megoldás típusa ***Megoldássablon** ehhez a forgatókönyvhöz. |
+| **Felhőalapú rendelkezésre állása\*** | A Termékváltozat helye. Az alapértelmezett érték **nyilvános Azure**.  <b/>   **Nyilvános Azure** -alkalmazás üzembe helyezhető, az ügyfelek számára minden nyilvános Azure-régióban, amely rendelkezik a marketplace-integráció lesz.  <b/>   **Az Azure Government felhőalapú** -alkalmazás lesz telepítve, az Azure Government Cloud. Közzététel előtt [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners), a Microsoft javasolja a kiadók és hitelesíti a megoldás működését, ebben a környezetben a várt módon. Előkészítéséhez és tesztelése, a kérelem egy [próbafiókot](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/).  |
+| **Az egy privát Termékváltozat?\*** | Válassza ki **Igen** Ha ez a Termékváltozat csak felhasználók bizonyos csoportjaira rendelkezésére áll. |
+|   |   |
 
-    ![Termékváltozat adatai űrlapot a megoldássablon](./media/azureapp-sku-details-solutiontemplate.png)
+  > [!NOTE] 
+  > A Microsoft Azure Government egy kormányzati célú felhőalapú rendelkező ügyfeleknek az USA szövetségi, állami, helyi vagy törzsi közösségi és partnerek jelölhetők meg ezeket az entitásokat a szabályozott hozzáférést.
+
 
 ### <a name="sku-details-for-managed-application"></a>Felügyelt alkalmazás Termékváltozatának adatait
 
@@ -67,51 +63,45 @@ A következő képernyőfelvétel-készítés a Termékváltozat részletek kép
 
    ![Felügyelt alkalmazás Termékváltozat részletek képernyő](./media/azureapp-sku-details-managedapplication.png)
 
-Adja meg a következő SKU-beállításokat:
+Adja meg a következő SKU-beállításokat. Kiegészítve a csillag a mező kitöltése kötelező.
 
-- **Cím** -termékváltozat címét. Ez a cím a katalógusban, az elem jelenik meg.
-- **Összefoglaló** – egy rövid a termékváltozat összefoglaló leírását. (Legfeljebb 100 karakterből állhat.)
-- **Leírás** – egy részletes leírást a termékváltozat.
-- **Termékváltozatának típusa** – egy legördülő lista ezekkel az értékekkel: "Sablon" és "Felügyelt alkalmazás". A jelen esetben válassza ki a **felügyelt alkalmazás**.
-- **A felhő rendelkezésre állási** -helyét, a Termékváltozat. Az alapértelmezett érték **nyilvános Azure**.
-- **Nyilvános Azure** – a virtuális gép üzembe helyezhető, az ügyfelek számára minden nyilvános Azure-régióban, amely rendelkezik a Marketplace-integráció lesz.
-- **Az Azure Government felhőalapú** – Ez a virtuális gép lesz telepítve, az Azure Government Cloud. Közzététel előtt [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners), a Microsoft javasolja a kiadók és hitelesíti a megoldás együttműködik a környezet a vártnak. Előkészítéséhez és tesztelése, a kérelem egy [próbafiókot](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/).
+|    Mező         |       Leírás                                                            |
+|  ---------       |     ---------------                                                          |
+|  **Cím\***     | A Termékváltozat címét. Ez a cím a katalógusban, az elem jelenik meg.   |
+| **Összefoglalás\***    | A termékváltozat rövid összefoglaló leírását. (Legfeljebb 100 karakterből állhat.)  |
+| **Leírás\*** | A Termékváltozat részletes leírását. Alapszintű HTML használata támogatott.                 | 
+| **Termékváltozatának típusa\***   | Válassza ki az Azure application megoldás típusa ***felügyelt alkalmazás** ehhez a forgatókönyvhöz. 
+| **Felhőalapú rendelkezésre állása\*** | A Termékváltozat helye. Az alapértelmezett érték **nyilvános Azure**.  <b/>   **Nyilvános Azure** -alkalmazás üzembe helyezhető, az ügyfelek számára minden nyilvános Azure-régióban, amely rendelkezik a marketplace-integráció lesz.  <b/>   **Az Azure Government felhőalapú** -alkalmazás lesz telepítve, az Azure Government Cloud. Közzététel előtt [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners), a Microsoft javasolja a kiadók és hitelesíti a megoldás működését, ebben a környezetben a várt módon. Előkészítéséhez és tesztelése, a kérelem egy [próbafiókot](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/).   A Microsoft Azure Government egy kormányzati célú felhőalapú rendelkező ügyfeleknek az USA szövetségi, állami, helyi vagy törzsi közösségi és partnerek jelölhetők meg ezeket az entitásokat a szabályozott hozzáférést. |
+| **Az egy privát Termékváltozat?\*** | Válassza ki **Igen** Ha ez a Termékváltozat csak felhasználók bizonyos csoportjaira rendelkezésére áll. |
+| **Elérhetőség ország/régió\*** | Használat **régiók kiválasztása** országok/régiók, rendelkezésre álló listájának megtekintéséhez. Ellenőrizze minden ország/régió, és válassza ki **OK** a ajánlásai mentéséhez.  <b/>   ![Ország és régió rendelkezésre állási listája](./media/azure-app-select-country-region.png)  |
+| **Régi díjszabás\*** | A Termékváltozat a USD havi díja. Az árak a helyi pénznemben aktuális átváltási árfolyamokat konfiguráció esetén használatával vannak beállítva. Ellenőrizze ezeket, mivel Ön irányíthatja a ezeket a beállításokat. Állítsa be, vagy külön-külön mindegyik ország/régió ár megtekintése,. exportálja a díjszabási táblázatot, és importálja az egyéni díjszabás.  Exportálás/importálás díjszabási adatok engedélyezéséhez a díjszabási módosításokat kell menteni.  |
+| **Egyszerűsített pénznem díjszabása\*** | A Termékváltozat a USD havi díja. Ez lehet ugyanaz, mint a régi díjszabás. További információkért lásd: [pénznem díjszabás egyszerűsített](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer). |
+|  |  |
 
-  >[!NOTE] 
-  >A Microsoft Azure Government egy kormányzati célú felhőalapú rendelkező ügyfeleknek az USA szövetségi, állami, helyi vagy törzsi közösségi és partnerek jelölhetők meg ezeket az entitásokat a szabályozott hozzáférést.
-
-- **Az egy privát Termékváltozat?** – Válassza az Igen lehetőséget, ha ez a Termékváltozat csak felhasználók bizonyos csoportjaira rendelkezésére áll.
-- **Ország/régió rendelkezésre állási** – használata **régiók kiválasztása** országok/régiók, rendelkezésre álló listájának megtekintéséhez. Ellenőrizze minden ország/régió, és válassza ki **OK** a ajánlásai mentéséhez. 
-
-   ![Ország és régió rendelkezésre állási listája](./media/azure-app-select-country-region.png)
-
-- **Régi díjszabás** – adja meg az ár a Termékváltozatot USD havonta. Az árak a helyi pénznemben aktuális átváltási árfolyamokat konfiguráció esetén használatával vannak beállítva. Ellenőrizze ezeket, mivel Ön irányíthatja a ezeket a beállításokat. Állítsa be, vagy külön-külön mindegyik ország/régió ár megtekintése,. exportálja a díjszabási táblázatot, és importálja az egyéni díjszabás.
-
-  >[!NOTE]
-  >Exportálás/importálás díjszabási adatok engedélyezéséhez a díjszabási módosítások mentéséhez.
-
-- **Pénznem díjszabás egyszerűsített** – adja meg az ár a Termékváltozatot USD havonta. Ez lehet ugyanaz, mint a régi díjszabás. További információkért lásd: [pénznem díjszabás egyszerűsített](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer).
 
 ### <a name="package-details-for-solution-template"></a>A Megoldássablon csomag részletei
 
-Adja meg a következő csomag részletei:
+   ![A megoldássablon csomag részletei](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
 
-- **Verzió** – a csomagot, amely a feltölteni kívánt verzióját. Verzió címkéket az űrlap X.Y.Z, ha X, Y és Z egész számoknak kell lennie.
-- **Csomagfájl (.zip)** – Ez a csomag tartalmazza a következő fájlokat, a .zip-fájlként mentve.
+Adja meg az alábbi **csomag részletei** értékeket.  Kiegészítve a csillag a mező kitöltése kötelező.
+
+- **Verzió\***  – a csomagot, amely a feltölteni kívánt verzióját. Verzió címkéket az űrlap X.Y.Z, ha X, Y és Z egész számoknak kell lennie.
+- **Csomagfájl (.zip)\***  – Ez a csomag tartalmazza a következő fájlokat, a .zip-fájlként mentve.
   - MainTemplate.json – a központi telepítési sablon fájlt, a megoldás/alkalmazások üzembe helyezésére, és a megoldáshoz megadott erőforrások létrehozásához használt. További információkért lásd: [hogyan hozhat létre a központi telepítési sablon fájlok](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
   - createUIDefinition.json – Ez a fájl létrehozásához a felhasználói felület ezen megoldás alkalmazása kialakítási használják az Azure Portalon. További információkért lásd: [létrehozása az Azure portal felhasználói felületet a felügyelt alkalmazás](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
 
   >[!IMPORTANT] 
   >Ez a csomag kell tartalmaz beágyazott sablonok vagy az alkalmazás telepítéséhez szükséges parancsprogramok. A MainTemplate.json és createUIDefinition.json fájlt a gyökérmappájában lévő mappának kell lennie.
 
-   ![A megoldássablon csomag részletei](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
 
 ### <a name="package-details-for-managed-application"></a>Felügyelt alkalmazás csomag részletei
 
-Adja meg a következő csomag részletei:
+   ![Felügyelt alkalmazás csomag részletei](./media/azureapp-sku-pkgdetails-managedapplication.png)
 
-- **Verzió** – a csomagot, amely a feltölteni kívánt verzióját. Verzió címkéket az űrlap X.Y.Z, ha X, Y és Z egész számoknak kell lennie.
-- **Csomagfájl (.zip)** – Ez a csomag tartalmazza a következő fájlokat, a .zip-fájlként mentve.
+Adja meg a következő csomagra vonatkozó részleteket.  Kiegészítve a csillag a mező kitöltése kötelező.
+
+- **Verzió\***  – a csomagot, amely a feltölteni kívánt verzióját. Verzió címkéket az űrlap X.Y.Z, ha X, Y és Z egész számoknak kell lennie.
+- **Csomagfájl (.zip)\***  – Ez a csomag tartalmazza a következő fájlokat, a .zip-fájlként mentve.
   - applianceMainTemplate.json – a központi telepítési sablon fájlt, amely a megoldás/alkalmazások üzembe helyezésére, és hozza létre a meghatározott erőforrásokat használja. További információkért lásd: [a rövid útmutató: Létrehozása és üzembe helyezése Azure Resource Manager-sablonok az Azure portal használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal). 
   - applianceCreateUIDefinition.json – Ez a fájl létrehozásához a felhasználói felület ezen megoldás alkalmazása kialakítási használják az Azure Portalon. További információkért lásd: [létrehozása az Azure portal felhasználói felületet a felügyelt alkalmazás](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
   - mainTemplate.json – a sablon fájlt, amely csak a Microsoft.Solution/appliances erőforrást tartalmazza. További információkért lásd: [struktúra és az Azure Resource Manager-sablonok szintaxisát](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates). <br>
@@ -123,24 +113,23 @@ Vegye figyelembe a következő kulcstulajdonságokat ehhez az erőforráshoz:
   >[!IMPORTANT] 
   >Ez a csomag kell tartalmaz beágyazott sablonok vagy az alkalmazás telepítéséhez szükséges parancsprogramok. Ezeket a fájlokat a gyökérmappájában lévő mappának kell lennie:  MainTemplate.json, applianceMainTemplate.json, and applianceCreateUIDefinition.json.
 
-- **Bérlőazonosító** – a szervezet az Azure Active Directory-bérlő azonosítója.
-- **Igény szerinti hozzáférés engedélyezéséhez?** – Select **Igen** ügyfél központi telepítésekhez célból Just-In-Time felügyeleti hozzáférés engedélyezéséhez.
+- **Bérlőazonosító\***  – a szervezet az Azure Active Directory-bérlő azonosítója.
+- **Igény szerinti hozzáférés engedélyezéséhez? \***  : Adja meg, **Igen** Just-In-Time engedélyezése az ügyfelek központi telepítéséhez célból felügyeleti hozzáférés.
 
   >[!NOTE] 
   >Ha engedélyezi az igény szerinti, frissítenie kell a CreateUiDefinition.json fájl igény szerinti hozzáférés támogatásához.
 
-   ![Felügyelt alkalmazás csomag részletei](./media/azureapp-sku-pkgdetails-managedapplication.png)
-
 Egy felügyelt alkalmazás konfigurálnia kell a hitelesítési és a házirend-beállításokat.
+
 
 #### <a name="authorization"></a>Engedélyezés
 
 Adja hozzá az Azure Active Directory azonosítója felhasználó, csoport vagy alkalmazás, amely engedélyt ad a kezelt erőforráscsoport szeretné. Az engedély biztosított, adott jelzői közé tartozik a szerepkör-definíció azonosítóját. Annak oka az lehet, tulajdonos, közreműködő vagy bármely egyéni szerepkört.
 
+
 #### <a name="policy-settings"></a>Házirend-beállítások
 
 Adja hozzá a házirendekben, amelyek a felügyelt alkalmazás megfelel-e az. További információ az Azure erőforrás-házirendek, lásd: [Mi az Azure Policy?](../../../governance/policy/overview.md)
-
 
    ![Engedélyezési és a házirendek beállításai a felügyelt alkalmazás](./media/azureapp-sku-details-managedapp-auth-policy.png)
 
@@ -163,6 +152,7 @@ Adja hozzá a házirendekben, amelyek a felügyelt alkalmazás megfelel-e az. To
 
 4. A **Alkalmazásszabályzat Termékváltozata**, válassza ki az ingyenes vagy standard szintű, a szabályzat Termékváltozatának típusa. A Standard Termékváltozat megadása kötelező a naplózási házirendeket.
 
+
 ## <a name="next-steps"></a>További lépések
 
-[Marketplace lap](./cpp-marketplace-tab.md)
+További lesz az ajánlat leírása, és adja meg a marketing eszközök a [piactér lapján](./cpp-marketplace-tab.md). 

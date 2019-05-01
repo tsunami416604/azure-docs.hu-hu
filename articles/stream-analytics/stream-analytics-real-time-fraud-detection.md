@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: a13d3b24cd7845de144183d9f2ea825e0e24219f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 38353ed68469ac35f04d68e19afd11ac4b47f2ae
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60818401"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943953"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Első lépések az Azure Stream Analytics használatával: Csalások valós idejű észlelése
 
@@ -30,7 +30,7 @@ Ebben az oktatóanyagban a példa az adathamisítások azonnali felismerése tel
 
 ## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>Forgatókönyv: Valós idejű távközlési és SIM csalásészlelés
 
-A távközlési vállalat rendelkezik nagy mennyiségű adat a bejövő hívások. A vállalat úgy kívánja csaló hívások valós időben észlelheti a, hogy értesítse a felhasználókat arról, vagy állítsa le a szolgáltatást egy adott számot. Egy adott típusú SIM csalás magában foglalja a több hívás ugyanazzal az identitással körülbelül egy időben, de a földrajzilag különböző helyeken. Az ilyen típusú csalások észlelése, a vállalat kell megvizsgálja a bejövő telefonszám-rekordok és a meghatározott mintákat keressen – ebben az esetben a különböző országokban megvalósítható körülbelül egy időben indított hívások. A kategóriába tartozó telefonszám rekordokat írt storage további elemzés céljából.
+A távközlési vállalat rendelkezik nagy mennyiségű adat a bejövő hívások. A vállalat úgy kívánja csaló hívások valós időben észlelheti a, hogy értesítse a felhasználókat arról, vagy állítsa le a szolgáltatást egy adott számot. Egy adott típusú SIM csalás magában foglalja a több hívás ugyanazzal az identitással körülbelül egy időben, de a földrajzilag különböző helyeken. Az ilyen típusú csalások észlelése, a vállalat kell megvizsgálja a bejövő telefonszám-rekordok és a meghatározott mintákat keressen – ebben az esetben a hívások körülbelül egy időben a különböző országokban vagy régiókban. A kategóriába tartozó telefonszám rekordokat írt storage további elemzés céljából.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -150,7 +150,7 @@ Néhány, a csalások valós idejű észlelése alkalmazás által használt kul
 |**Rekord**|**Definíció**|
 |----------|--------------|
 |`CallrecTime`|A hívási kezdési idejét jelölő időbélyegző. |
-|`SwitchNum`|A hívás csatlakozásához használt telefonkapcsoló. Ebben a példában a kapcsolók olyan sztringek, amelyek a származási országot jelölik (USA, Kína, Egyesült királyság, Németország vagy Ausztrália). |
+|`SwitchNum`|A hívás csatlakozásához használt telefonkapcsoló. Ebben a példában a kapcsolók olyan karakterláncok, amelyek az országban vagy régióban (USA, Kína, Egyesült Királyság, Németország vagy Ausztrália) származási. |
 |`CallingNum`|A hívó telefonszáma. |
 |`CallingIMSI`|Az International Mobile Subscriber Identity (IMSI). Ez az a hívó egyedi azonosítója. |
 |`CalledNum`|A hívott fél telefonszáma. |
@@ -276,7 +276,7 @@ Sok esetben az elemzést a bemeneti streamből az oszlopok nem szükséges. Egy 
 
 Tegyük fel, hogy meg szeretné számolni a régiónként beérkező hívások száma. A streamelési adatok, ha szeretne végezni az összesítő függvények, például a leltár, kell szegmens az adatfolyam historikus egységekbe, (mivel a adatfolyam magát gyakorlatilag végtelen). Ehhez egy Stream Analytics használatával [oszlopdefiníció ablakfüggvényt](stream-analytics-window-functions.md). Ezután használhatja ezt az ablakot lévő adatok egy egységként.
 
-Az átalakítás keresi, amelyek nincsenek átfedésben a historikus windows sorozatát – minden ablak egy készlete csoportosíthatók adatokat és összesítés fog rendelkezni. Az ilyen típusú ablak a neve egy *Átfedésmentes ablak*. Az Átfedésmentes ablak belül kérheti a szerint csoportosítva beérkező hívások számát `SwitchNum`, amely az ország, ahol a hívást indító jelöli. 
+Az átalakítás keresi, amelyek nincsenek átfedésben a historikus windows sorozatát – minden ablak egy készlete csoportosíthatók adatokat és összesítés fog rendelkezni. Az ilyen típusú ablak a neve egy *Átfedésmentes ablak*. Az Átfedésmentes ablak belül kérheti a szerint csoportosítva beérkező hívások számát `SwitchNum`, amely az országban vagy régióban, ahol a hívást indító jelöli. 
 
 1. A kódszerkesztőben lekérdezés módosítása a következőhöz:
 
@@ -292,7 +292,7 @@ Az átalakítás keresi, amelyek nincsenek átfedésben a historikus windows sor
 
     A leképezés tartalmaz `System.Timestamp`, minden időszak végén időbélyeggel ad vissza. 
 
-    Adja meg, hogy egy Átfedésmentes ablak használatához, használja a [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) működni a `GROUP BY` záradékban. A függvény időegységet (bárhol az egy napra mikromásodperces) és a egy ablakméret (hány egység) kell megadni. Ebben a példában az Átfedésmentes ablak áll 5 másodperces időközökkel, így országonként számát a hívásokat minden 5 másodperc alatt érkezett fog kapni.
+    Adja meg, hogy egy Átfedésmentes ablak használatához, használja a [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) működni a `GROUP BY` záradékban. A függvény időegységet (bárhol az egy napra mikromásodperces) és a egy ablakméret (hány egység) kell megadni. Ebben a példában az Átfedésmentes ablak áll 5 másodperces időközökkel, így kap egy ország/régió szerint a hívásokat minden 5 másodperc alatt érkezett.
 
 2. Kattintson a **teszt** újra. Figyelje meg, hogy az eredmények között, az időbélyegek alapján **WindowEnd** 5 másodperces növekményekben vannak.
 
@@ -302,7 +302,7 @@ Az átalakítás keresi, amelyek nincsenek átfedésben a historikus windows sor
 
 Ebben a példában fontolja meg a hívás, amely ugyanahhoz a felhasználóhoz, de a különböző helyeken származnak, egy másik 5 másodpercen belül kell csaló használat. Például ugyanaz a felhasználó nem indíthat szabályosan hívásokat egyszerre az USA-ból és Ausztráliából. 
 
-Ellenőrizze az ezekben az esetekben, használhatja a streamelési adatok önillesztést önillesztést a stream alapján a `CallRecTime` értéket. Ezután megkeresheti hívás rekordokat, ahol a `CallingIMSI` értéket (a származási szám) megegyezik, de a `SwitchNum` (származási ország) értéke nem ugyanaz.
+Ellenőrizze az ezekben az esetekben, használhatja a streamelési adatok önillesztést önillesztést a stream alapján a `CallRecTime` értéket. Ezután megkeresheti hívás rekordokat, ahol a `CallingIMSI` értéket (a származási szám) megegyezik, de a `SwitchNum` (ország/régió forrása) értéke nem ugyanaz.
 
 Streamelési adatok illesztést használ, ha az illesztés bizonyos korlátozások az egyező sorok illesztésnek választhatók el egymástól, időben kell megadnia. (Korábban feljegyzett a streamelt adatokat az gyakorlatilag végtelen.) A kapcsolat ideje határán belül vannak megadva a `ON` a JOIN záradék használatával a `DATEDIFF` függvény. Ebben az esetben a join egy 5 másodperces időköze hívási adatonként alapján történik.
 

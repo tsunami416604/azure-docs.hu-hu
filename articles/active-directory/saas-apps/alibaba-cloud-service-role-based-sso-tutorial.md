@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0ab129d7b215f0f10841b13fc2835af59227198
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 6b03dfa5a33850dfedf23375536278c4e08bed68
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565241"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687160"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alibaba-cloud-service-role-based-sso"></a>Oktatóanyag: Az Alibaba Felhőszolgáltatás (Role-based SSO) az Azure Active Directory-integráció
 
@@ -120,7 +120,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása az Alibaba felhőszolgáltat
     | `https://signin.aliyun.com/saml-role/SSO` |
     | `https://signin.alibabacloud.com/saml-role/SSO` |
 
-5. Az Alibaba Felhőszolgáltatás (Role-based SSO) alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+5. Az Alibaba Felhőszolgáltatás (Role-based SSO) alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
 
     ![image](common/edit-attribute.png)
 
@@ -220,7 +220,7 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezést a h
 
 ### <a name="create-alibaba-cloud-service-role-based-sso-test-user"></a>Az Alibaba Felhőszolgáltatás (Role-based SSO) tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű Alibaba felhőszolgáltatásban (Role-based SSO) felhasználói hoz létre. Együttműködve [Alibaba Felhőszolgáltatás (Role-based SSO) támogatási csoportjának](https://www.aliyun.com/service/) a felhasználók hozzáadása az Alibaba Felhőszolgáltatás (Role-based SSO) platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy Britta Simon nevű Alibaba felhőszolgáltatásban (Role-based SSO) felhasználói hoz létre. Együttműködve [Alibaba Felhőszolgáltatás (Role-based SSO) támogatási csoportjának](https://www.aliyun.com/service/) a felhasználók hozzáadása az Alibaba Felhőszolgáltatás (Role-based SSO) platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

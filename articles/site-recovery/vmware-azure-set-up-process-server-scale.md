@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
-ms.openlocfilehash: 678f9aa60d4970540ded8ba0bb1a4ddaa6281a49
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101897"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925488"
 ---
 # <a name="scale-with-additional-process-servers"></a>További folyamatkiszolgálók méretezés
 
@@ -24,7 +24,7 @@ Alapesetben, amikor replikál a VMware virtuális gépek vagy fizikai kiszolgál
 
 Győződjön meg arról, hogy végre [kapacitástervezés](site-recovery-plan-capacity-vmware.md) a VMware replikálásához. Ennek segítségével azonosíthatja módjának és további folyamatkiszolgálók üzembe kell helyeznie.
 
-9.24 verzióról útmutató során az új replikációk folyamatkiszolgáló választott egészül ki. Folyamatkiszolgáló kifogástalan, figyelmeztető és Critial bizonyos feltételek alapján lesznek megjelölve. Szeretné megtudni, különböző helyzetekben, amely befolyásolhatja a folyamatkiszolgáló állapota, keresse fel [kiszolgáló kijelölés útmutatást feldolgozni](vmware-azure-manage-process-server.md#process-server-selection-guidance).
+9.24 verzióról útmutató során az új replikációk folyamatkiszolgáló választott egészül ki. Folyamatkiszolgáló kifogástalan, figyelmeztetési és kritikus bizonyos feltételek alapján lesznek megjelölve. Különböző helyzetekben, amely befolyásolhatja a folyamatkiszolgáló állapotát, tekintse át a [kiszolgálóriasztások feldolgozni](vmware-physical-azure-monitor-process-server.md#process-server-alerts).
 
 > [!NOTE]
 > Klónozott Folyamatkiszolgáló összetevő nem támogatott. Kövesse a jelen cikk egyes PS horizontális felskálázást.

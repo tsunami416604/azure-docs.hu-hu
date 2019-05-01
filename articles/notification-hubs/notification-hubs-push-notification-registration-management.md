@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
 ms.date: 04/08/2019
-ms.openlocfilehash: 64c2cd0ed1572fdaaa42f4731519ba6d5c320f1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5a70eec15003a1f75a80740f269f6df3523012a8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457736"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685395"
 ---
 # <a name="registration-management"></a>Regisztrációkezelés
 
@@ -40,7 +40,7 @@ Egy regisztrációs a Platformértesítési szolgáltatás (PNS) leíró eszköz
 
 ### <a name="installations"></a>Telepítések
 
-Egy továbbfejlesztett egy telepítés, amely tartalmaz egy leküldéses tulajdonságcsomagjait regisztrációs kapcsolódó tulajdonságok. Az eszközök regisztrálása a legújabb és legjobb módja. Azonban nem támogatott az ügyféloldali .NET SDK-ban ([Notification Hub SDK háttérbeli műveletek](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) kezdődően még.  Ez azt jelenti, ha regisztrál a magáról az ügyféleszközről, meg kellene használnia a [Notification Hubs – REST API](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation) megközelítés telepítések támogatásához. Háttérszolgáltatás használatakor kell tudni használni [Notification Hub SDK háttérbeli műveletek](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Egy továbbfejlesztett egy telepítés, amely tartalmaz egy leküldéses tulajdonságcsomagjait regisztrációs kapcsolódó tulajdonságok. Az eszközök regisztrálása a legújabb és legjobb módja. Azonban nem támogatott az ügyféloldali .NET SDK-ban ([Notification Hub SDK háttérbeli műveletek](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) kezdődően még.  Ez azt jelenti, ha regisztrál a magáról az ügyféleszközről, meg kellene használnia a [Notification Hubs – REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) megközelítés telepítések támogatásához. Háttérszolgáltatás használatakor kell tudni használni [Notification Hub SDK háttérbeli műveletek](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 Fő előnye, hogy telepítések az alábbiak:
 
@@ -48,7 +48,7 @@ Fő előnye, hogy telepítések az alábbiak:
 - A telepítési modell egy speciális címkével formátumot támogatja (`$InstallationId:{INSTALLATION_ID}`), amely lehetővé teszi, hogy közvetlenül az adott eszköz küld értesítést. Például, ha az alkalmazás beállítása a telepítési Azonosítót `joe93developer` az adott eszköz a fejlesztők célként az eszköz egy értesítés küldéséhez a `$InstallationId:{joe93developer}` címke. Ez lehetővé teszi, hogy egy adott eszköz célként ehhez további kódírás nélkül.
 - Telepítés használatával is lehetővé teszi, hogy részleges regisztrációfrissítés. A részleges frissítési telepítés kérése történik a PATCH módszer használatával a [JSON-javítás standard](https://tools.ietf.org/html/rfc6902). Ez akkor hasznos, ha frissíti a címkéket a regisztrációt. Nem kell kérje le a teljes regisztrációját, és küldje el újra a korábbi címkéket.
 
-Telepítés az alábbi tulajdonságokat is tartalmazzák. A telepítési tulajdonságok teljes listáját lásd: [létrehozása vagy a telepítés felülírja a REST API-val](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation) vagy [telepítési tulajdonságok](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
+Telepítés az alábbi tulajdonságokat is tartalmazzák. A telepítési tulajdonságok teljes listáját lásd: [létrehozása vagy a telepítés felülírja a REST API-val](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) vagy [telepítési tulajdonságok](https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.installation).
 
 ```json
 // Example installation format to show some supported properties
@@ -95,7 +95,7 @@ Regisztráció és a telepítés minden egyes eszköz vagy csatorna érvénytele
 
 Ha a használni kívánt [sablonok](notification-hubs-templates-cross-platform-push-messages.md), az eszköz telepítése is tartalmazza az összes sablon egy JSON-eszköz társított formázása (lásd a fenti példában). A nevek segítségével a cél különböző sablonok ugyanazon az eszközön.
 
-Minden sablon neve leképez egy sablon törzsét és címkék nem kötelező megadni. Ezen felül a platformonként további sablontulajdonságok rendelkezhet. Windows Store (WNS használatával) és a Windows Phone 8 (MPNS használatával) egy további készletet a fejlécek a sablon része lehet. Esetén APNs beállíthat egy lejárati tulajdonságot egy konstans, vagy egy kifejezés. Teljes listáját a telepítési tulajdonságok lásd [létrehozása vagy a telepítés felülírja a REST segítségével](https://msdn.microsoft.com/library/azure/mt621153.aspx) témakör.
+Minden sablon neve leképez egy sablon törzsét és címkék nem kötelező megadni. Ezen felül a platformonként további sablontulajdonságok rendelkezhet. Windows Store (WNS használatával) és a Windows Phone 8 (MPNS használatával) egy további készletet a fejlécek a sablon része lehet. Esetén APNs beállíthat egy lejárati tulajdonságot egy konstans, vagy egy kifejezés. Teljes listáját a telepítési tulajdonságok lásd [létrehozása vagy a telepítés felülírja a REST segítségével](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) témakör.
 
 ### <a name="secondary-tiles-for-windows-store-apps"></a>A Windows Store Apps másodlagos Csempék
 
@@ -120,7 +120,7 @@ Az eszköz regisztrálása a legegyszerűbb módszer, de azt hátrányokkal jár
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Regisztrálhat az egy értesítési központ segítségével telepítve eszközről kódpéldákat
 
-Jelenleg ez csak támogatott használatával a [Notification Hubs – REST API](https://msdn.microsoft.com/library/mt621153.aspx).
+Jelenleg ez csak támogatott használatával a [Notification Hubs – REST API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation).
 
 A PATCH módszer használatával is használhatja a [JSON-javítás standard](https://tools.ietf.org/html/rfc6902) frissítheti a telepítést.
 

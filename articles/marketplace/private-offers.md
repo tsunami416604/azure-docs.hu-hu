@@ -1,25 +1,19 @@
 ---
-title: Saját ajánlatok |} Az Azure
+title: Saját ajánlatok |} Az Azure Marketplace-en
 description: Saját ajánlatok az Azure piactéren elérhető alkalmazás és szolgáltatás-közzétevők esetében.
 services: Azure, Marketplace, Compute
-documentationcenter: ''
 author: qianw211
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: qianw211
-ms.openlocfilehash: c3294aaa2b6c88e08028c8958d2ab3a7297aea74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 179775076382022b9a97e7d76bc1e0dc4fbf69db
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60735926"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937559"
 ---
 # <a name="private-offers"></a>Saját ajánlatok
 

@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 45824ba93e86622b1bbd92aae01f18f89bee6adf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 24523a7b244b6dee0e240291b7187e38d82a2e08
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60795144"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572902"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Az Application Insights áttekintése fejlesztők és üzemeltetők számára
 
@@ -182,7 +182,7 @@ A diagnosztizálás nem teljesen ugyanaz, mint a hibakeresés. Mielőtt elkezden
 
 ![Függőséghibák és a függőségekhez intézett hívások időtartamának diagramjai](./media/detect-triage-diagnose/11-dependencies.png)
 
-Egyes lassúsági függőségi problémákat földrajzi hely okoz. A Fabrikam Bank Azure-beli virtuális gépeket használ, és felfedezték, hogy a webkiszolgálót és a fiókkiszolgálót véletlenül eltérő országokban helyezték el. Miután az egyiket migrálták, drámai javulás következett be.
+Egyes lassúsági függőségi problémákat földrajzi hely okoz. A Fabrikam Bank Azure-beli virtuális gépek használ, és a felderített, hogy fiókkiszolgálót webkiszolgálót és fiók kiszolgáló eltérő országban és régióban. Miután az egyiket migrálták, drámai javulás következett be.
 
 **Mit tettünk?** Ha úgy tűnik, hogy a probléma nem függőségben van, és nem volt mindig tapasztalható, valószínűleg egy friss változás okozhatja. Az esemény- és a mérőszám-diagramok által biztosított előzményekkel könnyen összekapcsolhatja a hirtelen változásokat és az üzembe helyezéseket. Ez megkönnyíti a probléma keresését. Engedélyezze az Application Insights Profilert az alkalmazáskód azon sorainak azonosításához, amelyek a lassú teljesítményt okozták. Lásd az [élő Azure-webalkalmazások Application Insightsszal történő profilkészítését](./../../azure-monitor/app/profiler.md) ismertető szakaszt. Miután engedélyezte a profilkészítőt, a következőhöz hasonló nyomot fog látni. Az alábbi példában könnyen észrevehető, hogy a *GetStorageTableData* metódus okozta a problémát.  
 

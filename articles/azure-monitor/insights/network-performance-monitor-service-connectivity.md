@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 0c4b8d1646ba851acc6a0e2d9a3b920634098846
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 3eb53fa88a0757d22fc4575e9d9f402d6eebee13
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62119335"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719304"
 ---
 # <a name="service-connectivity-monitor"></a>Szolgáltatáskapcsolati monitor
 
@@ -59,7 +59,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 A tesztek a szolgáltatásvégpontokra irányuló hálózati kapcsolat figyeléséhez létrehozásának megkezdéséhez.
 
 1. Válassza ki a **szolgáltatás Kapcsolatfigyelő** fülre.
-2. Válassza ki **hozzáadása tesztelése**, és adja meg a teszt neve és leírása. 
+2. Válassza ki **hozzáadása tesztelése**, és adja meg a teszt neve és leírása. Munkaállomásonként maximális 450 tesztet hozhat létre. 
 3. Válassza ki a teszt típusát:<br>
 
     * Válassza ki **webes** , amely válaszol a HTTP-vagy Https-kérelmekre, például outlook.office365.com vagy a bing.com szolgáltatás kapcsolatának figyelése.<br>

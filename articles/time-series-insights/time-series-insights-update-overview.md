@@ -9,28 +9,33 @@ manager: cshankar
 ms.reviewer: anshan
 ms.workload: big-data
 ms.topic: overview
-ms.date: 12/05/2018
+ms.date: 04/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: fbf347ceb3ccae4802c984a2737c2298a4e43e72
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: a742e9f235812cdbdafdcb0a39581e0779fcd040
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63760089"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572927"
 ---
-# <a name="azure-time-series-insights-preview-overview"></a>Az Azure Time Series Insights előzetes verziója – áttekintés
+# <a name="the-azure-time-series-insights-preview"></a>Az Azure Time Series Insights-előzetes verzió
 
-Az Azure Time Series Insights előzetes verziója olyan teljes körű platform--szolgáltatásként ajánlat. Betöltési, feldolgozásához, tárolásához és magas contextualized, time series-optimalizált IoT-méretű adatok lekérdezésére szolgál. A Time Series Insights alkalmi adatfeltárás és működési elemzés ideális. A Time Series Insights egy olyan ajánlat, hogy megfelel-e a széles körű kell ipari IoT központi telepítések egyedileg bővíthető és testre szabott szolgáltatás.
+Az Azure Time Series Insights előzetes verziója olyan teljes körű platform--szolgáltatásként ajánlat. Gyűjtése, feldolgozásához, tárolásához, elemzéséhez és lekérdezése rendkívül contextualized, a time series-optimalizált IoT-méretű adatokra szolgál. A Time Series Insights alkalmi adatfeltárás és működési elemzés ideális. A Time Series Insights egy olyan ajánlat, hogy megfelel-e a széles körű kell ipari IoT központi telepítések egyedileg bővíthető és testre szabott szolgáltatás.
+
+> [!TIP]
+> Szolgáltatások általános rendelkezésre állását, olvassa el a [Azure Time Series Insights GA áttekintése](time-series-insights-overview.md).
 
 ## <a name="video"></a>Videó
 
-Ebben a videóban áttekintést az Azure Time Series Insights előzetes verziója, egy felhőalapú IoT-elemzési platform biztosítunk.
+### <a name="learn-more-about-the-azure-time-series-insights-preview-br"></a>További információ az Azure Time Series Insights előzetes verziója. </br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics/player]
 
 ## <a name="define-iot-data"></a>IoT-adatok megadása
 
-IoT-adatok az eszköz nagy szervezetek számára érhető el "ipari" adatok. IoT-adatot azért gyakran magas strukturálatlan, eszközök, amelyek viszonylag zajos mérések rögzítése küld. Ezeknek a méréseknek a hőmérséklet, a mozgásban lévő és a páratartalom tartalmazza. A data-adatfolyamok gyakran jelentős hézagok, sérült üzenetek és hamis értéket olvasmányok jellemzi. Ezekbe az adatfolyamokba adatokat kell törölni minden olyan elemző előtt. IoT-adatot legtöbbször jelentéssel bíró csak belső forrásból, például a CRM és ERP további streamadat típusú bemenetek kontextusában. Bemenetek külső adatforrások, például az időjárás vagy helyet is származhat.
+IoT-adatot az ipari adatokat, amely az eszközintelligencia-igényes szervezetek számára érhető el. IoT-adatot azért gyakran magas strukturálatlan, eszközök, amelyek viszonylag zajos mérések rögzítése küld. Ezeknek a méréseknek a hőmérséklet, a mozgásban lévő és a páratartalom tartalmazza. A data-adatfolyamok gyakran jelentős hézagok, sérült üzenetek és hamis értéket olvasmányok jellemzi. Ezekbe az adatfolyamokba adatokat kell törölni minden olyan elemző előtt.
+
+IoT-adatot legtöbbször jelentéssel bíró csak belső forrásból, például a CRM és ERP további streamadat típusú bemenetek kontextusában. Bemenetek külső adatforrások, például az időjárás vagy helyet is származhat.
 
 Ennek következtében az adatok egy részét működési és üzleti célokat szolgál beolvasása. Az ilyen adatok üzleti jelentéskészítési és elemzési egységes, átfogó, jelenlegi és megfelelő információkat nyújt. Bekapcsolása folyamatban gyűjtött adatokat döntéstámogató elemzésekhez szükséges IoT:
 
@@ -46,8 +51,8 @@ Egy tipikus IoT-adatfolyam az alábbi képen látható.
 
 Az aktuális IoT fekvő változatos. Ügyfeleink a gyártási, a gépjárműipar, energia, segédprogramok, okosépületek és tanácsadási iparágak kiterjednek. Forgatókönyvek között megtalálható az ad-hoc adatfeltárás, ahol az adatok alakját az ismeretlen. Funkciók működési elemzés is között a működési hatékonyság növelésén sematikus, vagy explicit módon modellezett adatok. Ezekben az esetekben általában egymás mellett, és támogatja a különböző használati helyzetekhez. Platform-képességeket, ipari IoT a vállalatok és a digitális revolution sikeréhez kulcsfontosságú, hogy a következők:
 
-- Többrétegű tárolás, online és offline is. 
-- Évtizednyi alatt az idősorozat-adatok tárolásának képessége. 
+- Többrétegű tárolás, online és offline is.
+- Évtizednyi alatt az idősorozat-adatok tárolásának képessége.
 - Lehetővé teszi az explicit módon modellezheti és az operatív adatelemzési eszköz-alapú lekérdezések optimalizálása.
 
 A Time Series Insights egy átfogó, teljes körű platform--szolgáltatásként IoT-adatok feltárása és az operational insights szánt. A Time Series Insights egy teljes körűen felügyelt felhőszolgáltatás, IoT-méretű idősoros adatainak elemzésére kínál.

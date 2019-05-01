@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/27/2019
+ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26f3fe9c2483dda3b9350c110b2e8adf60dcd21e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2e783a7c34216624126946eef84f56977d4c049
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387213"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572414"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -43,12 +43,12 @@ Letöltés |} [Töltse le az Azure AD Connect](https://go.microsoft.com/fwlink/?
 Miközben a a folyamat során, hogy a kiadás verziószáma jelenik meg a kisebb kiadás száma pozícióját, mint "1.3.X.0" - "x" Ez azt jelzi, hogy a kibocsátási megjegyzéseket, a jelen dokumentum "1.3." kezdve az összes verzió érvényes. Amint azt a kibocsátási folyamat véglegesítése a legutóbb kiadott verziót frissíti a kiadási verziószámát, és a kiadási állapota frissülni fog "A letöltésről és automatikus frissítés engedélyezett" értékre.
 Az Azure AD Connect nem minden verziókban lesz elérhető az automatikus frissítés. A kiadási állapota e kiadás legyen elérhető, az automatikus frissítés, vagy csak le fogja jelezni. Ha az automatikus frissítés engedélyezése az Azure AD Connect-kiszolgálón majd, hogy a kiszolgáló automatikusan frissíti az Azure AD Connect automatikus frissítéshez kiadott a legújabb verzióra. Ne feledje, hogy az Azure AD Connect-konfigurációk nem mindegyike automatikus frissítésre jogosult. Kövesse ezt a hivatkozást tudjon meg többet az [automatikus frissítés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
 
-## <a name="13x0"></a>1.3.X.0 
+## <a name="13200"></a>1.3.20.0 
 
 ### <a name="release-status"></a>Kiadási állapot 
 
-3/25/2019: Függőben
- 
+04/24/2019: Kiadás dátuma: letöltés
+
 ### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések 
 
 - Frissítési tartomány támogatása 
@@ -64,7 +64,7 @@ Az Azure AD Connect nem minden verziókban lesz elérhető az automatikus friss�
 - A WS-Trust javítás folytattuk a munkát a ping parancs, és adja hozzá az új Azure-példányokban támogatási 3.19.8 adal frissítése 
 - Csoport módosítása szinkronizálási szabályokat a samAccountName DomainNetbios és a felhőbe – DomainFQDN flow szükséges jogcímek 
 - Módosított alapértelmezett szinkronizálási szabály kezelése – további [Itt](how-to-connect-fix-default-rules.md).
-- Hozzáadott új ügynök windows-szolgáltatás futtatásához. Ez az ügynök, "Admin ügynök" nevű lehetővé teszi, hogy részletesebb távoli diagnosztikát a Microsoft Engineers támogatási eset megnyitásakor elhárítása érdekében az Azure AD Connect-kiszolgáló. További információ a felügyeleti ügynök [Itt](whatis-aadc-admin-agent.md). 
+- Hozzáadott új ügynök windows-szolgáltatás futtatásához. Ez az ügynök, "Admin ügynök" nevű lehetővé teszi, hogy részletesebb távoli diagnosztikát a Microsoft Engineers támogatási eset megnyitásakor elhárítása érdekében az Azure AD Connect-kiszolgáló. Ez az ügynök nincs telepítve, és alapértelmezés szerint engedélyezve van.  Hogyan kell telepíteni és engedélyezni az ügynököt a további információk: [Mi az az Azure AD Connect felügyeleti ügynök?](whatis-aadc-admin-agent.md). 
 - Frissítve a végfelhasználói licencszerződést (EULA) 
 - Automatikus frissítés támogatásának hozzáadása a üzemelő példánya, amely az AD FS használata, a bejelentkezés típusát.  Ez a követelmény az AD FS az Azure AD függő entitás megbízhatóságának frissítése a frissítési folyamat részeként is eltávolítja. 
 - Az Azure ad-ben megbízhatósági feladatot, amely két lehetőséget biztosít hozzá: megbízhatósági elemzése és frissítése és a megbízhatóság alaphelyzetbe állítása. 
@@ -387,7 +387,7 @@ Az AD DS-fiókot a következő engedélyeinek módosítása a helyszíni alkalma
 *   Távolítsa el az adott objektumra, kivéve az adott ÖNKISZOLGÁLÓ hozzáférés-vezérlési bejegyzés vonatkozó összes ACE. Szeretnénk az alapértelmezett engedélyek ép esetén, a saját MAGA.
 *   Ezek az engedélyek hozzárendelése:
 
-Typo     | Name (Név)                          | Hozzáférés               | Erre vonatkozik
+Típus     | Name (Név)                          | Hozzáférés               | Erre vonatkozik
 ---------|-------------------------------|----------------------|--------------|
 Engedélyezés    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |

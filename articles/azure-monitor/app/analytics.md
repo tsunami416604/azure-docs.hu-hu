@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4c3ecdd01106cc8d305764206bc75535fa4dac3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d75544a30a441b5178a1e9dd368f1ce41cd4d321
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60691945"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574259"
 ---
 # <a name="analytics-in-application-insights"></a>Az Application Insights Analytics
 Analytics olyan hatékony keresést és lekérdezéseket eszközben [Application Insights](app-insights-overview.md). Analytics egy olyan webes eszköz, ezért semmilyen beállítást nem szükséges.
@@ -38,7 +38,7 @@ Az Application Insights analytics nem közvetlenül hozzáférni adatokat a Log 
 
 ## <a name="query-data-in-analytics"></a>Elemzési adatok lekérdezése
 Egy tipikus lekérdezést egy táblázat neve, és a egy sorozatát kezdődik *operátorok* elválasztva `|`.
-Például keressük meg, hogy hány kérésnek a különböző országokban kapott az elmúlt 3 órában alkalmazást:
+Például keressük meg hány kér az alkalmazás különböző országok/régiók, az elmúlt 3 órában kapott:
 ```AIQL
 requests
 | where timestamp > ago(3h)

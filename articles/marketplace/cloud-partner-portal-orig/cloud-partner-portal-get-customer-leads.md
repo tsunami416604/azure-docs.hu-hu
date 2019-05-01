@@ -1,25 +1,18 @@
 ---
-title: Ügyfélérdeklődések konfigurálása |} A Microsoft Docs
+title: Ügyfélérdeklődések konfigurálása |} Az Azure Marketplace-en
 description: Ügyfélérdeklődések adja meg a Cloud Partner portálra.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 2a425e607ea7dac394ab90a3fed4d4026056bbc1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: c3e483a33d986eff767b3529e30208319ad90b23
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61069608"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64934987"
 ---
 <a name="get-customer-leads"></a>Ügyfélérdeklődések lekérése
 ==================

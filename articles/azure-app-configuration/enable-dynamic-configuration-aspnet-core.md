@@ -9,27 +9,27 @@ editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
-ms.devlang: na
+ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: cf872766a18c5691f6c094d71a0c29f6bcf736da
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: b8a466234489e65458b0136619076154fa4c9f37
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579036"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688910"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Oktatóanyag: A dinamikus konfiguráció használata az ASP.NET Core-alkalmazás
 
-ASP.NET Core, amely képes olvasni a konfigurációs adatok különböző forrásokból származó moduláris konfigurációs rendszerrel rendelkezik. Működés közbeni változások anélkül, hogy ez az alkalmazás újraindítása tud kezelni. ASP.NET Core támogatja a kötés .NET erősen típusos osztály konfigurációs beállításokat. Ez kódtárba őket elhelyezni a kódban a különböző használatával `IOptions<T>` mintákat. Ezek egyikét mintáit, kifejezetten `IOptionsSnapshot<T>`, automatikusan újra betölti az alkalmazást, az alapul szolgáló adatok változásakor. 
+ASP.NET Core, amely képes olvasni a konfigurációs adatok különböző forrásokból származó moduláris konfigurációs rendszerrel rendelkezik. Működés közbeni változások anélkül, hogy ez az alkalmazás újraindítása tud kezelni. ASP.NET Core támogatja a kötés .NET erősen típusos osztály konfigurációs beállításokat. Ez kódtárba őket elhelyezni a kódban a különböző használatával `IOptions<T>` mintákat. Ezek egyikét mintáit, kifejezetten `IOptionsSnapshot<T>`, automatikusan újra betölti az alkalmazást, az alapul szolgáló adatok változásakor.
 
 Is beszúrása `IOptionsSnapshot<T>` be tartományvezérlői eléréséhez a legfrissebb konfigurálási tárolva az Azure-alkalmazások konfigurálása az alkalmazásban. Is állíthat be az alkalmazás konfigurációs ASP.NET Core ügyféloldali kódtár, folyamatos figyelése és beolvasni egy alkalmazás a konfigurációs adattároló bármilyen változás. A lekérdezés rendszeres időközönként megadhat.
 
 Ez az oktatóanyag bemutatja, hogyan valósíthat meg dinamikus konfiguráció frissítéseit a kódban. A web app, a rövid útmutatók rendszerben bevezetett épül. A folytatás előtt Befejezés [ASP.NET Core-alkalmazás létrehozása az alkalmazás konfigurációs](./quickstart-aspnet-core-app.md) első.
 
-Bármely Kódszerkesztő segítségével ebben a rövid útmutatóban található lépések elvégzése. [A Visual Studio Code](https://code.visualstudio.com/) egy kiváló lehetőség, hogy az a Windows, macOS és Linux platformokon érhető el.
+Bármely Kódszerkesztő segítségével hajtsa végre a lépéseket ebben az oktatóanyagban. [A Visual Studio Code](https://code.visualstudio.com/) egy kiváló lehetőség, hogy az a Windows, macOS és Linux platformokon érhető el.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -39,13 +39,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a rövid útmutató elvégzéséhez telepítse a [.NET Core SDK](https://dotnet.microsoft.com/download).
+Ehhez az oktatóanyaghoz, telepítse a [.NET Core SDK](https://dotnet.microsoft.com/download).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="reload-data-from-app-configuration"></a>Töltse be újra az alkalmazás konfigurációs adatait
 
-1. Nyissa meg a Program.cs, és frissítse a `CreateWebHostBuilder` metódus hozzáadásával a `config.AddAzureAppConfiguration()` metódust.
+1. Nyissa meg *Program.cs*, és frissítse a `CreateWebHostBuilder` metódus hozzáadásával a `config.AddAzureAppConfiguration()` metódust.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -64,7 +64,7 @@ Ez a rövid útmutató elvégzéséhez telepítse a [.NET Core SDK](https://dotn
 
     A második paramétert a `.Watch` módszer a lekérdezési időköz az ASP.NET ügyféloldali kódtár egy alkalmazás a konfigurációs adattároló kérdezi le. Az ügyféloldali kódtár ellenőrzi a meghatározott konfigurációs beállítás megtekintéséhez, ha minden olyan módosítás történt.
 
-2. Adjon hozzá egy kinyerhetők fájlt, amely definiálja, és implementál egy új `Settings` osztály.
+2. Adjon hozzá egy *kinyerhetők* határozza meg, és implementál egy új fájlt `Settings` osztály.
 
     ```csharp
     namespace TestAppConfig
@@ -79,7 +79,7 @@ Ez a rövid útmutató elvégzéséhez telepítse a [.NET Core SDK](https://dotn
     }
     ```
 
-3. Nyissa meg a Startup.cs, és frissítse a `ConfigureServices` metódus kötést létrehozni a konfigurációs adatokat a `Settings` osztály.
+3. Nyissa meg *Startup.cs*, és frissítse a `ConfigureServices` metódus kötést létrehozni a konfigurációs adatokat a `Settings` osztály.
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -98,7 +98,13 @@ Ez a rövid útmutató elvégzéséhez telepítse a [.NET Core SDK](https://dotn
 
 ## <a name="use-the-latest-configuration-data"></a>A legfrissebb konfigurációs adatok használata
 
-1. Nyissa meg a HomeController.cs vezérlők a címtárban. Frissítés a `HomeController` fogadásához osztály `Settings` keresztül függőségi beszúrást, és ellenőrizze, használja az értékeket.
+1. Nyissa meg *HomeController.cs* a tartományvezérlők könyvtárban, és vegyen fel egy hivatkozást a `Microsoft.Extensions.Options` csomagot.
+
+    ```csharp
+    using Microsoft.Extensions.Options;
+    ```
+
+2. Frissítés a `HomeController` fogadásához osztály `Settings` keresztül függőségi beszúrást, és ellenőrizze, használja az értékeket.
 
     ```csharp
     public class HomeController : Controller
@@ -121,7 +127,7 @@ Ez a rövid útmutató elvégzéséhez telepítse a [.NET Core SDK](https://dotn
     }
     ```
 
-2. Nyissa meg a nézetek Index.cshtml > directory otthoni, és cserélje le annak tartalmát a következő parancsfájlt:
+3. Nyissa meg *Index.cshtml* a nézetek > directory otthoni, és cserélje le annak tartalmát a következő parancsfájlt:
 
     ```html
     <!DOCTYPE html>
@@ -164,7 +170,7 @@ Ez a rövid útmutató elvégzéséhez telepítse a [.NET Core SDK](https://dotn
 
     | Kulcs | Érték |
     |---|---|
-    | TestAppSettings:BackgroundColor | Kék |
+    | TestAppSettings:BackgroundColor | zöld |
     | TestAppSettings:FontColor | lightGray |
     | TestAppSettings:Message | Élő frissítés-alkalmazás konfigurálása Azure - adatokat! |
 

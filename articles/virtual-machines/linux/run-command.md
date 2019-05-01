@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: e865d4e9cbad2c2064d961bc6e407440ce8556fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fe0547c1ddb89b8d9ab3e876e83bbdea17a58743
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60772070"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570601"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>A Linux rendszerű virtuális gép futtatása paranccsal shell-szkript futtatása
 
@@ -78,9 +78,9 @@ Ez a táblázat a Linux rendszerű virtuális gépekhez elérhető parancsok lis
 
 ## <a name="limiting-access-to-run-command"></a>Futtatása paranccsal való hozzáférés korlátozása
 
-A futtatási parancsok listázása és a egy parancs részleteit megjelenítő szükséges a `Microsoft.Compute/locations/runCommands/read` engedéllyel, amely a beépített [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört, és magasabb.
+A futtatási parancsok listázása és a egy parancs részleteit megjelenítő szükséges a `Microsoft.Compute/locations/runCommands/read` engedélyt az előfizetés szintjén, amely a beépített [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkör, és magasabb.
 
-A parancs futtatásához szükség van a `Microsoft.Compute/virtualMachines/runCommand/action` engedéllyel, amely a [közreműködői](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör, és magasabb.
+Parancs futtatásához szükség van a `Microsoft.Compute/virtualMachines/runCommand/action` engedélyt az előfizetés szintjén, amely a [virtuális gépek Közreműködője](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör és újabb.
 
 Használhatja az egyik a [beépített](../../role-based-access-control/built-in-roles.md) szerepkörök, vagy hozzon létre egy [egyéni](../../role-based-access-control/custom-roles.md) szerepkör-parancs futtatása.
 

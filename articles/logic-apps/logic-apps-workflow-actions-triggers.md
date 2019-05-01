@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: bd588eeec8b560411e3fb4b6f84ec8a4a45f08d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 76783ffd91a8ad17fca912ac9c3a66a5f0f15821
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60844177"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691930"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Az eseményindító és művelet esetében az Azure Logic Apps munkafolyamat-definíciós nyelv leírása
 
@@ -338,7 +338,7 @@ A trigger ellenőrzi vagy lekérdezi a megadott végponton, a megadott ismétlő
 
 Jól működnek a logikai alkalmazást, a végpontot kell egy adott eseményindító minta vagy a szerződés felel meg, és ismeri fel ezeket a tulajdonságokat:  
   
-| Válasz | Kötelező | Leírás | 
+| Válasz | Szükséges | Leírás | 
 |----------|----------|-------------| 
 | Állapotkód | Igen | A "200 OK" állapotkód: elindít egy Futtatás. Minden más állapotkód nem indul el egy Futtatás. | 
 | Retry-after fejléccel | Nem | Mindaddig, amíg a logikai alkalmazás lekérdezi a végpont újra másodpercben | 
@@ -2301,6 +2301,7 @@ Módosíthatja a triggereket és műveleteket ezekkel az alapértelmezett műkö
 | `runtimeConfiguration.concurrency.runs` | Egész szám | Módosítsa a [ *alapértelmezett korlát* ](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) egyszerre, vagy a párhuzamosan futtatható munkafolyamat-példányok számát. Ez az érték segítségével, amelyek megkapják a háttérrendszerek kérések számának korlátozásához. <p>Beállítás a `runs` tulajdonságot `1` beállításként ugyanúgy működik a `operationOptions` tulajdonságot `SingleInstance`. Beállíthatja, vagy tulajdonságot, de nem mindkettőt. <p>Az alapértelmezett korlát módosításához lásd [módosítása az eseményindító egyidejűségi](#change-trigger-concurrency) vagy [példányok egymás után aktiválása](#sequential-trigger). | Minden trigger | 
 | `runtimeConfiguration.concurrency.maximumWaitingRuns` | Egész szám | Módosítsa a [ *alapértelmezett korlát* ](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) várhat a futtatását, amikor a munkafolyamat már fut a legnagyobb párhuzamos alkalmazáspéldányok a munkafolyamat-példányok számát. Módosíthatja az egyidejűségi korlát a `concurrency.runs` tulajdonság. <p>Az alapértelmezett korlát módosításához lásd [módosítása várakozási futtatások korlátozza](#change-waiting-runs). | Minden trigger | 
 | `runtimeConfiguration.concurrency.repetitions` | Egész szám | Módosítsa a [ *alapértelmezett korlát* ](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) "for each" száma ciklus ismétléseinek egyszerre, vagy a párhuzamosan futtatható. <p>Beállítás a `repetitions` tulajdonságot `1` beállításként ugyanúgy működik a `operationOptions` tulajdonságot `SingleInstance`. Beállíthatja, vagy tulajdonságot, de nem mindkettőt. <p>Az alapértelmezett korlát módosításához lásd [módosítása "for each" egyidejűségi](#change-for-each-concurrency) vagy [futtassa a "for each" egymás után hurkokat](#sequential-for-each). | Művelet: <p>[Foreach](#foreach-action) | 
+| `runtimeConfiguration.paginationPolicy.minimumItemCount` | Egész szám | Adott műveletek támogatásához, és a tördelés van kapcsolva, ez az érték határozza meg a *minimális* lekéréséhez eredmények száma. <p>Tördelés bekapcsolásához lásd [tördelés használatával adatok kötegelt, elem vagy eredmények beolvasása](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md) | Művelet: Változatos |
 ||||| 
 
 <a name="operation-options"></a>
@@ -2651,7 +2652,7 @@ HTTP-művelet definíciója, ebben a példában a `authentication` szakasz megha
 
 A [Azure AD OAuth-hitelesítés](../active-directory/develop/authentication-scenarios.md), az eseményindítót vagy műveletet definíciót tartalmazhat egy `authentication` JSON-objektum, amely szerint a következő táblázat a megadott tulajdonságokkal rendelkezik. Hozzáférhet a futásidőben a paraméterértékeket, használhatja a `@parameters('parameterName')` kifejezés, amely biztosítja a [munkafolyamat-definíciós nyelv](https://aka.ms/logicappsdocs).
 
-| Tulajdonság | Szükséges | Value | Leírás |
+| Tulajdonság | Szükséges | Érték | Leírás |
 |----------|----------|-------|-------------|
 | **type** | Igen | `ActiveDirectoryOAuth` | A hitelesítési típus szeretne használni, amely az Azure AD OAuth "ActiveDirectoryOAuth" |
 | **szolgáltató** | Nem | <*URL-for-authority-token-issuer*> | A szolgáltató által biztosított a hitelesítési jogkivonat URL-címe |

@@ -1,7 +1,6 @@
 ---
 title: Presto telepítése Linux-alapú Azure HDInsight-fürtökön
 description: Ismerje meg, hogyan telepíthet Presto és Airpal Linux-alapú HDInsight Hadoop-fürtökön parancsfájlműveletekkel segítségével.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 435c041bb5fb0a398f92914f943166108cc20080
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 2bd5e1ae02ffbb62b9a5a95846aabeeab2b448b5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258343"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704814"
 ---
 # <a name="install-and-use-presto-on-hadoop-based-hdinsight-clusters"></a>Telepítheti és használhatja Presto Hadoop-alapú HDInsight-fürtök
 
@@ -26,7 +25,7 @@ HDInsight az Apache Hadoop-fürtök buborék Presto kérelem is kínál. Tovább
 > A jelen cikkben ismertetett lépések a HDInsight 3.5-ös Hadoop-fürt által használt Linux szükséges. Linux az egyetlen operációs rendszer használt a HDInsight 3.4-es vagy újabb verzió. További információkért lásd: [HDInsight-verziók](hdinsight-component-versioning.md).
 
 ## <a name="what-is-presto"></a>Presto mi?
-[Presto](https://prestodb.io/overview.html) fast elosztott SQL lekérdezési motorja big Data-van. A presto ideális interaktív több petabájtnyi adat lekérdezését. Presto, és hogyan működnek együtt az összetevőkről további információkért lásd: [Presto fogalmak](https://github.com/prestodb/presto/blob/master/presto-docs/src/main/sphinx/overview/concepts.rst).
+[Presto](https://prestosql.io) fast elosztott SQL lekérdezési motorja big Data-van. A presto ideális interaktív több petabájtnyi adat lekérdezését. Presto, és hogyan működnek együtt az összetevőkről további információkért lásd: [Presto fogalmak](https://prestosql.io/docs/current/overview/concepts.html).
 
 > [!WARNING]  
 > A HDInsight-fürthöz megadott összetevők teljes mértékben támogatottak. A Microsoft Support fog help elkülönítésére, és ezeket az összetevőket kapcsolatos problémák megoldásához.
@@ -86,9 +85,9 @@ Dolgozunk Presto egy HDInsight-fürtön, az alábbi lépéseket:
    
     `select count (*) from hivesampletable;`
    
-    Alapértelmezés szerint [Apache Hive](https://prestodb.io/docs/current/connector/hive.html) és [TPCH](https://prestodb.io/docs/current/connector/tpch.html) Presto összekötők már konfigurálva vannak. A Hive-összekötőt az alapértelmezett Hive telepítés használatára van konfigurálva. Így a Hive a táblák a Presto automatikusan látható.
+    Alapértelmezés szerint [Apache Hive](https://prestosql.io/docs/current/connector/hive.html) és [TPCH](https://prestosql.io/docs/current/connector/tpch.html) Presto összekötők már konfigurálva vannak. A Hive-összekötőt az alapértelmezett Hive telepítés használatára van konfigurálva. Így a Hive a táblák a Presto automatikusan látható.
 
-    További információkért lásd: [Presto dokumentáció](https://prestodb.io/docs/current/index.html).
+    További információkért lásd: [Presto dokumentáció](https://prestosql.io/docs/current/index.html).
 
 ## <a name="use-airpal-with-presto"></a>A Presto Airpal használata
 
@@ -151,7 +150,7 @@ A telepítés testreszabásához hajtsa végre az alábbi lépéseket:
    
     További információkért lásd: [HDInsight (az Apache Hadoop) SSH használatával csatlakozhat](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. A konfigurációs módosításokat a fájlban `/var/lib/presto/presto-hdinsight-master/appConfig-default.json`. A Presto konfigurációs további információkért lásd: [Presto beállítási lehetőségei a YARN-alapú fürtök](https://prestodb.io/presto-yarn/installation-yarn-configuration-options.html).
+2. A konfigurációs módosításokat a fájlban `/var/lib/presto/presto-hdinsight-master/appConfig-default.json`. A Presto konfigurációs további információkért lásd: [Presto beállítási lehetőségei a YARN-alapú fürtök](https://prestosql.github.io/presto-yarn/installation-yarn-configuration-options.html).
 
 3. Állítsa le, és az aktuális futó példányát, Presto kill:
 

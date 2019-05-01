@@ -1,5 +1,5 @@
 ---
-title: Az Azure NetApp Files tárhely-hierarchiájának ismertetése | Microsoft Docs
+title: Mi az a NetApp Azure-fájlok hierarchiája |} A Microsoft Docs
 description: A cikk a tárhely-hierarchiát ismerteti, beleértve az Azure NetApp Files-fiókokat, -kapacitáskészleteket és -köteteket.
 services: azure-netapp-files
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/03/2019
+ms.date: 04/16/2019
 ms.author: b-juche
-ms.openlocfilehash: 357bd5eac41b0da50a1d7035e8e8045a9f21144c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fec9e22b15eca3f95be606776066cf573046b5fd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60691025"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687481"
 ---
-# <a name="understand-the-storage-hierarchy-of-azure-netapp-files"></a>Az Azure NetApp Files tárhely-hierarchiájának ismertetése
+# <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>Mi az a NetApp Azure-fájlok hierarchiája
 
 Mielőtt létrehozna egy kötetet az Azure NetApp Filesban, meg kell vásárolnia és be kell állítania egy készletet a kiosztott kapacitáshoz.  Kapacitáskészlet beállításához rendelkeznie kell NetApp-fiókkal. Az Azure NetApp Files tárhely-hierarchiájának megismerése segítségére lehet az Azure NetApp Files-erőforrások beállítása és kezelése során.
 

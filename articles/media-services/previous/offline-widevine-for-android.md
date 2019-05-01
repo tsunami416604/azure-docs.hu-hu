@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: 55d59871ee72f755fcd881e4f89e56e6d6d1d84e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 64c5bff0e48f55406476e71c82763bd8f3c03afd
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637573"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937245"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine androidhoz streaming  
 
@@ -32,8 +32,8 @@ ms.locfileid: "60637573"
 
 Online streamelés tartalmának védelme, mellett a multimédiás tartalom előfizetés és a bérleti szolgáltatások ajánlat letölthető tartalom, amely akkor működik, ha nem csatlakoznak az internethez. Szüksége lehet letölteni a tartalmat a telefon az alakzatot vagy lejátszható repülőgépes módra, amikor hajózó a tábla nem kapcsolódik a hálózathoz. További forgatókönyvek, ahol érdemes letölteni a tartalmat:
 
-- Néhány tartalomszolgáltatók előfordulhat, hogy ne engedélyezze a DRM-licenckézbesítés túl egy ország szegély. Ha a felhasználó szeretné, tekintse meg a tartalom külföldön utazás közben, offline letöltési van szükség.
-- Egyes országokban Internet rendelkezésre állási és/vagy a sávszélesség korlátozva. Előfordulhat, hogy a felhasználók megadhatják tudja, hogy megtekintse a megfelelő engedélymegtekintési elég nagy felbontású tartalmat töltenek le.
+- Néhány tartalomszolgáltatók előfordulhat, hogy ne engedélyezze a DRM-licenckézbesítés túl egy adott ország/régió szegély. Ha a felhasználó szeretné, tekintse meg a tartalom külföldön utazás közben, offline letöltési van szükség.
+- Egyes országokban/régiókban Internet rendelkezésre állási és/vagy a sávszélesség korlátozva. Előfordulhat, hogy a felhasználók megadhatják tudja, hogy megtekintse a megfelelő engedélymegtekintési elég nagy felbontású tartalmat töltenek le.
 
 Ez a cikk ismerteti, hogyan valósíthat meg a kapcsolat nélküli módban lejátszás DASH tartalom Widevine védi az Android-eszközökön. A kapcsolat nélküli DRM lehetővé teszi, hogy adja meg az előfizetés, bérbeadás és beszerzési modelleket a tartalom, így az ügyfelek a szolgáltatások egyszerűen igénybe a tartalmat a őket, ha az internethez csatlakozik.
 

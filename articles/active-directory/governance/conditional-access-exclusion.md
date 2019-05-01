@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7675441316e42c7f0a220abe77bc8c62158ef918
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4169b15304afe1ecc4af9c5354798b29ad9dba38
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60351530"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571355"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Az Azure AD hozzáférési felülvizsgálatok felhasználók ki vannak zárva a feltételes hozzáférési szabályzatok kezelése
 
@@ -38,7 +38,7 @@ Másik példaként használható [nevesített helyek](../conditional-access/loca
 
 ![Névvel ellátott helyek](./media/conditional-access-exclusion/named-locations.png)
 
-Bizonyos esetekben azonban felhasználók rendelkezhet egy indokolt, ezek a blokkolt országokból bejelentkezni. Ha például felhasználók előfordulhat, hogy utazás közben dolgoztak munkahelyi vagy személyes okokból. Ebben a példában a feltételes hozzáférési szabályzat blokkolja ezen országok rendelkezhet egy dedikált felhőbeli biztonsági csoport a felhasználókat, akik nem tartoznak a szabályzat alól. Felhasználók, akiknek hozzáférésre van szükségük, utazás közben is hozzáadhat magukat a csoportba történő [az Azure AD önkiszolgáló csoportkezelés](../users-groups-roles/groups-self-service-management.md).
+Bizonyos esetekben azonban felhasználók rendelkezhet egy indokolt, ezek a blokkolt országokból/régiókból származó bejelentkezni. Ha például felhasználók előfordulhat, hogy utazás közben dolgoztak munkahelyi vagy személyes okokból. Ebben a példában a feltételes hozzáférési szabályzat blokkolja ezen országok vagy régiók rendelkezhet egy dedikált felhőbeli biztonsági csoport a felhasználókat, akik nem tartoznak a szabályzat alól. Felhasználók, akiknek hozzáférésre van szükségük, utazás közben is hozzáadhat magukat a csoportba történő [az Azure AD önkiszolgáló csoportkezelés](../users-groups-roles/groups-self-service-management.md).
 
 Egy másik példa lehet az, hogy a feltételes hozzáférési szabályzatot, amely [blokkok örökölt hitelesítés esetében a felhasználók túlnyomó többsége](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/). A Microsoft határozottan javasolja, hogy a bérlő javíthatja biztonsági helyzetét örökölt protokollok használatának letiltása. Azonban ha van néhány olyan felhasználót, feltétlenül használatára van szükség az örökölt hitelesítési módszerek az Office 2010 erőforrásai eléréséhez, vagy IMAP/SMTP/POP-alapú ügyfelek számára, majd kizárhat ezeket a felhasználókat, amelyek az örökölt hitelesítési módszerek letiltása a szabályzat alól.
 
@@ -97,9 +97,9 @@ Most már létrehozhat egy feltételes hozzáférési szabályzatot, amely a kiz
 
 Nézzük terjed ki a két példa, ahol a hozzáférési felülvizsgálatok használhatja a feltételes hozzáférési szabályzatok kizárások kezelése.
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countries"></a>1. példa: Hozzáférési felülvizsgálat letiltott országokból elérő felhasználók számára
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>1. példa: Hozzáférési felülvizsgálat letiltott országokból/régiókból származó elérő felhasználók számára
 
-Tegyük fel, hogy a feltételes hozzáférési szabályzatot, hogy blokkolja a hozzáférést az egyes országok. Ez magában foglalja egy csoportot, amely ki van zárva a szabályzat alól. Íme egy ajánlott hozzáférési felülvizsgálat, ahol a csoport tagjai nyilvánosan lektorálhatók.
+Tegyük fel, hogy a feltételes hozzáférési szabályzatot, hogy bizonyos országokban vagy régiókban blokkok hozzáférését. Ez magában foglalja egy csoportot, amely ki van zárva a szabályzat alól. Íme egy ajánlott hozzáférési felülvizsgálat, ahol a csoport tagjai nyilvánosan lektorálhatók.
 
 > [!NOTE]
 > A hozzáférési felülvizsgálatok hozzon létre egy globális rendszergazdai vagy a felhasználó rendszergazdai szerepkör szükséges.
@@ -110,9 +110,9 @@ Tegyük fel, hogy a feltételes hozzáférési szabályzatot, hogy blokkolja a h
 
 3. Ez a csoport összes tagja lesz terjed ki a felülvizsgálatot.
 
-4. Minden felhasználó saját igazolja, hogy azok továbbra is hozzáféréssel kell rendelkeznie a letiltott ezekben az országokban, ezért továbbra is szükségük van a csoport tagjának lennie kell.
+4. Minden felhasználó saját igazolja, hogy azok továbbra is hozzáféréssel kell rendelkeznie a letiltott országokból/régiókból származó, ezért továbbra is szükségük van a csoport tagjának lennie kell.
 
-5. Ha a kérelem áttekintése a felhasználó nem válaszol, akkor automatikusan törlődik a csoportból, és ezért már nem tud hozzáférni a bérlő az ezekben az országokban utazás közben.
+5. Ha a kérelem áttekintése a felhasználó nem válaszol, akkor automatikusan törlődik a csoportból, és ezért már nem tud hozzáférni a bérlő az ezekben az országokban/régiókban utazás közben.
 
 6. Engedélyezi az e-mail értesítések, így a felhasználók értesítést kapjanak a kezdő és a hozzáférési felülvizsgálat befejezése után.
 

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.author: alkarche, glenga
-ms.openlocfilehash: 3cf6a0d080e2d8cafcab8e69a614b59a470c7aba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b673e625e1a50c32e3d8580ec442792ed8611703
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637046"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572598"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Hálózatkezelés az Azure Functions szolgáltatásban – gyakori kérdések
 
@@ -28,11 +28,14 @@ App Service Environment-környezetben függvény üzembe helyezése jelenleg az 
 Internet-hozzáférés a többféleképpen korlátozhatja:
 
 * [Az IP-korlátozások](../app-service/app-service-ip-restrictions.md): Bejövő forgalom korlátozása IP-címtartomány a függvényalkalmazást.
+    * IP-korlátozások mellett Ön is konfigurálhat egy [Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md), amely korlátozza a függvény csak az egy adott virtuális hálózatból érkező bejövő forgalmat fogadjon.
 * Az összes HTTP-eseményindítók eltávolítása. Egyes alkalmazások esetében, ez elegendő egyszerűen elkerülése érdekében a HTTP-eseményindítók és minden más esemény forrása használatával elindítsa a függvényt.
 
 Ne feledje, hogy az Azure portal szerkesztő a futó függvény közvetlen hozzáférést igényel. Az Azure Portalon keresztül kódváltozások az eszköz használatával keresse meg a portálon az IP-alkalmazásátjárónál lesz szükség. De továbbra is használhatja a platform szolgáltatásai lapon semmit a korlátozásait a hálózati helyen.
 
 ## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>Hogyan korlátozhatom a függvényalkalmazás egy virtuális hálózaton?
+
+Korlátozni tudja **bejövő** traffic függvényalkalmazás egy virtuális hálózat használatával [Szolgáltatásvégpontok](./functions-networking-options.md#private-site-access). Ez a konfiguráció továbbra is lehetővé teszi a függvényalkalmazás kimenő hívásokat az internethez.
 
 Úgy, hogy minden forgalom egy virtuális hálózaton keresztül teljes mértékben korlátozni a függvény csak úgy, hogy egy belső elosztott terhelésű App Service-környezet. Ezt a beállítást helyez üzembe egy dedikált infrastruktúra egy virtuális hálózaton belül a hely, és elküldi az eseményindítók és a forgalom a virtuális hálózaton keresztül. 
 
@@ -48,8 +51,11 @@ Egy virtuális hálózatban lévő erőforrásokra futó függvény hozzáférhe
 
 ## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>Hogyan kiválthatja egy függvény egy erőforráshoz egy virtuális hálózaton?
 
-App Service-környezet üzembe helyezése a függvényalkalmazás által csak egy függvényt a virtuális hálózatban lévő erőforrás is indíthat. App Service-környezet használatával kapcsolatos részletekért lásd: [létrehozása és használata az App Service-környezet belső terheléselosztó](../app-service/environment/create-ilb-ase.md).
+Tudja, hogy egy virtuális hálózat használatával hívható, HTTP-eseményindítók [Szolgáltatásvégpontok](./functions-networking-options.md#private-site-access). 
 
+A függvényalkalmazás az App Service-környezet üzembe helyezésével egy függvényt a virtuális hálózatban lévő erőforrás is indíthat. App Service-környezet használatával kapcsolatos részletekért lásd: [létrehozása és használata az App Service-környezet belső terheléselosztó](../app-service/environment/create-ilb-ase.md).
+
+A prémium szintű és az App Service csomag támogatási HTTP-eseményindítók egy virtuális hálózatot, de csak egy App Service-környezet támogatja a többi függvény eseményindító típusú virtuális hálózaton keresztül.
 
 ## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>Hogyan telepítheti a függvényalkalmazás, egy virtuális hálózaton?
 

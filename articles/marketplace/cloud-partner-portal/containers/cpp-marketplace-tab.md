@@ -1,25 +1,18 @@
 ---
-title: Egy Azure-tárolói rendszerképpel Marketplace beállításai |} A Microsoft Docs
+title: Egy Azure-tárolói rendszerképpel Marketplace beállításai |} Az Azure Marketplace-en
 description: Egy Azure container marketplace beállításainak konfigurálása.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/01/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 220084dd0a3c61205a2cf53c29cf49291000efdb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: f2d735662fcd177f64d1ebc71a25b7d7629db3ce
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472965"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942665"
 ---
 # <a name="container-marketplace-tab"></a>Tároló Marketplace lap
 
@@ -31,16 +24,18 @@ Ebben a szakaszban, az Azure Marketplace-ajánlat kapcsolatos általános inform
 
 ![Marketplace-információ](./media/containers-marketplace-tab.png)
 
-A következő táblázat ismerteti a cél és ezek a mezők tartalmát.
+A következő táblázat ismerteti a cél és ezek a mezők tartalmát. Kötelező mezőt csillag (*) rendszer feltehetően.
 
-|  **Mező**                |     **Leírás**                                                          |
+|    Mező                  |       Leírás                                                            |
 |  ---------                |     ---------------                                                          |
-| **Cím**                 | Az ajánlat címe. Megjelenik ezzel a beállítással hangsúlyosan a Marketplace-en.  Hossza legfeljebb 50 karakter hosszú lehet. |
-| **összegzés**               | Az ajánlat rövid összefoglalása. Hossza legfeljebb 100 karakterből állhat. |
-| **Hosszú összegzése**          | Az ajánlat már összefoglaló (bár ez lehet ugyanaz, mint a **összefoglaló**).  Maximális hossz 256 karakter. |
-| **Leírás**           | Az ajánlat leírása.  Maximális hossz 3000 karakter, egyszerű HTML-formázás támogatja.
+| **Cím\***                 | Az ajánlat címe. Megjelenik ezzel a beállítással hangsúlyosan a Marketplace-en.  Hossza legfeljebb 50 karakter hosszú lehet. |
+| **Összefoglalás\***               | Az ajánlat rövid összefoglalása. Hossza legfeljebb 100 karakterből állhat. |
+| **Hosszú összegzése\***          | Az ajánlat már összefoglaló (bár ez lehet ugyanaz, mint a **összefoglaló**).  Maximális hossz 256 karakter. |
+| **Leírás\***           | Az ajánlat leírása.  Maximális hossz 3000 karakter, egyszerű HTML-formázás támogatja.
 | **Marketing-azonosító**  | Egy egyedi URL-címet rendelni ehhez az ajánlathoz, amelyek jellemzően a szervezet és a megoldás nevét. Hossza legfeljebb 50 karakter hosszú lehet.   |
-| **Előfizetés azonosítókat előzetes verzió** | Adjon hozzá egy és 100 közötti előfizetési azonosítók a dokumentummegjelenítők. Ezek fehér felsorolt előfizetéssel hozzáfér az ajánlatra való közzététel után, mielőtt élő kerül. |
+| **Előfizetés azonosítókat előzetes verzió\*** | Adjon hozzá egy és 100 közötti előfizetési azonosítók a dokumentummegjelenítők. Ezek fehér felsorolt előfizetéssel hozzáfér az ajánlatra való közzététel után, mielőtt élő kerül. |
+|  |  |
+
 
 ## <a name="next-steps"></a>További lépések
 

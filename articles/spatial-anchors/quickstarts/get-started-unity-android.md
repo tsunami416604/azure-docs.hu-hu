@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Android Unity-alkalmazás létrehozása az Azure térbeli horgonyok |} A Microsoft Docs
+title: Rövid útmutató – Unity Android-alkalmazás létrehozása az Azure térbeli horgonyok |} A Microsoft Docs
 description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre Android-alkalmazás a Unity térbeli horgonyok használatával.
 author: craigktreasure
 manager: aliemami
@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: bce71db594d2bbd869dcc5a1ff5cb494a7a6f1c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 001042a5499b492db151853172e999cf7a3c5f88
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60342424"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687811"
 ---
-# <a name="quickstart-create-an-android-unity-app-with-azure-spatial-anchors"></a>Gyors útmutató: Egy Android Unity-alkalmazás létrehozása az Azure térbeli horgonyok
+# <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Unity Android-alkalmazás létrehozása az Azure térbeli horgonyok
 
-Ez a rövid útmutató bemutatja, hogyan hozzon létre egy Android Unity alkalmazás [Azure térbeli horgonyok](../overview.md). Az Azure térbeli horgonyok platformfüggetlen fejlesztői szolgáltatása lehetővé teszi, hogy a vegyes valóság élmény helyükre kivonatuk eszközök idővel-objektumok segítségével. Ha elkészült, a Unity, menthet és egy térbeli kapcsolati alapot visszahívása használatával létrehozott ARCore Android alkalmazás lesz.
+Ez a rövid útmutató bemutatja, hogyan hozzon létre egy Unity Android-alkalmazás az [Azure térbeli horgonyok](../overview.md). Az Azure térbeli horgonyok platformfüggetlen fejlesztői szolgáltatása lehetővé teszi, hogy a vegyes valóság élmény helyükre kivonatuk eszközök idővel-objektumok segítségével. Ha elkészült, a Unity, menthet és egy térbeli kapcsolati alapot visszahívása használatával létrehozott ARCore Android alkalmazás lesz.
 
 A következőket fogja megtanulni:
 

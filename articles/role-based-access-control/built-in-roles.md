@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 04/01/2019
+ms.date: 04/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: f505f922685cd192525814df25cca1a1401d2913
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 36a98ea52ea48c9828ca5857dc480742632056fb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749325"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689862"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Az Azure-erőforrások beépített szerepkörök
 
@@ -87,6 +87,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 | [DocumentDB-Fiókközreműködő](#documentdb-account-contributor) | Kezelheti az Azure Cosmos DB-fiókokhoz. Az Azure Cosmos DB DocumentDB nevén. |
 | [EventGrid EventSubscription Közreműködője](#eventgrid-eventsubscription-contributor) | Lehetővé teszi a EventGrid-eseményelőfizetések műveleteinek kezelését. |
 | [EventGrid EventSubscription olvasó](#eventgrid-eventsubscription-reader) | Lehetővé teszi a EventGrid-eseményelőfizetések olvasását. |
+| [HDInsight-fürt operátor](#hdinsight-cluster-operator) | Lehetővé teszi, hogy olvassa el, és a HDInsight-fürt konfigurációjának módosítását. |
 | [HDInsight Domain Services-közreműködő](#hdinsight-domain-services-contributor) | Olvashatja, létrehozhatja, módosíthatja és törölheti a HDInsight Enterprise Security Package csomaghoz szükséges Domain Services-műveleteket |
 | [Intelligens rendszerek Fiókközreműködője](#intelligent-systems-account-contributor) | Lehetővé teszi az intelligens rendszerek fiókjainak kezelését, az azokhoz való hozzáférés nélkül. |
 | [Key Vault-közreműködő](#key-vault-contributor) | Lehetővé teszi a kulcstartók kezelését, de ezekhez nem biztosít hozzáférést. |
@@ -121,6 +122,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 | [Térbeli horgonyok fiók tulajdonosa](#spatial-anchors-account-owner) | Lehetővé teszi a fiókban található térbeli fixpontok kezelését, beleértve azok törlését is |
 | [Térbeli horgonyok fiók olvasó](#spatial-anchors-account-reader) | Lehetővé teszi a fiókban található térbeli fixpontok megkeresését és azok tulajdonságainak beolvasását |
 | [SQL-Adatbázisok Közreműködője](#sql-db-contributor) | Lehetővé teszi az SQL Database-adatbázisok kezelését, ezekhez nem biztosít hozzáférést. Emellett a biztonsággal kapcsolatos házirendjeiket vagy a szülő SQL Server nem tudja kezelni. |
+| [SQL Managed Instance Contributor](#sql-managed-instance-contributor) | Lehetővé teszi, hogy az SQL felügyelt példányok kezelése és a szükséges hálózati konfiguráció, de nem adhat hozzáférést másoknak. |
 | [SQL Security Manager](#sql-security-manager) | Lehetőséget nyújt az SQL-kiszolgálók és adatbázisok biztonsági házirendjeinek felügyeletére az azokhoz való hozzáférés nélkül. |
 | [SQL Server Contributor](#sql-server-contributor) | Lehetőséget nyújt az SQL-kiszolgálók és adatbázisok felügyeletére az azokhoz való hozzáférés nélkül. Az adatbázisok biztonsági házirendjeinek felügyeletét nem teszi lehetővé. |
 | [Tárfiók-közreműködő](#storage-account-contributor) | Lehetővé teszi tárfiókok kezelését, de ezekhez nem biztosít hozzáférést. |
@@ -327,7 +329,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 > | **notActions** |  |
-> | Microsoft.ApiManagement/service/users/keys/read | Felhasználói kulcsok listájának beolvasása |
+> | Microsoft.ApiManagement/service/users/keys/read | Felhasználóhoz tartozó kulcsok beolvasása |
 > | **DataActions** |  |
 > | *none* |  |
 > | **NotDataActions** |  |
@@ -349,7 +351,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 > | **notActions** |  |
-> | Microsoft.ApiManagement/service/users/keys/read | Felhasználói kulcsok listájának beolvasása |
+> | Microsoft.ApiManagement/service/users/keys/read | Felhasználóhoz tartozó kulcsok beolvasása |
 > | **DataActions** |  |
 > | *none* |  |
 > | **NotDataActions** |  |
@@ -1385,6 +1387,28 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
+## <a name="hdinsight-cluster-operator"></a>HDInsight-fürt operátor
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Lehetővé teszi, hogy olvassa el, és a HDInsight-fürt konfigurációjának módosítását. |
+> | **Azonosító** | 61ed4efc-fab3-44fd-b111-e24485cc132a |
+> | **Műveletek** |  |
+> | Microsoft.HDInsight/*/read |  |
+> | Microsoft.HDInsight/clusters/getGatewaySettings/action | HDInsight-fürt átjáró beállításainak lekérése |
+> | Microsoft.HDInsight/clusters/updateGatewaySettings/action | HDInsight-fürt átjáró-beállításainak frissítése |
+> | Microsoft.HDInsight/clusters/configurations/* |  |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
+> | Microsoft.Resources/deployments/operations/read | Beolvassa vagy listázza az üzembe helyezési műveleteket. |
+> | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
+> | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
+> | **notActions** |  |
+> | *none* |  |
+> | **DataActions** |  |
+> | *none* |  |
+> | **NotDataActions** |  |
+> | *none* |  |
+
 ## <a name="hdinsight-domain-services-contributor"></a>HDInsight Domain Services-közreműködő
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1807,6 +1831,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **Azonosító** | c12c1c16-33a1-487b-954d-41c89c60f349 |
 > | **Műveletek** |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | A megadott tárfiók hozzáférési kulcsainak lekérése. |
+> | Microsoft.Storage/storageAccounts/ListAccountSas/action | A fiók SAS-jogkivonatát adja vissza a megadott tárfiókhoz. |
 > | Microsoft.Storage/storageAccounts/read | A tárfiókok listájának vagy a megadott tárfiók tulajdonságainak lekérése. |
 > | **notActions** |  |
 > | *none* |  |
@@ -2228,6 +2253,34 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
+> | **DataActions** |  |
+> | *none* |  |
+> | **NotDataActions** |  |
+> | *none* |  |
+
+## <a name="sql-managed-instance-contributor"></a>SQL Managed Instance Contributor
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Lehetővé teszi, hogy az SQL felügyelt példányok kezelése és a szükséges hálózati konfiguráció, de nem adhat hozzáférést másoknak. |
+> | **Azonosító** | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
+> | **Műveletek** |  |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
+> | Microsoft.Network/networkSecurityGroups/* |  |
+> | Microsoft.Network/routeTables/* |  |
+> | Microsoft.Sql/locations/*/read |  |
+> | Microsoft.Sql/managedInstances/* |  |
+> | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
+> | Microsoft.Network/virtualNetworks/subnets/* |  |
+> | Microsoft.Network/virtualNetworks/* |  |
+> | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
+> | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
+> | Microsoft.Insights/metrics/read | Metrikák olvasása |
+> | Microsoft.Insights/metricDefinitions/read | A metrikadefiníciók olvasása |
+> | **notActions** |  |
+> | *none* |  |
 > | **DataActions** |  |
 > | *none* |  |
 > | **NotDataActions** |  |

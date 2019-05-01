@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/19/2019
-ms.openlocfilehash: 6ad4cf251ad09adb7e1f11ebd42d7eab0d6a9183
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3a29c6b4d0308b41e29f38fc29d79634727d593
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60330959"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926008"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Az Azure SQL transzparens adattitkosítás az ügyfél által felügyelt kulcsok Azure Key vaultban: Bring Your Own Key-támogatás
 
@@ -61,6 +61,7 @@ TDE először a TDE-védőhöz, a Key Vault használatára van konfigurálva, am
 - Döntse el, melyik előfizetések fogják használni a szükséges erőforrásokhoz – a kiszolgáló áthelyezése előfizetések között később egy új TDE BYOKs-beállítást igényel. Tudjon meg többet [erőforrások áthelyezése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
 - Az Azure Key Vault TDE konfigurálásakor fontos vegye fontolóra a terhelés, a key vault helyezett műveletek ismétlődő újraindulás/kicsomagolása. Például egy SQL Database-kiszolgálóhoz tartozó összes adatbázis használja ugyanazt a TDE-védőhöz, mivel az adott kiszolgáló feladatátvétel indítja, számos kulcsfontosságú műveletek a tárolókhoz is vannak olyan adatbázisok, a kiszolgálón. Tapasztalataink alapján és dokumentált [key vault szolgáltatáskorlátjai](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits), javasoljuk, hogy legfeljebb 500 Standard társítása / általános célú vagy 200 prémium / üzletileg kritikus fontosságú adatbázisok egy Azure Key Vault egy előfizetés annak biztosítása érdekében folyamatosan magas rendelkezésre állás a TDE-védőhöz, a tároló elérésekor.
 - Ajánlott: A TDE-védőhöz, a helyszínen őrizze.  Ehhez egy HSM-eszköz létrehozása a TDE-Védőhöz helyileg és a egy kulcsletét rendszer tárolja a TDE-Védőhöz helyi másolatot.  Ismerje meg, [hogyan viheti át a kulcsát a helyi HSM-ből az Azure Key Vaultba](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
+- További meglévő konfigurációval kapcsolatos problémák: [TDE hibaelhárítása](https://docs.microsoft.com/sql/relational-databases/security/encryption/troubleshoot-tde)
 
 ### <a name="guidelines-for-configuring-azure-key-vault"></a>Útmutató az Azure Key Vault beállítása
 
@@ -72,7 +73,7 @@ TDE először a TDE-védőhöz, a Key Vault használatára van konfigurálva, am
 - A key vault használatával az Azure Active Directory (Azure AD) identitás az SQL Database kiszolgáló hozzáférési jogot.  A portál felhasználói felületének használata esetén az Azure AD identity automatikusan létrejön, és a kiszolgáló számára a kulcstartó-hozzáférési engedélyek.  TDE BYOK konfigurálása a PowerShell segítségével, az Azure AD-identitásnak kell létrehozni, és befejezési ellenőrizni kell. Lásd: [BYOK TDE konfigurálása](transparent-data-encryption-byok-azure-sql-configure.md) és [TDE konfigurálása a felügyelt példány BYOK](https://aka.ms/sqlmibyoktdepowershell) részletes útmutatásért PowerShell használatakor.
 
   > [!NOTE]
-  > Ha az Azure AD Identity **van véletlenül törölték, vagy visszavonja a kiszolgáló engedélyek** a kulcstartó hozzáférési szabályzatát használja, a kiszolgáló elveszítette a hozzáférését a key vaultban, és 24 órán belül titkosított TDE adatbázisok elérhetetlenné válnak.
+  > Ha az Azure AD Identity **van véletlenül törölték, vagy visszavonja a kiszolgáló engedélyek** a key vault hozzáférési szabályzattal vagy véletlenül úgy, hogy a kiszolgáló egy másik előfizetésbe való áthelyezését, a kiszolgáló elveszítette a hozzáférését a key vault és 24 órán belül titkosított TDE adatbázisok elérhetetlenné válnak.  
 
 - Az Azure Key Vault használata a tűzfalak és virtuális hálózatok, konfigurálnia kell a következőket: 
   - A tűzfal megkerülését, megbízható Microsoft-szolgáltatások – a kiválasztott Igen

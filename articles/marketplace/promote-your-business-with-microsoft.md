@@ -1,27 +1,22 @@
 ---
-title: Népszerűsítse cégét a Microsofttal |} Az Azure
+title: Népszerűsítse cégét a Microsofttal |} Az Azure Marketplace-en
 description: Népszerűsítse cégét alkalmazás és szolgáltatás-közzétevők Azure Marketplace-en és az AppSource használatával
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: 3bd2361547a8210ae287eabaa67b60e8ba1f26e3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f21c5f94c595fe3718a0a59a80deff8f1c53b9fc
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60735884"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937649"
 ---
-# <a name="promote-your-business-with-microsoft"></a>Népszerűsítse cégét a Microsofttal  
+# <a name="promote-your-business-with-microsoft"></a>Népszerűsítse cégét a Microsofttal 
+
 A Microsoft rendelkezik a cél támogatja a partnerek, (,) és a egyszerűsítése érdekében az alkalmazás értékesítési vagy a kirakattípus a piactéren az ajánlat. A Marketplace-en való felkerüléshez szerint érheti el a programok és erőforrások a marketplace-en. 
 
 Ha nincs már feliratkozott a Microsoft Partner Network (MPN), majd erre a folytatás előtt.  

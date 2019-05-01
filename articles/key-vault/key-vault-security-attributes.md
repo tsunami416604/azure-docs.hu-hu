@@ -2,19 +2,18 @@
 title: Az Azure Key Vault közös biztonsági attribútumok
 description: A közös biztonsági attribútumok az Azure Key Vault értékelésére ellenőrzőlista
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
 manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3ccfc38136ba3e8ec7c6130658032b7565988e5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 652e6ecb9ef9506fd306942eae45b13b52ae1c24
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60461407"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691832"
 ---
 # <a name="common-security-attributes-for-azure-key-vault"></a>Az Azure Key Vault közös biztonsági attribútumok
 
@@ -27,7 +26,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
 | Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók (például az ügyféloldali, mindig titkosított, stb.)</ul>| Igen | Összes objektum titkosított. |
-| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A Vnet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen | Minden kommunikáció titkosított API-hívásokon keresztül van |
+| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A VNet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen | Minden kommunikáció titkosított API-hívásokon keresztül van |
 | Titkosítási kulcs kezelése (CMK, BYOK, stb.)| Igen | Az ügyfél összes kulcsok a Key vaultban szabályozza. Ha hardveres biztonsági modul (HSM) a biztonsági kulcsok meg van adva, a FIPS-szint 2 HSM védi a kulcsot, a tanúsítvány vagy a titkos kulcs. |
 | Oszlop a blokkszintű titkosítás (az Azure Data Services)| – |  |
 | Titkosított API-hívások| Igen | HTTPS-en keresztül. |
@@ -36,8 +35,8 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatási végpont támogatás| Igen | Virtuális hálózat (Vnet) Szolgáltatásvégpontok használatával. |
-| vNET-injektálási támogatás| Nem |  |
+| Szolgáltatási végpont támogatás| Igen | Virtuális hálózat (VNet) Szolgáltatásvégpontok használatával. |
+| VNet-injektálási támogatás| Nem |  |
 | Hálózatelkülönítés és támogatási optimalizálóként működik| Igen | Virtuális hálózatok közötti tűzfalszabályok használatával. |
 | Kényszerített bújtatás támogatása| Nem |  |
 
@@ -51,7 +50,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Authentication| Igen | Hitelesítés az Azure Active Directoryn keresztül. |
+| Hitelesítés| Igen | Hitelesítés az Azure Active Directoryn keresztül. |
 | Engedélyezés| Igen | Kulcstartó hozzáférési házirendjének használatával. |
 
 

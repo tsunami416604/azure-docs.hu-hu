@@ -1,25 +1,18 @@
 ---
-title: Az Azure és Dynamics 365 tanácsadási szolgáltatási ajánlat - definiálása ajánlat beállításai |} A Microsoft Docs
-description: Útmutató definiálása kínálnak a Cloud Partner portálra az Azure-ban vagy a Dynamics 365 tanácsadási szolgáltatási ajánlat beállításait.
+title: A tanácsadási szolgáltatási ajánlat az ajánlat beállításainak megadása |} Az Azure Marketplace-en
+description: A Cloud Partner portálra az Azure-ban vagy a Dynamics 365 tanácsadási szolgáltatási ajánlat az ajánlat-beállítások megadása az Azure Marketplace-en.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 590aa440f35f97e854fa827b0d8db1c3f9211faf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/23/2019
+ms.author: pabutler
+ms.openlocfilehash: 601ad62bddd1373742b0cab5a388a55cfd52f4bc
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749647"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942776"
 ---
 # <a name="offer-settings-tab"></a>Ajánlatbeállítási lap
 
@@ -27,7 +20,8 @@ Az a **új ajánlat** képernyő, az első lépése, hogy az ajánlat identitás
 
 ![Hozzon létre egy új, tanácsadási szolgáltatási ajánlat - ajánlat (beállítások) lapján](media/consultingoffer-settings-tab.png)
 
-### <a name="offer-id"></a>Ajánlat azonosítója
+
+### <a name="offer-id"></a>Ajánlat azonosítója *
 
 Ezt az azonosítót hoz létre, amikor először küld az ajánlat egyedi neve. Csak kisbetűs alfanumerikus karaktereket, kötőjeleket és aláhúzást tartalmazhatnak, kell állnia. A **Ajánlatazonosító** látható az URL-címet, és hatással van a keresőmotorok találatai között. Például *yourcompanyname_exampleservice*.
 
@@ -36,11 +30,13 @@ A példában látható módon a **Ajánlatazonosító** rendszer hozzáfűzi a G
 >[!Note]
 >Miután egy ajánlatot az élő, annak azonosítója nem lehet frissíteni.
 
-### <a name="publisher-id"></a>Közzétevő azonosítója
+
+### <a name="publisher-id"></a>Közzétevő azonosítója *
 
 Ez az azonosító van a fiókjával kapcsolatban. Miután a szervezeti fiókkal jelentkezik be a **közzétevő-azonosító** megjelenik-e a legördülő menüből.
 
-### <a name="name"></a>Name (Név)
+
+### <a name="name"></a>Név*
 
 Ez a karakterlánc az appsource-on vagy az Azure piactéren az ajánlat nevét jeleníti meg. A **neve** mező el legfeljebb 50 karakter hosszúságú lehet. A felülvizsgáló szükség lehet a cím fűzze hozzá a időtartama és írja be az ajánlat neve a szerkesztése.
 

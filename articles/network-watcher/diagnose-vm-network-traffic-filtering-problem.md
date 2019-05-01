@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: d469ee5148e3742f30795c09acf1a217db1b997a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 6478c82a93cd35eead3972bb4dccf402219d9b7d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61065127"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702894"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Gyors útmutató: Forgalomszűrési problémáinak diagnosztizálása egy virtuális gép hálózati az Azure portal használatával
 
@@ -81,7 +81,7 @@ Amikor létrehoz egy virtuális gépet, az Azure az alapértelmezésnek megfelel
     | Erőforráscsoport    | Válassza a myResourceGroup lehetőséget                                                                            |
     | Virtuális gép   | Válassza a myVm lehetőséget                                                                                       |
     | Hálózati illesztő | myvm – A portál által a virtuális gép létrehozásakor létrehozott hálózati adapter neve ettől eltérő. |
-    | Protokoll          | TCP                                                                                               |
+    | Protocol          | TCP                                                                                               |
     | Direction         | Kimenő                                                                                          |
     | Helyi IP-cím  | 10.0.0.4                                                                                          |
     | Helyi port      | 60000                                                                                                |

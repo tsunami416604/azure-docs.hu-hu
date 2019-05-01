@@ -7,22 +7,20 @@ keywords: hadoop magas rendelkezésre állás
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 03/22/2018
+ms.date: 04/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 596b53d468a7dfc719c16dc6e6339492381d7f41
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 6cb72730ef3dbef81e2b2c9bc1c5cfd3bbd88b65
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63763796"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704927"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Rendelkezésre állás és megbízhatóság, a HDInsight Apache Hadoop-fürtök
 
 HDInsight-fürtökön elérhető két fő csomópont a rendelkezésre állási és az Apache Hadoop-szolgáltatásokhoz és a futó feladatok megbízhatóságát.
 
 Hadoop-szolgáltatásait és adatait egy fürtben több csomóponton replikálásával éri el magas rendelkezésre állás és megbízhatóság. Azonban a hadoop disztribúciók jellemzően az csak egy átjárócsomóponttal rendelkeznek. Az egyetlen átjárócsomóponthoz, bármilyen kimaradásról okozhat a fürt nem működik. HDInsight a Hadoop rendelkezésre állásának és megbízhatóságának javítása érdekében két átjárócsomópontokra biztosít.
-
-[!INCLUDE [windows-retirement-notice](../../includes/windows-retirement-notice.md)]
 
 ## <a name="availability-and-reliability-of-nodes"></a>Rendelkezésre állás és megbízhatóság csomópontok
 
@@ -104,7 +102,7 @@ Az Ambari webes felület vagy az Ambari REST API használatával az átjárócso
 
 ### <a name="ambari-web-ui"></a>Ambari Web UI
 
-Az Ambari webes Kezelőfelületen megtekinthető, https://CLUSTERNAME.azurehdinsight.net. Cserélje le a **CLUSTERNAME** elemet a fürt nevére. Ha a rendszer kéri, adja meg a HTTP felhasználói hitelesítő adatok a fürt számára. Az alapértelmezett HTTP-felhasználónév **rendszergazdai** és a jelszó a a fürt létrehozásakor megadott jelszót.
+Az Ambari webes Kezelőfelületen megtekinthető, `https://CLUSTERNAME.azurehdinsight.net`. Cserélje le a **CLUSTERNAME** elemet a fürt nevére. Ha a rendszer kéri, adja meg a HTTP felhasználói hitelesítő adatok a fürt számára. Az alapértelmezett HTTP-felhasználónév **rendszergazdai** és a jelszó a a fürt létrehozásakor megadott jelszót.
 
 Az Ambari oldalon érkezésekor a telepített szolgáltatások listája látható az oldal bal oldalán.
 
@@ -247,27 +245,25 @@ Az Ambari webes felhasználói Felületet jelölje ki a kívánt megtekinthetők
 
 ## <a name="how-to-configure-the-node-size"></a>A csomópont méretének konfigurálása
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 A csomópont mérete csak a fürt létrehozásakor lehet kiválasztani. A HDInsight a különböző elérhető Virtuálisgép-méretek listáját találja a [díjszabását ismertető lapon HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Amikor egy fürtöt hoz létre, megadhatja a csomópontok mérete. A következő információkat nyújt útmutatást a méret használatával megadása a [az Azure portal][preview-portal], [Azure PowerShell-lel][azure-powershell], és a [Azure klasszikus parancssori felület][azure-cli]:
+Amikor egy fürtöt hoz létre, megadhatja a csomópontok mérete. A következő információkat nyújt útmutatást a méret használatával megadása a [az Azure portal][preview-portal], [Az Azure PowerShell-modul][azure-powershell], és a [az Azure CLI][azure-cli]:
 
 * **Az Azure portal**: A fürt létrehozásakor megadhatja a fürt által használt csomópontok mérete:
 
     ![Méret kiválasztása a Fürtlétrehozási varázslóban képe](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **Az Azure klasszikus parancssori felület**: Használatakor a `azure hdinsight cluster create` paranccsal beállíthatja a fő, feldolgozó és ZooKeeper-csomópontok mérete használatával a `--headNodeSize`, `--workerNodeSize`, és `--zookeeperNodeSize` paramétereket.
+* **Az Azure CLI**: Használatakor a [az hdinsight létrehozása](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) paranccsal beállíthatja a fő, feldolgozó és ZooKeeper-csomópontok mérete használatával a `--headnode-size`, `--workernode-size`, és `--zookeepernode-size` paramétereket.
 
-* **Azure PowerShell**: Használatakor a `New-AzHDInsightCluster` parancsmaggal beállíthatja a fő, feldolgozó és ZooKeeper-csomópontok mérete használatával a `-HeadNodeVMSize`, `-WorkerNodeSize`, és `-ZookeeperNodeSize` paramétereket.
+* **Azure PowerShell**: Használatakor a [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) parancsmaggal beállíthatja a fő, feldolgozó és ZooKeeper-csomópontok mérete használatával a `-HeadNodeSize`, `-WorkerNodeSize`, és `-ZookeeperNodeSize` paramétereket.
 
 ## <a name="next-steps"></a>További lépések
 
 Az alábbi hivatkozások segítségével további információ az említett ebben a dokumentumban dolgokat.
 
 * [Az Apache Ambari REST-referencia](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [Telepítése és konfigurálása a klasszikus Azure-CLI](../cli-install-nodejs.md)
-* [Telepítse és konfigurálja az Azure PowerShellt](/powershell/azure/overview)
+* [Telepítse és konfigurálja az Azure CLI](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Telepítse és konfigurálja Az Azure PowerShell-modul](/powershell/azure/overview)
 * [A HDInsight az Apache Ambari kezelése](hdinsight-hadoop-manage-ambari.md)
 * [Linux-alapú HDInsight-fürtök kiépítése](hdinsight-hadoop-provision-linux-clusters.md)
 

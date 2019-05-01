@@ -2,26 +2,23 @@
 title: Átadja a feladatokat, és az ismételt védelem – Azure-beli virtuális gépek replikálása egy másodlagos Azure-régióba az Azure Site Recovery szolgáltatással vész-helyreállítási.
 description: Megtudhatja, hogyan végezhet feladatátvételt és a vészhelyreállítás, az Azure Site Recovery szolgáltatással egy másodlagos Azure-régióba replikálja az Azure virtuális gépek ismételt védelme.
 services: site-recovery
-author: rockboyfor
-manager: digimobile
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-origin.date: 04/08/2019
-ms.date: 04/22/2019
-ms.author: v-yeche
+ms.date: 04/29/2019
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 96e3c0b761a9ed4c5f84d8ece1ba504bd5aacf6f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: bf2ded7a98d608780bc447c5944e7d1f4d9b698b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62115958"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926397"
 ---
 # <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>Feladatátadás és Azure virtuális gépek ismételt védelme a régiók között
 
-Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás a helyszíni számítógépek és az Azure-beli virtuális gépek replikálásának, feladatátvételének és feladat-visszavételének kezelésével és irányításával járul hozzá a vészhelyreállítási stratégia megvalósításához.
-
-Ez az oktatóanyag leírja, hogyan végezhet feladatátvételt egy másodlagos Azure-régióba az Azure virtuális Gépekhez. Miután a feladatátvétel, a virtuális gép ismételt védelme. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag ismerteti, hogyan lehet egy Azure virtuális gép (VM) feladatátvételt egy másodlagos Azure-régióba az a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás. Miután a feladatátvétel, a virtuális gép ismételt védelme. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Az Azure-beli virtuális gép feladatátvétele
@@ -35,18 +32,17 @@ Ez az oktatóanyag leírja, hogyan végezhet feladatátvételt egy másodlagos A
 - Mindenképp végezzen [vészhelyreállítási próbát](azure-to-azure-tutorial-dr-drill.md) annak ellenőrzésére, hogy minden a várt módon működik-e.
 - Ellenőrizze a virtuális gép tulajdonságait a feladatátvételi teszt futtatása előtt. A virtuális gépnek meg kell felelnie az [Azure-követelményeknek](azure-to-azure-support-matrix.md#replicated-machine-operating-systems).
 
-<a name="run-a-failover"></a>
 ## <a name="run-a-failover-to-the-secondary-region"></a>Feladatátvétel futtatása a másodlagos régióba
 
 1. A **Replikált elemek** területen válassza ki azt a virtuális gépet, amelyen feladatátvételt szeretne végezni > **Feladatátvétel**
 
-    ![Feladatátvétel](./media/azure-to-azure-tutorial-failover-failback/failover.png)
+   ![Feladatátvétel](./media/azure-to-azure-tutorial-failover-failback/failover.png)
 
 2. A **Feladatátvétel** területen válassza ki azt a **Helyreállítási pontot**, amelyre a feladatátvételt végezni szeretné. Az alábbi lehetőségek egyikét használhatja:
 
-    * **Legújabb** (alapértelmezett): A Site Recovery szolgáltatásban lévő összes adatot dolgoz fel, és a legalacsonyabb helyreállítási időkorlátot (RPO) biztosít.
-    * **Legutóbb feldolgozott**: A Site Recovery szolgáltatás által feldolgozott legutóbbi helyreállítási pontot a virtuális gép feladatátvételét.
-    * **Egyéni**: Átadja a feladatokat egy adott helyreállítási pontra. Ez a lehetőség feladatátvételi teszt végrehajtásához hasznos.
+   * **Legújabb** (alapértelmezett): A Site Recovery szolgáltatásban lévő összes adatot dolgoz fel, és a legalacsonyabb helyreállítási időkorlátot (RPO) biztosít.
+   * **Legutóbb feldolgozott**: A Site Recovery szolgáltatás által feldolgozott legutóbbi helyreállítási pontot a virtuális gép feladatátvételét.
+   * **Egyéni**: Átadja a feladatokat egy adott helyreállítási pontra. Ez a lehetőség feladatátvételi teszt végrehajtásához hasznos.
 
 3. Válassza ki **gép leállítása a feladatátvétel megkezdése előtt** Ha azt szeretné, hogy a Site Recovery megkísérelje leállítani a forrás virtuális gépeket a feladatátvétel indítása előtt. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A Site Recovery nem üríti a forrás a feladatátvételt követően.
 
@@ -57,6 +53,11 @@ Ez az oktatóanyag leírja, hogyan végezhet feladatátvételt egy másodlagos A
 6. Ha elégedett a feladatátviteli virtuális géppel, **véglegesítheti** a feladatátvételt.
    A véglegesítés törli a szolgáltatással elérhető összes helyreállítási pontot. Most már nem tudja majd módosítani, a helyreállítási pont.
 
+> [!NOTE]
+> Amikor feladatátvételt hajt végre egy virtuális Gépet, amelyhez egy lemezt hozzáad a virtuális gép replikálásának engedélyezése után, a replikáció pontok a lemezeket, amelyek a helyreállításhoz elérhető jelennek meg. Például ha egy virtuális Gépet egy egyetlen lemezzel rendelkezik, és hozzáadhat egy új, replikációs pontok, a lemez hozzáadása előtt létrehozott jeleníti meg, hogy a replikációs pont áll "1 / 2 lemezt".
+
+![Egy hozzáadott lemezzel feladatátvételt](./media/azure-to-azure-tutorial-failover-failback/failover-added.png)
+
 ## <a name="reprotect-the-secondary-vm"></a>A másodlagos virtuális gép ismételt védelme
 
 A virtuális gép feladatátvétele után ismét meg kell védenie azt, hogy az visszareplikálódjon az elsődleges régióba.
@@ -64,14 +65,12 @@ A virtuális gép feladatátvétele után ismét meg kell védenie azt, hogy az 
 1. Győződjön meg arról, hogy a virtuális gép a **Feladatátvétel véglegesítve** állapotban van, és ellenőrizze, hogy az elsődleges régió elérhető-e, és létre tud-e hozni új erőforrásokat az elsődleges régióban, valamint el tudja-e érni azokat.
 2. A **Tároló** > **Replikált elemek** területen kattintson a jobb gombbal arra a virtuális gépre, amelyen feladatátvételt végzett, és válassza az **Ismételt védelem** parancsot.
 
-    ![Kattintson a jobb gombbal az ismételt védelemhez](./media/azure-to-azure-tutorial-failover-failback/reprotect.png)
+   ![Kattintson a jobb gombbal az ismételt védelemhez](./media/azure-to-azure-tutorial-failover-failback/reprotect.png)
 
 2. Győződjön meg arról, hogy az elsődleges régióra, másodlagos védelem iránya már van kiválasztva.
 3. Tekintse át az **Erőforráscsoport, a Hálózat, a Tárolás és a Rendelkezésre állási csoportok** adatait. Bármely megjelölt új erőforrások jönnek létre az ismételt védelmi művelet részeként.
 4. Kattintson az **OK** gombra az ismételt védelmi feladat elindításához. Ez a feladat feltölti a célhelyet a legújabb adatokkal. Ezután replikálja az eltéréseket az elsődleges régióba. A virtuális gép most védett állapotban van.
 
 ## <a name="next-steps"></a>További lépések
-- Ismételt védelme után [megtudhatja, hogyan](azure-to-azure-tutorial-failback.md) feladat-visszavételhez az elsődleges régióban elérhetővé válik.
+- Ismételt védelme, miután [megtudhatja, hogyan](azure-to-azure-tutorial-failback.md) feladat-visszavételhez az elsődleges régióban elérhetővé válik.
 - [További](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection) az ismételt védelem flowról.
-
-<!-- Update_Description: update meta properties, wording update -->

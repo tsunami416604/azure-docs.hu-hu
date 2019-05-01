@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d373bc188a4d93c122cdf2cffbc4323aca16b4a4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: cc83d94acd25914ee57473de53afbc018f310887
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60346206"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575770"
 ---
 Ez a szakasz ismerteti, hogyan hozhat létre egy IoT hub használata a [az Azure portal](https://portal.azure.com).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
-2. Válassza a +**erőforrás létrehozása**, majd válassza a **IOT-**.
+2. Válassza a +**erőforrás létrehozása**, majd *keresés a piactéren* számára a **az IoT Hub**.
 
-3. Kattintson a **az Iot Hub** a jobb oldali listából. Az IoT hub létrehozása az első képernyőn láthatja.
+3. Válassza ki **az IoT Hub** , és kattintson a **létrehozás** gombra. Az IoT hub létrehozása az első képernyőn láthatja.
 
    ![Eseményközpont létrehozásához az Azure Portalon](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
 

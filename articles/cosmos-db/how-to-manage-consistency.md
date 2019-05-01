@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 04/17/2019
 ms.author: rimman
-ms.openlocfilehash: a93bf9a9f43a0929aeb5f3d3121092739396c6a8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 4a444631de4bc26881ab195333b1b798a7ee6719
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678445"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925333"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos DB konzisztenciaszintjeinek kezelése
 
@@ -211,7 +211,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>A valószínűség alapján korlátozott frissesség (PBS) metrika monitorozása
 
-Hogyan végleges konzisztenciát van? Az átlagos esetben is biztosítunk frissesség korlátok korábbi verziók és az időt. A [ **Probabilistically korlátozott frissesség (PBS)** ](http://pbs.cs.berkeley.edu/) metrika próbál számszerűsítik a valószínűsége annak, frissesség, és a egy metrika csomagként jelenik meg. A PBS metrika megtekintéséhez nyissa meg az Azure Cosmos-fiók az Azure Portalon. Nyissa meg a **metrikák** panelre, és válassza a **konzisztencia** fülre. Tekintse meg a gráf nevű **erősen konzisztens olvasás valószínűségét a számítási feladatok alapján (lásd a PBS)**.
+Hogyan végleges konzisztenciát van? Az átlagos esetben is biztosítunk frissesség korlátok korábbi verziók és az időt. A [ **Probabilistically korlátozott frissesség (PBS)** ](https://pbs.cs.berkeley.edu/) metrika próbál számszerűsítik a valószínűsége annak, frissesség, és a egy metrika csomagként jelenik meg. A PBS metrika megtekintéséhez nyissa meg az Azure Cosmos-fiók az Azure Portalon. Nyissa meg a **metrikák** panelre, és válassza a **konzisztencia** fülre. Tekintse meg a gráf nevű **erősen konzisztens olvasás valószínűségét a számítási feladatok alapján (lásd a PBS)**.
 
 ![Az Azure Portalon PBS graph](./media/how-to-manage-consistency/pbs-metric.png)
 

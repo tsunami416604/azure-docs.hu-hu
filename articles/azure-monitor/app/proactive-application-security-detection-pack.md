@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 16dd381301bdc650022ba5580f96a1733aeb32b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 90d58d1b22e893e922aa0f3770198fc95f539419
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60199952"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572887"
 ---
 # <a name="application-security-detection-pack-preview"></a>Alkalmazás biztonsági észlelési csomag (előzetes verzió)
 
@@ -29,7 +29,7 @@ Ez a funkció nem speciális beállítás nem szükséges [telemetriát küldjö
 Észlelt biztonsági problémák három típusa van:
 1. Nem biztonságos URL-hozzáférés: az alkalmazás URL-hozzáférnek a HTTP és HTTPS-n keresztül. Általában egy URL-címet, amely HTTPS-kéréseket fogad el kell nem fogadja el a HTTP-kérések. Ez egy programhiba vagy biztonsági probléma az alkalmazásban utalhat.
 2. Nem biztonságos űrlap: egy űrlapot (vagy más "POST" kérelem), az alkalmazás használja a HTTP helyett HTTPS. HTTP-n keresztül kedvezőtlenül befolyásolhatja a felhasználói adatokat az űrlap által küldött.
-3. Gyanús felhasználói tevékenység: az alkalmazás hozzáférnek több országok szerint ugyanaz a felhasználó körülbelül egy időben. Például ugyanaz a felhasználó elérhető az alkalmazás Spanyolország és az Egyesült Államokban adott órán belül. Az észlelés azt jelzi, hogy az alkalmazás egy potenciálisan kártékony hozzáférési kísérlet.
+3. Gyanús felhasználói tevékenység: az alkalmazás hozzáférnek több ország/régió szerint ugyanaz a felhasználó körülbelül egy időben. Például ugyanaz a felhasználó elérhető az alkalmazás Spanyolország és az Egyesült Államokban adott órán belül. Az észlelés azt jelzi, hogy az alkalmazás egy potenciálisan kártékony hozzáférési kísérlet.
 
 ## <a name="does-my-app-definitely-have-a-security-issue"></a>Saját alkalmazás mindenképp rendelkezik egy biztonsági probléma?
 Nem, egy értesítés nem jelenti azt, hogy az alkalmazás mindenképp rendelkezik egy biztonsági probléma. Sok esetben egy észlelését, az a fenti esetekben biztonsági jelezheti. Az észlelés azonban előfordulhat, hogy természetes üzleti indoklásának, és figyelmen kívül hagyható.
@@ -46,5 +46,5 @@ Nem, egy értesítés nem jelenti azt, hogy az alkalmazás mindenképp rendelkez
 
 ## <a name="how-do-i-fix-the-suspicious-user-activity-detection"></a>Hogyan oldja meg a "gyanús felhasználói tevékenység" észlelését?
 1. **Osztályozási.** Az értesítés biztosít, amely a gyanús viselkedés sokfélék különböző felhasználók száma. Ez segíthet a probléma prioritást rendelhet.
-2. **A hatókör.** Mely országokban az volt a gyanús ügyfélkérések? Melyik felhasználó volt a legnagyobb gyanús? Ez az információ szerezhető az értesítést.
-3. **Diagnosztizálja a.** Az észlelés a gyanús felhasználók listáját, és minden felhasználó segítséget a probléma további diagnosztizálása országok listáját itt.
+2. **A hatókör.** Mely országokban és régiókban az volt a gyanús ügyfélkérések? Melyik felhasználó volt a legnagyobb gyanús? Ez az információ szerezhető az értesítést.
+3. **Diagnosztizálja a.** Az észlelés biztosít a gyanús felhasználók listáját, és minden felhasználó segítséget a probléma további diagnosztizálása országok/régiók listája.

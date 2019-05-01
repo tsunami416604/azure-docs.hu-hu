@@ -9,14 +9,16 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a83b8a56a8108f86d868e3420d8368c74fba308a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 86aab19eb0203e75fb8586adbdeb3f6fff9d14bd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60612299"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575453"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Oktatóanyag: Az SQL Server-adatbázisok a peremhálózaton data Store
+
+Telepítse az SQL Server modulhoz tárolja adatait az Azure IoT Edge-es Linux rendszerű eszközök.
 
 Az Azure IoT Edge és az SQL Server segítségével adatokat tárolhat és kérdezhet le a peremhálózaton. Az Azure IoT Edge rendelkezik alapszintű tárolási képességeinek gyorsítótárazzák az üzeneteket, ha egy eszköz offline állapotba kerül, és majd továbbítják őket, amikor a kapcsolat helyreállt. Szüksége lehet azonban ennél fejlettebb tárolási képességekre is, például az adatok helyi lekérdezéséhez. Az IoT Edge-eszközök helyi adatbázisok hajthat végre a bonyolultabb számítási az IoT Hub-kapcsolat fenntartását anélkül. 
 
@@ -34,54 +36,24 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy Azure IoT Edge-eszköz:
+Ez az oktatóanyag elkezdéséhez kell elvégezte az előző oktatóanyagban tároló Linux-fejlesztéshez a fejlesztési környezet beállítása: [A Linux rendszerű eszközök IoT Edge-modulok fejlesztése](tutorial-develop-for-linux.md). Az oktatóanyag elvégzésével helyben kell rendelkeznie a következő előfeltételek vonatkoznak: 
 
-* Használhatja az Azure virtuális gép IoT Edge-eszköz esetében ez a rövid útmutató lépéseit követve [Linux](quickstart-linux.md).
-* Az SQL Server csak a Linux-tárolók támogatja. Ha azt szeretné, teszteléséhez, ebben az oktatóanyagban az IoT Edge-eszközt egy Windows eszköz segítségével, konfigurálnia kell azt, hogy Linux-tárolók használja. Lásd: [telepítse az Azure IoT Edge-modul a Windows](how-to-install-iot-edge-windows.md) az előfeltételeket és a Linux-tárolók esetén az IoT Edge-futtatókörnyezet konfigurálása a Windows telepítési lépéseit.
+* Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
+* A [Azure IoT Edge-es Linux rendszerű eszközök](quickstart-linux.md)
+* Egy tároló-beállításjegyzéket, pl. [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
+* [A Visual Studio Code](https://code.visualstudio.com/) konfigurálva a [Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
+* [A docker CE](https://docs.docker.com/install/) konfigurált Linux-tárolók futtatásához.
 
-Felhőerőforrások:
+Ebben az oktatóanyagban egy Azure Functions-modul adatokat küldeni az SQL Server. Az Azure Functions az IoT Edge-modul fejlesztése, telepítse a következő további előfeltételeket a fejlesztői gépen: 
 
-* Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban. 
-
-Fejlesztési erőforrások:
-
-* [Visual Studio Code](https://code.visualstudio.com/). 
 * [C#(szolgáltató: omnisharp) Visual Studio Code-bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). 
-* [Az Azure IoT-eszközök a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge). 
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download). 
-* [Docker CE](https://docs.docker.com/install/). 
-  * Ha egy Windows-gépen fejleszt, ellenőrizze, hogy a Docker egy [Linux-tárolók használatára konfigurált](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers). 
-
-## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
-
-Ebben az oktatóanyagban használhatja az Azure IoT-eszközök a Visual Studio Code fel egy modult, és hozzon létre egy **tárolórendszerkép** a fájlokból. Ezután ezt a rendszerképet leküldi a rendszerképeit tároló és felügyelő **beállításjegyzékbe**. Végül üzembe helyezi a rendszerképet a beállításjegyzékből az IoT Edge-eszközön való futtatáshoz.  
-
-Minden olyan Docker-kompatibilis beállításjegyzéket a tárolólemezképek tárolására használható. Két népszerű Docker beállításjegyzék szolgáltatások [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) és [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). Ez az oktatóanyag az Azure Container Registryt használja. 
-
-Ha még nem rendelkezik egy tároló-beállításjegyzéket, az alábbi lépésekkel hozzon létre egy új Azure-ban:
-
-1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása** > **Tárolók** > **Container Registry** elemet.
-
-2. Adja meg a következő értékeket a tárolóregisztrációs adatbázis létrehozásához:
-
-   | Mező | Érték | 
-   | ----- | ----- |
-   | Beállításjegyzék neve | Egyedi nevet adjon meg. |
-   | Előfizetés | A legördülő listából válasszon egy előfizetést. |
-   | Erőforráscsoport | Javasoljuk, hogy az IoT Edge rövid útmutatók és oktatóanyagok során elkészített erőforráscsoportot használja minden teszterőforráshoz. Például: **IoTEdgeResources**. |
-   | Hely | Válassza ki az Önhöz legközelebb eső helyet. |
-   | Rendszergazdai felhasználó | Állítsa **Engedélyezés** értékre. |
-   | SKU | Válassza az **Alapszintű** lehetőséget. | 
-
-5. Kattintson a **Létrehozás** gombra.
-
-6. Miután létrejött a tárolóregisztrációs adatbázis, keresse meg, majd válassza a **Hozzáférési kulcsok** elemet. 
-
-7. Másolja a **Bejelentkezési kiszolgáló**, a **Felhasználónév** és a **Jelszó** értékeit. A tároló-beállításjegyzékbe való hozzáférés biztosításához az oktatóanyag későbbi részében használja ezeket az értékeket.  
 
 ## <a name="create-a-function-project"></a>Függvényprojekt létrehozása
 
 Ahhoz, hogy adatokat küldhessen egy adatbázisba, egy olyan modulra van szüksége, amely képes megfelelően rendszerezni, majd egy táblába elmenteni az adatokat. 
+
+### <a name="create-a-new-project"></a>Új projekt létrehozása
 
 A következő lépések bemutatják, hogyan hozhat létre a Visual Studio Code és az Azure IoT-eszközök használatával IoT Edge-függvényt.
 
@@ -101,24 +73,27 @@ A következő lépések bemutatják, hogyan hozhat létre a Visual Studio Code �
 
    A VS Code-ablak betölti az IoT Edge-megoldás munkaterületét. 
    
-4. Az IoT Edge-megoldásban, nyissa meg a \.env fájlt. 
+### <a name="add-your-registry-credentials"></a>A regisztrációs adatbázis hitelesítő adatainak hozzáadása
 
-   Minden alkalommal, amikor létrehoz egy új IoT Edge-megoldást, a VS Code megadását kéri a beállításjegyzék hitelesítő adatait a \.env fájlt. Ezt a fájlt a git-figyelmen kívül hagyja, és az IoT Edge-bővítmény segítségével később az IoT Edge-eszköz beállításjegyzék hozzáférést biztosítanak. 
+A környezeti fájl tárolja a tárolóregisztrációs adatbázis hitelesítő adatait, és megosztja őket az IoT-Edge futtatókörnyezettel. A futtatókörnyezetnek szüksége van ezekre a hitelesítő adatokra a privát rendszerképek letöltéséhez az IoT Edge-eszközre.
 
-   Ha nem adott meg az előző lépésben a tárolóregisztrációs adatbázisba, de az alapértelmezett localhost:5000 elfogadott, akkor nem kell egy \.env fájlt.
+1. A VS Code Explorerben nyissa meg a .env fájlt.
+2. Adja meg az Azure Container Registryből kimásolt **felhasználónevet** és **jelszót** a megfelelő mezőkben.
+3. Mentse el ezt a fájlt.
 
-5. Az .env fájlban adja meg az IoT Edge-futtatókörnyezet számára a regisztrációs adatbázis hitelesítő adatait, hogy az hozzáférhessen a modulrendszerképekhez. Keresse meg a **CONTAINER_REGISTRY_USERNAME** és a **CONTAINER_REGISTRY_PASSWORD** szakaszt, és szúrja be a hitelesítő adatait az egyenlőségjel után: 
+### <a name="select-your-target-architecture"></a>Válassza ki a cél-architektúra
 
-   ```env
-   CONTAINER_REGISTRY_USERNAME_yourregistry=<username>
-   CONTAINER_REGISTRY_PASSWORD_yourregistry=<password>
-   ```
+A Visual Studio Code jelenleg C modulok Linux AMD64- és Linux ARM32v7 eszközökhöz is fejleszthet. Kell választania, melyik architektúra célozza az egyes megoldások, mert a tároló összeállítása és futtatása eltérően az egyes architektúra. Az alapértelmezett érték a Linux-AMD64. 
 
-6. Mentse az .env fájlt.
+1. A parancskatalógus megnyitásához, és keressen rá a **Azure IoT Edge: Állítsa be alapértelmezett célplatform peremhálózati megoldás**, vagy válassza ki a parancsikont a oldalsó sáv az ablak alján. 
 
-7. A VS Code Explorerben nyissa meg a **modulok** > **sqlFunction** > **sqlFunction.cs**.
+2. A parancskatalógus válassza ki a cél-architektúra a lehetőségek listájából. Ebben az oktatóanyagban használjuk egy Ubuntu virtuális gép legyen az IoT Edge-eszköz, így megtartja az alapértelmezett **amd64**. 
 
-8. Cserélje le a fájl teljes tartalmát az alábbira:
+### <a name="update-the-module-with-custom-code"></a>A modul módosítása egyéni kóddal
+
+1. A VS Code Explorerben nyissa meg a **modulok** > **sqlFunction** > **sqlFunction.cs**.
+
+2. Cserélje le a fájl teljes tartalmát az alábbira:
 
    ```csharp
    using System;
@@ -205,23 +180,23 @@ A következő lépések bemutatják, hogyan hozhat létre a Visual Studio Code �
    }
    ```
 
-6. 35 sorban cserélje le a karakterlánc **\<sql-kapcsolati sztring\>** a következő karakterlánccal. A **adatforrás** tulajdonság hivatkozik, az SQL Server-tároló, amely még nem létezik, de a névvel létrehoz **SQL** a következő szakaszban. 
+3. 35 sorban cserélje le a karakterlánc **\<sql-kapcsolati sztring\>** a következő karakterlánccal. A **adatforrás** tulajdonság hivatkozik, az SQL Server-tároló, amely még nem létezik, de a névvel létrehoz **SQL** a következő szakaszban. 
 
    ```csharp
    Data Source=tcp:sql,1433;Initial Catalog=MeasurementsDB;User Id=SA;Password=Strong!Passw0rd;TrustServerCertificate=False;Connection Timeout=30;
    ```
 
-7. Mentse a **sqlFunction.cs** fájlt. 
+4. Mentse a **sqlFunction.cs** fájlt. 
 
-8. Nyissa meg a **sqlFunction.csproj** fájlt.
+5. Nyissa meg a **sqlFunction.csproj** fájlt.
 
-9. Keresse meg a csoportja csomaghivatkozásokhoz, és adjon hozzá egy új SqlClient tartalmazza. 
+6. Keresse meg a csoportja csomaghivatkozásokhoz, és adjon hozzá egy új SqlClient tartalmazza. 
 
    ```csproj
    <PackageReference Include="System.Data.SqlClient" Version="4.5.1"/>
    ```
 
-10. Mentse a **sqlFunction.csproj** fájlt.
+7. Mentse a **sqlFunction.csproj** fájlt.
 
 ## <a name="add-the-sql-server-container"></a>Az SQL Server-tároló hozzáadása
 
@@ -275,19 +250,11 @@ Ellenőrizheti, hogy a sqlFunction modul sikeresen lett leküldve a tárolóregi
 
 Az IoT Hub felületén keresztül modulokat állíthat be egy eszközön, de az IoT Hubhoz és az eszközökhöz a Visual Studio Code felületén keresztül is hozzáférhet. Ebben a szakaszban az IoT Hubhoz való hozzáférést fogja beállítani, majd a VS Code használatával üzembe fogja helyezni a megoldást az IoT Edge-eszközön. 
 
-1. Válassza ki a VS Code parancskatalógus **Azure IoT hubbal: Válassza ki az IoT Hub**.
+1. A VS Code Explorerben bontsa ki az **Azure IoT Hub Devices** (Azure IoT Hub-eszközök) szakaszt. 
 
-2. Az utasításokat követve jelentkezzen be Azure-fiókjába. 
+2. Kattintson a jobb gombbal az üzembe helyezés céleszközére, majd válassza a **Create deployment for a single device** (Üzemelő példány létrehozása egyetlen eszközhöz) lehetőséget. 
 
-3. A parancskatalógusban válassza ki saját Azure-előfizetését, majd IoT Hubját. 
-
-4. A VS Code Explorerben bontsa ki az **Azure IoT Hub Devices** (Azure IoT Hub-eszközök) szakaszt. 
-
-5. Kattintson a jobb gombbal az üzembe helyezés céleszközére, majd válassza a **Create deployment for a single device** (Üzemelő példány létrehozása egyetlen eszközhöz) lehetőséget. 
-
-   ![Üzemelő példány létrehozása egyetlen eszközhöz](./media/tutorial-store-data-sql-server/create-deployment.png)
-
-6. A Fájlkezelőben keresse meg a **config** belüli megoldását, és válassza a **deployment.amd64**. Kattintson a **Select Edge Deployment Manifest** (Edge üzembehelyezési jegyzék kiválasztása) elemre. 
+3. A Fájlkezelőben keresse meg a **config** belüli megoldását, és válassza a **deployment.amd64**. Kattintson a **Select Edge Deployment Manifest** (Edge üzembehelyezési jegyzék kiválasztása) elemre. 
 
    Ne használja a deployment.template.json fájlt, egy manifest nasazení.
 
@@ -360,7 +327,7 @@ Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben
 
 Ebben az oktatóanyagban olyan kódot tartalmazó Azure Functions-modult hozott létre, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Ha saját modulokat kíván létrehozni, a témáról további információt [az Azure Functions a Visual Studio Code és az Azure IoT Edge segítségével történő fejlesztését](how-to-develop-csharp-function.md) ismertető cikkben talál. 
 
-Továbbléphet a következő oktatóanyagokra, és megtudhatja, milyen más módokon alakíthatja üzleti megállapításokká ezeket az adatokat a peremhálózaton az Azure IoT Edge segítségével.
+Ha azt szeretné, próbálkozhat a peremhálózaton egy másik tárolási módszer, olvassa el az Azure Blob Storage használata az IoT Edge-ben. 
 
 > [!div class="nextstepaction"]
-> [Az érzékelők adatainak szűrése C# kód használatával](tutorial-csharp-module.md)
+> [Az Azure Blob Storage a peremhálózaton data Store az IoT Edge-ben](how-to-store-data-blob.md)

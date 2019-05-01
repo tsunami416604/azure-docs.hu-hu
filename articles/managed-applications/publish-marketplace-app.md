@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0bf1558f81f2936b4556ee658a235cd09dddf905
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 61cac49c34eb193d641a94c9a7839282289dd9c7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60484002"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572578"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Azure-beli felügyelt alkalmazások a Marketplace piactéren
 
@@ -29,7 +29,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz a felügyelt alkalmazás definí
 
 Emellett több üzleti előfeltételt kell teljesíteni. Ezek a következők:
 
-* A vállalatnak vagy leányvállalatnak olyan országban kell lennie, ahol a piactér támogatja az értékesítést.
+* A cég vagy az leányvállalatának kell működnie egy ország/régió, ahol a sales piactér által támogatott.
 * A terméket olyan módon kell licencelni, amely kompatibilis a piactér által támogatott számlázási modellekkel.
 * Műszaki támogatást kell biztosítania az ügyfelek számára üzleti szempontból észszerű módon. A támogatás lehet ingyenes, fizetős vagy közösség által nyújtott támogatás.
 * Licencelnie kell a szoftvert, valamint a külső szoftverfüggőségeket.
@@ -43,7 +43,7 @@ Ahhoz, hogy közzétevő lehessen az Azure Marketplace piactéren, az alábbiaka
 
 1. Microsoft-azonosító létrehozása – Hozzon létre Microsoft-fiókot egy olyan e-mail-cím használatával, amely a vállalati tartományhoz tartozik, nem pedig egy magánszemélyhez. Ezt az e-mail-címet a Microsoft fejlesztői központ és a Felhőpartnerportál fogja használni. További információért tekintse meg az [Azure Marketplace közzétevői útmutatóját](https://aka.ms/sellerguide).
 1. Az [Azure Marketplace Nomination Form](https://aka.ms/ampnomination) (Azure Marketplace jelentkezési űrlapja) elküldése – A **Solution that you intend to publish?** (Közzétenni kívánt megoldás?) kérdésnél válassza a **Managed Application** (Felügyelt alkalmazás) lehetőséget. Az űrlap elküldése után a Marketplace bevezetési csapata áttekinti a jelentkezést, és ellenőrzi a kérelmet. A jóváhagyási folyamat egy–három napot vehet igénybe. Ha a jelentkezést jóváhagyják, egy promóciós kódot kap, amellyel mentesül a fejlesztői központ regisztrációs díjának kifizetése alól. Ha **nem** tölti ki a Marketplace jelentkezési űrlapját, 99 dollár regisztrációs díjat kell fizetnie.
-1. Regisztrálás a [fejlesztői központban](https://dev.windows.com/registration?accountprogram=azure) – A Microsoft ellenőrzi, hogy a vállalat érvényes jogi személy-e, és hogy rendelkezik-e érvényes adóazonosítóval a bejegyzés országában. A jóváhagyási folyamat 5–10 napot vehet igénybe. A regisztrációs díj elkerülése érdekében használja a jelentkezési folyamat során érkező e-mailben kapott kódot. További információért tekintse meg az [Azure Marketplace közzétevői útmutatóját](https://aka.ms/sellerguide).
+1. Regisztrálja a [fejlesztői központ](https://dev.windows.com/registration?accountprogram=azure) – a Microsoft ellenőrzi, hogy a szervezete nem egy érvényes jogi személy az országban vagy régióban, amely regisztrálva van egy érvényes adó azonosítót. A jóváhagyási folyamat 5–10 napot vehet igénybe. A regisztrációs díj elkerülése érdekében használja a jelentkezési folyamat során érkező e-mailben kapott kódot. További információért tekintse meg az [Azure Marketplace közzétevői útmutatóját](https://aka.ms/sellerguide).
 1. Bejelentkezés a [Cloud Partner Portalra](https://cloudpartner.azure.com) – A közzétevői profilban társítsa a fejlesztői központban regisztrált fiókot a Marketplace-beli közzétevői profilhoz. További információért tekintse meg az [Azure Marketplace közzétevői útmutatóját](https://aka.ms/sellerguide).
 
 ## <a name="create-a-new-azure-application-offer"></a>Új Azure-alkalmazásajánlat létrehozása
@@ -94,8 +94,8 @@ Az SKU-k a fő ajánlat alatt jelennek meg a piactéren. Saját megvásárolhat�
    * **Összefoglalás**: Ez a Termékváltozat adja meg egy rövid összefoglalása. Ez a szöveg a cím alatt jelenik meg.
    * **Leírás**: Adja meg a Termékváltozat kapcsolatos részletes leírását.
    * **Termékváltozatának típusa**: Az engedélyezett értékek a következők *felügyelt alkalmazás* és *Megoldássablonok*. Ebben az esetben a *Managed Application* (Felügyelt alkalmazás) lehetőséget válassza.
-   * **Ország/régió rendelkezésre állási**: Az országok, amennyiben rendelkezésre áll-e a felügyelt alkalmazás kiválasztása.
-   * **Díjszabás**: Adja meg az alkalmazás felügyelete egy díja. Az ár beállítása előtt válassza ki az elérhető országokat.
+   * **Ország/régió rendelkezésre állási**: Válassza ki az országokban vagy régiókban, ahol a felügyelt alkalmazás érhető el.
+   * **Díjszabás**: Adja meg az alkalmazás felügyelete egy díja. A rendelkezésre álló országok/régiók kiválasztása az ár megadása előtt.
 
 1. Adjon hozzá egy új csomagot. Töltse ki a következő űrlapon található **Package Details** (Csomag részletei) szakaszt:
 

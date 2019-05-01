@@ -5,14 +5,14 @@ services: container-service
 author: sauryadas
 ms.service: container-service
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 04/26/2019
 ms.author: saudas
-ms.openlocfilehash: aafc6c5a240a1dd3e3c75dd33da26bde918b2288
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d4287307ee3ed7f65b91f2865242113aa5b22bfd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61031611"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64684176"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Támogatott az Azure Kubernetes Service (AKS) Kubernetes-verzió
 
@@ -29,7 +29,7 @@ Az AKS a Kubernetes négy alverzióját támogatja:
 
 Például, ha az AKS vezet be *1.12.x* még ma, támogatást is biztosítunk *1.11.a* + *1.11.b*, *1.10.c*  +  *1.10d*, *1.9.e* + *1.9F* (ahol a betűkkel javítás kiadások olyan két legújabb stabil buildek).
 
-Új alverzió bemutatásakor a legrégebbi alverziót és a legrégebbi javításokat kivezetjük. az új alverzió és a következő használatból való kivonást egyaránt kiadása előtt 15 napon keresztül egy közlemény keresztül jön létre a [Azure frissítési csatornákkal][azure-update-channel]. Ha a fenti példában *1.12.x* van nyilvánosan, a kivont verziók a következők *1.8.g* + *1.8.h*.
+Új alverzió bemutatásakor a legrégebbi alverziót és a legrégebbi javításokat kivezetjük. az új alverzió és a következő használatból való kivonást egyaránt kiadása előtt 30 nappal egy közlemény keresztül jön létre a [Azure frissítési csatornákkal][azure-update-channel]. Ha a fenti példában *1.12.x* van nyilvánosan, a kivont verziók a következők *1.8.g* + *1.8.h*.
 
 Ha egy AKS-fürtöt üzembe helyez a portálon vagy az Azure CLI-vel, az mindig az n-1. alverzióra, illetve a legújabb javításra lesz beállítva. Például, ha támogatja az AKS *1.12.x*, *1.11.a* + *1.11.b*, *1.10.c*  +   *1.10d*, *1.9.e* + *1.9F*, az alapértelmezett verzió új fürtök *1.11.b*.
 

@@ -10,19 +10,19 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: d3ffdcb79a56bf2f9f4a6eb192293bbc6bab7dab
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fa1733ddd70de3f8ef93452a880094ccf8b9ef56
+ms.sourcegitcommit: 807c318f5c034f8256f91c241e9d6f8f4d7de90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916716"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64951471"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 V3 áttelepítése
 
 > [!NOTE]
-> V2 elavulttá 2018. április 30., és a 2019. április 30. ezt megszüntetjük.
+> 2018. április 30. v2 kivezettük. Telepítse át az alkalmazások V3 kizárólag a v3-as elérhető új funkciók előnyeinek kihasználásához.
 > 
-> A Microsoft Translator Hub jén kivonjuk a forgalomból 2019. április 30. [Fontos állapotTelepítési információit és a dátumok](https://www.microsoft.com/translator/business/hub/).  
+> A Microsoft Translator Hub jén kivonjuk a forgalomból 2019. május 17. [Fontos állapotTelepítési információit és a dátumok](https://www.microsoft.com/translator/business/hub/).  
 
 A Microsoft Translator csapat kiadott 3-as verziójú (V3), a Translator Text API. Ebben a kiadásban új funkciók, a elavult módszerek és a egy új formátum küld és fogad adatokat a Microsoft Translator szolgáltatás tartalmaz. Ez a dokumentum módosítása alkalmazások általi használatát a v3-as információkat szolgáltat. 
 
@@ -110,7 +110,7 @@ Globális
 
 > [!NOTE]
 > 
-> A Microsoft Translator Hub jén kivonjuk a forgalomból 2019. április 30. [Fontos állapotTelepítési információit és a dátumok](https://www.microsoft.com/translator/business/hub/).   
+> A Microsoft Translator Hub jén kivonjuk a forgalomból 2019. május 17. [Fontos állapotTelepítési információit és a dátumok](https://www.microsoft.com/translator/business/hub/).   
 
 A Microsoft Translator V3 Neurális gépi fordítás alapértelmezés szerint használ. Ezért nem használható a Microsoft Translator hubbal. A Translator Hub csak az örökölt statisztikai gépi fordítási támogatja. Neurális fordítással testreszabásának már elérhető az egyéni translatorral. [További tudnivalók a Neurális gépi fordítás testreszabása](custom-translator/overview.md)
 
@@ -130,7 +130,6 @@ API v3-as szöveggel Neurális fordítással nem támogatja a standard szintű k
 A Translator Text API 3-as verziójához használja a api.cognitive.microsofttranslator.com végpont használata.
 
 **Translator Text API-Version 2**
-* Elavult. A 2019. április 30. ezt megszüntetjük. 
 * Nem felel meg az összes ISO 20001,20018 és a SOC 3 hardvertanúsítvány követelményeit. 
 * Nem teszi lehetővé a Neurális hálózat fordítási rendszerek a Translator testreszabási funkcióval testreszabott meghívásához.
 * A Microsoft Translator Hub használatával létrehozott egyéni fordítási rendszerekhez való hozzáférést biztosít.

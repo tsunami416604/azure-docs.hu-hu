@@ -3,17 +3,17 @@ title: Erőforrás zárolása ismertetése
 description: Ismerje meg az erőforrások védelme a tervezet hozzárendelésekor zárolási beállítások.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/28/2019
+ms.date: 04/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 232d823f364f9f98d1da1bade50ba369b898a57d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: db0b5bbe1261c7bdf76393c69a1189d2a850cd07
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60683008"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719761"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Erőforrás zárolása az Azure-tervek ismertetése
 
@@ -53,6 +53,13 @@ A hozzárendelés eltávolítása után a rendszer eltávolítja a tervek szerin
 Az RBAC [hozzárendelések megtagadása](../../../role-based-access-control/deny-assignments.md) megtagadási művelet során mikor lesz alkalmazva összetevő erőforrások a tervezet-hozzárendelést a hozzárendelés választásakor a **csak olvasható** vagy **ne törölje a** a beállítás. A megtagadási művelet által felügyelt identitását a tervezet-hozzárendelést kerülnek, és csak eltávolíthatók az összetevő-erőforrások által a azonos felügyelt identitás. Ez biztonsági okokból a zárolási mechanizmus kikényszeríti, és megakadályozza, hogy a tervek kívül a tervezet zárolás eltávolítása.
 
 ![Tervezet erőforráscsoport-hozzárendelés elutasítása](../media/resource-locking/blueprint-deny-assignment.png)
+
+A [hozzárendelés tulajdonságait megtagadása](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) minden üzemmódban az alábbiak szerint:
+
+|Mód |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals [i]. Azonosító | DoNotApplyToChildScopes |
+|-|-|-|-|-|-|
+|Csak olvasási engedély |**\*** |**\*/ olvasási** |SystemDefined (Mindenki) |hozzárendelés tervezetet és a felhasználó által definiált **excludedPrincipals** |Erőforráscsoport - _igaz_; Erőforrás - _false (hamis)_ |
+|Do Not Delete |**\*/ delete** | |SystemDefined (Mindenki) |hozzárendelés tervezetet és a felhasználó által definiált **excludedPrincipals** |Erőforráscsoport - _igaz_; Erőforrás - _false (hamis)_ |
 
 > [!IMPORTANT]
 > Az Azure Resource Manager akár 30 percig gyorsítótárazza a szerepkör-hozzárendelés részletei. Ennek eredményeképpen a megtagadási hozzárendelések megtagadási művelet a tervezet-erőforrások nem azonnal el teljes körű érvénybe. Ez idő alatt, előfordulhat, hogy lehet törölni a tervezet zárolások fogja védeni kívánt erőforrás.

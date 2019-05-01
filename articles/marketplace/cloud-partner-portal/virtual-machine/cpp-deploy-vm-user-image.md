@@ -1,25 +1,18 @@
 ---
-title: Üzembe helyezése egy Azure virtuális gép VHD-t felhasználói |} A Microsoft Docs
+title: Üzembe helyezése egy Azure virtuális gép VHD-t felhasználói |} Az Azure Marketplace-en
 description: Azt ismerteti, hogyan helyezhet üzembe egy Azure-beli Virtuálisgép-példány létrehozása egy felhasználó VHD-rendszerképet.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 11/29/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 0885b187c4b9e9636144a3ab2a94b941008bec20
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: e4da523fa54a513fe77fda037aea0a5fd530250b
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046735"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938241"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Egy Azure virtuális gép VHD-t felhasználói üzembe helyezése
 
@@ -38,7 +31,7 @@ Másolja ki az Azure Resource Manager-sablonja [VHD-t üzembe helyezési](cpp-de
 | userStorageAccountName     | A tárfiók neve                                                    |
 | sNameForPublicIP           | A nyilvános IP-cím DNS-neve. Kisbetűnek kell lennie                                  |
 | subscriptionId             | Az Azure előfizetés-azonosító                                                  |
-| Földrajzi egység                   | Standard szintű Azure földrajzi helye az erőforráscsoport                       |
+| Location egység                   | Standard szintű Azure földrajzi helye az erőforráscsoport                       |
 | vmName                     | A virtuális gép neve                                                    |
 | VaultName                  | A kulcstároló nevét                                                          |
 | vaultResourceGroup         | A kulcstároló erőforráscsoport

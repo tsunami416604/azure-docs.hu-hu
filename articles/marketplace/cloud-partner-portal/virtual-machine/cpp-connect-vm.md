@@ -1,25 +1,18 @@
 ---
-title: A Microsoft Azure-alapú virtuális gép csatlakoztatása |} A Microsoft Docs
+title: A Microsoft Azure-alapú virtuális gép csatlakoztatása |} Az Azure Marketplace-en
 description: Azt ismerteti, hogyan csatlakozhat az új virtuális gép létrehozása az Azure-ban.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
-ms.author: pbutlerm
-ms.openlocfilehash: fd68846b9144c3efcc71dec369d64119427758a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: ca002a77fd7252466f604b995af949b54694bc8c
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60744504"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938582"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Csatlakozás az Azure-alapú virtuális gépen
 

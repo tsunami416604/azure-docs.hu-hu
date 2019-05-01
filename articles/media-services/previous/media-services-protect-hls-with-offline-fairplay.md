@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: 31da745727d567e1b3b85b3508df368d78ad84a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc939011f87f03ef1de7e728fc52fc0c9887dd31
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60557272"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935405"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay Streaming iOS-hez 
 
@@ -42,8 +42,8 @@ Digitális jogkezelési (technológia DRM) / tartalom Advanced Encryption Standa
 Amellett, hogy online folyamatos átvitelre különböző adatfolyam-továbbítási protokollok tartalmának védelme, kapcsolat nélküli módban, a védett tartalomhoz az is gyakran által kért szolgáltatása. Offline mód támogatása a következő esetekben van szükség:
 
 * Lejátszás, amikor az internetes kapcsolat nem érhető el, mint például utazás közben.
-* Néhány tartalomszolgáltatók előfordulhat, hogy ne engedélyezze a DRM-licenckézbesítés túl egy ország szegély. Ha felhasználókat szeretne tekintse meg a tartalom országán kívül utazás közben, az offline letöltési van szükség.
-* Egyes országokban internet rendelkezésre állási és/vagy a sávszélesség korlátozva. Előfordulhat, hogy a felhasználók megadhatják tudni tekintse meg a megoldást, amely elég nagy a megfelelő élményt a tartalom letöltéséhez először. Ebben az esetben a probléma általában nem hálózati rendelkezésre állását, de korlátozott a sávszélesség. Over-the-top (OTT) / online videoplatformok (OVP) szolgáltatók kapcsolat nélküli módban támogatást kérhet.
+* Néhány tartalomszolgáltatók előfordulhat, hogy ne engedélyezze a DRM-licenckézbesítés túl egy adott ország/régió szegély. Ha felhasználókat szeretne tekintse meg a tartalmat az ország/régió kívül utazás közben, az offline letöltési van szükség.
+* Egyes országokban/régiókban internet rendelkezésre állási és/vagy a sávszélesség korlátozva. Előfordulhat, hogy a felhasználók megadhatják tudni tekintse meg a megoldást, amely elég nagy a megfelelő élményt a tartalom letöltéséhez először. Ebben az esetben a probléma általában nem hálózati rendelkezésre állását, de korlátozott a sávszélesség. Over-the-top (OTT) / online videoplatformok (OVP) szolgáltatók kapcsolat nélküli módban támogatást kérhet.
 
 Ez a cikk ismerteti az iOS 10 vagy újabb rendszerű eszközök célzó FairPlay Streaming (FPS) kapcsolat nélküli módban támogatása. Ez a szolgáltatás egyéb Apple-platformoknál, például a watchOS, tvOS vagy Safari macOS rendszeren nem támogatott.
 

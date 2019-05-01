@@ -1,25 +1,19 @@
 ---
-title: Az alkalmazás a közzétételi portál beállítása |} A Microsoft Docs
+title: Az alkalmazás a közzétételi portál beállítása
 description: Hogyan állíthatja be az alkalmazás a felhő közzétételi portál utasításait.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 8ac0fbb1c62e4162e1c4ad040365a16d055e4552
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 6da80bd3b5fe487a44400f4f3c21e8fa49da75d4
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60483193"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943558"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Az alkalmazás a közzétételi portál beállítása
 
@@ -88,7 +82,7 @@ A következő magyarázatot ezeket a mezőket:
 
 ### <a name="crm-package-availability"></a>CRM-csomag rendelkezésre állása
 
-Ebben a szakaszban válassza ki, milyen régiók CRM, a csomag számára elérhető lesz. Információ, amelyre régiókban mely országokban szolgálnak tekintse meg a hivatkozást: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
+Ebben a szakaszban válassza ki, milyen régiók CRM, a csomag számára elérhető lesz. Melyik CRM a régiók szolgálnak, amelyek információt országok/régiók, tekintse meg a hivatkozást: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
 Megjegyzés: Németország való üzembe helyezés "Szuverén és Egyesült Államokbeli kormányzati felhő" szuverén REQUIRES speciális engedélyek és az érvényesítés során a hitelesítésszolgáltató
 

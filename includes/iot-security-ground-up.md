@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 14e8eb7c73a1e2cf5047410d3571008c1cd1e1ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b952763378de562f35c2e1ecaf49c56f0145c559
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626479"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64951532"
 ---
 # <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>Biztonsági eszközök internetes hálózatához (IoT) létrehozása az alapoktól
 
@@ -33,7 +33,7 @@ Adja meg a biztonsági, adatvédelmi, átláthatóság és megfelelőségi probl
 
 ## <a name="secure-infrastructure-from-the-ground-up"></a>Biztonságos infrastruktúra létrehozása az alapoktól
 
-A [Microsoft Cloud](https://azure.microsoft.com) infrastruktúra támogatja a több mint egymilliárd ügyfelek 127 országban. Rajz a Microsoft által több évtizedes tapasztalatait nagyvállalati szoftverek készítése és a világ legnagyobb online szolgáltatásai futtató, a Microsoft Cloud biztosít fokozott biztonsági, adatvédelmi, megfelelőségi és fenyegetés magasabb szintű kockázatcsökkentési eljárások mint az ügyfelek többsége saját maguk is el lehet érni.
+A [Microsoft Cloud](https://azure.microsoft.com) infrastruktúra támogatja a több mint egymilliárd ügyfelek 127 országban és régióban. Rajz a Microsoft által több évtizedes tapasztalatait nagyvállalati szoftverek készítése és a világ legnagyobb online szolgáltatásai futtató, a Microsoft Cloud biztosít fokozott biztonsági, adatvédelmi, megfelelőségi és fenyegetés magasabb szintű kockázatcsökkentési eljárások mint az ügyfelek többsége saját maguk is el lehet érni.
 
 A [biztonságos fejlesztési Életciklussal (SDL)](https://www.microsoft.com/sdl/) biztosít a vállalati szintű fejlesztési folyamat során kötelezően, amely a biztonsági követelményeknek a teljes szoftveréletciklusba beágyazza. Győződjön meg arról, hogy üzemeltetési tevékenységek kövesse az ajánlott biztonsági eljárások azonos szintű érdekében SDL szigorú biztonsági irányelveket elrendezve a Microsoft garanciában (OSA) folyamat használja. A Microsoft emellett együttműködik a külső auditáló cégekkel folyamatos ellenőrzés, hogy megfelel-e megfelelőségi kötelezettségeit, és a Microsoft kompetenciaközpontjai széles körű biztonsági kompetenciaközpontok, a Microsoft Digital Crimes Unit, beleértve a létrehozása munkája alapján A Microsoft Security Response Center és Microsoft Malware Protection Center.
 

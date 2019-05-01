@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
 ms.author: chackdan
-ms.openlocfilehash: 7f9397ee21f74fe6a776881940e5721264216b0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a5f8735df2b230de2b0ddcdcccff09430bada9e3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386125"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64684693"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Az Azure Service Fabric-csomóponttípusok és virtuálisgép-méretezési csoportokban
-[A Virtual machine scale sets](/azure/virtual-machine-scale-sets) az Azure-beli számítási erőforrás. Használhatja a méretezési csoportok üzembe helyezése és kezelése a virtuális gépek csoportként gyűjteménye. Mindegyik csomóponttípus, amelyeket egy Azure Service Fabric-fürtöt állít be egy külön méretezési csoportban.  Állítsa be a Service Fabric-futtatókörnyezet, a méretezési csoportban lévő mindegyik virtuális gépre telepíteni. Is egymástól függetlenül mindegyik csomóponttípus kisebbre vagy nagyobbra méretezhetők, módosítsa az operációs rendszer Termékváltozata a fürt minden csomópontján fut, más-más részhalmazához nyitott portokkal rendelkezik és használni a különböző kapacitási mérőszámot.
+[A Virtual machine scale sets](/azure/virtual-machine-scale-sets) az Azure-beli számítási erőforrás. Használhatja a méretezési csoportok üzembe helyezése és kezelése a virtuális gépek csoportként gyűjteménye. Mindegyik csomóponttípus, amelyeket egy Azure Service Fabric-fürtöt állít be egy külön méretezési csoportban.  A Service Fabric-futtatókörnyezet Microsoft.Azure.ServiceFabric virtuálisgép-bővítmény a méretezési minden egyes virtuális gépre telepíteni. Is egymástól függetlenül mindegyik csomóponttípus kisebbre vagy nagyobbra méretezhetők, módosítsa az operációs rendszer Termékváltozata a fürt minden csomópontján fut, más-más részhalmazához nyitott portokkal rendelkezik és használni a különböző kapacitási mérőszámot.
 
 A következő ábrán látható, amely két csomópontot típusai, FrontEnd és BackEnd nevű fürt. Mindegyik csomóponttípus öt csomópontot tartalmaz.
 
@@ -38,6 +38,56 @@ Ha a fürtöt az Azure Portalon, illetve a minta az Azure Resource Manager-sablo
 
 ![További források][Resources]
 
+## <a name="service-fabric-virtual-machine-extension"></a>Service Fabric Virtual Machine Extension
+Service Fabric virtuálisgép-bővítmény segítségével elindíthat a Service Fabric az Azure Virtual Machines és a csomópont biztonságának konfigurálása.
+
+Az alábbi kódrészlettel, amely a Service Fabric virtuálisgép-bővítményt:
+
+```json
+"extensions": [
+  {
+    "name": "[concat('ServiceFabricNodeVmExt','_vmNodeType0Name')]",
+    "properties": {
+      "type": "ServiceFabricLinuxNode",
+      "autoUpgradeMinorVersion": true,
+      "protectedSettings": {
+        "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
+       },
+       "publisher": "Microsoft.Azure.ServiceFabric",
+       "settings": {
+         "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
+         "nodeTypeRef": "[variables('vmNodeType0Name')]",
+         "durabilityLevel": "Silver",
+         "enableParallelJobs": true,
+         "nicPrefixOverride": "[variables('subnet0Prefix')]",
+         "certificate": {
+           "commonNames": [
+             "[parameters('certificateCommonName')]"
+           ],
+           "x509StoreName": "[parameters('certificateStoreValue')]"
+         }
+       },
+       "typeHandlerVersion": "1.1"
+     }
+   },
+```
+
+A tulajdonság leírása a következők:
+
+| **Name (Név)** | **Megengedett értékek** | ** --- ** | **Útmutató vagy rövid leírása** |
+| --- | --- | --- | --- |
+| név | string | --- | egyedi nevet a bővítmény |
+| type | "ServiceFabricLinuxNode" vagy "ServiceFabricWindowsNode | --- | Azonosítja az operációs rendszer a Service Fabric a rendszer rendszerindítása |
+| autoUpgradeMinorVersion | IGAZ vagy hamis | --- | SF futásidejű alverziót az automatikus frissítés engedélyezése |
+| publisher | Microsoft.Azure.ServiceFabric | --- | a Service Fabric által közzétevő neve |
+| clusterEndpont | string | --- | URI:port felügyeleti végpontja |
+| nodeTypeRef | string | --- | NodeType csomóponttípus neve |
+| tartóssági szint | bronz, ezüst, arany, platinum | --- | nem módosítható az Azure-infrastruktúra szüneteltetésére engedélyezett idő |
+| enableParallelJobs | IGAZ vagy hamis | --- | Compute ParallelJobs, távolítsa el a virtuális gép és a virtuális Gépet a párhuzamos azonos méretezési engedélyezése |
+| nicPrefixOverride | string | --- | Például a "10.0.0.0/24" alhálózati előtag |
+| commonNames | String] | --- | Fürtben telepített tanúsítványok köznapi nevek |
+| x509StoreName | string | --- | Ahol a fürt telepített tanúsítvány megtalálható Store neve |
+| typeHandlerVersion | 1.1 | --- | Bővítmény verziója. bővítmény klasszikus verziója 1.0-ás javasolt 1.1-es frissítés |
 
 ## <a name="next-steps"></a>További lépések
 * Tekintse meg a [áttekintése a "Üzembe helyezés bárhol" funkció és az Azure által felügyelt fürtöket való összehasonlítást](service-fabric-deploy-anywhere.md).

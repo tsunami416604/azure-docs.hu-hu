@@ -8,18 +8,18 @@ ms.service: batch
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 233b26b330fabe7da8664114ba1857f74feea4bc
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 886dea0e53519870aaa27dea721a9eb78515cf86
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63764275"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706328"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Hozzon létre egy virtuálisgép-készletek egyéni rendszerkép használatával 
 
 Virtuálisgép-konfiguráció használata egy Azure Batch-készlet létrehozásakor meg kell adnia az operációs rendszer biztosít a készlet egyes számítási csomópontok Virtuálisgép-rendszerkép. Létrehozhat egy virtuálisgép-készletek, vagy egy támogatott Azure Marketplace-rendszerképpel, vagy egyéni rendszerképpel (Virtuálisgép-rendszerkép létrehozása és konfigurálása saját maga). Az egyedi képnek kell lennie egy *felügyelt rendszerkép* erőforrás Azure-előfizetéshez és régióban, mint a Batch-fiókot.
 
-## <a name="why-use-a-custom-image"></a>Egyéni rendszerkép miért érdemes használni?
+## <a name="benefits-of-custom-images"></a>Egyéni rendszerképek előnyei
 
 Egy egyéni rendszerképet ad meg, ha rendelkezik az operációs rendszer konfigurációs és operációs rendszerének és adatlemezeinek használandó típusát szabályozhatja. Az egyéni rendszerkép alkalmazások és az összes Batch-készlet csomópontjainak elérhetővé válnak, amint kiépítésüket referenciaadatokat is tartalmazhat.
 
@@ -32,12 +32,11 @@ A forgatókönyv konfigurált egyéni rendszerkép használatával megadhat töb
 - **Újraindítás időt takaríthat meg a virtuális gépeken.** Alkalmazás telepítése általában igényel, amely időigényes a virtuális gép újraindítása. Újraindítási időpontot előre telepíti az alkalmazásokat mentheti. 
 - **Másolja a nagyon nagy mennyiségű adat egyszer.** Győződjön meg a felügyelt egyéni lemezképek statikus adatok része egy felügyelt rendszerképet adatlemezek másolásával. Ez csak egyszer kell elvégezni, és a készlet minden csomópontján elérhetővé adatokat.
 - **A választott lemeztípusokat.** Választhat, hogy a premium Storage tárolást használ az operációsrendszer-lemez és az adatlemezt.
-- **Készletek növekszik, nagy méretű.** Felügyelt egyéni lemezképek használatával létrehoz egy készletet, ha a készlet a kép blob VHD-k példányát, nem növelhető. 
-
+- **Készletek növekszik, nagy méretű.** Felügyelt egyéni lemezképek használatával létrehoz egy készletet, ha a készlet a kép blob VHD-k példányát, nem növelhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Egy felügyelt rendszerképet erőforrás**. Egyéni rendszerkép használatával virtuális gépek készletének létrehozása, szüksége van, vagy hozzon létre egy felügyelt rendszerképet erőforrás Azure-előfizetéshez és régióban, mint a Batch-fiók. A kép kell létrehozni a virtuális gép operációsrendszer-lemez, és szükség esetén a csatlakoztatott adatlemezek pillanatképeiből. További információkért és a egy felügyelt rendszerképet előkészületek tekintse meg a következő szakaszban. 
+- **Egy felügyelt rendszerképet erőforrás**. Egyéni rendszerkép használatával virtuális gépek készletének létrehozása, szüksége van, vagy hozzon létre egy felügyelt rendszerképet erőforrás Azure-előfizetéshez és régióban, mint a Batch-fiók. A kép kell létrehozni a virtuális gép operációsrendszer-lemez, és szükség esetén a csatlakoztatott adatlemezek pillanatképeiből. További információkért és a egy felügyelt rendszerképet előkészületek tekintse meg a következő szakaszban.
   - Egy egyedi egyéni lemezkép használata minden egyes készletet hoz létre.
   - Készlet létrehozása a lemezképet, a Batch API-k használatával, adja meg a **erőforrás-azonosító** a képe, amely az űrlap `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`. A portál használatához használja a **neve** a kép.  
   - A felügyelt lemezkép-erőforrás léteznie kell, hogy a vertikális felskálázás a készlet teljes élettartama, és távolíthatja el a készlet törlése után.
@@ -46,7 +45,7 @@ A forgatókönyv konfigurált egyéni rendszerkép használatával megadhat töb
 
 ## <a name="prepare-a-custom-image"></a>Egyéni lemezkép előkészítése
 
-Az Azure-ban előkészítheti egy felügyelt rendszerképet egy Azure virtuális gép operációsrendszer- és adatlemezek pillanatképeiből, általánosított virtuális gépből az Azure managed disks szolgáltatással vagy feltöltött helyszíni általánosított virtuális merevlemezből. A Batch-készletek egyéni rendszerképpel megbízhatóan méretezheti, javasoljuk, hogy létrehozása egy felügyelt rendszerképet használó *csak* az első módszer: a Virtuálisgép-lemezek pillanatképei. Lásd az alábbi lépéseket egy virtuális gép előkészítése, a pillanatkép készítése és a rendszerkép létrehozása a pillanatképből. 
+Az Azure-ban előkészítheti egy felügyelt rendszerképet egy Azure virtuális gép operációsrendszer- és adatlemezek pillanatképeiből, általánosított virtuális gépből az Azure managed disks szolgáltatással vagy feltöltött helyszíni általánosított virtuális merevlemezből. A Batch-készletek egyéni rendszerképpel megbízhatóan méretezheti, javasoljuk, hogy létrehozása egy felügyelt rendszerképet használó *csak* az első módszer: a Virtuálisgép-lemezek pillanatképei. Lásd az alábbi lépéseket egy virtuális gép előkészítése, a pillanatkép készítése és a rendszerkép létrehozása a pillanatképből.
 
 ### <a name="prepare-a-vm"></a>A virtuális gép előkészítése
 
@@ -60,6 +59,7 @@ A kép egy új virtuális Gépet hoz létre, ha első fél Azure Marketplace-ren
 
 * Győződjön meg arról, hogy a virtuális Gépet hozunk létre egy felügyelt lemezt. Ez az alapértelmezett tároló beállítása, a virtuális gép létrehozásakor.
 * Ne telepítse az Azure-bővítmény, az egyéni szkriptek futtatására szolgáló bővítmény, például a virtuális gépen. Ha a rendszerkép előre telepített bővítményt tartalmaz, az Azure problémába ütközhet, a Batch-készlet üzembe helyezésekor.
+* Amikor használatával csatlakoztatott adatlemezekkel, kell csatlakoztatni és formázni a lemezeket használni őket virtuális Gépen belül.
 * Győződjön meg arról, hogy az alap operációsrendszer-képet, adja meg az alapértelmezett ideiglenes meghajtót használja-e. A Batch-csomópontügynök jelenleg ezt várja az alapértelmezett ideiglenes meghajtót.
 * Ha a virtuális gép fut, a csatlakozás RDP-(a Windows) vagy (Linux) esetén az SSH-n keresztül. Szükséges szoftver telepítését, vagy másolja ki a kívánt adathoz.  
 

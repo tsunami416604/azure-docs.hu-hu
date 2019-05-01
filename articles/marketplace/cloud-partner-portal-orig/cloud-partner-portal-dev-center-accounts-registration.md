@@ -1,25 +1,18 @@
 ---
-title: A Microsoft Developer-fiók létrehozása |} A Microsoft Docs
+title: A Microsoft Developer-fiók létrehozása |} Az Azure Marketplace-en
 description: Követelmények és lépések a Microsoft Developer-fiók létrehozása.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: adfe0af646fae79bc9a954cd5d654626880915d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: 4fde5d81fb97bec23fdb46ff53b05874c88d9d67
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60326778"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935865"
 ---
 <a name="create-a-microsoft-developer-account"></a>A Microsoft Developer-fiók létrehozása
 ====================================
@@ -106,7 +99,7 @@ A Microsoft Developer Center egyszer a vállalati adatok regisztrálásához has
    ![Válassza ki az országot/régiót](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_04.png)
 
     >[!WARNING]
-    >"Sell-from" Countries: Annak érdekében, hogy a szolgáltatások az Azure piactéren értékesítheti, a regisztrált entitást kell lennie az egyik a jóváhagyott "értékesítő" országokat jelennek meg a legördülő listában. Ez a korlátozás küldenie jóváhagyásra cége kifizetési és adózási okból is. További információkért tekintse meg a piactér részvételi szabályzatának megfelelően.
+    >"Sell-from" Countries/Regions: Annak érdekében, hogy a szolgáltatások az Azure piactéren értékesítheti, a regisztrált entitás van szükség egy jóváhagyott "értékesítői" országok vagy régiók jelennek meg a legördülő listában. Ez a korlátozás küldenie jóváhagyásra cége kifizetési és adózási okból is. További információkért tekintse meg a piactér részvételi szabályzatának megfelelően.
 
 5. Válassza ki **vállalati** , a "Fiók típusa", majd **tovább**.
 

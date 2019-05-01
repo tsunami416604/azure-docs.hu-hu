@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 04/18/2019
-ms.openlocfilehash: 471ded9cd94623929630155f1a3c613bf00576a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/26/2019
+ms.openlocfilehash: 4288eb7d051c44149a6f1970430dc8c409ca957d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60331842"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572863"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis-erőforrások skálázása az Azure SQL Database-ben
 
-Ez a cikk ismerteti a számítási és tárolási erőforrások, elérhető egy önálló adatbázis méretezése az Azure SQL Database-ben.
+Ez a cikk ismerteti, hogyan méretezzünk át egy adatbázis rendelkezésre álló számítási és tárolási erőforrások a kiépített számítási rétegben. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]

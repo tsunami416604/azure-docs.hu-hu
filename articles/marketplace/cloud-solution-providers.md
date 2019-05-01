@@ -1,20 +1,18 @@
 ---
-title: Cloud Solution Providers |} Az Azure
+title: Cloud Solution Providers | Azure Marketplace
 description: A kiadók most is értékesítheti az ajánlatok Microsoft CSP partner csatornán keresztül
 services: Azure, Marketplace, Compute, Storage, Networking
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
 ms.service: marketplace
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
-ms.openlocfilehash: 516cb10fe368334d8fe30d998857d0688dcae972
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d39ebf993498cea3ede11e07c5e71628287b81ac
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726901"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938553"
 ---
 # <a name="cloud-solution-providers"></a>Felhőszolgáltatók
 

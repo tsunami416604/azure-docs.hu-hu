@@ -2,25 +2,25 @@
 title: Rövid útmutató – teljes körű SSL-titkosítás konfigurálása az Azure Application Gatewayjel – Azure portal |} A Microsoft Docs
 description: Ismerje meg az Azure portal használata az Azure Application Gateway létrehozása a végpontok közötti SSL-titkosítást.
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 3/19/2019
+ms.date: 4/30/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: e47a3e1231701f3339057e25ee4388aff0c9fbd7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd165f81b45e3ae0c121fb8876ed88e68d493195
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60831953"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64946797"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-the-portal"></a>Végpontok közötti SSL konfigurálása az Application Gateway használatával a portállal
 
 Ez a cikk bemutatja, hogyan használhatja az Azure portal teljes körű SSL-titkosítás konfigurálása az application gateway szolgáltatással v1 Termékváltozatot.  
 
 > [!NOTE]
-> Application Gateway v2 szintű Termékváltozatot megbízható legfelső szintű tanúsítványok engedélyezése végpont konfiguráció szükséges. Portal-támogatás hozzáadása a megbízható legfelső szintű tanúsítványok még nem érhető el. Ezért V2 szintű Termékváltozatot esetén lásd: [PowerShell-lel végpontok közötti SSL konfigurálása](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
+> Application Gateway v2 szintű Termékváltozatot megbízható legfelső szintű tanúsítványok engedélyezése végpont konfiguráció szükséges. Portal-támogatás hozzáadása a megbízható legfelső szintű tanúsítványok még nem érhető el. Ezért esetén v2 Termékváltozat lásd [PowerShell-lel végpontok közötti SSL konfigurálása](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -32,7 +32,7 @@ További tudnivalókért lásd: [SSL-megszakításként, valamint teljes körű 
 
 ## <a name="create-a-new-application-gateway-with-end-to-end-ssl"></a>Hozzon létre egy új application gateway a végpontok közötti SSL-lel
 
-Hozzon létre egy új application gateway a végpontok közötti SSL-titkosítást, kell előbb engedélyezze az SSL-lezárást egy új application gateway létrehozása során. Ez lehetővé teszi az ügyfél és az alkalmazás-átjáró közötti kommunikáció SSL-titkosítást. Ezután szüksége lesz a HTTP-beállítások a háttérkiszolgálókhoz engedélyezett tanúsítványok az application gateway és a háttérkiszolgáló kiszolgálók között, így ennek a végpontok közötti SSL-titkosítást a kommunikáció SSL-titkosítás engedélyezéséhez.
+Szeretne létrehozni egy új application gateway a végpontok közötti SSL-titkosítást, akkor először engedélyeznie kell egy új application gateway létrehozása során az SSL-lezárást. Ez lehetővé teszi az ügyfél és az alkalmazás-átjáró közötti kommunikáció SSL-titkosítást. Ezután szüksége a HTTP-beállítások a háttérkiszolgálókhoz engedélyezett tanúsítványok a kiszolgálók közötti kommunikációt az application gateway és a háttérkiszolgáló, konzoljával végezhetők el a végpontok közötti SSL-titkosítást az SSL-titkosítás engedélyezéséhez.
 
 ### <a name="enable-ssl-termination-while-creating-a-new-application-gateway"></a>Egy új application gateway létrehozása során az SSL-lezárás engedélyezése
 
@@ -61,9 +61,9 @@ Tekintse meg ezt a cikkből megismerheti, hogyan [egy új application gateway l�
 
 ## <a name="enable-end-to-end-ssl-for-existing-application-gateway"></a>Meglévő application Gateway teljes körű SSL engedélyezése
 
-Beállítja a meglévő application gateway a végpontok közötti SSL-titkosítást, szüksége lesz a figyelő első engedélyezése forgalomelosztáshoz. Ez lehetővé teszi az ügyfél és az alkalmazás-átjáró közötti kommunikáció SSL-titkosítást. Ezután szüksége lesz a HTTP-beállítások a háttérkiszolgálókhoz engedélyezett tanúsítványok az application gateway és a háttérkiszolgáló kiszolgálók között, így ennek a végpontok közötti SSL-titkosítást a kommunikáció SSL-titkosítás engedélyezéséhez.
+Meglévő application gateway a végpontok közötti SSL titkosítás konfigurálásához kell első enable SSL-lezárást a figyelőben. Ez lehetővé teszi az ügyfél és az alkalmazás-átjáró közötti kommunikáció SSL-titkosítást. Ezután szüksége a HTTP-beállítások a háttérkiszolgálókhoz engedélyezett tanúsítványok a kiszolgálók közötti kommunikációt az application gateway és a háttérkiszolgáló, konzoljával végezhetők el a végpontok közötti SSL-titkosítást az SSL-titkosítás engedélyezéséhez.
 
-Szüksége lesz egy figyelő használja a HTTPS protokollt és a tanúsítvány az SSL-lezárás engedélyezése. Figyelő által használt protokoll nem módosítható. Ezért választhat használjon létező figyelőt, a HTTPS protokollt és a tanúsítvány, vagy hozzon létre egy új figyelőt. Abban az esetben, ha úgy dönt, hogy a korábbi, figyelmen kívül hagyhatja az alábbiakban említett lépéseket **forgalomelosztáshoz engedélyezze a meglévő application gateway** , és közvetlenül lépés **engedélyezett tanúsítványok háttérkiszolgálókhoz** a szakasz. Ha az utóbbi lehetőséget választja, akkor hajtsa végre ezeket a lépéseket. 
+Egy figyelő használja a HTTPS protokollt és a tanúsítvány az SSL-lezárás engedélyezése kell. Figyelő által használt protokoll nem módosítható. Tehát választhat használjon létező figyelőt, a HTTPS protokollt és a tanúsítvány, vagy hozzon létre egy új figyelőt. Abban az esetben, ha úgy dönt, hogy a korábbi, figyelmen kívül hagyhatja az alábbiakban említett lépéseket **forgalomelosztáshoz engedélyezze a meglévő application gateway** , és közvetlenül lépés **engedélyezett tanúsítványok háttérkiszolgálókhoz** a szakasz. Ha az utóbbi lehetőséget választja, kövesse az alábbi lépéseket.
 
 ### <a name="enable-ssl-termination-in-existing-application-gateway"></a>Meglévő application-Gateway SSL-lezárás engedélyezése
 

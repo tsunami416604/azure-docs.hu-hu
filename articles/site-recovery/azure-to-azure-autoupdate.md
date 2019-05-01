@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 04/29/2098
 ms.author: rajanaki
-ms.openlocfilehash: 67eb01ad596393c9095d72670e61b8c09776c588
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: aa135fef2850a692d45d932c15d4be74ccba5724
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792928"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925700"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Az Azure – Azure replikációs a mobilitási szolgáltatás automatikus frissítése
 
@@ -31,9 +31,10 @@ A Site Recovery segítségével kezelheti a frissítéseket, amikor automation-f
 Az alapértelmezett runbook-ütemezés szerint naponta 12:00 órakor, a replikált virtuális gép földrajzi időzónájában továbbra is megjelenik. A runbook-ütemezés az automation-fiók használatával is módosíthatja.
 
 > [!NOTE]
+> Frissítés összegző 35 kezdve, kiválaszthatja a frissítések meglévő automation-fiókot. Ez a frissítés előtt a Site Recovery alapértelmezés szerint létrehozott ezt a fiókot. Ezzel a beállítással engedélyezheti a virtuális gép replikációját esetén érhető el. Ha módosítja a beállítást, minden Azure-beli virtuális gépek ugyanahhoz a tárolóhoz a védett érvényesek.
+ 
 > Automatikus frissítés bekapcsolása nem kell indítani az Azure-beli virtuális gépek vagy hatással vannak a folyamatban lévő replikáció.
 
-> [!NOTE]
 > Az automation-fiókban számlázási feladat az adott hónapban felhasznált feladat modul percben alapul. Alapértelmezés szerint 500 perc is tartozó automation-fiók ingyenes egységek. Feladat végrehajtása néhány másodperc alatt körülbelül egy percig minden nap, és az ingyenes egységek képezi.
 
 | (Havonta) a szolgáltatásban foglalt ingyenes egységek | Ár |
@@ -63,7 +64,7 @@ Amikor engedélyezi egy virtuális gép replikációját vagy indítása [a Virt
 
 
 > [!Note]
-> Bármelyik beállítást is választja értesíti a frissítések felügyeletére szolgáló automation-fiók. Ha ez a funkció egy tárolót az első alkalommal használ, egy új automation-fiók jön létre. Minden ezt követő engedélyezése replikációk az ugyanahhoz a tárolóhoz használja a korábban létrehozott.
+> Bármelyik beállítást is választja értesíti a frissítések felügyeletére szolgáló automation-fiók. Ha ez a funkció egy tárolót az első alkalommal használ, a szolgáltatás alapértelmezés szerint létrehoz egy új automation-fiókot. Azt is megteheti testre szabhatja a beállítást, és válasszon egy meglévő automation-fiókot. Minden ezt követő engedélyezése replikációk az ugyanahhoz a tárolóhoz használja a korábban létrehozott.
 
 Egy egyéni automation-fiókot használja a következő parancsfájlt:
 

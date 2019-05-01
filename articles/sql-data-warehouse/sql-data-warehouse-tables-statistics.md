@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: seoapril2019
-ms.openlocfilehash: 62007624bdf2b5f1b9c387bcc51d58c020860913
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7ef5c0a4e6694e9babcb3054831e88d9edceae85
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474946"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937272"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse Táblastatisztika
 
@@ -71,7 +71,7 @@ A táblanév az a név a tábla, amely tartalmazza a statisztikai adatok megjele
 
 ## <a name="updating-statistics"></a>Statisztika frissítése
 
-Egy ajánlott eljárás, a statisztikák frissítése a dátum oszlop minden nap új dátumok hozzáadásakor. Minden alkalommal új sorok betöltődnek az adattárházba, új terhelés dátumok vagy a tranzakció dátumok kerülnek. Ezek módosítása az adatok terjesztési, és győződjön meg arról, a statisztikai adatok elavultak. Ellentétben egy ország oszlopra egy ügyfél tábla statisztikai előfordulhat, hogy soha nem kell frissíteni, mivel értékek eloszlását általában nem változik. Feltéve, hogy a terjesztés az ügyfelek közötti állandó, új sort ad hozzá a tábla változat nem fogja módosítani az adatok terjesztési. Azonban ha egy új országból származó adatok beolvasása az adattárház csak tartalmaz egy országban, tárolása, több országban adatokat eredményez majd frissítenie statisztikák az ország oszlopra.
+Egy ajánlott eljárás, a statisztikák frissítése a dátum oszlop minden nap új dátumok hozzáadásakor. Minden alkalommal új sorok betöltődnek az adattárházba, új terhelés dátumok vagy a tranzakció dátumok kerülnek. Ezek módosítása az adatok terjesztési, és győződjön meg arról, a statisztikai adatok elavultak. Ezzel szemben az ügyfél tábla ország/régió oszlop statisztikai előfordulhat, hogy soha nem kell frissíteni, mivel értékek eloszlását általában nem változik. Feltéve, hogy a terjesztés az ügyfelek közötti állandó, új sort ad hozzá a tábla változat nem fogja módosítani az adatok terjesztési. Azonban ha egy új ország vagy régió az adatok beolvasása az adattárház csak tartalmaz egy ország/régió, eredményez adatait több országban vagy régióban tárolja, majd az ország/régió oszlop statisztikai frissítenie kell.
 
 Frissítse a statisztikai adatokat ajánlások a következők:
 

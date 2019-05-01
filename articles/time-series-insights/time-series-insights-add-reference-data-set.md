@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.custom: seodec18
 ms.openlocfilehash: 17ba15ea12efc80dcc830f6338a837d1abb77a71
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63764442"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708860"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>A Time Series Insights-környezethez az Azure portal használatával egy referencia-adatkészlet létrehozása
 
@@ -97,5 +97,7 @@ Referenciaadatok visszamenőlegesen nem csatlakozik tartományhoz. Ez azt jelent
     Az oldal megerősíti, hogy a befejezett feltöltése és az üzenet megjelenítéséhez **sikeresen feltöltve az adatkészlet**.
 
 ## <a name="next-steps"></a>További lépések
+
 * [Referencia-adatok kezelése](time-series-insights-manage-reference-data-csharp.md) programozott módon.
+
 * Az alkalmazásprogramozási felület (API) teljes leírását a [Referencia-adatok API](/rest/api/time-series-insights/ga-reference-data-api) dokumentum tartalmazza.

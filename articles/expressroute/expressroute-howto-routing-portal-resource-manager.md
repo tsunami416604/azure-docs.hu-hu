@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 6d1ce56ef66d224b89f49a00c2883ebbf22a5745
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e1f94b7b2ab71afaa40831446e5e5aede00db7b1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60364932"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570844"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>ExpressRoute-kapcsolatcsoport társviszony létesítése és módosítása
 
@@ -91,7 +91,7 @@ Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissíteni és t
 
 ### <a name="getmsft"></a>A Microsoft társviszony-létesítés részleteinek megtekintése
 
-Az Azure nyilvános társviszony-létesítés tulajdonságainak megtekintéséhez válassza ki a társviszony-létesítést.
+Megtekintheti a Microsoft társviszony-létesítés kiválasztásával a társviszony-létesítés tulajdonságait.
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft3.png)
 
@@ -159,6 +159,10 @@ A társviszony-létesítés konfigurációját a Törlés ikonra kattintva távo
 ## <a name="public"></a>Az Azure nyilvános társviszony-létesítés
 
 Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissíteni és törölni az ExpressRoute-kapcsolatcsoport Azure nyilvános társviszony-létesítési konfigurációjának.
+
+> [!Note]
+> Azure nyilvános társviszony-létesítés esetén új kapcsolatcsoportot elavultnak számít. További információkért lásd: [ExpressRoute-társviszony](expressroute-circuit-peerings.md).
+>
 
 ### <a name="to-create-azure-public-peering"></a>Azure nyilvános társviszony-létesítés létrehozása
 

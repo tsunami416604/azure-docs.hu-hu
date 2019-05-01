@@ -1,5 +1,5 @@
 ---
-title: Az Azure Data Box beállítása | Microsoft Docs
+title: Az oktatóanyag az Azure Data Box beállítása |} A Microsoft Docs
 description: Bemutatja az Azure Data Box bekábelezését és csatlakoztatását
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: alkohli
-ms.openlocfilehash: b601ad5936820e2c237b7b9d37d9af73aa468bbc
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 2da6bf971cc966e27fac46546bfd4e3dcac6d12f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123297"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926169"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Oktatóanyag: Kábelek, és csatlakozzon az Azure Data Box
 
@@ -40,7 +40,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
     - egy nagy sebességű hálózathoz kell csatlakoznia. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha 10 GbE sebességű kapcsolat nem áll rendelkezésre, egy 1 GbE sebességű adatkapcsolat is használható, azonban ez csökkenti a másolási sebességet. 
 6. Szüksége lesz egy vízszintes felületre, ahová a Data Boxot helyezheti. Ha az eszközt egy standard kiszolgálószekrény-polcra szeretné helyezni, egy legalább 7U méretű helyre lesz szükség az adatközponti szekrényben. Az eszközt a talpán vagy az oldalán is elhelyezheti a szekrényben.
 7. A következő kábelekkel rendelkezik a Data Box a gazdagéphez való csatlakoztatásához.
-    - Egy vagy több 10-GbE SFP + rézeres Twinax vagy SFP + száloptikai kábeleit (az adatok 1, a DATA 2 hálózati adapterek használata). Data Box a a Mellanox ConnectX®-3 Pro EN kétportos 10GBASE-T adapterek használatával a PCI Express 3.0-s hálózati adaptert, rendelkezik, így az adott csatolón kompatibilis kábelek működnie kell. A CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP + 3 M például kábel inhouse tesztelési lett megadva. További információkért lásd: a [támogatott kábelek és kapcsolók a Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
+    - Egy vagy több 10-GbE SFP + rézeres Twinax vagy SFP + száloptikai kábeleit (az adatok 1, a DATA 2 hálózati adapterek használata). Data Box a a Mellanox ConnectX®-3 Pro EN kétportos 10GBASE-T adapterek használatával a PCI Express 3.0-s hálózati adaptert, rendelkezik, így az adott csatolón kompatibilis kábelek működnie kell. A CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP + 3 M például kábel használták belső tesztelése. További információkért lásd: a [támogatott kábelek és kapcsolók a Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
     - Egy RJ-45 CAT 6 hálózati kábel (az MGMT hálózati adapterhez)
     - Egy RJ-45 CAT 6A VAGY egy RJ-45 CAT 6 hálózati kábel (a DATA 3 hálózati adapterhez 10 Gb/s vagy 1 Gb/s sebességre konfigurálva)
 

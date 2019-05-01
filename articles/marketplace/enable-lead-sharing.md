@@ -2,24 +2,18 @@
 title: Enable érdeklődő megosztása az Azure Marketplace-en |} Az Azure
 description: Ismerje meg, hogyan engedélyezheti az alkalmazás és szolgáltatás-kiadók az Azure Marketplace és appsource-ban, megosztó érdeklődő.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 346ebd9636623a2fc8b08d42c2170a21a5e9a316
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 9aecef81547131e6f843fdd55db259d2c4299c9c
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121078"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938678"
 ---
 # <a name="enable-lead-sharing"></a>Érdeklődő megosztásának engedélyezése
 Annak biztosítása, hogy lead felügyelet engedélyezve van a nyilvántartásba vételre a [Azure Marketplace-en](https://azuremarketplace.microsoft.com) vagy [Microsoft AppSource](https://appsource.microsoft.com) kap kapcsolattartási adatokat a következő célcsoportok számára nyújt segítséget:

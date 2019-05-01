@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0277180f0d768bbcc83a0d8d05fbc4b8b25301e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bbebbeaad681618e8420ad842ec370ce62bc9eba
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60357477"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570836"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication – gyakran ismételt kérdések
 
@@ -59,7 +59,7 @@ A kanadai Microsoft használja a következő rövid SMS-kódok:
    * 759731 
    * 673801
 
-A Microsoft nem garantálja konzisztens SMS-ben vagy a multi-factor Authentication Voice-alapú Rákérdezés az azonos számát. Léptethetünk, hogy a felhasználók Microsoft adhatók hozzá, vagy rövid kód azt módosításokat útvonal SMS mailek kézbesítési eredményességét javítása érdekében bármikor eltávolíthatja. A Microsoft nem támogatja a rövid kód országok mellett az Egyesült Államok és Kanada
+A Microsoft nem garantálja konzisztens SMS-ben vagy a multi-factor Authentication Voice-alapú Rákérdezés az azonos számát. Léptethetünk, hogy a felhasználók Microsoft adhatók hozzá, vagy rövid kód azt módosításokat útvonal SMS mailek kézbesítési eredményességét javítása érdekében bármikor eltávolíthatja. A Microsoft nem támogatja a rövid kód országok és régiók mellett az Egyesült Államok és Kanada.
 
 ## <a name="billing"></a>Számlázás
 
@@ -95,7 +95,7 @@ Office 365-felhasználók a multi-factor Authentication ingyenes Office 365-szol
 
 Ha a szervezet megvásárolja az MFA a fogyasztás alapú számlázáshoz önálló szolgáltatásként, a számlázási modellt választja MFA-szolgáltató létrehozásakor. MFA-szolgáltató létrehozása után a számlázási modell nem módosítható. Azonban törölheti az MFA szolgáltatót, és majd létrehozhat egy újat egy eltérő számlázási modellt.
 
-MFA-szolgáltató létrehozását követően kapcsolható egy Azure Active Directory (más néven "Azure AD-bérlőhöz"). Ha az aktuális MFA-szolgáltató Azure AD-bérlő van csatolva, biztonságosan törölheti az MFA szolgáltatót és hozzon létre egyet, amely kapcsolódik az Azure AD-bérlőhöz. Másik lehetőségként, ha elegendő MFA, prémium szintű Azure AD vagy Enterprise Mobility + Security (EMS) licencet vásárolt az összes olyan felhasználó lefedésére, akiknél az MFA engedélyezett, akkor teljes egészében törölheti az MFA szolgáltatót.
+MFA-szolgáltató jön létre, amikor azt lehet kapcsolódni az Azure Active Directory vagy az "Azure AD-bérlővel." Ha az aktuális MFA-szolgáltató Azure AD-bérlő van csatolva, biztonságosan törölheti az MFA szolgáltatót és hozzon létre egyet, amely kapcsolódik az Azure AD-bérlőhöz. Másik lehetőségként, ha elegendő MFA, prémium szintű Azure AD vagy Enterprise Mobility + Security (EMS) licencet vásárolt az összes olyan felhasználó lefedésére, akiknél az MFA engedélyezett, akkor teljes egészében törölheti az MFA szolgáltatót.
 
 Ha az MFA szolgáltató *nem* csatolva az Azure AD-bérlővel, vagy az új MFA szolgáltatót kapcsol egy másik Azure ad bérlői, felhasználói beállításokat és konfigurációs lehetőségeket vannak nem viszi át. Emellett a meglévő Azure MFA-kiszolgálókat újra aktiválni kell az új MFA szolgáltatón keresztül létrehozott aktiváló hitelesítők adatokkal. Az MFA-kiszolgálók az új MFA szolgáltatóhoz történő kapcsolás céljából történő újbóli aktiválása nincs hatással a telefonhívásban vagy szöveges üzenetben történő hitelesítésekre, a mobilalkalmazás-értesítések viszont minden felhasználó számára megszűnnek működni a mobilalkalmazás újbóli aktiválásáig.
 
@@ -142,7 +142,7 @@ Ha a szervezet nem rendelkezik a hagyományos, nem kell engedélyezné a felhasz
 > [!NOTE]
 > Az ügyfelek az Office 2013 modern hitelesítés
 >
-> Alkalmazásjelszók csak azért szükséges, modern hitelesítést nem támogató alkalmazások esetében. Office 2013-ügyfelek támogatásához modern hitelesítési protokollok, de konfigurálni kell. Most már modern hitelesítést bármely, az Office 2013. március, 2015 vagy újabb frissítést futtató ügyfél számára érhető el. További információkért lásd: a [Office 2013 modern hitelesítés nyilvános előzetes verziójának bejelentése](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+> Alkalmazásjelszók csak azért szükséges, modern hitelesítést nem támogató alkalmazások esetében. Office 2013-ügyfelek támogatásához modern hitelesítési protokollok, de konfigurálni kell. Most már modern hitelesítést bármely, az Office 2013. március, 2015 vagy újabb frissítést futtató ügyfél számára érhető el. További információkért tekintse meg a következő blogbejegyzésben: [frissített Office 365 modern hitelesítését](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/).
 
 **K: A felhasználók tegyük fel, hogy nem néha kapnak a szöveges üzenetet, vagy azok válasz kétirányú szöveges üzenet, de az ellenőrzés túllépi az időkorlátot.**
 

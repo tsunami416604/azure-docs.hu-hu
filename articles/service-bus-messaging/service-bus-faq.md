@@ -1,6 +1,6 @@
 ---
 title: Az Azure Service Bus – gyakori kérdések (GYIK) |} A Microsoft Docs
-description: Azure Service Bus kapcsolatos gyakori kérdésekre ad választ.
+description: Néhány Azure Service busszal kapcsolatos gyakori kérdésekre ad választ.
 services: service-bus-messaging
 author: axisc
 manager: timlt
@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 41a5f08be833d1235146d6e748580751af2c9d73
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8461764a3f1f682ffb97420a4efdf2803f518872
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60311029"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707139"
 ---
 # <a name="service-bus-faq"></a>Service Bus – GYIK
 
@@ -41,6 +41,48 @@ A hagyományos üzenetsor vagy témakör egyetlen üzenettovábbítóról kezeli
 Rendezés nem biztosított, ha használata particionált entitások. Abban az esetben, ha egy partíció nem érhető el, továbbra is küldhet és a többi partíció-üzeneteket fogadjon.
 
  A particionált entitások már nem támogatottak a [prémium szintű Termékváltozat](service-bus-premium-messaging.md). 
+
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Milyen portokat tegye kell megnyitni a tűzfalon? 
+Segítségével az alábbi protokollok Azure Service Bus-üzenetek küldése és fogadása:
+
+- Advanced Message Queueing Protocol (AMQP)
+- Service Bus-üzenetkezelés protokoll (SBMP)
+- HTTP
+
+Tekintse meg a következő táblázat tartalmazza a kimenő portokat, meg kell nyitnia ezeket a protokollokat használata az Azure Event Hubs való kommunikációhoz. 
+
+| Protocol | Portok | Részletek | 
+| -------- | ----- | ------- | 
+| AMQP | 5671, 5672 és | Lásd: [AMQP protokoll-útmutató](service-bus-amqp-protocol-guide.md) | 
+| SBMP | 9350 a 9354-es | Lásd: [csatlakozási mód](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
+| HTTP, HTTPS | 80, 443 | 
+
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Milyen IP-címeket engedélyezési lista kell?
+A kapcsolat a megfelelő IP-címek engedélyezési lista megkereséséhez kövesse az alábbi lépéseket:
+
+1. Futtassa a következő parancsot a parancssorba: 
+
+    ```
+    nslookup <YourNamespaceName>.servicebus.windows.net
+    ```
+2. Jegyezze fel a visszaadott IP-címet `Non-authoritative answer`. Az IP-címet a statikus. A csak időben megváltozna azt, hogy ha egy másik fürtön be a névtér visszaállítását.
+
+A zone redudancy a névteret használja, ha néhány további lépések végrehajtásához szüksége: 
+
+1. Először futtassa a nslookup a névtérhez.
+
+    ```
+    nslookup <yournamespace>.servicebus.windows.net
+    ```
+2. Jegyezze fel a neve a **nem mérvadó válasz** szakaszt, amely a következő formátumok egyikében: 
+
+    ```
+    <name>-s1.servicebus.windows.net
+    <name>-s2.servicebus.windows.net
+    <name>-s3.servicebus.windows.net
+    ```
+3. Az nslookup futtassa egyesével az utótagok s1, s2 és s3 három rendelkezésre állási zónában futó összes három példány IP-címeket 
+
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Mik az Azure Service Bus ajánlott eljárásokat?

@@ -1,25 +1,18 @@
 ---
-title: Hozzon létre a Marketplace-ajánlatok – az Azure Marketplace-en |} A Microsoft Docs
+title: Hozzon létre a Marketplace-ajánlat |} Az Azure Marketplace-en
 description: Ajánlat létrehozása az Azure-ra és az AppSource-piactér használatával a Cloud Partner portálra
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: pbutlerm
-ms.openlocfilehash: af9b34d90098409135020fa8a45ecd0253f25b22
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pabutler
+ms.openlocfilehash: cc0d8e68578500d4fa5f1b167790d60c8f7c5067
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60825701"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942159"
 ---
 # <a name="create-azure-marketplace-and-appsource-offers"></a>Hozzon létre az Azure Marketplace és AppSource ajánlatok
 

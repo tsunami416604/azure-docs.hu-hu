@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/015/2019
 ms.author: radeltch
-ms.openlocfilehash: 18bbeef833e1c82999e87451d279c0d3464af509
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: cd2479aed1e348a27c5cba56c6d809ffb24e4fc0
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60711124"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925776"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure NetApp Files SAP alkalmazások az Azure virtuális gépeken
 
@@ -29,9 +29,9 @@ ms.locfileid: "60711124"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[anf-azure-doc]:https://docs.microsoft.com/en-gb/azure/azure-netapp-files/
-[anf-avail-matrix]:https://azure.microsoft.com/en-us/global-infrastructure/services/?products=storage&regions=all
-[anf-register]:https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-register
+[anf-azure-doc]:https://docs.microsoft.com/azure/azure-netapp-files/
+[anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=storage&regions=all
+[anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
@@ -58,7 +58,7 @@ ms.locfileid: "60711124"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-Ez a cikk ismerteti a virtuális gépek üzembe helyezése, konfigurálja a virtuális gépek, telepítse a fürt keretrendszert és egy magas rendelkezésre állású SAP NetWeaver 7.50 rendszert, használatával [Azure NetApp fájlokat (a nyilvános előzetes verzió)](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-introduction/).
+Ez a cikk ismerteti a virtuális gépek üzembe helyezése, konfigurálja a virtuális gépek, telepítse a fürt keretrendszert és egy magas rendelkezésre állású SAP NetWeaver 7.50 rendszert, használatával [Azure NetApp fájlokat (a nyilvános előzetes verzió)](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/).
 A példa konfiguráció, telepítési parancsokat stb., a ASCS példány szám 02 00, a SSZON példányszámának 01, az elsődleges alkalmazáspéldány (szolgáltatói CÍMEI) pedig az alkalmazáspéldány (AAS) 03. Az SAP-rendszer azonosító QAS szolgál. 
 
 Ez a cikk azt ismerteti, hogyan érhető el magas rendelkezésre állás az SAP NetWeaver alkalmazást az Azure Files-NetApp. Az adatbázis réteg nem ez a cikk részletesen ismertetett.
@@ -92,12 +92,12 @@ Először olvassa el az alábbi SAP-megjegyzések és tanulmányok:
 Magas availability(HA) SAP Netweaver központi szolgáltatásokhoz megosztott tárolóra van szükség.
 Ennek érdekében javítottunk a SUSE Linux, amennyiben szükséges volt külön magas rendelkezésre állású NFS-fürt létrehozásához. 
 
-Most Önön eléréséhez SAP Netweaver magas rendelkezésre ÁLLÁS megosztott tárolót üzembe helyezve az Azure Files-NetApp használatával lehetséges. A megosztott tároló nem kell az Azure NetApp Files használatával további [NFS fürt](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs). Magas rendelkezésre ÁLLÁS, az SAP Netweaver központi services(ASCS/SCS) támasztja továbbra is szükség van.
+Most Önön eléréséhez SAP Netweaver magas rendelkezésre ÁLLÁS megosztott tárolót üzembe helyezve az Azure Files-NetApp használatával lehetséges. A megosztott tároló nem kell az Azure NetApp Files használatával további [NFS fürt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs). Magas rendelkezésre ÁLLÁS, az SAP Netweaver központi services(ASCS/SCS) támasztja továbbra is szükség van.
 
 
 ![SAP NetWeaver magas rendelkezésre állás – Áttekintés](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.PNG)
 
-SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. Az Azure-ban egy [terheléselosztó](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) kell használnia a virtuális IP-címet. Az alábbi lista tartalmazza (A) konfigurációjának SCS és SSZON terheléselosztó.
+SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. Az Azure-ban egy [terheléselosztó](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) kell használnia a virtuális IP-címet. Az alábbi lista tartalmazza (A) konfigurációjának SCS és SSZON terheléselosztó.
 
 ### <a name="ascs"></a>(A)SCS
 
@@ -138,17 +138,17 @@ Az Azure NetApp fájlok szolgáltatás jelenleg nyilvános előzetes verzióban 
 
 ### <a name="deploy-azure-netapp-files-resources"></a>NetApp fájlokat az Azure-erőforrások üzembe helyezése  
 
-A lépések azt feltételezik, hogy korábban már telepítettek [Azure Virtual Network](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview). Ne feledje, hogy a NetApp fájlokat az Azure-erőforrások és a virtuális gépek, ahol a NetApp fájlokat az Azure-erőforrások lesz csatlakoztatva kell telepíteni az azonos Azure virtuális hálózatban.  
+A lépések azt feltételezik, hogy korábban már telepítettek [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview). Ne feledje, hogy a NetApp fájlokat az Azure-erőforrások és a virtuális gépek, ahol a NetApp fájlokat az Azure-erőforrások lesz csatlakoztatva kell telepíteni az azonos Azure virtuális hálózatban.  
 
-1. A kérelem nem tette meg már, ha [regisztrálása a Azure NetApp Preview](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-register).  
+1. A kérelem nem tette meg már, ha [regisztrálása a Azure NetApp Preview](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register).  
 
-2. A NetApp fiók létrehozása a kiválasztott Azure-régióban, a következő a [NetApp fiók létrehozására vonatkozó utasításokat](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-create-netapp-account).  
-3. Állítsa be a következő Azure NetApp fájlok kapacitás-készletben a [való beállítása az Azure Files-NetApp kapacitás készlet](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool).  
+2. A NetApp fiók létrehozása a kiválasztott Azure-régióban, a következő a [NetApp fiók létrehozására vonatkozó utasításokat](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account).  
+3. Állítsa be a következő Azure NetApp fájlok kapacitás-készletben a [való beállítása az Azure Files-NetApp kapacitás készlet](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool).  
 Az SAP Netweaver-architektúra ebben a cikkben bemutatott egyetlen Azure NetApp fájlok kapacitás készletet, prémium szintű Termékváltozatot használja. Azure NetApp fájlok prémium Termékváltozatot javasoljuk az SAP Netweaver alkalmazás számítási feladatait az Azure-ban.  
 
-4. Azure NetApp files alhálózat delegálása leírtak szerint a [utasításokat delegálása az Azure Files-NetApp alhálózat](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
+4. Azure NetApp files alhálózat delegálása leírtak szerint a [utasításokat delegálása az Azure Files-NetApp alhálózat](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
 
-5. Az Azure Files-NetApp köteteket, a következő üzembe helyezheti a [kötet létrehozása a NetApp Azure-fájlok útmutatás](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-create-volumes). A köteteket a kijelölt NetApp Azure Files szolgáltatásban üzembe helyezheti [alhálózati](https://docs.microsoft.com/en-us/rest/api/virtualnetwork/subnets). Ne feledje, hogy a NetApp fájlokat az Azure-erőforrások és az Azure virtuális gépek azonos Azure virtuális hálózatban kell lennie. Például sapmnt<b>QAS</b>, usrsap<b>QAS</b>használatához és így tovább a kötetnevek és sapmnt<b>qas</b>, usrsap<b>qas</b>használatához és így tovább a filepaths vannak az Azure-beli használatra NetApp fájlok kötetek.  
+5. Az Azure Files-NetApp köteteket, a következő üzembe helyezheti a [kötet létrehozása a NetApp Azure-fájlok útmutatás](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). A köteteket a kijelölt NetApp Azure Files szolgáltatásban üzembe helyezheti [alhálózati](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). Ne feledje, hogy a NetApp fájlokat az Azure-erőforrások és az Azure virtuális gépek azonos Azure virtuális hálózatban kell lennie. Például sapmnt<b>QAS</b>, usrsap<b>QAS</b>használatához és így tovább a kötetnevek és sapmnt<b>qas</b>, usrsap<b>qas</b>használatához és így tovább a filepaths vannak az Azure-beli használatra NetApp fájlok kötetek.  
 
    1. kötet sapmnt<b>QAS</b> (nfs://10.1.0.4/sapmnt<b>qas</b>)
    2. kötet usrsap<b>QAS</b> (nfs://10.1.0.4/usrsap<b>qas</b>)
@@ -158,7 +158,7 @@ Az SAP Netweaver-architektúra ebben a cikkben bemutatott egyetlen Azure NetApp 
    6. kötet usrsap<b>QAS</b>szolgáltatói címei (nfs://10.1.0.5/usrsap<b>qas</b>szolgáltatói címei)
    7. kötet usrsap<b>QAS</b>rendszergazdájaként (nfs://10.1.0.4/usrsap<b>qas</b>aas)
    
-Ebben a példában a NetApp fájlokat az Azure minden SAP Netweaver fájlrendszerekben bemutatásához, hogyan használható az Azure Files-NetApp használtuk. Az SAP fájlrendszereket, amelyeket nem kell csatlakoztatnia kell az NFS-n keresztül is telepíthető központilag [az Azure disk storage](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types#premium-ssd) . Ebben a példában <b>-e</b> kell lennie az Azure Files-NetApp és <b>f-g</b> (azaz usr/sap/<b>QAS</b>/D<b>02</b>,usr/sap/<b>QAS </b>/D<b>03</b>), az Azure disk storage is telepíthető. 
+Ebben a példában a NetApp fájlokat az Azure minden SAP Netweaver fájlrendszerekben bemutatásához, hogyan használható az Azure Files-NetApp használtuk. Az SAP fájlrendszereket, amelyeket nem kell csatlakoztatnia kell az NFS-n keresztül is telepíthető központilag [az Azure disk storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) . Ebben a példában <b>-e</b> kell lennie az Azure Files-NetApp és <b>f-g</b> (azaz usr/sap/<b>QAS</b>/D<b>02</b>,usr/sap/<b>QAS </b>/D<b>03</b>), az Azure disk storage is telepíthető. 
 
 ### <a name="important-considerations"></a>Fontos szempontok
 
@@ -166,10 +166,10 @@ Az SAP Netweaver SUSE magas rendelkezésre állású architektúra az Azure NetA
 
 - A kapacitásérték-minimumot készlet használata 4 Tib-ra. A kapacitás a készlet méretét 4 Tib-ra többszörösének kell lennie.
 - A minimális kötet 100 GiB
-- NetApp Azure Files és az összes virtuális gép, ahol az Azure Files-NetApp kötetek lesz csatlakoztatva, kell lennie, az azonos Azure virtuális hálózatban vagy a [társviszonyban álló virtuális hálózatok](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview) ugyanabban a régióban. Keresztül a virtuális hálózatok közötti társviszony az azonos régióban található Azure NetApp fájlok hozzáférés mostantól támogatott. Az Azure a NetApp hozzáférés globális társviszony-létesítésen keresztül még nem támogatott.
+- NetApp Azure Files és az összes virtuális gép, ahol az Azure Files-NetApp kötetek lesz csatlakoztatva, kell lennie, az azonos Azure virtuális hálózatban vagy a [társviszonyban álló virtuális hálózatok](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) ugyanabban a régióban. Keresztül a virtuális hálózatok közötti társviszony az azonos régióban található Azure NetApp fájlok hozzáférés mostantól támogatott. Az Azure a NetApp hozzáférés globális társviszony-létesítésen keresztül még nem támogatott.
 - A kiválasztott virtuális hálózat egy alhálózat Azure NetApp Files, meghatalmazott kell rendelkeznie.
 - NetApp Azure Files jelenleg csak NFSv3 támogatja 
-- Biztosít a NetApp Azure Files [házirend exportálása](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): szabályozhatja az engedélyezett ügyfelektől, a hozzáférés típusa (Olvasás és írás, csak olvasható, stb.). 
+- Biztosít a NetApp Azure Files [házirend exportálása](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): szabályozhatja az engedélyezett ügyfelektől, a hozzáférés típusa (Olvasás és írás, csak olvasható, stb.). 
 - Azure NetApp fájlok funkció még nem ismeri a zóna. Azure NetApp fájlok szolgáltatás jelenleg nem telepített minden rendelkezésre állási zónák egy Azure-régióban. Vegye figyelembe a lehetséges késés hatással az egyes Azure-régióban. 
 
 ## <a name="deploy-linux-vms-manually-via-azure-portal"></a>Manuálisan üzembe helyezése Linux rendszerű virtuális gépek Azure-portálon
@@ -243,7 +243,7 @@ Először meg kell az Azure Files-NetApp köteteket hozhat létre. A virtuális 
          * Ismételje meg a fenti lépéseket a "d" portok 33**01**, 5**01**13, 5**01**14, 5**01**16 és a TCP az ASCS SSZON használata
 
 > [!IMPORTANT]
-> Ne engedélyezze a TCP időbélyegeket Azure Load Balancer mögé helyezett Azure virtuális gépeken. Sikertelen állapotadat-mintavételek engedélyezése TCP időbélyegek miatt. A paramétert **net.ipv4.tcp_timestamps** való **0**. További részletekért lásd: [Load Balancer állapot-mintavételei](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview).
+> Ne engedélyezze a TCP időbélyegeket Azure Load Balancer mögé helyezett Azure virtuális gépeken. Sikertelen állapotadat-mintavételek engedélyezése TCP időbélyegek miatt. A paramétert **net.ipv4.tcp_timestamps** való **0**. További részletekért lásd: [Load Balancer állapot-mintavételei](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
 ### <a name="create-pacemaker-cluster"></a>Támasztja fürt létrehozása
 

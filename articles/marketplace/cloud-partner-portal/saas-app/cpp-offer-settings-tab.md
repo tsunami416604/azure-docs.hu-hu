@@ -1,25 +1,18 @@
 ---
-title: Azure SaaS-alkalmazás ajánlat beállításai |} A Microsoft Docs
+title: Azure SaaS-alkalmazás ajánlat beállításai |} Az Azure Marketplace-en
 description: SaaS-alkalmazás ajánlat az Azure Marketplace-en ajánlat beállításainak konfigurálása.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 8b8810d3dc899a87b99422c093b6901ed9683325
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.author: pabutler
+ms.openlocfilehash: 6903226ecfe1478b340e390c783c4e57af778f3e
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101132"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943520"
 ---
 # <a name="saas-application-offer-settings-tab"></a>SaaS-alkalmazás ajánlat beállítások lap
 
@@ -33,14 +26,14 @@ Az ajánlat beállítások lap segítségével konfigurálhatja a **ajánlat ide
 
 ## <a name="offer-identity-settings"></a>Az ajánlat nastavení Identity
 
-Ajánlat identitás alatt meg kell adnia a mezők kitöltése a következő táblázat ismerteti. 
+Ajánlat identitás alatt meg kell adnia a mezők kitöltése a következő táblázat ismerteti. Kötelező mezőt csillag (*) rendszer feltehetően.
 
-
-|  **Mező neve**   |  **Leírás**  |
+|    Mező neve      |    Leírás    |
 |  ---------------   |  ---------------  |
-|    Ajánlat azonosítója  |  Közzétevő-profilon belül az ajánlat egyedi azonosítója. Ez az azonosító termék URL-címek és a számlázási jelentésekben látható lesz. Csak kisbetűs alfanumerikus karakterekből és kötőjelekből (-) állhat. Az azonosító nem végződhet kötőjellel, és korlátozva, legfeljebb 50 karakter hosszú lehet. Vegye figyelembe, hogy ez a mező után egy ajánlatot élesíti zárolva van. Például ha egy kiadó, a Contoso, ajánlat azonosítója minta virtuális gép egy ajánlatot tesz közzé, azt fog megjelenni, az Azure piactéren: https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-vm?tab=Overview.                 |
-|  Közzétevő azonosítója    |  A Gyártóazonosítóval a Marketplace-en az egyedi azonosítója. Az ajánlatok kell lennie az összes csatlakoztatott a közzétevő-azonosítót. Az ajánlat mentése után nem lehet módosítani a a Gyártóazonosítóval...                |
-|  Name (Név)      |   Ez az ajánlat megjelenített neve. Ez a név fog megjelenni, az Azure Marketplace-en és az Azure Portalon. Legfeljebb 50 karakterből állhat. A termék számára egy felismerhető márkanevet adjon meg. Itt a vállalat neve ne tartalmazza, hacsak nem értékesített hogyan. Ha ez az ajánlat a saját webhelyen található már termékmarketinggel, ellenőrizze, hogy a név pontosan hogyan megjelenik a webhelyen.               |
+|  **Ajánlat azonosítója\***    |  Közzétevő-profilon belül az ajánlat egyedi azonosítója. Ez az azonosító termék URL-címek és a számlázási jelentésekben látható lesz. Csak kisbetűs alfanumerikus karakterekből és kötőjelekből (-) állhat. Az azonosító nem végződhet kötőjellel, és korlátozva, legfeljebb 50 karakter hosszú lehet. Vegye figyelembe, hogy ez a mező után egy ajánlatot élesíti zárolva van. Például ha egy kiadó, a Contoso, ajánlat azonosítója minta virtuális gép egy ajánlatot tesz közzé, azt fog megjelenni, az Azure piactéren: https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-vm?tab=Overview.                 |
+|  **Közzétevő azonosítója\***    |  A Gyártóazonosítóval a Marketplace-en az egyedi azonosítója. Az ajánlatok kell lennie az összes csatlakoztatott a közzétevő-azonosítót. Az ajánlat mentése után nem lehet módosítani a a Gyártóazonosítóval...                |
+|  **Név\***      |   Ez az ajánlat megjelenített neve. Ez a név fog megjelenni, az Azure Marketplace-en és az Azure Portalon. Legfeljebb 50 karakterből állhat. A termék számára egy felismerhető márkanevet adjon meg. Itt a vállalat neve ne tartalmazza, hacsak nem értékesített hogyan. Ha ez az ajánlat a saját webhelyen található már termékmarketinggel, ellenőrizze, hogy a név pontosan hogyan megjelenik a webhelyen.               |
+|  |  |
 
 Válassza ki **mentése** a folyamat mentéséhez.
 

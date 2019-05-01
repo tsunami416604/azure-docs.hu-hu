@@ -1,25 +1,19 @@
 ---
-title: Appsource-ban csomag előkészítése |} A Microsoft Docs
+title: AppSource Package Preparation | Azure Marketplace
 description: A hogyan készítheti elő és az appsource-ban csomagok Explanaion.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: cc06ddf2fce93bef27e7aaee85b47179608e192b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.author: pabutler
+ms.openlocfilehash: ff822e87bfec5daa161172c0d47975eb06cc2808
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60625479"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64935644"
 ---
 # <a name="appsource-package-preparation"></a>AppSource Package Preparation
 
@@ -117,7 +111,7 @@ Itt látható példa kód input.xml. A definíciók lásd az alábbi táblázatb
 |SolutionAnchorName |A megoldás a package deployerhez a megjelenített nevét és leírását a megoldás eszközök szolgálja ki a zip-fájl neve.|
 | Kezdődátum| Ez az a dátum, amelyen a megoldáscsomag válnak elérhetővé. A formátuma nem hh/nn/éééé|
 |EndDate|Ez az a dátum, hogy a megoldás csomag le fog állni legyenek elérhetők. A formátuma nem hh/nn/éééé |
-|SupportedCountries |Ez az egy vesszővel tagolt listája, azon országok, amely ezt a csomagot kell megjelennie. Lépjen kapcsolatba az online szolgáltatások összes aktuális országkódok listáját. Amikor oktatóanyag összeállításakor a lista a következő volt: AL AE, AM, AO, AR, AT, AUSZTRÁLIA, AZ, BA, BB, BD, LEHET, BG, BH, BM, BN, BO, BRAZÍLIA, KANADA, CH, CI, CL, CM, CO, CR, CV, TÉNYLEGES SÚLY, CY, CZ, DE, DK, DO, DZ, EC, EE, SZERINT MŰKÖDTEK AZ ADATBÁZISOK, ES, FI, FR, GB, A GE, GH, GR, GT, HK , HN, HR, HU, AZONOSÍTÓJÁT, INTERNET EXPLORER, IL, IN, IQ,, AZT, JM, JO, JP, KE, KG, KN, KOREA, KW, KY, KZ, LB, LK, LT, LU, LV, LY, MA, MINŐSÍTÉSSEL, MC, MD, NEKEM, MK, MN, HÓNAP, FŐ CÉLKISZOLGÁLÓ, MU, MX, SAJÁT, NG, NI, NL, NO, NZ, OM, PA, PE, PH , PK, PL, PULL-KÉRELEM, PS, CSENDES-ÓCEÁNI IDŐ, PY, QA, RO, RS, RU, RW, SA, KI, SG, SI, SK, SN, SV, TH, TM, TN, TR, TT, TW, UA, EGYESÜLT ÁLLAMOK, UY, UZ, VE, VI, VN, ZA, ZW |
+|SupportedCountries |Ez az országok/régiók, amelyek ezt a csomagot kell megjelennie egy vesszővel tagolt listája. Lépjen kapcsolatba az online szolgáltatások összes aktuális országkódok listáját. Amikor oktatóanyag összeállításakor a lista a következő volt: AL AE, AM, AO, AR, AT, AUSZTRÁLIA, AZ, BA, BB, BD, LEHET, BG, BH, BM, BN, BO, BRAZÍLIA, KANADA, CH, CI, CL, CM, CO, CR, CV, TÉNYLEGES SÚLY, CY, CZ, DE, DK, DO, DZ, EC, EE, SZERINT MŰKÖDTEK AZ ADATBÁZISOK, ES, FI, FR, GB, A GE, GH, GR, GT, HK , HN, HR, HU, AZONOSÍTÓJÁT, INTERNET EXPLORER, IL, IN, IQ,, AZT, JM, JO, JP, KE, KG, KN, KOREA, KW, KY, KZ, LB, LK, LT, LU, LV, LY, MA, MINŐSÍTÉSSEL, MC, MD, NEKEM, MK, MN, HÓNAP, FŐ CÉLKISZOLGÁLÓ, MU, MX, SAJÁT, NG, NI, NL, NO, NZ, OM, PA, PE, PH , PK, PL, PULL-KÉRELEM, PS, CSENDES-ÓCEÁNI IDŐ, PY, QA, RO, RS, RU, RW, SA, KI, SG, SI, SK, SN, SV, TH, TM, TN, TR, TT, TW, UA, EGYESÜLT ÁLLAMOK, UY, UZ, VE, VI, VN, ZA, ZW |
 |LearnMoreLink | A további-információs oldalt a csomag URL-címe. |
 |Területi beállítások|Ebben a csomópontban az előnyben részesített megoldás UX a támogatni kívánt UX nyelvenként egy példánya Ez a csomópont tartalmazza, amelyek ismertetik a területi beállítás, a embléma és az egyes nyelvekhez gyermekek|
 |Területi beállítások: PackageLocale.Code|Ebben a csomópontban a nyelv LCID. Példa: Amerikai angol érték 1033|

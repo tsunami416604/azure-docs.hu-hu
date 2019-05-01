@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
-ms.openlocfilehash: c94509fb39d1c5ebb9aec1acfe1cbacc9cd6fd4a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: eaf2d4a5a34a42867debcff4163f692431c8e0ab
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61052390"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573854"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása
 
@@ -48,7 +48,7 @@ Miután írt, a tárolt eljárás regisztrálni kell egy gyűjteményt. További
 
 ### <a id="create-an-item"></a>Tárolt eljárással elem létrehozása
 
-Tárolt eljárás használatával létrehoz egy elemet, ha az elem beilleszti az Azure Cosmos DB-tárolók és a egy azonosítót az újonnan létrehozott elemet adott vissza. Elem létrehozása egy aszinkron művelet, és a JavaScript-visszahívási függvényekben függ. A visszahívási függvény két paramétert - egyet a hibaobjektum abban az esetben a művelet sikertelen lesz, és egy másik, a visszaadott érték; rendelkezik Ebben az esetben a létrehozott objektum. A visszahívás belül kezelni a kivétel vagy is hibát. Abban az esetben egy visszahívást nem áll rendelkezésre, és hiba történik, az Azure Cosmos DB modul kivételt fogja kijelezni hiba. 
+Tárolt eljárás használatával létrehoz egy elemet, ha az elemet szúr be az Azure Cosmos DB-tárolóhoz, és az újonnan létrehozott elem azonosítóját adja vissza. Elem létrehozása egy aszinkron művelet, és a JavaScript-visszahívási függvényekben függ. A visszahívási függvény két paramétert - egyet a hibaobjektum abban az esetben a művelet sikertelen lesz, és egy másik, a visszaadott érték; rendelkezik Ebben az esetben a létrehozott objektum. A visszahívás belül kezelni a kivétel vagy is hibát. Abban az esetben egy visszahívást nem áll rendelkezésre, és hiba történik, az Azure Cosmos DB modul kivételt fogja kijelezni hiba. 
 
 A tárolt eljárás is tartalmaz egy paraméter segítségével állítsa be a a leírást, hogy egy logikai érték. Ha a paraméter értéke igaz, és a leírás nincs megadva, a tárolt eljárás kivételt. Ellenkező esetben a tárolt eljárás további részét továbbra is fusson.
 

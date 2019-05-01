@@ -2,18 +2,17 @@
 title: Parancsfájlművelet - jupyterrel, Cellafunkciók az Azure HDInsight telepítse a Python-csomagok
 description: Lépésenkénti útmutató konfigurálása elérhető Jupyter notebookok a HDInsight Spark-fürtök használatával külső python-csomagok használata.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.author: hrasheed
-ms.openlocfilehash: 876037e0e8e795ca98ddd3adf74dd0a304192a35
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.date: 04/22/2019
+ms.openlocfilehash: c07326cc3a4334f1873eef2dc23da05156a93577
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097912"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574661"
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Parancsfájlművelet használata a HDInsight Apache Spark-fürtök Jupyter notebookokhoz külső Python-csomagok telepítése
 > [!div class="op_single_selector"]
@@ -75,10 +74,10 @@ A HDInsight szolgáltatásban elérhető nyílt forráskódú összetevőket ké
 
     ```bash
     #!/usr/bin/env bash
-    /usr/bin/anaconda/bin/conda install -c conda-forge tensorflow
+    /usr/bin/anaconda/bin/conda install --yes tensorflow
     ```
 
-5. Kattintson a **Létrehozás** gombra.  Keresse meg a dokumentációt a [egyéni parancsfájl-műveletek használata](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+5. Kattintson a **Létrehozás** gombra.  Keresse meg a dokumentációt a [egyéni parancsfájl-műveletek használata](../hdinsight-hadoop-customize-cluster-linux.md).
 
 6. Várjon, amíg a parancsfájl végrehajtására.  A **Szkriptműveletek** panel fog állapot **új Parancsfájlműveletek az aktuális fürtművelet befejeződése után küldhetők** a parancsfájl végrehajtása közben.  Egy folyamatjelző tekintheti meg az Ambari felhasználói felületén **Háttérműveletekhez** ablak.
 

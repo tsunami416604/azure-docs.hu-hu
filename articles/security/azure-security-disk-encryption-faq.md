@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2a5fb822a84792cec059aa6c78b66b3a628f25af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3de444d509684f0b4227abe91ec3c967f2bf8f03
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60611286"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926282"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Az Azure Disk Encryption IaaS virtuális gépekhez – gyakori kérdések
 
@@ -162,7 +162,7 @@ Lemez adattitkosítás csak a EncryptFormalAll XFS köteteket támogatja. Ez for
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Biztonsági mentése és visszaállítása egy titkosított virtuális gép? 
 
-Az Azure Backup lehetővé teszi a biztonsági mentése és visszaállítása titkosított virtuális gép belül az azonos előfizetésben és régióban.  Útmutatásért lásd: [biztonsági mentése és visszaállítása titkosított virtuális gépek az Azure Backup szolgáltatással](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption).  Egy titkosított virtuális gép helyreállítása egy másik régióban jelenleg nem támogatott.  
+Az Azure Backup lehetővé teszi a biztonsági mentése és visszaállítása titkosított virtuális gép belül az azonos előfizetésben és régióban.  Útmutatásért lásd: [biztonsági mentése és visszaállítása titkosított virtuális gépek az Azure Backup szolgáltatással](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).  Egy titkosított virtuális gép helyreállítása egy másik régióban jelenleg nem támogatott.  
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Hol tudhatok meg kérdéseket tehet fel, vagy visszajelzést?
 
