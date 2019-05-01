@@ -64,14 +64,14 @@ Nem kell megadnia NSG-t az alhálózat szintjén, mert a Batch konfigurálja a s
 
 **Bejövő biztonsági szabályok**
 
-| Forrás IP-címek | Forrás-szolgáltatáscímke | Forrásportok | Cél | Célportok | Protokoll | Műveletek |
+| Forrás IP-címek | Forrás-szolgáltatáscímke | Forrásportok | Cél | Célportok | Protocol | Műveletek |
 | --- | --- | --- | --- | --- | --- | --- |
 | – | `BatchNodeManagement` [Szolgáltatáscímke](../articles/virtual-network/security-overview.md#service-tags) | * | Bármelyik | 29876-29877 | TCP | Engedélyezés |
 | Felhasználói forrás IP-címek távolról fér hozzá a számítási csomópontok, illetve a számítási csomópont alhálózatot Linux többpéldányos tevékenységek esetén, ha szükséges. | – | * | Bármelyik | 3389 (Windows), 22 (Linux) | TCP | Engedélyezés |
 
 **Kimenő biztonsági szabályok**
 
-| Forrás | Forrásportok | Cél | Cél szolgáltatáscímkéje | Protokoll | Műveletek |
+| Forrás | Forrásportok | Cél | Cél szolgáltatáscímkéje | Protocol | Műveletek |
 | --- | --- | --- | --- | --- | --- |
 | Bármelyik | 443 | [Szolgáltatáscímke](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (az ugyanabban a régióban, a Batch-fiók és a virtuális hálózat)  | Bármelyik | Engedélyezés |
 
@@ -97,13 +97,13 @@ Konfigurálja a bejövő forgalmat a 3389-es portot Windows Ha RDP-hozzáférés
 
 **Bejövő biztonsági szabályok**
 
-| Forrás IP-címek | Forrásportok | Cél | Célportok | Protokoll | Műveletek |
+| Forrás IP-címek | Forrásportok | Cél | Célportok | Protocol | Műveletek |
 | --- | --- | --- | --- | --- | --- |
 Bármelyik <br /><br />Bár ehhez tulajdonképpen „az összes engedélyezése” engedély szükséges, a Batch szolgáltatás minden egyes csomópont szintjén alkalmaz egy ACL-szabályt, amely kiszűri az összes olyan IP-címet, amely nem a Batch szolgáltatáshoz tartozik. | * | Bármelyik | 10100, 20100, 30100 | TCP | Engedélyezés |
 | Nem kötelező, a számítási csomópontok RDP-hozzáférést. | * | Bármelyik | 3389 | TCP | Engedélyezés |
 
 **Kimenő biztonsági szabályok**
 
-| Forrás | Forrásportok | Cél | Célportok | Protokoll | Műveletek |
+| Forrás | Forrásportok | Cél | Célportok | Protocol | Műveletek |
 | --- | --- | --- | --- | --- | --- |
 | Bármelyik | * | Bármelyik | 443  | Bármelyik | Engedélyezés |
