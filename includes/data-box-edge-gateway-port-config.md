@@ -11,7 +11,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60754608"
 ---
-| Port nem.| És leskálázása | Port hatókör| Kötelező|   Megjegyzések |   |
+| Port nem.| És leskálázása | Port hatókör| Szükséges|   Megjegyzések |   |
 |--------|-----|-----|-----------|----------|-----------|
 | TCP 80-AS (HTTP)|Ki|WAN |Nem|Kimenő port szolgál az internet-hozzáférés frissítések lekéréséhez. <br>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható. |
 | TCP 443 (HTTPS)|Ki|WAN|Igen|Kimenő port szolgál a felhőbeli adatok eléréséhez.<br>A kimenő webalkalmazás-proxy a felhasználó által konfigurálható.|
