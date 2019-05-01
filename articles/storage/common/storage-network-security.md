@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6d6ca1fe1256f1571079027ebd299492bfa62f41
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 81904c4f205b9c5da2bb099d440e65ad63637bdc
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280740"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917015"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -354,11 +354,11 @@ Ha engedélyezi a **engedélyezése a Microsoft-szolgáltatások megbízható...
 |Azure DevTest Labs|Microsoft.DevTestLab|Egyéni rendszerkép létrehozása és az összetevő telepítését. [További információk](/azure/devtest-lab/devtest-lab-overview).|
 |Azure Event Grid|Microsoft.EventGrid|A Blob Storage esemény-közzététel engedélyezése, és lehetővé teszi az Event Grid tárolási üzenetsorok közzétételére. Ismerje meg [blob storage-események](/azure/event-grid/event-sources) és [várólisták közzétételét](/azure/event-grid/event-handlers).|
 |Azure Event Hubs|Microsoft.EventHub|Az Event Hubs Capture adatok archiválása. [További](/azure/event-hubs/event-hubs-capture-overview).|
-|Azure HDInsight|Microsoft.HDInsight|A kezdeti tartalmát az új HDInsight-fürt alapértelmezett fájlrendszerének kiépítése. [További információk](https://azure.microsoft.com/en-us/blog/enhance-hdinsight-security-with-service-endpoints/).|
+|Azure HDInsight|Microsoft.HDInsight|A kezdeti tartalmát az új HDInsight-fürt alapértelmezett fájlrendszerének kiépítése. [További információk](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/).|
 |Azure Monitor|Microsoft.Insights|Lehetővé teszi, hogy a figyelési adatok biztonságos storage-fiókba írásos [további](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security).|
 |Azure-hálózatok|Microsoft.Networking|Store és a hálózati forgalom naplóinak elemzése. [További információk](/azure/network-watcher/network-watcher-packet-capture-overview).|
 |Azure Site Recovery|Microsoft.SiteRecovery |Vészhelyreállítás konfigurálása az Azure IaaS virtuális gépek replikációjának engedélyezése. Ez azért szükséges, ha a tűzfal engedélyezve van a gyorsítótár tárfiókja vagy a forrás tárfiókban vagy a célként megadott tárfiók használata.  [További információk](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication).|
-|Azure SQL Data Warehouse|Microsoft.Sql|Lehetővé teszi, hogy importálása és exportálása a PolyBase forgatókönyveket. [További információk](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview).|
+|Azure SQL Data Warehouse|Microsoft.Sql|Lehetővé teszi, hogy importálása és exportálása a PolyBase meghatározott SQL-adatbázisok példányok forgatókönyvek. [További információk](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview).|
 
 ### <a name="storage-analytics-data-access"></a>Storage analytics-adatok elérése
 

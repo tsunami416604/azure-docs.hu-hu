@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/18/2019
-ms.openlocfilehash: 7d052ee2d3d3bdf6cca99dd6a91b88176983113f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.openlocfilehash: 8bbb638190928e0478053843264fde585ae17222
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60559730"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64720589"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>PostgreSQL-bővítmények az Azure Database for postgresql-hez
 PostgreSQL lehetővé teszi az adatbázis-bővítményekkel funkcióinak bővítése érdekében. Bővítmények lehetővé teszik több kapcsolódó SQL objektumok együtt kötegelést betöltve, vagy eltávolítja az adatbázisból, egyetlen paranccsal egyetlen csomagban. Után az adatbázis betöltése, bővítmények működhet, mint a beépített funkciók. A PostgreSQL-bővítmények további információkért lásd: [csomagolási kapcsolódó objektumot egy bővítmény](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
@@ -49,6 +49,7 @@ Az alábbi táblázatok sorolják fel a standard szintű PostgreSQL-bővítmény
 > | [pg\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | Függvények és operátorok biztosít alfanumerikus szöveg trigram megfelelt a hasonlóságot meghatározásához. |
 > | [tablefunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | Olyan függvények, amelyeknek teljes táblákat, beleértve a Kereszttábla módosítására. |
 > | [uuid-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | Univerzálisan egyedi azonosítói (az UUID azonosítók) hoz létre. |
+> | [orafce](https://github.com/orafce/orafce) | Funkciók és a kereskedelmi adatbázisokból emulált csomagok egy részét biztosítja. |
 
 ### <a name="full-text-search-extensions"></a>Teljes szöveges keresés bővítmények
 
@@ -94,7 +95,7 @@ Az alábbi táblázatok sorolják fel a standard szintű PostgreSQL-bővítmény
 > [!div class="mx-tableFixed"]
 > | **Extension** | **Leírás** |
 > |---|---|
-> | [PostGIS](http://www.postgis.net/), postgis\_topológia, postgis\_tiger\_geocoder, postgis\_sfcgal | Térbeli és földrajzi objektum a PostgreSQL-hez. |
+> | [PostGIS](https://www.postgis.net/), postgis\_topológia, postgis\_tiger\_geocoder, postgis\_sfcgal | Térbeli és földrajzi objektum a PostgreSQL-hez. |
 > | cím\_standardizer, cím\_standardizer\_adatok\_velünk a kapcsolatot | Használja az alkotóelemeket be egy címet elemezni. Támogatja a geokódolás cím normalizálási lépés segítségével. |
 > | [pgrouting](https://pgrouting.org/) | Kiterjeszti a PostGIS / PostgreSQL térinformatikai adatbázis adataival kínálnak térinformatikai funkcióit útválasztási. |
 

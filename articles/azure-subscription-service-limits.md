@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: byvinyal
-ms.openlocfilehash: b09de67cddcec26a1083bb64d13b9bbc47c3d5e5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: ae6547b7940ee4007c747847e6cec7b0c67a9d3c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998481"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717443"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja az egyes a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem vonatkozik Azure-szolgáltatásokhoz. Az idő múlásával a lista fogja kibontva és a frissített magában foglalja a szolgáltatások további.
@@ -77,6 +77,7 @@ A korlátok a következők közül egy új táblát korlátok a különbségeket
 * [IoT Hub](#iot-hub-limits)
 * [IoT Hub eszközregisztrációs szolgáltatás](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
+* [Load Balancer](#load-balancer)
 * [Log Analytics](#log-analytics-limits)
 * [Médiaszolgáltatások](#media-services-limits)
 * [Mobile Services](#mobile-services-limits)
@@ -84,6 +85,7 @@ A korlátok a következők közül egy új táblát korlátok a különbségeket
 * [Hálózat](#networking-limits)
 * [A Network Watcher](#network-watcher-limits)
 * [Értesítési központ](#notification-hubs-limits)
+* [Nyilvános IP-cím](#publicip-address)
 * [Erőforráscsoport](#resource-group-limits)
 * [Szerepköralapú hozzáférés-vezérlés](#role-based-access-control-limits)
 * [Scheduler](#scheduler-limits)
@@ -137,10 +139,10 @@ Az alábbi táblázat ismerteti a funkciókat és korlátokat az alapszintű, St
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
 
 ### <a name="networking-limits"></a>Hálózatkezelési korlátok
-[!INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
-
-#### <a name="networking-limits"></a>Hálózatkezelési korlátok
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
+
+#### <a name="expressroute-limits"></a>Az ExpressRoute-korlátok
+[!INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
 
 #### <a name="application-gateway-limits"></a>Az Application Gateway-korlátozások
 

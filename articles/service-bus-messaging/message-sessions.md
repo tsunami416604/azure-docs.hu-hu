@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c767406ceec703b5c14680ec96fdf703c2316044
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2c206d42e220534225cfef0415a65c1f9494f761
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60403763"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64569787"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Üzenet-munkamenetek: az első, először ki (FIFO) 
 
@@ -79,8 +79,7 @@ A munkamenet-állapot tartott egy üzenetsorban vagy az előfizetés felé szám
 
 ## <a name="next-steps"></a>További lépések
 
-- [Egy teljes példát](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingQueueClient) üzenetek küldése és fogadása munkamenet-alapú a Service Bus-üzenetsorok, a .NET Standard kódtár használatával.
-- [A minta](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions) , amely a .NET-keretrendszer ügyfél használ a munkamenet-felismerésre képes üzeneteket kezel. 
+- Tekintse az [Microsoft.Azure.ServiceBus minták](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/Sessions) vagy [Microsoft.ServiceBus.Messaging minták](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions) példaként, amely a .NET-keretrendszer-ügyfelet használ a munkamenet-kompatibilis üzenetek kezeléséhez. 
 
 További információ a Service Bus-üzenetkezelés, tekintse meg a következő témaköröket:
 

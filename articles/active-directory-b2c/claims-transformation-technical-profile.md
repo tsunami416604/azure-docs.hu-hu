@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a204e8cdc20a6897c40d4d5f68217a2922371737
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 0a2904bec34978a33d25534c9e9b32552191ad88
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386703"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705325"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>A jogcímek átalakítása technikai profil meghatározása az Azure Active Directory B2C egyéni házirendek
 
@@ -23,7 +23,7 @@ ms.locfileid: "60386703"
 
 A jogcímek átalakításáról technikai profil teszi lehetővé kimeneti jogcímek segítségével kezelheti az átalakítások hívja jogcím-értékek, ellenőrizheti a jogcímeit, vagy a kimeneti jogcímek készletének az alapértelmezett értékeket.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol
 
 A **neve** attribútuma a **protokoll** elemet hozzá kell beállítani `Proprietary`. A **kezelő** attribútum kell tartalmaznia a teljes nevet, amely az Azure AD B2C által használt protokoll kezelő sestavení: `Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
 

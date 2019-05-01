@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 6a4ad827c39ec106acdc7b52a5b769ab6e7febf8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 362df8cee163bcd2d1dac73c650e42ee4f0f7751
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60710750"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920107"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Az Azure API Management a felhasználói fiókok kezelése
 
-Az API Management szolgáltatásban a fejlesztők az API-t, amely elérhetővé teszi az API Management segítségével a felhasználók. Ez az útmutató ismerteti, hogyan hozhat létre, és meghívhatja a fejlesztők az API-k és termékek használatára, hogy elérhetővé számukra az API Management-példánnyal. A felhasználói fiókok kezelése programozott módon további információkért lásd: a [felhasználó típusú entitás](https://docs.microsoft.com/en-us/rest/api/apimanagement/user) dokumentációjában találhatók a [API Management REST](/rest/api/apimanagement/) hivatkozást.
+Az API Management szolgáltatásban a fejlesztők az API-t, amely elérhetővé teszi az API Management segítségével a felhasználók. Ez az útmutató ismerteti, hogyan hozhat létre, és meghívhatja a fejlesztők az API-k és termékek használatára, hogy elérhetővé számukra az API Management-példánnyal. A felhasználói fiókok kezelése programozott módon további információkért lásd: a [felhasználó típusú entitás](https://docs.microsoft.com/rest/api/apimanagement/user) dokumentációjában találhatók a [API Management REST](/rest/api/apimanagement/) hivatkozást.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -69,7 +69,7 @@ Felhasználó blokkolása, kövesse az alábbi lépéseket.
 
 ## <a name="reset-a-user-password"></a>Felhasználói jelszó alaphelyzetbe állítása
 
-Felhasználói fiókok programozott módon dolgozni, tekintse meg a [felhasználó típusú entitás](https://docs.microsoft.com/en-us/rest/api/apimanagement/user) dokumentációjában találhatók a [API Management REST](/rest/api/apimanagement/) referencia. Egy adott értékre állítsa vissza egy felhasználói fiók jelszavát, használhatja a [frissíteni egy felhasználó](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) műveletet, és adja meg a kívánt jelszót.
+Felhasználói fiókok programozott módon dolgozni, tekintse meg a [felhasználó típusú entitás](https://docs.microsoft.com/rest/api/apimanagement/user) dokumentációjában találhatók a [API Management REST](/rest/api/apimanagement/) referencia. Egy adott értékre állítsa vissza egy felhasználói fiók jelszavát, használhatja a [frissíteni egy felhasználó](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) műveletet, és adja meg a kívánt jelszót.
 
 ## <a name="next-steps"></a>Következő lépések
 Egy fejlesztői fiók létrehozása után társítsa a szerepkörök, és előfizetés-termékek és API-k. További információkért lásd: [csoportok létrehozása és használata annak][How to create and use groups].

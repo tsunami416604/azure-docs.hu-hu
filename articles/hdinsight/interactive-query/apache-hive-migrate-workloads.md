@@ -2,17 +2,17 @@
 title: Azure HDInsight 3.6-os Hive számítási feladatok migrálása HDInsight 4.0-s
 description: Ismerje meg, hogyan telepítheti át számítási feladatokat az Apache Hive a HDInsight 3.6-os HDInsight 4.0-s.
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
+author: msft-tacox
+ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: howto
-ms.date: 04/15/2019
-ms.openlocfilehash: 144e0ada0ce3a15a5dcd13b31f46f50162750a74
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.openlocfilehash: b181edc08c51a5afa8682858b330acc84da7d73d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126562"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707012"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6-os Hive számítási feladatok migrálása HDInsight 4.0-s
 
@@ -98,6 +98,8 @@ A HDInsight 4.0-s HiveCLI Beeline lett cserélve. HiveCLI Hiveserver 1 egy thrif
 A HDInsight 3.6, a grafikus felhasználói Felülettel-ügyfél használata a Hive-kiszolgáló az Ambari Hive-nézet. HDInsight 4.0 váltja fel a Hive-nézet a Hortonworks Data Analytics Studio (DAS). DAS nem szerepel a HDInsight fürtök out-of-box, és nem a hivatalosan támogatott csomagot. Azonban DAS is telepíthetők a fürtön a következő:
 
 Indítsa el a ellen a fürtön, a "Fő csomópont" szkriptműveletet végrehajtási csomópont típusaként. Illessze be a következő URI-t a szövegmezőbe, "Bash parancsfájl URI" jelölésű: https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
+
+A Data Analytics Studio indíthatja el az URL-cím: https://<clustername>.azurehdinsight.net/das/
 
 
 

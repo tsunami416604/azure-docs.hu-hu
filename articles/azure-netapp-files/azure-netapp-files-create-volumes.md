@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/12/2019
+ms.date: 4/23/2019
 ms.author: b-juche
-ms.openlocfilehash: fc748ee993855c77f25f9b115ea472df4281acec
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 53b2742cf92f3a3df346ba3557c718b8d7a11a4e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63764365"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719438"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>Kötet létrehozása az Azure NetApp Files számára
 
@@ -44,7 +44,7 @@ Egy alhálózatot az Azure Files-NetApp delegálni.
     * **Kötet neve**      
         Adja meg a létrehozni kívánt kötet nevét.   
 
-        A névnek egyedinek kell lennie az erőforráscsoporton belül. Legalább három karakter hosszúságúnak kell lennie.  Minden olyan alfanumerikus karaktert használhat.
+        A kötet nevét minden kapacitás készleten belül egyedinek kell lennie. Legalább három karakter hosszúságúnak kell lennie. Minden olyan alfanumerikus karaktert használhat.
 
     * **A kapacitás a készlet**  
         Adja meg a kapacitás-készletet, hol szeretné létrehozni a kötetet.
@@ -72,7 +72,9 @@ Egy alhálózatot az Azure Files-NetApp delegálni.
 4. Kattintson a **protokoll**, majd **NFS** , a kötet protokoll típusát.   
     * Adja meg a **fájl elérési útja** kulcsindexet exportálás elérési útjának az új kötet létrehozásához. A rendszer az exportálási útvonal használatával csatlakoztatja és éri el a kötetet.
 
-        Az elérési út neve csak betűket, számokat és kötőjeleket („-”) tartalmazhat. A név 16–40 karakter hosszú lehet.  
+        Az elérési út neve csak betűket, számokat és kötőjeleket („-”) tartalmazhat. A név 16–40 karakter hosszú lehet. 
+
+        A fájl elérési útját minden egyes előfizetés és az egyes régiókban egyedinek kell lennie. 
 
     * Másik lehetőségként [házirend exportálása az NFS-kötet konfigurálása](azure-netapp-files-configure-export-policy.md)
 
@@ -89,6 +91,33 @@ Egy alhálózatot az Azure Files-NetApp delegálni.
 NetApp Azure Files SMBv3 köteteket támogatja. Az Active Directory-kapcsolatok létrehozása az SMB-kötet hozzáadása előtt kell. 
 
 ### <a name="create-an-active-directory-connection"></a>Az Active Directory-kapcsolat létrehozása
+
+1. Győződjön meg arról, hogy megfelel-e a következő requiements: 
+
+    * A rendszergazdai fiók használata kell tudni számítógépfiókok létrehozása a szervezeti egység (OU) elérési úton, amely fog használni.
+    * Megfelelő portok nyitva a megfelelő Windows Active Directory (AD) kiszolgálón kell lennie.  
+        A szükséges portok a következők: 
+
+        |     Szolgáltatás           |     Port     |     Protocol     |
+        |-----------------------|--------------|------------------|
+        |    AD-webszolgáltatások    |    9389      |    TCP           |
+        |    DNS                |    53        |    TCP           |
+        |    DNS                |    53        |    UDP           |
+        |    ICMPv4             |    –       |    Echo Reply    |
+        |    Kerberos           |    464       |    TCP           |
+        |    Kerberos           |    464       |    UDP           |
+        |    Kerberos           |    88        |    TCP           |
+        |    Kerberos           |    88        |    UDP           |
+        |    LDAP               |    389       |    TCP           |
+        |    LDAP               |    389       |    UDP           |
+        |    LDAP               |    3268      |    TCP           |
+        |    NetBIOS-név       |    138       |    UDP           |
+        |    SAM/LSA            |    445       |    TCP           |
+        |    SAM/LSA            |    445       |    UDP           |
+        |    Secure LDAP        |    636       |    TCP           |
+        |    Secure LDAP        |    3269      |    TCP           |
+        |    a W32Time            |    123       |    UDP           |
+
 
 1. A NetApp fiókból, kattintson a **Active Directory kapcsolatok**, majd kattintson a **csatlakozzon**.  
 
@@ -134,12 +163,7 @@ NetApp Azure Files SMBv3 köteteket támogatja. Az Active Directory-kapcsolatok 
     * **Kötet neve**      
         Adja meg a létrehozni kívánt kötet nevét.   
 
-        A névnek egyedinek kell lennie az erőforráscsoporton belül. Legalább három karakter hosszúságúnak kell lennie.  Minden olyan alfanumerikus karaktert használhat.
-
-    * **Elérési út**  
-        Adja meg az új kötet exportálási útvonalának létrehozásához használni kívánt fájlelérési utat. A rendszer az exportálási útvonal használatával csatlakoztatja és éri el a kötetet.   
-     
-        Az elérési út neve csak betűket, számokat és kötőjeleket („-”) tartalmazhat. A név 16–40 karakter hosszú lehet.  
+        A kötet nevét minden kapacitás készleten belül egyedinek kell lennie. Legalább három karakter hosszúságúnak kell lennie. Minden olyan alfanumerikus karaktert használhat.
 
     * **A kapacitás a készlet**  
         Adja meg a kapacitás-készletet, hol szeretné létrehozni a kötetet.

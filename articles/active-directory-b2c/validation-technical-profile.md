@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 466ed4c2bd353e4a5ec3bec5535b70a90446ee0b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 11efd1fa3431d8200545cf1327e98cec6ed1f59e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60418280"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683158"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy érvényesítési technikai profil meghatározása
 
@@ -72,7 +72,7 @@ A **előfeltétel** elem a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| Value | 1:n | Az ellenőrzés által használt adatokat. Ha ez az ellenőrzés típusát `ClaimsExist`, ebben a mezőben adja meg egy ClaimTypeReferenceId lekérdezéséhez. Ha a jelölőnégyzet típusú `ClaimEquals`, ebben a mezőben adja meg egy ClaimTypeReferenceId lekérdezéséhez. Míg egy másik értéket elem tartalmazza az ellenőrizendő értékkel.|
+| Érték | 1:n | Az ellenőrzés által használt adatokat. Ha ez az ellenőrzés típusát `ClaimsExist`, ebben a mezőben adja meg egy ClaimTypeReferenceId lekérdezéséhez. Ha a jelölőnégyzet típusú `ClaimEquals`, ebben a mezőben adja meg egy ClaimTypeReferenceId lekérdezéséhez. Míg egy másik értéket elem tartalmazza az ellenőrizendő értékkel.|
 | Műveletek | 1:1 | Az előfeltétel-ellenőrzés belül egy vezénylési lépés teljesülése esetén végrehajtandó művelet. Értékét a **művelet** értékre van állítva `SkipThisValidationTechnicalProfile`. Itt adhatja meg, hogy a társított ellenőrzési technikai profil nem lehet végrehajtani. |
 
 ### <a name="example"></a>Példa

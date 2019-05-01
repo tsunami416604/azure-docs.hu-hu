@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2eb480e10ca3b674895d2d22cc44fb52f305f988
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 94681351758f34cc53c425f3207660bdb09f6494
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60610011"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717791"
 ---
 # <a name="common-security-attributes-for-azure-services"></a>Gyakori biztonsági attribútumok az Azure-szolgáltatásokhoz
 
@@ -30,7 +30,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
 | Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók (például az ügyféloldali, mindig titkosított, stb.)</ul>| Igen | A storage service encryption segítségével a storage-fiókok. |
-| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A Vnet-titkosítás</li><li>Hálózatok titkosítása</ul>| Nem | HTTPS-en keresztül. |
+| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A VNet-titkosítás</li><li>Hálózatok titkosítása</ul>| Nem | HTTPS-en keresztül. |
 | Titkosítási kulcs kezelése (CMK, BYOK, stb.)| Nem |  |
 | Oszlop a blokkszintű titkosítás (az Azure Data Services)| Nem |  |
 | Titkosított API-hívások| Igen |  |
@@ -39,10 +39,10 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatásvégpont-támogatás| Nem |  |
-| vNET-injektálási támogatás| Nem |  |
-| Hálózatelkülönítés / tűzfalas támogatása| Igen | Kényszerített bújtatás támogatott virtuális gépek biztonsági mentését. Kényszerített bújtatás virtuális gépeken belül futó munkaterhelések esetében nem támogatott. |
-| Kényszerített bújtatás támogatása | Nem |  |
+| Szolgáltatási végpont támogatás| Nem |  |
+| VNet-injektálási támogatás| Nem |  |
+| Hálózatelkülönítés és támogatási optimalizálóként működik| Igen | Kényszerített bújtatás támogatott virtuális gépek biztonsági mentését. Kényszerített bújtatás virtuális gépeken belül futó munkaterhelések esetében nem támogatott. |
+| Kényszerített bújtatás támogatása| Nem |  |
 
 ### <a name="detection"></a>Észlelés
 
@@ -50,20 +50,20 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 |---|---|--|
 | Azure monitorozási támogatása (a Log analytics, az App insights, stb.)| Igen | A log Analytics diagnosztikai naplóinak keresztül támogatott. Tekintse meg a figyelő az Azure Backup-alapú számítási feladatokat a Log Analytics által védett (https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/) további információt. |
 
-### <a name="iam-support"></a>IAM-támogatás
+### <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hozzáférés-kezelés – hitelesítés| Igen | Hitelesítés az Azure Active Directoryn keresztül. |
-| Hozzáférés-kezelés – engedélyezés| Igen | Létrehozott ügyfél és a beépített RBAC-szerepkör használja. Tekintse meg a Use Role-Based hozzáférés-vezérlés kezelése az Azure Backup helyreállítási pontok (/ azure/biztonsági mentés/backup-rbac-rs-tároló) további információt. |
+| Hitelesítés| Igen | Hitelesítés az Azure Active Directoryn keresztül. |
+| Engedélyezés| Igen | Létrehozott ügyfél és a beépített RBAC-szerepkör használja. Tekintse meg a Use Role-Based hozzáférés-vezérlés kezelése az Azure Backup helyreállítási pontok (/ azure/biztonsági mentés/backup-rbac-rs-tároló) további információt. |
 
 
 ### <a name="audit-trail"></a>Auditnapló
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Vezérlő/felügyeleti naplózás és a naplózási tervezése| Igen | Tevékenységnaplók az Azure Portalról az összes aktivált ügyfelek műveletek naplózása. |
-| Adatok naplózása és naplózási adatsík| Nem | Az Azure Backup az adatsík nem közvetlenül érhető el.  |
+| Vezérlő és a felügyeleti sík naplózási és naplózása| Igen | Tevékenységnaplók az Azure Portalról az összes aktivált ügyfelek műveletek naplózása. |
+| Adatsík naplózása és naplózása| Nem | Az Azure Backup az adatsík nem közvetlenül érhető el.  |
 
 ### <a name="configuration-management"></a>Konfigurációkezelés
 
@@ -78,7 +78,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
 | Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók (például az ügyféloldali, mindig titkosított, stb.)</ul>| Igen | Összes objektum titkosított. |
-| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A Vnet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen | Minden kommunikáció titkosított API-hívásokon keresztül van |
+| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A VNet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen | Minden kommunikáció titkosított API-hívásokon keresztül van |
 | Titkosítási kulcs kezelése (CMK, BYOK, stb.)| Igen | Ügyfél szabályozza az összes kulcsok a Key vaultban. Ha hardveres biztonsági modul (HSM) a biztonsági kulcsok meg van adva, a FIPS-szint 2 HSM védi a kulcsot, a tanúsítvány vagy a titkos kulcs. |
 | Oszlop a blokkszintű titkosítás (az Azure Data Services)| – |  |
 | Titkosított API-hívások| Igen | HTTPS-en keresztül. |
@@ -87,10 +87,10 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatásvégpont-támogatás| Igen | Virtuális hálózat (Vnet) Szolgáltatásvégpontok használatával. |
-| vNET-injektálási támogatás| Nem |  |
-| Hálózatelkülönítés / tűzfalas támogatása| Igen | Virtuális hálózatok közötti tűzfalszabályok használatával. |
-| Kényszerített bújtatás támogatása | Nem |  |
+| Szolgáltatási végpont támogatás| Igen | Virtuális hálózat (VNet) Szolgáltatásvégpontok használatával. |
+| VNet-injektálási támogatás| Nem |  |
+| Hálózatelkülönítés és támogatási optimalizálóként működik| Igen | Virtuális hálózatok közötti tűzfalszabályok használatával. |
+| Kényszerített bújtatás támogatása| Nem |  |
 
 ### <a name="detection"></a>Észlelés
 
@@ -98,12 +98,12 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 |---|---|--|
 | Azure monitorozási támogatása (a Log analytics, az App insights, stb.)| Igen | A Log Analytics használatával. |
 
-### <a name="iam-support"></a>IAM-támogatás
+### <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hozzáférés-kezelés – hitelesítés| Igen | Hitelesítés az Azure Active Directoryn keresztül. |
-| Hozzáférés-kezelés – engedélyezés| Igen | Kulcstartó hozzáférési házirendjének használatával. |
+| Hitelesítés| Igen | Hitelesítés az Azure Active Directoryn keresztül. |
+| Engedélyezés| Igen | Kulcstartó hozzáférési házirendjének használatával. |
 
 
 ### <a name="audit-trail"></a>Auditnapló
@@ -111,7 +111,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
 | Ellenőrzés/felügyeleti naplózás és a naplózási adatsík| Igen | A Log Analytics használatával. |
-| Adatok naplózása és naplózási adatsík| Igen | A Log Analytics használatával. |
+| Adatsík naplózása és naplózása| Igen | A Log Analytics használatával. |
 
 ### <a name="access-controls"></a>Hozzáférés-szabályozás
 
@@ -127,7 +127,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
 | Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók (például az ügyféloldali, mindig titkosított, stb.)</ul>| Igen | Az ügyfél a tulajdonosa a fürt és a virtuális gép (VM) méretezési, a fürt épül. A virtuálisgép-méretezési csoportot az Azure disk encryption is engedélyezhetők. |
-| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A Vnet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen |  |
+| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A VNet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen |  |
 | Titkosítási kulcs kezelése (CMK, BYOK, stb.)| Igen | Az ügyfél a tulajdonosa a fürt és a virtuális gép (VM) méretezési, a fürt épül. A virtuálisgép-méretezési csoportot az Azure disk encryption is engedélyezhetők. |
 | Oszlop a blokkszintű titkosítás (az Azure Data Services)| – |  |
 | Titkosított API-hívások| Igen | Service Fabric API-hívások Azure Resource Manageren keresztül történik. Egy érvényes JSON webes jogkivonat (JWT) megadása kötelező. |
@@ -136,10 +136,10 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatásvégpont-támogatás| Igen |  |
-| vNET-injektálási támogatás| Igen |  |
-| Hálózatelkülönítés / tűzfalas támogatása| Igen | Hálózati biztonsági csoportok (NSG) használatával. |
-| Kényszerített bújtatás támogatása | Igen | Azure-hálózatok biztosítják a kényszerített bújtatás. |
+| Szolgáltatási végpont támogatás| Igen |  |
+| VNet-injektálási támogatás| Igen |  |
+| Hálózatelkülönítés és támogatási optimalizálóként működik| Igen | Hálózati biztonsági csoportok (NSG) használatával. |
+| Kényszerített bújtatás támogatása| Igen | Azure-hálózatok biztosítják a kényszerített bújtatás. |
 
 ### <a name="detection"></a>Észlelés
 
@@ -147,20 +147,20 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 |---|---|--|
 | Azure monitorozási támogatása (a Log analytics, az App insights, stb.)| Igen | Figyelés és külső támogatást az Azure használatával. |
 
-### <a name="iam-support"></a>IAM-támogatás
+### <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hozzáférés-kezelés – hitelesítés| Igen | Hitelesítés az Azure Active Directoryn keresztül. |
-| Hozzáférés-kezelés – engedélyezés| Igen | Identitás és hozzáférés-kezelés (IAM) keresztül SFRP-hívásokhoz. Közvetlenül a fürt végpontja hívások két szerepkör támogatja: Felhasználó és rendszergazda. Az ügyfél leképezheti az API-k bármelyik szerepkörhöz. |
+| Hitelesítés| Igen | Hitelesítés az Azure Active Directoryn keresztül. |
+| Engedélyezés| Igen | Identitás és hozzáférés-kezelés (IAM) keresztül SFRP-hívásokhoz. Közvetlenül a fürt végpontja hívások két szerepkör támogatja: Felhasználó és rendszergazda. Az ügyfél leképezheti az API-k bármelyik szerepkörhöz. |
 
 
 ### <a name="audit-trail"></a>Auditnapló
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Vezérlő/felügyeleti naplózás és a naplózási tervezése| Igen | Az összes vezérlési síkjával végzett műveletek haladjon végig a naplózási és jóváhagyási folyamatok. |
-| Adatok naplózása és naplózási adatsík| – | Ügyfél a tulajdonosa a fürtöt.  |
+| Vezérlő és a felügyeleti sík naplózási és naplózása| Igen | Az összes vezérlési síkjával végzett műveletek haladjon végig a naplózási és jóváhagyási folyamatok. |
+| Adatsík naplózása és naplózása| – | Ügyfél a tulajdonosa a fürtöt.  |
 
 ### <a name="configuration-management"></a>Konfigurációkezelés
 
@@ -176,7 +176,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
 | Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók (például az ügyféloldali, mindig titkosított, stb.)</ul>| Igen |  |
-| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A Vnet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen | Standard szintű HTTPS/TLS mechanizmusokat támogatja.  Felhasználók is titkosíthatja adatokat, mielőtt azt a szolgáltatás. |
+| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A VNet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen | Standard szintű HTTPS/TLS mechanizmusokat támogatja.  Felhasználók is titkosíthatja adatokat, mielőtt azt a szolgáltatás. |
 | Titkosítási kulcs kezelése (CMK, BYOK, stb.)| Igen | Lásd: [ügyfél által kezelt kulcsok használata az Azure Key Vaultban a Storage Service Encryption](../storage/common/storage-service-encryption-customer-managed-keys.md).|
 | Oszlop a blokkszintű titkosítás (az Azure Data Services)| – |  |
 | Titkosított API-hívások| Igen |  |
@@ -185,10 +185,10 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
-| Szolgáltatásvégpont-támogatás| Igen |  |
-| vNET-injektálási támogatás| – |  |
-| Hálózatelkülönítés / tűzfalas támogatása| Igen | |
-| Kényszerített bújtatás támogatása | – |  |
+| Szolgáltatási végpont támogatás| Igen |  |
+| VNet-injektálási támogatás| – |  |
+| Hálózatelkülönítés és támogatási optimalizálóként működik| Igen | |
+| Kényszerített bújtatás támogatása| – |  |
 
 ### <a name="detection"></a>Észlelés
 
@@ -196,20 +196,20 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 |---|---|--|
 | Azure monitorozási támogatása (a Log analytics, az App insights, stb.)| Igen | Az Azure Monitor metrikák elérhető, naplózza a kezdeti előzetes verzió |
 
-### <a name="iam-support"></a>IAM-támogatás
+### <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hozzáférés-kezelés – hitelesítés| Igen | Az Azure Active Directory, a megosztott kulcsot, a megosztott hozzáférési jogkivonatot. |
-| Hozzáférés-kezelés – engedélyezés| Igen | Engedélyezés a következővel RBAC, a POSIX ACL-EK és a SAS-tokeneket támogatja |
+| Hitelesítés| Igen | Az Azure Active Directory, a megosztott kulcsot, a megosztott hozzáférési jogkivonatot. |
+| Engedélyezés| Igen | Engedélyezés a következővel RBAC, a POSIX ACL-EK és a SAS-tokeneket támogatja |
 
 
 ### <a name="audit-trail"></a>Auditnapló
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Vezérlő/felügyeleti naplózás és a naplózási tervezése | Igen | Az Azure Resource Manager-tevékenységnapló |
-| Adatok naplózása és naplózási adatsík| Igen | Diagnosztikai naplók szolgáltatás és az Azure Monitor Naplózás kezdési előzetes verzió  |
+| Vezérlő és a felügyeleti sík naplózási és naplózása | Igen | Az Azure Resource Manager-tevékenységnapló |
+| Adatsík naplózása és naplózása| Igen | Diagnosztikai naplók szolgáltatás és az Azure Monitor Naplózás kezdési előzetes verzió  |
 
 ### <a name="configuration-management"></a>Konfigurációkezelés
 

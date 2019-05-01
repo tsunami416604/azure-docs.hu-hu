@@ -1,24 +1,24 @@
 ---
-title: Az Android térkép vezérlőelem használata az Azure Maps |} A Microsoft Docs
+title: Ismerkedés az Azure Maps-Android térkép vezérlőelem |} A Microsoft Docs
 description: Az Azure Maps-Android térkép vezérlőelem.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 15706addbe6b7f6310223978130158c792a47c89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e655b442ba9290d4b4525108521f2d1a0c766b48
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60770377"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869821"
 ---
-# <a name="how-to-use-the-azure-maps-android-sdk"></a>Az Azure Maps Android SDK használata
+# <a name="getting-started-with-azure-maps-android-sdk"></a>Ismerkedés az Azure Maps SDK Androidra
 
-Az Azure Maps Android SDK Android vector map kódtár. Ez a cikk végigvezeti Önt a folyamatokon telepítése az Azure Maps Android SDK-t, a térkép betöltése és helyezi el a PIN-kódot a térképen.
+Az Azure Maps Android SDK Android vector map kódtár. Ez a cikk végigvezeti Önt a folyamatokon telepítése az Azure Maps Android SDK és a egy térkép betöltése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -55,7 +55,7 @@ Egy az AVD beállításáról többet is megtudhat a [Android Studio-dokumentác
 
 Az alkalmazás létrehozásakor a következő lépés, hogy telepítse az Azure Maps Android SDK. Hajtsa végre ezeket a lépéseket az SDK telepítése:
 
-1. Adja hozzá a következő kódot a **minden projekt**, **tárházak** letiltása a **build.gradle** fájlt.
+1. Nyissa meg a legfelső szintű **build.gradle** fájlt, és adja hozzá a következő kódot a **minden projekt**, **tárházak** rész letiltása:
 
     ```
     maven {
@@ -64,8 +64,10 @@ Az alkalmazás létrehozásakor a következő lépés, hogy telepítse az Azure 
     ```
 
 2. Frissítés a **app/build.gradle** és adja hozzá a következő kódot:
+    
+    1. Győződjön meg arról, hogy a projekt **minSdkVersion** API 21 vagy újabb verziója.
 
-    1. Az alábbi kód hozzáadása az Android letiltása:
+    2. Adja hozzá a következő kódot a Android szakaszához:
 
         ```
         compileOptions {
@@ -73,24 +75,16 @@ Az alkalmazás létrehozásakor a következő lépés, hogy telepítse az Azure 
             targetCompatibility JavaVersion.VERSION_1_8
         }
         ```
-    2. Frissítse a függőségeket tartalmazó blokkba, és adja hozzá a következő kód azt:
+    3. Frissítse a függőségeket tartalmazó blokkba, és adja hozzá a megvalósítás függőségi írja új sorba a legújabb Azure Maps Android SDK-hoz készült:
 
         ```
-        implementation "com.microsoft.azure.maps:mapcontrol:0.1"
+        implementation "com.microsoft.azure.maps:mapcontrol:0.2"
         ```
 
-3. Adja hozzá az alábbi XML-engedélyek beállítása a **AndroidManifest.xml** fájlt:
+    > [!Note]
+    > Rendszeresen folyamatban van, az Azure Maps Android SDK frissített és továbbfejlesztett. Megtekintheti a [Android térkép vezérlőelem – első lépések](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) dokumentációjában, a legújabb Azure Maps megvalósítási verziószámának beolvasásához. Emellett a verziószám között megadható "0.2-es", "0 +", hogy mindig a legújabb verzióra mutasson.
 
-    ```xml
-    <?xml version="1.0" encoding="utf-8"?>
-    <manifest>
-        ...
-        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-        ...
-    </manifest>
-    ```
-
-4. Szerkesztés **res** > **elrendezés** > **activity_main.xml** , az XML hasonlóan néz ki:
+3. Szerkesztés **res** > **elrendezés** > **activity_main.xml** és cserélje le a következő:
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -105,16 +99,20 @@ Az alkalmazás létrehozásakor a következő lépés, hogy telepítse az Azure 
             android:id="@+id/mapcontrol"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:mapcontrol_cameraTargetLat="47.64"
-            app:mapcontrol_cameraTargetLng="-122.33"
-            app:mapcontrol_cameraZoom="12"
             />
-
     </FrameLayout>
     ```
 
-5. Szerkesztés **MainActivity.java** térkép nézet tevékenység osztály létrehozása. Után szerkesztheti, ez az osztály hasonlóan kell kinéznie:
+4. Az a **MainActivity.java** fájlt kell:
+    
+    * az Azure Maps SDK importálások hozzáadása
+    * Állítsa be az Azure Maps hitelesítő adatait
+    * a térkép vezérlőelem példány lépjen be a **onCreate** metódus
 
+    A hitelesítési adatok beállítása a globálisan a módszerekkel setSubscriptionKey vagy setAadProperties AzureMaps osztályról teszi, hogy így nem kell hozzáadni a hitelesítő adatait minden nézethez. A térkép vezérlőelem a saját életciklus metódust kell meghívni a tartalmazó tevékenység közvetlenül az Android a OpenGL életciklusának kezelésére szolgáló tartalmaz. Ahhoz, hogy az alkalmazás megfelelően, hívja meg a térkép vezérlőelem életciklus módszerek kell bírálja felül a következő életciklus módszerek a tevékenység, amely tartalmazza a térkép vezérlőelem és a megfelelő térkép vezérlőelem metódust hívja. 
+
+    Szerkessze a **MainActivity.java** fájlt az alábbiak szerint:
+    
     ```java
     package com.example.myapplication;
 
@@ -129,7 +127,7 @@ Az alkalmazás létrehozásakor a következő lépés, hogy telepítse az Azure 
     public class MainActivity extends AppCompatActivity {
         
         static {
-            AzureMaps.setSubscriptionKey("{subscription-key}");
+            AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
         }
 
         MapControl mapControl;
@@ -197,97 +195,21 @@ Válassza ki a Futtatás gomb, ahogyan az a következő ábra (vagy nyomja le a 
 
 Az Android Studio az alkalmazás néhány másodpercet vesz igénybe. A létrehozás befejezése után az emulált Android-eszközön tesztelheti az alkalmazást. A következőhöz hasonló térkép kell megjelennie:
 
-![Android map](./media/how-to-use-android-map-control-library/android-map.png)
+<center>
 
-## <a name="add-a-marker-to-the-map"></a>Adjon hozzá egy jelölő a térkép
+![Android map](./media/how-to-use-android-map-control-library/android-map.png)</center>
 
-Szeretne hozzáadni egy jelölő a térképre, adja hozzá a `mapView.getMapAsync()` függvény `MainActivity.java`. A végső `MainActivity.java` kódot kell kinéznie:
+## <a name="next-steps"></a>További lépések
 
-```java
-package com.example.myapplication;
+Szolgáltatáshasználatot felvenni a térképre, tekintse meg:
 
-import android.app.Activity;
-import android.os.Bundle;
-import com.mapbox.geojson.Feature;
-import com.mapbox.geojson.Point;
-import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-import com.microsoft.azure.maps.mapcontrol.MapControl;
-import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
-import com.microsoft.azure.maps.mapcontrol.source.DataSource;
-import static com.microsoft.azure.maps.mapcontrol.options.SymbolLayerOptions.iconImage;
-public class MainActivity extends AppCompatActivity {
-    
-    static{
-            AzureMaps.setSubscriptionKey("{subscription-key}");
-        }
+> [!div class="nextstepaction"]
+> [A szimbólum réteg hozzáadása az Android-térképet](https://review.docs.microsoft.com/azure/azure-maps/how-to-add-symbol-to-android-map)
 
-    MapControl mapControl;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+> [!div class="nextstepaction"]
+> [Az alakzatok hozzáadása egy Android térkép](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
 
-        mapControl = findViewById(R.id.mapcontrol);
+> [!div class="nextstepaction"]
+> [Térkép stílusok Android Maps-Közösséghez](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
 
-        mapControl.onCreate(savedInstanceState);
 
-        mapControl.getMapAsync(map -> {
-            DataSource dataSource = new DataSource();
-            dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)));
-
-            SymbolLayer symbolLayer = new SymbolLayer(dataSource);
-            symbolLayer.setOptions(iconImage("my-icon"));
-
-            map.images.add("my-icon", R.drawable.mapcontrol_marker_red);
-            map.sources.add(dataSource);
-            map.layers.add(symbolLayer);
-        });
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        mapControl.onStart();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mapControl.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mapControl.onPause();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        mapControl.onStop();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapControl.onLowMemory();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mapControl.onDestroy();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mapControl.onSaveInstanceState(outState);
-    }
-}
-```
-
-Futtassa újra az alkalmazást. Itt látható módon kell megjelennie egy jelölő a térképen:
-
-![Android térkép PIN-kód](./media/how-to-use-android-map-control-library/android-map-pin.png)

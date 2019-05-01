@@ -8,19 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 85b8d4d0-3f6a-4913-b9d3-8cc327d8280d
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/21/2019
+ms.date: 04/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ba9f4df36f753a1caf619ad90015fa073a00de3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8e85f390ee5ff74f02cb95fa4dcf1dfc1a35dad1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883377"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699862"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Oktatóanyag: Az Azure Active Directory-integráció a helyszíni SharePoint
 
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az Azure AD-integráció konfigurálása a helyszíni SharePoint, a következőkre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
 * Helyszíni SharePoint-egyszeri bejelentkezés engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
@@ -131,7 +131,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a helyszíni SharePoint, haj
 
     a. Bejelentkezési URL
 
-    b. Azure Ad Identifier
+    b. Azure AD-azonosító
 
     c. Kijelentkezési URL
 
@@ -149,7 +149,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a helyszíni SharePoint, haj
     > [!TIP]
     > Ha használja a PowerShell-lel vagy a PowerShell működésével kapcsolatos további tudnivalókat a kívánt [SharePoint PowerShell](https://docs.microsoft.com/powershell/sharepoint/overview?view=sharepoint-ps).
 
-    ```powershell
+    ```
     $realm = "<Identifier value from the SharePoint on-premises Domain and URLs section in the Azure portal>"
     $wsfedurl="<SAML single sign-on service URL value which you have copied from the Azure portal>"
     $filepath="<Full path to SAML signing certificate file which you have downloaded from the Azure portal>"
@@ -160,7 +160,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a helyszíni SharePoint, haj
     $map3 = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname" -IncomingClaimTypeDisplayName "SurName" -SameAsIncoming
     $map4 = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress" -IncomingClaimTypeDisplayName "Email" -SameAsIncoming
     $map5 = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.microsoft.com/ws/2008/06/identity/claims/role" -IncomingClaimTypeDisplayName "Role" -SameAsIncoming
-    $ap = New-SPTrustedIdentityTokenIssuer -Name "AzureAD" -Description "SharePoint secured by Azure AD" -realm $realm -ImportTrustCertificate $cert -ClaimsMappings $map,$map2,$map3,$map4 -SignInUrl $wsfedurl -IdentifierClaim "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
+    $ap = New-SPTrustedIdentityTokenIssuer -Name "AzureAD" -Description "SharePoint secured by Azure AD" -realm $realm -ImportTrustCertificate $cert -ClaimsMappings $map,$map2,$map3,$map4,$map5 -SignInUrl $wsfedurl -IdentifierClaim "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
     ```
 
     Ezután kövesse az alábbi lépéseket az alkalmazás megbízható identitásszolgáltatóra engedélyezése:
@@ -198,7 +198,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőtípus `brittasimon@yourcompanydomain.extension`  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -248,7 +248,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 6. Kattintson a **hozzáadása** , majd **API kiválasztása**.
 
-    ![API Acess](./media/sharepoint-on-premises-tutorial/required_permissions.png)
+    ![API-hozzáférés](./media/sharepoint-on-premises-tutorial/required_permissions.png)
 
 7. Adja hozzá mindkettőt **Windows Azure Active Directory** és **Microsoft Graph API**, de ez csak akkor lehetséges, válassza ki egyenként.
 
@@ -270,7 +270,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
     > [!NOTE]
     > Vegye figyelembe, hogy AzureCP nem egy Microsoft-termék vagy a Microsoft technikai támogatási által támogatott. Letöltéséhez, telepítéséhez és AzureCP / a helyszíni SharePoint-farm konfigurálása https://yvand.github.io/AzureCP/ 
 
-11. **A hozzáférési jogot az Azure Active Directory biztonsági csoportot a helyszíni SharePoint** :-a csoportok hozzáférést kell biztosítani az alkalmazásnak a Sharepointban a-permise.  Az alábbi lépések segítségével állítsa be az engedélyeket a webalkalmazáshoz való hozzáférés.
+11. **A hozzáférési jogot az Azure Active Directory biztonsági csoportot a helyszíni SharePoint** : – a csoportok a helyszíni SharePoint-alkalmazás hozzáférést kell biztosítani.  Az alábbi lépések segítségével állítsa be az engedélyeket a webalkalmazáshoz való hozzáférés.
 
 12. A központi felügyelet eszközben kattintson a kezelés, webalkalmazások kezelése, majd válassza ki a webes alkalmazás aktiválása a menüszalagon, és kattintson a felhasználói házirend.
 
@@ -288,7 +288,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![Biztonsági csoport hozzáadása](./media/sharepoint-on-premises-tutorial/permissions1.png)
 
-16. Tekintse meg a házirend a webalkalmazás és az Azure Active Directory-csoporthoz hozzáadott.  A csoportos jogcímet a felhasználó nevét az Azure Active Directory biztonsági csoport objektumazonosítóját mutatja be.
+16. Tekintse meg a házirend a webalkalmazás és az Azure Active Directory-csoporthoz hozzáadott.  A csoportos jogcímet a felhasználó nevét az Azure Active Directory biztonsági csoport Objektumazonosítóját mutatja be.
 
     ![Biztonsági csoport hozzáadása](./media/sharepoint-on-premises-tutorial/addgroup.png)
 
@@ -310,19 +310,18 @@ A konfiguráció egyetlen webalkalmazás működik, de további konfigurálást 
 
 5. A SharePoint-kiszolgálóra, nyissa meg a **SharePoint 2016 felügyeleti rendszerhéj** , és hajtsa végre a következő parancsokat, a korábban használt jogkivonat megbízható kibocsátó neve.
 
-    ```powershell
+    ```
     $t = Get-SPTrustedIdentityTokenIssuer "AzureAD"
     $t.UseWReplyParameter=$true
     $t.Update()
     ```
-
 6. A központi felügyelet nyissa meg a webalkalmazást, és engedélyezze a meglévő megbízható identitásszolgáltatóra. Ne felejtse el a bejelentkezési oldal URL-címet is konfigurálhat egy egyéni bejelentkezési oldalon `/_trust/`.
 
 7. A központi felügyelet a webes alkalmazásban kattintson, és válassza **felhasználói házirend**. Adja hozzá a megfelelő engedélyekkel rendelkező felhasználó, ahogyan korábban ebben a cikkben is.
 
 ### <a name="fixing-people-picker"></a>Személy kijelölése kijavítása
 
-Felhasználók, már bejelentkezhetnek a SharePoint 2016 identitásokat az Azure ad-ből, de továbbra is vannak, a felhasználói élmény fokozása lehetőségeit. Például egy felhasználó keresése jeleníti több keresési eredmények a személy kijelölése. Nincs minden jogcím leképezése létrehozott 3 jogcímtípusok egy keresési eredményben. Válassza ki a felhasználó a személyválasztója segítségével, kell pontosan írja be a felhasználónevet, és válassza ki a **neve** jogcím-eredményt.
+Felhasználók most már be tud jelentkezni az Azure AD-ből fiókjaikkal SharePoint 2016, de továbbra is vannak, a felhasználói élmény fokozása lehetőségeit. Például egy felhasználó keresése jeleníti több keresési eredmények a személy kijelölése. Nincs minden jogcím leképezése létrehozott 3 jogcímtípusok egy keresési eredményben. Válassza ki a felhasználó a személyválasztója segítségével, kell pontosan írja be a felhasználónevet, és válassza ki a **neve** jogcím-eredményt.
 
 ![Jogcímek keresési eredmények](./media/sharepoint-on-premises-tutorial/fig16-claimssearchresults.png)
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: adf4d8d5cfcef2dde8193ce1b7f2805a44e2d93d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b5bf778f06ff0223fd48a1282aadf223ff032b0f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657918"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919856"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Mentse, és a Git használatával az API Management-szolgáltatás konfigurációjának beállítása
 
@@ -173,9 +173,9 @@ Ezeket a fájlokat létrehozása, törlése, szerkeszteni és a helyi fájlrends
 > [!NOTE]
 > A következő entitásokat nem találhatók meg a Git-tárházban, és a Git használatával nem konfigurálható.
 >
-> * [Felhasználók](https://docs.microsoft.com/en-us/rest/api/apimanagement/user)
-> * [Előfizetések](https://docs.microsoft.com/en-us/rest/api/apimanagement/subscription)
-> * [Névvel ellátott értékek](https://docs.microsoft.com/en-us/rest/api/apimanagement/property)
+> * [Felhasználók](https://docs.microsoft.com/rest/api/apimanagement/user)
+> * [Előfizetések](https://docs.microsoft.com/rest/api/apimanagement/subscription)
+> * [Névvel ellátott értékek](https://docs.microsoft.com/rest/api/apimanagement/property)
 > * Fejlesztői portál entitások eltérő stílusok
 >
 

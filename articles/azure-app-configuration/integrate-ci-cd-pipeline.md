@@ -12,22 +12,22 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 7db796b33bab941f038afab1b80127aded50b54a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: a8b77cea34344062c981d8f452094cffabe1e568
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000017"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572491"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integráció CI-/CD-folyamattal
 
-Javíthatja az alkalmazás nem tudja elérni az Azure-alkalmazások konfigurálása a távoli lehetőségét szembeni rugalmasságát. Ehhez a csomag aktuális konfigurációs adatok fájlba, hogy az alkalmazás és a betöltött helyben telepített az indítás során. Ez a megközelítés biztosítja, hogy az alkalmazás alapértelmezett beállítás értéke van legalább. Ezek az értékek felülírja, az alkalmazás a konfigurációs adattároló újabb módosításainak elérhetővé válik.
+Az alkalmazás futtatásához, ha az Azure App konfigurációjától függ, és nem tudja elérni, sikertelen lehet. Javíthatja kezelése érdekében tett ilyen esemény, azonban valószínűleg nem fordulhat elő, ha az alkalmazás rugalmasságát. Ehhez a csomag aktuális konfigurációs adatok fájlba, hogy az alkalmazás és a betöltött helyben telepített az indítás során. Ez a megközelítés biztosítja, hogy az alkalmazás alapértelmezett beállítás értéke van legalább. Ezek az értékek felülírja, az alkalmazás a konfigurációs adattároló újabb módosításainak elérhetővé válik.
 
 Használatával a [exportálása](./howto-import-export-data.md#export-data) függvényt az Azure-alkalmazások konfigurálása, automatizálhatja egyetlen fájlként aktuális konfigurációs adatok lekérését jelenti. Ezután egy build és a központi telepítési lépés a folyamatos integráció és folyamatos üzembe helyezés (CI/CD) folyamatokat ágyazhat be ezt a fájlt.
 
 Az alábbi példa bemutatja, hogyan foglalhat bele az Alkalmazáskonfigurációt az adatok egy buildet. lépés: a webalkalmazás a rövid útmutatók rendszerben bevezetett. A folytatás előtt Befejezés [ASP.NET Core-alkalmazás létrehozása az alkalmazás konfigurációs](./quickstart-aspnet-core-app.md) első.
 
-Bármely Kódszerkesztő segítségével ebben a rövid útmutatóban található lépések elvégzése. [A Visual Studio Code](https://code.visualstudio.com/) kiváló lehetőség a Windows, macOS és Linux platformokon az érhető el.
+Bármely Kódszerkesztő segítségével hajtsa végre a lépéseket ebben az oktatóanyagban. [A Visual Studio Code](https://code.visualstudio.com/) kiváló lehetőség a Windows, macOS és Linux platformokon az érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,7 +48,7 @@ Ehhez egy felhő-összeállítási, az Azure DevOps például ellenőrizze, hogy
 
     Adja hozzá a *ConnectionString* társított konfigurációs alkalmazásáruházában környezeti változóban.
 
-2. Nyissa meg a Program.cs, és frissítse a `CreateWebHostBuilder` metódus meghívásával az exportált JSON-fájl használata a `config.AddJsonFile()` metódust.
+2. Nyissa meg *Program.cs*, és frissítse a `CreateWebHostBuilder` metódus meghívásával az exportált JSON-fájl használata a `config.AddJsonFile()` metódust.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

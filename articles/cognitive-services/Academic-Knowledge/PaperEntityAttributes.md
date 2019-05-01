@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: bd37665e962ada59149b54075d7f8acbea895c50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 92844b5faf691b67617c9f3424a1322aa05429bb
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61336824"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875735"
 ---
 # <a name="paper-entity"></a>A tanulmány entitás
 
@@ -26,7 +26,7 @@ Name (Név)    |Leírás                                        |Típus       | 
 ------- | ------------------------------------------------- | --------- | ----------------------------
 Azonosító      |Entitásazonosító                                          |Int64      |Egyenlő
 Ti      |A tanulmány címe                                        |String     |Egyenlő,<br/>StartsWith
-L       |Tanulmány nyelvkód elválasztva "\@@@"            |String     |Egyenlő
+L       |Tanulmány nyelvkód elválasztva "\@\@\@"          |String     |Egyenlő
 I       |A tanulmány év                                         |Int32      |Egyenlő,<br/>IsBetween
 D       |A tanulmány dátuma                                         |Dátum       |Egyenlő,<br/>IsBetween
 Másolat      |Idézetet száma                                     |Int32      |nincs  

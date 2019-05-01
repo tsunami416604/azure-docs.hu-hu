@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: aschhab
-ms.openlocfilehash: d2aa018566695b5b94cd8a7e64931a8b776b151d
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 65f89e234317c5a17e4443e767528fb9be9a8b72
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63766296"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687069"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>A prémium szint meglévő standard szintű Azure Service Bus-névterek áttelepítése
 Korábban az Azure Service Bus névtér csak a standard szinten érhető el. Névterek olyan több-bérlős beállítását, amely az alacsony átviteli sebesség és a fejlesztői környezetben vannak optimalizálva. A prémium szint dedikált erőforrások névterenként előre jelezhető késés és nagyobb átviteli sebesség, fix áron kínál. A prémium szint nagy átviteli sebességű és újabb nagyvállalati funkciókat igényelnek, éles üzemi környezetek van optimalizálva.
@@ -62,7 +62,7 @@ A prémium szintű a standard szintű Service Bus-névtér áttelepítése az Az
    ```
 
     >[!IMPORTANT]
-    > Az áttelepítés utáni neve (post_migration_dns_name) a régi standard szintű névtér a migrálás után eléréséhez használható. Ezzel a kiürítési, az üzenetsorok és az előfizetések, és ezután törölje a névteret.
+    > Áttelepítés utáni alias/name (post_migration_dns_name) a régi standard szintű névtér a migrálás után eléréséhez használható. Ezzel a kiürítési, az üzenetsorok és az előfizetések, és ezután törölje a névteret.
 
 1. Párosítsa a standard és prémium szintű névterek, és a szinkronizálás indítása a következő paranccsal:
 

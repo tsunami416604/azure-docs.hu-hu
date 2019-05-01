@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/24/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 0dcfa4e7cd792f61d1620a57330f87c5c86e6c9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6e7b3b316a8a6dcde95bdf872dbda4cd1372f072
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322532"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64721809"
 ---
 # <a name="scaling-media-processing"></a>Skálázás médiafeldolgozás
 
@@ -33,9 +33,9 @@ Az alábbi táblázat segít a különböző kódolási sebességű közötti ki
 
 |RU típusának|Forgatókönyv|A példa eredménye az [7 perc 1080 p videó](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)|
 |---|---|---|
-| **S1**|Egyszeres átviteli sebességű kódolás. <br/>SD vagy az alatti megoldások, a fájlok nem idő-és nagybetűket, alacsony költségű.|Az egyszeres sávszélességű SD feloldási MP4-fájlt "H264 egyetlen sávszélességű SD 16 x 9" kódolás 10 percet vesz igénybe.|
-| **S2**|Egyféle sávszélességű, és több átviteli sebességű kódolás.<br/>Normál használati SD és a HD Encoding.|Idő szükséges kódolásának a "H264 egyféle sávszélességű 720p" előbeállítást körülbelül 8 perc.<br/><br/>Kódolás az "H264 Multiple Bitrate 720p" beállításkészletet körülbelül 16.8 percig tart.|
-| **S3**|Egyféle sávszélességű, és több átviteli sebességű kódolás.<br/>Teljes HD és 4K felbontása videókat. Idő-és nagybetűket, a gyorsabb ügyintézés kódolást.|Idő szükséges kódolásának a "H264 egyetlen Bitrate 1080p" előbeállítást megközelítőleg 4 perc.<br/><br/>Kódolás a "H264 Multiple Bitrate 1080p" előbeállítás körülbelül 8 percet vesz igénybe.|
+| **S1**|Egyszeres átviteli sebességű kódolás. <br/>SD vagy az alatti megoldások, a fájlok nem idő-és nagybetűket, alacsony költségű.|Kódolási egyféle sávszélességű SD feloldási MP4-fájlt "H264 egyetlen sávszélességű SD 16 x 9" körülbelül 7 percet vesz igénybe.|
+| **S2**|Egyféle sávszélességű, és több átviteli sebességű kódolás.<br/>Normál használati SD és a HD Encoding.|Idő szükséges kódolásának a "H264 egyféle sávszélességű 720p" előbeállítást körülbelül 6 percig.<br/><br/>Kódolás a "H264 Multiple Bitrate 720p" előbeállítást veszi hozzávetőlegesen 12 percet.|
+| **S3**|Egyféle sávszélességű, és több átviteli sebességű kódolás.<br/>Teljes HD és 4K felbontása videókat. Idő-és nagybetűket, a gyorsabb ügyintézés kódolást.|Idő szükséges kódolásának a "H264 egyetlen Bitrate 1080p" előbeállítást körülbelül 3 perc alatt.<br/><br/>Kódolás a "H264 Multiple Bitrate 1080p" előbeállítást veszi körülbelül 8 perc.|
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
@@ -62,7 +62,7 @@ Futtassa a következő parancsot: `mru`.
 A következő [az ams-fiók legutóbbi](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) parancsot a Media szolgáltatás számára fenntartott egységek a "amsaccount" fiók használatával beállítja a **száma** és **típus** paraméterek.
 
 ```azurecli
-az account set mru -n amsaccount -g amsResourceGroup --count 10 --type S3
+az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
 ```
 
 ## <a name="billing"></a>Számlázás

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
 ms.openlocfilehash: c1c582c60a7c91de40983daa07bdec1e8d748f8a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123127"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718873"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Bevezetés a HDInsight egy Apache HBase-példájába
 
@@ -242,7 +242,7 @@ A HBase a HDInsightban a fürtök megfigyelésére szolgáló webes felhasznál�
 
 **A HBase mesterfelületének elérése**
 
-1. Sign into the Ambari Web UI at https://&lt;Clustername>.azurehdinsight.net.
+1. Jelentkezzen be az Ambari webes felhasználói Felületet a https://&lt;Clustername >. azurehdinsight.NET formátumban van.
 2. Kattintson a **HBase** elemre a bal oldali menüben.
 3. Kattintson a **Gyorshivatkozások** elemre a lap tetején, mutasson az aktív Zookeeper-csomópont hivatkozására, majd kattintson a **HBase-mesterfelület** elemre.  A felület egy új böngészőlapon nyílik meg:
 

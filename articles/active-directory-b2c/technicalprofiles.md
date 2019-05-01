@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 86f2a8fa11becdf24c0a10c0325893946a033c3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: da769093794a559e4b856f7ae4f211c3900632c6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60360129"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711045"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -85,7 +85,7 @@ A **TechnicalProfile** a következő elemeket tartalmazza:
 | Domain | 0:1 | A tartomány neve, a technikai profil. Ha például a technikai profil határozza meg, a Facebook-identitásszolgáltató, ha a tartománynév Facebook.com weboldalt. |
 | Megjelenítendő név | 0:1 | A technikai profil, a felhasználók számára megjelenített neve. |
 | Leírás | 0:1 | A felhasználók számára megjelenő technikai profil leírása. |
-| Protokoll | 0:1 | A másik fél szolgáltatással való kommunikációhoz használt protokoll. |
+| Protocol | 0:1 | A másik fél szolgáltatással való kommunikációhoz használt protokoll. |
 | Metaadatok | 0:1 | A protokoll egy tranzakció során a végponttal való kommunikációhoz használ kulcs/érték párok gyűjteménye. |
 | InputTokenFormat | 0:1 | A bemeneti jogkivonat formátuma. A lehetséges értékek: `JSON`, `JWT`, `SAML11`, vagy `SAML2`. A `JWT` érték jelzi a JSON Web Token számú IETF-specifikáció alapján. A `SAML11` érték jelzi a SAML 1.1-es biztonsági jogkivonat OASIS specifikációnak megfelelően.  A `SAML2` érték jelzi a SAML 2.0 biztonsági jogkivonat OASIS specifikációnak megfelelően. |
 | OutputTokenFormat | 0:1 | A kimeneti jogkivonat formátuma. A lehetséges értékek: `JSON`, `JWT`, `SAML11`, vagy `SAML2`. |
@@ -102,7 +102,7 @@ A **TechnicalProfile** a következő elemeket tartalmazza:
 | UseTechnicalProfileForSessionManagement | 0:1 | Munkamenet-kezelés használható különböző technikai profil. |
 |EnabledForUserJourneys| 0:1 |Ha a technikai profil a felhasználói út szabályozza.  |
 
-### <a name="protocol"></a>Protokoll
+### <a name="protocol"></a>Protocol
 
 A **protokoll** elem tartalmazza a következő attribútumokat:
 

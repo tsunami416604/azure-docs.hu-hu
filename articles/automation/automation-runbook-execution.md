@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 38dd4d13aa45b69fc846ef9b6b2e1b56f56de573
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f851fd2857650dd00e365abf71ec5f0199db6d57
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60738197"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711588"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
@@ -78,6 +78,9 @@ else
 ### <a name="time-dependant-scripts"></a>Idő függő szkriptek
 
 Alapos megfontolás a runbookok létrehozásakor kell elvégezni. Ahogy korábban említettük, a runbookok hozhatóak létre úgy, hogy azok hatékony kell, és átmeneti hibák, amelyek okozhatnak a runbookot, hogy indítsa újra, vagy nem képes kezelni. Ha egy runbook meghibásodása, újból. Ha egy runbook általában időkorlát belül fut, a logikai ellenőrzése, meg kell valósítani a végrehajtás ideje, hogy a kezdő hasonlóan, a runbook leállítása vagy horizontális felskálázás csak adott idő alatt futnak.
+
+> [!NOTE]
+> Az Azure védőfalfolyamat helyi ideje UTC időre van beállítva. Dátum és idő a runbookokban számítások kell figyelembe venni a.
 
 ### <a name="tracking-progress"></a>Követési folyamatban
 

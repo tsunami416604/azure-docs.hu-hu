@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/13/2017
+ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6775f6e37a5b282afcfcdce7f93751e852923366
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1495c14ae4c588661452aa3696019da00be47548
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60349556"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571382"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Ha már rendelkezik meglévő bérlővel
 A témakörök használata az Azure AD Connect a legtöbb feltételezi, hogy először a egy új Azure AD-bérlővel, és hogy egyik felhasználó sem, vagy nincs más objektumokat. Ha már elindította az Azure AD-bérlővel, de fel kell töltenie azt a felhasználók és más objektumok, és most szeretné használni a csatlakozás, majd ez a témakör Önnek szól.
@@ -58,6 +58,15 @@ Csatlakozás az új telepítéshez nem nincs gyakorlati különbség egy helyre�
 
 ### <a name="other-objects-than-users"></a>Más objektumok, mint a felhasználók
 Levelezési csoportok és a névjegyeket akkor is egyezéssel alapján proxyAddresses. Merevlemez-match nem alkalmazható, mivel csak akkor frissíthető a sourceAnchor/immutableid azonosítója (a PowerShell használatával), a felhasználók csak. Nem a levelezési csoportok esetén nincs használata jelenleg nem támogatott egyezéssel vagy a merevlemez-match.
+
+### <a name="admin-role-considerations"></a>Rendszergazdai szerepkör kapcsolatos szempontok
+Megakadályozhatja a nem megbízható helyszíni számára a megfelelő egy felhőbeli felhasználóval bármely rendszergazdai szerepkörrel rendelkező, az Azure AD Connect nem egyezik a helyi felhasználói objektumok rendszergazda szerepkörrel rendelkező objektummal. Ez az alapértelmezés szerint. A megoldás ezt a viselkedést a következőket teheti:
+
+1.  A címtárbeli szerepkörök a csak felhőalapú felhasználói objektum eltávolítása
+2.  A szinkronizálási események indítása
+3.  Igény szerint adja hozzá a címtárbeli szerepkörök vissza a felhőben a user objektum után a rendszer történt.
+
+
 
 ## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>Hozzon létre egy új helyszíni Active Directory-adatokból az Azure ad-ben
 Egyes ügyfeleink kezdődhet egy kizárólag felhőalapú megoldásának az Azure ad-vel, és nem rendelkeznek helyszíni AD. Később, szeretné használják a helyszíni erőforrásokhoz, és létre szeretné hozni a helyszíni AD az Azure AD-adatok alapján. Az Azure AD Connect nem tud segítséget ehhez a forgatókönyvhöz. Ez nem hoz létre a helyszíni felhasználók, és nem tartalmaz semmilyen lehetővé teszi a jelszót a helyi értéke ugyanaz, mint az Azure AD.

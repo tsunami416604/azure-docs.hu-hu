@@ -14,20 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: a7b61ba05aea817d65e7cac991ad460d708a5ea7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 378a90b712af031f9d89758939afb993cee5aafd
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60873410"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869493"
 ---
 # <a name="how-to-check-job-progress"></a>Útmutató: a feladat előrehaladásának ellenőrzése
-> [!div class="op_single_selector"]
-> * [Portál](media-services-portal-check-job-progress.md)
-> * [.NET](media-services-check-job-progress.md)
-> * [REST](media-services-rest-check-job-progress.md)
-> 
-> 
+
+> [!NOTE]
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
 
 Feladatok futtatásakor gyakran igényelnek olyan módon, a feladat előrehaladásának nyomon követéséhez. A feladat állapota tulajdonság használatával keresheti meg a feladat állapota. Az állapot tulajdonság további információkért lásd: [feladat entitás tulajdonságai](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
 

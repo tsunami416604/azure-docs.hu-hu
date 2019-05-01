@@ -1,23 +1,23 @@
 ---
-title: Másolja, vagy az Azure Storage-adatok áthelyezése az AzCopy v10 (előzetes verzió) |} A Microsoft Docs
-description: Az AzCopy v10 használata (előzetes verzió) parancssori segédprogram áthelyezése vagy másolhat blob, a data lake és a fájl tartalmát. Adatok másolása az Azure Storage a helyi fájlokból vagy adatmásolás belül vagy tárfiókok között. Egyszerűen migrálhatja az adatokat az Azure Storage.
+title: Másolja, vagy az Azure Storage-adatok áthelyezése az AzCopy v10 |} A Microsoft Docs
+description: Az AzCopy parancssori segédprogram használatával helyezze át vagy másolhat blob, a data lake és a fájl tartalmát. Adatok másolása az Azure Storage a helyi fájlokból vagy adatmásolás belül vagy tárfiókok között. Egyszerűen migrálhatja az adatokat az Azure Storage.
 services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 04/23/2019
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: ffd448db86c8658619da5339cd34eb9dba7e05ce
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c1de40b6bf3bb4dc6854a11eca92902203d492c3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278428"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723186"
 ---
-# <a name="transfer-data-with-azcopy-v10-preview"></a>Adatok áthelyezése az AzCopy v10 (előzetes verzió)
+# <a name="transfer-data-with-azcopy-v10"></a>Adatok áthelyezése az AzCopy 10-es verziójával
 
-Az AzCopy v10 (előzetes verzió) a parancssori segédprogram céljából, vagy a Microsoft Azure Blob- és File storage-ból. Az AzCopy v10 olyan újratervezett parancssori felületet kínál, és új architektúráját megbízható adatokat továbbítja. Az AzCopy használatával másolhat adatokat egy fájlrendszer és a egy tárfiókot, vagy tárfiókok között.
+Az AzCopy a parancssori segédprogram céljából, vagy a Microsoft Azure Blob- és File storage-ból. Az AzCopy egy áttervezett parancssori felületet kínál, és új architektúráját megbízható adatokat továbbítja. Az AzCopy használatával másolhat adatokat egy fájlrendszer és a egy tárfiókot, vagy tárfiókok között.
 
 ## <a name="whats-new-in-azcopy-v10"></a>Az AzCopy v10 újdonságai
 
@@ -33,28 +33,24 @@ Az AzCopy v10 (előzetes verzió) a parancssori segédprogram céljából, vagy 
 
 ## <a name="download-and-install-azcopy"></a>Töltse le és telepítse az Azcopyval
 
-### <a name="latest-preview-version-v10"></a>Legújabb előzetes verziójával (v10)
+### <a name="latest-production-version-v10"></a>Éles legújabb (v10)
 
-Töltse le az AzCopy legújabb előzetes verzióját:
+Töltse le az AzCopy legújabb verzióját:
 - [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
-### <a name="latest-production-version-v81"></a>Éles legújabb (v8.1)
-
-Töltse le a [AzCopy for Windows legújabb üzemi verziójával](https://aka.ms/downloadazcopy).
-
-### <a name="azcopy-supporting-table-storage-service-v73"></a>Az AzCopy Table storage szolgáltatás (v7.3) támogatása
+### <a name="latest-azcopy-supporting-table-storage-service-v73"></a>Az AzCopy legújabb Table storage szolgáltatás (v7.3) támogatása
 
 Töltse le a [másolhatja az adatokat és- tárolókról a Microsoft Azure Table storage szolgáltatás támogatása az AzCopy v7.3](https://aka.ms/downloadazcopynet).
 
 ## <a name="post-installation-steps"></a>Telepítés utáni lépések
 
-Az AzCopy v10-telepítés nem szükséges. Nyissa meg az előnyben részesített parancssori alkalmazás, és keresse meg azt a mappát, `azcopy.exe` található. Ha szükséges, az AzCopy mappa helyét is hozzáadhat a használat megkönnyítése érdekében a rendszer elérési útjához.
+Az AzCopy egy telepítése nem igényel. Nyissa meg az előnyben részesített parancssori alkalmazás, és keresse meg azt a mappát, `azcopy.exe` található. Ha szükséges, az AzCopy mappa helyét is hozzáadhat a használat megkönnyítése érdekében a rendszer elérési útjához.
 
 ## <a name="authentication-options"></a>Hitelesítési lehetőségek
 
-AzCopy v10 támogatja a következő beállításokat, hitelesítéséhez az Azure Storage:
+Az AzCopy támogatja a következő beállításokat, hitelesítéséhez az Azure Storage:
 - **Az Azure Active Directory** (támogatott **Blob és a Data Lake Storage Gen2 szolgáltatások**). Használat ```.\azcopy login``` bejelentkezni az Azure Active Directoryban.  A felhasználóknak rendelkezniük kell ahhoz ["Storage-Blobadatok Közreműködője" szerepkörrel](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) írni a Blob storage-ban az Azure Active Directory-hitelesítést. Felügyelt identitások az Azure-erőforrások hitelesítésének használata `azcopy login --identity`.
 - **Közös hozzáférésű jogosultságkódok jogkivonataival [támogatott Blobok és fájlok szolgáltatások]**. A közös hozzáférésű jogosultságkód (SAS) hozzáfűzni a blob elérési útja a parancssorban a használatára. Az Azure Portallal, SAS-tokeneket is létrehozhat [Tártallózó](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken), vagy más tetszőleges eszközökkel. További információkért lásd: [példák](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
 
@@ -198,7 +194,7 @@ Csak a helyi fájlrendszerben; egy blob-tárolóba is szinkronizálhatók:
 .\azcopy sync "https://account.blob.core.windows.net/mycontainer1" "C:\local\path" --recursive=true
 ```
 
-Ez a parancs növekményes szinkronizálja az adatforrás, a cél az utolsó módosítás időbélyegek alapján. Hozzáadásakor, vagy töröljön egy fájlt a forrás, az AzCopy v10 fog végezze el ugyanezt a célhelyen. A törlés előtt meg kell erősítenie az AzCopy fogja kérni.
+Ez a parancs növekményes szinkronizálja az adatforrás, a cél az utolsó módosítás időbélyegek alapján. Hozzáadásakor, vagy töröljön egy fájlt a forrás, az AzCopy fog végezze el ugyanezt a célhelyen. A törlés előtt meg kell erősítenie az AzCopy fogja kérni.
 
 ## <a name="copy-data-from-amazon-web-services-aws-s3"></a>Adatok másolása az Amazon Web Services (AWS) S3-ból
 
@@ -283,7 +279,7 @@ cat 04dc9ca9-158f-7945-5933-564021086c79.log | grep -i UPLOADFAILED
 ```
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Az AzCopy v10 hoz létre, naplófájlok és minden feladat csomag fájljait. A naplók segítségével megvizsgálhatja és az esetleges problémák elhárításában. A naplók tartalmazni fogja az állapotát, hiba (UPLOADFAILED COPYFAILED és DOWNLOADFAILED), a teljes elérési útja, és a hiba okát. A feladat-naplók és a terv fájlok találhatók, a % USERPROFILE\\Windows vagy $HOME .azcopy mappa\\.azcopy mappába a Mac és Linux rendszereken.
+Az AzCopy hoz létre a naplófájlok és minden feladat csomag fájljait. A naplók segítségével megvizsgálhatja és az esetleges problémák elhárításában. A naplók tartalmazni fogja az állapotát, hiba (UPLOADFAILED COPYFAILED és DOWNLOADFAILED), a teljes elérési útja, és a hiba okát. A feladat-naplók és a terv fájlok találhatók, a % USERPROFILE\\Windows vagy $HOME .azcopy mappa\\.azcopy mappába a Mac és Linux rendszereken.
 
 > [!IMPORTANT]
 > Amikor egy kérés elküldése Support (vagy a hiba elhárításához bármely harmadik féltől származó használata esetén), megoszthatja a kivonatosan verzióját szeretné végrehajtani a parancsot. Ez biztosítja a SAS véletlenül ne oszthassák meg olyan bárki. A kivont verzió elején. a naplófájl található.

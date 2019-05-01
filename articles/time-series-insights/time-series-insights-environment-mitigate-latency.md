@@ -12,14 +12,15 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 3a42570b51811cfbdd4329f196b98d75c8cd53f7
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 6b5cdf8aebdf584216afef9f1d1421eea8c4ba4e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556747"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685150"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Figyelheti, és az Azure Time Series Insightsban késés csökkentése érdekében a szabályozás csökkentése
+
 A bejövő adatok mennyisége meghaladja a környezet konfigurációját, amikor a késleltetés vagy az Azure Time Series Insights-szabályozás tapasztalhat.
 
 Elkerülheti a késés és a sávszélesség-szabályozási adatok elemezni szeretné a környezet megfelelő konfigurálásával.
@@ -31,7 +32,7 @@ Legnagyobb valószínűséggel késés és a szabályozás, amikor Ön:
 - Korábbi események nagy mennyiségű leküldése egy eseményforrás (a Time Series Insights olvasásra kell) késéssel eredményez.
 - Csatlakozzon a referenciaadatok telemetriával, nagyobb esemény-méretet eredményez.  A sávszélesség-szabályozási szempontjából egy ingressed adatok csomagot a csomag mérete 32 KB-os 32 események számít, minden egyes 1 KB méretű. Engedélyezett események maximális mérete 32 KB; 32 KB-nál nagyobb adatcsomagok csonkolva lesznek.
 
-## <a name="video"></a>Videó: 
+## <a name="video"></a>Videó
 
 ### <a name="in-this-video-we-cover-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Ez a videó ismerteti a Time Series Insights bejövő működéshez, és tervezze meg, hogyan.</br>
 
@@ -61,7 +62,6 @@ Itt konfigurálhatja a riasztások a következő mérőszámok segítségével:
 |**Bejövő forgalom fogadott üzenethez idő elteltével**    |  Forrás- és az idő a feldolgozása a bejövő forgalom a különbözet között az, hogy az üzenet az eseménynaplóban-e várólistán lévő idő másodpercben.      |
 |**Bejövő üzenetek száma időbeli kapott**    |  Utolsó várólistán lévő üzenetek sorszáma közötti különbség az adatforrás a bejövő forgalom feldolgozott üzenet partíciót és feladatütemezési számát.      |
 
-
 ![Késés](media/environment-mitigate-latency/latency.png)
 
 Ha meg van szabályozva, látni fogja a egy értéke a *bejövő érkezett üzenet időeltolódás*, hány másodpercet TSI mögött van a tényleges idő a az üzenet tájékoztat eléri az eseményforrás (kivéve az appx-alapú indexelési idő. 30 – 60 másodpercet).  *Bejövő forgalom Beérkezett üzenetek száma időbeli* értékkel, lehetővé téve annak meghatározására, hogy hány üzenetek mögött található, akkor is kell rendelkeznie.  Az első szerepelnek legegyszerűbben, amely lehetővé teszi a különbség az, hogy a környezet kapacitás bővítéséhez.  
@@ -74,11 +74,14 @@ Például, ha három S1 szintű egységek kiépítése (vagy perces betöltési 
 
 Is, ha azt gyanítja, hogy van szabályozva, összehasonlíthatja a **bejövő Beérkezett üzenetek** az eseménnyel a forrás egressed az üzeneteket.  Ha az Event Hubs-eseményközpontba bejövő nagyobb, mint a **bejövő Beérkezett üzenetek**, a Time Series Insights valószínűleg szabályozva.
 
-## <a name="improving-performance"></a>A teljesítmény fokozása 
+## <a name="improving-performance"></a>A teljesítmény fokozása
+
 Szabályozási vagy tapasztalt késés csökkentése érdekében javítsa ki a legjobb módszer az növeli a kapacitást a környezet. 
 
 Elkerülheti a késés és a sávszélesség-szabályozási adatok elemezni szeretné a környezet megfelelő konfigurálásával. A környezet kapacitása hozzáadása kapcsolatos további információkért lásd: [Skálázhatja környezetét](time-series-insights-how-to-scale-your-environment.md).
 
 ## <a name="next-steps"></a>További lépések
+
 - További hibaelhárítási [diagnosztizálása és kapcsolatos problémák megoldásához a Time Series Insights-környezet a](time-series-insights-diagnose-and-solve-problems.md).
+
 - További segítségért beszélgetés indítása a a [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) vagy [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). Is [az Azure-támogatás](https://azure.microsoft.com/support/options/) személyes támogatás lehetőségeket.

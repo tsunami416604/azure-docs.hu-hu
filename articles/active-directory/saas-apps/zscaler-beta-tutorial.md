@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 56b846ae-a1e7-45ae-a79d-992a87f075ba
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/16/2018
+ms.date: 04/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b09e14bfee700750192c5a007cbb3140fd49d137
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c7770cd5b12a14e69c00d93b1b518e5007afd9c3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57885487"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64693715"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Oktatóanyag: Zscaler béta az Azure Active Directory-integráció
 
@@ -38,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az Azure AD-integráció konfigurálása a Zscaler Beta, a következő elemek szükségesek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
 * Zscaler béta egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
@@ -111,11 +112,11 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Zscaler bétaverzió
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési UR. Kapcsolattartó [Zscaler bétaverziós ügyfélalkalmazását támogatási csapatának](https://www.zscaler.com/company/contact) a gépkulcsengedélyek értékének.
 
-5. Zscaler béta alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+5. Zscaler béta alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
 
     ![image](common/edit-attribute.png)
 
-6. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
+6. Emellett a fent Zscaler béta alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
     
     | Name (Név) | Adatforrás-attribútum | 
     | ---------------| --------------- |
@@ -152,15 +153,23 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Zscaler bétaverzió
 
     a. Bejelentkezési URL
 
-    b. Azure Ad Identifier
+    b. Azure AD-azonosító
 
     c. Kijelentkezési URL
 
 ### <a name="configure-zscaler-beta-single-sign-on"></a>Zscaler béta egyszeri bejelentkezés konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a Zscaler béta vállalati hely rendszergazdaként.
+1. Automatizálhatja a Zscaler béta konfigurációra, telepítenie kell **saját alkalmazások biztonságos bejelentkezési böngészőbővítmény** kattintva **a bővítmény telepítése**.
 
-2. Lépjen a **Adminisztráció > hitelesítés > hitelesítési beállítások** , és hajtsa végre az alábbi lépéseket:
+    ![Saját alkalmazások kiterjesztése](common/install-myappssecure-extension.png)
+
+2. A felvett bővítmény a böngészőre, kattintson a **telepítő Zscaler béta** fog irányítja át a Zscaler béta alkalmazás. Itt adja meg a rendszergazdai hitelesítő adatok a Zscaler béta bejelentkezni. A webböngésző-bővítmény automatikusan konfigurálja az alkalmazást, és 3 – 6. lépések automatizálásához.
+
+    ![Konfiguráció beállítása](common/setup-sso.png)
+
+3. Ha azt szeretné, Zscaler béta manuálisan beállítani, nyisson meg egy új böngészőablakban, és jelentkezzen be rendszergazdaként vállalati Zscaler béta webhelyét, és hajtsa végre az alábbi lépéseket:
+
+4. Lépjen a **Adminisztráció > hitelesítés > hitelesítési beállítások** , és hajtsa végre az alábbi lépéseket:
    
     ![Felügyeleti](./media/zscaler-beta-tutorial/ic800206.png "felügyelete")
 
@@ -168,7 +177,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Zscaler bétaverzió
 
     b. Kattintson a **SAML konfigurálása**.
 
-3. Az a **szerkesztése SAML** ablakban hajtsa végre az alábbi lépéseket: kattintson a Mentés gombra.  
+5. Az a **szerkesztése SAML** ablakban hajtsa végre az alábbi lépéseket: kattintson a Mentés gombra.  
             
     ![Felhasználók és hitelesítés kezeléséhez](./media/zscaler-beta-tutorial/ic800208.png "felhasználók és hitelesítés kezeléséhez")
     
@@ -188,7 +197,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Zscaler bétaverzió
 
     h. Kattintson a **Save** (Mentés) gombra.
 
-4. Az a **felhasználói hitelesítés konfigurálása** párbeszédpanel lapon, a következő lépésekkel:
+6. Az a **felhasználói hitelesítés konfigurálása** párbeszédpanel lapon, a következő lépésekkel:
 
     ![Adminisztráció](./media/zscaler-beta-tutorial/ic800207.png)
 
@@ -245,8 +254,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
+    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 

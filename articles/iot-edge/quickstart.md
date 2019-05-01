@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: bc859dc1e33abfee765a8f5b0f2a65bc24b7c2dc
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 8b446e3cfd3efc7d6f4c125747630cd3241fa804
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226946"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573937"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Gyors útmutató: Az első IoT Edge-modul az Azure Portalon, egy Windows-eszköz üzembe helyezése – előzetes verzió
 
@@ -226,34 +226,21 @@ Az üzeneteket az IoT hub kiszolgálófarmban használatával is megtekintheti a
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebben a rövid útmutatóban regisztrált és létrehozott eszközt. Ha nem, törölheti a létrehozott Azure-erőforrásokat, és eltávolíthatja az IoT Edge-futtatókörnyezetet az eszközről.
-
-### <a name="delete-azure-resources"></a>Azure-erőforrások törlése
+Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebben a rövid útmutatóban regisztrált és létrehozott eszközt. Ellenkező esetben az Azure-erőforrások, Ön által létrehozott díjak elkerülése érdekében törölheti.
 
 Ha a virtuális gépet és az IoT Hubot egy új erőforráscsoportban hozta létre, törölheti azt a csoportot és az összes társított erőforrást. Ellenőrizze a győződjön meg arról, hogy ott az erőforráscsoportot, amelybe a tartalmát a semmi meg szeretné tartani. A teljes csoport törlése nem szeretné, ha ehelyett törölheti az egyes erőforrásokat.
 
 Távolítsa el az **IoTEdgeResources** csoportot.
 
-   ```azurecli-interactive
-   az group delete --name IoTEdgeResources
-   ```
-
-### <a name="remove-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet eltávolítása
-
-Ha el szeretné távolítani a telepítéseket az eszközéről, azt a következő parancsokkal teheti meg.  
-
-Távolítsa el az IoT Edge-futtatókörnyezetet. Ha az IoT Edge újratelepítését tervezi, hagyja ki a `-DeleteConfig` és `-DeleteMobyDataRoot` paramétereket, hogy ugyanazzal a konfigurációval, amely az imént beállított telepítse újra.
-
-   ```powershell
-   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-   Uninstall-SecurityDaemon -DeleteConfig -DeleteMobyDataRoot
-   ```
+```azurecli-interactive
+az group delete --name IoTEdgeResources
+```
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy IoT Edge-eszközön, és az eszközre kód üzembe helyezése az Azure IoT Edge felhőalapú interfésze használt. Most már van egy teszteszköze, amely nyers adatokat állít elő a környezetéről.
 
-Továbbléphet bármely másik oktatóanyagra, és megtudhatja, hogyan alakíthatja üzleti megállapításokká ezeket az adatokat a peremhálózaton az Azure IoT Edge segítségével.
+A következő lépés az, hogy, hozzákezdhet az IoT Edge modulokról az üzleti logikát a helyi fejlesztési környezet beállítása. 
 
 > [!div class="nextstepaction"]
-> [Érzékelők adatainak szűrése Azure Functions-függvényekkel](tutorial-deploy-function.md)
+> [Kezdje a fejlesztést az IoT Edge-modulok Windows-eszközökhöz](tutorial-develop-for-windows.md)

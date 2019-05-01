@@ -1,24 +1,22 @@
 ---
 title: API-k a foglalást az Azure automationhöz |} A Microsoft Docs
 description: További információ az Azure API-kat, hogy programozott módon megszerezni a foglalási információkat használhatja.
-documentationcenter: ''
 author: yashesvi
 manager: yashesvi
-editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2019
+ms.date: 04/25/2019
 ms.author: banders
-ms.openlocfilehash: 246278df61d4f13e2634a1cdfc5ff6b635cecbbf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6d63f9a393dbb40c3b0952eba9ab9449fd7b558d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60371206"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702624"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>API-k a foglalást az Azure automation
 
@@ -32,7 +30,38 @@ Az erőforrás-használatot a Használatalapú API részletes használati haszn�
 
 ## <a name="buy-a-reservation"></a>Foglalás vásárlása
 
-Nem lehet jelenleg vásárolhat egy foglalást programozott módon. Megvásárolni a foglalást, tekintse meg a következő cikkeket:
+Vásárolhat Azure-fenntartásokat és a szoftverfrissítési csomagok programozott módon REST API-k használatával. További tudnivalókért lásd: [Foglalásrendelés - beszerzési API](/rest/api/reserved-vm-instances/reservationorder/purchase).
+
+Íme egy mintakérelmet megvásárolni a REST API-val:
+
+```
+PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/<GUID>?api-version=2019-04-01
+```
+
+Kérelem törzse:
+
+```
+{
+ "sku": {
+    "name": "standard_D1"
+  },
+ "location": "westus",
+ "properties": {
+    "reservedResourceType": "VirtualMachines",
+    "billingScopeId": "/subscriptions/ed3a1871-612d-abcd-a849-c2542a68be83",
+    "term": "P1Y",
+    "quantity": "1",
+    "displayName": "TestReservationOrder",
+    "appliedScopes": null,
+    "appliedScopeType": "Shared",
+    "reservedResourceProperties": {
+      "instanceFlexibility": "On"
+    }
+  }
+}
+```
+
+Vásárolhat egy foglalást az Azure Portalon is. További információkért tekintse át a következő cikkeket:
 
 Szolgáltatáscsomagok:
 - [Virtuális gép](../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json)

@@ -15,12 +15,12 @@ ms.date: 02/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f795571de275453738d23e80885f4d9006ca3a20
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 24c8dd49667a359bb0fe7051dd801062f37f3db9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60195017"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718429"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Egyéni szerepkörök az Azure-erőforrásokhoz
 
@@ -106,9 +106,9 @@ Akárcsak a beépített szerepkörök a `AssignableScopes` tulajdonság határoz
 
 | Tevékenység | Művelet | Leírás |
 | --- | --- | --- |
-| Egyéni szerepkör létrehozása/törlése | `Microsoft.Authorization/ roleDefinition/write` | Ez a művelet az összes engedéllyel rendelkező felhasználók a `AssignableScopes` az egyéni szerepkör létrehozhatja (vagy törölheti) használja ezeket az egyéni szerepkörök. Például [tulajdonosok](built-in-roles.md#owner) és [felhasználói rendszergazdák](built-in-roles.md#user-access-administrator) előfizetések, erőforráscsoportok és erőforrásokat. |
-| Egyéni szerepkörök frissítése | `Microsoft.Authorization/ roleDefinition/write` | Ez a művelet az összes engedéllyel rendelkező felhasználók a `AssignableScopes` az egyéni szerepkör frissítheti ezeket az egyéni szerepkörök. Például [tulajdonosok](built-in-roles.md#owner) és [felhasználói rendszergazdák](built-in-roles.md#user-access-administrator) előfizetések, erőforráscsoportok és erőforrásokat. |
-| Egyéni szerepkör megtekintése | `Microsoft.Authorization/ roleDefinition/read` | Ez a művelet egy hatókörben engedéllyel rendelkező felhasználók megtekinthetik az adott hatókörben hozzárendelés elérhető egyéni szerepkört. Összes beépített szerepkört engedélyezése egyéni szerepkörök hozzárendelés elérhető legyen. |
+| Egyéni szerepkör létrehozása/törlése | `Microsoft.Authorization/ roleDefinitions/write` | Ez a művelet az összes engedéllyel rendelkező felhasználók a `AssignableScopes` az egyéni szerepkör létrehozhatja (vagy törölheti) használja ezeket az egyéni szerepkörök. Például [tulajdonosok](built-in-roles.md#owner) és [felhasználói rendszergazdák](built-in-roles.md#user-access-administrator) előfizetések, erőforráscsoportok és erőforrásokat. |
+| Egyéni szerepkörök frissítése | `Microsoft.Authorization/ roleDefinitions/write` | Ez a művelet az összes engedéllyel rendelkező felhasználók a `AssignableScopes` az egyéni szerepkör frissítheti ezeket az egyéni szerepkörök. Például [tulajdonosok](built-in-roles.md#owner) és [felhasználói rendszergazdák](built-in-roles.md#user-access-administrator) előfizetések, erőforráscsoportok és erőforrásokat. |
+| Egyéni szerepkör megtekintése | `Microsoft.Authorization/ roleDefinitions/read` | Ez a művelet egy hatókörben engedéllyel rendelkező felhasználók megtekinthetik az adott hatókörben hozzárendelés elérhető egyéni szerepkört. Összes beépített szerepkört engedélyezése egyéni szerepkörök hozzárendelés elérhető legyen. |
 
 ## <a name="next-steps"></a>További lépések
 - [Egyéni szerepkörök létrehozása Azure-erőforrásokhoz az Azure PowerShell használatával](custom-roles-powershell.md)

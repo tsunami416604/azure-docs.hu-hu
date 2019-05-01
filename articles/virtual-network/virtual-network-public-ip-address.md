@@ -3,8 +3,8 @@ title: Létrehozása, módosítása vagy törlése az Azure nyilvános IP-cím |
 description: Ismerje meg, hogyan létrehozása, módosítása vagy törlése a nyilvános IP-címet.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: bb71abaf-b2d9-4147-b607-38067a10caf6
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: jdial
-ms.openlocfilehash: 2e6f3ce0c01674913dcb1f1980264d205eb4fcd3
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.author: kumud
+ms.openlocfilehash: e1e82d7f7b6b8bf9bfef56b569db2db097b914ab
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652781"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728729"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Létrehozása, módosítása vagy egy nyilvános IP-cím törlése
 
@@ -28,7 +28,7 @@ Ismerje meg a nyilvános IP-cím és létrehozása, módosítása és törlése 
 - Az erőforrás, például az Azure Virtual Machines (VM), az Azure Application Gateway átjárók, az Azure Load Balancer Terheléselosztók, Azure VPN Gateway és mások az internetről bejövő kommunikációt. Továbbra is kommunikálhat egyes erőforrásokat, például a virtuális gépek, az internetről, ha a virtuális gép nem rendelkezik egy nyilvános IP-cím rendelhető, mindaddig, amíg a virtuális gép része egy load balancer háttérkészlethez, és a terheléselosztó nyilvános IP-cím van hozzárendelve. Annak megállapításához, hogy egy adott Azure-szolgáltatás erőforrás rendelhető nyilvános IP-cím, vagy e azt továbbíthatók a különböző Azure-erőforrás nyilvános IP-címén keresztül, az a szolgáltatás dokumentációjában talál.
 - Kimenő kapcsolódás az internethez, kiszámítható IP-címet használ. Például a virtuális gépek kommunikálhatnak az interneten egy nyilvános IP-cím nélkül kimenő rendelve, de a cím alapértelmezés szerint egy előre nem látható, nyilvános cím, az Azure által lefordított hálózati cím. Nyilvános IP-cím hozzárendelése egy erőforrás lehetővé teszi, hogy tudja, melyik IP-címet használja a kimenő kapcsolat. Előre jelezhető, bár a cím változhat, a választott hozzárendelési módszertől függően. További információkért lásd: [hozzon létre egy nyilvános IP-cím](#create-a-public-ip-address). Az Azure-erőforrások kimenő kapcsolatok kapcsolatos további információkért lásd: [kimenő kapcsolatainak ismertetése](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -63,7 +63,7 @@ Nyilvános IP-címek egy névleges díj rendelkezik. A díjszabás megtekintés�
    |IP-cím hozzárendelése (csak akkor látható, ha bejelölte a **hozzon létre egy IPv6-alapú (vagy IPv4) címet** jelölőnégyzet)|Igen, ha kiválasztja a **hozzon létre egy IPv6-alapú** (vagy IPv4) jelölőnégyzetet.|Ha a jelölőnégyzet felirat **IPv4-cím létrehozása**, is kiválaszthat egy hozzárendelési módszer. Ha a jelölőnégyzet felirat **IPv6-cím létrehozása**, egy hozzárendelési módszer nem választhat ki kell lennie, **dinamikus**.|
    |Előfizetés|Igen|Léteznie kell az azonos [előfizetés](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) és az erőforrásnak a nyilvános IP-címet társítani szeretné.|
    |Erőforráscsoport|Igen|Az azonos vagy eltérő létrejöhet [erőforráscsoport](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) és az erőforrásnak a nyilvános IP-címet társítani szeretné.|
-   |Hely|Igen|Léteznie kell az azonos [hely](https://azure.microsoft.com/regions), régió, mint a nyilvános IP-címet hozzárendelni kívánt erőforrásként a cím, emellett hivatkozott.|
+   |Location egység|Igen|Léteznie kell az azonos [hely](https://azure.microsoft.com/regions), régió, mint a nyilvános IP-címet hozzárendelni kívánt erőforrásként a cím, emellett hivatkozott.|
    |Rendelkezésre állási zóna| Nem | Ez a beállítás csak akkor jelenik meg, ha egy támogatott helyet. A támogatott helyek listáját lásd: [rendelkezésre állási zónák áttekintésének](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ha bejelölte a **alapszintű** SKU, *nincs* automatikusan ki van jelölve az Ön számára. Ha inkább a garantálják egy adott zónához, választ, kiválaszthat egy adott zónához. Vagy a választás nem zónaredundáns. Ha bejelölte a **Standard** Termékváltozat: Zónaredundáns automatikusan ki van jelölve, és lehetővé teszi az adatok elérési útja rugalmas zóna meghiúsulásához. Ha egy adott zónához, amely nem ellenállni a zóna hiba, hogy inkább választ, kiválaszthat egy adott zónához.
 
 **Parancsok**

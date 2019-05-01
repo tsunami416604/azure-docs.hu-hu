@@ -1,5 +1,5 @@
 ---
-title: Korlátozza az ügyfél IP-címek – az Azure App Service |} A Microsoft Docs
+title: Korlátozza a hozzáférést – az Azure App Service |} A Microsoft Docs
 description: Korlátozza a hozzáférést az Azure App Service használatával
 author: ccompy
 manager: stefsch
@@ -12,59 +12,71 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 04/22/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: bb6ab29f02282a394e3f93e41682ceaec5208b75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 558b67b5b0e1ce4f452ce2ca2e97dd7e785c80b6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60853285"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728705"
 ---
-# <a name="azure-app-service-static-access-restrictions"></a>Az Azure App Service statikus hozzáférési korlátozások #
+# <a name="azure-app-service-access-restrictions"></a>Az Azure App Service-ben korlátozza a hozzáférést #
 
-Korlátozza a hozzáférést lehetővé teszik a rendezett lista engedélyezni vagy letiltani az IP-címek, amelyek jogosultak hozzáférni az alkalmazáshoz prioritást határozza meg. Az engedélyezési listán lehetnek IPv4 és IPv6 típusú címek. Ha egy vagy több bejegyzés, nincs, akkor egy implicit összes elutasítása, hogy a lista végén létezik.
+Korlátozza a hozzáférést az alkalmazáshoz való hálózati hozzáférés vezérlő prioritású rendezett engedélyezni vagy letiltani listájának definiálását teszi lehetővé. A lista IP-címek vagy az Azure virtuális hálózat alhálózataiban tartalmazhatnak. Ha egy vagy több bejegyzés, van egy implicit "összes elutasítása", amely létezik a lista végén.
 
-A hozzáférési korlátozásokat funkció működik az összes App Service-ben üzemeltetett vállalatokra, többek között; webalkalmazások, API-alkalmazások, a Linux-alkalmazások, Linux-tárolóalkalmazásokról és funkciók.
+A hozzáférési korlátozásokat funkció együttműködik az összes App Service-ben üzemeltetett munkahelyi betölti, beleértve a; webalkalmazások, API-alkalmazások, a Linux-alkalmazások, Linux-tárolóalkalmazásokról és funkciók.
 
-Amikor kérelem érkezik, az alkalmazáshoz, az IP-címét a hozzáférési korlátozásokat lista alapján értékeli ki. Ha a cím nem engedélyezett a hozzáférés a listájának szabályai alapján, a szolgáltatás válaszol-e az egy [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) állapotkódot.
+Amikor kérelem érkezik, az alkalmazáshoz, a feladó címe az IP-cím szabályok a hozzáférési korlátozások listáján képest értékeli ki. Ha a feladó címe konfigurált szolgáltatásvégpontokkal Microsoft.Web alhálózatán, majd a forrásoldali alhálózat rendszer összehasonlítja a virtuális hálózati szabályok a hozzáférési korlátozások listáján. Ha a cím nem engedélyezett a hozzáférés a listájának szabályai alapján, a szolgáltatás válaszol-e az egy [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) állapotkódot.
 
-A hozzáférési korlátozásokat funkció a App Service-ben előtér-szerepkörök, amelyek a feldolgozó gazdagépeket, ahol a kódja fut, a felsőbb rétegbeli van megvalósítva. Ezért korlátozza a hozzáférést lényegében hálózati hozzáférés-vezérlési listák.  
+A hozzáférési korlátozások funkciójával a App Service-ben előtér-szerepkörök, amelyek a feldolgozó gazdagépeket, ahol a kódja fut, a felsőbb rétegbeli van megvalósítva. Ezért korlátozza a hozzáférést lényegében hálózati hozzáférés-vezérlési listák.
 
-![hozzáférési korlátozások folyamat](media/app-service-ip-restrictions/ip-restrictions-flow.png)
+Lehetővé teszi a webes alkalmazás való hozzáférés korlátozása egy Azure virtuális hálózat (VNet) nevezzük [szolgáltatásvégpontokat][serviceendpoints]. A Szolgáltatásvégpontok lehetővé teszi több-bérlős szolgáltatás való hozzáférés korlátozása a kiválasztott alhálózat. Engedélyezni kell a mind a hálózati oldalon, valamint a szolgáltatás, amely a rendszer engedélyez. 
 
-Ideje a hozzáférési korlátozásokat funkció a portálon volt a ipSecurity funkció az IIS-ben a felső szintű rétege. A jelenlegi hozzáférési korlátozások funkció nem egyezik. Az alkalmazás web.config belül ipSecurity továbbra is konfigurálhatja, de az előtér-alapján korlátozza a hozzáférést szabályok lépnek érvénybe, mielőtt forgalmat eléri az IIS.
+![hozzáférési korlátozások folyamat](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
 ## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>Hozzáadását és szerkesztését a hozzáférés-korlátozási szabályok a portálon ##
 
 Egy hozzáférés-korlátozási szabály hozzáadása az alkalmazáshoz, a menü használatával nyissa meg a **hálózati**>**korlátozza a hozzáférést** , majd kattintson a **hozzáférési korlátozások konfigurálása**
 
-![Az App Service hálózatkezelési lehetőségekkel](media/app-service-ip-restrictions/ip-restrictions.png)  
+![Az App Service hálózatkezelési lehetőségekkel](media/app-service-ip-restrictions/access-restrictions.png)  
 
 A hozzáférési korlátozások felhasználói felületen áttekintheti az alkalmazáshoz definiált hozzáférési korlátozási szabályok listája.
 
-![lista korlátozza a hozzáférést](media/app-service-ip-restrictions/ip-restrictions-browse.png)
+![lista korlátozza a hozzáférést](media/app-service-ip-restrictions/access-restrictions-browse.png)
 
-A szabályok úgy lettek konfigurálva, ahogyan a képen is látható, ha az alkalmazás csak akkor fogadja el 131.107.159.0/24 érkező forgalmat, és bármely más IP-címről lenne elutasítja.
+A listában jelennek meg az összes, amelyek az alkalmazás a jelenlegi korlátozások. Ha az alkalmazás a virtuális hálózati korlátozások, a táblázatban jelennek meg, ha a Szolgáltatásvégpontok engedélyezve vannak-e a Microsoft.Web. Ha az alkalmazás nincs meghatározott korlátozás, az alkalmazás bárhonnan elérhető lesz.  
 
 Kattintson a **[+] Hozzáadás** egy új hozzáférés-korlátozási szabály hozzáadása. Miután hozzáadja egy szabályt, akkor lépnek érvénybe azonnal. A szabályzatbeállítás a-tól prioritási sorrendben szabályok életbe lépnek. Van egy implicit tiltásával, amely érvényben van, akár egyetlen szabály felvétele után.
 
-![egy hozzáférés-korlátozási szabály hozzáadása](media/app-service-ip-restrictions/ip-restrictions-add.png)
+![az IP-hozzáférés-korlátozási szabály hozzáadása](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
 
-IP-cím jelöléssel kell adni a CIDR-jelölésrendszerben az IPv4 és IPv6-címeket is. Egy pontos címet ad meg, ahol az első négy oktetben jelölik az IP-címe pedig tulajdonságot/32 a maszk 1.2.3.4/32 hasonló használhatja. Az összes cím IPv4 CIDR-jelölés 0.0.0.0/0. A CIDR-jelölés használatával kapcsolatos további információkért olvassa [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).  
+Szabályok létrehozásakor ki kell választania, engedélyezni vagy letiltani, valamint a szabály típusát. Biztosít hozzáférést a prioritás értéke, és mi csoportkezelést is szükségesek.  Igény szerint hozzáadhat egy nevet és leírást a szabályhoz.  
+
+Állítsa be az IP-cím-alapú szabály, válasszon ki egy IPv4- vagy IPv6. IP-cím jelöléssel kell adni a CIDR-jelölésrendszerben az IPv4 és IPv6-címeket is. Egy pontos címet ad meg, ahol az első négy oktetben jelölik az IP-címe pedig tulajdonságot/32 a maszk 1.2.3.4/32 hasonló használhatja. Az összes cím IPv4 CIDR-jelölés 0.0.0.0/0. A CIDR-jelölés használatával kapcsolatos további információkért olvassa [Classless Inter-Domain Routing](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
+
+![egy virtuális hálózati hozzáférés-korlátozási szabály hozzáadása](media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
+
+A hozzáférés korlátozása a kiválasztott alhálózat, válassza ki a fajta virtuális hálózatot. Alatta fogja adhatnak meg az előfizetés, virtuális hálózat és engedélyezi vagy megtagadja a kívánt alhálózatot. Szolgáltatásvégpontok nem már engedélyezettek a Microsoft.Web a kiválasztott alhálózat, ha azt automatikusan engedélyezve lesz, kivéve, ha nem szeretne ehhez jelölőnégyzetet. A helyzetet, ahol szeretné engedélyezni az alkalmazást, de nem az alhálózat nagymértékben kapcsolódik, ha az engedélyek az alhálózat szolgáltatásvégpontjainak engedélyezéséhez, vagy nem rendelkezik. Ha valaki más engedélyezéséhez az alhálózat első van szüksége, jelölje be a jelölőnégyzetet, és az alkalmazás várható az alhálózaton található később engedélyezve a Szolgáltatásvégpontok konfigurálva van. 
 
 Kattintson a minden sor egy meglévő hozzáférés-korlátozási szabály szerkesztése. Módosítások hatékony azonnal többek között a módosítások prioritási sorrendben.
 
-![egy hozzáférés-korlátozási szabály szerkesztése](media/app-service-ip-restrictions/ip-restrictions-edit.png)
+![egy hozzáférés-korlátozási szabály szerkesztése](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
+
+Amikor szerkeszti egy szabályt, egy IP-cím szabályt és egy virtuális hálózati szabályt közötti típusa nem módosítható. 
+
+![egy hozzáférés-korlátozási szabály szerkesztése](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
 
 A szabály törléséhez kattintson a **...**  elemre a szabályt, majd kattintson **eltávolítása**.
 
-![hozzáférés-korlátozási szabály törlése](media/app-service-ip-restrictions/ip-restrictions-delete.png)
+![hozzáférés-korlátozási szabály törlése](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
-Üzembe helyezés hozzáférést a következő lapon is korlátozhatja. Adja hozzá, szerkeszteni vagy törölni, az egyes szabályok, kövesse ugyanazt a fenti.
+### <a name="scm-site"></a>SCM helyet 
 
-![lista korlátozza a hozzáférést](media/app-service-ip-restrictions/ip-restrictions-scm-browse.png)
+Amellett, hogy az alkalmazás elérése, korlátozhatja is hozzáférést az scm helyet, az alkalmazás által használt. Az scm helyet, az a web deploy-végpontot, és a Kudu konzol. Az scm helyet korlátozza a hozzáférést az alkalmazás hozzárendelését külön-külön, vagy ugyanaz, mint az alkalmazás és az scm helyet is be. Ha bejelöli a jelölőnégyzetet, ugyanazok a korlátozások vonatkoznak, mint az alkalmazások, minden a iktatni ki. Törölje a jelet a jelölőnégyzetből, ha a program bármilyen már korábban az scm helyet a beállítások lesznek alkalmazva. 
+
+![lista korlátozza a hozzáférést](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Hozzáférési korlátozás szabályok szoftveres kezelése ##
 
@@ -88,6 +100,10 @@ A korábbi példa JSON szintaxisa:
 
 ## <a name="function-app-ip-restrictions"></a>Függvény alkalmazás IP-korlátozások
 
-Az IP-korlátozások mindkét Function Apps az App Service-csomagok ugyanazokkal a funkciókkal érhetők el. Vegye figyelembe, hogy IP-engedélyezése korlátozások letiltja a bármely nem engedélyezett IP-címek a portál Kódszerkesztő.
+Az IP-korlátozások mindkét Function Apps az App Service-csomagok ugyanazokkal a funkciókkal érhetők el. IP-korlátozások engedélyezése letiltja a bármely nem engedélyezett IP-címek a portál Kódszerkesztő.
 
 [További információk itt](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
+
+
+<!--Links-->
+[serviceendpoints]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview

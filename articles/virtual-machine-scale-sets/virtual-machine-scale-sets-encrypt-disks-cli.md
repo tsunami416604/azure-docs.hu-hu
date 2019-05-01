@@ -13,46 +13,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 04/26/2019
 ms.author: cynthn
-ms.openlocfilehash: 417772b2e955b1a3664dd495f292a76ab2819165
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 1264c7e4ebaf5e948e624fa49dc5fb0b4cdb31f0
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734521"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869054"
 ---
-# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli-preview"></a>Az operációs rendszer és a egy virtuálisgép-méretezési csoportot az Azure CLI (előzetes verzió) az a csatlakoztatott adatlemezekkel titkosítása
+# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Az operációs rendszer és a egy virtuálisgép-méretezési csoportba az Azure CLI-vel a csatlakoztatott adatlemezekkel titkosítása
 
 És iparági szabványos titkosítási technológiával az inaktív adatok megvédeni, a virtual machine scale sets támogatja az Azure Disk Encryption (ADE). Titkosítási engedélyezhető a Linux vagy Windows virtuálisgép-méretezési csoportokban. További információkért lásd: [Linux és Windows Azure Disk Encryption](../security/azure-security-disk-encryption.md).
-
-> [!NOTE]
->  Virtuálisgép-méretezési csoportokhoz az Azure disk encryption jelenleg nyilvános előzetes verzióként, elérhető minden nyilvános Azure-régióban.
 
 Az Azure disk encryption támogatják:
 - a méretezési csoportok felügyelt lemezekkel létrehozott, és natív (vagy nem felügyelt) lemezek méretezési csoportok esetében nem támogatott.
 - Windows méretezési csoportokban lévő operációsrendszer- és kötetek. Tiltsa le titkosítás támogatott operációsrendszer- és kötetek Windows-méretezési csoportokhoz.
-- a Linux rendszerű méretezési adatkötetnél. Az operációs rendszer lemeztitkosítás nem támogatott a Linux rendszerű méretezési csoportokhoz az aktuális előzetes verzióban érhető el.
-
-Skálázási készlet virtuális gép rendszerkép alaphelyzetbe állítását és a frissítési műveletek nem támogatottak az aktuális előzetes verzióban érhető el. A virtuális gép méretezési csoportok előzetes verzióra az Azure disk encryption csak tesztelési környezetben ajánlott. Az előzetes verzióban ne engedélyezze a lemeztitkosítás az éles környezetben, ahol előfordulhat, hogy frissíteni szeretne egy titkosított méretezési csoportban lévő egy operációsrendszer-lemezképben.
+- a Linux rendszerű méretezési adatkötetnél. Az operációs rendszer lemeztitkosítás nem támogatott a Linux rendszerű méretezési csoportokhoz.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Ha a helyi telepítése és használata a parancssori felület választja, az oktatóanyaghoz, hogy futnak-e az Azure CLI 2.0.31-es verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
-
-## <a name="register-for-disk-encryption-preview"></a>Lemez titkosítása előzetes regisztráció
-
-Az Azure disk encryption virtuálisgép-méretezési csoportokhoz előzetes kell önálló regisztrálja az előfizetését [az a funkció regisztrálása](/cli/azure/feature). Csak akkor kell hajtsa végre a következő lépéseket a lemeztitkosítási előzetes szolgáltatás első használatakor:
-
-```azurecli-interactive
-az feature register --name UnifiedDiskEncryption --namespace Microsoft.Compute
-```
-
-A regisztrációs kérelem propagálása akár 10 percet is igénybe vehet. A regisztrációs állapot ellenőrzéséhez [az funkció show](/cli/azure/feature). Ha a `State` jelentések *regisztrált*, regisztrálja újra a *Microsoft.Compute* szolgáltató [az provider register](/cli/azure/provider):
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-```
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
 
@@ -135,6 +116,30 @@ Egy-két, a titkosítási folyamat elindításához percig is eltarthat.
 
 Mivel a méretezési csoporthoz a létrehozott méretezési csoporthoz a frissítési szabályzat egy korábbi lépésben értékre van állítva *automatikus*, a Virtuálisgép-példányok a titkosítási folyamat automatikusan elindul. A méretezési csoportok, ahol a frissítési szabályzat manuális van, indítsa el a titkosítási szabályzat, a VM-példányok [az vmss update-instances](/cli/azure/vmss#az-vmss-update-instances).
 
+### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>Engedélyezze a titkosítást KEK használata a kulcs becsomagolása
+
+A Kulcsalapú titkosítás kulcsa a fokozott biztonság használhatja a virtuálisgép-méretezési csoportot titkosításakor.
+
+```azurecli-interactive
+# Get the resource ID of the Key Vault
+vaultResourceId=$(az keyvault show --resource-group myResourceGroup --name $keyvault_name --query id -o tsv)
+
+# Enable encryption of the data disks in a scale set
+az vmss encryption enable \
+    --resource-group myResourceGroup \
+    --name myScaleSet \
+    --disk-encryption-keyvault $vaultResourceId \
+    --key-encryption-key myKEK \
+    --key-encryption-keyvault $vaultResourceId \
+    --volume-type DATA
+```
+
+> [!NOTE]
+>  A lemez-titkosítás-keyvault paraméter értékének szintaxisa a teljes azonosító karakterlánc:</br>
+/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br></br>
+> A kulcs-titkosítás – key paraméter értékének szintaxisa a KEK, mint a teljes URI Azonosítóját:</br>
+https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]
+
 ## <a name="check-encryption-progress"></a>Ellenőrizheti a titkosítási folyamatot
 
 Lemeztitkosítás állapotának ellenőrzéséhez használja [az vmss encryption show](/cli/azure/vmss/encryption#az-vmss-encryption-show):
@@ -180,6 +185,6 @@ az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben, az Azure CLI titkosításához használt virtuálisgép-méretezési csoportot. Is [Azure PowerShell-lel](virtual-machine-scale-sets-encrypt-disks-ps.md) vagy sablonok [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) vagy [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).
-
-Linux rendszerű méretezési csoport adatok lemeztitkosítás teljes körű batch fájl példa található [Itt](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat). Ebben a példában egy erőforráscsoportot, a Linux rendszerű méretezési csoportot hoz létre, 5 GB-os adatlemezt csatlakoztat és titkosítja a virtuálisgép-méretezési csoportot.
+- Ebben a cikkben, az Azure CLI titkosításához használt virtuálisgép-méretezési csoportot. Is [Azure PowerShell-lel](virtual-machine-scale-sets-encrypt-disks-ps.md) vagy sablonok [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) vagy [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).
+- Ha azt szeretné, hogy az Azure Disk Encryption alkalmazása egy másik bővítmény kiépítése után, akkor használhatja [sorrendről](virtual-machine-scale-sets-extension-sequencing.md). Használhat [ezek a minták](../security/azure-security-disk-encryption-extension-sequencing.md#sample-azure-templates) a kezdéshez.
+- Linux rendszerű méretezési csoport adatok lemeztitkosítás teljes körű batch fájl példa található [Itt](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat). Ebben a példában egy erőforráscsoportot, a Linux rendszerű méretezési csoportot hoz létre, 5 GB-os adatlemezt csatlakoztat és titkosítja a virtuálisgép-méretezési csoportot.

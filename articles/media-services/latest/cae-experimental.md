@@ -12,16 +12,16 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: sethm
 ms.custom: ''
-ms.openlocfilehash: 3c50502a8b873503ee937914fac5f2d92cb23a2b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b0b5a74a6ca0085f945075a8896c05a724ff062c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60733486"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717959"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>Tartalom-kompatibilis kódolási előbeállítást kísérleti
 
-Annak érdekében, hogy a tartalom előkészítése a kézbesítési [adaptív sávszélességű streamelés](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), videó kell kódolni, adaptív átviteli sebességű (alacsony, magas). Minőségű, biztonságos teljesítménycsökkenése biztosítása érdekében, az átviteli sebesség van-e csökkenteni a videó felbontása van így. Ennek eredményeként egy úgynevezett kódolási létra – egy táblát felbontásra és bitsebességre való átkódolása, láthatja az egyes rögzített a kódolási szolgáltatás, például [H264MultipleBitrate1080p](../previous/media-services-mes-preset-h264-multiple-bitrate-1080p.md).
+Annak érdekében, hogy a tartalom előkészítése a kézbesítési [adaptív sávszélességű streamelés](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), videó kell kódolni, adaptív átviteli sebességű (alacsony, magas). Minőségű, biztonságos teljesítménycsökkenése biztosítása érdekében, az átviteli sebesség van-e csökkenteni a videó felbontása van így. Ennek eredményeként egy úgynevezett kódolási létra – felbontásra és bitsebességre való átkódolása; táblája Lásd: a Media Services [beépített kódolási beállításokat](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
 ## <a name="overview"></a>Áttekintés
 

@@ -3,8 +3,8 @@ title: Keresse meg és törölje a nem csatlakoztatott Azure felügyelt és nem 
 description: Hogyan keresheti meg és nem csatlakoztatott Azure felügyelt és nem felügyelt (VHD-k/lapblobok) lemezek törlése az Azure CLI használatával.
 services: virtual-machines-linux
 documentationcenter: ''
-author: ramankumarlive
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
-ms.author: ramankum
+ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 034d2433b2251351d54c2c5f41f78b5d45ab80e1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 21c15a943974b80469eb9bd71cbaf11a7bc34b4a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470756"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64721838"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Keresse meg és törölje a nem csatlakoztatott Azure felügyelt és nem felügyelt lemezek
 Ha töröl egy virtuális gépet (VM) az Azure-ban alapértelmezés szerint a rendszer nem törli a virtuális géphez csatolt összes lemezt. Ez a szolgáltatás segít megakadályozni az adatvesztést miatt a virtuális gépet a véletlen törlés. Virtuális gép törlését követően továbbra is fizetnie a leválasztott lemezeket. Ez a cikk bemutatja, hogyan kereshet és a felesleges költségek csökkentéséhez és minden nem csatlakoztatott lemezek törlése. 
@@ -73,7 +73,7 @@ Nem felügyelt lemezek a VHD-fájlok formájában tárolt [lapblobokat](/rest/ap
    
 # Set deleteUnattachedVHDs=1 if you want to delete unattached VHDs
 # Set deleteUnattachedVHDs=0 if you want to see the details of the unattached VHDs
-deleteUnattachedVHDs=1
+deleteUnattachedVHDs=0
 
 storageAccountIds=$(az storage account list --query [].[id] -o tsv)
 

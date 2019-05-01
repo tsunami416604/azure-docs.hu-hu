@@ -4,14 +4,14 @@ description: Látható, hogy melyik Azure-erőforrástípus támogatja a címké
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 02/13/2019
+ms.date: 04/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: dd6836ef4f859ce77c1a56095d32373d8e08f468
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 32156f39d36d8485c76dada5fd00f9ea0918598c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60388063"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575462"
 ---
 # <a name="tag-support-for-azure-resources"></a>Az Azure-erőforrások címkék támogatása
 Ez a cikk ismerteti, hogy támogatja-e egy erőforrástípus [címkék](resource-group-using-tags.md).
@@ -862,7 +862,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | dnszones/SOA | Nem | 
 | dnszones/SRV | Nem | 
 | dnszones/TXT | Nem | 
-| expressRouteCircuits | Igen | 
+| expressRouteCircuits | Igen (címke értéke nem jelenleg jelenik meg a jelentés) | 
 | expressRouteServiceProviders | Nem | 
 | frontdoorok | Igen | 
 | frontdoorWebApplicationFirewallPolicies | Igen | 
@@ -876,7 +876,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Hálózati | Igen | 
 | networkProfiles | Igen | 
 | networkSecurityGroups | Igen | 
-| networkWatchers | Igen | 
+| networkWatchers | Igen (címke értéke nem jelenleg jelenik meg a jelentés) | 
 | networkWatchers/connectionMonitors | Igen | 
 | networkWatchers/átvilágított felülettel | Igen | 
 | networkWatchers/pingMeshes | Igen | 
@@ -892,9 +892,10 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | virtualHubs | Igen | 
 | virtualNetworkGateways | Igen | 
 | virtualNetworks | Igen | 
+| virtualNetworks/subnets | Nem | 
 | virtualNetworkTaps | Igen | 
 | virtualWans | Igen | 
-| vpnGateways | Igen | 
+| vpnGateways | Igen (címke értéke nem jelenleg jelenik meg a jelentés) | 
 | vpnSites | Igen | 
 | webApplicationFirewallPolicies | Igen | 
 

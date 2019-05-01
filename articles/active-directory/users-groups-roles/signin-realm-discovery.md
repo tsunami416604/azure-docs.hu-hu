@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b6846c5f907c41db16e99883be7041a68357586
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9f21b592f31790daa9cc4eeb217ea6e2987fc38
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60468876"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920511"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Azure Active Directory bejelentkezési lapok hitelesítőtartomány
 
@@ -49,7 +49,7 @@ További előnye ennek, javult a hibajelentések üzenetkezelés. Szívesen adun
     ![jelszava hibásan írta be a helyes felhasználónévvel](./media/signin-realm-discovery/incorrect-password.png)
   
 > [!IMPORTANT]
-> Ez a funkció lehet hatással a függő entitások kényszerített az összevonási Kezdőtartomány felderítésének régi tartományi szint összevont tartományok. Ha összevont tartományt fogja támogatni a frissítéseket, lásd: [kezdőlap kezdőtartomány-felderítés során jelentkezzen be a Microsoft 365-szolgáltatásokhoz](https://azure.microsoft.com/en-us/updates/signin-hrd/). Addig is egyes szervezetek számára, hogy jelentkezzen be az Azure Active Directoryban nem létezik, de tartalmazza a megfelelő tartománynevet, felhasználónevet, mivel a tartománynevek átirányítja a felhasználókat jelenleg a szervezeti tartományi végpontra szakképzett. Az új bejelentkezés működése nem engedélyezi ezt. A felhasználó értesítést kap, javítsa ki a felhasználó nevét, és azok nincs engedélye arra, hogy jelentkezzen be egy felhasználónevet, amely nem létezik az Azure Active Directoryban.
+> Ez a funkció lehet hatással a függő entitások kényszerített az összevonási Kezdőtartomány felderítésének régi tartományi szint összevont tartományok. Ha összevont tartományt fogja támogatni a frissítéseket, lásd: [kezdőlap kezdőtartomány-felderítés során jelentkezzen be a Microsoft 365-szolgáltatásokhoz](https://azure.microsoft.com/updates/signin-hrd/). Addig is egyes szervezetek számára, hogy jelentkezzen be az Azure Active Directoryban nem létezik, de tartalmazza a megfelelő tartománynevet, felhasználónevet, mivel a tartománynevek átirányítja a felhasználókat jelenleg a szervezeti tartományi végpontra szakképzett. Az új bejelentkezés működése nem engedélyezi ezt. A felhasználó értesítést kap, javítsa ki a felhasználó nevét, és azok nincs engedélye arra, hogy jelentkezzen be egy felhasználónevet, amely nem létezik az Azure Active Directoryban.
 >
 > Ha Ön vagy a szervezet rendelkezik gyakorlatokat, amelyek a régi viselkedése attól függ, fontos a szervezet rendszergazdák alkalmazott bejelentkezési és hitelesítési dokumentáció frissítésére és alkalmazottak számára az Azure Active Directory felhasználónevet használva a bejelentkezéshez betanításához.
   

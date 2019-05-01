@@ -1,7 +1,6 @@
 ---
 title: A HDInsight az Apache Hadoop MapReduce
 description: Ismerje meg, hogyan lehet Apache Hadoop MapReduce-feladatok futtatása a HDInsight-fürtök.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: f2baaf598be8ede69fd6e1fa49a5f5a6b64c24ff
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9da6b6ba3ab697887e55f9077b44cf6fa100a981
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521196"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707966"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>A HDInsight az Apache Hadoop MapReduce használata
 
@@ -49,15 +48,13 @@ Hadoop streamelési keresztül kommunikál a a teljesítményleképező és nyom
 
 További információkért lásd: [Hadoop Streamelési](https://hadoop.apache.org/docs/r1.2.1/streaming.html).
 
-Példák Stream használata a HDInsight a hadoop a következő dokumentumokban talál:
+Példák Stream használata a HDInsight Hadoop használatára tekintse meg a következő dokumentumban:
 
 * [C# MapReduce feladatok fejlesztése](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
-* [Python MapReduce feladatok fejlesztése](apache-hadoop-streaming-python.md)
-
 ## <a id="data"></a>Példa adatok
 
-HDInsight biztosít különböző példa adatkészletek, amelyek tárolása a `/example/data` és `/HdiSamples` könyvtár. Ezek a könyvtárak a a fürt alapértelmezett tárolója találhatók. Ebben a dokumentumban használjuk a `/example/data/gutenberg/davinci.txt` fájlt. Ez a fájl Leonardo Da Vinci jegyzetfüzet tartalmazza.
+HDInsight biztosít különböző példa adatkészletek, amelyek tárolása a `/example/data` és `/HdiSamples` könyvtár. Ezek a könyvtárak a a fürt alapértelmezett tárolója találhatók. Ebben a dokumentumban használjuk a `/example/data/gutenberg/davinci.txt` fájlt. Ez a fájl Leonardo da Vinci jegyzetfüzet tartalmazza.
 
 ## <a id="job"></a>Example MapReduce
 
@@ -137,11 +134,9 @@ public class WordCount {
 }
 ```
 
-A saját MapReduce-alkalmazások írására, útmutatásért lásd a következő dokumentumokat:
+A saját MapReduce-alkalmazások írására, útmutatásért lásd a következő dokumentumot:
 
 * [A HDInsight Java MapReduce-alkalmazások fejlesztése](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-
-* [A HDInsight Python MapReduce-alkalmazások fejlesztése](apache-hadoop-streaming-python.md)
 
 ## <a id="run"></a>A MapReduce futtatása
 
@@ -158,8 +153,6 @@ HDInsight HiveQL feladatok futtatásához különböző módszerek használatáv
 A HDInsight adatok kezelésével kapcsolatos további tudnivalókért tekintse meg a következő dokumentumokat:
 
 * [Java MapReduce programok fejlesztése a HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-
-* [Python-streamelés HDInsight MapReduce-programok fejlesztése](apache-hadoop-streaming-python.md)
 
 * [Az Apache Hive használata a HDInsight][hdinsight-use-hive]
 

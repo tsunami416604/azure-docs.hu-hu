@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: b81dccf3c71fbaff7b0cbb9ba00f13b458156e73
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f9f15c558e507742a641239ed25ba136dca0671a
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61074598"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920002"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Gépek előkészítése kezelésre, az Azure Automation állapot konfigurációja
 
@@ -62,8 +62,8 @@ A **regisztrációs**, adja meg a [PowerShell DSC helyi Configuration Manager é
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 
-Azure-beli virtuális gépek is üzembe helyezhetők és előkészítve az Azure Automation konfiguráló Azure Resource Manager-sablonok használatával. Lásd: [Desired State Configuration szolgáltatás által kezelt kiszolgáló](https://azure.microsoft.com/en-us/resources/templates/101-automation-configuration/) egy példa sablon előkészítését végző egy meglévő virtuális gép az Azure Automation Állapotkonfiguráció.
-Ha egy virtuálisgép-méretezési csoportban felügyel, megjelenik a példa sablon [Azure Automation által kezelt Virtuálisgép-méretezési csoport beállítása konfiguráció](https://azure.microsoft.com/en-us/resources/templates/201-vmss-automation-dsc/).
+Azure-beli virtuális gépek is üzembe helyezhetők és előkészítve az Azure Automation konfiguráló Azure Resource Manager-sablonok használatával. Lásd: [Desired State Configuration szolgáltatás által kezelt kiszolgáló](https://azure.microsoft.com/resources/templates/101-automation-configuration/) egy példa sablon előkészítését végző egy meglévő virtuális gép az Azure Automation Állapotkonfiguráció.
+Ha egy virtuálisgép-méretezési csoportban felügyel, megjelenik a példa sablon [Azure Automation által kezelt Virtuálisgép-méretezési csoport beállítása konfiguráció](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/).
 
 ### <a name="powershell"></a>PowerShell
 
@@ -72,7 +72,7 @@ A [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/regi
 ### <a name="registering-virtual-machines-across-azure-subscriptions"></a>Regisztrálja a virtuális gépek Azure-előfizetések
 
 Más Azure-előfizetésekből virtuális gépek regisztrálását a legjobb módja, hogy a DSC-bővítmény használata az Azure Resource Manager központi telepítési sablont.
-Példák találhatók [Desired State Configuration bővítmény az Azure Resource Manager-sablonok](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/dsc-template).
+Példák találhatók [Desired State Configuration bővítmény az Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template).
 A Szolgáltatásregisztrációs kulcs és a regisztrációs URL-címet használja, mint a sablonban szereplő paraméterekkel kapcsolatban a következő [ **regisztrációs biztonságos** ](#secure-registration) szakaszban.
 
 ## <a name="azure-virtual-machines-classic"></a>Azure-beli virtuális gépek (klasszikus)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 328433664d22925b4e991f2f18c858c5505cade1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b410dab40d5434a6f23950a9f151e50240ace63b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60781993"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916367"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Az Azure Log Analytics-ügynököket a naplóadatok gyűjtése
 
@@ -38,7 +38,7 @@ Ha egy számítógép és a System Center Operations Manager 2012 R2 vagy újabb
 
 A Windows-ügynök legfeljebb négy Log Analytics-munkaterületek, jelentheti a közben csak támogatja a Linux-ügynök, egy egyetlen-munkaterületre jelentő.  
 
-A Linux és Windows-ügynököt nem csak az Azure Monitor csatlakozik, akkor is támogatja a hibrid forgatókönyv-feldolgozói szerepkör és más szolgáltatások üzemeltetésére, mint például az Azure Automation [Change Tracking](../../automation/automation-change-tracking.md) és [kezelése](../../automation/automation-update-management.md). A hibrid forgatókönyv-feldolgozói szerepkör kapcsolatos további információkért lásd: [Azure Automation hibrid Runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md).  
+A Linux és Windows-ügynököt nem csak az Azure Monitor csatlakozik, akkor is támogatja a hibrid forgatókönyv-feldolgozói szerepkör és más szolgáltatások üzemeltetésére, mint például az Azure Automation [Change Tracking](../../automation/change-tracking.md) és [kezelése](../../automation/automation-update-management.md). A hibrid forgatókönyv-feldolgozói szerepkör kapcsolatos további információkért lásd: [Azure Automation hibrid Runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="supported-windows-operating-systems"></a>A támogatott Windows operációs rendszerek
 A Windows-ügynök hivatalosan támogatott a Windows operációs rendszer következő verziói:

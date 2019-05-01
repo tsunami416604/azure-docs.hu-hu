@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: c6ac3d9dbbb16caed51243fea852adea541b9f04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a71a0cd5888cec5c3af0e2853edf5a7f014939b4
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60505402"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919940"
 ---
 # <a name="azure-iot-edge-security-module"></a>Az Azure IoT Edge biztonsági modul
 
@@ -27,7 +27,7 @@ ms.locfileid: "60505402"
 > Az Azure Security Center az IoT jelenleg nyilvános előzetes verzióban érhető el.
 > Ez az előnézeti verzió nélkül egy szolgáltatói szerződést, és nem ajánlott éles worklo§1ads. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[Az Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/) kezeléséhez, és végezze el a peremhálózaton üzleti munkafolyamatok hatékony funkciókat biztosít.
+[Az Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) kezeléséhez, és végezze el a peremhálózaton üzleti munkafolyamatok hatékony funkciókat biztosít.
 A kulcsfontosságú jellemzője, mely az IoT Edge IoT-környezetek győződjön meg arról, hogy különösen vonzó rosszindulatú.
 
 Az Azure Security Center (ASC) IoT biztonsági modul egy átfogó biztonsági megoldást kínál az IoT Edge eszközök.
@@ -44,7 +44,7 @@ ASC IoT biztonsági modulhoz az IoT Edge-hez a következő funkciókat kínálja
 
 - IoT Edge üzembe helyezési jegyzékek elemzése.
 
-- Nyers biztonsági események összegzi az keresztül küldött üzenetek [IoT Edge hubot](https://docs.microsoft.com/en-us/azure/iot-edge/iot-edge-runtime#iot-edge-hub).
+- Nyers biztonsági események összegzi az keresztül küldött üzenetek [IoT Edge hubot](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).
 
 - Távolítsa el a biztonsági ikermodul használatával konfigurációját.
 

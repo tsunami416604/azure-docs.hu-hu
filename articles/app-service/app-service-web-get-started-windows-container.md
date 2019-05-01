@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 04/12/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c1b3282417cd95f1aaff472890ec655e4c5a983f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 089334d32ca54035abfbf59446366ecbe3378c15
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60852851"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919767"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Egyéni Windows-tároló futtatása az Azure-ban (előzetes verzió)
 
@@ -178,7 +178,7 @@ Ahhoz, hogy az App Service-nek előírhassa az új rendszerkép a Docker Hubból
 
 Az alkalmazás futtatásához szabadon használhat bármilyen egyéni Docker-rendszerképet. Előbb ki kell azonban választania a kívánt keretrendszernek megfelelő [szülőrendszerképet](https://docs.docker.com/develop/develop-images/baseimages/): 
 
-- .NET-keretrendszer-alkalmazások telepítéséhez használja a Windows Server Core 2019 alapján egy szülőlemezképnek [hosszú távú karbantartási csatorna (LTSC)](https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview#long-term-servicing-channel-ltsc) kiadás. 
+- .NET-keretrendszer-alkalmazások telepítéséhez használja a Windows Server Core 2019 alapján egy szülőlemezképnek [hosszú távú karbantartási csatorna (LTSC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) kiadás. 
 - .NET Core-alkalmazások telepítéséhez használja a Windows Server Nano 1809 alapján egy szülőlemezképnek [féléves karbantartási csatorna (SAC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) kiadás. 
 
 Az alkalmazás indításakor a szülőrendszerkép letöltése hosszabb időbe telhet. Az indítási időt azonban lecsökkentheti az alábbi, az Azure App Service-ben már gyorsítótárazott szülőrendszerképek egyikének használatával:

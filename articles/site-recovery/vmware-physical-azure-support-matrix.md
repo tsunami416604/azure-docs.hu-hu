@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 04/29/2019
 ms.author: raynew
-ms.openlocfilehash: dc455b5256f9c04e1e0af2c1ff3fea04af54d90b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8be028d11d0778c2b67788029aa400ffd3b98cb4
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60565411"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872913"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-támogatási mátrixa
 
@@ -66,7 +66,7 @@ Gép beállításai | Az Azure-bA replikált gépek meg kell felelnie [Azure-kö
 Gépeken futó számítási feladatokhoz | A Site Recovery bármilyen számítási feladat (például: az Active Directory, az SQL server stb.,) replikálását támogatja egy támogatott gépen futó. [További információk](https://aka.ms/asr_workload).
 Windows operációs rendszer | 64 bites Windows Server 2016 (Server Core, kiszolgáló asztali kezelőfelülettel), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2, legalább SP1. </br></br>  [A Windows Server 2008, legalább SP2 – 32 bites és 64 bites](migrate-tutorial-windows-server-2008.md) (csak a migrálás). </br></br> Windows 2016 Nano Server nem támogatott.
 Linux operációs rendszer architektúrája | Csak 64 bites rendszeren támogatott. 32 bites rendszerben nem támogatott.
-Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 a 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0-ban való 7.6 <br/><br/>CentOS: 5.2 a 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0-ban való 7.6 <br/><br/>Ubuntu 14.04 LTS server [(támogatott kernel-verzióknál)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS server [(támogatott kernel-verzióknál)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8 [(támogatott kernel-verzióknál)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2 SP3 [(támogatott kernel-verzióknál)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Linux 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0-ban, 7.1-es, 7.2, 7.3, 7.4, a Red Hat-kompatibilis kernel vagy a szoros vállalati Kernel kiadási 3 (UEK3) 7.5 <br/><br/></br>– A replikált gépek SUSE Linux Enterprise Server 11 SP3 rendszerről történő SP4 szervizcsomag nem támogatott. Szeretné frissíteni, tiltsa le a replikációt, és engedélyezze újra a frissítés után.</br></br> - [További](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) Linux- és az Azure-ban nyílt forráskódú technológia támogatása. A Site Recovery koordinálja a feladatátvétel futtatása a Linux-kiszolgálók az Azure-ban. Linux-szállítók azonban csak a teljes életciklusa még nem értek el terjesztési verziók támogatási előfordulhat, hogy korlátozza.<br/><br/> – A Linux-disztribúció csak a tőzsdei kernelekkel, amelyek részei a terjesztési alverzió kiadási/frissítés támogatottak.<br/><br/> -Frissítése a védett számítógépek között jelentős Linux terjesztési verziója nem támogatott. Szeretné frissíteni, tiltsa le a replikációt, és frissítse az operációs rendszert, majd újból engedélyezze a replikációt.<br/><br/> – Red Hat Enterprise Linux 5.2-5.11 vagy CentOS 5.2-5.11 operációs rendszert futtató kiszolgálókat kell rendelkeznie a [Linux Integration Services (LIS) összetevők](https://www.microsoft.com/download/details.aspx?id=55106) telepítve van a gépek Azure-ban.
+Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 a 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0-ban való 7.6 <br/><br/>CentOS: 5.2 a 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0-ban való 7.6 <br/><br/>Ubuntu 14.04 LTS server [(támogatott kernel-verzióknál)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS server [(támogatott kernel-verzióknál)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8 [(támogatott kernel-verzióknál)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4 [(támogatott kernel-verzióknál)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Linux 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0-ban, 7.1-es, 7.2, 7.3, 7.4, 7.5, 7.6 fut, a Red Hat-kompatibilis kernel vagy a szoros vállalati Kernel kiadási 3, 4 & 5 (UEK3, UEK4, UEK5). <br/><br/></br>– A replikált gépek SUSE Linux Enterprise Server 11 SP3 rendszerről történő SP4 szervizcsomag nem támogatott. Szeretné frissíteni, tiltsa le a replikációt, és engedélyezze újra a frissítés után.</br></br> - [További](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) Linux- és az Azure-ban nyílt forráskódú technológia támogatása. A Site Recovery koordinálja a feladatátvétel futtatása a Linux-kiszolgálók az Azure-ban. Linux-szállítók azonban csak a teljes életciklusa még nem értek el terjesztési verziók támogatási előfordulhat, hogy korlátozza.<br/><br/> – A Linux-disztribúció csak a tőzsdei kernelekkel, amelyek részei a terjesztési alverzió kiadási/frissítés támogatottak.<br/><br/> -Frissítése a védett számítógépek között jelentős Linux terjesztési verziója nem támogatott. Szeretné frissíteni, tiltsa le a replikációt, és frissítse az operációs rendszert, majd újból engedélyezze a replikációt.<br/><br/> – Red Hat Enterprise Linux 5.2-5.11 vagy CentOS 5.2-5.11 operációs rendszert futtató kiszolgálókat kell rendelkeznie a [Linux Integration Services (LIS) összetevők](https://www.microsoft.com/download/details.aspx?id=55106) telepítve van a gépek Azure-ban.
 
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu kernel-verzióknál
@@ -117,8 +117,9 @@ A HP CCISS tárolóvezérlő a fizikai kiszolgálók | Nem támogatott.
 Eszköz/csatlakoztatási pont az elnevezési konvenciót | Eszköznév vagy csatlakoztatási pont nevének egyedinek kell lennie. Győződjön meg arról, hogy nincs két eszközök/csatlakoztatási pont rendelkezik-e megkülönbözteti a kis-és nagybetűérzékeny neveket. </br> Példa: Ugyanahhoz a virtuális géphez, a két eszköz elnevezési *device1* és *Device1* nem engedélyezett.
 Könyvtárak | Mielőtt [9.20 verzió](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), <br/> 1. A következő könyvtárak (ha csoportként külön partíciókat és-fájlrendszerek) összes kell lennie a forráskiszolgálón az azonos operációsrendszer-lemez: / (gyökér), gyökérpartíció, usr, /usr/local, /var, a/etc.</br>2. gyökérpartíció lemezpartíción kell és nem kell az LVM-kötet.<br/><br/> A [9.20 verzió](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) és újabb verziók, fent korlátozásai nem vonatkoznak. LVM köteten több lemezre kiterjedő gyökérpartíció nem támogatott.
 Rendszerindítási könyvtár | A virtuális gépen több rendszerindító lemez nem támogatott. <br/><br/> A rendszerindító lemez nélküli gép nem védhető.
-
-Szabad lemezterület-követelmények |} A/root partíción 2 GB <br/><br/> A telepítési mappa XFSv5 250 MB |} XFSv5 funkcióinak XFS fájlrendszereket, metaadatok ellenőrzőösszeg, például a mobilitási szolgáltatás verziójának 9.10 meghajtóbetűjeltől támogatottak. A xfs_info segédprogram használatával a partíció a XFS superblock ellenőrzése. Ha `ftype` XFSv5 funkciók vannak használatban 1, értékre van állítva.
+Szabad lemezterület-követelmények| A/root partíción 2 GB <br/><br/> A telepítési mappa 250 MB
+XFSv5 | XFSv5 funkcióinak XFS fájlrendszereket, metaadatok ellenőrzőösszeg, például a mobilitási szolgáltatás verziójának 9.10 meghajtóbetűjeltől támogatottak. A xfs_info segédprogram használatával a partíció a XFS superblock ellenőrzése. Ha `ftype` XFSv5 funkciók vannak használatban 1, értékre van állítva.
+BTRFS |9.22 verzióról BTRFS támogatott, kivéve a következő forgatókönyvek</br>Ha a BTRFS alárendelt fájlrendszerkötet védelem engedélyezése után módosul, BTRFS nem támogatott. </br>Ha a BTRFS fájlrendszer több lemez oszlik, BTRFS nem támogatott.</br>Ha a BTRFS fájlrendszer RAID támogatja, BTRFS nem támogatott.
 
 ## <a name="vmdisk-management"></a>A felügyeleti Virtuálisgép-lemez
 

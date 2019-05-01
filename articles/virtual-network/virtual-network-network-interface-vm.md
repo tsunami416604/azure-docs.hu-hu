@@ -3,8 +3,8 @@ title: A hálózati adapterek hozzáadása vagy eltávolítása abból az Azure 
 description: Útmutató a hálózati adapterek hozzáadása vagy eltávolítása a hálózati adapterek virtuális gépekről.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
-ms.author: jdial
-ms.openlocfilehash: a6371746d156fb0be2d45ac94c898652a3147a6b
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.author: kumud
+ms.openlocfilehash: 23e46290af6bdb4c217d8fa0cd836673652fc81d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887488"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64701378"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>A hálózati adapterek hozzáadása vagy eltávolítása a hálózati adapterek virtuális gépekről
 
@@ -28,7 +28,7 @@ ms.locfileid: "56887488"
 
 Ha meg kell hozzáadása, módosítása vagy eltávolítása a hálózati illesztő IP-címeket, tekintse meg [hálózati adapter IP-címek kezelése](virtual-network-network-interface-addresses.md). Ha szeretne létrehozni, módosításához vagy a hálózati adapterek törlésével, lásd: [hálózati adapterek kezelése](virtual-network-network-interface.md).
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

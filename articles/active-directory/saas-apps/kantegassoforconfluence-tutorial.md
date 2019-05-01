@@ -4,143 +4,143 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés és
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: d0d99c14-a6ca-45f2-bb84-633126095e7a
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/12/2017
+ms.topic: tutorial
+ms.date: 03/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 210d69256f2e7f4727ee866af71dd72e765fb0b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bea7106bd0c3317fe71de201f219c151471e8208
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60266969"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704894"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>Oktatóanyag: Az Azure Active Directory-integráció az való összefolyás felett Kantega SSO-val
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan való összefolyás felett a Kantega SSO integrálása az Azure Active Directory (Azure AD).
-
 Való összefolyás felett a Kantega SSO integrálása az Azure AD nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, hogy ki férhet hozzá Kantega egyszeri Bejelentkezéssel való összefolyás felett az Azure AD-ben
-- Az Azure AD-fiókjukat engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Kantega SSO számára (egyszeri bejelentkezés) való összefolyás felett
-- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
+* Szabályozhatja, ki férhet hozzá Kantega egyszeri Bejelentkezéssel való összefolyás felett az Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Kantega egyszeri bejelentkezés (egyszeri bejelentkezés) való összefolyás felett az az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD-integráció konfigurálása az való összefolyás felett Kantega SSO-val, a következőkre van szükség:
 
-- Azure AD-előfizetés
-- Egy Kantega egyszeri Bejelentkezéssel való összefolyás felett az egyszeri bejelentkezés az előfizetés engedélyezve van
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
+* Kantega egyszeri Bejelentkezéssel való összefolyás felett az egyszeri bejelentkezés az előfizetés engedélyezve van
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Kantega egyszeri Bejelentkezéssel való összefolyás felett a Hozzáadás a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+
+* Támogatja a Kantega egyszeri Bejelentkezéssel való összefolyás felett az **SP és IDP** által kezdeményezett egyszeri bejelentkezés
 
 ## <a name="adding-kantega-sso-for-confluence-from-the-gallery"></a>Kantega egyszeri Bejelentkezéssel való összefolyás felett a Hozzáadás a katalógusból
+
 Az Azure AD-be való összefolyás felett Kantega SSO-integráció konfigurálásához, hozzá kell Kantega egyszeri Bejelentkezéssel való összefolyás felett az a galériából a felügyelt SaaS-alkalmazások listájára.
 
 **Kantega egyszeri Bejelentkezéssel való összefolyás felett az hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Active Directory][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![Alkalmazások][2]
-    
-1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![Alkalmazások][3]
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-1. A Keresés mezőbe írja be a **Kantega egyszeri Bejelentkezéssel való összefolyás felett az**.
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/kantegassoforconfluence-tutorial/tutorial_kantegassoforconfluence_search.png)
+4. A Keresés mezőbe írja be a **Kantega egyszeri Bejelentkezéssel való összefolyás felett az**, jelölje be **Kantega egyszeri Bejelentkezéssel való összefolyás felett az** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-1. Az eredmények panelen válassza ki a **Kantega egyszeri Bejelentkezéssel való összefolyás felett az**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+    ![Kantega egyszeri bejelentkezés, az eredmények listájában való összefolyás felett](common/search-new-app.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/kantegassoforconfluence-tutorial/tutorial_kantegassoforconfluence_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az úgynevezett "Britta Simon" tesztfelhasználó alapján való összefolyás felett Kantega SSO-val.
-
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Kantega egyszeri Bejelentkezéssel való összefolyás felett a mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Kantega egyszeri Bejelentkezéssel való összefolyás felett a hivatkozás kapcsolata kell létrehozni.
-
-Való összefolyás felett Kantega egyszeri Bejelentkezést, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés Kantega SSO-val való összefolyás felett alapján nevű tesztfelhasználó **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Kantega egyszeri Bejelentkezéssel való összefolyás felett a hivatkozás kapcsolata kell létrehozni.
 
 Az Azure AD egyszeri bejelentkezés az való összefolyás felett Kantega SSO-val tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Egy Kantega egyszeri bejelentkezés az való összefolyás felett tesztfelhasználó létrehozása](#creating-a-kantega-sso-for-confluence-test-user)**  – egy megfelelője a Britta Simon Kantega egyszeri Bejelentkezést a felhasználó Azure ad-ben reprezentációja kapcsolódó való összefolyás felett van.
-1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Kantega egyszeri bejelentkezést az való összefolyás felett egyszeri bejelentkezés](#configure-kantega-sso-for-confluence-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Kantega egyszeri Bejelentkezéssel való összefolyás felett tesztfelhasználó](#create-kantega-sso-for-confluence-test-user)**  – egy megfelelője a Britta Simon Kantega egyszeri Bejelentkezést a felhasználó Azure ad-ben reprezentációja kapcsolódó való összefolyás felett van.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és a Kantega egyszeri Bejelentkezéssel való összefolyás felett alkalmazáshoz az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Az Azure AD egyszeri bejelentkezés konfigurálása az való összefolyás felett Kantega SSO-val, hajtsa végre az alábbi lépéseket:**
+Az Azure AD egyszeri bejelentkezés konfigurálása az való összefolyás felett Kantega SSO-val, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portalon az a **Kantega egyszeri Bejelentkezéssel való összefolyás felett az** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), a a **Kantega egyszeri Bejelentkezéssel való összefolyás felett az** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/tutorial_kantegassoforconfluence_samlbase.png)
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-1. A **Identitásszolgáltató** módban indul a **Kantega egyszeri Bejelentkezéssel való összefolyás felett tartomány és URL-címek** szakasz hajtsa végre a következő lépést:
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/tutorial_kantegassoforconfluence_url1.png)
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
 
-1. A **SP** kezdeményezett mód, a jelölőnégyzet **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést:
+    ![Kantega egyszeri Bejelentkezéssel való összefolyás felett tartomány és URL-címeket egyetlen bejelentkezési információk](common/idp-intiated.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/tutorial_kantegassoforconfluence_url2.png)
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-    > [!NOTE] 
+5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+
+    ![Kantega egyszeri Bejelentkezéssel való összefolyás felett tartomány és URL-címeket egyetlen bejelentkezési információk](common/metadata-upload-additional-signon.png)
+
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+
+    > [!NOTE]
     > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Ezek az értékek fogadásának való összefolyás felett beépülő modul, az oktatóanyag későbbi részében ismertetett konfigurálása során.
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
+6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/tutorial_kantegassoforconfluence_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-1. Kattintson a **mentése** gombra.
+7. Az a **be Kantega egyszeri Bejelentkezést az való összefolyás felett** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/tutorial_general_400.png)
-    
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+
+    a. Bejelentkezési URL
+
+    b. Azure AD-azonosító
+
+    c. Kijelentkezési URL
+
+### <a name="configure-kantega-sso-for-confluence-single-sign-on"></a>Kantega egyszeri Bejelentkezéssel való összefolyás felett egyszeri bejelentkezés konfigurálása
+
 1. Egy másik böngészőablakban, jelentkezzen be a **felügyeleti portálon való összefolyás felett** rendszergazdaként.
 
 1. Vigye a mutatót a fogaskerék alakú ikonjára, majd kattintson a **bővítmények**.
-    
+
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/addon1.png)
 
-1. A **ATLASSIAN MARKETPLACE** lapra, majd **új bővítmények keresése**. 
+1. A **ATLASSIAN MARKETPLACE** lapra, majd **új bővítmények keresése**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/addon.png)
 
@@ -156,10 +156,10 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/addon33.png)
 
-1.  Kattintson a **Kezelés** gombra.
+1. Kattintson a **Kezelés** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/addon34.png)
-    
+
 1. Kattintson a **konfigurálása** a új beépülő modul konfigurálásához.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/addon35.png)
@@ -167,20 +167,20 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 1. Az új beépülő modult is területen található **felhasználók és biztonsági** fülre.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/addon36.png)
-    
+
 1. Az a **SAML** szakaszban. Válassza ki **Azure Active Directory (Azure AD)** származó a **Hozzáadás identitásszolgáltató** legördülő listából.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/addon4.png)
 
 1. Válassza ki az előfizetés szintjén, **alapszintű**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/addon5.png)     
+    ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/addon5.png)
 
-1. Az a **alkalmazás tulajdonságai** szakaszban, hajtsa végre a következő lépéseket: 
+1. Az a **alkalmazás tulajdonságai** szakaszban, hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/addon6.png)
 
-    a. Másolás a **Alkalmazásazonosító URI-t** értékét, és használja azt **azonosítóját, a válasz URL-cím és a bejelentkezési URL-** a a **Kantega egyszeri Bejelentkezéssel való összefolyás felett tartomány és URL-címek** szakaszban az Azure Portalon.
+    a. Másolás a **Alkalmazásazonosító URI-t** értékét, és használja azt **azonosítóját, a válasz URL-cím és a bejelentkezési URL-** a a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
     b. Kattintson a **tovább**.
 
@@ -195,7 +195,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 1. Az a **nevét és az egyszeri bejelentkezés helyét** szakaszban, hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/addon8.png)
-    
+
     a. Adja hozzá az identitásszolgáltató nevét **identitásszolgáltató neve** (például: az Azure AD) szövegmezőbe.
 
     b. Kattintson a **tovább**.
@@ -212,7 +212,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     b. Kattintson a **tovább**.
 
-1. Kattintson a **Befejezés** gombra.    
+1. Kattintson a **Befejezés** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/addon11.png)
 
@@ -224,46 +224,62 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     b. Adja meg a tartomány nevét a **tartományok ismert** szövegmezőbe.
 
-    c. Kattintson a **Save** (Mentés) gombra. 
+    c. Kattintson a **Save** (Mentés) gombra.
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-![Az Azure AD-felhasználó létrehozása][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/kantegassoforconfluence-tutorial/create_aaduser_01.png) 
+    ![Új felhasználó gomb](common/new-user.png)
 
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
-    
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/kantegassoforconfluence-tutorial/create_aaduser_02.png) 
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/kantegassoforconfluence-tutorial/create_aaduser_03.png) 
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/kantegassoforconfluence-tutorial/create_aaduser_04.png) 
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőtípus `brittasimon@yourcompanydomain.extension`  
+    Például: BrittaSimon@contoso.com
 
-    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
-
-    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
-
-    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
-### <a name="creating-a-kantega-sso-for-confluence-test-user"></a>Létrehozás egy Kantega egyszeri Bejelentkezéssel való összefolyás felett tesztfelhasználó számára
 
-Ahhoz, hogy az Azure AD-felhasználók való összefolyás felett bejelentkezni, akkor ki kell építeni be való összefolyás felett. Esetén való összefolyás felett Kantega egyszeri Bejelentkezést kiépítés a manuális feladat.
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Kantega egyszeri Bejelentkezéssel való összefolyás felett az Azure egyszeri bejelentkezés használatára.
+
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Kantega egyszeri Bejelentkezéssel való összefolyás felett az**.
+
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+
+2. Az alkalmazások listájában jelölje ki a **Kantega egyszeri Bejelentkezéssel való összefolyás felett az**.
+
+    ![A Kantega egyszeri bejelentkezés az alkalmazásainak listájában való összefolyás felett hivatkozás](common/all-applications.png)
+
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
+
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+
+### <a name="create-kantega-sso-for-confluence-test-user"></a>Hozzon létre Kantega egyszeri Bejelentkezéssel való összefolyás felett tesztfelhasználó számára
+
+Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a való összefolyás felett, akkor ki kell építeni be való összefolyás felett. Esetén való összefolyás felett Kantega egyszeri Bejelentkezést kiépítés a manuális feladat.
 
 **Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
 
@@ -271,11 +287,11 @@ Ahhoz, hogy az Azure AD-felhasználók való összefolyás felett bejelentkezni,
 
 1. Vigye a mutatót a fogaskerék alakú ikonjára, majd kattintson a **felhasználókezelés**.
 
-    ![Alkalmazott hozzáadása](./media/kantegassoforconfluence-tutorial/user1.png) 
+    ![Alkalmazott hozzáadása](./media/kantegassoforconfluence-tutorial/user1.png)
 
-1. A felhasználók szakaszban kattintson a **felhasználó hozzáadása** fülre. Az a **"Egy felhasználó hozzáadása"** párbeszédpanel lapon, a következő lépésekkel:
+1. A felhasználók szakaszban kattintson a **felhasználó hozzáadása** fülre. Az a **felhasználó hozzáadása** párbeszédpanel lapon, a következő lépésekkel:
 
-    ![Alkalmazott hozzáadása](./media/kantegassoforconfluence-tutorial/user2.png) 
+    ![Alkalmazott hozzáadása](./media/kantegassoforconfluence-tutorial/user2.png)
 
     a. Az a **felhasználónév** szövegmezőbe írja be az e-mailt, felhasználó, például Brittasimon@contoso.com.
 
@@ -286,64 +302,20 @@ Ahhoz, hogy az Azure AD-felhasználók való összefolyás felett bejelentkezni,
     d. Az a **jelszó** szövegmezőbe írja be a felhasználó jelszava.
 
     e. Kattintson a **jelszó megerősítése** írja be újból a jelszót.
-    
+
     f. Kattintson a **Hozzáadás** gombra.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
-
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Kantega egyszeri Bejelentkezéssel való összefolyás felett az Azure egyszeri bejelentkezés használatára.
-
-![Felhasználó hozzárendelése][200] 
-
-**Britta Simon rendel az való összefolyás felett Kantega SSO, hajtsa végre az alábbi lépéseket:**
-
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
-
-    ![Felhasználó hozzárendelése][201] 
-
-1. Az alkalmazások listájában jelölje ki a **Kantega egyszeri Bejelentkezéssel való összefolyás felett az**.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforconfluence-tutorial/tutorial_kantegassoforconfluence_app.png) 
-
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
-
-    ![Felhasználó hozzárendelése][202] 
-
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![Felhasználó hozzárendelése][203]
-
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
-
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
-
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha rákattint a Kantega egyszeri Bejelentkezéssel való összefolyás felett csempe a hozzáférési panelen, kell lekérése automatikusan bejelentkezett a Kantega egyszeri bejelentkezés az alkalmazáshoz való összefolyás felett.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
+Ha rákattint a Kantega egyszeri Bejelentkezéssel való összefolyás felett csempe a hozzáférési panelen, meg kell lehet automatikusan bejelentkezett a Kantega egyszeri bejelentkezés, amelynek beállítása egyszeri Bejelentkezéssel való összefolyás felett az. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/kantegassoforconfluence-tutorial/tutorial_general_01.png
-[2]: ./media/kantegassoforconfluence-tutorial/tutorial_general_02.png
-[3]: ./media/kantegassoforconfluence-tutorial/tutorial_general_03.png
-[4]: ./media/kantegassoforconfluence-tutorial/tutorial_general_04.png
-
-[100]: ./media/kantegassoforconfluence-tutorial/tutorial_general_100.png
-
-[200]: ./media/kantegassoforconfluence-tutorial/tutorial_general_200.png
-[201]: ./media/kantegassoforconfluence-tutorial/tutorial_general_201.png
-[202]: ./media/kantegassoforconfluence-tutorial/tutorial_general_202.png
-[203]: ./media/kantegassoforconfluence-tutorial/tutorial_general_203.png
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

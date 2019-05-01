@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 67526eddd19c5869aa54432f963d9b80396f878d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 7725563a80182be8f8c02d94ef1e6cfa382c04d3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61471675"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924854"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Vészhelyreállítás beállítása az SQL Server
 
@@ -170,7 +170,7 @@ Az elosztott tranzakciókat használó alkalmazásokhoz, javasoljuk a Site Recov
 
 Ebben a forgatókönyvben azt javasoljuk, hogy a Site Recovery replikációs védeni az SQL Servert futtató gép használja. A pontos lépések e SQL Server egy virtuális gép vagy fizikai kiszolgálóra, és hogy az Azure-bA replikálni kívánt vagy egy másodlagos helyszíni hely függ. Ismerje meg [Site Recovery forgatókönyvek](site-recovery-overview.md).
 
-## <a name="protect-a-sql-server-cluster-standard-editionwindows-server-2008-r2"></a>(Standard edition vagy Windows Server 2008 R2) SQL Server-fürt védelme
+## <a name="protect-a-sql-server-cluster-standard-editionsql-server-2008-r2"></a>(Standard edition vagy SQL Server 2008 R2) SQL Server-fürt védelme
 
 SQL Server Standard edition vagy SQL Server 2008 R2 rendszert futtató fürtre javasoljuk a Site Recovery replikációs használatával az SQL Server védelme.
 

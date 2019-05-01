@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: danlep
-ms.openlocfilehash: a4da7a23d6dcb50164829507130fed145abeebbd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 25f9d4e02bcb354acf1c771157622f07c5f4bcc1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60684176"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712800"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Egy Azure-beli virtuális hálózatban a tárolópéldányok üzembe helyezése
 
@@ -265,7 +265,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 A kezdeti előzetes verzióját a funkció számos további parancsok a hálózati erőforrások törli a korábban létrehozott van szükség. Ha ez a cikk korábbi szakaszaiban a Példaparancsok használatban a virtuális hálózatot és alhálózatot létrehozni, majd használhatja a következő parancsfájl hálózati erőforrások törlése.
 
-Parancsfájl végrehajtása előtt állítsa be a `RES_GROUP` változó neve lesz az erőforráscsoport, amely tartalmazza a virtuális hálózatot és alhálózatot, amelyet törölni kell. A szkript a Bash rendszerhéj van formázva. Ha inkább egy másik, például a PowerShell vagy az parancssor rendszerhéj, szüksége változó-hozzárendelés és leíró ennek megfelelően módosítsa.
+Parancsfájl végrehajtása előtt állítsa be a `RES_GROUP` változó neve lesz az erőforráscsoport, amely tartalmazza a virtuális hálózatot és alhálózatot, amelyet törölni kell. Frissítse a virtuális hálózat és alhálózat nevét, ha nem használja a `aci-vnet` és `aci-subnet` nevek korábban ajánlott. A szkript a Bash rendszerhéj van formázva. Ha inkább egy másik, például a PowerShell vagy az parancssor rendszerhéj, szüksége változó-hozzárendelés és leíró ennek megfelelően módosítsa.
 
 > [!WARNING]
 > Ez a parancsfájl törli az erőforrást! Törli a virtuális hálózat és az összes alhálózatot tartalmaz. Győződjön meg, hogy már nincs szüksége *bármely* az erőforrások a virtuális hálózatban, beleértve az esetleges olyan alhálózatokra, tartalmaz, ez a szkript futtatása előtt. Törölt, **ezeket az erőforrásokat is helyreállíthatatlan**.
@@ -281,6 +281,8 @@ NETWORK_PROFILE_ID=$(az network profile list --resource-group $RES_GROUP --query
 az network profile delete --id $NETWORK_PROFILE_ID -y
 
 # Get the service association link (SAL) ID
+# Replace aci-vnet and aci-subnet with your VNet and subnet names in the following commands
+
 SAL_ID=$(az network vnet subnet show --resource-group $RES_GROUP --vnet-name aci-vnet --name aci-subnet --query id --output tsv)/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default
 
 # Delete the default SAL ID for the subnet

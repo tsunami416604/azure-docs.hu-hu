@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ccc1f94b9411a158b5c60509e09bd3edc0a61640
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e09435b09811ef31057f4dc257fc55fa72909d83
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359874"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714916"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -99,7 +99,7 @@ A **előfeltétel** elemeket a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| Value | 1:n | A lekérdezendő ClaimTypeReferenceId. Egy másik értéket elem tartalmazza az ellenőrizendő értékkel.</li></ul>|
+| Érték | 1:n | A lekérdezendő ClaimTypeReferenceId. Egy másik értéket elem tartalmazza az ellenőrizendő értékkel.</li></ul>|
 | Műveletek | 1:1 | Az előfeltétel-ellenőrzés belül egy vezénylési lépés teljesülése esetén végrehajtandó művelet. Ha az érték a `Action` értékre van állítva `SkipThisOrchestrationStep`, a társított `OrchestrationStep` nem hajtható végre. | 
 
 #### <a name="preconditions-examples"></a>Az Előfeltételek példák

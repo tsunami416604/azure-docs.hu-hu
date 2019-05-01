@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/30/2018
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d69ddbd38798d0667ce69fb7696597a972b5098
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 16d20e9ea2203c788a2b7b5eb0507b357350407d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60455635"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918508"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>Hibrid identitás-életciklus megtervezése
 Identitás a nagyvállalati mobilitás és az alkalmazás a hozzáférési stratégia alapjainak egyike. Mobileszköz vagy SaaS-alkalmazás aláírása, az identitás-e a kulcsot minden hozzáférjenek. A legmagasabb szintjén az identitáskezelési megoldás magában foglalja a egységes és az identitás-adattárak közötti szinkronizálása mely automatizálása, valamint a folyamat üzembe helyezésének erőforrások központosítása tartalmazza. Az identitáskezelési megoldás kell egy központi identitás kell a helyszíni és felhőben és a segítségével is identitás-összevonási valamilyen központosított hitelesítés kezelése és biztonságos megosztás és együttműködés a külső felhasználók és a vállalatok. Erőforrások között operációs rendszerek és alkalmazások számára, vagy fiókazonosítójával szervezetekben. Szervezeti felépítés is módosítható úgy, hogy megfeleljen a kiépítési irányelveinknek és eljárásainknak.
@@ -32,7 +32,7 @@ Célszerű is fontos, hogy az identitáskezelési megoldás a felhasználók hat
 ## <a name="determine-hybrid-identity-management-tasks"></a>Hibrid identitáskezelési feladatokat meghatározása
 A szervezet felügyeleti feladatok javítja a pontosságot és a felügyelet hatékonyságának és javítja a fennmaradó részét a szervezet a számítási feladatok. Az alábbiakban a kimutatás, amelyek meghatározzák a hatékony identitáskezelési rendszerekkel.
 
- ![](./media/plan-hybrid-identity-design-considerations/Identity_management_considerations.png)
+ ![identitás-felügyelettel kapcsolatos szempontok](./media/plan-hybrid-identity-design-considerations/Identity_management_considerations.png)
 
 Hibrid identitáskezelési feladatokat megadásához ismernie kell a szervezet, amely a hibrid identitás bevezetése fog néhány alapvető jellemzői. Fontos tudni, hogy az aktuális tárházak identitás források használja. Úgy, hogy ezen alapvető elemeit, az alapvető követelményeknek fog rendelkezni, és alapján, hogy ki kell kérnie a részletesebb kérdésekhez, amely vezet, a jobb tervezési döntés az identitáskezelési megoldás.  
 
@@ -61,7 +61,7 @@ Ezek a követelmények meghatározásánál tart, miközben győződjön meg arr
 ## <a name="synchronization-management"></a>Szinkronizálás kezelése
 Az identitás-szolgáltatóktól használata, és láthatóan tartja őket a célja, az identity manager egyik szinkronizálva. A szinkronizált adatok maradjon egy mérvadó fő identitásszolgáltató alapján. Hibrid identitáskezelési forgatókönyvben a szinkronizált felügyeleti modell egy helyszíni kiszolgálón lévő összes felhasználó és eszköz identitások kezelésére, és a fiókok és opcionálisan a felhőbe jelszavak szinkronizálása. A felhasználó megadja az azonos jelszót a helyi, az a felhőben, és a bejelentkezés, a jelszót az identitáskezelési megoldás által ellenőrzött. Ez a modell a címtár-Szinkronizáló eszköz használja.
 
-![](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) A megfelelő kialakítás a szinkronizálást az a hibrid identitáskezelési megoldás győződjön meg arról, hogy az alábbi kérdések és válaszok: • Mik azok a hibrid identitáskezelési megoldás érhető el a szinkronizálási megoldások?
+![címtár-szinkronizálás](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) megfelelő kialakíthatja a szinkronizálást az a hibrid identitáskezelési megoldás győződjön meg arról, hogy az alábbi kérdések és válaszok: • Mik azok a hibrid identitáskezelési megoldás érhető el a szinkronizálási megoldások?
 • Mik azok az egyszeri bejelentkezés elérhető funkciók?
 • Mik a lehetőségek az identitás-összevonási B2B és B2C között?
 

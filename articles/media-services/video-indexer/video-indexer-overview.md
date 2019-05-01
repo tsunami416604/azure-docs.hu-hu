@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 04/24/2019
 ms.author: juliako
-ms.openlocfilehash: a182b9ec0fb945b4c2ffddd7a977df8ad9a8d250
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a8812e8a24082bd8c3a2e9bd489e12a12c80c76d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60559860"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574132"
 ---
 # <a name="what-is-video-indexer"></a>Mi az a Video Indexer?
 
@@ -37,8 +37,8 @@ Az Azure Video Indexer egy felhőalapú alkalmazás, amelynek alapjait az Azure 
 
 ## <a name="audio-insights"></a>Hang insights
 
-- **Automatikus nyelvfelismerés**: Automatikusan meghatározza a domináns használja a beszélt nyelv. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, kínai (egyszerűsített), japán, orosz és portugál (brazíliai). Ha a nyelv nem ismerhető fel, a Video Indexer angol nyelvűként kezeli a videót.
-- **Hanganyag átírása**: 12 nyelvet szöveggé alakít speech, és lehetővé teszi a bővítmények. Támogatott nyelvek angol, spanyol, francia, német, olasz, egyszerűsített kínai, japán, arab, orosz, portugál (brazíliai), Hindi és koreai.
+- **Automatikus nyelvfelismerés**: Automatikusan meghatározza a domináns használja a beszélt nyelv. A támogatott nyelvek az angol, spanyol, francia, német, olasz, kínai (egyszerűsített), japán, spanyol és brazíliai portugál lesz az angol nyelvű tartalék, amikor a nyelv nem észlelhető.
+- **Hanganyag átírása**: 12 nyelvet szöveggé alakít speech, és lehetővé teszi a bővítmények. Támogatott nyelvek angol, spanyol, francia, német, olasz, egyszerűsített kínai, japán, arab, orosz, brazíliai portugál, Hindi és koreai.
 - **Kódolt feliratok**: Kódolt feliratok három formátumban hozza létre: VTT, TTML, SRT.
 - **Két feldolgozó channel**: Automatikusan észleli, külön, átirat és összevonása egyetlen idővonalán.
 - **A zaj csökkentésére**: Törli a telefonos hang- vagy zajos felvételeket (a Skype-szűrők alapján).
@@ -47,7 +47,7 @@ Az Azure Video Indexer egy felhőalapú alkalmazás, amelynek alapjait az Azure 
 - **Hangszóró statisztika**: Előadók speech arányok statisztika biztosít.
 - **Szöveges tartalom-jóváhagyás**: A hang átiratok explicit szöveg észleli.
 - **Hang hatások**: Például az aktuális vastaps, beszédfelismerési és csend hang hatások azonosítja.
-- **Érzelemfelismerő**: Beszéd- és audio jelek alapján érzelmeket azonosít. Az érzelmek a következők lehetnek: öröm, szomorúság, harag vagy félelem.
+- **Érzelemfelismerő**: Érzelmek (elhangzott) beszéd- és hang tónusosságot (hogyan, a kapcsolat) alapján azonosítja.  Az érzelmek a következők lehetnek: öröm, szomorúság, harag vagy félelem.
 - **Fordítási**: A hang átiratok 54 más nyelvekre fordításának hoz létre.
 
 ## <a name="audio-and-video-insights-multi-channels"></a>Audio- és insights (több csatorna)

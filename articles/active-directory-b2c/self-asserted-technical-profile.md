@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: dcc94daeb19174b85fface05222f8842e9544adf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 41305cc5825344a61ff15ddb5deb629cd0f1c679
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419492"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691030"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Az önellenőrzött technikai profil meghatározása egy Azure Active Directory B2C egyéni házirendek
 
@@ -23,7 +23,7 @@ ms.locfileid: "60419492"
 
 Az összes kommunikációt az Azure Active Directory (Azure AD) B2C, ahol a felhasználó várhatóan információk megadása a helyi rendszer magas technikai profilok. Például a regisztrációs oldalon, a bejelentkezési oldal vagy a jelszó alaphelyzetbe állítása az oldalon.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol
 
 A **neve** attribútuma a **protokoll** elemet hozzá kell beállítani `Proprietary`. A **kezelő** attribútum kell tartalmaznia a teljes nevet, az Azure AD B2C által használt protokoll kezelő sestavení önálló kiszolgáló által megerősített: `Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 

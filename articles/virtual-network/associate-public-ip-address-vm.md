@@ -4,24 +4,24 @@ titlesuffix: Azure Virtual Network
 description: Ismerje meg, hogyan társítsa a virtuális gép nyilvános IP-címet.
 services: virtual-network
 documentationcenter: ''
-author: jimdial
+author: KumudD
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
-ms.author: jdial
-ms.openlocfilehash: ce573ff8fe61f2e1d4c88963e0f21fc9402776e9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: kumud
+ms.openlocfilehash: 69460a111e6fd879807b4025d6832b3ac515a9b4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58083215"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691984"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Virtuális gép nyilvános IP-cím társítása
 
-Ebből a cikkből elsajátíthatja egy meglévő virtuális gép (VM) egy nyilvános IP-címet társíthatja. Kapcsolódás virtuális Géphez az internetről szeretne, ha a virtuális gép nyilvános IP-cím társítva van hozzá kell rendelkeznie. Ha szeretne létrehozni egy új virtuális gép nyilvános IP-címmel, így segítségével teheti a [az Azure portal](virtual-network-deploy-static-pip-arm-portal.md), a [az Azure parancssori felület (CLI)](virtual-network-deploy-static-pip-arm-cli.md), vagy [PowerShell](virtual-network-deploy-static-pip-arm-ps.md). Nyilvános IP-címek egy névleges díj rendelkezik. További információkért lásd: [díjszabás](https://azure.microsoft.com/pricing/details/ip-addresses/). Előfizetésenként használható nyilvános IP-címek száma korlátozva van. További információkért lásd: [korlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits-1).
+Ebből a cikkből elsajátíthatja egy meglévő virtuális gép (VM) egy nyilvános IP-címet társíthatja. Kapcsolódás virtuális Géphez az internetről szeretne, ha a virtuális gép nyilvános IP-cím társítva van hozzá kell rendelkeznie. Ha szeretne létrehozni egy új virtuális gép nyilvános IP-címmel, így segítségével teheti a [az Azure portal](virtual-network-deploy-static-pip-arm-portal.md), a [az Azure parancssori felület (CLI)](virtual-network-deploy-static-pip-arm-cli.md), vagy [PowerShell](virtual-network-deploy-static-pip-arm-ps.md). Nyilvános IP-címek egy névleges díj rendelkezik. További információkért lásd: [díjszabás](https://azure.microsoft.com/pricing/details/ip-addresses/). Előfizetésenként használható nyilvános IP-címek száma korlátozva van. További információkért lásd: [korlátok](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#publicip-address).
 
 Használhatja a [az Azure portal](#azure-portal), az Azure [parancssori felület](#azure-cli) (CLI), vagy [PowerShell](#powershell) társítani a virtuális gép nyilvános IP-címet.
 

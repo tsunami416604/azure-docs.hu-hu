@@ -1,23 +1,23 @@
 ---
-title: Azure Data Box – portáladminisztrációs útmutató | Microsoft Docs
+title: Azure Data Box kezelése az Azure Portalon |} A Microsoft Docs
 description: A cikk az Azure Data Box az Azure Portalon keresztüli kezelését ismerteti.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 483e1e0f6a472132446b20a161d012e69d83c4ac
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: bf1d810733df4eaae17d092caba42888a63cc59f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128736"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919237"
 ---
-# <a name="use-the-azure-portal-to-administer-your-data-box"></a>A Data Box kezelése az Azure Portal használatával
+# <a name="use-the-azure-portal-to-administer-your-azure-data-box"></a>Az Azure portal használata az Azure Data Box felügyeletéhez
 
-A cikk a Data Boxon végrehajtható komplex munkafolyamatokat és felügyeleti feladatokat ismerteti. A Data Box az Azure Portal használatával vagy a helyi webes felhasználói felületről felügyelhető. 
+Ez a cikk ismerteti az egyes bonyolult munkafolyamatok és felügyeleti feladatokat, amelyek az Azure Data Box hajtható végre. A Data Box az Azure Portal használatával vagy a helyi webes felhasználói felületről felügyelhető.
 
 A cikk az Azure Portalon végrehajtható feladatokra összpontosít. Az Azure Portalon kezelheti a megrendeléseket, felügyelheti a Data Boxot, és nyomon követheti a befejezéshez közeledő rendelések állapotát.
 

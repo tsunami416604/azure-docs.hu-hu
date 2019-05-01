@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: raynew
-ms.openlocfilehash: 5ee1328dddb6ae1e1c878384097b0e10aa32feeb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 61bcc0565d57f9c64c453f79f319fc56d5a6de18
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776288"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925065"
 ---
 # <a name="whats-new-in-site-recovery"></a>A Site Recovery újdonságai
 
@@ -126,7 +126,7 @@ Vészhelyreállítás az Azure virtuális gépek tekintetében a virtuális gép
 **Update** | **Részletek**
 --- | ---
 **Szolgáltatók és ügynökök** | Egy frissítést a Site Recovery-ügynökök és a szolgáltatók (leírt módon a kumulatív frissítést)
-**Vész-helyreállítási linuxhoz** | **Az Azure virtuális gépek**: RedHat Enterprise Linux 6.10; támogatott hozzáadva CentOS 6.10.<br/><br/> **VMware virtuális gépek**: RedHat Enterprise Linux 6.10; CentOS 6.10.<br/><br/> Linux-alapú virtuális gépek használatát a GUID partíciós tábla (GPT) partícióval, ha az örökölt BIOS-kompatibilitási mód mostantól támogatottak. Lásd: [Azure IaaS Virtuálisgép-lemezek – gyakran ismételt kérdések](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/faq-for-disks) további információt. 
+**Vész-helyreállítási linuxhoz** | **Az Azure virtuális gépek**: RedHat Enterprise Linux 6.10; támogatott hozzáadva CentOS 6.10.<br/><br/> **VMware virtuális gépek**: RedHat Enterprise Linux 6.10; CentOS 6.10.<br/><br/> Linux-alapú virtuális gépek használatát a GUID partíciós tábla (GPT) partícióval, ha az örökölt BIOS-kompatibilitási mód mostantól támogatottak. Lásd: [Azure IaaS Virtuálisgép-lemezek – gyakran ismételt kérdések](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) további információt. 
 **Cloud support támogatás** | Vész-helyreállítási támogatott Azure-beli virtuális gépek a Németországi felhőben.
 **Az előfizetések közötti vész-helyreállítási** | Támogatás az Azure-beli virtuális gépek egy adott régióban egy másik előfizetésben, azonos Azure Active Directory-bérlőben található másik régióban való replikálásához. [További információk](https://aka.ms/cross-sub-blog).
 **Windows Server 2008** | Migrálás támogatása futó Windows Server 2008 R2 vagy 2008 64 bites és 32-bit-es gépek.<br/><br/> Áttelepítés csak (replikáció és feladatátvétel). Feladat-visszavétel nem támogatott.

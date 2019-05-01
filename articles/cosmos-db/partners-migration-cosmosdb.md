@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/07/2018
-ms.openlocfilehash: f3b744f676dd352bb38e5cbca6e532c650617816
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 45fd716ad8542f86e4c58bb559a3745c2e61776f
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60931543"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867701"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Az Azure Cosmos DB nosql-alapú áttelepítés és az alkalmazás fejlesztői-partnerek
 
@@ -19,14 +19,14 @@ A nosql-alapú áttelepítés alkalmazásfejlesztés közül választhat külön
 
 ## <a name="migration-tools"></a>Migrálási eszközök
 
-|**Partner**  |**Képességek és tapasztalatok**  |**Támogatott országok**  |**Contact**  |
+|**Partner**  |**Képességek és tapasztalatok**  |**Támogatott országok/régiók**  |**Contact**  |
 |---------|---------|---------|---------|
 |![ImanisData][1]   | [Adatok migrálása](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) az Azure Cosmos DB MongoDB-ből. <br/> Imanis adatok globális vállalatok számára, hogy gyorsan és egyszerűen áttelepíteni a helyszíni vagy felhőbeli MongoDB adatbázisok az Azure Cosmos DB lehetővé teszi. Imanis adatok az ügynök nélküli kivételfigyelés, növekményes örökre szóló felhőalapú áttelepítési módszert biztosít a MongoDB-adattárak, amely leegyszerűsíti a migrálási, és jelentősen csökkenti az állásidőt.|  USA  |   [Webhely](http://www.imanisdata.com/)      |
 |![Striim][2]    |  [Valós idejű adatok áthelyezése az Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) számos különféle adatforrásból. <br/> Striim valós idejű gyűjtése és helyszíni forrásokból származhatnak, beleértve a vállalati dokumentumok és a relációs adatbázisok, érzékelők és naplófájlokat az Azure Cosmos DB-be számos adatmozgás egyszerűbbé teszi. |   USA   |  [Webhely](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>Rendszerintegrátor partnereink rendszerek
 
-|**Partner**  |**Képességek és tapasztalatok**  |**Támogatott országok**  |**Contact**  |
+|**Partner**  |**Képességek és tapasztalatok**  |**Támogatott országok/régiók**  |**Contact**  |
 |---------|---------|---------|---------|
 | ![10thMagnitude][13] | Nosql-alapú áttelepítés; Új alkalmazások fejlesztéséhez | USA | [Webhely](https://www.10thmagnitude.com/)|
 |![Altoros fejlesztési LLC][3]    |  Nosql-alapú áttelepítés <br/> Alkalmazásfejlesztés (meglévő alkalmazások), <br/> Új alkalmazások fejlesztéséhez |   Egyesült Államok, Norvégia, Finnország, Belarusz, Argentína |  [Webhely](https://www.altoros.com/)     |

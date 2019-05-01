@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 04/29/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9b63fb963408b8f22453c7ea78e36a49402273a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e2bcd92ffc8799b2edf04251b6ce160e96c7609c
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60906101"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875609"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Testre szabhatja az SQL information protection-szabályzat az Azure Security Centerben (előzetes verzió)
  
@@ -41,12 +41,11 @@ Information Protection tartalmaz egy beépített címkék és adattípusok, alap
 ## <a name="customize-the-information-protection-policy"></a>Az Information Protection-szabályzat testreszabása
 Az information protection-házirend testreszabása az Azure-bérlőhöz, szüksége lesz [rendszergazdai jogosultságokkal azon a bérlő gyökérszintű felügyeleti csoport](security-center-management-groups.md). 
  
-1. A Security Center főmenüjében válassza **biztonsági házirend**.
-2. Válassza ki **hierarchikus megjelenítése (előzetes verzió)**, majd a **bérlői legfelső szintű csoport**, kattintson **beállításainak szerkesztése**.
- 
+1. A a Security Center főmenüjében alatt **erőforrás biztonsági higiéniai** lépjen a **adatok és tárolás** , majd kattintson a a **SQL Information Protection** gombra.
+
    ![Information protection-szabályzat konfigurálása](./media/security-center-info-protection-policy/security-policy.png) 
  
-3. A **szabályzat összetevői**, kattintson a **Information protection**. Az a **Information protection-beállítások** lapon megtekintheti az aktuális készletét címkéket. Ezek azok a fő besorolási attribútumok, amelyek az érzékenységi szint, az adatok kategorizálását. Itt konfigurálhatja a **Information protection-címkék** és **információtípusok** a bérlő számára. 
+2. Az a **SQL Information Protection** lapon megtekintheti az aktuális készletét címkéket. Ezek azok a fő besorolási attribútumok, amelyek az érzékenységi szint, az adatok kategorizálását. Itt konfigurálhatja a **Information protection-címkék** és **információtípusok** a bérlő számára. 
  
 ### <a name="customizing-labels"></a>A címkék testreszabása
  

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 877d994968dbc575c8baa7ac4c8a40b76f6d617f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75fe965a04bd02a1086551053c28d2072eae6468
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323824"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869515"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Az Azure CDN szabálymotorral feltételeknek megfelelő 
 Ez a cikk felsorolja az elérhető egyezési feltételei számára az Azure Content Delivery Network (CDN) a részletes leírását [szabálymotorral](cdn-rules-engine.md).
@@ -28,7 +28,7 @@ A szabály második része az egyezési feltétellel. Egyeztetési feltételt az
 
 Ha például az egyeztetési feltételt is használhatja:
 - Kérelmek szűrése a tartalom egy adott helyen.
-- Kérelmek szűrése egy adott IP-cím vagy ország alapján generált.
+- Kérelmek szűrése egy adott IP-cím vagy ország/régió alapján generált.
 - Kérelmek szűrése a fejléc-információkat.
 
 ## <a name="always-match-condition"></a>Mindig a feltételnek megfelelő
@@ -54,7 +54,7 @@ A hely egyezési feltételei kéréseket a kérelmező helye alapján azonosíth
 Name (Név) | Cél
 -----|--------
 [AS-szám](#as-number) | Egy adott hálózat kérelmekkel azonosítja.
-[Ország](#country) | A megadott országokból kérelmekkel azonosítja.
+[Ország](#country) | A megadott országokból/régiókból származó kérelmekkel azonosítja.
 
 ## <a name="origin-match-conditions"></a>Forrás egyezési feltételei
 
@@ -235,7 +235,7 @@ Legfontosabb tudnivalókat:
 
 ---
 ### <a name="country"></a>Ország
-Megadhatja, hogy egy ország keresztül az országkódot. 
+Egy országot/régiót az ország-kódon keresztül is megadhat. 
 
 A **egyezések**/**Neodpovídá** a beállítás határozza meg, amely alatt az ország feltételnek megfelelő feltételek teljesülése:
 - **Egyezések**: A kérelem tartalmazza a megadott ország kódértékek igényel. 
@@ -260,9 +260,9 @@ Ez az egyezési feltétellel lehetővé teszi számos testreszabásokat kérést
 - URL-cím elérési út helyettesítő egyezés: Állítsa be a [URL-cím elérési út helyettesítő feltételnek megfelelő](#url-path-wildcard) azt a könyvtárat, biztonságát. 
     Fűzze hozzá a csillag, győződjön meg arról, hogy az összes gyermekre a hozzáférést a szabály által korlátozva lesznek relatív elérési út végén.
 
-- Ország/régió egyezés Állítsa be az ország egyeztetési feltételt a kívánt készlethez országok/régiók.
+- Ország/régió egyezés Állítsa be az ország egyeztetési feltételt a kívánt készlethez országokban/régiókban.
    - Engedélyezése: Az ország az egyezési feltétellel beállítása **Neodpovídá** határozzák meg az URL-cím elérési út helyettesítő egyeztetési feltételt a helyen tárolt tartalmat csak a megadott országok/régiók hozzáférésének engedélyezéséhez.
-   - Blokkolás: Az ország az egyezési feltétellel beállítása **egyezések** nem férhet hozzá az URL-cím elérési út helyettesítő egyezési feltételei által meghatározott helyen tárolt tartalmat a megadott országok/régiók blokkolására.
+   - Blokkolás: Az ország az egyezési feltétellel beállítása **egyezések** a megadott országban és régióban nem férhet hozzá az URL-cím elérési út helyettesítő egyezési feltételei által meghatározott helyen tárolt tartalom blokkolása.
 
 - Hozzáférés (403) szolgáltatás megtagadása: Engedélyezze a [hozzáférés megtagadása (403) funkció](cdn-rules-engine-reference-features.md#deny-access-403) az ország szerinti szűrés funkció engedélyezése vagy letiltása részének replikálni.
 
@@ -306,7 +306,7 @@ Legfontosabb tudnivalókat:
 #### <a name="string-type"></a>Karakterlánc típus
 Egy WURFL képesség általában tetszőleges számok, betűk és szimbólumok kombinációját fogad el. Ez a funkció rugalmas jellege miatt ki kell választania ezt az egyezési feltétellel társított értéket értelmezését. A következő táblázat ismerteti az elérhető beállítások készletét:
 
-Typo     | Leírás
+Típus     | Leírás
 ---------|------------
 Szövegkonstans  | Ezt a beállítást, hogy a legtöbb karakterek használatával kulcsszó különleges jelentéssel a felvételt a [Szövegkonstansérték](cdn-rules-engine-reference.md#literal-values).
 Helyettesítő karakter | Ezzel a lehetőséggel előnyeit minden [helyettesítő karakterek] ([helyettesítő karakteres értékek](cdn-rules-engine-reference.md#wildcard-values).
@@ -752,7 +752,7 @@ Legfontosabb tudnivalókat:
 
 A minta konfigurációkat az alábbi táblázat azt feltételezik, hogy a match feltétel teljesül-e, amikor egy kérelem megfelel a megadott URL-minta:
 
-Value                   | A viszonyítva    | Eredmény 
+Érték                   | A viszonyítva    | Eredmény 
 ------------------------|----------------|-------
 */test.html */test.php  | Legfelső szintű vagy a forrás | Ez a minta egyezik "test.html" vagy "test.php" bármelyik mappájában nevű eszközök kérelmek szerint.
 /80ABCD/origin/text/*   | Gyökér           | Ez a minta egyezik, ha a kért objektum megfelel a következő feltételeknek: <br />-Kell lennie, egy ügyfél forrás neve "origin". <br />– A relatív elérési út "szöveg." nevű mappát kell kezdődnie. A kért objektumhoz, vagy lehetnek a "text" mappában vagy egy rekurzív almappája.
@@ -868,7 +868,7 @@ Legfontosabb tudnivalókat:
 #### <a name="sample-scenarios"></a>Használati példák
 A következő példa bemutatja, hogy ez a beállítás működéséről adott helyzetekben:
 
-Name (Név)  | Value |  Eredmény
+Name (Név)  | Érték |  Eredmény
 ------|-------|--------
 Felhasználó  | János   | Ez a minta egyezik a kért URL-cím lekérdezési karakterlánc esetén "? felhasználói János =."
 Felhasználó  | *     | Ez a minta egyezik, ha a kért URL-cím lekérdezési karakterláncot tartalmaz egy felhasználó paramétert.
@@ -895,7 +895,7 @@ Legfontosabb tudnivalókat:
     
 - Bizonyos karakterek megkövetelése URL-Címének kódolása. A százalékos szimbólum URL-címét használja a következő karakterek kódolása:
 
-   Karakter | URL-Címének kódolása | Value
+   Karakter | URL-Címének kódolása | Érték
    ----------|--------------|------
    Űr     | %20          | \%20
    &         | %25          | \%25
@@ -906,7 +906,7 @@ Legfontosabb tudnivalókat:
 
    Példa:
 
-   Value | -Ként 
+   Érték | -Ként 
    ------|---------------
    \\+    | +
    \\\\+   | \\+

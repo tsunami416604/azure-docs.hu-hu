@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 172e6f53b25a1aeef67afea0c1769e6fcaf497cd
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 3b6c4b8cebdff772ea1bd4ac95e4c8c06043f5d5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487872"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728162"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Egyéni nézet megosztása paraméteres URL-cím használatával
 
@@ -63,13 +63,13 @@ Az elfogadott értékek megfelelnek a Time Series Insights Explorer **quick time
 
 Az adott Time Series Insights-nézet kifejezéseit a `timeSeriesDefinitions=<collection of term objects>` paraméter határozza meg, amely a következőket tartalmazza:
 
-- „name”:„<string>”
+- "name": "\<karakterlánc >"
   - A *kifejezés* neve.
-- „splitBy”:„<string>”
+- "splitBy":"\<string>"
   - A *felosztás* alapjául szolgáló oszlop neve.
-- „measureName”:„<string>”
+- "measureName": "\<karakterlánc >"
   - A *mérték* oszlopneve.
-- „predicate”:„<string>”
+- "predikátum": "\<karakterlánc >"
   - A kiszolgálóoldali szűrés *where* záradéka.
 - „useSum”:„igaz”
   - Ez egy nem kötelező paraméter, amely meghatározza az összeg használatát a mértékhez.  Vegye figyelembe, ha az „Események” a kiválasztott mérték, a darabszám alapértelmezés szerint ki van választva.  Ha az „Események” nincs kiválasztva, az átlag van alapértelmezettként kiválasztva.  
@@ -121,4 +121,5 @@ A teljes nézet (a diagramot is beleértve) a következőképpen fog kinézni:
 ![Diagramnézet](media/parameterized-url/url2.png)
 
 ## <a name="next-steps"></a>További lépések
-[Adatok lekérdezése a C# használatával](time-series-insights-query-data-csharp.md)
+
+- Ismerje meg, hogyan [lekérdezés adatait az C# ](time-series-insights-query-data-csharp.md).

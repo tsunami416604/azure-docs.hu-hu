@@ -16,12 +16,12 @@ ms.date: 06/13/2018
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 1915051380a514cf8143d43bddc0d0d475f43c07
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 3f33fb09a4b6c19bae3c02ecc47dae193a3a6cb0
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63765838"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925232"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)
 Ez a cikk bemutatja, hogyan való állandó lemez csatolása a virtuális gép így megőrizheti az adatait – még akkor is, ha a virtuális gép a karbantartás vagy átméretezése miatt van kiépíteni.
@@ -205,7 +205,7 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail 
 >
 > A *nofail* beállítással biztosíthatja, hogy a virtuális gép elindul még akkor is, ha a fájlrendszer sérült, vagy a lemez nem létezik a rendszerindítás közben. Ez a beállítás nélkül felmerülhet viselkedés leírtak szerint [nem SSH a Linux rendszerű virtuális gépek FSTAB-hibák miatt](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)
 >
-> Az Azure virtuális gép soros konzoljához konzolhozzáférést biztosít a virtuális gép használható, ha módosítja az fstab egy rendszerindítási hibát eredményezett. További részleteket a [soros konzol dokumentáció](https://docs.microsoft.com/en-us/azure/virtual-machines/troubleshooting/serial-console-linux).
+> Az Azure virtuális gép soros konzoljához konzolhozzáférést biztosít a virtuális gép használható, ha módosítja az fstab egy rendszerindítási hibát eredményezett. További részleteket a [soros konzol dokumentáció](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux).
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>Az Azure-ban Linux TRIM/UNMAP támogatása
 Egyes Linux-kernelek vannak a elveti a nem használt blokkolja a lemez TRIM/UNMAP műveletek támogatásához. Ez a funkció elsősorban hasznos oldalak törölt Azure már nem érvényesek, és lehet elvetni, és pénzt takaríthat meg, ha nagy méretű fájlokat hoz létre, és törölje őket tájékoztatása standard szintű tárolóban.

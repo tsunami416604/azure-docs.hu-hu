@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: c00f703c5cfa606eaeb6ea0dea5fe5d754d3de5d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 319def9072dbf38eff44ca4459428f1ef99a2b54
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62108084"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867965"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metrikák az Azure Monitorban
 
 > [!NOTE]
-> Az Azure Monitor adatplatform két alapvető adattípusok alapján: Metrikák és naplók. Ez a cikk ismerteti a metrikákat. Tekintse meg [naplók az Azure Monitor](data-platform-logs.md) naplók és a egy részletes leírása a [Azure Monitor adatok platforn](data-platform.md) a két összehasonlítását.
+> Az Azure Monitor adatplatform két alapvető adattípusok alapján: Metrikák és naplók. Ez a cikk ismerteti a metrikákat. Tekintse meg [naplók az Azure Monitor](data-platform-logs.md) naplók és a egy részletes leírása a [Azure Monitor adatplatform](data-platform.md) a két összehasonlítását.
 
 Metrikák az Azure monitorban, könnyen használható, és képes a közel valós idejű felhasználói helyzetek, így különösen a problémák riasztási és gyors észlelése. Ez a cikk azt ismerteti, hogyan metrikák struktúrája, mi mindent velük, és azonosítja az adatok tárolása a metrikák különböző adatforrásokból.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 0ea34fe4862941bde882b3ea8ed5dbaa111ac742
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 9b86df3d08ec6dfcb3100cff333c4dc5653ee1c7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731506"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688339"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhookok az Azure tevékenységnapló-riasztások
 Műveletcsoport definíciójának részeként a webhook végpontok tevékenység log riasztási értesítések fogadása is beállíthatja. A webhookok ezek az értesítések is átirányítása utófeldolgozási vagy egyéni műveleteket más rendszerekre. Ez a cikk bemutatja, hogy az a HTTP POST a webhook hasznos adatai néz ki.
@@ -21,6 +21,10 @@ Műveletcsoport definíciójának részeként a webhook végpontok tevékenység
 A tevékenységnapló-riasztások további információkért lásd: hogyan [Azure tevékenységnapló-riasztások létrehozása](activity-log-alerts.md).
 
 Műveletcsoportok kapcsolatos tudnivalókat lásd: hogyan [Műveletcsoportok létrehozása a](../../azure-monitor/platform/action-groups.md).
+
+> [!NOTE]
+> Is használhatja a [gyakori riasztási séma](https://aka.ms/commonAlertSchemaDocs), amely biztosítja az előnyt, hogy a bővíthető egyetlen, és a webhook Integrációk az Azure monitorban szolgáltatások között az összes riasztás egységes riasztási hasznos. [Ismerje meg a gyakori riasztási sémadefiníciók.](https://aka.ms/commonAlertSchemaDefinitions)
+
 
 ## <a name="authenticate-the-webhook"></a>A webhook hitelesítése
 A webhook engedélyezési jogkivonat-alapú hitelesítéshez használhatnak. A webhook URI-t is mentve lesz egy jogkivonat-azonosító, például `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
@@ -173,7 +177,7 @@ Az összes többi tevékenységnapló-riasztások adott séma részletekért lá
 | conditionType |Mindig "esemény". |
 | név |A riasztási szabály neve. |
 | id |A riasztás erőforrás-azonosító. |
-| leírás |A riasztás létrehozásakor állítsa be a riasztás leírásában. |
+| description |A riasztás létrehozásakor állítsa be a riasztás leírásában. |
 | subscriptionId |Az Azure előfizetés-azonosítójára. |
 | időbélyeg |Idő, amikor az eseményt az Azure-szolgáltatás, amely a kérelmet feldolgozó jött létre. |
 | resourceId |Erőforrás-azonosító az érintett erőforrás. |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
-ms.openlocfilehash: e5cf89b7fe01946de9944a7026ec448cd55dd6dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 26ddb0cdd2728f9dff5d45494a14841cdc1a20cd
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60741662"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922883"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>A Configuration Manager csatlakozhat az Azure Monitor
 A System Center Configuration Manager-környezet szinkronizálási eszköz gyűjtemény adatait az Azure monitornak csatlakozhat, és ezeket az Azure Monitor és Azure Automation gyűjteményekre hivatkoznak.  
@@ -67,7 +67,7 @@ Annak érdekében, hogy a Log Analytics-kapcsolat hozzáadása, rendelkeznie kel
    
 2. Az a **általános** képernyőjén ellenőrizze, hogy elvégezte-e az alábbi műveleteket, és, hogy rendelkezik az egyes elemek részleteit, majd válassza ki, **tovább**.
 
-   1. Az Azure Portalon regisztrálta a Configuration Manager, egy webalkalmazás és/vagy webes API-alkalmazást, és hogy rendelkezik a [ügyfél-azonosító, a regisztráció](../../active-directory/develop/quickstart-v1-add-azure-ad-app.md).
+   1. Az Azure Portalon regisztrálta a Configuration Manager, egy webalkalmazás és/vagy webes API-alkalmazást, és hogy rendelkezik a [ügyfél-azonosító, a regisztráció](../../active-directory/develop/quickstart-register-app.md).
    2. Az Azure Portalon létrehozott egy Azure Active Directoryban regisztrált alkalmazás titkos kulcsa.  
    3. Az Azure Portalon a regisztrált webalkalmazás a Log Analytics-munkaterületet az Azure monitorban való hozzáférési engedélyt már megadott.  
       ![Kapcsolat a Log Analytics varázsló Általános lapja](./media/collect-sccm/sccm-console-general01.png)

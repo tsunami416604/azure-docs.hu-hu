@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: 1e80b2083a2fce90259ac0634d9e7f796f459fcd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 93be913182db56941c346ef0cad47f70c0d614c9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880955"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706831"
 ---
 # <a name="about-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentése
 
@@ -31,10 +31,14 @@ Itt látható, hogyan Azure Backup befejeződött a biztonsági mentés az Azure
     - Alapértelmezés szerint a biztonsági mentés teljes kötetárnyékmásolat vesz igénybe.
     - Ha a biztonsági mentés nem tudja átvenni a egy alkalmazáskonzisztens pillanatképet, majd azt pillanatképet fájlkonzisztens az alapul szolgáló tárolóról (mivel nincs alkalmazásírás, miközben a virtuális gép le van állítva).
 1. Linux rendszerű virtuális gépekhez a biztonsági mentés egy fájlkonzisztens biztonsági mentés vesz igénybe. Az alkalmazáskonzisztens pillanatképek kell manuálisan testre szabja az előkészítő/utólagos parancsfájl.
-1. Backup elkészítette a pillanatképet, miután az adatok átvitele a tárba. 
+1. Backup elkészítette a pillanatképet, miután az adatok átvitele a tárba.
     - A biztonsági mentés minden egyes Virtuálisgép-lemez párhuzamos biztonsági mentésével optimalizáltuk.
     - Az egyes lemezek, amelyek másolat készül Azure Backup beolvassa azokat az adatblokkokat a lemezen, és azonosítja, és csak a (különbözeti) az előző biztonsági mentés óta módosított adatok blokkokat továbbítja.
     - A pillanatkép adatainak előfordulhat, hogy nem kell azonnal-tárolóba másol. Ez órát is igénybe vehet bizonyos időszakokban. Virtuális gép teljes biztonsági mentés időpontja a napi biztonsági mentési szabályzatok legfeljebb 24 óra lesz.
+ 1. Miután az Azure Backup engedélyezve van, a Windows virtuális gép végrehajtott módosítások a következők:
+    -   A Microsoft Visual C++ 2013 Redistributable(x64) - 12.0.40660 telepítve van a virtuális gépen
+    -   Automatikus megváltozott manuális kötet árnyékmásolata szolgáltatás (VSS) indítási típusa
+    -   IaaSVmProvider Windows-szolgáltatás hozzáadása
 
 1. Az adatátvitel befejeződése után a rendszer eltávolítja a pillanatképet, és a egy helyreállítási pont létrehozása.
 
@@ -57,7 +61,7 @@ BEKs is készül biztonsági másolat. Így a BEKs elvesznek, ha hitelesített f
 
 ## <a name="snapshot-creation"></a>Pillanatkép létrehozása
 
-Az Azure Backup biztonsági mentési ütemezés szerint pillanatképeket készít. 
+Az Azure Backup biztonsági mentési ütemezés szerint pillanatképeket készít.
 
 - **Windows virtuális gépek:** Windows virtuális gépek a Backup szolgáltatás koordinálja a VSS egy alkalmazáskonzisztens pillanatképet készíteni a Virtuálisgép-lemezek.
 
@@ -82,7 +86,7 @@ A következő táblázat ismerteti a különböző típusú pillanatkép konzisz
 **Fájlrendszerkonzisztens** | A fájlrendszer konzisztens biztonsági mentések konzisztencia szolgáltatása pillanatképének az összes fájl egyszerre.<br/><br/> | Ha egy virtuális Gépet a fájlrendszer konzisztens pillanatkép végzi a helyreállítást, a virtuális gép elindul. Nincs, adatvesztés vagy adatsérülés. Alkalmazások kell megvalósítani a saját "javítás felfelé" mechanizmus, amellyel győződjön meg arról, hogy a visszaállított adatok összhangban-e. | Windows: Néhány VSS-írók nem sikerült <br/><br/> Linux: Alapértelmezett (ha előkészítő/utólagos parancsfájl nincs konfigurálva, vagy sikertelen)
 **Crash-consistent** | Összeomlás-konzisztens pillanatképekkel általában akkor fordul elő, ha egy Azure virtuális gép leáll a biztonsági mentés idején. Csak azokat az adatokat, amely már létezik a lemezen a biztonsági mentés időpontjában rögzített, és biztonsági mentés.<br/><br/> Összeomlás-konzisztens helyreállítási pont létrehozása nem garantálja az operációs rendszer vagy az alkalmazás az adatok konzisztenciáját. | Garanciát nem jelentenek, bár a virtuális gép általában indul el, és ezután elindítja a lemez ellenőrzi, hogy a sérülés hibák javítása. Memóriában lévő adatokat vagy írási műveleteket, amelyek nem továbbítja a lemezre elvesznek az összeomlás előtt. Alkalmazás valósít meg saját adatainak ellenőrzése. Például egy adatbázis-alkalmazást, a tranzakciós napló az ellenőrzéshez használhatja. Ha a tranzakciós napló olyan bejegyzéseket, amelyek nem szerepelnek az adatbázisban, az adatbázisszoftver tranzakciók összesíti az vissza addig, amíg az adatok összhangban. | Virtuális gép leállítási állapotban van
 
-## <a name="backup-and-restore-considerations"></a>Biztonsági mentési és helyreállítási szempontjai 
+## <a name="backup-and-restore-considerations"></a>Biztonsági mentési és helyreállítási szempontjai
 
 **Consideration** | **Részletek**
 --- | ---
@@ -99,8 +103,8 @@ A következő táblázat ismerteti a különböző típusú pillanatkép konzisz
 Ezek a gyakori forgatókönyvek hatással lehet a teljes biztonsági mentés időpontja:
 
 - **Új lemez hozzáadása egy védett Azure virtuális géphez:** Ha egy virtuális Gépet a növekményes biztonsági mentés alatt áll, és a egy új lemezt meg van adva, a biztonsági mentés időpontja növekedni fog. A teljes biztonsági mentés ideje az új lemez együtt a meglévő lemezt a változások replikálása a kezdeti replikálás miatt előfordulhat, hogy utolsó 24 óránál hosszabb.
-- **Feldarabolt lemezek:** Biztonsági mentési műveletek gyorsabbak, ha lemezt egybefüggően áll rendelkezésre. Ha a módosítások terjednek, és több lemez töredezett, biztonsági mentés lassabb lesz. 
-- **Lemez lemorzsolódási:** Lemezek növekményes biztonsági mentés folyamatban van a védett rendelkezik egy több mint 200 GB-os napi adatváltozás, a biztonsági mentés (több mint 8 óra) hosszú időt vehet igénybe végrehajtásához. 
+- **Feldarabolt lemezek:** Biztonsági mentési műveletek gyorsabbak, ha lemezt egybefüggően áll rendelkezésre. Ha a módosítások terjednek, és több lemez töredezett, biztonsági mentés lassabb lesz.
+- **Lemez lemorzsolódási:** Lemezek növekményes biztonsági mentés folyamatban van a védett rendelkezik egy több mint 200 GB-os napi adatváltozás, a biztonsági mentés (több mint 8 óra) hosszú időt vehet igénybe végrehajtásához.
 - **Biztonságimásolat-verziók:** Biztonsági mentés (más néven az azonnali visszaállítása verzió) legújabb verzióját használ az több optimalizált ellenőrzőösszeg összehasonlítása, mint a változásokat. De azonnali visszaállításához használja, és a törölt biztonsági mentési pillanatképet, ha a biztonsági mentés vált, amennyiben az ellenőrzőösszeg összehasonlítása. Ebben az esetben a biztonsági mentési művelet lesz haladhatja meg a 24 óra (vagy sikertelen).
 
 ## <a name="best-practices"></a>Ajánlott eljárások

@@ -9,12 +9,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b25400f21e24b18a0a21b9d849bdd505f6d47aac
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: f12d11cecbf682ae82f9c432804b1d611ee3e39f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63765757"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719403"
 ---
 # <a name="common-security-attributes-for-azure-service-fabric"></a>Az Azure Service Fabric általános biztonsági attribútumok
 
@@ -27,7 +27,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
 | Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók (például az ügyféloldali, mindig titkosított, stb.)</ul>| Igen | Az ügyfél a fürt és a fürt beépített beállítani a virtuálisgép-méretezési csoport tulajdonosa. A virtuálisgép-méretezési csoportot az Azure disk encryption is engedélyezhetők. |
-| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A Vnet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen |  |
+| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A VNet-titkosítás</li><li>Hálózatok titkosítása</ul>| Igen |  |
 | Titkosítási kulcs kezelése (CMK, BYOK, stb.)| Igen | Az ügyfél a fürt és a fürt beépített beállítani a virtuálisgép-méretezési csoport tulajdonosa. A virtuálisgép-méretezési csoportot az Azure disk encryption is engedélyezhetők. |
 | Oszlop a blokkszintű titkosítás (az Azure Data Services)| – |  |
 | Titkosított API-hívások| Igen | Service Fabric API-hívások Azure Resource Manageren keresztül történik. Egy érvényes JSON webes jogkivonat (JWT) megadása kötelező. |
@@ -37,7 +37,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
 | Szolgáltatási végpont támogatás| Igen |  |
-| vNET-injektálási támogatás| Igen |  |
+| VNet-injektálási támogatás| Igen |  |
 | Hálózatelkülönítés és támogatási optimalizálóként működik| Igen | Hálózati biztonsági csoportok (NSG) használatával. |
 | Kényszerített bújtatás támogatása| Igen | Azure-hálózatok biztosítják a kényszerített bújtatás. |
 

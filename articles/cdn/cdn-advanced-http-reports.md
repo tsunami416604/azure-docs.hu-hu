@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: c8cb4713e38ca0da610c687325f3810f57da2b26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 67bab857e66edd8e9fae7d45c6157f018da81ccf
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61216151"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867035"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Az Azure CDN fejlett HTTP-jelentések kihasználtságának statisztikai adatai elemzéséhez
 ## <a name="overview"></a>Áttekintés
@@ -42,30 +42,30 @@ Ez a dokumentum ismerteti a Microsoft Azure CDN fejlett HTTP jelentéskészíté
 ## <a name="geography-reports-map-based"></a>Földrajzi hely jelentések (térkép-alapú)
 Nincsenek öt jelentéseket, amelyek kihasználják a leképezés jelzi a régiók, amelyről a tartalmat kéri. Ezek a jelentések Világtérkép, Egyesült Államok térkép, Kanada térkép, térkép Európa és Ázsia Csendes-óceáni térkép.
 
-Minden egyes térképes jelentés holtversenyben földrajzi entitások (azaz a országok, államok és tartományok) százalékos aránya, amelyek adott régióból származik, a találatok alapján. Ezenkívül egy térkép segítségével vizualizálhatja a helyek, amelyről a tartalmat kért biztosítunk. Fontos tudni. Ehhez minden egyes régió mértékű igény szerint az adott régióban tapasztalt színkódolás. Bárka árnyékolt régiók-tartalomra vonatkozó alacsonyabb igény szerint azt jelzik, miközben sötétebb régiók jelzi a tartalmak iránti kereslet magasabb szintű.
+Minden egyes térképes jelentés ranks földrajzi entitások (azaz a országok/régiók, térkép biztosított segítségével vizualizálhatja a helyek, amelyről a tartalmat kéri. Fontos tudni. Ehhez minden egyes régió mértékű igény szerint az adott régióban tapasztalt színkódolás. Bárka árnyékolt régiók-tartalomra vonatkozó alacsonyabb igény szerint azt jelzik, miközben sötétebb régiók jelzi a tartalmak iránti kereslet magasabb szintű.
 
-Részletes és sávszélesség-információk minden olyan régió esetében közvetlenül a térkép lentebb. Ez lehetővé teszi, hogy a találatok, a találatok aránya, az adatok teljes mennyisége teljes számának megtekintéséhez történik (gigabájtban), és minden olyan régió esetében átvitt adatok aránya. Megtekintheti a leírásukat minden ezeket a metrikákat. Végül ha az egérmutatót egy régió (azaz a ország, állam vagy megye), a nevét és a találatok régióban bekövetkezett százalékos megjelenik elemleírásként.
+Részletes és sávszélesség-információk minden olyan régió esetében közvetlenül a térkép lentebb. Ez lehetővé teszi, hogy a találatok, a találatok aránya, az adatok teljes mennyisége teljes számának megtekintéséhez történik (gigabájtban), és minden olyan régió esetében átvitt adatok aránya. Megtekintheti a leírásukat minden ezeket a metrikákat. Végül, ha az egérmutatót egy régió (azaz a ország/régió, állam vagy megye), a nevét és a találatok régióban bekövetkezett százalékos jelenik meg elemleírásként.
 
 Egy rövid leírást az egyes földrajzi hely térképes jelentés lejjebb találja.
 
 | Jelentés neve | Leírás |
 | --- | --- |
-| World Map |Ez a jelentés lehetővé teszi a világszerte igény szerint a CDN-tartalom megtekintése. Egyes országok a világ térképen jelzi, hogy az adott régióban származik a találatok színkódolt. |
+| World Map |Ez a jelentés lehetővé teszi a világszerte igény szerint a CDN-tartalom megtekintése. Minden ország/régió színkódolt százalékos aránya, amelyek adott régióból származik, a találatok jelzi a világ térképen. |
 | Egyesült Államok térkép |Ez a jelentés lehetővé teszi az Egyesült Államokban iránti igény a CDN-tartalom megtekintését. A színekkel állapotaiban végrehajtható ezen a térképen jelzi, hogy az adott régióban származik a találatok jelölve témájával. |
 | Kanada térkép |Ez a jelentés lehetővé teszi az igény a CDN-tartalom megtekintését Kanadában. Minden tartományban a színekkel jelölve témájával százalékos aránya, amelyek adott régióból származik, a találatok jelzi ezen a térképen. |
-| Európa-térkép |Ez a jelentés lehetővé teszi az igény a CDN-tartalom megtekintését Európában. Minden ország a színekkel jelölve témájával százalékos aránya, amelyek adott régióból származik, a találatok jelzi ezen a térképen. |
-| Ázsia Csendes-óceáni térség térkép |Ez a jelentés lehetővé teszi az ázsiai iránti igény a CDN-tartalom megtekintését. Minden ország a színekkel jelölve témájával százalékos aránya, amelyek adott régióból származik, a találatok jelzi ezen a térképen. |
+| Európa-térkép |Ez a jelentés lehetővé teszi az igény a CDN-tartalom megtekintését Európában. Minden ország/régió a színekkel jelölve témájával százalékos aránya, amelyek adott régióból származik, a találatok jelzi ezen a térképen. |
+| Ázsia Csendes-óceáni térség térkép |Ez a jelentés lehetővé teszi az ázsiai iránti igény a CDN-tartalom megtekintését. Minden ország/régió a színekkel jelölve témájával százalékos aránya, amelyek adott régióból származik, a találatok jelzi ezen a térképen. |
 
 ## <a name="geography-reports-bar-charts"></a>Földrajzi hely jelentések (sávdiagramok)
-Nincsenek két további jelentéseket statisztikai megfelelően földrajzi hely, amelyek felső város és a Top országok. Ezek a jelentések rangsor város és ország, osztályban, ezekben a régiókban származó találatok száma szerint. Esetén az ilyen típusú jelentés létrehozásáról, a sávdiagram jelzi, a felső 10 városok vagy országok, amely a kért tartalom egy adott platformon keresztül. Ezen a sávdiagramon segítségével mérheti fel gyorsan a régiók, amelyek létrehozzák-tartalomra vonatkozó kérelmek számát vesszük figyelembe.
+Nincsenek két további jelentéseket statisztikai megfelelően földrajzi hely, amelyek felső város és a Top országok. Ezek a jelentések rangsor város és országok/régiók, osztályban, ezen országok vagy régiók származó találatok száma szerint. Esetén az ilyen típusú jelentés létrehozásáról, sávdiagram jelzi a felső 10 városok vagy országok/régiók, amely a kért tartalom egy adott platformon keresztül. Ezen a sávdiagramon segítségével mérheti fel gyorsan a régiók, amelyek létrehozzák-tartalomra vonatkozó kérelmek számát vesszük figyelembe.
 
 A bal oldalon a gráf (y tengely) azt jelzi, hogy hány találatok történt a megadott régióban. Közvetlenül a diagram (x tengely) alatt található egy címkét a felső 10 régióban.
 
 ### <a name="using-the-bar-charts"></a>A sávdiagramok használatával
 * Ha a kurzort egy, a nevét és az összes régióban bekövetkezett a találatok elemleírásként megjelennek.
-* A felső városok jelentés elemleírásában azonosítja egy város nevét, államot/megyét, és az ország kifejezés rövidítését jelöli.
-* Nem sikerült meghatározni a város vagy régió (azaz a állam/megye), amelyből egy kérés származik, majd azt jelzik, hogy azok ismeretlen. Ha az ország, ismeretlen, akkor két kérdőjel (azaz??) fog megjelenni.
-* Jelentések tartalmazhatják metrikáinak "Európa" vagy "Ázsiai és csendes-óceáni térség." Azok az elemek nem jelentenek a statisztikai információkat ezekben a régiókban összes IP-címet. Ehelyett csak kell alkalmazni az IP-címekről, futó Európa vagy Ázsia és csendes-óceáni helyett egy adott városban vagy ország kérelmekkel.
+* A felső városok jelentés elemleírásában azonosítja egy város nevét, államot/megyét, és az országot/régiót kifejezés rövidítését jelöli.
+* Nem sikerült meghatározni a város vagy régió (azaz a állam/megye), amelyből egy kérés származik, majd azt jelzik, hogy azok ismeretlen. Ha az országban vagy régióban, ismeretlen, akkor két kérdőjel (azaz??) fog megjelenni.
+* Jelentések tartalmazhatják metrikáinak "Európa" vagy "Ázsiai és csendes-óceáni térség." Azok az elemek nem jelentenek a statisztikai információkat ezekben a régiókban összes IP-címet. Ehelyett csak kell alkalmazni az IP-címekről, futó Európa vagy Ázsia és csendes-óceáni helyett egy adott város és ország/régió kérelmekkel.
 
 A sávdiagram létrehozásához használt adatok alá is megtekinthetők. Hiba található a találatok, a találatok aránya, adatmennyiség teljes száma (gigabájtban) történik, és az első 250 régióinak átvitt adatok aránya. Megtekintheti a leírásukat minden ezeket a metrikákat.
 
@@ -74,7 +74,7 @@ Az alábbi jelentések mindkét típusú biztosítunk egy rövid leírást.
 | Jelentés neve | Leírás |
 | --- | --- |
 | Felső városok |Ez a jelentés városok, adja meg a találatok száma szerint rangsorolja a régió. |
-| Leggyakoribb országok |Ez a jelentés országok, adja meg a találatok száma szerint rangsorolja a régió. |
+| Leggyakoribb országok |Ez a jelentés rangsorolja országok/régiók, amelyek az adott országból/régióból származik, a találatok száma szerint. |
 
 ## <a name="daily-summary"></a>Napi összesítés
 A napi összegző jelentés lehetővé teszi teljes száma a találatok és a egy adott platformon keresztül naponta továbbított adatok megtekintését. Ez az információ segítségével gyorsan tesz különbséget az adatok CDN tevékenységi mintáit. Például ez a jelentés segítségével melyik nappal tapasztalt magasabb vagy alacsonyabb, mint a várt forgalom észleléséhez.

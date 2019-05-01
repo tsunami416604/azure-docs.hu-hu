@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/10/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: ff6e08929d5ede86ba0632e7cfb38d81d21ca7ec
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 79c4530878783cbdb62cac630d81b65dc73c52a4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804158"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64733813"
 ---
 <a name="virtual-networking-limits-classic"></a>Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése előfizetésenként, a klasszikus üzemi modellel történik. Ismerje meg, hogyan [megtekintheti az aktuális erőforrás-használat elleni az előfizetési korlátok](../articles/networking/check-usage-against-limits.md).
 
@@ -40,7 +40,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 > [!NOTE]
 > A Microsoft a közelmúltban növelte az összes alapértelmezett korlátok a maximális korlátig való. Ha egyetlen oszlop sincs maximális korlátot, akkor az erőforrás nem állítható korlátokkal rendelkeznek. Ha növelni a múltban támogatja ezeket a korlátokat, és nem jelenik meg a frissített korlátait az alábbi táblázatban [nyisson meg egy online támogatási kérést díj nélkül](../articles/azure-resource-manager/resource-manager-quota-errors.md)
 
-| Erőforrás | Alapértelmezett korlát | 
+| Erőforrás | Alapértelmezett korlát/maximális korlát | 
 | --- | --- |
 | Virtuális hálózatok |1,000 |
 | Alhálózatok száma virtuális hálózatonként |3,000 |

@@ -1,20 +1,19 @@
 ---
 title: Mi az az Azure Backup?
-description: Az Azure Backup szolgáltatással, és hogyan helyezhet üzembe (az üzleti folytonossági és vészhelyreállítási BCDR) stratégia részeként áttekintést nyújt.
-services: backup
+description: Az Azure Backup szolgáltatással, és hogyan hozzájárul (az üzleti folytonossági és vészhelyreállítási BCDR) stratégia áttekintést nyújt.
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: overview
-ms.date: 04/05/2019
+ms.date: 04/24/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5408f920a16860972dca6450d5e51152048bbf82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: bd90d315fd5590a8bd862a1a3397cf8c254fccc8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60254699"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714279"
 ---
 # <a name="what-is-azure-backup"></a>Mi az az Azure Backup?
 
@@ -31,11 +30,7 @@ Az Azure Backup legfontosabb értékelemeket nyújtja:
 - **Korlátlan adatátvitel első**: Az Azure Backup nem korlátozza a bejövő vagy kimenő adatok átviteli, vagy a célkiszolgálóra továbbított adatokat számítunk fel díjat.
     - Kimenő adatokon a Recovery Services-tárolóból a visszaállítási művelet során átvitt adatok értendők.
     - Az Azure Import/Export szolgáltatás használatával nagy mennyiségű adat importálása offline kezdeti biztonsági mentést hajt végre, ha nincs a bejövő adatok költséggel.  [További információk](backup-azure-backup-import-export.md).
-- **A biztonságos**:
-    - A helyszínen, az átvitt adatok titkosítása az AES256 használatával a helyszíni gépen. A továbbított adatok között a tárolási és biztonsági mentési HTTPS védi. Az iSCSI protokoll biztosítja a biztonsági mentés és a felhasználó gép között továbbított adatokat. Az iSCSI-csatorna védelmére Secure tunneling használják.
-    - A helyszínen az Azure Backup szolgáltatásban, az adatokat az Azure-titkosított inaktív használatával adja meg a biztonsági mentés üzembe helyezésekor meg a jelszót. A hozzáférési kódot vagy kulcs soha továbbított adatok köre és az Azure-ban tárolja. Ha vissza kell állítani valamilyen adatot, csak Ön rendelkezik a titkosítási jelszóval vagy a kulccsal.
-    - Azure virtuális gépek, az adatok titkosítása:-visszaállítási Storage Service Encryption (SSE) használatával. Biztonsági mentés automatikusan tárolás előtt titkosítja az adatokat. Az Azure Storage, beolvasása előtt mindig visszafejti az adatokat.
-    - Biztonsági másolat az Azure Disk Encryption (ADE) használatával titkosított Azure virtuális gépeket is támogatja. [További információk](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups).
+- **A biztonságos**: Az Azure Backup megoldásokat kínál az úton lévő és a tárolt adatok védelme.
 - **Alkalmazáskonzisztens biztonsági másolatok beolvasása**: Az alkalmazáskonzisztens biztonsági mentés azt jelenti, hogy a helyreállítási pont rendelkezik az összes szükséges adattal a biztonsági másolat visszaállításához. Az Azure Backup olyan alkalmazáskonzisztens biztonsági mentést nyújt, amely garantálja, hogy ne legyen szükség további javításokra az adatok visszaállításához. Az alkalmazáskonzisztens adatok visszaállítása rövidebb idő alatt végrehajtható, így gyorsan visszatérhet egy működőképes állapotba.
 - **Rövid és hosszú távú megőrzése**: Recovery Services-tárolókat rövid és hosszú távú adatmegőrzés is használhat. Az Azure nem korlátozza az adatok megőrzési idejét a Recovery Services-tárolókban. Mindaddig, amíg Ön, mint a tárolhatja. Az Azure Backup védett példányonként 9999 helyreállítási pontos felső határral rendelkezik. [További](backup-introduction-to-azure-backup.md#backup-and-retention)kapcsolatban, hogy ezt a korlátot milyen hatással van a biztonsági mentési igényeire.
 - **Automatikus tárolófelügyelet** – A hibrid környezetek gyakran megkövetelik a heterogén tárhely alkalmazását – valamennyi tárhely szükséges a helyszínen, valamennyi a felhőben. Az Azure Backup szolgáltatással nem kell költenie helyszíni tárolóeszközökre. Az Azure Backup automatikusan foglalja le és kezeli a biztonsági mentési tárolót, és a egy használatalapú mint-akkor-használható modellt használ, hogy csak a kell fizetnie a felhasznált tárterületet. [További](https://azure.microsoft.com/pricing/details/backup) információ a díjszabásról.
@@ -99,21 +94,27 @@ Tudjon meg többet [hogyan biztonsági mentési works](backup-architecture.md#ar
 **Forgatókönyv** | **Ügynök**
 --- | ---
 **Azure-beli virtuális gépek biztonsági mentése** | Nincs ügynök szükséges. Biztonsági másolat az Azure VM-bővítmény telepítve van az Azure virtuális Gépen az Azure virtuális gép első biztonsági mentés futtatásakor.<br/><br/> Támogatás a Windows és Linux-támogatás.
-**A helyi Windows-gépek biztonsági mentése** | Letöltéséhez, telepítéséhez és a MARS-ügynök futtatása közvetlenül a gépen.
-**A MARS-ügynök biztonsági mentési Azure virtuális gépek** | Letöltése, telepítése és a MARS-ügynök futtatása közvetlenül a gépen. A MARS-ügynök mellett a biztonsági mentési bővítményt is futtatható.
+**A helyi Windows-gépek biztonsági mentése** | Letöltése, telepítése és a MARS-ügynök futtatása közvetlenül a gépen.
+**Azure virtuális gépek biztonsági mentése az a MARS-ügynök** | Letöltése, telepítése és a MARS-ügynök futtatása közvetlenül a gépen. A MARS-ügynök mellett a biztonsági mentési bővítményt is futtatható.
 **Biztonsági másolatot készíteni a helyszíni gépek és Azure virtuális gépek DPM/MABS** | A DPM- vagy MABS védelmi ügynököt a védeni kívánt gépeket futtat. A DPM kiszolgáló/MABS biztonsági mentése az Azure-bA a MARS-ügynök fut.
 
 ## <a name="which-backup-agent-should-i-use"></a>Mely biztonságimásolat-készítő ügynök használjam?
 
 **Biztonsági mentés** | **Megoldás** | **Korlátozás**
 --- | --- | ---
-**Biztonsági mentése Azure virtuális gép teljes szeretnék** | A virtuális gép biztonsági mentésének engedélyezése. A biztonsági mentési bővítményt automatikusan konfigurálják a Windows vagy Linux rendszerű Azure virtuális Gépen. | Teljes virtuális gép biztonsági mentése <br/><br/> Windows virtuális gépek alkalmazáskonzisztens a biztonsági mentés. Linux esetén a biztonsági mentés: fájlkonzisztens. Ha alkalmazás-kompatibilis kell Linux rendszerű virtuális gépek konfigurálhatja ezt az egyéni parancsfájlokkal rendelkezik.
+**Biztonsági mentése Azure virtuális gép teljes szeretnék** | A virtuális gép biztonsági mentésének engedélyezése. A biztonsági mentési bővítményt automatikusan konfigurálják a Windows vagy Linux rendszerű Azure virtuális Gépen. | Teljes virtuális gép biztonsági mentése <br/><br/> Windows virtuális gépek alkalmazáskonzisztens a biztonsági mentés. Linux esetén a biztonsági mentés: fájlkonzisztens. Ha szüksége app-t támogató Linux rendszerű virtuális gépekhez, konfigurálhatja ezt az egyéni szkriptek rendelkezik.
 **Tudok biztonsági másolatot kíván adott fájlok és mappák Azure virtuális gépen** | A MARS-ügynököt a virtuális gép üzembe helyezése.
 **A helyi Windows-számítógépek közvetlenül biztonsági** | A MARS-ügynök telepítése a gépen. | Az Azure-ba is készítsen biztonsági másolatot a fájlok, mappák és rendszerállapot. Biztonsági mentések nem alkalmazás-kompatibilis.
-**Szeretném közvetlenül biztonsági másolatot készíteni a helyszíni Linuxos gépek** | Kell telepíteni a DPM- vagy MABS biztonsági mentése az Azure-bA. | Linux-állomáshoz biztonsági mentése nem támogatott, csak biztonsági mentési Linux vendég gépen található Hyper-V vagy VMware-alapú is.
+**Szeretném közvetlenül biztonsági másolatot készíteni a helyszíni Linuxos gépek** | Kell telepíteni a DPM- vagy MABS biztonsági mentése az Azure-bA. | Linux-állomáshoz biztonsági mentése nem támogatott, csak biztonsági másolatot készíthet a Hyper-V vagy VMware-alapú üzemeltetett Linux rendszerű vendég gépen.
 **Készítsen biztonsági másolatot a helyszínen futó alkalmazások szeretnék** | Alkalmazás együttműködő biztonsági másolat készíthető a gépek DPM- vagy MABS kell védeni.
 **Szeretném, hogy az Azure virtuális gépek részletes és rugalmas biztonsági mentési és helyreállítási beállításai** | A MABS és DPM biztonsági mentési ütemezés további rugalmasságának biztosítása érdekében, és a teljes rugalmasság a védelmét, és fájlokat, mappa, kötet, alkalmazások és rendszerállapot visszaállítása az Azure-ban futó Azure virtuális gépek védelmét.
 
+## <a name="how-does-azure-backup-work-with-encryption"></a>Hogyan működik az Azure Backup a titkosítás?
+
+**Titkosítás** | **Biztonsági másolatot készíteni a helyszíni** | **Azure-beli virtuális gépek biztonsági mentése** | **SQL biztonsági mentése Azure virtuális gépeken**
+--- | --- | --- | ---
+Titkosítás inaktív állapotban<br/> (Ahol a szolgáltatás megőrzött/tárolt adatok titkosítása) | Ügyfél által megadott hozzáférési kód segítségével titkosíthatja az adatokat | Azure [Storage Service Encryption (SSE)](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) a tárolóban tárolt adatok titkosítására szolgál.<br/><br/> Biztonsági mentés automatikusan tárolás előtt titkosítja az adatokat. Az Azure Storage, beolvasása előtt mindig visszafejti az adatokat. Az SSE felhasználó által kezelt kulcsok használata jelenleg nem támogatott.<br/><br/> Készíthet biztonsági mentést használó virtuális gépek [az Azure disk encryption (ADE)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) operációsrendszer- és adatlemezek titkosításához. Az Azure Backup támogatja a blokktitkosítási kulcsot az titkosított virtuális gépekhez – csak, és egyaránt rendelkeznek BEk-KEL és [KEK](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/). Tekintse át a [korlátozások](backup-azure-vms-encryption.md#encryption-support). | Az Azure Backup támogatja az SQL Server-adatbázisok vagy a kiszolgáló biztonsági másolatának [TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) engedélyezve van. Biztonsági mentés TDE támogatja az Azure által kezelt kulcsokkal, vagy az ügyfél által felügyelt kulcsokat (BYOK).<br/><br/> Biztonsági mentés végre bármely SQL-titkosítás, a biztonsági mentési folyamatának részeként.
+Titkosítás az átvitel során<br/> (Adatok áthelyezése egyik helyről egy másikra titkosítása) | AES256 használatával, és a tároló az Azure-beli HTTPS-kapcsolaton keresztül küldött adatok titkosítása | Azure-ban az Azure storage és a tároló védett adatai, HTTPS. Ezeket az adatokat az Azure gerinchálózatán marad.<br/><br/> A fájl-helyreállítási iSCSI védi a tároló és az Azure virtuális gép között továbbított adatokat. Az iSCSI-csatorna biztonságos tunneling védi. | Azure-ban az Azure storage és a tároló védett adatai, HTTPS.<br/><br/> Fájl-helyreállítási nem releváns, az SQL.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 2f27105aed940f0411abaa534cb09adf0be34bfe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a16421182f533f5aa2ad4bcc2e58e910cc7e8ca6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60830321"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702415"
 ---
 # <a name="how-an-application-gateway-works"></a>Egy application gateway működése
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan egy application gateway elfogadja a bejövő kérelm
 
 2. Az Azure DNS az IP-címet az ügyfélnek, amely az előtérbeli IP-cím, az application Gateway adja vissza.
 
-3. Az application gateway egy vagy több figyelői a bejövő forgalmat fogad el. Egy figyelő olyan logikai entitás, amely ellenőrzi a kapcsolódási kérelmeket. Egy fronted IP-cím, protokoll és port számát, az application Gateway-kapcsolatokat az ügyfelektől van konfigurálva.
+3. Az application gateway egy vagy több figyelői a bejövő forgalmat fogad el. Egy figyelő olyan logikai entitás, amely ellenőrzi a kapcsolódási kérelmeket. Egy előtérbeli IP-cím, protokoll és port számát, az application Gateway-kapcsolatokat az ügyfelektől van konfigurálva.
 
 4. Webalkalmazási tűzfal (WAF) használatban van, ha az application gateway ellenőrzi a kérelemfejléc és a szervezet, ha van ilyen, WAF-szabályok alapján. Ez a művelet meghatározza, hogy a kérelem kérés vagy a biztonsági fenyegetéseket. Ha a kérés érvényes, a háttérrendszer lesz irányítva. A kérés nem érvényes, ha azt le van tiltva, a biztonsági fenyegetéseket.
 

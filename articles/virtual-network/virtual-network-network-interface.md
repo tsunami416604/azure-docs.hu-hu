@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: További hálózati adaptereket, és hogyan hozhat létre, módosítsa a beállításokat, és töröljön egy.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
-ms.author: jdial
-ms.openlocfilehash: 8840944f6757813b10b01c8e512b1ef64c05a85f
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.author: kumud
+ms.openlocfilehash: a3cb6e1b20e405cedddae8684a4b91fcb8a5514a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888287"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64695345"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Létrehozása, módosítása vagy egy hálózati adapter törlése
 
@@ -25,7 +26,7 @@ Ismerje meg, hogyan hozzon létre, módosítsa a beállításokat és egy háló
 
 Ha meg kell hozzáadása, módosítása vagy eltávolítása a hálózati illesztő IP-címeket, tekintse meg [kezelése IP-címek](virtual-network-network-interface-addresses.md). Ha a hálózati adaptereket, vagy távolítsa el a hálózati adapterek virtuális gépeiről, lásd: hozzá kell adnia [hozzáadása vagy eltávolítása a hálózati adapterek](virtual-network-network-interface-vm.md).
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -57,7 +58,7 @@ Az Azure portal használatával a virtuális gép létrehozásakor a portálon a
     |Private IP address (IPv6)|Nem| Ha bejelöli ezt a jelölőnégyzetet, IPv6-címet a hálózati kapcsolat mellett a hálózati adapterhez rendelt IPv4-cím van hozzárendelve. Ez a cikk a fontos adatokat IPv6 hálózati adapterrel rendelkező IPv6-alapú című szakaszában talál. Az IPv6-cím-hozzárendelési módszer nem választhatja ki. Ha IPv6-címet hozzárendelni, a dinamikus módszerrel van hozzárendelve.
     |IPv6-név (csak jelenik meg, amikor a **magánhálózati IP-cím (IPv6)** jelölőnégyzet be van jelölve) |Igen, ha a **magánhálózati IP-cím (IPv6)** jelölőnégyzet be van jelölve.| Ez a név egy másodlagos IP-konfigurációt a hálózati adapter van hozzárendelve. IP-konfigurációval kapcsolatos további információkért lásd: [hálózatiadapter-beállítások megtekintése](#view-network-interface-settings).|
     |Erőforráscsoport|Igen|Válasszon egy meglévő [erőforráscsoport](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) vagy hozzon létre egyet. Hálózati adapter az azonos vagy eltérő erőforráscsoportban, mint a virtuális gépet, csatlakoztassa is létezik, vagy a virtuális hálózathoz csatlakoztatja a.|
-    |Hely|Igen|A hálózati adaptert a virtuális géphez csatolni, és kösse össze a virtuális hálózat léteznie kell az azonos [hely](https://azure.microsoft.com/regions), más néven egy régiót.|
+    |Location egység|Igen|A hálózati adaptert a virtuális géphez csatolni, és kösse össze a virtuális hálózat léteznie kell az azonos [hely](https://azure.microsoft.com/regions), más néven egy régiót.|
 
 A portál nem biztosít a nyilvános IP-cím hozzárendelése a hálózati adapter létrehozásakor, bár a portálon hozzon létre egy nyilvános IP-címet, és rendelje hozzá egy hálózati adaptert egy virtuális gépet a portálon létrehozott lehetőséget. Nyilvános IP-cím hozzáadása a hálózati adapter létrehozása után kapcsolatban lásd: [kezelése IP-címek](virtual-network-network-interface-addresses.md). Ha szeretne egy nyilvános IP-címmel rendelkező hálózati adaptert létrehozni, a hálózati adapter létrehozása a parancssori felület vagy PowerShell kell használnia.
 

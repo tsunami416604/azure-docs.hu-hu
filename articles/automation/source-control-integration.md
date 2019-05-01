@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/15/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 81602f1a30fb753d7a8fcfccace581cd8c7b2f0c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 94912d5aa10ddd2e67c33bcbb416f007c85f105c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880362"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574109"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Verziókövetés integrálása az Azure Automation szolgáltatásban
 
@@ -52,14 +52,16 @@ Az a **forrás vezérlő összefoglalás** lapon adja meg az adatokat, és katti
 |Adattár     | A tárház vagy projekt nevét. Az első 200 tárházak adja vissza. Keresse meg a tárházat, írja be a nevét a mezőbe, majd kattintson **keresése a Githubon**.|
 |Ág     | Az ág forrásfájlok lekérni. Ág célzó nem érhető el a TFVC verziókövetési típusa.          |
 |Mappa elérési útja     | A runbookok szinkronizálása tartalmazó mappát. Példa: /Runbooks </br>*A megadott mappában csak runbookok vannak szinkronizálva. A rekurzió nem támogatott.*        |
-|Auto Sync     | Engedélyezi vagy letiltja az automatikus szinkronizálás, amikor a véglegesítés történik a verziókövetési tárházat a         |
+|Auto Sync<sup>1</sup>     | Engedélyezi vagy letiltja az automatikus szinkronizálás, amikor a véglegesítés történik a verziókövetési tárházat a         |
 |Runbook közzététele     | Ha beállítása **a**, miután a forráskezelőből azok lesz automatikusan közzétenni a runbookok szinkronizálva lesznek.         |
 |Leírás     | További információkat egy szövegmező        |
+
+<sup>1</sup> automatikus szinkronizálásának engedélyezése a verziókövetés integrálása az Azure-Adattárakkal konfigurálásakor, projekt rendszergazdának kell lennie.
 
 ![Forrás vezérlő összegzése](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> Győződjön meg arról, a megfelelő fiókkal van bejelentkezve, verziókövetési konfigurálásakor. Ha egy bizonytalan, nyisson meg egy új lapot a böngészőben, és visualstudio.com vagy a github.com jelentkezzen ki, és próbálkozzon újra a csatlakozó verziókövetés.
+> A verziókövetési tárházat a bejelentkezési adatait, mint az Azure Portalon a bejelentkezési eltérő lehet. Győződjön meg arról, jelentkezik be a megfelelő fiók a verziókövetési tárházat a verziókövetés konfigurálásakor. Ha egy bizonytalan, nyisson meg egy új lapot a böngészőben, és visualstudio.com vagy a github.com jelentkezzen ki, és próbálkozzon újra a csatlakozó verziókövetés.
 
 ## <a name="configure-source-control---powershell"></a>Verziókövetés - PowerShell konfigurálása
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 9c9a5f219af0d474e1608f98595abe027b894117
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ef302ecaa6defc6ac0dc1dd58d4f8acc0f2fd263
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001743"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711449"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Példák a Stream Analytics-használat gyakori minták lekérdezése
 
@@ -493,7 +493,7 @@ Például hozzon létre egy eseményt 5 másodpercenként, amely a legutóbb és
 
 **Bemeneti**:
 
-| t | érték |
+| t | value |
 | --- | --- |
 | "2014-01-01T06:01:00" |1 |
 | "2014-01-01T06:01:05" |2 |
@@ -537,7 +537,7 @@ Például egy IoT-forgatókönyvet az otthoni sütőben, a riasztást kell lenni
 
 **Bemeneti**:
 
-| time | deviceId | sensorName | érték |
+| time | deviceId | sensorName | value |
 | --- | --- | --- | --- |
 | "2018-01-01T16:01:00" | "Oven1" | "temp" |120 |
 | "2018-01-01T16:01:00" | "Oven1" | "power" |15 |
@@ -605,7 +605,7 @@ WHERE
 **MAGYARÁZAT**: Az első lekérdezés `max_power_during_last_3_mins`, használja a [csúszó ablak](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) található minden eszközhöz a power érzékelő maximális értéke az elmúlt 3 perc alatt. A második lekérdezés az első lekérdezés a kiemelt értéket keresi a legújabb ablakban megfelelő az aktuális esemény csatlakozik. És ezt követően a megadott feltételek teljesülnek, egy riasztás akkor jön létre az eszköz.
 
 ## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>Lekérdezés. példa: Független eszköz óra tevékenységdiagramon (részadatfolyamok) az események feldolgozása
-**Leírás**: Esemény késői is érkezik, vagy üzemen kívüli esemény gyártók között eltérései miatti, óra döntése partíciók vagy a hálózati késés között. A következő példában az eszköz óra TollID 2 mögött TollID 1 eltelő 10 másodpercben, és az eszköz óra TollID 3 öt másodpercenként TollID 1 mögött. 
+**Leírás**: Esemény késői is érkezik, vagy üzemen kívüli esemény gyártók között eltérései miatti, óra döntése partíciók vagy a hálózati késés között. A következő példában az eszköz óra TollID 2 öt másodpercenként TollID 1 mögött, és az eszköz óra TollID 3 mögött TollID 1 eltelő 10 másodpercben. 
 
 
 **Bemeneti**:

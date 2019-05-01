@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: c4f94dd2730dd302951b4476a292b006041b7ee8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d79154a8792b9017b98f9d21a2ab0360b7304d1c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60820041"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64697856"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatikus – train idősorozat-előrejelzési modell
 
@@ -67,7 +67,7 @@ y_test = X_test.pop("sales_quantity").values
 > [!NOTE]
 > Az értékeket későbbi előrejelzési modell betanításakor ügyeljen rá, hogy a használt képzési szolgáltatásai használhatók az importálni kívánt horizon adatokat futtatásakor. Például egy kereslet-előrejelzési létrehozásakor, beleértve az aktuális tőzsdei árfolyam funkció nagy mértékben megnövelheti képzési pontosságát. Azonban ha azt tervezi, a hosszú horizon előrejelzést, nem lehet előre pontosan a jövőbeli idősorozat-pontok megfelelő jövőbeli tőzsdei értékeket, és modellpontosságból volt tapasztalható.
 
-## <a name="configure-experiment"></a>Kísérlet konfigurálása
+## <a name="configure-and-run-experiment"></a>Konfigurálja és a kísérlet futtatásához
 
 Automatizált gépi tanulási feladatok előrejelzés, használja az idősorozat-adatok adott előzetes feldolgozása és költségbecslési lépéseket. A következő előfeldolgozási lépéseket fogja végrehajtani:
 
@@ -79,7 +79,7 @@ Automatizált gépi tanulási feladatok előrejelzés, használja az idősorozat
 
 A `AutoMLConfig` objektuma határozza meg a beállításokat és a egy automatizált machine learning feladatot a szükséges adatokat. Regressziós problémaként hasonlóan megadhat standard képzési paraméterek tevékenység típusa, a betanítási adatok, az ismétlések száma és a kereszt-ellenőrzés száma. Az előrejelzési feladatok, nincsenek további paramétereket kell megadni, amelyek befolyásolják a kísérletet. A következő táblázat az egyes paraméterek és azok használatát ismerteti.
 
-| Param | Leírás | Kötelező |
+| Param | Leírás | Szükséges |
 |-------|-------|-------|
 |`time_column_name`|Itt adhatja meg a dátum/idő oszlop a bemeneti adatok az idősor és annak gyakoriságát adatcsatornához.|✓|
 |`grain_column_names`|Az egyes adatsorozat-csoportok meghatározása a bemeneti adatok neve. Időfelbontási szint nincs definiálva, ha az adatkészlet adatforrásmérete egy idősorozat.||
@@ -126,6 +126,20 @@ best_run, fitted_model = local_run.get_output()
 > [!NOTE]
 > A kereszt-ellenőrzés (CV) eljárás idősorozat-adatok is megsértik a canonical K lépésből kereszt-ellenőrzési stratégia az alapvető statisztikai feltételezéseket, automatizált machine learning megvalósítja a működés közbeni forrás érvényesítési eljárás létrehozása kereszt-ellenőrzési modellrész idősorozat-adatok. Ez az eljárás használatához adja meg a `n_cross_validations` paramétert a `AutoMLConfig` objektum. Érvényesítési és használja a saját érvényesítési beállítja a lehetséges kikerülni a `X_valid` és `y_valid` paramétereket.
 
+### <a name="view-feature-engineering-summary"></a>A szolgáltatás mérnöki összegzésének megtekintése
+
+Idősorozat-feladat esetében az automatikus machine learning a szolgáltatás műszaki folyamat részleteit megtekintheti. A következő kód bemutatja az egyes nyers szolgáltatások mellett a következő attribútumokat:
+
+* Nyers szolgáltatás neve
+* Formázott ki ezt a nyers szolgáltatást visszafejtett szolgáltatások száma
+* Észlelt típusa
+* E funkció el lett dobva
+* A nyers szolgáltatásának funkció átalakítások listája
+
+```python
+fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
+```
+
 ## <a name="forecasting-with-best-model"></a>A legjobb modellt előrejelzés
 
 A legjobb modellt az iteráció használatával előre jelzett értékek a tesztelési adatkészletnél.
@@ -133,6 +147,16 @@ A legjobb modellt az iteráció használatával előre jelzett értékek a teszt
 ```python
 y_predict = fitted_model.predict(X_test)
 y_actual = y_test.flatten()
+```
+
+Másik lehetőségként használhatja a `forecast()` helyett `predict()`, ami lehetővé teszi az előrejelzések indításának időpontját előírásainak. A következő példában, első lépésként cserélje le az összes értéket `y_pred` a `NaN`. Az előrejelzési forrása lesz betanítási adatok végén található ebben az esetben normális esetben lenne használatakor `predict()`. Azonban ha csak a második felében lecserélte `y_pred` a `NaN`, a függvény azt jelentené a numerikus értékek első fele módosítás nélküli, de előrejelzési a `NaN` második fele értékeket. A függvény az előre jelzett értékek és a szolgáltatások igazított adja vissza.
+
+Is használhatja a `forecast_destination` paramétert a `forecast()` értékeket a megadott dátum másnapi előrejelzés függvényt.
+
+```python
+y_query = y_test.copy().astype(np.float)
+y_query.fill(np.nan)
+y_fcst, X_trans = fitted_pipeline.forecast(X_test, y_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
 Gyökátlagos kiszámítása (root mean-készlet négyzet hiba) között a `y_test` tényleges értékek és az előre jelzett értékek `y_pred`.

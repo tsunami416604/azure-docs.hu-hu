@@ -1,6 +1,6 @@
 ---
-title: Csatlakozni, konfigurálja és aktiválni az Azure Data Box Edge-eszköz, az Azure Portalon |} A Microsoft Docs
-description: A Data Box Edge üzembe helyezése harmadik oktatóanyag arra utasítja, hogy csatlakozzon, és állítsa be, és a fizikai eszköz aktiválása.
+title: Szeretne csatlakozni, konfigurálja, az oktatóanyag az Azure Portalon az Azure Data Box Edge-eszköz aktiválása |} A Microsoft Docs
+description: Az oktatóanyagban a Data Box Edge üzembe helyezése arra utasítja, hogy csatlakozzon, és állítsa be, és a fizikai eszköz aktiválása.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: b97334ae60715f021cce387f9d73b5ea69eea7fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3e951e44aeaa4ca8d3d06bae80a80bcb2eb1dd52
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60758603"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924546"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Oktatóanyag: Csatlakozás, beállítása és aktiválni az Azure Data Box Edge 
 

@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: ada09959391c551a9eff4d96b186be29c1e3b7a8
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: cfc70b3d8e364c25ccf9fd221699695641a66ef0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013257"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708586"
 ---
 # <a name="create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Hozzon létre, és egyszerű R-szkriptek futtatása az Azure SQL Database, Machine Learning Services (előzetes verzió)
 
@@ -102,9 +102,9 @@ Ez a tárolt eljárás bemeneti adatokat a következők:
 
 | | |
 |-|-|
-|*@language* | Meghatározza a szeretne hívásokat indítani, ebben az esetben az R nyelv bővítmény |
-|*@script* | határozza meg a parancsok átadva az R futtatókörnyezettel. A teljes R-szkript közé kell tenni ehhez az argumentumhoz Unicode formátumú. Is hozzáadhatja a szöveg típusú változó **nvarchar** majd hívja a változó |
-|*@input_data_1* | az R futtatókörnyezettel, amely visszaadja az adatokat az SQL Server adatkeretek átadott a lekérdezés által visszaadott adatok |
+| @language | Meghatározza a szeretne hívásokat indítani, ebben az esetben az R nyelv bővítmény |
+| @script | határozza meg a parancsok átadva az R futtatókörnyezettel. A teljes R-szkript közé kell tenni ehhez az argumentumhoz Unicode formátumú. Is hozzáadhatja a szöveg típusú változó **nvarchar** majd hívja a változó |
+| @input_data_1 | az R futtatókörnyezettel, amely visszaadja az adatokat az SQL Server adatkeretek átadott a lekérdezés által visszaadott adatok |
 |A RESULT SETS | záradék meghatározása a visszaadott adatok tábla sémája az SQL Server, az oszlop neve "Hello World" hozzáadása **int** az adattípus |
 
 A parancs kimenete a következő szöveget:
@@ -146,7 +146,7 @@ Egyelőre tekintsük használja az alapértelmezett bemeneti és kimeneti válto
 
     **Results**
 
-    ![Az RTestData tábla tartalma](./media/sql-database-connect-query-r/select-rtestdata.png)
+    ![Az RTestData tábla tartalma](./media/sql-database-quickstart-r-create-script/select-rtestdata.png)
 
 1. A következő R-szkript futtatásához. Lekéri az adatokat a tábla használatával a `SELECT` utasítással, azt áthalad az R futtatókörnyezettel, és visszaadja az adatokat, adatkeretek. A `WITH RESULT SETS` záradékban az SQL Database, az oszlop nevét határozza meg a visszaadott adatok tábla sémája *NewColName*.
 
@@ -159,7 +159,7 @@ Egyelőre tekintsük használja az alapértelmezett bemeneti és kimeneti válto
 
     **Results**
 
-    ![Egy R-szkript kimenete, amely adatokat ad vissza egy táblából](./media/sql-database-connect-query-r/r-output-rtestdata.png)
+    ![Egy R-szkript kimenete, amely adatokat ad vissza egy táblából](./media/sql-database-quickstart-r-create-script/r-output-rtestdata.png)
 
 1. Most módosítsuk a a bemeneti és kimeneti változók nevében. Az alapértelmezett bemeneti és kimeneti változók nevében a rendszer **InputDataSet** és **OutputDataSet**, ez a szkript módosítja a nevek **SQL_in** és **SQL_out**:
 
@@ -193,7 +193,7 @@ Egyelőre tekintsük használja az alapértelmezett bemeneti és kimeneti válto
 
     **Results**
 
-    ![Eredmények lekérdezése az @script bemenetként való használatával](./media/sql-database-connect-query-r/r-data-generated-output.png)
+    ![Eredmények lekérdezése az @script bemenetként való használatával](./media/sql-database-quickstart-r-create-script/r-data-generated-output.png)
 
 ## <a name="check-r-version"></a>Az R verziószámának ellenőrzése
 
@@ -251,7 +251,7 @@ A kimenet származik `installed.packages()` az R és eredményeként visszaadott
 
 **Results**
 
-![Telepített csomagok az R-ben](./media/sql-database-connect-query-r/r-installed-packages.png)
+![Telepített csomagok az R-ben](./media/sql-database-quickstart-r-create-script/r-installed-packages.png)
 
 ## <a name="next-steps"></a>További lépések
 
@@ -260,10 +260,8 @@ Hozzon létre egy gépi tanulási modellt az R használata SQL Database-ben, kö
 > [!div class="nextstepaction"]
 > [Hozzon létre és betanítunk egy prediktív modellt az R az Azure SQL Database, Machine Learning Services (előzetes verzió)](sql-database-quickstart-r-train-score-model.md)
 
-A Machine Learning-szolgáltatások további információkért lásd az alábbi cikkeket. Néhány, az alábbi cikkek, amelyek közül az SQL Server legtöbb információ akkor is vonatkozik a Machine Learning-szolgáltatások (az r nyelv) Azure SQL Database-ben.
+További információ az Azure SQL Database Machine Learning Services (előzetes verzió) R-rel tekintse meg a következő cikkekben talál.
 
-- [Az Azure SQL Database Machine Learning-szolgáltatások (az R)](sql-database-machine-learning-services-overview.md)
-- [SQL Server Machine Learning-szolgáltatások](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [Oktatóanyag: Ismerje meg, az r nyelv használatát az SQL Server adatbázis-elemzés](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
-- [Teljes körű adatelemzési útmutató az R-hez és az SQL Serverhez](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
-- [Oktatóanyag: RevoScaleR R-függvények használata az SQL Server-adatok](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)
+- [Az Azure SQL Database Machine Learning-szolgáltatások (előzetes verzió) R-rel](sql-database-machine-learning-services-overview.md)
+- [Az Azure SQL Database, Machine Learning-Szolgáltatásokoz (előzetes verzió) használatával speciális R-függvények írása](sql-database-machine-learning-services-functions.md)
+- [R- és SQL adatok használata Azure SQL Database, Machine Learning Services (előzetes verzió)](sql-database-machine-learning-services-data-issues.md)

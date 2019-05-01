@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 04/20/2019
-ms.openlocfilehash: 7294236a7b79ad093480e9063d886dd30ccf7fc1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.date: 04/24/2019
+ms.openlocfilehash: 75228098bcb62b83f8e93aebe600bffac62d6179
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998974"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64727352"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Oktatóanyag: A távoli asztali szolgáltatások SQL Server migrálása az Azure SQL Database vagy Azure SQL Database felügyelt példány online DMS használatával
 Az Azure Database Migration Service segítségével az adatbázisokat át egy távoli asztali szolgáltatások az SQL Server-példány [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) vagy egy [Azure SQL Database felügyelt példány](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) minimális állásidővel. Ebben az oktatóanyagban áttelepítése a **Adventureworks2012** visszaállított adatbázis egy távoli asztali szolgáltatások SQL Server példány SQL Server 2012 (vagy újabb) Azure SQL Database vagy az Azure SQL Database felügyelt példány az Azure Database Migration használatával A szolgáltatás.
@@ -199,7 +199,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
     ![Azure Database Migration Service-projekt létrehozása](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create-project4.png)
 
     > [!NOTE]
-    > Alternatív megoldásként választhatja a **csak a projektet létrehozó** lehetőséget, ha most csak a migrálási projektet szeretné létrehozni, és csak később szeretné elindítani a tényleges migrálást.
+    > Választhatja azt is megteheti, **csak a Create project** a migrálási projekt létrehozása, és később a migrálás végrehajtására.
 
 6. Kattintson a **Mentés** gombra.
 

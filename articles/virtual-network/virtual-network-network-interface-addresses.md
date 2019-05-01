@@ -3,8 +3,8 @@ title: Egy Azure-beli hálózati adapter IP-címek konfigurálása |} A Microsof
 description: Ismerje meg, hogyan hozzáadása, módosítása és eltávolítása a privát és nyilvános IP-címeket a hálózati illesztő.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
-ms.author: jdial
-ms.openlocfilehash: 89b311edbae6b5f6679908b5d07b22b402b5c55e
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.author: kumud
+ms.openlocfilehash: a6635b811dfa9c46facfffee1c57b2871cb4c738
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888066"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719701"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hozzáadása, módosítása vagy törlése az Azure-beli hálózati adapter IP-címek
 
@@ -28,7 +28,7 @@ Ismerje meg, hogyan hozzáadása, módosítása és eltávolítása a nyilvános
 
 Ha meg kell létrehozása, módosítása vagy törlése egy hálózati adapter, olvassa el a [egy hálózati adapter kezelése](virtual-network-network-interface.md) cikk. Ha szeretné a hálózati adapterek hozzáadása vagy eltávolítása a hálózati adaptereket a virtuális gépről, olvassa el a [hozzáadása vagy eltávolítása a hálózati adapterek](virtual-network-network-interface-vm.md) cikk.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -54,7 +54,7 @@ Hozzáadhat több [privát](#private) és [nyilvános](#public) [IPv4](#ipv4) sz
    |Beállítás|Kötelező?|Részletek|
    |---|---|---|
    |Name (Név)|Igen|A hálózati adapter egyedinek kell lennie|
-   |Typo|Igen|Mivel ha ad hozzá egy IP-konfigurációt egy meglévő hálózati adaptert, és mindegyik hálózati interfész rendelkeznie kell egy [elsődleges](#primary) IP-konfiguráció egyetlen lehetősége van **másodlagos**.|
+   |Típus|Igen|Mivel ha ad hozzá egy IP-konfigurációt egy meglévő hálózati adaptert, és mindegyik hálózati interfész rendelkeznie kell egy [elsődleges](#primary) IP-konfiguráció egyetlen lehetősége van **másodlagos**.|
    |Magánhálózati IP-cím-hozzárendelési módszer|Igen|[**A dinamikus**](#dynamic): Az Azure hozzárendeli az a hálózati adapter van üzembe helyezve az alhálózat címtartományának következő elérhető címe. [**Statikus**](#static): Hozzárendelhet egy nem használt cím az alhálózat címtartományának a hálózati adapter van üzembe helyezve.|
    |Nyilvános IP-cím|Nem|**Letiltva:** Nincs nyilvános IP-cím erőforrás nem jelenleg társított IP-konfigurációhoz. **Engedélyezve:** Válasszon ki egy meglévő nyilvános IPv4 IP-címet, vagy hozzon létre egy újat. Ismerje meg, hogyan hozhat létre egy nyilvános IP-címet, olvassa el a [nyilvános IP-címek](virtual-network-public-ip-address.md#create-a-public-ip-address) cikk.|
 6. Manuálisan adja hozzá másodlagos magánhálózati IP-címek a virtuális gép operációs rendszerének; Ehhez hajtsa végre a következő témakör utasításait a [több IP-cím hozzárendelése a virtuális gép operációs rendszerek](virtual-network-multiple-ip-addresses-portal.md#os-config) cikk. Lásd: [privát](#private) IP-címek előtt manuálisan ad hozzá egy virtuális gép operációs rendszerének IP-címek különleges szempontjait. Nem adható hozzá bármilyen nyilvános IP-címek a virtuális gép operációs rendszerének.

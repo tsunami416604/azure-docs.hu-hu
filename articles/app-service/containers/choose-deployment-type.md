@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 05/04/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c8a700bcd2780ef7b0c7ad1fbb513d4b4febffcb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: bba38bb69e5abaa94b01308924fe0c6bf07ca08e
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60849982"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919951"
 ---
 # <a name="custom-image-multi-container-or-built-in-platform-image"></a>Egyéni rendszerkép, többtárolós vagy beépített platformlemezkép?
 
 [A linuxon futó App Service](app-service-linux-intro.md) kínál a közzétett webes alkalmazásai három különböző elérési utak:
 
 - **Egyéni lemezkép telepítésének**: "Dockerize" az alkalmazás be egy Docker-rendszerképet, amely az összes, a fájlok és a egy futtatásra kész csomag függőségeit tartalmazza.
-- **Több tároló üzembe helyezési**: "Dockerize" az alkalmazást egy Docker-Compose- vagy Kubernetes konfigurációs fájl használatával több tárolón.
+- **Több tároló üzembe helyezési**: "Dockerize" az alkalmazás konfigurációs fájl a Docker Compose használatával több tárolón.
 - **Az alkalmazás üzembe helyezése a platform beépített rendszerképpel rendelkező**: A beépített platform általános webes alkalmazás futtatókörnyezetek és függőségei, mint például a Node és a PHP tartalmazzák. Használjon a [Azure App Service-alapú üzembe helyezési módszer](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) helyezze üzembe az alkalmazást a webalkalmazás-tárolóba, és beépített platformlemezkép használatával futtassa.
 
 ## <a name="which-method-is-right-for-your-app"></a>Módszer a legmegfelelőbb az alkalmazást? 
@@ -43,3 +43,20 @@ Megfontolandó legfontosabb tényezők a következők:
 - **Lemez írási/olvasási követelmények**: Web Apps-alkalmazások az összes webes tartalmak vannak lefoglalva a tárolási köteten. Az Azure-tárhely, a kötet csatlakoztatva van `/home` a fájlrendszer az alkalmazást. Ellentétben a fájlok a tároló fájlrendszer a tartalom köteten lévő fájlok elérhetők egy alkalmazás összes méretezési csoport példánya között, és módosítások megmaradnak az alkalmazás-újraindítások között. Azonban a tartalom kötet a lemez késése értéke magasabb, és további változó, mint a helyi tároló fájlrendszer és a hozzáférés a késés is hatással lehet ügyfélfelügyeletiplatform-frissítésekre, a nem tervezett üzemkimaradások, és a hálózati problémák léptek fel. Tartalomfájlok (nagy erőforrásigényű) csak olvasható hozzáférést igénylő alkalmazások előnyösebb lehet egyéni rendszerképet a központi telepítési fájljait elhelyezi az lemezkép fájlrendszer helyett a tartalom köteten található.
 - **Erőforrás-használat Build**: Ha egy alkalmazást a forrásból, a központi telepítési parancsfájlok futtatása Kudu használatával az azonos App Service-csomag számítási és tárolási erőforrások a futó alkalmazás. Nagy méretű alkalmazások telepítésének felhasználható további erőforrásokat, vagy a kívánt időt. Különösen számos üzembe helyezési munkafolyamatok létrehozása (nagy erőforrásigényű) lemez tevékenység a alkalmazás tartalom köteten, amely nincs optimalizálva az ilyen tevékenység. Egyéni rendszerkép kínál az alkalmazás fájljait és függőségek összes az Azure-bA és nincs szükség további fájlátvitel vagy a telepítési műveletek egyetlen csomagban.
 - **Gyors ismétlését szükséges**: Alkalmazás dockerizing build további lépéseket igényel. A módosítások érvénybe léptetéséhez, meg kell az új rendszerkép leküldése egy adattár az egyes frissítések. Ezek a frissítések majd lekért vannak az Azure-környezethez. Ha az alkalmazás igényeinek megfelel egy beépített tárolót, üzembe helyezése a forrás kínálhatják gyorsabb fejlesztést munkafolyamat.
+
+## <a name="next-steps"></a>További lépések
+
+Egyéni tároló:
+* [Egyéni tároló futtatása](quickstart-docker-go.md)
+
+Többtárolós:
+* [Többtárolós alkalmazás létrehozása](quickstart-multi-container.md)
+
+A következő cikkek az első lépéseket a Linuxon futó App Service platform beépített rendszerképpel:
+
+* [.NET Core](quickstart-dotnetcore.md)
+* [PHP](quickstart-php.md)
+* [Node.js](quickstart-nodejs.md)
+* [Java](quickstart-java.md)
+* [Python](quickstart-python.md)
+* [Ruby](quickstart-ruby.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d3459f7bcfc0e2e61cb55b38a05b7b6a21ea3e9e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d84a7060fadcb3f3d80b7fbbff9d91f8812388b2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283511"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920610"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Oktatóanyag: Az Azure Active Directory-integráció a T & E Express
 
@@ -110,7 +110,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása a T & E Express, hajtsa vég
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<domain>.tyeexpress.com/authorize/samlConsume.aspx`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Itt javasoljuk, hogy az azonosító egyedi karakterlánc értékét használhatja. Kapcsolattartó [T & E Express ügyfél-támogatási csoportjának](http://www.tyeexpress.com/contacto.aspx) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Itt javasoljuk, hogy az azonosító egyedi karakterlánc értékét használhatja. Kapcsolattartó [T & E Express ügyfél-támogatási csoportjának](https://www.tyeexpress.com/contacto.aspx) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 

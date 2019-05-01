@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 11e49d362508e9720cf65fc20e020930b5f5c3ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9be99bc9ac4683fea97333c9d6cb783f0fde35c5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769838"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575358"
 ---
 # <a name="glossary"></a>Szószedet
 
@@ -63,7 +63,7 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="bearing"></a> **Szem előtt**: A vízszintes iránya egy pontot egy másik pont viszonyítva. Ez fejezi ki szöget északi, a 0 – 360-fokos elforgatása jobbra irányba fokkal viszonyítva. 
 
-<a name="boundary"></a> **Határ**: Egy vonal- vagy sokszög megadhat, az egymás melletti politikai entitások, például az országok, körzetben és tulajdonságait. A határok, amely nem mindig a fizikai szolgáltatások, például folyókat, hegyekbe vagy falak, vagy egy sor.
+<a name="boundary"></a> **Határ**: Egy vonal- vagy sokszög megadhat, az egymás melletti politikai entitások, például országok/régiók, körzetben és tulajdonságait. A határok, amely nem mindig a fizikai szolgáltatások, például folyókat, hegyekbe vagy falak, vagy egy sor.
 
 <a name="bounds"></a> **Rozsah**: Lásd: [Bounding box](#bounding-box).
 
@@ -91,13 +91,13 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="coordinate-system"></a> **Koordináta-rendszerére**: Referencia-keretrendszer definiáló pontoknak két vagy három dimenziók a területen.
 
-<a name="country-code"></a> **Országkód:**: Egy országot, ISO szabvány alapján egyedi azonosítója. ISO2 egy ország (például USA), mely ISO3 jelöli három karakteres kód (például Egyesült Államok) két karakterből álló kódot.
+<a name="country-code"></a> **Országkód:**: Egy ország/régió, ISO szabvány alapján egyedi azonosítója. ISO2 egy ország (például USA), mely ISO3 jelöli három karakteres kód (például Egyesült Államok) két karakterből álló kódot.
 
-<a name="country-subdivision"></a> **Ország felosztása**: Az első szintű felosztása, ország, állam vagy megye gyakran nevezik.
+<a name="country-subdivision"></a> **Ország felosztása**: Ország/régió, állam vagy megye gyakran nevezik első szintű része.
 
-<a name="country-secondary-subdivision"></a> **Ország másodlagos felosztása**: A második szintű felosztása egy országot, megyét gyakran nevezik.
+<a name="country-secondary-subdivision"></a> **Ország másodlagos felosztása**: A második szintű felosztása országot, megyét gyakran nevezik.
 
-<a name="country-tertiary-subdivision"></a> **Ország harmadlagos felosztása**: Egy harmadik szintű felosztása egy országot, például egy ward általában egy elnevezett területen.
+<a name="country-tertiary-subdivision"></a> **Ország harmadlagos felosztása**: Egy harmadik szintű felosztása egy ország/régió, például egy ward általában egy elnevezett területen.
 
 <a name="cross-street"></a> **Határokon street**: Ha két vagy több utcák metszetoszlop pont.
 
@@ -283,7 +283,7 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="post-code"></a> **Irányítószám**: Lásd: [Postal code](#postal-code).
 
-<a name="postal-code"></a> **Irányítószám**: Betűk vagy számok vagy mindkettő egy meghatározott formátumban, a földrajzi területek osztani zónában történő annak érdekében, hogy egyszerűbb szolgáltatásnyújtás mail ország a postai szolgáltatás által használt sorozata.
+<a name="postal-code"></a> **Irányítószám**: Betűk vagy számok vagy mindkettő egy meghatározott formátumban, egy adott ország/régió, a postai szolgáltatás által használt zónák annak érdekében, hogy egyszerűbb szolgáltatásnyújtás mail földrajzi területek ossza sorozata.
 
 <a name="prime-meridian"></a> **Szélességi**: Egy 0-fok hosszúsági képviselő hosszúsági sor. Általában a hosszúsági értékeknek csökkentése, amíg 180-fokos nyugati irányban útközben, és növelhető, ha a keleti irányban-180 utazik-fok. 
 
@@ -351,11 +351,11 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="terrain"></a> **Terep**: Egy adott jellemző, például homokos terep vagy hegyvidéki terep kellene földek terület.
 
-<a name="thematic-maps"></a> **Tematikus térképek**: Tematikus térkép egy egyszerű térképet kérés érkezett egy földrajzi területen kapcsolatos téma tükrözik. Az ilyen típusú térkép egy általános forgatókönyv a felügyeleti régiók, például az országok néhány mérőszám az adatok alapján kiszínezheti.
+<a name="thematic-maps"></a> **Tematikus térképek**: Tematikus térkép egy egyszerű térképet kérés érkezett egy földrajzi területen kapcsolatos téma tükrözik. Az ilyen típusú térkép egy általános forgatókönyv a felügyeleti régiók, például az országok/régiók néhány mérőszám az adatok alapján kiszínezheti.
 
 <a name="tile-layer"></a> **Mozaikréteg**: A réteg (téglalap alakú szakaszok) csempék összeállítsanak egy folyamatos rétegre szerint jelenik meg. A csempék vagy raszter csempék kép vagy vektoros csempék. Raszter csempe rétegek általában jelennek meg időben és képek egy kiszolgálón tárolja. Ez is igénybe vehet, nagy mennyiségű tárhely. Vektor csempe rétegek vannak leképezve az ügyfélalkalmazásban menet közben, így a kiszolgáló oldalán tárhellyel kapcsolatos követelmények kisebbek.
 
-<a name="time-zone"></a> **Időzóna**: Egy régióban, amely betartja a jogi, kereskedelmi és közösségi célból egy egységes téli idő világszerte. Kövesse a határok és a felosztás országok/régiók általában időzónákban.
+<a name="time-zone"></a> **Időzóna**: Egy régióban, amely betartja a jogi, kereskedelmi és közösségi célból egy egységes téli idő világszerte. Hajtsa végre az országok/régiók és a felosztás határainak általában időzónákban.
 
 <a name="transaction"></a> **Tranzakció**: Az Azure Maps tranzakciós licencelési modellt alkalmaz, ahol;
 
@@ -398,5 +398,5 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="zip-code"></a> **Irányítószám**: Lásd: [Postal code](#postal-code).
 
-<a name="Zoom level"></a> **Nagyítási szint**: A részletes, és mekkora a térkép látható szintjét határozza meg. A 0. szint ki, mert a teljes, amikor a teljes világtérkép gyakran lesz a nézetben, de ország neve és a egy vonalban például korlátozott információk jelennek meg, valamint óceán nevét. Közelebb nagyítása 17 szintre, ha a térkép jelenik meg egy adott területre néhány város blokkok közúti részletes információkkal. További információkért lásd: a [nagyítási szintek és csemperács](zoom-levels-and-tile-grid.md) dokumentációját.
+<a name="Zoom level"></a> **Nagyítási szint**: A részletes, és mekkora a térkép látható szintjét határozza meg. A 0. szint ki, mert a teljes, amikor a teljes világtérkép gyakran lesz a nézetben, de például országot/régiót vagy szegélyek korlátozott információk jelennek meg, valamint óceán nevét. Közelebb nagyítása 17 szintre, ha a térkép jelenik meg egy adott területre néhány város blokkok közúti részletes információkkal. További információkért lásd: a [nagyítási szintek és csemperács](zoom-levels-and-tile-grid.md) dokumentációját.
 

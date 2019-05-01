@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 04/22/2019
 ms.author: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a354fdf8ea75d9446c2a5e5ee6a70489cf9dbfb5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: cb426eb15d20a4bbd628897ed1c3b29c37f32afd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60412279"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723303"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: A vállalati alkalmazásokhoz SAML-jogkivonatban kiadott szerepkörjogcím konfigurálása
 
@@ -152,7 +152,7 @@ Ha az alkalmazás egyéni átadni egy SAML-válasz-szerepkörök vár, szükség
 
 8. Frissítés a **attribútumok** tábla egy testre szabott leképezés a szerepkör jogcím meghatározásához.
 
-9. Az a **felhasználói attribútumok & jogcímek** szakaszában a **egyszeri bejelentkezési** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az ábrán látható módon, és hajtsa végre az alábbi lépéseket.
+9. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
 
     | Attribútum neve | Hodnota atributu |
     | -------------- | ----------------|
@@ -161,11 +161,11 @@ Ha az alkalmazás egyéni átadni egy SAML-válasz-szerepkörök vár, szükség
     >[!NOTE]
     >A szerepkör jogcím értéke null, ha majd az Azure AD nem küld ennek az értéknek a jogkivonatban, és ez a kialakítás megfelelően alapértelmezett.
 
-    a. Kattintson a **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+    a. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok & jogcímek** párbeszédpanel.
 
       !["Attribútum hozzáadása" gomb](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
-    b. Válassza ki **attribútum hozzáadása** megnyitásához a **kezelheti a felhasználói jogcímek** ablaktáblán.
+    b. Az a **kezelheti a felhasználói jogcímek** párbeszédpanelen adja hozzá az SAML-jogkivonat attribútum kattintva **hozzáadása új jogcímet**.
 
       !["Attribútum hozzáadása" gomb](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 

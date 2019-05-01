@@ -8,16 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 12/06/2018
-ms.date: 04/01/2019
-ms.author: v-biyu
+ms.date: 12/06/2018
+ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d5d3d7031f9795db0ae04bc707bd9e7707137210
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4360150064d2f42cc2dc2cc3ef9f7783a5cb175
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60481980"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866547"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Hozzon létre egy egyéni beszédfelismerési rekord hangalapú minták
 
@@ -110,7 +109,7 @@ Szerencsére a lehetőség a problémák teljes egészében elkerülése érdek�
 |-|-|
 |[CMU tavi forrásgyűjteményébe](http://festvox.org/cmu_arctic/)|Kifejezetten a speech összefoglaló projektekben használható out-az-szerzői jogok a kiválasztott készül 1100 mondatokat. Egy remek kiindulási pont.|
 |Már nem működik.<br>a szerzői jogi|Általában works 1923 előtt közzé. Az angol nyelvű tájékoztatáshoz [projekt Gutenberg](https://www.gutenberg.org/) kínál több ezer, az ilyen működik. Előfordulhat, hogy szeretné, a nyelv modern angol közelebb lesz újabb works összpontosíthat.|
-|Kormányzati&nbsp;működik|Az Egyesült Államok kormánya által létrehozott működése nem szerzői jogvédelem alatt állnak az Egyesült Államokban, ha a kormányzat igényelhet a szerzői jog más országokban.|
+|Kormányzati&nbsp;működik|Az Egyesült Államok kormánya által létrehozott működése nem szerzői jogvédelem alatt állnak az Egyesült Államokban, ha a kormányzat igényelhet a szerzői jog más országokból/régiókból elérhető.|
 |Nyilvános tartományt|Melyik copyright explicit módon biztosítják, illetve, hogy működik a nyilvános tartomány rendelkezik lett kijelölve. Nem lehet elengedni néhány jogi szabályozásainak teljes egészében a szerzői jog lehetséges.|
 |Permissively licenccel rendelkező működése|Például a Creative Commons licencet, vagy a GNU ingyenes dokumentáció licenc (GFDL) forgalmazva működik. Wikipedia a GFDL használ. Néhány licenccel, azonban előfordulhat, hogy korlátozásokat alkalmazzanak a teljesítmény, a licencelt tartalom, amely hatással lehet egy egyéni beszédfelismerési modell létrehozását, olvassa el a licencet.|
 

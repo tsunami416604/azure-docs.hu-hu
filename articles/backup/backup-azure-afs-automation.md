@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: pullabhk
-ms.openlocfilehash: 83fe8d17699c19d442fd734d71d828eb9fd9d6ed
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 46719d3f72c57a44fb48489891e2348bb418da1e
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258360"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918952"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Biztonsági mentése és visszaállítása a PowerShell-lel az Azure Files
 
@@ -317,7 +317,7 @@ Miután a megfelelő helyreállítási pontot választja, visszaállítása a f�
 
 ### <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Azure-fájlmegosztás visszaállítása másik helyre
 
-Használja a [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) állíthatja vissza a kijelölt helyreállítási pont. Adja meg ezeket a paramétereket, a másik helyre azonosításához: 
+Használja a [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) állíthatja vissza a kijelölt helyreállítási pont. Adja meg ezeket a paramétereket, a másik helyre azonosításához: 
 
 - **TargetStorageAccountName**: A storage-fiók, amelyre a biztonsági másolat tartalom helyreáll. A céloldali tárfiók és a tárolónak ugyanazon a helyen kell lennie.
 - **TargetFileShareName**: A fájlmegosztások belül a céloldali tárfiók fiókot a biztonsági másolat tartalom helyreáll.
@@ -340,7 +340,7 @@ testAzureFS        Restore              InProgress           12/10/2018 9:56:38 
 
 ### <a name="restore-an-azure-file-to-an-alternate-location"></a>Állítsa vissza egy Azure-fájlt egy másik helyre
 
-Használja a [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) állíthatja vissza a kijelölt helyreállítási pont. Adja meg ezeket a paramétereket, azonosíthatja a másik helyet, és a visszaállítani kívánt fájl egyedi azonosításához.
+Használja a [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) állíthatja vissza a kijelölt helyreállítási pont. Adja meg ezeket a paramétereket, azonosíthatja a másik helyet, és a visszaállítani kívánt fájl egyedi azonosításához.
 
 * **TargetStorageAccountName**: A storage-fiók, amelyre a biztonsági másolat tartalom helyreáll. A céloldali tárfiók és a tárolónak ugyanazon a helyen kell lennie.
 * **TargetFileShareName**: A fájlmegosztások belül a céloldali tárfiók fiókot a biztonsági másolat tartalom helyreáll.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 0b8349c6c59ac64be15c75b28c083a4483f2f68a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1f9ee5cf28de8fdb824bebf222e5e8d80e22c34f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57896262"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712428"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>A Windows adatelemző virtuális gép Azure-beli üzembe helyezése
 
@@ -116,7 +116,7 @@ Használhatja a Microsoft Enterprise Library méretezhető R vagy Python elemzé
 
 Machine Learning-kiszolgáló támogatja a különböző big data típusú statisztikai, prediktív modellezési és gépi tanulási feladatok. Az elemzések széles skálását támogatja: feltárás, elemzés, vizualizációs és modellezés. Szerint használ, és kiterjeszti a nyílt forráskódú R és Python, a Machine Learning-kiszolgáló a kompatibilis az R és Python-parancsfájlokban és függvényekben. Emellett akkor is kompatibilis a CRAN, a pipet és a Conda-csomagok az adatok a nagyvállalati szintű elemzésére.
 
-Machine Learning-kiszolgáló hozzáadásával a párhuzamos és darabolásos adatok feldolgozása a memórián belüli korlátozások, nyílt forráskódú R címek. Ez azt jelenti, hogy elemzéseket végezhet, mint a fő memóriában adatfeldolgozással sokkal nagyobb méretű adatokon. A Visual Studio Community tartalmazza a virtuális gépen. Az R tools for Visual Studio és a Python Tools, adjon meg egy teljes IDE-R vagy Python használata a Visual Studio (PTVS)-bővítmények rajta. Is biztosítanak, mint más IDEs [RStudio](http://www.rstudio.com) és [PyCharm Community edition](https://www.jetbrains.com/pycharm/) a virtuális gépen.
+Machine Learning-kiszolgáló hozzáadásával a párhuzamos és darabolásos adatok feldolgozása a memórián belüli korlátozások, nyílt forráskódú R címek. Ez azt jelenti, hogy elemzéseket végezhet, mint a fő memóriában adatfeldolgozással sokkal nagyobb méretű adatokon. A Visual Studio Community tartalmazza a virtuális gépen. Az R tools for Visual Studio és a Python Tools, adjon meg egy teljes IDE-R vagy Python használata a Visual Studio (PTVS)-bővítmények rajta. Is biztosítanak, mint más IDEs [RStudio](https://www.rstudio.com) és [PyCharm Community edition](https://www.jetbrains.com/pycharm/) a virtuális gépen.
 
 ### <a name="python"></a>Python
 

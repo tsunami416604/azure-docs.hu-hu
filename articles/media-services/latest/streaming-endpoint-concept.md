@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services streamvégpontok |} A Microsoft Docs
-description: Ez a cikk lehetővé teszi a Streamelési végpontokkal is, és hogyan használják az Azure Media Services ismertetése.
+title: Streamvégpontok (forrás) az Azure Media Servicesben |} A Microsoft Docs
+description: Az Azure Media Services egy folyamatos átviteli végponton (forrás) jelöli, a dinamikus becsomagolást és a streamelési szolgáltatás, amely tartalmat továbbít közvetlenül az ügyfél lejátszóalkalmazásába, vagy az egy Content Delivery Network (CDN) további terjesztés céljából.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,18 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 04/27/2019
 ms.author: juliako
-ms.openlocfilehash: 8b6deadca610916a10f719d715fe6a17e29148bb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 1b29e75531c9e24d2f296442d528a28a23ffa947
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125423"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867616"
 ---
-# <a name="streaming-endpoints"></a>Streamvégpontok
+# <a name="streaming-endpoints-origin"></a>Streamvégpontok (forrás)
 
-A Microsoft Azure Media Services (AMS), a [adatfolyam-továbbítási végpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints) entitás streamelési szolgáltatás, amely tartalmat továbbít közvetlenül az ügyfél lejátszóalkalmazásába, vagy további, a Content Delivery Network (CDN) a jelöli terjesztési. A kimeneti streamjét egy **folyamatos átviteli végponton** élő stream, vagy igény szerinti Videoobjektum a Media Services-fiók lehet. Egy Media Services-fiók létrehozásakor egy **alapértelmezett** folyamatos átviteli végponton, létrehozott egy leállított állapotban. Nem lehet törölni a **alapértelmezett** folyamatos átviteli végponton. További Streamelési végpontokkal is létrehozhatók a fiókban. 
+A Microsoft Azure Media Services szolgáltatásban egy [folyamatos átviteli végponton](https://docs.microsoft.com/rest/api/media/streamingendpoints) jelöli egy dinamikus (just-in-time) csomagolás és a forrás szolgáltatás, amely az élő és igény szerinti tartalmat továbbít közvetlenül az ügyfél lejátszóalkalmazásába, az egyik a gyakori streamelési protokollok (HLS vagy DASH). Emellett a **folyamatos átviteli végponton** iparágvezető DRMs dinamikus (just-in-time) titkosítást nyújt.
+
+Egy Media Services-fiók létrehozásakor egy **alapértelmezett** folyamatos átviteli végponton, létrehozott egy leállított állapotban. Nem lehet törölni a **alapértelmezett** folyamatos átviteli végponton. További Streamelési végpontok a fiók alatt hozható létre (lásd: [kvóták és korlátozások](limits-quotas-constraints.md)). 
 
 > [!NOTE]
 > Videók streamelése el kell indítania a **folyamatos átviteli végponton** , amelyre vonatkozóan szeretné a videó. 
@@ -35,33 +37,37 @@ Minden további végpontok: `{EndpointName}-{AccountName}-{DatacenterAbbreviatio
 
 ## <a name="types"></a>Típusok  
 
-Kétféle **streamvégponttípus** létezik: **Standard** és **Prémium**. A skálázási egységek száma határozza meg a típus (`scaleUnits`) lefoglalni a streamvégpontra. 
+Kétféle **streamvégponttípus** létezik: **Standard szintű** (előzetes verzió) és **prémium**. A skálázási egységek száma határozza meg a típus (`scaleUnits`) lefoglalni a streamvégpontra. 
 
 A táblázat a típusokat írja le:  
 
 |Típus|Skálázási egységek|Leírás|
 |--------|--------|--------|  
-|**Standard streamvégpont** (ajánlott)|0|Az alapértelmezett streamvégpont egy **Standard** írja be, de a prémium szintű típusa módosítható.<br/> Standard típus gyakorlatilag az összes streamelési forgatókönyvekhez és bármilyen méretű közönségre a javasolt megoldás. A **Standard** típus automatikusan skálázza a kimenő sávszélességet. Az átviteli sebesség az ilyen típusú Streamvégpont legfeljebb 600 MB/s. A CDN gyorsítótárazza videó töredék ne használja a folyamatos átviteli végponton sávszélességet.<br/>A rendkívül nagy követelményeket támasztó ügyfelek számára a Media Services **Prémium** streamvégpontokat biztosít, amelyekkel a kapacitás még a legnagyobb internetes közönségekre is felskálázható. Ha várhatóan széles és egyidejű megtekintők, lépjen kapcsolatba velünk, amsstreaming\@útmutatást, hogy át kell helyeznie a Microsoft.com webhelyen a **prémium** típusa. |
-|**Prémium streamvégpont**|>0|A **prémium** szintű streamvégpontok a speciális feladatokhoz ideálisak, mert dedikált és méretezhető sávszélesség-kapacitást nyújtanak. Helyez át egy **prémium** típusának a módosításával `scaleUnits`. `scaleUnits` Adja meg, amely vásárolható meg, 200 MB/s-os léptékben dedikált kilépési kapacitáson. A **Prémium** típus használatakor mindegyik engedélyezett egység további sávszélesség-kapacitást nyújt az alkalmazásnak. |
- 
-## <a name="comparing-streaming-types"></a>Streamelési típusok összehasonlítása
+|**Standard**|0|Az alapértelmezett streamvégpont egy **Standard** írja be, a prémium szintű típus beállításával módosítható `scaleUnits`.|
+|**Prémium**|>0|**Prémium szintű** adatfolyam-továbbítási végpontok speciális munkaterhelésekhez megfelelőek, és dedikált, skálázható sávszélesség-kapacitást biztosítanak. Helyez át egy **prémium** típusának a módosításával `scaleUnits` (streamelési egységek). `scaleUnits` Adja meg, amely vásárolható meg, 200 MB/s-os léptékben dedikált kilépési kapacitáson. A **Prémium** típus használatakor mindegyik engedélyezett egység további sávszélesség-kapacitást nyújt az alkalmazásnak. |
 
-### <a name="features"></a>Szolgáltatások
+> [!NOTE]
+> Internetes tartalomterjesztés tartalomkézbesítés vásárlóknak azt javasoljuk, hogy engedélyezze a folyamatos átviteli végponton CDN.
+
+SLA-információkért lásd: [díjszabás és SLA](https://azure.microsoft.com/pricing/details/media-services/).
+
+## <a name="comparing-streaming-types"></a>Streamelési típusok összehasonlítása
 
 Szolgáltatás|Standard|Prémium
 ---|---|---
-Ingyenes az első 15 nap során| Igen |Nem
-Teljesítmény |Legfeljebb 600 MB/s, amikor az Azure CDN nincs használatban. CDN bevonásával.|200 MB / s folyamatos átviteli egységek (SU). CDN bevonásával.
+Ingyenes az első 15 nap során <sup>1</sup>| Igen |Nem
+Teljesítmény |Legfeljebb 600 MB/s, és a CDN használata esetén megadhat egy magasabb hatékony átviteli sebességre.|200 MB / s folyamatos átviteli egységek (SU). Egy újabb hatékony átviteli sebességre is adja meg, a CDN használata esetén.
 Tartalomkézbesítési hálózat (CDN)|Az Azure CDN, harmadik féltől származó CDN, vagy nincs CDN.|Az Azure CDN, harmadik féltől származó CDN, vagy nincs CDN.
 Az elszámolás| Napi|Napi
 Dinamikus titkosítás|Igen|Igen
 Dinamikus csomagolás|Igen|Igen
-Méretezés|Automatikus felskálázással a célként megadott átviteli sebességet.|A további streamelési egységek
-IP-szűrés/G20/egyéni állomás <sup>1</sup>|Igen|Igen
+Méretezés|Automatikus felskálázással a célként megadott átviteli sebességet.|További SUS-t
+IP-szűrés/G20/egyéni állomás <sup>2</sup>|Igen|Igen
 Progresszív letöltés|Igen|Igen
-Javasolt felhasználás |Javasolt a folyamatos átviteli forgatókönyvek túlnyomó többsége.|Professzionális használata.<br/>Ha úgy gondolja, előfordulhat, hogy Standard túli igényeinek. Lépjen kapcsolatba velünk (amsstreaming@microsoft.com) Ha egy egyidejű célközönség mérete nagyobb, mint 50 000 megtekintők.
+Javasolt felhasználás |Javasolt a folyamatos átviteli forgatókönyvek túlnyomó többsége.|Professzionális használata.
 
-<sup>1</sup> csak közvetlenül a folyamatos átviteli végponton használni, ha a CDN nincs engedélyezve a végponton.
+<sup>1</sup> az ingyenes próbaverzió csak érvényes újonnan létrehozott media services-fiókok és az alapértelmezett Streamelési végpontot.<br/>
+<sup>2</sup> csak közvetlenül a folyamatos átviteli végponton használni, ha a CDN nincs engedélyezve a végponton.<br/>
 
 ## <a name="properties"></a>Tulajdonságok 
 

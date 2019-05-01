@@ -11,12 +11,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: 172bf201e2327f5ae8db0ac3c82f2f07e3f0ffc9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: b33561ad80207a5d649ac1fd497c9d6c7add78c6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997478"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723991"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Az Azure SQL Database Machine Learning-szolgáltatások (előzetes verzió) R-rel
 
@@ -69,6 +69,6 @@ Machine Learning-szolgáltatások az r nyelv nem ajánlott az éles számítási
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg a [kulcs különbségek az SQL Server Machine Learning-szolgáltatások](sql-database-machine-learning-services-differences.md)
-- Az Azure SQL Database használata a Machine Learning-szolgáltatások (az r nyelv) című témakörben talál [a rövid útmutató](sql-database-connect-query-r.md).
-- További tudnivalók a [SQL Server R nyelv oktatóanyagok](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sql-server-r-tutorials)
+- Tekintse meg a [különbségek az SQL Server Machine Learning-szolgáltatások kulcs](sql-database-machine-learning-services-differences.md).
+- R lekérdezni az Azure SQL Database, Machine Learning Services (előzetes verzió) használatával kapcsolatban lásd: a [a rövid útmutató](sql-database-connect-query-r.md).
+- Néhány egyszerű R-szkriptek használatának megkezdéséhez lásd [létrehozás és Futtatás egyszerű R-szkriptek az Azure SQL Database, Machine Learning Services (előzetes verzió)](sql-database-quickstart-r-create-script.md).

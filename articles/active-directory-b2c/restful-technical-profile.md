@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7ff14af756a55ccc6bbf40dd39d49c5168f4af1f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 0726c22e436658d51419b9e32d73f48db99ba805
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60418294"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705307"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy REST-alapú technikai profilban meghatározása
 
@@ -33,7 +33,7 @@ A szabályzat küldhet a bemeneti jogcímek között, a REST API-val. A REST API
 - **Ellenőrzési technikai profil** – egy érvényesítési technikai profil meghívja a REST-alapú szolgáltatást. Az ellenőrzési technikai profil ellenőrzi a felhasználó által megadott felhasználói interakciósorozat folytatása előtt. Az érvényesítés technikai profilban, a hibaüzenetet önellenőrzött lapon megjelenített és adott vissza a kimeneti jogcímek.
 - **Az exchange-jogcímek** -hívást kezdeményez a RESTful szolgáltatás egy vezénylési lépés keresztül. Ebben a forgatókönyvben nem nincs felhasználói felület jelennek meg a hibaüzenetet. A REST API hibát ad vissza, ha a rendszer átirányítja a felhasználót a függő entitás alkalmazásnak a hiba miatt.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol
 
 A **neve** attribútuma a **protokoll** elemet hozzá kell beállítani `Proprietary`. A **kezelő** attribútum kell tartalmaznia a teljes nevet, amely az Azure AD B2C által használt protokoll kezelő sestavení: `Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
 

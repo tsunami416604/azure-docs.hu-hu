@@ -4,248 +4,232 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: c3546eab-96b5-489b-a309-b895eb428053
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/3/2017
+ms.topic: tutorial
+ms.date: 03/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4be5087af70e10e5a73ea2a183a25b326aea664
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce9573f78b6e8a9db65f35b7fc7711a8d3534508
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60341196"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699557"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ServiceChannel
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan ServiceChannel integrálása az Azure Active Directory (Azure AD).
-
 ServiceChannel integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, hogy ki férhet hozzá ServiceChannel Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett ServiceChannel (egyszeri bejelentkezés) az Azure AD-fiókjukkal
-- A fiókok egyetlen központi helyen – az Azure felügyeleti portálján kezelheti.
+* Szabályozhatja, ki férhet hozzá ServiceChannel Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve ServiceChannel (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ServiceChannel az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Azure AD-előfizetés
-- Egy ServiceChannel egyszeri bejelentkezéses engedélyezett előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Az éles környezetben ne használjon, ha erre szükség.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
+* ServiceChannel egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. ServiceChannel hozzáadása a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+
+* Támogatja a ServiceChannel **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+* Támogatja a ServiceChannel **igény szerinti** felhasználók átadása
 
 ## <a name="adding-servicechannel-from-the-gallery"></a>ServiceChannel hozzáadása a katalógusból
+
 Adja meg Zahájena integrációja az Azure AD-be, szüksége ServiceChannel hozzáadása a felügyelt SaaS-alkalmazások listájában a katalógusból.
 
 **ServiceChannel hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure felügyeleti portálján](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Active Directory][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![Alkalmazások][2]
-    
-1. Kattintson a **Hozzáadás** gombra a párbeszédpanel tetején.
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![Alkalmazások][3]
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-1. A Keresés mezőbe írja be a **ServiceChannel**.
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/servicechannel-tutorial/tutorial-servicechannel_000.png)
+4. A Keresés mezőbe írja be a **ServiceChannel**válassza **ServiceChannel** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-1. Az eredmények panelen válassza ki a **ServiceChannel**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+    ![Az eredmények listájában ServiceChannel](common/search-new-app.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/servicechannel-tutorial/tutorial-servicechannel_2.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés a teszt "Britta Simon" nevű felhasználó ServiceChannel.
-
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó ServiceChannel mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó ServiceChannel hivatkozás kapcsolata kell létrehozni.
-
-A hivatkozás kapcsolat létesítéséhez értéket rendeli az **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a ServiceChannel.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az nevű tesztfelhasználó alapján ServiceChannel **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó ServiceChannel hivatkozás kapcsolata kell létrehozni.
 
 Az Azure AD egyszeri bejelentkezés az ServiceChannel tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[ServiceChannel tesztfelhasználó létrehozása](#creating-a-servicechannel-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[ServiceChannel egyszeri bejelentkezés konfigurálása](#configure-servicechannel-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre ServiceChannel tesztfelhasználót](#create-servicechannel-test-user)**  - a-megfelelője a Britta Simon szerepel, amely kapcsolódik az Azure AD felhasználói ábrázolása ServiceChannel.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure felügyeleti portálon, és ServiceChannel alkalmazását az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés ServiceChannel, hajtsa végre az alábbi lépéseket:**
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés ServiceChannel, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure felügyeleti portálon a a **ServiceChannel** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **ServiceChannel** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-1. Az a **egyszeri bejelentkezési** párbeszédpanelen, **mód** kiválasztása **SAML-alapú bejelentkezés** való egyszeri bejelentkezés engedélyezése.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/servicechannel-tutorial/tutorial-servicechannel_01.png)
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-1. Az a **ServiceChannel tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/servicechannel-tutorial/tutorial-servicechannel_urls.png)
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    a. Az a **azonosító** szövegmezőbe írja be az értéket, mint: `http://adfs.<domain>.com/adfs/service/trust`
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<customer domain>.servicechannel.com/saml/acs`
+4. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon, a következő lépésekkel:
 
-    > [!NOTE] 
-    > Vegye figyelembe, hogy ezek nem állnak a valós értékeket. Az értékeket módosítsa a tényleges azonosítója és a válasz URL-címet kell. Itt javasoljuk, hogy az azonosító egyedi karakterlánc értékét használhatja. Kapcsolattartó [ServiceChannel támogatási csapatának](https://servicechannel.zendesk.com/hc/en-us) beolvasni ezeket az értékeket.
+    ![ServiceChannel tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
 
-1. ServiceChannel alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőfelvételen látható erre egy példa látható. **(Felhasználóazonosító) NameIdentifier** a csak a következő kötelező jogcímet, és az alapértelmezett érték **user.userprincipalname** ServiceChannel ezt a képezhető le a vár, de **user.mail**. Ha azt tervezi, igény szerinti felhasználók létrehozásának engedélyezéséhez, akkor hozzá kell adnia a következő jogcímek alább látható módon. **Szerepkör** jogcím van szüksége, le kell képezni **user.assignedroles** , amely tartalmazza a felhasználó szerepkörét.  
+    a. Az a **azonosító** szöveg írja be az értéket: `http://adfs.<domain>.com/adfs/service/trust`
+
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<customer domain>.servicechannel.com/saml/acs`
+
+    > [!NOTE]
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Itt javasoljuk, hogy az azonosító egyedi karakterlánc értékét használhatja. Kapcsolattartó [ServiceChannel ügyfél-támogatási csapatának](https://servicechannel.zendesk.com/hc/en-us) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+
+5. ServiceChannel alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. ServiceChannel alkalmazás vár **nameidentifier** a leképezendő **user.mail**, így kell szerkesztenie a attribútumleképezés kattintva **szerkesztése** ikonra, és módosítsa a Attribútumleképzés.
 
     Tekintse meg Zahájena útmutató [Itt](https://servicechannel.zendesk.com/hc/en-us/articles/217514326-Azure-AD-Configuration-Example) jogcímek további útmutatást.
-    
-    ![Egyszeri bejelentkezés konfigurálása](./media/servicechannel-tutorial/tutorial_servicechannel_attribute.png)
 
-    > [!NOTE] 
+    ![image](common/edit-attribute.png)
+
+    > [!NOTE]
     > Lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md) megtudhatja, hogyan konfigurálhatja **szerepkör** az Azure ad-ben.
 
-1. A **felhasználói attribútumok** területén kattintson **megtekintése és egyéb felhasználói attribútumok szerkesztése** és attribútumainak beállítása.
+6. Emellett a fenti Ha azt tervezi, igény szerinti felhasználók átadásának engedélyezése, hozzá kell adnia az a következő jogcímek alább látható módon. **Szerepkör** jogcím van szüksége, le kell képezni **user.assignedroles** , amely tartalmazza a felhasználó szerepkörét. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
 
-    | Attribútum neve | Attribútum értéke |
-    | --- | --- |    
-    | Szerepkör| user.assignedroles |
+    | Name (Név)   |  Adatforrás-attribútum |
+    | ------ | --- |
+    | Szerepkör   | user.assignedroles |
 
-    a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
+    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/servicechannel-tutorial/tutorial_servicechannel_04.png)
+    ![image](common/new-save-attribute.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/servicechannel-tutorial/tutorial_servicechannel_05.png)
-    
+    ![image](common/new-attribute-details.png)
+
     b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
-    
-    c. Az a **érték** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
-    
-    d. Kattintson a **Ok**
-    
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/servicechannel-tutorial/tutorial-servicechannel_05.png) 
+    c. Hagyja a **Namespace** üres.
 
-1. Kattintson a **Save** (Mentés) gombra.
+    d. Válassza ki a forrás, **attribútum**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/servicechannel-tutorial/tutorial_general_400.png)
+    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
 
-1. Az a **ServiceChannel konfigurációs** területén kattintson **konfigurálása ServiceChannel** megnyitásához **bejelentkezés konfigurálása** ablak. Vegye figyelembe, hogy a **SAML Entitásazonosító** származó a **rövid összefoglaló** szakaszban.
+    f. Kattintson a **Ok**
 
-1. Az egyszeri bejelentkezés konfigurálása **ServiceChannel** oldalon kell küldenie a letöltött **tanúsítvány (Base64)** és **SAML Entitásazonosító** való [ServiceChannel támogatási csoport](https://servicechannel.zendesk.com/hc/en-us). Ezek beállítja ezt annak érdekében, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+    g. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
-Ez a szakasz célja az Azure felügyeleti portálján, Britta Simon nevű hozzon létre egy tesztfelhasználót.
+7. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-![Az Azure AD-felhasználó létrehozása][100]
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+8. Az a **ServiceChannel beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
-1. Az a **Azure Management portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/servicechannel-tutorial/create_aaduser_01.png) 
+    a. Bejelentkezési URL
 
-1. Lépjen a **felhasználók és csoportok** kattintson **minden felhasználó** felhasználók listájának megjelenítéséhez.
-    
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/servicechannel-tutorial/create_aaduser_02.png) 
+    b. Azure AD-azonosító
 
-1. Kattintson a párbeszédpanel tetején **Hozzáadás** megnyitásához a **felhasználói** párbeszédpanel.
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/servicechannel-tutorial/create_aaduser_03.png) 
+    c. Kijelentkezési URL
 
-1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/servicechannel-tutorial/create_aaduser_04.png) 
+### <a name="configure-servicechannel-single-sign-on"></a>ServiceChannel egyszeri bejelentkezés konfigurálása
 
-    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
+Az egyszeri bejelentkezés konfigurálása **ServiceChannel** oldalon kell küldenie a letöltött **tanúsítvány (Base64)** és az Azure Portalról másolt URL-címek megfelelő [ServiceChannel támogatása csapat](https://servicechannel.zendesk.com/hc/en-us). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
-    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-    d. Kattintson a **Create** (Létrehozás) gombra. 
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-### <a name="creating-a-servicechannel-test-user"></a>ServiceChannel tesztfelhasználó létrehozása
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+
+2. Válassza ki **új felhasználó** a képernyő tetején.
+
+    ![Új felhasználó gomb](common/new-user.png)
+
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
+
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőtípus `brittasimon@yourcompanydomain.extension`  
+    Például: BrittaSimon@contoso.com
+
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+
+    d. Kattintson a **Create** (Létrehozás) gombra.
+
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés ServiceChannel Azure egyszeri bejelentkezés használatára.
+
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **ServiceChannel**.
+
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+
+2. Az alkalmazások listájában jelölje ki a **ServiceChannel**.
+
+    ![Az alkalmazások listáját a ServiceChannel hivatkozásra](common/all-applications.png)
+
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
+
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+
+### <a name="create-servicechannel-test-user"></a>ServiceChannel tesztfelhasználó létrehozása
 
 Alkalmazás támogatja a csak az idő felhasználókiépítés, miután a felhasználók hitelesítésére, az alkalmazás automatikusan létrejön. Teljes jogú felhasználók kiépítése, lépjen kapcsolatba [ServiceChannel támogatási csoport](https://servicechannel.zendesk.com/hc/en-us)
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
-
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés ServiceChannel saját hozzáférésének engedélyezésére használja.
-
-![Felhasználó hozzárendelése][200] 
-
-**Britta Simon rendel ServiceChannel, hajtsa végre az alábbi lépéseket:**
-
-1. Az Azure felügyeleti portálon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
-
-    ![Felhasználó hozzárendelése][201] 
-
-1. Az alkalmazások listájában jelölje ki a **ServiceChannel**.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/servicechannel-tutorial/tutorial-servicechannel_app01.png) 
-
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
-
-    ![Felhasználó hozzárendelése][202] 
-
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![Felhasználó hozzárendelése][203]
-
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
-
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
-
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a ServiceChannel csempére kattint, meg kell beolvasása automatikusan bejelentkezett az ServiceChannel alkalmazáshoz.
+Ha a hozzáférési panelen a ServiceChannel csempére kattint, meg kell kell automatikusan bejelentkezett, amelynek beállítása egyszeri Bejelentkezést a ServiceChannel. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-<!--Image references-->
-
-[1]: ./media/servicechannel-tutorial/tutorial_general_01.png
-[2]: ./media/servicechannel-tutorial/tutorial_general_02.png
-[3]: ./media/servicechannel-tutorial/tutorial_general_03.png
-[4]: ./media/servicechannel-tutorial/tutorial_general_04.png
-
-[100]: ./media/servicechannel-tutorial/tutorial_general_100.png
-
-[200]: ./media/servicechannel-tutorial/tutorial_general_200.png
-[201]: ./media/servicechannel-tutorial/tutorial_general_201.png
-[202]: ./media/servicechannel-tutorial/tutorial_general_202.png
-[203]: ./media/servicechannel-tutorial/tutorial_general_203.png
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

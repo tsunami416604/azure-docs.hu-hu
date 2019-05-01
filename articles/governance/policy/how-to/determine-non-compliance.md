@@ -3,16 +3,16 @@ title: A nemmegfelelőség okainak meghatározása
 description: Amikor az erőforrás nem megfelelő, nincsenek számos oka lehet. Ismerje meg, mi okozta a meg nem felelés megtanulhatja, hogyan.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/30/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 0af3fd8596bf558f9d5cc97c95be773aa40954cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2f856e9c42b26d4e286493e2eb5d019a8cff6c23
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60499328"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868721"
 ---
 # <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
 
@@ -47,7 +47,7 @@ A megfelelőségi részletek megjelenítéséhez kövesse az alábbi lépéseket
 
    ![Megfelelőségi részletek ablaktábla és a meg nem felelés oka](../media/determine-non-compliance/compliance-details-pane.png)
 
-   Az egy **auditIfNotExists** vagy **deployIfNotExists** szabályzatdefiníciót, szerepel a **details.type** tulajdonság és a választható tulajdonságok. Egy listát lásd: [auditIfNotExists tulajdonságok](../concepts/effects.md#auditifnotexists-properties) és [deployIfNotExists tulajdonságok](../concepts/effects.md#deployifnotexists-properties). **Legutóbbi értékelés erőforrás** a kapcsolódó erőforrások a **részletek** a definíció szakasza.
+   Az egy **auditIfNotExists** vagy **deployIfNotExists** szabályzatdefiníciót, szerepel a **details.type** tulajdonság és a választható tulajdonságok. Egy listát lásd: [auditIfNotExists tulajdonságok](../concepts/effects.md#auditifnotexists-properties) és [deployIfNotExists tulajdonságok](../concepts/effects.md#deployifnotexists-properties). **Legutóbbi értékelés erőforrás** a kapcsolódó erőforrás a **részletek** a definíció szakasza.
 
    Példa részleges **deployIfNotExists** definíciója:
 
@@ -105,9 +105,107 @@ A következő mátrix térképek minden lehetséges _OK_ a a felelős [feltétel
 |Az aktuális érték a kis- és nagybetűk közötti különbség figyelmen kívül hagyásával nem felelhet meg a célértéknek. |notMatchInsensitively vagy **nem** matchInsensitively |
 |A szabályzat definíciójában nem felel meg kapcsolódó erőforrás a hatás részleteinek. |A megadott típusú erőforrás **then.details.type** és a meghatározott erőforráshoz kapcsolódó a **Ha** része a szabály nem létezik. |
 
-## <a name="change-history-preview"></a>Változások nyomon követése (előzetes verzió)
+## <a name="compliance-details-for-guest-configuration"></a>Megfelelőségi adatai számára a Vendég-konfiguráció
 
-Egy új részeként **nyilvános előzetes verzióban**, az elmúlt 14 napban változtatás előzmények érhető el az összes Azure-erőforrások, amelyek támogatják a [mód törlésének befejezéséhez](../../../azure-resource-manager/complete-mode-deletion.md). Változások nyomon követése kapcsolatos tudnivalókat tartalmaz, amikor a rendszer észlelte a változást, és a egy _diff vizuális_ minden módosításakor. Egy címváltozásának felderítését akkor aktiválódik, ha a Resource Manager-tulajdonságok hozzáadott, eltávolított vagy módosítani.
+A _naplózási_ szabályzatokat a _Vendég konfigurációs_ kategória, lehetséges, hogy értékeli ki a virtuális gép több beállítást, és kell beállításonkénti részletek megtekintéséhez. Például ha, már telepített alkalmazásokat és a hozzárendelés állapotának listáját naplózás, _nem megfelelő_, meg kell tudni, hogy mely adott alkalmazásokat hiányoznak.
+
+Akkor is előfordulhat, hogy nincs hozzáférése a közvetlenül bejelentkezni a virtuális gép, de miért nem a virtuális gép jelentést kell _nem megfelelő_. Például előfordulhat, hogy naplózza, hogy a virtuális gépek a megfelelő tartományhoz csatlakozó és az aktuális tartományi tagság tartalmazzák a jelentéskészítési részletei között.
+
+### <a name="azure-portal"></a>Azure Portal
+
+1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg és válassza ki a **Szabályzat** elemet.
+
+1. Az a **áttekintése** vagy **megfelelőségi** lapon, válassza ki a szabályzat-hozzárendelés minden kezdeményezés, amely tartalmazza a Vendég-konfigurációs szabályzat-definíció hogy _nem megfelelő_.
+
+1. Válassza ki egy _naplózási_ kezdeményezésére szabályzat hogy _nem megfelelő_.
+
+   ![Naplózási definíció részleteinek megtekintése](../media/determine-non-compliance/guestconfig-audit-compliance.png)
+
+1. Az a **erőforrás megfelelőségi** lapon a következő információkat biztosítja:
+
+   - **Név** – a Vendég konfigurációs hozzárendelések nevét.
+   - **Szülőerőforrás** – a virtuális gép egy _nem megfelelő_ állapot, a kiválasztott Vendég konfigurációs hozzárendelés.
+   - **Erőforrástípus** – a _guestConfigurationAssignments_ teljes neve.
+   - **Legutóbbi értékelés** – az utolsó időpont, a Vendég konfigurációs szolgáltatás értesítést kap az Azure Policy a cél virtuális gép állapotát.
+
+   ![Tekintse át a megfelelőségi részleteket.](../media/determine-non-compliance/guestconfig-assignment-view.png)
+
+1. Válassza ki a Vendég konfigurációs hozzárendelés neve a **neve** nyissa meg az oszlop a **erőforrás megfelelőségi** lapot.
+
+1. Válassza ki a **erőforrás megtekintése** gomb nyissa meg a lap tetején a **Vendég hozzárendelés** lapot.
+
+A **Vendég hozzárendelés** az összes elérhető megfelelőségi adatait jeleníti meg. Minden egyes sorára a nézet a virtuális gépen végrehajtott értékelést jelöli. Az a **OK** oszlop, miért a Vendég-hozzárendelés nem leíró kifejezés _nem megfelelő_ jelenik meg. Ha például Ön naplózás, hogy a virtuális gépek egy tartományhoz kell csatlakoztatni a **OK** oszlop jeleníti meg, beleértve az aktuális tartományi tagság szöveg.
+
+![Tekintse át a megfelelőségi részleteket.](../media/determine-non-compliance/guestconfig-compliance-details.png)
+
+### <a name="azure-powershell"></a>Azure PowerShell
+
+Megfelelőségi adatai az Azure PowerShell-lel is megtekintheti. Győződjön meg róla, hogy telepítette a Vendég konfigurációs modul.
+
+```azurepowershell-interactive
+Install-Module Az.GuestConfiguration
+```
+
+Az összes Vendég-hozzárendelés az aktuális állapotát egy virtuális gép a következő paranccsal tekintheti meg:
+
+```azurepowershell-interactive
+Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname>
+```
+
+```output
+PolicyDisplayName                                                         ComplianceReasons
+-----------------                                                         -----------------
+Audit that an application is installed inside Windows VMs                 {[InstalledApplication]bwhitelistedapp}
+Audit that an application is not installed inside Windows VMs.            {[InstalledApplication]NotInstalledApplica...
+```
+
+Csak megtekintéséhez a _OK_ kifejezés, amely azt ismerteti, miért nem a virtuális gép _nem megfelelő_, csak a OK gyermek tulajdonságát.
+
+```azurepowershell-interactive
+Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
+```
+
+```output
+The following applications are not installed: '<name>'.
+```
+
+Megfelelőségi előzményei terjed ki a virtuális gép vendég hozzárendelések is készíthető. Ez a parancs kimenete az egyes jelentések részletezi a virtuális gép számára.
+
+> [!NOTE]
+> A kimeneti adatok nagy mennyiségű adhatnak vissza. Azt javasoljuk, hogy a kimenet tárolható egy változóban.
+
+```azurepowershell-interactive
+$guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname>
+$guestHistory
+```
+
+```output
+PolicyDisplayName                                                         ComplianceStatus ComplianceReasons StartTime              EndTime                VMName LatestRepor
+                                                                                                                                                                  tId
+-----------------                                                         ---------------- ----------------- ---------              -------                ------ -----------
+[Preview]: Audit that an application is installed inside Windows VMs      NonCompliant                       02/10/2019 12:00:38 PM 02/10/2019 12:00:41 PM VM01  ../17fg0...
+<truncated>
+```
+
+Ez a nézet leegyszerűsítése használja a **ShowChanged** paraméter. Ez a parancs kimenete csak a jelentéseket tartalmazza, majd a megfelelőségi állapot módosítása.
+
+```azurepowershell-interactive
+$guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname> -ShowChanged
+$guestHistory
+```
+
+```output
+PolicyDisplayName                                                         ComplianceStatus ComplianceReasons StartTime              EndTime                VMName LatestRepor
+                                                                                                                                                                  tId
+-----------------                                                         ---------------- ----------------- ---------              -------                ------ -----------
+Audit that an application is installed inside Windows VMs                 NonCompliant                       02/10/2019 10:00:38 PM 02/10/2019 10:00:41 PM VM01  ../12ab0...
+Audit that an application is installed inside Windows VMs.                Compliant                          02/09/2019 11:00:38 AM 02/09/2019 11:00:39 AM VM01  ../e3665...
+Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
+```
+
+## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>Változások nyomon követése (előzetes verzió)
+
+Egy új részeként **nyilvános előzetes verzióban**, a változások nyomon követése az elmúlt 14 napban érhetők el az összes Azure-erőforrások, amelyek támogatják a [mód törlésének befejezéséhez](../../../azure-resource-manager/complete-mode-deletion.md). Változások nyomon követése kapcsolatos tudnivalókat tartalmaz, amikor a rendszer észlelte a változást, és a egy _diff vizuális_ minden módosításakor. Egy címváltozásának felderítését akkor aktiválódik, ha a Resource Manager-tulajdonságok hozzáadott, eltávolított vagy módosítani.
 
 1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg és válassza ki a **Szabályzat** elemet.
 
@@ -129,10 +227,10 @@ Módosítási előzmények adatok által biztosított [Azure Erőforrás-grafiko
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át a következő példák [Azure Policy-minták](../samples/index.md)
-- Tekintse át a [szabályzatdefiníciók struktúrája](../concepts/definition-structure.md)
-- Felülvizsgálat [házirend hatások ismertetése](../concepts/effects.md)
-- Megismerheti, hogyan [szabályzatok létrehozása programozott módon](programmatically-create.md)
-- Ismerje meg, hogyan [megfelelőségi adatok lekérése](getting-compliance-data.md)
-- Ismerje meg, hogyan [javítani a nem megfelelő erőforrások](remediate-resources.md)
-- A felügyeleti csoportok áttekintéséért lásd [az erőforrások az Azure Felügyeleti csoportok segítségével való rendszerezését](../../management-groups/overview.md) ismertető részt.
+- Tekintse át a következő példák [Azure Policy minták](../samples/index.md).
+- A [Szabályzatdefiníciók struktúrájának](../concepts/definition-structure.md) áttekintése.
+- A [Szabályzatok hatásainak ismertetése](../concepts/effects.md).
+- Megismerheti, hogyan [szabályzatok létrehozása programozott módon](programmatically-create.md).
+- Ismerje meg, hogyan [megfelelőségi adatok](getting-compliance-data.md).
+- Ismerje meg, hogyan [javítani a nem megfelelő erőforrások](remediate-resources.md).
+- Tekintse át a felügyeleti csoport van [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../../management-groups/overview.md).

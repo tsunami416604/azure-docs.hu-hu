@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/29/2019
+ms.date: 04/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b4d047f4266d11a5f6b77f33054eb93e31f7090b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8cd89b21e80662ec50746e0c7721a5544cfbce30
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58791575"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717503"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Windows Powershellen keresztül az Azure Data Box peremhálózati eszköz kezelése
 
@@ -24,7 +24,6 @@ Ez a cikk foglalkozik a feladatok végrehajtásához a PowerShell felület haszn
 Ez a cikk a következő eljárásokat tartalmazza:
 
 - A PowerShell-felületünkön csatlakozni
-- Indítson el egy támogatási munkamenetet
 - Hozzon létre egy támogatási csomagot
 - Tanúsítvány feltöltése
 - Az eszköz alaphelyzetbe állítása
@@ -59,7 +58,6 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
 További információ a tanúsítványok, nyissa meg [Azure IoT Edge-tanúsítványok](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) vagy [telepítse a tanúsítványokat az átjáró a](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway).
 
 ## <a name="view-device-information"></a>Eszköz adatainak megtekintése
-
  
 [!INCLUDE [View device information](../../includes/data-box-edge-gateway-view-device-info.md)]
 
@@ -90,6 +88,9 @@ Ha a számítási szerepkör konfigurálva van az eszközön, a PowerShell-felü
 
 [!INCLUDE [Monitor and troubleshoot compute modules](../../includes/data-box-edge-monitor-troubleshoot-compute.md)]
 
+## <a name="exit-the-remote-session"></a>Kilépés a távoli munkamenet
+
+A távoli PowerShell-munkamenetet a kilépéshez zárja be a PowerShell-ablakban.
 
 ## <a name="next-steps"></a>További lépések
 

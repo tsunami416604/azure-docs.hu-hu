@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: dc2e2f010de3dfe265cddbbaa6c050d081bd05dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a1fe8929b5ae39c82850aa08899c7b3e6bb98c7e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464925"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725304"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Szolgáltatásnevek és az Azure Kubernetes Service (AKS)
 
@@ -126,7 +126,7 @@ AKS és Azure AD szolgáltatásnevek használata esetén vegye figyelembe a köv
 - Alapértelmezés szerint egyszerű szolgáltatás hitelesítő adatai érvényesek az egy év. Is [frissítése vagy a szolgáltatásnév hitelesítő adatainak elforgatása] [ update-credentials] bármikor.
 - Minden egyszerű szolgáltatás társítva van egy Azure AD-alkalmazáshoz. A Kubernetes-fürt szolgáltatásneve társítható bármilyen érvényes Azure AD-alkalmazásnévhez (például: *https://www.contoso.org/example*). Az alkalmazás URL-címének nem szükséges valódi végpontnak lennie.
 - Amikor megadja a szolgáltatásnév **Client ID-ját** (Ügyfél-azonosítóját), használja az `appId` értékét.
-- A Kubernetes-fürt mester és csomópont virtuális gépein a szolgáltatásnév hitelesítő adatai az `/etc/kubernetes/azure.json` fájlban lesznek tárolva.
+- Az ügynök csomópont virtuális gépein a Kubernetes-fürt, az egyszerű szolgáltatás hitelesítő adatai a fájlban tárolt `/etc/kubernetes/azure.json`
 - Ha az [az aks create][az-aks-create] parancsot használja a szolgáltatásnév automatikus létrehozásához, a szolgáltatásnév hitelesítő adatai a `~/.azure/aksServicePrincipal.json` fájlba lesznek írva azon a gépen, amelyen a parancsot futtatta.
 - Az [az aks create][az-aks-create] használatával létrehozott AKS-fürt törlésekor az automatikusan létrehozott szolgáltatásnév nem törlődik.
     - Az egyszerű szolgáltatás törléséhez lekérdezése a fürt *servicePrincipalProfile.clientId* , majd törölje a [az ad app delete][az-ad-app-delete]. Cserélje le a következő erőforrás csoport és a fürt nevét a saját értékeit:

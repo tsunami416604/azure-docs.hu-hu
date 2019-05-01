@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46e70850ba9e5984e36643f1b9ecc9db29eec149
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f273104366b3e583bd98ebcc6d50387a3fb1d335
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386907"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572824"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Verziókiadások előzményei
 Az Azure Active Directory-csapat rendszeresen frissíti az Azure AD Connect Health új szolgáltatásait és funkcióit. Ez a cikk felsorolja és kiadott funkciókról.  
@@ -31,18 +31,23 @@ Az Azure Active Directory-csapat rendszeresen frissíti az Azure AD Connect Heal
 
 Az Azure AD Connect Health szinkronizálási szolgáltatás integrálva van az Azure AD Connect-telepítésre. Tudjon meg többet [az Azure AD Connect verziókiadások előzményei](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) szavazhat a visszajelzés funkciót, [Connect Health User Voice-csatorna](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
 
+## <a name="april-2019"></a>Április 2019
+**Ügynök frissítése:** 
+* Az Azure AD Connect Health agent for AD FS (3.1.46.0 verzió) 
+   1. Javítsa ki a riasztási folyamat ismétlődő SPN ellenőrizze az ADFS
+
 ## <a name="march-2019"></a>2019. március
 **Ügynök frissítése:** 
-* Az Azure AD Connect Health agent for AD DS (3.1.41.0 verzió) 
-* .NET-verzió gyűjtemény.
-* Ha hiányzik az adott kategóriába tartozó gyűjtése javítása.
-* Hibajavítás a Monitoring Agent több példány származtatását megelőzése.
+* Az Azure AD Connect Health agent for AD DS (3.1.41.0 verzió)  
+   1. .NET-verzió gyűjtemény
+   2. Ha hiányzik az adott kategóriába tartozó gyűjtése javítása
+   3. Hibajavítás a Monitoring Agent több példány származtatását megelőzése
 
 * Az Azure AD Connect Health agent for AD FS (3.1.41.0 verzió) 
-* Integrálja, és frissítse az AD FS test parancsfájlok ADFSToolBox használatával.
-* .NET-verzió gyűjtemény.
-* Ha hiányzik az adott kategóriába tartozó gyűjtése javítása.
-* Hibajavítás a Monitoring Agent több példány származtatását megelőzése.
+   1. Integráció és az AD FS test parancsfájlok használatával ADFSToolBox frissítése
+   2. .NET-verzió gyűjtemény megvalósítása
+   3. Ha hiányzik az adott kategóriába tartozó gyűjtése javítása
+   4. Hibajavítás a Monitoring Agent több példány származtatását megelőzése
 
 
 ## <a name="november-2018"></a>November 2018
@@ -51,15 +56,15 @@ Az Azure AD Connect Health szinkronizálási szolgáltatás integrálva van az A
 
 **Ügynök frissítése:** 
 * Az Azure AD Connect Health agent for AD DS (3.1.24.0 verzió) 
-* Transport Layer Security (TLS) protokoll 1.2-es verziójában megfelelőségi és végrehajtás
-* Globális katalógus riasztási zaj csökkentésére
-* Health ügynök regisztrációs hibajavítások
+   1. Transport Layer Security (TLS) protokoll 1.2-es verziójában megfelelőségi és végrehajtás
+   2. Globális katalógus riasztási zaj csökkentésére
+   3. Health ügynök regisztrációs hibajavítások
 
-* Az Azure AD Connect Health agent for AD FS (3.1.24.0 verzió)
-* Transport Layer Security (TLS) protokoll 1.2-es verziójában megfelelőségi és végrehajtás
-* A Test-ADFSRequestToken honosított operációs rendszer támogatása
-* Diagnosztikai ügynök EventHandler zárolási problémát megoldani.
-* Health ügynök regisztrációs hibajavítások
+* Az Azure AD Connect Health agent for AD FS (3.1.24.0 verzió)  
+   1. Transport Layer Security (TLS) protokoll 1.2-es verziójában megfelelőségi és végrehajtás
+   2. A Test-ADFSRequestToken honosított operációs rendszer támogatása
+   3. Diagnosztikai ügynök EventHandler zárolási problémát megoldani.
+   4. Health ügynök regisztrációs hibajavítások
 
 ## <a name="august-2018"></a>2018. augusztus 
 *  Az Azure AD Connect Health agent for Sync (3.1.7.0 verzió), amely az Azure AD Connect verziója 1.1.880.0    

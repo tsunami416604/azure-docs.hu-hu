@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: cawa
-ms.openlocfilehash: 3db1d638aa1e0d8488c310593a593465c2b9b336
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 4ee91a91a20cbffebf7453ba573266962aa35806
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128279"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924736"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer használatának első lépései
 
@@ -55,7 +55,7 @@ Az Azure Storage Explorert a következő Linux-disztribúciókon támogatják:
 
 Az Azure Storage Explorer a többi disztribúciókon is működhet, azonban csak azokat a fent felsorolt hivatalosan támogatott.
 
-Storage Explorer telepítése Linux rendszeren további segítségért olvassa el a [hibaelhárítási útmutatója](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting#linux-dependencies).
+Storage Explorer telepítése Linux rendszeren további segítségért olvassa el a [hibaelhárítási útmutatója](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting#linux-dependencies).
 
 Az Azure Storage Explorer [kibocsátási megjegyzések](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) néhány disztribúciók adott lépést tartalmaznak.
 

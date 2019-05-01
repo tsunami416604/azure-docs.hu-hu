@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 11/06/2018
 ms.author: aschhab
-ms.openlocfilehash: 175d5d5d4495986c29b75427a325088c14279e17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d5f5c1d9b1884c6e9975ceb0ce28ecd5f25e89b2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60308596"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716097"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Az Azure Service Bus-metrikák az Azure Monitor (előzetes verzió)
 
@@ -83,14 +83,14 @@ A következő két típusú hibák besorolt felhasználói hibáinak száma:
 |Kimenő üzenetek (előzetes verzió)|Események vagy egy meghatározott időtartamon belül a Service Bus Beérkezett üzenetek száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
 | Üzenetek (előzetes verzió) | Az üzenetsor vagy témakör üzeneteinek száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Dimenzió: EntityName |
 | ActiveMessages (előzetes verzió) | Az üzenetsor vagy témakör aktív üzeneteinek száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Dimenzió: EntityName |
+| Kézbesítetlen lettered üzenetek (előzetes verzió) | Az üzenetsor vagy témakör kézbesítetlen lettered üzeneteinek száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/>Dimenzió: EntityName |
+| Ütemezett üzenetek (előzetes verzió) | Ütemezett, az üzenetsor vagy témakör üzeneteinek száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag  <br/> Dimenzió: EntityName |
 
 ## <a name="connection-metrics"></a>Kapcsolati metrika
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
 |Aktív kapcsolatai (előzetes verzió)|A névtér, valamint egy entitására aktív kapcsolatok száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
-|Kapcsolatok megnyitott (előzetes verzió)|Megnyitott kapcsolatok száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
-|Kapcsolat lezárva (előzetes verzió)|Lezárt kapcsolatok száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName |
 
 ## <a name="resource-usage-metrics"></a>Erőforrás-használati metrikák
 
@@ -115,7 +115,7 @@ Az Azure Service Bus a következő dimenziókat támogatja a mérőszámok az Az
 1. Az a **metrikák** lapján a **Service Bus-Namespace** lapon jelölje be **riasztások konfigurálása**. 
 
     ![Metrikák lapon – a riasztások menüből konfigurálása](./media/service-bus-metrics-azure-monitor/metrics-page-configure-alerts-menu.png)
-2. Válassza ki **cél kiválasztása**, és a következő műveleteket hajthatja végre a a **válasszon ki egy erőforrást** oldalon: 
+2. Válassza ki a **cél kiválasztása** lehetőséget, majd a következő műveleteket hajthatja végre a a **válasszon ki egy erőforrást** oldalon: 
     1. Válassza ki **Service Bus-névterek** számára a **szűrés erőforrástípus szerint** mező. 
     2. Válassza ki az előfizetését a **előfizetés-szűrő** mező.
     3. Válassza ki a **service bus-névtér** a listából. 

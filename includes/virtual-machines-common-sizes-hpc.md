@@ -5,21 +5,47 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 04/26/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: a8f0e61a953a2e2471e49d571063f6202b7ab76d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 4b7cda593bd4dd39a7220aa282529535c6a63bea
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60540505"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64914544"
 ---
-Az Azure H-sorozatú virtuális gépek a nagy teljesítményű feldolgozás, virtuális gépek kezelése a számítási feladatok, például a kötegelt feldolgozásra, analytics, molekuláris modellezés és folyadékdinamika irányuló legújabb. Ezek a 8 és 16 vCPU virtuális gépek az Intel Haswell E5-2667 V3 processzor technológia esetében DDR4 memóriával és SSD-alapú ideiglenes tárolási lesz épülnek. 
+Az Azure H-sorozatú virtuális gépek (VM) úgy tervezték, hogy a vezetői szintű teljesítményt, méretezhetőséget MPI, és optimalizálhatja a költségeket különböző valós HPC számítási feladatok esetében.
 
-A jelentős CPU-teljesítmény mellett a H-sorozat különféle lehetőségeket kínál a kis késésű RDMA-hálózatkezeléshez az FDR InfiniBand használatával, valamint számos memóriakonfigurációt is a memóriaigényes számítási követelmények támogatására.
+A HB sorozatú virtuális gépek azokra az alkalmazásokra vannak optimalizálva, amelyeknek a memória sávszélessége a legfontosabb, például a folyadékdinamika, az explicit végeselem-elemzés és az időjárás-modellezés területén. A HB virtuális gépek 60 AMD EPYC 7551 processzormagot és processzormagonként 4 GB RAM-ot tartalmaznak, és nem nyújtanak hiperszálkezelést. Az AMD EPYC platform több, mint 260 GB/mp memória-sávszélességet biztosít.
+
+Hibrid kapcsolat-sorozat virtuális gépei sűrű számítások, például az implicit végeselemes elemzési, molekuláris dynamics és számítási kémia által vezérelt alkalmazásokhoz vannak optimalizálva. A HC virtuális gépek 44 Intel Xeon Platinum 8168-as processzormagot és processzormagonként 8 GB RAM-ot tartalmaznak, és nem nyújtanak hiperszálkezelést. Az Intel Xeon Platinum platform támogatja a szoftver eszközökkel, például az Intel matematikai Kernel Library széles választéka Intel.
+
+HB és a hibrid kapcsolat virtuális gépek funkciója 100 Gb/s Mellanox EDR InfiniBand egy nem blokkoló fat a fa RDMA egységes teljesítményt konfigurációját. HB és a hibrid kapcsolat virtuális gépeket támogatja a szabványos Mellanox/OFED illesztőprogramok úgy, hogy az összes MPI-típusok és verziók, valamint RDMA-műveletek, valamint támogatottak.
+
+H-sorozatú virtuális gépek magas CPU-használati vagy nagy méretű memóriát biztosít alapvető által vezérelt alkalmazásokhoz vannak optimalizálva. H-sorozatú virtuális gépek szolgáltatás 8 és 16 Intel Xeon E5-2667 v3 processzor-mag, 7 vagy 14 GB RAM, processzormagonként, és nem Hyper-Threading technológia. H-sorozat funkciók 56 Gb/s Mellanox FDR InfiniBand egy nem blokkoló fat a fa RDMA egységes teljesítményt konfigurációját. H-sorozatú virtuális gépek támogatják az Intel MPI 5.x és MS-MPI.
+
+## <a name="hb-series"></a>HB-sorozat
+
+Prémium szintű Storage: A Premium Storage támogatja a gyorsítótárazást: Támogatott
+
+| Méret | vCPU | Processzor | Memória (GB) | Memória sávszélesség GB/s | Alapszintű CPU gyakorisága (GHz) | Az összes virtuális mag gyakorisága (GHz-es, csúcsérték) | Egy mag gyakorisága (GHz-es, csúcsérték) | RDMA-teljesítmény (GB/s) | MPI-támogatás | Ideiglenes tárterület (GB) | Adatlemezek max. száma | Max Ethernet NICs |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_HB60rs | 60 | AMD EPYC 7551 | 240 | 263 | 2.0 | 2.55 | 2.55 | 100 | Összes | 700 | 4 | 1 |
+
+<br>
+
+## <a name="hc-series"></a>Hibrid kapcsolat-sorozat
+
+Prémium szintű Storage: A Premium Storage támogatja a gyorsítótárazást: Támogatott
 
 
+| Méret | vCPU | Processzor | Memória (GB) | Memória sávszélesség GB/s | Alapszintű CPU gyakorisága (GHz) | Az összes virtuális mag gyakorisága (GHz-es, csúcsérték) | Egy mag gyakorisága (GHz-es, csúcsérték) | RDMA-teljesítmény (GB/s) | MPI-támogatás | Ideiglenes tárterület (GB) | Adatlemezek max. száma | Max Ethernet NICs |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_HC44rs | 44 | Intel Xeon Platinum 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | Összes | 700 | 4 | 1 |
+
+
+<br>
 
 ## <a name="h-series"></a>H-sorozat
 
@@ -29,21 +55,15 @@ Prémium szintű Storage:  Nem támogatott
 
 Prémium szintű Storage gyorsítótárazást:  Nem támogatott
 
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Lemezek max. teljesítménye: IO | Hálózati adapterek maximális száma |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_H8 |8 |56 |1000 |32 |32x500 |2  |
-| Standard_H16 |16 |112 |2000 |64 |64x500 |4 |
-| Standard_H8m |8 |112 |1000 |32 |32x500 |2  |
-| Standard_H16m |16 |224 |2000 |64 |64x500 |4  |
-| Standard h16r méretű <sup>1</sup> |16 |112 |2000 |64 |64x500 |4  |
-| Standard h16mr méretű <sup>1</sup> |16 |224 |2000 |64 |64x500 |4 |
+| Méret | vCPU | Processzor | Memória (GB) | Memória sávszélesség GB/s | Alapszintű CPU gyakorisága (GHz) | Az összes virtuális mag gyakorisága (GHz-es, csúcsérték) | Egy mag gyakorisága (GHz-es, csúcsérték) | RDMA-teljesítmény (GB/s) | MPI-támogatás | Ideiglenes tárterület (GB) | Adatlemezek max. száma | Max Ethernet NICs |
+| --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_H8 | 8 | Intel Xeon E5-2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 1000 | 32 | 2 |
+| Standard_H16 | 16 | Intel Xeon E5-2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 |  56 | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
+| Standard_H8m | 8 | Intel Xeon E5-2667 v3 | 112 | 40 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 1000 | 32 | 2 |
+| Standard_H16m | 16 | Intel Xeon E5-2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
+| Standard h16r méretű <sup>1</sup> | 16 | Intel Xeon E5-2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | 56 | 2000 | Intel 5.x, MS-MPI | 64 | 4 |
+| Standard h16mr méretű <sup>1</sup> | 16 | Intel Xeon E5-2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | 56 | 2000 | Intel 5.x, MS-MPI | 64 | 4 |
 
 <sup>1</sup> MPI-alkalmazások, a dedikált RDMA-háttérhálózatot engedélyezve van FDR InfiniBand hálózat, amely ultra rendkívül alacsony késést és magas sávszélességet kínál.
 
 <br>
-
-
-
-
-
-

@@ -3,8 +3,8 @@ title: Azure PowerShell-példaszkript – Társviszony létesítése két virtu�
 description: Azure PowerShell-példaszkript – Társviszony létesítése két virtuális hálózat között
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
-ms.author: jdial
-ms.openlocfilehash: 98081e0404ceca162941ad17ad6fcd6839663dac
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.author: kumud
+ms.openlocfilehash: 9f75d1078926772d71e10fe59e2759656aec9ab9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650308"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710218"
 ---
 # <a name="peer-two-virtual-networks-script-sample"></a>Példaszkript társviszony létesítéséhez két virtuális hálózat között
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: caf9b91d5b98d028d7c9e971df30ad1f6ec448ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ad34c6a876ca21bc7ef32cce638240e0d23b3177
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456734"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723906"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Oktatóanyag: Hálózati forgalom szűrése hálózati biztonsági csoport az Azure Portal használatával
 
@@ -113,7 +113,7 @@ Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy egy csoportba rendez
     | ---------               | ---------                                                                                                       |
     | Cél             | Válassza az **Alkalmazásbiztonsági csoport** lehetőséget, majd válassza a **myAsgWebServers** elemet az **Alkalmazásbiztonsági csoport** számára.  |
     | Célporttartományok | Írja be a 80,443 értéket.                                                                                                    |
-    | Protokoll                | Válassza a TCP lehetőséget.                                                                                                      |
+    | Protocol                | Válassza a TCP lehetőséget.                                                                                                      |
     | Name (Név)                    | Allow-Web-All                                                                                                   |
 
 3. Hajtsa végre ismét a 2. lépést az alábbi értékeket használva:
@@ -122,7 +122,7 @@ Az alkalmazásbiztonsági csoportok lehetővé teszik, hogy egy csoportba rendez
     | ---------               | ---------                                                                                                       |
     | Cél             | Válassza az **Alkalmazásbiztonsági csoport** lehetőséget, majd válassza a **myAsgMgmtServers** elemet az **Alkalmazásbiztonsági csoport** számára. |
     | Célporttartományok | Írja be a 3389 értéket.                                                                                                      |
-    | Protokoll                | Válassza a TCP lehetőséget.                                                                                                      |
+    | Protocol                | Válassza a TCP lehetőséget.                                                                                                      |
     | Prioritás                | Írja be a 110 értéket.                                                                                                       |
     | Name (Név)                    | Allow-RDP-All                                                                                                   |
 

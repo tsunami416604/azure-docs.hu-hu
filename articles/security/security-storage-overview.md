@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2019
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ec0e8ae1bf657cda59f3d133db23106436e184e3
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: 262ccc311b2b7ec634183eb4f914902048ba2c3b
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120892"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872042"
 ---
 # <a name="azure-storage-security-overview"></a>Az Azure Storage biztonsági áttekintése
 
-Az Azure Storage az ügyfelek igényeihez alkalmazkodó, modern, a tartósságra, rendelkezésre állásra és méretezhetőségre tervezett alkalmazásokhoz legmegfelelőbb felhőalapú tárolómegoldás. Az Azure Storage egy átfogó biztonsági képességeket biztosít. A következőket teheti:
+Ez a cikk az Azure Storage használható az Azure security funkcióit. Az Azure Storage az ügyfelek igényeihez alkalmazkodó, modern, a tartósságra, rendelkezésre állásra és méretezhetőségre tervezett alkalmazásokhoz legmegfelelőbb felhőalapú tárolómegoldás. Az Azure Storage egy átfogó biztonsági képességeket biztosít. A következőket teheti:
 
 * A tárfiók biztonságos szerepköralapú hozzáférés-vezérlés (RBAC) és az Azure Active Directory használatával.
 * Gondoskodhat az alkalmazás és az Azure között átvitt adatok ügyféloldali titkosítás, a HTTPS vagy az SMB 3.0-s.
@@ -33,9 +33,6 @@ Az Azure Storage az ügyfelek igényeihez alkalmazkodó, modern, a tartósságra
 * Analytics segítségével nyomon követheti a tároló elérésekor valaki által használt hitelesítési módszert.
 
 Az Azure Storage biztonsági részletesebb tekintse meg, lásd: a [Azure Storage biztonsági útmutatóját](../storage/common/storage-security-guide.md). Ez az útmutató egy Azure Storage biztonsági funkcióinak részletes ismertetése. Ilyen például a tárfiók kulcsaihoz, adattitkosítás átvitel, mind REST-en, és a storage analytics.
-
-
-Ez a cikk az Azure Storage használható az Azure security funkcióit. Cikkek hivatkozásainak egyes szolgáltatások részletei adjon meg, hogy többet is megtudhat.
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 

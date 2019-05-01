@@ -1,7 +1,7 @@
 ---
 title: Többtárolós alkalmazás létrehozása a Web App for containers szolgáltatásban – Azure App Service-ben
-description: Megtudhatja, hogyan használhat több tárolót az Azure-ban Docker Compose és Kubernetes konfigurációs fájlokkal, egy WordPress- és MySQL-alkalmazással.
-keywords: azure app service, webalkalmazás, linux, docker, összeállítás, többtárolós, több tárolós, webalkalmazás tárolókhoz, több tároló, tároló, kubernetes, wordpress, mysql-hez készült azure db, éles adatbázis tárolókkal
+description: Ismerje meg, hogyan több tárolót használja a Docker Compose, WordPress és MySQL az Azure-ban.
+keywords: az Azure app service, webalkalmazás, linux, docker compose, multicontainer, a többtárolós, a web app for containers szolgáltatásban, több tárolók, tároló, wordpress, mysql-hez készült azure db, a tárolók éles adatbázis
 services: app-service
 documentationcenter: ''
 author: msangapu
@@ -12,15 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 04/29/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: cd7edb576264ac8bb8a076bbb4b2970579056f13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b3dc019b8d5a31986f4145d9dd2f7bd86bbb467
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60767907"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920056"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Oktatóanyag: Többtárolós (előzetes verziójú) alkalmazás létrehozása a Web App for Containersben
 
@@ -30,7 +29,6 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Docker Compose-konfiguráció átalakítása a Web App for Containers használatára
-> * Kubernetes-konfiguráció átalakítása a Web App for Containers használatára
 > * Többtárolós alkalmazás üzembe helyezése az Azure-ban
 > * Alkalmazásbeállítások hozzáadása
 > * Állandó tárolók használata a tárolókban
@@ -41,7 +39,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez tapasztalattal kell rendelkeznie a [Docker Compose](https://docs.docker.com/compose/) vagy a [Kubernetes](https://kubernetes.io/) használatában.
+Az oktatóanyag elvégzéséhez szüksége van a felületre [Docker Compose](https://docs.docker.com/compose/).
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
@@ -255,7 +253,7 @@ A környezeti változók további információkért lásd: [környezeti változ�
 
 ### <a name="use-a-custom-image-for-mysql-ssl-and-other-configurations"></a>Egyéni MySQL SSL-rendszerkép és egyéb konfigurációk használata
 
-Alapértelmezés szerint az Azure Database for MySQL az SSL-t használja. A WordPress esetében további konfigurálás szükséges az SSL és a MySQL együttes használatához. A WordPress „hivatalos rendszerképe” nem tartalmazza a további konfigurációt, de a felhasználók kényelme érdekében elérhető egy [egyéni rendszerkép](https://hub.docker.com/r/microsoft/multicontainerwordpress/builds/) is. A gyakorlatban a kívánt módosításokat a saját rendszerképéhez adná hozzá.
+Alapértelmezés szerint az Azure Database for MySQL az SSL-t használja. A WordPress esetében további konfigurálás szükséges az SSL és a MySQL együttes használatához. A WordPress hivatalos-rendszerképpel nem biztosít a további konfigurálást, de egy [egyéni rendszerkép](https://github.com/Azure-Samples/multicontainerwordpress) van készítve a felhasználók kényelme érdekében. A gyakorlatban a kívánt módosításokat a saját rendszerképéhez adná hozzá.
 
 Az egyéni rendszerkép a WordPress „hivatalos rendszerképén” alapul, amely a [Docker Hubból](https://hub.docker.com/_/wordpress/) érhető el. Az egyéni rendszerkép a következő módosításokat tartalmazza az Azure Database for MySQL-hez:
 
@@ -270,7 +268,7 @@ Az egyéni rendszerkép a következő módosításokat tartalmazza a Redisre von
 * [A Redis Object Cache 1.3.8 WordPress beépülő modul hozzáadása.](https://github.com/Azure-Samples/multicontainerwordpress/blob/5669a89e0ee8599285f0e2e6f7e935c16e539b92/docker-entrypoint.sh#L74)
 * [A WordPress wp-config.php fájljában a Redis hosztnevére vonatkozó alkalmazásbeállítást használja.](https://github.com/Azure-Samples/multicontainerwordpress/blob/5669a89e0ee8599285f0e2e6f7e935c16e539b92/docker-entrypoint.sh#L162)
 
-Az egyéni rendszerkép használatához frissíteni kell a docker-compose-wordpress.yml fájlt. A Cloud Shellben írja be a `nano docker-compose-wordpress.yml` parancsot a nano szövegszerkesztő megnyitásához. Módosítsa az `image: microsoft/multicontainerwordpress` elemet a következőre: `image: wordpress`. Az adatbázistárolóra már nincs szükség. Távolítsa el a konfigurációs fájlból a `db`, `environment`, `depends_on` és `volumes` szakaszokat. A fájlnak a következő kódhoz hasonlóan kell kinéznie:
+Az egyéni rendszerkép használatához frissíteni kell a docker-compose-wordpress.yml fájlt. A Cloud Shellben írja be a `nano docker-compose-wordpress.yml` parancsot a nano szövegszerkesztő megnyitásához. Módosítsa az `image: mcr.microsoft.com/azuredocs/multicontainerwordpress` elemet a következőre: `image: wordpress`. Az adatbázistárolóra már nincs szükség. Távolítsa el a konfigurációs fájlból a `db`, `environment`, `depends_on` és `volumes` szakaszokat. A fájlnak a következő kódhoz hasonlóan kell kinéznie:
 
 ```yaml
 version: '3.3'
@@ -404,7 +402,20 @@ Az egyéni rendszerkép a WordPress „hivatalos rendszerképén” alapul, amel
 
 Adja hozzá a Redis-tárolót a konfigurációs fájl végéhez, hogy a fájl az alábbi példához hasonlóan néz ki:
 
-[!code-yml[Main](../../../azure-app-service-multi-container/compose-wordpress.yml)]
+```yaml
+version: '3.3'
+
+services:
+   wordpress:
+     image: microsoft/multicontainerwordpress
+     ports:
+       - "8000:80"
+     restart: always
+
+   redis:
+     image: redis:3-alpine
+     restart: always
+```
 
 ### <a name="configure-environment-variables"></a>Környezeti változók konfigurálása
 
@@ -459,7 +470,7 @@ Végezze el a lépéseket, és telepítse a WordPresst.
 
 ### <a name="connect-wordpress-to-redis"></a>A WordPress csatlakoztatása a Redishez
 
-Jelentkezzen be rendszergazdaként a WordPressbe. A bal oldali navigációs menüben válassza a **Beépülő modulok**, majd a **Telepített beépülő modulok** lehetőséget.
+Jelentkezzen be rendszergazdaként a WordPress. A bal oldali navigációs menüben válassza a **Beépülő modulok**, majd a **Telepített beépülő modulok** lehetőséget.
 
 ![WordPress beépülő modulok kiválasztása][2]
 
@@ -482,172 +493,6 @@ A WordPress csatlakozik a Redis-kiszolgálóhoz. A kapcsolat **állapota** ugyan
 ![A WordPress csatlakozik a Redis-kiszolgálóhoz. A kapcsolat **állapota** ugyanezen az oldalon jelenik meg.][6]
 
 **Gratulálunk**, csatlakoztatta a WordPresst a Redishez. Az éles környezetbe helyezésre kész alkalmazás mostantól az **Azure Database for MySQL-t, az állandó tárolót és a Redist** használja. Így horizontálisan felskálázhatja több példányra az App Service-csomagot.
-
-## <a name="use-a-kubernetes-configuration-optional"></a>Kubernetes-konfiguráció használata (opcionális)
-
-Ez a szakasz azt ismerteti, hogyan helyezhető üzembe több tároló egy Kubernetes-konfiguráció használatával. Ehhez először el kell végeznie a korábbi lépéseket egy [erőforráscsoport](#create-a-resource-group) és egy [App Service-csomag](#create-an-azure-app-service-plan) létrehozásához. Mivel a legtöbb lépés nagyon hasonlít a Compose szakasz lépéseihez, a két útmutató egy kombinált konfigurációs fájlt használ.
-
-### <a name="kubernetes-configuration-file"></a>Kubernetes konfigurációs fájl
-
-Az oktatóanyag ezen részéhez a *kubernetes-wordpress.yml* fájlt fogjuk használni. Az alábbiakban láthatja a fájlt referenciaként:
-
-[!code-yml[Main](../../../azure-app-service-multi-container/kubernetes-wordpress.yml)]
-
-A támogatott konfigurációs lehetőségekről [Kubernetes konfigurációs lehetőségek](configure-custom-container.md#kubernetes-configuration-options)
-
-### <a name="create-an-azure-database-for-mysql-server"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz
-
-Hozzon létre egy kiszolgálót az Azure Database for MySQL szolgáltatásban az [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) paranccsal.
-
-A következő parancsban cserélje le a MySQL-kiszolgáló nevét, ahol a  _&lt;mysql-kiszolgáló-neve >_ helyőrző (érvényes karakterek: `a-z`, `0-9`, és `-`). Ez a név része a MySQL-kiszolgáló állomásnevének (`<mysql-server-name>.database.windows.net`), és globálisan egyedinek kell lennie.
-
-```azurecli-interactive
-az mysql server create --resource-group myResourceGroup --name <mysql-server-name>  --location "South Central US" --admin-user adminuser --admin-password My5up3rStr0ngPaSw0rd! --sku-name B_Gen4_1 --version 5.7
-```
-
-A MySQL-kiszolgáló létrehozása után a Cloud Shell az alábbi példához hasonló információkat jelenít meg:
-
-```json
-{
-  "administratorLogin": "adminuser",
-  "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "<mysql-server-name>.database.windows.net",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/<mysql-server-name>",
-  "location": "southcentralus",
-  "name": "<mysql-server-name>",
-  "resourceGroup": "myResourceGroup",
-  ...
-}
-```
-
-### <a name="configure-server-firewall"></a>Kiszolgáló tűzfalának konfigurálása
-
-Az [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az-mysql-server-firewall-rule-create) parancs használatával hozzon létre egy tűzfalszabályt a MySQL-kiszolgáló számára az ügyfélkapcsolatok engedélyezéséhez. Ha a kezdő IP-cím és a záró IP-cím is 0.0.0.0 értékre van állítva, a tűzfal csak más Azure-erőforrások számára van nyitva.
-
-```azurecli-interactive
-az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
-```
-
-> [!TIP]
-> Még szigorúbb tűzfalszabályt is megadhat, ha [csak azokat a kimenő IP-címeket használja, amelyeket alkalmazása használ](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
->
-
-### <a name="create-the-wordpress-database"></a>A WordPress-adatbázis létrehozása
-
-Hozzon létre egy [Azure Database for MySQL-kiszolgálót](#create-an-azure-database-for-mysql-server), ha még nem tette meg.
-
-```azurecli-interactive
-az mysql db create --resource-group myResourceGroup --server-name <mysql-server-name> --name wordpress
-```
-
-Az adatbázis létrehozása után a Cloud Shell az alábbi példához hasonló információkat jelenít meg:
-
-```json
-{
-  "additionalProperties": {},
-  "charset": "latin1",
-  "collation": "latin1_swedish_ci",
-  "id": "/subscriptions/12db1644-4b12-4cab-ba54-8ba2f2822c1f/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/<mysql-server-name>/databases/wordpress",
-  "name": "wordpress",
-  "resourceGroup": "myResourceGroup",
-  "type": "Microsoft.DBforMySQL/servers/databases"
-}
-```
-
-### <a name="create-a-multi-container-app-kubernetes"></a>Többtárolós alkalmazás létrehozása (Kubernetes)
-
-A Cloud Shellben hozzon létre egy többtárolós [webalkalmazást](app-service-linux-intro.md) a `myResourceGroup` erőforráscsoportban és az `myAppServicePlan` App Service-csomagban az [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) paranccsal. Ne felejtse el kicserélni az  _\<alkalmazás-neve >_ egy egyedi névre.
-
-```azurecli-interactive
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --multicontainer-config-type kube --multicontainer-config-file kubernetes-wordpress.yml
-```
-
-A webalkalmazás létrehozása után a Cloud Shell az alábbi példához hasonló eredményeket jelenít meg:
-
-```json
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 0,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app-name>.azurewebsites.net",
-  "enabled": true,
-  < JSON data removed for brevity. >
-}
-```
-
-### <a name="configure-database-variables-in-wordpress"></a>Adatbázis-változók konfigurálása a WordPressben
-
-A WordPress és az új MySQL-kiszolgáló csatlakoztatásához konfigurálni kell néhány WordPress-specifikus környezeti változót. A módosítás elvégzéséhez használja az [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot a Cloud Shellben. Az alkalmazásbeállítások megkülönböztetik a kis-és nagybetűket, és szóközzel vannak elválasztva.
-
-```azurecli-interactive
-az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WORDPRESS_DB_HOST="<mysql-server-name>.mysql.database.azure.com" WORDPRESS_DB_USER="adminuser@<mysql-server-name>" WORDPRESS_DB_PASSWORD="My5up3rStr0ngPaSw0rd!" WORDPRESS_DB_NAME="wordpress" MYSQL_SSL_CA="BaltimoreCyberTrustroot.crt.pem"
-```
-
-Az alkalmazásbeállítás létrehozása után a Cloud Shell az alábbi példához hasonló információkat jelenít meg:
-
-```json
-[
-  {
-    "name": "WORDPRESS_DB_HOST",
-    "slotSetting": false,
-    "value": "<mysql-server-name>.mysql.database.azure.com"
-  },
-  {
-    "name": "WORDPRESS_DB_USER",
-    "slotSetting": false,
-    "value": "adminuser@<mysql-server-name>"
-  },
-  {
-    "name": "WORDPRESS_DB_NAME",
-    "slotSetting": false,
-    "value": "wordpress"
-  },
-  {
-    "name": "WORDPRESS_DB_PASSWORD",
-    "slotSetting": false,
-    "value": "My5up3rStr0ngPaSw0rd!"
-  }
-]
-```
-
-### <a name="add-persistent-storage"></a>Állandó tároló hozzáadása
-
-A többtárolós alkalmazás mostantól a Web App for Containersben fut. Az adatok az újraindításkor automatikusan törlődnek, mivel a fájlok nem állandóak. Ebben a szakaszban fog [adja hozzá az állandó tárolóból](configure-custom-container.md#use-persistent-shared-storage) a WordPress-tárolóba.
-
-### <a name="configure-environment-variables"></a>Környezeti változók konfigurálása
-
-Az állandó tároló használatához engedélyezni kell ezt a beállítást az App Service-ben. A módosítás elvégzéséhez használja az [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot a Cloud Shellben. Az alkalmazásbeállítások megkülönböztetik a kis-és nagybetűket, és szóközzel vannak elválasztva.
-
-```azurecli-interactive
-az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
-```
-
-Az alkalmazásbeállítás létrehozása után a Cloud Shell az alábbi példához hasonló információkat jelenít meg:
-
-```json
-[
-  {
-    "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
-    "slotSetting": false,
-    "value": "TRUE"
-  }
-]
-```
-
-### <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
-
-Keresse meg az üzembe helyezett alkalmazást a következő helyen: `http://<app-name>.azurewebsites.net`.
-
-Az alkalmazás mostantól több tárolót futtat a Web App for Containersben.
-
-![Minta többtárolós alkalmazás a Web App for Containers szolgáltatásban][1]
-
-**Gratulálunk!** Létrehozott egy többtárolós alkalmazást a Web App for Containersben.
-
-A Redis használatához kövesse a következő szakaszban ismertetett lépéseket: [A WordPress csatlakoztatása a Redishez](#connect-wordpress-to-redis).
 
 ## <a name="find-docker-container-logs"></a>Docker-tárolónaplók keresése
 
@@ -676,7 +521,6 @@ Minden egyes tárolóhoz tartozik egy naplófájl, valamint a szülő folyamatho
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Docker Compose-konfiguráció átalakítása a Web App for Containers használatára
-> * Kubernetes-konfiguráció átalakítása a Web App for Containers használatára
 > * Többtárolós alkalmazás üzembe helyezése az Azure-ban
 > * Alkalmazásbeállítások hozzáadása
 > * Állandó tárolók használata a tárolókban

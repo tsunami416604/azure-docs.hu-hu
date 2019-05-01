@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 04/24/2019
 ms.author: juliako
-ms.openlocfilehash: d6e5142bec29f58671c553b7b32bb72202cae263
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d99e3661fd51b481a20404cfeb55157ac803c220
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322702"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706149"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Az Azure Media Services v3 – gyakori kérdések
 
@@ -41,6 +41,10 @@ Használat [alakítja át](https://docs.microsoft.com/rest/api/media/transforms)
 ### <a name="how-does-pagination-work"></a>Hogyan működik a tördelés?
 
 Tördelés használatakor mindig használjon a következő hivatkozás enumerálása a gyűjteményt, és nem függ egy adott oldal méretét. Részletek és példák: [szűrése, rendezése, lapozás](entities-overview.md).
+
+### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Milyen funkciók még nem érhető el az Azure Media Services v3?
+
+További információkért lásd: [megállapodást v2 API-k hézagok funkció](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis).
 
 ## <a name="live-streaming"></a>Live streaming (Élő adatfolyam) 
 

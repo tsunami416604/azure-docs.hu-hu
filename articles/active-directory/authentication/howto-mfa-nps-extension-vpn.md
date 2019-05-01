@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2674e5ca12269d44e111f140fce77bd8bc0c9ae7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e94b307d562c4317a87713612a62e6da007f9703
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60361657"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570641"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure MFA által a hálózati házirend-kiszolgáló-bővítmény használata az Azure-hoz
 
@@ -76,7 +76,7 @@ Ha a hálózati házirend-kiszolgáló Azure-bővítmény integrálva van a hál
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a szakasz részletesen az Előfeltételek, amely a távoli asztali átjáró is integrálhatja a többtényezős hitelesítés előtt kell elvégezni. Mielőtt elkezdené, helyben kell rendelkeznie a következő előfeltételek vonatkoznak:
+Ez a szakasz részletesen az Előfeltételek, amely a VPN-t is integrálhatja a többtényezős hitelesítés előtt kell elvégezni. Mielőtt elkezdené, helyben kell rendelkeznie a következő előfeltételek vonatkoznak:
 
 * VPN-infrastruktúra
 * Hálózati házirend- és elérési szolgáltatások szerepkör
@@ -338,7 +338,7 @@ Az NPS-bővítményének konfigurációjának részeként meg kell adnia a rends
 
 ### <a name="install-the-nps-extension"></a>Az NPS-bővítményének telepítése
 
-Az NPS-bővítményt kell telepíthető egy kiszolgálóra, amelyen a hálózati házirend- és elérési szolgáltatások szerepkör telepítve van, és a functions a tervezés RADIUS-kiszolgálóként. Tegye *nem* az NPS-bővítményének telepítése a távoli asztal kiszolgálón.
+Az NPS-bővítményt kell telepíthető egy kiszolgálóra, amelyen a hálózati házirend- és elérési szolgáltatások szerepkör telepítve van, és a functions a tervezés RADIUS-kiszolgálóként. Tegye *nem* az NPS-bővítményének telepítése a VPN-kiszolgálón.
 
 1. Töltse le a hálózati házirend-bővítmény [Microsoft Download Center](https://aka.ms/npsmfa).
 

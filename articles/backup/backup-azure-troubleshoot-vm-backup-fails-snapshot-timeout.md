@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: ae89ab811015fca9bcb50fcc149534754533c25f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 826a38dd80db7cd0e6e500949d2c259c3808c0a9
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60337754"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64914954"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibaelhárítása: Az ügynök vagy a bővítmény kapcsolatos problémák
 
@@ -121,9 +121,9 @@ A legutóbbi biztonsági mentési feladat sikertelen volt, mert folyamatban van 
 3. A tároló irányítópultos menüjében kattintson **biztonsági mentési feladatok** megjeleníti a biztonsági mentési feladatok.
 
     * Ha egy biztonsági mentési feladat van folyamatban, várjon, amíg végezze el, vagy szakítsa meg a biztonsági mentési feladatot.
-        * A biztonsági mentési feladat kattintson jobb gombbal az a biztonsági mentési feladatot megszakítja, és kattintson a **Mégse** vagy [PowerShell](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
+        * A biztonsági mentési feladat kattintson jobb gombbal az a biztonsági mentési feladatot megszakítja, és kattintson a **Mégse** vagy [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
     * Ha a biztonsági mentés egy másik tárban újrakonfigurálása után, majd ellenőrizze, nincsenek a régi tárolóban futó biztonsági mentési feladatok. Ha létezik, törölje a biztonsági mentési feladat.
-        * A biztonsági mentési feladat kattintson jobb gombbal az a biztonsági mentési feladatot megszakítja, és kattintson a **Mégse** vagy [PowerShell](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)
+        * A biztonsági mentési feladat kattintson jobb gombbal az a biztonsági mentési feladatot megszakítja, és kattintson a **Mégse** vagy [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)
 4. Ismételje meg a biztonsági mentési műveletet.
 
 Ha az ütemezett biztonsági mentési művelet a következő biztonsági mentési konfigurációval ütköző hosszabb ideig tart majd, tekintse át a [ajánlott eljárások](backup-azure-vms-introduction.md#best-practices), [biztonsági mentésének teljesítményét](backup-azure-vms-introduction.md#backup-performance) és [szempont visszaállítása ](backup-azure-vms-introduction.md#backup-and-restore-considerations).

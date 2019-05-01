@@ -4,26 +4,26 @@ titlesuffix: Azure Virtual Network
 description: Ismerje meg, hogyan létrehozása, módosítása vagy törlése egy útválasztási táblázatot.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
-ms.author: jdial
-ms.openlocfilehash: c9846f78e05d598844d12819cef3e948caf2704d
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.author: kumud
+ms.openlocfilehash: 1f20cc7ded40d6eccf000a9ddcd52fb407ba470d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889698"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682650"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Létrehozása, módosítása vagy egy útvonaltábla törlése
 
 Az Azure automatikusan irányítja az Azure az alhálózatok, virtuális hálózatok közötti adatforgalom és a helyszíni hálózatokkal. Ha szeretné módosítani az Azure alapértelmezett útválasztás, hogy hozzon létre egy útválasztási táblázatot megteheti. Ha most ismerkedik az Útválasztás a virtuális hálózatok, többet is megtudhat a kapcsolatos a [Útválasztás áttekintése](virtual-networks-udr-overview.md) vagy; Ehhez hajtsa végre egy [oktatóanyag](tutorial-create-route-table-portal.md).
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

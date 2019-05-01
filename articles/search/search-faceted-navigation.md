@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3b31e796b07bea8c11bccb3f2bb306a4279f2ca3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 21c75c0f377f55614e2c7fa0bb27628cf598e3e7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61291607"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924589"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jellemzőalapú navigáció megvalósítása az Azure Search-ben
 Jellemzőalapú navigáció egy szűrési mechanizmus, amely alkalmazások keresése az önállóan irányított drilldown navigációs biztosít. A kifejezés "jellemzőalapú navigáció" ismeretlen, de valószínűleg felhasználta előtt. Ahogy az alábbi példa bemutatja, a jellemzőalapú navigáció má hodnotu nothing több, mint az eredmények szűréséhez használt kategóriák.
@@ -34,7 +34,7 @@ Az alkalmazások fejlesztéséhez jelent létrehozó alkalmazáskódban lekérde
 ## <a name="sample-code-and-demo"></a>Mintakód és bemutató
 Ez a cikk egy feladat keresési portált használja példaként. A példában egy ASP.NET MVC alkalmazás van megvalósítva.
 
--   Tekintse meg és tesztelje a működő bemutatót online, [Azure Search feladat portál bemutató](http://azjobsdemo.azurewebsites.net/).
+-   Tekintse meg és tesztelje a működő bemutatót online, [Azure Search feladat portál bemutató](https://azjobsdemo.azurewebsites.net/).
 
 -   A kód letöltése a [Azure-Samples-adattárat a Githubon](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 

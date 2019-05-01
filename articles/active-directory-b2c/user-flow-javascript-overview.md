@@ -1,42 +1,46 @@
 ---
-title: JavaScript és a lap szerződés felhasználókövetési adatai az Azure Active Directory B2C-verziók |} A Microsoft Docs
-description: Ismerje meg, hogyan JavaScript engedélyezése és használata a szerződés verziók lapon szabhatja testre az Azure Active Directory B2C felhasználói folyamat.
+title: JavaScript és a lap szerződés verziók – Azure Active Directory B2C |} A Microsoft Docs
+description: Ismerje meg, hogy engedélyezze a JavaScript, és a lap szerződés verziók használata az Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 04/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5102755c9e830f43fa92e8546e5125960e0a2f9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 91b4b621fc3dcedb52f88372fbfac222a744dbd1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60360248"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570623"
 ---
-# <a name="about-using-javascript-and-page-contract-versions-in-a-user-flow"></a>JavaScript és a lap szerződés verziók használata a felhasználói folyamat
+# <a name="javascript-and-page-contract-versions-in-azure-active-directory-b2c"></a>JavaScript és az oldal az Azure Active Directory B2C szerződés-verziók
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Az Azure AD B2C biztosít a felhasználói felületi elemekre, a felhasználói folyamatokban a HTML, CSS és JavaScript tartalmazó csomagolt tartalom. Ha szeretne engedélyezni [JavaScript](javascript-samples.md) ügyféloldali kódot a felhasználói folyamatok, érdemes, hogy a JavaScript épül az elemek nem módosíthatók. Ellenkező esetben módosításokat okozhat váratlan viselkedést a felhasználó a flow oldalak. Ezek a problémák megelőzése érdekében a felhasználói folyamat lap szerződés használatának kényszerítése, és adjon meg egy oldal szerződés verziót. Ez biztosítja, hogy a tartalom definíciók, amelyek az, hogy a JavaScript nem módosíthatók. Akkor is, ha nem kívánja a felhasználói folyamat engedélyezze a JavaScript, a felhasználói folyamat lap egy oldal szerződés verziót is megadhat.
+Az Azure AD B2C biztosít a felhasználói felületi elemekre, a felhasználói folyamatok és az egyéni szabályzatok a HTML, CSS és JavaScript tartalmazó csomagolt tartalom. JavaScript engedélyezése az alkalmazások számára, hozzá kell adnia egy elem a [egyéni házirendet](active-directory-b2c-overview-custom.md) vagy engedélyezni kell azt a portálon a felhasználói folyamatok lap szerződés kiválasztása és használata [b2clogin.com](b2clogin.md) a kérelmek a.
 
-> [!NOTE]
-> Ez a cikk ismerteti a JavaScript a felhasználói folyamatok, de is JavaScript használata, és válassza ki a lap szerződés verzió használatakor [egyéni szabályzatok](page-contract.md).
+Ha szeretne engedélyezni [JavaScript](javascript-samples.md) ügyféloldali kódot, érdemes, hogy a JavaScript épül az elemek nem módosíthatók. Azt jelzi, ellenkező esetben módosításokat okozhat-e a felhasználó lapok nem várt viselkedést. Ezek a problémák megelőzése érdekében egy oldal szerződés használatának kényszerítése, és adjon meg egy oldal szerződés verziót. Ezáltal biztosítható, hogy a tartalom definíciók, amelyek az, hogy a JavaScript nem módosíthatók. Akkor is, ha nem kívánja engedélyezni a JavaScript, a lapok egy oldal szerződés verziót is megadhat.
 
-## <a name="enable-javascript"></a>JavaScript engedélyezése
+## <a name="user-flows"></a>Felhasználói folyamatok
 
 A felhasználói folyamat tulajdonságai között engedélyezheti a JavaScript, amely szintén egy oldal szerződés. Ezután állíthatja be az oldal szerződés verzió a következő szakaszban leírtak szerint.
 
-![JavaScript-beállítás engedélyezése](media/user-flow-javascript-overview/javascript-settings.PNG)
-
-## <a name="specify-a-page-contract-version"></a>Adjon meg egy oldal szerződés verziót
+![JavaScript-beállítás engedélyezése](media/user-flow-javascript-overview/javascript-settings.png)
 
 Attól, hogy engedélyezze a JavaScript használatát a felhasználói folyamat tulajdonságainak, egy lap szerződés verziót is megadhat a felhasználói folyamat lap. Nyissa meg a felhasználói folyamatot, és válassza ki **lapelrendezés**. A **Elrendezésnévvel**, jelöljön ki egy felhasználói folyamat lapot, és válassza ki a **lap szerződés verzió**.
 
-![JavaScript-beállítás engedélyezése](media/user-flow-javascript-overview/page-contract-version.PNG)
+![JavaScript-beállítás engedélyezése](media/user-flow-javascript-overview/page-contract-version.png)
+
+## <a name="custom-policies"></a>Egyéni szabályzatok
+
+Egyéni szabályzatok JavaScript engedélyezéséhez adja hozzá a **ScriptExecution** elem a **RelyingParty** elem az egyéni házirend-fájlban. További információkért lásd: [JavaScript-minták az Azure Active Directory B2C használata az](javascript-samples.md).
+
+Függetlenül attól, engedélyezze a JavaScript használatát a egyéni szabályzatait, a lapok egy oldal szerződés verziót is megadhat. Egy lap szerződés megadásával kapcsolatos további információkért lásd: [jelöljön ki egy oldal szerződést az Azure Active Directory B2C-vel egyéni szabályzatok használatával](page-contract.md).
 
 ## <a name="next-steps"></a>További lépések
+
 Tekintse meg a [JavaScript-minták az Azure Active Directory B2C használata az](javascript-samples.md).

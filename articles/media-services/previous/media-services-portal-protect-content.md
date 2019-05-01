@@ -14,14 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: c0571e202448951de0994d34f68e1649eabd5519
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 65e5b5502b7d63d89845781487443f539a708816
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61128144"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866964"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>A content protection-szabályzatok konfigurálása az Azure portal használatával
+
+> [!NOTE]
+> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > A Media Services v2 jelennek meg nincs új szolgáltatásokat és funkciókat. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+>
+
  Az Azure Media Services akkor hagyja, hogy a számítógép tárolási, feldolgozási és kézbesítési kezdve a media gondoskodhat. A Media Services segítségével a 128 bites titkosítás kulcsok használatával dinamikusan és az Advanced Encryption Standard (AES) titkosított tartalmat. Is használhatja az általános titkosítás (CENC) a PlayReady és/vagy Widevine digitális jogkezelési (technológia DRM), és az Apple FairPlay használatával. 
 
 A Media Services DRM-licencek továbbításának szolgáltatást nyújt, és a titkosítatlan kulcsokat az arra jogosult ügyfelek. Az Azure portal használatával hozzon létre egy kulcs/engedélyezési házirend minden típusú titkosítás.

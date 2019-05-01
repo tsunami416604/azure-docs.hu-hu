@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
-ms.openlocfilehash: 8bb790571e1499bd45fb8bee27f4f1896046cbc2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a7fcd4deb0446577af310ff5380ffddf05ba87be
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749077"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719817"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V hibaelhárítása az Azure-replikáció és feladatátvétel
 
@@ -129,7 +129,7 @@ Az alkalmazáskonzisztens pillanatkép a virtuális Gépen található alkalmaz�
 
 2. A virtuális gép létrehozása a VSS-pillanatképet, ellenőrizze, hogy a Hyper-V integrációs szolgáltatások telepítve vannak-e a virtuális gépen, és, hogy engedélyezve van-e a biztonsági mentés (VSS) integrációs szolgáltatás.
     - Győződjön meg róla, hogy az Integration Services VSS-szolgáltatás/démonok a vendégen futnak, és a egy **OK** állapota.
-    - Ellenőrizheti ezt a parancsot a Hyper-V gazdagépen egy emelt szintű PowerShell-munkamenetet **et-VMIntegrationService – VMName<VMName>-név VSS** ezeket az információkat is kaphat a Vendég virtuális Gépen való bejelentkezéssel. [További információk](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
+    - Ellenőrizheti ezt a parancsot a Hyper-V gazdagépen egy emelt szintű PowerShell-munkamenetet **et-VMIntegrationService – VMName\<VMName >-név VSS** ezeket az információkat is kaphat a Vendég virtuális Gépen való bejelentkezéssel. [További információk](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services).
     - Győződjön meg arról, hogy a biztonsági mentés/VSS integrációs szolgáltatásokat a virtuális gép működik és kifogástalan állapotban vannak-e. Ha nem, indítsa újra ezeket a szolgáltatásokat, és a Hyper-V Kötet-árnyékmásolata kérelmező szolgáltatás a Hyper-V gazdakiszolgálón.
 
 ### <a name="common-errors"></a>Gyakori hibák

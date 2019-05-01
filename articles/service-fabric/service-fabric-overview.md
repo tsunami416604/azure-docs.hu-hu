@@ -16,11 +16,11 @@ ms.date: 04/22/2019
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: ecc63cac56c9aeb3d1dd3875134d53cb481e6a5c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122370"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708194"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Az Azure Service Fabric áttekintése
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások és tárolók csomagolását, üzembe helyezését és kezelését. A Service Fabric emellett választ ad a natív felhőalapú alkalmazások fejlesztésének és felügyeletének jelentős kihívásaira. A fejlesztők és a rendszergazdák elkerülhetik az infrastruktúrával kapcsolatos összetett problémákat, és a kritikus fontosságú, nagy erőforrás-igényű, skálázható, megbízható és felügyelhető számítási feladatok megvalósítására koncentrálhatnak. A Service Fabric egy következő generációs platform az ezen tárolókban futó, nagyvállalati szintű, első rétegbeli, felhőléptékű alkalmazások felépítésére és felügyeletére.

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: cenkdin;juliako
-ms.openlocfilehash: 6bec12893591fb36298e9c2f1664646a4d598073
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 8baff356e1a4916bcc21b28f422a6e98342c0d34
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61222252"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869451"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Élő Stream továbbítása helyszíni kódolókkal .NET használatával
 > [!div class="op_single_selector"]
@@ -28,13 +28,17 @@ ms.locfileid: "61222252"
 > 
 > 
 
+> [!NOTE]
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
+
 Ez az oktatóanyag végigvezeti azokon a az Azure Media Services .NET SDK használatával hozhat létre egy **csatorna** , amely átmenő közvetítésre van konfigurálva. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az ismertetett eljárás végrehajtásához a következők szükségesek:
 
 * Egy Azure-fiók.
-* Egy Media Services-fiók.    A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
+* Egy Media Services-fiók. A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
+* Győződjön meg arról, hogy a tartalomstreameléshez használt streamvégpont **Fut** állapotban legyen. 
 * A fejlesztési környezet beállítása. További információkért lásd: [állítsa be a környezetet](media-services-set-up-computer.md).
 * Egy webkamera. Például a [Telestream Wirecast kódoló](https://www.telestream.net/wirecast/overview.htm).
 
@@ -48,6 +52,7 @@ Javasoljuk, hogy olvassa el a következő cikkeket:
 Állítsa be a fejlesztési környezetet, és töltse fel az app.config fájlt a kapcsolatadatokkal a [.NET-keretrendszerrel történő Media Services-fejlesztést](media-services-dotnet-how-to-use.md) ismertető dokumentumban leírtak szerint. 
 
 ## <a name="example"></a>Példa
+
 Az alábbi példakód bemutatja, hogyan érhet el a következő feladatokat:
 
 * Kapcsolódás a Media Services szolgáltatáshoz
@@ -60,9 +65,6 @@ Az alábbi példakód bemutatja, hogyan érhet el a következő feladatokat:
 * Hozzon létre és a egy Streamvégpontok elindítása
 * A streamvégpont frissítéséhez
 * Állítsa le az erőforrásokat
-
->[!IMPORTANT]
->Győződjön meg arról, hogy a tartalomstreameléshez használt streamvégpont **Fut** állapotban legyen. 
     
 >[!NOTE]
 >A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.

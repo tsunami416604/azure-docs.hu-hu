@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47adab265978b4b760450ab1176cf28c55bc0548
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 1d58ef2716e2a432e1123d6b215b33fb2b688a32
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563652"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724457"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certent-equity-management"></a>Oktatóanyag: Certent tőke kezelése az Azure Active Directory-integráció
 
@@ -113,7 +113,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Certent tőke felüg
     > [!NOTE]
     > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Lépjen kapcsolatba a Certent integrációs elemző által Ügyfélsiker hozzárendelt beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-5. Certent tőke felügyeleti alkalmazások a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+5. Certent tőke felügyeleti alkalmazások a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
 
     ![image](common/edit-attribute.png)
 

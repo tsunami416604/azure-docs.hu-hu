@@ -17,12 +17,12 @@ ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: da70b77edeb483cae0e74400e739f018f78d0993
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aff00978178f63b7324168e9aca765b77decf2b4
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60186740"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922917"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Oktatóanyag – Azure-lemezek kezelése az Azure CLI használatával
 
@@ -46,11 +46,9 @@ Egy Azure-beli virtuális gép létrehozásakor a rendszer két lemezt automatik
 
 **Ideiglenes lemez** – Az ideiglenes lemezek olyan tartós állapotú meghajtót (SSD-t) használnak, amely ugyanazon az Azure-gazdagépen található, mint a virtuális gép. Az ideiglenes lemezek nagy teljesítményűek és olyan műveletekhez használhatók, mint például az ideiglenes adatfeldolgozás. Ha azonban a virtuális gépet egy új gazdagépre költöztetik, az ideiglenes lemezen tárolt adatokat a rendszer eltávolítja. Az ideiglenes lemez méretét a virtuális gép mérete határozza meg. Az ideiglenes lemezek a */dev/sdb* címkét kapják, a csatlakoztatási pontjuk pedig */mnt*.
 
-
 ## <a name="azure-data-disks"></a>Azure-adatlemezek
 
-Alkalmazások telepítéséhez és adatok tárolásához további adatlemezek adhatók hozzá. Az adatlemezeket akkor érdemes használni, ha tartós és rugalmas adattárolásra van szükség. Az egyes adatlemezek kapacitása maximum 4 TB lehet. A virtuális gép mérete határozza meg, hány adatlemez csatolható a virtuális géphez. A virtuális gépek minden vCPU-jához négy adatlemez csatolható.
-
+Alkalmazások telepítéséhez és adatok tárolásához további adatlemezek adhatók hozzá. Az adatlemezeket akkor érdemes használni, ha tartós és rugalmas adattárolásra van szükség. A virtuális gép mérete határozza meg, hány adatlemez csatolható a virtuális géphez. A virtuális gépek minden vCPU-jához négy adatlemez csatolható.
 
 ## <a name="vm-disk-types"></a>Virtuálisgép-lemezek típusai
 

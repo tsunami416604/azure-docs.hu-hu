@@ -10,16 +10,16 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9e01ba8ae53dbcca686a9844600a5df416a685ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 33c6f9e06439ebeb17608aa374532ac4f7a020cf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60317360"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64701356"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Mi az az Azure Active Directory B2C?
 
-Az Azure Active Directory (Azure AD) B2C egy identitáskezelő szolgáltatás. Ez a szolgáltatás lehetővé teszi testre szabhatja és irányíthatja a felhasználók hogyan biztonságosan használják a webes, asztali, mobil, vagy egyoldalas alkalmazások. Azure AD B2C használatával felhasználók is regisztráció, jelentkezzen be, új jelszót, és profilok szerkesztése. Az Azure AD B2C az OpenID Connect és az OAuth 2.0 protokoll egy formája implementál. Ezeket a protokollokat végrehajtása során a fontos kulcs a biztonsági jogkivonatokat, és azok erőforrásokhoz való biztonságos hozzáférést nyújtanak, amelyekkel jogcímeket.
+Az Azure Active Directory (Azure AD) B2C egy olyan üzleti, a felhasználói identitások felügyeleti szolgáltatás. Ez a szolgáltatás lehetővé teszi testre szabhatja és irányíthatja a felhasználók hogyan biztonságosan használják a webes, asztali, mobil, vagy egyoldalas alkalmazások. Azure AD B2C használatával felhasználók is regisztráció, jelentkezzen be, új jelszót, és profilok szerkesztése. Az Azure AD B2C az OpenID Connect és az OAuth 2.0 protokoll egy formája implementál. Ezeket a protokollokat végrehajtása során a fontos kulcs a biztonsági jogkivonatokat, és azok erőforrásokhoz való biztonságos hozzáférést nyújtanak, amelyekkel jogcímeket.
 
 A *felhasználói interakciósorozat* egy kérelmet, amely meghatározza egy szabályzatot, amely az Azure AD B2C-vel a felhasználó és az alkalmazás együttműködését viselkedését vezérlő van. Két útvonalon lesznek elérhetők az Azure AD B2C felhasználói utak meghatározása. 
 

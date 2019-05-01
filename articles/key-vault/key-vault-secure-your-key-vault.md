@@ -2,23 +2,19 @@
 title: Biztonságos hozzáférés a key vault – Azure Key Vault |} A Microsoft Docs
 description: Hozzáférési engedélyek Azure Key Vault, a kulcsok és titkos kulcsok kezeléséhez. A Key Vault, és hogyan védheti meg a kulcstartó hitelesítési és engedélyezési modellt ismerteti.
 services: key-vault
-documentationcenter: ''
 author: amitbapat
 manager: barbkess
 tags: azure-resource-manager
-ms.assetid: e5b4e083-4a39-4410-8e3a-2832ad6db405
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 20c58647b8a6283de4ca2b90c830fe54db927095
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a88451403f242c39212c80e3c7425a901c6819cc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60304948"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725286"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Biztonságos hozzáférés a key vault
 

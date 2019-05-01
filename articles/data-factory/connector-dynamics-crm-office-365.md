@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 04/26/2019
 ms.author: jingwang
-ms.openlocfilehash: 772b9b191a2e6464ff481ff6661308e00ef6033a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a52749c78cd0f090e66220fe51e3d04985f96e7
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60535320"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869534"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása (Common Data Service) Dynamics 365 vagy Dynamics CRM-hez és az Azure Data Factory használatával
 
@@ -69,9 +69,6 @@ A Dynamics-társított szolgáltatást a következő tulajdonságok támogatotta
 | password | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nincs forrás, Igen a fogadó Ha a forrás-beli társított szolgáltatás nem rendelkezik egy saját üzemeltetésű integrációs |
 
->[!IMPORTANT]
->Adatok másolása a Dynamics-be, amikor az alapértelmezett Azure integrációs modul másolás végrehajtásához nem használható. Más szóval, ha a forrás-beli társított szolgáltatás nem rendelkezik a megadott integration Runtime-nak explicit módon [Azure integrációs modul létrehozása](create-azure-integration-runtime.md#create-azure-ir) és a egy Önhöz közeli helyszínt a Dynamics-példány. Keresse meg, hol található a Dynamics-példány lére a [régió lista a Dynamics 365](https://docs.microsoft.com/dynamics365/customer-engagement/admin/datacenter/new-datacenter-regions). Társítsa azt a Dynamics társított szolgáltatás az alábbi példában látható módon.
-
 >[!NOTE]
 >A Dynamics-összekötő segítségével "szervezetnév" tulajdonság csak akkor használható a Dynamics CRM/365 Online példányát azonosítja. Tartja működik, amíg a használata javasolt a jobb teljesítmény érdekében például felderítési próbál a jeggyel Ehelyett adja meg az új "serviceUri" tulajdonság.
 
@@ -117,9 +114,6 @@ A Dynamics-társított szolgáltatást a következő tulajdonságok támogatotta
 | password | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Válassza ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik a másolási tevékenység végrehajtásakor az adatok másolása innen lekéréses – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nincs forrás, a fogadó Igen |
 
->[!IMPORTANT]
->Az adatok másolása a Dynamics-be explicit módon [Azure integrációs modul létrehozása](create-azure-integration-runtime.md#create-azure-ir) közelében a Dynamics-példány helyét. Társítsa azt a társított szolgáltatás az alábbi példában látható módon.
-
 **Példa: Dynamics a helyszínen az internetes Elérésű, internetes Elérésű hitelesítés használatával**
 
 ```json
@@ -160,8 +154,8 @@ Adatok másolása a kezdő és a Dynamics, állítsa be a type tulajdonság, az 
 | entityName | Az entitást lekérdezni a logikai neve. | Nincs forrás (Ha a tevékenység forrása az "query" van megadva), a fogadó Igen |
 
 > [!IMPORTANT]
->- Adatok másolása a Dynamics, a "struktúra" szakaszban esetén nem kötelező, de recommanded Dynamics adatkészlet determinisztikus másolási eredmény biztosítása érdekében. Azt határozza meg a Dynamics-adatok, másolja át kívánt oszlop nevét és adattípusát. További tudnivalókért lásd: [adatkészlet-szerkezetekben](concepts-datasets-linked-services.md#dataset-structure) és [adattípus-leképezés Dynamics](#data-type-mapping-for-dynamics).
->- A szerzői műveletek a felhasználói felület séma importálásakor ADF kikövetkeztetni a séma szerint, a Dynamics-lekérdezés eredménye, amelyben nincs érték megkülönbözteti a kis oszlopok kimarad a struktúra építésével inicializálása a legelső sorok mintavételi. Tekintse át, és adjon hozzá több oszlopot, a Dynamics séma/adatkészletszerkezet szükséges, amely másolása során lesz figyelembe.
+>- Adatok másolása a Dynamics, a "struktúra" szakaszban esetén nem kötelező, de erősen recommanded Dynamics adatkészlet determinisztikus másolási eredmény biztosítása érdekében. Azt határozza meg a Dynamics-adatok, másolja át kívánt oszlop nevét és adattípusát. További tudnivalókért lásd: [adatkészlet-szerkezetekben](concepts-datasets-linked-services.md#dataset-structure-or-schema) és [adattípus-leképezés Dynamics](#data-type-mapping-for-dynamics).
+>- A szerzői műveletek a felhasználói felület séma importálásakor ADF kikövetkeztetni a séma szerint, a Dynamics-lekérdezés eredménye, amelyben nincs érték megkülönbözteti a kis oszlopok kimarad a struktúra építésével inicializálása a legelső sorok mintavételi. Ugyanez a viselkedés végrehajtások másolása, ha nincs explicit struktúrameghatározást vonatkozik. Tekintse át, és adjon hozzá több oszlopot, a Dynamics séma/adatkészletszerkezet szükséges, amely másolása során lesz figyelembe.
 >- Adatok másolása a Dynamics, a "struktúra" szakaszban esetén nem kötelező, a Dynamics-adatkészletben. Mely oszlopokat másolja be a forrás sémát határozza meg. Ha a forrás, fejléc nélküli CSV-fájl a bemeneti adatkészletben, adja meg a "struktúra" az az oszlop nevét és adattípusát. Ezek a CSV-fájl egyenként ahhoz szereplő mezők leképezése.
 
 **Példa**
@@ -330,7 +324,7 @@ A Data Factory megfelelő adattípusokat konfigurálja a forrás Dynamics adatt�
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | Hosszú | ✓ | ✓ |
 | AttributeTypeCode.Boolean | Boolean | ✓ | ✓ |
-| AttributeType.Customer | Guid | ✓ | | 
+| AttributeType.Customer | Guid | ✓ | |
 | AttributeType.DateTime | DateTime | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |

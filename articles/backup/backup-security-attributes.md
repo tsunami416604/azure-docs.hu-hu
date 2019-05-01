@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cf012a452d1e43134d955e03ccf34e153b1282ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7bc4fd42f64bba09fd20fedf5e06dc30c3b2cc49
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60253830"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64680803"
 ---
 # <a name="common-security-attributes-for-azure-backup"></a>Gyakori biztonsági attribútumok az Azure Backuphoz
 
@@ -27,7 +27,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
 | Titkosítás inaktív állapotban:<ul><li>Kiszolgálóoldali titkosítás</li><li>Kiszolgálóoldali titkosítás a felhasználó által kezelt kulcsok</li><li>Más titkosítási funkciók (például az ügyféloldali, mindig titkosított, stb.)</ul>| Igen | A storage service encryption segítségével a storage-fiókok. |
-| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A Vnet-titkosítás</li><li>Hálózatok titkosítása</ul>| Nem | HTTPS-en keresztül. |
+| Titkosítás az átvitel során:<ul><li>Express route-titkosítás</li><li>A VNet-titkosítás</li><li>Hálózatok titkosítása</ul>| Nem | HTTPS-en keresztül. |
 | Titkosítási kulcs kezelése (CMK, BYOK, stb.)| Nem |  |
 | Oszlop a blokkszintű titkosítás (az Azure Data Services)| Nem |  |
 | Titkosított API-hívások| Igen |  |
@@ -37,7 +37,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 | Biztonsági attribútum | Igen/nem | Megjegyzések |
 |---|---|--|
 | Szolgáltatási végpont támogatás| Nem |  |
-| vNET-injektálási támogatás| Nem |  |
+| VNet-injektálási támogatás| Nem |  |
 | Hálózatelkülönítés és támogatási optimalizálóként működik| Igen | Kényszerített bújtatás támogatott virtuális gépek biztonsági mentését. Kényszerített bújtatás virtuális gépeken belül futó munkaterhelések esetében nem támogatott. |
 | Kényszerített bújtatás támogatása| Nem |  |
 
@@ -51,7 +51,7 @@ Biztonsági integrálva van az Azure-szolgáltatások minden szempontját. Ez a 
 
 | Biztonsági attribútum | Igen/nem | Megjegyzések|
 |---|---|--|
-| Authentication| Igen | Hitelesítés az Azure Active Directoryn keresztül. |
+| Hitelesítés| Igen | Hitelesítés az Azure Active Directoryn keresztül. |
 | Engedélyezés| Igen | Létrehozott ügyfél és a beépített RBAC-szerepkör használja. Lásd: [Use Role-Based hozzáférés-vezérlés kezelése az Azure Backup helyreállítási pontok](/azure/backup/backup-rbac-rs-vault) további információt. |
 
 

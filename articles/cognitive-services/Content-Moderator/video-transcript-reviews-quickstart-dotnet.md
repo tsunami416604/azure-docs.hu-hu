@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: a3d362f08765cc80b65659b406a2fac3af71f167
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fa782f687979f1d32cdf1c18bd08f6672e39adfe
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605543"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868592"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Hozzon létre videóátiratot felülvizsgálatok .NET használatával
 
@@ -162,7 +162,7 @@ Létrehoz egy videó- **ContentModeratorClient.Reviews.CreateVideoReviews**. Tov
 - **Állapot**. Állítsa be az értéket "Unpublished." Ha nincs beállítva, a rendszer alapértelmezés szerint, "Függő", ami azt jelenti, hogy a videó felülvizsgálat közzé van téve, és emberi folyamatban. A videó felülvizsgálat közzététele után már nem adhat videókban, a szöveges vagy szöveges moderálás eredményt azt.
 
 > [!NOTE]
-> **CreateVideoReviews** adja vissza az IList<string>. Ezek a karakterláncok mindegyike tartalmaz egy videót felülvizsgálatok Azonosítót. Azonosítóit a részletekben GUID és nem ugyanaz, mint az értékét a **ContentId** tulajdonság.
+> **CreateVideoReviews** adja vissza az IList\<karakterlánc >. Ezek a karakterláncok mindegyike tartalmaz egy videót felülvizsgálatok Azonosítót. Azonosítóit a részletekben GUID és nem ugyanaz, mint az értékét a **ContentId** tulajdonság.
 
 Adja hozzá a következő definice metody névtér VideoReviews, osztály Program.
 
@@ -341,7 +341,7 @@ static void Main(string[] args)
         var transcript = @"WEBVTT
 
         01:01.000 --> 02:02.000
-        First line with a crap word in a transcript.
+        First line with a negative word in a transcript.
 
         02:03.000 --> 02:25.000
         This is another line in the transcript.

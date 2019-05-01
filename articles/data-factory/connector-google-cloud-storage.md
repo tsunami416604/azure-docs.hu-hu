@@ -2,29 +2,32 @@
 title: Adatok másolása az Azure Data Factory segítségével a Google Cloud Storage |} A Microsoft Docs
 description: Ismerje meg, hogyan másolhat adatokat a Google Cloud Storage támogatott fogadó adattárakba az Azure Data Factory használatával kapcsolatban.
 services: data-factory
-author: WenJason
-manager: digimobile
+author: linda33wj
+manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 01/25/2019
-ms.date: 04/22/2019
-ms.author: v-jay
-ms.openlocfilehash: 815ee569f0919f32b38b7b7cdf848be184b7aea8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/29/2019
+ms.author: jingwang
+ms.openlocfilehash: 16f917701d23ae9c363efbe2b3637b9d9b9d16b8
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60808974"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64876726"
 ---
 # <a name="copy-data-from-google-cloud-storage-using-azure-data-factory"></a>Adatok másolása a Google Cloud Storage, Azure Data Factory használatával
 
-Ez a cikk ismerteti az Azure Data Factory a másolási tevékenység használatával adatokat másol a Google Cloud Storage. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk ismerteti, hogyan másolhat adatokat a Google Cloud Storage-ból. Azure Data Factory szolgáltatásról, olvassa el a [bevezető cikk](introduction.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-Google Cloud Storage adatokat másolja bármely támogatott fogadó adattárba. A másolási tevékenység által források vagy fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+A Google Cloud Storage-összekötő támogatott a következő tevékenységeket:
+
+- [Másolási tevékenység](copy-activity-overview.md) a [támogatott forrás/fogadó mátrix](copy-activity-overview.md)
+- [Keresési tevékenység](control-flow-lookup-activity.md)
+- [GetMetadata tevékenység](control-flow-get-metadata-activity.md)
 
 Pontosabban, a Google Cloud Storage-összekötő támogatja a fájlok másolása,-elemzési a fájlokat, vagy a [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md).
 
@@ -81,9 +84,53 @@ Például:
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Szakaszok és adatkészletek definiálását tulajdonságainak teljes listájáért tekintse meg az adatkészletek a cikk. Ez a szakasz a Google Cloud Storage adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+- A **Parquet és tagolt szövegformátum**, tekintse meg [Parquet és elválasztójellel tagolt szöveges formátumban adatkészlet](#parquet-and-delimited-text-format-dataset) szakaszban.
+- Más formátumú hasonló **ORC/Avro/JSON/bináris formátum**, tekintse meg [más formátumú adatkészlet](#other-format-dataset) szakaszban.
 
-Adatok másolása a Google Cloud Storage-ból, állítsa be a type tulajdonság, az adatkészlet **AmazonS3Object**. A következő tulajdonságok támogatottak:
+### <a name="parquet-and-delimited-text-format-dataset"></a>Parquet és elválasztójellel tagolt szöveges formátum adatkészlet
+
+Adatok másolása a Google Cloud Storage **Parquet vagy tagolt szövegformátum**, tekintse meg [Parquet formátum](format-parquet.md) és [tagolt szövegformátum](format-delimited-text.md) cikk formátum-alapú adatkészlet és támogatott beállítások. A következő tulajdonságok támogatottak a Google Cloud Storage alatt `location` formátum-alapú adatkészlet beállításai:
+
+| Tulajdonság   | Leírás                                                  | Szükséges |
+| ---------- | ------------------------------------------------------------ | -------- |
+| type       | A type tulajdonság alatt `location` adatkészlet értékre kell állítani **AmazonS3Location**. | Igen      |
+| bucketName | Az S3 gyűjtő neve.                                          | Igen      |
+| folderPath | A megadott időszak alatt mappa elérési útját. Ha azt szeretné, helyettesítő karaktert tartalmazó szűrő mappába használandó, hagyja ki ezt a beállítást, és adja meg a tevékenység – forrásbeállítások. | Nem       |
+| fileName   | A fájl neve, az adott gyűjtőbe + folderPath alatt. Ha szeretné használni a helyettesítő karaktert tartalmazó fájlok szűrésére, hagyja ki ezt a beállítást, és adja meg a tevékenység – forrásbeállítások. | Nem       |
+
+> [!NOTE]
+> **AmazonS3Object** továbbra is támogatja a Parquet vagy szöveges formátum a következő szakaszban említett adatkészlet típusa – a Másolás/keresési/GetMetadata tevékenység a visszamenőleges kompatibilitás érdekében. A jövőben az új modell használata javasolt, és ezek a típusok létrehozása a felhasználói felület szerzői ADF változott.
+
+**Példa**
+
+```json
+{
+    "name": "DelimitedTextDataset",
+    "properties": {
+        "type": "DelimitedText",
+        "linkedServiceName": {
+            "referenceName": "<Google Cloud Storage linked service name>",
+            "type": "LinkedServiceReference"
+        },
+        "schema": [ < physical schema, optional, auto retrieved during authoring > ],
+        "typeProperties": {
+            "location": {
+                "type": "AmazonS3Location",
+                "bucketName": "bucketname",
+                "folderPath": "folder/subfolder"
+            },
+            "columnDelimiter": ",",
+            "quoteChar": "\"",
+            "firstRowAsHeader": true,
+            "compressionCodec": "gzip"
+        }
+    }
+}
+```
+
+### <a name="other-format-dataset"></a>Más formátumú adatkészlet
+
+Adatok másolása a Google Cloud Storage **ORC/Avro/JSON/bináris formátum**, a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -136,12 +183,77 @@ Szakaszok és tulajdonságok definiálását tevékenységek teljes listáját l
 
 ### <a name="google-cloud-storage-as-source"></a>Google Cloud Storage forrásként
 
-Adatok másolása a Google Cloud Storage, állítsa be a forrás típusaként a másolási tevékenység **FileSystemSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
+- A Másolás **Parquet és tagolt szövegformátum**, tekintse meg [elválasztójellel tagolt szöveges formátum forrás- és Parquet](#parquet-and-delimited-text-format-source) szakaszban.
+- A más formátumú, például a Másolás **ORC/Avro/JSON/bináris formátum**, tekintse meg [más formátumú forrás](#other-format-source) szakaszban.
+
+#### <a name="parquet-and-delimited-text-format-source"></a>Parquet és elválasztójellel tagolt szöveges formátum forrása
+
+Adatok másolása a Google Cloud Storage **Parquet vagy tagolt szövegformátum**, tekintse meg [Parquet formátum](format-parquet.md) és [tagolt szövegformátum](format-delimited-text.md) cikk formátum-alapú másolási tevékenység forrás- és támogatott beállítás. A következő tulajdonságok támogatottak a Google Cloud Storage alatt `storeSettings` formátum-alapú másolási forrásaként beállításait:
+
+| Tulajdonság                 | Leírás                                                  | Szükséges                                                    |
+| ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
+| type                     | A type tulajdonság alatt `storeSettings` értékre kell állítani **AmazonS3ReadSetting**. | Igen                                                         |
+| a rekurzív                | Azt jelzi, hogy az adatok olvasható rekurzív módon az almappák vagy csak a megadott mappába. Vegye figyelembe, hogy ha a rekurzív értéke igaz, és a fogadó a fájlalapú tároló, egy üres mappát vagy almappát nem másolja vagy létrehozott, a fogadó. Engedélyezett értékek a következők **igaz** (alapértelmezett), és **hamis**. | Nem                                                          |
+| előtag                   | Az S3 objektum kulcs alatt a konfigurált adatforrás-objektumok szűrése az adatkészletben megadott gyűjtőjét előtagot. Ezzel az előtaggal start amelynek kulcsok objektum van kijelölve. Csak akkor, ha érvényes `wildcardFolderPath` és `wildcardFileName` tulajdonságai nincsenek megadva. |                                                             |
+| wildcardFolderPath       | Mappa elérési útja a helyettesítő karaktereket a megadott gyűjtőjét konfigurált adatforrás mappákba szűrő adatkészlet alapján. <br>Helyettesítő karakterek engedélyezettek: `*` (nulla vagy több olyan karakterre illeszkedik) és `?` (megegyezik a nulla vagy önálló karakter); használata `^` elkerülésére, ha a tényleges mappanevet helyettesítő elemet vagy a escape karaktere belül. <br>További példák a [példák a mappához és fájlhoz szűrők](#folder-and-file-filter-examples). | Nem                                                          |
+| wildcardFileName         | A helyettesítő karakterek az adott gyűjtőbe + folderPath/wildcardFolderPath szűrő forrásfájlok a fájl neve. <br>Helyettesítő karakterek engedélyezettek: `*` (nulla vagy több olyan karakterre illeszkedik) és `?` (megegyezik a nulla vagy önálló karakter); használata `^` elkerülésére, ha a tényleges mappanevet helyettesítő elemet vagy a escape karaktere belül.  További példák a [példák a mappához és fájlhoz szűrők](#folder-and-file-filter-examples). | Igen, ha `fileName` adatkészlet és `prefix` nincs megadva |
+| modifiedDatetimeStart    | Az attribútum alapján fájlok szűrés: Utolsó módosítás. A fájlok lesz kiválasztva, ha az utolsó módosítás időpontja közötti időtartományban `modifiedDatetimeStart` és `modifiedDatetimeEnd`. Az idő UTC időzóna szerint formátumban alkalmazott "2018-12-01T05:00:00Z". <br> A Tulajdonságok lehet null értékű, ami jelenti azt, hogy nincs fájlszűrő attribútum alkalmazandó az adatkészletet.  Amikor `modifiedDatetimeStart` dátum és idő értékkel rendelkezik, de `modifiedDatetimeEnd` má hodnotu NULL, azt jelenti, hogy a fájlokat, amelyek utolsó módosítás attribútum értéke nagyobb, mint vagy egyenlő a dátum és idő értékkel lesz kiválasztva.  Amikor `modifiedDatetimeEnd` dátum és idő értékkel rendelkezik, de `modifiedDatetimeStart` má hodnotu NULL, azt jelenti, hogy a fájlokat, amelyek utolsó módosítás attribútum értéke kisebb, mint a dátum/idő értéket fog jelölni. | Nem                                                          |
+| modifiedDatetimeEnd      | Ugyanaz, mint a fenti.                                               | Nem                                                          |
+| maxConcurrentConnections | A szeretne csatlakozni a storage-tároló egyidejű kapcsolatok száma. Adja meg, csak akkor, ha szeretné korlátozni a egyidejű kapcsolat az adattárba. | Nem                                                          |
+
+> [!NOTE]
+> A Parquet vagy tagolt szövegformátum **FileSystemSource** továbbra is támogatott a következő szakaszban említett típusa másolási tevékenység forrása-visszamenőleges kompatibilitásra szolgál. A jövőben az új modell használata javasolt, és ezek a típusok létrehozása a felhasználói felület szerzői ADF változott.
+
+**Példa**
+
+```json
+"activities":[
+    {
+        "name": "CopyFromGoogleCloudStorage",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<Delimited text input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "DelimitedTextSource",
+                "formatSettings":{
+                    "type": "DelimitedTextReadSetting",
+                    "skipLineCount": 10
+                },
+                "storeSettings":{
+                    "type": "AmazonS3ReadSetting",
+                    "recursive": true,
+                    "wildcardFolderPath": "myfolder*A",
+                    "wildcardFileName": "*.csv"
+                }
+            },
+            "sink": {
+                "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+#### <a name="other-format-source"></a>Más formátumú forrás
+
+Adatok másolása a Google Cloud Storage **ORC/Avro/JSON/bináris formátum**, a következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **FileSystemSource** |Igen |
 | a rekurzív | Azt jelzi, hogy az adatok olvasható rekurzív módon az almappákban vagy csak a megadott mappába. Megjegyzés: Ha a rekurzív értéke igaz, és a fogadó fájlalapú tároló, üres mappa/alárendelt-folder nem lesz másolva vagy hozható létre, a fogadó.<br/>Engedélyezett értékek a következők: **igaz** (alapértelmezett), **false (hamis)** | Nem |
+| maxConcurrentConnections | A szeretne csatlakozni a storage-tároló egyidejű kapcsolatok száma. Adja meg, csak akkor, ha szeretné korlátozni a egyidejű kapcsolat az adattárba. | Nem |
 
 **Példa**
 

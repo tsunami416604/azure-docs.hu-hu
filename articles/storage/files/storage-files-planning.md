@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e2b2621ac8ee5b9ee84aaa978e8b915c98c5b702
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fecefbbed39f4fc12db79c7466006409e3da7dd1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61095647"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574468"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -77,26 +77,16 @@ Ha az Azure File Sync használatával az Azure-fájlmegosztás eléréséhez, mi
 Az Azure Files két teljesítményszinttel kínál: standard és prémium szintű.
 
 * **Standard fájlmegosztások** élvezik forgó merevlemez-meghajtók (HDD), amely megbízható teljesítményt, amelyek kevésbé érzékenyek a teljesítményingadozásra, például az általános célú fájlmegosztások és a fejlesztési és tesztelési környezetek i/o-munkaterhelések esetében. Standard fájlmegosztások csak egy használatalapú számlázási modell érhető el.
-* **Prémium szintű fájlmegosztások (előzetes verzió)** élvezik tartós állapotú lemezeket (SSD-kkel), amely egységes nagy teljesítményű és kis késésű, belül a legtöbb i/o-műveletek, a legtöbb i/o-igényes munkaterhelések esetében egy számjegyű ideje ezredmásodpercben. Ez teszi őket a megfelelő számos különböző számítási feladatokhoz – például adatbázisokat, webhelyszolgáltatás, fejlesztőkörnyezetet, stb. Prémium szintű fájlmegosztások csak egy üzembe helyezett számlázási modell érhető el. Prémium szintű fájlmegosztások a egy külön, standard fájlmegosztásokból telepítési modellt használja. Ha szeretné, hogyan hozzon létre egy prémium szintű fájlmegosztást, tekintse meg a cikk a tárgyban: [A prémium szintű Azure file storage-fiók létrehozása](storage-how-to-create-premium-fileshare.md).
+* **Prémium szintű fájlmegosztások (előzetes verzió)** élvezik tartós állapotú lemezeket (SSD-kkel), amely egységes nagy teljesítményű és kis késésű, belül a legtöbb i/o-műveletek, a legtöbb i/o-igényes munkaterhelések esetében egy számjegyű ideje ezredmásodpercben. Ez teszi őket a megfelelő számos különböző számítási feladatokhoz – például adatbázisokat, webhelyszolgáltatás, fejlesztőkörnyezetet, stb. Prémium szintű fájlmegosztások csak egy üzembe helyezett számlázási modell érhető el. Prémium szintű fájlmegosztások a egy külön, standard fájlmegosztásokból telepítési modellt használja.
+
+Az Azure Backup elérhető prémium szintű fájlmegosztások és Azure Kubernetes Service támogatja a prémium szintű fájlmegosztások, az 1.13 verzió vagy újabb.
+
+Ha szeretné, hogyan hozzon létre egy prémium szintű fájlmegosztást, tekintse meg a cikk a tárgyban: [A prémium szintű Azure file storage-fiók létrehozása](storage-how-to-create-premium-fileshare.md).
+
+Jelenleg nem lehet közvetlenül alakíthatja szabványos fájlmegosztás és a egy prémium szintű fájlmegosztás között. Ha szeretné, vagy csomagra váltani, hozzon létre egy új fájlmegosztást az adott réteg, és manuálisan másolja az adatokat az eredeti megosztásáról az új megosztásban hozott létre. Ehhez a támogatott Azure-fájlok másolása eszközök, például az AzCopy használatával.
 
 > [!IMPORTANT]
-> Prémium szintű fájl megosztások továbbra is előzetes verzióban érhetők el, csak az LRS, érhető el, és csak egy részhalmazát régióban érhető el legyenek elérhetők az Azure Backup-támogatással rendelkező régiók kiválasztása:
-
-|Rendelkezésre álló terület  |Az Azure Backup-támogatás  |
-|---------|---------|
-|USA 2. keleti régiója      | Igen|
-|USA keleti régiója       | Igen|
-|USA nyugati régiója       | Nem |
-|USA 2. nyugati régiója      | Nem |
-|USA középső régiója    | Nem |
-|Észak-Európa  | Nem |
-|Nyugat-Európa   | Igen|
-|Délkelet-ázsiai       | Igen|
-|Kelet-Ázsia     | Nem |
-|Kelet-Japán    | Nem |
-|Nyugat-Japán    | Nem |
-|Korea középső régiója | Nem |
-|Kelet-Ausztrália| Nem |
+> Prémium szintű fájlmegosztások továbbra is előzetes verzióban, csak az LRS érhető el, és, amelyek a storage-fiókok kínálják a legtöbb régiókban érhető el. Ismerje meg, ha a prémium szintű fájlmegosztások érhetők el jelenleg az Ön régiójában, tekintse meg a [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=storage) oldal az Azure-hoz.
 
 ### <a name="provisioned-shares"></a>Kiépített megosztások
 
@@ -115,7 +105,9 @@ Megosztások ki kell építeni az 1 GIB-ra kerekítve. Minimális mérete 100 GB
 >
 > bejövő forgalom = 40 MiB/s + 0,04 * kiosztott GiB
 
-Megosztás méretének bármikor növelhető, de csak a legutóbbi növekedés óta 24 óra eltelte után a csökkenthető. Miután kivárja egy méretének növelése nélkül 24 óra, a megosztás méretének, ahányszor mindaddig, amíg újra növelése csökkentheti meg. IOPS/átviteli sebesség a módosítások hatékony lesz méretének módosítása után néhány percen belül.
+Megosztás méretének bármikor növelhető, de csak a legutóbbi növekedés óta 24 óra eltelte után a csökkenthető. Miután kivárja egy méretének növelése nélkül, 24 órában, csökkentheti a megosztás méretének annyiszor van lehetősége, amíg ismét növelése. IOPS/átviteli sebesség a módosítások hatékony lesz méretének módosítása után néhány percen belül.
+
+A használt GiB alább a létesített megosztás méretének csökkentése érdekében lehetőség. Ha így tesz, nem veszíti adatokat azonban továbbra is használt méret díjat kell fizetni, és a teljesítményt (IOPS alapterv, átviteli sebesség és burst IOPS) a létesített megosztás nem használt méret.
 
 Az alábbi táblázatban néhány példa az ezekben a képletekben a létesített megosztás méretek mutatja be:
 
@@ -141,7 +133,7 @@ Prémium szintű fájlmegosztásokat is megnövelheti arra az iops-érték legfe
 Kreditek öszesítés az adatlöketek kérelemegységeket, minden alkalommal, amikor a fájlmegosztás forgalom alapkonfiguráció iops-érték alatt van. Például egy 100 GB-megosztás rendelkezik 100 alapkonfiguráció iops-t. Ha a megosztáson tényleges forgalom a meghatározott 1 másodperces intervallumban 40 iops-érték volt, majd a fel nem használt iops-érték 60-számlán burst kérelemegységeket. A kreditek majd később során alkalmazandó műveletek túllépné az alapkonfiguráció iops-érték.
 
 > [!TIP]
-> A hirtelen gyűjtő mérete = Baseline_IOPS * 2 * 3600.
+> A hirtelen gyűjtő mérete alapkonfiguráció IOPS = * 2 * 3600.
 
 Amikor egy megosztást az alapkonfiguráció iops-érték meghaladja, és hirtelen kérelemegységeket krediteket tartalmaz, a rendszer burst. Megosztások továbbra is folyamatosan mindaddig, amíg vannak hátralévő a kreditek, bár kisebb, mint 50 TiB megosztásokat csak fog maradni, akár egy órára adatlöketek maximális. Nagyobb, mint 50 TiB megosztások technikailag lépheti túl ezt a határt egy óra, fel, ez azonban két óra alapján a feladatokkal kapcsolatos adatlöketek kreditek száma. Minden egyes IO túl az alapkonfiguráció IOPS használ fel egy, és miután az összes kreditet használnak fel a megosztás alaptervhez IOPS adna vissza.
 

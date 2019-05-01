@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/12/2018
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 28df8f59944ccac9d731e15a558d864beed2f3ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 89ada41c5f3c9cf1ca7a2ac707363f57080c361d
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60364214"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869966"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Globális elérhetőségű ExpressRoute konfigurálása az Azure CLI használatával
 
@@ -48,7 +48,7 @@ az account set --subscription <your subscription ID>
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>Az ExpressRoute-kapcsolatcsoportokat konfigurációs azonosítása
 
-Engedélyezheti a globális elérhetőségű ExpressRoute bármely két ExpressRoute-Kapcsolatcsoportok között mindaddig, amíg Ön található támogatott országok és a létrehozásuk másik társviszony-létesítési helyszínek. Ha az előfizetés tulajdonosa mindkét Kapcsolatcsoportok, vagy kapcsolatcsoport futtassa a konfigurációt, a cikk későbbi részében leírtak választhatja meg. Ha a két kapcsolatcsoporttal az Azure-előfizetések, rendelkeznie kell egy Azure-előfizetésből engedélyezési, és át kell az engedélyezési kulcsot a többi Azure-előfizetésben a konfigurációs parancs futtatásakor.
+Engedélyezheti a globális elérhetőségű ExpressRoute bármely két ExpressRoute-Kapcsolatcsoportok között mindaddig, amíg Ön található támogatott országok/régiók és a létrehozásuk másik társviszony-létesítési helyszínek. Ha az előfizetés tulajdonosa mindkét Kapcsolatcsoportok, vagy kapcsolatcsoport futtassa a konfigurációt, a cikk későbbi részében leírtak választhatja meg. Ha a két kapcsolatcsoporttal az Azure-előfizetések, rendelkeznie kell egy Azure-előfizetésből engedélyezési, és át kell az engedélyezési kulcsot a többi Azure-előfizetésben a konfigurációs parancs futtatásakor.
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>A helyszíni hálózat közötti kapcsolat
 

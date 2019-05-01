@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 87505081f16008dff7da1f567c1265c695f3f0ab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f25b0f2c7b5e3148bae778c4b50a3f0bd0c148da
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60653772"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875948"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával egy HTTP-végpontot
 
@@ -160,11 +160,55 @@ Ha **certThumbprint** hitelesítést és a tanúsítvány a helyi számítógép
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Ez a szakasz felsorolja, amely támogatja a HTTP-adatkészlet tulajdonságai. 
+Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](concepts-datasets-linked-services.md) cikk. 
 
-Szakaszok és adatkészletek definiálását tulajdonságok teljes listáját lásd: [adatkészletek és társított szolgáltatásokat](concepts-datasets-linked-services.md). 
+- A **Parquet és tagolt szövegformátum**, tekintse meg [Parquet és elválasztójellel tagolt szöveges formátumban adatkészlet](#parquet-and-delimited-text-format-dataset) szakaszban.
+- Más formátumú hasonló **ORC/Avro/JSON/bináris formátum**, tekintse meg [más formátumú adatkészlet](#other-format-dataset) szakaszban.
 
-Adatok másolása HTTP, állítsa be a **típus** tulajdonság, az adatkészlet **HttpFile**. A következő tulajdonságok támogatottak:
+### <a name="parquet-and-delimited-text-format-dataset"></a>Parquet és elválasztójellel tagolt szöveges formátum adatkészlet
+
+Adatok másolása a http- **Parquet vagy tagolt szövegformátum**, tekintse meg [Parquet formátum](format-parquet.md) és [tagolt szövegformátum](format-delimited-text.md) formátum-alapú adatkészlet című cikket, és a támogatott beállítások. A következő tulajdonságok támogatottak a HTTP-hez `location` formátum-alapú adatkészlet beállításai:
+
+| Tulajdonság    | Leírás                                                  | Szükséges |
+| ----------- | ------------------------------------------------------------ | -------- |
+| type        | A type tulajdonság alatt `location` adatkészlet értékre kell állítani **HttpServerLocation**. | Igen      |
+| relativeUrl | Az erőforrás, amely tartalmazza az adatok relatív URL-CÍMÉT.       | Nem       |
+
+> [!NOTE]
+> A támogatott HTTP-kérelem hasznos adatainak mérete körülbelül 500 KB-os. Ha a webes végpontra átadni kívánt adattartalom-méretkorlát nagyobb 500 KB-nál, fontolja meg az adattartalomban kisebb adattömbökben kötegelés.
+
+> [!NOTE]
+> **HttpFile** továbbra is támogatja a Parquet vagy szöveges formátum a következő szakaszban említett adatkészlet típusa – a Másolás/keresési tevékenység az előző verziókkal való kompatibilitás érdekében. A jövőben az új modell használata javasolt, és ezek a típusok létrehozása a felhasználói felület szerzői ADF változott.
+
+**Példa**
+
+```json
+{
+    "name": "DelimitedTextDataset",
+    "properties": {
+        "type": "DelimitedText",
+        "linkedServiceName": {
+            "referenceName": "<HTTP linked service name>",
+            "type": "LinkedServiceReference"
+        },
+        "schema": [ < physical schema, optional, auto retrieved during authoring > ],
+        "typeProperties": {
+            "location": {
+                "type": "HttpServerLocation",
+                "relativeUrl": "<relative url>"
+            },
+            "columnDelimiter": ",",
+            "quoteChar": "\"",
+            "firstRowAsHeader": true,
+            "compressionCodec": "gzip"
+        }
+    }
+}
+```
+
+### <a name="other-format-dataset"></a>Más formátumú adatkészlet
+
+Adatok másolása a http- **ORC/Avro/JSON/bináris formátum**, a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -226,7 +270,69 @@ Szakaszok és a tevékenységek definiálását tulajdonságok teljes listáját
 
 ### <a name="http-as-source"></a>HTTP forrásként
 
-Adatok másolása HTTP, állítsa be **adatforrástípust** a másolási tevékenység az **HttpSource**. A következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
+- A Másolás **Parquet és tagolt szövegformátum**, tekintse meg [elválasztójellel tagolt szöveges formátum forrás- és Parquet](#parquet-and-delimited-text-format-source) szakaszban.
+- A más formátumú, például a Másolás **ORC/Avro/JSON/bináris formátum**, tekintse meg [más formátumú forrás](#other-format-source) szakaszban.
+
+#### <a name="parquet-and-delimited-text-format-source"></a>Parquet és elválasztójellel tagolt szöveges formátum forrása
+
+Adatok másolása a http- **Parquet vagy tagolt szövegformátum**, tekintse meg [Parquet formátum](format-parquet.md) és [tagolt szövegformátum](format-delimited-text.md) formátum-alapú másolási tevékenység forrása a cikk és támogatott beállítások. A következő tulajdonságok támogatottak a HTTP-hez `storeSettings` formátum-alapú másolási forrásaként beállításait:
+
+| Tulajdonság                 | Leírás                                                  | Szükséges |
+| ------------------------ | ------------------------------------------------------------ | -------- |
+| type                     | A type tulajdonság alatt `storeSettings` értékre kell állítani **HttpReadSetting**. | Igen      |
+| requestMethod            | A HTTP-metódust. <br>Engedélyezett értékek a következők **első** (alapértelmezett), és **Post**. | Nem       |
+| addtionalHeaders         | További HTTP-kérelemfejlécek.                             | Nem       |
+| RequestBody              | A HTTP-kérelem törzsét.                               | Nem       |
+| RequestTimeout           | Az időtúllépés (a **TimeSpan** érték) válaszol a HTTP-kérelem. Az értéke az időkorlátot kapott választ, nem választ adatokat olvasni az időkorlátot. Az alapértelmezett érték **00:01:40**. | Nem       |
+| maxConcurrentConnections | A szeretne csatlakozni a storage-tároló egyidejű kapcsolatok száma. Adja meg, csak akkor, ha szeretné korlátozni a egyidejű kapcsolat az adattárba. | Nem       |
+
+> [!NOTE]
+> A Parquet vagy tagolt szövegformátum **HttpSource** továbbra is támogatott a következő szakaszban említett típusa másolási tevékenység forrása-visszamenőleges kompatibilitásra szolgál. A jövőben az új modell használata javasolt, és ezek a típusok létrehozása a felhasználói felület szerzői ADF változott.
+
+**Példa**
+
+```json
+"activities":[
+    {
+        "name": "CopyFromHTTP",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<Delimited text input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "DelimitedTextSource",
+                "formatSettings":{
+                    "type": "DelimitedTextReadSetting",
+                    "skipLineCount": 10
+                },
+                "storeSettings":{
+                    "type": "HttpReadSetting",
+                    "requestMethod": "Post",
+                    "additionalHeaders": "<header key: header value>\n<header key: header value>\n",
+                    "requestBody": "<body for POST HTTP request>"
+                }
+            },
+            "sink": {
+                "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+#### <a name="other-format-source"></a>Más formátumú forrás
+
+Adatok másolása a http- **ORC/Avro/JSON/bináris formátum**, a következő tulajdonságok támogatottak a másolási tevékenység **forrás** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |

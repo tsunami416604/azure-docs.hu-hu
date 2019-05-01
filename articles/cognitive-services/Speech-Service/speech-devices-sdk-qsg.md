@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0d520a9dc8d60a386d25694d441931fbc3ed38e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dec40f7ec21a4a059c6e4a7c75f6378f9757a479
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457531"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916847"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>A beszédfelismerés eszközök SDK használatának első lépései
 
@@ -28,7 +28,7 @@ A mintaalkalmazás forráskódja megtalálható a Speech Devices SDK-val. Is [el
 
 Fejlesztés a Speech Devices SDK-val a Kezdés előtt gyűjtse össze az adatokat és a szükséges szoftver:
 
-* Get- [ROOBO a fejlesztői készlet](http://ddk.roobo.com/). Kezdőcsomagok lineáris vagy kör alakú mikrofon tömb konfigurációk érhetők el. Válassza ki az igényeinek megfelelő konfigurációját.
+* Get- [ROOBO a fejlesztői készlet](https://ddk.roobo.com/). Kezdőcsomagok lineáris vagy kör alakú mikrofon tömb konfigurációk érhetők el. Válassza ki az igényeinek megfelelő konfigurációját.
 
     |Development kit konfigurálása|Hangszóró helye|
     |-----------------------------|------------|
@@ -199,4 +199,4 @@ Ha tanúsítványhibák a Speech Services használata közben, győződjön meg 
 
 ### <a name="audio"></a>Hang
 
-ROOBO biztosít olyan eszköz, amely rögzíti az összes hanganyag flash-memória. Hang elhárításának segíthet. Az eszköz egy verzióját minden egyes development kit konfiguráció biztosítunk. Az a [ROOBO hely](http://ddk.roobo.com/), válassza ki az eszközt, és válassza a **ROOBO eszközök** hivatkozásra a lap alján.
+ROOBO biztosít olyan eszköz, amely rögzíti az összes hanganyag flash-memória. Hang elhárításának segíthet. Az eszköz egy verzióját minden egyes development kit konfiguráció biztosítunk. Az a [ROOBO hely](https://ddk.roobo.com/), válassza ki az eszközt, és válassza a **ROOBO eszközök** hivatkozásra a lap alján.

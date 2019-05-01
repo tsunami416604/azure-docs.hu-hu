@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 6da2b63b7a9c8dc490bd30bb02ae6e7d932b2f7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3bdadd2ac5c7790f9e1da57de925bfba659a5890
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60595993"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916557"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Adatok gyűjtése részletei felügyeleti megoldások az Azure-ban
 Ez a cikk tartalma [felügyeleti megoldások](solutions.md) elérhető a Microsoft mutató hivatkozásokat tartalmaz a részletes dokumentációt.  A metódus és az Azure Monitor szolgáltatásba adatok gyűjtésének gyakorisága információkat is biztosít.  Használhatja az információkat ebben a cikkben, azonosíthatja a különféle elérhető megoldások és más felügyeleti megoldásokkal data flow és a kapcsolat követelményeinek megismeréséhez. 
@@ -58,8 +58,8 @@ Magyarázat az oszlopok a következők:
 | [Az Azure SQL Analytics (előzetes verzió)](../../azure-monitor/insights/azure-sql.md) | Windows | | | | | | 1 perc |
 | [Biztonsági mentés](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | az értesítés |
 | [Kapacitás és teljesítmény (előzetes verzió)](../../azure-monitor/insights/capacity-performance.md) |Windows |&#8226; |&#8226; | | |&#8226; |a beérkezéskor |
-| [Változáskövetés](../../automation/automation-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[Változó](../../automation/automation-change-tracking.md#change-tracking-data-collection-details) |
-| [Változáskövetés](../../automation/automation-change-tracking.md) |Linux |&#8226; | | | | |[Változó](../../automation/automation-change-tracking.md#change-tracking-data-collection-details) |
+| [Változáskövetés](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[Változó](../../automation/change-tracking.md#change-tracking-data-collection-details) |
+| [Változáskövetés](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[Változó](../../automation/change-tracking.md#change-tracking-data-collection-details) |
 | [Containers](../../azure-monitor/insights/containers.md) | Windows és Linux | &#8226; | &#8226; |  |  |  | 3 perc |
 | [Key Vault-elemzés](../../azure-monitor/insights/azure-key-vault.md) |Windows | | | | | |az értesítés |
 | [Kártevőfelmérés](../../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |óránként |

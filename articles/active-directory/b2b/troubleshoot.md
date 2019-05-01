@@ -7,29 +7,28 @@ ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: mimart
-author: msmimart
+author: v-miegge
 manager: daveba
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af106650f6e1d139ec7af2c8d243dc50f2e963fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c2a0eaf75debf694421ac9e5f2f7eb13891a20cf
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60412402"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917355"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Az Azure Active Directory B2B-együttműködés hibaelhárítása
 
 Az alábbiakban néhány gyakori problémák az Azure Active Directory (Azure AD) B2B-együttműködés kártérítése.
 
-
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Tudom hozzáadott külső felhasználó, de nem látja ezeket a globális címjegyzékben vagy az a személy kijelölése
 
 Azokban az esetekben, ahol a külső felhasználók nem kerülnek be a listát az objektum replikálása néhány percig is eltarthat.
 
-## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>B2B-Vendég felhasználó nem jelenik meg a SharePoint Online és onedrive vállalati verzió személy kijelölése 
- 
+## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>B2B-Vendég felhasználó nem jelenik meg a SharePoint Online és onedrive vállalati verzió személy kijelölése
+
 Keresse meg a SharePoint online-hoz (SPO) személy kijelölése a meglévő vendégfelhasználókat lehetővé teszi örökölt viselkedés megfelelően alapértelmezés szerint ki.
 
 Ez a funkció a bérlő és a hely gyűjtemény szintjén "ShowPeoplePickerSuggestionsForGuestUsers" beállítás használatával engedélyezheti. A funkciót, a Set-SPOTenant és Set-SPOSite parancsmagok, amelyek lehetővé teszik a Keresés az összes meglévő vendégfelhasználókat a címtár tagjai használatával állíthatja be. A bérlői hatókörben módosítása nem érinti a már üzembe helyezett SPO-helyek.
@@ -79,10 +78,20 @@ Ahhoz, hogy megfeleljenek adatvédelmi törvények, az API-k nem tartalmaznak sz
 
 Fontos, hogy ez a forgatókönyv esetén az API-t meghívó e-mail le, és küldje el a kiválasztott e-mail mechanizmus segítségével. Tekintse meg a szervezet védőt, hogy minden e-mailt küld, így is megfelel a szigorú adatvédelmi törvényeinek betartásáért.
 
+## <a name="you-receive-an-aadsts65005-error-when-you-try-to-log-in-to-an-azure-resource"></a>Egy "AADSTS65005" hibaüzenetet kapja, amikor megpróbál bejelentkezni egy Azure-erőforrás
+
+Vendég fiókkal rendelkező felhasználó nem tud bejelentkezni, és a következő hibaüzenetet kap:
+
+    AADSTS65005: Using application 'AppName' is currently not supported for your organization contoso.com because it is in an unmanaged state. An administrator needs to claim ownership of the company by DNS validation of contoso.com before the application AppName can be provisioned.
+
+A felhasználó az Azure felhasználói fiókkal rendelkezik, és a egy vírusos bérlő ki lett hagyva vagy nem felügyelt. Emellett nincsenek nem globális vagy a vállalati rendszergazdák, a bérlőben.
+
+A probléma megoldásához az elhagyott bérlői kell átvenni. Tekintse meg [rendszergazdaként az Azure Active Directoryban egy nem felügyelt könyvtár átvétele](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover). A szóban forgó tartományutótag internetre irányuló DNS-ÉT kell is elérhető, annak érdekében, hogy közvetlen megbizonyosodhat róla, hogy Ön rendelkezik a névtér felett. Után a bérlő által felügyelt állapotba helyezte, adjon egyeztetnie, az ügyfél, hogy elhagyná a felhasználók és ellenőrzött tartomány nevét a szervezet leginkább megfelelő opció kiválasztásához.
+
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>A just-in-time vagy "vírusos" bérlőhöz vendégfelhasználó nem tudja alaphelyzetbe állítani a jelszavát
 
 Ha a szolgáltatásidentitás bérlője egy – igény (szerinti JIT) vagy a bérlő ugrásszerű (azaz egy különálló, nem felügyelt Azure-bérlőhöz), csak a meghívott felhasználónak alaphelyzetbe állíthatja a jelszavát. Egyes esetekben egy szervezet fog [átveszi a vírusos bérlő](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) , amely jönnek létre, ha az alkalmazottak saját munkahelyi e-mail-címek használatával szolgáltatások regisztrálhat. A szervezetnek szüksége van a vírusos bérlő felett, miután csak egy adott szervezet rendszergazdája alaphelyzetbe a jelszót, vagy SSPR engedélyezése. Ha szükséges, mint a meghívó szervezetet, a Vendég felhasználói fiókhoz eltávolítása a címtárból, és egy meghívó újraküldése.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Támogatás kérése a B2B-együttműködés](get-support.md)
+[Támogatás kérése a B2B-együttműködés](get-support.md)

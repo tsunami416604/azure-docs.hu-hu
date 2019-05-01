@@ -15,11 +15,11 @@ ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
 ms.openlocfilehash: b8937b22054e55c8bfe7bc4c7726dc5bae5de6d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203749"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64730458"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Gyors útmutató: Hozzon létre egy .NET Core-alkalmazást az alkalmazások konfigurálása
 
@@ -41,7 +41,7 @@ Ez a rövid útmutató elvégzéséhez telepítse a [.NET Core SDK](https://dotn
 
 6. Válassza ki **kulcs/érték Explorer** > **+ létrehozás** a következő kulcs-érték párok hozzáadásához:
 
-    | Kulcs | Value |
+    | Kulcs | Érték |
     |---|---|
     | TestApp:Settings:Message | Azure-alkalmazás-konfigurációs adatait |
 

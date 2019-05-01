@@ -14,15 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako;johndeu
-ms.openlocfilehash: 549554521570d1d2f27b2da2b36ca1dfde25562f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fbdd9325f50e1bcb271b7ca47b9ccd3361d0d27e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60762514"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687061"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>A Media Services REST API áttekintése 
-[!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
+
+> [!NOTE]
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
 
 A **Media Services Operations REST** API létrehozása a projektek, eszközök, élő csatornák és egyéb erőforrások a Media Services-fiók szolgál. További információkért lásd: [Media Services Operations REST API-referencia](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
 

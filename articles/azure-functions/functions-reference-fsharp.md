@@ -12,12 +12,12 @@ ms.devlang: fsharp
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 981ffce34c56f4becee2ed0c72da72baa220e395
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fbc5a149e59bff1897d3949185272e9ca664f989
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61020258"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717821"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Az Azure Functions F# – fejlesztői referencia
 
@@ -54,7 +54,7 @@ FunctionsProject
 
 Van egy megosztott [host.json](functions-host-json.md) fájlt, amely a függvényalkalmazás konfigurálása használható. Minden függvény saját kódfájl (.fsx) és a kötési konfigurációs fájl (function.json) rendelkezik.
 
-A kötési bővítményeket szükséges [verzió 2.x](functions-versions.md) a Functions runtime vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](./functions-bindings-register.md#local-development-azure-functions-core-tools). Amikor fejlesztéséről az Azure Portalon, a regisztrációt, készen áll.
+A kötési bővítményeket szükséges [verzió 2.x](functions-versions.md) a Functions runtime vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](./functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Amikor fejlesztéséről az Azure Portalon, a regisztrációt, készen áll.
 
 ## <a name="binding-to-arguments"></a>Argumentumok kötést
 Minden egyes kötés támogatja bizonyos argumentumok leírt módon a [eseményindítók és kötések az Azure Functions fejlesztői segédanyagok](functions-triggers-bindings.md). Ha például egy blob eseményindító támogatja az argumentum kötéseit egyik egy POCO, amelyek használatával kell megadni egy F# rekord. Példa:

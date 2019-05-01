@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: 8947d235894ffc021243a64244b4904c5ca7f128
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b353e3c0ed14c7ae42e6b1f2c8a92904bf0befd7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60453188"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916278"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS-portálon való váltás az Azure portálon a Log Analytics felhasználók kapcsolatos gyakori kérdések
 A log Analytics kezdetben a saját Portalt használta az OMS-portál nevű felügyelje a konfigurációt, és elemezheti az összegyűjtött adatokat.  Ezen a portálon az összes funkció át lett helyezve az Azure Portalra, továbbra is ki kell alakítani.
@@ -97,9 +97,9 @@ A legtöbb adat beállításainak kezelése a a a **speciális beállítások** 
 | Egyéni naplók                  | **Speciális beállítások** a munkaterület menüje. |
 | Rendszernapló                       | **Speciális beállítások** a munkaterület menüje. |
 | Application Insights         | Ez a megoldás most, hogy a Log Analytics és az Application Insights megoszthatja az ugyanazon motor már elavult.  |
-| Windows változáskövetés        | **A változáskövetés** menü az Azure Automationben. Lásd: [a környezetében a Change Tracking megoldás révén nyomon követésére](../../automation/automation-change-tracking.md) részleteiről. |
-| Windows beállításjegyzék-követés        | **A változáskövetés** menü az Azure Automationben. Lásd: [a környezetében a Change Tracking megoldás révén nyomon követésére](../../automation/automation-change-tracking.md) részleteiről. |
-| Linuxos fájlkövetés          | **A változáskövetés** menü az Azure Automationben. Lásd: [a környezetében a Change Tracking megoldás révén nyomon követésére](../../automation/automation-change-tracking.md) részleteiről. |
+| Windows változáskövetés        | **A változáskövetés** menü az Azure Automationben. Lásd: [a környezetében a Change Tracking megoldás révén nyomon követésére](../../automation/change-tracking.md) részleteiről. |
+| Windows beállításjegyzék-követés        | **A változáskövetés** menü az Azure Automationben. Lásd: [a környezetében a Change Tracking megoldás révén nyomon követésére](../../automation/change-tracking.md) részleteiről. |
+| Linuxos fájlkövetés          | **A változáskövetés** menü az Azure Automationben. Lásd: [a környezetében a Change Tracking megoldás révén nyomon követésére](../../automation/change-tracking.md) részleteiről. |
 
 ### <a name="solutions"></a>Megoldások
 A megoldások kezelése az **megoldások** a munkaterület menüje. 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: ac1a0e4eadc0b84fdd2a170c2e0f6e0a2f2af3a4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2724451d44a793023f7b69196b186f68f6fc6a26
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60922008"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64720466"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Az Azure HDInsight-fürtökhöz való használatra tárolási lehetőségek összehasonlítása
 
@@ -31,8 +31,12 @@ A következő táblázat összefoglalja az Azure Storage szolgáltatás, amely a
 |2. generációs Azure Data Lake Storage| Általános célú V2 | Hierarchikus (fájlrendszer) | Blob | Standard | Gyakori, ritka elérésű, archív tárolási szint | 3.6. + | Összes |
 |Azure Storage| Általános célú V2 | Object | Blob | Standard | Gyakori, ritka elérésű, archív tárolási szint | 3.6. + | Összes |
 |Azure Storage| Általános célú V1 | Object | Blob | Standard | – | Összes | Összes |
-|Azure Storage| Blob Storage | Object | Blob | Standard | Gyakori, ritka elérésű, archív tárolási szint | Összes | Összes |
+|Azure Storage| Blob Storage** | Object | Blokkblob | Standard | Gyakori, ritka elérésű, archív tárolási szint | Összes | Összes |
 |1. generációs Azure Data Lake Storage| – | Hierarchikus (fájlrendszer) | – | N/A | – | Csak 3.6. | A HBase kivételével |
+
+** A HDInsight-fürtök esetén csak a másodlagos tárfiókok BlobStorage típusú is lehet.
+
+További információ az Azure Storage-fióktípusok: [az Azure storage-fiókok áttekintése](../storage/common/storage-account-overview.md)
 
 Az Azure Storage elérési szint további információkért lásd: [Azure Blob storage: Prémium (előzetes verzió), a gyors Elérésűre, ritka elérésű és archív tárolási szintek](../storage/blobs/storage-blob-storage-tiers.md)
 
@@ -40,14 +44,14 @@ Létrehozhat egy fürtöt, az elsődleges és a nem kötelező másodlagos stora
 
 | HDInsight Version (HDInsight-verzió) | Elsődleges tároló | A másodlagos tárhelyen | Támogatott |
 |---|---|---|---|
-| 3.6 & 4.0 | Standard Blob | Standard Blob | Igen |
-| 3.6 & 4.0 | Standard Blob | 2. generációs Data Lake Storage | Nem |
-| 3.6 & 4.0 | Standard Blob | 1. generációs Data Lake Storage | Igen |
+| 3.6 & 4.0 | Általános célú V1, általános célú V2 | Általános célú V1, általános célú v2-ben BlobStorage (Blokkblobok) | Igen |
+| 3.6 & 4.0 | Általános célú V1, általános célú V2 | 2. generációs Data Lake Storage | Nem |
+| 3.6 & 4.0 | Általános célú V1, általános célú V2 | 1. generációs Data Lake Storage | Igen |
 | 3.6 & 4.0 | Data Lake Storage Gen2 * | 2. generációs Data Lake Storage | Igen |
-| 3.6 & 4.0 | Data Lake Storage Gen2 * | Standard Blob | Igen |
+| 3.6 & 4.0 | Data Lake Storage Gen2 * | Általános célú V1, általános célú v2-ben BlobStorage (Blokkblobok) | Igen |
 | 3.6 & 4.0 | 2. generációs Data Lake Storage | 1. generációs Data Lake Storage | Nem |
 | 3.6 | 1. generációs Data Lake Storage | 1. generációs Data Lake Storage | Igen |
-| 3.6 | 1. generációs Data Lake Storage | Standard Blob | Igen |
+| 3.6 | 1. generációs Data Lake Storage | Általános célú V1, általános célú v2-ben BlobStorage (Blokkblobok) | Igen |
 | 3.6 | 1. generációs Data Lake Storage | 2. generációs Data Lake Storage | Nem |
 | 4.0 | 1. generációs Data Lake Storage | Bármelyik | Nem |
 

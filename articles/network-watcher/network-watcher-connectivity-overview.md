@@ -3,8 +3,8 @@ title: Bevezetés az Azure Network Watcher kapcsolati hibáinak elhárítása |}
 description: Ez az oldal áttekintést a Network Watcher kapcsolódási hibaelhárítási funkció
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: jdial
-ms.openlocfilehash: 4b1164c3dedc5d8a2fa02d70f66ff00afe604836
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: kumud
+ms.openlocfilehash: 9510905f67ee943b4b1dfa5a14c2753efac39da7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60532471"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705811"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Bevezetés a kapcsolatot az Azure Network Watcher hibaelhárítása
 
@@ -74,7 +74,7 @@ Az alábbiakban látható egy példa található egy Ugrás a problémát.
 
 Kapcsolat Problématípusok értéket ad vissza hibát a kapcsolat. A következő táblázat felsorolja a jelenlegi tartalék típusú adja vissza.
 
-|Typo  |Leírás  |
+|Típus  |Leírás  |
 |---------|---------|
 |CPU     | Magas CPU-kihasználtság.       |
 |Memory (Memória)     | Magas memóriakihasználtság.       |

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b376288bc74e6282fcc8477408ae5835c049f75e
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 760aef6931cdd283382d72ae6de5e0865c95284c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565648"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716174"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qumu-cloud"></a>Oktatóanyag: Az Azure Active Directory-integráció Qumu felhővel
 
@@ -121,7 +121,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Qumu felhő, hajtsa 
     > [!NOTE]
     > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Kapcsolattartó [Qumu felhőalapú ügyfél-támogatási csapatának](mailto:support@qumu.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-6. Qumu felhőalkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+6. Qumu felhőalkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
 
     ![image](common/edit-attribute.png)
 

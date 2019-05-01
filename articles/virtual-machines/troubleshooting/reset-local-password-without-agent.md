@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/31/2018
+ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 6b77ceb2ab9abe232cec75254b30ce37c3dbbf60
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3c0152726aba115e1b370838308a7bf0af08cab7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307724"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708129"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Kapcsolat nélküli az Azure virtuális gép helyi Windows-jelszó visszaállítása
 A virtuális gépek az Azure-ban a helyi Windows-jelszó alaphelyzetbe állíthatja a [az Azure portal vagy az Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) biztosított az Azure Vendég ügynök van telepítve. Ez a módszer az elsődleges módja egy Azure virtuális gép a jelszó alaphelyzetbe állítása. Ha problémák merülnek fel a az Azure Vendég ügynök nem válaszol, vagy egyéni kép feltöltése után telepítése meghiúsul, manuálisan egy Windows-jelszó alaphelyzetbe állítása. Ez a cikk részletesen bemutatja egy helyi fiók jelszavának alaphelyzetbe a forrás operációs rendszer virtuális lemez egy másik virtuális géphez való csatlakoztatásával. A jelen cikkben ismertetett lépések Windows rendszerű tartományvezérlők nem vonatkoznak. 
@@ -106,7 +106,7 @@ Mindig próbálja meg alaphelyzetbe a jelszót a [az Azure portal vagy az Azure 
      ```
      
      ![Hozzon létre a gpt.ini](./media/reset-local-password-without-agent/create_gpt_ini.png)
-5. Hozzon létre `scripts.ini` a `\Windows\System32\GroupPolicy\Machine\Scripts\Startup`. Győződjön meg arról, rejtett mappákba jelennek meg. Szükség esetén hozzon létre a `Machine` vagy `Scripts` mappákat.
+5. Hozzon létre `scripts.ini` a `\Windows\System32\GroupPolicy\Machines\Scripts\`. Győződjön meg arról, rejtett mappákba jelennek meg. Szükség esetén hozzon létre a `Machine` vagy `Scripts` mappákat.
    
    * Adja hozzá a következő sorokat a `scripts.ini` létrehozott fájlba:
      
@@ -156,7 +156,7 @@ Mindig próbálja meg alaphelyzetbe a jelszót a [az Azure portal vagy az Azure 
     
     * A %windir%\System32
       * remove FixAzureVM.cmd
-    * A %windir%\System32\GroupPolicy\Machine\
+    * A %windir%\System32\GroupPolicy\Machine\Scripts
       * Távolítsa el a scripts.ini
     * A %windir%\System32\GroupPolicy
       * Távolítsa el a gpt.ini (Ha a gpt.ini létezett, és átnevezte gpt.ini.bak, nevezze át a gpt.ini vissza a .bak-fájl)

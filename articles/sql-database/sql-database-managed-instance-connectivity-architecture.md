@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: fa19ea0c7ebeea0170822db0dae298f84e958983
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 399e2585f541f28b3880e69b508cfd643b2f2263
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006131"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686292"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Az Azure SQL Database felügyelt példány kapcsolati architektúra
 
@@ -80,7 +80,7 @@ A Microsoft egy felügyeleti végpont használatával kezeli a következő felü
 Ha a kapcsolatok indítsa el a következő felügyelt példányt belül (a biztonsági mentések és a vizsgálati naplók), forgalom jelenik meg, a felügyeleti végponthoz nyilvános IP-címről indított el. Hozzáférés korlátozható nyilvános szolgáltatásokhoz a felügyelt példány csak a felügyelt példány IP-cím tűzfalszabályokban beállításával. További információkért lásd: [beépített tűzfal a felügyelt példány ellenőrzése](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
 
 > [!NOTE]
-> Traffice, amely az Azure-szolgáltatások, amelyek a felügyelt példány-régión belül van optimalizálva, és ehhez az okból nem gelt manged példány felügyeleti végpont nyilvános IP-címre. Éppen ezért, ha szeretné használni az IP-alapú tűzfalszabályokat, leggyakrabban a storage, service kell lennie a felügyelt példány egy másik régióban.
+> Forgalom, amely az Azure-szolgáltatások, amelyek a felügyelt példány-régión belül van optimalizálva, és emiatt nem gelt a felügyelt példány felügyeleti végpont nyilvános IP-címét. Éppen ezért, ha szeretné használni az IP-alapú tűzfalszabályokat, leggyakrabban a storage, service kell lennie a felügyelt példány egy másik régióban.
 
 ## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
@@ -97,7 +97,7 @@ A virtuális hálózaton belüli kijelölt alhálózatot a felügyelt példány 
 
 ### <a name="mandatory-inbound-security-rules"></a>Kötelező bejövő biztonsági szabályok
 
-| Name (Név)       |Port                        |Protokoll|Forrás           |Cél|Műveletek|
+| Name (Név)       |Port                        |Protocol|Forrás           |Cél|Műveletek|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |Bármelyik              |MI ALHÁLÓZAT  |Engedélyezés |
 |mi_subnet   |Bármelyik                         |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
@@ -105,7 +105,7 @@ A virtuális hálózaton belüli kijelölt alhálózatot a felügyelt példány 
 
 ### <a name="mandatory-outbound-security-rules"></a>Kötelező kimenő biztonsági szabályok
 
-| Name (Név)       |Port          |Protokoll|Forrás           |Cél|Műveletek|
+| Name (Név)       |Port          |Protocol|Forrás           |Cél|Műveletek|
 |------------|--------------|--------|-----------------|-----------|------|
 |felügyelet  |80, 443, 12000|TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |

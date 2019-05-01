@@ -1,9 +1,8 @@
 ---
-title: Azure-beli hálózati biztonsági eljárások |} A Microsoft Docs
+title: Hálózati biztonság – Microsoft Azure ajánlott eljárásai
 description: A cikk ismerteti az ajánlott eljárások hálózati biztonsági a beépített Azure-képességek egy készletét.
 services: security
-documentationcenter: na
-author: TomShinder
+author: TerryLanfear
 manager: barbkess
 editor: TomShinder
 ms.assetid: 7f6aa45f-138f-4fde-a611-aaf7e8fe56d1
@@ -12,18 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/17/2018
+ms.date: 04/28/2019
 ms.author: TomSh
-ms.openlocfilehash: b644a175814fb28563a2524e27f52d0285415d66
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 5bec7db1c4409165242416df16e437b121381b49
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60610962"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872562"
 ---
 # <a name="azure-network-security-best-practices"></a>Azure-beli hálózati biztonsági eljárások
-A kapcsolódás [Azure-beli virtuális gépek (VM)](https://azure.microsoft.com/services/virtual-machines/) és más hálózati eszközök szerint áthelyezi őket-készülékek [Azure virtuális hálózatok](https://azure.microsoft.com/documentation/services/virtual-network/). Virtuális hálózati adapterek kapcsolódhatnak, hogy engedélyezik a hálózati eszközök közötti TCP/IP-alapú kommunikációt egy virtuális hálózathoz. Azure-beli virtuális hálózathoz csatlakozó virtuális gépek eszközök ugyanazon a virtuális hálózaton, különböző virtuális hálózatokban, az interneten vagy a saját helyszíni hálózatokhoz csatlakozhat.
-
 Ez a cikk ismerteti az Azure-beli hálózati biztonsági eljárások gyűjteménye. Ajánlott eljárások az Azure-hálózatok tapasztalatainkon származnak, és az ügyfelek a funkciókat, például saját magának.
 
 Minden egyes ajánlott eljárás Ez a cikk ismerteti:
@@ -35,8 +32,6 @@ Minden egyes ajánlott eljárás Ez a cikk ismerteti:
 * Hogyan tudhat meg az ajánlott eljárás engedélyezése
 
 Ez a cikk az Azure hálózati biztonság ajánlott eljárások alapul egy caiq véleményét, és az Azure platform képességeit és szolgáltatáskészleteket, ez a cikk írásának időpontjában léteznek. Vélemények és technológiák időbeli változásait, és ez a cikk a változások követése érdekében rendszeresen frissül.
-
-A következő szakaszok a hálózati biztonság ajánlott eljárásai ismertetik.
 
 ## <a name="logically-segment-subnets"></a>Logikailag szegmens alhálózatok
 Azure virtuális hálózatok hasonlítanak a helyszíni hálózaton egy LAN-on. Azure-beli virtuális hálózathoz mögött lényege, hogy létrehoz egy egyetlen IP-cím terület-alapú magánhálózati, amelyen helyezze el az Azure-beli virtuális gépek. A magánhálózati IP-címterek érhető el az osztály A (10.0.0.0/8), B osztály (172.16.0.0/12), és C osztályú (192.168.0.0/16) tartományait.

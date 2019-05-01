@@ -14,17 +14,17 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a9d0daaacb046df7943202775adc77bc912cce11
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c5dd0146fe59e7dc85787f146b10cfde7d6addb4
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61217573"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867894"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Media Services segítségével élő Streamelés áttekintése
 
 > [!NOTE]
-> 2018. május 12., az élő csatornák indítása fogja többé nem támogatja a RTP/MPEG-2 adatátviteli stream betöltési protokollját. Telepítse át a RTP/MPEG-2 RTMP vagy darabolt MP4 (Smooth Streaming) betöltési protokollokra.
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Próbálja ki a legújabb verziót, ami a [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még [v3 a v2 migrálási útmutató](../latest/migrate-from-v2-to-v3.md)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -44,7 +44,12 @@ Ha az Azure Media Services események élő adatfolyamainak továbbítása a kö
 
 A **Microsoft Azure Media Services** (AMS) lehetőséget nyújt az élő adatfolyam-tartalmak feldolgozására, kódolására, előnézetére, tárolására és továbbítására is.
 
-Az ügyfelek felé történő tartalomtovábbításkor a cél a videók kiváló minőségben történő továbbítása különböző eszközökre, különböző hálózati körülmények között. Ennek érdekében élő kódolók használatával és többféle sávszélességű (adaptív sávszélességűvé alakítják) video-adatfolyamot, az adatfolyam kódolása.  A különböző eszközökre irányuló adatfolyam-továbbításhoz használja a Media Services [dinamikus csomagolási](media-services-dynamic-packaging-overview.md) lehetőségét, amely az adatfolyamot dinamikusan újracsomagolja különböző protokollok szerint. Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH.
+A Media Services igénybe veheti [dinamikus csomagolási](media-services-dynamic-packaging-overview.md), amely lehetővé teszi, hogy az MPEG-DASH, HLS, az élő adások közvetítése és Smooth Streaming formázza a csatorna közreműködői, a szolgáltatásnak küldött. A nézők vissza az élő stream továbbítása bármely HLS, DASH vagy Smooth Streaming kompatibilis lejátszók játszhatja le. A webes és mobilalkalmazások az Azure Media Player használatával biztosít a stream bármelyik ezeket a protokollokat.
+
+> [!NOTE]
+> 2018. május 12., az élő csatornák indítása fogja többé nem támogatja a RTP/MPEG-2 adatátviteli stream betöltési protokollját. Telepítse át a RTP/MPEG-2 RTMP vagy darabolt MP4 (Smooth Streaming) betöltési protokollokra.
+
+## <a name="streaming-endpoints-channels-programs"></a>Streamelési végpontok, a csatornák, programok
 
 Az Azure Media Services szolgáltatásokban a **csatornák**, a **programok** és a **streamvégpontok** felelősek az élő adatfolyamokkal kapcsolatos minden feladatért, beleértve a feldolgozást, a formázást, a DVR-t, a biztosítást, a méretezhetőséget és a redundanciát is.
 

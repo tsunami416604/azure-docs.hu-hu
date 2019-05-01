@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 772401c286a50774d201703cefcbbc12f0fcf88f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 3773a3e121c3b0162b83ea075601b7386228e4d5
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775808"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64876196"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Metrikákhoz kapcsolódó riasztások dinamikus küszöbértékekkel az Azure monitorban (nyilvános előzetes verzió)
 
@@ -42,16 +42,16 @@ Dinamikus küszöbérték folyamatosan tanul az adatokat a metrika sorozat harma
 A küszöbértékek oly módon, hogy ezeket a küszöbértékeket eltérést jelöli a metrikákkal kapcsolatos viselkedést anomáliát ki van jelölve.
 
 > [!NOTE]
-> Szezonális észlelési óra, napi vagy heti időköz beállítása. Ez azt jelenti, hogy más bihourly mintája hasonló minták vagy semiweekly előfordulhat, hogy nem észlelhető.
+> Egy óra, napi vagy heti időköz szezonális észlelési van beállítva. Ez azt jelenti, hogy más bihourly mintája hasonló minták vagy semiweekly előfordulhat, hogy nem észlelhető.
 
 ## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>Dinamikus küszöbérték középérték "Érzékenysége" beállítás mire?
 
 Riasztási küszöbérték érzékenységét egy magas szintű fogalom, amely szabályozza a metrikákkal kapcsolatos viselkedés riasztást kiváltó szükséges eltérés.
 Ezt a beállítást nem szükséges a mérőszám, például a statikus küszöbérték kapcsolatos adatait. Az elérhető lehetőségek:
 
-- Magas – a küszöbértékeket a rövid és a metrika sorozat minta közeli lesz. Riasztási szabály akkor aktiválódik, a legkisebb értékét, a további riasztások eredményez.
+- Magas – a küszöbértékeket a rövid és a metrika sorozat minta közeli lesz. A legkisebb eltérés, így további riasztások egy riasztási szabályt aktiválódik.
 - Közepes – kevesebb szoros és több elosztott terhelésű küszöbértékek, kevesebb riasztást, mint a magas érzékenységi (alapértelmezett).
-- Alacsony – a küszöbértékek lesz metrika sorozat minta további távolsága a laza. Riasztási szabály csak aktiválják a nagy eltérés, kevesebb riasztást eredményez.
+- Alacsony – a küszöbértékek lesz metrika sorozat minta további távolsága a laza. Riasztási szabály csak aktiválják a nagy eltéréseket, kevesebb riasztást eredményez.
 
 ## <a name="what-are-the-operator-setting-options-in-dynamic-thresholds"></a>Mik a dinamikus küszöbértékek "Kezelő" beállítás lehetőségei?
 
@@ -83,7 +83,7 @@ Megismerheti a riasztások nézetben aktivált riasztás példányok vagy kattin
 A riasztás nézetet jelenít meg:
 
 - Jelenleg minden metrika részletei a dinamikus küszöbértékek riasztás aktiválva.
-- Az időszak, amelyben a riasztás-trigger, amely magában foglalja a dinamikus küszöbértékeket, abban az időpontban használt, egy diagram.
+- Az időszak, amelyben a riasztás aktiválódott, amely tartalmazza a dinamikus küszöbértékeket, abban az időpontban használt diagram.
 - Szeretne visszajelzést adni dinamikus küszöbértékek riasztás és a riasztások nézet élményt, amely javíthatja a jövőbeli észlelések képessége.
 
 ## <a name="will-slow-behavior-change-in-the-metric-trigger-an-alert"></a>Lassú viselkedés módosítani fogja a metrikaindító metrikanevét riasztást?
@@ -92,7 +92,7 @@ Valószínűleg nem. Dinamikus küszöbérték jók jelentős eltérések észle
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Mennyi adatot szolgál, és ezután kiszámíthatja a küszöbértékeket?
 
-A küszöbértékeket a diagramon megjelenő előtt egy riasztási szabályt a rendszer létrehozza a mérőszám a rendszer kiszámolta elég előzményadatok alapján számítja ki órás vagy napi szezonális minták (10 nap) alapján. Riasztási szabály létrehozása után a dinamikus küszöbértékeket és fogja használni, amely érhető el, és folyamatosan ismerje meg valamennyi szükséges előzményadatok adept új adatok alapján, hogy a küszöbértékek pontosabb. Ez azt jelenti, hogy miután a számítási diagram megjeleníti heti mintákat is.
+A küszöbértékeket a diagramon jelennek meg a mérőszám a riasztási szabály létrehozása előtt elég előzményadatok alapján számítja ki órás vagy napi szezonális minták (10 nap) alapján számítjuk. Riasztási szabály létrehozása után a dinamikus küszöbértékek minden szükséges előzményadatok, elérhető és a rendszer folyamatosan tanulhasson belőlük és idomulhasson új adatok alapján, hogy a küszöbértékek pontosabb fogja használni. Ez azt jelenti, hogy ehhez a számításhoz után a diagram is látható heti mintákat.
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Mennyi adatot a riasztást kiváltó van szükség?
 

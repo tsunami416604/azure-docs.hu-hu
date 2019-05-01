@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 4ddbec6b163a939c1663630e39e89140ac6f7efe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 2400f80c67527027aee3a98baaa869c5c66d46ee
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60761488"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573639"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>A Stream Analytics keresések referenciaadatok használata
 Referenciaadatok (más néven egy keresési táblázat) egy véges adatkészlet, amely statikus vagy lassan változó természetű, használja a keresés végrehajtásához vagy korrelációját, ha az adatfolyamban. Például egy IoT-forgatókönyvet, sikerült (amelyek nem változnak gyakran) vonatkozó metaadatokat tárolnak a referenciaadatok és csatlakozik azt a valós idejű IoT-adatfolyamaiból. Az Azure Stream Analytics közel valós idejű adatfolyam-feldolgozás eléréséhez a memóriában referenciaadatok tölti be. Győződjön meg arról, hogy az Azure Stream Analytics-feladat a referenciaadatok, az általában használhat egy [referencia-adatok csatlakozzon](https://msdn.microsoft.com/library/azure/dn949258.aspx) a lekérdezésben. 
@@ -49,7 +49,7 @@ A referenciaadatok várhatóan nem változik, ha majd támogatása statikus hiva
 
 Lassan változó adatkészlet a referenciaadatok esetén majd támogatja a referencia-adatok engedélyezve van a bemeneti konfigurációját a {date} segítségével egy elérésiút-minta megadásával frissítését, és helyettesítési tokenek {idő}. Stream Analytics szerzi be a frissített referenciaadatok adatok definíciókat az elérésiút-minta alapján. Például egy mintát, `sample/{date}/{time}/products.csv` az a dátum formátuma **"Éééé-hh-nn"** és a egy idő formátumát **"HH-mm"** arra utasítja a Stream Analytics a frissített blob csomópontmetrikák `sample/2015-04-16/17-30/products.csv` , 17:30-kor. április 16 , 2015 UTC időzóna szerint.
 
-Az Azure Stream Analytics automatikus vizsgálatokat végez a frissített a referenciaadat blobok számára egy egy perces időközönként.
+Az Azure Stream Analytics automatikus vizsgálatokat végez a frissített a referenciaadat blobok számára egy egy perces időközönként. 10:30:00 időbélyeg rendelkező kis késéssel (például 10:30:30) töltenek fel, ha a Stream Analytics-feladat a blob hivatkozó kis késésének láthatja. Ilyen esetekben elkerülése érdekében javasoljuk, hogy a blob feltöltése a cél hatékony időpontnál korábban (10: 30:00 ebben a példában), hogy a Stream Analytics-feladat elegendő időt felderítése, és nyissa meg a memória és a műveletek végrehajtása. 
 
 > [!NOTE]
 > Jelenleg Stream Analytics-feladatok keresse meg a blob frissítés csak akkor, ha a gépek idejét az idő a blob nevében kódolású állomásra. Például a feladat megkeresi `sample/2015-04-16/17-30/products.csv` , amint lehetséges, de nem régebbi, mint 5:30-kor 2015. április 16 UTC időzónát. Akkor *soha nem* keresse meg a korábban felderített az utolsót kódolt időt egy blobot.

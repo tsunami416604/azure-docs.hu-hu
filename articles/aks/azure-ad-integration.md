@@ -5,20 +5,20 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 04/26/2019
 ms.author: iainfou
-ms.openlocfilehash: db92526bd02ba55be5df7ce6999e3099e72b8fa5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: c23c13969fd4e2814fdc1894a98a3f876da7315b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62116777"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574303"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Az Azure Active Directory integrálása az Azure Kubernetes Service
 
 Az Azure Kubernetes Service (AKS) beállítható úgy, hogy a felhasználók hitelesítéséhez az Azure Active Directory (AD) használja. Ebben a konfigurációban, bejelentkezhet egy AKS-fürtöt az Azure Active Directory hitelesítési token használatával. Ezenkívül a fürt a rendszergazdák olyan Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC) a felhasználó identitását, vagy a könyvtár a csoport tagsága alapján konfigurálhatja.
 
-Ez a cikk bemutatja, hogyan helyezhet üzembe az AKS és Azure AD előfeltételei, akkor a fürt üzembe helyezése az Azure AD-kompatibilis, és a egy alapszintű RBAC-szerepkör létrehozása a az AKS-fürtöt.
+Ez a cikk bemutatja, hogyan helyezhet üzembe az AKS és Azure AD előfeltételei, akkor a fürt üzembe helyezése az Azure AD-kompatibilis, és a egy alapszintű RBAC-szerepkör létrehozása a az AKS-fürtöt az Azure portal használatával. Emellett [hajtsa végre ezeket a lépéseket az Azure CLI használatával][azure-ad-cli].
 
 Az alábbi korlátozások érvényesek:
 
@@ -46,7 +46,7 @@ Az első Azure AD-alkalmazást az Azure AD-felhasználók csoport tagságának e
 
 2. Válassza ki **Manifest** és szerkesztheti a `groupMembershipClaims` értéket a következőre `"All"`.
 
-   Miután elkészült a frissítések mentése.
+   **Mentés** a frissítéseket, a folyamat végén.
 
    ![Az összes frissíteni a csoporttagságot](media/aad-integration/edit-manifest.png)
 
@@ -64,11 +64,11 @@ Az első Azure AD-alkalmazást az Azure AD-felhasználók csoport tagságának e
 
    ![Alkalmazás graph-engedélyek beállítása](media/aad-integration/read-directory.png)
 
-6. A **DELEGÁLT engedélyek**, melletti négyzetet **jelentkezzen be a felhasználói profil olvasása és** és **címtáradatok olvasása**. Miután befejezte a frissítések mentése.
+6. A **DELEGÁLT engedélyek**, melletti négyzetet **jelentkezzen be a felhasználói profil olvasása és** és **címtáradatok olvasása**. Válasszon **kiválasztása** menteni a frissítéseket.
 
    ![Alkalmazás graph-engedélyek beállítása](media/aad-integration/delegated-permissions.png)
 
-   Válassza a **Done** (Kész) lehetőséget.
+   Ezután válassza ki **kész**.
 
 7. Válasszon *Microsoft Graph* API-t, majd válassza ki a listáról **engedélyek megadása**. Ez a lépés sikertelen lesz, ha a jelenlegi fiókot nem Bérlői rendszergazda.
 
@@ -96,11 +96,13 @@ A második Azure AD-alkalmazást használja történő bejelentkezéskor a Kuber
 
    ![Alkalmazás-engedélyek konfigurálása](media/aad-integration/select-api.png)
 
-3. Jelölje be a mellett az alkalmazásra, majd **kiválasztása**.
+    Válassza ki a kiszolgáló alkalmazást, majd válassza a **kiválasztása**.
+
+3. Lépjen vissza a *API-hozzáférés hozzáadása* ablakban válassza a **engedélyek kiválasztása**. Kérjük, egy pipa alatt a *delegált engedélyek* hozzáférni az alkalmazáshoz, majd válassza ki **kiválasztása**.
 
    ![Válassza ki az AKS AAD alkalmazás kiszolgálóvégpontok](media/aad-integration/select-server-app.png)
 
-   Válassza ki **kész**
+   Lépjen vissza a *API-hozzáférés hozzáadása* ablakban válassza **kész**.
 
 4. Válassza ki a kiszolgáló API-t a listából, és válassza a **engedélyek megadása**:
 
@@ -259,3 +261,4 @@ Identitás- és erőforrás-vezérlést ajánlott eljárásokat lásd: [gyakorla
 [rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
+[azure-ad-cli]: azure-ad-integration-cli.md

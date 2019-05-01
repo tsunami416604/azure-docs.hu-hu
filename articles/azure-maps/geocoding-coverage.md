@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 23f0110b3418e2df0434438247340f88678268ad
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 2a2df8b47b60f29d8ecd3c040e8ef979ee23afa8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000929"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575403"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Az Azure Maps geokódolás lefedettsége
 
@@ -44,7 +44,6 @@ A geocode országban el közúti adatok lefedettsége és a geokódolás pontoss
 | Kanada                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kajmán-szigetek                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Chile                                               |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
-| Clipperton-sziget                                   |                 |                |              |      ✓     |                    |
 | Kolumbia                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Costa Rica                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Kuba                                                |                 |                |       ✓      |      ✓     |          ✓         |
@@ -98,12 +97,12 @@ A geocode országban el közúti adatok lefedettsége és a geokódolás pontoss
 | Brit Indiai-óceáni Terület                      |                 |                |              |      ✓     |          ✓         |
 | Brunei                                              |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Kambodzsa                                            |                 |                |              |      ✓     |          ✓         |
-| Kína                                               |        ✓        |        ✓       |              |      ✓     |          ✓         |
+| Kína                                               |                 |                |              |      ✓     |          ✓         |
 | Karácsony-sziget                                    |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Cocos (Keeling)-szigetek                             |                 |                |              |      ✓     |          ✓         |
 | Comore-szigetek                                             |                 |                |              |      ✓     |          ✓         |
 | Cook-szigetek                                        |                 |                |              |      ✓     |          ✓         |
-| Fidzsi                                                |                  |                |              |      ✓     |          ✓         |
+| Fidzsi                                                |                  |                |              |      ✓     |          ✓        |
 | Francia Polinézia                                    |                 |                |              |      ✓     |          ✓         |
 | Heard-sziget és McDonald-szigetek                   |                 |                |              |      ✓     |          ✓         |
 | Hongkong (KKT)                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |

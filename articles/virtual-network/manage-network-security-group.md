@@ -4,26 +4,26 @@ titlesuffix: Azure Virtual Network
 description: Ismerje meg, hogyan létrehozása, módosítása vagy egy hálózati biztonsági csoport törlése.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
-ms.author: jdial
-ms.openlocfilehash: 5eb5a24d6126e9609d1c653948c2db6b0a4feb55
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.author: kumud
+ms.openlocfilehash: 9fc73c40d4d3241afefd67b1c4f084765b0be934
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821934"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710211"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Létrehozása, módosítása vagy egy hálózati biztonsági csoport törlése
 
 A hálózati biztonsági csoportok biztonsági szabályokat lehetővé teszi a hálózati forgalom típusának megfelelő, amelyek virtuális hálózati alhálózatokhoz és hálózati adapterekhez adataikkal is szűrheti. Ha még nem ismeri a hálózati biztonsági csoportok, [hálózati biztonsági csoportok áttekintése](security-overview.md) további információkat olvashat, és végezze el a [hálózati forgalom szűrése](tutorial-filter-network-traffic.md) oktatóanyag némi tapasztalattal a hálózat eléréséhez biztonsági csoportok.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -124,7 +124,7 @@ A hálózati biztonsági csoport hány szabályt hozhat létre egy Azure-helyen 
     |Forrásporttartományok     | Adja meg egyetlen port, pl. 80-as port, pl. 1024-65535, számos vagy portokat és/vagy alkalmazásport-tartományok, mint például a 80-as, vesszővel elválasztott listája 1024-65535. Adja meg a csillag karakter engedélyezi a forgalmat az összes porton. | A portok és címtartományok adja meg a portokat adatforgalom engedélyezett vagy tiltott a szabály által. Megadhat portok száma korlátozva van. Lásd: [Azure korlátairól](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) részleteiről.  |
     |Cél     | Válassza ki **bármely**, **alkalmazásbiztonsági csoport**, **IP-címek**, vagy **virtuális hálózat** bejövő biztonsági szabályok. Ha egy kimenő biztonsági szabályt hoz létre, a beállítások ugyanazok, mint a felsorolt lehetőségek **forrás**.        | Ha **alkalmazásbiztonsági csoport** majd jelöljön ki egy vagy több meglévő alkalmazásbiztonsági csoportok, amelyek szerepelnek a hálózati adapter és ugyanabban a régióban. Ismerje meg, hogyan [hozzon létre egy alkalmazásbiztonsági csoportot](#create-an-application-security-group). Ha **alkalmazásbiztonsági csoport**, majd válassza ki egy meglévő alkalmazás biztonsági csoportot, amely ugyanabban a régióban, mint a hálózati adapter létezik. Ha **IP-címek**, majd adja meg **cél IP-címek vagy CIDR-tartományok**. Hasonló **forrás** és **forrás IP-címek vagy CIDR-tartományok**, megadhat egy vagy több címet vagy címtartományt és korlátozások száma is megadhat. Kiválasztásával **virtuális hálózati**, azaz egy szolgáltatáscímke, azt jelenti, hogy a forgalom a virtuális hálózat címterén belül minden IP-címek számára engedélyezett. Ha a megadott IP-cím hozzá van rendelve egy Azure virtuális gépen, győződjön meg arról, magánhálózati IP, nem a virtuális géphez társított nyilvános IP-címet adjon meg. Biztonsági szabályok feldolgozása után az Azure a rendszer lefordítja a bejövő biztonsági szabályok magánhálózati IP-cím a nyilvános IP-címet, és mielőtt Azure fordítja le egy nyilvános IP-cím kimenő szabályok egy magánhálózati IP-címet. Az Azure nyilvános és privát IP-címek kapcsolatos további információkért lásd: [IP-cím-típusok](virtual-network-ip-addresses-overview-arm.md).        |
     |Célporttartományok     | Adjon meg egyetlen érték, vagy értékek vesszővel elválasztott listája. | Hasonló **alkalmazásport-tartományok forrás**, megadhatja, egy vagy több portok és címtartományok és korlátozások száma is megadhat. |
-    |Protokoll     | Válassza ki **bármely**, **TCP**, vagy **UDP**.        |         |
+    |Protocol     | Válassza ki **bármely**, **TCP**, vagy **UDP**.        |         |
     |Műveletek     | Válassza ki **engedélyezése** vagy **megtagadása**.        |         |
     |Prioritás     | Adjon meg egy értéket, amely egyedi az összes biztonsági szabályt a hálózati biztonsági csoporton belül 100-4096 között. |Szabályok feldolgozása prioritási sorrendben történik. Az alacsonyabb a szám, annál magasabb a prioritás. Javasoljuk, hogy hagyja eseményáramlási kimaradást közötti prioritás számokat, mint 100, 200, 300 szabályok létrehozása során. Hézagokat teszi könnyebben szabályok hozzáadása a jövőben, szükség lehet, hogy magasabb vagy alacsonyabb, mint a meglévő szabályok.         |
     |Name (Név)     | Egy egyedi nevet a szabály a hálózati biztonsági csoporton belül.        |  A név legfeljebb 80 karakter lehet. Kell kezdődnie, betűvel vagy számmal végződhet egy betűvel, számmal vagy aláhúzásjellel, és csak betűket, számokat, aláhúzásjeleket, pontokat és kötőjeleket tartalmazhat.       |
@@ -197,7 +197,7 @@ Egy alkalmazásbiztonsági csoportot nulla vagy több hálózati adaptereket tar
     | Name (Név)           | A névnek egyedinek kell lennie az erőforráscsoporton belül.        |
     | Előfizetés   | Válassza ki előfizetését.                               |
     | Erőforráscsoport | Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat. |
-    | Hely       | Válasszon ki egy helyet                                       |
+    | Location egység       | Válasszon ki egy helyet                                       |
 
 **Parancsok**
 

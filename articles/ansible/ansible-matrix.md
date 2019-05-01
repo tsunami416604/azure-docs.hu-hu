@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/22/2019
-ms.openlocfilehash: 3f5bda36368ee1fe1f37527422c6072c3ffda177
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 721179e12ed7f21312fe848a6bef1a8e19bc8083
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63763322"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866050"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Az Ansible modul és verzió mátrix
 
@@ -53,11 +53,10 @@ Ezeket a modulokat az Ansible hivatalos kiadás pedig a következő Microsoft fo
 | azure_rm_virtualmachinescalesetinstance_facts | -            | -                         | -            | -            | Igen          | Igen          |
 | **Hálózat**                              |              |                             |              |              |              |              |
 | azure_rm_appgateway                         | -            | -                           | -            | Igen          | Igen          | Igen          |
-| azure_rm_appgwroute                         | -            | -                           | -            | -            | Igen          | Igen          |
-| azure_rm_appgwroute                         | -            | -                           | -            | -            | Igen          | Igen          |
-| azure_rm_appgwroute_facts                   | -            | -                           | -            | -            | Igen          | Igen          |
-| azure_rm_appgwroutetable                    | -            | -                           | -            | -            | Igen          | Igen          |
-| azure_rm_appgwroutetable_facts              | -            | -                           | -            | -            | Igen          | Igen          |
+| azure_rm_appgwroute                         | -            | -                           | -            | -            | -          | Igen          |
+| azure_rm_appgwroute_facts                   | -            | -                           | -            | -            | -          | Igen          |
+| azure_rm_appgwroutetable                    | -            | -                           | -            | -            | -          | Igen          |
+| azure_rm_appgwroutetable_facts              | -            | -                           | -            | -            | -          | Igen          |
 | azure_rm_applicationsecuritygroup           | -            | -                           | -            | -            | Igen          | Igen          |
 | azure_rm_applicationsecuritygroup_facts     | -            | -                           | -            | -            | Igen          | Igen          |
 | azure_rm_cdnendpoint                        | -            | -                         | -          | -            | Igen          | Igen          |

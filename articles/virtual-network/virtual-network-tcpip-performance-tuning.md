@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: 1e8605a41cbe610c971b891309b2149d221b8b27
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 31ca0ee666ff37afa37fb9636860c557d92a52c7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61032451"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924789"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Az Azure virtuális gépek TCP/IP-teljesítményhangolása
 
@@ -304,7 +304,7 @@ Gyorsított hálózatkezelés javítható a hálózati teljesítmény, beleértv
 
 Azure-beli virtuális gépek legalább egy hálózati adapter csatlakoztatva van. Előfordulhat, hogy több rendelkeznek. A virtuális gép számára lefoglalt sávszélesség egyezik meg az összes kimenő forgalmat a géphez csatlakoztatott összes hálózati adapter esetében. Más szóval a sávszélességet egy virtuális gép alapon, függetlenül attól, hány hálózati adapter csatlakozik a gép.
 
-Várt kimenő adatátviteli és az egyes virtuális gép mérete által támogatott hálózati adapterek számát részletezi [méretek a Windows virtuális gépek az Azure-ban](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Maximális átviteli sebesség megtekintéséhez válasszon egy típust, például **általános célú**, majd keresse meg a méretet sorozat az eredményül kapott (például "a Dv2 sorozat") oldalon olvashat. Az egyes sorozatok van egy tábla által biztosított hálózati előírásoknak, az utolsó oszlopban, amelynek címe: "hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps)."
+Várt kimenő adatátviteli és az egyes virtuális gép mérete által támogatott hálózati adapterek számát részletezi [méretek a Windows virtuális gépek az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Maximális átviteli sebesség megtekintéséhez válasszon egy típust, például **általános célú**, majd keresse meg a méretet sorozat az eredményül kapott (például "a Dv2 sorozat") oldalon olvashat. Az egyes sorozatok van egy tábla által biztosított hálózati előírásoknak, az utolsó oszlopban, amelynek címe: "hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps)."
 
 Az átviteli sebesség korlát vonatkozik a virtuális géphez. Átviteli sebesség nem érinti a tényezők:
 
@@ -388,4 +388,4 @@ Továbbra is ezek csomagtípusok olyan TCP átviteli sebesség nem éri el a max
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte a teljesítményhangolásról TCP/IP az Azure virtuális gépek, érdemes olvassa el az egyéb szempontok [virtuális hálózatok tervezési](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-vnet-plan-design-arm) vagy [tudjon meg többet a csatlakozás és a virtuális hálózatok konfigurálása ](https://docs.microsoft.com/en-us/azure/virtual-network/).
+Most, hogy megismerte a teljesítményhangolásról TCP/IP az Azure virtuális gépek, érdemes olvassa el az egyéb szempontok [virtuális hálózatok tervezési](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) vagy [tudjon meg többet a csatlakozás és a virtuális hálózatok konfigurálása ](https://docs.microsoft.com/azure/virtual-network/).

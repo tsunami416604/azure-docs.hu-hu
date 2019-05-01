@@ -3,18 +3,18 @@ title: Mi az az Azure IoT Central? | Microsoft Docs
 description: Az Azure IoT Central egy teljes körű Szolgáltatottszoftver-megoldás használatával hozhat létre és kezelheti az egyéni IoT-megoldás. Ez a cikk áttekintést nyújt az Azure IoT Central jellemzőiről.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/30/2017
+ms.date: 04/24/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 9fc565996797c90a6d2ac9b3851ac3408f1842c7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 84fa7aa006a6bc5365527dbf8043797617543590
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183271"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64704540"
 ---
 <!---
 Purpose of an Overview article: 
@@ -25,16 +25,16 @@ Purpose of an Overview article:
 
 # <a name="what-is-azure-iot-central"></a>Mi az az Azure IoT Central?
 
-Az Azure IoT Central egy teljes körűen felügyelt IoT szoftverszolgáltatási megoldás, amely megkönnyíti a fizikai és a digitális világok között kapcsolatot teremtő termékek létrehozását. A csatlakoztatott termékre vonatkozó elképzelését a következőképpen valósíthatja meg:
+Az Azure IoT Central egy teljes körűen felügyelt IoT szoftver--szolgáltatásként megoldás, amely megkönnyíti a fizikai és a digitális világ csatlakozó termékek létrehozása is. A csatlakoztatott termékre vonatkozó elképzelését a következőképpen valósíthatja meg:
 
 - Új megállapítások kinyerése a csatlakoztatott eszközökről, hogy az ügyfelek jobb termékekhez és élményekhez juthassanak.
 - Új üzleti lehetőségek teremtése a cég számára.
 
-Az Azure IoT a tipikus IoT-projektekhez képest a következőképpen teszi egyszerűbbé az IoT-megoldások felügyeletét:
+Az Azure IoT Central, mint egy tipikus IoT-projektet a korábban megszokott:
 
-- Csökkenti a felügyeleti terheket.
-- Csökkenti az üzemeltetési költségeket és terhelést.
-- Megkönnyíti az alkalmazások testreszabását a következők segítségével:
+- Csökkenti a kezelési terheket.
+- Csökkenti a működési költségeket és az általános költségeket.
+- Könnyen testre szabhatja az alkalmazás használata során:
   - Iparágvezető technológiák, mint például az [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) és az [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/) alkalmazása.
   - Nagyvállalati szintű biztonsági funkciók, például végpontok közötti titkosítás.
 
@@ -42,7 +42,7 @@ A következő videó áttekintést nyújt az Azure IoT Centralról:
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Microsoft-IoT-Central-intro-walkthrough/Player]
 
-A cikk többi része az Azure IoT Central következő jellemzőit ismerteti:
+Ez a cikk ismerteti az Azure IoT Central:
 
 - A projekthez társított tipikus szerepek.
 - Egy alkalmazás létrehozása.
@@ -51,7 +51,7 @@ A cikk többi része az Azure IoT Central következő jellemzőit ismerteti:
 
 ## <a name="personas"></a>Szerepek
 
-Az Azure IoT Central dokumentációja négyféle szerepet különböztet meg az Azure IoT Central-alkalmazásokkal kapcsolatban:
+Az Azure IoT Central dokumentációja négy személyeknek, akik használhatják az Azure IoT Central alkalmazáshoz hivatkozik:
 
 - A _szerkesztő_ feladata, hogy meghatározza, milyen típusú eszközök csatlakoznak az alkalmazáshoz, valamint testreszabja az alkalmazást az operátor számára.
 - Az _operátor_ kezeli az alkalmazáshoz csatlakoztatott eszközöket.
@@ -65,12 +65,12 @@ Szerkesztőként az Azure IoT Central használatával egyéni, a felhőben üzem
 - Egy felhőalapú alkalmazás, amely telemetriai adatokat fogad az eszközökről és lehetővé teszi az eszközök felügyeletét.
 - Több eszköz, amelyek egyéni kódokat futtatnak és a felhőalapú alkalmazáshoz csatlakoznak.
 
-Gyorsan létrehozhat egy új Azure IoT Central-alkalmazást, majd közvetlenül a böngészőben testreszabhatja saját egyéni igényei szerint. Azure IoT Central-szerkesztőként a webes eszközökkel létrehozhat egy _eszközsablont_ az alkalmazáshoz csatlakozó eszközök számára. Az eszközsablon adja az eszközmodellek alapját. Az ugyanabból az eszközsablonból létrehozott összes eszköznek közös a sablonja. Az eszközsablon egy adott eszköztípus olyan jellemzőit és viselkedéstípusait határozza meg, mint:
+Gyorsan üzembe helyezhet egy új Azure IoT Central-alkalmazást, és majd pedig testreszabjuk, hogy az adott igények szerint a böngészőben. A jelentéskészítő használhatja a webes eszközökkel hozhat létre egy _eszköz sablon_ az eszközök számára az alkalmazás számára. Egy eszköz sablon a tervezet meghatározó jellemzőit és viselkedését egy típusú eszköz például a:
 
-- Az eszköz által küldött telemetriai adatok.
+- A telemetriai adatokat küldi.
 - Az operátor által módosítható üzleti tulajdonságok.
 - Azok az eszköztulajdonságok, amelyeket az eszköz állít be, és az alkalmazásban csak olvashatók.
-- Az alkalmazás reakcióinak küszöbértékei.
+- Az alkalmazás válaszol küszöbértékeket.
 - Az eszköz viselkedését meghatározó beállítások.
 
 Az eszközsablonok és az alkalmazások azonnal tesztelhetők az Azure IoT Central által létrehozott szimulált adatokkal.
@@ -83,7 +83,7 @@ A szerkesztők emellett testreszabhatják az Azure IoT Central-alkalmazás kezel
 
 ## <a name="connect-your-devices"></a>Az eszközök csatlakoztatása
 
-Miután a szerkesztő meghatározta, hogy az alkalmazáshoz milyen típusú eszközök csatlakozhatnak, egy eszközfejlesztő létrehozza az eszközökön futtatandó kódokat. Az eszközfejlesztők a Microsoft nyílt forráskódú [Azure IoT SDK-it](https://github.com/Azure/azure-iot-sdks) használhatják az eszközkódok létrehozásához. Ezek az SDK-k számos nyelvet, platformot és protokollt támogatnak, hogy megfeleljenek az Ön igényeinek az eszközök és az Azure IoT Central-alkalmazás csatlakoztatását illetően. Az SDK-k segítségével a következő feladatok végezhetők el az Azure IoT Centralhoz csatlakoztatott eszközökön:
+Miután a szerkesztő meghatározta, hogy az alkalmazáshoz milyen típusú eszközök csatlakozhatnak, egy eszközfejlesztő létrehozza az eszközökön futtatandó kódokat. Az eszközfejlesztők a Microsoft nyílt forráskódú [Azure IoT SDK-it](https://github.com/Azure/azure-iot-sdks) használhatják az eszközkódok létrehozásához. Ezek az SDK-k számos nyelvet, platformot és protokollt támogatnak, hogy megfeleljenek az Ön igényeinek az eszközök és az Azure IoT Central-alkalmazás csatlakoztatását illetően. Az SDK-k megvalósításához a következő eszköz képességeket nyújtanak segítséget:
 
 - Biztonságos kapcsolat létrehozása.
 - Telemetria küldése.
@@ -96,15 +96,15 @@ További információkért olvassa el a következő blogbejegyzést: [Milyen el�
 
 Az Azure IoT Central-alkalmazásokat teljes mértékben a Microsoft üzemelteti, ami csökkenti az alkalmazások felügyelete miatti adminisztrációs terheket.
 
-Az operátorok az Azure IoT Central-alkalmazással kezelik az eszközöket az Azure IoT Central-megoldásban. Az operátorok a következő feladatokat végezhetik el:
+Az operátorok az Azure IoT Central-alkalmazással kezelik az eszközöket az Azure IoT Central-megoldásban. Operátorok például feladatokat hajthat végre:
 
 - Az alkalmazáshoz csatlakoztatott eszközök monitorozása.
 - Az eszközök hibáinak keresése és elhárítása.
 - Új eszközök üzembe helyezése.
 
-A szerkesztő az eszközsablon szintjén határozhat meg egyéni szabályokat és műveleteket a streamelési adatokra vonatkozóan. Az operátor eszközszinten engedélyezheti vagy letilthatja ezeket a szabályokat, az alkalmazáson belüli feladatok vezérlése és automatizálása céljából.
+Mint szerkesztő megadhatja az egyéni szabályokat és műveleteket, amelyeket a csatlakoztatott eszközökről streamelt adatokon működnek. Az operátor eszközszinten engedélyezheti vagy letilthatja ezeket a szabályokat, az alkalmazáson belüli feladatok vezérlése és automatizálása céljából.
 
-A rendszergazda [felhasználói szerepkörök és engedélyek](howto-administer.md) beállításával felügyelheti a hozzáférést az alkalmazásokhoz.
+A rendszergazdák az alkalmazásokba való hozzáférés kezelése [felhasználói szerepköröket és engedélyeket](howto-administer.md).
 
 ## <a name="next-steps"></a>További lépések
 

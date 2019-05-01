@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: 4b9e9aeab6ed24dd2179f853def02ad194fe1b67
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d12226daa7353c01ee462ea31c5cbf011ba28409
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61025190"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726072"
 ---
 # <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Előzetes verzió – létrehozása és konfigurálása az Azure Kubernetes szolgáltatások (AKS)-fürt virtuális csomópontok használata az Azure Portalon
 
@@ -22,6 +22,30 @@ Számítási feladatok az Azure Kubernetes Service (AKS)-fürt gyors üzembe hel
 > Az AKS előzetes verziójú funkciók a következők: az önkiszolgáló és vehetnek részt. Visszajelzés és hibák gyűjtsön közösségünkhöz előzetes verziók vannak megadva. Azonban nem támogatja őket az Azure műszaki támogatást. Hozzon létre egy fürtöt, vagy adja hozzá ezeket a funkciókat a meglévő fürtökre, ha a fürt nem támogatott, mindaddig, amíg a funkció már nem előzetes verzióban érhető el és hallgatóknak az általánosan elérhető (GA).
 >
 > Ha az előzetes verziójú szolgáltatásaihoz is problémák merülnek fel [nyisson egy problémát a AKS GitHub-adattárat a] [ aks-github] az előzetes verziójú funkció a bejelentett hiba címét nevére.
+
+## <a name="before-you-begin"></a>Előzetes teendők
+
+Virtuális csomópontok ACI futtató podok és az AKS-fürt közötti hálózati kommunikáció engedélyezéséhez. Ahhoz, hogy ez a kommunikáció, egy virtuális hálózat alhálózatának létrehozása és delegált engedélyek vannak rendelve. Virtuális csomópontok csak dolgozhat használatával létrehozott AKS-fürtök *speciális* hálózati. Alapértelmezés szerint az AKS-fürtök létrehozása a *alapszintű* hálózati. Ez a cikk bemutatja, hogyan hozzon létre egy virtuális hálózatot és alhálózatot, majd a speciális hálózati használó egy AKS-fürt üzembe helyezése.
+
+Ha korábban nem használta az ACI, regisztrálja a szolgáltatót az előfizetés. Az ACI szolgáltató regisztrációs használatával állapotát ellenőrizheti a [az identitásszolgáltató-listája] [ az-provider-list] parancsot, az alábbi példában látható módon:
+
+```azurecli-interactive
+az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
+```
+
+A *Microsoft.ContainerInstance* szolgáltató kell jelentse *regisztrált*, ahogy az alábbi példa kimenetében látható:
+
+```
+Namespace                    RegistrationState
+---------------------------  -------------------
+Microsoft.ContainerInstance  Registered
+```
+
+Ha a szolgáltató állapota *NotRegistered*, regisztrálja a szolgáltatót, használja a [szolgáltató regisztrálása az] [az-szolgáltató-register], az alábbi példában látható módon:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerInstance
+```
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
@@ -55,9 +79,12 @@ Az a **alapjai** lapon, a következő beállításokat:
 
 - *A PROJECT DETAILS*: Válassza ki az Azure-előfizetéssel, majd válassza ki vagy hozzon létre egy Azure-erőforráscsoportot, mint például *myResourceGroup*. Adja meg a **Kubernetes-fürt nevét**, például *myAKSCluster*.
 - *FÜRT RÉSZLETES ADATAI*: Válassza ki a régió, a Kubernetes-verziót és a DNS-név előtagja az AKS-fürtöt.
-- *MÉRETEZÉSI CSOPORT*: Válassza ki az AKS-csomópontok Virtuálisgép-méretét. A virtuálisgép-méret az AKS-fürt telepítését követően **nem** módosítható.
-    - Adja meg a fürtre telepítendő csomópontok számát. Ez a cikk beállítása **csomópontok száma** való *1*. A csomópontok száma a fürt telepítése után is **módosítható**.
-    - A **virtuális csomópontok**válassza *engedélyezve*.
+- *ELSŐDLEGES CSOMÓPONTKÉSZLETEK*: Válassza ki az AKS-csomópontok Virtuálisgép-méretét. A virtuálisgép-méret az AKS-fürt telepítését követően **nem** módosítható.
+     - Adja meg a fürtre telepítendő csomópontok számát. Ez a cikk beállítása **csomópontok száma** való *1*. A csomópontok száma a fürt telepítése után is **módosítható**.
+
+Kattintson a **tovább: Méretezési csoport**.
+
+Az a **méretezési** lapon jelölje be *engedélyezve* alatt **virtuális csomópontok**.
 
 ![AKS-fürt létrehozása és engedélyezése a virtuális csomópontok](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
@@ -215,3 +242,4 @@ Virtuális csomópontok használata egy méretezési megoldás az aks-ben egyik 
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
 [acr-aks-secrets]: ../container-registry/container-registry-auth-aks.md#access-with-kubernetes-secret
+[az-provider-list]: /cli/azure/provider#az-provider-list

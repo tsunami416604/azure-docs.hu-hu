@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d58c019cf3d801ce938a4ca6eca70b1606bf4ff6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 644054960e12979c231bbf50a5979bc12d343f89
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415854"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694767"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Az Azure AD jelszóvédelem a Windows Server Active Directory kényszerítése
 
-Az Azure AD jelszóvédelem funkciója, amely növeli a szervezeten belüli jelszóházirendeket. A helyszíni üzembe helyezés jelszavas védelem is a globális és egyéni le van tiltva – jelszó listák az Azure ad-ben tárolt használ. Az azonos ellenőrzi a helyszíni, az Azure AD a felhőalapú módosításokat végez el.
+Az Azure AD jelszóvédelem funkciója, amely növeli a szervezeten belüli jelszóházirendeket. A helyszíni üzembe helyezés a jelszavas védelem is a globális és egyéni le van tiltva – jelszó listák az Azure ad-ben tárolt használ. Az azonos ellenőrzi a helyszíni, az Azure AD a felhőalapú módosításokat végez el.
 
 ## <a name="design-principles"></a>Tervezési alapelvek
 

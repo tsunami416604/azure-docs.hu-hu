@@ -1,10 +1,10 @@
 ---
-title: Az Azure security management és a teljesítményfigyelés áttekintése |} A Microsoft Docs
+title: Felügyeleti és biztonsági funkciókat – Microsoft Azure monitorozási |} A Microsoft Docs
 description: Ez a cikk az Azure által biztosított, ezzel elősegítve az a felügyeleti biztonsági funkciók és szolgáltatások áttekintése és az Azure cloud services és virtual machines figyelését.
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: StevenPo
+manager: barbkess
 editor: TomSh
 ms.assetid: 5cf2827b-6cd3-434d-9100-d7411f7ed424
 ms.service: security
@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: f79f94c277b02a9f377b90bf74763ac617f65c16
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9f741f578ea44e27814ddfcde2fadc44a0e90536
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60597934"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872074"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Az Azure security management és a teljesítményfigyelés áttekintése
+Ez a cikk az Azure által biztosított, ezzel elősegítve az a felügyeleti biztonsági funkciók és szolgáltatások áttekintése és az Azure cloud services és virtual machines figyelését.
 
-Azure biztonsági mechanizmusai, ezzel elősegítve az a felügyeleti és monitorozási az Azure cloud services és a virtuális gépek (VM). Ez a cikk ezek az alapvető biztonsági funkciók és szolgáltatások áttekintést nyújt. Hivatkozások, amelyek az egyes részletek adjon, hogy további cikkek állnak rendelkezésre.
+## <a name="shared-responsibility"></a>Közös felelősség
 
 A Microsoft cloud Services szolgáltatások biztonságát partneri és a egy Ön és a Microsoft között megosztott felelősségre. A Microsoft felelős az Azure platform és az adatközpontok fizikai biztonsága (védelmet biztosítanak például zárolt jelvény-bejegyzés ajtók kerítések és őrök használatával). Az Azure biztosít erős szintű felhőbeli biztonsági a szoftver rétegben, amely megfelel vevői biztonsági, adatvédelmi és megfelelőségi igényeit.
 
@@ -64,7 +65,7 @@ További információ:
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Az Azure multi-factor Authentication a egynél több ellenőrzési módszer használatát igénylő hitelesítési módszer. Hozzáadja a kritikus fontosságú második biztonsági réteget felhasználói bejelentkezéseket és tranzakciókat. 
+Az Azure multi-factor Authentication a egynél több ellenőrzési módszer használatát igénylő hitelesítési módszer. Hozzáadja a kritikus fontosságú második biztonsági réteget felhasználói bejelentkezéseket és tranzakciókat.
 
 Multi-factor Authentication hitelesítés révén biztonságosabb a hozzáférés az adatokhoz és alkalmazásokhoz, miközben a felhasználó igény szerint egy egyszerű bejelentkezési folyamat. Ellenőrzési lehetőségek (telefonhívás, szöveges üzenet vagy mobilalkalmazás értesítési vagy ellenőrző kódot) és a harmadik féltől származó OATH jogkivonatokkal erős hitelesítést biztosít.
 
@@ -80,7 +81,7 @@ Az Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a M
 
 * Bármely (IP VPN) hálózat.
 * A point-to-point Ethernet network.
-* Virtuális cross-kapcsolatot egy közös elhelyezési létesítményben egy kapcsolatszolgáltatón keresztül. 
+* Virtuális cross-kapcsolatot egy közös elhelyezési létesítményben egy kapcsolatszolgáltatón keresztül.
 
 Az ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. Az interneten több megbízhatósági megbízhatóbbak, gyorsabbak, kisebb a késésük, és biztonságosabbak a szokásos internetkapcsolatoknál is kínálnak.
 
@@ -99,7 +100,7 @@ További információ:
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-Néha felhasználóknak el kell végezni a privilegizált műveleteket az Azure-erőforrások vagy más SaaS-alkalmazásokhoz. Ez gyakran azt jelenti, hogy szervezetek számára tegye lehetővé számukra állandó emelt szintű hozzáférés az Azure Active Directoryban (Azure AD). 
+Néha felhasználóknak el kell végezni a privilegizált műveleteket az Azure-erőforrások vagy más SaaS-alkalmazásokhoz. Ez gyakran azt jelenti, hogy szervezetek számára tegye lehetővé számukra állandó emelt szintű hozzáférés az Azure Active Directoryban (Azure AD).
 
 Egy egyre bővülő biztonsági kockázatot jelent a felhőben üzemeltetett erőforrásokhoz, mert a szervezetek nem elég figyelheti, mit ezek a felhasználók általi használatát az emelt szintű hozzáférés. Ha emelt szintű hozzáféréssel rendelkező felhasználói fiók biztonsága sérül, ezenkívül egy megsértésének hatással lehet a szervezet teljes felhőalapú biztonsági. Az Azure AD Privileged Identity Management segít oldja meg a kockázat csökkentésének, a jogosultságok expozíciós idejének csökkentéséhez és a használati betekintést növelésével.  
 
@@ -150,4 +151,3 @@ Intelligent Security Graph Microsoft termék- és a valós idejű fenyegetésvé
 
 <!--Image references-->
 [1]: ./media/security-management-and-monitoring-overview/shared-responsibility.png
-

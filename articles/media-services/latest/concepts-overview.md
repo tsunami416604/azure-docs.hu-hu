@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services alapfogalmaiért – Azure |} A Microsoft Docs
-description: Ez a témakör rövid áttekintést nyújt az Azure Media Services – alapelvek, és hivatkozásokat tartalmaz részleteket.
+title: Az Azure Media Services fontos szakszavai és koncepciói – Azure |} A Microsoft Docs
+description: Ez a témakör az Azure Media Services szakkifejezéseit és alapfogalmait ismertető rövid áttekintést, és hivatkozásokat ad a további részletekért.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,20 +12,38 @@ ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 74a4ee03562963c8a50159f085e4b76b6d461ed9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: feba7d53f196f6675aca965218046df67bbef81d
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103849"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867062"
 ---
 # <a name="media-services-concepts"></a>A Media Services – alapelvek
 
-Ez a témakör rövid áttekintést nyújt az Azure Media Services – alapelvek és cikkekre mutató hivatkozások magyarázatra van szüksége a Media Services v3 kapcsolatos fogalmakat és funkciókat biztosít. Az alábbi témakörök ismertetik az alapvető fogalmakkal fejlesztés megkezdése előtt át kell tekinteni.
+Ez a témakör rövid áttekintést nyújt az Azure Media Services szakkifejezéseit és alapfogalmait ismertető. A cikk a magyarázatra van szüksége a Media Services v3 kapcsolatos fogalmakat és funkciókat tartalmazó cikkek mutató hivatkozásokat is tartalmaz. 
+
+Az alábbi témakörök ismertetik az alapvető fogalmakkal fejlesztés megkezdése előtt át kell tekinteni.
 
 > [!NOTE]
 > Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](developers-guide.md).
 
+## <a name="terminology"></a>Terminológia
+
+Ez a szakasz bemutatja, hogyan néhány általános szakági kifejezéseket leképezése a Media Services v3 API-nak.
+
+### <a name="live-event"></a>Élő esemény
+
+A **élő esemény** egy olyan folyamatot jelent fürtjét, átkódolása (opcionálisan), és élő adatfolyamok, a videó, hang-, és valós idejű metaadatainak csomagolására.
+
+A Media Services v2 API-kon keresztül, migráló ügyfelek a **élő esemény** váltja fel a **csatorna** entitás a v2-ben. További információkért lásd: [v2-ről a v3-as](migrate-from-v2-to-v3.md).
+
+### <a name="streaming-endpoint-packaging-and-origin"></a>A Streamvégpont (csomagolás és a forrás)
+
+A **folyamatos átviteli végponton** egy dinamikus (just-in-time) csomagolás és a forrás szolgáltatás, amely az élő és igény szerinti tartalmat továbbít közvetlenül az ügyfél lejátszóalkalmazásába, a gyakori streamelési protokollok (HLS egyikével jelöli vagy DASH). Emellett a **folyamatos átviteli végponton** iparágvezető DRMs dinamikus (just-in-time) titkosítást nyújt.
+
+Az iparági médialejátszás, ez a szolgáltatás gyakran nevezik egy **Packager** vagy **forrás**.  Ezt a funkciót az iparág más gyakori használati JITP (Just-a-time-packager) vagy a JITE (Just-a-idő-titkosítás) tartalmaznak. 
+ 
 ## <a name="cloud-upload-and-storage"></a>Felhőbe történő feltöltés és tárolás
 
 A Media Services-fiók létrehozása és a digitális fájlok feltöltése kell kezelése, titkosítása, kódolás, elemzése és az Azure-ban médiafolyam indításához **eszközök**.
@@ -52,7 +70,7 @@ A video- és fájlok elemzéséhez, is szeretne létrehozni **alakítja át az**
 
 ## <a name="packaging-delivery-protection"></a>Csomagolás, teljesítés, védelem
 
-Miután a tartalom van kódolva, igénybe veheti a **dinamikus csomagolási**. **Streamvégpont** a médiatartalmak eredményjelző ügyfél lejátszók Media Services dinamikus csomagolási szolgáltatás. A videók a kimeneti adategység elérhetővé tenni az ügyfelek számára a lejátszás, létre kell hoznia egy **Streamelési lokátor** majd kialakítható a streamelési URL-címek. 
+Miután a tartalom van kódolva, igénybe veheti a **dinamikus csomagolási**. A Media Services szolgáltatásban egy **folyamatos átviteli végponton**  /forrása: médiatartalmak továbbítására az ügyfél a játékosok használt dinamikus csomagolási szolgáltatás. A videók a kimeneti adategység elérhetővé tenni az ügyfelek számára a lejátszás, létre kell hoznia egy **Streamelési lokátor** majd kialakítható a streamelési URL-címek. 
 
 Létrehozásakor a **Streamelési lokátor**, mellett az eszköz nevét, meg kell adnia **Streamelési házirend**. **Adatfolyam-házirendek** adatfolyam-továbbítási protokollok meghatározásához és a titkosítási beállítások (ha vannak) – a **Streamelési Lokátorok**.
 

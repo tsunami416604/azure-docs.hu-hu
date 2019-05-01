@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2019
+ms.date: 04/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: dfe2a103005cc48860c7bbeb3036afe94ff3a559
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4e94bc7686203bfbcd93200e5a1fb65b43ceeb91
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60239131"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64698492"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -222,6 +222,22 @@ Ha a webalkalmazás áthelyezése _előfizetésekben_, az alábbi korlátozások
 - Az erőforráscsoportban lévő összes App Service-erőforrások együtt lehessen áthelyezni.
 - App Service-erőforrások csak akkor helyezhető el az erőforráscsoportból, amelyben eredetileg létrehozták őket. Ha egy App Service erőforrás már nem az eredeti erőforráscsoportba, azt kell vissza kell helyezni az eredeti erőforráscsoport először, és ezután áthelyezhető előfizetések között.
 
+Ha nem emlékszik az eredeti erőforráscsoportot, megtalálhatja diagnosztikai keresztül. Válassza ki a webalkalmazás **diagnosztizálása és a problémák megoldásához**. Ezután válassza ki **konfigurációs és felügyeleti**.
+
+![Válassza ki a diagnosztika](./media/resource-group-move-resources/select-diagnostics.png)
+
+Válassza ki **áttelepítési lehetőségek**.
+
+![Válassza ki az áttelepítési lehetőségek](./media/resource-group-move-resources/select-migration.png)
+
+Válassza ki a webes alkalmazás áthelyezése szükséges lépésekről beállítását.
+
+![Válassza ki a javasolt lépések](./media/resource-group-move-resources/recommended-steps.png)
+
+Láthatja, hogy az erőforrások áthelyezése előtt elvégzendő műveleteket. Az információ tartalmazza a webalkalmazás az eredeti erőforráscsoportot.
+
+![Javaslatok](./media/resource-group-move-resources/recommendations.png)
+
 ### <a name="app-service-certificate-limitations"></a>App Service-tanúsítvány korlátozások
 
 Az App Service-tanúsítvány áthelyezheti egy új erőforráscsoportot vagy előfizetést. Ha az App Service-tanúsítványt egy webalkalmazáshoz kötött, előtt az erőforrások áthelyezése új előfizetésre kell végeznie néhány lépést. Törölje az erőforrások áthelyezése előtti az SSL-kötés és a privát tanúsítványt a webalkalmazásból. Az App Service-tanúsítvány törlése, nem kell az web app alkalmazásban csak a privát tanúsítványt.
@@ -251,7 +267,7 @@ Ha az erőforrások áthelyezése új előfizetésre, a következő korlátozás
 * A célként megadott előfizetés nem kell klasszikus erőforrásokat.
 * Az áthelyezés csak igényelni lehet klasszikus áthelyezését a külön REST API-n keresztül. A standard szintű Resource Manager áthelyezés parancsok nem működnek, ha a klasszikus erőforrások áthelyezése új előfizetésre.
 
-Klasszikus erőforrások áthelyezése új előfizetést, használja a REST-műveletek, konkrétan a klasszikus erőforrások. A REST használata, hajtsa végre az alábbi lépéseket:
+Klasszikus erőforrások áthelyezése új előfizetést, használja a REST-műveletek, konkrétan a klasszikus erőforrások. A REST használata, hajtsa végre a következő lépéseket:
 
 1. Ellenőrizze, hogy ha a forrás-előfizetés részt vehetnek-e egy előfizetések közötti áthelyezés. Használja a következő műveletet:
 

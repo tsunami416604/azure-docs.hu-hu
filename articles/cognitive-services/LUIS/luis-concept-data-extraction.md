@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 35f1521884de3a4a0971b6e1c00f92a9094a8550
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3bad247263af09462a44e04329e7f911afa3ad5c
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60812805"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867715"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Adatok kinyerése az utterance (kifejezés) SMS-t a szándékok és entitások felismerésére
 A LUIS teszi lehetővé a felhasználó a természetes nyelvű utterances lekérni adatait. Az adatokat oly módon, hogy használat szerint a program, alkalmazás vagy csevegőrobot műveletet ki kell olvasni. A következő szakaszban megtudhatja, milyen adatokat küld vissza, a szándékok és entitások példákkal a JSON.
@@ -441,7 +441,7 @@ Ha az egyszerű entitás használja, ügyeljen arra, hogy példákkal szemlélte
 
 ### <a name="names-of-places"></a>Helyek nevei
 
-Hely neve beállítása és ismert, például a város, megyék, államok, megyék és országok. Az előre összeállított entitások használata **[geographyV2](luis-reference-prebuilt-geographyv2.md)** kibontani a helyre vonatkozó adatokat.
+Hely neve beállítása és ismert, például a város, megyék, államok, megyék és országok/régiók. Az előre összeállított entitások használata **[geographyV2](luis-reference-prebuilt-geographyv2.md)** kibontani a helyre vonatkozó adatokat.
 
 ### <a name="new-and-emerging-names"></a>Új és újonnan megjelenő neve
 

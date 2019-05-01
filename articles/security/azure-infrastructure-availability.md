@@ -1,6 +1,6 @@
 ---
-title: Azure-infrastruktúra rendelkezésre állása
-description: A cikk ismerteti az ügyfelek adataival a legnagyobb rendelkezésre állást biztosít a redundancia szintjét.
+title: Azure-infrastruktúra rendelkezésre állása – az Azure security
+description: Ez a cikk a Microsoft célja az Azure-infrastruktúra biztonságát, és adja meg a maximális rendelkezésre az ügyfelek adataival kapcsolatos információkat nyújt.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/06/2018
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: a9a55f61f032512be032897d5f21ece405844634
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d13c79152afe00cb326f69b523e9fd7f0c3550b0
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60587190"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872607"
 ---
 # <a name="azure-infrastructure-availability"></a>Azure-infrastruktúra rendelkezésre állása
-Az Azure robusztus rendelkezésre állás, a virtualizálási technológia érhető el a széles körű redundancia alapján biztosít. Az Azure számos szintű ügyfelek adatok maximális rendelkezésre állást biztosít redundanciát biztosít.
+Ez a cikk a Microsoft célja az Azure-infrastruktúra biztonságát, és adja meg a maximális rendelkezésre az ügyfelek adataival kapcsolatos információkat nyújt. Az Azure robusztus rendelkezésre állás, a virtualizálási technológia érhető el a széles körű redundancia alapján biztosít.
 
 ## <a name="temporary-outages-and-natural-disaster"></a>Átmeneti kimaradásainak és természeti katasztrófa esetére
 A Microsoft felhő-infrastruktúra és a műveleti csapat tervez, épít, működik, és javítja a felhőalapú infrastruktúra biztonságát. Ez a csapat biztosítja, hogy az Azure-infrastruktúra elkötelezett a magas rendelkezésre állás és megbízhatóság, nagy hatékonyságú és intelligens méretezhetőség. A csapat biztosít egy biztonságos, privát és megbízható felhő.

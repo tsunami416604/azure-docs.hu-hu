@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 786ace2ef88fc4b94372041cbdd5bc16586b5193
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 064c3e5fb7a65a7495c393db893e784548075daf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60298902"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708215"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Gyors útmutató: Jelentkezzen be a Microsoft ASP.NET-webalkalmazás hozzáadása
 
@@ -75,6 +75,7 @@ Válassza a **Hitelesítés** menüt, állítsa be az **Azonosító jogkivonatok
 1. Csomagolja ki a zip-fájlt egy helyi mappába a gyökérmappa közelében (például: **C:\Azure-Samples**)
 1. Nyissa meg a megoldást (AppModelv2-WebApp-OpenIDConnect-DotNet.sln) a Visual Studióban.
 1. A Visual Studio verziójától függően szükség lehet a jobb gombbal a projektre a `AppModelv2-WebApp-OpenIDConnect-DotNet` és **visszaállítása NuGet-csomagok**
+1. Nyissa meg a Package Manager Console (Nézet -> Other Windows -> Csomagkezelő konzol) és futtatása `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
 1. Szerkessze a **Web.config** fájlt, és cserélje le a `ClientId` és `Tenant` paramétereket az alábbiakkal:
 
     ```xml

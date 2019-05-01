@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 97c44c9285ec7a29827361111599db37bc6a86f3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0612770c823e30578e7f4675878fc4ce2aee2bd9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59282576"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702996"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>A QnA Maker Tudásbázis megbízhatósági pontszám
 Ha egy felhasználó lekérdezése Tudásbázis van, a QnA Maker azokra adott válaszokat, és a egy magabiztossági pontszámot ad vissza. Ezt az értéket, hogy a válasz-e a megfelelő egyezik a megadott felhasználói lekérdezés magabiztosan jelzi. 
@@ -46,13 +46,13 @@ Az alábbi táblázat azt jelzi, hogy egy adott pontszám kapcsolódó tipikus m
 |0|Nincs egyezés, így a válasz nem ad vissza.|"A szolgáltatás mennyibe"|
 
 ## <a name="choose-a-score-threshold"></a>Válassza ki a pontszám küszöbértéket
-A fenti táblázatban a legtöbb Tudásbázis mutatja, amelyek várhatóan pontszámokat. Azonban mivel minden KB különböző, és rendelkezik a különböző típusú szavak, leképezések és célok – javasoljuk, teszteléséhez, és válassza ki a küszöbérték, amely a legjobban működik az Ön számára. Az alapértelmezett és ajánlott küszöbértéket, amely a legtöbb Tudásbázis működnie kell az **50**.
+A fenti táblázatban a legtöbb Tudásbázis mutatja, amelyek várhatóan pontszámokat. Azonban mivel minden KB különböző, és rendelkezik a különböző típusú szavak, leképezések és célok – javasoljuk, teszteléséhez, és válassza ki a küszöbérték, amely a legjobban működik az Ön számára. Alapértelmezés szerint a küszöbérték értéke 0, így minden lehetséges választ adja vissza. Az ajánlott küszöbértéket, hogy működik a legtöbb Tudásbázis van **50**.
 
 A küszöbérték kiválasztásakor tartsa szem előtt a pontosság és lefedettség közötti egyensúly, és a Teljesítménybeállítások az igényei alapján küszöbértékét.
 
 - Ha **pontossága** (vagy a pontosság) tartalomtovábbításának fontosabb, akkor növelje a küszöbértéket. Így minden alkalommal, amikor visszatér a választ, csak egy sokkal több CONFIDENT megkülönbözteti a kis, és sokkal valószínűleg a válasz felhasználókat keres. Ebben az esetben előfordulhat, hogy végül hagyja a további kérdések, megválaszolatlan be. *Például:* a küszöbérték győződjön meg arról, ha **70**, elkerülheti a figyelmét néhány nem egyértelmű példák kedvelések, "Mi mentse és betanítunk?".
 
-- Ha **lefedettség** (vagy visszaírási) több fontos - és megválaszolásában, mint sok kérdésre, lehetséges, még akkor is, ha a felhasználó kérdés – csak részleges kapcsolat majd CSÖKKENTHETI a küszöbértéket. Ez azt jelenti, hogy ott lehet további olyan esetekben, ahol a válasz nem felel meg a felhasználó a tényleges lekérdezés, de néhány egyéb némileg kapcsolódó választ ad. *Például:* a küszöbérték győződjön meg arról, ha **30**, előfordulhat, hogy engedélyezi a hasonlóan, a fenti példa a válasz nem nagyon kapcsolódó válaszokat, lekérdezések, például a "hol módosítható a KB-os?"
+- Ha **lefedettség** (vagy visszaírási) több fontos - és megválaszolásában, mint sok kérdésre, lehetséges, még akkor is, ha a felhasználó kérdés – csak részleges kapcsolat majd CSÖKKENTHETI a küszöbértéket. Ez azt jelenti, hogy ott lehet további olyan esetekben, ahol a válasz nem felel meg a felhasználó a tényleges lekérdezés, de néhány egyéb némileg kapcsolódó választ ad. *Például:* a küszöbérték győződjön meg arról, ha **30**, válaszokat előfordulhat, hogy engedélyezi a lekérdezések, például a "Hol tudom szerkeszteni a KB-os?"
 
 > [!NOTE]
 > A QnA Maker újabb verzióit közé tartozik a pontozási logikát, és hatással lehetnek a küszöbértéket. Frissíti a szolgáltatás bármikor ügyeljen arra, hogy tesztelése és finomhangolása a küszöbértéket, ha szükséges. Ellenőrizheti a kérdések és válaszok verziója [Itt](https://www.qnamaker.ai/UserSettings), és tekintse meg a legújabb frissítéseinek [Itt](../How-To/troubleshooting-runtime.md).

@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: aaa72d3a29fee28ede336a2be350015bf3cbc9b4
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 6e88d8f1c16e7c73f5c62325e41701e6f0ea97fb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565528"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728086"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Létrehozhat és konfigurálhat egy saját üzemeltetésű integrációs modul
 Az integrációs modul (IR) a számítási infrastruktúra, amellyel Azure Data Factory adatintegrációs képességeket biztosítja különböző hálózati környezetekben. Integrációs modul kapcsolatos részletekért lásd: [Integration runtime áttekintése](concepts-integration-runtime.md).
@@ -40,7 +40,7 @@ Ez a dokumentum ismerteti, hogyan, létrehozhat és konfigurálhat egy saját ü
 
     ```powershell
 
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName  
+    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName  
 
     ```
 
@@ -63,7 +63,7 @@ A következő magas szintű adatok folyamat lépéseit egy saját üzemeltetés�
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>Egy saját üzemeltetésű integrációs modul használatának szempontjai
 
 - Saját üzemeltetésű integrációs több helyszíni adatforrás is használható. Egy egyetlen saját üzemeltetésű integrációs modul az Azure Active Directory ugyanazon a bérlőn belül egy másik data factoryvel is megoszthatók. További információkért lásd: [megosztása egy saját üzemeltetésű integrációs modul](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories).
-- Használhat egy saját üzemeltetésű integrációs modul telepítve egyetlen gépen csak egy példánya. Ha két adat-előállítók kíván elérni a helyszíni adatforrások, szeretné-e a két helyszíni számítógépekre egyes mindkét az adat-előállítók a saját üzemeltetésű integrációs modul telepítése vagy használata az [saját üzemeltetésű integrációs modul megosztása szolgáltatás](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories)megosztani egy másik Data Factory egy saját üzemeltetésű integrációs modult.  
+- Használhat egy saját üzemeltetésű integrációs modul telepítve egyetlen gépen csak egy példánya. Ha két adat-előállítók, amelyet a helyszíni adatforrások, vagy el kell használni a [saját üzemeltetésű integrációs modul megosztása szolgáltatás](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories) megosztásához a saját üzemeltetésű integrációs modult, vagy a saját üzemeltetésű integrációs modul telepítése a két a helyszíni számítógépek, egy az egyes adat-előállítók.  
 - A saját üzemeltetésű integrációs modul nem kell ugyanarra a gépre, az adatforrással kell. Azonban a saját üzemeltetésű integrációs modul kellene csökkenti a közelebb az adatforrás az idő a saját üzemeltetésű integrációs modul kapcsolódni az adatforráshoz. Javasoljuk, hogy telepítse a saját üzemeltetésű integrációs modul olyan számítógépen, amelyen eltér a gazdagép a helyszíni adatforrás. Ha a saját üzemeltetésű integrációs modul és az adatforrás különböző gépeken vannak, a saját üzemeltetésű integrációs modul befolyásolják az adatforrás erőforrás esetén.
 - Az azonos helyszíni adatforráshoz csatlakozó különböző gépeken több saját üzemeltetésű integrációs modulok is rendelkezhet. Például előfordulhat, hogy két saját üzemeltetésű integrációs modulok, amely két adat-előállítók szolgálnak, de ugyanazon a helyszíni adatforrás regisztrálva van a mindkét az adat-előállítók.
 - Ha már van egy átjáró telepítve a számítógépen a Power bi-ban Ez a forgatókönyv kiszolgálására, telepítse egy külön saját üzemeltetésű integrációs modul az Azure Data Factory egy másik gépen.
