@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 4fc4175c03baa4ddb81507dd4001fcdbe7c7058b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: eebf9ef63a8622c4cc431322b786fdf30f6352fe
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61458723"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925817"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Az Azure Notification Hubs elvetett értesítések diagnosztizálása
 
@@ -123,7 +123,7 @@ Az alábbiakban elérési útjait elvetett értesítések a Notification Hubs a 
 
 #### <a name="push-notification-service-developer-portal"></a>Leküldéses értesítési szolgáltatás fejlesztői portálon ####
 
-Ellenőrizze a hitelesítő adatokat a megfelelő leküldéses értesítési szolgáltatás fejlesztői portálon (APNs, FCM, Windows Notification Service, és így tovább). További információkért lásd: [oktatóanyag: Értesítések küldése az Azure Notification Hubs univerzális Windows-Platformos alkalmazások](https://docs.microsoft.com/en-us/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
+Ellenőrizze a hitelesítő adatokat a megfelelő leküldéses értesítési szolgáltatás fejlesztői portálon (APNs, FCM, Windows Notification Service, és így tovább). További információkért lásd: [oktatóanyag: Értesítések küldése az Azure Notification Hubs univerzális Windows-Platformos alkalmazások](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification).
 
 #### <a name="azure-portal"></a>Azure Portal ####
 
@@ -180,7 +180,7 @@ A Visual Studióból tesztértesítések is küldhet.
 
 A Notification Hubs Visual Studio Server Explorerben való használatával kapcsolatos további információkért tanulmányozza a következő cikkeket:
 
-* [A notification hubs eszközregisztrációk megtekintése](https://docs.microsoft.com/en-us/previous-versions/windows/apps/dn792122(v=win.10))
+* [A notification hubs eszközregisztrációk megtekintése](https://docs.microsoft.com/previous-versions/windows/apps/dn792122(v=win.10))
 * [Részletes bemutatása: Visual Studio 2013 Update 2 RC és az Azure SDK 2.3-as verzióját]
 * [A Visual Studio 2013 Update 3 és az Azure SDK 2.4 kibocsátási bejelentése]
 
@@ -261,7 +261,7 @@ A portálon az összes tevékenység gyors áttekintést kaphat az értesítési
 
 #### <a name="programmatic-access"></a>Szoftveres hozzáférés ####
 
-Programozott hozzáféréssel kapcsolatos további információkért lásd: [programozás alapú hozzáférést](https://docs.microsoft.com/en-us/previous-versions/azure/azure-services/dn458823(v=azure.100)).
+Programozott hozzáféréssel kapcsolatos további információkért lásd: [programozás alapú hozzáférést](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100)).
 
 > [!NOTE]
 > Számos telemetriát funkcióiról, exportálása, például és importálása a regisztrációk és API-k, telemetriai adatok elérését csak a Standard szintű szolgáltatáscsomagban elérhető. Ha használja ezeket a funkciókat az ingyenes vagy alapszintű szolgáltatásszint, kap egy kivételre vonatkozó üzenet, ha az SDK-t használja. Hiba történt a HTTP 403 (tiltott) kap, közvetlenül a REST API-k az a funkciók használatakor.

@@ -2,26 +2,19 @@
 title: Piaci megjelenést szolgáltatás – olyan ajánlati gyakorlati tanácsok |} Az Azure
 description: Piaci megjelenést Services – Ez a szakasz egy tőzsdei ajánlott eljárásokat ismertetjük
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: e5db2f340917705ec29f7b6db4de40914c66efcd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c06a338ec041c83588c3ee5126795b8c445ef469
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57863933"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937988"
 ---
-# <a name="offer-listing-best-practices"></a>Ajánlat, listázás, ajánlott eljárások
+# <a name="offer-listing-best-practices"></a>Ajánlatlistákra vonatkozó ajánlott eljárások
 
 Ebben a szakaszban a táblák létrehozásához és a piactér kínál vonzó javaslatokat. Írhat, és konfigurálja a marketinganyagok, nyissa meg a [Cloud Partner Portalon](https://cloudpartner.azure.com/#insights). 
 
@@ -35,7 +28,7 @@ Ebben a szakaszban a táblák létrehozásához és a piactér kínál vonzó ja
 | Storefront beállítás | Ajánlott eljárás |
 |:--- |:--- |  
 | Iparág: AppSource alkalmazások, és csak a tanácsadási szolgáltatások | Válassza ki a iparágakban, az ajánlat címek iparág-specifikus igényeinek megfelelően: <ul><li> Hívja meg az ajánlat leírása az iparág-specifikus képességek.</li> </ul> **Megjegyzés**: A lehetőségek maximális száma ajánlat típus szerint változik, és a jelzett a [Cloud Partner Portalon](https://cloudpartner.azure.com/#insights). |
-| Kategóriák | Válassza ki a kategóriát, amely a leginkább az előfizetési csomag keretében igazítása:<br> <ul> <li> Óvatosan, választható a kategóriák, mert az ügyfelek ezek segítségével keresse meg a megfelelő alkalmazásokat. </li> <li> Győződjön meg arról, hogyan az ajánlat támogatja a kategóriára vonatkozó igények ajánlat leírása hívásához. </li> </ul> **Megjegyzés**: A lehetőségek maximális száma ajánlat típus szerint változik, és a jelzett a [Cloud Partner Portalon](https://cloudpartner.azure.com/#insights). |
+| Categories | Válassza ki a kategóriát, amely a leginkább az előfizetési csomag keretében igazítása:<br> <ul> <li> Óvatosan, választható a kategóriák, mert az ügyfelek ezek segítségével keresse meg a megfelelő alkalmazásokat. </li> <li> Győződjön meg arról, hogyan az ajánlat támogatja a kategóriára vonatkozó igények ajánlat leírása hívásához. </li> </ul> **Megjegyzés**: A lehetőségek maximális száma ajánlat típus szerint változik, és a jelzett a [Cloud Partner Portalon](https://cloudpartner.azure.com/#insights). |
 | Az alkalmazás (max. 3)-mel együttműködő termékek: Csak az AppSource alkalmazások | További termékek és technológiák, amelyek a megoldás használ, vagy kiterjeszti a listában. Például az Azure IoT Hub vagy az Azure Machine Learning. |
 | A keresési kulcsszavak (max. 3) | A keresési kulcsszavak segítségével az üzleti felhasználók kereséséhez, keresse meg az ajánlat <ul> <li> az Azure Marketplace-en </li> <li> az appsource-on </li> <li> keresőmotor használata </li> </ul> Ezek a keresések megjelennek a felsorolását, kell tennie: <ul> <li> Az ajánlatban; az első három keresési kulcsszavakat azonosítása </li> <li> Építse be a keresési kulcsszavakat a összefoglaló ajánlat és a leírás; </li> <li> a kulcsszavak listája. </li> </ul> |
 

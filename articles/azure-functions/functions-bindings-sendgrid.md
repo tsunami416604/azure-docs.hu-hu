@@ -288,7 +288,7 @@ Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshe
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|forrás:|n/a|A feladó e-mail-cím közötti összes funkciót.| 
+|from|n/a|A feladó e-mail-cím közötti összes funkciót.| 
 
 
 ## <a name="next-steps"></a>További lépések

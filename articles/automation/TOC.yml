@@ -59,7 +59,7 @@
     - name: Változások követése
       items:
         - name: Változáskövetés áttekintése
-          href: automation-change-tracking.md
+          href: change-tracking.md
           displayName: 'wildcard, recursion, environment variables, registry'
         - name: A nyomon követett fájlok tartalmának megjelenítése
           href: change-tracking-file-contents.md

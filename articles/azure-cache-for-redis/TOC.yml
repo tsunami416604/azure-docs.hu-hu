@@ -5,6 +5,7 @@
     - name: Az Azure Cache for Redis névjegye
       href: cache-overview.md
 - name: Gyors útmutatók
+  expanded: true
   items:
     - name: ASP.NET-alkalmazás létrehozása
       href: cache-web-app-howto.md

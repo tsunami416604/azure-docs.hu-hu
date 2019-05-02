@@ -176,6 +176,12 @@
           href: vpn-gateway-download-vpndevicescript.md
         - name: 'Minta: Minta: Cisco ASA-eszköz (IKEv2/nincs BGP)'
           href: vpn-gateway-3rdparty-device-config-cisco-asa.md
+    - name: Monitorozás és riasztások
+      items:
+        - name: Metrikákon alapuló riasztások beállítása
+          href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
+        - name: Diagnosztikai naplón alapuló riasztások beállítása
+          href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: Hibaelhárítás
       href: vpn-gateway-troubleshoot.md
       items:

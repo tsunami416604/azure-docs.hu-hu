@@ -97,6 +97,8 @@
       href: 'https://www.powershellgallery.com/packages/Az.Blueprint'
     - name: PSGallery (közösségi modul)
       href: 'https://www.powershellgallery.com/packages/Manage-AzureRMBlueprint'
+    - name: Tervfüggvények
+      href: ./reference/blueprint-functions.md
 - name: További források
   items:
     - name: GitHub – Azure Blueprints-minták

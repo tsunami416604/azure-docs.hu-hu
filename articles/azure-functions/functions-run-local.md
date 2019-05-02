@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 9db84ee23a2b2b19d05e458ff38854076a530e38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 380cd84cc5ec56fe54c12201b9c1db810ac457bf
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61022104"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875925"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -41,6 +41,9 @@ Ha másként nincs jelezve, az ebben a cikkben szereplő példák verziójára v
 ### <a name="v2"></a>Verzió 2.x
 
 Verzió 2.x-es eszközök használja az Azure Functions runtime 2.x verziója a .NET Core-alapú. Ez a verzió a platformfüggetlen .NET Core 2.x támogatja, beleértve a támogatott [Windows](#windows-npm), [macOS](#brew), és [Linux](#linux). Először telepítenie kell a .NET Core 2.x SDK.
+
+> [!IMPORTANT]
+> Ha engedélyezi a projektfájlban host.json bővítmény csomagok, nem kell telepíteni a .NET Core 2.x SDK. További információkért lásd: [helyi fejlesztés és az Azure Functions Core Tools bővítmény csomagok ](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Bővítmény-csomagok a Core Tools 2.6.1071 verzióját vagy újabb verzió szükséges.
 
 #### <a name="windows-npm"></a>Windows
 
@@ -310,6 +313,7 @@ A `host` parancs csak szükséges verzió 1.x.
 | **`--script-root --prefix`** | Itt adhatja meg, amely kell futtatni, vagy üzembe helyezett függvényalkalmazás a gyökér elérési útját. Ez szolgál, amely a projektfájlok almappáiba lefordított projektekhez. Például ha hoz létre egy C# osztálytár projektet, a host.json, local.settings.json és function.json fájlok jönnek létre a egy *legfelső szintű* elérési úttal rendelkező almappát, például `MyProject/bin/Debug/netstandard2.0`. Ebben az esetben állítsa be az előtagja, mint `--script-root MyProject/bin/Debug/netstandard2.0`. Erre a függvényalkalmazás a gyökér, ha az Azure-ban. |
 | **`--timeout -t`** | Az a funkciók gazdagép indítása, másodpercek alatt időtúllépése. Alapértelmezett: 20 másodperc.|
 | **`--useHttps`** | Kösse `https://localhost:{port}` helyett a `http://localhost:{port}`. Alapértelmezés szerint ez a beállítás a számítógép megbízható tanúsítványt hoz létre.|
+| **`--enableAuth`** | Engedélyezze a teljes hitelesítési folyamat kezelésére.|
 
 Esetében a C# hordozhatóosztálytár-projektjének (.csproj), meg kell adni a `--build` létrehozni a szalagtár .dll fájl.
 

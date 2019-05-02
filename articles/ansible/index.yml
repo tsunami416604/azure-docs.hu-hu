@@ -1,70 +1,64 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ca77662e7756d74f8f939e78af626b7f2da2a3c4
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792718"
 documentType: LandingData
 title: Ansible az Azure-ban – dokumentáció
 metadata:
-  title: Ansible az Azure-ban – dokumentáció – oktatóanyagok, minták, referenciák és forrásanyagok
-  description: Megismerheti, hogyan lehet automatizálni az Ansible segítségével a felhőalapú üzembe helyezést, a konfigurációkezelést és az alkalmazások üzembe helyezését.
+  title: 'Ansible az Azure-ban – dokumentáció – oktatóanyagok, minták, referenciák és forrásanyagok'
+  description: 'Megismerheti, hogyan lehet automatizálni az Ansible segítségével a felhőalapú üzembe helyezést, a konfigurációkezelést és az alkalmazások üzembe helyezését.'
   ms.service: azure
-  keywords: ansible, azure, devops, oktatóanyagok, minták, referencia
+  keywords: 'ansible, azure, devops, oktatóanyagok, minták, referencia'
   author: tomarchermsft
   manager: jeconnoc
   ms.author: tarcher
   ms.topic: landing-page
-  ms.date: 08/27/2018
+  ms.date: 04/22/2019
 abstract:
-  description: Az <a href="https://www.ansible.com">Ansible</a> használatával automatizálható a felhőalapú üzembe helyezés, a konfigurációkezelés és az alkalmazások üzembe helyezése.
+  description: 'Az <a href="https://www.ansible.com">Ansible</a> használatával automatizálható a felhőalapú üzembe helyezés, a konfigurációkezelés és az alkalmazások üzembe helyezése.'
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: Telepítse az Ansible szoftvert, majd használja Linux rendszerű virtuális gépek létrehozására és kezelésére az Azure-ban.
-  - type: list
-    style: icon48
+  - title: 5 perces gyors útmutatók
     items:
-    - image:
-        src: /azure/media/index/azure_dev-9.svg
-      text: Az Ansible telepítése
-      href: /azure/virtual-machines/linux/ansible-install-configure?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-    - image:
-        src: /azure/media/index/VirtualMachine.svg
-      text: Linux rendszerű virtuális gép létrehozása
-      href: /azure/virtual-machines/linux/ansible-create-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-    - image:
-        src: /azure/media/index/VirtualMachine.svg
-      text: Linux rendszerű virtuális gép kezelése
-      href: /azure/virtual-machines/linux/ansible-manage-linux-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: Megtudhatja, hogyan hozhat létre és felügyelhet Azure számítási, hálózatkezelési és tárolási infrastruktúrákat az Ansible használatával.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Telepítse az Ansible szoftvert, majd használja Linux rendszerű virtuális gépek létrehozására és kezelésére az Azure-ban.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/media/index/azure_dev-9.svg
+            text: Az Ansible telepítése
+            href: /azure/virtual-machines/linux/ansible-install-configure?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+          - image:
+              src: /azure/media/index/VirtualMachine.svg
+            text: Linux rendszerű virtuális gép konfigurálása
+            href: /azure/virtual-machines/linux/ansible-create-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+          - image:
+              src: /azure/media/index/VirtualMachine.svg
+            text: Linux rendszerű virtuális gép kezelése
+            href: /azure/virtual-machines/linux/ansible-manage-linux-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+  - title: Részletes útmutatók
     items:
-    - html: <a href="/azure/virtual-machines/linux/ansible-create-complete-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json">Linux rendszerű virtuális gép létrehozása, beleértve a virtuális hálózatot, a nyilvános IP-címet és a virtuális hálózati kártyát is.</a>
-    - html: <a href="./ansible-run-playbook-in-cloudshell">Az Ansible futtatása Bash használatával az Azure Cloud Shellben.</a>
-    - html: <a href="./ansible-manage-azure-dynamic-inventories">Az Azure-erőforrások dinamikus leltárának létrehozása és kezelése.</a>
-    - html: <a href="./ansible-create-configure-vmss">Virtuálisgép-méretezési csoportok létrehozása és kezelése az Azure-ban.</a>
-    - html: <a href="./ansible-deploy-app-vmss">Alkalmazások üzembe helyezése virtuálisgép-méretezési csoportokban az Azure-ban.</a>
-    - html: <a href="./ansible-create-configure-aks">Azure Kubernetes Service fürtök létrehozása és kezelése.</a>
-    - html: <a href="./ansible-create-configure-application-gateway">Webes forgalom kezelése Azure Application Gateway használatával.</a>
-    - html: <a href="./ansible-auto-scale-vmss">Virtuálisgép-méretezési csoport automatikus méretezése az Azure-ban Ansible használatával.</a>
-    - html: <a href="./ansible-scale-azure-web-apps">Azure App Service-webalkalmazások méretezése az Ansible használatával.</a>
-    - html: <a href="./ansible-create-configure-route-table">Azure-beli útválasztási táblázat létrehozása, módosítása vagy törlése az Ansible használatával.</a>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Megtudhatja, hogyan hozhat létre és felügyelhet Azure számítási, hálózatkezelési és tárolási infrastruktúrákat az Ansible használatával.'
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="/azure/virtual-machines/linux/ansible-create-complete-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json">Linux rendszerű virtuális gép létrehozása, beleértve a virtuális hálózatot, a nyilvános IP-címet és a virtuális hálózati kártyát is.</a>'
+          - html: <a href="./ansible-run-playbook-in-cloudshell">Az Ansible futtatása Bash használatával az Azure Cloud Shellben.</a>
+          - html: <a href="./ansible-manage-azure-dynamic-inventories">Az Azure-erőforrások dinamikus leltárának létrehozása és kezelése.</a>
+          - html: <a href="./ansible-create-configure-vmss">Virtuálisgép-méretezési csoportok létrehozása és kezelése az Azure-ban.</a>
+          - html: <a href="./ansible-deploy-app-vmss">Alkalmazások üzembe helyezése virtuálisgép-méretezési csoportokban az Azure-ban.</a>
+          - html: <a href="./ansible-create-configure-aks">Azure Kubernetes Service fürtök létrehozása és kezelése.</a>
+          - html: <a href="./ansible-create-configure-application-gateway">Webes forgalom kezelése Azure Application Gateway használatával.</a>
+          - html: <a href="./ansible-auto-scale-vmss">Virtuálisgép-méretezési csoportok automatikus méretezése az Azure-ban az Ansible használatával.</a>
+          - html: <a href="./ansible-scale-azure-web-apps">Azure App Service-webalkalmazások méretezése az Ansible használatával.</a>
+          - html: '<a href="./ansible-create-configure-route-table">Azure-beli útválasztási táblázat létrehozása, módosítása vagy törlése az Ansible használatával.</a>'
+  - title: Referencia
     items:
-    - title: Forgatókönyv-szerepkörök
-      html: <p><a href="https://galaxy.ansible.com/Azure/azure_preview_modules/">azure_preview_module</a></p>
-    - title: Kiadások és szolgáltatások
-      html: <p><a href="./ansible-matrix.md">A modulok és szerepkörök szolgáltatásmátrixa</a></p>
-    - title: Eszközök
-      html: <p><a href="https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible">Visual Studio Code-bővítmény az Ansible-höz</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Forgatókönyv-szerepkörök
+            html: '<p><a href="https://galaxy.ansible.com/Azure/azure_preview_modules/">azure_preview_module</a></p>'
+          - title: Kiadások és szolgáltatások
+            html: <p><a href="./ansible-matrix.md">A modulok és szerepkörök szolgáltatásmátrixa</a></p>
+          - title: Eszközök
+            html: '<p><a href="https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible">Visual Studio Code-bővítmény az Ansible-höz</a></p>'

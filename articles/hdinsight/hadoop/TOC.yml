@@ -136,8 +136,6 @@
         - name: Üres élcsomópontok használata
           href: ../hdinsight-apps-use-edge-node.md
           maintainContext: true
-        - name: Python-streamprogramok fejlesztése
-          href: apache-hadoop-streaming-python.md
         - name: JSON-dokumentumok feldolgozása és elemzése
           href: using-json-in-hive.md
         - name: 'Felhasználó által definiált C#-függvények használata'

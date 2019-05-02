@@ -1,6 +1,6 @@
 ---
 title: Az Azure Functions – folyamatos üzembe helyezés |} A Microsoft Docs
-description: Az Azure App Service folyamatos üzembe helyezés létesítményekben használatával elvégezhető a közzététel az Azure Functions.
+description: A folyamatos üzembe helyezés eszközökkel, az Azure App Service használatával elvégezhető a közzététel a függvényeket.
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -11,17 +11,17 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: fd8fa690c508b8bf748490668c1e9aaa811ac247
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb3f3ad3bb7b42429654ea4bf9b49f7e230db1da
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60731243"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64943881"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions – folyamatos üzembe helyezés
-Az Azure Functions megkönnyíti az alkalmazás üzembe helyezése a függvény használatával az App Service folyamatos integrációt. Functions integrálható a BitBucket, Dropbox, GitHub és az Azure DevOps. Ez lehetővé teszi egy munkafolyamatot, ahol frissíti a függvénykódot ezek integrált szolgáltatások eseményindító üzembe helyezés az Azure-bA egyikének használatával végzett. Ha most ismerkedik az Azure Functions, kezdje [Azure Functions áttekintése](functions-overview.md).
+Az Azure Functions megkönnyíti a folyamatos integráció használatával a függvényalkalmazás üzembe helyezésére. Functions fő kódtárházakhoz, és a központi telepítés forrásának integrálható. Ez az integráció lehetővé teszi, hogy egy munkafolyamatot, ahol frissíti a függvénykódot az Azure-bA ezen szolgáltatások eseményindító üzembe helyezés egyik keresztül történtek. Ha most ismerkedik az Azure Functions, kezdje a [Azure Functions áttekintő](functions-overview.md).
 
-A folyamatos üzembe helyezés jó megoldás lehet olyan projektek esetén, amelyeknél többszöri és gyakori közreműködői változtatást kell integrálni. Lehetővé teszi a functions-kódhoz a verziókövetés kezelése. Jelenleg a következő központi telepítési források támogatottak:
+Folyamatos üzembe helyezés egy remek választás hol vagyunk integrálása több és a hozzájárulások gyakran használják. Lehetővé teszi a függvény kódját a verziókövetés kezelése. Az Azure Functions támogatja a következő központi telepítés forrásának:
 
 * [Bitbucket](https://bitbucket.org/)
 * [Dropbox](https://www.dropbox.com/)
@@ -33,9 +33,9 @@ A folyamatos üzembe helyezés jó megoldás lehet olyan projektek esetén, amel
 
 Központi telepítések függvény alkalmazás alapon vannak konfigurálva. Folyamatos üzembe helyezés engedélyezését követően a függvénykódot a portálon való hozzáférés értéke *csak olvasható*.
 
-## <a name="continuous-deployment-requirements"></a>Folyamatos üzembe helyezési követelményeket
+## <a name="requirements-for-continuous-deployment"></a>Folyamatos üzembe helyezési követelményei
 
-A központi telepítési forrás folyamatos üzembe helyezés előtt rendelkeznie kell a konfigurálva telepítési forrás és a functions-kódhoz. Egy adott függvényt az alkalmazások központi telepítésének egyes függvények él nevű alkönyvtárban, ahol a könyvtár neve a, a függvény.  
+Folyamatos üzembe helyezés beállítása előtt rendelkeznie kell a konfigurálva telepítési forrás és a függvény kódját a központi telepítési forrás. A függvény az alkalmazások központi telepítésének egyes funkciója nevű alkönyvtárban, ahol a könyvtár neve a, a függvény.  
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
@@ -44,102 +44,97 @@ Az, hogy üzembe helyezése az Azure DevOps, először az Azure-előfizetésébe
 ## <a name="set-up-continuous-deployment"></a>Folyamatos üzembe helyezés beállítása
 Ezzel az eljárással meglévő függvényalkalmazással – folyamatos üzembe helyezés konfigurálása. Ezeket a lépéseket egy GitHub-tárházat az integráció bemutatásához, de hasonló lépésekkel Azure DevOps-vagy más központi telepítési szolgáltatások érvényesek.
 
-1. A függvényalkalmazásban, az a [az Azure portal](https://portal.azure.com), kattintson a **platformfunkciók** és **központi telepítési beállítások**. 
+1. A függvényalkalmazásban, az a [az Azure portal](https://portal.azure.com)válassza **platformfunkciók** > **központi telepítési beállítások**. 
    
-    ![Folyamatos üzembe helyezés beállítása](./media/functions-continuous-deployment/setup-deployment.png)
+    ![Nyissa meg a központi telepítési beállítások szolgáló kiválasztások](./media/functions-continuous-deployment/setup-deployment.png)
  
-2. Ezt a a **központi telepítések** panelen kattintson **telepítő**.
+1. Az a **központi telepítések** panelen válassza ki **telepítő**.
  
-    ![Folyamatos üzembe helyezés beállítása](./media/functions-continuous-deployment/setup-deployment-1.png)
+    ![Központi telepítések panel](./media/functions-continuous-deployment/setup-deployment-1.png)
    
-3. Az a **központi telepítés forrása** panelen kattintson a **forrás választása**, majd töltse ki a kiválasztott központi telepítés forrása az információkat, és kattintson a **OK**.
+1. Az a **központi telepítés forrása** panelen válassza ki **forrás választása**. A kiválasztott központi telepítés forrása az adatot, és válassza **OK**.
    
-    ![Válassza ki a központi telepítés forrása](./media/functions-continuous-deployment/choose-deployment-source.png)
+    ![A központi telepítés forrásának kiválasztása](./media/functions-continuous-deployment/choose-deployment-source.png)
 
-Folyamatos üzembe helyezés konfigurálása után a központi telepítés forrása az összes fájlmódosítás lesz másolva a függvényalkalmazást, és akkor indul el, a teljes helyen történő központi telepítés. A helyet a forrásfájlok frissítésekor rendszer újratelepítése.
+Miután beállította a folyamatos üzembe helyezés, a központi telepítés forrása az összes fájlmódosítás másolja a függvényalkalmazás, és akkor indul el, a teljes helyen történő központi telepítés. A helyet a forrásfájlok frissítésekor rendszer újratelepítése.
 
-## <a name="deployment-options"></a>Üzembe helyezési beállítások
+## <a name="deployment-scenarios"></a>Üzembe helyezési forgatókönyvek
 
-Az alábbiakban néhány tipikus telepítési forgatókönyvet:
-
-- [Átmeneti üzembe helyezése](#staging)
-- [Helyezze át a meglévő funkciók folyamatos üzembe helyezés](#existing)
+Tipikus telepítési forgatókönyvekbe tartoznak, egy átmeneti üzemelő példány létrehozása és áthelyezése a meglévő funkciók folyamatos üzembe helyezés.
 
 <a name="staging"></a>
 ### <a name="create-a-staging-deployment"></a>Átmeneti üzembe helyezése
 
-Függvényalkalmazások még nem támogatja az üzembe helyezési pontok. Folyamatos integráció használatával azonban külön átmeneti és éles üzemelő példányok továbbra is kezelheti.
+Függvényalkalmazások még nem támogatják az üzembe helyezési pontok. De továbbra is kezelheti a folyamatos integráció használatával külön átmeneti és éles környezetet.
 
 Konfigurálása és használata egy átmeneti üzembe helyezés folyamata általában nézhet ki:
 
-1. Hozzon létre két függvényalkalmazás előfizetésében, egyet az éles kódban, és egy átmeneti. 
+1. Hozzon létre két függvényalkalmazást az előfizetésében: egyet az éles kódban és a egy átmeneti. 
 
-2. Ha még nem rendelkezik egy, hozzon létre egy központi telepítés forrása. Ez a példa [GitHubon].
+1. Ha még nem rendelkezik egy, hozzon létre egy központi telepítés forrása. Ez a példa [GitHubon].
 
-3. A termelési függvényalkalmazás befejeződött az előző lépést **folyamatos üzembe helyezés** és állítsa be az üzembe helyezés ágat a GitHub-tárház főágába.
+1. A termelési függvényalkalmazás befejeződött az előző lépést [folyamatos üzembe helyezés](#set-up-continuous-deployment) és állítsa be az üzembe helyezés ágat a GitHub-tárház főágába.
    
-    ![Üzembe helyezés ág kiválasztása](./media/functions-continuous-deployment/choose-deployment-branch.png)
+    ![A kijelölések telepítési ág kiválasztása](./media/functions-continuous-deployment/choose-deployment-branch.png)
 
-4. Ismételje meg ezt a lépést a átmeneti függvényalkalmazás, de ehelyett válassza ki az átmeneti ág a GitHub-tárban. Ha a központi telepítés forrása nem támogatja az elágaztatást, használjon egy másik mappába.
+1. Ismételje meg a 3. lépés az előkészítési függvényalkalmazás, de ehelyett válassza ki az átmeneti ág a GitHub-tárban. Ha a központi telepítés forrása nem támogatja az elágaztatást, használjon egy másik mappába.
     
-5. Hajtsa végre a frissítéseket a kód a átmeneti ág vagy a mappát, majd győződjön meg arról, hogy ezek a módosítások megjelennek-e az átmeneti üzembe helyezés.
+1. Hajtsa végre a frissítéseket a kód a átmeneti ág vagy a mappát, és ellenőrizze, hogy az átmeneti üzembe helyezés tükrözi ezeket a módosításokat.
 
-6. Tesztelés után egyesítési módosítja az átmeneti ágból a főágba. A merge elindítja a termelési függvényalkalmazás üzembe helyezés. Ha a központi telepítés forrása nem támogatja az ágak, az átmeneti mappából a fájlokat írja felül a termelési mappában található fájlokat.
+1. Tesztelés után egyesítési módosítja az átmeneti ágból a főágba. A merge elindítja a termelési függvényalkalmazás üzembe helyezés. Ha a központi telepítés forrása nem támogatja az ágak, az átmeneti mappából a fájlokat írja felül a termelési mappában található fájlokat.
 
 <a name="existing"></a>
 ### <a name="move-existing-functions-to-continuous-deployment"></a>Helyezze át a meglévő funkciók folyamatos üzembe helyezés
-Ha rendelkezik meglévő funkciók, amelyek a létrehozott és karbantartott a portálon, le kell töltenie a meglévő függvény kódfájlok FTP használatával, vagy a helyi Git-tárház előtt is folyamatos üzembe helyezés beállítása, a fent leírt módon. Ehhez az App Service-beállítások a függvényalkalmazás számára. A fájlok letöltését követően feltöltheti őket a választott folyamatos üzembe helyezési forrást.
+Ha rendelkezik meglévő függvények, amelyet létrehozott és karbantartott a portálon, le kell töltenie a függvény kódfájlok FTP használatával, vagy a helyi Git-tárház előtt is folyamatos üzembe helyezés beállítása, a fentebb leírt módon. Ehhez az Azure App Service-beállítások a függvényalkalmazás számára. Miután letöltötte a fájlokat, feltöltheti azokat a választott folyamatos üzembe helyezési forrást.
 
 > [!NOTE]
-> Miután beállította a folyamatos integráció, már nem szerkesztheti a forrásfájlokat, a Functions portálján.
-
-- [Útmutató: Üzembe helyezési hitelesítő adatok konfigurálása](#credentials)
-- [Útmutató: Töltse le a fájlt FTP használatával](#downftp)
-- [Útmutató: Töltse le a fájlt a helyi Git-tárház használatával](#downgit)
+> Miután beállította a folyamatos integráció, a forrásfájlokat, a Functions portálon már nem szerkesztheti.
 
 <a name="credentials"></a>
-#### <a name="how-to-configure-deployment-credentials"></a>Útmutató: Üzembe helyezési hitelesítő adatok konfigurálása
-Fájlokat tölthet le a függvényalkalmazás az FTP- vagy a helyi Git-tárház, konfigurálnia kell a hitelesítő adatait, a webhely elérésére. Hitelesítő adatok beállítása függvény alkalmazási szinten. A következő lépések segítségével üzembe helyezési hitelesítő adatok beállítása az Azure Portalon:
+#### <a name="configure-deployment-credentials"></a>Üzembe helyezési hitelesítő adatok konfigurálása
+Fájl FTP- vagy a helyi Git-tárház használatával tölthet le a függvényalkalmazás, konfigurálnia kell a hitelesítő adatait, a webhely elérésére. Hitelesítő adatok beállítása függvény alkalmazási szinten. A következő lépések segítségével üzembe helyezési hitelesítő adatok beállítása az Azure Portalon:
 
-1. A függvényalkalmazásban, az a [az Azure portal](https://portal.azure.com), kattintson a **platformfunkciók** és **üzembe helyezési hitelesítő adatok**.
+1. A függvényalkalmazásban, az a [az Azure portal](https://portal.azure.com)válassza **platformfunkciók** > **üzembe helyezési hitelesítő adatok**.
    
-    ![Helyi üzembe helyezési hitelesítő adatok beállítása](./media/functions-continuous-deployment/setup-deployment-credentials.png)
+1. Adjon meg egy felhasználónevet és jelszót, és válassza ki **mentése**. 
 
-2. Írja be a felhasználónevet és jelszót, majd kattintson a **mentése**. A függvényalkalmazás eléréséhez az FTP- vagy a beépített Git-tárház mostantól használhatja ezeket a hitelesítő adatokat.
+   ![Helyi üzembe helyezési hitelesítő adatok beállítása a beállításokat](./media/functions-continuous-deployment/setup-deployment-credentials.png)
+
+A függvényalkalmazás eléréséhez az FTP- vagy a beépített Git-tárház mostantól használhatja ezeket a hitelesítő adatokat.
 
 <a name="downftp"></a>
-#### <a name="how-to-download-files-using-ftp"></a>Útmutató: Töltse le a fájlt FTP használatával
+#### <a name="download-files-by-using-ftp"></a>Töltse le a fájlokat FTP használatával
 
-1. A függvényalkalmazásban, az a [az Azure portal](https://portal.azure.com), kattintson a **platformfunkciók** és **tulajdonságok**, majd másolja a tartozó értékeket. **FTP vagy üzembe helyező felhasználó**, **FTP-állomásnév**, és **FTPS-állomásnév**.  
+1. A függvényalkalmazásban, az a [az Azure portal](https://portal.azure.com)válassza **platformfunkciók** > **tulajdonságok**. Ezután másolja a tartozó értékeket **FTP vagy üzembe helyező felhasználó**, **FTP-állomás neve**, és **FTPS-állomás neve**.  
 
-    **FTP-/ üzembehelyezési felhasználói** , meg kell adni a portálon, valamint az alkalmazás nevének megfelelő környezetet biztosít az FTP-kiszolgáló a név jelenik meg.
+   **FTP-/ üzembehelyezési felhasználói** , meg kell adni a portálon, valamint az alkalmazás nevének megfelelő környezetet biztosít az FTP-kiszolgáló a név jelenik meg.
    
-    ![Az üzembe helyezési adatait](./media/functions-continuous-deployment/get-deployment-credentials.png)
+   ![Az üzembe helyezés információk beállításokat](./media/functions-continuous-deployment/get-deployment-credentials.png)
 
-2. Az FTP-ügyféllel, használja a kapcsolati adatokat gyűjtött az alkalmazás és az a funkciók a forrásfájlok letöltéséhez.
+1. Az FTP-ügyfél azon kapcsolatadatokkal, amelyeket az alkalmazás és az a funkciók a forrásfájlok letöltéséhez összegyűjtött használja.
 
 <a name="downgit"></a>
-#### <a name="how-to-download-files-using-a-local-git-repository"></a>Útmutató: Töltse le a fájlt egy helyi Git-tárház használatával
+#### <a name="download-files-by-using-a-local-git-repository"></a>Fájlok letöltése a helyi Git-tárház használatával
 
-1. A függvényalkalmazásban, az a [az Azure portal](https://portal.azure.com), kattintson a **platformfunkciók** és **központi telepítési beállítások**. 
+1. A függvényalkalmazásban, az a [az Azure portal](https://portal.azure.com)válassza **platformfunkciók** > **központi telepítési beállítások**. 
    
-    ![Folyamatos üzembe helyezés beállítása](./media/functions-continuous-deployment/setup-deployment.png)
+    ![Nyissa meg a központi telepítési beállítások szolgáló kiválasztások](./media/functions-continuous-deployment/setup-deployment.png)
  
-2. Ezt a a **központi telepítések** panelen kattintson **telepítő**.
+1. Ezután a a **központi telepítések** panelen válassza ki **telepítő**.
  
-    ![Folyamatos üzembe helyezés beállítása](./media/functions-continuous-deployment/setup-deployment-1.png)
+    ![Központi telepítések panel](./media/functions-continuous-deployment/setup-deployment-1.png)
    
-2. Az a **központi telepítés forrása** panelen kattintson a **helyi Git-tárház** majd **OK**.
+1. Az a **központi telepítés forrása** panelen válassza ki **helyi Git-tárház** > **OK**.
 
-3. A **platformfunkciók**, kattintson a **tulajdonságok** , és jegyezze fel a Git URL-cím értékét. 
+1. A **platformfunkciók**válassza **tulajdonságok** , és jegyezze fel a Git URL-cím értékét. 
    
-    ![Folyamatos üzembe helyezés beállítása](./media/functions-continuous-deployment/get-local-git-deployment-url.png)
+    ![A Git URL-cím első szolgáló kiválasztások](./media/functions-continuous-deployment/get-local-git-deployment-url.png)
 
-4. Klónozza a tárházat a helyi gépen tisztában a Git parancsot a parancssorba vagy a kedvenc Git-eszközt használ. A Git clone parancs így néz ki:
+1. Klónozza a tárházat a helyi gépen a Git-felismerésre képes parancsot a parancssorba vagy a kedvenc Git-eszközt. A Git clone parancs így néz ki:
    
         git clone https://username@my-function-app.scm.azurewebsites.net:443/my-function-app.git
 
-5. Adatbeolvasás fájlok a függvényalkalmazásból a klón a helyi számítógépen, az alábbi példában látható módon:
+1. Adatbeolvasás fájlok a függvényalkalmazásból a klón a helyi számítógépen, az alábbi példában látható módon:
    
         git pull origin master
    

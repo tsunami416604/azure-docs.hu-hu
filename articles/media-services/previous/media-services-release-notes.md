@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ea5a6a70372571daf82e7639fc31c125d69fa44f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 25da9fd787c467bdddb7c8dcd68b9df518d018b7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621430"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728032"
 ---
 # <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
 
@@ -321,10 +321,6 @@ A [Media Services .NET SDK](https://www.nuget.org/packages/windowsazure.mediaser
 * SSL-kapcsolaton keresztül jelenleg nem képes feldolgozni a RTMP élő adatfolyamokat.
 * SSL-en keresztül adatfolyam csak akkor, ha a streamvégpontra, amelyről a tartalomkézbesítés 2014. szeptember 10-után jött létre. Ha a streamelési URL-címek alapján a 2014. szeptember 10-én után létrehozott streamelési végpontok az URL-címet tartalmaz "streaming.mediaservices.windows.net" (a új formátum). Streamelési URL-címek, amelyek tartalmazzák a "origin.mediaservices.windows.net" (a régi formátumot) nem támogatják az SSL. Ha az URL-cím szerepel a régi formátumot, és SSL,-en keresztül kívánja [hozzon létre egy új streamvégpont](media-services-portal-manage-streaming-endpoints.md). A tartalmak streamelésére SSL-en keresztül, használja az URL-címek az új streamvégpont alapján.
 
-## <a id="october_changes_14"></a>2014. októberi kiadás
-### <a id="new_encoder_release"></a>Media Services Encoder kiadás
- A Media Services az Azure Media Encoder új kiadása mutattuk be. A legfrissebb Media Encoder fizetnie csak a kimeneti GB. Ellenkező esetben az új kódoló funkciója kompatibilis a korábbi kódolót. További információkért lásd: [A Media Services díjszabásával kapcsolatos részletek].
-
 ### <a id="oct_sdk"></a>A Media Services .NET SDK-val
 A Media Services SDK for .NET-bővítmények mostantól 2.0.0.3 verzió.
 
@@ -396,14 +392,6 @@ A Media Services .NET SDK már 3.0.0.5 verzió. Az alábbi frissítések törté
   * Ha webes kivételek (például egy Access Control Service-jogkivonat kérése) alatt, végzetes hibák sikertelen gyorsabban most.
 
 További információkért lásd: [Újrapróbálkozási logika, a Media Services SDK-ban a .NET-hez].
-
-## <a id="april_changes_14"></a>2014. április kódoló kiadás
-### <a name="april_14_enocer_changes"></a>Media Services Encoder frissítések
-* Támogatási AVI-fájlokban, hogy a élet Valley EDIUS nemlineáris szerkesztő használatával készült, hogy lett hozzáadva. Ebben a folyamatban a videó enyhén tömörített élet Valley HQ/HQX kodek használatával. További információkért lásd: [élet Valley készült továbbfejlesztésekkel bővült a felhőn keresztül streamelési EDIUS 7].
-*  Adja meg a fájlokat, a Media Services Encoder által előállított elnevezési támogatása hozzáadva. További információkért lásd: [vezérlő Media Services Encoder kimeneti fájl nevét](https://msdn.microsoft.com/library/azure/dn303341.aspx).
-*  Videó-és/vagy hang átfedések váltak. További információkért lásd: [átfedések létrehozása](https://msdn.microsoft.com/library/azure/dn640496.aspx).
-*  Támogatás hozzáadva összefűzheti több videó szegmensek. További információkért lásd: [videó szegmensek több](https://msdn.microsoft.com/library/azure/dn640504.aspx).
-* Egy hiba volt átkódolása, ahol a hanganyag kódolt olyan MP4, fájlnak az MPEG-1 hang 3. rétegbeli (más néven MP3) kapcsolódó rendszerriasztások mechanizmusában.
 
 ## <a id="jan_feb_changes_14"></a>2014. január/február kiadások
 ### <a name="jan_fab_14_donnet_changes"></a>A Media Services .NET SDK-val 3.0.0.1, 3.0.0.2 és 3.0.0.3
@@ -556,7 +544,7 @@ Az alábbi funkciókat lett az SDK novemberi kiadásában új:
 <!--- URLs. --->
 [Az Azure Media Services MSDN-fórum]: https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
 [Az Azure Media Services REST API-referencia]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
-[A Media Services díjszabásával kapcsolatos részletek]: https://azure.microsoft.com/pricing/details/media-services/
+[Media Services pricing details]: https://azure.microsoft.com/pricing/details/media-services/
 [Bemeneti metaadatok]: https://msdn.microsoft.com/library/azure/dn783120.aspx
 [Kimeneti metaadatok]: https://msdn.microsoft.com/library/azure/dn783217.aspx
 [Deliver content]: https://msdn.microsoft.com/library/azure/hh973618.aspx
@@ -573,7 +561,7 @@ Az alábbi funkciókat lett az SDK novemberi kiadásában új:
 [Nick Drouin's blog]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
 [Protect Smooth Streaming with PlayReady]: https://msdn.microsoft.com/library/azure/dn189154.aspx
 [Újrapróbálkozási logika, a Media Services SDK-ban a .NET-hez]: https://msdn.microsoft.com/library/azure/dn745650.aspx
-[Élet Valley készült továbbfejlesztésekkel bővült a felhőn keresztül streamelési EDIUS 7]: https://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
+[Grass Valley announces EDIUS 7 streaming through the cloud]: https://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
 [Control Media Services Encoder output file names]: https://msdn.microsoft.com/library/azure/dn303341.aspx
 [Create overlays]: https://msdn.microsoft.com/library/azure/dn640496.aspx
 [Stitch video segments]: https://msdn.microsoft.com/library/azure/dn640504.aspx

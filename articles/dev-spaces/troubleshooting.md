@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
-ms.openlocfilehash: 044e997703f5b274215fb05c7152186948b331b4
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 508fe597a494ed89b4c2f406337c6b565943387a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63761409"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728825"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -157,7 +157,7 @@ Ez a hiba megjelenhet, ha azds.exe nincs telepítve vagy megfelelően konfigurá
 
 ### <a name="try"></a>Próbálja ki:
 
-1. Ellenőrizze a azds.exe hely %ProgramFiles%/Microsoft SDKs\Azure\Azure fejlesztési tárolóhelyek CLI (előzetes verzió). Ha nincs, adott helyen hozzáadása a PATH környezeti változóhoz.
+1. Ellenőrizze a hely %ProgramFiles%/Microsoft SDKs\Azure\Azure fejlesztői, szóközök CLI azds.exe számára. Ha nincs, adott helyen hozzáadása a PATH környezeti változóhoz.
 2. Ha azds.exe nincs telepítve, futtassa a következő parancsot:
 
     ```cmd
@@ -292,6 +292,16 @@ Ez a hiba akkor fordul elő, ha a Helm-ügyfél már nem képes kommunikálni a 
 
 ### <a name="try"></a>Próbálja ki:
 Az ügynökcsomópontok általában a fürtben lévő újraindítás megszünteti a ezt a problémát.
+
+## <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>"Hiba: kiadási azds -\<azonosító\>-\<spacename\>-\<servicename\> nem sikerült: services\<servicename\>"már létezik" vagy "hozzáférés megtagadva a lekéréses \<servicename\>, adattár nem létezik, vagy szükség lehet a"docker login""
+
+### <a name="reason"></a>Ok
+Ezek a hibák akkor fordulhat elő, ha Ön vegyesen közvetlen Helm-parancsok futtatása (például `helm install`, `helm upgrade`, vagy `helm delete`) fejlesztői, szóközök parancsokkal (például `azds up` és `azds down`) belül az azonos fejlesztési terület. Akkor fordul elő, mert a fejlesztői, szóközök rendelkezik a saját a tiller valóban példányt, amely ütközik a saját az egy fejlesztési helyen futó Tiller-példány.
+
+### <a name="try"></a>Próbálja ki:
+Nyugodtan Helm parancsok és a fejlesztői, szóközök parancsok szemben az AKS-fürtön, de minden fejlesztési szóközt engedélyezni névtér használja az egyik vagy másik.
+
+Tegyük fel például, egy Helm-parancs segítségével futtassa a teljes alkalmazás szülő fejlesztési szóközzel. Gyermek létrehozása fejlesztési tárolóhelyek ki, hogy a szülő, fejlesztői tárolóhelyek használata a fejlesztési szóközöket a gyermek belüli egyes szolgáltatások futtatásához, és együtt tesztelje a szolgáltatásokat. Amikor készen áll a módosítások ellenőrzéséhez, egy Helm-parancs segítségével a frissített kód üzembe helyezése a szülő fejlesztési területre. Ne használjon `azds up` frissített-szolgáltatás futtatásához a szülőben fejlesztési területet, mert a szolgáltatás kezdeti futtatása a Helm használatával ütközésbe fognak.
 
 ## <a name="azure-dev-spaces-proxy-can-interfere-with-other-pods-running-in-a-dev-space"></a>Az Azure fejlesztői, szóközök proxy zavaró más fejlesztői szóközzel futtató podok
 

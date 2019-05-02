@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f55ef6f8829db7033790e21653e01a5390be7992
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323149"
 documentType: LandingData
 title: Az Azure Time Series Insights dokumentációja
 metadata:
-  title: Az Azure Time Series Insights dokumentációja – Rövid útmutatók, oktatóanyagok és API-referencia | Microsoft Docs
-  description: Ismerje meg, hogyan futtathat Azure IoT-elemzést a felhőben teljes körűen felügyelt eseményfeldolgozással. Valós időben elemezhet többek között alkalmazásokból, érzékelőkből és eszközökből származó adatokat.
+  title: 'Az Azure Time Series Insights dokumentációja – Rövid útmutatók, oktatóanyagok és API-referencia | Microsoft Docs'
+  description: 'Ismerje meg, hogyan futtathat Azure IoT-elemzést a felhőben teljes körűen felügyelt eseményfeldolgozással. Valós időben elemezhet többek között alkalmazásokból, érzékelőkből és eszközökből származó adatokat.'
   services: time-series-insights
   author: anshan
   manager: cshankar
@@ -17,51 +11,51 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 12/07/2018
+  ms.date: 04/23/2019
   ms.author: anshan
 abstract:
-  description: Üdvözli az Azure Time Series Insights! Az Azure Time Series Insights hatékony adatfeltárási és telemetriai eszközöket biztosít a működési elemzések pontosításához. A dokumentáció ismerteti a szolgáltatás által nyújtott számos funkciót, az első lépéseket, valamint a hatékony Time Series Insights API-kat. Két verzióhoz érhetők el információk, az általánosan elérhető (Time Series Insights általánosan elérhető verziója) és az előzetes verzióhoz (Time Series Insights előzetes verzió).
+  description: 'Üdvözli az Azure Time Series Insights! Az Azure Time Series Insights hatékony adatfeltárási és telemetriai eszközöket biztosít a működési elemzések hatékonyabbá tételéhez. A dokumentáció ismerteti a szolgáltatást, az első lépéseket a szolgáltatás számos funkciójának használatához, az ügyféloldali SDK-t, valamint a hatékony Time Series Insights API-kat. Két verzióhoz érhetők el információk, a már általánosan elérhető verzióhoz (a Time Series Insights általánosan elérhető verziója) és egy előzetes verziójú nagyobb szolgáltatásfrissítéshez (Time Series Insights előzetes verzió).'
   aside:
     image:
       alt: Az Azure IoT Time Series Insights funkcióit bemutató videó.
       height: 110
       src: media/index/new-tsi-intro.png
       width: 250
-    title: Time Series Insights IoT-alkalmazásokhoz. (13:31)
-    href: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics
+    title: 'Time Series Insights IoT-alkalmazásokhoz. (13:31)'
+    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics'
     width: 250
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: A rövid minták megtekintésével megismerkedhet az Azure Time Series Insightsszal, és percek alatt megkezdheti a használatát.
-  - type: list
-    style: icon48
+  - title: 5 perces gyors útmutatók
     items:
-    - image:
-        src: https://docs.microsoft.com/azure/time-series-insights/media/index/time-series-insights.svg
-      text: Ismerkedés az Azure Time Series Insights általánosan elérhető verziójával
-      href: /azure/time-series-insights/time-series-quickstart
-  - html: <p><a href="/azure/time-series-insights/time-series-insights-update-quickstart">Ismerkedés az Azure Time Series Insights előzetes verziójával</a></p>
-- title: Részletes útmutatók
-  items:
-  - type: paragraph
-    text: A részletes példákból megtudhatja, hogyan hozhat létre Azure Time Series Insights-környezeteket, egyoldalas webalkalmazásokat és még sok mást.
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'A rövid minták megtekintésével megismerkedhet az Azure Time Series Insightsszal, és percek alatt megkezdheti a használatát.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/time-series-insights/media/index/time-series-insights.svg'
+            text: Ismerkedés az Azure Time Series Insights általánosan elérhető verziójával
+            href: /azure/time-series-insights/time-series-quickstart
+      - html: <p><a href="/azure/time-series-insights/time-series-insights-update-quickstart">Ismerkedés az Azure Time Series Insights előzetes verziójával</a></p>
+  - title: Részletes útmutatók
     items:
-    - title: Az Azure Time Series Insights általánosan elérhető verziója
-      html: <p><a href="/azure/time-series-insights/tutorial-create-populate-tsi-environment">Környezet létrehozása</a></p> <p><a href="/azure/time-series-insights/tutorial-create-tsi-sample-spa">Egyoldalas webalkalmazás létrehozása</a></p> <p><a href="/azure/time-series-insights/tutorial-explore-js-client-lib">Ismerkedés a JavaScript ügyfélkódtárral</a></p>
-    - title: Az Azure Time Series Insights előzetes verziója
-      html: <p><a href="/azure/time-series-insights/time-series-insights-update-create-environment">Oktatóanyag az előzetes verzióhoz</a></p>
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'A részletes példákból megtudhatja, hogyan hozhat létre Azure Time Series Insights-környezeteket, egyoldalas webalkalmazásokat és még sok mást.'
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Az Azure Time Series Insights általánosan elérhető verziója
+            html: <p><a href="/azure/time-series-insights/tutorial-create-populate-tsi-environment">Környezet létrehozása</a></p> <p><a href="/azure/time-series-insights/tutorial-create-tsi-sample-spa">Egyoldalas webalkalmazás létrehozása</a></p> <p><a href="/azure/time-series-insights/tutorial-explore-js-client-lib">Ismerkedés a JavaScript ügyfélkódtárral</a></p>
+          - title: Az Azure Time Series Insights előzetes verziója
+            html: <p><a href="/azure/time-series-insights/time-series-insights-update-create-environment">Oktatóanyag az előzetes verzióhoz</a></p>
+  - title: Referencia
     items:
-    - title: A Time Series Insights általánosan elérhető verziójának API-jai
-      html: <p><a href="/rest/api/time-series-insights-management">Erőforrás-kezelési API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">Lekérdezés API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">Lekérdezési szintaxis</a></p>
-    - title: A Time Series Insights előzetes verziójának API-jai
-      html: <p><a href="/rest/api/time-series-insights/preview-query">Lekérdezés API</a></p> <p><a href="/rest/api/time-series-insights/preview-model">Model API</a></p> <p><a href="/rest/api/time-series-insights/preview-env">Environment API</a></p> <p><a href="/rest/api/time-series-insights/preview-tsx">Time Series Expression API</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: A Time Series Insights általánosan elérhető verziójának API-jai
+            html: <p><a href="/rest/api/time-series-insights-management">Erőforrás-kezelési API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">Lekérdezés API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">Lekérdezési szintaxis</a></p>
+          - title: A Time Series Insights előzetes verziójának API-jai
+            html: <p><a href="/rest/api/time-series-insights/preview-query">Lekérdezés API</a></p> <p><a href="/rest/api/time-series-insights/preview-model">Model API</a></p> <p><a href="/rest/api/time-series-insights/preview-env">Environment API</a></p> <p><a href="/rest/api/time-series-insights/preview-tsx">Time Series Expression API</a></p>
