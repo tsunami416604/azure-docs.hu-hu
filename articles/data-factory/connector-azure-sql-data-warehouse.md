@@ -521,11 +521,11 @@ Ha a forrásadatok 1 MB-nál nagyobb sorral rendelkezik, érdemes a forrástábl
 
 A felhasználót, hogy adatokat tölt be az SQL Data Warehouse polybase nagyobb erőforrásosztályt hozzárendelni a legjobb teljesítmény elérése érdekében.
 
-### <a name="tablename-in-azure-sql-data-warehouse"></a>**Táblanév** az Azure SQL Data Warehouse
+### <a name="tablename-in-azure-sql-data-warehouse"></a>**tableName** az Azure SQL Data Warehouse
 
 Az alábbi táblázat példákat mutat be, hogyan adhat meg a **tableName** JSON adatkészlet tulajdonság. Séma és a táblázat neve különböző kombinációit jeleníti meg.
 
-| Adatbázis-séma | Tábla neve | **Táblanév** JSON-tulajdonság |
+| Adatbázis-séma | Tábla neve | **tableName** JSON-tulajdonság |
 | --- | --- | --- |
 | dbo | MyTable | MyTable vagy dbo.MyTable vagy [dbo].[MyTable] |
 | dbo1 | MyTable | dbo1.MyTable vagy [dbo1].[MyTable] |
