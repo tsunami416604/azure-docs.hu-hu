@@ -84,8 +84,8 @@ A `on-error` ügyfélházirend szekció használható bármilyen hatókörben. A
 | Üzenet  | string | Természetes nyelven olvasható hiba leírása.                                                                         | Igen      |
 | Hatókör    | string | Ha hiba történt, és lehet egy "globális", "termék", "api" vagy "művelet" hatókör neve | Nem       |
 | Section  | string | Ha hiba történt a szakasz nevét. A lehetséges értékek: "a bejövő", "Háttér", "kimenő" vagy "error".       | Nem       |
-| Útvonal     | string | Adja meg a beágyazott házirend, például "[3] válasszon / mikor: [2]".                                                        | Nem       |
-| PolicyId | string | Az érték a `id` attribútumot, ha meg van adva, a szabályzatra, ahol a hiba történt az ügyfél által             | Nem       |
+| `Path`     | string | Adja meg a beágyazott házirend, például "[3] válasszon / mikor: [2]".                                                        | Nem       |
+| `PolicyId` | string | Az érték a `id` attribútumot, ha meg van adva, a szabályzatra, ahol a hiba történt az ügyfél által             | Nem       |
 
 > [!TIP]
 > Az állapotkód környezetben keresztül érheti el. Response.StatusCode.  
