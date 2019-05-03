@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: f3b4e6cd18a362775443bb296560a076aaa1497d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 82d49a6a82251f440c06db03edc92851fce87741
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61344155"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023612"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Példa: Hozzon létre egy egyéni ismeretek a szöveg lefordítása API-val
 
@@ -243,7 +243,7 @@ Ha elégedett a függvény működése, közzéteheti azt.
 
 1. Kövesse a képernyőn megjelenő utasításokat. A rendszer felkéri az Azure-fiók, az erőforráscsoport, a szolgáltatási csomag és a használni kívánt tárfiókot adjon meg. Ha még nincs ilyen létrehozhat egy új erőforráscsoportot, egy új szolgáltatási csomagot és egy tárfiókot. Amikor végzett, válassza ki a **létrehozása**
 
-1. Az üzembe helyezés befejezése után jegyezze fel a webhely URL-címe. Az Azure-ban a függvényalkalmazás címe. 
+1. A telepítés befejezését követően figyelje meg, hogy a webhely URL-címe. Az Azure-ban a függvényalkalmazás címe. 
 
 1. Az a [az Azure portal](https://portal.azure.com), keresse meg az erőforráscsoportot, és keresse meg a közzétett fordítása függvény. Alatt a **kezelés** szakaszban Gazdakulcsok kell megjelennie. Válassza ki a **másolási** ikonjára a *alapértelmezett* állomás kulcsát.  
 
@@ -282,7 +282,7 @@ Most, hogy egy új egyéni ismeretek, adhat hozzá, a képességek alkalmazási 
       {
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
         "description": "Our new translator custom skill",
-        "uri": "http://translatecogsrch.azurewebsites.net/api/Translate?code=[enter default host key here]",
+        "uri": "https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter default host key here]",
         "batchSize":1,
         "context": "/document",
         "inputs": [
