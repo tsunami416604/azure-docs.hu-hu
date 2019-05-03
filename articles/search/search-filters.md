@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: a9e8d2cbc067fd92208fac778ba17c58bdc7a5e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 49f971fb50d0a8a6a0dab09158f780206a4d32f1
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61289586"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024848"
 ---
 # <a name="filters-in-azure-search"></a>Szűrők az Azure Search szolgáltatásban 
 
@@ -73,10 +73,10 @@ A következő példák mutatják be prototípusos szűrő definíciók több API
 
 ```http
 # Option 1:  Use $filter for GET
-GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2017-11-11
+GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2019-05-06
 
 # Option 2: Use filter for POST and pass it in the header
-POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2017-11-11
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2019-05-06
 {
     "search": "*",
     "filter": "baseRate lt 150",
@@ -146,7 +146,7 @@ Egyes mezők újraépítése egy kis hatás művelet, csak egy küldi el a megl�
 
 ## <a name="text-filter-fundamentals"></a>Szöveges szűrő – alapok
 
-Szövegszűrők érvényesek a karakterláncot tartalmazó mezők esetében, ahonnan lekérni az egyes dokumentumok keresési forrásgyűjteményébe belüli értékei alapján tetszőleges gyűjteménye.
+Szövegszűrők érvényesek a karakterláncot tartalmazó mezők esetében, ahonnan lekérni az egyes dokumentumok keresési index belül értékek alapján tetszőleges gyűjteménye.
 
 Mikroszolgáltatásokból álló karakterláncok Szövegszűrők, az nincs lexikális elemzés vagy szavakra, ezért összehasonlítások csak pontos egyezések. Tegyük fel például, egy mezőt *f* tartalmazza a "sunny day"," `$filter=f eq 'Sunny'`nem egyezik, de `$filter=f eq 'Sunny day'` lesz. 
 

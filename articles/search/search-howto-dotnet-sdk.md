@@ -7,17 +7,21 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 05/02/2019
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: afc60e933c9fcc154af74c47e382d8b8e7b0df8d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 25a156c4403b7a89f7a7bf7f6acf22fa34216791
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871297"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025129"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>Az Azure Search .NET-alkalmazás használata
+
+> [!Important]
+> Ez a tartalom még fejlesztés alatt áll. Az Azure Search .NET SDK 9.0-s verziója érhető el a NuGet. Ez az áttelepítési útmutató az új verzióra frissítése elmagyarázni frissítése dolgozunk. Kövessen bennünket.
+>
+
 Ez a cikk ahhoz, hogy működik és a egy forgatókönyv a [Azure Search .NET SDK](https://aka.ms/search-sdk). A .NET SDK használatával egy fejlett keresési funkciókat megvalósítása az Azure Search használatával az alkalmazás.
 
 ## <a name="whats-in-the-azure-search-sdk"></a>Mi az az Azure SDK keresése
@@ -38,7 +42,7 @@ A különböző klienskódtárak például osztályok definiálása `Index`, `Fi
 
 Az Azure Search .NET SDK jelenlegi verziója már általánosan elérhető. Ha szeretné, hogy ahhoz, hogy a következő verziójában építhet be visszajelzést, kérjük, látogasson el a [visszajelzésküldő oldala](https://feedback.azure.com/forums/263029-azure-search/).
 
-A .NET SDK-verziót támogatja `2017-11-11` , a [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/). Ez a verzió mostantól támogatja a szinonimák, valamint az indexelő növekményes fejlesztései. Előzetes verziójú funkciók, amelyek *nem* szerepelnek ebben a verzióban például a JSON-tömbök és CSV-fájlok, az indexelés támogatása része [előzetes](search-api-2016-09-01-preview.md) és keresztül elérhető [.NETSDK4.0-s–előzetesverzió](https://aka.ms/search-sdk-preview).
+A .NET SDK-verziót támogatja `2017-11-11` , a [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/). Ez a verzió mostantól támogatja a szinonimák, valamint az indexelő növekményes fejlesztései. 
 
 Ez az SDK nem támogatja a [felügyeleti műveletek](https://docs.microsoft.com/rest/api/searchmanagement/) például létrehozása és a keresési szolgáltatások méretezése és API-kulcsok kezelése. Ha a Search-erőforrások kezelése a .NET-alkalmazásból van szüksége, használhatja a [Azure Search .NET SDK-t felügyeleti](https://aka.ms/search-mgmt-sdk).
 
@@ -392,7 +396,7 @@ public partial class Hotel
 Az első szembetűnő dolog, hogy, hogy minden egyes nyilvános tulajdonsága `Hotel` felel meg az index definícióját, de egy lényeges különbséggel mező: Az egyes mezők neve során minden egyes nyilvános tulajdonsága neve kezdődik ("nagybetűs"), kisbetűvel `Hotel` egy nagybetűt ("Pascal eset") kezdődik. Gyakran kerül sor erre olyan adatkötést végző .NET-alkalmazások esetében, ahol a célséma vezérlése az alkalmazás fejlesztőjének hatáskörén kívül esik. A .NET elnevezési irányelveinek megsértése helyett (a tulajdonságnevek kisbetűs megadásával), utasíthatja az SDK-t a tulajdonságnevek automatikus kisbetűs leképezésére a `[SerializePropertyNamesAsCamelCase]` attribútummal.
 
 > [!NOTE]
-> Az Azure Search .NET SDK a [NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) könyvtárat használja az egyéni modellek JSON-ból és JSON-ba történő szerializálására és deszerializálására. A szerializálás szükség szerint testre szabható. További részletekért lásd: [egyéni szerializálás a JSON.NET](#JsonDotNet).
+> Az Azure Search .NET SDK a [NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm) könyvtárat használja az egyéni modellek JSON-ból és JSON-ba történő szerializálására és deszerializálására. A szerializálás szükség szerint testre szabható. További információkért lásd: [egyéni szerializálás a JSON.NET](#JsonDotNet).
 > 
 > 
 

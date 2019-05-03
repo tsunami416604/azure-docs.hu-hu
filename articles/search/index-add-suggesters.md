@@ -1,7 +1,7 @@
 ---
 title: Typeahead lekérdezések Azure Search - index hozzáadása
 description: Engedélyezze a gépelés közbeni lekérdezési műveleteket az Azure Search javaslattevők létrehozásával, és meghívása az automatikus kiegészítés vagy a lekérdezési kifejezések autosuggested kérelmek kidolgozásában.
-ms.date: 03/22/2019
+ms.date: 05/02/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: a8bc86c2d3511fa04e595b8b2988d9a98bf084b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 400b1613a87d4de65879a512642e16884c7d03b4
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60844431"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021882"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Az Azure Search typeahead indexet javaslattevők hozzáadása
 
@@ -39,9 +39,6 @@ Ezen viselkedés megvalósítása az Azure Search, egy index és lekérdezés-ö
 + Az index egy javaslattevő összetevője. A portal, a REST API vagy a .NET SDK használatával hozzon létre egy javaslattevő. 
 
 + A lekérdezés összetevője a lekérdezési kérelem (vagy egy javaslat, vagy az automatikus kiegészítés művelet) a megadott művelet. 
-
-> [!Important]
-> Automatikus kiegészítési funkciója jelenleg előzetes verziójú, REST API-k előzetes verzióban érhető el, ezért a .NET SDK-t. Nem célja az éles környezetben. 
 
 Keresés –--beíráskor támogatása engedélyezve van, mező alapon. Ha azt szeretné, felületet nyújt a képernyőképen jelzett hasonló mindkét typeahead viselkedések belül ugyanazt a keresési megoldást valósíthat meg. Mindkét kérelmek cél a *dokumentumok* után a felhasználó legalább egy három bemeneti sztring biztosított meghatározott index és a válaszok gyűjteményét adja vissza.
 
@@ -106,7 +103,7 @@ A javaslattevő meghatározó tulajdonságok a következők:
 
 |Tulajdonság      |Leírás      |
 |--------------|-----------------|
-|`name`        |A javaslattevő neve. A javaslattevő nevét használja, hívásakor a [javaslatok REST API-val](https://docs.microsoft.com/rest/api/searchservice/suggestions) vagy [automatikus kiegészítés REST API (előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/autocomplete).|
+|`name`        |A javaslattevő neve. A javaslattevő nevét használja, hívásakor a [javaslatok REST API-val](https://docs.microsoft.com/rest/api/searchservice/suggestions) vagy [automatikus kiegészítés REST API-val](https://docs.microsoft.com/rest/api/searchservice/autocomplete).|
 |`searchMode`  |A jelölt kifejezések keresésére használt stratégia. Mód csak a jelenleg támogatott `analyzingInfixMatching`, amely rugalmas megfelelő mondat eleji vagy mondat közepén hajt végre.|
 |`sourceFields`|Egy vagy több mező, amelyek a forrás javaslatok tartalmának listáját. Csak típusú mezők `Edm.String` és `Collection(Edm.String)` lehet, hogy források javaslatokért. Csak állítsa be egyéni nyelvi elemzőt nem rendelkező mezők is használható.<p/>Csak azok a mezők kiválóan várt és megfelelő választ, adja meg, legyen szó egy keresősáv és a egy legördülő lista befejezett karakterlánc.<p/>Egy szállodai Vendég név jó jelöltnek számít egy pontosság, mert. Részletes mezők, például leírásokat és megjegyzéseket, túl sűrű. Hasonlóképpen ismétlődő mezőket, például a kategóriák és a címkék, kevésbé hatékonyak. A példákban tartalmazza "category" ennek ellenére több mezőt tartalmazhat bemutatásához. |
 
@@ -120,7 +117,7 @@ Ha egy meglévő index, amelyben meglévő mezők szerepelnek a javaslattevő ho
 
 Fent említetteknek használhatja a javaslattevő javasolt lekérdezések, az automatikus kiegészítés, illetve mindkettőt. 
 
-A javaslattevő együtt a műveletet a kérésben hivatkozott. Ha például egy GET REST hívást, adja meg vagy `suggest` vagy `autocomplete` a dokumentumok gyűjteményen. A REST, a javaslattevő létrehozása után használja a [javaslatok API](https://docs.microsoft.com/rest/api/searchservice/suggestions) vagy a [automatikus kiegészítés API (előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/autocomplete) a lekérdezés logikában.
+A javaslattevő együtt a műveletet a kérésben hivatkozott. Ha például egy GET REST hívást, adja meg vagy `suggest` vagy `autocomplete` a dokumentumok gyűjteményen. A REST, a javaslattevő létrehozása után használja a [javaslatok API](https://docs.microsoft.com/rest/api/searchservice/suggestions) vagy a [automatikus kiegészítés API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) a lekérdezés logikában.
 
 A .NET-hez, használjon [SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet-preview) vagy [AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet).
 

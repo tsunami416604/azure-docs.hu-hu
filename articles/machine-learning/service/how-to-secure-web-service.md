@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 04/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: ece32754ae51bde5db52d20ab44f0d748bf46533
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 50e42172af6ca6b966f9f60d3e037f9ae3dc5cbe
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943944"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023764"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>SSL használatával biztonságossá tétele az Azure Machine Learning szolgáltatás a webszolgáltatások
 
@@ -72,7 +72,36 @@ A tanúsítvány igénylésekor meg kell adni a teljesen minősített tartomány
 
 Üzembe helyezése (vagy ismételt telepítése) SSL engedélyezve van a szolgáltatást, állítsa be a `ssl_enabled` paramétert `True`, bárhol is alkalmazható. Állítsa be a `ssl_certificate` paraméter értékét a __tanúsítvány__ fájl és a `ssl_key` értékéhez a __kulcs__ fájlt.
 
-+ **Az Azure Kubernetes Service (AKS) üzembe helyezése**
++ **Vizuális interface - biztonságos Azure Kubernetes Service (AKS) központi telepítés létrehozása** 
+    
+    Tekintse meg a, ha biztonságos üzembe helyezése számítási vizuális felhasználói felületet a létrehozni kívánt. Az AKS-fürt kiépítésekor SSL kapcsolatos paraméterek értékének megadására, majd hozzon létre egy új AKS.  Tekintse meg alább a kódrészlet:
+    
+
+    > [!TIP]
+    >  Ha nem ismeri a Python SDK-t, indítsa el a [Azure Machine Learning Python SDK-t áttekintése.](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+
+
+    ```python
+    from azureml.core.compute import AksCompute, ComputeTarget
+
+    # Provide SSL-related parameters when provisioning the AKS cluster
+    prov_config = AksCompute.provisioning_configuration(ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")   
+ 
+    aks_name = 'secure-aks'
+    # Create the cluster
+    aks_target = ComputeTarget.create(workspace = ws,
+                                        name = aks_name,
+                                        provisioning_configuration = prov_config)
+    
+    # Wait for the create process to complete
+    aks_target.wait_for_completion(show_output = True)
+    print(aks_target.provisioning_state)
+    print(aks_target.provisioning_errors)
+    ```
+    
+   
+
++ **Az Azure Kubernetes Service (AKS) üzembe helyezése és az FPGA**
 
   Amikor üzembe az aks-ben, hozzon létre egy új AKS-fürtöt, vagy csatlakoztasson egy már meglévőt. Új fürt létrehozásának használ [AksCompute.provisionining_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none-) használja egy meglévő fürt csatlakoztatása közben [AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none-). Mindkét adja vissza egy konfigurációs objektumot, amely rendelkezik egy `enable_ssl` metódust.
 
@@ -142,6 +171,8 @@ Ezt követően frissítenie kell a DNS, a web Service mutasson.
   Frissítse a DNS, a "Beállítások" lapon a "nyilvános IP-címe" az AKS-fürtöt a képen látható módon. A nyilvános IP-címet az erőforráscsoportban, amely tartalmazza az AKS-ügynök csomópontok és más hálózati erőforrások létrehozása az erőforrástípusok egyikét találja.
 
   ![Azure Machine Learning service: Webszolgáltatások SSL használatával biztonságossá tétele](./media/how-to-secure-web-service/aks-public-ip-address.png)
+
+
 
 ## <a name="next-steps"></a>További lépések
 Az alábbiak végrehajtásának módját ismerheti meg:

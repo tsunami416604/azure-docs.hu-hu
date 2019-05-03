@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: ph-com
 ms.author: pahusban
-ms.date: 09/24/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f40606d5fae3b3784ac7f1fdcf4977b7fd9eb1f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b55282adf56bedb0724eca578b8eaea00c26074
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819429"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023977"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exportálja, vagy a Machine Learning szolgáltatás munkaterület adatainak törlése 
 
@@ -231,3 +231,29 @@ Sablonok szerezhető be:
 Adatforrások szerezhető be:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
+
+## <a name="delete-visual-interface-assets"></a>Vizuális felhasználói felületet eszközök törlése
+
+A vizuális felületén, ahol létrehozta a kísérlethez törölje az egyedi eszközök:
+
+1. A bal oldalon válassza ki a törölni kívánt objektum típusát.
+
+    ![Eszközök törlése](media/how-to-export-delete-data.md/delete-experiment.png)
+
+1. A listában válassza ki az egyes eszközök törléséhez.
+
+1. Az alsó részén válassza **törlése**.
+
+## <a name="export-visual-interface-data"></a>Vizuális felhasználói felületet adatok exportálása
+
+A vizuális felületén, ahol létrehozta a kísérlethez felvett adatok exportálása:
+
+1. A bal oldalon válassza ki a **adatok**.
+
+1. A képernyő felső részén válassza **saját adatkészletek** vagy **minták** keresse meg az exportálni kívánt adatokat.
+
+    ![Adatok letöltése](media/how-to-export-delete-data.md/download-data.png)
+
+1. A listában válassza ki az egyes adatkészletek exportálása.
+
+1. Az alsó részén válassza **letöltése**.

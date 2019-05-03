@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: ab0aefd5650aada9c301115813a80747ddd1f2ac
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1a82b9256405e2cac12f4c5611ee3bdad459162b
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926323"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64992937"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Az Azure Metadata szolgáltatás: Windows virtuális gépeken ütemezett események
 
@@ -45,7 +45,7 @@ Számos alkalmazás fel a virtuális gép karbantartási idő is kihasználhatj�
 Ütemezett események az alkalmazás használatával képes felderíteni, amikor karbantartási fog fordulhat elő, és korlátozhatja a hatása feladatok aktiválása. Az ütemezett események engedélyezése lehetővé teszi a virtuális gép egy minimális időtartama a karbantartási tevékenység végrehajtása előtt. Című esemény ütemezése alábbi részleteket.
 
 Az ütemezett események biztosítja az események a következő esetekben használja:
-- A platform által kezdeményezett karbantartás (pl. gazdagép operációsrendszer-frissítés)
+- [Platform által kezdeményezett karbantartás](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/maintenance-and-updates) (például virtuális gép újraindítás, élő áttelepítés vagy gazdagép frissítései millióiról memória)
 - Csökkentett teljesítményű hardver
 - Felhasználó által kezdeményezett karbantartás (például felhasználói újraindítása vagy újbóli üzembe helyezése egy virtuális gép)
 - [Alacsony prioritású virtuális gép kiürítési](https://azure.microsoft.com/blog/low-priority-scale-sets) beállítja a méretezési csoportban
@@ -119,7 +119,7 @@ A DocumentIncarnation ETag, és vizsgálja meg, ha az esemény hasznos adatai m�
 |Tulajdonság  |  Leírás |
 | - | - |
 | EventId | Globálisan egyedi azonosítóját az eseményhez. <br><br> Példa: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | Ez az esemény hatására a hatás. <br><br> Értékek: <br><ul><li> `Freeze`: A virtuális gép úgy van ütemezve, szüneteltetésére néhány másodpercig. A Processzor fel van függesztve, de nem érinti a memória, a megnyitott fájlokat vagy a hálózati kapcsolatok. <li>`Reboot`: A virtuális gép újraindításra van ütemezve (a nem állandó memória elvész). <li>`Redeploy`: A virtuális gép áthelyezése egy másik csomópontra van ütemezve (a rövid élettartamú lemezek elvesznek). <li>`Preempt`: Az alacsony prioritású virtuális gép törlése folyamatban van (az ideiglenes lemezek olyan elveszett eszköz).|
+| EventType | Ez az esemény hatására a hatás. <br><br> Értékek: <br><ul><li> `Freeze`: A virtuális gép úgy van ütemezve, szüneteltetésére néhány másodpercig. Processzor és a hálózati kapcsolat felfüggeszthető, de nem érinti a memória vagy a megnyitott fájlokat. <li>`Reboot`: A virtuális gép újraindításra van ütemezve (a nem állandó memória elvész). <li>`Redeploy`: A virtuális gép áthelyezése egy másik csomópontra van ütemezve (a rövid élettartamú lemezek elvesznek). <li>`Preempt`: Az alacsony prioritású virtuális gép törlése folyamatban van (az ideiglenes lemezek olyan elveszett eszköz).|
 | ResourceType | Ez az esemény hatással van az erőforrás típusát. <br><br> Értékek: <ul><li>`VirtualMachine`|
 | További források| Ez az esemény hatással van az erőforrások listájában. Ez legfeljebb egy gépeket tartalmaznak garantáltan [frissítési tartományt](manage-availability.md), azonban nem tartalmazhat a UD minden gépek. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Eseményállapot | Ez az esemény állapota. <br><br> Értékek: <ul><li>`Scheduled`: Ez az esemény után a megadott ideig történő futásra van ütemezve a `NotBefore` tulajdonság.<li>`Started`: Ez az esemény feldolgozása megkezdődött.</ul> Nem `Completed` vagy hasonló állapota minden eddiginél áll rendelkezésre; az esemény már nem adható vissza, ha az esemény befejeződött.
@@ -136,7 +136,8 @@ Minden esemény van ütemezve egy jövőbeli időpontot minimális mennyiségű 
 | Megelőzik az | 30 másodperc |
 
 ### <a name="event-scope"></a>Esemény hatókör     
-Ütemezett kézbesíti az eseményeket:        
+Ütemezett kézbesíti az eseményeket:
+ - Önálló virtuális gépekről
  - Összes virtuális gép egy Cloud Service-ben      
  - Összes virtuális gépet egy rendelkezésre állási csoportban      
  - Egy méretezési csoportban lévő összes virtuális gép elhelyezési csoport megadása         

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4599498918b7a01a1207f20135c26924c6758eb8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7e569fa30727f2df7411eee5fa6d48f9b9454460
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871365"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025340"
 ---
 # <a name="how-to-manage-concurrency-in-azure-search"></a>Az Azure Search egyidejűség kezelése
 
@@ -170,7 +170,7 @@ A következő kód bemutatja, hogy accessCondition ellenőrzi a kulcs a frissít
 
 A kialakítási mintában megvalósításához az optimista egyidejűség tartalmaznia kell egy hurkot, amely a hozzáférés egy feltétele újrapróbálkozik ellenőrizze, a hozzáférés feltétellel, egy teszt, és igény szerint lekéri egy frissített erőforrás mielőtt megpróbálná újra alkalmazza a módosításokat.
 
-Ez a kódrészlet azt mutatja be az indexbe, amely már létezik egy synonymMap hozzáadását. A rendszer ezt a kódot a [szinonima (előzetes verzió) C# példa az Azure Search](search-synonyms-tutorial-sdk.md).
+Ez a kódrészlet azt mutatja be az indexbe, amely már létezik egy synonymMap hozzáadását. A rendszer ezt a kódot a [szinonimát C# példa az Azure Search](search-synonyms-tutorial-sdk.md).
 
 A kódrészlet lekérdezi a "hotels" index, ellenőrzi a frissítési művelet az objektum verzióját, kivételt jelez, ha a feltétel nem sikerül, és majd újrapróbálkozik a művelettel (legfeljebb három alkalommal), kezdve az index beolvasása a kiszolgálóról a legújabb verzió beszerzéséhez.
 

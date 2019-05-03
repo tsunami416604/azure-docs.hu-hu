@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 04/30/2019
 ms.author: shants
-ms.openlocfilehash: cfd88118b483067f4c6ee62ee013a2202f0d7e67
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76e0f496acf37d4220f57a599f0ce449ca130bba
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60301763"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64992903"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Tervezett karbantartásával kapcsolatos értesítések Windows virtuális gépek kezelése
 
@@ -33,7 +33,7 @@ Az Azure rendszeresen végez frissítéseket a virtuális gépeket futtató infr
 Tervezett karbantartás, amely újraindítást igényel, a regisztrálást megelőző szakaszban tanácsos van ütemezve. Egyes szakaszokban eltérő hatókörbe (régió) rendelkezik.
 
 - A szakasz egy értesítés azoknak az ügyfeleknek kezdődik. Alapértelmezés szerint az előfizetés tulajdonosa és a társtulajdonosok értesítést küld. Hozzáadhat további címzetteket, és e-mailben, SMS és Webhookok, például üzenetküldési lehetőségeket, az értesítéseket az Azure- [tevékenységnapló-riasztások](../../azure-monitor/platform/activity-logs-overview.md).  
-- Az értesítés időpontban egy *önkiszolgáló ablak* szeretné elérhetővé tenni. Ezen időszak alatt található, amely a virtuális gépek szerepelnek a wave, és proaktív módon indítsa el a karbantartási ütemezés igény szerint.
+- Az értesítés időpontban egy *önkiszolgáló ablak* szeretné elérhetővé tenni. Ennek során, amely általában négy héttel, amely a virtuális gépek szerepelnek a wave és proaktív módon indítsa el a saját igényeinek megfelelően ütemezés szerint karbantartási találja.
 - Az önkiszolgáló ablak után egy *ütemezett karbantartási időszaknál* kezdődik. Ebben az ablakban egy pontján az Azure ütemezi, és a szükséges karbantartás vonatkozik a virtuális gép. 
 
 A két windows kellene célja, hogy indítsa el a karbantartást, és a virtuális gép újraindítása közben, hogy ha az Azure automatikusan elindul, karbantartási elegendő időt biztosítanak.
@@ -89,7 +89,7 @@ Get-AzVM -ResourceGroupName rgName -Name vmName -Status
 
 A MaintenanceRedeployStatus visszaadott a következő tulajdonságokkal: 
 
-| Value | Leírás   |
+| Érték | Leírás   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Azt jelzi, hogy elindítható a karbantartás a virtuális gép jelenleg |
 | PreMaintenanceWindowStartTime         | A karbantartási önkiszolgáló időszak elején amikor karbantartási is kezdeményezhet a virtuális Gépen |

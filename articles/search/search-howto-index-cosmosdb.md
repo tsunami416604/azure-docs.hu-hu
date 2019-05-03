@@ -1,7 +1,7 @@
 ---
 title: Egy Azure Cosmos DB adatforrás - az Azure Search index
 description: Feltérképezi az Azure Cosmos DB az adatforrást, és kiolvasni az adatokat az Azure Search a kereshető teljes szöveges index. Az indexelők automatizálni adatbetöltés a kijelölt adatforrásokhoz, például az Azure Cosmos DB.
-ms.date: 02/28/2019
+ms.date: 05/02/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 019945c48342238a1caa7611bdff6d06fd1e2bd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d10a1df402fc4931c4d6cc513aa5e22cfe7ec2ba
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871719"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024723"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Az Azure Search-indexelők használatával a Cosmos DB indexelése
 
@@ -122,9 +122,8 @@ Ha kipróbálja a mongodb-hez, az adatforrás létrehozása a REST API-t kell ha
 
 A Cosmos DB-fiók választhatja ki kívánja-e a gyűjtemény összes dokumentum automatikusan indexelése. Alapértelmezés szerint minden dokumentum automatikusan indexelt, de a felhasználók bármikor kikapcsolhatják az automatikus indexeléshez. Ha az indexelés ki van kapcsolva, dokumentumok csak keresztül elérhető azok önmagukra mutató hivatkozások, vagy a lekérdezések használatával, hogy a dokumentum azonosítója. Az Azure Search van szükség a Cosmos DB automatikus indexelést, a gyűjtemény, amely indexelését az Azure Search által működnie kell. 
 
-> [!NOTE]
-> Azure Cosmos DB a DocumentDB következő generációja. Bár a termék neve megváltozott, a `documentdb` szintaxis az Azure Search indexelők még létezik-e a visszamenőleges kompatibilitás az Azure Search API-k és a portál oldalainak. Az indexelők konfigurálásakor ügyeljen arra, hogy adja meg a `documentdb` szintaxis ebben a cikkben szereplő utasítások szerint.
-
+> [!WARNING]
+> Azure Cosmos DB a DocumentDB következő generációja. API-verzióval korábban **2017-11-11** használhatja a `documentdb` szintaxist. Ez azt jelentette, hogy határozhatja meg az adatforrás típusa szerint `cosmosdb` vagy `documentdb`. API-verziótól kezdve **2019-05-06** az Azure Search API-k és a portál csak támogatja a `cosmosdb` szintaxis ebben a cikkben szereplő utasítások szerint. Ez azt jelenti, hogy kell-e az adatforrás típusa `cosmosdb` Ha szeretne egy Cosmos DB-végponthoz csatlakozik.
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 – állítsa össze a kérés bemenetek
 
@@ -150,13 +149,13 @@ A **adatforrás** megadja az index, hitelesítő adatok és az adatok (például
 
 Hozzon létre egy adatforrást, hogy állítson össze egy POST-kérelem:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [Search service admin key]
 
     {
-        "name": "mydocdbdatasource",
-        "type": "documentdb",
+        "name": "mycosmosdbdatasource",
+        "type": "cosmosdb",
         "credentials": {
             "connectionString": "AccountEndpoint=https://myCosmosDbEndpoint.documents.azure.com;AccountKey=myCosmosDbAuthKey;Database=myCosmosDbDatabaseId"
         },
@@ -172,7 +171,7 @@ A kérés törzse tartalmazza az adatforrás-definíciót, amely a következő m
 | Mező   | Leírás |
 |---------|-------------|
 | **name** | Kötelező. Válassza ki az egyik nevére, és az adatforrás-objektum képviseli. |
-|**type**| Kötelező. Meg kell `documentdb`. |
+|**type**| Kötelező. Meg kell `cosmosdb`. |
 |**Hitelesítő adatok** | Kötelező. Cosmos DB kapcsolati karakterláncnak kell lennie.<br/>SQL-gyűjteményeket, a kapcsolati karakterláncok vannak, a következő formátumban: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>MongoDB-gyűjtemény, vegye fel az **ApiKind = MongoDb** kapcsolati karakterláncot:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Kerülje a végpont URL-címben portszámokat. Ha a port számát adja meg, az Azure Search nem tudja indexelése az Azure Cosmos DB-adatbázist.|
 | **container** | A következő elemeket tartalmazza: <br/>**Név**: Kötelező. Adja meg az adatbázis-gyűjtemény azonosítója indexelése.<br/>**lekérdezés**: Választható. Megadhat egy lekérdezést egy tetszőleges JSON-dokumentumok egybesimítására indexelésére használhatja az Azure Search egybesimított sémába.<br/>A MongoDB-gyűjtemények lekérdezések nem támogatottak. |
 | **dataChangeDetectionPolicy** | Ajánlott. Lásd: [módosított dokumentumok indexelése](#DataChangeDetectionPolicy) szakaszban.|
@@ -193,7 +192,7 @@ A példában a dokumentum:
             "lastName": "hoh"
         },
         "company": "microsoft",
-        "tags": ["azure", "documentdb", "search"]
+        "tags": ["azure", "cosmosdb", "search"]
     }
 
 Szűrő lekérdezés:
@@ -219,7 +218,7 @@ Tömb összeolvasztási lekérdezés:
 
 [A cél Azure Search-index létrehozása](/rest/api/searchservice/create-index) Ha még nincs ilyen. Az alábbi példa egy azonosító és a Leírás mező indexet hoz létre:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
     api-key: [Search service admin key]
 
@@ -263,13 +262,13 @@ Győződjön meg arról, hogy a célindex sémája kompatibilis sémáját, a fo
 
 Az index és az adatforrás létrehozása után készen áll az indexelő létrehozása:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
     {
-      "name" : "mydocdbindexer",
-      "dataSourceName" : "mydocdbdatasource",
+      "name" : "mycosmosdbindexer",
+      "dataSourceName" : "mycosmosdbdatasource",
       "targetIndexName" : "mysearchindex",
       "schedule" : { "interval" : "PT2H" }
     }
@@ -334,17 +333,17 @@ Ha egy egyéni lekérdezést használ, győződjön meg róla, hogy a tulajdons�
 
 Az alábbi példa egy helyreállítható törlési házirendet hoz létre egy adatforrást:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [Search service admin key]
 
     {
-        "name": "mydocdbdatasource",
-        "type": "documentdb",
+        "name": "mycosmosdbdatasource",
+        "type": "cosmosdb",
         "credentials": {
-            "connectionString": "AccountEndpoint=https://myDocDbEndpoint.documents.azure.com;AccountKey=myDocDbAuthKey;Database=myDocDbDatabaseId"
+            "connectionString": "AccountEndpoint=https://myCosmosDbEndpoint.documents.azure.com;AccountKey=myCosmosDbAuthKey;Database=myCosmosDbDatabaseId"
         },
-        "container": { "name": "myDocDbCollectionId" },
+        "container": { "name": "myCosmosDbCollectionId" },
         "dataChangeDetectionPolicy": {
             "@odata.type": "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
             "highWaterMarkColumnName": "_ts"

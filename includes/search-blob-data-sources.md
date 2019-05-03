@@ -2,14 +2,14 @@
 author: mgottein
 ms.service: search
 ms.topic: include
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 ms.author: magottei
-ms.openlocfilehash: 4a9ed5dcb32d0e53f933b7da9163a5c8c4b4aa43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1a375c438682c7afba2c65c049810d7d7234c808
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871338"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024871"
 ---
 * PDF
 * A Microsoft Office-formátumok: DOCX/DOC, XLSX/XLS, PPTX/PPT, MSG (Outlook e-mailek)  
@@ -21,7 +21,3 @@ ms.locfileid: "60871338"
 * Egyszerű szöveges fájlok (lásd még: [egyszerű szöveges indexelési](../articles/search/search-howto-indexing-azure-blob-storage.md#IndexingPlainText))
 * JSON (lásd: [indexelő JSON-blobok](../articles/search/search-howto-index-json-blobs.md))
 * CSV (lásd: [indexelő CSV-blobok](../articles/search/search-howto-index-csv-blobs.md) előzetes verziójú funkció)
-
-> [!IMPORTANT]
-> CSV- és JSON-tömbök támogatása jelenleg előzetes verzióban érhető el. Ezek a formátumok a következők rendelkezésre álló verziója csak a **2017-11-11-Preview** a REST API vagy a verzió 7.x – előzetes verzió a .NET SDK. . Ne feledje, az előzetes verziójú API-k, tesztelési és értékelési célokra szolgálnak, és nem éles környezetekben használható.
->

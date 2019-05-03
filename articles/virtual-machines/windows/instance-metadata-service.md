@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 9097fef88a2c3c667416761c341a2e320c790121
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: f892ded46f7124237fd80fbe1e3f5e866c12f0d5
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919055"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64993069"
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás
 
@@ -640,6 +640,8 @@ openssl x509 -noout -issuer -in intermediate.pem
 openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
 ```
 
+Azokban az esetekben, ahol a köztes tanúsítvány nem tölthető le hálózati korlátok miatt érvényesítése során a köztes tanúsítvány rögzíthető. Az Azure azonban a szabványos nyilvános kulcsú infrastruktúra gyakorlatnak megfelelően tanúsítványok érvényesíti. A rögzített tanúsítványokat kell frissíteni, ha a visszaállítási keresztül történik. Minden alkalommal, amikor megváltoznak a köztes tanúsítvány frissítéséhez a tervezett, az Azure-blogban frissülni fog, és az Azure-ügyfelek értesítést kap. A köztes tanúsítványok találhatók [Itt](https://www.microsoft.com/pki/mscorp/cps/default.htm). A köztes tanúsítványokra az egyes régiókban eltérő lehet.
+
 ### <a name="failover-clustering-in-windows-server"></a>A Feladatátvételi fürtszolgáltatás a Windows Server
 
 Az egyes forgatókönyvek esetén Instance Metadata szolgáltatás feladatátvételi fürtszolgáltatás, a lekérdezés esetén szükséges útvonal hozzáadása az útválasztási táblázathoz.
@@ -686,13 +688,15 @@ route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
 ### <a name="custom-data"></a>Egyéni adatok
-Instance Metadata szolgáltatás lehetővé teszi a virtuális gép rendelkezik hozzáféréssel a saját egyéni adataihoz. A bináris adatok 64KB-nál kisebbnek kell lennie, és a virtuális gép base64-kódolású formában megadott. További információ a virtuális gép létrehozása egyéni adatokkal: [virtuális gép üzembe helyezése a CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+Instance Metadata szolgáltatás lehetővé teszi a virtuális gép rendelkezik hozzáféréssel a saját egyéni adataihoz. A bináris adatok 64 KB-nál kisebbnek kell lennie, és a virtuális gép base64-kódolású formában megadott. További információ a virtuális gép létrehozása egyéni adatokkal: [virtuális gép üzembe helyezése a CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+
+Egyéni adatok minden, a virtuális gépen futó folyamatok számára érhető el. Javasoljuk, hogy ügyfeleink nem titkos adatokat beszúrni egyéni adatok.
 
 #### <a name="retrieving-custom-data-in-virtual-machine"></a>A virtuális gép egyéni adatok beolvasása
 Instance Metadata szolgáltatás egyéni adatokat biztosít a virtuális géphez a base64-kódolású képernyőn. Az alábbi példa a base64-kódolású karakterlánc dekódolása.
 
 > [!NOTE]
-> Az ebben a példában szereplő egyéni adatoknak ASCII-karakterláncra, amely beolvassa a "Saját szupertitkos data." kerül értelmezésre.
+> Az ebben a példában szereplő egyéni adatoknak ASCII-karakterláncra, amely beolvassa a "Saját egyéni adatok." kerül értelmezésre.
 
 **Kérés**
 
@@ -703,7 +707,7 @@ curl -H "Metadata:true" "http://169.254.169.254/metadata/instance/compute/custom
 **Válasz**
 
 ```text
-My super secret data.
+My custom data.
 ```
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Példák a virtuális gép több különböző nyelvet használó metadata szolgáltatás hívása 

@@ -1,7 +1,7 @@
 ---
 title: Tartalom indexelése az Azure Table storage, az Azure Search – a teljes szöveges keresés
 description: Ismerje meg az Azure Search indexelők az Azure Table storage-ban tárolt adatok indexelése.
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: e1b411ab54a5b666849893ba9d246eff85e7e54e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5f0e7feb52b34a4bd29bef01925bf9ea8f84d7db
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871234"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024786"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Az Azure Search szolgáltatással az Azure Table storage indexelése
 Ez a cikk bemutatja, hogyan használhatja az Azure Search index, az Azure Table storage-ban tárolt adatok.
@@ -49,7 +49,7 @@ A tábla indexelése, az adatforrást a következő tulajdonságokkal kell rende
 
 Egy adatforrás létrehozása:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -81,7 +81,7 @@ Az index egy dokumentumot, az attribútumot, adja meg a mezőket, és egyéb sze
 
 Index létrehozása:
 
-    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -100,7 +100,7 @@ Az indexelő a cél keresési indexhez datasource csatlakozik, és biztosítja a
 
 Az index és az adatforrás létrehozása után készen áll az indexelő létrehozása:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -133,7 +133,7 @@ Egy táblában indexelője ütemezés szerint futtatni beállításakor azt rein
 
 Jelzi, hogy bizonyos dokumentumok el kell távolítani az indexet, használhatja a helyreállítható törlés stratégiát. Helyett egy sor törlése, adjon hozzá egy tulajdonság jelzi, hogy azt törölni, pedig az az adatforrás egy helyreállítható törlési szabályzat beállítása. Például a következő szabályzatot úgy véli, hogy egy sor törlődött, ha a sor nullértékkel rendelkezik egy tulajdonság `IsDeleted` értékkel `"true"`:
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    PUT https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 

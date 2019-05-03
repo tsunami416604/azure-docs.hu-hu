@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0e14131ce45d20b99c1b5d5885cb1eb24c975d03
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7db3292bc5f377d9728e42994dd3a437cb59958e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61290374"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024814"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman"></a>Gyors útmutató: Ismerkedés az Azure Search REST API-k Postman
 > [!div class="op_single_selector"]
@@ -63,9 +63,9 @@ Ebben a szakaszban a webes tetszőleges eszköz használatával állítsa be a k
 
 Vagy az eszköz, kell választani egy parancsot (GET, POST, PUT és így tovább), adjon meg egy URL-végpontot, és néhány feladatot, adja meg a kérelem törzsében található JSON. Teljes URL-címnek az alábbihoz hasonlóan néz ki:
 
-    https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2017-11-11
+    https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2019-05-06
 
-Figyelje meg, hogy a HTTPS-előtagot, a szolgáltatás nevét, a-objektum nevét (ebben az esetben az indexek gyűjtemény), és a [api-version](search-api-versions.md). Az api-version egy szükséges, a kisbetűs a karakterlánc a "? api-version = 2017-11-11" az aktuális verzió esetében. API-verziók a rendszeresen frissülnek. Az API-verziót minden kérelemnél adja meg, hogy teljes mértékben szabályozhassa, a rendszer mikor melyik verziót használja.  
+Figyelje meg, hogy a HTTPS-előtagot, a szolgáltatás nevét, a-objektum nevét (ebben az esetben az indexek gyűjtemény), és a [api-version](search-api-versions.md). Az api-verzió egy szükséges, a kisbetűs a karakterlánc `?api-version=2019-05-06` az aktuális verzió esetében. API-verziók a rendszeresen frissülnek. Az API-verziót minden kérelemnél adja meg, hogy teljes mértékben szabályozhassa, a rendszer mikor melyik verziót használja.  
 
 Kérelem fejléce tartalomtípusból két elemet, a tartalom típusa, valamint az api-kulcsot az Azure Search hitelesítéséhez használt:
 
@@ -85,7 +85,7 @@ Az URL-címet kell terjeszteni a `hotel` index neve.
 Ehhez a Postman:
 
 1. Módosítsa a kívánt műveleteket **PUT**
-2. Az URL-cím másolása `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2017-11-11`
+2. Az URL-cím másolása `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2019-05-06`
 3. Adja meg az index definícióját (lásd alább) a kérés törzsében.
 4. Kattintson a **küldése**
 
@@ -129,7 +129,7 @@ Az URL-címet kell terjeszteni a `docs` gyűjtemények és `index` műveletet.
 Ehhez a Postman:
 
 1. Módosítsa a kívánt műveleteket **POST**
-2. Az URL-cím másolása `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11`
+2. Az URL-cím másolása `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs/index?api-version=2019-05-06`
 3. Adja meg a JSON-dokumentumok (lásd alább) a kérés törzsében.
 4. Kattintson a **küldése**
 
@@ -219,7 +219,7 @@ Az URL-cím lekérdezési karakterláncot, megadva a következő keresési oper�
 Ehhez a Postman:
 
 + Módosítsa a kívánt műveleteket **beolvasása**
-+ Az URL-cím másolása `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`
++ Az URL-cím másolása `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2019-05-06`
 + Kattintson a **küldése**
 
 Ez a lekérdezés a „motel” kifejezést keresi, és a találatokban szereplő dokumentumok számát adja vissza. A kérések és válaszok hasonlóan kell kinéznie az alábbi képernyőképen a Postman számára kattintás után **küldése**. Az állapotkódnak 200-nak kell lennie.
@@ -228,7 +228,7 @@ Ez a lekérdezés a „motel” kifejezést keresi, és a találatokban szerepl�
 
 
 ## <a name="get-index-properties"></a>Index tulajdonságainak lekérése
-A rendszer-információk lekérdezésével a dokumentumok számát és a tárhelyhasználatot is lekérheti: `https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
+A rendszer-információk lekérdezésével a dokumentumok számát és a tárhelyhasználatot is lekérheti: `https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2019-05-06`
 
 A Postmanben a kérelem az alábbihoz fog hasonlítani, a válaszban pedig szerepleni fog a dokumentumok száma és a felhasznált lemezterület mérete bájtban megadva.
 
@@ -247,7 +247,7 @@ Ez a szakasz megegyezik a korábbi szakaszokban, csak a Fiddler közben bemutat�
 
 Állítson össze egy kérelmet, amely a következő képernyőképhez hasonlóan néz ki. Válasszon **első** parancsot. A Fiddler beszúrja a `User-Agent=Fiddler` paramétert. A két további kérelemfejléc ez alá új sorokba illeszthető be. A szolgáltatás tartalomtípusát és API-kulcsát illessze be a szolgáltatás rendszergazdai hozzáférési kulcsának használatával.
 
-A cél másolja az URL-cím egy módosított verziója: `https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2017-11-11`
+A cél másolja az URL-cím egy módosított verziója: `https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2019-05-06`
 
 ![Fiddler-kérelem fejléce][1]
 
@@ -256,7 +256,7 @@ A cél másolja az URL-cím egy módosított verziója: `https://<placeholder-fo
 
 ### <a name="1---create-an-index"></a>1 – Index létrehozása
 
-Módosítsa a kívánt műveleteket **PUT**. Másolja be az URL-cím egy módosított verziója: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2017-11-11`. Másolja az indexdefiníciót a kérelemtörzsbe fent megadott. Az oldalon az alábbi képernyőfelvételhez hasonlóan kell kinéznie. Kattintson a **Execute** felső jobb a befejezett kérelem elküldéséhez.
+Módosítsa a kívánt műveleteket **PUT**. Másolja be az URL-cím egy módosított verziója: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2019-05-06`. Másolja az indexdefiníciót a kérelemtörzsbe fent megadott. Az oldalon az alábbi képernyőfelvételhez hasonlóan kell kinéznie. Kattintson a **Execute** felső jobb a befejezett kérelem elküldéséhez.
 
 ![Fiddler-kérelem törzse][7]
 
@@ -272,11 +272,11 @@ A következő példalekérdezés az [A keresési index működése (Azure Search
 
 **A szóközök cseréje előtt (a „lastRenovationDate desc” részben):**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2019-05-06
 
 **A szóközök + jelre cserélése után (a „lastRenovationDate+desc” részben):**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2017-11-11
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2019-05-06
 
 ### <a name="tips-for-viewing-index-statistic-in-fiddler"></a>Tippek az indexstatisztikák Fiddlerben történő megtekintéséhez
 

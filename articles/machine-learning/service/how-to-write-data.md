@@ -10,18 +10,21 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 12/04/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 92f04d80ea956f3036d7778a5d6de62e53b969ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8644c2c0d4ee5b6ee4dcf16e470e4f2fa478237
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817373"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023724"
 ---
-# <a name="write-and-configure-data-using-azure-machine-learning"></a>Írhat, és konfigurálja az adatok Azure Machine Learning segítségével
+# <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Írási és az adatokat az Azure Machine Learning Data Prep SDK konfigurálása
 
 Ebből a cikkből megtudhatja, különböző módszerekkel használata az adatok írása a [Azure Machine Learning Data Prep Python SDK](https://aka.ms/data-prep-sdk) és konfigurálása, hogy az adatok a [Azure Machine Learning SDK for Pythont](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).  Kimeneti adatok csak írható egy adatfolyam bármely pontján. Írási műveletek bekerülnek a futás az eredményül kapott adatokat a folyamat lépéseit, és ezeket a lépéseket minden alkalommal, amikor az adatok folyamatfuttatási jogosultságot. Adatok írása párhuzamos írások engedélyezéséhez több partíció-fájlt.
+
+> [!Important]
+> Ha egy új megoldást épít, próbálja meg a [Azure Machine Learning adatkészletek](how-to-explore-prepare-data.md) (előzetes verzió) az adatok, a pillanatkép adatainak átalakításához, és tárolja a rendszerverzióval ellátott adatkészlet-definíciókban. Az adatkészletek az adatelőkészítés adatkészleteket az AI-megoldások kezelésével kapcsolatos bővített funkciókat kínáló, SDK következő verziójában.
 
 Mivel ebben az esetben nincs korlátozás hány írása lépéseket egy folyamatban vannak, könnyen adhat hozzá további írási lépéseket a köztes eredményeket hibaelhárítási vagy egyéb folyamatokhoz.
 

@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 21c75c0f377f55614e2c7fa0bb27628cf598e3e7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 43c072cb72935a80da0e48e6b8343f38ee08876b
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924589"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023960"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jellemzőalapú navigáció megvalósítása az Azure Search-ben
 Jellemzőalapú navigáció egy szűrési mechanizmus, amely alkalmazások keresése az önállóan irányított drilldown navigációs biztosít. A kifejezés "jellemzőalapú navigáció" ismeretlen, de valószínűleg felhasználta előtt. Ahogy az alábbi példa bemutatja, a jellemzőalapú navigáció má hodnotu nothing több, mint az eredmények szűréséhez használt kategóriák.
 
  ![Az Azure Search feladat portál bemutató][1]
 
-Jellemzőalapú navigáció egy másik belépési pont keresése. Ez egy kényelmes alternatívát nyújt a kézzel beírja az összetett keresési kifejezéseket. Értékkorlátozással segítségével keresse meg azt, amit keres, közben biztosítva, hogy eredmény nem kap. A fejlesztők értékkorlátozással lehetővé teszik elérhetővé a leghasznosabb keresési feltételeknek, a keresési forrásgyűjteményébe navigáláshoz. Online kereskedelmi alkalmazások, a jellemzőalapú navigáció gyakran beépített márkákat, szervezeti egységek (gyerek a cipőeladásai), méret, ár, népszerűsége és minősítések keresztül. 
+Jellemzőalapú navigáció egy másik belépési pont keresése. Ez egy kényelmes alternatívát nyújt a kézzel beírja az összetett keresési kifejezéseket. Értékkorlátozással segítségével keresse meg azt, amit keres, közben biztosítva, hogy eredmény nem kap. A fejlesztők értékkorlátozással lehetővé teszik elérhetővé a leghasznosabb keresési feltételeknek való navigáláshoz az search-index. Online kereskedelmi alkalmazások, a jellemzőalapú navigáció gyakran beépített márkákat, szervezeti egységek (gyerek a cipőeladásai), méret, ár, népszerűsége és minősítések keresztül. 
 
 Jellemzőalapú navigáció megvalósítása között a keresési technológiák eltérő. Az Azure Search szolgáltatásban jellemzőalapú navigáció lekérdezéskor a beépített, amely a séma teljesítménykapacitást mezőkkel.
 

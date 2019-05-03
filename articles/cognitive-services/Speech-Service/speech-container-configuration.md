@@ -1,0 +1,148 @@
+---
+title: Beszédfelismerési tárolókhoz konfigurálása
+titleSuffix: Azure Cognitive Services
+description: A beszédfelismerés tároló
+services: cognitive-services
+author: diberry
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: speech-service
+ms.topic: conceptual
+ms.date: 05/07/2019
+ms.author: diberry
+ms.openlocfilehash: 424396c7b92fb58993c74e672c4c3ea9c8f814c7
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65026221"
+---
+# <a name="configure-speech-service-containers"></a>Beszédszolgáltatás tárolók konfigurálása
+
+Beszédfelismerési tárolókhoz ügyfeleink hozhat létre egy beszéd architektúra, amely hatékony felhő képességeit és a peremhálózati helye előnyeinek kihasználása érdekében optimalizáltuk. Mostantól támogatjuk a két speech-tárolók **hang-szöveg transzformációs** és **szöveg-hang transzformációs**. 
+
+A **Speech** tároló-futtatókörnyezet használatával lett konfigurálva a `docker run` parancssori argumentumokat. Ez a tároló rendelkezik néhány választható beállítások mellett számos szükséges beállításokat. Több [példák](#example-docker-run-commands) a parancs érhetők el. A tároló-specifikus beállítások a számlázási beállításokat is. 
+
+# <a name="configuration-settings"></a>Konfigurációs beállítások
+
+[!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
+
+> [!IMPORTANT]
+> A [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), és [ `Eula` ](#eula-setting) beállítások együtt használja, és meg kell adnia az érvényes értékek mindhárom azokat; egyéb a tároló nem indul el. Egy tároló példányosítása a konfigurációs beállítások használatával kapcsolatos további információkért lásd: [számlázási](speech-container-howto.md#billing).
+
+## <a name="apikey-configuration-setting"></a>Konfigurációs beállítás apikey tulajdonsággal végzett tesztelése
+
+A `ApiKey` beállítás határozza meg a számlázási adatokat tároló nyomon követésére használt Azure-erőforrás kulcs. Meg kell adnia egy értéket a apikey tulajdonsággal végzett tesztelése és az értéknek kell lennie egy érvényes kulcsot a _Speech_ megadott erőforrás a [ `Billing` ](#billing-configuration-setting) konfigurációs beállítás.
+
+Ez a beállítás a következő helyen található:
+
+* Az Azure Portalon: **A beszédfelismerés** erőforrás-kezelés alatt **kulcsok**
+
+## <a name="applicationinsights-setting"></a>Applicationinsights – beállítás
+
+[!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
+
+## <a name="billing-configuration-setting"></a>Számlázási konfigurációs beállítás
+
+A `Billing` beállítás határozza meg a végpont URI-t, a _Speech_ erőforrást az Azure-ban használt mérni a tároló számlázási adatokat. Meg kell adnia egy értéket a konfigurációs beállítás, és az értéknek kell lennie egy érvényes végpont URI-t a egy _Speech_ erőforrást az Azure-ban. A tároló használati jelentések kapcsolatos 10 – 15 percenként.
+
+Ez a beállítás a következő helyen található:
+
+* Az Azure Portalon: **A beszédfelismerés** áttekintése, címkével `Endpoint`
+
+|Szükséges| Name (Név) | Adattípus | Leírás |
+|--|------|-----------|-------------|
+|Igen| `Billing` | Karakterlánc | A számlázás végpont URI azonosítója<br><br>Példa:<br>`Billing=https://westus.api.cognitive.microsoft.com/sts/v1.0` |
+
+## <a name="eula-setting"></a>Licencfeltételek beállítása
+
+[!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
+
+## <a name="fluentd-settings"></a>Fluentd beállításai
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
+
+## <a name="logging-settings"></a>Naplózási beállítások
+ 
+[!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
+
+## <a name="mount-settings"></a>Csatlakoztatási beállítások
+
+Kötés használatát csatlakoztatja az adatok olvasását és írását, és a tárolóból. Megadhat egy bemeneti csatlakoztatási vagy csatlakoztatási kimeneti megadásával a `--mount` beállítást a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) parancsot.
+
+A beszédfelismerési tárolókhoz ne használja a bemeneti vagy kimeneti csatlakoztatja képzési vagy szolgáltatás adatok tárolására. 
+
+A gazdagép csatlakoztatási helye a pontos szintaxisa a gazdagép operációs rendszere függően változik. Ezenkívül a [gazdaszámítógép](speech-container-howto.md#the-host-computer)a csatlakoztatási helye nem lehet elérni a docker szolgáltatás fiókja által használt engedélyek közötti ütközés miatt, és a gazdagép csatlakoztatásához hely engedélyeket. 
+
+|Optional| Name (Név) | Adattípus | Leírás |
+|-------|------|-----------|-------------|
+|Nem engedélyezett| `Input` | String | Beszédfelismerési tárolókhoz ez nem használható.|
+|Optional| `Output` | String | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`. Ez az a hely a naplófájlok. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
+
+## <a name="example-docker-run-commands"></a>Példa docker-parancsok futtatása 
+
+Az alábbi példák bemutatják, hogyan írhat, és használja a konfigurációs beállítások segítségével `docker run` parancsokat.  Ha fut, a tároló továbbra is fut, amíg ki nem [leállítása](speech-container-howto.md#stop-the-container) azt.
+
+* **Vonal-folytatási karakter**: Az alábbi szakaszok a Docker-parancsokat használhatja a fordított perjel `\`, egy sor folytatási karaktert. Cserélje le, vagy távolítsa el ezt a gazdagép operációs rendszerre vonatkozó követelmények alapján. 
+* **Argument sorrend**: Ne módosítsa az argumentumok sorrendje, kivéve, ha nagyon ismeri a Docker-tárolókat.
+
+Cserélje le a(z)_argument_name_} a saját értékeire:
+
+| Helyőrző | Érték | Formátum vagy példa |
+|-------------|-------|---|
+|{BILLING_KEY} | A végpont kulcs, a beszéd erőforrás. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{BILLING_ENDPOINT_URI} | A számlázási végpontértéknek többek között a régióban.|`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+
+> [!IMPORTANT]
+> A `Eula`, `Billing`, és `ApiKey` beállítások meg kell adni a tároló futtatásához; ellenkező esetben a tároló nem indul el.  További információkért lásd: [számlázási](#billing-configuration-setting).
+> Apikey tulajdonsággal végzett tesztelése értéke a **kulcs** Azure Speech erőforrás kulcsok lapjáról. 
+
+## <a name="speech-container-docker-examples"></a>Beszéd tároló Docker-példák
+
+Az alábbi Docker-példák a Speech tároló is. 
+
+### <a name="basic-example-for-speech-to-text"></a>Alapszintű példa a beszéd szöveggé
+
+```Docker
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
+containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
+Eula=accept \
+Billing={BILLING_ENDPOINT_URI} \
+ApiKey={BILLING_KEY}   
+```
+
+### <a name="basic-example-for-text-to-speech"></a>Alapszintű példa a szöveg-beszéd átalakítás
+
+```Docker
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
+containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
+Eula=accept \
+Billing={BILLING_ENDPOINT_URI} \
+ApiKey={BILLING_KEY}  
+```
+
+### <a name="logging-example-for-speech-to-text"></a>Naplózás példa a beszéd szöveggé
+
+```Docker
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
+containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
+Eula=accept \
+Billing={BILLING_ENDPOINT_URI} \
+ApiKey={BILLING_KEY}   
+  Logging:Console:LogLevel:Default=Information
+```
+
+### <a name="logging-example-for-text-to-speech"></a>Példa a szöveg-beszéd átalakítás naplózása
+
+```Docker
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
+containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
+Eula=accept \
+Billing={BILLING_ENDPOINT_URI} \
+ApiKey={BILLING_KEY}  
+  Logging:Console:LogLevel:Default=Information
+```
+
+## <a name="next-steps"></a>További lépések
+
+* Felülvizsgálat [telepítéséről és a tárolókat futtatják](speech-container-howto.md)

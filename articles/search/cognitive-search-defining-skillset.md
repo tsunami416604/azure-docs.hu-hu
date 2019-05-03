@@ -7,19 +7,19 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 9369e076517e295a7d17011e024353614ec8ad46
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9eedf0be6089764c8111ae81d558f7e65af0a66d
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61344545"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021789"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Egy képességcsoport létrehozása Adatbővítés folyamatban
 
-Cognitive search ad eredményül, és bővíti, hogy az Azure Search a kereshető adatok. Kibontási-felderítési bővítést lépéseket nevezzük *kognitív képességeket*, kombinált be egy *indexmezők* hivatkozott az indexelés során. A képességek alkalmazási lehetőségét használható [képességek az előre meghatározott](cognitive-search-predefined-skills.md) vagy egyéni képesség (lásd: [példa: hozzon létre egy egyéni ismeretek](cognitive-search-create-custom-skill-example.md) további információt).
+Cognitive search ad eredményül, és bővíti, hogy az Azure Search a kereshető adatok. Kibontási-felderítési bővítést lépéseket nevezzük *kognitív képességeket*, kombinált be egy *indexmezők* hivatkozott az indexelés során. A képességek alkalmazási lehetőségét használható [beépített képességek](cognitive-search-predefined-skills.md) vagy egyéni képesség (lásd: [példa: hozzon létre egy egyéni ismeretek](cognitive-search-create-custom-skill-example.md) további információt).
 
 Ebből a cikkből elsajátíthatja, hogyan hozhat létre a használni kívánt képességek Adatbővítés folyamatot. A képességek alkalmazási lehetőségét csatolva van egy Azure Search [indexelő](search-indexer-overview.md). Folyamat tervezése, a cikkben szereplő egyik összetevője van hozhat létre, a képességek alkalmazási lehetőségét magát. 
 
@@ -57,7 +57,7 @@ Az ábrán a *dokumentumfeltörést* lépés automatikusan megtörténik. Alapve
 A képességek alkalmazási lehetőségét képességek tömbként van definiálva. Minden képzettségi kimeneteinek forrását és a állítanak nevét határozza meg. Használatával a [indexmezők REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-skillset), akkor is képességcsoport megadása, amely megfelel az előző ábrának: 
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2017-11-11-Preview
+PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -69,7 +69,7 @@ Content-Type: application/json
   "skills":
   [
     {
-      "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
       "context": "/document",
       "categories": [ "Organization" ],
       "defaultLanguageCode": "en",
@@ -138,11 +138,11 @@ A képességek alkalmazási lehetőségét létrehozásakor megadhat egy leírá
 }
 ```
 
-A következő darab készségeitől a képességek egy tömb. Mint egy primitívet felderítési bővítést az egyes szakértelem is felfoghatók. Minden képzettségi kis feladat ebben az adatcsatornában Adatbővítés hajt végre. Mindegyik veszi a bemenetnek (vagy egy bemeneteinek), és néhány kimenetek adja vissza. A következő néhány szakaszban koncentrálhat, előre meghatározott és egyéni ismeretek képességek együtt láncolási bemeneti és kimeneti hivatkozások útján megadása. Bemenetek forrásadatok vagy egy másik szakértelem származhatnak. Kimenetek lehet rendelve egy mezőt a keresési index vagy alsóbb rétegbeli szakértelem bemeneteként használja.
+A következő darab készségeitől a képességek egy tömb. Mint egy primitívet felderítési bővítést az egyes szakértelem is felfoghatók. Minden képzettségi kis feladat ebben az adatcsatornában Adatbővítés hajt végre. Mindegyik veszi a bemenetnek (vagy egy bemeneteinek), és néhány kimenetek adja vissza. A következő néhány szakaszban koncentrálhat, beépített és egyéni ismeretek képességek együtt láncolási bemeneti és kimeneti hivatkozások útján megadása. Bemenetek forrásadatok vagy egy másik szakértelem származhatnak. Kimenetek lehet rendelve egy mezőt a keresési index vagy alsóbb rétegbeli szakértelem bemeneteként használja.
 
-## <a name="add-predefined-skills"></a>Adja hozzá az előre megadott képesség
+## <a name="add-built-in-skills"></a>Beépített ismeretek hozzáadása
 
-Nézzük meg az első szakértelem, amely az előre meghatározott [entitások felismerése szakértelem](cognitive-search-skill-entity-recognition.md):
+Nézzük meg az első szakértelem, amely a beépített [entitások felismerése szakértelem](cognitive-search-skill-entity-recognition.md):
 
 ```json
     {
@@ -165,11 +165,11 @@ Nézzük meg az első szakértelem, amely az előre meghatározott [entitások f
     }
 ```
 
-* Minden előre meghatározott szakértelem rendelkezik `odata.type`, `input`, és `output` tulajdonságait. Ismeretek jellemző tulajdonságok a képzettségi alkalmazható további információkkal szolgálnak. Az entitások felismerése `categories` egy entitás között, hogy felismerje a pretrained modell entitástípusok készletét.
+* Minden beépített szakértelem rendelkezik `odata.type`, `input`, és `output` tulajdonságait. Ismeretek jellemző tulajdonságok a képzettségi alkalmazható további információkkal szolgálnak. Az entitások felismerése `categories` egy entitás között, hogy felismerje a pretrained modell entitástípusok készletét.
 
-* Minden képzettségi rendelkeznie kell egy ```"context"```. A környezet, amellyel műveletek egy szintjét jelöli. A fenti szakértelem összefüggésben a teljes dokumentum, ami azt jelenti, hogy a nevesített entitások felismerése szakértelem / dokumentum egyszer neve. Kimenetek is előállítása ezen a szinten. Pontosabban ```"organizations"``` jönnek létre, amelynek ```"/document"```. Az alsóbb rétegbeli képességeit, tekintse meg az újonnan létrehozott adatokat, mint ```"/document/organizations"```.  Ha a ```"context"``` mező értéke nem explicit módon, az alapértelmezett környezet a dokumentumot.
+* Minden képzettségi rendelkeznie kell egy ```"context"```. A környezet, amellyel műveletek egy szintjét jelöli. A fenti szakértelem összefüggésben a teljes dokumentum, ami azt jelenti, hogy az entitások felismerése szakértelem / dokumentum egyszer neve. Kimenetek is előállítása ezen a szinten. Pontosabban ```"organizations"``` jönnek létre, amelynek ```"/document"```. Az alsóbb rétegbeli képességeit, tekintse meg az újonnan létrehozott adatokat, mint ```"/document/organizations"```.  Ha a ```"context"``` mező értéke nem explicit módon, az alapértelmezett környezet a dokumentumot.
 
-* A szakértelem rendelkezik úgynevezett "szöveg", a bemeneti forrás vannak beállítva egy bemeneti ```"/document/content"```. A szakértelem (megnevezett entitások felismerése) működik a *tartalom* az Azure blob indexelőjével által létrehozott minden egyes dokumentum, amely standard mezőket a mező. 
+* A szakértelem rendelkezik úgynevezett "szöveg", a bemeneti forrás vannak beállítva egy bemeneti ```"/document/content"```. A szakértelem (entitások felismerése) működik a *tartalom* az Azure blob indexelőjével által létrehozott minden egyes dokumentum, amely standard mezőket a mező. 
 
 * A szakértelem rendelkezik egy kimeneti nevű ```"organizations"```. Kimenetek létezik csak a feldolgozás során. Ez a kimenet egy alsóbb rétegbeli szakértelem bemeneti összekapcsolja, hivatkozhat a kimenetben: ```"/document/organizations"```.
 
@@ -229,13 +229,13 @@ Az egyéni a Bing entity search enricher szerkezete visszahívása:
     }
 ```
 
-Ez a definíció egy [egyéni ismeretek](cognitive-search-custom-skill-web-api.md) meghív egy webes API-t a Adatbővítés folyamat részeként. Minden egyes szervezet elnevezett entitásfelismeréssel által azonosított szakértelem meghívja a webes API-k az adott szervezet leírását találja. A vezénylés, hogy mikor hívja a webes API-t és a flow a kapott információkat a Adatbővítés motor belsőleg kezeli. Az inicializálás szükséges az egyéni API hívása azonban a JSON-(például uri, hiba a httpHeaders és a várt bemenet) kötelező megadni. Egyéni webes API-k a Adatbővítés folyamat létrehozásakor útmutatásért lásd: [egy egyéni felületen definiálása](cognitive-search-custom-skill-interface.md).
+Ez a definíció egy [egyéni ismeretek](cognitive-search-custom-skill-web-api.md) meghív egy webes API-t a Adatbővítés folyamat részeként. Minden egyes szervezet entitások felismerése által azonosított szakértelem meghívja a webes API-k az adott szervezet leírását találja. A vezénylés, hogy mikor hívja a webes API-t és a flow a kapott információkat a Adatbővítés motor belsőleg kezeli. Az inicializálás szükséges az egyéni API hívása azonban a JSON-(például uri, hiba a httpHeaders és a várt bemenet) kötelező megadni. Egyéni webes API-k a Adatbővítés folyamat létrehozásakor útmutatásért lásd: [egy egyéni felületen definiálása](cognitive-search-custom-skill-interface.md).
 
 Figyelje meg, hogy a "környezet" mező értéke ```"/document/organizations/*"``` csillaggal, tehát a Adatbővítés lépést nevezzük *minden* a szervezet ```"/document/organizations"```. 
 
 A kimenet, ebben az esetben egy cég leírása jön létre minden egyes szervezet azonosított. A leírást (például a kulcsfontosságú kifejezések kinyerése) egy alsóbb rétegbeli lépésben kontextusban való megnevezésekor az elérési utat használja ```"/document/organizations/*/description"``` ennek a végrehajtására. 
 
-## <a name="enrichments-create-structure-out-of-unstructured-information"></a>Végrehajtott információbeolvasás kívül strukturálatlan adatokat struktúra létrehozása
+## <a name="add-structure"></a>Adja hozzá a struktúra
 
 A képességek alkalmazási lehetőségét strukturálatlan adatok strukturált adatokat állít elő. Vegye figyelembe az alábbi példában:
 
@@ -245,9 +245,38 @@ Valószínűleg eredménye az alábbi ábrához hasonló létrehozott struktúr�
 
 ![Minta kimeneti struktúra](media/cognitive-search-defining-skillset/enriched-doc.png "minta kimeneti struktúra")
 
-Ne felejtse el, hogy ez a struktúra történik. Ez a diagram a kód ténylegesen nem lehet lekérdezni.
+Eddig ez a struktúra már csak belső csak memória és foglalt csak az Azure Search-indexek. A Tudásbázis-tárolók hozzáadása lehetőséget nyújt a keresési kívül használatra átalakított végrehajtott információbeolvasás mentéséhez.
+
+## <a name="add-a-knowledge-store"></a>A Tudásbázis tároló hozzáadása
+
+[Tudásbázis Store](knowledge-store-concept-intro.md) előzetes verziójú szolgáltatása, az Azure Search szolgáltatásban a jelentéstétellel dokumentum mentéséhez. Tudásbázis áruházbeli hoz létre, amely egy Azure storage-fiók használatával a tárházat, ahol a bővített adatok hajtanak végre. 
+
+Tudásbázis store definici hozzáadódik a képességek alkalmazási lehetőségét. A teljes folyamat leírását lásd: [hogyan kezdheti el a Tudásbázis store](knowledge-store-howto.md).
+
+```json
+"knowledgeStore": {
+  "storageConnectionString": "<an Azure storage connection string>",
+  "projections" : [
+    {
+      "tables": [ ]
+    },
+    {
+      "objects": [
+        {
+          "storageContainer": "containername",
+          "source": "/document/EnrichedShape/",
+          "key": "/document/Id"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Ha szeretné, a képi elemekben gazdag dokumentumok mentésére táblákként őrződnek meg hierarchikus kapcsolatok vagy blob storage-ban JSON-dokumentumok formájában. Kimeneti bármelyik készségeitől a tudását a kivetítéshez bemenetként is beolvasva. Ha a projekt az adatokat egy adott be szeretne alakzat-, a frissített [shaper szakértelem](cognitive-search-skill-shaper.md) most modellezhetik az összetett típusokat kell használnia. 
 
 <a name="next-step"></a>
+
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy Ön ismeri a Adatbővítés folyamat és szakértelmével, folytassa [való hivatkozáshoz egy indexmezők széljegyzetet hogyan](cognitive-search-concept-annotations-syntax.md) vagy [kimenetek leképezése az indexben lévő mezők](cognitive-search-output-field-mapping.md). 

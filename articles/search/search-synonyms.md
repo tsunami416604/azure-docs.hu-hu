@@ -6,16 +6,16 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 05/02/2019
 manager: jlembicz
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 4383cc327d8058ca44acd892f41a7a256e3b1727
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 567124f50745080da12178a458957a0f6c8266b5
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61281802"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024317"
 ---
 # <a name="synonyms-in-azure-search"></a>Az Azure Search szolgáltatásban a szinonimák
 
@@ -23,11 +23,13 @@ A keresőmotorok szinonimák társítsa egyenértékű kifejezéseket, amely imp
 
 Az Azure Search szolgáltatásban a szinonima bővítése lekérdezések során történik. Szolgáltatás, amely nincs meglévő műveletek megszakadását szinonimatérképet is hozzáadhat. Hozzáadhat egy **synonymMaps** anélkül, hogy kellene építenie az indexet egy mező definition tulajdonságát.
 
-## <a name="feature-availability"></a>Szolgáltatások rendelkezésre állása
+## <a name="create-synonyms"></a>A szinonimák létrehozása
 
-A szinonimák támogatja a legújabb api-verzió (api-version = 2017-11-11). Jelenleg nincs Azure Portal-támogatás.
+Nem szinonimák létrehozására szolgáló portál támogatott, de a REST API vagy .NET SDK-t is használhatja. REST – első lépések, azt javasoljuk [a postmannel](search-fiddler.md) és az API-kérések kialakításában: [Hozzon létre Szinonimatérképet](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). A C# fejlesztők, megkezdheti az [szinonimák hozzáadása az Azure-keresés- C# ](search-synonyms-tutorial-sdk.md).
 
-## <a name="how-to-use-synonyms-in-azure-search"></a>Az Azure Search szolgáltatásban a szinonimák használata
+Igény szerint ha használ [ügyfél által felügyelt kulcsokat](search-security-manage-encryption-keys.md) Szolgáltatásoldali titkosítás inaktív, a alkalmazhat protection által a szinonimatérkép tartalmát.
+
+## <a name="use-synonyms"></a>A szinonimák használata
 
 Az Azure Search szolgáltatásban a szinonima támogatási szinonimatérképet, amely meghatározza, és töltse fel a szolgáltatás alapul. Ezeket a térképeket (például indexek vagy adatforrások) egy független erőforrást alkotnak, és használhatja a keresési szolgáltatásban lévő bármely indexben bármely kereshető mezőjében.
 
@@ -49,7 +51,7 @@ Szinonimatérképet az alábbiakban ismertetett Apache Solr formátumúnak kell 
 
 Létrehozhat egy új szinonimatérképet HTTP POST, használja az alábbi példában látható módon:
 
-    POST https://[servicename].search.windows.net/synonymmaps?api-version=2017-11-11
+    POST https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
     api-key: [admin key]
 
     {
@@ -62,7 +64,7 @@ Létrehozhat egy új szinonimatérképet HTTP POST, használja az alábbi péld�
 
 Másik lehetőségként a PUT, és adja meg a szinonimát leképezés nevét az URI-t. Ha nem létezik a szinonimatérkép, létrejön.
 
-    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
+    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
     {
@@ -81,31 +83,31 @@ USA, United States, United States of America
 
 A fenti keresési lekérdezést a szabály az "USA" bővített "USA" vagy "Egyesült Államok" vagy "Az Amerikai Egyesült Államok".
 
-Explicit leképezés nyíl helyén "= >". Megadása esetén egy keresési lekérdezést, amely megfelel a bal oldali az előfizetési időszak sorozatát "= >" váltja fel a lehetőségeket, a jobb oldalon. Adja meg az alábbi szabály, keresési lekérdezéseket "Washington", "Wash." vagy a "WA" az összes felülíródik a "WA". Explicit leképezés csak a megadott irányba vonatkozik, és nem írja újra a lekérdezést a "Washington" a "WA" Ebben az esetben.
+Explicit leképezés nyíl helyén "= >". Megadása esetén egy keresési lekérdezést, amely megfelel a bal oldalon az előfizetési időszak sorozatát "= >" váltja fel a lehetőségeket, a jobb oldalon. Adja meg az alábbi szabály, keresési lekérdezéseket "Washington", "Wash." vagy a "WA" az összes felülíródik a "WA". Explicit leképezés csak a megadott irányba vonatkozik, és nem írja újra a lekérdezést a "Washington" a "WA" Ebben az esetben.
 ```
 Washington, Wash., WA => WA
 ```
 
 #### <a name="list-synonym-maps-under-your-service"></a>Lista szinonimát leképezi a szolgáltatás alatt.
 
-    GET https://[servicename].search.windows.net/synonymmaps?api-version=2017-11-11
+    GET https://[servicename].search.windows.net/synonymmaps?api-version=2019-05-06
     api-key: [admin key]
 
 #### <a name="get-a-synonym-map-under-your-service"></a>A szolgáltatás alatt egy szinonimatérképet beolvasása.
 
-    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
+    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
 #### <a name="delete-a-synonyms-map-under-your-service"></a>A szolgáltatás alatt a szinonimák leképezés törlése.
 
-    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
+    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2019-05-06
     api-key: [admin key]
 
 ### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>A szinonimatérkép indexdefinícióban használandó kereshető mező konfigurálása.
 
 Új mező tulajdonság **synonymMaps** egy szinonimatérképet egy kereshető mező használandó megadásához használható. Szinonimatérképet szolgáltatási szint erőforrások és a szolgáltatásban az index bármely mező alapján lehet rá hivatkozni.
 
-    POST https://[servicename].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[servicename].search.windows.net/indexes?api-version=2019-05-06
     api-key: [admin key]
 
     {

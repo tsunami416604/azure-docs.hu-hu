@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 04/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 76567db7362298b5cd35b544bf7952ebc54a2b66
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 712b5a003d3542908698d7b69c636780f6cf1007
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723208"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021721"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Oktatóanyag: Betanításához egy kép osztályozási modell Azure Machine Learning szolgáltatással
 
@@ -45,31 +45,29 @@ Ugrás a [a fejlesztési környezet beállítása](#start) olvassa végig a note
 * Egy Python 3.6-os notebook kiszolgálót a következőkkel:
     * Az Azure Machine Learning SDK a Pythonhoz
     * `matplotlib` és `scikit-learn`
-* Az oktatóanyag notebook és a fájl utils.py
-* A machine learning-munkaterület 
-* A konfigurációs fájl ugyanabban a könyvtárban, a notebookot a munkaterület számára 
+* Az oktatóanyag jegyzetfüzet és a fájl **utils.py**
+* A machine learning-munkaterület
+* A konfigurációs fájl ugyanabban a könyvtárban, a notebookot a munkaterület számára
 
 Ezekről az előfeltételekről le az alábbi szakaszok egyikét.
  
-* Használat [Azure notebookok](#azure) 
+* Használja a [felhőalapú notebook server a munkaterületen](#azure) 
 * Használat [saját notebook server](#server)
 
-### <a name="azure"></a>Az Azure notebookok használata: Ingyenes Jupyter notebookok a felhőben
+### <a name="azure"></a>A munkaterület egy felhőbeli notebook server használata
 
-Nem kell mást Azure notebookok használatának megkezdéséhez. A [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) már telepítve és konfigurálva van az Ön számára [Azure notebookok](https://notebooks.azure.com/). A telepítés és a jövőbeli frissítések automatikusan felügyelt Azure-szolgáltatások használatával.
-
-Miután elvégezte az alábbi lépéseket, futtassa a **oktatóanyagok/img – osztályozás – 1-training.ipynb** a notebook a **első lépések** projekt.
+Is könnyen a saját felhőalapú notebook server használatának első lépései. A [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) már telepítve és konfigurálva van az Ön számára a felhőalapú erőforrás létrehozása után.
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+* Miután a notebook weblap indításához nyissa meg a **oktatóanyagok/img – osztályozás – 1-training.ipynb** notebookot.
 
 
 ### <a name="server"></a>A saját Jupyter notebook server használata
 
-Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen. 
-
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
- Miután végrehajtotta a lépéseket, futtassa a **oktatóanyagok/img – osztályozás – 1-training.ipynb** notebookot.
+ Miután végrehajtotta a lépéseket, futtassa a **oktatóanyagok/img – osztályozás – 1-training.ipynb** Notebookban, a klónozott könyvtárra.
 
 ## <a name="start"></a>A fejlesztési környezet beállítása
 

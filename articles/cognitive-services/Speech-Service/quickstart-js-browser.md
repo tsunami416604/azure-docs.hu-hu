@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: a418966ce72876d58d39b939ecb7dd5a05e41b9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bda38825cd65f1d44b497de1445ead5689428917
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621981"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020729"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Gyors útmutató: A JavaScript beszédfelismerést egy böngészőben, a beszéd SDK-val
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Ez a cikk azt mutatja be, hogyan hozhat létre egy webhelyet, amely a Cognitive Services Speech SDK JavaScript-kötésével írja át a beszédet szöveggé.
-Az alkalmazás JavaScript alapul a Speech SDK ([letöltési verzióra 1.4.0-s](https://aka.ms/csspeech/jsbrowserpackage)).
+Az alkalmazás JavaScript alapul a Speech SDK ([letöltési verzióra 1.5.0](https://aka.ms/csspeech/jsbrowserpackage)).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

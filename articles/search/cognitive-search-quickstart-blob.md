@@ -1,22 +1,22 @@
 ---
-title: 'Gyors útmutató: Hozhat létre a mesterséges Intelligencia által működtetett adatfeltöltéssel az Azure portal – Azure Search'
+title: 'Gyors útmutató: Az Azure portal – Azure Search-AI bővített index létrehozása'
 description: Adatok kinyerése, természetes nyelvi és feldolgozási képességek egy Azure Search-indexelő portálon az Azure portal használatával, és az adatokat.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 161d3ff3e00f7e9e979527533f6b8ac365c41490
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb029530d2c6cdac82fd0d257e10717386eebf0e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61345364"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65022100"
 ---
-# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-and-sample-data"></a>Gyors útmutató: Hozzon létre egy olyan kognitív képességekkel és mintaadatok használatával AI indexelése folyamat
+# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Gyors útmutató: Kognitív képességek segítségével az Azure Search-AI indexelési folyamat létrehozása
 
 Integrálható az Azure Search [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), a tartalom kivonása, természetes nyelvi feldolgozást (NLP) és feldolgozási képességek kép hozzáadása egy Azure Search-indexelő folyamatot, így unsearchable vagy strukturálatlan tartalom több kereshető. 
 
@@ -30,12 +30,12 @@ Ebben a rövid útmutatóban a felderítési bővítést az első folyamat létr
 > * Futtassa a varázslót (egy entitásképesség észleli a személyeket, a tartózkodási helyet és a szervezeteket)
 > * Használat [ **keresési ablak** ](search-explorer.md) a bővített adatok lekérdezése
 
-Ez a rövid útmutató az ingyenes szolgáltatás fut, de az ingyenes tranzakciók száma korlátozott a naponta 20 dokumentumokhoz. Ha azt szeretné, ez a rövid útmutató egynél többször futtatása ugyanazon a napon, használja az egy kisebb fájlt, hogy a további futtatási illeszkednek.
+Ez a rövid útmutató az ingyenes szolgáltatás fut, de az ingyenes tranzakciók száma korlátozott a naponta 20 dokumentumokhoz. Ha szeretné futtatni ebben a rövid, több mint minden, egy kisebb fájlt, hogy a további futtatási elhelyezhessen használja.
 
 > [!NOTE]
-> Növelje a feldolgozása, további dokumentumok hozzáadása, illetve további AI-algoritmusokat hozzáadása gyakorisága bontsa ki a hatókört, szüksége lesz egy számlázható Cognitive Services-erőforrás csatolása. A díjakat API-k hívásakor, a Cognitive Services, valamint a lemezkép kinyerése a az Azure Search-dokumentumfeltörést fázis részeként. Nem számítunk fel díjat a szövegkinyerés dokumentumok közül.
+> Bontsa ki a hatókört által a feldolgozás, gyakoriságának növelése további dokumentumok hozzáadása, vagy adja hozzá a további AI-algoritmusokat, kell [számlázható Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md). A díjakat API-k hívásakor, a Cognitive Services, valamint a lemezkép kinyerése a az Azure Search-dokumentumfeltörést fázis részeként. Nem számítunk fel díjat a szövegkinyerés dokumentumok közül.
 >
-> Végrehajtási beépített képességek a meglévő díjakat [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/) . Kép kinyerési díjszabás havidíjat számítunk fel az előzetes verzió díjszabása, lásd a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). További [információ](cognitive-search-attach-cognitive-services.md).
+> Végrehajtási beépített képességek a meglévő díjakat [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/). A kép kinyerési díjszabás leírása a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 

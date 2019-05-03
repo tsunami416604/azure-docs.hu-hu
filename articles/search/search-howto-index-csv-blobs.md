@@ -1,7 +1,7 @@
 ---
 title: CSV-blobok indexelése az Azure Search Blob indexelőjével – Azure Search
 description: Feltérképezi az Azure Blob storage használata az Azure Search-index a teljes szöveges keresés a CSV-blobok. Az indexelők automatizálni adatbetöltés a kijelölt adatforrásokhoz, például az Azure Blob storage.
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 0bbb131b5fb155443c8c3dc340185f3a6fa950a3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 193ed7099293fb1ee4c056abcc5c2f34d78627b7
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871263"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024724"
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>CSV-blobok indexelése az Azure Search blob indexelőjével
 Alapértelmezés szerint [Azure Search blob indexelőjével](search-howto-indexing-azure-blob-storage.md) elemzi tagolt szöveges blobok, egy olyan adattömb szöveg. Azonban a blobok CSV-adatokat tartalmazó, gyakran szeretné kezelni az egyes sorok a blob, különálló dokumentumként. Például adja meg a következő tagolt szöveg, előfordulhat, hogy szeretné elemezni a két dokumentumot, az egyes tartalmazó, "id", "datePublished" és "címkék" mezőket: 
@@ -24,7 +24,9 @@ Alapértelmezés szerint [Azure Search blob indexelőjével](search-howto-indexi
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-Ebből a cikkből megismerheti, hogyan elemezni a CSV-blobok, az az Azure Search blob indexelőjével lesz. 
+Ebben a cikkben, megtudhatja, hogyan CSV-blobok elemezni, egy Azure Search blob indexerby beállítása a `delimitedText` elemzési mód. 
+
+A `delimitedText` elemzési mód jelenleg nyilvános előzetes verzióban érhető el, és nem ajánlottak éles számítási feladatokra.
 
 > [!NOTE]
 > Kövesse az indexelő konfigurációs a [egy-a-többhöz indexelő](search-howto-index-one-to-many-blobs.md) több keresési dokumentumot egy Azure-blobból a kimeneti.
@@ -62,7 +64,7 @@ Ez az összes üzembe együtt, az alábbiakban a teljes hasznos példákat.
 
 Adatforrás: 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11-Preview
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06-Preview
     Content-Type: application/json
     api-key: [admin key]
 
@@ -75,7 +77,7 @@ Adatforrás:
 
 Az indexelő:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06-Preview
     Content-Type: application/json
     api-key: [admin key]
 

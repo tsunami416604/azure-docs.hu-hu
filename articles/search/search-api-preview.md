@@ -1,6 +1,6 @@
 ---
-title: Előzetes verziójú REST API-t az Azure Search 2017. 11. 11 – előzetes verzió – Azure Search szolgáltatásban
-description: Az Azure Search szolgáltatás REST API-verzió 2017-11-11-előzetes szinonimák és moreLikeThis keresések kísérleti funkciókat tartalmaz.
+title: Az Azure Search a 2019-05-06-Preview - előzetes verzió a REST API-t az Azure Search
+description: Az Azure Search szolgáltatás REST API-verzió a 2019-05-06-előzetes Tudásbázis store és az ügyfél által felügyelt titkosítási kulcsok kísérleti funkciókat tartalmaz.
 services: search
 author: HeidiSteen
 manager: cgronlun
@@ -9,54 +9,49 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: search
-ms.date: 06/28/2018
+ms.date: 05/02/2019
 ms.author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 524c1a6d083db02349c7dae9a0131228613dc170
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 91c58507d8758a65772110afba71354deecd3b12
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61127093"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024285"
 ---
-# <a name="azure-search-service-rest-api-version-2017-11-11-preview"></a>Az Azure Search szolgáltatás REST api-verzió 2017. 11. 11 – előzetes verzió
-Ez a cikk ismerteti a `api-version=2017-11-11-Preview` verzióját az Azure Search szolgáltatás REST API-t kínáló kísérleti funkciók nem általánosan érhetők el.
+# <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Az Azure Search szolgáltatás REST api-verzió a 2019-05-06-előzetes verzió
+Ez a cikk ismerteti a `api-version=2019-05-06-Preview` verzióját az Azure Search szolgáltatás REST API-t kínáló kísérleti funkciók nem általánosan érhetők el.
 
 > [!NOTE]
 > Előzetes verziójú funkciók érhetők el a teszteléshez és kísérletezés a cél az, hogy visszajelzéseket, és változhatnak. Határozottan javasoljuk éles üzemi alkalmazások pedig az API-k előzetes tanúsítványokkal szemben.
 
 
-## <a name="new-in-2017-11-11-preview"></a>2017. 11. 11 – előzetes verzió újdonságai
+## <a name="new-in-2019-05-06-preview"></a>A 2019-05-06-Preview újdonságai
 
-[**az automatikus kiegészítés** ](search-autocomplete-tutorial.md) összekapcsolja a meglévő [javaslatok API](https://docs.microsoft.com/rest/api/searchservice/suggestions) hozzáadni a kiegészítő gépelés közbeni során lép fel, a keresősávba. az automatikus kiegészítés jelölt lekérdezési kifejezések a felhasználó választhat egy későbbi kereséshez lekérdezési karakterláncként adja vissza. Javaslatok az tényleges dokumentumokból a részleges bemenetek válaszul adja vissza: keresési eredmények azonnali és dinamikusan változik, a keresési kifejezés bemeneti növekedésével és sajátlagossága figyelembe.
+[**Tudásbázis store** ](knowledge-store-concept-intro.md) egy új cél-felderítési bővítést mesterséges intelligencián alapuló folyamat. Az index kívül ki van töltve az Azure storage-ban az indexelés során létrehozott adatstruktúrák most megmarad. A képességek alkalmazási lehetőségét, többek között az adatok lesznek formázva, hogy az adatok tárolása a Table storage- vagy Blob storage, és hogy van-e több nézetet elemeinek keresztül az adatok fizikai struktúrák szabályozhatja.
 
-[**A kognitív keresés**](cognitive-search-concept-intro.md), az Azure Search új Adatbővítés funkció megkeresi segít a rejtett adatokat nem szöveges forrásokból és magánháztartás szöveg-, az Azure Search teljes szöveges kereshető tartalmakká átalakítja őket. A következő források vannak vagy módosított a REST API előzetes verzióban érhető el. Más REST API-k ugyanaz, akár hívja az általánosan elérhető az előzetes verzióval.
-
-+ [Képességcsoport operations(api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/skillset-operations)
-
-+ [Indexelő létrehozása (api-version = 2017-11-11-előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
-
-+ [Előre megadott képesség](cognitive-search-predefined-skills.md)
-
-Minden más REST API-k függetlenül állíthatja be, hogy az api-version ugyanaz. Ha például `GET https://[service name].search.windows.net/indexes/hotels?api-version=2017-11-11-Preview` és `GET https://[service name].search.windows.net/indexes/hotels?api-version=2017-11-11` (nélkül `Preview`) funkcionalitásukat tekintve azonosak.
+[**Ügyfél által felügyelt titkosítási kulcsok** ](search-security-manage-encryption-keys.md) Szolgáltatásoldali titkosítás inaktív is van egy új előzetes verziójú funkció. A beépített titkosítási inaktív a Microsoft felügyeli, mellett további, ahol Ön kizárólagos tulajdonosa, a kulcsok titkosítási réteget is alkalmazhat.
 
 ## <a name="other-preview-features"></a>Egyéb előzetes verziójú funkciók
 
-A korábbi előzetes verziók bejelentett funkciók vannak nyilvános előzetes verzióként. Ha egy korábbi előzetes api-verzióval rendelkező API hívása, akkor továbbra is azt a verziót, vagy váltson `2017-11-11-Preview` várt viselkedés módosítása nélkül.
-
-+ [CSV-fájlok az Azure Blob-indexelés](search-howto-index-csv-blobs.md), a bevezetett `api-version=2015-02-28-Preview`, továbbra is előzetes verziójú funkció. Ez a funkció az Azure Blob-indexelés részét képezi, és egy paraméter beállítása keresztül meghívott. Minden sor egy CSV-fájl egy különálló dokumentumként indexelve van.
-
-+ [Az Azure Blob-indexelés JSON-tömbök](search-howto-index-json-blobs.md), a bevezetett `api-version=2015-02-28-Preview`, továbbra is előzetes verziójú funkció. Ez a funkció az Azure Blob-indexelés részét képezi, és egy paraméter beállítása keresztül meghívott. Ha a tömb egyes elemei indexelt különálló dokumentumként.
+A korábbi előzetes verziók bejelentett funkciók vannak nyilvános előzetes verzióként. Ha egy korábbi előzetes api-verzióval rendelkező API hívása, akkor továbbra is azt a verziót, vagy váltson `2019-05-06-Preview` várt viselkedés módosítása nélkül.
 
 + [moreLikeThis lekérdezési paraméter](search-more-like-this.md) talál, amely egy adott dokumentum a dokumentumokat. Ez a funkció a korábbi verziókra lett. 
 
 
 ## <a name="how-to-call-a-preview-api"></a>Egy előzetes verziójú API meghívása
 
-Régebbi verziókra továbbra is működőképesek, de idővel elavulttá váltak. Ha a kód `api-version=2016-09-01-Preview` vagy `api-version=2015-02-28-Preview`, ezeket a hívásokat továbbra is érvényesek. Azonban csak a legújabb előzetes verzióra frissül javításait. 
+Régebbi verziókra továbbra is működőképesek, de idővel elavulttá váltak. Ha a kód `api-version=2016-09-01-Preview` vagy `api-version=2017-11-11-Preview`, ezeket a hívásokat továbbra is érvényesek. Azonban csak a legújabb előzetes verzióra frissül javításait. 
 
 A következő példa szintaxist az előzetes API verzió hívását mutatja be.
 
-    GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2017-11-11-Preview
+    GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2019-05-06-Preview
 
 Az Azure Search szolgáltatás több verzió érhető el. További információkért lásd: [API-verziók](search-api-versions.md).
+
+## <a name="next-steps"></a>További lépések
+
+Tekintse át az Azure Search szolgáltatás REST API dokumentációja. Ha problémákat tapasztal, megkérdezi a Súgó a [StackOverflow](https://stackoverflow.com/) vagy [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/community/?product=search).
+
+> [!div class="nextstepaction"]
+> [Keresési szolgáltatás REST API-referencia](https://docs.microsoft.com/rest/api/searchservice/)

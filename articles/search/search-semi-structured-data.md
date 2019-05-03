@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 147f67f40a060f3e274fe1f3fa368ebfd01711b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b996effbc03bd1f7c446965b0aa5fb6fa2d0175
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61282113"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024387"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>REST-Útmutató: Index, és részben strukturált adatok (JSON-blobok) keresése az Azure Search szolgáltatásban
 
@@ -27,9 +27,6 @@ Ebben az oktatóanyagban használja a [Azure Search REST API-k](https://docs.mic
 > * A kereshető tartalmak tartalmaznak az Azure Search-index létrehozása
 > * Konfigurálja és a tároló és kereshető tartalom kinyeréséhez az Azure blob storage-indexelő futtatása
 > * Keresés az újonnan létrehozott indexben
-
-> [!NOTE]
-> Ez az oktatóanyag a JSON-tömbök támogatására támaszkodik, amely jelenleg előzetes verziójú funkció az Azure Search szolgáltatásban. A portálon nem érhető el. Ezért az előzetes verziójú, ezt a funkciót biztosító REST API-t használjuk, és egy REST-ügyféleszköz segítségével hívjuk meg az API-t.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -81,7 +78,7 @@ A kérelem a módszer minden hívás ebben az oktatóanyagban **POST**. A fejlé
 
 A Postmannel három API-hívást indítunk a keresési szolgáltatás felé annak érdekében, hogy létrehozzunk egy adatforrást, egy indexet és egy indexelőt. Az adatforrás tartalmaz egy, a tárfiókjára irányuló mutatót és a JSON-adatait. A keresési szolgáltatás az adatok betöltésekor hozza létre a kapcsolatot.
 
-A lekérdezési karakterláncnak tartalmaznia kell egy előzetes verziójú API (például **api-version = 2017-11-11-Preview**) és a egy hívás adja vissza egy **201 Created**. Az általánosan elérhető api-version még nem képes a JSON-t egy JSON-tömbként kezelni, jelenleg erre csak az előzetes api-version képes.
+Lekérdezési karakterláncok meg kell adnia az api-verziót és a egy hívás adja vissza egy **201 Created**. A JSON-tömbök általánosan elérhető api-Version `2019-05-06`.
 
 Hajtsa végre az alábbi három API-hívást a REST-ügyfélről.
 
@@ -89,7 +86,7 @@ Hajtsa végre az alábbi három API-hívást a REST-ügyfélről.
 
 A [Data Source API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-data-source)létrehoz egy Azure Search-objektumot, amely megadja, hogy milyen adatok legyenek indexelve.
 
-A hívás végpontja: `https://[service name].search.windows.net/datasources?api-version=2016-09-01-Preview`. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére. 
+A hívás végpontja: `https://[service name].search.windows.net/datasources?api-version=2019-05-06`. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére. 
 
 Ehhez a híváshoz a kérelem törzsének tartalmaznia kell a tárfiókot, a tárfiók-kulcsot és a blobtároló neve nevét. A tárfiók kulcsa megtalálható az Azure Portalon a tárfiókja **Hozzáférési kulcsok** részében. Ennek helye az alábbi képen látható:
 
@@ -132,7 +129,7 @@ A válasznak így kell kinéznie:
     
 A második hívás [Index API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-data-source), az Azure Search-index létrehozása, amely tárolja az összes kereshető adatot. Az index határozza meg az összes paramétert és ezek attribútumait.
 
-A hívás URL-címe: `https://[service name].search.windows.net/indexes?api-version=2016-09-01-Preview`. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
+A hívás URL-címe: `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 
 Első lépésként cserélje le az URL-címet. Ezután másolja és illessze be a következő kódot a törzsbe, majd futtassa a lekérdezést.
 
@@ -222,7 +219,7 @@ A válasznak így kell kinéznie:
 
 Az indexelő csatlakoztatja az adatforrást, importálja az adatokat a cél keresési indexhez, és opcionálisan biztosítja az Adatfrissítés automatizálásához ütemezés szerint. A REST API [indexelő létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-A hívás URL-címe: `https://[service name].search.windows.net/indexers?api-version=2016-09-01-Preview`. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
+A hívás URL-címe: `https://[service name].search.windows.net/indexers?api-version=2019-05-06`. Cserélje le a `[service name]` elemet a keresési szolgáltatás nevére.
 
 Első lépésként cserélje le az URL-címet. Ezután másolja és illessze be az alábbi kódot a törzsbe, és a kérelem elküldéséhez. A kérelem feldolgozása azonnal. Ha a válasz fog érkezni, kap, amely a teljes szöveges index kereshető.
 
@@ -267,7 +264,7 @@ Megkezdje, amint az első dokumentum betöltése. Ez a feladat [ **keresési abl
 
 Az Azure Portalon nyissa meg a keresési szolgáltatás **áttekintése** lapon, keresse meg a létrehozott index a **indexek** listája.
 
-Mindenképp válassza ki az imént létrehozott indexet. Az API-verzió előzetes és a egy általánosan elérhető verziót is lehetnek. Előzetes verzió irányuló követelmény mindössze annyi a JSON-tömbök indexelése volt.
+Mindenképp válassza ki az imént létrehozott indexet. 
 
   ![Strukturálatlan keresés](media/search-semi-structured-data/indexespane.png)
 

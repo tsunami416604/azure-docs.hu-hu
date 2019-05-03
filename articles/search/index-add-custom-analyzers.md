@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9a15078c953c1fab40ad521eff079a623c93b9d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5983c2036ff206825a82072b57ca2b9bb44ca678
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60914908"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021662"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Egyéni elemzők az Azure Search-index hozzáadása
 
@@ -300,7 +300,7 @@ Az alábbi táblázatban az Apache Lucene segítségével megvalósított karakt
 |[Leképezés](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/charfilter/MappingCharFilter.html)|MappingCharFilter|A leképezések beállítással meghatározott leképezések alkalmazó char szűrő. Egyeztetésekor a rendszer mohó (leghosszabb minta egy adott pont WINS-kiszolgáló megfelelő). Csere engedélyezett üres karakterlánc lehet.<br /><br /> **Beállítások**<br /><br /> leképezések (típus: karakterlánc-tömbben) – egy, a következő formátumú hozzárendelések listáját: "a = > b" (összes előfordulását a "b" karaktert "a" helyén karakter). Kötelező.|  
 |[pattern_replace](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/pattern/PatternReplaceCharFilter.html)|PatternReplaceCharFilter|Lecseréli a bemeneti karakterlánc karaktereinek char szűrő. Cserélje le egy reguláris kifejezéssel azonosíthatja azokat a karaktersorozatok megőrzése érdekében és a helyettesítő karakterek azonosításához mintát használ. Például szövegbevitel = "aa-bb aa-bb" pattern="(aa)\\\s+(bb)" helyettesítő = "1 # 2 USD$" eredmény = "aa #bb aa #bb".<br /><br /> **Beállítások**<br /><br /> minta (típus: karakterlánc) – kötelező.<br /><br /> Csere (típus: karakterlánc) – kötelező.|  
 
- <sup>1</sup> szűrőtípusok char előtagja mindig a következő kódban a "#Microsoft.Azure.Search" úgy, hogy a "MappingCharFilter" ténylegesen ezt kell megadni, mint "#Microsoft.Azure.Search.MappingCharFilter. Eltávolítottuk az előtagot a csökkenti a szélességét, a tábla, de ne feledje, hogy adja hozzá a kódot. Vegye figyelembe, hogy char_filter_type csak előírt szűrőket testre szabható. Ha nem tartoznak, beállítások, hasonlóan a html_strip, nincs társított #Microsoft.Azure.Search típus.
+ <sup>1</sup> szűrőtípusok char előtagja mindig a következő kódban a "#Microsoft.Azure.Search" úgy, hogy a "MappingCharFilter" ténylegesen ezt kell megadni, mint "#Microsoft.Azure.Search.MappingCharFilter. Eltávolítottuk az előtagot a csökkenti a szélességét, a tábla, de ne feledje, hogy adja hozzá a kódot. Figyelje meg, hogy char_filter_type csak előírt szűrőket testre szabható. Ha nem tartoznak, beállítások, hasonlóan a html_strip, nincs társított #Microsoft.Azure.Search típus.
 
 <a name="Tokenizers"></a>
 
@@ -324,7 +324,7 @@ Az alábbi táblázatban az Apache Lucene segítségével megvalósított tokeni
 |[uax_url_email](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/UAX29URLEmailTokenizer.html)|UaxUrlEmailTokenizer|URL-címek és e-mailek tokenizes egy tokenként.<br /><br /> **Beállítások**<br /><br /> maxTokenLength (típus: int) – a token hosszabb. Alapértelmezett: legfeljebb 255: 300. A jogkivonatok hosszabb a maximálisan megengedett el vannak osztva.|  
 |[elválasztó karakter](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/WhitespaceTokenizer.html)|(írja be vonatkozik, csak ha lehetőségek érhetők el) |Elválasztó karakterek a szöveg osztja fel. Jogkivonatok, amelyek legfeljebb 255 karakter hosszúságú el vannak osztva.|  
 
- <sup>1</sup> jogkivonatokat létrehozó típusok előtagja mindig a következő kódban a "#Microsoft.Azure.Search" úgy, hogy a "ClassicTokenizer" ténylegesen ezt kell megadni, mint "#Microsoft.Azure.Search.ClassicTokenizer". Eltávolítottuk az előtagot a csökkenti a szélességét, a tábla, de ne feledje, hogy adja hozzá a kódot. Vegye figyelembe, hogy tokenizer_type csak testre szabható tokenizers biztosítunk. Ha nem tartoznak, beállítások, hasonlóan az a betűvel tokenizer, nincs társított #Microsoft.Azure.Search típus.
+ <sup>1</sup> jogkivonatokat létrehozó típusok előtagja mindig a következő kódban a "#Microsoft.Azure.Search" úgy, hogy a "ClassicTokenizer" ténylegesen ezt kell megadni, mint "#Microsoft.Azure.Search.ClassicTokenizer". Eltávolítottuk az előtagot a csökkenti a szélességét, a tábla, de ne feledje, hogy adja hozzá a kódot. Figyelje meg, hogy tokenizer_type csak testre szabható tokenizers biztosítunk. Ha nem tartoznak, beállítások, hasonlóan az a betűvel tokenizer, nincs társított #Microsoft.Azure.Search típus.
 
 <a name="TokenFilters"></a>
 

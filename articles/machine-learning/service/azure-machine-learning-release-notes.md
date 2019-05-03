@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: cdd639f690d98651661226fbd340964dfdc7861f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 4d22764cfb038bc2021b99d0743f3cbac17d91d8
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64914926"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024927"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -23,10 +23,24 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 + Az Azure Machine Learning [ **fő SDK a Pythonhoz**](https://aka.ms/aml-sdk)
 + Az Azure Machine Learning [ **adat-előkészítési SDK**](https://aka.ms/data-prep-sdk)
 
+Lásd: [kapcsolatos ismert problémák listája](resource-known-issues.md) ismert hibák és a lehetséges megoldások megismeréséhez.
+
+## <a name="2019-05-02"></a>2019-05-02
+
+### <a name="azure-portal"></a>Azure Portal
+
++ Automatizált Machine Learning-kísérletek létrehozása a portálon.
+
 
 ## <a name="2019-04-22"></a>2019-04-22
 
 ### <a name="azure-machine-learning-sdk-for-python-v1030"></a>Az Azure Machine Learning SDK for Python v1.0.30
++ **Új funkciók**
+  + Adathalmazok
+
++ **Hibajavítások és kapcsolatos fejlesztések**
+  + None
+
 
 ## <a name="2019-04-17"></a>2019-04-17
 

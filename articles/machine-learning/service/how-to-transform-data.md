@@ -10,18 +10,21 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 12/04/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2bd271557ae0deefeb12a2dc7343c46fbd35363
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8b8cba8d0a400efb720d8374cdca886a2a638938
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817559"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023792"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Adatok átalakítása a az Azure Machine Learning Data Prep SDK segítségével
 
 Ebben a cikkben megismerheti az Azure Machine Learning Data Prep SDK használatával az adatok átalakítása a különböző módszereket. Az SDK-t kínál, amelyek megkönnyítik az egyszerű oszlopok hozzáadása, szűrje ki a nem kívánt sorokra vagy oszlopokra és imputálására hiányzó funkciók. Az SDK dokumentációja, olvassa el a [áttekintése](https://aka.ms/data-prep-sdk).
+
+> [!Important]
+> Ha egy új megoldást épít, próbálja meg a [Azure Machine Learning adatkészletek](how-to-explore-prepare-data.md) (előzetes verzió) az adatok, a pillanatkép adatainak átalakításához, és tárolja a rendszerverzióval ellátott adatkészlet-definíciókban. Az adatkészletek az adatelőkészítés adatkészleteket az AI-megoldások kezelésével kapcsolatos bővített funkciókat kínáló, SDK következő verziójában.
 
 Ebben az útmutatóban példát a következő feladatokhoz:
 
@@ -35,7 +38,7 @@ Ebben az útmutatóban példát a következő feladatokhoz:
 
 Az Azure Machine Learning Data Prep SDK tartalmaz `substring` kifejezések alapján számítja ki egy létező oszlopok közötti értéket, és ezután helyezze ezt az értéket egy olyan új oszlop. Ebben a példában betölteni az adatokat, és oszlopok hozzáadása a bemeneti adatokat próbál.
 
-```python
+```Python
 import azureml.dataprep as dprep
 
 # loading data
@@ -52,7 +55,7 @@ dflow.head(3)
 
 Használja a `substring(start, length)` előtagot kinyerése a kis számú oszlopot, és a karakterlánc egy új oszlop kifejezése `Case Category`. Átadja a `substring_expression` változót a `expression` paraméter hoz létre egy új számított oszlopot, amely végrehajtja a kifejezés minden egyes rekordján.
 
-```python
+```Python
 substring_expression = dprep.col('Case Number').substring(0, 2)
 case_category = dflow.add_column(new_column_name='Case Category',
                                     prior_column='Case Number',
@@ -67,10 +70,9 @@ case_category.head(3)
 |2|10140270|HY329253|HY|07/05/2015. 11:20:00 ÓRAKOR|121XX S ELŐTÉR ELENTÉS MENTÉSE|0486|AKKUMULÁTOR|EGYSZERŰ BELFÖLDI AKKUMULÁTOR|UTCA.|false|true|...|9|53|08B|||2015|07/12/2015 DU. 12:42:46|
 
 
-
 Használja a `substring(start)` kifejezés csak annyi kinyerése a kis számú oszlopot, és a egy olyan új oszlop létrehozása. Konvertálása a numerikus adatokat típus használatával a `to_number()` függvényt, és adja át a karakterlánc oszlopnév paraméterként.
 
-```python
+```Python
 substring_expression2 = dprep.col('Case Number').substring(2)
 case_id = dflow.add_column(new_column_name='Case Id',
                               prior_column='Case Number',

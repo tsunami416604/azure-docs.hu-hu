@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/14/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 09695f764ff71b274e125e90835f5314eb25c980
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bad64f439d45581f8f4b55ea1ac849db1e27cb76
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344501"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024583"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Az Azure Search-képességek alkalmazási lehetőségét a Cognitive Services-erőforrás csatolása 
 
@@ -28,8 +28,7 @@ Ha a folyamat a Cognitive Services API-k egymástól független képességek ál
 > [!NOTE]
 > Növelje a feldolgozása, további dokumentumok hozzáadása, illetve további AI-algoritmusokat hozzáadása gyakorisága bontsa ki a hatókört, szüksége lesz egy számlázható Cognitive Services-erőforrás csatolása. A díjakat API-k hívásakor, a Cognitive Services, valamint a lemezkép kinyerése a az Azure Search-dokumentumfeltörést fázis részeként. Nem számítunk fel díjat a szövegkinyerés dokumentumok közül.
 >
-> Végrehajtásának [beépített kognitív szakértelem](cognitive-search-predefined-skills.md) végrehajtás díja a [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services), azonos értékelje, ha végrehajtotta a feladat közvetlenül. Kép kinyerési, egy Azure Search számítunk fel díjat, megjelennek a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
-
+> Végrehajtási beépített képességek a meglévő díjakat [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/). A kép kinyerési díjszabás leírása a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 ## <a name="use-free-resources"></a>Ingyenes erőforrások használata
 
@@ -100,7 +99,7 @@ Definiálásakor készségeitől programozott módon, adjon hozzá egy `cognitiv
 Az alábbi példa bemutatja ennek a mintának. Figyelje meg, hogy a cognitive Services szakasz alján, a definition
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2017-11-11-Preview
+PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -110,7 +109,7 @@ Content-Type: application/json
     "skills": 
     [
       {
-        "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+        "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
         "categories": [ "Organization" ],
         "defaultLanguageCode": "en",
         "inputs": [
@@ -142,7 +141,7 @@ Indexelés kognitív kereséssel kapcsolatos költségeket megbecsülheti, indí
 + Egy rendszerkép egy-egy lapon (6000 lemezképek esetén)
 + 3000 karakterek száma oldalanként
 
-Tegyük fel, repedés a képi és szöveges kinyerési, optikai karakterfelismerés (OCR) a képek, PDF-dokumentumot, elnevezett entitásfelismerés szervezetek álló folyamatot. 
+Tegyük fel, dokumentumfeltörést képi és szöveges kinyerési, optikai karakterfelismerés (OCR), a képek a PDF-és a szervezetek entitások felismerése folyamat. 
 
 Ebben a gyakorlatban a legköltségesebb tranzakciónkénti árral használunk. Tényleges költségek miatt adatmennyiségen díjszabás alacsonyabb lehet. Lásd: [Cognitive Services díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services).
 

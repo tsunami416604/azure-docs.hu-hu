@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 03/13/2019
+ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 36eaaeabcf888aac10bcf9b8a27e3590d21079ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5dc1852a57970c2994d9f36cbd7242a18b580a61
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60619205"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020996"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>Gyors útmutató: Beszédfelismerés, beszédfelismerési SDK for Java fordítása
 
-Ebben a rövid útmutatóban fog létrehozni egy egyszerű Java-alkalmazás, amely rögzíti a felhasználó beszéd, a számítógép mikrofon, a rendszer lefordítja a beszédfelismerési és transcribes a lefordított szöveg valós időben a parancssorba. Az alkalmazás célja, hogy a Windows 64 bites vagy 64 bites Ubuntu Linux 16.04/18.04 futtassa, és a Speech SDK Maven-csomag és az Eclipse a Java IDE használatával.
+Ebben a rövid útmutatóban fog létrehozni egy egyszerű Java-alkalmazás, amely rögzíti a felhasználó beszéd, a számítógép mikrofon, a rendszer lefordítja a beszédfelismerési és transcribes a lefordított szöveg valós időben a parancssorba. Ezt az alkalmazást a Windows 64 bites vagy 64-bit-es Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9), vagy a macOS 10.13 vagy újabb rendszerhez készült. A beszédfelismerés SDK Maven-csomag és az Eclipse a Java IDE készült.
 
 Beszédalapú fordítási elérhető nyelvek teljes listáját lásd: [nyelvi támogatás](language-support.md).
 
@@ -27,17 +27,26 @@ Beszédalapú fordítási elérhető nyelvek teljes listáját lásd: [nyelvi t�
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-* Operációs rendszer: a Windows 64 bites vagy 64 bites Ubuntu Linux 16.04/18.04
+* Operációs rendszer: 64 bites Windows, 64 bites Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9), vagy a macOS 10.13 vagy újabb
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) vagy [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
 
-Ha Ubuntu 16.04/18.04 rendszert használ, győződjön meg arról, ezek a függősége telepítve van az Eclipse indítása előtt.
+Ha Linux rendszert használ, győződjön meg arról, ezek a függősége telepítve van az Eclipse indítása előtt.
 
-```console
-sudo apt-get update
-sudo apt-get install build-essential libssl1.0.0 libasound2 wget
-```
+ * On Ubuntu:
+
+   ```sh
+   sudo apt-get update
+   sudo apt-get install libssl1.0.0 libasound2
+   ```
+
+ * A Debian 9-on:
+
+   ```sh
+   sudo apt-get update
+   sudo apt-get install libssl1.0.2 libasound2
+   ```
 
 > [!NOTE]
 > A Speech Devices SDK-ról és a Roobo eszközről lásd: [Speech Devices SDK](speech-devices-sdk.md).

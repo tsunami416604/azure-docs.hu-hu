@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: cdde9f0ec69bec48ae0fb747db0cc49e81920817
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3cedfaf1ae16c17026314fc24dbdc7bb11494caf
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457127"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020956"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>Gyors útmutató: Ismeri fel a beszédfelismerés, beszédfelismerési SDK for Unity (bétaverzió)
 
@@ -27,14 +27,15 @@ Ha nem ismeri a Unity, javasoljuk, hogy tanulmányozza a [Unity felhasználói k
 
 > [!NOTE]
 > A beszédfelismerés SDK for Unity jelenleg bétaverzióban.
-> Támogatja a Windows x86 és x64 (önálló asztali alkalmazás vagy az univerzális Windows Platform), és az Android (ARM32/64, x86).
+> Támogatja a Windows asztal (x86 és x64) vagy a Universal Windows Platform (x86, x64, ARM/ARM64) és Android (x86 ARM32/64).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A projekt teljesítéséhez a következők szükségesek:
 
-* [Unity 2018.3 vagy újabb](https://store.unity.com/)
+* [Unity 2018.3 vagy újabb](https://store.unity.com/) a [Unity 2019.1 UWP ARM64 támogatása](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+     * ARM64-támogatást, telepítse a [választható build tools ARM64 és a Windows 10 SDK ARM64](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) 
 * A beszédfelismerési szolgáltatás egy előfizetési kulcsot. [Igényeljen ingyenesen egy](get-started.md).
 * A számítógép mikrofon való hozzáférést.
 

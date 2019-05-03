@@ -10,22 +10,24 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 2/22/2019
+ms.date: 02/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 34dd20826928d1ab2ba1fc7980c7d47b796ea663
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7dc07ba7f1d62b49232b1cd892070804099fab8c
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819229"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024004"
 ---
-# <a name="load-and-read-data-with-azure-machine-learning"></a>Betölteni, és az Azure Machine Learning adatokat olvasni.
-
+# <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Betölteni, és az Azure Machine Learning Data Prep SDK-adatok olvasása
 Ebben a cikkben megismerheti az Azure Machine Learning Data Prep SDK használata az adatok különböző módszert. Az SDK dokumentációja, olvassa el a [áttekintése](https://aka.ms/data-prep-sdk). Az SDK támogatja a több adat adatfeldolgozási szolgáltatások, például:
 
 * Elemzés paraméter következtetésekhez (kódolás, elválasztó, a fejlécek) rendelkező több fájltípus betölthető
 * Típus-átalakítás következtetésekhez használatával fájl betöltése közben
 * MS SQL Server és az Azure Data Lake Storage kapcsolat támogatása
+
+> [!Important]
+> Ha egy új megoldást épít, próbálja meg a [Azure Machine Learning adatkészletek](how-to-explore-prepare-data.md) (előzetes verzió) az adatok feltárása és előkészítéséhez. Az adatkészletek az adatelőkészítés SDK-t, az AI-megoldások adatkészletek kezeléséhez bővített funkciókat kínáló következő verziójában.
 
 Az alábbi táblázat egy kijelölt adatok betöltése a gyakori fájltípusokból használt funkciók.
 

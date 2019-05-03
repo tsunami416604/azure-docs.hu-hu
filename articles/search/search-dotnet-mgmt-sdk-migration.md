@@ -8,16 +8,20 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 01/15/2018
-ms.custom: seodec2018
-ms.openlocfilehash: 369e5283d7350729e0d8cc44f94f1f2e71b133c3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/02/2019
+ms.openlocfilehash: 62c2ed555fcac56677f4950c10d38ded8fb0649d
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60816990"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025174"
 ---
-# <a name="upgrading-to-the-azure-search-net-management-sdk-version-2"></a>Az Azure Search .NET Management SDK 2-es verzióra
+# <a name="upgrading-to-the-azure-search-net-management-sdk-version"></a>Az Azure Search .NET SDK-t felügyeleti verziójára való frissítését 
+
+> [!Important]
+> Ez a tartalom még fejlesztés alatt áll. Az Azure Search felügyeleti .NET SDK 3.0-s verziója érhető el a NuGet. Ez az áttelepítési útmutató az új verzióra frissítése elmagyarázni frissítése dolgozunk. 
+>
+
 Ha 1.0.2-es verzióját használja, vagy a régebbi a [Azure Search .NET SDK-t felügyeleti](https://aka.ms/search-mgmt-sdk), ez a cikk segít az alkalmazás használhatja a 2. verzió frissítése.
 
 2. verzióját az Azure Search .NET SDK felügyeleti tartalmaz néhány módosítást korábbi verzióit. Ezek a leginkább kis, így a kód módosítása csak minimális erőfeszítéssel elvégzéséhez szükséges. Lásd: [frissítésére lépéseket](#UpgradeSteps) útmutatást a kód módosítása az új SDK-verzió használatához.

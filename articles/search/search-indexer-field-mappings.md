@@ -1,7 +1,7 @@
 ---
 title: Mezőleképezések az Automatikus indexelés indexelők – Azure Search használatával
 description: Állítsa be az Azure Search indexelők mező-leképezések a mezőnevek és az adatok formátumban különbségek figyelembe.
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 9bb8a168f54658ea14b174d19a1795e575646304
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d3e0d876550b0c3baf89f3f13e0458fc97e11351
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60749342"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025219"
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Mezőleképezések az indexelőkben Azure Search
 Azure Search-indexelők használatakor az időnként találhatja meg saját maga helyzetekben, ahol a bemeneti adatok nem teljesen felel meg a célindex sémája. Ezekben az esetekben használható **mezőleképezéseivel** átalakítja az adatokat a kívánt formázásához.

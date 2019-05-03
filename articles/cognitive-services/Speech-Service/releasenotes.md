@@ -8,18 +8,41 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 4/24/2019
+ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 6a9e66b1731a06d81e89b5f3fc4467a0f0344160
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1310ecd15498c4c319febc87cbc3b18e0a7ca524
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697880"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020340"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
+## <a name="speech-sdk-150-2019-may-release"></a>Speech SDK 1.5.0: A 2019-május kiadás
+
+**Új funkciók**
+
+* Kulcsszó gyorsabban funkció (KWS) Windows és Linux rendszerekhez érhető el. KWS funkció működik együtt a mikrofon bármilyen, hivatalos KWS támogatja, azonban jelenleg kizárólag a a mikrofon tömbök található az Azure Kinect DK hardverekre, sem a Speech Devices SDK-val.
+* Kifejezés mutató funkció az SDK-n keresztül érhető el. További információkért lásd: [Itt](how-to-phrase-lists.md).
+* Beszélgetés beszédátírási funkció az SDK-n keresztül érhető el. Lásd: [Itt](conversation-transcription-service.md).
+* Hang-és felhőközpontú virtuális asszisztensek használatával a közvetlen vonal beszédfelismerő csatornát támogatása.
+
+**Példák**
+
+* Új funkciók vagy az SDK által támogatott új szolgáltatások hozzáadott minták.
+
+**Fejlesztések / módosítása**
+
+* Hozzáadott különböző felismerő tulajdonságok módosításához viselkedéséről, vagy a szolgáltatás eredmény (mint például a maszkolás cenzúrázása és mások).
+* Most már konfigurálhat a felismerő a szabványos konfigurációs tulajdonságain keresztül akkor is, ha a felismerő létrehozott `FromEndpoint`.
+* Objective-c `OutputFormat` SPXSpeechConfiguration tulajdonság hozzá lett adva.
+* Az SDK-val most már támogatja a Debian 9, Linux-disztribúció.
+
+**Hibajavítások**
+
+* Rögzített probléma, ahol a beszélő erőforrás túl korai szakaszában szöveg-hang transzformációs destructed volt.
 ## <a name="speech-sdk-142"></a>Speech SDK 1.4.2
 
 Ez a hibajavítás kiadás, és csak ez hatással lenne a natív és felügyelt SDK-t. Ez nincs hatással az SDK-t a JavaScript-verzióját.
@@ -28,13 +51,13 @@ Ez a hibajavítás kiadás, és csak ez hatással lenne a natív és felügyelt 
 
 Ez a kiadás csak a JavaScript. Nincsenek funkciók lettek hozzáadva. A következő javítások történtek:
 
-* Megakadályozza, hogy a webpack használatával készült https proxyügynök betöltése.
+* Megakadályozza, hogy a web csomag betöltése a https-proxy-ügynök.
 
 ## <a name="speech-sdk-140-2019-april-release"></a>Speech SDK 1.4.0: A 2019-áprilisi kiadás
 
 **Új funkciók** 
 
-* Az SDK-val most már támogatja a szöveg-hang transzformációs szolgáltatás bétaverziójának. A Windows és Linux rendszerű asztali a támogatott C++ és C#. További információkért tekintse a [szöveg-hang transzformációs áttekintése](text-to-speech.md#get-started-with-text-to-speech).
+* Az SDK-val most már támogatja a szöveg-hang transzformációs szolgáltatás bétaverziójának. A Windows és Linux rendszerű asztali a támogatott C++ és C#. További információkért ellenőrizze a [szöveg-hang transzformációs áttekintése](text-to-speech.md#get-started-with-text-to-speech).
 * Az SDK-val most stream bemeneti fájlok formájában támogatja az MP3- és Opus/Ogg hangfájlok. Ez a funkció csak a c++ segítségével Linux rendszeren érhető el, és C# és jelenleg bétaverzióban (További részletek [Itt](how-to-use-compressed-audio-input-streams.md)).
 * A beszédfelismerés SDK a .NET core, Java, C++ és Objective-C macOS-támogatás révén. Az Objective-C támogatja a macOS jelenleg bétaverzióban.
 * iOS: A beszédfelismerés SDK IOS (Objective-C) most is közzéteszi, egy CocoaPod.
@@ -49,7 +72,7 @@ Ez a kiadás csak a JavaScript. Nincsenek funkciók lettek hozzáadva. A követk
 **Fejlesztések / módosítása**
 
 * Python: További tulajdonságainak felismerési eredményeket most keresztül érhetők el a `properties` tulajdonság.
-* A további fejlesztés és hibakeresés támogatása SDK naplózási és diagnosztikai információk egy naplófájlba átirányíthatja (További részletek [Itt](how-to-use-logging.md)).
+* További fejlesztés és hibakeresés támogatás SDK naplózási és diagnosztikai információk egy naplófájlba átirányíthatja (További részletek [Itt](how-to-use-logging.md)).
 * JavaScript: Hang feldolgozási teljesítmény javítása.
 
 **Hibajavítások**
@@ -70,8 +93,8 @@ Ez a hibajavítás kiadás, és csak ez hatással lenne a natív és felügyelt 
 
 **Új funkciók**
 
-* A beszédfelismerés SDK támogatja a bemeneti mikrofon AudioConfig osztály keresztül. Ez lehetővé teszi az audio adatok streamelése a Speech Services az alapértelmezettől eltérő mikrofon. További információkért lásd: a dokumentáció leíró [hangbemeneti eszköz kiválasztása](how-to-select-audio-input-devices.md). Ez még nem áll rendelkezésre a JavaScript.
-* A beszédfelismerés SDK mostantól támogatja a Unity béta verziójában. Adja meg a probléma szakaszában keresztül visszajelzést a [GitHub-mintaadattárból](https://aka.ms/csspeech/samples). Ez a kiadás támogatja a Unity a x86 és x64 (asztalon vagy univerzális Windows-Platformos alkalmazások), Windows és Android (ARM32/64, x86). További információkat a [Unity rövid](quickstart-csharp-unity.md).
+* A beszédfelismerés SDK támogatja a bemeneti mikrofon AudioConfig osztály keresztül. Ez lehetővé teszi az audio adatok streamelése a Speech Services az alapértelmezettől eltérő mikrofon. További információkért lásd: a dokumentáció leíró [hangbemeneti eszköz kiválasztása](how-to-select-audio-input-devices.md). Ez a funkció még nem érhető el a JavaScript-alapú.
+* A beszédfelismerés SDK mostantól támogatja a Unity béta verziójában. Visszajelzés küldése a probléma szakaszában keresztül a [GitHub-mintaadattárból](https://aka.ms/csspeech/samples). Ez a kiadás támogatja a Unity a x86 és x64 (asztalon vagy univerzális Windows-Platformos alkalmazások), Windows és Android (ARM32/64, x86). További információkat a [Unity rövid](quickstart-csharp-unity.md).
 * A fájl `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (tartalmazza a szükséges a korábbi kiadásokban) többé nem szükséges. A funkció mostantól integrálva van a core SDK-t.
 
 
@@ -109,7 +132,7 @@ A következő új tartalom érhető el a [mintaadattár](https://aka.ms/csspeech
 * Üres proxykiszolgáló felhasználónév és a proxy jelszavát nem megfelelően kezelt. Ebben a kiadásban Ha proxy-felhasználónév és a proxy jelszavát egy üres karakterláncra, nem kerül sor a proxy való csatlakozáskor.
 * Munkamenet-azonosító által létrehozott az SDK nem volt mindig valóban véletlenszerű néhány nyelv esetében&nbsp;/ környezetekben. Hozzáadott véletlenszerű generátor inicializálása a probléma megoldásához.
 * Engedélyezési jogkivonat kezelésének javítása. Ha szeretné használni egy engedélyezési jogkivonatot, adja meg a SpeechConfig, és hagyja üresen az előfizetési kulcsot. Ezután hozzon létre a felismerő a szokásos módon.
-* Bizonyos esetekben a kapcsolat objektum nem szabadul fel megfelelően. Ez megoldottuk.
+* Bizonyos esetekben a kapcsolat objektum nem szabadul fel megfelelően. Ez a probléma megoldódott.
 * A JavaScript-minta a hangkimeneti támogatására is a Safari fordítási összefoglaló rendszerriasztások mechanizmusában.
 
 ## <a name="speech-sdk-121"></a>Beszéd 1.2.1-es SDK
@@ -134,7 +157,7 @@ Ez a kiadás csak a JavaScript. Nincsenek funkciók lettek hozzáadva. A követk
   * A hang munkamenetek hossza korlátozása el lett távolítva, újracsatlakozás a megjelöléssel automatikusan megtörténik.
 * A kapcsolatobjektum
   * A felismerő egy kapcsolat objektumot érheti el. Ez az objektum teszi lehetővé explicit módon a szolgáltatás kapcsolatot kezdeményez, és feliratkozhat a csatlakoztatása és leválasztása események.
-    (Ez még nem áll rendelkezésre a JavaScript és Python.)
+    (Ez a funkció még nem érhető el a JavaScript és Python.)
 * Ubuntu 18.04 támogatása.
 * Android
   * Engedélyezett ProGuard támogatja az Alkalmazáscsomag létrehozása során.
@@ -142,7 +165,7 @@ Ez a kiadás csak a JavaScript. Nincsenek funkciók lettek hozzáadva. A követk
 **Fejlesztései**
 
 * Továbbfejlődött a belső szál használat, a szálak, a zárolás, mutexek számának csökkentését.
-* Továbbfejlesztett hibajelentés / információkat. Számos esetben hibaüzenetek nem ki lett érvényesülnek.
+* Továbbfejlesztett hibajelentés / információkat. Számos esetben hibaüzenetek nem propagált ki ki.
 * Frissített fejlesztési függőségek naprakész modulok használata javascriptben.
 
 **Hibajavítások**
@@ -218,7 +241,7 @@ Az a [mintaadattár](https://aka.ms/csspeech/samples), egy új mintát, JavaScri
 **Használhatatlanná tévő változásai**
 
 * Ebben a kiadásban bevezetett kompatibilitástörő változások számos.
-  Ellenőrizze a [ezt oldal](https://aka.ms/csspeech/breakingchanges_1_0_0) részleteiről.
+  Ellenőrizze [ezt oldal](https://aka.ms/csspeech/breakingchanges_1_0_0) részleteiről.
 
 ## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Cognitive Services Speech SDK 0.6.0: 2018 augusztus kiadás
 

@@ -1,6 +1,6 @@
 ---
 title: Összetett adattípusok modellezése – Azure Search hogyan
-description: A beágyazott vagy hierarchikus datové struktury modellezhető az Azure Search-index egybesimított sorkészlet és gyűjtemények adattípus használatával.
+description: Beágyazott vagy hierarchikus datové struktury modellezhető az Azure Search-index typu ComplexType és gyűjtemények adattípusok használatával.
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -8,129 +8,190 @@ tags: complex data types; compound data types; aggregate data types
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/01/2017
+ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 973623d6c4cb57518af2012bccf67c969146d23c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 397b3ea7fee67e25cd160f6b529a660e18c44046
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61076193"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024740"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>Összetett adattípusok modellezése az Azure Search hogyan
-Azure Search-index feltöltéséhez néha használt külső adathalmazok, amelyek nem felosztása eligazíthatja táblázatos sorhalmaz hierarchikus vagy beágyazott alépítményeit tartalmazza. Példák ilyen struktúrák előfordulhat, hogy több helyről és telefonszámok tartalmazza az egyetlen ügyfél több színt és méretet egyetlen termékváltozat, több készítői könyvet, és így tovább. Feltételek modellező, láthatja a továbbiakban ezen szerkezetek *összetett adattípusok*, *összetett adattípusok*, *összetett adattípusok*, vagy *összesített az adattípusok*, hogy néhányat említsünk.
 
-Összetett adattípusok nem natív módon támogatja az Azure Search szolgáltatásban, de egy jól bevált megoldást tartalmaz, az egybesimítás struktúráját, majd egy kétlépéses folyamat egy **gyűjtemény** adattípust, belső szerkezetét pótlására. A cikkben bemutatott módszert követve lehetővé teszi a tartalom keres, jellemzőalapú, és szűrhetők.
+Azure Search-index feltöltéséhez néha használt külső adathalmazok hierarchikus vagy beágyazott alépítményeit tartalmazza. Például előfordulhat, hogy több helyről és telefonszámok tartalmazza az egyetlen ügyfél több színt és méretet egyetlen termékváltozat, egy könyv, több készítői és így tovább. Feltételek modellező, láthatja a továbbiakban ezen szerkezetek *összetett adattípusok*, *összetett adattípusok*, *összetett adattípusok*, vagy *összesített az adattípusok*. Az Azure Search-terminológia egy összetett típus gyermekek (almező) tartalmazó mezőt melyik maguk is lehet egyszerű vagy összetett. Ez hasonlít egy strukturált adatok típusa egy programozási nyelvet. Összetett mezők lehet egyetlen mezők, amelyek tartalmazzák a dokumentum egyetlen objektum, vagy egy gyűjteményt, amely objektumok egy tömbjét jelöli
 
-## <a name="example-of-a-complex-data-structure"></a>Összetett adatstruktúra – példa
-A szóban forgó adatok általában JSON vagy XML-dokumentumot, vagy elemek, például az Azure Cosmos DB egy nosql-alapú tárolóban található. A kihívás szerkezete, nem kell keresni és szűrt több gyermekelemek jelentik.  A megoldás csoportjaként kiindulási pontként hajtsa végre a következő JSON-dokumentum, amely a partnerek mutat be példaként:
+Az Azure Search natív módon támogatja a komplex típusok és gyűjteményeket. Együtt ezek a típusok lehetővé teszi modellek majdnem minden beágyazott JSON struktúrában az Azure Search-index. Az Azure Search API-k korábbi verziói esetén csak egybesimított sor csoportok importálása sikerült. A legújabb verzióban az index már jobban felelhet meg forrásadatokat. Más szóval ha a forrásadatok komplex típusok, az index lehet komplex típusok is.
 
-~~~~~
-[
-  {
-    "id": "1",
-    "name": "John Smith",
-    "company": "Adventureworks",
-    "locations": [
-      {
-        "id": "1",
-        "description": "Adventureworks Headquarters"
-      },
-      {
-        "id": "2",
-        "description": "Home Office"
-      }
-    ]
-  }, 
-  {
-    "id": "2",
-    "name": "Jen Campbell",
-    "company": "Northwind",
-    "locations": [
-      {
-        "id": "3",
-        "description": "Northwind Headquarter"
-      },
-      {
-        "id": "4",
-        "description": "Home Office"
-      }
-    ]
-}]
-~~~~~
+Első lépésként javasoljuk, hogy a [Hotels adatkészlet](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md), amelyek betöltése a a **adatok importálása** varázsló az Azure Portalon. A varázsló észleli a komplex típusok a forrás, és az indexsémát az észlelt struktúrák alapján javasol.
 
-Bár a mezők "id" nevű, "name" és "Céges" egyszerűen leképezhetők egy az egyhez belül az Azure Search-index a mezők, a "hely" mező a helyeken, hogy mindkét egy csoportja hely azonosítóit, valamint a hely leírása egy számtömböt. Tekintve, hogy az Azure Search nincs adattípusú, amely támogatja ezt, szükségünk modell Ez az Azure Search szolgáltatásban is. 
+> [!Note]
+> Összetett típusok támogatása az általánosan elérhető a `api-version=2019-05-06`. 
+>
+> Ha a keresési megoldás egy gyűjtemény egybesimított adatkészletek korábbi megoldások épül, akkor módosítani kell az index összetett típusokat tartalmazza a legújabb API-verzióban támogatott. API-verziók frissítésével kapcsolatos további információkért lásd: [frissítsen a legújabb REST API-verzióra](search-api-migration.md) vagy [frissítsen a legújabb .NET SDK-verzióra](search-dotnet-sdk-migration.md).
 
-> [!NOTE]
-> Ezzel a módszerrel is blogbejegyzés ismerteti Kirk Evans által [Azure Cosmos DB indexelése az Azure Search](https://blogs.msdn.microsoft.com/kaevans/2015/03/09/indexing-documentdb-with-azure-seach/), amely jelzi, hogy olyan módszer, nevű, "az adatok egybesimítását", amely lehetővé teszi, hogy mezője `locationsID` és `locationsDescription` amelyek [gyűjtemények](https://msdn.microsoft.com/library/azure/dn798938.aspx) (vagy karakterláncok).   
-> 
-> 
+## <a name="example-of-a-complex-structure"></a>Egy összetett struktúra – példa
 
-## <a name="part-1-flatten-the-array-into-individual-fields"></a>1. rész: Simítja egybe a tömböt az egyes mezők
-Azure Search-index, amely ehhez az adatkészlethez megfelelő, hozzon létre egyéni mezőket a beágyazott alépítményhez: `locationsID` és `locationsDescription` típusú adatok [gyűjtemények](https://msdn.microsoft.com/library/azure/dn798938.aspx) (vagy karakterláncok). Az ezekben a mezőkben be kellene index az "1" és a '2' értéket a `locationsID` adatmérték-mezőt Kovács János és "3" & "4". az értékeket a `locationsID` Ilona Campbell mezőjét.  
+A következő JSON-dokumentum egyszerű és összetett mezőket tevődik össze. Komplex mezők, például `Address` és `Rooms`, alárendelt mezővel rendelkezik. `Address` az adott alárendelt mezők értékei egyetlen készletével rendelkezik, mivel ez a dokumentum egyetlen objektumot. Ezzel szemben a `Rooms` több példányban alárendelt mezőinek értékeit, és az egyik minden objektum rendelkezik a gyűjteményben.
 
-Az adatait az Azure Search kellene kinéznie: 
-
-![mintaadatok, 2 sor](./media/search-howto-complex-data-types/sample-data.png)
-
-## <a name="part-2-add-a-collection-field-in-the-index-definition"></a>2. rész: Az Indexdefiníció egy gyűjtemény mező hozzáadása
-Az indexsémát az Meződefiníciók ebben a példában hasonlóan néznének ki.
-
-~~~~
-var index = new Index()
+```json
 {
-    Name = indexName,
-    Fields = new[]
-    {
-        new Field("id", DataType.String) { IsKey = true },
-        new Field("name", DataType.String) { IsSearchable = true, IsFilterable = false, IsSortable = false, IsFacetable = false },
-        new Field("company", DataType.String) { IsSearchable = true, IsFilterable = false, IsSortable = false, IsFacetable = false },
-        new Field("locationsId", DataType.Collection(DataType.String)) { IsSearchable = true, IsFilterable = true, IsFacetable = true },
-        new Field("locationsDescription", DataType.Collection(DataType.String)) { IsSearchable = true, IsFilterable = true, IsFacetable = true }
-    }
-};
-~~~~
+    "HotelId": "1",
+    "HotelName": "Secret Point Motel",
+    "Description": "Ideally located on the main commercial artery of the city in the heart of New York.",
+    "Address": {
+        "StreetAddress": "677 5th Ave",
+        "City": "New York",
+        "StateProvince": "NY"
+    },
+    "Rooms": [
+        {
+            "Description": "Budget Room, 1 Queen Bed (Cityside)",
+            "Type": "Budget Room",
+            "BaseRate": 96.99,
+        },
+        {
+            "Description": "Deluxe Room, 2 Double Beds (City View)",
+            "Type": "Deluxe Room",
+            "BaseRate": 150.99,
+        },
+    ]
+}
+```
 
-## <a name="validate-search-behaviors-and-optionally-extend-the-index"></a>Ellenőrizze a keresési viselkedések, és kiterjeszti az index
-Ha létrehozta az indexet, és az adatok betöltése, most tesztelheti a megoldás a keresési lekérdezés végrehajtása az élelmiszer-ellenőrzése. Minden egyes **gyűjtemény** mező lehet **kereshető**, **szűrhető** és **kategorizálható**. Meg kell tudni például a lekérdezések futtatása:
+## <a name="creating-complex-fields"></a>Összetett mezők létrehozása
 
-* Az összes "Adventureworks központjában" dolgozó személyek keresése.
-* Megszámlálása egy otthoni irodai dolgozó személyek számát.  
-* Egy otthoni irodában dolgozó személyek milyen más iroda működnek együtt az egyes helyeken a személyek számát mutatják.  
+Bármely index definíciója és annak is használhatja a portálon, [REST API-val](https://docs.microsoft.com/rest/api/searchservice/create-index), vagy [.NET SDK-val](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) hozhat létre egy sémát, amely összetett típusokat tartalmazza. 
 
-Ha ezt a technikát későbbre esik akkor, ha kell tennie egy keresést, amely ötvözi az a hely azonosítója és is a hely leírása. Példa:
+Az alábbi példa bemutatja egy egyszerű mezőket gyűjtemények és komplex típusok rendelkező JSON-index séma. Figyelje meg, hogy egy összetett típus belül minden alárendelt mező típusa, és előfordulhat, attribútumok, csak a legfelső szintű mezők. A séma felel meg a fenti példa adatok. `Address` van egy összetett mezőt, amely nem egy gyűjtemény (egy szállodai Vendég rendelkezik egy címet). `Rooms` (egy szállodai Vendég rendelkezik számos termek) összetett gyűjtemény mező kitöltése.
 
-* Amelyek egy otthoni Office összes személyek keresése és a egy hely azonosítója a 4-ből.  
+<!---
+For indexes used in a [push-model data import](search-what-is-data-import.md) strategy, where you are pushing a JSON data set to an Azure Search index, you can only have the basic syntax shown here: single complex types like `Address`, or a `Collection(Edm.ComplexType)` like `Rooms`. You cannot have complex types nested inside other complex types in an index used for push-model data ingestion.
 
-Ha a már ismert módon kikeresi az eredeti tartalom:
+Indexers are a different story. When defining an indexer, in particular one used to build a knowledge store, your index can have nested complex types. An indexer is able to hold a chain of complex data structures in-memory, and when it includes a skillset, it can support highly complex data forms. For more information and an example, see [How to get started with Knowledge Store](knowledge-store-howto.md).
+-->
 
-~~~~
-   {
-        id: '4',
-        description: 'Home Office'
-   }
-~~~~
+```json
+{
+    "name": "hotels",
+    "fields": [
+        {   "name": "HotelId", "type": "Edm.String", "key": true, "filterable": true    },
+        {   "name": "HotelName", "type": "Edm.String", "searchable": true, "filterable": false },
+        { "name": "Description", "type": "Edm.String", "searchable": true, "analyzer": "en.lucene" },
+        {   "name": "Address", "type": "Edm.ComplexType",
+            "fields": [{
+                    "name": "StreetAddress",
+                    "type": "Edm.String",
+                    "filterable": false,
+                    "sortable": false,
+                    "facetable": false,
+                    "searchable": true  },
+                {
+                    "name": "City",
+                    "type": "Edm.String",
+                    "searchable": true,
+                    "filterable": true,
+                    "sortable": true,
+                    "facetable": true
+                },
+                {
+                    "name": "StateProvince",
+                    "type": "Edm.String",
+                    "searchable": true,
+                    "filterable": true,
+                    "sortable": true,
+                    "facetable": true
+                }
+            ]
+        },
+        {
+            "name": "Rooms",
+            "type": "Collection(Edm.ComplexType)",
+            "fields": [{
+                    "name": "Description",
+                    "type": "Edm.String",
+                    "searchable": true,
+                    "analyzer": "en.lucene"
+                },
+                {
+                    "name": "Type",
+                    "type": "Edm.String",
+                    "searchable": true
+                },
+                {
+                    "name": "BaseRate",
+                    "type": "Edm.Double",
+                    "filterable": true,
+                    "facetable": true
+                },
+            ]
+        }
+    ]
+}
+```
+## <a name="updating-complex-fields"></a>Összetett mezők frissítése
 
-Azonban most, hogy rendelkezik az adatok elkülönített külön mezőkben, hogy akkor sem afelől, hogy ha a Kezdőlap Office Ilona Campbell vonatkozik a `locationsID 3` vagy `locationsID 4`.  
+Összes a [szabályok újraindexelés](search-howto-reindex.md) , amely érvényes mezők összetett mezők általánosságban továbbra is érvényesek. Néhány ismereteit itt, a fő szabályok mező hozzáadása nem szükséges egy index újraépítése, de a legtöbb módosítások tegye.
 
-Ebben az esetben kezelése érdekében adja meg az index, amely egyesíti az összes adat egy gyűjteményt, amely egy másik mező.  A példánkban ez a mező fog nevezzük `locationsCombined` , és hogy a tartalmat az elkülönített egy `||` Bár választhat, amelyek úgy gondolja, hogy bármely elválasztó lenne a tartalom egyedi karakterkészlet. Példa: 
+### <a name="structural-updates-to-the-definition"></a>A definíció strukturális frissítéséhez
 
-![mintaadatok, 2 sor elválasztóval](./media/search-howto-complex-data-types/sample-data-2.png)
+Új alfeladat mezőket egy indexkészítés nélkül bármikor hozzáadhat egy összetett mezőt. Például hozzáadása "Irányítószám" `Address` vagy az "eszközök" `Rooms` engedélyezett, csakúgy, mint legfelső szintű mező hozzáadása egy indexbe. Meglévő dokumentumok új mezők null érték tartozik, amíg az adatok frissítésével explicit módon feltölti ezeknek a mezőknek.
 
-Ez `locationsCombined` mezőben azt most már képes még több lekérdezéseket, például:
+Figyelje meg, hogy egy összetett típus belül minden alárendelt mező típusa, és előfordulhat, attribútumok, csak a legfelső szintű mezők
 
-* A "Home irodában" helyen azonosítója "4" dolgozó személyek számát mutatják.  
-* Keresse meg a kezdőlap irodában dolgozó személyek "4" azonosítójú helyét. 
+### <a name="data-updates"></a>Adatok frissítése
 
-## <a name="limitations"></a>Korlátozások
-Ez a módszer akkor hasznos, ha számos forgatókönyv esetében, de nem alkalmazható, minden esetben.  Példa:
+Meglévő dokumentumok indexben a feltöltési művelet frissíti az összetett és egyszerű mezők ugyanúgy működik, – minden mező cseréje. Azonban egyesítési (vagy ha egy meglévő dokumentumot mergeOrUpload) nem ugyanúgy működik, minden mező között. Pontosabban a merge nem tudnak egyesíteni elemek a gyűjteményen belül. Ez az egyszerű típusú gyűjtemények, valamint összetett gyűjteményeket. Egy gyűjtemény frissítéséhez, Ön lesz a teljes értékét a vizualizációhoz módosításokat, és hozzáadhatja az új gyűjtemény az Index API-kérelem a.
 
-1. Ha az összetett típusban nem rendelkezik statikus a mezők halmaza, és semmilyen módon nem lehet egyetlen mező összes lehetséges típusait leképezése történt. 
-2. A beágyazott objektumok frissítése szükséges elvégzését meghatározni, hogy mit kell frissíteni kell az Azure Search-index
 
-## <a name="sample-code"></a>Mintakód
-Látható egy példa JSON adatkészlet összetett index Azure Search szolgáltatásba történő, és jelenleg ez az adatkészlet-lekérdezések száma végre [GitHub-adattárat](https://github.com/liamca/AzureSearchComplexTypes).
+## <a name="searching-complex-fields"></a>Összetett mezők keresése
 
-## <a name="next-step"></a>Következő lépés
-[Összetett adattípusok natív támogatását szavazzon](https://feedback.azure.com/forums/263029-azure-search) a az Azure Search UserVoice lapon, és adjon meg semmilyen további bemenetet, adja meg, hogy fontolja meg a szolgáltatás végrehajtásával kapcsolatos. Is elérhető számomra közvetlenül a Twitteren: @liamca.
+Szabad formátumú keresési kifejezések a komplex típusok a várt módon működik. Ha bármely kereshető mezőjében vagy dokumentum alárendelt mező bárhol megegyezik, maga a dokumentum egyezés. 
 
+Lekérdezések get további feltételeket és a kezelők rendelkezik, és néhány olyan kifejezéssel rendelkeznek mezők nevét adja meg, lehetséges, a komplikáltabb a [Lucene szintaxis](query-lucene-syntax.md). Például ez a lekérdezés megkísérli megfeleltetni a két kifejezés, "Portland" és "OR", a cím mező két alárendelt mező alapján:
+
+```json
+search=Address/City:Portland AND Address/State:OR
+```
+
+Ilyen lekérdezések teljes szöveges keresés predikátumban (szűrők, eltérően összetett gyűjtemény almező a lekérdezések használatával hozhatók összefüggésbe vagy az összes, például az SQL-ben a kapcsolódó allekérdezés). Ez azt jelenti, hogy a fenti Lucene lekérdezési "Portland, Oregon", és más városok Oregon adna vissza "Portland, Maine" tartalmazó dokumentumokat. Ennek oka az, minden egyes záradék képest értékeli ki a megadott mezőt a teljes dokumentumban szereplő összes érték így nincs "aktuális alárendelt dokumentum" fogalma. 
+
+ 
+
+## <a name="selecting-complex-fields"></a>Összetett mezők kiválasztása
+
+A `$select` válassza ki a mezőket a keresési eredmények között visszaadott paraméter használható. Ez a paraméter használatával válassza ki az adott almező egy összetett mező, a fölérendelt és alárendelt mező perjellel elválasztva tartalmazza (`/`).
+
+```json
+$select=HotelName, Address/City, Rooms/BaseRate
+```
+
+Mezők kell megjelölni lekérhető az indexben, ha azt szeretné őket a keresési eredmények között. Csak a mezők lekérhető megjelölve használható egy `$select` utasítást. 
+
+
+## <a name="filter-facet-and-sort-complex-fields"></a>Szűrés, értékkorlátozás és rendezési összetett mezők
+
+Azonos [OData syntaxe cesty](query-odata-filter-orderby-syntax.md) használja a szűréshez és fielded keresések értékkorlátozás, rendezés, majd válassza ki a mezőket a keresési kérelem esetében is használható. Pro komplexní typy szabályok vonatkoznak, amelyek az alárendelt mezők is megjelölhetők szerint rendezhető és kategorizálható szabályozzák. 
+
+### <a name="faceting-sub-fields"></a>Almező jellemzőkezelés 
+
+Minden alárendelt mező kategorizálható megjelölhető, kivéve, ha típusú `Edm.GeographyPoint` vagy `Collection(Edm.GeographyPoint)`. 
+
+Amikor dokumentumok számát adja vissza a jellemzőalapú navigációs struktúrát, az érintett képest a szülő dokumentum (egy Szálloda), nem állnak összetett gyűjteményekben (termek) beágyazott dokumentumok. Tegyük fel például, egy szállodai Vendég "csomag" típusú 20 termek rendelkezik. A facet paraméter megadott `facet=Rooms/Type`, értékkorlátozás száma a rendszer egy, a szülő dokumentum ("Hotels"), és nincs köztes alárendelt dokumentumok (termek). 
+
+### <a name="sorting-complex-fields"></a>Rendezési összetett mezők
+
+Rendezési műveletekben dokumentumok ("Hotels"), és nem alárendelt dokumentumok (termek) vonatkoznak. Ha egy összetett típus gyűjtemény például termek, fontos vegye figyelembe, hogy nem rendezhetők termek egyáltalán. Sőt a gyűjtemény nem lehet rendezni. 
+
+Rendezési műveletekben működnek, ha a mező kitöltése egyértékű, egyszerű mezőként, vagy egy összetett típus alárendelt mezőként. Ha például `$orderby=Address/ZipCode` komplex típus, rendezhető, mert csak egy zip-kód Szálloda száma. 
+
+Rendezés körül szabályok ismereteit, egy indexmezőt belül kell megjelölni a használandó Filterable és rendezhető egy `$orderby` utasítást. 
+
+## <a name="next-steps"></a>További lépések
+
+ Próbálja ki a [Hotels adatkészlet](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md) a a **adatimportálás** varázsló. A fontos adatok eléréséhez a Cosmos DB kapcsolati információk kell. 
+ 
+ Az aktuális adatnak az első lépés a varázslóban az Azure Cosmos DB új adatforrás létrehozása. További a varázslóban a cél a index lap, látni fogja az index a komplex típusok. Hozzon létre, és ez az index betöltése, majd hajtsa végre a lekérdezéseket az új struktúra megértéséhez.
+
+> [!div class="nextstepaction"]
+> [Gyors útmutató: importálás, az indexelés és a lekérdezések portál varázsló](search-get-started-portal.md)

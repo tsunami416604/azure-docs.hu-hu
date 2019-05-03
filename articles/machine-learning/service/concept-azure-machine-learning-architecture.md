@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 83ca4d2bf767d338943c396330b36f3f8180e170
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b06e3ff50eba4763403450a807aa90ef6335f1a9
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821276"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025237"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
 
@@ -68,7 +68,7 @@ Amikor létrehoz egy új munkaterületet, automatikusan létrehoz több Azure-a 
 
 A besorolás, a munkaterület az alábbi ábra mutatja be:
 
-[![Munkaterület besorolás](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[![Munkaterület besorolás](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 ## <a name="experiment"></a>Kísérlet
 
@@ -106,6 +106,16 @@ Egy futtatási konfigurációt megőrizhetők a tanítási szkriptet tartalmazó
 
 Például futtatási konfigurációkat, lásd: [kiválasztása és használata egy számítási célnak a modell betanításához](how-to-set-up-training-targets.md).
 
+## <a name="dataset"></a>Adathalmaz
+
+Az Azure Machine Learning-adatkészletek (előzetes verzió) egyszerűbbé eléréséhez, és dolgozhat az adatokkal. Adatkészletek kezelése az adatok különböző alkalmazási helyzetekben, például a modell betanítása, folyamat-létrehozás. Az Azure Machine Learning SDK, segítségével alapjául szolgáló tároló eléréséhez, Fedezze fel és előkészíti az adatokat, különböző az adatkészlet-definíciók életciklusának kezelése, és képzési és éles környezetben használt Adatkészletekre közötti összehasonlítása.
+
+Az adatkészletek adatok legnépszerűbb formátumokhoz, például az módszert biztosít `from_delimited_files()` vagy `to_pandas_dataframe()`.
+
+További információkért lásd: [létrehozása és regisztrálása az Azure Machine Learning adatkészletek](how-to-create-register-datasets.md).
+
+Példa adatkészleteket használó, tekintse meg a [notebookok minta](https://aka.ms/dataset-tutorial).
+
 ## <a name="datastore"></a>Adattár
 
 Egy adattár egy tárolási absztrakciós Azure storage-fiók felett. Az adattár egy Azure blob-tárolóba vagy Azure-fájlmegosztások használhat a háttér-tárolóként. Az egyes munkaterületeken rendelkezik alapértelmezett adattárolót, és további adattárainak regisztrálhatja.
@@ -127,7 +137,7 @@ Egy számítási célnak, hogy az a tanítási szkriptet futtatni, vagy a szolg�
 | Azure Container Instances | &nbsp; | ✓ |
 | Azure Kubernetes Service | &nbsp; | ✓ |
 | Azure IoT Edge | &nbsp; | ✓ |
-| Project Brainwave</br>(Field-programmable gate array) | &nbsp; | ✓ |
+| A mező-programmable gate array (FPGA) | &nbsp; | ✓ |
 
 Számítási célnak csatolt munkaterület. Számítási, a munkaterület felhasználók által megosztott célok nem a helyi gépen.
 
@@ -189,8 +199,6 @@ Az Azure Machine Learning két típusú lemezképek hozhatók létre:
 * **Docker-rendszerkép**: Amikor üzembe helyezi a számítási céljainak eltérő FPGA használja. Példák a következők: Azure Container Instances szolgáltatásban és az Azure Kubernetes Service-ben.
 
 Az Azure Machine Learning szolgáltatáshoz biztosít alapképet, amely alapértelmezés szerint használt. A saját egyéni rendszerképeit is megadhatja.
-
-További információkért tekintse meg a beállítás, és regisztrálja a lemezkép szakaszában [modellek üzembe helyezése](how-to-deploy-and-where.md#configureimage).
 
 Lemezkép létrehozása a példát talál [egy kép besorolási modell az Azure Container Instancesben üzembe](tutorial-deploy-models-with-aml.md).
 

@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/04/2018
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 609b5d990cffce10733f6fc82e6b1032ad0f06bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 225ac86efba8a32b085a5fb7fc41bed48c499eab
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60951795"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65022167"
 ---
 # <a name="documentation-resources-for-cognitive-search-workloads"></a>Dokumentációs forrásanyagot cognitive search számítási feladatokhoz
 
-Cognitive search, mostantól nyilvános előzetes verzióban érhető el, amely a egy új felderítési bővítést az Azure Search-indexelő, amely segít a rejtett információkat talál az nem szöveges forrásokból és magánháztartás szöveg, átalakítja őket az Azure Search teljes szöveges kereshető tartalmakká.
+Cognitive search, már általánosan elérhető, amely egy új felderítési bővítést az Azure Search-indexelő, amely segít a rejtett információkat talál az nem szöveges forrásokból és magánháztartás szöveg, átalakítja őket az Azure Search teljes szöveges kereshető tartalmakká.
 
 A következő cikkekben talál olyan cognitive search teljes dokumentációját.
 
@@ -51,9 +51,9 @@ A következő cikkekben talál olyan cognitive search teljes dokumentációját.
   + [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md)
   + [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md)
 
-+ [Előzetes verziójú REST API](search-api-2017-11-11-preview.md)
-  + [Képességcsoport létrehozása (api-version = 2017-11-11-előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-  + [Indexelő létrehozása (api-version = 2017-11-11-előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [REST API](https://docs.microsoft.com/rest/api/searchservice/)
+  + [Képességcsoport létrehozása (api-version = a 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+  + [Indexelő létrehozása (api-version = a 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
 ## <a name="see-also"></a>Lásd még
 

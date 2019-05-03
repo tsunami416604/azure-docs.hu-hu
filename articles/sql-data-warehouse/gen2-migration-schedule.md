@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 0d3927fbc1826f9ab4f613a7c2a310f581b7f7c5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: HT
+ms.openlocfilehash: a5d93a77652f540fde44b33963b13df04b45ecee
+ms.sourcegitcommit: 60606c5e9a20b2906f6b6e3a3ddbcb6c826962d6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729293"
+ms.lasthandoff: 05/01/2019
+ms.locfileid: "64987945"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Frissítse az adattárház Gen2-re
 
@@ -67,7 +67,7 @@ A következő táblázat összefoglalja régió szerint, amikor a alacsonyabb Ge
 
 ## <a name="automatic-upgrade-process"></a>Az automatikus frissítési folyamat
 
-A fenti rendelkezésre állási diagram alapján, azt fogja ütemezni a Gen1-példányok automatikus frissítéseket. Váratlan megakadás rendelkezésre az adatraktár elkerülése érdekében az automatikus frissítésekre lesz ütemezve a karbantartási ütemezéshez során. Ütemezések szerint további információkért lásd: [karbantartási ütemezés megtekintése](viewing-maintenance-schedule.md)
+A fenti rendelkezésre állási diagram alapján, azt fogja ütemezni a Gen1-példányok automatikus frissítéseket. Váratlan megakadás rendelkezésre az adatraktár elkerülése érdekében az automatikus frissítésekre lesz ütemezve a karbantartási ütemezéshez során. Hozzon létre egy új Gen1 példányt lehetővé teszi az automatikus frissítés Gen2-re alatt álló régióban letiltásra kerül. Ütemezések szerint további információkért lásd: [karbantartási ütemezés megtekintése](viewing-maintenance-schedule.md)
 
 A frissítési folyamat is szükség lesz egy rövid dobja el a kapcsolat (körülbelül 5 perc), hogy indítsa újra az adattárházba.  Az adattárház újra lett indítva, miután teljes mértékben elérhető lesz. Azonban a teljesítménye léphetnek fel, a frissítési folyamat továbbra is a háttérben lévő adatfájlok frissítése. Változnak, hogy a teljesítményromlást fordított időt az adatfájlokat méretétől függ.
 

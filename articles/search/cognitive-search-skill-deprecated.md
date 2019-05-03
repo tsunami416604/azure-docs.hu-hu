@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: e4849487c2dd9330dbf9e6b6cf0ed4d1b6b96020
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f773cd298c8faaac90b30d88a74e8ddcb51c3afa
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637518"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021955"
 ---
 # <a name="deprecated-cognitive-search-skills"></a>Elavult Cognitive Search-képességek
 
@@ -31,7 +31,7 @@ Ez a dokumentum ismerteti a kognitív képességeket, amelyek tekinthetők elavu
 
 ### <a name="last-available-api-version"></a>Utolsó elérhető api-verzió
 
-2017. 11. 11 – előzetes verzió
+A 2019-05-06-előzetes verzió
 
 ### <a name="end-of-support"></a>Támogatás vége
 
@@ -43,7 +43,8 @@ Használat [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill
 
 Áttelepítése a [entitások felismerése szakértelem](cognitive-search-skill-entity-recognition.md), akkor végre kell hajtania egy vagy több, a következő módosításokat a képzettségi definíciós. A képzettségi definíció használatával frissítheti a [indexmezők API frissítése](https://docs.microsoft.com/rest/api/searchservice/update-skillset).
 
-_Megjegyzés_: Magabiztossági pontszámot a fogalom, jelenleg nem támogatott. A közeljövőben megszűnik. A `minimumPrecision` paraméter megtalálható a `EntityRecognitionSkill` későbbi használatra, és a visszamenőleges kompatibilitás.
+> [!NOTE]
+> Magabiztossági pontszámot a fogalom, jelenleg nem támogatott. A `minimumPrecision` paraméter megtalálható a `EntityRecognitionSkill` későbbi használatra, és a visszamenőleges kompatibilitás.
 
 1. *(Kötelező)*  Módosítása a `@odata.type` a `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` való `"#Microsoft.Skills.Text.EntityRecognitionSkill"`.
 

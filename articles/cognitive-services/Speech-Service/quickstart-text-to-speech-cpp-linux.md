@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 4/03/2019
+ms.date: 05/02/2019
 ms.author: yinhew
-ms.openlocfilehash: c0981ec993f3717f3ec3d3da987a5977b212fb9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 211394186fe8fc0fd1514a5ce1dbc1e0efc10b7e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60619032"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020604"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Gyors útmutató: Beszéd, a C++, a linuxon futó szintetizálásához a Speech SDK-val
 
-Ez a cikk az Ubuntu Linux 16.04 vagy 18.04 hoz létre egy C++ Konzolalkalmazás. A Cognitive Services használata [beszéd SDK](speech-sdk.md) szintetizálásához beszéd valós idejű szöveg és a speech játsszon a PC-hangszóró. Az alkalmazást a [Linuxhoz készült Speech SDK-val](https://aka.ms/csspeech/linuxbinary) és a Linux-disztribúció C++ fordítóprogramjával lehet összeállítani (ilyen például a `g++`).
+Ebben a cikkben létrehoz egy C++ Konzolalkalmazás Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9). A Cognitive Services használata [beszéd SDK](speech-sdk.md) szintetizálásához beszéd valós idejű szöveg és a speech játsszon a PC-hangszóró. Az alkalmazást a [Linuxhoz készült Speech SDK-val](https://aka.ms/csspeech/linuxbinary) és a Linux-disztribúció C++ fordítóprogramjával lehet összeállítani (ilyen például a `g++`).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,7 +29,7 @@ A rövid útmutató elvégzéséhez beszédszolgáltatások előfizetési kulcs 
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services Speech SDK jelenlegi verziója az `1.4.0`.
+A Cognitive Services Speech SDK jelenlegi verziója az `1.5.0`.
 
 A Linuxhoz készült Speech SDK 64 és 32 bites alkalmazások létrehozásához is használható. A szükséges kódtárai és fejlécfájljai a tar-fájlként letölthető https://aka.ms/csspeech/linuxbinary.
 
@@ -37,10 +37,19 @@ Az SDK letöltése és telepítése a következőképpen történik:
 
 1. Győződjön meg róla, hogy az SDK függőségei telepítve vannak.
 
-   ```sh
-   sudo apt-get update
-   sudo apt-get install build-essential libssl1.0.0 libasound2 wget
-   ```
+   * On Ubuntu:
+
+     ```sh
+     sudo apt-get update
+     sudo apt-get install build-essential libssl1.0.0 libasound2 wget
+     ```
+
+   * A Debian 9-on:
+
+     ```sh
+     sudo apt-get update
+     sudo apt-get install build-essential libssl1.0.2 libasound2 wget
+     ```
 
 1. Válasszon egy könyvtárat a Speech SDK fájljainak kicsomagolásához, majd állítsa be úgy a `SPEECHSDK_ROOT` környezeti változót, hogy erre a könyvtárra mutasson. Ez a változó megkönnyíti, hogy a későbbi parancsokban a könyvtárra hivatkozzon. Ha például a kezdőkönyvtárban található `speechsdk` könyvtárat szeretné használni, adjon meg egy, a következőhöz hasonló parancsot:
 
@@ -89,13 +98,13 @@ Az SDK letöltése és telepítése a következőképpen történik:
 * **x64** (64 bites) rendszeren az alkalmazás létrehozásához futtassa az alábbi parancsot.
 
   ```sh
-  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x64" -l:libssl.so.1.0.0 -l:libasound.so.2
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x64" -l:libasound.so.2
   ```
 
 * **x86** (32 bites) rendszeren az alkalmazás létrehozásához futtassa az alábbi parancsot.
 
   ```sh
-  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libssl.so.1.0.0 -l:libasound.so.2
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása

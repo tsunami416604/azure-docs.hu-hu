@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78db7d21774750892c831ac220244c54594b78f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cedd45d4142633e48d0d9dd41870f57c16d860c8
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817705"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023841"
 ---
 # <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Tensorflow-hoz és a Keras modellek Azure Machine Learning szolgáltatással
 
@@ -185,6 +185,10 @@ Miután végzett a tanítási szkriptet írása, és a TensorFlow-objektum létr
 ```Python
 run = exp.submit(tf_est)
 ```
+
+## <a name="export-to-onnx"></a>ONNX exportálása
+
+Az optimalizált következtetési beolvasni a [ONNX-futtatókörnyezet](concept-onnx.md), a TensorFlow betanított modell átválthat az ONNX-formátumra. Tekintse meg a [példa](https://github.com/onnx/tensorflow-onnx/blob/master/examples/call_coverter_via_python.py).
 
 ## <a name="examples"></a>Példák
 

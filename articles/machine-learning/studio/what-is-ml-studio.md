@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/20/2019
-ms.openlocfilehash: 7a2bd8ebf2e96cf2251d98501bbf42007d43a660
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dd1eaa95a23deed0bf2098995be43402c605defc
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60345550"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024231"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
 A Microsoft Azure Machine Learning Studio olyan, az együttműködést támogató, egérrel kezelhető eszköz, amellyel az adataihoz prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe. A Machine Learning Studio a modelleket webszolgáltatásként teszi közzé, amelyeket az egyéni alkalmazások vagy az Excel és más üzletiintelligencia-eszközök egyszerűen felhasználhatnak.
@@ -29,7 +29,7 @@ A Machine Learning Studio találkozási pontot biztosít az adatelemzés, a pred
 
 
 ## <a name="the-machine-learning-studio-interactive-workspace"></a>A Machine Learning Studio interaktív munkaterülete
-A prediktív elemzési modellek létrehozásához általában egy vagy több forrásból származó adatokat veszünk alapul, különböző adatkezelési és statisztikai függvények felhasználásával átalakítjuk őket, majd eredményhalmazt hozunk létre. Az ilyen modellek fejlesztése iteratív folyamat. A különböző függvényeket és paramétereket addig módosítjuk, az eredményeket addig közelítjük, amíg úgy nem véljük, hogy jól betanított, hatékony modellel rendelkezünk.
+A prediktív elemzési modellek fejlesztése, egy data általában használhatja, vagy további források, átalakíthatja és elemezheti az adatokat különböző adatkezelési és statisztikai függvények keresztül, és eredmények létrehozásához. Az ilyen modellek fejlesztése iteratív folyamat. A különböző függvényeket és paramétereket addig módosítjuk, az eredményeket addig közelítjük, amíg úgy nem véljük, hogy jól betanított, hatékony modellel rendelkezünk.
 
 Az **Azure Machine Learning Studio** interaktív, grafikus munkaterületet nyújt, amelyen könnyedén létrehozhatók, tesztelhetők és fejleszthetők a prediktív elemzési modellek. Az ***adathalmazokat*** és elemzési ***modulokat*** egy interaktív ***vászonra*** húzhatja, és összekapcsolhatja őket a Machine Learning Studio eszközben futtatható kísérletekké. A modell felépítésének fejlesztéséhez szerkesztheti a kísérletet, szükség esetén mentheti egy másolatát, majd újrafuttathatja. Amikor készen áll, a ***tanítási kísérletet*** átalakíthatja ***prediktív kísérletté***, majd ***közzéteheti*** webszolgáltatásként, hogy mások is hozzáférjenek.
 
@@ -44,7 +44,7 @@ Töltse le a **Microsoft Azure Machine Learning Studio képességeinek áttekint
 ![Microsoft Azure Machine Learning Studio képességeinek áttekintése](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 ## <a name="get-started-with-machine-learning-studio"></a>A Machine Learning Studio használatának első lépései
-Amikor először belép a [Machine Learning Studio](https://studio.azureml.net) felületére, a **Kezdőlap** oldal jelenik meg. Innen kiindulva megtekintheti a dokumentációt, valamint videókat, webes előadások és más hasznos forrásokat érhet el.
+Amikor először belép a Machine Learning Studióban] (https://studio.azureml.net) láthatja a **kezdőlap** lapot. Innen kiindulva megtekintheti a dokumentációt, valamint videókat, webes előadások és más hasznos forrásokat érhet el.
 
 Kattintson a bal felső menüre, ![Menü](./media/what-is-ml-studio/menu.png) amelyben számos lehetőséget fog látni.
 ### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
@@ -87,7 +87,7 @@ Az adathalmaz olyan adatokból áll, amelyeket feltöltöttek a Machine Learning
 * **Mellrákkal kapcsolatos adatok** – Mellrák-diagnosztikai adatok.
 * **Erdőtüzek adatai** – Az Északkelet-Portugáliában előfordult erdőtüzek kiterjedése.
 
-A kísérlet létrehozása során a vászon bal oldalán megjelenő adathalmazlistából választhat.
+A kísérlet létrehozása, mert közül választhat a rendelkezésre álló adatkészletek listája a vászon bal oldalán.
 
 A Machine Learning Studio mintaadathalmazainak listájáért tekintse meg a [Mintaadatkészletek használata az Azure Machine Learning Studio eszközben](use-sample-datasets.md) című cikket.
 
@@ -111,14 +111,22 @@ Ha elkészült a prediktív elemzési modell, közvetlenül a Machine Learning S
 <a name="compare"></a>
 ## <a name="how-is-machine-learning-studio-different-from-azure-machine-learning-service"></a>Miben különbözik a Machine Learning Studio Azure Machine Learning szolgáltatás?
 
-[Az Azure Machine Learning szolgáltatás](../service/overview-what-is-azure-ml.md) SDK-k és szolgáltatások gyorsan előkészítheti az adatokat, betanítását és gépi tanulási modellek üzembe helyezése nyújt. A számítási erőforrások és a folyamatok automatikus méretezésével növelheti a gépi tanulás hatékonyságát, és csökkentheti költségeit. Ezeket a képességeket mind használhatja olyan nyílt forráskódú Python-keretrendszerekkel, mint a PyTorch, a TensorFlow és a scikit-learn. 
+[Az Azure Machine Learning szolgáltatás](../service/overview-what-is-azure-ml.md) mindkét SDK-kat biztosít **- és -** egy vizuális interface(preview), hogy gyorsan előkészítheti az adatokat, betanítását és gépi tanulási modellek üzembe helyezése. A vizuális felhasználói felületet (előzetes verzió) Studio hasonló fogd és vidd élményt nyújt. Azonban az ellentétben a szellemi tulajdont képező számítási platform Studio, a vizuális felhasználói felületet a saját számítási erőforrást használ, és teljesen integrálva van az Azure Machine Learning szolgáltatás.
 
-Használja a Machine Learning Studiot akkor, amikor gyorsan és egyszerűen szeretne gépi tanulási modellekkel kísérletezni, és ha a megoldáshoz elegendőek a beépített gépi tanulási algoritmusok is.
+Íme egy gyors összehasonlítása.
 
-A Machine Learning szolgáltatást pedig akkor, amikor Python környezetben dolgozik a gépi tanulási algoritmusok finomhangolásán, vagy ha nyílt forráskódú gépi tanulási kódtárakat venne igénybe.
+|| Machine Learning Studio | Azure Machine Learning service:<br/>Vizuális felhasználói felületet|
+|---| --- | --- |
+|| Általánosan elérhető (GA) | Előzetes verzióban|
+|Modulok interfész| Számos | A kezdeti beállítás népszerű-modulok|
+|Képzési számítási célnak| Saját fejlesztésű számítási célnak, csak CPU-támogatás| Az Azure Machine Learning compute gpu-n és CPU támogatja.<br/>(Más számítási erőforrások támogatott SDK-ban)|
+|Üzembe helyezés számítási célnak| Saját fejlesztésű webes szolgáltatás formátumú, nem testre szabható | Vállalati biztonsági beállítások és az Azure Kubernetes Service-ben. <br/>([Más számítási erőforrások](../service/how-to-deploy-and-where.md) támogatott SDK-ban) |
+|Automatizált modellek tanítása és a hiperparaméter finomhangolása | Nem | Még nincs a vizuális felhasználói felületet. <br/> (Az SDK-t és az Azure Portalon támogatott.) | 
+
+Próbálja ki a vizuális felhasználói felületet (előzetes verzió) az [a rövid útmutató: Készítse elő és kód írása nélkül az adatok megjelenítése](../service/ui-quickstart-run-experiment.md)
 
 > [!NOTE]
-> Az Azure Machine Learning Studióban létrehozott modelleket használva nem kell telepíteni, vagy az Azure Machine Learning szolgáltatás kezeli.
+> A Studióban létrehozott modelleket használva nem kell telepíteni, vagy az Azure Machine Learning szolgáltatás kezeli. Modellek létrehozása és telepítése a szolgáltatás vizuális felületen felügyelhető, az Azure Machine Learning szolgáltatás munkaterületén.
 
 ## <a name="free-trial"></a>Ingyenes próbaidőszak
 

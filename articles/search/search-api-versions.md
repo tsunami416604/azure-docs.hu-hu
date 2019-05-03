@@ -7,15 +7,14 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 06/28/2018
+ms.date: 05/02/2019
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: c07a0c8f5440033455c69fe40806adf9b548c16f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f361417f25579b0ca605b33bafa4a581f68b1798
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61126959"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024394"
 ---
 # <a name="api-versions-in-azure-search"></a>Az Azure Search API-verziók
 Az Azure Search rendszeresen funkciófrissítések bevezetésekor. Előfordulhat, de nem mindig a frissítések megkövetelik az előző verziókkal való kompatibilitás megőrzése érdekében API új verziója. Közzététel az új verzió lehetővé teszi szabályozhatja, mikor és hogyan keresési szolgáltatásfrissítések integrálása a kódban.
@@ -30,18 +29,19 @@ Ugyanaz a szabály vonatkozik, az SDK-frissítések. Az Azure Search SDK követi
 ## <a name="snapshot-of-current-versions"></a>Aktuális verziók pillanatképe
 Alább van az aktuális verziók az összes pillanatképet alkalmazásprogramozási felület az Azure Search.
 
+
 | Adapterek | Legutóbbi főverzió | status |
 | --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |5.0 |Általánosan elérhető, kiadás dátuma: 2018. április |
-| [.NET SDK előzetes verzió](https://aka.ms/search-sdk-preview) |4.0.1-Preview |Előzetes, kiadás dátuma: 2017. május |
-| [Szolgáltatás REST API-ja](https://docs.microsoft.com/rest/api/searchservice/) |2017-11-11 |Mindenki számára elérhető |
-| [Szolgáltatási REST API 2017-11-11-Preview](search-api-2017-11-11-preview.md) |2017. 11. 11. dátumú előzetes verzió |Előzetes verzió |
-| [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |2.0 |Mindenki számára elérhető |
+| [.NET SDK](https://aka.ms/search-sdk) |9.0 |Általánosan elérhető, nyilvánosan május 2019. Tartalom még fejlesztés alatt áll.  |
+| [.NET SDK előzetes verzió](https://aka.ms/search-sdk-preview) |8.0.0-preview |Április 2019 kiadott előzetes verziója. Tartalom még fejlesztés alatt áll.|
+| [Szolgáltatás REST API-ja](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Mindenki számára elérhető |
+| [Szolgáltatási REST API-t a 2019-05-06-Preview](search-api-preview.md) |A 2019-05-06-előzetes verzió |Előzetes verzió |
+| [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Mindenki számára elérhető |
 | [Kezelési REST API](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Mindenki számára elérhető |
 
 A REST API-k, többek között a `api-version` minden hívás szükség. Használatával `api-version` megkönnyíti az egy adott, például az API előzetes verziójához. Az alábbi példa bemutatja, hogyan a `api-version` paraméter meg van adva:
 
-    GET https://adventure-works.search.windows.net/indexes/bikes?api-version=2017-11-11
+    GET https://my-demo-app.search.windows.net/indexes/hotels?api-version=2019-05-06
 
 > [!NOTE]
 > Bár az egyes kérések rendelkezik egy `api-version`, azt javasoljuk, hogy minden API-kérések ugyanazt a verziót használjon. Ez akkor különösen igaz olyankor, amikor új API-verziókban bevezetni, attribútumok vagy nem ismeri fel a korábbi verziók műveleteket. API-verziók keverése rendelkezhet nem kívánt következményekkel és el kell kerülni.

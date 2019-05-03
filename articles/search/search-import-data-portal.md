@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: fcb1e4f32608a1c83b653984dfa066da38e7c451
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a0eefe38fdffd04bb95826f960771bd6430ea687
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871099"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024782"
 ---
 # <a name="import-data-wizard-for-azure-search"></a>Az Azure Search adatok importálása varázsló
 
@@ -27,7 +27,7 @@ Az Azure portál Azure Search irányítópultján található **Adatok importál
 
 A varázsló nem lehet csatlakozni egy előre meghatározott indexre vagy egy meglévő indexelő futtatása, de a varázslóban be lehet állítani egy új index vagy indexelő struktúra és viselkedések kell támogatásához.
 
-Mik az Azure Search újdonságai? Végighaladhat a [a rövid útmutató: Importálása, index és lekérdezés a portál eszközei használatával](search-get-started-portal.md) importálása és az indexelő használatával próbálhatják ki őket **adatimportálás** és a beépített realestate-minta adatkészlet.
+Mik az Azure Search újdonságai? Végighaladhat a [a rövid útmutató: Importálása, index és lekérdezés a portál eszközei használatával](search-get-started-portal.md) importálása és az indexelő használatával próbálhatják ki őket **adatimportálás** és a beépített minta adatkészletet.
 
 ## <a name="start-importing-data"></a>Indítsa el az adatok importálása
 
@@ -77,14 +77,14 @@ A **adatimportálás** varázsló létrehoz egy állandó adatforrás-objektum m
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Az Azure Table Storage](search-howto-indexing-azure-tables.md) (nem támogatott [cognitive search](cognitive-search-concept-intro.md) folyamatok)
 
-Egybesimított adatkészlet a kötelező bemenet. Az importálás kizárólag egyedi táblából, adatbázisnézetből és egyenértékű adatszerkezetből végezhető el. 
+Is importálás kizárólag egyedi táblából, adatbázisnézetből és egyenértékű adatszerkezetből azonban a struktúra hierarchikus vagy beágyazott alépítményeit is tartalmazhat. További információkért lásd: [modellezésére a komplex típusok](search-howto-complex-data-types.md).
 
 Az adatszerkezetet a varázsló futtatása előtt kell létrehoznia, és tartalmat kell tartalmaznia. Ne futtassa a **adatimportálás** varázsló egy üres adatforráson.
 
 |  Kiválasztás | Leírás |
 | ---------- | ----------- |
 | **Meglévő adatforrás** |Ha a Search-szolgáltatásban már meg vannak adva indexelők, másik importálási folyamathoz kiválaszthat egy meglévő adatforrás-definíciót. Az Azure Search indexelők adatforrás-objektumok csak segítségével. Programozott módon létrehozhat egy adatforrás-objektum vagy a **adatimportálás** varázsló.|
-| **Példák**| Az Azure Search egy ingyenes nyilvános Azure SQL database segítségével ismerje meg az Azure Search importálása és a lekérdezési kérelmek üzemelteti. Lásd: [a rövid útmutató: Importálása, index és lekérdezés a portál eszközei használatával](search-get-started-portal.md) bemutató. |
+| **Példák**| Az Azure Search egy ingyenes globális Azure SQL database segítségével ismerje meg az Azure Search importálása és a lekérdezési kérelmek üzemelteti. Lásd: [a rövid útmutató: Importálása, index és lekérdezés a portál eszközei használatával](search-get-started-portal.md) bemutató. |
 | **Azure SQL Database** |A szolgáltatás neve, az olvasási engedéllyel rendelkező adatbázis-felhasználó hitelesítő adatai, valamint az adatbázis neve megadható vagy az oldalon, vagy az ADO.NET kapcsolati sztring használatával. A tulajdonságok megtekintéséhez vagy testreszabásához válassza ki a kapcsolati sztring lehetőséget. <br/><br/>Az oldalon meg kell adni a sorhalmazt biztosító táblát vagy nézetet. Ez a lehetőség a sikeres csatlakozás után jelenik meg: egy legördülő listából választhatja ki a kívánt elemet. |
 | **Azure virtuális gépen futó SQL Server** |Adjon meg egy teljesen minősített szolgáltatásnevet, Felhasználóazonosítót és jelszót és adatbázis kapcsolati karakterláncként. Az adatforrás használatához a helyi tárolóban rendelkeznie kell egy korábban telepített tanúsítvánnyal, amely titkosítja a kapcsolatot. Részletes útmutatásért lásd az [SQL virtuális gép az Azure Search-höz történő csatlakoztatását](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) ismertető témakört. <br/><br/>Az oldalon meg kell adni a sorhalmazt biztosító táblát vagy nézetet. Ez a lehetőség a sikeres csatlakozás után jelenik meg: egy legördülő listából választhatja ki a kívánt elemet. |
 | **Cosmos DB** |A követelmények a következőket tartalmazzák: a fiók, az adatbázis és a gyűjtemény. Az index tartalmazza a gyűjteményben szereplő összes dokumentumot. Egybesimításához vagy szűréséhez a sorkészlet egy lekérdezést határoz meg, vagy hagyja üresen a lekérdezést. A lekérdezés nem szükséges a varázslóban.|

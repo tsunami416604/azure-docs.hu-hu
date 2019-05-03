@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9ea4e4ec78e5613758bd9e5ff7a4fbd3273208c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c77f26187914b2c6e52426bb2a07303b22ccb2b0
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61290448"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023995"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Az Azure Search – gyakori kérdések (GYIK)
 
@@ -64,7 +64,7 @@ Nem vonatkoznak korlátozások használatát az elsődleges vagy másodlagos rep
 
 Nem, ez a művelet nem támogatott. Keresés minden esetben egy egyetlen index hatókörét.
 
-### <a name="can-i-restrict-search-corpus-access-by-user-identity"></a>Korlátozhatom keresési forrásgyűjteményébe hozzáférés felhasználó identitása szerint?
+### <a name="can-i-restrict-search-index-access-by-user-identity"></a>Korlátozhatom keresési index hozzáférés felhasználó identitása szerint?
 
 Megvalósíthat [biztonsági szűrők](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) az `search.in()` szűrőt. A szűrő composes jól [identity management-szolgáltatások, például az Azure Active regisztrált alkalmazástulajdonost](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) szűkítheti a keresési eredmények alapján definiált felhasználói csoporttagság.
 

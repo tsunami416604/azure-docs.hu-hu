@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seojan2018
-ms.openlocfilehash: 1fcb12fc2cfae98376210e1924a670cce444f4f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5f7ee172563a81d45e3a35da2cfc7e8731de48d
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61343340"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023856"
 ---
 # <a name="custom-web-api-skill"></a>Egyéni webes API-ismeretek
 
@@ -38,7 +38,7 @@ A paraméterei a kis-és nagybetűket.
 
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
-| uri azonosító | Az URI a webes API-t, amelyhez a _JSON_ adattartalom küld. Csak **https** URI-séma használata engedélyezett. |
+| uri azonosító | URI-azonosítója, amelyhez a webes API a _JSON_ adattartalom küld. Csak **https** URI-séma használata engedélyezett. |
 | httpMethod | A használt módszer a tartalom küldése közben. Módszerek a következők engedélyezett `PUT` vagy `POST` |
 | httpHeaders | Ahol a kulcsok felel meg a fejléc nevét, és küld a webes API-t a hasznos együtt fejléc értékeket jelölik kulcs-érték párok gyűjteménye. A következő fejlécek nem használhatják fel az ebben a gyűjteményben: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
 | timeout | (Nem kötelező) Megadása esetén a http ügyfél, így az API-hívás azt jelzi, az időkorlátot. Egy XSD "nyelv szerinti dayTimeDuration" értékként kell formázni (korlátozott részhalmaza olyan [ISO 8601 időtartama](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) érték). Ha például `PT60S` 60 másodpercig. Ha nincs beállítva, 30 másodperces alapértelmezett értéke van kiválasztva. Az időtúllépés állítható legfeljebb 90 másodperc alatt és a egy legalább 1 másodperc. |
@@ -139,10 +139,10 @@ Ezek a korlátozások mindig távolságban követi:
 
 ## <a name="sample-output-json-structure"></a>Minta kimenet JSON struktúrában
 
-A "kimeneti" felel meg a választ adott vissza a webes API-t. A webes API-t adhat vissza egy _JSON_ adattartalom (megtekintésével ellenőrizni a `Content-Type` válaszfejléc) és -eleget kell tenniük a következő korlátozásokkal:
+A "kimeneti" felel meg a webes API válasza. A webes API-t adhat vissza egy _JSON_ adattartalom (megtekintésével ellenőrizni a `Content-Type` válaszfejléc) és -eleget kell tenniük a következő korlátozásokkal:
 
 * Meg kell adni egy legfelső szintű entitás nevű `values` kell lennie, amely objektumok egy tömbjét.
-* A tömb objektumainak számát legyen ugyanaz, mint a webes küldött objektumot API-t.
+* A tömb objektumainak számát ugyanaz, mint a webes API-nak küldött objektumot kell lennie.
 * Az egyes objektumok kell rendelkeznie:
    * A `recordId` tulajdonság
    * A `data` tulajdonság, amely egy olyan objektum, ahol a mezők a következők végrehajtott információbeolvasás egyeztetést "neve" a `output` , és amelynek értéke a Adatbővítés számít.

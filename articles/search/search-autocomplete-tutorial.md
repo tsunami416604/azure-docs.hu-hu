@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 05/02/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: ed2e0bd352823a932cfea719c18e05ae6c913621
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f5cb8d2fee706600251039d80232d9fc7f60d5fb
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61126742"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025143"
 ---
 # <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Példa: Az Azure Search-alkalmazás javaslata vagy az automatikus kiegészítés hozzáadása
 
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogyan használható [javaslatok](https://docs.mi
 
 + *Javaslatok* beírása, ahol minden javaslat-e az indexből, amely megfelel a korábban beírt eddig egyetlen eredmény létrehozott javasolt eredményeket is. 
 
-+ *Az automatikus kiegészítés*, [előzetes verziójú funkció](search-api-preview.md), "befejezése" szó vagy kifejezés, amely a felhasználó jelenleg éppen gépel. Helyett eredményt adnak vissza, befejezi a lekérdezést, amely majd eredmények hajthat végre. Javaslatok, a befejezett szót vagy kifejezést a lekérdezésben van való határozza meg a egyezés az indexben. A szolgáltatás nem fog biztosítani az indexben nulla eredményt visszaadó lekérdezések.
++ *Az automatikus kiegészítés* "befejezése" szó vagy kifejezés, amely a felhasználó jelenleg éppen gépel. Helyett eredményt adnak vissza, befejezi a lekérdezést, amely majd eredmények hajthat végre. Javaslatok, a befejezett szót vagy kifejezést a lekérdezésben van való határozza meg a egyezés az indexben. A szolgáltatás nem fog biztosítani az indexben nulla eredményt visszaadó lekérdezések.
 
 Töltse le, és futtassa a mintát kódot **DotNetHowToAutocomplete** értékelheti ki ezeket a funkciókat. A mintakód célozza meg benne egy előre elkészített index használatával [NYCJobs bemutató adatok](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). A NYCJobs index tartalmaz egy [javaslattevő szerkezet](index-add-suggesters.md), amelyek esetében a javaslatok vagy az automatikus kiegészítés követelmény. Használhatja az előkészített index egy tesztkörnyezet szolgáltatásban üzemeltetett vagy [saját-index feltöltéséhez](#configure-app) leltáradat-betöltő használatával a NYCJobs minta megoldásban található. 
 

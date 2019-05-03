@@ -9,15 +9,19 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
-ms.openlocfilehash: 8d8b314965253dc00b39d0b068b1d6fb3e4aa471
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8d21e41ad487ad17598f2320fab5eebae02309e8
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60753405"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021740"
 ---
-1. Kövesse az utasításokat, [hozzon létre egy Azure Machine Learning szolgáltatás munkaterületet](../articles/machine-learning/service/setup-create-workspace.md#portal) Miniconda környezet kialakításához, hozzon létre egy munkaterületet, és a munkaterület konfigurációs fájl írása (**aml_config/config.json**) .
-
+1. Kövesse az utasításokat, [hozzon létre egy Azure Machine Learning szolgáltatás munkaterületet](../articles/machine-learning/service/setup-create-workspace.md#portal) való:
+    * A Miniconda-környezet létrehozása
+    * Telepítse az Azure Machine Learning SDK a Pythonhoz
+    * Munkaterület létrehozása
+    * Munkaterület konfigurációs fájl írása (**aml_config/config.json**).
+    
 1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
 
     ```
@@ -25,8 +29,14 @@ ms.locfileid: "60753405"
     ```
 
 1. Ezen módszerek bármelyikével munkaterület konfigurációs fájl hozzáadása:
-    * Másolás a **aml_config/config.json** a klónozott könyvtárba az előfeltételként szükséges rövid útmutató segítségével létrehozott fájlt.
+    * Másolás a **aml_config/config.json** a klónozott könyvtárra 1. lépésben létrehozott fájlt.
+
+    * Az a [az Azure portal](https://ms.portal.azure.com)válassza **config.json letöltése** a a **áttekintése** szakasz a munkaterület. 
+
+    ![Töltse le a config.json](./media/aml-dsvm-server/download-config.png)
+
     * Hozzon létre egy új munkaterületet, a kód használatával a [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb).
+
 1. Indítsa el a notebook-kiszolgálót a klónozott könyvtárból.
     
     ```shell

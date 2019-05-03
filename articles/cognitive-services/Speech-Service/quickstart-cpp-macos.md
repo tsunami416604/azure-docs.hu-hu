@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: wolfma
-ms.openlocfilehash: be4c5d6187e6367ba04ce7debcc0701937e87ae9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b602a26c83be1ffd4bd55a8eff9ff8d83aac5919
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461408"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020808"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerést c++ macOS rendszeren a Speech SDK-val
 
@@ -31,7 +31,7 @@ A rövid útmutató elvégzéséhez beszédszolgáltatások előfizetési kulcs 
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services Speech SDK jelenlegi verziója az `1.4.0`.
+A Cognitive Services Speech SDK jelenlegi verziója az `1.5.0`.
 
 A beszédfelismerés SDK macOS-hez készült tölthető le, a tömörített keretrendszer köteg https://aka.ms/csspeech/macosbinary.
 

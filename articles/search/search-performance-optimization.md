@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: 8a07657d04cee57cb69c9f5f7862fed3e7965716
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 32352a857f0a74dc008dc1ad76b4a5951a36b956
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61283580"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024551"
 ---
 # <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Üzembe helyezés stratégiákat és ajánlott eljárások az Azure Search teljesítményének optimalizálása
 
@@ -81,7 +81,7 @@ Az elosztott keresési szolgáltatások szinkronban figyelőkből segítségéve
 
 ### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Indexelők használata több szolgáltatást a tartalom frissítése
 
-Ha már használja egy szolgáltatás indexelő, konfigurálhatja egy második indexelő egy második szolgáltatást, hogy az ugyanazon adatforrás-objektum, használja a kiindulásként adatokat ugyanarról a helyről. Az egyes régiókban mindegyikük rendelkezik a saját indexelő és a egy célindex (a keresési forrásgyűjteményébe nincsenek megosztva, ami azt jelenti, hogy adatok duplikálódnak), azonban minden indexelő hivatkozik ugyanazon az adatforráson.
+Ha már használja egy szolgáltatás indexelő, konfigurálhatja egy második indexelő egy második szolgáltatást, hogy az ugyanazon adatforrás-objektum, használja a kiindulásként adatokat ugyanarról a helyről. Az egyes régiókban mindegyikük rendelkezik a saját indexelő és a egy célindex (a search-index nem megosztott, ami azt jelenti, hogy adatok duplikálódnak), azonban minden indexelő hivatkozik ugyanazon az adatforráson.
 
 Íme egy magas szintű vizualizációt, mi az architektúra módon jelenik meg.
 

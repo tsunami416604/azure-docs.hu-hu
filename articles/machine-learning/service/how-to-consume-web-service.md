@@ -11,18 +11,18 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: a862c920f1e070ab1bbb8af2546bc3d4350347b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4aaf56a00669dbf7e312e2a6f8787ccc664d1190
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819451"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023816"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Az Azure Machine Learning-modellek webszolgáltatásként üzembe helyezett felhasználása
 
 REST API-t üzembe helyezése az Azure Machine Learning-modellek webszolgáltatásként hoz létre. Adatokat küldeni az API-t, és a modell által visszaadott az előrejelzést kapni. Ebből a dokumentumból megtudhatja, hogyan hozhat létre a webszolgáltatás ügyfelek C#, Go, a Java és Python.
 
-Azure Container Instances, az Azure Kubernetes Service-ben vagy a Project Brainwave (mező programmable gate arrays) lemezkép központi telepítésekor létrehoz egy webes szolgáltatást. A regisztrált modellek és a pontozófájlt képeket hoz létre. Az URI használatával egy webes szolgáltatás eléréséhez használt lekérése a [Azure Machine Learning SDK](https://aka.ms/aml-sdk). Ha engedélyezve van a hitelesítés, az SDK-t is használhatja a hitelesítési kulcsok beolvasása.
+Webszolgáltatás hoz létre, amikor üzembe helyezi a képet az Azure Container Instances, Azure Kubernetes Service-ben vagy a mező-programmable gate arrays (FPGA). A regisztrált modellek és a pontozófájlt képeket hoz létre. Az URI használatával egy webes szolgáltatás eléréséhez használt lekérése a [Azure Machine Learning SDK](https://aka.ms/aml-sdk). Ha engedélyezve van a hitelesítés, az SDK-t is használhatja a hitelesítési kulcsok beolvasása.
 
 Általános létrehozásának munkafolyamata a machine learning-webszolgáltatás használó ügyfél a következő:
 

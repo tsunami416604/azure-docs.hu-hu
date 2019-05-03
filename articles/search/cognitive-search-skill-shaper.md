@@ -8,35 +8,44 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: c55783e9b209a1280a21edca34b75e72481f4cb6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5267f81c9886e2d1d8d62c134156aedb3b2b8763
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61127051"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023736"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper cognitive szakértelem
 
-A **Shaper** szakértelem összesíti több bemenet egy összetett típus, amely később a Adatbővítés folyamat lehet hivatkozni. A **Shaper** szakértelem lehetővé teszi, hogy lényegében-struktúra létrehozása, határozza meg, hogy a struktúra tagjai nevét és minden tagjának értéket rendelni. Összevont mezők keresési forgatókönyvekben bizonyulhat hasznosnak, például a vezetéknevet és az utónevet kombinálása egy egyszeres szerkezet, város és a egy egyszeres szerkezet, vagy a név állapotot és egyedi identitása létrehozásához egyetlen struktúrába születési dátumot.
+A **Shaper** szakértelem összesíti azokat több bemenet egy [komplex típus](search-howto-complex-data-types.md) , amely később a Adatbővítés folyamatban lehet hivatkozni. A **Shaper** szakértelem lehetővé teszi, hogy lényegében-struktúra létrehozása, határozza meg, hogy a struktúra tagjai nevét és minden tagjának értéket rendelni. Összevont mezők keresési forgatókönyvekben bizonyulhat hasznosnak, például a vezetéknevet és az utónevet kombinálása egy egyszeres szerkezet, város és a egy egyszeres szerkezet, vagy a név állapotot és egyedi identitása létrehozásához egyetlen struktúrába születési dátumot.
 
-Alapértelmezés szerint ez a módszer támogatja az objektumok, amely egy szintnél mélyebb. Az összetettebb objektumok láncolhatja össze több **Shaper** lépéseket.
+Az API-verzió határozza meg, megfelelő átalakítását, mélysége érheti el. 
 
-A válaszban a kimeneti név mindig "kimeneti". Belsőleg, a folyamat leképezhet egy másik nevet, például a "analyzedText" a "kimeneti", az alábbi példák, de a **Shaper** szakértelem magát a választ adja vissza "kimeneti". Ez lehet fontos Ha képi elemekben gazdag dokumentumok hibakeresést, és figyelje meg, hogy az elnevezési eltérés, vagy ha egyéni műveleteket hozhat létre, és vannak strukturálja a válasz saját magának.
+| API-verzió | Alakításra viselkedések | 
+|-------------|-------------------|
+| A REST API-t a 2019-05-06-preview verzióját (a .NET SDK-t nem támogatott) | Összetett objektumok több, a mély egy szinttel **Shaper** szakértelem definíciója. |
+| a 2019-05-06 ** (általánosan elérhető), 2017. 11. 11 – előzetes verzió| Összetett objektumok egy szintnél mélyebb. Egy többszintes alakzat szükséges együtt láncolási shaper számos lépést.|
+
+Az előzetes verzió **Shaper** szakértelem, ahogyan [3. forgatókönyv](#nested-complex-types), hozzáad egy új nem kötelező *sourceContext* a bemeneti tulajdonság. A *forrás* és *sourceContext* a tulajdonságok akkor kölcsönösen kizárják egymást. Ha a bemeneti képzettség a környezetben, egyszerűen felhasználhatja *forrás*. Ha a bemenet egy *különböző* környezet szakértelem összefüggésben használja, mint a *sourceContext*. A *sourceContext* kell megadni egy beágyazott bemeneti javítása folyamatban, mint a forrás az adott elemhez. 
+
+Minden API-verzióhoz, a válaszban a kimeneti név mindig "kimeneti". Belsőleg, a folyamat leképezhet egy másik nevet, például a "analyzedText", az alábbi példákban szemléltetett módon, de a **Shaper** szakértelem magát a választ adja vissza "kimeneti". Ez lehet fontos Ha képi elemekben gazdag dokumentumok hibakeresést, és figyelje meg, hogy az elnevezési eltérés, vagy ha egyéni műveleteket hozhat létre, és vannak strukturálja a válasz saját magának.
 
 > [!NOTE]
-> Szakértelem nincs kötve a Cognitive Services API-t, és nem terheli útmutatójához. Továbbra is ajánlott [Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md), azonban felül a **ingyenes** erőforrás beállítás, amely korlátozza, hogy naponta napi végrehajtott információbeolvasás kis számú.
+> A **Shaper** szakértelem nincs kötve a Cognitive Services API-t, és nem terheli útmutatójához. Továbbra is ajánlott [Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md), azonban felül a **ingyenes** erőforrás beállítás, amely korlátozza, hogy naponta napi végrehajtott információbeolvasás kis számú.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill
 
-## <a name="sample-1-complex-types"></a>1. példa: összetett típusok
+## <a name="scenario-1-complex-types"></a>1. forgatókönyv: komplexní typy
 
-Példaként vegyünk egy forgatókönyvet, ahol szeretné létrehozni a szerkezetet *analyzedText* , amely két tagja van: *szöveg* és *vélemények*, illetve. Az Azure Search szolgáltatásban a többrészes kereshető mező neve egy *komplex típus*, és a beépített a rendszer még nem támogatott. Az előzetes verzióhoz egy **Shaper** ismeretek segítségével hozzon létre egy összetett típusú mezők az index. 
+Példaként vegyünk egy forgatókönyvet, ahol szeretné létrehozni a szerkezetet *analyzedText* , amely két tagja van: *szöveg* és *vélemények*, illetve. Az Azure Search-index többrészes kereshető mező neve egy *komplex típus* és gyakran létrehozott, ha a forrásadatok rendelkezik egy megfelelő összetett szerkezet, amely hozzá van leképezve.
 
-Az alábbi példa neveket tartalmaz a tag bemeneteként. A kimeneti struktúra (az Azure Search szolgáltatásban az összetett mező) van megadva a *targetName*. 
+Azonban egy másik alapuló megközelítéssel hoznak létre a komplex típusok keresztül történik a **Shaper** ismeretek. Egy indexmezők szakértelem ügyféllé indexmezők feldolgozása közben a memóriabeli műveletek a beágyazott struktúrák, majd lehet rendelni egy összetett típus az index minden adathierarchizálásban küldhetnek kimenetet. 
+
+A következő példa szakértelem definíciót nevek biztosít a tag bemeneteként. 
 
 
 ```json
@@ -62,8 +71,36 @@ Az alábbi példa neveket tartalmaz a tag bemeneteként. A kimeneti struktúra (
 }
 ```
 
-### <a name="sample-input"></a>Minta beviteli
-A használható bemenet JSON-dokumentumok **Shaper** szakértelem lehet:
+### <a name="sample-index"></a>Mintakód-index
+
+A képességek alkalmazási lehetőségét az indexelő hív, és az indexelő igényel az index. Az index egy összetett ábrázolás az alábbi példához hasonlóan nézhet ki. 
+
+```json
+
+    "name": "my-index",
+    "fields": [
+        {   "name": "myId", "type": "Edm.String", "key": true, "filterable": true   },
+        {   "name": "analyzedText", "type": "Edm.ComplexType",
+            "fields": [{
+                    "name": "text",
+                    "type": "Edm.String",
+                    "filterable": false,
+                    "sortable": false,
+                    "facetable": false,
+                    "searchable": true  },
+          {
+                    "name": "sentiment",
+                    "type": "Edm.Double",
+                    "searchable": true,
+                    "filterable": true,
+                    "sortable": true,
+                    "facetable": true
+                },
+```
+
+### <a name="skill-input"></a>Bemeneti szakértelem
+
+Egy bejövő JSON-dokumentumok, a használható bemenet **Shaper** szakértelem lehet:
 
 ```json
 {
@@ -80,8 +117,9 @@ A használható bemenet JSON-dokumentumok **Shaper** szakértelem lehet:
 ```
 
 
-### <a name="sample-output"></a>Példa kimenet
-A **Shaper** szakértelem hoz létre egy új elem nevű *analyzedText* a kombinált elemeinek *szöveg* és *vélemények*. 
+### <a name="skill-output"></a>Kimeneti szakértelem
+
+A **Shaper** szakértelem hoz létre egy új elem nevű *analyzedText* a kombinált elemeinek *szöveg* és *vélemények*. Ez a kimenet az indexséma megfelel-e. Ez fog importált és indexelése az Azure Search-index.
 
 ```json
 {
@@ -101,11 +139,11 @@ A **Shaper** szakértelem hoz létre egy új elem nevű *analyzedText* a kombin�
 }
 ```
 
-## <a name="sample-2-input-consolidation"></a>2. példa: a bemeneti összevonása
+## <a name="scenario-2-input-consolidation"></a>2. forgatókönyv: a bemeneti összevonása
 
 Egy másik példa, hogy a feldolgozási folyamat különböző szakaszaiban kicsomagolta a könyv különböző oldalain fejezet címek és egy könyv címe imagine. Most már létrehozhat egy egyszeres szerkezet mikroszolgáltatásokból álló, ezeket a különféle bemeneteket.
 
-Ebben a forgatókönyvben Shaper szakértelem definíciója az alábbi példához hasonlóan nézhet ki:
+A **Shaper** szakértelem definíció ebben a forgatókönyvben az alábbi példához hasonlóan nézhet ki:
 
 ```json
 {
@@ -118,7 +156,7 @@ Ebben a forgatókönyvben Shaper szakértelem definíciója az alábbi példáho
         },
         {
             "name": "chapterTitles",
-            "source": "/document/content/pages/*/chapterTitles/*"
+            "source": "/document/content/pages/*/chapterTitles/*/title"
         }
     ],
     "outputs": [
@@ -130,8 +168,8 @@ Ebben a forgatókönyvben Shaper szakértelem definíciója az alábbi példáho
 }
 ```
 
-### <a name="sample-output"></a>Példa kimenet
-Ebben az esetben a Shaper lapossá teszi az összes fejezet címek hozzon létre egy egyetlen olyan tömböt. 
+### <a name="skill-output"></a>Kimeneti szakértelem
+Ebben az esetben a **Shaper** lapossá teszi az összes fejezet címek hozzon létre egy egyetlen olyan tömböt. 
 
 ```json
 {
@@ -153,8 +191,78 @@ Ebben az esetben a Shaper lapossá teszi az összes fejezet címek hozzon létre
 }
 ```
 
+<a name="nested-complex-types"></a>
+
+## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>3. forgatókönyv: a bemeneti összevonása a beágyazott környezetekben
+
+> [!NOTE]
+> Az api-Version paraméter támogatott struktúrák beágyazott = a 2019-05-06-Preview használható egy [Tudásbázis store](knowledge-store-concept-intro.md) vagy az Azure Search-index.
+
+Tegyük fel, a cím, a fejezetek és a egy könyv tartalmát, és futtatta entitások felismerése és a kulcs kifejezések tartalma és az most kell az eredményeket összesítheti a különböző képességek a fejezet nevét, az entitások és a kulcsfontosságú kifejezéseket, így az egyetlen alakzattá.
+
+A **Shaper** szakértelem definíció ebben a forgatókönyvben az alábbi példához hasonlóan nézhet ki:
+
+```json
+{
+    "@odata.type": "#Microsoft.Skills.Util.ShaperSkill",
+    "context": "/document",
+    "inputs": [
+        {
+            "name": "title",
+            "source": "/document/content/title"
+        },
+        {
+            "name": "chapterTitles",
+            "sourceContext": "/document/content/pages/*/chapterTitles/*",
+            "inputs": [
+              {
+                  "name": "title",
+                  "source": "/document/content/pages/*/chapterTitles/*/title"
+              },
+              {
+                  "name": "number",
+                  "source": "/document/content/pages/*/chapterTitles/*/number"
+              }
+            ]
+        }
+
+    ],
+    "outputs": [
+        {
+            "name": "output",
+            "targetName": "titlesAndChapters"
+        }
+    ]
+}
+```
+
+### <a name="skill-output"></a>Kimeneti szakértelem
+Ebben az esetben a **Shaper** összetett típus. Ez a struktúra létezik a memóriában. Ha szeretné menteni a Tudásbázis-áruházban, a képességek alkalmazási lehetőségét, amely meghatározza a tároló jellemzőit a kivetítés kell létrehoznia.
+
+```json
+{
+    "values": [
+        {
+            "recordId": "1",
+            "data": {
+                "titlesAndChapters": {
+                    "title": "How to be happy",
+                    "chapterTitles": [
+                      { "title": "Start young", "number": 1},
+                      { "title": "Laugh often", "number": 2},
+                      { "title": "Eat, sleep and exercise", "number: 3}
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
+
 ## <a name="see-also"></a>Lásd még
 
 + [Előre megadott képesség](cognitive-search-predefined-skills.md)
 + [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
-
++ [Összetett típusok használata](search-howto-complex-data-types.md)
++ [Tudásbázis store áttekintése](knowledge-store-concept-intro.md)
++ [Hogyan kell a Tudásbázis Store használatának első lépései](knowledge-store-howto.md)

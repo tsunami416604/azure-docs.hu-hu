@@ -11,12 +11,12 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c1c00fec5f56fc81b2cb73404728b214b5aaf3f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a717fa4191c57c21705d24884397ebb485726492
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60764589"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025091"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Oktatóanyag: Adatok előkészítése az regressziós modellezéshez
 
@@ -41,18 +41,16 @@ Ugrás a [a fejlesztési környezet beállítása](#start) olvassa végig a note
     * Az Azure Machine Learning Python SDK Adatelőkészítéshez
 * Az oktatóanyag notebook
 
-Ezekről az előfeltételekről le az alábbi szakaszok egyikét.
-
-* Használat [Azure notebookok](#azure)
+* Használja a [felhőalapú notebook server a munkaterületen](#azure) 
 * Használat [saját notebook server](#server)
 
-### <a name="azure"></a>Az Azure notebookok használata: Ingyenes Jupyter notebookok a felhőben
+### <a name="azure"></a>A munkaterület egy felhőbeli notebook server használata
 
-Nem kell mást Azure notebookok használatának megkezdéséhez. Az Azure Machine Learning Data Prep SDK már telepítve és konfigurálva, [Azure notebookok](https://notebooks.azure.com/). A telepítés és a jövőbeli frissítések automatikusan felügyelt Azure-szolgáltatások használatával.
-
-Után kövesse az alábbi lépéseket, futtassa a **oktatóanyagok/regressziós-1-adatok – prep.ipynb** jegyzetfüzetet a **bevezetés** projekt.
+Is könnyen a saját felhőalapú notebook server használatának első lépései. A [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) már telepítve és konfigurálva van az Ön számára a felhőalapú erőforrás létrehozása után.
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+* A notebook weblap indításához után futtassa a **oktatóanyagok/regressziós-1-adatok – prep.ipynb** notebook.
 
 ### <a name="server"></a>A saját Jupyter notebook server használata
 

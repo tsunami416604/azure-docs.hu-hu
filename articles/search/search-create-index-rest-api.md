@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: Hozzon létre, betöltését és használata a PowerShell és a REST API – Azure Search-index lekérdezése'
 description: Hozzon létre, betöltését és a PowerShell-lel index lekérdezése az Azure Search REST API és az Invoke-RestMethod.
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 2deba4bf941d561fcef7c2dff804646732e7ce24
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9459ab44f366c87660297a8564534156a56777bd
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817140"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024141"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>Gyors útmutató: A PowerShell és a REST API használatával az Azure Search-index létrehozása
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ $headers = @{
 Hozzon létre egy **$url** objektum, amely meghatározza a szolgáltatás indexeli a gyűjteményben. A `mydemo` szolgáltatás neve egy helyőrző jelent. Cserélje le egy érvényes keresési szolgáltatás egész ebben a példában a jelenlegi előfizetésében.
 
 ```powershell
-$url = "https://mydemo.search.windows.net/indexes?api-version=2017-11-11"
+$url = "https://mydemo.search.windows.net/indexes?api-version=2019-05-06"
 ```
 
 Futtatás **Invoke-RestMethod** egy GET kérelmet küld a szolgáltatást, és ellenőrizze a kapcsolatot. Adjon hozzá **ConvertTo-Json** így megtekintheti a válaszokat küldi vissza a szolgáltatásból.
@@ -116,7 +116,7 @@ $body = @"
 Állítsa be az URI-t a indexek gyűjteményhez, a szolgáltatás és a *hotels* index.
 
 ```powershell
-$url = "https://mydemo.search.windows.net/indexes/hotels?api-version=2017-11-11"
+$url = "https://mydemo.search.windows.net/indexes/hotels?api-version=2019-05-06"
 ```
 
 Futtassa a parancsot a **$url**, **$headers**, és **$body** a szolgáltatásban az index létrehozásához. 
@@ -223,7 +223,7 @@ $body = @"
 Állítsa a végpontot a *hotels* docs-gyűjtemény, és az indexelési műveletet (indexek/hotels/docs/index).
 
 ```powershell
-$url = "https://mydemo.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11"
+$url = "https://mydemo.search.windows.net/indexes/hotels/docs/index?api-version=2019-05-06"
 ```
 
 Futtassa a parancsot a **$url**, **$headers**, és **$body** dokumentumok tölthet be a "Hotels" index.
@@ -266,7 +266,7 @@ Ez a lépés bemutatja, hogyan kérdezhet le egy index használatával a [Search
 Állítsa a végpontot a *hotels* docs-gyűjtemény, és adja hozzá a **keresési** paraméter tartalmazza a lekérdezési karakterláncokat. Ez a karakterlánc egy üres keresés és a egy unranked listában szereplő összes dokumentumot visszaadja.
 
 ```powershell
-$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=*'
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2019-05-06&search=*'
 ```
 
 Futtassa a parancsot küldhet a **$url** a szolgáltatáshoz.
@@ -336,17 +336,17 @@ Próbálja meg néhány további lekérdezést példák betekintést nyerhet a s
 # Query example 1
 # Search the entire index for the term 'budget'
 # Return only the `hotelName` field, "Roach hotel"
-$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=budget&$select=hotelName'
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2019-05-06&search=budget&$select=hotelName'
 
 # Query example 2 
 # Apply a filter to the index to find hotels cheaper than $150 per night
 # Returns the `hotelId` and `description`. Two documents match.
-$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=*&$filter=baseRate lt 150&$select=hotelId,description'
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2019-05-06&search=*&$filter=baseRate lt 150&$select=hotelId,description'
 
 # Query example 3
 # Search the entire index, order by a specific field (`lastRenovationDate`) in descending order
 # Take the top two results, and show only `hotelName` and `lastRenovationDate`
-$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2017-11-11&search=*&$top=2&$orderby=lastRenovationDate desc&$select=hotelName,lastRenovationDate'
+$url = 'https://mydemo.search.windows.net/indexes/hotels/docs?api-version=2019-05-06&search=*&$top=2&$orderby=lastRenovationDate desc&$select=hotelName,lastRenovationDate'
 ```
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása 
 
@@ -354,7 +354,7 @@ Ha már nincs szüksége lesz rá az index törölni kell. Egy ingyenes szolgál
 
 ```powershell
 # Set the URI to the hotel index
-$url = 'https://mydemo.search.windows.net/indexes/hotels?api-version=2017-11-11'
+$url = 'https://mydemo.search.windows.net/indexes/hotels?api-version=2019-05-06'
 
 # Delete the index
 Invoke-RestMethod -Uri $url -Headers $headers -Method Delete

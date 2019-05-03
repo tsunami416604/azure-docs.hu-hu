@@ -1,7 +1,7 @@
 ---
 title: Az Azure Blob storage tartalmának az Azure Search – a teljes szöveges keresés
 description: Tudnivalók az Azure Blob Storage indexelése és szöveg kinyerése és az Azure Search a dokumentumokat.
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 87dc1dab0670f69ff8c418be476986baec2821fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e55d596cfaf34c177f6dc43c27aaac37da87d2f7
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871353"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024860"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Dokumentumok indexelése az Azure Blob Storage, az Azure Search szolgáltatással
 Ez a cikk bemutatja, hogyan használható az Azure Search index dokumentumok (például PDF-, Microsoft Office-dokumentumok, és számos egyéb gyakori formátum) az Azure Blob storage-ban tárolja. Első lépésként beállítása és konfigurálása a blob indexelőjével alapjait ismerteti. Ezután egy mélyebb feltárása viselkedéseket, kínál, és esetekben valószínűleg találkozik.
@@ -50,7 +50,7 @@ A blob-indexelés, az adatforrást a következő szükséges tulajdonságokat ke
 
 Adatforrás létrehozása:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -82,7 +82,7 @@ Az index egy dokumentumot, az attribútumokat, adja meg a mezőket, és egyéb s
 
 Hozzon létre egy kereshető indexet a következőképpen `content` tárolására blobok kinyert szöveget mező:   
 
-    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -101,7 +101,7 @@ Az indexelő adatforráshoz kapcsolódik a cél keresési indexhez, és biztosí
 
 Az index és az adatforrás létrehozása után készen áll az indexelő létrehozása:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -121,7 +121,7 @@ Az indexelő API létrehozása a további részletekért tekintse meg [indexelő
 Attól függően, a [az indexelő konfigurációjának](#PartsOfBlobToIndex), a blob indexelőjével indexelésére használhatja, csak tárolási metaadatok (hasznos, ha csak a metaadatokat és a blobok a tartalom indexelése nem szükséges), tároló és a tartalom metaadatainak, vagy mindkét metaadatok és szöveges tartalma. Alapértelmezés szerint az indexelő kinyeri a metaadatokat és a tartalom.
 
 > [!NOTE]
-> Alapértelmezés szerint strukturálatlan tartalom használatával például JSON vagy CSV-blobok indexelésének, egy olyan adattömb szöveg. Ha azt szeretné, JSON-t és a CSV-blobok indexelése strukturált módon, [indexelő JSON-blobok](search-howto-index-json-blobs.md) és [indexelő CSV-blobok](search-howto-index-csv-blobs.md) előzetes verziójú funkciók.
+> Alapértelmezés szerint strukturálatlan tartalom használatával például JSON vagy CSV-blobok indexelésének, egy olyan adattömb szöveg. Ha azt szeretné, JSON-t és a CSV-blobok indexelése strukturált módon, [indexelő JSON-blobok](search-howto-index-json-blobs.md) és [indexelő CSV-blobok](search-howto-index-csv-blobs.md) további információt.
 >
 > Egy összetett vagy beágyazott dokumentum (például a ZIP-archívumot vagy egy Word-dokumentumot a mellékleteket tartalmazó beágyazott Outlookos e-mail cím) is indexelt egyetlen dokumentumként.
 
@@ -172,7 +172,7 @@ Ebben a példában most válassza ki a `metadata_storage_name` mezőt dokumentum
 
 Ahhoz, hogy ez minden egy helyen, a következő hogyan mező-leképezések hozzáadása, és engedélyezze a meglévő indexelő kulcsok base-64 kódolását:
 
-    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2017-11-11
+    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -198,7 +198,7 @@ Szabályozhatja, hogy melyik blobok indexelésének, és amelyeket a rendszer ki
 ### <a name="index-only-the-blobs-with-specific-file-extensions"></a>Csak a meghatározott fájlnév-kiterjesztésű blobok indexelése
 Csak a blobok használatával adja meg a fájlnév-kiterjesztések indexelheti a `indexedFileNameExtensions` indexelő konfigurációs paraméter. Érték (a vezető pont) fájlkiterjesztések vesszővel tagolt listáját tartalmazó karakterlánc. Például, hogy csak az index a. PDF-fájlt, és. Blobok DOCX, tegye a következőt:
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -210,7 +210,7 @@ Csak a blobok használatával adja meg a fájlnév-kiterjesztések indexelheti a
 ### <a name="exclude-blobs-with-specific-file-extensions"></a>Blobok meghatározott fájlnév-kiterjesztésű kizárása
 Meghatározott fájlnév-kiterjesztéseket blobok kizárása az indexelés a `excludedFileNameExtensions` konfigurációs paraméter. Érték (a vezető pont) fájlkiterjesztések vesszővel tagolt listáját tartalmazó karakterlánc. Például, hogy minden BLOB, kivéve az index a. PNG és. JPEG-bővítményeket, tegye a következőt:
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -232,7 +232,7 @@ Mely részei a blobok indexelésének segítségével szabályozhatja a `dataToE
 
 Ha például csak a tárolási metaadatokat indexelje, használja:
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -255,7 +255,7 @@ A fenti konfigurációs paraméterek összes BLOB vonatkoznak. Egyes esetekben e
 
 Alapértelmezés szerint a blob indexelőjével leállítja a lehető legrövidebb időn belül nem támogatott tartalom-típust (például egy kép) rendelkező tapasztal. Természetesen használhat a `excludedFileNameExtensions` paraméter kihagyása bizonyos tartalomtípusok. Azonban szükség lehet index blobok minden lehetséges tartalomtípusok előzetes ismerete nélkül. Folytatni, amikor a tartalom típusa nem támogatott a rendszer észlelt, állítsa be a `failOnUnsupportedContentType` konfigurációs paraméter `false`:
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -293,7 +293,7 @@ Támogatja a dokumentumok törlését, használja a "helyreállítható törlés
 
 Például a következő házirendet figyelembe veszi a blob metaadat-tulajdonságot, ha a törlendő `IsDeleted` értékkel `true`:
 
-    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2017-11-11
+    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -340,7 +340,7 @@ A funkció működéséhez az összes indexelőre és más összetevők kell egy
 
 Ha az összes BLOB ugyanazon kódolás egyszerű szöveget tartalmaz, jelentősen növelheti az indexelési teljesítmény használatával **elemzési mód szöveg**. Elemzési mód szöveg használatához állítsa a `parsingMode` konfigurációs tulajdonság `text`:
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 

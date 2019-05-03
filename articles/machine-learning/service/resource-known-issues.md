@@ -11,16 +11,33 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: db0eccb542cb4253e6e891fa9fa51e60fb7951a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 242b7cb45e9a73e78ae9f9b62e83311e110e07ee
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60752335"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021109"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Ismert problémák és hibaelhárítás az Azure Machine Learning szolgáltatás
 
 Ez a cikk segít keresse meg és javítsa ki a hibákat vagy hibákat észlelt, amikor az Azure Machine Learning szolgáltatás használatával.
+
+## <a name="visual-interface-issues"></a>Vizuális felhasználói felületet kapcsolatos problémák
+
+Vizuális felhasználói felületet a machine learning szolgáltatással kapcsolatos problémák.
+
+### <a name="long-compute-preparation-time"></a>Hosszú számítási előkészítési idő
+
+Hozzon létre új számítási vagy eljárásokhoz elhagyni számítási idő szükséges idő, előfordulhat, hogy néhány percet vagy akár hosszabb. A csoport az optimalizálás dolgozik.
+
+
+### <a name="cannot-run-an-experiment-only-contains-dataset"></a>Nem lehet egy kísérlet futtatása csak tartalmaz adatkészlet 
+
+Érdemes futtatni egy kísérlet csak olyan adatkészlet az adatkészlet megjelenítése. Azonban nem engedélyezett futtatásához kísérlet csak a jelenleg adatkészlet tartalmazza. Mi a probléma aktívan javítása.
+ 
+A javítás, mielőtt az adatkészlet csatlakozhat a data transformation modult (Select Columns in Dataset, metaadatok szerkesztéséhez, Split Data stb.), és futtathatja a kísérletet. Ezután jelenítheti meg az adatkészlet. 
+
+Alább hogyan kép azt mutatja be: ![visulize-adatok](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="sdk-installation-issues"></a>SDK telepítésével kapcsolatos problémák
 

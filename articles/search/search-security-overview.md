@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/06/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 11b2fb5a246dfa8f5b1295a11cc57de36120898e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f366726f539a817f515a78fbc35bfeaa3b65514e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61283417"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024499"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Biztonsági és az adatvédelem az Azure Search szolgáltatásban
 
@@ -43,11 +43,8 @@ Titkosítási terjeszti ki a teljes indexelési folyamat során: a kapcsolatok �
 | Biztonsági réteg | Leírás |
 |----------------|-------------|
 | Titkosítás az átvitel során <br>(HTTPS/SSL/TLS) | Az Azure Search a 443-as HTTPS-portot figyeli. A platform közötti kapcsolatok az Azure-szolgáltatások vannak titkosítva. <br/><br/>Az összes ügyfél – szolgáltatás Azure Search interakciók SSL/TLS 1.2-es képes.  Ügyeljen arra, TLSv1.2 az SSL-kapcsolatok a szolgáltatáshoz.|
-| Titkosítás inaktív állapotban | Titkosítási teljes internalized, az indexelő a folyamatban, az indexelési idő befejezésig való vagy index mérete nincs mérhető hatással. Azt automatikusan történik az összes indexelő, a növekményes frissítéseket az indexbe, amely nem teljes mértékben titkosított (2018. január előtt létrehozott) is.<br><br>Belsőleg, titkosítási alapján [Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), 256 bites [AES-titkosítás](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).|
-
-Titkosítás a belső, az Azure Search, a tanúsítványok és titkosítási kulcsok belső célokra a Microsoft által felügyelt, és egységesen érvényesek. Nem titkosítás engedélyezése vagy letiltása, kezelése vagy helyettesítse be a saját maga, vagy megtekintheti a titkosítási beállítások a portálon vagy programozott módon. 
-
-Titkosítás inaktív állapotban 2018. január 24 mutattuk be, és megosztott (ingyenes) szolgáltatások, beleértve az összes régióban, minden szolgáltatási csomagokra vonatkozik. Teljes titkosítás, az adott dátum előtt létrehozott indexek kell dobni, és az újonnan létrehozott ahhoz, hogy a titkosítás olyankor történjen. Ellenkező esetben csak az új adatok 24. január után hozzá is titkosítva van.
+| Titkosítás inaktív állapotban <br>A Microsoft által kezelt kulcsok | Titkosítási teljes internalized, az indexelő a folyamatban, az indexelési idő befejezésig való vagy index mérete nincs mérhető hatással. Azt automatikusan történik az összes indexelő, a növekményes frissítéseket az indexbe, amely nem teljes mértékben titkosított (2018. január előtt létrehozott) is.<br><br>Belsőleg, titkosítási alapján [Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), 256 bites [AES-titkosítás](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).<br><br> Titkosítás a belső, az Azure Search, a tanúsítványok és titkosítási kulcsok belső célokra a Microsoft által felügyelt, és egységesen érvényesek. Nem titkosítás engedélyezése vagy letiltása, kezelése vagy helyettesítse be a saját maga, vagy megtekintheti a titkosítási beállítások a portálon vagy programozott módon.<br><br>Titkosítás inaktív állapotban 2018. január 24 mutattuk be, és megosztott (ingyenes) szolgáltatások, beleértve az összes régióban, minden szolgáltatási csomagokra vonatkozik. Teljes titkosítás, az adott dátum előtt létrehozott indexek kell dobni, és az újonnan létrehozott ahhoz, hogy a titkosítás olyankor történjen. Ellenkező esetben csak az új adatok 24. január után hozzá is titkosítva van.|
+| Titkosítás inaktív állapotban <br>Felhasználó által kezelt kulcsok | Ügyfél által felügyelt kulcsokkal titkosítása egy **előzetes** szolgáltatás, amely nem érhető el az ingyenes szolgáltatások. A fizetős szolgáltatások, csak elérhető keresési szolgáltatásokat a létrehozott és a 2019. január után használja a legújabb előzetes verziójú api-verzió (api-version = a 2019-05-06-előzetes verzió).<br><br>Az Azure Search-indexek és szinonimatérképet most titkosíthatók inaktív állapotban ügyfélkulcsokkal kulcsok felügyelt az Azure Key Vaultban. További tudnivalókért lásd: [titkosítási kulcsokat az Azure Search kezelése](search-security-manage-encryption-keys.md).<br>Ez a funkció nem lecseréli az alapértelmezett titkosítás inaktív állapotban, de mellett, hanem alkalmazza.<br>A funkció engedélyezése index mérete növelheti és csökkentheti a lekérdezési teljesítmény. A mai napig megfigyelések alapján a várható növekedését 30 – 60 %-os a gyorsaság, bár a tényleges teljesítmény az index definícióját és a lekérdezések típusai függően változhat. A teljesítményre gyakorolt hatás miatt ajánlott csak engedélyezze ezt a funkciót, amely tényleg szükséges indexeket.
 
 ## <a name="azure-wide-user-access-controls"></a>Azure – felhasználói hozzáférés-vezérlés
 

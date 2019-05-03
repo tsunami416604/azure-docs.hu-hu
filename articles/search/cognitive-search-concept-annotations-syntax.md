@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: bfb8f5ca9b4d204b7a5efdc1b54a0fdd150e5ed6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 637edc0e45daa37a753fbaa15313b076e8af4d7c
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344206"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023877"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Egy cognitive search indexmezők széljegyzetet referencia útmutató
 
@@ -36,13 +36,13 @@ Előtt tekintse át a szintaxist, most nyissa meg újra jobb megértése érdek�
 <a name="example-1"></a>
 ## <a name="example-1-simple-annotation-reference"></a>1. példa: Egyszerű jegyzet referencia
 
-Az Azure Blob storage tegyük fel, amely megnevezett entitások felismerése használatával kiolvasni kívánt személyek nevét mutató hivatkozásokat tartalmazó fájlok különböző. Az alábbi, szakértelem definícióban `"/document/content"` a teljes dokumentum képviselő szöveges alakot van, és "felhasználók" egy kivonása személyek azonosított entitások teljes nevét.
+Az Azure Blob storage tegyük fel, amelyek segítségével entitások felismerése kiolvasni kívánt személyek nevét mutató hivatkozásokat tartalmazó fájlok különböző. Az alábbi, szakértelem definícióban `"/document/content"` a teljes dokumentum képviselő szöveges alakot van, és "felhasználók" egy kivonása személyek azonosított entitások teljes nevét.
 
 Mivel az alapértelmezett környezet `"/document"`, a listáját, akikkel már alakban lehet hivatkozni `"/document/people"`. Ebben az esetben `"/document/people"` jegyzet, most kell leképezve egy mezőt az indexben, illetve az azonos készségeitől egy másik szakértelem használatban van.
 
 ```json
   {
-    "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+    "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
     "categories": [ "Person"],
     "defaultLanguageCode": "en",
     "inputs": [
@@ -98,7 +98,7 @@ Ha jegyzetek tömbök vagy karakterláncok gyűjteményei, érdemes célként me
 
 Néha szüksége át őket egy adott szakértelem egy adott típusú összes jegyzet csoportosításához. Fontolja meg, amely azonosítja a 2. példa a kinyert utolsó nevéből leggyakoribb Vezetéknév elméleti egyéni műveleteket. Az egyéni ismeretek csak a legutóbbi nevét, adjon meg a környezetben `"/document"` és a bemeneti, `"/document/people/*/lastname"`.
 
-Vegye figyelembe, hogy a számossága `"/document/people/*/lastname"` nagyobb, mint amely dokumentumot. Előfordulhatnak 10 lastname csomópont közben van ez a dokumentum csak egy dokumentum-csomópont. Ebben az esetben a rendszer automatikusan létrehoz egy tömbjét `"/document/people/*/lastname"` tartalmazó összes elemét a dokumentumban.
+Figyelje meg, hogy a számossága `"/document/people/*/lastname"` nagyobb, mint amely dokumentumot. Előfordulhatnak 10 lastname csomópont közben van ez a dokumentum csak egy dokumentum-csomópont. Ebben az esetben a rendszer automatikusan létrehoz egy tömbjét `"/document/people/*/lastname"` tartalmazó összes elemét a dokumentumban.
 
 ```json
   {

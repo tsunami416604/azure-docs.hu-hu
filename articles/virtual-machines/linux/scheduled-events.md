@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: aacb4521f4c6e8699be357cf396a01b7eb54b552
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b35a06fc4e100d71e787e183299825b61d342e69
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924376"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64993149"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Az Azure Metadata szolgáltatás: A Linux rendszerű virtuális gépeken ütemezett események
 
@@ -46,7 +46,7 @@ Az ütemezett eseményekről az alkalmazás képes felderíteni, amikor karbanta
 
 Az ütemezett események biztosítja az események a következő esetekben használja:
 
-- Platform által kezdeményezett karbantartás (például a gazda operációs rendszer frissítése)
+- [Platform által kezdeményezett karbantartás](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/maintenance-and-updates) (például virtuális gép újraindítás, élő áttelepítés vagy gazdagép frissítései millióiról memória)
 - Csökkentett teljesítményű hardver
 - Felhasználó által kezdeményezett karbantartás (például egy felhasználó újraindítása vagy újbóli üzembe helyezése egy virtuális gép)
 - [Alacsony prioritású virtuális gép kiürítési](https://azure.microsoft.com/blog/low-priority-scale-sets) beállítja a méretezési csoportban
@@ -58,6 +58,7 @@ Az ütemezett események biztosítja az események a következő esetekben haszn
 ### <a name="scope"></a>Hatókör
 Ütemezett kézbesíti az eseményeket:
 
+- Önálló virtuális gépekről.
 - Összes virtuális gép egy cloud service-ben.
 - Összes virtuális gép egy rendelkezésre állási csoportban.
 - Egy méretezési csoportban lévő összes virtuális gép elhelyezési csoport megadása 
@@ -129,7 +130,7 @@ Abban az esetben, ahol az ütemezett események, a válasz események tömbjét 
 |Tulajdonság  |  Leírás |
 | - | - |
 | EventId | Globálisan egyedi azonosítóját az eseményhez. <br><br> Példa: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | Ez az esemény hatására a hatás. <br><br> Értékek: <br><ul><li> `Freeze`: A virtuális gép úgy van ütemezve, szüneteltetésére néhány másodpercig. A Processzor fel van függesztve, de nem érinti a memória, a megnyitott fájlokat vagy a hálózati kapcsolatok. <li>`Reboot`: A virtuális gép újraindításra van ütemezve (a nem állandó memória elvész). <li>`Redeploy`: A virtuális gép áthelyezése egy másik csomópontra van ütemezve (a rövid élettartamú lemezek elvesznek). <li>`Preempt`: Az alacsony prioritású virtuális gép törlése folyamatban van (az ideiglenes lemezek olyan elveszett eszköz).|
+| EventType | Ez az esemény hatására a hatás. <br><br> Értékek: <br><ul><li> `Freeze`: A virtuális gép úgy van ütemezve, szüneteltetésére néhány másodpercig. Processzor és a hálózati kapcsolat felfüggeszthető, de nem érinti a memória vagy a megnyitott fájlokat.<li>`Reboot`: A virtuális gép újraindításra van ütemezve (a nem állandó memória elvész). <li>`Redeploy`: A virtuális gép áthelyezése egy másik csomópontra van ütemezve (a rövid élettartamú lemezek elvesznek). <li>`Preempt`: Az alacsony prioritású virtuális gép törlése folyamatban van (az ideiglenes lemezek olyan elveszett eszköz).|
 | ResourceType | Ez az esemény érinti erőforrás típusát. <br><br> Értékek: <ul><li>`VirtualMachine`|
 | További források| Ez az esemény érinti erőforrások listája. A lista tartalmaz gépeket legfeljebb egy garantáltan [frissítési tartományt](manage-availability.md), azonban nem tartalmaz a UD minden gépek. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Ez az esemény állapota. <br><br> Értékek: <ul><li>`Scheduled`: Ez az esemény után a megadott ideig történő futásra van ütemezve a `NotBefore` tulajdonság.<li>`Started`: Ez az esemény feldolgozása megkezdődött.</ul> Nem `Completed` vagy hasonló állapota minden eddiginél biztosítja. Az esemény már nem ad vissza az esemény befejezése.

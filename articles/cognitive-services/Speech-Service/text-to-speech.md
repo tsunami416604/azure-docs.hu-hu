@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 2c5c2bc2b8dd1930efef9833bd442fcad5566e2a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cbabdde2dd5df2ca40ee45fe0f7b0437f095673b
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61460269"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020380"
 ---
 # <a name="what-is-text-to-speech"></a>Mi az szöveg-hang transzformációs?
 
@@ -32,7 +32,9 @@ Standard szintű beszédhangot statisztikai paraméteres összefoglaló és/vagy
 
 Neurális beszédhangot neurálishálózat használatával elhárítja a hagyományos szöveg-hang transzformációs rendszerek magas terhelés, és használja a beszélt nyelv, és a speech egységeket szintetizáló be a számítógép hang intonation utaló megfelelő korlátozásait. Standard szintű, szöveg-hang transzformációs felszámolja prosody külön nyelvi elemzés és akusztikai előrejelzési lépések, amelyek független modellek vonatkoznak rájuk. Amely muffled, buzzy hangalapú összefoglaló eredményezhet. A Neurális képesség hajtja végre prosody előrejelzési és hangra vonatkozó összefoglaló egyidejűleg, ami egy további képlékeny és természetes hangzó hangalapú eredményez.
 
-Győződjön meg arról, látás- és a virtuális asszisztensek interakció természetesebb, és vonzó, digitális szövegek, például az e-könyvek átalakítása audiobooks, és javíthatja a autós navigációs rendszerek Neurális beszédhangot használható. Az emberi intelligenciára hasonlító elemeket természetes prosody és egyértelmű csuklópontot szó Neurális beszédhangot jelentősen csökkentheti figyel-e fáradás AI-rendszerekkel való kommunikáció során. Neurális beszédhangot kapcsolatos további információkért lásd: [támogatott nyelvek](language-support.md#text-to-speech).
+Győződjön meg arról, látás- és a virtuális asszisztensek interakció természetesebb, és vonzó, digitális szövegek, például az e-könyvek átalakítása audiobooks, és javíthatja a autós navigációs rendszerek Neurális beszédhangot használható. Az emberi intelligenciára hasonlító elemeket természetes prosody és egyértelmű csuklópontot szó Neurális beszédhangot jelentősen csökkentheti figyel-e fáradás AI-rendszerekkel való kommunikáció során. 
+
+Neurális beszédhangot támogatják a különböző stílust, semleges és cheerful. Például a Jessa (en-US) hangalapú képesek megszólalni cheerfully, amely meleg, örömmel beszélgetés van optimalizálva. Módosíthatja a hangalapú kimenet, például a képviselő hangvételét, a terv lényegét, és használatával felgyorsíthatja [Speech összefoglaló Markup Language](speech-synthesis-markup.md). Rendelkezésre álló beszédhangot teljes listáját lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
 Neurális beszédhangot előnyeivel kapcsolatos további tudnivalókért lásd: [a Microsoft új Neurális szöveg-hang transzformációs szolgáltatás segítségével például a felhasználók beszélnek gépek](https://azure.microsoft.com/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/).
 

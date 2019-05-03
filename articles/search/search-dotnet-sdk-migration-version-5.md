@@ -7,17 +7,22 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 01/24/2019
+ms.date: 05/02/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: d7684aa79ac9f58c2a047b01a6d9f5263795221d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 980f16680ecc65bf8ac30a49e02f39b0f18a15f6
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61291707"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024114"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>Az Azure Search .NET SDK 5-ös verzió frissítése
+
+> [!Important]
+> Ez a tartalom még fejlesztés alatt áll. Az Azure Search .NET SDK 9.0-s verziója érhető el a NuGet. Ebből a cikkből azt ismertetik, hogyan 9.0 rendszerre történő is dolgozunk. 
+> 
+
 Ha a 4.0-preview jelű verziót vagy a régebbi verziót használja a [Azure Search .NET SDK](https://aka.ms/search-sdk), ez a cikk segít az alkalmazás használhatja a 5-ös verzió frissítése.
 
 Az SDK-t, beleértve a példákat általános bemutatóért lásd: [használata az Azure Search .NET-alkalmazásból](search-howto-dotnet-sdk.md).

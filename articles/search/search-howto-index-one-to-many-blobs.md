@@ -1,7 +1,7 @@
 ---
 title: Index blobokat tartalmazó több keresési index dokumentumokat az Azure Blob-indexelő az Azure Search – a teljes szöveges keresés
 description: Feltérképezi az Azure-blobok az Azure Search Blob indexelőjével szöveges tartalom. Minden egyes blob egy vagy több Azure Search-index dokumentumot tartalmazhat.
-ms.date: 02/12/2019
+ms.date: 05/02/2019
 author: arv100kri
 manager: briansmi
 ms.author: arjagann
@@ -10,21 +10,18 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seofeb2018
-ms.openlocfilehash: e95eff015340659b642dff800a03f615e22c1577
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 628ced069c9d32c6e874c2e36a1e3b752c476003
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871199"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024649"
 ---
 # <a name="indexing-blobs-producing-multiple-search-documents"></a>Dokumentumok keresése több előállító-blobok indexelése
 Alapértelmezés szerint egy blob indexelőjével egyetlen keresési dokumentumként kezeli a blob tartalmát. Bizonyos **parsingMode** értékeket támogatja a forgatókönyvek, ahol az egyes blob több keresési dokumentumok eredményezhet. A különböző típusú **parsingMode** , amelyek engedélyezik a rendszer-, csomagolja ki indexer, amely több, mint egy keresési dokumentum-ból:
 + `delimitedText`
 + `jsonArray`
 + `jsonLines`
-
-> [!IMPORTANT]
-> `jsonLines` elemzési mód nyilvános előzetes verzióban érhető el, és nem éles környezetekben használható. További információkért lásd: [REST api-version = 2017-11-11-Preview](search-api-2017-11-11-preview.md). 
 
 ## <a name="one-to-many-document-key"></a>-A-többhöz dokumentum kulcs
 Minden egyes dokumentum, amely megjelenik-e az Azure Search-index egyedileg azonosít egy dokumentum kulcsot. 
@@ -106,7 +103,7 @@ Ha szeretné beállítani egy explicit mezőleképezés, ellenőrizze, hogy a _s
 + [Indexelők az Azure Search szolgáltatásban](search-indexer-overview.md)
 + [Az Azure Search szolgáltatással az Azure Blob Storage indexelése](search-howto-index-json-blobs.md)
 + [CSV-blobok indexelése az Azure Search blob indexelőjével](search-howto-index-csv-blobs.md)
-+ [JSON-blobok indexelése az Azure Search blob indexelőjével](search-howto-index-csv-blobs.md)
++ [JSON-blobok indexelése az Azure Search blob indexelőjével](search-howto-index-json-blobs.md)
 
 ## <a name="NextSteps"></a>Következő lépések
 * Azure Search kapcsolatos további információkért tekintse meg a [keresési szolgáltatás oldalát](https://azure.microsoft.com/services/search/).

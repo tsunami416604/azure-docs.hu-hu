@@ -7,15 +7,15 @@ tags: Simple query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9b7147971bd320a11606a93ab4d988e924cf93b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0c47212e51725e7d4a173c441709dca739d4e357
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61296960"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024531"
 ---
 # <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Az "egyszerű" szintaxis használatával az Azure Search lekérdezési példák
 
@@ -50,7 +50,7 @@ URL-Címének szerkezete a következő elemekből áll:
 + **`https://azs-playground.search.windows.net/`** az Azure Search fejlesztői csapat által karbantartott védőfal keresési szolgáltatás. 
 + **`indexes/nycjobs/`** az i állások index a indexek gyűjtemény adott van. A szolgáltatás nevét és a index van szükség a kérelem.
 + **`docs`** van a dokumentumok gyűjteményt összes kereshető tartalom tartalmazó. A lekérdezési api-kulcs a kérés fejlécében megadott csak a dokumentumok gyűjteményt célzó olvasási műveletek a működik.
-+ **`api-version=2017-11-11`** állítja be az api-verziót, amely egy kötelező paraméter halasztása minden kérelemnél.
++ **`api-version=2019-05-06`** állítja be az api-verziót, amely egy kötelező paraméter halasztása minden kérelemnél.
 + **`search=*`** a lekérdezési karakterlánc, amely a kezdeti lekérdezés null értékű, a (alapértelmezés szerint) az első 50 eredményt adnak vissza.
 
 ## <a name="send-your-first-query"></a>Az első lekérdezés küldése
@@ -60,7 +60,7 @@ Ellenőrzési lépésként, illessze be a következő kérelmet GET, majd kattin
 Illessze be az URL-címet REST-ügyfél ellenőrzésként, valamint a dokumentum szerkezete.
 
   ```http
-  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
+  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
 A lekérdezési karakterlánc **`search=*`**, van egy nem meghatározott keresés egyenértékű, NULL értékű vagy üres keresés. Nem különösen akkor hasznos, de a legegyszerűbb keresést végezhet.
@@ -92,7 +92,7 @@ search=*&searchFields=business_title, posting_type&$select=business_title, posti
 ### <a name="full-url"></a>Teljes URL-cím
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&search=*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=business_title&$select=business_title&search=*
 ```
 
 Ez a lekérdezés válasza az alábbi képernyőfelvételhez hasonlóan kell kinéznie.
@@ -108,13 +108,13 @@ Ebben a példában egy kicsit szokatlan, de keresési viselkedések kiértékel�
 Minden dokumentum rendelkezik egy egyedi azonosítója. Próbálja ki a keresési lekérdezés szintaxisát, először adja vissza a dokumentum azonosítók listáját, hogy talál egy használni. I állások, azonosítók vannak tárolva a `id` mező.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=id&$select=id&search=*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=id&$select=id&search=*
 ```
 
 A következő példában egy keresési lekérdezést egy adott dokumentum alapján visszaadó `id` "9E1E3AF9-0660-4E00-AF51-9B654925A2D5", amely jelent meg először az előző válaszban. A következő lekérdezés visszaadja a teljes dokumentumot, nem csak a kijelölt mezők. 
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2017-11-11&$count=true&search=*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2019-05-06&$count=true&search=*
 ```
 
 ## <a name="example-3-filter-queries"></a>3. példa: Szűrő lekérdezések
@@ -122,7 +122,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E0
 [Szintaxis szűrése](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) van egy is használhatja az OData-kifejezésnek **keresési** vagy önállóan. Egy önálló szűrőt a keresési paramétert, akkor célszerű, ha a szűrőkifejezés nem tudja a lényeges dokumentumok teljes minősítéséhez. A lekérdezési karakterlánc nélkül nem nincs lexikális vagy nyelvi elemzés, nincs (az összes pontszámok 1), és nincs ennek a területnek. Figyelje meg a keresési karakterlánc üres.
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "salary_frequency eq 'Annual' and salary_range_from gt 90000",
@@ -138,13 +138,13 @@ Együttes használatuk esetén a szűrő alkalmazása először a teljes indexre
 Ha azt szeretné, a Postman használatával GET ezt kipróbálni, beillesztheti a következő karakterláncot:
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
 ```
 
 Keresztül történik egy másik hatékonyan egyesítheti a szűrőt, és keressen **`search.ismatch*()`** szűrő kifejezésben, melyekben használhatja a keresési lekérdezést a szűrőben. A szűrőkifejezés helyettesítő karakterként használja a *terv* kiválasztásához business_title, beleértve a távú terv, planner, tervezési és így tovább.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
 A függvénnyel kapcsolatos további információkért lásd: ["Szűrő példákban" search.ismatch](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples).
@@ -158,7 +158,7 @@ Az adattípusok fontosak az tartományszűrő és numerikus mezők, és a karakt
 Az alábbi példák az olvashatóság érdekében (numerikus tartományok szövegtartomány követ) POST-formátumban van:
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "num_of_positions ge 5 and num_of_positions lt 10",
@@ -171,7 +171,7 @@ POST /indexes/nycjobs/docs/search?api-version=2017-11-11
 
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "business_title ge 'A*' and business_title lt 'C*'",
@@ -186,11 +186,11 @@ POST /indexes/nycjobs/docs/search?api-version=2017-11-11
 Ön is kipróbálhatja ezeket a Postman használatával GET:
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&search=&$filter=num_of_positions ge 5 and num_of_positions lt 10&$select=job_id, business_title, num_of_positions, agency&$orderby=agency&$count=true
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&search=&$filter=num_of_positions ge 5 and num_of_positions lt 10&$select=job_id, business_title, num_of_positions, agency&$orderby=agency&$count=true
 ```
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&search=&$filter=business_title ge 'A*' and business_title lt 'C*'&$select=job_id, business_title, agency&$orderby=business_title&$count=true
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&search=&$filter=business_title ge 'A*' and business_title lt 'C*'&$select=job_id, business_title, agency&$orderby=business_title&$count=true
 ```
 
 > [!NOTE]
@@ -203,7 +203,7 @@ A mintaindex szélességi és hosszúsági koordinátákkal megadott geo_locatio
 Az alábbi példa az olvashatóság érdekében POST-formátumban van:
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4",
@@ -216,7 +216,7 @@ Keresési eredmények olvashatóbb eredményt, egy feladat azonosítója, beoszt
 Is kipróbálhatja ezt a Postman-GET használatával:
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
 ```
 
 ## <a name="example-6-search-precision"></a>6. példa: Keresés pontosság
@@ -226,19 +226,19 @@ Kifejezés lekérdezések ugyanazon használati feltételek, például számos �
 1. példa: **`&search=fire`** Ha minden megfelelő elemet a word fire valahol a dokumentum tartalmazza: 150 eredményeket adja vissza.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=fire
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire
 ```
 
 2. példa: **`&search=fire department`** 2002 eredményeket ad vissza. Egyezések fire vagy a részleg tartalmazó dokumentumok adja vissza.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=fire department
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire department
 ```
 
 3. példa: **`&search="fire department"`** 82 eredményeket ad vissza. Mellékelve a karakterláncot az idézőjelek szó keresést a nagy valószínűséggel mindkét kifejezéssel, és egyezés található az indexben, az összesített használati álló tokenekre igényei szerint. Ez megmagyarázza, miért például keresés **`search=+fire +department`** nem megfelelő. Nagy valószínűséggel mindkét kifejezéssel szükség, de tartalomvizsgálatnak egymástól függetlenül. 
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search="fire department"
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search="fire department"
 ```
 
 ## <a name="example-7-booleans-with-searchmode"></a>7. példa: A searchMode logikai értékek
@@ -248,7 +248,7 @@ Egyszerű szintaxis karakterek formájában támogatja a logikai operátorokkal 
 Az alapértelmezett searchMode (tetszőleges) használ, visszaadott 2800 dokumentumok: a több rész tartalmazó távú "fire részleg", valamint az összes dokumentumot, amelyek nem rendelkeznek az előfizetési időszak "Metrotech Center".
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
 ```
 
   ![minden olyan keresési mód](media/search-query-simple-examples/searchmodeany.png)
@@ -256,7 +256,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 A searchMode módosítása `all` feltételek halmozott hatása kikényszeríti, és a egy kisebb eredményhalmaz – 21 dokumentumok – "fire részleg", csökkentve a Metrotech Center címen feladatok teljes kifejezést tartalmazó dokumentumok álló adja vissza.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
   ![az összes keresési mód](media/search-query-simple-examples/searchmodeall.png)
 
@@ -265,24 +265,24 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 Számos olyan paramétereket szabályozhatja, hogy mely mezők szerepelnek a keresési eredmények, az egyes batch és a rendezési sorrend visszaadott dokumentumok számát. Ebben a példában az eredmények használatával meghatározott mezőkre korlátozza az előző példák néhány resurfaces a **$select** utasítás és szó keresési feltételeknek, 82 egyezések visszaadása 
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
 ```
 Hozzáfűzi az előző példában az alakzatot, rendezheti címe. Ez a rendezés működik, mert civil_service_title *rendezhető* az indexben.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
 ```
 
 Lapozás eredményei használatával lett megvalósítva a **$top** paramétert, ebben az esetben vissza a 5 leggyakoribb dokumentumokat:
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=0
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=0
 ```
 
 A következő 5 kapni, hagyja ki az első köteg:
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
 ```
 
 ## <a name="next-steps"></a>További lépések

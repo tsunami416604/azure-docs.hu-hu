@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/02/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b485b6b7f6ddbdb45d3ca6170c29a9af3c5b63dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 87e35573eea836fc8a88c7515409c070ec63aa3b
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60321927"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024895"
 ---
 # <a name="indexers-in-azure-search"></a>Indexelők az Azure Search szolgáltatásban
 
@@ -79,7 +79,7 @@ Az indexelő definíciója egy szerkezet, amely egyesíti az adatfeldolgozáshoz
 
 Bár a közös indexelő ütemezése, az indexelő is elindítható, az adatkészletet a a [futtatása paranccsal](https://docs.microsoft.com/rest/api/searchservice/run-indexer):
 
-    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2019-05-06
     api-key: [Search service admin key]
 
 > [!NOTE]
@@ -94,7 +94,7 @@ Az indexelő állapota a portálon vagy lekérése az indexelő állapotának AP
 Kérheti, hogy az indexelő keresztül állapotát és végrehajtási előzményeinek a [indexelő állapotának beolvasása parancs](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status):
 
 
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2017-11-11
+    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2019-05-06
     api-key: [Search service admin key]
 
 A válasz teljes indexelő állapot, az utolsó (vagy a folyamatban lévő) az indexelő meghívása és az indexelő legutóbbi indítások előzményeit tartalmazza.

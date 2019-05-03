@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ff2b843e00ffdf005d952cf62eab6b93c9434913
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 419c533aabd67637efa64777387c491dd890596e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60193117"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024641"
 ---
 # <a name="service-limits-in-azure-search"></a>Az Azure Search szolgáltatási korlátai
 Maximális korlátozza a storage, a számítási feladatok és az indexek, dokumentumok, mennyiségét, és más objektumok függenek, hogy Ön [üzembe helyezése az Azure Search](search-create-service-portal.md) , **ingyenes**, **alapszintű**,  **Standard szintű**, vagy **tárolásra optimalizált** díjcsomagok árából.
@@ -50,7 +50,10 @@ Maximális korlátozza a storage, a számítási feladatok és az indexek, dokum
 | Erőforrás | Ingyenes | Basic&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | 2. |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | Indexek maximális száma |3 |5 vagy 15 |50 |200 |200 |1000 partíciónként vagy 3000 szolgáltatásonként |10 |10 |
-| Indexenkénti maximális mezők |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
+| Indexenkénti maximális egyszerű mezők |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
+| Indexenkénti maximális összetett gyűjtemény mezők |40 |40 |40 |40 |40 |40 |40 |40 |
+| Maximális elem / dokumentum összes összetett gyűjtemények között |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
+| Összetett mezők maximális mélysége |10 |10 |10 |10 |10 |10 |10 |10 |
 | Maximális [javaslattevők](https://docs.microsoft.com/rest/api/searchservice/suggesters) indexenkénti |1 |1 |1 |1 |1 |1 |1 |1 |
 | Maximális [pontozási profilok](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) indexenkénti |100 |100 |100 |100 |100 |100 |100 |100 |
 | Profil maximális függvények |8 |8 |8 |8 |8 |8 |8 |8 |

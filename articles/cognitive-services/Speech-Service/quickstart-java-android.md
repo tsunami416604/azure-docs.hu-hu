@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 690656449fdb86c200a8978f0e17db562e4abbca
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: dabae62b9e308bc97850ee36fa735b8a11c4d6f0
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62118224"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020962"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerést a Java Android rendszeren a Speech SDK-val
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Ebből a cikkből elsajátíthatja fogja, hogyan hozhat létre egy Java-alkalmazást az Android a Cognitive Services beszédfelismerő SDK a beszédfelismerés lefényképezze.
-Az alkalmazás a Speech SDK Maven-csomag, a verzió 1.4.0-s és az Android Studio 3.3-as alapul.
+Az alkalmazás a Speech SDK Maven-csomag, a verzió 1.5.0 és az Android Studio 3.3-as alapul.
 A Speech SDK jelenleg a 32/64 bites ARM, vagy Intel x86/x64 processzorokat használó Android-eszközökkel kompatibilis.
 
 > [!NOTE]
@@ -50,7 +50,7 @@ Az Android Studio előkészíti az új Android-projektet. Ezután úgy kell konf
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services Speech SDK jelenlegi verziója az `1.4.0`.
+A Cognitive Services Speech SDK jelenlegi verziója az `1.5.0`.
 
 A beszédfelismerés SDK for Android van csomagolva, mint egy [AAR (Androidos függvénytár)](https://developer.android.com/studio/projects/android-library), amely tartalmazza a szükséges kódtárak és Android-engedélyek megadása kötelező.
 A Maven tárházból, https vannak tárolva:\//csspeechstorage.blob.core.windows.net/maven/.
@@ -65,7 +65,7 @@ Készítse elő a projektet a Speech SDK használatára. A Project Structure (Pr
 
    ![A Project Structure (Projektstruktúra) ablak képernyőképe](media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. A megnyíló ablakban adja meg az androidos Speech SDK nevét és verzióját: `com.microsoft.cognitiveservices.speech:client-sdk:1.4.0`. Ezután kattintson az **OK** gombra.
+1. A megnyíló ablakban adja meg az androidos Speech SDK nevét és verzióját: `com.microsoft.cognitiveservices.speech:client-sdk:1.5.0`. Ezután kattintson az **OK** gombra.
    A Speech SDK-nak ezek után meg kell jelennie a függőségek listáján, a következő módon:
 
    ![A Project Structure (Projektstruktúra) ablak képernyőképe](media/sdk/qs-java-android-08-dependency-added-1.0.0.png)

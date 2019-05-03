@@ -20,6 +20,14 @@
   items:
     - name: Adatok rendellenességeinek azonosítása
       href: how-to/identify-anomalies.md
+    - name: Tárolók használata
+      items:
+        - name: Tárolók telepítése és futtatása
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+          href: anomaly-detector-container-howto.md
+        - name: Tárolók konfigurálása
+          href: anomaly-detector-container-configuration.md
+          displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
 - name: Alapelvek
   items:
     - name: Ajánlott eljárások az Anomaly Detection API-hoz

@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: f9cadfcf0c027f4aec4f9d4928872709ee7d3e99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5b81e4b9a8773cc8e4cc76582ccf2df88565d3d8
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61281777"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025172"
 ---
 # <a name="example-add-synonyms-for-azure-search-in-c"></a>Példa: Szinonimák felvétele az Azure SearchC#
 
@@ -23,13 +23,15 @@ A szinonimák bővítik a lekérdezéseket azáltal, hogy találatként kezelik 
 Az Azure Search szolgáltatásban a szinonimák meghatározása egy *szinonimatérképpel* történik, az egyenértékű kifejezéseket társító *leképezési szabályok* segítségével. Ebben a példában hozzáadásával és a szinonimák használata a meglévő index alapvető lépéseit ismerteti. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Szinonimák engedélyezése leképezési szabályok létrehozásával és közzétételével 
-> * Szinonimatérkép megjelölése lekérdezési sztringben
+> * Hozzon létre egy szinonima térkép a [SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) osztály. 
+> * Állítsa be a [SynonymMaps](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) mezőkkel, amelyek támogatnia kell a lekérdezés bővítése keresztül szinonimák tulajdonsága.
+
+Egy szinonima-kompatibilis mező lekérdezheti a szokásos módon. Nincsenek további lekérdezési szintaxis szinonimák eléréséhez szükséges van.
 
 Több szinonimatérképet is létrehozhat, közzéteheti őket bármely index számára elérhető szolgáltatásszintű erőforrásként, majd hivatkozhat arra, amelyiket a mezőszinten használni kívánja. Az indexben való keresés mellett az Azure Search szolgáltatás lekérdezéskor a szinonimatérképben is keres, ha meg van határozva egy a lekérdezésben használt mezőkhöz.
 
 > [!NOTE]
-> A legújabb API- és SDK-verzió támogatja a szinonimákat (api-version=2017-11-11, SDK-verzió 5.0.0). Jelenleg nincs Azure Portal-támogatás. Ha az Azure Portalon a szinonimák támogatása hasznos lenne az Ön számára, küldjön visszajelzést a [UserVoice](https://feedback.azure.com/forums/263029-azure-search) (Felhasználói vélemények) fórumon.
+> A szinonimák hozható létre programozott módon, de nem a portálon. Ha az Azure Portalon a szinonimák támogatása hasznos lenne az Ön számára, küldjön visszajelzést a [UserVoice](https://feedback.azure.com/forums/263029-azure-search) (Felhasználói vélemények) fórumon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -172,7 +174,7 @@ A leggyorsabban például után törli az erőforráscsoportot, amely tartalmazz
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a példában bemutatott a [szinonimák REST API-val](https://aka.ms/rgm6rq) a C# létrehozása és közzététele a leképezési szabályokat, és ezután hívja meg a lekérdezés a szinonimatérkép kódot. További információt a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) és a [REST API](https://docs.microsoft.com/rest/api/searchservice/) referencia-dokumentációjában találhat.
+Ebben a példában bemutatott a szinonimák szolgáltatást a C# létrehozása és közzététele a leképezési szabályokat, és ezután hívja meg a lekérdezés a szinonimatérkép kódot. További információt a [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) és a [REST API](https://docs.microsoft.com/rest/api/searchservice/) referencia-dokumentációjában találhat.
 
 > [!div class="nextstepaction"]
 > [Szinonimák használata az Azure Searchben](search-synonyms.md)

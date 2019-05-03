@@ -7,19 +7,19 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: b6e3335ba78d29896c8a253ac710e6ec0da1829a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 55d4f4bdf204453ccfe353e0d79abedb118bd9d8
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61463072"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021610"
 ---
-# <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>REST-Útmutató: Cognitive Services API-k hívja meg az Azure Search folyamat (előzetes verzió) indexelése
+# <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>REST-Útmutató: Az egy Azure Search szolgáltatásban az indexelés folyamat a Cognitive Services API-k meghívása
 
-Eben az oktatóanyagban az adatok Azure Search-beli bővítésének programozási mechanikájával fogjuk megismertetni, *kognitív képességek* használatával. Képességek természetes nyelvi feldolgozást (NLP) és a lemezkép elemzési képességeket biztosítanak a Cognitive Services élvezik. Képességcsoport összeállítás és konfigurációja kibonthatja a szöveget, és képet vagy beolvasott dokumentum fájl szöveges ábrázolását. Nyelv, az entitások, kulcskifejezéseket és további is felismeri. A végeredmény gazdag további Azure Search-index, mesterséges Intelligencia által működtetett indexelése folyamat által létrehozott tartalom. 
+Eben az oktatóanyagban az adatok Azure Search-beli bővítésének programozási mechanikájával fogjuk megismertetni, *kognitív képességek* használatával. Képességek természetes nyelvi feldolgozást (NLP) és a lemezkép elemzési képességeket biztosítanak a Cognitive Services élvezik. Képességcsoport összeállítás és konfigurációja kibonthatja a szöveget, és képet vagy beolvasott dokumentum fájl szöveges ábrázolását. Nyelv, az entitások, kulcskifejezéseket és további is felismeri. A végeredmény az Azure Search-index, mesterséges Intelligencia végrehajtott információbeolvasás egy indexelési folyamat használatával létrehozott gazdag további tartalmat. 
 
 Az oktatóanyagban REST API-hívásokat fog indítani az alábbi feladatok végrehajtásához:
 
@@ -35,9 +35,9 @@ A kimenet egy teljes szöveges, kereshető index az Azure Search szolgáltatásb
 Ebben az oktatóanyagban az ingyenes szolgáltatás fut, de az ingyenes tranzakciók száma korlátozott a naponta 20 dokumentumokhoz. Ha azt szeretné, ez az oktatóanyag többször futtatása ugyanazon a napon, használja az egy kisebb fájlt, hogy a további futtatási illeszkednek.
 
 > [!NOTE]
-> Növelje a feldolgozása, további dokumentumok hozzáadása, illetve további AI-algoritmusokat hozzáadása gyakorisága bontsa ki a hatókört, szüksége lesz egy számlázható Cognitive Services-erőforrás csatolása. A díjakat API-k hívásakor, a Cognitive Services, valamint a lemezkép kinyerése a az Azure Search-dokumentumfeltörést fázis részeként. Nem számítunk fel díjat a szövegkinyerés dokumentumok közül.
+> Bontsa ki a hatókört által a feldolgozás, gyakoriságának növelése további dokumentumok hozzáadása, vagy adja hozzá a további AI-algoritmusokat, kell [számlázható Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md). A díjakat API-k hívásakor, a Cognitive Services, valamint a lemezkép kinyerése a az Azure Search-dokumentumfeltörést fázis részeként. Nem számítunk fel díjat a szövegkinyerés dokumentumok közül.
 >
-> Végrehajtási beépített képességek a meglévő díjakat [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/) . Kép kinyerési díjszabás havidíjat számítunk fel az előzetes verzió díjszabása, lásd a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). További [információ](cognitive-search-attach-cognitive-services.md).
+> Végrehajtási beépített képességek a meglévő díjakat [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/). A kép kinyerési díjszabás leírása a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -106,7 +106,7 @@ A kérés fejlécében adja meg az Azure Search szolgáltatás létrehozásakor 
 
 ### <a name="sample-request"></a>Kérésminta
 ```http
-POST https://[service name].search.windows.net/datasources?api-version=2017-11-11-Preview
+POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
 Content-Type: application/json
 api-key: [admin key]
 ```
@@ -129,7 +129,7 @@ Mivel ez az első kérése, az Azure Portalon ellenőrizze, hogy létrejött-e a
 
   ![Adatforrások csempe a portálon](./media/cognitive-search-tutorial-blob/data-source-tile.png "Adatforrások csempe a portálon")
 
-Ha a 403-as vagy 404-es hibát kapja, ellenőrizze a kérés szerkezetét: az `api-version=2017-11-11-Preview` legyen a végpont, az `api-key` szerepeljen a fejlécben a `Content-Type` kifejezés után, az értékének pedig érvényesnek kell lennie egy keresési szolgáltatáshoz. A fejlécet az oktatóanyag további lépéseiben ismét felhasználhatja.
+Ha a 403-as vagy 404-es hibát kapja, ellenőrizze a kérés szerkezetét: az `api-version=2019-05-06` legyen a végpont, az `api-key` szerepeljen a fejlécben a `Content-Type` kifejezés után, az értékének pedig érvényesnek kell lennie egy keresési szolgáltatáshoz. A fejlécet az oktatóanyag további lépéseiben ismét felhasználhatja.
 
 ## <a name="create-a-skillset"></a>Képességcsoport létrehozása
 
@@ -149,7 +149,7 @@ Mielőtt elindítaná ezt a REST-hívást, ne feledje lecserélni az alábbi ké
 Ez a kérés egy képességcsoportot hoz létre. Az oktatóanyag hátralévő részében hivatkozzon a ```demoskillset``` képességcsoport-névre.
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/demoskillset?api-version=2017-11-11-Preview
+PUT https://[servicename].search.windows.net/skillsets/demoskillset?api-version=2019-05-06
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -265,7 +265,7 @@ Mielőtt elindítaná ezt a REST-hívást, ne feledje lecserélni az alábbi ké
 Ez a kérés egy indexet hoz létre. Az oktatóanyag hátralévő részében használja a ```demoindex``` indexnevet.
 
 ```http
-PUT https://[servicename].search.windows.net/indexes/demoindex?api-version=2017-11-11-Preview
+PUT https://[servicename].search.windows.net/indexes/demoindex?api-version=2019-05-06
 api-key: [api-key]
 Content-Type: application/json
 ```
@@ -338,7 +338,7 @@ Mielőtt elindítaná ezt a REST-hívást, ne feledje lecserélni az alábbi ké
 Emellett adja meg az indexelő nevét is. Az oktatóanyag hátralévő részében használja a ```demoindexer``` nevet.
 
 ```http
-PUT https://[servicename].search.windows.net/indexers/demoindexer?api-version=2017-11-11-Preview
+PUT https://[servicename].search.windows.net/indexers/demoindexer?api-version=2019-05-06
 api-key: [api-key]
 Content-Type: application/json
 ```
@@ -410,7 +410,7 @@ Tartalom kinyerésekor az ```imageAction``` beállításával kinyerheti a szöv
 Az indexelő meghatározását követően az indexelő a kérés elküldésekor automatikusan lefut. Az indexelés a vártnál tovább is eltarthat attól függően, hogy mely kognitív képességeket adta meg. Ha kíváncsi rá, hogy az indexelő fut-e még, küldje el a következő kérést az indexelő állapotának ellenőrzéséhez.
 
 ```http
-GET https://[servicename].search.windows.net/indexers/demoindexer/status?api-version=2017-11-11-Preview
+GET https://[servicename].search.windows.net/indexers/demoindexer/status?api-version=2019-05-06
 api-key: [api-key]
 Content-Type: application/json
 ```
@@ -426,7 +426,7 @@ Az indexelés befejezését követően futtasson olyan lekérdezéseket, amelyek
 Ellenőrzési lépésként kérdezze le az index összes mezőjét.
 
 ```http
-GET https://[servicename].search.windows.net/indexes/demoindex?api-version=2017-11-11-Preview
+GET https://[servicename].search.windows.net/indexes/demoindex?api-version=2019-05-06
 api-key: [api-key]
 Content-Type: application/json
 ```
@@ -436,7 +436,7 @@ A kimenet az egyes mezők nevét, típusát és attribútumait tartalmazó index
 Indítson egy másodlagos lekérdezést a `"*"` kifejezésre egy mező, például az `organizations` összes tartalmának lekéréséhez.
 
 ```http
-GET https://[servicename].search.windows.net/indexes/demoindex/docs?search=*&$select=organizations&api-version=2017-11-11-Preview
+GET https://[servicename].search.windows.net/indexes/demoindex/docs?search=*&$select=organizations&api-version=2019-05-06
 api-key: [api-key]
 Content-Type: application/json
 ```
@@ -528,7 +528,7 @@ Ha az új definíciókkal újra el szeretné végezni a dokumentumok indexelés�
 Használhatja a portál törli az indexek, indexelők és ismereteket.
 
 ```http
-DELETE https://[servicename].search.windows.net/skillsets/demoskillset?api-version=2017-11-11-Preview
+DELETE https://[servicename].search.windows.net/skillsets/demoskillset?api-version=2019-05-06
 api-key: [api-key]
 Content-Type: application/json
 ```

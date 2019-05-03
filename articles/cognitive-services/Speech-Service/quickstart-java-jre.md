@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 05/02/2019
 ms.author: fmegen
-ms.openlocfilehash: fe565d63e72b5ec2798dde03ba4f4bd9ff4f48a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 771168a13d7192581aae2ff4128e979b6924484a
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60622702"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020685"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Gyors útmutató: Beszédfelismerés, beszédfelismerési SDK for Java felismerése
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Ebben a cikkben létre fog hozni egy Java-konzolalkalmazást a [Speech SDK](speech-sdk.md) használatával. A számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a létrehozása a Speech SDK Maven-csomag és az Eclipse a Java IDE (v4.8) a Windows 64 bites, 64 bites Ubuntu Linux 16.04 / 18.04 vagy macOS 10.13 vagy újabb rendszeren. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
+Ebben a cikkben létre fog hozni egy Java-konzolalkalmazást a [Speech SDK](speech-sdk.md) használatával. A számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a létrehozása a Speech SDK Maven-csomag és az Eclipse a Java IDE (v4.8) a Windows 64 bites, 64 bites Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9), vagy a macOS 10.13 vagy újabb rendszeren. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
 
 > [!NOTE]
 > A Speech Devices SDK-ról és a Roobo eszközről lásd: [Speech Devices SDK](speech-devices-sdk.md).
@@ -30,21 +30,29 @@ Ebben a cikkben létre fog hozni egy Java-konzolalkalmazást a [Speech SDK](spee
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-* Operációs rendszer: (64 bites) Windows, Ubuntu Linux 16.04/18.04 (64 bites) vagy a macOS 10.13 vagy újabb
+* Operációs rendszer: 64 bites Windows, 64 bites Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9), vagy a macOS 10.13 vagy újabb
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) vagy [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
 
-Ha Ubuntu 16.04/18.04 rendszert használ, győződjön meg arról, ezek a függősége telepítve van az Eclipse indítása előtt.
+Ha Linux rendszert használ, győződjön meg arról, ezek a függősége telepítve van az Eclipse indítása előtt.
 
-```console
-sudo apt-get update
-sudo apt-get install build-essential libssl1.0.0 libasound2 wget
-```
+* On Ubuntu:
 
-Ha Windows (64 bites) Győződjön meg arról, telepítve van a Microsoft Visual C++ újraterjeszthető csomag a platformhoz.
+  ```sh
+  sudo apt-get update
+  sudo apt-get install libssl1.0.0 libasound2
+  ```
+
+* A Debian 9-on:
+
+  ```sh
+  sudo apt-get update
+  sudo apt-get install libssl1.0.2 libasound2
+  ```
+
+Ha Windows (64 bites) futtat, győződjön meg arról, telepítette a Microsoft Visual C++ a platformjához tartozó terjeszthető változatát.
 * [A Microsoft Visual C++ terjeszthető csomag Visual Studio 2017 letöltése](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
-
 
 ## <a name="create-and-configure-project"></a>Projekt létrehozása és konfigurálása
 

@@ -7,14 +7,14 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 645f3177913b903e8262c1fec08c452130e2a671
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 462a99ffab8038f34b1ffd038ce5c8e8ec9a8565
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60308244"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024432"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Hozzon létre egy alapszintű indexet az Azure Search szolgáltatásban
 
@@ -54,7 +54,7 @@ Iteratív tervezési kód, nem pedig a portál megközelítést, ajánlott. Hasz
 
 Sémájával az Azure Search-index a következő elemekből áll. 
 
-A [ *gyűjtemény mezők* ](#fields-collection) általában a legnagyobb része egy indexnek, ahol minden mező neve, írta be, és attribútummal megengedett viselkedéseket, amelyek meghatározzák, hogyan használja fel azokat. Egyéb elemek a következők [javaslattevők](#suggesters), [pontozási profilok](#scoring-profiles), [elemzők](#analyzers) összetevő kijelzőkkel támogatásához a testreszabás, és [CORS](#cors) beállítások.
+A [ *gyűjtemény mezők* ](#fields-collection) általában a legnagyobb része egy indexnek, ahol minden mező neve, írta be, és attribútummal megengedett viselkedéseket, amelyek meghatározzák, hogyan használja fel azokat. Egyéb elemek a következők [javaslattevők](#suggesters), [pontozási profilok](#scoring-profiles), [elemzők](#analyzers) összetevőit támogatásához a testreszabás, a [CORS](#cors) és [titkosítási kulcs](#encryption-key) beállítások.
 
 ```json
 {
@@ -126,6 +126,15 @@ A [ *gyűjtemény mezők* ](#fields-collection) általában a legnagyobb része 
   "corsOptions": (optional) {
     "allowedOrigins": ["*"] | ["origin_1", "origin_2", ...],
     "maxAgeInSeconds": (optional) max_age_in_seconds (non-negative integer)
+  },
+  "encryptionKey":(optional){
+    "keyVaultUri": "azure_key_vault_uri",
+    "keyVaultKeyName": "name_of_azure_key_vault_key",
+    "keyVaultKeyVersion": "version_of_azure_key_vault_key",
+    "accessCredentials":(optional){
+      "applicationId": "azure_active_directory_application_id",
+      "applicationSecret": "azure_active_directory_application_authentication_key"
+    }
   }
 }
 ```
@@ -137,7 +146,7 @@ A [ *gyűjtemény mezők* ](#fields-collection) általában a legnagyobb része 
 A séma meghatározásakor az index minden egyes mezőjéhez nevet, típust és attribútumokat kell rendelni. Az adott mezőben található adatok osztályozása a mező típusa szerint történik. Az egyes mezők használati módjának megadásához attribútumokat állítunk be. Az itt megadható típusokat és attribútumokat az alábbi tábla sorolja fel.
 
 ### <a name="data-types"></a>Adattípusok
-| Typo | Leírás |
+| Típus | Leírás |
 | --- | --- |
 | *Edm.String* |A szöveg (szóhatároló, származtató és így tovább) teljes szöveges keresés tokenekre bontására. |
 | *Collection(Edm.String)* |A teljes szöveges keresés érdekében lehetőség van a sztringlista tokenekre bontására. Az egyes gyűjteményekben lévő elemek számának nincs elméleti felső korlátja, a 16 MB-os adattartalom-méretkorlát azonban a gyűjteményekre is érvényes. |
@@ -166,7 +175,7 @@ Részletesebb információkat az Azure Search [indexattribútumairól itt](https
 
 A kiválasztott attribútumok hatással a storage. Az alábbi képernyőképen származó különböző attribútumkombinációval index tárolási mintákat mutatja be.
 
-Az index alapján a [beépített realestate-minta](search-get-started-portal.md) indexelésére használhatja, adatforrás és lekérdezés a portálon. Bár az index sémák nem jelennek meg, akkor is kikövetkeztetni az attribútumokat, az index neve alapján. Például *realestate-kereshető* indexből a **kereshető** kijelölt attribútumnak, és semmi mást, *realestate-lekérhető* indexből a  **lekérhető** kijelölt attribútumot, és semmi mást stb.
+Az index alapján a [beépített minta](search-get-started-portal.md) indexelésére használhatja, adatforrás és lekérdezés a portálon. Bár az index sémák nem jelennek meg, akkor is kikövetkeztetni az attribútumokat, az index neve alapján. Például *realestate-kereshető* indexből a **kereshető** kijelölt attribútumnak, és semmi mást, *realestate-lekérhető* indexből a  **lekérhető** kijelölt attribútumot, és semmi mást stb.
 
 ![Index mérete alapján attribútum kiválasztása](./media/search-what-is-an-index/realestate-index-size.png "Index mérete alapján attribútum kiválasztása")
 
@@ -203,6 +212,10 @@ A CORS állíthat be a következő beállításokat:
   Ha szeretné engedélyezni az összes forrás a hozzáférést, `*` egyetlen elemként való a **allowedOrigins** tömb. *Ez nem ajánlott eljárás, éles keresési szolgáltatások* , de gyakran hasznos lehet a fejlesztés és hibakeresés.
 
 + **maxAgeInSeconds** (nem kötelező): Böngészők határozza meg az időtartamot (másodpercben), ez az érték használatával gyorsítótár CORS elővizsgálati válaszok. Ez nem negatív egész számnak kell lennie. Minél nagyobb az értéke, a jobb teljesítmény érdekében, de annál tovább tart a CORS-házirend változásai érvénybe léptetéséhez. Ha nincs beállítva, egy alapértelmezett időtartama 5 perc lesz.
+
+## <a name="encryption-key"></a>Titkosítási kulcs
+
+Összes az Azure search-index a Microsoft által felügyelt kulcsokkal alapértelmezés szerint titkosítva vannak, amíg indexek beállítható úgy, hogy az titkosítva **felhasználó által kezelt kulcsok** a Key Vaultban. További tudnivalókért lásd: [titkosítási kulcsokat az Azure Search kezelése](search-security-manage-encryption-keys.md).
 
 ## <a name="next-steps"></a>További lépések
 

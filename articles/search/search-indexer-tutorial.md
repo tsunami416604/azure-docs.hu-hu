@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/09/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8550e220a2c87823fc337154ea33dd3c4ec81ed0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c9413fb78bbb92618818ac4311ab1af8ad65576d
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322204"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025085"
 ---
 # <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#Oktatóanyag: Feltérképezi az Azure SQL-adatbázisok Azure Search-indexelők használatával
 
@@ -267,7 +267,7 @@ Az oktatóanyagok után feleslegessé vált elemek az Azure Search szolgáltatá
 
 ## <a name="next-steps"></a>További lépések
 
-Mesterséges intelligencia által vezérelt algoritmusokat csatolhat egy indexelőfolyamathoz. Következő lépésként folytassa az alábbi oktatóanyaggal.
+AI-felderítési bővítést algoritmusokat csatlakoztathat egy indexelő folyamatot. Következő lépésként folytassa az alábbi oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 > [Dokumentumok indexelése az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md)

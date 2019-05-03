@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 217eecfe8f380718361c2f1b56965e4af85d54c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 61c5d60f0c2fab3786aa6adfa194c0716e621ea3
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60753773"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023649"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Mi történt az Azure Machine Learning Workbench alkalmazással?
 
@@ -87,7 +87,7 @@ run = exp.submit(source_directory = script_folder, script = 'train.py', run_conf
 
 Ha azt szeretné, hogy továbbra is használhatja őket a régi modellben beállításjegyzék regisztrált modellek kell áttelepíteni az új munkaterülethez. A modellek migrálása, töltse le a modelleket, és újból regisztrálja őket az új munkaterületet. 
 
-A rendszerképeket, amelyet a régi rendszerkép-regisztrációs adatbázisban hozott létre, újra létre kell hozni az új munkaterületen, hogy továbbra is használhassa őket. Ezek a lemezképek a következő újra létrehozhatja a [konfigurálása és a rendszerkép létrehozása](how-to-deploy-and-where.md#configureimage) szakaszok. 
+A képek, amelyet a régi regisztrációs adatbázisba az új munkaterülethez közvetlenül nem migrálható. A legtöbb esetben a modell kép létrehozása nélkül is telepíthető. Ha szükséges, létrehozhat egy rendszerképet a modell az új munkaterület. További információkért lásd: [kezelése, regisztrálása, telepítheti és figyelheti a machine learning-modellek](concept-model-management-and-deployment.md).
 
 ## <a name="what-about-deployed-web-services"></a>Mi a helyzet az üzembe helyezett webszolgáltatásokkal?
 
