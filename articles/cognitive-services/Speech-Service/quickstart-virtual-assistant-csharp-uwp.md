@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: 7dd469b07727e1efa326a1d92ea778bd3fb2cab1
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: ee7649dccf1ca50933e29cec9d40e4f5e16bd721
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027025"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074107"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Gyors útmutató: Hozzon létre egy hang-és felhőközpontú virtuális asszisztensek UWP Speech-SDK-val
 
@@ -31,7 +31,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 * A beszédfelismerési szolgáltatás egy Azure-előfizetés kulcs. [Igényeljen ingyenesen egy](get-started.md).
-* Egy korábban létrehozott bot konfigurálva a [közvetlen vonal beszédfelismerő csatornát](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md)
+* Egy korábban létrehozott bot konfigurálva a [közvetlen vonal beszédfelismerő csatornát](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
     > [!NOTE]
     > Előzetes verzióban elérhető a közvetlen vonal beszédfelismerő csatornát jelenleg csak támogatja a **westus2** régióban.
@@ -247,7 +247,7 @@ Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy eg
     > Előzetes verzióban elérhető a közvetlen vonal beszédfelismerő csatornát jelenleg csak támogatja a **westus2** régióban.
 
     > [!NOTE]
-    > A robot konfigurálása és lekérése egy csatorna kapcsolatos tudnivalókat lásd: a Bot Framework dokumentációjában [a közvetlen vonal beszédfelismerő csatornát](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md).
+    > A robot konfigurálása és lekérése egy csatorna kapcsolatos tudnivalókat lásd: a Bot Framework dokumentációjában [a közvetlen vonal beszédfelismerő csatornát](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
     ```csharp
     // create a BotConnectorConfig by providing a bot secret key and Cognitive Services subscription key

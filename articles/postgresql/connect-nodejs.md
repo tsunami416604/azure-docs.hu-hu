@@ -1,21 +1,21 @@
 ---
-title: Csatlakozás az Azure Database for PostgreSQL-hez a Node.js segítségével
-description: Ebben a rövid útmutatóban biztosítjuk a PostgreSQL-hez készült Azure Database-ről csatlakozásra és adatlekérdezésre használható Node.js-kódmintát.
+title: Csatlakozás az Azure Database for PostgreSQL - kiszolgáló egyetlen a Node.js használatával
+description: Ez a rövid útmutató segítségével csatlakozás és adatlekérdezés, Azure Database for PostgreSQL - kiszolgáló egyetlen Node.js-kódmintát biztosít.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.custom: mvc, devcenter
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: 4c7f2f71ff302cbaa0aab66f97b93cb1c5b9e5e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 5ebcb3151bf9b6eaca4a726553a3c8f1d93c08aa
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60623858"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067124"
 ---
-# <a name="azure-database-for-postgresql-use-nodejs-to-connect-and-query-data"></a>Azure Database for postgresql-hez: Csatlakozás és adatlekérdezés a Node.js használatával
+# <a name="azure-database-for-postgresql---single-server-use-nodejs-to-connect-and-query-data"></a>Azure Database for PostgreSQL - kiszolgáló egyetlen: Csatlakozás és adatlekérdezés a Node.js használatával
 Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni az Azure Database for PostgreSQL-hez egy [Node.js](https://nodejs.org/)-alkalmazással. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Node.js használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek

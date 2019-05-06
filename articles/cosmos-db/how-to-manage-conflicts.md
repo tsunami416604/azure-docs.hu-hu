@@ -4,14 +4,14 @@ description: Megismerheti, hogyan kezelhetők az ütközések az Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/16/2019
+ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: fb9850548f0bfb71b797830eb0d5fdfddbc32306
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a6e57dc5b4bcfa3f02e323253e24d68381c3535d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61054798"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068737"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben ütközés feloldása szabályzatok kezelése
 
@@ -19,7 +19,7 @@ A többrégiós írási több kliens írna ugyanazon az elemen, ha ütközés fo
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>A wins-utolsó-író ütközésfeloldási házirend létrehozása
 
-Ezek a minták ismertetik, hogyan állítható be a tároló egy wins-utolsó-író ütközésfeloldási házirend. A wins-utolsó-író alapértelmezett elérési útja az időbélyegmezőt vagy a `_ts` tulajdonság. Ez is lehet beállítani egy felhasználó által megadott elérési útra numerikus típusok esetében. Ütközés a legmagasabb érték a wins. Ha az elérési útja nincs beállítva, vagy érvénytelen, a rendszer alapértelmezés szerint `_ts`. Ütközések feloldása az ehhez a szabályzathoz nem jelennek meg a ütközés hírcsatorna. Ez a szabályzat minden API-k által használható.
+Ezek a minták ismertetik, hogyan állítható be a tároló egy wins-utolsó-író ütközésfeloldási házirend. A wins-utolsó-író alapértelmezett elérési útja az időbélyegmezőt vagy a `_ts` tulajdonság. Ez is lehet beállítani egy felhasználó által megadott elérési útra numerikus típusok esetében. Ütközés lép fel a legmagasabb érték a wins. Ha az elérési útja nincs beállítva, vagy érvénytelen, a rendszer alapértelmezés szerint `_ts`. Ütközések feloldása az ehhez a szabályzathoz nem jelennek meg a ütközés hírcsatorna. Ez a szabályzat minden API-k által használható.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
 
@@ -86,16 +86,16 @@ udp_collection = self.try_create_document_collection(create_client, database, ud
 
 ## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Hozzon létre egy tárolt eljárás használatával egyéni ütközésfeloldási házirend
 
-Ezek a minták bemutatják, hogy az ütközések feloldásához hogyan állíthat be egyéni ütközésfeloldási szabályzatot egy tárolóhoz tárolt eljárás használatával. Az ütközések nem jelennek meg az ütközést, kivéve, ha hiba van a tárolt eljárás hírcsatorna. Miután létrehozta a szabályzatot a tárolóval, a tárolt eljárás létrehozásához szükséges. A .NET SDK-t az alábbi minta, amely egy példát mutat be. Ez a szabályzat csak támogatott a Core (SQL) API-t.
+Ezek a minták bemutatják, hogy az ütközések feloldásához hogyan állíthat be egyéni ütközésfeloldási szabályzatot egy tárolóhoz tárolt eljárás használatával. Az ütközések nem jelennek meg az ütközést, kivéve, ha hiba van a tárolt eljárás hírcsatorna. Miután létrehozta a szabályzatot a tárolóval, a tárolt eljárás létrehozásához szükséges. A .NET SDK-t az alábbi minta egy példa látható. Ez a szabályzat csak támogatott a Core (SQL) API-t.
 
 ### <a name="sample-custom-conflict-resolution-stored-procedure"></a>Mintául szolgáló egyéni ütközésfeloldás tárolt eljárás
 
 Egyéni ütközés feloldása tárolt eljárások használatával kell megvalósítani, az alább látható podpis funkce. A függvény nevét nem kell használatos, ha a tárolt eljárás regisztrálása a tároló neve megfelelően, de egyszerűbb, elnevezési. A következő paramétereket kell bevezetni, ez a tárolt eljárás leírását.
 
 - **incomingItem**: Az elem alatt bevitele vagy a a véglegesítés, hogy az ütközések. A törlési műveletek null értékű.
-- **existingItem**: A jelenleg lefoglalt elemet. A frissítés nem null és a egy beszúrási vagy törlési null értéke.
+- **existingItem**: A jelenleg lefoglalt elemet. Ez az érték nem null értékű a frissítés és a egy insert null, vagy törli.
 - **isTombstone**: Logikai érték, amely azt jelzi, ha a incomingItem ütközik egy korábban törölt elem. Ha az értéke igaz, existingItem is null értékű.
-- **conflictingItems**: Ütköző azonosítójú incomingItem az összes elem a tárolóban vagy más egyedi index tulajdonságokat a véglegesített verzióba tömbje.
+- **conflictingItems**: A tároló összes elemének azonosítójú incomingItem ütköznek vagy más egyedi index tulajdonságokat a véglegesített verzióba tömbje.
 
 > [!IMPORTANT]
 > Ugyanúgy, mint bármely olyan tárolt eljárás az egy egyéni ütközés feloldása eljárást is ugyanazzal a partíciókulccsal rendelkező hozzáférni az adatokhoz és is bármely insert hajtsa végre, frissítenie vagy törölnie az ütközések feloldása műveletet.
@@ -361,7 +361,7 @@ Ismerje meg a következő Azure Cosmos DB-fogalmak:
 
 * [Globális terjesztés – technikai részletek](global-dist-under-the-hood.md)
 * [Az alkalmazások több főkiszolgálós konfigurálása](how-to-multi-master.md)
-* [Ügynökönkénti ügyfelek konfigurálása](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Ügynökönkénti ügyfelek konfigurálása](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Régiók hozzáadása vagy eltávolítása az Azure Cosmos DB-fiókból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Több főkiszolgálós konfigurálása az alkalmazások a](how-to-multi-master.md).
 * [Particionálás és adatelosztás](partition-data.md)

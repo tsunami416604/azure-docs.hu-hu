@@ -1,6 +1,6 @@
 ---
-title: A 2.0-s verzió bemutatása | Azure
-description: Ez a cikk a 2.0-s verziójú végpontot és platformot ismerteti.
+title: A Microsoft identity platform (2.0-s verzió) áttekintése – Azure
+description: További tudnivalók a Microsoft identity platform (2.0-s verzió) endpoint és platform.
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -12,55 +12,75 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 05/07/2019
 ms.author: celested
-ms.reviewer: saeeda
+ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb269df035bcc11583ebb7cff7d1ee2c3f6d8bca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f6aa0af1ff5a8600f43ab92a5f2534a8e3ff253c
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250246"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067665"
 ---
-# <a name="about-v20"></a>A 2.0-s verzió bemutatása
+# <a name="microsoft-identity-platform-v20-overview"></a>A Microsoft identity platform (2.0-s verzió) – áttekintés
 
-A 2.0-s verziójú végpont és platform eddig előzetes verzióban voltak elérhetők, és folyamatos fejlesztés alatt álltak. A mai naptól a JavaScript egyoldalas alkalmazásit (SPA) érintő forgatókönyvek funkcionális szempontból elkészültek. Ezennel meghívjuk Önt, hogy készítsen böngészőalapú alkalmazásokat az MSAL.js segítségével, és küldjön nekünk visszajelzéseket, hogy az előzetes verzió állapotát általánosan elérhetőre (GA) frissíthessük.
+A Microsoft identitásplatformja az Azure Active Directory (Azure AD) identitásszolgáltatás és fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztőknek, hogy jelentkezzen be az összes Microsoft-identitások és a Microsoft APIs, például a Microsoft Graph vagy fejlesztők számára készült API-k hívásához jogkivonatok megkapásához alkalmazásokat hozhat létre. A Microsoft identity platform áll:
 
-> [!NOTE]
-> Az MSAL Android-, iOS- és .NET-alapú verzióinak bizonyos funkciói továbbra is fejlesztés alatt állnak. Ezeket is használhatja alkalmazások létrehozásához, majd visszajelzéseket küldhet nekünk.
+- **OAuth 2.0 és OpenID Connect standard megfelelő hitelesítési szolgáltatás** , amely lehetővé teszi a fejlesztők számára a hitelesítés bármely Microsoft identity többek között:
+  - Munkahelyi vagy iskolai fiókkal (Azure AD-n keresztül kiosztott)
+  - Személyes Microsoft-fiókok (például a Skype, Xbox és Outlook.com-os)
+  - Közösségi vagy helyi fiókot (keresztül az Azure AD B2C-vel)
+- **Nyílt forráskódú könyvtáraink**: A Microsoft hitelesítési tárak (MSAL) és az egyéb szabványokkal kompatibilis szalagtárak támogatása
+- **Alkalmazás-felügyeleti portálon**: Az Azure Portalon, a többi Azure kezelési lehetőségek mellett a beépített regisztrálása és konfigurálása élményt.
+- **Alkalmazás-konfigurációs API-t és a PowerShell**: amely lehetővé teszi az alkalmazások REST API-t (a Microsoft Graph és az Azure Active Directory Graph 1.6-os) és a Powershellen keresztül programozható konfigurációja, a fejlesztési és üzemeltetési feladatok automatizálásához.
+- **Fejlesztői tartalom**: elméleti és dokumentáció, a rövid útmutató minták, Kódminták, oktatóanyagok és útmutatók hivatkoznak.
 
-Az Azure Portalon [alkalmazásregisztrációk (előzetes verzió)](quickstart-register-app.md) élmény jelentősen frissült, mostantól tartalmazza az összes, az adal-t vagy az MSAL használatával készült alkalmazásokat, és a használhatóság javítása érdekében.
+A fejlesztők számára a Microsoft identity platform biztosít az identitás- és biztonsági helyre, például a beállításának hitelesítési step-up hitelesítési és feltételes hozzáférési innovációkat való zökkenőmentes integráció.  Nem kell saját kezűleg funkció végrehajtásához: alkalmazások natív módon integrálva van a Microsoft identity platform kihasználása ilyen.
 
-Korábban, ha a fejlesztők azt akarták, hogy az alkalmazásuk a személyes Microsoft-fiókokat és a munkahelyi Azure Active Directory (Azure AD)-fiókokat is, akkor ehhez két külön rendszert kellett integrálniuk. A 2.0-s verziójú végpont és platform egy olyan hitelesítési API-verziót biztosít, amely leegyszerűsíti ezt a folyamatot. Egyetlen integrációval lehetővé teszi a bejelentkezést mindkét fajta fiók használatával. A 2.0-s végpontot használó alkalmazások [Microsoft Graph API](https://developer.microsoft.com/graph) REST API-jait is használhatják bármelyik típusú fiókkal.
+A Microsoft identity platform révén kód megírását, és minden felhasználót elérhet. Alkalmazás létrehozása után, és nincs sok platformok közötti használathoz, vagy létrehozhat egy alkalmazást, amely egy ügyfelet, valamint az erőforrás-alkalmazás (API) működik.
 
 ## <a name="getting-started"></a>Első lépések
 
-Válassza ki kedvenc platformjának használatával a Microsoft egy olyan alkalmazás létrehozásához az alábbi listáról nyissa meg a forrás-kódtárai és keretrendszerei:
+Identitás használatának nehéz nem rendelkezik. Válassza ki a forgatókönyv érvényes Önre – minden egyes forgatókönyv elérési útja a gyors üzembe helyezés és áttekintő oldala, percek alatt ütembe helyezheti az első rendelkezik:
 
-[!INCLUDE [v2.0 endpoint platforms](../../../includes/active-directory-v2-quickstart-table.md)]
+- [Egyoldalas alkalmazás készítése](scenario-spa-overview.md)
+- [-Webalkalmazás létrehozása, amely képes bejelentkeztetni a felhasználókat](scenario-web-app-sign-user-overview.md)
+- [-Webalkalmazás létrehozása, amely meghívja a webes API-k](scenario-web-app-call-api-overview.md)
+- [Egy védett webes API készítése](scenario-protected-web-api-overview.md)
+- [Webes API, amely meghívja a webes API-k készítése](scenario-web-api-call-api-overview.md)
+- [Egy asztali alkalmazás készítése](scenario-desktop-overview.md)
+- [Démon alkalmazás készítése](scenario-daemon-overview.md)
+- [Egy olyan mobilalkalmazás készítését](scenario-mobile-overview.md)
 
-## <a name="learn-more-about-the-v20-endpoint-and-platform"></a>További információk a 2.0-s verziójú végpontról és platformról
+<!--- We are making updates to the application scenarios chart. This is placeholder text for it.
 
-Ismerkedjen meg részletesebben az Azure AD 2.0-s verziójú végpont által kínált lehetőségekkel:
+The following chart outlines the full set of authentication scenarios and best practices – use it as a reference when integrating the Microsoft identity platform before shipping your app.
 
-* Ismerje meg, [milyen típusú alkalmazásokat hozhat létre az Azure AD 2.0-s verziójú végponttal](v2-app-types.md).
-* Ismerje meg az Azure AD 2.0-s verziójú végpont [korlátozásait és megkötéseit](active-directory-v2-limitations.md).
+[![Application scenarios in Microsoft identity platform](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
-## <a name="additional-resources"></a>További források
+--->
 
-Részletes információk a 2.0-s verzióról:
+## <a name="next-steps"></a>További lépések
 
-* [Tudnivalók a Microsoft identity platform](about-microsoft-identity-platform.md)
-* [A 2.0-s verzió protokolljainak referenciája](active-directory-v2-protocols.md)
-* [Hozzáférési jogkivonatok referenciája](access-tokens.md)
-* [Azonosító jogkivonatok referenciája](id-tokens.md)
-* [A 2.0-s verzió hitelesítési kódtárainak referenciája](reference-v2-libraries.md)
-* [Engedélyek és jóváhagyás a 2.0-s verzióban](v2-permissions-and-consent.md)
-* [Microsoft Graph API](https://developer.microsoft.com/graph)
+Ha szeretne további kapcsolatos alapfogalmakat hitelesítési, javasoljuk, először a következő témakörökben:
 
-> [!NOTE]
-> Ha csak az Azure Active Directoryban tárolt munkahelyi vagy iskolai fiókokra van szüksége a bejelentkezéshez, kezdje az [Azure AD fejlesztői útmutatójának](v1-overview.md) áttekintésével. A 2.0-s verziójú végpontot azoknak a fejlesztőknek szánjuk, akiknek kifejezetten a személyes Microsoft-fiókokkal való bejelentkezésre van szükségük.
+- [Hitelesítési alapok](authentication-scenarios.md)
+- [Alkalmazás- és az egyszerű szolgáltatások](app-objects-and-service-principals.md)
+- [Célközönség](v2-supported-account-types.md)
+- [Engedélyek és jóváhagyás](v2-permissions-and-consent.md)
+- [Azonosító-jogkivonatokat](id-tokens.md) és [hozzáférési jogkivonatokat](access-tokens.md)
 
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+Meghívó adatokban gazdag-alkalmazás létrehozása [Microsoft Graph](https://docs.microsoft.com/graph/overview).
+
+Amikor készen áll, az alkalmazás indításához egy **éles környezetben**, tekintse át az ajánlott eljárások:
+
+- [Naplózás engedélyezése](msal-logging.md) az alkalmazásban.
+- Engedélyezze a telemetriai adatok az alkalmazásban.
+- Engedélyezése [proxyk és testre szabhatja a HTTP-ügyfelek](msal-net-provide-httpclient.md).
+- Az integráció teszteléséhez a következő a [a Microsoft identity platform integrációs ellenőrzőlista](identity-platform-integration-checklist.md).
+
+## <a name="learn-more"></a>Részletek
+
+Ha olyan ügyfelek által használt alkalmazás, amely a közösségi és a helyi identitások bejelentkezik tervezése során, vessen egy pillantást a [áttekintése az Azure AD B2C-vel](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).

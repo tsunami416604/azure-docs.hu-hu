@@ -1,5 +1,5 @@
 ---
-title: Aláírás-kivonatoló algoritmus módosítása a függő entitás megbízhatóságához az Office 365 |} A Microsoft Docs
+title: Aláírás-kivonatoló algoritmus módosítása az Office 365, a függő entitás megbízhatóságának – Azure
 description: Ezen a lapon útmutatást nyújt a összevonási megbízhatósági kapcsolatot, és az Office 365 SHA algoritmus módosítása
 keywords: SHA1, SHA256, O365, összevonási, aadconnect, AD FS, az ad fs, a módosítás sha, összevonási megbízhatósági kapcsolat, a függő entitás megbízhatóságának
 services: active-directory
@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aa597c8b458305946aa298631726df3da317534
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1b6c81343d52f016dc779f9e08176a0d909684c0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60244424"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138622"
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Az Office 365, a függő entitás megbízhatóságának aláírás-kivonatoló algoritmus módosítása
 ## <a name="overview"></a>Áttekintés

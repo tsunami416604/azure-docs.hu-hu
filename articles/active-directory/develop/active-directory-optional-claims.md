@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc38e2096b6a761060fab09a8ce2518808b370e1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2fd7b05a5411c03e1324871fbff3c29061ce7b3d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713352"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139244"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Útmutató: Adja meg a választható jogcímeket, az Azure AD-alkalmazás
 
@@ -70,7 +70,8 @@ Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem k
 | `xms_pl`                   | A felhasználó preferált nyelvét  | JWT ||A felhasználó elsődleges nyelv, ha a beállítása. Származási hely a saját bérlőjén, a Vendég adathozzáférési forgatókönyvek esetében. R-CC formátumú ("en-us"). |
 | `xms_tpl`                  | A bérlői elsődleges nyelv| JWT | | Az erőforrás-bérlő elsődleges nyelv, ha a beállítása. Formázott LL ("hu"). |
 | `ztdid`                    | Beavatkozás nélküli telepítés azonosítója | JWT | | A használt eszközidentitás [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) |
-| `email`                    | Címezhető e-mail a felhasználó, ha a felhasználó rendelkezik ilyennel.  | JWT, SAML | MSA, AAD | Ha a felhasználó a bérlő Vendég Ez az érték alapértelmezés szerint tartalmazza.  Felügyelt felhasználók (amelyeket a bérlőn belül) azt kell kérik, ez nem kötelező a jogcím, vagy a 2.0-s verziójú csak, és az OpenID hatókörének.  Felügyelt felhasználók esetén az e-mail-cím formájában kell megadni a [Office rendszergazdai portál](https://portal.office.com/adminportal/home#/users).|  
+| `email`                    | Címezhető e-mail a felhasználó, ha a felhasználó rendelkezik ilyennel.  | JWT, SAML | MSA, AAD | Ha a felhasználó a bérlő Vendég Ez az érték alapértelmezés szerint tartalmazza.  Felügyelt felhasználók (amelyeket a bérlőn belül) azt kell kérik, ez nem kötelező a jogcím, vagy a 2.0-s verziójú csak, és az OpenID hatókörének.  Felügyelt felhasználók esetén az e-mail-cím formájában kell megadni a [Office rendszergazdai portál](https://portal.office.com/adminportal/home#/users).| 
+| `groups`| Nem kötelező csoportjogcímek formázása |JWT, SAML| |A GroupMembershipClaims beállításával együtt használják a [alkalmazásjegyzék](reference-app-manifest.md), amely is kell állítani. További részletekért lásd: [jogcímek csoport](#Configuring-group-optional claims) alatt. Csoport jogcímek további információ: [csoportjogcímek konfigurálása](../hybrid/how-to-connect-fed-group-claims.md)
 | `acct`             | Felhasználói fiók állapota-bérlőben. | JWT, SAML | | Ha a felhasználó tagja a bérlő, a értéke `0`. A Vendég, ha az értéke `1`. |
 | `upn`                      | UserPrincipalName claim. | JWT, SAML  |           | Bár ez a jogcím automatikusan tartalmazza, mint egy nem kötelező jogcím csatolni a Vendég felhasználói esetben viselkedésének módosítása további tulajdonságok megadhat.  |
 
@@ -91,7 +92,6 @@ Ezeket a jogcímeket 1.0-s verziójú Azure AD-jogkivonatok mindig szerepel, de 
 | `family_name` | Vezetéknév                       | Az utolsó neve, Vezetéknév vagy felhasználó családnév biztosít a user objektum a. <br>"family_name":"Miller" | Az MSA és aad-ben támogatott   |
 | `given_name`  | Utónév                      | Itt az első vagy az "adott" a felhasználó nevét a user objektum készletként.<br>"given_name": "Frank"                   | Az MSA és aad-ben támogatott  |
 | `upn`         | Felhasználó egyszerű neve | Egy azonosítóval, a felhasználó a username_hint paraméterrel használható.  A felhasználó nem egy tartós azonosítót, és nem használható a fontos adatokat. | Lásd: [további tulajdonságok](#additional-properties-of-optional-claims) alább a jogcím-konfigurációhoz. |
-
 
 ### <a name="additional-properties-of-optional-claims"></a>Nem kötelező jogcímek további tulajdonságok
 
@@ -131,24 +131,24 @@ Az alkalmazás nem kötelező jogcímek az alkalmazásjegyzéknek (lásd példá
 ```json
 "optionalClaims":  
    {
-       "idToken": [
-             { 
-                   "name": "auth_time", 
-                   "essential": false
-              }
-        ],
- "accessToken": [ 
+      "idToken": [
+            {
+                  "name": "auth_time", 
+                  "essential": false
+             }
+      ],
+      "accessToken": [
              {
                     "name": "ipaddr", 
                     "essential": false
               }
-        ],
-"saml2Token": [ 
-              { 
+      ],
+      "saml2Token": [
+              {
                     "name": "upn", 
                     "essential": false
                },
-               { 
+               {
                     "name": "extension_ab603c56068041afb2f6832e2a17e237_skypeId",
                     "source": "user", 
                     "essential": false
@@ -187,7 +187,7 @@ Ha az egy adott jogcím támogatja, a további tulajdonságok mező használatá
 A standard szintű választható jogcímek készletébe mellett tartalmazza a directory-sémabővítmények jogkivonatok is beállíthatja. További információ: [Directory sémakiterjesztései](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions). Ez a funkció akkor hasznos, amelyek az alkalmazás használhatja – például további felhasználói adatokat, egy további azonosító vagy a fontos konfigurációs beállítás, amelyet a felhasználó be van állítva. 
 
 > [!Note]
-> Directory-sémabővítmények egy csak AAD-funkció,, így ha az alkalmazás jegyzékfájlja kérelmek egyedi bővítmény és a egy MSA felhasználó bejelentkezik az alkalmazás, ezek a bővítmények nem állítható vissza. 
+> Directory-sémabővítmények egy csak AAD-funkció,, így ha az alkalmazás jegyzékfájlja kérelmek egyedi bővítmény és a egy MSA felhasználó bejelentkezik az alkalmazás, ezek a bővítmények nem állítható vissza.
 
 ### <a name="directory-extension-formatting"></a>Címtárkiterjesztés formázása
 
@@ -196,6 +196,98 @@ A bővítményattribútumok, használja a bővítmény teljes nevére (a követk
 A JWT belül ezeket a jogcímeket fog kibocsátott, a következő név formátumban: `extn.<attributename>`.
 
 Az SAML-jogkivonatok belül ezeket a jogcímeket fog bocsátja ki az URI formátuma a következő: `http://schemas.microsoft.com/identity/claims/extn.<attributename>`
+
+## <a name="configuring-group-optional-claims"></a>Nem kötelező csoportjogcímek konfigurálása
+
+   > [!NOTE]
+   > Nyilvános előzetes verzióban arra, hogy a felhasználók és csoportok szinkronizálása a helyszíni csoportnevek kibocsátható
+
+Ez a szakasz ismerteti a konfigurációs beállítások módosítása a csoport a helyszíni Windows Active Directoryból szinkronizált attribútumok csoportnak az alapértelmezett csoport objectID jogcímeket használt attribútum nem kötelező jogcímeket alatt
+> [!IMPORTANT]
+> Lásd: [csoportjogcímek alkalmazások konfigurálása az Azure Active Directoryval](../hybrid/how-to-connect-fed-group-claims.md) további részletekért, többek között a nyilvános előzetes verzió, a helyszíni attribútumok a csoportjogcímek fontos figyelmeztetések.
+
+1. A portálon az Azure Active Directory -> Alkalmazás -> -> Válassza ki a regisztrációk alkalmazás-jegyzékfájl >
+
+2. A groupMembershipClaim módosításával csoport tagsági jogcímek engedélyezése
+
+   Az érvényes értékek a következők:
+
+   - "All"
+   - "SecurityGroup"
+   - "DistributionList"
+   - "DirectoryRole"
+
+   Példa:
+
+   ```json
+   "groupMembershipClaims": "SecurityGroup"
+   ```
+
+   Csoport objectid azonosítójának fog bocsátja ki a csoport alapértelmezés szerint a jogcím értéke.  A helyi csoport attribútumait tartalmazza, vagy módosítsa a jogcímtípus szerepkör jogcím értéke módosításához használja a következő OptionalClaims konfiguráció:
+
+3. Állítsa be a csoport konfigurációja nem kötelező jogcímekben.
+
+   Ha szeretné a jogkivonat csoportok a helyszíni AD-csoport attribútumok az opcionális jogcímek szakaszban adja meg, melyik typ tokenu választható jogcímet kell alkalmazni, a kért választható jogcím és minden egyéb tulajdonságot, kívánt nevét tartalmazza.  Több tokentípusokat is listázva lehet:
+
+   - idToken a OIDC azonosító jogkivonat
+   - az OAuth/OIDC jogkivonat a hozzáférési tokent
+   - Az SAML-jogkivonatok Saml2Token.
+
+   > [!NOTE]
+   > SAML1.1 és a SAML2.0 formátumú jogkivonatokat vonatkozik a Saml2Token típusa
+
+   Megfelelő jogkivonat alkalmazástípust módosítsa a csoportok jogcím OptionalClaims szakasz a jegyzékfájlban. A OptionalClaims séma a következőképpen történik:
+
+   ```json
+   {
+   "name": "groups",
+   "source": null,
+   "essential": false,
+   "additionalProperties": []
+   }
+   ```
+
+   | Nem kötelező jogcímek séma | Érték |
+   |----------|-------------|
+   | **név:** | "Csoportok" kell lennie. |
+   | **Forrás:** | Nincs használatban. Nincs megadva vagy null értéket adjon meg |
+   | **alapvető:** | Nincs használatban. Nincs megadva, vagy adja meg a hamis |
+   | **additionalProperties:** | További tulajdonságainak listája.  Valid options are "sam_account_name", “dns_domain_and_sam_account_name”, “netbios_domain_and_sam_account_name”, "emit_as_roles" |
+
+   In additionalProperties only one of "sam_account_name", “dns_domain_and_sam_account_name”, “netbios_domain_and_sam_account_name” are required.  Ha egynél több található, az első, és a többi figyelmen kívül hagyja.
+
+   Egyes alkalmazásoknak a felhasználó a szerepkör jogcím csoport adatait.  Ha módosítani szeretné a szerepkör jogcím egy csoportból jogcímet a jogcím típusa, adja hozzá a további tulajdonságok "emit_as_roles".  A csoport értékeket fogja a szerepkör jogcím bocsátja ki.
+
+   > [!NOTE]
+   > "Emit_as_roles" használata egyetlen alkalmazás-szerepkör konfigurálva, hogy a felhasználó lesz hozzárendelve a szerepkör jogcím nem jelennek meg
+
+**Példák:** Csoportok kibocsátható, az OAuth hozzáférési tokenek dnsDomainName\sAMAccountName formátumban nevei
+
+```json
+"optionalClaims": {
+    "accessToken": [{
+        "name": "groups",
+        "additionalProperties": ["dns_domain_and_sam_account_name"]
+    }]
+}
+ ```
+
+Kibocsátható csoportnevek netbiosDomain\sAMAccountName formátumban kell visszaadni, SAML és OIDC azonosító-jogkivonatokat a jogcím a szerepkörök:
+
+```json
+"optionalClaims": {
+    "saml2Token": [{
+        "name": "groups",
+        "additionalProperties": ["netbios_name_and_sam_account_name", "emit_as_roles"]
+    }],
+
+    "idToken": [{
+        "name": "groups",
+        "additionalProperties": ["netbios_name_and_sam_account_name", "emit_as_roles"]
+    }]
+ }
+
+ ```
 
 ## <a name="optional-claims-example"></a>Nem kötelező jogcímek példa
 
@@ -213,7 +305,7 @@ Több lehetőség van egy alkalmazás identitás konfiguráció engedélyezése 
 1. Kattintson az alkalmazás oldaláról **Manifest** , nyissa meg a beágyazott alkalmazásjegyzék-szerkesztőben. 
 1. Közvetlenül szerkesztheti a jegyzékfájlt a szerkesztő használatával. A jegyzékfájl követi a sémát a [alkalmazás entitás](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest), és formázza a jegyzékfájl egyszer mentve. Új elem megjelenik a `OptionalClaims` tulajdonság.
 
-      ```json
+    ```json
       "optionalClaims": 
       {
             "idToken": [ 
@@ -223,13 +315,13 @@ Több lehetőség van egy alkalmazás identitás konfiguráció engedélyezése 
                         "additionalProperties": [ "include_externally_authenticated_upn"]  
                   }
             ],
-      "accessToken": [ 
+            "accessToken": [ 
                   {
                         "name": "auth_time", 
                         "essential": false
                   }
             ],
-      "saml2Token": [ 
+            "saml2Token": [ 
                   { 
                         "name": "extension_ab603c56068041afb2f6832e2a17e237_skypeId",
                         "source": "user", 
@@ -237,8 +329,10 @@ Több lehetőség van egy alkalmazás identitás konfiguráció engedélyezése 
                   }
             ]
       }
-      ```
-      Ebben az esetben másik választható jogcímek hozzáadott minden típusú jogkivonatot, amely az alkalmazás fogadhat. Az azonosító-jogkivonatokat mostantól tartalmazza a teljes képernyőn összevont felhasználók esetében az egyszerű Felhasználónevet (`<upn>_<homedomain>#EXT#@<resourcedomain>`). A hozzáférési tokenek kérő ügyfelek számára az alkalmazás most már tartalmazza a auth_time jogcímet. Az SAML-jogkivonatok mostantól tartalmazza a skypeId directory-séma kiterjesztését (ebben a példában az alkalmazás az alkalmazás csomagazonosítója ab603c56068041afb2f6832e2a17e237). Az SAML-jogkivonatok fogja elérhetővé tenni a Skype-azonosító, `extension_skypeId`.
+
+    ```
+
+    Ebben az esetben másik választható jogcímek hozzáadott minden típusú jogkivonatot, amely az alkalmazás fogadhat. Az azonosító-jogkivonatokat mostantól tartalmazza a teljes képernyőn összevont felhasználók esetében az egyszerű Felhasználónevet (`<upn>_<homedomain>#EXT#@<resourcedomain>`). A hozzáférési tokenek kérő ügyfelek számára az alkalmazás most már tartalmazza a auth_time jogcímet. Az SAML-jogkivonatok mostantól tartalmazza a skypeId directory-séma kiterjesztését (ebben a példában az alkalmazás az alkalmazás csomagazonosítója ab603c56068041afb2f6832e2a17e237). Az SAML-jogkivonatok fogja elérhetővé tenni a Skype-azonosító, `extension_skypeId`.
 
 1. Ha elkészült, a jegyzékfájl frissítése, kattintson a **mentése** a jegyzékfájl mentése
 

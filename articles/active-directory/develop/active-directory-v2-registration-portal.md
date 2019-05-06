@@ -18,18 +18,18 @@ ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b77b5185056329113ee1fd17fa3ed3f364380ca2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9b77f2a403bd4f410665d00bc69b3b1bcf0c3aaa
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411215"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139176"
 ---
 # <a name="app-registration-reference"></a>Alkalmazásregisztráció-referencia
 Ez a dokumentum kontextust biztosít a és a különféle funkcióinak leírása megtalálható a [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/).
 
 > [!NOTE]
-> Már nem támogatjuk regisztrálása és a konvergens és az Azure AD-alkalmazások kezelése a [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/) 2019. május indítása. Javasoljuk, hogy a meglévő alkalmazások kezeléséhez, és az új alkalmazások regisztrálását a [alkalmazásregisztrációk (előzetes verzió)](https://aka.ms/appregistrations) élmény az Azure Portalon.
+> Már nem támogatjuk regisztrálása és a konvergens és az Azure AD-alkalmazások kezelése a [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/) 2019. május indítása. Javasoljuk, hogy a meglévő alkalmazások kezeléséhez, és az új alkalmazások regisztrálását a [alkalmazásregisztrációk](https://aka.ms/appregistrations) élmény az Azure Portalon.
 
 ## <a name="my-applications-or-converged-applications"></a>Saját alkalmazások vagy összevont alkalmazások
 Ez a lista tartalmazza az összes alkalmazás regisztrálása az Azure AD v2.0-végpontra való használatra. Ezeket az alkalmazásokat a felhasználók személyes Microsoft-fiókok és az Azure Active Directoryból a munkahelyi vagy iskolai fiókokkal is tudnak. Az Azure AD v2.0-végpont kapcsolatos további információkért tekintse meg a [v2.0 áttekintése](active-directory-appmodel-v2-overview.md). Ezek az alkalmazások integrálása a Microsoft fiók hitelesítési végpontot is használható `https://login.live.com`.

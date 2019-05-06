@@ -4,14 +4,14 @@ description: Az Azure Cosmos DB indexelési szabályzatok kezelése
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.author: thweiss
-ms.openlocfilehash: 76275420e1e6ed7fdec8309da9e11a272f08fee0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 48d67c765a8a76a6058592f59eb61770e2f23df5
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61054683"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068676"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatok kezelése
 
@@ -162,7 +162,7 @@ response = client.ReplaceContainer(containerPath, container)
 Az alábbiakban néhány példa látható a JSON formátumban, azaz, hogy hogyan ki vannak téve az Azure Portalon az indexelő szabályzatokat. Ugyanazokat a paramétereket az Azure CLI vagy bármely SDK segítségével állíthatja be.
 
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Az elutasítás házirendet külön-külön az egyes tulajdonság elérési utak kizárása
-
+```
     {
         "indexingPolicy": "consistent",
         "includedPaths": [
@@ -193,9 +193,10 @@ Az alábbiakban néhány példa látható a JSON formátumban, azaz, hogy hogyan
             }
         ]
     }
+```
 
 ### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>Jóváhagyás házirendet külön-külön néhány tulajdonság elérési utak
-
+```
     {
         "indexingPolicy": "consistent",
         "includedPaths": [
@@ -224,11 +225,12 @@ Az alábbiakban néhány példa látható a JSON formátumban, azaz, hogy hogyan
             }
         ]
     }
+```
 
 Megjegyzés: Általában javasolt használni egy **lemond** indexelési szabályzat ahhoz, hogy proaktív módon az Azure Cosmos DB indexelése minden új tulajdonság, amely a modell adhatók hozzá.
 
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>A térbeli index használatával csak egy adott tulajdonságra elérési úton
-
+```
     {
         "indexingPolicy": "consistent",
         "includedPaths": [
@@ -257,11 +259,12 @@ Megjegyzés: Általában javasolt használni egy **lemond** indexelési szabály
         ],
         "excludedPaths": []
     }
+```
 
 ### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Az összes tulajdonság elérési utak kizárása de megtartva indexelő aktív
 
 Ez a szabályzat helyzetekben használható, a [idő-az-élettartam (TTL) funkció](time-to-live.md) aktív, de nem a másodlagos index megadása kötelező (Azure Cosmos DB-hez használandó egy tiszta kulcs-érték tároló).
-
+```
     {
         "indexingMode": "consistent",
         "includedPaths": [],
@@ -269,12 +272,130 @@ Ez a szabályzat helyzetekben használható, a [idő-az-élettartam (TTL) funkci
             "path": "/*"
         }]
     }
+```
 
 ### <a name="no-indexing"></a>Nincs indexelése
-
+```
     {
         "indexingPolicy": "none"
     }
+```
+
+## <a name="composite-indexing-policy-examples"></a>Összetett indexelési szabályzat példák
+
+Mellett tartalmazza az egyes tulajdonságok útvonalai vagy, összetett index is megadhatja. Ha szeretné-e végre egy lekérdezést, amely rendelkezik egy `ORDER BY` záradék több tulajdonságot a egy [összetett index](index-policy.md#composite-indexes) azokat a tulajdonságokat kötelező megadni.
+
+### <a name="composite-index-defined-for-name-asc-age-desc"></a>Összetett index (kor desc neve asc) definiálva:
+```
+    {  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[  
+
+        ],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"descending"
+                }
+            ]
+        ]
+    }
+```
+
+Ez az összetett index tudná a következő két lekérdezések támogatásához:
+
+#1. lekérdezés:
+```sql
+    SELECT *
+    FROM c
+    ORDER BY name asc, age desc    
+```
+
+#2. lekérdezés:
+```sql
+    SELECT *
+    FROM c
+    ORDER BY name desc, age asc
+```
+
+### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>Összetett index (név asc, kora asc) definiált és (asc nevet, desc kor):
+
+Meghatározhat több különböző összetett indexek belül ugyanazt az indexelési házirendet. 
+```
+    {  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[  
+
+        ],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"ascending"
+                }
+            ]
+            [  
+                {  
+                    "path":"/name",
+                    "order":"ascending"
+                },
+                {  
+                    "path":"/age",
+                    "order":"descending"
+                }
+            ]
+        ]
+    }
+```
+
+### <a name="composite-index-defined-for-name-asc-age-asc"></a>Összetett index (név asc, kora asc) definiálva:
+
+Nem kötelező a sorrend megadásához. Ha nincs megadva, növekvő sorrendben.
+```
+{  
+        "automatic":true,
+        "indexingMode":"Consistent",
+        "includedPaths":[  
+            {  
+                "path":"/*"
+            }
+        ],
+        "excludedPaths":[  
+
+        ],
+        "compositeIndexes":[  
+            [  
+                {  
+                    "path":"/name",
+                },
+                {  
+                    "path":"/age",
+                }
+            ]
+        ]
+}
+```
 
 ## <a name="next-steps"></a>További lépések
 

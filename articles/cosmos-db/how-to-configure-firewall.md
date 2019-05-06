@@ -1,17 +1,17 @@
 ---
 title: Az Azure Cosmos DB-fiók egy IP-tűzfal konfigurálása
 description: Ismerje meg, IP hozzáférés-vezérlési házirendeket a tűzfaltámogatás beállítása az Azure Cosmos DB-adatbázisfiókhoz.
-author: kanshiG
+author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 11/06/2018
-ms.author: govindk
-ms.openlocfilehash: 26f2131fd62ddc83c2a6d93c4cff557402a88463
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: sample
+ms.date: 05/06/2019
+ms.author: mjbrown
+ms.openlocfilehash: cdf2da745cc418190f6546fffc03e2ac2c330e0e
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61060818"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068723"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>IP-tűzfal konfigurálása az Azure Cosmos DB-ben
 
@@ -32,7 +32,7 @@ Amikor IP hozzáférés-vezérlés be van kapcsolva, az Azure Portalon teszi leh
 > [!NOTE]
 > Miután engedélyezte IP hozzáférés-vezérlési szabályzat az Azure Cosmos DB-fiókja, az Azure Cosmos DB-fiókba érkező kérelmek gépek kívül az engedélyezett IP-címtartományok listáját a rendszer elutasítja. Böngészés az Azure Cosmos DB-erőforrásokat a portálról is blokkolva van a hozzáférés-vezérlés integritását.
 
-### <a name="allow-requests-from-the-azure-portal"></a>Az Azure Portalon kéréseinek engedélyezéséhez. 
+### <a name="allow-requests-from-the-azure-portal"></a>Az Azure Portalon kéréseinek engedélyezéséhez.
 
 Ha programozott módon engedélyezi egy IP-hozzáférés-vezérlési házirend, hozzá kell az Azure portal IP-címét a **ipRangeFilter** tulajdonság megtartásához. A portál IP-címek a következők:
 
@@ -80,7 +80,7 @@ Horizontális felskálázás a felhőszolgáltatások szerepkörpéldányok hozz
 
 ### <a name="requests-from-virtual-machines"></a>Virtuális gépek érkező kéréseket
 
-Is [virtuális gépek](https://azure.microsoft.com/services/virtual-machines/) vagy [a virtual machine scale sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) középső rétegű szolgáltatások működtetéséhez az Azure Cosmos DB használatával. Adja meg a Cosmos DB-fiókot, hogy engedélyezze a hozzáférést a virtuális gépekről, konfigurálnia kell a nyilvános IP-cím a virtuális gép és/vagy az Azure Cosmos DB-fiókja által engedélyezett IP-címek egyik virtuálisgép-méretezési [ az IP-hozzáférés-vezérlési házirend beállítása](#configure-ip-policy). 
+Is [virtuális gépek](https://azure.microsoft.com/services/virtual-machines/) vagy [a virtual machine scale sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) középső rétegű szolgáltatások működtetéséhez az Azure Cosmos DB használatával. A Cosmos DB-fiókot adja meg, hogy engedélyezi a hozzáférést a virtuális gépekről, konfigurálnia kell a nyilvános IP-cím a virtuális gép és/vagy az Azure Cosmos DB-fiókja által engedélyezett IP-címek egyik virtuálisgép-méretezési [ az IP-hozzáférés-vezérlési házirend beállítása](#configure-ip-policy). 
 
 IP-címeket virtuális gépekhez az Azure Portalon kérheti le az alábbi képernyőképen látható módon:
 
@@ -138,6 +138,37 @@ az cosmosdb update \
       --ip-range-filter "183.240.196.255,104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26"
 ```
 
+## <a id="configure-ip-firewall-ps"></a>Egy IP hozzáférés-vezérlési házirend beállítása PowerShell-lel
+
+Az alábbi parancsfájl bemutatja, hogyan hozhat létre Azure Cosmos DB-fiókot, IP hozzáférés-vezérlést:
+
+```azurepowershell-interactive
+
+$resourceGroupName = "myResourceGroup"
+$accountName = "myaccountname"
+
+$locations = @(
+    @{ "locationName"="West US"; "failoverPriority"=0 },
+    @{ "locationName"="East US"; "failoverPriority"=1 }
+)
+
+# Add local machine's IP address to firewall, InterfaceAlias is your Network Adapter's name
+$ipRangeFilter = Get-NetIPConfiguration | Where-Object InterfaceAlias -eq "Ethernet 2" | Select-Object IPv4Address
+
+$consistencyPolicy = @{ "defaultConsistencyLevel"="Session" }
+
+$CosmosDBProperties = @{
+    "databaseAccountOfferType"="Standard";
+    "locations"=$locations;
+    "consistencyPolicy"=$consistencyPolicy;
+    "ipRangeFilter"=$ipRangeFilter
+}
+
+Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
+    -Name $accountName -PropertyObject $CosmosDBProperties
+```
+
 ## <a id="troubleshoot-ip-firewall"></a>Az IP-hozzáférés-vezérlési szabályzat hibáinak elhárítása
 
 Az alábbi beállítások segítségével elháríthatja, IP hozzáférés-vezérlési házirend kapcsolatos problémák: 
@@ -161,5 +192,4 @@ Az Azure Cosmos DB-fiók egy virtuális hálózati szolgáltatásvégpont beáll
 
 * [Virtuális hálózat és alhálózat hozzáférés-vezérlés az Azure Cosmos DB-fiók](vnet-service-endpoint.md)
 * [Virtuális hálózat és alhálózat-alapú hozzáférés az Azure Cosmos DB-fiók konfigurálása](how-to-configure-vnet-service-endpoint.md)
-
 

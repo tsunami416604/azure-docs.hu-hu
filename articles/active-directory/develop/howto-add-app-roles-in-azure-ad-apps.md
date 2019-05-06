@@ -17,12 +17,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 427e293c28f634df9f66a7210d79e0df0d4d063c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: df0d0b02efe7e99253b64ba02a5d9e77bb968993
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60410348"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138356"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Útmutató: Alkalmazás-szerepkörök hozzáadása az alkalmazásban, és fogadhatók a jogkivonat
 
@@ -51,7 +51,9 @@ E alkalmazás-szerepkörök vannak meghatározva a [az Azure portal](https://por
 1. Az alkalmazásjegyzék szerkesztése megkeresésével a `appRoles` beállítást, és az alkalmazás-szerepkörök hozzáadása.
 
      > [!NOTE]
-     > Minden egyes szerepkör-definíció a jegyzékfájlban rendelkeznie kell egy másik érvényes **Guid** az "Id" tulajdonsághoz. A `"value"` tulajdonságot az egyes szerepkörök pontosan egyeznie kell a karakterláncokat az alkalmazás a kódban használhatók.
+     > Minden alkalmazás szerepkör-definíció a jegyzékfájlban rendelkeznie kell egy másik érvényes GUID Azonosítót a `id` tulajdonság. 
+     > 
+     > A `value` minden alkalmazás szerepkör-definíció tulajdonságának pontosan egyeznie kell a karakterláncokat a kódban az alkalmazásban használt. A `value` tulajdonság nem tartalmazhat szóközt. Ha igen, hibaüzenetet kap a jegyzékfájl mentése.
      
 1. A jegyzékfájl mentése.
 

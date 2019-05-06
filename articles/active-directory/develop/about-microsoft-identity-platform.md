@@ -1,6 +1,6 @@
 ---
-title: A Microsoft identitásplatformja | Azure
-description: Ebben a cikkben megismerheti a Microsoft identitásplatformját, amely az Azure Active Directory identitásszolgáltatás és fejlesztői platform fejlődésének eredménye.
+title: A Microsoft identity platform – Azure evolúciója
+description: Ismerje meg a Microsoft identity platform, az Azure Active Directory (Azure AD) identity service és a fejlesztői platform továbbfejlesztett változata.
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -12,27 +12,35 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 05/07/2019
 ms.author: celested
-ms.reviewer: saeeda
+ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7b3eee08c036862e6ce9f0c590a596f7b1d3fb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a0b912b6f3fe42c724468347f9b3a7f0b4efa054
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60301015"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067976"
 ---
-# <a name="about-microsoft-identity-platform"></a>A Microsoft identitásplatformja
+# <a name="evolution-of-microsoft-identity-platform"></a>A Microsoft identity platform fejlődése
 
-A Microsoft identitásplatformja az Azure Active Directory (Azure AD) identitásszolgáltatás és fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat építsenek, amelyek az összes Microsoft-identitás használatával biztonságosan jelentkeznek be, és jogkivonattal hívják meg a Microsoft Graphot, más Microsoft API-kat vagy olyan API-kat, amelyeket fejlesztők készítettek. Ez egy teljes szolgáltatásokat nyújtó platform, amely egy hitelesítési szolgáltatásból, nyílt forráskódú kódtárakból, alkalmazásregisztrációból és -konfigurációból (egy fejlesztői portál és egy alkalmazás API révén), teljes fejlesztői dokumentációból, kódmintákból és egyéb fejlesztői tartalmakból áll. A Microsoft identitásplatformja támogatja a nyílt szabványokat, többek között az OAuth 2.0-t és az OpenID Connectet.
+A Microsoft identitásplatformja az Azure Active Directory (Azure AD) identitásszolgáltatás és fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztők számára, amely a felhasználók, a jogkivonatok kiosztva azon hívja az API-k, például a Microsoft Graph, vagy az API-kat a fejlesztők számára készült alkalmazások. Folyamatautomatizálást olyan hitelesítési szolgáltatás, nyílt forráskódú könyvtáraink, alkalmazásregisztráció és konfigurációja (keresztül a fejlesztői portál és a kérelem API-t), teljes körű fejlesztői dokumentáció, a rövid útmutató minták, Kódminták, oktatóanyagok és útmutatók, és más fejlesztői tartalom. A Microsoft identitásplatformja támogatja a nyílt szabványokat, többek között az OAuth 2.0-t és az OpenID Connectet.
 
-Egészen mostanáig a legtöbb fejlesztő az Azure AD 1.0-s verzióját használta az Azure AD-identitások (munkahelyi és iskolai fiókok) hitelesítéséhez. Ez az Azure AD 1.0-s verziójú végpontjától kért jogkivonatokkal történik, alkalmazásregisztráció és -konfiguráció esetében az Azure AD Authentication Library (ADAL) és az Azure Portal, programozott alkalmazáskonfiguráció esetén pedig az Azure AD Graph API használatával. Az Azure AD 1.0-s verziójú platform egy kiforrott platformajánlat, amely továbbra is megfelelő vállalati alkalmazásokhoz.
+Eddig nagyon a legtöbb fejlesztő dolgozott már az Azure ad-ben 1.0-s verziójú platform hitelesítéséhez a munkahelyi és iskolai fiókok (Azure AD által kiosztott) tokenek kér az Azure AD-1.0-s verziójú végpont által az Azure AD Authentication Library (ADAL), az Azure portal használatával alkalmazás regisztrálása és konfigurációs, és az Azure AD Graph API a programozott alkalmazás konfigurációja.
 
-A Microsoft-identitásplatform képességeinek bővítéséhez és fejlesztéséhez mostantól a Microsoft-identitások (Azure AD-identitások, Microsoft-fiókok (pl. outlook.com és hotmail.com), valamint közösségi és helyi fiókok az Azure AD B2C révén) szélesebb körét hitelesítheti az Azure AD 2.0-s verziójú végpontként ismert platformmal. Alkalmazásregisztrációhoz és -konfigurációhoz a Microsoft Authentication Libraryt (MSAL) vagy bármely nyílt forráskódú OAuth2.0- vagy OpenID Connect-kódtárat és az Azure Portalt használhatja, programozott alkalmazáskonfiguráláshoz pedig az Azure AD Graph API-t veheti igénybe. A frissített Microsoft-identitásplatform (különös tekintettel az MSAL-kódtárakra és az Azure Portal legújabb alkalmazásregisztrációs felületére) jelentős mértékben fejlődött az elmúlt évben. A kiadás véglegesítése érdekében arra bátorítjuk a fejlesztőket, hogy a legújabb Microsoft-identitásplatformmal fejlesszék és teszteljék az alkalmazásaikat.
+A Microsoft identity platform (2.0-s verzió) révén ki a horizontját az ilyen típusú felhasználók:
 
-A legújabb ADAL-t és a legújabb MSAL-t használó alkalmazások egyszeri bejelentkezést használnak egymással. AZ ADAL-ból MSAL-ra frissített alkalmazások megtartják a felhasználó bejelentkezési állapotát. A fejlesztők kedvük szerint dönthetnek, hogy frissítik-e MSAL-re az alkalmazásaikat, hiszen az ADAL-lel létrehozott alkalmazások továbbra is működnek és kapnak támogatást.
+- Munkahelyi és iskolai fiókok (kiépítése az Azure AD-fiókok)
+- Személyes fiókok (például Outlook.com-os vagy Hotmail.com)
+- Az ügyfelek, akik hozzák saját e-mail vagy éppen közösségi (például Google, Facebook, a LinkedIn) keresztül az Azure AD B2C-ajánlat
+
+Az egyesített Microsoft identity platform kód megírását, és bármely Microsoft identitás hitelesítésére az alkalmazásba. Számos platformra van egy teljes körűen támogatott nyílt forráskódú kódtár, nevű Microsoft-hitelesítési tár (MSAL). Az MSAL könnyen használható, biztosít a felhasználók számára, lehetővé teszi a magas rendelkezésre állást és teljesítményt érhet el, és fejlesztik a Microsoft biztonságos fejlesztési Életciklussal (SDL) használatával találkozik nagyszerű egyszeri bejelentkezés (SSO). API-k hívásakor konfigurálhatja az alkalmazás kihasználásához növekményes jóváhagyás, amely lehetővé teszi, hogy további invazív hatókörök jóváhagyási kérés késleltetés mindaddig, amíg az alkalmazás használati kódhiba Ez futásidőben.
+
+Az Azure portal használatával regisztrálta és konfigurálta az alkalmazást, és használni a Microsoft Graph API-val programozott alkalmazás konfigurációja.
+
+Frissítse az alkalmazást, hogy saját tempójában. ADAL könyvtárakat-val készített alkalmazások továbbra is támogatottak. Vegyes alkalmazás portfóliók, olyan alkalmazások beépített adal-t és a MSAL kódtárak-val készített alkalmazások, is támogatottak. Ez azt jelenti, hogy a legújabb adal-t és a legújabb MSAL használó alkalmazások között a portfólió, ezek a kódtárak között megosztott tokengyorsítótárral által biztosított egyszeri bejelentkezés fog nyújtani. Az ADAL MSAL a frissített alkalmazások megőrzi a felhasználói bejelentkezési állapot frissítése után.
 
 ## <a name="microsoft-identity-platform-experience"></a>A Microsoft-identitásplatform környezete
 
@@ -40,27 +48,29 @@ Az alábbi ábra a Microsoft-identitásplatform környezetének áttekintését 
 
 ![A Microsoft-identitásplatform ma](./media/about-microsoft-identity-platform/about-microsoft-identity-platform.svg)
 
-A Microsoft identitásplatform két végponttal (1.0-s és 2.0-s verzió), és a végpontokat kezelő két kódtárral rendelkezik. Új alkalmazás fejlesztésekor vegye figyelembe a végpontok és a hitelesítési kódtárak előnyeit és aktuális állapotát. Az alábbi szempontokat is vegye figyelembe:
+### <a name="app-registration-experience"></a>Az alkalmazás regisztrációs felhasználói felülete
 
-* Támogatott platformok
+Az Azure Portalon **[alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908)** élmény az egyik portáljának felületén az kezelése minden alkalmazást, a Microsoft identity platform már integrálva. Ha már használja az alkalmazásregisztrációs portálon, kezdési használja helyette az Azure-portál alkalmazás regisztrációs felhasználói élményt.
 
-    * Az [ADAL](active-directory-authentication-libraries.md) a .NET, JavaScript, iOS, Android, Java és Python környezetet támogatja
-    * Az [MSAL](reference-v2-libraries.md) a .NET, JavaScript, iOS és Android környezetet támogatja
-    * Mindkét végpont támogatja a .NET és a Node.js kiszolgálóként használt közbenső szoftvert az API-k és a bejelentkezés védelme érdekében. 
+Integráció az Azure AD B2C (Ha a közösségi vagy a helyi identitások hitelesítését) kell regisztrálja az alkalmazást a B2C-bérlőben. Ez a tapasztalat része is az Azure Portalon.
 
-* Az újítások java része, például a dinamikus és a növekményes hozzájárulás a 2.0-s végponton és az MSAL-kódtárban történik, de továbbra is támogatjuk az 1.0-s ADAL-t.
+A **Microsoft Graph API-alkalmazás** jelenleg előzetes verzióban érhető el. Az API-val programozott módon konfigurálhatja a Microsoft identitásplatformja bármely Microsoft identitás hitelesítésére az integrált alkalmazásokhoz. Azonban amíg el nem éri az API általános rendelkezésre állás, használjon az Azure AD Graph 1.6-os API és az alkalmazásjegyzék.
 
-    Az Azure Portalon korábban statikusan kellett azonosítania az alkalmazás számára szükséges összes hatókört. A 2.0-s verziójú végponttal és a végponthoz társított portálokkal meghatározhatja statikusan a hatóköröket, mint eddig, vagy kérheti őket dinamikusan, amikor épp az alkalmazásnak szüksége van az engedélyre. A dinamikus mód biztosít még egy lehetséges képességet, a növekményes hozzájárulást. A növekményes hozzájárulás lehetővé teszi, hogy egy felhasználó első hitelesítésekor lekérje a szükséges hatókörök alkészletét, majd szükség szerint további hatóköröket kérjen. 
-    
-    Amikor például egy kameraalkalmazást használ valaki egy mobileszközön, az alkalmazás először a felhasználó hozzájárulását kéri a kamerahasználathoz, és csak a felhasználó hozzájárulása után kap engedélyt a kamerához való hozzáférésre és a fényképezésre.  Ha az alkalmazás készen áll az új fénykép mentésére, előfordulhat, hogy fényképolvasási/-írási engedélyt kér. 
+### <a name="msal-libraries"></a>Az MSAL kódtárak
 
-* Lehetséges kompatibilitástörő változások
+Az MSAL library használatával hozhat létre alkalmazásokat, amelyek az összes Microsoft-identitások hitelesítésére. Általánosan elérhetők az MSAL kódtárak a .NET-ben. A JavaScript, iOS és Android az MSAL kódtárak vannak előzetes verzióban érhető el, és az éles környezetben használhatók. Az azonos termelési szintű támogatást biztosítunk MSAL kódtárak előzetes verzióban érhető el, ahogy azt az MSAL és az adal-t azon verzióit, általánosan elérhető.
 
-    Az MSAL alkalmas éles környezetben való használatra. Ugyanolyan éles szintű támogatást biztosítunk az MSAL-hez, mint az aktuális éles kódtárakhoz. Az előzetes verzió ideje alatt módosíthatjuk az API-t, a belső gyorsítótár formátumát és a kódtár egyéb mechanizmusait. Ezeket a változásokat a hibajavításokkal és a szolgáltatásfejlesztésekkel együtt vállalnia kell. Ez hatással lehet az alkalmazására. A gyorsítótár formátumának változása például érintheti a felhasználóit, például előfordulhat, hogy újból be kell jelentkezniük. Lehetséges, hogy egy API-módosítás miatt frissítenie kell a kódot. Amikor általánosan elérhető (GA) kiadást teszünk közzé, hat hónapon belül frissítenie kell a GA-verzióra, mert azután előfordulhat, hogy a kódtár előzetes verziójával írt alkalmazások nem működnek.
+A MSAL kódtárak használatával az alkalmazás integrálása az Azure AD B2C-t.
+
+Kiszolgálóoldali-kódtárak a webes alkalmazások és a webes API-k általánosan elérhetők: [ASP.NET](https://docs.microsoft.com/aspnet/overview) and [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.2)
+
+### <a name="microsoft-identity-platform-endpoint"></a>A Microsoft identity platform végpont
+
+A Microsoft identity platform (2.0-s verzió) végpont már hitelesített OIDC. A Microsoft-hitelesítési tárak (MSAL) vagy bármely más szabványokkal kompatibilis könyvtár működik. Emberi olvasható hatókörök, iparági szabványoknak megfelelő valósítja meg.
 
 ## <a name="next-steps"></a>További lépések
 
 Tudjon meg többet az 1.0-s és 2.0-s verzióról.
 
-* [Az 1.0-s verzió bemutatása](v1-overview.md)
-* [A 2.0-s verzió bemutatása](v2-overview.md)
+* [A Microsoft identity platform (2.0-s verzió) – áttekintés](v2-overview.md)
+* [Az Azure Active Directory fejlesztők (1.0-s verzió) – áttekintés](v1-overview.md)

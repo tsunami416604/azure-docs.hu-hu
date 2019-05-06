@@ -1,21 +1,21 @@
 ---
-title: 'Oktatóanyag: Azure Database for postgresql-hez az Azure CLI használatával tervezése'
-description: Ez az oktatóanyag azt mutatja be, hogyan hozhatja létre, konfigurálhatja és kérdezheti le az első Azure Database for PostgreSQL-kiszolgálót az Azure CLI-vel.
+title: 'Oktatóanyag: Egy Azure Database for PostgreSQL – Azure CLI használatával egyetlen kiszolgáló megtervezése'
+description: Ez az oktatóanyag bemutatja, hogyan hozhat létre, konfigurálhatja és lekérdezés az első Azure Database for postgresql-hez - Azure CLI használatával egyetlen kiszolgáló.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 04/01/2018
-ms.openlocfilehash: eba1ffcbe07c617661d902de0726f17e4fec0a00
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
+ms.date: 5/6/2019
+ms.openlocfilehash: ed272afcfedaf6c781d2a96e5732fe2368914a67
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992082"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073070"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>Oktatóanyag: Azure Database for postgresql-hez az Azure CLI használatával tervezése 
+# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Oktatóanyag: Egy Azure Database for PostgreSQL – Azure CLI használatával egyetlen kiszolgáló megtervezése 
 Ebben az oktatóanyagban az Azure CLI (parancssori felület) és egyéb segédprogramok segítségével a következőket sajátíthatja el:
 > [!div class="checklist"]
 > * Azure-adatbázis létrehozása PostgreSQL-kiszolgálóhoz

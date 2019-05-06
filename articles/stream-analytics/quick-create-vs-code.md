@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 05/06/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: dd6d527020bbf5e2fb510fa9605af408673e89dd
-ms.sourcegitcommit: e729629331ae10097a081a03029398525f4147a4
+ms.openlocfilehash: 511dab7090f6114c7769d504166f3e2c137d43ca
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64514235"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65071838"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>Gyors útmutató: Az Azure Stream Analytics felhőalapú feladat létrehozása a Visual Studio Code (előzetes verzió)
 
@@ -26,23 +26,13 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre és futtathat a Visual St
 
 * Telepítés [Visual Studio Code](https://code.visualstudio.com/).
 
-* Töltse le a [VS Code-bővítmény az Azure Stream Analytics](https://usqldownload.blob.core.windows.net/ext/asa/vscode-asa-0.0.2.vsix).
-
 ## <a name="install-the-azure-stream-analytics-extension"></a>Az Azure Stream Analytics-bővítményének telepítése
-
-Az Azure Stream Analytics-bővítmény telepítése letöltött privát VSIX csomagból.
 
 1. Nyissa meg a Visual Studio Code-ot.
 
-2. A **bővítmények** a bal oldali panelen kattintson a három pontra **(...)**  jobb felső sarokban lévő. Válassza ki **VSIX telepíthessenek**.
+2. A **bővítmények** a bal oldali ablaktáblán, keresse meg **Stream Analytics** válassza **telepítése** a a **Azure Stream Analytics** bővítmény.
 
-   ![Telepítse a Visual Studio Code-ban VSIX](./media/quick-create-vs-code/install-vsix.png)
-
-3. Válassza az előfeltételként letöltötte a bővítményt, majd válasszon **telepítése**.  Ez eltarthat néhány másodpercig.
-
-4. Ha a telepítés sikeresen befejeződött, válassza ki a **újbóli betöltés most** az előugró ablak, ha a rendszer kéri.
-
-5. Ellenőrizze, hogy **Azure Stream Analytics Tools** látható a **engedélyezett bővítmények**.
+3. A bővítmény telepítése után ellenőrizze, hogy **Azure Stream Analytics Tools** látható a **engedélyezett bővítmények**.
 
    ![Az Azure Stream Analytics Tools alatt engedélyezve van a Visual Studio Code-bővítmények](./media/quick-create-vs-code/enabled-extensions.png)
 
@@ -123,7 +113,7 @@ Mielőtt meghatározná a Stream Analytics-feladat, készítse elő az adatokat,
 
    ![Stream Analytics projektfájlokat a VS Code-ban](./media/quick-create-vs-code/asa-project-files.png)
 
-4. A asaproj.json konfigurációs fájl tartalmazza a bemenetek, kimenetek és a feladat konfigurációs fájl információkat, amelyeket az Azure-bA az ASA-feladat elküldése.
+4. A **asaproj.json** konfigurációs fájl tartalmazza a bemenetek, kimenetek és feladat konfigurációs fájl információkat, amelyeket az Azure-bA a Stream Analytics-feladat elküldése.
 
    ![Stream Analytics feladat konfigurációs fájlt a VS Code-ban](./media/quick-create-vs-code/job-configuration.png)
 
@@ -146,7 +136,7 @@ Mielőtt meghatározná a Stream Analytics-feladat, készítse elő az adatokat,
 
 4. Adja meg a bemeneti fájl neve megegyezik **IotHub.json**.
 
-5. Szerkesztés **IoTHub.json** a következő értékeket. Tartsa meg az alábbi nem említett mezők alapértelmezett értékeit. A CodeLens használatával adjon meg egy karakterláncot, vagy válassza ki a legördülő listából.
+5. Szerkesztés **IoTHub.json** a következő értékeket. Tartsa meg az alábbi nem említett mezők alapértelmezett értékeit. A CodeLens használatával adjon meg egy karakterláncot, válassza ki a legördülő listából, vagy módosítsa a szöveget a fájlt közvetlenül a segítséget.
 
    |Beállítás|Ajánlott érték|Leírás|
    |-------|---------------|-----------|
@@ -189,9 +179,9 @@ Mielőtt meghatározná a Stream Analytics-feladat, készítse elő az adatokat,
    HAVING Temperature > 27
    ```
 
-## <a name="compile-script"></a>Parancsfájl összeállítása
+## <a name="compile-the-script"></a>A parancsfájl összeállítása
 
-Parancsfájl összeállítása két dolgot eredményez: Ellenőrizze a szintaxist, és hozzon létre az Azure Resource Manager-sablonok, az automatikus telepítéshez.
+Parancsfájl összeállítása két dolgot eredményez: Ellenőrizze a szintaxist, és hozzon létre az Azure Resource Manager-sablonok, az automatikus központi telepítési.
 
 Parancsprogram-fordítási elindítani két módja van:
 
@@ -203,7 +193,9 @@ Parancsprogram-fordítási elindítani két módja van:
 
     ![Kattintson a jobb gombbal az ASA parancsfájl összeállítása](./media/quick-create-vs-code/compile-script2.png)
 
-3. Lefordítása után annak a két létrehozott Azure Resource Manager-sablonok a **telepítés** mappát a projekt. Két fájlt az automatikus telepítéshez szolgálnak.
+3. Lefordítása után annak a két létrehozott Azure Resource Manager-sablonok a **telepítés** mappát a projekt. Automatikus központi telepítési két fájlt szolgálnak.
+
+    ![A Fájlkezelőben a Stream Analytics központi telepítési sablonok](./media/quick-create-vs-code/deployment-templates.png)
 
 ## <a name="submit-a-stream-analytics-job-to-azure"></a>Az Azure Stream Analytics-feladat elküldése
 
@@ -213,7 +205,7 @@ Parancsprogram-fordítási elindítani két módja van:
 
 2. A helyi menü listából válassza ki előfizetését.
 
-3. Válassza ki **válasszon ki egy feladatot**. Majd hozzon létre egy új feladatot.
+3. Válassza ki a feladat **. Majd hozzon létre egy új feladatot.
 
 4. Adja meg a feladat nevét **myASAjob** és kövesse az utasításokat követve válassza ki az erőforráscsoportot és helyet.
 
@@ -233,13 +225,15 @@ Parancsprogram-fordítási elindítani két módja van:
 
 ## <a name="start-the-stream-analytics-job-and-check-output"></a>A Stream Analytics-feladat indítása és a kimenet ellenőrzése
 
-1. Stream Analytics megnyitása a Visual Studio Code-ban, és keresse meg a feladat**myASAJob**.
+1. Nyissa meg **Stream Analytics Explorer** Visual Studio Code-ban, és keresse meg a feladat **myASAJob**.
 
 2. Kattintson a jobb gombbal a projekt nevére. Ezután válassza ki **Start** a helyi menüből.
 
+![Indítsa el a Stream Analytics-feladat a VS Code-ban](./media/quick-create-vs-code/start-asa-job-vs-code.png)
+
 3. Válasszon **most** az előugró ablakban indítsa el a feladatot.
 
-4. Megjegyzés: a feladat állapota módosult az **futó**. Kattintson a jobb gombbal a projekt nevére, és válassza a **feladat nézet megnyitása a portál** tekintse meg a bemeneti és kimeneti esemény metrikákat. Ez eltarthat néhány percig.
+4. Megjegyzés: a feladat állapota módosult az **futó**. Kattintson a jobb gombbal a projekt nevére, és válassza a **feladat nézet megnyitása a portál** tekintse meg a bemeneti és kimeneti esemény metrikákat. Ez a művelet eltarthat néhány percig.
 
 5. Az eredmények megtekintéséhez nyissa meg a blob storage, a Visual Studio Code-bővítmény vagy az Azure Portalon.
 

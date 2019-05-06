@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6d3d98c91b2a373e4ed8b1ae556d402cb29d0dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2c9600c20349627c1da2bdf4f1bbc2f3d7a55549
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60298647"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067765"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Gyors útmutató: Egy token beszerzéséhez és a Microsoft Graph API hívása Windows asztali alkalmazások
 
@@ -51,13 +51,14 @@ Ebből a rövid útmutatóból megtudhatja, hogyan írhat egy Windows asztali .N
 >
 > 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 > 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-> 1. Keresse meg a fejlesztők a Microsoft identity platform [alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapot.
+> 1. Keresse meg a fejlesztők a Microsoft identity platform [alkalmazásregisztrációk](https://aka.ms/MobileAppReg) lapot.
 > 1. Válassza ki **új regisztrációs**.
 >      - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `Win-App-calling-MsGraph`).
 >      - A **Támogatott fióktípusok** szakaszban jelölje be a **Tetszőleges szervezeti címtárban található fiókok és a Személyes Microsoft-fiókok (például Skype, Xbox, Outlook.com)** beállítást.
 >      - Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 > 1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet.
-> 1. Az **Átirányítási URI-k** szakaszban keresse meg a **Javasolt átirányítási URI-k nyilvános ügyfelek számára (mobil, asztali)** szakaszt, és válassza az **urn: ietf:wg:oauth:2.0:oob** címet.
+> 1. Bontsa ki a **asztali + eszközök** szakaszban.  (Ha **asztali + eszközök** azért nem látható, először kattintson a felső fejléc a felhasználói hitelesítés előnézetének megtekintése)
+> 1. Alatt a **átirányítási URI-t** szakaszban jelölje be **URI hozzáadása**.  Típus **urn: ietf:wg:oauth:2.0:oob**.
 > 1. Kattintson a **Mentés** gombra.
 
 > [!div class="sxs-lookup" renderon="portal"]

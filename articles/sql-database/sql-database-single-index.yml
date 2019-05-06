@@ -75,6 +75,7 @@ sections:
           - html: '(Előzetes verzió) Új Transact-SQL nyelvi funkciókat, például <a href="https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">APPROX_COUNT_DISTINCT összesítés</a> és <a href="https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">tömeges importálás az Azure Blob storage-ból</a>.'
           - html: '(Előzetes verzió) Új SQL Server 2019 Online <a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">összeállítása</a> , és építse újra a fürtözött oszlopcentrikus index műveleteket.'
           - html: '(Előzetes verzió) Új <a href="https://docs.microsoft.com/azure/sql-database/sql-database-machine-learning-services-overview">az Azure SQL Database Machine Learning-szolgáltatások (az r nyelv)</a>.'
+          - html: '(Előzetes verzió) Új <a href="https://docs.microsoft.com/azure/sql-database/sql-database-serverless">kiszolgáló nélküli számítási kapacitás</a> számítási automatikus méretezést és a másodpercenként felhasznált számítási erőforrások számlák biztosít.'
   - title: Öt perces gyors útmutatók
     items:
       - type: paragraph

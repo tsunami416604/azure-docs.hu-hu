@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: diberry
-ms.openlocfilehash: 98c2ad15d836162608affbfbc89908a15e274cee
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 2e2b2c39cf9039c78a610e9b28065b972484123e
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528703"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069272"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Oktatóanyag: De kapcsolódó adatok kinyerése az utterance (kifejezés)
 
 Ebben az oktatóanyagban kapcsolódó adatrészleteket keresünk szövegkörnyezet alapján. Ha például egy forrás és cél helye egy átvitelét egy város egy másik. Az adatok két darab lehet szükség, és kapcsolatban állnak egymással.  
 
-Ebben az oktatóanyagban korábban hierarchikus entitások használatával készült. Entitás szerepkörök cserélje le a hierarchikus entitástípus van szükség. A szerepkör minden olyan előre összeállított vagy egyéni entitás típushoz használt, és használni például kimondott szöveg és a minták. 
+A szerepkör minden olyan előre összeállított vagy egyéni entitás típushoz használt, és használni például kimondott szöveg és a minták. 
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -117,7 +117,7 @@ Az előre összeállított entitások geographyV2, kinyeri a helyadatokhoz, bele
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 
-1. Lépjen az URL-cím végéhez a címsorban, és írja be a következőt: `Please move Carl Chamerlin from Tampa to Portland`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a következő szándékot kell visszaadnia a kinyert hierarchikus entitással: `MoveEmployee`.
+1. Lépjen az URL-cím végéhez a címsorban, és írja be a következőt: `Please move Carl Chamerlin from Tampa to Portland`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. Az utterance (kifejezés) nem ugyanaz, mint bármelyik címkézett megcímkézzen, ellenőrzi, és térjen vissza a `MoveEmployee` leképezés az a entitás ki kell olvasni.
 
     ```json
     {
