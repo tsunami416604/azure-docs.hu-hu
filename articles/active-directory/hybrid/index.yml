@@ -4,7 +4,7 @@ title: Hibrid identitáskezelési dokumentáció
 metadata:
   document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275e
   title: Hibrid identitáskezelési dokumentáció
-  meta.description: 'Azure AD Connect will integrate your on-premises directories with Azure Active Directory. This allows you to provide a common identity for your users for Office 365, Azure, and SaaS applications integrated with Azure AD.'
+  description: 'Az Azure AD Connect integrálja a helyszíni címtárakat az Azure Active Directoryval. Így közös identitást biztosíthat a felhasználóinak az Azure AD-vel integrált Office 365-, Azure- és SaaS-alkalmazásokhoz.'
   services: active-directory
   author: billmath
   manager: daveba
@@ -18,7 +18,7 @@ abstract:
   description: 'A Microsoft identitáskezelési megoldásai kiterjednek a helyszíni és felhőalapú képességekre is, így egyetlen felhasználói identitás jön létre hitelesítés és engedélyezés céljából az összes erőforráshoz, helytől függetlenül. Ezt hibrid identitásnak nevezzük.</br></br></br>Az Azure AD Connect integrálja a helyszíni címtárakat az Azure Active Directoryval. Így közös identitást biztosíthat a felhasználóinak az Azure AD-vel integrált Office 365-, Azure- és SaaS-alkalmazásokhoz. Ez a témakör végigvezeti a tervezéshez, üzembe helyezéshez és működtetéshez szükséges lépéseken. Az anyag a jelen témakörhöz kapcsolódó hivatkozások gyűjteményét is tartalmazza.'
   aside:
     image:
-      alt: null
+      alt: Channel 9-videó
       height: 110
       src: media/index/video2.png
       width: 250
@@ -36,16 +36,19 @@ sections:
           - href: /azure/active-directory/hybrid/tutorial-password-hash-sync
             html: '<p>Megtudhatja, hogyan kezdheti el kiterjeszteni identitásait a felhőbe jelszókivonat-szinkronizálással</p>'
             image:
+              alt: jelszókivonat szinkronizálása
               src: media/index/azuread2.png
             title: Egyetlen AD-erdő integrálása jelszókivonat-szinkronizálással (PHS)
           - href: /azure/active-directory/hybrid/tutorial-passthrough-authentication
             html: '<p>Megtudhatja, hogyan kezdheti el kiterjeszteni identitásait a felhőbe átmenő hitelesítéssel.</p>'
             image:
+              alt: átmenő hitelesítés
               src: media/index/manage2.png
             title: Egyetlen AD-erdő integrálása átmenő hitelesítéssel (PTA)
           - href: /azure/active-directory/hybrid/tutorial-federation
             html: '<p>Megtudhatja, hogyan vonhatja össze az Azure Active Directory (Azure AD) Connect szolgáltatást a helyszíni Active Directory összevonási szolgáltatásokkal (AD FS) és az Azure AD-vel.</p>'
             image:
+              alt: összevonás
               src: media/index/federate2.png
             title: Egyetlen AD-erdő integrálása összevonással
   - title: Útmutatók

@@ -120,7 +120,9 @@
   items:
     - name: Folyamatok és tevékenységek
       href: concepts-pipelines-activities.md
-    - name: Adatkészletek és társított szolgáltatások
+    - name: Társított szolgáltatások
+      href: concepts-linked-services.md
+    - name: Adathalmazok
       href: concepts-datasets-linked-services.md
     - name: Folyamat futtatása és eseményindítók
       href: concepts-pipeline-execution-triggers.md
@@ -130,8 +132,6 @@
       items:
         - name: Adatfolyam-fogalmak leképezése
           href: concepts-data-flow-overview.md
-        - name: Adatfolyam-adathalmazok
-          href: concepts-data-flow-datasets.md
         - name: Hibakeresési mód
           href: concepts-data-flow-debug-mode.md
         - name: Sémaeltérés
@@ -216,6 +216,8 @@
           href: connector-couchbase.md
         - name: DB2
           href: connector-db2.md
+        - name: Tagolt szövegformátum
+          href: format-delimited-text.md
         - name: Drill
           href: connector-drill.md
         - name: Dynamics 365
@@ -283,6 +285,8 @@
           href: connector-oracle-responsys.md
         - name: Oracle Service Cloud
           href: connector-oracle-service-cloud.md
+        - name: Parquet formátum
+          href: format-parquet.md
         - name: Paypal
           href: connector-paypal.md
         - name: Phoenix
@@ -582,6 +586,8 @@
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
     - name: GYIK
       href: frequently-asked-questions.md
+    - name: Tanulmányok
+      href: whitepapers.md
     - name: Ütemterv
       href: 'https://azure.microsoft.com/roadmap/?tag=data-factory'
     - name: Díjszabás

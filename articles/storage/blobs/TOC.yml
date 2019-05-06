@@ -80,6 +80,8 @@
               href: storage-create-geo-redundant-storage.md
             - name: 2 – Hiba szimulálása RA-GRS tárolóval
               href: storage-simulate-failure-ragrs-account-app.md
+        - name: Blobok titkosítása és visszafejtése az Azure Key Vaulttal
+          href: storage-encrypt-decrypt-blobs-key-vault.md
         - name: Nem strukturált adatok keresése
           href: storage-unstructured-search.md
     - name: Példák
@@ -98,6 +100,10 @@
           href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Biztonság
           items:
+            - name: Biztonsági áttekintés
+              href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Storage Service Encryption
+              href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Engedélyezés
               href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               items:
@@ -109,24 +115,10 @@
                   href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Névtelen hozzáférés a blobokhoz
                   href: storage-manage-access-to-resources.md
-            - name: Biztonsági útmutató
-              href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Tűzfalak és virtuális hálózatok konfigurálása
-              href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Inaktív adatok titkosítása
-              href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Titkosítás inaktív állapotban ügyfélkulcsokkal
-              href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Egyéni tartománnyal rendelkező blobok elérése az Azure CDN használatával HTTPS-kapcsolaton keresztül
-              href: storage-https-custom-domain-cdn.md
             - name: Nem módosítható blobok
               href: storage-blob-immutable-storage.md
-            - name: Fejlett fenyegetésvédelem
+            - name: Speciális fenyegetésvédelem
               href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Biztonságos TLS engedélyezése az Azure Storage-ügyfélnek
-              href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Biztonságos átvitel megkövetelése
-              href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Gyakori Azure-beli biztonsági attribútumok
               href: ../common/storage-security-attributes.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Adatredundancia
@@ -288,7 +280,7 @@
           href: storage-blob-pageblob-overview.md
     - name: Útmutató
       items:
-        - name: Tárfiókok
+        - name: Tárfiókok kezelése
           items:
             - name: Blokkblob-tárfiók létrehozása
               href: storage-blob-create-account-block-blob.md
@@ -296,7 +288,7 @@
               href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Tárfiók frissítése
               href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Biztonságos
+        - name: Blobadatok védelme
           items:
             - name: Blobadatok hozzáférésének engedélyezése
               items:
@@ -304,16 +296,16 @@
                   items:
                     - name: Portál
                       href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: CLI vagy PowerShell
+                    - name: PowerShell vagy Azure CLI
                       href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Hozzáférési jogosultságok felügyelete RBAC használatával
                   items:
                     - name: Portál
                       href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: parancssori felület
-                      href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: PowerShell
                       href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                    - name: Azure CLI
+                      href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Hitelesítés az Azure AD-vel
                   items:
                     - name: Hitelesítés felügyelt identitással
@@ -323,14 +315,18 @@
                 - name: Engedélyezés megosztott kulccsal
                   items:
                     - name: Kapcsolati sztringek konfigurálása
-                      href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                      href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Az Azure Storage REST API használata
                       href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Tűzfalak és virtuális hálózatok konfigurálása
-              href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Blobok titkosítása és visszafejtése az Azure Key Vaulttal
-              href: storage-encrypt-decrypt-blobs-key-vault.md
-            - name: Ügyféloldali titkosítás
+            - name: Felhasználó által kezelt kulcsok konfigurálása szolgáltatástitkosításhoz
+              items:
+                - name: Portál
+                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: PowerShell
+                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Ügyféloldali titkosítás konfigurálása
               items:
                 - name: .NET
                   href: ../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -338,10 +334,14 @@
                   href: ../common/storage-client-side-encryption-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Python
                   href: ../common/storage-client-side-encryption-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Biztonságos TLS engedélyezése az Azure Storage-ügyfélnek
-              href: ../common/storage-security-tls.md
-            - name: Biztonságos átvitel megkövetelése
-              href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: Hálózati biztonság konfigurálása
+              items:
+                - name: Tűzfalak és virtuális hálózatok konfigurálása
+                  href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Biztonságos átvitel megkövetelése
+                  href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Transport Layer Security engedélyezése
+                  href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Vészhelyreállítás
           items:
             - name: Fiók feladatátvételének indítása
@@ -354,6 +354,8 @@
           href: storage-properties-metadata.md
         - name: Statikus webhely üzemeltetése
           href: storage-blob-static-website.md
+        - name: Az Azure CDN leképezése egyéni tartományra HTTPS-en keresztüli hozzáféréshez
+          href: storage-https-custom-domain-cdn.md
         - name: Egyéni tartomány konfigurálása
           href: storage-custom-domain-name.md
         - name: Események átirányítása egyéni végponthoz
@@ -557,10 +559,8 @@
           href: data-lake-storage-best-practices.md
         - name: Biztonság
           items:
-            - name: Biztonsági útmutató a big data-elemzésekhez
-              href: ../common/storage-data-lake-storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Azure Storage-titkosítás
-              href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Tárolóbiztonság – áttekintés
+              href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Hozzáférés-vezérlés
               href: data-lake-storage-access-control.md
     - name: Útmutató
@@ -575,16 +575,22 @@
           items:
             - name: Tűzfalak és virtuális hálózatok konfigurálása
               href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Egyéni kulcsok kezelése Azure Storage-titkosítás esetén
-              href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Felhasználó által kezelt kulcsok konfigurálása szolgáltatástitkosításhoz
+              items:
+                - name: Portál
+                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: PowerShell
+                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Hozzáférési jogosultságok felügyelete RBAC használatával
               items:
                 - name: Portál
                   href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: parancssori felület
-                  href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: PowerShell
                   href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Fájl- és könyvtárszintű tulajdonságok beállítása
               href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
         - name: Integráció az Azure-szolgáltatásokkal

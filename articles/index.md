@@ -6,12 +6,12 @@ description: Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmaz
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: b9234814404194364f775add87f865170747220a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 73dda32c3f5f89a8b3e7465fbfdde28cb0ad2d6f
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61471066"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020824"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -434,6 +434,12 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                             <a href="/azure/cyclecloud/">
                                                 <img src="media/index/logo_cyclecloud.svg" alt="" />
                                                 <p>CycleCloud</p>
+                                            </a>
+                                        </li>
+<li>
+                                            <a href="/azure/vmware-cloudsimple/">
+                                                <img src="media/index/cs_dedicatedcloudnode.svg" alt="" />
+                                                <p>A CloudSimple Azure VMware-megoldása</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1018,6 +1024,12 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                                 <p>Bing Image Search API</p>
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="/azure/open-datasets">
+                                                <img src="https://docs.microsoft.com/media/common/i_data-collection.svg" alt="" />
+                                                <p>Nyílt adathalmazok</p>
+                                            </a>
+                                        </li>
                                     </ul>
                                     <h3>Migrálás</h3>
                                     <ul>
@@ -1254,6 +1266,12 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                                 <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
                                                 <p>1. generációs Data Lake Storage</p>
                                             </a>
+                                        </li>
+                                        <li>
+                                        <a href="/azure/open-datasets">
+                                            <img src="https://docs.microsoft.com/media/common/i_data-collection.svg" alt="" />
+                                            <p>Nyílt adathalmazok</p>
+                                        </a>
                                         </li>
                                     </ul>
                                     <h3>DevOps</h3>
@@ -2076,6 +2094,25 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                     </div>
                                 </a>
                             </li>
+<li>
+                                <a href="/azure/vmware-cloudsimple/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/cs_dedicatedcloudnode.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>A CloudSimple Azure VMware-megoldása</h3>
+                                                    <p>A VMware platform futtatása az Azure-ban</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -2421,7 +2458,7 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>1. generációs Data Lake Storage</h3>
-                                                    <p>Nagy kapacitású adattár a big data koncepción alapuló adatelemzési célokra</p>
+                                                    <p>Rugalmas skálázású adattár a big data koncepción alapuló adatelemzési célokra</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3605,7 +3642,26 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>1. generációs Data Lake Storage</h3>
-                                                    <p>Nagy kapacitású adattár a big data koncepción alapuló adatelemzési célokra</p>
+                                                    <p>Rugalmas skálázású adattár a big data koncepción alapuló adatelemzési célokra</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/open-datasets">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="https://docs.microsoft.com/media/common/i_data-collection.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Nyílt adathalmazok</h3>
+                                                    <p>Válogatott nyilvános adathalmazok a gépi tanulási modellek teljesítményének növeléséhez</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3785,6 +3841,25 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                                 <div class="cardText">
                                                     <h3>Azure Search</h3>
                                                     <p>Teljes körűen felügyelt keresőszolgáltatás</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/open-datasets">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="https://docs.microsoft.com/media/common/i_data-collection.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Nyílt adathalmazok</h3>
+                                                    <p>Válogatott nyilvános adathalmazok a gépi tanulási modellek teljesítményének növeléséhez</p>
                                                 </div>
                                             </div>
                                         </div>

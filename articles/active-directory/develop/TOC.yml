@@ -14,20 +14,14 @@
         - name: Alkalmazás konfigurálása
           items:
             - name: Alkalmazás regisztrálása
-              href: quickstart-v1-add-azure-ad-app.md
-            - name: Alkalmazás frissítése
-              href: quickstart-v1-update-azure-ad-app.md
-            - name: Alkalmazás eltávolítása
-              href: quickstart-v1-remove-azure-ad-app.md
-            - name: Alkalmazás regisztrálása (előzetes verzió)
               href: quickstart-register-app.md
-            - name: Alkalmazás konfigurálása webes API-k elérésére (előzetes verzió)
+            - name: Alkalmazás konfigurálása webes API-k elérésére
               href: quickstart-configure-app-access-web-apis.md
-            - name: Alkalmazás konfigurálása webes API-k felfedésére (előzetes verzió)
+            - name: Alkalmazás konfigurálása webes API-k felfedésére
               href: quickstart-configure-app-expose-web-apis.md
-            - name: Alkalmazás által támogatott fiókok módosítása (előzetes verzió)
+            - name: Alkalmazás által támogatott fiókok módosítása
               href: quickstart-modify-supported-accounts.md
-            - name: Alkalmazás eltávolítása (előzetes verzió)
+            - name: Alkalmazás eltávolítása
               href: quickstart-remove-app.md
         - name: Egyoldalas alkalmazások
           items:
@@ -243,20 +237,14 @@
         - name: Alkalmazás konfigurálása
           items:
             - name: Alkalmazás regisztrálása
-              href: quickstart-v2-register-an-app.md
-            - name: Alkalmazás frissítése
-              href: quickstart-v1-update-azure-ad-app.md
-            - name: Alkalmazás eltávolítása
-              href: quickstart-v1-remove-azure-ad-app.md
-            - name: Alkalmazás regisztrálása (előzetes verzió)
               href: quickstart-register-app.md
-            - name: Alkalmazás konfigurálása webes API-k elérésére (előzetes verzió)
+            - name: Alkalmazás konfigurálása webes API-k elérésére
               href: quickstart-configure-app-access-web-apis.md
-            - name: Alkalmazás konfigurálása webes API-k felfedésére (előzetes verzió)
+            - name: Alkalmazás konfigurálása webes API-k felfedésére
               href: quickstart-configure-app-expose-web-apis.md
-            - name: Alkalmazás által támogatott fiókok módosítása (előzetes verzió)
+            - name: Alkalmazás által támogatott fiókok módosítása
               href: quickstart-modify-supported-accounts.md
-            - name: Alkalmazás eltávolítása (előzetes verzió)
+            - name: Alkalmazás eltávolítása
               href: quickstart-remove-app.md
         - name: Egyoldalas alkalmazások
           items:
@@ -350,6 +338,8 @@
               href: active-directory-certificate-credentials.md
         - name: Alkalmazáskonfiguráció
           items:
+            - name: Alkalmazásregisztrációk – képzési útmutató
+              href: app-registrations-training-guide.md
             - name: Alkalmazások és szolgáltatásnevek
               href: app-objects-and-service-principals.md
             - name: Egybérlős és több-bérlős alkalmazások

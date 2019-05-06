@@ -44,6 +44,18 @@
       href: delegated-access-virtual-desktop.md
     - name: Gazdagépcsoport terheléselosztási módszerei
       href: host-pool-load-balancing.md
+- name: Hibaelhárítás
+  items:
+    - name: 'Hibaelhárítási áttekintés, visszajelzés és támogatás'
+      href: troubleshoot-set-up-overview.md
+    - name: Bérlői és gazdagépcsoport létrehozása
+      href: troubleshoot-set-up-issues.md
+    - name: Munkamenetgazda virtuális gép konfigurációja
+      href: troubleshoot-vm-configuration.md
+    - name: Távoli asztali ügyfélkapcsolatok
+      href: troubleshoot-client-connection.md
+    - name: Windows Virtual Desktop – PowerShell
+      href: troubleshoot-powershell.md
 - name: Referencia
   items:
     - name: PowerShell

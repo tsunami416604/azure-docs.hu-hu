@@ -56,6 +56,8 @@
           href: active-directory-b2c-overview-custom.md
         - name: Felhasználói hozzáférés
           href: manage-user-access.md
+    - name: JavaScript és oldalszerződések
+      href: user-flow-javascript-overview.md
     - name: OAuth 2.0
       href: active-directory-b2c-reference-oauth-code.md
     - name: OpenId Connect
@@ -70,8 +72,6 @@
       href: manage-user-data.md
     - name: Felhasználói folyamatok
       href: active-directory-b2c-reference-policies.md
-    - name: Felhasználói folyamatok JavaScripttel
-      href: user-flow-javascript-overview.md
     - name: Felhasználói felület testreszabása
       href: customize-ui-overview.md
 - name: Útmutatók

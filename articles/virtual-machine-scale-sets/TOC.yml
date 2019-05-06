@@ -152,6 +152,8 @@
         - name: vCPU-kvóták
           href: ../virtual-machines/windows/quotas.md
           maintainContext: true
+    - name: Méretezési csoport – gyakran ismételt kérdések
+      href: virtual-machine-scale-sets-faq.md
 - name: Útmutató
   items:
     - name: Tervezés és kialakítás
@@ -183,6 +185,9 @@
               href: virtual-machine-scale-sets-autoscale-portal.md
             - name: Automatikus méretezés haladó szinten
               href: ../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md
+              maintainContext: true
+            - name: Az automatikus méretezés hibáinak elhárítása
+              href: virtual-machine-scale-sets-troubleshoot.md
         - name: Méretezésicsoport-alkalmazások
           href: virtual-machine-scale-sets-deploy-app.md
         - name: Méretezésicsoport-bővítmények
@@ -199,6 +204,9 @@
               href: virtual-machine-scale-sets-encrypt-disks-ps.md
             - name: Az Azure parancssori felületének használata
               href: virtual-machine-scale-sets-encrypt-disks-cli.md
+            - name: Lemeztitkosítás a bővítmények végrehajtási sorrendbe helyezésével
+              href: ../security/azure-security-disk-encryption-extension-sequencing.md
+              maintainContext: true
         - name: Nagyméretű méretezési csoportokkal végzett munka
           href: virtual-machine-scale-sets-placement-groups.md
         - name: Méretezési csoport sablonjának konvertálása felügyelt lemez használatához
@@ -247,14 +255,6 @@
         - name: Méretezési csoport automatikus méretezése
           href: /azure/ansible/ansible-auto-scale-vmss
           maintainContext: true
-    - name: Hibaelhárítás
-      items:
-        - name: Automatikus méretezés
-          href: virtual-machine-scale-sets-troubleshoot.md
-    - name: GYIK
-      items:
-        - name: Méretezési csoport – gyakran ismételt kérdések
-          href: virtual-machine-scale-sets-faq.md
 - name: Referencia
   items:
     - name: Azure PowerShell

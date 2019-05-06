@@ -45,14 +45,22 @@
           href: Tutorials/FaceAPIinCSharpTutorial.md
         - name: Android
           href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
+- name: Alapelvek
+  items:
+    - name: Arcfelismerés
+      href: concepts/face-detection.md
+    - name: Arcfelismerés
+      href: concepts/face-recognition.md
 - name: Útmutatók
   items:
     - name: Arcfelismerés
       href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
-    - name: Arcazonosítás
+    - name: Arcok azonosítása
       href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
     - name: Arcok hozzáadása
       href: Face-API-How-to-Topics/how-to-add-faces.md
+    - name: Téglalap elforgatása HeadPose használatával
+      href: Face-API-How-to-Topics/how-to-use-headpose.md
     - name: Arcfelismerési modell megadása
       href: Face-API-How-to-Topics/specify-recognition-model.md
     - name: A nagy léptékű funkció használata
@@ -69,10 +77,6 @@
           href: face-resource-container-config.md
     - name: Face API csatlakoztatott szolgáltatás használata
       href: vs-face-connected-service.md
-- name: Példák
-  items:
-    - name: Kódminták
-      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face'
 - name: Referencia
   items:
     - name: Face API
@@ -93,10 +97,10 @@
           href: 'https://github.com/Microsoft/Cognitive-Face-iOS'
 - name: További források
   items:
-    - name: Szószedet
-      href: Glossary.md
-    - name: GYIK
-      href: FAQ.md
+    - name: Példák
+      items:
+        - name: Face API-minták
+          href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face'
     - name: Díjszabás és korlátok
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
     - name: UserVoice

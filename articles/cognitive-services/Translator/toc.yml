@@ -228,6 +228,8 @@
           href: custom-translator/how-to-manage-settings.md
         - name: Migrálás a hubról
           href: custom-translator/how-to-migrate.md
+        - name: Nem támogatott nyelvű környezetek
+          href: custom-translator/unsupported-language-deployments.md
     - name: További források
       items:
         - name: Nyelvi támogatás

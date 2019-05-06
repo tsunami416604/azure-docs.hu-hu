@@ -133,26 +133,22 @@
       items:
         - name: Mi az az Ipari IoT?
           href: overview-iot-industrial.md
-        - name: OPC-iker
-          items:
-            - name: Mi az az OPC-iker?
-              href: overview-opc-twin.md
-            - name: OPC-ikerarchitektúra
-              href: overview-opc-twin-architecture.md
-        - name: OPC-tároló
-          items:
-            - name: Mi az az OPC-tároló?
-              href: overview-opc-vault.md
-        - name: Csatlakoztatott gyár
-          items:
-            - name: Csatlakoztatott gyár – Áttekintés
-              href: iot-accelerators-connected-factory-features.md
-            - name: Csatlakoztatott gyár – Architektúra
-              href: iot-accelerators-connected-factory-sample-walkthrough.md
+        - name: Mi az az OPC-iker?
+          href: overview-opc-twin.md
+        - name: Mi az az OPC-tároló?
+          href: overview-opc-vault.md
+        - name: Mi az a csatlakoztatott gyár?
+          href: iot-accelerators-connected-factory-features.md
     - name: Gyors útmutatók
       items:
         - name: Csatlakoztatottgyár-megoldás kipróbálása
           href: quickstart-connected-factory-deploy.md
+    - name: Alapelvek
+      items:
+        - name: OPC-ikerarchitektúra
+          href: overview-opc-twin-architecture.md
+        - name: Csatlakoztatott gyár – Architektúra
+          href: iot-accelerators-connected-factory-sample-walkthrough.md
     - name: Útmutatók
       items:
         - name: Csatlakoztatott gyár

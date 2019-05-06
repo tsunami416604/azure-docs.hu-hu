@@ -13,28 +13,44 @@
       href: quickstart.md
 - name: Oktatóanyagok
   items:
-    - name: Adatok szűrése az Azure Functions segítségével
-      href: tutorial-deploy-function.md
-    - name: Átlagértékek keresése az ASA segítségével
-      href: tutorial-deploy-stream-analytics.md
-    - name: Adatok pontozása az Azure Machine Learning Service-szel
-      href: tutorial-deploy-machine-learning.md
-    - name: Képek besorolása a Custom Vision használatával
-      href: tutorial-deploy-custom-vision.md
-    - name: Adatok helyi tárolása az SQL-lel
-      href: tutorial-store-data-sql-server.md
-    - name: Egyéni kódmodulok fejlesztése
+    - name: 1. Fejlesztési környezet beállítása
+      items:
+        - name: Fejlesztés Linux-eszközökhöz
+          href: tutorial-develop-for-linux.md
+        - name: Fejlesztés Windows-eszközökhöz
+          href: tutorial-develop-for-windows.md
+    - name: 2. Egyéni kódmodulok fejlesztése
       items:
         - name: 'C#'
-          href: tutorial-csharp-module.md
-        - name: Python
-          href: tutorial-python-module.md
-        - name: Node.js
-          href: tutorial-node-module.md
+          items:
+            - name: C-modulok Linux-eszközökhöz
+              href: tutorial-c-module.md
+            - name: C-modulok Windows-eszközökhöz
+              href: tutorial-c-module-windows.md
+        - name: 'C#'
+          items:
+            - name: 'C#-modulok Linux-eszközökhöz'
+              href: tutorial-csharp-module.md
+            - name: 'C#-modulok Windows-eszközökhöz'
+              href: tutorial-csharp-module-windows.md
         - name: Java
           href: tutorial-java-module.md
-        - name: 'C#'
-          href: tutorial-c-module.md
+        - name: Node.js
+          href: tutorial-node-module.md
+        - name: Python
+          href: tutorial-python-module.md
+    - name: 3. Azure-szolgáltatások üzembe helyezése modulokként
+      items:
+        - name: Adatok szűrése az Azure Functions segítségével
+          href: tutorial-deploy-function.md
+        - name: Átlagértékek keresése az ASA segítségével
+          href: tutorial-deploy-stream-analytics.md
+        - name: Adatok pontozása az Azure Machine Learning Service-szel
+          href: tutorial-deploy-machine-learning.md
+        - name: Képek besorolása a Custom Vision használatával
+          href: tutorial-deploy-custom-vision.md
+        - name: Adatok helyi tárolása az SQL-lel
+          href: tutorial-store-data-sql-server.md
 - name: Alapelvek
   items:
     - name: IoT Edge-futtatókörnyezet

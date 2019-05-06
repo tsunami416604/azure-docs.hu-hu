@@ -186,7 +186,7 @@
           href: how-to-connect-configure-ad-ds-connector-account.md
         - name: Az Azure AD Sync-szolgáltatásfiók jelszavának módosítása
           href: how-to-connect-sync-change-serviceacct-pass.md
-        - name: Az Azure AD Connector-fiók módosítása
+        - name: Az Azure AD Connector-fiók jelszavának módosítása
           href: how-to-connect-azureadaccount.md
         - name: Az AD DS Connector-fiók jelszavának módosítása
           href: how-to-connect-sync-change-addsacct-pass.md

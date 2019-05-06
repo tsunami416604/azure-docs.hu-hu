@@ -47,7 +47,7 @@
       items:
         - name: Áttekintés
           href: encoding-concept.md
-          displayName: Presets
+          displayName: 'encoding, presets, jobs, adaptive, bitrate'
         - name: Átalakítások és feladatok
           href: transforms-jobs-concept.md
         - name: Media Encoder Standard-formátumok
@@ -56,14 +56,19 @@
         - name: Adaptív sávszélességi skála automatikus létrehozása
           href: autogen-bitrate-ladder.md
         - name: Tartalomfüggő kódolás
+          displayName: 'content, aware, cae'
           href: cae-experimental.md
+        - name: Feladathibakódok
+          href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
     - name: Media analytics (Médiaelemzés)
       items:
         - name: Áttekintés
           href: analyzing-video-audio-files-concept.md
-          displayName: Presets
+          displayName: 'analyzing, presets, jobs'
         - name: Átalakítások és feladatok
           href: transforms-jobs-concept.md
+        - name: Feladathibakódok
+          href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
     - name: 'Csomagolás, teljesítés, védelem'
       items:
         - name: Csomagolás
@@ -100,6 +105,8 @@
           href: streaming-policy-concept.md
         - name: Tartalomkulcsszabályok
           href: content-key-policy-concept.md
+        - name: Eredeti hibakódok
+          href: origin-error-codes.md
     - name: Live streaming (Élő adatfolyam)
       items:
         - name: Áttekintés
@@ -138,6 +145,12 @@
           href: entities-overview.md
         - name: RBAC
           href: rbac-overview.md
+        - name: Hibakódok
+          items:
+            - name: Eredeti hibakódok
+              href: origin-error-codes.md
+            - name: Feladathibakódok
+              href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
     - name: Útmutatás a 2-esről a 3-as verzióra való migráláshoz
       href: migrate-from-v2-to-v3.md
 - name: Útmutatók
@@ -240,6 +253,12 @@
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.media/allversions
+    - name: Hibakódok
+      items:
+        - name: Eredeti hibakódok
+          href: origin-error-codes.md
+        - name: Feladathibakódok
+          href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
 - name: További források
   items:
     - name: Azure Media Services-közösség

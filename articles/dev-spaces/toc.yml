@@ -4,6 +4,8 @@
       href: index.yml
     - name: Gyors útmutatók
       items:
+        - name: Csoportos fejlesztés
+          href: quickstart-team-development.md
         - name: Java (VS Code és CLI)
           href: quickstart-java.md
         - name: .NET Core (VS Code és parancssori felület)

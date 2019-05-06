@@ -60,16 +60,22 @@
     - name: Az adatbetöltés áttekintése
       displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
       href: ingest-data-overview.md
-    - name: Idősorozat-elemzések
-      href: time-series-analysis.md
 - name: Útmutatók
   items:
     - name: Első lépések
       items:
-        - name: Lekérdezések írása
-          href: write-queries.md
         - name: Mintaadatok betöltése
           href: ingest-sample-data.md
+    - name: Adatok lekérdezése
+      items:
+        - name: Lekérdezések írása
+          href: write-queries.md
+        - name: Idősorozat-elemzések
+          href: time-series-analysis.md
+        - name: Anomáliadetektálás és -előrejelzés
+          href: anomaly-detection.md
+        - name: Gépi tanulás
+          href: machine-learning-clustering.md
     - name: Kezelés
       items:
         - name: Adatbázis-engedélyek kezelése
@@ -90,6 +96,8 @@
           href: using-metrics.md
     - name: Más eszközök használata
       items:
+        - name: Apache Spark-összekötő
+          href: spark-connector.md
         - name: Csatlakozás Databricksből Python használatával
           href: connect-from-databricks.md
         - name: Adatok elemzése Jupyter notebookokban és Kqlmagicben

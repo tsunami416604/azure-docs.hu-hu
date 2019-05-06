@@ -49,6 +49,8 @@
       href: batch-pool-vm-sizes.md
     - name: Magas rendelkezésre állás és vészhelyreállítás
       href: high-availability-disaster-recovery.md
+    - name: Feladat-futtatókörnyezet környezeti változói
+      href: batch-compute-node-environment-variables.md
 - name: Útmutatók
   items:
     - name: Batch-fiókok kezelése
@@ -199,8 +201,6 @@
           href: batch-task-complete-event.md
         - name: Tevékenység meghiúsult esemény
           href: batch-task-fail-event.md
-    - name: Batch számítási csomópont környezeti változói
-      href: batch-compute-node-environment-variables.md
 - name: További források
   items:
     - name: Azure-ütemterv

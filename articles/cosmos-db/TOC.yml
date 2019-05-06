@@ -143,17 +143,6 @@
             - name: Indexelési szabályzatok
               displayName: 'consistent, none'
               href: index-policy.md
-        - name: Csatorna módosítása
-          items:
-            - name: Áttekintés
-              href: change-feed.md
-            - name: Változáscsatorna olvasása
-              href: read-change-feed.md
-            - name: Változáscsatorna feldolgozója
-              href: change-feed-processor.md
-            - name: Az Azure Functions aktiválása
-              displayName: change feed
-              href: change-feed-functions.md
         - name: Élettartam
           displayName: 'delete, delete data, ttl'
           href: time-to-live.md
@@ -498,6 +487,9 @@
           href: data-explorer.md
         - name: Indexelési szabályzatok kezelése
           href: how-to-manage-indexing-policy.md
+        - name: Példák SQL-segédlekérdezésekre
+          displayName: 'subquery, exists'
+          href: how-to-sql-subquery.md
     - name: Változáscsatorna
       items:
         - name: Több Azure Cosmos DB-eseményindító

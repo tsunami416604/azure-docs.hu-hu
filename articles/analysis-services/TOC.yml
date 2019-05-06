@@ -70,41 +70,10 @@
           href: analysis-services-deploy.md
         - name: Frissítés a REST API-val
           href: analysis-services-async-refresh.md
-        - name: Adatmodellezés a Visual Studióban – útmutató az Adventure Workshöz (1400)
-          href: tutorials/aas-adventure-works-tutorial.md
-          items:
-            - name: 1 – Táblázatos modellprojekt létrehozása
-              href: tutorials/aas-lesson-1-create-a-new-tabular-model-project.md
-            - name: 2 – Az adatok beszerzése
-              href: tutorials/aas-lesson-2-get-data.md
-            - name: 3 – Megjelölés dátumtáblaként
-              href: tutorials/aas-lesson-3-mark-as-date-table.md
-            - name: 4 – Kapcsolatok létrehozása
-              href: tutorials/aas-lesson-4-create-relationships.md
-            - name: 5 – Számított oszlopok létrehozása
-              href: tutorials/aas-lesson-5-create-calculated-columns.md
-            - name: 6 – Mértékek létrehozása
-              href: tutorials/aas-lesson-6-create-measures.md
-            - name: 7 – Fő teljesítménymutatók létrehozása
-              href: tutorials/aas-lesson-7-create-key-performance-indicators.md
-            - name: 8 – Perspektívák létrehozása
-              href: tutorials/aas-lesson-8-create-perspectives.md
-            - name: 9 – Hierarchiák létrehozása
-              href: tutorials/aas-lesson-9-create-hierarchies.md
-            - name: 10 – Partíciók létrehozása
-              href: tutorials/aas-lesson-10-create-partitions.md
-            - name: 11 – Szerepkörök létrehozása
-              href: tutorials/aas-lesson-11-create-roles.md
-            - name: 12 – Elemzés az Excelben
-              href: tutorials/aas-lesson-12-analyze-in-excel.md
-            - name: 13 – Üzembe helyezés
-              href: tutorials/aas-lesson-13-deploy.md
-            - name: Kiegészítő lecke – Részletsorok
-              href: tutorials/aas-supplemental-lesson-detail-rows.md
-            - name: Kiegészítő lecke – Dinamikus biztonság
-              href: tutorials/aas-supplemental-lesson-dynamic-security.md
-            - name: Kiegészítő lecke – Hézagos hierarchiák
-              href: tutorials/aas-supplemental-lesson-ragged-hierarchies.md
+        - name: Frissítés a Logic Apps használatával
+          href: analysis-services-refresh-logic-app.md
+        - name: Frissítés az Azure Automationnel
+          href: analysis-services-refresh-azure-automation.md
     - name: Biztonság
       items:
         - name: Adatbázis-felhasználók kezelése

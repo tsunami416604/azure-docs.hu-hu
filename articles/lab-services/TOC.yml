@@ -107,7 +107,7 @@
               href: image-factory-save-distribute-custom-images.md
             - name: Adatmegőrzési szabályzat beállítása és tisztítószkript futtatása
               href: image-factory-set-retention-policy-cleanup.md
-        - name: A vállalat DevTest Labs-infrastruktúrájának kialakítása
+        - name: Vállalati DevTest Labs
           href: devtest-lab-guidance-prescriptive-adoption.md
           items:
             - name: Referenciaarchitektúra

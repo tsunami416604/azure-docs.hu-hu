@@ -22,8 +22,12 @@
       href: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
     - name: MySQL online migrálása a MySQL-hez készült Azure DB-be
       href: tutorial-mysql-azure-mysql-online.md
+    - name: RDS MySQL online migrálása az Azure DB for MySQL-be
+      href: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
     - name: PostgreSQL online migrálása a PostgreSQL-hez készült Azure DB-be
       href: tutorial-postgresql-azure-postgresql-online.md
+    - name: RDS PostgreSQL online migrálása az Azure DB for PostgreSQL-be
+      href: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
     - name: MongoDB offline migrálása az Azure Cosmos DB Mongo API-ba
       href: tutorial-mongodb-cosmos-db.md
     - name: MongoDB online migrálása az Azure Cosmos DB Mongo API-ba

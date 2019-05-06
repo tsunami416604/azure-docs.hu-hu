@@ -68,6 +68,8 @@
       href: resource-group-delete.md
     - name: A Resource Manager-alapú és a klasszikus üzemi modell
       href: resource-manager-deployment-model.md
+    - name: Gyakori Azure-beli biztonsági attribútumok
+      href: azure-resource-manager-security-attributes.md
 - name: Útmutató
   items:
     - name: Sablonok létrehozása
@@ -225,6 +227,8 @@
           href: move-support-resources.md
         - name: Címketámogatás
           href: tag-support.md
+    - name: Erőforrás-szolgáltatók szolgáltatás alapján
+      href: azure-services-resource-providers.md
     - name: REST – Resource Manager
       href: /rest/api/resources/
     - name: REST – Deployment Manager

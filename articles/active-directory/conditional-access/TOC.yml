@@ -40,10 +40,10 @@
       href: best-practices.md
     - name: Régi hitelesítési folyamat letiltása
       href: block-legacy-authentication.md
-    - name: Az Exchange Online-hoz és a SharePoint Online-hoz való hozzáférés vezérlése
-      href: conditional-access-for-exo-and-spo.md
     - name: Klasszikus szabályzatok migrálása
       href: policy-migration.md
+    - name: Bejelentkezési gyakoriság és a böngésző adatmegőrzési vezérlői
+      href: howto-conditional-access-session-lifetime.md
     - name: Jóváhagyott ügyfélalkalmazások megkövetelése
       href: app-based-conditional-access.md
     - name: Alkalmazásvédelmi szabályzat megkövetelése

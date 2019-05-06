@@ -2,8 +2,8 @@
 documentType: LandingData
 title: Azure Data Box-dokumentáció – Online adatátvitel
 metadata:
-  title: Azure Data Box-dokumentáció – Online adatátvitel
-  description: 'A Data Box-eszközöket hálózaton keresztüli nagy teljesítményű adatátvitelhez használhatja, amellyel gyorsan, olcsón és megbízható módon vihet át adatokat az Azure-ba.'
+  title: A Data Box Gateway és a Data Box Edge dokumentációja az Azure-ba történő hálózati adatátvitelhez
+  description: 'A Data Box Edge-et és a Data Box Gatewayt hálózaton keresztüli nagy teljesítményű adatátvitelhez használhatja, amellyel gyorsan, olcsón és megbízható módon vihet át adatokat az Azure-ba.'
   services: databox
   author: alkohli
   manager: twooley
@@ -13,7 +13,7 @@ metadata:
   ms.date: 03/25/2019
   ms.author: alkohli
 abstract:
-  description: 'Az Azure Data Box termékcsaláddal gyorsan, olcsón és megbízható módon vihet át több száz terabájtnyi adatot az Azure-ba. A Data Box-eszközöket hálózaton keresztüli nagy teljesítményű adatátvitelhez használhatja.<p>A Data Box Gateway használatával elküldheti az adatokat a felhőben történő archiválásra, vészhelyreállításra vagy felhőszintű feldolgozásra.  A Data Box Edge használatával szűrheti, elemezheti és átalakíthatja az adatokat az Azure-ba való átvitelük során.</p><p>Útmutatóinkból megismerheti, hogyan használhatja a Data Box Gateway és a Data Box Edge szolgáltatást hálózatalapú adatátvitelhez.</p>'
+  description: 'Az Azure Data Box termékcsaláddal gyorsan, olcsón és megbízható módon vihet át több száz terabájtnyi adatot az Azure-ba. A Data Box Edge- és Data Box Gateway-eszközöket hálózaton keresztüli nagy teljesítményű adatátvitelhez használhatja.<p>A Data Box Gateway használatával elküldheti az adatokat a felhőben történő archiválásra, vészhelyreállításra vagy felhőszintű feldolgozásra.  A Data Box Edge használatával szűrheti, elemezheti és átalakíthatja az adatokat az Azure-ba való átvitelük során.</p><p>Útmutatóinkból megismerheti, hogyan használhatja a Data Box Gateway és a Data Box Edge szolgáltatást hálózatalapú adatátvitelhez.</p>'
 sections:
   - title: Oktatóanyagok
     items:

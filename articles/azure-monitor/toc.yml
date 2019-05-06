@@ -129,6 +129,8 @@
           href: platform/activity-log-alerts.md
         - name: Gyakori riasztási séma
           href: platform/alerts-common-schema.md
+        - name: Műveletszabályok
+          href: platform/alerts-action-rules.md
     - name: Adatok vizualizációja
       href: visualizations.md
     - name: Partnerintegrációk
@@ -309,6 +311,29 @@
                   href: app/asp-net.md
                 - name: Állapotmonitor
                   href: app/monitor-performance-live-website-now.md
+                - name: Állapotmonitor v2
+                  href: app/status-monitor-v2-overview.md
+                  items:
+                    - name: Első lépések
+                      href: app/status-monitor-v2-get-started.md
+                    - name: Részletes utasítások
+                      href: app/status-monitor-v2-detailed-instructions.md
+                    - name: Hibaelhárítás és ismert problémák
+                      href: app/status-monitor-v2-troubleshoot.md
+                    - name: API Disable-InstrumentationEngine
+                      href: app/status-monitor-v2-api-disable-instrumentation-engine.md
+                    - name: API Disable-ApplicationInsightsMonitoring
+                      href: app/status-monitor-v2-api-disable-monitoring.md
+                    - name: API Enable-InstrumentationEngine
+                      href: app/status-monitor-v2-api-enable-instrumentation-engine.md
+                    - name: API Enable-ApplicationInsightsMonitoring
+                      href: app/status-monitor-v2-api-enable-monitoring.md
+                    - name: API Get-ApplicationInsightsMonitoringConfig
+                      href: app/status-monitor-v2-api-get-config.md
+                    - name: API Get-ApplicationInsightsMonitoringStatus
+                      href: app/status-monitor-v2-api-get-status.md
+                    - name: API Set-ApplicationInsightsMonitoringConfig
+                      href: app/status-monitor-v2-api-set-config.md
                 - name: Windows-szolgáltatások
                   href: app/windows-services.md
                 - name: Asztali Windows
@@ -560,6 +585,8 @@
               href: insights/containers.md
             - name: Docker-alkalmazások monitorozása
               href: app/docker.md
+            - name: Application Insights for Kubernetes
+              href: app/kubernetes.md
         - name: Erőforráscsoportok monitorozása
           href: insights/resource-group-insights.md
         - name: Adatbázisok monitorozása
@@ -684,6 +711,8 @@
               href: platform/metrics-charts.md
             - name: Példák metrikadiagramokra
               href: platform/metric-chart-samples.md
+            - name: Metrikadiagramok hibaelhárítása
+              href: platform/metrics-troubleshoot.md
         - name: Naplók
           items:
             - name: Naplólekérdezések

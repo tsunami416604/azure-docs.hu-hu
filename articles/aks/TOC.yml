@@ -7,10 +7,15 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: AKS-fürt létrehozása – parancssori felület
-      href: kubernetes-walkthrough.md
-    - name: AKS-fürt létrehozása – portál
-      href: kubernetes-walkthrough-portal.md
+    - name: AKS-fürt létrehozása
+      expanded: true
+      items:
+        - name: Az Azure parancssori felületének használata
+          href: kubernetes-walkthrough.md
+        - name: Az Azure Portal használata
+          href: kubernetes-walkthrough-portal.md
+        - name: Resource Manager-sablon használata
+          href: kubernetes-walkthrough-rm-template.md
     - name: Alkalmazások fejlesztése
       expanded: true
       items:
@@ -87,7 +92,7 @@
             - name: Podbiztonság
               href: developer-best-practices-pod-security.md
     - name: Kvóták és regionális korlátok
-      href: container-service-quotas.md
+      href: quotas-skus-regions.md
     - name: Migrálás ACS-ről AKS rendszerre
       href: acs-aks-migration.md
     - name: Támogatott Kubernetes-verzió

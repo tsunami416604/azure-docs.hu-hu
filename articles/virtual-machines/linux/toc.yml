@@ -25,7 +25,7 @@
       href: tutorial-custom-images.md
     - name: 5 – Magas rendelkezésre állású virtuális gépek
       href: tutorial-availability-sets.md
-    - name: 6 – Virtuálisgép-méretezési csoport létrehozása
+    - name: 6 – Méretezési csoport létrehozása
       href: tutorial-create-vmss.md
     - name: 7 – Virtuális gépek terheléselosztása
       href: tutorial-load-balancer.md
@@ -219,7 +219,7 @@
               href: ../../active-directory-domain-services/active-directory-ds-join-centos-linux-vm.md
             - name: Ubuntu
               href: ../../active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm.md
-        - name: Bejelentkezés az Azure Active Directory hitelesítő adatokkal
+        - name: Bejelentkezés Azure Active Directory hitelesítő adatokkal
           href: login-using-aad.md
         - name: Frissítések és javítások
           items:
@@ -259,6 +259,8 @@
               href: shared-image-galleries.md
             - name: Megosztott rendszerképek létrehozása a CLI-vel
               href: shared-images.md
+            - name: Portál
+              href: shared-images-portal.md
             - name: Megosztott rendszerképek hibaelhárítása
               href: troubleshooting-shared-images.md
         - name: Rendszerképek keresése és használata

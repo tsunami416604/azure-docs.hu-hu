@@ -25,7 +25,7 @@
       href: tutorial-custom-images.md
     - name: 5 – Magas rendelkezésre állású virtuális gépek
       href: tutorial-availability-sets.md
-    - name: 6 – Virtuálisgép-méretezési csoport létrehozása
+    - name: 6 – Méretezési csoport létrehozása
       href: tutorial-create-vmss.md
     - name: 7 – Virtuális gépek terheléselosztása
       href: tutorial-load-balancer.md
@@ -251,6 +251,8 @@
               href: shared-images.md
             - name: Megosztott rendszerképek létrehozása a CLI-vel
               href: ../linux/shared-images.md
+            - name: Portál
+              href: shared-images-portal.md
             - name: Megosztott rendszerképek hibaelhárítása
               href: troubleshooting-shared-images.md
         - name: Rendszerképek keresése és használata

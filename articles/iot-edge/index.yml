@@ -43,15 +43,13 @@ sections:
       - type: paragraph
         text: 'Megtudhatja, hogyan telepítheti és konfigurálhatja az IoT Edge-et, hogyan helyezhet üzembe modulokat, valamint hogyan használhatja a Stream Analyticset, a Custom Visiont és hasonló Azure-szolgáltatásokat a peremhálózaton.'
       - type: list
-        style: unordered
+        style: ordered
         items:
+          - html: 'Beállíthatja a fejlesztői gépet, és megismerheti az IoT Edge-modulok használatát <a href="/azure/iot-edge/tutorial-develop-for-linux">Linux-eszközök</a> vagy <a href="/azure/iot-edge/tutorial-develop-for-windows">Windows-eszközök</a> esetében.'
+          - html: 'Egyéni kódmodulokat fejleszthet Linux-eszközökhöz <a href="/azure/iot-edge/tutorial-c-module">C-</a>, <a href="/azure/iot-edge/tutorial-csharp-module">C#-</a>, <a href="/azure/iot-edge/tutorial-python-module">Python-</a>, <a href="/azure/iot-edge/tutorial-node-module">Node.js-</a> vagy <a href="/azure/iot-edge/tutorial-java-module">Java-</a>környezetben.'
+          - html: 'Egyéni kódmodulokat fejleszthet Windows-eszközökhöz <a href="/azure/iot-edge/tutorial-c-module-windows">C-</a> vagy <a href="/azure/iot-edge/tutorial-csharp-module-windows">C#-</a> környezetben.'
           - html: <a href="/azure/iot-edge/tutorial-deploy-function">Üzenetek szűrése az Azure Functions segítségével</a>
           - html: <a href="/azure/iot-edge/tutorial-deploy-stream-analytics">Átlagértékek keresése a modulként használt Azure Stream Analytics segítségével</a>
           - html: <a href="/azure/iot-edge/tutorial-deploy-machine-learning">Adatok pontozása a modulként használt Azure Machine Learninggel</a>
           - html: <a href="/azure/iot-edge/tutorial-deploy-custom-vision">Képek besorolása a modulként használt Custom Vision Service-szel</a>
-          - html: '<a href="/azure/iot-edge/tutorial-csharp-module">Adatok szűrése egy C#-modullal</a>'
-          - html: <a href="/azure/iot-edge/tutorial-python-module">Adatok szűrése egy Python-modullal</a>
-          - html: <a href="/azure/iot-edge/tutorial-node-module">Adatok szűrése egy Node.js-modullal</a>
-          - html: <a href="/azure/iot-edge/tutorial-java-module">Adatok szűrése Java-modullal</a>
-          - html: <a href="/azure/iot-edge/tutorial-c-module">Adatok szűrése C-modullal</a>
           - html: <a href="/azure/iot-edge/tutorial-store-data-sql-server">Adatok tárolása a peremhálózaton az SQL Serverrel</a>

@@ -95,7 +95,9 @@
           href: vmware-azure-common-questions.md
         - name: VMware-ről/fizikai eszközről Azure-ra – támogatási mátrix
           href: vmware-physical-azure-support-matrix.md
-        - name: A konfigurációs kiszolgáló üzembe helyezésének támogatási követelményei
+        - name: Tudnivalók a Site Recovery összetevőiről (konfigurációs/folyamat-/fő célkiszolgáló)
+          href: vmware-physical-azure-config-process-server-overview.md
+        - name: A konfigurációs és a folyamatkiszolgálók támogatási követelményei
           href: vmware-azure-configuration-server-requirements.md
         - name: VMware-ről Azure-ra architektúra
           href: vmware-azure-architecture.md
@@ -197,6 +199,8 @@
               items:
                 - name: Áttekintés és előfeltételek
                   href: site-recovery-deployment-planner.md
+                - name: A Deployment Planner verzióelőzményei
+                  href: site-recovery-deployment-planner-history.md
                 - name: A Deployment Planner eszköz futtatása
                   href: site-recovery-vmware-deployment-planner-run.md
                 - name: A létrehozott jelentés elemzése
@@ -319,6 +323,8 @@
               items:
                 - name: Áttekintés és előfeltételek
                   href: hyper-v-deployment-planner-overview.md
+                - name: A Deployment Planner verzióelőzményei
+                  href: site-recovery-deployment-planner-history.md
                 - name: A Deployment Planner eszköz futtatása
                   href: hyper-v-deployment-planner-run.md
                 - name: A létrehozott jelentés elemzése
@@ -425,10 +431,14 @@
           href: site-recovery-extension-troubleshoot.md
     - name: VMware/fizikai kiszolgáló
       items:
+        - name: Folyamatkiszolgálók monitorozása
+          href: vmware-physical-azure-monitor-process-server.md
         - name: A VMware-ből Azure-ba történő replikálás hibaelhárítása
           href: vmware-azure-troubleshoot-replication.md
         - name: A konfigurációs kiszolgáló hibáinak elhárítása
           href: vmware-azure-troubleshoot-configuration-server.md
+        - name: Folyamatkiszolgálók hibaelhárítása
+          href: vmware-physical-azure-troubleshoot-process-server.md
         - name: A mobilitási szolgáltatás VMware rendszerű virtuális gépekre/fizikai kiszolgálókra történő leküldéses telepítésének hibaelhárítása
           href: vmware-azure-troubleshoot-push-install.md
         - name: Az Azure-ba irányuló feladatátvétel hibaelhárítása

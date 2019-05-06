@@ -18,6 +18,10 @@
       items:
         - name: .NET
           href: storage-quickstart-queues-dotnet.md
+- name: Oktatóanyagok
+  items:
+    - name: Azure Storage-üzenetsorok használata
+      href: storage-tutorial-queues.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
 - name: Példák
   items:
     - name: .NET

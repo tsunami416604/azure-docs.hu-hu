@@ -19,6 +19,8 @@
       href: functions-create-first-java-maven.md
     - name: Függvény létrehozása – Python
       href: functions-create-first-function-python.md
+    - name: Függvény létrehozása – PowerShell
+      href: functions-create-first-function-powershell.md
     - name: Függvény létrehozása – Azure CLI
       href: functions-create-first-azure-function-azure-cli.md
     - name: Függvény létrehozása – portál
@@ -39,7 +41,9 @@
       items:
         - name: Azure Cosmos DB
           href: functions-integrate-store-unstructured-data-cosmosdb.md
-        - name: Storage
+        - name: Storage – Python
+          href: functions-add-output-binding-storage-queue-python.md
+        - name: Storage – portál
           href: functions-integrate-storage-queue-output-binding.md
 - name: Oktatóanyagok
   items:
@@ -100,6 +104,8 @@
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
+        - name: PowerShell
+          href: functions-reference-powershell.md
         - name: Python
           href: functions-reference-python.md
     - name: Diagnosztika
@@ -134,6 +140,8 @@
           href: functions-create-maven-eclipse.md
         - name: Linux-függvényalkalmazás létrehozása
           href: create-function-app-linux-app-service-plan.md
+        - name: Helyi PowerShell-függvények hibakeresése
+          href: functions-debug-powershell-local.md
         - name: Kapcsolatok kezelése
           href: manage-connections.md
         - name: Hibakezelés
@@ -148,6 +156,8 @@
       items:
         - name: Folyamatos üzembe helyezés
           href: functions-continuous-deployment.md
+        - name: Létrehozás és üzembe helyezés az Azure Pipelines használatával
+          href: functions-how-to-azure-devops.md
         - name: Üzembe helyezés zip-fájlokkal
           href: deployment-zip-push.md
         - name: Futtatás csomagból

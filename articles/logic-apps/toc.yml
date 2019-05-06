@@ -61,6 +61,8 @@
           href: logic-apps-scenario-function-sb-trigger.md
         - name: 'Logikai alkalmazások hívása, aktiválása vagy beágyazása'
           href: logic-apps-http-endpoint.md
+        - name: Tömeges adatlekérés tördeléssel
+          href: logic-apps-exceed-default-page-size-with-pagination.md
         - name: Kötegelt feldolgozási üzenetek
           href: logic-apps-batch-process-send-receive-messages.md
         - name: JSON-definíciók készítése
@@ -103,11 +105,8 @@
           href: logic-apps-enterprise-integration-b2b.md
         - name: AS2-üzenetek váltása
           href: logic-apps-enterprise-integration-as2.md
-          items:
-            - name: AS2-kódolás
-              href: logic-apps-enterprise-integration-as2-encode.md
-            - name: AS2-dekódolás
-              href: logic-apps-enterprise-integration-as2-decode.md
+        - name: AS2-üzenetek beállításai
+          href: logic-apps-enterprise-integration-as2-message-settings.md
         - name: EDIFACT-üzenetek váltása
           href: logic-apps-enterprise-integration-edifact.md
           items:

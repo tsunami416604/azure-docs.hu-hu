@@ -42,7 +42,7 @@
           href: render-coverage.md
         - name: Útválasztási lefedettség
           href: routing-coverage.md
-    - name: Támogatott nyelvek
+    - name: Honosítási támogatás
       href: supported-languages.md
     - name: Támogatott térképstílusok
       href: supported-map-styles.md
@@ -74,11 +74,11 @@
       items:
         - name: Térképvezérlő
           items:
-            - name: A térkép vezérlőelem használata
+            - name: A webes térképvezérlő használatának első lépései
               href: how-to-use-map-control.md
             - name: Térkép létrehozása
               href: map-create.md
-            - name: Térképstílus kiválasztása
+            - name: Térkép stílusának módosítása
               href: choose-map-style.md
             - name: Vezérlőelemek hozzáadása a térképhez
               href: map-add-controls.md
@@ -120,8 +120,14 @@
               href: map-route.md
     - name: Fejlesztés az Android SDK-val
       items:
-        - name: Android-térképvezérlőelemek használata
+        - name: Az androidos térképvezérlő használatának első lépései
           href: how-to-use-android-map-control-library.md
+        - name: Szimbólumréteg hozzáadása
+          href: how-to-add-symbol-to-android-map.md
+        - name: Alakzatok hozzáadása
+          href: how-to-add-shapes-to-android-map.md
+        - name: A térkép stílusának módosítása
+          href: set-android-map-styles.md
 - name: Referencia
   items:
     - name: API- és paraméterbővítmények
