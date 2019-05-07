@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 768179f8569eac14166bcbb0a888e1cdbe41d497
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: b97fe5d638b5967f533e489a67d4235bbc5a3db1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128415"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65198578"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása az Azure-beli virtuális hálózathoz
 Ez a dokumentum ismerteti az Azure App Service virtuális hálózat integrációja, és bemutatja, hogyan állíthatja be az Apps [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure virtuális hálózatok] [ VNETOverview] (Vnetek) lehetővé teszi számos, az Azure-erőforrások nem internetes routeable hálózati helyezni. Ezek a hálózatok csatlakozhat a helyszíni hálózatot VPN-technológiák segítségével. 
@@ -271,9 +271,9 @@ Az új verzió előzetes verzióban érhető el, és a következő jellemzőkkel
 * Az ExpressRoute-kapcsolatok között hozzáférhetnek erőforrásokhoz, az ExpressRoute integrálása mellett további konfiguráció csatlakoztatott virtuális hálózat nélkül.
 * Az alkalmazás és a virtuális hálózat ugyanabban a régióban kell lennie
 * Az új szolgáltatáshoz a Resource Manager virtuális hálózatban található egy nem használt alhálózat.
+* Az alkalmazás egy Azure App Service-környezet, amely képes a prémium v2 vertikális felskálázása kell lennie.
 * Az App Service-csomag a Standard, prémium szintű vagy PremiumV2 terv kell lennie.
 * Éles számítási feladatok nem támogatottak az új funkciót, bár előzetes verzióban érhető el
-* Az alkalmazás egy Azure App Service-környezet, amely képes a prémium v2 vertikális felskálázása kell lennie.
 * Az új VNet-integráció szolgáltatás nem működik az alkalmazások App Service Environment-környezetben.
 * Integrált alkalmazás a virtuális hálózat nem törölhető.  
 * Útválasztási táblázatokat és globális társviszony-létesítés még nem érhető el az új VNet-integráció.  

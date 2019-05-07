@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: c13a01b392b9bbc93fff2e997cb6d168a441ad07
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6c332861bcaf228e4c1e0a619cf4f84e3be0ba15
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60616890"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204147"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Gyors útmutató: Az első Azure Batch-feladat futtatása a .NET API-val
 
@@ -113,7 +113,7 @@ További részletekért tekintse meg a `Program.cs` fájlt és a következő sza
 
 ### <a name="preliminaries"></a>Előfeltételek
 
-A Storage-fiókkal való kommunikációhoz az alkalmazás a .NET-hez készült Azure Storage ügyféloldali kódtárat használja. Ez létrehoz egy, a fiókra mutató hivatkozást a [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) fiókkal, és ebből létrehoz egy [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient) hivatkozást.
+A Storage-fiókkal való kommunikációhoz az alkalmazás a .NET-hez készült Azure Storage ügyféloldali kódtárat használja. Ez létrehoz egy, a fiókra mutató hivatkozást a [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) fiókkal, és ebből létrehoz egy [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient) hivatkozást.
 
 ```csharp
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();

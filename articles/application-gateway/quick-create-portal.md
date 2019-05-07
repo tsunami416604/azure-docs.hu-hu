@@ -1,19 +1,19 @@
 ---
 title: Rövid útmutató – Webes forgalom irányítása az Azure Application Gatewayjel – Azure Portal | Microsoft Docs
-description: Megismerheti, hogyan hozhat létre az Azure Portallal egy olyan Azure Application Gatewayt, amely a háttérkészletben lévő virtuális gépekhez irányítja a webes forgalmat.
+description: Ismerje meg, amely arra utasítja a webes forgalom háttérkészlet a virtuális gépek az Azure Application Gateway létrehozása az Azure portal használatával.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 1/8/2019
+ms.date: 5/7/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6f91b424398df7839c251d994fd3d484422d5e2c
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: bcbbb63206a443d87afa656ace6f141c6567d17d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947313"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192669"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Gyors útmutató: A közvetlen webes forgalom az Azure Application Gatewayjel – Azure portal
 
@@ -30,7 +30,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
-Az Azure-hoz az erőforrások közötti kommunikációt, hogy hozzon létre egy virtuális hálózat szükséges. Hozzon létre egy új virtuális hálózatot, vagy használjon egy meglévőt. Ebben a példában létrehozunk egy új virtuális hálózatot. Virtuális hálózatot az alkalmazásátjáróval együtt is létrehozhat. Application Gateway-példány külön alhálózatra jönnek létre. Ebben a példában két alhálózattal hoz létre: egyet az application gateway, a másik pedig a háttérkiszolgálókhoz.
+Az Azure-hoz az erőforrások közötti kommunikációt, hogy hozzon létre egy virtuális hálózat szükséges. Hozzon létre egy új virtuális hálózatot, vagy használjon egy meglévőt. Ebben a példában egy új virtuális hálózatot fog létrehozni. Az application gateway létrehozására, egyszerre egy virtuális hálózatot hoz létre. Application Gateway-példány külön alhálózatra jönnek létre. Ebben a példában két alhálózattal hoz létre: egyet az application gateway, a másik pedig a háttérkiszolgálókhoz.
 
 1. Válassza ki **erőforrás létrehozása** a az Azure Portal bal oldali menüben. A **új** ablak jelenik meg.
 
@@ -65,13 +65,13 @@ Az Azure-hoz az erőforrások közötti kommunikációt, hogy hozzon létre egy 
 
 3. Válassza ki **OK** térjen vissza a **beállítások** lapot.
 
-4. Válassza ki a **előtérbeli IP-konfiguráció**. A **előtérbeli IP-konfiguráció**, ellenőrizze **IP-cím típusa** értékre van állítva **nyilvános**. A **nyilvános IP-cím**, ellenőrizze **új létrehozása** van kiválasztva. <br>Az előtérbeli IP-cím lehet magán- vagy a használati eset megfelelően konfigurálhatja. Ebben a példában választjuk ki egy nyilvános előtérbeli IP-címet.
+4. Válassza ki a **előtérbeli IP-konfiguráció**. A **előtérbeli IP-konfiguráció**, ellenőrizze **IP-cím típusa** értékre van állítva **nyilvános**. A **nyilvános IP-cím**, ellenőrizze **új létrehozása** van kiválasztva. <br>Az előtérbeli IP-cím lehet magán- vagy a használati eset megfelelően konfigurálhatja. Ebben a példában egy nyilvános előtérbeli IP-címet fogja választani.
    > [!NOTE]
-   > Az Application Gateway v2 szintű Termékváltozatot, csak kiválaszthatja az **nyilvános** IP-konfigurációt. Magánhálózati IP-konfiguráció jelenleg nem engedélyezett a v2-termékváltozat.
+   > Az Application Gateway v2 szintű Termékváltozatot, csak kiválaszthatja az **nyilvános** előtérbeli IP-konfigurációt. Magánhálózati előtérbeli IP-konfiguráció jelenleg nem engedélyezett a v2-termékváltozat.
 
 5. Adja meg *myAGPublicIPAddress* számára a nyilvános IP-cím neve. 
 
-6. Az alapértelmezett értékeket a többi beállítás esetében fogadja el, majd **OK**.<br>Az egyszerűség kedvéért ez a cikk az alapértelmezett értékek választjuk ki, de be lehet állítani egyéni értékeket a többi beállítás esetében attól függően, a használati eset 
+6. Az alapértelmezett értékeket a többi beállítás esetében fogadja el, majd **OK**.<br>Az egyszerűség kedvéért ez a cikk az alapértelmezett értékeket fog választani, de be lehet állítani egyéni értékeket a többi beállítás esetében attól függően, a használati eset 
 
 ### <a name="summary-page"></a>Összefoglaló lap
 
@@ -79,12 +79,14 @@ Tekintse át a beállításokat a **összefoglalás** oldalra, és kattintson **
 
 ## <a name="add-backend-pool"></a>Háttérkészlet hozzáadása
 
-A háttérkészlet irányíthatja a kérelmeket a háttérkiszolgálók, amely a kérés kiszolgálása lesz használatos. Háttérkészletek összeállítható a hálózati adapterek, a virtual machine scale sets, nyilvános IP-címek, belső IP-címek, teljesen minősített neve (FQDN), és több-bérlős háttéralkalmazások hasonlóan az Azure App Service-ben. Adja hozzá a háttér-tárolók háttérkészletre kell.
+A háttérkészlet segítségével irányíthatja a kérelmeket a háttérkiszolgálók, amely teljesíteni a kérést. Háttérkészletek összeállítható a hálózati adapterek, a virtual machine scale sets, nyilvános IP-címek, belső IP-címek, teljesen minősített neve (FQDN), és több-bérlős háttéralkalmazások hasonlóan az Azure App Service-ben. A háttérrendszer célok fogja hozzáadni a háttérkészlethez.
 
-Ebben a példában használjuk virtuális gépek, a cél-háttérrendszert. Azt is vagy használjon létező virtuális gépeket, vagy újakat hoz létre. Ebben a példában hozunk létre két virtuális gépet használó Azure háttérkiszolgálóiként az application gateway számára. Ehhez a következő történik:
+Ebben a példában a virtuális gépek, a cél háttérrendszer fogja használni. Meglévő virtuális gépeken, vagy újakat hoz létre. Létre fog hozni a két virtuális gépet használó Azure háttérkiszolgálóiként az application gateway számára.
 
-1. Hozzon létre egy új alhálózatot *myBackendSubnet*, az új virtuális gép létrejön. 
-2. 2 új virtuális Gépeket létre *myVM* és *myVM2*háttérkiszolgálóiként használandó.
+Ehhez jelennek meg:
+
+1. Hozzon létre egy új alhálózatot *myBackendSubnet*, az új virtuális gép létrejön.
+2. Két új virtuális gép létrehozása *myVM* és *myVM2*háttérkiszolgálóiként használandó.
 3. IIS telepítése a virtuális gépeket, ellenőrizze, hogy az application gateway létrehozása sikeres volt.
 4. A háttérkiszolgálók hozzáadásához a háttérkészlethez.
 
@@ -112,14 +114,14 @@ Adjon hozzá egy alhálózatot a következő lépések során létrehozott virtu
     - **Jelszó**: Adja meg *Azure123456!* a rendszergazdai jelszót.
 4. Elfogadhatja az alapértelmezett beállításokat, majd **tovább: Lemezek**.  
 5. Fogadja el a **lemezek** alapértelmezett lapot, majd **tovább: Hálózatkezelés**.
-6. Az a **hálózatkezelés** lapon ellenőrizze, hogy **myVNet** van kiválasztva a **virtuális hálózati** és a **alhálózati** értékre van állítva  **myBackendSubnet**. Elfogadhatja az alapértelmezett beállításokat, majd **tovább: Felügyeleti**.<br>Az Application Gateway képes kommunikálni az, hogy a virtuális hálózaton kívüli példányok, de annak biztosítására, IP-kapcsolat van szükségünk. 
+6. Az a **hálózatkezelés** lapon ellenőrizze, hogy **myVNet** van kiválasztva a **virtuális hálózati** és a **alhálózati** értékre van állítva  **myBackendSubnet**. Elfogadhatja az alapértelmezett beállításokat, majd **tovább: Felügyeleti**.<br>Az Application Gateway képes kommunikálni az, hogy a virtuális hálózaton kívüli példányok, de győződjön meg arról, IP van kapcsolat.
 7. Az a **felügyeleti** lapra, és állítsa **rendszerindítási diagnosztika** való **ki**. Elfogadhatja az alapértelmezett beállításokat, majd **felülvizsgálat + létrehozása**.
 8. Az a **tekintse át + létrehozása** lapon tekintse át a beállításokat, javíthatja az esetleges érvényesítési hibákat, és válassza ki **létrehozás**.
 9. Várjon, amíg a virtuális gép létrehozásának befejeződését a továbblépés előtt.
 
 ### <a name="install-iis-for-testing"></a>Az IIS telepítése teszteléshez
 
-Ebben a példában azt telepíti az IIS a virtuális gépek csak az Azure application gateway létrehozása sikerült ellenőrzése céljából. 
+Ebben a példában telepítse az IIS a virtuális gépek csak azt kell ellenőriznie az Azure application gateway létrehozása sikerült.
 
 1. Nyissa meg [az Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell). Ehhez válassza ki a **Cloud Shell** az Azure Portalon, és ezután válassza a felső navigációs sávon **PowerShell** a legördülő listából. 
 
@@ -161,10 +163,9 @@ Ebben a példában azt telepíti az IIS a virtuális gépek csak az Azure applic
 
 Bár az application gateway létrehozásához az IIS nem szükséges, telepítette azt ebben a rövid, ellenőrizze, hogy az Azure sikeresen létrejött-e az application gateway. Az IIS használatával az application gateway teszteléséhez:
 
-1. Az application gateway a nyilvános IP-cím keresése a **áttekintése** lap.![ Jegyezze fel az application gateway nyilvános IP-cím](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png)választhatja azt is megteheti, **összes erőforrás**, adja meg *myAGPublicIPAddress* keresési mezőbe, majd kattintson a keresés eredmények. Az Azure nyilvános IP-címét jeleníti meg a **áttekintése** lapot.
+1. Az application gateway a nyilvános IP-cím keresése a **áttekintése** lap.![ Jegyezze fel az application gateway nyilvános IP-cím](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) vagy választhat **összes erőforrás**, adja meg *myAGPublicIPAddress* keresési mezőbe, majd kattintson a keresési eredmények között. Az Azure nyilvános IP-címét jeleníti meg a **áttekintése** lapot.
 2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába.
-3. Ellenőrizze a választ. Érvényes válasz ellenőrzi, hogy az application gateway létrehozása sikeresen megtörtént, és képes sikeresen csatlakozott a háttérszolgáltatás használatára.![Az alkalmazásátjáró tesztelése](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
-
+3. Ellenőrizze a választ. Érvényes válasz ellenőrzi, hogy az application gateway létrehozása sikeresen megtörtént-e, és sikeresen csatlakozott a háttérszolgáltatás használatára.![Az alkalmazásátjáró tesztelése](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

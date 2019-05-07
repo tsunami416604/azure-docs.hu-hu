@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b1c43cb82d6dc2b7f0708dee8471f077befe349
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d28cb35b1e8e4eaa86418da632c6fcabb636e643
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722154"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205019"
 ---
 # <a name="data-querying"></a>Adatok lekérdezése
 
@@ -35,9 +35,9 @@ A [Time Series kifejezés (TSX) nyelvi](https://docs.microsoft.com/rest/api/time
 
 A következő fő API-k használata támogatott.
 
-![tsq][1]
+[![Time Series lekérdezések áttekintése](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
 
-### <a name="environment-apis"></a>Környezet API-k
+## <a name="environment-apis"></a>Környezet API-k
 
 A következő környezet API-k érhetők el:
 
@@ -45,7 +45,7 @@ A következő környezet API-k érhetők el:
 * [Környezet rendelkezésre állás API](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environment-availability-api): Az esemény időbélyegzője keresztül eloszlás események száma `$ts`. Ez az API segít meghatározni, hogy van-e más eseményeket történő küldés időbélyegzője legyen a visszatérő száma, események, ha vannak ilyenek.
 * [Eseményséma API első](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-event-schema-api): Az esemény séma-metaadatok meg egy adott keresés adja vissza. Ez az API segít a metaadatok és a tulajdonságok a séma meg a megadott keresés érhetők el.
 
-### <a name="time-series-model-query-tsm-q-apis"></a>Time Series modell-lekérdezés (TSM-Q) API-k
+## <a name="time-series-model-query-tsm-q-apis"></a>Time Series modell-lekérdezés (TSM-Q) API-k
 
 A következő alkalommal sorozat modell-lekérdezés API-k érhetők el:
 
@@ -54,7 +54,7 @@ A következő alkalommal sorozat modell-lekérdezés API-k érhetők el:
 * [Hierarchiák API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api): A Time Series-hierarchiát és azok kapcsolódó mező elérési utak lehetővé teszi a CRUD-MŰVELETEKKEL.
 * [API-példányok](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api): A Time Series-példányok és a társított példány mezők lehetővé teszi a CRUD-MŰVELETEKKEL.
 
-### <a name="time-series-query-tsq-apis"></a>Time Series lekérdezés (TSQ) API-k
+## <a name="time-series-query-tsq-apis"></a>Time Series lekérdezés (TSQ) API-k
 
 A következő alkalommal sorozat lekérdezési API-k érhetők el:
 
@@ -80,6 +80,3 @@ A következő alkalommal sorozat lekérdezési API-k érhetők el:
 - Olvassa el a Time Series Insights előzetes verziója [adatmodellezés](./time-series-insights-update-tsm.md) cikk.
 
 - Fedezze fel [ajánlott eljárások a Time Series ID kiválasztásakor](./time-series-insights-update-how-to-id.md).
-
-<!-- Images -->
-[1]: media/v2-update-tsq/tsq.png

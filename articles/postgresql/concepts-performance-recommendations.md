@@ -1,21 +1,21 @@
 ---
-title: Teljesítménnyel kapcsolatos javaslatok az Azure Database for postgresql-hez
-description: Ez a cikk ismerteti a teljesítmény javaslat funkció az Azure Database for postgresql-hez.
+title: Teljesítménnyel kapcsolatos javaslatok az Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk ismerteti a teljesítmény javaslat funkció az Azure Database for PostgreSQL – egyetlen kiszolgáló.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/28/2018
-ms.openlocfilehash: c5324618eeda90b4ef1a512385fb2f14bf391215
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 31d8c0fdf1b4df3ee00f3652c933b4b738384bea
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564458"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068843"
 ---
-# <a name="performance-recommendations-in-azure-database-for-postgresql"></a>Teljesítménnyel kapcsolatos javaslatok az Azure Database for postgresql-hez
+# <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Teljesítménnyel kapcsolatos javaslatok az Azure Database for PostgreSQL – egyetlen kiszolgáló
 
-**A következőkre vonatkozik:** Azure Database for PostgreSQL 9.6 és 10
+**A következőkre vonatkozik:** Azure Database for PostgreSQL – egyetlen kiszolgáló 9.6 és 10
 
 A teljesítménnyel kapcsolatos javaslatok funkció elemzi az adatbázisokat hozhat létre személyre szabott javaslatok a jobb teljesítmény érdekében. Az ajánlások előállításához, különböző adatbázis jellemzőit, beleértve a sémát az elemzés megvizsgálja. Engedélyezése [Query Store](concepts-query-store.md) használja ki teljesen a teljesítménnyel kapcsolatos javaslatok a szolgáltatás a kiszolgálón. Után minden teljesítmény javaslat megvalósítása, tesztelnie kell a teljesítményt, ezek a módosítások hatásának vizsgálatában. 
 

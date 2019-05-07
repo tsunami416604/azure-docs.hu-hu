@@ -1,5 +1,5 @@
 ---
-title: Egy lassú vagy meghibásodott HDInsight-fürt – Azure HDInsight hibaelhárítása
+title: Egy lassú vagy meghibásodott HDInsight-fürtön – Azure HDInsight-feladat hibaelhárítása
 description: Diagnosztizálása és hibaelhárítása a lassú vagy meghibásodott HDInsight-fürt.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: 785eac065e10c64b99839ab8667e9b613f62aeb9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0f405f542a8408c290704f1707ca10a24b08f861
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708912"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203623"
 ---
-# <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
+# <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Egy lassú vagy meghibásodott HDInsight-fürtön-feladat hibaelhárítása
 
-Ha egy HDInsight-fürt vagy lassan fut, vagy hibakód miatt sikertelenül működő, több hibaelhárítási lehetőségek állnak rendelkezésére. Ha a feladatok futtatásához a vártnál hosszabb ideig tart, vagy általános jelennek meg lassú válaszidők, hibák felső a fürtről, például a szolgáltatások, amelyek a fürt fut. lehet. Azonban a leggyakoribb ilyen lassulás oka megfelelő méretezés. Amikor egy új HDInsight-fürtöt hoz létre, válassza ki a megfelelő [virtuálisgép-méretek](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters).
+Ha egy alkalmazás feldolgozása az adatokat egy HDInsight fürtön vagy lassan fut, vagy hibakód miatt sikertelenül működő, több hibaelhárítási lehetőségek állnak rendelkezésére. Ha a feladatok futtatásához a vártnál hosszabb ideig tart, vagy általános jelennek meg lassú válaszidők, hibák felső a fürtről, például a szolgáltatások, amelyek a fürt fut. lehet. Azonban a leggyakoribb ilyen lassulás oka megfelelő méretezés. Amikor egy új HDInsight-fürtöt hoz létre, válassza ki a megfelelő [virtuálisgép-méretek](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters).
 
 Egy lassú vagy meghibásodott fürt diagnosztizálhatja, a környezetet, például a kapcsolódó Azure-szolgáltatások, fürtkonfiguráció és feladat-végrehajtási információt vonatkozó biztonságáért adatainak összegyűjtése. Egy hasznos diagnosztikai, hogy próbálja meg újra előállítani a hibás állapotú, egy másik fürtön.
 

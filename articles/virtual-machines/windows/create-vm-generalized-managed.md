@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 9157765afaa610d207a47e19b73f80ae3898fd68
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 57fbab4194f6cd232e1462ecea9a07d104c6cb51
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977558"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205738"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Virtuális gép létrehozása felügyelt rendszerképből
 
 Több virtuális gép (VM) az Azure felügyelt virtuális gépből hozhat létre az Azure portal vagy a PowerShell használatával kép. Egy felügyelt Virtuálisgép-rendszerképet a virtuális gép, beleértve az operációs rendszer és az adatlemezek létrehozásához szükséges információkat tartalmazza. A virtuális merevlemezek (VHD) a lemezképet, beleértve az operációsrendszer-lemez és bármely adatlemez alkotó felügyelt lemezként tárolt. 
 
-Egy új virtuális Gépet létrehozni, mielőtt kell [felügyelt Virtuálisgép-lemezkép létrehozása](capture-image-resource.md) forrásaként használandó. 
+Egy új virtuális Gépet létrehozni, mielőtt kell [felügyelt Virtuálisgép-lemezkép létrehozása](capture-image-resource.md) használja, mint a forrás lemezkép, és biztosítson számára olvasási hozzáférést a kép minden olyan felhasználó, akik hozzáférhetnek a lemezképre. 
 
 
 ## <a name="use-the-portal"></a>A portál használata
@@ -44,7 +44,7 @@ Egy új virtuális Gépet létrehozni, mielőtt kell [felügyelt Virtuálisgép-
 
 Virtuális gép létrehozása egy rendszerképből az egyszerűsített paraméter beállított használhatja a Powershellt a [New-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmagot. A kép kell lennie, amelyeken kíván létrehozni a virtuális gép ugyanabban az erőforráscsoportban.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 Az egyszerűsített paraméterkészlet a [New-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) csak követeli meg, hogy biztosítson egy név, erőforráscsoport és rendszerkép neve hozhat létre virtuális Gépet egy rendszerképből. Új AzVm értékét fogja használni a **-név** paraméter az összes olyan erőforrást, amely automatikusan hoz létre nevet. Ebben a példában azt adja meg a részletes nevét az erőforrásokat, de lehetővé teszik a parancsmag automatikus létrehozása. Is létre erőforrásokat előzetesen, például a virtuális hálózathoz, és adja át az erőforrás neve a parancsmagba. Új-azvm parancsmag fogja használni a meglévő erőforrások, ha őket a nevük is talál.
 

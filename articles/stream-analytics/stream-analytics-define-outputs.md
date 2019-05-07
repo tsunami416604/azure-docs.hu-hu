@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9663fb502d9eda4810c54a89a94481b7d00cd43
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 3fab76613bb992b29ceeef12cf5f410c5c3b208d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926060"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205536"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 Ez a cikk ismerteti az elérhető az Azure Stream Analytics-feladat kimeneti típusait. Kimenetek segítségével tárolhatja, és a Stream Analytics-feladat eredményének mentése. A kimeneti adatok használatával teheti további üzleti elemzés és az adattárház az adatokat.
@@ -228,7 +228,7 @@ Az alábbi táblázat a tulajdonság nevét és a hozzájuk tartozó leírások 
 | Tábla neve |A tábla neve. Ha még nem létezik a tábla jön létre. |
 | Partíciókulcs |A partíciókulcsot tartalmazó kimeneti oszlop neve. A partíciókulcs az egyedi azonosító a partíció egy entitás elsődleges kulcsának első részét képező táblán belül. Fontos, hogy legfeljebb 1 KB méretű karakterláncérték. |
 | Sorkulcs |A sorkulcsot tartalmazó kimeneti oszlop neve. A sorkulcs pedig egy partíción belül egy entitás egyedi azonosítója. Egy entitás elsődleges kulcsának második részét képezi. A sorkulcs pedig egy karakterláncérték, amely legfeljebb 1 KB méretű is lehet. |
-| Köteg mérete |A kötegelt műveleti rekordok száma. Az alapértelmezett (100) érték elegendők a legtöbb feladatot. Tekintse meg a [kötegelt művelet specifikációja](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablebatchoperation.aspx) Ez a beállítás módosításával kapcsolatos további részletekért. |
+| Köteg mérete |A kötegelt műveleti rekordok száma. Az alapértelmezett (100) érték elegendők a legtöbb feladatot. Tekintse meg a [kötegelt művelet specifikációja](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation) Ez a beállítás módosításával kapcsolatos további részletekért. |
 
 ## <a name="service-bus-queues"></a>Service Bus-üzenetsorok
 [Service Bus-üzenetsorok](https://msdn.microsoft.com/library/azure/hh367516.aspx) kínálnak a FIFO üzenetküldést biztosítanak egy vagy több versengő fogyasztó számára. Az üzenetek általában kapott és dolgozza fel a hozzáadásuk historikus, amelyben hozzá lettek adva a várólistát. Minden üzenetet kapott, és csak egy üzenetfogyasztó által feldolgozott.

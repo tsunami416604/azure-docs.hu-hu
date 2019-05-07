@@ -8,23 +8,22 @@ ms.topic: include
 ms.date: 04/30/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 7e4ca54d8f97646192d19d5923bee24a906e8df7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: 9647cdd584b53f581f46f728ca2d08f9a113ce92
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149709"
+ms.locfileid: "65199142"
 ---
+## <a name="before-you-begin"></a>Előzetes teendők
+
+A példában ez a cikk a végrehajtásához egy általánosított virtuális gép egy meglévő felügyelt rendszerkép kell rendelkeznie. További információkért lásd: [oktatóanyag: Hozzon létre egy egyéni rendszerképet egy Azure virtuális gépek az Azure CLI 2.0 használatával](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Ha a felügyelt rendszerkép egy adatlemezt tartalmaz, a az adatlemez mérete nem lehet több mint 1 TB.
+
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
 A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/bash](https://shell.azure.com/bash) cím megnyitásával. A **Másolás** kiválasztásával másolja és illessze be a kódrészleteket a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
-
-## <a name="before-you-begin"></a>Előzetes teendők
-
-A példában ez a cikk a végrehajtásához egy általánosított virtuális gép egy meglévő felügyelt rendszerkép kell rendelkeznie. További információkért lásd: [oktatóanyag: Hozzon létre egy egyéni rendszerképet egy Azure virtuális gépek az Azure CLI 2.0 használatával](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). 
-
 
 ## <a name="create-an-image-gallery"></a>Lemezkép-katalógus létrehozása 
 
@@ -77,3 +76,6 @@ az sig image-version create \
 
 > [!NOTE]
 > Várjon, amíg a rendszerkép verziószámát teljesen befejeződik, beépített és a replikált felügyelt ugyanazt a lemezképet létrehozni egy másik lemezkép-verzió használata előtt kell.
+>
+> A kép verzióját is tárolhatja [Zónaredundáns tárolás](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) hozzáadásával `--storage-account-type standard_zrs` létrehozásakor, a rendszerkép verziószámát.
+>

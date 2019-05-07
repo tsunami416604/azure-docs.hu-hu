@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 25c71019227c52bf0c1530dcdf655fc7575d8032
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: bf36de1965a8c819af0ef5af98a2393d4cefa1b3
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148525"
+ms.locfileid: "65205719"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Az Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -67,7 +67,7 @@ Igen. További információ a nyilvános IP-címtartomány: [hozzon létre egy v
 Igen. Lásd: [Azure korlátairól](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) részleteiről. Alhálózati címteret nem lehet átfedésben egymással.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Vannak ezen alhálózatok belüli IP-címek használatával korlátozások?
-Igen. Az Azure lefoglalja minden egyes alhálózaton belül néhány IP-cím. Minden egyes alhálózat első és utolsó IP-címét a protokollok megfelelősége érdekében, a x.x.x.1-x.x.x.3 minden egyes alhálózat címét, az Azure-szolgáltatásokhoz használt számára vannak fenntartva.
+Igen. Az Azure minden alhálózaton lefoglal 5 IP-címet. Minden egyes alhálózat első és utolsó IP-címét a protokollok megfelelősége érdekében, a x.x.x.1-x.x.x.3 minden egyes alhálózat címét, az Azure-szolgáltatásokhoz használt számára vannak fenntartva.
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>Hogyan kis- és milyen méretű lehet virtuális hálózatokat és alhálózatokat kell?
 A legkisebb támogatott alhálózat akár/29 méretű, és a legnagyobb /8 (CIDR alhálózati definíciók használatával).
@@ -231,7 +231,7 @@ Igen. További információ:
 Virtuális hálózatok közötti társviszony-létesítés (vagy virtuális hálózatok közötti társviszony) lehetővé teszi, hogy a virtuális hálózatok összekapcsolása. Virtuális hálózatok közötti társviszony-létesítés virtuális hálózatok közötti kapcsolat lehetővé teszi őket közvetlenül a Microsoftnak IPv4-címeken keresztül közötti forgalom irányítására. A virtuális Társhálózatokba tartozó virtuális gépek kommunikálhatnak egymással, mintha ugyanazon a hálózaton belül vannak. Ezek a virtuális hálózatok ugyanabban a régióban vagy eltérő régiókban (más néven globális virtuális társhálózatok létesítésének) lehet. Azure-előfizetések virtuális Társhálózat-kapcsolatot is létrehozhatók.
 
 ### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>Egy másik régióban is létrehozhatok egy virtuális hálózatok közötti társviszony-létesítési kapcsolat?
-Igen. Globális virtuális társhálózatok létesítése lehetővé teszi a különböző régiókban található virtuális hálózatok társviszonyba állítása. Globális virtuális társhálózatok létesítésének érhető el minden nyilvános Azure-régióban és China cloud régiókban. Ön nem globálisan társviszonyt a nyilvános Azure-régióban országos felhőbeli régióban. Globális társviszony-létesítés jelenleg nem áll rendelkezésre a kormányzati felhő.
+Igen. Globális virtuális társhálózatok létesítése lehetővé teszi a különböző régiókban található virtuális hálózatok társviszonyba állítása. Globális virtuális társhálózatok létesítésének érhető el minden nyilvános Azure-régióban, Kína felhő-régiók és kormányzati felhő-régiók. Ön nem globálisan társviszonyt a nyilvános Azure-régióban országos felhőbeli régióban.
 
 ### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>Mik azok a globális virtuális társhálózatok létesítése és a Load Balancer Terheléselosztók kapcsolatos korlátozások?
 Ha a két virtuális hálózat (globális virtuális hálózatok közötti Társviszony) eltérő régiókban, az alapszintű Load Balancert használó erőforrásokhoz nem lehet csatlakoztatni. Standard Load Balancert használó erőforrásokhoz csatlakozhat.
@@ -241,7 +241,6 @@ A következő erőforrások alapszintű Terheléselosztók, ami azt jelenti, hog
 - Redis Cache 
 - Az Application Gateway (v1) SKU
 - Service Fabric
-- SQL Always-on
 - SQL MI
 - API platformoktól
 - Az Active Directory tartományi szolgáltatások (ADDS)

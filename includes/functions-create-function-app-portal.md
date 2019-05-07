@@ -5,15 +5,15 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 09/25/2018
+ms.date: 05/05/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 5070b6ced29599660afa28308239e1ba07c2cbd0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1cecafb013b5d22557961e98935fc9a2fee2a79b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60710827"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199130"
 ---
 1. Válassza ki a **erőforrás létrehozása** gomb megtalálható az Azure portal bal felső sarkában majd válassza ki **számítási** > **Függvényalkalmazás**.
 
@@ -42,6 +42,3 @@ ms.locfileid: "60710827"
     ![Új függvényalkalmazás-beállítások megadása](./media/functions-create-function-app-portal/function-app-create-notification.png)
 
 5. Az új függvényalkalmazás megtekintéséhez válassza az **Erőforrás megnyitása** lehetőséget.
-
-> [!TIP]
-> Ha nem találja a portálon a függvényalkalmazásokat, próbáljon [Függvényalkalmazásokat felvenni a kedvencek közé az Azure Portalon](../articles/azure-functions/functions-how-to-use-azure-function-app-settings.md#favorite).

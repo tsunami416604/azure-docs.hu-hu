@@ -1,6 +1,6 @@
 ---
 title: Azure Automation-feladat adatainak továbbítása az Azure Monitor-naplói felé
-description: Ez a cikk bemutatja, hogyan küldhet feladat állapotát és a runbook feladatstreamek az Azure az Azure Monitor naplókat további elemzés és a felügyeleti.
+description: Ez a cikk bemutatja, hogyan küldhet feladat állapotát és a runbook feladatstreamek az Azure Monitor naplókat további elemzés és felügyeleti.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 82baef7ce0d91713c8bef202ab0ea0925d290f3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8672bc28ea5e8562472408810a38ea0de6778cfd
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60739113"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65200627"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Feladat állapota és a feladatstreamek továbbítja automatizálást az Azure Monitor naplóira
 

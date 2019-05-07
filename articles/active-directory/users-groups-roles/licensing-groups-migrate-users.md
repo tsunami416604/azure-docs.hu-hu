@@ -1,6 +1,6 @@
 ---
-title: Külön-külön licenccel rendelkező felhasználók migrálása Csoportalapú licencelés – Azure Active Directory |} A Microsoft Docs
-description: Váltás az egyes felhasználói licencek az Azure Active Directoryval Csoportalapú licencelésre
+title: Csoportalapú licencelés – külön-külön licenccel rendelkező felhasználók hozzáadása az Azure Active Directory |} A Microsoft Docs
+description: Az egyes felhasználói licencek migrálása Csoportalapú licencelést, az Azure Active Directoryval
 services: active-directory
 keywords: Az Azure AD licencelése
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6fd2eb51c7178421b0656e3b1d0e0ea36176c16
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 333f0ae0153073b57740446ecf47e36a1f9ce590
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60471032"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192456"
 ---
-# <a name="how-to-add-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Hogyan adhat hozzá egyes licenccel rendelkező felhasználók migrálása csoportok licenckezeléshez
+# <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Az egyes licenccel rendelkező felhasználók migrálása a csoportok licenckezeléshez
 
 Előfordulhat, hogy telepíti a felhasználók számára a "közvetlen hozzárendelés"; keresztül a szervezetek meglévő licencek PowerShell-szkriptekkel vagy más eszközökkel, használatával az egyes felhasználói licencek hozzárendelése. Mielőtt elkezdené, Csoportalapú licencelést használ a szervezet licencek kezeléséhez, ez a migrálási terv segítségével zökkenőmentesen cserélje le a meglévő megoldásokkal a Csoportalapú licenceléssel.
 

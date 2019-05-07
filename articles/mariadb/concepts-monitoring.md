@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.openlocfilehash: babe2ac55953940370daa0731463ed6ed8988502
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 05/06/2019
 ms.locfileid: "64925911"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Figyelés az Azure Database for MariaDB
@@ -35,8 +35,8 @@ Ezek a metrikák az Azure Database for MariaDB érhetők el:
 |serverlog_storage_usage|Kiszolgálói naplók tárolására használt|Bájt|Kiszolgálói naplók tárolására használt mennyisége.|
 |serverlog_storage_limit|Log storage maximális|Bájt|A maximális kiszolgálói naplók tárolásához, ehhez a kiszolgálóhoz.|
 |storage_limit|Tárolási kapacitása|Bájt|Ez a kiszolgáló maximális tárterülete.|
-|active_connections|Az aktív kapcsolatok|Darabszám|A kiszolgáló aktív kapcsolatok száma.|
-|connections_failed|Sikertelen kapcsolatok|Darabszám|Nem sikerült a kiszolgálóval létesített kapcsolatok száma.|
+|active_connections|Az aktív kapcsolatok|Count|A kiszolgáló aktív kapcsolatok száma.|
+|connections_failed|Sikertelen kapcsolatok|Count|Nem sikerült a kiszolgálóval létesített kapcsolatok száma.|
 |network_bytes_egress|Kimenő hálózat|Bájt|Kimenő hálózati forgalom az aktív kapcsolatok között.|
 |network_bytes_ingress|Bejövő hálózat|Bájt|Hálózati az aktív kapcsolatok között.|
 

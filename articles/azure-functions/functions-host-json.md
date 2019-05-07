@@ -207,7 +207,7 @@ A függvényalkalmazás, beleértve az Application Insights naplózási viselked
 |console|n/a| A [konzol](#console) naplózási beállításokat. |
 |applicationInsights|n/a| A [applicationInsights](#applicationinsights) beállítás. |
 
-## <a name="console"></a>konzol
+## <a name="console"></a>console
 
 Ez a beállítás nem gyermeke [naplózás](#logging). Azt szabályozza, hogy a konzolon, ha nem a hibakeresési mód naplózása.
 

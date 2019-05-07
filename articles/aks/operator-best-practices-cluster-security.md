@@ -2,18 +2,17 @@
 title: Ajánlott eljárások operátor - Fürtbiztonság az Azure Kubernetes-szolgáltatások (AKS)
 description: Ismerje meg a fürt operátor ajánlott eljárást a fürt biztonsági és az Azure Kubernetes Service (AKS) frissítések kezelése
 services: container-service
-author: rockboyfor
+author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-origin.date: 12/06/2018
-ms.date: 04/08/2019
-ms.author: v-yeche
-ms.openlocfilehash: bf794c6c4f73c4dd25849148aa2ea68b538372c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/06/2018
+ms.author: iainfou
+ms.openlocfilehash: 0f24f7378ceb9266acf8988835b77cef80bd6f13
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60465111"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192197"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások Fürtbiztonság és frissítése az Azure Kubernetes Service (AKS)
 
@@ -68,7 +67,7 @@ Művelet AppArmor megtekintéséhez a következő példában létrehozunk egy pr
 #include <tunables/global>
 profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
   #include <abstractions/base>
-
+  
   file,
   # Deny all file writes.
   deny /** w,
@@ -182,13 +181,13 @@ Az AKS Kubernetes négy kisebb verzióit támogatja. Ez azt jelenti, hogy amikor
 
 A fürt számára elérhető verziókról ellenőrzéséhez használja a [az aks get-frissítések] [ az-aks-get-upgrades] parancsot az alábbi példában látható módon:
 
-```azurecli
+```azurecli-interactive
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
 Ezután frissítheti az AKS fürt használata a [az aks frissítése] [ az-aks-upgrade] parancsot. A frissítési folyamat biztonságosan cordons és egyszerre csak egy csomópont kiüríti, ütemezi a többi csomópont podok és majd üzembe helyezi a legújabb operációs rendszer és a Kubernetes-verziókat futtató új csomópontot.
 
-```azurecli
+```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.11.8
 ```
 
@@ -225,13 +224,13 @@ Ez a cikk az AKS-fürt biztonságossá tétele összpontosít. Néhány ilyen te
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 <!-- INTERNAL LINKS -->
-[az-aks-get-upgrades]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-get-upgrades
-[az-aks-upgrade]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-upgrade
+[az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
+[az-aks-upgrade]: /cli/azure/aks#az-aks-upgrade
 [aks-supported-versions]: supported-kubernetes-versions.md
 [aks-upgrade]: upgrade-cluster.md
 [aks-best-practices-identity]: concepts-identity.md
 [aks-kured]: node-updates-kured.md
-[aks-aad]: aad-integration.md
+[aks-aad]: azure-ad-integration.md
 [best-practices-container-image-management]: operator-best-practices-container-image-management.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources

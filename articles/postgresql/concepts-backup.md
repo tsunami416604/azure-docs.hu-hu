@@ -1,19 +1,19 @@
 ---
-title: Biztonsági mentés és visszaállítás az Azure Database for postgresql-hez
-description: További tudnivalók az automatikus biztonsági mentés és az Azure Database for PostgreSQL-kiszolgáló visszaállítása.
+title: Biztonsági mentés és visszaállítás az Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ismerje meg az automatikus biztonsági mentés és visszaállítás, az Azure Database for PostgreSQL-kiszolgáló – önálló kiszolgáló.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: b4086497375bb651f4c88411e3237b27740dfd07
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 08a061a76f1532441817e61d423533bcc0850227
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456257"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068859"
 ---
-# <a name="backup-and-restore-in-azure-database-for-postgresql"></a>Biztonsági mentés és visszaállítás az Azure Database for postgresql-hez
+# <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Biztonsági mentés és visszaállítás az Azure Database for PostgreSQL – egyetlen kiszolgáló
 
 Azure Database for postgresql-hez automatikusan hoz létre a kiszolgáló biztonsági mentése és konfigurált felhasználó helyileg redundáns vagy georedundáns tárolóban tárolja azokat. Biztonsági másolatokat állíthatja vissza a kiszolgáló egy-időponthoz használható. Biztonsági mentés és visszaállítás bármely üzletmenet-folytonossági stratégiát alapvető részét képezik, mert azok megvédheti adatait a véletlen adatsérülések vagy -törlések.
 

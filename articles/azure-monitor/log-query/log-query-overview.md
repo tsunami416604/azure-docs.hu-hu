@@ -7,12 +7,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: bwren
-ms.openlocfilehash: dcac701f3c1b6d64a7017c31679c019b91103ba2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1cb3946a93cbeff6a9b95e0a21edbf0523b53d5e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904729"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203611"
 ---
 # <a name="analyze-log-data-in-azure-monitor"></a>Elemezheti a naplófájlok adatait az Azure monitorban
 
@@ -36,7 +36,7 @@ A különböző módon, hogy az Azure Monitor lekérdezések használja a követ
 - **Nézetek.**  Adatok foglalandó felhasználói irányítópultokat és vizualizációkat hozhat létre [adatforrásnézet-tervezőből](../platform/view-designer.md).  Naplólekérdezések adja meg az adatok által használt [csempék](../platform/view-designer-tiles.md) és [Vizualizáció részek](../platform/view-designer-parts.md) az egyes nézetek.  
 
 - **Exportálás.**  Importálásakor Teljesítménynapló-adatok az Azure Monitor az Excelbe vagy [Power BI](../platform/powerbi.md), az adatok exportálása meghatározásához log lekérdezés létrehozása.
-- **PowerShell.** PowerShell-szkriptet a parancssorban vagy egy Azure Automation-runbook által használt futtatható [Get-AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresults) naplóadatok lekérése az Azure Monitor.  Ez a parancsmag egy lekérdezést a lekérni kívánt meghatározásához szükséges.
+- **PowerShell.** PowerShell-szkriptet a parancssorban vagy egy Azure Automation-runbook által használt futtatható [Get-AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult) naplóadatok lekérése az Azure Monitor.  Ez a parancsmag egy lekérdezést a lekérni kívánt meghatározásához szükséges.
 - **Az Azure Monitor naplók API.**  A [Azure Monitor naplók API](../platform/alerts-overview.md) lehetővé teszi, hogy bármilyen REST API-ügyfél naplóadatok lekérése a munkaterületen.  Az API-kérelem tartalmaz egy lekérdezést, amely a lekérni kívánt meghatározni az Azure Monitor vonatkozóan fut le.
 
 ![Naplókeresések](media/log-query-overview/queries-overview.png)

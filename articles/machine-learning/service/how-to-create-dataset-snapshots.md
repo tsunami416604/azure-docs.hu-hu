@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
 ms.date: 05/02/2019
-ms.openlocfilehash: ed10cb259802321769605bc0399a610131ddb174
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 51d0dcfc543834e9a8725d11fa82b566a5132a6b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029145"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204994"
 ---
 # <a name="compare-data-and-ensure-reproducibility-with-snapshots-preview"></a>Hasonlítsa össze az adatokat, és ellenőrizze, megismételhetőség pillanatképek (előzetes verzió)
 
-Ebben a cikkben megtudhatja, hogyan hozhat létre és kezelheti a pillanatképeket a [Azure Machine Learning adatkészletek](how-to-create-register-datasets.md) (adatkészletek), így rögzítése vagy adatok időbeli összehasonlítása. Az adatkészletek egyszerűbbé eléréséhez, és az adatok a felhőben, a különböző forgatókönyvekben. 
+Ebben a cikkben megtudhatja, hogyan hozhat létre és kezelheti a pillanatképeket a [Azure Machine Learning adatkészletek](how-to-create-register-datasets.md) (adatkészletek), így rögzítése vagy adatok időbeli összehasonlítása. Az adatkészletek egyszerűbbé eléréséhez, és az adatok a felhőben, a különböző forgatókönyvekben.
 
-**Adatkészlet pillanatképek** egy profilt (az összefoglaló statisztikák) az adatok tárolása a létrehozás időpontjában. Ha szeretné, is tárolhatja az adatokat a megismételhetőség pillanatképe. 
+**Adatkészlet pillanatképek** egy profilt (az összefoglaló statisztikák) az adatok tárolása a létrehozás időpontjában. Ha szeretné, is tárolhatja az adatokat a megismételhetőség pillanatképe.
 
 >[!Important]
 > A pillanatképek tárolási költségekkel. Még több tárolási adatok másolatát tárolja a pillanatkép van szükség. Használat [ `dataset.delete_snapshot()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#delete-snapshot-snapshot-name-) ha azok már nincs szükség.
@@ -29,9 +29,9 @@ Ebben a cikkben megtudhatja, hogyan hozhat létre és kezelheti a pillanatképek
 
 Nincsenek pillanatképekhez három fő használja:
 
-+ **Érvényesítési modell**: Hasonlítsa össze az adatprofil különböző pillanatképek a betanítási futtatás, vagy a termelési adatokon. 
++ **Érvényesítési modell**: Hasonlítsa össze az adatprofil különböző pillanatképek a betanítási futtatás, vagy a termelési adatokon.
 
-+ **Modell megismételhetőség**: Reprodukálja az eredményeket egy pillanatkép, amely adatokat tartalmaz a betanítás során meghívásával. 
++ **Modell megismételhetőség**: Reprodukálja az eredményeket egy pillanatkép, amely adatokat tartalmaz a betanítás során meghívásával.
 
 + **Nyomon követheti az adatok idővel**: Tekintse meg, hogyan alakult a az adatkészlet által [profilok összehasonlítása](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_snapshot.datasetsnapshot?view=azure-ml-py#compare-profiles-rhs-dataset-snapshot--include-columns-none--exclude-columns-none--histogram-compare-method--histogramcomparemethod-wasserstein--0--)
   
@@ -41,16 +41,17 @@ Adatkészlet-pillanatképek létrehozásához, szüksége van egy regisztrált a
 
 ## <a name="create-dataset-snapshots"></a>Adatkészlet-pillanatképek létrehozásához
 
-Egy adatkészlet pillanatkép létrehozásához használja [ `dataset.create_snapshot()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?#create-snapshot-snapshot-name--compute-target-none--create-data-snapshot-false--target-datastore-none-) Azure Machine Learning SDK. 
+Egy adatkészlet pillanatkép létrehozásához használja [ `dataset.create_snapshot()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?#create-snapshot-snapshot-name--compute-target-none--create-data-snapshot-false--target-datastore-none-) Azure Machine Learning SDK.
 
 Alapértelmezés szerint a pillanatkép tárolja, a legújabb adatok profiljának (összefoglaló statisztikák) [adatkészlet-definícióban](how-to-manage-dataset-definitions.md) alkalmazza. Egy adatkészlet-definícióban bármely Adatátalakítási lépéseket, az adatok meghatározott bejegyzést tartalmaz. Ez remek módja, hogy a munka adatelőkészítéshez reprodukálható.
 
-Szükség esetén is használható az adatok másolatát a pillanatfelvétel hozzáadásával `create_data_snapshot = True`.  Ezek az adatok megismételhetőség hasznos lehet. 
+Szükség esetén is használható az adatok másolatát a pillanatfelvétel hozzáadásával `create_data_snapshot = True`.  Ezek az adatok megismételhetőség hasznos lehet.
 
 Ez a példa [bűnözés mintaadatok](https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv) és a egy adatkészlet `dataset_crime` használatával a cikkben létrehozott ["létrehozása és regisztrálása adatkészletek"](how-to-create-register-datasets.md).
 
 ```Python
-from azureml.core.dataset import Workspace, Dataset
+from azureml.core.workspace import Workspace
+from azureml.core.dataset import Dataset
 from azureml.data.dataset_snapshot import DatasetSnapshot
 import datetime
 
@@ -58,7 +59,7 @@ import datetime
 workspace = Workspace.from_config()
 
 # get existing, named dataset:
-dataset = workspace.Dataset['dataset_crime']
+dataset = workspace.datasets['dataset_crime']
 
 # assign name to snapshot
 snapshot_name = 'snapshot_' + datetime.datetime.today().strftime('%Y%m%d%H%M%S')
@@ -69,11 +70,10 @@ snapshot = dataset.create_snapshot(snapshot_name = snapshot_name,
                                    compute_target = remote_compute_target,
                                    create_data_snapshot = True)
 ```
- 
 
 Használjon aszinkron módon jönnek létre pillanatképek, mert a [ `wait_for_completion()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_snapshot.datasetsnapshot?view=azure-ml-py#wait-for-completion-show-output-true--status-update-frequency-10-) metódus a folyamat megfigyeléséhez.
 
-```python
+```Python
 # monitor process every 10 seconds
 snapshot.wait_for_completion(show_output=True, status_update_frequency=10)
 
@@ -102,7 +102,7 @@ Használat [ `dataset.delete_snapshot()` ](https://docs.microsoft.com/python/api
 
 Egy meglévő pillanatkép kérheti [ `get_snapshot()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#get-snapshot-snapshot-name-).
 
-A mentett pillanatképeket egy adott adatkészlet listájának lekéréséhez használja [ `get_all_snapshots()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#get-all-snapshots--). 
+A mentett pillanatképeket egy adott adatkészlet listájának lekéréséhez használja [ `get_all_snapshots()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#get-all-snapshots--).
 
 ```Python
 # Get named snapshot for this dataset
@@ -141,12 +141,11 @@ Kerület|FieldType.INTEGER|5|24|10.0|0.0|10.0|0.0|0.0|0.0|5|5|5|6|13|19|24|24|24
 Ward|FieldType.INTEGER|1|48|10.0|0.0|10.0|0.0|0.0|0.0|1|5|1|9|22.5|40|48|48|48|24.5|16.2635|264.5|0.173723|-1.51271
 Közösségi terület|FieldType.INTEGER|4|77|10.0|0.0|10.0|0.0|0.0|0.0|4|8.5|4|24|37.5|71|77|77|77|41.2|26.6366|709.511|0.112157|-1.73379
 
-
 ### <a name="get-the-data-from-the-snapshot"></a>Az adatok lekérése a pillanatképből
 
 Adatkészlet pillanatkép menti az adatokat egy példányának beszerzéséhez, hozzon létre egy pandas DataFrame-a [ `to_pandas_dataframe()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#to-pandas-dataframe--) metódust.
 
-Ez a metódus sikertelen lesz, ha az adatok másolatát pillanatkép létrehozása során nem volt szükség. 
+Ez a metódus sikertelen lesz, ha az adatok másolatát pillanatkép létrehozása során nem volt szükség.
 
 ```Python
 snapshot.to_pandas_dataframe().head(3)
@@ -157,7 +156,6 @@ snapshot.to_pandas_dataframe().head(3)
 0|10498554|HZ239907|2016-04-04 23:56:00|007XX E 111TH ST|1153|MEGTÉVESZTŐ ELJÁRÁS|PÉNZÜGYI ADATOKKAL VALÓ VISSZAÉLÉS KERESZTÜL 300 USD|EGYÉB|False (Hamis)|False (Hamis)|...|9|50|11|1183356.0|1831503.0|2016|2016-05-11 15:48:00|41.692834|-87.604319|(41.692833841, -87.60431945)
 1|10516598|HZ258664|2016-04-15 17:00:00|082XX S MARSHFIELD ELENTÉS MENTÉSE|890|LOPÁS|FROM BUILDING|RESIDENCE|False (Hamis)|False (Hamis)|...|21|71|6|1166776.0|1850053.0|2016|2016-05-12 15:48:00|41.744107|-87.664494|(41.744106973, -87.664494285)
 2|10519196|HZ261252|2016-04-15 10:00:00|104XX S SACRAMENTÓI ELENTÉS MENTÉSE|1154|MEGTÉVESZTŐ ELJÁRÁS|PÉNZÜGYI ADATOKKAL VALÓ VISSZAÉLÉS 300 USD MAJD A|RESIDENCE|False (Hamis)|False (Hamis)|...|19|74|11|NaN|NaN|2016|2016-05-12 15:50:00|NaN|NaN|
-
 
 ## <a name="next-steps"></a>További lépések
 

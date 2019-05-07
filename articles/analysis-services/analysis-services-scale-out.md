@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 05/06/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 42cdf230379665c596761f9846e52454a3d99680
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 5524645153db0468076cc9b567965bff79d915cb
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939672"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192315"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázás
 
@@ -51,7 +51,7 @@ Egy későbbi horizontális felskálázási művelet végrehajtása, ha példáu
 
 ### <a name="separate-processing-from-query-pool"></a>A lekérdezési készletből külön feldolgozása
 
-Maximális teljesítményt az feldolgozási és lekérdezési műveleteket is beállíthatja a lekérdezési készletből a feldolgozó kiszolgáló külön. Során elválasztott, csak a lekérdezési készlet lekérdezési replikák meglévő és új kapcsolatok vannak hozzárendelve. Ha feldolgozási műveletek csak igénybe vehetnek egy rövid idő alatt, választhat, a feldolgozó kiszolgáló csak ennyi ideig tart feldolgozás és a szinkronizálási műveletek végrehajtására, majd adja hozzá újra üzembe a lekérdezési készletből, a lekérdezési készletből külön. 
+Maximális teljesítményt az feldolgozási és lekérdezési műveleteket is beállíthatja a lekérdezési készletből a feldolgozó kiszolgáló külön. Során elválasztott, új ügyfélgépi kapcsolatokat csak a lekérdezési készlet lekérdezési replikák vannak hozzárendelve. Ha feldolgozási műveletek csak igénybe vehetnek egy rövid idő alatt, választhat, a feldolgozó kiszolgáló csak ennyi ideig tart feldolgozás és a szinkronizálási műveletek végrehajtására, majd adja hozzá újra üzembe a lekérdezési készletből, a lekérdezési készletből külön. A lekérdezési készletből, vagy vissza a lekérdezés készletbe hozzáadása a feldolgozó kiszolgáló szétválasztása is igénybe vehet a akár öt percet a művelet befejeződik.
 
 ## <a name="monitor-qpu-usage"></a>QPU-használat monitorozása
 

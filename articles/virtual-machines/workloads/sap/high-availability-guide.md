@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3a4f3b37b0dc4d74b03ffcfa61c97fbb571d57f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eaaaa5c2fe87b419bf38d6e6522ef745476ac1ad
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61465592"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204962"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Magas rendelkezésre állás az SAP NetWeaver az Azure virtuális gépekhez
 
@@ -563,7 +563,7 @@ A magas rendelkezésre állású SAP ASCS/SCS példányhoz megosztott tárolót 
 2. Futtassa az SIOS DataKeeper Cluster Edition mindkét virtuális gép csomópontját.
 3. Állítsa az SIOS DataKeeper Cluster Edition, hogy azt tükrözi, hogy a tartalom a további csatlakoztatott virtuális merevlemez kötet a forrás virtuális gép a cél virtuális gép további csatlakoztatott virtuális merevlemez mennyisége. Az SIOS DataKeeper kivonatolja a forrás- és helyi köteteken, és ezután jeleníti meg őket a Windows Server feladatátvételi fürtszolgáltatás egy megosztott lemez.
 
-További információk [az SIOS DataKeeper](http://us.sios.com/products/datakeeper-cluster/).
+További információk [az SIOS DataKeeper](https://us.sios.com/products/datakeeper-cluster/).
 
 ![3. ábra: Az Azure-ban az SIOS DataKeeper Windows Server feladatátvételi fürtszolgáltatás konfigurációs][sap-ha-guide-figure-1002]
 
@@ -1043,7 +1043,7 @@ Az Azure Load Balancer belső terheléselosztót, hogy bezárul kapcsolatok, ha 
 
 Az SAP ASCS/SCS-példányának mindkét fürtcsomóponton beállításjegyzék-bejegyzések hozzáadásához először adja hozzá a Windows beállításjegyzék-bejegyzések mindkét Windows fürtcsomópontokon az SAP ASCS/SCS:
 
-| Útvonal | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| `Path` | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Változó neve |`KeepAliveTime` |
 | A változó típusa |REG_DWORD (Decimal) |
@@ -1054,7 +1054,7 @@ _**3. táblázat:** Módosítsa az első TCP/IP-paraméter_
 
 Ezután adja hozzá a Windows beállításjegyzék-bejegyzések mindkét Windows fürtcsomópontokon az SAP ASCS/SCS:
 
-| Útvonal | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| `Path` | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Változó neve |`KeepAliveInterval` |
 | A változó típusa |REG_DWORD (Decimal) |

@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2019
+ms.date: 06/06/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 688bcc02b14d101008afc76662fd6548446cb329
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: a7a020284f44eda0da62f307866c74b0a8df493d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870282"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205702"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Állítsa be, és az AWS-költségek és a használati jelentés-integráció konfigurálása
 
 Az Amazon Web Services költsége és a használati jelentés-integrációnak köszönhetően figyelheti, és szabályozhatja az Azure Cost Management AWS költségeit. Az integráció lehetővé teszi, hogy egyetlen helyről az Azure Portalon, ahol nyomon követheti és költségeit az Azure és az AWS vezérlő. Ez a cikk ismerteti az integráció beállítása és beállítása úgy, hogy a költségek elemzése, és tekintse át a költségvetés használhatja a Cost Management szolgáltatásokat.
 
-A Cost Management egy S3 gyűjtőt jelentésdefiníciók, és töltse le a jelentés a GZIP CSV-fájlok az AWS-hozzáférési hitelesítő adatok használatával tárolja a AWS felhasználási és jelentés beolvasása.
+Felügyeleti folyamatok a jelentésdefiníciókat, és töltse le a jelentés a GZIP CSV-fájlok az AWS-hozzáférési hitelesítő adatok használatával egy S3 gyűjtő tárolt AWS-költségek és a használati jelentés költség.
 
 ## <a name="create-a-cost-and-usage-report-in-aws"></a>Az AWS-ben felhasználási és jelentés létrehozása
 
@@ -45,13 +45,15 @@ Használja a **jelentések** felhasználási és jelentések létrehozásához a
 14. Miután áttekintette a a jelentéshez, kattintson a beállítások **tekintse át és fejezze be a**.
     Megjegyzés: a **jelentés neve**. Ez a későbbi lépésekben fogja használni.
 
-A jelentések kézbesítése az Amazon S3 gyűjtő indításához az AWS akár 24 órát is igénybe vehet. Teljesítés indítása után a AWS naponta legalább egyszer frissíti az AWS-költségek és használati jelentések fájljait.
+A jelentések kézbesítése az Amazon S3 gyűjtő indításához az AWS akár 24 órát is igénybe vehet. Teljesítés indítása után a AWS naponta legalább egyszer frissíti az AWS-költségek és használati jelentések fájljait. Továbbra is az AWS-környezet konfigurálása a teljesítés indítása nélkül.
 
 ## <a name="create-a-role-and-policy-in-aws"></a>Hozzon létre egy szerepkör és a házirend az AWS-ben
 
 Az Azure Cost Management fér hozzá az S3 gyűjtőt, ahol a felhasználási és jelentés megtalálható naponta több alkalommal. A Cost Management új adatok kereséséhez a hitelesítő adatokat hozzá kell férnie. Az AWS-ben, hogy engedélyezze a hozzáférést a Cost Management egy szerepkör és a szabályzat létrehozásához.
 
 Ahhoz, hogy a szerepköralapú hozzáférés-, AWS-fiók, az Azure Cost Managementben, a szerepkör az AWS konzolon jön létre. Rendelkeznie kell a _szerepkör információ_ és _külső azonosító_ az AWS-konzolról. Később fogja használni őket a létrehozás egy AWS összekötő Oldal az Azure Cost Managementben.
+
+Hozzon létre egy új szerepkör varázsló használata:
 
 1. Jelentkezzen be az AWS konzolon, és válassza ki **szolgáltatások**.
 2. A szolgáltatások listájában jelölje ki **IAM**.
@@ -64,30 +66,42 @@ Ahhoz, hogy a szerepköralapú hozzáférés-, AWS-fiók, az Azure Cost Manageme
 8. Kattintson a **tovább: Engedélyek**.
 9. Kattintson a **hozzon létre házirendet**. Ekkor megnyílik egy új böngészőlapon ahol létrehoz egy új szabályzatot.
 10. Kattintson a **szolgáltatás kiválasztása**.
-11. Típus **költség- és használati jelentés**.
-12. Válassza ki **hozzáférési szint**, **olvasási** > **DescribeReportDefinitions**. Ez lehetővé teszi a Cost Management olvassa el, mi a PÉNZNEM az vannak definiálva, és döntse el, ha azok megfelelnek-e a jelentés definícióját előfeltételként szükséges szoftvert jelentések.
-13. Kattintson a **adjon hozzá további engedélyek**.
-14. Kattintson a **szolgáltatás kiválasztása**.
-15. Típus _S3_.
-16. Válassza ki **hozzáférési szint**, **lista** > **ListBucket**. Ez a művelet beolvassa az objektumok listájában, az S3 gyűjtőt a.
-17. Válassza ki **hozzáférési szint**, **olvasási** > **GetObject**. Ez a művelet lehetővé teszi, hogy a számlázási fájlok letöltése.
-18. Válassza ki **erőforrások**.
-19. Válassza ki **gyűjtőbe – információ hozzáadása**.
-20. A **gyűjtőbe neve**, adja meg a gyűjtő a PÉNZNEM fájlok tárolására használt.
-21. Válassza ki **objektum – információ hozzáadása**.
-22. A **gyűjtőbe neve**, adja meg a gyűjtő a PÉNZNEM fájlok tárolására használt.
-23. A **objektumnév**válassza **bármely**.
-24. Kattintson a **adjon hozzá további engedélyek**.
-25. Kattintson a **szolgáltatás kiválasztása**.
-26. Típus _Explorer szolgáltatás költsége_.
-27. Válassza ki **költség Explorer az összes szolgáltatás műveletek (ce:\*)**. Ez a művelet ellenőrzi, hogy helyesen szerepel-e a gyűjteményben.
-28. Kattintson a **adjon hozzá további engedélyek**.
-29. Típus **szervezetek**.
-30. Válassza ki **hozzáférési szintet, lista** > **ListAccounts**. Ez a művelet beolvassa a fiókok nevét.
-31. A **tekintse át a házirend**, adja meg az új házirend nevét. Ellenőrizze, hogy ellenőrizze, hogy a helyes adatokat adott meg, és kattintson a **házirend létrehozása**.
-32. Lépjen vissza az előző lapra, és frissítse a weblapot a böngészőben. A keresősávban keressen rá az új szabályzat.
-33. Válassza ki **tovább: ellenőrzési**.
-34. Adja meg az új szerepkör nevét. Ellenőrizze, hogy ellenőrizze, hogy a helyes adatokat adott meg, és kattintson a **szerepkör létrehozása**.
+
+Költség- és használati jelentés engedély konfigurálása:
+
+1. Típus **költség- és használati jelentés**.
+2. Válassza ki **hozzáférési szint**, **olvasási** > **DescribeReportDefinitions**. Ez lehetővé teszi a Cost Management olvassa el, mi a PÉNZNEM az vannak definiálva, és döntse el, ha azok megfelelnek-e a jelentés definícióját előfeltételként szükséges szoftvert jelentések.
+3. Kattintson a **adjon hozzá további engedélyek**.
+
+Az S3 gyűjtő és az objektumok engedély konfigurálása:
+
+1. Kattintson a **szolgáltatás kiválasztása**.
+2. Típus _S3_.
+3. Válassza ki **hozzáférési szint**, **lista** > **ListBucket**. Ez a művelet beolvassa az objektumok listájában, az S3 gyűjtőt a.
+4. Válassza ki **hozzáférési szint**, **olvasási** > **GetObject**. Ez a művelet lehetővé teszi, hogy a számlázási fájlok letöltése.
+5. Válassza ki **erőforrások**.
+6. Válassza ki **gyűjtőbe – információ hozzáadása**.
+7. A **gyűjtőbe neve**, adja meg a gyűjtő a PÉNZNEM fájlok tárolására használt.
+8. Válassza ki **objektum – információ hozzáadása**.
+9. A **gyűjtőbe neve**, adja meg a gyűjtő a PÉNZNEM fájlok tárolására használt.
+10. A **objektumnév**válassza **bármely**.
+11. Kattintson a **adjon hozzá további engedélyek**.
+
+Költség Explorer engedély konfigurálása:
+
+1. Kattintson a **szolgáltatás kiválasztása**.
+2. Típus _Explorer szolgáltatás költsége_.
+3. Válassza ki **költség Explorer az összes szolgáltatás műveletek (ce:\*)**. Ez a művelet ellenőrzi, hogy helyesen szerepel-e a gyűjteményben.
+4. Kattintson a **adjon hozzá további engedélyek**.
+
+Adja hozzá a szervezetek engedélyt:
+
+1. Típus **szervezetek**.
+2. Válassza ki **hozzáférési szintet, lista** > **ListAccounts**. Ez a művelet beolvassa a fiókok nevét.
+3. A **tekintse át a házirend**, adja meg az új házirend nevét. Ellenőrizze, hogy ellenőrizze, hogy a helyes adatokat adott meg, és kattintson a **házirend létrehozása**.
+4. Lépjen vissza az előző lapra, és frissítse a weblapot a böngészőben. A keresősávban keressen rá az új szabályzat.
+5. Válassza ki **tovább: ellenőrzési**.
+6. Adja meg az új szerepkör nevét. Ellenőrizze, hogy ellenőrizze, hogy a helyes adatokat adott meg, és kattintson a **szerepkör létrehozása**.
     Megjegyzés: a **szerepkör információ** és a **külső azonosító** a szerepkör létrehozásakor az előző lépésben használt. Később ezt fogja használni őket az Azure Cost Management-összekötő beállításakor.
 
 A szabályzat JSON hasonlóan kell kinéznie a következő példa. Cserélje le _bucketname_ az S3 gyűjtő nevével.

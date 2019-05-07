@@ -1,20 +1,19 @@
 ---
-title: Olvasási replikák az Azure Database for PostgreSQL-ben
-description: Ez a cikk ismerteti a olvasható replika szolgáltatást az Azure Database for postgresql-hez.
-author: WenJason
-ms.author: v-jay
+title: Azure Database for PostgreSQL - kiszolgáló egyetlen olvasható replika
+description: Ez a cikk ismerteti a olvasható replika szolgáltatást az Azure Database for PostgreSQL – egyetlen kiszolgáló.
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 04/01/2019
-ms.date: 04/22/2019
-ms.openlocfilehash: f340f1e42b6993a1f834ab05570c669d4241222b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 1d75d01df74a239ba865d9a4e2b216a410e6069c
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564357"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067432"
 ---
-# <a name="read-replicas-in-azure-database-for-postgresql"></a>Olvasási replikák az Azure Database for PostgreSQL-ben
+# <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - kiszolgáló egyetlen olvasható replika
 
 Az olvasási replika szolgáltatás replikálja az adatokat egy Azure Database for PostgreSQL-kiszolgálót egy írásvédett kiszolgáló teszi lehetővé. Ugyanazon Azure-régióban legfeljebb öt replikához replikálhatja a fölérendelt kiszolgálótól. Replika aszinkron módon frissülnek a PostgreSQL-adatbázismotor natív replikációs technológiával.
 
@@ -51,7 +50,7 @@ A replika örökli a fölérendelt kiszolgáló a rendszergazdai fiókkal. A fö
 Csatlakozhat a replika használatával, az állomásnév és a egy érvényes felhasználói fiókot, mint egy normál, Azure Database for PostgreSQL-kiszolgálóhoz. A kiszolgáló neve **myreplica** a rendszergazda felhasználóneve a **myadmin**, a replika psql használatával csatlakozhat:
 
 ```
-psql -h myreplica.postgres.database.chinacloudapi.cn -U myadmin@myreplica -d postgres
+psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 ```
 
 Amikor a rendszer kéri adja meg a felhasználói fiók jelszavát.

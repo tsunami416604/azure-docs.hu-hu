@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: kumud
-ms.openlocfilehash: 6b1d62f4cedb7add843a5ddae24125019130d58f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a053beb121e1b3c0db020094c29a9a1e0117da87
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728342"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203539"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Kezelheti az Azure DDoS Protection szabványos az Azure portal használatával
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="create-a-ddos-protection-plan"></a>DDoS elleni védelmi terv létrehozása
 
-A DDoS protection-díjcsomag határozza meg, amelyeken engedélyezve van, előfizetések között a DDoS protection-szabvány virtuális hálózatok. Beállíthatja, hogy a szervezet és a hivatkozás virtuális hálózatok több előfizetést, a csomagot egy DDoS elleni védelmi tervet. A DDoS Protection-Díjcsomag maga is egy előfizetést, a terv létrehozása közben kiválasztott társítva. Az előfizetés a terv társítva a csomag, valamint a kerettúllépési díjfizetést tesz szükségessé, havi ismétlődő számla tekintetében abban az esetben a védett nyilvános IP-címek száma meghaladja a 100. A DDoS-díjszabás további információkért lásd: [díjszabás](https://azure.microsoft.com/pricing/details/ddos-protection/).
+A DDoS protection-díjcsomag határozza meg, amelyeken engedélyezve van, előfizetések között a DDoS protection-szabvány virtuális hálózatok. Beállíthatja, hogy a szervezet és a hivatkozás virtuális hálózatok több előfizetést, a csomagot egy DDoS elleni védelmi tervet. A DDoS Protection-Díjcsomag maga is egy előfizetést, a terv létrehozása közben kiválasztott társítva. A DDoS elleni védelmi tervhez működik, régiók és -előfizetések között. Példa –, és hozhat létre a terv régió kelet-USA #1. előfizetés mutató hivatkozás a bérlőn. A csomagot is össze virtuális hálózatok különböző régiókban lévő más előfizetésekből származó a bérlőn belüli. Az előfizetés a terv társítva a csomag, valamint a kerettúllépési díjfizetést tesz szükségessé, havi ismétlődő számla tekintetében abban az esetben a védett nyilvános IP-címek száma meghaladja a 100. A DDoS-díjszabás további információkért lásd: [díjszabás](https://azure.microsoft.com/pricing/details/ddos-protection/).
 
 Több csomag létrehozása nem kötelező a legtöbb szervezet számára. A csomag nem lehet áthelyezni, előfizetések között. Ha azt szeretné, módosítsa a csomag megtalálható, hogy [törölje a meglévő csomag](#work-with-ddos-protection-plans) , és hozzon létre egy újat.
 
@@ -101,7 +101,7 @@ Választhat bármelyik DDoS protection elérhető metrikáinak riasztást küldj
     |Name (Név)                     | myDdosAlert                                                                                        |
     |Előfizetés             | Válassza ki az előfizetést, amely tartalmazza a nyilvános IP-címet szeretne riasztásokat kapni.        |
     |Erőforráscsoport           | Válassza ki az erőforráscsoportot, amely tartalmazza a nyilvános IP-címet szeretne riasztásokat kapni.      |
-    |Erőforrás                 | Válassza ki a nyilvános IP-címet, amely tartalmazza a nyilvános IP-címet szeretne riasztásokat kapni. DDoS figyeli a virtuális hálózaton belüli erőforrásokhoz hozzárendelt nyilvános IP-címeket. Ha nyilvános IP-címekkel rendelkező erőforrásokat a virtuális hálózat nem rendelkezik, akkor először létre kell hoznia erőforrás nyilvános IP-címmel. Nyomon követheti a Resource Managerrel üzembe helyezett (nem klasszikus) szereplő összes erőforrás nyilvános IP-cím [virtuális hálózatok az Azure-szolgáltatások](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network), kivéve az Azure App Service Environment-környezetek és az Azure VPN Gateway átjárón. Ez az oktatóanyag folytatásához, gyorsan létrehozhat egy [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet.                   |
+    |Resource                 | Válassza ki a nyilvános IP-címet, amely tartalmazza a nyilvános IP-címet szeretne riasztásokat kapni. DDoS figyeli a virtuális hálózaton belüli erőforrásokhoz hozzárendelt nyilvános IP-címeket. Ha nyilvános IP-címekkel rendelkező erőforrásokat a virtuális hálózat nem rendelkezik, akkor először létre kell hoznia erőforrás nyilvános IP-címmel. Nyomon követheti a Resource Managerrel üzembe helyezett (nem klasszikus) szereplő összes erőforrás nyilvános IP-cím [virtuális hálózatok az Azure-szolgáltatások](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network), kivéve az Azure App Service Environment-környezetek és az Azure VPN Gateway átjárón. Ez az oktatóanyag folytatásához, gyorsan létrehozhat egy [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet.                   |
     |Metrika                   | A DDoS elleni támadás vagy sem                                                                            |
     |Küszöbérték                | 1 – **1** azt jelenti, hogy a támadás alatt áll. **0** azt jelenti, hogy az Ön nem támadás alatt áll.                         |
     |Időszak                   | Válasszon bármilyen értéket választja.                                                                   |
@@ -127,6 +127,7 @@ A támadás telemetriai adatokat valós időben az Azure Monitor keresztül bizt
 4. Válassza ki a **előfizetés** és **erőforráscsoport** , amely telemetriai szánt nyilvános IP-cím szerepel.
 5. Válassza ki **nyilvános IP-cím** a **erőforrástípus**, majd válassza ki a kívánt telemetriája adott nyilvános IP-cím.
 6. Egy sorozatát **rendelkezésre álló metrikák** a képernyő bal oldalán jelennek meg. Ezek a metrikák kiválasztásakor vannak ábrázolt a a **Azure Monitor Metrikadiagram** az Áttekintés képernyő.
+7. Válassza ki a **összesítési** típusa **maximális száma**
 
 A metrikák nevei jelenthet különböző csomagtípusok és bájt csomagokat, és a egy alapvető szerkezet mindegyik metrikát a címke neve a következő:
 
@@ -138,7 +139,7 @@ Telemetriai adatok érvényesítéséhez DDoS-támadás szimulálása, lásd: [e
 
 ## <a name="view-ddos-mitigation-policies"></a>A DDoS-kockázatcsökkentést szabályzatok megtekintéséhez
 
-A DDoS Protection Standard érvényes három kockázatcsökkentési automatikusan beállított szabályzat (TCP külön, a TCP és UDP) minden egyes nyilvános IP-cím, a védett erőforrások, a virtuális hálózat, amelyen engedélyezve van a DDoS. Kiválasztásával megtekintheti a szabályzat küszöbértékeket a **bejövő TCP-csomagok DDoS elleni védelem aktiválásához** és **bejövő UDP-csomagok DDoS elleni védelem aktiválásához** metrikák, a következő képen látható módon:
+A DDoS Protection Standard érvényes három kockázatcsökkentési automatikusan beállított szabályzat (TCP külön, a TCP és UDP) minden egyes nyilvános IP-cím, a védett erőforrások, a virtuális hálózat, amelyen engedélyezve van a DDoS. Kiválasztásával megtekintheti a szabályzat küszöbértékeket a **bejövő TCP-csomagok DDoS elleni védelem aktiválásához** és **bejövő UDP-csomagok DDoS elleni védelem aktiválásához** metrikák **Összesítés** írja be a "Max", mint az alábbi ábrán látható módon:
 
 ![Kockázatcsökkentési szabályzatok megtekintése](./media/manage-ddos-protection/view-mitigation-policies.png)
 

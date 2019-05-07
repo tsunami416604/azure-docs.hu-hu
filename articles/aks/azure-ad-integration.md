@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 2a218a48223c81e009b83cb1f129601a8035e18e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: HT
+ms.openlocfilehash: 026c0eefc0c4fe31e72ecad91a4a7b558f367487
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138517"
+ms.locfileid: "65192107"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Az Azure Active Directory integrálása az Azure Kubernetes Service
 
@@ -244,6 +244,7 @@ Amikor végzett, a rendszer gyorsítótárazza a hitelesítési jogkivonat. Csak
 Ha látja az engedélyezési hibaüzenet Miután sikeresen bejelentkezett, ellenőrizze, hogy:
 1. A felhasználó bejelentkezik, az Azure AD-példányt (ebben a forgatókönyvben a helyzet gyakran egy másik címtárból pedig összevont fiók használatakor) nem a vendég nem.
 2. A felhasználó nincs több mint 200 csoport tagja.
+3. A kiszolgáló regisztrációja meghatározott titkos kulcs nem egyezik meg a konfigurált használatával – aad-server-Alkalmazáskulcs értéket
 
 ```console
 error: You must be logged in to the server (Unauthorized)

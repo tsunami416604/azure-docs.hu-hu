@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7e4364a06a3d20edc7aafd54a4dcd86dfd039043
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8508dbecceb9984f53a133d9634882603549cdd1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573570"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199648"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
@@ -133,8 +133,8 @@ Az ASE létrehozását követően a tartomány az Ön által megadott tartomány
 
 Az ILB ASE környezetnek szüksége van egy érvényes SSL-tanúsítványra. Használjon belső tanúsítványszolgáltatót, vásároljon tanúsítványt külső kiállítótól vagy használjon önaláírt tanúsítványt. Az SSL-tanúsítvány forrásától függetlenül az alábbi tanúsítványattribútumokat megfelelően kell konfigurálni:
 
-* **Tulajdonos**: Ezt az attribútumot állítsa *.az-gyökér-Ön-gyökértartománya.
-* **Tulajdonos alternatív neve**: Ennek az attribútumnak tartalmaznia kell mindkét **.az-gyökér-Ön-gyökértartománya* és **.az-gyökér-domain-Itt*. Az SCM/Kudu helyhez társított alkalmazások SSL-kapcsolatai egy *az-ön-alkalmazásának-neve.scm.az-ön-gyökértartománya* formátumú címet használnak.
+* **Tulajdonos**: Ezt az attribútumot állítsa *\.a gyökér--Ön-gyökértartománya.
+* **Tulajdonos alternatív neve**: Ennek az attribútumnak tartalmaznia kell mindkét *.az-gyökér-Ön-gyökértartománya* és *.az-gyökér-domain-Itt*. Az SCM/Kudu helyhez társított alkalmazások SSL-kapcsolatai egy *az-ön-alkalmazásának-neve.scm.az-ön-gyökértartománya* formátumú címet használnak.
 
 Konvertálja/mentse az SSL-tanúsítványt .pfx fájlként. A .pfx fájlnak tartalmaznia kell az összes köztes és főtanúsítványt. Jelszóval gondoskodjon a védelméről.
 

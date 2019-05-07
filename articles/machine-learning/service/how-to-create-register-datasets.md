@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: 4b3fa69156146037ff59a41eab8c8373f6e01dc4
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 65a861c647c2dc92e416fa356075821aa5060042
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029115"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205043"
 ---
 # <a name="create-and-register-azure-machine-learning-datasets-preview"></a>Hozzon létre és regisztrálja az Azure Machine Learning-adatkészletek (előzetes verzió)
 
@@ -44,7 +44,7 @@ A helyi gépen a fájl vagy mappa elérési út megadásával betölteni a [ `au
 * Adatcsatornához és oszlop adattípus konvertálásakor.
 
 ```Python
-from azureml.core import Dataset
+from azureml.core.dataset import Dataset
 
 dataset = Dataset.auto_read_files('./data/crime.csv')
 ```
@@ -60,7 +60,9 @@ Egy Azure adattárolója adatkészleteket létrehozni, hogy ne felejtse el:
 * Importálás a [ `Workspace` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) és [ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#definition) és `Dataset` az SDK-csomagot.
 
 ```Python
-from azureml.core import Workspace, Datastore, Dataset
+from azureml.core.workspace import Workspace
+from azureml.core.datastore import Datastore
+from azureml.core.dataset import Dataset
 
 datastore_name = 'your datastore name'
 
@@ -74,7 +76,7 @@ workspace = Workspace.from_config()
 dstore = Datastore.get(workspace, datastore_name)
 ```
 
-Használja a `from_delimited_files()` módszert, olvassa el a tagolt fájlokat és a memórián belüli adatkészleteket hoz létre.
+Használja a `from_delimited_files()` módszer, olvassa el a tagolt fájlokat, és a egy nem regisztrált adatkészlet létrehozásához.
 
 ```Python
 # create an in-memory Dataset on your local machine
@@ -98,23 +100,22 @@ dataset.head(5)
 Használja a [ `register()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-) metódus adatkészletek regisztrálásához megosztása a munkaterülethez, és újra felhasználhatja a szervezeten belül, és különböző kísérletek között.
 
 ```Python
-dataset = dataset.register(workspace = 'workspace_name',
-                           name = "dataset_crime",
+dataset = dataset.register(workspace = workspace,
+                           name = 'dataset_crime',
+
                            description = 'Training data',
                            exist_ok = False
                            )
 ```
 
 >[!NOTE]
-> Az alapértelmezett paraméter beállítása `register()` van "exist_ok = False". Ha próbál meg regisztrálni egy adatkészlet ugyanazzal a névvel, ez a beállítás módosítása nélkül egy hibát eredményez.
+> Az alapértelmezett paraméter beállítása `register()` van `exist_ok = False`. Ha próbál meg regisztrálni egy adatkészlet ugyanazzal a névvel, ez a beállítás módosítása nélkül egy hibát eredményez.
 
-A `register()` módszer frissíti a paraméter beállítása egy már regisztrált adatkészlet definíciója `exist_ok = True`.
+A `register()` metódus visszaadja a már regisztrált adatkészletek a paraméter beállítása `exist_ok = True`.
 
 ```Python
-dataset = dataset.register(workspace = workspace_name,
-                           name = "dataset_crime",
-                           description = 'Training data',
-                           exist_ok = True)
+dataset = dataset.register(workspace = workspace,
+                           name = 'dataset_crime',
 ```
 
 Használat `list()` látható az összes, a regisztrált adatkészletek a munkaterületén.
@@ -137,7 +138,7 @@ Helyileg, távolról és például az Azure Machine Learning compute számítás
 ```Python
 workspace = Workspace.from_config()
 
-dataset = workspace.Datasets['dataset_crime']
+dataset = workspace.datasets['dataset_crime']
 ```
 
 ## <a name="next-steps"></a>További lépések

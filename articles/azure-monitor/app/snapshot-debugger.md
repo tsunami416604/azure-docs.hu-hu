@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: brahmnes
 ms.date: 03/07/2019
 ms.author: mbullwin
-ms.openlocfilehash: 669b4d65798a553188a2b99080b72ffc7cd9e898
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 074b701422f32f4cd18fd2eb05e3453e139e17ae
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60783609"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205605"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazások kivételeinek hibakeresési pillanatképei
 Ha egy kivétel lép fel, automatikusan gyűjtheti hibakereső pillanatképek az élő webalkalmazások. A pillanatkép abban a pillanatban a kivétel történt a Forráskód és a változók állapotát mutatja. A pillanatkép-hibakereső (előzetes verzió) a [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) kivétel telemetriát a webalkalmazás figyeli. Ez adatokat gyűjt a pillanatképek a felső értesítő kivételek, hogy rendelkezik diagnosztizálhatja a problémákat, éles környezetben a szükséges információkat. Tartalmazza a [Snapshot collector NuGet-csomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) az alkalmazásban, és szükség esetén konfigurálja a gyűjtési paramétereket lévő [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). A pillanatképek jelennek meg [kivételek](../../azure-monitor/app/asp-net-exceptions.md) az Application Insights portálon.
@@ -112,7 +112,7 @@ A fő folyamat tovább fut, és a forgalmat a felhasználók számára a kis meg
 
 ## <a name="limitations"></a>Korlátozások
 
-Az alapértelmezett megőrzési időtartama befejezéséig 7 nap. Minden Application Insights-példány 50 pillanatképek maximális száma naponta engedélyezett.
+Az alapértelmezett megőrzési időtartama pedig 15 nap. Minden Application Insights-példány 50 pillanatképek maximális száma naponta engedélyezett.
 
 ### <a name="publish-symbols"></a>Szimbólumok közzététele
 A pillanatkép-hibakereső van szükség, szimbólumfájlok való dekódolandó változók és a hibakeresés érdekében a Visual Studióban az üzemi kiszolgálón.

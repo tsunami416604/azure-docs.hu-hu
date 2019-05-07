@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.openlocfilehash: a887d6c69b9fa80f3144434e72a097e80d123a1b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5b8ed75863087e077d483c792ac4134a0c3e1eb0
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722296"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203643"
 ---
 # <a name="os-patching-for-hdinsight"></a>Operációs rendszer javításai a HDInsight 
 
@@ -23,29 +23,25 @@ ms.locfileid: "64722296"
 Egy HDInsight-fürtön lévő virtuális gépek kell alkalmanként indítani, hogy fontos biztonsági javításokat is telepíthető. 
 
 A jelen cikkben ismertetett szkriptműveletek használatával, módosíthatja az operációs rendszer következő javítási ütemezése:
-1. Engedélyezi vagy letiltja az automatikus újraindítások
-2. Set gyakorisága (napokban újraindításnál) újraindul
-3. Ha újraindítás történik a hét napját beállítása
+1. Telepítse a teljes operációs rendszer frissítése vagy csak a biztonsági frissítések
+2. A virtuális gépet
 
 > [!NOTE]  
-> Ez a parancsprogram-művelet csak a 2016. augusztus 1. után létrehozott Linux-alapú HDInsight-fürtökkel működik. Javítások től lép érvénybe, csak akkor, ha a virtuális gépek indulnak újra. 
+> Ez a parancsprogram-művelet csak a 2016. augusztus 1. után létrehozott Linux-alapú HDInsight-fürtökkel működik. Javítások től lép érvénybe, csak akkor, ha a virtuális gépek indulnak újra. Ez a szkript automatikusan nem érvényes az összes jövőbeli frissítés ciklusok frissítéseit. Futtassa a szkriptet minden alkalommal új frissítéseket kell alkalmazni annak érdekében, hogy telepítse a frissítéseket, és a virtuális gépet.
 
 ## <a name="how-to-use-the-script"></a>A parancsfájl használata 
 
 Ha ez a szkript használatához a következő információkat:
-1. A parancsprogram helye: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv01/os-patching-reboot-config.sh.  HDInsight ezt az URI használatával keresse meg és futtassa a parancsfájlt a fürt összes virtuális gépet.
+1. A parancsprogram helye: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/os-patching-reboot-config.sh.  HDInsight ezt az URI használatával keresse meg és futtassa a parancsfájlt a fürt összes virtuális gépet.
   
-2. A alkalmazni a parancsfájl fürtcsomópont-típusokat: átjárócsomópontjával, workernode, zookeeper. Ez a szkript a fürt minden csomópont típusokat kell alkalmazni. Ez a csomópont típusa nem alkalmazható, ha a virtuális gépek adott csomóponttípus továbbra korábbi javítási ütemezésének használja.
+2. A alkalmazni a parancsfájl fürtcsomópont-típusokat: átjárócsomópontjával, workernode, zookeeper. Ez a szkript a fürt minden csomópont típusokat kell alkalmazni. Ha ez a csomópont típusa nem alkalmazható, majd a virtuális gépek adott csomóponttípus nem frissül.
 
 
-3.  A paraméter: Ez a szkript numerikus három paramétert fogad el:
+3.  A paraméter: Ez a szkript egy numerikus paramétert fogad el:
 
     | Paraméter | Meghatározás |
     | --- | --- |
-    | Engedélyezi/letiltja az automatikus újraindítások |0 vagy 1. A 0 érték letiltja az automatikus újraindítások 1: engedélyezi az automatikus újraindítások során. |
-    | Gyakoriság |7 – 90 (a szélsőértékek megengedettek). Hány nap után újraindul a javításokat az újraindítást igénylő virtuális gépek száma. |
-    | Hét napja |1 és 7 (a szélsőértékek megengedettek). Az 1 érték azt jelzi, az újraindítás megtörténik, hétfőn, és 7 azt jelzi, hogy egy Sunday.For paraméterek használatával a példában 1 60 2 eredmények automatikus újraindul 60 naponta (legfeljebb) keddjén. |
-    | Adatmegőrzés |Egy meglévő fürthöz szkriptműveletet alkalmazásakor, megőrzött meg lehet jelölni a parancsfájl. A megőrzött szkriptek akkor lépnek fel, amikor új workernodes hozzáadódnak a fürtnek a méretezési műveletek. |
+    | Csak teljes operációs rendszer frissítéseinek/Install biztonsági frissítések telepítése |0 vagy 1. A 0 érték biztonsági frissítéseket telepíti, csak a 1 telepíti a teljes operációs rendszer frissítése közben. Ha a paraméter nincs megadva, az alapértelmezett érték a 0. |
 
 > [!NOTE]  
 > Ez a szkript, egy meglévő fürthöz alkalmazásakor megőrzött kell megjelölni. Ellenkező esetben a méretezési műveletek során létrehozott minden új csomópontok fogja használni az alapértelmezett javítási ütemezése.  Ha a parancsfájl a Fürtlétrehozási folyamat részeként, állandó automatikusan.

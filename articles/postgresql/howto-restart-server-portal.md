@@ -1,19 +1,19 @@
 ---
-title: Indítsa újra az Azure Database for PostgreSQL-kiszolgálóhoz az Azure portal használatával
-description: Ez a cikk bemutatja, hogyan újraindítható egy Azure Database for PostgreSQL-kiszolgálóhoz az Azure portal használatával.
+title: Indítsa újra az Azure Database for postgresql-hez - Azure portal használatával egyetlen kiszolgáló
+description: Ez a cikk bemutatja, hogyan újraindíthatja az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure portal használatával.
 author: ajlam
 ms.author: andrela
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 3/18/2019
-ms.openlocfilehash: bf73120e462b740de5d2245f8a647896ac61f2c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: fd92e27f53f52de3e9a7fd65d577c9dfea44991b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420509"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65066839"
 ---
-# <a name="restart-azure-database-for-postgresql-server-using-the-azure-portal"></a>Indítsa újra az Azure Database for PostgreSQL-kiszolgálóhoz az Azure portal használatával
+# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Indítsa újra az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure portal használatával
 Ez a témakör ismerteti, hogyan újraindítható egy Azure Database for PostgreSQL-kiszolgálóhoz. Indítsa újra a kiszolgálót, a kiszolgáló a műveletet hajt végre egy rövid kimaradás okozó karbantartási okokból szükségessé.
 
 A kiszolgáló újraindítására, ha a szolgáltatás nem foglalt le lesz tiltva. Ha például a szolgáltatás feldolgozás lehet egy korábban kért művelet, például a virtuális magok méretezés.

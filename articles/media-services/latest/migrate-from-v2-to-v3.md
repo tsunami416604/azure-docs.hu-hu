@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/27/2019
+ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 921d154226862d822802562442f59bf1c37c4745
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e64b18cef44a5fa6d63137f57fcada27adcd0299
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148907"
+ms.locfileid: "65205482"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3
 
@@ -71,7 +71,7 @@ Ha rendelkezik egy fejlett még ma a videószolgáltatás a [örökölt Media Se
     * Lokátort a streamelési lokátor váltja fel.
     * Élő esemény cserél csatorna.<br/>Élő események élő csatorna mérőszámok alapján számoljuk. További információkért lásd: [számlázási](live-event-states-billing.md) és [díjszabás](https://azure.microsoft.com/pricing/details/media-services/).
     * Élő kimeneti Program váltja fel.
-* Élő kimenetek nem kell explicit módon kell elindítani, a létrehozás indítása és leállítása, ha törli. Programok dolgoztam eltérően a v2 API-k, kellett arra, hogy létrehozása után indítható.
+* Létrehozás kimenetek start Live, és állítsa le a törlésekor. Programok dolgoztam eltérően a v2 API-k, kellett arra, hogy létrehozása után indítható.
 *  Információt szeretne kapni egy feladatot, akkor ismernie kell a átalakító neve, amelyben a feladat létrehozása. 
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>A szolgáltatás hézagok megállapodást v2 API-k

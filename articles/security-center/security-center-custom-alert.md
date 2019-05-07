@@ -14,23 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2573ad64830247d232bbd6d156fac7f50d65f410
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a5deee4209001d8c2212033c2d547d7c4199bd25
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925089"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192620"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Egyéni riasztási szabályok az Azure Security Centerben (előzetes verzió)
 Ebből a dokumentumból megismerheti az Azure Security Center egyéni riasztási szabályainak létrehozásához szükséges lépéseket.
 
 > [!NOTE]
-> Egyéni riasztások fog hamarosan kivonunk a használatból, olvassa el alternatív szolgáltatásokból az alábbi.
+> Egyéni riasztások jén kivonjuk a forgalomból 2019. június 30.
 
 ## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Használatból való kivonást egyaránt az egyéni riasztási szabályok az Azure Security Centerben
 
 Egyéni riasztásainak kivonjuk a forgalomból 2019. június 30., használatból való kivonást egyaránt az alapul szolgáló infrastruktúra-alapú miatt. Amíg elavult időkeretét, a felhasználók tudni meglévő egyéni riasztási szabályok szerkesztése, de nem fogja tudni újakat vehet fel.
-Ahhoz, hogy a felhasználók végigvitelével [Azure Sentinel-](https://azure.microsoft.com/services/azure-sentinel/) automatikus áttelepítése a meglévő figyelmeztetéseket és újakat hoz létre, vagy másik lehetőségként létre újból a figyelmeztetéseket, és az Azure Monitor egy kattintással üzembe helyezésében naplóriasztások.
+Felhasználók vagy az alábbi intézkedéseket javasoljuk:
+- Engedélyezése [Azure Sentinel-](https://azure.microsoft.com/services/azure-sentinel/) automatikus áttelepítése a meglévő figyelmeztetéseket, és újakat hoz létre egyetlen kattintással üzembe helyezésében
+- Hozza létre újból a riasztásokat az Azure Monitor riasztások
                                      
 Tartani a meglévő riasztásokat, és Azure Sentinel-telepítheti át őket, kérjük, [indítsa el az Azure-Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview). Első lépésként válassza ki a munkaterületet, az egyéni értesítések tárolására, és válassza a "Analytics" menüpontot a riasztások automatikusan át.
 

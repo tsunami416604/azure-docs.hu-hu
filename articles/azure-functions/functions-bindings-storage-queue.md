@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 8b9cc112f51840a6bf2cf659863f61ab5962f6e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 72e51deb31ad2894ccfc0fc71884c99863184f5b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306849"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203663"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Az Azure storage üzenetsorkötések az Azure Functions szolgáltatáshoz
 
@@ -273,7 +273,7 @@ A JavaScript használatával `context.bindings.<name>` a várólista elem haszno
 
 ## <a name="trigger---message-metadata"></a>Eseményindító - üzenet metaadatok
 
-Az üzenetsor eseményindító biztosít több [metaadat-tulajdonságot](./functions-bindings-expressions-patterns.md#trigger-metadata). Ezek a tulajdonságok a kötési kifejezésekben való használata más kötések részeként vagy a kód paramétereiben használható. Ezek a tulajdonságai a [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) osztály.
+Az üzenetsor eseményindító biztosít több [metaadat-tulajdonságot](./functions-bindings-expressions-patterns.md#trigger-metadata). Ezek a tulajdonságok a kötési kifejezésekben való használata más kötések részeként vagy a kód paramétereiben használható. Ezek a tulajdonságai a [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) osztály.
 
 |Tulajdonság|Típus|Leírás|
 |--------|----|-----------|
@@ -526,7 +526,7 @@ Ha megpróbál kötést létrehozni `CloudQueueMessage` és a egy hibaüzenet, g
 A C# és a C#-szkript írási több üzenetsorbeli üzenetek esetén a következő típusok egyikének használatával: 
 
 * `ICollector<T>` vagy `IAsyncCollector<T>`
-* [CloudQueue](/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue)
+* [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
 A JavaScript-függvények használata `context.bindings.<name>` eléréséhez az kimeneti üzenetsorban található üzenet. A várólista elem hasznos karakterlánc vagy egy szerializálható JSON objektum használható.
 
@@ -586,4 +586,4 @@ Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshe
 
 <!-- LINKS -->
 
-[CloudQueueMessage]: /dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage
+[CloudQueueMessage]: /dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage

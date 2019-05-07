@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: 2bdc18ba4dc77178d5fcc5d2ba6d89aa109d923c
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: HT
+ms.openlocfilehash: b26af87de8a09f987d69f0441a817638e626b4af
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074140"
+ms.locfileid: "65192237"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Hálózati kapcsolat és az Azure Kubernetes Service (AKS) biztonsági védelmének bevált gyakorlata
 
@@ -47,7 +47,7 @@ Azure CNI hálózat használata esetén a virtuális hálózati erőforrás szer
 
 Az AKS szolgáltatás egyszerű delegálással kapcsolatos további információkért lásd: [más Azure-erőforrásokhoz való hozzáférés delegálásához][sp-delegation].
 
-Mivel minden egyes csomópont és a pod a saját IP-címet kapnak, tervezze meg az AKS alhálózat címtartományát. Az alhálózat elég nagynak kell lennie minden csomópont, a podok és a hálózati erőforrások, központilag telepített IP-címek számára. Minden egyes AKS-fürtöt a saját alhálózatában kell elhelyezni. Ahhoz, hogy a kapcsolat a helyszíni vagy a társviszonyban lévő hálózatok az Azure-ban, ne használjon egymást átfedő IP-címtartományok a meglévő hálózati erőforrásokhoz. Minden egyes csomópont kubenet és Azure CNI-hálózatok egyaránt futtató podok számát az alapértelmezett korlátozva van. Vertikális felskálázási események vagy a fürtfrissítések kezelése érdekében is szüksége lesz elérhető további IP-címek használatát a hozzárendelt alhálózat. A további címtereket különösen fontos, ha Windows Server-tárolók (jelenleg előzetes verzióban elérhető az aks-ben), a csomópont-készletekben a alkalmazni a legújabb biztonsági javítások frissítésére van szükségük. A Windows Server-csomópontokra további információkért lásd: [frissítése az aks-ben csomópontkészletek][nodepool-upgrade].
+Mivel minden egyes csomópont és a pod a saját IP-címet kapnak, tervezze meg az AKS alhálózat címtartományát. Az alhálózat elég nagynak kell lennie minden csomópont, a podok és a hálózati erőforrások, központilag telepített IP-címek számára. Minden egyes AKS-fürtöt a saját alhálózatában kell elhelyezni. Ahhoz, hogy a kapcsolat a helyszíni vagy a társviszonyban lévő hálózatok az Azure-ban, ne használjon egymást átfedő IP-címtartományok a meglévő hálózati erőforrásokhoz. Minden egyes csomópont kubenet és Azure CNI-hálózatok egyaránt futtató podok számát az alapértelmezett korlátozva van. Vertikális felskálázási események vagy a fürtfrissítések kezelése érdekében is szüksége lesz elérhető további IP-címek használatát a hozzárendelt alhálózat.
 
 Az IP-cím kiszámításához szükséges, lásd: [konfigurálása Azure CNI hálózatkezelés az aks-ben][advanced-networking].
 
@@ -101,8 +101,6 @@ spec:
 
 Bejövőforgalom-vezérlőjéhez egy démon, amely egy AKS-csomóponton fut, és a bejövő kéréseket figyeli. Ezután ossza forgalmat a bejövő forgalom erőforrás megadott szabályok alapján. A leggyakoribb bejövőforgalom-vezérlőjéhez alapján [NGINX]. Az AKS nem korlátozza az Ön konkrét vezérlőhöz, így például használhatja más vezérlők [kontúrt][contour], [HAProxy][haproxy], vagy [ Traefik][traefik].
 
-Bejövő tartományvezérlőket kell ütemezni egy Linux-csomóponton. A Windows Server-csomópontok (jelenleg előzetes verzióban érhető el az aks-ben) ne futtassa a bejövőforgalom-vezérlőt. Használjon a YAML-jegyzékfájlt vagy a Helm-diagram telepítési csomópont választókat jelzi, hogy az erőforrás egy Linux-alapú csomóponton futhat. További információkért lásd: [használja a vezérlő csomópont választók ahol podok az aks-ben ütemezett][concepts-node-selectors].
-
 Nincsenek számos forgatókönyvek a bejövő forgalom, többek között a következő útmutatókat:
 
 * [Hozzon létre egy alapszintű bejövőforgalom-vezérlőjéhez külső hálózatok közötti kapcsolatokkal][aks-ingress-basic]
@@ -128,7 +126,7 @@ Load balancer vagy a belépő erőforrások továbbra is fut tovább finomíthat
 
 A hálózati házirend egy Kubernetes-szolgáltatás, amely lehetővé teszi a podok közötti adatforgalom szabályozásához. Ha szeretné, beállítások, például a hozzárendelt címkék, névtérre vagy forgalmat port alapján adatforgalom engedélyezéséhez vagy letiltásához. A hálózati házirendek használatát szabályozza a forgalom egy natív felhőalapú megoldást kínál. Podok dinamikusan az AKS-fürt létrehozásakor, a szükséges hálózati házirendeket a rendszer automatikusan elvégez. Ne használja az Azure-beli hálózati biztonsági csoportok a pod-pod-forgalom szabályozása hálózati házirendek használja.
 
-Hálózati házirend használatára, a funkciót engedélyezni kell egy AKS-fürt létrehozásakor. Nem engedélyezhető a hálózati házirend egy meglévő AKS-fürtre. Tervez, győződjön meg arról, hogy engedélyezze a hálózati házirend-fürtökön, és használhatja őket igény szerint. A hálózati házirend csak a Linux-alapú csomópontokat és az aks-ben podok használandó.
+Hálózati házirend használatára, a funkciót engedélyezni kell egy AKS-fürt létrehozásakor. Nem engedélyezhető a hálózati házirend egy meglévő AKS-fürtre. Tervez, győződjön meg arról, hogy engedélyezze a hálózati házirend-fürtökön, és használhatja őket igény szerint.
 
 A hálózati házirend használatával egy YAML-jegyzékfájlt Kubernetes erőforrásként jön létre. A szabályzatokkal a megadott podok, majd a bejövő és kimenő szabályok határozzák meg, hogy az adatforgalom is. Az alábbi példa egy hálózati házirend vonatkozik a podok a *app: háttérrendszer* címkét alkalmazza őket. A bejövő szabály csak lehetővé teszi a podok érkező forgalmat a *app: előtérbeli* címkét:
 
@@ -188,5 +186,3 @@ Ez a cikk a hálózati kapcsolatot és a biztonsági összpontosít. Hálózati 
 [use-network-policies]: use-network-policies.md
 [advanced-networking]: configure-azure-cni.md
 [aks-configure-kubenet-networking]: configure-kubenet.md
-[concepts-node-selectors]: concepts-clusters-workloads.md#node-selectors
-[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

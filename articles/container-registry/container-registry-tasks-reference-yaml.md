@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: b2398e7db7ed91dee8d85c0c50058bb15b9f4c7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d50d5bc91fbb86e5c0c3d2acc3b55c7d02c71723
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60827255"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192266"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR-feladatok leírása: YAML
 
@@ -452,8 +452,10 @@ ACR-feladatok által elérhető lépések, ha azok végrehajtása változók ala
 * `Run.ID`
 * `Run.Registry`
 * `Run.Date`
+* `Run.Commit`
+* `Run.Branch`
 
-### <a name="run46id"></a>Run&#46;ID
+### <a name="runid"></a>Run.ID
 
 Minden egyes Futtatás keresztül `az acr run`, vagy az alapján létrehozott feladatok aktiválásához `az acr task create` rendelkezik egy egyedi azonosítót. Az azonosító a jelenleg végrehajtás alatt Futtatás jelöli.
 
@@ -478,6 +480,14 @@ steps:
 ### <a name="rundate"></a>Run.Date
 
 Az aktuális UTC időpontig a Futtatás kezdete.
+
+### <a name="runcommit"></a>Run.Commit
+
+Egy véglegesítés egy GitHub-adattárhoz, a véglegesítési azonosító által aktivált feladat.
+
+### <a name="runbranch"></a>Run.Branch
+
+Egy GitHub-tárházban, a kiadásiág-nevet egy véglegesítés által aktivált feladat.
 
 ## <a name="next-steps"></a>További lépések
 

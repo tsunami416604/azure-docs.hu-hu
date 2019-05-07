@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f78275af5faaf19a4993a5ae4414b0163f9a4d9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e95f167cf6dcfe90fff1c2be174ca197cb2aa004
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60487698"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204039"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek folyamatot a Data Factory és a Batch használatával
 > [!NOTE]
@@ -409,7 +409,7 @@ A módszer van néhány kulcsfontosságú összetevők, ismernie kell:
 #### <a name="execute-method"></a>Metódus végrehajtása
 Ez a szakasz további információt nyújt az Execute metódus a kódot.
 
-1. A tagok iterálás a bemeneti gyűjteményben található a [Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) névtér. Az iterációt a blob-gyűjtemény, módosítania kell használni a **BlobContinuationToken** osztály. Lényegében kell használnia a do-a jogkivonattal a hurokból mechanizmusként ciklus során. További információkért lásd: [használja a Blob storage a .NET használatával](../../storage/blobs/storage-dotnet-how-to-use-blobs.md). Itt láthatók egy alapszintű hurok:
+1. A tagok iterálás a bemeneti gyűjteményben található a [Microsoft.WindowsAzure.Storage.Blob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob) névtér. Az iterációt a blob-gyűjtemény, módosítania kell használni a **BlobContinuationToken** osztály. Lényegében kell használnia a do-a jogkivonattal a hurokból mechanizmusként ciklus során. További információkért lásd: [használja a Blob storage a .NET használatával](../../storage/blobs/storage-dotnet-how-to-use-blobs.md). Itt láthatók egy alapszintű hurok:
 
     ```csharp
     // Initialize the continuation token.
@@ -432,7 +432,7 @@ Ez a szakasz további információt nyújt az Execute metódus a kódot.
     } while (continuationToken != null);
 
     ```
-   További információkért lásd a dokumentációban a [ListBlobsSegmented](https://msdn.microsoft.com/library/jj717596.aspx) metódust.
+   További információkért lásd a dokumentációban a [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobssegmented) metódust.
 
 1. A kód használatához blobok rekordkészletből logikailag kerül belül a do-ciklus során. Az a **Execute** metódus, a do-közben hurok nevű metódus adja át a blobok listáját **Calculate**. A metódus egy karakterlánc-változóhoz nevű ad vissza **kimeneti** , amely a szegmensben lévő összes BLOB keresztül kellene iterálni eredménye.
 

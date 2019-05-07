@@ -5,7 +5,7 @@ services: asc-for-iot
 ms.service: ascforiot
 documentationcenter: na
 author: mlottner
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: fbd96ddd-cd9f-48ae-836a-42aa86ca222d
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 0788a62de701cb85a65c7053006e28cf4fffe5cb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1ec6a174d05f8707bbffcc9fb013a98c2eb9196c
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61357203"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65200547"
 ---
 # <a name="access-your-security-data"></a>Biztonsági adatok elérése 
 
@@ -92,7 +92,7 @@ SecurityAlert
     DisplayName
 ```
 
-| IoTHubId                                                                                                       | Eszközazonosító      | AlertSeverity | Megjelenítendő név                           | Darabszám |
+| IoTHubId                                                                                                       | Eszközazonosító      | AlertSeverity | Megjelenítendő név                           | Count |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|-----|
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Magas          | Találgatásos támadás sikeres volt           | 9   |   
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Közepes        | Az eszközön a helyi bejelentkezési próbálkozás sikertelen volt  | 242 |    
@@ -169,7 +169,7 @@ SecurityRecommendation
 | summarize Cnt=count() by IoTHubId, DeviceId, RecommendationSeverity
 ```
 
-| IoTHubId                                                                                                       | Eszközazonosító      | RecommendationSeverity | Darabszám |
+| IoTHubId                                                                                                       | Eszközazonosító      | RecommendationSeverity | Count |
 |----------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----|
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Magas          | 2   |    
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Közepes        | 1 |  

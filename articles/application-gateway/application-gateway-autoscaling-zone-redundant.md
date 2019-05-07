@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/7/2019
 ms.author: victorh
-ms.openlocfilehash: 0506ef82a00b46bf9be14757f15195bcbf8ab432
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b1cdcfc9e81938f3f562046b971407b31a593525
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148902"
+ms.locfileid: "65202914"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>Automatikus skálázás és zónaredundáns az Application Gateway 
 
@@ -22,6 +22,8 @@ Az új v2 szintű Termékváltozatot a következő fejlesztéseket tartalmazza:
 
 - **Az automatikus skálázás**: Az automatikus skálázás Termékváltozat az Application Gateway vagy WAF üzembe helyezésekre alapuló forgalmi terhelés minták módosítása vagy is méretezhetők. Az automatikus skálázással elkerülhető, hogy már a kiépítés során meg kelljen határozni az üzemelő példány méretét vagy a példányszámot. Ez a Termékváltozat valódi rugalmasságot nyújt. A Standard_v2 és WAF_v2 Termékváltozat az Application Gateway rögzített kapacitás (az automatikus skálázás le van tiltva) és az automatikus skálázás engedélyezése mellett módban is működhet. Rögzített kapacitás mód hasznos forgatókönyvek egységes és kiszámítható számítási feladatokkal. Az automatikus skálázási mód akkor előnyös az alkalmazások, amelyeket az alkalmazás forgalmának eltérés.
 - **A redundancia zóna**: Egy Application Gateway vagy a waf-védelem is kiterjedhetnek több rendelkezésre állási zónában, eltávolítás, minden zónában egy Traffic Manager külön Application Gateway-példány üzembe kell. Választhat egy zóna vagy több zónában, az Application Gateway-példány telepítve vannak, ami lehetővé teszi az rugalmasabb zóna hibáira. A háttérkészlet alkalmazások hasonló módon – szét lehetnek osztva a rendelkezésre állási zónák.
+
+  A Zone redudancy érhető el csak ha Azure-beli zónák rendelkezésre állnak. Más régiókban minden más szolgáltatások támogatottak. További információkért lásd: [Mik a rendelkezésre állási zónák az Azure-ban?](../availability-zones/az-overview.md#services-support-by-region)
 - **Statikus virtuális IP-CÍMEK**: Application gateway v2 Termékváltozat támogatja a statikus virtuális IP-cím kizárólag írja be. Ez biztosítja, hogy az application gateway társított virtuális IP-CÍMEK a telepítéshez, akár az újraindítás után élettartama nem változik.
 - **Fejléc Újraírási**: Az Application Gateway lehetővé teszi hozzáadása, eltávolítása vagy frissítse a HTTP-kérelmek és válaszfejlécek v2 szintű Termékváltozatot. További információkért lásd: [Újraírási HTTP-fejlécek az Application Gateway segítségével](rewrite-http-headers.md)
 - **Key Vault-integráció (előzetes verzió)**: Application Gateway v2 HTTPS-kompatibilis figyelői csatolt kiszolgálói tanúsítványokat a Key Vault integration (a nyilvános előzetes verzió) támogatja. További információkért lásd: [Key Vault tanúsítványokkal rendelkező SSL-lezárást](key-vault-certs.md).

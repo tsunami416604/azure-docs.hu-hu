@@ -1,19 +1,19 @@
 ---
-title: Indítsa újra az Azure Database for PostgreSQL-kiszolgálóhoz az Azure CLI használatával
-description: Ez a cikk bemutatja, hogyan újraindítható egy Azure Database for PostgreSQL-kiszolgálóhoz az Azure CLI használatával
+title: Indítsa újra az Azure Database for postgresql-hez - Azure CLI használatával egyetlen kiszolgáló
+description: Ez a cikk bemutatja, hogyan újraindíthatja az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure CLI használatával
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 3/28/2019
-ms.openlocfilehash: 51b3011c040db8576c13868f9fac26cb1e431515
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 0a7cd815724fcebd6311860576e620eb9273523b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420291"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068980"
 ---
-# <a name="restart-azure-database-for-postgresql-server-using-the-azure-cli"></a>Indítsa újra az Azure Database for PostgreSQL-kiszolgálóhoz az Azure CLI használatával
+# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Indítsa újra az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure CLI használatával
 Ez a témakör ismerteti, hogyan újraindítható egy Azure Database for PostgreSQL-kiszolgálóhoz. Indítsa újra a kiszolgálót, a kiszolgáló a műveletet hajt végre egy rövid kimaradás okozó karbantartási okokból szükségessé.
 
 A kiszolgáló újraindítására, ha a szolgáltatás nem foglalt le lesz tiltva. Ha például a szolgáltatás feldolgozás lehet egy korábban kért művelet, például a virtuális magok méretezés.

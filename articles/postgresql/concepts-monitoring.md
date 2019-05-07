@@ -1,19 +1,19 @@
 ---
-title: Figyelése és hangolása az Azure Database for postgresql-hez
-description: Ez a cikk ismerteti a figyelési és finomhangolási funkciókhoz az Azure Database for postgresql-hez.
+title: Figyelése és finomhangolása az Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk ismerteti a figyelési és hangolási funkciók az Azure Database for PostgreSQL – egyetlen kiszolgáló.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/05/2018
-ms.openlocfilehash: 0d5508fe6b07bd5664bd0708960559537d8f6be1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 5e03a3e33d618c393241a649be50fe78632caafe
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456223"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068992"
 ---
-# <a name="monitor-and-tune"></a>Figyelés és hangolás
+# <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Figyelése és finomhangolása az Azure Database for PostgreSQL - kiszolgáló egyetlen
 A kiszolgálók adatainak segítségével hibaelhárítása és optimalizálhatja a számítási feladatok számára. Azure Database for PostgreSQL nyújt betekintést a kiszolgáló viselkedését a különböző megfigyelési lehetőségeket biztosít.
 
 ## <a name="metrics"></a>Mérőszámok
@@ -33,8 +33,8 @@ Ezek a metrikák érhetők el az Azure Database for postgresql-hez:
 |serverlog_storage_percent|Server Log storage százalékban|Százalék|A százalékos aránya ki a kiszolgáló maximális kiszolgálói naplók tárolására használt kiszolgálói naplók tárolásához.|
 |serverlog_storage_usage|Kiszolgálói naplók tárolására használt|Bájt|Kiszolgálói naplók tárolására használt mennyisége.|
 |serverlog_storage_limit|Log storage maximális|Bájt|A maximális kiszolgálói naplók tárolásához, ehhez a kiszolgálóhoz.|
-|active_connections|Az aktív kapcsolatok|Darabszám|A kiszolgáló aktív kapcsolatok száma.|
-|connections_failed|Sikertelen kapcsolatok|Darabszám|Nem sikerült a kiszolgálóval létesített kapcsolatok száma.|
+|active_connections|Az aktív kapcsolatok|Count|A kiszolgáló aktív kapcsolatok száma.|
+|connections_failed|Sikertelen kapcsolatok|Count|Nem sikerült a kiszolgálóval létesített kapcsolatok száma.|
 |network_bytes_egress|Kimenő hálózat|Bájt|Kimenő hálózati forgalom az aktív kapcsolatok között.|
 |network_bytes_ingress|Bejövő hálózat|Bájt|Hálózati az aktív kapcsolatok között.|
 |backup_storage_used|Felhasznált biztonsági mentési tár|Bájt|A felhasznált biztonsági mentési tárterület mennyisége.|

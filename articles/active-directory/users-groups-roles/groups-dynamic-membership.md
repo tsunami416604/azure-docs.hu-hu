@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a78df5169741371c122971afa47cb53ecc5a64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eebb68218fd6f9cbda229aae3d9e544e87441562
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60471642"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192433"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Az Azure Active Directory a dinamikus tagsági szabályok
 
@@ -40,7 +40,7 @@ A tagsági szabály, amely automatikusan feltölti a felhasználók vagy eszköz
 
 * Tulajdonság
 * Művelet
-* Value
+* Érték
 
 A kifejezés a kijelzők sorrendje fontosak szintaktikai hibák elkerülése érdekében.
 
@@ -346,8 +346,8 @@ A következő eszköz attribútumokat is használható.
  Eszköz-attribútum  | Értékek | Példa
  ----- | ----- | ----------------
  accountEnabled | IGAZ, hamis | (device.accountEnabled - eq true)
- displayName | bármilyen karakterlánc típusú értéket |(device.displayName - eq "Rob Iphone")
- deviceOSType | bármilyen karakterlánc típusú értéket | (vagy device.deviceOSType - eq "iPad") – vagy (vagy device.deviceOSType - eq "iPhone")
+ displayName | bármilyen karakterlánc típusú értéket |(device.displayName - eq "Rob iPhone")
+ deviceOSType | bármilyen karakterlánc típusú értéket | (vagy device.deviceOSType - eq "iPad") – vagy (vagy device.deviceOSType - eq "iPhone")<br>(vagy device.deviceOSType-tartalmaz "AndroidEnterprise")<br>(vagy device.deviceOSType - eq "AndroidForWork")
  deviceOSVersion | bármilyen karakterlánc típusú értéket | (device.deviceOSVersion -eq "9.1")
  deviceCategory | egy érvényes eszközkategória-név | (device.deviceCategory - eq "BYOD")
  deviceManufacturer | bármilyen karakterlánc típusú értéket | (device.deviceManufacturer - eq "Samsung")

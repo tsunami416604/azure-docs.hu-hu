@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 93f47529e3be44ff1db4e089bdcdca3eb1b4dea3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76f4061af816c59e644db99913193ed6fcf24d18
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61363417"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205757"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Az Azure monitorban Windows és Linux rendszerű teljesítmény adatforrások
 Teljesítményszámlálók a Windows és Linux cybercrime hardverösszetevők, operációs rendszerek és alkalmazások teljesítményét.  Az Azure Monitor teljesítményszámlálók gyűjthet a teljesítményadatoknak a hosszabb távú elemzésekhez és jelentéskészítési mellett közel valós idejű azokat elemzéshez gyakori időközönként.
@@ -211,10 +211,10 @@ Az alábbi táblázat példákat különböző teljesítményrekordot lekérő l
 | Perf |Minden teljesítményadat |
 | Teljesítményoptimalizált &#124; ahol számítógép == "Sajátgép" |Egy adott számítógép minden teljesítményadat |
 | Teljesítményoptimalizált &#124; ahol CounterName == "Lemezvárólista jelenlegi hossza" |Az egy adott számlálóra minden teljesítményadat |
-| Teljesítményoptimalizált &#124; ahol ObjectName == "Processzor" és a CounterName == "%-ban a processzoron" és a példánynév == "_Total" &#124; AVGCPU összefoglalója = avg(Average) számítógépenként |Átlagos processzorhasználat az összes számítógép |
-| Teljesítményoptimalizált &#124; ahol CounterName == "%-ban a processzoron" &#124; summarize AggregatedValue = max(Max) számítógépenként |Maximális processzorhasználat az összes számítógép |
-| Teljesítményoptimalizált &#124; ahol ObjectName == "Logikai lemez" és a CounterName == "Lemezvárólista jelenlegi hossza" és a számítógép == "MyComputerName" &#124; summarize AggregatedValue = avg(Average) InstanceName szerint |Aktuální délka Fronty lemez átlagos egy adott számítógép összes példányra vetítve |
-| Teljesítményoptimalizált &#124; ahol CounterName == "DiskTransfers/mp" &#124; summarize AggregatedValue = PERCENTILIS (átlagos, 95) számítógép szerint |95. percentilis az átvitel/mp minden számítógépnél |
+| Teljesítményoptimalizált &#124; ahol ObjectName == "Processzor" és a CounterName == "%-ban a processzoron" és a példánynév == "_Total" &#124; AVGCPU összefoglalója = avg(CounterValue) számítógépenként |Átlagos processzorhasználat az összes számítógép |
+| Teljesítményoptimalizált &#124; ahol CounterName == "%-ban a processzoron" &#124; summarize AggregatedValue = max(CounterValue) számítógépenként |Maximális processzorhasználat az összes számítógép |
+| Teljesítményoptimalizált &#124; ahol ObjectName == "Logikai lemez" és a CounterName == "Lemezvárólista jelenlegi hossza" és a számítógép == "MyComputerName" &#124; summarize AggregatedValue = avg(CounterValue) InstanceName szerint |Aktuální délka Fronty lemez átlagos egy adott számítógép összes példányra vetítve |
+| Teljesítményoptimalizált &#124; ahol CounterName == "Átvitel/mp" &#124; summarize AggregatedValue = PERCENTILIS (Avg, 95) számítógép szerint |95. percentilis az átvitel/mp minden számítógépnél |
 | Teljesítményoptimalizált &#124; ahol CounterName == "%-ban a processzoron" és a InstanceName == "_Total" &#124; summarize AggregatedValue = avg(CounterValue) bin (TimeGenerated, 1 óra), a számítógép által |CPU-használat minden óránkénti átlag |
 | Teljesítményoptimalizált &#124; ahol számítógép == "Sajátgép" és a CounterName startswith_cs "%" és a példánynév == "_Total" &#124; summarize AggregatedValue = (Avg, 70) PERCENTILIS szerint bin (TimeGenerated, 1 óra), CounterName | Egy adott számítógép minden % százalékos számláló óránkénti 70 PERCENTILIS |
 | Teljesítményoptimalizált &#124; ahol CounterName == "%-ban a processzoron" és a példánynév == "_Total" és a számítógép == "Sajátgép" &#124; összefoglalója ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] PERCENTILIS (Avg, 75) = ["max(CounterValue)"] = max(CounterValue) bin (TimeGenerated, 1 óra), a számítógép szerint |Óránkénti átlagos, minimális, maximális és 75 – PERCENTILIS CPU-használat egy adott számítógép |

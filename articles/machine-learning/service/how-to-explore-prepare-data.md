@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: 683f916596b4c77ec1dbc2acf1f91876c0752c08
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f9087d1fda7574043879983e31d7b608dbe58798
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028830"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204971"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Ismerje meg, és előkészíti az adatokat az adatkészlet osztályhoz (előzetes verzió)
 
@@ -44,7 +44,7 @@ Ismerje meg, és az adatok előkészítéséhez, lesz szüksége:
 Az adatok kezdeti megismerheti a data-architektúra és a tartalom mintát venni. Jelenleg a [ `sample()` ](https://docs.microsoft.com//python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#sample-sample-strategy--arguments-) adatkészlet osztályból származó módszer támogatja a felső N, véletlenszerű egyszerű és Stratified mintavételezési stratégia.
 
 ```Python
-from azureml.core import Dataset
+from azureml.core.dataset import Dataset
 import random
 
 # create an in-memory Dataset from a local file
@@ -109,7 +109,6 @@ sample_dataset.to_pandas_dataframe()
 1|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE ELENTÉS MENTÉSE|890|LOPÁS|...
 2|10535059|HZ278872|4/15/2016 4:30|004XX S KILBOURN ELENTÉS MENTÉSE|810|LOPÁS|...
 
-
 ## <a name="explore-with-summary-statistics"></a>Ismerje meg az összefoglaló statisztikák
 
  Rendellenességek észlelése, a hiányzó értékeket, vagy hiba történt a száma a [ `get_profile()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-profile-arguments-none--generate-if-not-exist-true--workspace-none--compute-target-none-) metódust. Ez a függvény beolvassa a profil, és az adatokat, ami viszonzásul segíti az összefoglaló statisztikák határozza meg a szükséges előkészítés adatműveletekre kell alkalmazni.
@@ -152,7 +151,7 @@ Az előző szakaszban létrehozott adatkészlet-profilból, láthatjuk, hogy `La
 Először kérje le a legújabb definíció a az adatkészlet [ `get_definition()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-definition-version-id-none-) le az adatokat a formázásra és [ `keep_columns()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#keep-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow), ezért azt csak a cím kívánt oszlopok megtekintésére.
 
 ```Python
-from azureml.core import Dataset
+from azureml.core.dataset import Dataset
 import azureml.dataprep as dprep
 
 # get the latest definition of Dataset
@@ -222,7 +221,6 @@ Ahogyan az alábbi táblázatban kimeneti, a hiányzó földrajzi szélesség vo
 1|10516598|False (Hamis)|41.744107|-87.664494
 2|10519196|False (Hamis)|41.780049|-87.000000
 
-
 Frissítse az adatkészlet-definícióban, [ `update_definition()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#update-definition-definition--definition-update-message-) , hogy az elvégzett Adatátalakítási lépéseket.
 
 ```Python
@@ -240,12 +238,13 @@ dataset.head(3)
 
 Gyakran az adatok együttműködünk tisztítása során, és adatok előkészítése üzemi van szükség az összesített adatok egy részét. Ennek eredményeképpen egyes Előfeltételek a tisztítás részeként létrehozunk előfordulhat, hogy kapcsolja hamisnak bizonyult. Az adatkészlet, amely folyamatosan frissíti, például egy oszlopot, amely eredetileg csak szereplő számok egy adott tartományon belül tartalmazhatja az értékeket későbbi végrehajtások szélesebb köre. Ezek a hibák gyakran hibás folyamatok vagy a hibás adatokat eredményez.
 
-Az adatkészletek támogatja az adatokat, amelyek értékeli ki, a folyamat végrehajtja a helyességi feltételek létrehozását. Ezek a helyességi feltételek tudassa velünk győződjön meg arról, hogy az előfeltételek az adatok továbbra is a pontos és, ha nem, ennek megfelelően hibáinak a kezelése.
+Adatkészletek támogatása az adatokat, amelyek értékeli ki, a folyamat végrehajtja a helyességi feltételek létrehozása. Ezek a helyességi feltételek tudassa velünk győződjön meg arról, hogy az előfeltételek az adatok továbbra is a pontos és, ha nem, ennek megfelelően hibáinak a kezelése.
 
 Például, ha korlátozni szeretné `Latitude` és `Longitude` értékek az adatkészlet, meghatározott numerikus tartományokra, a [ `assert_value()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#assert-value-columns--multicolumnselection--expression--azureml-dataprep-api-expressions-expression--policy--azureml-dataprep-api-engineapi-typedefinitions-assertpolicy----assertpolicy-errorvalue--1---error-code--str----assertionfailed------azureml-dataprep-api-dataflow-dataflow) módszer biztosítja, hogy ez a helyzet, mindig.
 
 ```Python
 from azureml.dataprep import value
+from azureml.core.dataset import Dataset
 
 # get the latest definition of the Dataset
 ds_def = dataset.get_definition()
@@ -282,7 +281,7 @@ print(error.originalValue)
 A speciális eszközök adatkészletekhez egyik oszlopait a kívánt eredmények példáit származtassa lehetővé teszi. Ez lehetővé teszi, adjon meg például az SDK-t, hogy azt generálhat kódot az importálni kívánt átalakítások eléréséhez.
 
 ```Python
-from azureml.dataset import Dataset
+from azureml.core.dataset import Dataset
 
 # create an in-memory Dataset from a local file
 dataset = Dataset.auto_read_files('./data/crime.csv')
@@ -302,8 +301,8 @@ A következő kódot a kívánt kimeneti két példákat tartalmaz ("2016-04-04 
 ```Python
 ds_def = dataset.get_definition()
 ds_def = ds_def.derive_column_by_example(
-        source_columns = "Date", 
-        new_column_name = "Date_Time_Range", 
+        source_columns = "Date",
+        new_column_name = "Date_Time_Range",
         example_data = [("2016-04-04 23:56:00", "2016-04-04 10PM-12AM"), ("2016-04-15 17:00:00", "2016-04-15 4PM-6PM")]
     )
 ds_def.keep_columns(['ID','Date','Date_Time_Range']).head(3)
@@ -329,7 +328,7 @@ Amikor adatokat gyűjtse össze a különböző forrásokból származó, helyes
 Ha például az oszlop `inspections.business.city` az városa neve "San Francisco" több formáját tartalmazza.
 
 ```Python
-from azureml.Dataset import Dataset
+from azureml.core.dataset import Dataset
 
 # create an in-memory Dataset from a local json file
 dataset = Dataset.auto_read_files('./data/city.json')

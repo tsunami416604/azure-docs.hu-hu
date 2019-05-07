@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: b37f16ab914fe4062bc9720ae9cc0139c573fb93
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a8512e128d757e2faf4c3f63c5ad113b1d67b4ee
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154280"
+ms.locfileid: "65204896"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Az SQL Data Warehouse kapacitáskorlátait
 Azure SQL Data Warehouse különböző összetevői számára engedélyezett maximális értékeket.
@@ -25,7 +25,7 @@ Azure SQL Data Warehouse különböző összetevői számára engedélyezett max
 |:--- |:--- |:--- |
 | [Az Adattárházegységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maximális DWU egy egyetlen SQL Data warehouse-hoz | Gen1: DW6000<br></br>Gen2: DW30000c |
 | [Az Adattárházegységek (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Dtu-k alapértelmezett kiszolgálónként |54,000<br></br>Alapértelmezés szerint minden SQL-kiszolgáló (például a myserver.database.windows.net) rendelkezik a DTU-kvótát 54 000, amely lehetővé teszi, hogy legfeljebb DW6000c. Ez a kvóta egyszerűen egy biztonsági korlát. Növelheti a kvóta által [támogatási jegy létrehozása](sql-data-warehouse-get-started-create-support-ticket.md) és kiválasztásával *kvóta* a kérelem típusaként.  A DTU kiszámításához kell, DWU szükséges az összes szorozzuk meg a 7,5-öt vagy 9.0 szorzása a teljes cDWU szükséges. Példa:<br></br>DW6000 x 7.5 = 45 000 egységnyi dtu-k<br></br>9.0 = 54 000 x DW6000c dtu-k.<br></br>Az aktuális DTU-felhasználást az SQL server lehetőség a portálon is megtekintheti. A DTU-kvótába a szüneteltetett és a nem szüneteltetett adatbázisok is beleszámítanak. |
-| Adatbázis-kapcsolat |Maximális párhuzamosan futó munkamenetek megnyitása |1024<br/><br/>Egyidejű nyitott munkamenetek száma a kiválasztott DWU alapján változhat. DWU500c, és legfeljebb 1024 támogatja a fenti nyissa meg a munkamenetek. DWU400c és támogatják az 512 maximális párhuzamos nyissa meg a munkamenet időkorlátjának. Vegye figyelembe, hogy a lekérdezések, amelyekkel végrehajtható egy időben száma korlátozva van. Az egyidejűségi korlát túllépésekor a kérelem hiányzóra egy belső várólista ahol vár feldolgozásra. |
+| Adatbázis-kapcsolat |Maximális párhuzamosan futó munkamenetek megnyitása |1024<br/><br/>Egyidejű nyitott munkamenetek száma a kiválasztott DWU alapján változhat. DWU600c, és legfeljebb 1024 támogatja a fenti nyissa meg a munkamenetek. DWU500c és támogatják az 512 maximális párhuzamos nyissa meg a munkamenet időkorlátjának. Vegye figyelembe, hogy a lekérdezések, amelyekkel végrehajtható egy időben száma korlátozva van. Az egyidejűségi korlát túllépésekor a kérelem hiányzóra egy belső várólista ahol vár feldolgozásra. |
 | Adatbázis-kapcsolat |Maximális memória előkészített utasításokat |20 MB |
 | [Számítási feladatok kezelése](resource-classes-for-workload-management.md) |Maximális párhuzamos lekérdezések |128<br/><br/> Az SQL Data Warehouse legfeljebb 128 lekérdezést és üzenetsorok fennmaradó lekérdezéseket hajthat végre.<br/><br/>A párhuzamos lekérdezések számát csökkentheti, amikor a felhasználók vannak hozzárendelve, magasabb erőforrásosztályokat, vagy ha az SQL Data Warehouse rendelkezik egy alacsonyabb [adattárházegység](memory-and-concurrency-limits.md) beállítás. Néhány lekérdezésnél, például a DMV-lekérdezés, mindig engedélyezett futtassa, és nincs hatással a párhuzamos lekérdezés-korlátot. A párhuzamos lekérdezés-végrehajtás további részletekért tekintse meg a [párhuzamosság maximális értékeket](memory-and-concurrency-limits.md#concurrency-maximums) cikk. |
 | [tempdb](sql-data-warehouse-tables-temporary.md) |Maximális GB |DW100, 399 Gigabájtonként. Ezért DWU1000, a tempdb van méretezve, hogy 3.99 TB. |

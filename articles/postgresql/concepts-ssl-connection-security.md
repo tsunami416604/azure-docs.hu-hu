@@ -1,19 +1,19 @@
 ---
-title: SSL-összekapcsolhatóság konfigurálása az Azure Database for postgresql-hez
-description: Útmutató és információ, Azure Database for PostgreSQL és a kapcsolódó alkalmazások megfelelően használni az SSL-kapcsolatok konfigurálása.
+title: SSL-összekapcsolhatóság konfigurálása az Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Útmutató és információ konfigurálása Azure-adatbázis PostgreSQL - egykiszolgálós és a társított alkalmazások SSL-kapcsolatok megfelelően használni.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/12/2019
-ms.openlocfilehash: 5a0fc99052b18dc1fa837147aa914a473d27d832
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 56611267872ca79d7d2fe3a08c9b9f49a9b1840b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871421"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067407"
 ---
-# <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>SSL-összekapcsolhatóság konfigurálása az Azure Database for postgresql-hez
+# <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>SSL-összekapcsolhatóság konfigurálása az Azure Database for PostgreSQL – egyetlen kiszolgáló
 Azure Database for PostgreSQL részesíti előnyben, csatlakozás a PostgreSQL szolgáltatás Secure Sockets Layer (SSL) használatával az ügyfélalkalmazások számára. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.
 
 Alapértelmezés szerint a PostgreSQL-adatbázisszolgáltatás van konfigurálva az SSL-csatlakozást igényeljen. Igény szerint, az SSL megkövetelésének letiltását az adatbázis-szolgáltatása kapcsolódni, ha az ügyfélalkalmazás nem támogatja az SSL-kapcsolatok. 

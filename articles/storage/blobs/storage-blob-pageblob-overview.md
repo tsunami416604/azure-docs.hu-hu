@@ -9,12 +9,12 @@ ms.date: 01/03/2019
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: a0fc9a8356f4a322ae81a668515a6a60c6001011
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: HT
+ms.openlocfilehash: c0d5108ee235be74f6188bfc8b590069a4e790b5
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141238"
+ms.locfileid: "65192639"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Az Azure-lapblobok áttekintése
 
@@ -43,7 +43,7 @@ A következő ábra a partner, a tárolók és a lapblobokat általános kapcsol
 ![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure1.png)
 
 #### <a name="creating-an-empty-page-blob-of-a-specified-size"></a>Egy megadott méretű üres lapblob létrehozása
-Lapblob, hogy először hozzon létre egy **CloudBlobClient** , a blob storage, a tárfiók eléréséhez használt alap URI-azonosítójú objektum (*pbaccount* az 1. ábra) együtt a  **StorageCredentialsAccountAndKey** objektumot, az alábbi példában látható módon. A példa megjeleníti a hivatkozás létrehozása egy **CloudBlobContainer** objektumot, és ezután hozza létre a tárolót (*testvhds*) Ha még nem létezik. Majd használja a **CloudBlobContainer** objektumazonosító, hozzon létre egy hivatkozást egy **CloudPageBlob** objektum eléréséhez az oldal a blob nevét (os4.vhd) megadásával. A lapblob létrehozásához hívja [CloudPageBlob.Create](/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.create?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Create_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) ad át a maximális mérete a létrehozni kívánt blob. A *blobSize* 512 bájt többszöröse lehet.
+Lapblob, hogy először hozzon létre egy **CloudBlobClient** , a blob storage, a tárfiók eléréséhez használt alap URI-azonosítójú objektum (*pbaccount* az 1. ábra) együtt a  **StorageCredentialsAccountAndKey** objektumot, az alábbi példában látható módon. A példa megjeleníti a hivatkozás létrehozása egy **CloudBlobContainer** objektumot, és ezután hozza létre a tárolót (*testvhds*) Ha még nem létezik. Majd használja a **CloudBlobContainer** objektumazonosító, hozzon létre egy hivatkozást egy **CloudPageBlob** objektum eléréséhez az oldal a blob nevét (os4.vhd) megadásával. A lapblob létrehozásához hívja [CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Create_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) ad át a maximális mérete a létrehozni kívánt blob. A *blobSize* 512 bájt többszöröse lehet.
 
 ```csharp
 using Microsoft.WindowsAzure.StorageClient;
@@ -66,13 +66,13 @@ pageBlob.Create(16 * OneGigabyteAsBytes);
 ```
 
 #### <a name="resizing-a-page-blob"></a>Lapblob átméretezése
-Méretezze át egy lapblob létrehozása után, használja a [átméretezése](/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.resize?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Resize_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) API-t. A kért méret 512 bájt többszöröse lehet.
+Méretezze át egy lapblob létrehozása után, használja a [átméretezése](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.resize?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Resize_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) API-t. A kért méret 512 bájt többszöröse lehet.
 ```csharp
 pageBlob.Resize(32 * OneGigabyteAsBytes); 
 ```
 
 #### <a name="writing-pages-to-a-page-blob"></a>Lapok, egy lapblob írása
-Írási oldalak, használja a [CloudPageBlob.WritePages](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.beginwritepages?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_BeginWritePages_System_IO_Stream_System_Int64_System_String_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_System_AsyncCallback_System_Object_) metódust.  Ez lehetővé teszi, hogy legfeljebb 4MBs szekvenciális meg írni. Az eltolás ír egy 512 bájtos határhoz kell kezdődniük (startingOffset % 512 == 0), és a egy 512 határon – 1 teljes.  Az alábbi példakód bemutatja, hogyan hívhat meg **WritePages** egy BLOB:
+Írási oldalak, használja a [CloudPageBlob.WritePages](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.beginwritepages?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_BeginWritePages_System_IO_Stream_System_Int64_System_String_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_System_AsyncCallback_System_Object_) metódust.  Ez lehetővé teszi, hogy legfeljebb 4MBs szekvenciális meg írni. Az eltolás ír egy 512 bájtos határhoz kell kezdődniük (startingOffset % 512 == 0), és a egy 512 határon – 1 teljes.  Az alábbi példakód bemutatja, hogyan hívhat meg **WritePages** egy BLOB:
 
 ```csharp
 pageBlob.WritePages(dataStream, startingOffset); 
@@ -88,7 +88,7 @@ Az alábbi ábrán látható külön 2 írási műveletek:
 2.  Kezdőár írási művelet 1024 hosszának 4096 eltolása 
 
 #### <a name="reading-pages-from-a-page-blob"></a>Lapblob lapok olvasása
-Lapok olvasása, használja a [CloudPageBlob.DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.icloudblob.downloadrangetobytearray?view=azure-dotnet) bájttartomány olvasni a lapblob metódust. Ez lehetővé teszi, hogy töltse le a teljes blob vagy bájttartomány kezdve minden olyan eltolás a blobban. Olvasásakor, az eltolás nem rendelkezik az 512 többszöröse elindításához. Olvasott bájtok NUL oldal, ha a szolgáltatás nulla bájtot ad vissza.
+Lapok olvasása, használja a [CloudPageBlob.DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.icloudblob.downloadrangetobytearray?view=azure-dotnet) bájttartomány olvasni a lapblob metódust. Ez lehetővé teszi, hogy töltse le a teljes blob vagy bájttartomány kezdve minden olyan eltolás a blobban. Olvasásakor, az eltolás nem rendelkezik az 512 többszöröse elindításához. Olvasott bájtok NUL oldal, ha a szolgáltatás nulla bájtot ad vissza.
 ```csharp
 byte[] buffer = new byte[rangeSize];
 pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, pageBlobOffset, rangeSize); 
@@ -97,7 +97,7 @@ A következő ábrán látható 256 és a 4352 rangeSize BlobOffSet egy olvasás
 
 ![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
 
-Ha egy ritkásan feltöltött blobot, érdemes csak töltse le a érvényes régiók elkerülje 0 bájt egressing és letöltési késés csökkentése érdekében.  Annak megállapításához, hogy mely lapok élvezik adatokat, használjon [CloudPageBlob.GetPageRanges](/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.getpageranges?view=azure-dotnet). Ezután a visszaadott tartományok enumerálásakor, és töltse le az adatokat az összes tartományt. 
+Ha egy ritkásan feltöltött blobot, érdemes csak töltse le a érvényes régiók elkerülje 0 bájt egressing és letöltési késés csökkentése érdekében.  Annak megállapításához, hogy mely lapok élvezik adatokat, használjon [CloudPageBlob.GetPageRanges](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.getpageranges?view=azure-dotnet). Ezután a visszaadott tartományok enumerálásakor, és töltse le az adatokat az összes tartományt. 
 ```csharp
 IEnumerable<PageRange> pageRanges = pageBlob.GetPageRanges();
 

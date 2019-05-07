@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 30d18e1e23767ce3a179221714e001574f8e9778
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 6c7fcb1429438ee024cb226b63cfcdcab05ed9f8
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075490"
+ms.locfileid: "65205805"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Az Azure Cosmos DB etcd API (előzetes verzió) bemutatása
 
@@ -23,7 +23,7 @@ Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szol
 A etcd API az Azure Cosmos DB lehetővé teszi, hogy a háttérrendszer tárolóként az Azure Cosmos DB [Azure-beli Kubernetes](../aks/index.yml). az Azure Cosmos DB API etcd jelenleg előzetes verzióban érhető el. Az Azure Cosmos DB a etcd protokoll valósítja meg. Etcd API az Azure Cosmos DB, az automatikusan a fejlesztőket magas megbízhatóságú [elérhető](high-availability.md), [globálisan elosztott](distribute-data-globally.md) Kubernetes. Ez az API lehetővé teszi, hogy a Kubernetes állapot-felügyeleti méretezhetők egy teljes körűen felügyelt felhőbeli natív PaaS-szolgáltatás a fejlesztők számára. 
 
 > [!NOTE]
-> Ellentétben más az Azure Cosmos DB API etcd API-fiók az Azure Portalon, parancssori felület vagy az SDK-k nem használhatók. Csak a Resource Manager-sablon üzembe helyezésével helyezheti üzembe a etcd API-fiók részletes lépéseiért lásd: [kiépítéséről Azure-beli Kubernetes az Azure Cosmos DB](bootstrap-kubernetes-cluster.md) cikk.  
+> Ellentétben más az Azure Cosmos DB API etcd API-fiók az Azure Portalon, parancssori felület vagy az SDK-k nem használhatók. Csak a Resource Manager-sablon üzembe helyezésével helyezheti üzembe a etcd API-fiók részletes lépéseiért lásd: [kiépítéséről Azure-beli Kubernetes az Azure Cosmos DB](bootstrap-kubernetes-cluster.md) cikk. Az Azure Cosmos DB etcd API jelenleg korlátozott előzetes verzióban érhető el. Is [regisztráljon az előzetes verzióra](https://aka.ms/cosmosetcdapi-signup), bejelentkezési űrlap kitöltésével.
 
 ## <a name="wire-level-compatibility"></a>Átviteli szintű kompatibilitása
 

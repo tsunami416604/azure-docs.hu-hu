@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3e113639dbe4220b943d49dc610ee22b6416e12a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b561091eedb43e1c77f3c97951beeb92bfcf4751
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60832774"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65202922"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Vásárlása és konfigurálása az Azure App Service SSL-tanúsítvány
 
 Az oktatóanyag bemutatja, hogyan teheti biztonságossá a [App Service-alkalmazás](https://docs.microsoft.com/azure/app-service/) vagy [függvényalkalmazás](https://docs.microsoft.com/azure/azure-functions/) (beszerzés) létrehozásával az App Service-tanúsítvány [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) , és kösse azt egy App Service-alkalmazás.
 
 > [!TIP]
-> App Service-tanúsítványok bármilyen Azure és az Azure Services használható, és nem korlátozódik az App Services. Ehhez szüksége egy App Service-tanúsítvány, hogy ezzel bárhol felhasználható helyi PFX másolatának létrehozásához. További információkért lásd: [létrehozása egy App Service-tanúsítvány PFX helyi példányának](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/).
+> App Service-tanúsítványok bármilyen Azure és az Azure Services használható, és nem korlátozódik az App Services. Ehhez szüksége egy App Service-tanúsítvány, hogy ezzel bárhol felhasználható helyi PFX másolatának létrehozásához. További információkért lásd: [létrehozása egy App Service-tanúsítvány PFX helyi példányának](https://blogs.msdn.microsoft.com/benjaminperkins/2017/04/12/export-an-azure-app-service-certificate-pfx-powershell/).
 >
 
 ## <a name="prerequisites"></a>Előfeltételek

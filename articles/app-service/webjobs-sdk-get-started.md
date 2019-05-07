@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: b824c99a015cfa2c1d1c75e2a1257eff482e8dd6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a9e902a13071abefff71dc4db089380979c8d459
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60833199"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65198614"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az eseményvezérelt háttérben történő feldolgozás az Azure WebJobs SDK használatának első lépései
 
@@ -195,7 +195,7 @@ Verziótól kezdve 3.x, explicit módon telepíteni kell a tárolási kötési b
 
    A `QueueTrigger` attribútum arra utasítja a modul egy Azure Storage-üzenetsor nevű új üzenet íródik a függvény hívására `queue`. Az üzenetsorban található üzenet tartalmának metódus kódja vannak megadva a `message` paraméter. A metódus törzsét, ahol dolgozza fel az eseményindítóra vonatkozó információt. Ebben a példában a kód csak naplózza az üzenetet.
 
-   A `message` paraméter nem rendelkezik karakterláncot. Akkor is kötést hozhasson létre egy JSON-objektumot, egy bájttömböt vagy egy [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) objektum. [Üzenetsor eseményindító használati](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Kell kötni a paraméter-típusok különböző minden kötési típus (például az üzenetsorok, blobok és táblázatok) rendelkezik.
+   A `message` paraméter nem rendelkezik karakterláncot. Akkor is kötést hozhasson létre egy JSON-objektumot, egy bájttömböt vagy egy [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) objektum. [Üzenetsor eseményindító használati](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Kell kötni a paraméter-típusok különböző minden kötési típus (például az üzenetsorok, blobok és táblázatok) rendelkezik.
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 

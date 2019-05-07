@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 0294c7eefb6cad17ef83c24a59c37a42e68861b9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e4ec13453c204885f38b10272e76245e641fbef9
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728550"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203594"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Blob storage-kötések az Azure Functions szolgáltatáshoz
 
@@ -389,13 +389,13 @@ Ha a blob neve  *{20140101}-soundfile.mp3*, a `name` a függvénykódot a válto
 
 ## <a name="trigger---metadata"></a>Eseményindító - metaadatok
 
-A blob eseményindító számos metaadat-tulajdonságot tartalmaz. Ezek a tulajdonságok a kötési kifejezésekben való használata más kötések részeként vagy a kód paramétereiben használható. Ezekkel az értékekkel rendelkezik a azonos szemantikákkal, a [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob?view=azure-dotnet) típusa.
+A blob eseményindító számos metaadat-tulajdonságot tartalmaz. Ezek a tulajdonságok a kötési kifejezésekben való használata más kötések részeként vagy a kód paramétereiben használható. Ezekkel az értékekkel rendelkezik a azonos szemantikákkal, a [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) típusa.
 
 |Tulajdonság  |Típus  |Leírás  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|A riasztást kiváltó blob elérési útja.|
 |`Uri`|`System.Uri`|A blob URI-azonosítóját az elsődleges helyen.|
-|`Properties` |[BlobProperties](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties)|A blob rendszer tulajdonságai. |
+|`Properties` |[BlobProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobproperties)|A blob rendszer tulajdonságai. |
 |`Metadata` |`IDictionary<string,string>`|A felhasználó által definiált metaadatok a BLOB.|
 
 Például az alábbi C#-szkript és a JavaScript-példák jelentkezzen be az elérési utat a riasztást kiváltó blob, beleértve a tároló:
@@ -426,7 +426,7 @@ Az Azure Functions-tárolók visszaigazolások nevű tárolóban lévő blob *az
 * A blob neve
 * Az ETag címke (például egy blob verzió azonosítója: "0x8D1DC6E70A277EF")
 
-A blob újrafeldolgozás kényszerítéséhez blob fogadását, hogy a BLOB törlése a *azure-webjobs-gazdagépek* tároló manuálisan. Amíg újrafeldolgozás előfordulhat, hogy nem történik meg azonnal, garantált arra, hogy később időben történnek.
+A blob újrafeldolgozás kényszerítéséhez blob fogadását, hogy a BLOB törlése a *azure-webjobs-gazdagépek* tároló manuálisan. Újrafeldolgozás előfordulhat, hogy nem történik meg azonnal, akkor garantálta később időben megtörténjen.
 
 ## <a name="trigger---poison-blobs"></a>Eseményindító - ártalmas blobok
 
@@ -1068,7 +1068,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**type** | n/a | Meg kell `blob`. |
 |**direction** | n/a | Meg kell `out` a kimeneti kötés. A kivételeket jeleztük a [használati](#output---usage) szakaszban. |
 |**name** | n/a | A változó, amely a függvény kódját a blob neve.  Állítsa be `$return` való hivatkozáshoz függvény visszatérési értéke.|
-|**path** |**BlobPath** | A blobco elérési útja. |
+|**path** |**BlobPath** | A blob-tároló elérési útja. |
 |**kapcsolat** |**kapcsolat**| A tárolási kapcsolati karakterlánc használata ehhez a kötéshez tartalmazó alkalmazásbeállítás neve. Azon alkalmazásbeállítás neve "AzureWebJobs" kezdődik, ha csak a maradékot Itt a neve is megadhat. Például, ha a beállított `connection` a "MyStorage", a Functions futtatókörnyezete úgy tűnik, a beállítás, amely alkalmazás neve "AzureWebJobsMyStorage." Ha meghagyja a `connection` üres, a Functions futtatókörnyezete használja az alapértelmezett tárolási kapcsolati karakterlánc nevű Alkalmazásbeállítás `AzureWebJobsStorage`.<br><br>A kapcsolati karakterlánc nem lehet egy általános célú tárfiók olyan [csak blob storage-fiók](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 |n/a | **Access (Hozzáférés)** | Azt jelzi, hogy meg fog kell olvasása vagy írása. |
 

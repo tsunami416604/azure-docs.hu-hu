@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 56d91d7801c576064b941ac6089a52e74b4a3b7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d1c1ed7388ff55e4f17559742054cea973f65ba7
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61031405"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192277"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
@@ -94,3 +94,27 @@ Fürtműveletek korlátozva, ha aktív frissítési műveletek történnek, vagy
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>Áthelyezhető a fürt egy másik előfizetésben vagy az előfizetés az új bérlőhöz fürt?
 
 Az AKS-fürt egy másik előfizetésben, vagy a fürt egy új bérlő előfizetésének tulajdonos erőforrásfájljait áthelyezték, a fürt miatt elveszett szerepkör-hozzárendelések és a szolgáltatás egyszerű jogok funkciók elvesznek. **Az AKS nem támogatja a mozgó fürtök előfizetések vagy a bérlők között** miatt ez a korlátozás.
+
+## <a name="im-receiving-errors-trying-to-use-features-that-require-virtual-machine-scale-sets"></a>A virtual machine scale sets igénylő szolgáltatások használata közben hibák kapok
+
+*A hibaelhárítási segítséget az aka.ms/aks-vmss-kompatibilitási van irányítva.*
+
+Hibák, amelyek jelzik, hogy az AKS-fürt nem szerepel, például az alábbi példa egy virtuális gép méretezési jelenhet meg:
+
+**AgentPool "agentpool" be van állítva, automatikus méretezés, mert engedélyezve van, de nem szerepel a Virtual Machine Scale Sets**
+
+Az funkciók például az automatikus méretező fürt vagy több csomópont-készletek, az AKS-fürtök kell létrehozni, a virtual machine scale sets használó. Rendszer által visszaadott hibák, ha megpróbálja használni a virtual machine scale sets eseményektől függő funkciók és a egy rendszeres, a virtual machine scale set AKS-fürt célozhat meg. Virtuális gép méretezési csoport támogatni fogja a jelenleg az aks-ben előzetes verzióban érhető el.
+
+Kövesse a *megkezdése előtt* lépések a megfelelő doc megfelelően regisztrálja a virtuális gép méretezési funkció előzetes verzió, és az AKS-fürt létrehozása:
+
+* [Fürt automatikus méretező használatához](cluster-autoscaler.md)
+* [Létrehozhat és használhat több csomópontkészletek](use-multiple-node-pools.md)
+ 
+## <a name="what-naming-restrictions-are-enforced-for-aks-resources-and-parameters"></a>AKS-erőforrások és a paraméterek a milyen vonatkozó elnevezési korlátozás kényszerítése
+
+*A hibaelhárítási segítséget van irányítva az aka.ms/aks-elnevezési-szabályai*
+
+Az Azure-platform és az AKS által megvalósított vonatkozó elnevezési korlátozás. Ha egy erőforrás neve vagy a paraméter megsérti e korlátozások egyike, hibát ad vissza, amely kéri, adja meg egy másik beviteli. A következő általános elnevezési szabályok érvényesek:
+
+* Az AKS *MC_* erőforráscsoport-név egyesíti az erőforráscsoport nevét és az erőforrás neve. Automatikusan létrehozott szintaxisát `MC_resourceGroupName_resourceName_AzureRegion` nem lehet nagyobb, mint 80 karakter. Szükség esetén csökkentse a hosszát az erőforráscsoport neve vagy az AKS-fürt nevét.
+* A *dnsPrefix* kell kezdődnie és végződnie számokat. Érvényes karakterek:, számokat és kötőjelet (-). A *dnsPrefix* nem tartalmazhat különleges karaktereket, például egy pontot (.).

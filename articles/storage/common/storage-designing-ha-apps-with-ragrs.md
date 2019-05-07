@@ -1,5 +1,5 @@
 ---
-title: Írásvédett georedundáns tárolás (RA-GRS) használatával magas rendelkezésre állású Aaplications kialakítása |} A Microsoft Docs
+title: Írásvédett georedundáns tárolás (RA-GRS) használatával magas rendelkezésre állású alkalmazások tervezése |} A Microsoft Docs
 description: Hogyan tervezhet rugalmas, így szolgáltatáskimaradások kezeléséhez magas rendelkezésre állású alkalmazások Azure-RA-GRS tároló használatával.
 services: storage
 author: tamram
@@ -10,12 +10,12 @@ ms.date: 01/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6dc497ac2afd54965485ff553bb25f47d7cf0491
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c4d213a7c08162ef0b107572cfb79b6e96e271d6
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65139345"
+ms.locfileid: "65205500"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS használatával magas rendelkezésre állású alkalmazások tervezése
 
@@ -148,7 +148,7 @@ Egy másik szempont, hogyan legyen kezelve az alkalmazás több példánya, és 
 
 Három fő lehetősége a gyakoriságát, az elsődleges régióban újrapróbálkozások figyelése annak érdekében, hogy mikor váltson át a másodlagos régióba, és módosítsa az alkalmazás futtatásához csak olvasható módban van.
 
-*   Adjon hozzá egy kezelő-a [ **újrapróbálkozás** ](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.retrying.aspx) -es azonosítójú esemény a [ **OperationContext** ](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.aspx) objektumot adja át a Storage-kérelmek – Ez a mód Ez a cikk jelenik meg, és a hozzájuk tartozó mintában használt. Ezek az események aktiválódik, amikor az ügyfél újrapróbálkozik a kéréseket, így nyomon követheti, hogy milyen gyakran az ügyfél egy elsődleges végponton Újrapróbálkozást lehetővé tevő hibát észlel-e.
+*   Adjon hozzá egy kezelő-a [ **újrapróbálkozás** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) -es azonosítójú esemény a [ **OperationContext** ](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) objektumot adja át a Storage-kérelmek – Ez a mód Ez a cikk jelenik meg, és a hozzájuk tartozó mintában használt. Ezek az események aktiválódik, amikor az ügyfél újrapróbálkozik a kéréseket, így nyomon követheti, hogy milyen gyakran az ügyfél egy elsődleges végponton Újrapróbálkozást lehetővé tevő hibát észlel-e.
 
     ```csharp 
     operationContext.Retrying += (sender, arguments) =>
@@ -159,7 +159,7 @@ Három fő lehetősége a gyakoriságát, az elsődleges régióban újrapróbá
     };
     ```
 
-*   Az a [ **Evaluate** ](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.retrypolicies.iextendedretrypolicy.evaluate.aspx) metódus az egyéni újrapróbálkozási szabályzatot, futtathatja egyéni kódot, amikor egy újrapróbálkozási kerül sor. Amikor egy újrapróbálkozási rögzítése mellett történik, ez is lehetővé teszi, hogy az újrapróbálkozási viselkedés módosításához.
+*   Az a [ **Evaluate** ](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) metódus az egyéni újrapróbálkozási szabályzatot, futtathatja egyéni kódot, amikor egy újrapróbálkozási kerül sor. Amikor egy újrapróbálkozási rögzítése mellett történik, ez is lehetővé teszi, hogy az újrapróbálkozási viselkedés módosításához.
 
     ```csharp 
     public RetryInfo Evaluate(RetryContext retryContext,

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/26/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 4b7cda593bd4dd39a7220aa282529535c6a63bea
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: f3c1a946afb7f51a1c7543dabae7f2f42ff466be
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64914544"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199126"
 ---
 Az Azure H-sorozatú virtuális gépek (VM) úgy tervezték, hogy a vezetői szintű teljesítményt, méretezhetőséget MPI, és optimalizálhatja a költségeket különböző valós HPC számítási feladatok esetében.
 
@@ -25,7 +25,7 @@ HB és a hibrid kapcsolat virtuális gépek funkciója 100 Gb/s Mellanox EDR Inf
 
 H-sorozatú virtuális gépek magas CPU-használati vagy nagy méretű memóriát biztosít alapvető által vezérelt alkalmazásokhoz vannak optimalizálva. H-sorozatú virtuális gépek szolgáltatás 8 és 16 Intel Xeon E5-2667 v3 processzor-mag, 7 vagy 14 GB RAM, processzormagonként, és nem Hyper-Threading technológia. H-sorozat funkciók 56 Gb/s Mellanox FDR InfiniBand egy nem blokkoló fat a fa RDMA egységes teljesítményt konfigurációját. H-sorozatú virtuális gépek támogatják az Intel MPI 5.x és MS-MPI.
 
-## <a name="hb-series"></a>HB-sorozat
+## <a name="hb-series"></a>HB sorozat
 
 Prémium szintű Storage: A Premium Storage támogatja a gyorsítótárazást: Támogatott
 
@@ -35,7 +35,7 @@ Prémium szintű Storage: A Premium Storage támogatja a gyorsítótárazást: T
 
 <br>
 
-## <a name="hc-series"></a>Hibrid kapcsolat-sorozat
+## <a name="hc-series"></a>HC sorozat
 
 Prémium szintű Storage: A Premium Storage támogatja a gyorsítótárazást: Támogatott
 
@@ -61,8 +61,8 @@ Prémium szintű Storage gyorsítótárazást:  Nem támogatott
 | Standard_H16 | 16 | Intel Xeon E5-2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 |  56 | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
 | Standard_H8m | 8 | Intel Xeon E5-2667 v3 | 112 | 40 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 1000 | 32 | 2 |
 | Standard_H16m | 16 | Intel Xeon E5-2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
-| Standard h16r méretű <sup>1</sup> | 16 | Intel Xeon E5-2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | 56 | 2000 | Intel 5.x, MS-MPI | 64 | 4 |
-| Standard h16mr méretű <sup>1</sup> | 16 | Intel Xeon E5-2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | 56 | 2000 | Intel 5.x, MS-MPI | 64 | 4 |
+| Standard h16r méretű <sup>1</sup> | 16 | Intel Xeon E5-2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
+| Standard h16mr méretű <sup>1</sup> | 16 | Intel Xeon E5-2667 v3 | 224 | 80 | 3.2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 4 |
 
 <sup>1</sup> MPI-alkalmazások, a dedikált RDMA-háttérhálózatot engedélyezve van FDR InfiniBand hálózat, amely ultra rendkívül alacsony késést és magas sávszélességet kínál.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 0f8f1c5585eb13506baea1e5ddbe611cc931758e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c6a5ec8685de53d7a611328025d5da8e5ce698a3
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60899233"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204891"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
 
@@ -87,7 +87,7 @@ A nyers adatpontokat (vagyis a cikkek, amelyek Analytics-lekérdezést, és vizs
 
 Összesített adatok (azt jelenti, számát, átlagokat és egyéb statisztikai adatok Metrikaböngésző látható), egy 90 napig 1 perces időfelbontási szint megmaradnak.
 
-[Hibakeresési pillanatképei](../../azure-monitor/app/snapshot-debugger.md) hét napig tárolja. A megőrzési házirend van beállítva a alkalmazásonként. Ha ez az érték növelése van szüksége, kérheti növelését az Azure Portalon nyissa meg egy támogatási esetet.
+[Hibakeresési pillanatképei](../../azure-monitor/app/snapshot-debugger.md) tizenöt napig tárolja. A megőrzési házirend van beállítva a alkalmazásonként. Ha ez az érték növelése van szüksége, kérheti növelését az Azure Portalon nyissa meg egy támogatási esetet.
 
 ## <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
 Az Ön adatai, és ha már van szervezeti fiókja, a munkacsoportja többi tagjával. 

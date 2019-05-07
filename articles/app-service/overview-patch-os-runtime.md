@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 576627c96b19dd3563ab21a5d478b779e4a3ed64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 086f5773a8ae4085a8e5bc0637bdebe5f2df4fb0
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60838994"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203334"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Az operációs rendszer és a futtatókörnyezet javítása az Azure App Service-ben
 
@@ -37,7 +37,7 @@ Biztonsági okokból a biztonsági adatok meghatározott tulajdonságairól ninc
 
 Az Azure kezeli a fiók alatt két szinttel, a fizikai kiszolgálóknak és a Vendég virtuális gépek (VM), az App Service-erőforrásokat futtató operációs rendszer javításait. Mindkét frissülnek havonta, amelyek igazodnak-e a havi [frissítő kedd](https://technet.microsoft.com/security/bulletins.aspx) ütemezés. Ezeket a frissítéseket a rendszer automatikusan alkalmazza, úgy, hogy garantálja a magas rendelkezésre állású SLA-t az Azure-szolgáltatásokat. 
 
-Hogyan telepítse a frissítéseket a részletes információkért lásd: [az App Service-OS frissítés mögött Magic Quadrant Nyelvszakértőinkből](https://blogs.msdn.microsoft.com/appserviceteam/2018/01/18/demystifying-the-magic-behind-app-service-os-updates/).
+Hogyan telepítse a frissítéseket a részletes információkért lásd: [az App Service-OS frissítés mögött Magic Quadrant Nyelvszakértőinkből](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html).
 
 ## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Hogyan foglalkozik az Azure jelentős biztonsági rések?
 

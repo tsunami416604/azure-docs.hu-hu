@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 258113f5201ad3d09df6119dec738d528e640c40
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a4ce1ad347742886e7d89a32bbeb60c2e0281409
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269350"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65198563"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Végpontok közötti SSL konfigurálása az Application Gateway a PowerShell használatával
 
@@ -38,7 +38,7 @@ Ebben a forgatókönyvben lesz:
 * Hozzon létre két alhálózattal nevű **appgwsubnet** és **appsubnet**.
 * Hozzon létre egy kis application gateway támogató végpontok közötti SSL-titkosítást, a korlátok az SSL protokoll verziója és a titkosító csomagok.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -174,7 +174,7 @@ Minden konfigurációs elemet az application gateway létrehozása előtt vannak
    ```
 
    > [!NOTE]
-   > Ebben a lépésben megadott tanúsítvány nyilvános kulcsát a .pfx tanúsítvány megtalálható a háttérrendszer a kell lennie. Exportálja a tanúsítványt (főtanúsítványt nem), a jogcím, tanúsítás és mintafelismerési (CER) formátumban a háttér-kiszolgálóra telepíthető, és használhatja ezt a lépést. Ezen lépés listáinak a háttéralkalmazáshoz a az application gateway.
+   > Az előző lépésben megadott tanúsítvány nyilvános kulcsát a .pfx tanúsítvány megtalálható a háttérrendszer a kell lennie. Exportálja a tanúsítványt (főtanúsítványt nem), a jogcím, tanúsítás és mintafelismerési (CER) formátumban a háttér-kiszolgálóra telepíthető, és használhatja ezt a lépést. Ezen lépés listáinak a háttéralkalmazáshoz a az application gateway.
 
    Ha az Application Gateway v2 szintű Termékváltozatot használja, hozzon létre egy megbízható főtanúsítvány-hitelesítési tanúsítvány helyett. További információkért lásd: [az Application Gateway teljes körű SSL áttekintése](ssl-overview.md#end-to-end-ssl-with-the-v2-sku):
 

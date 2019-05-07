@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
-ms.openlocfilehash: be5719d2c383c838ef70c6862c1055c3374e05e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 956cf45eb9e246f2e1f917f2bf487ac14deba90e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60362447"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204250"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>A StorSimple eszköz webproxy konfigurálása
 
@@ -68,7 +68,7 @@ Használja a varázsló végigvezeti a webalkalmazás-proxy konfigurációs lép
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    
     Alapértelmezés szerint a 8080-as TCP-port száma van megadva.
-4. Válassza ki a hitelesítéstípust, **NTLM**, **alapszintű**, vagy **None**. Alapszintű van a legkevésbé biztonságos hitelesítés esetében a proxykiszolgáló-konfigurációt. NT LAN Manager (NTLM) egy rendkívül biztonságos és összetett hitelesítési protokoll, amely egy háromutas üzenetkezelő rendszer (néha négy további integritás kötelező esetén) a felhasználó hitelesítéséhez. Az alapértelmezett hitelesítési NTLM. További információkért lásd: [alapszintű](http://hc.apache.org/httpclient-3.x/authentication.html) és [NTLM-hitelesítés](http://hc.apache.org/httpclient-3.x/authentication.html). 
+4. Válassza ki a hitelesítéstípust, **NTLM**, **alapszintű**, vagy **None**. Alapszintű van a legkevésbé biztonságos hitelesítés esetében a proxykiszolgáló-konfigurációt. NT LAN Manager (NTLM) egy rendkívül biztonságos és összetett hitelesítési protokoll, amely egy háromutas üzenetkezelő rendszer (néha négy további integritás kötelező esetén) a felhasználó hitelesítéséhez. Az alapértelmezett hitelesítési NTLM. További információkért lásd: [alapszintű](https://hc.apache.org/httpclient-3.x/authentication.html) és [NTLM-hitelesítés](https://hc.apache.org/httpclient-3.x/authentication.html). 
    
    > [!IMPORTANT]
    > **A StorSimple-Eszközkezelő szolgáltatásban az eszköz figyelési diagramok nem működnek, ha ez a alapvető, vagy az NTLM-hitelesítés engedélyezve van az eszköz a proxykiszolgáló beállításait. A figyelési diagramok működik győződjön meg arról, hogy a hitelesítés a NONE értékre van állítva kell.**

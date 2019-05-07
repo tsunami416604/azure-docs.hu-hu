@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: 15eded28e38279ea01bf019566d4fda5e7ac6c3e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4e8bdc63daa7450a88c2fcf4b7e878e18cea260d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325334"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199115"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>Azure SignalR Service-példány létrehozása
 
@@ -39,6 +39,4 @@ Az alkalmazás egy SignalR Service-példányhoz fog csatlakozni az Azure-ban.
 
 1. A SignalR Service-példány üzembe helyezésének megkezdéséhez kattintson a **Létrehozás** gombra.
 
-1. A példány üzembe helyezését követően nyissa meg a portálon, és keresse meg a beállítások lapon. Módosítsa a szolgáltatás mód beállítást *kiszolgáló nélküli*.
-
-    ![SignalR Service mód](../media/signalr-concept-azure-functions/signalr-service-mode.png)
+1. A példány üzembe helyezését követően nyissa meg a portálon, és keresse meg a beállítások lapon. Módosítsa a szolgáltatás mód beállítást *kiszolgáló nélküli* csak akkor, ha az Azure SignalR Service kötés az Azure Functions vagy a REST API-t használja. Meghagyhatja a *klasszikus* vagy *alapértelmezett* más módon.

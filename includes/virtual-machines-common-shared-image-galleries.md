@@ -5,22 +5,21 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: fd1dd1f8af8fee9b1fecb05405381dba879facde
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0fe1de9bb674c66d1b665de25ee579bc86e42c75
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149821"
+ms.locfileid: "65192364"
 ---
 Megosztott lemezkép-katalógus szolgáltatása segít kialakítani a struktúra és a szervezet a felügyelt VM-rendszerképeit körül. Megosztott kép katalógusok adja meg:
 
 - Képek felügyelt globális replikálását.
 - Verziókezelés és a könnyebb kezelhetőség képek csoportosítása.
-- Újabb skálázási korlátait. Egyéni rendszerképek lehetővé 600 egyidejű virtuális gépeket, miközben megosztott kép katalógusok 1000 egyidejű virtuális gépek engedélyezése.
-- Zónaredundáns tárolás használatával magas rendelkezésre állású képek. Akkor is, ha egy adatközpont leáll, hozzáférhet a képek az adott régióban.
+- Győződjön meg arról, a képek a Zónaredundáns Társzolgáltatási (ZRS) fiókokkal magas rendelkezésre állású rendelkezésre állási zónákat támogató régiókban. A ZRS nagyobb rugalmasság a zónaszintű meghibásodásokkal szemben kínál.
 - Előfizetések között, és még a bérlők számára az RBAC használatával között megosztást.
 
 Egy megosztott lemezkép-katalógus használatával megoszthatja a különböző felhasználók, az egyszerű szolgáltatások vagy AD-csoportokat a képeket a szervezeten belül. Megosztott lemezképeket több régióban, a gyorsabb skálázás az üzembe helyezést lehet replikálni.
@@ -92,12 +91,10 @@ Forrásrégiók az alábbi táblázatban láthatók. Az összes nyilvános régi
 
 ## <a name="limits"></a>Limits 
 
-Felügyelt képeket akkor legfeljebb 600 egyidejű virtuális lemezképet, a megosztott kép katalógusok, az Ez az 1000 egyidejű virtuális lemezkép verzióját növekszik.
-
 Nincsenek korlátai, előfizetésenként, megosztott kép katalógusok-erőforrások üzembe helyezéséhez:
-- 10 megosztott kép minták száma előfizetésenként és régiónként
-- 200 lemezkép-definíciókat, előfizetésenként és régiónként
-- 2000 lemezkép-verzió előfizetésenként és régiónként
+- megosztott kép 100 katalógusok esetén előfizetésenként és régiónként
+- 1000 lemezkép-definíciókat, előfizetésenként és régiónként
+- 10 000 lemezkép-verzió, előfizetésenként és régiónként
 
 További információkért lásd: [ellenőrizze az erőforrás-használati korlátozások](https://docs.microsoft.com/azure/networking/check-usage-against-limits) hogyan ellenőrizheti az aktuális használati példák.
  
