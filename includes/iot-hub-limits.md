@@ -4,16 +4,16 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 1bdf73dc6a4edf0c170b51e70fca2128d22e0eb8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 104849557a8580e16fa1860b7919d1c0252debe9
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804175"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150346"
 ---
 Az alábbi táblázat a különböző szolgáltatásszinten, S1, S2, S3 és F1 korlátait. A költségek információ az egyes *egység* tekintse meg az egyes szintek [Azure IoT Hub díjszabás](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-| Erőforrás | S1 – Standard | S2 – Standard | S3 – Standard | F1 – Ingyenes |
+| Resource | S1 – Standard | S2 – Standard | S3 – Standard | F1 – Ingyenes |
 | --- | --- | --- | --- | --- |
 | Üzenet/nap |400,000 |6,000,000 |300,000,000 |8,000 |
 | Egységek maximális száma |200 |200 |10 |1 |
@@ -25,7 +25,7 @@ Az alábbi táblázat a különböző szolgáltatásszinten, S1, S2, S3 és F1 k
 
 Az alábbi táblázat az IoT Hub-erőforrásokra vonatkozó korlátokat.
 
-| Erőforrás | Korlát |
+| Resource | Korlát |
 | --- | --- |
 | Azure-előfizetésenkénti fizetős IoT Hubok maximális száma |50 |
 | Azure-előfizetésenkénti ingyenes IoT Hubok maximális száma |1 |
@@ -40,9 +40,9 @@ Az alábbi táblázat az IoT Hub-erőforrásokra vonatkozó korlátokat.
 | A felhőből egy eszközre történő kézbesítések maximális száma <br/> üzenet |100 |
 | A felhőből egy eszközre irányuló üzenetre válaszoló <br/> visszajelzési üzenetek maximális kézbesítésszáma |100 |
 | A felhőből egy eszközre irányuló üzenetre válaszoló <br/> visszajelzési üzenetek maximális élettartama |2 nap |
-| Ikereszköz maximális mérete <br/> (címkék, jelentett tulajdonságok és kívánt tulajdonságok) | 8 KB |
+| [Ikereszköz maximális mérete](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) <br/> (címkék, jelentett tulajdonságok és kívánt tulajdonságok) | 8 KB |
 | Az ikereszköz sztringértékének maximális mérete | 4 KB |
-| Az ikereszközben található objektum maximális mélysége | 5 |
+| [Az ikereszközben található objektum maximális mélysége](../articles/iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format) | 5 |
 | A közvetlen metódus hasznos adatainak maximális mérete | 128 KB |
 | Feladatelőzmények maximális megőrzési ideje | 30 nap |
 | Egyidejű feladatok maximális száma | 10 (S3 esetén), 5 (S2 esetén), 1 (S1 esetén) |
@@ -51,10 +51,8 @@ Az alábbi táblázat az IoT Hub-erőforrásokra vonatkozó korlátokat.
 | Egyidejűleg csatlakoztatott eszköz adatfolyamok maximális száma | 50 (az S1, S2, S3, és csak az F1) |
 | Maximális eszköz stream adatátvitel | 300 MB / nap (az S1, S2, S3, és csak az F1) |
 
-
 > [!NOTE]
 > Ha az Azure-előfizetéssel 50-nél több fizetős IoT hubra van szüksége, forduljon a Microsoft Support.
-
 
 > [!NOTE]
 > Csatlakozhat egyetlen IoT hubra eszközök maximális számának jelenleg 1 000 000. Ha ezt a korlátot növelni szeretné, lépjen kapcsolatba [Support](https://azure.microsoft.com/support/options/).

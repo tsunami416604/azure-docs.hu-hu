@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 00c8d7cefd7539cd53de8081f44fe861bd063bee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 63b9cc26b927f78598422575646c876d90954bed
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60489549"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143305"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -205,8 +205,8 @@ Megtekintheti, és a HTTP-proxy frissítése a Configuration Manager eszközzel.
 ### <a name="configure-proxy-server-settings"></a>Proxykiszolgáló-beállításainak konfigurálása
 Ha **rendszerproxy használata** átjáró használja a HTTP-proxy beállítása, a proxybeállítást diahost.exe.config és diawp.exe.config. Ha nincs proxy diahost.exe.config és diawp.exe.config van megadva, átjáró felhőszolgáltatásához csatlakozva közvetlenül a proxy áthaladás nélkül. Az alábbi eljárás ismerteti a diahost.exe.config fájl frissítése.
 
-1. A Fájlkezelőben győződjön meg a C:\Program Files\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config biztonsági mentése az eredeti fájlt egy biztonságos példányát.
-2. Indítsa el a Notepad.exe rendszergazdaként futtatja, és nyissa meg a szöveges fájl "C:\Program Files\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config. Az alapértelmezett címke a system.net található, az alábbi kódban látható módon:
+1. A Fájlkezelőben, győződjön meg arról, biztonságos másolatát *C:\\\\Program Files\\Microsoft Data Management Gateway\\2.0\\megosztott\\diahost.exe.config* , Készítsen biztonsági másolatot az eredeti fájlt.
+2. Indítsa el a Notepad.exe rendszergazdaként futtatja, és nyissa meg a szöveges fájl *C:\\\\Program Files\\Microsoft Data Management Gateway\\2.0\\megosztott\\ diahost.exe.config*. Az alapértelmezett címke a system.net található, az alábbi kódban látható módon:
 
     ```
     <system.net>
@@ -280,7 +280,7 @@ Akkor is tiltsa le/engedélyezze az automatikus frissítési szolgáltatás a k�
 
 [Az egyetlen csomópontos átjárót]
 1. Indítsa el a Windows Powershellt az átjárót tartalmazó számítógépen.
-2. Váltson arra a C:\Program Files\Microsoft integrációs Runtime\3.0\PowerShellScript\ mappára.
+2. Váltson a *C:\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\*  mappát.
 3. Futtassa a következő parancsot, kapcsolja be az automatikus frissítési szolgáltatás kikapcsolása (Letiltás).
 
     ```powershell
@@ -293,7 +293,7 @@ Akkor is tiltsa le/engedélyezze az automatikus frissítési szolgáltatás a k�
     ```
    [Több csomópontos magas rendelkezésre állású és méretezhető átjáró](data-factory-data-management-gateway-high-availability-scalability.md)
 1. Indítsa el a Windows Powershellt az átjárót tartalmazó számítógépen.
-2. Váltson arra a C:\Program Files\Microsoft integrációs Runtime\3.0\PowerShellScript\ mappára.
+2. Váltson a *C:\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\*  mappát.
 3. Futtassa a következő parancsot, kapcsolja be az automatikus frissítési szolgáltatás kikapcsolása (Letiltás).
 
     Átjáró magas rendelkezésre állású szolgáltatás egy extra AuthKey param szükség.
@@ -310,7 +310,7 @@ Akkor is tiltsa le/engedélyezze az automatikus frissítési szolgáltatás a k�
 Miután telepítette az átjárót, a következő módszerek valamelyikével indíthatja el Data Management Gateway Configuration Manager:
 
 1. Az a **keresési** ablakot, írja be **adatkezelési átjáró** elérni ezt a segédprogramot.
-2. Futtassa a végrehajtható fájlt **ConfigManager.exe** mappában: **C:\Program Files\Microsoft Data Management Gateway\2.0\Shared**
+2. Futtassa a végrehajtható fájlt *ConfigManager.exe* mappában: *C:\\\\programfájljainak\\a Microsoft adatkezelési átjáró\\2.0\\megosztott*.
 
 ### <a name="home-page"></a>Kezdőlap
 A kezdőlap lehetővé teszi, hogy a következő műveleteket:
@@ -511,7 +511,7 @@ Ez a szakasz azt ismerteti, hogyan hozhat létre, és regisztrálnia kell egy á
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. Az Azure PowerShellben váltson arra a mappára: **C:\\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\\**. Futtatás **RegisterGateway.ps1** a helyi változókhoz kapcsolódó **$Key** , ahogyan az alábbi parancsot. Ez a szkript a ügyfél ügynöke telepítve van a gépén a korábban létrehozott logikai átjáróval regisztrálja.
+1. Az Azure PowerShellben váltson arra a mappára: *C:\\\\programfájljainak\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\*. Futtatás *RegisterGateway.ps1* a helyi változókhoz kapcsolódó **$Key** , ahogyan az alábbi parancsot. Ez a szkript a ügyfél ügynöke telepítve van a gépén a korábban létrehozott logikai átjáróval regisztrálja.
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

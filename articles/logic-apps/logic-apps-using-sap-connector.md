@@ -8,29 +8,34 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 04/19/2019
 tags: connectors
-ms.openlocfilehash: 468e73c64037a76da612cba8d6c2e9507dd3ac87
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0ee8b164aa46c4fe2f66f27d9a41d0282c676907
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120167"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65136784"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás az Azure Logic Apps a SAP-rendszerek
 
-Ez a cikk azt ismerteti, hogyan férhet hozzá a helyszíni SAP erőforrásokat belül egy logikai alkalmazást az SAP ERP központi összetevő (ECC)-összekötő használatával. Az összekötő ECC- és S/4 HANA rendszerek működik a helyszíni. Az SAP ECC összekötő üzenet vagy adatok integráció az SAP Netweaver-alapú rendszerek köztes dokumentum (az idoc-hoz) vagy az üzleti alkalmazás alkalmazásprogramozási felületet (BAPI) vagy a távoli függvény hívása (RFC) keresztül támogatja.
+Ez a cikk azt ismerteti, hogyan férhet hozzá a helyszíni SAP erőforrásokat belül egy logikai alkalmazást az SAP-összekötő használatával. Az összekötő működését az SAP a klasszikus ilyen R/3 ECC rendszerek helyi kiadások. Az összekötő emellett lehetővé teszi az integrációt az az SAP a újabb HANA-alapú például S/4 HANA, SAP-rendszereinket bárhol üzemeltetik azokat – helyszíni vagy felhőben.
+Az SAP-összekötő üzenet vagy adatok integráció az SAP Netweaver-alapú rendszerek köztes dokumentum (az idoc-hoz) vagy az üzleti alkalmazás alkalmazásprogramozási felületet (BAPI) vagy a távoli függvény hívása (RFC) keresztül támogatja.
 
-Az SAP ECC-összekötőt használja a <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .NET-összekötő (Ice) könyvtár</a> , és ezek a műveletek vagy műveleteket biztosít:
+Az SAP-összekötőt használja a <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .NET-összekötő (Ice) könyvtár</a> , és ezek a műveletek vagy műveleteket biztosít:
 
 - **SAP küldése**: Küldjön az idoc-hoz, vagy hívja a BAPI-funkciók tRFC keresztül az SAP-rendszereinket.
 - **SAP fogadjon**: Az idoc-hoz vagy BAPI függvényhívások kapnak az SAP-rendszereinket tRFC keresztül.
 - **Sémák készítése**: Hozza létre az SAP-összetevők sémákat az idoc-hoz vagy BAPI vagy RFC.
 
+A fenti műveletek minden SAP összekötő támogatja az alapszintű hitelesítés, a felhasználónevet és jelszót. Az összekötő támogatja a <a href="https://help.sap.com/doc/saphelp_nw70/7.0.31/en-US/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true"> biztonságos hálózati kommunikációs (SNC)</a>, amellyel az SAP Netweaver egyszeri bejelentkezéshez, vagy egy külső biztonsági termék által biztosított további biztonsági funkciók. 
+
 Az SAP-összekötő helyszíni SAP-rendszerek keresztül integrálódik a [a helyszíni adatátjáró](https://www.microsoft.com/download/details.aspx?id=53127). Küldési forgatókönyvekben, például, amikor a Logic Apps egy üzenetet küld egy SAP-rendszerrel az átjáró RFC-ügyfélként működik, és az SAP, a Logic Apps érkező kérelmeket továbbítja.
 Ehhez hasonlóan a Receive esetben az átjáró kiszolgálóként működik egy RFC, amely kéréseket fogad az SAP és a logikai alkalmazás továbbítja. 
 
 Ez a cikk bemutatja, hogyan Példa logikai alkalmazásokat hozhat létre, amelyek során a korábban ismertetett integrációs forgatókönyvek kiterjedő SAP integrálhatók.
+
+<a name="pre-reqs"></a>
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,6 +48,12 @@ Ez a cikk követni, ezek az elemek szükségesek:
 * A <a href="https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server" target="_blank">SAP-alkalmazáskiszolgáló</a> vagy <a href="https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm" target="_blank">SAP Üzenetkiszolgáló</a>
 
 * Töltse le és telepítse a legújabb [a helyszíni adatátjáró](https://www.microsoft.com/download/details.aspx?id=53127) bármely a helyi számítógépen. Győződjön meg arról, hogy az átjáró beállításához az Azure Portalon a folytatás előtt. Az átjáró segítségével biztonságosan érheti el adatait, és a helyszíni erőforrások vannak. További információkért lásd: [telepítése a helyszíni adatátjáró Azure Logic Apps](../logic-apps/logic-apps-gateway-install.md).
+
+* SNC használ az egyszeri bejelentkezés (SSO), majd győződjön meg arról, hogy az átjáró fut-e be, szemben a SAP-felhasználó le van képezve. Ha módosítani szeretné az alapértelmezett fiók, jelölje be **fiók módosítása** , és adja meg a hitelesítő adatokat.
+
+   ![Átjáró fiók módosítása](./media/logic-apps-using-sap-connector/gateway-account.png)
+
+* SNC engedélyezi egy külső biztonsági termékkel, másolja a SNC-könyvtár vagy ugyanazon a gépen fájlokat, ahol az átjáró telepítve van. SNC-termékek például <a href="https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm">sapseculib</a>, Kerberos, NTLM, és így tovább.
 
 * Töltse le és telepítse a legújabb SAP ügyféloldali kódtár, amely jelenleg <a href="https://softwaredownloads.sap.com/file/0020000001865512018" target="_blank">(Ice) 3.0.21.0 SAP-összekötő a Microsoft .NET-keretrendszer 4.0-s és a Windows 64 bites (x64)</a>, mint a helyszíni adatátjáró ugyanazon a számítógépen. Ezt a verziót telepíteni vagy újabb ezen okok miatt:
 
@@ -114,7 +125,7 @@ Az Azure Logic Apps- [művelet](../logic-apps/logic-apps-overview.md#logic-app-c
       Ha a **bejelentkezési típus** tulajdonsága **csoport**, ezeket a tulajdonságokat, amelyben a általában nem kötelező, szükségesek: 
 
       ![SAP üzenet kiszolgálói kapcsolat létrehozása](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png) 
-
+      
    2. Ha elkészült, kattintson a **Létrehozás** gombra. 
    
       A Logic Apps állít be, és gondoskodik róla, hogy a kapcsolat megfelelően működik, a kapcsolat tesztelése.
@@ -375,23 +386,45 @@ Szükség esetén töltse le, vagy a létrehozott sémák tárolása adattárak,
 
 2. Sikeres után futtassa, nyissa meg az integrációs fiók, és ellenőrizze, hogy létezik-e a létrehozott létrehozott sémák.
 
+## <a name="enable-secure-network-communications-snc"></a>Biztonságos hálózati kommunikációs (SNC) engedélyezése
+
+Mielőtt elkezdené, győződjön meg arról, hogy megfelel-e a fent felsorolt [Előfeltételek](#pre-reqs):
+
+* A helyszíni adatátjáró az SAP-rendszer ugyanazon a hálózaton lévő gépen telepítve van.
+
+* Az egyszeri bejelentkezést, átjáró fut be, az SAP-felhasználó van leképezve.
+
+* SNC-könyvtár, amely a további biztonsági funkciókat biztosít az adatátjáró ugyanazon a számítógépen telepítve van. Ezek a Példák többek között <a href="https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm">sapseculib</a>, Kerberos, NTLM, és így tovább.
+
+A kérelmek, illetve a SAP-rendszerhez SNC engedélyezéséhez jelölje be a **használata SNC** SAP kapcsolat jelölőnégyzetet, és adja meg ezeket a tulajdonságokat:
+
+   ![Kapcsolat az SAP SNC konfigurálása](media/logic-apps-using-sap-connector/configure-sapsnc.png) 
+
+   | Tulajdonság   | Leírás |
+   |------------| ------------|
+   | **SNC-könyvtár** | SNC-könyvtár neve vagy Ice telepítési hely viszonyított elérési utat vagy abszolút elérési utat. Példa sapsnc.dll vagy.\security\sapsnc.dll vagy c:\security\sapsnc.dll  | 
+   | **SNC SSO** | SNC-n keresztül történő csatlakozáskor a SNC identitás általában szolgál a hívó hitelesítéséhez. Egy másik lehetőség, hogy bírálja felül, hogy a felhasználó/jelszó-információkat a hívó hitelesítéséhez használható, de a sor továbbra is titkosítva van.|
+   | **SNC saját név** | A legtöbb esetben ez elhagyható. A telepített SNC-megoldás általában tudja a saját SNC nevét. Csak a "több identitást" támogató megoldások szükség lehet az identitás a cél/kiszolgáló használandó megadása |
+   | **SNC-Partner neve** | A háttérrendszer SNC neve |
+   | **SNC-minőségi védelme** | A cél/kiszolgáló SNC-kommunikációhoz használandó szolgáltatás-minőségi. Alapértelmezett érték a háttér-rendszer határozza meg. Maximális érték határozza meg a biztonsági termék SNC használt |
+   |||
+
+   > [!NOTE]
+   > SNC_LIB és SNC_LIB_64 környezeti változók nem állítható a gépen adatátjáró és SNC-könyvtár esetében. Ha a beállítása, azok lenne elsőbbséget élveznek az összekötőn keresztül SNC-könyvtár érték.
+   >
+
 ## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
 
 Az alábbiakban a jelenleg ismert problémák és korlátozások az SAP-összekötőhöz:
+
+* SAP hívása, vagy az üzenet csak egyetlen küldés tRFC együttműködik. Az üzleti alkalmazás alkalmazásprogramozási felületet (BAPI) véglegesítés minta, például több tRFC-hívást ugyanabban a munkamenetben, nem támogatott.
 
 * Az SAP-trigger nem támogatja a kötegelt Idoc fogadása SAP. Ez a művelet RFC kapcsolódási hiba az SAP-rendszerhez, és az átjáró közötti eredményezhet.
 
 * Az SAP-trigger nem támogatja az adatok átjárófürtök. Feladatátvételi esetenként az adatok átjárócsomópontnak, amely az SAP-rendszerrel kommunikál eltérhetnek az aktív csomópontra, nem várt viselkedést eredményez. Küldési forgatókönyvek esetén az adatok átjárófürtök támogatottak.
 
-* A fogadási esetben egy nem null válasz visszaküldése nem támogatott. A logikai alkalmazást egy trigger és a egy válaszművelet nem várt viselkedést eredményez. 
-
-* SAP hívása, vagy az üzenet csak egyetlen küldés tRFC együttműködik. Az üzleti alkalmazás alkalmazásprogramozási felületet (BAPI) véglegesítés minta, például több tRFC-hívást ugyanabban a munkamenetben, nem támogatott.
-
-* A mellékleteket tartalmazó RFC-k az SAP és sémák műveleteinek generálására felhasznált mindkét küldése nem támogatottak.
-
 * Az SAP-összekötő jelenleg nem támogatja az SAP-útválasztó karakterláncokat. A helyszíni adatátjáró léteznie kell ugyanazon a helyi hálózaton, mint az SAP-rendszerhez kapcsolódni szeretne.
 
-* Az átalakítás a hiányzó DATS és TIMS SAP mező üres, minimális és maximális értékeket (null), a későbbi frissítések a helyszíni adatátjáróhoz tartozó változhat.
 
 ## <a name="get-support"></a>Támogatás kérése
 

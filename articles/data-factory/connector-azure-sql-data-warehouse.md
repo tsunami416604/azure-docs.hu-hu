@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 319ea3eaac2fcaa3c8e29680e125b7e29018ecc3
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: cf5713fecd354f1e1d2c0ce7d28439b5b8b785ec
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926598"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153425"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -229,7 +229,7 @@ Felügyelt identitás-hitelesítést használ, kövesse az alábbi lépéseket:
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services) cikk. Ez a szakasz az Azure SQL Data Warehouse adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Másolja az adatokat, vagy az Azure SQL Data Warehouse, állítsa be a **típus** tulajdonság, az adatkészlet **AzureSqlDWTable**. A következő tulajdonságok támogatottak:
+Másolja az adatokat, vagy az Azure SQL Data Warehouse, hogy a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -248,6 +248,7 @@ Másolja az adatokat, vagy az Azure SQL Data Warehouse, állítsa be a **típus*
             "referenceName": "<Azure SQL Data Warehouse linked service name>",
             "type": "LinkedServiceReference"
         },
+        "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
             "tableName": "MyTable"
         }
@@ -375,7 +376,7 @@ Adatok másolása az Azure SQL Data Warehouse, állítsa a fogadó típusa máso
 | rejectType | Megadja, hogy a **rejectValue** akkor Szövegkonstansérték vagy százalékos.<br/><br/>Engedélyezett értékek a következők **érték** (alapértelmezett), és **százalékos**. | Nem |
 | rejectSampleValue | Mielőtt PolyBase újraszámítja a visszautasított sorok aránya beolvasandó sorok számát határozza meg.<br/><br/>Megengedett értékek: 1, 2, stb. | Igen, ha a **rejectType** van **százalékos**. |
 | useTypeDefault | Itt adhatja meg, hogyan szeretné kezelni a PolyBase kér le adatokat a szövegfájl elválasztójellel tagolt szöveges fájlok a hiányzó értékeket.<br/><br/>További tudnivalók a ezt a tulajdonságot a következő argumentumok szakaszában [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx).<br/><br/>Engedélyezett értékek a következők **igaz** és **hamis** (alapértelmezett). | Nem |
-| writeBatchSize | Adatok beszúrása SQL-táblát, amikor a puffer mérete eléri a **writeBatchSize**. Érvényes, csak ha a PolyBase nem használja.<br/><br/>Az engedélyezett érték **egész** (sorok száma). | Nem. Az alapértelmezett érték a 10000. |
+| writeBatchSize | Az SQL-táblába beilleszti sorok száma **kötegenként**. Érvényes, csak ha a PolyBase nem használja.<br/><br/>Az engedélyezett érték **egész** (sorok száma). Alapértelmezés szerint a Data Factory a megfelelő kötegméret sor mérete alapján dinamikus meghatározásához. | Nem |
 | writeBatchTimeout | Várjon, amíg a kötegelt insert művelet befejezését, mielőtt azt az időkorlátot. Érvényes, csak ha a PolyBase nem használja.<br/><br/>Az engedélyezett érték **timespan**. Példa: "00: 30:00" (30 perc). | Nem |
 | preCopyScript | Adja meg a másolási tevékenység futtatása előtt az adatok Azure SQL Data Warehouse-bA írt minden egyes futtatásához egy SQL-lekérdezést. Ez a tulajdonság használatával az előre betöltött adatokat. | Nem |
 
@@ -423,12 +424,13 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
 
 2. A **Forrás-adatformátum** azonban **Parquet**, **ORC**, vagy **tagolt szöveg**, az alábbi konfigurációkkal:
 
-   1. `folderPath` és `fileName` helyettesítő karaktert tartalmazó szűrő nem tartalmaznak.
-   2. `rowDelimiter` meg kell **\n**.
-   3. `nullValue` vagy értékre van állítva **üres karakterlánc** ("") vagy alapértelmezett, balra, és `treatEmptyAsNull` alapértelmezett, balra, vagy állítsa true.
-   4. `encodingName` értéke **utf-8**, amelynek alapértelmezett értéke.
-   5. `escapeChar`, `quoteChar` és `skipLineCount` nincsenek megadva. A PolyBase támogatási kihagyása fejlécsort, amely konfigurálható `firstRowAsHeader` az ADF-ben.
-   6. `compression` lehet **tömörítés nélküli**, **GZip**, vagy **Deflate**.
+   1. Mappa elérési útja nem tartalmazhat helyettesítő karaktert tartalmazó szűrő.
+   2. Fájlnév egy egyetlen fájlra mutat, vagy `*` vagy `*.*`.
+   3. `rowDelimiter` meg kell **\n**.
+   4. `nullValue` vagy értékre van állítva **üres karakterlánc** ("") vagy alapértelmezett, balra, és `treatEmptyAsNull` alapértelmezett, balra, vagy állítsa true.
+   5. `encodingName` értéke **utf-8**, amelynek alapértelmezett értéke.
+   6. `quoteChar`, `escapeChar`, és `skipLineCount` nincsenek megadva. A PolyBase támogatási kihagyása fejlécsort, amely konfigurálható `firstRowAsHeader` az ADF-ben.
+   7. `compression` lehet **tömörítés nélküli**, **GZip**, vagy **Deflate**.
 
 ```json
 "activities":[

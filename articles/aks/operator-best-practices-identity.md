@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: iainfou
-ms.openlocfilehash: 1c20e7796d152c9198786c491f9a61752d88ea6f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f98e38556458b8d8a675d1e3f985aacfca022082
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726622"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074160"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Hitelesítés és engedélyezés az Azure Kubernetes Service (AKS) ajánlott eljárásai
 
@@ -88,7 +88,7 @@ RBAC segítségével Kubernetes-erőforrásokhoz való hozzáférés szabályoz�
 
 ## <a name="use-pod-identities"></a>Használja a pod-identitások
 
-**Ajánlott eljárásokkal kapcsolatos útmutatás** – ne használja a podok vagy tárolórendszerképek belül a rögzített hitelesítő adatokat, azok fennáll a kockázata, kitettség használatra vagy visszaélésre. Ehelyett használja a pod identitások használva automatikusan kéri a központi hozzáférés az Azure AD identitáskezelési megoldás.
+**Ajánlott eljárásokkal kapcsolatos útmutatás** – ne használja a podok vagy tárolórendszerképek belül a rögzített hitelesítő adatokat, azok fennáll a kockázata, kitettség használatra vagy visszaélésre. Ehelyett használja a pod identitások használva automatikusan kéri a központi hozzáférés az Azure AD identitáskezelési megoldás. Pod identitások Linux podok és csak a tárolórendszerképek való használatra szolgál.
 
 Ha a podok más Azure-szolgáltatásokhoz, például a Cosmos DB, a Key Vault vagy a Blob Storage-ban való hozzáférésre van szükségük a pod kell eléréséhez szükséges hitelesítő adatokat. A hozzáférési hitelesítő adatokat akkor beszélünk, ha a tároló rendszerképét az vagy egy Kubernetes-titokként alkalmazza, de kell manuálisan létrehozott és hozzárendelt. Gyakran előfordul a hitelesítő adatok között podok újra felhasználhatók, és nem rendszeresen elforgatva.
 

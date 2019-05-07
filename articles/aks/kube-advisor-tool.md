@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 29f98e334b0d2527b5159e1a5394109c5041024a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 03c5eb2e32a0a8ec51844511276d9efba5651068
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60465367"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073761"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Kubernetes-ajánlott eljárások a fürtben lévő keresése
 
@@ -21,6 +21,8 @@ Nincsenek számos ajánlott eljárásokat, amelyek segítséget a legjobb teljes
 ## <a name="about-kube-advisor"></a>Kube-advisor szolgáltatásról
 
 A [kube-advisor eszköz] [ kube-advisor-github] egy egyetlen tároló lehet a fürtön futnak. További információ a központi telepítések Kubernetes API-kiszolgálót és a javasolt javítások készletét adja vissza.
+
+A kube-advisor eszköz jelentései erőforrás kérelem és a hiányzó PodSpecs a Windows-alkalmazások, valamint a Linuxos alkalmazások korlátai, de a kube-advisor eszköz magát egy Linux-pod ütemezése. Egy adott operációs rendszer használatával egy csomópont készleten való futtatáshoz podot ütemezhet egy [csomópont választó] [ k8s-node-selector] a pod-konfigurációban.
 
 > [!NOTE]
 > A kube-advisor eszköz támogatja a Microsoft legjobb történik. Hibák és javaslatok kell benyújtani a Githubon.
@@ -73,3 +75,4 @@ Ha az eszköz egy fürtöt, amely nem az RBAC-t futtat, nem karbantartása nem s
 
 [kube-cpumem]: https://github.com/Azure/azure-quickstart-templates
 [kube-advisor-github]: https://github.com/azure/kube-advisor
+[k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

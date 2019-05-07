@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: e000c034d10efc652f328fa8d1db8d1902fac693
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 2adcbad55236917685ddcdbabe4809f36ab5a730
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026117"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153055"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Telepítse és futtassa a Speech Service-tárolók
 
@@ -178,7 +178,7 @@ Ha a tároló a [gazdaszámítógép](#the-host-computer), a következő eljár�
 
 Használja a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) parancs futtatása bármely három tárolóra. A parancs paraméterei a következők:
 
-**A privát előzetes verzió ideje alatt**, a számlázási beállítások a tároló elindításához érvényesnek kell lennie, de nem használatra lesznek számlázva.
+**Az előzetes verzióban**, a számlázási beállítások a tároló elindításához érvényesnek kell lennie, de Ön nem számlázzuk a használatra.
 
 | Helyőrző | Érték |
 |-------------|-------|
@@ -226,7 +226,7 @@ Ezzel a paranccsal:
 
 ### <a name="speech-to-text"></a>Diktálás
 
-A tároló websocket-alapú lekérdezési végpontot API-k, keresztül elért biztosít [Speech services SDK-dokumentáció](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
+A tároló websocket-alapú lekérdezési végpontot API-k, keresztül elért biztosít a [beszéd SDK](index.yml).
 
 Alapértelmezés szerint a Speech SDK-t használja az online beszédszolgáltatások. A tároló használatához módosítania az inicializálási metódust. Az alábbi példák.
 

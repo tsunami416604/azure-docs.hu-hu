@@ -1,6 +1,6 @@
 ---
-title: A saját Azure AD-szerepkörök hozzáférési felülvizsgálat végrehajtása az Azure Active Directory - a PIM |} A Microsoft Docs
-description: Ismerje meg, hogyan hajtsa végre az Azure AD-szerepkörök hozzáférési felülvizsgálat Azure AD Privileged Identity Management (PIM).
+title: Tekintse át az Azure AD PIM - Azure Active Directory-szerepkörök hozzáférési |} A Microsoft Docs
+description: Ismerje meg az Azure AD Privileged Identity Management (PIM) az Azure AD-szerepkörök hozzáférési felülvizsgálata.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,15 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66f16e02716ceb94d2c8b10bb246a13dc566229c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3850af026ea13e1920aea65e18358ebb04ef0d25
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60287812"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65140969"
 ---
-# <a name="perform-an-access-review-of-my-azure-ad-roles-in-pim"></a>A PIM a saját Azure AD-szerepkörök hozzáférési felülvizsgálat végrehajtása
+# <a name="review-access-to-azure-ad-roles-in-pim"></a>Az Azure AD-szerepköröket a PIM hozzáférés felülvizsgálata
+
 Az Azure Active Directory (AD) Privileged Identity Management (PIM) egyszerűbbé teszi, hogy hogyan kezelhetik a vállalatok számára az erőforrások az Azure AD és más Microsoft online szolgáltatásaihoz, például az Office 365 vagy a Microsoft Intune emelt szintű hozzáférés.  
 
 Ha egy rendszergazdai szerepkörrel vannak rendelve, a szervezet kiemelt szerepkörű rendszergazda megkérheti, hogy rendszeresen győződjön meg arról, hogy továbbra is szerepkörre van szüksége, hogy a feladatnak. Előfordulhat, hogy kap egy e-mailt, amelyben a hivatkozást, vagy megnyithatja közvetlenül a [az Azure portal](https://portal.azure.com). Kövesse a cikkben egy önálló tekintse át a hozzárendelt szerepkörök végrehajtásához.

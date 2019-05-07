@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: fdb9b6c09e81ce29d2587fb0faca1aa80d28ea38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a5754fc2f7e0fc36a6708bfd4d2d1d3d6f016b27
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450596"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150963"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>A távoli figyelési megoldásgyorsító helyileg – Visual Studio telepítése
 
@@ -83,7 +83,7 @@ Minden webszolgáltatáshoz nyitja meg egy parancssort, és a webes böngészőa
 Kövesse az alábbi lépéseket a Stream Analytics-feladat indítása:
 
 1. Lépjen az [Azure Portalra](https://portal.azure.com).
-1. Keresse meg a **erőforráscsoport** létrehozott a megoldáshoz. Az erőforráscsoport neve nem a választott név a megoldáshoz, ha futtatta a **start.cmd** parancsfájl **.
+1. Keresse meg a **erőforráscsoport** létrehozott a megoldáshoz. Az erőforráscsoport neve nem a választott név a megoldáshoz, ha futtatta a **start.cmd** parancsfájlt.
 1. Kattintson a **Stream Analytics-feladat** az erőforrások listájában.
 1. A Stream Analytics-feladat a **áttekintése** lap, kattintson a **Start** gombra. Kattintson a **Start** a feladat elindításához.
 

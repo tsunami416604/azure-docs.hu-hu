@@ -3,8 +3,7 @@ title: Az Azure virtuális gépek hálózati átviteli sebessége |} A Microsoft
 description: További információ az Azure virtuális gépek hálózati átviteli sebessége.
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: steveesp
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/13/2017
-ms.author: kumud
-ms.openlocfilehash: 182b3b7dad828e67d006391e00986406729c959d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 4/26/2019
+ms.author: kumud,steveesp, mareat
+ms.openlocfilehash: 9d74e53c754367ecfa63642514db93354fcadf25
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689254"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153727"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Virtuális gép hálózati sávszélesség
 
@@ -43,6 +42,30 @@ Az átviteli sebesség korlát vonatkozik a virtuális géphez. Átviteli sebess
 - **Gyorsított hálózatkezelés**: Bár a funkció akkor hasznosak, növelve a közzétett korlátot, nem változtatja meg a határértéket.
 - **Forgalom cél**: Az összes destinations beleszámítanak a kimenő korlátot.
 - **Protokoll**: Minden kimenő forgalmat az összes protokollhoz keresztül a határérték felé számolnak.
+
+## <a name="network-flow-limits"></a>Hálózat a Flow korlátozásai
+
+Sávszélesség mellett egy adott időpontban egy virtuális gépen található hálózati kapcsolatok száma befolyásolja a hálózati teljesítményt. Az Azure hálózati verem összes csatlakozás minden irányában egy TCP/UDP-kapcsolatot az "folyamat" nevű datové struktury állapotát kezeli. Egy tipikus TCP/UDP-kapcsolatot hozott létre, egyet a bejövő és kimenő irányban egy másik 2 folyamatok lesz. 
+
+Végpontok közötti adatátvitel igényel, amelyek az adatátvitelhez mellett számos folyamatok létrehozását. Néhány példa a következők: a DNS-feloldás létrehozott folyamatok és a load balancer állapot-mintavételei létrehozott folyamatok. Is vegye figyelembe, hogy a hálózati virtuális berendezések (nva-k), például az átjárók, a proxyk, a tűzfalak, megjelenik a kapcsolatok számára a készülék bármikor, és adja meg a berendezés által létrehozott folyamatok. 
+
+![A folyamat száma TCP beszélgetésnél továbbítási berendezésen keresztül](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
+
+## <a name="flow-limits-and-recommendations"></a>A flow korlátozásai és javaslatok
+
+Még ma az Azure hálózati verem támogatja a 250e teljes hálózati adatfolyamaiba jó teljesítményű virtuális gépek nagyobb, mint 8 processzormag és 100 k teljes folyamatok jó teljesítményű virtuális gépek a kevesebb mint 8 processzormag. A korlát hálózat korábbi csökken a teljesítmény szabályosan for legfeljebb 1 millió rögzített korlátja további folyamatok teljes folyamatok, bejövő és 500 500 KB-os K kimenő, mely további folyamatokat a rendszer elveti után.
+
+||A virtuális gépek < 8 processzormag|8 + CPU processzormaggal rendelkező virtuális gépek|
+|---|---|---|
+|<b>Good Performance</b>|100K folyamatok |250 ezer folyamatok|
+|<b>A teljesítmény csökkenését</b>|100k feletti folyamatok|250 ezer felett folyamatok|
+|<b>A folyamat korlát</b>|1 millió folyamatok|1 millió folyamatok|
+
+Metrikák érhetők el a [Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) nyomon követéséhez a hálózati forgalom és a folyamat létrehozásának sebessége számát a virtuális gép vagy VMSS-példányokon.
+
+![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
+
+Kapcsolat létrehozása és a megszűnés díjait is hatással lehet a hálózati kapcsolat létrehozását és a megszűnés megosztások CPU-csomag feldolgozási rutinok teljesítménye. Azt javasoljuk, hogy számítási feladatokhoz várható forgalmi minták és horizontális felskálázása a számítási feladatok megfelelő teljesítménymérési a teljesítmény igényekhez. 
 
 ## <a name="next-steps"></a>További lépések
 

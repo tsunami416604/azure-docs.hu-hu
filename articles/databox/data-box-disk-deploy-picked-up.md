@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e7d57b9d6a06f230835b53d5f6c8120b2a9b61ac
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 023542dbc22234fc57e4ce8b662a9760be4efe04
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924892"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150761"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Oktatóanyag: Vissza az Azure Data Box-lemezek, és ellenőrizze az adatok feltöltése az Azure-bA
 
@@ -54,7 +54,12 @@ Ha az eszközök visszatérő az Egyesült Államokban és Kanadában, tegye a k
     - Elhelyezi a címkét az eszközön.
 
 2. Zárja le a szállítási dobozt, és győződjön meg arról, hogy a visszaküldési fuvarlevélcímke jól látható.
-3. Ütemezhet begyűjtést a UPS.
+3. Ütemezhet begyűjtést a UPS. Ütemezhet begyűjtést:
+
+    - Hívja meg a helyi UPS (országspecifikus díjmentesen ingyenes szám).
+    - A hívás az ajánlat a fordított szállítmány követési szám a nyomtatott felirat látható módon.
+    - A nyomkövetési azonosító szám není uveden v uvozovkách, ha a UPS kell, hogy külön díj fizessen a begyűjtés során.
+    - Ahelyett, hogy a begyűjtés ütemezés is húzhatja a Data Box-lemezek, a legközelebbi gyűjtőhely ki.
 
 
 ### <a name="pick-up-in-europe"></a>Az Európai felvétele

@@ -1,21 +1,22 @@
 ---
-title: Oktatóanyag – az Azure tároló-üzenetsorok használata
+title: Oktatóanyag – az Azure storage üzenetsorok Work – Azure Storage
 description: Ismertető az Azure Queue szolgáltatás használatával hozzon létre a várólisták és a Beszúrás, beolvasása, és törli az üzenetet.
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: cbrooks
 ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.date: 04/24/2019
-ms.openlocfilehash: 5aa12c39b951ce65c4ef0a3f44de381c8961ed7f
-ms.sourcegitcommit: 1aab8b764d767d86fbf262bda34996189d00c7bb
+ms.openlocfilehash: 81d7572f800f191791158f2c1f99e1f072980116
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "64406167"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65151070"
 ---
-# <a name="tutorial-work-with-azure-storage-queues"></a>Oktatóanyag: Az Azure storage-üzenetsorok használata
+# <a name="tutorial-work-with-azure-storage-queues"></a>Oktatóanyag: Azure Storage-üzenetsorok használata
 
 Az Azure Queue storage valósítja meg a felhőalapú üzenetsorok elosztott alkalmazások összetevői közötti kommunikáció engedélyezése. Minden egyes üzenetsorhoz tart fenn a küldő összetevője által hozzáadott, és egy fogadó összetevő által feldolgozott üzenetek listája. Az üzenetsor, az alkalmazás képes azonnal igény szerint méretezhető. Ez a cikk bemutatja az Azure storage üzenetsorába használatának alapvető lépéseit.
 

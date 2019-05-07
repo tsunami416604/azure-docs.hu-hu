@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 11/02/2018
+ms.date: 05/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a392fd03016f83f86364d8f92e8bb4da0aa3364a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2caca430de5ad666f4f4341e0723bc3173d6d91a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381445"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137789"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect – gyakori kérdések
 
@@ -78,6 +78,47 @@ Ennek legegyszerűbb módja, hogy használja az SQL Server Management Studio Azu
 
 Az egyszerűség kedvéért javasoljuk, hogy a felhasználók, akik az Azure AD Connect telepítése SQL-rendszergazdák lehet. Azonban legutóbbi-buildek használatával, így használja a delegált rendszergazdák SQL, leírtak szerint [SQL meghatalmazott rendszergazdai engedélyek használatával telepítse az Azure AD Connect](how-to-connect-install-sql-delegation.md).
 
+**K: Mik a néhány ajánlott eljárást a mezőjéből?**  
+
+A következő egy tájékoztató dokumentum, amely jeleníti meg néhány ajánlott eljárást a mérnöki, támogató és tanácsadóink az évek fejlesztett ki.  Ez gyorsan lehet hivatkozni, listajeles listában jelennek meg.  Bár ez a lista próbál átfogó, ajánlott eljárás, előfordulhat, hogy nem történtek, a listán szereplő még lehet.
+
+- Ha teljes SQL használatával, majd a helyi kell hagyni és távoli összehasonlítása
+    - Kevesebb ugrások
+    - Könnyebben hibaelhárítása
+    - Komplexitás
+    - Az SQL-erőforrások kijelölése és terhelés engedélyezése az Azure AD Connect és az operációs rendszer
+- Proxy mellőzése, ha lehetséges, ha a nem a proxy megkerülése, majd győződjön meg arról, hogy az időtúllépés értéke nagyobb, mint 5 perc.
+- Ha proxykiszolgáló szükséges majd hozzá kell adnia a proxy a machine.config fájlban
+- Helyi SQL-feladatok és a karbantartás és hogyan azok negatív hatással lesz az Azure AD Connect – különösen újraindexelését
+- Győződjön meg arról, mint a DNS külsőleg fel tudja oldani
+- Ügyeljen arra, hogy [kiszolgáló specifikációi](how-to-connect-install-prerequisites.md#hardware-requirements-for-azure-ad-connect) ajánlás szerint van attól, hogy a fizikai vagy virtuális kiszolgálók
+- Ellenőrizze, hogy a virtuális kiszolgálót, hogy dedikált vannak-e a szükséges erőforrások használata
+- Gondoskodjon arról, hogy a lemez és a lemezkonfiguráció megfeleljen az ajánlott eljárások az SQL Server
+- Telepítse és konfigurálja az Azure AD Connect Health figyeléshez
+- A törlés küszöbértéket, az Azure AD Connect épített használja.
+- Gondosan tekintse át kiadás frissítéseket elő kell készíteni a összes módosítás és új attribútumok, amelyek adható hozzá
+- Minden biztonsági mentés
+    - Biztonsági mentési kulcsok
+    - Biztonsági mentési szinkronizálási szabályok
+    - A kiszolgáló biztonsági mentési konfiguráció
+    - Biztonsági mentés SQL-adatbázis
+- Győződjön meg arról, hogy nem találhatók 3. fél biztonsági mentési ügynökök, amelyek készít biztonsági mentést SQL az SQL VSS-írója (a 3. fél pillanatképekkel rendelkező virtuális kiszolgálók közös) nélkül
+- Egyéni szinkronizálási szabályait, mivel azok összetettebbé használt korlátozása
+- Azt az Azure AD Connect kiszolgálók, a Tier 0 kiszolgáló
+- A felhő szinkronizálási szabályait a hatás és a megfelelő üzleti illesztőprogramok nagyszerű ismerete nélkül leery lehet
+- Ügyeljen arra, hogy a helyes URL-CÍMEK és a tűzfalportok nyitva támogatja-e az Azure AD Connect és az Azure AD Connect Health
+- Kihasználhatja a felhő szűrt attribútumot fantom objektumok és hibáinak elhárítása
+- Az átmeneti kiszolgálóval biztosítása érdekében, hogy a kiszolgálók közötti konzisztencia használ az Azure AD Connect konfigurációs dokumentáló
+- Átmeneti kell tartozniuk külön adatközpontokat (fizikai helyeken
+- Átmeneti kiszolgálók nem jelentenek a magas rendelkezésre állású megoldás lehet, de használhat több átmeneti kiszolgáló
+- Egy "Lag" átmeneti kiszolgálók bemutatása volt néhány hiba esetén a lehetséges állásidő csökkentése
+- Tesztelés és ellenőrzés először az átmeneti kiszolgálón frissítései
+- Mindig ellenőrizze az exportálások, mielőtt átvált az átmeneti serverLeverage az átmeneti server teljes importálás és a teljes szinkronizálás üzletmenetre gyakorolt hatás csökkentése érdekében
+- Verzió konzisztencia az Azure AD Connect kiszolgálók között, a lehetséges megtartása 
+
+**K: Engedélyezheti a munkacsoporthoz tartozó számítógépen az Azure AD-összekötő fiók létrehozása az Azure AD Connect?**
+Nem.  Annak érdekében, hogy az Azure AD Connect automatikus létrehozása az Azure AD-összekötő fiók, a gép kell lennie, a tartományhoz.  
+
 ## <a name="network"></a>Network (Hálózat)
 **K: Van egy tűzfal, a hálózati eszköz, illetve bármi más, amely korlátozza a kapcsolatok maradhat, nyissa meg a hálózaton lévő idejét. Az ügyféloldali időkorlát küszöbértéke lennie az Azure AD Connect használata esetén?**  
 Az összes hálózati szoftvert, fizikai eszközök vagy bármi olyanra, amely korlátozza a maximális időtartam, a kapcsolat nyitva maradhat kell használnia egy küszöbértéket legalább öt percig (300 másodperc), ahol az Azure AD Connect-ügyfél telepítve van a kiszolgáló közötti kapcsolat és az Azure Active Directory. Ez a javaslat vonatkozik az összes korábban kiadott Microsoft Identity szinkronizálási eszközöket is.
@@ -107,6 +148,9 @@ A cikkben ismertetett útmutatás [tanúsítványok megújítása](how-to-connec
 ## <a name="environment"></a>Környezet
 **K: Támogatott-e a kiszolgáló átnevezése, az Azure AD Connect telepítése után?**  
 Nem. A kiszolgáló nevének módosítása rendereli a szinkronizálási motor nem lehet kapcsolódni az SQL database-példány, és a szolgáltatás nem indult el.
+
+**K: Következő generációs kriptográfiai (NGC) szinkronizálási szabályok támogat FIPS-kompatibilis gépen?**  
+Nem.  Nem támogatottak.
 
 ## <a name="identity-data"></a>Azonosító adatok
 **K: Miért nem egyezik meg az Azure ad userPrincipalName (UPN) attribútum a helyszíni egyszerű felhasználónév?**  

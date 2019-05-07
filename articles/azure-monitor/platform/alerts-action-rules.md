@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: c260273c647dd5dd6050f1fd543ebd5a5aa47b89
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e5d04fd136848684e866fae9768b252e3b6ca77f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922771"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137941"
 ---
 # <a name="action-rules-preview"></a>Műveleti szabályokban (előzetes verzió)
 
@@ -46,7 +46,7 @@ Meg kell jelennie a művelet szabály nyissa meg a létrehozási folyamatot. Az 
 
 ![Új művelet szabály létrehozási folyamat](media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
 
-### <a name="scope"></a>Hatókör
+### <a name="scope"></a>Scope
 
 Először válassza ki a hatókört, célként megadott erőforrás, erőforráscsoportot vagy előfizetést. Akkor is többszörös kijelöléssel lehetővé teszi a fentiek (belül egyetlen előfizetéssel) bármilyen kombinációját. 
 
@@ -184,8 +184,8 @@ A legjobb emelés naplóriasztások művelet szabályokkal, azt javasoljuk, hogy
 
 * K. Mi történik, ha két külön műveletet szabályokat a figyelt erőforrások? Jelenik meg egy vagy két értesítések? Például "VM2" Ebben a forgatókönyvben:
 
-      action rule 'AR1' defined for 'VM1' and 'VM2' with action group 'AG1' 
-      action rule 'AR2' defined for 'VM2' and 'VM3' with action group 'AG1' 
+      action rule 'AR1' defined for 'VM1' and 'VM2' with action group 'AG1'
+      action rule 'AR2' defined for 'VM2' and 'VM3' with action group 'AG1'
 
     A. A "VM1" és "Vm3 virtuális gép" minden riasztás egyszer lenne műveletcsoport "AG1" aktiválódik. Minden riasztás a "VM2", "AG1" műveletcsoport lenne kétszer aktivált (**műveleti szabályokban nem függeszthetők ismétlődő műveletek**). 
 
@@ -198,9 +198,10 @@ A legjobb emelés naplóriasztások művelet szabályokkal, azt javasoljuk, hogy
 
 * K. Mi történik, ha van egy másik Műveletcsoportok hívása ugyanarra az erőforrásra vonatkozó definiált műveletet szabály és a egy riasztási szabályt? Ha például "VM1" Ebben a forgatókönyvben:
 
-     riasztási szabály "felhasználóval a rule1" a "VM1" művelet "AG2" művelet csoportszabály a műveletcsoport "AG1", "Vm1" meghatározott "AR1"  
+      alert rule  'rule1' on          'VM1' with action group 'AG2'
+      action rule 'AR1'   defined for 'VM1' with action group 'AG1' 
  
-    A. Minden riasztás a "VM1" "AG1" műveletcsoport lenne aktiválódik, egyszer. Riasztási szabály "felhasználóval a rule1" akkor aktiválódik, amikor ezen kívül is aktivál "AG2". (**műveleti szabályokban és a riasztási szabályok belül meghatározott egymástól függetlenül, a duplikátumok megszüntetése nem működnek. a művelet**) 
+    A. Minden riasztás a "VM1" "AG1" műveletcsoport lenne aktiválódik, egyszer. Riasztási szabály "felhasználóval a rule1" akkor aktiválódik, amikor ezen kívül is aktivál "AG2". **Műveletcsoportok meghatározott műveleti szabályokban és a riasztási szabályok egymástól függetlenül, a duplikátumok megszüntetése nem működnek**. 
 
 ## <a name="next-steps"></a>További lépések
 

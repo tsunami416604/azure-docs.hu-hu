@@ -2,19 +2,20 @@
 title: A Microsoft Azure Storage Java-Client-Side titkosítási |} A Microsoft Docs
 description: Az Azure Storage ügyféloldali kódtára a Javához készült ügyféloldali titkosítás és az Azure Key Vault-integráció támogatja a maximális biztonság az Azure Storage-alkalmazásokhoz.
 services: storage
-author: lakasa
+author: tamram
 ms.service: storage
 ms.devlang: java
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: lakasa
+ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0a2088e603828a7850cb250c1874008d63fe9c89
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 058dc97054aad310135ccc1f51d765f0af3f571b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992454"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147024"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>A Microsoft Azure Storage Java-Client-Side Encryption és az Azure Key Vaulttal
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -118,7 +119,7 @@ Nincsenek három Key Vault-csomagot:
 1. Kapcsolat nélküli titkos kulcs létrehozása, és töltse fel a Key Vaultban.  
 2. Paraméterként a titkos kulcsnak base azonosító használatával javítsa ki a titkosításhoz a titkos kulcs jelenlegi verziója, és helyileg ezt az információt gyorsítótárban. Gyorsítótárazás; CachingKeyResolver használata felhasználók nem várt megvalósítása a saját logikai gyorsítótárazás.  
 3. A gyorsítótárazási feloldó használja bemenetként a titkosítási szabályzat létrehozása közben.
-   A Key Vault használatára vonatkozó további információ a titkosítási Kódminták található. <fix URL>  
+   A Key Vault használatára vonatkozó további információ a titkosítási Kódminták található.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 Titkosítás támogatása csak a storage ügyféloldali kódtára a Javához készült érhető el.
@@ -142,7 +143,7 @@ Egy EncryptionPolicy objektum létrehozása során a felhasználók megadhatják
   * A kulcs feloldó hív, ha meg van adva a kulcs beszerzése. Ha a feloldó van megadva, de nem rendelkezik a kulcs azonosítóját leképezése, egy hiba lépett fel.  
   * Ha nincs megadva a feloldó, de egy kulcs van megadva, a kulcs szolgál, ha annak azonosítója megegyezik a szükséges kulcs azonosítóját. Az azonosító nem egyezik, ha hiba fordul elő.  
     
-    A [titkosítási minták](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples) <fix URL>egy részletesebb végpontok közötti forgatókönyv a blobokhoz, üzenetsorokhoz és táblákhoz, valamint bemutatják a Key Vault-integráció.
+    A [titkosítási minták](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples) egy részletesebb végpontok közötti forgatókönyv a blobokhoz, üzenetsorokhoz és táblákhoz, valamint bemutatják a Key Vault-integráció.
 
 ### <a name="requireencryption-mode"></a>RequireEncryption mód
 Felhasználók hol feltöltéseket és a letöltött fájl titkosítva kell lennie üzemmódot engedélyezheti. Ebben a módban a kísérletek töltse fel az adatok egy titkosítási szabályzat nélkül, vagy a szolgáltatás nem titkosított adatok letöltése sikertelen lesz az ügyfélen. A **requireEncryption** jelzőt a kérelem beállítások objektum azt szabályozza, ezt a viselkedést. Ha az alkalmazás fogja titkosítani az Azure Storage szolgáltatásban tárolt összes objektum, majd beállíthatja a **requireEncryption** az alapértelmezett kérelem beállításokat a szolgáltatás ügyfél-objektum tulajdonságának.   

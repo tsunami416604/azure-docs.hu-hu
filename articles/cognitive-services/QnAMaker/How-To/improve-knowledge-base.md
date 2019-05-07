@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: f59f281b1bf7fa2851ab7759a0167b5d39ef44c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3e54e8dcb6efa9251262c651730376a0d04edcf9
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61372683"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65144975"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Aktív tanulás használatával javíthatja a Tudásbázis
 
@@ -75,7 +75,7 @@ Aktív tanulás alapértelmezés szerint ki van kapcsolva. Kapcsolja be a javaso
 
 ## <a name="add-active-learning-suggestion-to-knowledge-base"></a>Aktív tanulás javaslat Tudásbázis hozzáadása
 
-1. Annak érdekében, hogy a javasolt kérdések, tekintse meg a **szerkesztése** Tudásbázis lapon jelölje be **javaslatok megjelenítése**. 
+1. Annak érdekében, hogy a javasolt kérdések, tekintse meg a **szerkesztése** Tudásbázis lapon jelölje be **beállításai**, majd **aktív tanulás javaslatok megjelenítése**. 
 
     [![A portál a szerkesztése területen jelölje be javaslatok megjelenítése az aktív tanulás új kérdést alternatívák láthatók.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 

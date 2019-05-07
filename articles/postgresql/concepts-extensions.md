@@ -1,19 +1,19 @@
 ---
-title: PostgreSQL-bővítmények használata az Azure Database for postgresql-hez
-description: Lehetővé teszi az adatbázis-bővítmények az Azure Database for PostgreSQL használatával funkcióinak bővítése érdekében ismerteti.
+title: PostgreSQL-bővítmények használata az Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Kiterjesztheti az adatbázis-bővítmények használata az Azure Database for PostgreSQL - kiszolgáló egyetlen funkcióját ismerteti.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.openlocfilehash: 8bbb638190928e0478053843264fde585ae17222
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 5/6/2019
+ms.openlocfilehash: 1e3a27f953246ce29de419949362c23b8932b0d5
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720589"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073489"
 ---
-# <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>PostgreSQL-bővítmények az Azure Database for postgresql-hez
+# <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - kiszolgáló egyetlen PostgreSQL-bővítmények
 PostgreSQL lehetővé teszi az adatbázis-bővítményekkel funkcióinak bővítése érdekében. Bővítmények lehetővé teszik több kapcsolódó SQL objektumok együtt kötegelést betöltve, vagy eltávolítja az adatbázisból, egyetlen paranccsal egyetlen csomagban. Után az adatbázis betöltése, bővítmények működhet, mint a beépített funkciók. A PostgreSQL-bővítmények további információkért lásd: [csomagolási kapcsolódó objektumot egy bővítmény](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
 
 ## <a name="how-to-use-postgresql-extensions"></a>PostgreSQL-bővítmények használata

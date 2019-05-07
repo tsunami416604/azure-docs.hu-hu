@@ -27,12 +27,6 @@
       href: pim-deployment-plan.md
     - name: Ismerkedés a PIM-mel
       href: pim-getting-started.md
-    - name: Saját szerepkörök aktiválása
-      items:
-        - name: Saját Azure AD-szerepkörök aktiválása
-          href: pim-how-to-activate-role.md
-        - name: Saját Azure-erőforrásszerepkörök aktiválása
-          href: pim-resource-roles-activate-your-roles.md
     - name: A PIM konfigurálása
       items:
         - name: Adatvédelmi varázsló
@@ -43,6 +37,12 @@
           href: pim-how-to-give-access-to-pim.md
         - name: Hozzáférési jogosultságszint emelése az összes előfizetés kezeléséhez
           href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
+    - name: Saját szerepkörök aktiválása
+      items:
+        - name: Saját Azure AD-szerepkörök aktiválása
+          href: pim-how-to-activate-role.md
+        - name: Saját Azure-erőforrásszerepkörök aktiválása
+          href: pim-resource-roles-activate-your-roles.md
     - name: Az Azure AD-szerepkörök kezelése
       items:
         - name: Szerepkörök hozzárendelése
@@ -73,21 +73,21 @@
           href: azure-pim-resource-rbac.md
         - name: Egyéni szerepkörök használata
           href: pim-resource-roles-custom-role-policy.md
-    - name: Hozzáférés áttekintése
+    - name: Hozzáférési felülvizsgálatok
       items:
         - name: Azure AD-szerepkörök
           items:
-            - name: Saját Azure AD-szerepkörök áttekintése
-              href: pim-how-to-perform-security-review.md
-            - name: Hozzáférési felülvizsgálat indítása
+            - name: Hozzáférési felülvizsgálat létrehozása
               href: pim-how-to-start-security-review.md
+            - name: Hozzáférés áttekintése
+              href: pim-how-to-perform-security-review.md
             - name: Hozzáférési felülvizsgálat befejezése
               href: pim-how-to-complete-review.md
         - name: Azure-erőforrásszerepkörök
           items:
-            - name: Saját Azure-erőforrásszerepkörök áttekintése
-              href: pim-resource-roles-perform-access-review.md
-            - name: Hozzáférési felülvizsgálat indítása
+            - name: Hozzáférési felülvizsgálat létrehozása
               href: pim-resource-roles-start-access-review.md
+            - name: Hozzáférés áttekintése
+              href: pim-resource-roles-perform-access-review.md
             - name: Hozzáférési felülvizsgálat befejezése
               href: pim-resource-roles-complete-access-review.md

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 59a05e7a20f6b229b37977a75d22611c0d5c31d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7fd9ae3ab1f50dc91118ba11bc357a0f6dc0e771
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60813198"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141046"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Entitástípusok és a LUIS felhasználási célját
 
@@ -97,7 +97,6 @@ Az entitás ki kell olvasni, miután az Entitásadatok információ egyetlen egy
 |Machine-learned|Jelölheti meg|Oktatóanyag|Példa<br>Válasz|Entitástípus|Cél|
 |--|--|--|--|--|--|
 |✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Összetett**](#composite-entity)|A csoportosítási entitások, függetlenül attól, entitás típusa.|
-|✔|✔|-|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**Hierarchikus**](#hierarchical-entity)|Egyszerű entitások csoportja.|
 |||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**lista**](#list-entity)|Elemek listáját és a szinonimákat a pontos egyezés egyeztetése ki kell olvasni.|
 |Vegyes||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Az entitás ahol entitás végén tekintve nehéz lenne meghatározni.|
 |||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Előre összeállított**](#prebuilt-entity)|Már betanított különböző típusú adatok kinyeréséhez.|
@@ -112,7 +111,7 @@ Vegyes entitások entitás észlelési módszerek kombinációját használják.
 
 ## <a name="composite-entity"></a>Összetett entitást
 
-Egy összetett entitást épül fel más entitásokkal, például az előre összeállított entitások egyszerű, reguláris kifejezés, a listából, és a hierarchikus entitásokat. A különálló entitások teljes entitás űrlap. 
+Egy összetett entitást épül fel más entitásokkal, például az előre összeállított entitások egyszerű, reguláris kifejezés, és az entitások listája. A különálló entitások teljes entitás űrlap. 
 
 Ehhez az entitáshoz egy jó fér el, ha az adatokat:
 
@@ -126,18 +125,6 @@ Ehhez az entitáshoz egy jó fér el, ha az adatokat:
 
 [Oktatóanyag](luis-tutorial-composite-entity.md)<br>
 [Entitás példa JSON-válasz](luis-concept-data-extraction.md#composite-entity-data)<br>
-
-## <a name="hierarchical-entity"></a>Hierarchikus entitás
-
-**Hierarchikus entitások idővel elavulttá válik. Használat [entitás szerepkörök](luis-concept-roles.md) meghatározására, entitás altípus hierarchikus entitások helyett.**
-
-Egy hierarchikus entitás a gyermekek nevű kontextusban megismert egyszerű entitások egy kategóriát.
-
-![a hierarchikus](./media/luis-concept-entities/hierarchical-entity.png)
-
-### <a name="roles-versus-hierarchical-entities"></a>Szerepkörök és a hierarchikus entitások
-
-[Szerepkörök](luis-concept-roles.md) ugyanez a probléma megoldásához, hierarchikus entitások viszont összes entitástípusra vonatkozik.  
 
 ## <a name="list-entity"></a>Listaentitás
 
@@ -171,10 +158,10 @@ Az alábbi táblázat minden egyes sor az utterance (kifejezés) két verziója 
 
 |Kimondott szöveg|
 |--|
-|Az ember akik tévesen His Feleségemmel Hat és más klinikai ellenőrző élményéért-amerikai ebben az évben?<br>Volt **a Man akik tévesen His Feleségemmel Hat és más klinikai ellenőrző** -amerikai által írt ebben az évben?|
-|Az Amerikai által írt ebben az évben béka Pajamas a fele alvó állapotban volt?<br>Volt **fél alvó állapotban lévő béka Pajamas** -amerikai által írt ebben az évben?|
-|Az adott Szomorúság kisfejű tortaszelet lett: Egy új, az Amerikai által írt ebben az évben?<br>Volt **az adott Szomorúság kisfejű tortaszelet: Egy új** -amerikai által írt ebben az évben?|
-|Kapott, a saját zsebébe tenni egy Wocket van! az Amerikai által írt ebben az évben?<br>Volt **a saját zsebébe tenni egy Wocket van!** az Amerikai által írt ebben az évben?|
+|"A Man akik tévesen His Feleségemmel volt-e egy Hat és a egy American által írt ebben az évben egyéb klinikai ellenőrző?<br>Volt **a Man akik tévesen His Feleségemmel Hat és más klinikai ellenőrző** -amerikai által írt ebben az évben?|
+|`Was Half Asleep in Frog Pajamas written by an American this year?`<br>`Was **Half Asleep in Frog Pajamas** written by an American this year?`|
+|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br>`Was **The Particular Sadness of Lemon Cake: A Novel** written by an American this year?`|
+|`Was There's A Wocket In My Pocket! written by an American this year?`<br>`Was **There's A Wocket In My Pocket!** written by an American this year?`|
 
 ## <a name="prebuilt-entity"></a>Előre összeállított entitások
 

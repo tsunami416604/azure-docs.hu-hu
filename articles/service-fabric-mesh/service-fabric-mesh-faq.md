@@ -9,12 +9,12 @@ ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 7f3bed454bce90d797ca5829043c7e5f8ce5b051
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 950f9ac89b9d3224db29b32fe2d1e403ccc98116
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728578"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143290"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Gyakori kérdések Service Fabric-háló
 
@@ -28,7 +28,7 @@ Kérdések, válaszok a Microsoft mérnökei és a problémák jelentése a [ser
 
 ### <a name="what-is-the-cost-of-participating-in-the-preview"></a>Az előzetes verzióra való részvételnek mennyibe kerül?
 
-Nem számítunk fel díjat üzembe alkalmazások vagy a háló előzetes tárolók jelenleg. Azonban javasoljuk, hogy törli az erőforrások üzembe helyezése, és nem hagyhatja őket fut, kivéve, ha folyamatosan tesztelt őket.
+Jelenleg nem számítunk fel díjat az alkalmazások vagy a tárolók üzembe helyezése a háló előzetes verziójára. Nézze meg a frissítéseket május engedélyezésre a számlázáshoz. Azonban javasoljuk, hogy törli az erőforrások üzembe helyezése, és nem hagyhatja őket fut, kivéve, ha folyamatosan tesztelt őket.
 
 ### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>A magok és a RAM-MAL számát kvóta korlátozva van?
 
@@ -88,10 +88,15 @@ Ha egy Windows rendszeren fejleszt 2018 április 10. (verzió 1803) machine, Win
 A következő operációs rendszer tárolórendszerképeket a szolgáltatások üzembe helyezéséhez használható:
 
 - Windows - windowsservercore és nanoserver
-    - A Windows Server 1709-es verzió
-    - A Windows Server verzió 1803-as verzióban
+    - Windows Server 1709
+    - A Windows Server 1803-as verzióban
+    - A Windows Server 1809
+    - Windows Server 2019 LTSC
 - Linux
     - Nem ismert korlátozások
+
+> [!NOTE]
+> Visual Studio-eszközöket a háló még nem támogatja a Windows Server 2019 és 1809 tárolók üzembe helyezése.
 
 ### <a name="what-types-of-applications-can-i-deploy"></a>Milyen típusú alkalmazásokat is üzembe? 
 
@@ -138,6 +143,10 @@ CPU rendelkezésre állás és a folyamatban meghatározott alkalmazások közö
 Több alkalmazás nem telepíthető egy csomópontos fürtre. Csökkentése érdekében:
 - Egy öt csomópontot tartalmazó fürt használja, amikor több alkalmazás telepítése helyi fürtre.
 - Távolítsa el az alkalmazásokat, amelyek jelenleg nem teszteli.
+
+### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>Windows-tárolók támogatása korlátozott eszköztámogatás VS
+
+A Visual Studio-eszközök csak akkor támogatja a tárolók üzembe helyezése Windows-verzióval alap operációs rendszer Windows Server 1709-es és 1803 még ma. 
 
 ## <a name="feature-gaps-and-other-known-issues"></a>A szolgáltatás hiányosságokat és egyéb ismert problémák
 

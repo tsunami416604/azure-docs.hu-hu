@@ -8,13 +8,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
-ms.date: 06/22/2018
-ms.openlocfilehash: 76783ffd91a8ad17fca912ac9c3a66a5f0f15821
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/06/2019
+ms.openlocfilehash: 503bd6cfee1c19d2342ec9f535b3945178ab3ea0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691930"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65136604"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Az eseményindító és művelet esetében az Azure Logic Apps munkafolyamat-definíciós nyelv leírása
 
@@ -804,6 +804,8 @@ Műveletek a fenti magas szintű elemek rendelkezik, bár egyes nem kötelező:
 
   * [**Válasz** ](#response-action) az válaszol a kérelmekre
 
+  * [**Hajtsa végre a JavaScript-kódot** ](#run-javascript-code) JavaScript futtatására kódrészletek
+
   * [**Függvény** ](#function-action) az Azure Functions hívása
 
   * Adatok művelet műveletek, például [ **csatlakozzon**](#join-action), [ **összeállítás**](#compose-action), [ **tábla** ](#table-action), [ **Kiválasztása**](#select-action), és a többi, hozzon létre vagy a különböző bemeneti adatok átalakításához
@@ -821,6 +823,7 @@ Műveletek a fenti magas szintű elemek rendelkezik, bár egyes nem kötelező:
 | Művelettípus | Leírás | 
 |-------------|-------------| 
 | [**Compose**](#compose-action) | Hoz létre egy egyetlen kimeneti bemenetei között, amelyekhez különböző típusainak használatát. | 
+| [**Hajtsa végre a JavaScript-kódot**](#run-javascript-code) | JavaScript-kódrészletek, amelyek a meghatározott feltétel belül fut. Kód követelményeket és további információkat lásd: [Hozzáadás és a beágyazott kóddal futtatási kódrészletek](../logic-apps/logic-apps-add-run-inline-code.md). |
 | [**Függvény**](#function-action) | Meghív egy Azure-függvényt. | 
 | [**HTTP**](#http-action) | Egy HTTP-végpontot hív meg. | 
 | [**Csatlakozás**](#join-action) | Egy karakterláncot számmá egy tömb összes eleme, és azok az elemek elkülöníti megadott elválasztó karakterrel. | 
@@ -1047,6 +1050,81 @@ Ez a művelet a definíció egyesíti tartalmazó karakterlánc-változót `abcd
 Ez a művelet létrehoz, a kimenet itt látható:
 
 `"abcdefg1234"`
+
+<a name="run-javascript-code"></a>
+
+### <a name="execute-javascript-code-action"></a>JavaScript-kódot a művelet végrehajtása
+
+Ez a művelet egy JavaScript kódrészletet fut, és – a eredményeket ad vissza egy `Result` jogkivonatot, amely a későbbi műveletekben lehet hivatkozni.
+
+```json
+"Execute_JavaScript_Code": {
+   "type": "JavaScriptCode",
+   "inputs": {
+      "code": "<JavaScript-code-snippet>",
+      "explicitDependencies": {
+         "actions": [ <previous-actions> ],
+         "includeTrigger": true
+      }
+   },
+   "runAfter": {}
+}
+```
+
+*Kötelező*
+
+| Érték | Típus | Leírás |
+|-------|------|-------------|
+| <*JavaScript-code-snippet*> | Változó | A JavaScript-kódot, amelyet futtatni szeretne. Kód követelményeket és további információkat lásd: [Hozzáadás és a beágyazott kóddal futtatási kódrészletek](../logic-apps/logic-apps-add-run-inline-code.md). <p>Az a `code` attribútum, a kódtöredék használhatja a csak olvasható `workflowContext` objektum bemenetként. Ez az objektum altulajdonságok hozzáférést a kódot az eredményeket az eseményindítót és a munkafolyamat korábbi műveletek. További információ a `workflowContext` objektumazonosító, lásd: [eseményindító és művelet eredménye a kódban hivatkozhat](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext). |
+||||
+
+*Egyes esetekben szükséges*
+
+A `explicitDependencies` attribútum meghatározza, hogy szeretné-e explicit módon közé tartozik az eseményindító, korábbi műveletek vagy mindkettőt a kódrészlet függőségeinek eredményeit. A függőségek hozzáadásával kapcsolatos további információkért lásd: [adja hozzá a paraméterek a beágyazott kódhoz](../logic-apps/logic-apps-add-run-inline-code.md#add-parameters). 
+
+Az a `includeTrigger` attribútumot is megadhat `true` vagy `false` értékeket.
+
+| Érték | Típus | Leírás |
+|-------|------|-------------|
+| <*previous-actions*> | Karakterlánc-tömbben | Egy tömb a megadott művelet nevekkel. A művelet nevét, amely a munkafolyamat-definíció jelenik meg, a művelet neveiben aláhúzásjeleket (_), nem a tárolóhelyek használata (""). |
+||||
+
+*1. példa*
+
+Ez a művelet futtat kódot, amely lekérdezi a logikai alkalmazás nevét, és visszaadja a szöveg "< logikai alkalmazás neve-> a Hello world" eredményezi. Ebben a példában a kódot a munkafolyamat-nevére hivatkozik elérésével a `workflowContext.workflow.name` keresztül a csak olvasható tulajdonság `workflowContext` objektum. Használatáról további információt a `workflowContext` objektumazonosító, lásd: [eseményindító és művelet eredménye a kódban hivatkozhat](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext).
+
+```json
+"Execute_JavaScript_Code": {
+   "type": "JavaScriptCode",
+   "inputs": {
+      "code": "var text = \"Hello world from \" + workflowContext.workflow.name;\r\n\r\nreturn text;"
+   },
+   "runAfter": {}
+}
+```
+
+*2. példa*
+
+Ez a művelet futtatja a kódot, amely akkor aktiválódik, ha új e-mail érkezik az Office 365 Outlook-fiók a logikai alkalmazásban. A logikai alkalmazás is használ egy jóváhagyási e-mail küldése művelet, amely továbbítja a tartalmat a kapott e-mailek és jóváhagyási kérelmet. 
+
+A kód e-mail-címek kigyűjti az eseményindító `Body` tulajdonság ezt az e-mail címet adja vissza, és a `SelectedOption` tulajdonság értékét a jóváhagyási művelet. A művelet kifejezetten a jóváhagyó e-mail küldése művelet a függőségként tartalmazza a `explicitDependencies`  >  `actions` attribútum.
+
+```json
+"Execute_JavaScript_Code": {
+   "type": "JavaScriptCode",
+   "inputs": {
+      "code": "var re = /(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))/g;\r\n\r\nvar email = workflowContext.trigger.outputs.body.Body;\r\n\r\nvar reply = workflowContext.actions.Send_approval_email_.outputs.body.SelectedOption;\r\n\r\nreturn email.match(re) + \" - \" + reply;\r\n;",
+      "explicitDependencies": {
+         "actions": [
+            "Send_approval_email_"
+         ]
+      }
+   },
+   "runAfter": {}
+}
+```
+
+
 
 <a name="function-action"></a>
 
@@ -2652,7 +2730,7 @@ HTTP-művelet definíciója, ebben a példában a `authentication` szakasz megha
 
 A [Azure AD OAuth-hitelesítés](../active-directory/develop/authentication-scenarios.md), az eseményindítót vagy műveletet definíciót tartalmazhat egy `authentication` JSON-objektum, amely szerint a következő táblázat a megadott tulajdonságokkal rendelkezik. Hozzáférhet a futásidőben a paraméterértékeket, használhatja a `@parameters('parameterName')` kifejezés, amely biztosítja a [munkafolyamat-definíciós nyelv](https://aka.ms/logicappsdocs).
 
-| Tulajdonság | Szükséges | Érték | Leírás |
+| Tulajdonság | Szükséges | Value | Leírás |
 |----------|----------|-------|-------------|
 | **type** | Igen | `ActiveDirectoryOAuth` | A hitelesítési típus szeretne használni, amely az Azure AD OAuth "ActiveDirectoryOAuth" |
 | **szolgáltató** | Nem | <*URL-for-authority-token-issuer*> | A szolgáltató által biztosított a hitelesítési jogkivonat URL-címe |

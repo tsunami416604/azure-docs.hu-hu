@@ -7,12 +7,12 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 729e9fe749212942c6dc18fc7d6301934e7dd184
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ff9513418857562408c162533c48f6495b1f83c4
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775897"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137862"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Azure-erőforrások nagy adatkészletek használata
 
@@ -67,8 +67,18 @@ Szükséges egy eredményhalmazt bemásolja a feldolgozáshoz kisebb rekordhalma
 
 Amikor **resultTruncated** van **igaz**, a **$skipToken** tulajdonság értéke a válaszban. Ez az érték szolgál ugyanazon lekérdezés és az előfizetés értékekkel lekérése a következő rekordkészletet, amely megfelel a lekérdezést.
 
+Az alábbi példák mutatják hogyan **kihagyása** az első 3000 rekordok, és lépjen vissza a **első** 1000 rekordot ezek után kihagyja az Azure CLI és az Azure PowerShell-lel:
+
+```azurecli-interactive
+az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 3000
+```
+
 > [!IMPORTANT]
-> A lekérdezés kell **projekt** a **azonosító** ahhoz, hogy működjön tördelés mezőt. Hiányzik a lekérdezésből, ha a REST API-válasz nem tartalmazza a **$skipToken**.
+> A lekérdezés kell **projekt** a **azonosító** ahhoz, hogy működjön tördelés mezőt. Hiányzik a lekérdezésből, ha a válasz nem tartalmazza a **$skipToken**.
 
 Egy vonatkozó példáért lásd: [következő lap lekérdezés](/rest/api/azureresourcegraph/resources/resources#next_page_query) a REST API-dokumentumokhoz.
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: d04bb965ddf9616aaa01f4c8822ac42aea6dab2d
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 8f5a7d3f6300be100feffd23b98bd7dcd8f48148
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869566"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150880"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Az Azure Data Factory másolási tevékenysége
 
@@ -176,12 +176,14 @@ Másolási tevékenység végrehajtásának részletei és teljesítményjellemz
 | DataRead | Olvassa el a forrásból származó adatok mérete | Int64 típusú érték a **bájtok** |
 | DataWritten | A fogadó írt adatok mérete | Int64 típusú érték a **bájtok** |
 | filesRead | A fájlok másolását, amikor az adatok másolása a file storage száma. | Int64 típusú érték (egység) |
-| fileScanned | A forrás file storage az éppen beolvasott fájlok száma. | Int64 típusú érték (egység) |
 | filesWritten | A fájlok másolását, amikor az adatok másolása a file Storage száma. | Int64 típusú érték (egység) |
-| rowsCopied | (Ez nem vonatkozik a bináris másolat) másolását sorok száma. | Int64 típusú érték (egység) |
+| rowsRead | (Ez nem vonatkozik a bináris másolat) forrásból beolvasott sorok száma. | Int64 típusú érték (egység) |
+| rowsCopied | (Ez nem vonatkozik a bináris másolat) fogadó másolását sorok száma. | Int64 típusú érték (egység) |
 | rowsSkipped | Kihagyta a inkompatibilis sorok száma. A szolgáltatás által beállított "enableSkipIncompatibleRow" true bekapcsolhatja. | Int64 típusú érték (egység) |
-| Átviteli sebesség | Adatok továbbításának arány | Lebegőpontos szám a **KB/s** |
-| copyDuration | A Másolás időtartama | Másodpercek alatt Int32 érték |
+| Átviteli sebesség | Adatok továbbításának arány. | Lebegőpontos szám a **KB/s** |
+| copyDuration | A Másolás időtartama. | Másodpercek alatt Int32 érték |
+| sourcePeakConnections | Másolása során, a forrásadattár létesített egyidejű kapcsolatok maximális száma. | Int32 érték |
+| sinkPeakConnections| Másolása során a fogadó adattárba létesített egyidejű kapcsolatok maximális száma.| Int32 érték |
 | sqlDwPolyBase | A PolyBase használata, amikor az adatok másolása az SQL Data Warehouse-bA. | Logikai |
 | redshiftUnload | Ha az adatok másolása Redshift eltávolítása használatos. | Logikai |
 | hdfsDistcp | A DistCp használata, ha másol adatokat a HDFS-ből. | Logikai |

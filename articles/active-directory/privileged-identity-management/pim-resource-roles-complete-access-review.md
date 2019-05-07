@@ -1,6 +1,6 @@
 ---
-title: A PIM - Azure Active Directory Azure-erőforrások szerepköreihez tartozó hozzáférési felülvizsgálat befejezése |} A Microsoft Docs
-description: Ismerje meg, hogyan végezheti el az Azure AD Privileged Identity Management (PIM) az Azure-erőforrások szerepköreihez tartozó hozzáférési felülvizsgálat.
+title: Az Azure-erőforrásszerepkörök a PIM - Azure Active Directory hozzáférési felülvizsgálatok elvégzése |} A Microsoft Docs
+description: Ismerje meg, hogyan végezheti el a hozzáférési felülvizsgálat Azure AD Privileged Identity Management (PIM) az Azure-erőforrások szerepköreihez.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 837be3ccdbd133f6bf372779dadff4d3c574a2e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8a310770f26a1c40682791582a05a9bb4c47a42d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60288255"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141029"
 ---
-# <a name="complete-an-access-review-for-azure-resource-roles-in-pim"></a>A PIM az Azure-erőforrások szerepköreihez tartozó hozzáférési felülvizsgálat befejezése
+# <a name="complete-an-access-review-of-azure-resource-roles-in-pim"></a>A PIM az Azure-erőforrásszerepkörök hozzáférési felülvizsgálat befejezése
 A kiemelt szerepkörű rendszergazdák tekintheti át az emelt szintű hozzáférés után egy [el lett indítva a hozzáférési felülvizsgálat](pim-resource-roles-start-access-review.md). Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) automatikusan küld egy e-mailt, amely kéri a felhasználóktól, tekintse át a hozzáférésüket. Ha a felhasználó nem kap egy e-mailt, küldhet nekik az utasításokat [hozzáférési felülvizsgálat végrehajtása](pim-resource-roles-perform-access-review.md).
 
 A hozzáférési felülvizsgálati időszak után, vagy ha minden felhasználó már nem a helyi tekintse át, kövesse a cikkben az eredmények megtekintéséhez és kezeléséhez a felülvizsgálatot.

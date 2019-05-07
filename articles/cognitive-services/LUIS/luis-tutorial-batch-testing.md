@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: 391a5386a5ecc144b15c35a85d501dfb5ce2d172
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af04ca19961abcfc7ee218824a4a1a804f7ad79c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60597281"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146161"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Oktatóanyag: Batch-teszt adatkészletek
 
@@ -28,7 +28,7 @@ Batch-tesztelés vonatkozó követelmények:
 
 * Legfeljebb 1000 utterances tesztenként. 
 * Nincsenek ismétlődések. 
-* Engedélyezett entitástípusra: egyszerű, hierarchikus csak megmunkált megismert entitások (szülő csak), és összetett. Batch-tesztelés hasznos csak megmunkált megtanult szándékokat és entitásokat.
+* Engedélyezett entitástípusra: egyszerű és összetett csak megmunkált megismert entitások. Batch-tesztelés hasznos csak megmunkált megtanult szándékokat és entitásokat.
 
 Amikor egy alkalmazást, ez az oktatóanyag nem használ, *nem* már hozzá van adva egy leképezés példa megcímkézzen használja. 
 
@@ -95,7 +95,7 @@ Ehhez a következő lépések szükségesek:
 
 ## <a name="review-batch-results"></a>Batch-eredmények áttekintése
 
-A batch diagram jeleníti meg az eredmények négy elemzésében. A diagram jobb szűrő van. Alapértelmezés szerint a szűrő értéke az első célja a listában. A szűrő tartalmazza, a leképezések és a hierarchikus csak egyszerű (szülő csak), és összetett entitásokat. Amikor kiválaszt egy [szakaszban, a diagram](luis-concept-batch-test.md#batch-test-results) vagy egy pontot a diagramon belül, a társított utterance(s) megjeleníti a diagram alatt. 
+A batch diagram jeleníti meg az eredmények négy elemzésében. A diagram jobb szűrő van. Alapértelmezés szerint a szűrő értéke az első célja a listában. A szűrő a leképezések és csak az egyszerű és összetett entitásokat tartalmaz. Amikor kiválaszt egy [szakaszban, a diagram](luis-concept-batch-test.md#batch-test-results) vagy egy pontot a diagramon belül, a társított utterance(s) megjeleníti a diagram alatt. 
 
 A diagram rámutatáskor egérkereket nagyítása vagy csökkentheti a megjelenített a diagramon. Ez akkor hasznos, ha a fürtözött szorosan együtt diagramra hány pontot. 
 
@@ -169,7 +169,7 @@ Annak érdekében, hogy ellenőrizze, hogy a batch-teszt megcímkézzen megfelel
 
 ## <a name="create-batch-file-with-entities"></a>Az entitások kötegfájl létrehozása 
 
-Ellenőrizze az entitások egy batch-teszt, az entitások kell az a batch JSON-fájl neve. Csak a gép megismert entitások: egyszerű, hierarchikus (szülő csak), és összetett entitásokat. Ne adjon hozzá nem gép megismert entitások, mert azok mindig találhatók reguláris kifejezések keresztül, vagy explicit szöveg megfelel.
+Ellenőrizze az entitások egy batch-teszt, az entitások kell az a batch JSON-fájl neve. Csak a gép megismert entitások: egyszerű és összetett entitásokat. Ne adjon hozzá nem gép megismert entitások, mert azok mindig találhatók reguláris kifejezések keresztül, vagy explicit szöveg megfelel.
 
 Az entitások teljes Word változata ([jogkivonat](luis-glossary.md#token)) száma befolyásolhatja az előrejelzési minőségét. Ellenőrizze, hogy a betanítási adatok, a célt a címkézett utterances megadott hosszúságú entitás számos tartalmaz. 
 
@@ -205,11 +205,11 @@ Az érték egy **feladat** entitás, a teszt utterances megadott, általában eg
 
 ## <a name="review-entity-batch-results"></a>Entity batch eredmények áttekintése
 
-A diagram megnyílik a megfelelő előrejelzett szándék fog vonatkozni. Görgessen le a jobb oldali szűrő keresse meg a szövegértékekké entitás előrejelzéseket. 
+A diagram megnyílik a megfelelő előrejelzett szándék fog vonatkozni. Görgessen le a jobb oldali szűrő az entitás előrejelzés-hibák megkereséséhez. 
 
 1. Válassza ki a **feladat** szűrő entitás.
 
-    ![A szűrő szövegértékekké entitás előrejelzések](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
+    ![Hiba entitás előrejelzéseket szűrő](./media/luis-tutorial-batch-testing/hr-entities-filter-errors.png)
 
     A diagram változik az entitás előrejelzések megjelenítéséhez. 
 

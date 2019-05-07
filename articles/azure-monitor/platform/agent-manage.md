@@ -1,6 +1,6 @@
 ---
 title: Az Azure Log Analytics-ügynök felügyelete |} A Microsoft Docs
-description: Ez a cikk ismerteti a különböző felügyeleti feladatok, amelyek általában a, a Microsoft Monitoring Agent (MMA) gépen telepített életciklusa alatt fogja elvégezni.
+description: Ez a cikk ismerteti a különböző felügyeleti feladatok, amelyek általában a Log Analytics Windows vagy Linux-ügynök üzembe helyezett egy gépen élettartama során fogja elvégezni.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: magoedte
-ms.openlocfilehash: 19530aa676e681f9a6ec50d2cacf77711dcb0110
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1809cc50f3ad3c285e0b69bc6e383a2c7c398238
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730290"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139249"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Kezelésével és karbantartásával a Log Analytics-ügynököket Windows és Linux rendszerekhez
 
-A Log Analytics Windows vagy Linux-ügynök az Azure monitorban kezdeti telepítés után szükség lehet konfigurálja újra az ügynököt, frissít a csomagon belül, vagy eltávolítja azt a számítógépről, ha elérte életciklusa a használatból való kivonást egyaránt szakasza. Könnyedén felügyelheti a rendszeres karbantartási műveletek manuálisan, illetve az automation, ami csökkenti a működési hiba és a költségeket.
+A Log Analytics Windows vagy Linux-ügynök az Azure monitorban kezdeti telepítés után szükség lehet konfigurálja újra az ügynököt, frissíteni, vagy ha elérte életciklusa szakasza a használatból való kivonást egyaránt eltávolítja azt a számítógépről. Könnyedén felügyelheti a rendszeres karbantartási műveletek manuálisan, illetve az automation, ami csökkenti a működési hiba és a költségeket.
 
 ## <a name="upgrading-agent"></a>Ügynök frissítése
 
@@ -40,7 +40,7 @@ A Windows virtuális gép-ügynök nincs telepítve a Log Analytics Virtuálisg�
 
 Letöltheti a Windows-ügynök legújabb verzióját a Log Analytics-munkaterület az alábbi lépések végrehajtásával.
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza ki **Log Analytics-munkaterületek**.
 
@@ -91,6 +91,7 @@ Futtassa a következő parancsot az ügynököt.
 ## <a name="adding-or-removing-a-workspace"></a>Hozzáadása vagy eltávolítása a munkaterület
 
 ### <a name="windows-agent"></a>Windows-ügynök
+A jelen szakaszban ismertetett lépések szükségesek, ha azt szeretné csak nem konfigurálja újra a Windows-ügynök számára, hogy egy másik munkaterületet, vagy munkaterület eltávolítása a konfigurációs, hanem amikor szeretné konfigurálni az ügynököt (gyakran több munkaterületnek néven többkiszolgálós). A Windows-ügynök több munkaterületeknek való jelentés érdekében konfigurálása csak az ügynök és az alább ismertetett módszerek használatával a kezdeti telepítés után végezheti el.    
 
 #### <a name="update-settings-from-control-panel"></a>A Vezérlőpult-beállítások frissítése
 
@@ -140,7 +141,7 @@ $mma.ReloadConfiguration()
 >
 
 ### <a name="linux-agent"></a>Linux-ügynök
-A következő lépések bemutatják, hogyan konfigurálja újra a Linux-ügynök, ha úgy dönt, hogy regisztrálja az egy másik munkaterületet, vagy eltávolítja a munkaterület az a konfiguráció.
+A következő lépések bemutatják, hogyan konfigurálja újra a Linux-ügynök, ha úgy dönt, hogy regisztrálja őket egy másik munkaterületet, vagy eltávolíthatnak munkaterületeket a konfigurációban.
 
 1. Annak ellenőrzéséhez, hogy regisztrálva van egy munkaterületet, futtassa a következő parancsot:
 
@@ -160,7 +161,7 @@ A következő lépések bemutatják, hogyan konfigurálja újra a Linux-ügynök
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <shared key> [-d <top level domain>]`
     
-4. A módosítások érinthetik tartott ellenőrzéséhez futtassa a következő parancsot:
+4. A módosítások érvénybe tartott ellenőrzéséhez futtassa a következő parancsot:
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -l`
 
@@ -231,7 +232,7 @@ Ha Linux rendszerű számítógépek keresztül kell kommunikálniuk-proxykiszol
     ```
 
 ## <a name="uninstall-agent"></a>Ügynök eltávolítása
-A következő eljárások valamelyikével parancssori vagy a telepítő varázsló segítségével Windows vagy Linux-ügynök eltávolítása.
+Használja az alábbi eljárások egyikét a Windows vagy Linux agent eltávolítása a parancssor vagy a telepítő varázsló használatával.
 
 ### <a name="windows-agent"></a>Windows-ügynök
 

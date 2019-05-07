@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 3e9e3afd5172783c6b5ed8e6342ce9927353d006
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed775bfca2db02b9bfddebb85bbd3f1f668cf3e0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386847"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142698"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>A Windows Server rendszert futtató önálló fürt létrehozása
 Az Azure Service Fabric segítségével Service Fabric-fürtök létrehozása virtuális gépek vagy a Windows Server rendszert futtató számítógépeket. Ez azt jelenti, is telepíti, és futtassa a Service Fabric-alkalmazásokat minden olyan környezetben, amely tartalmazza az egyes hálózatáról van szó, a Windows Server számítógépek, legyen az a helyszínen vagy bármely más szolgáltatónál. A Service Fabric biztosít az új telepítési csomagot hozhat létre a Service Fabric-fürtök a különálló Windows Server-csomag neve.
@@ -27,7 +27,7 @@ Az Azure Service Fabric segítségével Service Fabric-fürtök létrehozása vi
 Ez a cikk végigvezeti az önálló Service Fabric-fürt létrehozására vonatkozó lépéseket.
 
 > [!NOTE]
-> A különálló Windows Server-csomag kereskedelmi forgalomban beszerezhető, és éles környezetekben üzemelő példányok is használható. Ez a csomag új Service Fabric-szolgáltatások, amelyek az "Előnézet" tartalmazhat. Görgessen le a "[előzetes verziójú funkciók a csomagban](#previewfeatures_anchor)." az előzetes verziójú funkciók szakasz listája. Is [töltse le a végfelhasználói licencszerződés](https://go.microsoft.com/fwlink/?LinkID=733084) most.
+> A különálló Windows Server-csomag kereskedelmi forgalomban beszerezhető költségek nélkül, és éles környezetekben üzemelő példányok is használható. Ez a csomag új Service Fabric-szolgáltatások, amelyek az "Előnézet" tartalmazhat. Görgessen le a "[előzetes verziójú funkciók a csomagban](#previewfeatures_anchor)." az előzetes verziójú funkciók szakasz listája. Is [töltse le a végfelhasználói licencszerződés](https://go.microsoft.com/fwlink/?LinkID=733084) most.
 > 
 > 
 

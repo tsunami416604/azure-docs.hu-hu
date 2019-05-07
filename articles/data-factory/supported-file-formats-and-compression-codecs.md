@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: f117e02a063b93b8b1badbd9868f78da95c3c671
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6af5c8cdad00802052f08be844f77d36420da3c9
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925137"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142371"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Támogatott fájlformátumok és az Azure Data Factoryban tömörítési kodek
 
@@ -412,7 +412,7 @@ A **JsonFormat** típusú kimeneti adatkészlet a következőképpen van meghat�
 ## <a name="parquet-format"></a>Parquet formátum
 
 >[!NOTE]
->A Data Factory bevezetett új Parquet formátum datset, lásd: [Parquet formátum](format-delimited-text.md) cikk adatokkal. A fájlalapú adatok store adatkészlet a következő konfigurációk továbbra is támogatott – az előző verziókkal való compabitility. Használata javasolt, a jövőben az új modell használata.
+>A Data Factory bevezetett új Parquet formátum datset, lásd: [Parquet formátum](format-parquet.md) cikk adatokkal. A fájlalapú adatok store adatkészlet a következő konfigurációk továbbra is támogatott – az előző verziókkal való compabitility. Használata javasolt, a jövőben az új modell használata.
 
 Ha elemezni szeretné a Parquet-fájlokat, vagy Parquet formátumban szeretne adatokat írni, állítsa a `format` `type` tulajdonságot **ParquetFormat** értékre. Nem kell meghatároznia semmilyen tulajdonságot a Format szakaszban a typeProperties szakaszon belül. Példa:
 

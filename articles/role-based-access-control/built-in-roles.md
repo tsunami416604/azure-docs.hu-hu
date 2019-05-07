@@ -15,12 +15,12 @@ ms.date: 04/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 36a98ea52ea48c9828ca5857dc480742632056fb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ce23b891decd20db239e653702533ac7af21b980
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689862"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073341"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Az Azure-erőforrások beépített szerepkörök
 
@@ -74,6 +74,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 | [A cognitive Services-adatok olvasója (minta)](#cognitive-services-data-reader-preview) | Cognitive Services-kulcsok olvasását teszi lehetővé. |
 | [A cognitive Services-felhasználó](#cognitive-services-user) | Lehetővé teszi, hogy Ön elolvassa és a Cognitive Services, kulcsok listázását. |
 | [A cosmos DB-fiók olvasói szerepköre](#cosmos-db-account-reader-role) | Olvashatja az Azure Cosmos DB-fiókja adatait. Lásd: [DocumentDB-Fiókközreműködő](#documentdb-account-contributor) kezeléséhez az Azure Cosmos DB-fiókokhoz. |
+| [A cosmos DB-operátor](#cosmos-db-operator) | Lehetővé teszi az Azure Cosmos DB-fiókok, de nincs hozzáférés az adatokhoz a azok kezelését. Megakadályozza, hogy a hozzáférési kulcsokat és kapcsolati karakterláncokat. |
 | [CosmosBackupOperator](#cosmosbackupoperator) | Cosmos DB-adatbázis vagy fióktároló visszaállítására vonatkozó kérelmet küldhet. |
 | [A Cost Management Közreműködője](#cost-management-contributor) | Megtekintheti a költségeket és kezelheti a költségkonfigurációt (például költségvetés, exportok) |
 | [A Cost Management olvasó](#cost-management-reader) | Megtekintheti a költségadatokat és a konfigurációt (például költségvetés, exportok) |
@@ -1080,6 +1081,30 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 > | **notActions** |  |
 > | *none* |  |
+> | **DataActions** |  |
+> | *none* |  |
+> | **NotDataActions** |  |
+> | *none* |  |
+
+## <a name="cosmos-db-operator"></a>A cosmos DB-operátor
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Lehetővé teszi az Azure Cosmos DB-fiókok, de nincs hozzáférés az adatokhoz a azok kezelését. Megakadályozza, hogy a hozzáférési kulcsokat és kapcsolati karakterláncokat. |
+> | **Azonosító** | 230815da-be43-4aae-9cb4-875f7bd000aa |
+> | **Műveletek** |  |
+> | Microsoft.DocumentDb/databaseAccounts/* |  |
+> | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
+> | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
+> | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
+> | **notActions** |  |
+> | Microsoft.DocumentDB/databaseAccounts/readonlyKeys/* |  |
+> | Microsoft.DocumentDB/databaseAccounts/regenerateKey/* |  |
+> | Microsoft.DocumentDB/databaseAccounts/listKeys/* |  |
+> | Microsoft.DocumentDB/databaseAccounts/listConnectionStrings/* |  |
 > | **DataActions** |  |
 > | *none* |  |
 > | **NotDataActions** |  |

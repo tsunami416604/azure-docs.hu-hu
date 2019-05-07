@@ -2,88 +2,67 @@
 title: A többtényezős hitelesítési regisztrációs házirend konfigurálása az Azure Active Directory Identity Protection |} A Microsoft Docs
 description: Ismerje meg, hogyan konfigurálhatja az Azure AD Identity Protection többtényezős hitelesítési regisztrációs házirend.
 services: active-directory
-keywords: az Azure active directory identity protection a következőket cloud app discovery szolgáltatást, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend kezelése
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2019
+ms.date: 05/01/2019
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abd1049551d7dbc4823636dfdc00f64afab72cdf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1f4083ddf849842358f7699badca6598e56e4dee
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294860"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139372"
 ---
-# <a name="how-to-configure-the-multi-factor-authentication-registration-policy"></a>kézikönyv: A többtényezős hitelesítési regisztrációs házirend konfigurálása
+# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>kézikönyv: Az Azure multi-factor Authentication regisztrációs szabályzat konfigurálása
 
-Az Azure AD Identity Protection segít az üzembe helyezést (MFA) többtényezős hitelesítési regisztráció kezelése az MFA-regisztráció megkövetelő szabályzata konfigurálásával. Ez a cikk leírja, mi a házirend használható és konfigurálásának.
+Az Azure AD Identity Protection segít az üzembe helyezést, a többtényezős hitelesítés (MFA) regisztrációs kezelését, függetlenül attól, hogy mely alkalmazás a bejelentkezés MFA-regisztráció megkövetelése feltételes hozzáférési szabályzat konfigurálása. Ez a cikk leírja, mi a házirend használható és konfigurálásának.
 
-## <a name="what-is-the-multi-factor-authentication-registration-policy"></a>Mi az a többtényezős hitelesítési regisztrációs házirend?
+## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Mi az Azure multi-factor Authentication regisztrációs szabályzat?
 
-Az Azure multi-factor authentication a egy módszer annak ellenőrzése, akik, amely több, mint felhasználónév és jelszó szükséges. Biztosít egy második biztonsági szintként, felhasználói bejelentkezéseket és tranzakciókat. Ahhoz, hogy a felhasználók tudják MFA válaszolniuk akkor először regisztrálnia kell az MFA-hoz. 
+Az Azure multi-factor Authentication biztosít, akik ellenőrizheti azt jelenti, hogy több mint csupán felhasználónévvel és jelszóval. Biztosít egy második biztonsági szintként, a felhasználói bejelentkezéseket. Ahhoz, hogy a felhasználók tudják MFA válaszolniuk akkor először regisztrálnia kell az Azure multi-factor Authentication.
 
-Azt javasoljuk, hogy az Azure multi-factor authentication a felhasználók bejelentkezési folyamatába igényel el, mert azt:
+Azt javasoljuk, hogy az Azure multi-factor Authentication a felhasználók bejelentkezési folyamatába igényel el, mert azt:
 
 - Szolgáltatás egyszerű ellenőrzési lehetőség számos szigorú hitelesítést végez
+- A szervezet védelme és helyreállítása a kockázati eseményekről, az Identity Protection előkészítése a kulcsfontosságú szerepet játszik az
 
-- A szervezet védelme és helyreállítása a fiók feltörések előkészítése a kulcsfontosságú szerepet játszik az
+A többtényezős hitelesítés további részletekért lásd: [Mi az Azure multi-factor Authentication?](../authentication/howto-mfa-getstarted.md)
 
+## <a name="how-do-i-access-the-registration-policy"></a>Hogyan érhetem el a regisztrációs házirendet?
 
-A többtényezős hitelesítés további részletekért lásd: [Mi az Azure multi-factor Authentication?](../authentication/multi-factor-authentication.md)
-
-
-## <a name="how-do-i-access-the-mfa-registration-policy"></a>Hogyan érhetem el az MFA regisztrációs szabályzatának?
-   
 Az MFA regisztrációs szabályzatának szerepel a **konfigurálása** szakaszában a [Azure AD Identity Protection lapról](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy).
-   
+
 ![Többtényezős hitelesítési szabályzat](./media/howto-mfa-policy/1014.png)
-
-
-
 
 ## <a name="policy-settings"></a>Szabályzatbeállítások
 
-Az MFA regisztrációs szabályzatának konfigurálásakor kell beállítani:
+Az MFA regisztrációs szabályzatának konfigurálásakor kell a következő konfigurációs módosításokat:
 
-- A felhasználók és csoportok, a szabályzat vonatkozik:
+- A felhasználók és csoportok, a szabályzat vonatkozik. Ne felejtse el a szervezet kizárása [vészelérési fiókok](../users-groups-roles/directory-emergency-access.md).
 
     ![Felhasználók és csoportok](./media/howto-mfa-policy/11.png)
 
-- A vezérlők kényszerítésére követelmény az MFA-regisztráció:  
+- A vezérlő kikényszerítéséhez - **igényel az Azure MFA-regisztráció**
 
     ![Hozzáférés](./media/howto-mfa-policy/12.png)
 
-- A szabályzat állapotát:
+- Kényszerítése kell beállítani a házirend **a**.
 
     ![Szabályzat kényszerítése](./media/howto-mfa-policy/14.png)
 
-
-A szabályzat konfigurációs párbeszédpanel a konfiguráció hatásának megbecsüléséhez lehetőséget biztosít.
-
-![Becsült hatás](./media/howto-mfa-policy/15.png)
-
-
-
+- **Mentés** a szabályzat
 
 ## <a name="user-experience"></a>Felhasználói élmény
 
-
 A kapcsolódó felhasználói szolgáltatások áttekintését lásd:
 
-* [A multi-factor authentication regisztrációs folyamat](flows.md#multi-factor-authentication-registration).  
-* [Bejelentkezési élmény az Azure AD Identity Protection](flows.md).  
-
-
+- [A multi-factor authentication regisztrációs folyamat](flows.md#multi-factor-authentication-registration).  
+- [Bejelentkezési élmény az Azure AD Identity Protection](flows.md).  
 
 ## <a name="next-steps"></a>További lépések
 

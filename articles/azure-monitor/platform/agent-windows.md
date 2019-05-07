@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 04/29/2019
 ms.author: magoedte
-ms.openlocfilehash: c7031e54c354392379fee83dbf2a777ba726c5e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 34f02b1d72f08ef5da6b8a5740243b6e557bfb4a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60777353"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138129"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows-számítógépek csatlakoztatása az Azure Monitor
 
@@ -31,16 +31,18 @@ Az ügynök a következő módszerek valamelyikével telepíthetők. A legtöbb 
 * Manuális telepítés. A telepítő manuálisan fut a számítógépen a parancssorból a telepítővarázslóval, vagy egy meglévő szoftverterjesztési eszköz segítségével telepítve.
 * Az Azure Automation Desired State Configuration (DSC). DSC Azure Automation használatával, egy parancsfájllal már telepítve van az a környezet Windows-számítógépekhez.  
 * PowerShell-szkript.
-* Windows rendszerű virtuális gépek a Resource Manager-sablon a helyszíni az Azure Stackben.  
+* Windows rendszerű virtuális gépek a Resource Manager-sablon a helyszíni az Azure Stackben. 
 
 >[!NOTE]
 >Az Azure Security Center (ASC) függ, hogy a Microsoft Monitoring Agent (más néven a Log Analytics Windows-ügynök) lesz, és telepítse és konfigurálja azt, hogy a Log Analytics-munkaterülethez való központi telepítésének részeként is. Az ASC-automatikus üzembe helyezési lehetőségek, amelyek a Log Analytics Windows-ügynököt az előfizetés virtuális gépeinek automatikus telepítését engedélyezi és konfigurálja azt, hogy egy adott munkaterület tartalmazza. Ezzel a beállítással kapcsolatos további információkért lásd: [Log Analytics-ügynököket az Automatikus kiépítés engedélyezése](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-microsoft-monitoring-agent-).
 >
 
+Kell konfigurálni az ügynököt több munkaterületnek, ha ez nem hajtható végre, csak ezt követően a beállításainak frissítése folyamatban van a Vezérlőpulton vagy a PowerShell leírtak szerint a kezdeti telepítés során [hozzáadása és eltávolítása a munkaterület](agent-manage.md#adding-or-removing-a-workspace).  
+
 A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Windows operációs rendszereket](log-analytics-agent.md#supported-windows-operating-systems) és a [hálózati tűzfalkonfigurációkat](log-analytics-agent.md#network-firewall-requirements) ismertető részt.
 
 ## <a name="obtain-workspace-id-and-key"></a>A munkaterület-azonosító és -kulcs lekérése
-A Log Analytics-ügynököket Windows esetében a telepítés előtt kell a munkaterület Azonosítóját és kulcsát a Log Analytics-munkaterület.  Ezt az információt kötelező megfelelően konfigurálni az ügynököt, és az Azure Monitor az Azure kereskedelmi és az Egyesült Államok kormányának felhője sikeres kommunikációjának biztosításához az egyes telepítési módszerek a telepítés során.  
+A Log Analytics-ügynököket Windows esetében a telepítés előtt kell a munkaterület Azonosítóját és kulcsát a Log Analytics-munkaterület.  Ezt az információt kötelező megfelelően konfigurálni az ügynököt, és az Azure Monitor az Azure kereskedelmi és az Egyesült Államok kormányának felhője sikeres kommunikációjának biztosításához az egyes telepítési módszerek a telepítés során. 
 
 1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 2. A Log Analytics-munkaterületek listájában válassza ki a munkaterületet, jelenteni szeretné a az ügynök telepítése.

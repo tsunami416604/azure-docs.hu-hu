@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 3ed1f251c8c09a52def517f4c94ed2ca1420eda8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b37f16ab914fe4062bc9720ae9cc0139c573fb93
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60778286"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154280"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Az SQL Data Warehouse kapacitáskorlátait
 Azure SQL Data Warehouse különböző összetevői számára engedélyezett maximális értékeket.
@@ -54,7 +54,7 @@ Azure SQL Data Warehouse különböző összetevői számára engedélyezett max
 ## <a name="loads"></a>Betöltések
 | Category | Leírás | Maximum |
 |:--- |:--- |:--- |
-| A Polybase-Betöltések |Minden egyes sorára MB |1<br/><br/>A Polybase csak az 1 MB-nál kisebb, és nem tölthető be, VARCHAR(MAX), NVARCHAR(MAX) vagy VARBINARY(MAX) sort tölt be.<br/><br/> |
+| A Polybase-Betöltések |Minden egyes sorára MB |1<br/><br/>A Polybase betölti az 1 MB-nál kisebb méretű sorokat.<br/><br/> |
 
 ## <a name="queries"></a>Lekérdezések
 | Category | Leírás | Maximum |
