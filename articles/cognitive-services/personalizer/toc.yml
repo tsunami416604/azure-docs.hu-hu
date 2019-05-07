@@ -1,0 +1,70 @@
+- name: A Personalizer dokumentációja
+  href: index.yml
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Mi a Personalizer?
+      href: what-is-personalizer.md
+      displayName: 'loop, context, feature, action, rank, reward, developer, use case'
+- name: Gyors útmutatók
+  items:
+    - name: Visszajelzési ciklusok létrehozása és használata
+      href: csharp-quickstart-commandline-feedback-loop.md
+      displayName: 'code, sample, quickstart, c#'
+- name: Alapelvek
+  items:
+    - name: A Personalizer működése
+      href: how-personalizer-works.md
+      displayName: 'rank, reward, api, explore, exploit, score, design, research, loop, action, context, feature, JSON, event, inactive, model'
+    - name: Hol használhatja a Personalizert?
+      href: where-can-you-use-personalizer.md
+      displayName: 'checklist, considerations, effectiveness, recommendation engine'
+    - name: Etika és felelős használat
+      href: ethics-responsible-use.md
+      displayName: 'best practice, design'
+    - name: Alapfogalmak
+      items:
+        - name: 'Funkciók: Művelet és környezet'
+          href: concepts-features.md
+          displayName: 'action, context, feature, namespace, JSON, best practice, set'
+        - name: Megerősítő tanulás
+          href: concepts-reinforcement-learning.md
+          displayName: 'RL, contextual bandits, Vowpal Wabbit'
+    - name: Elemzés
+      items:
+        - name: Offline értékelés
+          href: concepts-offline-evaluation.md
+          displayName: 'learning policy, Counterfactual, features'
+- name: Útmutatók
+  items:
+    - name: A Personalizer konfigurálása
+      href: how-to-settings.md
+      displayName: 'azure, portal, settings, evaluation, offline, policy'
+    - name: Elemzés
+      items:
+        - name: Offline értékelés
+          href: how-to-offline-evaluation.md
+- name: Referencia
+  items:
+    - name: Példák
+      href: 'https://aka.ms/personalizer-samples'
+    - name: REST API-referencia
+      href: 'https://aka.ms/personalizer-rest-api-docs'
+    - name: SDK-k
+      items:
+        - name: .NET SDK-referencia
+          href: 'https://aka.ms/personalizer-dotnet-sdk-docs'
+        - name: NuGet-csomag
+          href: 'https://aka.ms/personalizer-nuget-sdk'
+- name: További források
+  items:
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure-ütemterv
+      href: 'https://aka.ms/personalizer-roadmap'
+    - name: Díjszabás
+      href: 'https://aka.ms/personalizer-pricing'
+    - name: Stack Overflow
+      href: 'https://aka.ms/personalizer-stackoverflow'
+    - name: UserVoice
+      href: 'https://aka.ms/personalizer-uservoice'

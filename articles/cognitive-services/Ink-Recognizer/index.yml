@@ -1,0 +1,82 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az Ink Recognizer dokumentációja
+metadata:
+  title: 'Az Ink Recognizer dokumentációja – Rövid útmutatók, oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs'
+  description: 'Ismerje meg, hogyan fordíthat le szövegeket több nyelvre a Translator Text használatával.'
+  services: cognitive-services
+  author: erhopf
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/02/2019
+  ms.author: erhopf
+abstract:
+  description: 'A digitális szabadkézi műveletek olyan technológiák, amelyek lehetővé teszik a bemenetek, például a kézírás és a rajzok digitális ábrázolását. Mivel az eszközök folyamatosan bővítik a digitális szabadkézi műveletek használati körét, a mesterséges intelligencia és a gépi tanulás bármilyen környezetben lehetővé teszi az írott alakok és szövegek felismerését. Az Ink Recognizer API egy felhőalapú szolgáltatás, amellyel tollvonásokat küldhet el, hogy részletes információkat kapjon róluk.'
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/ink-recognizer/overview
+            html: <p>További információ az Ink Recognizerről és a termékekbe való integrálásáról</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Mi az Ink Recognizer API?
+          - href: concepts/send-ink-data.md
+            html: <p>Az API használatakor javasolt hívásmintákkal kapcsolatos információk</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Tintaadatok küldése az Ink Recognizer API-nak
+  - title: 5 perces gyors útmutatók
+    items:
+      - type: paragraph
+        text: 'Ismerkedés az Ink Recognizer API-val:'
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/logo-csharp.svg
+            title: 'C#'
+          - image:
+              src: media/index/logo-java.svg
+            title: Java
+          - image:
+              src: media/index/logo-js.svg
+            title: Javascript
+        rows:
+          - title: Digitális tollvonások felismerése
+            values:
+              - href: quickstarts/csharp.md
+              - href: quickstarts/java.md
+              - href: quickstarts/javascript.md
+  - title: Példák
+    items:
+      - type: paragraph
+        text: 'Ezekben a példaprogramokban láthatja, hogyan integrálható az Ink Recognizer API az alkalmazásokba:'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089502">C# és Univerzális Windows-platform (Universal Windows Platform, UWP)</a>'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089804">C# és Windows megjelenítési alaprendszer (Windows Presentation Foundation, WPF)</a>'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089908">JavaScript-webböngészőalkalmazás</a>'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089906">Java- és Android-mobilalkalmazás</a>'
+      - type: paragraph
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089805">Swift- és iOS-mobilalkalmazás</a>'
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST API
+            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2089907">REST API – referencia</a></p>'
+          - title: PowerShell
+            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: parancssori felület
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Azure CLI</a></p>'

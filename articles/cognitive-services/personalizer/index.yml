@@ -1,0 +1,62 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: A Personalizer dokumentációja
+metadata:
+  document_id: null
+  title: 'Personalizer – Oktatóanyagok, rövid útmutatók, API-referencia'
+  description: 'Megismerheti, hogyan használhatja a Personalizer szolgáltatást arra, hogy az alkalmazás a valós idejű viselkedésükből tanulva kiválassza a felhasználók számára megjelenítendő legjobb élményt.'
+  author: nitinme
+  manager: cgronlun
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/07/2019
+  ms.author: nitinme
+abstract:
+  description: 'Az Azure Personalizer egy felhőalapú API-szolgáltatás, amellyel a valós idejű viselkedésükből tanulva kiválaszthatja a felhasználók számára megjelenítendő legjobb élményt.'
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/personalizer/what-is-personalizer
+            html: <p>A Personalizer működésének és használatának megismerése.</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Mi a Personalizer?
+          - href: /azure/cognitive-services/personalizer/how-personalizer-works
+            html: '<p>Ismerje meg, hogyan működik a Personalizer visszajelzési ciklusa a Rank és a Reward API-kkal.</p>'
+            image:
+              src: ../media/index/i_overview.svg
+            title: A Personalizer működése
+          - href: /azure/cognitive-services/personalizer/ethics-responsible-use
+            html: <p>A személyre szabhatóság megvalósítása a vállalatba és a szolgáltatásba vetett bizalom növelése érdekében.</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Etika és felelősségek
+  - title: 5 perces gyors útmutatók
+    items:
+      - type: paragraph
+        text: ''
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ../media/index/logo_Csharp.svg
+            href: csharp-quickstart-commandline-feedback-loop.md
+            text: 'C#'
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST API-k
+            html: '<p><a href="https://aka.ms/personalizer-rest-api-docs">Personalizer API</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: parancssori felület
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure CLI</a></p>'

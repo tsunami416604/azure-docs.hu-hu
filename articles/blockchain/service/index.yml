@@ -1,0 +1,49 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az Azure Blockchain Service dokumentációja
+metadata:
+  title: 'Az Azure Blockchain Service dokumentációja – oktatóanyagok, API-referencia'
+  description: 'Megtudhatja, hogyan hozhat létre blokkláncalkalmazásokat. Oktatóanyagok, API-referenciák és egyéb dokumentáció, amelyekből megtudhatja, hogyan használhatja az Azure Blockchain Service-t blokkláncalkalmazások létrehozására, fejlesztésére és felügyeletére az Azure-ban.'
+  services: azure-blockchain
+  author: patricka
+  manager: femila
+  ms.service: azure-blockchain
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/13/2019
+  ms.author: patricka
+abstract:
+  description: 'Megtudhatja, hogyan hozhat létre blokkláncalkalmazásokat. Oktatóanyagok, API-referenciák és egyéb dokumentáció, amelyekből megtudhatja, hogyan használhatja az Azure Blockchain Service-t blokkláncalkalmazások létrehozására, fejlesztésére és használatára az Azure-ban.'
+sections:
+  - title: 5 perces gyors útmutatók
+    items:
+      - type: paragraph
+        text: További információk a konzorciumtagok létrehozásáról és csatlakoztatásáról az Azure-ban.
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ./media/index/deploy.svg
+            text: Konzorciumtag létrehozása
+            href: /azure/blockchain/service/create-member
+          - image:
+              src: ./media/index/multi-connect.svg
+            text: Csatlakozás MetaMask használatával
+            href: /azure/blockchain/service/connect-metamask
+          - image:
+              src: ./media/index/multi-connect.svg
+            text: Csatlakozás Geth használatával
+            href: /azure/blockchain/service/connect-geth
+          - image:
+              src: ./media/index/multi-connect.svg
+            text: Csatlakozás Truffle használatával
+            href: /azure/blockchain/service/connect-truffle
+  - title: Részletes útmutatók
+    items:
+      - type: paragraph
+        text: 'Megtudhatja, hogyan történik a blokkláncalkalmazások létrehozása, konfigurálása és fejlesztése az Azure-ban.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/blockchain/service/send-transaction">Azure Blockchain Service-tag létrehozása és tranzakció küldése</a>

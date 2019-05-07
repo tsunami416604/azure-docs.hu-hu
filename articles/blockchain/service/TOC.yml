@@ -1,0 +1,67 @@
+- name: Azure Blockchain Service (előzetes verzió)
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Tudnivalók az Azure Blockchain Service-ről
+      href: overview.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Tag létrehozása – portál
+      href: create-member.md
+    - name: Tag létrehozása – CLI
+      href: create-member-cli.md
+    - name: Csatlakozás tranzakciós csomóponthoz
+      items:
+        - name: A MetaMask használata
+          href: connect-metamask.md
+        - name: A Geth használata
+          href: connect-geth.md
+        - name: A Truffle használata
+          href: connect-truffle.md
+- name: Oktatóanyagok
+  items:
+    - name: Tranzakciók küldése
+      href: send-transaction.md
+- name: Alapelvek
+  items:
+    - name: Konzorcium
+      href: consortium.md
+    - name: Adathozzáférés és -biztonság
+      href: data-security.md
+    - name: Fejlesztés
+      href: develop.md
+    - name: Korlátok
+      href: limits.md
+    - name: 'Javítás, frissítés és verziókezelés'
+      href: ledger-versions.md
+- name: Útmutatók
+  items:
+    - name: Azure AD-hozzáférés konfigurálása
+      href: configure-aad.md
+    - name: Tranzakciós csomópontok konfigurálása
+      href: configure-transaction-nodes.md
+    - name: Kezelés az Azure CLI használatával
+      href: manage-cli.md
+    - name: Konzorcium kezelése a PowerShell-lel
+      href: manage-consortium-powershell.md
+- name: További források
+  items:
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: Azure Blockchain Service Visual Studio Code-bővítmény
+      href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
+    - name: Kódminták
+      href: 'https://github.com/Azure-Samples/blockchain'
+    - name: Közösség
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: Fórum
+      href: 'https://social.msdn.microsoft.com/forums/security/home?forum=AzureBlockchainService'
+    - name: Termékkel kapcsolatos visszajelzés
+      href: 'https://feedback.azure.com/forums/921130-azure-blockchain-service'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/blockchain-service'
+    - name: Régiónkénti elérhetőség
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=blockchainservice'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'

@@ -11,7 +11,7 @@ metadata:
   manager: jhubbard
   author: j-martens
   ms.author: jmartens
-  ms.date: 2/19/2019
+  ms.date: 02/19/2019
   ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
@@ -55,8 +55,8 @@ sections:
         style: unordered
         items:
           - html: '<a href="https://aka.ms/aml-sdk">Fő Python SDK</a>: többek között fő funkciók, automatizált gépi tanulás és folyamatok'
-          - html: '<a href="https://aka.ms/data-prep-sdk">Adatok előkészítése</a> a Python SDK-val: adatok előkészítése és átalakítása'
           - html: '<a href="https://aka.ms/aml-monitoring-sdk">Monitorozás</a> a Python SDK-val: adatok gyűjtése üzembe helyezett webszolgáltatásokon'
+          - html: <a href="../algorithm-module-reference/module-reference.md">Algoritmusokra és modulokra vonatkozó referenciák</a> a vizuális felülethez
   - title: Egyéb Azure Machine Learning-technológiák
     items:
       - type: list

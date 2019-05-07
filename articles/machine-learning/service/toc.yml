@@ -16,32 +16,68 @@
       href: setup-create-workspace.md
 - name: Gyors útmutatók
   items:
-    - name: Kísérletezés felhőbeli jegyzetfüzettel
-      displayName: workspace
-      href: quickstart-run-cloud-notebook.md
-    - name: Kísérletezés helyi jegyzetfüzettel
-      displayName: 'workspace, install, sdk'
-      href: quickstart-run-local-notebook.md
+    - name: Python SDK
+      items:
+        - name: Kísérlet futtatása a felhőben
+          displayName: workspace
+          href: quickstart-run-cloud-notebook.md
+        - name: Kísérlet futtatása helyben
+          displayName: 'workspace, install, sdk'
+          href: quickstart-run-local-notebook.md
+    - name: Vizuális felület
+      items:
+        - name: Adatok előkészítése és vizualizálása
+          displayName: experiment drag-and-drop
+          href: ui-quickstart-run-experiment.md
 - name: Oktatóanyagok
   items:
-    - name: Képbesorolás (MNIST-adatok)
+    - name: Python SDK
       items:
-        - name: 1. Modell betanítása
-          displayName: build modeling
-          href: tutorial-train-models-with-aml.md
-        - name: 2. Modell üzembe helyezése
-          href: tutorial-deploy-models-with-aml.md
-    - name: Regresszió (NYC Taxi adatai)
+        - name: Képbesorolás (MNIST-adatok)
+          items:
+            - name: 1. Modell betanítása
+              displayName: build modeling
+              href: tutorial-train-models-with-aml.md
+            - name: 2. Modell üzembe helyezése
+              href: tutorial-deploy-models-with-aml.md
+        - name: Regresszió (NYC Taxi adatai)
+          items:
+            - name: 1. Adatok előkészítése modellezéshez
+              displayName: data prep
+              href: tutorial-data-prep.md
+            - name: 2. Automatizált gépi tanulási modellek betanítása
+              displayName: 'automl, automated, auto ml,'
+              href: tutorial-auto-train-models.md
+    - name: Vizuális felület
       items:
-        - name: 1. Adatok előkészítése modellezéshez
-          displayName: data prep
-          href: tutorial-data-prep.md
-        - name: 2. Automatizált gépi tanulási modellek betanítása
-          displayName: 'automl, automated, auto ml,'
-          href: tutorial-auto-train-models.md
+        - name: Regressziós modell betanítása
+          displayName: experiment drag-and-drop visual interface Tutorial 1
+          href: ui-tutorial-automobile-price-train-score.md
+        - name: Regressziós modell üzembe helyezése
+          displayName: experiment drag-and-drop visual interface Tutorial 2
+          href: ui-tutorial-automobile-price-deploy.md
 - name: Példák
-  displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
-  href: samples-notebooks.md
+  items:
+    - name: Notebooks
+      displayName: 'example, examples, jupyter, azure notebooks, python, notebook, github'
+      href: samples-notebooks.md
+    - name: A vizuális felület kísérletei
+      items:
+        - name: Ár előrejelzése
+          displayName: 'Sample 1, training, regression'
+          href: ui-sample-regression-predict-automobile-price-basic.md
+        - name: Ár előrejelzése (speciális)
+          displayName: 'Sample 2, training, regression'
+          href: ui-sample-regression-predict-automobile-price-compare-algorithms.md
+        - name: Hitelkockázat előrejelzése
+          displayName: 'Sample 3, training, classification'
+          href: ui-sample-classification-predict-credit-risk-basic.md
+        - name: Hitelkockázat előrejelzése (speciális)
+          displayName: 'Sample 4, training, classification'
+          href: ui-sample-classification-predict-credit-risk-cost-sensitive.md
+        - name: Forgalom előrejelzése
+          displayName: 'Sample 5, training, CRM, classification'
+          href: ui-sample-classification-predict-churn.md
 - name: Alapelvek
   items:
     - name: A szolgáltatás működése
@@ -50,14 +86,16 @@
     - name: Automatizált gépi tanulás
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
-    - name: Modellkezelés
-      displayName: 'deploy, deployment'
+    - name: Modellkezelés (MLOps)
+      displayName: 'deploy, deployment, mlops, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
     - name: Modell értelmezhetősége
       displayName: explainability
       href: machine-learning-interpretability-explainability.md
     - name: Gyorsítás FPGA-kkal
       href: concept-accelerate-with-fpgas.md
+    - name: Optimalizálás az ONNX és az ONNX Runtime használatával
+      href: concept-onnx.md
     - name: Machine Learning-folyamatok
       href: concept-ml-pipelines.md
     - name: Biztonság
@@ -85,24 +123,40 @@
         - name: Fejlesztési környezetek konfigurálása
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
-        - name: Visual Studio Code-bővítmények használata
+        - name: Naplózás engedélyezése
+          displayName: 'troubleshoot, log, files, tracing'
+          href: how-to-enable-logging.md
+        - name: A VS Code-bővítmény használata
           displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
           href: how-to-vscode-tools.md
     - name: Adatok használata
-      displayName: 'data prep, ETL, ELT, data preparation'
       items:
-        - name: Adatok vizsgálata és előkészítése
-          displayName: 'data prep, ETL, ELT, data preparation'
+        - name: Adathalmazok hozzáadása és regisztrálása
+          displayName: 'data, dataset'
+          href: how-to-create-register-datasets.md
+        - name: Előkészítés az azureml.dataprep használatával
           items:
             - name: Adatok betöltése
+              displayName: 'data, etl, data prep, dataprep'
               href: how-to-load-data.md
             - name: Adatok átalakítása
+              displayName: 'data, etl, dataprep, data prep'
               href: how-to-transform-data.md
             - name: Adatok írása
+              displayName: 'data, etl, data prep, dataprep'
               href: how-to-write-data.md
-    - name: Az adattárban található adatok lekérése
-      displayName: blob get fileshare access storage
-      href: how-to-access-data.md
+        - name: Előkészítés adathalmazokkal (előzetes verzió)
+          displayName: 'data, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
+          href: how-to-explore-prepare-data.md
+        - name: Adatdefiníciók verziószámozása és kezelése
+          displayName: 'data, etl, dataset, data preparation, dataprep, version'
+          href: how-to-manage-dataset-definitions.md
+        - name: Pillanatfelvétel készítése az adatokról
+          displayName: 'snapshots, profile, summary statistics, data copy'
+          href: how-to-create-dataset-snapshots.md
+        - name: Adatok lekérése adattárból
+          displayName: blob get fileshare access storage
+          href: how-to-access-data.md
     - name: Modellek betanítása
       items:
         - name: Betanítási környezetek beállítása
@@ -130,21 +184,24 @@
         - name: Automatizált gépi tanulás használata (Python)
           displayName: SDK automl
           href: how-to-configure-auto-train.md
+        - name: Automatizált gépi tanulás használata (Azure Portal)
+          href: how-to-create-portal-experiments.md
         - name: Távoli számítógépcélok használata
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
         - name: Előrejelzési modellek automatikus betanítása
           displayName: time series
           href: how-to-auto-train-forecast.md
-    - name: ONNX-modellek
-      href: how-to-build-deploy-onnx.md
-    - name: Modellek üzembe helyezése
+    - name: Modellek üzembe helyezése és kiszolgálása
       items:
         - name: Az üzembe helyezés módja és helye
           displayName: publish azure kubernetes azure container instances
           href: how-to-deploy-and-where.md
         - name: FPGA-k
           href: how-to-deploy-fpga-web-service.md
+        - name: IoT Edge
+          href: ../../iot-edge/tutorial-deploy-machine-learning.md
+          maintainContext: true
         - name: Hibaelhárítás
           href: how-to-troubleshoot-deployment.md
     - name: Webszolgáltatások felhasználása
@@ -162,31 +219,118 @@
           href: how-to-enable-data-collection.md
         - name: Monitorozás az Application Insights segítségével
           href: how-to-enable-app-insights.md
-    - name: Az első folyamat létrehozása
-      href: how-to-create-your-first-pipeline.md
-    - name: Naplózás engedélyezése
-      displayName: logging
-      href: how-to-enable-logging.md
+    - name: Újrahasználható munkafolyamatok létrehozása
+      displayName: pipelines
+      items:
+        - name: Gépi tanulási folyamat létrehozása
+          href: how-to-create-your-first-pipeline.md
     - name: Erőforráskvóták kezelése
       displayName: limits
       href: how-to-manage-quotas.md
-    - name: A Machine Learning parancssori felület használata
-      displayName: cli extension command line command-line az ci/cd automate automated
-      href: reference-azure-machine-learning-cli.md
     - name: Adatok exportálása és törlése
       displayName: GDPR
       href: how-to-export-delete-data.md
 - name: Referencia
   items:
     - name: Machine learning SDK
-      displayName: api core package python
+      displayName: api core package python data prep
       href: 'https://aka.ms/aml-sdk'
     - name: Adat-előkészítési SDK
-      displayName: api preparation package python
+      displayName: api core package python data prep
       href: 'https://aka.ms/data-prep-sdk'
     - name: Monitorozási SDK
       displayName: api package python monitor
       href: 'https://aka.ms/aml-monitoring-sdk'
+    - name: Machine Learning CLI
+      displayName: 'cli, extension, command line, command-line, az, ci/cd, automate, automated'
+      href: reference-azure-machine-learning-cli.md
+    - name: Vizuális felület moduljai
+      displayName: module reference
+      items:
+        - name: Modulhivatkozás áttekintése
+          href: ../algorithm-module-reference/module-reference.md
+        - name: Adatformátum átalakítása
+          items:
+            - name: Konvertálás CSV formátumba
+              href: ../algorithm-module-reference/convert-to-csv.md
+        - name: Adatbemenet és -kimenet
+          items:
+            - name: Adatok importálása
+              href: ../algorithm-module-reference/import-data.md
+            - name: Adatok exportálása
+              href: ../algorithm-module-reference/export-data.md
+            - name: Manuális adatbevitel
+              href: ../algorithm-module-reference/enter-data-manually.md
+        - name: Adatátalakítások
+          items:
+            - name: Oszlopok kiválasztása az adathalmazban
+              href: ../algorithm-module-reference/select-columns-in-dataset.md
+            - name: Metaadatok szerkesztése
+              href: ../algorithm-module-reference/edit-metadata.md
+            - name: Hiányzó adatok törlése
+              href: ../algorithm-module-reference/clean-missing-data.md
+            - name: Oszlopok hozzáadása
+              href: ../algorithm-module-reference/add-columns.md
+            - name: Sorok hozzáadása
+              href: ../algorithm-module-reference/add-rows.md
+            - name: Ismétlődő sorok eltávolítása
+              href: ../algorithm-module-reference/remove-duplicate-rows.md
+            - name: Adatok felosztása
+              href: ../algorithm-module-reference/split-data.md
+            - name: Adatok normalizálása
+              href: ../algorithm-module-reference/normalize-data.md
+            - name: Partíció és minta
+              href: ../algorithm-module-reference/partition-and-sample.md
+        - name: Gépi tanulás
+          items:
+            - name: Relevanciamodell
+              href: ../algorithm-module-reference/score-model.md
+            - name: Adatok hozzárendelése fürtökhöz
+              href: ../algorithm-module-reference/assign-data-to-clusters.md
+            - name: Modell betanítása
+              href: ../algorithm-module-reference/train-model.md
+            - name: Csoportosítási modell betanítása
+              href: ../algorithm-module-reference/train-clustering-model.md
+            - name: Modell értékelése
+              href: ../algorithm-module-reference/evaluate-model.md
+            - name: Átalakítás alkalmazása
+              href: ../algorithm-module-reference/apply-transformation.md
+            - name: Lineáris regresszió
+              href: ../algorithm-module-reference/linear-regression.md
+            - name: Neurális hálózat típusú regresszió
+              href: ../algorithm-module-reference/neural-network-regression.md
+            - name: Döntési erdő típusú regresszió
+              href: ../algorithm-module-reference/decision-forest-regression.md
+            - name: Súlyozott döntési fa típusú regresszió
+              href: ../algorithm-module-reference/boosted-decision-tree-regression.md
+            - name: Kétosztályos súlyozott döntési fa
+              href: ../algorithm-module-reference/two-class-boosted-decision-tree.md
+            - name: Kétosztályos logisztikai regresszió
+              href: ../algorithm-module-reference/two-class-logistic-regression.md
+            - name: Többosztályos logisztikai regresszió
+              href: ../algorithm-module-reference/multiclass-logistic-regression.md
+            - name: Többosztályos neurális hálózat
+              href: ../algorithm-module-reference/multiclass-neural-network.md
+            - name: Többosztályos döntési erdő
+              href: ../algorithm-module-reference/multiclass-decision-forest.md
+            - name: Kétosztályos átlagolt perceptron
+              href: ../algorithm-module-reference/two-class-averaged-perceptron.md
+            - name: Kétosztályos döntési erdő
+              href: ../algorithm-module-reference/two-class-decision-forest.md
+            - name: Kétosztályos neurális hálózat
+              href: ../algorithm-module-reference/two-class-neural-network.md
+            - name: Kétosztályos támogató vektorgép
+              href: ../algorithm-module-reference/two-class-support-vector-machine.md
+            - name: K-közép csoportosítás
+              href: ../algorithm-module-reference/k-means-clustering.md
+        - name: Python nyelvi modulok
+          items:
+            - name: Python-szkript futtatása
+              href: ../algorithm-module-reference/execute-python-script.md
+            - name: Python-modell létrehozása
+              href: ../algorithm-module-reference/create-python-model.md
+        - name: Hibaüzenetek és -kódok
+          href: ../algorithm-module-reference/machine-learning-module-error-codes.md
 - name: További források
   items:
     - name: Kibocsátási megjegyzések

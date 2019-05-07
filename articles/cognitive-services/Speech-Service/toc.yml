@@ -15,6 +15,9 @@
     - name: Beszédfordítás
       href: speech-translation.md
       displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
+    - name: Hangközpontú virtuális asszisztensek előzetes verziója
+      href: voice-first-virtual-assistants.md
+      displayName: 'virtual assistants, speech-enabled bots, conversational agents'
 - name: Gyors útmutatók
   items:
     - name: Beszéd SDK
@@ -73,7 +76,7 @@
               displayName: 'recognize speech, speech recognition, speech-to-text, stt, C#, universal windows platform'
             - name: C++ (Windows)
               href: quickstart-translate-speech-cpp-windows.md
-            - name: 'Java (Windows, Linux)'
+            - name: 'Java (Windows, macOS, Linux)'
               href: quickstart-translate-speech-java-jre.md
         - name: Szövegfelolvasás
           items:
@@ -86,6 +89,14 @@
             - name: C++ (Linux)
               href: quickstart-text-to-speech-cpp-linux.md
               displayName: 'synthesize speech, speech synthesis, text-to-speech, tts'
+        - name: Hangközpontú virtuális asszisztensek (előzetes verzió)
+          items:
+            - name: 'C# (UWP)'
+              href: quickstart-virtual-assistant-csharp-uwp.md
+              displayName: 'virtual assistant, speech-enabled bot, conversational agent'
+            - name: 'Java (Windows, macOS, Linux)'
+              href: quickstart-virtual-assistant-java-jre.md
+              displayName: 'virtual assistant, speech-enabled bot, conversational agent'
     - name: REST API-k
       items:
         - name: Támogatott hangok régiónkénti felsorolása
@@ -103,7 +114,7 @@
             - name: Python
               href: quickstart-python-text-to-speech.md
     - name: Beszédeszközök SDK
-      href: speech-devices-sdk-qsg.md
+      href: speech-devices-sdk-android-quickstart.md
       displayName: 'roobo, speech devices sdk'
 - name: Oktatóanyagok
   items:
@@ -113,6 +124,12 @@
     - name: 'Flask-alkalmazás létrehozása szöveg fordításához és szintetizálásához, REST'
       maintainContext: true
       href: ../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json
+- name: Alapelvek
+  items:
+    - name: Beszédátírási szolgáltatás
+      href: conversation-transcription-service.md
+    - name: Telefonos ügyfélszolgálati felvételek átírása
+      href: call-center-transcription.md
 - name: Útmutatók
   items:
     - name: Regisztrálás a Speech Services szolgáltatásra
@@ -131,26 +148,38 @@
     - name: Naplózás engedélyezése (SDK)
       href: how-to-use-logging.md
       displayName: 'debug, log, logging'
+    - name: Felismerés javítása kifejezéslistákkal
+      href: how-to-phrase-lists.md
+      displayname: 'phrase lists, phrase, list, recognition accuracy'
+    - name: Beszélgetések szöveggé konvertálása (SDK)
+      href: how-to-use-conversation-transcription-service.md
+      displayName: 'conversation, transcription, speech recognition'
     - name: Testreszabás
       items:
         - name: Diktálás
           items:
-            - name: Átiratok előkészítése testreszabáshoz
-              href: prepare-transcription.md
-            - name: Akusztikai modellek testreszabása
-              href: how-to-customize-acoustic-models.md
-            - name: Nyelvi modellek testreszabása
-              href: how-to-customize-language-model.md
-            - name: Kiejtés testreszabása
-              href: how-to-customize-pronunciation.md
-            - name: Egyéni felismerési végpont létrehozása
-              href: how-to-create-custom-endpoint.md
+            - name: Bevezetés a Custom Speech szolgáltatásba
+              href: how-to-custom-speech.md
+            - name: Adatok előkészítése
+              href: how-to-custom-speech-test-data.md
+            - name: Adatok vizsgálata
+              href: how-to-custom-speech-inspect-data.md
+            - name: Pontosság értékelése
+              href: how-to-custom-speech-evaluate-data.md
+            - name: Egyéni modell betanítása
+              href: how-to-custom-speech-train-model.md
+            - name: Egyéni modell üzembe helyezése
+              href: how-to-custom-speech-deploy-model.md
+            - name: 'Útmutató: Ember által címkézett átiratok létrehozása'
+              href: how-to-custom-speech-human-labeled-transcriptions.md
         - name: Szövegfelolvasás
           items:
             - name: Hangtípusok létrehozása (robot márkafüggő hangja)
               href: how-to-customize-voice-font.md
             - name: Hangminták felvétele
               href: record-custom-voice-samples.md
+            - name: Szövegfelolvasási kimenet finomhangolása
+              href: how-to-voice-tuning.md
         - name: Egyéni ébresztőkifejezés létrehozása (Eszközoldali SDK)
           href: speech-devices-sdk-create-kws.md
           displayName: 'roobo, speech devices sdk, wake word, keyword spotting, kws'
@@ -162,6 +191,14 @@
           href: how-to-migrate-from-custom-speech-service.md
         - name: A Translator Speech API-ból
           href: how-to-migrate-from-translator-speech-api.md
+    - name: Tárolók használata
+      items:
+        - name: Tárolók telepítése és futtatása
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+          href: speech-container-howto.md
+        - name: Tárolók konfigurálása
+          href: speech-container-configuration.md
+          displayName: 'docker, container, billing, apikey, pull, logging'
 - name: Példák
   items:
     - name: Beszéd SDK
@@ -196,9 +233,13 @@
     - name: Beszédeszközök SDK
       items:
         - name: Beszédeszközök SDK letöltése
-          href: 'get-speech-devices-sdk.md#download-the-speech-devices-sdk'
+          href: get-speech-devices-sdk.md
         - name: Kibocsátási megjegyzések
           href: devices-sdk-release-notes.md
+        - name: A Roobo v1 részletei
+          href: speech-devices-sdk-roobo-v1.md
+        - name: A mikrofon specifikációi
+          href: speech-devices-sdk-microphone.md
     - name: REST API-k
       items:
         - name: Diktálás
@@ -238,6 +279,8 @@
         - name: Beszédfordítás
           href: 'https://www.microsoft.com/translator/faq.aspx'
           displayName: 'translate speech, speech translation, translator, s2s, speech to speech'
+        - name: Hangközpontú virtuális asszisztensek (előzetes verzió)
+          href: faq-voice-first-virtual-assistants.md
     - name: Speech SDK-licencek
       displayName: 'C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows, NuGet, Maven, download, install, sample'
       items:
@@ -246,17 +289,18 @@
         - name: Harmadik felekkel kapcsolatos közlemények
           href: 'https://aka.ms/csspeech/toctpn'
     - name: Beszédeszközök SDK
-      href: speech-devices-sdk.md
       displayName: 'roobo, speech devices sdk'
       items:
+        - name: Névjegy
+          href: speech-devices-sdk.md
         - name: Licenc
           href: speech-devices-sdk-license.md
-          displayName: 'roobo, speech devices sdk'
         - name: Harmadik felekkel kapcsolatos közlemények
           href: devices-sdk-third-party-notices.md
-          displayName: 'roobo, speech devices sdk'
     - name: A Speech SDK hibaelhárítása
       href: troubleshooting.md
+    - name: A Beszédeszközök SDK hibaelhárítása
+      href: speech-devices-sdk-troubleshooting.md
     - name: Támogatás
       href: support.md
     - name: Díjszabás és korlátok
