@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: glenga
 ms.custom: ''
-ms.openlocfilehash: cc99bc4345c388f22e72957590f3917a85e214e0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: f7fa1d58c21ea0ed457cc5987d7823fad68d554f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126635"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153814"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Egy függvényalkalmazás létrehozása a linuxon futó Azure App Service-csomag
 
@@ -62,9 +62,6 @@ Rendelkeznie kell egy függvényalkalmazással a függvények Linux rendszerben 
     ![Új függvényalkalmazás-beállítások megadása](./media/create-function-app-linux-app-service-plan/function-app-create-notification.png)
 
 5. Az új függvényalkalmazás megtekintéséhez válassza az **Erőforrás megnyitása** lehetőséget.
-
-> [!TIP]
-> Ha nem találja a portálon a függvényalkalmazásokat, próbáljon [Függvényalkalmazásokat felvenni a kedvencek közé az Azure Portalon](functions-how-to-use-azure-function-app-settings.md#favorite).
 
 Ezután létrehozhat egy függvényt az új függvényalkalmazásban. Érhető el a függvényalkalmazást, után is igénybe vehet néhány percet a teljes inicializálására.
 

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 09f9731f78093354f324f263899519bc5d31fa5d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8f50188480b963d13460c79175ea6972d3e68f6a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682151"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153064"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései
 
@@ -34,9 +34,19 @@ Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 
 További információkért lásd: [Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3](migrate-from-v2-to-v3.md#known-issues).
 
+## <a name="may-2019"></a>2019. május
+
+### <a name="performance-improvements"></a>Teljesítménnyel kapcsolatos fejlesztések
+
+* A támogatott maximális fájlméretet frissítve lett. Látható, [kvóták és korlátozások](limits-quotas-constraints.md).
+* [Kódolás sebességének fejlesztései](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
+
 ## <a name="april-2019"></a>Április 2019
 
-[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) hozzá lett adva a beépített analyzer készletek.
+### <a name="new-presets"></a>Új készleteket
+
+* [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) hozzá lett adva a beépített analyzer készletek.
+* [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) hozzá lett adva a beépített kódoló készletek. További információkért lásd: [tartalom-kompatibilis kódolás](cae-experimental.md). 
 
 ## <a name="march-2019"></a>2019. március
 
@@ -205,7 +215,7 @@ A következő funkciók válnak elérhetővé a .NET SDK-ban:
 
 * Küldjön el egy feladatot, megadhatja, hogy a forrásvideókat, HTTPS URL-címek, SAS URL-címek vagy elérési utak használata az Azure Blob storage-ban található fájlokat. Az AMS v3 jelenleg nem támogatja a HTTPS URL-címekkel történő darabolásos átviteli kódolást.
 
-## <a name="provide-feedback"></a>Visszajelzés küldése
+## <a name="ask-questions-give-feedback-get-updates"></a>Tegyen fel kérdéseket, küldje el visszajelzését, frissítések beszerzése
 
 Tekintse meg a [Azure Media Services-Közösség](media-services-community.md) kérdések, küldje el visszajelzését, és tudnivalók a Media Services-frissítések különböző módon olvashatja.
 

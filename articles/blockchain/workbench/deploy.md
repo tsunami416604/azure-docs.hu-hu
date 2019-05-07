@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 05/06/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 5f488811e57ee20cb25db56b2d9e04202b17ffb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4fffc54428b152a060594a5c107d3ac08457aaaa
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60869645"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154671"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Az Azure Blockchain Workbench üzembe helyezése
 
@@ -27,16 +27,16 @@ A Blockchain Workbenchet az összetevőivel kapcsolatos további információké
 
 Blockchain Workbenchet lehetővé teszi a blockchain Főkönyv megfelelő Azure szolgáltatások leggyakrabban használt blockchain-alapú alkalmazás létrehozása és üzembe helyezése. Blockchain Workbench üzembe helyezése eredménye a következő szolgáltatásokat önköltséggel Azure-előfizetésében erőforráscsoporton belül.
 
-* 1 event Grid-témakör
-* 1 Service Bus-Namespace
-* 1 az application Insights
-* 1 SQL Database (Standard S0)
-* 2 app Services (szokásos)
-* 2 azure-Kulcstartók
-* 2 azure Storage-fiókok (Standard-LRS)
-* 2 virtuális gép méretezési csoportjairól (az érvényesítési és a feldolgozó csomópontok)
-* 2 virtual Network (beleértve a terheléselosztót, a hálózati biztonsági csoport és a nyilvános IP-cím az egyes virtuális hálózatok esetében)
-* Nem kötelező: Azure Monitor
+* App Service Plan (Standard)
+* Application Insights
+* Event Grid
+* Azure Key Vault
+* Service Bus
+* Az SQL Database (Standard S0) + SQL logikai kiszolgáló
+* Az Azure Storage-fiók (Standard-LRS)
+* Virtuálisgép-méretezési csoport kapacitásának 1 csoport
+* Virtuális hálózat erőforráscsoportot (a Load Balancer, hálózati biztonsági csoport, nyilvános IP-cím, virtuális hálózat esetén)
+* Nem kötelező: Az Azure Blockchain-szolgáltatás (alapszintű B0 alapértelmezett)
 
 Az alábbiakban a létrehozott központi telepítésre példát **myblockchain** erőforráscsoportot.
 
@@ -44,17 +44,12 @@ Az alábbiakban a létrehozott központi telepítésre példát **myblockchain**
 
 A Blockchain Workbenchet költségét az összesítést az alapul szolgáló Azure-szolgáltatások költségeinek. Díjszabási információk az Azure-szolgáltatások használatával kiszámítható az [díjkalkulátor](https://azure.microsoft.com/pricing/calculator/).
 
-> [!IMPORTANT]
-> Ha egy előfizetést az alacsony szolgáltatások korlátozásai, például egy ingyenes szintű Azure-előfizetést használ, a központi telepítés miatt sikertelenek lehetnek a kvóta nem elegendő a virtuális gép magjainak. Telepítés előtt ellenőrizze a kvóta útmutatásának a [virtuális gép vCPU-kvóták](../../virtual-machines/windows/quotas.md) cikk. Az alapértelmezett virtuális gép lehetőséget 6 Virtuálisgép-magokra van szükség. Például egy kisebb méretű virtuális gép módosítása *Standard DS1 v2* csökkenti a magok számát a 4.
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure Blockchain Workbench az Azure AD-konfiguráció és alkalmazás regisztrációk van szükség. Ha szeretné, hajtsa végre az Azure AD [konfigurációk manuálisan](#azure-ad-configuration) üzembe helyezési vagy egy parancsfájl futtatása előtt a telepítés után. Ha a Blockchain Workbenchet újbóli üzembe helyezés, tekintse meg [Azure AD-konfigurációjának](#azure-ad-configuration) az Azure AD-konfiguráció ellenőrzése.
 
 > [!IMPORTANT]
 > Workbench nem kell telepíteni szeretné ugyanabban a bérlőben, azzal, regisztrálni az Azure AD-alkalmazást használ. Workbench-bérlőben, hogy megfelelő engedélyekkel rendelkezik az erőforrások üzembe helyezése kell telepíteni. További információ az Azure AD-bérlőt: [Active Directory-bérlő beszerzése](../../active-directory/develop/quickstart-create-new-tenant.md) és [alkalmazások integrálása az Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
-
-
 
 ## <a name="deploy-blockchain-workbench"></a>Blockchain Workbench üzembe helyezése
 
@@ -82,7 +77,7 @@ Az előfeltételként felsorolt lépéseket befejezése után készen áll a Blo
     | Hitelesítés típusa | Válassza ki, ha azt szeretné, a jelszót, vagy csatlakozhat a virtuális gépek kulcs. |
     | Jelszó | A jelszó csatlakozik a virtuális gépek szolgál. |
     | SSH | Nyilvános RSA-kulcsot használja az egysoros kiadásától kezdve a **ssh-rsa** vagy a többsoros PEM formátumban. Az SSH-kulcsok használatával is létrehozhat `ssh-keygen` Linux-és OS X, illetve a Windows PuTTYGen használatával. Az SSH-kulcsokat, további információt talál [az SSH használata a Windows Azure-beli kulcsok](../../virtual-machines/linux/ssh-from-windows.md). |
-    | Adatbázis-jelszó / adatbázis jelszó megerősítése | Adja meg a központi telepítés részeként létrehozta az adatbázis eléréséhez használt jelszó. |
+    | Adatbázis- és Blockchain-jelszó | Adja meg a központi telepítés részeként létrehozta az adatbázis eléréséhez használt jelszó. A jelszónak meg kell felelnie a következő négy követelmények három: hossza kell esnie: 12 & 72 karakter, 1 kisbetűt, 1 nagybetű, 1 szám és 1 különleges karaktert, amely nem szám sign(#), percent(%), vessző, star(*), biztonsági ajánlat (\`), quote("), egyetlen quote('), csal és semicolumn(;) duplán |
     | Az üzembe helyezés régiójában | Adja meg az üzembe helyezés a Blockchain Workbenchet erőforrásokat. A legjobb rendelkezésre állás érdekében ennek meg kell egyeznie a **hely** beállítás. |
     | Előfizetés | Adja meg a központi telepítéshez használni kívánt Azure-előfizetést. |
     | Erőforráscsoportok | Hozzon létre egy új erőforráscsoportot kiválasztásával **új létrehozása** , és adja meg egy egyedi erőforráscsoport-nevet. |
@@ -94,15 +89,15 @@ Az előfeltételként felsorolt lépéseket befejezése után készen áll a Blo
 
     A **új létrehozása**:
 
-    A *létrehozása új* kapcsoló meg egyetlen tagot az előfizetésen belül Ethereum Proof-szolgáltató (PoA) csomópontok hozza létre. 
+    A *létrehozása új* beállítást helyez üzembe az Azure Blockchain-szolgáltatás kvórum Főkönyv az alapértelmezett alapszintű termékváltozatú.
 
     ![Új blockchain-hálózat speciális beállításai](media/deploy/advanced-blockchain-settings-new.png)
 
     | Beállítás | Leírás  |
     |---------|--------------|
-    | Figyelés | Válassza ki, hogy szeretné-e a blockchain-hálózat figyelése az Azure Monitor engedélyezése |
+    | Az Azure Blockchain-szolgáltatás tarifacsomag | Válasszon **alapszintű** vagy **Standard** Blockchain Workbenchet használt Azure Blockchain-szolgáltatás-szint |
     | Az Azure Active Directory-beállítások | Válasszon **hozzáadását a későbbiekben**.</br>Megjegyzés: Ha úgy döntött, hogy [előre konfigurálhatja az Azure ad-ben](#azure-ad-configuration) vagy újbóli üzembe helyezés, válassza ki a *felvétele most*. |
-    | Virtuális gép kiválasztása | Válassza ki a kívánt Virtuálisgép-méretet a blockchain-hálózat. Válassza ki például kisebb Virtuálisgép-mérettel *Standard DS1 v2* a alacsony szolgáltatásokra vonatkozó korlátozások, mint például az Azure ingyenes díjcsomagjának rendelkező előfizetés. |
+    | Virtuális gép kiválasztása | Válassza ki előnyben részesített tárolási teljesítmény és a blockchain-hálózathoz tartozó Virtuálisgép-méretet. Válassza ki például kisebb Virtuálisgép-mérettel *Standard DS1 v2* a alacsony szolgáltatásokra vonatkozó korlátozások, mint például az Azure ingyenes díjcsomagjának rendelkező előfizetés. |
 
     A **meglévő**:
 
@@ -121,7 +116,7 @@ Az előfeltételként felsorolt lépéseket befejezése után készen áll a Blo
      |---------|--------------|
      | RPC Ethereum-végpont | Adjon meg egy létező PoA blockchain-hálózat RPC-végpont. A végpont https:// vagy a http:// előtaggal kezdődik, és a egy portszámot végződik. Például: `http<s>://<network-url>:<port>` |
      | Az Azure Active Directory-beállítások | Válasszon **hozzáadását a későbbiekben**.</br>Megjegyzés: Ha úgy döntött, hogy [előre konfigurálhatja az Azure ad-ben](#azure-ad-configuration) vagy újbóli üzembe helyezés, válassza ki a *felvétele most*. |
-     | Virtuális gép kiválasztása | Válassza ki a kívánt Virtuálisgép-méretet a blockchain-hálózat. |
+     | Virtuális gép kiválasztása | Válassza ki előnyben részesített tárolási teljesítmény és a blockchain-hálózathoz tartozó Virtuálisgép-méretet. Válassza ki például kisebb Virtuálisgép-mérettel *Standard DS1 v2* a alacsony szolgáltatásokra vonatkozó korlátozások, mint például az Azure ingyenes díjcsomagjának rendelkező előfizetés. |
 
 9. Válassza ki **OK** speciális beállítások befejezéséhez.
 

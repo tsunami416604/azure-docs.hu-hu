@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a3dd7f78362b5f5c99dc4a74fe0a32c4d26be5b7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: a3b6327b9e05b039696cc1743fc2d16c5e945e26
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125933"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65152633"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Az IoT Edge biztonsági démon és a futtatókörnyezet frissítése
 
@@ -50,25 +50,15 @@ apt-get install libiothsm iotedge
 
 ### <a name="windows-devices"></a>Windows-eszközök
 
-Windows-eszközön használja a PowerShell-parancsfájlt, távolítsa el, majd telepítse újra a biztonsági démon. A telepítési parancsfájl automatikusan lekéri a biztonsági démon legújabb verzióját. 
-
-Távolítsa el a biztonsági démon rendszergazdai PowerShell-munkamenetben. 
+A Windows-eszközökön a PowerShell-parancsprogram használatával frissítse a biztonsági démon. A parancsfájl automatikusan lekéri a biztonsági démon legújabb verzióját. 
 
 ```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-Uninstall-SecurityDaemon
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
 ```
 
-Fut a `Uninstall-SecurityDaemon` parancs paraméterek nélkül csak eltávolítja a biztonsági démon az eszközről, a modul két tárolórendszerképeket együtt. A config.yaml fájlt az eszközön, valamint a a Moby tároló motor adatai másolatok. A konfigurációs információk azt jelenti, hogy adja meg a kapcsolati karakterlánc vagy a telepítési folyamat során újra az eszköz Device Provisioning Service-információk nem kell tartani. 
+A biztonsági démon az Update-IoTEdge parancs futtatása eltávolítja az eszközről, a modul két tárolórendszerképeket együtt. A config.yaml fájl másolatok az eszközt, valamint a Moby tároló motor adatait (Ha a Windows-tárolókat használ). A konfigurációs információk azt jelenti, hogy adja meg a kapcsolati karakterlánc vagy a frissítési folyamat során újra az eszköz Device Provisioning Service-információk nem kell tartani. 
 
-Telepítse újra a biztonsági démon attól függően, hogy az IoT Edge-eszköz Windows-tárolók vagy a Linux-tárolók használja. Cserélje le a kifejezés **\<Windows vagy Linux-alapú\>** a megfelelő tárolót operációs rendszerekkel. Használja a **- ExistingConfig** jelzőt az eszközön a meglévő config.yaml fájlra mutasson. 
-
-```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-Install-SecurityDaemon -ExistingConfig -ContainerOS <Windows or Linux>
-```
-
-Ha szeretné a biztonsági démon egy adott verzióját telepítse, töltse le a megfelelő iotedged-windows.zip fájlt a [IoT Edge-kiadások](https://github.com/Azure/azure-iotedge/releases). Ezután használja a `-OfflineInstallationPath` paraméter, a fájl helyére mutasson. További információkért lásd: [kapcsolat nélküli telepítés](how-to-install-iot-edge-windows.md#offline-installation).
+Ha szeretné a biztonsági démon egy adott verzióját telepítse, töltse le a megfelelő Microsoft-Azure-IoTEdge.cab fájlt [IoT Edge-kiadások](https://github.com/Azure/azure-iotedge/releases). Ezután használja a `-OfflineInstallationPath` paraméter, a fájl helyére mutasson. További információkért lásd: [kapcsolat nélküli telepítés](how-to-install-iot-edge-windows.md#offline-installation).
 
 ## <a name="update-the-runtime-containers"></a>A futtatókörnyezet tárolóiból frissítése
 

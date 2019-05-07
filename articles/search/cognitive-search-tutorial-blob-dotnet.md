@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 4e6f0317df2f0f631d2c8d3f8e5cefba06e154fd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1b3353cae73bb5710dc9343f1d211266d15743a2
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026836"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153210"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#Oktatóanyag: Az egy Azure Search szolgáltatásban az indexelés folyamat a Cognitive Services API-k meghívása
 
@@ -94,9 +94,9 @@ Első lépésként nyissa meg a Visual Studio és a egy új Konzolalkalmazás-pr
 
 A [Azure Search .NET SDK](https://aka.ms/search-sdk) áll, amelyek lehetővé teszik az indexek, adatforrások, indexelők és ismereteket, valamint töltse fel és kezelheti a dokumentumokat, és hajtsa végre a lekérdezéseket, anélkül hogy bajlódnia kezelése néhány klienskódtárak a HTTP- és JSON-adatokat. Ezen klienskódtárak NuGet-csomagként oszlanak.
 
-A projekt kell 7.x.x előzetes verziójának telepítése a `Microsoft.Azure.Search` NuGet csomag és a legújabb `Microsoft.Extensions.Configuration.Json` NuGet-csomagot.
+Ehhez a projekthez, telepítenie kell a 9-es verzió a `Microsoft.Azure.Search` NuGet csomag és a legújabb `Microsoft.Extensions.Configuration.Json` NuGet-csomagot.
 
-Telepítse a `Microsoft.Azure.Search` a Package Manager konzol használatával a Visual Studióban NuGet-csomagot. Válassza a Package Manager console megnyitásához **eszközök** > **NuGet-Csomagkezelő** > **Package Manager Console**. A parancs futtatása lekéréséhez lépjen a [Microsoft.Azure.Search NuGet csomag lapon](https://www.nuget.org/packages/Microsoft.Azure.Search)7.x.x. dátumú előzetes sémaverzióra válasszon, majd másolja be a Package Manager parancsot. A Package Manager konzol, a következő parancs futtatásával.
+Telepítse a `Microsoft.Azure.Search` a Package Manager konzol használatával a Visual Studióban NuGet-csomagot. Válassza a Package Manager console megnyitásához **eszközök** > **NuGet-Csomagkezelő** > **Package Manager Console**. A parancs futtatása lekéréséhez lépjen a [Microsoft.Azure.Search NuGet csomag lapon](https://www.nuget.org/packages/Microsoft.Azure.Search), válassza a 9-es verzió, és másolja a Package Manager parancsot. A Package Manager konzol, a következő parancs futtatásával.
 
 Telepítése a `Microsoft.Extensions.Configuration.Json` NuGet-csomagot a Visual Studióban válassza **eszközök** > **NuGet-Csomagkezelő** > **NuGet-csomagok kezelése megoldáshoz...** . Válassza a Tallózás gombra, és keresse meg a `Microsoft.Extensions.Configuration.Json` NuGet-csomagot. Miután azt tapasztaltuk, válassza ki a csomagot, jelölje ki a projektet, győződjön meg arról, a rendszer a a legújabb stabil verzióra, majd válassza ki a telepítés.
 
@@ -137,13 +137,25 @@ using Microsoft.Extensions.Configuration;
 
 ## <a name="create-a-client"></a>-Ügyfél létrehozása
 
-Hozzon létre egy példányt a `SearchServiceClient` osztályhoz az adott információk `appsettings.json`.
+Hozzon létre egy példányt a `SearchServiceClient` osztály.
 
 ```csharp
 IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
 IConfigurationRoot configuration = builder.Build();
-
 SearchServiceClient serviceClient = CreateSearchServiceClient(configuration);
+```
+
+`CreateSearchServiceClient` létrehoz egy új `SearchServiceClient` az alkalmazás konfigurációs fájljában (appsettings.json) tárolt értékének a felhasználásával.
+
+```csharp
+private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
+{
+   string searchServiceName = configuration["SearchServiceName"];
+   string adminApiKey = configuration["SearchServiceAdminApiKey"];
+
+   SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(adminApiKey));
+   return serviceClient;
+}
 ```
 
 > [!NOTE]
@@ -197,9 +209,9 @@ Ebben a szakaszban adja meg, hogy az adatok a alkalmazni kívánt Adatbővítés
 
 + [Nyelvfelismeréssel](cognitive-search-skill-language-detection.md) azonosítja a tartalom nyelvét.
 
-+ [Szöveg felosztása](cognitive-search-skill-textsplit.md) nagy méretű tartalom kezdetét szeletekre a kulcsfontosságú kifejezések kinyerése szakértelem és a nevesített entitások felismerése szakértelem hívása előtt. Kulcskifejezések kinyerése és nevesített entitások felismerése elfogadja a bemenetek legfeljebb 50 000 karakter. A mintafájlok közül néhányat fel kell osztani ahhoz, hogy beleférjen a korlátozásba.
++ [Szöveg felosztása](cognitive-search-skill-textsplit.md) nagy méretű tartalom kezdetét szeletekre a kulcsfontosságú kifejezések kinyerése szakértelem és az entitások felismerése szakértelem hívása előtt. Kulcskifejezések kinyerése és entitások felismerése elfogadja a bemenetek legfeljebb 50 000 karakter. A mintafájlok közül néhányat fel kell osztani ahhoz, hogy beleférjen a korlátozásba.
 
-+ A [Megnevezett entitások felismerése](cognitive-search-skill-named-entity-recognition.md) kinyeri a szervezetek nevét a blobtároló tartalmából.
++ [Entitások felismerése](cognitive-search-skill-entity-recognition.md) szervezetek nevei kinyerését tartalom blob-tárolóban.
 
 + A [Kulcskifejezések kinyerése](cognitive-search-skill-keyphrases.md) lehívja a leggyakoribb kulcskifejezéseket.
 
@@ -225,7 +237,7 @@ outputMappings.Add(new OutputFieldMappingEntry(
     targetName: "text"));
 
 OcrSkill ocrSkill = new OcrSkill(
-    description: "Extract text (plain and structured) from image).",
+    description: "Extract text (plain and structured) from image",
     context: "/document/normalized_images/*",
     inputs: inputMappings,
     outputs: outputMappings,
@@ -279,7 +291,7 @@ outputMappings.Add(new OutputFieldMappingEntry(
     targetName: "languageCode"));
 
 LanguageDetectionSkill languageDetectionSkill = new LanguageDetectionSkill(
-    description: "Language detection skill",
+    description: "Detect the language used in the document",
     context: "/document",
     inputs: inputMappings,
     outputs: outputMappings);
@@ -312,9 +324,9 @@ SplitSkill splitSkill = new SplitSkill(
     maximumPageLength: 4000);
 ```
 
-### <a name="named-entity-recognition-skill"></a>Nevesített entitások felismerése szakértelem
+### <a name="entity-recognition-skill"></a>Entitások felismerése szakértelem
 
-Ez `NamedEntityRecognitionSkill` példány beállítása ismeri fel a kategóriája `organization`. A **megnevezett entitások felismerése** szakértelem is képes felismerni a kategória adattípusokat `person` és `location`.
+Ez `EntityRecognitionSkill` példány beállítása ismeri fel a kategóriája `organization`. A **entitások felismerése** szakértelem is képes felismerni a kategória adattípusokat `person` és `location`.
 
 Figyelje meg, hogy a "környezet" mező értéke ```"/document/pages/*"``` csillaggal, tehát a Adatbővítés lépést nevezzük alatt minden olyan lap ```"/document/pages"```.
 
@@ -329,21 +341,21 @@ outputMappings.Add(new OutputFieldMappingEntry(
     name: "organizations",
     targetName: "organizations"));
 
-List<NamedEntityCategory> namedEntityCategory = new List<NamedEntityCategory>();
-namedEntityCategory.Add(NamedEntityCategory.Organization);
+List<EntityCategory> entityCategory = new List<EntityCategory>();
+entityCategory.Add(EntityCategory.Organization);
     
-NamedEntityRecognitionSkill namedEntityRecognition = new NamedEntityRecognitionSkill(
+EntityRecognitionSkill entityRecognitionSkill = new EntityRecognitionSkill(
     description: "Recognize organizations",
     context: "/document/pages/*",
     inputs: inputMappings,
     outputs: outputMappings,
-    categories: namedEntityCategory,
-    defaultLanguageCode: NamedEntityRecognitionSkillLanguage.En);
+    categories: entityCategory,
+    defaultLanguageCode: EntityRecognitionSkillLanguage.En);
 ```
 
 ### <a name="key-phrase-extraction-skill"></a>A kulcsfontosságú kifejezések kinyerése szakértelem
 
-Például a `NamedEntityRecognitionSkill` példányt, amely az imént létrehozott, a **kulcs kulcsszókeresés** szakértelem nevezzük a dokumentum minden egyes oldalához.
+Például a `EntityRecognitionSkill` példányt, amely az imént létrehozott, a **kulcs kulcsszókeresés** szakértelem nevezzük a dokumentum minden egyes oldalához.
 
 ```csharp
 List<InputFieldMappingEntry> inputMappings = new List<InputFieldMappingEntry>();
@@ -368,7 +380,7 @@ KeyPhraseExtractionSkill keyPhraseExtractionSkill = new KeyPhraseExtractionSkill
 
 ### <a name="build-and-create-the-skillset"></a>Hozhat létre, és a képességcsoport létrehozása
 
-Hozhat létre a `SkillSet` a létrehozott készségeit.
+Hozhat létre a `Skillset` a létrehozott készségeit.
 
 ```csharp
 List<Skill> skills = new List<Skill>();
@@ -376,12 +388,12 @@ skills.Add(ocrSkill);
 skills.Add(mergeSkill);
 skills.Add(languageDetectionSkill);
 skills.Add(splitSkill);
-skills.Add(namedEntityRecognition);
+skills.Add(entityRecognitionSkill);
 skills.Add(keyPhraseExtractionSkill);
 
-Skillset skillSet = new Skillset(
+Skillset skillset = new Skillset(
     name: "demoskillset",
-    description: "Demo Skillset",
+    description: "Demo skillset",
     skills: skills);
 ```
 
@@ -390,7 +402,7 @@ A keresési szolgáltatás létrehozása a képességek alkalmazási lehetőség
 ```csharp
 try
 {
-    serviceClient.Skillsets.CreateOrUpdate(skillSet);
+    serviceClient.Skillsets.CreateOrUpdate(skillset);
 }
 catch (Exception e)
 {
@@ -459,16 +471,24 @@ var index = new Index()
 };
 ```
 
-Tesztelés során azt tapasztalhatja, hogy végrehajtani kívánt egynél többször az index létrehozásához. Ez az oka ellenőrizze, hogy létezik-e, hogy Ön már létre az index létrehozása előtt. 
+Tesztelés során azt tapasztalhatja, hogy végrehajtani kívánt egynél többször az index létrehozásához. Ez az oka ellenőrizze, hogy létezik-e, hogy Ön már létre az index létrehozása előtt.
 
 ```csharp
-bool exists = serviceClient.Indexes.Exists(index.Name);
-if (exists)
+try
 {
-    serviceClient.Indexes.Delete(index.Name);
-}
+    bool exists = serviceClient.Indexes.Exists(index.Name);
 
-serviceClient.Indexes.Create(index);
+    if (exists)
+    {
+        serviceClient.Indexes.Delete(index.Name);
+    }
+
+    serviceClient.Indexes.Create(index);
+}
+catch (Exception e)
+{
+    // Handle exception
+}
 ```
 
 További információk az indexek meghatározásáról: [Index létrehozása (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
@@ -526,14 +546,15 @@ Indexer indexer = new Indexer(
     fieldMappings: fieldMappings,
     outputFieldMappings: outputMappings);
 
-bool exists = serviceClient.Indexers.Exists(indexer.Name);
-if (exists)
-{
-    serviceClient.Indexers.Delete(indexer.Name);
-}
-
 try
 {
+    bool exists = serviceClient.Indexers.Exists(indexer.Name);
+
+    if (exists)
+    {
+        serviceClient.Indexers.Delete(indexer.Name);
+    }
+
     serviceClient.Indexers.Create(indexer);
 }
 catch (Exception e)
@@ -560,21 +581,29 @@ Tartalom kinyerésekor az `imageAction` beállításával kinyerheti a szöveget
 Az indexelő meghatározását követően az indexelő a kérés elküldésekor automatikusan lefut. Az indexelés a vártnál tovább is eltarthat attól függően, hogy mely kognitív képességeket adta meg. Ismerje meg, hogy az indexelő még mindig fut, használja a `GetStatus` metódust.
 
 ```csharp
-IndexerExecutionInfo demoIndexerExecutionInfo = serviceClient.Indexers.GetStatus(indexer.Name);
-switch (demoIndexerExecutionInfo.Status)
+try
 {
-    case IndexerStatus.Error:
-        Console.WriteLine("Indexer has error status");
-        break;
-    case IndexerStatus.Running:
-        Console.WriteLine("Indexer is running");
-        break;
-    case IndexerStatus.Unknown:
-        Console.WriteLine("Indexer status is unknown");
-        break;
-    default:
-        Console.WriteLine("No indexer status information");
-        break;
+    IndexerExecutionInfo demoIndexerExecutionInfo = serviceClient.Indexers.GetStatus(indexer.Name);
+
+    switch (demoIndexerExecutionInfo.Status)
+    {
+        case IndexerStatus.Error:
+            Console.WriteLine("Indexer has error status");
+            break;
+        case IndexerStatus.Running:
+            Console.WriteLine("Indexer is running");
+            break;
+        case IndexerStatus.Unknown:
+            Console.WriteLine("Indexer status is unknown");
+            break;
+        default:
+            Console.WriteLine("No indexer information");
+            break;
+    }
+}
+catch (Exception e)
+{
+    // Handle exception
 }
 ```
 
@@ -603,6 +632,19 @@ catch (Exception e)
 }
 ```
 
+`CreateSearchIndexClient` létrehoz egy új `SearchIndexClient` az alkalmazás konfigurációs fájljában (appsettings.json) tárolt értékének a felhasználásával. Vegye figyelembe, hogy search szolgáltatás lekérdezési API-t használja a rendszer, és nem az adminisztrációs kulcsot.
+
+```csharp
+private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)
+{
+   string searchServiceName = configuration["SearchServiceName"];
+   string queryApiKey = configuration["SearchServiceQueryApiKey"];
+
+   SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "demoindex", new SearchCredentials(queryApiKey));
+   return indexClient;
+}
+```
+
 A kimenet az egyes mezők nevét, típusát és attribútumait tartalmazó indexséma.
 
 Indítson egy másodlagos lekérdezést a `"*"` kifejezésre egy mező, például az `organizations` összes tartalmának lekéréséhez.
@@ -626,52 +668,11 @@ catch (Exception e)
 
 Ismételje meg a műveletet további mezőket: tartalom, languageCode, keyPhrases és szervezetek ebben a gyakorlatban. Egyszerre több mezőt is lekérhet a vesszővel elválasztott listát használó `$select` megadásával.
 
-<a name="access-enriched-document"></a>
-
-## <a name="accessing-the-enriched-document"></a>A bővített dokumentum elérése
-
-A kognitív kereséssel megtekintheti a bővített dokumentum szerkezetét. A bővített dokumentumok a bővítés során létrejött, majd a folyamat végeztével törlődő ideiglenes szerkezetek.
-
-Ha pillanatképet szeretne készíteni az indexelés során létrejött bővített dokumentumról, adja hozzá az indexhez az ```enriched``` mezőt. Az indexelő automatikusan hozzáadja a mezőhöz az adott dokumentum bővítéseinek karakterláncos leképezését.
-
-Az ```enriched``` mező egy sztringet tartalmaz, amely a JSON-ban szereplő memóriabeli bővített dokumentum logikai leképezése.  A mező értéke azonban egy érvényes JSON-dokumentum. Mivel az idézőjelek előtt escape-karakter áll, a `\"` karaktereket `"` karakterre kell cserélnie, ha a dokumentumot formázott JSON-ként szeretné megtekinteni.  
-
-Az ```enriched``` mező célja a hibakeresés, annak érdekében, hogy segítsen azon tartalom logikai alakzatának megértésében, amely szerint a kifejezések értékelve lesznek. Ez hasznos eszközként szolgálat a képességcsoport megértéséhez és hibakereséséhez.
-
-Ismételje meg az előző gyakorlatot, egy `enriched` mezőt is megadva a bővített dokumentum tartalmának rögzítéséhez:
-
-### <a name="request-body-syntax"></a>Kérelem törzse szintaxis
-```csharp
-// The SerializePropertyNamesAsCamelCase attribute is defined in the Azure Search .NET SDK.
-// It ensures that Pascal-case property names in the model class are mapped to camel-case
-// field names in the index.
-[SerializePropertyNamesAsCamelCase]
-public class DemoIndex
-{
-    [System.ComponentModel.DataAnnotations.Key]
-    [IsSearchable, IsSortable]
-    public string Id { get; set; }
-
-    [IsSearchable]
-    public string Content { get; set; }
-
-    [IsSearchable]
-    public string LanguageCode { get; set; }
-
-    [IsSearchable]
-    public string[] KeyPhrases { get; set; }
-
-    [IsSearchable]
-    public string[] Organizations { get; set; }
-
-    public string Enriched { get; set; }
-}
-```
 <a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>Alaphelyzetbe állítás és ismételt futtatás
 
-Korai szakaszaiban kísérleti, fejlesztési a legtöbb gyakorlati megközelítést tervezési iteráció során, hogy törölni az objektumokat az Azure Search, és lehetővé teszi a kód újraépítése őket. Az erőforrásnevek egyediek. Egy objektum törlése révén újból létrehozhatja azt ugyanazzal a névvel. 
+Korai szakaszaiban kísérleti, fejlesztési a legtöbb gyakorlati megközelítést tervezési iteráció során, hogy törölni az objektumokat az Azure Search, és lehetővé teszi a kód újraépítése őket. Az erőforrásnevek egyediek. Egy objektum törlése révén újból létrehozhatja azt ugyanazzal a névvel.
 
 Ebben az oktatóanyagban tartott gondoskodik a meglévő indexelők és az indexek ellenőrzése és törlése őket, ha már van ilyen, hogy a kódot futtathatja.
 
@@ -681,11 +682,11 @@ Ahogy a kód egyre kiforrottabbá válik, jó ötlet lehet az újraépítési st
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 
-Ez az oktatóanyag a bővített indexelőfolyamat a komponensek (adatforrás, képességcsoport, index és indexelő) létrehozásával való összeállításának alapvető lépéseit ismerteti.
+Ez az oktatóanyag, amellyel összetevőit kell létrehozni egy képi elemekben gazdag indexelési folyamat alapvető lépéseit mutatja be: egy adatforrást, indexmezők, index és indexelő.
 
 Bemutattuk az [előre meghatározott képességeket](cognitive-search-predefined-skills.md), valamint a képességcsoport megadását, illetve a képességek bemenetek és kimenetek segítségével történő összekapcsolásának működését. Azt is megtanulta, hogy az indexelő definíciójának `outputFieldMappings` eleme szükséges a bővített értékek a folyamatból az Azure Search szolgáltatásban található, kereshető indexbe történő átirányításához.
 
-Végül megismerte, hogyan tesztelheti az eredményeket, és hogyan állíthatja alaphelyzetbe a rendszert a későbbi futtatásokhoz. Megtanulta, hogy ha lekérdezéseket futtat az indexen, az a bővített indexelési folyamat által létrehozott kimenetet adja vissza. Ebben a kiadásban szerepel egy belső szerkezetek (a rendszer által létrehozott bővített dokumentumok) megjelenítésére szolgáló mechanizmus. Emellett azt is megtanulta, hogyan ellenőrizheti az indexelő állapotát, illetve hogy melyik objektumokat kell törölnie a folyamat újrafuttatása előtt.
+Végül megismerte, hogyan tesztelheti az eredményeket, és hogyan állíthatja alaphelyzetbe a rendszert a későbbi futtatásokhoz. Megtanulta, hogy ha lekérdezéseket futtat az indexen, az a bővített indexelési folyamat által létrehozott kimenetet adja vissza. Emellett azt is megtanulta, hogyan ellenőrizheti az indexelő állapotát, illetve hogy melyik objektumokat kell törölnie a folyamat újrafuttatása előtt.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

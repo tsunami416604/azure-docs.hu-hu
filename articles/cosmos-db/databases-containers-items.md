@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 8eaca83b7ea89737a63fe56a18505c8df7e93fdc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 215ae29c571e56b7e3af589149123083223023c7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889394"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153460"
 ---
 # <a name="work-with-databases-containers-and-items"></a>Adatbázisok, tárolók és elemek használata
 
@@ -77,7 +77,7 @@ Egy Azure Cosmos-tárolóhoz egy rendszer által definiált tulajdonsággal rend
 
 | **Rendszer által meghatározott tulajdonság** | **Létrehozott vagy felhasználó által konfigurálható** | **Cél** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|_rid | A rendszer által létrehozott | Tároló egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
+|_id | A rendszer által létrehozott | Tároló egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
 |_etag | A rendszer által létrehozott | Az optimista egyidejűség-vezérlési entitáscímkéje | Igen | Nem | Nem | Nem | Nem |
 |_ts | A rendszer által létrehozott | A tároló utolsó frissítés időbélyege | Igen | Nem | Nem | Nem | Nem |
 |_self | A rendszer által létrehozott | A tároló címezhető URI | Igen | Nem | Nem | Nem | Nem |

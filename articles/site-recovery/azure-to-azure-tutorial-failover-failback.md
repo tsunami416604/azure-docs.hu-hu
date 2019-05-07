@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: bf2ded7a98d608780bc447c5944e7d1f4d9b698b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 95e4e3f3acc52c230405f0c0cc4a05b03b21a386
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926397"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153777"
 ---
 # <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>Feladatátadás és Azure virtuális gépek ismételt védelme a régiók között
 
@@ -27,8 +27,10 @@ Ez az oktatóanyag ismerteti, hogyan lehet egy Azure virtuális gép (VM) felada
 > [!NOTE]
 > Ebben az oktatóanyagban az alapértelmezett beállításokat, és minimális testreszabási legegyszerűbb elérési útvonalát tartalmazza. Összetettebb esetekhez használhatja a "Hogyan To" a cikkek az Azure virtuális gépek.
 
+
 ## <a name="prerequisites"></a>Előfeltételek
 
+- A Kezdés előtt tekintse át a [– gyakori kérdések](site-recovery-faq.md#failover) feladatátvételi kapcsolatban.
 - Mindenképp végezzen [vészhelyreállítási próbát](azure-to-azure-tutorial-dr-drill.md) annak ellenőrzésére, hogy minden a várt módon működik-e.
 - Ellenőrizze a virtuális gép tulajdonságait a feladatátvételi teszt futtatása előtt. A virtuális gépnek meg kell felelnie az [Azure-követelményeknek](azure-to-azure-support-matrix.md#replicated-machine-operating-systems).
 

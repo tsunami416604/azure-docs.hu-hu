@@ -2,18 +2,19 @@
 title: Az Azure Storage-mérőszámok az Azure Monitor |} A Microsoft Docs
 description: Ismerje meg az új metrikák az Azure Monitor érhető el.
 services: storage
-author: fhryo-msft
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 09/05/2017
-ms.author: fryu
+ms.author: normesta
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 244d7fc3caa96173e408a193e13acd656d4a7f77
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: d776c67aad9f42184d8cf9ba0a437fbcf9d2c46c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101982"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154248"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-metrikák az Azure Monitorban
 
@@ -336,15 +337,15 @@ Az Azure Storage a következő kapacitási mérőszámot az Azure monitorban biz
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| UsedCapacity | A tárfiók által felhasznált tárterület mennyisége. Standard szintű tárfiókok esetén, az összeg, a blob, table, fájl és várólista által használt kapacitás. A premium storage-fiókok és a Blob storage-fiókok hogy megegyezik a BlobCapacity. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| UsedCapacity | A tárfiók által felhasznált tárterület mennyisége. Standard szintű tárfiókok esetében ez a blob, a tábla, a fájl és a várólista által használt kapacitás összege. Prémium szintű és Blob Storage-fiókok esetében a BlobCapacity értékével azonos. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 
 ### <a name="blob-storage"></a>Blob Storage
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
 | BlobCapacity | A teljes használható a storage-fiókban lévő blobtárolóba. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 <br/> Méretek: **BlobType**, és **BlobTier** ([definíció](#metrics-dimensions)) |
-| BlobCount    | A storage-fiókban tárolt blob-objektumok száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 <br/> Méretek: **BlobType**, és **BlobTier** ([definíció](#metrics-dimensions)) |
-| ContainerCount    | A tárfiókban lévő tárolók száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| BlobCount    | A storage-fiókban tárolt blob-objektumok száma. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 <br/> Méretek: **BlobType**, és **BlobTier** ([definíció](#metrics-dimensions)) |
+| ContainerCount    | A tárfiókban lévő tárolók száma. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 | IndexCapacity     | Az ADLS Gen2 hierarchikus Index által felhasznált tárterület mérete <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 
 ### <a name="table-storage"></a>Table Storage
@@ -352,24 +353,24 @@ Az Azure Storage a következő kapacitási mérőszámot az Azure monitorban biz
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
 | TableCapacity | Használja a tárfiók Table storage mennyisége. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
-| TableCount   | A tárfiókban lévő táblák száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
-| TableEntityCount | A storage-fiókban található táblaentitások száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| TableCount   | A tárfiókban lévő táblák száma. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| TableEntityCount | A storage-fiókban található táblaentitások száma. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 
 ### <a name="queue-storage"></a>Queue Storage
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
 | QueueCapacity | Használja a tárfiók Queue storage mennyisége. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
-| QueueCount   | A tárfiókban lévő üzenetsorok számát. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
-| QueueMessageCount | A storage-fiók lejárt üzenetsorbeli üzenetek száma. <br/><br/>Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| QueueCount   | A tárfiókban lévő üzenetsorok számát. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| QueueMessageCount | A storage-fiók lejárt üzenetsorbeli üzenetek száma. <br/><br/>Szervezeti egység: Count <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 
 ### <a name="file-storage"></a>File Storage
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
 | FileCapacity | Használja a tárfiók File storage mennyisége. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
-| FileCount   | A storage-fiókban lévő fájlok száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
-| FileShareCount | A tárfiókban lévő fájlmegosztások a száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| FileCount   | A storage-fiókban lévő fájlok száma. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
+| FileShareCount | A tárfiókban lévő fájlmegosztások a száma. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Átlag <br/> Érték. példa: 1024 |
 
 ## <a name="transaction-metrics"></a>Tranzakció-mérőszámot
 
@@ -379,12 +380,12 @@ Az Azure Storage a következő tranzakció-mérőszámot az Azure monitorban biz
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| Tranzakciók | Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és sikertelen kérések, valamint a hibára futott kérések számát tartalmazza. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Alkalmazható dimenziók: ResponseType, GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions))<br/> Érték. példa: 1024 |
+| Tranzakciók | Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és sikertelen kérések, valamint a hibára futott kérések számát tartalmazza. <br/><br/> Szervezeti egység: Count <br/> Aggregation Type: Összes <br/> Alkalmazható dimenziók: ResponseType, GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions))<br/> Érték. példa: 1024 |
 | Bejövő forgalom | A bejövő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Összes <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
 | Kimenő forgalom | A kimenő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat. <br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Összes <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
 | SuccessServerLatency | Az Azure Storage által sikeresen feldolgozott kérések átlagos feldolgozási ideje. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést. <br/><br/> Szervezeti egység: Ezredmásodperc <br/> Aggregation Type: Átlag <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
 | SuccessE2ELatency | A tárolási szolgáltatás vagy a megadott API-művelet számára elküldött sikeres kérések végpontok közötti késésének átlaga. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt. <br/><br/> Szervezeti egység: Ezredmásodperc <br/> Aggregation Type: Átlag <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 1024 |
-| Rendelkezésre állás | A társzolgáltatás vagy a megadott API-művelet rendelkezésre állási százaléka. Rendelkezésre állási a számlázható kérések teljes értékét és elosztjuk, többek között ezeket a kérelmeket, váratlan hibára, vonatkozó kérelmek száma alapján számítjuk. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik. <br/><br/> Szervezeti egység: Százalék <br/> Aggregation Type: Átlag <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 99.99 |
+| Rendelkezésre állás | A társzolgáltatás vagy a megadott API-művelet rendelkezésre állási százaléka. A Rendelkezésre állás az összes számlázható kérelem értékének és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik. <br/><br/> Szervezeti egység: Százalék <br/> Aggregation Type: Átlag <br/> Alkalmazható dimenziók: GeoType ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték. példa: 99.99 |
 
 ## <a name="metrics-dimensions"></a>Metrikák dimenziók
 

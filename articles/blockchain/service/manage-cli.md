@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: 100d50443c7ed839e57d80ceea3b8b86904e4ba7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d078ca181b2eed4b80d4f12f1c03b42f4e242194
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027870"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154441"
 ---
 # <a name="manage-azure-blockchain-service-with-azure-cli"></a>Az Azure CLI-vel az Azure Blockchain-szolgáltatás kezelése
 
@@ -30,7 +30,7 @@ A következő példákban cserélje le a példában `<parameter names>` a saját
 Példa az Azure Blockchain Service-ben, amely a kvórum Főkönyv protokoll egy új consortium hoz létre a blockchain-tag.
 
 ```azurecli
-az resource create --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --is-full-object --properties '{ "location": "<myBlockchainLocation>", "properties": {"password": "<myStrongPassword>", "protocol": "Quorum", "consortium": "<myConsortiumName>", "consortiumManagementAccountPassword": "<myConsortiumManagementAccountPassword>", "firewallRules": [ { "ruleName": "<myRuleName>", "startIpAddress": "<myStartIpAddress>", "endIpAddress": "<myEndIpAddress>" } ] }, "sku": { "name": "<skuName>" } }'
+az resource create --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --is-full-object --properties "{ \"location\": \"<myBlockchainLocation>\", \"properties\": {\"password\": \"<myStrongPassword>\", \"protocol\": \"Quorum\", \"consortium\": \"<myConsortiumName>\", \"consortiumManagementAccountPassword\": \"<myConsortiumManagementAccountPassword>\", \"firewallRules\": [ { \"ruleName\": \"<myRuleName>\", \"startIpAddress\": \"<myStartIpAddress>\", \"endIpAddress\": \"<myEndIpAddress>\" } ] }, \"sku\": { \"name\": \"<skuName>\" } }"
 ```
 
 | Paraméter | Leírás |
@@ -38,7 +38,7 @@ az resource create --resource-group <myResourceGroup> --name <myMemberName> --re
 | **resource-group** | Erőforráscsoport neve, az Azure Blockchain-szolgáltatási erőforrások jönnek létre. |
 | **name** | Egyedi név, amely azonosítja az Azure Blockchain-szolgáltatás blockchain tag. A név szolgál a nyilvános végpont címe. Például: `myblockchainmember.blockchain.azure.com`. |
 | **hely** | Az Azure régióban, amelyben létrehozza a blockchain tag. Például: `eastus`. Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet. |
-| **jelszó** | A tag fiók jelszavát. A tag fiók jelszavát az alapszintű hitelesítést használ, a blockchain tag nyilvános végpont hitelesítéséhez használatos. A jelszónak meg kell felelnie a következő négy követelmények közül három: hossza kell esnie: 12 & 72 karakter, 1 kisbetűt, 1 nagybetű, 1 szám és 1 különleges karaktert, amely nem szám sign(#), percent(%), vessző, star(*), biztonsági idézőjel () \`), quote("), egyetlen quote('), csal és semicolon(;) duplán. |
+| **jelszó** | A tag fiók jelszavát. A tag fiók jelszavát az alapszintű hitelesítést használ, a blockchain tag nyilvános végpont hitelesítéséhez használatos. A jelszónak meg kell felelnie a következő négy követelmények három: hossza kell esnie: 12 & 72 karakter, 1 kisbetűt, 1 nagybetű, 1 szám és 1 különleges karaktert, amely nem szám sign(#), percent(%), vessző, star(*), biztonsági ajánlat (\`), quote("), egyetlen quote('), csal és semicolumn(;) duplán|
 | **protokoll** | Nyilvános előzetes verziója támogatja a kvórum. |
 | **consortium** | A csatlakozás, vagy hozzon létre consortium neve. |
 | **consortiumManagementAccountPassword** | Consortium felügyeleti jelszava. A jelszó konzorcium való csatlakozásra szolgál. |
@@ -58,7 +58,7 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName> --re
 |---------|-------------|
 | **resource-group** | Erőforráscsoport neve, az Azure Blockchain-szolgáltatási erőforrások jönnek létre. |
 | **name** | Az Azure Blockchain-szolgáltatás tag azonosító név. |
-| **jelszó** | A tag fiók jelszavát. A jelszónak meg kell felelnie a következő négy követelmények közül három: hossza kell esnie: 12 & 72 karakter, 1 kisbetűt, 1 nagybetű, 1 szám és 1 különleges karaktert, amely nem szám sign(#), percent(%), vessző, star(*), biztonsági idézőjel () \`), quote("), egyetlen quote('), csal és semicolon(;) duplán. |
+| **jelszó** | A tag fiók jelszavát. A jelszónak meg kell felelnie a következő négy követelmények három: hossza kell esnie: 12 & 72 karakter, 1 kisbetűt, 1 nagybetű, 1 szám és 1 különleges karaktert, amely nem szám sign(#), percent(%), vessző, star(*), biztonsági ajánlat (\`), quote("), egyetlen quote('), csal és semicolon(;) duplán. |
 
 
 ## <a name="create-transaction-node"></a>Tranzakció csomópont létrehozása
@@ -66,7 +66,7 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName> --re
 Egy meglévő blockchain tag belül tranzakció csomópontot hozhat létre. Tranzakció csomópontok hozzáadásával növelheti a biztonsági elkülönítés-terhelés. Például lehet egy másik ügyfélalkalmazások tranzakció csomópont végpontot.
 
 ```azurecli
-az resource create --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --resource-type Microsoft.Blockchain/blockchainMembers  --is-full-object --properties '{ "location": "<myRegion>", "properties": { "password": "<myStrongPassword>", "firewallRules": [ { "ruleName": "<myRuleName>", "startIpAddress": "<myStartIpAddress>", "endIpAddress": "<myEndIpAddress>" } ] } }'
+az resource create --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --resource-type Microsoft.Blockchain/blockchainMembers  --is-full-object --properties "{ \"location\": \"<myRegion>\", \"properties\": { \"password\": \"<myStrongPassword>\", \"firewallRules\": [ { \"ruleName\": \"<myRuleName>\", \"startIpAddress\": \"<myStartIpAddress>\", \"endIpAddress\": \"<myEndIpAddress>\" } ] } }"
 ```
 
 | Paraméter | Leírás |
@@ -74,7 +74,7 @@ az resource create --resource-group <myResourceGroup> --name <myMemberName>/tran
 | **resource-group** | Erőforráscsoport neve, az Azure Blockchain-szolgáltatási erőforrások jönnek létre. |
 | **name** | Az Azure Blockchain-szolgáltatás, amely a tranzakció új csomópont nevét is tartalmazza blockchain tag nevét. |
 | **hely** | Az Azure régióban, amelyben létrehozza a blockchain tag. Például: `eastus`. Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet. |
-| **jelszó** | A tranzakció csomópont jelszót. A jelszónak meg kell felelnie a következő négy követelmények közül három: hossza kell esnie: 12 & 72 karakter, 1 kisbetűt, 1 nagybetű, 1 szám és 1 különleges karaktert, amely nem szám sign(#), percent(%), vessző, star(*), biztonsági idézőjel () \`), quote("), egyetlen quote('), csal és semicolon(;) duplán. |
+| **jelszó** | A tranzakció csomópont jelszót. A jelszónak meg kell felelnie a következő négy követelmények három: hossza kell esnie: 12 & 72 karakter, 1 kisbetűt, 1 nagybetű, 1 szám és 1 különleges karaktert, amely nem szám sign(#), percent(%), vessző, star(*), biztonsági ajánlat (\`), quote("), egyetlen quote('), csal és semicolon(;) duplán. |
 | **ruleName** | IP-címtartomány engedélyezési szabály neve. Nem kötelező paraméter a tűzfalszabályok esetében. |
 | **startIpAddress** | Az engedélyezési listára helyezési IP-címtartomány kezdete. Nem kötelező paraméter a tűzfalszabályok esetében. |
 | **endIpAddress** | Az engedélyezési listára helyezési IP-címtartomány vége. Nem kötelező paraméter a tűzfalszabályok esetében.|
@@ -91,7 +91,7 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName>/tran
 |---------|-------------|
 | **resource-group** | Ha az Azure Blockchain-szolgáltatási erőforrások léteznek erőforráscsoport nevét. |
 | **name** | Az Azure Blockchain-szolgáltatás, amely a tranzakció új csomópont nevét is tartalmazza blockchain tag nevét. |
-| **jelszó** | A tranzakció csomópont jelszót. A jelszónak meg kell felelnie a következő négy követelmények közül három: hossza kell esnie: 12 & 72 karakter, 1 kisbetűt, 1 nagybetű, 1 szám és 1 különleges karaktert, amely nem szám sign(#), percent(%), vessző, star(*), biztonsági idézőjel () \`), quote("), egyetlen quote('), csal és semicolon(;) duplán. |
+| **jelszó** | A tranzakció csomópont jelszót. A jelszónak meg kell felelnie a következő négy követelmények három: hossza kell esnie: 12 & 72 karakter, 1 kisbetűt, 1 nagybetű, 1 szám és 1 különleges karaktert, amely nem szám sign(#), percent(%), vessző, star(*), biztonsági ajánlat (\`), quote("), egyetlen quote('), csal és semicolon(;) duplán. |
 
 ## <a name="change-consortium-management-account-password"></a>Consortium felügyeleti fiók jelszó módosítása
 
@@ -105,12 +105,12 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName> --re
 |---------|-------------|
 | **resource-group** | Erőforráscsoport neve, az Azure Blockchain-szolgáltatási erőforrások jönnek létre. |
 | **name** | Az Azure Blockchain-szolgáltatás tag azonosító név. |
-| **consortiumManagementAccountPassword** | A consortium felügyeleti fiók jelszavát. A jelszónak meg kell felelnie a következő négy követelmények közül három: hossza kell esnie: 12 & 72 karakter, 1 kisbetűt, 1 nagybetű, 1 szám és 1 különleges karaktert, amely nem szám sign(#), percent(%), vessző, star(*), biztonsági idézőjel () \`), quote("), egyetlen quote('), csal és semicolon(;) duplán. |
+| **consortiumManagementAccountPassword** | A consortium felügyeleti fiók jelszavát. A jelszónak meg kell felelnie a következő négy követelmények három: hossza kell esnie: 12 & 72 karakter, 1 kisbetűt, 1 nagybetű, 1 szám és 1 különleges karaktert, amely nem szám sign(#), percent(%), vessző, star(*), biztonsági ajánlat (\`), quote("), egyetlen quote('), csal és semicolon(;) duplán. |
   
 ## <a name="update-firewall-rules"></a>Tűzfalszabályok frissítése
 
 ```azurecli
-az resource update --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --set properties.firewallRules='[ { "ruleName": "<myRuleName>", "startIpAddress": "<myStartIpAddress>", "endIpAddress": "<myEndIpAddress>" } ]' --remove properties.consortiumManagementAccountAddress
+az resource update --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --set properties.firewallRules="[ { \"ruleName\": \"<myRuleName>\", \"startIpAddress\": \"<myStartIpAddress>\", \"endIpAddress\": \"<myEndIpAddress>\" } ]" --remove properties.consortiumManagementAccountAddress
 ```
 
 | Paraméter | Leírás |

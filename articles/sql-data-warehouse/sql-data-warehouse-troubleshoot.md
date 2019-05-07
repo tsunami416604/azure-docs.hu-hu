@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 12/04/2018
+ms.date: 4/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: dc78fbc93d625b39379e07f240eef7fbad10d194
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 02591185914f3b04a70af3b7c5d607f4a2865806
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61474844"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154266"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Hibaelhárítás az Azure SQL Data warehouse-bA
 Ez a cikk a gyakori hibaelhárítási kérdések listája.
@@ -57,8 +57,9 @@ Ez a cikk a gyakori hibaelhárítási kérdések listája.
 ## <a name="polybase"></a>PolyBase
 | Probléma                                           | Megoldás:                                                   |
 | :---------------------------------------------- | :----------------------------------------------------------- |
-| Betöltés nagy sorokat tartalmazó miatt meghiúsul                | Nagy méretű sor támogatása jelenleg a Polybase nem érhető el.  Ez azt jelenti, hogy ha a tábla tartalmaz, VARCHAR(MAX), NVARCHAR(MAX) vagy VARBINARY(MAX), külső táblák nem használhatók az adatok betöltéséhez.  Nagy sorokat tartalmazó betöltése jelenleg csak az Azure Data Factory (a BCP használatával), az Azure Stream Analytics, SSIS, BCP vagy a kapcsolatot az SQLBulkCopy .NET-osztály támogatta. PolyBase támogatása nagy sorokat a rendszer felveszi egy későbbi kiadásban. |
-| MAXIMÁLIS adattípusú tábla BCP betöltése sikertelen | Van egy ismert probléma, amely megköveteli, hogy az VARCHAR(MAX), NVARCHAR(MAX) vagy VARBINARY(MAX) kerüljenek-e a tábla egyes forgatókönyvekben végén.  Próbálja ki a maximális oszlopok áthelyezése a táblázat végére. |
+| Kivitel sikertelen, és a TINYINT és dátum típusú             | Az ORC és a Parquet fájlformátum, dátum típusú értékek közé kell esnie 1970-01-01-00:00:01 UTC és 2038-01-19-03:14:07. TINYINT típusú értékek 0 – 127 karakter között kell lennie.    |
+| Probléma a parquet eszközökben tizedes tört szám típus: Spark rendszerből írása DecimalType(18,4) írja be, és valós vagy double típusú oszlop importálása biztosít a "hiba: java.base/java.lang.Long java.base/java.lang.Float nem konvertálható". | Bigint importálja és 10000, vagy használjon nullával kell a [Databricks] az SQL DW connector. |
+| A parquet vagy egyéb probléma dátumtípus: Spark típusú dátum és a egy számoszlop való importálásakor, írja be a dátum vagy dátum/idő ad "hiba: java.base/java.lang.Integer parquet.io.api.Binary nem konvertálható". | Kell egy másik Spark-típust (int) és számítási a dátum vagy használ a [Databricks] az SQL DW connector. |
 
 ## <a name="differences-from-sql-database"></a>Különbségek az SQL Database-ből
 | Probléma                                 | Megoldás:                                                   |
@@ -132,3 +133,4 @@ További segítségre van szüksége a megoldás a problémára Íme néhány m�
 [Stack Overflow-fórum]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videók]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[Databricks]: https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse#load-data-into-azure-sql-data-warehouse

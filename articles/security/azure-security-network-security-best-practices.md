@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2019
+ms.date: 05/05/2019
 ms.author: TomSh
-ms.openlocfilehash: 5bec7db1c4409165242416df16e437b121381b49
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 78402d3e388f08eae6652859a71c93ff408a5b0d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872562"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65152988"
 ---
-# <a name="azure-network-security-best-practices"></a>Azure-beli hálózati biztonsági eljárások
-Ez a cikk ismerteti az Azure-beli hálózati biztonsági eljárások gyűjteménye. Ajánlott eljárások az Azure-hálózatok tapasztalatainkon származnak, és az ügyfelek a funkciókat, például saját magának.
+# <a name="azure-best-practices-for-network-security"></a>Hálózati biztonság Azure ajánlott eljárásai
+Ez a cikk ismerteti a hálózati biztonságot Azure – ajánlott eljárások gyűjteménye. Ajánlott eljárások az Azure-hálózatok tapasztalatainkon származnak, és az ügyfelek a funkciókat, például saját magának.
 
 Minden egyes ajánlott eljárás Ez a cikk ismerteti:
 
@@ -31,20 +31,57 @@ Minden egyes ajánlott eljárás Ez a cikk ismerteti:
 * Az ajánlott eljárás szerint lehetséges alternatívák
 * Hogyan tudhat meg az ajánlott eljárás engedélyezése
 
-Ez a cikk az Azure hálózati biztonság ajánlott eljárások alapul egy caiq véleményét, és az Azure platform képességeit és szolgáltatáskészleteket, ez a cikk írásának időpontjában léteznek. Vélemények és technológiák időbeli változásait, és ez a cikk a változások követése érdekében rendszeresen frissül.
+Ajánlott eljárások alapulnak a consensus véleményét, és az Azure platform képességeit és szolgáltatáskészleteket, ez a cikk írásának időpontjában léteznek. Vélemények és technológiák időbeli változásait, és ez a cikk a változások követése érdekében rendszeresen frissül.
+
+## <a name="use-strong-network-controls"></a>Erős hálózati vezérlők használata
+A kapcsolódás [Azure-beli virtuális gépek (VM)](https://azure.microsoft.com/services/virtual-machines/) és más hálózati eszközök szerint áthelyezi őket-készülékek [Azure virtuális hálózatok](https://docs.microsoft.com/azure/virtual-network/). Virtuális hálózati adapterek kapcsolódhatnak, hogy engedélyezik a hálózati eszközök közötti TCP/IP-alapú kommunikációt egy virtuális hálózathoz. Azure-beli virtuális hálózathoz csatlakozó virtuális gépek eszközök ugyanazon a virtuális hálózaton, különböző virtuális hálózatokban, az interneten vagy a saját helyszíni hálózatokhoz csatlakozhat.
+
+A hálózat és a hálózati biztonság tervezése, javasoljuk, hogy központosítása:
+
+- Alapvető hálózati funkciók, mint például az ExpressRoute, virtuális hálózat és alhálózat kiépítési és IP-címkezelés kezelése.
+- A hálózati biztonsági elemek, például a hálózati virtuális berendezés funkciók, mint például az ExpressRoute, virtuális hálózat és alhálózat kiépítési és IP-címkezelés irányítása.
+
+Ha tulajdonságkészlettel rendelkezik felügyeleti eszközök használatával figyelheti a hálózat és a hálózati biztonság, tisztán kap a két. Egyszerű és egységes biztonsági stratégia csökkenti a hibák, mert növeli a emberi megértését és az automation megbízhatóságát.
 
 ## <a name="logically-segment-subnets"></a>Logikailag szegmens alhálózatok
-Azure virtuális hálózatok hasonlítanak a helyszíni hálózaton egy LAN-on. Azure-beli virtuális hálózathoz mögött lényege, hogy létrehoz egy egyetlen IP-cím terület-alapú magánhálózati, amelyen helyezze el az Azure-beli virtuális gépek. A magánhálózati IP-címterek érhető el az osztály A (10.0.0.0/8), B osztály (172.16.0.0/12), és C osztályú (192.168.0.0/16) tartományait.
+Azure virtuális hálózatok hasonlítanak a helyi hálózatok a helyi hálózaton. A cél Azure-beli virtuális hálózathoz mögött, hálózatot, egy egyetlen privát IP-címteret, amelyen helyezze el az Azure-beli virtuális gépek alapján hoz létre. A magánhálózati IP-címterek érhető el az osztály A (10.0.0.0/8), B osztály (172.16.0.0/12), és C osztályú (192.168.0.0/16) tartományait.
 
 Ajánlott eljárások az alhálózatok logikailag szegmentálja a következők:
+
+**Ajánlott eljárás**: Ne rendeljen szabályok széles körű tartományok engedélyezése (például engedélyezési 0.0.0.0 255.255.255.255 keresztül).  
+**Részletes**: Győződjön meg arról, a hibaelhárítási eljárásokkal tiltása, vagy ilyen típusú szabályok beállításának letiltása. Ezek a valóságnak biztonsági szabályok vezethet, és gyakran található és piros csapatok kiaknázni.
 
 **Ajánlott eljárás**: A nagyobb címtérrel oszthatja alhálózatokra.   
 **Részletes**: Használat [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)-alapú alhálózatok alapelveket az alhálózatok létrehozására.
 
-**Ajánlott eljárás**: Hozzon létre az alhálózatok közötti hálózati hozzáférés-vezérlést. Az alhálózatok közötti útválasztás automatikusan megtörténik, és nem kell manuálisan konfigurálnia a táblákat. Alapértelmezés szerint nincsenek nincs hálózati hozzáférés-vezérlést az alhálózatokat hoz létre az Azure virtuális hálózat között.   
-**Részletes**: Használja a [hálózati biztonsági csoport](../virtual-network/virtual-networks-nsg.md) (NSG). Az NSG-k egyszerű, állapot-nyilvántartó csomag ellenőrzési az 5-ször több (a forrás IP-címe, forrásport, cél IP-címe, célport és 4. réteg protocol) használó eszközöket hozhat létre szabályokat engedélyezni vagy letiltani a hálózati forgalom megközelítést. Engedélyezi, vagy megtagadják a forgalmat, és a egy IP-címet, és több IP-címekről érkező vagy a és a teljes alhálózat.
+**Ajánlott eljárás**: Hozzon létre az alhálózatok közötti hálózati hozzáférés-vezérlést. Az alhálózatok közötti útválasztás automatikusan megtörténik, és nem kell manuálisan konfigurálnia a táblákat. Alapértelmezés szerint nincsenek nincs hálózati hozzáférés-vezérlés az Azure-beli virtuális hálózathoz létrehozott alhálózatok között.   
+**Részletes**: Használja a [hálózati biztonsági csoport](../virtual-network/virtual-networks-nsg.md) kéretlen forgalmat ellen védelmet biztosító Azure alhálózatra. Hálózati biztonsági csoportok olyan egyszerű, állapot-nyilvántartó csomag ellenőrző eszköz, amely az 5 rekordos módszer (forrás IP-címe, forrásport, cél IP-címe, célport és 4. rétegbeli protokoll) használatával hozzon létre hálózati forgalmi szabályokat engedélyezni vagy letiltani. Engedélyezi, vagy megtagadják a forgalmat, és a egy IP-címet, és több IP-címekről érkező vagy a és a teljes alhálózat.
 
-Az NSG-ket az alhálózatok közötti hálózati hozzáférés-vezérlés használatakor helyezheti az azonos biztonsági zónában vagy szerepkör külön alhálózatokon tartozó erőforrásokhoz.
+Hálózati hozzáférés-vezérlés az alhálózatok közötti hálózati biztonsági csoportokat használ, amikor helyezheti az azonos biztonsági zónában vagy szerepkör külön alhálózatokon tartozó erőforrásokhoz.
+
+**Ajánlott eljárás**: Kerülje a kis méretű virtuális hálózatok és alhálózatok az egyszerűség és rugalmasság biztosítása érdekében.   
+**Részletes**: A legtöbb szervezet rendeljen több erőforrást, mint a kezdetben tervezett, és címek újbóli lefoglalása a munkaerő-igényes. Korlátozott biztonságot érték kisebb alhálózat használatával ad hozzá, és a hálózati biztonsági csoport hozzárendelése minden egyes alhálózat többletterheléssel. Definiálhat alhálózatokat széles körben, gondoskodjon arról, hogy van-e a növekedés rugalmasságot.
+
+**Ajánlott eljárás**: Hálózati biztonsági csoport szabály kezelésének leegyszerűsítése definiálásával [az alkalmazásbiztonsági csoportok](https://docs.microsoft.com/rest/api/virtualnetwork/applicationsecuritygroups).  
+**Részletes**: Adjon meg egy alkalmazás biztonsági csoportot, listák IP-címtartományokat, ha úgy gondolja, hogy a későbbiekben változhatnak, vagy használható számos hálózati biztonsági csoportok. Ügyeljen arra, hogy névre alkalmazásbiztonsági csoportok egyértelműen így mások képes megérteni azok tartalmát és a cél.
+
+## <a name="adopt-a-zero-trust-approach"></a>Egy nulla megbízható megközelítés elfogadása
+Szegélyhálózat-alapú hálózatok feltételezzük, hogy megbízható lehet-e a hálózaton belüli összes rendszer működik. A mai munkavállalók bárhonnan elérheti a szervezeti erőforrásokat, de a különböző eszközökhöz és alkalmazásokhoz, ami lehetővé teszi szegélyhálózat-alapú biztonsági vezérlő nem számít. Hozzáférés-vezérlési házirendeket, amelyek kizárólag a fókusz érheti el az erőforrás nem állnak elegendő. Biztonság és hatékonyság közötti egyensúly fő, biztonsági rendszergazdák is kell figyelembe vennie *hogyan* egy erőforrás elérésekor.
+
+A hálózatot kell használnia a hagyományos védelem fejlődnek, mivel előfordulhat, hogy a hálózatokat a támadásokkal szemben sebezhető: egy támadó veszélyeztetheti a megbízható határán belül egyetlen végponton, és majd gyorsan bontsa ki a foothold az egész hálózatban. [Megbízhatósági nulla](https://www.microsoft.com/security/blog/2018/06/14/building-zero-trust-networks-with-microsoft-365/) hálózatok számára a megbízható hálózati helyen belül a szegélyhálózat-alapú fogalmát. Nulla megbízhatósági architektúrák használja inkább a felhasználói és megbízható jogcímeket kapu hozzáférés a vállalati adatokat és erőforrásokat. Új kezdeményezések fogadja el a nulla megbízhatósági megközelítést, amely bizalmi kapcsolat ellenőrzése a hozzáférés idején.
+
+Ajánlott eljárások a következők:
+
+**Ajánlott eljárás**: A feltételes hozzáférést az eszköz, identitás, frissítési garanciát biztosító, hálózati hely és egyéb erőforrásokhoz.  
+**Részletes**: [Az Azure AD feltételes hozzáférés](../active-directory/conditional-access/overview.md) lehetővé teszi, hogy alkalmazza a megfelelő hozzáférés-vezérlés implementálásával automatikus döntést hozhasson a hozzáférésről a szükséges feltételek alapján. További információkért lásd: [Azure felügyeleti való hozzáférés kezelése feltételes hozzáféréssel](../role-based-access-control/conditional-access-azure-management.md).
+
+**Ajánlott eljárás**: Port hozzáférés engedélyezése csak a munkafolyamat-jóváhagyás után.  
+**Részletes**: Használhat [just-in-time VM access az Azure Security Centerben](../security-center/security-center-just-in-time.md) zárolása az Azure virtuális gépekre, csökkentve a támadásokkal szembeni sérülékenységet ugyanakkor könnyű hozzáférést biztosít arra, hogy szükség esetén a virtuális gépekhez csatlakozhat a bejövő forgalom le.
+
+**Ajánlott eljárás**: Engedélyek ideiglenes emelt szintű feladatok végrehajtásához, amely megakadályozza, hogy a rosszindulatú vagy jogosulatlan felhasználók férjenek hozzá, miután lejárt az engedélyeket. Hozzáférés csak akkor, ha a felhasználók szüksége van rá.  
+**Részletes**: Segítségével igény szerinti elérése az Azure AD Privileged Identity Management vagy a külső megoldás engedélyeket emelt szintű feladatok végrehajtásához.
+
+Nulla megbízhatósági nem a következő hálózati biztonsági alakulását. Az állam érő meghajtók szervezetek számára, hogy a "sérülések feltételezésének" így igénybe, de nem korlátozza az ezzel a módszerrel. Nulla megbízható hálózatok biztosítva, hogy szervezetek, amelyek a munkavégzéshez bármikor, bárhonnan, bármilyen módon segítse munkatársait technológiák használatával hozhat létre egy modern munkahely vállalati adatok és erőforrások védelmét.
 
 ## <a name="control-routing-behavior"></a>Útválasztási viselkedés vezérlése
 Ha egy virtuális gép elhelyezése Azure-beli virtuális hálózathoz, a virtuális gép csatlakozhat bármely más virtuális Gépet az azonos virtuális hálózaton, akkor is, ha a virtuális gépek különböző alhálózatokon. Ez akkor lehetséges, mert gyűjteménye a rendszerútvonalak alapértelmezés szerint engedélyezve van, lehetővé teszi, hogy az ilyen típusú kommunikációhoz. Ezek az alapértelmezett útvonalak lehetővé teszik a virtuális gépek egymással, és az internettel (a kimenő kommunikáció csak az internethez) kapcsolatok kezdeményezésének azonos virtuális hálózaton.
@@ -58,17 +95,8 @@ Azt javasoljuk, hogy konfigurálja [felhasználó által megadott útvonalak](..
 >
 >
 
-## <a name="enable-forced-tunneling"></a>Kényszerített bújtatás engedélyezése
-Segít jobban megérteni a kényszerített bújtatás, hasznos lehet megérteni, milyen "felosztása tunneling" van. Vegyes Alagútkezelés leggyakoribb példája látható a virtuális magánhálózati (VPN) kapcsolatokkal. Tegyük fel, hogy Ön VPN-kapcsolat létrehozására a a hotel room a vállalati hálózathoz. A kapcsolat lehetővé teszi a vállalati erőforrások eléréséhez. A hálózati kommunikáció minden esetben nyissa meg a VPN-alagúton keresztül.
-
-Mi történik, ha meg szeretné az interneten lévő erőforrások eléréséhez? Vegyes Alagútkezelés engedélyezése esetén ezeket a kapcsolatokat lépjen közvetlenül az internethez, és nem a VPN-alagúton keresztül. Egyes biztonsági szakértők fontolja meg ezt a potenciális kockázatot jelenthet. Akkor javasoljuk, hogy letiltja a vegyes Alagútkezelés, és gondoskodik róla, hogy, hogy az összes kapcsolat, az internetre irányuló valamint azok felé irányuló, a vállalati erőforrásokhoz, nyissa meg a VPN-alagúton keresztül. Letiltja a vegyes Alagútkezelés előnye, hogy csatlakozik az internethez majd kényszerítve biztonsági eszközök a vállalati hálózaton keresztül. Amely nem arra az esetre, ha a VPN-ügyfél csatlakozik az internethez a VPN-alagút kívül.
-
-Most tekintsük életre vissza ezen virtuális gépek az Azure-beli virtuális hálózathoz. Az alapértelmezett útvonalakat, az Azure-beli virtuális hálózathoz virtuális gépek kezdeményezni az internetre irányuló forgalom engedélyezése. Ez túl hozhat létre egy biztonsági kockázatot jelent, mivel ezek a kimenő kapcsolatok növelheti a virtuális gépek támadási felületét, és a támadók által használt. Ezért azt javasoljuk, hogy Ön [engedélyezése kényszerített bújtatás](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) a virtuális gépeken, ha létesítmények közötti kapcsolatok az Azure virtuális hálózat és a helyszíni hálózat között. Létesítmények közötti kapcsolatok a hálózati ajánlott eljárások a későbbi tárgyaljuk.
-
-Ha nem rendelkezik a létesítmények közötti kapcsolattal, ügyeljen arra, hogy az NSG-k (korábban tárgyalt) előnyeit, vagy az Azure-beli virtuális gépek az Azure-beli virtuális hálózati az Internet biztonsági berendezések (lásd az alábbiakban), hogy a kimenő kapcsolatokat.
-
 ## <a name="use-virtual-network-appliances"></a>Virtuális hálózati berendezések használata
-NSG-ket és a felhasználó által meghatározott útválasztás megadhat egy bizonyos szintű hálózati biztonság: a hálózati és átviteli rétegeket, a [OSI-modell](https://en.wikipedia.org/wiki/OSI_model). De bizonyos helyzetekben, azt szeretné, vagy a verem magas szintű biztonsági engedélyeznie kell. Ilyen esetekben javasoljuk, hogy a virtuális hálózati biztonsági berendezéseket az Azure-partnerek által biztosított üzembe.
+Hálózati biztonsági csoportok és a felhasználó által meghatározott útválasztás megadhat egy bizonyos szintű hálózati biztonság: a hálózati és átviteli rétegeket, a [OSI-modell](https://en.wikipedia.org/wiki/OSI_model). De bizonyos helyzetekben, azt szeretné, vagy a verem magas szintű biztonsági engedélyeznie kell. Ilyen esetekben javasoljuk, hogy a virtuális hálózati biztonsági berendezéseket az Azure-partnerek által biztosított üzembe.
 
 Azure-beli hálózati biztonsági berendezéseket hálózati szintű vezérlőket biztosít nagyobb biztonságot biztosíthat. Hálózati biztonsági funkcióinak virtuális hálózati biztonsági berendezéseket a következők:
 
@@ -87,19 +115,27 @@ Elérhető az Azure virtual network security berendezések megkereséséhez nyis
 ## <a name="deploy-perimeter-networks-for-security-zones"></a>Központi telepítése a szegélyhálózatokon biztonsági zónák
 A [szegélyhálózaton](https://docs.microsoft.com/azure/best-practices-network-security) (más néven DMZ) egy fizikai vagy logikai hálózati szegmens, amely az eszközök és az internet közötti biztonsági réteget biztosít. Speciális hálózati hozzáférést vezérlő eszközök szegélyhálózaton szélén engedélyezése csak a kívánt forgalmat a virtuális hálózatban.
 
-Szegélyhálózat hasznosak, mert a hálózati hozzáférés-vezérlés kezelését, figyelés, naplózás és jelentéskészítés az eszközökön az Azure virtuális hálózat peremén összpontosíthasson. Itt elosztott szolgáltatásmegtagadásos (DDoS-) szolgáltatás megelőzése, behatolás észlelési/behatolás megelőzési rendszerek (IDS/IPS), tűzfalszabályokat és házirendek, webszűrést, hálózati kártevőirtó és további általában engedélyezi. A hálózati biztonsági eszközök az interneten és az Azure virtuális hálózat között található, és mindkét hálózat kezelőfelületet.
+Szegélyhálózat hasznosak, mert a hálózati hozzáférés-vezérlés kezelését, figyelés, naplózás és jelentéskészítés az eszközökön az Azure virtuális hálózat peremén összpontosíthasson. Szegélyhálózaton, ahol általában engedélyezi az elosztott szolgáltatásmegtagadásos (DDoS-) szolgáltatás megelőzése, behatolás észlelési/behatolás megelőzési rendszerek (IDS/IPS), tűzfalszabályokat és házirendek, webszűrést, hálózati kártevőirtó és további. A hálózati biztonsági eszközök az interneten és az Azure virtuális hálózat között található, és mindkét hálózat kezelőfelületet.
 
 Bár ez az alapvető tervezési szempontjait a szegélyhálózaton, nincsenek számos különböző formában használhatók, például a végpontok közötti, tri többcímes és Többhelyű.
 
-Javasoljuk, hogy a központi telepítések fokozott biztonságot, hogy, érdemes az Azure-erőforrások hálózati biztonságának növelése a szegélyhálózaton.
+A korábban említett nulla megbízható fogalmat alapján, javasoljuk, hogy, fontolja meg az összes biztonságú környezetek szegélyhálózaton hálózati biztonság és hozzáférés-vezérlés az Azure-erőforrások növelése. Azure-ban vagy egy külső megoldás segítségével egy további biztonsági réteget nyújt az eszközök és az internet között:
+
+- Az Azure natív szabályozza. [Azure-tűzfalon](../firewall/overview.md) és a [az Application Gateway webalkalmazási tűzfal](../application-gateway/overview.md#web-application-firewall) kínálnak szolgáltatás, beépített magas rendelkezésre állás, korlátlan felhőalapú méretezhetőségi, egy teljes körűen állapot-nyilvántartó tűzfal alapvető biztonsági FQDN szűrése , alapvető OWASP-szabálykészletek, és egyszerű beállítás és konfiguráció támogatása.
+- Külső ajánlatokat. Keresés a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/) új generációs tűzfal (NGFW) és egyéb külső megoldások, amelyek jól ismert biztonsági eszközökkel és jelentős mértékben továbbfejlesztett hálózati biztonsági szintet nyújtanak. Előfordulhat, hogy a konfigurációs összetettebb, de a külső ajánlat előfordulhat, hogy lehetővé teszik, hogy meglévő képességeinek és ismereteket.
 
 ## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>Dedikált WAN-kapcsolatok az interneten keresztül a fenyegetéseknek elkerülése
-Számos szervezet választotta, a hibrid informatikai útvonalat. A hibrid informatikai a vállalat információs eszközeit vannak az Azure-ban, míg mások továbbra is a helyszíni. Sok esetben néhány összetevőt, a szolgáltatás Azure-ban fut más összetevők továbbra is a helyszíni.
+Számos szervezet választotta, a hibrid informatikai útvonalat. A hibrid informatikai a vállalat információs eszközeit vannak az Azure-ban, és mások a helyszínen marad. Sok esetben néhány összetevőt, a szolgáltatás Azure-ban fut más összetevők továbbra is a helyszíni.
 
-A hibrid informatikai forgatókönyv van általában valamilyen típusú létesítmények közötti kapcsolat. Létesítmények közötti kapcsolat lehetővé teszi, hogy a vállalat a helyszíni hálózatokhoz csatlakozni az Azure virtuális hálózatok. Létesítmények közötti kapcsolat két megoldások érhetők el:
+A hibrid informatikai forgatókönyv van általában valamilyen típusú létesítmények közötti kapcsolatok. Létesítmények közötti kapcsolat lehetővé teszi, hogy a vállalat a helyszíni hálózatokhoz csatlakozni az Azure virtuális hálózatok. Létesítmények közötti kapcsolat két megoldások érhetők el:
 
-* **Site-to-site VPN**: Egy megbízható, megbízható és meglévő technológiai, de a kapcsolat az interneten keresztül történik. Egy legfeljebb körülbelül 200 MB/s sávszélesség korlátozza. Site-to-site VPN bizonyos esetekben célszerű megoldás, és tovább a következő cikkben szakaszában [tiltsa le az RDP/SSH-hozzáférés a virtuális gépek](#disable-rdpssh-access-to-virtual-machines).
-* **Azure ExpressRoute**: Javasoljuk, hogy használjon [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) a létesítmények közötti kapcsolathoz. Az ExpressRoute dedikált WAN a helyszíni hely és a egy Exchange-szolgáltató közötti kapcsolat. Mivel ez egy telekommunikációs kapcsolatot, az adatok nem az interneten keresztül továbbítani, és ezért nem érhető el az internetes kommunikáció jelentette lehetséges kockázatokról.
+* [Site-to-site VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md). Egy megbízható, megbízható és meglévő technológiai, de a kapcsolat az interneten keresztül történik. Egy legfeljebb körülbelül 200 MB/s sávszélesség korlátozza. Site-to-site VPN kívánatos lehetőség csak bizonyos esetekben.
+* **Azure ExpressRoute**. Javasoljuk, hogy használjon [ExpressRoute](../expressroute/expressroute-introduction.md) a létesítmények közötti kapcsolathoz. Az ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloudba egy privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az expressroute-tal és a Microsoft felhőszolgáltatásai, például Azure, Office 365 és Dynamics 365 kapcsolatokat létesíthet. Az ExpressRoute dedikált WAN a helyszíni helyre vagy az üzemeltetési szolgáltatók a Microsoft Exchange közötti kapcsolat. Mivel ez egy telekommunikációs kapcsolatot, az adatok nem az utazási az interneten keresztül, így a ki nem téve az internetes kommunikáció jelentette lehetséges kockázatokról.
+
+Az ExpressRoute-kapcsolat helyét hatással lehet a tűzfal kapacitás, a méretezhetőség, a megbízhatóság és a hálózati forgalom látható-e. Határozza meg, hol ExpressRoute leállítja a meglévő (helyszíni) hálózatok kell. A következőket teheti:
+
+- Megszűnik a tűzfalon (a szegélyhálózat-alapú hálózati paradigmát) kívül, ha szüksége van a betekintést a forgalomra, ha egy meglévő gyakorlat adatközpontok elkülönítése a továbbiakban azt kell használnia, vagy ha az Azure-ban kívánja menteni az extranetes erőforrásokhoz kizárólag.
+- Állítsa le a tűzfalon (a hálózati bővítmény paradigmát) belül. Ez az ajánlott alapértelmezett érték. Minden más esetben javasoljuk, hogy Azure kezelésére, az n-edik adatközpont.
 
 ## <a name="optimize-uptime-and-performance"></a>Rendelkezésre állását és a teljesítmény optimalizálása
 Ha egy szolgáltatás nem működik, információt nem lehet hozzáférni. Ha a teljesítmény gyenge, hogy az adatok nem használható, érdemes lehet az adatok nem lesznek elérhetők. Biztonsági szempontból a kell tennie, bármi is győződjön meg róla, hogy a szolgáltatások optimális rendelkezésre állását és teljesítményét.
@@ -172,5 +208,5 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 
 A Szolgáltatásvégpontok és az Azure-szolgáltatások és a Szolgáltatásvégpontok elérhetők régió kapcsolatos további információkért lásd: [virtuális hálózati Szolgáltatásvégpontok](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-## <a name="next-step"></a>Következő lépés
+## <a name="next-steps"></a>További lépések
 Lásd: [Azure ajánlott biztonsági eljárások és minták](security-best-practices-and-patterns.md) további ajánlott biztonsági eljárások szeretne használni, amikor a tervezése, telepítése, és a felhőalapú megoldások kezelése az Azure használatával.

@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kgremban
-ms.openlocfilehash: ad7e34110b0c6d047eb7454b7fac9f8c10df8be2
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 6c22680102c57fdfc3d25beb19e5bc9847995b28
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126372"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65152732"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>Telepítse az Azure IoT Edge-futtatókörnyezet (ARM32v7/armhf) Linux rendszeren
 
@@ -22,7 +22,7 @@ Az Azure IoT Edge-futtatókörnyezet az eszköz milyen bekapcsolja az IoT Edge-e
 
 Az IoT Edge-futtatókörnyezet működését, és milyen összetevők járnak kapcsolatos további információkért lásd: [megismerheti az Azure IoT Edge-futtatókörnyezet és az architektúrára](iot-edge-runtime.md).
 
-Ez a cikk a Linux ARM32v7/armhf IoT Edge-eszközön az Azure IoT Edge-futtatókörnyezet telepítésének lépéseit sorolja fel. Például ezeket a lépéseket a Raspberry Pi-eszközök esetében akkor működik. ARM32 támogatott operációs rendszerek listáját lásd: [Azure IoT Edge-támogatás](support.md#operating-systems). 
+Ez a cikk a Linux ARM32v7/armhf IoT Edge-eszközön az Azure IoT Edge-futtatókörnyezet telepítésének lépéseit sorolja fel. Például ezeket a lépéseket a Raspberry Pi-eszközök esetében akkor működik. ARM32 támogatott operációs rendszerek listáját lásd: [Azure IoT Edge által támogatott rendszerek](support.md#operating-systems). 
 
 >[!NOTE]
 >A Linux-szoftver tárházakban csomagok feltételei vonatkoznak rá a licenc minden csomagban található (/ usr/megosztása/docs/*csomagnév –*). Olvassa el a licencfeltételeket, a csomag használata előtt. Az üzembe helyezése és használata a csomag jelent a feltételek elfogadása. Ha nem fogadja el a licencfeltételeket, ne használja a csomag.

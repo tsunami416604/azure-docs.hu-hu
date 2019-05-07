@@ -2,18 +2,17 @@
 title: Alapelvei – alkalmazások skálázása az Azure Kubernetes-szolgáltatások (AKS)
 description: Ismerje meg az Azure Kubernetes Service (AKS), beleértve a podok horizontális méretező, fürt méretező és az Azure Container Instances-összekötő méretezést.
 services: container-service
-author: rockboyfor
+author: zr-msft
 ms.service: container-service
 ms.topic: conceptual
-origin.date: 02/28/2019
-ms.date: 04/08/2019
-ms.author: v-yeche
-ms.openlocfilehash: d7df4d2c7e824f143201e2c6af220730bcd38fb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 02/28/2019
+ms.author: zarhoads
+ms.openlocfilehash: 2070c79a6ce0627280b1793e412002783f385cc0
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60466960"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074037"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Méretezési lehetőségeket biztosít az alkalmazások az Azure Kubernetes Service (AKS)
 
@@ -57,6 +56,8 @@ Kubernetes pod változásaihoz válaszolni, van egy fürt méretező (jelenleg e
 ![Kubernetes-fürt méretező](media/concepts-scale/cluster-autoscaler.png)
 
 Fürt méretező általában a podok horizontális méretező együtt használatos. Együttesen a podok horizontális méretező növeli vagy csökkenti az alkalmazás igény szerinti podjainak számát, és a fürt méretező ezen újabb podok ennek megfelelően futtatása igény szerint állítja be a csomópontok számát.
+
+Fürt méretező csak egyetlen csomópontkészletek AKS-fürtöket az előzetes verzióban érhető el kell vizsgálni.
 
 Első lépések a fürt méretező az aks-ben, lásd: [fürt méretező az aks-en][aks-cluster-autoscaler].
 

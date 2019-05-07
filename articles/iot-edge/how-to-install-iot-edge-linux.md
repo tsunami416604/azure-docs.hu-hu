@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 5829606f3ad226507c49f18dcc8ac4831d573b17
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: b519ed21b4d2e0e258c48bd1dc12750176281c9e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126313"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65152854"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Telepítse az Azure IoT Edge-futtatókörnyezet (x64) linuxon
 
@@ -23,7 +23,7 @@ Az Azure IoT Edge-futtatókörnyezet az eszköz milyen bekapcsolja az IoT Edge-e
 
 További tudnivalókért lásd: [megismerheti az Azure IoT Edge-futtatókörnyezet és az architektúrára](iot-edge-runtime.md).
 
-Ez a cikk az Ubuntu Linux x64 (Intel vagy AMD) az Azure IoT Edge-futtatókörnyezet telepítésének lépéseit sorolja fel IoT Edge-eszköz. Tekintse meg [Azure IoT Edge-támogatás](support.md#operating-systems) AMD64 támogatott operációs rendszerek listáját.
+Ez a cikk az Ubuntu Linux x64 (Intel vagy AMD) az Azure IoT Edge-futtatókörnyezet telepítésének lépéseit sorolja fel IoT Edge-eszköz. Tekintse meg [Azure IoT Edge által támogatott rendszerek](support.md#operating-systems) AMD64 támogatott operációs rendszerek listáját.
 
 > [!NOTE]
 > A Linux-szoftver tárházakban csomagok feltételei vonatkoznak rá a licenc minden csomagban található (/ usr/megosztása/docs/*csomagnév –*). Olvassa el a licencfeltételeket, a csomag használata előtt. Az üzembe helyezése és használata a csomag jelent a feltételek elfogadása. Ha nem fogadja el a licencfeltételeket, ne használja a csomag.

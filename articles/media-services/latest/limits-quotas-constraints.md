@@ -9,20 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 05/02/2019
 ms.author: juliako
-ms.openlocfilehash: d5fc14adab956fae23aad24fa7bc488c8c2041e3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42b8c4caa53ffa6b3bc1148544c75602597ac452
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322566"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153827"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kvóták és korlátozások az Azure Media Services v3
 
 Ez a cikk azt ismerteti, kvóták és korlátozások az Azure Media Services v3.
 
-| Erőforrás | Alapértelmezett korlát | 
+| Resource | Alapértelmezett korlát | 
 | --- | --- | 
 | Egy Azure Media Services-fiókra jutó adategység | 1,000,000|
 | Dinamikusjegyzék-szűrők|100|
@@ -36,26 +36,36 @@ Ez a cikk azt ismerteti, kvóták és korlátozások az Azure Media Services v3.
 | Feladatok listázása|A válasz oldalakra bontása oldalanként 500 feladattal|
 | Élő események Media Services-fiókonként |5|
 | Egyetlen előfizetéshez Media Services-fiókok | 25 (rögzített) |
-| Futó állapotú élő esemény élő kimenetek |3|
+| Élő esemény élő kimenetek |3 <sup>(3)</sup> |
 | Élő kimeneti maximális időtartama | 25 óra |
 | Tárfiókok | 100<sup>(4)</sup> (fix) |
 | Streamvégpontok (Leállítva vagy fut) a Media Services-fiókonként|2 (fix)|
-| Streamelési szabályok | 100 <sup>(3)</sup> |
+| Streamelési szabályok | 100 <sup>(5)</sup> |
 | A Media Services-fiókonként átalakítások | 100 (fix)|
-| Egy eszköz egyszerre társított egyedi Streamelési Lokátorok | 100<sup>(5)</sup> (fix) |
+| Egy eszköz egyszerre társított egyedi Streamelési Lokátorok | 100<sup>(6)</sup> (fix) |
 | Tartalomkulcs-szabályzat |30 | 
 
-<sup>1</sup> egy blob jelenleg legfeljebb 5 TB-os Azure Blob Storage-ban támogatott maximális méretét. Azonban további korlátozások érvényesek az Azure Media Services a szolgáltatás által használt Virtuálisgép-méretek alapján. Ha a forrásfájl 260-GB nál nagyobb, a feladat valószínűleg sikertelen lesz. Ha 4K tartalom, amely nagyobb, mint 260 GB-os korlátot, írjon nekünk az amshelp@microsoft.com a támogatásához a lehetséges kezelésükre.
+<sup>1</sup> egy blob jelenleg legfeljebb 5 TB-os Azure Blob Storage-ban támogatott maximális méretét. További korlátozások érvényesek a Media Services a szolgáltatás által használt Virtuálisgép-méretek alapján. A méretkorlát a feltöltött fájlokat, és a fájlokat, a Media Services – feldolgozás (kódolás és elemzése) eredményeként létrehozott első vonatkozik. Ha a forrásfájl 260-GB nál nagyobb, a feladat valószínűleg sikertelen lesz. 
+
+Az alábbi táblázatban látható a korlátok a media szolgáltatás számára fenntartott egységek S1, S2 és S3. Ha a forrásfájl mérete nagyobb, mint a tábla meghatározott keretek, a kódolási feladat sikertelen lesz. Ha hosszú időtartam 4K felbontása forrásai kódol, meg kell S3 szintű media szolgáltatás számára fenntartott egységek használata szükséges a teljesítmény elérése érdekében. Ha 4K tartalom, amely nagyobb, mint az S3 szintű media szolgáltatás számára fenntartott egységek 260 GB-os korlátot, írjon nekünk az amshelp@microsoft.com a támogatásához a lehetséges kezelésükre.
+
+|Media szolgáltatás számára fenntartott egység típusa   |Maximális bemeneti mérete (GB)|
+|---|---|
+|S1 |   26|
+|S2 | 60|
+|S3 |260|
 
 <sup>2</sup> ezt az értéket tartalmazza a sorba állított, befejezett, aktív és a visszavont feladatokat. Törölt feladatokat nem tartalmazza. 
 
 A fiókjában 90 napnál régebbi feladat rekordot automatikusan törölve lesznek, akkor is, ha a rekordok száma nem éri a maximális kvótát. 
 
-<sup>3</sup> egyéni használatakor [Streamelési házirend](https://docs.microsoft.com/rest/api/media/streamingpolicies), korlátozott számú házirendeket tervezzen a Media Services-fiók, és újra alkalmazza őket a StreamingLocators, amikor ugyanazt a titkosítási beállítások és protokollok van szükség. Meg kell nem lehet új szabályzatot hoz létre Streamelési az egyes Streamelési lokátor.
+<sup>3</sup> élő kimenetek létrehozás indítása és leállítása, ha törli.
 
 <sup>4</sup> a tárfiókok az Azure-előfizetéshez kell lennie.
 
-<sup>5</sup> streamelési Lokátorok nem felhasználónkénti hozzáférés-vezérlés kezelésére tervezték. Ha az egyes felhasználóknak különböző hozzáférési jogosultságokat szeretne biztosítani, válassza a digitális jogkezelési (DRM) megoldásokat.
+<sup>5</sup> egyéni használatakor [Streamelési házirend](https://docs.microsoft.com/rest/api/media/streamingpolicies), korlátozott számú házirendeket tervezzen a Media Services-fiók, és újra alkalmazza őket a StreamingLocators, amikor ugyanazt a titkosítási beállítások és protokollok van szükség. Meg kell nem lehet új szabályzatot hoz létre Streamelési az egyes Streamelési lokátor.
+
+<sup>6</sup> streamelési Lokátorok nem felhasználónkénti hozzáférés-vezérlés kezelésére tervezték. Ha az egyes felhasználóknak különböző hozzáférési jogosultságokat szeretne biztosítani, válassza a digitális jogkezelési (DRM) megoldásokat.
 
 ## <a name="support-ticket"></a>Támogatási jegy
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 9cb3c028c14e6c47d47eafcf6279a918c0917442
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3f29db5786c682188b4eadec12275df46ae3b547
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61093947"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153341"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Adatok másolása és az Azure SQL Database felügyelt példány az Azure Data Factory használatával
 
@@ -142,7 +142,7 @@ Az Azure SQL Database felügyelt példányába társított szolgáltatás a köv
 
 Tekintse meg az adatkészletek cikk szakaszok és adatkészletek definiálásához rendelkezésre álló tulajdonságok teljes listáját. Ez a szakasz az Azure SQL Database felügyelt példányába adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Adatok másolása és az Azure SQL Database felügyelt példányába, állítsa be a type tulajdonság, az adatkészlet **SqlServerTable**. A következő tulajdonságok támogatottak:
+Adatok másolásához és az Azure SQL Database felügyelt példánya a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -161,6 +161,7 @@ Adatok másolása és az Azure SQL Database felügyelt példányába, állítsa 
             "referenceName": "<Managed Instance linked service name>",
             "type": "LinkedServiceReference"
         },
+        "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
             "tableName": "MyTable"
         }
@@ -282,7 +283,7 @@ Adatok másolása az Azure SQL Database felügyelt példányába, állítsa a fo
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó típusa tulajdonságát állítsa **SqlSink**. | Igen. |
-| writeBatchSize |Az SQL-táblába beilleszti sorok száma **kötegenként**.<br/>Megengedett értékek: sorok számának egész számok. |Nem (alapértelmezett: 10,000). |
+| writeBatchSize |Az SQL-táblába beilleszti sorok száma **kötegenként**.<br/>Megengedett értékek: sorok számának egész számok. Alapértelmezés szerint a Data Factory a megfelelő kötegméret sor mérete alapján dinamikus meghatározásához.  |Nem |
 | writeBatchTimeout |Ez a tulajdonság határozza meg a várakozási idő a kötegelt insert művelet befejezését, mielőtt azt az időkorlátot.<br/>Megengedett értékek: az időtartam. Például "00: 30:00," vagyis 30 perc. |Nem. |
 | preCopyScript |Ez a tulajdonság határozza meg, hogy a másolási tevékenység végrehajtása előtt az adatok írása a következő felügyelt példányt az SQL-lekérdezést. Indítva csak egyszer futtatni példányonkénti. Ez a tulajdonság használatával előre betöltött adatok törlése. |Nem. |
 | sqlWriterStoredProcedureName |Ez a név a tárolt eljárás, amely meghatározza, hogyan alkalmazhatja a forrásadatok a célként megadott táblába. Eljárások példák upserts vagy átalakítások ehhez használatával saját üzleti logikája szerint. <br/><br/>A tárolt eljárás *kötegenként meghívása*. Egy műveletet, amely csak egyszer fut le, és nem tartalmazó adatforrásból, például törlés vagy csonkolása teheti a `preCopyScript` tulajdonság. |Nem. |

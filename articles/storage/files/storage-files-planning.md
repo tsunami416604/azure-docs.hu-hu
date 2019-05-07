@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fecefbbed39f4fc12db79c7466006409e3da7dd1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 82a2330aeadb14bb421260a290a25581232293e5
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574468"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073356"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -111,20 +111,16 @@ A használt GiB alább a létesített megosztás méretének csökkentése érde
 
 Az alábbi táblázatban néhány példa az ezekben a képletekben a létesített megosztás méretek mutatja be:
 
-(Méretek kimaradásával egy * következők korlátozott nyilvános előzetes verzióban érhető el)
-
 |Kapacitás (GB) | Alapkonfiguráció IOPS | Sorozatfelvétel IOPS | Kimenő forgalom (MiB/s) | Bejövő (MiB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | Legfeljebb 300     | 66   | 44   |
 |500         | 500     | Legfeljebb 1500 felhasználóval   | 90   | 60   |
 |1,024       | 1,024   | Akár 3072   | 122   | 81   |
 |5,120       | 5,120   | Akár 15,360  | 368   | 245   |
-|10,240 *     | 10,240  | Akár 30 720  | 675 | 450   |
-|33,792 *     | 33,792  | Legfeljebb 100 000 | 2,088 | 1,392   |
-|51,200 *     | 51,200  | Legfeljebb 100 000 | 3,132 | 2,088   |
-|102,400 *    | 100 000 | Legfeljebb 100 000 | 6,204 | 4,136   |
-
-Megosztás méretét legfeljebb 5 TiB jelenleg nyilvános előzetes verzióban érhető el, amíg akár 100 Tib-ra korlátozott nyilvános előzetes verzióként, a korlátozott nyilvános előzetes verzió teljes körű hozzáférési kérelmek [felmérésre.](https://aka.ms/azurefilesatscalesurvey)
+|10,240      | 10,240  | Akár 30 720  | 675 | 450   |
+|33,792      | 33,792  | Legfeljebb 100 000 | 2,088 | 1,392   |
+|51,200      | 51,200  | Legfeljebb 100 000 | 3,132 | 2,088   |
+|102,400     | 100 000 | Legfeljebb 100 000 | 6,204 | 4,136   |
 
 ### <a name="bursting"></a>Tartalékkapacitás
 
@@ -184,7 +180,7 @@ Tartsa szem ezeken a pontokon, ha a replikációs beállítás használata:
 
 ## <a name="data-growth-pattern"></a>Növekedési adatmintát
 
-Még ma, a maximális Azure-fájlmegosztások mérete 5 Tib-ra (100 TiB-prémium szintű fájl megosztása korlátozott nyilvános előzetes verzió). Ezen jelenlegi korlátozás miatt meg kell fontolnia a várható adatmennyiség növekedését, Azure-fájlmegosztások üzembe helyezésekor.
+Még ma, a maximális Azure-fájlmegosztások mérete 5 Tib-ra (prémium szintű fájlmegosztások, amely a nyilvános előzetes verzióban érhetők el a 100 TiB). Ezen jelenlegi korlátozás miatt meg kell fontolnia a várható adatmennyiség növekedését, Azure-fájlmegosztások üzembe helyezésekor.
 
 Több Azure-fájlmegosztások az Azure File Sync használatával egyetlen Windows fájlkiszolgálóhoz szinkronizálási lehetőség. Ez lehetővé teszi, hogy győződjön meg arról, hogy a régebbi, nagy mennyiségű fájlmegosztások, hogy előfordulhat, hogy a helyszíni az Azure File Sync tehető. További információkért lásd: [Azure File Sync üzembe helyezésének megtervezése](storage-files-planning.md).
 

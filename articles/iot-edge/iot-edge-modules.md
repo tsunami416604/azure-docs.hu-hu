@@ -3,19 +3,18 @@ title: Ismerje meg, hogyan modulok futtatása az Azure IoT Edge - eszközökön 
 description: Az Azure IoT Edge-modulok olyan tárolóalapú egységet logika, amely telepíthető és kezelhető távolról, hogy futtathatja üzleti logikát az IoT Edge-ben eszközök
 author: kgremban
 manager: philmea
-ms.author: v-yiso
-origin.date: 03/21/2019
-ms.date: 04/08/2019
+ms.author: kgremban
+ms.date: 03/21/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d1e2e35dafd90c16e9d0dbf38afb1e981653d1fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 65cac484a9395aca47a38e2ba430b80c868267f5
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60445025"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65152669"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Az Azure IoT Edge-modulok ismertetése
 
@@ -44,6 +43,7 @@ As use cases for Azure IoT Edge grow, new types of module images and instances w
 ## <a name="module-identities"></a>A modul identitások
 
 Az IoT Edge-futtatókörnyezet új modul példányt létrehozza, ha a példány egy megfelelő modul identitás társítva. A modul identitását az IoT Hub tárolja, és a címzési és biztonsági hatókör összes helyi és felhőalapú kommunikációt az eszközspecifikus modul példányhoz alkalmazzák.
+
 Az identitás, a modul-példányhoz társított függ az eszköz az identitással fut-e a példány és a megoldás adja át, hogy a modul nevét. Például ha felhívja `insight` olyan modul, amely egy Azure Stream Analytics, és használja telepítése egy eszközön nevű `Hannover01`, az IoT Edge-futtatókörnyezet létrehoz egy megfelelő nevű modul identitást `/devices/Hannover01/modules/insight`.
 
 Természetesen forgatókönyvek üzembe kell helyeznie egy modul rendszerképének többször ugyanazon az eszközön, amikor üzembe helyezéséhez használható többször, különböző neveket ugyanazt a lemezképet.
@@ -69,26 +69,9 @@ Twin twin = await client.GetTwinAsync(); 
 
 ## <a name="offline-capabilities"></a>Offline képességek
 
-Az Azure IoT Edge az IoT Edge-eszközök offline műveleteket támogatja. Most ezeket a képességeket korlátozva. További offline funkciók is elérhetők a nyilvános előzetes verzióban érhető el. További információkért lásd: [ismertetése az IoT Edge kiterjesztett offline képességeiről, eszközök, a modulok és a gyermek eszközök](offline-capabilities.md).
-
-IoT Edge-modulok mindaddig, amíg az alábbi követelmények teljesülnek-e hosszabb ideig offline állapotban lehet: 
-
-* **Üzenet time-to-live (Élettartam TTL) nem járt le**. Üzenet Élettartama alapértelmezett értéke két óra, de módosított magasabb vagy alacsonyabb lehet a Store az és továbbítási konfiguráció az IoT Edge-ben a hub beállításai. 
-* **Modulok hitelesítse magát újra, az offline állapotban az IoT Edge hub nem kell**. Modulok csak hitelesítheti az IoT hub-aktív kapcsolattal rendelkező IoT Edge-hubs. Modulok kell hitelesítse magát újra, ha azok bármilyen okból újra lesz indítva. Modulok továbbra is küldhet üzeneteket az IoT Edge hubot követően a SAS-token érvényessége lejárt. Amikor visszatér a kapcsolatot, ha az IoT Edge hubot egy új jogkivonatot kér a modul, és érvényesíti azt az IoT hubbal. Ha sikeres, az IoT Edge hubon tárolt modul üzeneteket továbbít, még a során a modul jogkivonat lejárt küldött üzeneteket. 
-* **A modul közben az üzeneteket küldő offline esetén továbbra is működőképes kapcsolat folytatja**. Után az IoT hubhoz való csatlakozáshoz, az IoT Edge hubot kell érvényesítenie modul új jogkivonatot (Ha egy korábbi lejárt) előtt továbbíthatja a modul üzeneteket. A modul nem érhető el új jogkivonatot biztosítani, ha az IoT Edge hubon tárolt üzenetek a modul nem cselekedhet. 
-* **Az üzenetek tárolására lemezterülettel rendelkezik-e az IoT Edge hubot**. Alapértelmezés szerint üzeneteket az IoT Edge hubot tároló fájlrendszer vannak tárolva. Nincs olyan konfigurációs beállítást adja meg az üzenetek tárolására helyette egy csatlakoztatott kötetre. Mindkét esetben szükség van a késleltetett kézbesítéséhez az IoT Hub az üzenetek tárolásához rendelkezésre álló terület.  
-
+Az Azure IoT Edge-modulok határozatlan ideig után az IoT Hub szinkronizálása során legalább egyszer offline módban is működhetnek. IoT Edge-eszközök egyéb IoT-eszköz kapcsolat nélküli képessége ki is bővítheti. További információkért lásd: [ismertetése az IoT Edge kiterjesztett offline képességeiről, eszközök, a modulok és a gyermek eszközök](offline-capabilities.md).
 
 ## <a name="next-steps"></a>További lépések
  - [A követelmények és az eszközök IoT Edge-modulok megismerése](module-development.md)
  - [Az Azure IoT Edge-futtatókörnyezet és architektúrájának ismertetése](iot-edge-runtime.md)
 
-<!-- Images -->
-[1]: ./media/iot-edge-modules/image_instance.png
-[2]: ./media/iot-edge-modules/identity.png
-
-<!-- Links -->
-[lnk-device-identity]: ../iot-hub/iot-hub-devguide-identity-registry.md
-[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-runtime]: iot-edge-runtime.md
-[lnk-mod-dev]: module-development.md

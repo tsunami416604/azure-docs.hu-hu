@@ -1,25 +1,28 @@
 ---
 title: Az Azure Storage-titkosítás inaktív adatok |} A Microsoft Docs
-description: Az Azure Storage automatikus titkosításával védi az adatokat, mielőtt megőrzése a felhőbe. Összes adatot az Azure Storage, a blobok, lemezek, fájlok, üzenetsorok vagy táblák, titkosított, és visszafejti a transzparens módon segítségével 256 bites AES-titkosítás, és megfelel a FIPS 140-2 szabványnak.
+description: Az Azure Storage automatikus titkosításával védi az adatokat, mielőtt megőrzése a felhőbe. Egy Azure Storage-ban minden adat titkosítva van, és visszafejteni a transzparens módon segítségével 256 bites AES-titkosítás, és megfelel a FIPS 140-2 szabványnak.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 04/30/2019
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 211cfeb3aba29245e154f4a7db86fb4a3659c36f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 6eb7de7810ce23aed4031cca9f038da7149a6f9c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730828"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153093"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Inaktív adatok az Azure Storage-titkosítás
 
 Az Azure Storage automatikusan titkosítja az adatokat, amikor átlátni, a felhőbe. Titkosítás védi az adatokat, és annak érdekében, hogy a biztonsági és megfelelőségi követelmények kielégítésével. Az Azure Storage szolgáltatásban tárolt adatok titkosítva van, és visszafejti a transzparens módon segítségével 256 bites [AES-titkosítás](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)legerősebb az egyik rendelkezésre álló titkosítások és megfelel a FIPS 140-2 szabványnak. Az Azure Storage encryption hasonlít a Windows BitLocker-titkosítást.
 
-Az Azure Storage-titkosítás engedélyezve van az összes meglévő és új storage-fiók, és nem tiltható le. Alapértelmezés szerint az adatok biztonságos, mert nem kell módosítani a kód vagy az alkalmazások az Azure Storage-titkosítás kihasználásához. Storage-fiókok vannak titkosítva, függetlenül azok teljesítményszint (standard vagy prémium szintű) vagy az (Azure Resource Manager vagy klasszikus) üzemi modell. Az összes Azure Storage redundanciabeállításai támogatja a titkosítást, és a egy storage-fiók összes másolatát vannak titkosítva. Az összes Azure Storage-erőforrások titkosítva vannak, beleértve a blobok, lemezek, fájlokat, üzenetsorokat és táblákat.
+Az Azure Storage-titkosítás engedélyezve van az összes meglévő és új storage-fiók, és nem tiltható le. Alapértelmezés szerint az adatok biztonságos, mert nem kell módosítani a kód vagy az alkalmazások az Azure Storage-titkosítás kihasználásához. 
+
+Storage-fiókok vannak titkosítva, függetlenül azok teljesítményszint (standard vagy prémium szintű) vagy az (Azure Resource Manager vagy klasszikus) üzemi modell. Az összes Azure Storage redundanciabeállításai támogatja a titkosítást, és a egy storage-fiók összes másolatát vannak titkosítva. Az összes Azure Storage-erőforrások titkosítva vannak, beleértve a blobok, lemezek, fájlokat, üzenetsorokat és táblákat. Az összes objektum-metaadatait is titkosítást kapnak.
 
 Titkosítási nem befolyásolja az Azure Storage teljesítményét. Nincs az Azure Storage-titkosítás további költség nélkül.
 

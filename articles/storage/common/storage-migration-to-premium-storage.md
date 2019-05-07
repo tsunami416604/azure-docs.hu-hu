@@ -2,18 +2,19 @@
 title: Az Azure Premium Storage virtuális gépek áttelepítése |} A Microsoft Docs
 description: A meglévő virtuális gépek áttelepítése az Azure Premium Storage. A Premium Storage nagy teljesítményű, kis késleltetésű lemeztámogatás I/O-igényes számítási feladatokhoz az Azure Virtual machines szolgáltatásban futó kínál.
 services: storage
-author: yuemlu
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 06/27/2017
-ms.author: yuemlu
+ms.author: rogarana
+ms.reviewer: yuemlu
 ms.subservice: common
-ms.openlocfilehash: fdca10c54c798bd47a34eb0f8af091908bcc2711
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 5cfb96bd3115c8f3116a28926e93df89dff54351
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372318"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153765"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>(Nem felügyelt lemezek) az Azure Premium Storage-ba való migrálás
 
@@ -74,7 +75,7 @@ A Premium Storage-specifikációk további információkért tekintse meg [Azure
 #### <a name="disk-caching-policy"></a>Lemez gyorsítótárazási házirend
 Alapértelmezés szerint a lemez gyorsítótárazási házirend a *csak olvasható* minden a prémium szintű adatlemezek esetén és *olvasási és írási* a prémium szintű operációsrendszer-lemez a virtuális Géphez csatlakoztatva. Ezt a konfigurációs beállítást az optimális teljesítmény érdekében az alkalmazás IOs-hez javasolt. Írási vagy csak írási adatlemezek (például az SQL Server-naplófájlok) tiltsa le a lemezek gyorsítótárazása, így jobb alkalmazásteljesítményt érhet el. Használatával frissítheti a meglévő adatlemezek gyorsítótárazási beállításai a [az Azure portal](https://portal.azure.com) vagy a *- HostCaching* paraméterében a *Set-AzureDataDisk* parancsmagot.
 
-#### <a name="location"></a>Hely
+#### <a name="location"></a>Location egység
 Válasszon ki egy helyet, ahol az Azure Premium Storage érhető el. Lásd: [Azure-szolgáltatások régió szerint](https://azure.microsoft.com/regions/#services) naprakész információk az elérhető helyek. A virtuális gépek és a Storage-fiókot, hogy tárolja a virtuális gép lemezei ad sokkal jobb teljesítményt, mint ha külön régióban vannak ugyanabban a régióban található.
 
 #### <a name="other-azure-vm-configuration-settings"></a>Más Azure-beli Virtuálisgép-konfigurációs beállítások
@@ -255,7 +256,7 @@ Most, hogy a VHD-t a helyi könyvtárban, az AzCopy vagy AzurePowerShell haszná
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 ```
 
-Példa <Uri> lehet ***"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"***. Példa <FileInfo> lehet ***"C:\path\to\upload.vhd"***.
+Példa \<Uri > lehet, hogy ***"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"***. Példa \<FileInfo > lehet, hogy ***"C:\path\to\upload.vhd"***.
 
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Option 2: A .vhd-fájl feltöltése AzCopy használatával
 AzCopy használatával könnyedén tölthet fel a VHD-t az interneten keresztül. A VHD méretétől függően ez időt vehet igénybe. Fontos, hogy ellenőrizze a tárfiókok bejövő/kimenő forgalom korlátai, ez a beállítás használatakor. Lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](storage-scalability-targets.md) részleteiről.

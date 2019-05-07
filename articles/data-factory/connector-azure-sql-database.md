@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 543defc622942f4a0643aca275ad4ad2fa9e1ab2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 231f44612b5e87afdf84f31d86c80be644fb4484
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926532"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154324"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Database-ből az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -228,7 +228,7 @@ Felügyelt identitás-hitelesítést használ, kövesse az alábbi lépéseket:
 
 Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services) cikk. Ez a szakasz az Azure SQL Database-adatkészletet által támogatott tulajdonságok listáját tartalmazza.
 
-Másolja az adatokat, vagy az Azure SQL Database, állítsa be a **típus** tulajdonság, az adatkészlet **AzureSqlTable**. A következő tulajdonságok támogatottak:
+Másolja az adatokat, vagy az Azure SQL Database, az a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
@@ -247,6 +247,7 @@ Másolja az adatokat, vagy az Azure SQL Database, állítsa be a **típus** tula
             "referenceName": "<Azure SQL Database linked service name>",
             "type": "LinkedServiceReference"
         },
+        "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
             "tableName": "MyTable"
         }
@@ -368,7 +369,7 @@ Adatok másolása az Azure SQL Database, állítsa be a **típus** tulajdonságo
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység fogadó tulajdonságát **SqlSink**. | Igen |
-| writeBatchSize | Az SQL-táblába beilleszti sorok száma **kötegenként**.<br/> Az engedélyezett érték **egész** (sorok száma). | Nem. Az alapértelmezett érték a 10000. |
+| writeBatchSize | Az SQL-táblába beilleszti sorok száma **kötegenként**.<br/> Az engedélyezett érték **egész** (sorok száma). Alapértelmezés szerint a Data Factory a megfelelő kötegméret sor mérete alapján dinamikus meghatározásához. | Nem |
 | writeBatchTimeout | A várakozási idő a köteg beszúrási művelet befejezését, mielőtt azt az időkorlátot.<br/> Az engedélyezett érték **timespan**. Példa: "00: 30:00" (30 perc). | Nem |
 | preCopyScript | Adjon meg egy SQL-lekérdezést a másolási tevékenység futtatása előtt írja az adatokat az Azure SQL Database-be. Csak indítva egyszer futtatni példányonkénti. Ez a tulajdonság használatával az előre betöltött adatokat. | Nem |
 | sqlWriterStoredProcedureName | A tárolt eljárást, amely meghatározza, hogyan alkalmazhatja a forrásadatok egy cél táblába neve. Például akkor upserts, vagy átalakíthatja a saját üzleti logikája használatával. <br/><br/>A tárolt eljárás **kötegenként meghívása**. Csak egyszer futnak le, és nincs köze forrásadatokkal rendelkező műveletek, használja a `preCopyScript` tulajdonság. Példa műveleti delete és csonkolja. | Nem |

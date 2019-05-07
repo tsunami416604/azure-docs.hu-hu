@@ -7,13 +7,14 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e9e78d3226f90ef780a1ed2114ba256c293463dc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 25c562e144b635cb66c5df9b5b7bd6237ce3122c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001582"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154434"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Közös hozzáférésű jogosultságkódok (SAS) használata
 
@@ -114,10 +115,10 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 | Storage services verziója |`sv=2015-04-05` |Tárolási szolgáltatások 2012-02-12-es verzió, és később, ez a paraméter azt jelzi, verziót kell használni. |
 | Kezdő időpont |`st=2015-04-29T22%3A18%3A26Z` |A megadott UTC időben. Ha azt szeretné, hogy a SAS azonnal érvényes legyen, hagyja ki a kezdési időpontot. |
 | Lejárat időpontja |`se=2015-04-30T02%3A23%3A26Z` |A megadott UTC időben. |
-| Erőforrás |`sr=b` |Egy blobot az erőforrás. |
+| Resource |`sr=b` |Egy blobot az erőforrás. |
 | Engedélyek |`sp=rw` |A SAS által adott engedélyek Read (r) tartalmazza, és írás (w). |
 | IP-címtartomány |`sip=168.1.5.60-168.1.5.70` |Az IP-címek tartománya, amelyből a rendszer egy kérelmet fogad. |
-| Protokoll |`spr=https` |Csak a HTTPS PROTOKOLLT használó kérelmek engedélyezettek. |
+| Protocol |`spr=https` |Csak a HTTPS PROTOKOLLT használó kérelmek engedélyezettek. |
 | Aláírás |`sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D` |A blob való hozzáférés engedélyezésére használja. Az aláírás az egy HMAC-val egy karakterlánc-bejelentkezési és a kulcsot az SHA256 algoritmust a számított, és ezután a Base64-kódolással kódolva. |
 
 ### <a name="account-sas-uri-example"></a>Fiók SAS URI-t – példa

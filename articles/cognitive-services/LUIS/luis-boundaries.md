@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/18/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 58f6d6cf8bf16f7c35bab35a69cfcdf8759f66ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 357ed4c42cc2758766b9ccd45a3fafa541338d11
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60814031"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154573"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>A LUIS-modell és a kulcsok határok
 A LUIS több határ területeken rendelkezik. Az első a [modell határ](#model-boundaries), amely szabályozza a szándék fog vonatkozni, az entitások és az intelligens HANGFELISMERÉSI szolgáltatások. A második terület [kvótakorlát](#key-limits) kulcs típusa alapján. A határokat egy harmadik területe a [kombináció billentyűzet](#keyboard-controls) szabályozni a LUIS-webhelyet. A negyedik terület a [világ régió hozzárendelése](luis-reference-regions.md) webhely készítése a LUIS és a LUIS között [végpont](luis-glossary.md#endpoint) API-k. 
@@ -31,9 +31,11 @@ Ha az alkalmazás meghaladja a LUIS-modell korlátait és határokat, fontolja m
 | [Alkalmazás neve][luis-get-started-create-app] | * Maximális alapértelmezett karakter |
 | [Batch-tesztelés][batch-testing]| 10-adatkészletek, 1000 utterances Adatkészletenként|
 | Explicit listája | 50 alkalmazásonként|
+| Külső entitások | korlátlan |
 | [Leképezések][intents]|500-as alkalmazásonként: 499 egyéni leképezések és a szükséges _nincs_ szándékot.<br>[Feladó-alapú](https://aka.ms/dispatch-tool) alkalmazás rendelkezik a megfelelő 500 dispatch-források.|
 | [Entitások listája](./luis-concept-entity-types.md) | Szülő: 50, a gyermek: 20 000 elem. Kanonikus név * alapértelmezett karakterek maximális száma. Szinonima hossza korlátozás rendelkeznie. |
-| [Gép megismert entitások](./luis-concept-entity-types.md):<br> Összetett,<br>  Hierarchikus<br> Egyszerű|A korlát 100 szülő entitások (nem hierarchikus gyermekek is beleértve) vagy az entitásokat (beleértve a hierarchikus gyermekek), amelyik korlátozza a felhasználó a találatok először 330.<br><br>Egy példa a hierarchia 30 hierarchiák minden 10 gyermekkel rendelkező kifejezések lenne.  A gyermekek fog felhasználni összesen 300, és a hierarchia elemek fog felhasználni a maradék 30. |
+| [Gép megismert entitások + szerepkörök](./luis-concept-entity-types.md):<br> Összetett,<br>egyszerű,<br>entitás szerepkör|A korlát 100 szülő entitást vagy 330 entitások, amelyik korlátozza a felhasználó a találatok először. Egy szerepkör példánynál meghagyhatja ezt a határt egy entitás számít. A következő példa egy egyszerű entitás, amely 2 szerepkörrel rendelkezik az összetett van: 1 összetett + 1 egyszerű + 2 szerepkörök = 4 330 entitások.|
+| [Előzetes verzió – dinamikus entitások](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 listák ~ 1 k lekérdezés előrejelzési végpont kérelmenként|
 | [Minták](luis-concept-patterns.md)|500 minták alkalmazásonként.<br>Minta legfeljebb 400 karakter.<br>3 Pattern.any entitások mintában<br>A beágyazott 2 opcionális szövegek mintában maximális|
 | [Pattern.any](./luis-concept-entity-types.md)|100, alkalmazásonként mintában 3 pattern.any entitások |
 | [Kifejezéslista][phrase-list]|10 kifejezés listák, 5000 tétel / listája|

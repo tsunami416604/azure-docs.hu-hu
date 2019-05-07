@@ -10,16 +10,28 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: gracez
-ms.openlocfilehash: 33a03b24de56ab1090cc8e07c9619eda17f33e27
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9147f02f6ef2e2f3f776e67aa1f103e95ef132aa
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711902"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153033"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>A Cognitive Services beszédfelismerő eszközök SDK kibocsátási megjegyzései
 
 A következő szakaszok lista módosul a legfrissebb verziókban.
+
+## <a name="cognitive-services-speech-devices-sdk-150-2019-may-release"></a>A cognitive Services beszédfelismerő eszközök SDK 1.5.0: A 2019-május kiadás
+
+*   Beszéd eszközök SDK már általánosan elérhető és nem egy korlátozott előzetes verzió.
+*   Frissítve a [beszéd SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) verzióra 1.5.0 összetevőt. További információkért lásd: a [kibocsátási megjegyzések](https://aka.ms/csspeech/whatsnew).
+*   Új ébresztési word technológia számos lehetőséget kínál a jelentős minőségének javítása, a használhatatlanná tévő változások megtekintéséhez.
+*   Új hang feldolgozási folyamat a jobb szélen mező felismerése.
+
+**Használhatatlanná tévő változásai**
+
+*   Az új ébresztési word technológia miatt minden ébresztési szavakat a továbbfejlesztett ébresztési word Portalon újra létre kell hozni. Teljesen eltávolítja az eszközről a régi kulcsszavak távolítsa el a régi alkalmazást.
+    - ADB com.microsoft.coginitiveservices.speech.samples.sdsdkstarterapp eltávolítása
 
 ## <a name="cognitive-services-speech-devices-sdk-140-2019-apr-release"></a>Cognitive Services Speech Devices SDK 1.4.0: A 2019-április kiadás 
 

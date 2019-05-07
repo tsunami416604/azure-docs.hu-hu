@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 9a54cad9212bdb514f7742121909221863ba75e3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: db2b543fa8e5429cc8d50d7789b03239173f563d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713526"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154527"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Gyors útmutató: A LUIS-portál alkalmazás telepítése
 
@@ -73,11 +73,11 @@ Minden alkalommal, amikor egy új erőforrást hoz létre a LUIS, akkor hozzá k
 
 ## <a name="train-and-publish-the-app"></a>Az alkalmazás betanítása és közzététele
 
-Ha készen áll, tesztelése, betanítása az alkalmazás. Tegye közzé az alkalmazást, ha azt szeretné, hogy az ügyfélalkalmazások számára elérhetőnek lennie az előrejelzési végpont modul jelenleg betanított verziójára.
+Ha készen áll, tesztelése, betanítása az alkalmazás. Tegye közzé az alkalmazást, ha azt szeretné, hogy az ügyfélalkalmazások számára elérhetőnek lennie a lekérdezés előrejelzési végpont futásidejű jelenleg betanított verziójára.
 
 1. Ha az alkalmazás kellő, jelölje be **Train** a menüben kattintson a jobb felső sarokban.
 
-1. Válassza ki **közzététel** a menüből. Fogadja el az alapértelmezett környezet beállításokat, és válassza ki **közzététel**.
+1. Válassza ki **közzététel** a felső menüben. Fogadja el az alapértelmezett környezet beállításokat, és válassza ki **közzététel**.
 
 1. A zöld, sikeres értesítési sáv felső részén a böngészőablakban megjelenésekor válassza **tekintse meg a végpontok listáját**.
 
