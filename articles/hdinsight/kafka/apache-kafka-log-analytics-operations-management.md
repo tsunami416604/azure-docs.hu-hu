@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/15/2018
-ms.openlocfilehash: b4eced461f798f3cbf3ce968dae59cfb8f1a0363
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/02/2019
+ms.openlocfilehash: 1e141aea3b22bfdcb981513f03e595b6c2f15466
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697616"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147973"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>A HDInsight-beli Apache kafka-naplók elemzése
 
@@ -21,25 +21,15 @@ Ismerje meg, hogyan használható az Azure Monitor naplóira Apache Kafka on HDI
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Az Apache Kafka az Azure Monitor naplók engedélyezése
 
 Az Azure Monitor naplóira ahhoz, hogy a HDInsight lépései megegyeznek az összes HDInsight-fürt. Az alábbi hivatkozások segítségével megtudhatja, hogyan hozhat létre és konfigurálja a szükséges szolgáltatások:
 
-1. Hozzon létre egy Log Analytics-munkaterületet. További információkért lásd: a [Ismerkedés a Log Analytics-munkaterület](https://docs.microsoft.com/azure/log-analytics) dokumentumot.
+1. Hozzon létre egy Log Analytics-munkaterületet. További információkért lásd: a [naplók az Azure Monitor](../../azure-monitor/platform/data-platform-logs.md) dokumentumot.
 
 2. Hozzon létre egy Kafka HDInsight-fürtön. További információkért lásd: a [a HDInsight Apache Kafka használatának első lépései](apache-kafka-get-started.md) dokumentumot.
 
 3. A Kafka-fürt az Azure Monitor naplóira használatára konfigurálja. További információkért lásd: a [használata az Azure Monitor naplózza a HDInsight figyelése](../hdinsight-hadoop-oms-log-analytics-tutorial.md) dokumentumot.
-
-    > [!NOTE]  
-    > A fürt használni az Azure Monitor naplóira használatával is konfigurálhatja a `Enable-AzHDInsightOperationsManagementSuite` parancsmagot. Ez a parancsmag megköveteli a következő információkat:
-    >
-    > * A HDInsight-fürt neve.
-    > * A munkaterület Azonosítóját, az Azure Monitor-naplók. A munkaterület-Azonosítót a Log Analytics-munkaterületen találhatja meg.
-    > * A log analytics-kapcsolat elsődleges kulcsának. Keresse meg az elsődleges kulcs, nyissa meg a munkaterület az Azure Portalon, válassza a __speciális beállítások__ a bal oldali menüből. Speciális beállításainak megadásához válassza __csatlakoztatott források__>__Linux-kiszolgálók__.
-
 
 > [!IMPORTANT]  
 > Mielőtt adatokat érhető el az Azure Monitor-naplók körülbelül 20 percet igénybe vehet.
@@ -48,38 +38,68 @@ Az Azure Monitor naplóira ahhoz, hogy a HDInsight lépései megegyeznek az öss
 
 1. Az a [az Azure portal](https://portal.azure.com), válassza ki a Log Analytics-munkaterületre.
 
-2. Válassza ki __naplóbeli keresés__. Itt megkeresheti a Kafka begyűjtött adatokat. Az alábbiakban néhány példa keresések:
+2. A bal oldali menüből alatt **általános**válassza **naplók**. Itt megkeresheti a Kafka begyűjtött adatokat. Adjon meg egy lekérdezést a lekérdezési ablakban, majd **futtatása**. Az alábbiakban néhány példa keresések:
 
-   * Használat: `Perf | where ObjectName == "Logical Disk" and CounterName == "Free Megabytes" and InstanceName == "_Total" and ((Computer startswith_cs "hn" and Computer contains_cs "-") or (Computer startswith_cs "wn" and Computer contains_cs "-")) | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)`
+* Használat:
 
-   * CPU-használat: `Perf | where CounterName == "% Processor Time" and InstanceName == "_Total" and ((Computer startswith_cs "hn" and Computer contains_cs "-") or (Computer startswith_cs "wn" and Computer contains_cs "-")) | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)`
+    ```kusto
+    Perf 
+    | where ObjectName == "Logical Disk" and CounterName == "Free Megabytes" and InstanceName == "_Total" and ((Computer startswith_cs "hn" and Computer contains_cs "-") or (Computer startswith_cs "wn" and Computer contains_cs "-")) 
+    | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
+    ```
 
-   * Másodpercenkénti bejövő üzenetek: `metrics_kafka_CL | where ClusterName_s == "your_kafka_cluster_name" and InstanceName_s == "kafka-BrokerTopicMetrics-MessagesInPerSec-Count" | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s, bin(TimeGenerated, 1h)`
+* CPU-használat:
 
-   * Bejövő bájtok másodpercenként: `metrics_kafka_CL | where HostName_s == "wn0-kafka" and InstanceName_s == "kafka-BrokerTopicMetrics-BytesInPerSec-Count" | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)`
+    ```kusto
+    Perf 
+    | where CounterName == "% Processor Time" and InstanceName == "_Total" and ((Computer startswith_cs "hn" and Computer contains_cs "-") or (Computer startswith_cs "wn" and Computer contains_cs "-")) 
+    | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
+    ```
 
-   * Kimenő bájtok másodpercenként: `metrics_kafka_CL | where ClusterName_s == "your_kafka_cluster_name" and InstanceName_s == "kafka-BrokerTopicMetrics-BytesOutPerSec-Count" | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) by bin(TimeGenerated, 1h)`
+* Másodpercenkénti bejövő üzenetek:
 
-     > [!IMPORTANT]  
-     > A lekérdezési értékeket cserélje le a fürtre jellemző információkat. Ha például `ClusterName_s` kell állítani a fürt nevére. `HostName_s` a fürt egyik munkavégző csomópontjához tartomány nevére kell állítani.
+    ```kusto
+    metrics_kafka_CL 
+    | where ClusterName_s == "your_kafka_cluster_name" and InstanceName_s == "kafka-BrokerTopicMetrics-MessagesInPerSec-Count" 
+    | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s, bin(TimeGenerated, 1h)
+    ```
 
-     Is megadhat `*` naplózott összes típusok keresése. Jelenleg a következő naplók kapcsolódnak érhetők el a lekérdezésekhez:
+* Bejövő bájtok másodpercenként:
 
-     | Napló típusa | Leírás |
-     | ---- | ---- |
-     | napló\_kafkaserver\_CL | A Kafka-közvetítő Server.log elérési úton található |
-     | napló\_kafkacontroller\_CL | A Kafka-közvetítő controller.log |
-     | metrikák\_kafka\_CL | Kafka JMX metrics |
+    ```kusto
+    metrics_kafka_CL 
+    | where HostName_s == "wn0-kafka" and InstanceName_s == "kafka-BrokerTopicMetrics-BytesInPerSec-Count" 
+    | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)
+    ```
 
-     ![A CPU-használat keresés képe](./media/apache-kafka-log-analytics-operations-management/kafka-cpu-usage.png)
+* Kimenő bájtok másodpercenként:
+
+    ```kusto
+    metrics_kafka_CL 
+    | where ClusterName_s == "your_kafka_cluster_name" and InstanceName_s == "kafka-BrokerTopicMetrics-BytesOutPerSec-Count" 
+    | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) by bin(TimeGenerated, 1h)
+    ```
+
+    > [!IMPORTANT]  
+    > A lekérdezési értékeket cserélje le a fürtre jellemző információkat. Ha például `ClusterName_s` kell állítani a fürt nevére. `HostName_s` a fürt egyik munkavégző csomópontjához tartomány nevére kell állítani.
+    
+    Is megadhat `*` naplózott összes típusok keresése. Jelenleg a következő naplók kapcsolódnak érhetők el a lekérdezésekhez:
+    
+    | Napló típusa | Leírás |
+    | ---- | ---- |
+    | log\_kafkaserver\_CL | Kafka broker server.log |
+    | napló\_kafkacontroller\_CL | A Kafka-közvetítő controller.log |
+    | metrikák\_kafka\_CL | Kafka JMX metrics |
+    
+    ![A CPU-használat keresés képe](./media/apache-kafka-log-analytics-operations-management/kafka-cpu-usage.png)
  
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Monitor további információkért lásd: a [Azure Monitor áttekintése](../../log-analytics/log-analytics-get-started.md) dokumentumot.
+További információ az Azure Monitor: [Azure Monitor áttekintése](../../log-analytics/log-analytics-get-started.md), és [lekérdezést az Azure Monitor naplózza a HDInsight-fürtök figyelése](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
 
 Apache Kafka használatával kapcsolatos további információkért tekintse meg a következő dokumentumokat:
 
- * [Tükrözött Apache Kafka HDInsight-fürtök között](apache-kafka-mirroring.md)
- * [A kapacitás bővítése érdekében az Apache Kafka on HDInsight](apache-kafka-scalability.md)
- * [Apache Spark Stream (DStreams) az Apache kafka platformmal](../hdinsight-apache-spark-with-kafka.md)
- * [Az Apache Spark strukturált Stream az Apache kafka platformmal használata](../hdinsight-apache-kafka-spark-structured-streaming.md)
+* [Tükrözött Apache Kafka HDInsight-fürtök között](apache-kafka-mirroring.md)
+* [A kapacitás bővítése érdekében az Apache Kafka on HDInsight](apache-kafka-scalability.md)
+* [Apache Spark Stream (DStreams) az Apache kafka platformmal](../hdinsight-apache-spark-with-kafka.md)
+* [Az Apache Spark strukturált Stream az Apache kafka platformmal használata](../hdinsight-apache-kafka-spark-structured-streaming.md)

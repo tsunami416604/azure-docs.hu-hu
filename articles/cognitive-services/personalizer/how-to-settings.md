@@ -10,28 +10,34 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 0cd08e1191c68c57975d3e68648134925155e7f2
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bce260d2a6b897d3e45b231df4eecd7ecb31ba31
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027221"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143244"
 ---
 # <a name="personalizer-settings"></a>Personalizer beállításai
 
 Szolgáltatás konfigurációja magában foglalja, hogyan kezeli az a szolgáltatás a felhőtechnológia, milyen gyakran a szolgáltatást ismerteti, milyen gyakran van retrained a modell és tárolt adatok mennyiségétől.
 
+## <a name="create-personalizer-resource"></a>Personalizer erőforrás létrehozása
+
 For-each visszajelzési ciklus Personalizer erőforrás létrehozása. 
+
+1. Jelentkezzen be az [Azure portálra](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). Az előző kapcsolat veszi, hogy a **létrehozás** Personlizer szolgáltatás lapján. 
+1. Adja meg a szolgáltatás nevét, és válasszon ki egy előfizetést, hely, tarifacsomag, és erőforráscsoport.
+1. Válassza ki a megerősítés, majd **létrehozás**.
 
 ## <a name="configure-service-settings-in-the-azure-portal"></a>Szolgáltatás beállításainak konfigurálása az Azure Portalon
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).
 1. A Personalizer erőforrás található. 
 1. Az a **erőforrás-kezelés** szakaszban jelölje be **beállítások**.
 
-    ![Jelentkezzen be az Azure portálra. A Personalizer erőforrás található. A Resource management területen válassza ki a beállításokat.](media/settings/how-to-configure.png)
+    Mielőtt elhagyja az Azure Portalon, másolja ki az egyik az erőforrás kulcsainak az a **kulcsok** lapot. Szüksége lesz használni a [Personalizer SDK](https://aka.ms/personalizer-dotnet-sdk-docs).
 
-### <a name="reward-settings-for-the-feedback-loop"></a>A visszajelzési ciklus ellenszolgáltatás beállításai
+### <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>A visszajelzési ciklus használati eset alapján ellenszolgáltatás beállításainak konfigurálása
 
 A visszajelzési ciklus használata jutalmakat a szolgáltatás beállításainak konfigurálása. A következő beállítások módosításait alaphelyzetbe állítása az aktuális Personalizer modell, és a szoftveres átképezése, és az utolsó 2 nap adatait:
 
@@ -81,4 +87,4 @@ A szakaszban az erőforrás-kezelés **modell és a házirend**, egy új tanulá
 
 ## <a name="next-steps"></a>További lépések
 
-[Megerősítő tanulást](concepts-reinforcement-learning.md) 
+[A Personalizer tároló használata](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)

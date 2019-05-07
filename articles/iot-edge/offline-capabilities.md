@@ -9,19 +9,17 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: e82c842ec8fce703c48c98eaf09ea5c8d91be9be
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 74d2601c2319ccad9cc980b83894a3242705aa46
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60998539"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148122"
 ---
-# <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Megismerheti a kiterjesztett offline funkcióit az IoT Edge-eszközök, a modulok és a gyermek eszközökön (előzetes verzió)
+# <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Az IoT Edge-eszközök, a modulok és a gyermek eszközök bővített offline képességekről
 
 Az Azure IoT Edge az IoT Edge-eszközök bővített offline műveleteket támogatja, és lehetővé teszi, hogy a gyermek nem peremhálózati eszközökön offline műveletek túl. Mindaddig, amíg az IoT Edge-eszköz csatlakoztatása az IoT hubhoz, egy lehetőség volt-e, és az alárendelt eszközök továbbra is szakaszos függvény vagy nincs internetkapcsolat. 
 
->[!NOTE]
->Az IoT Edge offline támogatást [nyilvános előzetes verzióban](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="how-it-works"></a>Működés
 
@@ -61,24 +59,49 @@ Az IoT Edge-eszköz gyermek IoT-eszközökön a kiterjesztett offline lehetősé
 
 ### <a name="assign-child-devices"></a>Gyermek-eszközök hozzárendelése
 
-Gyermek eszközök bármely nem peremhálózati eszköz, a egy IoT-központban regisztrált lehet. A szülő-gyermek kapcsolat létrehozásával új eszköz vagy az eszköz részleteit tartalmazó oldalra, vagy a szülő IoT Edge-eszköz vagy az alárendelt IoT-eszköz is kezelheti. 
+Gyermek eszközök bármely nem peremhálózati eszköz, a egy IoT-központban regisztrált lehet. Szülő eszközök több gyermek eszköz rendelkezhet, de egy gyermek eszköz legfeljebb egy szülő. Gyermek eszközök beállítása egy edge-eszközön három lehetőség áll rendelkezésre:
+
+#### <a name="option-1-iot-hub-portal"></a>Option 1: Az IoT Hub portálon
+
+ A szülő-gyermek kapcsolat létrehozásával új eszköz vagy az eszköz részleteit tartalmazó oldalra, vagy a szülő IoT Edge-eszköz vagy az alárendelt IoT-eszköz is kezelheti. 
 
    ![Gyermek eszközöket kezelheti az IoT Edge-eszköz részleteit tartalmazó oldalra](./media/offline-capabilities/manage-child-devices.png)
 
-Szülő eszközök több gyermek eszköz rendelkezhet, de egy gyermek eszköz legfeljebb egy szülő.
+
+#### <a name="option-2-use-the-az-command-line-tool"></a>Option 2: Használja a `az` parancssori eszköz
+
+Használatával a [Azure parancssori felület](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) a [IoT-bővítmény](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 vagy újabb), a szülő-gyermek típusú kapcsolatokat kezelheti a [device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) alárendelt parancsok. Az alábbi példában azt gyermek eszközöket az IoT Edge-eszköz az agyban eszközöket rendeljen az összes nem IoT Edge egy lekérdezés futtatásával. 
+
+```shell
+# Set IoT Edge parent device
+egde_device="edge-device1"
+
+# Get All IoT Devices
+device_list=$(az iot hub query \
+        --hub-name replace-with-hub-name \
+        --subscription replace-with-sub-name \
+        --resource-group replace-with-rg-name \
+        -q "SELECT * FROM devices WHERE capabilities.iotEdge = false" \
+        --query 'join(`, `, [].deviceId)' -o tsv)
+
+# Add all IoT devices to IoT Edge (as child)
+az iot hub device-identity add-children \
+  --device-id $egde_device \
+  --child-list $device_list \
+  --hub-name replace-with-hub-name \
+  --resource-group replace-with-rg-name \
+  --subscription replace-with-sub-name 
+```
+
+Módosíthatja a [lekérdezés](../iot-hub/iot-hub-devguide-query-language.md) válassza ki az eszközöket egy másik részét. A parancs eltarthat néhány másodpercig, ha rengeteg eszközök adja meg.
+
+#### <a name="option-3-use-iot-hub-service-sdk"></a>3. lehetőség: Use IoT Hub Service SDK 
+
+Végül szülő-gyermek típusú kapcsolatokat használatával programozott módon kezelheti C#, Java vagy Node.js IoT Hub szolgáltatási SDK-t. Íme egy [példa a gyermeke eszköz hozzárendelése](https://aka.ms/set-child-iot-device-c-sharp) használatával a C# SDK-t.
 
 ### <a name="specifying-dns-servers"></a>DNS-kiszolgálók megadása 
 
-Robusztusság javítása érdekében javasoljuk, adja meg a környezetében használt DNS-kiszolgáló címei. Például a Linux, a frissítés **/etc/docker/daemon.json** (szüksége lehet létrehozni a fájlt) a következők:
-
-```json
-{
-    "dns": ["1.1.1.1"]
-}
-```
-
-Ha a helyi DNS-kiszolgálót használ, cserélje le a 1.1.1.1 a helyi DNS-kiszolgáló IP-címét. Indítsa újra a docker-szolgáltatást, a módosítások érvénybe léptetéséhez.
-
+Robusztusság javítása érdekében azt javasoljuk, adja meg, hogy a környezetében használt DNS-kiszolgáló címei. Tekintse át a [ehhez a hibaelhárításról szóló cikk a két lehetőség](troubleshoot.md#resolution-7).
 
 ## <a name="optional-offline-settings"></a>Nem kötelező offline beállítások
 
@@ -86,7 +109,7 @@ Ha várhatóan gyűjteni az eszközök mennyi ideig offline időszakokban létre
 
 ### <a name="time-to-live"></a>Élettartam
 
-Time to live beállítás rendszer mennyi ideig (másodpercben), amely egy üzenetet várhat után járjon le szállítani kell. Az alapértelmezett érték a 7200 másodperc (két óra). 
+Time to live beállítás rendszer mennyi ideig (másodpercben), amely egy üzenetet várhat után járjon le szállítani kell. Az alapértelmezett érték a 7200 másodperc (két óra). Egy egész szám típusú változó, amely körülbelül 2 milliárd maximális értéke csak korlátozza a maximális értéket. 
 
 Ez a beállítás az IoT Edge hub, amely tárolja az ikermodul kívánt tulajdonságot. Segítségével konfigurálhatja az Azure Portalon, az a **speciális Edge-futtatókörnyezet-beállítások konfigurálása** szakaszt, vagy közvetlenül a központi telepítésben lévő jegyzékfájl. 
 

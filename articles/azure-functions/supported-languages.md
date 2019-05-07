@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/02/2018
 ms.author: glenga
-ms.openlocfilehash: 5f55122b3bf4bb7160459d524b20dd1303cc0fd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8839fc0fb9f19a1cfa95a4191213503dba7602c6
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325452"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148825"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Az Azure Functions támogatott nyelvek
 
@@ -37,7 +37,7 @@ Támogatási három szintre sorolhatók:
 
 ### <a name="experimental-languages"></a>Kísérleti nyelvek
 
-A kísérleti nyelvek verzióban 1.x nem jól méretezhető, és nem támogatják az összes kötését. Például kísérleti 1.x a PowerShell-támogatás korlátozódik 5.1-es, mivel az a függvény alkalmazások futtatása a virtuális gépeken alapértelmezés szerint van telepítve. Ha szeretné futtatni a PowerShell-parancsfájlok, érdemes lehet [Azure Automation](https://azure.microsoft.com/services/automation/).
+A kísérleti nyelvek verzióban 1.x nem jól méretezhető, és nem támogatják az összes kötését.
 
 Kísérleti jellegű funkciókhoz, amelyeket Ön támaszkodnak, ne használjon, mivel azok nem hivatalos támogatott. Támogatási esetek kísérleti nyelvek kapcsolatos problémák nem lehet megnyitni. 
 

@@ -8,18 +8,15 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 8cbc02f80244b02b397162309fa5ae047f3f460a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/06/2019
+ms.openlocfilehash: 8809a2fed5a44910e3a353d9dc5bc41ea964a1ce
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60511315"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150556"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás az Azure virtuális hálózatok az Azure Logic Apps integrációs service-környezet (ISE) használatával
-
-> [!NOTE]
-> Ez a funkció akkor a [ *nyilvános előzetes verzióban*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Forgatókönyvek, ahol a logic apps és az integrációs fiókok kell a hozzáférést egy [az Azure virtual network](../virtual-network/virtual-networks-overview.md), hozzon létre egy [ *integrációs szolgáltatás környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Az ISE-ben olyan dedikált tárolási és más források vannak elkülönítve a nyilvános vagy "globális" Logic Apps szolgáltatást használó magán- és elkülönített környezet. Ez a fajta elkülönítés is csökkenti, amelyeket más Azure-bérlőt az alkalmazások teljesítményére hatással. Az ISE *beszúrta* be az Azure virtuális hálózathoz, amely azután telepíti a Logic Apps szolgáltatás a virtuális hálózatban. Amikor létrehoz egy logikai alkalmazásban vagy integrációs fiókot, válassza ki az ISE azok helyétől. A logikai alkalmazás vagy az integrációs fiók majd közvetlenül hozzáférhet a erőforrások, például a virtuális gépek (VM), kiszolgálók, rendszerek és szolgáltatások, a virtuális hálózaton.
 
@@ -101,13 +98,11 @@ A forgalom szabályozása, amelyen központi telepítését az ISE-ben a virtuá
 Az integrációs service-környezet (ISE) létrehozásához kövesse az alábbi lépéseket:
 
 1. Az a [az Azure portal](https://portal.azure.com), az Azure fő menüjéből válassza **erőforrás létrehozása**.
+A keresőmezőbe írja be szűrőként "integrációs szolgáltatás környezet".
 
    ![Új erőforrás létrehozása](./media/connect-virtual-network-vnet-isolated-environment/find-integration-service-environment.png)
 
-1. A keresőmezőbe írja be szűrőként "integrációs szolgáltatás környezet".
-Az eredmények listájában válassza ki a **integrációs Service-környezet (előzetes verzió)**, és válassza a **létrehozás**.
-
-   ![Válassza ki a "Integrációs szolgáltatás környezet"](./media/connect-virtual-network-vnet-isolated-environment/select-integration-service-environment.png)
+1. Az integrációs Service-környezet létrehozása paneljén válassza **létrehozás**.
 
    ![Válassza a "Create"](./media/connect-virtual-network-vnet-isolated-environment/create-integration-service-environment.png)
 
@@ -121,8 +116,8 @@ Az eredmények listájában válassza ki a **integrációs Service-környezet (e
    | **Erőforráscsoport** | Igen | <*Azure-resource-group-name*> | Az Azure erőforráscsoport, ahol szeretné létrehozni a környezetet |
    | **Integráció Service-környezet neve** | Igen | <*environment-name*> | A környezet nevét |
    | **Hely** | Igen | <*Azure-datacenter-region*> | Az Azure-adatközpontrégiót használhatják az üzembe helyezés a környezet |
-   | **Ha extra kapacitásra** | Igen | 0, 1, 2, 3 | Az ISE-erőforrás használandó feldolgozási egységek száma. Létrehozása után adja hozzá a kapacitás, lásd: [növelhetjük a Kapacitásunkat](#add-capacity). |
-   | **Virtuális hálózat** | Igen | <*Azure-virtual-network-name*> | Az Azure virtuális hálózat, ahol szeretné a környezet betöltése, hogy a logic apps, a környezetben hozzáférhessen a virtuális hálózat. Ha nem rendelkezik olyan hálózattal, létrehozhat egy itt. <p>**Fontos**: Is *csak* észrevegye hajtható végre, ha a hoz létre az ISE-ben. Azonban ez a kapcsolat létrehozása előtt ellenőrizze, hogy már beállított szerepköralapú hozzáférés-vezérlés a virtuális hálózat az Azure Logic Apps. |
+   | **Ha extra kapacitásra** | Igen | 0 és 10 | Az ISE-erőforrás használandó további feldolgozási egységek száma. Létrehozása után adja hozzá a kapacitás, lásd: [hozzáadása ISE kapacitás](#add-capacity). |
+   | **Virtuális hálózat** | Igen | <*Azure-virtual-network-name*> | Az Azure virtuális hálózat, ahol szeretné a környezet betöltése, hogy a logic apps, a környezetben hozzáférhessen a virtuális hálózat. Ha nem rendelkezik egy hálózati [először hozza létre az Azure-beli virtuális hálózathoz](../virtual-network/quick-create-portal.md). <p>**Fontos**: Is *csak* észrevegye hajtható végre, ha a hoz létre az ISE-ben. |
    | **Alhálózatok** | Igen | <*subnet-resource-list*> | Az ISE-ben szükséges négy *üres* alhálózatok a környezetében az erőforrások létrehozásához. Minden egyes alhálózat létrehozásához [a táblázat alatti lépéseket követve](#create-subnet).  |
    |||||
 
@@ -172,6 +167,9 @@ Az eredmények listájában válassza ki a **integrációs Service-környezet (e
 
    1. Ismételje meg ezeket a lépéseket három további alhálózatokat.
 
+      > [!NOTE]
+      > Próbál létrehozni az alhálózatok nem érvényes, ha az Azure Portalon egy üzenetet jelenít meg, de nem tiltja a folyamatot.
+
 1. Miután az Azure sikeresen ellenőrzi az ISE-adatokat, válassza ki a **létrehozás**, például:
 
    ![Sikeres ellenőrzés után válassza a "Létrehozás"](./media/connect-virtual-network-vnet-isolated-environment/ise-validation-success.png)
@@ -185,34 +183,17 @@ Az eredmények listájában válassza ki a **integrációs Service-környezet (e
 
    ![A telepítés sikerült](./media/connect-virtual-network-vnet-isolated-environment/deployment-success.png)
 
+   Egyéb esetben kövesse az Azure-portálutasítások az üzembe helyezés hibaelhárítása.
+
    > [!NOTE]
-   > Ha üzembe helyezése nem sikerül, vagy törölje az ISE-ben, Azure *előfordulhat, hogy* az alhálózatok kibocsátása előtt egy órát is igénybe vehet. Tehát akkor előfordulhat, hogy várnia kell, ezekhez az alhálózatokhoz egy másik ISE-ben újrahasznosítása előtt.
+   > Ha üzembe helyezése nem sikerül, vagy törölje az ISE-ben, az Azure is igénybe vehet egy órával az alhálózatok kibocsátása előtt. Ez a késleltetés azt jelenti, hogy azt jelenti, hogy előfordulhat, hogy várnia kell, a másik ISE-ben ezekhez az alhálózatokhoz újrahasznosítása előtt. 
+   >
+   > Ha törli a virtuális hálózat, Azure általában az alhálózatok mentése közzététele előtt akár két órát vesz igénybe, de ez a művelet hosszabb ideig tarthat. 
+   > Amikor a virtuális hálózatok, győződjön meg arról, hogy nincsenek erőforrások továbbra is csatlakozik. Lásd: [virtuális hálózat törlése](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 1. A környezet megtekintéséhez válassza **erőforrás megnyitása** , ha az Azure nem automatikusan nyissa meg a környezet üzembe helyezés befejezése után.  
 
-<a name="add-capacity"></a>
-
-### <a name="add-capacity"></a>Adja hozzá a kapacitás
-
-Az ISE alapegység javította a kapacitást, így a kapacitás növelése érdekében van szükség, ha több skálázási egység is hozzáadhat. Automatikus méretezés, teljesítmény-mérőszámok alapján, vagy egy feldolgozási egységek száma alapján is. Ha úgy dönt, hogy az automatikus skálázás metrika alapján, különböző feltételek közül választhat, és adja meg a feltételeknek megfelelő küszöbértéket feltételeit.
-
-1. Az Azure Portalon keresse meg az ISE-ben.
-
-1. Az ISE-ben, az ISE főmenü, teljesítmény-mérőszámok megtekintéséhez válassza ki a **áttekintése**.
-
-1. Alatt állíthatja be az automatikus skálázás, **beállítások**válassza **horizontális felskálázása**. Az a **konfigurálása** lapra, majd **automatikus skálázás engedélyezése**.
-
-1. Az a **alapértelmezett** válassza vagy **skálázás metrika alapján** vagy **skálázás adott példányszámra**.
-
-1. Ha úgy dönt, hogy példány-alapú, adja meg a feldolgozási egységek száma 0 és 3 közötti szélsőértékeket is beleértve. Egyéb, a metrika-alapú, kövesse az alábbi lépéseket:
-
-   1. Az a **alapértelmezett** válassza **egy szabály hozzáadásához**.
-
-   1. Az a **skálázási szabályhoz** panelen állítsa be a feltételeket és a művelet érvénybe a szabály aktiválásakor.
-
-   1. Ha elkészült, válassza ki a **Hozzáadás**.
-
-1. Ha elkészült, ne felejtse el menteni a módosításokat.
+Alhálózatok létrehozásával kapcsolatos további információkért lásd: [hozzáadása egy virtuális hálózat alhálózatához](../virtual-network/virtual-network-manage-subnet.md).
 
 <a name="create-logic-apps-environment"></a>
 
@@ -248,10 +229,37 @@ Hozzon létre egy ISE használó integrációs fiókból, kövesse a [integráci
 
 ![Válassza ki az integrációs service-környezet](./media/connect-virtual-network-vnet-isolated-environment/create-integration-account-with-integration-service-environment.png)
 
-## <a name="get-support"></a>Támogatás kérése
+<a name="add-capacity"></a>
 
-* A kérdéseivel látogasson el az <a href="https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps" target="_blank">Azure Logic Apps fórumára</a>.
-* A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a <a href="https://aka.ms/logicapps-wish" target="_blank">Logic Apps felhasználói visszajelzéseinek oldalára</a>.
+## <a name="add-ise-capacity"></a>Adja hozzá az ISE-kapacitás
+
+Az ISE alapegység javította a kapacitást, így a kapacitás növelése érdekében van szükség, ha több skálázási egység is hozzáadhat. Automatikus méretezés, teljesítmény-mérőszámon alapuló, vagy egy további feldolgozási egységek száma alapján is. Ha úgy dönt, hogy az automatikus skálázás metrika alapján, különböző feltételek közül választhat, és adja meg a feltételeknek megfelelő küszöbértéket feltételeit.
+
+1. Az Azure Portalon keresse meg az ISE-ben.
+
+1. Tekintse át a használat és a teljesítmény-mérőszámok az ISE-ben, az ISE fő menüjében válassza **áttekintése**.
+
+   ![Használati adatok megtekintése az ISE-ben](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-usage.png)
+
+1. Alatt állíthatja be az automatikus skálázás, **beállítások**válassza **horizontális felskálázása**. Az a **konfigurálása** lapra, majd **automatikus skálázás engedélyezése**.
+
+   ![Az automatikus skálázás bekapcsolása](./media/connect-virtual-network-vnet-isolated-environment/scale-out.png)
+
+1. A **automatikus skálázási beállítás neve**, adja meg a beállítás nevét.
+
+1. Az a **alapértelmezett** válassza vagy **skálázás metrika alapján** vagy **skálázás adott példányszámra**.
+
+   * Ha úgy dönt, hogy példány-alapú, adja meg a feldolgozási egységek száma 0 és 10 közötti szélsőértékeket is beleértve.
+
+   * Ha úgy dönt, hogy a metrika-alapú, kövesse az alábbi lépéseket:
+
+     1. Az a **szabályok** válassza **egy szabály hozzáadásához**.
+
+     1. Az a **skálázási szabályhoz** panelen állítsa be a feltételeket és a művelet érvénybe a szabály aktiválásakor.
+
+     1. Ha elkészült, válassza ki a **Hozzáadás**.
+
+1. Ha elkészült az automatikus méretezési beállításokkal való, a módosítások mentéséhez.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,18 +10,14 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 488a9fe24fb8fca0b7309dea63d0640a6384f95c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d41c2b541bf80448d180a1d081c255e5bf754e5e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024099"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147332"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>Az Azure Search .NET SDK 3-as verziójú frissítését
-
-> [!Important]
-> Ez a tartalom még fejlesztés alatt áll. Az Azure Search .NET SDK 9.0-s verziója érhető el a NuGet. Ebből a cikkből azt ismertetik, hogyan 9.0 rendszerre történő is dolgozunk. 
-> 
 
 <!--- DETAILS in the word doc
 cosmosdb
@@ -152,6 +148,6 @@ Ha az alkalmazás egy rögzített függőségi ezekről a funkciókról, nem tud
 ## <a name="conclusion"></a>Összegzés
 Ha részletesebb tájékoztatást az Azure Search .NET SDK van szüksége, tekintse meg a [.NET útmutató](search-howto-dotnet-sdk.md).
 
-Szívesen fogadjuk a visszajelzéseket az SDK-val. Ha problémákat tapasztal, nyugodtan megszüntetését a Súgó a [Azure Search MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch). Ha a hiba, a megkereséseit is fájl a [Azure .NET SDK GitHub-adattár](https://github.com/Azure/azure-sdk-for-net/issues). Győződjön meg arról, hogy a probléma címe és az "[az Azure Search]" előtagot.
+Szívesen fogadjuk a visszajelzéseket az SDK-val. Ha problémákat tapasztal, nyugodtan segítségét kell kérnie velünk a kapcsolatot a [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search). Ha a hiba, a megkereséseit is fájl a [Azure .NET SDK GitHub-adattár](https://github.com/Azure/azure-sdk-for-net/issues). Győződjön meg arról, hogy a probléma címe és az "[az Azure Search]" előtagot.
 
 Köszönjük, hogy az Azure Search használatával!

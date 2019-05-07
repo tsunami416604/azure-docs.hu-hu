@@ -1,21 +1,21 @@
 ---
-title: Php-ből a Queue storage használata |} A Microsoft Docs
+title: PHP – Azure Storage Queue storage használata
 description: Ismerje meg, hogyan használhatja az Azure Queue storage szolgáltatás létrehozása és törlése, üzenetsorok, és helyezze, beolvasása, és törli az üzenetet. Minta PHP nyelven íródtak.
 services: storage
-author: roygara
+author: mhopkins-msft
 ms.service: storage
-ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: article
 ms.date: 01/11/2018
-ms.author: rogarana
+ms.author: mhopkins
+ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: 0f9cc11e64e2517ef7aff0cd51705c39bf212b37
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 84c5562e83518eab371f7c820d163c4dbf932cf7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62109869"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142631"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>How to use Queue storage from PHP (A Queue Storage használata PHP-val)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

@@ -5,23 +5,23 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/30/2019
+ms.date: 5/7/2019
 ms.author: victorh
-ms.openlocfilehash: 86693e829ab08c3cb7befc6f0047472e8faa61fa
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 0506ef82a00b46bf9be14757f15195bcbf8ab432
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947227"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148902"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>Automatikus skálázás és zónaredundáns az Application Gateway 
 
-Az Application Gateway és a webalkalmazási tűzfal (WAF) egy Standard_v2 és WAF_v2 Termékváltozatot kínál a nagyobb teljesítmény és a kritikus fontosságú új funkciók, például a statikus virtuális IP-címek támogatása, az automatikus skálázás és a zone redudancy támogatásának hozzáadása alatt is elérhetők. A Standard és a WAF Termékváltozat meglévő szolgáltatás néhány kivételtől eltekintve összehasonlító szakaszban felsorolt támogatott az új v2 szintű Termékváltozatot, az továbbra is. 
+Az Application Gateway és a webalkalmazási tűzfal (WAF) egy Standard_v2 és WAF_v2 Termékváltozat alatt is elérhetők. A v2 szintű Termékváltozatot kínál a nagyobb teljesítmény és támogatást nyújt a kritikus fontosságú új funkciók, például az automatikus skálázás, a zone redudancy és statikus virtuális IP-címek támogatása. A Standard és a WAF Termékváltozat a meglévő szolgáltatások továbbra is támogatottak az új v2 termékváltozatban szereplő néhány kivételtől eltekintve [összehasonlító](#differences-with-v1-sku) szakaszban.
 
 Az új v2 szintű Termékváltozatot a következő fejlesztéseket tartalmazza:
 
 - **Az automatikus skálázás**: Az automatikus skálázás Termékváltozat az Application Gateway vagy WAF üzembe helyezésekre alapuló forgalmi terhelés minták módosítása vagy is méretezhetők. Az automatikus skálázással elkerülhető, hogy már a kiépítés során meg kelljen határozni az üzemelő példány méretét vagy a példányszámot. Ez a Termékváltozat valódi rugalmasságot nyújt. A Standard_v2 és WAF_v2 Termékváltozat az Application Gateway rögzített kapacitás (az automatikus skálázás le van tiltva) és az automatikus skálázás engedélyezése mellett módban is működhet. Rögzített kapacitás mód hasznos forgatókönyvek egységes és kiszámítható számítási feladatokkal. Az automatikus skálázási mód akkor előnyös az alkalmazások, amelyeket az alkalmazás forgalmának eltérés.
-- **A redundancia zóna**: Egy Application Gateway vagy a waf-védelem is kiterjedhetnek több rendelkezésre állási zónában, eltávolítás, minden zónában egy Traffic Manager külön Application Gateway-példány üzembe kell. Egy zóna vagy több zónában, az Application Gateway-példány telepítve vannak, így biztosítása hiba zónarugalmasságot választhat. A háttérkészlet alkalmazások hasonló módon – szét lehetnek osztva a rendelkezésre állási zónák.
+- **A redundancia zóna**: Egy Application Gateway vagy a waf-védelem is kiterjedhetnek több rendelkezésre állási zónában, eltávolítás, minden zónában egy Traffic Manager külön Application Gateway-példány üzembe kell. Választhat egy zóna vagy több zónában, az Application Gateway-példány telepítve vannak, ami lehetővé teszi az rugalmasabb zóna hibáira. A háttérkészlet alkalmazások hasonló módon – szét lehetnek osztva a rendelkezésre állási zónák.
 - **Statikus virtuális IP-CÍMEK**: Application gateway v2 Termékváltozat támogatja a statikus virtuális IP-cím kizárólag írja be. Ez biztosítja, hogy az application gateway társított virtuális IP-CÍMEK a telepítéshez, akár az újraindítás után élettartama nem változik.
 - **Fejléc Újraírási**: Az Application Gateway lehetővé teszi hozzáadása, eltávolítása vagy frissítse a HTTP-kérelmek és válaszfejlécek v2 szintű Termékváltozatot. További információkért lásd: [Újraírási HTTP-fejlécek az Application Gateway segítségével](rewrite-http-headers.md)
 - **Key Vault-integráció (előzetes verzió)**: Application Gateway v2 HTTPS-kompatibilis figyelői csatolt kiszolgálói tanúsítványokat a Key Vault integration (a nyilvános előzetes verzió) támogatja. További információkért lásd: [Key Vault tanúsítványokkal rendelkező SSL-lezárást](key-vault-certs.md).
@@ -33,7 +33,7 @@ Az új v2 szintű Termékváltozatot a következő fejlesztéseket tartalmazza:
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-A Standard_v2 és WAF_v2 Termékváltozat az alábbi régiókban érhető el: USA északi középső RÉGIÓJA, USA déli középső RÉGIÓJA, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA középső RÉGIÓJA, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, Franciaország, közép-India, Egyesült Királyság nyugati, kelet-japán, Nyugat-japán. További régiók támogatása a későbbi.
+A Standard_v2 és WAF_v2 Termékváltozat az alábbi régiókban érhető el: USA északi középső RÉGIÓJA, USA déli középső RÉGIÓJA, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA középső RÉGIÓJA, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, Franciaország, közép-India, Egyesült Királyság nyugati, kelet-japán, Nyugat-japán. További régiók felveszi a jövőben.
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -47,7 +47,7 @@ Egy kapacitás elszámolási egység legfeljebb áll: 1 számítási egység, va
 Számítási egység útmutatást:
 
 - **Standard_v2** – egyes számítási egység körülbelül 50 kapcsolatok másodpercenként az RSA 2048 bites kulcs TLS-tanúsítvány alkalmas állapotban.
-- **WAF_v2** – egyes számítási egység a következőkre képes körülbelül 10 egyidejű kérelmek / másodperc, a forgalom 70 %-os 70 – 30 % vegyesen kérelmek kisebb, mint 2 KB GET/közzététele és a fennmaradó magasabb. WAF teljesítményét nem befolyásolja válasz mérete jelenleg.
+- **WAF_v2** – egyes számítási egység támogathat körülbelül 10 egyidejű kérelmek / másodperc, a forgalom 70 %-os 70 – 30 % vegyesen kérelmek kisebb, mint 2 KB GET/közzététele és a fennmaradó magasabb. WAF teljesítményét nem befolyásolja válasz mérete jelenleg.
 
 > [!NOTE]
 > Minden példány jelenleg képes támogatni az körülbelül 10 kapacitásegységek.
@@ -83,7 +83,7 @@ Teljes ár $148 =. 23.81 8 + = $172.61
 
 **3. példa**
 
-Egy Application Gateway WAF_v2 ki van építve, egy hónapig, és ebben az időszakban 25 új SSL kapcsolatok másodpercenkénti átlagos 8.88 MB/s adatátviteli kap, és másodpercenként 80 kérelem does. Feltéve, hogy kapcsolatok rövid életűek, és, hogy a számítási egység számítási az alkalmazás támogatja a 10 RPS számítási egység, az ár lenne:
+Egy Application Gateway WAF_v2 egy hónapig van kiépítve. Ebben az időszakban 25 új SSL kapcsolatok másodpercenkénti átlagos 8.88 MB/s adatátviteli kap, és másodpercenként 80 kérelem does. Feltéve, hogy kapcsolatok rövid életűek, és, hogy a számítási egység számítási az alkalmazás támogatja a 10 RPS számítási egység, az ár lenne:
 
 Rögzített ár = 744(hours) * 0.36 $ $267.84 =
 
@@ -97,8 +97,8 @@ A [díjszabását ismertető lapon](https://azure.microsoft.com/en-us/pricing/de
 
 Az Application Gateway és a WAF konfigurálható a méretezési csoport két módban:
 
-- **Az automatikus skálázás** – az automatikus skálázás engedélyezése mellett az Application Gateway és a WAF v2 termékváltozatok fog kisebbre vagy nagyobbra méretezhetők a alkalmazás forgalom követelményeknek megfelelően. Ebben a módban az alkalmazás nagyobb rugalmasságot biztosít, és szükségtelenné teszi a dolgát, az application gateway méretét vagy példányszámot. Ebben a módban is lehetővé teszi csökkenthetők a költségek átjárók futtatását a maximális kiosztott kapacitás várható maximális forgalmi terhelés nem igényli. Ügyfeleknek meg kell adnia egy minimális és igény szerint maximális példányszámot. Kapacitásérték-minimumot biztosítja, hogy az Application Gateway és a WAF v2-es nem tartoznak a megadott még érhető el a forgalmat a példányok minimális száma alatt. Akkor kell fizetnie a kapacitásérték-minimumot még akkor is, az adatforgalom hiányát. Adja meg a példányok maximális száma, amely biztosítja, hogy az Application Gateway nem méretezhető meghaladja a megadott számú példányok emellett, ha szükséges. Továbbra is az átjáró által kiszolgált forgalom mennyiségének felszámítjuk. A példányok számát 125 0 terjedhet. Alapértelmezett érték a példányok maximális száma 20, ha nincs megadva.
-- **Manuális** – másik lehetőségként kiválaszthatja a manuális módban, ahol az átjáró fogja-e nem automatikus skálázási. Ebben a módban további adatforgalom milyen Application Gateway és a WAF rendszer képes legyen kezelni, mint ha azt eredményezheti forgalom adatvesztés. A manuális mód példányszám megadása kötelező. Példányok száma 1 eltérőek lehetnek a 125-példányokhoz.
+- **Az automatikus skálázás** – és az automatikus skálázás engedélyezve van, az Application Gateway és a WAF v2 termékváltozatok kisebbre vagy nagyobbra méretezhetők a alkalmazás forgalom követelményeknek megfelelően. Ebben a módban az alkalmazás nagyobb rugalmasságot biztosít, és szükségtelenné teszi a dolgát, az application gateway méretét vagy példányszámot. Ebben a módban is lehetővé teszi csökkenthetők a költségek átjárók futtatását a maximális kiosztott kapacitás várható maximális forgalmi terhelés nem igényli. Ügyfeleknek meg kell adnia egy minimális és igény szerint maximális példányszámot. Kapacitásérték-minimumot biztosítja, hogy az Application Gateway és a WAF v2-es nem tartoznak a megadott, még akkor is érhető el a forgalmat a példányok minimális száma alatt. A minimális kapacitás, még akkor is érhető el a forgalmat, kell fizetnie. Opcionálisan megadhatja a példányok maximális száma, amely biztosítja, hogy az Application Gateway meghaladja a megadott számú példányok nem méretezhető. Számlázunk az átjáró által kiszolgált forgalom mennyiségének fogja folytatni. A példányok számát 125 0 terjedhet. Az alapértelmezett érték a példányok maximális száma 20 Ha nincs megadva.
+- **Manuális** – másik lehetőségként kiválaszthatja a manuális módban, ahol az átjáró nem fog az automatikus méretezés. Ebben a módban milyen Application Gateway és a WAF rendszer képes legyen kezelni, mint a további adatforgalom esetén azt eredményezheti forgalom adatvesztés. A manuális mód példányszám megadása kötelező. Példányok száma 1 eltérőek lehetnek a 125-példányokhoz.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Termékváltozat v1 és v2 szintű Termékváltozatot közötti funkcióinak összehasonlítása
 
@@ -125,7 +125,7 @@ Az alábbi táblázat az egyes Termékváltozat szolgáltatásait hasonlítja ö
 | Kapcsolatkiürítés                               | &#x2713; | &#x2713; |
 
 > [!NOTE]
-> Az automatikus skálázás és zónaredundáns az application gateway mostantól támogatja-e Termékváltozat [alapértelmezett állapotadat-mintavételek](application-gateway-probe-overview.md#default-health-probe) automatikusan a háttér-készletben található összes erőforrás állapotának figyelésére, és jelölje ki a háttérrendszer a tagokkal szolgálnak nem megfelelő állapotú. Az alapértelmezett állapot mintavételi még a összes-e, amelyhez nem állított be egyéni mintavétel konfigurációra háttérrendszerek automatikusan megtörténik. További tudnivalókért lásd: [állapotadat-mintavételek az application gatewayben](application-gateway-probe-overview.md).
+> A Termékváltozat már támogatja az automatikus skálázás v2 [alapértelmezett állapotadat-mintavételek](application-gateway-probe-overview.md#default-health-probe) automatikusan a háttér-készletben található összes erőforrás állapotának figyelésére, és jelölje ki a háttérrendszer a tagokkal, amelyek nem megfelelő állapotú tekinthetők. Az alapértelmezett állapotadat-mintavétel konfigurálása automatikusan történik a háttérrendszerek, amelyek nem rendelkeznek, egyéni mintavétel konfigurációra. További tudnivalókért lásd: [állapotadat-mintavételek az application gatewayben](application-gateway-probe-overview.md).
 
 ## <a name="differences-with-v1-sku"></a>Különbségek a v1 Termékváltozatot
 
@@ -140,6 +140,7 @@ Az alábbi táblázat az egyes Termékváltozat szolgáltatásait hasonlítja ö
 |FIPS-módban|Ezek jelenleg nem támogatottak.|
 |ILB mód|Ez jelenleg nem támogatott. Nyilvános és ILB mód együtt használható.|
 |Netwatcher integráció|Nem támogatott.|
+|Az Azure-támogatási központ-integráció|Még nem érhető el.
 
 ## <a name="next-steps"></a>További lépések
 

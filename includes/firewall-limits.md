@@ -5,22 +5,22 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 3/25/2019
+ms.date: 5/3/2019
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 0467359cd9d6a067e519a62532f00459bc5f68cb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8709d4d903bd31ff94d04ec61e226857e4190407
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804179"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150298"
 ---
-| Erőforrás | Alapértelmezett korlát |
+| Resource | Alapértelmezett korlát |
 | --- | --- |
 | Átviteli adatok |30 GB/s<sup>1</sup> |
 |Szabályok|10 000-et, az összes szabály típusa kombinált.|
 |Minimális AzureFirewallSubnet mérete |/26|
 |A hálózati és az szabályokban porttartomány|0-64,000. Ez a korlátozás enyhítése folyamatban van.|
-|Útválasztási táblázat|Alapértelmezés szerint AzureFirewallSubnet egy 0.0.0.0/0 útvonalat rendelkezik a nexthoptype elem érték **Internet**.<br><br>Ha engedélyezi a kényszerített bújtatás ExpressRoute vagy VPN-átjáró használatával helyszíni, szükség lehet explicit módon egy 0.0.0.0/0 felhasználó által megadott útvonal (UDR) konfigurálja a nexthoptype elem értéke csoportot, az Internet, és társíthatja azt a AzureFirewallSubnet. Ez a művelet lehetséges alapértelmezett átjárót a helyszíni hálózat vissza a BGP hirdetésből. Ha a szervezet megköveteli, hogy az Azure-tűzfal alapértelmezett átjáró forgalmat a helyszíni hálózaton keresztül visszairányító kényszerített bújtatás, forduljon az ügyfélszolgálathoz. Azt is változatlan marad az előfizetés annak biztosítása érdekében az internetkapcsolat szükséges tűzfal engedélyezési listáján.|
+|Útválasztási táblázat|Alapértelmezés szerint AzureFirewallSubnet egy 0.0.0.0/0 útvonalat rendelkezik a nexthoptype elem érték **Internet**.<br><br>Az Azure tűzfal közvetlen internetkapcsolattal kell rendelkeznie. A AzureFirewallSubnet megtanulja az alapértelmezett útvonalat a BGP-n keresztül a helyszíni hálózathoz, ha meg kell felülbírálja ezt az egy 0.0.0.0/0 UDR-a **NextHopType** értéket állítja be **Internet** közvetlen fenntartása Internetkapcsolat. Alapértelmezés szerint az Azure-tűzfal nem támogatja a kényszerített bújtatás a helyszíni hálózathoz.<br><br>Azonban ha a konfigurációt igényel a helyszíni hálózathoz a kényszerített bújtatás, a Microsoft támogatja eseti alapon. Úgy, hogy az eset, forduljon az ügyfélszolgálathoz. Ha elfogadja, hogy lesz engedélyezett az előfizetés, és biztosítják a szükséges internetkapcsolattal.|
 
 <sup>1</sup>Ha ezek a korlátok növeléséhez van szüksége, forduljon az Azure ügyfélszolgálatához.

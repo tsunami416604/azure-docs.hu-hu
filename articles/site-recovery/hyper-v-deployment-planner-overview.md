@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/18/2019
 ms.author: mayg
-ms.openlocfilehash: aecbe666814a9ae80611de7798b4ab21fe15e219
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a793de302eb0833c959f2486fc2cda1f2eec4674
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60946494"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149111"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Tudnivalók az Azure Site Recovery Deployment Planner a Hyper-V vész-helyreállítási az Azure-bA
 
@@ -120,6 +120,9 @@ Példa: Másolja a .zip fájlt az E:\ meghajtóra, és csomagolja ki. E:\ASR Dep
 E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>Frissítés az üzembehelyezés-tervező a legújabb verzióra
+
+A legújabb frissítéseket foglalja össze a Deployment Planner [korábbi verziók](site-recovery-deployment-planner-history.md).
+
 Ha az üzembehelyezés-tervező korábbi verziójával rendelkezik, tegye az alábbiak egyikét:
  * Ha a legújabb verzió nem tartalmaz profilkészítést érintő javítást, és a profilkészítés már folyamatban van a Planner aktuális verzióján, folytassa a profilkészítést.
  * Ha a legújabb verzió tartalmaz profilkészítést érintő javítást, javasoljuk, hogy állítsa le az aktuális verzión a profilkészítést, és indítsa újra a profilkészítést az új verzióval.

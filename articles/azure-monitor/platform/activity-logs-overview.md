@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: be2f5fdebc5ae4f779fe6e3da74ad7ea583226ef
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: d9583f232a7afd6ab64421d57bbf14a45299e374
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995659"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138202"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure-tevékenységnapló-előfizetési tevékenység figyelése
 
@@ -63,6 +63,7 @@ Az alábbiakban néhány, a tevékenységnapló megteheti:
 * A Power BI használatával elemezhetők a [ **Power BI-tartalomcsomag**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
 * [Mentse azt egy **Tárfiók** archív vagy manuális ellenőrzést](../../azure-monitor/platform/archive-activity-log.md). A megőrzési ideje (nap) használatával is megadhat a **Naplóprofil**.
 * PowerShell-parancsmagot, a CLI vagy a REST API-n keresztül lekérdezéseket futtathat rajta.
+* Nézet a [módosítási előzmények](#view-change-history) az egyes események
 
 ## <a name="query-the-activity-log-in-the-azure-portal"></a>Lekérdezés a tevékenységnapló az Azure Portalon
 
@@ -183,6 +184,20 @@ A figyelő profilok létrehozása a CLI-vel teljes dokumentációjáért lásd: 
 ```azurecli
 az monitor log-profiles delete --name <profile name>
 ```
+
+## <a name="view-change-history"></a>Módosítási előzményeinek megtekintése
+
+Ha a tevékenységnapló áttekintése, emellett segít tekintse meg az változások során adott esemény időpontja. Megtekintheti ezen adatok és a változások nyomon követése.
+
+Keresse meg a portál bal oldali Activity Log. Jelöljön ki egy eseményt a tevékenységnapló mélyebben elmerülhet keresni szeretné. Válassza ki a **módosítási előzmények (előzetes verzió)** fülre kattintva megtekintheti az esetleges módosításokat az eseményhez tartozó.
+
+![Módosítsa az esemény előzménylista](./media/activity-logs-overview/change-history-event.png)
+
+Ha az eseményhez kapcsolódó módosításokat, látni fogja a választható módosítások listája olvasható. Megnyílik a **módosítási előzmények (előzetes verzió)** lapot. Ezen az oldalon láthatja a módosításokat az erőforráshoz. Ahogy az alábbi példában látható, jelenleg csak nem láthatja, hogy a virtuális gép méreteket, de mi az előző Virtuálisgép-méretet a váltás előtt volt, és mi megváltozott hogy megváltozott-e.
+
+![Módosítási előzmények oldalról különbségek](./media/activity-logs-overview/change-history-event-details.png)
+
+Változások nyomon követése kapcsolatos további információkért lásd: [beolvasása az erőforrás-módosítások](../../governance/resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="next-steps"></a>További lépések
 

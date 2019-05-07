@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 5ec38c510fedee7f489b3b100285eeb7c75f4561
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2e4ff7dc97e3ee72336bd4c081caf1aa1a62bc56
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690972"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146541"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Gyors útmutató: Hozzon létre egy új alkalmazást a LUIS-portálon
 
@@ -56,7 +56,7 @@ Az alkalmazás a két különböző _céljaira_ , a következő leképezések ig
 |ApplyForJob|`I want to apply for the new software engineering position in Cairo.`|
 |FindForm|`Where is the job transfer form hrf-123456?`|
 
-Leképezések létrehozásához tegye a következőket:
+Leképezések létrehozásához hajtsa végre az alábbi lépéseket:
 
 1. Az alkalmazás létrehozása után a rendszer a **leképezések** lapján a **összeállítása** szakasz. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget.
 
@@ -71,6 +71,8 @@ Leképezések létrehozásához tegye a következőket:
 Példa utterances leképezések létrehozása után adja hozzá. Példa kimondott szöveg, hogy a felhasználó egy csevegőrobot, vagy más ügyfélalkalmazás szöveget. A LUIS beszédszándék leképezik a szándéka az a felhasználó szöveget.
 
 Ebben a példában alkalmazás `FindForm` szándék, például kimondott szöveg tartalmazza az űrlap számát. Az ügyfélalkalmazásnak szüksége van az űrlap szám teljesítéséhez a felhasználó kérésére, ezért fontos, hogy belefoglalja az utterance (kifejezés).
+
+[![Adja meg például utterances FindForm célja a](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
 Adja hozzá a következő példa 15 kimondott szöveg a `FindForm` szándékot.
 
@@ -100,11 +102,11 @@ A kialakításból fakadóan e példában utterances eltérőek lehetnek, a köv
 * művelet igeidőt (, lett, lesz)
 * szórendjét
 
-[![Adja meg például utterances FindForm célja a](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+
 
 ## <a name="create-a-regular-expression-entity"></a>Entitás létrehozása egy reguláris kifejezés
 
-A képernyő számát az előrejelzések futtatókörnyezeti válasz részeként adja vissza lekéréséhez az űrlap egy egységként kell megjelölni. A képernyő szövege magas strukturált, mert azt jelölhető egy reguláris kifejezésnek entitás használatával. Az entitás létrehozása a következő lépéseket:
+Az űrlap szám visszaadása a futtatókörnyezet előrejelzési válasz, az űrlap egy egységként kell megjelölni. A képernyő szövege magas strukturált, mert jelölheti meg a reguláris kifejezésnek entitás használatával. Az entitás létrehozása a következő lépéseket:
 
 1. Válassza ki **entitások** a bal oldali menüből.
 

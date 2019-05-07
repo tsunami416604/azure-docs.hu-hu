@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 26d677df81df6e10fae8d63362d49deee2cd0aca
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: f8e057bf2e71d5a00c1e2a8ef72a5c9415a5a207
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870747"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145124"
 ---
 # <a name="troubleshooting-status-monitor-v2"></a>Hibaelhárítási állapot v2 figyelése
 
@@ -200,3 +200,9 @@ Figyelés működik, ha legalább 12 DLL-ek betöltési.
 4. Az alkalmazás megkeresése tallózással próbálja meg.
 5. Az alkalmazás a betöltés befejezése után térjen vissza a PerfView, és kattintson a "Stop gyűjtemény"
 
+
+
+## <a name="next-steps"></a>További lépések
+
+- Tekintse át a [API-referencia](status-monitor-v2-overview.md#powershell-api-reference) , előfordulhat, hogy kihagyott paraméter található.
+- Ha itt nem felsorolt probléma között, akkor előfordulhat, hogy lépjen kapcsolatba velünk [Itt](https://github.com/Microsoft/ApplicationInsights-Home/issues).

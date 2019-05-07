@@ -2,20 +2,21 @@
 title: Az Azure Storage-életciklus kezelése
 description: Megtudhatja, hogyan hozhat létre életciklus szabályok átmenet elévülési adatok gyors elérésűről lassú elérésű és archív tárolási szint.
 services: storage
-author: yzheng-msft
+author: mhopkins-msft
 ms.service: storage
 ms.topic: conceptual
 ms.date: 4/29/2019
-ms.author: yzheng
+ms.author: mhopkins
+ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: f1fdd1b239301a5340716e1d5d098487afe27f9f
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 130eb9cc8bec4681f5c0d165735c6c3b2357576c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938568"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148319"
 ---
-# <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob storage, életciklus kezelése
+# <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob storage életciklus kezelése
 
 Adatkészletek egyedi életciklusokkal rendelkeznek. Korai szakaszában az életciklus férhetnek egyes adatok milyen gyakran. De szükségük van a hozzáférésre, az adatok életkorának csökken. Bizonyos adatok tétlen marad, a felhőben, és a ritkán elért tárolt. Míg egyéb adatkészletekhez aktívan beolvasása és módosítanak teljes az élettartam néhány adatot napok vagy hónappal a létrehozás után lejár. Az Azure Blob storage életciklus-felügyelet a GPv2 és Blob storage-fiókok gazdag, szabályalapú házirendet kínál. A szabályzat segítségével az adatok a megfelelő hozzáférési szinten való áttérés, vagy az adatok életciklus végén lejár.
 
@@ -156,7 +157,7 @@ A házirend minden egyes szabály több paraméterekkel rendelkezik:
 | Paraméter neve | Paraméter típusa | Megjegyzések | Szükséges |
 |----------------|----------------|-------|----------|
 | név           | String |A szabály neve legfeljebb 256 alfanumerikus karaktereket tartalmazhat. Szabály neve a kis-és nagybetűket.  Egy házirend egyedinek kell lennie. | True (Igaz) |
-| engedélyezve | Boolean | Egy nem kötelező logikai érték beolvasása, hogy ideiglenes szabály le van tiltva. Alapértelmezett érték: igaz, ha nincs beállítva. | False (Hamis) | 
+| enabled | Boolean | Egy nem kötelező logikai érték beolvasása, hogy ideiglenes szabály le van tiltva. Alapértelmezett érték: igaz, ha nincs beállítva. | False (Hamis) | 
 | type           | Enum érték | Az aktuális érvényes típus `Lifecycle`. | True (Igaz) |
 | definíció     | Egy objektum, amely meghatározza az életciklus-szabály | Minden egyes definíció épül fel egy szűrő és egy műveletet. | True (Igaz) |
 

@@ -1,28 +1,28 @@
 ---
-title: 'Oktatóanyag: Az Azure Data Lake Storage Gen1 terhelés az Azure SQL Data Warehouse |} A Microsoft Docs'
-description: Adatok betöltése az Azure Data Lake Storage Gen1 az Azure SQL Data Warehouse a PolyBase külső táblák használatával.
+title: 'Oktatóanyag: Betöltés az Azure Data Lake Storage-ból az Azure SQL Data Warehouse |} A Microsoft Docs'
+description: Adatok betöltése az Azure Data Lake Storage az Azure SQL Data Warehouse a PolyBase külső táblák használatával.
 services: sql-data-warehouse
-author: ckarst
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 04/26/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 32ac5b0841365acfc0a52e343eafc4f3760dffaa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6b5083d6b4cf6758997e4e0551e5f3c2968a31c1
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61476136"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145971"
 ---
-# <a name="load-data-from-azure-data-lake-storage-gen1-to-sql-data-warehouse"></a>Adatok betöltése az Azure Data Lake Storage Gen1 az SQL Data warehouse-bA
-Adatok betöltése az Azure Data Lake Storage Gen1 az Azure SQL Data Warehouse a PolyBase külső táblák használatával. Bár a Data Lake Storage Gen1-ban tárolt adatokkal kapcsolatos ad hoc ad hoc lekérdezéseket is futtathat, javasoljuk, hogy az adatok importálása a legjobb teljesítmény érdekében az SQL Data Warehouse-bA.
+# <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Adatok betöltése az Azure Data Lake Storage-ból az SQL Data Warehouse
+Adatok betöltése az Azure Data Lake Storage az Azure SQL Data Warehouse a PolyBase külső táblák használatával. Bár a Data Lake Storage-ban tárolt adatokkal kapcsolatos ad hoc ad hoc lekérdezéseket is futtathat, javasoljuk, hogy az adatok importálása a legjobb teljesítmény érdekében az SQL Data Warehouse-bA.
 
 > [!div class="checklist"]
-> * Hozzon létre a Data Lake Storage Gen1 betöltéshez szükséges adatbázis-objektumokat.
-> * Csatlakozzon egy Data Lake Storage Gen1 könyvtárba.
+> * Hozzon létre a Data Lake Storage betöltéshez szükséges adatbázis-objektumokat.
+> * Csatlakozás a Data Lake Storage directory.
 > * Adatok betöltése az Azure SQL Data Warehouse-bA.
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
@@ -32,18 +32,18 @@ Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Mana
 
 Ez az oktatóanyag futtatásához szüksége:
 
-* Az Azure Active Directory-alkalmazás szolgáltatások közötti hitelesítés használatához. Létrehozásához hajtsa végre az [Active directory-hitelesítés](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
+* Az Azure Active Directory-alkalmazás szolgáltatások közötti hitelesítés használatára, ha betöltés forrásaként Gen1. Létrehozásához hajtsa végre az [Active directory-hitelesítés](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
 
 >[!NOTE] 
-> Az ügyfél-azonosító, a kulcs és a végpont Jogkivonatérték OAuth2.0-fiókhoz való csatlakozás a Data Lake Storage Gen1 SQL Data Warehouse-ból az Active Directory-alkalmazás van szüksége. Ezeket az értékeket beszerzése részletei találhatók a fenti hivatkozásra. Az Azure Active Directory Alkalmazásregisztráció használja az alkalmazás azonosítója, az ügyfél-azonosító.
+> Az Azure Data Lake ki Gen1 tölt be, ha az ügyfél-azonosító, a kulcs és a OAuth2.0 Token végpont értékét az Active Directory-alkalmazás az SQL Data Warehouse-ból kapcsolódni a tárfiók van szükség. Ezeket az értékeket beszerzése részletei találhatók a fenti hivatkozásra. Az Azure Active Directory Alkalmazásregisztráció használja az alkalmazás azonosítója, az ügyfél-azonosító.
 > 
 
 * Az Azure SQL Data Warehouse. Lásd: [létrehozása és a lekérdezés és az Azure SQL Data Warehouse](create-data-warehouse-portal.md).
 
-* Egy Data Lake Storage Gen1 fiók. Lásd: [Ismerkedés az Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-get-started-portal.md). 
+* A Data Lake tárfiókot. Lásd: [Ismerkedés az Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md). 
 
 ##  <a name="create-a-credential"></a>Hitelesítő adatok létrehozása
-A Data Lake Storage Gen1 fiókjába szüksége lesz egy fő adatbáziskulcsot titkosíthatja a hitelesítésiadat-titok a következő lépésben hozzon létre. Ezután hozzon létre egy Database Scoped Credential, amely tárolja az egyszerű szolgáltatás hitelesítő adatai állítsa be az aad-ben. A azoknak, akik már használtak a PolyBase szeretne csatlakozni a Windows Azure Storage-Blobokkal vegye figyelembe, hogy a credential szintaxis különböző.
+A Data Lake Storage-fiókja eléréséhez szüksége lesz egy fő adatbáziskulcsot titkosíthatja a hitelesítésiadat-titok a következő lépésben hozzon létre. Ezután hozzon létre egy Database Scoped Credential. A Database Scoped Credential Gen1, az egyszerű szolgáltatás hitelesítő adatai állítsa be az aad-ben tárolja. A Database Scoped Credential Gen2 a tárfiók-kulcsot kell használnia. 
 
 Data Lake Storage Gen1 csatlakozni kell **első** hozzon létre egy Azure Active Directory-alkalmazás, hozzon létre egy hozzáférési kulcsot és az alkalmazás hozzáférést biztosít a Data Lake Storage Gen1 erőforráshoz. Útmutatásért lásd: [hitelesítés az Azure Data Lake Storage Gen1 használó Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
@@ -56,19 +56,29 @@ Data Lake Storage Gen1 csatlakozni kell **első** hozzon létre egy Azure Active
 CREATE MASTER KEY;
 
 
--- B: Create a database scoped credential
+-- B (for Gen1): Create a database scoped credential
 -- IDENTITY: Pass the client id and OAuth 2.0 Token Endpoint taken from your Azure Active Directory Application
 -- SECRET: Provide your AAD Application Service Principal key.
 -- For more information on Create Database Scoped Credential: https://msdn.microsoft.com/library/mt270260.aspx
 
-CREATE DATABASE SCOPED CREDENTIAL ADLSG1Credential
+CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
     IDENTITY = '<client_id>@<OAuth_2.0_Token_EndPoint>',
     SECRET = '<key>'
 ;
 
--- It should look something like this:
-CREATE DATABASE SCOPED CREDENTIAL ADLSG1Credential
+-- B (for Gen2): Create a database scoped credential
+-- IDENTITY: Provide any string, it is not used for authentication to Azure storage.
+-- SECRET: Provide your Azure storage account key.
+
+CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
+WITH
+    IDENTITY = 'user',
+    SECRET = '<azure_storage_account_key>'
+;
+
+-- It should look something like this for Gen1:
+CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
     IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
     SECRET = 'BjdIlmtKp4Fpyh9hIvr8HJlUida/seM5kQ3EpLAmeDI='
@@ -79,21 +89,33 @@ WITH
 Ezzel [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) tárolja az adatok helyének parancsot. 
 
 ```sql
--- C: Create an external data source
--- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure Data Lake Storage Gen1.
+-- C (for Gen1): Create an external data source
+-- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure Data Lake Storage.
 -- LOCATION: Provide Data Lake Storage Gen1 account name and URI
 -- CREDENTIAL: Provide the credential created in the previous step.
 
-CREATE EXTERNAL DATA SOURCE AzureDataLakeStorageGen1
+CREATE EXTERNAL DATA SOURCE AzureDataLakeStorage
 WITH (
     TYPE = HADOOP,
     LOCATION = 'adl://<datalakestoregen1accountname>.azuredatalakestore.net',
-    CREDENTIAL = ADLSG1Credential
+    CREDENTIAL = ADLSCredential
+);
+
+-- C (for Gen2): Create an external data source
+-- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure Data Lake Storage.
+-- LOCATION: Provide Data Lake Storage Gen2 account name and URI
+-- CREDENTIAL: Provide the credential created in the previous step.
+
+CREATE EXTERNAL DATA SOURCE AzureDataLakeStorage
+WITH (
+    TYPE = HADOOP,
+    LOCATION='abfs://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfs endpoint
+    CREDENTIAL = ADLSCredential
 );
 ```
 
 ## <a name="configure-data-format"></a>Adatformátum konfigurálása
-Az adatok importálása a Data Lake Storage Gen1 adja meg a külső fájlformátumot kell. Ezt az objektumot határozza meg, hogyan a fájlok a Data Lake Storage Gen1 készültek.
+Az adatok importálása a Data Lake Storage adja meg a külső fájlformátumot kell. Ezt az objektumot határozza meg, hogyan a fájlok a Data Lake Storage készültek.
 A teljes listát, tekintse meg a T-SQL-dokumentációnk [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql)
 
 ```sql
@@ -119,7 +141,7 @@ Most, hogy megadta a forrás- és a fájl adatformátum, készen áll a külső 
 
 ```sql
 -- D: Create an External Table
--- LOCATION: Folder under the Data Lake Storage Gen1 root folder.
+-- LOCATION: Folder under the Data Lake Storage root folder.
 -- DATA_SOURCE: Specifies which Data Source Object to use.
 -- FILE_FORMAT: Specifies which File Format Object to use
 -- REJECT_TYPE: Specifies how you want to deal with rejected rows. Either Value or percentage of the total
@@ -134,7 +156,7 @@ CREATE EXTERNAL TABLE [dbo].[DimProduct_external] (
 WITH
 (
     LOCATION='/DimProduct/'
-,   DATA_SOURCE = AzureDataLakeStorageGen1
+,   DATA_SOURCE = AzureDataLakeStorage
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE
 ,   REJECT_VALUE = 0
@@ -154,7 +176,7 @@ A REJECT_TYPE és REJECT_VALUE beállítás lehetővé teszi, hogy meghatározza
 Data Lake Storage Gen1 szerepkör alapú hozzáférés-vezérlés (RBAC) használ az adatokhoz való hozzáférés vezérlésére. Ez azt jelenti, hogy az egyszerű szolgáltatás Olvasás engedéllyel rendelkezik a könyvtárak a helyre paraméterben meghatározott, és végső könyvtárat és fájlokat gyermekei. Ez lehetővé teszi a hitelesítéshez és az adatok betöltése a PolyBase. 
 
 ## <a name="load-the-data"></a>Az adatok betöltése
-A Data Lake Storage Gen1 használatra betölteni az adatokat a [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) utasítást. 
+Adatok betöltése a Data Lake Storage használatát az [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) utasítást. 
 
 A CTAS egy új táblát hoz létre, és feltölti azt egy kiválasztási utasítás eredményeivel. A CTAS határozza meg az új tábla, ugyanazokat az oszlopokat és adattípusokkal rendelkezik, mint a kiválasztási utasítás eredményei. Ha minden oszlop egy külső táblából választ, az új táblázat a külső tábla adattípusok és az oszlopok egy replikát.
 

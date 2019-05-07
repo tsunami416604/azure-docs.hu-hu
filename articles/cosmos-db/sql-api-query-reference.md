@@ -5,15 +5,15 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 05/06/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 22b03417495625ef70650a015530d6f56b32fd4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1d874b9c8f14b1489ab5e5b8bbdddaff0669165e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626884"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145194"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL nyelvi referencia 
 
@@ -31,7 +31,8 @@ Minden egyes lekérdezés SELECT záradékában és választható FROM áll és 
 SELECT <select_specification>   
     [ FROM <from_specification>]   
     [ WHERE <filter_condition> ]  
-    [ ORDER BY <sort_specification> ]  
+    [ ORDER BY <sort_specification> ] 
+    [ OFFSET <offset_amount> LIMIT <limit_amount>]
 ```  
   
  **Megjegyzések**  
@@ -42,6 +43,8 @@ SELECT <select_specification>
 -   [FROM záradékban](#bk_from_clause)    
 -   [WHERE záradék](#bk_where_clause)    
 -   [ORDER BY záradék](#bk_orderby_clause)  
+-   [ELTOLÁS korlát záradék](#bk_offsetlimit_clause)
+
   
 A SELECT utasítás záradékai kell következniük, ahogy fent látható. A választható záradékot bármelyike elhagyható. De amikor választható záradékot használják, azok kell megjelennie a helyes sorrendben.  
   
@@ -52,7 +55,8 @@ A rendelés feldolgozása szolgáló szerződéses klauzulák, amelyben a követ
 1.  [FROM záradékban](#bk_from_clause)  
 2.  [WHERE záradék](#bk_where_clause)  
 3.  [ORDER BY záradék](#bk_orderby_clause)  
-4.  [SELECT záradék](#bk_select_query)  
+4.  [SELECT záradék](#bk_select_query)
+5.  [ELTOLÁS korlát záradék](#bk_offsetlimit_clause)
 
 Vegye figyelembe, hogy ez eltér a megjelenítési sorrendjét a szintaxist. A rendezés van, hogy a feldolgozott záradék által bevezetett új szimbólumok láthatók, és későbbi feldolgozás záradékban használható. Például egy FROM záradékban megadott aliasok érhetők el, ha és a SELECT záradék.  
 
@@ -76,8 +80,8 @@ SELECT <select_specification>
 
 <select_specification> ::=   
       '*'   
-      | <object_property_list>   
-      | VALUE <scalar_expression> [[ AS ] value_alias]  
+      | [DISTINCT] <object_property_list>   
+      | [DISTINCT] VALUE <scalar_expression> [[ AS ] value_alias]  
   
 <object_property_list> ::=   
 { <scalar_expression> [ [ AS ] property_alias ] } [ ,...n ]  
@@ -101,7 +105,11 @@ SELECT <select_specification>
 - `VALUE`  
 
   Itt adhatja meg, hogy a JSON értéke legyen beolvasva a teljes JSON-objektum helyett. Ezzel ellentétben `<property_list>` nem wrap funkciót az előre jelzett érték egy objektumot.  
+ 
+- `DISTINCT`
   
+  Megadja, hogy ismétlődések tervezett tulajdonságai el kell távolítani.  
+
 - `<scalar_expression>`  
 
   A kifejezés a következő időpontban számítja értéket jelölő. Lásd: [skaláris kifejezések](#bk_scalar_expressions) című szakasz részletezi.  
@@ -341,23 +349,23 @@ WHERE <filter_condition>
 ```sql  
 ORDER BY <sort_specification>  
 <sort_specification> ::= <sort_expression> [, <sort_expression>]  
-<sort_expression> ::= <scalar_expression> [ASC | DESC]  
+<sort_expression> ::= {<scalar_expression> [ASC | DESC]} [ ,...n ]  
   
 ```  
-  
+
  **Argumentumok**  
   
 - `<sort_specification>`  
   
-   Megadja egy tulajdonságot vagy a lekérdezés eredményhalmazában rendezéshez használandó kifejezés. A rendezési oszlop-név vagy oszlopban alias adható meg.  
+   Megadja egy tulajdonságot vagy a lekérdezés eredményhalmazában rendezéshez használandó kifejezés. A rendezési oszlop neve vagy tulajdonság aliasként adható meg.  
   
-   Több rendezési oszlop adható meg. Nevének egyedinek kell lennie. Az ORDER BY záradékban szereplő oszlopok rendezése sorrendje határozza meg, hogy a szervezet az rendezett eredményhalmaz. Azt jelenti az eredményhalmaz az első tulajdonság szerint van rendezve, és ezután a rendezett lista van rendezve, a második tulajdonságot, és így tovább.  
+   Több tulajdonságok adhatók meg. A tulajdonság nevének egyedinek kell lennie. A feladatütemezés az ORDER BY záradékban rendezési tulajdonság határozza meg, hogy a szervezet az rendezett eredményhalmaz. Azt jelenti az eredményhalmaz az első tulajdonság szerint van rendezve, és ezután a rendezett lista van rendezve, a második tulajdonságot, és így tovább.  
   
-   Az ORDER BY záradékban hivatkozott oszlop nevét meg kell felelnie a kiválasztási listán vagy egy oszlop vagy egy oszlop definiálva a bármely kétértelműséget nélkül a FROM záradékban megadott táblában.  
+   Az ORDER BY záradékban hivatkozott tulajdonságneveket vagy egy tulajdonság a kiválasztási listán, vagy bármely kétértelműséget nélkül a FROM záradékban megadott gyűjtemény meghatározott tulajdonságot meg kell felelnie.  
   
 - `<sort_expression>`  
   
-   Megadja az egyetlen tulajdonságát vagy a lekérdezés eredményhalmazában rendezéshez használandó kifejezés.  
+   Itt adhatja meg, egy vagy több tulajdonságait, vagy a lekérdezés eredményhalmazában rendezéshez használandó kifejezés.  
   
 - `<scalar_expression>`  
   
@@ -369,8 +377,34 @@ ORDER BY <sort_specification>
   
   **Megjegyzések**  
   
-  Bár a lekérdezési szintaxis támogatja a több sorrend tulajdonságai, a Cosmos DB lekérdezési modul támogatja a rendezést, csak egyetlen tulajdonság, és csak elleni tulajdonság neve (nem számított tulajdonságokhoz). Rendezés is megköveteli, hogy az indexelési házirendet egy tulajdonság és a megadott típus, a maximális pontosság tartományindexszel tartalmazza-e. Tekintse meg a további részletekért indexelési házirend dokumentációját.  
+   Az ORDER BY záradék szükséges, hogy az indexelési házirendet rendezi a mezőket egy indexet. Az Azure Cosmos DB lekérdezési modul támogatja a rendezési tulajdonság nevét és nem számított tulajdonságokat ellen. Az Azure Cosmos DB támogatja a több ORDER BY tulajdonságot. Annak érdekében, hogy a lekérdezések futtatása több ORDER BY tulajdonsággal rendelkező, meg kell határozni egy [összetett index](index-policy.md#composite-indexes) rendezi a mező alapján.
+
+
+##  <a name=bk_offsetlimit_clause></a> ELTOLÁS korlát záradék
+
+Kihagyott elemek száma és a visszaadott elemek számát adja meg. Példák: [ELTOLÁS korlát záradék példák](how-to-sql-query.md#OffsetLimitClause)
   
+ **Syntax**  
+  
+```sql  
+OFFSET <offset_amount> LIMIT <limit_amount>
+```  
+  
+ **Argumentumok**  
+ 
+- `<offset_amount>`
+
+   Adja meg az egész számmal megadott elemek, amelyek a lekérdezés eredményeinek ki kell hagyni.
+
+
+- `<limit_amount>`
+  
+   Adja meg az elemek, amelyek tartalmaznia kell a lekérdezés eredményeit az egész számmal megadott
+
+  **Megjegyzések**  
+  
+  Az ELTOLÁS száma és a korlát száma is szükségesek a korlát ELTOLÁS záradékban. Ha egy nem kötelező `ORDER BY` záradék használata esetén az eredményhalmaz előállítása a skip rendezett értékek végrehajtásával. Ellenkező esetben a lekérdezés visszaadja az olyan rögzített értékek sorrendjét.
+
 ##  <a name="bk_scalar_expressions"></a> Skaláris kifejezések  
  Egy skaláris kifejezés szimbólumok és egyetlen értéket beszerzése kiértékelése operátorok kombinációja. Egyszerű kifejezések állandók, tulajdonság hivatkozik, tömb elem hivatkozásokat, alias hivatkozik, vagy lehet függvényhívások. Egyszerű kifejezések operátorok használatával összetett kifejezések egyesíthetők. Példák: [skaláris kifejezések példák](how-to-sql-query.md#scalar-expressions)
   
@@ -681,7 +715,8 @@ ORDER BY <sort_specification>
 |[Matematikai függvények](#bk_mathematical_functions)|A matematika függvényekkel végezhet a számítást, általában argumentumként szolgálnak, és a egy numerikus értéket adja vissza a bemeneti értékek alapján.|  
 |[Funkciók ellenőrzése típusa](#bk_type_checking_functions)|A típus ellenőrzése funkciók lehetővé teszik az SQL-lekérdezések belül egy kifejezés típusának ellenőrzése.|  
 |[Sztringfüggvények](#bk_string_functions)|A karakterlánc-függvények végrehajtania egy műveletet a bemeneti karakterlánc-érték, és a egy karakterlánc, numerikus vagy logikai értéket adja vissza.|  
-|[Tömb funkciók](#bk_array_functions)|A tömb függvények végrehajtania egy műveletet a egy tömb bemeneti érték és a visszaadott numerikus, a logikai vagy a tömb értéket.|  
+|[Tömb funkciók](#bk_array_functions)|A tömb függvények végrehajtania egy műveletet a egy tömb bemeneti érték és a visszaadott numerikus, a logikai vagy a tömb értéket.|
+|[Date és Time függvények](#bk_date_and_time_functions)|A date és time függvények lehetővé teszik az aktuális UTC-dátum és idő lekérése két formában; egy numerikus időbélyeget, amelynek értéke a Unix alapidőpont ezredmásodpercben vagy egy karakterlánc, amely megfelel az ISO 8601 formátumot.|
 |[Térbeli funkciók](#bk_spatial_functions)|A térbeli függvények végrehajtania egy műveletet a térbeli objektum bemeneti érték a, és a egy numerikus vagy logikai értéket adja vissza.|  
   
 ###  <a name="bk_mathematical_functions"></a> Matematikai függvények  
@@ -2363,13 +2398,13 @@ SELECT
     StringToArray('[1,2,3, "[4,5,6]",[7,8]]') AS a5
 ```
 
- Íme az eredményhalmaz.
+Íme az eredményhalmaz.
 
 ```
 [{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
 ```
 
- Érvénytelen bemenet egy példát a következő: 
+Érvénytelen bemenet egy példát a következő: 
    
  A tömbön belüli szimpla idézőjelek között nem érvényes JSON.
 Akkor is, ha a lekérdezés érvényes, azok fog nem elemezhető érvényes tömbökhöz. A tömb karakterláncon belüli karakterláncokat vagy escape-karakterrel "[\\"\\"]" vagy a környező ajánlatot egyetlen kell lennie. a(z) [""] ".
@@ -2379,13 +2414,13 @@ SELECT
     StringToArray("['5','6','7']")
 ```
 
- Íme az eredményhalmaz.
+Íme az eredményhalmaz.
 
 ```
 [{}]
 ```
 
- A következő példák érvénytelen bemenet.
+A következő példák érvénytelen bemenet.
    
  Az átadott kifejezés fog elemezhető, egy JSON-tömböt; a következő nem értékelik ki, írja be a tömb, és így a nem definiált visszaadása.
    
@@ -2398,7 +2433,7 @@ SELECT
     StringToArray(undefined)
 ```
 
- Íme az eredményhalmaz.
+Íme az eredményhalmaz.
 
 ```
 [{}]
@@ -2429,7 +2464,7 @@ StringToBoolean(<expr>)
  
  Az alábbi parancsok példák érvényes adatokkal.
 
- Elválasztó karakterek használata engedélyezett, csak előtt vagy után a "true"/ "false".
+Elválasztó karakterek használata engedélyezett, csak előtt vagy után a "true"/ "false".
 
 ```  
 SELECT 
@@ -2444,8 +2479,8 @@ SELECT
 [{"b1": true, "b2": false, "b3": false}]
 ```  
 
- Az alábbi példák a bemenet érvénytelen.
- 
+Az alábbi példák a bemenet érvénytelen.
+
  Logikai kis-és nagybetűket, és az összes kisbetűs karaktereket, azaz "true" és "false" kellett készülnie.
 
 ```  
@@ -2454,15 +2489,15 @@ SELECT
     StringToBoolean("False")
 ```  
 
- Íme az eredményhalmaz.  
+Íme az eredményhalmaz.  
   
 ```  
 [{}]
 ``` 
 
- Az átadott kifejezés fog elemezhető, egy logikai kifejezés; Írja be a logikai érték, és így a nem definiált vissza nem értékelik ki ezeket a bemeneteket.
+Az átadott kifejezés fog elemezhető, egy logikai kifejezés; Írja be a logikai érték, és így a nem definiált vissza nem értékelik ki ezeket a bemeneteket.
 
- ```  
+```  
 SELECT 
     StringToBoolean("null"),
     StringToBoolean(undefined),
@@ -2471,7 +2506,7 @@ SELECT
     StringToBoolean(true)
 ```  
 
- Íme az eredményhalmaz.  
+Íme az eredményhalmaz.  
   
 ```  
 [{}]
@@ -2500,8 +2535,8 @@ StringToNull(<expr>)
   
   Az alábbi példa bemutatja, hogy több különböző típusú StringToNull működését. 
 
- Az alábbi parancsok példák érvényes adatokkal.
- 
+Az alábbi parancsok példák érvényes adatokkal.
+
  Szóköz kizárólag előtt vagy után "null" használata engedélyezett.
 
 ```  
@@ -2517,9 +2552,9 @@ SELECT
 [{"n1": null, "n2": null, "n3": true}]
 ```  
 
- Az alábbi példák a bemenet érvénytelen.
+Az alábbi példák a bemenet érvénytelen.
 
- NULL megkülönbözteti a kis-és nagybetűket, és kell megírni, azaz "null" kisbetűs karakterek.
+NULL megkülönbözteti a kis-és nagybetűket, és kell megírni, azaz "null" kisbetűs karakterek.
 
 ```  
 SELECT    
@@ -2533,7 +2568,7 @@ SELECT
 [{}]
 ```  
 
- Az átadott kifejezés fog elemezhető; null kifejezésként Írja be a NULL értékű, és így a nem definiált vissza nem értékelik ki ezeket a bemeneteket.
+Az átadott kifejezés fog elemezhető; null kifejezésként Írja be a NULL értékű, és így a nem definiált vissza nem értékelik ki ezeket a bemeneteket.
 
 ```  
 SELECT    
@@ -2572,8 +2607,8 @@ StringToNumber(<expr>)
   
   Az alábbi példa bemutatja, hogy több különböző típusú StringToNumber működését. 
 
- Elválasztó karakterek használata engedélyezett, a szám csak előtt vagy után.
- 
+Elválasztó karakterek használata engedélyezett, a szám csak előtt vagy után.
+
 ```  
 SELECT 
     StringToNumber("1.000000") AS num1, 
@@ -2588,8 +2623,8 @@ SELECT
 {{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
 ```  
 
- A JSON érvényes számnak kell lennie vagy kell egész vagy lebegőpontos szám.
- 
+A JSON érvényes számnak kell lennie vagy kell egész vagy lebegőpontos szám.
+
 ```  
 SELECT   
     StringToNumber("0xF")
@@ -2601,7 +2636,7 @@ SELECT
 {{}}
 ```  
 
- Az átadott kifejezés fog elemezhető szám kifejezésként; Írja be a szám és így nem definiált nem értékelik ki ezeket a bemeneteket. 
+Az átadott kifejezés fog elemezhető szám kifejezésként; Írja be a szám és így nem definiált nem értékelik ki ezeket a bemeneteket. 
 
 ```  
 SELECT 
@@ -2643,7 +2678,7 @@ StringToObject(<expr>)
   Az alábbi példa bemutatja, hogy több különböző típusú StringToObject működését. 
   
  Az alábbi parancsok példák érvényes adatokkal.
- 
+
 ``` 
 SELECT 
     StringToObject("{}") AS obj1, 
@@ -2652,7 +2687,7 @@ SELECT
     StringToObject("{\"C\":[{\"c1\":[5,6,7]},{\"c2\":8},{\"c3\":9}]}") AS obj4
 ``` 
 
- Íme az eredményhalmaz.
+Íme az eredményhalmaz.
 
 ```
 [{"obj1": {}, 
@@ -2660,40 +2695,40 @@ SELECT
   "obj3": {"B":[{"b1":[5,6,7]},{"b2":8},{"b3":9}]},
   "obj4": {"C":[{"c1":[5,6,7]},{"c2":8},{"c3":9}]}}]
 ```
- 
+
  Az alábbi példák a bemenet érvénytelen.
 Akkor is, ha a lekérdezés érvényes, azok fog nem elemezhető érvényes objektumra. Karakterláncok a karakterláncot, objektumot vagy escape-karakterrel "{\\" egy\\":\\" str\\"}", vagy a környező ajánlatot egyetlen kell lennie. a(z) "{"a":"str"}".
 
- A tulajdonságnevek körülvevő szimpla idézőjelek között nem érvényes JSON.
+A tulajdonságnevek körülvevő szimpla idézőjelek között nem érvényes JSON.
 
 ``` 
 SELECT 
     StringToObject("{'a':[1,2,3]}")
 ```
 
- Íme az eredményhalmaz.
+Íme az eredményhalmaz.
 
 ```  
 [{}]
 ```  
 
- Körülvevő idézőjeleket tulajdonság nevében a rendszer nem érvényes JSON.
+Körülvevő idézőjeleket tulajdonság nevében a rendszer nem érvényes JSON.
 
 ``` 
 SELECT 
     StringToObject("{a:[1,2,3]}")
 ```
 
- Íme az eredményhalmaz.
+Íme az eredményhalmaz.
 
 ```  
 [{}]
 ``` 
 
- Az alábbi példák a bemenet érvénytelen.
- 
+Az alábbi példák a bemenet érvénytelen.
+
  Az átadott kifejezés fog elemezhető JSON-objektumként; Írja be az objektum, és így a nem definiált vissza nem értékelik ki ezeket a bemeneteket.
- 
+
 ``` 
 SELECT 
     StringToObject("}"),
@@ -2798,20 +2833,20 @@ CONCAT(ToString(p.Weight), p.WeightUnits)
 FROM p in c.Products 
 ```  
 
- Íme az eredményhalmaz.  
+Íme az eredményhalmaz.  
   
 ```  
 [{"$1":"4lb" },
- {"$1":"32kg"},
- {"$1":"400g" },
- {"$1":"8999mg" }]
+{"$1":"32kg"},
+{"$1":"400g" },
+{"$1":"8999mg" }]
 
 ```  
 A következő bemeneti megadott.
 ```
 {"id":"08259","description":"Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX","nutrients":[{"id":"305","description":"Caffeine","units":"mg"},{"id":"306","description":"Cholesterol, HDL","nutritionValue":30,"units":"mg"},{"id":"307","description":"Sodium, NA","nutritionValue":612,"units":"mg"},{"id":"308","description":"Protein, ABP","nutritionValue":60,"units":"mg"},{"id":"309","description":"Zinc, ZN","nutritionValue":null,"units":"mg"}]}
 ```
- Az alábbi példa bemutatja, hogyan használható ToString más karakterlánc-függvények, például cserélje le.   
+Az alábbi példa bemutatja, hogyan használható ToString más karakterlánc-függvények, például cserélje le.   
 ```
 SELECT 
     n.id AS nutrientID,
@@ -2819,14 +2854,14 @@ SELECT
 FROM food 
 JOIN n IN food.nutrients
 ```
- Íme az eredményhalmaz.  
+Íme az eredményhalmaz.  
  ```
 [{"nutrientID":"305"},
 {"nutrientID":"306","nutritionVal":"30"},
 {"nutrientID":"307","nutritionVal":"912"},
 {"nutrientID":"308","nutritionVal":"90"},
 {"nutrientID":"309","nutritionVal":"null"}]
- ``` 
+``` 
  
 ####  <a name="bk_trim"></a> TRIM  
  Egy karakterlánc-kifejezés adja vissza, miután eltávolítja a kezdő és záró üres.  
@@ -2937,7 +2972,7 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"]) AS arrayConcat
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
 Jelzi, hogy a tömb tartalmazza-e a megadott érték logikai érték beolvasása. Egy logikai kifejezés belül a parancs használatával ellenőrizheti az objektum teljes vagy részleges egyezést. 
 
- **Syntax**  
+**Syntax**  
   
 ```  
 ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])  
@@ -2977,7 +3012,7 @@ SELECT
 [{"b1": true, "b2": false}]  
 ```  
 
- Az alábbi példa egy részleges egyezéssel a JSON használatával ARRAY_CONTAINS tömbben ellenőrzése.  
+Az alábbi példa egy részleges egyezéssel a JSON használatával ARRAY_CONTAINS tömbben ellenőrzése.  
   
 ```  
 SELECT  
@@ -3085,7 +3120,100 @@ SELECT
            "s7": [] 
 }]  
 ```  
- 
+
+###  <a name="bk_date_and_time_functions"></a> Date és Time függvények
+ A következő skaláris függvények lehetővé teszik az aktuális UTC-dátum és idő lekérése két formában; egy numerikus időbélyeget, amelynek értéke a Unix alapidőpont ezredmásodpercben vagy egy karakterlánc, amely megfelel az ISO 8601 formátumot. 
+
+|||
+|-|-|
+|[GetCurrentDateTime](#bk_get_current_date_time)|[GetCurrentTimestamp](#bk_get_current_timestamp)||
+
+####  <a name="bk_get_current_date_time"></a> GetCurrentDateTime
+ A jelenlegi UTC szerinti dátuma és ideje ISO 8601 karakterláncként adja vissza.
+  
+ **Syntax**
+  
+```
+GetCurrentDateTime ()
+```
+  
+  **Návratové Typy**
+  
+  Az aktuális UTC dátum és idő ISO 8601 karakterlánc értékét adja vissza. 
+
+  Ez a következő formátumban: éééé-hh-DDThh:mm:ss.sssZ fejezzük ahol:
+  
+  |||
+  |-|-|
+  |ÉÉÉÉ|négyjegyű év|
+  |MM|kétjegyű hónappal (01 = January, stb.)|
+  |DD|hónap (01. és 31) kétjegyű napja|
+  |T|kezdő idő elemek signifier|
+  |hh|két számjegyű óra (00 és 23 közötti)|
+  |mm|két számjegyet perc (00 és 59 közötti)|
+  |ss|két számjegyet másodperc (00 és 59 közötti)|
+  |.sss|tizedes törtek másodperc három számjegye|
+  |Z|UTC (egyezményes világidő) várt||
+  
+  Az ISO 8601 formátumú további részletekért lásd: [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
+
+  **Megjegyzések**
+
+  GetCurrentDateTime determinált függvény. 
+  
+  A visszaadott eredmény az UTC (egyezményes világidő).
+
+  **Példák**  
+  
+  Az alábbi példa bemutatja, hogyan beolvasni a jelenlegi UTC szerinti dátuma ideje a GetCurrentDateTime beépített függvény használatával.
+  
+```  
+SELECT GetCurrentDateTime() AS currentUtcDateTime
+```  
+  
+ Íme egy példa eredményhalmaz.
+  
+```  
+[{
+  "currentUtcDateTime": "2019-05-03T20:36:17.784Z"
+}]  
+```  
+
+####  <a name="bk_get_current_timestamp"></a> GetCurrentTimestamp
+ 00:00:00 csütörtök, 1. január 1970 óta eltelt idő (MS) számát adja vissza. 
+  
+ **Syntax**  
+  
+```  
+GetCurrentTimestamp ()  
+```  
+  
+  **Návratové Typy**  
+  
+  Indítás óta eltelt idő óta az Unix alapidőpont pl. 00:00:00 csütörtök, 1. január 1970 óta eltelt idő milliszekundumban megadva aktuális száma számértéket ad vissza.
+
+  **Megjegyzések**
+
+  GetCurrentTimestamp determinált függvény. 
+  
+  A visszaadott eredmény az UTC (egyezményes világidő).
+
+  **Példák**  
+  
+  Az alábbi példa bemutatja, hogyan lekérni az aktuális timestamp a GetCurrentTimestamp beépített függvény használatával.
+  
+```  
+SELECT GetCurrentTimestamp() AS currentUtcTimestamp
+```  
+  
+ Íme egy példa eredményhalmaz.
+  
+```  
+[{
+  "currentUtcTimestamp": 1556916469065
+}]  
+```  
+
 ###  <a name="bk_spatial_functions"></a> Térbeli funkciók  
  A következő skaláris függvények végrehajtania egy műveletet a térbeli objektum bemeneti érték a, és a egy numerikus vagy logikai értéket adja vissza.  
   
@@ -3292,7 +3420,7 @@ SELECT ST_ISVALIDDETAILED({
   }  
 }]  
 ```  
-  
+ 
 ## <a name="next-steps"></a>További lépések  
 
 - [SQL-szintaxis és a Cosmos DB SQL-lekérdezés](how-to-sql-query.md)

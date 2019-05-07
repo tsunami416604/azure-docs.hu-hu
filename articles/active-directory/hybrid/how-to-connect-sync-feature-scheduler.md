@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d5f4dec48d81b032de293bb6c68ad62ac48d475
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60347878"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65139294"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Az Azure AD Connect szinkronizálása: Scheduler
-Ez a témakör ismerteti a beépített scheduler az Azure AD Connect-szinkronizálással (más néven) a szinkronizálási motor).
+Ez a témakör ismerteti a beépített scheduler az Azure AD Connect-szinkronizálással (szinkronizálási motor).
 
 Ez a funkció a build 1.1.105.0 (kiadás dátuma: 2016. február) jelent meg.
 
@@ -92,29 +92,62 @@ Amikor végzett a módosításokat, ne felejtse el engedélyezni az ütemező sz
 ## <a name="start-the-scheduler"></a>A Feladatütemező indítása
 Az ütemező 30 percenként futtatása alapértelmezés szerint ki van. Bizonyos esetekben érdemes lehet ütemezett ciklusok között egy szinkronizálási ciklus futtatására, vagy egy más típusú futtatnia kell.
 
-**A különbözeti szinkronizálási ciklus**  
+### <a name="delta-sync-cycle"></a>A különbözeti szinkronizálási ciklus
 A különbözeti szinkronizálási ciklus a következő lépésekből áll:
 
-* Különbözeti importálás az összes összekötő
-* Különbözeti szinkronizálás az összes összekötő
-* Exportálás az összes összekötő
 
-Annak oka az lehet, hogy rendelkezik-e az sürgős megváltoztatására, amely szinkronizálva kell lenniük, azonnal, ezért egy ciklus manuálisan futtatnia kell. Ha manuálisan futtatnia kell egy ciklus, majd a PowerShell futási `Start-ADSyncSyncCycle -PolicyType Delta`.
+- Különbözeti importálás az összes összekötő
+- Különbözeti szinkronizálás az összes összekötő
+- Exportálás az összes összekötő
 
-**Teljes szinkronizálási ciklus**  
-Ha a következő konfigurációs módosításokat végzett, egy teljes szinkronizálási ciklust (más néven futtatásához szükséges Kezdeti):
+### <a name="full-sync-cycle"></a>Teljes szinkronizálási ciklus
+Egy teljes szinkronizálási ciklust a következő lépésekből áll:
 
-* További objektumok, vagy lehet importálni az forráskönyvtárat attribútumok hozzáadása
-* A szinkronizálási szabályokon végrehajtott módosítások
-* Módosított [szűrés](how-to-connect-sync-configure-filtering.md) így objektumok különböző számú tartalmaznia kell
+- Teljes importálás az összes összekötő
+- Teljes szinkronizálás az összes összekötő
+- Exportálás az összes összekötő
 
-Ha ezek a változások történtek, majd szüksége egy teljes szinkronizálási ciklus futtatására, így a szinkronizálási motor forrásterületekről összesíteni szeretnénk a összekötőterek lehetőséget. Egy teljes szinkronizálási ciklust a következő lépésekből áll:
+Annak oka az lehet, hogy rendelkezik-e az sürgős megváltoztatására, amely szinkronizálva kell lenniük, azonnal, ezért egy ciklus manuálisan futtatnia kell. 
 
-* Teljes importálás az összes összekötő
-* Teljes szinkronizálás az összes összekötő
-* Exportálás az összes összekötő
+Ha manuálisan futtatnia kell egy szinkronizálási ciklust, majd a PowerShell futási `Start-ADSyncSyncCycle -PolicyType Delta`.
 
-Ehhez futtassa a következő teljes szinkronizálási ciklusának kezdeményezésére, `Start-ADSyncSyncCycle -PolicyType Initial` PowerShell parancssorból. Ez a parancs elindítja egy teljes szinkronizálási ciklust.
+Ehhez futtassa a következő teljes szinkronizálási ciklusának kezdeményezésére, `Start-ADSyncSyncCycle -PolicyType Initial` PowerShell parancssorból.   
+
+Egy teljes szinkronizálási ciklust futó nagyon időigényes lehet, olvassa el a következő szakaszban olvasható a folyamat optimalizálása.
+
+### <a name="sync-steps-required-for-different-configuration-changes"></a>Szinkronizálási teendők szükséges konfigurációs módosítások
+Különböző konfigurációs módosítások különböző szinkronizálási lépéseket annak érdekében, hogy a megfelelő módosítások az összes objektum szükséges.
+
+- További objektumok vagy attribútumok importálandó forráskönyvtárat (szinkronizálási szabályok hozzáadása vagy módosítása) szerint hozzáadva
+    - Teljes importálást van szükség az összekötő a forráskönyvtár keresése
+- A szinkronizálási szabályokon végrehajtott módosítások
+    - A teljes szinkronizálás van szükség az összekötő a módosított szinkronizálási szabályok
+- Módosított [szűrés](how-to-connect-sync-configure-filtering.md) így objektumok különböző számú tartalmaznia kell
+    - Teljes importálást van szükség az összekötő minden AD-összekötő használata, a szinkronizálási motor már importált attribútumokon alapuló attribútum szerinti szűrés
+
+### <a name="customizing-a-sync-cycle-run-the-right-mix-of-delta-and-full-sync-steps"></a>Futtassa a változások és a teljes szinkronizálás lépéseket megfelelő vegyesen szinkronizálási ciklust testreszabása
+Ne futtasson egy teljes szinkronizálási ciklust a jelölheti meg az alábbi parancsmagokkal egy teljes lépés futtatásához egyedi összekötők.
+
+`Set-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid> -FullImportRequired $true`
+
+`Set-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid> -FullSyncRequired $true`
+
+`Get-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid>` 
+
+Példa:  Ha módosította a szinkronizálási szabályok összekötő "AD-erdőhöz A" nem importálható, hogy új attribútumokat igénylő futtatná a következő parancsmagok futtatásához a különbözeti szinkronizálási ciklus melyik is tette a teljes szinkronizálás lépésnél az összekötőhöz.
+
+`Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullSyncRequired $true`
+
+`Start-ADSyncSyncCycle -PolicyType Delta`
+
+Példa:  A módosítások a szinkronizálási szabályokon "AD-erdőhöz A"-összekötőhöz, hogy most már van szükségük a importálható, új attribútum futtatná a következő parancsmagok futtatásához egy különbözeti szinkronizálási ciklus, amely egy teljes importálást, a teljes szinkronizálás lépés annak is tette.
+
+`Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullImportRequired $true`
+
+`Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullSyncRequired $true`
+
+`Start-ADSyncSyncCycle -PolicyType Delta`
+
 
 ## <a name="stop-the-scheduler"></a>A Feladatütemező leállítása
 Ha az ütemező jelenleg fut egy szinkronizálási ciklust, szüksége lehet állítsa le. Például ha elindítja a telepítési varázslót, és ez a hibaüzenet:

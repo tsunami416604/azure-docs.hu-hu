@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/19/2018
+ms.date: 04/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f13dd1282a6384a0acca4c6936fe7900a051795f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b35977061b7e5806d15f4b7b0087fcafa4f291ef
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60497394"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141159"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Csatlakozás helyszíni adatforrásokhoz a helyszíni adatátjáróval
 A helyszíni adatátjáró a helyszíni adatforrások és a felhőben az Azure Analysis Services-kiszolgálók közötti biztonságos adatátvitelt biztosít. Mellett használata több Azure Analysis Services-kiszolgáló ugyanabban a régióban, az átjáró legújabb verzióját is használható az Azure Logic Apps, a Power bi-ban, a Power Apps és a Microsoft Flow. Egyetlen átjáró ugyanabban az előfizetésben és azonos régióban több szolgáltatást is társíthat. 
@@ -176,30 +176,9 @@ Naplófájlok fontos tényezőként hibaelhárítása során.
 
 `C:\Users\<username>\AppData\Local\Microsoft\On-premises data gateway\GatewayConfigurator.log`
 
-
 #### <a name="event-logs"></a>Eseménynaplók
 
 Az adatkezelési átjáró, a PowerBIGateway naplókat alatt található **alkalmazás- és szolgáltatásnaplók**.
-
-
-## <a name="telemetry"></a>Telemetria
-Telemetria használható figyeléséhez és hibaelhárításához. Alapértelmezés szerint
-
-**Telemetria bekapcsolása**
-
-1.  Ellenőrizze a On-premises data gateway ügyfélkönyvtár azon a számítógépen. Jellemzően a **%systemdrive%\Program Files\On-premises data gateway**. Vagy nyissa meg a szolgáltatások konzolt, és ellenőrizze a végrehajtható fájl elérési útja: A helyszíni adatátjáró szolgáltatás tulajdonsága.
-2.  Az ügyfél címtárból Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config fájl. Módosítsa a SendTelemetry beállítást igaz értékre.
-        
-    ```
-        <setting name="SendTelemetry" serializeAs="String">
-                    <value>true</value>
-        </setting>
-    ```
-
-3.  A módosítások mentéséhez és a Windows-szolgáltatást: A helyszíni adatátjáró szolgáltatás.
-
-
-
 
 ## <a name="next-steps"></a>További lépések
 * [Telepítse és konfigurálja a helyszíni adatátjáró](analysis-services-gateway-install.md).   

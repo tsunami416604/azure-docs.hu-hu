@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 299dd61055503f0b5a11cbe97e137e4760edadda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85f8643a0936209c8f280498df92555a7b40c533
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60463699"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149940"
 ---
 # <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>Oktatóanyag: A QnA Maker Portalról Tudásbázis létrehozása
 
@@ -68,7 +68,7 @@ Ehhez az oktatóanyaghoz egy meglévő [QnA Maker-szolgáltatásra](../How-To/se
     |--|--|--|
     |URL-cím|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |A megadott URL-címen található GYIK tartalma kérdés-válasz formátumú. A QnA Maker ebből a formátumból tudja kinyerni a kérdéseket és az azokhoz tartozó válaszokat.|
     |Fájl |_ebben az oktatóanyagban nincs használatban_|Itt tölthetők fel a kérdéseket és válaszokat tartalmazó fájlok. |
-    |Chit-chat personality (Csevegő személyisége)|The friend (A barát)|Ezzel barátságos, laza stílust kölcsönözhet a gyakori kérdéseknek és válaszoknak. A kérdéseket és válaszokat később szerkesztheti. |
+    |Chit-chat personality (Csevegő személyisége)|Rövid|Ezzel barátságos, laza stílust kölcsönözhet a gyakori kérdéseknek és válaszoknak. A kérdéseket és válaszokat később szerkesztheti. |
 
     ![A tudásbázis létrehozásának 4. lépése](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
 
@@ -84,9 +84,9 @@ Ehhez az oktatóanyaghoz egy meglévő [QnA Maker-szolgáltatásra](../How-To/se
 
 1. A táblázat alján válassza ki a kérdések és válaszok utolsó oldalát. Az oldalon a Chit-chat personality (Csevegő személyisége) kérdései és válaszai szerepelnek. 
 
-1. Kérdések és válaszok listáját fölötti eszköztárból a metaadatok ikonnal. A metaadat-címkéket az egyes kérdés és válasz tartalmazza. A csevegési Chit kérdése van a **Szerkesztői: chit csevegési** metaadatok már be van állítva. Ezeket a metaadatokat az ügyfélalkalmazás és a kiválasztott választ küld vissza. Az ügyfélalkalmazás egy csevegőrobot, például a szűrt metaadat segítségével határozza meg, további feldolgozási vagy a felhasználói interakció.
+1. Kérdések és válaszok az eszközlista feletti eszköztárán válassza a **beállítások megtekintéséhez** ikonra, majd válassza ki **megjelenítése metaadatok**. A metaadat-címkéket az egyes kérdés és válasz tartalmazza. A csevegési Chit kérdése van a **Szerkesztői: chit csevegési** metaadatok már be van állítva. Ezeket a metaadatokat az ügyfélalkalmazás és a kiválasztott választ küld vissza. Az ügyfélalkalmazás egy csevegőrobot, például a szűrt metaadat segítségével határozza meg, további feldolgozási vagy a felhasználói interakció.
 
-    ![Metaadat-címkéket megtekintése](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
+    ![! [Nézet metaadat-címkéket] (.. / media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png#lightbox)
 
 1. A felső menüsávon válassza a **Save and train** (Mentés és betanítás) elemet.
 

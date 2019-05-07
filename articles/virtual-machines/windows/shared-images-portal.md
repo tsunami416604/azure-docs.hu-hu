@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/25/2019
+ms.date: 04/29/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: a89cbe4a9c042b0cc7dac49c9153c8ce283ede55
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 50714f3fe6d30b4b93a0b42383b6f4634c86eafa
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64927702"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148055"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Hozzon létre egy megosztott lemezkép-katalógus az Azure portal használatával
 
@@ -33,7 +33,7 @@ A katalógus által biztosított teljes szerepköralapú hozzáférés-vezérlé
 
 A megosztott Képkatalógus funkció több erőforrástípusok rendelkezik. A Microsoft fog használatával vagy ezek ebben a cikkben létrehozásához:
 
-| Erőforrás | Leírás|
+| Resource | Leírás|
 |----------|------------|
 | **Felügyelt rendszerkép** | Ez a alapvető-önmagában, vagy létrehozásához használt lemezkép egy **lemezkép verziója** egy rendszerkép-katalógusában. Felügyelt lemezképek általánosított virtuális gépek jönnek létre. Egy felügyelt rendszerképet egy speciális típusú virtuális Merevlemezt, amely használható, hogy több virtuális gép, és most már használható létrehozásához megosztott kép verzió. |
 | **Lemezkép-katalógusában** | Az Azure piactéren, például egy **lemezkép-katalógusában** egy adattár a kezelése és megosztása a rendszerképeket, de Ön szabályozza, ki férhet. |

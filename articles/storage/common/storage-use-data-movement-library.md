@@ -2,19 +2,20 @@
 title: A Microsoft Azure Storage adatátviteli könyvtár adatátvitel |} A Microsoft Docs
 description: Az adatátviteli kódtára segítségével áthelyezi vagy másolhat blob és a fájl tartalmát a. Adatok másolása az Azure Storage a helyi fájlokból vagy adatmásolás belül vagy tárfiókok között. Egyszerűen migrálhatja az adatokat az Azure Storage.
 services: storage
-author: seguler
+author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/27/2017
-ms.author: seguler
+ms.author: tamram
+ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 0641a097761530285c2dd9aa176ddd8c2c159001
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 40a1356c9a7300a44087efdd1ab4762826da5a3f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125594"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148998"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Adatok áthelyezése az a Microsoft Azure Storage adatátviteli könyvtár
 

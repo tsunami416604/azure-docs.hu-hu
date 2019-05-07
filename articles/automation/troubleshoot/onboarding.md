@@ -8,12 +8,12 @@ ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: eaafee304f606ae4d511a6cea1824c26db838635
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 16a03840f6bbf44853cf01e50189a194672d153e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62119129"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145152"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Hibák elhárítása során megoldások bevezetése
 
@@ -78,6 +78,36 @@ A megoldás sikeresen üzembe kell figyelembe venni a jelzett szabályzat módos
   * A készlet indítják az erőforrások az adott házirendnek megtagadásához lett konfigurálva.
 
 Ellenőrizze az Azure Portal jobb felső sarokban az értesítéseket, vagy keresse meg az erőforráscsoportot, amely tartalmazza az automation-fiókot, és válassza **központi telepítések** alatt **beállítások** megtekintéséhez a sikertelen a központi telepítés. További információ az Azure Policy látogasson el: [Az Azure Policy áttekintése](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
+
+### <a name="unlink"></a>Forgatókönyv: A munkaterület leválasztása közben hibák
+
+#### <a name="issue"></a>Probléma
+
+A munkaterület leválasztása közben a következő hibaüzenetet kapja:
+
+```error
+The link cannot be updated or deleted because it is linked to Update Management and/or ChangeTracking Solutions.
+```
+
+#### <a name="cause"></a>Ok
+
+Ez a hiba akkor fordul elő, ha továbbra sem tud megoldások aktív a Log Analytics-munkaterület, amelyek az Automation-fiók és a Log Analytics munkaterület kapcsolható függenek.
+
+### <a name="resolution"></a>Megoldás:
+
+A probléma megoldásához szüksége lesz a következő megoldások eltávolítása a munkaterületről, ha használja őket:
+
+* Frissítéskezelés
+* Változások követése
+* Virtuális gépek indítása és leállítása munkaidőn kívül
+
+Miután eltávolítja a megoldások megszüntetheti a munkaterülethez. Fontos, bármely meglévő összetevőkkel, az ezen megoldások, valamint a munkaterületet és Automation-fiók karbantartása.  
+
+* Frissítéskezelés
+  * Frissítéstelepítések (ütemezés) eltávolítása az Automation-fiók
+* Virtuális gépek indítása és leállítása munkaidőn kívül
+  * Távolítsa el a megoldás-összetevők bármely zárolását az Automation-fiók alatt **beállítások** > **zárolások**.
+  * A további lépéseket, távolítsa el a virtuális gépek indítása/leállítása munkaidőn kívül megoldás megtekintéséhez [távolítsa el a virtuális gép indítása és leállítása munkaidőn kívül megoldás](../automation-solution-vm-management.md##remove-the-solution).
 
 ## <a name="mma-extension-failures"></a>Az MMA-bővítményekkel kapcsolatos hibák
 

@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 5d4374b329049e2e55966a28567c5232be77abda
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c7d5d9421ec89f1d75723d3538ee9a73e56dc6a3
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027067"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143025"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Telepítse és futtassa az űrlap felismerő tárolók
 Űrlap felismerő gépi tanulási technológia azonosíthatja és kulcs-érték párok és táblák kinyerése űrlapok vonatkozik. Ez értékeket és hozzájuk táblabejegyzéseket társítja, és majd megjeleníti a strukturált adatok, amely tartalmazza a kapcsolatokat az eredeti fájl. Az egyéni űrlap felismerő modell annak érdekében, hogy csökkenthető, és könnyedén integrálhatja a munkafolyamat automation vagy más alkalmazásban egy egyszerű REST API használatával hívható meg. Csak öt dokumentumok (vagy egy üres képernyő) szükséges, így gyorsan, pontos eredményeket kaphat és fenntarthatja az adott tartalomra, nehéz kézi beavatkozás vagy kiterjedt data science szakértelem nélkül. Adatok címkézési vagy adatok jegyzet nem igényel.
@@ -29,12 +29,12 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Űrlap felismerő tárolók használata előtt a következő előfeltételeknek kell megfelelnie:
 
-|Szükséges|Cél|
+|Kötelező|Cél|
 |--|--|
 |Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.|
 |Azure CLI| Telepítenie kell a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a gazdagépen.|
-|Számítógépes Látástechnológiai API-erőforrás| Annak érdekében, hogy feldolgozni a beolvasott dokumentumokat és képeket, egy **számítógépes Látástechnológiai erőforrás** megadása kötelező. Elérheti a **szöveg felismerése** funkció vagy Azure-erőforrásként (REST API vagy SDK-t), vagy pedig egy `cognitive-services-recognize-text` tároló. A szokásos számlázási díjak érvényesek. <br><br>Át kell adnia a kulcs és a számlázási végpont az adott Computer Vision-erőforrás (Azure-felhőben vagy a Cognitive Services-tároló). Használja ezt a kulcsot, és a számlázási végpont {COMPUTER_VISION_API_KEY} és {COMPUTER_VISION_BILLING_ENDPOINT_URI}.<br><br> Ha használja a  **`cognitive-services-recognize-text` tároló**, győződjön meg arról, hogy:<br><br>* A Computer Vision kulcsa az űrlap felismerő tároló a Computer Vision megadott kulcs `docker run` parancsot a `cognitive-services-recognize-text` tároló.<br>* A számlázási végpont el a tároló végpontja, például `https://localhost:5000`. A Computer Vision és a képernyő felismerő tárolók használata együtt, ugyanarra a gazdagépre, ha azok nem is indítható el az alapértelmezett porton, `5000`.  |  
+|Számítógépes Látástechnológiai API-erőforrás| Annak érdekében, hogy feldolgozni a beolvasott dokumentumokat és képeket, egy **számítógépes Látástechnológiai erőforrás** megadása kötelező. Elérheti a **szöveg felismerése** funkció vagy Azure-erőforrásként (REST API vagy SDK-t), vagy pedig egy `cognitive-services-recognize-text` [tároló](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull). A szokásos számlázási díjak érvényesek. <br><br>Át kell adnia a kulcs és a számlázási végpont az adott Computer Vision-erőforrás (Azure-felhőben vagy a Cognitive Services-tároló). Használja ezt a kulcsot, és a számlázási végpont {COMPUTER_VISION_API_KEY} és {COMPUTER_VISION_BILLING_ENDPOINT_URI}.<br><br> Ha használja a  **`cognitive-services-recognize-text` tároló**, győződjön meg arról, hogy:<br><br>* A Computer Vision kulcsa az űrlap felismerő tároló a Computer Vision megadott kulcs `docker run` parancsot a `cognitive-services-recognize-text` tároló.<br>* A számlázási végpont el a tároló végpontja, például `https://localhost:5000`. A Computer Vision és a képernyő felismerő tárolók használata együtt, ugyanarra a gazdagépre, ha azok nem is indítható el az alapértelmezett porton, `5000`.  |  
 |Űrlap felismerő erőforrás |Ezek a tárolók használatához rendelkeznie kell:<br><br>A _űrlap felismerő_ Azure-erőforráshoz tartozó számlázási kulcs és számlázási végpont URI azonosítója. Mindkét értéket érhetők el az Azure Portalon **űrlap felismerő** áttekintése és a kulcsok lapok és a szükséges a tárolót.<br><br>**{BILLING_KEY}** : erőforrás-kulcs<br><br>**{BILLING_ENDPOINT_URI}** : végpont URI-példa: `https://westus.api.cognitive.microsoft.com/forms/v1.0`| 
 
 ## <a name="request-access-to-the-container-registry"></a>A tároló-beállításjegyzék hozzáférés kérése
@@ -65,13 +65,19 @@ Core és a memória felel meg a `--cpus` és `--memory` beállítások, amelyek 
 > [!Note]
 > A minimális és ajánlott értékek minden korlátokat Docker alapulnak, és *nem* a fogadó számítógép-erőforrásokat.
 
-## <a name="get-the-container-image-with-docker-pull"></a>A tárolórendszerkép beolvasása `docker pull`
+## <a name="get-the-container-image-with-docker-pull-command"></a>A tároló rendszerképét a docker pull paranccsal beolvasása
 
 Űrlap felismerő tárolórendszerképeket érhetők el.
 
 | Tároló | Adattár |
 |-----------|------------|
 | cognitive-services-form-recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+
+Ha szeretne használni a `cognitive-services-recognize-text` [tároló](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull), az űrlap felismerő szolgáltatás helyett ellenőrizze, hogy használja a `docker pull` parancsot a helyes tároló neve: 
+
+```
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
+```
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 

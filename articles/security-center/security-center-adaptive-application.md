@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 05/02/2019
 ms.author: monhaber
-ms.openlocfilehash: c4b2ed1269ef669def2b6f2036d34a40fb181c5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 581db3ebe3ce1cad5c8db3702af179e141f334b4
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60910464"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143465"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptív alkalmazásvezérlők az Azure Security Centerben
 Az útmutató azt ismerteti, hogyan konfigurálható az alkalmazásvezérlés az Azure Security Centerben.
@@ -154,6 +154,22 @@ A lista a következőket tartalmazza:
 
 Az Azure Security Center lehetővé teszi egy alkalmazás-engedélyezési házirend nem ajánlott azon virtuálisgép-csoportok, valamint adja meg. Ugyanezek az elvek kövesse korábban leírt, ezeket a csoportokat, valamint alkalmazás-engedélyezési házirend konfigurálása.
 
+## <a name="move-a-vm-from-one-group-to-another"></a>Egy virtuális gép áthelyezése egy másik
+
+ Ha egy csoportot a virtuális gép áthelyezése egy másik, a alkalmazni Alkalmazásvezérlési szabályzat változik, a csoport beállításait, amikor áthelyezték azt. Egy nem konfigurált csoporthoz, ami minden korábban alkalmazott a VM Alkalmazásvezérlési szabályzat eltávolítása a beállított csoportból is áthelyezheti egy virtuális Gépet.
+
+ 1. A a **adaptív alkalmazásvezérlők** lapon a a **KONFIGURÁLT** lapra, majd a csoport, amely a virtuális gép jelenleg lesz áthelyezve.
+1. Kattintson a **konfigurált virtuális gépek és számítógépek**.
+1. Kattintson a három pontra a virtuális gép áthelyezése, és kattintson a sor **áthelyezése**. A **számítógép áthelyezése a másik csoporthoz** ablak nyílik meg.
+
+    ![Védelem](./media/security-center-adaptive-application/adaptive-application-move-group.png)
+
+ 1. Válassza ki a virtuális gép áthelyezése, majd kattintson a csoport **számítógép áthelyezése**, és kattintson a **mentése**.
+
+    ![Védelem](./media/security-center-adaptive-application/adaptive-application-move-group2.png)
+
+ > [!NOTE]
+> Ügyeljen arra, hogy kattintson **mentése** kattintás után **számítógép áthelyezése**. Ha nem kattint az **mentése**, akkor a számítógép nem helyezhető át.
 
 ## <a name="next-steps"></a>További lépések
 Ebben a dokumentumban megtudhatta, hogyan adaptív Alkalmazásvezérlés az Azure és a nem Azure-ban futó engedélyezett alkalmazások az Azure Security Center használatával. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:

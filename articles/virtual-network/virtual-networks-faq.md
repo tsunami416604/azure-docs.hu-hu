@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 131d62fd2cea3ed76342f0fd179b7a9e0fd673e5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 25c71019227c52bf0c1530dcdf655fc7575d8032
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925262"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148525"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Az Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -170,7 +170,7 @@ Igen. A további információt talál a [áthelyezése egy másik alhálózatot 
 Nem. A MAC-cím statikusan nem lehet konfigurálni.
 
 ### <a name="will-the-mac-address-remain-the-same-for-my-vm-once-its-created"></a>A MAC-cím ugyanaz marad a virtuális gép létrehozása után?
-Igen, a MAC-cím ugyanaz marad, amíg nem törli a Resource Manager és a klasszikus üzemi modellel üzembe helyezett virtuális gép számára. Korábban a MAC-cím fel lett oldva, ha a virtuális gép leállítva (felszabadítva), de most már a MAC-címet is, ha a virtuális gép felszabadított állapotban maradnak.
+Igen, a MAC-cím ugyanaz marad, amíg nem törli a Resource Manager és a klasszikus üzemi modellel üzembe helyezett virtuális gép számára. Korábban a MAC-cím fel lett oldva, ha a virtuális gép leállítva (felszabadítva), de most már a MAC-címet is, ha a virtuális gép felszabadított állapotban maradnak. A MAC-címet a hálózati adapterhez hozzárendelt maradnak, addig, amíg a hálózati adapter törlése vagy az elsődleges hálózati adapter elsődleges IP-konfigurációhoz rendelt magánhálózati IP-cím megváltozik. 
 
 ### <a name="can-i-connect-to-the-internet-from-a-vm-in-a-vnet"></a>Is tudok csatlakozni az internethez a virtuális hálózat egy virtuális gépről?
 Igen. Egy virtuális hálózaton üzembe helyezett virtuális gépek és a Felhőszolgáltatások szerepkörpéldányok képes csatlakozni az internethez.

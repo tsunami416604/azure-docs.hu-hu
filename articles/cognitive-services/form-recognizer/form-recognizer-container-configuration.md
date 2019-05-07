@@ -1,7 +1,7 @@
 ---
 title: Tároló - űrlap felismerő konfigurálása
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan űrlap felismerő a tárolót használja az űrlap és a táblák adatait elemezni.
+description: Megtudhatja, hogyan konfigurálhatja a képernyő felismerő tároló elemezni az űrlap és a táblák adatait.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 6066e7856ddf8ef757afc2072218c87420a37c10
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 3f6cc32f6fb2a9fb11220ac1a3134fb3ae4d2f84
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027179"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147470"
 ---
 # <a name="configure-form-recognizer-containers"></a>Űrlap felismerő tárolók konfigurálása
 
@@ -49,7 +49,7 @@ Ez a beállítás a következő helyen található:
 
 * Az Azure Portalon: **Űrlap-felismerő a** áttekintése, címkével `Endpoint`
 
-|Szükséges| Name (Név) | Adattípus | Leírás |
+|Kötelező| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Karakterlánc | A számlázás végpont URI azonosítója<br><br>Példa:<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
 
@@ -70,13 +70,13 @@ Ez a beállítás a következő helyen található:
 
 Kötés használatát csatlakoztatja az adatok olvasását és írását, és a tárolóból. Megadhat egy bemeneti csatlakoztatási vagy csatlakoztatási kimeneti megadásával a `--mount` beállítást a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) parancsot.
 
-Az űrlap felismerő tárolók egy bemeneti és kimeneti csatlakoztatási van szükség. A bemeneti csatlakoztatási lehet csak olvasható, és jelzi a tanítási és pontozási folyamatokat adatok eléréséhez szükséges. A kimeneti csatlakoztatási kell lennie a írható, és a modellek és az ideiglenes adatokat szeretne tárolni fogja.
+A képernyő felismerő tároló egy bemeneti és kimeneti csatlakoztatási van szükség. A bemeneti csatlakoztatási lehet csak olvasható, és jelzi a tanítási és pontozási folyamatokat adatok eléréséhez szükséges. A kimeneti csatlakoztatási kell lennie a írható, és a modellek és az ideiglenes adatokat szeretne tárolni fogja.
 
 A gazdagép csatlakoztatási helye a pontos szintaxisa a gazdagép operációs rendszere függően változik. Ezenkívül a [gazdaszámítógép](form-recognizer-container-howto.md#the-host-computer)a csatlakoztatási helye nem lehet elérni a Docker szolgáltatás fiókja által használt engedélyek közötti ütközés miatt, és a gazdagép csatlakoztatásához hely engedélyeket.
 
 |Optional| Name (Név) | Adattípus | Leírás |
 |-------|------|-----------|-------------|
-|Szükséges| `Input` | String | A bemeneti csatlakoztatási célját. Az alapértelmezett érték `/input`.    <br><br>Példa:<br>`--mount type=bind,src=c:\input,target=/input`|
+|Kötelező| `Input` | String | A bemeneti csatlakoztatási célját. Az alapértelmezett érték `/input`.    <br><br>Példa:<br>`--mount type=bind,src=c:\input,target=/input`|
 |Szükséges| `Output` | String | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`.  <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Példa docker-parancsok futtatása

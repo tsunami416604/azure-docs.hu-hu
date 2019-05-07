@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 37d00abbbf726dc1b92bdcc5f39b16301de9b93d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2eea1a1d30558765a2f8320b0b23efdbe3368807
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697847"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65140962"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 
@@ -204,7 +204,9 @@ module.exports = function(ctx) {
 context.bindings
 ```
 
-Egy elnevezett objektumot, amely tartalmazza a bemeneti és kimeneti adatokat ad vissza. Ha például a következő kötési meghatározások a function.json a lehetővé teszik egy várólista tartalmának eléréséhez `context.bindings.myInput` és a egy üzenetsor a kimenetek hozzárendelése `context.bindings.myOutput`.
+Egy elnevezett objektumot, amely arra szolgál, olvassa el, és ezekhez a kötési adatait adja vissza. Bemeneti és a kötelező adatokat eseményindító hozzáférhető tulajdonságok olvasása a `context.bindings`. Kimeneti kötés adatokat rendelhető adatok hozzáadásával `context.bindings`
+
+Ha például a következő kötési meghatározások a function.json a lehetővé teszik egy várólista tartalmának eléréséhez `context.bindings.myInput` és a egy üzenetsor a kimenetek hozzárendelése `context.bindings.myOutput`.
 
 ```json
 {
@@ -273,7 +275,7 @@ A nyomkövetési szint függvény streamnaplókba vizsgálatát teszi lehetővé
 
 | Módszer                 | Leírás                                |
 | ---------------------- | ------------------------------------------ |
-| **error(_üzenet_)**   | Naplózás, vagy alacsonyabb hibaszintet ír.   |
+| **Hiba (_üzenet_)**   | Naplózás, vagy alacsonyabb hibaszintet ír.   |
 | **warn(_message_)**    | Figyelmeztetési szint naplózás vagy alacsonyabb ír. |
 | **info(_message_)**    | Írási és naplózás, vagy alacsonyabb információ szintet.    |
 | **verbose(_message_)** | Részletes webhelyszintű naplózás ír.           |
@@ -290,7 +292,7 @@ Olvasási [Azure Functions figyelése](functions-monitoring.md) tudhat meg több
 
 ## <a name="writing-trace-output-to-the-console"></a>A konzol nyomkövetési írása 
 
-A függvények, használja a `context.log` módszerek nyomkövetési írni a konzolon. A Functions 2.x, nyomkövetési kimenete használatával `console.log` rögzítve lesznek a Függvényalkalmazás szintjén. Ez azt jelenti, hogy a kimenet `console.log` nem kötődnek, egy adott függvény meghívási, és ezért nem jelenik meg egy adott függvény naplóihoz. Ezek azonban az Application Insightsba, propagálása. A Functions v1.x, nem használhat `console.log` írni a konzolon.
+A függvények, használja a `context.log` módszerek nyomkövetési írni a konzolon. A Functions 2.x, nyomkövetési kimenete használatával `console.log` rögzítve lesznek a Függvényalkalmazás szintjén. Ez azt jelenti, hogy a kimenet `console.log` nem kapcsolódnak egy adott függvény meghívási, és nem jelennek meg az egy adott függvény naplóihoz. Ezek azonban az Application Insightsba, propagálása. A Functions v1.x, nem használhat `console.log` írni a konzolon.
 
 Meghívásakor `context.log()`, az üzenet íródik a konzolt a nyomkövetési szint, amely a _info_ nyomkövetési szint. A következő kódot ír a konzolban, amikor az információ a nyomkövetési szintet:
 
@@ -352,10 +354,10 @@ A `context.req` (kérelem) objektum a következő tulajdonságokkal rendelkezik:
 | ------------- | -------------------------------------------------------------- |
 | _body_        | Egy objektum, amely tartalmazza a kérelem törzsében.               |
 | _headers_     | Egy objektum, amely tartalmazza a kérelem fejlécében.                   |
-| _method_      | A kérelem HTTP-metódus.                                |
+| _Metódus_      | A kérelem HTTP-metódus.                                |
 | _originalUrl_ | A kérelem URL-címe                                        |
 | _params_      | Egy objektum, amely tartalmazza a kérés útválasztási paramétereit. |
-| _query_       | Egy objektum, amely tartalmazza a lekérdezési paramétereket.                  |
+| _Lekérdezés_       | Egy objektum, amely tartalmazza a lekérdezési paramétereket.                  |
 | _rawBody_     | A karakterláncként az üzenet törzsében.                           |
 
 
@@ -368,7 +370,7 @@ A `context.res` (válasz) objektum a következő tulajdonságokkal rendelkezik:
 | _body_    | Egy objektum, amely a válasz törzse tartalmazza.         |
 | _headers_ | A válaszfejlécek tartalmazó objektum.             |
 | _isRaw_   | Azt jelzi, hogy a válasz formázás kihagyva.    |
-| _status_  | A válasz HTTP-állapotkódot.                     |
+| _Állapot_  | A válasz HTTP-állapotkódot.                     |
 
 ### <a name="accessing-the-request-and-response"></a>A kérés- és hozzáférés 
 

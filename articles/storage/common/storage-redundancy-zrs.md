@@ -2,18 +2,19 @@
 title: Zónaredundáns tárolás (ZRS) a magas rendelkezésre állású Azure Storage-alkalmazások |} A Microsoft Docs
 description: Zónaredundáns tárolás (ZRS) a magas rendelkezésre állású alkalmazásokat hozhat létre egyszerű módszert kínál. A ZRS szemben az adatközponton belül, és a egy regionális csapásoktól védi.
 services: storage
-author: tolandmike
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 10/24/2018
-ms.author: jeking
+ms.author: tamram
+ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: ab3984b29b3bdfac7599c68c14bd6cc5b671cdf4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9fd594fb264ff0467cc315f59927cd157068d522
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60731395"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146172"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Zónaredundáns tárolás (ZRS): Azure Storage magas rendelkezésre állású alkalmazások
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]

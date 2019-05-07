@@ -9,14 +9,14 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 242b7cb45e9a73e78ae9f9b62e83311e110e07ee
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 80bb7af0f7ed20336ab08d4f3ca9639057b9c67f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021109"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149756"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Ismert problémák és hibaelhárítás az Azure Machine Learning szolgáltatás
 
@@ -69,6 +69,9 @@ Nem lesz képes FPGA-kban a modellek üzembe helyezése, amíg nem kérte, és a
 
 Tensor Flow automatikus machine learning jelenleg nem támogatja a tensor flow verzió 1.13. Ez a verzió telepítése miatt nem működik a csomagfüggőségek. Dolgozunk a probléma megoldásához egy későbbi kiadásban. 
 
+### <a name="experiment-charts"></a>Kísérlet diagram
+
+Bináris osztályozás diagramok (pontosság-visszahívási, ROC, így a görbe stb.) automatikus gépi Tanulási kísérlet ismétléseinek látható nem tartoznak felhasználói felületén renderelési corectly óta 4/12. Diagram grafikon jelenleg más néven inverz eredményeket megjelenítő, ahol az alsó eredmények jobb teljesítményű modell megjelenik. A megoldás vizsgálat alatt áll.
 
 ## <a name="databricks"></a>Databricks
 

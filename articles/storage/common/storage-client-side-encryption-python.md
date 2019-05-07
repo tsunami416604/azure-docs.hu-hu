@@ -2,19 +2,20 @@
 title: Ügyféloldali titkosítás a Microsoft Azure Storage-hoz a Pythonnal |} A Microsoft Docs
 description: Az Azure Storage ügyféloldali kódtára a Pythonhoz készült ügyféloldali titkosítás támogatja a maximális biztonság az Azure Storage-alkalmazásokhoz.
 services: storage
-author: lakasa
+author: tamram
 ms.service: storage
 ms.devlang: python
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: lakasa
+ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ecfd86a7e4a8ef97663cc930906fd909b6f0fae8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d04c1e137a190b01554106c041853aa2fd6786d7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011120"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146900"
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>A Microsoft Azure Storage-hoz a Python ügyféloldali titkosítás
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -138,7 +139,7 @@ A kulcs feloldó legalább meg kell valósítania egy adott, a kulcs azonosító
   * A kulcs feloldó hív, ha meg van adva a kulcs beszerzése. Ha a feloldó van megadva, de nem rendelkezik a kulcs azonosítóját leképezése, egy hiba lépett fel.
   * Ha nincs megadva a feloldó, de egy kulcs van megadva, a kulcs szolgál, ha annak azonosítója megegyezik a szükséges kulcs azonosítóját. Az azonosító nem egyezik, ha hiba fordul elő.
 
-    A titkosítási minták azure.storage.samples <fix URL>blobokhoz, üzenetsorokhoz és táblákhoz részletesebb végpontok közötti forgatókönyv bemutatásához.
+    A titkosítási minták azure.storage.samples bemutatják egy részletesebb végpontok közötti forgatókönyv a blobokhoz, üzenetsorokhoz és táblákhoz.
       Minta megvalósítása a KEK és a kulcs feloldó vannak megadva a mintafájlok KeyWrapper és KeyResolver jelölik.
 
 ### <a name="requireencryption-mode"></a>RequireEncryption mód

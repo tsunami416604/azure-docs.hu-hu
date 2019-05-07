@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
-ms.openlocfilehash: f361417f25579b0ca605b33bafa4a581f68b1798
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 21374e20a2ba2c9134ed12e4b1072ff5c320c75e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024394"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149783"
 ---
 # <a name="api-versions-in-azure-search"></a>Az Azure Search API-verziók
 Az Azure Search rendszeresen funkciófrissítések bevezetésekor. Előfordulhat, de nem mindig a frissítések megkövetelik az előző verziókkal való kompatibilitás megőrzése érdekében API új verziója. Közzététel az új verzió lehetővé teszi szabályozhatja, mikor és hogyan keresési szolgáltatásfrissítések integrálása a kódban.
@@ -32,8 +32,8 @@ Alább van az aktuális verziók az összes pillanatképet alkalmazásprogramoz�
 
 | Adapterek | Legutóbbi főverzió | status |
 | --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |9.0 |Általánosan elérhető, nyilvánosan május 2019. Tartalom még fejlesztés alatt áll.  |
-| [.NET SDK előzetes verzió](https://aka.ms/search-sdk-preview) |8.0.0-preview |Április 2019 kiadott előzetes verziója. Tartalom még fejlesztés alatt áll.|
+| [.NET SDK](https://aka.ms/search-sdk) |9.0 |Általánosan elérhető, nyilvánosan 2019. május |
+| [.NET SDK előzetes verzió](https://aka.ms/search-sdk-preview) |8.0.0-preview |Április 2019 kiadott előzetes |
 | [Szolgáltatás REST API-ja](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Mindenki számára elérhető |
 | [Szolgáltatási REST API-t a 2019-05-06-Preview](search-api-preview.md) |A 2019-05-06-előzetes verzió |Előzetes verzió |
 | [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Mindenki számára elérhető |
@@ -57,6 +57,6 @@ Előzetes verziójú funkciók érhetők el a teszteléshez és kísérletezés 
 
 Ebből kifolyólag javasoljuk, hogy a függőséget vesz fel az előzetes verziókat éles kód írása ellen. Ha régebbi előzetes verzióját használja, azt javasoljuk az általánosan elérhető (GA) verzió-ba való migrálás.
 
-A .NET SDK-ban: Kód áttelepítési útmutató található [frissítése a .NET SDK](search-dotnet-sdk-migration.md).
+A .NET SDK-ban: Kód áttelepítési útmutató található [frissítése a .NET SDK](search-dotnet-sdk-migration-version-9.md).
 
 Általános rendelkezésre állás azt jelenti, hogy Azure Search mostantól a szolgáltatásiszint-szerződés (SLA) alapján. Az SLA található [Azure Search szolgáltatásiszint-szerződései](https://azure.microsoft.com/support/legal/sla/search/v1_0/).

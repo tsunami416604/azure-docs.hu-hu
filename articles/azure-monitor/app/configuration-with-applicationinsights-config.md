@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 1a5b6d435dcc82b59c30302f9cd711975864594c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3957fefb44bd8e4732f74f69d5522bd499100d0b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60901910"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149870"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
 Az Application Insights .NET SDK NuGet-csomagok számos áll. A [core csomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights) az API-t biztosít a telemetria küldését az Application Insights. [További csomagok](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) adja meg a telemetriai adatok *modulok* és *inicializálók* automatikusan nyomon követési telemetria az alkalmazás és a környezetben. A konfigurációs fájl módosításával engedélyezze vagy tiltsa le a telemetriai adatok modulok és az inicializálók, és némelyike paramétereinek megadása.
@@ -79,13 +79,13 @@ Jelentések a [idő és az eredmény válaszkód](../../azure-monitor/app/asp-ne
 * [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet-csomagot.
 
 ### <a name="eventsource-tracking"></a>EventSource nyomon követése
-`EventSourceTelemetryModule` az Application Insights nyomkövetésként küldendő EventSource események konfigurálását teszi lehetővé. A követési események EventSource információkért lásd: [EventSource események használatával](../../azure-monitor/app/asp-net-trace-logs.md#using-eventsource-events).
+`EventSourceTelemetryModule` az Application Insights nyomkövetésként küldendő EventSource események konfigurálását teszi lehetővé. A követési események EventSource információkért lásd: [EventSource események használatával](../../azure-monitor/app/asp-net-trace-logs.md#use-eventsource-events).
 
 * `Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule`
 * [Microsoft.ApplicationInsights.EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
 
 ### <a name="etw-event-tracking"></a>ETW-események követése
-`EtwCollectorTelemetryModule` az Application Insights nyomkövetésként küldendő ETW-szolgáltató eseményei konfigurálását teszi lehetővé. ETW-események nyomon követésével kapcsolatos információkért lásd: [ETW-események használatával](../../azure-monitor/app/asp-net-trace-logs.md#using-etw-events).
+`EtwCollectorTelemetryModule` az Application Insights nyomkövetésként küldendő ETW-szolgáltató eseményei konfigurálását teszi lehetővé. ETW-események nyomon követésével kapcsolatos információkért lásd: [ETW-események használatával](../../azure-monitor/app/asp-net-trace-logs.md#use-etw-events).
 
 * `Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule`
 * [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 

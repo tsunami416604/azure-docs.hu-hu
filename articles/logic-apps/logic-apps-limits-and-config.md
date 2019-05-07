@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 11/16/2018
-ms.openlocfilehash: f371376a7c801eecb6231d551546b13dbc68dd26
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 05/06/2019
+ms.openlocfilehash: 634f3948f9a5e28454e9b2b29f950c3fb00f6c19
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916813"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147747"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Korlátozások és konfigurációs adatokat az Azure Logic Apps
 
@@ -48,20 +48,20 @@ Az alábbiakban egy logikai alkalmazás definícióját a korlátokat:
 
 Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 
-| Name (Név) | Korlát | Megjegyzések |
-|------|-------|-------|
-| Futtatás időtartama | 90 nap | Ha módosítani szeretné ezt a korlátot, lásd: [módosítása Futtatás időtartama](#change-duration). |
-| Minimális ismétlődési időköz | 1 másodperc | |
-| Maximális ismétlődési időköz | 500 nap | |
-| Tárterület adatmegőrzése | a Futtatás 90 nap kezdete | 7 nap, és 90 nap közötti értéket módosítja ezt a korlátot, lásd: [adatmegőrzés storage módosítása](#change-retention). |
-||||
+| Name (Név) | Több-bérlős korlát | Integrációs környezet korlátjának | Megjegyzések |
+|------|--------------------|---------------------------------------|-------|
+| Futtatás időtartama | 90 nap | 365 nap | Az alapértelmezett korlát módosításához lásd [módosítása Futtatás időtartama](#change-duration). |
+| Tárterület adatmegőrzése | a Futtatás 90 nap kezdete | 365 nap | Az alapértelmezett korlát módosításához lásd [adatmegőrzés storage módosítása](#change-retention). |
+| Minimális ismétlődési időköz | 1 másodperc | 1 másodperc ||
+| Maximális ismétlődési időköz | 500 nap | 500 nap ||
+|||||
 
 <a name="change-duration"></a>
 <a name="change-retention"></a>
 
 ### <a name="change-run-duration-and-storage-retention"></a>Futtatás időtartama és a storage adatmegőrzés módosítása
 
-Ha módosítani szeretné az alapértelmezett korlát a 7 nap, és 90 nap között, kövesse az alábbi lépéseket. Ha meg kell meghaladja a maximális, [a Logic Apps-csapat](mailto://logicappsemail@microsoft.com) segítség az igényeinek.
+Futtatás időtartama és adatmegőrzése storage esetében az alapértelmezett korlát módosításához kövesse az alábbi lépéseket. Ha meg kell meghaladja a maximális, [a Logic Apps-csapat](mailto://logicappsemail@microsoft.com) segítség az igényeinek.
 
 1. Az Azure Portalon, a logikai alkalmazás menüjében válassza a **munkafolyamat-beállítások**.
 
@@ -91,7 +91,7 @@ Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 
 Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 
-### <a name="global-logic-apps-service"></a>Globális Logic Apps szolgáltatás
+### <a name="multi-tenant-logic-apps-service"></a>Több-bérlős Logic Apps szolgáltatásban
 
 | Name (Név) | Korlát | Megjegyzések |
 | ---- | ----- | ----- |
@@ -107,9 +107,9 @@ Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 
 | Name (Név) | Korlát | Megjegyzések |
 |------|-------|-------|
-| Alapegység végrehajtási korlátot | 5 percenként 10 000 művelet-végrehajtások <br>vagyis ~ 80-as millió művelet-végrehajtások havonta | |
-| Egység végrehajtási korlát | összesen 5 000 művelet-végrehajtások száma 5 percenként <br>vagyis ~ 40 millió művelet-végrehajtások havonta | |
-| Maximális skálázási egységek, amelyek adhat hozzá | 3 | |
+| Alapegység végrehajtási korlátot | Rendszer-szabályozott 80 %-os infrastruktúra-kapacitás elérésekor | Biztosít, műveletvégrehajtások ~ 4000 percenkénti, amely ~ 160 millió művelet-végrehajtás / hó | |
+| Egység végrehajtási korlát | Rendszer-szabályozott 80 %-os infrastruktúra-kapacitás elérésekor | Minden egyes méretezési egység biztosíthat további művelet-végrehajtások 2000 ~ ~ 80-as millió percenként több művelet-végrehajtás / hó | |
+| Maximális skálázási egységek, amelyek adhat hozzá | 10 | |
 ||||
 
 Nyissa meg a fenti ezeket a korlátokat, a normál feldolgozása, vagy futtassa a terheléses tesztelés díjaival, előfordulhat, hogy nyissa meg a fenti ezeket a korlátokat [a Logic Apps-csapat](mailto://logicappsemail@microsoft.com) segítség az igényeinek.
@@ -124,20 +124,20 @@ Az alábbiakban egy egyetlen HTTP-kérés vagy a szinkron összekötő hívás a
 
 Néhány összekötő műveleteket aszinkron hívásokat, illetve figyeljen a webhook-kérelmekre, így előfordulhat, hogy ezek a korlátok hosszabb ezeket a műveleteket az időkorlátot. További információkért tekintse meg az adott összekötőre vonatkozó technikai részleteket, és emellett [munkafolyamat triggerei és műveletei](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
 
-| Name (Név) | Korlát | Megjegyzések |
-| ---- | ----- | ----- |
-| Kimenő kérelmek | 120 másodperc | A hosszabb ideig futó műveletek használata egy [lekérdezési aszinkron minta](../logic-apps/logic-apps-create-api-app.md#async-pattern) vagy egy [until ciklus](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). |
-| Szinkron válaszra | 120 másodperc | Lekérni a választ az eredeti kérés a válaszban szereplő összes lépést kell be az időkorláton belül, kivéve, ha egy másik logikai alkalmazás egy beágyazott munkafolyamatot hívja. További információkért lásd: [logikai alkalmazások hívása, eseményindító, vagy beágyazása](../logic-apps/logic-apps-http-endpoint.md). |
-|||| 
+| Name (Név) | Több-bérlős korlát | Integrációs környezet korlátjának | Megjegyzések |
+|------|--------------------|---------------------------------------|-------|
+| Kimenő kérelmek | 120 másodperc | 240 másodperc | A hosszabb ideig futó műveletek használata egy [lekérdezési aszinkron minta](../logic-apps/logic-apps-create-api-app.md#async-pattern) vagy egy [until ciklus](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). |
+| Szinkron válaszra | 120 másodperc | 240 másodperc | Lekérni a választ az eredeti kérés a válaszban szereplő összes lépést kell be az időkorláton belül, kivéve, ha egy másik logikai alkalmazás egy beágyazott munkafolyamatot hívja. További információkért lásd: [logikai alkalmazások hívása, eseményindító, vagy beágyazása](../logic-apps/logic-apps-http-endpoint.md). |
+|||||
 
 #### <a name="message-size"></a>Üzenet mérete
 
-| Name (Név) | Korlát | Megjegyzések |
-| ---- | ----- | ----- |
-| Üzenet mérete | 100 MB | Kerülheti meg ezt a korlátot, lásd: [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). Azonban egyes összekötők és API-k előfordulhat, hogy nem támogatja a darabolás vagy akár az alapértelmezett korlát. |
-| Darabolás az üzenet mérete | 1 GB | Ez a korlátozás vonatkozik, műveletek, natív módon támogatja a darabolás, és lehetővé teszik a futtatókörnyezet konfigurálásukban darabolás engedélyezése. További információkért lásd: [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). |
-| Kifejezések kiértékelési korlátja | 131 072 karakter | A `@concat()`, `@base64()`, `@string()` kifejezések nem haladhatja meg ezt a korlátot. |
-||||
+| Name (Név) | Több-bérlős korlát | Integrációs környezet korlátjának | Megjegyzések |
+|------|--------------------|---------------------------------------|-------|
+| Üzenet mérete | 100 MB | 200 MB | Kerülheti meg ezt a korlátot, lásd: [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). Azonban egyes összekötők és API-k előfordulhat, hogy nem támogatja a darabolás vagy akár az alapértelmezett korlát. |
+| Darabolás az üzenet mérete | 1 GB | 5 GB | Ez a korlátozás vonatkozik, műveletek, natív módon támogatja a darabolás, és lehetővé teszik a futtatókörnyezet konfigurálásukban darabolás engedélyezése. <p>Az integrációs service-környezetben, a Logic Apps-motor támogatja ezt a korlátot, de az összekötőket a motor korlátig, például a saját tömbösítési korlátokkal rendelkeznek, lásd: [Azure Blob Storage-összekötő](/connectors/azureblob/). További információk darabolás, lásd: [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). |
+| Kifejezések kiértékelési korlátja | 131 072 karakter | 131 072 karakter | A `@concat()`, `@base64()`, `@string()` kifejezések nem haladhatja meg ezt a korlátot. |
+|||||
 
 #### <a name="retry-policy"></a>Újrapróbálkozási szabályzat
 
@@ -154,10 +154,10 @@ Néhány összekötő műveleteket aszinkron hívásokat, illetve figyeljen a we
 
 Az alábbiakban a webes API-kat hozhat létre egyéni összekötőket vonatkozó korlátokat.
 
-| Name (Név) | Korlát |
-| ---- | ----- |
-| Egyéni összekötők száma | Azure-előfizetésenként 1000 |
-| Percenkénti kérések száma az egyéni összekötő által létesített egyes kapcsolatokon | kapcsolatonként 500 kérés |
+| Name (Név) | Több-bérlős korlát | Integrációs környezet korlátjának | Megjegyzések |
+|------|--------------------|---------------------------------------|-------|
+| Egyéni összekötők száma | Azure-előfizetésenként 1000 | Azure-előfizetésenként 1000 ||
+| Egyéni összekötő percenkénti kérések száma | percenkénti kapcsolatonként 500 kérés | 2000 kérések száma percenként *egyéni összekötő* ||
 |||
 
 <a name="managed-identity"></a>
@@ -216,13 +216,13 @@ Az alábbiakban az összetevők az egyes integrációs fiókok számára vonatko
 
 ### <a name="b2b-protocol-as2-x12-edifact-message-size"></a>B2B-protokoll (AS2 X12, EDIFACT) üzenet mérete
 
-A korlátok, amelyek a alkalmazni a B2B-protokollok a következők:
+Az üzenetek méretkorlátjának, amely a alkalmazni a B2B-protokollok a következők:
 
-| Name (Név) | Korlát | Megjegyzések |
-| ---- | ----- | ----- |
-| AS2 | 50 MB | Dekódolása és kódolása vonatkozik |
-| X12 | 50 MB | Dekódolása és kódolása vonatkozik |
-| EDIFACT | 50 MB | Dekódolása és kódolása vonatkozik |
+| Name (Név) | Több-bérlős korlát | Integrációs környezet korlátjának | Megjegyzések |
+|------|--------------------|---------------------------------------|-------|
+| AS2 | v2 - 100 MB<br>V1 – 50 MB-ot | v2 - 200 MB <br>V1 – 50 MB-ot | Dekódolása és kódolása vonatkozik |
+| X12 | 50 MB | 50 MB | Dekódolása és kódolása vonatkozik |
+| EDIFACT | 50 MB | 50 MB | Dekódolása és kódolása vonatkozik |
 ||||
 
 <a name="disable-delete"></a>

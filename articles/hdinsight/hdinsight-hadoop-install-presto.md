@@ -8,14 +8,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2bd5e1ae02ffbb62b9a5a95846aabeeab2b448b5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7ce2cf40dafc09d86d0c424a3954a334ae83143a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704814"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145483"
 ---
 # <a name="install-and-use-presto-on-hadoop-based-hdinsight-clusters"></a>Telepítheti és használhatja Presto Hadoop-alapú HDInsight-fürtök
+
+> [!IMPORTANT]  
+> KÉRJÜK, OLVASSA EL: Az alábbi utasítások elavultak. Tekintse meg a legújabb útmutatásának [buborék adatok](http://docs.starburstdata.com/latest/azure.html) telepítéséhez és az Azure HDInsight Presto futtatásához.  
 
 Ez a cikk ismerteti a Presto telepítése Azure HDInsight Hadoop-alapú fürtökön parancsfájlműveletekkel. Azt is megtudhatja, hogyan Airpal telepítése egy meglévő Presto HDInsight-fürtön.
 

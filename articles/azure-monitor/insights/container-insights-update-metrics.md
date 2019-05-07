@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/27/2019
+ms.date: 05/06/2019
 ms.author: magoedte
-ms.openlocfilehash: f0c9b84f31810a4b0cec93738f7ce327bc24d8d0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f4e15c4fc7bd7b786c5204153fe64f010e5ffe85
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685622"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148857"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Az Azure Monitor for containers szolgáltatásban, hogy engedélyezze a mérőszámok frissítése
 Tárolók az Azure Monitor metrikáinak begyűjtését Azure Kubernetes Services-(AKS-) fürt csomópontok és a podok és rögzíti őket az Azure Monitor-metrikák áruház támogatása vezet. Ez a változás célja biztosít továbbfejlesztett aktualitása teljesítménydiagramok, teljesítmény-diagramok az Azure portal irányítópultok, a rögzítés támogatási összesített számítások (Avg, Count, maximális, minimális, Sum) szerkesztésekor és metrikariasztásokat támogatja.
@@ -55,7 +55,7 @@ Hajtsa végre az alábbi lépéseket az előfizetésében a Bash használatával
     ```azurecli
     az login
     az account set --subscription "Subscription Name"
-    curl -sL https://git.io/aks-mdm-onboarding-atscale | bash -s subscriptionId   
+    curl -sL https://aka.ms/ci-md-onboard-atscale | bash -s subscriptionId   
     ```
 
     A konfigurációs módosítás néhány másodpercig, is igénybe vehet. Ha elkészült, megjelenik egy üzenet, amely a következő példához hasonló, és az eredmény tartalmazza:

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 1bbe89484d72a21c4432d452d4ddae83ea2d2553
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 93725fc9d77552d779378d0c14294a5bbb11c926
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870472"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146145"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Oktatóanyag: Szolgáltatásnevek létrehozása és szerepkörök hozzárendelése a PowerShell-lel
 
@@ -111,5 +111,5 @@ Az alábbiakban a három hitelesítő adatokat, le kell írni és azok futtatnia
 
 Ebben az oktatóanyagban megtudhatta, hogyan egyszerű szolgáltatás létrehozása és bejelentkezés Windows virtuális asztal vele. Bejelentkezés Windows virtuális asztal kapcsolatos további információkért folytassa a csatlakozás a Windows virtuális asztal útmutatók.
 
-- [Csatlakozás a távoli asztali ügyfél Windows 7 és Windows 10 rendszeren](connect-windows-7-and-10.md)
-- [Csatlakozás a Windows virtuális asztal előzetes webes ügyféllel](connect-web.md)
+- [Csatlakozás a Windows 10-es vagy Windows 7](connect-windows-7-and-10.md)
+- [Egy webböngészőből csatlakozzon](connect-web.md)

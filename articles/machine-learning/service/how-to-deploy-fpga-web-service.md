@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: cfe21d2119b92665c5950d792dec6500257c6316
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 249a21bf9eeb3913826971fd1aae136197d264c4
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024182"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149612"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Modell üzembe helyezése az Azure Machine Learning szolgáltatás egy FPGA a webszolgáltatásként
 
@@ -29,22 +29,33 @@ Ezek a modellek jelenleg érhetők el:
   - VGG-16
   - SSD-VGG
 
-A FPGA-kban ezen Azure-régiókban érhetők el:
+FPGA-kban ezen Azure-régiókban érhetők el:
   - USA keleti régiója
-  - USA nyugati régiója, 2.
-  - Nyugat-Európa
   - Délkelet-Ázsia
+  - Nyugat-Európa
+  - USA nyugati régiója, 2.
 
 > [!IMPORTANT]
 > Optimalizálható a teljesítmény és a késés, adatok küldését az FPGA modell az ügyfél a fenti (helyezte üzembe a modellt egy) régiók egyikében kell lennie.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+- Azure-előfizetés.  Ha nem rendelkezik ilyennel, hozzon létre egy ingyenes fiókot, megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+
+- FPGA-kvótát.  Az Azure CLI használatával ellenőrizze, hogy rendelkezik-e a kvótát.
+    ```shell
+    az vm list-usage --location "eastus" -o table
+    ```
+
+    Az egyéb helyek ``southeastasia``, ``westeurope``, és ``westus2``.
+
+    A "Name" oszlopban keressen a "Vcpu-k szabványos PB termékcsalád", és ellenőrizze, hogy legalább 6 vcpu-k mellett "CurrentValue."
+
+    Ha nem rendelkezik a kvótát, majd küldje el egy űrlapot [Itt](https://aka.ms/accelerateAI).
 
 - Az Azure Machine Learning szolgáltatás munkaterület és az Azure Machine Learning SDK telepítve van a Pythonhoz készült. Ezekről az előfeltételekről használatával beszerzéséről a [a fejlesztési környezet konfigurálása](how-to-configure-environment.md) dokumentumot.
  
-  - Telepítse a Python SDK hardveresen gyorsított modellek:
+- A Python SDK for hardveresen gyorsított modellek:
 
     ```shell
     pip install --upgrade azureml-accel-models
@@ -52,7 +63,7 @@ A FPGA-kban ezen Azure-régiókban érhetők el:
 
 ## <a name="sample-notebooks"></a>Mintanotebookok
 
-Az Ön kényelme érdekében [notebookok minta](https://aka.ms/aml-notebooks) érhetők el a példa az alábbi, illetve egyéb példák mellett.  Keresse meg a útmutatóval-to-használat – azureml és a telepítési mappák gyorsított modellek.
+Az Ön kényelme érdekében [notebookok minta](https://aka.ms/aml-accel-models-notebooks) érhetők el az alábbi példa és más példákat.
 
 ## <a name="create-and-containerize-your-model"></a>Hozzon létre, és a modell tárolóba
 
@@ -61,6 +72,7 @@ Ez a dokumentum azt ismertetik, hogyan hozhat létre a bemeneti kép előfeldolg
 Kövesse az utasításokat:
 
 * A TensorFlow-modell
+* A modell konvertálása
 * A modell üzembe helyezése
 * A telepített modell feldolgozása
 * Telepített szolgáltatások törlése
@@ -74,7 +86,7 @@ import os
 import tensorflow as tf
  
 from azureml.core import Workspace
- 
+
 ws = Workspace.from_config()
 print(ws.name, ws.resource_group, ws.location, ws.subscription_id, sep = '\n')
 ```
@@ -86,6 +98,8 @@ A webszolgáltatás bemeneti JPEG formátumú kép.  Az első lépés, hogy a JP
 ```python
 # Input images as a two-dimensional tensor containing an arbitrary number of images represented a strings
 import azureml.accel.models.utils as utils
+tf.reset_default_graph()
+
 in_images = tf.placeholder(tf.string)
 image_tensors = utils.preprocess_array(in_images)
 print(image_tensors.shape)
@@ -124,15 +138,47 @@ Most, hogy az elő-feldolgozói ResNet-50 featurizer és az osztályozó által 
 
 ```python
 model_name = "resnet50"
-model_def_path = os.path.join(save_path, model_name)
-print("Saving model in {}".format(model_def_path))
+model_save_path = os.path.join(save_path, model_name)
+print("Saving model in {}".format(model_save_path))
 
 with tf.Session() as sess:
     model_graph.restore_weights(sess)
-    tf.saved_model.simple_save(sess, model_def_path,
+    tf.saved_model.simple_save(sess, model_save_path,
                                    inputs={'images': in_images},
                                    outputs={'output_alias': classifier_output})
 ```
+
+### <a name="save-input-and-output-tensors"></a>Bemeneti és kimeneti tensors mentése
+A bemeneti és kimeneti tensors az előfeldolgozási és osztályozó lépések során létrehozott modell átalakítás tanuláshoz és következtetésekhez van szükség.
+
+```python
+input_tensors = in_images.name
+output_tensors = classifier_output.name
+
+print(input_tensors)
+print(output_tensors)
+```
+
+> [!IMPORTANT]
+> Mentse a bemeneti és kimeneti tensors, mert ezekre szükség lesz a modell átalakítási vagy következtetési kéréseket.
+
+Az elérhető modellek és a megfelelő alapértelmezett osztályozó kimeneti tensors az alábbiakban, azaz, hogy milyen használja következtetési során az alapértelmezett osztályozó használatakor.
+
++ Resnet50, QuantizedResnet50 ``
+output_tensors = "classifier_1/resnet_v1_50/predictions/Softmax:0"
+``
++ Resnet152, QuantizedResnet152 ``
+output_tensors = "classifier/resnet_v1_152/predictions/Softmax:0"
+``
++ Densenet121, QuantizedDensenet121 ``
+output_tensors = "classifier/densenet121/predictions/Softmax:0"
+``
++ Vgg16, QuantizedVgg16 ``
+output_tensors = "classifier/vgg_16/fc8/squeezed:0"
+``
++ SsdVgg, QuantizedSsdVgg ``
+output_tensors = ['ssd_300_vgg/block4_box/Reshape_1:0', 'ssd_300_vgg/block7_box/Reshape_1:0', 'ssd_300_vgg/block8_box/Reshape_1:0', 'ssd_300_vgg/block9_box/Reshape_1:0', 'ssd_300_vgg/block10_box/Reshape_1:0', 'ssd_300_vgg/block11_box/Reshape_1:0', 'ssd_300_vgg/block4_box/Reshape:0', 'ssd_300_vgg/block7_box/Reshape:0', 'ssd_300_vgg/block8_box/Reshape:0', 'ssd_300_vgg/block9_box/Reshape:0', 'ssd_300_vgg/block10_box/Reshape:0', 'ssd_300_vgg/block11_box/Reshape:0']
+``
 
 ### <a name="register-model"></a>Modell regisztrálása
 
@@ -141,8 +187,8 @@ with tf.Session() as sess:
 ```python
 from azureml.core.model import Model
 
-registered_model = Model.register(workspace = ws
-                                  model_path = model_def_path,
+registered_model = Model.register(workspace = ws,
+                                  model_path = model_save_path,
                                   model_name = model_name)
 
 print("Successfully registered: ", registered_model.name, registered_model.description, registered_model.version, sep = '\t')
@@ -160,44 +206,39 @@ print(registered_model.name, registered_model.description, registered_model.vers
 
 ### <a name="convert-model"></a>Modell konvertálása
 
-A TensorFlow-diagram van szüksége, nyissa meg a Neurális hálózat Exchange-formátumra átalakítandó ([ONNX](https://onnx.ai/)).  Meg kell adnia a bemeneti és kimeneti tensors nevét, és ezeket a neveket az ügyfél által használandó, ha a webszolgáltatás felhasznált.
+Az Open Neurális hálózat Exchange formátumra konvertálni a TensorFlow graph ([ONNX](https://onnx.ai/)).  Meg kell adnia a bemeneti és kimeneti tensors nevét, és ezeket a neveket az ügyfél által használandó, ha a webszolgáltatás felhasznált.
 
 ```python
-input_tensor = in_images.name
-output_tensors = classifier_output.name
+from azureml.accel import AccelOnnxConverter
 
-print(input_tensor)
-print(output_tensors)
+convert_request = AccelOnnxConverter.convert_tf_model(ws, registered_model, input_tensors, output_tensors)
 
-
-from azureml.accel.accel_onnx_converter import AccelOnnxConverter
-
-convert_request = AccelOnnxConverter.convert_tf_model(ws, registered_model, input_tensor, output_tensors)
-convert_request.wait_for_completion(show_output=True)
+# If it fails, you can run wait_for_completion again with show_output=True.
+convert_request.wait_for_completion(show_output = False)
 
 # If the above call succeeded, get the converted model
 converted_model = convert_request.result
-print(converted_model.name, converted_model.url, converted_model.version, converted_model.id,converted_model.created_time)
+print("\nSuccessfully converted: ", converted_model.name, converted_model.url, converted_model.version, 
+      converted_model.id, converted_model.created_time, '\n')
 ```
 
 ### <a name="create-docker-image"></a>Docker-rendszerkép létrehozása
 
-A konvertált modell és annak összes függőségét kerülnek egy Docker-rendszerképet.  A Docker-rendszerkép majd telepíthető és a felhőben és a egy támogatott peremhálózati eszköz például példányosítása [az Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview).  A regisztrált Docker-rendszerképet a címkék és leírások is hozzáadhat.
+A konvertált modell és annak összes függőségét kerülnek egy Docker-rendszerképet.  A Docker-rendszerkép majd telepíthető és példányt.  Támogatott üzembe helyezési célok közé tartozik az AKS a felhőben és a egy edge-eszköz például [az Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview).  A regisztrált Docker-rendszerképet a címkék és leírások is hozzáadhat.
 
 ```python
 from azureml.core.image import Image
-from azureml.accel.accel_container_image import AccelContainerImage
+from azureml.accel import AccelContainerImage
 
 image_config = AccelContainerImage.image_configuration()
+# Image name must be lowercase
 image_name = "{}-image".format(model_name)
 
 image = Image.create(name = image_name,
                      models = [converted_model],
                      image_config = image_config, 
                      workspace = ws)
-
-
-image.wait_for_creation(show_output = True)
+image.wait_for_creation(show_output = False)
 ```
 
 Címke szerinti rendszerképek listáját, és bármely hibakereséshez a részletes naplók lekérése.
@@ -214,34 +255,44 @@ for i in Image.list(workspace = ws):
 Az Azure Kubernetes Service (AKS) használatával a modellt webszolgáltatásként, amely nagy méretű éles üzembe helyezéséhez. Létrehozhat egy újat az Azure Machine Learning SDK-t, a CLI vagy az Azure portal használatával.
 
 ```python
-# Use the default configuration (can also provide parameters to customize)
-prov_config = AksCompute.provisioning_configuration()
+from azureml.core.compute import AksCompute, ComputeTarget
 
-aks_name = 'my-aks-9' 
+# Specify the Standard_PB6s Azure VM
+prov_config = AksCompute.provisioning_configuration(vm_size = "Standard_PB6s",
+                                                    agent_count = 1)
+
+aks_name = 'my-aks-cluster'
 # Create the cluster
 aks_target = ComputeTarget.create(workspace = ws, 
                                   name = aks_name, 
                                   provisioning_configuration = prov_config)
+```
 
-%%time
+Az AKS üzembe helyezés hozzávetőlegesen 15 percet is igénybe vehet.  Ellenőrizze, hogy ha az üzembe helyezés sikeres volt.
+
+```python
 aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
+```
 
-#Set the web service configuration (using default here)
-aks_config = AksWebservice.deploy_configuration()
+A tároló üzembe az AKS-fürtöt.
+```python
+from azureml.core.webservice import Webservice, AksWebservice
 
-%%time
-aks_service_name ='aks-service-1'
+# For this deployment, set the web service configuration without enabling auto-scaling or authentication for testing
+aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
+                                                num_replicas=1,
+                                                auth_enabled = False)
 
-aks_service = Webservice.deploy_from_image(workspace = ws, 
+aks_service_name ='my-aks-service'
+
+aks_service = Webservice.deploy_from_image(workspace = ws,
                                            name = aks_service_name,
                                            image = image,
                                            deployment_config = aks_config,
                                            deployment_target = aks_target)
 aks_service.wait_for_deployment(show_output = True)
-print(aks_service.state)
-print(aks_service.scoring_uri)
 ```
 
 #### <a name="test-the-cloud-service"></a>A felhőalapú szolgáltatás tesztelése
@@ -252,12 +303,30 @@ A Docker-rendszerkép gRPC és a "előrejelzése" API-t TensorFlow-szolgáltató
 Ha szeretné használni a TensorFlow-szolgáltató, akkor [egy minta-ügyfél letöltése](https://www.tensorflow.org/serving/setup).
 
 ```python
+# Using the grpc client in Azure ML Accelerated Models SDK package
+from azureml.accel.client import PredictionClient
+
+address = aks_service.scoring_uri
+ssl_enabled = address.startswith("https")
+address = address[address.find('/')+2:].strip('/')
+port = 443 if ssl_enabled else 80
+
+# Initialize AzureML Accelerated Models client
+client = PredictionClient(address=address,
+                          port=port,
+                          use_ssl=ssl_enabled,
+                          service_name=aks_service.name)
+```
+
+Mivel az osztályozó által igénybe vett tanított volt a [épít](http://www.image-net.org/) adatok beállítása, az osztályok leképezése az emberek számára olvasható címkéket.
+
+```python
 import requests
 classes_entries = requests.get("https://raw.githubusercontent.com/Lasagne/Recipes/master/examples/resnet50/imagenet_classes.txt").text.splitlines()
 
-# Score image using input and output tensor names
+# Score image with input and output tensor names
 results = client.score_file(path="./snowleopardgaze.jpg", 
-                             input_name=input_tensor, 
+                             input_name=input_tensors, 
                              outputs=output_tensors)
 
 # map results [class_id] => [confidence]
@@ -274,6 +343,7 @@ Törli a webszolgáltatás, a lemezkép és a modell (kell elvégezni az alábbi
 
 ```python
 aks_service.delete()
+aks_target.delete()
 image.delete()
 registered_model.delete()
 converted_model.delete()
@@ -287,3 +357,7 @@ Az összes [Azure Data Box peremhálózati eszközök](https://docs.microsoft.co
 ## <a name="secure-fpga-web-services"></a>Biztonságos FPGA-webszolgáltatások
 
 FPGA-webszolgáltatások védelmével kapcsolatos további információkért lásd: a [biztonságos webszolgáltatások](how-to-secure-web-service.md) dokumentumot.
+
+## <a name="pbs-family-vms"></a>PB termékcsalád virtuális gépek
+
+Az Azure-beli virtuális PB termékcsalád Intel Arria 10 FPGA tartalmazza.  Állapotúként jelenik meg "Vcpu-k szabványos PB termékcsalád" az Azure-kvóta foglalási ellenőrzésekor.  A PB6 virtuális gépen, hat virtuális processzorral és a egy FPGA, és azt automatikusan kiépítheti az Azure ml helyezi üzembe a modellt, egy FPGA részeként.  Csak az Azure ML segítségével használja, és tetszőleges bitstreams nem lesz futtatható.  Ha például nem tudja flash az FPGA bitstreams az ehhez a titkosítás, kódolás, stb. 

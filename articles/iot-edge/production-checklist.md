@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: c64db6b35aa2f1daa4484f137c8505b1415c5a0b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 80bf4718b63496c0b220aa79dcdd27f2711b70ce
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60998455"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148104"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Az üzembe helyezés éles környezetben az IoT Edge-megoldás előkészítése
 
@@ -186,7 +186,11 @@ Az eszközök fog üzembe helyezni a hálózaton, proxykiszolgálót használ, h
 
 ### <a name="set-up-logs-and-diagnostics"></a>Naplók és diagnosztika beállítása
 
-Linux rendszeren az IoT Edge-démon illesztőprogram naplózása alapértelmezés szerint használja a naplók. A parancssori eszközzel `journalctl` lekérdezni a démon naplózza. A Windows az IoT Edge-démon a PowerShell diagnosztikai használ. Használat `Get-WinEvent` a lekérdezések naplói a démonból. IoT Edge-modulok az a JSON-illesztőprogram naplózást, amely az alapértelmezett.  
+Linux rendszeren az IoT Edge-démon illesztőprogram naplózása alapértelmezés szerint használja a naplók. A parancssori eszközzel `journalctl` lekérdezni a démon naplózza. A Windows az IoT Edge-démon a PowerShell diagnosztikai használ. Használat `Get-IoTEdgeLog` a lekérdezések naplói a démonból. IoT Edge-modulok az a JSON-illesztőprogram naplózást, amely az alapértelmezett.  
+
+```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
+```
 
 Amikor egy IoT Edge-példányban tesztel, kérheti le a naplókat és hárítsa el az eszközök általában hozzáférhet. A telepítési forgatókönyvben nem lehet ezt a lehetőséget. Vegye figyelembe, hogy azt a módszert, éles környezetben az eszközökkel kapcsolatos információk összegyűjtéséhez. Az egyik lehetőség, hogy egy naplózási modul, amely adatokat gyűjt a más modulok tesznek, és elküldi a felhőbe. Például egy naplózási modul [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics), vagy a saját is tervezhet. 
 

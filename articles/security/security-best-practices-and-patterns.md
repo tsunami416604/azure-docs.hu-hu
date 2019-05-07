@@ -1,6 +1,6 @@
 ---
-title: Az Azure ajánlott biztonsági eljárások és minták |} A Microsoft Docs
-description: A cikk a különböző Azure-erőforrások Azure ajánlott biztonsági eljárások és minták listáját tartalmazza.
+title: Ajánlott biztonsági eljárások és minták – Microsoft Azure |} A Microsoft Docs
+description: Ez a cikk hivatkozásokat biztosít az ajánlott biztonsági eljárások és minták az Azure-erőforrás.
 services: azure-security
 documentationcenter: na
 author: TerryLanfear
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/10/2018
+ms.date: 5/03/2019
 ms.author: terrylan
-ms.openlocfilehash: e607c1ce032972c62f4e70e9cb620e83e57a881b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ff6a09f75a46eee0d95b9a995c4986a981f25b9c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60444499"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150091"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Az Azure Security ajánlott biztonsági eljárásai és mintái
 

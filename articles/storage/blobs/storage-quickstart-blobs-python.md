@@ -2,18 +2,19 @@
 title: Azure rövid útmutató – Blob létrehozása objektumtárban Python használatával | Microsoft Docs
 description: Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre egy objektumtárban (Blob Storage-fiókban). Majd a Storage Pythonhoz készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
 services: storage
-author: tamram
+author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/14/2018
-ms.author: tamram
-ms.openlocfilehash: 8dff81d3f3594798a1b08184af0098f3bd86c12c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: mhopkins
+ms.reviewer: seguler
+ms.openlocfilehash: 0c40d0985b0d6c967a55b1954a1cb54feeb15361
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392041"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149385"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Gyors útmutató: Feltöltése, letöltése és a blobok listázása a Python használatával
 

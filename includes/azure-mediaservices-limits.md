@@ -4,17 +4,17 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: b275a86f8fd35c43865fd920d1bfc9994a796a9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: de3fd8dc0d45ea10e64af8e2258682a9e98639dc
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60557145"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150337"
 ---
 >[!NOTE]
 >Nem rögzített erőforrások nyissa meg egy támogatási jegyet, lépjen kapcsolatba a kvóták növelését. Ne hozzon létre további Azure Media Services-fiókokat az, hogy megpróbálja tágítani a magasabb korlátok.
 
-| Erőforrás | Alapértelmezett korlát | 
+| Resource | Alapértelmezett korlát | 
 | --- | --- | 
 | Egyetlen előfizetéshez az Azure Media Services-fiókok | 25 (rögzített) |
 | Media szolgáltatás számára fenntartott egységek száma a Media Services-fiók |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
@@ -50,12 +50,12 @@ ms.locfileid: "60557145"
 >[!NOTE]
 > Ha mindig ugyanazokat a napokat használ, és hozzáférési engedélyek, a szabályzatazonosítónak is ugyanannak használata Információk és a egy példa: [a Media Services .NET SDK-eszközök kezelése](../articles/media-services/previous/media-services-dotnet-manage-entities.md#limit-access-policies).
 
-<sup>7</sup>Ha tartalmat tölt fel egy objektumba történik, a Media Services feldolgozni azt a szolgáltatás a médiaelemzés médiafeldolgozói egyikével, vegye figyelembe a maximális fájlméretek, amelyek használata támogatott. Eszközök tartalmazzák a Media Encoder Standard programmaggal és a Media Encoder Premium munkafolyamat vagy elemzési motor, például a Face detector használatával.
+<sup>7</sup>egy blob jelenleg legfeljebb 5 TB-os Azure Blob Storage-ban támogatott maximális méretét. További korlátozások érvényesek a Media Services a szolgáltatás által használt Virtuálisgép-méretek alapján. A méretkorlát a feltöltött fájlokat, és a fájlokat, a Media Services – feldolgozás (kódolás és elemzése) eredményeként létrehozott első vonatkozik. Ha a forrásfájl 260-GB nál nagyobb, a feladat valószínűleg sikertelen lesz. 
 
-A maximális méretet, amely egy blob támogatott jelenleg legfeljebb 5 TB-os Azure Blob Storage-ban. További korlátozások érvényesek a Media Services a szolgáltatás által használt Virtuálisgép-méretek alapján. Az alábbi táblázatban látható a korlátok a media szolgáltatás számára fenntartott egységek S1, S2 és S3. Ha a forrásfájl mérete nagyobb, mint a tábla meghatározott keretek, a kódolási feladat sikertelen lesz. Ha hosszú időtartam 4K felbontása forrásai kódol, meg kell S3 szintű media szolgáltatás számára fenntartott egységek használata szükséges a teljesítmény elérése érdekében. Ha 4K tartalom, amely nagyobb, mint az S3 szintű media szolgáltatás számára fenntartott egységek 260 GB-os korlátot, írjon nekünk az amshelp@microsoft.com a támogatásához a lehetséges kezelésükre.
+Az alábbi táblázatban látható a korlátok a media szolgáltatás számára fenntartott egységek S1, S2 és S3. Ha a forrásfájl mérete nagyobb, mint a tábla meghatározott keretek, a kódolási feladat sikertelen lesz. Ha hosszú időtartam 4K felbontása forrásai kódol, meg kell S3 szintű media szolgáltatás számára fenntartott egységek használata szükséges a teljesítmény elérése érdekében. Ha 4K tartalom, amely nagyobb, mint az S3 szintű media szolgáltatás számára fenntartott egységek 260 GB-os korlátot, írjon nekünk az amshelp@microsoft.com a támogatásához a lehetséges kezelésükre.
 
-| Media szolgáltatás számára fenntartott egység típusa | Maximális bemeneti mérete (GB)| 
-| --- | --- | 
-|S1 | 325|
-|S2 | 640|
-|S3 | 260|
+|Media szolgáltatás számára fenntartott egység típusa   |Maximális bemeneti mérete (GB)|
+|---|---|
+|S1 |   26|
+|S2 | 60|
+|S3 |260|

@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 392782310d8bc3b38a3dd1349cb1760ca287acd1
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: ac677a7f9586dbe893cbcbc480564aceac0149a0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875589"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147924"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>A Security Center-szolgáltatásokat (július 2019) kivonása
 
@@ -155,7 +155,7 @@ Ez a funkció előzetes verzióban volt, és megszűnik.
 
 ### <a name="edit-security-configurations---new-experience"></a>Biztonsági konfigurációk – új felület szerkesztése
 
-A Security Center támogatja a [vendégen belüli ügynök](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) a közeljövőben, így sokkal gazdagabb szolgáltatáskészlet – például további operációs rendszerekhez és Vendég configuration (a Vendég szabályzatokkal az Azure-integráció szabályzatok). Ez lehetővé teszi nagy mennyiségű vezérlőelemet, és automatikusan alkalmazza az új erőforrásokat is biztosít.
+A Security Center támogatja a [konfigurációs vendégügynök](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) a közeljövőben, így sokkal gazdagabb szolgáltatáskészlet – beleértve az egyéb operációs rendszerekhez és az integráció az Azure-szabályzatok (Vendég-konfiguráció támogatása a Vendég-szabályzatokat). Ez lehetővé teszi nagy mennyiségű vezérlőelemet, és automatikusan alkalmazza az új erőforrásokat is biztosít.
 
 ## Biztonsági és auditálási irányítópultján (az OMS-portált eredetileg használt) Log Analytics-munkaterületek<a name="menu_securityomsdashboard"></a>
 

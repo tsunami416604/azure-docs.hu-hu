@@ -4,27 +4,53 @@ description: Ebben a cikkben megismerheti standard diagnosztikai képességek az
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/26/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 83595bf045de412954c176028babc4f94fcb21e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 02d50b81cb91a74e2cdb039c56195e2a15858ca1
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60612274"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142858"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
-Ha a környezetében az Azure IoT Edge futtatásakor problémákat tapasztal, ezt a cikket útmutatóként használhatja a hibaelhárításhoz és a megoldáshoz. 
+Ha a környezetében az Azure IoT Edge futtatásakor problémákat tapasztal, ezt a cikket útmutatóként használhatja a hibaelhárításhoz és a megoldáshoz.
 
-## <a name="standard-diagnostic-steps"></a>Általános diagnosztikai lépések 
+## <a name="run-the-iotedge-check-command"></a>A iotedge 'ellenőrzése"parancs futtatása
 
-Ha problémát tapasztal, további információ az IoT Edge-eszköz állapotát a tárolónaplók és az üzeneteket, hogy az eszköz áttekintésével. Az ebben a szakaszban szereplő parancsokkal és eszközökkel további információt gyűjthet. 
+Az első lépés az IoT Edge hibaelhárítása során lehet használni a `check` parancsot, amely elvégzi a konfiguráció és a kapcsolat tesztek gyűjteménye felmerülő gyakori problémákra. A `check` parancs [1.0.7 kiadási](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) és újabb verziók.
 
-### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Az IoT Edge Security Manager és a naplók állapotának ellenőrzéséhez:
+Futtathatja a `check` paranccsal a következőképpen, vagy tartalmaznak a `--help` jelzőt a beállítások teljes listáját lásd:
+
+* Linux:
+
+  ```bash
+  sudo iotedge check
+  ```
+
+* Windows rendszeren:
+
+  ```powershell
+  iotedge check
+  ```
+
+Ellenőrzi az eszköz által futtatott típusú besorolva is:
+
+* Konfigurációjának ellenőrzései: Megvizsgálja, amely megakadályozhatja, hogy a peremhálózati eszközök csatlakoztatása a felhőhöz, beleértve a problémák részleteit *config.yaml* és a tároló-motor.
+* Kapcsolatok ellenőrzése: Ellenőrzi az IoT Edge-futtatókörnyezet férhet hozzá az állomás eszközön portok és az IoT Hub az IoT Edge-összetevők csatlakozhatnak.
+* Éles készültség-ellenőrzés: Ajánlott üzemi jelenségeket, például az eszköz hitelesítésszolgáltató (CA) tanúsítvány és a modul naplófájl-konfiguráció keres.
+
+Diagnosztikai ellenőrzéseket teljes listáját lásd: [beépített funkciók hibaelhárítási](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md).
+
+## <a name="standard-diagnostic-steps"></a>Általános diagnosztikai lépések
+
+Ha problémát tapasztal, további az IoT Edge-eszköz állapotáról a tárolónaplók és az üzeneteket, hogy az eszköz áttekintésével. Az ebben a szakaszban szereplő parancsokkal és eszközökkel további információt gyűjthet.
+
+### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Az IoT Edge Security Manager és a naplók állapotának ellenőrzése
 
 Linux:
 - Az IoT Edge-biztonságkezelő állapotának megtekintése:
@@ -72,20 +98,13 @@ Windows rendszeren:
 - A naplók az IoT Edge-biztonságkezelő megtekintéséhez:
 
    ```powershell
-   # Displays logs from today, newest at the bottom.
- 
-   Get-WinEvent -ea SilentlyContinue `
-   -FilterHashtable @{ProviderName= "iotedged";
-     LogName = "application"; StartTime = [datetime]::Today} |
-   select TimeCreated, Message |
-   sort-object @{Expression="TimeCreated";Descending=$false} |
-   format-table -autosize -wrap
+   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
    ```
 
 ### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Ha az IoT Edge biztonsági kezelője nem fut, ellenőrizze a yaml-konfigurációs fájl
 
 > [!WARNING]
-> YAML-fájlok nem lehetnek identation lapokon. Használja helyette a 2 szóközöket.
+> YAML-fájlok nem lehetnek behúzás lapokat. Használja helyette a 2 szóközöket.
 
 Linux:
 
@@ -332,7 +351,7 @@ Az Azure IoT Edge lehetővé teszi, hogy az Azure-felhőben az IoT Hub támogato
 
 IoT Edge biztosít továbbfejlesztett konfigurálása az Azure IoT Edge-futtatókörnyezet, és üzembe helyezett modulokat, az továbbra is függ az alapul szolgáló machine és a hálózati konfiguráció. Ezért rendkívül fontos biztosítani kell a megfelelő hálózati és tűzfalszabályok vannak beállítva a kommunikációs felhőbe biztonságos peremhálózati. Az alábbi táblázat használhatja útmutatóként tűzfalszabályok konfigurálása az alapul szolgáló kiszolgálók az Azure IoT Edge-futtatókörnyezet üzemeltető:
 
-|Protokoll|Port|bejövő|Kimenő|Útmutatás|
+|Protocol|Port|bejövő|Kimenő|Útmutatás|
 |--|--|--|--|--|
 |MQTT|8883|TILTOTT (alapértelmezett)|TILTOTT (alapértelmezett)|<ul> <li>Konfigurálja a kimenő (kimenő) kell nyílt, amikor az MQTT protokoll használatával.<li>az MQTT 1883 IoT Edge által nem támogatott. <li>Bejövő (bejövő) kapcsolatok le kell tiltani.</ul>|
 |AMQP|5671|TILTOTT (alapértelmezett)|NYÍLT (alapértelmezett)|<ul> <li>Alapértelmezett kommunikációs protokollt az IoT Edge-hez. <li> Nyissa meg kell, ha más támogatott protokollok nincs konfigurálva az Azure IoT Edge vagy az AMQP protokoll kívánt kell konfigurálni.<li>az AMQP 5672 IoT Edge által nem támogatott.<li>Tiltsa le ezt a portot, ha az Azure IoT Edge használja egy másik IoT Hub protokoll támogatott.<li>Bejövő (bejövő) kapcsolatok le kell tiltani.</ul></ul>|

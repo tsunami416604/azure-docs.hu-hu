@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 869d2105ccf635a46a21e9b7f382ddbef713d68b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f66a2699b6d29f10633b4853801240f0590ff918
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483417"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147640"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Annak eldöntése, mikor érdemes használni az Azure-Blobok, az Azure Files és az Azure-lemezek
 A Microsoft Azure tárolásához és eléréséhez, az adatok a felhőben az Azure Storage számos funkciót biztosít. Ez a cikk ismerteti az Azure-fájlok, Blobok és lemezek, és célja, hogy ezek a szolgáltatások közötti választás érdekében.
@@ -53,7 +53,7 @@ Az alábbi táblázat hasonlítja össze az Azure Files Azure-lemezek.
 ||||  
 |-|-|-|  
 |**Attribútum**|**Azure-lemezek**|**Az Azure Files**|  
-|Hatókör|Csak egyetlen virtuális gép|Több virtuális gép között megosztott hozzáférés|  
+|Scope|Csak egyetlen virtuális gép|Több virtuális gép között megosztott hozzáférés|  
 |A pillanatképek és másolása|Igen|Igen|  
 |Konfiguráció|A virtuális gép indításakor csatlakoztatva|Miután elindult a virtuális gép csatlakoztatva|  
 |Hitelesítés|Beépített|Net use beállítása|  

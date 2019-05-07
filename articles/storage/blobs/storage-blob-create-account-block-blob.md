@@ -1,20 +1,21 @@
 ---
 title: Hozzon létre egy block blob storage-fiók – Azure Storage |} A Microsoft Docs
 description: Bemutatja, hogyan hozhat létre egy Azure block blob storage-fiókot a prémium szintű teljesítményt nyújt.
+author: tamram
+services: storage
 ms.service: storage
 ms.topic: conceptual
 ms.date: 03/23/2019
-author: twooley
-ms.author: twooley
+ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f4d3e3ad923b6a603902bc007107cb41dae8cf6c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 9d8fb8f5f470dc47088efb30b7f823a0b8c624c8
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400465"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141003"
 ---
-# <a name="create-a-block-blob-storage-account"></a>Block blob storage-fiók létrehozása
+# <a name="create-a-block-blob-storage-account"></a>Blokkblob-tárfiók létrehozása
 
 A block blob storage-fiók típusú használatával hozhatók létre a blokkblobok használatát támogatják a prémium szintű teljesítményt nyújt. Ez a tárfióktípus magas tranzakciók díjak a számítási feladatokhoz van optimalizálva. vagy igénylő nagyon gyors elérés időpontját. Ez a cikk bemutatja, hogyan block blob storage-fiók létrehozása az Azure Portalon, az Azure CLI-vel vagy az Azure PowerShell használatával.
 

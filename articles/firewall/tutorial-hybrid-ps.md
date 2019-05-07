@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 3/18/2019
+ms.date: 5/3/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 7beb3d986b016688c4ee0a512b9406dbf3dfbb40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 608674d6e049c71d22c7bf91f37fcb16ffccc581
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60194246"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65144923"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
 
@@ -61,9 +61,9 @@ Három alapvető követelménynek kell teljesülnie, hogy ez a forgatókönyv me
 Az útvonalak létrehozásával kapcsolatos információkért lásd az oktatóanyag [Útvonalak létrehozása](#create-the-routes) című szakaszát.
 
 >[!NOTE]
->Az Azure tűzfal közvetlen internetkapcsolattal kell rendelkeznie. Alapértelmezés szerint AzureFirewallSubnet engedélyeznie kell a csak egy UDR 0.0.0.0/0, és a **NextHopType** értéket állítja be **Internet**.
+>Az Azure tűzfal közvetlen internetkapcsolattal kell rendelkeznie. A AzureFirewallSubnet megtanulja az alapértelmezett útvonalat a BGP-n keresztül a helyszíni hálózathoz, ha meg kell felülbírálja ezt az egy 0.0.0.0/0 UDR-a **NextHopType** értéket állítja be **Internet** közvetlen fenntartása Internetkapcsolat. Alapértelmezés szerint az Azure-tűzfal nem támogatja a kényszerített bújtatás a helyszíni hálózathoz.
 >
->Ha engedélyezi a kényszerített bújtatás a helyi ExpressRoute- vagy Alkalmazásátjáró-n keresztül, szükség lehet explicit módon konfigurálhatja a NextHopType értékre van állítva egy UDR 0.0.0.0/0 **Internet** , és társíthatja azt a AzureFirewallSubnet. Ha a szervezet megköveteli, hogy az Azure-tűzfal forgalom kényszerített bújtatás, forduljon a támogatási, hogy azt is engedélyezett az előfizetés, és biztosítják a szükséges internetkapcsolattal.
+>Azonban ha a konfigurációt igényel a helyszíni hálózathoz a kényszerített bújtatás, a Microsoft támogatja eseti alapon. Úgy, hogy az eset, forduljon az ügyfélszolgálathoz. Ha elfogadja, hogy lesz engedélyezett az előfizetés, és biztosítják a szükséges internetkapcsolattal.
 
 >[!NOTE]
 >Közvetlenül társviszonyban lévő virtuális hálózatok közötti adatforgalmat közvetlenül akkor is, ha egy udr-t az alapértelmezett átjáróként Azure tűzfal mutat. Ebben a forgatókönyvben a tűzfalon az alhálózat alhálózati forgalom küldésére, egy UDR a cél alhálózat hálózati előtagot mindkét alhálózat a explicit módon kell tartalmaznia.
@@ -138,7 +138,7 @@ $VNetHub = New-AzVirtualNetwork -Name $VNetnameHub -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetHubPrefix -Subnet $FWsub,$GWsub
 ```
 
-Kérjen egy nyilvános IP-cím kiosztását a virtuális hálózat számára létrehozni kívánt VPN-átjáróhoz. Látható, hogy az *AllocationMethod* értéke **Dynamic**. A használni kívánt IP-címet nem adhatja meg. Ennek kiosztása a VPN-átjáró számára dinamikusan történik. 
+Kérelem, amelyet ki fog létrehozni a virtuális hálózat VPN-átjáró nyilvános IP-címet. Látható, hogy az *AllocationMethod* értéke **Dynamic**. A használni kívánt IP-címet nem adhatja meg. Ennek kiosztása a VPN-átjáró számára dinamikusan történik.
 
   ```azurepowershell
   $gwpip1 = New-AzPublicIpAddress -Name $GWHubpipName -ResourceGroupName $RG1 `
@@ -177,7 +177,7 @@ $VNetOnprem = New-AzVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1
 -Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
 ```
 
-Kérjen egy nyilvános IP-cím kiosztását a virtuális hálózat számára létrehozni kívánt átjáróhoz. Látható, hogy az *AllocationMethod* értéke **Dynamic**. A használni kívánt IP-címet nem adhatja meg. Ennek kiosztása az átjáró számára dinamikusan történik. 
+Kérelmek kiosztását az fog létrehozni a virtuális hálózati átjáró nyilvános IP-címet. Látható, hogy az *AllocationMethod* értéke **Dynamic**. A használni kívánt IP-címet nem adhatja meg. Ennek kiosztása az átjáró számára dinamikusan történik.
 
   ```azurepowershell
   $gwOnprempip = New-AzPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
@@ -471,7 +471,7 @@ A **VM-Onprem** virtuális gépről nyisson meg egy távoli asztalt a **VM-spoke
 
 A kapcsolatnak sikeresen létre kell jönnie, és be kell tudnia jelentkezni a választott falhasználónévvel és jelszóval.
 
-Ezzel ellenőrizte, hogy a tűzfalszabályok működnek-e:
+Így most már ellenőrizte, hogy a tűzfalszabályok működnek:
 
 <!---- You can ping the server on the spoke VNet.--->
 - Megkeresheti a küllő virtuális hálózat a webkiszolgálón.

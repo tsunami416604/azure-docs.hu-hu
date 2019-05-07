@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: SAML 2.0 identitásszolgáltató használata egyszeri bejelentkezéshez a |} A Microsoft Docs'
+title: 'Azure AD Connect: SAML 2.0 identitásszolgáltató használata egyszeri bejelentkezéshez – Azure-ban'
 description: Ez a dokumentum ismerteti, hogy a megfelelő SAML 2.0 identitásszolgáltató használata egyszeri bejelentkezéshez a.
 services: active-directory
 author: billmath
@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1870137505b3d00ee6ed31595050908c970c444
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e25060152577e7947a78aa0e8d78c85cc7fd2fad
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60350932"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138343"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Egyszeri bejelentkezéshez a SAML 2.0 identitásszolgáltató (IdP) használata
 
@@ -41,7 +41,7 @@ A Microsoft támogatja a bejelentkezést egy Microsoft felhőszolgáltatásra, p
 >     - Levelezőprogramján Windows 8 és Windows 8.1 Levelezőprogramján
 >     - A Windows 10-es Mail ügyfél
 
-Bejelentkezés a példánkban a SAML 2.0 identitásszolgáltató a más ügyfelek számára nem érhetők el. Például nem sikerül bejelentkezni a szolgáltatásba a SAML 2.0 identitásszolgáltató van konfigurálva, az egyszeri bejelentkezés az a Lync 2010 asztali ügyfélhez.
+Bejelentkezés a példánkban a SAML 2.0 identitásszolgáltató a más ügyfelek számára nem érhetők el. Például nem sikerül bejelentkezni a szolgáltatásba a SAML 2.0 identitásszolgáltató van konfigurálva, az egyszeri bejelentkezés a Lync 2010 asztali ügyfélhez.
 
 ## <a name="azure-ad-saml-20-protocol-requirements"></a>Az Azure AD SAML 2.0 protokoll követelményei
 Ez a dokumentum tartalmazza a protokollt és formázását, hogy a SAML 2.0 identitásszolgáltató az Azure ad-vel való bejelentkezés engedélyezése (például az Office 365) egy vagy több Microsoft felhőszolgáltatáshoz összevonásához musí implementovat üzenet részletes követelményeket. A SAML 2.0 függő entitás (SP-STS), egy Microsoft felhőszolgáltatásra, ebben a forgatókönyvben használt Azure ad-ben.
@@ -71,8 +71,8 @@ Az SAML-válasz üzenet belül a az aláírás csomópont az üzenet magát a di
 Kötések paraméterei szállítással kapcsolatos kommunikáció szükséges. Az alábbi követelmények vonatkoznak a kötések
 
 1. HTTPS a szükséges átviteli.
-2.  Azure ad-ben HTTP POST szükséges jogkivonat beküldése a bejelentkezés során
-3.  Az Azure AD a hitelesítési kérelem az identitásszolgáltató kijelentkezési üzenetet az identitásszolgáltató és az ÁTIRÁNYÍTÁSI fogja használni a HTTP POST.
+2.  Jogkivonat beküldése során jelentkezzen be Azure ad-ben HTTP POST igényel.
+3.  Az Azure AD a hitelesítési kérelmet az identitásszolgáltató és az ÁTIRÁNYÍTÁSI üzenet az identitásszolgáltató kijelentkezési a HTTP POST fogja használni.
 
 ## <a name="required-attributes"></a>Szükséges attribútumok
 A táblázat azokat az attribútumokat követelmények az SAML 2.0-üzenetben.
@@ -258,7 +258,7 @@ A Microsoft közzétett egy eszköz, amellyel tesztelheti a SAML 2.0-alapú szem
 2.  Kattintson a telepítés gombra a kezdéshez letöltése és telepítése az eszközre.
 3.  Válassza ki a "Nem tudok összevonás az Office 365, Azure vagy az Azure Active Directory használó egyéb szolgáltatásokba".
 4.  Ha az eszközt letölti és futtatja, látni fogja a kapcsolódási diagnosztikát ablakot. Az eszköz fog végigvezeti az összevonási kapcsolat tesztelése.
-5.  A Connectivity Analyzer nyílik meg, hogy jelentkezzen be, adja meg a hitelesítő adatait az egyszerű felhasználónév a tesztelt, a SAML 2.0 Identitásszolgáltató: ![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
+5.  A Connectivity Analyzer nyílik meg, hogy jelentkezzen be, adja meg a hitelesítő adatokat a felhasználó egyszerű teszteli, a SAML 2.0 Identitásszolgáltató: ![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
 6.  Az összevonási teszt bejelentkezési ablakban megadandó egy fiók nevét és jelszavát az Azure AD-bérlővel, amely konfigurálva van a SAML 2.0 identitásszolgáltató lesz összevonva. Az eszköz megkísérli a bejelentkezési hitelesítő adatokat használ, és a bejelentkezési kísérlet során végrehajtott tesztek részletes eredményét biztosítja kimenetként.
 ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
 7. Ezt az ablakot a tesztelés sikertelen eredményt jeleníti meg. Kattintva tekintse át a részletes eredmények minden egyes végrehajtott vizsgálat eredményei kapcsolatos információk jelennek meg. Az eredményeket, és annak érdekében, hogy megoszthatja azokat lemezre mentheti is.

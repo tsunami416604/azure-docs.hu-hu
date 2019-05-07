@@ -12,31 +12,36 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2018
+ms.date: 05/05/2019
 ms.author: barclayn
-ms.openlocfilehash: da165634f5323183b633ee3c8a59e0d2607e8ef1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f4b2506781df5572ddaff8dda34bf3edab8987be
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60586517"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145200"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban
+Ez a cikk bemutatja a bevált biztonsági gyakorlatokat a virtuális gépek és az operációs rendszerek.
+
+Az ajánlott eljárások a vélemény konszenzus alapulnak, és dolgozhat az aktuális Azure platform olyan képességeit, és a szolgáltatáskészletek. Vélemények és technológiák idővel változhat, mert ez a cikk változásokkal frissülni fog.
 
 A legtöbb infrastruktúra-szolgáltatás (IaaS) esetben [Azure-beli virtuális gépek (VM)](https://docs.microsoft.com/azure/virtual-machines/) a fő munkaterhelés olyan szervezeteknek, amelyek használják a felhő számítási rendszer. A tény, egyértelmű az [hibrid forgatókönyvek](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) szervezetek számára, ahová a lassú számítási feladatok migrálása a felhőbe. Ilyen esetben hajtsa végre a [IaaS általános biztonsági szempontjai](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx), és a alkalmazni ajánlott biztonsági eljárások a virtuális gépek.
 
+## <a name="shared-responsibility"></a>Közös felelősség
 A biztonsági felelősséget a felhőszolgáltatás típusát alapul. Az alábbi táblázat foglalja össze a Microsoft és az Ön felelőssége egyenleg:
 
 ![A felelősségi területeket](./media/azure-security-iaas/sec-cloudstack-new.png)
 
 Biztonsági követelmények számos tényező befolyásolja, többek között a különböző típusú számítási változhat. Ajánlott eljárások valamelyikét biztonságossá teheti a saját maga rendszereit. Mint minden más a biztonság hogy válassza ki a megfelelő beállításokat, és hogyan a megoldások is kiegészíti egymást hézagok kitöltésével.
 
-Ez a cikk bemutatja a bevált biztonsági gyakorlatokat a virtuális gépek és az operációs rendszerek.
-
-Az ajánlott eljárások a vélemény konszenzus alapulnak, és dolgozhat az aktuális Azure platform olyan képességeit, és a szolgáltatáskészletek. Vélemények és technológiák idővel változhat, mert ez a cikk változásokkal frissülni fog.
-
 ## <a name="protect-vms-by-using-authentication-and-access-control"></a>Hitelesítés és hozzáférés-vezérlés használatával virtuális gépek védelme
 Az első lépés a virtuális gépek védelmére, győződjön meg arról, hogy csak jogosult felhasználók állítsa be új virtuális gépek és virtuális gépek hozzáférést.
+
+> [!NOTE]
+> Az Azure-ban Linux rendszerű virtuális gépek biztonságának javítása érdekében integrálható az Azure AD-hitelesítés. Ha használ [Linux rendszerű virtuális gépekhez az Azure AD-hitelesítés](../virtual-machines/linux/login-using-aad.md), központilag szabályozhatja és engedélyezheti vagy megtagadhatja a hozzáférést a virtuális gépek olyan házirendek kényszerítését.
+>
+>
 
 **Ajánlott eljárás**: Virtuálisgép-hozzáférés szabályozása.   
 **Részletes**: Használat [Azure házirendek](../azure-policy/azure-policy-introduction.md) egyezmények az erőforrások létrehozásához a szervezetben, és létrehozzon testreszabott házirendeket. Ezek a szabályzatok alkalmazása erőforrások, például [erőforráscsoportok](../azure-resource-manager/resource-group-overview.md). Virtuális gépek egy erőforráscsoporthoz tartozó öröklik a rájuk vonatkozó szabályzatoknak.
@@ -102,6 +107,9 @@ Windows Update segítségével, hagyja a Windows Update automatikus beállítás
 **Ajánlott eljárás**: Rendszeres időközönként, telepítse újra a virtuális gépek kényszerített egy friss az operációsrendszer-verziót.   
 **Részletes**: Adja meg a virtuális Gépet egy [Azure Resource Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md) így könnyen ugyanakkor azt. Egy sablon használatával biztosítja a javított és biztonságos virtuális gép szükség esetén.
 
+**Ajánlott eljárás**: Biztonsági frissítések gyorsan virtuális gépekre vonatkozik.   
+**Részletes**: Az Azure Security Center (ingyenes vagy Standard szintű) használatával [azonosíthatja a hiányzó biztonsági frissítések, és alkalmazhatja ezeket a](../security-center/security-center-apply-system-updates.md).
+
 **Ajánlott eljárás**: Telepítse a legújabb biztonsági frissítéseket.   
 **Részletes**: Az első számítási feladatokat, hogy ügyfeleink az Azure-bA néhány labs és kívülre irányuló rendszerek. Az Azure-beli virtuális gépek üzemeltetéséhez, alkalmazásokat vagy szolgáltatásokat, kell lennie az interneten érhető el, ha éberen javítással kapcsolatban. Javítás az operációs rendszer mellett. A külső alkalmazások veszéllyel biztonsági réseket is vezethet problémákat, amelyek elkerülhető, ha a helyes javításkezelőhöz van beállítva.
 
@@ -165,6 +173,18 @@ Amikor az Azure Disk Encryption alkalmazza, a következő üzleti igényekre is 
 
 - IaaS virtuális gépek biztonságosak, iparági szabványnak megfelelő titkosítási technológia szervezeti biztonsági és megfelelőségi követelmények teljesítésére keresztül inaktív.
 - IaaS virtuális gépek indítsa el az ügyfél által felügyelt kulcsok és szabályzatok, és használatuk a key vaultban lévő naplózhatók.
+
+## <a name="restrict-direct-internet-connectivity"></a>Közvetlen internetkapcsolattal korlátozása
+Figyelheti, és korlátozza a virtuális gép közvetlen internetkapcsolattal. A támadók folyamatosan vizsgálata a nyilvános IP-címtartományok nyitott felügyeleti portokat és próbálja meg "egyszerű" támadásoktól, például közös jelszavak és ismert veszéllyel biztonsági rések. Az alábbi táblázat ezeket a támadások elleni védelme érdekében ajánlott eljárásokat:
+
+**Ajánlott eljárás**: Hogy elkerülése érdekében nem szándékos hálózati útválasztást és a biztonság.   
+**Részletes**: Az RBAC használatával győződjön meg arról, hogy csak a központi hálózati csoport rendelkezik-e a hálózati erőforrások számára.
+
+**Ajánlott eljárás**: Azonosíthatja és javíthatja az elérhető virtuális gépek, amelyek engedélyezik a hozzáférést a "bármely" forrás IP-cím.   
+**Részletes**: Az Azure Security Center. A Security Center javasolni fogja, hogy az internet felé néző végpontok hozzáférésének korlátozása, ha bármely hálózati biztonsági csoport egy vagy több bejövő szabályt, amely engedélyezi a hozzáférést a "bármely" forrás IP-címről. A Security Center javasolni fogja, hogy ezek a bejövő szabályok szerkesztése [hozzáférés korlátozása](../security-center/security-center-restrict-access-through-internet-facing-endpoints.md) forrás IP-címek ténylegesen szükségük van rá.
+
+**Ajánlott eljárás**: Korlátozza a felügyeleti portokat (RDP, SSH).   
+**Részletes**: [Virtuálisgép-hozzáférés – igény (szerinti JIT)](../security-center/security-center-just-in-time.md) zárolását, így az Azure virtuális gépekre, csökkentve a támadásokkal szembeni sérülékenységet ugyanakkor könnyű hozzáférést biztosít arra, hogy szükség esetén a virtuális gépekhez csatlakozhat a bejövő forgalom használható. JIT engedélyezése esetén a Security Center érkező forgalmat zárol az Azure-beli virtuális gépek hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt. Kiválaszthatja a portokat a virtuális gépen, amelyre a bejövő forgalom lesz zárolva. Ezeket a portokat az igény szerinti megoldás szabályozza.
 
 ## <a name="next-steps"></a>További lépések
 Lásd: [Azure ajánlott biztonsági eljárások és minták](security-best-practices-and-patterns.md) további ajánlott biztonsági eljárások szeretne használni, amikor a tervezése, telepítése, és a felhőalapú megoldások kezelése az Azure használatával.

@@ -4,14 +4,14 @@ description: További információk az SQL-szintaxis, adatbázis-tervezésben é
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: 04a88558e3aea33c6d99bd0e4f1354c4316f5529
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a5cc6bfca67f3d90467fa2339bc991c1f0bbeadf
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61054128"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148953"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL lekérdezési példák
 
@@ -139,14 +139,14 @@ A lekérdezés eredményeit a következők:
     }]
 ```
 
-A következő lekérdezés a család adja vissza a megadott nevek a gyermekek amelynek `id` megegyezik `WakefieldFamily`, kategória szerint rendezett.
+A következő lekérdezés a család adja vissza a megadott nevek a gyermekek amelynek `id` megegyezik `WakefieldFamily`, a tartózkodási város szerint rendezett.
 
 ```sql
     SELECT c.givenName
     FROM Families f
     JOIN c IN f.children
     WHERE f.id = 'WakefieldFamily'
-    ORDER BY f.grade ASC
+    ORDER BY f.address.city ASC
 ```
 
 Az eredmények a következők:
@@ -314,6 +314,70 @@ Az eredmények a következők:
     ]
 ```
 
+## <a id="DistinctKeyword"></a>DISTINCT kulcsszó
+
+A DISTINCT kulcsszó használata esetén nem a lekérdezés leképezése az ismétlődéseket.
+
+```sql
+SELECT DISTINCT VALUE f.lastName
+FROM Families f
+```
+
+Ebben a példában a lekérdezés-projektek, minden egyes Vezetéknév értékeit.
+
+Az eredmények a következők:
+
+```json
+[
+    "Andersen"
+]
+```
+
+Kivetítheti az egyedi objektumot is. Ebben az esetben a lastName mező nem létezik a két dokumentumot, egy, a lekérdezés egy üres objektumot ad vissza.
+
+```sql
+SELECT DISTINCT f.lastName
+FROM Families f
+```
+
+Az eredmények a következők:
+
+```json
+[
+    {
+        "lastName": "Andersen"
+    },
+    {}
+]
+```
+
+A DISTINCT is használható a leképezésben allekérdezés belül:
+
+```sql
+SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
+FROM f
+```
+
+Ez a lekérdezés-projektek, az ismétlődő eltávolítja minden gyermek givenName tartalmazó tömb. A tömb ChildNames aliasneve, és a külső lekérdezésben előre jelzett.
+
+Az eredmények a következők:
+
+```json
+[
+    {
+        "id": "AndersenFamily",
+        "ChildNames": []
+    },
+    {
+        "id": "WakefieldFamily",
+        "ChildNames": [
+            "Jesse",
+            "Lisa"
+        ]
+    }
+]
+```
+
 ## <a name="aliasing"></a>Aliasképző
 
 Így explicit módon alias értékek lekérdezésekben. Ha a lekérdezés két tulajdonság azonos nevű, használja a aliasképző egyikét vagy mindkettőt a Tulajdonságok átnevezése, így azok az előre jelzett eredmény van használatát.
@@ -380,7 +444,7 @@ Az eredmények a következők:
         }
       ],
       [
-        {
+       {
             "familyName": "Merriam",
             "givenName": "Jesse",
             "gender": "female",
@@ -599,7 +663,7 @@ Használja a?? operátor hatékonyan ellenőrzéséhez egy tulajdonságot egy el
 
 ## <a id="TopKeyword"></a>TOP operátor
 
-A felső kulcsszó adja vissza az első `N` nem meghatározott sorrendben legyenek a lekérdezési eredmények száma. Az ajánlott eljárás használ a felső az ORDER BY záradékkal korlátozza az első eredményeket `N` rendezett értékek száma. Ezekkel a záradékokkal két kombinálásával az egyetlen módja lehetővé teszi a kiszámítható jelzi, amely sorok felső hatással van. 
+A felső kulcsszó adja vissza az első `N` nem meghatározott sorrendben legyenek a lekérdezési eredmények száma. Az ajánlott eljárás használ a felső az ORDER BY záradékkal korlátozza az első eredményeket `N` rendezett értékek száma. Ezekkel a záradékokkal két kombinálásával az egyetlen módja lehetővé teszi a kiszámítható jelzi, amely sorok felső hatással van.
 
 FELSŐ is használhatja, vagy egy változó értéke a paraméteres lekérdezések használatával egy állandó értékkel, az alábbi példában látható módon. További információkért lásd: a [paraméterezett lekérdezések](#parameterized-queries) szakaszban.
 
@@ -679,6 +743,65 @@ Az eredmények a következők:
       }
     ]
 ```
+
+Emellett a több tulajdonságot is rendezés. A lekérdezéshez, amely több tulajdonság alapján rendezi egy [összetett index](index-policy.md#composite-indexes). Vegye figyelembe a következő lekérdezést:
+
+```sql
+    SELECT f.id, f.creationDate
+    FROM Families f
+    ORDER BY f.address.city ASC, f.creationDate DESC
+```
+
+Ez a lekérdezés lekéri a család `id` növekvő sorrendben az városa nevétől. Ha több elem az városa névvel rendelkezik, a lekérdezés rendezés lesz a `creationDate` csökkenő sorrendben.
+
+## <a id="OffsetLimitClause"></a>ELTOLÁS korlát záradék
+
+ELTOLÁS határértéke egy nem kötelező záradék, hagyja ki, majd vennie néhány a lekérdezésből származó értékek száma. Az ELTOLÁS száma és a korlát a korlát ELTOLÁS záradékban szükségesek.
+
+ELTOLÁS KORLÁTOT egy ORDER BY záradékkal együtt kell használni, amikor az eredményhalmaz kihagyása végrehajtásával előállítása, és igénybe vehet a rendezett értékekhez. Nincs ORDER BY záradék használata esetén azt eredményezi értékek determinisztikus sorrendjét.
+
+Ha például a következő lekérdezés, amely kihagyja az első értékét adja vissza (a legerősebbtől a tartózkodási város nevét a) a második érték:
+
+```sql
+    SELECT f.id, f.address.city
+    FROM Families f
+    ORDER BY f.address.city
+    OFFSET 1 LIMIT 1
+```
+
+Az eredmények a következők:
+
+```json
+    [
+      {
+        "id": "AndersenFamily",
+        "city": "Seattle"
+      }
+    ]
+```
+
+A következő lekérdezés, amely kihagyja az első érték második értéket adja vissza (rendelés) nélkül:
+
+```sql
+   SELECT f.id, f.address.city
+    FROM Families f
+    OFFSET 1 LIMIT 1
+```
+
+Az eredmények a következők:
+
+```json
+    [
+      {
+        "id": "WakefieldFamily",
+        "city": "Seattle"
+      }
+    ]
+```
+
+
+
+
 ## <a name="scalar-expressions"></a>Skaláris kifejezések
 
 A SELECT záradékban skaláris kifejezések állandók, számtani kifejezéseket és logikai kifejezéseket hasonlóan támogatja. A következő lekérdezés skaláris kifejezést használ:
@@ -1018,7 +1141,7 @@ Az alábbi példa egy UDF-elem tárolóban regisztrálja a Cosmos DB-adatbázisb
        {
            Id = "REGEX_MATCH",
            Body = @"function (input, pattern) {
-                       return input.match(pattern) !== null;
+                      return input.match(pattern) !== null;
                    };",
        };
 

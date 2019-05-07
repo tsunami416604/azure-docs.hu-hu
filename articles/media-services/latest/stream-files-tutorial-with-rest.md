@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: 54e52cfc60c42cc48a5c2d33cc6b7e64e75cf27c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 15b2408113d8bd19d2e988643442ac5e3b305237
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707647"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149209"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Oktatóanyag: URL-cím alapján egy távoli fájl kódolása és streamelése a videó – REST
 
@@ -226,7 +226,7 @@ A feladat végrehajtása némi időt vesz igénybe, és fontos, hogy értesülj�
 
 A **feladat** általában halad végig a következő állapotok: **Ütemezett**, **várólistán**, **feldolgozása**, **befejezett** (a végleges állapot). Ha a feladat hibát észlelt, a **Hiba** állapot jelenik meg. Ha a feladat megszakítás alatt áll, a **Megszakítás**, a megszakítás befejeződése után pedig a **Megszakítva** állapot jelenik meg.
 
-#### <a name="job-error-codes"></a>Feladat-hibakódok
+#### <a name="job-error-codes"></a>Feladathibakódok
 
 Lásd: [hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
@@ -364,7 +364,7 @@ Hajtsa végre a következő CLI-parancsot:
 az group delete --name amsResourceGroup
 ```
 
-## <a name="provide-feedback"></a>Visszajelzés küldése
+## <a name="ask-questions-give-feedback-get-updates"></a>Tegyen fel kérdéseket, küldje el visszajelzését, frissítések beszerzése
 
 Tekintse meg a [Azure Media Services-Közösség](media-services-community.md) kérdések, küldje el visszajelzését, és tudnivalók a Media Services-frissítések különböző módon olvashatja.
 

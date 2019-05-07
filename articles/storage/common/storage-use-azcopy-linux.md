@@ -2,18 +2,19 @@
 title: Másolja, vagy az adatok áthelyezése az Azure Storage az Azcopyval Linux rendszeren |} A Microsoft Docs
 description: Linux-segédprogram az AzCopy segítségével áthelyezi vagy másolhat blob és a fájl tartalmát a. Adatok másolása az Azure Storage a helyi fájlokból vagy adatmásolás belül vagy tárfiókok között. Egyszerűen migrálhatja az adatokat az Azure Storage.
 services: storage
-author: tamram
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 04/26/2018
-ms.author: tamram
+ms.author: normesta
+ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: ad6d7a60700727b73b87a78e364fde3fa1caa8c3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9e97171d493e452f18bf805defad7ef6f480af0b
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572567"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149018"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Adatok áthelyezése az Azcopyval Linux rendszeren
 

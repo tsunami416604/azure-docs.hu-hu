@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/17/2019
+ms.date: 05/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 8fb1d0083796671119de2b4d7feefe738b602fe2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed387f7038c5dee1a1685c918abcae49942cd55d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60497223"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148849"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Az AKS fürtteljesítmény és az Azure Monitor-tárolókhoz ismertetése 
 Az Azure monitorral tárolók segítségével a teljesítmény diagramokat és az állapot az Azure Kubernetes Service (AKS)-fürtök két perspektíva adatai, közvetlenül az AKS-fürt vagy az Azure-ból összes AKS-fürt az előfizetéshez, a számítási feladat figyeléséhez Ez a figyelő. Megtekintése az Azure Container Instances (ACI) esetén is lehetséges egy adott AKS-fürt monitorozására.
@@ -27,7 +27,19 @@ A cikknek a segítségével megismerheti, hogyan segít gyorsan felmérheti, kiv
 
 A tárolók az Azure Monitor engedélyezésével kapcsolatos információkért lásd: [előkészítése az Azure Monitor-tárolókhoz](container-insights-onboard.md).
 
-Az Azure Monitor az előfizetéseken lévő erőforráscsoportok telepített összes figyelt AKS fürt állapotát megjelenítő több fürt nézetet biztosít.  AKS-fürtök észlelt, amely nem a megoldás által figyelt jeleníti meg. Azonnal képes megérteni a fürt állapotát, és innen lefúrhat a csomópont és a tartományvezérlő teljesítmény lapján, vagy keresse meg a fürt teljesítménydiagramok megtekintéséhez.  AKS fürtök felderített és a nem figyelt azonosította engedélyezheti a tetszőleges időpontban, hogy a fürt figyelése.  
+> [!IMPORTANT]
+> AKS-fürt fut a Windows Server 2019 figyelése a tárolók támogatása az Azure Monitor jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Az Azure Monitor az összes figyelt AKS-fürt futtató, Linux és Windows Server 2019 az előfizetéseken lévő erőforráscsoportok telepített állapotát megjelenítő több fürt nézetet biztosít.  AKS-fürtök észlelt, amely nem a megoldás által figyelt jeleníti meg. Azonnal képes megérteni a fürt állapotát, és innen lefúrhat a csomópont és a tartományvezérlő teljesítmény lapján, vagy keresse meg a fürt teljesítménydiagramok megtekintéséhez.  AKS fürtök felderített és a nem figyelt azonosította engedélyezheti a tetszőleges időpontban, hogy a fürt figyelése.  
+
+A Windows Server-fürt figyelése és az Azure Monitor-tárolókhoz képest Linux-fürt fő különbségek a következők:
+
+- Memória RSS metrika nem érhető el a Windows-csomópont és a tárolók 
+- Lemez tárolókapacitás információi nem érhető el Windows-csomópontok
+- Élő naplók támogatás Windows tárolónaplók kivételével érhető el.
+- Csak a pod környezetekben megfigyelt, nem a Docker-környezetekben.
+- Az előzetes kiadással legfeljebb 30 Windows Server-tárolók támogatottak. Ez a korlátozás nem vonatkozik a Linux-tárolókat.  
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
@@ -35,7 +47,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Az Azure Monitor több fürt megtekintése 
 Üzembe helyezett összes AKS-fürt állapotának megtekintéséhez válassza **figyelő** a bal oldali ablaktáblán, az Azure Portalon.  Alatt a **Insights** szakaszban jelölje be **tárolók**.  
 
-![Az Azure Monitor több fürt irányítópultja – példa](./media/container-insights-analyze/azmon-containers-multiview-1018.png)
+![Az Azure Monitor több fürt irányítópultja – példa](./media/container-insights-analyze/azmon-containers-multiview.png)
 
 Az a **fürtök figyelt** lapon is tudja ismerje meg a következőket:
 
@@ -128,11 +140,11 @@ Alkalmazhat [felosztás](../platform/metrics-charts.md#apply-splitting-to-a-char
 
 ## <a name="analyze-nodes-controllers-and-container-health"></a>Csomópontok, a tartományvezérlőket és a tároló állapotának elemzése
 
-Ha úgy vált, hogy **csomópontok**, **tartományvezérlők**, és **tárolók** lap jobb oldalán található az automatikusan megjelennek a tulajdonság panelen.  Látható tulajdonságait, az elem kiválasztva, beleértve a Kubernetes-objektumokat rendszerezéséhez határoz meg feliratok. Kattintson a **>>** összekapcsolása a panelen view\hide a panelen.  
+Ha úgy vált, hogy **csomópontok**, **tartományvezérlők**, és **tárolók** lap jobb oldalán található az automatikusan megjelennek a tulajdonság panelen. Látható tulajdonságait, az elem kiválasztva, beleértve a Kubernetes-objektumokat rendszerezéséhez határoz meg feliratok. Amikor egy Linux-csomópont van kiválasztva, azt is bemutatja a szakaszában **helyi lemezkapacitás** rendelkezésre álló lemezterület és az egyes lemezek, a csomópont számára megjelenő használt százalék. Kattintson a **>>** összekapcsolása a panelen view\hide a panelen. 
 
 ![Példa Kubernetes perspektívák tulajdonságait tartalmazó ablaktáblán](./media/container-insights-analyze/perspectives-preview-pane-01.png)
 
-Kibontja a hierarchia az objektumok, ahogy a Tulajdonságok panelen frissítések alapján a kiválasztott objektum. A panelen is megtekintheti az előre definiált naplókeresések Kubernetes-események kattintva a **nézet Kubernetes eseménynaplók** a panel tetején lévő hivatkozásra. Kubernetes-naplóadatok megtekintésével kapcsolatos további információkért lásd: [keresni a naplókban az adatelemzéshez](container-insights-log-search.md). Amíg a tárolók tekinti át a **tárolók** nézetben látható tároló naplók valós időben. Ez a szolgáltatás és a konfigurációt, és hozzáférést biztosít a szükséges kapcsolatos további információkért lásd: [tároló naplók valós időben az Azure Monitor szolgáltatással tárolók megtekintése](container-insights-live-logs.md). 
+Kibontja a hierarchia az objektumok, ahogy a Tulajdonságok panelen frissítések alapján a kiválasztott objektum. A panelen is megtekintheti az előre definiált naplókeresések Kubernetes-események kattintva a **nézet Kubernetes eseménynaplók** a panel tetején lévő hivatkozásra. Kubernetes-naplóadatok megtekintésével kapcsolatos további információkért lásd: [keresni a naplókban az adatelemzéshez](container-insights-log-search.md). Fürterőforrások tekinti át, miközben tárolónaplók és az események valós időben láthatja. Ez a szolgáltatás és a konfigurációt, és hozzáférést biztosít a szükséges kapcsolatos további információkért lásd: [megtekintése naplók valós időben az Azure Monitor szolgáltatással tárolók](container-insights-live-logs.md). 
 
 Használja a **+ szűrő hozzáadása** lehetőséget az oldal tetején a nézet által az eredmények szűréséhez **szolgáltatás**, **csomópont**, **Namespace**, vagy  **Csomópontkészletek** a szűrő hatókör kiválasztása, után, majd válassza ki az egyik látható értékeket a **érték(ek) kiválasztása** mező.  A szűrés konfigurálása után érvényes globálisan az AKS-fürt bármely szempontjából megtekintése közben.  A képlet csak az egyenlőségjel támogatja.  A találatok további szűkítéséhez az eredményeket a legelső felül további szűrőket adhat hozzá.  Ha például egy szűrő által megadott **csomópont**, a második szűrőt csak lehetővé tenné, hogy válassza ki **szolgáltatás** vagy **Namespace**.  
 
@@ -143,6 +155,10 @@ Megadhat egy szűrőt egy lapon továbbra is alkalmazható, amikor kiválaszt eg
 Váltson a **csomópontok** lapra, és a sor hierarchia követi a Kubernetes hálózatiobjektum-modellje, kezdve a fürt egyik csomópontjához. Bontsa ki a csomópontot, és a csomóponton futó egy vagy több podok is megtekintheti. Ha egynél több tároló van csoportosítva podot, jelennek meg az utolsó sorban a hierarchiában. Hány nem pod kapcsolódó számítási feladatok futnak a gazdagépen, ha a gazdagép processzort vagy a rendelkezésre álló memória mennyisége is megtekintheti.
 
 ![Kubernetes-csomópontot példahierarchia a teljesítmény nézet](./media/container-insights-analyze/containers-nodes-view.png)
+
+A Windows Server 2019 operációs rendszert futtató Windows Server-tárolók a Linux-alapú csomópontokat, a lista összes után jelennek meg. Amikor kibővít egy Windows Server-csomópontra, megtekintheti a podok és a tárolók a csomóponton futó egy vagy több. Ha egy csomópont van kiválasztva, a Tulajdonságok panelen látható verzióadatok ügynök adatainak kivételével, mivel a Windows Server-csomópontok nem rendelkeznek telepített ügynök.  
+
+![Csomópont-hierarchiától például a felsorolt Windows Server-csomópontok](./media/container-insights-analyze/nodes-view-windows.png) 
 
 Az Azure Container Instances virtuális csomópontok a Linux operációs rendszert futtató a listában lévő utolsó AKS fürtcsomópont után jelennek meg.  Amikor kibővít egy ACI virtuális csomópont, egy vagy több ACI podok és tárolók a csomóponton futó megtekintheti.  Metrikák nem összegyűjtött és jelentett csomópontok, csak a podok.
 

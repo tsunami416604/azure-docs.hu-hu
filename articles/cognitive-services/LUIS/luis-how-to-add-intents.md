@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: ed180563ea6138b3b4bab6092b39eeacf9dbf840
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0c42ab44ba317888b982ba7c72f78be4ca73d93c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097041"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148168"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Leképezések meghatározni a felhasználó szándékának beszédmódok hozzáadása
 
@@ -42,16 +42,25 @@ Példa utterances Példák szöveges felhasználói kérdések vagy parancsok. L
 
     A LUIS kisbetűvé alakítja az összes kimondott szöveg, és hozzáadja a jogkivonatok kötőjeleket például szóközt.
 
-## <a name="intent-prediction-discrepancy-errors"></a>Leképezési előrejelzési eltérést észlelt hibák 
+<a name="#intent-prediction-discrepancy-errors"></a>
 
-Előfordulhat, hogy az utterance (kifejezés) megjelölésű a egy leképezési előrejelzés eltérés van a kiválasztott célt és az előrejelzési pontszám között. LUIS azt jelzi, hogy a piros Keretes ez eltérést észlelt a **szándékot feliratú** a sorban található az a példában utterance (kifejezés). 
+## <a name="intent-prediction-errors"></a>Előrejelzési leképezési hibák 
 
-![Képernyőkép a leképezések Részletek lapján utterance (kifejezés) előrejelzés eltérés hibákkal](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
+Egy példa utterance (kifejezés) megjelölésű a szándék előrejelzési hiba a célt a példa utterance (kifejezés) jelenleg a és a képzés során meghatározott előrejelzési célt között lehet. 
 
-Válassza ki a felső navigációs **Train**. Az előrejelzés eltérés van most szűnt.
+Előrejelzési hibát talál az utterance (kifejezés), és kijavíthatja azokat, használja a **szűrő** opció **értékelési** beállítások helytelen és Unclear kombinálva a **nézet** kapcsolójához**Részletes nézet**. 
 
-> [!Note]
-> Ha egy piros vonal alatt egy szót vagy kifejezést a példa utterance (kifejezés), a egy [entitás előrejelzési hiba](luis-how-to-add-example-utterances.md#entity-status-predictions) történt. Javítsa ki kell. 
+![Előrejelzési hibát talál az utterance (kifejezés), és kijavíthatja azokat, használja a Szűrőlehetőség érhető el.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+
+A szűrők és a nézet érvényesek, és példa utterances hibás, a példa utterance (kifejezés) listát jelenít meg a kimondott szöveg és a problémák.
+
+![! [A szűrők és a nézet érvényesek, és példa utterances hibás, a példa utterance (kifejezés) listát jelenít meg a kimondott szöveg és a problémák.] (. / media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+
+Minden sorban a példa utterance (kifejezés), a legközelebbi rivális pontszám, amely a különbség a két pontok az aktuális képzési előrejelzési pontszámának jeleníti meg. 
+
+### <a name="fixing-intents"></a>Leképezések kijavítása
+
+Megtudhatja, hogyan háríthatja el a szándék előrejelzési hibák, használja a [Hálózatösszegzés irányítópult](luis-how-to-use-dashboard.md). A Hálózatösszegzés irányítópult elemzi az aktív verzió utolsó képzésre, és a felső javaslatot tesz a javítsa ki a modell.  
 
 ## <a name="add-a-custom-entity"></a>Egyéni entitás hozzáadása
 

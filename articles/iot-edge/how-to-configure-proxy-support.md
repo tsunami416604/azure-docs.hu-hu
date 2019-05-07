@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4fa5402b87eea969a5a4093000dda06d3cb5675d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 883f6022f3d0f609de2d8f33b0285d8c40b7bee9
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61216246"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142128"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Egy proxykiszolgálón keresztül kommunikáljon az IoT Edge-eszköz konfigurálása
 
@@ -43,22 +43,28 @@ Proxykiszolgáló URL-címeket is a következő formátumban: **protokoll**://**
 
 Az IoT Edge-futtatókörnyezet telepítése egy Linux rendszerű eszközön, konfigurálja a package manager haladhat végig a proxykiszolgáló eléréséhez a telepítési csomagot. Ha például [apt-get paranccsal beállítása egy http-proxy használatára](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Miután konfigurálta a Csomagkezelő, kövesse a [(ARM32v7/armhf) Linux rendszeren telepítse az Azure IoT Edge-futtatókörnyezet](how-to-install-iot-edge-linux-arm.md) vagy [(x64) linuxon az Azure IoT Edge-futtatókörnyezet telepítéséhez](how-to-install-iot-edge-linux.md) a szokásos módon.
 
-Ha az IoT Edge-futtatókörnyezet telepít egy Windows-eszközön, akkor kétszer nyissa meg a proxykiszolgálón keresztül. Az első kapcsolat letöltésére a telepítési parancsfájlt, és a második kapcsolat van, töltse le a szükséges összetevők telepítése során. A Windows-beállítások konfigurálása a proxyadatokat, vagy a proxy adatait tartalmazzák a telepítési parancsfájlt közvetlenül a. A következő powershell-parancsfájl példaként szolgál a windows telepítési használatával a `-proxy` argumentum:
+Ha az IoT Edge-futtatókörnyezet telepít egy Windows-eszközön, akkor kétszer nyissa meg a proxykiszolgálón keresztül. Az első kapcsolat letöltésére a telepítési parancsfájlt, és a második kapcsolat van, töltse le a szükséges összetevők telepítése során. A Windows-beállítások konfigurálása a proxyadatokat, vagy is tartalmazza. a proxy közvetlenül a PowerShell-parancsokat. A következő lépések bemutatják, a windows telepítési használatának példája a `-proxy` argumentum:
 
-```powershell
-. {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; `
-Install-SecurityDaemon -Manual -ContainerOs Windows -proxy <proxy URL>
-```
+1. Az Invoke-WebRequest parancs van szüksége a proxyadatok a telepítő szkripthez történő hozzáféréshez. Az üzembe helyezés – IoTEdge parancsot kell a telepítési fájlok letöltéséhez a proxyadatokat. 
 
-Ha Ön rendelkezik bonyolult, amely nem szerepelhet az URL-címet a proxykiszolgáló hitelesítő adatait, használja a `-ProxyCredential` paraméter `-InvokeWebRequestParameters`. Például:
+   ```powershell
+   . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Deploy-IoTEdge -proxy <proxy URL>
+   ```
+
+2. Nyissa meg a proxykiszolgálón keresztül, így a második lépésben csak szükséges webproxy-információkat az Invoke-WebRequest az Initialize-IoTEdge parancs nem szükséges.
+
+   ```powershell
+   . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
+
+If you have complicated credentials for the proxy server that can't be included in the URL, use the `-ProxyCredential` parameter within `-InvokeWebRequestParameters`. For example,
 
 ```powershell
 $proxyCredential = (Get-Credential).GetNetworkCredential()
 . {Invoke-WebRequest -proxy <proxy URL> -ProxyCredential $proxyCredential -useb aka.ms/iotedge-win} | Invoke-Expression; `
-Install-SecurityDaemon -Manual -ContainerOs Windows -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
+Deploy-IoTEdge -InvokeWebRequestParameters @{ '-Proxy' = '<proxy URL>'; '-ProxyCredential' = $proxyCredential }
 ```
 
-Proxy-paraméterekkel kapcsolatos további információkért lásd: [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest). Telepítési lehetőségekkel kapcsolatos további információkért lásd: [telepítse az Azure IoT Edge-modul a Windows](how-to-install-iot-edge-windows.md).
+Proxy-paraméterekkel kapcsolatos további információkért lásd: [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest). Windows-telepítési lehetőségekkel kapcsolatos további információkért lásd: [telepítse az Azure IoT Edge-modul a Windows](how-to-install-iot-edge-windows.md).
 
 Miután telepítette az IoT Edge-futtatókörnyezet, az alábbi szakasz segítségével konfigurálja azt a proxy adatait. 
 

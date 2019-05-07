@@ -41,15 +41,15 @@
         - name: Fiókkezelés
           href: cloudsimple-account.md
         - name: Tevékenységkezelés
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-activity/'
+          href: cloudsimple-activity.md
         - name: VMware a magánfelhőben
-          href: 'https://docs.azure.cloudsimple.com/vmware-components/'
+          href: vmware-components.md
         - name: Biztonsági áttekintés
           href: 'https://docs.azure.cloudsimple.com/cloudsimple-security/'
         - name: Csomópontkvóta
-          href: 'https://docs.azure.cloudsimple.com/node-quota/'
+          href: node-quota.md
         - name: Karbantartás és frissítések
-          href: 'https://docs.azure.cloudsimple.com/cloudsimple-maintenance-updates/'
+          href: cloudsimple-maintenance-updates.md
         - name: GYIK
           href: 'https://docs.azure.cloudsimple.com/cloudsimple-faq/'
     - name: Oktatóanyagok

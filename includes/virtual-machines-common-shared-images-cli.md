@@ -5,15 +5,15 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/13/2018
+ms.date: 04/30/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 36c4757feb367fd39ae94640cb8e8a0f1714a0d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7e4ca54d8f97646192d19d5923bee24a906e8df7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542491"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149709"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
@@ -25,24 +25,12 @@ A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy k�
 
 A példában ez a cikk a végrehajtásához egy általánosított virtuális gép egy meglévő felügyelt rendszerkép kell rendelkeznie. További információkért lásd: [oktatóanyag: Hozzon létre egy egyéni rendszerképet egy Azure virtuális gépek az Azure CLI 2.0 használatával](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). 
 
-## <a name="preview-register-the-feature"></a>Előzetes verzió: A funkció regisztrálása
-
-Megosztott kép katalógusok előzetes verzióban érhető el, de szeretne regisztrálni a szolgáltatást ahhoz is használhatja. A megosztott kép katalógusok funkció regisztrálása:
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name GalleryPreview
-az provider register -n Microsoft.Compute
-```
-
-Eltarthat néhány percig, a funkció regisztrálása. A folyamat használatával ellenőrizheti:
-
-```azurecli-interactive
-az provider show -n Microsoft.Compute
-```
 
 ## <a name="create-an-image-gallery"></a>Lemezkép-katalógus létrehozása 
 
-Lemezkép-katalógus, hogy az elsődleges erőforrás használt lemezkép megosztása. Katalógus egyedieknek kell lenniük az előfizetésben. Hozzon létre egy rendszerképet katalógus [az sig létrehozása](/cli/azure/sig#az-sig-create). A következő példában létrehozunk egy katalógusban nevű *myGallery* a *myGalleryRG*.
+Lemezkép-katalógus, hogy az elsődleges erőforrás használt lemezkép megosztása. Katalógus neveként engedélyezett karakterek:, kis-és nagybetűket, számokat, pontokat és időszakok. A katalógus neve nem tartalmazhat kötőjeleket.   Katalógus egyedieknek kell lenniük az előfizetésben. 
+
+Hozzon létre egy rendszerképet katalógus [az sig létrehozása](/cli/azure/sig#az-sig-create). A következő példában létrehozunk egy katalógusban nevű *myGallery* a *myGalleryRG*.
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location WestCentralUS
@@ -50,6 +38,8 @@ az sig create -g myGalleryRG --gallery-name myGallery
 ```
 
 ## <a name="create-an-image-definition"></a>Kép definíció létrehozása
+
+Lemezkép-definíciók létrehozása lemezképek logikai jellegű csoportosítását. A lemezkép-verziók azokon belül létrehozott adatainak kezeléséhez használhatók. Definíció rendszerképnevek a kis- és nagybetűket betűket, számokat, pontokat, kötőjeleket, és időszakokat is végezhető. Az értékeket is megadhat egy rendszerkép definíciójában kapcsolatos további információkért lásd: [definíciók kép](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions).
 
 Hozzon létre egy kezdeti rendszerkép definíciójában a katalógusban található [az sig lemezkép-definíció létrehozására](/cli/azure/sig/image-definition#az-sig-image-definition-create).
 
@@ -64,9 +54,15 @@ az sig image-definition create \
    --os-type Linux 
 ```
 
+
 ## <a name="create-an-image-version"></a>Hozzon létre egy lemezkép verziója 
- 
-Hozzon létre a lemezkép verzió használatával szükség szerint [az image katalógus létrehozása-lemezkép-verzió](/cli/azure/sig/image-version#az-sig-image-version-create). Szüksége lesz a felügyelt lemezkép létrehozásához a rendszerkép verziószámát összegyűjtéséhez használt Azonosítóját adja át. Használhat [az képlista](/cli/azure/image?view#az-image-list) lemezképeket, amelyek egy erőforráscsoportba tartozó információt szeretne kapni. Ebben a példában a lemezkép-verzió nem *1.0.0-s* fogjuk 5 replikák létrehozása, és a *USA nyugati középső Régiója* régió, 1, a replika a *USA déli középső Régiójában* régió és 1 a replika a *USA keleti RÉGIÓJA 2* régióban.
+
+Hozzon létre a lemezkép verzió használatával szükség szerint [az image katalógus létrehozása-lemezkép-verzió](/cli/azure/sig/image-version#az-sig-image-version-create). Szüksége lesz a felügyelt lemezkép létrehozásához a rendszerkép verziószámát összegyűjtéséhez használt Azonosítóját adja át. Használhat [az képlista](/cli/azure/image?view#az-image-list) lemezképeket, amelyek egy erőforráscsoportba tartozó információt szeretne kapni. 
+
+Lemezkép-verzió engedélyezett karakterek:, számokat és pontokat. Számok belül a 32 bites egész számnak kell lennie. Formátum: *Főverzió*. *MinorVersion*. *Javítás*.
+
+Ebben a példában a lemezkép-verzió nem *1.0.0-s* és a 2 replika létrehozásához fogjuk a *USA nyugati középső Régiója* régió, 1, a replika a *USA déli középső Régiójában* régió és 1 a replika a *USA keleti RÉGIÓJA 2* régióban.
+
 
 ```azurecli-interactive 
 az sig image-version create \
@@ -75,7 +71,9 @@ az sig image-version create \
    --gallery-image-definition myImageDefinition \
    --gallery-image-version 1.0.0 \
    --target-regions "WestCentralUS" "SouthCentralUS=1" "EastUS2=1" \
-   --replica-count 5 \
+   --replica-count 2 \
    --managed-image "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage"
 ```
 
+> [!NOTE]
+> Várjon, amíg a rendszerkép verziószámát teljesen befejeződik, beépített és a replikált felügyelt ugyanazt a lemezképet létrehozni egy másik lemezkép-verzió használata előtt kell.

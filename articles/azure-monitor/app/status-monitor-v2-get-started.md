@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 8633dbf6cdfc48b240a84bf876aaa63f2a579a64
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: c20cbf50129247fa01f10f12a99c558bc86492b8
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870417"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145179"
 ---
 # <a name="getting-started-with-status-monitor-v2"></a>Az állapotfigyelő v2 – első lépések
 
@@ -74,3 +74,25 @@ Expand-Archive -LiteralPath $pathToZip -DestinationPath $pathInstalledModule
 ```powershell
 Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
+
+
+
+## <a name="next-steps"></a>További lépések
+
+ A telemetriai adatok megtekintése:
+
+- [A metrikák áttekintése](../../azure-monitor/app/metrics-explorer.md) a teljesítmény és a használat figyeléséhez
+- [Eseményeket és naplókat kereshet](../../azure-monitor/app/diagnostic-search.md) problémák diagnosztizálásához
+- [Elemzések](../../azure-monitor/app/analytics.md) az összetettebb lekérdezésekhez
+- [Irányítópultok létrehozása](../../azure-monitor/app/app-insights-dashboards.md)
+
+ További telemetriai funkciók hozzáadása:
+
+- [Létrehozhat webes teszteket](monitor-web-app-availability.md) , hogy a hely elérhető maradjon.
+- [Ügyfél-telemetriát adhat hozzá](../../azure-monitor/app/javascript.md) lássa a weblapkód kivételeit és nyomkövetési hívásokat szúrhasson be.
+- [Application Insights SDK hozzáadása a kódhoz](../../azure-monitor/app/asp-net.md) , hogy Ön nyomkövetési és naplóhíváskat szúrhasson
+
+Hozzon ki még többet Állapotfigyelőt v2:
+
+- Tekintse át a [részletes utasítások](status-monitor-v2-detailed-instructions.md) bővebb információ a jelen útmutatóban található parancsok.
+- Használja az útmutatóban [hibaelhárítás](status-monitor-v2-troubleshoot.md) Állapotfigyelőt v2.

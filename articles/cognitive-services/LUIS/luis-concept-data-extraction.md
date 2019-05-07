@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 3bad247263af09462a44e04329e7f911afa3ad5c
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 15d6b0d28f926bdb39b35b763b89422cddcccc84
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867715"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150684"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Adatok kinyerése az utterance (kifejezés) SMS-t a szándékok és entitások felismerésére
 A LUIS teszi lehetővé a felhasználó a természetes nyelvű utterances lekérni adatait. Az adatokat oly módon, hogy használat szerint a program, alkalmazás vagy csevegőrobot műveletet ki kell olvasni. A következő szakaszban megtudhatja, milyen adatokat küld vissza, a szándékok és entitások példákkal a JSON.
@@ -172,34 +172,6 @@ A végpont által visszaadott szerepel az entitás nevét, a felderített szöve
 |--|--|--|
 |Egyszerű entitás|`Customer`|`bob jones`|
 
-## <a name="hierarchical-entity-data"></a>A hierarchikus adatok
-
-**Hierarchikus entitások idővel elavulttá válik. Használat [entitás szerepkörök](luis-concept-roles.md) meghatározására, entitás altípus hierarchikus entitások helyett.**
-
-[Hierarchikus](luis-concept-entity-types.md) entitások gép megtudhatta, és tartalmazhat egy szót vagy kifejezést. Gyermekek környezet azonosítja. Ha egy szülő-gyermek kapcsolat a pontos egyezés egyeztetése keres, használja egy [lista](#list-entity-data) entitás.
-
-`book 2 tickets to paris`
-
-Az előző utterance (kifejezés), a `paris` feliratú egy `Location::ToLocation` gyermeke a `Location` hierarchikus entitás.
-
-A végpont által visszaadott szerepel az entitás nevét és a gyermek nevét, a felderített szöveget az utterance (kifejezés), a helyét a felderített szöveget, és a pontszám:
-
-```JSON
-"entities": [
-  {
-    "entity": "paris",
-    "type": "Location::ToLocation",
-    "startIndex": 18,
-    "endIndex": 22,
-    "score": 0.6866132
-  }
-]
-```
-
-|Objektum|Szülő|Gyermek|Érték|
-|--|--|--|--|
-|A hierarchikus|Hely|ToLocation|"Párizs"|
-
 ## <a name="composite-entity-data"></a>Összetett Entitásadatok
 [Összetett](luis-concept-entity-types.md) entitások gép megtudhatta, és tartalmazhat egy szót vagy kifejezést. Vegyük példaként egy összetett entitást, előre elkészített `number` és `Location::ToLocation` az a következő utterance (kifejezés):
 
@@ -212,53 +184,54 @@ Figyelje meg, hogy `2`, száma, és `paris`, a ToLocation van közöttük, amely
 A visszaadott összetett entitások egy `compositeEntities` is ad a tömb és az összetett lévő entitások a `entities` tömb:
 
 ```JSON
-  "entities": [
+
+"entities": [
     {
-      "entity": "paris",
-      "type": "Location::ToLocation",
-      "startIndex": 18,
-      "endIndex": 22,
-      "score": 0.956998169
+    "entity": "2 tickets to cairo",
+    "type": "ticketInfo",
+    "startIndex": 0,
+    "endIndex": 17,
+    "score": 0.67200166
     },
     {
-      "entity": "2",
-      "type": "builtin.number",
-      "startIndex": 5,
-      "endIndex": 5,
-      "resolution": {
+    "entity": "2",
+    "type": "builtin.number",
+    "startIndex": 0,
+    "endIndex": 0,
+    "resolution": {
+        "subtype": "integer",
         "value": "2"
-      }
+    }
     },
     {
-      "entity": "2 tickets to paris",
-      "type": "Order",
-      "startIndex": 5,
-      "endIndex": 22,
-      "score": 0.7714499
+    "entity": "cairo",
+    "type": "builtin.geographyV2",
+    "startIndex": 13,
+    "endIndex": 17
     }
-  ],
-  "compositeEntities": [
+],
+"compositeEntities": [
     {
-      "parentType": "Order",
-      "value": "2 tickets to paris",
-      "children": [
+    "parentType": "ticketInfo",
+    "value": "2 tickets to cairo",
+    "children": [
         {
-          "type": "builtin.number",
-          "value": "2"
+        "type": "builtin.geographyV2",
+        "value": "cairo"
         },
         {
-          "type": "Location::ToLocation",
-          "value": "paris"
+        "type": "builtin.number",
+        "value": "2"
         }
-      ]
+    ]
     }
-  ]
+]
 ```    
 
 |Objektum|Entitás neve|Érték|
 |--|--|--|
 |Előre összeállított entitások - szám|"builtin.number"|"2"|
-|Hierarchikus entitás - helye|"Location::ToLocation"|"Párizs"|
+|Előre összeállított entitások - GeographyV2|"Location::ToLocation"|"Párizs"|
 
 ## <a name="list-entity-data"></a>Entitások adatainak listája
 
@@ -268,8 +241,8 @@ Tegyük fel, hogy az alkalmazás rendelkezik egy nevű lista `Cities`, ami lehet
 
 |Listaelem|Elemet a szinonimák|
 |---|---|
-|Seattle|tenger-tac, tenger 98101, 206, + 1 |
-|Párizs|CDG, leltár, roissy 75001, 1, +33|
+|`Seattle`|`sea-tac`, `sea`, `98101`, `206`, `+1` |
+|`Paris`|`cdg`, `roissy`, `ory`, `75001`, `1`, `+33`|
 
 `book 2 tickets to paris`
 

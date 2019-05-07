@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: f2b307f662c0c9b94edc6bb8eb3ca299f5ad4620
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 41d3e72d978a210c2d68365ade5d8cb42c24aad5
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702639"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147610"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Event hub-eseményforrás hozzáadása a Time Series Insights-környezethez
 
@@ -27,9 +27,9 @@ Ez a cikk ismerteti, amely beolvassa az adatokat az Azure Event Hubsból az Azur
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Time Series Insights környezetet hozhat létre. További információkért lásd: [Azure Time Series Insights-környezet létrehozása](./time-series-insights-update-create-environment.md).
-- Eseményközpont létrehozása. Az Event Hubs szolgáltatásról további információért lásd: [Event Hubs-névtér és eseményközpont létrehozása az Azure portal használatával](../event-hubs/event-hubs-create.md).
-- Az event hubs neki küldött aktív üzenetek esemény kell rendelkeznie. További információkért lásd: [események küldése az Azure Event Hubsba a .NET-keretrendszer használatával](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
+- Egy Time Series Insights-környezet létrehozása a leírtak szerint [Azure Time Series Insights-környezet létrehozása](./time-series-insights-update-create-environment.md).
+- Eseményközpont létrehozása. Lásd: [Event Hubs-névtér és eseményközpont létrehozása az Azure portal használatával](../event-hubs/event-hubs-create.md).
+- Az event hubs neki küldött aktív üzenetek esemény kell rendelkeznie. Ismerje meg, hogyan [események küldése az Azure Event Hubsba a .NET-keretrendszer használatával](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
 - Hozzon létre dedikált fogyasztói csoportot, amelyet a Time Series Insights-környezet a felhasználhat az eseményközpontban. Minden egyes Time Series Insights-eseményforrás rendelkeznie kell a saját dedikált fogyasztói csoportot, amely bármely más fogyasztók nincs megosztva. Ha több olvasók ugyanabban a fogyasztói csoportban lévő események felhasználásához, minden olvasók valószínűleg hibák. Az event hubs / 20 felhasználói csoportot korlátozva van. További információkért lásd: a [Event Hubs programozási útmutató](../event-hubs/event-hubs-programming-guide.md).
 
 ### <a name="add-a-consumer-group-to-your-event-hub"></a>Az eseményközpont fogyasztói csoport hozzáadása
@@ -42,7 +42,7 @@ Az event hubs egy új felhasználói csoport hozzáadása:
 
 1. Alatt **entitások**válassza **fogyasztói csoportok**, majd válassza ki **fogyasztói csoportot**.
 
-   ![Event hub - fogyasztói csoport hozzáadása](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)
+   [![Event hub - fogyasztói csoport hozzáadása](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png#lightbox)
 
 1. Az a **fogyasztói csoportok** területén adjon meg egy új egyedi értéket a **neve**.  Ezt a nevet használja, a Time Series Insights-környezet létrehozásakor egy új esemény forrását.
 
@@ -56,7 +56,7 @@ Az event hubs egy új felhasználói csoport hozzáadása:
 
 1. Alatt **környezeti topológia**válassza **eseményforrások**, majd válassza ki **Hozzáadás**.
 
-   ![Eseményforrások válassza a Hozzáadás gombra.](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png)
+   [![Eseményforrások válassza a Hozzáadás gombra.](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png#lightbox)
 
 1. Adjon meg egy értéket a **eseményforrás nevének** egyedi a Time Series Insights-környezethez, ez például **esemény-adatfolyam**.
 
@@ -66,11 +66,11 @@ Az event hubs egy új felhasználói csoport hozzáadása:
    - Ha rendelkezik egy meglévő eseményközpontban az előfizetések, válassza ki a **Eseményközpontot használja a rendelkezésre álló előfizetések**. Ez a lehetőség akkor a legegyszerűbb megközelítés.
    - Ha az event hubs külső az előfizetésekhez, vagy ha azt szeretné, válassza ki a speciális beállításokat, jelölje be **adja meg az Eseményközpont-beállítások manuális**.
 
-   ![Az új esemény forrás panelen adja meg az értékeket az első három paraméterek](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)
+   [![Az új esemény forrás panelen adja meg az értékeket az első három paraméterek](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png#lightbox)
 
 1. A következő táblázat ismerteti a szükséges tulajdonságokat a **Eseményközpontot használja a rendelkezésre álló előfizetések** lehetőséget:
 
-   ![Előfizetés és az event hub-adatok](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)
+   [![Előfizetés és az event hub-adatok](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
 
    | Tulajdonság | Leírás |
    | --- | --- |
@@ -101,7 +101,7 @@ Az event hubs egy új felhasználói csoport hozzáadása:
 
 1. Kattintson a **Létrehozás** gombra.
 
-   ![Válassza létrehozása](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)
+   [![Válassza létrehozása](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png#lightbox)
 
    Az eseményforrás létrehozása után a Time Series Insights automatikusan elindul, streamelési adatok a környezetben.
 

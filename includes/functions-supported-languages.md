@@ -6,16 +6,15 @@ author: ggailey777
 manager: cfowler
 ms.service: functions
 ms.topic: include
-origin.date: 03/17/2019
-ms.date: 03/25/2019
-ms.author: v-junlch
+ms.date: 05/01/2019
+ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: db7753f3d4319cd8f93b39880fe40c8f757f03c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 100ba66b2eb9442f4121c525d9f13b5201b384b4
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61036253"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148834"
 ---
 |Nyelv                                 |1.x         |2.x|
 |-----------------------------------------|------------|---|
@@ -23,12 +22,13 @@ ms.locfileid: "61036253"
 |[JavaScript](../articles/azure-functions/functions-reference-node.md)|Általánosan elérhető (6 csomópont)|Általánosan elérhető (8 és 10 csomópont)|
 |[F#](../articles/azure-functions/functions-reference-fsharp.md)|Általánosan elérhető (.NET-keretrendszer 4.7)|GA (.NET Core 2)|
 |[Java](../articles/azure-functions/functions-reference-java.md)|–|GA (Java 8)|
+|[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |Kísérleti|Előzetes verzió (a PowerShell Core 6)|
 |[Python](../articles/azure-functions/functions-reference-python.md)|Kísérleti|Előzetes verzió (Python 3.6-os)|
-|TypeScript          |Kísérleti|Általánosan elérhető (JavaScript transpiling keresztül támogatott)|
-|PHP                 |Kísérleti|–|
-|Batch (.cmd, .bat)  |Kísérleti|–|
+|[TypeScript](../articles/azure-functions/functions-reference-node.md#typescript) |Kísérleti|Általánosan elérhető (JavaScript transpiling keresztül támogatott)|
 |Bash                |Kísérleti|–|
-|PowerShell          |Kísérleti|–|
+|Batch (.cmd, .bat)  |Kísérleti|–|
+|PHP                 |Kísérleti|–|
+
+
 
 További információ a nyelvi támogatás tervezett módosítások: [Azure ütemterve](https://azure.microsoft.com/roadmap/?tag=functions).
-

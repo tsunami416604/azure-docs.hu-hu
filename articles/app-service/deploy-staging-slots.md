@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 544ef8947f3a593071cabea018c722db96ab1475
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d62632d6c28ac137095307e95dbbdab7e8573bbc
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266205"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65137880"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Állítsa be átmeneti környezeteket az Azure App Service-ben
 <a name="Overview"></a>
@@ -265,6 +265,8 @@ Ahhoz, hogy a felhasználók engedélyezve a béta-alkalmazását, állítsa be 
 ```
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
 ```
+
+Alapértelmezés szerint új pontok vannak megadva az útválasztási szabály `0%`, szürke színnel megjelenített. Azzal, explicit módon ezt az értéket a `0%` (fekete szöveg látható), a felhasználók férhetnek hozzá az előkészítési pont manuálisan használatával a `x-ms-routing-name` lekérdezési paraméter, de nem továbbítja a tárolóhely automatikusan, mivel az útválasztási százalékos értéke 0. Ez az, ahol "elrejtheti" az előkészítési pont nyilvános során tesztelheti a módosításokat a tárolóhely a belső csapatok így speciális forgatókönyv.
 
 <a name="Delete"></a>
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 03/08/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 2e2b2c39cf9039c78a610e9b28065b972484123e
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: HT
+ms.openlocfilehash: a0ab928ef3b8551e3e20ff3c4b16533c80ee4b7d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65069272"
+ms.locfileid: "65149246"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Oktatóanyag: De kapcsolódó adatok kinyerése az utterance (kifejezés)
 
@@ -93,12 +93,8 @@ Az előre összeállított entitások geographyV2, kinyeri a helyadatokhoz, bele
     ![Előre összeállított entitások szerepkörök hozzáadása](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 1. Válassza ki **leképezések** a bal oldali navigációs panelen, majd válassza ki a **MoveEmployeeToCity** szándékot. Figyelje meg, hogy a városok nevei vannak ellátva, az előre összeállított entitáshoz **geogrpahyV2**.
 1. A lista első utterance válassza a feladás helyét. Megjelenik egy legördülő menü. Válassza ki **geographyV2** a listában, majd hajtsa végre a keresztben, válassza a menü **forrás**.
-
-    [![Képernyőkép a jelölést az városa származási helyeként](media/tutorial-entity-roles/tag-origin-city-with-role.png "jelölést az városa származási helyeként képernyőképe")](media/tutorial-entity-roles/tag-origin-city-with-role.png#lightbox)
-
 1. A metódus az előző lépésben segítségével jelölje meg az összes szerepkör-helyeken és a kimondott szöveg. 
 
-    [![Képernyőkép a helyek entitás címkézve a kimondott szöveg](media/tutorial-entity-roles/all-locations-marked-with-roles.png "képernyőképe a helyek entitás címkézve a kimondott szöveg")](media/tutorial-entity-roles/all-locations-marked-with-roles.png#lightbox)
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>A none szándék példa beszédmódok hozzáadása 
 

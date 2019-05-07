@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 347de9b575e3b47ee795026115fd2452c28b866b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6d3b4d23ae1ad04142b0dec01a1abccbd2f81942
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877337"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150271"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Gyors útmutató: Előre összeállított kezdőlap automation alkalmazás használata
 
@@ -57,6 +57,8 @@ A tartomány sikeres hozzáadása után az előre összeállított tartomány me
 ## <a name="intents-and-entities"></a>Szándékok és entitások
 
 A bal oldali navigációs ablaktáblán válassza az **Intents** (Szándékok) elemet a Home Automation-tartomány leképezéseinek megtekintéséhez. Minden szándék kimondottszöveg-mintákkal rendelkezik.
+
+![Képernyőkép a HomeAutomation leképezések lista](media/luis-quickstart-new-app/home-automation-intents.png "képernyőképe a HomeAutomation leképezések lista")]
 
 > [!NOTE]
 > A **None** (Nincs) az összes LUIS-alkalmazásban szereplő szándék. Olyan kimondott szövegek kezelésére szolgál, amelyek nem felelnek meg az alkalmazás által nyújtott funkcióknak. 

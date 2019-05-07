@@ -2,18 +2,19 @@
 title: Blob létrehozása az Azure Storage Node.js v2 esetében az ügyféloldali kódtár használatával
 description: Létre fog hozni egy tárfiókot és egy tárolót egy objektumtárban (Blobtárban). Ezután használja az Azure Storage ügyféloldali kódtára a Node.js v2 feltölt egy blobot az Azure Storage, letölt egy blobot, és a tárolóban lévő blobok listázása.
 services: storage
-author: tamram
+author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.topic: conceptual
 ms.date: 02/04/2019
-ms.author: tamram
-ms.openlocfilehash: 182315c705360d254c3bf342cd9c64ffafa0c021
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.author: mhopkins
+ms.reviewer: seguler
+ms.openlocfilehash: 7ca1eacd1add7453833b4b9ad1d4bd0fbef13ca7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121538"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149416"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-nodejs-v2"></a>Hogyan feltöltése, letöltése és az ügyféloldali kódtár használatával Node.js v2 blobok listázása
 

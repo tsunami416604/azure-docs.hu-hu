@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 9bfe3cf78c7b8ac30088ffe6a5baa0d460d37607
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 7e2b3424c3d8edc931054dea062280ea7789dc44
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867342"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143060"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Egy HTTP által aktivált függvény létrehozása az Azure-ban
 
@@ -120,7 +120,7 @@ A következő parancsot helyileg használja az ugyanazon az Azure Functions runt
 func host start
 ```
 
-A Functions-gazdagép az indulásakor a következőhöz hasonló kimenetet írja ki, amelyet a könnyebb olvashatóság érdekében lerövidítettünk:
+A Functions gazdagép indításakor ír a következő kimenetet, amely az olvashatóság érdekében csonkolva lett hasonló:
 
 ```output
 

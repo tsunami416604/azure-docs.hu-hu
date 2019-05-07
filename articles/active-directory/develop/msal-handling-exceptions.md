@@ -16,12 +16,12 @@ ms.date: 04/10/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 7c9a578cb3c3a59ae6bba13e585188020f35f03a
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: HT
+ms.openlocfilehash: 43c98181c926410bea2acf64bf1ed4d588c12616
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080939"
+ms.locfileid: "65138967"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>Kivételek és hibák az MSAL használatával
 A Microsoft hitelesítési tár (MSAL) kivételek hibaelhárítása alkalmazásfejlesztők számára, és nem a végfelhasználók számára való megjelenítése, készültek. Nem honosított kivétel üzeneteket.
@@ -82,21 +82,18 @@ A következő alkalmazáshiba-típusok érhetők el:
 
 * *InteractionRequiredAuthError:* Hiba osztály kiterjesztése, amelyek egy interaktív hívás igénylő Kiszolgálóhibák Kiszolgálóhibái. Ez a rendszer által kiváltott `acquireTokenSilent` Ha a felhasználó kell létesíteni a kiszolgálóval, adja meg hitelesítő adatait, vagy a hitelesítés/engedélyezés vonatkozó beleegyezés. Hibakódok "interaction_required", "login_required", "consent_required" közé tartozik.
 
-A hibakezelés hitelesítési folyamatok és az átirányítási módszert (`loginRedirect`, `acquireTokenRedirect`), a sikeres és sikertelen visszahívások, která bude volána po az átirányítás használatával regisztrálnia kell `handleRedirectCallbacks()` módszert az alábbiak szerint:
+A hibakezelés hitelesítési folyamatok és az átirányítási módszert (`loginRedirect`, `acquireTokenRedirect`), a visszahívás nevezett regisztrálás sikeres vagy sikertelen az átirányítás használata után kell `handleRedirectCallback()` módszert az alábbiak szerint:
 
 ```javascript
-function acquireTokenRedirectCallBack(response) {
-    // success response
+function authCallback(error, response) {
+    //handle redirect response
 }
 
-function  acquireTokenErrorRedirectCallBack(error) {
-    console.log(error);
-}
 
 var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 
 // Register Callbacks for redirect flow
-myMSALObj.handleRedirectCallbacks(acquireTokenRedirectCallBack, acquireTokenErrorRedirectCallBack);
+myMSALObj.handleRedirectCallback(authCallback);
 
 myMSALObj.acquireTokenRedirect(request);
 ```
@@ -143,7 +140,7 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 ```
 
 ## <a name="conditional-access-and-claims-challenges"></a>Feltételes hozzáférés és a jogcímek kihívásai
-Jogkivonatok lekérésének lépéseiről a háttérben, amikor az alkalmazás hibaüzeneteket amikor egy [feltételes hozzáférési jogcímek challenge](conditional-access-dev-guide.md#scenario-single-page-app-spa-using-adaljs) például a többtényezős hitelesítési szabályzat API-k által igényelt próbál hozzáférni.
+Jogkivonatok lekérésének lépéseiről a háttérben, amikor az alkalmazás hibaüzeneteket amikor egy [feltételes hozzáférési jogcímek challenge](conditional-access-dev-guide.md) például a többtényezős hitelesítési szabályzat API-k által igényelt próbál hozzáférni.
 
 A minta kezelni ezt a hibát az interaktív módon az MSAL használatával jogkivonat beszerzése. Interaktív módon tokenbeolvasás kéri a felhasználót, és megfelelnek a feltételes hozzáférési szabályzat lehetőséget biztosít.
 
@@ -155,7 +152,7 @@ Az MSAL.NET feltételes hozzáférést igénylő API hívásakor az alkalmazás 
 A jogcím kihívás kezelése érdekében meg kell használnia a `.WithClaim()` módszere a `PublicClientApplicationBuilder` osztály.
 
 ### <a name="javascript"></a>JavaScript
-Csendes jogkivonatok beolvasásakor (használatával `acquireTokenSilent`) MSAL.js használatával, az alkalmazás hibák léphetnek fel amikor egy [feltételes hozzáférési jogcímek challenge](conditional-access-dev-guide.md#scenario-single-page-app-spa-using-adaljs) például a többtényezős hitelesítési szabályzat API-k által igényelt próbál hozzáférni.
+Csendes jogkivonatok beolvasásakor (használatával `acquireTokenSilent`) MSAL.js használatával, az alkalmazás hibák léphetnek fel amikor egy [feltételes hozzáférési jogcímek challenge](conditional-access-dev-guide.md) például a többtényezős hitelesítési szabályzat API-k által igényelt próbál hozzáférni.
 
 A minta kezelni ezt a hibát, hogy az MSAL.js token beszerzéséhez például interaktív hívás `acquireTokenPopup` vagy `acquireTokenRedirect` az alábbi példában látható módon:
 
