@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
-ms.openlocfilehash: 16e4bcbb1514cfd5bbddc22b663d636292095231
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8427417c9b579c7dfa21f834ce1ca77099159eb2
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025896"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072605"
 ---
 # <a name="voice-first-virtual-assistants-preview-frequently-asked-questions"></a>Hang-és felhőközpontú virtuális asszisztensek előzetes verzió: Gyakori kérdések
 
@@ -29,7 +29,7 @@ Ha a kérdésekre adott válaszok a jelen dokumentum nem találja, tekintse meg 
 
 **K: Hogyan kezdhetem?**
 
-**V:** A legjobb módja kezd létrehozása egy hang-és felhőközpontú virtuális asszisztensek van a következővel kell kezdődnie [egy alapszintű Bot Framework robot létrehozásának](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0). Ezután csatlakoztassa a robot a [közvetlen vonal beszédfelismerő csatornát](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md).
+**V:** A legjobb módja kezd létrehozása egy hang-és felhőközpontú virtuális asszisztensek van a következővel kell kezdődnie [egy alapszintű Bot Framework robot létrehozásának](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0). Ezután csatlakoztassa a robot a [közvetlen vonal beszédfelismerő csatornát](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
 ## <a name="debugging"></a>Hibakeresés
 
@@ -41,7 +41,7 @@ Ha a kérdésekre adott válaszok a jelen dokumentum nem találja, tekintse meg 
 
 **K: Vissza kapok felismerés szöveget a közvetlen vonal Speech, de egy "1011" hiba történt, és semmi nem látom a saját robot. Hogy miért?**
 
-**V:** Ez a hiba azt jelzi, hogy a robot és a közvetlen vonal Speech közötti kommunikációs probléma. Győződjön meg arról, hogy [csatlakoztatva a közvetlen vonal beszédfelismerő csatornát](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md), [Streamelési protokoll támogatása a](https://aka.ms/botframework/addstreamingprotocolsupport) , majd ellenőrizze, hogy a robot válaszol a bejövő és bot (a kapcsolódó Web Socket-támogatás) a csatorna kéréseit.
+**V:** Ez a hiba azt jelzi, hogy a robot és a közvetlen vonal Speech közötti kommunikációs probléma. Győződjön meg arról, hogy [csatlakoztatva a közvetlen vonal beszédfelismerő csatornát](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), [Streamelési protokoll támogatása a](https://aka.ms/botframework/addstreamingprotocolsupport) , majd ellenőrizze, hogy a robot válaszol a bejövő és bot (a kapcsolódó Web Socket-támogatás) a csatorna kéréseit.
 
 **K: Ez továbbra sem működik és/vagy más hiba kapok egy SpeechBotConnector használatakor pedig nem egyértelmű milyen feladatokat kell elvégezni. Mi *kell* elvégezni?**
 

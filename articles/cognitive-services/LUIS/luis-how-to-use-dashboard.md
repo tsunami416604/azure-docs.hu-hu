@@ -1,7 +1,7 @@
 ---
-title: Alkalmazás-irányítópult
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: Ismerje meg az irányítópult, egy teszi jelentéskészítési eszköz, amely lehetővé teszi, hogy egyetlen pillantással alkalmazások figyelése.
+title: Irányítópult – beszédfelismerés
+titleSuffix: Azure Cognitive Services
+description: Javítsa ki a leképezések az analytics teszi jelentéskészítő eszközöknek összegző irányítópultot.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,68 +9,166 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: c173152d0a59e391fe77ee855311a867a1b2b6c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a518a697369ff74689a0c4ac05af96453b6a5ca4
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60198422"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072512"
 ---
-# <a name="model-and-usage-statistics-in-the-dashboard"></a>Az irányítópult-modell és a használati statisztikáit
-Alkalmazás irányítópult lehetővé teszi az alkalmazás egyetlen pillantással figyelésére. A **irányítópult** jelenít meg, amikor megnyit egy alkalmazást az alkalmazás neve kattintva **saját alkalmazások** lapon válassza ki **irányítópult** az ablak tetején. 
+# <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Az irányítópult használata az alkalmazás fejlesztéséhez
 
-> [!CAUTION]
-> Ha azt szeretné, a legfrissebb metrikák a LUIS, kell tennie:
-> * A LUIS használatát [végponti kulcs](luis-how-to-azure-subscription.md) létrehozása az Azure-ban
-> * Végpont kulcs használata LUIS, LUIS többek között az összes endpoint kérelmek [API](https://aka.ms/luis-endpoint-apis) és robotot
-> * A LUIS alkalmazás másik végponti kulcs használata. Ne használjon egyetlen végpontkulcsának összes alkalmazáshoz. A végpont kulcs rendszer nyomon követi a legfontosabb szintjén, az alkalmazás szintjén nem.  
+Megkeresheti és elháríthatja a problémákat a betanított alkalmazásszándékkal rendelkező példa utterances használata esetén. A Hálózatösszegzés irányítópult átfogó alkalmazás adatai, a szándék fog vonatkozni, amely javítani kell a legfontosabb jeleníti meg. 
 
-A **irányítópult** oldal áttekintést nyújt a LUIS-alkalmazás, beleértve az aktuális modell állapot, valamint [végpont](luis-glossary.md#endpoint) használat az idő függvényében. 
-  
-## <a name="app-status"></a>Alkalmazás állapota
-Az irányítópult megjeleníti az alkalmazás-képzési és közzétételi állapota, beleértve a dátum és idő, amikor az alkalmazás történt legutóbbi betanított és a közzétett.  
+Tekintse át az irányítópult elemzésre többször is módosíthatja, és javíthatja a modellt, iteratív folyamat.
 
-![Irányítópult - alkalmazás állapota](./media/luis-how-to-use-dashboard/app-state.png)
+Ezen a lapon nem lesz megfelelő elemző alkalmazások, amelyek nem rendelkeznek példa megszólalásokat a szándék fog vonatkozni, más néven a _csak minta_ alkalmazásokat. 
 
-## <a name="model-data-statistics"></a>Modell adatok statisztika
-Az irányítópult szándék fog vonatkozni, az entitások és az alkalmazás meglévő címkézett utterances teljes számát jeleníti meg. 
+## <a name="what-issues-can-be-fixed-from-dashboard"></a>Milyen problémák is rögzíteni kell az irányítópultról?
 
-![Az alkalmazásadatok statisztika](./media/luis-how-to-use-dashboard/app-model-count.png)
+Az irányítópult a három problémák vannak:
 
-## <a name="endpoint-hits"></a>Végpont találatok
-Az irányítópult megjeleníti az összes endpoint találatok, amely a LUIS alkalmazás kap, és lehetővé teszi, hogy a megjelenítési eléri egy időtartamon belül, amikor adja meg. Megjelenik a találatok teljes száma, az összeg, használó végpont a találatok egy [végponti kulcs](./luis-concept-keys.md#endpoint-key) és végpontot használó eléri egy [szerzői műveletek kulcs](./luis-concept-keys.md#authoring-key).
+|Probléma|Diagram színe|Magyarázat|
+|--|--|--|
+|Adatok egyenetlenségének|-|Ez akkor fordul elő, ha a példa kimondott szöveg mennyiségét jelentősen eltér. Rendelkeznie kell az összes leképezések _nagyjából_ példa utterances – kivéve a nincs szándék azonos számú. 10 – 15 % utterances teljes mennyiségét, az alkalmazás csak azt kell rendelkeznie.<br><br> Ha az adatok imbalanced, de a szándék pontossága meghatározott küszöbérték fölött van, ez egyenetlenségének nem verziószámú problémát.<br><br>**Start - probléma az lehet a más problémák eredendő okát.**|
+|Nem egyértelmű előrejelzések|Narancssárga|Ez akkor fordul elő, amikor a felső célt és a következő leképezés pontszámok kellően közel, hogy azok előfordulhat, hogy tükrözés a következő képzési miatt [negatív mintavételi](luis-how-to-train.md#train-with-all-data) vagy beszédszándék hozzá további példa kimondott szöveg. |
+|Helytelen előrejelzések|Piros|Ez akkor fordul elő, amikor egy példa utterance (kifejezés) nem előre jelzett a címkézett célja (a leképezés van).|
 
-![Végpont találatok](./media/luis-how-to-use-dashboard/dashboard-endpointhits.png)
+A szín kék megfelelő előrejelzéseket jelöli.
 
-> [!NOTE] 
-> A legfrissebb végpont találatok száma az intelligens HANGFELISMERÉSI szolgáltatás áttekintése az Azure Portalon található. 
- 
-### <a name="total-endpoint-hits"></a>Teljes endpoint találatok
-Alkalmazás létrehozása az aktuális dátummal záródó részéből. óta az alkalmazáshoz kapott végpont-találatok teljes száma.
+A Hálózatösszegzés irányítópult bemutatja ezeket a problémákat, és jelzi, hogy melyik leképezések érintett, és javasolja, hogy mit kell tennie az alkalmazás javítására. 
 
-### <a name="endpoint-hits-per-period"></a>Végpont találatok időszakonként
-Egy elmúlt időszakban kapott találatok száma naponta jelenik meg. A pontokat a kezdő és záró dátuma között az ebben az időszakban alá tartozó nap képviseli. Minden pont megtekintéséhez vigye az egérmutatót a találatok száma naponta időszakon belül. 
+## <a name="before-app-is-trained"></a>Mielőtt az alkalmazás be van tanítva 
 
-A diagram megtekintése időszak kiválasztása:
- 
-1. Kattintson a **további beállítás** ![további beállítások gomb](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) időszakok lista eléréséhez. Időszakok és a egy hét másolatot egy évig is választhat. 
+Mielőtt az alkalmazás betanításához a Hálózatösszegzés irányítópult nem tartalmaz javaslatai vannak a javítások. Ezek a javaslatok megtekintéséhez az alkalmazás betanításához.  
 
-    ![Végpont találatok időszakonként](./media/luis-how-to-use-dashboard/timerange.png)
+## <a name="check-your-publishing-status"></a>A közzétételi állapotának ellenőrzése
 
-2. Egy időszakot válasszon a listából, és kattintson a Vissza nyíl ![Vissza nyíl](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) a diagram megjelenítése.
+A **közzétételi állapota** kártya tudnivalókkal szolgál az aktív verziója a legutóbbi közzétenni. 
 
-### <a name="key-usage"></a>Kulcshasználat
-Az alkalmazás végponti kulcs üzenetdíjat találatok száma. Végpont kulcsokkal kapcsolatos további információkért lásd: [kulcsok a LUIS](luis-concept-keys.md). 
-  
-## <a name="intent-breakdown"></a>Leképezési lebontása
-A **szándékot lebontása** jelenít meg információkat a leképezések címkézett utterances vagy a végpont a találatok alapján. Az összegző diagram megjeleníti minden egyes szándékot relatív fontosságát az alkalmazásban. Ha az egérmutatót egy szeletet, láthatja a leképezés neve és a százalékos aránya, amely jelöl, címkézett kimondott szöveg/végpont találatok teljes száma. 
+Ellenőrizze, hogy az aktív verzió a rögzíteni kívánt verziót. 
 
-![Leképezési lebontása](./media/luis-how-to-use-dashboard/intent-breakdown.png)
+![Külső szolgáltatásokra Hálózatösszegzés irányítópult látható alkalmazás, régiók és közzétett végpont találatok összesítve.](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
 
-## <a name="entity-breakdown"></a>Entitás lebontása
-Az irányítópult egy bontása entitások címkézett utterances vagy a végpont a találatok alapján jeleníti meg. Az összegző diagram megjeleníti a minden entitás relatív fontosságát az alkalmazásban. Ha az egérmutatót egy szeletet, megjelenik az entitás nevét és a címkézett kimondott szöveg/végpont találatok százalékos. 
+Ez is bármilyen külső szolgáltatásokkal, a közzétett régiók jelennek meg, és összesítve végpont találatok. 
 
-![Entitás lebontása](./media/luis-how-to-use-dashboard/entity-breakdown.png)
+## <a name="review-training-evaluation"></a>Tekintse át a betanítási kiértékelése
 
+A **képzési értékelési** kártya az alkalmazás általános pontossága terület szerint összesített összefoglalását tartalmazza. A pontszám szándék minőségi jelzi. 
+
+![A képzési értékelési kártya tartalmazza az alkalmazás általános pontossága információ első területét.](./media/luis-how-to-use-dashboard/analytics-card-2-shows-app-overall-accuracy.png)
+
+A diagram azt jelzi, a megfelelő előre jelzett leképezések és a problémás területek különböző színű. Mivel, javíthatja az alkalmazást, a javaslatokat, a pontszám növekszik. 
+
+A javasolt javítások vannak elválasztva a probléma típusa és az alkalmazás számára a legfontosabb. Ha inkább tekintse át, és kijavíthatja a problémák / szándékkal, használja a **[hibákkal leképezések](#intents-with-errors)** kártya a lap alján. 
+
+Minden egyes probléma terület rendelkezik szándék fog vonatkozni, amelyet javítani kell. A leképezés neve kiválasztásakor a **szándékot** lap, melyen az megcímkézzen alkalmazott szűrőkkel. Ez a szűrő lehetővé teszi, hogy a problémát okozó megcímkézzen összpontosíthat.
+
+### <a name="compare-changes-across-versions"></a>Hasonlítsa össze a különböző verziók
+
+Mielőtt módosítaná az alkalmazás, hozzon létre egy új verziója. Az új verziót, a javasolt a módosításokat a leképezés példa utterances, majd újra be. Az irányítópult-oldalon **képzési értékelési** kártya, használja a **Show módosítás betanított verzióról** összehasonlítani a módosításokat. 
+
+![Hasonlítsa össze a különböző verziók](./media/luis-how-to-use-dashboard/compare-improvement-across-versions.png)
+
+### <a name="fix-version-by-adding-or-editing-example-utterances-and-retraining"></a>Javítsa ki a verzió hozzáadásával vagy példa kimondott szöveg szerkesztését és átképezési
+
+A módszer az alkalmazás kompatibilitását hozzáadása vagy szerkesztése példa kimondott szöveg és újratanítása lesz. Új vagy módosított megcímkézzen kell követniük irányelvek [utterances maximalizálásában](luis-concept-utterance.md).
+
+Példa beszédmódok hozzáadása kell elvégezni valaki ki:
+
+* beszédmódok Mik a különböző leképezések a ismeretekkel magas fokú rendelkezik
+* tudni fogja, hogyan utterances egyik célja a lehetséges, hogy tévesztendő össze egy másik leképezés
+* Döntse el, ha a két szándék fog vonatkozni, amelyek gyakran egymással összetéveszteni kell összecsukva, az egyetlen célja az entitások kinyerési a különböző adatokat képes
+
+### <a name="patterns-and-phrase-lists"></a>Minták és kifejezések listája
+
+Az elemzési lap nem jelezze, mikor érdemes használni [minták](luis-concept-patterns.md) vagy [listák kifejezés](luis-concept-feature.md). Ha hozzáadja őket, segítségére lehetnek a nem megfelelő vagy nem egyértelmű előrejelzéseket, de nem sokat segít az adatok egyensúlyhiány. 
+
+### <a name="review-data-imbalance"></a>Tekintse át adatokat egyenetlenségének
+
+Start - probléma az lehet a más problémák eredendő okát.
+
+A **adatok egyenetlenségének** szándék lista mutatja azokat, amelyek további utterances kell ahhoz, hogy javítsa ki az adatok egyenetlenségének leképezések. 
+
+**A probléma megoldásához**:
+
+* További beszédmódok hozzáadása a célt, majd újra be. 
+
+Kimondott szöveg a nincs szándék csak hozzá az összegző irányítópulton, amely ajánlott.
+
+> [!Tip]
+> A harmadik szakasz ezen a lapon **kimondott szöveg / szándékot** az a **beszédmódok (szám)** beállítás, gyors vizuális útmutatóként, amelyek leképezések kell további kimondott szöveg.  
+    ![Az adatok egyenetlenségének leképezések kereséséhez használja a "Utterances (szám)".](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
+
+### <a name="review-incorrect-predictions"></a>Tekintse át a helytelen előrejelzések
+
+A **helytelen előrejelzési** szándék lista mutatja azokat, amelyek rendelkeznek a kimondott szöveg, amely egy adott szándékot példaként szolgálnak, de különböző leképezések a rendszer előre meghatározott leképezések. 
+
+**A probléma megoldásához**:
+
+* A leképezés és train pontosabb lehet újra kimondott szöveg szerkesztése.
+* Kombinálhatja a szándék fog vonatkozni, ha utterances szorosan túl vannak elhelyezve, és újra be.
+
+### <a name="review-unclear-predictions"></a>Tekintse át a nem egyértelmű előrejelzések
+
+A **egyértelmű előrejelzési** szándék lista mutatja azokat az előrejelzési eredmények, amelyek nem sokkal elegendő módja az, hogy a felső leképezésének az utterance (kifejezés) módosítsa a következő képzési oka az, hogy a legközelebbi rivális utterances-leképezések [ negatív mintavételi](luis-how-to-train.md#train-with-all-data).
+
+**A probléma megoldásához**;
+
+* A leképezés és train pontosabb lehet újra kimondott szöveg szerkesztése.
+* Kombinálhatja a szándék fog vonatkozni, ha utterances szorosan túl vannak elhelyezve, és újra be.
+
+## <a name="utterances-per-intent"></a>Leképezés kiszolgálónként kimondott szöveg
+
+Ez a kártya a szándék között alkalmazás általános állapotát mutatja. Leképezések és teljesített kapcsolat-újraépítési javításához, továbbra is, ez a kártya problémák áttekintése.
+
+A következő diagram mutatja egy jól kiegyensúlyozott alkalmazás, és majdnem nincsenek problémák megoldásához.
+
+![A következő diagram mutatja egy jól kiegyensúlyozott alkalmazás, és majdnem nincsenek problémák megoldásához.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-balance.png)
+
+A következő diagram mutatja egy rosszul elosztott terhelésű alkalmazás számos probléma megoldásához és.
+
+![A következő diagram mutatja egy jól kiegyensúlyozott alkalmazás, és majdnem nincsenek problémák megoldásához.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
+
+Minden egyes szándékot sáv a leképezés információt szeretne kapni a kurzort. 
+
+![A következő diagram mutatja egy jól kiegyensúlyozott alkalmazás, és majdnem nincsenek problémák megoldásához.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
+
+Használja a **rendezés** szolgáltatást rendezze a szándék szerint probléma típusa, így Ön az, hogy a probléma a legtöbb problémát leképezések a. 
+
+## <a name="intents-with-errors"></a>Leképezések hibákkal
+
+Ez a kártya lehetővé teszi, hogy olvassa el a problémákat az egy adott szándékot. Ez a kártya alapértelmezett nézete a legtöbb problémát leképezések, így megtudhatja, hol összpontosítsa figyelmét.
+
+![A hibák kártyával leképezések lehetővé teszi, hogy egy adott szándékot problémái tekintse át. A kártya a szűrt a legtöbb problémát szándék fog vonatkozni, alapértelmezés szerint, hogy tudja, hol összpontosítsa figyelmét.](./media/luis-how-to-use-dashboard/most-problematic-intents-with-errors.png)
+
+Az első fánkdiagramot a problémákat azzal a szándékkal, a három a probléma típusában jeleníti meg. Ha problémák vannak a három a probléma típusok, minden típusban a saját diagram alá, és bármely versenytárs leképezések. 
+
+### <a name="filter-intents-by-issue-and-percentage"></a>Probléma és százalékos leképezések szűrése
+
+Ez a szakasz a kártya lehetővé teszi, hogy a hiba küszöbértéken kívüli csökken példa megcímkézzen található. Ideális esetben érdemes jelentőségű tényező lehet, hogy megfelelő ismeretekkel. A százalékos értéke, üzleti és ügyfél-alapú. 
+
+Határozza meg a küszöbérték százalékos, amelynek Ön a magabiztosan a vállalkozása számára. 
+
+A szűrő lehetővé teszi az adott probléma leképezések található:
+
+|Szűrés|Javasolt százalékos aránya|Cél|
+|--|--|--|
+|Legtöbb problémát leképezések|-|**Kezdje itt** -megcímkézzen értesítenünk a leképezés javítja az alkalmazás több, mint más javításokat.|
+|Az alábbi megfelelő előrejelzések|60%|Ez az, hogy helyes-e, de egy megbízhatósági pontszám a küszöbérték alatt van a kiválasztott SZÁNDÉKTÓL megcímkézzen aránya. |
+|A fenti egyértelmű előrejelzések|15%|Ez az, hogy a rendszer a legközelebbi versenytárs célt összetéveszteni megcímkézzen a kiválasztott SZÁNDÉKTÓL aránya.|
+|A fenti helytelen előrejelzések|15%|Ez az, hogy helytelenül vannak előre jelzett a kiválasztott SZÁNDÉKTÓL megcímkézzen aránya. |
+
+### <a name="correct-prediction-threshold"></a>Megfelelő előrejelzési küszöbérték
+
+Mi az a benne előrejelzési magabiztossági pontszámot is? Alkalmazások fejlesztése az elején, 60 %-os lehet, hogy a cél. Használja a **javítsa ki az alábbi előrejelzéseket** százalékkal 60 %-os megszólalásokat található a kiválasztott célt, amelyet javítani kell.
+
+### <a name="unclear-or-incorrect-prediction-threshold"></a>Nem egyértelmű vagy hibás előrejelzési küszöbérték
+
+E két naplófájlbejegyzések kimondott szöveg található a kiválasztott leképezés meghaladja a küszöbértéket. E két százalékos hiba százalékként is felfoghatók. Ha Ön egy 10 – 15 %-os Hibaarány ismeretekkel ügyfélszolgáltatást, állítsa be a szűrő küszöbértéket 15 % található összes utterances meghaladja ezt az értéket. 
+
+## <a name="next-steps"></a>További lépések
+
+* [Az Azure-erőforrások kezelése](luis-how-to-azure-subscription.md)

@@ -5,23 +5,20 @@ services: container-service
 author: iainfoulds
 ms.topic: conceptual
 ms.service: container-service
-ms.date: 12/03/2018
+ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 38b2654c8f3e8d302a66cac335913583bd4426ef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fe837c4d89a59325040355e35f12c3499aee7d98
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61024554"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072812"
 ---
-# <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Előzetes verzió – létrehozása és konfigurálása az Azure Kubernetes szolgáltatás (AKS-) fürt használata a virtuális csomópontok az Azure CLI használatával
+# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Létrehozhat és konfigurálhat egy Azure Kubernetes-szolgáltatások (AKS)-fürtön az Azure CLI használatával virtuális csomópontok használata
 
-Gyorsan méretezhető alkalmazások és szolgáltatások Azure Kubernetes Service (AKS)-fürtben, a virtuális csomópontok használhatók. Virtuális csomópont esetén podok gyors kiépítés rendelkezik, és csak a végrehajtási idejű másodpercenként kell fizetnie. Nem kell a virtuális gép futtatása az újabb podok számítási csomópontok üzembe helyezése Kubernetes-fürt méretező várja. Ez a cikk bemutatja, hogyan hozzon létre és konfigurálja a virtuális hálózati erőforrások és az AKS-fürtöt, majd engedélyezze a virtuális csomópontok.
+Gyorsan méretezhető alkalmazások és szolgáltatások Azure Kubernetes Service (AKS)-fürtben, a virtuális csomópontok használhatók. Virtuális csomópont esetén podok gyors kiépítés rendelkezik, és csak a végrehajtási idejű másodpercenként kell fizetnie. Nem kell a virtuális gép futtatása az újabb podok számítási csomópontok üzembe helyezése Kubernetes-fürt méretező várja. Virtuális csomópontok csak Linux-podok és -csomópontok támogatottak.
 
-> [!IMPORTANT]
-> Az AKS előzetes verziójú funkciók a következők: az önkiszolgáló és vehetnek részt. Visszajelzés és hibák gyűjtsön közösségünkhöz előzetes verziók vannak megadva. Azonban nem támogatja őket az Azure műszaki támogatást. Hozzon létre egy fürtöt, vagy adja hozzá ezeket a funkciókat a meglévő fürtökre, ha a fürt nem támogatott, mindaddig, amíg a funkció már nem előzetes verzióban érhető el és hallgatóknak az általánosan elérhető (GA).
->
-> Ha az előzetes verziójú szolgáltatásaihoz is problémák merülnek fel [nyisson egy problémát a AKS GitHub-adattárat a] [ aks-github] az előzetes verziójú funkció a bejelentett hiba címét nevére.
+Ez a cikk bemutatja, hogyan hozzon létre és konfigurálja a virtuális hálózati erőforrások és az AKS-fürtöt, majd engedélyezze a virtuális csomópontok.
 
 ## <a name="before-you-begin"></a>Előzetes teendők
 
@@ -52,10 +49,16 @@ az provider register --namespace Microsoft.ContainerInstance
 A következő régiók virtuális csomópont központi telepítések támogatottak:
 
 * Kelet-Ausztrália (Kelet-Ausztrália)
+* USA középső RÉGIÓJA (centralus)
 * USA keleti RÉGIÓJA (USA keleti régiója)
+* USA keleti RÉGIÓJA 2 (eastus2)
+* Kelet-japán (japaneast)
+* Észak-Európa (northeurope)
+* Délkelet-Ázsia (southeastasia)
 * USA nyugati középső Régiója (régiója)
 * Nyugat-Európa (westeurope)
 * USA nyugati RÉGIÓJA (westus)
+* USA nyugati RÉGIÓJA 2 (westus2)
 
 ## <a name="known-limitations"></a>Ismert korlátozások
 Virtuális csomópontok funkciója az aci Szolgáltatásban a szolgáltatáskészlet nagymértékben függ. A következő esetekben még nem támogatottak a virtuális csomópontok
@@ -183,11 +186,6 @@ az aks enable-addons \
     --addons virtual-node \
     --subnet-name myVirtualNodeSubnet
 ```
-> [!NOTE]
-> Ha egy virtuális csomópont nem található hibaüzenet kap, szükség lehet a CLI-bővítmény telepítése 
-> ```azurecli-interactive
-> az extension add --source https://aksvnodeextension.blob.core.windows.net/aks-virtual-node/aks_virtual_node-0.2.0-py2.py3-none-any.whl
-> ```
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
@@ -266,7 +264,7 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 A pod belső IP-cím van hozzárendelve az Azure virtuális hálózat alhálózatról a virtuális csomópontok segítségével delegált.
 
 > [!NOTE]
-> Ha az Azure Container Registryben tárolt rendszerképek [konfigurálhatja és használhatja a Kubernetes titkos][acr-aks-secrets]. A jelenlegi korlátozás miatt a virtuális csomópontok előzetes, hogy nem használható az Azure AD egyszerű szolgáltatás hitelesítése integrálva. Ha egy titkos kulcsot nem használja, a virtuális csomópontok ütemezett podok sikertelen elindításához, és jelentse a hibát `HTTP response status code 400 error code "InaccessibleImage"`.
+> Ha az Azure Container Registryben tárolt rendszerképek [konfigurálhatja és használhatja a Kubernetes titkos][acr-aks-secrets]. Egy, a virtuális csomópontok jelenlegi korlátozás miatt, hogy nem használható az integrált Azure AD egyszerű szolgáltatásnév hitelesítésével. Ha egy titkos kulcsot nem használja, a virtuális csomópontok ütemezett podok sikertelen elindításához, és jelentse a hibát `HTTP response status code 400 error code "InaccessibleImage"`.
 
 ## <a name="test-the-virtual-node-pod"></a>A virtuális csomópont pod tesztelése
 

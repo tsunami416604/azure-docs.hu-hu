@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 04/08/2019
 ms.author: pafarley
-ms.openlocfilehash: df3db534550e709e40cc94d5f951056d93a1003e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 2a120a59a58eb8d7a017cce0dd85c21038bdcf51
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027074"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143216"
 ---
 # <a name="what-is-form-recognizer"></a>Mi az űrlap felismerő?
 
@@ -73,13 +73,7 @@ Fedezze fel a [REST API-referencia dokumentumban](https://aka.ms/form-recognizer
 
 ## <a name="data-privacy-and-security"></a>Adatvédelem és biztonság
 
-A szolgáltatás érhető el egy [előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) alatt egy Azure Service a [Online szolgáltatási feltételek](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). Megőrzi az adatok tulajdonjogát, és csak azt biztosítása érdekében használjuk az Online szolgáltatások az Ön szerződésében ismertetett módon:
-
-### <a name="processing-of-customer-data-ownership"></a>Vásárlói adatok feldolgozása tulajdonjog
-
-Vásárlói adatok használni vagy más módon feldolgozott, csak adja meg az ügyfél az Online szolgáltatások, többek között ezek a szolgáltatások biztosításával összeegyeztethető célokra. A Microsoft nem használja vagy ellenkező esetben az ügyféladatok feldolgozását vagy lesz nyer információt azokból hirdetési vagy hasonló kereskedelmi célú. A felek közötti érvénnyel ügyfél megőrzi minden jogot, címet és érdekeltséget is, és a vásárlói adatokhoz. A Microsoft nem rights az ügyféladatokat, a jogok ügyfél engedélyezi a Microsoftnak, hogy az Online szolgáltatások biztosítása az ügyfél nem szerez be.
-
-Az összes Cognitive Services, az űrlap felismerő szolgáltatással a fejlesztők célszerű tisztában lennie a vásárlói adatokat a Microsoft házirendeket. Tekintse meg a [Cognitive Services-lapra](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) a további Microsoft Trust Center.
+A szolgáltatás érhető el egy [előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) alatt egy Azure Service a [Online szolgáltatási feltételek](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). Az összes Cognitive Services, az űrlap felismerő szolgáltatással a fejlesztők célszerű tisztában lennie a vásárlói adatokat a Microsoft házirendeket. Tekintse meg a [Cognitive Services-lapra](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) a további Microsoft Trust Center.
 
 ## <a name="next-steps"></a>További lépések
 

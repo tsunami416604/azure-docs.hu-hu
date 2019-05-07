@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 70ead36e20861026e08e864f438071948c526844
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b90e495e0901c0caa14d9451f365e17f6c075e2b
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889058"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65070792"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Globális terjesztés, az Azure Cosmos DB - áttekintés
 
@@ -51,6 +51,6 @@ További információ a globális terjesztés, az alábbi cikkeket:
 
 * [Globális terjesztés – technikai részletek](global-dist-under-the-hood.md)
 * [Az alkalmazások több főkiszolgálós konfigurálása](how-to-multi-master.md)
-* [Ügynökönkénti ügyfelek konfigurálása](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Ügynökönkénti ügyfelek konfigurálása](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Régiók hozzáadása vagy eltávolítása az Azure Cosmos DB-fiókból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Hozzon létre egy egyéni ütközésfeloldási házirend SQL API-fiókok](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

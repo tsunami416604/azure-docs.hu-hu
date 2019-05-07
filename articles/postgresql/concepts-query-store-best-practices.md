@@ -1,21 +1,21 @@
 ---
-title: Ajánlott eljárások Query Store az Azure Database for postgresql-hez
-description: Ez a cikk ismerteti a gyakorlati tanácsok a Query Store az Azure Database for PostgreSQL-hez.
+title: Ajánlott eljárások Query Store az Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk ismerteti a gyakorlati tanácsok a Query Store az Azure Database for PostgreSQL – egyetlen kiszolgáló.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/26/2018
-ms.openlocfilehash: af68d5cdc891a8c924ca493d8e798edaa4670ab5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 798a7a3edbf11c8421848871d26ba55b5bada0b6
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60563171"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067230"
 ---
 # <a name="best-practices-for-query-store"></a>Ajánlott eljárások a Query Store
 
-**A következőkre vonatkozik:** Azure Database for PostgreSQL 9.6 és 10
+**A következőkre vonatkozik:** Azure Database for PostgreSQL – egyetlen kiszolgáló 9.6 és 10
 
 Ez a cikk ismerteti az ajánlott eljárások a Query Store az Azure Database for postgresql-hez.
 

@@ -1,17 +1,17 @@
 ---
-title: Memóriakép és visszaállítása az Azure Database for postgresql-hez
-description: Bontsa ki a PostgreSQL-adatbázis egy memóriakép fájlba, és a egy PostgreSQL-hez készült Azure Database-ben pg_dump által létrehozott fájl visszaállítása ismerteti.
+title: Memóriakép és visszaállítás az Azure Database for PostgreSQL - kiszolgáló egyetlen
+description: Bontsa ki a PostgreSQL-adatbázis egy memóriakép fájlba, és a visszaállítás által pg_dump az Azure Database for PostgreSQL - kiszolgáló egyetlen létrehozott fájlt a módját ismerteti.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2018
-ms.openlocfilehash: d406132c4e359c78567ae47a3acba5b73aa39820
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: aa9485ec8fcabdc0276e0598bd3e19f04d70dfa1
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420342"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65066989"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Memóriakép és visszaállítás használatával a PostgreSQL-adatbázis migrálása
 Használhatja [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) be memóriakép-fájl egy PostgreSQL-adatbázis kibontásához és [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) pg_dump által létrehozott archív fájl visszaállítása a PostgreSQL-adatbázishoz.

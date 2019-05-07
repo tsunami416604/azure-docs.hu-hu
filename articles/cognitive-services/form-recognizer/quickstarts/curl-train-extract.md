@@ -9,16 +9,16 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: cc6e8cdb7cd1719a8cd14cbfe6e576e07c34b32c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1afe9239dcc3f5a24d2e950ec7b563bf53d1f04c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027263"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143237"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-using-rest-api-with-curl"></a>Gyors útmutató: Egy űrlap felismerő modell betanítását, és bontsa ki az űrlapadatok REST API használatával a curl használatával
 
-Ebben a rövid használandó űrlap felismerő REST API használatával a curl használatával betanítását és pontozását űrlapok. a kulcs-érték párok és táblákat.
+Ez a rövid útmutatóban a betanítását és pontozását űrlapok kulcs-érték párok és táblák használandó az űrlap felismerő REST API-t a curl használatával.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -90,7 +90,7 @@ Jegyezze fel a `"modelId"` érték; a következő lépéseket szükség lesz rá
 
 Ezután, egy dokumentumot elemzi, és bontsa ki a kulcs-érték párok és táblák belőle. Hívja a **modell – elemzése** API az alábbi cURL-parancs végrehajtásával. A parancs futtatása előtt végezze el az alábbi módosításokat:
 
-* Cserélje le `<Endpoint>` végponttal rendelkező szerezte be az űrlap felismerő előfizetési kulcs. Az űrlap felismerő erőforrás Áttekintés lapján találja.
+* Cserélje le `<Endpoint>` kapott, az űrlap felismerő előfizetési kulcs a végponthoz. Az űrlap felismerő erőforrás megtalálja **áttekintése** fülre.
 * Cserélje le `<modelID>` a modellt, a modell tanítása az előző lépésben kapott azonosítóval.
 * Cserélje le `<path to your form>` való az űrlapot a fájl elérési útját.
 * A `<subscription key>` helyére írja be az előfizetési kulcsot.

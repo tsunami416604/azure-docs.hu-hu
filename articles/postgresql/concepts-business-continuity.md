@@ -1,19 +1,19 @@
 ---
-title: Az Azure Database for PostgreSQL üzletmenet-folytonossági funkcióinak áttekintése
+title: Az Azure Database for PostgreSQL - kiszolgáló egyetlen üzletmenet-folytonossági funkcióinak áttekintése
 description: Az Azure Database for PostgreSQL üzletmenet-folytonossági funkcióinak áttekintése.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: b1d566ac571ddd2b2be3aff160f669e277887209
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: a31112f3b6f7bd79785f89822e2881b152708254
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456274"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068929"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-postgresql"></a>Az Azure Database for PostgreSQL üzletmenet-folytonossági funkcióinak áttekintése
+# <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Az Azure Database for PostgreSQL - kiszolgáló egyetlen üzletmenet-folytonossági funkcióinak áttekintése
 
 Ez az áttekintés, Azure Database for PostgreSQL biztosítja az üzletmenet-folytonosság és vészhelyreállítás funkcióit írja le. Ismerje meg azokat a káros eseményeket, amelyek adatvesztéshez vezethetnek vagy az adatbázis és az alkalmazás elérhetetlenné okozhat a beállításokat. Ismerje meg, mi a teendő, ha egy felhasználó vagy alkalmazás hiba hatással van az adatok integritásának megőrzése, egy Azure-régióban van kimaradás vagy az alkalmazás karbantartásra szorul.
 

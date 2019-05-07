@@ -4,14 +4,14 @@ description: Indexelő működésének megismerése az Azure Cosmos DB-hez.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.author: thweiss
-ms.openlocfilehash: 3bb8913725acf04f71aba8b4c4350235f2c44dfb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 44706e5ebe2442dcb45dfc45e2c322938cf7dca9
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61051870"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068658"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexelés az Azure Cosmos DB használatával – áttekintés
 
@@ -66,19 +66,41 @@ Az Azure Cosmos DB jelenleg kétféle indexek használatát támogatja:
 
 A **tartomány** használható index típusa:
 
-- egyenlőség lekérdezéseket: `SELECT * FROM container c WHERE c.property = 'value'`
-- tartomány lekérdezések: `SELECT * FROM container c WHERE c.property > 'value'` (működik `>`, `<`, `>=`, `<=`, `!=`)
-- `ORDER BY` a lekérdezésekre: `SELECT * FROM container c ORDER BY c.property`
-- `JOIN` a lekérdezésekre: `SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'`
+- egyenlőség lekérdezéseket: 
+
+   ```sql SELECT * FROM container c WHERE c.property = 'value'```
+
+- Lekérdezések: 
+
+   ```sql SELECT * FROM container c WHERE c.property > 'value'``` (működik `>`, `<`, `>=`, `<=`, `!=`)
+
+- `ORDER BY` a lekérdezésekre:
+
+   ```sql SELECT * FROM container c ORDER BY c.property```
+
+- `JOIN` a lekérdezésekre: 
+
+   ```sql SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'```
 
 Tartomány indexek használható skaláris értékek (karakterlánc vagy szám).
 
 A **térbeli** használható index típusa:
 
-- térinformatikai távolság lekérdezéseket: `SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40`
-- a térinformatikai lekérdezések belül: `SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })`
+- térinformatikai távolság lekérdezéseket: 
+
+   ```sql SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40```
+
+- a térinformatikai lekérdezések belül: 
+
+   ```sql SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })```
 
 A térbeli indexek esetén használható formátumú [GeoJSON](geospatial.md) objektumokat. Pontok, Linestring, és poligonok jelenleg támogatott.
+
+A **összetett** használható index típusa:
+
+- `ORDER BY` több tulajdonság-lekérdezéseket: 
+
+   ```sql SELECT * FROM container c ORDER BY c.firstName, c.lastName```
 
 ## <a name="querying-with-indexes"></a>Az indexek lekérdezése
 
@@ -89,7 +111,7 @@ Vegyük példaként a következő lekérdezést: `SELECT location FROM location 
 ![Egy megadott elérési úthoz a fán egyeztetése](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> Egy `ORDER BY` záradék *mindig* tartományt kell indexelése és sikertelen lesz, ha az elérési út hivatkozik, ezért nem rendelkezik ilyennel.
+> Egy `ORDER BY` záradékot, amely egyetlen tulajdonság alapján rendezi *mindig* tartományt kell indexelése és sikertelen lesz, ha az elérési út hivatkozik, ezért nem rendelkezik ilyennel. Hasonlóképpen, egy többszörös `ORDER BY` lekérdezés *mindig* összetett index kell.
 
 ## <a name="next-steps"></a>További lépések
 

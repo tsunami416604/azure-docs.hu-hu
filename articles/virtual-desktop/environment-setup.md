@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: ceed6a8bb74206b7c6689ce542482148800e4ba9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6aa6c7326759e480235df5fe9d4b0878cd11024d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870319"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142385"
 ---
 # <a name="windows-virtual-desktop-preview-environment"></a>Windows virtuális asztal előzetes verziójú környezet
 
@@ -63,5 +63,5 @@ Ismerje meg, hogyan állítható be a virtuális asztali Windows-bérlőhöz, l�
 
 Megtudhatja, hogyan csatlakozhat a virtuális asztali Windows, az alábbi cikkekben talál:
 
-- [Csatlakozás a távoli asztali ügyfél Windows 7 és Windows 10 rendszeren](connect-windows-7-and-10.md)
-- [Csatlakozás a Windows virtuális asztal előzetes webes ügyféllel](connect-web.md)
+- [Csatlakozás a Windows 10-es vagy Windows 7](connect-windows-7-and-10.md)
+- [Egy webböngészőből csatlakozzon](connect-web.md)

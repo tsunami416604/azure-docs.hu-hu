@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 0044cbc9e6142989a57e79de5fd1e78e999bb5e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 241e89ac7fa78184e7c55f9e8065e1534cea9143
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60196099"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148728"
 ---
 # <a name="create-entities-without-utterances"></a>Beszédmódok nélkül entitások létrehozása
 
@@ -66,29 +66,6 @@ A reguláris kifejezésnek entitás is, az utterance (kifejezés), adja meg a re
 
     A reguláris kifejezésnek megfelelő literális karakter `hrf-`, majd 6 számjegyű, amelyek egy űrlapot az emberi erőforrások űrlap száma.
 
-## <a name="add-hierarchical-entities"></a>Hierarchikus entitások hozzáadása
-
-Egy hierarchikus entitás, de megismert és elméletben kapcsolódó entitások egy kategóriát. A következő példában az entitás tartalmazza a forrás-és célhelynek. 
-
-Az utterance (kifejezés) a `Move John Smith from Seattle to Cairo`, Seattle a feladás helyét pedig Cairo a célhelyen. Minden egyes helye kontextusban különböző és megismert szórendjét és a word választott az utterance (kifejezés).
-
-Hierarchikus entitások hozzáadásához kövesse az alábbi lépéseket: 
-
-1. Jelölje be az alkalmazásba, **entitások** a bal oldali navigációs, és válassza ki a **új entitás létrehozása**.
-
-1. Az előugró párbeszédpanelen írja be a `Location` a a **entitás neve** mezőbe, majd válassza ki **hierarchikus** a a **entitástípus** listája.
-
-    ![Hierarchikus entitás hozzáadása](./media/add-entities/hier-location-entity-creation.png)
-
-1. Válassza ki **gyermek hozzáadása**, majd adja meg `Origin` a **gyermek 1** mezőbe. 
-
-1. Válassza ki **gyermek hozzáadása**, majd adja meg `Destination` a **gyermek 2** mezőbe. Válassza a **Done** (Kész) lehetőséget.
-
-    >[!CAUTION]
-    >Gyermek entitásnévnek egyedinek kell lennie minden entitás egyetlen alkalmazásban. Két különböző hierarchikus entitások nem tartalmazhat gyermekentitások ugyanazzal a névvel. 
-
-    Az entitás létrehozása után nyissa meg az entitást tartalmazó példa utterances rendelkezik szándék fog vonatkozni. Válassza ki a szöveget a példa utterance (kifejezés), és a szöveg nyelve az entitás. 
-
 <a name="add-composite-entities"></a>
 
 ## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>A szülő-gyermek kapcsolatot csoportosíthatja összetett entitások hozzáadása
@@ -137,9 +114,7 @@ Az utterance (kifejezés) a `Where is Request relocation from employee new to th
 
 A szerepkör az a környezet alapján elnevezett altípusa. Minden entitás, beleértve az előre elkészített, és nem gép megismert entitások érhető el. 
 
-Ugyanebben a példában a forrás és cél városok, a különbség a hierarchikus entitásként használata, hogy a szerepkör neve helyett egy hierarchikus gyermek forrása. 
-
-A szerepkör szintaxisa **{Entityname:Rolename}** ahol az entitás neve követ egy kettőspontot, akkor a szerepkör nevét. Például: `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`.
+A szerepkör szintaxisa **`{Entityname:Rolename}`** ahol az entitás neve követ egy kettőspontot, akkor a szerepkör nevét. Például: `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`.
 
 1. Az a **összeállítása** szakaszban jelölje be **entitások** a bal oldali panelen.
 

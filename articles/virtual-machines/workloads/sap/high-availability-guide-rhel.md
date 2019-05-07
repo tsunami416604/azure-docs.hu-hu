@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/15/2019
+ms.date: 04/30/2019
 ms.author: sedusch
-ms.openlocfilehash: c6746dc4bd5732a13c25793ed572a85acfca82d4
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 4e224a1abf72bfa068bebaf971e34c492b15d7c0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925784"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142993"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Az Azure virtuális gépek magas rendelkezésre állás az SAP NetWeaver a Red Hat Enterprise Linux
 
@@ -87,6 +87,9 @@ Magas rendelkezésre állás, az SAP NetWeaver megosztott tároló szükséges h
 
 SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. Az Azure-ban a terheléselosztó virtuális IP-cím szükséges. Az alábbi lista tartalmazza (A) konfigurációjának SCS és SSZON terheléselosztó.
 
+> [!IMPORTANT]
+> Több SID-vel fürtözés az SAP ASCS/SSZON Red Hat Linux rendszerű, Azure virtuális gépeken futó vendég operációs rendszer **nem támogatott**. Több SID-vel fürtszolgáltatás egy támasztja fürt eltérő SID-több SAP ASCS/SSZON-példány telepítését ismerteti.
+
 ### <a name="ascs"></a>(A)SCS
 
 * Előtér-konfigurációjához
@@ -95,7 +98,7 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA datab
   * (A) részének kell lennie az összes virtuális gépek elsődleges hálózati adaptere csatlakozik SCS/SSZON fürt
 * Mintavételi Port
   * Port 620<strong>&lt;nr&gt;</strong>
-* Terheléselosztás szabályok
+* Terheléselosztási szabályok
   * 32<strong>&lt;nr&gt;</strong> TCP
   * 36<strong>&lt;nr&gt;</strong> TCP
   * 39<strong>&lt;nr&gt;</strong> TCP
@@ -112,7 +115,8 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA datab
   * (A) részének kell lennie az összes virtuális gépek elsődleges hálózati adaptere csatlakozik SCS/SSZON fürt
 * Mintavételi Port
   * Port 621<strong>&lt;nr&gt;</strong>
-* Terheléselosztás szabályok
+* Terheléselosztási szabályok
+  * 32<strong>&lt;nr&gt;</strong> TCP
   * 33<strong>&lt;nr&gt;</strong> TCP
   * 5<strong>&lt;nr&gt;</strong>13 TCP
   * 5<strong>&lt;nr&gt;</strong>14 TCP
@@ -124,11 +128,11 @@ SAP NetWeaver az átvitel és a profil Directory megosztott tároló szükséges
 
 ## <a name="setting-up-ascs"></a>(A) SCS beállítása
 
-Minden szükséges Azure-erőforrás, beleértve a virtuális gépek üzembe helyezéséhez vagy használhatja az Azure-sablont a githubból, rendelkezésre állás beállítása és a terheléselosztó vagy manuálisan telepítheti az erőforrásokat.
+Minden szükséges Azure-erőforrás, beleértve a virtuális gépek üzembe helyezéséhez vagy használhatja az Azure-sablont a Githubból, rendelkezésre állás beállítása és a terheléselosztó vagy manuálisan telepítheti az erőforrásokat.
 
 ### <a name="deploy-linux-via-azure-template"></a>Linux-n keresztül az Azure-sablon üzembe helyezése
 
-Az Azure Marketplace-en kép Red Hat Enterprise Linux, amelyek segítségével telepíthet új virtuális gépeket tartalmazza. Használhatja a gyorsindítási sablonok egyikét a githubon üzembe helyezéséhez szükséges összes erőforrást. A sablon üzembe helyezi a virtuális gépek, a terheléselosztó, a rendelkezésre állási csoport stb. Kövesse az alábbi lépéseket a sablon üzembe helyezéséhez:
+Az Azure Marketplace-en kép Red Hat Enterprise Linux, amelyek segítségével telepíthet új virtuális gépeket tartalmazza. Használhatja a gyorsindítási sablonok egyikét a Githubon üzembe helyezéséhez szükséges összes erőforrást. A sablon üzembe helyezi a virtuális gépek, a terheléselosztó, a rendelkezésre állási csoport stb. Kövesse az alábbi lépéseket a sablon üzembe helyezéséhez:
 
 1. Nyissa meg a [ASCS/SCS sablon] [ template-multisid-xscs] az Azure Portalon  
 1. Adja meg a következő paraméterek
@@ -145,7 +149,7 @@ Az Azure Marketplace-en kép Red Hat Enterprise Linux, amelyek segítségével t
    1. Rendszer rendelkezésre állását  
       Válassza ki a magas rendelkezésre ÁLLÁS
    1. Rendszergazdai felhasználónév, a rendszergazdai jelszó vagy SSH-kulcs  
-      Egy új felhasználót hoz létre, amely segítségével jelentkezzen be a számítógépen.
+      Egy új felhasználót hoz létre, amely segítségével jelentkezzen be a gépre.
    1. Alhálózati azonosító  
    Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában néz ki: /subscriptions/**&lt;előfizetés-azonosító&gt;**/resourceGroups/**&lt;erőforráscsoport-név&gt;**/szolgáltatók/ Microsoft.Network/virtualNetworks/**&lt;virtuálishálózat-nevet&gt;**/subnets/**&lt;alhálózat neve&gt;**
 
@@ -192,7 +196,7 @@ Először a virtuális gépek a fürt létrehozásához. Ezt követően hozzon l
          1. Kattintson az OK gombra
       1. Port 621**02** ASCS SSZON számára
          * Ismételje meg a fenti lépéseket, és hozzon létre egy állapotmintát az on-felhasználók számára (például 621**02** és **a hp aers nw1**)
-   1. Terheléselosztás szabályok
+   1. Terheléselosztási szabályok
       1. 32**00** TCP ASCS használata
          1. Nyissa meg a terheléselosztó, terheléselosztási szabályok kiválasztása, és kattintson a Hozzáadás gombra
          1. Adja meg az új terheléselosztó-szabályt nevét (például **nw1-lb-3200**)
@@ -457,7 +461,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 
 1. **[A]**  Életben tartási konfigurálása
 
-   A SAP NetWeaver-kiszolgáló és az ASC/SCS közötti kommunikáció áthalad egy szoftveres terheléselosztót. A load balancer inaktív kapcsolatok leválasztása után konfigurálható időkorlát. Ennek megelőzéséhez szüksége egy paraméter az SAP NetWeaver ASCS/SCS-profilban és a Linux rendszer beállításait módosíthatja. Olvasási [SAP Megjegyzés 1410736] [ 1410736] további információt.
+   A SAP NetWeaver-kiszolgáló és az ASC/SCS közötti kommunikáció áthalad egy szoftveres terheléselosztót. A load balancer inaktív kapcsolatok leválasztása után konfigurálható időkorlát. Ennek megelőzése érdekében szüksége egy paraméter az SAP NetWeaver ASCS/SCS-profilban és a Linux rendszer beállításait módosíthatja. Olvasási [SAP Megjegyzés 1410736] [ 1410736] további információt.
 
    Az ASCS/SCS profil paraméter célzó/encni/set_so_keepalive már lett adva az előző lépésben.
 
@@ -527,7 +531,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
    sudo pcs property set maintenance-mode=false
    </code></pre>
 
-   Ha Ön egy régebbi verzióból frissítése és sorba server 2 vált, tekintse meg az sap-jegyzetnek [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
+   Ha Ön egy régebbi verzióból frissítése és sorba server 2 vált, tekintse meg az SAP Megjegyzés [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
 
    Győződjön meg arról, hogy a fürt állapota rendben, és elindulnak, hogy az összes erőforrás. Nem számít mely erőforrásokat futtató csomóponton.
 

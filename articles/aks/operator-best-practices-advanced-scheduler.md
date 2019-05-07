@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 9aa394a405e5b4392f900d1e7520d93e6d152e49
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 78f54e9e86de7a8b1b80300e0ed79a5e54f29282
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690468"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074186"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Gyakorlati tanácsok a speciális scheduler funkciók az Azure Kubernetes Service (AKS)
 
@@ -30,6 +30,8 @@ Ez – gyakorlati tanácsok cikk ütemezési összetevők adhatnak az operátoro
 **Ajánlott eljárásokkal kapcsolatos útmutatás** – erőforrás-igényes alkalmazásokhoz, bejövő vezérlők, például adott csomópontjaihoz hozzáférést korlátozza. Tartsa elérhető megkövetelő számítási feladatokhoz csomópont erőforrásokat, és nem engedélyezi, hogy más számítási feladatok a csomóponton.
 
 Az AKS-fürt létrehozásakor telepíthet csomópontok GPU-támogatással vagy egy nagy teljesítményű processzorokkal rendelkeznek. Ezek a csomópontok gyakran használják a nagyméretű adatfeldolgozási számítási feladatokhoz, például a machine learning (gépi tanulás) vagy a mesterséges intelligencia (AI). Mivel az ilyen típusú hardver általában egy költséges csomópont-erőforrást helyezhet üzembe, a számítási feladatok, amelyek ezeken a csomópontokon ütemezett korlátozza. Ehelyett érdemes elkülönítenie az egyes csomópontok bejövő szolgáltatások futtatásához, és más számítási feladatok megakadályozása a fürtben.
+
+A különböző csomópontokon támogatása több csomópont-készlet alkalmazásával biztosítható. AKS-fürt egy vagy több csomópont-címkészleteket biztosít. Az aks-ben több csomópontkészletek támogatása jelenleg előzetes verzióban érhető el.
 
 A Kubernetes a scheduler használatával elkerülésére, valamint tolerations milyen számítási feladatokat futtathat a csomópontok korlátozhatják.
 
@@ -53,13 +55,13 @@ spec:
   containers:
   - name: tf-mnist
     image: microsoft/samples-tf-mnist-demo:gpu
-  resources:
-    requests:
-      cpu: 0.5
-      memory: 2Gi
-    limits:
-      cpu: 4.0
-      memory: 16Gi
+    resources:
+      requests:
+        cpu: 0.5
+        memory: 2Gi
+      limits:
+        cpu: 4.0
+        memory: 16Gi
   tolerations:
   - key: "sku"
     operator: "Equal"
@@ -72,6 +74,8 @@ Ha a pod üzembe lett helyezve, például `kubectl apply -f gpu-toleration.yaml`
 Amikor alkalmazza elkerülésére, az alkalmazásfejlesztők és tulajdonosok, hogy azok tudjanak határozhat meg a szükséges tolerations telepítések együttműködve.
 
 Elkerülésére, valamint tolerations kapcsolatos további információkért lásd: [elkerülésére, valamint tolerations alkalmazása][k8s-taints-tolerations].
+
+Az aks-ben több csomópontkészletek használatával kapcsolatos további információkért lásd: [létrehozása és kezelése az aks-ben a fürt több csomópontkészletei][use-multiple-node-pools].
 
 ### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Elkerülésére, valamint az aks-ben tolerations viselkedését
 
@@ -195,3 +199,4 @@ Ez a cikk a Kubernetes-ütemező speciális szolgáltatások összpontosít. Az 
 [aks-best-practices-scheduler]: operator-best-practices-scheduler.md
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
+[use-multiple-node-pools]: use-multiple-node-pools.md

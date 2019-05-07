@@ -1,19 +1,19 @@
 ---
-title: Az Azure Kubernetes Service (AKS) csatlakoztatása az Azure Database for postgresql-hez
-description: További tudnivalók az Azure Kubernetes Service csatlakoztatása az Azure Database for postgresql-hez
+title: Csatlakozás az Azure Kubernetes Service (AKS) az Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: További tudnivalók az Azure Kubernetes Service csatlakoztatása az Azure Database for PostgreSQL – egyetlen kiszolgáló
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.date: 11/27/2018
+ms.date: 5/6/2019
 ms.topic: conceptual
-ms.openlocfilehash: f25d87c7c557404071d777f4efcf22e53886d96d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a98d9b89db0406d67d1b067c3e53eb5c3dae7957
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456189"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068942"
 ---
-# <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql"></a>Csatlakozás az Azure Kubernetes Service és az Azure Database for postgresql-hez
+# <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>Csatlakozás az Azure Kubernetes Service és az Azure Database for PostgreSQL – egyetlen kiszolgáló
 
 Az Azure Kubernetes Service (AKS) biztosít egy felügyelt Kubernetes-fürtöt az Azure-ban is használhatja. Az alábbiakban néhány lehetőség használatakor figyelembe kell AKS és Azure Database for PostgreSQL együtt alkalmazás létrehozása.
 

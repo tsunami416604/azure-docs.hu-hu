@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 50f3ecf69561313a5bda67827cfb02d2f61d461f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e62d106a42dfbec897e5e14cf68fd3d7fd823c4
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60653661"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65070819"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Manuálisan állítsa le, vagy indítsa el a tárolók az Azure Container Instances szolgáltatásban
 
@@ -24,7 +24,7 @@ Egy futó tárolócsoportra - manuálisan állítsa le például használatával
 
 *Egy tárolócsoport leállított állapotba kerül, ha leállítja és újraindítja a csoportban lévő összes tárolót. Nem őrzi meg a tároló állapota.*
 
-Bár egy leállított tárolócsoportban a tárolók lehetőség, a [erőforrások](container-instances-container-groups.md#resource-allocation) használható lefoglalva maradnak. Ezért a számlázás továbbra is egy leállított tárolócsoport.
+A tárolók lehetőség, ha a [erőforrások](container-instances-container-groups.md#resource-allocation) felszabadított állapotban vannak, és a számlázás a tárolócsoport leáll.
 
 A leállítási művelet nem befolyásolja, ha a tárolócsoport már befejeződött (sikeres vagy sikertelen állapotban van). Például egyszer futtatott tároló feladatok, amelyek sikeresen futtattak egy tárolócsoportot ér véget, a sikeres állapotú. Megkísérli leállítani a csoport, ebben az állapotban nem módosítja a állapotát. 
 

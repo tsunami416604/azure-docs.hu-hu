@@ -1,37 +1,35 @@
 ---
-title: Adja hozzá, és futtassa a Azure Logic Apps és az Azure Functions egyéni kódot |} A Microsoft Docs
-description: Ismerje meg, hogyan adhat hozzá, és egyéni kódrészleteket futtat az Azure Logic Apps az Azure Functions használatával
+title: Adja hozzá, és futtassa a kódot az Azure Logic Apps az Azure Functions használatával
+description: Adja hozzá, és futtassa a kódot az Azure Logic Apps az Azure Functions használatával
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
 ms.topic: article
 ms.date: 08/20/2018
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 2bec33a4a8540f9599cf1d479f1f59c4cde39bd2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e371a6abe32a1a41d3babeaa27aaec3e30bd3323
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60687599"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142308"
 ---
-# <a name="add-and-run-custom-code-snippets-in-azure-logic-apps-with-azure-functions"></a>Adja hozzá, és egyéni kódrészleteket futtat az Azure Logic Apps az Azure Functions használatával
+# <a name="add-and-run-code-by-using-azure-functions-in-azure-logic-apps"></a>Adja hozzá, és futtassa a kódot az Azure Functions szolgáltatással az Azure Logic Appsben
 
-Ha szeretné futtatni, csak a megfelelő kód, amely egy adott feladat végrehajtja a logic Apps, hozhat létre saját együttműködik [Azure Functions](../azure-functions/functions-overview.md). Ez a szolgáltatás segítségével hozhat létre a Node.js, C#, és F# kódrészletek, így nem kell a teljes alkalmazás vagy a kódja fut. infrastruktúráját. Az Azure Functions biztosít a kiszolgáló nélküli számítási feladatokat a felhőben, és akkor hasznos, ha feladatok, például a következőket:
+Ha szeretné futtatni, hogy egy adott feladat a logic Apps, hozhat létre saját együttműködik [Azure Functions](../azure-functions/functions-overview.md). Ez a szolgáltatás segítségével hozhat létre a Node.js, C#, és F# code, így nem kell a teljes alkalmazás vagy a kódja fut. infrastruktúráját. Emellett [a logikai alkalmazások meghívása Azure functions belül](#call-logic-app).
+Az Azure Functions biztosít a kiszolgáló nélküli számítási feladatokat a felhőben, és akkor hasznos, ha feladatok, például a következőket:
 
 * Terjessze ki a logikai alkalmazás viselkedése, Node.js vagy a C#-függvényekkel.
 * Hajtsa végre a logikai alkalmazás munkafolyamatának számításokat.
 * Speciális formázás alkalmazása, vagy a logic Apps mezők számítási.
 
-Emellett [a logikai alkalmazások meghívása Azure functions belül](#call-logic-app).
+A kódrészleteket futtat az Azure functions létrehozása nélkül, megtudhatja, hogyan [adja hozzá, és futtassa a beágyazott kódot](../logic-apps/logic-apps-add-run-inline-code.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Kövesse az ebben a cikkben, ezek az elemek szükségesek:
-
-* Ha nem rendelkezik Azure-előfizetésem, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókkal</a>. 
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
 * Azure-függvényalkalmazás, amely egy tároló az Azure functions és az Azure-függvény. Ha nem rendelkezik egy függvényalkalmazást, [a függvényalkalmazás létrehozásához először](../azure-functions/functions-create-first-azure-function.md). Létrehozhatja a függvény vagy [külön kívül a logikai alkalmazás](#create-function-external), vagy [a logikai alkalmazáson belül](#create-function-designer) a Logic App Designerben.
 
@@ -58,7 +56,7 @@ Kövesse az ebben a cikkben, ezek az elemek szükségesek:
 
 ## <a name="create-functions-outside-logic-apps"></a>Függvényeket hozhat létre kívül a logic apps
 
-Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a>, az Azure függvényalkalmazást, amely az Azure-előfizetéshez, a logikai alkalmazást, és a majd hozza létre az Azure-függvény létrehozása.
+Az a [az Azure portal](https://portal.azure.com), az Azure függvényalkalmazást, amely az Azure-előfizetéshez, a logikai alkalmazást, és a majd hozza létre az Azure-függvény létrehozása.
 Ha most ismerkedik az Azure functions létrehozása, megtudhatja, hogyan [az első függvény létrehozása az Azure Portalon](../azure-functions/functions-create-first-azure-function.md), de jegyezze fel ezeket az funkciók, amelyeket meghívhat a logikai alkalmazások létrehozásához szükséges követelményeket:
 
 * Mindenképpen jelölje ki a **HTTP-eseményindító** függvénysablon a **JavaScript** vagy **C#**.
@@ -116,7 +114,7 @@ Most, hogy létrehozta az Azure-függvény, kövesse a lépéseket, hogy hogyan 
 
 Létrehozhat egy Azure-függvényt a logikai alkalmazás a Logic App Designerben belül kezdve, először szüksége van egy Azure-függvényalkalmazás, amely az Ön függvényeinek tárolója. Ha nem rendelkezik egy függvényalkalmazást, először hozza létre a függvényalkalmazást. Lásd: [az első függvény létrehozása az Azure Portalon](../azure-functions/functions-create-first-azure-function.md). 
 
-1. Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a>, nyissa meg a logikai alkalmazás a Logic App Designerben. 
+1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a logikai alkalmazás a Logic App Designerben. 
 
 2. Hozhat létre, és adja hozzá a függvényt, végezze el a lépést, amely a forgatókönyvéhez vonatkozik:
 
@@ -176,7 +174,7 @@ A műveletek listából válassza a következő műveletet: **Válassza ki az Az
 
 Meglévő Azure-függvények hívása a logic apps, az Azure functions, mint bármilyen más műveletet is hozzáadhat a Logic App Designerben. 
 
-1. Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a>, nyissa meg a logikai alkalmazás a Logic App Designerben. 
+1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a logikai alkalmazás a Logic App Designerben. 
 
 2. A lépés, ahol szeretné adja hozzá a függvényt, alatt válassza ki a **új lépés** > **művelet hozzáadása**. 
 

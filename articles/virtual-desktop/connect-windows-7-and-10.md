@@ -1,20 +1,20 @@
 ---
-title: Csatlakozás Windows virtuális asztali Preview, Windows 7 és Windows 10 – Azure
-description: Hogyan lehet csatlakozni a Windows 7 vagy Windows 10-es Windows virtuális asztal előzetes szolgáltatást.
+title: Csatlakozás a Windows 10 vagy Windows 7 – az Azure Windows virtuális asztali előzetes verzió
+description: Hogyan lehet csatlakozni, hogy a Windows Virtual Desktop előzetes verziójához a Windows 10-es vagy Windows 7.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/27/2019
+ms.date: 04/24/2019
 ms.author: helohr
-ms.openlocfilehash: 8b5a649d767dae9ae9c0fb077f550451a7f83601
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b7d7b25d0355f2379b90313f17e2b595234df827
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328850"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145986"
 ---
-# <a name="connect-with-windows-7-and-windows-10"></a>Kapcsolódás Windows 7-en és Windows 10-en
+# <a name="connect-from-windows-10-or-windows-7"></a>Csatlakozás a Windows 10-es vagy Windows 7
 
 > A következőre érvényes Windows 7 és Windows 10-es.
 
@@ -25,11 +25,11 @@ A letölthető ügyfél érhető el, amely hozzáférést biztosít a Windows vi
 
 ## <a name="install-the-client"></a>Az ügyfél telepítése
 
-[Töltse le](https://go.microsoft.com/fwlink/?linkid=2068602) és az ügyfél telepítése a helyi számítógéphez. Ehhez rendszergazdai jogosultságokkal.
+[Töltse le](https://go.microsoft.com/fwlink/?linkid=2068602) és az ügyfél telepítése a helyi számítógéphez. A telepítés rendszergazdai jogosultság szükséges.
 
 ## <a name="subscribe-to-a-feed"></a>Előfizetés-hírcsatornára
 
-Listájának rendelkezésre álló erőforrások Önnek a helyi számítógépről feliratkozik a a rendszergazda által megadott hírcsatornán
+Elérhető a felügyelt erőforrások listájának beolvasása, hogy feliratkozik a a rendszergazda által megadott hírcsatornán Előfizetés teszi elérhetővé az erőforrásokat a helyi számítógépen.
 
 Előfizetés a riasztásoktól adatcsatornára:
 
@@ -44,6 +44,33 @@ Két módszer egyikével erőforrások el is indíthatja.
 - Az ügyfél fő lapján kattintson duplán az erőforrást, indítsa el az eszközt.
 - Indítsa el egy erőforrást, ahogy azt szokásosan tenné más alkalmazások a Start menüből.
   - Az alkalmazások a keresősávba is kereshet.
+
+Miután előfizetett egy csatornához, a tartalom a hírcsatorna automatikusan frissülnek rendszeresen. Erőforrások előfordulhat, hogy hozzáadott, módosítani vagy eltávolítani a rendszergazda által végzett módosítások alapján.
+
+## <a name="view-the-details-of-a-feed"></a>Hírcsatorna részleteinek megtekintése
+
+Előfizetés után megtekintheti a hírcsatorna további információt a részletek panelen elérésével.
+
+1. Az ügyfél fő lapján, válassza a három pontra (**...** ) a hírcsatorna nevétől jobbra.
+1. A legördülő menüből válassza ki a **részletek**.
+1. Az ügyfél jobb oldalán megjelenik a részleteket tartalmazó panel.
+
+A részleteket tartalmazó panel tartalmazza a hírcsatorna hasznos információkat:
+
+- Az URL-cím és az előfizetéséhez használt felhasználónév
+- Alkalmazások és asztali számítógépek száma
+- A dátum/idő az utolsó frissítés
+- Az utolsó frissítés állapota
+
+Ha szükséges, elkezdheti válassza a manuális frissítési **frissítés most**.
+
+## <a name="unsubscribe-from-a-feed"></a>Hírcsatorna leiratkozni
+
+Ebben a szakaszban fog arról szól, hogyan hírcsatorna leiratkozni. Fizessen elő újra egy másik fiókkal vagy az erőforrások eltávolítása a rendszerből leiratkozhat.
+
+1. Az ügyfél fő lapján, válassza a három pontra (**...** ) a hírcsatorna nevétől jobbra.
+1. A legördülő menüből válassza ki a **Unsubscribe**.
+1. Tekintse át, és válassza ki **Folytatás** a párbeszédpanelről.
 
 ## <a name="update-the-client"></a>Az ügyfél frissítése
 

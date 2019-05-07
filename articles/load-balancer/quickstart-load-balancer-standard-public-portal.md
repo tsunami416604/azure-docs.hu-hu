@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: f4f54273262f60dc01f78f4bb5828c8fdd2b97a9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 79ba86fd32248da240706fda2d8b5fcf8323263d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707241"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143204"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Gyors útmutató: Standard Load Balancer létrehozása a virtuális gépek terhelésének elosztásához az Azure Portal használatával.
 
@@ -44,7 +44,7 @@ Ebben a szakaszban egy Standard Load Balancer, amellyel a virtuális gépek terh
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *myResourceGroupSLB* a szövegmezőben.|
     | Name (Név)                   | *myLoadBalancer*                                   |
-    | Régió         | Válassza az **USA keleti régiója** lehetőséget.                                        |
+    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza ki **nyilvános**.                                        |
     | SKU           | Válassza ki **Standard**.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
@@ -154,10 +154,10 @@ A standard Load Balancer csak támogatja a virtuális gépeket, a háttérkészl
 
     | Beállítás | VM 2| VM 3|
     | ------- | ----- |---|
-    | Name (Név) |  *myVM1* |*myVM3*|
+    | Name (Név) |  *myVM2* |*myVM3*|
     | Rendelkezésre állási zóna | 2 |3|
     |Nyilvános IP-cím| **Standard szintű** Termékváltozat|**Standard szintű** Termékváltozat|
-    | Nyilvános IP-cím – rendelkezésre állási zónában| Zónaredundáns |
+    | Nyilvános IP-cím – rendelkezésre állási zónában| **Zónaredundáns** |**Zónaredundáns**|
     | Hálózati biztonsági csoport | Válassza ki a meglévő *myNetworkSecurity csoport*| Válassza ki a meglévő *myNetworkSecurity csoport*|
 
  ### <a name="create-nsg-rule"></a>NSG-szabály létrehozása

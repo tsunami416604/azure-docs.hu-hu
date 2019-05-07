@@ -1,19 +1,19 @@
 ---
-title: Az Azure Database for PostgreSQL tarifacsomagok
-description: Ez a cikk ismerteti a tarifacsomagok az Azure Database for postgresql-hez.
+title: Az Azure Database for PostgreSQL - kiszolgáló egyetlen tarifacsomagok
+description: Ez a cikk ismerteti a tarifacsomagok az Azure Database for PostgreSQL – egyetlen kiszolgáló.
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 4109679c03b13303c16cef8edd92ecddb6ca5e5f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 5/6/2019
+ms.openlocfilehash: e2580a57f943ad8da16cfbaeda2ee35d0f4bb691
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712365"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073184"
 ---
-# <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for postgresql-hez tarifacsomagok
+# <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Az Azure Database for PostgreSQL - kiszolgáló egyetlen tarifacsomagok
 
 Létrehozhat egy Azure Database for PostgreSQL-kiszolgáló a másik három tarifacsomag közül: Alapszintű, általános célú és memóriahasználatra optimalizált. A tarifacsomag, amelyek kioszthatóak virtuális magok, memória / virtuális mag és a tárolási technológiát, az adatok tárolására használt számítási mennyisége alapján különbözteti meg. Az összes erőforrás a PostgreSQL-kiszolgáló szintjén vannak kiépítve. A kiszolgáló egy vagy több adatbázissal rendelkezhet.
 

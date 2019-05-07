@@ -2,18 +2,17 @@
 title: A Linux-alapú Azure HDInsight Hadoop Oozie munkafolyamatok használata
 description: Linux-alapú HDInsight a Hadoop az Oozie használata. Megtudhatja, hogyan Oozie munkafolyamatokat, és az Oozie-feladatok elküldéséhez.
 ms.service: hdinsight
-ms.custom: hdinsightactive
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.openlocfilehash: 97e1836952020723c1043617d74a96471ae07aad
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/06/2019
+ms.openlocfilehash: 55db43bf3037fcba59e7ad783c6d8c06f1886bdb
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724162"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142830"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Az Apache Hadoop megadásához és a munkafolyamat futtatása a Linux-alapú Azure HDInsight Apache Oozie használata
 
@@ -38,13 +37,8 @@ Az Oozie használatával a rendszer, például Java programok vagy héjparancsf�
 
 * **Az Azure SQL Database**.  Lásd: [egy Azure SQL database létrehozása az Azure Portalon](../sql-database/sql-database-get-started.md).  Ebben a cikkben egy adatbázist `oozietest`.
 
-* **Tárolási konfiguráció lehetséges módosítása.**  Lásd: [tárolási konfigurációt](#storage-configuration) a tárfiók típusának használatakor `BlobStorage`.
+* A [URI-séma](./hdinsight-hadoop-linux-information.md#URI-and-scheme) a fürtök elsődleges tárhelyeként. Ez akkor lehet `wasb://` az Azure Storage esetében `abfs://` az Azure Data Lake Storage Gen2 vagy `adl://` az Azure Data Lake Storage Gen1. Ha biztonságos átvitel engedélyezve van az Azure Storage vagy a Data Lake Storage Gen2, az URI lesz `wasbs://` vagy `abfss://`, illetve lásd még a [biztonságos átvitelre](../storage/common/storage-require-secure-transfer.md).
 
-## <a name="storage-configuration"></a>Tároló konfigurálása
-Semmit nem kell, ha a használt tárfiók típusú `Storage (general purpose v1)` vagy `StorageV2 (general purpose v2)`.  A cikk a folyamat legalább állítja elő a kimeneti `/mapreducestaging`.  Alapértelmezett konfigurációja a hadoop tartalmazni fogja `/mapreducestaging` a a `fs.azure.page.blob.dir` konfigurációs változó `core-site.xml` szolgáltatás `HDFS`.  Ez a konfiguráció hatására a kimeneti könyvtárba kell a lapblobokat, ez a tárfióktípus nem támogatott `BlobStorage`.  Használandó `BlobStorage` ebben a cikkben eltávolítása `/mapreducestaging` származó a `fs.azure.page.blob.dir` konfigurációs változó.  A konfiguráció elérhető a [Ambari felhasználói felületén](hdinsight-hadoop-manage-ambari.md).  Ellenkező esetben kapja meg a hibaüzenet: `Page blob is not supported for this account type.`
-
-> [!NOTE]  
-> A jelen cikkben használt tárfiók rendelkezik [biztonságos átvitelre](../storage/common/storage-require-secure-transfer.md) engedélyezve van, és így `wasbs` helyett `wasb` a cikk használja.
 
 ## <a name="example-workflow"></a>Példa-munkafolyamat
 
@@ -451,7 +445,7 @@ Az alábbi lépéseket az Oozie-munkafolyamatok a fürtön kezelheti és beküld
 5. Cserélje le az alábbi kód szerkesztése `<JOBID>` a korábban visszaadott azonosítója.  Indítsa el a feladatot, használja a következő parancsot:
 
     ```bash
-    oozie job -start JOBID
+    oozie job -start <JOBID>
     ```
 
     Ez a parancs után ellenőrizze az állapotot, ha egy futó állapotban van, és információk jelennek-e a műveletek a feladaton belül.  A feladat befejezése néhány percet vesz igénybe.

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 93803a7d885bb68c1d5d6637eaf90fb090dabeb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c3b93db18cb8e2660118927da47ffe95abb900f
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598796"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073006"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Telepítse és futtassa a LUIS docker-tárolók
  
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A LUIS-tároló futtatásához az alábbiakkal kell rendelkeznie: 
 
-|Kötelező|Cél|
+|Szükséges|Cél|
 |--|--|
 |Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.| 
@@ -337,19 +337,28 @@ A számlázási adatokat az Azure-ba, használja a LUIS tároló küld egy _Cogn
 
 Ezek a beállítások kapcsolatos további információkért lásd: [tárolók konfigurálása](luis-container-configuration.md).
 
-## <a name="unsupported-dependencies"></a>Nem támogatott függőségek
+## <a name="supported-dependencies-for-latest-container"></a>A függőségek támogatott `latest` tároló
+
+A legújabb tárolót, és a 2019, kiadás dátuma: / /, a rendszer támogatja:
+
+* Bing – helyesírás-ellenőrzés: az a lekérdezés előrejelzési a végpontnak küldött kérelmek a `&spellCheck=true&bing-spell-check-subscription-key={bingKey}` lekérdezési karakterlánc paramétert. Használja a [Bing helyesírás-ellenőrzés 7-es verziója oktatóanyag](luis-tutorial-bing-spellcheck.md) további. Ez a funkció használata esetén a tároló az utterance (kifejezés) küld a Bing-helyesírás-ellenőrzés 7-es erőforrás.
+* [Új, előre összeállított tartományok](luis-reference-prebuilt-domains.md): ezek vállalati témájú tartományok entitások, például utterances és minták tartalmazzák. Terjessze ki a saját használatra ezekből a tartományokból. 
+
+<a name="unsupported-dependencies"></a>
+
+## <a name="unsupported-dependencies-for-latest-container"></a>Nem támogatott a függőségek `latest` tároló
+
+A LUIS-alkalmazás függőségei nem támogatott, ha, nem fogják tudni [tároló exportálása](#export-packaged-app-from-luis) mindaddig, amíg a nem támogatott funkciók eltávolítunk. Amikor megpróbálja tároló exportálása, a LUIS-portál jelentések el kell távolítania a nem támogatott funkciók.
 
 A LUIS alkalmazás használhatja, ha azt **nem tartalmazza a** valamelyik a következő függőségeket:
 
 Alkalmazás nem támogatott konfigurációk|Részletek|
 |--|--|
-|A tároló nem támogatott kultúrák| Német (de-DE)<br>Holland (Hollandia, NL)<br>Japán (ja-JP)<br>|
-|Nem támogatott tartományok|Előre összeállított tartományok, beleértve az előre összeállított tartományban szándékok és entitások felismerésére|
+|A tároló nem támogatott kultúrák| Holland (Hollandia, NL)<br>Japán (ja-JP)<br>Német csak támogatott a [1.0.1 jogkivonatokat létrehozó vagy újabb](luis-language-support.md#custom-tokenizer-versions).|
 |Entitások nem támogatott kulturális környezetek listája|[KeyPhrase](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-keyphrase) kulturális környezetek listája az előre összeállított entitások|
 |Nem támogatott entitásokat (en-US) angol kulturális környezet|[GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2) előre összeállított entitások|
 |Beszéd betanítási művelet|Külső függőségek nem támogatottak a tárolóban.|
 |Hangulatelemzés|Külső függőségek nem támogatottak a tárolóban.|
-|Bing – helyesírás-ellenőrzés|Külső függőségek nem támogatottak a tárolóban.|
 
 ## <a name="summary"></a>Összegzés
 

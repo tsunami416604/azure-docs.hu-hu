@@ -1,19 +1,19 @@
 ---
-title: Kiszolgálói naplók az Azure Database for postgresql-hez
-description: Ez a cikk bemutatja, hogyan Azure-adatbázis PostgreSQL állít elő, lekérdezés és a hiba naplókat, és hogyan jelentkezzen az adatmegőrzési van konfigurálva.
+title: Kiszolgálói naplók az Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk ismerteti az Azure Database for postgresql-hez – egyetlen kiszolgálót állít elő, lekérdezés és a hibanaplókat és a naplófájlok megőrzése konfigurálását.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.openlocfilehash: 99deef907818ffdb1ce858c8e988e26cbd53a1a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 4d1cf2c59e324cedd9b747b1ac65d6edcb9deb45
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60871541"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067389"
 ---
-# <a name="server-logs-in-azure-database-for-postgresql"></a>Kiszolgálói naplók az Azure Database for postgresql-hez 
+# <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>Kiszolgálói naplók az Azure Database for PostgreSQL – egyetlen kiszolgáló
 Azure Database for PostgreSQL állít elő, lekérdezés és a hiba naplókat. Lekérdezés és a hiba a naplók segítségével azonosítása, elhárítása és konfigurációs hibák és az optimálisnál rosszabb teljesítmény javításához. (A tranzakciós naplókhoz való hozzáférést lehetőség nem része). 
 
 ## <a name="configure-logging"></a>Naplózás konfigurálása 
@@ -46,7 +46,7 @@ A következő táblázat ismerteti, mi az egyes naplókhoz. Attól függően, a 
 | ResourceProvider | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Erőforrás-URI |
-| Erőforrás | A kiszolgáló neve |
+| Resource | A kiszolgáló neve |
 | Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
 | errorLevel | Naplózási szint, például: LOG, ERROR, NOTICE |

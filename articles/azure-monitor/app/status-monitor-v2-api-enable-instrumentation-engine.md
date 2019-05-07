@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 7d337c9b6b22f3abfcb4aea1c47127706ed9e9d7
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: d886aa364ca928d32100c570689f13beb0c682c9
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870507"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143420"
 ---
 # <a name="status-monitor-v2-api-enable-instrumentationengine-v021-alpha"></a>A figyelő v2 API állapota: Enable-InstrumentationEngine (v0.2.1-alpha)
 
@@ -72,3 +72,21 @@ PS C:\> Enable-InstrumentationEngine
 Configuring IIS Environment for instrumentation engine...
 Configuring registry for instrumentation engine...
 ```
+
+## <a name="next-steps"></a>További lépések
+
+  A telemetriai adatok megtekintése:
+ - [A metrikák áttekintése](../../azure-monitor/app/metrics-explorer.md) a teljesítmény és a használat figyeléséhez
+- [Eseményeket és naplókat kereshet](../../azure-monitor/app/diagnostic-search.md) problémák diagnosztizálásához
+- [Elemzések](../../azure-monitor/app/analytics.md) az összetettebb lekérdezésekhez
+- [Irányítópultok létrehozása](../../azure-monitor/app/app-insights-dashboards.md)
+ 
+ További telemetriai funkciók hozzáadása:
+ - [Létrehozhat webes teszteket](monitor-web-app-availability.md) , hogy a hely elérhető maradjon.
+- [Ügyfél-telemetriát adhat hozzá](../../azure-monitor/app/javascript.md) lássa a weblapkód kivételeit és nyomkövetési hívásokat szúrhasson be.
+- [Application Insights SDK hozzáadása a kódhoz](../../azure-monitor/app/asp-net.md) , hogy Ön nyomkövetési és naplóhíváskat szúrhasson
+ 
+ Hozzon ki még többet Állapotfigyelőt v2:
+ - Használja az útmutatóban [hibaelhárítás](status-monitor-v2-troubleshoot.md) Állapotfigyelőt v2.
+ - [A konfiguráció első](status-monitor-v2-api-get-config.md) annak ellenőrzéséhez, hogy a beállításainak megfelelően rögzítve.
+ - [A kapcsolat állapotának lekérése](status-monitor-v2-api-get-status.md) vizsgálhatja meg a figyelés.

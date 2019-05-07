@@ -11,14 +11,14 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: bb88da48f8961969176fd67bf6e5fa346655aeac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 77bc33747964a5f4ee1a67aba777dc3ed76b9a51
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60388743"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073466"
 ---
-# <a name="accelerated-database-recovery-preview"></a>Gyorsított adatbázis-helyreállítás (előzetes verzió)
+# <a name="accelerated-database-recovery"></a>Gyorsított adatbázis-helyreállítás
 
 **A gyorsított adatbázis-helyreállítás (ADR)** egy új SQL database engine szolgáltatás, amely jelentősen csökkenti az adatbázis-elérhetőségi, különösen hosszú folytonosságát fut-e, tranzakciók, az SQL database engine helyreállítást újratervezése. Automatikus központi telepítési szabály már érhető el az önálló adatbázisok és a készletezett adatbázisok Azure SQL Database-ben, és az Azure SQL Data Warehouse-adatbázisok. Az automatikus központi telepítési szabály elsődleges előnyei a következők:
 
@@ -128,6 +128,3 @@ A következő típusú ügyfelek fontolja meg automatikus központi telepítési
 - Ügyfeleink számára, akik látott esetekben, ahol aktív tranzakciók okozzák a tranzakciós napló jelentősen megnő.  
 - Olyan ügyfelek, amelyek hosszú ideig tartó adatbázis elérhetetlensége miatt (mint például a nem várt SQL Server újraindítása vagy manuális tranzakció visszaállítása) helyreállítási hosszú ideig futó SQL Server lépett fel.
 
-## <a name="to-enable-adr-during-this-preview-period"></a>Automatikus központi telepítési szabály engedélyezése az előzetes verzió időszaka során
-
-E-mail küldése a szolgáltatás az előzetes verzió ideje alatt [ adr@microsoft.com ](mailto:adr@microsoft.com) további, és próbálja ki a gyorsított adatbázis helyreállítási (automatikus központi telepítési szabály). Az e-mailben az SQL Database-kiszolgáló neve (az önálló adatbázisok és a készletezett adatbázisok SQL Database-ben és az adatbázisok az Azure Data Warehouse) is. Mivel ez egy előzetes verziójú funkció, a tesztelési kiszolgáló lehet egy nem éles üzemi kiszolgáló.

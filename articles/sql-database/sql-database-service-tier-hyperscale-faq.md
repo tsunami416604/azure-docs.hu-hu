@@ -3,7 +3,7 @@ title: Az Azure SQL Database rendkívüli – gyakori kérdések |} A Microsoft 
 description: Gyakori kérdések ügyfeleknek adott válaszok és kérdezze meg a nagy kapacitású szolgáltatásszint – más néven nagy kapacitású adatbázis egy Azure SQL-adatbázist.
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,17 +11,17 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/26/2019
-ms.openlocfilehash: 679de1d5accbd0f4f955bf5af95bc8dcc97e3b78
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 10/17/2018
+ms.openlocfilehash: 55b18051f2376a59fa79b11cccc9e71cad5debbc
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574286"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067804"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Az Azure SQL nagy kapacitású adatbázisokkal kapcsolatos gyakori kérdések
 
-Ez a cikk ismerteti az ügyfelek az Azure SQL Database rendkívüli szolgáltatási rétegben, más néven (jelenleg nyilvános előzetes verzióban) egy nagy kapacitású adatbázis egy adatbázis a mérlegeli gyakran feltett kérdésekre adott válaszokat. Ez a cikk ismerteti, hogy a nagy kapacitású támogatja, és a kereszt-funkció szolgáltatások kompatibilisek az SQL Database rendkívüli általában.
+Ez a cikk az ügyfelek egy adatbázist az Azure SQL Database rendkívüli szolgáltatási rétegben, más néven nagy kapacitású adatbázis a mérlegeli kapcsolatos gyakori kérdésekre adott válaszokat ismerteti. Ez a cikk ismerteti, hogy a nagy kapacitású támogatja, és a kereszt-funkció szolgáltatások kompatibilisek az SQL Database rendkívüli általában.
 
 - Ez a GYIK olvasók, akik egy rövid ismertetése a nagy kapacitású szolgáltatásszint és konkrét kérdése van, és a problémákat, választ keres szól.
 - Ez a GYIK nem arra készült, egy és vagy egy SQL Database rendkívüli database használata a kérdésre. Azt javasoljuk, tekintse meg a [Azure SQL Database rendkívüli](sql-database-service-tier-hyperscale.md) dokumentációját.
@@ -45,7 +45,7 @@ Rétegek elsősorban különbözteti meg a Virtuálismag-alapú szolgáltatás a
 - Az üzletileg kritikus szolgáltatási szinten üzleti számítási feladathoz megfelelő prioritást IO-késés esetén.
 
 | | Erőforrás típusa | Általános rendeltetés |  Rugalmas skálázás | Üzletileg kritikus |
-|:---|:---:|:---:|:---:|:---:|
+|:---|:---:|:---:|:---:|:---:|:---:|
 | **A legjobb** |Összes|  A legtöbb üzleti számítási feladathoz. Ajánlatok költségvetés-orientált elosztott terhelésű számítási és tárolási lehetőségek. | Alkalmazások nagy mennyiségű adat kapacitásigények, és lehetővé teszi az automatikus skálázás storage és a méretezési csoport fluidly számítási. | Magas tranzakciós sebességű és legkisebb késés IO OLTP alkalmazások. Biztosítja a legmagasabb hibatűrést használatával több hibákhoz, elkülönített replika.|
 |  **Erőforrás típusa** ||Önálló adatbázis / rugalmas készlet / a felügyelt példány | Önálló adatbázis | Önálló adatbázis / rugalmas készlet / a felügyelt példány |
 | **Számítási mérete**|Önálló adatbázis / rugalmas készlet * | 1 és 80 virtuális magok | 1 és 80 virtuális magok * | 1 és 80 virtuális magok |
@@ -56,7 +56,7 @@ Rétegek elsősorban különbözteti meg a Virtuálismag-alapú szolgáltatás a
 | **I/o-teljesítmény** | Egyetlen adatbázisonként ** | A 7000-es maximális IOPS / virtuális mag 500 IOPS | Ismeretlen még | 5000 iops-érték 200 000 maximális iops|
 | | Felügyelt példány | Fájl méretétől függ. | – | Felügyelt példány: Fájl méretétől függ.|
 |**Rendelkezésre állás**|Összes|1 replika, olvasási méretű, nem a helyi gyorsítótár | Több replika, legfeljebb 15 olvasási szintű, a részleges helyi gyorsítótár | 3 replika, 1 olvasási szintű, a zónaredundáns magas rendelkezésre ÁLLÁSÚ, teljes helyi gyorsítótár |
-|**Biztonsági másolatok**|Összes|RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap)| RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap), állandó idő pont – in0time recovery (PITR) | RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap) |
+|**Biztonsági másolatok**|Összes|RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap)| RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap), állandó idő időponthoz recovery (PITR) | RA-GRS, 7 – 35 nap (alapértelmezés szerint 7 nap) |
 
 \* Nem támogatott a nagy kapacitású szolgáltatási szinten a rugalmas készletek
 
@@ -73,15 +73,19 @@ A nagy kapacitású szolgáltatásszint elsősorban ügyfelek esetében, akik na
 
 ### <a name="what-regions-currently-support-hyperscale"></a>Mely régiók jelenleg támogatja a nagy kapacitású
 
-Nagy kapacitású és önálló adatbázisokat az alábbi régiókban érhető el:  USA nyugati US1, USA 2. nyugati régiója, USA keleti US1, USA középső RÉGIÓJA, Nyugat-Európa, Észak-Európa, Délkelet-Ázsiában, kelet-japán, Korea középső régiója, Délkelet-Ausztrália és Kelet-Ausztrália.
+Jelenleg az Azure SQL Database rendkívüli szinten érhető el a következő régiókban:
 
-### <a name="can-i-create-multiple-hyperscale-databases-per-sql-database-server"></a>SQL-adatbázis kiszolgálónként több nagy kapacitású adatbázist hozhat létre
+Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, közép-Kanada, USA középső RÉGIÓJA, Kelet-Ázsia, USA keleti RÉGIÓJA, kelet USA 2., Franciaország közép-India, kelet-japán, Nyugat-japán, USA északi középső RÉGIÓJA, Észak-Európa, Dél-Afrika északi régiója, USA déli középső RÉGIÓJA, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa , USA nyugati RÉGIÓJA, USA 2. nyugati
 
-Igen. További információkért és a egy SQL Database-kiszolgálón a nagy kapacitású adatbázisok száma korlátlan, lásd: [egy SQL Database-kiszolgálón egyetlen vagy készletezett adatbázisok SQL Database erőforráskorlátok](sql-database-resource-limits-database-server.md).
+Lásd: [Azure SQL Database rendkívüli áttekintése](sql-database-service-tier-hyperscale-faq.md) az eljárást, ha egy másik régióban hozzáféréssel kell rendelkeznie.
+
+### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>Logikai kiszolgálónként több nagy kapacitású adatbázist hozhat létre
+
+Igen. További információkért és a egy logikai kiszolgálón nagy kapacitású adatbázisok száma korlátlan, lásd: [egy logikai kiszolgálón egyetlen vagy készletezett adatbázisok SQL Database erőforrás-korlátozások](sql-database-resource-limits-logical-server.md).
 
 ### <a name="what-are-the-performance-characteristic-of-a-hyperscale-database"></a>Mik azok a nagy kapacitású adatbázis jellemző
 
-Az SQL Database rendkívüli architektúrát biztosít nagy teljesítményű és az átviteli sebesség támogatása adatbázis nagy méretek mellett. A pontos teljesítmény profil és a jellemzők nem áll rendelkezésre a nyilvános előzetes verzióban.
+Az SQL Database rendkívüli architektúrát biztosít nagy teljesítményű és az átviteli sebesség támogatása adatbázis nagy méretek mellett. 
 
 ### <a name="what-is-the-scalability-of-a-hyperscale-database"></a>Mit jelent a nagy kapacitású adatbázis méretezhetősége
 
@@ -98,7 +102,7 @@ Az SQL Database rendkívüli biztosít a számítási feladatok igény szerint a
 
 ## <a name="deep-dive-questions"></a>A kérdések részletes bemutatása
 
-### <a name="can-i-mix-hyperscale-and-single-databases-a-my-sql-database-server"></a>Kombinálhatom a nagy kapacitású és az önálló adatbázisok egy saját SQL Database-kiszolgáló
+### <a name="can-i-mix-hyperscale-and-single-databases-in-a-single-logical-server"></a>Kombinálhatom a nagy kapacitású és a egy egyetlen logikai kiszolgálót az önálló adatbázisok
 
 Igen.
 
@@ -116,7 +120,7 @@ Igen, [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/
 
 ### <a name="what-kind-of-workloads-is-sql-database-hyperscale-designed-for"></a>Milyen jellegű munkaterheléseket helyeznek az SQL Database rendkívüli készült
 
-Az SQL Database rendkívüli támogatja az összes SQL Server számítási feladatok, de OLTP elsősorban van optimalizálva. A hibrid és analitikai (adatpiac) számítási feladatok, valamint is tenné.
+Az SQL Database rendkívüli támogatja az összes SQL Server számítási feladatok, de OLTP elsősorban van optimalizálva. Hibrid (HTAP) és analitikai (adatpiac) számítási feladatok, valamint is tenné.
 
 ### <a name="how-can-i-choose-between-azure-sql-data-warehouse-and-sql-database-hyperscale"></a>Hogyan választhat az Azure SQL Data Warehouse és az SQL Database rendkívüli között
 
@@ -128,11 +132,11 @@ Ha az összetett lekérdezések nagy méretű data analytics fut, és a Parallel
 
 ### <a name="can-i-pause-my-compute-at-any-time"></a>Szüneteltetheti a számítási bármikor
 
-Nem.
+Jelenleg nem de méretezheti a számítási és a le a replikák száma költségeinek csökkentése nem csúcsidőre időszakokban.
 
 ### <a name="can-i-provision-a-compute-with-extra-ram-for-my-memory-intensive-workload"></a>Is üzembe helyezhető egy extra RAM memóriával rendelkező számítási a memóriaigényes számítási feladathoz
 
-Nem. Több RAM Memóriát kap, a nagyobb számítási méretre frissíteni kell. Gen4 Gen5 hardver képest több RAM Memóriát biztosít. További információkért lásd: [tárolási és számítási méretek rendkívüli](sql-database-vcore-resource-limits-single-databases.md).
+Nem. Több RAM Memóriát kap, a nagyobb számítási méretre frissíteni kell. További információkért lásd: [tárolási és számítási méretek rendkívüli](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier).
 
 ### <a name="can-i-provision-multiple-compute-nodes-of-different-sizes"></a>Több számítási csomópontok különböző méretű helyezhetek üzembe
 
@@ -140,11 +144,11 @@ Nem.
 
 ### <a name="how-many-read-scale-replicas-are-supported"></a>Hány olvasási szintű replika támogatott
 
-Nyilvános előzetes verzióban elérhető a nagy kapacitású adatbázisok jönnek létre az egyik olvasási szintű replika (összesen két replika) alapértelmezés szerint. Ha szeretne hozzáadni vagy eltávolítani, olvasási méretű replikák, nyújtson be támogatási kérelmet az Azure portal használatával.
+A nagy kapacitású adatbázisok alapértelmezés szerint létrejön egy olvasási szintű replikával (összesen két replika). A csak olvasható replikák 0 és 4 használatával közötti számát is méretezheti a [az Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) vagy [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)...
 
 ### <a name="for-high-availability-do-i-need-to-provision-additional-compute-nodes"></a>Magas rendelkezésre állás érdekében do I kell üzembe további számítási csomópontokon
 
-A nagy kapacitású adatbázisokat a magas rendelkezésre állású tárolási szinten biztosítja. Csak akkor kell egy replika magas rendelkezésre állást biztosít. A számítási replika nem működik, ha új replikát automatikusan létrejön az adatvesztés.
+A nagy kapacitású adatbázisokat a rugalmasság a tárolási szinten biztosítja. Csak akkor kell egy replika biztosítható a rugalmasság. A számítási replika nem működik, ha új replikát automatikusan létrejön az adatvesztés.
 
 Azonban ha csak egy replikát, ez eltarthat egy ideig hozhat létre a helyi gyorsítótár az új replikát a feladatátvételt követően. A gyorsítótár-Újraépítés fázis során az adatbázis olvas adatokat közvetlenül a lap kiszolgálók, csökkentett teljesítményű IOPS és lekérdezéseivel kapcsolatos teljesítményt eredményez.
 
@@ -158,7 +162,7 @@ Magas rendelkezésre állást igénylő kritikus fontosságú alkalmazások eset
 
 ### <a name="what-is-the-size-of-the-transaction-log-with-hyperscale"></a>Mi az a nagy kapacitású a tranzakciónapló mérete
 
-A tranzakciónaplóban nagy kapacitású érték gyakorlatilag végtelen. Nem kell aggódnia elfogyását naplózási hely, amely rendelkezik a napló nagy átviteli sebesség rendszeren. A napló sebességet szabályozott előfordulhat, hogy folyamatos agresszív számítási feladatokhoz. A maximális és átlagos jelentkezzen generációs sebesség még nem ismert (továbbra is előzetes verzióban érhető el).
+A tranzakciónaplóban nagy kapacitású érték gyakorlatilag végtelen. Nem kell aggódnia elfogyását naplózási hely, amely rendelkezik a napló nagy átviteli sebesség rendszeren. A napló sebességet szabályozott előfordulhat, hogy folyamatos agresszív számítási feladatokhoz. A maximális fenntartható log sebességet körülbelül 100 MB/s.
 
 ### <a name="does-my-temp-db-scale-as-my-database-grows"></a>Az ideiglenes adatbázis-adatbázisomat növekedésével méretezése
 
@@ -170,7 +174,7 @@ Az adatbázis mérete automatikusan növekszik, beszúrása vagy betöltési tö
 
 ### <a name="what-is-the-smallest-database-size-that-sql-database-hyperscale-supports-or-starts-with"></a>Mi az a legkisebb adatbázis mérete, amely támogatja az SQL Database rendkívüli, vagy kezdődik
 
-5 GB
+10 GB
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>Milyen lépésekben does saját adatbázis mérete növelhető
 
@@ -208,15 +212,15 @@ Igen. Az egy adott táblán társított lapok is végül az adatok több fájlok
 
 ### <a name="can-i-move-my-existing-azure-sql-databases-to-the-hyperscale-service-tier"></a>A nagy kapacitású szolgáltatásszinthez lehet váltani a meglévő Azure SQL-adatbázisok
 
-Igen. Nagy kapacitású áthelyezheti a meglévő Azure SQL-adatbázisok. Nyilvános előzetes verzióban érhető el ez az egyirányú áttelepítést. Nagy kapacitású adatbázisok egy másik szolgáltatásszinthez nem válthat. Javasoljuk, hogy másolatot készít az éles adatbázisokat, és a nagy kapacitású át a megvalósíthatósági fogalmak (próbaverziójú).
+Igen. Nagy kapacitású áthelyezheti a meglévő Azure SQL-adatbázisok. Ez az egyirányú áttelepítést. Nagy kapacitású adatbázisok egy másik szolgáltatásszinthez nem válthat. Javasoljuk, hogy másolatot készít az éles adatbázisokat, és a nagy kapacitású át a megvalósíthatósági fogalmak (próbaverziójú).
   
 ### <a name="can-i-move-my-hyperscale-databases-to-other-editions"></a>Nagy kapacitású adatbázisok áthelyezhető a többi kiadás
 
-Nem. Nyilvános előzetes verzióban egy nagy kapacitású adatbázis nem helyezhető át egy másik szolgáltatási szint.
+Nem. Jelenleg egy nagy kapacitású adatbázis nem helyezhető át egy másik szolgáltatási szint.
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Tegye elveszítem a bármely funkciók és képességek a nagy kapacitású szolgáltatásszint való migrálás után
 
-Igen. Hosszú távú megőrzési időtartamú biztonsági mentések, Azure SQL Database-ben nem támogatott a nagy kapacitású nyilvános előzetes verzió ideje alatt. Miután áttelepítette az adatbázisok, nagy kapacitású, ez a funkció nem működik.
+Igen. Azure SQL Database funkcióit még nem támogatottak a nagy kapacitású, ideértve, de nem kizárólagosan a hosszú távú adatmegőrzés. Miután áttelepítette az adatbázisok, nagy kapacitású, ezek a funkciók tovább működni.  Ezek a korlátozások ideiglenes várhatóan.
 
 ### <a name="can-i-move-my--on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>Áthelyezhető a helyszíni SQL Server-adatbázis vagy az SQL Server virtuális gép adatbázis nagy kapacitású
 
@@ -229,13 +233,13 @@ Igen. Az összes meglévő migrálási technológiák használatával nagy kapac
 
 ### <a name="how-much-time-would-it-take-to-bring-in-x-amount-of-data-to-sql-database-hyperscale"></a>Mennyi idő lenne, akkor hajtsa végre a megfelelő X területén az SQL Database rendkívüli adatmennyiség
 
-Még nem ismert (továbbra is az előzetes verzió)
+Nagy kapacitású a következőkre képes 100 MB/s az új vagy módosított adatok felhasználásához.
 
 ### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-and-sql-data-warehouse"></a>Képes az adatbeolvasás a blob storage-ban, és gyors load (például a Polybase és az SQL Data Warehouse)
 
 Olvassa el az adatok Azure Storage-ból, és betöltése az adatok betöltése egy nagy kapacitású adatbázisba (ugyanúgy, mint a rendszeres önálló adatbázis megteheti). A Polybase a az Azure SQL Database jelenleg nem támogatott. A Polybase segítségével teheti [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) vagy Spark-feladatok futtatása [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) együtt a [Spark SQL-összekötő](sql-database-spark-connector.md). A Spark-összekötő az SQL tömeges beszúrási támogatja.
 
-Egyszerű helyreállítási vagy a tömeges naplózási modell nem támogatott a nagy kapacitású. A teljes helyreállítási modell szükséges magas rendelkezésre állást biztosít. Azonban a nagy kapacitású még jobban biztosít az adatok betöltését Hibaarány, szemben az új naplófájl architektúra miatt egyetlen adatbázishoz.
+Egyszerű helyreállítási vagy a tömeges naplózási modell nem támogatott a nagy kapacitású. A teljes helyreállítási modell szükséges magas rendelkezésre állást biztosít. Azonban a nagy kapacitású még jobban biztosít az adatok betöltését Hibaarány, szemben az új naplófájl architektúra miatt egyetlen Azure SQL-adatbázishoz.
 
 ### <a name="does-sql-database-hyperscale-allow-provisioning-multiple-nodes-for-ingesting-large-amounts-of-data"></a>Az SQL Database rendkívüli lehetővé teszi nagy mennyiségű adat feldolgozására több csomópont kiépítése
 
@@ -253,7 +257,7 @@ Igen. Különböző adatforrásokból származó hamarosan más, az SQL Server l
 
 ### <a name="what-slas-are-provided-for-a-hyperscale-database"></a>Milyen SZOLGÁLTATÁSSZINTEKET egy nagy kapacitású adatbázis-okat
 
-Általában az SLA nem áll rendelkezésre a nyilvános előzetes verzióban. Azonban a nagy kapacitású biztosít magas rendelkezésre állás az aktuális SQL DB-ajánlatok azonos szintű. Lásd: [SLA](https://azure.microsoft.com/support/legal/sla/).
+Az alapértelmezett elsődleges plusz 1 másodlagos olvasható az SLA 99,95 %-os elérhetőségét.  További replikákkal rendelkező az SLA-t a 99,99 %-áig kerül.  
 
 ### <a name="are-the-database-backups-managed-for-me-by-the-azure-sql-database-service"></a>Az adatbázis biztonsági mentéséhez felügyelt velem az Azure SQL Database szolgáltatás
 
@@ -269,7 +273,7 @@ Igen
 
 ### <a name="what-is-the-recovery-point-objective-rporecovery-time-objective-rto-with-backuprestore-in-sql-database-hyperscale"></a>Mi a helyreállítási időkorlátot (RPO) / helyreállítási időre vonatkozó célkitűzés (RTO) a biztonsági mentési és visszaállítási az SQL Database rendkívüli
 
-Az rpo-t 0 perc. Az RTO célja kevesebb mint 10 perc adatbázis méretétől függetlenül. A nyilvános előzetes verzióban tapasztalhat hosszabb helyreállítási idő.
+Az rpo-t 0 perc. Az RTO célja kevesebb mint 10 perc adatbázis méretétől függetlenül. 
 
 ### <a name="do-backups-of-large-databases-affect-compute-performance-on-my-primary"></a>Befolyásolják a nagy adatbázisok biztonsági másolatait a saját elsődleges számítási teljesítményt
 
@@ -277,15 +281,15 @@ Nem. Biztonsági másolatok a tárolóalrendszer kezeli, és kihasználhatja a p
 
 ### <a name="can-i-perform-geo-restore-with-a-sql-database-hyperscale-database"></a>A geo-visszaállítás, az SQL Database rendkívüli adatbázis hajthat végre
 
-Nem, nem a nyilvános előzetes verzióban.
+Igen.  A GEO-visszaállítás teljes mértékben támogatott.
 
 ### <a name="can-i-setup-geo-replication-with-sql-database-hyperscale-database"></a>Beállíthatok Georeplikációs adatbázis az SQL Database rendkívüli
 
-Nem, nem a nyilvános előzetes verzióban.
+Jelenleg nem.
 
 ### <a name="do-my-secondary-compute-nodes-get-geo-replicated-with-sql-database-hyperscale"></a>Hajtsa végre a másodlagos számítási csomópontok jelenik meg az SQL Database rendkívüli georeplikált
 
-Nem, nem a nyilvános előzetes verzióban.
+Jelenleg nem.
 
 ### <a name="can-i-take-a-sql-database-hyperscale-database-backup-and-restore-it-to-my-on-premises-server-or-sql-server-in-vm"></a>Biztonsági mentés az SQL Database rendkívüli adatbázis és állítsa vissza a helyszíni kiszolgálón vagy SQL Server-beli virtuális gépen
 
@@ -295,7 +299,7 @@ Nem. A tárolási formátum nagy kapacitású adatbázisok eltér a hagyományos
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Tegye elveszítem a bármely funkciók és képességek a nagy kapacitású szolgáltatásszint való migrálás után
 
-Igen. Hosszú távú megőrzési időtartamú biztonsági mentések, Azure SQL Database-ben nem támogatott a nagy kapacitású nyilvános előzetes verzió ideje alatt. Miután áttelepítette az adatbázisok, nagy kapacitású, ez a funkció nem működik.
+Igen. Nagy kapacitású, beleértve többek között a nem korlátozott hosszú távú adatmegőrzés céljából készített biztonsági az Azure SQL Database funkcióit nem támogatottak. Miután áttelepítette az adatbázisok, nagy kapacitású, ezek a funkciók tovább működni.
 
 ### <a name="will-polybase-work-with-sql-database-hyperscale"></a>Az SQL Database rendkívüli lesz a Polybase használata
 
@@ -313,11 +317,11 @@ Nem. Az adatbázis egy virtuális gép számítási és tároló nem található
 
 ### <a name="how-much-throughput-can-i-push-on-the-largest-sql-database-hyperscale-compute"></a>Milyen átviteli sebességre képes leküldéses legnagyobb SQL Database rendkívüli számítási
 
-Még nem ismert (továbbra is az előzetes verzió)
+Úgy találtuk, hogy egy egységes 100 MB/mp (tranzakciós napló adatok generálása) adatok módosítása
 
 ### <a name="how-many-iops-do-i-get-on-the-largest-sql-database-hyperscale-compute"></a>Hány IOPS legnagyobb SQL Database rendkívüli számítási kapacitást
 
-Még nem ismert (továbbra is az előzetes verzió)
+Iops-érték és IO-késés a számítási feladat mintázatait függően változhat.  A számítási gyorsítótárhoz helyi kellene, hogy elérhető legyen az adatok esetén az azonos IO-minták, helyi SSD lesz.   
 
 ### <a name="does-my-throughput-get-affected-by-backups"></a>Nem az átviteli sebesség első által érintett biztonsági mentéseket
 
@@ -325,13 +329,13 @@ Nem. Számítási különválik a tárolási réteg számítási gyakorolt hatá
 
 ### <a name="does-my-throughput-get-affected-as-i-provision-additional-compute-nodes"></a>Nem az átviteli sebesség lekérése is hatással további számítási csomópontok üzembe helyezhető
 
-Mivel a tároló meg van osztva, és nem történik az elsődleges és másodlagos számítási csomópontok, közötti közvetlen fizikai többszöröződnek technikailag az átviteli sebességet elsődleges csomóponton érinti olvasási szintű csomópontok hozzáadásával. Azonban, hogy előfordulhat, hogy szabályozás folyamatos agresszív munkaterhelés való bejelentkezés engedélyezése másodlagos csomópontot, és továbbítja pótlólag lap kiszolgálók a alkalmazni, és elkerülheti a másodlagos csomópont hibás olvasási teljesítmény.
+Mivel a tároló meg van osztva, és nem történik az elsődleges és másodlagos számítási csomópontok, közötti közvetlen fizikai többszöröződnek technikailag az átviteli sebességet elsődleges csomóponton nem érinti olvasási szintű csomópontok hozzáadásával. Azonban, hogy előfordulhat, hogy szabályozás folyamatos agresszív munkaterhelés való bejelentkezés engedélyezése másodlagos csomópontot, és továbbítja pótlólag lap kiszolgálók a alkalmazni, és elkerülheti a másodlagos csomópont hibás olvasási teljesítmény.
 
 ## <a name="scalability-questions"></a>Méretezésre vonatkozó kérdések
 
 ### <a name="how-long-would-it-take-to-scale-up-and-down-a-compute-node"></a>Mennyi ideig szeretné időt vesz igénybe a felfelé és a egy számítási csomóponton a méretezési csoport
 
-Néhány perc alatt
+Vertikális felskálázása a számítási, vagy le a függetlenül az adatok mérete 5-10 percet vesz igénybe.
 
 ### <a name="is-my-database-offline-while-the-scaling-updown-operation-is-in-progress"></a>Saját adatbázis kapcsolat nélküli módban van, amíg folyamatban van a méretezése felfelé és lefelé művelet
 
@@ -357,7 +361,7 @@ Nem. Csak az elsődleges számítási csomópont olvasási/írási kérelmeket f
 
 ### <a name="how-many-secondary-compute-nodes-can-i-provision"></a>Hány másodlagos számítási csomópontot is üzembe helyezhető
 
-Nyilvános előzetes verzióban alapértelmezés szerint hozunk létre 2 replika nagy kapacitású adatbázisok számára. Ha azt szeretné, módosíthatja a replikák száma, nyújtson be támogatási kérelmet az Azure portal használatával.
+Alapértelmezés szerint 2 replika nagy kapacitású adatbázisok hozunk létre. Ha azt szeretné, módosíthatja a replikák száma, így segítségével teheti [az Azure portal](https://portal.azure.com).
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>Hogyan létesíthetek kapcsolatot a másodlagos számítási csomópontok felé
 
@@ -365,19 +369,19 @@ Ezek csak olvasható számítási csomópontot állításával kapcsolódhat a `
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>Hozhat létre egy dedikált végpontot az olvasási szintű replika
 
-Nem. Nyilvános előzetes verzióban csak csatlakozhat olvasási szintű replika megadásával `ApplicationIntent=ReadOnly`.
+Nem. Csak kapcsolódás olvasási szintű replika megadásával `ApplicationIntent=ReadOnly`.
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>A rendszer feladata olvasási számítási intelligens terheléselosztás
 
-Nem. Előzetes verzióban elérhető a csak olvasási munkaterhelés újra irányított egy véletlenszerű olvasási szintű replikára.
+Nem. A csak olvasási munkaterhelés újra irányított egy véletlenszerű olvasási szintű replikára.
 
 ### <a name="can-i-scale-updown-the-secondary-compute-nodes-independently-of-the-primary-compute"></a>Felfelé és lefelé a másodlagos számítási csomópontok az elsődleges számítási függetlenül is méretezheti
 
-Nem, nem a nyilvános előzetes verzióban.
+Nem. A másodlagos számítási csomópontok is használhatók a magas rendelkezésre ÁLLÁSÚ, ezért az elsődleges, a feladatátvétel azonos konfigurációjú lehetnek.
 
 ### <a name="do-i-get-different-temp-db-sizing-for-my-primary-compute-and-my-additional-secondary-compute-nodes"></a>Kaphatok különböző ideiglenes db méretezése a saját elsődleges számítási és a saját másodlagos számítási csomópontot
 
-Nem. A `tempdb` van konfigurálva, a számítási méret kiépítés alapján a nyilvános előzetes verzióban a másodlagos számítási csomópontok mérete megegyezik az elsődleges számítási rendszer.
+Nem. A `tempdb` van konfigurálva a kiépítés számítási mérete alapján, a másodlagos számítási csomópontok mérete megegyezik az elsődleges számítási.
 
 ### <a name="can-i-add-indexes-and-views-on-my-secondary-compute-nodes"></a>Adhatok hozzá indexeket és a saját másodlagos nézetek számítási csomópontok
 
@@ -389,4 +393,4 @@ Az időpont egy tranzakció elkötelezte magát az elsődleges, a napló sebess�
 
 ## <a name="next-steps"></a>További lépések
 
-A nagy kapacitású szolgáltatásszint kapcsolatos további információkért lásd: [szolgáltatásszint nagy kapacitású (előzetes verzió)](sql-database-service-tier-hyperscale.md).
+A nagy kapacitású szolgáltatásszint kapcsolatos további információkért lásd: [nagy kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md).

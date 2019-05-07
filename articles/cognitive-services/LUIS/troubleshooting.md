@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 672c9d43007f954d870f8195bcad63d9cee69523
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ea3bb551a32fdfb7e4a378c36858860808e27419
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894457"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072764"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – gyakori kérdések (GYIK)
 
@@ -282,27 +282,19 @@ A LUIS minta [régióban található](https://github.com/Azure-Samples/cognitive
 
 Igen, használhatja a LUIS [tároló](luis-container-howto.md) ebben az esetben, ha rendelkezik a szükséges kapcsolatokat használatának mérését. 
 
-### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>A Build 2018 konferencián hallottam Language Understanding funkció vagy bemutató, de nem emlékszem, hogy milyen hívták?
+## <a name="migrating-to-the-next-version"></a>A következő verzió-ba való migrálás
 
-A következő szolgáltatásai jelentek meg a Build 2018 konferencián:
+### <a name="how-do-i-migrate-to-preview-v3-api"></a>Hogyan migrálhatom az előzetes API v3-as verzióra? 
 
-|Name (Név)|Tartalom|
-|--|--|
-|Fejlesztések|[Reguláris kifejezés](luis-concept-data-extraction.md##regular-expression-entity-data) entitás és [Key kifejezés](luis-concept-data-extraction.md#key-phrase-extraction-entity-data) entitás
-|Minták|Minták [fogalom](luis-concept-patterns.md), [oktatóanyag](luis-tutorial-pattern.md), [útmutató](luis-how-to-model-intent-pattern.md)<br>[Patterns.Any](luis-concept-entity-types.md) entitás fogalom beleértve [Explicit lista](luis-concept-patterns.md#explicit-lists) kivételekhez<br>[Szerepkörök](luis-concept-roles.md) fogalma|
-|Integráció|[Szövegelemzés](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) integrációjának [hangulatelemzés](luis-how-to-publish-app.md#enable-sentiment-analysis)<br>[Beszéd](https://docs.microsoft.com/azure/cognitive-services/speech) speech betanítási művelet együtt integrációjának [beszéd SDK](https://aka.ms/SpeechSDK)|
-|Küldő eszközt|Része [BotBuilder-eszközök](https://github.com/Microsoft/botbuilder-tools), feladó parancssori [eszköz](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps) LUIS és a QnA Maker alkalmazások egyesítendő jobb szándékfelismerés a robot a LUIS Egyalkalmazásos
+Lásd: [API v2 v3 áttelepítési útmutató a LUIS-alkalmazások](luis-migration-api-v3.md)
 
-További szerzői [API útvonalak](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/authoring-routes.md) szerepeltek.
+## <a name="build-2019-conference-announcements"></a>Build 2019 konferencián közlemények
 
-Videók:
-* [Azure Friday Build 2018: Cognitive Services – nyelvi (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
-* [Build 2018 AI Show - a hangfelismerési szolgáltatás újdonságai](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
-* [Build 2018-bemutató – Mesterséges intelligencia, beszédképességek és NLU – ajánlott eljárások](https://channel9.msdn.com/events/Build/2018/BRK3208)
-* [Build 2018 - LUIS-frissítések](https://channel9.msdn.com/events/Build/2018/THR3118/player)
+A következő funkciók jelentek meg a Build 2019 konferencián:
 
-Projektek:
-* [Contoso Cafe bot](https://github.com/botbuilderbuild2018/build2018demo) demo - forráskód a Githubon
+* [V3 API áttelepítési útmutató az előzetes verzió](luis-migration-api-v3.md)
+* [Továbbfejlesztett analytics-irányítópult](luis-how-to-use-dashboard.md)
+* [Előre összeállított tartományok továbbfejlesztett](luis-reference-prebuilt-domains.md) munkahelyi V2 és V3 API-k
 
 ## <a name="next-steps"></a>További lépések
 

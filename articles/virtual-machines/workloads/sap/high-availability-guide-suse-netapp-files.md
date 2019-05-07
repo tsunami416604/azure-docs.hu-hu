@@ -14,14 +14,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/015/2019
+ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: cd2479aed1e348a27c5cba56c6d809ffb24e4fc0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 3bd8600d0839c31a17221bb5421dc36165deb434
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925776"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142982"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Magas rendelkezésre állás az SAP NetWeaver SUSE Linux Enterprise Server az Azure NetApp Files SAP alkalmazások az Azure virtuális gépeken
 
@@ -99,6 +99,10 @@ Most Önön eléréséhez SAP Netweaver magas rendelkezésre ÁLLÁS megosztott 
 
 SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA database use virtual hostname and virtual IP addresses. Az Azure-ban egy [terheléselosztó](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) kell használnia a virtuális IP-címet. Az alábbi lista tartalmazza (A) konfigurációjának SCS és SSZON terheléselosztó.
 
+> [!IMPORTANT]
+> Több SID-vel az SAP ASCS/SSZON SUSE Linux fürtözés, mivel az Azure-beli virtuális gépek vendég operációs rendszer **nem támogatott**. Több SID-vel fürtszolgáltatás ismerteti a telepítés több SAP ASCS/SSZON példányok egy támasztja fürt eltérő SID-ek használata
+
+
 ### <a name="ascs"></a>(A)SCS
 
 * Előtér-konfigurációjához
@@ -125,6 +129,7 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS, and the SAP HANA datab
 * Mintavételi Port
   * Port 621<strong>&lt;nr&gt;</strong>
 * Terheléselosztási szabályok
+  * 32<strong>&lt;nr&gt;</strong> TCP
   * 33<strong>&lt;nr&gt;</strong> TCP
   * 5<strong>&lt;nr&gt;</strong>13 TCP
   * 5<strong>&lt;nr&gt;</strong>14 TCP
@@ -626,7 +631,7 @@ Ha sorba 2 kiszolgáló architektúra használatával ([ENSA2](https://help.sap.
    sudo crm configure property maintenance-mode="false"
    </code></pre>
 
-   Ha Ön egy régebbi verzióból frissítése és sorba server 2 vált, tekintse meg az sap-jegyzetnek [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
+   Ha Ön egy régebbi verzióból frissítése és sorba server 2 vált, tekintse meg az SAP Megjegyzés [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
 
    Győződjön meg arról, hogy a fürt állapota rendben, és elindulnak, hogy az összes erőforrás. Nem számít mely erőforrásokat futtató csomóponton.
 

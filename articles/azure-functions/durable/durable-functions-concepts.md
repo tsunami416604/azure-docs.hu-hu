@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: aa9563266f6b43e3bc2f21fbc0b340c86c5895ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 95ec6a863f951a8c26abd865041c68df333a4e38
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60862085"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65071343"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Durable Functions-minták és technikai kulcsfogalmak (az Azure Functions)
 
@@ -219,9 +219,6 @@ module.exports = async function (context, req) {
 };
 ```
 
-> [!WARNING]
-> Ha Ön helyi fejlesztés a JavaScript, a módszer használatához `DurableOrchestrationClient`, kell beállítania a környezeti változót `WEBSITE_HOSTNAME` való `localhost:<port>` (például `localhost:7071`). Ezzel a követelménnyel kapcsolatban további információkért lásd: [GitHub-problémát 28](https://github.com/Azure/azure-functions-durable-js/issues/28).
-
 A .NET a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter` paraméter értéke az a `orchestrationClient` kimeneti, kötelező, amely a Durable Functions bővítmény része. A JavaScript, ez az objektum hívás által visszaadott `df.getClient(context)`. Ezek az objektumok módszert használhat start, eseményeket küld, leállítása és lekérdezése az új vagy meglévő orchestrator függvény példányai adja meg.
 
 A fenti példákban egy HTTP-eseményindítóval aktivált függvényt vesz igénybe egy `functionName` értéket a bejövő URL-címről, és átadja a értéket [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_). A [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_System_Net_Http_HttpRequestMessage_System_String_) API kötési majd választ, amely tartalmaz egy `Location` fejlécére, és a példánnyal kapcsolatos további információk. Használhatja az adatokat később keresse ki a lépések példány állapotát vagy a példány leáll.
@@ -377,6 +374,63 @@ module.exports = async function (context) {
 };
 ```
 
+## <a name="pattern-6-aggregator-preview"></a>#6. minta: Naplózási gyűjtő (előzetes verzió)
+
+A hatodik minta tárgya esemény adatok összevonása egy időszakon belül egyetlen címezhető *entitás*. Ebben a mintában az összesített adatok több forrásból származhatnak, kötegekben kézbesíteni lehet vagy előfordulhat, hogy hosszú – e-mail-címen lehet elszórtan. Előfordulhat, hogy a gyűjtő kell eseményadatok reagálhat megérkeznek, és a külső ügyfelek előfordulhat, hogy le kell kérdeznie az összesített adatokat.
+
+![Naplózási gyűjtő diagramja](./media/durable-functions-concepts/aggregator.png)
+
+A bonyolult kapcsolatban a normál a minta megvalósítása próbál, állapot nélküli függvények előnye, hogy az egyidejűség-vezérlés válik nagyon nagy kihívást. Nem csak nem kell aggódnia ugyanazokat az adatokat módosításával egyszerre több szálon, biztosítva, hogy a gyűjtő csak akkor fog futni az egyetlen virtuális Gépet egyszerre kell foglalkoznia kell.
+
+Használatával egy [tartós entitás függvény](durable-functions-preview.md#entity-functions), egy valósítható meg ez a minta könnyedén, egyetlen függvény.
+
+```csharp
+public static async Task Counter(
+    [EntityTrigger(EntityClassName = "Counter")] IDurableEntityContext ctx)
+{
+    int currentValue = ctx.GetState<int>();
+    int operand = ctx.GetInput<int>();
+
+    switch (ctx.OperationName)
+    {
+        case "add":
+            currentValue += operand;
+            break;
+        case "subtract":
+            currentValue -= operand;
+            break;
+        case "reset":
+            await SendResetNotificationAsync();
+            currentValue = 0;
+            break;
+    }
+
+    ctx.SetState(currentValue);
+}
+```
+
+Az ügyfelek is sorba *operations* (a más néven "jelzés") számára egy entitás függvény használatával a `orchestrationClient` kötés.
+
+```csharp
+[FunctionName("EventHubTriggerCSharp")]
+public static async Task Run(
+    [EventHubTrigger("device-sensor-events")] EventData eventData,
+    [OrchestrationClient] IDurableOrchestrationClient entityClient)
+{
+    var metricType = (string)eventData.Properties["metric"];
+    var delta = BitConverter.ToInt32(eventData.Body, eventData.Body.Offset);
+
+    // The "Counter/{metricType}" entity is created on-demand.
+    var entityId = new EntityId("Counter", metricType);
+    await entityClient.SignalEntityAsync(entityId, "add", delta);
+}
+```
+
+Hasonlóképpen, egy entitás függvény segítségével módszert állapotát ügyfelek lekérhetnek a `orchestrationClient` kötést.
+
+> [!NOTE]
+> Entitás funkciók jelenleg csak az érhetőek el a [Durable Functions 2.0 – előzetes verzió](durable-functions-preview.md).
+
 ## <a name="the-technology"></a>A technológia
 
 A színfalak mögött a Durable Functions bővítmény épül fel a a [tartós feladat keretrendszer](https://github.com/Azure/durabletask), egy nyílt forráskódú kódtár, a Githubon, tartós feladat vezénylések létrehozásához használt. A LIKE Azure Functions kiszolgáló nélküli Azure webjobs-feladatok alakulását, Durable Functions a kiszolgáló nélküli alakulása tartós feladat keretében. A Microsoft és más szervezetek használható a tartós feladat keretrendszer nagymértékben automatizálhatja az üzleti szempontból alapvető fontosságú folyamatokat. Természetesen illeszkednek a az Azure Functions kiszolgáló nélküli környezetben.
@@ -423,7 +477,7 @@ Storage-blobokat elsősorban bérlési mechanizmus, a horizontális felskáláz�
 
 ![Azure Storage Explorer képernyőképe](./media/durable-functions-concepts/storage-explorer.png)
 
-> [!WARNING]
+> [!NOTE]
 > Bár könnyen és kényelmesen megtekintéséhez a futtatási előzményei, table storage-ban, ne függőségek a táblánál. A tábla lehet módosítani, mert a Durable Functions bővítmény haladásával.
 
 ## <a name="known-issues"></a>Ismert problémák

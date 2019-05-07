@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: saurse
-ms.openlocfilehash: 8d15eb03055aed32c8a99121b750ee5767a87b50
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 05e7dd11274bb120e40df4a63d428ac6b6d7489f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648044"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143333"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>A DPM és az Azure Backup Server offline biztonsági mentés munkafolyamata
 Az Azure Backup rendelkezik, amely a hálózati és tárolási költségek csökkentése az Azure-ban adatok kezdeti teljes biztonsági mentés során számos beépített hatékonyság. Kezdeti teljes biztonsági mentés általában nagy mennyiségű adat átvitele, és azt követő biztonsági mentéseket, hogy csak a változásokat/szalagnak transfer képest nagyobb hálózati sávszélesség szükséges. Az Azure Backup tömöríti a kezdeti biztonsági mentés. Kapcsolat nélküli beültetéssel is a folyamatot az Azure Backup lemez is használható a tömörített kezdeti biztonsági mentési adatok offline feltöltése az Azure-bA.
@@ -98,7 +98,7 @@ Ebben a szakaszban található információk segítségével végezze el az offl
 ### <a name="prepare-sata-drives-and-ship-to-azure"></a>SATA meghajtókat előkészítjük, és elküldjük az Azure-bA
 A *AzureOfflineBackupDiskPrep* segédprogram a SATA meghajtókat a legközelebbi Azure-adatközpontba küldött előkészítéséhez használható. Ez a segédprogram telepítési könyvtárában a Recovery Services-ügynök a következő elérési úton érhető el:
 
-   *\Microsoft* *azure* *helyreállítási* *szolgáltatások* * Agent\Utils\*
+*\\A Microsoft Azure Recovery Services-ügynök\\Utils\\*
 
 1. Nyissa meg a könyvtárat, és másolja a **AzureOfflineBackupDiskPrep** másolási számítógépre, amelyen a SATA meghajtókat, készüljön fel a csatlakoztatott mappa. Ellenőrizze, hogy a másolási számítógép meg a következőket:
 

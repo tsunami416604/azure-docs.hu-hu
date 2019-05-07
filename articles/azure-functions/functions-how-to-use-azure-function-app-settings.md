@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 7497255dcad55cea86e0c640e2f1423d7d763a7f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 096f39eeef54f3a4a1e3d8928dd13b7c22847c8d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60737967"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143180"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Az Azure Portalon a függvényalkalmazás kezelése 
 
@@ -25,24 +25,6 @@ Az Azure Functions egy függvényalkalmazást az egyes függvények a végrehajt
 A kezdéshez nyissa meg a [az Azure portal](https://portal.azure.com) , és jelentkezzen be az Azure-fiókjával. A portál tetején a keresősávba írja be a függvényalkalmazás nevét, majd válassza ki a listáról. Miután kiválasztotta a függvényalkalmazást, a következő oldal jelenik meg:
 
 ![A funkció áttekintése az Azure Portalon](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
-
-## <a name="favorite"></a>Kedvenc függvények a portálon 
-
-Előfordulhat, hogy az erőforrások megtalálása nehezebb a [Azure Portal]. Hogy könnyebben megtalálja a létrehozott függvényalkalmazás, vegyen fel Függvényalkalmazásokat a Kedvencek, a portálon. 
-
-1. Jelentkezzen be az [Azure Portal].
-
-2. A bal alsó sarokban található nyílra kattintva bontsa ki az összes szolgáltatást, írja be a `Functions` kifejezést a **Szűrő** mezőbe, majd kattintson a **Függvényalkalmazások** elem melletti csillagra.  
- 
-    ![Függvényalkalmazás létrehozása az Azure Portalon](./media/functions-how-to-use-azure-function-app-settings/functions-favorite-function-apps.png)
-
-    Ezzel felveheti a Függvények ikont a portál bal oldali menüjébe.
-
-3. Zárja be a menüt, majd a Függvények ikon megtekintéséhez görgessen le a képernyő aljára. Erre az ikonra kattintva megtekintheti a függvényalkalmazásainak listáját. Kattintson a függvényalkalmazásra az alkalmazásban található függvények használatához. 
- 
-    ![A Függvényalkalmazásokat a Kedvencek](./media/functions-how-to-use-azure-function-app-settings/functions-function-apps-hub.png)
- 
-[Azure Portal]: https://portal.azure.com/
 
 ## <a name="manage-app-service-settings"></a>Függvény alkalmazás Beállítások lap
 

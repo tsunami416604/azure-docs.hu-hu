@@ -12,18 +12,20 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/26/2019
-ms.openlocfilehash: cae806953721f3cedead023f013c7d1d585efeb6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: fb628358c91d80a3117b065cadb284fd1665daa3
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573383"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073685"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Az Azure SQL Database szószedet
 
 |Környezet|Időtartam|További információ|
 |:---|:---|:---|
 |Azure-szolgáltatás neve|Az Azure SQL Database vagy SQL-adatbázis|[Az Azure SQL Database szolgáltatásban](sql-database-technical-overview.md)|
+|Számítási szint|Kiszolgáló nélküli (előzetes verzió)|[kiszolgáló nélküli számítási kapacitás](sql-database-serverless.md)
+||Kiépítve|[kiszolgáló nélküli számítási kapacitás](sql-database-serverless.md)
 |Üzembe helyezési beállítások |Önálló adatbázis|[Önálló adatbázisok](sql-database-single-database.md)|
 ||Rugalmas készlet|[Rugalmas készlet](sql-database-elastic-pool.md)|
 ||Felügyelt példány|[Felügyelt példány](sql-database-managed-instance.md)|

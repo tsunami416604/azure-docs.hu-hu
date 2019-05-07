@@ -1,20 +1,19 @@
 ---
-title: Egy Azure Database for PostgreSQL-kiszolgáló a autovacuum optimalizálása
-description: Ez a cikk bemutatja, hogyan optimalizálhatók a autovacuum egy Azure Database for PostgreSQL-kiszolgáló található.
-author: WenJason
-ms.author: v-jay
+title: Optimalizálhatja autovacuum egy Azure database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk bemutatja, hogyan optimalizálhatók a autovacuum egy Azure database for PostgreSQL – egyetlen kiszolgáló
+author: dianaputnam
+ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 10/22/2018
-ms.date: 04/29/2019
-ms.openlocfilehash: e1b4bf1f9fa956da7a7b0ca1521439002d1ce76b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: fb1ab9525974601a8b8c22ccc44e2cf37baf21a1
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420270"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069117"
 ---
-# <a name="optimize-autovacuum-on-an-azure-database-for-postgresql-server"></a>Egy Azure Database for PostgreSQL-kiszolgáló a autovacuum optimalizálása 
+# <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Optimalizálhatja autovacuum egy Azure database for PostgreSQL – egyetlen kiszolgáló
 Ez a cikk ismerteti egy Azure Database for PostgreSQL-kiszolgáló a autovacuum hatékonyan optimalizálása.
 
 ## <a name="overview-of-autovacuum"></a>Autovacuum áttekintése

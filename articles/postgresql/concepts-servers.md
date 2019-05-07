@@ -1,23 +1,23 @@
 ---
-title: Az Azure Database for PostgreSQL kiszolgáló fogalmak
-description: Ez a cikk a szempontokat és irányelveket konfigurálása és kezelése az Azure Database for PostgreSQL-kiszolgálók tartalmaz.
+title: Az Azure Database for PostgreSQL - kiszolgáló egyetlen kiszolgáló fogalmak
+description: Ez a cikk a szempontok és konfigurálása és kezelése az Azure Database for PostgreSQL - kiszolgáló egyetlen iránymutatásokat tartalmaz.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/07/2018
-ms.openlocfilehash: a5b6db9f4bfbe9a11119270e9236580b41fae8c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: bc135e58d0fbabc809f3718915e9f4e35b8ed875
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60422099"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067162"
 ---
-# <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL-kiszolgálók
-Ez a cikk szempontokat és irányelveket tartalmaz az Azure Database for PostgreSQL-kiszolgálók használatához.
+# <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – egyetlen kiszolgáló
+Ez a cikk szempontokat és irányelveket tartalmaz az Azure Database for PostgreSQL – egyetlen kiszolgáló működik.
 
 ## <a name="what-is-an-azure-database-for-postgresql-server"></a>Mi az Azure Database for PostgreSQL-kiszolgálót?
-Egy Azure Database for PostgreSQL-kiszolgálót több adatbázis egy központi felügyeleti pont. Az azonos PostgreSQL kiszolgáló szerkezet, amely, előfordulhat, hogy ismernie kell a helyszíni világ. A PostgreSQL szolgáltatás kifejezetten, felügyelt, teljesítményre vonatkozó garanciákat biztosít, hozzáférés és a szolgáltatásokat a kiszolgáló szintjén teszi elérhetővé.
+Egy kiszolgálót az az Azure Database for PostgreSQL – egykiszolgálós telepítési lehetőség több adatbázis egy központi felügyeleti pontot. Az azonos PostgreSQL kiszolgáló szerkezet, amely, előfordulhat, hogy ismernie kell a helyszíni világ. A PostgreSQL szolgáltatás kifejezetten, felügyelt, teljesítményre vonatkozó garanciákat biztosít, hozzáférés és a szolgáltatásokat a kiszolgáló szintjén teszi elérhetővé.
 
 Azure Database for PostgreSQL-kiszolgáló:
 

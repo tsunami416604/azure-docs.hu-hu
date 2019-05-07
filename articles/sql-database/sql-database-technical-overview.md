@@ -13,12 +13,12 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: ecfd0cbc3eaaae64a956568a506252fdbeddcac2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed94677eea91e3543dced9825a1372f60550a524
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60580687"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073617"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás
 
@@ -54,7 +54,7 @@ SQL Database kiszámítható teljesítményt több erőforrástípusok, a szolg�
 
 ## <a name="scalable-performance-and-pools"></a>Méretezhető teljesítmény és készletek
 
-- A önálló adatbázisokhoz minden egyes adatbázis elkülönül önálló, hordozható, és a saját számítási, memória és tárolási erőforrások garantált mennyiségét. Az SQL Database nyújt a különféle igényekre szabva - különböző számítási, memória és tárolási erőforrások és a rendszer képes dinamikusan [egyetlen adatbázis-erőforrások skálázása](sql-database-single-database-scale.md) felfelé és lefelé. A [nagy kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md) (előzetes verzió) az egyetlen adatbázis lehetővé teszi, hogy a skálázás 100 TB-ig, a gyors biztonsági mentési és visszaállítási képességeket.
+- A önálló adatbázisokhoz minden egyes adatbázis elkülönül önálló, hordozható, és a saját számítási, memória és tárolási erőforrások garantált mennyiségét. Az SQL Database nyújt a különféle igényekre szabva - különböző számítási, memória és tárolási erőforrások és a rendszer képes dinamikusan [egyetlen adatbázis-erőforrások skálázása](sql-database-single-database-scale.md) felfelé és lefelé. A [nagy kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md) tartozó önálló adatbázis lehetővé teszi, hogy a skálázás 100 TB-ig, a gyors biztonsági mentési és visszaállítási képességeket.
 - A rugalmas készletekkel létrehozhat új adatbázisokat vagy önálló adatbázisok helyezhetik át maximalizálhatja az erőforrások használatát és pénzt - és képes dinamikusan mentése erőforráskészlet [méretezhető rugalmas adatbáziskészlet erőforrásainak](sql-database-elastic-pool-scale.md) felfelé és lefelé.
 - A felügyelt példányok esetén minden egyes felügyelt példány el vannak különítve más példányok garantált erőforrásokkal. Belül a felügyelt példány, a példány adatbázisok osztoznak a erőforrások –, és képes dinamikusan [méretezni az erőforrásokat a felügyelt példány](sql-database-managed-instance-resource-limits.md) felfelé és lefelé.
 
@@ -69,8 +69,7 @@ SQL Database két vásárlási modellt kínál:
 - A [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) számítási, memória, IO-erőforrások kis és nagy terhelést jelentő adatbázisokhoz database három szolgáltatásszintet kínálja. A számítási biztosít különböző többféle, ezeket az erőforrásokat, amelyhez további tárterület-erőforrások adhat hozzá az egyes szinteken belül.
 - A [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) válassza ki a virtuális magok, a vagy a memória, és a számát és a storage sebességétől teszi lehetővé. A Virtuálismag-alapú vásárlási modell azt is lehetővé teszi, hogy [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) költségmegtakarítást biztosítanak. Az Azure Hybrid Benefittel kapcsolatos további információkért lásd: [– gyakori kérdések](#sql-database-frequently-asked-questions-faq).
 
-  > [!IMPORTANT]
-  > A [nagy kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md) az önálló adatbázisok jelenleg nyilvános előzetes verzióban érhető el. Nem ajánlott semmilyen éles számítási feladatok futtatása a nagy kapacitású adatbázisokban még. Nagy kapacitású adatbázis egyéb szolgáltatási csomagokra nem frissíthető. Tesztelési célra ajánlott másolatot készít az aktuális adatbázisban, és frissíti a példányt nagy kapacitású szolgáltatásszinthez.
+  
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Rugalmas készletek az erőforrások kihasználtságának maximalizálásához
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: cfe2620801f743831f77fb76f344c156676966d3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b5467711f06380ca61b4a9d5150b66c3f945c08c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657560"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141076"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>API-k védelme az Azure Active Directory és az API Management az OAuth 2.0 használatával
 
@@ -44,7 +44,7 @@ A következő lépések rövid áttekintése:
 
 Az Azure AD-vel API-k védelme, az első lépéseként kell regisztrálni egy alkalmazást, amely az API-t jelöli az Azure AD-ben. 
 
-1. Keresse meg az Azure AD-bérlőhöz, és keresse meg **alkalmazásregisztrációk**.
+1. Keresse meg az Azure AD-bérlőhöz, és keresse meg **alkalmazásregisztrációk (örökölt)**.
 
 2. Válassza az **Új alkalmazás regisztrálása** elemet. 
 
@@ -62,7 +62,7 @@ Az alkalmazás létrehozásakor a jegyezze meg a **Alkalmazásazonosító**, egy
 
 Minden ügyfélalkalmazás, amely meghívja az API-t kell regisztrálni egy alkalmazást, valamint az Azure AD-ben. Ebben a példában az ügyfélalkalmazásra a fejlesztői konzolt az API Management fejlesztői portálon. Íme egy másik alkalmazás regisztrálása az Azure ad-ben, amely a fejlesztői konzol jelöli.
 
-1. Válassza az **Új alkalmazás regisztrálása** elemet. 
+1. Miközben a **alkalmazásregisztrációk (örökölt)** válassza **új alkalmazásregisztráció**. 
 
 2. Adja meg az alkalmazás nevét. (Ebben a példában a név `client-app`.)
 
@@ -86,7 +86,7 @@ Jegyezze fel a kulcs értékét.
 
 Most, hogy a regisztráció két alkalmazásokat, amelyek az API-t és a fejlesztői konzolt kell biztosítania az engedélyt, hogy az ügyfél-alkalmazásnak, hogy a háttér-alkalmazást hívja.  
 
-1. Keresse meg a **alkalmazást az alkalmazásregisztrációk**. 
+1. Keresse meg a **alkalmazásregisztráció (örökölt)**. 
 
 2. Válassza ki `client-app`, és nyissa meg **beállítások**.
 

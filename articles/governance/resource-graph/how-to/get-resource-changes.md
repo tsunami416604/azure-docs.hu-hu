@@ -8,12 +8,12 @@ ms.date: 04/20/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 0ae85b45dfcd80056316ed5f2099aab4057d24c8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 81cb5e62c8abc93aa5defb690628c7178fd2a869
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720342"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142541"
 ---
 # <a name="get-resource-changes"></a>Erőforrás-módosítások lekérése
 
@@ -29,7 +29,7 @@ Címváltozásának felderítését és a részletek hasznosak az alábbi péld�
 - Konfigurációkezelési adatbázis tartja, más néven a cmdb-JÉBEN, naprakész. Frissítés helyett az összes erőforrás és a egy ütemezett gyakoriságát, a teljes tulajdonság beállítása csak a get mi változott.
 - Milyen egyéb tulajdonságok Módosíthatott erőforrás megfelelőségi állapotok megváltozásakor ismertetése. Ezek a további tulajdonságok kiértékelése is szükség lehet egy Azure szabályzat-definíció kezelendő egyéb tulajdonságok betekintést nyújtson.
 
-Ez a cikk bemutatja, hogyan erőforrás Graph SDK-n keresztül az információk gyűjtésére. Ez az információ az Azure Portalon, olvassa el az Azure Policy [módosítási előzmények](../../policy/how-to/determine-non-compliance.md#change-history-preview).
+Ez a cikk bemutatja, hogyan erőforrás Graph SDK-n keresztül az információk gyűjtésére. Ez az információ az Azure Portalon, olvassa el az Azure Policy [módosítási előzmények](../../policy/how-to/determine-non-compliance.md#change-history-preview) vagy az Azure-tevékenységnapló [módosítási előzmények](../../../azure-monitor/platform/activity-logs-overview.md#view-change-history).
 
 > [!NOTE]
 > Változások részleteinek Erőforrás-grafikon a Resource Manager-tulajdonságok vannak. A virtuális gépen belüli változásainak követése, tekintse meg az Azure Automation [Change tracking](../../../automation/automation-change-tracking.md) vagy az Azure Policy [Vendég virtuális gépek konfigurációjának](../../policy/concepts/guest-configuration.md).

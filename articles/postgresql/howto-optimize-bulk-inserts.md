@@ -1,20 +1,19 @@
 ---
-title: Egy Azure Database for PostgreSQL-kiszolgáló a tömeges Beszúrások optimalizálása
-description: Ez a cikk bemutatja, hogyan optimalizálhatók a tömeges beszúrási műveletek egy Azure database for PostgreSQL-kiszolgálóhoz.
-author: WenJason
-ms.author: v-jay
+title: Optimalizálhatja a tömeges Beszúrások egy Azure database for PostgreSQL – egyetlen kiszolgáló
+description: Ez a cikk bemutatja, hogyan optimalizálhatók a tömeges beszúrási műveletek egy Azure database for PostgreSQL – egyetlen kiszolgáló.
+author: dianaputnam
+ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 10/22/2018
-ms.date: 03/04/2019
-ms.openlocfilehash: a82984ce4c2a2e44306abaa63265e0c25cc6ace4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: c1ae29f7c498a79af09aaaf6d7aeae29561aa500
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60422117"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067033"
 ---
-# <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql-server"></a>Tömeges Beszúrások optimalizálása és a egy Azure Database for PostgreSQL-kiszolgálót átmeneti adatok használata 
+# <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Tömeges Beszúrások optimalizálása és a egy Azure Database for PostgreSQL - kiszolgáló egyetlen átmeneti adatok használata 
 Ez a cikk bemutatja, hogyan tömeges beszúrási műveletek optimalizálása és átmeneti adatok használata az Azure Database for PostgreSQL-kiszolgálóhoz.
 
 ## <a name="use-unlogged-tables"></a>Nem naplózott táblák használata

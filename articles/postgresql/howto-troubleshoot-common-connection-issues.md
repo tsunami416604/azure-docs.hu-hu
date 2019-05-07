@@ -1,20 +1,20 @@
 ---
-title: PostgreSQL-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása
-description: Ismerje meg, hogyan PostgreSQL-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása.
+title: PostgreSQL - hez-kiszolgáló egyetlen Azure-adatbázis-kapcsolatok problémáinak hibaelhárítása
+description: Ismerje meg, hogyan háríthatók el a kapcsolódási problémák az Azure Database for PostgreSQL – egyetlen kiszolgáló.
 keywords: postgresql-kapcsolat, kapcsolati karakterlánc, kapcsolódási problémák, átmeneti hiba, kapcsolódási hiba
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/09/2018
-ms.openlocfilehash: a78167e9b143a4c8d424947b489043dd45dfe2db
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 9026b561f52b2d43fff2d3e36ba569d7b62a4684
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420913"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069026"
 ---
-# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql"></a>PostgreSQL-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása
+# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>PostgreSQL - hez-kiszolgáló egyetlen Azure-adatbázis-kapcsolatok problémáinak hibaelhárítása
 
 Csatlakozási problémák oka lehet a különböző dolgok, többek között:
 

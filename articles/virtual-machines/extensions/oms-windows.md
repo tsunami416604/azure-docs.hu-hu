@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/14/2017
+ms.date: 04/29/2019
 ms.author: roiyz
-ms.openlocfilehash: 7c56b54f2d5be2bd47644e07369120468bb6015e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2287a0c39a82509e21ff35d8c3786cf1c85b1b24
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61468380"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65142883"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>A figyelő a Windows Azure virtuális gépi bővítmény
 
@@ -32,7 +32,10 @@ Az Azure Monitor naplóira monitorozási képességeket biztosít a felhőbeli �
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A Log Analytics-ügynök bővítmény esetében a Windows is futtatható a Windows Server 2008 R2, 2012, 2012 R2 és 2016-kiadások.
+A Log Analytics agent bővítmény Windows támogatja a Windows operációs rendszer verzió a következő:
+
+- A Windows Server 2019
+- A Windows Server 2008 R2, 2012, 2012 R2, 2016 1709-es és 1803-as verzióban
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
@@ -43,7 +46,7 @@ A Log Analytics Windows agent bővítmény szükséges, hogy a céloldali virtu�
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON a Log Analytics-ügynök bővítmény sémáját jeleníti meg. A bővítmény telepítéséhez, a munkaterület azonosítóját és a cél Log Analytics-munkaterületet a munkaterület kulcsát. Ezek a beállítások a munkaterület az Azure Portalon található. A munkaterület kulcsát kényes adatként kell kezelni, mert azt egy védett beállítás konfigurációjának kell tárolni. Az Azure VM-bővítmény védett beállítás adatok titkosítva, és csak az átjárót tartalmazó a cél virtuális gépen. Vegye figyelembe, hogy **munkaterület azonosítója** és **workspaceKey** kis-és nagybetűket.
+A következő JSON a Log Analytics-ügynök bővítmény sémáját jeleníti meg. A bővítmény a munkaterület-Azonosítót és a munkaterület kulcsát a cél Log Analytics-munkaterület szükséges. Ezek a beállítások a munkaterület az Azure Portalon található. A munkaterület kulcsát kényes adatként kell kezelni, mert azt egy védett beállítás konfigurációjának kell tárolni. Az Azure VM-bővítmény védett beállítás adatok titkosítva, és csak az átjárót tartalmazó a cél virtuális gépen. Vegye figyelembe, hogy **munkaterület azonosítója** és **workspaceKey** kis-és nagybetűket.
 
 ```json
 {
@@ -84,6 +87,9 @@ A következő JSON a Log Analytics-ügynök bővítmény sémáját jeleníti me
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
 Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Az előző szakaszban részletes JSON-sémája a Log Analytics-ügynök bővítmény futtatása során egy Azure Resource Manager-sablon üzembe helyezése Azure Resource Manager-sablon is használható. A Log Analytics ügynök Virtuálisgép-bővítményt tartalmazó mintát sablon megtalálható a [Azure gyors üzembe helyezési katalógus](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
+
+>[!NOTE]
+>A sablon nem támogatja egynél több munkaterület-Azonosítót és a munkaterületkulcsot megadását, ha meg szeretné konfigurálni az ügynököt, hogy több munkaterületnek küldjenek jelentést. Az ügynököt, hogy több munkaterületnek küldjenek jelentést beállítása: [hozzáadása és eltávolítása a munkaterület](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace).  
 
 A JSON-t egy virtuálisgép-bővítményt a virtuális gép típusú erőforrást belülre, vagy elhelyezve, a legfelső szintű vagy a legfelső szintű Resource Managerből származó JSON-sablon. A JSON-fájllal való elhelyezését hatással van az erőforrás nevét, és írja be az értékét. További információkért lásd: [állítsa be a nevét és típusát gyermekerőforrásait](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources). 
 

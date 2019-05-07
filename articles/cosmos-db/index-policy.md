@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan konfigurálja, és módosítsa az alapértelmez
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.author: thweiss
-ms.openlocfilehash: a089d8bd4f2197c93d43e70742743db29944b910
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: c7f2ccd2c074f2488c86b45a09859b308655df8d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872670"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068606"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatok
 
@@ -72,6 +72,36 @@ A gyökér elérési útját tartalmazza rendelkezik minden olyan indexelési h�
 - Normál karakterek, amelyek tartalmazzák az elérési utakra: alfanumerikus karaktereket és _ (aláhúzás), nem kell az elérési útvonal karakterláncának körüli idézőjeleket (például "/ path /?") karaktert. Az elérési utakat speciális karaktereket, escape-körüli dupla idézőjelek között az elérési útvonal karakterláncának kell (például "/\"elérési út – abc\"/?"). Ha különleges karaktereket az elérési úthoz, akkor is escape-minden biztonsági elérési útját. Funkcionálisan nem létrehozni, akkor eltérést Ha escape-e minden elérési út csak az azokat, amelyeket speciális karakterek Vs.
 
 Lásd: [ebben a szakaszban](how-to-manage-indexing-policy.md#indexing-policy-examples) házirend példák az indexelés.
+
+## <a name="composite-indexes"></a>Az összetett indexek
+
+-Lekérdezéseket `ORDER BY` két vagy több tulajdonság szükséges összetett index. Jelenleg is az összetett indexek csak egyes többszörös `ORDER BY` lekérdezéseket. Alapértelmezés szerint nincsenek összetett indexek vannak definiálva, ezért érdemes [adja hozzá az összetett indexek](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) igény szerint.
+
+Összetett index meghatározásakor, adja meg a következő műveleteket:
+
+- Két vagy több tulajdonság elérési útvonalat. A folyamat melyik tulajdonságban útvonalakat használ kérdések definiálva.
+- A rendelés (növekvő vagy csökkenő).
+
+Az alábbi szempontokat használják, az összetett indexek használata esetén:
+
+- Ha az összetett index elérési útjai nem egyeznek meg az ORDER BY záradékban szereplő tulajdonságok sorrendje, majd az összetett index nem támogatja a lekérdezés
+
+- A rendelés összetett index elérési utak (növekvő vagy csökkenő) is meg kell egyeznie az ORDER BY záradékban megadott sorrendben.
+
+- Az összetett index ellentétes sorrendjében ORDER BY záradék is támogatja az összes elérési utat.
+
+Vegye figyelembe az alábbi példában, ahol definiálva van egy összetett index a tulajdonságok a, b és c
+
+| **Összetett Index**     | **Minta `ORDER BY` lekérdezés**      | **Index által támogatott?** |
+| ----------------------- | -------------------------------- | -------------- |
+| ```(a asc, b asc)```         | ```ORDER BY  a asc, bcasc```        | ```Yes```            |
+| ```(a asc, b asc)```          | ```ORDER BY  b asc, a asc```        | ```No```             |
+| ```(a asc, b asc)```          | ```ORDER BY  a desc, b desc```      | ```Yes```            |
+| ```(a asc, b asc)```          | ```ORDER BY  a asc, b desc```       | ```No```             |
+| ```(a asc, b asc, c asc)``` | ```ORDER BY  a asc, b asc, c asc``` | ```Yes```            |
+| ```(a asc, b asc, c asc)``` | ```ORDER BY  a asc, b asc```        | ```No```            |
+
+Az indexelési házirendet kell testre szabhatja, így minden szükséges tárából `ORDER BY` lekérdezéseket.
 
 ## <a name="modifying-the-indexing-policy"></a>Az indexelési szabályzat módosítása
 

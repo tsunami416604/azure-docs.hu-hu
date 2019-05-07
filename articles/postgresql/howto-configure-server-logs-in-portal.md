@@ -1,21 +1,21 @@
 ---
-title: Konfigurálja és kiszolgálói naplók elérése az Azure Portalon a PostgreSQL-hez
-description: Ez a cikk ismerteti, hogyan konfigurálhat és elérése a kiszolgálónaplók, Azure database for postgresql-hez az Azure Portalról.
+title: Konfigurálja és kiszolgálói naplók az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure Portalon
+description: Ez a cikk ismerteti, hogyan konfigurálhat és eléréséhez a kiszolgálónaplók, Azure database for PostgreSQL – egyetlen kiszolgáló az Azure Portalról.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 509c3af66e8228f142126dae6938ad74daf1d7ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 13a8c1ee4b7ca114211f93245d74866e5aa5d52c
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60421920"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65067453"
 ---
-# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurálja és hozzáférés-kiszolgáló naplóit az Azure Portalon
+# <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-in-the-azure-portal"></a>Konfigurálja és eléréséhez az Azure Database for PostgreSQL – egyetlen kiszolgáló naplók az Azure Portalon
 
-Konfigurálhatja, listázása, és töltse le a [, Azure Database for PostgreSQL-kiszolgáló naplói](concepts-server-logs.md) az Azure Portalról.
+Konfigurálhatja, listázása, és töltse le a [, Azure Database for PostgreSQL-naplók](concepts-server-logs.md) az Azure Portalról.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez az útmutató lépéseinek, az alábbiak szükségesek:

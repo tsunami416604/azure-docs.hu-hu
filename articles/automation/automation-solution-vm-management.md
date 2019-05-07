@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/31/2019
+ms.date: 04/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d7b99da3e8e81973c51bbd68a15517828c9736d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eaff996f5d0ad9c2eac00c9306ef8808b43e25c2
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61306450"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146047"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Azure Automationben
 
@@ -46,6 +46,50 @@ Az aktuális megoldáshoz a korlátozások a következők:
 Az ebben a megoldásban-forgatókönyvek egy [Azure-beli futtató fiók](automation-create-runas-account.md). A futtatófiók az előnyben részesített hitelesítési módszer azért tanúsítványalapú hitelesítést használ, előfordulhat, hogy lejárhat vagy gyakran változhat jelszó helyett.
 
 Javasoljuk, hogy egy önálló Automation-fiókot használja a VM indítása és leállítása megoldások. Ez azért, mert Azure modulverziók gyakran frissül, és a paraméterek változhat. Ezért nem feltétlenül egy újabb verziója az általa használt parancsmagok a VM indítása és leállítása a megoldás nincs frissítve az azonos kiadása ütemben történik. Javasoljuk, hogy a modul frissítések tesztelése egy teszt Automation-fiókban az Automation-fiók éles importálás előtt.
+
+### <a name="permissions-needed-to-deploy"></a>Üzembe helyezéséhez szükséges engedélyek
+
+Vannak bizonyos engedélyeket, amelyek a felhasználó a indítása és leállítása a virtuális gépek üzembe helyezése során óra solution ki kell rendelkeznie. Ezekre az engedélyekre eltérő, ha egy előre létrehozott Automation-fiók és a Log Analytics-munkaterületet használja, vagy üzembe helyezés során újakat hozna létre.
+
+#### <a name="pre-existing-automation-account-and-log-analytics-account"></a>Már meglévő Automation-fiók és a Log Analytics-fiók
+
+A gépek indítása/leállítása közben óra solution ki egy Automation-fiók és a megoldás üzembe helyezése a felhasználó az alábbi engedélyekkel kell rendelkeznie a Log Analytics központi telepítése a **erőforráscsoport**. Szerepkörök kapcsolatos további információkért lásd: [egyéni szerepkörök az Azure-erőforrások](../role-based-access-control/custom-roles.md).
+
+| Engedély | Scope|
+| --- | --- |
+| Microsoft.Automation/automationAccounts/read | Erőforráscsoport |
+| Microsoft.Automation/automationAccounts/variables/write | Erőforráscsoport |
+| Microsoft.Automation/automationAccounts/schedules/write | Erőforráscsoport |
+| Microsoft.Automation/automationAccounts/runbooks/write | Erőforráscsoport |
+| Microsoft.Automation/automationAccounts/connections/write | Erőforráscsoport |
+| Microsoft.Automation/automationAccounts/certificates/write | Erőforráscsoport |
+| Microsoft.Automation/automationAccounts/modules/write | Erőforráscsoport |
+| Microsoft.Automation/automationAccounts/modules/read | Erőforráscsoport |
+| Microsoft.automation/automationAccounts/jobSchedules/write | Erőforráscsoport |
+| Microsoft.Automation/automationAccounts/jobs/write | Erőforráscsoport |
+| Microsoft.Automation/automationAccounts/jobs/read | Erőforráscsoport |
+| Microsoft.OperationsManagement/solutions/write | Erőforráscsoport |
+| Microsoft.OperationalInsights/workspaces/* | Erőforráscsoport |
+| Microsoft.Insights/diagnosticSettings/write | Erőforráscsoport |
+| Microsoft.Insights/ActionGroups/WriteMicrosoft.Insights/ActionGroups/read | Erőforráscsoport |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Erőforráscsoport |
+| Microsoft.Resources/deployments/* | Erőforráscsoport |
+
+### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>Új Automation-fiók és a egy új Log Analytics-munkaterület
+
+A indítása és leállítása a virtuális gépek üzembe helyezése során csúcsidőn kívüli órákra, egy új Automation-fiók és a Log Analytics-munkaterületet a megoldás üzembe helyezése a felhasználó megoldást engedélyre van szüksége a meghatározott az előző szakaszban, valamint a következő engedélyekkel:
+
+- Társ-rendszergazdaként az előfizetés - Erre azért van szükség a klasszikus futtató fiók létrehozása
+- Része lehet a **alkalmazásfejlesztő** szerepkör. Futtató fiókok konfigurálásával kapcsolatos további részletekért lásd: [engedélyek konfigurálása a futtató fiókok](manage-runas-account.md#permissions).
+
+| Engedély |Scope|
+| --- | --- |
+| Microsoft.Authorization/roleAssignments/read | Előfizetés |
+| Microsoft.Authorization/roleAssignments/write | Előfizetés |
+| Microsoft.Automation/automationAccounts/connections/read | Erőforráscsoport |
+| Microsoft.Automation/automationAccounts/certificates/read | Erőforráscsoport |
+| Microsoft.Automation/automationAccounts/write | Erőforráscsoport |
+| Microsoft.OperationalInsights/workspaces/write | Erőforráscsoport |
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
@@ -292,8 +336,8 @@ A következő táblázat a megoldás által összegyűjtött feladatrekordokkal 
 
 |Lekérdezés | Leírás|
 |----------|----------|
-|Runbook ScheduledStartStop_Parent, amelyek sikeresen befejeződött feladatainak megkeresése | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
-|Runbook SequencedStartStop_Parent, amelyek sikeresen befejeződött feladatainak megkeresése | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc```|
+|Runbook ScheduledStartStop_Parent, amelyek sikeresen befejeződött feladatainak megkeresése | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|Runbook SequencedStartStop_Parent, amelyek sikeresen befejeződött feladatainak megkeresése | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 
 ## <a name="viewing-the-solution"></a>A megoldás megtekintése
 

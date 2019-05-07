@@ -1,20 +1,19 @@
 ---
-title: Azure Database for PostgreSQL-kiszolgáló virtuális hálózati szolgáltatások végpont áttekintése
-description: Ismerje meg a virtuális hálózati Szolgáltatásvégpontok az Azure database for PostgreSQL-kiszolgáló működése.
-author: WenJason
-ms.author: v-jay
+title: Virtuális hálózat (VNet) szolgáltatások endpoint áttekintése az Azure Database for PostgreSQL – egyetlen kiszolgáló
+description: Ismerje meg a virtuális hálózat (VNet) Szolgáltatásvégpontok működéséről az Azure Database for PostgreSQL – egyetlen kiszolgáló.
+author: bolzmj
+ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 08/20/2018
-ms.date: 04/22/2019
-ms.openlocfilehash: c6549ad170a0fc3b4387d5bc5163ca0548b92119
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: c873abcdf3c64f8357c584c8e24809270946bf74
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60560120"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073478"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql"></a>Virtuális hálózati Szolgáltatásvégpontok és szabályok használata az Azure Database for postgresql-hez
+# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Virtuális hálózati Szolgáltatásvégpontok és szabályok használata az Azure Database for PostgreSQL – egyetlen kiszolgáló
 
 *A virtuális hálózati szabályok* van egy tűzfal biztonsági funkció, amely meghatározza, hogy az Azure Database for PostgreSQL-kiszolgáló fogad-e a virtuális hálózatok adott alhálózatain érkező kommunikációt. Ez a cikk elmagyarázza, hogy miért a virtuális hálózati szabály szolgáltatást néha a legjobb megoldás az, hogy biztonságosan lehetővé teszi a kommunikációt az Azure database for PostgreSQL-kiszolgáló.
 

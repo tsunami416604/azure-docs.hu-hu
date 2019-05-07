@@ -6,25 +6,25 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 04/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: bf783c988c0163fe562669a8331c332dbf8d535e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9dc3e19f9429a6055a799f3f013c732538fa370d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61067329"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65070853"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Az Azure Container Instances szolgáltatásban gyakori problémáinak elhárítása
 
-Ez a cikk bemutatja, hogyan háríthatók el a gyakori problémák kezeléséhez, vagy az Azure Container Instances a tárolók üzembe helyezése.
+Ez a cikk bemutatja, hogyan háríthatók el a gyakori problémák kezeléséhez, vagy az Azure Container Instances a tárolók üzembe helyezése. Lásd még: [– gyakori kérdések](container-instances-faq.md).
 
 ## <a name="naming-conventions"></a>Elnevezési konvenciók
 
 A tároló specifikáció meghatározásakor bizonyos paraméterek betartásának elnevezési korlátozásairól van szükség. Alább van konkrét követelmények tárolót tartalmazó tábla tulajdonságai. Az Azure elnevezési konvenciók további információkért lásd: [elnevezési konvenciók] [ azure-name-restrictions] a az Azure Architecture Centert.
 
-| Hatókör | Hossz | Kis- és nagybetűk | Érvényes karakterek | Javasolt minta | Példa |
+| Scope | Hossz | Kis- és nagybetűk | Érvényes karakterek | Javasolt minta | Példa |
 | --- | --- | --- | --- | --- | --- |
 | Tároló csoport neve | 1-64 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus karakterek és kötőjel bárhol, kivéve az első vagy utolsó karakter |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Tárolónév | 1-64 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus karakterek és kötőjel bárhol, kivéve az első vagy utolsó karakter |`<name>-<role>-CG<number>` |`web-batch-CG1` |
@@ -46,11 +46,7 @@ Ha olyan lemezképet, amely nem támogatja az Azure Container Instances, adja me
 }
 ```
 
-Ez a hiba a rendszer leggyakrabban észlelt, amikor üzembe helyezése Windows-rendszerképek a féléves csatorna (SAC) alapuló kiadási. Például Windows verziók 1709-es és 1803 SAC kiadások, és ezt követően a központi telepítési hiba jön létre.
-
-Az Azure Container Instances jelenleg csak a-alapú Windows-rendszerképeket támogatja a **Windows Server 2016 hosszú távú karbantartási csatorna (LTSC)** kiadás. A probléma megoldásához, ha a Windows-tárolók üzembe helyezése, mindig telepítse a Windows Server 2016 LTSC-alapú rendszerképekhez. A Windows Server 2019 (LTSC) alapú lemezképek nem támogatottak.
-
-A Windows LTSC és SAC verzióival kapcsolatos részletekért lásd: [áttekintése a Windows Server féléves csatorna][windows-sac-overview].
+Ez a hiba a rendszer leggyakrabban észlelt, amikor üzembe helyezése Windows-rendszerképek a féléves csatorna alapuló kiadási 1709-es vagy 1803, amelyeket nem támogat. Támogatott a Windows rendszerképek az Azure Container Instances szolgáltatásban, lásd: [– gyakori kérdések](container-instances-faq.md#what-windows-base-os-images-are-supported).
 
 ## <a name="unable-to-pull-image"></a>Nem lehet lekéréses kép
 
@@ -102,7 +98,7 @@ az container create -g MyResourceGroup --name myapp --image ubuntu --command-lin
 
 ```azurecli-interactive 
 ## Deploying a Windows container
-az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image mcr.microsoft.com/windows/servercore:ltsc2016
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image mcr.microsoft.com/windows/servercore:ltsc2019
  --command-line "ping -t localhost"
 ```
 
@@ -156,7 +152,7 @@ A két elsődleges olyan tényezőt, amelyek hozzájárulnak a tároló indítá
 * [A kép mérete](#image-size)
 * [Lemezkép helyét](#image-location)
 
-Windows-rendszerképek [további szempontok](#cached-windows-images).
+Windows-rendszerképek [további szempontok](#cached-images).
 
 ### <a name="image-size"></a>A kép mérete
 
@@ -176,14 +172,12 @@ A kulcs gondoskodik a lemezkép mérete kisebb, ellenőriznie kell, hogy a végs
 
 A kép lekérési a tároló indítási idő csökkentésében is, hogy a tároló rendszerképét az üzemelteti [Azure Container Registry](/azure/container-registry/) ugyanabban a régióban, ahol szeretné telepíteni a container Instances szolgáltatásban. Ez lerövidíti a hálózati elérési útját, amelyet a tároló rendszerképét az utazás jelentősen lerövidíteni a letöltési időt.
 
-### <a name="cached-windows-images"></a>Windows-rendszerképek gyorsítótárazott
+### <a name="cached-images"></a>Gyorsítótárazott képek
 
-Az Azure Container Instances egy gyorsítótárazási mechanizmust használ tároló-indítási idő csökkentéséhez a gyakori Windows és Linux-rendszerképek alapján. A gyorsítótárazott képek és címkék részletes listáját, használja a [gyorsítótárazott rendszerképek felsorolása] [ list-cached-images] API-t.
+Az Azure Container Instances gyorsítótárazást használ a tároló indítási idő csökkentéséhez a épülő gyakori rendszerképek segítségével [Windows kiinduló lemezképek](container-instances-faq.md#what-windows-base-os-images-are-supported), többek között `nanoserver:1809`, `servercore:ltsc2019`, és `servercore:1809`. Leggyakrabban használt például a Linux-rendszerképeket `ubuntu:1604` és `alpine:3.6` is lettek gyorsítótárazva. A gyorsítótárazott képek és címkék legfrissebb listáját, használja a [gyorsítótárazott rendszerképek felsorolása] [ list-cached-images] API-t.
 
-Ahhoz, hogy a leggyorsabb Windows tároló indítási ideje, használja az egyik a **legutóbbi három** verziók a következők **két lemezképet** , az alap rendszerképet:
-
-* [A Windows Server Core 2016] [ docker-hub-windows-core] (csak LTSC)
-* [A Windows Server 2016 Nano Server][docker-hub-windows-nano]
+> [!NOTE]
+> Az Azure Container Instances szolgáltatásban, a Windows Server a 2019-alapú rendszerképekhez használata előzetes verzióban érhető el.
 
 ### <a name="windows-containers-slow-network-readiness"></a>Windows-tárolók lassú hálózati készültségi
 

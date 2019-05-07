@@ -1,19 +1,17 @@
 ---
-title: A bejelentési tábla tárolási stratégia használatával optimalizálhatja a lekérdezési idő egy Azure Database for PostgreSQL-kiszolgáló
-description: Ez a cikk ismerteti, hogyan optimalizálható a lekérdezés időtartama a bejelentési table storage stratégiát egy Azure database for PostgreSQL-kiszolgálóhoz.
-author: WenJason
-ms.author: v-jay
-editor: jasonwhowell
+title: A bejelentési tábla tárolási stratégia használata az Azure Database for PostgreSQL - kiszolgáló egyetlen segítségével optimalizálhatja a lekérdezés idejét
+description: Ez a cikk ismerteti, hogyan optimalizálható a lekérdezés időtartama a bejelentési table storage stratégiát az Azure-adatbázis PostgreSQL - hez-kiszolgáló egyetlen.
+author: dianaputnam
+ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 10/22/2018
-ms.date: 02/18/2019
-ms.openlocfilehash: 96793cb1785a7ffa86331285f401453641b50dac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: ac1dc43a2b89bc1cc748947ec08e6ada87edbfcb
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60421056"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65066975"
 ---
 # <a name="optimize-query-time-with-the-toast-table-storage-strategy"></a>A bejelentési table storage stratégiát lekérdezési idő optimalizálásához 
 Ez a cikk ismerteti, hogyan optimalizálható a nagyméretű attribútum tárolási módszer (bejelentési) tábla tárolási stratégia a gyorsaság.
