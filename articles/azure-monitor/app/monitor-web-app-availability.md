@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: fe8549027bb7fcf9fcfc2db26816c0b6646c9da6
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6cd5413d64be2117cc5f64202ecdaaf40f35db4b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916386"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205376"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
 Miután telepítette a webappot vagy a webhelyet bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
@@ -274,7 +274,7 @@ Ha a tesztnek az OAuth protokollal kell bejelentkeznie, az általános megközel
 
 ## <a name="performance-tests"></a>Teljesítménytesztek
 > [!NOTE]  
-> A felhőalapú terheléses tesztelési szolgáltatás elavult. Az elavulással kapcsolatos, a szolgáltatás rendelkezésre állása és az alternatív szolgáltatásokkal kapcsolatos további információ található [Itt](https://docs.microsoft.com/en-us/azure/devops/test/load-test/overview?view=azure-devops).
+> A felhőalapú terheléses tesztelési szolgáltatás elavult. Az elavulással kapcsolatos, a szolgáltatás rendelkezésre állása és az alternatív szolgáltatásokkal kapcsolatos további információ található [Itt](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops).
 
 Terheléstesztelést futtathat a webhelyén. Csakúgy, mint a rendelkezésre állási teszt esetében, egyszerű vagy több lépésből álló kéréseket küldhet a világ minden táján található helyekről. A rendelkezésre állási teszttől eltérően sok kérés lesz elküldve, több párhuzamos felhasználót szimulálva.
 

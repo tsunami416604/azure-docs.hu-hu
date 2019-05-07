@@ -9,13 +9,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.custom: vs-azure
 ms.topic: article
-ms.date: 04/02/2019
-ms.openlocfilehash: 39b44668a89ce0c77c09a7fa20dc4d95b2164bf4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/25/2019
+ms.openlocfilehash: 265ed220b023a9d81fc5af48920152d95d9cac08
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61323719"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65136688"
 ---
 # <a name="build-your-first-serverless-app-with-azure-logic-apps-and-azure-functions---visual-studio"></a>Az Azure Logic Apps és az Azure Functions – a Visual Studio az első kiszolgáló nélküli alkalmazás létrehozása
 
@@ -25,33 +25,33 @@ Gyorsan fejleszthet és helyezhet üzembe felhőalkalmazásokat használatával 
 
 A Visual Studióban egy kiszolgáló nélküli alkalmazás készítése, ezek az elemek szükségesek:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
 * Ha még nincsenek telepítve, töltse le és telepítse az alábbi eszközöket:
 
-  * <a href="https://aka.ms/download-visual-studio" target="_blank">A Visual Studio 2019, 2017 vagy 2015 – Community edition vagy nagyobb</a>. 
+  * [A Visual Studio 2019, 2017 vagy 2015 – Community edition vagy nagyobb](https://aka.ms/download-visual-studio). 
   Ez a rövid útmutató a Visual Studio Community 2017 kiadást használja, amely ingyenes.
 
     > [!IMPORTANT]
     > Visual Studio 2019 vagy 2017 telepítésekor győződjön meg arról, hogy kiválasztja a **Azure-fejlesztési** számítási feladatot.
-    > A Visual Studio 2019 a Cloud Explorer nyithatja meg a Logic App Designerben az Azure portal, de még nem lehet megnyitni a beágyazott Logikaialkalmazás-Tervező.
 
-  * <a href="https://azure.microsoft.com/downloads/" target="_blank">A Microsoft Azure SDK for .NET (2.9.1 vagy újabb)</a>. További információ az <a href="https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet">Azure SDK for .NET</a> készlettel kapcsolatban.
+  * [A Microsoft Azure SDK for .NET (2.9.1 vagy újabb)](https://azure.microsoft.com/downloads/). 
+  További információ az [Azure SDK for .NET](https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet) készlettel kapcsolatban.
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
   * Az Azure Logic Apps Tools a Visual Studio verziójának szeretné:
 
-    * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019" target="_blank">Visual Studio 2019</a>
+    * [Visual Studio 2019](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019)
 
-    * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2017" target="_blank">Visual Studio 2017</a>
+    * [Visual Studio 2017](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2017)
 
-    * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015" target="_blank">Visual Studio 2015</a>
+    * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
   
-    Letöltheti és telepítheti az Azure Logic Apps alkalmazást közvetlenül a Visual Studio piacteréről, vagy nézzen utána, <a href="https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions" target="_blank">hogyan telepítheti a bővítményt a Visual Studio rendszerén belül</a>. 
+    Letöltheti és telepítheti az Azure Logic Apps alkalmazást közvetlenül a Visual Studio piacteréről, vagy nézzen utána, [hogyan telepítheti a bővítményt a Visual Studio rendszerén belül](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions). 
     Ne feledje, hogy a telepítés után újra kell indítani a Visual Studiót.
 
-  * <a href="https://www.npmjs.com/package/azure-functions-core-tools" target="_blank">Az Azure Functions Core Tools</a> helyi hibakeresési funkciók
+  * [Az Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) helyi hibakeresési funkciók
 
 * Internet-hozzáférés a beágyazott Logikaialkalmazás-tervező használatakor.
 
