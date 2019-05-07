@@ -47,8 +47,8 @@ A következő fejléceket szükség:
 
 |Kérelem fejléce|Leírás|
 |--------------------|-----------------|
-|*A Content-Type:*|Kötelező. Állítsa be `application/json`.|
-|*Hitelesítés:*|Kötelező. Egy érvényes értékre `Bearer` [hozzáférési jogkivonat](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+|*Content-Type:*|Kötelező. Állítsa be `application/json`.|
+|*Authorization:*|Kötelező. Egy érvényes értékre `Bearer` [hozzáférési jogkivonat](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 ## <a name="response"></a>Válasz
 
