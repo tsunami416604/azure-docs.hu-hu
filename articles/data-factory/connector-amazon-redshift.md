@@ -54,10 +54,10 @@ Amazon Redshift-beli társított szolgáltatás a következő tulajdonságok tá
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **AmazonRedshift** | Igen |
-| kiszolgáló |IP address or host name of the Amazon Redshift server. |Igen |
+| server |IP address or host name of the Amazon Redshift server. |Igen |
 | port |Az Amazon Redshift-kiszolgáló az ügyfélkapcsolatok figyeléséhez használt TCP-port száma. |Nem, az alapértelmezett érték 5439 |
-| adatbázis |Name of the Amazon Redshift database. |Igen |
-| felhasználónév |Az adatbázishoz hozzáféréssel rendelkező felhasználó nevét. |Igen |
+| database |Name of the Amazon Redshift database. |Igen |
+| username |Az adatbázishoz hozzáféréssel rendelkező felhasználó nevét. |Igen |
 | password |A felhasználói fiókhoz tartozó jelszót. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
@@ -126,7 +126,7 @@ Adatok másolása az Amazon Redshift, állítsa be a forrás típusaként a más
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **AmazonRedshiftSource** | Igen |
-| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. Például: válassza ki * from tábla. |Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| query |Az egyéni lekérdezés segítségével olvassa el az adatokat. Például: válassza ki * from tábla. |Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 | redshiftUnloadSettings | A tulajdonságcsoport Amazon Redshift eltávolítása használatakor. | Nem |
 | s3LinkedServiceName | -To-be – használja az ideiglenes tárolóként az Amazon S3 hivatkozik egy "az AmazonS3" típusú társított szolgáltatás neve megadásával. | Igen, ha a MEMÓRIÁBÓL használatával |
 | bucketName | Adja meg, az S3 gyűjtőt átmeneti adatok tárolására. Ha nincs megadva, a Data Factory szolgáltatás állít elő, akkor automatikusan.  | Igen, ha a MEMÓRIÁBÓL használatával |
@@ -210,16 +210,16 @@ Ha az adatok másolása az Amazon Redshift, az Azure Data Factory-közbenső ada
 | Amazon Redshift data type | Data factory közbenső adattípus |
 |:--- |:--- |
 | BIGINT |Int64 |
-| LOGIKAI ÉRTÉK |String |
+| BOOLEAN |String |
 | CHAR |String |
 | DATE |DateTime |
 | DECIMAL |Decimal |
-| A KÉTSZERES PONTOSSÁG |Double |
+| DOUBLE PRECISION |Double |
 | INTEGER |Int32 |
-| VALÓDI |Single |
+| REAL |Single |
 | SMALLINT |Int16 |
-| SZÖVEG |String |
-| IDŐBÉLYEG |DateTime |
+| TEXT |String |
+| TIMESTAMP |DateTime |
 | VARCHAR |String |
 
 ## <a name="next-steps"></a>További lépések
