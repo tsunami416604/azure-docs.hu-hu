@@ -79,9 +79,9 @@ A `on-error` ügyfélházirend szekció használható bármilyen hatókörben. A
   
 | Name (Név)     | Típus   | Leírás                                                                                               | Kötelező |
 |----------|--------|-----------------------------------------------------------------------------------------------------------|----------|
-| Forrás   | string | Az elem, ahol a hiba történt a neveket. Házirend és a egy beépített folyamat lépés – név lehet.     | Igen      |
-| Ok   | string | Gép mobilbarát hiba kódra, amely volt használható a hibakezelést.                                       | Nem       |
-| Üzenet  | string | Természetes nyelven olvasható hiba leírása.                                                                         | Igen      |
+| Source   | string | Az elem, ahol a hiba történt a neveket. Házirend és a egy beépített folyamat lépés – név lehet.     | Igen      |
+| Reason   | string | Gép mobilbarát hiba kódra, amely volt használható a hibakezelést.                                       | Nem       |
+| Message  | string | Természetes nyelven olvasható hiba leírása.                                                                         | Igen      |
 | Scope    | string | Ha hiba történt, és lehet egy "globális", "termék", "api" vagy "művelet" hatókör neve | Nem       |
 | `Section`  | string | Ha hiba történt a szakasz nevét. A lehetséges értékek: "a bejövő", "Háttér", "kimenő" vagy "error".       | Nem       |
 | `Path`     | string | Adja meg a beágyazott házirend, például "[3] válasszon / mikor: [2]".                                                        | Nem       |
@@ -96,7 +96,7 @@ A `on-error` ügyfélházirend szekció használható bármilyen hatókörben. A
 ## <a name="predefined-errors-for-built-in-steps"></a>A beépített lépéseket előre meghatározott hibák  
  Az hibafeltételek kiértékelése beépített feldolgozási lépések során előforduló hibák a következők előre.  
   
-| Forrás        | Állapot                                 | Ok                  | Üzenet                                                                                                                |
+| Source        | Állapot                                 | Reason                  | Message                                                                                                                |
 |---------------|-------------------------------------------|-------------------------|------------------------------------------------------------------------------------------------------------------------|
 | konfiguráció | URI nem felel meg az API vagy művelet | OperationNotFound       | Nem egyezik meg a bejövő kérelem egy művelethez.                                                                      |
 | Engedélyezési | Nincs megadva előfizetési kulcs             | SubscriptionKeyNotFound | Hozzáférés megtagadva, mert előfizetési kulcs. Ellenőrizze, hogy az előfizetési kulcsot tartalmaznak, amikor az API-kérelem indítására. |
@@ -105,7 +105,7 @@ A `on-error` ügyfélházirend szekció használható bármilyen hatókörben. A
 ## <a name="predefined-errors-for-policies"></a>A szabályzatok előre meghatározott hibák  
  Az hibaállapotok szabályzat-kiértékelés során előforduló hibák a következők előre.  
   
-| Forrás       | Állapot                                                       | Ok                    | Üzenet                                                                                                                              |
+| Source       | Állapot                                                       | Reason                    | Message                                                                                                                              |
 |--------------|-----------------------------------------------------------------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | Sebességkorlát-   | Túllépte a sávszélesség-korlátjának                                             | RateLimitExceeded         | Költési korlát túllépve                                                                                                               |
 | kvóta        | Kvóta túllépve                                                  | QuotaExceeded             | A csomagba foglalt lebeszélhető percek elfogytak. Kvóta lesz percmennyiség a xx:xx:xx. – vagy – a sávszélesség-kvóta kívüli. Kvóta lesz percmennyiség a xx:xx:xx. |
