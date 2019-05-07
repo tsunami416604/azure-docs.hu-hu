@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f242afb717557a35b81515ab718971bdc398b5a
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.openlocfilehash: 605206682cb70d430773cdbf9ff746eabf594103
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64992776"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190845"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application-spa"></a>Gyors útmutató: A felhasználók és a JavaScript-egyoldalas alkalmazás (SPA) hozzáférési jogkivonat beszerzése
 
@@ -37,7 +37,7 @@ Ebben a rövid útmutatóban a következő beállítás lesz szüksége:
 * Egy node.js-kiszolgálóval, a projekt futtatása
     * [Node.js](https://nodejs.org/en/download/) telepítése
     * Telepítés [Visual Studio Code](https://code.visualstudio.com/download) a projektfájlok szerkesztése
-* Futtassa a projektet a Visual Studio megoldás, telepítse a [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/).
+* Futtassa a projektet a Visual Studio megoldás, telepítse a [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>Regisztráljon, és letöltheti a rövid útmutató
@@ -147,16 +147,16 @@ Miután a böngésző betölti az alkalmazást, kattintson a **bejelentkezés**.
 Az MSAL a könyvtárban, a felhasználók és a kérelem API-k a Microsoft identity platform által védett eléréséhez használt jogkivonatok aláírásához használt. Ez a rövid útmutató *index.html* tartalmaz egy hivatkozást a könyvtárhoz:
 
 ```html
-<script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0-preview.4/js/msal.min.js"></script>
+<script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/msal.min.js"></script>
 ```
 > [!TIP]
 > A fenti verzió lecserélheti a legújabb elérhető verzió alatt [MSAL.js kiadások](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
 
 
-Azt is megteheti Ha a csomópont telepítve van, letöltheti a legújabb előzetes verzióval npm-et:
+Azt is megteheti Ha a csomópont telepítve van, letöltheti a legújabb verziót az npm segítségével:
 
 ```batch
-npm install msal@preview
+npm install msal
 ```
 
 ### <a name="msal-initialization"></a>Az MSAL inicializálása
@@ -192,11 +192,11 @@ var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 A következő kódrészletet bemutatja, hogyan a felhasználók:
 
 ```javascript
-var request = {
+var requestObj = {
     scopes: ["user.read"]
 };
 
-myMSALObj.loginPopup(request).then(function (loginResponse) {
+myMSALObj.loginPopup(requestObj).then(function (loginResponse) {
     //Login Success callback code here
 }).catch(function (error) {
     console.log(error);
@@ -219,11 +219,11 @@ Az MSAL jogkivonatok beszerzésére használható három módszer van: `acquireT
 A `acquireTokenSilent` metódus kezeli a token beszerzését és -megújítás, felhasználói beavatkozás nélkül. Miután a `loginRedirect` vagy `loginPopup` metódus végrehajtása az első alkalommal `acquireTokenSilent` későbbi hívások védett erőforrások eléréséhez használt tokenek beszerzése érdekében a gyakran használt módszer. Hívások újítsa meg a tokenek vagy kérheti a beavatkozás nélkül történik.
 
 ```javascript
-var request = {
+var requestObj = {
     scopes: ["user.read"]
 };
 
-myMSALObj.acquireTokenSilent(request).then(function (tokenResponse) {
+myMSALObj.acquireTokenSilent(requestObj).then(function (tokenResponse) {
     // Callback code here
     console.log(tokenResponse.accessToken);
 }).catch(function (error) {
@@ -247,11 +247,11 @@ A legtöbb alkalmazás a szokásos javasolt minta, hogy a hívás `acquireTokenS
 Hívása a `acquireTokenPopup` bejelentkezni egy másik előugró ablak eredményez (vagy `acquireTokenRedirect` eredményez a felhasználók átirányítása a Microsoft identity platform végpont) felhasználók kell interaktív vagy erősítse meg a hitelesítő adataikat, ha engedélyezi a hogy a szükséges erőforrás vagy a kéttényezős hitelesítés elvégzése.
 
 ```javascript
-var request = {
+var requestObj = {
     scopes: ["user.read"]
 };
 
-myMSALObj.acquireTokenPopup(request).then(function (tokenResponse) {
+myMSALObj.acquireTokenPopup(requestObj).then(function (tokenResponse) {
     // Callback code here
     console.log(tokenResponse.accessToken);
 }).catch(function (error) {

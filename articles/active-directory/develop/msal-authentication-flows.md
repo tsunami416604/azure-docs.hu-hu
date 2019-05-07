@@ -1,6 +1,6 @@
 ---
-title: Ügyfélalkalmazások (Microsoft-hitelesítési tár) |} Az Azure
-description: További információ a nyilvános és bizalmas ügyfélprogram alkalmazások a Microsoft hitelesítési tár (MSAL).
+title: Hitelesítési folyamatok (Microsoft-hitelesítési tár) |} Az Azure
+description: Ismerje meg a hitelesítési folyamatok/biztosít a Microsoft hitelesítési tár (MSAL) használt.
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 096aa5e5ce2f33467457cef22220f338ae49b708
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b7db73ff8bef553b36408cfae90e32014f875bd3
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/06/2019
-ms.locfileid: "65139100"
+ms.locfileid: "65191009"
 ---
 # <a name="authentication-flows"></a>Hitelesítési folyamatok
 
@@ -30,6 +30,7 @@ Ez a cikk ismerteti a Microsoft hitelesítési tár (MSAL) által biztosított k
 
 | Folyamat | Leírás | Használatban|  
 | ---- | ----------- | ------- | 
+| [Interaktív](#interactive) | A token beolvasása egy interaktív folyamat, amely felszólítja a felhasználót a hitelesítő adatokat böngésző vagy a pop-ablakot. | [Asztali alkalmazások](scenario-desktop-overview.md), [mobilalkalmazások](scenario-mobile-overview.md) |
 | [Implicit engedélyezés](#implicit-grant) | Itt engedélyezheti az alkalmazásnak a jogkivonatok lekérésére, egy háttérrendszer kiszolgálói hitelesítő adatok exchange végrehajtása nélkül. Ez lehetővé teszi az alkalmazásnak, hogy jelentkezzen be a felhasználói munkamenet fenntartásához és tokenekhez más webes API-k mindezt az ügyfelet JavaScript-kódot.| [Egylapos alkalmazások (SPA)](scenario-spa-overview.md) |
 | [engedélyezési kód](#authorization-code) | Használja az alkalmazást, amely egy eszközön a védett erőforrások, például a webes API-k eléréséhez. Ez lehetővé teszi, hogy jelentkezzen be, és az API eléréséhez a mobil- és asztali alkalmazásokhoz. | [Asztali alkalmazások](scenario-desktop-overview.md), [mobilalkalmazások](scenario-mobile-overview.md), [Web Apps](scenario-web-app-call-api-overview.md) | 
 | [On-behalf-of](#on-behalf-of) | Egy alkalmazás elindítja az szolgáltatás/webes API-kat, amelynek be kell egy másik szolgáltatást vagy webes API meghívásához. A cél pedig propagálása a delegált felhasználó identitása és a kérelem láncot engedélyeket. | [Webes API-k](scenario-web-api-call-api-overview.md) |
@@ -38,6 +39,17 @@ Ez a cikk ismerteti a Microsoft hitelesítési tár (MSAL) által biztosított k
 | [Integrált Windows-hitelesítés](scenario-desktop-acquire-token.md#integrated-windows-authentication) | Lehetővé teszi, hogy a tartomány vagy az Azure AD-alkalmazásokat csatlakoztatott számítógépek csendes módban (a felhasználó felhasználói felület felhasználói beavatkozás) nélkül egy token beszerzéséhez.| [Asztali és mobil alkalmazások](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
 | [Felhasználónév/jelszó](scenario-desktop-acquire-token.md#username--password) | Lehetővé teszi olyan alkalmazások, hogy jelentkezzen be a felhasználó közvetlenül kezeli a jelszavát. Ez a folyamat nem ajánlott. | [Asztali és mobil alkalmazások](scenario-desktop-acquire-token.md#username--password) | 
 
+## <a name="interactive"></a>Interaktív
+Az MSAL támogatja az interaktív módon kéri a felhasználót a hitelesítő adatait jelentkezzen be, és ezeket a hitelesítő adatokat használó jogkivonat beszerzése.
+
+![Interaktív folyamat](media/msal-authentication-flows/interactive.png)
+
+További információ az MSAL.NET használatával interaktív módon beszerezni a jogkivonatok az adott platformon, olvassa el a következőket:
+- [Xamarin Android](msal-net-xamarin-android-considerations.md)
+- [Xamarin iOS](msal-net-xamarin-ios-considerations.md)
+- [Univerzális Windows-platform](msal-net-uwp-considerations.md)
+
+Interaktív hívás MSAL.js további információkért olvassa el a [MSAL.js interaktív kérelmek viselkedés kérése](msal-js-prompt-behavior.md)
 
 ## <a name="implicit-grant"></a>Implicit
 
@@ -55,6 +67,9 @@ MSAL támogatja a [OAuth 2 engedélyezési kód](v2-oauth2-auth-code-flow.md), a
 Felhasználói bejelentkeznek a webes alkalmazások (webhelyek), amikor a webalkalmazás kap egy engedélyezési kód.  Az engedélyezési kódot a webes API-k hívásához egy token beszerzéséhez válthatók be. Az ASP.NET / ASP.NET core web apps szolgáltatásban, az egyetlen célja `AcquireTokenByAuthorizationCode` egy token hozzáadása az tokengyorsítótárral, úgy, hogy ezután használható az alkalmazás (általában a vezérlő), amely egyszerűen lekérheti az API-t a token által `AcquireTokenSilent`.
 
 ![Az engedélyezési kód folyamata](media/msal-authentication-flows/authorization-code.png)
+
+1. Az engedélyezési kódot, amely van válthatók be egy hozzáférési jogkivonatot kér.
+2. A hozzáférési jogkivonat segítségével webes API-hívás.
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 - Az engedélyezési kód az használható csak egyszer egy jogkivonat beváltása. Ne próbáljon többször, ugyanazt a hitelesítési kódot (kifejezetten tilos a szabványos protokoll-meghatározása szerint) egy token beszerzéséhez. Ha a webhelyen történő beváltása a kód többször szándékosan, vagy mert nem vegye figyelembe, hogy egy keretrendszert is mindezt megteszi Ön helyett, hibaüzenetet kap: `AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
@@ -83,14 +98,23 @@ Az ügyfél hitelesítő adatainak megadása a folyamat lehetővé teszi egy web
 > [!NOTE]
 > A bizalmas client flow nem érhető mobilplatformokon (UWP Xamarin.iOS és Xamarin.Android), mivel ezek az csak a nyilvános ügyfélalkalmazások támogatják.  Nyilvános ügyfélalkalmazások nem tudom, hogyan igazolja az alkalmazás identitását segítségével az Identitásszolgáltatókhoz. Biztonságos kapcsolat érhető el a webalkalmazás vagy webes API-t háttérrendszereket tanúsítvány telepítésével.
 
-MSAL.NET ügyfél-hitelesítő adatok három típusát támogatja:
+MSAL.NET ügyfél-hitelesítő adatok két típusát támogatja. Ezen ügyfél-hitelesítő adatok az Azure ad-vel regisztrálni kell. A hitelesítő adatok továbbítódnak a a konstruktorok az bizalmas ügyfélalkalmazás a kódban.
 
-- Titkos alkalmazáskulcsok <BR>![Bizalmas ügyfél felhasználónévvel és jelszóval](media/msal-authentication-flows/confidential-client-password.png)
-- Tanúsítványok <BR>![A tanúsítvány bizalmas ügyfél](media/msal-authentication-flows/confidential-client-certificate.png)
-- Optimalizált ügyfél helyességi feltételek<BR>![A helyességi feltételek bizalmas ügyfél](media/msal-authentication-flows/confidential-client-assertions.png)
+### <a name="application-secrets"></a>Titkos alkalmazáskulcsok 
+
+![Bizalmas ügyfél felhasználónévvel és jelszóval](media/msal-authentication-flows/confidential-client-password.png)
+
+1. Tokenbeolvasás alkalmazás titkos kulcs-és jelszóalapú hitelesítő adatok használatával.
+2. Használja a jogkivonatot, hogy az erőforrás kéréseket.
+
+### <a name="certificates"></a>Tanúsítványok 
+
+![A tanúsítvány bizalmas ügyfél](media/msal-authentication-flows/confidential-client-certificate.png)
+
+1. Tokenbeolvasás tanúsítvány hitelesítő adatok használatával.
+2. Használja a jogkivonatot, hogy az erőforrás kéréseket.
 
 Ezen ügyfél hitelesítő adatait kell lennie:
-
 - Az Azure ad-vel regisztrálva.
 - Az átadott, a kódban a bizalmas ügyfélalkalmazás felépítése.
 
@@ -118,6 +142,9 @@ Az alkalmazás az eszköz hitelesítésikód-folyamata segítségével szerzi be
 Az MSAL integrált Windows-hitelesítés (IWA) támogatja az asztali, vagy egy tartományhoz csatlakoztatottnak vagy az Azure ad-ben futó alkalmazásokat csatlakoztatott Windows-számítógépen. IWA használja, ezek az alkalmazások lekérheti a jogkivonat csendes módban (a felhasználó felhasználói felület felhasználói beavatkozás) nélkül. 
 
 ![Integrált Windows-hitelesítés](media/msal-authentication-flows/integrated-windows-authentication.png)
+
+1. Integrált Windows-hitelesítést használó tokenbeolvasás.
+2. Használja a jogkivonatot, hogy az erőforrás kéréseket.
 
 ### <a name="constraints"></a>Korlátozások
 
@@ -148,6 +175,9 @@ A jóváhagyás további információkért lásd: [v2.0 engedélyek és jóváha
 Az MSAL támogatja a [OAuth 2 erőforrás tulajdonosának jelszavas hitelesítése](v2-oauth-ropc.md), amely lehetővé teszi, hogy az alkalmazás közvetlenül kezeli a jelszavukat a felhasználói bejelentkezés. Az asztali alkalmazás használhatja a felhasználónév/jelszó folyamat egy token beszerzéséhez beavatkozás nélkül. Felhasználói felület nem szükséges, az alkalmazás használata során.
 
 ![Felhasználónév/jelszó folyamat](media/msal-authentication-flows/username-password.png)
+
+1. Tokenbeolvasás, ha az identitásszolgáltató küld a felhasználónevet és jelszót.
+2. Meghívja a webes API-k token használatával.
 
 > [!WARNING]
 > Ez a folyamat **nem ajánlott** mert nagyfokú megbízhatóság és a felhasználó kitettség igényel.  Ez a folyamat csak akkor ajánlott, ha más, az biztonságosabb, a folyamatok nem használható. A problémáról további információk: [Ez a cikk](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). 

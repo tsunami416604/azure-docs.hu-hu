@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/16/2019
+ms.date: 05/06/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78889cb3c04b9854a4cebb27c35488d5142ad3a7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 491545aabd3415850eb1b1d712a46401b73ad845
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694836"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190733"
 ---
 # <a name="what-is-password-writeback"></a>Mi a jelszóvisszaíró?
 
@@ -165,6 +165,9 @@ A jelszóban *nem* visszaírja a következő helyzetek egyikében:
 * **A rendszergazda nem támogatott műveletek**
    * Minden végfelhasználói rendszergazda által kezdeményezett jelszó-visszaállítás a [Office felügyeleti portálján](https://portal.office.com)
    * Minden végfelhasználói rendszergazda által kezdeményezett jelszó-visszaállítás a PowerShell 1-es verzió, 2-es vagy az Azure AD Graph API
+
+> [!WARNING]
+> A jelölőnégyzet "felhasználónak kell változtatni a jelszót a következő bejelentkezéskor" a helyszíni Active Directory felügyeleti eszközök például az Active Directory – felhasználók és számítógépek vagy az Active Directory felügyeleti központ használata nem támogatott. Ha a jelszó módosítása a helyi ne jelölje be ezt a beállítást. 
 
 ## <a name="next-steps"></a>További lépések
 

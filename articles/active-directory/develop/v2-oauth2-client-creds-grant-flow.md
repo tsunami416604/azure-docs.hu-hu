@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6aed38c8c670c751ee51de95e6622685caea1ce
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 3073d34a6ffeadd1c1c0022b5c1636f06cc6210a
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62112198"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190833"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>A Microsoft identity platform és az OAuth 2.0 ügyfél-hitelesítési folyamata
 
@@ -114,7 +114,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 | Paraméter | Állapot | Leírás |
 | --- | --- | --- |
 | `tenant` | Kötelező | A directory-bérlőhöz, amelyet szeretne az engedélyt. Ez lehet GUID vagy rövid név formátumban. Ha nem tudja, hogy melyik bérlőhöz, a felhasználó tartozik, és azt szeretné, hogy azok jelentkezzen be minden bérlő, használja a `common`. |
-| `client_id` | Kötelező | A **Alkalmazásazonosítót (ügyfél)** , amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt felhasználói élményt. |
+| `client_id` | Szükséges | A **Alkalmazásazonosítót (ügyfél)** , amely a [az Azure-portál – alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) az alkalmazáshoz rendelt felhasználói élményt. |
 | `redirect_uri` | Kötelező | Az átirányítási URI-t a válasz az alkalmazás kezelni kell elküldeni kívánt helyre. Ez pontosan egyeznie kell az átirányítási URI-k, a portál regisztrált egyik azzal a különbséggel, hogy az URL-kódolású kell lennie, és további szegmensek veheti fel. |
 | `state` | Ajánlott | Egy érték, amely a kérelemhez, amely a token válaszban visszaadott is megtalálható. Bármilyen tartalmat, amelyeket szeretne karakterlánc lehet. Az állapot az alkalmazás a felhasználói állapot információt kódolás előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézet szolgál. |
 
@@ -176,9 +176,9 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | Paraméter | Állapot | Leírás |
 | --- | --- | --- |
 | `tenant` | Szükséges | A directory-bérlő az alkalmazás tervek GUID Azonosítóját vagy a tartománynév formátumban való működésre. |
-| `client_id` | Kötelező | Az Alkalmazásazonosító, amely az alkalmazás hozzá van rendelve. Ezt az információt találja a portálon, ahol regisztrálta az alkalmazást. |
+| `client_id` | Szükséges | Az Alkalmazásazonosító, amely az alkalmazás hozzá van rendelve. Ezt az információt találja a portálon, ahol regisztrálta az alkalmazást. |
 | `scope` | Szükséges | Az átadott érték a `scope` paraméter a kéréshez a kívánt, elhelyezni, az erőforrást az erőforrás-azonosító (Alkalmazásazonosító URI-alkalmazás) kell lennie a `.default` utótag. A Microsoft Graph például értéke `https://graph.microsoft.com/.default`. <br/>Ez az érték jelzi, hogy az összes közvetlen alkalmazás engedélyt már konfigurálta az alkalmazást, a végpontot kell jogkivonatok kiállítása az erőforrással használni kívánt azokat a a Microsoft identity platform végpont. További információkat talál a `/.default` hatókörét, tekintse meg a [dokumentáció hozzájárulás](v2-permissions-and-consent.md#the-default-scope). |
-| `client_secret` | Kötelező | Az ügyfél titkos kulcsát az alkalmazás az alkalmazás regisztrációs portálon létrehozott. A titkos ügyfélkulcsot kell URL-kódolású elküldése előtt. |
+| `client_secret` | Szükséges | Az ügyfél titkos kulcsát az alkalmazás az alkalmazás regisztrációs portálon létrehozott. A titkos ügyfélkulcsot kell URL-kódolású elküldése előtt. |
 | `grant_type` | Szükséges | Meg kell `client_credentials`. |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Második eset: Hozzáférési jogkivonat kérése tanúsítvánnyal
@@ -197,12 +197,12 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 | Paraméter | Állapot | Leírás |
 | --- | --- | --- |
-| `tenant` | Kötelező | A directory-bérlő az alkalmazás tervek GUID Azonosítóját vagy a tartománynév formátumban való működésre. |
+| `tenant` | Szükséges | A directory-bérlő az alkalmazás tervek GUID Azonosítóját vagy a tartománynév formátumban való működésre. |
 | `client_id` | Kötelező |Az alkalmazás (ügyfél) azonosítója, amely az alkalmazás hozzá van rendelve. |
-| `scope` | Kötelező | Az átadott érték a `scope` paraméter a kéréshez a kívánt, elhelyezni, az erőforrást az erőforrás-azonosító (Alkalmazásazonosító URI-alkalmazás) kell lennie a `.default` utótag. A Microsoft Graph például értéke `https://graph.microsoft.com/.default`. <br/>Ez az érték tájékoztatja, hogy az összes közvetlen alkalmazás engedélyt már konfigurálta az alkalmazást, azt kell jogkivonatok kiállítása az erőforrással használni kívánt azokat az a Microsoft identity platform végpont. További információkat talál a `/.default` hatókörét, tekintse meg a [dokumentáció hozzájárulás](v2-permissions-and-consent.md#the-default-scope). |
-| `client_assertion_type` | Kötelező | Az értéket kell beállítani `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
+| `scope` | Szükséges | Az átadott érték a `scope` paraméter a kéréshez a kívánt, elhelyezni, az erőforrást az erőforrás-azonosító (Alkalmazásazonosító URI-alkalmazás) kell lennie a `.default` utótag. A Microsoft Graph például értéke `https://graph.microsoft.com/.default`. <br/>Ez az érték tájékoztatja, hogy az összes közvetlen alkalmazás engedélyt már konfigurálta az alkalmazást, azt kell jogkivonatok kiállítása az erőforrással használni kívánt azokat az a Microsoft identity platform végpont. További információkat talál a `/.default` hatókörét, tekintse meg a [dokumentáció hozzájárulás](v2-permissions-and-consent.md#the-default-scope). |
+| `client_assertion_type` | Szükséges | Az értéket kell beállítani `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. |
 | `client_assertion` | Kötelező | Egy helyességi feltétel (egy JSON webes jogkivonat) létrehozására és aláírására a tanúsítványt igénylő regisztrált hitelesítő adatként az alkalmazáshoz. További információ [hitelesítő tanúsítvány](active-directory-certificate-credentials.md) megtudhatja, hogyan regisztrálhat a tanúsítvány és a helyességi feltétel formátumát.|
-| `grant_type` | Szükséges | Meg kell `client_credentials`. |
+| `grant_type` | Kötelező | Meg kell `client_credentials`. |
 
 Figyelje meg, hogy paraméterei szinte teljesen megegyezik a kérés által közös titkos kulcsot is azzal a különbséggel, hogy a titkos ügyfélkódot paraméter váltotta fel két paramétert: egy client_assertion_type és client_assertion.
 
@@ -249,6 +249,10 @@ Egy hibaválasz a következőhöz hasonló:
 | `timestamp` | A hiba ideje. |
 | `trace_id` | A kérelem a diagnostics használatával segítségével egyedi azonosítója. |
 | `correlation_id` | A kérelem a diagnostics használatával különböző összetevők segítségével egyedi azonosítója. |
+
+> [!NOTE]
+> Ahhoz, hogy az alkalmazás tudja fogadni a v2-jogkivonat frissítheti az Alkalmazásjegyzék-fájl az alkalmazás az azure Portalon. Az attribútum is hozzáadhat `accessTokenAcceptedVersion` és állítsa az értékét, 2, `"accessTokenAcceptedVersion": 2`. Ellenőrizze a cikk [alkalmazásjegyzék](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-app-manifest#manifest-reference) , hogy azonos többet. Az alkalmazás alapértelmezés szerint jelenleg recieves v1 jogkivonatot. Ha ez nincs definiálva az alkalmazás/webes API-t a jegyzékfájlban, azt a jegyzékfájlban Ez az attribútum alapértelmezett értéke 1-re, és ezért az alkalmazás fogad a v1-jogkivonatot.  
+
 
 ## <a name="use-a-token"></a>Egy token
 

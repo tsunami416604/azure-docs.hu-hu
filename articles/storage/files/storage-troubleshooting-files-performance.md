@@ -2,22 +2,22 @@
 title: Hibaelhárítási útmutató az Azure Files teljesítmény
 description: A prémium szintű Azure-fájlmegosztásokat (előzetes verzió) és a kapcsolódó megoldások teljesítményproblémák ismert.
 services: storage
-author: jeffpatt24
+author: gunjanj
 ms.service: storage
 ms.topic: article
 ms.date: 04/25/2019
-ms.author: jeffpatt
+ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 767473a037bf890756df68719698c3872fed6a9c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5ae0bb736a7cc0bbc38df5905abc5d8a71f60eb9
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64577915"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190053"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Az Azure Files teljesítménnyel kapcsolatos problémáinak elhárítása
 
-Ez a cikk a Microsoft Azure prémium szintű fájlmegosztások (előzetes verzió) kapcsolatos néhány gyakori problémát sorolja fel. Amikor ezeket a problémákat észlelt vannak lehetséges okait és megkerülő megoldások közöl.
+Ez a cikk felsorolja a prémium szintű Azure-fájlmegosztások (előzetes verzió) kapcsolatos néhány gyakori problémát. Amikor ezeket a problémákat észlelt vannak lehetséges okait és megkerülő megoldások közöl.
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Nagy a késés, az alacsony átviteli sebesség és az általános, teljesítménnyel kapcsolatos problémák
 
@@ -80,7 +80,7 @@ Az ügyfél virtuális gép található, mint a prémium szintű fájlmegosztás
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Az ügyfél nem tudja elérni a hálózat által támogatott maximális átviteli sebesség
 
-Ennek egyik lehetséges oka hiányát fo SMB többcsatornás támogatása. Jelenleg prémium files csak támogatja egyetlen csatorna, így az ügyfél virtuális gép csak egy kapcsolat a kiszolgálóval. Ez egyetlen kapcsolat van rögzítve, és az ügyfél virtuális Gépet, egyetlen mag, a virtuális gép elérhető maximális átviteli sebesség szerint egyetlen mag van kötve.
+Ennek egyik lehetséges oka hiányát fo SMB többcsatornás támogatása. Jelenleg Azure-fájlmegosztások csak támogatja egyetlen csatorna, így az ügyfél virtuális gép csak egy kapcsolat a kiszolgálóval. Ez egyetlen kapcsolat van rögzítve, és az ügyfél virtuális Gépet, egyetlen mag, a virtuális gép elérhető maximális átviteli sebesség szerint egyetlen mag van kötve.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 
@@ -137,7 +137,7 @@ A CentOS vagy RHEL i/o-mélysége nagyobb, mint egy nem támogatott.
 
 ### <a name="cause"></a>Ok
 
-Ha DirectoryOpen/DirectoryClose hívások száma a felső API-hívások között van, és várhatóan nem az ügyfél számára, hogy sok hívás az a virtuális gép Azure-ügyfélen telepített víruskereső probléma lehet is teszi.
+Ha DirectoryOpen/DirectoryClose hívások száma a felső API-hívások között van, és várhatóan nem az ügyfél számára, hogy sok hívás, a virtuális gép Azure-ügyfél telepítve víruskereső probléma lehet is teszi.
 
 ### <a name="workaround"></a>Áthidaló megoldás
 

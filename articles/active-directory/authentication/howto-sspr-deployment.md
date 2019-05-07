@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/17/2018
+ms.date: 05/06/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb9333845a78204ea1c6e56e17b3b6f9e5513c9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9c254ef3a71e95b33df2a779c728d47fff3c3759
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60357995"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190376"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének sikeres bevezetése
 
@@ -32,6 +32,10 @@ Az Azure Active Directory (Azure AD) önkiszolgáló jelszóváltoztatási (SSPR
    * Adta nekik a regisztrációs URL-címeket és visszaállítása?
       * Regisztráció:  https://aka.ms/ssprsetup
       * Gyári beállítások visszaállítása: https://aka.ms/sspr
+
+   > [!WARNING]
+   > A jelölőnégyzet "felhasználónak kell változtatni a jelszót a következő bejelentkezéskor" a helyszíni Active Directory felügyeleti eszközök például az Active Directory – felhasználók és számítógépek vagy az Active Directory felügyeleti központ használata nem támogatott. Ha a jelszó módosítása a helyi ne jelölje be ezt a beállítást. 
+
 1. Tájékoztassa a felhasználókat.
    * Ez a dokumentum az alábbi szakaszok a haladnak át minta közötti kommunikáció, jelszó portálok, a regisztráció kényszerítése, és a hitelesítési adatok feltöltése.
    * Az Azure Active Directory termékcsoport egy olyan [részletes üzembehelyezési tervet](https://aka.ms/SSPRDeploymentPlan) hozott létre, amelyet a cégek az ezen az oldalon található dokumentációval együtt használva létrehozhatnak egy üzleti tervet, és megtervezhetik egy önkiszolgáló jelszó-visszaállítási szolgáltatás üzembe helyezését.

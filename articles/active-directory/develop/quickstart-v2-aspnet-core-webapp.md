@@ -17,12 +17,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1150e68167ad4e932acce744cdd5eba88e49a8c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e51437a99217316ead50d4075be52f089225e618
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60302357"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190873"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: Bejelentkezés Microsoft-hozzáadása az ASP.NET Core-webalkalmazás
 
@@ -73,13 +73,13 @@ Ebben a rövid útmutatóban megtudhatja, hogyan bejelentkezhet az ASP.NET Core-
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>2. lépés: Az ASP.NET Core-projekt letöltése
 
-- [A Visual Studio 2017-megoldás letöltése](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+- [Töltse le a Visual Studio a 2019-megoldás](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>3. lépés: A Visual Studio-projekt konfigurálása
 
 1. Bontsa ki például a zip-fájlt egy helyi mappába a gyökérmappa - belül **C:\Azure-Samples**
-1. Ha a Visual Studio 2017-et használ, nyissa meg a megoldást a Visual Studióban (nem kötelező).
-1. Szerkessze a **appsettings.json** fájlt. Keresse meg `ClientId` , és frissítse az értéket a `ClientId` az a **Alkalmazásazonosítót (ügyfél)** az imént regisztrált alkalmazást értékét. 
+1. Ha használja a Visual Studio 2019, nyissa meg a megoldást a Visual Studióban (nem kötelező).
+1. Szerkessze a **appsettings.json** fájlt. Keresse meg `ClientId` , és frissítse az értéket, `ClientId` az a **Alkalmazásazonosítót (ügyfél)** értékét regisztrálta az alkalmazást. 
 
     ```json
     "ClientId": "Enter_the_Application_Id_here"
@@ -99,7 +99,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan bejelentkezhet az ASP.NET Core-
 
 ## <a name="more-information"></a>További információ
 
-Ez a szakasz a felhasználók bejelentkeztetéséhez szükséges kód áttekintését tartalmazza. Ez lehet hasznos, ha szeretné megismerni a kód működését, fő argumentumot, és ha azt szeretné, bejelentkezés hozzáadása egy meglévő ASP.NET Core-alkalmazást.
+Ez a szakasz áttekintést nyújt a felhasználók bejelentkeztetéséhez szükséges kódot. Ez az Áttekintés lehet hasznos, ha szeretné megismerni a kód működését, fő argumentumot, és ha azt szeretné, bejelentkezés hozzáadása egy meglévő ASP.NET Core-alkalmazást.
 
 ### <a name="startup-class"></a>Indítási osztály
 
@@ -136,9 +136,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-A metódus `AddAuthentication` konfigurálja a szolgáltatást a cookie-alapú hitelesítést, amely a használt böngésző forgatókönyvek, valamint állítsa be a kihívás az OpenID Connect hozzáadásához. 
+A metódus `AddAuthentication` konfigurálja a hitelesítési cookie-alapú használt böngésző forgatókönyvek hozzáadása, és állítsa be a kihívás az OpenID Connect szolgáltatást. 
 
-A sor tartalmazó `.AddAzureAd` a Microsoft identity platform hitelesítés hozzáadása az alkalmazáshoz. Jelentkezzen be a Microsoft identity platform végpont használatával, majd van konfigurálva.
+A sor tartalmazó `.AddAzureAd` a Microsoft identity platform hitelesítés hozzáadása az alkalmazáshoz. Ezután jelentkezzen be a Microsoft identity platform végpont van konfigurálva.
 
 > |Ahol  |  |
 > |---------|---------|
@@ -159,7 +159,7 @@ Egy tartományvezérlő vagy a tartományvezérlő módszerek használatával v�
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a GitHub-adattárban való hitelesítés hozzáadása egy új ASP.NET Core webes alkalmazás további információk az ASP.NET Core oktatóanyag meghívása a Microsoft Graph és az egyéb Microsoft APIs, hogyan hívhat meg a saját API-k hozzáadása engedélyezési, hogyan jelentkezzen be a nemzeti felhőkben, vagy a közösségi identitásuk és más felhasználók:
+Tekintse meg a GitHub-adattárban való hitelesítés hozzáadása egy új ASP.NET Core webes alkalmazás további információk az ASP.NET Core oktatóanyag meghívása a Microsoft Graph és az egyéb Microsoft APIs, hogyan hívhat meg a saját API-k hozzáadása engedélyezési, hogyan jelentkezhet be a nemzeti felhőkben, vagy a közösségi identitásuk és más felhasználók:
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core Web App tutorial](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

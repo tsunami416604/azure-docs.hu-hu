@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/05/2019
+ms.date: 05/02/2019
 ms.author: kumud
-ms.openlocfilehash: a42a56b8a4a54c33297461a427a2b64b72357020
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5f52829f5895b30afd160cc8ded755332aca5c5
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60591463"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190176"
 ---
 # <a name="outbound-connections-in-azure"></a>Az Azure kimenő kapcsolatainak
 
@@ -176,13 +176,13 @@ SNAT portok hozzárendelések meghatározott IP-protokoll (TCP és UDP-karbantar
 
 ### <a name="tcp-snat-port-release"></a>TCP SNAT port kiadás
 
-- Ha mindkét kiszolgáló vagy ügyfél küld a PÉNZÜGY/ACK, SNAT port 240 másodperc múlva elérhető lesz.
+- Ha mindkét kiszolgáló vagy ügyfél küld FINACK, SNAT port 240 másodperc múlva elérhető lesz.
 - Ha egy ÜZE látható, SNAT port 15 másodperc múlva elérhető lesz.
-- elérte az üresjárat időkorlátja
+- Ha a rendszer elérte az üresjárati időkorlát, a port akkor szabadul fel.
 
 ### <a name="udp-snat-port-release"></a>UDP SNAT-port kiadás
 
-- elérte az üresjárat időkorlátja
+- Ha a rendszer elérte az üresjárati időkorlát, a port akkor szabadul fel.
 
 ## <a name="problemsolving"></a> Problémák megoldása 
 

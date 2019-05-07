@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 87599b05a3569bf6f28880352185a131f48a7f52
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9f284fea701220906a994cf108ed58cb6998aef9
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61436171"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65187659"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Az események szűrésének az Event Grid-előfizetések ismertetése
 
@@ -43,7 +43,7 @@ Egyszerű szűrés tulajdonos, adja meg egy kezdő vagy záró értéket a tárg
 
 Amikor eseményeket tesz közzé egyéni témaköröket, hozzon létre a tulajdonosok az eseményeket, amelyek megkönnyítik a tudja-e azok érdeklik az esemény-előfizetők számára. Előfizetők használhatják a tulajdonos tulajdonság események szűrése és útvonalat. Fontolja meg az elérési út esetében, ahol az esemény történt, hozzáadását, így az elérési út szegmensei lehet szűrni az előfizetőknek. Az elérési út révén széles körben vagy szűken események szűrése előfizetők. Ha megad egy három szegmens elérési utat, például `/A/B/C` az e-mail tárgyát, az előfizetők az első szegmens szerint szűrheti `/A` különböző események beolvasásához. Ezeket az előfizetőket témákat, mint például az események beolvasása `/A/B/C` vagy `/A/D/E`. Más előfizetőkkel szerint szűrheti `/A/B` beolvasni a szűkebb események egy meghatározott készletének.
 
-A JSON eseménytípus szerinti szűrés szintaxisa:
+A JSON-szintaxisra szűrése tulajdonos szerint van:
 
 ```json
 "filter": {

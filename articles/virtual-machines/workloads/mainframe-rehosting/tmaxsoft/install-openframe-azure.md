@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 78a8b5e7a1c5512f81315519210bc7759dd15342
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c7e6e7e2023c333207a3a17c3b6711d92de7d044
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60800659"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65187791"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>TmaxSoft OpenFrame telepítése Azure-ban
 
@@ -102,7 +102,7 @@ Tervezze meg a kiadások néhány napig az összes szükséges szoftver össze, 
 
 Az első lépések előtt tegye a következőket:
 
-- A OpenFrame telepítési adathordozó beszerzése TmaxSoft. Ha Ön már TmaxSoft ügyfél, a képviselőjétől TmaxSoft licencelt másolatot. Ellenkező esetben a rendszer próbaverzióját az kérelem [TmaxSoft](http://www.tmaxsoft.com/contact/).
+- A OpenFrame telepítési adathordozó beszerzése TmaxSoft. Ha Ön már TmaxSoft ügyfél, a képviselőjétől TmaxSoft licencelt másolatot. Ellenkező esetben a rendszer próbaverzióját az kérelem [TmaxSoft](https://www.tmaxsoft.com/contact/).
 
 - E-mailek küldése a OpenFrame dokumentáció kérni <support@tmaxsoft.com>.
 

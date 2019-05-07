@@ -1,10 +1,10 @@
 ---
-title: Adatbiztonság és titkosítás gyakorlati tanácsok |} A Microsoft Docs
+title: Adatbiztonság és titkosítás ajánlott eljárások – Microsoft Azure
 description: Ez a cikk az adatok biztonsági védelmének bevált gyakorlata készletét nyújtja, és az Azure-szolgáltatások beépített titkosítás segítségével.
 services: security
 documentationcenter: na
-author: barclayn
-manager: mbalwin
+author: TerryLanfear
+manager: barbkess
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4
 ms.service: security
@@ -12,33 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
-ms.author: barclayn
-ms.openlocfilehash: 686d4a8ac5239af12206b57072cc00aa10114d79
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 05/06/2019
+ms.author: terrylan
+ms.openlocfilehash: 9955450b468ef38ba456d7ee73d9681de677494d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125119"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190709"
 ---
-# <a name="azure-data-security-and-encryption-best-practices"></a>Ajánlott eljárások Azure Adatbiztonság és titkosítás
+# <a name="azure-data-security-and-encryption-best-practices"></a>Az Azure Adatbiztonság és titkosítás ajánlott eljárások
+Ez a cikk ismerteti az ajánlott eljárások az Adatbiztonság és titkosítás.
 
+Az ajánlott eljárások a vélemény konszenzus alapulnak, és dolgozhat az aktuális Azure platform olyan képességeit, és a szolgáltatáskészletek. Vélemények és technológiák az idő előrehaladtával változik, és ez a cikk a változások követése érdekében rendszeresen frissül.
+
+## <a name="protect-data"></a>Adatok védelme
 A felhőbeli adatok védelme érdekében szüksége fiók számára a lehetséges állapotok, amelyben az adatok akkor fordulhat elő, és milyen vezérlők érhetők el az állapotban. Ajánlott eljárások az Azure Adatbiztonság és titkosítás a következő adatok állapotok vonatkoznak:
 
 - Inaktív állapotban: Ez magában foglalja az összes adatokat tároló objektumokat, tárolók, és statikusan fizikai adathordozón, létezik-e mágneses típusait vagy optikai lemez.
 - Az átvitel során: Adatátvitel összetevők, helyeket vagy programok között, amikor, az átvitel során. Példák átvitel a hálózaton keresztül (a helyszínről a felhőbe, és fordítva, beleértve a hibrid kapcsolatok, például az ExpressRoute), egy service bus és a egy bemeneti/kimeneti folyamat során.
-
-Ebben a cikkben az Azure data security és a titkosítás az ajánlott eljárások gyűjteménye ismertetik. Ajánlott eljárások az Azure Adatbiztonság és titkosítás és a funkciókat az ügyfelek, például a saját maga az funkciót származik.
-
-Az egyes ajánlott elmagyarázzuk:
-
-* Mi az az ajánlott eljárás szerint
-* Miért ajánlott eljárás, hogy engedélyezni szeretné
-* Mi lehet az eredmény, ha Ön nem engedélyezi az ajánlott eljárás szerint
-* Az ajánlott eljárás szerint lehetséges alternatívák
-* Hogyan tudhat meg az ajánlott eljárás engedélyezése
-
-Az Azure által nyújtott Adatbiztonság és titkosítás gyakorlati tanácsok cikk alapul egy caiq véleményét, és az Azure platform képességeit és szolgáltatáskészleteket, ez a cikk írásának időpontjában léteznek. Vélemények és technológiák időbeli változásait, és ez a cikk a változások követése érdekében rendszeresen frissül.
 
 ## <a name="choose-a-key-management-solution"></a>Kulcs megoldás választása
 
@@ -95,7 +87,7 @@ A támadások többsége a végfelhasználó célozza meg, mert a végpont váli
 
 Az Azure Storage és Azure SQL Database titkosítja az inaktív adatok alapértelmezés szerint, és sok szolgáltatás ajánlat titkosítási beállítás. Az Azure Key Vault segítségével az adatok titkosításához használt kulcsok feletti. Lásd: [Azure-erőforrás szolgáltatókat titkosítás modell támogatása további](azure-security-encryption-atrest.md#azure-resource-providers-encryption-model-support).
 
-**Ajánlott eljárások**: Titkosítás használatával kapcsolatos adatokhoz való illetéktelen hozzáférés kockázatok csökkentése érdekében.
+**Ajánlott eljárások**: Titkosítás használatával kapcsolatos adatokhoz való illetéktelen hozzáférés kockázatok csökkentése érdekében.   
 **Részletes**: A meghajtók titkosítását bizalmas adatokat írni őket.
 
 Szervezetek számára, amelyek nem kényszerítenek adattitkosítás több jelennek meg a bizalmas adatokhoz problémákat. Például jogosulatlan vagy rosszindulatú felhasználók előfordulhat, hogy a sérült biztonságú fiókok adatait, illetve a tiszta formátumban kódolt adatok jogosulatlan elérésére. Vállalatok is igazolnia kell, hogy azok a szokott, és a megfelelő biztonsági vezérlők iparági előírásoknak való megfelelés érdekében az adatok biztonságának növelése érdekében.
@@ -118,7 +110,7 @@ Az alábbiakban gyakorlati SSL/TLS, HTTPS és az Azure VPN Gateway eljárásokka
 **Részletes**: Használat [ExpressRoute](../expressroute/expressroute-introduction.md). Ha az ExpressRoute használatát választja, a titkosításhoz is az adatok az alkalmazás szintjén használatával [SSL/TLS](https://support.microsoft.com/kb/257591) vagy egyéb protokollok felvett Protection.
 
 **Ajánlott eljárás**: Az Azure Storage segítségével kezelheti az Azure Portalon keresztül.   
-**Részletes**: Összes tranzakció HTTPS-kapcsolaton keresztül történik. Is [Storage REST API-val](https://msdn.microsoft.com/library/azure/dd179355.aspx) kommunikálni HTTPS-kapcsolaton keresztül [Azure Storage](https://azure.microsoft.com/services/storage/) és [Azure SQL Database](https://azure.microsoft.com/services/sql-database/).
+**Részletes**: Összes tranzakció HTTPS-kapcsolaton keresztül történik. Is [Storage REST API-val](https://msdn.microsoft.com/library/azure/dd179355.aspx) kommunikálni HTTPS-kapcsolaton keresztül [Azure Storage](https://azure.microsoft.com/services/storage/).
 
 Szervezetek számára, amelyek az adatok védelmére átvitel sikertelen érzékenyebbek [man-in-the-middle támadások](https://technet.microsoft.com/library/gg195821.aspx), [lehallgatást](https://technet.microsoft.com/library/gg195641.aspx), és a munkamenet-eltérítés. Ezeket a támadásokat lehet az első lépés a bizalmas adatok elérésekor.
 

@@ -17,12 +17,12 @@ ms.date: 04/10/2019
 ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8827a51a23b2ea274d8096a154e630c9cecbba7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 0d8f1024ba660bc0e879940f20db70d547eea40e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60351994"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190491"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>kézikönyv: A hibrid Azure Active Directory join megvalósítás megtervezése
 
@@ -41,7 +41,7 @@ Ha helyszíni Active Directory-környezettel rendelkezik, és csatlakoztatni sze
 Ez a cikk feltételezi, hogy ismeri a [bemutatása az Eszközfelügyelet az Azure Active Directory](../device-management-introduction.md).
 
 > [!NOTE]
-> A szükséges minimális működési tartomány és erdő működési szintjét a Windows 10-es hibrid Azure AD-csatlakozás Windows Server 2008 R2. Alsó-verzión a felhasználó nem kaphat elsődleges frissítési Token LSA problémák miatt a Windows-bejelentkezés során.
+> A szükséges minimális működési tartomány és erdő működési szintjét a Windows 10-es hibrid Azure AD-csatlakozás Windows Server 2008 R2.
 
 ## <a name="plan-your-implementation"></a>A megvalósítás tervezése
 
@@ -121,6 +121,9 @@ Ha a környezet rendelkezik felügyelt tartományok, a hibrid Azure AD-csatlakoz
 
 - Hitelesítés (ESP) keresztül adja át
 - Jelszókivonat-szinkronizálás (nál)
+
+> [!NOTE]
+> Az Azure AD nem támogatja intelligens kártyákkal vagy tanúsítványokkal felügyelt tartományokban.
 
 Az 1.1.819.0-s verziótól kezdve az Azure AD Connectben egy varázsló segíti a hibrid Azure AD-csatlakozások konfigurálását. Ez a varázsló jelentősen leegyszerűsíti a konfigurálási folyamatot. További információkért lásd:
 

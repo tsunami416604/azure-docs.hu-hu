@@ -2,18 +2,19 @@
 title: 'Gyors útmutató: Blob létrehozása objektumtárban – Azure Storage a .NET használatával'
 description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre tárolót és blobot a Blob-(objektum)tárolóban az Azure Storage ügyfélkódtára és .NET használatával. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan listázhatja ki a tárolóban található összes blobot.
 services: storage
-author: tamram
+author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.author: tamram
-ms.openlocfilehash: 2708efc22d373db6ee55dfee6b8adfa35bd450ef
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.author: mhopkins
+ms.reviewer: seguler
+ms.openlocfilehash: 0b7a7ac7b8a71f33871247a1117c16609bbbcd88
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924343"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191059"
 ---
 # <a name="quickstart-use-net-to-create-a-blob-in-object-storage"></a>Gyors útmutató: Blob létrehozása objektumtárban .NET használatával
 
@@ -152,7 +153,7 @@ A következőkben áttekintjük a mintakódot, és értelmezzük, hogyan működ
 
 ### <a name="try-parsing-the-connection-string"></a>Kapcsolati sztring elemzése
 
-A minta az első lépésben ellenőrzi, hogy a környezeti változó tartalmaz-e egy olyan kapcsolati sztringet, amelynek elemzésével létrehozható egy, a tárfiókra mutató [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) objektum. A kapcsolati sztring érvényességének ellenőrzéséhez alkalmazza a [TryParse](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.tryparse) metódust. Ha a **TryParse** sikeres, a minta inicializálja a *storageAccount* változót, és **igaz** értéket ad vissza.
+A minta az első lépésben ellenőrzi, hogy a környezeti változó tartalmaz-e egy olyan kapcsolati sztringet, amelynek elemzésével létrehozható egy, a tárfiókra mutató [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) objektum. A kapcsolati sztring érvényességének ellenőrzéséhez alkalmazza a [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) metódust. Ha a **TryParse** sikeres, a minta inicializálja a *storageAccount* változót, és **igaz** értéket ad vissza.
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored
@@ -184,9 +185,9 @@ else
 
 A minta ezután létrehoz egy tárolót, és beállítja annak engedélyeit, hogy a tárolóban lévő minden blob nyilvános legyen. A nyilvános blobok névtelenül elérhetők bármely ügyfél által.
 
-Tároló létrehozásához előbb hozza létre a [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient) objektum egy példányát, amely a tárfiókban található Blob Storage-ra mutat. Ezután hozza létre a [CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer) objektum egy példányát, majd a tárolót.
+Tároló létrehozásához előbb hozza létre a [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient) objektum egy példányát, amely a tárfiókban található Blob Storage-ra mutat. Ezután hozza létre a [CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) objektum egy példányát, majd a tárolót.
 
-Esetünkben a minta a [CreateAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createasync) metódus meghívásával hozza létre a tárolót. A rendszer egy GUID azonosítót fűz a tároló nevének végéhez, hogy biztosítsa annak egyediségét. Éles környezetben érdemes inkább a [CreateIfNotExistsAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.createifnotexistsasync) metódust alkalmazni, mivel ez csak akkor hozza létre a tárolót, ha az még nem létezik, és így elkerülhetők a névütközések.
+Esetünkben a minta a [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync) metódus meghívásával hozza létre a tárolót. A rendszer egy GUID azonosítót fűz a tároló nevének végéhez, hogy biztosítsa annak egyediségét. Éles környezetben érdemes inkább a [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync) metódust alkalmazni, mivel ez csak akkor hozza létre a tárolót, ha az még nem létezik, és így elkerülhetők a névütközések.
 
 > [!IMPORTANT]
 > A tárolók nevei csak kisbetűket tartalmazhatnak. A tárolók és blobok elnevezésével kapcsolatos további információkért lásd a [tárolók, blobok és metaadatok elnevezését és hivatkozását](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
@@ -209,7 +210,7 @@ await cloudBlobContainer.SetPermissionsAsync(permissions);
 
 ### <a name="upload-blobs-to-the-container"></a>Blobok feltöltése a tárolóba
 
-A minta ezután feltölt egy helyi fájlt egy blokkblobba. A példakód lekér egy **CloudBlockBlob** objektumra mutató hivatkozást a [GetBlockBlobReference](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.getblockblobreference) metódus az előző szakaszban létrehozott tárolón történő meghívásával. Ezután az [UploadFromFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromfileasync) metódus meghívásával feltölti a kiválasztott fájlt a blobba. Ez a metódus létrehozza a blobot, ha az még nem létezett, vagy felülírja, ha már igen.
+A minta ezután feltölt egy helyi fájlt egy blokkblobba. A példakód lekér egy **CloudBlockBlob** objektumra mutató hivatkozást a [GetBlockBlobReference](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getblockblobreference) metódus az előző szakaszban létrehozott tárolón történő meghívásával. Ezután az [UploadFromFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromfileasync) metódus meghívásával feltölti a kiválasztott fájlt a blobba. Ez a metódus létrehozza a blobot, ha az még nem létezett, vagy felülírja, ha már igen.
 
 ```csharp
 // Create a file in your local MyDocuments folder to upload to a blob.
@@ -230,7 +231,7 @@ await cloudBlockBlob.UploadFromFileAsync(sourceFile);
 
 ### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
-A minta a [ListBlobsSegmentedAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobssegmentedasync) metódus használatával kilistázza a tárolóban található blobokat. A minta esetében a tároló csak egy blobbal bővült, így a listázási művelet csak ezt az egy blobot adja vissza.
+A minta a [ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync) metódus használatával kilistázza a tárolóban található blobokat. A minta esetében a tároló csak egy blobbal bővült, így a listázási művelet csak ezt az egy blobot adja vissza.
 
 Ha túl sok (alapértelmezés szerint több mint 5000) blob van egy hívás válaszában, akkor a **ListBlobsSegmentedAsync** metódus visszaadja a teljes eredményhalmaz egy szeletét, valamint egy folytatási tokent. A blobhalmaz következő szeletének visszaadásához az előző hívás által visszaadott folytatási tokent kell megadnia. Egészen addig, amíg a folytatási token nullértékű nem lesz. A nullértékű folytatási token jelzi, hogy az összes blob le lett kérve. A mintakód bemutatja a folytatási token használatát, amely ajánlott eljárásként alkalmazandó.
 
@@ -253,7 +254,7 @@ do
 
 ### <a name="download-blobs"></a>Blobok letöltése
 
-Ezután a [DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync) metódus használatával töltse le az imént létrehozott blobokat a helyi fájlrendszerre. A mintakód a blob nevét kiegészíti a „_DOWNLOADED” (Letöltve) utótaggal, így mindkét fájl látható lesz a helyi fájlrendszeren.
+Ezután a [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) metódus használatával töltse le az imént létrehozott blobokat a helyi fájlrendszerre. A mintakód a blob nevét kiegészíti a „_DOWNLOADED” (Letöltve) utótaggal, így mindkét fájl látható lesz a helyi fájlrendszeren.
 
 ```csharp
 // Download the blob to a local file, using the reference created earlier.
@@ -265,7 +266,7 @@ await cloudBlockBlob.DownloadToFileAsync(destinationFile, FileMode.Create);
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A minta a létrehozott erőforrások eltávolításához a [CloudBlobContainer.DeleteAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.deleteasync) metódus meghívásával törli a teljes tárolót. Ha szeretné, a helyi fájlokat is törölheti.
+A minta a létrehozott erőforrások eltávolításához a [CloudBlobContainer.DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync) metódus meghívásával törli a teljes tárolót. Ha szeretné, a helyi fájlokat is törölheti.
 
 ```csharp
 Console.WriteLine("Press the 'Enter' key to delete the sample files, example container, and exit the application.");

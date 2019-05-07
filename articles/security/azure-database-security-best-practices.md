@@ -1,9 +1,9 @@
 ---
-title: Azure database ajánlott biztonsági eljárások |} A Microsoft Docs
+title: Ajánlott biztonsági eljárások – Microsoft Azure-adatbázis
 description: Ez a cikk egy Azure adatbázis biztonsági védelmének bevált gyakorlata biztosít.
 services: security
 documentationcenter: na
-author: unifycloud
+author: TerryLanfear
 manager: barbkess
 editor: tomsh
 ms.assetid: ''
@@ -13,27 +13,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
-ms.author: tomsh
-ms.openlocfilehash: 3e244f89904ce9aca161ed1ea435f4137e42bc5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: terrylan
+ms.openlocfilehash: f59d349da023f9a1b21477a05750d4f8e9aef500
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60587520"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65187760"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure database ajánlott biztonsági eljárások
+Ez a cikk ismerteti az adatbázis-biztonság ajánlott eljárásai.
+
+Az ajánlott eljárások a vélemény konszenzus alapulnak, és dolgozhat az aktuális Azure platform olyan képességeit, és a szolgáltatáskészletek. Vélemények és technológiák az idő előrehaladtával változik, és ez a cikk a változások követése érdekében rendszeresen frissül.
+
+## <a name="secure-databases"></a>Adatbázisok védelme
 Biztonsági adatbázis elsődleges szempont, és azt mindig az, hogy prioritást [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). Az adatbázisok szorosan leköthetőek súgó megfelel a legtöbb szabályozási és biztonsági követelmények, többek között a HIPAA, az ISO 27001/27002 és a PCI DSS Level 1. Biztonsági megfelelőségi tanúsítványok aktuális listáját érhető el: a [Microsoft Trust Center webhely](https://azure.microsoft.com/support/trust-center/services/). Is kiválaszthatja, hogy az adott Azure-adatközpontok a szabályozási követelményeknek megfelelően az adatbázisok helyezze.
-
-Ebben a cikkben bemutatjuk, Azure database ajánlott biztonsági eljárások gyűjteménye. Ajánlott eljárások az Azure adatbázis biztonsági származnak az funkciót, és az ügyfelek a funkciókat, például saját magának.
-
-A minden egyes ajánlott eljárás az hogy ismertetik:
-
--   Mi az az ajánlott eljárás szerint
--   Miért ajánlott eljárás, hogy engedélyezni szeretné
--   Mi lehet az eredmény, ha Ön nem engedélyezi az ajánlott eljárás szerint
--   Hogyan tudhat meg az ajánlott eljárás engedélyezése
-
-Ez a cikk az Azure adatbázis biztonsági eljárások az Azure platform olyan képességeit és a egy konszenzus véleményével alapul, és a szolgáltatás állítja be, ez a cikk írásának időpontjában léteznek. Vélemények és technológiák időbeli változásait, és ez a cikk a változások követése érdekében rendszeresen frissül.
 
 ## <a name="use-firewall-rules-to-restrict-database-access"></a>Adatbázis-hozzáférés korlátozása tűzfalszabályok használatával
 A Microsoft Azure SQL Database relációsadatbázis-szolgáltatás Azure és egyéb internetalapú alkalmazások számára biztosít. Ahhoz, hogy a hozzáférés-biztonságot, az SQL Database szabályozza a hozzáférést az:
@@ -60,7 +54,7 @@ További információ az SQL Database tűzfalszabályaival kapcsolatban: [SQL Da
 ## <a name="enable-database-authentication"></a>Adatbázis-hitelesítés engedélyezése
 SQL Database két típusú hitelesítés, SQL Server-hitelesítés és Azure AD-hitelesítést támogatja.
 
-### <a name="sql-server-authentication"></a>*SQL Server Authentication*
+### <a name="sql-server-authentication"></a>*SQL Server-hitelesítés*
 
 Előnyei a következők:
 

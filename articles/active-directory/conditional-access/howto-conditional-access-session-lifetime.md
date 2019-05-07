@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 884b3c2d3f4414427df87ee5f04138416f363b1c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0ff9ad850b111cf080447b699d35b4ef8205e006
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64577225"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190225"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Hitelesítési munkamenet-kezelés konfigurálása a feltételes hozzáférés
 
@@ -53,7 +53,7 @@ Az Azure ad-ben alapértelmezett böngésző-munkamenet megőrzését lehetővé
 Feltételes hozzáférés egy prémium szintű Azure AD-képesség, és a prémium licencre van szükség. Ha szeretne további információ a feltételes hozzáférésről, lásd: [Mi az az Azure Active Directory feltételes hozzáférés?](overview.md#license-requirements-for-using-conditional-access)
 
 > [!WARNING]
-> Ha használja a [konfigurálható jogkivonat élettartama](../develop/active-directory-configurable-token-lifetimes.md) funkció jelenleg nyilvános előzetes verzióban érhető el, vegye figyelembe, hogy nem támogatjuk a ugyanazon felhasználó vagy alkalmazás kombináció két különböző szabályzatokat hoznak létre: egy ezt a szolgáltatást és a egy másik a szolgáltatás konfigurálható jogkivonat élettartama. A Microsoft tervezi a konfigurálható jogkivonat élettartama szolgáltatás kivonása. November 1-jén, és cserélje le a feltételes hozzáférés hitelesítési munkamenet felügyeleti funkció.  
+> Ha használja a [konfigurálható jogkivonat élettartama](../develop/active-directory-configurable-token-lifetimes.md) funkció jelenleg nyilvános előzetes verzióban érhető el, vegye figyelembe, hogy nem támogatjuk a ugyanazon felhasználó vagy alkalmazás kombináció két különböző szabályzatokat hoznak létre: egy ezt a szolgáltatást és a egy másik a szolgáltatás konfigurálható jogkivonat élettartama. A Microsoft tervezi a konfigurálható jogkivonat élettartama szolgáltatás kivonása. október 15-én, és cserélje le a feltételes hozzáférés hitelesítési munkamenet felügyeleti funkció.  
 
 ### <a name="policy-1-sign-in-frequency-control"></a>1. szabályzat: Bejelentkezési gyakoriság vezérlő
 

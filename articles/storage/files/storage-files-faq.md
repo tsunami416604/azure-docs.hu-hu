@@ -8,12 +8,12 @@ ms.date: 01/02/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 4186af31e17acea09e6b3c1a0121d2fcbe63f800
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: cdffbfd11a0f1c7d99818fa00f550965774b9b31
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917611"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190067"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Files kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabványnak megfelelő keresztül érhető el a felhőben [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Azure-fájlmegosztások párhuzamosan csatlakoztathatja felhőbeli vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. A Windows Server-gépek Azure-fájlmegosztások közel, ahol az adatok felhasználásának gyors hozzáférés az Azure File Sync használatával képes gyorsítótárazni.
@@ -145,7 +145,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 
 * <a id="afs-os-support"></a>
   **Használhatom az Azure File Sync Windows Server 2008 R2, a Linux vagy a hálózati tárolóeszközök (NAS) eszközömet?**  
-    Az Azure File Sync jelenleg csak a Windows Server 2016 és a Windows Server 2012 R2 támogatja. Jelenleg nem áll rendelkezésre más terveket osztjuk meg is, de vagyunk az ügyfelek igényei szerint további platformokat támogatja. Tudassa velünk [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) milyen platformok szeretné támogatásához.
+    Az Azure File Sync jelenleg csak a Windows Server 2019, a Windows Server 2016 és Windows Server 2012 R2 támogatja. Jelenleg nem áll rendelkezésre más terveket osztjuk meg is, de vagyunk az ügyfelek igényei szerint további platformokat támogatja. Tudassa velünk [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) milyen platformok szeretné támogatásához.
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
   **Miért léteznek a rétegzett fájlok kívül a kiszolgálói végpont névtér?**  
@@ -222,7 +222,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 * <a id="encryption-at-rest"></a>
 **Hogyan tudok biztosíthatja, hogy az Azure-fájlmegosztás titkosítása?**  
 
-    Az Azure Storage Service Encryption az összes régióban alapértelmezés szerint engedélyezése folyamatban van. Ezekben a régiókban nem kell minden olyan műveleteket, engedélyezze a titkosítást. Más régiókban, lásd: [kiszolgálóoldali titkosítás](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+    Igen. További információ: [Azure Storage Service Encryption](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 * <a id="access-via-browser"></a>
 **Hogyan is biztosít egy webes böngésző használatával egy adott fájlhoz történő hozzáférés?**  

@@ -1,29 +1,28 @@
 ---
-title: Filestorage az Azure storage-fiók létrehozása
-description: Ebben a cikkben megismerheti, hogyan hozhat létre egy filestorage (előzetes verzió) és a egy prémium szintű fájlmegosztást.
+title: Prémium szintű Azure fájlmegosztás létrehozása
+description: Ebből a cikkből megismerheti, hogyan hozhat létre egy prémium szintű Azure-beli fájlmegosztás.
 services: storage
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0eca706c9082b1fa60e13a0878fbb3061425c9bf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 265a1cf0a8a5e1e099a4ec7a9f0d674e0c474dd4
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574422"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190100"
 ---
-# <a name="how-to-create-an-azure-premium-file-share"></a>Egy prémium szintű Azure-fájlmegosztás létrehozása
-
-A filestorage (előzetes verzió) tárfióktípus Azure Files lehetővé teszi a prémium szintű teljesítményt nyújt a fájlmegosztásokat hozhat létre egy új csomag jelöli. Ezeket a fájlmegosztásokat a magas teljesítmény és a vállalati alkalmazásokat, így konzisztens alacsony késleltetésű, magas iops-érték és nagy átviteli sebességű megosztások tervezték.
+# <a name="how-to-create-an-premium-azure-file-share"></a>Egy prémium szintű Azure fájlmegosztás létrehozása
+Prémium szintű fájlmegosztások (előzetes verzió) a tartós állapotú lemezt (SSD) adathordozók érhetők el, és hasznos i/o-igényes számítási feladatokhoz, például adatbázisok és a nagy teljesítményű feldolgozási (HPC). Prémium szintű fájlmegosztások az olyan speciális célú tárfiók típusának, egy FileStorage fiókja üzemelnek. Prémium szintű fájlmegosztások a magas teljesítmény és a vállalati alkalmazásokat, így konzisztens alacsony késleltetésű, magas iops-érték és nagy átviteli sebességű megosztások tervezték.
 
 Ez a cikk bemutatja, hogyan hozzon létre az új fiók típusa [az Azure portal](https://portal.azure.com/), az Azure PowerShell és az Azure CLI.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hozzáférhet az Azure Storage, Azure-előfizetésre lesz szüksége. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) megkezdése előtt.
+Többek között a prémium szintű Azure-fájlmegosztások Azure-erőforrások eléréséhez szüksége lesz egy Azure-előfizetést. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) megkezdése előtt.
 
 ## <a name="create-a-premium-file-share-using-the-azure-portal"></a>Hozzon létre egy prémium szintű fájlmegosztást az Azure portal használatával
 
@@ -51,7 +50,7 @@ Minden tárfióknak egy Azure-erőforráscsoporthoz kell tartoznia. Az erőforr�
 1. Válassza ki **fióktípus** válassza **FileStorage (előzetes verzió)**.
 1. Hagyja **replikációs** , az alapértelmezett értékre való beállítása **helyileg redundáns tárolás (LRS)**.
 
-    ![Fájlok premium storage-fiók létrehozása](media/storage-how-to-create-premium-fileshare/premium-files-storage-account.png)
+    ![Fájlmegosztás prémium szintű storage-fiók létrehozása](media/storage-how-to-create-premium-fileshare/premium-files-storage-account.png)
 
 1. A tárfiók beállításainak áttekintéséhez és a fiók létrehozásához válassza a **Felülvizsgálat + létrehozás** elemet.
 1. Kattintson a **Létrehozás** gombra.
@@ -83,7 +82,7 @@ Ezután a powershell-modul frissítése, jelentkezzen be az Azure-előfizetése,
 
 ### <a name="upgrade-your-powershell-module"></a>A PowerShell-modul frissítése
 
-Prémium files a PowerShell használatával kommunikál, kell a legújabb Az.Storage modul telepítése.
+Prémium szintű fájlmegosztás a PowerShell használatával kommunikál, kell a legújabb Az.Storage modul telepítése.
 
 Először nyissa meg egy PowerShell-munkamenetet emelt szintű engedélyekkel.
 
@@ -95,10 +94,10 @@ Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -
 
 ### <a name="sign-in-to-your-azure-subscription"></a>Jelentkezzen be az Azure-előfizetés
 
-Használja a `Login-AzAccount` paranccsal, és kövesse a képernyőn megjelenő utasításokat hitelesítéséhez.
+Használja a `Connect-AzAccount` paranccsal, és kövesse a képernyőn megjelenő utasításokat hitelesítéséhez.
 
 ```powershell
-Login-AzAccount
+Connect-AzAccount
 ```
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
@@ -113,7 +112,7 @@ $location = "westus2"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-### <a name="create-a-filestorage-preview-storage-account"></a>Filestorage (előzetes verzió) storage-fiók létrehozása
+### <a name="create-a-filestorage-preview-storage-account"></a>FileStorage (előzetes verzió) storage-fiók létrehozása
 
 A PowerShell (előzetes verzió) filestorage storage-fiók létrehozásához használja a [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) parancsot:
 
@@ -123,7 +122,7 @@ $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fil
 
 ### <a name="create-a-premium-file-share"></a>Prémium szintű fájlmegosztás létrehozása
 
-Most, hogy van egy filestorage fiókja, létrehozhat egy prémium szintű fájlmegosztást. Használja a [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) parancsmaggal hozzon létre egyet.
+Most, hogy van egy FileStorage fiókja, létrehozhat egy prémium szintű fájlmegosztást. Használja a [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) parancsmaggal hozzon létre egyet.
 
 > [!NOTE]
 > Létesített megosztás méretek által meghatározott a fájlmegosztás kvótájának fájlmegosztások számlázása a kiosztott méretét, tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/storage/files/) további részletekért.
@@ -152,11 +151,9 @@ Ha szeretne bejelentkezni a parancssori felület helyi telepítésen, futtassa a
 az login
 ```
 
-### <a name="add-the-cli-extension-for-azure-premium-files"></a>A CLI-bővítmény, a prémium szintű Azure-fájlok hozzáadása
+### <a name="add-the-preview-storage-cli-extension"></a>Az előzetes verzió storage CLI-bővítmény hozzáadása
 
-Prémium files a CLI-vel kommunikál, kell adja hozzá egy bővítményt parancshéjban.
-
-Ehhez adja meg a következő parancsot a Cloud Shellben vagy egy helyi shell segítségével: `az extension add --name storage-preview`
+Mivel a prémium szintű fájlmegosztások előzetes verziójú funkció, kell adja hozzá az előzetes verzió bővítményt parancshéjban. Ehhez adja meg a következő parancsot a Cloud Shellben vagy egy helyi shell segítségével: `az extension add --name storage-preview`
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -168,9 +165,9 @@ az group create `
     --location westus2
 ```
 
-### <a name="create-a-filestorage-preview-storage-account"></a>Filestorage (előzetes verzió) storage-fiók létrehozása
+### <a name="create-a-filestorage-storage-account"></a>FileStorage storage-fiók létrehozása
 
-Az Azure parancssori felületen filestorage (előzetes verzió) storage-fiók létrehozásához használja a [az tárfiók létrehozása](/cli/azure/storage/account) parancsot.
+FileStorage tárfiók létrehozása az Azure parancssori felületen, használja a [az tárfiók létrehozása](/cli/azure/storage/account) parancsot.
 
 ```azurecli-interactive
 az storage account create `
@@ -216,7 +213,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben létrehozott fájlok premium storage-fiók. Ennek a fióknak kínál a teljesítmény kapcsolatos további információkért folytassa a teljesítmény szint szakasz a tervezési útmutató.
+Ebben a cikkben létrehozott egy prémium szintű fájlmegosztást. Ennek a fióknak kínál a teljesítmény kapcsolatos további információkért folytassa a teljesítmény szint szakasz a tervezési útmutató.
 
 > [!div class="nextstepaction"]
 > [A fájl megosztási teljesítményszintek](storage-files-planning.md#file-share-performance-tiers)

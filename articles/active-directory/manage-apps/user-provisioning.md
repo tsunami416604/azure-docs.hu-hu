@@ -15,12 +15,12 @@ ms.date: 04/02/2019
 ms.author: celested
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 516faed0f41ae36079d0f26f0311b35d5582d57a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 67956b3369394f68d067fc4753a859c066428aea
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708303"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191497"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Kiépítés és megszüntetés SaaS-alkalmazásokhoz az Azure Active Directory felhasználói automatizálása
 
@@ -274,6 +274,10 @@ Nem. Ha "szinkronizálás csak a hozzárendelt felhasználók és csoportok" kon
 Ez az egyik korlátozása "alkalmazások hozzárendelések. csoport-alapú", amely szintén hatással van az egyszeri bejelentkezés, és leírt [csoport használatával SaaS-alkalmazásokhoz való hozzáférés kezelése](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps ).
 
 Áthidaló megoldásként explicit módon adjon meg (vagy más módon [hatókörét a](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)) a csoportokat, amelyek a felhasználókkal, akik szükség lesz.
+
+### <a name="is-provisioning-between-azure-ad-and-a-target-application-using-an-encrypted-channel"></a>Az Azure AD közötti üzembe helyezése és a egy titkosított csatornán célalkalmazás?
+
+Igen. A kiszolgáló cél használjuk HTTPS SSL-titkosítást. 
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 

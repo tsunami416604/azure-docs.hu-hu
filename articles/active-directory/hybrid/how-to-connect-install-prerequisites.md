@@ -16,12 +16,12 @@ ms.date: 12/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2746775c72976159cdcdb6bdd86e39a5dbe3a4fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4bf8df2374d373ad36eada8a7de08be76396a76
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60348824"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190811"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és az Azure AD Connect hardverkövetelményeit.
@@ -76,8 +76,8 @@ További tudnivalókért lásd:
 * [Az Active Directory támadási felületének csökkentése](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Az Azure AD Connect által használt SQL Server
-* Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Alapértelmezés szerint telepítve van egy SQL Server 2012 Express LocalDB (egy világos verziója az SQL Server Express). Az SQL Server Express rendelkezik, amelyek segítségével kezelheti a körülbelül 100 000 objektumra 10 GB-os méretkorlátot. Ha szeretne egy nagyobb adatmennyiségek directory-objektumok kezelése, át kell irányítania a telepítési varázsló egy másik telepített SQL Server.
-* Ha egy külön SQL Server használja, majd ezek a követelmények vonatkoznak:
+* Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Alapértelmezés szerint telepítve van egy SQL Server 2012 Express LocalDB (egy világos verziója az SQL Server Express). Az SQL Server Express rendelkezik, amelyek segítségével kezelheti a körülbelül 100 000 objektumra 10 GB-os méretkorlátot. Ha szeretne egy nagyobb adatmennyiségek directory-objektumok kezelése, át kell irányítania a telepítési varázsló egy másik telepített SQL Server. SQL Server-telepítés típusa hatással lehet a [teljesítmény az Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
+* Ha az SQL Server egy másik telepítésre használ, majd ezek a követelmények vonatkoznak:
   * Az Azure AD Connect a Microsoft SQL Server 2008 R2 (a legújabb szervizcsomaggal) az SQL Server 2019 összes verzióit támogatja. A Microsoft Azure SQL Database **nem támogatott** adatbázisként.
   * A kis-és SQL-rendezést kell használnia. Ezek rendezések utak azonosítják a \_CI_ a neve. Ez **nem támogatott** egy kis-és nagybetűket, által azonosított rendezés használatára \_CS_ a neve.
   * Legfeljebb egy SQL-példány egy szinkronizálási motor. Ez **nem támogatott** FIM vagy MIM Sync, a DirSync vagy Azure AD-Szinkronizáló egy SQL-példány megosztása.

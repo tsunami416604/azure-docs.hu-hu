@@ -15,12 +15,12 @@ ms.date: 04/03/2019
 ms.author: celested
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b63118a7c5fae49edebe4ae4976a1362781ae8cf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c9db6babff3ae0c91f730e6ec2e6e2a41d55b0bf
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712863"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191510"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Az SaaS-alkalmazásokhoz az Azure Active Directory-attribútumleképezések testreszabása Felhasználókiépítés
 A Microsoft Azure AD külső SaaS-alkalmazások például a Salesforce, a G Suite és a másokkal való támogatást nyújt. Ha engedélyezi a felhasználók átadásának egy külső SaaS-alkalmazáshoz, az Azure Portalon szabályozza az attribútumértékek attribútum-leképezések használatával.
@@ -149,6 +149,8 @@ Ez a beállítás hatékonyan kényszeríti az összes olyan felhasználó újra
 * Attribútum-leképezések frissítése egy szinkronizálási ciklust teljesítményére hatással van. Az attribútum-hozzárendelési konfigurációra egy frissítéshez kell újraértékeli az összes felügyelt objektumok. 
 
 * Ajánlott ahhoz, hogy az attribútum-leképezések legalább egymást követő módosítások számát.
+
+* Egy fénykép attribútumot kell létrehozni, hogy egy alkalmazás hozzáadása nem támogatott még ma, nem adhat meg a formátum a fénykép szinkronizálni. A szolgáltatás kérheti a [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory)
 
 
 ## <a name="next-steps"></a>További lépések

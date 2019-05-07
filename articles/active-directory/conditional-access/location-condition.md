@@ -12,12 +12,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c4ef16457181b4147b763233c54bcca6598b05a
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: d7b12f5c7736307f0b62b6f6c2b526eb0108569c
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917682"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190184"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Mi a helyfeltétel az Azure Active Directory feltételes hozzáférés? 
 
@@ -56,7 +56,7 @@ Egy elnevezett helye a következő összetevőket tartalmazza:
 - **Országok/régiók** – Ez a beállítás lehetővé teszi egy vagy több országban vagy régióban, adjon meg egy nevesített.
 - **Ismeretlen területek belefoglalása** -néhány IP-címek nincsenek leképezve egy adott országban. Ezzel a beállítással kiválaszthatja, ha az IP-címeket kell szerepelnie a nevű helyen. Használja ezt a beállítást, ha ismeretlen helyekről alkalmazni kell a házirendet, a nevesített hely használatával.
 
-Az Azure ad-ben a kapcsolódó objektum mérete konfigurálható nevesített helyek száma korlátozza. Szervezetek 90 lamed helyeket konfigurálhatja, akár 12000 IP-címtartományok egyes konfigurálva.
+Az Azure ad-ben a kapcsolódó objektum mérete konfigurálható nevesített helyek száma korlátozza. Szervezetek is 90 nevesített helyek konfigurálása, akár 12000 IP-címtartományok egyes konfigurálva.
 
 Feltételes hozzáférési szabályzat vonatkozik az IPv4 és IPv6-forgalmat. Jelenleg nevesített helyek nem teszik lehetővé az IPv6-tartományok konfigurálását. Ez a korlátozás hatására a következő helyzetekben:
 

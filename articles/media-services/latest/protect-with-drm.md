@@ -1,5 +1,5 @@
 ---
-title: A DRM dinamikus titkosítási és licenctovábbítási szolgáltatás használata az Azure Media Serviceszel | Microsoft Docs
+title: DRM a dinamikus titkosítás és a licenc kézbesítési szolgáltatás használata az Azure Media Services |} A Microsoft Docs
 description: Az Azure Media Services segítségével a streamjeit Microsoft PlayReady-, Google Widevine- vagy Apple FairPlay-licencekkel titkosíthatja.
 services: media-services
 documentationcenter: ''
@@ -11,62 +11,43 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2019
+ms.date: 05/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: f53ae122e9888f3e537a3557b6ac5bd76856c2eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 24ea6b2b44518b4cf75389585caf42ff6bc6722f
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60995797"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191069"
 ---
-# <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>A DRM dinamikus titkosítási és licenctovábbítási szolgáltatás használata
+# <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Oktatóanyag: A DRM dinamikus titkosítási és licenctovábbítási szolgáltatás használata
 
-Az Azure Media Services segítségével MPEG-DASH, Smooth Streaming vagy HTTP Live Streaming (HLS) típusú streamjeit [PlayReady DRM- (digitális jogkezelési)](https://www.microsoft.com/playready/overview/) védelemmel láthatja el. Ezenfelül a Media Services használatával **Google Widevine** DRM-licencekkel ellátott DASH-streameket is továbbíthat. Mind a PlayReady, mind a Widevine titkosítása a Common Encryption (ISO/IEC 23001-7 CENC) szabvány specifikációi szerint történik. A Media Services segítségével az **Apple FairPlay** (AES-128 CBC) használatával is titkosíthatja a HLS-tartalmakat. 
+Az Azure Media Services segítségével a streamjeit Microsoft PlayReady-, Google Widevine- vagy Apple FairPlay-licencekkel titkosíthatja. Részletes ismertetése: [Content protection szolgáltatása a dinamikus titkosítás segítségével](content-protection-overview.md).
 
 Ezenkívül a Media Services része egy szolgáltatás, amelynek segítségével PlayReady, Widevine vagy FairPlay DRM-licenceket továbbíthat. Amikor a felhasználók DRM-védelemmel rendelkező tartalmat kérnek, a lejátszóalkalmazás licencet kér a Media Services licencelési szolgáltatástól. Ha a lejátszóalkalmazás hitelesítve van, a Media Services licencelési szolgáltatás kiadja a licencet. A licencek tartalmazzák a feloldási kulcsot, amelynek segítségével az ügyféllejátszó képes feloldani a titkosítást, majd streamelni a kért tartalmakat.
 
-Ez a cikk a [DRM használatával való titkosítás](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM) mintáján alapul. A minta többek között a következőket mutatja be:
-
-* Kódoló átalakítás létrehozása, amely beépített előzetes beállítást használ az adaptív sávszélességű kódoláshoz, és közvetlenül egy [HTTPs forrás URL-jéből](job-input-from-http-how-to.md) fogad fájlokat.
-* A jogkivonat ellenőrzéséhez használt aláírókulcs beállítása.
-* Azon követelmények (korlátozások) beállítása a tartalomkulcs szabályzatához, amelyeknek meg kell felelni a megadott konfigurációjú kulcsok kézbesítése érdekében. 
-
-    * Konfiguráció 
-    
-        Ebben a példában a [PlayReady](playready-license-template-overview.md)- és a [Widevine](widevine-license-template-overview.md)-licencek úgy vannak konfigurálva, hogy a Media Services licenctovábbítási szolgáltatása továbbítani tudja azokat. Bár ez a mintaalkalmazás nem konfigurálja a [FairPlay](fairplay-license-overview.md) licencet, tartalmazza a FairPlay konfigurálására használható metódust. Igény szerint másik lehetőségként hozzáadhatja a FairPlay konfigurációját is.
-
-    * Korlátozás
-
-        Az alkalmazás egy JWT-jogkivonat típusú korlátozást állít be a szabályzaton.
-
-* Hozzon létre egy StreamingLocatort a megadott objektumhoz a megadott streamelési szabályzat nevével. Ebben az esetben az előre meghatározott szabályzatot használjuk. Két tartalomkulcs található a StreamingLocator állítja be: AES-128 (boríték) és CENC (PlayReady és Widevine).  
-    
-    A StreamingLocator létrehozása után a rendszer közzéteszi a kimeneti objektumot, amelyek elérhetővé válnak az ügyfelek számára lejátszásra.
-
-    > [!NOTE]
-    > Győződjön meg arról, hogy a streameléshez használni kívánt StreamingEndpoint Fut állapotban legyen.
-
-* Hozzon létre egy URL-címet az Azure Media Playerhez, amely tartalmazza a DASH-jegyzékfájlt és a PlayReady által titkosított tartalom lejátszásához szükséges PlayReady-jogkivonatot. A minta 1 órára állítja a jogkivonat lejáratát. 
-
-    Megnyithat egy böngészőt, és beillesztheti az eredményül kapott URL-t, amellyel elindíthatja az Azure Media Player bemutató oldalát az előre kitöltött URL-lel és jogkivonattal.  
-
-    ![DRM védelme](./media/protect-with-drm/playready_encrypted_url.png)
-
-> [!NOTE]
-> Minden objektumot több titkosítási típussal titkosíthat (AES-128, PlayReady, Widevine, FairPlay). A [streamelési protokollokkal és a titkosítási típusokkal](content-protection-overview.md#streaming-protocols-and-encryption-types) kapcsolatos szakaszban megtekintheti, hogy mit mivel érdemes kombinálni.
+Ez a cikk a [DRM használatával való titkosítás](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM) mintáján alapul. 
 
 A cikkben leírt minta a következőt eredményezi:
 
 ![AMS DRM-védelemmel a videó](./media/protect-with-drm/ams_player.png)
+
+Ez az oktatóanyag a következőket mutatja be:    
+
+> [!div class="checklist"]
+> * Hozzon létre egy kódolási átalakító
+> * A token ellenőrzése használt aláíró kulcs beállítása
+> * A tartalom fő házirend követelményeinek beállítása
+> * Hozzon létre egy StreamingLocator a megadott adatfolyam-továbbítási szabályzat
+> * Hozzon létre egy URL-címet használt lejátszási a fájl
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzésének a következők a feltételei.
 
 * Tekintse meg a [Content Protection áttekintését](content-protection-overview.md) ismertető cikket.
-* Tekintse meg a [hozzáférés-vezérléssel ellátott Multi-DRM rendszerek tervezését](design-multi-drm-system-with-access-control.md) ismertető cikket.
+* Tekintse át a [a hozzáférés-vezérléssel DRM-mel a content protection rendszer tervezése](design-multi-drm-system-with-access-control.md)
 * A Visual Studio Code vagy a Visual Studio telepítése
 * Hozzon létre egy új Azure Media Services-fiókot [az ebben a gyors útmutatóban](create-account-cli-quickstart.md) leírt módon.
 * Szerezze be a Media Services API-k használatához szükséges hitelesítő adatokat az [adatelérési API-kat](access-api-cli-how-to.md) bemutató szakasz leírását követve.
@@ -163,18 +144,42 @@ A ContentKeyIdentifierClaim szerepel a ContentKeyPolicy szabályzatban, ami azt 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetToken)]
 
-## <a name="build-a-dash-streaming-url"></a>DASH streamelési URL létrehozása
+## <a name="build-a-streaming-url"></a>A streamelési URL-cím létrehozása
 
 A [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) létrehozása után lekérheti a streamelési URL-címeket. URL-cím létrehozásához össze kell fűznie a [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) gazdanevét és a **StreamingLocator** elérési útját. Ebben a mintában az *alapértelmezett* **StreamingEndpoint** elemet használjuk. A Media Service-fiók létrehozásakor ez az *alapértelmezett* **StreamingEndpoint** leállított állapotú lesz, ezért meg kell hívnia a **Start** parancsot.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetMPEGStreamingUrl)]
 
+Az alkalmazás futtatásakor a következő jelenik meg:
+
+![DRM védelme](./media/protect-with-drm/playready_encrypted_url.png)
+
+Megnyithat egy böngészőt, és beillesztheti az eredményül kapott URL-t, amellyel elindíthatja az Azure Media Player bemutató oldalát az előre kitöltött URL-lel és jogkivonattal. 
+ 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>A Media Service-fiók erőforrásainak eltávolítása
 
 Általában érdemes eltávolítani mindent azon objektumok kivételével, amelyeket később is szeretne használni (átalakítások, StreamingLocator objektumok stb.). Ha ki szeretné üríteni fiókját a kísérletezés után, töröljön minden erőforrást, amelyet nem szeretne ismét használni.  A következő kóddal például törölheti a feladatokat.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#CleanUp)]
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot. 
+
+Hajtsa végre a következő CLI-parancsot:
+
+```azurecli
+az group delete --name amsResourceGroup
+```
+
+## <a name="ask-questions-give-feedback-get-updates"></a>Tegyen fel kérdéseket, küldje el visszajelzését, frissítések beszerzése
+
+Tekintse meg a [Azure Media Services-Közösség](media-services-community.md) kérdések, küldje el visszajelzését, és tudnivalók a Media Services-frissítések különböző módon olvashatja.
+
 ## <a name="next-steps"></a>További lépések
 
-Az [AES-128 használatával történő védelem](protect-with-aes128.md) ismertetése
+Ismerkedjen meg
+
+> [!div class="nextstepaction"]
+> [AES-128 védelme](protect-with-aes128.md)
+

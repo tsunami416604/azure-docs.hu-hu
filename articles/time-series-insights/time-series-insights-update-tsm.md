@@ -8,48 +8,48 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 04/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: eeab01146c938ec118deae08a30af85af4186a2e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a9de28c96c2833033a3811835f57cffcccdf4619
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714055"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190336"
 ---
 # <a name="time-series-model"></a>Time Series-modell
 
 Ez a cikk ismerteti az Azure Time Series Insights – előzetes Idősorozat-modell részét. Modellelemek a modellben, annak képességeit és hogyan kezdheti el létrehozását és a saját modellek tárgyalja.
 
-Az IoT-eszközökről gyűjtött adatok hagyományosan környezeti információkat, ami megnehezíti a keresése, és gyorsan elemezheti az érzékelő nem rendelkezik. A fő motiváció Idősorozat-modell számára, hogy egyszerűbb keresése és elemzése IoT-adatot. Ez a cél a válogatott, a karbantartással és a felderítési bővítést az idősorozat-adatok épülő architektúratervezési foglakozásokon fogyasztói használatra kész adatkészleteket engedélyezésével éri el. 
+Az IoT-eszközökről gyűjtött adatok hagyományosan környezeti információkat, ami megnehezíti a keresése, és gyorsan elemezheti az érzékelő nem rendelkezik. A fő motiváció Idősorozat-modell számára, hogy egyszerűbb keresése és elemzése IoT-adatot. Ez a cél a válogatott, a karbantartással és a felderítési bővítést az idősorozat-adatok épülő architektúratervezési foglakozásokon fogyasztói használatra kész adatkészleteket engedélyezésével éri el.
 
 Time Series modellek a lekérdezésekben és navigációs létfontosságú szerepet játszanak, mert azok az eszköz és az eszközre irányuló entitások contextualize. Idősorozat-modellben levő rendelkezik megőrzött adatok idősorozat-lekérdezés számítások működteti a bennük tárolt képletek kihasználásával.
 
-![TSM][1]
+[![Time Series modell áttekintése](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
 
 ## <a name="key-capabilities"></a>Főbb képességek
 
 Idősorozat-modell a cél legyen a egyszerű és zökkenőmentes time series contextualization kezelése, lehetővé teszi a Time Series Insights előzetes verzióban érhető el az alábbi képességeket. Ez segít:
 
 * Hozhat létre és számítások vagy képletek kezelése, skaláris függvények felhasználásával adatok átalakítása műveletek összesített, és így tovább.
-
 * Adja meg a navigációs és hivatkozás engedélyezése és a time series telemetriai kontextusba szülő-gyermek típusú kapcsolatokat.
-
 * Adja meg a példányok részét társított tulajdonságok *mezők példány* és hozhatók létre hierarchiák.
 
-## <a name="times-series-model-key-components"></a>Túllépi az adatsorozat modell legfontosabb összetevők
+## <a name="entity-components"></a>Entitás-összetevők
 
-Idősorozat-modell három fő részből áll:
+Time Series modellek három alapvető összetevői rendelkezik:
 
-* Time Series modell *típusok*
-* Time Series modell *hierarchiák*
-* Time Series modell *példányok*
+* <a href="#time-series-model-types">Time Series adatmodell-típusokat</a>
+* <a href="#time-series-model-hierarchies">Time Series modell hierarchiák</a>
+* <a href="#time-series-model-instances">Time Series modell-példány</a>
+
+Ezek az összetevők mostantól adjon meg egy Idősorozat-modell és az Azure Time Series Insights-adatok rendezése.
 
 ## <a name="time-series-model-types"></a>Time Series adatmodell-típusokat
 
 Time Series modell *típusok* segítségével meghatározhatja a változók vagy számítások adatelemzésre képleteket. A típusok társítva egy adott Time Series Insights-példányt. A típus lehet egy vagy több változót. Például egy Time Series Insights-példány típusú lehet *hőmérséklet-érzékelő*, amely a következőkből áll a változók *átlagos hőmérsékletét*, *min hőmérséklet*, és *hőmérséklet maximális*. Alapértelmezett típussal hozunk létre, amikor az adatok elindul a tárfiókba kerülnek a Time Series Insights. Az alapértelmezett típus is lekérje és a modell beállítások frissítése. Alapértelmezett típusok rendelkezik, amely az események száma.
 
-## <a name="time-series-model-type-json-example"></a>Time Series modell típusa példa JSON
+### <a name="time-series-model-type-json-example"></a>Time Series modell típusa példa JSON
 
 Minta:
 
@@ -76,32 +76,20 @@ Minta:
 
 Idősorozat-modell típusaival kapcsolatos további információkért lásd: a [Referenciadokumentációt](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
 
-## <a name="variables"></a>Változók
+### <a name="variables"></a>Változók
 
 Time Series Insights típusok változók, nevesített számítások keresztül az események értékeinek rendelkezik. Time Series Insights változó definíciók olyan képletet, és a számítás szabályokat tartalmaz. Változó-definícióhoz tartozik *kind*, *érték*, *szűrő*, *csökkentési*, és *határok*. Változók vannak tárolva a definíció az Idősorozat-modell, és a tárolt definíció felülbírálása a lekérdezési API-kon keresztül beágyazott adható meg.
 
 A következő mátrix változó definíciók jelmagyarázat módon működik:
 
-![tábla][2]
+[![Változó definícióját Típustábla](media/v2-update-tsm/table.png)](media/v2-update-tsm/table.png#lightbox)
 
-### <a name="variable-kind"></a>Változó típusa
-
-A következő változó jellegű támogatottak:
-
-* *numerikus*
-* *Összesítés*
-
-### <a name="variable-filter"></a>Változó szűrő
-
-Változó szűrők adjon meg egy nem kötelező szűrőfeltételt, törölje a számításhoz feltételek alapján minősül sorok számának korlátozására.
-
-### <a name="variable-value"></a>Változó értéke
-
-Változó és számítási célszerű használni. Ez az az oszlop az eseményeket, hogy kell hivatkoznia.
-
-### <a name="variable-aggregation"></a>Változó összesítés
-
-A változó az aggregate függvényt lehetővé teszi a számítási része. A Time Series Insights támogatja reguláris összesítések (nevezetesen *min*, *maximális*, *átlagos*, *sum*, és *száma*).
+| Meghatározás | Leírás |
+| --- | ---|
+| Változó típusa |  *Numerikus* és *összesített* típusú támogatottak. |
+| Változó szűrő | Változó szűrők adjon meg egy nem kötelező szűrőfeltételt, törölje a számításhoz feltételek alapján minősül sorok számának korlátozására. |
+| Változó értéke | Változó és számítási célszerű használni. Tekintse meg az adatokat az adott pont a vonatkozó mezőt. |
+| Változó összesítés | A változó az aggregate függvényt lehetővé teszi a számítási része. A Time Series Insights támogatja reguláris összesítések (nevezetesen *min*, *maximális*, *átlagos*, *sum*, és *száma*). |
 
 ## <a name="time-series-model-hierarchies"></a>Time Series modell hierarchiák
 
@@ -146,7 +134,7 @@ Attól függően, a *mezők példány*, a hierarchia attribútumai és értékei
 | ID4 | "elkészítése" = "1000", "emelet" = "10"  |
 | ID5 | Nincs "elkészítése", "floor" vagy "hely" van beállítva |
 
-Az előző példában ID1 és ID4 jeleníti meg az Azure Time Series Insights Explorer H1 hierarchia részeként, és a többi szerint besorolt *fölérendelt objektum nélküli példányok* mivel azok nem megfelelnek a megadott hierarchiát.
+Az előző példában **ID1** és **ID4** jelenjen meg az Azure Time Series Insights Explorer H1 hierarchia részeként, és a többi szerint besorolt *fölérendelt objektum nélküli példányok* mivel azok nem megfelelnek a megadott hierarchiát.
 
 ## <a name="time-series-model-instances"></a>Time Series modell-példány
 
@@ -156,9 +144,9 @@ Példányok által meghatározott *typeId*, *timeSeriesId*, *neve*, *leírás*, 
 
 *instanceFields* példányát és a statikus adatokat, amely meghatározza egy példányt, tulajdonság. Miközben is támogatja a keresési műveletek végrehajtása az indexelés meghatározzák a hierarchiában, vagy nem hierarchia tulajdonságának értékét.
 
-A *neve* tulajdonság nem kötelező, és a kis-és nagybetűket. Ha *neve* van nem érhető el, hogy alapértelmezés szerint a Time Series azonosítóját. Ha egy *neve* nincs megadva, a Time Series azonosító továbbra is elérhető lesz a jól (a rácson a diagramok a Explorer alatt). 
+A *neve* tulajdonság nem kötelező, és a kis-és nagybetűket. Ha *neve* van nem érhető el, hogy alapértelmezés szerint a Time Series azonosítóját. Ha egy *neve* nincs megadva, a Time Series azonosító továbbra is elérhető lesz a jól (a rácson a diagramok a Explorer alatt).
 
-## <a name="time-series-model-instance-json-example"></a>Time Series modell példány példa JSON
+### <a name="time-series-model-instance-json-example"></a>Time Series modell példány példa JSON
 
 Minta:
 
@@ -180,7 +168,7 @@ Minta:
 
 Idősorozat-modell példányok kapcsolatos további információkért lásd: a [Referenciadokumentációt](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
 
-## <a name="time-series-model-settings-example"></a>Idő tanulása beállítások példa
+### <a name="time-series-model-settings-example"></a>Idő tanulása beállítások példa
 
 Minta:
 
@@ -206,7 +194,3 @@ Idősorozat-modell beállításaival kapcsolatos további információkért lás
 - Lásd: [storage Azure Time Series Insights előzetes verziója a bejövő és kimenő](./time-series-insights-update-storage-ingress.md).
 
 - Megjelenik az új [Idősorozat-modell](https://docs.microsoft.com/rest/api/time-series-insights/preview-model).
-
-<!-- Images -->
-[1]: media/v2-update-tsm/tsm.png
-[2]: media/v2-update-tsm/table.png

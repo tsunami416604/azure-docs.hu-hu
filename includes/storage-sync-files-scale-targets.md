@@ -5,19 +5,19 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: include
-ms.date: 07/18/2018
+ms.date: 05/05/2019
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: 19c570be71583a2933a39780ba948edeb9f68498
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: b480f9720cabddbba9e9c35c12ca1f8dda7ab5ab
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129100"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190029"
 ---
-| Erőforrás | Cél | Rögzített korlátja |
+| Resource | Cél | Rögzített korlátja |
 |----------|--------------|------------|
-| Társzinkronizálási szolgáltatás régiónként | 15 Storage Sync Services | Igen |
+| Társzinkronizálási szolgáltatás régiónként | 20 Társzinkronizálási szolgáltatás | Igen |
 | Szinkronizálási csoportok tárolási szinkronizálási szolgáltatásonként | 100 szinkronizálási csoportok | Igen |
 | Regisztrált kiszolgálók tárolási szinkronizálási szolgáltatásonként | 99 kiszolgálók | Igen |
 | Felhőbeli végpont szinkronizálási csoportonként | 1 felhőbeli végpont | Igen |

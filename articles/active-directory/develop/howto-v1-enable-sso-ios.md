@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d90af62c8d6267001ede567c71b7e1204f6ce74
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 73d3c2846ed97b725d745cc76714738ac34ed1a0
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917212"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190208"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Útmutató: IOS-es adal-t használó alkalmazások közötti SSO engedélyezése
 
@@ -165,7 +165,7 @@ Az alkalmazások nem közvetített személyes SSO az SDK-k kezelése nagy része
 
 Alkalmazások közötti SSO engedélyezése saját kell tegye a következőket:
 
-1. Az azonos ügyfél-azonosító vagy alkalmazásazonosítót, győződjön meg arról, hogy az alkalmazások az összes felhasználó
+1. Győződjön meg arról az alkalmazások az azonos ügyfél-azonosító vagy alkalmazás azonosítóját.
 2. Győződjön meg arról, hogy ugyanazt a aláíró tanúsítványt az Apple-től az összes alkalmazás megosztott, hogy keychains megoszthatja.
 3. Az alkalmazások mindegyike ugyanazon kulcslánc jogosultság kérelmet.
 4. Az SDK-k figyelmének a megosztott kulcslánc azt szeretné, hogy mi legyen.

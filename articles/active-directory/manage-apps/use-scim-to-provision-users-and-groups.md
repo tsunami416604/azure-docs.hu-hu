@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/03/2019
+ms.date: 5/06/2019
 ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bb7032c2741cc8c407c8d7d0285e58647f0bfd5
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: fba0a9bc0886b9487b0c61b6091bd122fe6e370d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918540"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191543"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A rendszer a tartományok közötti Identity Management (SCIM) használatával automatikus kiépítésére a felhasználók és csoportok alkalmazásokhoz az Azure Active Directoryból
 
@@ -31,7 +31,7 @@ SCIM szabványos protokollt és a sémát, amely a célja, hogy a meghajtó nagy
 
 Az Azure ad-ben támogatja az alkalmazások számos [előre integrált a felhasználók automatikus átadása](../saas-apps/tutorial-list.md) SCIM megvalósításához, mint az azt jelenti, hogy a felhasználó kap a módosítási értesítésekre.  Ezek mellett ügyfelek csatlakozhatnak egy adott profiljának támogató alkalmazások a [SCIM 2.0 protokoll-meghatározása](https://tools.ietf.org/html/rfc7644) az általános "katalógusban nem szereplő" integrációs lehetőséggel az Azure Portalon. 
 
-A fő Ez a cikk célja az SCIM 2.0-s, amely az Azure AD a katalógusban nem szereplő alkalmazások általános SCIM-összekötő részeként megvalósítja a profilban. Azonban az alkalmazás tesztelése a sikeres, amely támogatja az SCIM az általános Azure AD-összekötő egy lépést, amely egy alkalmazást az Azure AD katalógusából származó igazoló felhasználókiépítés szereplő első. Hogy alkalmazása megjelenjen az Azure AD alkalmazáskatalógusában beszerzésével kapcsolatban további információkért lásd: a [Microsoft Application Network](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx).
+A fő Ez a cikk célja az SCIM 2.0-s, amely az Azure AD a katalógusban nem szereplő alkalmazások általános SCIM-összekötő részeként megvalósítja a profilban. Azonban az alkalmazás tesztelése a sikeres, amely támogatja az SCIM az általános Azure AD-összekötő egy lépést, amely egy alkalmazást az Azure AD katalógusából származó igazoló felhasználókiépítés szereplő első. Hogy alkalmazása megjelenjen az Azure AD alkalmazáskatalógusában beszerzésével kapcsolatban további információkért lásd: [hogyan: Az alkalmazás szerepeltetése az Azure AD alkalmazáskatalógusában](../develop/howto-app-gallery-listing.md).
  
 
 >[!IMPORTANT]

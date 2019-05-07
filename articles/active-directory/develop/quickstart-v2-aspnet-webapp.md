@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 064c3e5fb7a65a7495c393db893e784548075daf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d63ff648f89a231f0077363c88709a17d157ae8c
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708215"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190900"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Gyors útmutató: Jelentkezzen be a Microsoft ASP.NET-webalkalmazás hozzáadása
 
@@ -68,7 +68,7 @@ Válassza a **Hitelesítés** menüt, állítsa be az **Azonosító jogkivonatok
 
 #### <a name="step-2-download-your-project"></a>2. lépés: Töltse le a projekthez
 
-[A Visual Studio 2017-megoldás letöltése](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
+[Töltse le a Visual Studio a 2019-megoldás](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>3. lépés: A Visual Studio-projekt konfigurálása
 
@@ -96,7 +96,7 @@ Válassza a **Hitelesítés** menüt, állítsa be az **Azonosító jogkivonatok
 
 ## <a name="more-information"></a>További információ
 
-Ez a szakasz a felhasználók bejelentkeztetéséhez szükséges kód áttekintését tartalmazza. Ez hasznos lehet, ha szeretné megérteni a kód működését, a fő argumentumokat, valamint ha bejelentkezést szeretne hozzáadni egy meglévő ASP.NET-alkalmazáshoz.
+Ez a szakasz a felhasználók bejelentkeztetéséhez szükséges kód áttekintését tartalmazza. Ez az Áttekintés lehet hasznos, ha szeretné megismerni a kód működését, fő argumentumot, és ha azt szeretné, bejelentkezés hozzáadása egy meglévő ASP.NET-alkalmazást.
 
 ### <a name="owin-middleware-nuget-packages"></a>OWIN közbenső NuGet-csomagok
 
@@ -110,7 +110,7 @@ Install-Package Microsoft.Owin.Host.SystemWeb
 
 ### <a name="owin-startup-class"></a>OWIN indítási osztály
 
-Az OWIN közbenső szoftver egy *indítási osztályt* használ, amelyet a rendszer az üzemeltetési folyamatok inicializálásakor hajt végre (jelen rövid útmutató esetében ez a gyökérmappában található *startup.cs* fájl). Az alábbi kódban a jelen rövid útmutató által használt paraméter látható:
+Az OWIN közbenső szoftvert használ egy *indítási osztályt* , amely fut, amikor a szolgáltatási folyamat inicializálása. Ez a rövid útmutatóban a *startup.cs* gyökérmappájában lévő fájlt. Az alábbi kódban a jelen rövid útmutató által használt paraméter látható:
 
 ```csharp
 public void Configuration(IAppBuilder app)

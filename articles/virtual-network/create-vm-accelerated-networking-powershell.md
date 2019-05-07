@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: c4567919490c8bc9094dea3dddbe22550d9eebb2
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: ef6086afa17f1ab864d70678a6da6df2a78e0c16
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192905"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190271"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Gyorsított hálózatkezelésű Windows virtuális gép létrehozása
 
@@ -230,7 +230,7 @@ Létrehozott egy virtuális gép gyorsított hálózatkezelés nélkül, célsze
 Először állítsa le vagy szabadítsa fel a virtuális gép vagy, ha a rendelkezésre állási csoport, a csoport összes virtuális gépen:
 
 ```azurepowershell
-Stop-AzVM -ResourceGroup "myResourceGroup" `
+Stop-AzureRmVM -ResourceGroup "myResourceGroup" `
     -Name "myVM"
 ```
 
@@ -239,18 +239,18 @@ Fontos, kérjük vegye figyelembe, hogy ha a virtuális gép külön-külön, eg
 Leállítását követően engedélyezze a hálózati adapteren a virtuális gép gyorsított Hálózatkezelés:
 
 ```azurepowershell
-$nic = Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
+$nic = Get-AzureRMNetworkInterface -ResourceGroupName "myResourceGroup" `
     -Name "myNic"
 
 $nic.EnableAcceleratedNetworking = $true
 
-$nic | Set-AzNetworkInterface
+$nic | Set-AzureRMNetworkInterface
 ```
 
 Indítsa újra a virtuális Gépet, vagy ha egy rendelkezésre állási készletbe, a csoportban lévő összes virtuális gép, és győződjön meg arról, hogy engedélyezve van-e a gyorsított Hálózatkezelés:
 
 ```azurepowershell
-Start-AzVM -ResourceGroup "myResourceGroup" `
+Start-AzureRmVM -ResourceGroup "myResourceGroup" `
     -Name "myVM"
 ```
 

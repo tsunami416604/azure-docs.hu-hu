@@ -1,6 +1,6 @@
 ---
 title: Microsoft-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz | Microsoft Docs
-description: Ebből a cikkből megtudhatja, hogyan adhat hozzá Microsoft-bejelentkezést egy hagyományos webböngésző-alapú alkalmazással rendelkező ASP.NET-megoldáshoz az OpenID Connect szabvány használatával.
+description: Ismerje meg a Microsoft-bejelentkezés hozzáadása egy ASP.NET-megoldás a hagyományos böngészőalapú webalkalmazás standard OpenID Connect használatával.
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
@@ -16,18 +16,18 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6119baf79b9323a5c1ad06d75e1410f632015f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7aca42aa13ef78647b591eb0be7083f932ce0c35
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299367"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191030"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Gyors útmutató: Jelentkezzen be a Microsoft ASP.NET-webalkalmazás hozzáadása
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
-Ebből az oktatóanyagból megtudhatja, hogyan valósíthat meg Microsoft-bejelentkezést egy hagyományos webböngésző-alapú alkalmazással rendelkező ASP.NET MVC-megoldással, az OpenID Connect használatával. Azt is megtanulhatja, hogyan engedélyezze a munkahelyi és iskolai fiókokról való bejelentkezéseket az ASP.NET-alkalmazásában.
+Ebben a rövid útmutatóban fog mutatja be a Microsoft az OpenID Connect használatával hagyományos webhely böngészőalapú alkalmazást egy ASP.NET modell nézet Controller (MVC) megoldás használatával valósíthatók meg. Azt is megtanulhatja, hogyan engedélyezze a munkahelyi és iskolai fiókokról való bejelentkezéseket az ASP.NET-alkalmazásában.
 
 A rövid útmutató végén az alkalmazása el fogja fogadni a bejelentkezéseket az Azure Active Directoryval (Azure AD) integrált szervezetek munkahelyi és iskolai fiókjairól.
 
@@ -38,15 +38,15 @@ A rövid útmutató végén az alkalmazása el fogja fogadni a bejelentkezéseke
 
 Először is győződjön meg arról, hogy az alábbi előfeltételek teljesülnek:
 
-* A Visual Studio 2015 Update 3-nak vagy a Visual Studio 2017-nek telepítve kell lennie. Nincs telepítve? [Töltse le ingyen a Visual Studio 2017-et](https://www.visualstudio.com/downloads/)
+* A Visual Studio 2015 Update 3 vagy Visual Studio 2019 szükséges. Nincs telepítve? [Töltse le az ingyenes Visual Studio 2019](https://www.visualstudio.com/downloads/)
 
 ## <a name="scenario-sign-in-users-from-work-and-school-accounts-in-your-aspnet-app"></a>Forgatókönyv: A felhasználók a munkahelyi és iskolai fiókjába az ASP.NET-alkalmazás
 
 ![Az útmutató működése](./media/quickstart-v1-aspnet-webapp/aspnet-intro.png)
 
-Ebben a forgatókönyvben egy böngésző hozzáfér egy ASP.NET webhelyhez, és arra kér egy felhasználót, hogy végezzen hitelesítést a bejelentkezés gombbal. A forgatókönyvben a webhely renderelésének nagy része a kiszolgálói oldalon történik.
+Egy böngészőben fér hozzá egy ASP.NET-webhely, és kéri a felhasználót, hogy hitelesítést végezni a bejelentkezési gomb ebben a forgatókönyvben. A forgatókönyvben a webhely renderelésének nagy része a kiszolgálói oldalon történik.
 
-Ez a rövid útmutató bemutatja, hogyan lehet felhasználókat bejelentkeztetni egy ASP.NET-webalkalmazásba egy üres sablonból kiindulva, és olyan lépéseket tartalmaz, mint például egy bejelentkezés gomb, illetve a vezérlők és metódusok hozzáadása. Emellett a feladatokban szereplő fogalmakat is ismerteti. Másik lehetőségként egy projektet is létrehozhat az Azure AD-felhasználók bejelentkeztetéséhez (munkahelyi és iskolai fiókokról). Ehhez használja a [Visual Studio websablont](https://docs.microsoft.com/aspnet/visual-studio/overview/2013/creating-web-projects-in-visual-studio#organizational-account-authentication-options), és válassza ki a **Szervezeti fiókok** elemet, majd az egyik felhőlehetőséget – ez a lehetőség egy további vezérlőkkel, metódusokkal és nézetekkel rendelkező, gazdagabb sablont használ.
+A rövid útmutató azt ismerteti, hogyan jelentkezhet be egy ASP.NET-webalkalmazást, egy üres sablonnal kezdve a felhasználók. Tartalmazza a lépéseket, mint például egy bejelentkezés gombot, és minden vezérlő és módszerek hozzáadása és ezeket a feladatokat a fogalmakat tárgyalja. Egy projekt, jelentkezzen be az Azure AD-felhasználók (munkahelyi és iskolai fiókok esetében) használatával is létrehozhat a [Visual Studio web sablon](https://docs.microsoft.com/aspnet/visual-studio/overview/2013/creating-web-projects-in-visual-studio#organizational-account-authentication-options) , és válassza **szervezeti fiókok** és majd közül a felhő - Ez a beállítás további vezérlők, a metódusok és a nézetek egy gazdagabb sablont használja.
 
 ## <a name="libraries"></a>Kódtárak
 
@@ -158,7 +158,7 @@ Ez a vezérlő bemutatja, hogy hogyan védheti meg a vezérlőt az `[Authorize]`
 1. Válassza az **MVC {version} Controller – Empty** (MVC {verzió} vezérlő – Üres) elemet.
 1. Válassza a **Hozzáadás** lehetőséget.
 1. Adja neki a **ClaimsController** nevet.
-1. Cserélje le a vezérlőosztály kódját a következő kódra – ez hozzáadja az `[Authorize]` attribútumot az osztályhoz:
+1. Cserélje le a kódot, a vezérlő osztályhoz a következő kóddal – ebben a példában a `[Authorize]` attribútumot az osztályra:
 
     [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/ClaimsController.cs?name=ClaimsController "ClaimsController.cs")]
 
@@ -196,29 +196,29 @@ A Visual Studióban hozzon létre egy új nézetet a felhasználói jogcímek we
 4. Másolja a projekt SSL URL-címét a vágólapra:<br/><br/>![Projekt tulajdonságai](./media/quickstart-v1-aspnet-webapp/visual-studio-project-properties.png)<br />
 5. A <code>web.config</code> fájlban cserélje le az <code>Enter_the_Redirect_URL_here</code> elemet a projekt SSL URL-címére.
 
-### <a name="register-your-application-in-the-azure-portal-then-add-its-information-to-webconfig"></a>Regisztrálja az alkalmazását az Azure Portalon, majd adja hozzá az adatait a *web.config* fájlhoz
+### <a name="register-your-application-in-the-azure-portal-then-add-its-information-to-webconfig"></a>Az alkalmazás regisztrálása az Azure Portalon, majd adja meg a saját adatait *web.config*
 
 1. Az alkalmazás regisztrálásához lépjen a [Microsoft Azure Portal – Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) elemre.
 2. Válassza az **Új alkalmazás regisztrálása** elemet.
 3. Adja meg az alkalmazás nevét.
-4. Illessze be a Visual Studio-projekt *SSL URL-címét* a **Bejelentkezési URL** mezőbe. A rendszer a regisztrált alkalmazás válasz URL-címeinek listájához is automatikusan hozzáadja ezt az URL-címet.
+4. Illessze be a Visual Studio-projekt *SSL URL-címét* a **Bejelentkezési URL** mezőbe. Az URL-címet is automatikusan hozzáadja az Ön regisztrálja az alkalmazás válasz URL-címek listájához.
 5. Válassza a **Létrehozás** lehetőséget az alkalmazás regisztrálásához. Ez a művelet vissza fogja irányítani az alkalmazások listájára.
 6. Ezután keresse meg és/vagy válassza ki az imént létrehozott alkalmazást, és nyissa meg a tulajdonságait.
 7. Másolja az **alkalmazásazonosító** alatti GUID-azonosítót a vágólapra.
-8. Lépjen vissza a Visual Studióba, és a `web.config` fájlban cserélje le az `Enter_the_Application_Id_here` elemet az imént regisztrált alkalmazás alkalmazásazonosítójára.
+8. Lépjen vissza a Visual Studióba, és a `web.config`, cserélje le `Enter_the_Application_Id_here` regisztrálta az alkalmazást, az alkalmazás azonosítójával.
 
 > [!TIP]
 > Ha a fiók több címtárhoz is hozzáfér, győződjön meg arról, hogy a megfelelő címtárat választotta ki ahhoz a szervezethez, amelyhez regisztrálni szeretné az alkalmazást. Ehhez kattintson az Azure Portal jobb felső sarkában található fióknévre, majd ellenőrizze a kiválasztott címtárat az ábrán látható módon:<br/>![A megfelelő címtár kiválasztása](./media/quickstart-v1-aspnet-webapp/tenantselector.png)
 
 ## <a name="step-10-configure-sign-in-options"></a>10. lépés: Bejelentkezési beállítások konfigurálása
 
-Az alkalmazást konfigurálhatja úgy, hogy csak egy adott szervezet Azure AD-példányához tartozó felhasználók számára, illetve bármely szervezet felhasználói számára engedélyezze a bejelentkezést. Kövesse az alábbi lehetőségek egyikének utasításait:
+Konfigurálhatja az alkalmazás csak egy szervezet az Azure AD-példányra való bejelentkezéshez tartozó felhasználó, vagy fogadja el a felhasználók bármilyen szervezethez tartozó felhasználók történő bejelentkezések. Kövesse az alábbi lehetőségek egyikét:
 
 ### <a name="configure-your-application-to-allow-sign-ins-of-work-and-school-accounts-from-any-company-or-organization-multi-tenant"></a>Az alkalmazás konfigurálása oly módon, hogy minden vállalat vagy szervezet munkahelyi és iskolai fiókjairól elfogadja a bejelentkezést (több-bérlős)
 
-Kövesse az alábbi lépéseket, ha el szeretné fogadni a bejelentkezést az összes Azure AD-vel integrált vállalat és szervezet munkahelyi és iskolai fiókjairól. Ez egy gyakori forgatókönyv az *SaaS-alkalmazások* esetén:
+Kövesse az alábbi lépéseket, ha el szeretné fogadni a bejelentkezést az összes Azure AD-vel integrált vállalat és szervezet munkahelyi és iskolai fiókjairól. Ebben a forgatókönyvben a közös *SaaS-alkalmazások*:
 
-1. Térjen vissza a [Microsoft Azure Portal – Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) területre, és keresse meg az imént regisztrált alkalmazást.
+1. Lépjen vissza a [Microsoft Azure portal - alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) , és keresse meg a regisztrált alkalmazás.
 2. A **Minden beállítás** területen válassza a **Tulajdonságok** lehetőséget.
 3. Állítsa a **Több-bérlős** tulajdonságot **Igen** értékre, majd válassza a **Mentés** lehetőséget.
 
@@ -238,7 +238,7 @@ Ha csak a meghatározott szervezetek listáján szereplő szervezetekhez tartoz�
 1. A `ValidateIssuer` paramétert állítsa igaz értékre.
 1. Használja a `ValidIssuers` paramétert egy szervezetlista megadásához.
 
-Másik lehetőségként valósítson meg egy egyéni metódust a kiállítók ellenőrzésére az *IssuerValidator* paraméterrel. A `TokenValidationParameters` osztállyal kapcsolatos további információért tekintse meg [ezt az MSDN-cikket](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx "TokenValidationParameters MSDN-cikk").
+Másik lehetőségként valósítson meg egy egyéni metódust a kiállítók ellenőrzésére az *IssuerValidator* paraméterrel. További információ `TokenValidationParameters`, lásd: [MSDN-cikkben](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx "TokenValidationParameters MSDN-cikkben").
 
 <!--end-configure-->
 
@@ -278,7 +278,7 @@ Ha készen áll a tesztelésre, jelentkezzen be egy munkahelyi fiókkal (Azure A
 
 #### <a name="expected-results"></a>Várt eredmények
 
-A bejelentkezés után a rendszer átirányítja a felhasználót a webhely kezdőlapjára. Ez a Microsoft alkalmazásregisztrációs portálján, az alkalmazása regisztrációs információiban megadott HTTPS URL-cím. Ez a lap most az *Üdvözöljük, {Felhasználó}* feliratot mutatja, valamint egy hivatkozást a kijelentkezéshez, és egy hivatkozást a felhasználói jogcímek megtekintéséhez – ez egy hivatkozás, amely a korábban létrehozott Engedélyezés vezérlőre mutat.
+Miután a felhasználó bejelentkezik, a rendszer átirányítja a felhasználót a webhely, amely a HTTPS URL-cím, az alkalmazás regisztrációs információit a Microsoft alkalmazásregisztrációs portálon megadott kezdőlapja. Ez a lap most az *Üdvözöljük, {Felhasználó}* feliratot mutatja, valamint egy hivatkozást a kijelentkezéshez, és egy hivatkozást a felhasználói jogcímek megtekintéséhez – ez egy hivatkozás, amely a korábban létrehozott Engedélyezés vezérlőre mutat.
 
 ### <a name="see-users-claims"></a>A felhasználói jogcímek megtekintése
 
@@ -292,7 +292,7 @@ A felhasználói jogcímek megtekintéséhez kattintson a hivatkozásra. Ez a m�
 |---|---|---|
 | Name (Név) | {Felhasználó teljes neve} | A felhasználó vezeték- és utóneve |
 | Felhasználónév | <span>user@domain.com</span> | A bejelentkezett felhasználó azonosítására használt felhasználónév |
-| Tárgy| {Tárgy} |A felhasználói bejelentkezés weben való egyedi azonosításához használt sztring |
+| Tárgy| {Tárgy} |A karakterlánc egyedi azonosítására szolgál a felhasználó bejelentkezési a weben |
 | Bérlőazonosító | {Guid} | Egy *guid* azonosító, amely egyedileg jelöli a felhasználó Azure AD szervezetét |
 
 Emellett egy táblázatot is látni fog a hitelesítési kérésben található összes felhasználói jogcímmel. Az azonosító jogkivonatokban található jogcímek listáját és a hozzájuk tartozó magyarázatokat lásd: [Az azonosító jogkivonatban előforduló jogcímek listája](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
