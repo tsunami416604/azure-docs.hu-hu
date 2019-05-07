@@ -55,7 +55,9 @@
           href: logic-apps-create-variables-store-values.md
         - name: Adatműveletek végrehajtása
           href: logic-apps-perform-data-operations.md
-        - name: Egyéni kód hozzáadása az Azure Functions használatával
+        - name: Kódrészletek hozzáadása és futtatása beágyazott kóddal
+          href: logic-apps-add-run-inline-code.md
+        - name: Kód hozzáadása és futtatása az Azure Functions használatával
           href: logic-apps-azure-functions.md
         - name: Logikai alkalmazások meghívása Azure Functions-függvényekkel
           href: logic-apps-scenario-function-sb-trigger.md

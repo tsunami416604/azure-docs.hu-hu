@@ -174,8 +174,12 @@
               href: how-to-custom-speech-human-labeled-transcriptions.md
         - name: Szövegfelolvasás
           items:
-            - name: Hangtípusok létrehozása (robot márkafüggő hangja)
-              href: how-to-customize-voice-font.md
+            - name: Bevezetés a Custom Voice szolgáltatásba
+              href: how-to-custom-voice.md
+            - name: Adatok előkészítése
+              href: how-to-custom-voice-prepare-data.md
+            - name: Custom Voice-modellek létrehozása és használata
+              href: how-to-custom-voice-create-voice.md
             - name: Hangminták felvétele
               href: record-custom-voice-samples.md
             - name: Szövegfelolvasási kimenet finomhangolása

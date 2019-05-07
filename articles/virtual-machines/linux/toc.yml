@@ -112,6 +112,8 @@
           href: disk-scalability-targets.md
         - name: Lemezek biztonsági mentése és vészhelyreállítása
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Rövid élettartamú operációsrendszer-lemezek
+          href: ephemeral-os-disks.md
     - name: Hálózat
       href: network-overview.md
     - name: Automatikus méretezési alkalmazások
@@ -253,16 +255,32 @@
           href: reserved-vm-instance-size-flexibility.md
     - name: Rendszerképek használata
       items:
-        - name: Megosztott rendszerkép-katalógusok (előzetes verzió)
+        - name: Megosztott lemezkép-katalógusok
           items:
             - name: Áttekintés
               href: shared-image-galleries.md
-            - name: Megosztott rendszerképek létrehozása a CLI-vel
+            - name: parancssori felület
               href: shared-images.md
             - name: Portál
               href: shared-images-portal.md
+            - name: Rendszerképek megosztása több bérlőn
+              href: share-images-across-tenants.md
             - name: Megosztott rendszerképek hibaelhárítása
               href: troubleshooting-shared-images.md
+        - name: Rendszerképkészítő (előzetes verzió)
+          items:
+            - name: Áttekintés
+              href: image-builder-overview.md
+            - name: A CLI használata
+              href: image-builder.md
+            - name: Sablonreferencia
+              href: image-builder-json.md
+            - name: Használat katalógusokkal
+              href: image-builder-gallery.md
+            - name: Rendszerképverzió frissítése
+              href: image-builder-gallery-update-image-version.md
+            - name: Hibaelhárítás
+              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Rendszerképek keresése és használata
           href: cli-ps-findimage.md
         - name: Egyéni kép létrehozása

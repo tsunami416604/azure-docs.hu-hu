@@ -555,6 +555,8 @@
                   href: app/usage-workbooks.md
             - name: Web App Analytics-megoldás
               href: insights/azure-web-apps-analytics.md
+            - name: Kubernetes által üzemeltetett alkalmazások
+              href: app/kubernetes.md
         - name: Tárolók figyelése
           items:
             - name: Azure Monitor tárolókhoz
@@ -563,13 +565,19 @@
                   href: insights/container-insights-overview.md
                 - name: GYIK
                   href: insights/container-insights-faq.md
-                - name: Előkészítés
-                  href: insights/container-insights-onboard.md
+                - name: Monitorozás engedélyezése
+                  items:
+                    - name: Monitorozás engedélyezésének áttekintése
+                      href: insights/container-insights-onboard.md
+                    - name: Engedélyezés új fürtön
+                      href: insights/container-insights-enable-new-cluster.md
+                    - name: Engedélyezés meglévő fürtön
+                      href: insights/container-insights-enable-existing-clusters.md
                 - name: Elemzés
                   href: insights/container-insights-analyze.md
                 - name: Monitorozás letiltása
                   href: insights/container-insights-optout.md
-                - name: Élő tárolónaplók megtekintése
+                - name: Élő naplók megtekintése
                   href: insights/container-insights-live-logs.md
                 - name: Adatelemzés naplólekérdezésekkel
                   href: insights/container-insights-log-search.md
@@ -585,8 +593,6 @@
               href: insights/containers.md
             - name: Docker-alkalmazások monitorozása
               href: app/docker.md
-            - name: Application Insights for Kubernetes
-              href: app/kubernetes.md
         - name: Erőforráscsoportok monitorozása
           href: insights/resource-group-insights.md
         - name: Adatbázisok monitorozása

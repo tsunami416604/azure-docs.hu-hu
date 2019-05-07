@@ -1,6 +1,6 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: A Microsoft identitásplatformja (Azure Active Directory fejlesztők számára)
+title: 'A Microsoft identitásplatformja (korábban: Azure Active Directory fejlesztők számára)'
 metadata:
   title: A Microsoft identitásplatformja (Azure Active Directory fejlesztők számára)
   description: 'Ismerje meg, hogyan használhatja a Microsoft identitásplatformját olyan alkalmazások felépítésére, amely az összes Microsoft-identitás használatával biztonságosan jelentkezteti be a felhasználókat, és jogkivonattal hívja meg a Microsoft Graphot, más Microsoft API-kat vagy olyan API-kat, amelyeket fejlesztők készítettek.'
@@ -12,7 +12,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/24/2018
+  ms.date: 05/07/2019
   ms.author: celested
 abstract:
   description: 'A Microsoft identitásplatformja az Azure Active Directory (Azure AD) identitásszolgáltatás és fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat építsenek, amelyek az összes Microsoft-identitás használatával biztonságosan jelentkeznek be, és jogkivonattal hívják meg az olyan Microsoft API-kat, mint a Microsoft Graph, vagy olyan API-kat, amelyeket fejlesztők készítettek. Ez egy teljes körű szolgáltatásokat nyújtó platform, amely egy OAuth 2.0- és OpenID Connect-szabvánnyal kompatibilis hitelesítési szolgáltatásból, nyílt forráskódú kódtárakból, alkalmazásregisztrációból és -konfigurációból, átfogó fogalmi és referenciadokumentációból, rövid útmutatókból, kódmintákból és egyéb útmutatókból áll.'
@@ -36,81 +36,42 @@ sections:
             html: <p>Megismerheti a Microsoft identitásplatformjának szolgáltatásait és képességeit.</p>
             image:
               src: ./media/index/i_get-started.svg
-            title: A Microsoft identitásplatformja
+            title: A Microsoft identitásplatformjának fejlődése
+          - href: /azure/active-directory/develop/v2-overview
+            html: '<p>Olyan alkalmazásokat hozhat létre, amelyek minden Microsoft-identitással biztonságosan jelentkeznek be, és jogkivonatok lekérésével hívják meg az olyan Microsoft API-kat, mint a Microsoft Graph, illetve a fejlesztők által készített API-kat.</p>'
+            image:
+              src: ./media/index/i_investigate.svg
+            title: 2.0-s verzió
           - href: /azure/active-directory/develop/azure-ad-developers-guide/
             html: '<p>Az Azure AD-identitások (munkahelyi és iskolai fiókok) hitelesítése az Azure AD 1.0-s verziójú végpontjától kér jogkivonatokkal történik az Azure AD Authentication Library (ADAL), az Azure Portal és az Azure AD Graph API használatával.</p>'
             image:
               src: ./media/index/i_advanced.svg
             title: 1.0-s verzió
-          - href: /azure/active-directory/develop/v2-overview
-            html: '<p>A Microsoft-identitások szélesebb körének hitelesítése az Azure AD 2.0-s verziójú végpontjaként ismert szolgáltatással történik a Microsoft Authentication Library (MSAL), az Azure Portal és a Microsoft Graph API használatával.</p>'
-            image:
-              src: ./media/index/i_investigate.svg
-            title: 2.0-s verzió
+  - title: Alkalmazáshasználati helyzetek
+    items:
+      - type: paragraph
+        text: 'Nem kell, hogy az identitások használata nehéz legyen. Válassza ki, melyik forgatókönyv érvényes Önre – mindegyikhez tartozik egy áttekintés, egy alkalmazásregisztrációs és egy alkalmazáskód-konfigurációs útmutató, a jogkivonatok beszerzését és API-k meghívását bemutató példakód és javaslatok az alkalmazás élesítésével kapcsolatban.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/develop/scenario-spa-overview">Egyoldalas alkalmazás</a>
+          - html: <a href="/azure/active-directory/develop/scenario-web-app-sign-user-overview">Felhasználót bejelentkeztető webalkalmazás</a>
+          - html: <a href="/azure/active-directory/develop/scenario-web-app-call-api-overview">Webes API-kat hívó webalkalmazás</a>
+          - html: <a href="/azure/active-directory/develop/scenario-protected-web-api-overview">Védett webes API</a>
+          - html: <a href="/azure/active-directory/develop/scenario-web-api-call-api-overview">Lefelé irányuló webes API-kat hívó webes API</a>
+          - html: <a href="/azure/active-directory/develop/scenario-desktop-overview">Webes API-kat hívó asztali alkalmazás</a>
+          - html: <a href="/azure/active-directory/develop/scenario-daemon-overview">Démonalkalmazás</a>
+          - html: <a href="/azure/active-directory/develop/scenario-mobile-overview">Mobilalkalmazás</a>
   - title: Gyors útmutatók
     items:
       - type: paragraph
-        text: 'E rövid útmutatók alapján gyorsan felépíthet egy alkalmazást, és olyan funkciókat adhat hozzá, mint a jogkivonatok beszerzése, a jogkivonatok frissítése, a felhasználók bejelentkeztetése és egyes felhasználóadatok megjelenítése.'
-      - type: paragraph
-        text: <b>Egyoldalas alkalmazások</b>
+        text: 'Ezekből a rövid útmutatókból megtudhatja többek között, hogyan léptethet be felhasználókat egy alkalmazás, és hogyan hívhatja meg a Microsoft Graph API-t vagy bármilyen más webes API-t egy hozzáférési jogkivonattal.'
       - type: table
         style: dataMatrix
         columns:
-          - image:
-              src: ./media/index/angularjs-shield.svg
-            title: AngularJS
           - image:
               src: ./media/index/logo_js.svg
             title: JavaScript
-        rows:
-          - title: 1.0-s verzió
-            values:
-              - href: quickstart-v1-angularjs-spa.md
-              - href: 'https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi'
-          - title: 2.0-s verzió
-            values:
-              - href: null
-              - href: quickstart-v2-javascript.md
-      - type: paragraph
-        text: <b>Webalkalmazások</b>
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: ./media/index/logo_NET.svg
-            title: ASP .NET
-          - image:
-              src: ./media/index/logo_NETcore.svg
-            title: ASP.NET Core
-          - image:
-              src: ./media/index/logo_java.svg
-            title: Java
-          - image:
-              src: ./media/index/logo_nodejs.svg
-            title: NodeJS
-          - image:
-              src: ./media/index/logo_python.svg
-            title: Python
-        rows:
-          - title: 1.0-s verzió
-            values:
-              - href: quickstart-v1-aspnet-webapp.md
-              - href: null
-              - href: 'https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect'
-              - href: quickstart-v1-openid-connect-code.md
-              - href: 'https://github.com/Azure-Samples/active-directory-python-webapp-graphapi'
-          - title: 2.0-s verzió
-            values:
-              - href: quickstart-v2-aspnet-webapp.md
-              - href: quickstart-v2-aspnet-core-webapp.md
-              - href: null
-              - href: 'https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs'
-              - href: null
-      - type: paragraph
-        text: <b>Webes API-k</b>
-      - type: table
-        style: dataMatrix
-        columns:
           - image:
               src: ./media/index/logo_NET.svg
             title: ASP .NET
@@ -120,22 +81,6 @@ sections:
           - image:
               src: ./media/index/logo_nodejs.svg
             title: NodeJS
-        rows:
-          - title: 1.0-s verzió
-            values:
-              - href: quickstart-v1-dotnet-webapi.md
-              - href: null
-              - href: quickstart-v1-nodejs-webapi.md
-          - title: 2.0-s verzió
-            values:
-              - href: 'https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet'
-              - href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2'
-              - href: null
-      - type: paragraph
-        text: <b>Mobil- és asztali alkalmazások</b>
-      - type: table
-        style: dataMatrix
-        columns:
           - image:
               src: ./media/index/logo_android.svg
             title: Android
@@ -149,77 +94,77 @@ sections:
               src: ./media/index/logo_Windows.svg
             title: Windows asztali .NET
           - image:
-              src: ./media/index/logo_xamarin.svg
-            title: Xamarin
+              src: ./media/index/logo_NET.svg
+            title: .NET
         rows:
-          - title: 1.0-s verzió
+          - title: Egyoldalas alkalmazás
             values:
-              - href: quickstart-v1-android.md
-              - href: quickstart-v1-ios.md
+              - href: quickstart-v2-javascript.md
               - href: null
-              - href: quickstart-v1-dotnet.md
-              - href: quickstart-v1-xamarin.md
-          - title: 2.0-s verzió
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+          - title: Webalkalmazás
             values:
+              - href: null
+              - href: quickstart-v2-aspnet-webapp.md
+              - href: quickstart-v2-aspnet-core-webapp.md
+              - href: 'https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs'
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+          - title: Webes API
+            values:
+              - href: null
+              - href: 'https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet'
+              - href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2'
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+          - title: Mobil- és asztali alkalmazások
+            values:
+              - href: null
+              - href: null
+              - href: null
+              - href: null
               - href: quickstart-v2-android.md
               - href: quickstart-v2-ios.md
               - href: quickstart-v2-uwp.md
               - href: quickstart-v2-windows-desktop.md
               - href: null
-      - type: paragraph
-        text: <b>Szolgáltatások közötti és démonalkalmazások</b>
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: ./media/index/logo_NET.svg
-            title: .NET
-        rows:
-          - title: 1.0-s verzió
+          - title: Démonalkalmazások
             values:
-              - href: sample-v1-code.md
-          - title: 2.0-s verzió
-            values:
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
               - href: quickstart-v2-netcore-daemon.md
-  - title: Részletes útmutatók
+  - title: Oktatóanyagok
     items:
       - type: paragraph
-        text: 'Használja a Microsoft identitásplatformját, és részletes, forgatókönyv-alapú eljárásokat használhat a hitelesítéssel kapcsolatos legfontosabb fejlesztői feladatok elvégzésére, például a hozzáférési jogkivonatok beszerzésére és a Microsoft-bejelentkezés megvalósítására.'
-      - type: paragraph
-        text: <b>Egyoldalas alkalmazások</b>
+        text: 'A Microsoft identitásplatformjával részletes, forgatókönyv-alapú eljárásokat használhat a hitelesítéssel kapcsolatos legfontosabb fejlesztői feladatok elvégzésére, például a felhasználók bejelentkeztetésére, a Microsoft Graph API meghívásához használható hozzáférési jogkivonat beszerzésére és a Microsoft Graph API egyszerű meghívására.'
       - type: table
         style: dataMatrix
         columns:
           - image:
               src: ./media/index/logo_js.svg
             title: JavaScript
-        rows:
-          - title: 1.0-s verzió
-            values:
-              - href: null
-          - title: 2.0-s verzió
-            values:
-              - href: tutorial-v2-javascript-spa.md
-      - type: paragraph
-        text: <b>Webalkalmazások</b>
-      - type: table
-        style: dataMatrix
-        columns:
           - image:
               src: ./media/index/logo_NET.svg
             title: ASP .NET
-        rows:
-          - title: 1.0-s verzió
-            values:
-              - href: null
-          - title: 2.0-s verzió
-            values:
-              - href: tutorial-v2-asp-webapp.md
-      - type: paragraph
-        text: <b>Mobil- és asztali alkalmazások</b>
-      - type: table
-        style: dataMatrix
-        columns:
           - image:
               src: ./media/index/logo_android.svg
             title: Android
@@ -233,14 +178,26 @@ sections:
               src: ./media/index/logo_Windows.svg
             title: Windows asztali .NET
         rows:
-          - title: 1.0-s verzió
+          - title: Egyoldalas alkalmazás
+            values:
+              - href: tutorial-v2-javascript-spa.md
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+          - title: Webalkalmazás
+            values:
+              - href: null
+              - href: tutorial-v2-asp-webapp.md
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+          - title: Mobil- és asztali alkalmazások
             values:
               - href: null
               - href: null
-              - href: null
-              - href: null
-          - title: 2.0-s verzió
-            values:
               - href: tutorial-v2-android.md
               - href: tutorial-v2-ios.md
               - href: tutorial-v2-windows-uwp.md
@@ -252,5 +209,5 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/active-directory/develop/sample-v1-code">1.0-s verziójú kódminták forgatókönyv szerint</a>
           - html: <a href="/azure/active-directory/develop/sample-v2-code">2.0-s verziójú kódminták forgatókönyv szerint</a>
+          - html: <a href="/azure/active-directory/develop/sample-v1-code">1.0-s verziójú kódminták forgatókönyv szerint</a>

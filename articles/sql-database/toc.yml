@@ -120,6 +120,8 @@
           href: sql-database-service-tiers-vcore.md
         - name: DTU szolgáltatási szint
           href: sql-database-service-tiers-dtu.md
+        - name: Kiszolgáló nélküli számítási szint
+          href: sql-database-serverless.md
         - name: Előre fizetés fenntartott kapacitásért
           href: sql-database-reserved-capacity.md
         - name: Migrálás prémium RS szolgáltatási szintről

@@ -118,7 +118,7 @@
           href: samples/enforce-data-lake-store-encryption.md
     - name: Vendégkonfiguráció
       items:
-        - name: Linuxon telepített alkalmazások naplózása
+        - name: Linuxon nem telepített alkalmazások naplózása
           displayName: 'audit, vm'
           href: samples/guest-configuration-applications-installed-linux.md
     - name: Kulcstartók

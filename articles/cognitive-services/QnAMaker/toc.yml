@@ -79,37 +79,40 @@
       displayName: 'metadata, pair, sharepoint, authentication, permissions, faq, pdf, excel, xls, rtf, html, txt, tsv, url, end of line, new line, carriage return, markdown, commonmark, format, standard'
 - name: Útmutatók
   items:
+    - name: Tudásbázis szerkesztése
+      items:
+        - name: Tudásbázis szerkesztése
+          href: How-To/edit-knowledge-base.md
+        - name: Többlépéses beszélgetések létrehozása követő kérdésekkel
+          href: How-To/multiturn-conversation.md
+          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
+        - name: Csevegés hozzáadása
+          href: How-to/chit-chat-knowledge-base.md
+        - name: Védett SharePoint-fájl hozzáadása
+          href: How-To/add-sharepoint-datasources.md
+          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
     - name: A tudásbázis kezelése
       items:
         - name: Tudásbázis létrehozása és közzététele
           href: Quickstarts/create-publish-knowledge-base.md
           displayName: 'create bot, bot, publish to bot, test, edit'
-        - name: Párbeszéd hozzáadása a tudásbázishoz
-          href: How-to/chit-chat-knowledge-base.md
-        - name: Tudásbázis migrálása
-          href: Tutorials/migrate-knowledge-base.md
-        - name: Tudásbázis szerkesztése
-          href: How-To/edit-knowledge-base.md
-          displayName: 'metadata, pair'
-        - name: Védett SharePoint-fájl hozzáadása
-          href: How-To/add-sharepoint-datasources.md
-          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
-        - name: Együttműködés a tudásbázison
-          href: How-To/collaborate-knowledge-base.md
+        - name: Válasz kérése
+          href: How-To/metadata-generateanswer-usage.md
+          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer'
+        - name: Tudásbázist használni képes robot létrehozása
+          href: Tutorials/integrate-qnamaker-luis.md
         - name: Más nyelvű tudásbázis létrehozása
           href: How-To/language-knowledge-base.md
+        - name: Tudásbázis migrálása
+          href: Tutorials/migrate-knowledge-base.md
+          displayName: 'metadata, pair'
+        - name: Együttműködés a tudásbázison
+          href: How-To/collaborate-knowledge-base.md
         - name: Tudásbázis tesztelése
           href: How-To/test-knowledge-base.md
         - name: Aktív tanulás használata a tudásbázis továbbfejlesztéséhez
           href: How-to/improve-knowledge-base.md
           displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning'
-    - name: Tudásbázis használata
-      items:
-        - name: Metaadatok használata a GenerateAnswer API-val
-          href: How-To/metadata-generateanswer-usage.md
-          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters'
-        - name: Robottal
-          href: Tutorials/integrate-qnamaker-luis.md
     - name: Szolgáltatás kezelése
       items:
         - name: QnA Maker-szolgáltatás beállítása
@@ -154,7 +157,7 @@
     - name: Példák
       items:
         - name: QnA Maker-súgórobot
-          href: 'https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot'
+          href: 'https://aka.ms/qnamakerhelpbotsample'
     - name: SDK-k
       items:
         - name: 'C#'

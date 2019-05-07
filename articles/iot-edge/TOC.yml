@@ -109,8 +109,14 @@
           href: how-to-install-iot-edge-linux-arm.md
         - name: Windows x64
           href: how-to-install-iot-edge-windows.md
+        - name: Linux-tárolók Windows X64-en
+          href: how-to-install-iot-edge-windows-with-linux.md
+        - name: Windows Server rendszerű virtuális gép
+          href: how-to-install-iot-edge-windows-server-vm.md
         - name: Ubuntu rendszerű virtuális gép
           href: how-to-install-iot-edge-ubuntuvm.md
+        - name: Kubernetes
+          href: how-to-install-iot-edge-kubernetes.md
         - name: Futtatókörnyezet verziójának frissítése
           href: how-to-update-iot-edge.md
     - name: Automatikus regisztráció DPS-sel

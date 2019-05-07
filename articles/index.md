@@ -6,12 +6,12 @@ description: Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmaz
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 73dda32c3f5f89a8b3e7465fbfdde28cb0ad2d6f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1e1fdc43caf01ea33ce7587c1612ad416aed6d3d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020824"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074293"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -2094,7 +2094,7 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                     </div>
                                 </a>
                             </li>
-<li>
+                            <li>
                                 <a href="/azure/vmware-cloudsimple/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -2107,6 +2107,25 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                                 <div class="cardText">
                                                     <h3>A CloudSimple Azure VMware-megoldása</h3>
                                                     <p>A VMware platform futtatása az Azure-ban</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/openshift/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/openshift.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Red Hat OpenShift</h3>
+                                                    <p>Teljes mértékben felügyelt OpenShift-szolgáltatás, a Red Hattel közösen működtetve</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3063,6 +3082,25 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                                 <div class="cardText">
                                                     <h3>Azure Dev Spaces</h3>
                                                     <p>Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/openshift/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/openshift.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Red Hat OpenShift</h3>
+                                                    <p>Teljes mértékben felügyelt OpenShift-szolgáltatás, a Red Hattel közösen működtetve</p>
                                                 </div>
                                             </div>
                                         </div>

@@ -66,6 +66,10 @@
       items:
         - name: Mintaadatok betöltése
           href: ingest-sample-data.md
+    - name: Üzembe helyezés
+      items:
+        - name: DevOps-feladat
+          href: devops.md
     - name: Adatok lekérdezése
       items:
         - name: Lekérdezések írása

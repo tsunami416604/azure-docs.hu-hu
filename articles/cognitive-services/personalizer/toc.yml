@@ -37,13 +37,21 @@
           displayName: 'learning policy, Counterfactual, features'
 - name: Útmutatók
   items:
-    - name: A Personalizer konfigurálása
+    - name: Személyre szabó létrehozása és konfigurálása
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy'
     - name: Elemzés
       items:
         - name: Offline értékelés
           href: how-to-offline-evaluation.md
+    - name: Tárolók használata
+      items:
+        - name: Tárolók telepítése és futtatása
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, run, apikey'
+          href: personalizer-container-howto.md
+        - name: Tárolók konfigurálása
+          href: personalizer-container-configuration.md
+          displayName: 'docker, run, apikey'
 - name: Referencia
   items:
     - name: Példák

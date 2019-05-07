@@ -167,6 +167,8 @@
               href: azure-to-azure-how-to-enable-replication-ade-vms.md
             - name: Azure-ról Azure-ba történő replikálás engedélyezése S2D-virtuálisgépekhez
               href: azure-to-azure-how-to-enable-replication-s2d-vms.md
+            - name: Replikáció engedélyezése a hozzáadott lemezen
+              href: azure-to-azure-enable-replication-added-disk.md
             - name: Lemezek kizárása
               href: azure-to-azure-exclude-disks.md
             - name: Azure-beli virtuális gépek védelmének ismételt biztosítása feladatátvétel után

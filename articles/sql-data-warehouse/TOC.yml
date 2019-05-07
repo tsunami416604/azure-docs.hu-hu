@@ -62,7 +62,7 @@
           href: quickstart-scale-compute-tsql.md
     - name: Számítási feladatok kezelése
       items:
-        - name: Számításifeladat-osztályozó létrehozása (előzetes verzió)
+        - name: Számításifeladat-osztályozó létrehozása
           items:
             - name: T-SQL
               href: quickstart-create-a-workload-classifier-tsql.md
@@ -72,28 +72,48 @@
       items:
         - name: Áttekintés
           href: sql-data-warehouse-overview-manage-security.md
-        - name: Hozzáférés-vezérlés
-          href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json
-        - name: Tűzfalszabályok
-          href: ../sql-database/sql-database-firewall-configure.md?toc=/azure/sql-data-warehouse/toc.json
-        - name: Virtuális hálózati szolgáltatásvégpontok
-          href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/sql-data-warehouse/toc.json
-        - name: Hitelesítés
-          href: sql-data-warehouse-authentication.md?toc=/azure/sql-data-warehouse/toc.json
-        - name: Azure AD
-          href: ../sql-database/sql-database-aad-authentication.md?toc=/azure/sql-data-warehouse/toc.json
-        - name: Bejelentkezések és felhasználók
-          href: ../sql-database/sql-database-manage-logins.md?toc=/azure/sql-data-warehouse/toc.json
-        - name: Többtényezős hitelesítés
-          href: ../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: Advanced Data Security
+          items:
+            - name: Áttekintés
+              href: ../sql-database/sql-database-advanced-data-security.md?toc=/azure/sql-data-warehouse/toc.json
+            - name: Adatfelderítés és besorolás
+              href: ../sql-database/sql-database-data-discovery-and-classification.md?toc=/azure/sql-data-warehouse/toc.json
+            - name: Sebezhetőségi felmérés
+              href: ../sql-database/sql-vulnerability-assessment.md?toc=/azure/sql-data-warehouse/toc.json
+            - name: Fejlett fenyegetésvédelem
+              href: ../sql-database/sql-database-threat-detection-overview.md?toc=/azure/sql-data-warehouse/toc.json
         - name: Naplózás
           href: ../sql-database/sql-database-auditing.md?toc=/azure/sql-data-warehouse/toc.json
-        - name: Adatfelderítés és besorolás
-          href: 'https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json'
-        - name: Oszlopszintű biztonság
-          href: column-level-security.md
-        - name: Sorszintű biztonság
-          href: 'https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=/azure/sql-data-warehouse/toc.json'
+        - name: Hálózati biztonság
+          items:
+            - name: Tűzfalszabályok
+              href: ../sql-database/sql-database-firewall-configure.md?toc=/azure/sql-data-warehouse/toc.json
+            - name: Virtuális hálózati szolgáltatásvégpontok
+              href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: Hitelesítés
+          items:
+            - name: Áttekintés
+              href: sql-data-warehouse-authentication.md?toc=/azure/sql-data-warehouse/toc.json
+            - name: Azure Active Directory
+              href: ../sql-database/sql-database-aad-authentication.md?toc=/azure/sql-data-warehouse/toc.json
+            - name: Bejelentkezések és felhasználók
+              href: ../sql-database/sql-database-manage-logins.md?toc=/azure/sql-data-warehouse/toc.json
+            - name: Többtényezős hitelesítés
+              href: ../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: Hozzáférés-vezérlés
+          items:
+            - name: Áttekintés
+              href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json
+            - name: Oszlopszintű biztonság
+              href: column-level-security.md
+            - name: Sorszintű biztonság
+              href: 'https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json'
+        - name: Adatvédelem
+          items:
+            - name: Transzparens adattitkosítás (TDE) áttekintése
+              href: ../sql-database/transparent-data-encryption-azure-sql.md?toc=/azure/sql-data-warehouse/toc.json
+            - name: TDE saját kulcs használatával
+              href: ../sql-database/transparent-data-encryption-byok-azure-sql.md?toc=/azure/sql-data-warehouse/toc.json
     - name: Az adatok betöltése
       items:
         - name: Áttekintés
@@ -158,9 +178,9 @@
       items:
         - name: Erőforrásosztályok és számítási feladatok kezelése
           href: resource-classes-for-workload-management.md
-        - name: Számítási feladat osztályozása (előzetes verzió)
+        - name: Számítási feladat osztályozása
           href: sql-data-warehouse-workload-classification.md
-        - name: Számítási feladat fontossága (előzetes verzió)
+        - name: Számítási feladat fontossága
           href: sql-data-warehouse-workload-importance.md
         - name: Memória- és egyidejűségi korlátok
           href: memory-and-concurrency-limits.md
@@ -204,8 +224,6 @@
           href: sql-data-warehouse-encryption-tde.md
         - name: Titkosítás engedélyezése – T-SQL
           href: sql-data-warehouse-encryption-tde-tsql.md
-        - name: Fenyegetések észlelése
-          href: sql-data-warehouse-security-threat-detection.md
     - name: Adatok betöltése
       items:
         - name: New York-i taxik adatai

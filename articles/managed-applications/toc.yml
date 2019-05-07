@@ -17,6 +17,8 @@
       href: publish-service-catalog-app.md
     - name: Piactéren elérhető alkalmazás közzététele
       href: publish-marketplace-app.md
+    - name: Egyéni erőforrás-szolgáltató létrehozása
+      href: create-custom-provider.md
 - name: Példák
   items:
     - name: Azure CLI
@@ -25,6 +27,10 @@
       href: powershell-samples.md
     - name: Felügyelt alkalmazási megoldások
       href: sample-projects.md
+- name: Alapelvek
+  items:
+    - name: Egyéni szolgáltatók
+      href: custom-providers-overview.md
 - name: Útmutatók
   items:
     - name: Kiadók

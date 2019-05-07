@@ -2,19 +2,20 @@
 title: IOS – az Azure objektumtárat (Blobtárat) storage használata |} A Microsoft Docs
 description: Store unstructured data in the cloud with Azure Blob storage (object storage) (Strukturálatlan adatok tárolása a felhőben Azure Blob Storage-fiókkal (objektumtároló)).
 services: storage
-author: michaelhauss
+author: mhopkins-msft
 ms.service: storage
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 11/20/2018
-ms.author: michaelhauss
+ms.author: mhopkins
+ms.reviewer: seguler
 ms.subservice: blobs
-ms.openlocfilehash: 1ab799ef7eb9d7c591e76ab9180d4e3f4ba6ba59
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 87651aa1fd44a831e94a00b5871faaae51f2f6a7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122749"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148294"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Az IOS-es Blob storage használata
 

@@ -229,7 +229,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalainak konfig
 |Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
 |referenceCode|string|Ha ezen a lapon azt egy belső hiba eredményeként generált kódot.|  
-|Hibakód|string|Ha ezen a lapon azt egy belső hiba eredményeként generált kódot.|  
+|errorCode|string|Ha ezen a lapon azt egy belső hiba eredményeként generált kódot.|  
 |emailBody|string|E-mail törzse, ha ezen a lapon azt egy belső hiba eredményeként jön létre.|  
 |requestedUrl|string|Ha az oldal nem található a kért URL-címe.|  
 |referrerUrl|string|A kért URL-címre hivatkozó URL.|  

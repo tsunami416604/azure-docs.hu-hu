@@ -1,0 +1,41 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Red Hat OpenShift Service
+metadata:
+  document_id: null
+  title: A Red Hat OpenShift Service dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+  meta.description: Microsoft Azure Red Hat OpenShift allows you to quickly deploy a production ready Red Hat OpenShift cluster in Azure. Learn how to use Azure Red Hat OpenShift with these tutorials and how-to guides.
+  services: container-service
+  author: tylermsft
+  manager: jeconnoc
+  ms.service: container-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05-06-2019
+  ms.author: twhitney
+abstract:
+  description: 'Az Azure Red Hat OpenShift egybérlős, magas rendelkezésre állású Kubernetes-fürtöket biztosít az Azure-ban, a Red Hat és Microsoft támogatásával.'
+sections:
+  - title: Részletes útmutatók
+    items:
+      - type: paragraph
+        text: Megismerheti az Azure Red Hat OpenShift-fürtök létrehozását és felügyeletét.
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/openshift/tutorial-create-cluster">Azure Red Hat OpenShift-fürt létrehozása</a>
+          - html: <a href="/azure/openshift/tutorial-scale-cluster">Azure Red Hat OpenShift-fürt skálázása</a>
+          - html: <a href="/azure/openshift/tutorial-delete-cluster">Azure Red Hat OpenShift-fürt törlése</a>
+  - title: Referencia
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Parancssor
+            html: <p><a href="/cli/azure/openshift">Azure CLI</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/openshift">REST API</a></p>
+          - title: Red Hat-dokumentáció
+            html: '<p><a href="https://access.redhat.com/documentation/openshift_dedicated/3/">Red Hat OpenShift-dokumenumok</a></p>'

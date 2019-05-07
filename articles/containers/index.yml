@@ -63,6 +63,7 @@ sections:
           - html: <a href="/azure/app-service/containers/tutorial-multi-container-app">Többtárolós alkalmazás létrehozása a Web App for Containersben</a>
           - html: <a href="/azure/container-registry/container-registry-tutorial-quick-task">Tárolórendszerképek összeállítása és üzembe helyezése az Azure Container Registry Tasks használatával</a>
           - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Tároló létrehozása és üzembe helyezése az Azure Container Instances szolgáltatásban</a>
+          - html: <a href="/azure/openshift/tutorial-create-cluster">Azure Red Hat OpenShift-fürt létrehozása</a>
   - title: Fejlessze a készségeit a Microsoft Learnnel
     items:
       - type: list

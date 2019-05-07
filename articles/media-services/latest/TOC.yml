@@ -26,8 +26,10 @@
     - name: Videó elemzése – .NET
       displayName: 'job, transform'
       href: analyze-videos-tutorial-with-api.md
-    - name: AES-128 dinamikus titkosítás – .NET
+    - name: Dinamikus titkosítás 128 bites AES-titkosítással – .NET
       href: protect-with-aes128.md
+    - name: Dinamikus titkosítás DRM segítségével – .NET
+      href: protect-with-drm.md
 - name: Példák
   items:
     - name: Azure-kódminták
@@ -56,10 +58,9 @@
         - name: Adaptív sávszélességi skála automatikus létrehozása
           href: autogen-bitrate-ladder.md
         - name: Tartalomfüggő kódolás
-          displayName: 'content, aware, cae'
           href: cae-experimental.md
         - name: Feladathibakódok
-          href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
+          href: job-error-codes.md
     - name: Media analytics (Médiaelemzés)
       items:
         - name: Áttekintés
@@ -68,7 +69,7 @@
         - name: Átalakítások és feladatok
           href: transforms-jobs-concept.md
         - name: Feladathibakódok
-          href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
+          href: job-error-codes.md
     - name: 'Csomagolás, teljesítés, védelem'
       items:
         - name: Csomagolás
@@ -150,7 +151,7 @@
             - name: Eredeti hibakódok
               href: origin-error-codes.md
             - name: Feladathibakódok
-              href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
+              href: job-error-codes.md
     - name: Útmutatás a 2-esről a 3-as verzióra való migráláshoz
       href: migrate-from-v2-to-v3.md
 - name: Útmutatók
@@ -215,8 +216,6 @@
       items:
         - name: Tartalomkulcs-szabályzat lekérése – .NET
           href: get-content-key-policy-dotnet-howto.md
-        - name: DRM dinamikus titkosítás – .NET
-          href: protect-with-drm.md
         - name: Offline FairPlay iOS-hez
           href: offline-fairplay-for-ios.md
         - name: Offline Widevine Androidhoz
@@ -258,7 +257,7 @@
         - name: Eredeti hibakódok
           href: origin-error-codes.md
         - name: Feladathibakódok
-          href: 'https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode'
+          href: job-error-codes.md
 - name: További források
   items:
     - name: Azure Media Services-közösség

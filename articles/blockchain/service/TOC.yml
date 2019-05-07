@@ -47,6 +47,8 @@
       href: manage-consortium-powershell.md
 - name: További források
   items:
+    - name: Blockchain REST API
+      href: 'https://docs.microsoft.com/rest/api/blockchain/'
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/blockchain/'
     - name: Azure Blockchain Service Visual Studio Code-bővítmény
@@ -56,7 +58,7 @@
     - name: Közösség
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: Fórum
-      href: 'https://social.msdn.microsoft.com/forums/security/home?forum=AzureBlockchainService'
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain'
     - name: Termékkel kapcsolatos visszajelzés
       href: 'https://feedback.azure.com/forums/921130-azure-blockchain-service'
     - name: Díjszabás

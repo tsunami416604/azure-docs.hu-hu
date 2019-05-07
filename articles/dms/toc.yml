@@ -32,6 +32,8 @@
       href: tutorial-mongodb-cosmos-db.md
     - name: MongoDB online migrálása az Azure Cosmos DB Mongo API-ba
       href: tutorial-mongodb-cosmos-db-online.md
+    - name: Oracle online migrálása Azure Database for PostgreSQL-re
+      href: tutorial-oracle-azure-postgresql-online.md
 - name: Útmutatók
   items:
     - name: A PowerShell használata SQL Server migrálásához az Azure SQL DB-be

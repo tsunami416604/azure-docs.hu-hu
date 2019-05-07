@@ -9,9 +9,9 @@ metadata:
   ms.author: raagyema
   ms.service: postgresql
   ms.topic: landing-page
-  ms.date: 02/25/2019
+  ms.date: 04/26/2019
 abstract:
-  description: 'A PostgreSQL-hez készült Azure Database egy relációsadatbázis-szolgáltatás, amely a nyílt forráskódú Postgres adatbázismotoron alapszik.  A teljes körűen felügyelt adatbázis-szolgáltatás kiszámítható teljesítménnyel, biztonságosan, magas rendelkezésre állással és dinamikus skálázhatósággal kezeli az üzletmenet szempontjából kritikus fontosságú számítási feladatokat.  A PostgreSQL-hez készült Azure Database-ben végzett alkalmazásfejlesztéssel kihasználhatja a nyílt forráskódú eszközöket, Ön választhatja ki a kívánt platformot.  Gyors útmutatóink, oktatóanyagaink és példáink segítségével megismerheti a PostgreSQL-hez készült Azure Database használatát.'
+  description: 'A PostgreSQL-hez készült Azure Database egy relációsadatbázis-szolgáltatás, amely a nyílt forráskódú Postgres adatbázismotoron alapszik.  A teljes körűen felügyelt adatbázis-szolgáltatás kiszámítható teljesítménnyel, biztonságosan, magas rendelkezésre állással és dinamikus skálázhatósággal kezeli az üzletmenet szempontjából kritikus fontosságú számítási feladatokat. Két üzembehelyezési lehetőség érhető el: egykiszolgálós és Hyperscale (Citus) (előzetes verzió). A Hyperscale (Citus) beállítás horizontálisan skálázza a lekérdezéseket több gépen egy horizontális skálázási módszer (sharding) segítségével, és nagyobb méretet és teljesítményt igénylő alkalmazásokat szolgál ki. Gyors útmutatóink, oktatóanyagaink és példáink segítségével megismerheti a PostgreSQL-hez készült Azure Database használatát.'
 sections:
   - title: 5 perces gyors útmutatók
     items:
@@ -22,22 +22,33 @@ sections:
         items:
           - image:
               src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Azure Portal
+            text: Egykiszolgálós Azure Portal
             href: /azure/postgresql/quickstart-create-server-database-portal
           - image:
               src: 'https://docs.microsoft.com/azure/sql-database/media/index/cli.svg'
-            text: Azure CLI
+            text: Egykiszolgálós Azure parancssori felület (CLI)
             href: /azure/postgresql/quickstart-create-server-database-azure-cli
+          - image:
+              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
+            text: Hyperscale (Citus) Azure Portal
+            href: /azure/postgresql/quickstart-create-hyperscale-portal
   - title: Részletes útmutatók
     items:
       - type: paragraph
-        text: 'Az alábbiak végrehajtásának módját ismerheti meg:'
+        text: 'Egy kiszolgálóhoz:'
       - type: list
         style: ordered
         items:
           - html: 'Adatbázis tervezése: <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>'
           - html: <a href="/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Webalkalmazás készítése a Python és a CLI használatával</a>
           - html: <a href="/azure/postgresql/tutorial-monitor-and-tune">A szolgáltatás monitorozása és hangolása</a>
+      - type: paragraph
+        text: 'Hyperscale-hez (Citus) (előzetes verzió):'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/postgresql/tutorial-design-database-hyperscale-multi-tenant">Több-bérlős adatbázis tervezése</a>
+          - html: <a href="/azure/postgresql/tutorial-design-database-hyperscale-realtime">Valós idejű adatbázis tervezése</a>
   - title: Fejlessze a készségeit a Microsoft Learnnel
     items:
       - type: list

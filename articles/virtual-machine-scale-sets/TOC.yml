@@ -129,6 +129,8 @@
         - name: Prémium szintű tárolási teljesítmény
           href: ../virtual-machines/windows/premium-storage-performance.md
           maintainContext: true
+        - name: Rövid élettartamú operációsrendszer-lemezek
+          href: ephemeral-os-disks.md
         - name: Lemezek skálázási célértékei
           href: ../virtual-machines/windows/disk-scalability-targets.md
           maintainContext: true
@@ -204,7 +206,7 @@
               href: virtual-machine-scale-sets-encrypt-disks-ps.md
             - name: Az Azure parancssori felületének használata
               href: virtual-machine-scale-sets-encrypt-disks-cli.md
-            - name: Lemeztitkosítás a bővítmények végrehajtási sorrendbe helyezésével
+            - name: Bővítmények sorrendbe állítása
               href: ../security/azure-security-disk-encryption-extension-sequencing.md
               maintainContext: true
         - name: Nagyméretű méretezési csoportokkal végzett munka
@@ -221,13 +223,16 @@
               href: virtual-machine-scale-sets-manage-cli.md
             - name: Azure PowerShell használatával
               href: virtual-machine-scale-sets-manage-powershell.md
-        - name: Megosztott rendszerkép-katalógusok (előzetes verzió)
-          href: shared-image-galleries.md
+        - name: Megosztott lemezkép-katalógusok
           items:
+            - name: Áttekintés
+              href: shared-image-galleries.md
             - name: parancssori felület
               href: shared-images-cli.md
             - name: PowerShell
               href: shared-images-powershell.md
+            - name: Rendszerképek megosztása több bérlőn
+              href: share-images-across-tenants.md
             - name: Megosztott rendszerképek hibaelhárítása
               href: troubleshooting-shared-images.md
         - name: Függőleges méretezés méretezési csoportban

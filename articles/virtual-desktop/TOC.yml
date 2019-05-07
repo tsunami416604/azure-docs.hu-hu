@@ -18,9 +18,9 @@
   items:
     - name: Csatlakozás Windows Virtual Desktop erőforrásaihoz
       items:
-        - name: Kapcsolódás Windows 7-en és Windows 10-en
+        - name: Csatlakozás Windows 10 vagy Windows Server 7 rendszerről
           href: connect-windows-7-and-10.md
-        - name: Kapcsolódás a webügyféllel
+        - name: Csatlakozás webböngészőről
           href: connect-web.md
     - name: Gazdagépcsoport létrehozása Azure Resource Manager-sablonnal
       href: create-host-pools-arm-template.md
@@ -34,6 +34,8 @@
       href: diagnostics-role-service.md
     - name: Fő VHD-rendszerkép létrehozása és testreszabása
       href: set-up-customize-master-image.md
+    - name: GPU beállítása a Windows Virtual Desktophoz
+      href: configure-vm-gpu.md
     - name: Munkamenetgazdák automatikus méretezése
       href: set-up-scaling-script.md
 - name: Alapelvek
