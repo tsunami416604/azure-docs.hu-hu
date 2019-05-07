@@ -70,8 +70,8 @@ Azure Data Explorer társított szolgáltatás a következő tulajdonságok tám
 |:--- |:--- |:--- |
 | type | A **típus** tulajdonságot állítsa **AzureDataExplorer** | Igen |
 | endpoint | Végpont fürt URL-címét az Azure Data Explorer, a következő formátumban, `https://<clusterName>.<regionName>.kusto.windows.net`. | Igen |
-| adatbázis | Adatbázis neve. | Igen |
-| bérlő | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Ez a szokásos módon tapasztalatai szerint "**szolgáltató azonosító**" a [Kusto-kapcsolati karakterlánc](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Az Azure portal jobb felső sarkában az egérrel viszi, lekéréséhez. | Igen |
+| database | Adatbázis neve. | Igen |
+| tenant | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Ez a szokásos módon tapasztalatai szerint "**szolgáltató azonosító**" a [Kusto-kapcsolati karakterlánc](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Az Azure portal jobb felső sarkában az egérrel viszi, lekéréséhez. | Igen |
 | servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. Ez a szokásos módon tapasztalatai szerint "**AAD-alkalmazás Ügyfélazonosítója**" a [Kusto-kapcsolati karakterlánc](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Igen |
 | servicePrincipalKey | Adja meg az alkalmazáskulcsot. Ez a szokásos módon tapasztalatai szerint "**AAD alkalmazáskulcsot**" a [Kusto-kapcsolati karakterlánc](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 
@@ -107,7 +107,7 @@ A következő tulajdonságok támogatottak:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** tulajdonságot állítsa **AzureDataExplorerTable** | Igen |
-| tábla | A tábla, amely hivatkozik a társított szolgáltatás neve. | Igen, a fogadó; Nincs forrás esetében |
+| table | A tábla, amely hivatkozik a társított szolgáltatás neve. | Igen, a fogadó; Nincs forrás esetében |
 
 **Adatkészlet tulajdonságai példa**
 
@@ -138,7 +138,7 @@ Adatok másolása az Azure az adatkezelőt, állítsa be a **típus** tulajdons�
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység forrása tulajdonságát: **AzureDataExplorerSource** | Igen |
-| lekérdezés | Megadott olvasási kérést egy [KQL formátum](/azure/kusto/query/). Használja az egyéni KQL lekérdezés referenciaként. | Igen |
+| query | Megadott olvasási kérést egy [KQL formátum](/azure/kusto/query/). Használja az egyéni KQL lekérdezés referenciaként. | Igen |
 | queryTimeout | A várakozási idő előtt a lekérdezési kérés túllépi az időkorlátot. Alapértelmezett érték 10 perc (00: 10:00); engedélyezett maximális értéke 1 óra (01: 00:00). | Nem |
 
 >[!NOTE]
