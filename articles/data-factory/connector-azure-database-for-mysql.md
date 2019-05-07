@@ -142,7 +142,7 @@ Az adatok másolása az Azure Database for MySQL-hez, állítsa be a forrás tí
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **AzureMySqlSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 | queryCommandTimeout | A várakozási idő előtt a lekérdezési kérés túllépi az időkorlátot. Az alapértelmezett érték 120 perc (02: 00:00) | Nem |
 
 **Példa**
