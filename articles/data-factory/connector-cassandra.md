@@ -55,10 +55,10 @@ Cassandra-beli társított szolgáltatás a következő tulajdonságok támogato
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type |A type tulajdonságot kell beállítani: **Cassandra** |Igen |
-| gazdagép |One or more IP addresses or host names of Cassandra servers.<br/>Adja meg az IP-címek vagy az összes kiszolgálóhoz csatlakozzon egyszerre állomásnevek vesszővel tagolt listája. |Igen |
+| host |One or more IP addresses or host names of Cassandra servers.<br/>Adja meg az IP-címek vagy az összes kiszolgálóhoz csatlakozzon egyszerre állomásnevek vesszővel tagolt listája. |Igen |
 | port |A Cassandra-kiszolgáló az ügyfélkapcsolatok figyeléséhez használt TCP portra. |Nem (alapértelmezés szerint a 9042) |
 | authenticationType | A Cassandra-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Alapszintű**, és **névtelen**. |Igen |
-| felhasználónév |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha authenticationType beállítása alapszintű. |
+| username |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha authenticationType beállítása alapszintű. |
 | password |Adja meg a felhasználói fiókhoz tartozó jelszót. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen, ha authenticationType beállítása alapszintű. |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
@@ -98,7 +98,7 @@ Adatmásolás Cassandra, állítsa be a type tulajdonság, az adatkészlet **Cas
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adatkészlet értékre kell állítani: **CassandraTable** | Igen |
-| kulcstér |A kulcstér vagy a sémát a Cassandra-adatbázis neve. |Nem (ha van megadva a "query" a "CassandraSource") |
+| keySpace |A kulcstér vagy a sémát a Cassandra-adatbázis neve. |Nem (ha van megadva a "query" a "CassandraSource") |
 | tableName |A tábla, Cassandra-adatbázis neve. |Nem (ha van megadva a "query" a "CassandraSource") |
 
 **Példa**
@@ -132,7 +132,7 @@ Adatok másolása a Cassandra, állítsa be a forrás típusaként a másolási 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **CassandraSource** | Igen |
-| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. SQL-92 vagy CQL lekérdezés. Lásd: [CQL referencia](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>SQL-lekérdezés használata esetén adja meg a **kulcstér name.table neve** a lekérdezni kívánt tábla ábrázolásához. |Nem (Ha a "tableName" és "kulcstér" adatkészletben levő meg van adva). |
+| query |Az egyéni lekérdezés segítségével olvassa el az adatokat. SQL-92 vagy CQL lekérdezés. Lásd: [CQL referencia](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>SQL-lekérdezés használata esetén adja meg a **kulcstér name.table neve** a lekérdezni kívánt tábla ábrázolásához. |Nem (Ha a "tableName" és "kulcstér" adatkészletben levő meg van adva). |
 | consistencyLevel |A konzisztencia szintjét adja meg, hány replikák válaszolnia kell egy olvasási kérést előtt adatokat ad vissza az ügyfélalkalmazásnak. Cassandra ellenőrzi a megadott számú replikákat az adatok az olvasási kérelem teljesítéséhez. Lásd: [adatkonzisztencia konfigurálása](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) részleteiről.<br/><br/>Engedélyezett értékek a következők: **EGY**, **két**, **három**, **KVÓRUM**, **összes**, **LOCAL_QUORUM**, **EACH_QUORUM**, és **LOCAL_ONE**. |Nem (alapértelmezett érték a `ONE`) |
 
 **Példa**
@@ -176,14 +176,14 @@ Amikor az adatok másolása a Cassandra, a következő hozzárendeléseket szolg
 | ASCII |String |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
-| LOGIKAI ÉRTÉK |Boolean |
+| BOOLEAN |Boolean |
 | DECIMAL |Decimal |
-| DUPLA |Double |
-| LEBEGŐPONTOS |Single |
+| DOUBLE |Double |
+| FLOAT |Single |
 | INET |String |
 | INT |Int32 |
-| SZÖVEG |String |
-| IDŐBÉLYEG |DateTime |
+| TEXT |String |
+| TIMESTAMP |DateTime |
 | TIMEUUID |Guid |
 | UUID |Guid |
 | VARCHAR |String |
