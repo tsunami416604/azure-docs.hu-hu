@@ -65,7 +65,7 @@ A Dynamics-társított szolgáltatást a következő tulajdonságok támogatotta
 | deploymentType | A központi telepítési típus, a Dynamics-példány. Lehet **"Online"** Dynamics online. | Igen |
 | serviceUri | A szolgáltatás URL-címét a Dynamics-példányt, pl. `https://adfdynamics.crm.dynamics.com`. | Igen |
 | authenticationType | A hitelesítési típus, a Dynamics-kiszolgálóhoz való csatlakozáshoz. Adja meg **"Office 365"** Dynamics online. | Igen |
-| felhasználónév | Adja meg a felhasználónevet, Dynamics csatlakozni. | Igen |
+| username | Adja meg a felhasználónevet, Dynamics csatlakozni. | Igen |
 | password | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nincs forrás, Igen a fogadó Ha a forrás-beli társított szolgáltatás nem rendelkezik egy saját üzemeltetésű integrációs |
 
@@ -106,11 +106,11 @@ A Dynamics-társított szolgáltatást a következő tulajdonságok támogatotta
 |:--- |:--- |:--- |
 | type | A type tulajdonságot állítsa **Dynamics**. | Igen |
 | deploymentType | A központi telepítési típus, a Dynamics-példány. Lehet **"OnPremisesWithIfd"** Dynamics helyszíni az internetes Elérésű.| Igen |
-| Állomásnév | A helyszíni Dynamics-kiszolgáló állomásneve. | Igen |
+| hostName | A helyszíni Dynamics-kiszolgáló állomásneve. | Igen |
 | port | A port, a helyszíni Dynamics-kiszolgáló. | Nem, az alapértelmezett érték 443 |
-| Cégnév | A szervezet neve, a Dynamics-példány. | Igen |
+| organizationName | A szervezet neve, a Dynamics-példány. | Igen |
 | authenticationType | A hitelesítési típus, a Dynamics-kiszolgálóhoz való csatlakozáshoz. Adja meg **"internetes telepítés"** Dynamics helyszíni az internetes Elérésű. | Igen |
-| felhasználónév | Adja meg a felhasználónevet, Dynamics csatlakozni. | Igen |
+| username | Adja meg a felhasználónevet, Dynamics csatlakozni. | Igen |
 | password | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Válassza ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik a másolási tevékenység végrehajtásakor az adatok másolása innen lekéréses – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nincs forrás, a fogadó Igen |
 
@@ -205,7 +205,7 @@ Adatok másolása a Dynamics, állítsa be a forrás típusaként a másolási t
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása típusa tulajdonságát állítsa **DynamicsSource**. | Igen |
-| lekérdezés | FetchXML egy saját fejlesztésű lekérdezési nyelvet használ, a Dynamics (online és helyszíni). Tekintse meg a következő példát. További tudnivalókért lásd: [FeachXML lekérdezéseket hozhat létre](https://msdn.microsoft.com/library/gg328332.aspx). | Nem (ha az adatkészlet "entityName" van megadva) |
+| query | FetchXML egy saját fejlesztésű lekérdezési nyelvet használ, a Dynamics (online és helyszíni). Tekintse meg a következő példát. További tudnivalókért lásd: [FeachXML lekérdezéseket hozhat létre](https://msdn.microsoft.com/library/gg328332.aspx). | Nem (ha az adatkészlet "entityName" van megadva) |
 
 >[!NOTE]
 >Az oszlophoz a rendszer mindig másolja akkor is, ha az oszlop leképezése, konfigurálja a FetchXML-lekérdezés nem tartalmazza azt.
