@@ -60,7 +60,7 @@ A következő tulajdonságok támogatottak, a Dynamics AX-beli társított szolg
 | url | A Dynamics AX (vagy Dynamics 365 Finance and Operations) példány OData-végpont. |Igen |
 | servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. | Igen |
 | servicePrincipalKey | Adja meg az alkalmazáskulcsot. Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
-| bérlő | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Az Azure portal jobb felső sarkában az egér viszi, lekéréséhez. | Igen |
+| tenant | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Az Azure portal jobb felső sarkában az egér viszi, lekéréséhez. | Igen |
 | aadResourceId | Adja meg az AAD erőforrás kért használ a hitelesítéshez. Ha például a Dynamics URL-címe `https://sampledynamics.sandbox.operations.dynamics.com/data/`, a kapcsolódó AAD erőforrás van általában `https://sampledynamics.sandbox.operations.dynamics.com`. | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) kapcsolódni az adattárhoz. Kiválaszthatja az Azure integrációs modul vagy a saját üzemeltetésű integrációs modul (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
@@ -101,7 +101,7 @@ Adatok másolása a Dynamics AX, állítsa be a **típusa** tulajdonságot az ad
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a tulajdonságot az adatkészlet **DynamicsAXResource**. | Igen |
-| elérési út | A Dynamics AX OData entitás elérési útja. | Igen |
+| path | A Dynamics AX OData entitás elérési útja. | Igen |
 
 **Példa**
 
@@ -134,7 +134,7 @@ Adatok másolása a Dynamics AX, állítsa be a **forrás** írja be a másolás
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység forrás tulajdonság **DynamicsAXSource**. | Igen |
-| lekérdezés | Adatok szűrése az OData-lekérdezés beállításai. Példa: `"?$select=Name,Description&$top=5"`.<br/><br/>**Megjegyzés**: Az összekötő adatokat másol a kombinált URL-cím: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. További információkért lásd: [OData URL-címe összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
+| query | Adatok szűrése az OData-lekérdezés beállításai. Példa: `"?$select=Name,Description&$top=5"`.<br/><br/>**Megjegyzés**: Az összekötő adatokat másol a kombinált URL-cím: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. További információkért lásd: [OData URL-címe összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
 
 **Példa**
 
