@@ -49,8 +49,8 @@ A következő tulajdonságok támogatottak, beleértve a társított szolgáltat
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Concur** | Igen |
 | clientId | Alkalmazás client_id Concur felügyeleti által biztosított.  | Igen |
-| felhasználónév | A Concur szolgáltatás eléréséhez használt felhasználónév.  | Igen |
-| jelszó | A felhasználónév mezőben megadott felhasználónév megfelelő jelszava. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| username | A Concur szolgáltatás eléréséhez használt felhasználónév.  | Igen |
+| password | A felhasználónév mezőben megadott felhasználónév megfelelő jelszava. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Megadja, hogy a data source végpontok HTTPS segítségével titkosítja. Az alapértelmezett érték: igaz.  | Nem |
 | useHostVerification | Megadja a kiszolgálói tanúsítvány a kiszolgáló állomásneve megfelelően, ha SSL-kapcsolaton keresztül kapcsolódik az állomás neve kötelező legyen-e. Az alapértelmezett érték: igaz.  | Nem |
 | usePeerVerification | Megadja, hogy ellenőrizze a kiszolgáló identitását, ha SSL-kapcsolaton keresztül kapcsolódik. Az alapértelmezett érték: igaz.  | Nem |
@@ -113,7 +113,7 @@ Adatok másolása beleértve, állítsa be a forrás típusaként a másolási t
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **ConcurSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Opportunities where Id = xxx "`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Opportunities where Id = xxx "`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 
