@@ -62,10 +62,10 @@ DB2-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Db2** | Igen |
-| kiszolgáló |A DB2-kiszolgáló neve. Megadhatja, hogy a port számát, a kiszolgáló neve, pontosvesszővel elválasztva például a következő `server:port`. |Igen |
-| adatbázis |A DB2-adatbázis neve. |Igen |
+| server |A DB2-kiszolgáló neve. Megadhatja, hogy a port számát, a kiszolgáló neve, pontosvesszővel elválasztva például a következő `server:port`. |Igen |
+| database |A DB2-adatbázis neve. |Igen |
 | authenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Megengedett értéke: **Alapszintű**. |Igen |
-| felhasználónév |Adja meg a felhasználónevet, a DB2-adatbázishoz való csatlakozáshoz. |Igen |
+| username |Adja meg a felhasználónevet, a DB2-adatbázishoz való csatlakozáshoz. |Igen |
 | password |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
@@ -133,7 +133,7 @@ Adatok másolása a DB2, állítsa be a forrás típusaként a másolási tevék
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **RelationalSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 
@@ -174,19 +174,19 @@ Ha az adatok másolása a DB2, Azure Data Factory-közbenső adattípusok a köv
 | DB2-adatbázis típusa | Data factory közbenső adattípus |
 |:--- |:--- |
 | BigInt |Int64 |
-| binary |Byte[] |
+| Binary |Byte[] |
 | Blob |Byte[] |
-| char |String |
-| CLOB |String |
-| Dátum |DateTime |
+| Char |String |
+| Clob |String |
+| Date |Datetime |
 | DB2DynArray |String |
 | DbClob |String |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Double |Double |
 | Float |Double |
-| Kép |String |
-| Egész szám |Int32 |
+| Graphic |String |
+| Integer |Int32 |
 | LongVarBinary |Byte[] |
 | LongVarChar |String |
 | LongVarGraphic |String |
@@ -194,7 +194,7 @@ Ha az adatok másolása a DB2, Azure Data Factory-közbenső adattípusok a köv
 | Real |Single |
 | SmallInt |Int16 |
 | Time |TimeSpan |
-| Időbélyeg |DateTime |
+| Timestamp |DateTime |
 | VarBinary |Byte[] |
 | VarChar |String |
 | VarGraphic |String |
