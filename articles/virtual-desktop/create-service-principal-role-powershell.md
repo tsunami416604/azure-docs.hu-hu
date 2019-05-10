@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: d3357cec426585ba8550301dfa703f583a930ad0
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 1e53f76f564c0970ac1f291d2125807441500de6
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236940"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523319"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Oktatóanyag: Szolgáltatásnevek létrehozása és szerepkörök hozzárendelése a PowerShell-lel
 
@@ -38,10 +38,9 @@ Szolgáltatásnevek és szerepkör-hozzárendeléseket hozhat létre, mielőtt s
     Install-Module AzureAD
     ```
 
-2. Futtassa a következő parancsmagokat váltotta fel a munkamenethez kapcsolódó értékeket idézőjelek között szereplő értékeket. Ha újonnan létrehozott Windows virtuális asztal bérlőjének a a [Windows virtuális asztal oktatóanyag létrehoz egy bérlőt](./tenant-setup-azure-active-directory.md), majd használja az "Alapértelmezett bérlőt csoport" a bérlő-nevet.
+2. Futtassa a következő parancsmagokat váltotta fel a munkamenethez kapcsolódó értékeket idézőjelek között szereplő értékeket.
 
     ```powershell
-    $myTenantGroupName = "<my-tenant-group-name>"
     $myTenantName = "<my-tenant-name>"
     ```
 
@@ -68,8 +67,7 @@ Futtassa a következő PowerShell-parancsmagok a Windows virtuális asztalhoz cs
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-Set-RdsContext -TenantGroupName $myTenantGroupName
-New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantGroupName $myTenantGroupName -TenantName $myTenantName
+New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
 ```
 
 ## <a name="sign-in-with-the-service-principal"></a>Jelentkezzen be a szolgáltatásnévvel

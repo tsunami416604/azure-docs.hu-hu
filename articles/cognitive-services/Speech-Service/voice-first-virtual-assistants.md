@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: c9ed6f898f4bcf8a5d4b2548cc1f3cf51f71bb2a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1344de526564ab623a51eb903951b6a2e866048d
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138167"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523475"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>Egyéni hang-és felhőközpontú virtuális asszisztensek előzetes tudnivalók
 
@@ -24,11 +24,11 @@ Az Azure Speech Services segítségével egyéni virtuális asszisztensek amelye
 
    ![A közvetlen vonal speech vezénylési szolgáltatás flow fogalmi diagramja](media/voice-first-virtual-assistants/overview.png "a beszédfelismerő csatornát folyamat")
 
-A közvetlen vonal beszéd- és a kapcsolódó funkciók működését, hang-és felhőközpontú egyéni virtuális asszisztensek az ideális kiegészítés a [virtuális Segéd megoldás](https://docs.microsoft.com/azure/bot-service/bot-builder-virtual-assistant-introduction) és [vállalati sablon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). Közvetlen vonal Speech dolgozhat bármilyen kompatibilis robot, bár ezeket az erőforrásokat biztosítanak magas színvonalú természetes nyelvi felhasználói környezet, valamint a közös támogató képességek és a modellek az első lépések gyorsan alapkonfigurációt újrafelhasználhatók.
+A közvetlen vonal beszéd- és a kapcsolódó funkciók működését, hang-és felhőközpontú egyéni virtuális asszisztensek az ideális kiegészítés a [virtuális Segéd megoldás](https://docs.microsoft.com/azure/bot-service/bot-builder-virtual-assistant-introduction) és [vállalati sablon](https://docs.microsoft.com/azure/bot-service/bot-builder-virtual-assistant-introduction). Közvetlen vonal Speech dolgozhat bármilyen kompatibilis robot, bár ezeket az erőforrásokat biztosítanak magas színvonalú természetes nyelvi felhasználói környezet, valamint a közös támogató képességek és a modellek az első lépések gyorsan alapkonfigurációt újrafelhasználhatók.
 
 ## <a name="core-features"></a>Alapfunkciók
 
-| Category | Szolgáltatások |
+| Category | Funkciók |
 |----------|----------|
 |[Egyéni ébresztési word](speech-devices-sdk-create-kws.md) | Engedélyezheti a felhasználóknak beszélgetések kezdődniük robotokat egy egyéni kulcsszóval, például a "Hey Contoso." A feladat végrehajtását a Speech SDK-ban, amely egy egyéni ébresztési word a konfigurálható egyéni ébresztési word motorral [, itt is létrehozhat](speech-devices-sdk-create-kws.md). A közvetlen vonal beszédfelismerő csatornát magában foglalja a Szolgáltatásoldali ébresztési word annak ellenőrzése, hogy az ébresztési word aktiválás és az eszköz önálló javul.
 |[Beszédfelismerés](speech-to-text.md) | A közvetlen vonal beszédfelismerő csatornát tartalmazza a felismert szöveget egy hang-, valós idejű beszédátírási [hang-szöveg transzformációs](speech-to-text.md) Azure Speech Services. Ezt a szöveget a robot, mind az ügyfélalkalmazás számára érhető el, ahogy azt a megjelenített érzéseket.

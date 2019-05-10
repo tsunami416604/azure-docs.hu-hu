@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: c59731b7121b18d6a8b257d6b7b7c05c421318c8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: af1846f66996ded553a95188df958e9592ec68a2
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572352"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523797"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Számára a bejárati ajtó a földrajzi szűrés WAF szabályzat beállítása
 Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre egy egyszerű geoszűrési szabályzatot, és társíthatja azt a meglévő előtérbeli Front Door-gazdagéphez az Azure PowerShell-lel. A minta a földrajzi szűrés házirend letiltja a minden más országokban és régiókban Egyesült Államok kivételével érkező kérelmeket.
@@ -53,10 +53,10 @@ Hozzon létre egy bejárati ajtajának profilt leírt utasítások alapján [a r
 
 ## <a name="define-geo-filtering-match-condition"></a>Adja meg a földrajzi szűrés feltételnek megfelelő
 
-Hozzon létre egy minta az egyezési feltétellel, ami nem jelenik meg az "US" kérelmek [New-AzFrontDoorMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoormatchconditionobject) paraméterekkel egyeztetési feltételt létrehozásakor. Az ország-lel két betű országkódok biztosított [Itt](front-door-geo-filtering.md).
+Hozzon létre egy minta az egyezési feltétellel, ami nem jelenik meg az "US" kérelmek [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) paraméterekkel egyeztetési feltételt létrehozásakor. Az ország-lel két betű országkódok biztosított [Itt](front-door-geo-filtering.md).
 
 ```azurepowershell-interactive
-$nonUSGeoMatchCondition = New-AzFrontDoorMatchConditionObject `
+$nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchVariable RemoteAddr `
 -OperatorProperty GeoMatch `
 -NegateCondition $true `
@@ -65,7 +65,7 @@ $nonUSGeoMatchCondition = New-AzFrontDoorMatchConditionObject `
  
 ## <a name="add-geo-filtering-match-condition-to-a-rule-with-action-and-priority"></a>A geoszűrési egyeztetési feltétel hozzáadása egy szabályhoz egy művelettel és egy prioritással
 
-Hozzon létre egy tűzfalhoz objektumot `nonUSBlockRule` az egyezési feltétellel, a művelet és a egy prioritását az alapján [New-AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorcustomruleobject).  Egy CustomRule (egyéni szabály) objektum több MatchCondition (egyeztetési feltétel) objektummal is rendelkezhet.  Ebben a példában a Művelet a Blokkolás értékre, a Prioritás pedig az 1 értékre, a legmagasabb prioritásra van állítva.
+Hozzon létre egy tűzfalhoz objektumot `nonUSBlockRule` az egyezési feltétellel, a művelet és a egy prioritását az alapján [New-AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject).  Egy CustomRule (egyéni szabály) objektum több MatchCondition (egyeztetési feltétel) objektummal is rendelkezhet.  Ebben a példában a Művelet a Blokkolás értékre, a Prioritás pedig az 1 értékre, a legmagasabb prioritásra van állítva.
 
 ```
 $nonUSBlockRule = New-AzFrontDoorCustomRuleObject `
@@ -77,12 +77,12 @@ $nonUSBlockRule = New-AzFrontDoorCustomRuleObject `
 ```
 
 ## <a name="add-rules-to-a-policy"></a>Szabályok hozzáadása egy házirend
-Keresse meg az erőforráscsoport, amely tartalmazza a bejárati ajtajának profil használatával `Get-AzResourceGroup`. Ezután hozzon létre egy `geoPolicy` csoportházirend-objektumot tartalmazó `nonUSBlockRule` használatával [New-AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/new-azfrontdoorfirewallPolicy) , amely tartalmazza a bejárati ajtajának profil megadott erőforráscsoportban. Meg kell adnia egy egyedi nevet a földrajzi házirend. 
+Keresse meg az erőforráscsoport, amely tartalmazza a bejárati ajtajának profil használatával `Get-AzResourceGroup`. Ezután hozzon létre egy `geoPolicy` csoportházirend-objektumot tartalmazó `nonUSBlockRule` használatával [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) , amely tartalmazza a bejárati ajtajának profil megadott erőforráscsoportban. Meg kell adnia egy egyedi nevet a földrajzi házirend. 
 
 Az alábbi példában az erőforráscsoport nevét használja *myResourceGroupFD1* feltételezve, hogy létrehozta a bejárati ajtó profil szereplő utasítások segítségével a [a rövid útmutató: Hozzon létre egy bejárati ajtajának](quickstart-create-front-door.md) cikk. Az az alábbi példában cserélje le a szabályzat neve *geoPolicyAllowUSOnly* egy egyedi házirend neve.
 
 ```
-$geoPolicy = New-AzFrontDoorFireWallPolicy `
+$geoPolicy = New-AzFrontDoorWafPolicy `
 -Name "geoPolicyAllowUSOnly" `
 -resourceGroupName myResourceGroupFD1 `
 -Customrule $nonUSBlockRule  `

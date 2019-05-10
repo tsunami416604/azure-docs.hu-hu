@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 18ec59200d3cf820794ac353e38106ad26aca697
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f6742bf64ce26e6cce93dfcdfd06756f3c340d9e
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598032"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522966"
 ---
 # <a name="common-api-response-codes-and-their-meaning"></a>Gyakori API válaszkódok és azok jelentése
 
-A [szerzői](https://aka.ms/luis-authoring-apis) és [végpont](https://aka.ms/luis-endpoint-apis) API-k HTTP-válaszkódot adja vissza. Parancsválasz-üzeneteket egy kérelem-re vonatkozó információk közé tartozik, míg a HTTP-válaszként kapott állapotkód általános. 
+A [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087) és [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) API-k HTTP-válaszkódot adja vissza. Parancsválasz-üzeneteket egy kérelem-re vonatkozó információk közé tartozik, míg a HTTP-válaszként kapott állapotkód általános. 
 
 ## <a name="common-status-codes"></a>Közös állapotkódok
-Az alábbi táblázat a leggyakoribb HTTP-válasz állapota kódokat a némelyike a [szerzői](https://aka.ms/luis-authoring-apis) és [végpont](https://aka.ms/luis-endpoint-apis) API-kat:
+Az alábbi táblázat a leggyakoribb HTTP-válasz állapota kódokat a némelyike a [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087) és [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) API-kat:
 
 |Kód|API|Magyarázat|
 |:--|--|--|

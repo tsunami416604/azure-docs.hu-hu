@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: b99132cceb8981a93a8f1c10ccc488d5806f7254
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fc4db12f722d1330f0642e155c02a1936373e256
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050977"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65520491"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása egyéni tartományon bejárati ajtajának
 
@@ -82,7 +82,6 @@ A saját tanúsítványát is használhatja a HTTPS szolgáltatás engedélyezé
 
 > [!WARNING]
 > </br> – Az Azure Front Door Service jelenleg csak olyan Key Vault-fiókokat támogat, amelyek a Front Door-konfigurációval megegyező előfizetésben vannak. Ha nem a Front Door-előfizetéshez tartozó Key Vault-tárolót választ, az hibát eredményez.
-> </br> – Az Azure Front Door Service jelenleg csak a Titkos kódok szakaszban tárolt Key Vault-tanúsítványokat támogatja. A tanúsítványt nem fogja tudni importálni, ha a Titkos kódok helyett a Tanúsítványok szakaszban tárolja.
 > </br> – Az Azure Front Door Service jelenleg csak a jelszó **nélküli**, PFX-szel feltöltött tanúsítványokat támogatja.
 
 #### <a name="register-azure-front-door-service"></a>Az Azure Front Door Service regisztrálása
@@ -142,7 +141,7 @@ Ha saját tanúsítványt használ, nem szükséges tartományérvényesítés.
 
 A CNAME rekordnak a következő formátumban kell lennie, ahol a *Név* az Ön egyéni tartományának neve, az *Érték* pedig a Front Door alapértelmezett .azurefd.net eszközneve:
 
-| Name (Név)            | Típus  | Érték                 |
+| Name (Név)            | Típus  | Value                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 

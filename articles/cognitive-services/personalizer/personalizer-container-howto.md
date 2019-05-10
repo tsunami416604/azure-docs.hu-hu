@@ -7,20 +7,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 05/09/2019
 ms.author: edjez
-ms.openlocfilehash: 2a62fd288f9118882e5cd9899ab572d4b247fc5a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a197531a7c78823271c0a5fa5413b76746f63a9a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158538"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507015"
 ---
 # <a name="install-and-run-personalizer-containers"></a>Telepítse és futtassa a Personalizer tárolók
 
 A Personalizer szolgáltatás a következő tároló(k) rendelkezik: 
 
-|Függvény|Szolgáltatások|
+|Függvény|Funkciók|
 |-|-|
 |Personalizer|Tartalom és a felhasználó az aktuális környezetben ajánlott műveletet határozza meg.|
 
@@ -99,7 +99,7 @@ Ha a tároló a [gazdaszámítógép](#the-host-computer), a következő eljár�
 
 Használja a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) parancs futtatása bármely három tárolóra. A parancs paraméterei a következők:
 
-| Helyőrző | Érték |
+| Helyőrző | Value |
 |-------------|-------|
 |{BILLING_KEY} | Ezt a kulcsot a tároló elindításához szolgál, és az Azure Portalon Personalizer Szolgáltatáskulcsok oldalon érhető el.  |
 |{BILLING_ENDPOINT_URI} | A számlázási végpont URI azonosítóját az Azure Portalon Personalizer szolgáltatás áttekintése lapon érhető el.|
@@ -163,7 +163,7 @@ Használja a gazdagép https://localhost:5000, API-k tároló.
 
 Állítsa le a tárolót, a parancssori környezetben, ahol a tárolóban fut, nyomja le a **Ctrl + C**.
 
-## <a name="troubleshoot"></a>Hibaelhárítás
+## <a name="troubleshoot"></a>Az eszköz nem tudta a várt módon befejezni a szinkronizálást. A probléma megoldásának módjáról erre az üzenetre kattintva tájékozódhat.
 
 A kimenet futtatásakor a tároló [csatlakoztatási](personalizer-container-configuration.md#mount-settings) és naplózás engedélyezve van, a tárolót hoz létre a naplófájlokat, amelyek hasznosak a hibaelhárítás indítása, vagy a tároló futtatása közben történik. 
 
@@ -182,7 +182,7 @@ A tároló a végpontok dokumentáció teljes készletét nyújtja, valamint egy
 
 Personalizer szolgáltatás tárolók Küldés a számlázási adatokat az Azure-ba, a használatával egy _Personalizer szolgáltatás_ erőforrást az Azure-fiókjával. 
 
-Cognitive Services-tárolók nem teszi lehetővé az Azure-méréshez való csatlakozás nélkül. Az ügyfeleknek kell ahhoz, hogy a tárolókkal való kommunikációhoz mindig a mérési szolgáltatással számlázási adatokat. Cognitive Services-tárolók nem vásárlói adatokat küldeni a Microsoftnak. 
+Cognitive Services-tárolók nem teszi lehetővé az Azure-méréshez való csatlakozás nélkül. Az ügyfeleknek kell ahhoz, hogy a tárolókkal való kommunikációhoz mindig a mérési szolgáltatással számlázási adatokat.  
 
 A `docker run` parancsot használja a következő argumentumok számlázás szempontjából:
 

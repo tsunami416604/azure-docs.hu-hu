@@ -10,15 +10,14 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: 30f009f76c25d80281d748e1e484175380ca9743
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b65073c0646db0cd0c27a71005bb4f74b091ae09
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027172"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506885"
 ---
 # <a name="what-is-reinforcement-learning"></a>Mi a megerősítő tanulást?
-
 
 Megerősítő tanulást egy megközelítés a Machine learning, amely megtanulja viselkedések visszajelzés beolvas annak használatára.
  
@@ -60,11 +59,11 @@ John is adott több oktatóanyagok korábban, többek között a közös előrej
 
 Jelenleg használt personalizer [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit/wiki) a machine Learning alapjaként. Ezt a keretrendszert lehetővé teszi, hogy a maximális átviteli sebesség és a legkisebb késés, ha személyre szabása így rangsorolja és az összes esemény a modell betanításához.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 * [Az alacsony műszaki adósságot környezetfüggő döntések](https://arxiv.org/abs/1606.03966)
 * [A csökkentési megközelítés valós besoroláshoz](https://arxiv.org/abs/1803.02453)
-* [A nem helyhez kötött világok hatékony környezetfüggő Bandits](https://arxiv.org/abs/1708.01799ds)
+* [A nem helyhez kötött világok hatékony környezetfüggő Bandits](https://arxiv.org/abs/1708.01799)
 * [Maradék adatveszteség előrejelzési: Megerősítő: tanulási rendelkező nem növekményes visszajelzés](https://openreview.net/pdf?id=HJNMYceCW)
 * [Útmutatás és vizuális megfigyelés leképezése műveleteket a megerősítő tanulást](https://arxiv.org/abs/1704.08795)
 * [Keresés jobban, mint az oktatói tanulás](https://arxiv.org/abs/1502.02206)

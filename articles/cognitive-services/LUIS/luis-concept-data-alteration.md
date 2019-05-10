@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: c43d3738b23037432ecdfe3aa872950f6a7b863e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3395283e6228d7203b2e835961914e2f167fa451
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60812798"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522396"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Az ALTER utterance (kifejezés) adatok előtt vagy közben előrejelzése
 A LUIS segítségével kezelheti az utterance (kifejezés) előtt vagy közben az előrejelzési módszert biztosít. Ezek közé tartozik a helyesírás-ellenőrzés és kijavítása prebuild datetimeV2 időzóna problémák kijavítása. 
 
 ## <a name="correct-spelling-errors-in-utterance"></a>Helyesírási hibák az utterance (kifejezés)
-Használja a LUIS [a Bing Spell ellenőrzés API 7-es](https://azure.microsoft.com/services/cognitive-services/spell-check/) az utterance (kifejezés) a helyesírási hibákat. A LUIS kell a szolgáltatáshoz tartozó kulcsot. Hozza létre a kulcsot, majd adja hozzá a kulcsot a lekérdezési karakterlánc paraméterként a [végpont](https://aka.ms/luis-endpoint-apis). 
+Használja a LUIS [a Bing Spell ellenőrzés API 7-es](https://azure.microsoft.com/services/cognitive-services/spell-check/) az utterance (kifejezés) a helyesírási hibákat. A LUIS kell a szolgáltatáshoz tartozó kulcsot. Hozza létre a kulcsot, majd adja hozzá a kulcsot a lekérdezési karakterlánc paraméterként a [végpont](https://go.microsoft.com/fwlink/?linkid=2092356). 
 
 Kijavíthatja a helyesírási hibákat is a **teszt** panel szerint [a kulcs megadása](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). A kulcs, a teszt panel a böngészőben egy munkamenet-változó tárolja. Adja hozzá a kulcsot minden böngésző-munkamenetben helyesírás-ellenőrzés javítani szeretné a teszt panelt. 
 
@@ -56,14 +56,14 @@ A Bing spell check API-val a LUIS nem támogatja a fehér-szavak listáját a sp
 A LUIS-alkalmazás az előre összeállított datetimeV2 entitást használja, amikor egy datetime értéket a előrejelzési válaszban adhatók vissza. A kérelem az időzóna visszaadandó megfelelő datetime meghatározására szolgál. Ha a kérelem érkezik egy robot vagy egy másik központi alkalmazás LUIS való elérése előtt, javítsa ki az időzóna, LUIS használja. 
 
 ### <a name="endpoint-querystring-parameter"></a>Végpont paramétert
-Az időzóna nem kerül kijavításra, a felhasználó időzóna való hozzáadásával a [végpont](https://aka.ms/luis-endpoint-apis) használatával a `timezoneOffset` param. Az érték `timezoneOffset` percek alatt az idő módosítása a pozitív vagy negatív szám lehet.  
+Az időzóna nem kerül kijavításra, a felhasználó időzóna való hozzáadásával a [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) használatával a `timezoneOffset` param. Az érték `timezoneOffset` percek alatt az idő módosítása a pozitív vagy negatív szám lehet.  
 
 |Param|Érték|
 |--|--|
 |`timezoneOffset`|pozitív vagy negatív szám, percek alatt|
 
 ### <a name="daylight-savings-example"></a>Nyári időszámítás – megtakarítási példa
-Ha a nyári időszámításhoz módosíthatja a visszaadott előre összeállított datetimeV2 van szüksége, használja a `timezoneOffset` lekérdezési karakterlánc paraméterrel a +/-érték percben a [végpont](https://aka.ms/luis-endpoint-apis) lekérdezés.
+Ha a nyári időszámításhoz módosíthatja a visszaadott előre összeállított datetimeV2 van szüksége, használja a `timezoneOffset` lekérdezési karakterlánc paraméterrel a +/-érték percben a [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) lekérdezés.
 
 Adja hozzá a 60 perc: 
 

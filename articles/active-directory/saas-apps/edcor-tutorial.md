@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a527b928edacc202301f53dbf7852f8446b3aa7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ff1d9089f3fb2f3ebf3022b54c442e8338ab983b
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60280147"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508341"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edcor"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Edcor
 
@@ -124,7 +124,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Edcor, hajtsa végre
 
 ### <a name="configure-edcor-single-sign-on"></a>Edcor egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **Edcor** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Edcor támogatási csapatának](http://www.edcor.com/contact-us-2/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **Edcor** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [Edcor támogatási csapatának](https://www.edcor.com/contact-us/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -179,9 +179,9 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 ### <a name="create-edcor-test-user"></a>Edcor tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Edcor hoz létre. Együttműködve [Edcor támogatási csapatának](http://www.edcor.com/contact-us-2/) a felhasználók hozzáadása az Edcor platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű Edcor hoz létre. Együttműködve [Edcor támogatási csapatának](https://www.edcor.com/contact-us/) a felhasználók hozzáadása az Edcor platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

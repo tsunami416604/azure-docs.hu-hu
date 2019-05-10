@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 04/19/2019
+ms.date: 05/09/2019
 ms.author: alkohli
-ms.openlocfilehash: a33734af34814772fdd8c391d0ee19a79b47d856
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b3d53b7d5fceb303259823198731b5198cfce82c
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925042"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508272"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Oktatóanyag: Adatok másolása az Azure Data Box Blob storage REST API-kon keresztül  
 
@@ -46,7 +46,7 @@ Data Box Blob storage keresztül kapcsolódhat *http* vagy *https*.
 - *HTTPS* csatlakozhat a Data Box Blob storage és ajánlott módja.
 - *Http* használatos, amikor keresztül csatlakozó megbízható hálózatok.
 
-Csatlakozás más lépéseket kell végrehajtania, ha a Data Box Blob Storage-kapcsolattal csatlakozik *http* vagy *https*,.
+Csatlakozás más lépéseket kell végrehajtania, ha a Data Box Blob Storage-kapcsolattal csatlakozik *http* vagy *https*.
 
 ## <a name="connect-via-http"></a>Kapcsolódás http-n keresztül
 
@@ -116,7 +116,7 @@ Kövesse az alábbi lépéseket importálása a `.cer` fájlt egy Windows vagy L
 
     ![Tanúsítvány importálása a PowerShell használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
-4.  Kattintson a **Befejezés** gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy az importálás sikeres volt-e.
+4.  Kattintson a **Befejezés**gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy az importálás sikeres volt-e.
 
     ![Tanúsítvány importálása a PowerShell használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 

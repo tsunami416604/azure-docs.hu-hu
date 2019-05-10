@@ -1,7 +1,7 @@
 ---
 title: Telepítse és futtassa a tároló - űrlap felismerő
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan űrlap felismerő a tárolót használja az űrlap és a táblák adatait elemezni.
+description: Megismerheti, hogyan használhatja a Form Recognizer-tárolót az űrlap- és táblaadatok elemzéséhez.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,17 +9,17 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: pafarley
-ms.openlocfilehash: c7d5d9421ec89f1d75723d3538ee9a73e56dc6a3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a7159fccc9c4ef232cfca08b173e712e268343ea
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143025"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507817"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Telepítse és futtassa az űrlap felismerő tárolók
 Űrlap felismerő gépi tanulási technológia azonosíthatja és kulcs-érték párok és táblák kinyerése űrlapok vonatkozik. Ez értékeket és hozzájuk táblabejegyzéseket társítja, és majd megjeleníti a strukturált adatok, amely tartalmazza a kapcsolatokat az eredeti fájl. Az egyéni űrlap felismerő modell annak érdekében, hogy csökkenthető, és könnyedén integrálhatja a munkafolyamat automation vagy más alkalmazásban egy egyszerű REST API használatával hívható meg. Csak öt dokumentumok (vagy egy üres képernyő) szükséges, így gyorsan, pontos eredményeket kaphat és fenntarthatja az adott tartalomra, nehéz kézi beavatkozás vagy kiterjedt data science szakértelem nélkül. Adatok címkézési vagy adatok jegyzet nem igényel.
 
-|Függvény|Szolgáltatások|
+|Függvény|Funkciók|
 |-|-|
 |Form Recognizer| <li>Folyamatok fájlokat, írja be a PDF-, PNG és JPG.<li>Egyéni modellek ugyanez az elrendezés legalább 5 űrlapokkal betanítja. <li>Kinyeri a kulcs-érték párok és a tábla adatait. <li>Használja a Cognitive Service számítógép Vision API RecognizeText és nyomtatott szöveg kinyerése űrlapok rendszerképek.<li>Jegyzet vagy címkézés nem igényel.|
 
@@ -101,7 +101,7 @@ Ha a tároló a [gazdaszámítógép](#the-host-computer), a következő eljár�
 
 Használja a [futtatása docker](https://docs.docker.com/engine/reference/commandline/run/) parancs futtatása bármely három tárolóra. A parancs paraméterei a következők:
 
-| Helyőrző | Érték |
+| Helyőrző | Value |
 |-------------|-------|
 |{BILLING_KEY} | Ezt a kulcsot szolgál a tárolót, és az Azure Portalon űrlap felismerő kulcsok lapján található.  |
 |{BILLING_ENDPOINT_URI} | A számlázási végpont URI azonosítóját az Azure Portalon az űrlap felismerő áttekintése oldalon érhető el.|
@@ -261,7 +261,7 @@ formrecognizer_config = formrecognizersdk.FormRecognizerConfig(subscription=form
 
 ### <a name="form-recognizer"></a>Form Recognizer
 
-A tároló biztosít API-k, amelyek található REST-végpont [Itt](https://docs.microsoft.com/azure/cognitive-services/formrecognizer-service/rest-apis#formrecognier-api) és -példákat [Itt](https://azure.microsoft.com/resources/samples/cognitive-formrecognizer).
+A tároló biztosít API-k, amelyek található REST-végpont [Itt](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel).
 
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]

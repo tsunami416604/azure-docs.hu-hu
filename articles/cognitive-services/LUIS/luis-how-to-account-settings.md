@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: d7d63ad642ab2d3b336e15dcca606077762ceb9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5a1d7ee3b8b16631f7b919f3aece0848d662e62
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60195816"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523521"
 ---
 # <a name="manage-account-and-authoring-key"></a>Fiók és a kulcs létrehozási kezelése
 
@@ -24,7 +24,7 @@ A két kulcsfontosságú adatokat egy LUIS-fiók olyan felhasználói fiók és 
 
 ## <a name="authoring-key"></a>Kulcs létrehozási
 
-Ez egyetlen, régióspecifikus szerzői a kulcs a **beállítások** lap lehetővé teszi, hogy az összes alkalmazás készítése a [LUIS](luis-reference-regions.md) portál, valamint a [API-k készítése](https://aka.ms/luis-authoring-api). Könnyebb áttekinthetőség érdekében győződjön meg arról, hogy az Authoring Tool kulcs engedélyezett egy [korlátozott](luis-boundaries.md) végpont száma havonta kérdezi le.
+Ez egyetlen, régióspecifikus szerzői a kulcs a **beállítások** lap lehetővé teszi, hogy az összes alkalmazás készítése a [LUIS](luis-reference-regions.md) portál, valamint a [API-k készítése](https://go.microsoft.com/fwlink/?linkid=2092087). Könnyebb áttekinthetőség érdekében győződjön meg arról, hogy az Authoring Tool kulcs engedélyezett egy [korlátozott](luis-boundaries.md) végpont száma havonta kérdezi le.
 
 [![A LUIS-beállítások lap](./media/luis-how-to-account-settings/account-settings.png)](./media/luis-how-to-account-settings/account-settings.png#lightbox)
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 3c62ad66a29943e26d1cb2f15ca71631d2feabe3
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: bba263b65344672808487ae6de4c3f475a871842
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467430"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523942"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Oktatóanyag: Napló hálózati forgalmat, és a egy virtuális gépről az Azure portal használatával
 
@@ -95,7 +95,7 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
     A Storage-fiók létrehozása nagyjából egy percet vesz igénybe. Ne folytassa a további lépésekkel, amíg a tárfiók létrehozása be nem fejeződött. Ha meglévő Storage-fiókot használ új létrehozása helyett, győződjön meg arról, hogy olyan fiókot választ, amely esetében a **BEÁLLÍTÁSOK** területen a **Tűzfalak és virtuális hálózatok** beállítása **Minden hálózat** (alapértelmezett).
     
     > [!NOTE]
-    > Bár Microsoft.Insight és a Microsoft.Network szolgáltató jelenleg az Azure Storage használata támogatott, hálózati biztonsági csoportok naplóinak még nincs teljesen előkészítve a. Hálózati biztonsági csoportok naplózásának engedélyezése **minden hálózatból elérhető** továbbra is lehet kijelölve, amíg ez a funkció nem teljesen előkészítve. 
+    > Bár Microsoft.Insight és a Microsoft.Network szolgáltató megbízható Microsoft Services az Azure Storage jelenleg támogatottak, hálózati biztonsági csoportok naplóinak még nincs teljesen előkészítve a. Hálózati biztonsági csoportok naplózásának engedélyezése **minden hálózatból elérhető** továbbra is lehet kijelölve, amíg ez a funkció nem teljesen előkészítve. 
 4. Válassza a portál bal felső sarkában található **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Amikor a **Network Watcher** elem megjelenik a keresési eredmények között, válassza ki.
 5. A **NAPLÓK** területen válassza az **NSG-folyamatnaplók** lehetőséget, ahogyan az a következő képen látható:
 

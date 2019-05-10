@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: cae29fe045d1bdc17f414ff016642635b74320df
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
-ms.translationtype: HT
+ms.openlocfilehash: ee539b87c08dd00545060cb30d28ac7fcd01e61b
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408833"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518989"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Oktatóanyag: A dinamikus konfiguráció használata az ASP.NET Core-alkalmazás
 
@@ -63,6 +63,9 @@ Ehhez az oktatóanyaghoz, telepítse a [.NET Core SDK](https://dotnet.microsoft.
     ```
 
     A második paramétert a `.Watch` módszer a lekérdezési időköz az ASP.NET ügyféloldali kódtár egy alkalmazás a konfigurációs adattároló kérdezi le. Az ügyféloldali kódtár ellenőrzi a meghatározott konfigurációs beállítás megtekintéséhez, ha minden olyan módosítás történt.
+    
+    > [!NOTE]
+    > Az alapértelmezett lekérdezési időköze a `Watch` metódust érték 30 másodperc, ha nincs megadva.
 
 2. Adjon hozzá egy *kinyerhetők* határozza meg, és implementál egy új fájlt `Settings` osztály.
 
@@ -168,7 +171,7 @@ Ehhez az oktatóanyaghoz, telepítse a [.NET Core SDK](https://dotnet.microsoft.
 
 5. Válassza ki **konfigurációs Explorer**, és frissítse az értékeket a következő kulcsokat:
 
-    | Kulcs | Érték |
+    | Kulcs | Value |
     |---|---|
     | TestAppSettings:BackgroundColor | zöld |
     | TestAppSettings:FontColor | lightGray |

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: bce260d2a6b897d3e45b231df4eecd7ecb31ba31
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4aeb9f924ba9af55485dce8babfacdbb0d0110f4
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143244"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65520281"
 ---
 # <a name="personalizer-settings"></a>Personalizer beállításai
 
@@ -25,7 +25,7 @@ Szolgáltatás konfigurációja magában foglalja, hogyan kezeli az a szolgálta
 
 For-each visszajelzési ciklus Personalizer erőforrás létrehozása. 
 
-1. Jelentkezzen be az [Azure portálra](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). Az előző kapcsolat veszi, hogy a **létrehozás** Personlizer szolgáltatás lapján. 
+1. Jelentkezzen be az [Azure portálra](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). Az előző kapcsolat veszi, hogy a **létrehozás** Personalizer szolgáltatás lapján. 
 1. Adja meg a szolgáltatás nevét, és válasszon ki egy előfizetést, hely, tarifacsomag, és erőforráscsoport.
 1. Válassza ki a megerősítés, majd **létrehozás**.
 
@@ -35,7 +35,7 @@ For-each visszajelzési ciklus Personalizer erőforrás létrehozása.
 1. A Personalizer erőforrás található. 
 1. Az a **erőforrás-kezelés** szakaszban jelölje be **beállítások**.
 
-    Mielőtt elhagyja az Azure Portalon, másolja ki az egyik az erőforrás kulcsainak az a **kulcsok** lapot. Szüksége lesz használni a [Personalizer SDK](https://aka.ms/personalizer-dotnet-sdk-docs).
+    Mielőtt elhagyja az Azure Portalon, másolja ki az egyik az erőforrás kulcsainak az a **kulcsok** lapot. Szüksége lesz használni a [Personalizer SDK](https://go.microsoft.com/fwlink/?linkid=2092353).
 
 ### <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>A visszajelzési ciklus használati eset alapján ellenszolgáltatás beállításainak konfigurálása
 

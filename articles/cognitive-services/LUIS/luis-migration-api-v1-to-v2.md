@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: 9eb73db6f641d3a5f5bb82901bd12ea291eada58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a4e176552fcbab9d54da696439c7e46750be3944
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60196031"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522367"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>API v1-v2 áttelepítési útmutatója a LUIS-alkalmazások
-Az 1. verziójának [végpont](https://aka.ms/v1-endpoint-api-docs) és [szerzői](https://aka.ms/v1-authoring-api-docs) API-jai elavultak. Ez az útmutató segítségével megtudhatja, hogyan 2. verzióban át [végpont](https://aka.ms/luis-endpoint-apis) és [szerzői](https://aka.ms/luis-authoring-apis) API-k. 
+Az 1. verziójának [végpont](https://aka.ms/v1-endpoint-api-docs) és [szerzői](https://aka.ms/v1-authoring-api-docs) API-jai elavultak. Ez az útmutató segítségével megtudhatja, hogyan 2. verzióban át [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) és [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087) API-k. 
 
 ## <a name="new-azure-regions"></a>Új Azure-régió
 A LUIS rendelkezik új [régiók](https://aka.ms/LUIS-regions) biztosított az intelligens HANGFELISMERÉSI API-t. A LUIS régiócsoportok egy másik portált biztosít. Az alkalmazás lekérdezése várhatóan ugyanabban a régióban kell hozhatóak létre. Alkalmazások nem telepíthetők át automatikusan régióban. Az alkalmazás exportálhat egy adott régióban, majd importálása másik ahhoz, hogy egy új régióban érhető el.
@@ -169,6 +169,6 @@ Lásd: [intelligens HANGFELISMERÉSI API válaszkódok](luis-reference-response-
 
 ## <a name="next-steps"></a>További lépések
 
-A v2 API-dokumentáció frissítésére a meglévő REST-hívások LUIS használatát [végpont](https://aka.ms/luis-endpoint-apis) és [szerzői](https://aka.ms/luis-authoring-apis) API-k. 
+A v2 API-dokumentáció frissítésére a meglévő REST-hívások LUIS használatát [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) és [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087) API-k. 
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

@@ -11,12 +11,12 @@ ms.date: 05/08/2019
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 255a7c9d0b9da15176fca90c6934a84fa0f863ed
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
-ms.translationtype: HT
+ms.openlocfilehash: fc724e241849f4519a0e353cb6789d3f83eaf4b9
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/09/2019
-ms.locfileid: "65501856"
+ms.locfileid: "65510450"
 ---
 # <a name="create-an-openapi-definition-for-a-function-with-azure-api-management"></a>Az Azure API Management-függvény OpenAPI definíció létrehozása
 
@@ -30,6 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Függvény létrehozása az Azure-ban
 > * Az Azure API Management segítségével a OpenAPI-definíció létrehozása
 > * A definíció tesztelése a függvény meghívásával
+> * Az OpenAPI-definíció letöltése
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
@@ -164,11 +165,11 @@ Most már készen áll arra, hogy létrehozza az OpenAPI-definíciót.
 
 Az API-t a függvény megtörtént.
 
-## <a name="test-the-openapi-definition"></a>Az OpenAPI-definíció tesztelése
+## <a name="test-the-api"></a>Az API tesztelése
 
-Ahhoz, hogy az API-definíció, ellenőrizze, hogy működik.
+Az OpenAPI-definíció használatához ellenőrizze, hogy működik-e az API-t.
 
-1. Az a **teszt** fülre a select függvény **POST** művelet
+1. Az a **teszt** fülre a select függvény **POST** műveletet.
 
 1. Adjon meg értéket a **óra** és **kapacitás**
 
@@ -183,9 +184,21 @@ Ahhoz, hogy az API-definíció, ellenőrizze, hogy működik.
 
     ![Függvény API tesztelése](media/functions-openapi-definition/test-function-api-openapi.png)
 
+## <a name="download-the-openapi-definition"></a>Az OpenAPI-definíció letöltése
+
+Ha az API a várt módon működik, letöltheti az OpenAPI-definíció.
+
+1. Válassza ki **töltse le az OpenAPI-definíció** az oldal tetején.
+   
+   ![OpenAPI-definíció letöltése](media/functions-openapi-definition/download-definition.png)
+
+2. Nyissa meg a letöltött JSON-fájlt, és tekintse át a definíciót.
+
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>További lépések
 
+Integráció az API Management segítségével a függvények OpenAPI-definíció létrehozása. Most már szerkesztheti a definíció az API Management a portálon. Emellett [további információ az API Management](../api-management/api-management-key-concepts.md).
+
 > [!div class="nextstepaction"]
-> [További információ az API Management ismertetése](../api-management/api-management-key-concepts.md)
+> [Az API Management szolgáltatásban az OpenAPI-definíció szerkesztése](../api-management/edit-api.md)

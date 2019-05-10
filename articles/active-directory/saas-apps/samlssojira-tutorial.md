@@ -15,19 +15,19 @@ ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36f14c8b1a462c7cf8c5ef336a5279bf0f99b2f6
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
-ms.translationtype: HT
+ms.openlocfilehash: 943131bc746b5d2a1fd95a26a6a6c9f3bb6b9e57
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472890"
+ms.locfileid: "65509959"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Oktatóanyag: Feloldási GmbH által az Azure Active Directory-integráció a Jira SAML SSO-val
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan állítható be a Jira SAML SSO feloldási GmbH az Azure Active Directoryval (Azure AD) által.
 A Jira SAML SSO integrálása feloldási GmbH az Azure AD által nyújt a következő előnyökkel jár:
 
-* Szabályozhatja, hogy ki jelentkezhet be Jira az SAML SSO beépülő modullal felbontása GmbH Azure AD-ben.
+* Szabályozhatja, aki bejelentkezhet Jira az SAML SSO beépülő modullal felbontása GmbH Azure AD-ben.
 * Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezett jira szolgáltatásba való Azure AD-fiókjukat az SAML SSO használatával Jira felbontása GmbH (egyszeri bejelentkezés).
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
@@ -57,7 +57,7 @@ Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri b
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**, és kattintson a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
@@ -65,22 +65,22 @@ Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri b
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **SAML SSO a Jira felbontása GmbH**, jelölje be **SAML SSO a Jira felbontása GmbH** eredmény panelen kattintson a **hozzáadása** gombra kattintva vegye fel az alkalmazást . A vállalati alkalmazás nevét is módosíthatja.
+4. A Keresés mezőbe írja be a **SAML SSO a Jira felbontása GmbH**, jelölje be **SAML SSO a Jira felbontása GmbH** az eredmény panelen, majd kattintson a a **hozzáadása** gombra kattintva adhat hozzá a az alkalmazás. A vállalati alkalmazás nevét is módosíthatja.
 
      ![SAML SSO a Jira felbontása GmbH, a találatok listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-single-sign-on-with-the-saml-sso-plugin-and-azure-ad"></a>A SAML SSO beépülő modulja, és az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-single-sign-on-with-the-saml-sso-plugin-and-azure-ad"></a>Egyszeri bejelentkezés a SAML SSO beépülő modulja, és az Azure ad-ben tesztelése és konfigurálása
 
 Ebben a szakaszban fog tesztelése és konfigurálása egyszeri bejelentkezéshez jira szolgáltatásba való az Azure AD-felhasználót. Erre azért van szükség a tesztfelhasználó számára nevű **Britta Simon**.
 Az egyszeri bejelentkezés működéséhez egy Azure AD-felhasználót és a kapcsolódó felhasználó a SAML SSO a Jira felbontása hivatkozás kapcsolata GmbH kell létrehozni.
 
 Egyszeri bejelentkezés tesztelése és konfigurálása, meg kell a következő lépéseket:
 
-1. **[Az Azure AD vállalati alkalmazást, az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – az Azure AD vállalati alkalmazás számára az egyszeri bejelentkezés konfigurálása
-2. **[A SAML SSO beépülő modulja a Jira-példány konfigurálása](#configure-saml-sso-for-jira-by-resolution-gmbh-single-sign-on)**  – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+1. **[Az Azure AD vállalati alkalmazást, az egyszeri bejelentkezés konfigurálása](#configure-the-azure-ad-enterprise-application-for-single-sign-on)**  – az Azure AD vállalati alkalmazás számára az egyszeri bejelentkezés konfigurálása
+2. **[A SAML SSO beépülő modulja a Jira-példány konfigurálása](#configure-the-saml-sso-plugin-of-your-jira-instance)**  – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure ad-ben hozzon létre egy tesztfelhasználót.
 1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  -engedélyezése a tesztfelhasználó használata az egyszeri bejelentkezés az Azure oldaláról.
-1. **[A tesztfelhasználó létrehozása Jira-hibajegy](#create-saml-sso-for-jira-by-resolution-gmbh-test-user)**  -partner tesztfelhasználó létrehozása Jira-hibajegy az Azure ad-ben tesztfelhasználó számára.
+1. **[A tesztfelhasználó létrehozása Jira-hibajegy](#create-the-test-user-also-in-jira)**  -partner tesztfelhasználó létrehozása Jira-hibajegy az Azure ad-ben tesztfelhasználó számára.
 1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-the-azure-ad-enterprise-application-for-single-sign-on"></a>Az Azure AD vállalati alkalmazást, az egyszeri bejelentkezés konfigurálása
@@ -93,7 +93,7 @@ Konfigurálja az egyszeri bejelentkezést a Jira SAML SSO-val feloldási GmbH, h
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. A **egyszeri bejelentkezési módszer**válassza **SAML** módot az egyszeri bejelentkezés engedélyezése.
+2. A **egyszeri bejelentkezési módszer**, jelölje be a **SAML** módot az egyszeri bejelentkezés engedélyezése.
 
     ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
@@ -101,7 +101,7 @@ Konfigurálja az egyszeri bejelentkezést a Jira SAML SSO-val feloldási GmbH, h
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett módban a következő lépésekkel:
+4. Az a **alapszintű SAML-konfigurációja** szakaszt, ha az alkalmazás konfigurálása a **Identitásszolgáltató** kezdeményezett módot, majd hajtsa végre az alábbi lépéseket:
 
     ![SAML SSO a Jira felbontása GmbH tartomány és URL-címek egyszeri bejelentkezési adatait](common/idp-intiated.png)
 
@@ -109,20 +109,20 @@ Konfigurálja az egyszeri bejelentkezést a Jira SAML SSO-val feloldási GmbH, h
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<server-base-url>/plugins/servlet/samlsso`
 
-    c. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+    c. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt a **SP** kezdeményezett mód:
 
     ![SAML SSO a Jira felbontása GmbH tartomány és URL-címek egyszeri bejelentkezési adatait](common/metadata-upload-additional-signon.png)
 
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<server-base-url>/plugins/servlet/samlsso`
 
     > [!NOTE]
-    > Az azonosító, a válasz URL-cím és a bejelentkezési URL-, helyettesítse be  **\<– base-URL-címe >** az alap URL-címmel a Jira-példány. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon. Ha problémába ütközik, ossza írjon nekünk az [Jira feloldási GmbH ügyfél által a SAML SSO támogatási csoportjának](https://www.resolution.de/go/support).
+    > Az azonosító, a válasz URL-cím és a bejelentkezési URL-, helyettesítse be  **\<– base-URL-címe >** az alap URL-címmel a Jira-példány. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon. Ha probléma van, írjon nekünk az [Jira feloldási GmbH ügyfél által a SAML SSO támogatási csoportjának](https://www.resolution.de/go/support).
 
 4. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** szakaszban, töltse le a **összevonási metaadatainak XML** , és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-### <a name="configure-the-saml-sso-plugin-of-your-jira-instance"></a>A SAML SSO beépülő modulja a Jira-példány konfigurálása] 
+### <a name="configure-the-saml-sso-plugin-of-your-jira-instance"></a>A SAML SSO beépülő modulja a Jira-példány konfigurálása 
 
 1. Egy másik böngészőablakban jelentkezzen be a Jira-példány rendszergazdaként.
 
@@ -144,7 +144,7 @@ Konfigurálja az egyszeri bejelentkezést a Jira SAML SSO-val feloldási GmbH, h
 
     ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/store-3.png)
 
-6.  Kattintson a **kezelés**.
+6. Kattintson a **kezelés**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/store-4.png)
     
@@ -156,7 +156,7 @@ Konfigurálja az egyszeri bejelentkezést a Jira SAML SSO-val feloldási GmbH, h
 
     ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon4.png) 
 
-10. A **válassza ki a SAML-identitásszolgáltató** lapon, a következő lépésekkel:
+10. Az a **válassza ki a SAML-identitásszolgáltató** lapon, a következő lépésekkel:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon5a.png)
  
@@ -168,7 +168,7 @@ Konfigurálja az egyszeri bejelentkezést a Jira SAML SSO-val feloldási GmbH, h
     
     d. Kattintson a **tovább**.
     
-11. Az a **identitás-szolgáltató konfigurációjának** kattintson **tovább**.
+11. Az a a **identitás-szolgáltató konfigurációjának** kattintson **tovább**.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon5b.png)
 
@@ -176,23 +176,23 @@ Konfigurálja az egyszeri bejelentkezést a Jira SAML SSO-val feloldási GmbH, h
 
     ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon5c.png)
 
-    a. Kattintson a **metaadatainak XML-fájl kiválasztása** gombra, és válasszon **összevonási metaadatainak XML** előzőleg letöltött fájl.
+    a. Kattintson a **metaadatainak XML-fájl kiválasztása** gombra, és válassza ki a **összevonási metaadatainak XML** előzőleg letöltött fájl.
 
     b. Kattintson a **importálás** gombra.
      
-    c. Várjon rövid ideig, amíg importálása sikeres.  
+    c. Várjon rövid ideig, amíg az importálás sikeres volt.  
      
     d. Kattintson a **tovább** gombra.
     
-13. A **felhasználói azonosító attribútum és -átalakítási** kattintson **tovább** gombra.
+13. A **felhasználói azonosító attribútum és -átalakítási** lap, kattintson a **tovább** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon5d.png)
     
-14. A **felhasználói létrehozáskor és frissítéskor** kattintson **Mentés & következő** beállításainak mentése.
+14. Az a **felhasználó létrehozása és frissítése** kattintson **Mentés & következő** a beállítások mentéséhez.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon6a.png)
     
-15. A **-beállítások tesztelése** kattintson **ugorja & manuális konfigurálása** ugorja most a felhasználó. Ez a következő szakaszban történik, és bizonyos beállítások az Azure Portalon igényel.
+15. Az a **-beállítások tesztelése** kattintson **ugorja & manuális konfigurálása** ugorja most a felhasználó. Ez a következő szakaszban történik, és van szükség az egyes beállítások az Azure Portalon.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon6b.png)
     
@@ -220,57 +220,57 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
   
     b. Az a **felhasználónév** írja be a következőt <b> BrittaSimon@contoso.com </b>.
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban hozzá Britta Simon vállalati alkalmazás, amely lehetővé teszi, hogy egyszeri bejelentkezés használatára.
+Ebben a szakaszban hozzá Britta Simon a vállalati alkalmazás, amely lehetővé teszi, hogy egyszeri bejelentkezés használatára.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**válassza **minden alkalmazás**. 
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**. 
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában keressen rá a vállalati alkalmazás, ez az oktatóanyag kezdetén létrehozott. Ha az oktatóanyag lépéseit követi, nevezzük **SAML SSO a Jira felbontása GmbH**. Ha, mivel ez egy másik nevet, keresse meg ezt a nevet.
+2. Az alkalmazások listájában keressen rá a létrehozott Ez az oktatóanyag elején a vállalati alkalmazás. Ha az oktatóanyag lépéseit követi, nevezzük **SAML SSO a Jira felbontása GmbH**. Ha adott azt egy másik nevet, keresse meg ezt a nevet.
 
     ![Az SAML egyszeri bejelentkezés az alkalmazásainak listájában feloldási GmbH csatlakozásonkénti Jira](common/all-applications.png)
 
-3. A bal oldali panelen kattintson a **felhasználók és csoportok**.
+3. Kattintson a bal oldali panel **felhasználók és csoportok**.
 
     ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Válassza ki **felhasználó hozzáadása**, majd válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. Az a **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában, és kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha vár semmilyen szerepkör értéke a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján .
 
 7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
 ### <a name="create-the-test-user-also-in-jira"></a>Jira-hibajegy is hozzon létre a tesztfelhasználó számára
 
-Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a Jira SAML SSO felbontása GmbH, akkor ki kell építeni az SAML SSO a Jira felbontása GmbH. Ebben az oktatóanyagban az esetet tegye a kiépítés kézzel kell. Azonban érhetők el is egyéb kiépítési minták a SAML SSO beépülő modulja által feloldási, például **igény szerinti** kiépítése. A dokumentációban található [SAML SSO felbontása GmbH](https://wiki.resolution.de/doc/saml-sso/latest/all). Ha kapcsolatos kérdése van, ossza a támogatási [felbontás támogatása](https://www.resolution.de/go/support).
+Ahhoz, hogy a SAML SSO a Jira feloldási GmbH jelentkezzen be az Azure AD-felhasználók, akkor ki kell építeni az SAML SSO a Jira felbontása GmbH. Ebben az oktatóanyagban az esetet tegye a kiépítés kézzel kell. Azonban érhetők el is egyéb kiépítési minták a SAML SSO beépülő modulja által feloldási, például **igény szerinti** kiépítése. A dokumentációban található [SAML SSO felbontása GmbH](https://wiki.resolution.de/doc/saml-sso/latest/all). Ha olyan kérdése van, forduljon a támogatási szolgálathoz [felbontás támogatása](https://www.resolution.de/go/support).
 
 **Manuálisan üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be rendszergazdaként Jira-példányba.
+1. Jelentkezzen be rendszergazdaként egy Jira-példány.
 
 2. Vigye a kurzort a fogaskerék alakú ikonjára, és válasszon **felhasználókezelés**.
 
    ![Alkalmazott hozzáadása](./media/samlssojira-tutorial/user1.png)
 
-3. Ha a rendszer átirányítja a rendszergazdai hozzáférés lapra, adja meg a **jelszó** , és kattintson a **megerősítése** gombra.
+3. Ha a rendszer átirányítja a rendszergazdai hozzáférés lap, adja meg a **jelszó** , és kattintson a **megerősítése** gombra.
 
     ![Alkalmazott hozzáadása](./media/samlssojira-tutorial/user2.png) 
 
-4. A **felhasználókezelés** szakasz lapra, majd **felhasználó létrehozása**.
+4. Alatt a **felhasználókezelés** szakasz lapra, majd **felhasználó létrehozása**.
 
     ![Alkalmazott hozzáadása](./media/samlssojira-tutorial/user3-new.png) 
 
-5. Az a **"Új felhasználó létrehozása"** párbeszédpanel lapon, a következő lépésekkel. Létre kell hoznia a felhasználók pontosan, például az Azure ad-ben:
+5. Az a **"Új felhasználó létrehozása"** párbeszédpanel lapon, a következő lépésekkel. A felhasználó pontosan létrehozása az Azure ad-ben, például:
 
     ![Alkalmazott hozzáadása](./media/samlssojira-tutorial/user4-new.png) 
 
@@ -278,13 +278,13 @@ Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a Jira SAML SSO felbontá
 
     b. Az a **teljes fájlvisszaállítási név** szövegmezőbe írja be a felhasználó teljes neve: **Britta Simon**.
 
-    c. Az a **felhasználónév** szövegmezőbe írja be az e-mail a felhasználó: <b> BrittaSimon@contoso.com </b>. 
+    c. Az a **felhasználónév** szövegmezőbe írja be a felhasználó e-mail-címe: <b> BrittaSimon@contoso.com </b>. 
 
     d. Az a **jelszó** szövegmezőbe írja be a jelszót a felhasználó.
 
     e. Kattintson a **felhasználó létrehozása** felhasználó létrehozásának befejezéséhez.
 
-### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

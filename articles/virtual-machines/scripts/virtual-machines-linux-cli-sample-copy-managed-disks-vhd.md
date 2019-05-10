@@ -1,6 +1,6 @@
 ---
 title: Az Azure CLI minta – storage-fiók egy felügyelt lemezek másolása
-description: Az Azure CLI minta - exportálási vagy egy felügyelt lemezek másolása egy ároláshoz fiókot.
+description: Az Azure CLI minta - exportálási vagy egy felügyelt lemezek másolása egy storage-fiókot.
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -13,19 +13,19 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/17/2018
+ms.date: 05/09/2019
 ms.author: ramankum
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 6252049c2258c391aa4483dd51ec0d9ee766bed0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c5055860df007d0f009bd08c2b211ffeeaad711f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60302449"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510875"
 ---
 # <a name="exportcopy-a-managed-disk-to-a-storage-account-using-the-azure-cli"></a>Exportálása/másolása egy felügyelt lemezt egy storage-fiókba az Azure CLI használatával
 
-Ez a szkript egy felügyelt lemez mögöttes VHD-fájlját exportálja egy tárfiókba, amely ugyanabban a régióban vagy egy másikban található. Először létrehozza a felügyelt lemez SAS URI-azonosítóját, majd annak használatával átmásolja a VHD-fájlt egy tárfiókba. A szkript használatával másolatot készíthet felügyelt lemezeiről regionális terjeszkedéshez. 
+Ez a szkript egy felügyelt lemez mögöttes VHD-fájlját exportálja egy tárfiókba, amely ugyanabban a régióban vagy egy másikban található. Először létrehozza a felügyelt lemez SAS URI-azonosítóját, majd annak használatával átmásolja a VHD-fájlt egy tárfiókba. A szkript használatával másolatot készíthet felügyelt lemezeiről egy másik régióba a regionális terjeszkedéshez. Ha azt szeretné, a felügyelt lemez VHD-fájl közzététele az Azure Marketplace-en, ez a szkript segítségével másolja a VHD-fájl egy tárfiókba, és ezután hozza létre a másolt VHD-, a piactéren közzétett egy SAS URI-t.   
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]

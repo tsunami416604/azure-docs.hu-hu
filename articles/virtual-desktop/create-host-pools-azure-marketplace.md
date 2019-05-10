@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: 21979f1dee50fa846fb7888cfc95908b9d833392
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8e6991201b3cda5699849ac00cc92217c6b7bf72
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236795"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65524013"
 ---
 # <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Oktatóanyag: Gazdagépcsoport létrehozása az Azure Marketplace-en
 
@@ -68,7 +68,7 @@ A virtuális gép beállítás panel:
 
 A Windows virtuális asztal bérlői információk panel:
 
-1. Adja meg a **Windows virtuális asztal bérlői csoportnév** a bérlő csoport, amely tartalmazza a bérlő számára. Ha nem rendelkezik egy adott bérlővel csoportnevet tervezett, hagyja meg az alapértelmezett.
+1. Adja meg a **Windows virtuális asztal bérlői csoportnév** a bérlő csoport, amely tartalmazza a bérlő számára. Hagyja meg az alapértelmezett, kivéve, ha meg van megadva egy adott bérlő csoport neve.
 2. Adja meg a **Windows virtuális asztal bérlőnevet** a bérlő meg hoz létre a gazdagép-készletébe.
 3. Adja meg a hitelesítő adatokat a Windows virtuális asztal bérlő RDS tulajdonosa nevében hitelesítsék magukat használni kívánt típusát. Ha befejezte a [egyszerű szolgáltatásnevekről és a szerepkör-hozzárendelések létrehozása a PowerShell-oktatóanyag](./create-service-principal-role-powershell.md)válassza **szolgáltatásnév**. Adja meg most kell a **az Azure AD-bérlő azonosítója** az Azure Active Directory, amely tartalmazza az egyszerű szolgáltatás.
 4. Adja meg a bérlői rendszergazdai fiókkal vagy a hitelesítő adatokat. Csak egy jelszavára vonatkozó hitelesítőadat-szolgáltatásnevek használata támogatott.
@@ -94,12 +94,6 @@ Jelentkezzen be a Windows virtuális asztali környezetben a következő parancs
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
-
-A környezet beállítása a Windows virtuális asztal bérlői csoporthoz megadott ajánlat az alábbi parancsmagot az Azure Marketplace-en. Ha nem törli a virtuális asztali Windows-bérlő csoport érték az alapértelmezett érték az Azure Marketplace-en ajánlat, kihagyhatja ezt a lépést.
-
-```powershell
-Set-RdsContext -TenantGroupName <tenantgroupname>
 ```
 
 Ezt követően, ha ezeket a két dolgokat, az asztali alkalmazás csoportot ezzel a parancsmaggal is hozzáadhat felhasználókat:

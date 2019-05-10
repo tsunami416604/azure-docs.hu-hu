@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: ced83b83c2d64ba5c4816f378c66dae9f4210391
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3fc14b821064719f39eb877aa2253f8084496a66
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60193628"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523499"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language understanding szószedet gyakori szóhasználatának és fogalmak
 A Language Understanding (LUIS) szószedet ismerteti feltételeit, amelyek találkozhat végzett munka során az intelligens HANGFELISMERÉSI API-szolgáltatást.
@@ -26,7 +26,7 @@ Az aktív LUIS-verzió verziója, amely megkapja a modell változásait. Az a [L
 
 ## <a name="authoring"></a>Szerzői műveletek
 
-Szerzői rendszer azon képessége, létrehozása, kezelése és üzembe helyezéséhez egy [LUIS-alkalmazásokon](#luis-app), vagy használja a [LUIS](luis-reference-regions.md) webhely vagy a [API-k készítése](https://aka.ms/luis-authoring-api).
+Szerzői rendszer azon képessége, létrehozása, kezelése és üzembe helyezéséhez egy [LUIS-alkalmazásokon](#luis-app), vagy használja a [LUIS](luis-reference-regions.md) webhely vagy a [API-k készítése](https://go.microsoft.com/fwlink/?linkid=2092087).
 
 ## <a name="authoring-key"></a>Kulcs létrehozási
 
@@ -74,7 +74,7 @@ A LUIS a környezetben egy **tartomány** olyan terület, az ismeretek. A tartom
 
 ## <a name="endpoint"></a>Végpont
 
-A [LUIS végpont](https://aka.ms/luis-endpoint-apis) URL-címe, ahol elküldése után a LUIS-lekérdezéseket a [LUIS-alkalmazásokon](#luis-app) létrehozott és közzétett. A végpont URL-címe tartalmazza a régió, a közzétett alkalmazás, valamint az alkalmazás azonosítóját. A végpont található a **[kulcsokat és a végpontok](luis-how-to-azure-subscription.md)** lapja az alkalmazás, vagy beszerezheti a végpont URL-CÍMÉT a [alkalmazásadatok lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API.
+A [LUIS végpont](https://go.microsoft.com/fwlink/?linkid=2092356) URL-címe, ahol elküldése után a LUIS-lekérdezéseket a [LUIS-alkalmazásokon](#luis-app) létrehozott és közzétett. A végpont URL-címe tartalmazza a régió, a közzétett alkalmazás, valamint az alkalmazás azonosítóját. A végpont található a **[kulcsokat és a végpontok](luis-how-to-azure-subscription.md)** lapja az alkalmazás, vagy beszerezheti a végpont URL-CÍMÉT a [alkalmazásadatok lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API.
 
 A példában a végpont hasonlóan néz ki:
 
