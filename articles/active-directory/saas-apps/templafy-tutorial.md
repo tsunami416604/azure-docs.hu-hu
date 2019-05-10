@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d87a60ef196ee319b630d5713c593cfaa9cf8158
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2ea2ead29ba1945213871ab76a65e33a4d7b27cc
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158167"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441510"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-templafy"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Templafy
 
@@ -120,20 +120,20 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Templafy, hajtsa vé
 
     | Name (Név) | Adatforrás-attribútum| Névtér  |
     | ---------------| --------------- | --------- |
-    | givenName | user.givenname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | Vezetéknév | user.surname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | e-mail cím | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`
-    | streetAddress | user.streetaddress | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | city | User.City | `http://schemas.templafy.com/2016/06/identity/claims`|
-    | Irányítószám | user.postalcode | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | stateorprovince | User.state | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | Ország | felhasználó.ország | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | Beosztás | user.jobtitle | `http://schemas.templafy.com/2016/06/identity/claims`|
-    | Szervezeti egység | user.department | `http://schemas.templafy.com/2016/06/identity/claims`|
-    | Telefonszám | user.telephonenumber | `http://schemas.templafy.com/2016/06/identity/claims` |
-    | facsimilenumber | user.facsimiletelephonenumber | `http://schemas.templafy.com/2016/06/identity/claims`|
-    | egyszerű felhasználónév | user.userprincipalname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | nameidentifier | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | givenName | user.givenname | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | Vezetéknév | user.surname | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | e-mail cím | user.mail | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`
+    | streetAddress | user.streetaddress | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | city | User.City | `https://schemas.templafy.com/2016/06/identity/claims`|
+    | Irányítószám | user.postalcode | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | stateorprovince | User.state | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | Ország | felhasználó.ország | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | Beosztás | user.jobtitle | `https://schemas.templafy.com/2016/06/identity/claims`|
+    | Szervezeti egység | user.department | `https://schemas.templafy.com/2016/06/identity/claims`|
+    | Telefonszám | user.telephonenumber | `https://schemas.templafy.com/2016/06/identity/claims` |
+    | facsimilenumber | user.facsimiletelephonenumber | `https://schemas.templafy.com/2016/06/identity/claims`|
+    | egyszerű felhasználónév | user.userprincipalname | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | nameidentifier | user.mail | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     | | |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
@@ -216,7 +216,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy Britta Simon nevű felhasználó Templafy jön létre. Templafy támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az Templafy, egy új jön létre a hitelesítés után.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -224,8 +224,8 @@ Ha a hozzáférési panelen a Templafy csempére kattint, meg kell lehet automat
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

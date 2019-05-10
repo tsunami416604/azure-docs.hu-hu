@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 7a4db08a342bc4004d4957e26353ef810ebae4d3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 617c75024b45dab7ff2466b99bfb71c18cdd778a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689589"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230028"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Picturepark
 
@@ -154,7 +154,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Picturepark, hajtsa 
    
     ![Identitás-szolgáltató konfigurációjának](./media/picturepark-tutorial/ic795064.png "identitás szolgáltató konfigurációja")
    
-    a. Kattintson a **Hozzáadás** parancsra.
+    a. Kattintson a **Hozzáadás**lehetőségre.
   
     b. Adjon meg egy nevet a konfigurációnak.
    
@@ -250,7 +250,7 @@ Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a Picturepark, akkor ki k
    
     e. Az a **vállalati** szövegmezőbe írja be a **cégnév** felhasználó. 
    
-    f. Az a **ország** szövegmezőbe, válassza ki a **ország** felhasználó.
+    f. Az a **ország** szövegmezőbe, válassza ki a **ország/régió** felhasználó.
   
     g. Az a **ZIP** szövegmezőbe írja be a **irányítószám** az városa.
    
@@ -264,7 +264,7 @@ Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a Picturepark, akkor ki k
 >Eszközt is használhat bármilyen más Picturepark felhasználói fiók létrehozása, vagy az Azure AD-felhasználói fiókok kiépítése Picturepark által biztosított API-k.
 >
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

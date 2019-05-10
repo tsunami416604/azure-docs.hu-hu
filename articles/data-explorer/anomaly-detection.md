@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 934dfd3334b6f433c7acdf9816a3fb5e24f0430f
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: f40350129a12c7865051bcae80b74b6f9c069179
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872008"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233529"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>Rendellenességek észlelése, és az Adatkezelőben az Azure-előrejelzés
 
@@ -119,7 +119,7 @@ demo_make_series2
 
 ## <a name="summary"></a>Összegzés
 
-Ez a dokumentum részletesen natív az adatkezelőt az Azure functions a time series rendellenességek észlelése és előrejelzés, ami jelentősen javítja a alapszintű idősorfelbontási modell, amelyen alapul. Előrejelzés leállításra és minden eredeti idősorozat bontjuk, rendellenességek észlelése esetén. Az idő sorozat anomáliadetektálási észleléséhez és az előrejelzési funkciói előrejelzés betölteni, és közel valós idejű figyelési helyzetek, például a hibák észlelése, a prediktív karbantartási és igény szerint is használják.
+Ez a dokumentum részletesen natív Azure adatkezelő függvények a time series rendellenességek észlelése és előrejelzését. Minden eredeti idősorozat van bontva a rendellenességek észlelése és/vagy előrejelzés szezonális, trend és a maradék összetevőit. Ezek a funkciók közel valós idejű figyelési helyzetek, például a hibák észlelése, a prediktív karbantartási és igény szerint használható, és előrejelzés betölteni.
 
 ## <a name="next-steps"></a>További lépések
 

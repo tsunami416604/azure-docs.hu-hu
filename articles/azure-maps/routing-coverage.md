@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 028f16b480ceb57598c6499739ab0e5745b4a132
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: f9f5b24a52ebfb8b87f1abaa3b60091d7f4690ab
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64870008"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230651"
 ---
 # <a name="azure-maps-routing-coverage"></a>Az Azure Maps útválasztási lefedettség
 
@@ -27,9 +27,9 @@ Tekintse meg a lefedettség [ **Render**](render-coverage.md).
 
 | Szimbólum             | Jelentés                                |
 |--------------------|----------------------------------------|
-| ✓                  | Az ország megadott részletes adatokkal.   |
-| Ø                  | Az ország megadott egyszerűsített adatokkal. |
-| Ország hiányzik. | Országadatokat nem áll rendelkezésre.          |
+| ✓                  | Ország vagy régió megadott részletes adatokkal.   |
+| Ø                  | Ország vagy régió megadott egyszerűsített adatokkal. |
+| Ország hiányzik. | Ország/régió adatok nem áll rendelkezésre.          |
 
 <br>  
 
@@ -99,7 +99,7 @@ Az alábbi táblázatban az Azure Maps útválasztási lefedettség adatait.
 | Dominika                       |        ✓       |                      |             |
 | Dominikai Köztársaság             |        ✓       |                      |             |
 | Ecuador                        |        ✓       |                      |             |
-| Salvador                    |        ✓       |                      |             |
+| El Salvador                    |        ✓       |                      |             |
 | Francia Guyana                  |        ✓       |                      |             |
 | Grenada                        |        ✓       |                      |             |
 | Guatemala                      |        ✓       |                      |             |
@@ -166,7 +166,7 @@ Az alábbi táblázatban az Azure Maps útválasztási lefedettség adatait.
 | Bulgária                       |        ✓       |         ✓            |     ✓      | 
 | Horvátország                        |        ✓       |         ✓            |     ✓      |
 | Ciprus                         |        ✓       |                      |             |
-| Cseh Köztársaság                 |        ✓       |         ✓            |     ✓      |
+| Csehország                 |        ✓       |         ✓            |     ✓      |
 | Dánia                        |        ✓       |         ✓            |     ✓      |
 | + Feröer-szigetek                 |        ✓       |                      |             |
 | Észtország                        |        ✓       |         ✓            |     ✓      |
@@ -199,14 +199,14 @@ Az alábbi táblázatban az Azure Maps útválasztási lefedettség adatait.
 | +Aruba                         |        ✓       |                      |             | 
 | + Hollandia Karib-szigetek         |        ✓       |                      |             |
 | +Curaçao                       |        ✓       |                      |             |
-| + Saint Martin                  |        ✓       |                      |             |
+| +Sint Maarten                  |        ✓       |                      |             |
 | Norvégia                         |        ✓       |         ✓            |     ✓      | 
 | Lengyelország                         |        ✓       |         ✓            |     ✓      | 
 | Portugália                       |        ✓       |         ✓            |     ✓      |  
 | Románia                        |        ✓       |         ✓            |     ✓      | 
 | Orosz Föderáció             |        ✓       |         ✓            |     ✓      | 
 | San Marino                     |        ✓       |         ✓            |             |
-| + Saint Martin                  |        ✓       |                      |             |
+| +Sint Maarten                  |        ✓       |                      |             |
 | Szerbia                         |        ✓       |                      |     ✓      | 
 | Szlovákia                       |        ✓       |         ✓            |     ✓      | 
 | Szlovénia                       |        ✓       |         ✓            |     ✓      |
@@ -220,9 +220,9 @@ Az alábbi táblázatban az Azure Maps útválasztási lefedettség adatait.
 | +Bermuda                       |        ✓       |                      |             |
 | + Brit Virgin-szigetek        |        ✓       |                      |             |
 | + Kajmán-szigetek                |        ✓       |                      |             |
-| + Gibraltár                      |        ✓       |         ✓            |             | 
+| + Gibraltár                     |        ✓       |         ✓            |             | 
 | +Montserrat                    |        ✓       |                      |             |
-| + & Turks- és Caicos-szigetek        |        ✓       |                      |             |
+| + Turks-és Caicos-szigetek      |        ✓       |                      |             |
 | Vatikánváros                   |        ✓       |         ✓            |             |
 | Man-sziget                    |        ✓       |                      |             |
 

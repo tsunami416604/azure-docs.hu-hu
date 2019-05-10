@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 2358cb2ea411a0077f34798183da30bd32ae067b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: bc72cc21ab525ec82d9ce4b24e80ce82d92a5d21
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925133"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233493"
 ---
 # <a name="machine-learning-capability-in-azure-data-explorer"></a>Machine learning-funkció az Azure Data Explorer
 
@@ -59,7 +59,7 @@ demo_clustering1
 | count
 ```
 
-|Darabszám |
+|Count |
 |---------|
 |972    |
 
@@ -96,7 +96,7 @@ demo_clustering1
 | 2016-08-23 15:00:58.2222707 | scus   | su5       | 9dbd1b161d5b4779a73cf19a7836ebd6 | 10007007   | 8215dcf6-2de0-42bd-9c90-181c70486c9c |
 | 2016-08-23 15:00:59.9382620 | scus   | su3       | 90d3d2fc7ecc430c9621ece335651a01 | 10007006   | 451e3c4c-0808-4566-a64d-84d85cf30978 |
 
-### <a name="use-autocluster-for-single-record-set-clustering"></a>Használat `autocluster()` a fürtszolgáltatás egy rekordhalmaz
+### <a name="use-autocluster-for-single-record-set-clustering"></a>Fürtszolgáltatás egyetlen rekordot autocluster() használata
 
 Annak ellenére, hogy kevesebb mint Kaliforniában kivételek vannak, ez megegyezik továbbra is nehéz megtalálni a közös szegmensek több értékek vannak az egyes oszlopokban. Használhat [ `autocluster()` ](/azure/kusto/query/autoclusterplugin) azonnal kibontása egy kis közös szegmensek listájához, és keresse meg az érdekes beépülő modul a megnövekedett két percen belül fürtök, ahogyan az a következő lekérdezést:
 
@@ -108,10 +108,10 @@ demo_clustering1
 | evaluate autocluster()
 ```
 
-| SegmentId | Darabszám | Százalék | Régió | ScaleUnit | DeploymentId | ServiceHost |
+| SegmentId | Count | Százalék | Régió | ScaleUnit | DeploymentId | ServiceHost |
 |-----------|-------|------------------|--------|-----------|----------------------------------|--------------------------------------|
 | 0 | 639 | 65.7407407407407 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
-| 1 | 94 | 9.67078189300411 | scus | su5 | 9dbd1b161d5b4779a73cf19a7836ebd6 |  |
+| 1. | 94 | 9.67078189300411 | scus | su5 | 9dbd1b161d5b4779a73cf19a7836ebd6 |  |
 | 2 | 82 | 8.43621399176955 | ncus | su1 | e24ef436e02b4823ac5d5b1465a9401e |  |
 | 3 | 68 | 6.99588477366255 | scus | su3 | 90d3d2fc7ecc430c9621ece335651a01 |  |
 | 4 | 55 | 5.65843621399177 | weu | su4 | be1d6d7ac9574cbc9a22cb8ee20f16fc |  |
@@ -120,7 +120,7 @@ Az eredményekből látható, hogy a legtöbb domináns szegmens 65.74 % a telje
 
 Autocluster adatbányászati több dimenzióban, és érdekes szegmensek kinyeréséhez szellemi tulajdont képező algoritmust használ. "Érdekes" azt jelenti, hogy rendelkezik-e mind a rekordokat és a szolgáltatásokat jelentős lefedettsége minden szegmensben. A szegmensek is fürtre, ami azt jelenti, hogy mindegyikhez jelentősen eltér a többi. Egy vagy több ezekben a szegmensekben az RCA-folyamat szempontjából releváns lehet. Szegmens tekintse át és felmérési minimalizálása érdekében autocluster csak kisebb szegmensek listáját adja eredményül.
 
-### <a name="use-basket-for-single-record-set-clustering"></a>Használat `basket()` a fürtszolgáltatás egy rekordhalmaz
+### <a name="use-basket-for-single-record-set-clustering"></a>Fürtszolgáltatás egyetlen rekordot basket() használata
 
 Is használhatja a [ `basket()` ](/azure/kusto/query/basketplugin) beépülő modult, ahogyan az a következő lekérdezést:
 
@@ -132,10 +132,10 @@ demo_clustering1
 | evaluate basket()
 ```
 
-| SegmentId | Darabszám | Százalék | Régió | ScaleUnit | DeploymentId | Tracepoint | ServiceHost |
+| SegmentId | Count | Százalék | Régió | ScaleUnit | DeploymentId | Tracepoint | ServiceHost |
 |-----------|-------|------------------|--------|-----------|----------------------------------|------------|--------------------------------------|
 | 0 | 639 | 65.7407407407407 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
-| 1 | 642 | 66.0493827160494 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  |  |
+| 1. | 642 | 66.0493827160494 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  |  |
 | 2 | 324 | 33.3333333333333 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 | 0 | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
 | 3 | 315 | 32.4074074074074 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 | 16108 | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
 | 4 | 328 | 33.7448559670782 |  |  |  | 0 |  |
@@ -174,7 +174,7 @@ demo_clustering1
 | SegmentId | CountA | CountB | PercentA | PercentB | PercentDiffAB | Régió | ScaleUnit | DeploymentId | Tracepoint |
 |-----------|--------|--------|----------|----------|---------------|--------|-----------|----------------------------------|------------|
 | 0 | 639 | 21 | 65.74 | 1.7 | 64.04 | Eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  |
-| 1 | 167 | 544 | 17.18 | 44.16 | 26.97 | scus |  |  |  |
+| 1. | 167 | 544 | 17.18 | 44.16 | 26.97 | scus |  |  |  |
 | 2 | 92 | 356 | 9.47 | 28.9 | 19.43 |  |  |  | 10007007 |
 | 3 | 90 | 336 | 9.26 | 27.27 | 18.01 |  |  |  | 10007006 |
 | 4 | 82 | 318 | 8.44 | 25.81 | 17.38 | ncus | su1 | e24ef436e02b4823ac5d5b1465a9401e |  |

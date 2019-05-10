@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: bababa723e70cdc5268fb04f1104cca9e254984d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: faac0f02d1a1b8927fa0c651f44f8b120a583d9a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467431"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230150"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>A Kubernetes alapvető fogalmainak Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ Alkalmazásfejlesztés a tárolókon alapuló megközelítés felé helyezi át,
 
 Ez a cikk bemutatja a fő Kubernetes-infrastruktúra összetevőinek például a *fürt fő*, *csomópontok*, és *csomópontkészletek*. Számítási erőforrások, például *podok*, *központi telepítések*, és *beállítja* jelennek még meg, hogyan csoportosíthatók az erőforrások, valamint *névterek*.
 
-## <a name="what-is-kubernetes"></a>Mit jelent a Kubernetes?
+## <a name="what-is-kubernetes"></a>Mi a Kubernetes?
 
 Kubernetes az gyorsan fejlődő platform, amely tárolóalapú alkalmazások és a társított hálózatkezelési és tárolási összetevők kezeli. Az alkalmazások számítási feladatai, nem az alapul szolgáló infrastruktúra-összetevőket való összeállításán van. Kubernetes-környezetek, API-k robusztus készletét felügyeleti műveletek által támogatott deklaratív módszert biztosít.
 
@@ -99,9 +99,11 @@ További kapcsolódó ajánlott eljárások: [ajánlott eljárásai az aks-ben a
 
 ### <a name="node-pools"></a>Csomópontkészletek
 
-Ugyanaz a konfiguráció csomópontján vannak besorolva *csomópontkészletek*. Kubernetes-fürt egy vagy több csomópont készletet tartalmaz. A kezdeti meg csomópontok számát és méretét definiált létrehozott egy AKS-fürtöt, amely létrehoz egy *csomópontkészlet alapértelmezett*. Az alapértelmezett csomópontkészlet az aks-ben az ügynök-csomópontok futtató mögöttes virtuális gépeket tartalmaz.
+Ugyanaz a konfiguráció csomópontján vannak besorolva *csomópontkészletek*. Kubernetes-fürt egy vagy több csomópont készletet tartalmaz. A kezdeti meg csomópontok számát és méretét definiált létrehozott egy AKS-fürtöt, amely létrehoz egy *csomópontkészlet alapértelmezett*. Az alapértelmezett csomópontkészlet az aks-ben az ügynök-csomópontok futtató mögöttes virtuális gépeket tartalmaz. Több csomópont készlethez támogatása jelenleg az aks-ben előzetes verzióban érhető el.
 
-Méretezhető, vagy az AKS-fürt frissítése, a művelet végrehajtását az alapértelmezett csomópontkészletek ellen. A frissítési műveletek futó tárolók ütemezése a csomópont a készletben található többi csomóponton mindaddig, amíg az összes a csomópont frissítése sikeresen megtörtént.
+Méretezhető, vagy az AKS-fürt frissítése, a művelet végrehajtását az alapértelmezett csomópontkészletek ellen. Választhatja azt is, méretezhető, vagy egy adott csomópont készlet frissítése. A frissítési műveletek futó tárolók ütemezése a csomópont a készletben található többi csomóponton mindaddig, amíg az összes a csomópont frissítése sikeresen megtörtént.
+
+Az aks-ben több csomópontkészletek használatával kapcsolatos további információkért lásd: [létrehozása és kezelése az aks-ben a fürt több csomópontkészletei][use-multiple-node-pools].
 
 ## <a name="pods"></a>Podok
 
@@ -245,3 +247,4 @@ Ez a cikk ismerteti az egyes a Kubernetes-alapösszetevők, és ezek hogyan vona
 [aks-helm]: kubernetes-helm.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [operator-best-practices-scheduler]: operator-best-practices-scheduler.md
+[use-multiple-node-pools]: use-multiple-node-pools.md

@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: edjez
-ms.openlocfilehash: b24e3d7fd71ef60cf8ebe5ba2c33889ff518580c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e51ef9afd0e49b690a4f9cab09fdfbd3e86eee66
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027109"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441037"
 ---
-# <a name="where-can-you-use-personalizer"></a>Hol használható Personalizer?
+# <a name="where-can-you-use-personalizer"></a>Hol használhatja a Personalizert?
 
 Használat Personalizer bármilyen helyzetben, ahol az alkalmazása szükséges, válassza ki a jobb oldali elemek, a művelet vagy a termék megjelenítése – annak érdekében, hogy a felhasználói élményt jobb, jobb üzleti eredmények elérése érdekében, vagy növelje hatékonyságát. 
 
@@ -58,7 +58,7 @@ Rendszeres időközönként figyelheti a Personalizer hatékonyságát a elvégz
 
 Számos vállalat javaslati motorok, marketing- és hálózatának megerősítése eszközök, célközönség-szegmentálást és a fürtözést, együttműködési szűrést és más módon használatával az ügyfelek számára egy nagy katalógusból származó termékek javasoljuk.
 
-A [Microsoft Recommenders GitHub-adattár ](https://github.com/Microsoft/Recommenders) példákat és ajánlott eljárásokat tartalmaz a javaslattételi rendszerek, a Jupyter notebooks megadott készítéséhez. Adatok előkészítése, modellek létrehozása, kiértékelése, hangolása és a javaslati motorok, számos közös módszerénél xDeepFM, többek között (KKT), ALS, RBM, DKN modellezést működő példák biztosítja.
+A [Microsoft Recommenders GitHub-adattár](https://github.com/Microsoft/Recommenders) példákat és ajánlott eljárásokat tartalmaz a javaslattételi rendszerek, a Jupyter notebooks megadott készítéséhez. Adatok előkészítése, modellek létrehozása, kiértékelése, hangolása és a javaslati motorok, számos közös módszerénél xDeepFM, többek között (KKT), ALS, RBM, DKN modellezést működő példák biztosítja.
 
 Ha telepítve, egy ajánlattételi modul beépítését personalizer együttműködhet.
 

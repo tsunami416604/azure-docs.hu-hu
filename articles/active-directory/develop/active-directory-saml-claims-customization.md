@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6fe74852824c10d24729f785e5e33a17b793161
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b137b8cd4e3a2b7a308170904e9b3d09b11137f9
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411330"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231342"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: Vállalati alkalmazásokhoz SAML-jogkivonatban kiadott jogcímek testreszabása
 
@@ -75,12 +75,12 @@ Válassza ki a kívánt forrása a `NameIdentifier` (vagy NameID) jogcím. Az al
 
 | Name (Név) | Leírás |
 |------|-------------|
-| E-mail | A felhasználó e-mail címe |
+| E-mail-cím | A felhasználó e-mail címe |
 | userprincipalName | Egyszerű felhasználónév (UPN) a felhasználó |
 | onpremisessamaccount | SAM-fiók neve, amely a helyszínről az Azure AD szinkronizálása megtörtént |
 | objektumazonosító | az Azure ad-ben a felhasználó objektumazonosítója |
 | EmployeeID | a felhasználót az EmployeeID |
-| Címtárbővítmények | Címtárbővítmények [az Azure AD Connect szinkronizálási szolgáltatás használata a helyszíni Active Directoryból szinkronizált](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
+| Címtárkiterjesztések | Címtárbővítmények [az Azure AD Connect szinkronizálási szolgáltatás használata a helyszíni Active Directoryból szinkronizált](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
 | 1 – 15. Bővítményattribútumok | A helyszíni kiterjesztési attribútumot használja az Azure AD-séma kiterjesztése |
 
 További információ: [3. táblázat: Érvényes azonosító értéket, forrás](active-directory-claims-mapping.md#table-3-valid-id-values-per-source).
@@ -116,7 +116,7 @@ A jogcímek átalakítások funkciók is használható.
 | **ToUpper()** | Konvertálja a karaktereket a kijelölt attribútum nagybetűket. |
 | **Contains()** | Ha a bemeneti megegyezik a megadott értéket jelenít meg egy attribútum vagy konstans. Ellenkező esetben egy másik kimeneti megadhat fel, ha nem egyezik meg.<br/>Például, ha szeretné gridre bocsáthatja ki egy jogcímet, ahol az érték a felhasználó e-mail címét, ha a tartomány tartalmaz "@contoso.com", ellenkező esetben a felhasználó egyszerű neve kimeneti szeretné. Ehhez a következő értékek állíthatók be:<br/>*A paraméter 1(input)*: user.email<br/>*Érték*: "@contoso.com"<br/>(Kimenet) 2. paraméter: user.email<br/>(Ha nem egyezik meg a kimenet) 3. paraméter: user.userprincipalname |
 | **EndWith()** | Az attribútum vagy állandó jelenít meg, ha a bemeneti végződik-e a megadott értéket. Ellenkező esetben egy másik kimeneti megadhat fel, ha nem egyezik meg.<br/>Például szeretné gridre bocsáthatja ki egy jogcímet, ahol az érték a felhasználó employeeid, ha az employeeid "000" végződik, ellenkező esetben szeretné-e a kimenetben bővítményattribútum. Ehhez a következő értékek állíthatók be:<br/>*A paraméter 1(input)*: user.employeeid<br/>*Érték*: "000"<br/>(Kimenet) 2. paraméter: user.employeeid<br/>(Ha nem egyezik meg a kimenet) 3. paraméter: user.extensionattribute1 |
-| **StartWith()** | Ha a bemeneti kezdődik-e a megadott értéket jelenít meg egy attribútum vagy állandó. Ellenkező esetben egy másik kimeneti megadhat fel, ha nem egyezik meg.<br/>Például ha azt szeretné, ahol az érték a felhasználó employeeid Ha "US" kezdődik az ország jogcím kibocsátható, ellenkező esetben érdemes bővítményattribútum kimeneti. Ehhez a következő értékek állíthatók be:<br/>*A paraméter 1(input)*: felhasználó.ország<br/>*Érték*: "US"<br/>(Kimenet) 2. paraméter: user.employeeid<br/>(Ha nem egyezik meg a kimenet) 3. paraméter: user.extensionattribute1 |
+| **StartWith()** | Ha a bemeneti kezdődik-e a megadott értéket jelenít meg egy attribútum vagy állandó. Ellenkező esetben egy másik kimeneti megadhat fel, ha nem egyezik meg.<br/>Például szeretné gridre bocsáthatja ki egy jogcímet, ahol az érték a felhasználó employeeid Ha "US" kezdődik az országban vagy régióban, ellenkező esetben szeretné-e a kimenetben bővítményattribútum. Ehhez a következő értékek állíthatók be:<br/>*A paraméter 1(input)*: felhasználó.ország<br/>*Érték*: "US"<br/>(Kimenet) 2. paraméter: user.employeeid<br/>(Ha nem egyezik meg a kimenet) 3. paraméter: user.extensionattribute1 |
 | **Extract() - megfelelő után** | A karakterláncrészt adja vissza, miután a kulcs megegyezik-e a megadott értéket.<br/>Például ha a bemeneti érték "Finance_BSimon", a megfelelő értéke "Finance_", akkor az a jogcím-kimenet "BSimon". |
 | **Extract() - egyeztetése előtt** | A karakterláncrészt adja vissza, amíg meg nem találja a megadott értéket.<br/>Például ha a bemeneti érték "BSimon_US", a megfelelő értéke "_US", akkor az a jogcím-kimenet "BSimon". |
 | **Extract() - kapcsolódó között** | A karakterláncrészt adja vissza, amíg meg nem találja a megadott értéket.<br/>Például ha a bemeneti érték "Finance_BSimon_US", az első egyező értéke "Finance_", a második egyező érték "_US", akkor a kimenete a jogcím "BSimon". |

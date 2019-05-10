@@ -8,7 +8,7 @@ metadata:
   author: mamccrea
   ms.service: azure-databricks
   ms.topic: landing-page
-  ms.date: 03/19/2018
+  ms.date: 05/07/2019
   ms.author: mamccrea
 abstract:
   description: 'Ismerkedjen meg az Azure Databricks egyetlen kattintással beállítható Apache Spark-alapú elemzési platform használatával, amely zökkenőmentes munkafolyamatokat tesz lehetővé, valamint olyan interaktív munkaterületet biztosít, amellyel lehetővé válik az adatszakértők, az adatmérnökök és az üzleti elemzők közötti együttműködés. A rövid útmutatók és oktatóanyagok bemutatják az Azure Databricks használatának első lépéseit és más Azure-szolgáltatásokkal való integrálását.'
@@ -37,6 +37,10 @@ sections:
               src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg
             text: Resource Manager-sablon
             href: /azure/azure-databricks/quickstart-create-databricks-workspace-resource-manager-template
+          - image:
+              src: /azure/azure-databricks/media/index/virtualnetwork.svg
+            text: Virtuális hálózat
+            href: /azure/azure-databricks/quickstart-create-databricks-workspace-vnet-injection
   - title: Részletes útmutatók
     items:
       - type: paragraph
@@ -44,6 +48,8 @@ sections:
       - type: list
         style: ordered
         items:
+          - html: <a href="/azure/azure-databricks/vnet-injection-sql-server">Docker-tárolóban futó SQL Server lekérdezése</a>
+          - html: <a href="/azure/azure-databricks/service-endpoint-cosmosdb">Cosmos DB-szolgáltatásvégpont használata</a>
           - html: '<a href="/azure/azure-databricks/databricks-extract-load-sql-data-warehouse">Adatok kinyerése, átalakítás és betöltése</a>'
           - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">Adatok streamelése az Event Hubsból</a>
           - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">Hangulatelemzés a Cognitive Services használatával</a>
@@ -56,3 +62,5 @@ sections:
         items:
           - title: REST
             html: <p><a href="/rest/api/databricks">REST API</a></p>
+          - title: Resource Manager
+            html: <p><a href="/azure/templates/microsoft.databricks/workspaces">Sablon</a></p>

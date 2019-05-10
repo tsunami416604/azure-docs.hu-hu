@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 4/17/2019
+ms.date: 5/02/2019
 ms.author: monhaber
-ms.openlocfilehash: b5eafd15344156965d0a191688f602ffe1b5a498
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4e334af353e1d9556641914056ab0a3071ca361e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60703574"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233596"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformok és az Azure Security Center által támogatott funkciók
 
@@ -78,13 +78,13 @@ A felhőalapú szolgáltatásként futtató virtuális gépeket is támogatottak
 |A Windows Defender ATP-integráció|✔ (a támogatott verziók)|✔|X|X|
 |Hiányzó javítások|✔|✔|✔|✔|
 |Biztonsági konfigurációk|✔|✔|✔|✔|
-|Endpoint protection (Végpontok védelme)|✔|✔|X|X|
+|Endpoint Protection|✔|✔|X|X|
 |Virtuális gépek igény szerinti elérése|✔|X|✔|X|
-|Adaptív alkalmazásvezérlők|✔|X|X|X|
+|Adaptív alkalmazásvezérlés|✔|✔|✔|✔|
 |FIM|✔|✔|✔|✔|
-|Disk encryption (Lemeztitkosítás)|✔|X|✔|X|
+|Lemeztitkosítás|✔|X|✔|X|
 |Külső üzembe helyezés|✔|X|✔|X|
-|NSG-k|✔|X|✔|X|
+|NSG|✔|X|✔|X|
 |Fileless fenyegetésészlelés|✔|✔|X|X|
 |Hálózati térkép|✔|X|✔|X|
 |Az adaptív hálózati vezérlők|✔|X|✔|X|
@@ -96,7 +96,7 @@ Az alábbi táblázat foglalja össze:
  - Az Azure Security Center segítségével akár telepítheti Önnek az egyes megoldások.
  - Melyik endpoint protection megoldásokat a Security Center képes felderíteni. Endpoint protection megoldást egyet felismernek, ha a Security Center nem ajánlott telepítését.
 
-| Endpoint Protection (Végpontok védelme)| Platformok | Security Center telepítése | Security Center felderítése |
+| Endpoint Protection| Platformok | Security Center telepítése | Security Center felderítése |
 |------|------|-----|-----|
 | Windows Defender (Microsoft-kártevőirtó)| Windows Server 2016| Nincs, az operációs rendszerbe van beépítve| Igen |
 | System Center Endpoint Protection (Microsoft-kártevőirtó) | A Windows Server 2012 R2, 2012, 2008 R2 (lásd az alábbi megjegyzést) | Bővítmény útján | Igen |
@@ -114,18 +114,18 @@ Az alábbi táblázat foglalja össze:
 ## <a name="supported-paas-features"></a>Támogatott PaaS-szolgáltatások 
 
 
-|Szolgáltatás|Javaslatok|Fenyegetések észlelése|
+|Szolgáltatás|Javaslatok|Veszélyforrások detektálása|
 |----|----|----|
 |SQL|✔| ✔|
 |PostGreSQL*|✔| ✔|
 |MySQL*|✔| ✔|
 |Az Azure Blob storage fiókok *|✔| ✔|
-|App Services|✔| ✔|
+|Alkalmazásszolgáltatások|✔| ✔|
 |Cloud Services|✔| X|
-|Virtuális hálózatok|✔| NA|
-|Alhálózatok|✔| NA|
-|Hálózati adapterek (NIC-k)|✔| ✔|
-|NSG-k|✔| NA|
+|Virtuális hálózatok|✔| n/a|
+|Alhálózatok|✔| n/a|
+|Hálózati adapterek|✔| ✔|
+|NSG|✔| n/a|
 |Előfizetés|✔| ✔|
 
 \* Nyilvános előzetes verziója jelenleg támogatja ezeket a szolgáltatásokat. 

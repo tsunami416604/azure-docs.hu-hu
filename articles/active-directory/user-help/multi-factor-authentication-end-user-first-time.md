@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0749e1acba9f13f9e0e95dfc66f9cf818c752cff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2df72d03bae8987de4998276a0be0f3ce1ec0333
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60334712"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230045"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>A kétlépéses ellenőrzéshez a fiók beállítása
 A kétlépéses ellenőrzés egy kiegészítő biztonsági lépés, amely megnehezíti mások feltörhessék fiókja védelme érdekében. Ha ez a cikk olvasása közben, valószínűleg kapott e-mailt a munkahelyi vagy iskolai rendszergazda multi-factor Authentication hitelesítéssel kapcsolatban. Vagy esetleg próbált meg bejelentkezni, és itt van egy üzenet, hogy további biztonsági ellenőrzés beállítása. Ebben az esetben, ha **nem tud bejelentkezni, amíg el nem végezte az automatikus regisztrációs folyamatot**.
@@ -30,7 +30,7 @@ Ez a cikk segít beállítani a **munkahelyi vagy iskolai fiók**. Ha a saját, 
 
 A cég informatikai támogatási kell kezdeni használni a kétlépéses ellenőrzést, ha megjelenik egy képernyő, amely szerint **a rendszergazda megköveteli, hogy állítsa be ezt a fiókot a további biztonsági ellenőrzés**:
 
-![Beállítás](./media/multi-factor-authentication-end-user-first-time/first.png)
+![Telepítés](./media/multi-factor-authentication-end-user-first-time/first.png)
 
 Első lépésként válassza ki a **hozza létre most.**
 
@@ -69,7 +69,7 @@ Ez a módszer használatához, hogy egy hitelesítő alkalmazást telepítenie a
    ![A PIN-kód megadására szolgáló mező](./media/multi-factor-authentication-end-user-first-time/scan3.png)
 
 8. PIN-kód bevitelének befejezése után jelölje ki a **Bezárás**. Ezen a ponton az ellenőrzés sikeres legyen.
-9. Azt javasoljuk, hogy meg mobiltelefonszámát arra az esetre, ha megszakadna a mobilalkalmazással. Adja meg a legördülő listából válassza ki az országot, és adja meg mobiltelefonszámát az ország neve melletti jelölőnégyzetbe. Kattintson a **Tovább** gombra.
+9. Azt javasoljuk, hogy meg mobiltelefonszámát arra az esetre, ha megszakadna a mobilalkalmazással. Adja meg a legördülő listából válassza ki az országot vagy régiót, és adja meg mobiltelefonszámát ország/régió neve melletti jelölőnégyzetbe. Kattintson a **Tovább** gombra.
 10. Ezen a ponton kéri alkalmazásjelszókat a böngészőn kívüli alkalmazások, például az Outlook 2010 vagy korábbi, vagy a natív e-mail alkalmazás Apple-eszközök beállításához. Ennek oka az, bizonyos alkalmazások nem támogatják a kétlépéses ellenőrzést. Ha nem használja ezeket az alkalmazásokat, kattintson a **kész** és a további lépéseit kihagyhatja.
 11. Ha használja ezeket az alkalmazásokat, a Másolás az alkalmazásjelszót megadott, és illessze be az alkalmazás a szokásos jelszava helyett. Ugyanazt a jelszót több alkalmazáshoz is használhat. További információ [segítség az alkalmazásjelszókhoz].
 12. Kattintson a **Done** (Kész) gombra.
@@ -80,14 +80,14 @@ Ha azt szeretné, hogy hozzáadjon egy fiókot a mobilalkalmazásba manuálisan,
 1. Válassza ki a **manuálisan adja meg a fiók** gombra.  
 2. Adja meg a kódot és a vonalkód meg, amely ugyanazon az oldalon lévő URL-CÍMÉT. Ezek az adatok kerül a **kód** és **URL-cím** mezőkbe a mobilalkalmazásban.
 
-    ![Beállítás](./media/multi-factor-authentication-end-user-first-time/barcode2.png)
+    ![Telepítés](./media/multi-factor-authentication-end-user-first-time/barcode2.png)
 3. Ha az aktiválás befejeződött, válassza ki a **kapcsolatfelvételi**. Ebben a lépésben vagy egy értesítést, vagy egy ellenőrzőkódot küld a telefonjára. Válassza ki **ellenőrzése**.
 
 ## <a name="use-your-mobile-phone-as-the-contact-method"></a>A mobiltelefon használata kapcsolattartási módszerként
 1. Válassza ki **hitelesítéshez használt telefon** a legördülő listából.  
 
-    ![Beállítás](./media/multi-factor-authentication-end-user-first-time/phone.png)  
-2. A legördülő listából válassza ki az országot, és adja meg mobiltelefonszámát.
+    ![Telepítés](./media/multi-factor-authentication-end-user-first-time/phone.png)  
+2. Válassza ki az országot vagy régiót a legördülő listából, és adja meg mobiltelefonszámát.
 3. Válassza inkább a mobiltelefonjára – szöveges vagy telefonhíváson alapuló használandó módszert.
 4. Válassza ki **kapcsolatfelvételi** ellenőrzése a telefonszámát. A kiválasztott módtól függően a Microsoft egy szöveges üzenet elküldéséhez, vagy hívja meg. Kövesse a képernyőn megjelenő utasításokat, majd válassza a **ellenőrizze**.
 5. Ezen a ponton kéri alkalmazásjelszókat a böngészőn kívüli alkalmazások, például az Outlook 2010 vagy korábbi, vagy a natív e-mail alkalmazás Apple-eszközök beállításához. Ennek oka az, bizonyos alkalmazások nem támogatják a kétlépéses ellenőrzést. Ha nem használja ezeket az alkalmazásokat, kattintson a **kész** és a további lépéseit kihagyhatja.
@@ -97,7 +97,7 @@ Ha azt szeretné, hogy hozzáadjon egy fiókot a mobilalkalmazásba manuálisan,
 ## <a name="use-your-office-phone-as-the-contact-method"></a>A kapcsolattartási módszerként az irodai telefonját használja
 1. Válassza ki **irodai telefon** a legördülő listából  
 
-    ![Beállítás](./media/multi-factor-authentication-end-user-first-time/office.png)  
+    ![Telepítés](./media/multi-factor-authentication-end-user-first-time/office.png)  
 2. A telefonszám mezőben automatikusan kitölti a kapcsolattartási adatokat. Ha a szám nem megfelelő vagy hiányzó, kérje a rendszergazda módosíthatja.
 3. Válassza ki **kapcsolatfelvételi** telefon ellenőrzése számát, valamint hogy hívni fogja a számot. Kövesse a képernyőn megjelenő utasításokat, majd válassza a **ellenőrizze**.
 4. Ezen a ponton kéri alkalmazásjelszókat a böngészőn kívüli alkalmazások, például az Outlook 2010 vagy korábbi, vagy a natív e-mail alkalmazás Apple-eszközök beállításához. Ennek oka az, bizonyos alkalmazások nem támogatják a kétlépéses ellenőrzést. Ha nem használja ezeket az alkalmazásokat, kattintson a **kész** és a további lépéseit kihagyhatja.
