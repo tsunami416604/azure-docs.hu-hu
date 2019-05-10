@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 2dd3b9f0d1d8d61b2311977774c8b0f7267caa9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7f742b094575b78f453fb735b23cc5319a27fa7e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60331000"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65206654"
 ---
 # <a name="extended-events-in-sql-database"></a>Az SQL Database bővített események
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -197,7 +197,7 @@ A **Eseményfájl** cél tapasztalhat, hálózati késés vagy hibák során az 
 - [A Blob storage a .NET használatával](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
 - [CREATE EVENT SESSION (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
-- [Jonathan Kehayias blogbejegyzések arról a Microsoft SQL Server bővített események](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
+- [Jonathan Kehayias blogbejegyzések arról a Microsoft SQL Server bővített események](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 
 - Az Azure *szolgáltatásfrissítések* weblapon, paraméterben az Azure SQL Database leszűkül:

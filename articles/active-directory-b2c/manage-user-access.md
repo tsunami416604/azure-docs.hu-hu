@@ -1,6 +1,6 @@
 ---
 title: Az Azure Active Directory B2C felhasználói hozzáférés felügyelete |} A Microsoft Docs
-description: Ismerje meg, hogyan kiskorúak azonosítása, dátum születési idő és az országot adatok gyűjtése és használati feltételek elfogadása beszerzése az alkalmazás Azure AD B2C használatával.
+description: Ismerje meg, hogyan kiskorúak azonosítása, dátum születési és ország/régió adatok összegyűjtése és használati feltételek elfogadása beszerzése az alkalmazás Azure AD B2C használatával.
 services: active-directory-b2c
 author: davidmu1
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: cddaf59a1202c9c19018427c06639686e905bb64
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 88123cc24359daaf1c6fc7e3ceeed8f77f717c9a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691098"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228019"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Az Azure Active Directory B2C felhasználói hozzáférés felügyelete
 
@@ -23,7 +23,7 @@ Ez a cikk ismerteti az alkalmazásokhoz való felhasználói hozzáférés felü
 
 - Kiskorúak azonosítása, és az alkalmazásokhoz való felhasználói hozzáférés szabályozása.
 - Szülői hozzájárulást kiskorúaknak ahhoz, hogy az alkalmazásokat.
-- Születési idő és az országot adatokat gyűjt a felhasználók.
+- Születési idő és az országot/régiót adatokat gyűjt a felhasználók.
 - A használati feltételek szerződés rögzítése és változástábla hozzáférésének korlátozásához.
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -58,11 +58,11 @@ A következő egy felhasználói folyamat szülői beleegyezési ötvözve egy p
 
 További információ **legalAgeGroupClassification**, **consentProvidedForMinor**, és **korcsoport**, lásd: [felhasználói erőforrás típusa](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Egyéni attribútumok kapcsolatos további információkért lásd: [egyéni attribútumok használata a felhasználók adatainak gyűjtésére](active-directory-b2c-reference-custom-attr.md). Kiterjesztett attribútumok oldja meg az Azure AD Graph API-val, amikor például kell használnia az attribútum a hosszú verzió *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
 
-## <a name="gather-date-of-birth-and-country-data"></a>Gyűjtse össze a születési idő és az ország-adatok dátuma
+## <a name="gather-date-of-birth-and-countryregion-data"></a>Gyűjtse össze a születési idő és az országot/régiót adatok dátuma
 
-Alkalmazások az Azure AD B2C-vel a születési dátum (DOB) és ország információkat gyűjtsön a minden felhasználó regisztrációja során hivatkozhatnak. Ha ezek az információk még nem létezik, az alkalmazás kérheti a felhasználótól a következő hitelesítési (bejelentkezik) utazás közben. Felhasználók saját DOB megadása nélkül nem lehet folytatni és ország információkat. Az Azure AD B2C az információk segítségével határozza meg, hogy az egyes van-e a szabályozási normák terén, az adott ország szerint kiskorúnak számít. 
+Alkalmazások az Azure AD B2C-vel a születési dátum (DOB) és ország/régió információkat gyűjtsön a minden felhasználó regisztrációja során hivatkozhatnak. Ha ezek az információk még nem létezik, az alkalmazás kérheti a felhasználótól a következő hitelesítési (bejelentkezik) utazás közben. Felhasználók adataik DOB és ország/régió megadása nélkül nem lehet folytatni. Az Azure AD B2C az információk segítségével határozza meg, hogy az egyes van-e a szabályozási normák terén, az adott ország/régió szerint kiskorúnak számít. 
 
-Testre szabott felhasználói folyamat DOB gyűjthet és ország információkat, és használja az Azure AD B2C-vel jogcím-e meghatározásához átalakítás a **korcsoport** és megőrzéséhez az eredmény (vagy megőrizni az DOB és ország adatokat közvetlenül) a címtárban.
+Testre szabott felhasználói folyamat DOB gyűjthet és ország/régió információk és használata az Azure AD B2C-vel jogcím-e az átalakítás meghatározásához a **korcsoport** és az eredmény maradnak meg (vagy a DOB és ország/régió információk megőrzése közvetlenül) az a a könyvtár.
 
 A következő lépések bemutatják, hogy a rendszer kiszámítja a logika **korcsoport** , a felhasználó születési dátuma:
 
@@ -78,7 +78,7 @@ A következő lépések bemutatják, hogy a rendszer kiszámítja a logika **kor
 
 4. Ha sem számítási igaz értéket ad vissza, a számítás eredménye **felnőtt**.
 
-Ha egy alkalmazás megbízhatóan összegyűjtött DOB vagy más módszerekkel országos adatok, az alkalmazás használatával a Graph API a felhasználói rekord frissítse ezt az információt. Példa:
+Ha egy alkalmazás megbízhatóan által összegyűjtött adatok DOB vagy ország/régió más módszerekkel, az alkalmazás használatával a Graph API a felhasználói rekord frissítse ezt az információt. Példa:
 
 - Ha egy felhasználó felnőtt életkorhoz ismert, frissítse a directory-attribútum **korcsoport** értékkel **felnőtt**.
 - Ha egy felhasználó ismert, hogy egy kisebb, frissítse a directory-attribútum **korcsoport** értékkel **kisebb** és **consentProvidedForMinor**, ha szükséges.

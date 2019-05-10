@@ -2,10 +2,8 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Az Azure Search ismertetése
+    - name: Mi az az Azure Search?
       href: search-what-is-azure-search.md
-    - name: A kognitív keresés bemutatása
-      href: cognitive-search-concept-intro.md
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -15,7 +13,7 @@
       items:
         - name: Index betöltése és lekérdezése
           href: search-get-started-portal.md
-        - name: Bővítés és gazdagítás mesterséges intelligenciával (kognitív keresés)
+        - name: Bővítés mesterséges intelligenciával (Cognitive Search)
           href: cognitive-search-quickstart-blob.md
     - name: 'C#'
       items:
@@ -35,8 +33,12 @@
       href: search-indexer-tutorial.md
     - name: Azure JSON blobok indexelése
       href: search-semi-structured-data.md
-    - name: Indexelés mesterséges intelligenciával (Cognitive Services)
-      href: cognitive-search-tutorial-blob.md
+    - name: Bővítés mesterséges intelligenciával (Cognitive Search)
+      items:
+        - name: REST
+          href: cognitive-search-tutorial-blob.md
+        - name: 'C#'
+          href: cognitive-search-tutorial-blob-dotnet.md
 - name: Példák
   items:
     - name: Azure-kódminták
@@ -53,11 +55,15 @@
   items:
     - name: Teljes szöveges keresés
       href: search-lucene-query-architecture.md
-    - name: Kialakítási minták a több-bérlős módhoz
-      href: search-modeling-multitenant-saas-applications.md
+    - name: Cognitive Search
+      href: cognitive-search-concept-intro.md
+    - name: Tudástár
+      href: knowledge-store-concept-intro.md
+    - name: Leképezések
+      href: knowledge-store-projection-overview.md
 - name: Útmutatók
   items:
-    - name: Kapacitástervezés
+    - name: Tervezés
       items:
         - name: Szint kiválasztása
           href: search-sku-tier.md
@@ -67,6 +73,8 @@
           href: search-capacity-planning.md
         - name: Üzembehelyezési stratégiák és ajánlott eljárások
           href: search-performance-optimization.md
+        - name: Több-bérlős architektúra
+          href: search-modeling-multitenant-saas-applications.md
     - name: Biztonság
       items:
         - name: Biztonsági áttekintés
@@ -79,6 +87,8 @@
           href: search-security-trimming-for-azure-search.md
         - name: AAD-identitások szűrése
           href: search-security-trimming-for-azure-search-with-aad.md
+        - name: Titkosítási kulcsok kezelése (előnézet)
+          href: search-security-manage-encryption-keys.md
     - name: Fejlesztés
       items:
         - name: API-verziók
@@ -169,26 +179,36 @@
           href: search-indexer-field-mappings.md
         - name: Gyakori problémák megoldása
           href: search-indexer-troubleshooting.md
-    - name: MI-indexelés (kognitív keresés)
+    - name: Bővítés mesterséges intelligenciával
       items:
         - name: Cognitive Services-erőforrás csatolása
           href: cognitive-search-attach-cognitive-services.md
-        - name: Képességcsoport megadása
-          href: cognitive-search-defining-skillset.md
-        - name: Hivatkozás jegyzetre
-          href: cognitive-search-concept-annotations-syntax.md
-        - name: Leképezés index mezőire
-          href: cognitive-search-output-field-mapping.md
-        - name: Képeken szereplő információk feldolgozása és kinyerése
-          href: cognitive-search-concept-image-scenarios.md
-        - name: Egyéni képesség integrálása
-          href: cognitive-search-custom-skill-interface.md
-        - name: Példa – egyéni képesség
-          href: cognitive-search-create-custom-skill-example.md
+        - name: Készségek
+          items:
+            - name: Képességcsoport megadása
+              href: cognitive-search-defining-skillset.md
+            - name: Hivatkozás jegyzetre
+              href: cognitive-search-concept-annotations-syntax.md
+            - name: Leképezés index mezőire
+              href: cognitive-search-output-field-mapping.md
+            - name: Képeken szereplő információk feldolgozása és kinyerése
+              href: cognitive-search-concept-image-scenarios.md
+        - name: Egyéni készségek
+          items:
+            - name: Egyéni képesség integrálása
+              href: cognitive-search-custom-skill-interface.md
+            - name: Példa – Azure Functions
+              href: cognitive-search-create-custom-skill-example.md
+            - name: Példa – Tárolók
+              href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: Hibaelhárítási tippek
           href: cognitive-search-concept-troubleshooting.md
         - name: Dokumentációs hivatkozások
           href: cognitive-search-resources-documentation.md
+    - name: Tudástár (előzetes verzió)
+      items:
+        - name: Első lépések
+          href: knowledge-store-howto.md
     - name: Adatok lekérdezése
       items:
         - name: Alapszintű lekérdezés létrehozása
@@ -203,6 +223,8 @@
           href: search-query-simple-examples.md
         - name: Példák (teljes Lucene)
           href: search-query-lucene-examples.md
+        - name: moreLikeThis (előzetes verzió)
+          href: search-more-like-this.md
     - name: Adatok szűrése és rendezése
       items:
         - name: A szűrők áttekintése
@@ -276,9 +298,11 @@
           href: cognitive-search-skill-ocr.md
         - name: Formázó
           href: cognitive-search-skill-shaper.md
+        - name: Feltételes
+          href: cognitive-search-skill-conditional.md
         - name: Elavult készségek
           href: cognitive-search-skill-deprecated.md
-    - name: Egyéni készségek (előzetes verzió)
+    - name: Egyéni készségek
       items:
         - name: Egyéni webes API
           href: cognitive-search-custom-skill-web-api.md

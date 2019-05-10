@@ -194,7 +194,7 @@ Ha az adatok másolása a DB2, Azure Data Factory-közbenső adattípusok a köv
 | Real |Single |
 | SmallInt |Int16 |
 | Time |TimeSpan |
-| Timestamp |DateTime |
+| Timestamp |Datetime |
 | VarBinary |Byte[] |
 | VarChar |String |
 | VarGraphic |String |

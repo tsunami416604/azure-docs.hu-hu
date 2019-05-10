@@ -16,16 +16,24 @@
   items:
     - name: Android
       items:
-        - name: Leküldéses értesítések küldése a Firebase Cloud Messaging használatával
-          href: notification-hubs-android-push-notification-google-fcm-get-started.md
-        - name: Leküldéses értesítések küldése a Google Cloud Messaging használatával
-          href: notification-hubs-android-push-notification-google-gcm-get-started.md
-        - name: Leküldéses értesítések küldése adott eszközökre
-          href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-        - name: Leküldéses értesítések küldése adott felhasználóknak
-          href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
-        - name: Leküldéses értesítések küldése Xamarin Android-alkalmazásokba
-          href: xamarin-notification-hubs-push-notifications-android-gcm.md
+        - name: Firebase Cloud Messaging
+          items:
+            - name: Leküldéses értesítések az összes regisztráció számára
+              href: notification-hubs-android-push-notification-google-fcm-get-started.md
+            - name: Leküldéses értesítések küldése adott eszközökre
+              href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
+            - name: Leküldéses értesítések küldése adott felhasználóknak
+              href: push-notifications-android-specific-users-firebase-cloud-messaging.md
+            - name: Leküldéses értesítések küldése Xamarin Android-alkalmazásokba
+              href: xamarin-notification-hubs-push-notifications-android-gcm.md
+        - name: Google Cloud Message (elavult)
+          items:
+            - name: Leküldéses értesítések az összes regisztráció számára
+              href: notification-hubs-android-push-notification-google-gcm-get-started.md
+            - name: Leküldéses értesítések küldése adott eszközökre
+              href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
+            - name: Leküldéses értesítések küldése adott felhasználóknak
+              href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
     - name: Baidu
       items:
         - name: Leküldéses értesítések küldése felhőalapú Baidu-értesítés használatával

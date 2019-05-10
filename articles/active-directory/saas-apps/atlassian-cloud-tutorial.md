@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 729b8eb6-efc4-47fb-9f34-8998ca2c9545
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/11/2018
+ms.date: 05/03/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49d44fa0926afac917ae0ba355d37f13a354f432
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 66b8b9076c0a4b1fddda4ab0bcfe9f104d7dcf8a
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887934"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191126"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>Oktatóanyag: Az Azure Active Directory-integráció Atlassian felhővel
 
@@ -38,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Atlassian felhőalapú Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
 * Atlassian felhőalapú egyszeri bejelentkezés engedélyezve van az előfizetés
 * Engedélyezi a Security Assertion Markup Language (SAML) egyszeri bejelentkezést az Atlassian felhőalapú termékek, szüksége Atlassian hozzáférés beállítása. Tudjon meg többet [Atlassian hozzáférés]( https://www.atlassian.com/enterprise/cloud/identity-manager).
 
@@ -115,7 +116,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Atlassian felhő, ha
     d. Az a **továbbítási állapot** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<instancename>.atlassian.net`
 
     > [!NOTE]
-    > Az előző értékek nem valódi. Az értékeket módosítsa a tényleges azonosítóval, és a válasz URL-címe. Valódi ezeket az értékeket az oktatóanyag későbbi részében ismertetett Atlassian felhőalapú SAML-konfigurációja képernyőről fog kapni.
+    > Az előző értékek nem valódi. Az értékeket módosítsa a tényleges azonosítóval, és a válasz URL-címe. Valódi értéket kap a **Atlassian felhőalapú SAML-konfigurációja** képernyő, amelynek az ismertetése a később a **konfigurálása Atlassian felhőalapú egyszeri bejelentkezés** oktatóanyag.
 
 5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
@@ -140,39 +141,47 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Atlassian felhő, ha
 
     a. Bejelentkezési URL
 
-    b. Azure Ad Identifier
+    b. Azure AD-azonosító
 
     c. Kijelentkezési URL
 
 ### <a name="configure-atlassian-cloud-single-sign-on"></a>Atlassian felhőalapú egyszeri bejelentkezés konfigurálása
 
-1. Egyszeri bejelentkezés az alkalmazáshoz konfigurált kapni, jelentkezzen be rendszergazdai hitelesítő adatait az Atlassian-portálra.
+1. Automatizálhatja a konfiguráció Atlassian-felhőben, telepítenie kell **saját alkalmazások biztonságos bejelentkezési böngészőbővítmény** kattintva **a bővítmény telepítése**.
 
-2. Ellenőrizze a tartományt egyszeri bejelentkezés konfigurálása előtt kell. További információkért lásd: [Atlassian tartomány-ellenőrzés](https://confluence.atlassian.com/cloud/domain-verification-873871234.html) dokumentumot.
+    ![Saját alkalmazások kiterjesztése](common/install-myappssecure-extension.png)
 
-3. A bal oldali panelen válassza ki a **SAML egyszeri bejelentkezés**. Ha ezt még nem tette meg, az előfizetés Atlassian Identity Manager.
+2. A felvett bővítmény a böngészőre, kattintson a **telepítő Atlassian felhőalapú** átirányítja azt az Atlassian felhőalapú alkalmazás. Itt adja meg a rendszergazdai hitelesítő adataival bejelentkezni Atlassian felhő. A webböngésző-bővítmény automatikusan konfigurálja az alkalmazást, és 3-7 lépések automatizálásához.
+
+    ![Konfiguráció beállítása](common/setup-sso.png)
+
+3. Ha azt szeretné, manuálisan állíthatja be az Atlassian felhő, nyisson meg egy új böngészőablakban, és jelentkezzen be rendszergazdaként vállalati Atlassian felhőalapú webhelyét, és hajtsa végre az alábbi lépéseket:
+
+4. Ellenőrizze a tartományt egyszeri bejelentkezés konfigurálása előtt kell. További információkért lásd: [Atlassian tartomány-ellenőrzés](https://confluence.atlassian.com/cloud/domain-verification-873871234.html) dokumentumot.
+
+5. A bal oldali panelen válassza ki a **SAML egyszeri bejelentkezés**. Ha ezt még nem tette meg, az előfizetés Atlassian Identity Manager.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_11.png)
 
-4. Az a **hozzáadása SAML-konfigurációja** ablakban tegye a következőket:
+6. Az a **hozzáadása SAML-konfigurációja** ablakban tegye a következőket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_12.png)
 
-    a. Az a **identitásszolgáltató Entitásazonosító** mezőbe illessze be az SAML-entitás azonosítója az Azure Portalról másolt.
+    a. Az a **identitásszolgáltató Entitásazonosító** mezőbe illessze be a **az Azure AD-azonosító** , az Azure Portalról másolt.
 
-    b. Az a **identitásszolgáltató egyszeri bejelentkezési URL-cím** mezőbe illessze be a SAML egyszeri bejelentkezési szolgáltatás URL-cím, az Azure Portalról másolt.
+    b. Az a **identitásszolgáltató egyszeri bejelentkezési URL-cím** mezőbe illessze be a **bejelentkezési URL-cím** , az Azure Portalról másolt.
 
     c. Nyissa meg a letöltött tanúsítvány egy .txt fájlban, az Azure portálról másolja az értéket (nélkül a *megkezdéséhez tanúsítvány* és *End Certificate* sorok), majd illessze be a a **nyilvános X509 tanúsítvány** mezőbe.
 
     d. Kattintson a **konfiguráció mentése**.
 
-5. Győződjön meg arról, hogy meg van adva a megfelelő URL-címeket, frissítse az Azure AD-beállításokat az alábbiak szerint:
+7. Győződjön meg arról, hogy meg van adva a megfelelő URL-címeket, frissítse az Azure AD-beállításokat az alábbiak szerint:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_13.png)
 
-    a. A SAML ablakban másolja a **SP Szolgáltatásidentitás azonosítója** , majd az Azure portal alatt Atlassian felhőalapú **tartomány és URL-címek**, illessze be a **azonosító** mezőbe.
+    a. A SAML ablakban másolja a **SP Szolgáltatásidentitás azonosítója** , majd az Azure portal alatt Atlassian felhőalapú **alapszintű SAML-konfigurációja**, illessze be a **azonosító** mezőbe.
 
-    b. Az SAML ablakban másolja a **SP helyességi feltétel fogyasztói szolgáltatás URL-címe** , majd az Azure portal alatt Atlassian felhőalapú **tartomány és URL-címek**, illessze be a **válasz URL-cím** mezőbe. A bejelentkezési URL-bérlői URL-címét az Atlassian Felhőbeli.
+    b. Az SAML ablakban másolja a **SP helyességi feltétel fogyasztói szolgáltatás URL-címe** , majd az Azure portal alatt Atlassian felhőalapú **alapszintű SAML-konfigurációja**, illessze be a **válasz URL-cím**mezőbe. A bejelentkezési URL-bérlői URL-címét az Atlassian Felhőbeli.
 
     > [!NOTE]
     > Hogy egy meglévő ügyfél frissítése után a **SP Szolgáltatásidentitás azonosítója** és **SP helyességi feltétel fogyasztói szolgáltatás URL-címe** értékeket az Azure Portalon válassza ki **Igen, frissítse a konfigurációt**. Ha Ön új ügyfél, kihagyhatja ezt a lépést.
@@ -249,7 +258,7 @@ Ahhoz, hogy jelentkezzen be a Atlassian felhőalapú Azure AD-felhasználók, a 
 > [!NOTE]
 > Tömegesen is-felhasználók létrehozása kiválasztásával a **tömeges létrehozásához** gombra a **felhasználók** szakaszban.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

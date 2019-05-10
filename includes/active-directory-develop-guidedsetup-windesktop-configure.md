@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 5eaee4f932c4e42f6fed3d839314346b3a93f360
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c4dc3d422e18d9ee41bf16ac3e6f22c3d7e466d7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60297697"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199122"
 ---
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
 
@@ -43,7 +43,9 @@ Az alkalmazása regisztrálásához és az alkalmazás regisztrációs informác
    - A **Támogatott fióktípusok** szakaszban jelölje be a **Tetszőleges szervezeti címtárban található fiókok és a Személyes Microsoft-fiókok (például Skype, Xbox, Outlook.com)** beállítást.
    - Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet.
-1. Az **Átirányítási URI-k** szakaszban keresse meg a **Javasolt átirányítási URI-k nyilvános ügyfelek számára (mobil, asztali)** szakaszt, és válassza az **urn: ietf:wg:oauth:2.0:oob** címet.
+   1. Az a **átirányítási URI-k** szakaszában az átirányítási URI-k listájában:
+   1. Az a **típus** oszlop kiválasztása **(mobil és asztali) nyilvános ügyfél**.
+   1. Adja meg `urn:ietf:wg:oauth:2.0:oob` a a **ÁTIRÁNYÍTÁSI URI-t** oszlop.
 1. Kattintson a **Mentés** gombra.
 1. Lépjen a Visual Studióban nyissa meg a *App.xaml.cs* fájlt, és cserélje `Enter_the_Application_Id_here` az imént regisztrált és másolt alkalmazás azonosítójával.
 

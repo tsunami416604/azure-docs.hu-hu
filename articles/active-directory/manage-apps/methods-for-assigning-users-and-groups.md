@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2018
+ms.date: 04/26/2019
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cbd40f2ab91f854f46dc3e62bccbc8a3264f97f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bdf19d2001f84fab6978bfc34ef14a361b89edea
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291279"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441425"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Felhasználók és csoportok hozzárendelése egy alkalmazáshoz az Azure Active Directoryban
 Ez a cikk bemutatja, hogyan felhasználók vagy csoportok hozzárendelése az Azure Active Directoryban (Azure AD-) alkalmazáshoz. Felhasználók először hozzá kell rendelni egy alkalmazás előtt a rendszergazda is hozzáférést biztosít nekik a következőket:
@@ -31,6 +31,8 @@ Ez a cikk bemutatja, hogyan felhasználók vagy csoportok hozzárendelése az Az
 -   Tekintse meg az alkalmazások jelennek meg azok [alkalmazás-hozzáférési Panel](https://myapps.microsoft.com/) vagy mobilalkalmazás.
 
 -   Tekintse meg az alkalmazások jelennek meg azok [Office 365 Alkalmazásindítójában](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a).
+
+Csoportalapú rendelkezésre állását a licencszerződésben határozza meg. Csoportalapú támogatott kizárólag biztonsági csoportokra, és a beágyazott csoporttagság jelenleg nem támogatottak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Felhasználók és csoportok alkalmazásokhoz való hozzárendelés előtt meg kell kérnie a felhasználó-hozzárendelés. A felhasználó-hozzárendelés szükséges:

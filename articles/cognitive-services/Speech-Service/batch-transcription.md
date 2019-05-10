@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 1a2d24be00b0e1224b5f8d52105e2969d64e5f64
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 2148d1bd79a858bec37e6c574c2a6b6e2009fe46
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922483"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190400"
 ---
 # <a name="why-use-batch-transcription"></a>Miért érdemes használni a Batch beszédátírási?
 
@@ -65,7 +65,7 @@ Konfigurációs paraméterek JSON-fájlként áll rendelkezésre:
 ```json
 {
   "recordingsUrl": "<URL to the Azure blob to transcribe>",
-  "models": ["<optional acoustic model ID>, <optional language model ID>"],
+  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
   "locale": "<local to us, for example en-US>",
   "name": "<user define name of the transcription batch>",
   "description": "<optional description of the transcription>",
@@ -86,9 +86,9 @@ Konfigurációs paraméterek JSON-fájlként áll rendelkezésre:
 | Paraméter | Leírás | Kötelező / választható |
 |-----------|-------------|---------------------|
 | `ProfanityFilterMode` | Adja meg a felismerési eredményeket cenzúrázása kezelése. Elfogadott értékek a következők `none` amely letiltja a vulgáris szűréshez `masked` csillag, amely lecseréli cenzúrázása `removed` amely eltávolítja az összes cenzúrázása az eredményből vagy `tags` ami ad "cenzúrázása" címkék. Az alapértelmezett beállítás `masked`. | Optional |
-| `PunctuationMode` | Adja meg a felismerési eredményeket írásjelek kezelése. Elfogadott értékek a következők `none` ami letiltja az absztrakt, `dictated` explicit írásjelek, amiből `automatic` , amellyel a dekóder írásjelek, kezelése vagy `dictatedandautomatic` írásjelek vagy automatikus azt jelenti, amely során. | Optional |
- | `AddWordLevelTimestamps` | Itt adhatja meg, ha word szintű időbélyeggel kell adni a kimenetet. Elfogadott értékek a következők `true` lehetővé teszi a word szintű időbélyegeket és `false` (az alapértelmezett érték) letiltja azt. | Optional |
- | `AddSentiment` | Megadja a vélemény hozzá kell adni az utterance (kifejezés). Elfogadott értékek a következők `true` ami lehetővé teszi az utterance (kifejezés) / vélemények és `false` (az alapértelmezett érték) letiltja azt. | Optional |
+| `PunctuationMode` | Adja meg a felismerési eredményeket írásjelek kezelése. Elfogadott értékek a következők `none` ami letiltja az absztrakt, `dictated` explicit írásjelek, amiből `automatic` , amellyel a dekóder írásjelek, kezelése vagy `dictatedandautomatic` írásjelek vagy automatikus azt jelenti, amely során. | Választható |
+ | `AddWordLevelTimestamps` | Itt adhatja meg, ha word szintű időbélyeggel kell adni a kimenetet. Elfogadott értékek a következők `true` lehetővé teszi a word szintű időbélyegeket és `false` (az alapértelmezett érték) letiltja azt. | Választható |
+ | `AddSentiment` | Megadja a vélemény hozzá kell adni az utterance (kifejezés). Elfogadott értékek a következők `true` ami lehetővé teszi az utterance (kifejezés) / vélemények és `false` (az alapértelmezett érték) letiltja azt. | Választható |
 
 ### <a name="storage"></a>Storage
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: efeadd2e1600e5ee572c4a69dde0ff4c53a13cd7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e1fc7809ad94d589483b87c638d027a39098164e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64577660"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209541"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rövid útmutató – a magánfelhő-környezet konfigurálása
 
@@ -135,7 +135,7 @@ A VLAN/alhálózatot hoz létre.  Mostantól használhatja ezt a VLAN-Azonosít�
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>Csatlakoztassa környezetét az Azure-beli virtuális hálózathoz
 
-CloudSimple biztosít ExpressRoute-kapcsolatcsoport ki a magánfelhője számára. Az ExpressRoute-kapcsolatcsoport csatlakozhat a virtuális hálózat az Azure-ban. További részletek a kapcsolat beállításának, kövesse a [Azure ExpressRoute használatával virtuális hálózati kapcsolat](https://docs.azure.cloudsimple.com/azure-er-connection)
+CloudSimple biztosít ExpressRoute-kapcsolatcsoport ki a magánfelhője számára. Az ExpressRoute-kapcsolatcsoport csatlakozhat a virtuális hálózat az Azure-ban. További részletek a kapcsolat beállításának, kövesse a [Azure ExpressRoute használatával virtuális hálózati kapcsolat](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/)
 
 ## <a name="sign-in-to-vcenter"></a>Jelentkezzen be a vCenter
 

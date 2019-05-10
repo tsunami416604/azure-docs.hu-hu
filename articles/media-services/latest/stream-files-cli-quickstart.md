@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 02/19/2019
 ms.author: juliako
-ms.openlocfilehash: a323cbe4188207fa77525648297b366c9c57121b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd818135f289c430416909d16c8568208936a9f8
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466901"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205403"
 ---
 # <a name="quickstart-stream-video-files---cli"></a>Gyors útmutató: Videófájlok streamelése – parancssori felület
 
@@ -83,7 +83,7 @@ A következőhöz hasonló választ kap:
 
 ## <a name="start-the-streaming-endpoint"></a>A streamvégpont elindítása
 
-A következő Azure CLI-parancs elindítja az alapértelmezett **Sstreaming végpont**.
+A következő Azure CLI-parancs elindítja az alapértelmezett **folyamatos átviteli végponton**.
 
 ```azurecli
 az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
@@ -356,4 +356,4 @@ Lásd: [hibakódok feladat](https://docs.microsoft.com/rest/api/media/jobs/get#j
 
 ## <a name="next-steps"></a>További lépések
 
-> [CLI-minták](cli-samples.md)
+[Media Services áttekintése](media-services-overview.md)

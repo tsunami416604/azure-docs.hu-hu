@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: fc02e830953f8612a077fb219c7fef4e86bc3827
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e542ad59f6fd64b52aef9438ed0f646e9e36fc4a
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61479287"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209624"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Adatok exportálása az Azure Blob storage-ból az Azure Import/Export szolgáltatás használata
 Ebben a cikkben részletes útmutatás az Azure Import/Export szolgáltatás használatával nagy mennyiségű adat biztonságosan exportálása az Azure Blob storage-ból. A szolgáltatás megköveteli, hogy az Azure-adatközpontba üres meghajtókon szállításra. A szolgáltatás adatokat exportál a tárfiók a meghajtók, és vissza a meghajtók majd tartalmaz.
@@ -52,7 +52,7 @@ A következő lépésekkel exportálási feladat létrehozása az Azure Portalon
     - Adjon meg egy leíró nevet az exportálási feladatot. Úgy dönt, hogy a folyamat előrehaladását a feladatok nevet használja. 
         - A név csak kisbetűket, számokat, kötőjeleket és aláhúzásjeleket tartalmazhat.
         - A névnek betűvel kell kezdődnie, és nem tartalmazhat szóközt. 
-    - Válasszon egy előfizetést.
+    - Válasszon előfizetést.
     - Adja meg, vagy válasszon ki egy erőforráscsoportot.
 
         ![Alapvető beállítások](./media/storage-import-export-data-from-blobs/export-from-blob3.png) 
@@ -83,7 +83,7 @@ A következő lépésekkel exportálási feladat létrehozása az Azure Portalon
 4. A **szállítási adatok visszaadása**:
 
     - A legördülő listából válassza ki a szolgáltató. Ha szeretne egy szolgáltató eltérő FedEx/DHL használja, válasszon egy meglévő lehetőséget a legördülő listából. A csapat kapcsolattartási Azure Data Box Operations `adbops@microsoft.com` együtt tervezi használni a szállítmányozó vonatkozó információkat.
-    - Adjon meg egy érvényes Szállítmányozó számlaszáma, amelyek a szolgáltató létrehozta. A Microsoft ezt a fiókot használja, a meghajtók vissza tehetnek az importálási feladat befejeződése után. 
+    - Adjon meg egy érvényes Szállítmányozó számlaszáma, amelyek a szolgáltató létrehozta. A Microsoft ezt a fiókot használja, a meghajtók vissza tehetnek az exportálási feladat befejeződése után. 
     - Adja meg a kész, érvényes ügyfél nevét, telefonszám, e-mail, utca, házszám, város, zip, államot/megyét és ország/régió.
 
         > [!TIP] 

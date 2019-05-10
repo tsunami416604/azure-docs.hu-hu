@@ -2,18 +2,18 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: virtual-machines
-author: rockboyfor
+author: roygara
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/13/2019
-ms.author: v-yeche
+ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 88a4110d68dc8aa921d647f90de654d2ebb4e17d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 885bc1c627626ee7ba4f391be31131b18fa1ab39
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60618037"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65211977"
 ---
 ## <a name="premium-ssd"></a>Prémium SSD
 
@@ -22,12 +22,16 @@ Az Azure prémium szintű SSD-k révén a virtuális gépek (VM) a nagy teljesí
 ### <a name="disk-size"></a>Lemezméret
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
+Amikor üzembe helyez egy prémium szintű tárolólemez standard szintű tárolás esetén, garantáltan a kapacitás, IOPS és átviteli sebessége a lemezen. Ha például P50 lemez létrehozása, ha Azure látja el 4095 GB-os tárolási kapacitás, 7500 IOPS és 250 MB/s átviteli sebességet, hogy a lemez. Az alkalmazás használhatja a kapacitás és teljesítmény részét vagy egészét. Prémium szintű SSD-lemezeket úgy tervezték, hogy a cél teljesítmény 99,9 %-ában.
+
 ## <a name="standard-ssd"></a>Standard SSD
 
 Az Azure standard SSD-k egy költséghatékony tárolási megoldás az IOPS alacsonyabb szinten egységes teljesítményt igénylő feladatokra optimalizált. Standard SSD azok számára, akik szeretne áthelyezni a felhőbe, különösen akkor, ha problémákat tapasztal a HDD-megoldások a helyszínen futó számítási feladatok varianciáját együtt egy jó belépési szintű megoldást kínál. Standard SSD-k jobb rendelkezésre állás, a konzisztencia, a megbízhatóság és a HDD lemezek képest késést biztosít. Standard SSD webkiszolgálók, a alacsony IOPS-alkalmazáskiszolgálók, a kisebb terhelésű vállalati alkalmazások és a fejlesztési/tesztelési feladatokhoz alkalmasak.
 
 ### <a name="disk-size"></a>Lemezméret
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
+
+Standard SSD-k egyszámjegyű ezredmásodperces késéseket nyújt a legtöbb i/o-műveletek és az IOPS és átviteli sebesség kereteken belül az előző táblázatban 99 %-ában ismertetett tervezték. Tényleges IOPS és átviteli sebesség függvénye néha a forgalmi minták. Standard SSD-k, mint a HDD-lemezek stabilabb teljesítményt biztosít a kisebb hálózati késést.
 
 ## <a name="standard-hdd"></a>Standard HDD
 

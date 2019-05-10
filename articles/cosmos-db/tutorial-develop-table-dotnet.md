@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 03/11/2019
-ms.openlocfilehash: f2f207b62522ceef9fe72d47026f4c2f8ed02e3b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0a329722b65e407f011016a1f55e86ef17b47d70
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130437"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192403"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>A .NET SDK használatával az Azure Cosmos DB Table API és az Azure Table storage használatának első lépései
 
@@ -135,7 +135,7 @@ A NuGet-csomag beszerzéséhez kövesse az alábbi lépéseket:
 
 ## <a name="create-a-table"></a>Hozzon létre egy táblát 
 
-A [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.cloudtableclient?redirectedfrom=MSDN&view=azure-dotnet) osztály segítségével lekérheti a Table Storage-ban tárolt táblákat és entitásokat. Vegyünk fel a Cosmos DB Table API-fiókban, hogy nem rendelkezik táblákkal, mert a `CreateTableAsync` metódust a **Common.cs** osztály tábla létrehozásához:
+A [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) osztály segítségével lekérheti a Table Storage-ban tárolt táblákat és entitásokat. Vegyünk fel a Cosmos DB Table API-fiókban, hogy nem rendelkezik táblákkal, mert a `CreateTableAsync` metódust a **Common.cs** osztály tábla létrehozásához:
 
 ```csharp
 public static async Task<CloudTable> CreateTableAsync(string tableName)
@@ -168,7 +168,7 @@ public static async Task<CloudTable> CreateTableAsync(string tableName)
 
 ## <a name="define-the-entity"></a>Az entitás megadása 
 
-Entitások leképezése C# osztályból származtatott egyéni osztály használatával objektumok [TableEntity](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tableentity.aspx). Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy osztályt, amely meghatározza az entitás tulajdonságait.
+Entitások leképezése C# osztályból származtatott egyéni osztály használatával objektumok [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity). Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy osztályt, amely meghatározza az entitás tulajdonságait.
 
 Kattintson jobb gombbal a projektre **CosmosTableSamples**. Válassza ki **Hozzáadás**, **új mappa** és adja neki **modell**. A modell mappán belül adjon hozzá egy osztályt **CustomerEntity.cs** , és adja hozzá a következő kód azt.
 
@@ -194,11 +194,11 @@ namespace CosmosTableSamples.Model
 }
 ```
 
-Ez a kód meghatároz egy entitásosztályt, amely az ügyfél keresztnevét használja sorkulcsnak és a vezetéknevét partíciókulcsnak. Egy adott entitás partíció- és sorkulcsa együttesen azonosítja az entitást a táblában. Az azonos partíciókulcsú entitások entitások gyorsabban lekérdezhetők, az eltérő partíciókulcsok, de partíciókulcsúak használata a párhuzamos műveletek nagyobb méretezhetőségét teszi lehetővé. Táblák entitásoknak támogatott típusúnak, például származó kell lennie a [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableentity?redirectedfrom=MSDN&view=azure-dotnet) osztály. A táblában tárolni kívánt entitástulajdonságoknak publikusnak kell lenniük, és támogatniuk kell az értékek beolvasását és beállítását is. Az entitástípusnak emellett közzé kell tennie egy paraméter nélküli konstruktor.
+Ez a kód meghatároz egy entitásosztályt, amely az ügyfél keresztnevét használja sorkulcsnak és a vezetéknevét partíciókulcsnak. Egy adott entitás partíció- és sorkulcsa együttesen azonosítja az entitást a táblában. Az azonos partíciókulcsú entitások entitások gyorsabban lekérdezhetők, az eltérő partíciókulcsok, de partíciókulcsúak használata a párhuzamos műveletek nagyobb méretezhetőségét teszi lehetővé. Táblák entitásoknak támogatott típusúnak, például származó kell lennie a [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity) osztály. A táblában tárolni kívánt entitástulajdonságoknak publikusnak kell lenniük, és támogatniuk kell az értékek beolvasását és beállítását is. Az entitástípusnak emellett közzé kell tennie egy paraméter nélküli konstruktor.
 
 ## <a name="insert-or-merge-an-entity"></a>Helyezze be vagy egy entitás egyesítése
 
-Az alábbi példakód létrehoz egy entitás objektumot, és hozzáadja azt a táblába. A InsertOrMerge metódus belül a [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableoperation?redirectedfrom=MSDN&view=azure-dotnet) osztály beszúrása vagy egy entitás egyesítése szolgál. A [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.cloudtable.executeasync?view=azure-dotnet) módszert hívja meg a művelet végrehajtásához. 
+Az alábbi példakód létrehoz egy entitás objektumot, és hozzáadja azt a táblába. A InsertOrMerge metódus belül a [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) osztály beszúrása vagy egy entitás egyesítése szolgál. A [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet) módszert hívja meg a művelet végrehajtásához. 
 
 Kattintson jobb gombbal a projektre **CosmosTableSamples**. Válassza ki **Hozzáadás**, **új elem** és hozzá kell adni egy osztályt nevű **SamplesUtils.cs**. Ez az osztály az entitások CRUD-műveletek végrehajtásához szükséges összes kódot tárolja. 
 
@@ -237,7 +237,7 @@ public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable tab
 
 ### <a name="get-an-entity-from-a-partition"></a>Egy partíció egy entitás beolvasása
 
-A csoportban lekérése módszer használatával egy partícióról entitás is kap a [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableoperation?redirectedfrom=MSDN&view=azure-dotnet) osztály. A következő mintakód beolvassa a kulcssor partíciókulcsot, egy ügyfélentitást e-mail vagy telefon száma. Ebben a példában is kiírja a lekérdezéshez az entitás felhasznált kérelemegységek. Egy entitás lekérdezéséhez, fűzze hozzá a következő kódot a **SamplesUtils.cs** fájlt: 
+A csoportban lekérése módszer használatával egy partícióról entitás is kap a [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) osztály. A következő mintakód beolvassa a kulcssor partíciókulcsot, egy ügyfélentitást e-mail vagy telefon száma. Ebben a példában is kiírja a lekérdezéshez az entitás felhasznált kérelemegységek. Egy entitás lekérdezéséhez, fűzze hozzá a következő kódot a **SamplesUtils.cs** fájlt: 
 
 ```csharp
 public static async Task<CustomerEntity> RetrieveEntityUsingPointQueryAsync(CloudTable table, string partitionKey, string rowKey)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 59f5438bbedea2ff7793a5df95f1d3df58b9bba6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 77a2901ae2d81f42780110b1576c1f32c7ff397b
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64576985"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209492"
 ---
 # <a name="cloudsimple-virtual-machines-overview"></a>CloudSimple virtual machines – áttekintés
 
@@ -37,4 +37,4 @@ CloudSimple virtuális gépek az Azure Portalról egy olyan mechanizmust, az ön
 ## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [felhasználása a VMware virtuális gépek az Azure-ban](quickstart-create-vmware-virtual-machine.md)
-* Ismerje meg, hogyan [leképezése az Azure-előfizetés](https://docs.azure.cloudsimple.com/azuresubscriptionmapping/)
+* Ismerje meg, hogyan [leképezése az Azure-előfizetés](https://docs.azure.cloudsimple.com/azure-subscription-mapping/)

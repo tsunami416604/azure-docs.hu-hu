@@ -4,7 +4,7 @@ description: Ez a cikk ismerteti az Azure Sentinel-forgatókönyv futtatása.
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: e4afc5c8-ffad-4169-8b73-98d00155fa5a
 ms.service: sentinel
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5ce409b984ab9110a8ca44f47675045e4d80aed5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5f055ce337cb43e0813bc9ff295d0958e06f561
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60614673"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205444"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>Oktatóanyag: Automatizált threat válaszok az Azure-on Előzetesben Sentinel-beállítása
 
@@ -62,7 +62,7 @@ Kövesse az alábbi lépéseket egy új biztonsági forgatókönyv létrehozása
 1. Nyissa meg a **Azure Sentinel-** irányítópultot.
 2. A **felügyeleti**válassza **forgatókönyvek**.
 
-   ![Logikai alkalmazás](./media/tutorial-respond-threats-playbook/playbookimg.png)
+   ![Logic App](./media/tutorial-respond-threats-playbook/playbookimg.png)
 
 3. Az a **Sentinel-Azure - forgatókönyvek (előzetes verzió)** kattintson **Hozzáadás** gombra.
 

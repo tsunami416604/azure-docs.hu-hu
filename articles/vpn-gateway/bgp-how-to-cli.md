@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: yushwang
-ms.openlocfilehash: f0367a360de97d3935c7fa8de9f3dafa6555811e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 51402196c8429797b644357822a1e3c08982b384
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60390651"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209509"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>BGP konfigurálása Azure VPN Gateway-átjárók a parancssori felület használatával
 
@@ -46,7 +46,7 @@ Ebben a szakaszban szükség, mielőtt hajt végre a lépéseket bármely más k
 
 ![BGP-átjáró](./media/vpn-gateway-bgp-resource-manager-ps/bgp-gateway.png)
 
-### <a name="before-you-begin"></a>Előzetes teendők
+### <a name="before-you-begin"></a>Előkészületek
 
 Telepítse a CLI-parancsok (2.0-s vagy újabb) legújabb verzióját. Információk a CLI-parancsok telepítéséről: [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [Bevezetés az Azure CLI használatába](/cli/azure/get-started-with-azure-cli).
 
@@ -131,7 +131,7 @@ Létesítmények közötti kapcsolatot létesíteni, szüksége a helyszíni VPN
 Ebben a gyakorlatban továbbra is össze az ábrán látható. Ne felejtse el az értékeket olyanokra cserélni, amelyeket a saját konfigurációjához kíván használni. Ha helyi hálózati átjárók dolgozik, vegye figyelembe az alábbiakat:
 
 * A helyi hálózati átjáró lehet az ugyanazon a helyen és az erőforráscsoporthoz tartozik, mint a VPN-átjárót, vagy azok egy másik helyen és erőforráscsoportban. Ez a példa bemutatja az átjárók eltérő erőforráscsoportokban különböző helyeken.
-* Deklarálja a helyi hálózati átjáró szükséges minimális előtagként a BGP társ IP-cím a VPN-eszköz gazdagépcímét. Ebben az esetben egy tulajdonságot/32 előtag 10.52.255.254/32.
+* Deklarálja a helyi hálózati átjáró szükséges minimális előtagként a BGP társ IP-cím a VPN-eszköz gazdagépcímét. Ebben az esetben egy tulajdonságot/32 előtag 10.51.255.254/32.
 * Ne feledje a helyszíni hálózatok és az Azure virtuális hálózat között eltérő BGP ASN-eket kell használnia. Ha azonos, módosítsa a virtuális hálózat ASN-t, ha a helyszíni VPN-eszközök már használja az ASN-t más BGP-szomszédok társviszonyt szeretne.
 
 Mielőtt folytatná, győződjön meg arról, hogy végrehajtotta a [BGP engedélyezése a VPN-átjáró](#enablebgp) szakasz ebben a gyakorlatban és, hogy továbbra is csatlakozott az 1. előfizetéshez. Figyelje meg, hogy ebben a példában, akkor hozzon létre egy új erőforráscsoportot. Azt is Észreveheti a helyi hálózati átjáró két további paraméterek: `Asn` és `BgpPeerAddress`.

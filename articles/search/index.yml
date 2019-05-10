@@ -11,10 +11,10 @@ metadata:
   ms.service: search
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01/18/2019
+  ms.date: 05/02/2019
   ms.author: heidist
 abstract:
-  description: 'Megtudhatja, hogyan hozható létre vállalati keresési megoldás különféle személyes tartalmakhoz az Azure Search használatával. Az oktatóanyagok, API-hivatkozások és más dokumentumok bemutatják, hogyan egyesíthetők a kereshető tartalmak egyetlen gyors indexbe, amely az alkalmazási helyzetek széles körében lekérdezhető egyszerű vagy összetett szintaxissal. <p/><a href="/azure/search/cognitive-search-concept-intro"><b>Az új kognitív keresés előzetes verziója.</b></a> Egy kiadás előtti verziójú REST API-val mesterséges intelligencia által vezérelt algoritmusokat társíthat az indexelési folyamathoz. Az adatok kinyerésével és a természetes nyelvi és képfeldolgozással a nyers, strukturálatlan tartalmak kereshető tartalmakká alakíthatóak egy Azure Search-indexben. <p/>Megismerkedhet a kognitív kereséssel az <a href="/azure/search/cognitive-search-quickstart-blob">erőforrások és a mintaadatok</a> használatával, vagy többet tudhat meg a <a href="/azure/search/cognitive-search-concept-intro">fogalmakat</a> ismertető cikkben.'
+  description: 'Megtudhatja, hogyan hozható létre vállalati keresési megoldás különféle személyes tartalmakhoz az Azure Search használatával. Az oktatóanyagok, API-hivatkozások és más dokumentumok bemutatják, hogyan egyesíthetők a kereshető tartalmak egyetlen gyors indexbe, amely az alkalmazási helyzetek széles körében lekérdezhető egyszerű vagy összetett szintaxissal. <p/>A <a href="/azure/search/cognitive-search-concept-intro"><b>Cognitive Search</b></a> mostantól általánosan elérhető, és az AI-bővítések támogatottak az éles forgatókönyvekben.<p/>A <a href="/azure/search/knowledge-store-concept-intro"><b>Tudástár (előzetes verzió)</b></a> kibővíti a Cognitive Searchöt. Az AI-bővítéseket mentheti a tárhelyre, ahol megtekintheti, átalakíthatja és felhasználhatja a bővítéseket más alkalmazásokban az Azure Searchön kívül. <a href="/azure/search/knowledge-store-howto"><b>Próbálja ki</b></a> még ma.'
   aside:
     image:
       alt: null
@@ -51,11 +51,11 @@ sections:
       - type: list
         style: ordered
         items:
-          - html: <a href="/azure/search/cognitive-search-tutorial-blob">Indexelés mesterséges intelligenciával (Cognitive Services)</a>
-          - html: <a href="/azure/search/search-howto-dotnet-sdk">Az Azure Search használata a .NET-tel</a>
+          - html: <a href="/azure/search/search-get-started-portal">A portál használata indexeléshez és lekérdezésteszteléshez</a>
+          - html: <a href="/azure/search/search-howto-dotnet-sdk">Az első keresőmegoldás megírása a .NET használatával</a>
+          - html: <a href="/azure/search/cognitive-search-tutorial-blob">Bővítés mesterséges intelligenciával (Cognitive Services)</a>
           - html: <a href="/azure/search/search-indexer-tutorial">Azure SQL Database-tartalom indexelése a .NET-tel</a>
           - html: <a href="/azure/search/search-semi-structured-data">Részben strukturált adatok indexelése az Azure Blob Storage-ban a REST-tel</a>
-          - html: <a href="/azure/search/search-get-started-portal">A portál használata indexeléshez és lekérdezésteszteléshez</a>
   - title: Referencia
     items:
       - type: list

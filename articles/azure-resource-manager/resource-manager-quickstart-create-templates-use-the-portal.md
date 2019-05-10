@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 4fe859b1343e2aea71bd41a3b7742a29bbff389f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aea6f58c74d6e50e7936b949620912f3f587f004
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464158"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65205868"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Gyors útmutató: Létrehozása és üzembe helyezése Azure Resource Manager-sablonok az Azure portal használatával
 
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="generate-a-template-using-the-portal"></a>Sablon generálása az Azure Portal használatával
 
-A Resource Manager-sablon létrehozása előzmények nincs egyszerű feladat, különösen akkor, ha most ismerkedik az Azure-beli és a rendszer nem ismeri a JSON formátumban. Az Azure portal használatával, konfigurálhat egy erőforrás, például egy Azure Storage-fiókot. Mielőtt telepítené az erőforrást, exportálhatja a Resource Manager-sablon-konfigurációnak. A sablont későbbi használatra mentheti is.
+A Resource Manager-sablon létrehozása előzmények nincs egyszerű feladat, különösen akkor, ha most ismerkedik az Azure-beli és nem ismeri a JSON formátumban. Az Azure portal használatával, konfigurálhat egy erőforrás, például egy Azure Storage-fiókot. Mielőtt telepítené az erőforrást, exportálhatja a Resource Manager-sablon-konfigurációnak. A sablont későbbi használatra mentheti is.
 
 Számos sablon tapasztalt fejlesztők sablonjainak előállítása, amikor azok nem ismeri az Azure-erőforrások üzembe helyezése meg ezt a módszert. Sablonok exportálása a portál használatával kapcsolatos további információkért lásd: [erőforráscsoportok exportálása sablonokhoz](./manage-resource-groups-portal.md#export-resource-groups-to-templates). A másik lehetőség egy működő sablon található, a [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/).
 
@@ -42,7 +42,7 @@ Számos sablon tapasztalt fejlesztők sablonjainak előállítása, amikor azok 
     ![Azure-tárfiókok létrehozása az Azure Portalon](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 3. Adja meg a következő információkat:
 
-    |Name (Név)|Value|
+    |Name (Név)|Érték|
     |----|----|
     |**Erőforráscsoport**|Válassza ki **új létrehozása**, és adja meg a kiválasztott erőforráscsoport nevét. A képernyőképen az erőforráscsoport neve *mystorage1016rg*. Erőforráscsoport egy olyan tároló, az Azure-erőforrásokhoz. Erőforráscsoport megkönnyíti az Azure-erőforrások kezeléséhez. |
     |**Name (Név)**|Adjon meg egy egyedi nevet a tárfiók. A tárfiók nevének egyedinek kell lennie Azure összes, és hogy az csak kisbetűket és számokat tartalmaz. Nevének 3 – 24 karakter hosszúnak kell lennie. Ha a helyen a "a"mystorage1016"tárfióknév már foglalt" szövegű hibaüzenetet kap, próbálja meg használni  **&lt;a neve > tároló&lt;MMDD a mai dátumra >**, például  **johndolestorage1016**. További információkért lásd: [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions).|
@@ -153,7 +153,7 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
 8. Kattintson a **Mentés** gombra.
 9. Írja be a következő értékeket:
 
-    |Name (Név)|Value|
+    |Name (Név)|Érték|
     |----|----|
     |**Erőforráscsoport**|Válassza ki az előző szakaszban létrehozott az erőforráscsoport nevét. |
     |**Hely**|Válassza ki a tárfiók helyét. Ha például **USA középső RÉGIÓJA**. |

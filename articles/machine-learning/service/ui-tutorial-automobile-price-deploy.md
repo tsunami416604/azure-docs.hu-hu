@@ -2,19 +2,19 @@
 title: 'Oktatóanyag: Machine learning-modell vizuális felhasználói felülettel üzembe helyezése'
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan hozhat létre prediktív elemzési megoldások az Azure Machine Learning szolgáltatás vizuális felületen. Betanításához, pontszám, és üzembe helyezése egy gépi tanulási modell használatával húzza, és dobja el a modulok. Ez az oktatóanyag második része egy kétrészes sorozat harmadik része a lineáris regressziós autó árának előrejelzése.
-author: peterlu
-ms.author: peterlu
+author: peterclu
+ms.author: peterclu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: e9ece81b1f663910fb3c051bd94c13c54ffa8470
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5f29e3820416686b42167fa278c4b7d0f9a58f1f
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026864"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190919"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Oktatóanyag: Machine learning-modell vizuális felhasználói felülettel üzembe helyezése
 
@@ -31,7 +31,7 @@ Ebben az oktatóanyagban azt tekintjük át az Azure Machine Learning szolgálta
 
 Teljes [az oktatóanyag részében](ui-tutorial-automobile-price-train-score.md).
 
-## <a name="prepare-for-deployment"></a>Felkészülés az üzembe helyezésre
+## <a name="prepare-for-deployment"></a>Üzembe helyezés előkészítése
 
 Biztosíthat mások a fejlett ebben az oktatóanyagban a prediktív modellben használandó alkalma, telepítheti az Azure-webszolgáltatásként.
 
@@ -60,7 +60,7 @@ Ha bejelöli **webszolgáltatás beállítása**, több dolog történik:
 
 * Egyetlen alakítja át a betanított modell **betanított modell** modul. A modulpaletta a kísérlet vászon bal oldalán találhatók. Annak a **betanított modellek**.
 * A betanításhoz használt modulok törlődnek; pontosabban:
-  * Tanítási modell
+  * Modell betanítása
   * Adatok felosztása
   * Modell értékelése
 * A mentett betanított modell adnak vissza a kísérletbe

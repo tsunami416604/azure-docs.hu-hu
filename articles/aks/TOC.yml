@@ -113,7 +113,7 @@
         - name: AKS-fürt törlése
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
-        - name: Virtuális csomópontok létrehozása (előzetes verzió)
+        - name: Virtuális csomópontok létrehozása
           items:
             - name: Azure CLI
               href: virtual-nodes-cli.md
@@ -123,9 +123,13 @@
           href: virtual-kubelet.md
         - name: Automatikus fürtméretező használata (előzetes verzió)
           href: cluster-autoscaler.md
+        - name: Több csomópontkészlet használata (előzetes verzió)
+          href: use-multiple-node-pools.md
         - name: Az AKS üzembe helyezése Terraform használatával
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true
+        - name: A Kubernetes-irányítópult használata
+          href: kubernetes-dashboard.md
     - name: Adatkötetek konfigurálása
       items:
         - name: Azure-lemez – Dinamikus
@@ -173,12 +177,16 @@
           href: kubernetes-service-principal.md
         - name: A fürtkonfigurációs fájl elérésének korlátozása
           href: control-kubeconfig-access.md
-        - name: Podforgalom biztonságossá tétele hálózati szabályzatokkal (előzetes verzió)
+        - name: Podforgalom biztonságossá tétele hálózati szabályzatokkal
           href: use-network-policies.md
         - name: Podbiztonsági szabályzatok használata
           href: use-pod-security-policies.md
+        - name: Az API-kiszolgáló engedélyezett IP-címtartományainak megadása (előzetes verzió)
+          href: api-server-authorized-ip-ranges.md
         - name: A fürt szolgáltatásneve hitelesítő adatainak frissítése
           href: update-credentials.md
+        - name: Fürt kimenő forgalmának korlátozása és szabályozása
+          href: limit-egress-traffic.md
         - name: Azure Active Directory-integráció engedélyezése
           items:
             - name: Az Azure parancssori felületének használata
@@ -285,10 +293,6 @@
         - name: Azure DevOps Project
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true
-    - name: A Kubernetes alapjai
-      items:
-        - name: A Kubernetes-irányítópult használata
-          href: kubernetes-dashboard.md
     - name: Hibaelhárítás
       items:
         - name: Gyakori problémák

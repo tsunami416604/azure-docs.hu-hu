@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/28/2019
+ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: b9e1b98be55030c9936222aa66d204ab3abe3374
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ada93903113cedd68e23ec66a36dceef99ec1233
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920231"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192092"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező XaitPorter
 
@@ -120,17 +120,25 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés XaitPorter, hajtsa v
 
 ### <a name="configure-xaitporter-single-sign-on"></a>XaitPorter egyszeri bejelentkezés konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a XaitPorter vállalati hely rendszergazdaként.
+1. Automatizálhatja a XaitPorter konfigurációra, telepítenie kell **saját alkalmazások biztonságos bejelentkezési böngészőbővítmény** kattintva **a bővítmény telepítése**.
 
-2. Kattintson a **rendszergazdai**.
+    ![Saját alkalmazások kiterjesztése](common/install-myappssecure-extension.png)
+
+2. A felvett bővítmény a böngészőre, kattintson a **telepítő XaitPorter** fog irányítja át a XaitPorter alkalmazás. Itt adja meg a rendszergazdai hitelesítő adataival bejelentkezni XaitPorter. A webböngésző-bővítmény automatikusan konfigurálja az alkalmazást, és 3 – 6. lépések automatizálásához.
+
+    ![Konfiguráció beállítása](common/setup-sso.png)
+
+3. Ha azt szeretné, manuálisan állíthatja be az XaitPorter, nyisson meg egy új böngészőablakban, és jelentkezzen be rendszergazdaként vállalati XaitPorter webhelyét, és hajtsa végre az alábbi lépéseket:
+
+4. Kattintson a **rendszergazdai**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/xaitporter-tutorial/user1.png)
 
-3. Válassza ki **felügyelete egyszeri bejelentkezéssel** származó a **System telepítése** legördülő listából.
+5. Válassza ki **felügyelete egyszeri bejelentkezéssel** származó a **System telepítése** legördülő listából.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/xaitporter-tutorial/user2.png)
 
-4. Az a **kezelése EGYSZERI bejelentkezés** szakaszban, hajtsa végre az alábbi lépéseket:
+6. Az a **kezelése EGYSZERI bejelentkezés** szakaszban, hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/xaitporter-tutorial/user3.png)
 
@@ -196,7 +204,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű XaitPorter hoz létre. Együttműködve [XaitPorter ügyfél-támogatási csapatának](https://www.xait.com/support/) a felhasználók hozzáadása az XaitPorter platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

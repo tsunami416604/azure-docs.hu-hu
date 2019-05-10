@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/02/2019
+ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 4b022d3a51a6a1ef16c7d02aa76c5313e1a94e7e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0afa1937b5122d7cdf890176b616c433a63b25a2
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59287419"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192222"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-connect"></a>Oktatóanyag: Mitel csatlakoztatása az Azure Active Directory-integráció
 
@@ -104,12 +104,18 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Mitel csatlakozzon, 
 
     ![Mitel csatlakozás tartományhoz és URL-címek egyszeri bejelentkezési adatait](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://auth.mitel.io/authorize?client_id=<CLIENT ID>`
+    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be egy URL-címe:
+
+    | |
+    |--|
+    | `https://portal.shoretelsky.com`|
+    | `https://teamwork.shoretel.com`|
+    | |
 
     b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://authentication.api.mitel.io/2017-09-01/saml2/<account-uui>`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [Mitel csatlakozás ügyfél-támogatási csapatának](https://www.mitel.com/support/mitel-technical-support) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Az azonosító értéke nem valódi. Ez az érték frissítse a tényleges azonosítója. Kapcsolattartó [Mitel csatlakozás ügyfél-támogatási csapatának](https://www.mitel.com/support/mitel-technical-support) lekérni ezt az értéket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
@@ -147,7 +153,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** írja be a következőt **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be a brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
+    b. Az a **felhasználónév** mezőbe írja be a brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com.
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
@@ -183,7 +189,7 @@ Ebben a szakaszban engedélyezze Britta Simon Mitel kapcsolódni a hozzáférés
 
 Ebben a szakaszban egy Britta Simon nevű Mitel csatlakozzon a felhasználó hoz létre. Együttműködve [ügyfélszolgálathoz Mitel csatlakozás](https://www.mitel.com/support/mitel-technical-support) a felhasználók hozzáadása az Mitel csatlakozás platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -196,4 +202,3 @@ Ha a hozzáférési panelen Mitel csatlakozás csempére kattint, akkor kell aut
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

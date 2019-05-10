@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: e5d04fd136848684e866fae9768b252e3b6ca77f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d27adadc9720dd2ad6a0dd133524bfaf32e63045
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65137941"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65227992"
 ---
 # <a name="action-rules-preview"></a>Műveleti szabályokban (előzetes verzió)
 
@@ -142,15 +142,15 @@ Itt engedélyezése/letiltása/törlése műveleti szabályokban ipari méretekb
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Naplóriasztások hoztak létre a ["eredmények száma"](https://docs.microsoft.com/azure-monitor/platform/alerts-unified-log) . lehetőség **riasztási egypéldányos** az egész keresési eredmény (amely lehet több számítógépen például) használatával. Ebben a forgatókönyvben egy művelet szabály használja a "Riasztás környezete (tartalom)" szűrőt, ha úgy fog működni a riasztási példányon mindaddig, amíg az egyezést. A 2. forgatókönyv szerint az előzőekben leírt, ha a létrehozott riasztás a keresési eredmények tartalmazzák a "Számítógép-01" és a "Számítógép-02", a teljes bejelentés le van tiltva (azaz nincs nincs értesítés minden létrehozott számítógép-02).
+Naplóriasztások hoztak létre a ["eredmények száma"](alerts-unified-log.md) . lehetőség **riasztási egypéldányos** az egész keresési eredmény (amely lehet több számítógépen például) használatával. Ebben a forgatókönyvben egy művelet szabály használja a "Riasztás környezete (tartalom)" szűrőt, ha úgy fog működni a riasztási példányon mindaddig, amíg az egyezést. A 2. forgatókönyv szerint az előzőekben leírt, ha a létrehozott riasztás a keresési eredmények tartalmazzák a "Számítógép-01" és a "Számítógép-02", a teljes bejelentés le van tiltva (azaz nincs nincs értesítés minden létrehozott számítógép-02).
 
 ![Műveleti szabályokban és a naplóriasztások (eredmények száma)](media/alerts-action-rules/action-rules-log-alert-number-of-results.png)
 
-A legjobb emelés naplóriasztások művelet szabályokkal, azt javasoljuk, hogy a riasztások létrehozása a ["metrikamérési"](https://docs.microsoft.com/azure-monitor/platform/alerts-unified-log) lehetőséget. Ezzel a beállítással külön riasztás példányok jönnek létre a meghatározott csoport mező alapján. Majd a 2. forgatókönyv, különálló riasztás példány jön létre a "Számítógép-01" és "Számítógép-02". A művelet szabállyal, a forgatókönyvünkben ismertetett csak a "Számítógép-01" értesítést lenne letiltja, miközben a számítógép-02 értesítést aktiválódik a megszokott módon folytathatja.
+A legjobb emelés naplóriasztások művelet szabályokkal, azt javasoljuk, hogy a riasztások létrehozása a ["metrikamérési"](alerts-unified-log.md) lehetőséget. Ezzel a beállítással külön riasztás példányok jönnek létre a meghatározott csoport mező alapján. Majd a 2. forgatókönyv, különálló riasztás példány jön létre a "Számítógép-01" és "Számítógép-02". A művelet szabállyal, a forgatókönyvünkben ismertetett csak a "Számítógép-01" értesítést lenne letiltja, miközben a számítógép-02 értesítést aktiválódik a megszokott módon folytathatja.
 
 ![Műveleti szabályokban és a naplóriasztások (eredmények száma)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>gyakori kérdésekben
 
 * K. Egy művelet szabály konfigurálása, során szeretném, egymással átfedésben lévő művelet az összes lehetséges, hogy el a duplikált értesítések szabályok megtekintéséhez. Az esetleges ehhez?
 

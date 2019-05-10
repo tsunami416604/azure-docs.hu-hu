@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16ba9a510489eb552b2f8c380817000b0b48b855
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: d1a250b8deba3d12b968c593ddec7ad9f052ae7d
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64927071"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191178"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-real-links"></a>Oktatóanyag: Valódi mutató hivatkozásokat tartalmaz az Azure Active Directory-integráció
 
@@ -175,7 +175,7 @@ Ebben a szakaszban engedélyezze Britta Simon valós hivatkozások való hozzáf
 
 Ebben a szakaszban egy valódi hivatkozásokon Britta Simon nevű felhasználó hoz létre. Együttműködve [valós hivatkozások támogatási csoportjának](mailto:support@reallinks.io) a felhasználók hozzáadása a valódi hivatkozások platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -183,7 +183,7 @@ Ha a hozzáférési panelen a valódi hivatkozások csempére kattint, akkor kel
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

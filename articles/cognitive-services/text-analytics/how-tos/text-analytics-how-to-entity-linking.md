@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: c179620d6858658dface5f706f7994d51f1a199b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c8319dbcb8cebe51dae2a4d7e8d9749c3ab7674f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829718"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231430"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Megnevezett entitások felismerése Szövegelemzés használata
 
@@ -41,15 +41,15 @@ Entitáskapcsolás különféle nyelveken használatához az egyes nyelvekhez ta
 
 | Típus  | SubType | Példa |
 |:-----------   |:------------- |:---------|
-| Személy        | N/A\*         | "Jeff", "Bill Gates"     |
+| Ember        | N/A\*         | "Jeff", "Bill Gates"     |
 | Location egység      | N/A\*         | "Redmond, Washington", "Párizs"  |
-| Szervezet  | N/A\*         | "Microsoft"   |
+| Munkahely  | N/A\*         | "Microsoft"   |
 | Mennyiség      | Szám        | "6", "hat"     | 
 | Mennyiség      | Százalék    | "50 %", "ötven százalék"| 
 | Mennyiség      | Sorszám       | "2.", "a második"     | 
 | Mennyiség      | NumberRange   | "4 – 8"     | 
 | Mennyiség      | Kor           | "90 napnál nem régebbi", "30 évnél fiatalabb"    | 
-| Mennyiség      | Currency (Pénznem)      | "$10.99"     | 
+| Mennyiség      | Pénznem      | "$10.99"     | 
 | Mennyiség      | Dimenzió     | "10 mérföld", "40 cm"     | 
 | Mennyiség      | Hőmérséklet   | "32 fokos"    |
 | DateTime      | N/A\*         | "6:30 = 1997031213 2012. február 4."      | 
@@ -60,10 +60,10 @@ Entitáskapcsolás különféle nyelveken használatához az egyes nyelvekhez ta
 | DateTime      | Időtartam      | "1 perc 45 másodpercig"   | 
 | DateTime      | Beállítás           | "minden kedden"     | 
 | DateTime      | Időzóna      |    | 
-| URL-cím           | N/A\*         | "https:\//www.bing.com"    |
-| E-mail         | N/A\*         | „support@contoso.com” |
+| URL           | N/A\*         | "https:\//www.bing.com"    |
+| E-mail-cím         | N/A\*         | "support@contoso.com" |
 
-\* Attól függően, a bemeneti és a kinyert entitásokat, bizonyos entitások előfordulhat, hogy kihagyja a `SubType`.
+\* Attól függően, a bemeneti és a kinyert entitásokat, bizonyos entitások előfordulhat, hogy kihagyja a `SubType`.  Az összes, a felsorolt támogatott entitás típusok a következők csak az angol, egyszerűsített kínai, francia, német és spanyol nyelven érhető el.
 
 
 

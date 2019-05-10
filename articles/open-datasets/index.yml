@@ -1,0 +1,30 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Az Open Datasets előzetes verziójának dokumentációja
+metadata:
+  title: 'Az Azure Open Datasets előzetes verziójának dokumentációja – Oktatóanyagok, API-referencia | Microsoft Docs'
+  description: 'Megismerheti, hogyan használhatja minimális előkészületekkel az Azure Open Datasets válogatott és tisztított adatait. Az Open Datasets olyan nyilvános adatokat tartalmaz, mint például az időjárási, a népszámlálási és az ünnepekkel kapcsolatos adatok, amelyekkel bővíthetők a gépi tanulási modellek. Az oktatóanyagok, példák és API-referenciadokumentumok segítségével megtudhatja, hogyan használhatja.'
+  ms.service: open-datasets
+  ms.topic: landing-page
+  author: cjgronlund
+  ms.author: cgronlun
+  ms.date: 05/02/2019
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+abstract:
+  description: 'Megismerheti, hogyan használhatja minimális előkészületekkel az Azure Open Datasets válogatott és tisztított adatait. Az Open Datasets olyan nyilvános adatokat tartalmaz, mint például az időjárási, a népszámlálási és az ünnepekkel kapcsolatos adatok, amelyekkel bővíthetők a gépi tanulási modellek. Az oktatóanyagok, példák és API-referenciadokumentumok segítségével megtudhatja, hogyan használhatja.'
+sections:
+  - title: Részletes oktatóanyag
+    items:
+      - type: paragraph
+        text: <a href="tutorial-opendatasets-automl">Regressziós modell létrehozása automatizált gépi tanulással</a>
+  - title: Példák
+    items:
+      - type: paragraph
+        text: <a href="samples">Notebookok adathalmazok bővítéséhez</a>
+  - title: Referencia
+    items:
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://aka.ms/open-datasets-api">API-leírások</a>'
