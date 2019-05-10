@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 9b86df3d08ec6dfcb3100cff333c4dc5653ee1c7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8605e614574b7ebd45e9f18c4e5685a9c5450e64
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688339"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409916"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhookok az Azure tevékenységnapló-riasztások
 Műveletcsoport definíciójának részeként a webhook végpontok tevékenység log riasztási értesítések fogadása is beállíthatja. A webhookok ezek az értesítések is átirányítása utófeldolgozási vagy egyéni műveleteket más rendszerekre. Ez a cikk bemutatja, hogy az a HTTP POST a webhook hasznos adatai néz ki.
@@ -59,7 +59,7 @@ A POST művelet található JSON-adattartalom eltér a hasznos data.context.acti
     }
 }
 ```
-### <a name="administrative"></a>Adminisztratív
+### <a name="administrative"></a>Rendszergazdai
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -156,7 +156,7 @@ A POST művelet található JSON-adattartalom eltér a hasznos data.context.acti
                 "resourceGroupName": "<resource group>",
                 "resourceProviderName": "Microsoft.Resourcehealth/healthevent/action",
                 "status": "Active",
-                "subscriptionId": "<subscription Id",
+                "subscriptionId": "<subscription Id>",
                 "submissionTimestamp": "2018-09-04T23:11:06.1607287+00:00",
                 "resourceType": "Microsoft.Compute/virtualMachines"
             }
@@ -171,12 +171,12 @@ Az összes többi tevékenységnapló-riasztások adott séma részletekért lá
 
 | Elem neve | Leírás |
 | --- | --- |
-| status |Metrikákhoz kapcsolódó riasztások használja. Minden esetben állítsa be "aktiválva", a tevékenységnapló-riasztások. |
+| állapot |Metrikákhoz kapcsolódó riasztások használja. Minden esetben állítsa be "aktiválva", a tevékenységnapló-riasztások. |
 | Környezet |Az esemény környezetében. |
 | resourceProviderName |Az erőforrás-szolgáltató az érintett erőforrás. |
 | conditionType |Mindig "esemény". |
 | név |A riasztási szabály neve. |
-| id |A riasztás erőforrás-azonosító. |
+| azonosító |A riasztás erőforrás-azonosító. |
 | description |A riasztás létrehozásakor állítsa be a riasztás leírásában. |
 | subscriptionId |Az Azure előfizetés-azonosítójára. |
 | időbélyeg |Idő, amikor az eseményt az Azure-szolgáltatás, amely a kérelmet feldolgozó jött létre. |
@@ -196,7 +196,7 @@ Az összes többi tevékenységnapló-riasztások adott séma részletekért lá
 | operationId |Általában egy GUID Azonosítót az egyetlen műveletben megfelelő események között. |
 | operationName |A művelet neve. |
 | properties |Az esemény tulajdonságai. |
-| status |karakterlánc. A művelet állapotát. A gyakori értékek a következők: elindítva, folyamatban lévő, sikeres, sikertelen, aktív és megoldott. |
+| állapot |karakterlánc. A művelet állapotát. A gyakori értékek a következők: elindítva, folyamatban lévő, sikeres, sikertelen, aktív és megoldott. |
 | subStatus |Általában tartalmazza a megfelelő REST-hívást HTTP-állapotkódot. A részállapot egyéb karakterláncokat is tartalmazhat. Közös substatus tartalmazzák-OK (HTTP-állapotkód: 200-as), létrehozva (HTTP-állapotkód: 201-es), elfogadva (HTTP-állapotkód: 202), nincs tartalom (HTTP-állapotkód: 204), hibás kérelem (HTTP-állapotkód: 400), nem található (HTTP-állapotkód: 404-es), ütközés (HTTP-állapotkód: 409), belső kiszolgálóhiba (HTTP-állapotkód: 500-as), a szolgáltatás nem érhető el (HTTP-állapotkód: 503-as), és az átjáró időtúllépése (HTTP-állapotkód: 504). |
 
 ## <a name="next-steps"></a>További lépések

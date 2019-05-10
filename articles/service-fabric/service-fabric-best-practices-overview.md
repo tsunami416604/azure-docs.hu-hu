@@ -12,20 +12,20 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/23/2019
+ms.date: 04/24/2019
 ms.author: pepogors
-ms.openlocfilehash: a0174a5442de7a10e45e9dc2a2f43f5f401d1a69
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 051d6b1129724ce4e8a67bde4e56ebe61cd832f3
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60803170"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231382"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Az Azure Service Fabric-alkalmazás és fürt kapcsolatos ajánlott eljárások
 
-Az Azure Service Fabric-alkalmazások és -fürtök felügyelete a sikeres, nincsenek műveleteket, erősen ajánlott hajt végre, az éles környezetben; megbízhatóságának optimalizálása Ebben a dokumentumban meghatározott műveletek elvégzéséhez, és válassza ki az egyik a [minták Service Fabric-fürt az Azure-sablonok](https://github.com/Azure-Samples/service-fabric-cluster-templates) megkezdése a gyártási megoldás tervezése, vagy módosíthatja a meglévő sablont, és építse be ezeket az eljárásokat.
+Az Azure Service Fabric-alkalmazások és -fürtök felügyelete a sikeres, erősen ajánlott az éles környezetben; megbízhatóságának optimalizálása hajt végre műveleteket vannak Ebben a dokumentumban meghatározott műveletek elvégzéséhez, és válassza ki az egyik a [minták Service Fabric-fürt az Azure-sablonok](https://github.com/Azure-Samples/service-fabric-cluster-templates) megkezdése a gyártási megoldás tervezése, vagy módosíthatja a meglévő sablont, és építse be ezeket az eljárásokat.
 
-## <a name="security"></a>Biztonság 
+## <a name="security"></a>Biztonsági 
 
 * [Biztonsági védelmének bevált gyakorlata](service-fabric-best-practices-security.md)
 
@@ -45,6 +45,10 @@ Az Azure Service Fabric-alkalmazások és -fürtök felügyelete a sikeres, ninc
 ## <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
 
 * [Gyakorlati tanácsok a fürt monitorozás és diagnosztika](service-fabric-best-practices-monitoring.md)
+
+## <a name="application-design"></a>Az alkalmazás kialakítása
+
+* [Ajánlott eljárások az alkalmazás-tervezés](service-fabric-best-practices-applications.md)
 
 ## <a name="checklist"></a>Ellenőrzőlista
 

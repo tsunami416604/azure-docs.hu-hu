@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: d0b5537f31edf330b54b91ddf7268338df0c0a6b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6412f0a2e295a19f741c70e7870a4d198ee03b71
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148258"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233552"
 ---
 # <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>Előzetes verzió: API-verzió át 3.x LUIS-alkalmazások
 
@@ -43,10 +43,6 @@ A következő LUIS funkciókra **nem támogatott** a V3 API-ban:
 * A Bing Spell ellenőrzés 7-es verziója
 
 [Referenciadokumentációt](https://aka.ms/luis-api-v3) V3 érhető el.
-
-## <a name="prebuilt-domains-with-new-models-and-language-coverage"></a>Az új modell és nyelv lefedettség előre összeállított tartományok
-
-Tekintse át a [előre összeállított tartományok listája V3 API](luis-reference-prebuilt-domains.md). Ezekből a tartományokból teljes, a modell és a nyelvekhez is. 
 
 ## <a name="prebuilt-entities-with-new-json"></a>Az új JSON előre összeállított entitások
 
@@ -164,7 +160,7 @@ A v2-ben a `entities` tömböt adott vissza az előre jelzett entitásokat az eg
 
 Az alábbi példában: fontolja meg az utterance (kifejezés), amely tartalmazza a szöveg, amelyet `Yellow Bird Lane`. Ez a szöveg várhatóan meghalad egy egyéni `Location` entitás szerepe `Destination`.
 
-|Szöveg utterance (kifejezés)|Entitás neve|Szerepkörnév|
+|Szöveg utterance (kifejezés)|Entitás neve|Szerepkör neve|
 |--|--|--|
 |`Yellow Bird Lane`|`Location`|`Destination`|
 
@@ -279,7 +275,7 @@ Az előző utterance (kifejezés), használja az utterance (kifejezés) `him` mu
 
 Az előrejelzési válasz tartalmazza a külső entitások, az összes többi előre jelzett entitást, mert meg van határozva a kérés.  
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 A _választható_ `resolution` a válaszban visszalépési tulajdonság értéket ad vissza, az előrejelzési válaszként, lehetővé teszi, hogy adja át a külső entitáshoz társított metaadatokat, majd megkapni. 
 

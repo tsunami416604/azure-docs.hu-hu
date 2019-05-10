@@ -12,14 +12,14 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 39367cbe6c001fc782fd899ee3a99b37ece70a77
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4c741bb86242abfb03d01c902dbaa84d83491dd9
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699918"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408738"
 ---
-# <a name="key-value-store"></a>Kulcs-érték tároló
+# <a name="keys-and-values"></a>Kulcsok és értékek
 
 Az Azure App konfigurációs kulcs-érték párok konfigurációs adatokat tárolja. Kulcs-érték párok módon egy egyszerű, de a rugalmas alkalmazásbeállításokat, amelyek a fejlesztők számára is felismerhetők a különböző típusú jelölik.
 
@@ -86,7 +86,7 @@ Minden kulcsérték egyedileg azonosítja a kulcsok és a egy címke, amely lehe
 
 A következő címke minták is lehetnek:
 
-| Címke | |
+| Felirat | |
 |---|---|
 | `label` Nincs megadva, vagy `label=*` | Bármely címke, amely tartalmazza a megfelelő `null` |
 | `label=%00` | Egyezések `null` felirat |
@@ -104,5 +104,5 @@ Egy alkalmazás a konfigurációs adattároló, amely tartalmazza az összes kul
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Időponthoz pillanatkép](./concept-point-time-snapshot.md)  
+* [Időponthoz pillanatkép](./concept-point-time-snapshot.md)  
+* [A szolgáltatás kezelése](./concept-feature-management.md)  

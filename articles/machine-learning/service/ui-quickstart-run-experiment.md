@@ -9,16 +9,16 @@ ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: 985ad59a1ffa5bd68f97824f7f50af604174b543
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d14ef4a59e65ba432b5d04d9f531e4ba639deb8a
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026976"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65440946"
 ---
-# <a name="quickstart-prepare-and-visualize-data-without-writing-code"></a>Gyors útmutató: Készítse elő és kód írása nélkül az adatok megjelenítése
+# <a name="quickstart-prepare-and-visualize-data-without-writing-code-in-azure-machine-learning"></a>Gyors útmutató: Készítse elő és az adatok megjelenítése az Azure Machine Learning kódírás nélkül
 
-Készítse elő az adatok és megjelenítése fogd és vidd felhasználói felülettel. A használni kívánt adatok különböző autót adatokat, például márkája, típusa, műszaki specifikációk, és ár-bejegyzéseket tartalmaz.  
+Készítse elő az adatok és megjelenítése a fogd és vidd vizuális felületen (előzetes verzió) az Azure Machine Learning. A használni kívánt adatok különböző autót adatokat, például márkája, típusa, műszaki specifikációk, és ár-bejegyzéseket tartalmaz.  
 
 Ebben a rövid útmutatóban fog ismerje meg, és előkészíti az adatokat:
 

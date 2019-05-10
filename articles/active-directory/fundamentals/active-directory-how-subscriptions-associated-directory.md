@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06b6fdf7a3d21a6b7dc84c4347824d4eaeac046f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 7f37c501bb53b3b73c30d02d00d49515f907e4ae
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918416"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65463630"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Hozzárendelése vagy Azure-előfizetés hozzáadása az Azure Active Directory-bérlővel
 
@@ -33,7 +33,7 @@ Minden felhasználó rendelkezik-e egy *otthoni* hitelesítési címtárat. Azon
 > 
 > Emellett az Azure Kubernetes Service (AKS)-fürt egy másik előfizetésbe való áthelyezését, vagy a fürt tulajdonos előfizetés áthelyezése egy új bérlőt hatására a fürt elveszítené funkciók miatt elveszett szerepkör-hozzárendelések és a szolgáltatás egyszerű jogosultságokat. Aks-sel kapcsolatos további információkért lásd: [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/).
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Mielőtt hozzárendelése, vagy adja hozzá az előfizetés, el kell végeznie az alábbi feladatokat:
 
@@ -64,8 +64,8 @@ Mielőtt hozzárendelése, vagy adja hozzá az előfizetés, el kell végeznie a
 
     A címtár megváltozott az előfizetés, és megjelenik a sikert jelző üzenet.
 
-    ![Sikert jelző üzenettel kapcsolatos címtár módosítása](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)    
-4. Használja a **Directory környezetválasztó** , nyissa meg az új címtárban. Akár 10 percig is eltarthat, amíg minden megfelelően megjelenik.
+    ![Sikert jelző üzenettel kapcsolatos címtár módosítása](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
+4. Használja a **Directory környezetválasztó** , nyissa meg az új címtárban. Minden megfelelően megjelenik több órát is igénybe vehet. Ha úgy tűnik, hogy túl sokáig tart, ne feledje el ellenőrizni a **globális előfizetésszűrő** az áthelyezett előfizetés, győződjön meg arról, hogy egyszerűen nem rejtett.
 
     ![Környezetválasztó könyvtárlap, mintául szolgáló adatokkal](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 

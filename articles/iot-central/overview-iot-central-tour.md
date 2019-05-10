@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 654528ed6137ee62ea22d552d36fda5ac5331adc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8a0621d0261bfbc7ab396abf837ee7b1123352d1
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688649"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233450"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Ismerkedés az Azure IoT Central kezelőfelületével
 
@@ -32,7 +32,6 @@ Az _operátorok_ az Azure IoT Central kezelőfelületén felügyelhetik az Azure
 - Eszközök konfigurálása.
 - Az eszközök hibáinak keresése és elhárítása.
 - Új eszközök kiépítése.
-
 
 ## <a name="use-the-left-navigation-menu"></a>A bal oldali navigációs menü használata
 
@@ -56,6 +55,9 @@ Minden oldalon megjelenik a felső menü:
 A kezelőfelületen egy világos és egy sötét téma közül választhat:
 
 ![A kezelőfelület témájának kiválasztása](media/overview-iot-central-tour/themes.png)
+
+> [!NOTE]
+> Világos és sötét témák választhat a beállítás nem érhető el, ha a rendszergazda által konfigurált az alkalmazás egyéni témát.
 
 ## <a name="dashboard"></a>Irányítópult
 
@@ -84,7 +86,7 @@ Az _Eszközkészletek_ oldalon jelennek meg a szerkesztő által létrehozott es
 
 Az Elemzés oldalon diagramok láthatók, amelyek segítenek áttekinteni az alkalmazáshoz csatlakozó eszközök viselkedését. Az operátorok ezen az oldalon monitorozhatják és vizsgálhatják ki a csatlakoztatott eszközökkel kapcsolatos problémákat. Az ezen az oldalon megjelenő diagramokat a szerkesztő határozza meg. További tudnivalókért lásd az [egyéni elemzések az Azure IoT Central-alkalmazásokban történő létrehozását](howto-use-device-sets.md) ismertető szakaszt.
 
-## <a name="jobs"></a>Feladatok
+## <a name="jobs"></a>Feladatok (job)
 
 ![Feladatok oldal](media/overview-iot-central-tour/jobs.png)
 
@@ -102,7 +104,7 @@ Az eszköz sablonok lap, ahol egy jelentéskészítő létrehozza és kezeli az 
 
 A folyamatos Exportálás lap, ahol a rendszergazda határozza meg az alkalmazásból származó adatok, telemetriai adatokat, például exportálása. Más szolgáltatások is az exportált adatok tárolására, vagy használhatja az elemzés. További tudnivalókért tekintse meg a [exportálhatja az adatokat az Azure IoT Central](howto-export-data.md) cikk.
 
-## <a name="administration"></a>Adminisztráció
+## <a name="administration"></a>Felügyelet
 
 ![Adminisztráció oldal](media/overview-iot-central-tour/administration.png)
 

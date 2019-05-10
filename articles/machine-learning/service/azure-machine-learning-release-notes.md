@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: a355d18de875ad980e0c2b6c564d3379c2b90ee7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 186ecf055cdf7b10690fdb4cbc574778a841b85a
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154289"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464810"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -42,6 +42,15 @@ Az Azure Portalon az alábbi műveleteket hajthatja végre:
 + Töltse le a config.json fájlt az Azure Machine Learning szolgáltatás munkaterület áttekintés oldalán a hozzáadott képessége.
 + Támogatja a Machine Learning szolgáltatás munkaterület létrehozása az Azure Databricks-munkaterület 
 
+## <a name="2019-04-26"></a>2019-04-26
+
+### <a name="azure-machine-learning-sdk-for-python-v1033"></a>Az Azure Machine Learning SDK for Python v1.0.33
++ **Új funkciók**
+  + A _Workspace.create_ metódus már elfogad alapértelmezett fürtkonfigurációk a Processzor és GPU-fürtöket.
+  + Ha a munkaterület létrehozása sikertelen, a függő erőforrások törölve lettek.
+  + Alapértelmezett Azure Container Registry Termékváltozat az alapszintű nem kapcsolták.
+  + Az Azure Container Registry ráérősen, jön létre a futtató- vagy képfájl létrehozásához szükség esetén.
+  + A betanítási futtatások környezetek támogatása.
 
 ### <a name="notebook-virtual-machine"></a>Notebook virtuális gép 
 

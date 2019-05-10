@@ -15,14 +15,17 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: fc248292e2323d44a353473be87c2b0f1be8ea12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d125e0c0818efbc6ec8f317122859411a37a0d20
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880147"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232750"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítés az adott Android-alkalmazás felhasználói számára az Azure Notification Hubs használatával
+# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Oktatóanyag: Leküldéses értesítés az adott Android-alkalmazás felhasználói számára az Azure Notification Hubs és a Google Cloud Messaging (elavult)
+
+> [!WARNING]
+> 2018. április 10. a Google Google Cloud Messaging (GCM) már elavult. A GCM-kiszolgáló és az ügyfél API-k elavultak, és törlődni fog, amint 2019. május 29. További információkért lásd: [GCM és az FCM gyakran ismételt kérdések](https://developers.google.com/cloud-messaging/faq).
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
@@ -141,7 +144,7 @@ A következő lépés az, hogy frissítse az Android-alkalmazást létrehozni a 
     ```xml
     <string name="usernameHint">Username</string>
     <string name="passwordHint">Password</string>
-    <string name="loginButton">1. Log in</string>
+    <string name="loginButton">1. Sign in</string>
     <string name="send_button">2. Send Notification</string>
     <string name="notification_message_hint">Notification message</string>
     <string name="notification_message_tag_hint">Recipient username</string>
@@ -257,7 +260,7 @@ A következő lépés az, hogy frissítse az Android-alkalmazást létrehozni a 
     }
     ```
 
-    Ez az összetevő megvalósítja azon REST-hívásokat, amelyek az alkalmazás háttérrendszeréhez való kapcsolódáshoz szükségesek a leküldéses értesítésekre való regisztrálás érdekében. Emellett helyben tárolja az értesítési központ által a [Regisztráció az alkalmazás háttérrendszeréből](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) című szakaszban leírtak szerint létrehozott *registrationIds* fájlt. A helyi tárterületen tárolt hitelesítési jogkivonatot használ, amikor Ön a **Log in** (Bejelentkezés) gombra kattint.
+    Ez az összetevő megvalósítja azon REST-hívásokat, amelyek az alkalmazás háttérrendszeréhez való kapcsolódáshoz szükségesek a leküldéses értesítésekre való regisztrálás érdekében. Emellett helyben tárolja az értesítési központ által a [Regisztráció az alkalmazás háttérrendszeréből](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) című szakaszban leírtak szerint létrehozott *registrationIds* fájlt. Egy engedélyezési jogkivonatot a helyi tárban tárolt kattintva használ a **jelentkezzen be a** gombra.
 4. Az osztályban távolítsa el vagy tegye megjegyzésbe a `NotificationHub` privát mezőjét, és adjon hozzá egy mezőt a `RegisterClient` osztály számára, valamint az ASP.NET-háttérrendszer végpontjához tartozó sztringet. Ne felejtse el az `<Enter Your Backend Endpoint>` karakterláncot a saját háttérrendszere korábban beszerzett végpontjára cserélni. Például: `http://mybackend.azurewebsites.net`.
 
     ```java
@@ -319,7 +322,7 @@ A következő lépés az, hogy frissítse az Android-alkalmazást létrehozni a 
     Button sendPush = (Button) findViewById(R.id.sendbutton);
     sendPush.setEnabled(false);
     ```
-9. Ezután adja hozzá a következő metódusokat, amelyek a **Log in** (Bejelentkezés) gombra való kattintás eseményét és a leküldéses értesítések küldését kezelik.
+9. Adja hozzá a következő módszerekkel kezeli a **jelentkezzen be a** gombra való kattintással esemény- és leküldéses értesítések küldése.
 
     ```java
     public void login(View view) throws UnsupportedEncodingException {
@@ -401,7 +404,7 @@ A következő lépés az, hogy frissítse az Android-alkalmazást létrehozni a 
     }
     ```
 
-    A **Log in** (Bejelentkezés) gomb `login` kezelője létrehoz egy, a bemeneti felhasználónevet és jelszót használó alapszintű hitelesítési tokent (amely a hitelesítési séma által használt bármely tokent képviseli), majd a `RegisterClient` használatával hívja meg a regisztrációs háttérrendszert.
+    A `login` kezelő-a **jelentkezzen be a** gomb létrehoz egy alapszintű hitelesítés token használata a bemeneti felhasználónevét és jelszavát (ezt az bármely jogkivonat a hitelesítési sémát használ), majd használja `RegisterClient` hívja a regisztrációs háttéralkalmazásának.
 
     A `sendPush` metódus a háttérrendszer meghívásával aktiválja egy biztonságos értesítés küldését a felhasználónak a felhasználói címke alapján. A `sendPush` által megcélzott platformértesítési szolgáltatás az átadott `pns` sztringtől függ.
 
@@ -467,7 +470,7 @@ A következő lépés az, hogy frissítse az Android-alkalmazást létrehozni a 
 
 1. Futtassa az alkalmazást egy eszközön vagy az Android Studiót használó emulátoron.
 2. Az Android-alkalmazásban adjon meg egy felhasználónevet és jelszót. Mindkettőnek ugyanazon sztringértéknek kell lennie, és nem tartalmazhatnak szóközt vagy különleges karaktert.
-3. Az Android-alkalmazásban kattintson a **Log in** (Bejelentkezés) gombra. Várjon, amíg megjelenik egy bejelentési üzenet a **Logged in and registered** (Bejelentkezve és regisztrálva) szöveggel. Ezzel elérhetővé válik a **Send Notification** (Értesítés küldése) gomb.
+3. Az Android-alkalmazást, kattintson **jelentkezzen be a**. Várjon, amíg megjelenik egy bejelentési üzenet a **Logged in and registered** (Bejelentkezve és regisztrálva) szöveggel. Ezzel elérhetővé válik a **Send Notification** (Értesítés küldése) gomb.
 
     ![][A2]
 4. Kattintson a váltógombokra az összes olyan platform engedélyezéséhez, amelyen futtatta az alkalmazást és regisztrált felhasználókat.

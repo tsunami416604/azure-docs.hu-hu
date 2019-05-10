@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: 173963470a77932186b3c51f17ccb406b32a13f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f58eb05ed582cf18157a76f4d637d72a228f4e96
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61448496"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464866"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>Az eszközszimulációs megoldásgyorsító áttekintése
 
@@ -38,7 +38,7 @@ Eszközszimuláció díjmentes. Azonban Eszközszimuláció üzembe helyezi az A
 
 Eszközszimuláció üzembe helyezése, ha megjelenik néhány minta szimulációkat és a mintául szolgáló eszközök. Ezek a minták segítségével megtudhatja, hogyan használhatja az Eszközszimuláció. Első lépésként futtassa egy [szimuláció, amely szimulálja 10 látható minta](quickstart-device-simulation-deploy.md). Emellett [hozzon létre saját szimuláció, az egyik megadott számos minta eszköz](iot-accelerators-device-simulation-create-simulation.md).
 
-![Szimuláció konfigurálása](media/iot-accelerators-device-simulation-overview/SampleSimulation.png)
+![Szimuláció konfigurálása](media/iot-accelerators-device-simulation-overview/samplesimulation1.png)
 
 ## <a name="custom-simulated-devices"></a>Egyéni szimulált eszközök
 

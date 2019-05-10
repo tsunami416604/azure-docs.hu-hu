@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 0fb7cdaa24d139549545c93c920d60936d3c9fc1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: de4fba88784f41485b446f0f31cccb9a43092a3c
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60886072"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464373"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Telemetria szabály létrehozása és az Azure IoT központi alkalmazás-értesítések beállítása
 
@@ -31,19 +31,19 @@ Hozzon létre egy telemetriai szabályt, az eszköz sablon legalább egy telemet
 
 1. Szabályok még nem hozta létre, ha a következő képernyő jelenik meg:
 
-    ![Még nincsenek szabályai](media/howto-create-telemetry-rules/Rules_Landing_Page.png)
+    ![Még nincsenek szabályai](media/howto-create-telemetry-rules/rules_landing_page1.png)
 
 1. Az a **szabályok** lapon jelölje be **+ új szabály** , milyen típusú szabályokat hozhat létre.
 
 1. Válassza ki **Telemetriai** hozhat létre egy szabályt, amely az eszköz telemetria figyelése.
 
-    ![Szabály típusa](media/howto-create-telemetry-rules/Rule_Types.png)
+    ![Szabály típusa](media/howto-create-telemetry-rules/rule_types1.png)
 
 1. Adjon meg egy nevet, amely segít azonosítani a szabály az eszköz sablonban.
 
 1. Váltsa át a szabály minden olyan eszközre, ezzel a sablonnal létrehozott azonnal engedélyezéséhez **engedélyezése a szabály a sablon összes eszköz**.
 
-   ![Szabály részletei](media/howto-create-telemetry-rules/Rule_Detail.png)
+   ![Szabály részletei](media/howto-create-telemetry-rules/rule_detail1.png)
 
     Eszköz sablon alapján az eszközök automatikusan alkalmazza a szabályt.
 
@@ -59,7 +59,7 @@ A feltétel a feltételeknek, a szabály által figyelt határozza meg.
    - Összesítés nem kötelező. Nélkül összesítés, a szabály aktiválásakor telemetriai adatpontok, amely megfelel a feltételnek. Például ha a szabályt úgy eseményindító, ha hőmérséklete meghaladja a 80-as és a szabály aktiválásakor szinte azonnal mikor jelentett hőmérséklet > 80-as.
    - Ha például az átlagos, minimális és maximális összesítő függvényben, Count van kiválasztva, majd a felhasználónak meg kell adnia egy **összesített időtartomány** keresztül, amelyet a feltétel ki kell értékelni kell. Például ha pedig "5 perc" időszak és a szabály keres átlaghőmérséklet 80-as, a szabály akkor aktiválódik, ha az átlaghőmérséklet legalább 5 percnek a 80-as fölött van. fent. A szabály a kiértékelés gyakorisága pedig ugyanaz, mint a **összesített időtartomány**, ami azt jelenti, hogy ebben a példában a szabály kiértékelése történik az 5 percenként egyszer.
 
-     ![Állapot](media/howto-create-telemetry-rules/Aggregate_Condition_Filled_Out.png)
+     ![Feltétel](media/howto-create-telemetry-rules/aggregate_condition_filled_out1.png)
 
      >[!NOTE]
      >Egynél több telemetria mérték alapján is hozzáadhatók **feltétel**. Ha több feltétel van megadva, minden feltételeknek teljesülniük kell elindítani a szabályhoz. Minden egyes bizonyságául lekérdezi csatlakozott egy "És" záradék által implicit módon. Összesítés használatakor minden mérték összesíteni kell.
@@ -70,14 +70,14 @@ Ez a szakasz bemutatja, hogyan állíthatja be a műveleteket, ha a szabály les
 
 1. Válassza ki a **+** melletti **műveletek**. Itt láthatja az elérhető műveletek listáját.  
 
-    ![Művelet hozzáadása](media/howto-create-telemetry-rules/Add_Action.png)
+    ![Művelet hozzáadása](media/howto-create-telemetry-rules/add_action1.png)
 
 1. Válassza ki a **E-mail** művelet, adjon meg egy érvényes e-mail-címmel a **való** mezőben, és ügyeljen arra, hogy a szabály aktiválásakor jelennek meg az e-mail törzsét adja meg.
 
     > [!NOTE]
     > Csak hozzá az alkalmazáshoz, és legalább egyszer bejelentkezett felhasználók kapnak e-mailt. Tudjon meg többet [felhasználókezelés](howto-administer.md) az Azure IoT Central.
 
-   ![Művelet konfigurálása](media/howto-create-telemetry-rules/Configure_Action.png)
+   ![Művelet konfigurálása](media/howto-create-telemetry-rules/configure_action1.png)
 
 1. A szabály mentéséhez válasszon **mentése**. A szabály élesíti néhány percen belül, és elindítja a telemetriát küld az alkalmazás figyelését. Ha a feltételt a szabályban megadott feltétele teljesül, a szabály elindítja a beállított e-mail-művelet.
 

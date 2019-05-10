@@ -3,7 +3,7 @@ title: Azure Security Center használata a szabályozási megfelelőség javít�
 description: 'Oktatóanyag: Ismerje meg, hogyan javíthatja a szabályozásoknak való megfelelőséget, az Azure Security Center használatával.'
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 5f50c4dc-ea42-418d-9ea8-158ffeb93706
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 2e73cbd1de4336a08e26a609dfe704da0a068860
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 4/30/2019
+ms.author: monhaber
+ms.openlocfilehash: 111a32983472d18c1435feaf2456e5b9416b5112
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60706019"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442281"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Oktatóanyag: Előírásoknak való megfelelés javítása
 ---
@@ -47,8 +47,7 @@ A szabályozásoknak való megfelelőséget irányítópult nézet segítségév
 
 >[!NOTE]
 > Jelenleg támogatott szabályozási normák terén a következők: Az Azure CIS, PCI DSS 3.2-es, az ISO 27001 és SOC TSP. További szabványoknak megfelelően megjelennek az irányítópulton.
-
-1.  A a Security Center főmenüjében alatt **szabályzat és megfelelőség** kiválasztása **szabályozásoknak való megfelelőséget irányítópult**. <br>
+1.  A a Security Center főmenüjében alatt **szabályzat és megfelelőség** kiválasztása **szabályozásoknak való megfelelőséget**. <br>
 A képernyő tetején megjelenik a megfelelőségi állapotának áttekintése az támogatott megfelelőségi szabályozásokhoz együtt egy irányítópulton. Láthatja, hogy az összesített megfelelőségi pontszám és megadásának és a sikertelen társított minden egyes standard értékelések számát.
 
     ![Leírás megbízható számítógép](./media/security-center-compliance-dashboard/compliance-dashboard.png)
@@ -58,12 +57,17 @@ A képernyő tetején megjelenik a megfelelőségi állapotának áttekintése a
 
     ![megfelelőségi lap](./media/security-center-compliance-dashboard/compliance-pci.png)
 
-3.  Válassza ki a **összes** a nézet az összes releváns Security Center javaslatait és azok kapcsolódó szabványok fülre. Ez a nézet egy adott javaslat által érintett összes különböző szabványok azonosítására szolgáló hasznos lehet. <br> Ez a nézet segítségével potenciálisan rangsorolhatja a javaslatok, el kell hárítania. Például ha látni, hogy a javaslat **MFA engedélyezése az előfizetésben tulajdonosi engedélyekkel rendelkező fiókok esetében** sikertelen a több erőforrást és a társított többféle szabvány, majd a Ez az ajánlás feloldása lesz az általános megfelelőségi pontszám a nagy hatással van.
+3. Válassza ki a **összes** a nézet az összes releváns Security Center javaslatait és azok kapcsolódó szabványok fülre. Ez a nézet egy adott javaslat által érintett összes különböző szabványok azonosítására szolgáló hasznos lehet. <br> Ez a nézet segítségével potenciálisan rangsorolhatja a javaslatok, el kell hárítania. Például ha látni, hogy a javaslat **MFA engedélyezése az előfizetésben tulajdonosi engedélyekkel rendelkező fiókok esetében** sikertelen a több erőforrást és a társított többféle szabvány, majd a Ez az ajánlás feloldása lesz az általános megfelelőségi pontszám a nagy hatással van.
 
     ![megfelelőségi pontszám gyakorolt hatás](./media/security-center-compliance-dashboard/compliance-all-tabs.png)
 
-## <a name="improve-your-compliance-posture"></a>Javíthatja a megfelelőségi helyzetét
+1. Hozzon létre és töltse le a PDF-jelentés az aktuális megfelelőségi állapot adott standard összefoglalójához kattintson **jelentés letöltése**.
 
+    A jelentés a megfelelőségi állapot magas szintű összegzését tartalmazza a kijelölt standard, a Security Center értékelések adatok alapján, és a vezérlőket, hogy adott szabvány szerint van rendezve. A jelentés megoszthatók a fontos résztvevőkkel, és a belső és külső auditáló igazolni is kiszolgálhat.
+
+    ![letöltés](./media/security-center-compliance-dashboard/download-report.png)
+
+## <a name="improve-your-compliance-posture"></a>Javíthatja a megfelelőségi helyzetét
 
 Adja meg az adatokat a szabályozásoknak való megfelelőséget irányítópultján, javíthatja a megfelelőségi állapotáról feloldása ajánlások közvetlenül az irányítópulton belül.
 
