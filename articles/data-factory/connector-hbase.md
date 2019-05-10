@@ -42,12 +42,12 @@ HBase-beli társított szolgáltatás a következő tulajdonságok támogatottak
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **HBase** | Igen |
-| gazdagép | Az IP-cím vagy a gazdagép a HBase kiszolgáló neve. (pl.)  `[clustername].azurehdinsight.net`, `192.168.222.160`)  | Igen |
+| host | Az IP-cím vagy a gazdagép a HBase kiszolgáló neve. (pl.)  `[clustername].azurehdinsight.net`, `192.168.222.160`)  | Igen |
 | port | A HBase-példány az ügyfélkapcsolatok figyeléséhez használt TCP portra. Az alapértelmezett érték 9090. Ha csatlakozik az Azure Hdinsight, meg a 443-as portot. | Nem |
 | httpPath | Példa: a HBase-kiszolgáló megfelelő részleges URL-cím `/hbaserest0` Hdinsight-fürt használata esetén. | Nem |
 | authenticationType | A HBase-kiszolgálóhoz való csatlakozáshoz használandó hitelesítési mechanizmusa. <br/>Engedélyezett értékek a következők: **Névtelen**, **alapszintű** | Igen |
-| felhasználónév | A HBase-példányhoz való csatlakozáshoz használt felhasználónév.  | Nem |
-| jelszó | A felhasználónévhez tartozó jelszót. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
+| username | A HBase-példányhoz való csatlakozáshoz használt felhasználónév.  | Nem |
+| password | A felhasználónévhez tartozó jelszót. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
 | enableSsl | Itt adhatja meg, e-kiszolgálóhoz a rendszer SSL használatával titkosítja. Az alapértelmezett értéke FALSE (hamis).  | Nem |
 | trustedCertPath | A .pem-fájlt tartalmazó ellenőrzésének folyamatát a kiszolgálón, ha SSL-kapcsolaton keresztül kapcsolódik a megbízható Hitelesítésszolgáltatói tanúsítvány teljes elérési útja. Ez a tulajdonság csak akkor állítható, ha SSL-lel a saját üzemeltetésű Az alapértelmezett érték a telepített bemutathatja cacerts.pem fájlt:  | Nem |
 | allowHostNameCNMismatch | Meghatározza a kiszolgáló állomásneve megfelelően, ha SSL-kapcsolaton keresztül kapcsolódik egy hitelesítésszolgáltató által kiállított SSL-tanúsítvány neve kötelező legyen-e. Az alapértelmezett értéke FALSE (hamis).  | Nem |
@@ -152,7 +152,7 @@ Adatok másolása a HBase, állítsa be a forrás típusaként a másolási tev�
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **HBaseSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

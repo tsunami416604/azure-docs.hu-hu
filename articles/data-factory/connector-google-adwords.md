@@ -51,7 +51,7 @@ A következő tulajdonságok támogatottak a Google AdWords társított szolgál
 | refreshToken | A Google szerzett AdWords való hozzáférést engedélyező UserAuthentication a frissítési jogkivonatot. Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF másolása tevékenység lekéréses onnan hajt végre az adatok másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Nem |
 | clientId | A frissítési jogkivonat beszerzéséhez használt google alkalmazás ügyfél-azonosító. Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF másolása tevékenység lekéréses onnan hajt végre az adatok másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Nem |
 | clientSecret | A titkos ügyfélkulcsot a frissítési jogkivonat beszerzéséhez használja a google-alkalmazás. Ha szeretné, ezt a mezőt megjelölése a SecureString tárolja biztonságos helyen az ADF-ben, vagy a jelszó tárolásához az Azure Key Vaultban, és lehetővé teszik az ADF másolása tevékenység lekéréses onnan hajt végre az adatok másolása – ismerje meg alaposabban a [Store hitelesítő adatokat a Key Vaultban](store-credentials-in-key-vault.md). | Nem |
-| e-mail | A szolgáltatásfiók e-mail azonosítója, amely ServiceAuthentication szolgál, és csak akkor használható a saját üzemeltetésű  | Nem |
+| email | A szolgáltatásfiók e-mail azonosítója, amely ServiceAuthentication szolgál, és csak akkor használható a saját üzemeltetésű  | Nem |
 | keyFilePath | A .p12 kulcsfájl, amely használatos a hitelesítés a szolgáltatási fiók e-mail címét, és csak akkor használható a saját üzemeltetésű teljes elérési útja  | Nem |
 | trustedCertPath | A .pem-fájlt tartalmazó ellenőrzésének folyamatát a kiszolgálón, ha SSL-kapcsolaton keresztül kapcsolódik a megbízható Hitelesítésszolgáltatói tanúsítvány teljes elérési útja. Ez a tulajdonság csak akkor állítható, ha SSL-lel a saját üzemeltetésű Az alapértelmezett érték a telepített bemutathatja cacerts.pem fájlt:  | Nem |
 | useSystemTrustStore | Megadja, hogy a Hitelesítésszolgáltatói tanúsítvány használatára, a rendszer megbízható áruházból vagy egy adott PEM-fájl. Az alapértelmezett értéke FALSE (hamis).  | Nem |
@@ -131,7 +131,7 @@ Adatok másolása a Google AdWords, állítsa be a forrás típusaként a másol
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **GoogleAdWordsSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 

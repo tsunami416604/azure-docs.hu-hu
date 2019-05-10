@@ -46,7 +46,7 @@ A következő tulajdonságok támogatottak számára a Google BigQuery-beli tár
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot állítsa **GoogleBigQuery**. | Igen |
-| Projekt | A projekt Azonosítóját, az alapértelmezett BigQuery projekt-lekérdezést.  | Igen |
+| project | A projekt Azonosítóját, az alapértelmezett BigQuery projekt-lekérdezést.  | Igen |
 | additionalProjects | Nyilvános projekt azonosítóinak vesszővel elválasztott listáját BigQuery projektek való hozzáférést.  | Nem |
 | requestGoogleDriveScope | E kérelmezzenek hozzáférést a Google Drive-bA. Engedélyezi a Google Drive-hozzáférést lehetővé teszi, hogy összevont táblákat, amelyek BigQuery adatait a Google drive-on támogatása. Az alapértelmezett érték **hamis**.  | Nem |
 | authenticationType | Az OAuth 2.0 hitelesítési mechanizmust a hitelesítéshez használt. ServiceAuthentication csak a helyi Integration Runtime használható. <br/>Engedélyezett értékek a következők **UserAuthentication** és **ServiceAuthentication**. Tekintse meg a további tulajdonságok és hitelesítési típusokhoz JSON-minták a táblázat alatti részek jelölik. | Igen |
@@ -93,7 +93,7 @@ A következő tulajdonságok támogatottak számára a Google BigQuery-beli tár
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| e-mail | A szolgáltatásfiók e-mail azonosítója, amely ServiceAuthentication szolgál. Csak a helyi Integration Runtime használható.  | Nem |
+| email | A szolgáltatásfiók e-mail azonosítója, amely ServiceAuthentication szolgál. Csak a helyi Integration Runtime használható.  | Nem |
 | keyFilePath | A szolgáltatásfiókjának e-mail címe hitelesítéséhez használt kulcs .p12-fájl teljes elérési útja. | Nem |
 | trustedCertPath | A .pem-fájlt, amely tartalmazza a segítségével ellenőrizze a kiszolgálón, ha SSL-kapcsolaton keresztül csatlakozik a megbízható Hitelesítésszolgáltatói tanúsítvány teljes elérési útja. Ez a tulajdonság beállítható csak akkor, ha a helyi integrációs modul az SSL Protokollt használja. Az alapértelmezett érték a cacerts.pem fájlt az integration runtime telepítve.  | Nem |
 | useSystemTrustStore | Megadja, hogy a Hitelesítésszolgáltatói tanúsítvány használatára, a rendszer megbízható áruházból vagy egy megadott .pem-fájlt. Az alapértelmezett érték **hamis**.  | Nem |
@@ -158,7 +158,7 @@ Adatok másolása a Google BigQuery, állítsa be a forrás típusaként a máso
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása típusa tulajdonságát állítsa **GoogleBigQuerySource**. | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 
