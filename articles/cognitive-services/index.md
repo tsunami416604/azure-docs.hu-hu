@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.author: nitinme
 ms.date: 05/02/2019
 ms.topic: hub-page
-ms.openlocfilehash: b76f670c6d2e28ea2cb5ee1cece13cf1023af09f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 027d6c862deb9efeaa8d30dd6acbc814ac230c80
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021485"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464488"
 ---
 <div id="main" class="v2">
 <h1>Az Azure Cognitive Services dokumentációja</h1>
@@ -297,7 +297,7 @@ ms.locfileid: "65021485"
                         <p><a href="/azure/cognitive-services/computer-vision/">Computer Vision</a></p>
                         <p><a href="/azure/cognitive-services/Custom-Vision-Service/">Custom Vision Service</a></p>
                         <p><a href="/azure/cognitive-services/face/">Face API</a></p>
-                        <p><a href="https://go.microsoft.com/fwlink/?linkid=2088514"><span>Forms Recognizer&nbsp;<sup style="font-size:70%">ELŐZETES VERZIÓ</sup></span></a></p>
+                        <p><a href="https://go.microsoft.com/fwlink/?linkid=2088514"><span>Form Recognizer&nbsp;<sup style="font-size:70%">ELŐZETES VERZIÓ</sup></span></a></p>
                         <p><a href="https://go.microsoft.com/fwlink/?linkid=2088323"><span>Ink Recognizer&nbsp;<sup style="font-size:70%">ELŐZETES VERZIÓ</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/video-indexer/video-indexer-overview">Video Indexer</a></p>
                     </div>

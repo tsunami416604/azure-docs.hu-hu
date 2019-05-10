@@ -7,14 +7,14 @@ ms.author: twhitney
 ms.service: container-service
 manager: jeconnoc
 ms.topic: overview
-ms.date: 05/06/2019
+ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 6121c0f654a61a147e84f0697f3ddb06b7c5db92
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: bfa3e63a433a6948f05ece7ec3c3a6180933510b
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65081044"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466169"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -38,9 +38,9 @@ Az Azure Red Hat OpenShift csomópontok futtassa az Azure-beli virtuális gépek
 
 ## <a name="virtual-networks-and-ingress"></a>Virtuális hálózatok és bejövő forgalom
 
-Telepíthet egy Azure Red Hat OpenShift fürtöt egy meglévő virtuális hálózatban. Ebben a konfigurációban a fürt minden pod IP-címet a virtuális hálózatban van hozzárendelve, és közvetlenül kommunikálhatnak a fürt más podok és a virtuális hálózat más csomópontjaira. Podok is csatlakoztathat egy társított virtuális hálózaton található más szolgáltatásokkal, valamint a helyszíni hálózatokon keresztül [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) vagy site-to-site (S2S) VPN-kapcsolatok.
+Meglévő virtuális hálózaton keresztül társviszony-létesítés csatlakozhat egy Azure Red Hat OpenShift-fürtön. Ebben a konfigurációban podok egy társított virtuális hálózaton található más szolgáltatásokkal, valamint a helyszíni hálózatok protokollon keresztül is kapcsolódhatnak [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) vagy site-to-site (S2S) VPN-kapcsolatok.
 
-További információkért lásd: [Microsoft Red Hat OpenShift fürt létrehozása az Azure-ban](tutorial-create-cluster.md).
+Lásd: [egy fürt virtuális hálózat csatlakoztatása egy meglévő virtuális hálózatot](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network) részleteiről.
 
 ## <a name="kubernetes-certification"></a>Kubernetes-tanúsítvány
 

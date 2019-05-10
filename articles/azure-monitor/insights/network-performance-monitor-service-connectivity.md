@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 01410fb59135e9b1f54e4a3c75b206c7d30abeed
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 85a35207293f5afda40c78d105fc58732f06b626
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145018"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65509803"
 ---
-# <a name="service-connectivity-monitor"></a>Szolgáltatáskapcsolati monitor
+# <a name="service-connectivity-monitor"></a>Szolgáltatás-összekapcsolhatósági monitor
 
 A szolgáltatás Kapcsolatfigyelő funkciót is használhatja [Network Performance Monitor](network-performance-monitor.md) bármely végpont, amely egy nyitott TCP-port van hálózati kapcsolat figyeléséhez. Ilyen végpontok közé tartoznak a websites, a SaaS-alkalmazások, a PaaS-alkalmazások és az SQL-adatbázisok. 
 
@@ -33,7 +33,7 @@ A következő függvényeket, a szolgáltatás Kapcsolatfigyelő végezheti el:
 - A hotspotok a hálózaton, amelyek gyenge teljesítményt okozza az egyes ugrások meg topológia százalékaránya késés megtekintésével azonosíthatja.
 
 
-![Szolgáltatáskapcsolati monitor](media/network-performance-monitor-service-endpoint/service-endpoint-intro.png)
+![Szolgáltatás-összekapcsolhatósági monitor](media/network-performance-monitor-service-endpoint/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>Konfiguráció 
@@ -64,7 +64,7 @@ A tesztek a szolgáltatásvégpontokra irányuló hálózati kapcsolat figyelés
 
     * Válassza ki **webes** , amely válaszol a HTTP-vagy Https-kérelmekre, például outlook.office365.com vagy a bing.com szolgáltatás kapcsolatának figyelése.<br>
     * Válassza ki **hálózati** kapcsolat egy szolgáltatás, amely a TCP-kérelmekre reagál, de nem válaszol a HTTP-vagy Https-kérelmekre, például egy SQL server, az FTP-kiszolgáló vagy az SSH-port figyelésére. 
-    * Példa: Egy webes tesztet a blob storage-fiók létrehozásához válassza **webes** , és adja meg a cél, <your storageaccount>. blob.core.windows.net. Hasonlóképpen más a table storage, a queue storage és az Azure Files használatával tesztet hozhat létre [erre a hivatkozásra.](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview#storage-account-endpoints)
+    * Példa: Egy webes tesztet a blob storage-fiók létrehozásához válassza **webes** , és adja meg a cél, *yourstorageaccount*. blob.core.windows.net. Hasonlóképpen más a table storage, a queue storage és az Azure Files használatával tesztet hozhat létre [erre a hivatkozásra.](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints)
 4. Ha nem szeretne végrehajtani a hálózati mérések, például a hálózati késés, a csomagvesztés és a topológia felderítése, törölje a jelet a **hálózati mérések végrehajtása** jelölőnégyzetet. Ez kiválasztva legnagyobb előny beolvasni a funkció a megtartása. 
 5. A **cél**, adja meg, amelyhez a hálózati kapcsolat figyelni kívánt URL-cím vagy teljes Tartománynevét vagy IP-címet.
 6. A **portszám**, adja meg a célként megadott szolgáltatás portszámát. 
@@ -128,6 +128,16 @@ Ha egy rendellenesség megfigyelte, kövesse az alábbi lépéseket:
 
 * Ha az alkalmazás lassan fut, megállapítható, hogy van-e a gyenge alkalmazásteljesítményt a hálózaton vagy az alkalmazás szolgáltatója End probléma miatt.
 
+## <a name="gcc-office-urls-for-us-government-customers"></a>Az USA kormányzati ügyfeleinek GCC Office URL-címek
+US Government Virginia régióban csak DOD URL-címek olyan beépített npm-et. Hozzon létre egyéni teszteket, és adja hozzá az egyes URL-cím inidividually kell GCC URL-címeket használó ügyfelek.
+
+| Mező | GCC |
+|:---   |:--- |
+| Office 365 portál és megosztott | portal.apps.mil |
+| Az Office 365-hitelesítés és identitás | * login.microsoftonline.us <br> * api.login.microsoftonline.com <br> * clientconfig.microsoftonline-p.net <br> * login.microsoftonline.com <br> * login.microsoftonline-p.com <br> * login.windows.net <br> * loginex.microsoftonline.com <br> * login-us.microsoftonline.com <br> * nexus.microsoftonline-p.com <br> * mscrl.microsoft.com <br> * secure.aadcdn.microsoftonline-p.com |
+| Office Online | * adminwebservice.gov.us.microsoftonline.com <br>  * adminwebservice-s1-bn1a.microsoftonline.com <br> * adminwebservice-s1-dm2a.microsoftonline.com <br> * becws.gov.us.microsoftonline.com <br> * provisioningapi.gov.us.microsoftonline.com <br> * officehome.msocdn.us <br> * prod.msocdn.us <br> * portal.office365.us <br> * webshell.suite.office365.us <br> * www .office365.us <br> * activation.sls.microsoft.com <br> * crl.microsoft.com <br> * go.microsoft.com <br> * insertmedia.bing.office.net <br> * ocsa.officeapps.live.com <br> * ocsredir.officeapps.live.com <br> * ocws.officeapps.live.com <br> * office15client.microsoft.com <br>* officecdn.microsoft.com <br> * officecdn.microsoft.com.edgesuite.net <br> * officepreviewredir.microsoft.com <br> * officeredir.microsoft.com <br> * ols.officeapps.live.com  <br> * r.office.microsoft.com <br> * cdn.odc.officeapps.live.com <br> * odc.officeapps.live.com <br> * officeclient.microsoft.com |
+| Exchange Online | * outlook.office365.us <br> * attachments.office365-net.us <br> * autodiscover-s.office365.us <br> * manage.office365.us <br> * scc.office365.us |
+| Az MS Teams | gov.teams.microsoft.us | 
 
 ## <a name="next-steps"></a>További lépések
 [Naplók keresése](../../azure-monitor/log-query/log-query-overview.md) részletes hálózati teljesítmény adatfelderítési rekordok megtekintéséhez.

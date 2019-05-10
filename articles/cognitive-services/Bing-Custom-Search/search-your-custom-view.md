@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 05/09/2019
 ms.author: maheshb
-ms.openlocfilehash: f00a8a02ac7f9468516506b6e6a376209d24c270
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed34b20073a150e38b5d5992ab4e4b8c80453fb2
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60946800"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510252"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>A Bing Custom Search példány meghívása a portálról
 
@@ -26,7 +26,7 @@ Miután konfigurálta az egyéni keresési funkciót, tesztelheti, a Bing Custom
 
 Miután bejelentkezett, a Bing Custom Search [portál](https://customsearch.ai), válassza ki a keresési példányát, és kattintson a **éles** lapon. A **végpontok**, válasszon ki egy API-végpontot (például a webes API). Az előfizetés határozza meg, milyen végpontokat jelennek meg.
 
-Hozzon létre egy keresési lekérdezést, adja meg a paraméterértékeket a végponthoz. Vegye figyelembe, hogy a paraméterek megjelennek a portálon, válassza ki a végpont függően változhat. Tekintse meg a[Custom Search API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) további információt. 
+Hozzon létre egy keresési lekérdezést, adja meg a paraméterértékeket a végponthoz. Vegye figyelembe, hogy a paraméterek megjelennek a portálon, válassza ki a végpont függően változhat. Tekintse meg a[Custom Search API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) további információt. Az előfizetést, a keresési példányát használja, adja hozzá a megfelelő előfizetést kulcsot, és frissítse a megfelelő piaci és/vagy nyelvi paramétereket.
 
 Néhány fontos paraméter alatt van:
 
@@ -44,7 +44,7 @@ Kattintson a **további paraméterek** tárja fel a következő paraméterekkel:
 |---------|---------|
 |Safe Search     | Felnőtt tartalom vonatkozó szűrésére használt szűrő. Csak a webes, kép, videó és tárolt felhasználói felületén végpontok érhető el.        |
 |A felhasználói felület nyelve    | A felhasználói felület karakterláncok használt nyelv. Például, ha engedélyezi a képek és videók tárolt felhasználói felületén a **kép** és **videó** lapokon megadott nyelv használata.        |
-|Darabszám     | A válaszban visszaadandó találatok száma. Csak a webes, kép- és végpontok esetén érhető el.         |
+|Count     | A válaszban visszaadandó találatok száma. Csak a webes, kép- és végpontok esetén érhető el.         |
 |Offset    | A kihagyandó eredmények visszaküldése előtt a keresési eredmények számát. Csak a webes, kép- és végpontok esetén érhető el.        |
     
 Az összes szükséges beállítások megadása után kattintson a **hívás** a JSON-válasz megtekintéséhez a jobb oldali ablaktáblán. Ha a felhasználói felület üzemeltetett végpontot, az alsó ablaktáblán tesztelheti a keresési funkciót.

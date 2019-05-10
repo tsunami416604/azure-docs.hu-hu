@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: 4f8851248c395a1f03c46490c8eb5e71221dd133
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7b2691f543cf38a56eefb1e8521169aeccbf3221
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60733300"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409287"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Magánfelhők és régiók, mely az Azure Media Services v3 létezik
 
@@ -26,19 +26,16 @@ Az Azure Media Services v3-as globális Azure-ban, Azure Government, Azure Germa
 
 | Szolgáltatás|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
-| [Azure EventGrid](reacting-to-media-services-events.md) | Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
-| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
-| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
-| [StandardEncoderPreset](encoding-concept.md) | Elérhető | Elérhető | Elérhető | Elérhető |
-| [LiveEvents](live-streaming-overview.md) | Elérhető | Elérhető | Elérhető | Elérhető |
-| [Streamvégpontok](streaming-endpoint-concept.md) | Elérhető | Elérhető | Elérhető | Elérhető |
+| [Azure EventGrid](reacting-to-media-services-events.md) | Szabad | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
+| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Szabad | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
+| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Szabad | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok | Nem állnak rendelkezésre adatok |
+| [StandardEncoderPreset](encoding-concept.md) | Szabad | Szabad | Szabad | Szabad |
+| [LiveEvents](live-streaming-overview.md) | Szabad | Szabad | Szabad | Szabad |
+| [Streamvégpontok](streaming-endpoint-concept.md) | Szabad | Szabad | Szabad | Szabad |
 
 ## <a name="regionsgeographieslocations"></a>Régiók és földrajzi területeken/helyek
 
-* [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/)
-* [Termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/)
-* [Azure-régiócsoportok](https://azure.microsoft.com/global-infrastructure/geographies/)
-* [Azure-helyek](https://azure.microsoft.com/global-infrastructure/locations/)
+[Régió, amelyben az Azure Media Services-szolgáltatás üzembe helyezése](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
 ### <a name="region-code-name"></a>Régió neve 
 
@@ -98,6 +95,12 @@ Az alábbi végpontokat is fontos tudni, hogy különböző országos Azure-felh
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
 | Hitelesítés | `https://login.chinacloudapi.cn/` |
 | Token célrendszere |  `https://management.core.chinacloudapi.cn/` |
+
+## <a name="see-also"></a>Lásd még
+
+* [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/)
+* [Azure-régiócsoportok](https://azure.microsoft.com/global-infrastructure/geographies/)
+* [Azure-helyek](https://azure.microsoft.com/global-infrastructure/locations/)
 
 ## <a name="next-steps"></a>További lépések
 

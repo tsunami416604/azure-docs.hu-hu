@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 83a866b20d2802b7d49363b7c6451356e938eac1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3c420882b734883039ec95d609c155617359fa25
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626842"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510726"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Az Azure Cosmos DB .NET SDK-t az SQL API-hoz: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -47,6 +47,20 @@ ms.locfileid: "60626842"
 * Új hálózatiobjektum-modellt, a legfelső szintű CosmosClient és módszerek elosztja a megfelelő CosmosDatabases, CosmosContainers és CosmosItems osztályokat. 
 * Streamek támogatását. 
 * Frissített CosmosResponseMessage állapotkódot adja vissza, és csak throw kivétel, ha nem érkezik válasz-kiszolgálóról. 
+
+### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
+
+* SDK-k System.Net.Http verzióegyezéseket határozzák meg a NuGet-csomag
+* A LINQ-lekérdezések a Decimális pontosság mérete nagyobb.
+* Hozzáadott új osztályok CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType és PartitionKeyDefinitionVersion
+* DocumentCollection a hozzáadott TimeToLivePropertyPath
+* A hozzáadott CompositeIndexes és SpatialIndexes IndexPolicy
+* PartitionKeyDefinition új verzióra
+* A PartitionKey nincs hozzáadva
+
+### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
+
+ * A hozzáadott IdleTcpConnectionTimeout, OpenTcpConnectionTimeout, MaxRequestsPerTcpConnection és a ConnectionPolicy MaxTcpConnectionsPerEndpoint.
 
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 
@@ -361,6 +375,8 @@ Az Azure Cosmos DB egy kivont SDK használatával bármilyen kérelmeket a szolg
 
 | Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.4.0](#2.4.0) |2019. május 05. |--- |
+| [2.3.0](#2.3.0) |2019. április 04. |--- |
 | [2.2.3](#2.2.3) |2019. február 11. |--- |
 | [2.2.2](#2.2.2) |2019. február 06. |--- |
 | [2.2.1](#2.2.1) |2018. december 24. |--- |
@@ -418,7 +434,7 @@ Az Azure Cosmos DB egy kivont SDK használatával bármilyen kérelmeket a szolg
 | [1.0.0](#1.0.0) |2015. április 08. |--- |
 
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>gyakori kérdésekben
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még

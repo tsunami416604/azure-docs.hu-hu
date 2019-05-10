@@ -13,20 +13,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 65d4326763ef9754159e94c9426f3aee69f80ffd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 61f24b3c13a53b23538327cd1458a54756b7caa5
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61095654"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466354"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Gyakori kérdések a Windows Virtual Machines szolgáltatásról
-Ez a cikk foglalkozik az Azure Resource Manager-alapú üzemi modellel létrehozott Windows virtuális gépek kapcsolatos gyakori kérdésekre. Ez a témakör Linux-verzióját, lásd: [gyakori kérdést Linux Virtual Machines szolgáltatásról](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Ez a cikk foglalkozik az Azure Resource Manager-alapú üzemi modellel létrehozott Windows virtuális gépek kapcsolatos gyakori kérdésekre. Ez a témakör Linux-verzióját, lásd: [gyakori kérdést Linux rendszerű virtuális gépekről történő](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Mit futtathatok egy Azure-beli virtuális gépen?
-Minden előfizető kiszolgálószoftvereket futtathat az Azure-beli virtuális gépeken. Az Azure-ban futó Microsoft kiszolgálói szoftverek a támogatási házirenddel kapcsolatos további információkért lásd: [Microsoft kiszolgálószoftveres támogatás az Azure Virtual Machines szolgáltatáshoz](https://support.microsoft.com/kb/2721672)
+Minden előfizető kiszolgálószoftvereket futtathat az Azure-beli virtuális gépeken. Az Azure-ban futó Microsoft kiszolgálói szoftverek a támogatási házirenddel kapcsolatos további információkért lásd: [Microsoft kiszolgálószoftveres támogatás az Azure Virtual Machines](https://support.microsoft.com/kb/2721672).
 
 Windows 7, Windows 8.1 és Windows 10 egyes verzióit MSDN Azure előfizetői előnyöket és az MSDN-es fejlesztési és tesztelés – használatalapú fizetést előfizetők fejlesztési és tesztelési feladatok érhetők el. Részletekért, többek között az utasításokért és korlátozásokért tekintse meg az [MSDN-előfizetők számára elérhető Windows-rendszerképeket](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/) ismertető cikket. 
 
@@ -38,7 +38,7 @@ Azure Managed Disks szolgáltatást ajánljuk lemezes tárolás ajánlatokra has
 Az Azure storage-fiókok storage is lehetővé teszi az operációsrendszer-lemez és bármely adatlemez számára. Minden lemez egy lapblobként tárolt .vhd-fájl. A díjszabás részleteiért lásd [a Storage szolgáltatás díjszabását](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>Hogyan érhetem el a virtuális gépem?
-Windows virtuális gép távoli asztali kapcsolat (RDP) használatával távoli kapcsolatot létesíteni. Útmutatásért lásd: [csatlakoztatása és bejelentkezés Windows rendszert futtató Azure virtuális gép](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Legfeljebb két egyidejű kapcsolatok támogatottak, kivéve, ha a kiszolgáló úgy van konfigurálva, a távoli asztali szolgáltatások munkamenet-gazdagépként.  
+Windows virtuális gép távoli asztali kapcsolat (RDP) használatával távoli kapcsolatot létesíteni. Útmutatásért lásd: [hogyan csatlakozhat, és jelentkezzen be az Azure Windows rendszerű virtuális gép](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Legfeljebb két egyidejű kapcsolatok támogatottak, kivéve, ha a kiszolgáló úgy van konfigurálva, a távoli asztali szolgáltatások munkamenet-gazdagépként.  
 
 Ha a távoli asztal problémákat tapasztal, tekintse meg [távoli asztali kapcsolatok hibaelhárítása a Windows-alapú Azure virtuális gép](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
@@ -85,36 +85,26 @@ Igen. Az erőforráscsoport neve legfeljebb 90 karakter hosszúságú lehet. Lá
 
 Felhasználónevek legfeljebb 20 karakter hosszúságú lehet, és nem végződhet ponttal ("."). 
 
-
 A következő felhasználónevek nem engedélyezettek:
-<table>
-    <tr>
-        <td style="text-align:center">1</td><td style="text-align:center">123</td><td style="text-align:center">a</td><td style="text-align:center">actuser</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">adm</td><td style="text-align:center">admin</td><td style="text-align:center">admin1</td><td style="text-align:center">admin2</td>
-    </tr>   <tr>
-        <td style="text-align:center">rendszergazda</td><td style="text-align:center">aspnet</td><td style="text-align:center">biztonsági mentés</td><td style="text-align:center">konzol</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">David </td><td style="text-align:center">Vendég</td><td style="text-align:center">János</td><td style="text-align:center">tulajdonos</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">legfelső szintű</td><td style="text-align:center">kiszolgáló</td><td style="text-align:center">sql</td><td style="text-align:center">támogatás</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">support_388945a0</td><td style="text-align:center">sys.</td><td style="text-align:center">test</td><td style="text-align:center">test1</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">test2</td><td style="text-align:center">Teszt3</td><td style="text-align:center">Felhasználó</td><td style="text-align:center">Felhasználó1</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">mind a Felhasználó2</td><td style="text-align:center">Felhasználó3</td><td style="text-align:center">Felhasználó4</td><td style="text-align:center">user5</td>
-    </tr>
-</table>
+
+| | | | |
+|-----------------|-----------|--------------------|----------|
+| `administrator` | `admin`   | `user`             | `user1`  |
+| `test`          | `user2`   | `test1`            | `user3`  |
+| `admin1`        | `1`       | `123`              | `a`      |
+| `actuser`       | `adm`     | `admin2`           | `aspnet` |
+| `backup`        | `console` | `david`            | `guest`  |
+| `john`          | `owner`   | `root`             | `server` |
+| `sql`           | `support` | `support_388945a0` | `sys`    |
+| `test2`         | `test3`   | `user4`            | `user5`  |
+
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>Mik a jelszót a virtuális gép létrehozásakor?
-Jelszavak kell 12 – 123 karakter hosszúságú lehet, és felel meg a 3 tartományon kívül az alábbi 4 összetettségi követelményeknek:
+
+Nincsenek különböző jelszó hossza, attól függően, használja az eszköz:
+ - Portál – 12 – 72 karakter
+ - PowerShell – 8 – 123 karakter közötti hosszúságú
+ - CLI - 12 – 123 között
 
 * Alacsonyabb karakter hosszúságú lehet
 * Felső karakter hosszúságú lehet

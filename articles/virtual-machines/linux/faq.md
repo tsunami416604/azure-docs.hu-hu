@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 8d421adfae335a976485ed463a69484a74be5b44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0623a7aff15184822ee8abde0b3c751f8a105b5b
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60729528"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65463582"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Linux rendszerű virtuális gépek kapcsolatos gyakori kérdések
 Ez a cikk foglalkozik az Azure Resource Manager-alapú üzemi modellel létrehozott Linux virtuális gépek kapcsolatos gyakori kérdésekre. Ez a témakör Windows verziója: [– gyakori kérdések a Windows Virtual Machines szolgáltatásról](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -64,36 +64,26 @@ Felhasználónevek 1 – 32 karakter hosszúságúnak kell lennie.
 
 A következő felhasználónevek nem engedélyezettek:
 
-<table>
-    <tr>
-        <td style="text-align:center">rendszergazda </td><td style="text-align:center"> admin </td><td style="text-align:center"> Felhasználó </td><td style="text-align:center"> Felhasználó1</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">test </td><td style="text-align:center"> mind a Felhasználó2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> Felhasználó3</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">admin1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">actuser  </td><td style="text-align:center"> adm </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">biztonsági mentés </td><td style="text-align:center"> konzol </td><td style="text-align:center"> David </td><td style="text-align:center"> Vendég</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">János </td><td style="text-align:center"> tulajdonos </td><td style="text-align:center"> legfelső szintű </td><td style="text-align:center"> kiszolgáló</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">sql </td><td style="text-align:center"> támogatás </td><td style="text-align:center"> support_388945a0 </td><td style="text-align:center"> sys.</td>
-    </tr>
-    <tr>
-        <td style="text-align:center">test2 </td><td style="text-align:center"> Teszt3 </td><td style="text-align:center"> Felhasználó4 </td><td style="text-align:center"> user5</td>
-    </tr>
-</table>
-
+| | | | |
+|-----------------|-----------|--------------------|----------|
+| `administrator` | `admin`   | `user`             | `user1`  |
+| `test`          | `user2`   | `test1`            | `user3`  |
+| `admin1`        | `1`       | `123`              | `a`      |
+| `actuser`       | `adm`     | `admin2`           | `aspnet` |
+| `backup`        | `console` | `david`            | `guest`  |
+| `john`          | `owner`   | `root`             | `server` |
+| `sql`           | `support` | `support_388945a0` | `sys`    |
+| `test2`         | `test3`   | `user4`            | `user5`  |
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>Mik a jelszót a virtuális gép létrehozásakor?
-Jelszavak kell 6 – 72 karakter hosszúságú lehet, és felel meg a 3 tartományon kívül az alábbi 4 összetettségi követelményeknek:
+
+Nincsenek különböző jelszó hossza, attól függően, használja az eszköz:
+ - Portál – 12 – 72 karakter
+ - PowerShell – 8 – 123 karakter közötti hosszúságú
+ - CLI - 12 – 123 között
+ 
+
+Jelszavak 3 tartományon kívül az alábbi 4 összetettségi követelményeket is meg kell felelnie:
 
 * Alacsonyabb karakter hosszúságú lehet
 * Felső karakter hosszúságú lehet

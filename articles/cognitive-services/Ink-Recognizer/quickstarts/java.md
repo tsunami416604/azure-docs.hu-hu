@@ -9,12 +9,12 @@ ms.subservice: ink-recognizer
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: 43dc388c9f24e3975d6efddbeec6e096bf062548
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 6237253922544dc47bb11aec4dd58139f99eb0da
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026273"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518615"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Gyors útmutató: Ismeri fel a digitális ink a szabadkézi felismerő REST API-t és a Java
 
@@ -30,13 +30,13 @@ Ez a rövid útmutató forráskódja találhatók [GitHub](https://go.microsoft.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A [Java&trade; fejlesztési Kit(JDK) 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) vagy újabb.
+- A [Java&trade; fejlesztési Kit(JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) vagy újabb.
 
 - Ezek a kódtárak importálja a Maven tárházból
     - [A Java JSON](https://mvnrepository.com/artifact/org.json/json) csomag
     - [Az Apache HttpClient](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) csomag
 
-- Ez a rövid útmutató példa ink körvonal adatai találhatók [GitHub](https://go.microsoft.com/fwlink/?linkid=2089904).
+- Ez a rövid útmutató példa ink körvonal adatai találhatók [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-ink-strokes.json).
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
 
@@ -134,7 +134,7 @@ static void recognizeInk(String requestData) {
 
 ## <a name="run-the-application-and-view-the-response"></a>Futtassa az alkalmazást, és tekintse meg a választ
 
-Futtassa az alkalmazást. A sikeres válasz JSON formátumban. A JSON-válasz is megtalálhatja a [GitHub](https://go.microsoft.com/fwlink/?linkid=2089904).
+Futtassa az alkalmazást. A sikeres válasz JSON formátumban. A JSON-válasz is megtalálhatja a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-response.json).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -143,8 +143,8 @@ Futtassa az alkalmazást. A sikeres válasz JSON formátumban. A JSON-válasz is
 
 
 A tinta Recognition API működését egy digitális szabadkézi alkalmazás megtekintéséhez tekintse meg a következő minta alkalmazásokat a Githubon:
-* [C#és az univerzális Windows-Platform(UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
-* [C#és a Windows Presentation Foundation(WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
-* [A JavaScript webböngésző alkalmazás](https://go.microsoft.com/fwlink/?linkid=2089908)       
-* [A Java és az Android mobilalkalmazás](https://go.microsoft.com/fwlink/?linkid=2089906)
-* [SWIFT- és iOS mobilalkalmazás](https://go.microsoft.com/fwlink/?linkid=2089805)
+* [C# és Univerzális Windows-platform (Universal Windows Platform, UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
+* [C# és Windows megjelenítési alaprendszer (Windows Presentation Foundation, WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
+* [JavaScript-webböngészőalkalmazás](https://go.microsoft.com/fwlink/?linkid=2089908)       
+* [Java- és Android-mobilalkalmazás](https://go.microsoft.com/fwlink/?linkid=2089906)
+* [Swift- és iOS-mobilalkalmazás](https://go.microsoft.com/fwlink/?linkid=2089805)

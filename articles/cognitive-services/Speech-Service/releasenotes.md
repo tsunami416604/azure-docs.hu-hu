@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 1310ecd15498c4c319febc87cbc3b18e0a7ca524
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: fa722d749ec27a72a8be3bf8fcfd8097a1404458
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020340"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465602"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -24,7 +24,7 @@ ms.locfileid: "65020340"
 
 **Új funkciók**
 
-* Kulcsszó gyorsabban funkció (KWS) Windows és Linux rendszerekhez érhető el. KWS funkció működik együtt a mikrofon bármilyen, hivatalos KWS támogatja, azonban jelenleg kizárólag a a mikrofon tömbök található az Azure Kinect DK hardverekre, sem a Speech Devices SDK-val.
+* Ébresztési word (kulcsszó gyorsabban/KWS) funkció már elérhető a Windows és Linux rendszerekhez. KWS funkció működik együtt a mikrofon bármilyen, hivatalos KWS támogatja, azonban jelenleg kizárólag a a mikrofon tömbök található az Azure Kinect DK hardverekre, sem a Speech Devices SDK-val.
 * Kifejezés mutató funkció az SDK-n keresztül érhető el. További információkért lásd: [Itt](how-to-phrase-lists.md).
 * Beszélgetés beszédátírási funkció az SDK-n keresztül érhető el. Lásd: [Itt](conversation-transcription-service.md).
 * Hang-és felhőközpontú virtuális asszisztensek használatával a közvetlen vonal beszédfelismerő csatornát támogatása.
@@ -58,7 +58,7 @@ Ez a kiadás csak a JavaScript. Nincsenek funkciók lettek hozzáadva. A követk
 **Új funkciók** 
 
 * Az SDK-val most már támogatja a szöveg-hang transzformációs szolgáltatás bétaverziójának. A Windows és Linux rendszerű asztali a támogatott C++ és C#. További információkért ellenőrizze a [szöveg-hang transzformációs áttekintése](text-to-speech.md#get-started-with-text-to-speech).
-* Az SDK-val most stream bemeneti fájlok formájában támogatja az MP3- és Opus/Ogg hangfájlok. Ez a funkció csak a c++ segítségével Linux rendszeren érhető el, és C# és jelenleg bétaverzióban (További részletek [Itt](how-to-use-compressed-audio-input-streams.md)).
+* Az SDK-val most stream bemeneti fájlok formájában támogatja az MP3- és Opus/OGG hangfájlok. Ez a funkció csak a c++ segítségével Linux rendszeren érhető el, és C# és jelenleg bétaverzióban (További részletek [Itt](how-to-use-codec-compressed-audio-input-streams.md)).
 * A beszédfelismerés SDK a .NET core, Java, C++ és Objective-C macOS-támogatás révén. Az Objective-C támogatja a macOS jelenleg bétaverzióban.
 * iOS: A beszédfelismerés SDK IOS (Objective-C) most is közzéteszi, egy CocoaPod.
 * JavaScript: Nem alapértelmezett mikrofon beviteli eszközként támogatása.

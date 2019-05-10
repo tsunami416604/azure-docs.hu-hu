@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: c7e6e7e2023c333207a3a17c3b6711d92de7d044
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b69ded2591478a477cd142decb39218841c9ac62
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65187791"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410113"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>TmaxSoft OpenFrame telepítése Azure-ban
 
@@ -116,13 +116,13 @@ Beállíthatja a OpenFrame-környezet különböző üzembe helyezési minták, 
 
 **Virtuális gép létrehozása**
 
-1. Nyissa meg az Azure Portalra a <http://portal.azure.com> , és jelentkezzen be a fiókjába.
+1. Nyissa meg az Azure Portalra a <https://portal.azure.com> , és jelentkezzen be a fiókjába.
 
 2. Kattintson a **virtuális gépek**.
 
     ![Az Azure portal Resource list](media/vm-01.png)
 
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson a **Hozzáadás**lehetőségre.
 
     ![A beállítás hozzáadása az Azure Portalon](media/vm-02.png)
 
@@ -565,7 +565,7 @@ Az alapszintű application server telepítve van az egyes szolgáltatásokat has
      [oframe7@ofdemo ~]$ ps -ef|grep tbsvr
      ```
 
-    ![Alapszintű](media/base-01.png)
+    ![Alap](media/base-01.png)
 
      > [!IMPORTANT]
      > Ellenőrizze, hogy a telepítés előtt Tibero megkezdése.

@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a5184b9980dd9f83764950445c10e8bdfea6d71a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 4f721dc4fda5bef002c794d79dfd2f054f9eaf38
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203947"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511176"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Dedikált Event Hubs áttekintése
 
@@ -52,29 +52,20 @@ Az Event Hubs dedikált ajánlat fix havi díja, legalább 4 óra számoljuk fel
 
 | Szolgáltatás | Standard | Dedikált |
 | --- |:---:|:---:|
-| Bandwidth | 20 átviteli egységek (legfeljebb 40 átviteli egységek) | 20 kapacitásegység használható |
-| Névterek |  1 | 50 / Kapacitásegység |
-| Event Hubs |  10 | Korlátlan |
-| Belépő események | / Millió esemény kell fizetnie | Tartalmazza |
+| Sávszélesség | 20 átviteli egységek (legfeljebb 40 átviteli egységek) | 20 kapacitásegység használható |
+| Névterek |  1. | 50 / Kapacitásegység |
+| Event Hubs |  10 | Nincs korlátozva az event hubs-témakörök |
+| Beáramlási események | / Millió esemény kell fizetnie | Belefoglalva |
 | Üzenet mérete | 1 millió bájt | 1 millió bájt |
-| Partíciók | 40 névterenként | event hubs / 1024 / Kapacitásegység, 2000 |
-| Felhasználói csoportok | Eseményközpont 20 | Nincs korlátozva az event hubs 1000 / Kapacitásegység, |
-| Felügyelt kapcsolatok | 1000 tartalmazza | 100 K csomagban foglalt |
+| Partíciók | 40 névterenként | 2000 / Kapacitásegység |
+| Fogyasztói csoportok | Eseményközpont 20 | Nincs korlátozva az event hubs 1000 / Kapacitásegység, |
+| Közvetített kapcsolatok | 1000 tartalmazza | 100 K csomagban foglalt |
 | Üzenetmegőrzés | 7 nap, 84 GB-os átviteli egység per tartalmazza | 90 nap, a 10 TB-ot foglalt / Kapacitásegység |
-| Rögzítés | Fizetés / óra | Tartalmazza |
+| Rögzítés | Fizetés / óra | Belefoglalva |
 
 ## <a name="how-to-onboard"></a>Hogyan vezethető
 
-Dedikált megoldás előkészítése az önkiszolgáló felhasználói élményt előzetes verzióban érhető el, amelyekkel létrehozhat 1 CU-fürtök a következő régióban:
-  - Közép-Kanada
-  - Nyugat-Európa
-  - USA középső régiója
-  - USA keleti régiója
-  - USA 2. keleti régiója
-  - USA északi középső régiója
-  - USA nyugati régiója
-
-A Microsoft aktívan ad hozzá új régióban, de addig is, ha az elsődleges régió nem szerepel a listán, küldjön támogatási kérelmet a [Event Hubs-csapattal](https://ms.portal.azure.com/#create/Microsoft.Support) alatt *műszaki > az Event Hubs > kvóta > kérhetnek Dedikált Termékváltozat*. A dedikált terv sajátossága, hogy egy több gyakorlati Bevezetés az Event Hubs termékért felelős csoport a rugalmas üzembe helyezést az Ön számára megfelelő beolvasni a fog tapasztalni. 
+Event Hubs dedikált előkészítése, lépjen kapcsolatba a [Event Hubs-csapattal](mailto:askeventhubs@microsoft.com). A dedikált terv sajátossága, hogy egy több gyakorlati Bevezetés az Event Hubs termékért felelős csoport a rugalmas üzembe helyezést az Ön számára megfelelő beolvasni a fog tapasztalni. 
 
 ## <a name="faqs"></a>Gyakori kérdések
 
@@ -86,19 +77,15 @@ Következő táblázatban a teljesítményteszt eredménye, hogy mi érhető el 
 
 | Hasznos adat alakzat | Fogadók | Bejövő sávszélesség| Bejövő üzenetek | Kimenő adatforgalmat | Kimenő üzenetek | Teljes átviteli egységek | Átviteli egységek / Kapacitásegység |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| 100x1KB váró | 2 | 400 MB/mp | 400 k üzenetek/mp | 800 MB/mp | 800 k üzenetek/mp | 400 átviteli egységek | 100 átviteli egységek | 
-| 10x10KB váró | 2 | 666 MB/mp | 66.6 k üzenetek/mp | 1,33 GB/mp | 133 k üzenetek/mp | 666 átviteli egységek | 166 átviteli egységek |
-| 6x32KB váró | 1 | 1.05 GB/mp | 34 k üzenetek / másodperc | 1.05 GB/mp | 34 k üzenetek/mp | 1000 átviteli egységek | 250 átviteli egységek |
+| 100x1KB váró | 2 | 400 MB/mp | 400 k üzenetek/s | 800 MB/mp | 800 k üzenetek/s | 400 átviteli egységek | 100 átviteli egységek | 
+| 10x10KB váró | 2 | 666 MB/mp | 66.6 k üzenetek/s | 1,33 GB/mp | 133 k üzenetek/s | 666 átviteli egységek | 166 átviteli egységek |
+| 6x32KB váró | 1 | 1.05 GB/mp | 34 k üzenetek / másodperc | 1.05 GB/mp | 34 k üzenetek/s | 1000 átviteli egységek | 250 átviteli egységek |
 
 A vizsgálat során, a következő feltételek lett megadva:
 
 - Az Event Hubs dedikált szintjét fürtök négy kapacitásegységek (CUs) lett megadva. 
 - Az event hubs streamfeldolgozási használt 200 partíciók rendelkezett. 
 - Volt betöltött adatokat fogad az összes partíció két fogadó alkalmazás kapott.
-
-#### <a name="how-do-i-create-a-cluster-larger-than-1-cu"></a>Hogyan hozhatok létre egy fürtöt 1-nél nagyobb CU?
-
-Az önkiszolgáló élményt előzetes kiadását kérheti a fürt vertikális felskálázása a fürt létrehozása után. Egy 1 CU fürt létrehozását követően vegye fel a kapcsolatot az Event Hubs-támogatás a bejelentés egy [támogatási kérelem](https://ms.portal.azure.com/#create/Microsoft.Support) alatt *műszaki > kvóta > méretezési felfelé vagy lefelé dedikált fürt méretezése irányuló kérelem*. A GA kiadás fogja tudni közvetlenül a portálon keresztül a fürt vertikális. 
 
 #### <a name="can-i-scale-down-my-cluster"></a>Skálázhatom-e le a fürtöt?
 
@@ -107,7 +94,6 @@ A létrehozás után fürtök használatáért legalább 4 óra. Az önkiszolgá
 #### <a name="how-will-geo-dr-work-with-my-cluster"></a>Hogyan működik a Geo-DR-fürt?
 
 Geo-pár másik névtér alatt egy dedikált szintű fürtöt tartalmazó névtér alatt egy dedikált szintű fürtöt is. Nem javasoljuk egy dedikált szintű névteret, a standard szintű kínál, és mivel az átviteli sebességhatár nem kompatibilis, és emiatt a hibák a névtér párosítási. 
-
 
 #### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Áttelepíthetek egy dedikált szintű fürthöz tartoznak, a standard szintű névterek?
 Hogy jelenleg nem támogatják az automatikus migrálási folyamat az event hubs-adatok áttelepíthető egy dedikált egy standard szintű névtérben. Fürtbe történő áttelepítéséhez egy dedikált szintű, javasoljuk a kiürítés minden olyan üzeneteket balra, a Standard szintű event hubs és és cserélje le a kapcsolati végpontok, amelyek a dedikált névtér.

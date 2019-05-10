@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 096f39eeef54f3a4a1e3d8928dd13b7c22847c8d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 188c17b4e8ef84f3907b63fd62bf110ee94b4d7f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143180"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511238"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Az Azure Portalon a függvényalkalmazás kezelése 
 
@@ -26,15 +26,23 @@ A kezdéshez nyissa meg a [az Azure portal](https://portal.azure.com) , és jele
 
 ![A funkció áttekintése az Azure Portalon](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
-## <a name="manage-app-service-settings"></a>Függvény alkalmazás Beállítások lap
+Minden, amit a függvényalkalmazás kezelése – áttekintés lapon, különösen is lépjen a **[Alkalmazásbeállítások](#settings)** és **[platformfunkciók](#platform-features)**.
 
-![A funkció áttekintése az Azure Portalon.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
+## <a name="settings"></a>nastavení aplikace
 
-A **beállítások** lapon látható, amelyen frissítheti a függvényalkalmazás által használt funkciók futtatókörnyezet verziójának. Emellett akkor is, a gazdagép kulcsokat használt HTTP-hozzáférés korlátozása a függvények által az függvényalkalmazás üzemeltetett kezelheti.
+A **Alkalmazásbeállítások** lap megőrzi a függvényalkalmazás által használt beállításokat.
 
-Functions támogatja az üzemeltető Használatalapú és App Service-futtatási csomag. További információkért lásd: [válassza ki a megfelelő service-csomag az Azure Functions](functions-scale.md). A Használatalapú csomag jobb kiszámíthatóbbá funkciók lehetővé teszi, hogy GB-másodpercben a napi használati kvóta beállításával korlátozhatja a platform használatát. A napi használati kvóta elérésekor a rendszer leállítja a függvényalkalmazást. Lehet, hogy újra engedélyezni az ugyanabban a környezetben, mint a napi költségkvóta létrehozó egy függvényalkalmazást a költségkeret kvóta elérése miatt leállt. Tekintse meg a [Azure Functions díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/functions/) számlázással kapcsolatos részletekért.   
+![Függvényalkalmazás beállításai az Azure Portalon.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-## <a name="platform-features-tab"></a>Platform szolgáltatásai lapon
+Ezek a beállítások titkosítva tárolódnak, és ki kell választania **értékek megjelenítése** értékeit a portálon.
+
+Egy beállítás hozzáadásához válassza **új Alkalmazásbeállítás** , és adja hozzá az új kulcs-érték pár.
+
+[!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
+
+Egy függvényalkalmazás helyileg fejlesztésekor ezeket az értékeket a local.settings.json soubor projektu karbantartása.
+
+## <a name="platform-features"></a>A platform szolgáltatásai
 
 ![Függvény app platform szolgáltatásai lapon.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
 
@@ -46,7 +54,6 @@ A függvényalkalmazások futnak, és karbantartása, az Azure App Service platf
 Ez a témakör a következő App Service-szolgáltatások az Azure Portalon, amelyek hasznosak a Functions összpontosít:
 
 + [Az App Service editor](#editor)
-+ [nastavení aplikace](#settings) 
 + [Console](#console)
 + [Speciális eszközök (Kudu)](#kudu)
 + [Központi telepítési beállítások](#deployment)
@@ -63,14 +70,6 @@ Az App Service-beállításokkal kapcsolatos további információkért lásd: [
 | ![A függvényalkalmazás az App Service editor.](./media/functions-how-to-use-azure-function-app-settings/function-app-appsvc-editor.png)  | Az App Service editor egy speciális a portálon szerkesztő, amely a JSON konfigurációs fájloknak és a jelenlegi funkcionalitása kódfájlok módosításához használhatja. Ezzel a művelettel elindítja egy külön böngészőlapon, egy alapszintű szerkesztővel. Ez lehetővé teszi, hogy a Git-tárház integrálása, futtatása és a kódok hibakeresése és módosíthatja a függvényalkalmazás-beállításokat. A szerkesztő a függvények az alapértelmezett függvény panelen képest bővített fejlesztési környezetet biztosít.    |
 
 ![Az App Service editor](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
-
-### <a name="settings"></a>nastavení aplikace
-
-| | |
-|-|-|
-| ![Függvényalkalmazás alkalmazás beállításai.](./media/functions-how-to-use-azure-function-app-settings/function-app-application-settings.png) | Az App Service-ben **Alkalmazásbeállítások** panel, ahol konfigurálhatja és kezelheti a keretrendszer-verziókat, távoli hibakeresés, Alkalmazásbeállítások és kapcsolati karakterláncokat. A függvényalkalmazás és az egyéb Azure- és külső szolgáltatások integrálása, ezeket a beállításokat Itt módosíthatja. Törli a beállítást, görgessen jobbra, és válassza a **X** ikonra a jobb végén a sor (az alábbi ábrán nem látható).
-
-![Alkalmazásbeállítások konfigurálása](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-settings.png)
 
 ### <a name="console"></a>Konzol
 

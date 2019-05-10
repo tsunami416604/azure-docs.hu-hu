@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b39d9788372fb0f682bc1e5b737542b400dd4035
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 43ca5bbfd789c1c41826c9a13a0030b80c72d4bc
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919712"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510659"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -229,7 +229,7 @@ Hozzon létre egy új frissítéstelepítést, jelölje be **frissítések közp
 | Tulajdonság | Leírás |
 | --- | --- |
 | Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
-|Operációs rendszer| Linux vagy Windows|
+|Operációs rendszer:| Linux vagy Windows|
 | Csoport frissítése |Azure-beli gépek előfizetés, erőforráscsoport, helyek és címkék felvenni az üzembe helyezés az Azure-beli virtuális dinamikus csoportot hozhat létre kombinációja alapján lekérdezés definiálása. </br></br>A nem Azure-gépek esetében válassza ki a meglévő mentett keresést jelöljön ki egy csoportot a nem Azure-beli gépek tartalmazza a központi telepítésben lévő. </br></br>További tudnivalókért lásd: [dinamikus csoportok](automation-update-management.md#using-dynamic-groups)|
 | Frissítendő gépek |Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> Számítógépcsoportok létrehozását az Azure Monitor naplóira különböző módszereivel kapcsolatos további információkért lásd: [számítógépcsoportokat az Azure Monitor naplóira](../azure-monitor/platform/computer-groups.md) |
 |Frissítési besorolások|Válassza ki az összes szükséges|
@@ -281,7 +281,7 @@ Az alábbi táblázatok sorolják fel a frissítési besorolások az Update Mana
 |Kumulatív frissítések     | Az egyszerű telepítés együtt csomagolt gyorsjavítások összesített csoportja.        |
 |Funkciócsomagok     | Termékkiadáson kívül terjesztett új termékfunkciók.        |
 |Szervizcsomagok     | Gyorsjavítások alkalmazáshoz összesített csoportja.        |
-|Definíciófrissítések     | Vírus vagy egyéb definíciós fájlok frissítése.        |
+|A definíciók frissítései     | Vírus vagy egyéb definíciós fájlok frissítése.        |
 |Eszközök     | Segédprogramok vagy funkciók teljes egy vagy több feladatot.        |
 |Frissítések     | Egy alkalmazás vagy a jelenleg telepített fájl frissítése.        |
 
@@ -583,8 +583,8 @@ Ezek a csoportok lekérdezéshez, amikor megkezdődik egy központi telepítést
 
 * Előfizetés
 * Erőforráscsoportok
-* Helyek
-* Címkék
+* Helyszínek
+* Tags
 
 ![Csoportok kiválasztása](./media/automation-update-management/select-groups.png)
 
@@ -634,7 +634,7 @@ Azonban az Update Management előfordulhat, hogy továbbra is jelenti, hogy a g�
 
 Frissítések besorolás szerint üzembe helyezése beépített a CentOS nem működik. Megfelelően telepíteni a frissítéseket a CentOS, válassza ki az összes besorolásokat frissítések alkalmazásához. A SUSE kiválasztásával *csak* más frissítéseket, a besorolás vonhat néhány biztonsági frissítések is, ha a biztonsági frissítések telepítve kapcsolódnak a zypper használatával (Csomagkezelő), vagy annak függőségeit először szükség. Ez a viselkedés zypper korlátozva. Bizonyos esetekben a szükséges futtassa újra a frissítések telepítését. Győződjön meg arról, hogy a frissítés naplóban.
 
-## <a name="remove-a-vm-for-update-management"></a>Az Update Management a virtuális gép eltávolítása
+## <a name="remove-a-vm-from-update-management"></a>Az Update Management a virtuális gép eltávolítása
 
 Az Update Management egy virtuális gép eltávolítása:
 

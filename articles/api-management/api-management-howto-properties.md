@@ -27,16 +27,16 @@ Minden API Management-szolgáltatáspéldány tulajdonságok gyűjteménye, kulc
 
 | Attribútum | Típus | Leírás |
 | --- | --- | --- |
-| Megjelenített név |string |Alfanumerikus sztring, amellyel hivatkozni lehet a tulajdonságra a szabályzatokban. |
-| Érték |string |A tulajdonság értéke. Nem lehet üres vagy állhatnak csak térközökből. |
-|Titkos|logikai|Meghatározza, hogy az érték egy titkos kulcs-e, és a rendszer titkosítsa-e.|
+| Display name |string |Alfanumerikus sztring, amellyel hivatkozni lehet a tulajdonságra a szabályzatokban. |
+| Value |string |A tulajdonság értéke. Nem lehet üres vagy állhatnak csak térközökből. |
+|Secret|logikai|Meghatározza, hogy az érték egy titkos kulcs-e, és a rendszer titkosítsa-e.|
 | Tags |sztringek tömbje |Nem kötelező, címkék, akkor használható a tulakdonságlista szűréséhez. |
 
 ![Névvel ellátott értékek](./media/api-management-howto-properties/named-values.png)
 
 Tulajdonságértékek tartalmazhat szövegkonstansok és [házirend-kifejezések](/azure/api-management/api-management-policy-expressions). Például értékét `ExpressionProperty` egy házirend-kifejezés, amely az aktuális dátumot és időt tartalmazó karakterláncot ad vissza. A tulajdonság `ContosoHeaderValue` egy titkos kulcsot van megjelölve, ezért nem jelenik meg az értékét.
 
-| Name (Név) | Érték | Titkos | Tags |
+| Name (Név) | Value | Secret | Tags |
 | --- | --- | --- | --- |
 | ContosoHeader |TrackingId |False (Hamis) |Contoso |
 | ContosoHeaderValue |•••••••••••••••••••••• |True (Igaz) |Contoso |

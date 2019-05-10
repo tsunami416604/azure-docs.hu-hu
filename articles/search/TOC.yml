@@ -131,7 +131,7 @@
           items:
             - name: Javaslattevő létrehozása
               href: index-add-suggesters.md
-            - name: 'Példák (javaslatok, automatikus kiegészítés)'
+            - name: Javaslatok vagy automatikus kiegészítés hozzáadása
               href: search-autocomplete-tutorial.md
         - name: Szinonimák
           items:

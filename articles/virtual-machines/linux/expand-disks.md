@@ -15,19 +15,19 @@ ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 737c72e6225cdfc9fdeec59810ffd9100c48d1ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4113d582647b5bea86980824714936d24dafc870
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61305117"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511148"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Bontsa ki a virtuális merevlemezek egy Linux rendszerű virtuális gépen az Azure CLI-vel
 
 Ez a cikk ismerteti, hogyan bővít ki egy Linux rendszerű virtuális gépek (VM) az Azure CLI használatával felügyelt lemezeket. Is [adatlemezek hozzáadása](add-disk.md) további tárterületet biztosít terület, ekkor is bővítheti már meglévő adatlemez. Az alapértelmezett virtuális merevlemezt az operációs rendszer (OS) mérete általában 30 GB-os az Azure-beli Linuxos virtuális gépre. 
 
 > [!WARNING]
-> Mindig ügyeljen arra, hogy a fájlrendszer állapota kifogástalan, és győződjön meg arról, az adatok biztonsági lemezre átméretezési műveletek végrehajtása előtt. További információkért lásd: [az Azure-ban a Linux rendszerű virtuális gépek biztonsági mentése](tutorial-backup-vms.md).
+> Mindig győződjön meg arról, hogy a fájlrendszer kifogástalan állapotban van, a lemez partíció táblatípus támogatja az új méretét, és győződjön meg arról, az adatok biztonsági lemezre átméretezési műveletek végrehajtása előtt. További információkért lásd: [az Azure-ban a Linux rendszerű virtuális gépek biztonsági mentése](tutorial-backup-vms.md). 
 
 ## <a name="expand-an-azure-managed-disk"></a>Egy felügyelt Azure-lemez kibontása
 Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az-login).

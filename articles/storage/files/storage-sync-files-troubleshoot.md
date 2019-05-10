@@ -2,20 +2,20 @@
 title: Az Azure File Sync hibaelhárítása |} A Microsoft Docs
 description: Az Azure File Sync gyakori hibáinak elhárítása.
 services: storage
-author: roygara
+author: jeffpatt24
 ms.service: storage
 ms.topic: article
 ms.date: 01/31/2019
-ms.author: rogarana
+ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e399566a67161219e1d778ba1c6f874f7cede251
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 2893960c3351b1f8a5caf0c69ca961851528007d
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190085"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510843"
 ---
-# <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
+# <a name="troubleshoot-azure-file-sync"></a>Azure File Sync – hibaelhárítás
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
 
 Ez a cikk célja, hibakeresésre és az Azure File Sync üzembe helyezéssel előforduló problémák megoldására. Azt is ismertetjük, hogyan fontos naplók gyűjtését a rendszer, ha a probléma egy mélyebb vizsgálatra szükség. Ha nem látja a választ a kérdésére, lépjen kapcsolatba velünk (a eszkalálásáról rendelésben) a következő csatornákon keresztül:
@@ -84,14 +84,14 @@ Ha az üzenet és az Azure-fájlmegosztás jelenleg nem használja a felhőbeli 
 Ez a probléma akkor fordul elő, ha a felhasználó fiókja nem rendelkezik megfelelő jogosultsággal a felhőbeli végpont létrehozásához. 
 
 Felhőbeli végpont létrehozása, a felhasználói fiókot a következő Microsoft Authorization engedélyekkel kell rendelkeznie:  
-* Olvasás: Szerepkör-definíció lekérése
+* Olvasás: Szerepkör-definíció beolvasása
 * Írás: Egyéni szerepkör-definíció létrehozása vagy módosítása
-* Olvasás: Szerepkör-kijelölés lekérése
+* Olvasás: Szerepkör-hozzárendelés beolvasása
 * Írás: Szerepkör-hozzárendelés létrehozása
 
 A következő beépített szerepkör rendelkezik a szükséges Microsoft Authorization engedélyekkel:  
 * Tulajdonos
-* Felhasználói hozzáférés rendszergazdája
+* Felhasználói hozzáférés adminisztrátora
 
 Az határozza meg, hogy a felhasználói fiók szerepkör rendelkezik-e a szükséges engedélyek:  
 1. Az Azure Portalon válassza ki a **erőforráscsoportok**.
@@ -153,7 +153,7 @@ A kiszolgálóvégpontok nem lehetséges, hogy jelentkezzen szinkronizálási te
 > [!Note]  
 > Ha a kiszolgáló állapota, a regisztrált kiszolgálók panelen "Jelenik meg a kapcsolat nélküli", hajtsa végre a leírt lépéseket a [kiszolgálói végpont rendelkezik egy "Nincs tevékenység" vagy "Függő" állapotát, és a regisztrált kiszolgálók panelen a kiszolgáló állapota "Offline jelenik meg" ](#server-endpoint-noactivity) szakaszban.
 
-## <a name="sync"></a>Sync
+## <a name="sync"></a>Szinkronizálás
 <a id="afs-change-detection"></a>**Ha Létrehoztam egy fájlt közvetlenül a saját Azure-fájlmegosztást az SMB-n keresztül, vagy a portálon keresztül, mennyi ideig tart a fájl szinkronizálása a szinkronizálási csoport kiszolgálóira?**  
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
@@ -166,7 +166,7 @@ Minden egyes szinkronizálási csoportban részletezhető le az egyes kiszolgál
 
 ![Az Azure portal képernyőképe](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
-# <a name="servertabserver"></a>[Kiszolgáló](#tab/server)
+# <a name="servertabserver"></a>[Server](#tab/server)
 Nyissa meg a kiszolgáló telemetrianaplók, találja az eseménynaplóban, megjelenítő `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`. Esemény 9102 felel meg egy befejezett szinkronizálási munkamenet; a szinkronizálási legújabb állapot keresse meg a legutóbbi esemény azonosítója 9102. SyncDirection arra kéri, ha a munkamenet volt egy fel- vagy letöltést. Ha a HResult 0, a szinkronizálási munkamenet sikeresen befejeződött. Egy nem nulla értékű HResult azt jelenti, hogy hiba történt; szinkronizálás során Lásd az alábbi gyakori hibák listáját. Ha a PerItemErrorCount 0-nál nagyobb, akkor ez azt jelenti, hogy egyes fájlok vagy mappák nem szinkronizált megfelelően. Lehetséges, hogy egy HResult 0, de egy PerItemErrorCount 0-nál nagyobb legyen.
 
 Az alábbi, a sikeres feltöltése egy példát. Az áttekinthetőség minden egyes 9102 eseményben szereplő értékek csak néhányat az alábbiakban láthatók. 
@@ -201,7 +201,7 @@ Néha szinkronizálási munkamenetek teljes sikertelen, vagy egy nem nulla ért�
 # <a name="portaltabportal1"></a>[Portál](#tab/portal1)
 A szinkronizálási csoport nyissa meg a szóban forgó kiszolgálói végpontot, és tekintse meg a szinkronizálási tevékenység szakaszt a fájlok fel- vagy letölthető a jelenlegi szinkronizálási munkamenet száma. Vegye figyelembe, hogy késni fog ez az állapot szerint körülbelül 5 percet, és ha kellően kicsire ezen az időn belül befejezni a szinkronizálási munkamenet, nem jelenthető-e a portálon. 
 
-# <a name="servertabserver"></a>[Kiszolgáló](#tab/server)
+# <a name="servertabserver"></a>[Server](#tab/server)
 Keresse meg a legutóbbi 9302 telemetriát az Eseménynapló a kiszolgálón (a eseménynaplót, nyissa meg az alkalmazások és szolgáltatások Logs\Microsoft\FileSync\Agent\Telemetry). Az esemény azt jelzi, hogy a szinkronizálási munkamenet jelenlegi állapotát. TotalItemCount azt jelzi, hogy hány fájl van szinkronizálva, hogy AppliedItemCount eddig szinkronizált fájlok és PerItemErrorCount, amelyek nem (lásd lent ez kezelése) szinkronizálási fájlok száma.
 
 ```
@@ -223,7 +223,7 @@ Egy adott szinkronizálási csoport minden egyes kiszolgáló esetén ellenőriz
 - A szinkronizálási tevékenység mutatja nagyon kevés vagy a hátralévő szinkronizálási fájlokat.
 - A fájlok nem szinkronizálja a mező értéke 0, a fel- és letöltést.
 
-# <a name="servertabserver"></a>[Kiszolgáló](#tab/server)
+# <a name="servertabserver"></a>[Server](#tab/server)
 Tekintse meg a befejezett szinkronizálási munkamenetek, amelyek 9102 esemény, a telemetriai adatok eseménynaplójában kiszolgálónként megjelölve (az eseménynaplót, lépjen a `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`). 
 
 1. Bármelyik megadott kiszolgálón szeretné ellenőrizze, hogy a legújabb feltöltés, és töltse le a munkamenet sikeresen befejeződött. Ehhez ellenőrizze, hogy a HResult és PerItemErrorCount fel- és letöltést a 0 (a SyncDirection mezőben azt jelzi, hogy egy adott munkamenet-fel- vagy letöltést munkamenet). Fontos megjegyezni, hogy ha nem látja a nemrégiben befejezett szinkronizálási munkamenet, valószínűleg egy szinkronizálási munkamenet várható, ha csak hozzáadni vagy módosítani egy nagy mennyiségű adatot folyamatban van.
@@ -730,7 +730,7 @@ if ($fileShare -eq $null) {
 
     Ha **hibrid File Sync szolgáltatásbeli** nem szerepelnek a listán, hajtsa végre az alábbi lépéseket:
 
-    - Kattintson a **Hozzáadás** parancsra.
+    - Kattintson a **Hozzáadás**lehetőségre.
     - Az a **szerepkör** mezőben válassza **olvasó és adatelérés**.
     - Az a **kiválasztása** mezőbe írja be a **hibrid File Sync szolgáltatásbeli**, válassza ki a szerepkört, és kattintson a **mentése**.
 

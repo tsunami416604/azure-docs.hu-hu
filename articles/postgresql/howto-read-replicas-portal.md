@@ -1,22 +1,24 @@
 ---
-title: Kezelése olvasható replikák az Azure Database for postgresql-hez az Azure Portalról
-description: Ismerje meg, hogyan kezelhető az Azure Database for PostgreSQL, olvassa el a replikákat az Azure Portalról.
-author: WenJason
-ms.author: v-jay
+title: Olvasási replikák kezelése az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure Portalról
+description: Megtudhatja, hogyan kezelheti olvasható replikákat, Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure Portalról.
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 04/01/2019
-ms.date: 04/22/2019
-ms.openlocfilehash: bf1fb1c1343173949ecb6348284cb537282b277b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 87371f91d9ea1f556d0f78beebd73b8a28977b71
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420814"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510387"
 ---
-# <a name="create-and-manage-read-replicas-from-the-azure-portal"></a>Hozzon létre, és olvasási replikák kezelése az Azure Portalról
+# <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Létrehozása és kezelése olvasható replikák az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure Portalról
 
 Ebből a cikkből megismerheti, hogyan hozhat létre és kezelése olvasható replikák az Azure Database for postgresql-hez az Azure Portalról. Olvasási replikák kapcsolatos további információkért tekintse meg a [áttekintése](concepts-read-replicas.md).
+
+> [!IMPORTANT]
+> Olvasási replikát hozhat létre, mint a fölérendelt kiszolgáló ugyanabban a régióban, vagy bármely más Azure-régióban a választott. Régiók közötti replikáció jelenleg nyilvános előzetes verzióban érhető el.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -59,9 +61,15 @@ Olvasási replika létrehozásához kövesse az alábbi lépéseket:
 
    ![A replika hozzáadása](./media/howto-read-replicas-portal/add-replica.png)
 
-4. Adja meg az olvasási-replika nevét. Válassza ki **OK** , a replika létrehozásának megerősítése.
+4. Adja meg az olvasási-replika nevét. 
 
-   ![A replika neve](./media/howto-read-replicas-portal/name-replica.png) 
+    ![A replika neve](./media/howto-read-replicas-portal/name-replica.png)
+
+5. Válasszon egy helyet a replika számára. Létrehozhat egy replikát bármelyik Azure-régióban. Az alapértelmezett hely a ugyanaz, mint a főkiszolgáló.
+
+    ![Válasszon ki egy helyet](./media/howto-read-replicas-portal/location-replica.png)
+
+6. Válassza ki **OK** , a replika létrehozásának megerősítése.
 
 A kiszolgáló ugyanazt a konfigurációt a master létrehoztak egy replikát. Replika létrehozása után több beállítások egymástól függetlenül lehet módosítani a főkiszolgálóról: számítási generáció, virtuális maggal, tárolási és biztonsági másolat megőrzési ideje. A tarifacsomag egymástól függetlenül is módosítható, vagy az alapszintű csomag kivételével.
 

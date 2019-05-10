@@ -10,12 +10,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 201ee251b195845e33ed3829be8540664811f2ab
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c9ebacd8caf992874969106df58531538ea399ed
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025287"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510436"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Mi az Azure Machine Learning szolgáltatás?
 
@@ -38,7 +38,7 @@ Ismerje meg, és előkészíti az adatokat, betanítását és tesztelni tudtuk 
 
 ## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Mire használhatom az Azure Machine Learning szolgáltatást?
 
-Használatával a <a href="https://aka.ms/aml-sdk" target="_blank">Azure Machine Learning Python SDK</a> nyílt forráskódú Python-csomagokat, vagy használja a [vizuális felhasználói felületet (előzetes verzió)](ui-quickstart-run-experiment.md), létrehozhat és rendkívül pontos gépi tanulási és deep-learning modellek Azure Machine Learning-szolgáltatások munkaterület saját magának.
+Használja a <a href="https://aka.ms/aml-sdk" target="_blank">Azure Machine Learning Python SDK</a> nyílt forráskódú Python-csomagokat, vagy használja a [vizuális felhasználói felületet (előzetes verzió)](ui-quickstart-run-experiment.md) hozhat létre, és rendkívül pontos gépi tanulási és deep-learning modellek betanításához Saját munkaterület az Azure Machine Learning-szolgáltatások.
 
 Választhat számos machine learning összetevő elérhető a nyílt forráskódú Python-csomagokat, mint például <a href="https://scikit-learn.org/stable/" target="_blank">Scikit további</a>, <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>, <a href="https://pytorch.org" target="_blank">PyTorch</a>, és <a href="https://mxnet.io" target="_blank">MXNet</a>.
 
@@ -80,7 +80,7 @@ Az Azure Machine Learning szolgáltatás mindkét SDK-kat biztosít **- és -** 
 
 Íme egy gyors összehasonlítása.
 
-|| Machine Learning Studio | Azure Machine Learning service:<br/>Vizuális felhasználói felületet|
+|| Machine Learning Studio | Azure Machine Learning service:<br/>Vizuális felület|
 |---| --- | --- |
 || Általánosan elérhető (GA) | Előzetes verzióban|
 |Modulok interfész| Számos | A kezdeti beállítás népszerű-modulok|
@@ -93,7 +93,7 @@ Próbálja ki a vizuális felhasználói felületet (előzetes verzió) az [a r�
 > [!NOTE]
 > A Studióban létrehozott modelleket használva nem kell telepíteni, vagy az Azure Machine Learning szolgáltatás kezeli. Modellek létrehozása és telepítése a szolgáltatás vizuális felületen felügyelhető, az Azure Machine Learning szolgáltatás munkaterületén.
 
-## <a name="free-trial"></a>Ingyenes próbaidőszak
+## <a name="free-trial"></a>Ingyenes próba
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
@@ -106,8 +106,6 @@ Azure-szolgáltatásokra elkölthető krediteket kap. A kreditek felhasználása
 - Kövesse a részletes oktatóanyagok: 
   + [Betanításához egy kép osztályozási modell Azure Machine Learning szolgáltatással](tutorial-train-models-with-aml.md) 
   + [Adatok előkészítése, és automatizált Machine learning automatikus – train egy regressziós modell segítségével](tutorial-data-prep.md)
-
-- Használja a [az Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) az adatok előkészítéséhez.
 
 - Ismerje meg a [gépi tanulási folyamatokat](/azure/machine-learning/service/concept-ml-pipelines) a gépi tanulási forgatókönyvek létrehozásához, optimalizálásához és felügyeletéhez.
 

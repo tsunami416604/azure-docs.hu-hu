@@ -442,6 +442,9 @@
             - name: Átfedésmentes ablak
               href: /stream-analytics-query/tumbling-window-azure-stream-analytics
               maintainContext: true
+            - name: Ablakkezelési aggregátumfüggvények
+              href: /stream-analytics-query/windows-azure-stream-analytics
+              maintainContext: true
     - name: Adattípusok
       items:
         - name: Adattípusok áttekintése
