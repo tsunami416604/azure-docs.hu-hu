@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: 2ab8f272fc264f153144803be772d381c1780512
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 7f850f309034d128efef89ea842db41d35b8491e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143272"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235736"
 ---
 # <a name="sql-database-serverless-preview"></a>Az SQL Database kiszolgáló nélküli (előzetes verzió)
 
@@ -42,7 +42,7 @@ Számítási erőforrások alapján számoljuk el a használt virtuális maggal 
 - A számlázás a minimális számítási minimális virtuális maggal és a minimális memória alapul.
 - Az adatbázis fel van függesztve, amíg csak díjszabása vonatkozik.
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
 
 Kiszolgáló nélküli ár – teljesítmény arányt beül használati mintákat, amelyek megengedhet számítási bemelegítési némi késedelem után inaktív időszakai önálló adatbázisokat optimalizálva. A kiépített számítási kapacitás ár – teljesítmény arányt önálló vagy készletezett adatbázisokat, amely folyamatos internetkapcsolatot igénylő számítási bemelegítési az késleltetések magasabb átlagos kihasználtsága optimalizálva.
 
@@ -52,7 +52,7 @@ Az alábbi táblázat összehasonlítja a kiszolgáló nélküli számítási ka
 |---|---|---|
 |**Tipikus használati eset**|Az inaktív időszakokat jelentésekkel összekeveredett beül, előre nem látható használati adatbázis|Adatbázisok és rugalmas készletek az több normál használat|
 |**Teljesítmény energiabefektetést igénylő felügyelet**|Alacsonyabb|Jobb|
-|**Számítás méretezése**|Automatikus|Kézi|
+|**Számítás méretezése**|Automatikus|Manuális|
 |**COMPUTE válaszideje**|Alacsonyabb inaktív időszakokat követően|Azonnali|
 |**A számlázás részletessége**|Másodpercenként|/ óra|
 |
@@ -102,7 +102,7 @@ Autoresume akkor aktiválódik, ha az alábbi feltételek bármelyike igaz bárm
 |Szolgáltatás|Autoresume eseményindító|
 |---|---|
 |Hitelesítés és engedélyezés|Bejelentkezés|
-|Fenyegetések észlelése|Az adatbázis vagy a kiszolgáló szintjén fenyegetésészlelési beállításokat engedélyezése vagy letiltása<br>Az adatbázis vagy a kiszolgáló szintjén fenyegetésészlelési beállításokat módosítása|
+|Veszélyforrások detektálása|Az adatbázis vagy a kiszolgáló szintjén fenyegetésészlelési beállításokat engedélyezése vagy letiltása<br>Az adatbázis vagy a kiszolgáló szintjén fenyegetésészlelési beállításokat módosítása|
 |Adatfelderítés és besorolás|Hozzáadása, módosítása, törlése vagy bizalmassági címke megtekintése|
 |Naplózás|Naplózási bejegyzések megtekintésére.<br>Frissítés és a naplózási házirend megtekintése|
 |Adatmaszkolás|Hozzáadása, módosítása, törlése vagy adatmaszkolási szabályok megtekintése|
@@ -114,7 +114,7 @@ Autoresume akkor aktiválódik, ha az alábbi feltételek bármelyike igaz bárm
 |Egyes adatbázis metaadatainak módosítása|Új adatbázis-címkék hozzáadása<br>Változó maximális virtuális maggal, min virtuális maggal, autopause késleltetés|
 |SQL Server Management Studio (SSMS)|18-as verzió SSMS használatával, és nyissa meg egy új lekérdezési ablak bármilyen adatbázishoz a kiszolgáló ugyanazon a kiszolgálón található automatikus szüneteltetve adatbázisokat folytatódik. Ez a viselkedés nem jelentkezik, ha a verzió 17.9.1 SSMS használatával az IntelliSense használatával – kikapcsolva.|
 
-### <a name="connectivity"></a>Kapcsolatok
+### <a name="connectivity"></a>Hálózati kapcsolat
 
 Ha egy kiszolgáló nélküli adatbázis fel van függesztve, majd az első bejelentkezés fog folytatni az adatbázis és hibát ad vissza arról, hogy az adatbázis nem érhető el. Az adatbázis folytatása után a bejelentkezési kapcsolat létrehozásához meg kell ismételni. Adatbázis-kapcsolat újrapróbálkozási logikát ügyfelek nem kell módosítani.
 
@@ -139,9 +139,9 @@ A következő szolgáltatások nem támogatják a autopausing és autoresuming. 
 
    |Szolgáltatásszint|Számítási mérete|
    |---|---|
-   |Általános rendeltetés|GP_S_Gen5_1|
-   |Általános rendeltetés|GP_S_Gen5_2|
-   |Általános rendeltetés|GP_S_Gen5_4|
+   |Általános célú|GP_S_Gen5_1|
+   |Általános célú|GP_S_Gen5_2|
+   |Általános célú|GP_S_Gen5_4|
 
 2. Szükség esetén adja meg a minimális virtuális maggal és autopause késleltetési módosíthatja az alapértelmezett értékeket. Az alábbi táblázat az elérhető értékeket a paraméterekhez.
 
@@ -227,7 +227,7 @@ A felhasználói erőforráskészlethez van a belső egy adatbázist, független
 
 ### <a name="metrics"></a>Mérőszámok
 
-|Entitás|Metrika|Leírás|Egység|
+|Entitás|Metrika|Leírás|Mértékegységek|
 |---|---|---|---|
 |Alkalmazáscsomag|app_cpu_percent|Virtuális magra jogosult, használja az alkalmazás az alkalmazás számára engedélyezett maximális virtuális magok viszonyított aránya.|Százalék|
 |Alkalmazáscsomag|app_cpu_billed|A compute használatáért kell az alkalmazást a jelentési időszak során mennyisége. Ebben az időszakban fizetett összeg, amely az Ez a mérőszám és a virtuális mag egységár.<br>Ez a metrika az értékeket határozza meg a CPU maximális használt idővel összesíti, és a másodpercenként felhasznált memória.<br>Ha a felhasznált mennyiség kisebb, mint a beállított kiépítette a min virtuális maggal és a minimális memória minimális mérete, kiépített minimálisan történik.  Annak érdekében, hogy a számlázási célból memória összehasonlítás CPU, memória van normalizált egységekbe a virtuális magok által a memória mennyiségét rescaling 3 GB-tal GB / virtuális mag.|virtuális mag másodperc|

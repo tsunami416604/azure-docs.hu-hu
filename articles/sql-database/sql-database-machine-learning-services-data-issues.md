@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 069a2a5b3b26bf517b57034f05ab7080ab392319
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01d3af14963e92393d34a952bddc8097b7b08f18
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60702520"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232610"
 ---
 # <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>R- és SQL adatok használata Azure SQL Database, Machine Learning Services (előzetes verzió)
 
@@ -194,7 +194,7 @@ Most már R eredményezi egy olyan értéket ad vissza.
 |---|
 |1542|
 
-Hogy miért? Ebben az esetben a két argumentumot, ugyanolyan hosszúságú vektorok is lehet kezelni, mivel az R értéket ad vissza a belső termék mátrix.  Ez az a várt viselkedés lineáris algebra szabályainak megfelelően. Azonban ez sikerült problémákat okozhat, ha az alsóbb rétegbeli alkalmazás soha nem módosíthatja a kimeneti sémával vár!
+Miért? Ebben az esetben a két argumentumot, ugyanolyan hosszúságú vektorok is lehet kezelni, mivel az R értéket ad vissza a belső termék mátrix.  Ez az a várt viselkedés lineáris algebra szabályainak megfelelően. Azonban ez sikerült problémákat okozhat, ha az alsóbb rétegbeli alkalmazás soha nem módosíthatja a kimeneti sémával vár!
 
 ## <a name="merge-or-multiply-columns-of-different-length"></a>Egyesítse vagy szorozza meg a különböző hosszúságú oszlopok
 
@@ -222,10 +222,10 @@ Töltse ki az adathalmaz, az R megismétli az elemeket, ahányszor szükséges e
     
 |*Col2*|*Col3*|
 |----|----|
-|1|1|
+|1.|1.|
 |10|2|
 |100|3|
-|1|4|
+|1.|4|
 |10|5|
 |100|6|
 
@@ -300,4 +300,4 @@ Még ezeket rövid példákból láthatja szükség az adatok átalakítása a h
 - Hajtható végre explicit típuskonverziók szükség szerint, ha a bemeneti adatok elkerülheti a meglepetéseket.
 - Kerülje a megadásának oszlopait, amelyek hibákat okozhatnak, és nem hasznos, ha modellezési adatok (például a GUID-AZONOSÍTÓI vagy frissíthetők).
 
-A támogatott és nem támogatott R-adattípusok további információkért lásd: [R-kódtárak és adattípusok](/sql/advanced-analytics/r/r-libraries-and-data-types.md).
+A támogatott és nem támogatott R-adattípusok további információkért lásd: [R-kódtárak és adattípusok](/sql/advanced-analytics/r/r-libraries-and-data-types).

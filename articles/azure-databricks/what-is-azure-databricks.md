@@ -1,21 +1,21 @@
 ---
 title: Mi az az Azure Databricks?
-description: Ismerje meg az Azure Databricks szolgáltatást, valamint hogy a Databricks hogyan vezeti be a Spark-keretrendszert az Azure-ba. Az Azure Databricks a Microsoft Azure Cloud Services platformra optimalizált Apache Spark-alapú elemzési platform.
+description: További tudnivalók az Azure Databricks és az hogyan vezeti Spark databricksen az Azure-bA. Az Azure Databricks a Microsoft Azure Cloud Services platformra optimalizált Apache Spark-alapú elemzési platform.
 services: azure-databricks
 author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: overview
-ms.date: 05/29/2018
+ms.date: 05/08/2019
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 01e35ed32be8b28f291cc2be69a8b2d71c3acab2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0864db682141b1d7f8cb0c9ff14c9897fb02fe1b
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60770038"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412749"
 ---
 # <a name="what-is-azure-databricks"></a>Mi az az Azure Databricks?
 

@@ -7,12 +7,12 @@ ms.service: service-health
 ms.topic: landing-page
 ms.date: 03/4/2019
 ms.author: stbaron
-ms.openlocfilehash: cf7084b569e2c90337e475beb9f49563214941d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa00d4b08725eaf4b667fc7b53b225198db95a02
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60506940"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441657"
 ---
 # <a name="azure-service-health-documentation"></a>Azure Service Health dokumentációja
 
@@ -25,6 +25,11 @@ Az **[Azure Service Health](service-health-overview.md)** személyre szabott át
 Az **[Azure Resource Health](resource-health-overview.md)** az egyes felhőalapú erőforrások, például egy adott virtuálisgép-példány állapotával kapcsolatos információkat biztosít. Az Azure Monitor használatával a riasztásokat úgy is konfigurálhatja, hogy az Ön által használt felhőerőforrások rendelkezésre állásával kapcsolatos változásokról küldjön értesítést. Az Azure Resource Health szolgáltatás és az Azure Monitor értesítéseinek használatával percenként frissülő, teljes körű információkkal rendelkezhet az erőforrások rendelkezésre állására vonatkozóan, és gyorsan felmérheti, hogy egy adott hibát az Ön oldalán felmerülő probléma vagy valamelyik Azure-platform eseménye okoz.
 
 Ezek a szolgáltatások együttesen átfogó képet nyújtanak az Azure állapotáról, az Ön igényeinek legjobban megfelelő részletességgel.
+
+### <a name="watch-an-overview-of-the-azure-status-page-azure-service-health-and-azure-resource-health"></a>Az Azure állapotjelző oldal, az Azure Service Health és az Azure Resource Health áttekintése
+
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OgX6]
+
 
 <ul class="panelContent cardsFTitle">
     <li>

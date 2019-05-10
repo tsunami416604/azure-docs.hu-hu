@@ -58,6 +58,8 @@
       items:
         - name: Adatgyűjtés
           href: security-center-enable-data-collection.md
+        - name: Advanced Data Security az IaaS-hez
+          href: security-center-iaas-advanced-data.md
         - name: Beépített biztonsági szabályzatok
           href: security-center-policy-definitions.md
         - name: E-mail-értesítések
@@ -168,6 +170,8 @@
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
     - name: Szolgáltatási hírek
       href: 'https://azure.microsoft.com/updates/?product=security-center'
+    - name: Funkciók és API kivezetése (2019. július)
+      href: security-center-features-retirement-july2019.md
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel

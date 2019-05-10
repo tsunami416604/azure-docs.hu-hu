@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: b6bcd8afe9bbf58addf3e41173cfd011eddb3ce0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1b760612d8d9a5ed0817ce662ed190f3477cd125
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64927162"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235846"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Hozzon létre egy megosztott lemezkép-katalógus az Azure portal használatával
 
@@ -33,7 +33,7 @@ A katalógus által biztosított teljes szerepköralapú hozzáférés-vezérlé
 
 A megosztott Képkatalógus funkció több erőforrástípusok rendelkezik. A Microsoft fog használatával vagy ezek ebben a cikkben létrehozásához:
 
-| Erőforrás | Leírás|
+| Resource | Leírás|
 |----------|------------|
 | **Felügyelt rendszerkép** | Ez a alapvető-önmagában, vagy létrehozásához használt lemezkép egy **lemezkép verziója** egy rendszerkép-katalógusában. Felügyelt lemezképek általánosított virtuális gépek jönnek létre. Egy felügyelt rendszerképet egy speciális típusú virtuális Merevlemezt, amely használható, hogy több virtuális gép, és most már használható létrehozásához megosztott kép verzió. |
 | **Lemezkép-katalógusában** | Az Azure piactéren, például egy **lemezkép-katalógusában** egy adattár a kezelése és megosztása a rendszerképeket, de Ön szabályozza, ki férhet. |
@@ -41,9 +41,11 @@ A megosztott Képkatalógus funkció több erőforrástípusok rendelkezik. A Mi
 | **Lemezkép verziója** | Egy **lemezkép verziója** meg használni a virtuális gép létrehozása katalógus használata során. Kép különböző verzióinak rendelkezhet saját környezetéhez szükséges módon. Használata esetén, egy felügyelt rendszerképet, például egy **lemezkép verziója** hozhat létre virtuális Gépet, a rendszerkép verziószámát új lemezeket a virtuális gép létrehozásához használt. Lemezkép verziója többször is használható. |
 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-A példában ez a cikk a végrehajtásához egy meglévő felügyelt kép kell rendelkeznie. Követheti [oktatóanyag: Hozzon létre egy egyéni rendszerképet egy Azure virtuális gépek az Azure PowerShell-lel](tutorial-custom-images.md) hozhat létre egyet, ha szükséges. Ha ez a cikk végighalad cserélje le az erőforráscsoportot és a virtuális gépek neveit, ahol szükséges.
+A példában ez a cikk a végrehajtásához egy meglévő felügyelt kép kell rendelkeznie. Követheti [oktatóanyag: Hozzon létre egy egyéni rendszerképet egy Azure virtuális gépek az Azure PowerShell-lel](tutorial-custom-images.md) hozhat létre egyet, ha szükséges. Ha a felügyelt rendszerkép egy adatlemezt tartalmaz, a az adatlemez mérete nem lehet több mint 1 TB.
+
+Ha ez a cikk végighalad cserélje le az erőforráscsoportot és a virtuális gépek neveit, ahol szükséges.
 
  
 [!INCLUDE [virtual-machines-common-shared-images-portal](../../../includes/virtual-machines-common-shared-images-portal.md)]

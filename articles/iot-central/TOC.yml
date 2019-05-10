@@ -99,6 +99,10 @@
           href: howto-administer.md
         - name: Kép előkészítése és feltöltése
           href: howto-prepare-images.md
+        - name: Az alkalmazás irányítópultjának konfigurálása
+          href: howto-configure-homepage.md
+        - name: Az alkalmazás felhasználói felületének testreszabása
+          href: howto-customize-ui.md
         - name: Kezelés az Azure Portalról
           href: howto-manage-iot-central-from-portal.md
         - name: Kezelés az Azure CLI-ből
@@ -106,9 +110,7 @@
         - name: Kezelés az Azure PowerShellből
           href: howto-manage-iot-central-from-powershell.md
         - name: Alkalmazás létrehozása és kezelése CSP-ként
-          href: howto-create-and-manage-applications-as-CSP.md
-        - name: Az alkalmazás irányítópultjának konfigurálása
-          href: howto-configure-homepage.md
+          href: howto-create-and-manage-applications-csp.md
     - name: Személyre szabás
       items:
         - name: Saját irányítópultok létrehozása

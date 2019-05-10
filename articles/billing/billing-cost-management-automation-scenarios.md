@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: 0d2b0f2d3fad318ac0152d92fe92614d8dadda1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb7a13d9abcf7c677d51f03df002ea06b543014e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60615875"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232477"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Számlázási és a cost Management Automation-forgatókönyvek
 
@@ -52,7 +52,7 @@ Felügyeleti API-k számos forgatókönyv kapcsolatos költségek és a használ
 | Foglalási javaslatok |                           |                  |           X          |                  |                    |           |
 | Foglalási adatok         |                           |                  |           X          |         X        |                    |           |
 | Foglalási összegzések       |                           |                  |           X          |         X        |                    |           |
-| Használati adatok               |             X             |         X        |           X          |         X        |          X         |     X     |
+| Használat részletei               |             X             |         X        |           X          |         X        |          X         |     X     |
 | Számlázási időszak             |             X             |         X        |           X          |         X        |                    |           |
 | Számlák                    |             X             |         X        |           X          |         X        |                    |           |
 | RateCard                    |             X             |                  |           X          |         X        |          X         |           |
@@ -63,7 +63,7 @@ Felügyeleti API-k számos forgatókönyv kapcsolatos költségek és a használ
 
 ## <a name="api-summaries"></a>API összefoglaló
 
-### <a name="consumption"></a>Használat
+### <a name="consumption"></a>Szolgáltatáshasználat
 Web Direct- és nagyvállalati ügyfelek használhatják az összes a következő API-kat, nincs másként jelölve:
 
 -   [API költségvetése](https://docs.microsoft.com/rest/api/consumption/budgets) (*csak vállalati ügyfelek*): Erőforrások, erőforráscsoportok vagy számlázási mérőszámok költség- és használati költségvetéseket létrehozni. Ha költségvetése létrehozott, konfigurálhatja úgy a riasztásokat, amelyek figyelmeztetik, ha meghaladta meghatározott költségvetés küszöbértékeket. Beállíthatja úgy is fordulhat elő, ha elérte a költségvetési összegek műveleteket.
@@ -85,9 +85,9 @@ Web Direct- és nagyvállalati ügyfelek használhatják az összes a következ�
 -   [Használati API nem minősített](/previous-versions/azure/reference/mt219003(v=azure.100)): Nyers használati adatai olvashatók be, mielőtt az Azure elvégzi az összes szoftverhasználat-mérő/díjszabási.
 
 ### <a name="billing"></a>Számlázás
--   [Számlázási időszak API](https://docs.microsoft.com/rest/api/billing/billingperiods): Határozza meg, hogy egy számlázási időszak elemzése, a számla azonosítók az adott időszak együtt. A számlák API-val számla azonosítók is használhatja.
+-   [Számlázási időszak API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Határozza meg, hogy egy számlázási időszak elemzése, a számla azonosítók az adott időszak együtt. A számlák API-val számla azonosítók is használhatja.
 
--   [A számlák API](https://docs.microsoft.com/rest/api/billing/invoices): Adresa URL Pro stahování beolvasása az adott számlához egy számlázási időszak csak PDF formátumban.
+-   [A számlák API](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices): Adresa URL Pro stahování beolvasása az adott számlához egy számlázási időszak csak PDF formátumban.
 
 ### <a name="enterprise-consumption"></a>Vállalati fogyasztás
 A következő API-k csak a vállalati vannak:
@@ -126,7 +126,7 @@ Ezen API-k alapvetően más adatokat adja meg:
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Mi a különbség a számlák API-t és a használati részletek API-t?
 Ezekkel az API-adja meg az adatokat egy másik nézet:
 
-- A [számla API](https://docs.microsoft.com/rest/api/billing/invoices) a csak a Web Direct ügyfelei számára. A számla alapján az összesített díjak az egyes mérő havi összesített biztosít. 
+- A [számla API](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices) a csak a Web Direct ügyfelei számára. A számla alapján az összesített díjak az egyes mérő havi összesített biztosít. 
 
 - A [használati részletek API](https://docs.microsoft.com/rest/api/consumption/usagedetails) a használat és költségek rekordok részletes áttekintést nyújt a minden nap. A vállalati, és Web Direct ügyfelei is használható.
 

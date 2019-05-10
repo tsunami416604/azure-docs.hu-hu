@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: a6fe5b0452771cd2e618d1a08cb2f4af52e3cc0d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: c55839f7ec4e4c28086912c476a193e31561c3f4
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127760"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234128"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Oktatóanyag: Párhuzamos számítási feladatok futtatása az Azure Batch .NET API használatával
 
@@ -140,7 +140,7 @@ A következő szakaszok a mintaalkalmazást felosztják azokra a lépésekre, am
 
 ### <a name="authenticate-blob-and-batch-clients"></a>Blob- és Batch-ügyfelek hitelesítése
 
-A társított Storage-fiókkal való kommunikációhoz az alkalmazás a .NET-hez készült Azure Storage ügyféloldali kódtárat használja. Ez létrehoz egy hivatkozást a fiókra egy [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) objektummal, és ehhez megosztott kulcsos hitelesítést használ. Ezután létrehoz egy [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient) objektumot.
+A társított Storage-fiókkal való kommunikációhoz az alkalmazás a .NET-hez készült Azure Storage ügyféloldali kódtárat használja. Ez létrehoz egy hivatkozást a fiókra egy [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) objektummal, és ehhez megosztott kulcsos hitelesítést használ. Ezután létrehoz egy [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient) objektumot.
 
 ```csharp
 // Construct the Storage account connection string

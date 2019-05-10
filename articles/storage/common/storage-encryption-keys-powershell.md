@@ -9,12 +9,12 @@ ms.date: 04/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0eeae1451e77d9000c87b1aff7ad73323e74f7ee
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: be876b370cd476bee2af7d90a9f0433fd80de3b4
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154125"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233680"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>Ügyfél által felügyelt kulcsok az Azure Storage-titkosítás a PowerShell konfigurálása
 
@@ -75,7 +75,7 @@ $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination
 
 Alapértelmezés szerint az Azure Storage-titkosítás használja a Microsoft által felügyelt kulcsokkal. Ebben a lépésben konfigurálja az Azure Storage-fiók felhasználó által kezelt kulcsok használata, és adja meg a kulcsot a storage-fiókhoz társít.
 
-Hívás [Set-AzStorageAccount](/powershell/module/az.keyvault/set-azstorageaccount) a tárfiók titkosítási beállításainak frissítése. Ne feledje, hogy zárójelben helyőrzőértékeket cserélje le a saját értékeire és az előző lépéseknél definiált változókat használja.
+Hívás [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) a tárfiók titkosítási beállításainak frissítése. Ne feledje, hogy zárójelben helyőrzőértékeket cserélje le a saját értékeire és az előző lépéseknél definiált változókat használja.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
@@ -88,7 +88,7 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 ## <a name="update-the-key-version"></a>Frissítés a kulcs verziója
 
-Amikor létrehoz egy kulcs új verziója, szüksége frissíteni a tárfiókot, hogy az új verziót használja. Először hívja [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) a kulcs legújabb verziójának beszerzéséhez. Ezután hívja meg [Set-AzStorageAccount](/powershell/module/az.keyvault/set-azstorageaccount) frissíteni a tárfiók titkosítási beállítások használatához a kulcs új verziója, az előző szakaszban látható módon.
+Amikor létrehoz egy kulcs új verziója, szüksége frissíteni a tárfiókot, hogy az új verziót használja. Először hívja [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) a kulcs legújabb verziójának beszerzéséhez. Ezután hívja meg [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) frissíteni a tárfiók titkosítási beállítások használatához a kulcs új verziója, az előző szakaszban látható módon.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c419ee1eec9e451cad835d8b4a56818101dc853a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: d9f814a49924ca95078f3b3decca4f3922c74c2b
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120857"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413663"
 ---
 # <a name="duplicate-detection"></a>Duplikálás észlelése
 
@@ -35,6 +35,9 @@ Az azonosító az Alkalmazásvezérlés elengedhetetlen, mert csak az, hogy lehe
 Az üzleti folyamatok, amelyben több üzeneteket küld az egyes alkalmazás-környezet kezelése a *üzenetazonosító* alkalmazásszintű környezeti azonosító, például a beszerzési rendelésszámukra összetett lehet, és a az üzenetben, például a Tárgy **12345.2017/fizetési**.
 
 A *üzenetazonosító* mindig lehet néhány GUID, de az azonosító az üzleti folyamat horgonyzás poskytne kiszámítható ismételhetőség, amelyek esetében a duplikátumészlelési szolgáltatására támaszkodva gyakorlatilag van szükség.
+
+> [!NOTE]
+> Ha a duplikálásészlelés engedélyezve van, és sesion azonosító vagy a partíciós kulcs nincs megadva, az üzenet azonosítója használja partíciókulcsként. Ha még nincs beállítva az üzenet azonosítója, az AMQP és a .NET-kódtárak automatikusan létrehozhat egy üzenet azonosítója, az üzenet. További információkért lásd: [particionáló kulcsok használatát](service-bus-partitioning.md#use-of-partition-keys).
 
 ## <a name="enable-duplicate-detection"></a>Ismétlődések észlelésének engedélyezése
 

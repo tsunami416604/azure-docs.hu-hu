@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 6c0ecf70935d4504472156f6bda726d94f130dbb
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 3265477108b7e74d65050408add6c5d5c94b4852
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148183"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233890"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>A LUIS-alkalmazás az előre összeállított útmutatója
 Ez az útmutató információkkal szolgál a [előre összeállított tartományok](luis-how-to-use-prebuilt-domains.md), amely gyűjteményei előre összeállított szándékok és entitások, amelyek a LUIS kínál.
@@ -56,13 +56,12 @@ The table below summarizes the currently supported domains. Support for English 
 |--|--|
 |Naptár|Naptár egy személyes értekezletek és találkozókat, _nem_ nyilvános események (például a világ cup ütemezéseket, Seattle események naptárak vagy általános naptárak (például milyen nap, még ma, mi does fall kezdődik, ha a Labor Day van).|
 |Kommunikáció|Hívásokat, kérelmek küldése a szövegek vagy a Csevegőüzenetek, keresse meg, és adja hozzá a névjegyek és számos más kommunikációs ügyekben (általában kimenő). Kapcsolattartó neve csak lekérdezéseket kommunikációs tartományhoz nem tartozik.|
-|E-mail|E-mail-cím a kommunikációs tartományhoz tartozó altartományban. E-mailek üzeneteket küldhet és fogadhat kéréseket főként tartalmazza.|
+|E-mail-cím|E-mail-cím a kommunikációs tartományhoz tartozó altartományban. E-mailek üzeneteket küldhet és fogadhat kéréseket főként tartalmazza.|
 |HomeAutomation|A HomeAutomation tartományban szándékok és entitások szabályozása otthoni intelligens eszközökkel kapcsolatos biztosít. Főleg támogatja a vezérlő parancs lámpa és légkondicionálóját kapcsolódó, de néhány más electric készülékek általánossá képességekkel rendelkezik.|
 |Megjegyzések|Megjegyzés tartományban szándékok és entitások jegyzeteket létrehozni, és írásra le elemeket a felhasználók számára biztosít.|
 |Helyek|Forráshelyek közé tartozik a vállalkozások, intézmények, éttermek, nyilvános szóközöket és címek. A tartomány támogatja a hely megkeresésével és nyilvános helyen – például tartózkodási hely, a üzemeltetési óra és távolság hatásával kapcsolatos.|
 |RestaurantReservation|Éttermek foglalás tartománya támogatja a leképezések az éttermek foglalások kezelése.|
 |Teendőlista|Teendőlista-kezelő tartományi felhasználók hozzáadása, jelölje meg és törölje a saját todo elemeket a feladatlisták biztosít.|
-|ToDo_IPA|Alapuló teendőlista-kezelő tartomány, ToDo_IPA kibonthatja az elemeket a teendőlista-kezelő a testreszabott verziója is. Az IPA-verziót biztosít a szándékok és entitások felismerése todo list típusú támogatásához. A modell meghatározza a feladatlisták három típusú: megosztott bevásárlólistáról, vásárlási lista és más esetben kiterjedő tennivalók listájára.|
 |Közművek|Segédprogramok tartományban egy általános tartomány közötti összes LUIS közös leképezések és a különbség a forgatókönyvekben utterances tartalmazó előre összeállított modellek.|
 |Időjárás|Időjárás-tartomány időjárási és tanácsok a hely és idő ellenőrzése vagy idő ellenőrzése az időjárási feltételek szerint összpontosít.|
 |Web|A webes tartomány a leképezés és entitásokat biztosít egy webhely keresése.|

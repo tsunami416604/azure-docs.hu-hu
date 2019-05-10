@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: byvinyal
-ms.openlocfilehash: 8d7fa7bbb501675ee38ccc9183e981ce7bb714cf
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: cb0203e3413ab525d6885f23c5936c64e1bef189
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150351"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233700"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja az egyes a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem vonatkozik Azure-szolgáltatásokhoz. Az idő múlásával a lista fogja kibontva és a frissített magában foglalja a szolgáltatások további.
@@ -93,7 +93,7 @@ A korlátok a következők közül egy új táblát korlátok a különbségeket
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
-* [Tárolás](#storage-limits)
+* [Storage](#storage-limits)
 * [StorSimple rendszerbe](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Előfizetés](#subscription-limits)
@@ -127,9 +127,9 @@ Az alábbi korlátok vonatkoznak az Azure Resource Manager és az Azure-erőforr
 #### <a name="shared-image-gallery-limits"></a>Lemezkép-katalógusában korlátok megosztott
 
 Nincsenek korlátai, előfizetésenként, megosztott kép katalógusok-erőforrások üzembe helyezéséhez:
-- 10 megosztott kép minták száma előfizetésenként és régiónként
-- 200 lemezkép-definíciókat, előfizetésenként és régiónként
-- 2000 lemezkép-verzió előfizetésenként és régiónként
+- megosztott kép 100 katalógusok esetén előfizetésenként és régiónként
+- 1000 lemezkép-definíciókat, előfizetésenként és régiónként
+- 10 000 lemezkép-verzió, előfizetésenként és régiónként
 
 ### <a name="virtual-machine-scale-sets-limits"></a>Virtuálisgép-méretezési csoportok korlátok
 [!INCLUDE [virtual-machine-scale-sets-limits](../includes/azure-virtual-machine-scale-sets-limits.md)]

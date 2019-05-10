@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d9055ef11bc5c117efc6d4de87d4ca8ec73a661
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d99169fc38f3976b35a0ebbdd6605450fbd3e2e9
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359024"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412864"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
@@ -33,7 +33,7 @@ A két-kezdő szabályzat adatokra van szükség két hitelesítési adatok, pé
 * A következő Azure-rendszergazdai szerepkörök érintettek:
   * Ügyfélszolgálati adminisztrátor
   * Szolgáltatástámogatási rendszergazda
-  * Számlázási rendszergazda
+  * Számlázási adminisztrátor
   * 1. szintű partnertámogatás
   * 2. szintű partnertámogatás
   * Exchange-rendszergazda
@@ -110,24 +110,51 @@ Első lépésként kell [töltse le és telepítse az Azure AD PowerShell modul]
 1. Csatlakozás Windows PowerShell a felhasználó rendszergazda vagy a vállalati rendszergazdai hitelesítő adatok használatával.
 1. Hajtsa végre a következő parancsok egyikét:
 
-   * Ha soha ne járjon le a felhasználóhoz tartozó jelszó értéke megtekintéséhez futtassa az alábbi parancsmagot az egyszerű felhasználónév használatával (például *aprilr\@contoso.onmicrosoft.com*) vagy a felhasználó ellenőrizni kívánja a felhasználói azonosító: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
-   * Megtekintheti a **jelszó sohasem jár le** beállítás az összes felhasználó számára, futtassa a következő parancsmagot: `Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
+   * Ha soha ne járjon le a felhasználóhoz tartozó jelszó értéke megtekintéséhez futtassa az alábbi parancsmagot az egyszerű felhasználónév használatával (például *aprilr\@contoso.onmicrosoft.com*) vagy a felhasználó ellenőrizni kívánja a felhasználói azonosító:
+
+   ```powershell
+   Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
+   ```
+
+   * Megtekintheti a **jelszó sohasem jár le** beállítás az összes felhasználó számára, futtassa a következő parancsmagot:
+
+   ```powershell
+   Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
+   ```
 
 ### <a name="set-a-password-to-expire"></a>Állítsa be a jelszó lejár
 
 1. Csatlakozás Windows PowerShell a felhasználó rendszergazda vagy a vállalati rendszergazdai hitelesítő adatok használatával.
 1. Hajtsa végre a következő parancsok egyikét:
 
-   * Egy felhasználó jelszavának beállításához, úgy, hogy a jelszó lejár, az egyszerű felhasználónév vagy a felhasználó a felhasználói azonosító használatával futtassa a következő parancsmagot: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None`
-   * Az összes olyan felhasználó jelszavának beállítása a szervezet úgy, hogy a lejárat után, használja a következő parancsmagot: `Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None`
+   * Egy felhasználó jelszavának beállításához, úgy, hogy a jelszó lejár, az egyszerű felhasználónév vagy a felhasználó a felhasználói azonosító használatával futtassa a következő parancsmagot:
+
+   ```powershell
+   Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None
+   ```
+
+   * Az összes olyan felhasználó jelszavának beállítása a szervezet úgy, hogy a lejárat után, használja a következő parancsmagot:
+
+   ```powershell
+   Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None
+   ```
 
 ### <a name="set-a-password-to-never-expire"></a>Soha ne járjon le a jelszó beállítása
 
 1. Csatlakozás Windows PowerShell a felhasználó rendszergazda vagy a vállalati rendszergazdai hitelesítő adatok használatával.
 1. Hajtsa végre a következő parancsok egyikét:
 
-   * Egy felhasználó soha ne járjon le a jelszó beállítása, az egyszerű felhasználónév vagy a felhasználó a felhasználói azonosító használatával futtassa a következő parancsmagot: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration`
-   * Az összes olyan felhasználó jelszavának beállítása soha ne járjon le a szervezetekben, futtassa a következő parancsmagot: `Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration`
+   * Egy felhasználó soha ne járjon le a jelszó beállítása, az egyszerű felhasználónév vagy a felhasználó a felhasználói azonosító használatával futtassa a következő parancsmagot:
+
+   ```powershell
+   Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration
+   ```
+
+   * Az összes olyan felhasználó jelszavának beállítása soha ne járjon le a szervezetekben, futtassa a következő parancsmagot:
+
+   ```powershell
+   Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration
+   ```
 
    > [!WARNING]
    > Jelszavak beállítása `-PasswordPolicies DisablePasswordExpiration` életkor alapján még a `pwdLastSet` attribútum. Ha soha ne járjon le a felhasználói jelszavakat, és 90 napig folytassa, a jelszavak lejárnak. Alapján a `pwdLastSet` attribútumot, ha módosítja a lejárat `-PasswordPolicies None`, minden jelszót, amely rendelkezik egy `pwdLastSet` régebbi, mint 90 nappal a felhasználónak a következő bejelentkezéskor módosítania őket. Ez a módosítás hatással lehet a felhasználók nagy száma. 

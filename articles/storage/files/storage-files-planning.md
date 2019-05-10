@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 82a2330aeadb14bb421260a290a25581232293e5
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 82c0aa53fa8905e0e58cb784a478ade474ec5601
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073356"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232761"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -94,7 +94,7 @@ Prémium szintű fájlmegosztások (előzetes verzió) egy rögzített GiB/IOPS/
 
 Az elérhető legjobb lehetőség alapján minden megosztás is megnövelheti arra GiB kiosztott tárolás három IOPS legfeljebb 60 percet vagy hosszabb ideig a megosztás méretétől függően. Új megosztások indítsa el a teljes burst kreditet kap, a kiépített lemezkapacitás alapján.
 
-Megosztások ki kell építeni az 1 GIB-ra kerekítve. Minimális mérete 100 GB, a következő méret 101-es GIB és így tovább.
+Megosztások ki kell építeni az 1 GIB-ra kerekítve. Minimális mérete 100 GB, a következő méret 101-es GiB és így tovább.
 
 > [!TIP]
 > Alapkonfiguráció iops-érték = 1 * GiB kiépítve. (Legfeljebb egy legfeljebb 100 000 iops-érték).
@@ -120,7 +120,7 @@ Az alábbi táblázatban néhány példa az ezekben a képletekben a létesítet
 |10,240      | 10,240  | Akár 30 720  | 675 | 450   |
 |33,792      | 33,792  | Legfeljebb 100 000 | 2,088 | 1,392   |
 |51,200      | 51,200  | Legfeljebb 100 000 | 3,132 | 2,088   |
-|102,400     | 100 000 | Legfeljebb 100 000 | 6,204 | 4,136   |
+|102,400     | 100,000 | Legfeljebb 100 000 | 6,204 | 4,136   |
 
 ### <a name="bursting"></a>Tartalékkapacitás
 

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2f0847e9dd90267d985b75be3c3a07ce8fae98a9
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bff913efb38c9e5589c795386dfbbc480d799a37
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029670"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411441"
 ---
 # <a name="import-from-web-url-via-http-module"></a>Z Webové adresy URL via HTTP-modul importálása
 
@@ -56,7 +56,7 @@ A következő lépések bemutatják, hogyan manuális konfigurálásához az imp
 
     Például a következő lapot tartalmaz az Írisz adatkészletet, a machine learning-tárházat a University of California, Irvine:
 
-    `http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data`
+    `https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data`
 
 4. A **adatformátum**, válassza ki a támogatott adatok egyik formázza a listából.
 

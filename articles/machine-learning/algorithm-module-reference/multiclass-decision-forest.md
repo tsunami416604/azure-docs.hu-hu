@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d5ff1809886198f7f1e4f4b9c36f877ce61d512e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 10364d014431a500e7c38a02d47f432cd464feb6
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029430"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411492"
 ---
 # <a name="multiclass-decision-forest-module"></a>A modul osztályú döntési erdő
 
@@ -36,7 +36,7 @@ Döntési fák számos előnye van:
 + Akkor hajtsa végre az integrált szolgáltatás kiválasztása és besorolása.
 + Azok a rugalmas zajos szolgáltatások folytonosságát.
 
-Az Azure Machine Learning döntési erdő osztályozó döntési fák részének áll. Ensemble modellek általában jobb lefedettség és egyetlen döntési fák pontosságot biztosít. További információkért lásd: [döntési fák algoritmus](http://go.microsoft.com/fwlink/?LinkId=403677).
+Az Azure Machine Learning döntési erdő osztályozó döntési fák részének áll. Ensemble modellek általában jobb lefedettség és egyetlen döntési fák pontosságot biztosít. További információkért lásd: [döntési fák algoritmus](https://go.microsoft.com/fwlink/?LinkId=403677).
 
 ## <a name="how-to-configure-multiclass-decision-forest"></a>Osztályú döntési erdő konfigurálása
 

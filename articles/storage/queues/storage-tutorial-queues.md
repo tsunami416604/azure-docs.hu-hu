@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.date: 04/24/2019
-ms.openlocfilehash: 81d7572f800f191791158f2c1f99e1f072980116
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6b833ef56b890eb4ea0db6b48fe8c2622e211498
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65151070"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233872"
 ---
 # <a name="tutorial-work-with-azure-storage-queues"></a>Oktatóanyag: Azure Storage-üzenetsorok használata
 
@@ -206,7 +206,7 @@ Adja hozzá a kapcsolati karakterláncot az alkalmazásba, hogy hozzá tudjon f�
 
 ## <a name="insert-messages-into-the-queue"></a>A várólista üzenetek beszúrása
 
-Hozzon létre egy új módszer üzenet küldése az üzenetsorba. Adja hozzá a következő metódust a **Program** osztály. Ez a metódus lekér egy várólista hivatkozást, majd létrehoz egy új üzenetsort, ha még nem létezik meghívásával [CreateIfNotExistsAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.createifnotexistsasync?view=azure-dotnet). Ezután hozzáadja az üzenetet az üzenetsorba meghívásával [AddMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.addmessageasync?view=azure-dotnet).
+Hozzon létre egy új módszer üzenet küldése az üzenetsorba. Adja hozzá a következő metódust a **Program** osztály. Ez a metódus lekér egy várólista hivatkozást, majd létrehoz egy új üzenetsort, ha még nem létezik meghívásával [CreateIfNotExistsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync?view=azure-dotnet). Ezután hozzáadja az üzenetet az üzenetsorba meghívásával [AddMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync?view=azure-dotnet).
 
 1. Adja hozzá a következő **SendMessageAsync** metódust a **Program** osztály.
 
@@ -229,7 +229,7 @@ Hozzon létre egy új módszer üzenet küldése az üzenetsorba. Adja hozzá a 
 
 ## <a name="dequeue-messages"></a>Üzenet eltávolítása a sorból
 
-Hozzon létre egy új módszer nevű **ReceiveMessageAsync**. Ez a módszer egy üzenetet kap a várólista meghívásával [GetMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.getmessageasync?view=azure-dotnet). Az üzenet jelenik meg sikeresen, ha fontos törlése az üzenetsorból, így azt nem egynél többször. Az üzenet fogadását követően törölje azt az üzenetsorból meghívásával [DeleteMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.deletemessageasync?view=azure-dotnet).
+Hozzon létre egy új módszer nevű **ReceiveMessageAsync**. Ez a módszer egy üzenetet kap a várólista meghívásával [GetMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync?view=azure-dotnet). Az üzenet jelenik meg sikeresen, ha fontos törlése az üzenetsorból, így azt nem egynél többször. Az üzenet fogadását követően törölje azt az üzenetsorból meghívásával [DeleteMessageAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync?view=azure-dotnet).
 
 1. Adja hozzá a következő **ReceiveMessageAsync** metódust a **Program** osztály.
 

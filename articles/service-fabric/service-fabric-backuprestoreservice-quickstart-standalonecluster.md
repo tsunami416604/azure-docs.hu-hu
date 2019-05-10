@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: 1a1c1bafd0a575b01e9774e79a98515d34646f7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 28378b4b769e0d0e70a82a45baac0872d1476036
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61471799"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413638"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Rendszeres biztonsági mentése és visszaállítása az Azure Service Fabricben
 > [!div class="op_single_selector"]
@@ -56,7 +56,21 @@ A Service Fabric egy érhet el a következő funkciók kapcsolatos rendszeres bi
 ## <a name="prerequisites"></a>Előfeltételek
 * Service Fabric-fürtön a Fabric verziója 6.2 vagy újabb. A Windows Server létre kell hozni a fürtöt. Ebben [cikk](service-fabric-cluster-creation-for-windows-server.md) lépésekhez szükséges csomag letöltéséhez.
 * X.509-tanúsítvány a titkos kulcsok tárolási való csatlakozáshoz szükséges titkosítási biztonsági másolatok tárolására. Tekintse meg [cikk](service-fabric-windows-cluster-x509-security.md) tudnia kell, hogyan beszerezni, vagy hozzon létre egy önaláírt X.509-tanúsítványt.
-* Service Fabric Reliable Stateful alkalmazás használatával a Service Fabric SDK 3.0-s verzió vagy újabb. Alkalmazások .NET Core 2.0, kérelmet kell kialakítani, Service Fabric SDK verziója 3.1-es vagy újabb.
+
+* Service Fabric Reliable Stateful alkalmazás használatával a Service Fabric SDK 3.0-s verzió vagy újabb. Alkalmazások .net Core 2.0, az alkalmazás kell kialakítani, Service Fabric SDK verziója 3.1-es vagy újabb.
+* Telepítse a Microsoft.ServiceFabric.Powershell.Http modul [az előzetes verzió] konfigurációs hívások.
+
+```powershell
+    Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
+```
+
+* Győződjön meg arról, hogy a fürt csatlakoztatva van-e használatával, a `Connect-SFCluster` parancs bármilyen konfigurációs kérést Microsoft.ServiceFabric.Powershell.Http modul elvégzése előtt.
+
+```powershell
+
+    Connect-SFCluster -ConnectionEndpoint 'https://mysfcluster.southcentralus.cloudapp.azure.com:19080'   -X509Credential -FindType FindByThumbprint -FindValue '1b7ebe2174649c45474a4819dafae956712c31d3' -StoreLocation 'CurrentUser' -StoreName 'My' -ServerCertThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'  
+
+```
 
 ## <a name="enabling-backup-and-restore-service"></a>Biztonsági mentés és visszaállítás szolgáltatás engedélyezése
 Először engedélyeznie kell a _biztonsági mentés és visszaállítás szolgáltatás_ a fürtben. Szerezze be a sablon a fürt, amely számára telepíteni kívánja. Használhatja a [mintasablon](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples). Engedélyezze a _biztonsági mentés és visszaállítás szolgáltatás_ az alábbi lépéseket követve:
@@ -114,6 +128,16 @@ Ismertető a biztonsági mentési ütemezés biztonsági mentési szabályzat l�
 
 Biztonságimásolat-tároláshoz hozzon létre fájlmegosztást, és az olvasási és írási hozzáférést biztosít a fájlmegosztás az összes Service Fabric-csomópont gépek. Ez a példa feltételezi, hogy a megosztás neve `BackupStore` -e a `StorageServer`.
 
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http modult használó PowerShell
+
+```powershell
+
+New-SFBackupPolicy -Name 'BackupPolicy1' -AutoRestoreOnDataLoss $true -MaxIncrementalBackups 20 -FrequencyBased -Interval 00:15:00 -FileShare -Path '\\StorageServer\BackupStore' -Basic -RetentionDuration '10.00:00:00'
+
+```
+#### <a name="rest-call-using-powershell"></a>REST-hívást Powershell-lel
+
 Hajtsa végre a következő PowerShell-parancsfájl az új szabályzat létrehozásához szükséges REST API meghívása.
 
 ```powershell
@@ -152,6 +176,14 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 ### <a name="enable-periodic-backup"></a>Rendszeres biztonsági mentés engedélyezése
 Után az alkalmazás adatvédelmi követelmények teljesítéséhez házirend meghatározása, a biztonsági mentési szabályzat az alkalmazás társítva kell lennie. Követelmény, függően a biztonsági mentési szabályzathoz társított egy alkalmazást, a szolgáltatás és a partíció is lehet.
 
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http modult használó PowerShell
+
+```powershell
+Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupPolicy1'
+```
+
+#### <a name="rest-call-using-powershell"></a>REST-hívást Powershell-lel
 Hajtsa végre a következő PowerShell-szkript meghívása szükséges REST API-t a biztonsági mentési házirend társítása neve `BackupPolicy1` fenti alkalmazással létrehozott `SampleApp`.
 
 ```powershell
@@ -167,13 +199,21 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 ### <a name="verify-that-periodic-backups-are-working"></a>Rendszeres biztonsági mentések működésének ellenőrzése
 
-Miután engedélyezte az alkalmazás biztonsági mentése, az alkalmazás a Reliable Stateful services és Reliable Actors tartozó összes partíció indul el első készül rendszeres időközönként a társított biztonsági mentési szabályzatának megfelelően. 
+Miután engedélyezte az alkalmazás biztonsági mentése, az alkalmazás a Reliable Stateful services és Reliable Actors tartozó összes partíció indul el első készül rendszeres időközönként a társított biztonsági mentési szabályzatának megfelelően.
 
 ![Partíció BackedUp Állapotesemény][0]
 
 ### <a name="list-backups"></a>Lista biztonsági mentések
 
 A Reliable Stateful services és Reliable Actors-alkalmazás tartozó összes partíció társított biztonsági másolatok használatával lehet enumerálni _GetBackups_ API-t. Követelmény, attól függően a biztonsági másolatok is enumerálni az alkalmazás, szolgáltatás vagy egy partíciót.
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http modult használó PowerShell
+
+```powershell
+    Get-SFApplicationBackupList -ApplicationId WordCount     
+```
+
+#### <a name="rest-call-using-powershell"></a>REST-hívást Powershell-lel
 
 Hajtsa végre a következő PowerShell-parancsprogram enumerálni az összes partíción belül létrehozott biztonsági mentéseket a HTTP API meghívása a `SampleApp` alkalmazás.
 
@@ -185,6 +225,7 @@ $response = Invoke-WebRequest -Uri $url -Method Get
 $BackupPoints = (ConvertFrom-Json $response.Content)
 $BackupPoints.Items
 ```
+
 Futtassa a fenti kimeneti példa:
 
 ```
@@ -231,7 +272,7 @@ FailureError            :
 - Visszaállítás a biztonsági mentési szolgáltatás nem tudja a csoportosan felügyelt szolgáltatásfiók-alapú biztonsági tesztfürtöt merülnek fel.
 
 ## <a name="limitation-caveats"></a>Korlátozás / kikötések
-- Nem Service Fabric beépített PowerShell-parancsmagokat.
+- A Service Fabric PowerShell-parancsmagok jelenleg előzetes módban van.
 - Nem támogatja a Service Fabric-fürtök Linux rendszeren.
 
 ## <a name="next-steps"></a>További lépések

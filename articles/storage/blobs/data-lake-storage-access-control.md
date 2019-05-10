@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 8fd73b1e0fcde6bcd69c7ce76b888d1adda37de4
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 0b8139f11f937ddae30e25f4153e35287289a4d1
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939553"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233995"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen2
 
@@ -37,7 +37,7 @@ Bár az RBAC szerepkör-hozzárendelést a következő egy hatékony mechanizmus
 Ha egy rendszerbiztonsági tag jogosultságot kap az RBAC adatok keresztül egy [beépített szerepkör](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues), vagy egy egyéni szerepkör segítségével ezeket az engedélyeket értékeli ki a először engedélyezési kérés esetén. Ha a rendszerbiztonsági tagot az RBAC-hozzárendelések által jogosult a kért művelet, akkor azonnal megoldódott, és nincs további engedélyezési ACL-ellenőrzés történik. Azt is megteheti, ha a rendszerbiztonsági tag nem rendelkezik az RBAC-hozzárendelés, vagy a kért művelet nem egyezik meg a hozzárendelt engedély, majd ACL ellenőrzések elvégzése, határozza meg, hogy a rendszerbiztonsági tagot a kért művelet végrehajtására jogosult.
 
 > [!NOTE]
-> Ha a rendszerbiztonsági tag hozzá lett rendelve a [Storage-Blobadatok]() tulajdonos beépített szerepkör-hozzárendelést, majd a rendszerbiztonsági tag számít egy *felügyelő* és a teljes hozzáférést kap az összes mutating Műveletek, beleértve a fájlt, amelynek azok nem a tulajdonos és a egy könyvtárat vagy fájlt, valamint a hozzáférés-vezérlési listák tulajdonosa beállítást. Felügyelő hozzáférés csak engedélyezett módon módosítani az erőforrás tulajdonosa.
+> Ha a rendszerbiztonsági tagot a tárolási Blob adatok tulajdonosa beépített szerepkör-hozzárendelés hozzá lett rendelve, akkor a rendszerbiztonsági tag számít egy *felügyelő* mutating műveleteket, köztük a beállítás a teljes hozzáférést kapnak, és a tulajdonosa egy könyvtárat vagy fájlt, valamint a hozzáférés-vezérlési listák a könyvtárak és fájlok, amelynek azok nem a tulajdonosa. Felügyelő hozzáférés csak engedélyezett módon módosítani az erőforrás tulajdonosa.
 
 ## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>Megosztott kulcs és a közös hozzáférésű Jogosultságkód (SAS) hitelesítési
 
@@ -86,7 +86,7 @@ Mindkét hozzáférési ACL-EK és alapértelmezett ACL-ek ugyanazzal a struktú
 
 A Fájlrendszerobjektum engedélyei vannak **olvasási**, **írási**, és **Execute**, és azok a fájlok és könyvtárak az alábbi táblázatban látható módon:
 
-|            |    Fájl     |   Címtár |
+|            |    Fájl     |   Könyvtár |
 |------------|-------------|----------|
 | **Olvasás (R)** | Olvashatja a fájl tartalmát | Szükséges **olvasási** és **Execute** a könyvtár tartalmának listázásához |
 | **Írás (W)** | Írhatja a fájlt vagy hozzáfűzhet a fájlhoz | Szükséges **írási** és **Execute** szükséges gyermekelemek létrehozásához a címtárban |
@@ -101,7 +101,7 @@ A Fájlrendszerobjektum engedélyei vannak **olvasási**, **írási**, és **Exe
 | 7            | `RWX`        | Olvasás + Írás + Végrehajtás |
 | 5            | `R-X`        | Olvasás + Végrehajtás         |
 | 4            | `R--`        | Olvasás                   |
-| 0            | `---`        | Nincs engedély         |
+| 0            | `---`        | Nincsenek engedélyek         |
 
 #### <a name="permissions-inheritance"></a>Engedélyöröklés
 

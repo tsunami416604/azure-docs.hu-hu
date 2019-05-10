@@ -2,19 +2,19 @@
 title: 'Oktatóanyag: Vizuális felhasználói felülettel autó árát előrejelzése'
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan betanításához pontszám, és üzembe helyezése egy gépi tanulási modellt, fogd és vidd vizuális felületen. Ebben az oktatóanyagban egy kétrészes sorozat első részében a lineáris regressziós autó árának előrejelzése.
-author: peterlu
-ms.author: peterlu
+author: peterclu
+ms.author: peterclu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: 1dc905b2ac89667dcb5800b0f539cb3e9f3acdcd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 352f695f186b656ad0f6471d8ede905d53ad5274
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026871"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234096"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Oktatóanyag: Vizuális felhasználói felülettel autó árát előrejelzése
 
@@ -35,7 +35,7 @@ A [második](ui-tutorial-automobile-price-deploy.md) , az oktatóanyag-sorozatba
 > Ebben az oktatóanyagban a befejezett verzióját, a mintakísérlet érhető el.
 > A kísérletek lapon lépjen a **új hozzáadása** > **minta 1 – regressziós: Autó árát Prediction(Basic)**
 
-> [!VIDEO https://www.youtube.com/embed/VDKpDNX96aA]
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Build-zero-code-machine-learning-models-with-Azure-Machine-Learning-service/player]
 
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása

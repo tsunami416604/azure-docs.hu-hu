@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 05/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2ec2ddbac5d0368aaf1b46208c9ebb44bf12a622
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0fc44bfdb98b81bf218cb2f1824f0f1bb14de4fa
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60734354"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235681"
 ---
 # <a name="assets"></a>Objektumok
 
@@ -33,6 +33,9 @@ A **archív** tárolási réteg csak ajánlott nagyon nagy méretű forrásfájl
 ## <a name="upload-digital-files-into-assets"></a>Eszközök digitális fájlok feltöltése
 
 A gyakori munkafolyamatokat a Media Services egyik feltöltése, kódolása és streamelése egy fájlt. Ez a szakasz az általános lépéseket ismerteti.
+
+> [!TIP]
+> Fejlesztés megkezdése előtt tekintse át a [fejlesztés a Media Services v3 API-k](media-services-apis-overview.md) (tartalmazza a eléréséről az API-k elnevezési konvenciók stb.)
 
 1. Hozzon létre egy új „bemeneti” adategységet a Media Services v3 API használatával. Ez a művelet létrehoz egy tárolót a Media Services-fiókjához társított tárfiókban. Az API-t adja vissza a tároló nevét (például `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`).
    

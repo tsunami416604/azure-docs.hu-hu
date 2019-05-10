@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7a327c963f32d6bf5b0cf7751557c61327fd26e9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd91b83bc808d811fc50293fbf1726d609ad5b46
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60911544"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234081"
 ---
 # <a name="azure-security-center-data-security"></a>Az Azure Security Center által nyújtott adatbiztonság
 Az Azure Security Center biztonsággal kapcsolatos adatokat gyűjt és dolgoz fel (például konfigurációs információkat, metaadatokat, eseménynaplókat, összeomlási memóriaképeket és még sok mást), hogy segítsen az ügyfeleknek a fenyegetések megelőzésében, észlelésében és elhárításában. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig.
@@ -46,12 +46,18 @@ Az Azure Security Center az alábbi forrásokból kapott adatok elemzésével bi
 
 **Saját munkaterület(ek)**: A munkaterület az alábbi Geók esetében van megadva, és az Azure virtuális gépek, beleértve az összeomlási memóriaképeket és bizonyos típusú riasztási adatokat gyűjtött adatokat a legközelebbi munkaterület vannak tárolva.
 
-| Virtuális gép geo                        | Munkaterület geo |
-|-------------------------------|---------------|
-| Egyesült Államok, Brazília, Kanada | Egyesült Államok |
-| Európa, Egyesült Királyság        | Európa        |
-| Ázsia és a Csendes-óceáni térség, Japán, India    | Ázsia és a Csendes-óceáni térség  |
-| Ausztrália                     | Ausztrália     |
+| Virtuális gép geo                              | Munkaterület geo |
+|-------------------------------------|---------------|
+| Egyesült Államok, Brazília, Dél-Afrika | Egyesült Államok |
+| Kanada                              | Kanada        |
+| Európa (kivéve az Egyesült Királyság)   | Európa        |
+| Egyesült Királyság                      | Egyesült Királyság |
+| Ázsia (India, japán, koreai, Kína kivételével)   | Ázsia és a Csendes-óceáni térség  |
+| Korea                              | Ázsia és a Csendes-óceáni térség  |
+| India                               | India         |
+| Japán                               | Japán         |
+| Kína                               | Kína         |
+| Ausztrália                           | Ausztrália     |
 
 
 A virtuálisgép-lemez pillanatképeit ugyanaz a tárfiók tárolja, mint a virtuálisgép-lemezt.

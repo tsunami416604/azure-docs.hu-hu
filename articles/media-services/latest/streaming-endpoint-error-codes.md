@@ -1,6 +1,6 @@
 ---
 title: Az Azure Media Services formátumokat támogató csomagolási és forrás hibák |} A Microsoft Docs
-description: Ez a témakör ismerteti a hibákat, az Azure Media Services csomagolási szolgáltatás kaphat.
+description: Ez a témakör ismerteti a hibákat, jelenhet meg az Azure Media Services Streaming Endpoint (Orgin) szolgáltatásból.
 author: Juliako
 manager: femila
 editor: ''
@@ -11,18 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2019
+ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: e30c51ff3526bb5ed193b65b3f36a64c552024ff
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ebcda6026f79bc88df91471d8be88316ba57bfc6
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204158"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411372"
 ---
-# <a name="media-services-packaging-errors"></a>A Media Services csomagolási hibák 
+# <a name="streaming-endpoint-origin-errors"></a>Streamelési végpontot (forrás) hibák 
 
-Ez a témakör ismerteti a hibákat, az Azure Media Services kaphat [csomagolási szolgáltatás](streaming-endpoint-concept.md).
+Ez a témakör ismerteti a hibákat, az Azure Media Services kaphat [folyamatos átviteli végponton szolgáltatás](streaming-endpoint-concept.md).
 
 ## <a name="400-bad-request"></a>400 Hibás kérés
 
@@ -48,7 +48,7 @@ A kérelem nem engedélyezett a következő okok egyike miatt:
 |MPE_ENC_ENCRYPTION_REQUIRED |0x8088021E |Titkosításra szükség a tartalomhoz, Objektumtovábbítási szabályzat megadása kötelező a kimeneti formátum. |
 |MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY |0x8088024D |Titkosítás nem módosíthatók a kézbesítési szabályzat-beállítások állítja be. |
 
-## <a name="404-not-found"></a>404 – Nem található
+## <a name="404-not-found"></a>404 Nem található
 
 A művelet megpróbálta hatókör olyan erőforrást, amely már nem létezik. Ha például az erőforrás már törölve lett.
 

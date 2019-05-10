@@ -4,6 +4,8 @@
   items:
     - name: Mi a Stream Analytics?
       href: stream-analytics-introduction.md
+    - name: Teljes körű megoldásminták
+      href: stream-analytics-solution-patterns.md
 - name: Gyors útmutatók
   items:
     - name: Feladat létrehozása – Azure Portal
@@ -12,6 +14,8 @@
       href: stream-analytics-quick-create-powershell.md
     - name: Feladat létrehozása – Visual Studio
       href: stream-analytics-quick-create-vs.md
+    - name: Feladat létrehozása – Visual Studio Code
+      href: quick-create-vs-code.md
 - name: Oktatóanyagok
   items:
     - name: 1 – Feladat létrehozása/kezelése
@@ -143,7 +147,7 @@
           href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
         - name: API használata az IoT Edge-feladatokhoz
           href: stream-analytics-cicd-api.md
-    - name: Visual Studio-eszközök
+    - name: Visual Studio és VS Code
       items:
         - name: Eszközök telepítése
           href: stream-analytics-tools-for-visual-studio-install.md
@@ -159,6 +163,8 @@
           href: stream-analytics-tools-for-visual-studio-cicd.md
         - name: .NET UDF írása az Edge-hez
           href: stream-analytics-edge-csharp-udf-methods.md
+        - name: A Stream Analytics áttekintése a VS Code-ban
+          href: vs-code-how-to.md
     - name: Hibaelhárítás
       items:
         - name: Input (Bemenet)

@@ -462,6 +462,8 @@
           href: sql-database-managed-instance-create-vnet-subnet.md
         - name: Felügyelt példány meglévő virtuális hálózatának és alhálózatának konfigurálása
           href: sql-database-managed-instance-configure-vnet-subnet.md
+        - name: Alhálózat törlése a felügyelt példány törlése után
+          href: sql-database-managed-instance-delete-virtual-cluster.md
         - name: Egyéni DNS konfigurálása
           href: sql-database-managed-instance-custom-dns.md
         - name: Hálózati konfigurációja szinkronizálása

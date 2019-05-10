@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: 03dfa250091b906ea1496fea3a4dd9b3753e0aaf
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 433c258f86705f66e0163100407be7996d68bc6b
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028650"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65440958"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>4 – besorolási. példa: Hitelkockázatot (költség-és nagybetűket)
 
@@ -52,7 +52,7 @@ Egy magas, alacsony kockázatú példa misclassifying költségének értéke 1,
 
 A grafikon a kísérlet a következő:
 
-[ ![A kísérlet diagram](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![A kísérlet diagram](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="data-processing"></a>Adatfeldolgozás
 
@@ -65,7 +65,7 @@ Ezután azt létrehozni a képzés, és tesztelje a kockázati előrejelzési mo
 Mivel a magas kockázati alábecslésének költségét, ehhez hasonló téves besorolás költsége beállított:
 
 - Alacsony kockázatot misclassified magas kockázatú esetek: 5
-- Magas kockázatot misclassified alacsony kockázatú esetek: 1
+- Magas kockázatot misclassified alacsony kockázatú esetek: 1.
 
 Költség függvény megfelelően, hogy egy új adatkészlet hozzon létre. Az új adatkészletre a rendszer replikálja az egyes magas kockázatú példa ötször, de alacsony kockázatú példák száma nem változik. Hogy az adatok felosztása tanítási és tesztelési adatkészleteket, így megakadályozhatja a ugyanabban a sorban a mindkét replikáció előtt.
 

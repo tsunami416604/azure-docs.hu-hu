@@ -16,16 +16,19 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 6e82ec9563832c7569fa1cff735a46dad50a8b3b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 929977913fdbf0c6f59d69ec536a2638bca7b97c
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61462320"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232738"
 ---
-# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging"></a>Oktatóanyag: Az Azure Notification Hubs és a Google Cloud Messaging leküldéses értesítések Android-eszközök
+# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Oktatóanyag: Leküldéses értesítések küldése Android-eszközök Azure Notification Hubs és a Google Cloud Messaging (elavult)
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
+
+> [!WARNING]
+> 2018. április 10. a Google Google Cloud Messaging (GCM) már elavult. A GCM-kiszolgáló és az ügyfél API-k elavultak, és törlődni fog, amint 2019. május 29. További információkért lásd: [GCM és az FCM gyakran ismételt kérdések](https://developers.google.com/cloud-messaging/faq).
 
 ## <a name="overview"></a>Áttekintés
 

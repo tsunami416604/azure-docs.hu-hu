@@ -8,18 +8,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: 92f4616a415c4ddebd0d9b2e466536b2f30c486f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f8803a498e62958a5488f2ac8830137c37533e54
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146398"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413699"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatikus skálázása az Azure HDInsight-fürtök (előnézet)
 
 Az Azure HDInsight-fürt automatikus méretezési funkciója automatikusan méretezi magát a munkavégző csomópontok számát a fürtben található felfelé és lefelé. A fürtben található csomópontok más típusú jelenleg nem lehet méretezni.  Egy új HDInsight-fürt létrehozásakor a feldolgozó csomópontok minimális és maximális száma megadható. Automatikus skálázási ezután figyeli a analytics terhelés erőforrásigényeinek és méretezi a munkavégző csomópontok számát felfelé vagy lefelé. Nem jár további költségekkel ennek a funkciónak.
 
 ## <a name="cluster-compatibility"></a>Fürt-kompatibilitás
+
+> [!Important]
+> Az automatikus skálázási funkció csak a nyilvános rendelkezésre állás a funkció a 2019. május után létrehozott fürtök esetében működik. Mindez nem működik a már meglévő fürtök esetében.
 
 A következő táblázat ismerteti a fürt típusát és verziókat, amelyek kompatibilisek az automatikus méretezési funkciója.
 
@@ -30,7 +33,7 @@ A következő táblázat ismerteti a fürt típusát és verziókat, amelyek kom
 | HDInsight 3.6-ot az ESP | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
 | HDInsight 3.6-ot az ESP | Igen | Igen | Nem | Nem | Nem | Nem | Nem |
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>A szolgáltatás működése
 
 Lehetősége van a terhelés-alapú méretezés, vagy a HDInsight-fürt méretezése ütemezésalapú. Betöltés-alapú méretezés módosítja egy Ön által beállított, győződjön meg, hogy optimális CPU-kihasználtság, és minimalizálja a költségeket futó tartományon belül, a fürt csomópontjainak számát.
 
@@ -199,7 +202,7 @@ A fürt állapotüzeneteket, amelyeket láthat minden mutatjuk be az alábbi lis
 
 | Fürt állapota | Magyarázat |
 |---|---|
-| Fut | A fürt megfelelően működik. Az összes automatikus skálázási előző tevékenység sikeresen befejeződött. |
+| Futtatás | A fürt megfelelően működik. Az összes automatikus skálázási előző tevékenység sikeresen befejeződött. |
 | Frissítés  | A fürt automatikus skálázási konfigurációjának frissítése folyamatban van.  |
 | HDInsight-konfiguráció  | Fürt vertikális felskálázás vagy vertikális leskálázási művelet folyamatban van.  |
 | Frissítési hiba  | HDInsight problémákat észlelt az automatikus skálázási konfigurációjának frissítése során. Ügyfelek eldönthetik, próbálkozzon újra a frissítést, vagy az automatikus skálázás letiltása.  |

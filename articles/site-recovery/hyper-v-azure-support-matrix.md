@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/07/2019
 ms.author: raynew
-ms.openlocfilehash: ea9f6a65ae804d4d2e5004ff4e2c61a2a85b976d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e311a328c1c3d78fa8e5ba7065dcc6484006eaaf
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60748985"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235880"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Vész-helyreállítási a helyszíni Hyper-V virtuális gépek az Azure-támogatási mátrixa
 
@@ -31,10 +31,10 @@ A Hyper-V Virtual Machine Manager nélkül | Vészhelyreállítás az Azure-bA v
 
 ## <a name="on-premises-servers"></a>Helyszíni kiszolgálók
 
-**Kiszolgáló** | **Követelmények** | **Részletek**
+**Server** | **Követelmények** | **Részletek**
 --- | --- | ---
-A Hyper-V (fut a Virtual Machine Manager nélkül) | A Windows Server 2016 (beleértve server core telepítés), Windows Server 2012 R2 legújabb frissítéseit | Ha már konfigurálta a Windows Server 2012 R2 és / vagy SCVMM 2012 R2-ben az Azure Site Recovery és az operációs rendszer verziófrissítéséhez terv kövesse az útmutatást [dokumentáció.](upgrade-2012R2-to-2016.md) 
-A Hyper-V (fut a Virtual Machine Manager) | Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Virtual Machine Manager használata esetén a Windows Server 2016-gazdagépeket a Virtual Machine Manager 2016-ban kell kezelni.<br/><br/>
+A Hyper-V (fut a Virtual Machine Manager nélkül) |  A Windows Server 2019, Windows Server 2016 (beleértve server core telepítés), Windows Server 2012 R2 legújabb frissítéseit | Ha már konfigurálta a Windows Server 2012 R2 és / vagy SCVMM 2012 R2-ben az Azure Site Recovery és az operációs rendszer verziófrissítéséhez terv kövesse az útmutatást [dokumentáció.](upgrade-2012R2-to-2016.md) 
+A Hyper-V (fut a Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Virtual Machine Manager használata esetén a Windows Server 2019 gazdagépeket a Virtual Machine Manager 2019 kell kezelni. Ehhez hasonlóan a Windows Server 2016-gazdagépeket a Virtual Machine Manager 2016-ban kell kezelni.<br/><br/>
 
 
 ## <a name="replicated-vms"></a>A replikált virtuális gépek
@@ -90,26 +90,26 @@ Gyorsított hálózatkezelés | Nem | Nem
 
 ## <a name="hyper-v-host-storage"></a>A Hyper-V-gazdagép tárolási
 
-**Tárolás** | **A Hyper-V Virtual Machine Manager** | **A Hyper-V Virtual Machine Manager nélkül**
+**Storage** | **A Hyper-V Virtual Machine Manager** | **A Hyper-V Virtual Machine Manager nélkül**
 --- | --- | --- 
-NFS | NA | NA
+NFS | n/a | n/a
 SMB 3.0 | Igen | Igen
 TÁROLÓHÁLÓZAT (ISCSI) | Igen | Igen
 Több elérési út (MPIO). Tesztelték:<br></br> Microsoft DSM, EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM CLARiiON számára | Igen | Igen
 
 ## <a name="hyper-v-vm-guest-storage"></a>A Hyper-V virtuális gép vendég storage
 
-**Tárolás** | **A Hyper-V Virtual Machine Manager** | **A Hyper-V Virtual Machine Manager nélkül**
+**Storage** | **A Hyper-V Virtual Machine Manager** | **A Hyper-V Virtual Machine Manager nélkül**
 --- | --- | ---
-VMDK | NA | NA
+VMDK | n/a | n/a
 VHD/VHDX | Igen | Igen
 2. generációs virtuális gép | Igen | Igen
 EFI/UEFI| Igen | Igen
 A megosztott fürtlemezre | Nem | Nem
 Titkosított lemez | Nem | Nem
-NFS | NA | NA
+NFS | n/a | n/a
 SMB 3.0 | Nem | Nem
-RDM | NA | NA
+RDM | n/a | n/a
 Lemez > 1 TB-ot | Igen, legfeljebb 4095 GB-ig | Igen, legfeljebb 4095 GB-ig
 Lemez: 4 KB-os logikai és fizikai szektort. | Nem támogatott: Velikost haldy 1/2. generációs gyűjtések | Nem támogatott: Velikost haldy 1/2. generációs gyűjtések
 Lemez: 4 KB-os logikai és fizikai 512 bájtos szektort | Igen |  Igen
@@ -153,15 +153,15 @@ Az Azure-bA replikált helyszíni virtuális gépek meg kell felelnie az Azure v
 Vendég operációs rendszer | A Site Recovery minden operációs rendszereket támogatja [Azure által támogatott](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 Vendég operációs rendszer architektúrája | 64 bites | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 Operációsrendszer-lemez mérete | Legfeljebb 2048 GB 1. generációs virtuális gépek számára.<br/><br/> Legfeljebb 300 GB 2. generációs virtuális gépek számára.  | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
-Operációsrendszer-lemezek száma | 1 | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
+Operációsrendszer-lemezek száma | 1. | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 Adatlemezek száma | 16 vagy kevesebb  | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 Virtuális merevlemez adatlemez mérete | Legfeljebb 4095 GB-ig | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 Hálózati adapterek | Több adapter támogatott |
-Megosztott VHD | Nem támogatott | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
-FC-lemez | Nem támogatott | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
+Megosztott VHD | Érvénytelen érték | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
+FC-lemez | Érvénytelen érték | Előfeltételek ellenőrzése sikertelen, ha nem támogatott.
 Merevlemez formátuma | VHD <br/><br/> VHDX | A Site Recovery automatikusan átalakítja a VHDX VHD-t, ha átadja a feladatokat az Azure-bA. Visszaadja a feladatokat a helyszíni, ha a virtuális gépek továbbra is a VHDX formátumot használja.
-BitLocker | Nem támogatott | A BitLocker egy virtuális gép a replikáció engedélyezése előtt le kell tiltani.
-a virtuális gép neve | 1 és 63 karakter között. Csak betűket, számokat és kötőjelet tartalmazhat. A virtuális gép nevének betűvel vagy számmal kell kezdődnie és végződnie. | Frissítse az értéket a virtuális gép tulajdonságait, a Site Recoveryben.
+BitLocker | Érvénytelen érték | A BitLocker egy virtuális gép a replikáció engedélyezése előtt le kell tiltani.
+Virtuális gép neve | 1 és 63 karakter között. Csak betűket, számokat és kötőjelet tartalmazhat. A virtuális gép nevének betűvel vagy számmal kell kezdődnie és végződnie. | Frissítse az értéket a virtuális gép tulajdonságait, a Site Recoveryben.
 Virtuális gép típusa | Az 1.<br/><br/> Generation 2--Windows | 2. generációs virtuális gépek egy operációs rendszer lemez típusa (amely tartalmaz egy vagy két adatkötetek VHDX formátumú) az alapszintű és a kevesebb mint 300 GB méretű lemezterület is támogatottak.<br></br>Linux rendszerű Generation 2 virtuális gépek nem támogatottak. [További információk](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 
 ## <a name="recovery-services-vault-actions"></a>Recovery Services vault műveletek

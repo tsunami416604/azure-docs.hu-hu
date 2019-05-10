@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 04/25/2019
+ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: a3c035715de736b816027b08a1e242e6a65d1f13
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 0a44f7d9c18e406850e2dbfb091088be0b8c2113
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148734"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235893"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Hozzon létre egy megosztott lemezkép-katalógus az Azure PowerShell használatával 
 
@@ -42,9 +42,11 @@ A megosztott Képkatalógus funkció több erőforrástípusok rendelkezik. A Mi
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-A példában ez a cikk a végrehajtásához egy meglévő felügyelt kép kell rendelkeznie. Követheti [oktatóanyag: Hozzon létre egy egyéni rendszerképet egy Azure virtuális gépek az Azure PowerShell-lel](tutorial-custom-images.md) hozhat létre egyet, ha szükséges. Ha ez a cikk végighalad cserélje le az erőforráscsoportot és a virtuális gépek neveit, ahol szükséges.
+A példában ez a cikk a végrehajtásához egy meglévő felügyelt kép kell rendelkeznie. Követheti [oktatóanyag: Hozzon létre egy egyéni rendszerképet egy Azure virtuális gépek az Azure PowerShell-lel](tutorial-custom-images.md) hozhat létre egyet, ha szükséges. Ha a felügyelt rendszerkép egy adatlemezt tartalmaz, a az adatlemez mérete nem lehet több mint 1 TB.
+
+Ha ez a cikk végighalad cserélje le az erőforráscsoportot és a virtuális gépek neveit, ahol szükséges.
 
 [!INCLUDE [virtual-machines-common-shared-images-powershell](../../../includes/virtual-machines-common-shared-images-powershell.md)]
  
@@ -72,6 +74,7 @@ New-AzVm `
 [!INCLUDE [virtual-machines-common-shared-images-update-delete-ps](../../../includes/virtual-machines-common-shared-images-update-delete-ps.md)]
 
 ## <a name="next-steps"></a>További lépések
+[Az Azure az Image Builder (előzetes verzió)](image-builder-overview.md) segítségével automatizálhatja a lemezkép-verzió létrehozását, még akkor is használhatja, frissíteni és [hozzon létre egy új lemezkép verziója egy meglévő kép verzióból](image-builder-gallery-update-image-version.md). 
 
 Lemezkép-katalógusában a megosztott erőforrás-sablonok használatával is létrehozhat. Nincsenek elérhető számos Azure gyorsindítási sablonok: 
 

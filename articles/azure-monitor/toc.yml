@@ -131,6 +131,8 @@
           href: platform/alerts-common-schema.md
         - name: Műveletszabályok
           href: platform/alerts-action-rules.md
+        - name: Elemzés módosítása
+          href: app/change-analysis.md
     - name: Adatok vizualizációja
       href: visualizations.md
     - name: Partnerintegrációk

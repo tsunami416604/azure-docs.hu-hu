@@ -12,14 +12,22 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: a8b77cea34344062c981d8f452094cffabe1e568
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 26bd49af7245d6e6dde3162a2e1d95c54f13e35b
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572491"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415939"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integráció CI-/CD-folyamattal
+
+Ez a cikk ismerteti az adatok az Azure-alkalmazások konfigurálása egy folyamatos integrációs és folyamatos üzembe helyezés rendszer használatával különféle módjait.
+
+## <a name="use-app-configuration-in-your-azure-devops-pipeline"></a>Használhatja az Alkalmazáskonfigurációt az az Azure DevOps-folyamattal
+
+Ha rendelkezik egy Azure-fejlesztési és üzemeltetési folyamatot, kulcs-értékeket beolvasni az alkalmazás konfigurációjából, és változók módon állítsa be őket. A [Azure alkalmazás konfigurációs DevOps-bővítmény](https://go.microsoft.com/fwlink/?linkid=2091063) van egy kiegészítő modult, amely ezt a funkciót biztosít. Egyszerűen kövesse az utasításokat bővítményt használja a build vagy a feladatütemezés kiadási.
+
+## <a name="deploy-app-configuration-data-with-your-application"></a>Alkalmazáskonfigurációs adatok az alkalmazás üzembe helyezése
 
 Az alkalmazás futtatásához, ha az Azure App konfigurációjától függ, és nem tudja elérni, sikertelen lehet. Javíthatja kezelése érdekében tett ilyen esemény, azonban valószínűleg nem fordulhat elő, ha az alkalmazás rugalmasságát. Ehhez a csomag aktuális konfigurációs adatok fájlba, hogy az alkalmazás és a betöltött helyben telepített az indítás során. Ez a megközelítés biztosítja, hogy az alkalmazás alapértelmezett beállítás értéke van legalább. Ezek az értékek felülírja, az alkalmazás a konfigurációs adattároló újabb módosításainak elérhetővé válik.
 
@@ -29,13 +37,13 @@ Az alábbi példa bemutatja, hogyan foglalhat bele az Alkalmazáskonfigurációt
 
 Bármely Kódszerkesztő segítségével hajtsa végre a lépéseket ebben az oktatóanyagban. [A Visual Studio Code](https://code.visualstudio.com/) kiváló lehetőség a Windows, macOS és Linux platformokon az érhető el.
 
-## <a name="prerequisites"></a>Előfeltételek
+### <a name="prerequisites"></a>Előfeltételek
 
 Ha helyileg hoz létre, töltse le és telepítse a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Ha még nem tette.
 
 Ehhez egy felhő-összeállítási, az Azure DevOps például ellenőrizze, hogy a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a buildelési rendszer van telepítve.
 
-## <a name="export-an-app-configuration-store"></a>Egy alkalmazás a konfigurációs adattároló exportálása
+### <a name="export-an-app-configuration-store"></a>Egy alkalmazás a konfigurációs adattároló exportálása
 
 1. Nyissa meg a *.csproj* fájlt, és adja hozzá a következő szkriptet:
 
@@ -64,7 +72,7 @@ Ehhez egy felhő-összeállítási, az Azure DevOps például ellenőrizze, hogy
             .UseStartup<Startup>();
     ```
 
-## <a name="build-and-run-the-app-locally"></a>Hozhat létre, és az alkalmazás helyileg történő futtatása
+### <a name="build-and-run-the-app-locally"></a>Hozhat létre, és az alkalmazás helyileg történő futtatása
 
 1. Nevű környezeti változó értéke **ConnectionString**, és állítsa be az alkalmazás a konfigurációs adattárolónál a hozzáférési kulcsot. Ha használja a Windows-parancssort, futtassa a következő parancsot, és a parancssort, a módosítás érvénybe léptetéséhez indítsa újra:
 

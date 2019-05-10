@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 763fc2952d7a1e2eac209cc9df53713c58ad83c9
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e0f3de95cfd4a18294e5e8e2adcf3b52a7487dbb
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925253"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411360"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Erőforrások az Azure virtual networkök névfeloldása
 
@@ -55,7 +55,7 @@ Nyilvános DNS-nevek feloldása, valamint az Azure belső névfeloldást biztos�
 >
 >
 
-### <a name="features"></a>Szolgáltatások
+### <a name="features"></a>Funkciók
 
 Az Azure által biztosított névfeloldást a következő szolgáltatásokat tartalmazza:
 * A könnyű használatra. Semmilyen beállítást nem kell megadni.
@@ -169,7 +169,7 @@ Lekérdezések továbbítása az Azure-ba nem felel meg igényeinek, ha meg kell
 * Védhető szemben az internetről, külső ügynökök által jelentett fenyegetéseket csökkentése érdekében.
 
 > [!NOTE]
-> A legjobb teljesítmény érdekében az Azure virtuális gépek DNS-kiszolgálóként használata esetén IPv6 le kell tiltani. A [nyilvános IP-cím](virtual-network-public-ip-address.md) minden DNS-kiszolgáló virtuális Géphez hozzá kell rendelni. További Teljesítményelemzés és optimalizálási lehetőségek a Windows Server, a DNS-kiszolgáló használata esetén lásd [név feloldása teljesítményét egy rekurzív Windows DNS Server 2012 R2](http://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx).
+> A legjobb teljesítmény érdekében az Azure virtuális gépek DNS-kiszolgálóként használata esetén IPv6 le kell tiltani. A [nyilvános IP-cím](virtual-network-public-ip-address.md) minden DNS-kiszolgáló virtuális Géphez hozzá kell rendelni. További Teljesítményelemzés és optimalizálási lehetőségek a Windows Server, a DNS-kiszolgáló használata esetén lásd [név feloldása teljesítményét egy rekurzív Windows DNS Server 2012 R2](https://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx).
 > 
 > 
 

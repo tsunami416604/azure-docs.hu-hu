@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/19/2018
+ms.date: 05/01/219
 ms.author: bwren
-ms.openlocfilehash: 53e24a6874a1e43b0de07893a6ace3a44b81d373
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2db6ddf57802f6fcf38cfc3ad7094ed94eaca3d8
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60454064"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234200"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Az Azure Monitor log-adatok importálása a Power BI-bA
 
@@ -60,7 +60,9 @@ A Power BI Desktop egy asztali alkalmazás, amely lehetővé teszi, hogy hozzon 
 ## <a name="publish-to-power-bi"></a>Közzététel a Power bi-bA
 Ha közzéteszi a Power bi-ba, létrejön egy adatkészlet és a egy jelentést.  Ha létrehoz egy jelentést a Power BI Desktopban, majd ez teszi közzé az adatokkal.  Ha nem, majd jön létre egy üres jelentésből.  A jelentés a Power bi-ban, vagy hozzon létre egy új adatkészlet alapján.
 
-1. Hozzon létre egy jelentést, az adatok alapján.  Használat [Power BI Desktop-dokumentáció](https://docs.microsoft.com/power-bi/desktop-report-view) Ha még nem ismeri azt.  Amikor készen áll a Power bi-bA küldendő, kattintson az **közzététel**.  Amikor a rendszer kéri, válassza ki a célhelyet a Power BI-fiók.  Kivéve, ha egy adott cél szem előtt, használjon **saját munkaterület**.
+1. Hozzon létre egy jelentést, az adatok alapján.  Használat [Power BI Desktop-dokumentáció](https://docs.microsoft.com/power-bi/desktop-report-view) Ha még nem ismeri azt.  
+1. Amikor készen áll a Power bi-bA küldendő, kattintson az **közzététel**.  
+1. Amikor a rendszer kéri, válassza ki a célhelyet a Power BI-fiók.  Kivéve, ha egy adott cél szem előtt, használjon **saját munkaterület**.
 
     ![A Power BI Desktop közzététel](media/powerbi/desktop-publish.png)
 
@@ -70,7 +72,10 @@ Ha közzéteszi a Power bi-ba, létrejön egy adatkészlet és a egy jelentést.
 ### <a name="configure-scheduled-refresh"></a>Az ütemezett frissítés konfigurálása
 A Power BI-ban létrehozott adatkészlet ugyanazokat az adatokat a Power BI Desktopban korábban látott fog rendelkezni.  Frissítse az adatkészletet, rendszeres időközönként, futtassa újra a lekérdezést, és az Azure Monitor a legújabb adatokkal való feltöltéséhez kell.  
 
-1. Kattintson a munkaterülethez, ahol a feltöltött a jelentést, majd válassza a **adatkészletek** menü. Válassza ki a helyi menü az új adatkészlet mellett, majd **beállítások**. A **adatforráshoz tartozó hitelesítő adatok** rendelkeznie kell egy üzenet, hogy a hitelesítő adatok érvénytelenek.  Ez azért, mert még nem a megadott hitelesítő adatok még a adatkészletet, akkor használja, ha az adatok frissítésekor.  Kattintson a **hitelesítő adatok szerkesztése** , és adja meg a hitelesítő adatokat a Log Analytics-munkaterületet az Azure monitorban való hozzáférést.
+1. Kattintson a munkaterülethez, ahol a feltöltött a jelentést, majd válassza a **adatkészletek** menü. 
+1. Válassza ki a helyi menü az új adatkészlet mellett, majd **beállítások**. 
+1. A **adatforráshoz tartozó hitelesítő adatok** rendelkeznie kell egy üzenet, hogy a hitelesítő adatok érvénytelenek.  Ez azért, mert még nem a megadott hitelesítő adatok még a adatkészletet, akkor használja, ha az adatok frissítésekor.  
+1. Kattintson a **hitelesítő adatok szerkesztése** , és adja meg a hitelesítő adatokat a Log Analytics-munkaterületet az Azure monitorban való hozzáférést. Ha kétfaktoros hitelesítés szükséges, válassza ki a **OAuth2** számára a **hitelesítési módszer** kéri a hitelesítő adataival jelentkezzen be.
 
     ![A Power BI-ütemezés](media/powerbi/powerbi-schedule.png)
 

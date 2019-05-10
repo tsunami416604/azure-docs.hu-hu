@@ -9,18 +9,18 @@ ms.subservice: anomaly-detection
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: aahi
-ms.openlocfilehash: 5dcec0d5f313b1c746c0674d0f9bf4d30ed19e5c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: cc82e091ae4c033bda7f1d91c9aed36bb081de88
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026312"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233611"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Telepítse és futtassa a tárolók Anomáliadetektálási detector használatával
 
 Az Anomáliadetektálási detector használatával a következő tárolórendszerkép rendelkezik: 
 
-|Függvény|Szolgáltatások|
+|Függvény|Funkciók|
 |-|-|
 |Anomáliadetektálási detector használatával| <li> A valós idejű előforduló észleli a rendellenességeket. <li> Észleli a rendellenességeket a készlet egész kötegként. <li> Kikövetkezteti a várt normál tartományon az adatokat. <li> Támogatja anomáliadetektálási észlelés érzékenysége korrekciós jobban illeszkednek az adatok. |
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Anomáliadetektálási detector használatával tárolók használata előtt a következő előfeltételeknek kell megfelelnie:
 
-|Szükséges|Cél|
+|Kötelező|Cél|
 |--|--|
 |Docker-motor| A Docker-motor telepítve van szüksége egy [gazdaszámítógép](#the-host-computer). A docker csomagokat biztosít, a Docker-környezet konfigurálása a [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), és [Linux](https://docs.docker.com/engine/installation/#supported-platforms). A Docker és a tárolók alapfogalmainak ismertetését lásd: a [a Docker áttekintése](https://docs.docker.com/engine/docker-overview/).<br><br> Docker kell konfigurálni, hogy a tárolók számlázási adatok küldése az Azure-ba történő csatlakozáshoz. <br><br> **A Windows**, a Docker Linux-tárolók támogatása is kell konfigurálni.<br><br>|
 |Docker-ismeretek | A Docker fő fogalmaira, például a beállításjegyzékek, adattárak, tárolók, és tárolórendszerképeket, valamint alapszintű ismerete alapvető ismeretekkel kell `docker` parancsokat.| 
@@ -49,18 +49,15 @@ Először végezze el, és küldje el a [Anomáliadetektálási detector haszná
 
 ## <a name="the-host-computer"></a>A számítógép
 
-A **gazdagép** van a számítógépen, amelyen a docker-tárolót. A helyszíni vagy a docker-üzemeltetési szolgáltatás az Azure például egy számítógép lehet:
+[!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-* [Azure Kubernetes Service](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
-* [Azure Container Instances](https://docs.microsoft.com/container-instances/index.yml)
-* [Kubernetes](https://kubernetes.io/) fürtben telepített [Azure Stack](https://docs.microsoft.com/azure-stack/index.yml). További információkért lásd: [Kubernetes üzembe helyezése az Azure Stackhez](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
 <!--* [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/). For instructions of deploying Anomaly Detector module in IoT Edge, see [How to deploy Anomaly Detector module in IoT Edge](how-to-deploy-anomaly-detector-module-in-iot-edge.md).-->
 
 ### <a name="container-requirements-and-recommendations"></a>Tároló-követelményeket és javaslatokat
 
 A következő táblázat ismerteti a minimális és ajánlott processzormagot és memóriát lefoglalni az Anomáliadetektálási detector használatával tároló.
 
-| QPS (a másodpercenkénti lekérdezések) | Minimális | Ajánlott |
+| QPS (a másodpercenkénti lekérdezések) | Minimum | Ajánlott |
 |-----------|---------|-------------|
 | 10 QPS | 4 mag, 1GB memória | 8 mag 2GB memória |
 | 20 QPS | 8 mag, 2GB memória | 16 mag, 4GB memória |

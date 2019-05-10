@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/29/2019
+ms.date: 05/03/2019
 ms.author: kumud
-ms.openlocfilehash: 52524e6291faae8ccc27c0d53e9e38ab63a4c8d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4a09492fcb8a7985fa27b6daae89aa5dec0fa6e0
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736844"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413859"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer a TCP üresjárati (nyilvános előzetes verzió) alaphelyzetbe állítása
 
@@ -74,6 +74,7 @@ Minden régióban elérhető.
 ## <a name="limitations"></a>Korlátozások
 
 - Portál konfigurálása, illetve megtekintheti a TCP alaphelyzetbe állítása nem használható.  Ehelyett használja a sablonok, REST API-t, Az CLI 2.0-val vagy PowerShell.
+- TCP ÜZE során létrehozott állapotban TCP-kapcsolat csak küldött.
 
 ## <a name="next-steps"></a>További lépések
 

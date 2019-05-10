@@ -64,26 +64,34 @@
   items:
     - name: Osztályterem-tesztkörnyezetek
       items:
-        - name: Tesztkörnyezetfiókok kezelése
-          href: classroom-labs/how-to-manage-lab-accounts.md
-        - name: Osztályterem-tesztkörnyezetek kezelése
-          href: classroom-labs/how-to-manage-classroom-labs.md
-        - name: Sablonok beállítása és közzététele
-          href: classroom-labs/how-to-create-manage-template.md
-        - name: A használat konfigurálása és szabályozása
-          href: classroom-labs/how-to-configure-student-usage.md
-        - name: Osztályterem-tesztkörnyezetek elérése
-          href: classroom-labs/how-to-use-classroom-lab.md
-        - name: Ütemezések létrehozása és felügyelete
-          href: classroom-labs/how-to-create-schedules.md
-        - name: Környezet létrehozása több virtuális géppel egy sablon virtuális gépen belül
-          href: classroom-labs/how-to-enable-multi-vm-environment.md
-        - name: Társviszony létesítése a tesztkörnyezet és egy virtuális hálózat között
-          href: classroom-labs/how-to-connect-peer-virtual-network.md
-        - name: Megosztott rendszerkép-katalógus csatolása és használata
-          href: classroom-labs/how-to-use-shared-image-gallery.md
-        - name: Távoli asztali kapcsolat engedélyezése Linuxon
-          href: classroom-labs/how-to-enable-remote-desktop-linux.md
+        - name: Tesztkörnyezeti fiókok létrehozása és konfigurálása
+          items:
+            - name: Tesztkörnyezeti fiókok létrehozása és felügyelete
+              href: classroom-labs/how-to-manage-lab-accounts.md
+            - name: Tesztkörnyezeti fiókok konfigurálása
+              href: classroom-labs/how-to-configure-lab-accounts.md
+            - name: Társviszony létesítése a tesztkörnyezet és egy virtuális hálózat között
+              href: classroom-labs/how-to-connect-peer-virtual-network.md
+            - name: Megosztott rendszerkép-katalógus csatolása vagy leválasztása
+              href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
+        - name: 'Osztálytermi tesztkörnyezetek létrehozása, konfigurálása és használata'
+          items:
+            - name: Osztálytermi tesztkörnyezetek létrehozása és kezelése
+              href: classroom-labs/how-to-manage-classroom-labs.md
+            - name: Sablonok beállítása és közzététele
+              href: classroom-labs/how-to-create-manage-template.md
+            - name: A használat konfigurálása és szabályozása
+              href: classroom-labs/how-to-configure-student-usage.md
+            - name: Osztályterem-tesztkörnyezetek elérése
+              href: classroom-labs/how-to-use-classroom-lab.md
+            - name: Ütemezések létrehozása és felügyelete
+              href: classroom-labs/how-to-create-schedules.md
+            - name: Környezet létrehozása több virtuális géppel egy sablon virtuális gépen belül
+              href: classroom-labs/how-to-enable-multi-vm-environment.md
+            - name: Megosztott rendszerkép-katalógus használata
+              href: classroom-labs/how-to-use-shared-image-gallery.md
+            - name: Távoli asztali kapcsolat engedélyezése Linuxon
+              href: classroom-labs/how-to-enable-remote-desktop-linux.md
     - name: DevTest Labs
       items:
         - name: Erőforráscsoport meghatározása a labor virtuális gépeihez
@@ -166,12 +174,16 @@
               href: connect-environment-lab-virtual-network.md
             - name: Környezetek integrálása Azure DevOps CI/CD-folyamatba
               href: integrate-environments-devops-pipeline.md
+            - name: PaaS szolgáltatások használata
+              href: use-paas-services.md
         - name: Biztonságos hozzáférés a tesztkörnyezetekhez
           items:
             - name: Labortulajdonosok és -felhasználók hozzáadása
               href: devtest-lab-add-devtest-user.md
             - name: Engedélyek testreszabása egyéni szerepkörökkel
               href: devtest-lab-grant-user-permissions-to-specific-lab-policies.md
+            - name: Tesztkörnyezeti felhasználó hozzáadásának automatizálása
+              href: automate-add-lab-user.md
         - name: Tesztkörnyezet konfigurálása
           items:
             - name: Szabályzatok és ütemezések beállítása

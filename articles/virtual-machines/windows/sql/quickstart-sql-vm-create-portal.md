@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c9e62cf3dfc259d7064be9fd6b80cad0140336eb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 1c1317726cf29f23e4729c67a5a5794fa459220b
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129765"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410857"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Gyors útmutató: SQL Server 2017-et futtató, Windows rendszerű virtuális gép létrehozása az Azure Portalon
 
@@ -44,7 +44,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 1. Az Azure Portalon válassza az **Erőforrás létrehozása** lehetőséget. 
 
-1. A keresőmezőbe írja be a `SQL Server 2017 Developer on Windows Server 2016`, és nyomja le az ENTER billentyűt.
+1. A keresőmezőbe írja be a `SQL Server 2017 Developer on Windows Server 2016`, és nyomja le az ENTER billentyűt. Bontsa ki az SQL Server 2017 Windows Server 2016 esetén. 
 
 1. Válassza ki a **ingyenes SQL Server-licenc: Az SQL Server 2017 Developer Windows Server 2016 rendszeren** kép. Ez az oktatóanyag azért a Developer kiadást alkalmazza, mert az az SQL Server teljes körű verziója, amely fejlesztési-tesztelési célokra ingyenesen használható. Csak a virtuális gép futtatásával járó költségeket kell kifizetni. A díjszabással kapcsolatos teljes körű információkért tekintse meg [az SQL Server Azure virtuális gépek díjszabási útmutatóját](virtual-machines-windows-sql-server-pricing-guidance.md).
 

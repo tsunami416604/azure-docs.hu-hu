@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/18/2019
+ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 1228c770799de37c85b8a48b1dc923ac8294eeca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9b981924dcaf715dd1d05d452b756a40b63f8dac
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60773561"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233096"
 ---
 # <a name="configure-prerequisites"></a>Előfeltételek konfigurálása
 
@@ -39,8 +39,8 @@ Ez a lehetőség akkor a legegyszerűbb, de azt is korlátozott testreszabási l
 - **Lemez típusa**: Felügyelt lemezeket használnak.
 - **Hálózatkezelés**: Támogatja az új vagy meglévő hálózati és egyéni CIDR-tartományt.
 - **CNS**: CNS engedélyezhető.
-- **Metrikák**: Metrikák engedélyezhető.
-- **Naplózás**: Naplózás is engedélyezhető.
+- **Metrikák**: Hawkular metrikákat is engedélyezhetők.
+- **Naplózás**: EFK naplózás is engedélyezhető.
 - **Az Azure Felhőszolgáltató**: Alapértelmezés szerint engedélyezve lehet letiltani.
 
 Az Azure portal bal felső sarokban kattintson **erőforrás létrehozása**, adja meg a "openshift tárolóplatform" szót a keresőmezőbe, és nyomja le az ENTER billentyűt.
@@ -81,7 +81,7 @@ Adja meg az értékeket a bemeneti paraméterek, és kattintson a **OK**.
 
 | Bemeneti paraméter | Paraméter leírása |
 |-----------------------|-----------------|
-| OCP fürt nevének előtagja | A rendszergazda felhasználó összes Virtuálisgép-példányt létrehozni |
+| OCP fürt nevének előtagja | A fürt csomópontjaihoz tartozó gazdagépnevek konfigurálásához használt előtag. 1 – 20 karakter |
 | Fő csomópont mérete | Fogadja el az alapértelmezett virtuális gép méretét, vagy kattintson a **méretének módosítása** jelölje be egy másik Virtuálisgép-méretet.  Válassza ki a terhelésnek megfelelő virtuális gép mérete |
 | Infrastruktúra-csomópont mérete | Fogadja el az alapértelmezett virtuális gép méretét, vagy kattintson a **méretének módosítása** jelölje be egy másik Virtuálisgép-méretet.  Válassza ki a terhelésnek megfelelő virtuális gép mérete |
 | Alkalmazás-csomópontok száma | Fogadja el az alapértelmezett virtuális gép méretét, vagy kattintson a **méretének módosítása** jelölje be egy másik Virtuálisgép-méretet.  Válassza ki a terhelésnek megfelelő virtuális gép mérete |
@@ -180,7 +180,7 @@ Adja meg az értékeket a bemeneti paramétereket, és kattintson a **OK**
    ![Az ajánlat összefoglalás panelje](media/openshift-marketplace-self-managed/ocp-summary.png)  
 <br>
 
-**Vásárlás**
+**Buy**
 
 Erősítse meg a kapcsolattartási adatokat a vásárlás oldalon, és kattintson a **beszerzési** fogadja el a használati feltételeket, és az OpenShift Tárolóplatform-fürt üzembe helyezésének megkezdéséhez.
 

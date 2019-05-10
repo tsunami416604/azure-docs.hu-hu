@@ -14,14 +14,14 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/05/2019
+ms.date: 04/30/2019
 ms.author: jowargo
-ms.openlocfilehash: 2fe448f3ed91f2c6dd242c24aa378c3541eceecc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0a344e4a068ac6791403f686fa728530b3c4f17e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60876688"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65209349"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>Oktatóanyag: Az Azure Notification Hubs és a Google Firebase Cloud Messaging leküldéses értesítések Android-eszközök
 
@@ -111,7 +111,8 @@ Az értesítési központ konfigurálva lett a Firebase Cloud Messaginggel való
 1. Az a `Build.Gradle` fájlt a **alkalmazás**, adja hozzá a következő sorokat a **függőségek** szakaszt, ha még nem létezik. 
 
     ```gradle
-    implementation 'com.google.firebase:firebase-core:16.0.7'
+    implementation 'com.google.firebase:firebase-core:16.0.8'
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
     ```
 
 2. Ha még nem létezik, adja hozzá a következő beépülő modul a fájl végén. 
@@ -119,22 +120,11 @@ Az értesítési központ konfigurálva lett a Firebase Cloud Messaginggel való
     ```gradle
     apply plugin: 'com.google.gms.google-services'
     ```
+3. Válassza ki **szinkronizálás most** az eszköztáron.
 
 ### <a name="updating-the-androidmanifestxml"></a>Az androidmanifest.xml fájl frissítése
 
-1. Az FCM támogatásának biztosításához létre kell hoznia egy példányazonosító-figyelő szolgáltatást a kódban, amely a [regisztrációs jogkivonatok lekérésére](https://firebase.google.com/docs/cloud-messaging/android/client#sample-register) szolgál a [Google FirebaseInstanceId API-jának](https://firebase.google.com/docs/reference/android/com/google/firebase/iid/FirebaseInstanceId) használatával. Ebben az oktatóanyagban az osztály neve `MyInstanceIDService`.
-
-    Adja hozzá az alábbi szolgáltatásdefiníciót az AndroidManifest.xml fájlhoz, az `<application>` címkén belül.
-
-    ```xml
-    <service android:name=".MyInstanceIDService">
-        <intent-filter>
-            <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-        </intent-filter>
-    </service>
-    ```
-
-2. Miután a FirebaseInstanceId API megküldte a FCM-regisztrációs jogkivonatot, ezt használhatja az [Azure Notification Hub-regisztrációhoz](notification-hubs-push-notification-registration-management.md). A regisztrációt a háttérben egy `RegistrationIntentService` nevű `IntentService` használatával támogatja. Ez a szolgáltatás az FCM regisztrációs jogkivonat frissítését is el fogja végezni.
+1. Amikor megkapja az FCM-regisztrációs jogkivonatot, használja a [regisztrálása az Azure Notification hub](notification-hubs-push-notification-registration-management.md). A regisztrációt a háttérben egy `RegistrationIntentService` nevű `IntentService` használatával támogatja. Ez a szolgáltatás az FCM regisztrációs jogkivonat frissítését is el fogja végezni.
 
     Adja hozzá az alábbi szolgáltatásdefiníciót az AndroidManifest.xml fájlhoz, az `<application>` címkén belül.
 
@@ -145,7 +135,7 @@ Az értesítési központ konfigurálva lett a Firebase Cloud Messaginggel való
     </service>
     ```
 
-3. Egy fogadót is meg kell határoznia az értesítések fogadásához. Adja hozzá az alábbi fogadódefiníciót az AndroidManifest.xml fájlhoz, az `<application>` címkén belül. 
+2. Egy fogadót is meg kell határoznia az értesítések fogadásához. Adja hozzá az alábbi fogadódefiníciót az AndroidManifest.xml fájlhoz, az `<application>` címkén belül. 
 
     ```xml
     <receiver android:name="com.microsoft.windowsazure.notifications.NotificationsBroadcastReceiver"
@@ -159,8 +149,7 @@ Az értesítési központ konfigurálva lett a Firebase Cloud Messaginggel való
 
     > [!IMPORTANT]
     > Cserélje le a `<your package NAME>` helyőrzőt az `AndroidManifest.xml` fájl felső részén látható tényleges csomagnévre.
-4. Válassza ki **szinkronizálás most** az eszköztáron.
-5. Adja meg a következő szükséges FCM-kapcsolódó engedélyeket **alább a** `</application>` címke.
+3. Adja meg a következő szükséges FCM-kapcsolódó engedélyeket **alább a** `</application>` címke.
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -188,29 +177,6 @@ Az értesítési központ konfigurálva lett a Firebase Cloud Messaginggel való
 
      > [!IMPORTANT]
      > Adja meg a **neve** és a **DefaultListenSharedAccessSignature** további az értesítési központ előtt a helyen. 
-2. Adjon hozzá egy másik osztály nevű `MyInstanceIDService`. Ez az osztály a Példányazonosító figyelőszolgáltatás megvalósítása.
-
-    Ennek az osztálynak a kódja meghívja az `IntentService` szolgáltatást az [FCM-jogkivonat frissítésére](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) a háttérben.
-
-    ```java
-    import android.content.Intent;
-    import android.util.Log;
-    import com.google.firebase.iid.FirebaseInstanceIdService;
-
-    public class MyInstanceIDService extends FirebaseInstanceIdService {
-
-        private static final String TAG = "MyInstanceIDService";
-
-        @Override
-        public void onTokenRefresh() {
-
-            Log.d(TAG, "Refreshing FCM Registration Token");
-
-            Intent intent = new Intent(this, RegistrationIntentService.class);
-            startService(intent);
-        }
-    };
-    ```
 
 3. Adjon hozzá a projekthez egy másik új, `RegistrationIntentService` nevű osztályt. Ez az osztály megvalósítja az `IntentService` felületet, illetve elvégzi [az FCM-jogkivonat frissítését](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens) és [az értesítési központon történő regisztrációt](notification-hubs-push-notification-registration-management.md).
 
@@ -222,12 +188,16 @@ Az értesítési központ konfigurálva lett a Firebase Cloud Messaginggel való
     import android.content.SharedPreferences;
     import android.preference.PreferenceManager;
     import android.util.Log;
+    import com.google.android.gms.tasks.OnSuccessListener;
     import com.google.firebase.iid.FirebaseInstanceId;
+    import com.google.firebase.iid.InstanceIdResult;
     import com.microsoft.windowsazure.messaging.NotificationHub;
+    import java.util.concurrent.TimeUnit;
 
     public class RegistrationIntentService extends IntentService {
 
         private static final String TAG = "RegIntentService";
+        String FCM_token = null;
 
         private NotificationHub hub;
 
@@ -244,8 +214,14 @@ Az értesítési központ konfigurálva lett a Firebase Cloud Messaginggel való
             String storedToken = null;
 
             try {
-                String FCM_token = FirebaseInstanceId.getInstance().getToken();
-                Log.d(TAG, "FCM Registration Token: " + FCM_token);
+                FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() { 
+                    @Override 
+                    public void onSuccess(InstanceIdResult instanceIdResult) { 
+                        FCM_token = instanceIdResult.getToken(); 
+                        Log.d(TAG, "FCM Registration Token: " + FCM_token); 
+                    } 
+                }); 
+                TimeUnit.SECONDS.sleep(1);
 
                 // Storing the registration ID that indicates whether the generated token has been
                 // sent to your server. If it is not stored, send the token to your server,
@@ -541,13 +517,13 @@ Az [Azure Portal] az alábbi műveletek végrehajtásával küldhet leküldéses
 ### <a name="run-the-mobile-app-on-emulator"></a>Futtassa a mobilalkalmazás-emulátor
 A leküldéses értesítések emulátorban végzett teszteléséhez győződjön meg arról, hogy az emulátor rendszerképe támogatja az alkalmazáshoz kiválasztott Google API-szintet. Ha a rendszerkép nem támogatja a natív Google API-k, kaphat a **szolgáltatás\_nem\_elérhető** kivétel.
 
-Emellett győződjön meg arról is, hogy a **Settings** (Beállítások)  > **Accounts** (Fiókok) területen hozzáadta a Google-fiókját a futó emulátorhoz. Ellenkező esetben a GCM-regisztrációs kísérletek **AUTHENTICATION\_FAILED** (sikertelen hitelesítés) kivételt eredményezhetnek.
+Emellett győződjön meg arról is, hogy a **Settings** (Beállítások)  > **Accounts** (Fiókok) területen hozzáadta a Google-fiókját a futó emulátorhoz. Ellenkező esetben az FCM-regisztrációs kísérletek eredményezhet a **hitelesítési\_sikertelen** kivétel.
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban leküldéses értesítéseket küldött Android-eszközökre a Firebase Cloud Messaging használatával. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket a Google Cloud Messaging használatával, lépjen tovább a következő oktatóanyagra:
+Ebben az oktatóanyagban használt Firebase Cloud Messaging értesítések küldése akár a szolgáltatásban regisztrált minden Android-eszközökön. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott eszközökre, lépjen tovább a következő oktatóanyagra:
 
 > [!div class="nextstepaction"]
->[Push notifications to Android devices using Google Cloud Messaging](notification-hubs-android-push-notification-google-gcm-get-started.md) (Leküldéses értesítések küldése Android-eszközökre a Google Cloud Messaging használatával)
+>[Oktatóanyag: Leküldéses értesítések küldése adott Android-eszközök](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
 
 <!-- Images. -->
 
@@ -556,6 +532,4 @@ Ebben az oktatóanyagban leküldéses értesítéseket küldött Android-eszköz
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
 [Notification Hubs Guidance]: notification-hubs-push-notification-overview.md
-[Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
-[Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
 [Azure Portal]: https://portal.azure.com
