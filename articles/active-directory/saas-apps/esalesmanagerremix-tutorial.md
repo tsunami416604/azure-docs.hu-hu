@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5f2a3bb666e40f1aafd921d70d93133ca9139b38
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60429013"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406953"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Az Azure Active Directory integrálása az értékesítési vezető Remix E
 
@@ -158,7 +158,7 @@ Engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és egyszer
     
     b. Az a **együttműködés elem** szakaszban, a legördülő listában válassza ki **e-mail**.
 
-    c. Az a **együttműködés elem** mezőbe illessze be a korábban az Azure Portalról másolt jogcímérték (azt jelenti, **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
+    c. Az a **együttműködés elem** mezőbe illessze be a korábban az Azure Portalról másolt jogcímérték (azt jelenti, **https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
 
     d. Az a **kibocsátó (entitás azonosítója)** mezőbe illessze be az értéket, amely a korábban kimásolt a **E Sales Manager Remix tartomány és URL-címek** szakaszában az Azure Portalon.
 
@@ -262,7 +262,7 @@ Ebben a szakaszban engedélyezze felhasználói Britta Simon által biztosított
 
 1. Az a **hozzárendelés hozzáadása** ablakban válassza **hozzárendelése**.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési Panel segítségével tesztelheti.
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 39e0547421c446c1ee48b93b30487ccb9358de02
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 61968265670c53ebc4187c983996caa8c94a4cde
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192072"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508006"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure CNI a hálózatkezelés konfigurálását az Azure Kubernetes Service (AKS)
 
@@ -68,7 +68,16 @@ Podok száma csomópontonként az AKS-fürtben legfeljebb 110. A *alapértelmeze
 
 ### <a name="configure-maximum---new-clusters"></a>Maximum – új fürtök konfigurálása
 
-Podok csomópontonkénti maximális számának konfigurálásához tudja *csak fürt üzembe helyezéskor*. Ha az Azure CLI-vel vagy a Resource Manager-sablonnal helyezi üzembe, beállíthatja a maximális podok száma csomópont értéke magas, mint 250.
+Podok csomópontonkénti maximális számának konfigurálásához tudja *csak fürt üzembe helyezéskor*. Ha az Azure CLI-vel vagy a Resource Manager-sablonnal helyezi üzembe, állíthatja be a maximális podok száma csomópont értéke belül a következő igény szerint `maxPods` irányelveket:
+
+| Hálózat | Minimum | Maximum |
+| -- | :--: | :--: |
+| Azure CNI | 30 | 250 |
+| Kubenet | 30 | 110 |
+
+> [!NOTE]
+> A fenti táblázatban szereplő minimális érték szigorúan kikényszeríti az AKS szolgáltatás.
+Nem állíthatja maxPods érték kisebb, mint a minimális jelenik meg, mivel ezzel így megakadályozhatja a fürt indítása.
 
 * **Az Azure CLI**: Adja meg a `--max-pods` argumentum, a fürt telepítésekor a [az aks létrehozása] [ az-aks-create] parancsot. A maximális érték: 250.
 * **Resource Manager-sablon**: Adja meg a `maxPods` tulajdonságot a [ManagedClusterAgentPoolProfile] objektum a fürt Resource Manager-sablonnal üzembe. A maximális érték: 250.

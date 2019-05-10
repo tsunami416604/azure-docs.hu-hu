@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: cb1eb5ac27c53f4c0d48fe3644febc62f848486d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 559c1874c119eabef2c35a954961c1e669df3c06
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60551280"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507231"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure Resource Manager-erőforráscsoportok kezelése az Azure portal használatával
 
@@ -31,7 +31,7 @@ Más cikkek erőforráscsoportok kezeléséről:
 
 ## <a name="what-is-a-resource-group"></a>Az erőforráscsoportok ismertetése
 
-Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. Az erőforráscsoport tartalmazhatja a megoldás összes erőforrását, vagy csak azokat az erőforrásokat, amelyeket Ön egy csoportként szeretne kezelni. A szervezet számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között. Általánosságban elmondható adjon hozzá erőforrásokat, azonos életciklussal ugyanabban az erőforráscsoportban, így könnyen telepítése, frissítése és csoportként törölheti őket.
+Az erőforráscsoport olyan tároló, amely egy adott Azure-beli megoldás kapcsolódó erőforrásait tartalmazza. Az erőforráscsoport tartalmazhatja a megoldás összes erőforrását, vagy csak azokat az erőforrásokat, amelyeket Ön egy csoportként szeretne kezelni. A szervezet számára legideálisabb elosztás alapján eldöntheti, hogyan szeretné elosztani az erőforrásokat az erőforráscsoportok között. Általánosságban elmondható adjon hozzá erőforrásokat, azonos életciklussal ugyanabban az erőforráscsoportban, így könnyen telepítése, frissítése és csoportként törölheti őket.
 
 Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Ezért ha az erőforráscsoport számára megad egy helyet, akkor a metaadatok tárolási helyét adja meg. Megfelelőségi okokból szükség lehet arra, hogy az adatokat egy adott régióban tárolja.
 
@@ -108,64 +108,7 @@ A címkékkel erőforráscsoportok és erőforrásokhoz, hogy logikusan rendszer
 
 ## <a name="export-resource-groups-to-templates"></a>Erőforráscsoportok exportálása sablonokhoz
 
-Az erőforráscsoport sikeres beállítása után érdemes a Resource Manager-sablon az erőforráscsoport megtekintéséhez. A sablon exportálása két előnyöket kínál:
-
-- Automatizálhatja a később üzembe helyezések, a megoldás, mert a sablon tartalmazza a teljes infrastruktúra.
-- Ismerje meg a sablon szintaxisáról alapján, a JavaScript Object Notation (JSON), amely a megoldás jelöli.
-
-Kétféleképpen exportálhat sablont:
-
-- Exportálhatja az üzembe helyezéshez használt tényleges sablont. Ebben az esetben az exportált sablon pontosan úgy tartalmazza a különböző paramétereket és változókat, ahogy azok az eredeti sablonban szerepeltek. Ez a megközelítés akkor lehet hasznos, ha a portálon keresztül helyezte üzembe az erőforrásokat, és látni szeretné a sablont ezen erőforrások létrehozásához. Ez a sablon azonnal használható. 
-- Exportálhatja az erőforráscsoport aktuális állapotát jeleníti meg egy létrehozott sablont. Az exportált sablon nem az üzembe helyezéshez használt sablonon alapul. Ehelyett egy sablont, amely egy "snapshot" vagy "Mentés" az erőforráscsoport hoz létre. Az exportált sablon számos nem módosítható értéket tartalmaz, és valószínűleg kevesebb paraméter található benne, mint amennyit általában használni szokott. Ez a beállítás használatával telepítse újra az erőforrásokat ugyanabban az erőforráscsoportban. A sablon használatához egy másik erőforrás-csoport, előfordulhat, jelentős mértékben módosítani azt.
-
-### <a name="export-templates-from-deployment-history"></a>Sablonok exportálása az üzembe helyezési előzményekből
-
-Ez a módszer exportálja a sablonokat az egyes központi telepítések. Ha módosította az erőforrásokat a portálon vagy a hozzáadja/törli erőforrás több üzemelő példányban, lásd: [sablonokat exportálhat erőforráscsoportok](#export-templates-from-resource-groups).
-
-1. Nyissa meg az exportálni kívánt erőforráscsoportot.  Lásd: [nyissa meg az erőforráscsoportok](#open-resource-groups).
-2. A bal oldali panelen válassza ki a **központi telepítések**, vagy jelölje ki a hivatkozást **központi telepítések**.  Az alábbi képernyőképen látható **4 sikeres** négy különböző üzembe helyezési nevekkel négy elválasztott telepítések miatt. Előfordulhat, hogy látható **1 sikeres**.
-
-    ![Exportálás Azure erőforráscsoport-sablonok](./media/manage-resource-groups-portal/manage-resource-groups-export-templates-deployment-history.png)
-
-3. Válassza ki a központi telepítések közül a listából.
-4. A bal oldali panelen válassza ki a **sablon**. A Resource Manager az alábbi hat fájlt kéri le:
-
-   - **Sablon** – A megoldás infrastruktúráját meghatározó sablon. A tárfiók a portálon keresztül történő létrehozásakor a Resource Manager egy sablon használatával telepítette azt, és elmentette ezt a sablont későbbi felhasználás céljából.
-   - **Paraméterek** – Az értékek az üzembe helyezés során történő megadásához szükséges paraméterfájl. Ez tartalmazza az első üzembe helyezés során megadott értékeket. Ezek bármelyike módosítható a sablon újbóli telepítése során.
-   - **Parancssori felület** – a sablon üzembe helyezéséhez használhatja az Azure CLI-parancsfájl.
-   - **PowerShell** – A sablon üzembe helyezéséhez használható Azure PowerShell-parancsfájl.
-   - **.NET** – A sablon üzembe helyezéséhez használható .NET-osztály.
-   - **Ruby** – A sablon üzembe helyezéséhez használható Ruby-osztály.
-
-     Alapértelmezés szerint a portál megjeleníti a sablont.
-
-5. Válassza ki **letöltése** sablon exportálása a helyi számítógépen.
-
-    ![Exportálás Azure erőforráscsoport-sablonok](./media/manage-resource-groups-portal/manage-resource-groups-export-templates-deployment-history-download.png)
-
-<a name="export-templates-from-resource-groups"></a>
-### <a name="export-templates-from-resource-groups"></a>Az erőforráscsoport-sablonok exportálása
-
-Ha módosította az erőforrásokat a portálról, vagy több üzemelő példányban erőforrások hozzáadása/eltávolítása, az üzembe helyezés előzményeiből a sablonok lekérése nem tükrözi az erőforráscsoport aktuális állapotát. Ez a szakasz bemutatja, hogyan exportálhat az erőforráscsoport aktuális állapotát tükröző sablont. A szándék szerint egy pillanatkép, az erőforráscsoport, amely segítségével ugyanabban az erőforráscsoportban üzembe helyezése. Használja az exportált sablon más megoldásokkal, jelentős mértékben módosítani kell azt.
-
-1. Nyissa meg az exportálni kívánt erőforráscsoportot.  Lásd: [nyissa meg az erőforráscsoportok](#open-resource-groups).
-2. A bal oldali panelen válassza ki a **sablon exportálása**. A Resource Manager az alábbi hat fájlt kéri le:
-
-   - **Sablon** – A megoldás infrastruktúráját meghatározó sablon. A tárfiók a portálon keresztül történő létrehozásakor a Resource Manager egy sablon használatával telepítette azt, és elmentette ezt a sablont későbbi felhasználás céljából.
-   - **Paraméterek** – Az értékek az üzembe helyezés során történő megadásához szükséges paraméterfájl. Ez tartalmazza az első üzembe helyezés során megadott értékeket. Ezek bármelyike módosítható a sablon újbóli telepítése során.
-   - **Parancssori felület** – a sablon üzembe helyezéséhez használhatja az Azure CLI-parancsfájl.
-   - **PowerShell** – A sablon üzembe helyezéséhez használható Azure PowerShell-parancsfájl.
-   - **.NET** – A sablon üzembe helyezéséhez használható .NET-osztály.
-   - **Ruby** – A sablon üzembe helyezéséhez használható Ruby-osztály.
-
-     Alapértelmezés szerint a portál megjeleníti a sablont.
-3. Válassza ki **letöltése** sablon exportálása a helyi számítógépen.
-
-Néhány exportált sablont kell bizonyos szerkesztések, használhatók legyenek. Ismerje meg, hogyan fejleszthet sablonokat, tekintse meg a [lépésről lépésre haladó oktatóanyagok](/azure/azure-resource-manager/).
-
-### <a name="export-template-before-deploying"></a>Sablon üzembe helyezése előtt exportálása
-
-A portál használatával adja meg egy erőforrást.  Az erőforrás üzembe helyezése előtt tekintheti meg és exportálja a sablont. Az utasításokért lásd: [a rövid útmutató: Létrehozása és üzembe helyezése Azure Resource Manager-sablonok az Azure portal használatával](./resource-manager-quickstart-create-templates-use-the-portal.md).
+További információ a sablonok exportálása: [sablon - portál egy vagy több erőforrás exportálás](export-template-portal.md).
 
 ### <a name="fix-export-issues"></a>Az exportálással kapcsolatos problémák megoldása
 

@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: b06e3ff50eba4763403450a807aa90ef6335f1a9
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: cb716e0d9f97d3ea2e9584a9fc3d7a6f57da9179
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025237"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65502101"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: Architektúra és fogalmak
 
@@ -32,9 +32,7 @@ A machine learning munkafolyamat általában ez a sorozat a következőképpen:
 1. **Küldje el a parancsfájlok** a konfigurált számítási célnak az adott környezetben való futtatásához. Során képzés, a parancsfájlok olvasni vagy írni **adattárolója**. Végrehajtás a rekordokat a rendszer menti és **fut** a a **munkaterület** és szerint csoportosított **kísérletek**.
 1. **A kísérlet lekérdezése** a naplózott mérőszámok az aktuális és korábbi fut a. A metrikák nem szükséges teljesítendő jelzik, ha 1. lépés, és a parancsfájlok iterálása ikonjához.
 1. Miután megtalálta a megfelelő futtató, regisztrálja a megőrzött modellel a **modell beállításjegyzék**.
-1. A pontozó szkript fejleszthet.
-1. **Hozzon létre egy rendszerképet** , és regisztrálja a a **regisztrációs adatbázisba**.
-1. **A lemezkép telepítése** , egy **webszolgáltatás** az Azure-ban.
+1. A pontozó szkript, amely a modell fejlesztése és **a modell üzembe helyezése** , egy **webszolgáltatás** az Azure-ban, vagy a- **IoT Edge-eszköz**.
 
 
 > [!NOTE]
@@ -46,7 +44,7 @@ A munkaterületet, hogy az Azure Machine Learning szolgáltatás legfelső szint
 
 A munkaterület tartja a számítási célokhoz, amely segítségével a modell betanítását listáját. Azt is előzményeket a betanítási futtatás, beleértve a naplók, metrikák, kimeneti és a parancsfájlok pillanatképét. Ez az információ segítségével meghatározhatja, melyik betanítási Futtatás a legjobb modellt hoz létre.
 
-A munkaterület regisztrált modellek. Pontozó szkripteket és a egy regisztrált modell használatával hozzon létre egy rendszerképet. Telepítheti a lemezképet az Azure Container Instances Azure Kubernetes Service-ben vagy egy mező-programmable gate array (FPGA) REST-alapú HTTP-végpontként. A lemezképet az Azure IoT Edge-eszköz modulként is telepítheti.
+A munkaterület regisztrált modellek. Pontozó szkripteket és a egy regisztrált modell használatával modell üzembe helyezése az Azure Container Instances Azure Kubernetes Service-ben vagy a REST-alapú HTTP-végpontként mező-programmable gate array (FPGA). A lemezképet az Azure IoT Edge-eszköz modulként is telepítheti. A telepített lemezkép üzemeltetése belsőleg, egy docker-rendszerképet kell létrehozni. Ha szükséges, megadhatja a saját rendszerképét.
 
 Több munkaterületet is létrehozhat, és minden munkaterülethez több személy közösen használhat. Ha megoszt egy munkaterületet, szabályozhatja a hozzáférést a következő szerepköröket rendelhet a felhasználók:
 
@@ -94,7 +92,7 @@ Modellek nevét és verzióját azonosítja. Minden alkalommal, amikor egy model
 
 Ha regisztrálja a modellt, akkor is további metaadat-címkéket adja meg, majd a címkék modellek keresésekor.
 
-Lemezkép által használt modellek nem törölhető.
+Egy aktív központi telepítés által használt modellek nem törölhető.
 
 A modellek regisztrálása egy példa: [betanításához egy kép osztályozási modell az Azure Machine Learning](tutorial-train-models-with-aml.md).
 
@@ -159,7 +157,7 @@ A modell betanítását, meg kell adni a tanítási szkriptet és a kapcsolódó
 
 Egy vonatkozó példáért lásd: [oktatóanyag: Egy rendszerkép osztályozási modell Azure Machine Learning szolgáltatással betanításához](tutorial-train-models-with-aml.md).
 
-## <a name="run"></a>Futtassa a következőt:
+## <a name="run"></a>Futtatás
 
 Futtatás a következő egy rekordot, amely a következő információkat tartalmazza:
 
@@ -208,11 +206,11 @@ A regisztrációs adatbázisba nyomon követi, hogy a modellek a létrehozott re
 
 ## <a name="deployment"></a>Környezet
 
-Központi telepítés rendszer vagy egy webszolgáltatás, amelyet a felhőben üzemeltethető, vagy egy IoT-modul az integrált eszközök központi telepítéséhez a lemezkép által okozott.
+Központi telepítés rendszer vagy egy webszolgáltatás, amelyet a felhőben üzemeltethető, vagy egy IoT-modul az integrált eszközök központi telepítéséhez a modell által okozott.
 
 ### <a name="web-service"></a>Webszolgáltatás
 
-Egy már üzembe helyezett webszolgáltatás az Azure Container Instances, az Azure Kubernetes Service-ben vagy az FPGA-kban. A szolgáltatás-lemezképről, amely magában foglalja a modell, a parancsfájl és a kapcsolódó fájlokat hoz létre. A rendszerkép egy elosztott terhelésű, HTTP-végpontot, amely megkapja a pontozási a web Service küldött kérések rendelkezik.
+Egy már üzembe helyezett webszolgáltatás az Azure Container Instances, az Azure Kubernetes Service-ben vagy az FPGA-kban. A szolgáltatás létrehozása a modell, a parancsfájl és a kapcsolódó fájlokat. Ezek a képet, amely a web service a futási idő környezetet biztosít, vannak beágyazva. A rendszerkép egy elosztott terhelésű, HTTP-végpontot, amely megkapja a pontozási a web Service küldött kérések rendelkezik.
 
 Az Azure megkönnyíti a webszolgáltatás üzembe figyelemmel gyűjtése az Application Insights telemetria- vagy modell telemetriai adatokat, ha úgy döntött, ez a funkció engedélyezéséhez. A telemetriai adatok csak Ön számára elérhető, és az Application Insights és a tárolási fiók példányait tárolja.
 

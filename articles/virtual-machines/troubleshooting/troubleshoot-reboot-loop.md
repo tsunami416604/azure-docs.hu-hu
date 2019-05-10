@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 032bc1b9c4b1b0e3bf8040ed52bf4db65ba7b6c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1c97b1da094b759ccf85f310ceec4c7abfd91b9b
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60318979"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472297"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Egy Azure-beli virtuális gépen Windows újraindítási hurokba került
 Ez a cikk ismerteti az újraindítási hurokba került, előfordulhat, a Windows virtuális gép (VM) a Microsoft Azure-ban.
@@ -102,6 +102,8 @@ Ez a probléma megoldásához [készítsen biztonsági másolatot az operációs
 A virtuális gép visszaállítása az utolsó ismert helyes konfigurációra, kövesse a [Azure Windows virtuális gép elindítása a legutolsó helyes konfiguráció](https://support.microsoft.com/help/4016731/).
 
 ### <a name="solution-for-cause-3"></a>Megoldás ok 3
+>[!NOTE]
+>Az alábbi eljárás csak utolsó erőforrásként használható. Regback történő visszaállítását visszaállítása lehetséges, hogy a gép hozzáférést, amíg az operációs rendszer nem számít stabil, mivel a beállításjegyzékben a hive időbélyegét és az aktuális nap között elveszett adatok. Kell egy új virtuális Gépet hozhat létre, és adja meg a csomagok az adatok áttelepítéséhez.
 
 1. Miután a lemezt a hibaelhárító virtuális Géphez van csatlakoztatva, győződjön meg arról, hogy a lemez megjelölt **Online** a Lemezkezelés konzol.
 
@@ -113,5 +115,4 @@ A virtuális gép visszaállítása az utolsó ismert helyes konfigurációra, k
 
 5. [Hozzon létre egy új virtuális Gépet az operációsrendszer-lemezről](../windows/create-vm-specialized.md).
 
->[!NOTE]
->Az alábbi eljárás csak utolsó erőforrásként használható. Regback történő visszaállítását visszaállítása lehetséges, hogy a gép hozzáférést, amíg az operációs rendszer nem számít stabil, mivel a beállításjegyzékben a hive időbélyegét és az aktuális nap között elveszett adatok. Kell egy új virtuális Gépet hozhat létre, és adja meg a csomagok az adatok áttelepítéséhez.
+

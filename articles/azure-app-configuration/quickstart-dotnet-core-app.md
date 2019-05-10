@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b8937b22054e55c8bfe7bc4c7726dc5bae5de6d8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0bf4aff8e0bae3e84e6383ec560dbfe67e30b994
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730458"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408721"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Gyors útmutató: Hozzon létre egy .NET Core-alkalmazást az alkalmazások konfigurálása
 
@@ -39,7 +39,7 @@ Ez a rövid útmutató elvégzéséhez telepítse a [.NET Core SDK](https://dotn
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza ki **kulcs/érték Explorer** > **+ létrehozás** a következő kulcs-érték párok hozzáadásához:
+6. Válassza ki **konfigurációs Explorer** > **+ létrehozás** a következő kulcs-érték párok hozzáadásához:
 
     | Kulcs | Érték |
     |---|---|
@@ -61,7 +61,7 @@ Használja a [.NET Core parancssori felület (CLI)](https://docs.microsoft.com/d
 
 1. Vegyen fel egy hivatkozást a `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet-csomagot a következő parancs futtatásával:
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-007830001
+        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
 
 2. Futtassa a következő parancsot a projekt-csomagok visszaállítására szolgáló:
 

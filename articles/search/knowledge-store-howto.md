@@ -6,20 +6,20 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 05/08/2019
 ms.author: heidist
-ms.openlocfilehash: 2a904cfb049af413887798c8aab449561bc2b73f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d9006e3fcfc9691b9f3eec4b86c545fd3fea9f8a
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026969"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471744"
 ---
 # <a name="how-to-get-started-with-knowledge-store"></a>Hogyan kell a Tudásbázis Store használatának első lépései
 
 [Tudásbázis Store](knowledge-store-concept-intro.md) az Azure Search szolgáltatásban, amely menti a mesterséges Intelligencia végrehajtott információbeolvasás egy indexelési folyamat Tudásbázis adatbányászatra más alkalmazásokban létrehozott új előzetes verziójú funkció. Mentett végrehajtott információbeolvasás segítségével megismerheti és finomítsa az Azure Search indexelési folyamat.
 
-Tudásbázis áruházbeli határozza meg a képességek alkalmazási lehetőségét. A normál Azure Search teljes szöveges keresés alkalmazási célját, a képességek alkalmazási lehetőségét AI végrehajtott információbeolvasás kereshetővé tartalom több biztosít. Tudásbázis store forgatókönyvek esetén, a képességek alkalmazási lehetőségét a szerepkör létrehozása és feltöltése több datové struktury Pro Tudásbázis adatbányászati.
+Tudásbázis áruházbeli határozza meg a képességek alkalmazási lehetőségét. A normál Azure Search teljes szöveges keresés alkalmazási célját, a képességek alkalmazási lehetőségét AI végrehajtott információbeolvasás kereshetővé tartalom több biztosít. Tudásbázis adatbányászati forgatókönyvek esetén, a képességek alkalmazási lehetőségét a szerepkör létrehozása, feltöltése, és elemzési több adatstruktúrák tárolására vagy más alkalmazások és folyamatok modellezése.
 
 Ebben a gyakorlatban a mintaadatokat, szolgáltatások és az alapvető munkafolyamat létrehozásáról és használatáról az első Tudásbázis store hangsúlyt fektetve indexmezők definíció további eszközök elindítása.
 
@@ -29,13 +29,13 @@ Ez a rövid útmutató az alábbi szolgáltatások, eszközök és adatok haszn�
 
 + [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben az oktatóanyagban egy ingyenes szolgáltatás használhatja. 
 
-+ [Az Azure storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a mintaadatok tárolásához. A Tudásbázis-tárolót az Azure storage fogja szerepel.
++ [Az Azure storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a mintaadatok tárolásához. A Tudásbázis-tárolót az Azure storage fogja szerepel. 
 
-+ [Cognitive Services-erőforrás létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rétegben az S0 használatalapú AI végrehajtott információbeolvasás használt képességek széles broad-spectrum eléréséhez.
++ [Cognitive Services-erőforrás létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rétegben az S0 használatalapú AI végrehajtott információbeolvasás használt képességek széles broad-spectrum eléréséhez. Ugyanabban a régióban ehhez az erőforráshoz, és az Azure Search szolgáltatás szükségesek.
 
 + [Postman asztali alkalmazás](https://www.getpostman.com/) a kérelmek küldését az Azure Search.
 
-+ [Postman-gyűjtemény](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/caselaw) előkészített kérések egy adatforrást, index, készségeitől és az indexelő létrehozása. Több objektumdefiníciók túl hosszúak tartalmazza az ebben a cikkben. Ez a gyűjtemény teljes egészében az index és indexmezők definíciók megtekintéséhez be kell szereznie.
++ [Postman-gyűjtemény](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Caselaw) előkészített kérések egy adatforrást, index, készségeitől és az indexelő létrehozása. Több objektumdefiníciók túl hosszúak tartalmazza az ebben a cikkben. Ez a gyűjtemény teljes egészében az index és indexmezők definíciók megtekintéséhez be kell szereznie.
 
 + [Mintaadatok Caselaw](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw) származó a [Caselaw hozzáférés projekt](https://case.law/bulk/download/) nyilvános adatok kötegelt letöltési oldalát. A gyakorlat, az első 10 dokumentumok, az első letöltés (Arkansas) használja. 10-dokumentum minta azt feltölteni a Githubra, ehhez a gyakorlathoz.
 
@@ -55,7 +55,7 @@ Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásn
 
 1. [Jelentkezzen be az Azure Portalon](https://portal.azure.com)lépjen az Azure storage-fiókot, kattintson a **Blobok**, és kattintson a **+ tároló**.
 
-1. [Hozzon létre egy blobtárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) mintaadatok tárolásához. A nyilvános hozzáférés szintje beállíthatja az érvényes értékek bármelyikére.
+1. [Hozzon létre egy blobtárolót](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) mintaadatok tárolásához. A tároló neve "caselaw-test" használja. A nyilvános hozzáférés szintje beállíthatja az érvényes értékek bármelyikére.
 
 1. A tároló létrehozása után nyissa meg és jelölje ki **feltöltése** a parancssávon.
 
@@ -66,19 +66,19 @@ Minden kérelemhez szükséges halasztása minden kérelemnél a szolgáltatásn
 
 ## <a name="set-up-postman"></a>A Postman beállítása
 
-Indítsa el a Postmant, és hozzon létre egy HTTP-kérelmet. Ha ismeri ezt az eszközt, tekintse meg [Ismerkedés az Azure Search REST API-k a postmannel](search-fiddler.md).
+Indítsa el a Postmant, és a Caselaw Postman-gyűjtemény importálása. Azt is megteheti állítsa be a HTTP-kérések egy sorozat. Ha ismeri ezt az eszközt, tekintse meg [Ismerkedés az Azure Search REST API-k a postmannel](search-fiddler.md).
 
-+ Ez az útmutató minden hívás érték-kérési metódus **POST**.
++ Ez az útmutató minden hívás érték-kérési metódus **PUT** vagy **POST**.
 + Kérelemfejlécek (2) a következők: "Content-type" értékre az "application/json", "api-key" értékre az "admin key" (adminisztrációs kulcs, elsődleges keresési kulcs helyőrzője) jelölik. 
 + Kérelem törzse hely, ahol elhelyezi a hívás tényleges tartalmát. 
 
   ![Részben strukturált keresés](media/search-semi-structured-data/postmanoverview.png)
 
-A postmannel, hogy a keresési szolgáltatás négy API-hívások egy adatforrást, egy index, a képességek alkalmazási lehetőségét és az indexelő létrehozása. Az adatforrás tartalmaz egy mutatót a storage-fiók és a JSON-adatokat. A keresési szolgáltatás lehetővé teszi a kapcsolatot, az adatok importálásakor.
+A postmannel, hogy a keresési szolgáltatás négy API-hívások egy adatforrást, egy index, a képességek alkalmazási lehetőségét és az indexelő - létrehozása ebben a sorrendben. Az adatforrás tartalmaz egy mutatót a JSON-adatok és az Azure storage-fiók. A keresési szolgáltatás lehetővé teszi a kapcsolatot, az adatok importálásakor.
 
 [Egy képességcsoport létrehozása](#create-skillset) Ez az útmutató célja van: azt adja meg a felderítési bővítést lépéseket, és hogyan rendszer megőrzi az adatokat a Tudásbázis-tárolóban.
 
-URL-cím végponthoz meg kell adnia az api-verziót és a egy hívás adja vissza egy **201 Created**. Az előzetes api-Version egy indexmezők Tudásbázis áruházbeli támogatása való létrehozásának `2019-05-06-Preview`.
+URL-cím végponthoz meg kell adnia az api-verziót és a egy hívás adja vissza egy **201 Created**. Az előzetes api-Version egy indexmezők Tudásbázis áruházbeli támogatása való létrehozásának `2019-05-06-Preview` (kis-és nagybetűket).
 
 A REST-ügyfélről hajtsa végre a következő API-hívások.
 
@@ -101,10 +101,10 @@ Az a hívás végpontja `https://[service name].search.windows.net/datasources?a
         "type": "azureblob",
         "subtype": null,
         "credentials": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your storage key>;EndpointSuffix=core.windows.net"
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT>;AccountKey=<YOUR-STORAGE-KEY>;EndpointSuffix=core.windows.net"
         },
         "container": {
-            "name": "<your blob container name>",
+            "name": "<YOUR-BLOB-CONTAINER-NAME>",
             "query": null
         },
         "dataChangeDetectionPolicy": null,
@@ -318,24 +318,23 @@ Az a hívás végpontja `https://[service name].search.windows.net/skillsets?api
    }
    ```
 
-3. Először állítsa be `cognitiveServices` és `knowledgeStore` kulcs és a kapcsolati karakterláncot. A példában ezek a karakterláncok találhatók a képességek alkalmazási lehetőségét definíciója után, a kérelem törzsében vége felé.
+3. Először állítsa be `cognitiveServices` és `knowledgeStore` kulcs és a kapcsolati karakterláncot. A példában ezek a karakterláncok találhatók a képességek alkalmazási lehetőségét definíciója után, a kérelem törzsében vége felé. Használja a Cognitive Services-erőforrás, az S0 csomag, Azure Search ugyanabban a régióban üzembe helyezve.
 
     ```json
     "cognitiveServices": {
         "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
-        "description": "<your cognitive services resource name>",
-        "key": "<your cognitive services key>"
+        "description": "YOUR-SAME-REGION-S0-COGNITIVE-SERVICES-RESOURCE",
+        "key": "YOUR-COGNITIVE-SERVICES-KEY"
     },
     "knowledgeStore": {
-        "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<your storage account name>;AccountKey=<your storage account key>;EndpointSuffix=core.windows.net",
+        "storageConnectionString": "YOUR-STORAGE-ACCOUNT-CONNECTION-STRING",
     ```
 
 3. Tekintse át a képességek gyűjteményhez, különösen a 85-ös és 170, sorok Shaper ismeretek jelölik. A Shaper szakértelem fontos, mert azt a Tudásbázis adatbányászati használni kívánt adatstruktúrák tartalomkiszolgálójáról. Képességcsoport a futtatás során ezen szerkezetek memórián belüli csak, de helyezi át a következő lépés, mivel láthatja, hogyan menthetők Ez a kimenet további feltárási Tudásbázis áruházbeli.
 
-   Az alábbi kódrészlet a 207-es sor van. 
+   Az alábbi kódrészlet 217 sor van. 
 
     ```json
-    {
     "name": "Opinions",
     "source": null,
     "sourceContext": "/document/casebody/data/opinions/*",
@@ -361,44 +360,46 @@ Az a hívás végpontja `https://[service name].search.windows.net/skillsets?api
                     "name": "EntityType",
                     "source": "/document/casebody/data/opinions/*/text/pages/*/entities/*/category"
                 }
-             ]
-          }
-     ]
-   }
+            ]
+        }
+    ]
    . . .
    ```
 
-3. Tekintse át a `projections` elemében `knowledgeStore`, már akár havi 253 sorban. Leképezések adja meg a Tudásbázis store összeállításban. Leképezések táblák-objektumok párok, de jelenleg csak egy időben vannak megadva. Amint láthatja, hogy az első leképezése a `tables` van megadva, de `objects` nem. A második ennek az ellenkezője.
+3. Tekintse át a `projections` elemében `knowledgeStore`, már akár havi 262 sorban. Leképezések adja meg a Tudásbázis store összeállításban. Leképezések táblák-objektumok párok, de jelenleg csak egy időben vannak megadva. Amint láthatja, hogy az első leképezése a `tables` van megadva, de `objects` nem. A második ennek az ellenkezője.
 
    Az Azure storage-ban táblákat hoz létre minden egyes létrehozott tábla a Table storage-ban, és az egyes objektumok egy tároló beolvasása a Blob storage-ban.
 
-   Objektumok általában a teljes kifejezés-felderítési bővítést tartalmaz. Táblák általában részleges végrehajtott információbeolvasás kombinációit, amelyek az adott célra rendezze el úgy a tartalmaznak. Ebben a példában esetek táblázatát jeleníti meg, de nem jelenik meg más táblákkal, mint az entitásokat, bírák és cselekedeteit.
+   BLOB-objektumok általában a teljes kifejezés-felderítési bővítést tartalmaz. Táblák általában részleges végrehajtott információbeolvasás kombinációit, amelyek az adott célra rendezze el úgy a tartalmaznak. Ez a példa bemutatja egy esetekben és a vélemények tábla, de nem jelennek meg entitások, ügyvédi, bírák és fél hasonlóan más táblák.
 
     ```json
     "projections": [
-    {
-        "tables": [
-            {
-              "tableName": "Opinions",
-              "generatedKeyName": "OpinionId",
-              "source": "/document/Case/OpinionsSnippets/*"
-            },
-          . . . 
-        ],
-        "objects": []
-    },
-    {
-        "tables": [],
-        "objects": [
-            {
-                "storageContainer": "enrichedcases",
-                "key": "/document/CaseFull/Id",
-                "source": "/document/CaseFull"
-            }
-          ]
+        {
+            "tables": [
+                {
+                    "tableName": "Cases",
+                    "generatedKeyName": "CaseId",
+                    "source": "/document/Case"
+                },
+                {
+                    "tableName": "Opinions",
+                    "generatedKeyName": "OpinionId",
+                    "source": "/document/Case/OpinionsSnippets/*"
+                }
+            ],
+            "objects": []
+        },
+        {
+            "tables": [],
+            "objects": [
+                {
+                    "storageContainer": "enrichedcases",
+                    
+                    "source": "/document/CaseFull"
+                }
+            ]
         }
-      ]
-    }
+    ]
     ```
 
 5. Küldje el a kérést. A következő választ kell kapnia **201-es** és megjelenítése a válasz első része, a következő példához hasonlóan néz ki.

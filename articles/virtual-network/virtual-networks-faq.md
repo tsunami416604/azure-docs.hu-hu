@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: bf36de1965a8c819af0ef5af98a2393d4cefa1b3
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b072314bdbec1d5a6184e6f20e98c35a9135a5b7
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205719"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508420"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Az Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -67,7 +67,9 @@ Igen. További információ a nyilvános IP-címtartomány: [hozzon létre egy v
 Igen. Lásd: [Azure korlátairól](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) részleteiről. Alhálózati címteret nem lehet átfedésben egymással.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Vannak ezen alhálózatok belüli IP-címek használatával korlátozások?
-Igen. Az Azure minden alhálózaton lefoglal 5 IP-címet. Minden egyes alhálózat első és utolsó IP-címét a protokollok megfelelősége érdekében, a x.x.x.1-x.x.x.3 minden egyes alhálózat címét, az Azure-szolgáltatásokhoz használt számára vannak fenntartva.
+Igen. Az Azure minden alhálózaton lefoglal 5 IP-címet. Ezek a x.x.x.0-x.x.x.3 és az alhálózat utolsó címét.    
+- protokoll megfelelési x.x.x.0 és az alhálózat utolsó cím van fenntartva.
+- x.x.x.1-x.x.x.3 mindegyik olyan alhálózatban, az Azure-szolgáltatásokra van fenntartva.
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>Hogyan kis- és milyen méretű lehet virtuális hálózatokat és alhálózatokat kell?
 A legkisebb támogatott alhálózat akár/29 méretű, és a legnagyobb /8 (CIDR alhálózati definíciók használatával).
@@ -200,7 +202,7 @@ Egyes Azure PaaS-szolgáltatások (például Azure Storage és Azure SQL Databas
 ### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>Áthelyezheti a virtuális hálózatok kívüli szolgáltatások?
 Nem. Szolgáltatások és virtuális hálózatok nem helyezhető át. Erőforrás áthelyezése egy másik virtuális hálózathoz, akkor törölje, és telepítse újra az erőforrás.
 
-## <a name="security"></a>Biztonság
+## <a name="security"></a>Biztonsági
 
 ### <a name="what-is-the-security-model-for-vnets"></a>Mi az a virtuális hálózatok biztonsági modellje?
 Virtuális hálózatok egymáshoz, és más az Azure infrastruktúra-ban üzemeltetett szolgáltatások elkülönülnek. Virtuális hálózat egy megbízhatósági kapcsolat határán.
@@ -225,7 +227,7 @@ Igen. További információ:
 - A PowerShell használatával telepített virtuális hálózatok kezelése a [Resource Manager](/powershell/module/az.network) és [klasszikus](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) üzembe helyezési modellel.
 - Az Azure parancssori felület (CLI) üzembe helyezése és kezelése a virtuális hálózatok használatával telepített a [Resource Manager](/cli/azure/network/vnet) és [klasszikus](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) üzembe helyezési modellel.  
 
-## <a name="vnet-peering"></a>Társviszony létesítése virtuális hálózatok között
+## <a name="vnet-peering"></a>VNet-társviszony
 
 ### <a name="what-is-vnet-peering"></a>Mi az virtuális hálózatok közötti társviszony?
 Virtuális hálózatok közötti társviszony-létesítés (vagy virtuális hálózatok közötti társviszony) lehetővé teszi, hogy a virtuális hálózatok összekapcsolása. Virtuális hálózatok közötti társviszony-létesítés virtuális hálózatok közötti kapcsolat lehetővé teszi őket közvetlenül a Microsoftnak IPv4-címeken keresztül közötti forgalom irányítására. A virtuális Társhálózatokba tartozó virtuális gépek kommunikálhatnak egymással, mintha ugyanazon a hálózaton belül vannak. Ezek a virtuális hálózatok ugyanabban a régióban vagy eltérő régiókban (más néven globális virtuális társhálózatok létesítésének) lehet. Azure-előfizetések virtuális Társhálózat-kapcsolatot is létrehozhatók.
@@ -242,13 +244,13 @@ A következő erőforrások alapszintű Terheléselosztók, ami azt jelenti, hog
 - Az Application Gateway (v1) SKU
 - Service Fabric
 - SQL MI
-- API platformoktól
+- API Management
 - Az Active Directory tartományi szolgáltatások (ADDS)
 - Logic Apps
 - HD Insight
 -   Azure Batch
 - AKS
-- App Service-környezet
+- App Service Environment-környezet
 
 Ezen erőforrás ExpressRoute- vagy VNet – VNet virtuális hálózati átjárók keresztül csatlakozhat.
 
@@ -281,6 +283,9 @@ Nem. Tranzitív társviszony-létesítés nem támogatott. Meg kell társviszony
 
 ### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Minden társviszony-kapcsolatok sávszélesség-korlátozások vannak?
 Nem. Virtuális hálózatok közötti társviszonyt, hogy a helyi vagy globális, sávszélesség-korlátozások nem ír elő. A sávszélesség csak korlátozza a virtuális gép vagy a számítási erőforrás.
+
+### <a name="how-can-i-troubleshoot-vnet-peering-issues"></a>Hogyan háríthatók el a virtuális hálózatok közötti Társviszony problémákat?
+Íme egy [hibaelhárító útmutatót] (https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues) próbálkozhat.
 
 ## <a name="virtual-network-tap"></a>Virtuális hálózat TAP-jai
 

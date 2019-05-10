@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: saurse
-ms.openlocfilehash: 031b3096d919eb3faadf907f0d30e15d8d8fb5e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6619611bee96089e465feb6f50d38caeada06dd9
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60246685"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472489"
 ---
 # <a name="restore-system-state-to-windows-server"></a>A Windows Server rendszerállapotának visszaállítása
 
@@ -27,7 +27,7 @@ Ez a cikk ismerteti a Windows Server rendszerállapotának biztonsági mentések
 
 
 ## <a name="recover-system-state-files-to-the-same-server"></a>Ugyanazon a kiszolgálón rendszerállapotfájlok
-A következő lépések bemutatják, hogyan szeretné visszaállítani a Windows Server-konfigurációs korábbi állapotába. A kiszolgáló konfigurációjának visszaállítása egy ismert, stabil állapotba, rendkívül fontos lehet. Az alábbi lépéseket a kiszolgáló rendszerállapotának visszaállítása egy Recovery Services-tárolót. 
+A következő lépések bemutatják, hogyan szeretné visszaállítani a Windows Server-konfigurációs korábbi állapotába. A kiszolgáló konfigurációjának visszaállítása egy ismert, stabil állapotba, rendkívül fontos lehet. Az alábbi lépéseket a kiszolgáló rendszerállapotának visszaállítása egy Recovery Services-tárolót.
 
 1. Nyissa meg a **Microsoft Azure Backup** beépülő modult. Ha nem tudja, ahol a beépülő modul telepítve van, keresse a számítógép vagy kiszolgáló **a Microsoft Azure Backup**.
 
@@ -45,7 +45,7 @@ A következő lépések bemutatják, hogyan szeretné visszaállítani a Windows
 
     ![Fájlok tallózása](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
-5. A naptárban lévő **kötet és dátum kiválasztása** panelen válasszon ki egy helyreállítási pontot. 
+5. A naptárban lévő **kötet és dátum kiválasztása** panelen válasszon ki egy helyreállítási pontot.
 
     Időben bármelyik helyreállítási pontra visszaállíthatja. A dátumok **félkövér** azt jelzik, legalább egy helyreállítási pont rendelkezésre állását. Ha dátum, akkor válassza, ha több helyreállítási pont érhető el, válassza az adott helyreállítási pontot a **idő** legördülő menüből.
 
@@ -91,11 +91,11 @@ Ezeket a lépéseket a használt terminológiával tartalmazza:
 5. Adja meg a tároló hitelesítő adatait tartalmazó fájlt, amely megfelel a *minta tároló*. Ha a tároló hitelesítőadat-fájlja érvénytelen (vagy lejárt), töltse le az új tárolói hitelesítő adatok fájlját a *minta tároló* az Azure Portalon. Miután a tároló hitelesítőadat-fájlja áll rendelkezésre, a Recovery Services-tárolót, a tároló hitelesítőadat-fájlja társított jelenik meg.
 
 6. A Backup-kiszolgáló kiválasztása panelen válassza ki a *forrásgép* megjelenített gépet a listából.
-7. A helyreállítási mód kiválasztása panelen válassza ki a **rendszerállapot** kattintson **tovább**. 
+7. A helyreállítási mód kiválasztása panelen válassza ki a **rendszerállapot** kattintson **tovább**.
 
     ![Keresés](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
-8. A naptárban lévő a **kötet és dátum kiválasztása** panelen válasszon ki egy helyreállítási pontot. Időben bármelyik helyreállítási pontra visszaállíthatja. A dátumok **félkövér** azt jelzik, legalább egy helyreállítási pont rendelkezésre állását. Ha dátum, akkor válassza, ha több helyreállítási pont érhető el, válassza az adott helyreállítási pontot a **idő** legördülő menüből. 
+8. A naptárban lévő a **kötet és dátum kiválasztása** panelen válasszon ki egy helyreállítási pontot. Időben bármelyik helyreállítási pontra visszaállíthatja. A dátumok **félkövér** azt jelzik, legalább egy helyreállítási pont rendelkezésre állását. Ha dátum, akkor válassza, ha több helyreállítási pont érhető el, válassza az adott helyreállítási pontot a **idő** legördülő menüből.
 
     ![Elemek keresése](./media/backup-azure-restore-system-state/select-date.png)
 
@@ -107,13 +107,13 @@ Ezeket a lépéseket a használt terminológiával tartalmazza:
 
     A beállítás **példányt hoz létre, így mindkét verziót kell**, egyes fájlokon másolatát hozza létre a rendszerállapot fájl meglévő archívumot a a teljes rendszerállapot-archívum másolatot létrehozása helyett.
 
-11. Ellenőrizze a részleteket a megerősítési panelen helyreállítás, és kattintson a **helyreállítása**. 
+11. Ellenőrizze a részleteket a megerősítési panelen helyreállítás, és kattintson a **helyreállítása**.
 
     ![a helyreállítás gombra kattintva erősítse meg a helyreállítási folyamat](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 12. Másolás a *WindowsImageBackup* könyvtárat a kiszolgáló nem kritikus fontosságú kötetre (például D:\). A Windows operációs rendszer kötet általában a kritikus kötet a.
 
-13. A helyreállítási folyamat végrehajtásához, használja a következő szakaszt [a alkalmazni a visszaállított rendszerállapot-fájlokat a Windows Server](backup-azure-restore-system-state.md#apply-restored-system-state-on-a-windows-server).
+13. A helyreállítási folyamat végrehajtásához, használja a következő szakaszt [a alkalmazni a visszaállított rendszerállapot-fájlokat a Windows Server](#apply-restored-system-state-on-a-windows-server).
 
 
 
@@ -143,7 +143,7 @@ Egyszer helyreállított rendszerállapot-fájlként az Azure Recovery Services 
 
    ![helyreállítása egy másik kiszolgálóra](./media/backup-azure-restore-system-state/backup-stored-in-diff-location.png)
 
-6. A tárhely típusának megadása esetén válassza ki a **távoli megosztott mappa** , ha a rendszerállapot biztonsági mentése volt vissza egy másik kiszolgálóra. Ha a rendszerállapot helyileg volt helyreállítva, akkor válasszon **helyi meghajtók**. 
+6. A tárhely típusának megadása esetén válassza ki a **távoli megosztott mappa** , ha a rendszerállapot biztonsági mentése volt vissza egy másik kiszolgálóra. Ha a rendszerállapot helyileg volt helyreállítva, akkor válasszon **helyi meghajtók**.
 
     ![Válassza ki a helyi kiszolgálón vagy egy másik helyreállítás](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
 
@@ -171,7 +171,7 @@ A rendszerállapot biztonsági mentése az Active Directory-adatokat tartalmaz. 
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Sikertelen rendszerállapot-visszaállítás hibaelhárítása
 
-Az előző folyamat során a rendszer állapotának alkalmazása nem sikeres, ha a Windows helyreállítási környezet (Win-RE) használatával a Windows Server helyreállítása. A következő lépések azt ismertetik, hogyan nyerhet RE használatával állítsa helyre. Használja ezt a beállítást csak akkor, ha a Windows Server normál esetben nem töltődik a rendszerállapot-visszaállítás után. A következő folyamat törli a nem rendszer-adatokat, körültekintően járjon el. 
+Az előző folyamat során a rendszer állapotának alkalmazása nem sikeres, ha a Windows helyreállítási környezet (Win-RE) használatával a Windows Server helyreállítása. A következő lépések azt ismertetik, hogyan nyerhet RE használatával állítsa helyre. Használja ezt a beállítást csak akkor, ha a Windows Server normál esetben nem töltődik a rendszerállapot-visszaállítás után. A következő folyamat törli a nem rendszer-adatokat, körültekintően járjon el.
 
 1. A Windows Server indítsa el a Windows helyreállítási környezet (Windows RE).
 

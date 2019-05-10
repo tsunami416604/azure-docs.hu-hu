@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: d8644c2c0d4ee5b6ee4dcf16e470e4f2fa478237
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 0275d27a0a27d0279886f6f7fd15b14d312a44ea
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023724"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472008"
 ---
 # <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Írási és az adatokat az Azure Machine Learning Data Prep SDK konfigurálása
 
@@ -25,6 +25,7 @@ Ebből a cikkből megtudhatja, különböző módszerekkel használata az adatok
 
 > [!Important]
 > Ha egy új megoldást épít, próbálja meg a [Azure Machine Learning adatkészletek](how-to-explore-prepare-data.md) (előzetes verzió) az adatok, a pillanatkép adatainak átalakításához, és tárolja a rendszerverzióval ellátott adatkészlet-definíciókban. Az adatkészletek az adatelőkészítés adatkészleteket az AI-megoldások kezelésével kapcsolatos bővített funkciókat kínáló, SDK következő verziójában.
+> Ha használja a `azureml-dataprep` az átalakítások használata helyett hozzon létre egy adatfolyam-csomagot a `azureml-datasets` csomagot hozhat létre adatkészletet, nem tud majd pillanatképekkel vagy a verzióval ellátott adatkészletek későbbi használat céljából.
 
 Mivel ebben az esetben nincs korlátozás hány írása lépéseket egy folyamatban vannak, könnyen adhat hozzá további írási lépéseket a köztes eredményeket hibaelhárítási vagy egyéb folyamatokhoz.
 

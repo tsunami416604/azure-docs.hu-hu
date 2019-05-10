@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: ce6fc0a90ad093a6bba5a4720777e409202c73ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 43dd8be998e0f8f3b5a2b783c6a01d5b5ef3da12
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61479374"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506927"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Megismerheti a Stream Analytics-feladat figyelése és lekérdezések figyelése
 
@@ -38,8 +38,8 @@ Az ablakban látható módon jelenik meg:
 | Függvénykérések      | Az Azure Machine Learning-függvény (ha van ilyen)-hívások száma. |
 | A deszerializálás bemeneti hibái       | Nem sikerült deszerializálni a bemeneti események számát.  |
 | Bemeneti esemény bájtokban      | A Stream Analytics-feladatot (bájt) által fogadott adatok mennyisége. Ez használható ellenőrzése, hogy a bemeneti forrás eseményt kap. |
-| Bemeneti események           | A bemeneti események deszerializálni rekordok száma. |
-| Fogadott bemeneti források       | A feladat által fogadott események száma. Ez használható ellenőrzése, hogy a bemeneti forrás eseményt kap. |
+| Bemeneti események           | A bemeneti események deszerializálni rekordok száma. Ez a szám nem tartalmazza a bejövő eseményeket, amelyek a deszerializálási hibákat eredményezhet. |
+| Fogadott bemeneti források       | A feladat által fogadott üzenetek száma. Az Eseményközpontok felé egy üzenet egy egyetlen EventData. BLOB egy üzenet egy blobot. Vegye figyelembe, hogy a bemeneti források előtt deszerializálás bájtjai számítanak. Deszerializálási hiba van, ha a bemeneti források lehet nagyobb, mint a bemeneti események. Ellenkező esetben lehet kisebb vagy egyenlő a bemeneti események, mivel egyes üzeneteket több esemény is tartalmazhat. |
 | Késedelmes bemeneti események      | Később, mint a beállított késői érkezési tolerancia ablak érkező események. Tudjon meg többet [Azure Stream Analytics esemény rendelés szempontok](stream-analytics-out-of-order-and-late-events.md) . |
 | Kimenő soron kívüli események    | Fogadott lettek eldobva, vagy egy módosított időbélyeget, az esemény rendezése házirend alapján adott üzemen kívüli események száma. Ez lehet negatív hatással lehet a konfigurációs beállítás Out of rendelés tolerancia ablakban. |
 | Kimeneti események          | A kimeneti tárolóhoz az események száma a Stream Analytics-feladat által küldött adatok mennyisége. |

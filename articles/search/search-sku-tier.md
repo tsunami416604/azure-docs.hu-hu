@@ -7,15 +7,15 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3e813b8a1709675d0d870d64df83428ab82e25b3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5b9e0dfb88c979618ce4cc5ed56e372cb0f65608
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024295"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472723"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Válasszon egy tarifacsomagot az Azure Search
 
@@ -89,7 +89,7 @@ Díjak terhelik kimenő különböző régiókban lévő szolgáltatások eseté
 
 ### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3. AI-bővített indexelés kognitív szolgáltatások használata
 
-A [mesterséges indexeléshez a Cognitive Services](cognitive-search-concept-intro.md), meg kell terveznie csatolására számlázható Cognitive Services-erőforrás, az S0 tarifacsomag utólagos feldolgozás céljából. Díjmentes "rögzített" társított csatolása a Cognitive Services. Csak kell fizetnie kell a feldolgozása.
+A [mesterséges indexeléshez a Cognitive Services](cognitive-search-concept-intro.md), meg kell terveznie a számlázható Cognitive Services-erőforrás, ugyanabban a régióban, az Azure Search, a használatalapú fizetéses feldolgozási S0 tarifacsomagjának csatolására. Díjmentes "rögzített" társított csatolása a Cognitive Services. Csak kell fizetnie kell a feldolgozása.
 
 Kép kinyerési dokumentumfeltörést során egy Azure Search számolunk fel, a számlázás a dokumentumok kinyert lemezképek száma alapján. Szövegkinyerés jelenleg díjmentes. 
 

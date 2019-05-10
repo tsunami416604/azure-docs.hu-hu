@@ -12,19 +12,19 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b8cba8d0a400efb720d8374cdca886a2a638938
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: db23c8af7eaa4a86691ccb0bb831ce2cc28d635c
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023792"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471835"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Adatok átalakítása a az Azure Machine Learning Data Prep SDK segítségével
 
-Ebben a cikkben megismerheti az Azure Machine Learning Data Prep SDK használatával az adatok átalakítása a különböző módszereket. Az SDK-t kínál, amelyek megkönnyítik az egyszerű oszlopok hozzáadása, szűrje ki a nem kívánt sorokra vagy oszlopokra és imputálására hiányzó funkciók. Az SDK dokumentációja, olvassa el a [áttekintése](https://aka.ms/data-prep-sdk).
+Ebből a cikkből megtudhatja, átalakítja az adatokat a különböző módszereket a `azureml-dataprep` csomagot. A csomag kínál, amelyek megkönnyítik az egyszerű oszlopok hozzáadása, szűrje ki a nem kívánt sorokra vagy oszlopokra és imputálására hiányzó funkciók. Tekintse meg a teljes dokumentációja a [azureml-adatelőkészítés csomag](https://aka.ms/data-prep-sdk).
 
 > [!Important]
-> Ha egy új megoldást épít, próbálja meg a [Azure Machine Learning adatkészletek](how-to-explore-prepare-data.md) (előzetes verzió) az adatok, a pillanatkép adatainak átalakításához, és tárolja a rendszerverzióval ellátott adatkészlet-definíciókban. Az adatkészletek az adatelőkészítés adatkészleteket az AI-megoldások kezelésével kapcsolatos bővített funkciókat kínáló, SDK következő verziójában.
+> Ha egy új megoldást épít, próbálja meg a [Azure Machine Learning adatkészletek](how-to-explore-prepare-data.md) (előzetes verzió) az adatok, a pillanatkép adatainak átalakításához, és tárolja a rendszerverzióval ellátott adatkészlet-definíciókban. Az adatkészletek az adatelőkészítés adatkészleteket az AI-megoldások kezelésével kapcsolatos bővített funkciókat kínáló, SDK következő verziójában. Ha használja a `azureml-dataprep` az átalakítások használata helyett hozzon létre egy adatfolyam-csomagot a `azureml-datasets` csomagot hozhat létre adatkészletet, nem tud majd pillanatképekkel vagy a verzióval ellátott adatkészletek későbbi használat céljából.
 
 Ebben az útmutatóban példát a következő feladatokhoz:
 
@@ -229,10 +229,10 @@ builder.preview(skip=75, count=5)
 ||DATE|date_timerange|
 |-----|-----|-----|
 |0|1/3/2015 7:00|2015 január 3-6: 00 - 8 -kor|
-|1|1/3/2015 7:54|2015 január 3-6: 00 - 8 -kor|
-|2|1/29/2015 6:54|None|
-|3|1/29/2015 7:00|None|
-|4|1/29/2015 7:54|None|
+|1.|1/3/2015 7:54|2015 január 3-6: 00 - 8 -kor|
+|2|1/29/2015 6:54|Egyik sem|
+|3|1/29/2015 7:00|Egyik sem|
+|4|1/29/2015 7:54|Egyik sem|
 
 ```python
 builder.add_example(source_data=dflow.iloc[77], example_value='Jan 29, 2015 6AM-8AM')
@@ -242,7 +242,7 @@ builder.preview(skip=75, count=5)
 ||DATE|date_timerange|
 |-----|-----|-----|
 |0|1/3/2015 7:00|2015 január 3-6: 00 - 8 -kor|
-|1|1/3/2015 7:54|2015 január 3-6: 00 - 8 -kor|
+|1.|1/3/2015 7:54|2015 január 3-6: 00 - 8 -kor|
 |2|1/29/2015 6:54|2015. január 29-én 6: 00 - 8 -kor|
 |3|1/29/2015 7:00|2015. január 29-én 6: 00 - 8 -kor|
 |4|1/29/2015 7:54|2015. január 29-én 6: 00 - 8 -kor|
@@ -500,5 +500,4 @@ dflow.head(2)
 
 ## <a name="next-steps"></a>További lépések
 
-* Lásd: az SDK [áttekintése](https://aka.ms/data-prep-sdk) tervezési minták és használati példák
 * Tekintse meg az Azure Machine Learning Data Prep SDK [oktatóanyag](tutorial-data-prep.md) példa egy adott forgatókönyv megoldása

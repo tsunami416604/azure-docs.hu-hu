@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1736b120b60ab6583a3c38bb13c985d312c021b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: fb05ee4d6e05cb8b56756a761a519e5903b78bbd
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190944"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507094"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Mik azok az alapértelmezett felhasználói engedélyek az Azure Active Directoryban?
 Az Azure Active Directoryban (Azure AD-ban) minden felhasználóhoz alapértelmezett engedélyek készlete tartozik. A felhasználók hozzáférése a felhasználó típusát áll a [szerepkör-hozzárendelések](active-directory-users-assign-role-azure-portal.md), és az egyes objektumok tulajdonjogának. Ez a cikk az alapértelmezett engedélyeket ismerteti, valamint összehasonlítja a tag- és vendégfelhasználók alapértelmezett beállításait. Az alapértelmezett felhasználói engedélyek csak a felhasználói beállítások módosítható az Azure ad-ben.
@@ -50,7 +50,7 @@ A tagfelhasználók alapértelmezett engedélyeinek korlátozására az alábbi 
 Engedély | Magyarázat beállítása
 ---------- | ------------
 Felhasználók regisztrálhatják-alkalmazás | Ezt a beállítást nem megakadályozza, hogy a felhasználók az alkalmazást az alkalmazásregisztrációk hozza létre. Lehetővé teszi majd adható vissza a megadott személyeknek a alkalmazásfejlesztő szerepkör hozzáadásával.
-Munkahelyi vagy iskolai fiók és a LinkedIn összekapcsolásának engedélyezése a felhasználóknak | Ezt a beállítást nem megakadályozza, hogy a felhasználók munkahelyi vagy iskolai fiókjával kapcsolódjon a saját LinkedIn-fiók.  Lásd: [LinkedIn-fiók kapcsolatok az adatok megosztása és jóváhagyás](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/linkedin-user-consent) további információt.
+Munkahelyi vagy iskolai fiók és a LinkedIn összekapcsolásának engedélyezése a felhasználóknak | Ezt a beállítást nem megakadályozza, hogy a felhasználók munkahelyi vagy iskolai fiókjával kapcsolódjon a saját LinkedIn-fiók.  Lásd: [LinkedIn-fiók kapcsolatok az adatok megosztása és jóváhagyás](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent) további információt.
 Biztonsági csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre biztonsági csoportokat. A globális rendszergazdák és felhasználói rendszergazdák is létrehozhatnak biztonsági csoportokat. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md).
 Office 365-csoportok létrehozásának képessége | Ha e beállítás értéke Nem, akkor a felhasználók nem hozhatnak létre Office 365-csoportokat. Ha e beállítás értéke Néhány, akkor egyes kiválasztott felhasználók létrehozhatnak Office 365-csoportokat. A globális rendszergazdák és felhasználói rendszergazdák továbbra is képesek lesznek az Office 365-csoportok létrehozásához. További tudnivalók: [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](../users-groups-roles/groups-settings-cmdlets.md).
 Az Azure AD felügyeleti portálhoz való hozzáférés korlátozása | Ezt a beállítást nem megakadályozza, hogy a felhasználók hozzáférését az Azure Active Directoryban.

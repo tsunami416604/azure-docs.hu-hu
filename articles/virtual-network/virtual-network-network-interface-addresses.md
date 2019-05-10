@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: a6635b811dfa9c46facfffee1c57b2871cb4c738
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4582f7be8e48e493a1adcb8ffc6c3a8bfe43a58e
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719701"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506379"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hozzáadása, módosítása vagy törlése az Azure-beli hálózati adapter IP-címek
 
@@ -28,7 +28,7 @@ Ismerje meg, hogyan hozzáadása, módosítása és eltávolítása a nyilvános
 
 Ha meg kell létrehozása, módosítása vagy törlése egy hálózati adapter, olvassa el a [egy hálózati adapter kezelése](virtual-network-network-interface.md) cikk. Ha szeretné a hálózati adapterek hozzáadása vagy eltávolítása a hálózati adaptereket a virtuális gépről, olvassa el a [hozzáadása vagy eltávolítása a hálózati adapterek](virtual-network-network-interface-vm.md) cikk.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -63,7 +63,7 @@ Hozzáadhat több [privát](#private) és [nyilvános](#public) [IPv4](#ipv4) sz
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
+|CLI|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
 
 ## <a name="change-ip-address-settings"></a>IP-cím beállításainak módosítása
@@ -84,7 +84,7 @@ Előfordulhat, hogy kell az IPv4-cím, a hozzárendelési módszer módosítás�
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
+|CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="remove-ip-addresses"></a>Távolítsa el az IP-címek
@@ -100,7 +100,7 @@ Eltávolíthatja [privát](#private) és [nyilvános](#public) IP-címek a hál�
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic ip-config delete](/cli/azure/network/nic/ip-config)|
+|CLI|[az network nic ip-config delete](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Remove-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
 
 ## <a name="ip-configurations"></a>IP-konfigurációk
@@ -170,12 +170,12 @@ Dinamikus magánhálózati IPv4- és IPv6-alapú (nem kötelező) címek alapér
 - **Csak nyilvános**: Az Azure egyedi tartományból a címet rendel minden egyes Azure-régióban. Ha szeretné megtudni, melyik címtartományok egyes régiókban vannak rendelve, lásd: [a Microsoft Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653). A cím módosíthatja, ha egy virtuális gép van leállítva (felszabadítva), majd újra elindult. Nyilvános IPv6-cím nem rendelhető hozzá egy IP-konfigurációt vagy hozzárendelési módszer használatával.
 - **Csak privát**: Az Azure fenntart minden egyes alhálózat címtartományának első négy címét, és a címek nem osztja ki. Az Azure az alhálózat címtartományának egyik erőforrásához rendeli hozzá a következő elérhető címet. Például, ha az alhálózat címtartománya 10.0.0.0/16, és a 10.0.0.0.4-10.0.0.14 közötti címek már hozzá lettek rendelve (a .0–.3 címek fenn vannak tartva), az Azure az erőforráshoz rendeli a 10.0.0.15 címet. Az alapértelmezett lefoglalási módszer a dinamikus. Kiosztás után a dinamikus IP-címek csak a hálózati adapter törlésekor, a virtuális hálózaton belüli másik alhálózatra történő kiosztáskor vagy a kiosztási módszer statikusra váltása és másik IP-cím megadása esetén szabadulnak fel. Alapértelmezés szerint, amikor a lefoglalási módszert dinamikusról statikusra váltja, az Azure statikus címként osztja ki az előzőleg dinamikusan kiosztott címet. Hozzárendelhet egy magánhálózati IPv6-címet, a dinamikus hozzárendelési módszer használatával.
 
-### <a name="static"></a>Statikus
+### <a name="static"></a>Statikus tartalom
 
 (Opcionális) egy nyilvános vagy magánhálózati statikus IPv4-címet rendelhet egy IP-konfigurációt. Nem rendelhető hozzá egy statikus nyilvános vagy magánhálózati IPv6-címet az IP-konfigurációjához. Milyen az Azure hozzárendeli az statikus nyilvános IPv4-címeket kapcsolatos további információkért lásd: [nyilvános IP-címek](virtual-network-public-ip-address.md).
 
 - **Csak nyilvános**: Az Azure egyedi tartományból a címet rendel minden egyes Azure-régióban. Letöltheti a tartományok (előtagok) listáját az Azure [nyilvános](https://www.microsoft.com/download/details.aspx?id=56519), valamint [US government](https://www.microsoft.com/download/details.aspx?id=57063), [China](https://www.microsoft.com/download/details.aspx?id=57062) és [Germany](https://www.microsoft.com/download/details.aspx?id=57064) felhője esetében. A cím nem módosul, amíg nem törlik a nyilvános IP-cím erőforrás van hozzárendelve, vagy a dinamikus megváltozott a hozzárendelési módszer. A nyilvános IP-cím erőforrás-t hozzárendelik egy IP-konfigurációhoz, ha az IP-konfigurációja a hozzárendelési módszer módosítása előtt kell leválasztása.
-- **Csak privát**: Válassza ki, és az alhálózat címtartománya-címet hozzárendelni. A hozzárendelt cím az alhálózat címtartományán belül bármilyen cím lehet, amely nem tartozik az alhálózat címtartományának első négy címébe, és nincs hozzárendelve más erőforráshoz az alhálózatban. A statikus címek csak egy hálózati adapter törlése esetén szabadulnak fel. Amennyiben a kiosztási módszert statikusra váltja, az Azure az előzőleg hozzárendelt statikus IP-címeket dinamikus IP-címként osztja ki akkor is, ha a cím nem az alhálózat címtartományának következő elérhető címe. A cím akkor is megváltozik, ha a hálózati adapter ugyanazon a virtuális hálózaton belül egy másik alhálózathoz lesz kiosztva, de ahhoz, hogy a hálózati adaptert egy másik alhálózathoz ossza ki, a kiosztási módszert először statikusról dinamikusra kell váltani. Miután hozzárendelte a hálózati adaptert egy másik alhálózathoz, a kiosztási módszer visszaváltható statikusra, és hozzárendelhet egy IP-címet az új alhálózat címtartományából.
+- **Csak privát**: Válassza ki, és az alhálózat címtartománya-címet hozzárendelni. A hozzárendelt cím az alhálózat címtartományán belül bármilyen cím lehet, amely nem tartozik az alhálózat címtartományának első négy címébe, és nincs hozzárendelve más erőforráshoz az alhálózatban. A statikus címek csak egy hálózati adapter törlése esetén szabadulnak fel. Ha módosítja a kiosztási módszert statikusra, Azure dinamikusan rendeli hozzá a korábban kiosztott dinamikus IP-cím statikus címként, még akkor is, ha a cím nem az alhálózat címtartományának következő elérhető címe. A cím akkor is megváltozik, ha a hálózati adapter ugyanazon a virtuális hálózaton belül egy másik alhálózathoz lesz kiosztva, de ahhoz, hogy a hálózati adaptert egy másik alhálózathoz ossza ki, a kiosztási módszert először statikusról dinamikusra kell váltani. Miután hozzárendelte a hálózati adaptert egy másik alhálózathoz, a kiosztási módszer visszaváltható statikusra, és hozzárendelhet egy IP-címet az új alhálózat címtartományából.
 
 ## <a name="ip-address-versions"></a>IP-cím verziója
 
@@ -204,7 +204,7 @@ Az alapszintű vagy standard termékváltozatú nyilvános IP-cím jön létre. 
 ## <a name="next-steps"></a>További lépések
 Hozzon létre egy virtuális gépet másik IP-konfigurációval, olvassa el a következő cikkeket:
 
-|Tevékenység|Eszköz|
+|Feladat|Eszköz|
 |---|---|
 |Több hálózati adapterrel rendelkező virtuális gép létrehozása|[Parancssori felület](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 |Hozzon létre egy egyetlen hálózati adapterrel rendelkező virtuális több IPv4-cím|[Parancssori felület](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|

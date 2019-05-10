@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/22/2019
-ms.openlocfilehash: e7a664be48d1e26e09faf4f330fd1267ec003315
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 04/30/2019
+ms.openlocfilehash: 60cefe24feab9de4262e81eb1bc313aeadc7eb05
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685599"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409252"
 ---
 # <a name="quickstart-install-ansible-on-linux-virtual-machines-in-azure"></a>Gyors útmutató: Az Azure-beli Linuxos virtuális gépeken az Ansible telepítése
 
@@ -21,8 +21,8 @@ Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfi
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../../includes/open-source-devops-prereqs-azure-subscription.md)]
-- [!INCLUDE [open-source-devops-prereqs-create-sp.md](../../../includes/open-source-devops-prereqs-create-service-principal.md)]
+[!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [open-source-devops-prereqs-create-sp.md](../../../includes/open-source-devops-prereqs-create-service-principal.md)]
 - **Hozzáférés a Linuxhoz vagy egy Linux rendszerű virtuális géphez** – Ha nem rendelkezik Linux rendszerű géppel, hozzon létre egy [Linux rendszerű virtuális gépet](/azure/virtual-network/quick-create-cli).
 
 ## <a name="install-ansible-on-an-azure-linux-virtual-machine"></a>Az Ansible telepítése Azure-beli Linux rendszerű virtuális gépeken
@@ -155,7 +155,7 @@ Ebben a szakaszban exportálja a szolgáltatás hitelesítő adatait az Ansible 
     export AZURE_TENANT=<security-principal-tenant>
     ```
 
-## <a name="verify-the-configuration"></a>A konfiguráció ellenőrzése
+## <a name="verify-the-configuration"></a>Ellenőrizze
 
 A sikeres konfigurációjának ellenőrzéséhez az Ansible használatával hozzon létre egy Azure-erőforráscsoportot.
 

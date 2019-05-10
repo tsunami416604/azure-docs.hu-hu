@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 05/08/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: ea2381287729579e10d457912c4147f59716bcc4
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 2c596b49d5587b07fe75cefde72e897478dc3dc8
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875711"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472092"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>A QnA Maker interaktív módon a Tudásbázis tesztelése
 
@@ -24,14 +24,10 @@ A QnA Maker Tudásbázis tesztelése egy, a visszaadott válaszokat pontosságá
 
 ## <a name="test-answer-matching"></a>Válasz megfelelő tesztelése
 
-1.  A Tudásbázis eléréséhez válassza a neve a a **saját tudásbázisok** lapot.
-2.  A teszt dia kibővített panel eléréséhez, válassza ki a **teszt** az alkalmazás tetején található.
-
-    ![Teszt panel eléréséhez](../media/qnamaker-how-to-test-kb/access-test.png)
-
-3.  Adjon meg egy lekérdezést a szövegmezőbe, és nyomja le az Enter.
-
-4.  A Tudásbázis a legjobban megfelelő választ ad vissza, a válaszban.
+1. A Tudásbázis eléréséhez válassza a neve a a **saját tudásbázisok** lapot.
+1. A teszt dia kibővített panel eléréséhez, válassza ki a **teszt** az alkalmazás tetején található.
+1. Adjon meg egy lekérdezést a szövegmezőbe, és nyomja le az Enter.
+1. A Tudásbázis a legjobban megfelelő választ ad vissza, a válaszban.
 
 ## <a name="clear-test-panel"></a>Egyértelmű teszt panel
 
@@ -65,14 +61,20 @@ Egy adott válasz egy kérdést alternatív formáját is hozzáadhat. Írja be 
 
 ## <a name="add-a-new-answer"></a>Adjon hozzá egy új válasz
 
-Új válasz is hozzáadhat, ha minden meglévő választ egyezést mutató helytelen, vagy a válasz nem szerepel a Tudásbázis (nem jó egyezés található a KB-ban). A mezőben adja meg az új aktuális kérdésre adott válasz, és nyomja le az enter hozzáadáshoz. 
+Új válasz is hozzáadhat, ha minden meglévő választ egyezést mutató helytelen, vagy a válasz nem szerepel a Tudásbázis (nem jó egyezés található a KB-ban). 
 
-Válassza ki **mentéséhez és a vonat** segítségével őrzi meg a választ. Kérdés-válasz párokat már hozzá van adva a tudásbázist.
+A válaszok lista alján a szövegmező használatával adjon meg egy új válasz, és nyomja le az enter hozzáadáshoz. 
 
-![Új kérdést és választ pár hozzáadása](../media/qnamaker-how-to-test-kb/add-answer.png)
+Válassza ki **mentéséhez és a vonat** segítségével őrzi meg a választ. Kérdés-válasz párokat már hozzá van adva a tudásbázist. 
 
 > [!NOTE]
 > A Tudásbázis minden módosítását csak mentette amikor lenyomja a **mentéséhez és a vonat** gombra.
+
+## <a name="test-the-published-knowledge-base"></a>A közzétett Tudásbázis tesztelése
+
+A közzétett verziót a Tudásbázis tesztelheti a teszt panelt. Miután közzétette a KB, válassza ki a **közzétett KB** mezőbe, és lekérdezi az adatait a közzétett KB.
+
+![Egy közzétett KB-os elleni tesztelése](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
 
 ## <a name="next-steps"></a>További lépések
 

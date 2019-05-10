@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: cawa
-ms.openlocfilehash: 6b60e03c8888ad2c9726116f1f3b2e49d9a4e1e8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9763a14e84d88be1d6f09fb9f16b6b7c9eeffd2d
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722736"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506429"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Biztonságosan a webalkalmazás titkos alkalmazás beállításainak mentése
 
@@ -49,14 +49,16 @@ Ha fejleszt egy projektet, és biztonságosan megosztani a forráskódot, haszn�
 
     ![Adja hozzá a Key Vault titkos kulcsából](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
-4. Telepítse a [Visual Studióhoz készült Azure-szolgáltatások hitelesítési bővítmény](https://go.microsoft.com/fwlink/?linkid=862354). Ez a bővítmény keresztül az alkalmazás hozzáférhessen a Key Vault használatával a Visual Studio bejelentkezési identitás.
-
-5. A következő NuGet-csomagok hozzáadása a projekthez:
+    > [!NOTE] 
+    > A Visual Studio 2017 V15.6 előtt használtuk az Azure-szolgáltatások hitelesítési bővítmény telepítése a Visual Studio javasoljuk. Elavult, de most a funcionality integrálva van a Visual Studión belül. Ezért ha egy régebbi verziója a visual Studio 2017-et használ, javasoljuk, hogy legalább frissítését VS 2017 15,6 vagy beállítása, hogy elérje a Key vault használatával a Visual Studio bejelentkezési identitás magát és natív módon használhatja ezt a funkciót.
+    >
+ 
+4. A következő NuGet-csomagok hozzáadása a projekthez:
 
     ```
     Microsoft.Azure.Services.AppAuthentication
     ```
-6. Adja hozzá a következő kódot a Program.cs fájlban:
+5. Adja hozzá a következő kódot a Program.cs fájlban:
 
     ```csharp
     public static IWebHost BuildWebHost(string[] args) =>
@@ -79,11 +81,11 @@ Ha fejleszt egy projektet, és biztonságosan megosztani a forráskódot, haszn�
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-7. A Key Vault URL-címe hozzá launchsettings.json fájlt. A környezeti változó neve *KEYVAULT_ENDPOINT* a 6. lépésben hozzáadott kód van definiálva.
+6. A Key Vault URL-címe hozzá launchsettings.json fájlt. A környezeti változó neve *KEYVAULT_ENDPOINT* a 6. lépésben hozzáadott kód van definiálva.
 
     ![Key Vault URL-cím hozzáadása a projekt környezeti változó](./media/vs-secure-secret-appsettings/add-keyvault-url.png)
 
-8. Hibakeresés a projektben. Sikeresen fusson.
+7. Hibakeresés a projektben. Sikeresen fusson.
 
 ## <a name="aspnet-and-net-applications"></a>ASP.NET and .NET applications
 

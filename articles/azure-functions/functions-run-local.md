@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 14990cd4a066c126b5e4d498c5a109dac1b8820a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 55c5a61be8dadd538b73bd6378c030b98d837341
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65140939"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508230"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -193,13 +193,7 @@ A fájl local.settings.json Alkalmazásbeállítások, a kapcsolati karakterlán
 | **`CORS`** | Meghatározza az engedélyezett eredetek [eltérő eredetű erőforrások megosztása (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Források szóközök nélküli szövegláncként egy vesszővel tagolt lista formájában vannak megadva. A helyettesítő karaktert tartalmazó értéket (\*) támogatott, amely lehetővé teszi a kérelmek bármilyen forrásból. |
 | **`ConnectionStrings`** | Ne használja a gyűjtemény a kapcsolati karakterláncokat a függvénykötésnek használják. Ez a gyűjtemény csak használják, amely általában a kapcsolati karakterláncok keretrendszereket a `ConnectionStrings` szakaszában egy konfigurációs fájlba, például [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Kapcsolati karakterláncok ezt az objektumot a rendszer felveszi a környezetbe, a szolgáltató típusát [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Ebben a gyűjteményben lévő elemek az Azure-ban nincs közzétéve a többi alkalmazás beállításokkal. Ezekre az értékekre, explicit módon kell hozzáadnia a `Connection strings` gyűjteménye, a függvényalkalmazás-beállításokat. Létrehozásakor egy [ `SqlConnection` ](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) a függvénykódban, tárolja a kapcsolati karakterlánc értékét a **Alkalmazásbeállítások** a portálon a kapcsolatokkal. |
 
-A függvény alkalmazás beállítások értékeit is elolvashatja a kódban környezeti változókként. További információkért tekintse meg a környezeti változók szakaszban az alábbi nyelvspecifikus referencia-témakörök:
-
-* [C# előre lefordított](functions-dotnet-class-library.md#environment-variables)
-* [C# script (.csx)](functions-reference-csharp.md#environment-variables)
-* [F#parancsprogram (.fsx)](functions-reference-fsharp.md#environment-variables)
-* [Java](functions-reference-java.md#environment-variables)
-* [JavaScript](functions-reference-node.md#environment-variables)
+[!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
 Ha nincs érvényes tárolási kapcsolati karakterlánc beállítása a [ `AzureWebJobsStorage` ] és az emulatort használja, a következő hibaüzenet jelenik meg:
 

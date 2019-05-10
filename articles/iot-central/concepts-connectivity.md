@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 9e1e85d1ab1c5e7ce0cbd96c64137309c2e2916a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f11d1c6b727799f2cc67c6f5012dc4d117556d2e
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60887485"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467813"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Eszköz csatlakoztatása az Azure IoT Central
 
@@ -107,7 +107,7 @@ A legfontosabb előny, IoT Central lehetővé teszi, hogy van egy IoT Central al
 
 A következő ábra ezt a folyamatot ismerteti:
 
-![Kapcsolati beállítások](media/concepts-connectivity/device-connection-flow.png)
+![Kapcsolati beállítások](media/concepts-connectivity/device-connection-flow1.png)
 
 A következő lépések írják le részletesebben a folyamat. A lépések kissé eltér attól függően, hogy használ az SAS- vagy X.509 tanúsítványok eszközhitelesítési:
 
@@ -197,7 +197,7 @@ Szerinti kiválaszt egyet ezek a különbség a protokollok és útmutatást kap
 
 Ha az eszköz nem tudja használni a támogatott protokollok, az Azure IoT Edge segítségével protokoll átalakítás. IoT Edge feldolgozás kiszervezése az Edge-ben az Azure IoT Central-alkalmazás más üzletiintelligencia-az-a-edge forgatókönyvek támogatja.
 
-## <a name="security"></a>Biztonság
+## <a name="security"></a>Biztonsági
 
 Eszközök és az Azure IoT Central között továbbított összes adat titkosítva van. Az IoT Hub olyan eszköz, amely csatlakozik az IoT Hub eszköz felé néző végpontok bármelyikét, érkező minden kérés hitelesíti. Elkerülheti a hitelesítő adatok cseréje a hálózaton keresztül, az eszköz a aláírt jogkivonatokat használ az hitelesítéséhez. További információkért tekintse meg, [férhet hozzá az IoT Hub](../iot-hub/iot-hub-devguide-security.md).
 

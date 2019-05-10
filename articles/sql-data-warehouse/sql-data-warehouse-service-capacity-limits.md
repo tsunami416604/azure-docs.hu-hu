@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: a8512e128d757e2faf4c3f63c5ad113b1d67b4ee
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ad285d71c2bb90f4b5a59eba25c6cc6a6d8588d6
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204896"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501848"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Az SQL Data Warehouse kapacitáskorlátait
 Azure SQL Data Warehouse különböző összetevői számára engedélyezett maximális értékeket.
@@ -35,14 +35,14 @@ Azure SQL Data Warehouse különböző összetevői számára engedélyezett max
 |:--- |:--- |:--- |
 | Adatbázis |Maximális méret | Gen1: A lemezen tömörített 240 TB. Ez a terület független terület a tempdb vagy a naplóhoz, és ezért ez a terület dedikált állandó táblák.  Fürtözött oszlopcentrikus tömörítés becsült 5 X.  Ez a fajta tömörítés lehetővé teszi, hogy az adatbázisnak, hogy megközelítőleg 1 PB, ha minden tábla fürtözött oszlopcentrikus (az alapértelmezett táblatípus). <br/><br/> Gen2: 240TB sortárindex és korlátlan tárolási oszlopcentrikus táblák |
 | Tábla |Maximális méret |A lemezen tömörített 60 TB |
-| Tábla |Táblák adatbázisonként | 100 000 |
+| Tábla |Táblák adatbázisonként | 100,000 |
 | Tábla |Táblánként oszlopok |1024 oszlopot |
 | Tábla |Bájt / oszlop |Oszlop függ [adattípus](sql-data-warehouse-tables-data-types.md). A határ 8000-es karakteres adattípus, nvarchar a 4000-es vagy 2 GB maximális adattípusok. |
 | Tábla |Minden egyes sorára, meghatározott méret bájt |8060 bájt<br/><br/>Minden egyes sorára bájtok száma azonos módon számítható, mert az SQL Server a lap tömörítéssel. Például az SQL Server az SQL Data Warehouse támogatja a sor-túlcsordulás tároló, amely lehetővé teszi, hogy **változó hosszúságú oszloppal** kell leküldeni, soron kívüli. Változó hosszúságú sorok leküld soron kívüli, csak a 24 bájtos legfelső szintű tárolja a fő rekord. További információkért lásd: [sor-túlcsordulás adatok meghaladja a 8 KB-os](https://msdn.microsoft.com/library/ms186981.aspx). |
-| Tábla |Táblánként partíciók |15 000<br/><br/>A jobb teljesítmény érdekében javasoljuk, hogy számának minimalizálása a partíciók meg kell miközben továbbra is támogatja az üzleti követelményeinek. A partíciók számának növekedésével adatok definíciós nyelv (DDL) és az adatok adatkezelési nyelvű (DML) műveletekhez a terhelés növekszik, és kisebb teljesítményt okoz. |
+| Tábla |Táblánként partíciók |15,000<br/><br/>A jobb teljesítmény érdekében javasoljuk, hogy számának minimalizálása a partíciók meg kell miközben továbbra is támogatja az üzleti követelményeinek. A partíciók számának növekedésével adatok definíciós nyelv (DDL) és az adatok adatkezelési nyelvű (DML) műveletekhez a terhelés növekszik, és kisebb teljesítményt okoz. |
 | Tábla |Az karakter / értéket partíció a határhoz. |4000 |
 | Index |A nem fürtözött indexek táblánként. |50<br/><br/>Csak a táblák sortárindex vonatkozik. |
-| Index |Fürtözött indexek táblánként. |1<br><br/>Sortárindex és az oszlopcentrikus táblák vonatkozik. |
+| Index |Fürtözött indexek táblánként. |1.<br><br/>Sortárindex és az oszlopcentrikus táblák vonatkozik. |
 | Index |Az index kulcsának mérete. |900 bájt.<br/><br/>Csak a sortárindex indexek vonatkozik.<br/><br/>Több mint 900 bájtos maximális mérettel varchar oszlopok indexei is létrehozható, ha a meglévő adatok az oszlopok nem haladja 900 bájtos az index létrehozásakor. Azonban később BESZÚRÁSA vagy az oszlopokat, amelyeket a teljes mérete meghaladja a 900 bájtos okozhat a frissítési műveletek sikertelenek lesznek. |
 | Index |Indexenkénti kulcsoszlopot. |16<br/><br/>Csak a sortárindex indexek vonatkozik. Fürtözött oszlopcentrikus indexek összes oszlopát tartalmazza. |
 | Statisztika |A kombinált oszlopértékek mérete. |900 bájt. |
@@ -54,7 +54,7 @@ Azure SQL Data Warehouse különböző összetevői számára engedélyezett max
 ## <a name="loads"></a>Betöltések
 | Category | Leírás | Maximum |
 |:--- |:--- |:--- |
-| A Polybase-Betöltések |Minden egyes sorára MB |1<br/><br/>A Polybase betölti az 1 MB-nál kisebb méretű sorokat.<br/><br/> |
+| A Polybase-Betöltések |Minden egyes sorára MB |1.<br/><br/>A Polybase betölti az 1 MB-nál kisebb méretű sorokat. LOB adattípus betöltése a táblákba való egy fürtözött Oszlopcentrikus Index (CCI) nem támogatott.<br/><br/> |
 
 ## <a name="queries"></a>Lekérdezések
 | Category | Leírás | Maximum |
@@ -63,12 +63,12 @@ Azure SQL Data Warehouse különböző összetevői számára engedélyezett max
 | Lekérdezés |Rendszernézetek az egyidejű lekérdezéseket. |100 |
 | Lekérdezés |Az aszinkron lekérdezések a rendszernézetek |1000 |
 | Lekérdezés |Maximális paraméterek |2098 |
-| Batch |Maximális méret |65,536*4096 |
+| Köteg |Maximális méret |65,536*4096 |
 | Válassza ki az eredményeket |Oszlopok minden egyes sorára vonatkozóan |4096<br/><br/>Minden egyes sorára vonatkozóan legfeljebb csak 4096 oszlopok a SELECT eredmény soha nem rendelkezhet. Nincs garancia arra, hogy 4096 mindig rendelkezhet. Ha a lekérdezésterv ideiglenes táblát igényel, az 1024-oszlopok maximális táblánként is vonatkozhatnak. |
-| SELECT |Beágyazott segédlekérdezések |32<br/><br/>Soha nem rendelkezhet több mint 32 beágyazott segédlekérdezések olyan SELECT utasításban. Nincs garancia arra, hogy mindig is rendelkezik 32. Egy ÖSSZEKAPCSOLÁS például a lekérdezésterv is tegyünk segédlekérdezés. A rendelkezésre álló memória is is korlátozhatja a segédlekérdezések száma. |
-| SELECT |Csatlakozás soronként |1024 oszlopot<br/><br/>A JOIN soha nem rendelkezhet több mint 1024 oszlopot. Nincs garancia arra, hogy 1024 mindig rendelkezhet. Ha az ILLESZTÉSI csomag több oszlop, mint az ILLESZTÉS eredmény tartalmazó ideiglenes táblát igényel, az ideiglenes tábla az 1024 korlát vonatkozik. |
-| SELECT |Bájtok CSOPORTOSÍTÁSI oszlopok száma. |8060<br/><br/>A GROUP BY záradékban szereplő oszlopok legfeljebb egy 8060 bájt. |
-| SELECT |Oszlopok az ORDER BY / bájt |8060 bájt<br/><br/>Az oszlopok az ORDER BY záradékában legfeljebb 8060 bájtok |
+| KIVÁLASZTÁS |Beágyazott segédlekérdezések |32<br/><br/>Soha nem rendelkezhet több mint 32 beágyazott segédlekérdezések olyan SELECT utasításban. Nincs garancia arra, hogy mindig is rendelkezik 32. Egy ÖSSZEKAPCSOLÁS például a lekérdezésterv is tegyünk segédlekérdezés. A rendelkezésre álló memória is is korlátozhatja a segédlekérdezések száma. |
+| KIVÁLASZTÁS |Csatlakozás soronként |1024 oszlopot<br/><br/>A JOIN soha nem rendelkezhet több mint 1024 oszlopot. Nincs garancia arra, hogy 1024 mindig rendelkezhet. Ha az ILLESZTÉSI csomag több oszlop, mint az ILLESZTÉS eredmény tartalmazó ideiglenes táblát igényel, az ideiglenes tábla az 1024 korlát vonatkozik. |
+| KIVÁLASZTÁS |Bájtok CSOPORTOSÍTÁSI oszlopok száma. |8060<br/><br/>A GROUP BY záradékban szereplő oszlopok legfeljebb egy 8060 bájt. |
+| KIVÁLASZTÁS |Oszlopok az ORDER BY / bájt |8060 bájt<br/><br/>Az oszlopok az ORDER BY záradékában legfeljebb 8060 bájtok |
 | Azonosítók utasítás kiszolgálónként |Hivatkozott azonosítók száma |65,535<br/><br/>Az SQL Data Warehouse a lekérdezés egyetlen kifejezés forráselérésiútja azonosítók számának korlátozása. Meghaladja a SQL Server-hiba 8632 számot eredményez. További információkért lásd: [belső hiba: Elérte a korlátozását](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
 | Karakterlánc-literálnak | Karakterlánc-literálnak utasításban száma | 20,000 <br/><br/>Az SQL Data Warehouse a lekérdezés egyetlen kifejezés karakterlánc-állandókat számát korlátozza. Meghaladja a SQL Server-hiba 8632 számot eredményez.|
 

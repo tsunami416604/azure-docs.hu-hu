@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/24/2019
+ms.date: 05/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: eaff996f5d0ad9c2eac00c9306ef8808b43e25c2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 017c2fd934f35a64f26687f4a58634dda9a821a3
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146047"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501962"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Azure Automationben
 
@@ -75,7 +75,7 @@ A gépek indítása/leállítása közben óra solution ki egy Automation-fiók 
 | Microsoft.Resources/subscriptions/resourceGroups/read | Erőforráscsoport |
 | Microsoft.Resources/deployments/* | Erőforráscsoport |
 
-### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>Új Automation-fiók és a egy új Log Analytics-munkaterület
+#### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>Új Automation-fiók és a egy új Log Analytics-munkaterület
 
 A indítása és leállítása a virtuális gépek üzembe helyezése során csúcsidőn kívüli órákra, egy új Automation-fiók és a Log Analytics-munkaterületet a megoldás üzembe helyezése a felhasználó megoldást engedélyre van szüksége a meghatározott az előző szakaszban, valamint a következő engedélyekkel:
 
@@ -91,6 +91,30 @@ A indítása és leállítása a virtuális gépek üzembe helyezése során cs�
 | Microsoft.Automation/automationAccounts/write | Erőforráscsoport |
 | Microsoft.OperationalInsights/workspaces/write | Erőforráscsoport |
 
+### <a name="region-mappings"></a>A régióban leképezések
+
+Ha engedélyezi a virtuális gépek indítása/leállítása munkaidőn kívül, csak bizonyos régiókban támogatottak összekapcsolása a Log Analytics-munkaterületet és Automation-fiók.
+
+Az alábbi táblázat bemutatja a támogatott leképezések:
+
+|**Log Analytics-munkaterület régiója**|**Az Azure Automation-régió**|
+|---|---|
+|Délkelet-Ausztrália|Délkelet-Ausztrália|
+|CanadaCentral|CanadaCentral|
+|CentralIndia|CentralIndia|
+|USA keleti régiója<sup>1</sup>|EastUS2|
+|JapanEast|JapanEast|
+|SoutheastAsia|SoutheastAsia|
+|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
+|WestEurope|WestEurope|
+|UKSouth|UKSouth|
+|USGovVirginia|USGovVirginia|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP és az USA keleti régiója leképezések a Log Analytics-munkaterületek az Automation-fiókokhoz nem egy pontos régiók-hozzárendelést, de a megfelelő megfeleltetés.
+
+<sup>2</sup> kapacitás korlátozások miatt a régió nem érhető el új erőforrás létrehozásakor. Az Automation-fiókok és a Log Analytics-munkaterületekre is érvényes. A régió már létező kapcsolt erőforrások azonban továbbra is működik.
+
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
 Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Automation-fiók hozzáadása a következő lépésekkel, és a változók a megoldás testreszabásához konfigurálja.
@@ -101,6 +125,7 @@ Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Autom
 
    > [!NOTE]
    > Bárhol is létrehozhat az Azure Portalon kattintva **erőforrás létrehozása**. A piactér oldalon írjon be egy kulcsszót például **Start** vagy **indítása és leállítása**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Azt is megteheti írja be a teljes neve, a megoldás egy vagy több kulcsszót, és nyomja le az ENTER billentyűt. Válassza ki **virtuális gépek indítása/leállítása munkaidőn kívül** a keresési eredmények közül.
+
 2. Az a **virtuális gépek indítása/leállítása munkaidőn kívül** lapon a kiválasztott megoldáshoz tartozó, olvassa el az összegzési adatokat, majd kattintson **létrehozás**.
 
    ![Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)
@@ -144,7 +169,7 @@ Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Autom
 > [!NOTE]
 > Ha a központi telepítés befejezése után, az Automation-fiókját az Azure Cloud Solution Provider (az Azure CSP) előfizetéssel rendelkezik, lépjen a **változók** alatt **megosztott erőforrások** és állítsa be a [ **External_EnableClassicVMs** ](#variables) változó **hamis**. Ezzel leállítja a megoldást keres a klasszikus virtuális gép erőforrásait.
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
 
 A megoldás három különböző forgatókönyveket tartalmaz. Ezek a forgatókönyvek a következők:
 
@@ -236,7 +261,7 @@ Az alábbi táblázat a megoldás által telepített az Automation-fiók runbook
 
 Minden szülő runbook közé tartozik a _WhatIf_ paraméter. Ha beállítása **igaz**, _WhatIf_ pontos viselkedésének részletező támogatja a runbook futtatása nélkül; a _WhatIf_ paraméter és érvényesíti a megfelelő folyamatban van a virtuális gépek megcélzott. A runbook csak a meghatározott műveleteket hajtja végre során a _WhatIf_ paraméter értéke **hamis**.
 
-|Forgatókönyv | Paraméterek | Leírás|
+|Runbook | Paraméterek | Leírás|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | A szülő runbook meghívva. Ez a runbook a Remote-forgatókönyvhöz erőforrás alapon hoz létre riasztásokat.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: TRUE vagy FALSE (hamis)  | Létrehozza vagy frissíti az Azure a riasztási szabályai virtuális gépeken vagy erőforráscsoportonként célzott csoportok. <br> VMList: Virtuális gépek vesszővel tagolt listája. Ha például _vm1, vm2, vm3_.<br> *WhatIf* érvényesíti a runbook logikája végrehajtása nélkül.|
@@ -301,11 +326,11 @@ Automation két rekordtípust hoz létre a Log Analytics-munkaterület: feladat-
 |ResourceGroup | Meghatározza a runbook-feladat erőforráscsoportjának nevét.|
 |ResourceProvider | Meghatározza, hogy melyik Azure-szolgáltatás biztosítja az üzembe helyezhető és kezelhető erőforrásokat. Az Automation esetében az érték Azure Automation.|
 |ResourceType | Meghatározza az Azure-ban szereplő erőforrás típusát. Az Automation esetében az érték a runbookhoz társított Automation-fiók.|
-|resultType | A runbook-feladat állapota. Lehetséges értékek:<br>- Elindítva<br>- Leállítva<br>- Felfüggesztve<br>- Sikertelen<br>- Sikeres|
-|resultDescription | Ismerteti a runbook-feladat eredményállapotát. Lehetséges értékek:<br>- A feladat elindult<br>- A feladat nem sikerült<br>- A feladat befejeződött|
+|resultType | A runbook-feladat állapota. Lehetséges értékek a következők:<br>- Elindítva<br>- Leállítva<br>- Felfüggesztve<br>- Sikertelen<br>- Sikeres|
+|resultDescription | Ismerteti a runbook-feladat eredményállapotát. Lehetséges értékek a következők:<br>- A feladat elindult<br>- A feladat nem sikerült<br>- A feladat befejeződött|
 |RunbookName | Megadja a runbook-feladat nevét.|
 |SourceSystem | Megadja az elküldött adatok forrásrendszerét. Az Automation esetében az érték OpsManager|
-|StreamType | Megadja az esemény típusát. Lehetséges értékek:<br>- Részletes<br>- Kimenet<br>- Hiba<br>- Figyelmeztetés|
+|StreamType | Megadja az esemény típusát. Lehetséges értékek a következők:<br>- Részletes<br>- Kimenet<br>- Hiba<br>- Figyelmeztetés|
 |SubscriptionId | Megadja a feladat előfizetési azonosítóját.
 |Time | A runbook-feladat végrehajtásának dátuma és időpontja.|
 
@@ -317,7 +342,7 @@ Automation két rekordtípust hoz létre a Log Analytics-munkaterület: feladat-
 |Category | Az adattípus besorolása. Az Automation esetében az érték JobStreams.|
 |JobId | GUID, a runbook-feladat azonosítója.|
 |operationName | Meghatározza az Azure-ban végrehajtott művelet típusát. Az Automation esetében az érték feladat.|
-|ResourceGroup | Meghatározza a runbook-feladat erőforráscsoportjának nevét.|
+|Erőforráscsoport | Meghatározza a runbook-feladat erőforráscsoportjának nevét.|
 |resourceId | Adja meg az erőforrás-azonosító az Azure-ban. Az Automation esetében az érték a runbookhoz társított Automation-fiók.|
 |ResourceProvider | Meghatározza, hogy melyik Azure-szolgáltatás biztosítja az üzembe helyezhető és kezelhető erőforrásokat. Az Automation esetében az érték Azure Automation.|
 |ResourceType | Meghatározza az Azure-ban szereplő erőforrás típusát. Az Automation esetében az érték a runbookhoz társított Automation-fiók.|
@@ -325,7 +350,7 @@ Automation két rekordtípust hoz létre a Log Analytics-munkaterület: feladat-
 |resultDescription | A runbook kimeneti streamjét tartalmazza.|
 |RunbookName | A runbook neve.|
 |SourceSystem | Megadja az elküldött adatok forrásrendszerét. Az Automation esetében az érték OpsManager.|
-|StreamType | A feladatstream típusa. Lehetséges értékek:<br>– Folyamatban<br>- Kimenet<br>- Figyelmeztetés<br>- Hiba<br>- Hibakeresés<br>- Részletes|
+|StreamType | A feladatstream típusa. Lehetséges értékek a következők:<br>– Folyamatban<br>- Kimenet<br>- Figyelmeztetés<br>- Hiba<br>- Hibakeresés<br>- Részletes|
 |Time | A runbook-feladat végrehajtásának dátuma és időpontja.|
 
 Kategória rekordjait visszaadó bármely Naplókeresés végrehajtásakor **JobLogs** vagy **JobStreams**, kiválaszthatja a **JobLogs** vagy **JobStreams**nézetet, amely megjeleníti a keresés által visszaadott frissítéseket összefoglaló csempék készletét.

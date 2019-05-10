@@ -10,12 +10,12 @@ ms.date: 04/25/2019
 ms.topic: quickstart
 ms.service: azure-functions
 ms.devlang: powershell
-ms.openlocfilehash: 21fe1d654b802cb2bcb1a1fd3d5ffc4d04112334
-ms.sourcegitcommit: 111a7b3e19d5515ce7036287cea00a7204ca8b56
+ms.openlocfilehash: 24640c9013f7a5b81cd5b1b6f45de49c5baad0e6
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64530467"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65473274"
 ---
 # <a name="create-your-first-powershell-function-in-azure-preview"></a>Az első PowerShell-függvény létrehozása az Azure-ban (előzetes verzió)
 
@@ -50,24 +50,7 @@ A gyorsútmutató elvégzéséhez:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [functions-install-vs-code-extension](../../includes/functions-install-vs-code-extension.md)]
-
-## <a name="enable-powershell-in-the-extension"></a>A bővítmény a PowerShell engedélyezése
-
-A következő lépések segítségével PowerShell az Azure Functions-bővítményben engedélyezése:
-
-1. A Visual Studio Code-ban a következő menü parancsai közül választhat:
-
-    * Válassza ki a Windows vagy Linux rendszeren, **fájl** > **beállítások** > **beállítások**.
-    * MacOS-gépeken, válasszon **kód** > **beállítások** > **beállítások**.
-
-1. Írja be a keresőmezőbe beállítások `powershell`.
-
-1. Az a **felhasználói beállítások** lapon, bontsa ki a **bővítmények** > **Azure Functions**, majd **PowerShelltámogatásánakengedélyezéseelőzetes**.
-
-    ![Azure-függvénykód Visual Studio-projektben](./media/functions-create-first-function-powershell/enable-powershell-support-vs-code.png)
-
-Zárja be a beállításokat. PowerShell engedélyezve van.  
+[!INCLUDE [functions-install-vs-code-extension](../../includes/functions-install-vs-code-extension.md)] 
 
 ## <a name="create-a-function-app-project"></a>Függvényalkalmazás-projekt létrehozása
 
@@ -120,6 +103,9 @@ Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépe
 
 > [!NOTE]
 > Ne felejtse el eltávolítani a beléptetés-visszavonásokat `Wait-Debugger` mielőtt közzéteszi a függvények az Azure-bA. 
+
+> [!NOTE]
+> Függvényalkalmazás létrehozása az Azure-ban csak akkor kéri a Függvényalkalmazás neve. AzureFunctions.advancedCreation kérni az összes többi értéket Igaz értékre van állítva.
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 

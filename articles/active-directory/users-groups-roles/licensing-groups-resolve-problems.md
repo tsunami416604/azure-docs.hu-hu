@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c92969015910cc5bd72e2d9339d5c15c1f7af48b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3dbfbd76d235cedd297a5ad54b51bc4ebb550bb1
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60470278"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466282"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azonosíthatja és a egy Azure Active Directory-csoporthoz hozzárendelt kapcsolatos problémák megoldásához
 
@@ -107,9 +107,15 @@ Ha az Exchange Online használata esetén a bérlő néhány felhasználója el�
 > ```
 > Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
 > ```
-> A problémáról további információk: ["proxycím már használatban van" hibaüzenet jelenik meg az Exchange online-hoz](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). A cikk emellett tartalmaz információt a [hogyan kapcsolódhat az Exchange online-hoz távoli PowerShell-lel](https://technet.microsoft.com/library/jj984289.aspx). További információt ebben a cikkben [hogyan a proxyAddresses attribútum feltöltése az Azure ad-ben a](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
+> A problémáról további információk: ["proxycím már használatban van" hibaüzenet jelenik meg az Exchange online-hoz](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). A cikk emellett tartalmaz információt a [hogyan kapcsolódhat az Exchange online-hoz távoli PowerShell-lel](https://technet.microsoft.com/library/jj984289.aspx).
 
 Teljesítése után bármely proxy cím az érintett felhasználók számára, ügyeljen arra, hogy a csoport, győződjön meg arról, hogy az licenceket is érvényesek, a licenc feldolgozási kényszerítése.
+
+## <a name="azure-ad-mail-and-proxyaddresses-attribute-change"></a>Az Azure AD Mail és a ProxyAddresses attribútum módosítása
+
+**Probléma:** Egy felhasználó vagy csoport a licenc-hozzárendelés frissítésekor jelenhet meg, hogy az egyes felhasználók az Azure AD Mail és a ProxyAddresses attribútum változnak.
+
+Egy felhasználó okok a proxycím számítási aktiválását a licenc-hozzárendelés frissítése, amely módosíthatja felhasználói attribútumok. A változás pontos okának megértéséhez, és oldja meg a problémát, tekintse meg az ebben a cikkben a [hogyan a proxyAddresses attribútum feltöltése az Azure ad-ben](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
 
 ## <a name="what-happens-when-theres-more-than-one-product-license-on-a-group"></a>Mi történik, ha egy csoport egynél több termék licence van?
 

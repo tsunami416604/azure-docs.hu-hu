@@ -5,19 +5,18 @@ services: functions
 keywords: OpenAPI, Swagger, felhőalkalmazás, felhőszolgáltatások,
 author: ggailey777
 manager: jeconnoc
-ms.assetid: ''
 ms.service: azure-functions
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 05/08/2019
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 3ad304bc8f038d4009352dae72d70079828c26ba
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: 255a7c9d0b9da15176fca90c6934a84fa0f863ed
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141574"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501856"
 ---
 # <a name="create-an-openapi-definition-for-a-function-with-azure-api-management"></a>Az Azure API Management-függvény OpenAPI definíció létrehozása
 
@@ -133,13 +132,9 @@ Most már van egy olyan függvénye, amely megállapítja a sürgősségi javít
 
 Most már készen áll arra, hogy létrehozza az OpenAPI-definíciót.
 
-1. Válassza ki a függvényalkalmazást, és válassza ki **platformfunkciók**, **minden beállítás**
+1. Válassza ki a függvényt, majd a **platformfunkciók**, válassza a **az API Management** válassza **új Létrehozása** alatt **az API Management**.
 
-    ![A függvény tesztelése az Azure Portalon](media/functions-openapi-definition/select-all-settings-openapi.png)
-
-1. Görgessen le, majd kattintson a **az API Management** > **új létrehozása** egy új API Management szolgáltatáspéldány létrehozása.
-
-    ![Hivatkozás függvény](media/functions-openapi-definition/link-apim-openapi.png)
+    ![Válassza ki az API Management Platform szolgáltatásai](media/functions-openapi-definition/select-all-settings-openapi.png)
 
 1. Az API Management-beállításokat használja az ábra alatti táblázatban megadott.
 
@@ -150,11 +145,10 @@ Most már készen áll arra, hogy létrehozza az OpenAPI-definíciót.
     | **Name (Név)** | Globálisan egyedi név | Egy nevet a függvényalkalmazás neve alapján generált. |
     | **Előfizetés** | Az Ön előfizetése | Az előfizetés, amelyben az új erőforrás jön létre. |  
     | **[Erőforráscsoport](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Ugyanazt az erőforrást a függvényalkalmazás, amely kell első beállítva az Ön számára. |
-    | **Hely** | USA nyugati régiója | Válassza ki az USA nyugati régiójában |
+    | **Hely** | USA nyugati régiója | Válassza ki az usa Nyugati régiójában. |
     | **Szervezet neve** | Contoso | A fejlesztői portálon, és az e-mail értesítések a szervezet neve. |
     | **Rendszergazdai e-mail** | az e-mailben | E-mailt, amely az API Management rendszer értesítést kapott. |
-    | **Tarifacsomag** | Használat (előzetes verzió) | Teljes körű díjszabási részletek: a [az API Management-díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/api-management/) |
-    | **Application Insights** | A példány | A függvényalkalmazás által használt azonos Application Insights használatához. |
+    | **Tarifacsomag** | Használat (előzetes verzió) | Használatalapú csomag előzetes verzióban érhető el, és minden régióban nem érhető el. Teljes körű díjszabási részletek: a [az API Management-díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/api-management/) |
 
 1. Válasszon **létrehozás** hozhat létre az API Management-példány, ami eltarthat néhány percig.
 
@@ -178,27 +172,20 @@ Ahhoz, hogy az API-definíció, ellenőrizze, hogy működik.
 
 1. Adjon meg értéket a **óra** és **kapacitás**
 
-```json
-{
-"hours": "6",
-"capacity": "2500"
-}
-```
+    ```json
+    {
+    "hours": "6",
+    "capacity": "2500"
+    }
+    ```
 
 1. Kattintson a **küldése**, majd tekintse meg a HTTP-válasz.
 
     ![Függvény API tesztelése](media/functions-openapi-definition/test-function-api-openapi.png)
 
+[!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
+
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> [!div class="checklist"]
-> * Függvény létrehozása az Azure-ban
-> * Az Azure API Management segítségével a OpenAPI-definíció létrehozása
-> * A definíció tesztelése a függvény meghívásával
-
-Folytassa a következő témakörben az API Management ismertetése.
-
 > [!div class="nextstepaction"]
-> [API Management](../api-management/api-management-key-concepts.md)
+> [További információ az API Management ismertetése](../api-management/api-management-key-concepts.md)

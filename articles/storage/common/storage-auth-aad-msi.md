@@ -9,12 +9,12 @@ ms.date: 04/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: daa3bd49fcb9970a4a4a026f764cc195423e83d1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4245c44ceaf907512187d7db4a9d6f087a855f70
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154361"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507894"
 ---
 # <a name="authenticate-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Blobok és üzenetsorok az Azure Active Directory és a felügyelt identitásokból való hozzáférés hitelesítése az Azure-erőforrások
 
@@ -48,7 +48,7 @@ A Blob és a Queue storage felügyelt identitással irányuló kérések engedé
 
 Az alkalmazás hitelesítési ügyféloldali kódtár automatikusan kezeli a hitelesítést. A könyvtár a fejlesztői hitelesítő adatok használatával helyi fejlesztés során hitelesítsék magukat. Helyi fejlesztés során fejlesztői hitelesítő adatok használatával használata biztonságosabb, mert nem kell létrehozni az Azure AD hitelesítő adatait, vagy fájlmegosztási hitelesítő adatokat a fejlesztők közötti. Amikor a megoldás ezt követően telepíti az Azure-ba, a tár automatikusan vált, amennyiben az alkalmazás hitelesítő adatok használatával.
 
-Az alkalmazás-hitelesítési tár az Azure Storage-alkalmazás használatához telepítse a legújabb előzetes csomagot [Nuget]((https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)), valamint a legújabb verzióját a [Azure Storage ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/WindowsAzure.Storage/). Adja hozzá a következő **használatával** utasítások a kód használatával:
+Az alkalmazás-hitelesítési tár az Azure Storage-alkalmazás használatához telepítse a legújabb előzetes csomagot [Nuget](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication), valamint a legújabb verzióját a [Azure Storage ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/WindowsAzure.Storage/). Adja hozzá a következő **használatával** utasítások a kód használatával:
 
 ```csharp
 using Microsoft.Azure.Services.AppAuthentication;

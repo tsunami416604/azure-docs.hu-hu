@@ -7,13 +7,13 @@ ms.author: twhitney
 manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
-ms.date: 05/06/2019
-ms.openlocfilehash: 5bc71a2d0f29fed163fb5c93ebd27df7f66a1325
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/08/2019
+ms.openlocfilehash: baada8a5238725456ca4a2ec7e8257c229066115
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080757"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466182"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Oktatóanyag: Az Azure Red Hat OpenShift-fürt létrehozása
 
@@ -27,15 +27,15 @@ A sorozat első részében, megtudhatja, hogyan lehet:
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
 > * Az Azure Red Hat OpenShift-fürt létrehozása
-> * [Az Azure Red Hat OpenShift fürt méretezése](tutorial-scale-cluster.md)
-> * [Az Azure Red Hat OpenShift fürt törlése](tutorial-delete-cluster.md)
+> * [Azure Red Hat OpenShift-fürt skálázása](tutorial-scale-cluster.md)
+> * [Azure Red Hat OpenShift-fürt törlése](tutorial-delete-cluster.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elkezdése előtt:
 
 Győződjön meg arról, hogy [a fejlesztési környezet beállítása](howto-setup-environment.md), amely tartalmazza:
-- A legújabb parancssori felület telepítése
+- A legújabb parancssori felület telepítése (2.0.64 verzió vagy újabb)
 - Bérlő létrehozása
 - Egy Azure-alkalmazás objektumának létrehozása
 - Egy a fürtben futó alkalmazásokhoz való bejelentkezéshez használt Active Directory-felhasználó létrehozása.
@@ -101,7 +101,7 @@ az group create --name $CLUSTER_NAME --location $LOCATION
 
 ### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>Nem kötelező: A fürt virtuális hálózat csatlakoztatása egy meglévő virtuális hálózatot
 
-Ha nem szeretne csatlakozni a virtuális hálózat (VNET) a fürt létrehozása meglévő virtuális hálózatba, kihagyhatja ezt a lépést.
+Ha nincs szüksége a virtuális hálózat (VNET), a fürt hoz létre egy meglévő virtuális hálózatok közötti társviszony-n keresztül kapcsolódni, kihagyhatja ezt a lépést.
 
 Először kérje le a meglévő virtuális hálózat azonosítóját. Az azonosító lesz a következő formában: `/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}`.
 
@@ -132,7 +132,7 @@ Néhány perc múlva `az openshift create` fogja sikeresen befejeződtek, valami
 
 ## <a name="step-3-sign-in-to-the-openshift-console"></a>3. lépés: Jelentkezzen be az OpenShift konzol
 
-Készen áll, az OpenShift-konzolon az új fürtre való bejelentkezéshez. A [OpenShift Webkonzol](https://docs.openshift.com/dedicated/architecture/infrastructure_components/web_console.html) jelenítheti meg, keresse meg és kezelheti az OpenShift projektek tartalmát is.
+Most már készen áll az OpenShift-konzolon az új fürtre való bejelentkezéshez. A [OpenShift Webkonzol](https://docs.openshift.com/aro/architecture/infrastructure_components/web_console.html) jelenítheti meg, keresse meg és kezelheti az OpenShift projektek tartalmát is.
 
 Mint léptetjük a [új Azure AD-felhasználó](howto-aad-app-configuration.md#create-a-new-active-directory-user) tesztelési létrehozott. Ehhez szüksége lesz egy friss böngésző-példányt, amely még nem gyorsítótárazza az identitást, normál esetben használhatja az Azure Portalra való bejelentkezéshez.
 
@@ -147,13 +147,13 @@ Jelentkezzen be a felhasználónév és jelszó, amelyet [hozzon létre egy új 
 
 Most már jelentkezett be a fürt konzolba.
 
-[Az OpenShift fürt konzoljának képernyőképe](./media/aro-console.png)
+![Az OpenShift fürt konzoljának képernyőképe](./media/aro-console.png)
 
- További információ [az OpenShift konzollal](https://docs.openshift.com/dedicated/getting_started/developers_console.html) hozhat létre és a beépített rendszerképek a [Red Hat OpenShift](https://docs.openshift.com/dedicated/welcome/index.html) dokumentációját.
+ Tudjon meg többet [az OpenShift konzollal](https://docs.openshift.com/aro/getting_started/developers_console.html) hozhat létre és a beépített rendszerképek a [Red Hat OpenShift](https://docs.openshift.com/aro/welcome/index.html) dokumentációját.
 
 ## <a name="step-4-install-the-openshift-cli"></a>4. lépés: Telepítse az OpenShift CLI-t
 
-A [OpenShift CLI](https://docs.openshift.com/dedicated/cli_reference/get_started_cli.html) (vagy *c eszközök*) parancsokat biztosít az alkalmazások és a különféle komponenseinek használatát az OpenShift fürt folytatott interakcióra szolgáló alacsonyabb szintű segédprogramok kezeléséhez.
+A [OpenShift CLI](https://docs.openshift.com/aro/cli_reference/get_started_cli.html) (vagy *c eszközök*) parancsokat biztosít az alkalmazások és a különféle komponenseinek használatát az OpenShift fürt folytatott interakcióra szolgáló alacsonyabb szintű segédprogramok kezeléséhez.
 
 Az OpenShift-konzolon kattintson a jobb felső sarokban található kérdőjel Ön bejelentkezési neve, és válassza ki **parancssori eszközök**.  Kövesse a **legújabb kiadása** töltse le és telepítse a támogatott c CLI a Linux, MacOS vagy Windows mutató hivatkozást.
 
@@ -175,4 +175,4 @@ Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 
 Folytassa a következő oktatóanyaggal:
 > [!div class="nextstepaction"]
-> [Az Azure Red Hat OpenShift fürt méretezése](tutorial-scale-cluster.md)
+> [Azure Red Hat OpenShift-fürt skálázása](tutorial-scale-cluster.md)
