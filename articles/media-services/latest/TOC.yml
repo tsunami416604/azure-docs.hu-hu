@@ -24,18 +24,13 @@
     - name: Élő stream – .NET
       href: stream-live-tutorial-with-api.md
     - name: Videó elemzése – .NET
-      displayName: 'job, transform'
+      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
       href: analyze-videos-tutorial-with-api.md
     - name: Dinamikus titkosítás 128 bites AES-titkosítással – .NET
       href: protect-with-aes128.md
     - name: Dinamikus titkosítás DRM segítségével – .NET
+      displayName: 'PlayReady, Widevine'
       href: protect-with-drm.md
-- name: Példák
-  items:
-    - name: Azure-kódminták
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=media-services&term=v3'
-    - name: Azure CLI
-      href: cli-samples.md
 - name: Alapelvek
   href: concepts-overview.md
   items:
@@ -52,6 +47,7 @@
           displayName: 'encoding, presets, jobs, adaptive, bitrate'
         - name: Átalakítások és feladatok
           href: transforms-jobs-concept.md
+          displayName: 'preset, schema'
         - name: Media Encoder Standard-formátumok
           displayName: 'containers, codecs'
           href: media-encoder-standard-formats.md
@@ -75,7 +71,7 @@
         - name: Csomagolás
           items:
             - name: Dinamikus csomagolás
-              displayName: packager
+              displayName: 'origin, packager'
               href: dynamic-packaging-overview.md
             - name: Dinamikus jegyzékek
               href: filters-dynamic-manifest-overview.md
@@ -84,7 +80,7 @@
         - name: Tartalomvédelem
           items:
             - name: Streamelési protokollok és titkosítási típusok
-              displayName: Dynamic encryption
+              displayName: 'dynamic, encryption'
               href: content-protection-overview.md
             - name: Multi-DRM rendszer hozzáférés-vezérléssel
               href: design-multi-drm-system-with-access-control.md
@@ -97,7 +93,7 @@
                 - name: FairPlay-licenckövetelmények
                   href: fairplay-license-overview.md
         - name: Streamvégpontok/Forrás
-          displayName: 'origins, cdn'
+          displayName: 'origin, packager, cdn'
           href: streaming-endpoint-concept.md
         - name: Streamelési lokátor
           displayName: URLs
@@ -106,8 +102,8 @@
           href: streaming-policy-concept.md
         - name: Tartalomkulcsszabályok
           href: content-key-policy-concept.md
-        - name: Eredeti hibakódok
-          href: origin-error-codes.md
+        - name: Streamvégpont-hibakódok
+          href: streaming-endpoint-error-codes.md
     - name: Live streaming (Élő adatfolyam)
       items:
         - name: Áttekintés
@@ -141,6 +137,7 @@
           href: use-azure-media-player.md
     - name: Fejlesztés v3 API-kkal
       href: media-services-apis-overview.md
+      displayName: 'access, naming, long-running'
       items:
         - name: 'Lapozás, szűrés, entitások rendezése'
           href: entities-overview.md
@@ -148,8 +145,8 @@
           href: rbac-overview.md
         - name: Hibakódok
           items:
-            - name: Eredeti hibakódok
-              href: origin-error-codes.md
+            - name: Streamvégpont-hibakódok
+              href: streaming-endpoint-error-codes.md
             - name: Feladathibakódok
               href: job-error-codes.md
     - name: Útmutatás a 2-esről a 3-as verzióra való migráláshoz
@@ -160,10 +157,14 @@
       items:
         - name: Fiók létrehozása – parancssori felület
           href: create-account-cli-how-to.md
+        - name: Fiók hitelesítő adatainak alaphelyzetbe állítása – parancssori felület
+          href: cli-reset-account-credentials.md
         - name: Adatelérési API-k – parancssori felület
           href: access-api-cli-how-to.md
         - name: Fenntartott médiaegységek skálázása – parancssori felület
           href: media-reserved-units-cli-how-to.md
+        - name: Adategység létrehozása – parancssori felület
+          href: cli-create-asset.md
         - name: Fejlesztés REST-tel
           items:
             - name: Kapcsolódás Postmannel
@@ -190,6 +191,14 @@
         - name: Egy helyi fájlból – REST
           displayName: upload
           href: upload-files-rest-how-to.md
+        - name: Egy helyi fájlból – parancssori felület
+          href: cli-upload-file-asset.md
+    - name: Átalakítások és feladatok létrehozása
+      items:
+        - name: Átalakítások létrehozása – parancssori felület
+          href: cli-create-transform.md
+        - name: Feladatok létrehozása – parancssori felület
+          href: cli-create-jobs.md
     - name: Tartalom kódolása
       items:
         - name: HTTPS mint feladatbemenet – .NET
@@ -230,10 +239,15 @@
           href: filters-dynamic-manifest-rest-howto.md
         - name: Parancssori felülettel
           href: filters-dynamic-manifest-cli-howto.md
+    - name: Tartalom továbbítása
+      items:
+        - name: Adategység közzététele – parancssori felület
+          href: cli-publish-asset.md
 - name: Referencia
   items:
     - name: OpenAPI-specifikáció (Swagger)
       href: 'https://aka.ms/ams-v3-rest-sdk'
+      displayName: schema
     - name: REST
       href: 'https://aka.ms/ams-v3-rest-ref'
     - name: Azure CLI
@@ -254,8 +268,8 @@
       href: /azure/templates/microsoft.media/allversions
     - name: Hibakódok
       items:
-        - name: Eredeti hibakódok
-          href: origin-error-codes.md
+        - name: Streamvégpont-hibakódok
+          href: streaming-endpoint-error-codes.md
         - name: Feladathibakódok
           href: job-error-codes.md
 - name: További források
@@ -285,7 +299,7 @@
           href: 'https://aka.ms/ams-v3-nodejs-sdk'
         - name: Ruby
           href: 'https://aka.ms/ams-v3-ruby-sdk'
-    - name: AMSE
+    - name: Azure Media Services Explorer
       href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
     - name: Kibocsátási megjegyzések
       href: release-notes.md

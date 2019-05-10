@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.openlocfilehash: 4a360968285b91b00c8ca1999f81c11951e74482
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dfb34f8c0fca792618860e0a8d5a1bf1736f3611
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61479847"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416048"
 ---
-# <a name="machine-learning-integration-in-stream-analytics"></a>A Machine Learning-integráció a Stream Analytics
+# <a name="machine-learning-integration-in-stream-analytics-preview"></a>A Machine Learning-integráció a Stream Analytics (előzetes verzió)
 Stream Analytics támogatja a felhasználó által definiált függvények, melyek az Azure Machine Learning-végpontokra irányuló. Ez a szolgáltatás REST API-támogatása részleteit a a [Stream Analytics REST API-könyvtár](https://msdn.microsoft.com/library/azure/dn835031.aspx). Ez a cikk nyújt kiegészítő információkat, amelyeket ez a funkció a Stream Analytics sikeres megvalósítását. Oktatóanyag is közzé lett téve, és elérhető [Itt](stream-analytics-machine-learning-integration-tutorial.md).
 
 ## <a name="overview-azure-machine-learning-terminology"></a>Áttekintés: Azure Machine Learning-terminológia

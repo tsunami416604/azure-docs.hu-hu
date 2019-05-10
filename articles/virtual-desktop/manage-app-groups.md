@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: da653842b09c15a5fd42bae0ed45e7b31452b972
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0cdd28be8c6e7390aa26fdc2dfbf32ec5542c2d
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870149"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233911"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Oktatóanyag: Alkalmazáscsoportok kezelése Windows virtuális asztal előzetes verzió
 
@@ -73,7 +73,7 @@ Mielőtt elkezdené, [letöltése és importálása a Windows virtuális asztal 
 
 ## <a name="next-steps"></a>További lépések
 
-Miután létrehozta az alkalmazáscsoportokhoz, egyszerű szolgáltatások létrehozása, és szerepköröket rendelhet a felhasználók számára. Ennek módjáról, lásd az oktatóanyag az egyszerű szolgáltatásnevekről és a szerepkör-hozzárendelések létrehozása a PowerShell használatával.
+Ebben az oktatóanyagban megtudhatta, hogyan hozzon létre az alkalmazás, távoli alkalmazások való feltöltéséhez és hozzárendelhet felhasználókat az alkalmazáscsoportnak. Bejelentkezés Windows virtuális asztal kapcsolatos további információkért folytassa a csatlakozás a Windows virtuális asztal útmutatók.
 
-> [!div class="nextstepaction"]
-> [Szolgáltatásnevek létrehozása és szerepkörök hozzárendelése a PowerShell-lel](create-service-principal-role-powershell.md)
+- [Csatlakozás a távoli asztali ügyfél Windows 7 és Windows 10 rendszeren](connect-windows-7-and-10.md)
+- [Csatlakozás a Windows virtuális asztal előzetes webes ügyféllel](connect-web.md)

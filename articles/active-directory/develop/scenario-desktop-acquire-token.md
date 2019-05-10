@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d4389af86e27ddb04f5a3e5f53c5509eeede005
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: e1fe9594471c6e8f723afff2def940bb675e04fb
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075340"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407003"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Asztali alkalmazás, amely meghívja a webes API - jogkivonat beszerzése
 
@@ -173,7 +173,7 @@ Ha egy tartományi felhasználó jelentkezzen be a tartomány vagy az Azure AD a
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 ```
 
-### <a name="constraints"></a>Korlátozások
+### <a name="constraints"></a>Megkötések
 
 - Csak akkor használható AcquireTokenByIntegratedWindowsAuth (IWA) **az összevont** csak a felhasználókra, amely, a felhasználók számára létrehozott egy Active Directory és az Azure Active Directory által támogatott. Közvetlenül az aad-ben, AD biztonsági - nélkül létrehozott felhasználók **felügyelt** felhasználók – Ez a hitelesítési folyamat nem használható. Ez a korlátozás nem érinti a felhasználónév/jelszó folyamatot.
 - IWA van a .NET-keretrendszer, a .NET Core és a UWP platformokra írt alkalmazásokat
@@ -300,7 +300,7 @@ Ez a folyamat **nem ajánlott** , mert az alkalmazás a felhasználó megkérés
 > - Ehhez az MFA kívánó felhasználók nem tudják jelentkezik be (mivel nem lett a beavatkozás nélküli)
 > - Felhasználók nem tudják az egyszeri bejelentkezés
 
-### <a name="constraints"></a>Korlátozások
+### <a name="constraints"></a>Megkötések
 
 A következő korlátozások is érvényesek:
 
@@ -502,7 +502,7 @@ static async Task GetATokenForGraph()
   catch (MsalClientException ex) when (ex.ErrorCode == "unknown_user")
   {
    // the username was probably empty
-   // ex.Message = "Could not identify the user logged into the OS. See http://aka.ms/msal-net-iwa for details."
+   // ex.Message = "Could not identify the user logged into the OS. See https://aka.ms/msal-net-iwa for details."
    throw new ArgumentException("U/P: Wrong username", ex);
   }
   catch (MsalClientException ex) when (ex.ErrorCode == "parsing_wstrust_response_failed")
@@ -529,7 +529,7 @@ Egy parancssori eszköz (amely nem rendelkezik a webes vezérlők), ha nem szere
 
 Az Azure ad-vel az interaktív hitelesítéshez szükséges egy webes böngésző (További részletekért lásd: [böngészők használati](https://aka.ms/msal-net-uses-web-browser)). Azonban azokon az eszközökön vagy operációs rendszereket, amelyeket nem ad meg egy webböngészőt a felhasználók hitelesítésére, eszköz kódot a folyamat lehetővé teszi a felhasználó egy másik eszközt (például egy másik számítógépre vagy egy mobiltelefon) aláírására használja interaktív módon. Az alkalmazás az eszköz hitelesítésikód-folyamata segítségével szerzi be a tokenek kifejezetten arra tervezték, ezek az eszközök/os kétlépéses folyamat. Az ilyen alkalmazások olyan alkalmazások, iOT, vagy a parancssori eszközök (CLI). A cél, hogy:
 
-1. Felhasználói hitelesítés szükség, amikor az alkalmazás egy kódot biztosít, és megkérdezi a felhasználót, nyissa meg egy URL-címet (például egy internethez csatlakozó okostelefon) egy másik eszköz használatával (például `http://microsoft.com/devicelogin`), ahol a felhasználó felszólítást kap a kódot. Hogy megtörtént, a weblap irányítja a felhasználót egy normál hitelesítési módszer, beleértve a beleegyezést kérő és a multi-factor Authentication hitelesítés, amennyiben szükséges keresztül.
+1. Felhasználói hitelesítés szükség, amikor az alkalmazás egy kódot biztosít, és megkérdezi a felhasználót, nyissa meg egy URL-címet (például egy internethez csatlakozó okostelefon) egy másik eszköz használatával (például `https://microsoft.com/devicelogin`), ahol a felhasználó felszólítást kap a kódot. Hogy megtörtént, a weblap irányítja a felhasználót egy normál hitelesítési módszer, beleértve a beleegyezést kérő és a multi-factor Authentication hitelesítés, amennyiben szükséges keresztül.
 
 2. Sikeres hitelesítést követően a parancssori alkalmazást fog kapni a szükséges jogkivonatok, biztonsági csatornán keresztül történik, és fogja használni, a szükséges API-hívások végrehajtásához.
 

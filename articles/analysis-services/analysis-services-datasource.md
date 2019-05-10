@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ed18fd985173a4d978edccedc8b6e5cf527f16dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2505ab5a9445256bd592dfa7f58a6dea79d25043
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327139"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506813"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Támogatott adatforrások az Azure Analysis Services
 
@@ -52,7 +52,7 @@ Csatlakozás helyszíni erőforrásait és Azure-AS-kiszolgálóhoz szükséges 
 |  --- | --- | --- |
 | SQL Server |Az SQL Server natív ügyfél 11.0, Microsoft OLE DB-szolgáltató az SQL Server, a .NET-keretrendszer adatszolgáltatója az SQL Server | .NET-keretrendszer adatszolgáltatója az SQL Server |
 | Az SQL Server Data Warehouse |Az SQL Server natív ügyfél 11.0, Microsoft OLE DB-szolgáltató az SQL Server, a .NET-keretrendszer adatszolgáltatója az SQL Server | .NET-keretrendszer adatszolgáltatója az SQL Server |
-| Oracle |Microsoft OLE DB Provider Pro Oracle, Oracle-adatszolgáltató a .NET-hez |Oracle-adatszolgáltató a .NET-hez |
+| Oracle | OLE DB-szolgáltató Oracle, Oracle-adatszolgáltató a .NET-hez |Oracle-adatszolgáltató a .NET-hez |
 | Teradata |OLE DB-szolgáltató a teradata rendszerhez, Teradata-adatszolgáltató a .NET-hez |Teradata-adatszolgáltató a .NET-hez |
 | | | |
 

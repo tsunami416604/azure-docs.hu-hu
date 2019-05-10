@@ -6,15 +6,15 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 05/06/2019
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: a91afdbeaa2ced37b237b4f2b80a8dbbe2c4a05c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8cb1d06872f7eae04bac934220da9d58982d0f4b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717217"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233738"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Oktatóanyag: Az Azure Time Series Insights JavaScript ügyfélkódtár felderítése
 
@@ -32,6 +32,7 @@ Pontosabban a következőkről szerezhet ismereteket:
 > [!NOTE]
 > * Az oktatóanyagban egy ingyenes, üzemeltetett, [Time Series Insights web bemutatót](https://insights.timeseries.azure.com/clientsample).
 > * A Time Series Insights minta app forrásfájlok szerepelnek a [GitHub-mintaadattárból](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial).
+> * Olvassa el a [TSI ügyfél segédanyagok](https://github.com/microsoft/tsiclient/blob/master/docs/API.md).
 
 ## <a name="video"></a>Videó
 
@@ -60,8 +61,6 @@ Ez az oktatóanyag során egy ingyenes, üzemeltetett, a Time Series Insights mi
    [![A TSI-ügyfél minta fő lapján után jelentkezzen be](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png)](media/tutorial-explore-js-client-lib/tcs-main-after-signin.png#lightbox)
 
 ### <a name="page-source-and-structure"></a>Oldal forrása és struktúrája
-
-<div id="page-source-and-structure"></div>
 
 Először tekintse a [HTML és JavaScript forráskódját](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html) a megjelenített webes lapozható:
 
@@ -119,6 +118,9 @@ A [Time Series Insights mintaalkalmazás](https://insights.timeseries.azure.com/
 
    [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-204&highlight=3-7,34-37)]
 
+> [!TIP]
+> A Microsoft által támogatott ADAL könyvtárakat kapcsolatos további információkért tekintse meg a [ADAL dokumentációja](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries#microsoft-supported-client-libraries).
+
 ### <a name="control-identification"></a>A vezérlők azonosítása
 
 A megadott példában `<div>` elemek rendezve jelennek meg a szülő `<body>` késleltetésnél elrendezés biztosít a diagram-vezérlőelemeket, az oldalon megjelenített elemet.
@@ -163,7 +165,7 @@ Diagram-vezérlőelemeket leképezése után rögtön hozzáláthat egy általá
    | `splitByObject`   | Azon sztringtulajdonság, amely alapján fel szeretne osztani (opcionális – null értékű is lehet). | `{property: 'Station', type: 'String'}` |
    | `color`         | A renderelni kívánt objektumok színe. | `'pink'` |
    | `alias`           | Az összesítő kifejezés rövid neve. | `'Factory3Temperature'` |
-   | `contextMenuActions` | Egy vizualizációban a Time Series-objektumokhoz kötni kívánt műveletek tömbje. | További információkért lásd: a szakasz [felugró helyi menük](#contextMenu) |
+   | `contextMenuActions` | Egy vizualizációban a Time Series-objektumokhoz kötni kívánt műveletek tömbje. | További információkért lásd: a szakasz [felugró helyi menük](#pop-up-context-menus) |
 
 1. Hívjon be egy TSI-lekérdezést a `TsiClient.Server` API-k használatával az összesítő adatok lekéréséhez:
 
@@ -255,8 +257,6 @@ Vizuális szempontból a rombusz jelölők/előugró elemek jelölik az incidens
 
 ### <a name="pop-up-context-menus"></a>Előugró helyi menük
 
-<div id="contextMenu"></div>
-
 Egy másik speciális funkciója lehetővé teszi egyéni helyi menük (kattintson a jobb gombbal a legördülő menük) létrehozását. Ezekkel engedélyezhetők különböző műveletek és a következő logikus lépések az alkalmazás hatókörén belül.
 
 Keresse meg a kódot a `// Example 13/14/15` megjegyzést. Ez a kód először egy vonaldiagramot a cím alatt jelenik meg `"Line Chart with Context Menu to Create Pie/Bar Chart"` a diagram van kötve, és a `<div>` elem a HTML-lel `id` érték `chart13`.
@@ -321,3 +321,8 @@ Vagy a TSI minta alkalmazás forrásfájljait megtekintése:
 
 > [!div class="nextstepaction"]
 > [A TSI mintaalkalmazás-adattár](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)
+
+Olvassa el a TSI-ügyfél API referenciadokumentációt tartalmaz:
+
+> [!div class="nextstepaction"]
+> [A TSI-API dokumentációja](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)

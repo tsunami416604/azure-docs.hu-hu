@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: 40ac8badfac3c004d3451c598d7cd2a17982a585
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f69b1aff28165b9bf37c49fe62d1fb5aada91285
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138896"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236404"
 ---
 # <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>Hozzon létre egy megosztott lemezkép-katalógus az Azure CLI-vel
 
@@ -61,7 +61,9 @@ az vm create\
 [!INCLUDE [virtual-machines-common-shared-images-update-delete-cli](../../../includes/virtual-machines-common-shared-images-update-delete-cli.md)]
 
 ## <a name="next-steps"></a>További lépések
-Lemezkép-katalógusában a megosztott erőforrás-sablonok használatával is létrehozhat. Nincsenek elérhető számos Azure gyorsindítási sablonok: 
+[Az Azure az Image Builder (előzetes verzió)](image-builder-overview.md) segítségével automatizálhatja a lemezkép-verzió létrehozását, még akkor is használhatja, frissíteni és [hozzon létre egy új lemezkép verziója egy meglévő kép verzióból](image-builder-gallery-update-image-version.md). 
+
+Megosztott kép galéria-erőforrásai sablonok használatával is létrehozhat. Nincsenek elérhető számos Azure gyorsindítási sablonok: 
 
 - [Hozzon létre egy megosztott lemezkép-katalógusában](https://azure.microsoft.com/resources/templates/101-sig-create/)
 - [Kép definíció létrehozása egy megosztott rendszerkép-katalógusában](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)

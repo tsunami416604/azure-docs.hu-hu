@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 04/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd7044276a806c23785df4d15f86b8e03f32a767
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8c7a24c4c4e071271d16de036ef6896e9d172913
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575390"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406332"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Mi az Azure Time Series Insights?
 
@@ -42,7 +42,7 @@ Azonban az Azure Time Series Insights rögzíti, és minden új esemény tárolj
 
 ### <a name="learn-more-about-azure-time-series-insights-the-cloud-based-iot-analytics-platformbr"></a>További információ az Azure Time Series Insights, a felhőalapú IoT-elemzési platform.</br>
 
-> [!VIDEO https://youtube.com/embed/GaARrFfjoss]
+[![VIDEO](https://img.youtube.com/vi/GaARrFfjoss/0.jpg)](https://www.youtube.com/watch?v=GaARrFfjoss)
 
 ## <a name="primary-scenarios"></a>Elsődleges forgatókönyvek
 
@@ -61,7 +61,7 @@ Azonban az Azure Time Series Insights rögzíti, és minden új esemény tárolj
 - Ügyfélalkalmazás létrehozása a Time Series Insightson. 
   - A Time Series Insights REST lekérdezési API-kat tesz elérhetővé annak érdekében, hogy idősorozat-adatokat használó alkalmazásokat hozhasson létre.
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 
 - **Gyors kezdés:** Az Azure Time Series Insights használatához nem szükséges adatok előzetes előkészítése. Percek alatt csatlakozhat több millió Azure IoT Hub- vagy Event Hub-eseményhez. A csatlakozás után megjelenítheti és kezelheti az érzékelők adatait, így gyorsan ellenőrizheti IoT-megoldásait. Az adatok kezeléséhez egyáltalán nem szükséges kódolás.
 Nem kell megtanulnia egy új programozási nyelvet; a Time Series Insights részletes, szabad szöveges lekérdezési felületet biztosít a tapasztalt felhasználóknak, illetve egy néhány kattintással felfedezhető felületet kínál.

@@ -1,90 +1,155 @@
 ---
-title: Az Azure-foglalások vállalati használati adatai |} A Microsoft Docs
+title: Az Azure-foglalások használatának megértéséhez a nagyvállalati szerződések
 description: Ismerje meg, hogyan olvashatja be a használat megértéséhez, hogyan kell alkalmazni az Azure a nagyvállalati beléptetés-foglalás.
-services: billing
-documentationcenter: ''
-author: manish-shukla01
-manager: manshuk
-editor: ''
+author: bandersmsft
+manager: yashar
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2019
+ms.date: 05/07/2019
 ms.author: banders
-ms.openlocfilehash: daa7f6a116578fa8d1f2b5bf825a6f4cd48f7f64
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8d85dd1c21f952261e838c01843e15dafcc0e931
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60370702"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415739"
 ---
-# <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>A nagyvállalati beléptetés Azure foglalás használati adatai
+# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Nagyvállalati Szerződés fenntartási költségeket és használat beszerzése
 
-Használja a **reservationid értékhez** a [foglalások lap](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) és a használatot részletező fájl a a [a nagyvállalati szerződések portáljának](https://ea.azure.com) kiértékelni a Foglalás használat. Megtekintheti a Foglalás használati használat összefoglaló szakaszában is [a nagyvállalati szerződések portáljának](https://ea.azure.com).
+Foglalási költség- és használati adatok érhető el nagyvállalati szerződéssel rendelkező ügyfeleknek az Azure portal és a REST API-k. Ez a cikk segítségével:
 
-Ha beszerezte a foglalást, használatalapú számlázási környezetben, lásd: [a használatalapú fizetéses előfizetést foglalás használatának megértéséhez.](billing-understand-reserved-instance-usage.md)
+- Foglalás megvásárlása adatok lekérése
+- Foglalás korrigáljuk kihasználtsági adatok lekérése
+- Foglalási költség amortize
+- Jóváírási foglalás kihasználtság
+- Foglalás megtakarítás kiszámítása
 
-## <a name="usage-for-reserved-virtual-machines-instances"></a>Fenntartott virtuálisgép-példányok használatát
+Piactér-díjak a használati adatok van összevonva. Megtekintheti az entitás első használat, a Marketplace-en használatának és a vásárlások egyetlen adatforrásból származó kell fizetni.
 
-A következő szakaszokban feltételezzük, hogy Windows Standard D1 v2 virtuális gép fut a keleti régiójában és az alábbi táblázat a Foglalás információk tűnik:
+## <a name="reservation-charges-in-azure-usage-data"></a>Foglalás a költségeket az Azure-használati adatok
 
-| Mező | Value |
-|---| --- |
-|ReservationId |8f82d880-d33e-4e0d-bcb5-6bcb5de0c719|
-|Mennyiség |1|
-|SKU | Standard_D1|
-|Régió | eastus |
+Adatok két külön adatkészletek oszlik: _Tényleges költség_ és _amortizált költségek_. Két Miben:
 
-A hardver része a virtuális gép hatálya alá tartozó, mert az üzembe helyezett virtuális gép megfelel a Foglalás attribútumok. A foglalás nem rendelkezik Windows szoftverek megtekintéséhez lásd: [Azure számára fenntartott VM-példányok Windows szoftverek díjait](billing-reserved-instance-windows-software-costs.md).
+**Tényleges költség** -nyújt az adatok a havi számla egyeztetni. Ezeket az adatokat a beszerzési költségeket foglalás rendelkezik. A használatra, a foglalási kedvezményt kapott nulla EffectivePrice rendelkezik.
 
-### <a name="usage-in-csv-file-for-reserved-vm-instances"></a>Használat a Reserved VM Instances CSV-példafájlja
+**Amortizált költség** – az erőforrás EffectiveCost, amely lekérdezi a foglalási kedvezményt a fenntartott példány időarányos mennyibe kerül. Az adatkészlet is rendelkezik nem használt foglalás költségeket. A fenntartási költségeket és a fel nem használt foglalás összege a Foglalás napi amortizált költségének biztosít.
 
-Letöltheti a vállalati használati CSV-fájl a vállalati portálról. Szűrés a CSV-fájl **további adatok** , és írja be a **reservationid értékhez**. Az alábbi képernyőfelvételen a Foglalás kapcsolódó mezőket:
+Két adatkészletet összehasonlítása:
 
-![Nagyvállalati Szerződés (EA) fürt megosztott kötetei szolgáltatás az Azure-foglalás](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-csv.png)
+| Adatok | Tényleges költség-adatkészlet | Amortizált költség-adatkészlet |
+| --- | --- | --- |
+| Foglalás beszerzések | Ebben a nézetben érhető el.<br>  Úgy szerezheti be az adatok szűrése ChargeType = &quot;beszerzési&quot;. <br> Tekintse meg reservationid értékhez vagy ReservationName tudni, hogy melyik foglalás a díjat.  | Ez a nézet nem alkalmazható. <br> Beszerzési költségek amortizált adatok nincsenek megadva. |
+| effectivePrice | A tulajdonság értéke nulla, amely lekérdezi a foglalási kedvezményt használatra. | Óraalapú elszámolással költsége a foglalást, amely rendelkezik a foglalási kedvezményt használat értéke. |
+| A fel nem használt foglalás (biztosít a foglalás nem használható egy nap alatt órák számát és a veszteség részének pénzügyi értékét) | Ebben a nézetben nem alkalmazható. | Ebben a nézetben érhető el.<br> Ezen adatok beolvasásához, szűrjön az ChargeType = &quot;UnusedReservation&quot;.<br>  Tekintse meg reservationid értékhez vagy ReservationName tudni, hogy melyik foglalás volt eredményeztek. Ez az, hogy mekkora a Foglalás volt adattisztítást a napon.  |
+| Egységár (az árlista erőforrás díj) | Szabad | Szabad |
 
-1. **Reservationid értékhez** a **további adatok** mező képviseli a alkalmazni a virtuális gép foglalást.
-2. **ConsumptionMeter** a mérőszám azonosítója van a virtuális gép számára.
-3. **Mérőszám azonosítója** 0 USD költséget a Foglalás mérőszám. A fenntartott VM-példány fizeti a futó virtuális gép költsége.
-4. Standard_D1 egy vCPU virtuális gép és a virtuális gép központi telepítése az Azure Hybrid Benefit nélkül. Tehát ez az érték magában foglalja a Windows-szoftverek külön díjfizetés nélkül. A mérőszám, a D sorozatú virtuális gép 1 mag, lásd: [Azure számára fenntartott VM-példányok Windows szoftverek díjait](billing-reserved-instance-windows-software-costs.md).  Ha az Azure Hybrid Benefit, ez külön díjfizetés nélkül nem alkalmazza.
+Más Azure-használati adatok elérhető információk megváltozott:
 
-## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>Az SQL Database és a Cosmos DB használatát fenntartott kapacitás foglalások
+- Termék- és mérési adatok, az Azure nem cserélje le az eredetileg felhasznált mérőszám a reservationid értékhez és ReservationName, mint korábban.
+- Reservationid értékhez és ReservationName – azok a saját mezőket az adatok. Korábban a ezt használja csak a további információ területén érhetők el.
+- ProductOrderId - foglalás rendelési azonosítója, a saját mezőként hozzáadva.
+- ProductOrderName – a termék nevét, a megvásárolt foglalás.
+- Kifejezés - 12 hónapon belül vagy 36 hónapos.
+- RINormalizationRatio - további információ területen érhető el. Ez az arány ahol a Foglalás a használati rekord van alkalmazva. Ha a példány mérete rugalmasan engedélyezve van a foglalás, majd alkalmazhatja további méretek. Az érték látható, hogy a Foglalás lett alkalmazva a használati rekord aránya.
 
-A következő szakaszok példaként az Azure SQL Database használatával a használati jelentés ismertetik. Ugyanezen lépések segítségével használatának megtekintése az Azure Cosmos DB is.
+## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>Az Azure használat és a fenntartás használati adatok lekérése API használatával
 
-Tegyük fel, hogy futtatja a keleti régiójában és a foglalási adatokat úgy tűnik, az alábbi táblázat, egy SQL Database Gen 4:
+Az adatok lekérése az API használatával, vagy töltse le az Azure Portalon.
 
-| Mező | Value |
-|---| --- |
-|ReservationId |8244e673-83e9-45ad-b54b-3f5295d37cae|
-|Mennyiség |2|
-|Product| Az SQL Database Gen 4 (2 mag)|
-|Régió | eastus |
+Hívja a [használati részletek API](/rest/api/consumption/usagedetails/list) API-verzióval &quot;2019-04-01-preview&quot; az új adatok beolvasásához. Terminológiai kapcsolatos részletekért lásd: [használati feltételek](billing-understand-your-usage.md). A hívónak a nagyvállalati szerződés a vállalati rendszergazdának kell lennie a [a nagyvállalati szerződések portáljának](https://ea.azure.com). Írásvédett vállalati rendszergazdák is kérheti le az adatokat.
 
-### <a name="usage-in-csv-file"></a>CSV-fájl használata
+Az adatok nem érhető el a [Reporting API-kkal a vállalati ügyfelek - használatról](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
 
-Szűrjön az **további információ** , és írja be a **Foglalásazonosító**, és válassza ki a szükséges **mérőszám kategóriája** – Azure SQL database vagy az Azure Cosmos DB. Az alábbi képernyőfelvételen a Foglalás kapcsolódó mezőket.
+Íme egy példa az API meghívásához:
 
-![Nagyvállalati Szerződés (EA) fürt megosztott kötetei szolgáltatás az SQL Database szolgáltatás számára fenntartott kapacitás](./media/billing-understand-reserved-instance-usage-ea/billing-ea-sql-db-reserved-capacity-csv.png)
+```
+https://consumption.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-04-01-preview&amp;$filter={filter}
+```
 
-1. **Reservationid értékhez** a a **további adatok** mező a alkalmazni az SQL Database erőforrás foglalást.
-2. **ConsumptionMeter** az SQL Database erőforrás mérő azonosítója.
-3. **Mérőszám azonosítója** 0 USD költséget a Foglalás mérőszám. Bármely SQL-adatbázis-erőforrás, amely jogosult a Foglalás jeleníti meg a CSV-fájlt a mérőszám azonosítója.
+További információ a {enrollmentId} és {billingPeriodId}: a [használat részletei – lista](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) API cikk.
 
-## <a name="usage-summary-page-in-enterprise-portal"></a>Használati Összegzés lapon a vállalati portál
+Információk az alábbi táblázatban kapcsolatos metrika- és a szűrő segítségével a Foglalás kapcsolatos gyakori problémák megoldásában.
 
-A foglalást az Azure-használat is megjelenik-e, a vállalati portál használati összesítő szakaszában: ![Nagyvállalati Szerződés (EA) használatának összegzése](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-usagesummary.png)
+| **Az API-adatok típusa** | API-hívás művelet |
+| --- | --- |
+| **Minden költséget (használati és vásárlások)** | Cserélje le ActualCost {metrika} |
+| **Itt van a foglalási kedvezményt használat** | Cserélje le ActualCost {metrika}<br>Helyettesítse be {szűrő} a: properties/reservationId%20ne%20 |
+| **Használat, amelyek nem tudták beszerezni a foglalási kedvezményt** | Cserélje le ActualCost {metrika}<br>Helyettesítse be {szűrő} a: properties/reservationId%20eq%20 |
+| **Amortizált költségek (használati és vásárlások)** | Cserélje le AmortizedCost {metrika} |
+| **A fel nem használt foglalás jelentés** | Cserélje le AmortizedCost {metrika}<br>Helyettesítse be {szűrő} a: properties/ChargeType%20eq%20'UnusedReservation " |
+| **Foglalás beszerzések** | A ActualCostReplace {szűrő} {metrika} cserélje le: properties/ChargeType%20eq%20'Purchase "  |
+| **A befizetett** | Cserélje le ActualCost {metrika}<br>Helyettesítse be {szűrő} a: properties/ChargeType%20eq%20'Refund " |
 
-1. Ön nem számítunk fel díjat a virtuális gép a hardverösszetevő, Foglalás körébe. Egy SQL Database foglalás lát egy sort a **szolgáltatásnév** mint az Azure SQL Database szolgáltatás számára fenntartott kapacitás kihasználtsága.
-2. Ebben a példában nem rendelkezik a az Azure Hybrid Benefit, így a Windows szoftverek, a virtuális gép együttes díjkötelesek.
+## <a name="download-the-usage-csv-file-with-new-data"></a>Az új adatokat a használati CSV-fájl letöltése
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+Ha Ön EA rendszergazdája, letöltheti az új használati adatokat az Azure portal, a CSV-fájl. Ezek az adatok nem elérhető a [a nagyvállalati szerződések portáljának](https://ea.azure.com).
+
+Az Azure Portalon lépjen [Költségkezelés + számlázás](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts).
+
+1. Válassza ki a számlázási fiókot.
+2. Kattintson a **használat és költségek**.
+3. Kattintson a **Letöltés** gombra.  
+![Példa: hol kell töltse le a fürt megosztott kötetei szolgáltatás használati adatokat az Azure Portalon](./media/billing-understand-reserved-instance-usage-ea/portal-download-csv.png)
+4. A **használati adatok letöltése + költségek** alatt **használati részletek 2-es verzió** , jelölje be **minden költséget (használati és vásárlások)** és majd kattintson a Letöltés gombra. Ismételje meg a műveletet **amortizált költségek (használati és vásárlások)**.
+
+A CSV-fájlok letöltésével beszerzett tartalmaznak tényleges költségek és az amortizált költségek.
+
+## <a name="common-cost-and-usage-tasks"></a>Gyakori felhasználási és feladatok
+
+Az alábbi szakaszok olyan gyakori feladatokat, amelyek a legtöbb ember foglalási költség- és használati adatok megtekintéséhez.
+
+### <a name="get-reservation-purchase-costs"></a>Első foglalás beszerzési költségek
+
+Foglalás beszerzési költségek tényleges költségek adatok érhetők el. Állítson be szűrőt _ChargeType beszerzési =_. Tekintse meg ProductOrderID meghatározni, melyik foglalásrendelés, a vásárlás szól.
+
+### <a name="get-underutilized-reservation-quantity-and-costs"></a>Gyenge kihasználtságú foglalási mennyiség és költségek
+
+Amortizált költség adatok lekérése és szűrheti a _ChargeType_ _= UnusedReservation_. A napi fel nem használt foglalás mennyiségét és a költségek kap. Szűrheti az adatokat a fenntartás vagy foglalási sorrend használatával _reservationid értékhez_ és _ProductOrderId_ mezők jelölik. Ha a Foglalás volt 100 %-os használt fel, a rekord tartalmazza-e adott mennyiségű 0.
+
+### <a name="amortize-reservation-costs"></a>Foglalási költség amortize
+
+Amortizált költség adatok és a egy foglalás rendelési használatára vonatkozó szűrő _ProductOrderID_ napi amortizált költségek beolvasni egy foglalást.
+
+### <a name="chargeback-for-a-reservation"></a>A Foglalás jóváírási
+
+Jóváírási foglalás használatával más szervezetek így előfizetés, erőforráscsoport vagy címkéket. Amortizált költség adatokat egy foglalást kihasználtságát, a következő adattípusokat részének pénzügyi értékét tartalmazza:
+
+- Erőforrások (például a virtuális Géphez)
+- Erőforráscsoport
+- Tags
+- Előfizetés
+
+### <a name="get-the-blended-rate-for-chargeback"></a>A kevert arány beolvasása a jóváírások használatára
+
+Annak megállapításához, a kombinált sebesség, lekérheti az amortizált költségek adatokat, és a teljes költség összevonása. A virtuális gépek esetében használhatja a további információ a JSON-adatok MeterName vagy szolgáltatástípus adatait. Ossza meg a teljes költség kéri le a kevert sebesség mennyiséggel.
+
+### <a name="audit-optimum-reservation-use-for-instance-size-flexibility"></a>Naplózási optimális foglalás használata például mérete rugalmasság
+
+A több mennyiség a _RINormalizationRatio_, a további információ. Az eredmények jelzik, hogy hány órás foglalás használat a használati rekord lett alkalmazva.
+
+### <a name="determine-reservation-savings"></a>Határozza meg a Foglalás megtakarítások
+
+A Amortized költségek adatokat, és szűrje az adatokat a fenntartott példányhoz. Ezután:
+
+1. Első becsült használatalapú fizetéses költségekhez képest. Szorozza meg a _UnitPrice_ értéket _mennyiség_ értékét becsült használatalapú fizetéses költségekhez képest, ha a foglalási kedvezményt a kihasználtsága nem lett alkalmazva.
+2. A fenntartási költségeket beolvasása. Sum a _költség_ értékét a fenntartott példány fizetett pénzügyi értékét. Ez magában foglalja a Foglalás felhasznált és költségeit.
+3. Kivonás becsült használatalapú fizetéses költségekhez képest beolvasni a becsült megtakarítások fenntartási költségeket.
+
+## <a name="reservation-purchases-and-amortization-in-azure-cost-analysis"></a>Foglalás beszerzések és az Azure cost analysis amortizációs
+
+A fenntartott példányok költségei érhető [előnézeti módot az Azure cost analysis](https://preview.portal.azure.com/?feature.canmodifystamps=true&amp;microsoft_azure_costmanagement=stage2&amp;Microsoft_Azure_CostManagement_arm_canary=true&amp;Microsoft_Azure_CostManagement_apiversion=2019-04-01-preview&amp;Microsoft_Azure_CostManagement_amortizedCost=true#blade/Microsoft_Azure_CostManagement/Menu/costanalysis). Alapértelmezés szerint a költségek adatnézet a tényleges költségek mellett. Az amortizált költségek válthat. Íme egy példa.
+
+![Példa: hol kell válassza ki a amortizált költség költségelemzés](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
+
+A alkalmazni annak érdekében, hogy a díjakkal egy foglalás vagy költséghelyi típus szerint. Csoportosítás foglalás nevére kattintva megtekintheti a foglalások bontásban költségeket.
+
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolatfelvétel.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
-
 
 ## <a name="next-steps"></a>További lépések
 
@@ -97,4 +162,3 @@ Azure-foglalások kapcsolatos további információkért tekintse meg a követke
 - [Megismerheti, hogyan kell alkalmazni a foglalási kedvezményt](billing-understand-vm-reservation-charges.md)
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
 - [Windows szoftverek díjait nem tartalmazza a foglalások](billing-reserved-instance-windows-software-costs.md)
-

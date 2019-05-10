@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
-ms.openlocfilehash: 33348e637143b923719425b9674f99a475d848d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 88b0ac853c64e1e32a2d1c429bdf8655158f030d
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60815825"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411478"
 ---
 # <a name="specify-a-face-recognition-model"></a>Arcfelismerési modell megadása
 
@@ -52,7 +52,7 @@ Az ügyféloldali kódtárat használja, ha az érték rendelhet `recognitionMod
 Ha meghagyja a hozzá nem rendelt, az alapértelmezett modellverziója (_recognition_01_) fogja használni. Tekintse meg a következő mintakód a .NET ügyféloldali kódtár.
 
 ```csharp
-string imageUrl = "http://news.microsoft.com/ceo/assets/photos/06_web.jpg";
+string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 var faces = await faceServiceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recognitionModel: "recognition_02", returnRecognitionModel: true);
 ```
 

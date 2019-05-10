@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 92546e6aabdf43c2f9cb0339fb21dd2dfc641d44
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e9101a1e23d361e66c5c30969069cbd4b971590
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60587822"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236766"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépést a személyazonosság-infrastruktúra védelme
 
@@ -59,12 +59,12 @@ Adott folyamatban kitalálni, jelszavak phished, újra, vagy a kártevő szoftve
 
 Számos vállalat használja a hagyományos összetettségét (igénylő speciális karaktereket, számokat, nagy,- és kisbetűk) és a jelszó lejárati szabályok. [A Microsoft research](https://aka.ms/passwordguidance) azt mutatják, ezek a szabályzatok a felhasználóktól az olyan könnyebben kitalálja jelszó.
 
-Az Azure AD [dinamikus letiltott jelszavak](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords) a szolgáltatás jelenlegi támadó viselkedése segítségével megakadályozhatja a felhasználókat, hogy könnyen lehet kitalálni beállítása. Ez a lehetőség mindig be van kapcsolva, amikor a felhasználók jönnek létre a felhőben, de most is elérhető hibrid cégekhez és vállalkozásokhoz azokat üzembe [jelszavas védelem az Azure AD a Windows Server Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises). Az Azure AD jelszóvédelem megakadályozza a felhasználókat abban, hogy ezek a közös jelszavak kiválasztása, és a jelszavát adja meg, hogy egyéni kulcsszavakat tartalmazó blokkolására is kiterjeszthető. Például a felhasználók megakadályozása a vállalat terméknevekhez vagy egy helyi sport csapat tartalmazó jelszavak kiválasztása.
+Az Azure AD [dinamikus letiltott jelszavak](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad) a szolgáltatás jelenlegi támadó viselkedése segítségével megakadályozhatja a felhasználókat, hogy könnyen lehet kitalálni beállítása. Ez a lehetőség mindig be van kapcsolva, amikor a felhasználók jönnek létre a felhőben, de most is elérhető hibrid cégekhez és vállalkozásokhoz azokat üzembe [jelszavas védelem az Azure AD a Windows Server Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises). Az Azure AD jelszóvédelem megakadályozza a felhasználókat abban, hogy ezek a közös jelszavak kiválasztása, és a jelszavát adja meg, hogy egyéni kulcsszavakat tartalmazó blokkolására is kiterjeszthető. Például a felhasználók megakadályozása a vállalat terméknevekhez vagy egy helyi sport csapat tartalmazó jelszavak kiválasztása.
 
 A Microsoft javasolja, hogy a következő alapján modern jelszóházirend bevezetése [NIST útmutatást](https://pages.nist.gov/800-63-3/sp800-63b.html):
 
 1. Szükséges jelszavak legalább 8 karakterből kell állnia. Már nem szükségszerűen jobb, mivel azok kárt felhasználókat előre jelezhető jelszó, menthetik a jelszavakat a fájlokat, vagy írja le.
-2. Tiltsa le a lejárati szabályok, amelyek hozzásegítheti a felhasználókat a könnyen kitalálható jelszavakat, mint **Summer2018!**
+2. Tiltsa le a lejárati szabályok, amelyek hozzásegítheti a felhasználókat a könnyen kitalálható jelszavakat, mint **Spring2019!**
 3. Tiltsa le a karakter-összeállítás követelményeknek, és megakadályozhatja a felhasználókat gyakran megtámadott jelszavak, kiválasztása, azok kárt a felhasználók kiválaszthatják a kiszámítható karakter helyettesítések hozzáadása a jelszavakat.
 
 Használhat [PowerShell használatával megakadályozhatja, hogy a jelszavak lejárjanak](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy) a felhasználók számára, ha közvetlenül az Azure ad-identitások hoz létre. Ezek a házirendek használatával hibrid szervezeteknek meg kell valósítania [tartományi csoportházirend-beállítások](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10)) vagy [Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy).
@@ -166,7 +166,7 @@ Az Azure AD Identity Protection a célszerű figyelemmel kísérni napi két fon
 
 ### <a name="audit-apps-and-consented-permissions"></a>Naplózási alkalmazások és a jóváhagyott engedélyek
 
-Felhasználók is lehet címeket ágyaznak ellenőrizheti, hogy a feltört webhelyek vagy alkalmazások, amely hozzáfér a saját profil és a felhasználó adatok, például az e-mailjeikhez. Egy rosszindulatú aktor használhatja a postaláda tartalmak titkosításához, és kereslet-postaláda adatait elhárította a ransom kapott jóváhagyott engedélyeket. [A rendszergazdák ekkor a felülvizsgálandó és naplózási](https://blogs.technet.microsoft.com/office365security/defending-against-illicit-consent-grants/) a felhasználó által megadott engedélyekkel.
+Felhasználók is lehet címeket ágyaznak ellenőrizheti, hogy a feltört webhelyek vagy alkalmazások, amely hozzáfér a saját profil és a felhasználó adatok, például az e-mailjeikhez. Egy rosszindulatú aktor használhatja a postaláda tartalmak titkosításához, és kereslet-postaláda adatait elhárította a ransom kapott jóváhagyott engedélyeket. [A rendszergazdák ekkor a felülvizsgálandó és naplózási](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) a felhasználó által megadott engedélyekkel.
 
 ## <a name="step-5---enable-end-user-self-help"></a>5. lépés - a végfelhasználói önsegítő engedélyezése
 

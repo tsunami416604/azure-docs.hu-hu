@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a787e896016b3230d389b2ec140ae6c03477d875
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb2a2aa8204ef442bbe3a0e6ff9018cd3f153910
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60293011"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406497"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD-alkalmazásproxy-összekötők ismertetése
 
@@ -29,7 +29,7 @@ Az összekötők olyan egyszerűsített ügynökök, amelyek a helyszínen talá
 
 ## <a name="requirements-and-deployment"></a>Követelmények és üzembe helyezés
 
-Az alkalmazásproxy sikeres üzembe helyezéséhez legalább egy összekötő szükséges, de azt javasoljuk, hogy két vagy több, nagyobb rugalmasság. Telepítse a Windows Server 2012 R2 vagy 2016 gépen. Az összekötő és az alkalmazásproxy-szolgáltatás, és közzéteszi a helyszíni alkalmazások közötti kommunikációhoz szükséges. 
+Az alkalmazásproxy sikeres üzembe helyezéséhez legalább egy összekötő szükséges, de azt javasoljuk, hogy két vagy több, nagyobb rugalmasság. Az összekötő telepítése a Windows Server 2012 R2 verziójával futó gépre vagy újabb. Az összekötő és az alkalmazásproxy-szolgáltatás, és közzéteszi a helyszíni alkalmazások közötti kommunikációhoz szükséges. 
 
 ### <a name="windows-server"></a>Windows server
 A Windows Server 2012 R2 rendszerű kiszolgáló van szüksége, vagy később is telepíthető, amely az Application Proxy connector. A kiszolgáló csatlakozni az Azure-ban az alkalmazásproxy-szolgáltatásokat, és a helyszíni alkalmazásokat, amelyek az Ön közzétételi kell.
@@ -89,7 +89,7 @@ Korábban kiadott verziók és milyen módosítások azok kapcsolatos informáci
 
 Fontos, hogy elegendő a kapacitása kezelni a várt forgalom mennyisége összekötők között megtervezése. Általános, annál több felhasználó rendelkezik, a nagyobb egy gépre lesz szüksége. Az alábbi, egy táblát, amely röviden ismerteti a kötetet a különböző gépek képes kezelni. Vegye figyelembe az összes-alapú a várt tranzakció egy második (TPS) helyett felhasználó óta használati minták eltérőek lehetnek, és terhelés előrejelzése nem használható. Is lesz a válaszok és a háttérrendszer alkalmazás válaszideje alapján különbségeket – válasz nagyobb méretek és a lassabb válaszidőket egy alacsonyabb maximális TPS eredményez. Azt javasoljuk, hogy további gépeket úgy, hogy a gépek között a elosztott terhelés körülbelül 50 %. A további kapacitást biztosítja, hogy magas rendelkezésre állás és rugalmasság.
 
-|Processzormagok|RAM|Várható késés (MS) – P99|Maximális TPS|
+|Magok|RAM|Várható késés (MS) – P99|Maximális TPS|
 | ----- | ----- | ----- | ----- |
 |2|8|325|586|
 |4|16|320|1150|
@@ -103,7 +103,7 @@ Fontos, hogy elegendő a kapacitása kezelni a várt forgalom mennyisége össze
 
 ## <a name="security-and-networking"></a>Biztonsági és hálózatkezelési
 
-Összekötők bárhol a hálózaton, amellyel kérést küld az alkalmazásproxy-szolgáltatás telepíthető. Fontos, hogy az összekötő is futtató számítógép rendelkezik-e a hozzáférés az alkalmazásokhoz. Az összekötők a vállalati hálózaton belül, vagy a felhőben futó virtuális gépre telepíthető. Az összekötők a demilitarizált zónában (DMZ) futtatható, de már nem szükséges, mert az összes forgalom akkor kimenő forgalomról beszélünk, így a hálózat biztonságának megőrzéséről.
+Összekötők bárhol a hálózaton, amellyel kérést küld az alkalmazásproxy-szolgáltatás telepíthető. Fontos, hogy az összekötő is futtató számítógép rendelkezik-e a hozzáférés az alkalmazásokhoz. Az összekötők a vállalati hálózaton belül, vagy a felhőben futó virtuális gépre telepíthető. Összekötők futtathat a szegélyhálózaton vagy más néven a demilitarizált zónában (DMZ), de már nem szükséges, mert az összes forgalom akkor kimenő forgalomról beszélünk, így a hálózat biztonságának megőrzéséről.
 
 Összekötők csak a kimenő kéréseket küld. A kimenő adatforgalom az alkalmazásproxy-szolgáltatás, és a közzétett alkalmazásokhoz. Nem kell bemenő portokat nyitni, mert a forgalom mindkét irányban keresztszűréssel egy munkamenet létrehozását követően. Emellett nem kell konfigurálni a bejövő hozzáférést a tűzfalon keresztül. 
 

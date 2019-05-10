@@ -10,18 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/07/2019
 ms.author: jingwang
-ms.openlocfilehash: 8b8ffeb505f7d0978a736190b3d38c0246a38ebc
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9ca3cbb1ef46c7fe53b6b16bda40ebef245613f3
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145005"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415661"
 ---
-# <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Adatok másolása az Office 365-ből az Azure-bA az Azure Data Factory (előzetes verzió) használatával 
+# <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Adatok másolása az Office 365-ből az Azure-bA az Azure Data Factory használatával
 
-Az Azure Data Factory lehetővé teszi a szervezeti adatokat az Office 365 bérlői az Azure-ba, skálázható módon, és analytics alkalmazásokat hozhat létre, és az elemzések alapján értékes adategységekhez gazdag használata. Integráció a Privileged Access Management az értékes összeválogatott adatokat, az Office 365-ben a biztonságos hozzáférés-vezérlést biztosít.  További információ a Microsoft Graph adatváltozásainak csatlakozni, tekintse meg [ezt a hivatkozást](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki).
+Az Azure Data Factory lehetővé teszi a szervezeti adatokat az Office 365 bérlői az Azure-ba, skálázható módon, és analytics alkalmazásokat hozhat létre, és az elemzések alapján értékes adategységekhez gazdag használata. Integráció a Privileged Access Management az értékes összeválogatott adatokat, az Office 365-ben a biztonságos hozzáférés-vezérlést biztosít.  További információ a Microsoft Graph adatváltozásainak csatlakozni, tekintse meg [ezt a hivatkozást](https://docs.microsoft.com/graph/data-connect-concept-overview).
 
 Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factoryban az adatok másolása az Office 365-höz. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
@@ -31,15 +31,14 @@ Most egy másolási tevékenységgel belül is csak **adatok másolása az Offic
 
 >[!IMPORTANT]
 >- A data factory és a fogadó adattár tartalmazó Azure-előfizetés, az Office 365-bérlő ugyanahhoz az Azure Active Directory (Azure AD) bérlőhöz kell tartozniuk.
->- Győződjön meg, hogy a másolási tevékenységhez használt Azure integrációs modul régióban, valamint a cél van ugyanabban a régióban, ahol az Office 365 bérlői felhasználói postaláda. Tekintse meg [Itt](concepts-integration-runtime.md#integration-runtime-location) megérteni, hogyan határozza meg, az Azure integrációs modul helye. Tekintse meg [itt tábla](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Capabilities#data-regions) támogatott Office-régiók és a megfelelő Azure-régiók listáját.
->-  Ha az Office 365-adatokat tölt be **Azure Blob Storage** célként, győződjön meg arról, hogy használ **[egyszerű szolgáltatásnév hitelesítése](connector-azure-blob-storage.md#service-principal-authentication)** a társított meghatározásakor Az Azure Blob Storage szolgáltatásra, és nem használ [fiókkulcs](connector-azure-blob-storage.md#account-key-authentication), [közös hozzáférésű jogosultságkód](connector-azure-blob-storage.md#shared-access-signature-authentication) vagy [felügyelt identitások az Azure-erőforrások](connector-azure-blob-storage.md#managed-identity) üzenetküldéshez használ.
->-  Ha az Office 365-adatokat tölt be **Azure Data Lake Storage Gen1** célként, győződjön meg arról, hogy használ [ **egyszerű szolgáltatásnév hitelesítése** ](connector-azure-data-lake-store.md#use-service-principal-authentication) meghatározásakor a Társított szolgáltatás az Azure Data Lake Storage Gen1 és nem használ [felügyelt identitások Azure-erőforrások hitelesítéshez](connector-azure-data-lake-store.md#managed-identity).
+>- Győződjön meg, hogy a másolási tevékenységhez használt Azure integrációs modul régióban, valamint a cél van ugyanabban a régióban, ahol az Office 365 bérlői felhasználói postaláda. Tekintse meg [Itt](concepts-integration-runtime.md#integration-runtime-location) megérteni, hogyan határozza meg, az Azure integrációs modul helye. Tekintse meg [itt tábla](https://docs.microsoft.com/graph/data-connect-datasets#regions) támogatott Office-régiók és a megfelelő Azure-régiók listáját.
+>- Egyszerű szolgáltatás hitelesítése az Azure Blob Storage, Azure Data Lake Storage Gen1 és az Azure Data Lake Storage Gen2 való céltárolót is támogatott, egyetlen hitelesítési mechanizmusa.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Adatok másolása az Office 365-ből az Azure-ba, a következő előfeltételként szükséges lépéseket kell:
 
-- Az Office 365-bérlői rendszergazdai leírtak szerint kell végeznie az előkészítési művelet [Itt](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/On-boarding).
+- Az Office 365-bérlői rendszergazdai leírtak szerint kell végeznie az előkészítési művelet [Itt](https://docs.microsoft.com/graph/data-connect-get-started).
 - Hozzon létre, és a egy Azure AD-webalkalmazás konfigurálása az Azure Active Directoryban.  Útmutatásért lásd: [hozzon létre egy Azure AD-alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application).
 - Jegyezze fel a következő értékeket, és az Office 365-höz, a társított szolgáltatás definiálásához használhat:
     - Bérlő azonosítója. Útmutatásért lásd: [Bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
@@ -51,11 +50,11 @@ Adatok másolása az Office 365-ből az Azure-ba, a következő előfeltételké
 
 Ha első alkalommal a kért adatokat az ebben a környezetben (kombinációjával, hogy mely tábla folyamatban van a hozzáférés, mely cél fiók be az adatokat, és mely felhasználói identitás, hogy így az adatok hozzáférési kérés), megjelenik a másolási tevékenység állapota "Folyamatban", és csak akkor, ha a megoldásra kattint ["Details" hivatkozásra a műveletek](copy-activity-overview.md#monitoring) , megjelenik az állapot szerint "RequestingConsent".  Az adatelérési jóváhagyó csoportja tagjának kell jóváhagyhatja a kérést a Privileged Access Management, mielőtt konfigurálhatná az adatok kinyerése.
 
-Tekintse meg [Itt](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Approving-data-access-requests) hogyan hagyhatja jóvá, a jóváhagyó a az adatok eléréséhez a kérelmet, és tekintse meg [Itt](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#integration-with-privileged-access-management) általában véve az integrációra, a Privileged Access Management a magyarázat, többek között az adatok beállítása hozzáférés-jóváhagyója csoport.
+Tekintse meg [Itt](https://docs.microsoft.com/graph/data-connect-tips#approve-pam-requests-via-office-365-admin-portal) hogyan hagyhatja jóvá, a jóváhagyó a az adatok eléréséhez a kérelmet, és tekintse meg [Itt](https://docs.microsoft.com/graph/data-connect-pam) általában véve az integrációra, a Privileged Access Management a magyarázat, többek között az adatok beállítása hozzáférés-jóváhagyója csoport.
 
 ## <a name="policy-validation"></a>Házirend érvényesítése
 
-Ha a felügyeleti csoporton belüli erőforrásokon végrehajtott Azure szabályzatok hozzárendeléseinek felügyelt alkalmazás részeként jön létre az ADF, majd minden másolási tevékenység futtatása, ADF ellenőrzi, győződjön meg arról, hogy a szabályzat-hozzárendelések érvényben vannak. Tekintse meg [Itt](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Capabilities#policies) támogatott szabályzatok listája.
+Ha a felügyeleti csoporton belüli erőforrásokon végrehajtott Azure szabályzatok hozzárendeléseinek felügyelt alkalmazás részeként jön létre az ADF, majd minden másolási tevékenység futtatása, ADF ellenőrzi, győződjön meg arról, hogy a szabályzat-hozzárendelések érvényben vannak. Tekintse meg [Itt](https://docs.microsoft.com/graph/data-connect-policies#policies) támogatott szabályzatok listája.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -120,14 +119,18 @@ Adatok másolása az Office 365-höz, a következő tulajdonságok támogatottak
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adatkészlet értékre kell állítani: **Office365Table** | Igen |
-| tableName | Az adatkészlet nevét a Office 365-ből kibontásához. Tekintse meg [Itt](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#datasets) kinyerési érhető el az Office 365-adatkészletek listáját. | Igen |
-| Predikátum | A predikátum kifejezés, amely segítségével kibontani az Office 365-höz adott sorok szűrése.  Tekintse meg [Itt](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#filters) megtudhatja, mely oszlopok predikátum szűrést az egyes táblákat és a szűrő kifejezésnek formátumban is használható. | Nem<br>(Ha nincs predikátum nem lett megadva, az alapértelmezett érték adatokat nyerhet ki az utolsó 30 nap) |
+| tableName | Az adatkészlet nevét a Office 365-ből kibontásához. Tekintse meg [Itt](https://docs.microsoft.com/graph/data-connect-datasets#datasets) kinyerési érhető el az Office 365-adatkészletek listáját. | Igen |
+| allowedGroups | Csoport kiválasztása predikátum.  Ez a tulajdonság legfeljebb 10 felhasználói csoportokat, akik számára az adatok lekérésének kiválasztásához használja.  Ha nincsenek csoportok meg van adva, majd az adatok visszaadásához fog a teljes cég számára. | Nem |
+| userScopeFilterUri | Amikor `allowedGroups` tulajdonság nincs megadva, használhat egy predikátum kifejezés, a teljes bérlő kibontani az Office 365-höz adott sorok szűrése a alkalmazni. A predikátum formátum meg kell egyeznie a lekérdezési formátumban a Microsoft Graph API-k, például `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`. | Nem |
+| dateFilterColumn | A dátum/idő szűrőoszlop neve. Ez a tulajdonság segítségével korlátozhatja az időtartományt, mely Office 365-höz készült adatok ki kell olvasni. | Igen, ha az adatkészlet egy vagy több dátum/idő-oszlop rendelkezik. Tekintse meg [Itt](https://docs.microsoft.com/graph/data-connect-filtering#filtering) igénylő Ez a DateTime típusú szűrő az adatkészletek listáját. |
+| startTime | Indítsa el a szűréshez használandó dátum/idő értéket. | Igen, ha `dateFilterColumn` van megadva |
+| endTime | Záró dátum és idő szűréshez használandó értéket. | Igen, ha `dateFilterColumn` van megadva |
 
 **Példa**
 
 ```json
 {
-    "name": "Office365Table1",
+    "name": "DS_May2019_O365_Message",
     "properties": {
         "type": "Office365Table",
         "linkedServiceName": {
@@ -136,113 +139,187 @@ Adatok másolása az Office 365-höz, a következő tulajdonságok támogatottak
         },
         "structure": [
             {
-                "name": "ReceivedDateTime",
-                "type": "datetime"
-            },
-            {
-                "name": "SentDateTime",
-                "type": "datetime"
-            },
-            {
-                "name": "HasAttachments",
-                "type": "boolean"
-            },
-            {
-                "name": "InternetMessageId",
-                "type": "string"
-            },
-            {
-                "name": "Subject",
-                "type": "string"
-            },
-            {
-                "name": "Importance",
-                "type": "string"
-            },
-            {
-                "name": "ParentFolderId",
-                "type": "string"
-            },
-            {
-                "name": "Sender",
-                "type": "string"
-            },
-            {
-                "name": "From",
-                "type": "string"
-            },
-            {
-                "name": "ToRecipients",
-                "type": "string"
-            },
-            {
-                "name": "CcRecipients",
-                "type": "string"
-            },
-            {
-                "name": "BccRecipients",
-                "type": "string"
-            },
-            {
-                "name": "ReplyTo",
-                "type": "string"
-            },
-            {
-                "name": "ConversationId",
-                "type": "string"
-            },
-            {
-                "name": "UniqueBody",
-                "type": "string"
-            },
-            {
-                "name": "IsDeliveryReceiptRequested",
-                "type": "boolean"
-            },
-            {
-                "name": "IsReadReceiptRequested",
-                "type": "boolean"
-            },
-            {
-                "name": "IsRead",
-                "type": "boolean"
-            },
-            {
-                "name": "IsDraft",
-                "type": "boolean"
-            },
-            {
-                "name": "WebLink",
-                "type": "string"
+                "name": "Id",
+                "type": "String",
+                "description": "The unique identifier of the event."
             },
             {
                 "name": "CreatedDateTime",
-                "type": "datetime"
+                "type": "DateTime",
+                "description": "The date and time that the event was created."
             },
             {
                 "name": "LastModifiedDateTime",
-                "type": "datetime"
+                "type": "DateTime",
+                "description": "The date and time that the event was last modified."
             },
             {
                 "name": "ChangeKey",
-                "type": "string"
+                "type": "String",
+                "description": "Identifies the version of the event object. Every time the event is changed, ChangeKey changes as well. This allows Exchange to apply changes to the correct version of the object."
             },
             {
                 "name": "Categories",
-                "type": "string"
+                "type": "String",
+                "description": "The categories associated with the event. Format: ARRAY<STRING>"
             },
             {
-                "name": "Id",
-                "type": "string"
+                "name": "OriginalStartTimeZone",
+                "type": "String",
+                "description": "The start time zone that was set when the event was created. See DateTimeTimeZone for a list of valid time zones."
+            },
+            {
+                "name": "OriginalEndTimeZone",
+                "type": "String",
+                "description": "The end time zone that was set when the event was created. See DateTimeTimeZone for a list of valid time zones."
+            },
+            {
+                "name": "ResponseStatus",
+                "type": "String",
+                "description": "Indicates the type of response sent in response to an event message. Format: STRUCT<Response: STRING, Time: STRING>"
+            },
+            {
+                "name": "iCalUId",
+                "type": "String",
+                "description": "A unique identifier that is shared by all instances of an event across different calendars."
+            },
+            {
+                "name": "ReminderMinutesBeforeStart",
+                "type": "Int32",
+                "description": "The number of minutes before the event start time that the reminder alert occurs."
+            },
+            {
+                "name": "IsReminderOn",
+                "type": "Boolean",
+                "description": "Set to true if an alert is set to remind the user of the event."
+            },
+            {
+                "name": "HasAttachments",
+                "type": "Boolean",
+                "description": "Set to true if the event has attachments."
+            },
+            {
+                "name": "Subject",
+                "type": "String",
+                "description": "The text of the event's subject line."
+            },
+            {
+                "name": "Body",
+                "type": "String",
+                "description": "The body of the message associated with the event.Format: STRUCT<ContentType: STRING, Content: STRING>"
+            },
+            {
+                "name": "Importance",
+                "type": "String",
+                "description": "The importance of the event: Low, Normal, High."
+            },
+            {
+                "name": "Sensitivity",
+                "type": "String",
+                "description": "Indicates the level of privacy for the event: Normal, Personal, Private, Confidential."
+            },
+            {
+                "name": "Start",
+                "type": "String",
+                "description": "The start time of the event. Format: STRUCT<DateTime: STRING, TimeZone: STRING>"
+            },
+            {
+                "name": "End",
+                "type": "String",
+                "description": "The date and time that the event ends. Format: STRUCT<DateTime: STRING, TimeZone: STRING>"
+            },
+            {
+                "name": "Location",
+                "type": "String",
+                "description": "Location information of the event. Format: STRUCT<DisplayName: STRING, Address: STRUCT<Street: STRING, City: STRING, State: STRING, CountryOrRegion: STRING, PostalCode: STRING>, Coordinates: STRUCT<Altitude: DOUBLE, Latitude: DOUBLE, Longitude: DOUBLE, Accuracy: DOUBLE, AltitudeAccuracy: DOUBLE>>"
+            },
+            {
+                "name": "IsAllDay",
+                "type": "Boolean",
+                "description": "Set to true if the event lasts all day. Adjusting this property requires adjusting the Start and End properties of the event as well."
+            },
+            {
+                "name": "IsCancelled",
+                "type": "Boolean",
+                "description": "Set to true if the event has been canceled."
+            },
+            {
+                "name": "IsOrganizer",
+                "type": "Boolean",
+                "description": "Set to true if the message sender is also the organizer."
+            },
+            {
+                "name": "Recurrence",
+                "type": "String",
+                "description": "The recurrence pattern for the event. Format: STRUCT<Pattern: STRUCT<Type: STRING, `Interval`: INT, Month: INT, DayOfMonth: INT, DaysOfWeek: ARRAY<STRING>, FirstDayOfWeek: STRING, Index: STRING>, `Range`: STRUCT<Type: STRING, StartDate: STRING, EndDate: STRING, RecurrenceTimeZone: STRING, NumberOfOccurrences: INT>>"
+            },
+            {
+                "name": "ResponseRequested",
+                "type": "Boolean",
+                "description": "Set to true if the sender would like a response when the event is accepted or declined."
+            },
+            {
+                "name": "ShowAs",
+                "type": "String",
+                "description": "The status to show: Free, Tentative, Busy, Oof, WorkingElsewhere, Unknown."
+            },
+            {
+                "name": "Type",
+                "type": "String",
+                "description": "The event type: SingleInstance, Occurrence, Exception, SeriesMaster."
+            },
+            {
+                "name": "Attendees",
+                "type": "String",
+                "description": "The collection of attendees for the event. Format: ARRAY<STRUCT<EmailAddress: STRUCT<Name: STRING, Address: STRING>, Status: STRUCT<Response: STRING, Time: STRING>, Type: STRING>>"
+            },
+            {
+                "name": "Organizer",
+                "type": "String",
+                "description": "The organizer of the event. Format: STRUCT<EmailAddress: STRUCT<Name: STRING, Address: STRING>>"
+            },
+            {
+                "name": "WebLink",
+                "type": "String",
+                "description": "The URL to open the event in Outlook Web App."
             },
             {
                 "name": "Attachments",
-                "type": "string"
+                "type": "String",
+                "description": "The FileAttachment and ItemAttachment attachments for the message. Navigation property. Format: ARRAY<STRUCT<LastModifiedDateTime: STRING, Name: STRING, ContentType: STRING, Size: INT, IsInline: BOOLEAN, Id: STRING>>"
+            },
+            {
+                "name": "BodyPreview",
+                "type": "String",
+                "description": "The preview of the message associated with the event. It is in text format."
+            },
+            {
+                "name": "Locations",
+                "type": "String",
+                "description": "The locations where the event is held or attended from. The location and locations properties always correspond with each other. Format:  ARRAY<STRUCT<DisplayName: STRING, Address: STRUCT<Street: STRING, City: STRING, State: STRING, CountryOrRegion: STRING, PostalCode: STRING>, Coordinates: STRUCT<Altitude: DOUBLE, Latitude: DOUBLE, Longitude: DOUBLE, Accuracy: DOUBLE, AltitudeAccuracy: DOUBLE>, LocationEmailAddress: STRING, LocationUri: STRING, LocationType: STRING, UniqueId: STRING, UniqueIdType: STRING>>"
+            },
+            {
+                "name": "OnlineMeetingUrl",
+                "type": "String",
+                "description": "A URL for an online meeting. The property is set only when an organizer specifies an event as an online meeting such as a Skype meeting"
+            },
+            {
+                "name": "OriginalStart",
+                "type": "DateTime",
+                "description": "The start time that was set when the event was created in UTC time."
+            },
+            {
+                "name": "SeriesMasterId",
+                "type": "String",
+                "description": "The ID for the recurring series master item, if this event is part of a recurring series."
             }
         ],
         "typeProperties": {
-            "tableName": "BasicDataSet_v0.Contact_v0",
-            "predicate": "CreatedDateTime >= 2018-07-11T16:00:00.000Z AND CreatedDateTime <= 2018-07-18T16:00:00.000Z"
+            "tableName": "BasicDataSet_v0.Event_v1",
+            "dateFilterColumn": "CreatedDateTime",
+            "startTime": "2019-04-28T16:00:00.000Z",
+            "endTime": "2019-05-05T16:00:00.000Z",
+            "userScopeFilterUri": "https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'"
         }
     }
 }

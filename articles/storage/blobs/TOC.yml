@@ -13,9 +13,6 @@
           href: storage-blobs-introduction.md
     - name: Gyors útmutatók
       items:
-        - name: Tárfiók létrehozása
-          displayName: 'resource manager, resource manager template, template, ARM'
-          href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Blobok kezelése kód nélkül
           items:
             - name: Azure Portal
@@ -280,8 +277,11 @@
           href: storage-blob-pageblob-overview.md
     - name: Útmutató
       items:
-        - name: Tárfiókok kezelése
+        - name: Tárfiókok létrehozása és kezelése
           items:
+            - name: Általános célú tárfiók létrehozása
+              displayName: 'resource manager, resource manager template, template, ARM'
+              href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Blokkblob-tárfiók létrehozása
               href: storage-blob-create-account-block-blob.md
             - name: Tárfiók kezelése
@@ -413,7 +413,7 @@
             - name: 'Blobok, üzenetsorok, táblák és fájlok'
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
             - name: Adatáthelyezés
-              href: 'https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement'
+              href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.datamovement'
             - name: Resource Manager
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
         - name: Java
@@ -488,7 +488,7 @@
                 - name: 'Blobok, üzenetsorok, táblák és fájlok'
                   href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
                 - name: Adatáthelyezés
-                  href: 'https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement'
+                  href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.datamovement'
                 - name: Resource Manager
                   href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
             - name: Java
@@ -563,6 +563,8 @@
               href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Hozzáférés-vezérlés
               href: data-lake-storage-access-control.md
+        - name: Eseménykezelés
+          href: storage-blob-event-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Útmutató
       items:
         - name: Adatok betöltése

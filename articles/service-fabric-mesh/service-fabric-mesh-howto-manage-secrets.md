@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: titkos kódok
 author: aljo-microsoft
 ms.author: aljo
-ms.date: 11/28/2018
+ms.date: 4/2/2019
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chackdan
-ms.openlocfilehash: 36d0b49f1b9fb1ca5d13283146d134137a5cb028
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 251611e814f890e3cebf0fda2d33ab548a8ff213
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419067"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506451"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Service Fabric háló titkos Alkalmazáskulcsok kezelése
 Titkos kódok Service Fabric-háló támogatja az Azure-erőforrások. Service Fabric-háló titkos lehet például a storage kapcsolati karakterláncok, jelszavak és egyéb értékek, amelyek tárolása és biztonságosan továbbítani kell bizalmas információkat. Ez a cikk bemutatja, hogyan használhatja a Service Fabric biztonságos Store szolgáltatás üzembe helyezése és karbantartása a titkos kulcsok.
@@ -31,37 +31,42 @@ A következő lépésekből áll, titkos kódok kezelése:
 5. Az Azure "az" parancssori felület parancsai biztonságos Store szolgáltatás életciklus-felügyelet.
 
 ## <a name="declare-a-mesh-secrets-resource"></a>Deklarálja a háló titkok erőforrás
-Titkos kódok háló erőforrás deklarálva van egy Azure Resource modell JSON vagy inlinedValue kind és SecretsStoreRef contentType definíciók YAML-fájlt. A háló titkok erőforrás támogatja-e biztonságos Store szolgáltatás forráskódú titkos kulcsok. 
+Titkos kódok háló erőforrás deklarálva van egy Azure Resource modell JSON vagy inlinedValue altípus definíció YAML-fájlt. A háló titkok erőforrás támogatja-e biztonságos Store szolgáltatás forráskódú titkos kulcsok. 
 >
 A következő egy példa bemutatja, hogyan egy JSON-fájlt a háló titkok erőforrások deklarálásához:
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
       "type": "string",
-      "defaultValue": "eastus",
+      "defaultValue": "WestUS",
       "metadata": {
-        "description": "Location of the resources."
+        "description": "Location of the resources (e.g. westus, eastus, westeurope)."
       }
-    },
+    }
+  },
+  "sfbpHttpsCertificate": {
+      "type": "string",
+      "metadata": {
+        "description": "Plain Text Secret Value that your container ingest"
+      }
   },
   "resources": [
     {
       "apiVersion": "2018-07-01-preview",
-      "name": "MySecret.txt",
+      "name": "sfbpHttpsCertificate.pfx",
       "type": "Microsoft.ServiceFabricMesh/secrets",
-      "location": "[parameters('location')]",
+      "location": "[parameters('location')]", 
       "dependsOn": [],
       "properties": {
         "kind": "inlinedValue",
-        "description": "My Mesh Application Secret",
-        "contentType": "SecretsStoreRef",
-        "value": "mysecret",
+        "description": "SFBP Application Secret",
+        "contentType": "text/plain",
       }
-    },
+    }
   ]
 }
 ```
@@ -103,49 +108,49 @@ A következő egy példa bemutatja, hogyan egy JSON-fájlt a háló titkos kulcs
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
       "type": "string",
-      "defaultValue": "eastus",
+      "defaultValue": "WestUS",
       "metadata": {
-        "description": "Location of the resources."
-      }
-    },
-    "my-secret-value-v1": {
-      "type": "string",
-      "metadata": {
-        "description": "My Mesh Application Secret Value."
+        "description": "Location of the resources (e.g. westus, eastus, westeurope)."
       }
     }
+  },
+  "sfbpHttpsCertificate": {
+      "type": "string",
+      "metadata": {
+        "description": "Plain Text Secret Value that your container ingest"
+      }
   },
   "resources": [
     {
       "apiVersion": "2018-07-01-preview",
-      "name": "MySecret.txt",
+      "name": "sfbpHttpsCertificate.pfx",
       "type": "Microsoft.ServiceFabricMesh/secrets",
-      "location": "[parameters('location')]",
+      "location": "[parameters('location')]", 
+      "dependsOn": [],
       "properties": {
         "kind": "inlinedValue",
-        "description": "My Mesh Application Secret",
-        "contentType": "SecretsStoreRef",
-        "value": "mysecret",
+        "description": "SFBP Application Secret",
+        "contentType": "text/plain",
       }
     },
     {
       "apiVersion": "2018-07-01-preview",
-      "name": "mysecret:1.0",
+      "name": "sfbpHttpsCertificate.pfx/2019.02.28",
       "type": "Microsoft.ServiceFabricMesh/secrets/values",
       "location": "[parameters('location')]",
       "dependsOn": [
-        'Microsoft.ServiceFabricMesh/secrets/MySecret.txt'
+        "Microsoft.ServiceFabricMesh/secrets/sfbpHttpsCertificate.pfx"
       ],
       "properties": {
-        "value": "[parameters('my-secret-value-v1)]"
+        "value": "[parameters('sfbpHttpsCertificate')]"
       }
     }
-  ]
+  ],
 }
 ```
 A következő egy példa bemutatja, hogyan egy YAML-fájlt a háló titkos kulcsok/értékek erőforrások deklarálásához:

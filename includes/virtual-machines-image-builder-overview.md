@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: b9b2461d888f37b7ae72a3e097d77856255d7e2e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e1b3b5fe603072069cb3a19c7597fcc1872fefd7
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160005"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416305"
 ---
 Szabványos virtuális gép (VM) rendszerképek lehetővé teszik a szervezetek migrálása a felhőbe, és győződjön meg, hogy a központi telepítések egységességét. Képek rendszerint előre definiált biztonsági és a konfigurációs beállításokat és a szükséges szoftvereket. A saját lemezkép-készítési folyamat beállítása szükséges idő, az infrastruktúra és a telepítés, de az Azure virtuális gép az Image Builder, csak adja meg a lemezkép leíró egy egyszerű konfigurálás küldheti el a szolgáltatás és a kép gyártja és forgalmazza.
  
@@ -20,7 +20,7 @@ Az Azure virtuális gép az Image Builder (az Azure az Image Builder) lehetővé
 > Az Azure az Image Builder jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="preview-features"></a>Előzetes verziók
+## <a name="preview-features"></a>Előzetes verziójú funkciók
 
 Az előzetes verzióra támogatja ezeket a szolgáltatásokat:
 
@@ -39,7 +39,7 @@ Az Azure lemezkép Builder Service előzetes verziója az ezekben a régiókban 
 - USA 2. keleti régiója
 - USA nyugati középső régiója
 - USA nyugati régiója
-- USA nyugati régiója, 2.
+- USA 2. nyugati régiója
 
 ## <a name="os-support"></a>Operációsrendszer-támogatást
 AIB Azure Marketplace-en alap operációsrendszer-lemezképeket fogja támogatni:
@@ -51,7 +51,7 @@ AIB Azure Marketplace-en alap operációsrendszer-lemezképeket fogja támogatni
 - Windows 2019
 
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>A szolgáltatás működése
 
 
 ![Az Azure az Image Builder elméleti rajza](./media/virtual-machines-image-builder-overview/image-builder.png)
@@ -95,7 +95,7 @@ A lemezkép létrehozása során fájlok letöltődnek és tárolja a `IT_<Desti
  
 Az Image Builder létrehoz egy virtuális Gépet D1v2 virtuális gép mérete és a tárolási és hálózati szükséges a virtuális gép. Ezeket az erőforrásokat a buildelési folyamat időtartama az elmúlt lesz, és törlődik, miután az Image Builder befejeződött, a lemezkép létrehozása. 
  
-Az Azure az Image Builder fog terjessze a lemezképet a kiválasztott régióban melyik amely vonatkozhatnak hálózati kimenő forgalom költségeit.
+Az Azure az Image Builder fog terjessze a lemezképet a kiválasztott régiókban, ahol a hálózati kimenő forgalmi költségek léphetnek fel.
  
 ## <a name="next-steps"></a>További lépések 
  

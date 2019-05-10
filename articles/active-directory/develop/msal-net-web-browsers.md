@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6e13ec3d822ba8a8cd2484f42ea81e615bae268
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d4b4c4cd4dbab10a9d4796a8393cc7f479b90cc4
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190982"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406770"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>Webböngészők MSAL.NET használatával
 Webböngészők az interaktív hitelesítéshez szükségesek. Alapértelmezés szerint az MSAL.NET támogatja a [rendszer webböngésző](#system-web-browser-on-xamarinios-and-xamarinandroid) a Xamarin.iOS és [Xamarin.Android](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/system-browser). De [is engedélyezheti a beágyazott webböngésző](#enable-embedded-webviews) a követelményektől (UX, egyszeri bejelentkezés (SSO), biztonsági szükségességét) függően [Xamarin.iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) és [Xamarin.Android](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid) az alkalmazások. És is [kiválasztása dinamikusan](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) melyik webböngésző használata Chrome-ban vagy a támogató Android egyéni lapok Chrome böngészőben jelenléte alapján.
@@ -93,7 +93,7 @@ A fejlesztők MSAL.NET használatával az STS interaktív párbeszédpanel megje
 
 #### <a name="choosing-between-embedded-web-browser-or-system-browser-on-xamarinios"></a>Beágyazott webböngészőt vagy Xamarin.iOS böngészővel rendszer közötti választáshoz
 
-Az iOS-alkalmazásban a `AppDelegate.cs` meg tudja inicializálni a `ParentWindow` való `null`. Az IOS-es nem használatos
+Az iOS-alkalmazásban a `AppDelegate.cs` lehet inicializálni a `ParentWindow` való `null`. Az IOS-es nem használatos
 
 ```csharp
 App.ParentWindow = null; // no UI parent on iOS

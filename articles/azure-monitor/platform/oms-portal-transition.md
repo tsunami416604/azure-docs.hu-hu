@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: 1496bf21ed1a81eedb44ca9cc9db777632e2a5cd
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: b4d67b64d8fc7c5063e96ed2a2502e9cbecd6065
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64876009"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65229878"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Azure-bA az OMS-portálon
 
 > [!NOTE]
 > Ez a cikk az Azure nyilvános felhő és a kormányzati felhő, kivéve, ha nincs másként jelölve vonatkozik.
 
-**Az OMS-portálon az Azure nyilvános felhő hivatalosan visszavontuk. Az OMS-portálon az Azure az Azure US Government cloud hivatalosan jén kivonjuk a forgalomból 2019. május 15.** Az Azure Portalra, és hatással vannak a Váltás könnyen izgatottak vagyunk. De tisztában vagyunk azzal módosítások nehéz és zavart okozhatnak. Esetleges kérdéseivel, visszajelzés, és a Küldés **LAUpgradeFeedback\@microsoft.com**. Ez a cikk a főbb forgatókönyvek megvalósítását, és az átállás ütemterv keresztül haladnak.
+**Az OMS-portálon az Azure nyilvános felhő hivatalosan visszavontuk. Az OMS-portálon az Azure US Government felhő hivatalosan jén kivonjuk a forgalomból 2019. május 15.** Az Azure Portalra, és hatással vannak a Váltás könnyen izgatottak vagyunk. De tisztában vagyunk azzal módosítások nehéz és zavart okozhatnak. Esetleges kérdéseivel, visszajelzés, és a Küldés **LAUpgradeFeedback\@microsoft.com**. Ez a cikk a főbb forgatókönyvek megvalósítását, és az átállás ütemterv keresztül haladnak.
 
 Az Azure Portalon a központ, Azure-szolgáltatásokhoz, és a egy gazdag felügyeleti funkciókat biztosítanak, mint az irányítópultokat a erőforrások, az intelligens keresési eredmény erőforrások és a resource Management-környezetet kínál. Összefogása és egyszerűsíthetők a figyelési és felügyeleti munkafolyamat, hogy elindult az OMS-portál funkciókkal be az Azure Portalra. Az a Funkciók, az OMS-portál most már az Azure Portalon részét képezik. Sőt az új funkciók, például a Traffic Analytics némelyike csak az Azure Portalon érhető el. Mindent az OMS-portálon az Azure Portalon, és további csinált elérnie fogja. Ha ezt még nem tette meg, először érdemes az Azure portal használatát még ma!
 
@@ -64,8 +64,8 @@ Mindkét ezekben az esetekben a rendszergazdának manuálisan, a megfelelő szer
 
 | OMS-portál engedély | Azure Role |
 |:---|:---|
-| ReadOnly | Log Analytics olvasó |
-| Közreműködő | Log Analytics közreműködő |
+| ReadOnly | Log Analytics-olvasó |
+| Közreműködő | Log Analytics-közreműködő |
 | Rendszergazda | Tulajdonos | 
  
 

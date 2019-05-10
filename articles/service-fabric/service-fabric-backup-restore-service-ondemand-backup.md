@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: c80a9ac30e79607d2a255debf73f6542df7c6498
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bed3402de83984cae9134fe44058980ec18861b3
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60310893"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413939"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Igény szerinti biztonsági mentést az Azure Service Fabricben
 
@@ -28,6 +28,22 @@ A Reliable Stateful services és Reliable actors – adatok katasztrófa vagy ad
 Az Azure Service Fabric a funkcióval rendelkezik a [adatok rendszeres biztonsági mentés](service-fabric-backuprestoreservice-quickstart-azurecluster.md) és a biztonsági mentés az adatok szükség alapon. Igény szerinti biztonsági mentés akkor hasznos, mert azt ellen védelmet nyújt _adatvesztés_/_adatsérülés_ a mögöttes szolgáltatás vagy a környezetben a tervezett módosítások miatt.
 
 Az igény szerinti biztonsági másolat szolgáltatásai hasznosak a szolgáltatások állapotának rögzítésére, manuálisan fogja aktiválni egy szolgáltatás vagy szolgáltatás környezet művelet előtt. Például, ha módosítja a szolgáltatás bináris fájljainak frissítéskor vagy alacsonyabb verziójúra változtatása a szolgáltatást. Ebben az esetben igény szerinti biztonsági mentést is hardvermeghibásodásokkal szemben az adatok application kódhibák által.
+## <a name="prerequisites"></a>Előfeltételek
+
+- Telepítse a Microsoft.ServiceFabric.Powershell.Http modul [az előzetes verzió] konfigurációs hívások.
+
+```powershell
+    Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
+```
+
+- Győződjön meg arról, hogy a fürt csatlakoztatva van-e használatával, a `Connect-SFCluster` parancs bármilyen konfigurációs kérést Microsoft.ServiceFabric.Powershell.Http modul elvégzése előtt.
+
+```powershell
+
+    Connect-SFCluster -ConnectionEndpoint 'https://mysfcluster.southcentralus.cloudapp.azure.com:19080'   -X509Credential -FindType FindByThumbprint -FindValue '1b7ebe2174649c45474a4819dafae956712c31d3' -StoreLocation 'CurrentUser' -StoreName 'My' -ServerCertThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'  
+
+```
+
 
 ## <a name="triggering-on-demand-backup"></a>Igény szerinti biztonsági mentésének elindítása
 
@@ -38,6 +54,16 @@ Igény szerinti biztonsági mentést biztonságimásolat-fájlok feltöltése sz
 Konfigurálhatja a rendszeres biztonsági mentési szabályzat nagyon igény szerinti biztonsági mentést a storage egy partíciót, egy megbízható állapotalapú szolgáltatás vagy a Reliable Actor használandó.
 
 A következő esetben a forgatókönyv folytatása [rendszeres biztonsági megbízható állapotalapú szolgáltatás és a Reliable Actors](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). Ebben az esetben engedélyezi a biztonsági mentési házirend egy partíció használata, és a egy biztonsági mentés akkor fordul elő, az Azure Storage-ban a set gyakorisággal.
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http modult használó PowerShell
+
+```powershell
+
+Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' 
+
+```
+
+#### <a name="rest-call-using-powershell"></a>REST-hívást Powershell-lel
 
 Használja a [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API-t állítsa be a partícióazonosító az igény szerinti biztonsági mentés elindítása `974bd92a-b395-4631-8a7f-53bd4ae9cf22`.
 
@@ -52,6 +78,17 @@ Használja a [GetBackupProgress](https://docs.microsoft.com/rest/api/servicefabr
 ### <a name="on-demand-backup-to-specified-storage"></a>Igény szerinti biztonsági mentést az adott tárolóba
 
 Igény szerinti biztonsági mentést egy partíció egy megbízható állapotalapú szolgáltatás vagy a Reliable Actor kérhetnek. Adja meg a storage-adatokat, az igény szerinti biztonsági mentési kérelem részeként.
+
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http modult használó PowerShell
+
+```powershell
+
+Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -AzureBlobStore -ConnectionString  'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' -ContainerName 'backup-container'
+
+```
+
+#### <a name="rest-call-using-powershell"></a>REST-hívást Powershell-lel
 
 Használja a [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API-t állítsa be a partícióazonosító az igény szerinti biztonsági mentés elindítása `974bd92a-b395-4631-8a7f-53bd4ae9cf22`. A következő Azure Storage-információkat tartalmazza:
 
@@ -80,6 +117,16 @@ Egy megbízható állapotalapú szolgáltatás vagy a Reliable Actor partíciój
 
 A különböző partíciók egy egyszerre is indíthat igény szerinti biztonsági mentési kérelmeket.
 
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http modult használó PowerShell
+
+```powershell
+
+Get-SFPartitionBackupProgress -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
+
+```
+#### <a name="rest-call-using-powershell"></a>REST-hívást Powershell-lel
+
 ```powershell
 $url = "https://mysfcluster-backup.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/GetBackupProgress?api-version=6.4"
 
@@ -101,7 +148,7 @@ Igény szerinti biztonsági mentési kérelmek állapota a következő lehet:
   FailureError            :
   ```
 - **Sikeres**, **hiba**, vagy **időtúllépési**: A kért igény szerinti biztonsági mentést a következő állapotok valamelyikében lévő is elvégezhető:
-  - **Success**: A _sikeres_ biztonsági mentési állapot azt jelzi, hogy a partíció állapota rendelkezik biztonsági mentése sikeresen megtörtént. A válasz biztosít _BackupEpoch_ és _BackupLSN_ a partíció együtt a időpontja (UTC).
+  - **Sikeres**: A _sikeres_ biztonsági mentési állapot azt jelzi, hogy a partíció állapota rendelkezik biztonsági mentése sikeresen megtörtént. A válasz biztosít _BackupEpoch_ és _BackupLSN_ a partíció együtt a időpontja (UTC).
     ```
     BackupState             : Success
     TimeStampUtc            : 2018-11-21T20:00:01Z

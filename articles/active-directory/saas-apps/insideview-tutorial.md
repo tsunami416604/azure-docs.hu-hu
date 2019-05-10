@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 91e1780462021430913a1354b4add7c5f047ec15
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 76db7381985853a81843df812dffcd8ab2bd8f9a
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60271914"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407462"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező InsideView
 
@@ -142,13 +142,13 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés InsideView, hajtsa v
 
     c. Nyissa meg a base-64 kódolású tanúsítványt, amely már letöltötte az Azure Portalról, a tartalmát a vágólapra másolja és illessze be azt a **STS tanúsítvány** szövegmezőbe.
 
-    d. Az a **Crm azonosító Felhasználóleképezés** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    d. Az a **Crm azonosító Felhasználóleképezés** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    e. Az a **Crm E-mail leképezési** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    e. Az a **Crm E-mail leképezési** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    f. Az a **Crm Utónév leképezési** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    f. Az a **Crm Utónév leképezési** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    g. Az a **Crm lastName leképezési** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.  
+    g. Az a **Crm lastName leképezési** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.  
 
     h. Kattintson a **Save** (Mentés) gombra.
 
@@ -211,7 +211,7 @@ Felhasználók vagy a InsideView létrehozott partnernévjegy beszerzéséhez fo
 > [!NOTE]
 > Eszközt is használhat bármilyen más InsideView felhasználói fiók létrehozása, vagy az Azure AD-felhasználói fiókok kiépítése InsideView által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

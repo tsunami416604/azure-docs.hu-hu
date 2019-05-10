@@ -7,16 +7,16 @@ ms.date: 04/20/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: e9a8a30d9f5f170073c0ad671a248703b1078864
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d29fa8700cb1f530cfe85f0bdf6852d75ec1613e
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159495"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508154"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Előzetes verzió: Hozzon létre egy Linuxos rendszerképet, és továbbítsa azt a megosztott lemezkép-katalógusában 
 
-Ez a cikk bemutatja, hogyan használhatja az Azure az Image Builder-lemezkép verziója a létrehozása egy [megosztott képgyűjtemény](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/shared-image-galleries), majd terjessze globálisan a lemezképet.
+Ez a cikk bemutatja, hogyan használhatja az Azure az Image Builder-lemezkép verziója a létrehozása egy [megosztott képgyűjtemény](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries), majd terjessze globálisan a lemezképet.
 
 
 Fogjuk használni .json mintasablon a kép konfigurálása. Itt van a .json fájlt használjuk: [helloImageTemplateforSIG.json](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 

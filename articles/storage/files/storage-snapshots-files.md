@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7305c6a5047bd09f6c9bda018748643ff81fe893
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d83cf20c856d37d337f4eb22c30ee9b6823d096b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708101"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235814"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Az Azure Files megosztási pillanatképeinek áttekintése 
 Az Azure Files lehetővé teszi, hogy a megosztási pillanatképek a fájlmegosztások. Pillanatképek rögzítése a fájlmegosztási állapot ezen a ponton idő megosztani. Ez a cikk ismertetünk, adja meg a megosztási pillanatképek funkciókról, és hogyan igénybe veheti, az az egyedi használati esetekhez.
@@ -29,7 +29,7 @@ Tegyük fel, hogy egy fájlmegosztást a fájlt a dolgozik. A szövegfájlban le
 ### <a name="general-backup-purposes"></a>Általános biztonsági mentési célból
 Miután létrehozott egy fájlmegosztást, az adatok biztonsági mentés használandó fájlmegosztás megosztási pillanatképek rendszeres időközönként hozhat létre. Egy megosztási pillanatképet, amikor venni rendszeres időközönként, segít a jövőbeli naplózási követelmények vagy vész-helyreállítási használható adatok korábbi verzióinak karbantartásához.
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 Megosztási pillanatkép az adatok időponthoz, a csak olvasható példányát. Létrehozása, törlése és a pillanatképek kezelése a REST API-val. Ugyanazokat a képességeket is érhetők el az ügyféloldali kódtár, az Azure CLI-vel és az Azure Portalon. 
 
 A REST API-t és az SMB használatával megtekintheti a megosztás pillanatképeit. Kérheti le a fájl vagy könyvtár verziók listáját, és a egy adott verziót közvetlenül meghajtóként csatlakoztathatja (csak Windows - érhető el lásd [korlátok](#limits)). 
@@ -40,7 +40,7 @@ Megosztási pillanatkép-készítés a fájlok megosztási szintjén van megadva
 
 Megosztási pillanatképek egy fájlmegosztás megegyezik a kiindulási fájlmegosztás. Az egyetlen különbség, hogy egy **DateTime** értéket fűzi hozzá a megosztás URI-t, amellyel a megosztási pillanatkép időpontját jelzi. Például ha egy fájlmegosztás URI-t, http://storagesample.core.file.windows.net/myshare, a megosztási pillanatkép URI hasonlít:
 ```
-http://storagesample.file.core.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
+http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
 
 Megosztási pillanatképek továbbra is fennáll, addig, amíg explicit módon törlődnek. Egy megosztási pillanatképre annak alap fájlmegosztás nem outlive. A pillanatképek a jelenlegi pillanatképek nyomon követéséhez az alap fájlmegosztáshoz társított enumerálása. 

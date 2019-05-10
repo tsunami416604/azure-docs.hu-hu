@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: f25b0f2c7b5e3148bae778c4b50a3f0bd0c148da
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: a668bb2e0e3381abefaac93a0fb63f0d33bac5a1
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875948"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234065"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával egy HTTP-végpontot
 
@@ -68,7 +68,7 @@ A HTTP-beli társított szolgáltatás a következő tulajdonságok támogatotta
 
 Állítsa be a **authenticationType** tulajdonságot **alapszintű**, **kivonatoló**, vagy **Windows**. Az előző szakaszban leírt általános tulajdonságaihoz adja meg a következő tulajdonságokkal:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | userName | A felhasználónév, a HTTP-végpont elérésére használhat. | Igen |
 | password | A felhasználó jelszava (a **felhasználónév** érték). Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
@@ -101,7 +101,7 @@ A HTTP-beli társított szolgáltatás a következő tulajdonságok támogatotta
 
 ClientCertificate hitelesítés használatához állítsa a **authenticationType** tulajdonságot **ClientCertificate**. Az előző szakaszban leírt általános tulajdonságaihoz adja meg a következő tulajdonságokkal:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | embeddedCertData | Base64-kódolású tanúsítvány adatait. | Adja meg **embeddedCertData** vagy **certThumbprint**. |
 | certThumbprint | A saját üzemeltetésű integrációs modul gép tanúsítványtár telepített tanúsítvány ujjlenyomatával. Csak ha a saját üzemeltetésű integrációs modulok típusának meg van adva a alkalmazni a **connectVia** tulajdonság. | Adja meg **embeddedCertData** vagy **certThumbprint**. |
@@ -217,8 +217,8 @@ Adatok másolása a http- **ORC/Avro/JSON/bináris formátum**, a következő tu
 | requestMethod | A HTTP-metódust. Engedélyezett értékek a következők **első** (alapértelmezett), és **Post**. | Nem |
 | additionalHeaders | További HTTP-kérelemfejlécek. | Nem |
 | RequestBody | A HTTP-kérelem törzsét. | Nem |
-| Formátum | Szeretné-e adatokat lekérni a HTTP-végpontot,-van nélkül elemzés azt, majd másolja az adatokat egy fájlalapú tárolón hagyja ki a **formátum** szakasz is a bemeneti és kimeneti adatkészlet-definíciókban.<br/><br/>Ha meg szeretné elemezni a HTTP-válasz tartalma másolása során, formátuma a következő fájltípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, és **ParquetFormat**. A **formátum**állítsa be a **típus** tulajdonságát a következő értékek egyikét. További információkért lásd: [JSON formátumban](supported-file-formats-and-compression-codecs.md#json-format), [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquetformátum](supported-file-formats-and-compression-codecs.md#parquet-format). |Nem |
-| A tömörítés | Adja meg a típus és az adatok tömörítési szintje. További információkért lásd: [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Támogatott típusok: **A GZip**, **Deflate**, **BZip2**, és **ZipDeflate**.<br/>Támogatott szintek:  **Optimális** és **leggyorsabb**. |Nem |
+| format | Szeretné-e adatokat lekérni a HTTP-végpontot,-van nélkül elemzés azt, majd másolja az adatokat egy fájlalapú tárolón hagyja ki a **formátum** szakasz is a bemeneti és kimeneti adatkészlet-definíciókban.<br/><br/>Ha meg szeretné elemezni a HTTP-válasz tartalma másolása során, formátuma a következő fájltípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, és **ParquetFormat**. A **formátum**állítsa be a **típus** tulajdonságát a következő értékek egyikét. További információkért lásd: [JSON formátumban](supported-file-formats-and-compression-codecs.md#json-format), [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquetformátum](supported-file-formats-and-compression-codecs.md#parquet-format). |Nem |
+| compression | Adja meg a típus és az adatok tömörítési szintje. További információkért lásd: [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Támogatott típusok: **A GZip**, **Deflate**, **BZip2**, és **ZipDeflate**.<br/>Támogatott szintek:  **Optimális** és **leggyorsabb**. |Nem |
 
 > [!NOTE]
 > A támogatott HTTP-kérelem hasznos adatainak mérete körülbelül 500 KB-os. Ha a webes végpontra átadni kívánt adattartalom-méretkorlát nagyobb 500 KB-nál, fontolja meg az adattartalomban kisebb adattömbökben kötegelés.
@@ -287,7 +287,7 @@ Adatok másolása a http- **Parquet vagy tagolt szövegformátum**, tekintse meg
 | maxConcurrentConnections | A szeretne csatlakozni a storage-tároló egyidejű kapcsolatok száma. Adja meg, csak akkor, ha szeretné korlátozni a egyidejű kapcsolat az adattárba. | Nem       |
 
 > [!NOTE]
-> A Parquet vagy tagolt szövegformátum **HttpSource** továbbra is támogatott a következő szakaszban említett típusa másolási tevékenység forrása-visszamenőleges kompatibilitásra szolgál. A jövőben az új modell használata javasolt, és ezek a típusok létrehozása a felhasználói felület szerzői ADF változott.
+> A Parquet vagy tagolt szövegformátum **HttpSource** továbbra is támogatott a következő szakaszban említett típusa másolási tevékenység forrása – az előző verziókkal való kompatibilitás. A jövőben az új modell használata javasolt, és ezek a típusok létrehozása a felhasználói felület szerzői ADF változott.
 
 **Példa**
 

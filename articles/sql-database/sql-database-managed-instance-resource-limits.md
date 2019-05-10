@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 02/27/2019
-ms.openlocfilehash: 09ab154494ad3e1276239e36068255c2042358c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2068283414ef2fabb44e9876f6727cc0fe3530b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61487548"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233518"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Áttekintés az Azure SQL Database felügyelt példányain erőforráskorlátok
 
@@ -37,11 +37,11 @@ Az Azure SQL Database felügyelt példánya is telepíthető a két hardver gene
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
 | Hardver | Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokkal, SSD virtuális mag csatolt = 1 PP (fizikai mag) | Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzorokkal, gyors NVMe SSD, virtuális mag = 1. LP (a hyper-szál) |
-| Compute | 8, 16, 24 virtuális mag | 8, 16, 24, 32, 40, 64, 80 virtuális magok |
-| Memory (Memória) | 7 GB / virtuális mag | 5.1 GB / virtuális mag |
-| Memóriabeli OLTP memória | 3 GB / virtuális mag | 2.6-os GB / virtuális mag |
-| Maximális tárterület (általános célú) |  8 TB | 8 TB |
-| Maximális tárterület (üzletileg kritikus) | 1 TB | 1 TB-os, 2 TB vagy 4 TB-os attól függően, a magok számát |
+| Virtuális magok | 8, 16, 24 virtuális mag | 8, 16, 24, 32, 40, 64, 80 virtuális magok |
+| Memória | 7 GB / virtuális mag | 5.1 GB / virtuális mag |
+| Maximális In-Memory OLTP memória | 3 GB / virtuális mag | 2.6-os GB / virtuális mag |
+| Maximális Egypéldányos tárolás (általános célú) |  8 TB | 8 TB |
+| Maximális Egypéldányos tárolás (üzletileg kritikus) | 1 TB | 1 TB-os, 2 TB vagy 4 TB-os attól függően, a magok számát |
 
 ### <a name="service-tier-characteristics"></a>Szolgáltatási szint tulajdonságok
 
@@ -50,12 +50,12 @@ Felügyelt példány két szolgáltatási csomagban – általános célú és a
 | **Funkció** | **Általános célú** | **Üzletileg kritikus** |
 | --- | --- | --- |
 | Virtuális magok száma\* | Gen4: 8, 16, 24<br/>Gen5: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 8, 16, 24, 32, 40, 64, 80 |
-| Memory (Memória) | Gen4: 56 GB - 168 GB<br/>Gen5: 40.8 GB – 408 GB<br/>\*Arányos virtuális magok száma | Gen4: 56 GB - 168 GB <br/> Gen5: 40.8 GB – 408 GB<br/>\*Arányos virtuális magok száma |
-| Maximális tárméret | 8 TB | Gen4: 1 TB <br/> Gen5: <br/>– 1 TB-os 8, 16 virtuális mag<br/>– A 24 virtuális mag 2 TB<br/>– 4 TB-os 32, 40, 64, 80 virtuális magok |
+| Memória | Gen4: 56 GB - 168 GB (7GB/vCore)<br/>Gen5: 40.8 GB – 408 GB (5.1 GB/virtuális mag) | Gen4: 56 GB - 168 GB (7GB/vCore)<br/>Gen5: 40.8 GB – 408 GB (5.1 GB/virtuális mag) |
+| Maximális példányméret storage | 8 TB | Gen4: 1 TB <br/> Gen5: <br/>– 1 TB-os 8, 16 virtuális mag<br/>– A 24 virtuális mag 2 TB<br/>– 4 TB-os 32, 40, 64, 80 virtuális magok |
 | Maximális tárterület adatbázisonként | Határozza meg a maximális tárhelyméretet a példány | Határozza meg a maximális tárhelyméretet a példány |
 | Egy példány adatbázisok maximális száma | 100 | 100 |
 | Maximális adatbázisfájlok példányonként | Legfeljebb 280 | – 32 767 fájlt adatbázisonként |
-| Adatok/Log/iops-érték (becsült) | 500 – 7500 fájlonként<br/>\*[A fájl mérete attól függ](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11-K – 110 K (1,375 / virtuális mag) |
+| Adatok/Log/iops-érték (becsült) | 500 – 7500 fájlonként<br/>\*[A fájl mérete attól függ](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 K - 110 K (1375/vCore) |
 | Napló átviteli sebesség | 22 MB/s-példányonként | 3 MB/s / virtuális mag<br/>Maximális száma 48 MB/s-példányonként|
 | A fájlmegosztásra (becsült) | 100 - fájlonként 250 MB/s<br/>\*[A fájl mérete attól függ](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24 - 48 MB/s / virtuális mag |
 | IO-késés (becsült) | 5-10 ms | 1-2 ms |
@@ -123,7 +123,7 @@ A következő példákban üzembe helyezési esetekre, nem üres alhálózattal,
 
 |Alhálózatok száma|1. alhálózat|2. alhálózat|3. alhálózat|
 |:---|:---|:---|:---|
-|1|1 BC és legfeljebb 8 GP<br>2 BC és akár 4 általános védelmi|–| –|
+|1.|1 BC és legfeljebb 8 GP<br>2 BC és akár 4 általános védelmi|–| –|
 |2|0 BC, akár 4 általános védelmi|1 BC, akár 4 általános védelmi<br>2 BC, 0 A CSOPORTHÁZIREND|–|
 |2|1 BC, 0 GP|0 BC, legfeljebb 8 GP<br>1 BC, akár 4 általános védelmi|–|
 |2|2 BC, 0 A CSOPORTHÁZIREND|0 BC, akár 4 általános védelmi|–|

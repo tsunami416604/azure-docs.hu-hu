@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 981198063b8e0951d4a4a4c4627d4b7966f34154
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c85ee31a54cdbbb09686a2d20200f65fdcd8994a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148982"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235916"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-dtu-service-tiers"></a>A virtuális mag szolgáltatási szintek közül választhat, és áttelepíteni a DTU-szolgáltatásszintek
 
@@ -40,16 +40,16 @@ Az alábbi táblázat segítséget nyújt a három réteg közötti különbség
 
 ||**Általános célú**|**Üzletileg kritikus**|**Nagy kapacitású**|
 |---|---|---|---|
-|A következőkre alkalmas|A legtöbb üzleti számítási feladathoz. Ajánlatok költségvetés-orientált elosztott és skálázható számítási és tárolási lehetőségek.|Magas I/O-igényű üzleti alkalmazások. Több elkülönített replika használatával ez biztosítja a legmagasabb hibatűrést.|A legtöbb üzleti célú a rugalmasan skálázható a tárolás és olvasási szintű követelmények|
+|Ajánlott alkalmazási terület|A legtöbb üzleti számítási feladathoz. Ajánlatok költségvetés-orientált elosztott és skálázható számítási és tárolási lehetőségek.|Magas I/O-igényű üzleti alkalmazások. Több elkülönített replika használatával ez biztosítja a legmagasabb hibatűrést.|A legtöbb üzleti célú a rugalmasan skálázható a tárolás és olvasási szintű követelmények|
 |Compute|**Üzembe helyezett számítási**:<br/>Gen4: 1-24 virtuális mag<br/>Gen5: 2 80 virtuális mag<br/>**Kiszolgáló nélküli számítási**<br/>Gen5: 0,5 - 4 virtuális mag|**Üzembe helyezett számítási**:<br/>Gen4: 1-24 virtuális mag<br/>Gen5: 2 80 virtuális mag|**Üzembe helyezett számítási**:<br/>Gen4: 1-24 virtuális mag<br/>Gen5: 2 80 virtuális mag|
-|Memory (Memória)|**Üzembe helyezett számítási**:<br/>Gen4: 7 GB / virtuális mag<br/>Gen5: 5.1 GB / virtuális mag<br/>**Kiszolgáló nélküli számítási**<br/>Gen5: 3 GB / virtuális mag|**Üzembe helyezett számítási**:<br/>Gen4: 7 GB / virtuális mag<br/>Gen5: 5.1 GB / virtuális mag |**Üzembe helyezett számítási**:<br/>Gen4: 7 GB / virtuális mag<br/>Gen5: 5.1 GB / virtuális mag|
+|Memória|**Üzembe helyezett számítási**:<br/>Gen4: 7 GB / virtuális mag<br/>Gen5: 5.1 GB / virtuális mag<br/>**Kiszolgáló nélküli számítási**<br/>Gen5: 3 GB / virtuális mag|**Üzembe helyezett számítási**:<br/>Gen4: 7 GB / virtuális mag<br/>Gen5: 5.1 GB / virtuális mag |**Üzembe helyezett számítási**:<br/>Gen4: 7 GB / virtuális mag<br/>Gen5: 5.1 GB / virtuális mag|
 |Storage|Távoli tároló használja:<br/>**Önálló adatbázis kiépítése a számítási**:<br/>5 GB – 4 TB-IG<br/>**Önálló adatbázis, kiszolgáló nélküli számítási**:<br/>5 GB - 1 TB<br/>**Felügyelt példány**: 32 GB - 8 TB |Helyi SSD-alapú tárolást használ:<br/>**Önálló adatbázis kiépítése a számítási**:<br/>5 GB – 4 TB-IG<br/>**Felügyelt példány**:<br/>32 GB - 4 TB |Az automatikus növekedési rugalmas, igény szerint tárhelyet. Támogatja az akár 100 TB tárterület és más alkalmazásokhoz. Helyi SSD-tárhely a helyi puffer készlet cache és a helyi adatok tárolását. Az Azure távoli tárhely végső hosszú távú adatok tárolását. |
-|Memory (Memória)|Gen4: Magonként 7 GB<br>Gen5: 5.1 GB / mag | Gen4: Magonként 7 GB<br>Gen5: 5.1 GB / mag |Gen5: 5.1 GB / mag|
+|Memória|Gen4: Magonként 7 GB<br>Gen5: 5.1 GB / mag | Gen4: Magonként 7 GB<br>Gen5: 5.1 GB / mag |Gen4: Magonként 7 GB<br>Gen5: 5.1 GB / mag|
 |Storage|Távoli tároló használja:<br/>Önálló adatbázis: 5 GB – 4 TB-IG<br/>Felügyelt példány: 32 GB - 8 TB |Helyi SSD-alapú tárolást használ:<br/>Önálló adatbázis: 5 GB – 4 TB-IG<br/>Felügyelt példány: 32 GB - 4 TB |Az automatikus növekedési rugalmas, igény szerint tárhelyet. Támogatja az akár 100 TB tárterület és más alkalmazásokhoz. Helyi SSD-tárhely a helyi puffer készlet cache és a helyi adatok tárolását. Az Azure távoli tárhely végső hosszú távú adatok tárolását. |
 |IO-átviteli sebesség (becsült)|Önálló adatbázis: A 7000-es maximális IOPS / virtuális mag 500 IOPS</br>Felügyelt példány: Attól függ, [fájl méretét](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|A maximális iops-érték 200 000 magonként 5000 IOPS|TBD|
 |Rendelkezésre állás|1 replika, nincs olvasási szintű|3 replika, 1 [olvasási szintű replika](sql-database-read-scale-out.md),<br/>zóna redundáns magas rendelkezésre ÁLLÁS|1 olvasási/írási replika és a 0 – 4 [olvasási szintű replikák](sql-database-read-scale-out.md)|
 |Biztonsági másolatok|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 nap (alapértelmezés szerint 7 nap)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 nap (alapértelmezés szerint 7 nap)|pillanatkép-alapú biztonsági mentés az Azure távoli tároló és a helyreállításokat ezeket a pillanatképeket használni a gyors helyreállítás. A biztonsági mentéseket azonnali, és nincs hatással a számítási i/o-teljesítményét. Visszaállítás nagyon gyors és nem egy adatművelet (véve a perc helyett órák vagy napok) méretét.|
-|A memóriában|Nem támogatott|Támogatott|Nem támogatott|
+|A memóriában|Érvénytelen érték|Támogatott|Érvénytelen érték|
 |||
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az alábbi táblázat segítséget nyújt a három réteg közötti különbség
 - További információ az általános célú és a kritikus fontosságú üzleti szolgáltatási szintekről: [általános célú és a kritikus fontosságú üzleti szolgáltatási szintekről](sql-database-service-tiers-general-purpose-business-critical.md).
 - A Virtuálismag-alapú vásárlási modell a nagy kapacitású szolgáltatásszintre vonatkozó részletekért lásd: [nagy kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md).  
 
-## <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit
+## <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit értékelem
 
 A Virtuálismag-alapú vásárlási modell kiépített számítógép szintjén, a meglévő licenceit a kedvezményes díjszabást kínál az SQL Database-adatbázishoz tudjon cserélni a [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/). Az Azure-értékelemek lehetővé teszi, hogy a helyszíni SQL Server-licenceivel akár 30 %-os mentése az Azure SQL Database használatával a helyszíni SQL Server-licenceit frissítési garanciával rendelkező.
 
@@ -108,13 +108,13 @@ A következő táblázat tartalmazza az adott áttelepítési forgatókönyvre v
 |Aktuális szolgáltatási rétegben|Cél szolgáltatásszint|Áttelepítés típusa|Felhasználói műveletek|
 |---|---|---|---|
 |Standard|Általános célú|Oldalirányú|Áttelepítése bármilyen sorrendben is, de kell, hogy a megfelelő virtuális mag méretezési *|
-|Prémium|Üzletileg kritikus|Oldalirányú|Áttelepítése bármilyen sorrendben is, de kell, hogy a megfelelő virtuális mag méretezési *|
-|Standard|Üzletileg kritikus|Frissítés|Át kell telepítenie a másodlagos először|
-|Üzletileg kritikus|Standard|Alacsonyabb szintre|Át kell telepítenie a elsődleges először|
-|Prémium|Általános célú|Alacsonyabb szintre|Át kell telepítenie a elsődleges először|
+|Prémium|Üzleti szempontból kulcsfontosságú|Oldalirányú|Áttelepítése bármilyen sorrendben is, de kell, hogy a megfelelő virtuális mag méretezési *|
+|Standard|Üzleti szempontból kulcsfontosságú|Frissítés|Át kell telepítenie a másodlagos először|
+|Üzleti szempontból kulcsfontosságú|Standard|Visszalépés|Át kell telepítenie a elsődleges először|
+|Prémium|Általános célú|Visszalépés|Át kell telepítenie a elsődleges először|
 |Általános célú|Prémium|Frissítés|Át kell telepítenie a másodlagos először|
-|Üzletileg kritikus|Általános célú|Alacsonyabb szintre|Át kell telepítenie a elsődleges először|
-|Általános célú|Üzletileg kritikus|Frissítés|Át kell telepítenie a másodlagos először|
+|Üzleti szempontból kulcsfontosságú|Általános célú|Visszalépés|Át kell telepítenie a elsődleges először|
+|Általános célú|Üzleti szempontból kulcsfontosságú|Frissítés|Át kell telepítenie a másodlagos először|
 ||||
 
 \* Minden 100 DTU standard szintű csomag szükséges legalább 1 virtuális mag, és minden egyes 125 DTU prémium szintű csomag szükséges legalább 1 virtuális mag

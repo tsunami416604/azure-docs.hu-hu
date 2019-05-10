@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 87f86f861ffc036077b25a2514fbd2d0c57da735
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0783251eaeef188c49c5b3aa61b5ecaec48127b7
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716767"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506695"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -46,7 +46,7 @@ A következő JSON például olyan szabályzatot, amely korlátozza, hogy üzemb
                     "strongType": "location",
                     "displayName": "Allowed locations"
                 },
-                "defaultValue": "westus2"
+                "defaultValue": [ "westus2" ]
             }
         },
         "displayName": "Allowed locations",
@@ -114,7 +114,7 @@ Például meghatározhat szabályzatdefiníció korlátozni a helyeken, ahol er�
             "displayName": "Allowed locations",
             "strongType": "location"
         },
-        "defaultValue": "westus2",
+        "defaultValue": [ "westus2" ],
         "allowedValues": [
             "eastus2",
             "westus2",
@@ -229,6 +229,10 @@ A feltétel-e egy **mező** vagy a **érték** hozzáférő megfelel bizonyos fe
 - `"notIn": ["value1","value2"]`
 - `"containsKey": "keyName"`
 - `"notContainsKey": "keyName"`
+- `"less": "value"`
+- `"lessOrEquals": "value"`
+- `"greater": "value"`
+- `"greaterOrEquals": "value"`
 - `"exists": "bool"`
 
 Használatakor a **például** és **notLike** , feltételek meg helyettesítő karakter `*` értéke.
@@ -375,7 +379,7 @@ Ehelyett használja a [if()](../../../azure-resource-manager/resource-group-temp
 
 A módosított szabályzatot szabállyal `if()` hosszát ellenőrzi **neve** beolvasásának megkísérlése előtt egy `substring()` a 3-nál kevesebb karaktert tartalmazó értéket. Ha **neve** túl rövid, a "nem kezdve abc" érték helyett visszaadott és képest **abc**. Egy erőforrás, amelynek rövid neve nem kezdődhet **abc** a szabály továbbra is sikertelen, de már nem hibát okoz a kiértékelés során.
 
-### <a name="effect"></a>Következmény
+### <a name="effect"></a>Hatás
 
 Az Azure Policy hatása a következő típusokat támogatja:
 
@@ -416,15 +420,25 @@ Minden egyes hatás, értékelési, tulajdonságokat és példákat sorrendje a 
 
 ### <a name="policy-functions"></a>A házirend-funkciók
 
-Az összes [Resource Manager-sablonfüggvények](../../../azure-resource-manager/resource-group-template-functions.md) belül házirendszabály, kivéve a következő függvények használhatók:
+Az összes [Resource Manager-sablonfüggvények](../../../azure-resource-manager/resource-group-template-functions.md) belül házirendszabály, kivéve a következő funkciókat és a felhasználó által definiált függvények használhatók:
 
 - copyIndex()
 - Deployment()
 - list*
+- newGuid()
+- pickZones()
 - Providers()
 - Reference()
 - resourceId()
 - variables()
+
+Egy házirend-szabály, de eltérnek az Azure Resource Manager-sablon használata a következő funkciók érhetők el:
+
+- addDays(dateTime, numberOfDaysToAdd)
+  - **dátum és idő**: [Povinné] karakterlánc – univerzális ISO 8601 dátum és idő formátumú karakterláncot "éééé-hh-ddTHH:mm:ss.fffffffZ"
+  - **numberOfDaysToAdd**: [Povinné] egész szám – a hozzáadandó napok száma
+- utcNow() - ellentétben a Resource Manager-sablon kívül DefaultValue érték használható.
+  - Amely az aktuális dátumot és az univerzális ISO 8601 dátum és idő formátumú karakterláncot ad vissza "éééé-hh-ddTHH:mm:ss.fffffffZ"
 
 Ezenkívül a `field` funkció érhető el a szabályzat előírásainak. `field` elsősorban az **AuditIfNotExists** és **DeployIfNotExists** referencia mezők, a rendszer kiértékelt erőforrás. Ezt használhatja például látható a [DeployIfNotExists példa](effects.md#deployifnotexists-example).
 
@@ -446,7 +460,7 @@ Ez a házirend a szabály a példa a `resourceGroup` erőforrás függvény a **
 }
 ```
 
-## <a name="aliases"></a>Aliasok
+## <a name="aliases"></a>Aliasnevek
 
 Aliasok tulajdonság használatával az erőforrástípushoz konkrét tulajdonságok eléréséhez. Az aliasok lehetővé teszi korlátozása, milyen értékeket, vagy a feltételek az erőforrás-tulajdonságok megengedettek. Minden egyes alias képez le egy adott erőforrás típusát különböző API-verzióit szereplő elérési utakat. Szabályzat-kiértékelés során a házirendmotor lekérdezi, hogy API-verzió tulajdonság elérési útját.
 

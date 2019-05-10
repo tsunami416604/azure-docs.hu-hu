@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2018
+ms.date: 05/07/2019
 ms.author: kumud
-ms.openlocfilehash: 913693e684ba8640a93f50d21dd3df6a6295e1c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e488a4a6438279270f3d86dafa16c45eda184059
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884758"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415706"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer állapot-mintavételei
 
@@ -30,7 +30,7 @@ Az Azure Load Balancer biztosít állapotadat-mintavételek terheléselosztási 
 | | Standard termékváltozat | Alapszintű termékváltozat |
 | --- | --- | --- |
 | [Mintavétel típusok](#types) | TCP, HTTP, HTTPS | TCP, HTTP |
-| [Mintavételi viselkedésének lefelé](#probedown) | Az összes mintavételek le, az összes TCP-adatfolyamok továbbra is. | Minden mintavételek le, az összes TCP-adatfolyamok megszűnik. | 
+| [Mintavételi viselkedésének lefelé](#probedown) | Az összes mintavételek le, az összes TCP-adatfolyamok továbbra is. | Minden mintavételek le, az összes TCP-adatfolyamok lejár. | 
 
 > [!IMPORTANT]
 > Load Balancer állapot-mintavételei származnak 168.63.129.16 IP-címről, és nem le kell tiltani a mintavételek a példány megjelöléséhez.  Felülvizsgálat [IP-forráscím mintavételi](#probesource) részleteiről.
@@ -178,7 +178,7 @@ Terheléselosztó egy elosztott-ellenőrzési szolgáltatás a belső állapotmo
 
 A AzureLoadBalancer szolgáltatáscímke azonosítja a forrás IP-címet a [hálózati biztonsági csoportok](../virtual-network/security-overview.md) , és lehetővé teszi az egészségügyi mintavételi forgalom alapértelmezés szerint.
 
-Load Balancer állapot-mintavételei mellett a következő műveletek használata az IP-címet:
+Load Balancer állapot-mintavételei mellett a [következő műveletei pedig az IP-címet](../virtual-network/what-is-ip-address-168-63-129-16.md):
 
 - Lehetővé teszi, hogy a Virtuálisgép-ügynök való kommunikációhoz. a platformot, hogy jelezze a "Kész" állapotban van
 - Lehetővé teszi a kommunikációt a szűrt névfeloldást biztosítanak az ügyfelek számára az egyéni DNS-kiszolgálókat nem határoznak meg a DNS-kiszolgáló.  Ez a szűrés biztosítja, hogy ügyfeleink csak oldható meg a gazdagép az üzemelő példány neve.

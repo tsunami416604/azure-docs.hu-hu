@@ -224,6 +224,9 @@
       items:
         - name: Gépi tanulási folyamat létrehozása
           href: how-to-create-your-first-pipeline.md
+        - name: Gépi tanulási modellek betanítása és üzembe helyezése az Azure Pipelines használatával
+          href: /azure/devops/pipelines/targets/azure-machine-learning?view=azure-devop
+          mainContext: true
     - name: Erőforráskvóták kezelése
       displayName: limits
       href: how-to-manage-quotas.md

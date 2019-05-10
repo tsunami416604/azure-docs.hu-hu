@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/18/2019
 ms.author: pafarley
-ms.openlocfilehash: 662eca2a727f3112f169ab8d669bf18c81700275
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5d31285ca305ba7fefdf31b4a97e3183f58b3e3b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60699576"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233814"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Oktatóanyag: Mérsékelt Facebook-bejegyzések és -parancsok használata az Azure Content Moderator
 
@@ -33,6 +33,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 Az alábbi ábra az ebben a forgatókönyvben minden egyes összetevő:
 
 ![A Content Moderator információt kap a Facebookon keresztül "FBListener" és "CMListener" keresztül adatokat küld ábrája](images/tutorial-facebook-moderation.png)
+
+> [!IMPORTANT]
+> A 2018 Facebook megvalósítva, Facebook-alkalmazások több szigorú kérelmek. Nem lehet tudni, ez az oktatóanyag lépéseit végrehajtania, ha az alkalmazás nem lett felülvizsgálva és a Facebook csapatától jóvá.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -59,68 +62,71 @@ A munkafolyamat segítségével tesztelheti a **munkafolyamat végrehajtása** g
 
 ## <a name="create-azure-functions"></a>Azure Functions-függvény létrehozása
 
-Jelentkezzen be a [az Azure Portal](https://portal.azure.com/) , és kövesse az alábbi lépéseket:
+Jelentkezzen be a [az Azure portal](https://portal.azure.com/) , és kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy Azure-függvényalkalmazást az [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal) oldalon leírtak szerint.
-2. Nyissa meg az újonnan létrehozott Függvényalkalmazás.
-3. Az alkalmazásban nyissa meg a **platformfunkciók** lapot, és válasszon **Alkalmazásbeállítások**. Az a **Alkalmazásbeállítások** szakaszban a következő lap, görgessen a lista aljára, és kattintson a **új beállítás hozzáadása**. Adja hozzá a következő kulcs-érték párok
+1. Nyissa meg az újonnan létrehozott Függvényalkalmazás.
+1. Az alkalmazásban nyissa meg a **platformfunkciók** lapot, és válasszon **konfigurációs**. Az a **Alkalmazásbeállítások** szakaszban a következő lap, válassza ki **új Alkalmazásbeállítás** az alábbi kulcs-érték párok hozzáadásához:
     
     | Alkalmazásbeállítás neve | value   | 
     | -------------------- |-------------|
     | cm:TeamId   | A Content Moderator csapatazonosítójának beállítása  | 
-    | cm:SubscriptionKey | A Content Moderator előfizetői azonosítója – lásd: [Hitelesítő adatok](review-tool-user-guide/credentials.md) | 
-    | cm:Region | A Content Moderator-régió neve szóközök nélkül. Lásd a fenti megjegyzést. |
+    | cm:SubscriptionKey | A Content Moderator előfizetői azonosítója – lásd: [Hitelesítő adatok](review-tool-user-guide/credentials.md) |
+    | cm:Region | A Content Moderator-régió neve szóközök nélkül. |
     | cm:ImageWorkflow | A képek esetében futtatandó munkafolyamat neve |
     | cm:TextWorkflow | A szövegek esetében futtatandó munkafolyamat neve |
-    | cm:CallbackEndpoint | A jelen útmutató későbbi részében létrehozandó CMListener függvényalkalmazás URL-címe |
-    | fb:VerificationToken | Titkos jogkivonat, amely a Facebook-hírcsatorna eseményeire való feliratkozásra is szolgál |
-    | fb:PageAccessToken | A Facebook Graph API hozzáférési jogkivonatának nincs lejárati ideje, és lehetővé teszi, hogy a függvény az Ön nevében elrejtsen vagy töröljön bejegyzéseket. |
+    | cm:CallbackEndpoint | Az útmutató későbbi részében létrehozott CMListener Függvényalkalmazás URL-címe |
+    | fb:VerificationToken | Titkos jogkivonat, amely hoz létre, a Facebook-hírcsatorna-esemény előfizetéséhez használt |
+    | fb:PageAccessToken | A Facebook Graph API hozzáférési jogkivonatának nincs lejárati ideje, és lehetővé teszi, hogy a függvény az Ön nevében elrejtsen vagy töröljön bejegyzéseket. Ez egy későbbi lépésben fog kapni. |
 
     Kattintson a **mentése** gombra a lap tetején.
 
-1. Használatával a **+** gombra a bal oldali ablaktáblán, az új függvény panel megjelenítéséhez.
+1. Lépjen vissza a **platformfunkciók** fülre. Használja a **+** gombra a bal oldali panelen viszi, megjelenik a **új függvény** ablaktáblán. A létrehozni kívánt függvény kapja Facebook szolgáltatásból.
 
     ![Az Azure Functions, a függvény hozzáadása gomb kiemelésével panel.](images/new-function.png)
-
-    Kattintson a **+ új funkció** az oldal tetején. Ez a függvény Facebook-események fogadását végzi. A függvény létrehozásához kövesse az alábbi lépéseket:
 
     1. Kattintson a csempére, amely szerint **Http-eseményindító**.
     1. Adja meg az **FBListener** nevet. Az **Engedélyszint** mező értéke legyen **Függvény**.
     1. Kattintson a **Create** (Létrehozás) gombra.
     1. Cserélje le a tartalmát a **run.csx** rendelkező tartalmát **FbListener/run.csx**
 
-    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-160)]
+    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]
 
 1. Hozzon létre egy új **Http-eseményindító** nevű függvény **CMListener**. Ez a függvény Content Moderator-események fogadását végzi. Cserélje le a tartalmát a **run.csx** rendelkező tartalmát **CMListener/run.csx**
 
-    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/CmListener/run.csx?range=1-106)]
+    [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/CmListener/run.csx?range=1-110)]
 
 ---
 
 ## <a name="configure-the-facebook-page-and-app"></a>Facebook-oldal és -alkalmazás konfigurálása
+
 1. Facebook-alkalmazás létrehozása.
 
     ![Facebook-fejlesztői oldalon](images/facebook-developer-app.png)
 
     1. Lépjen a [Facebook fejlesztői webhelyére](https://developers.facebook.com/).
-    2. Kattintson a **My Apps** (Saját alkalmazások) elemre.
-    3. Adjon hozzá egy új alkalmazást.
+    1. Kattintson a **My Apps** (Saját alkalmazások) elemre.
+    1. Adjon hozzá egy új alkalmazást.
     1. nevet ad meg
     1. Válassza ki **Webhookok beállítása -> mentése**
     1. Válassza ki **oldal** a legördülő menüben, és válasszon **fizessen elő az objektum**
     1. Visszahívási URL-címként adja meg **FBListener URL**-címét, valamint a **Függvényalkalmazás beállításai** területen konfigurált **Ellenőrzési jogkivonatot**.
     1. Ha a feliratkozás megtörtént, görgessen le a hírcsatornához, és kattintson a **Feliratkozás** gombra.
+    1. Kattintson a a **tesztelése** gomb a **hírcsatorna** sor egy tesztüzenetet küldéséhez az FBListener Azure-függvény, majd nyomja le az **küldeni a saját kiszolgáló** gombra. A kérelem fogadását a FBListener kell megjelennie.
 
-2. Facebook-oldal létrehozása.
+1. Facebook-oldal létrehozása.
+
+    > [!IMPORTANT]
+    > A 2018 Facebook megvalósítva, Facebook-alkalmazások több szigorú kérelmek. Nem hajtható végre a szakaszokat, 2, 3, 4, ha az alkalmazás nem lett felülvizsgálva és a Facebook csapatától jóvá.
 
     1. Lépjen a [Facebookra](https://www.facebook.com/bookmarks/pages), és hozzon létre egy **új Facebook-oldalt**.
-    2. Az alábbi lépéseket követve engedélyezze a Facebook alkalmazás számára az oldalhoz való hozzáférést:
+    1. Az alábbi lépéseket követve engedélyezze a Facebook alkalmazás számára az oldalhoz való hozzáférést:
         1. Nyissa meg a [Graph API Explorert](https://developers.facebook.com/tools/explorer/).
-        2. Válassza az **Application** (Alkalmazás) elemet.
-        3. Válassza a **Page Access Token** (Oldalhozzáférési jogkivonat) elemet, majd küldjön egy **GET** kérést.
-        4. A válaszban kattintson a **Page ID** (Oldal azonosítója) elemre.
-        5. Fűzze hozzá a **/subscribed_apps** sztringet az URL-címhez, majd küldjön egy **GET** (üres válasz) kérést.
-        6. Küldjön el egy **POST** kérést. A következő választ fogja kapni: **success: true**.
+        1. Válassza az **Application** (Alkalmazás) elemet.
+        1. Válassza a **Page Access Token** (Oldalhozzáférési jogkivonat) elemet, majd küldjön egy **GET** kérést.
+        1. A válaszban kattintson a **Page ID** (Oldal azonosítója) elemre.
+        1. Fűzze hozzá a **/subscribed_apps** sztringet az URL-címhez, majd küldjön egy **GET** (üres válasz) kérést.
+        1. Küldjön el egy **POST** kérést. A következő választ fogja kapni: **success: true**.
 
 3. Lejárati idővel nem rendelkező Graph API hozzáférési jogkivonat létrehozása.
 

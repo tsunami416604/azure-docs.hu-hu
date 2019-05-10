@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d34bd9d7f80f72b3c6c0821ad48e6be1fd260be9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 267b6afd7cd3131dcd138dfb631335f58cec833a
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60385676"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407930"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása a Workday konfigurálása
 
@@ -153,7 +153,7 @@ Ebben a forgatókönyvben egy Workday-bérlővel rendelkezik, és konfigurálta 
 |   |   |
 | - | - |
 | Nem. az ügynökök telepítéséhez kiépítése a helyszíni | 3 (a magas rendelkezésre állás és a feladatátvételi) |
-| Nem. az AD felhasználó kiépítési alkalmazások konfigurálása az Azure Portalon munkanap | 1 |
+| Nem. az AD felhasználó kiépítési alkalmazások konfigurálása az Azure Portalon munkanap | 1. |
 
   ![1. forgatókönyv](./media/workday-inbound-tutorial/dep_scenario1.png)
 
@@ -310,9 +310,9 @@ Ebben a lépésben, fog "tartományi biztonság" szabályzat engedélyek megadá
    | ---------- | ---------- |
    | GET és Put | Feldolgozó adatok: Nyilvános feldolgozó jelentések |
    | GET és Put | Személy adatok: Munkahelyi kapcsolattartási adatok |
-   | Lekérés | Feldolgozó adatok: Minden helyzetben |
-   | Lekérés | Feldolgozó adatok: Aktuális személyzeti információk |
-   | Lekérés | Feldolgozó adatok: A feldolgozó profil üzleti címe |
+   | Beolvasás | Feldolgozó adatok: Minden helyzetben |
+   | Beolvasás | Feldolgozó adatok: Aktuális személyzeti információk |
+   | Beolvasás | Feldolgozó adatok: A feldolgozó profil üzleti címe |
 
 ### <a name="configuring-business-process-security-policy-permissions"></a>Üzleti folyamat biztonsági házirendet engedélyeinek konfigurálása
 
@@ -868,7 +868,7 @@ Igen, egy kiépítési ügynök több AD-tartományok kezeléséhez, mindaddig, 
 
 * Az Azure Portalról lekérése a *bérlőazonosító* az Azure AD-bérlő.
 * Jelentkezzen be a kiépítés Agent ügynököt futtató Windows-kiszolgálóra.
-* Windows-rendszergazdaként nyissa meg a powershellt.
+* Windows-rendszergazdaként nyissa meg a Powershellt.
 * A regisztrációs parancsfájlokat tartalmazó könyvtárba, és futtassa a következő parancsokat, és cserélje le a \[bérlőazonosító\] paraméter a következő értékkel: a bérlő azonosítója.
 
   ```powershell
@@ -878,7 +878,7 @@ Igen, egy kiépítési ügynök több AD-tartományok kezeléséhez, mindaddig, 
   ```
 
 * Az ügynökök, amelyek szerepelnek – a listából másolása az "id" értéke mező adott erőforrásból azon *resourceName* egyenlő az AD tartománynevét.
-* Az azonosító illessze be ezt a parancsot, és hajtsa végre, a PowerShellben.
+* Az azonosító értéket illessze be ezt a parancsot, és hajtsa végre a parancsot a PowerShellben.
 
   ```powershell
   Remove-PublishedResource -ResourceId "[resource ID]" -TenantId "[tenant ID]"
@@ -946,9 +946,9 @@ A megoldás jelenleg nem támogatja a bináris attribútumok például *thumbnai
 
 #### <a name="how-do-i-format-display-names-in-ad-based-on-the-users-departmentcountrycity-attributes-and-handle-regional-variances"></a>Hogyan formázza a megjelenítendő nevét az ad-ben a felhasználó szervezeti egység/város attribútum és leíró regionális eltérésekre alapján?
 
-Általános követelmény konfigurálása a *displayName* attribútumot az ad-ben, hogy a felhasználó részlege és ország kapcsolatos információkat is biztosít. A példa: Kovács János működik a marketingosztály Egyesült államokbeli, előfordulhat, hogy szeretné-e a *displayName* megjelenjen *Kovács János (Marketing-US)*.
+Általános követelmény konfigurálása a *displayName* attribútumot az ad-ben, hogy a felhasználó részlege és ország/régió kapcsolatos információkat is biztosít. A példa: Kovács János működik a marketingosztály Egyesült államokbeli, előfordulhat, hogy szeretné-e a *displayName* megjelenjen *Kovács János (Marketing-US)*.
 
-Íme, miként hozhat létre ilyen követelményei kezelheti *CN* vagy *displayName* , például a vállalat, üzleti egység, városok vagy országok attribútumait tartalmazza.
+Íme, miként hozhat létre ilyen követelményei kezelheti *CN* vagy *displayName* , például a vállalat, üzleti egység, város vagy ország/régió attribútumait tartalmazza.
 
 * Minden munkanap attribútum használata a mögöttes XPATH API kifejezés, amely konfigurálható a beolvasott **attribútumleképzés -> speciális szakasz Workday-attribútumlista szerkesztése >**. Íme a Workday alapértelmezett XPATH API kifejezése *PreferredFirstName*, *PreferredLastName*, *vállalati* és *SupervisoryOrganization* attribútumok.
 
@@ -957,7 +957,7 @@ A megoldás jelenleg nem támogatja a bináris attribútumok például *thumbnai
      | ----------------- | -------------------- |
      | PreferredFirstName | WD:Worker/WD:Worker_Data/WD:Personal_Data/WD:Name_Data/WD:Preferred_Name_Data/WD:Name_Detail_Data/WD:First_Name/Text() |
      | PreferredLastName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:Last_Name/text() |
-     | Vállalat | WD:Worker / wd:Worker_Data / wd:Organization_Data / wd:Worker_Organization_Data [wd:Organization_Data / wd:Organization_Type_Reference / wd:ID [@wd:type= 'Organization_Type_ID'] = "Céges"]/wd:Organization_Reference/@wd:Descriptor |
+     | Cég | WD:Worker / wd:Worker_Data / wd:Organization_Data / wd:Worker_Organization_Data [wd:Organization_Data / wd:Organization_Type_Reference / wd:ID [@wd:type= 'Organization_Type_ID'] = "Céges"]/wd:Organization_Reference/@wd:Descriptor |
      | SupervisoryOrganization | WD:Worker / wd:Worker_Data / wd:Organization_Data / wd:Worker_Organization_Data / wd:Organization_Data [wd:Organization_Type_Reference / wd:ID [@wd:type= 'Organization_Type_ID'] = 'Felügyeleti'] /wd:Organization_Name/text() |
   
    Erősítse meg a Workday-csapattal, hogy a fenti API kifejezés a Workday-bérlői konfigurációjától érvényes. Ha szükséges, módosíthatja őket a szakaszban leírt módon [Workday felhasználói attribútumok listája testre szabható](#customizing-the-list-of-workday-user-attributes).
@@ -976,7 +976,7 @@ A megoldás jelenleg nem támogatja a bináris attribútumok például *thumbnai
 
   Ellenőrizze a Workday-csapattal, hogy a fenti API kifejezések érvényesek-e a Workday-bérlői konfigurációjától. Ha szükséges, módosíthatja őket a szakaszban leírt módon [Workday felhasználói attribútumok listája testre szabható](#customizing-the-list-of-workday-user-attributes).
 
-* A megfelelő attribútum leképezés kifejezés hozhat létre, mely Workday attribútum "mérvadó" jelenti. a felhasználó utónevét, utolsó neve, ország és részleg azonosítása. Tegyük fel, az attribútumok *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* és *SupervisoryOrganization* jelölik. Ezzel hozhat létre az ad-kifejezés *displayName* attribútum egy megjelenített nevet, például a következőképpen beolvasásához *Kovács János (Marketing-US)*.
+* A megfelelő attribútum leképezés kifejezés hozhat létre, mely Workday attribútum "mérvadó" jelenti. a felhasználó utónevét, utolsó nevét, ország/régió és részleg azonosítása. Tegyük fel, az attribútumok *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* és *SupervisoryOrganization* jelölik. Ezzel hozhat létre az ad-kifejezés *displayName* attribútum egy megjelenített nevet, például a következőképpen beolvasásához *Kovács János (Marketing-US)*.
 
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
@@ -1236,7 +1236,7 @@ Ez a módosítás végrehajtásához kell használnia [Workday Studio](https://c
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
-    <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="https://www.w3.org/2001/XMLSchema">
+    <env:Envelope xmlns:env="https://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="https://www.w3.org/2001/XMLSchema">
       <env:Body>
         <wd:Get_Workers_Request xmlns:wd="urn:com.workday/bsvc" wd:version="v21.1">
           <wd:Request_References wd:Skip_Non_Existing_Instances="true">

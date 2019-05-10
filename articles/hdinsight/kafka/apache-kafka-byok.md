@@ -1,32 +1,30 @@
 ---
-title: 'A saját kulcs használata: az Apache Kafka az Azure HDInsight (előzetes verzió)'
+title: 'A saját kulcs használata: az Apache Kafka az Azure HDInsight'
 description: Ez a cikk ismerteti az Azure Key vaultból saját kulcs használata, az Apache Kafka Azure HDInsight platformon tárolt adatok titkosításához.
 ms.service: hdinsight
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: hrasheed
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: ce9df58e9640cab2e6ba50fce772f1e30739dc5a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/06/2019
+ms.openlocfilehash: 6108bfd9e39b37507ec7e113bf2c489e890f0ca0
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714851"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233562"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>A saját kulcs használata: az Apache Kafka az Azure HDInsight
 
-Az Azure HDInsight az Apache Kafka Bring Your Own Key (BYOK) támogatását tartalmazza. Ez a funkció lehetővé teszi, hogy Ön a tulajdonosa, és az inaktív adatok titkosításához használt kulcsok kezelése. 
+Az Azure HDInsight az Apache Kafka Bring Your Own Key (BYOK) támogatását tartalmazza. Ez a funkció lehetővé teszi, hogy Ön a tulajdonosa, és az inaktív adatok titkosításához használt kulcsok kezelése.
 
-Azok a felügyelt lemezek HDInsight védve vannak az Azure Storage Service Encryption (SSE). Alapértelmezés szerint az adatokat a lemezeken lévő van titkosítva, a Microsoft által kezelt kulcsok használata. Ha engedélyezi a BYOK, meg kell adnia a HDInsight használata és kezelése az Azure Key Vault használatával való titkosítására szolgáló kulcsot. 
+Azok a felügyelt lemezek HDInsight védve vannak az Azure Storage Service Encryption (SSE). Alapértelmezés szerint az adatokat a lemezeken lévő van titkosítva, a Microsoft által kezelt kulcsok használata. Ha engedélyezi a BYOK, meg kell adnia a HDInsight használata és kezelése az Azure Key Vault használatával való titkosítására szolgáló kulcsot.
 
 A BYOK-titkosítás a további költségek nélkül a fürt létrehozásakor kezelt adatbázisunk. Teendők csak HDInsight regisztrálása az Azure Key Vault egy felügyelt identitás, és adja hozzá a titkosítási kulcsot, a fürt létrehozásakor.
 
 A Kafka-fürt (beleértve a Kafka által kezelt replikák) azokat az üzeneteket az egy szimmetrikus adatok titkosítási kulcsa (Adattitkosítási) vannak titkosítva. Az adattitkosítási kulcsot a kulcs titkosítása kulcscserekulcs (KEK) a key vaultból használatával védett. A titkosítási és visszafejtési folyamatok teljes egészében az Azure HDInsight a kezeli. 
 
 Az Azure Portalon vagy az Azure CLI segítségével biztonságosan elforgatása a kulcsok a key vaultban. Kulcs forgatása, a HDInsight Kafka-fürt elindítja a percen belül az új kulccsal. Zsarolóprogramok elleni forgatókönyvek és véletlen törlés elleni védelem érdekében az "A helyreállítható törlés" Kulcsvédelmi szolgáltatások engedélyezése. A kulcstartók nélkül a védelmi szolgáltatás nem támogatottak.
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="get-started-with-byok"></a>A BYOK használatának első lépései
 Hozhat létre egy BYOK engedélyezve van a Kafka-fürt, végigvesszük azokat a következő lépéseket:
@@ -121,9 +119,9 @@ Hozhat létre egy BYOK engedélyezve van a Kafka-fürt, végigvesszük azokat a 
    No, all managed disks in the cluster are encrypted by the same key.
 
 **What happens if the cluster loses access to the key vault or the key?**
-   If the cluster loses access to the key, warnings will be shown in the Ambari portal. In this state, the **Change Key** operation will fail. Once key access is restored, ambari warnings will go away and operations such as key rotation can be successfully performed.
+   If the cluster loses access to the key, warnings will be shown in the Apache Ambari portal. In this state, the **Change Key** operation will fail. Once key access is restored, Ambari warnings will go away and operations such as key rotation can be successfully performed.
 
-   ![Kafka key access ambari alert](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
+   ![Kafka key access Ambari alert](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
 
 **How can I recover the cluster if the keys are deleted?**
 

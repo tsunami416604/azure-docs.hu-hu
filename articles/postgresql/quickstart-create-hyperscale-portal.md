@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 30de4da43569abf4d7bd668fd0fa481ecac23f4d
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 4271d94f07125a870cc4aa859b01db819d583f40
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65081100"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406453"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Gyors útmutató: Hozzon létre egy Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) az Azure Portalon
 
@@ -169,7 +169,7 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-Eddig vesz részt a lekérdezések rendelkezik a github\_események kizárólag, de hogy kombinálhatja ezeket az információkat github\_felhasználók. Óta, hogy horizontálisan skálázott felhasználóinak és események az azonos azonosítóval (`user_id`), az egyező felhasználói azonosítók mindkét tábla sorait lesz [védelmicsoport-készletek](http://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) ugyanazon adatbázis-csomópont, és könnyedén összekapcsolható a szabályzattípussal.
+Eddig vesz részt a lekérdezések rendelkezik a github\_események kizárólag, de hogy kombinálhatja ezeket az információkat github\_felhasználók. Óta, hogy horizontálisan skálázott felhasználóinak és események az azonos azonosítóval (`user_id`), az egyező felhasználói azonosítók mindkét tábla sorait lesz [védelmicsoport-készletek](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) ugyanazon adatbázis-csomópont, és könnyedén összekapcsolható a szabályzattípussal.
 
 Ha azt csatlakozzon `user_id`, nagy kapacitású is leküldhetik az illesztési végrehajtási párhuzamos végrehajtás szegmensekre munkavégző csomóponton. Például keressük meg felhasználók számára létrehozott tárházak legnagyobb száma:
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2ccdd337d5c01a0ac0253fe1d1e131fa4e6d51a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4684c38fe506ed912c6827f1e60b94b847024347
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60782990"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405667"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok logikai függvények
 
@@ -77,9 +77,9 @@ Az előző példából kimenete:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | False (Hamis) |
+| andExampleOutput | Bool | Hamis |
 | orExampleOutput | Bool | True (Igaz) |
-| notExampleOutput | Bool | False (Hamis) |
+| notExampleOutput | Bool | Hamis |
 
 ## <a name="bool"></a>logikai
 
@@ -131,9 +131,9 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | trueString | Bool | True (Igaz) |
-| falseString | Bool | False (Hamis) |
+| falseString | Bool | Hamis |
 | trueInt | Bool | True (Igaz) |
-| falseInt | Bool | False (Hamis) |
+| falseInt | Bool | Hamis |
 
 ## <a name="if"></a>Ha
 
@@ -145,7 +145,7 @@ Hogy értéket adja vissza egy feltétele igaz vagy hamis.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| feltétel |Igen |logikai |Ellenőrizze, hogy azt true vagy FALSE (hamis) érték. |
+| condition |Igen |logikai |Ellenőrizze, hogy azt true vagy FALSE (hamis) érték. |
 | trueValue |Igen | karakterlánc, int, objektumot vagy tömböt |A visszatérési érték, amikor a feltétel teljesül. |
 | falseValue |Igen | karakterlánc, int, objektumot vagy tömböt |A visszatérési érték, amikor a feltétel nem teljesül. |
 
@@ -196,7 +196,7 @@ A következő [példasablonja](https://github.com/krnese/AzureDeploy/blob/master
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vmName": {
@@ -286,9 +286,9 @@ Az előző példából kimenete:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | False (Hamis) |
+| andExampleOutput | Bool | Hamis |
 | orExampleOutput | Bool | True (Igaz) |
-| notExampleOutput | Bool | False (Hamis) |
+| notExampleOutput | Bool | Hamis |
 
 A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) használ **nem** a [egyenlő](resource-group-template-functions-comparison.md#equals).
 
@@ -360,9 +360,9 @@ Az előző példából kimenete:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| andExampleOutput | Bool | False (Hamis) |
+| andExampleOutput | Bool | Hamis |
 | orExampleOutput | Bool | True (Igaz) |
-| notExampleOutput | Bool | False (Hamis) |
+| notExampleOutput | Bool | Hamis |
 
 ## <a name="next-steps"></a>További lépések
 

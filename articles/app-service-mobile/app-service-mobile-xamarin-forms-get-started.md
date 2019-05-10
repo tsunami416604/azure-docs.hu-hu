@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 2e0a4b51e9140b9b3c0032980b7c6cd5a4d55638
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: b99513cad34bba1b050a24795ecb21d0357d19c1
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128940"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416067"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Xamarin.Forms-alkalmazás létrehozása az Azure-ral
 
@@ -34,9 +34,9 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Aktív Azure-fiók. Ha nincs fiókja, regisztráljon az Azure próba-előfizetésére, és akár 10 ingyenes mobilalkalmazáshoz is hozzájuthat, amelyeket a próba-előfizetés lejárta után is tovább használhat. További információk: [Ingyenes Azure-próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
 
-* A Xamarinhoz készült Visual Studio Tools a Visual Studio 2017-ben vagy a Visual Studio for Mac-ben. Útmutatást a [Xamarin telepítési oldalán][Install Xamarin] talál.
+* A Xamarin, a Visual Studio 2017 vagy újabb, illetve a Visual Studio-eszközök vagy a Visual Studio for Mac. Útmutatást a [Xamarin telepítési oldalán][Install Xamarin] talál.
 
-* (választható) iOS-alkalmazás készítéséhez Xcode 9.0 vagy újabb verzióval rendelkező Mac szükséges. iOS-alkalmazások fejlesztéséhez a Visual Studio for Mac használható, vagy a Visual Studio 2017 (ha a Mac elérhető a hálózaton).
+* (választható) iOS-alkalmazás készítéséhez Xcode 9.0 vagy újabb verzióval rendelkező Mac szükséges. A Visual Studio for Mac, vagy a Visual Studio 2017 iOS-alkalmazások fejlesztéséhez használható, vagy később is használható (mindaddig, amíg a Mac az a hálózaton elérhető).
 
 ## <a name="create-a-new-mobile-apps-back-end"></a>Új Mobile Apps-háttéralkalmazás létrehozása
 
@@ -64,7 +64,7 @@ A megoldás megnyitásához a Xamarinhoz készült Visual Studio Tools szükség
 
    Ez a művelet letölt egy projektet, amely tartalmazza a mobilalkalmazáshoz kapcsolódó ügyfélalkalmazást. Mentse el a tömörített projektfájlt a helyi számítógépen, és jegyezze fel a mentési helyét.
 
-3. Bontsa ki a letöltött projektet, és nyissa meg a Visual Studio 2017-ben.
+3. Bontsa ki a letöltött projektet, és nyissa meg a Visual Studióban.
 
    ![Kibontott projekt a Visual Studióban][8]
 

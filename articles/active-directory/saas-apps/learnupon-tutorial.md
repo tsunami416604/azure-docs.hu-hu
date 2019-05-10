@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a8b894a5b790321c0af8527bf77e07b9923d577
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 574c21dc2713f10513ac296e7db538e20a94c9d6
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64686761"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406531"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező LearnUpon
 
@@ -165,9 +165,9 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés LearnUpon, hajtsa v�
 
      ![Egyszeri bejelentkezés konfigurálása](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
-    a. Az a **Utónév azonosító formátuma** szövegmezőbe írja be az érték, amely tudatja velünk, ahol a a SAML helyességi feltétel alkalmazása a felhasználók firstname található – például: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    a. Az a **Utónév azonosító formátuma** szövegmezőbe írja be az érték, amely tudatja velünk, ahol a a SAML helyességi feltétel alkalmazása a felhasználók firstname található – például: `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
   
-    b. Az a **utolsó azonosító formátumot** szövegmezőbe írja be az érték, amely tudatja velünk, ahol a a SAML helyességi feltétel alkalmazása a felhasználók lastname található – például: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    b. Az a **utolsó azonosító formátumot** szövegmezőbe írja be az érték, amely tudatja velünk, ahol a a SAML helyességi feltétel alkalmazása a felhasználók lastname található – például: `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -223,7 +223,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy Britta Simon nevű felhasználó LearnUpon jön létre. LearnUpon támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az LearnUpon, egy új jön létre a hitelesítés után. Hozzon létre egy felhasználót manuálisan kell, ha kapcsolatba kell [LearnUpon támogatási csapatának](https://www.learnupon.com/features/support/).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

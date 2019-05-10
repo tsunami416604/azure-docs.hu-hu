@@ -16,12 +16,12 @@ ms.date: 04/26/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e84d97a4ef389981fa30aa08433fef1662367ae
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 06b4ecc151f8402bfb8f05968475b0305737ecd9
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935947"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406483"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-app"></a>A felhasználók és a Microsoft Graph meghívása iOS-alkalmazások
 
@@ -79,7 +79,7 @@ Két módon regisztrálhatja alkalmazását, a következő két szakasz leírtak
 
 #### <a name="cocoapods"></a>CocoaPods
 
-Használhat [CocoaPods](http://cocoapods.org/) telepítéséhez `MSAL` hozzáadásával, hogy a `Podfile` cél alatt:
+Használhat [CocoaPods](https://cocoapods.org/) telepítéséhez `MSAL` hozzáadásával, hogy a `Podfile` cél alatt:
 
 ```
 use_frameworks!

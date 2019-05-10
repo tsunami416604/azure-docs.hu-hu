@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 04/18/2019
+ms.date: 05/07/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 91297a02966000899ab79dfb86446890e9c4439a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4fb42014e2c5389cf2a849ddf5114ab1f59c9e28
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148714"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65414024"
 ---
 # <a name="azure-media-services-v3-overview"></a>Az Azure Media Services v3 áttekintése
 
@@ -48,7 +48,8 @@ A Media Services lehetővé teszi különböző média-munkafolyamatok létrehoz
 
 Ismerje meg, hogyan kódolhat és csomagolhat be tartalmakat, streamelhet videókat igény szerint, közvetíthet élőben, illetve hogyan elemezheti videóit a Media Services 3-as verziójával. Az oktatóanyagok, API-referenciák és az egyéb dokumentációk bemutatják, hogyan közvetíthet biztonságosan igény szerinti vagy élő videó- és audióstreameket akár felhasználók millióira méretezhetően is.
 
-Fejlesztés megkezdése előtt tekintse át a [alapvető fogalmai](concepts-overview.md)<br/>
+> [!TIP]
+> Fejlesztés megkezdése előtt tekintse át:<br/>* [Alapvető fogalmak](concepts-overview.md) (incudes alapfogalmaival: csomagolására, kódolás, védelem stb.)<br/>* [Fejlesztés a Media Services v3 API-k](media-services-apis-overview.md) (tartalmazza a eléréséről az API-k elnevezési konvenciók stb.)
 
 ### <a name="quickstarts"></a>Gyors útmutatók  
 
@@ -58,7 +59,7 @@ A rövid útmutatók alapvető nap-1 utasítások megjelenítése az új ügyfel
 * [Stream-videó fájlok – CLI](stream-files-cli-quickstart.md)
 * [Stream-videó fájlok – Node.js](stream-files-nodejs-quickstart.md)
     
-### <a name="tutorials"></a>Oktatóanyagok 
+### <a name="tutorials"></a>Oktatóprogramok 
 
 Az oktatóanyagok bemutatják a forgatókönyv-alapú eljárások a Media Services leggyakoribb feladatokat.
 
@@ -86,9 +87,5 @@ Tekintse meg a [Azure Media Services-Közösség](media-services-community.md) k
 
 ## <a name="next-steps"></a>További lépések
 
-Hogyan kezdhetem meg a v3 használatát? 
-
-> [!div class="nextstepaction"]
-> [Alapvető fogalmak ismertetése](concepts-overview.md)<br/>
-> [Fejlesztés SDK-k használatával, a Media Services v3 API-val](developers-guide.md) 
+[Alapvető fogalmak ismertetése](concepts-overview.md)
 

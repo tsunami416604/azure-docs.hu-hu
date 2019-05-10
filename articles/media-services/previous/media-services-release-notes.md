@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 25da9fd787c467bdddb7c8dcd68b9df518d018b7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 427ba2b386810749810397afed8ef3f62dcf9217
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728032"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506626"
 ---
 # <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
 
@@ -36,7 +36,7 @@ Szívesen meghallgatnánk az ügyfeleink, így Ön érintő problémák kijavít
 | --- | --- |
 | Számos gyakori HTTP-fejlécek nem biztosított a REST API-ban. |A Media Services-alkalmazások fejlesztése a REST API-val, ha úgy gondolja, hogy néhány általános HTTP-fejléc mezők (beleértve a CLIENT-REQUEST-ID REQUEST-ID és a VISSZAADANDÓ-CLIENT-REQUEST-ID) nem támogatottak. A fejlécek, egy következő frissítés fog bővülni. |
 | %-Os-kódolást nem engedélyezett. |A Media Services a IAssetFile.Name tulajdonság értékét használja, URL-címek létrehozását, a streamelési tartalom (például `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`). Ebből kifolyólag százalék-kódolást nem engedélyezett. A Name tulajdonság értéke nem lehet a következő [százalék-kódolás – fenntartott karakterek](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Ezenkívül lehetnek csak egy "." a fájlnév kiterjesztésével. |
-| A ListBlobs metódust, amely része az Azure Storage SDK-verzió 3.x sikertelen lesz. |A Media Services SAS URL-címek alapján hoz létre a [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) verzió. Ha szeretne egy blob-tárolóban lévő blobok listázása a Storage SDK-val, használja a [CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) módszer, amely része a Storage SDK-verziója 2.x. |
+| A ListBlobs metódust, amely része az Azure Storage SDK-verzió 3.x sikertelen lesz. |A Media Services SAS URL-címek alapján hoz létre a [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) verzió. Ha szeretne egy blob-tárolóban lévő blobok listázása a Storage SDK-val, használja a [CloudBlobContainer.ListBlobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs) módszer, amely része a Storage SDK-verziója 2.x. |
 | A Media Services mechanizmus szabályozás korlátozza az alkalmazásokat, amelyek a szolgáltatás túl sok kérést az erőforrás-használati. A szolgáltatás a "Szolgáltatás nem érhető el" 503-as HTTP-állapotkód: Előfordulhat, hogy vissza. |További információkért lásd az 503-as HTTP-állapotkód leírását [Media Services-hibakódok](media-services-encoding-error-codes.md). |
 | Ha entitást lekérdezni, legfeljebb 1000 entitások adja vissza egy időben, mert a nyilvános REST 2-es verzió korlátozza az 1000 eredmények lekérdezési eredményeket. |Kihagyás és igénybe (.NET) / (REST) leírtak szerint az első [ebben a példában .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) és [a REST API-példa](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
 | Egyes ügyfelek között egy ismételje meg a címke a probléma a Smooth Streaming-jegyzékfájlban származhatnak. |További információkért lásd: [ebben a szakaszban](media-services-deliver-content-overview.md#known-issues). |

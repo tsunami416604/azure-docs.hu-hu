@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7287616dbad1aa77a6e4aaa110ade39dcea4f195
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cb48d37e1cf552f9ad375906d8cd05301ac2dd0c
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60470055"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407872"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Az Azure Active Directory 2. verzió parancsmagjainak csoportfelügyelet
 
@@ -233,13 +233,13 @@ Tulajdonosok hozzáadása egy csoporthoz, az Add-AzureADGroupOwner parancsmaggal
 
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 
--ObjectId paraméter objectid azonosítóját, a csoport, amelyhez szeretnénk hozzáadni egy olyan tulajdonost, és - RefObjectId objectid azonosítóját, a felhasználó szeretnénk hozzáadni a csoport tulajdonosai.
+-ObjectId paraméter objectid azonosítóját, a csoport, amelyhez szeretnénk hozzáadni egy olyan tulajdonost, és a - RefObjectId objectid azonosítóját, a felhasználónév vagy szolgáltatásnév szeretnénk hozzáadni a csoport tulajdonosai.
 
 A csoport tulajdonosainak lekéréséhez használja a Get-AzureADGroupOwner parancsmagot:
 
     PS C:\Windows\system32> Get-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
 
-A parancsmag a megadott csoport tulajdonosainak listáját adja vissza:
+A parancsmag a megadott csoport tulajdonosainak (felhasználók és az egyszerű szolgáltatások) listáját adja vissza:
 
     DeletionTimeStamp ObjectId                             ObjectType
     ----------------- --------                             ----------

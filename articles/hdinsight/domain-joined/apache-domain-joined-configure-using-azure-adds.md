@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: ed2611896f2c23a3cf1d2fec5d9e711f518a65c6
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b084790bf5a4edfed74dd95a40c11eec26d34dbe
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926351"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415464"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>HDInsight-fürt konfigurálása Enterprise Security Package-dzsel az Azure Active Directory Domain Services használatával
 
@@ -22,7 +22,7 @@ Vállalati biztonsági csomag (ESP) fürtök többfelhasználós hozzáférést 
 Ebből a cikkből elsajátíthatja egy HDInsight-fürt konfigurálása ESP az Azure Active Directory Domain Services (Azure AD DS) használatával.
 
 > [!NOTE]  
-> ESP el általánosan elérhető a HDI 3.6 típusok fürtöt: Az Apache Spark, interaktív, és az Apache Hadoop. Az Apache HBase- és Apache Kafka fürttípusok ESP az előzetes verzióban.
+> ESP el általánosan elérhető a HDInsight 3.6-os és 4.0-s típusok fürtöt: Az Apache Spark, interaktív, az Apache Hadoop és HBase. ESP az Apache Kafka-fürt típusát az előzetes verzióban.
 
 ## <a name="enable-azure-ad-ds"></a>Engedélyezze az Azure AD-DS-ben
 

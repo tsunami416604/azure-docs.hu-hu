@@ -14,22 +14,22 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 9d789572abf0545eb51b357da091e5a1d712eab2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fd790d27c958bf982f95b98426c6ab4d94c5f17f
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60831435"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412736"
 ---
-# <a name="what-is-azure-cache-for-redis"></a>Mi az Azure Cache redis
+# <a name="azure-cache-for-redis-description"></a>Az Azure Cache Redis-leírás
 
 A Redis az Azure Cache a népszerű szoftver alapján [Redis](https://redis.io/). Általában a háttér-adattárakra nagymértékben támaszkodó rendszerek teljesítményének és skálázhatóságának javítására szolgáló gyorsítótárként használják. A teljesítmény javítása érdekében a rendszer ideiglenesen átmásolja a gyakran használt adatokat egy, az alkalmazás közelében lévő gyors tárolóba. A [Azure Cache redis](https://redis.io/), ez a gyors tároló memóriához található az Azure redis Cache-lemezről egy adatbázisba való betöltése helyett.
 
-Az Azure Cache redis is használható egy memórián belüli adattár struktúra, elosztott nem relációs adatbázis és a közvetítő. A Redis-motor kis késésének és nagy átviteli sebességének köszönhetően javul az alkalmazás teljesítménye.
+Az Azure Cache redis is használható egy memórián belüli adattár struktúra, elosztott nem relációs adatbázis és a egy közvetítő. A Redis-motor kis késésének és nagy átviteli sebességének köszönhetően javul az alkalmazás teljesítménye.
 
-Az Azure Cache Redis hozzáférést biztosít egy biztonságos, dedikált Azure Cache redis, a Microsoft felügyeli, Azure-ban üzemeltetett, és elérhető-e bármely alkalmazás belül, vagy az Azure-on kívül.
+Az Azure Cache redis egy biztonságos, dedikált Redis cache hozzáférést biztosít. Az Azure Cache redis Azure-ban üzemeltetett, a Microsoft által felügyelt és elérhető-e bármely alkalmazás belül, vagy az Azure-on kívül.
 
-## <a name="why-use-azure-cache-for-redis"></a>Miért érdemes használni az Azure Cache redis
+## <a name="using-azure-cache-for-redis"></a>Az Azure redis gyorsítótárral
 
 Nincsenek sok közös mintát, ahol Azure Cache redis használt alkalmazásarchitektúra támogatásához, vagy alkalmazások teljesítményének javítása érdekében. A leggyakoribbak többek között a következők:
 
@@ -38,7 +38,7 @@ Nincsenek sok közös mintát, ahol Azure Cache redis használt alkalmazásarchi
 | [Cache-Aside](cache-web-app-cache-aside-leaderboard.md) | Mivel az adatbázis nagy méretű lehet, ezért nem ajánlott az egész adatbázist betölteni a gyorsítótárba. Gyakran a [cache-aside](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) mintával, szükség szerint töltik be az adatelemeket a gyorsítótárba. Ha a rendszer módosításokat végez a háttéradatokon, akkor az időnként a gyorsítótárat is frissítheti, amelyet más ügyfeleknek is továbbít. Emellett a rendszer lejárati időt rendelhet az adatelemekhez, vagy egy kiürítési szabályzat segítségével újból betöltheti az adatfrissítéseket a gyorsítótárba.|
 | [Tartalmak gyorsítótárazása](cache-aspnet-output-cache-provider.md) | A legtöbb weboldal sablonokból jön létre, és rendelkezik többek között fejlécekkel, láblécekkel, eszköztárakkal, menükkel stb. Nem változnak gyakran, így nem ajánlott dinamikusan létrehozni őket. Egy memórián belüli gyorsítótár használata, például az Azure Cache Redis, a webkiszolgálók gyors hozzáférést biztosít az ilyen típusú statikus tartalom háttér-adattárainak képest. Ez a minta csökkenti a feldolgozási időt és a kiszolgálóterhelést, amely a tartalmak dinamikus létrehozásával járna. Ennek köszönhetően csökkenhet a webkiszolgálók válaszideje, valamint csökkenthető a számítási feladatok kezeléséhez szükséges kiszolgálók száma. Az Azure Cache redis biztosít a redis Cache kimeneti gyorsítótár-szolgáltató támogatási ezt a mintát az ASP.NET-tel.|
 | [Felhasználói munkamenetek gyorsítótárazása](cache-aspnet-session-state-provider.md) | Ezt a mintát általában áruházi kosaraknál és olyan egyéb felhasználói előzmény típusú adatoknál használják, amelyeket a webalkalmazás a felhasználói cookie-khoz társíthat. Ha túl sok információt tárol cookie-kban, csökkenhet a teljesítmény, mivel a cookie mérete nő, és a rendszer minden kérés esetén átadja és ellenőrzi a cookie-t. Egy jellemző megoldás a cookie kulcsként való használata az adatok háttér-adatbázisból való lekérdezéséhez. Azure Cache redis, például egy memórián belüli gyorsítótár használata társítson a felhasználó esetén sokkal gyorsabb, mint egy teljes körű relációs adatbázis használata. |
-| Feladatok és üzenetek üzenetsor-kezelése | Amikor az alkalmazások kéréseket fogadnak, a kéréshez társított műveletek végrehajtása gyakran hosszabb időt vesz igénybe. Gyakori eljárás a hosszabb ideig futó műveletek üzenetsorba való állítása, amelynek a feldolgozása később, esetenként egy másik kiszolgálón történik. Ezt a késleltetési módot a tevékenységek üzenetsorba való helyezésének nevezik. Számos szoftverösszetevőt úgy terveztek, hogy támogassa a tevékenységek üzenetsorba való helyezését. Az Azure Cache a redis gyorsítótár is szolgál erre a célra is egy elosztott üzenetsorba.|
+| Feladatok és üzenetek üzenetsor-kezelése | Amikor az alkalmazások kéréseket fogadnak, a kéréshez társított műveletek végrehajtása gyakran hosszabb időt vesz igénybe. Gyakori eljárás a hosszabb ideig futó műveletek üzenetsorba való állítása, amelynek a feldolgozása később, esetenként egy másik kiszolgálón történik. Ezt a késleltetési módot a tevékenységek üzenetsorba való helyezésének nevezik. Számos szoftverösszetevőt úgy terveztek, hogy támogassa a tevékenységek üzenetsorba való helyezését. Az Azure Cache redis is lehetővé teszi az erre a célra is, egy elosztott üzenetsorba.|
 | Elosztott tranzakciók | Az alkalmazásokra vonatkozó gyakori követelmény, hogy egyetlen (atomi) műveletként tudják futtatni a háttér-adattárra irányuló parancssorozatokat. Minden parancsnak sikeresnek kell lennie, vagy mindegyiket vissza kell állítani a kezdeti állapotba. Az Azure Cache a redis támogatja a kötegelt parancsok végrehajtása formájában egyetlen műveletként [tranzakciók](https://redis.io/topics/transactions). |
 
 ## <a name="azure-cache-for-redis-offerings"></a>Az Azure Cache Redis-i ajánlatainak közzétételéhez
@@ -49,7 +49,7 @@ Az Azure Cache redis az alábbi szinteken érhető el:
 |---|---|
 Alapszintű | Egy csomópontos gyorsítótár. Ez a szint több memóriaméretet támogat (250 MB–53 GB). Ez a szint ideális a fejlesztéshez/teszteléshez és a nem kritikus számítási feladatokhoz. Az alapszintű csomag nem rendelkezik szolgáltatásszint-szerződéssel (SLA) |
 | Standard | Replikált gyorsítótár egy két csomópontos, elsődleges/másodlagos konfigurációban, amelyet a Microsoft kezel, és magas (99,9%-os) rendelkezésre állású szolgáltatásszint-szerződéssel rendelkezik |
-| Prémium | A prémium szint a vállalati használatra kész szint. A prémium szintű gyorsítótárak több funkciót támogatnak, és nagyobb átviteli sebességgel, valamint gyorsabb válaszidőkkel rendelkeznek. A prémium szintű gyorsítótárakat nagyobb teljesítményű hardvereken helyezik üzembe, és az alapszintű vagy a standard szintnél jobb teljesítményt biztosítanak. Ez azt jelenti, hogy egy ugyanolyan méretű gyorsítótár esetén az átviteli sebesség prémium szinten a standard szintnél nagyobb lesz. |
+| Prémium | A prémium szintű szolgáltatás a nagyvállalatok igényeire felkészített szint. A prémium szintű gyorsítótárak több funkciót támogatnak, és nagyobb átviteli sebességgel, valamint gyorsabb válaszidőkkel rendelkeznek. A prémium szintű gyorsítótárakat nagyobb teljesítményű hardvereken helyezik üzembe, és az alapszintű vagy a standard szintnél jobb teljesítményt biztosítanak. Ez az előny azt jelenti, hogy az azonos méretű gyorsítótár az átviteli sebesség lesz, a prémium szintű Standard szintű képest. |
 
 > [!TIP]
 > Méret, teljesítmény és a sávszélesség a prémium gyorsítótárak kapcsolatos további információkért lásd: [redis Cache – gyakori kérdések az Azure Cache](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
@@ -57,7 +57,7 @@ Alapszintű | Egy csomópontos gyorsítótár. Ez a szint több memóriaméretet
 
 A gyorsítótárat a létrehozása után is vertikálisan felskálázhatja magasabb szintűvé. Az alacsonyabb szintre való vertikális leskálázás nem támogatott. A méretezési részletes tudnivalókért lásd: [How to Scale Azure Cache redis](cache-how-to-scale.md) és [hogyan automatizálhatja a skálázási művelet](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
 
-### <a name="feature-comparison"></a>Funkciók összehasonlítása
+### <a name="feature-comparison"></a>Szolgáltatások összehasonlítása
 
 A [Azure Cache Redis díjszabási](https://azure.microsoft.com/pricing/details/cache/) oldal nyújt részletes összehasonlítását láthatja az egyes csomagok. Az alábbi táblázat a szintek által támogatott néhány funkciót írja le:
 
@@ -67,9 +67,10 @@ A [Azure Cache Redis díjszabási](https://azure.microsoft.com/pricing/details/c
 | [Redis-adatmegőrzés](cache-how-to-premium-persistence.md) |✔|-|-|
 | [Redis-fürt](cache-how-to-premium-clustering.md) |✔|-|-|
 | [Biztonság a tűzfalszabályok használatával](cache-configure.md#firewall) |✔|✔|✔|
+| Titkosítás az átvitel során |✔|✔|✔|
 | [Továbbfejlesztett biztonság és elkülönítés VNettel](cache-how-to-premium-vnet.md) |✔|-|-|
 | [Importálás és exportálás](cache-how-to-import-export-data.md) |✔|-|-|
-| [Frissítések ütemezése](cache-administration.md#schedule-updates) |✔|-|-|
+| [Ütemezett frissítések](cache-administration.md#schedule-updates) |✔|✔|✔|
 | [Georeplikáció](cache-how-to-geo-replication.md) |✔|-|-|
 | [Újraindítás](cache-administration.md#reboot) |✔|✔|✔|
 

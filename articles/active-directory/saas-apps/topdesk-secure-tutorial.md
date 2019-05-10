@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 845ca13bdd8e3677f559bac373efa078f3b951be
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 0d0295162acdf358bd798e86bd7d3479f5e78d72
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920383"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407908"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TOPdesk – biztonságos
 
@@ -184,7 +184,7 @@ TOPdesk – az Azure AD egyszeri bejelentkezés konfigurálása biztonságos, ha
 
     d. A kapott az TOPdesk ügyfélszolgálathoz alatt embléma fájlt feltölteni **embléma ikon**, kattintson a **Tallózás**.
 
-    e. Az a **felhasználói név attribútum** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    e. Az a **felhasználói név attribútum** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
     f. Az a **megjelenítendő név** szövegmezőbe írja be a konfiguráció nevét.
 
@@ -271,7 +271,7 @@ Esetén TOPdesk – biztonságos, kiépítés a manuális feladat.
 > [!NOTE]
 > Bármely más TOPdesk – biztonságos felhasználói fiók létrehozása eszközök vagy TOPdesk – biztonságos AAD felhasználói fiókok kiépítése által nyújtott API-kat is használhat.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

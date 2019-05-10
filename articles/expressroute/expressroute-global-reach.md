@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 05/06/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9875047ad74dd13d94ce9c498c3cad6153d24ca5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 28cfbc7183628b00c463f1c3a8a954ba4074409b
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725372"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415964"
 ---
 # <a name="expressroute-global-reach"></a>Az ExpressRoute globális elérhetőséggel
 Az ExpressRoute egy magán- és rugalmas módja a helyszíni hálózatok csatlakoztatása a Microsoft Cloud. Számos Microsoft felhőszolgáltatások, például Azure, Office 365 és Dynamics 365 elérését a saját adatközpontban vagy a vállalati hálózathoz. Például előfordulhat, hogy rendelkezik egy fiókirodában, a San franciscóban az ExpressRoute-kapcsolatcsoport szilícium-völgy és a egy másik fiókiroda londoni az ExpressRoute-kapcsolatcsoport város. Mindkét fiókirodák lehet nagy sebességű kapcsolat az USA nyugati régiója, Egyesült Királyság déli régiója és az Azure-erőforrások. Azonban a fiókirodák közvetlenül egymással adatok nem váltanak. Más szóval 10.0.1.0/24 küldhet adatokat, 10.0.3.0/24 és 10.0.4.0/24, de nem 10.0.2.0/24.
@@ -35,11 +35,14 @@ Az ExpressRoute globális elérhetőségű jelenleg támogatott a következő he
 * Ausztrália
 * Kanada
 * Franciaország
+* Németország
 * Hongkong (KKT)
 * Írország
 * Japán
 * Korea
 * Hollandia
+* Szingapúr
+* Svájc
 * Egyesült Királyság
 * Egyesült Államok
 

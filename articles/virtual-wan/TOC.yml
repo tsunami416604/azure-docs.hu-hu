@@ -16,8 +16,8 @@
   items:
     - name: Helyek és partnerek
       href: virtual-wan-locations-partners.md
-    - name: Globális hálózati átviteli architektúra
-      href: virtual-wan-global-transit-architecture.md
+    - name: Globális átviteli hálózati architektúra
+      href: virtual-wan-global-transit-network-architecture.md
     - name: Office 365-vezérlősík a Virtual WAN-ban
       href: virtual-wan-office365-overview.md
 - name: Útmutatók

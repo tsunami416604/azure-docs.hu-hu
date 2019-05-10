@@ -9,22 +9,26 @@ manager: cshankar
 ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/09/2018
+ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: d88bf309d2afeb4e6fdd09ff1317bec3fec2fe75
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5f95ed2103bcd7787c36836641bbe3f7e8d8b263
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695853"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406345"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>A Time Series Insightsban megőrzés konfigurálása
+
 Ez a cikk bemutatja, hogyan konfigurálhatja **adatmegőrzési idő** és **tárolási kapacitása túllépve viselkedés** az Azure Time Series Insightsban.
+
+## <a name="summary"></a>Összegzés
 
 Minden egyes Time Series Insights (TSI) környezet rendelkezik egy beállítás konfigurálása **adatmegőrzési idő**. Az érték 1, 400 napos általi. Az adatok törlődnek a környezet tárolási kapacitás vagy a megőrzési időtartamát (1 – 400) alapján, amelyiket hamarabb.
 
 A TSI-környezeteket egy további beállítása megfelelő-e **tárolási kapacitása túllépve viselkedés**. Ezzel a beállítással a bejövő és a végleges törlés viselkedését szabályozza, ha eléri a maximális kapacitás, a környezetnek. Nincsenek két viselkedésmódok közül választhat:
-- **Régi adatok törlése** (alapértelmezett)  
+
+- **Régi adatok törlése** (alapértelmezett)
 - **Felfüggesztés bejövő forgalom**
 
 Jobb megértése érdekében ezek a beállítások részletes információkért tekintse át a [a Time Series Insights ismertetése megőrzési](time-series-insights-concepts-retention.md).  
@@ -33,17 +37,17 @@ Jobb megértése érdekében ezek a beállítások részletes információkért 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Keresse meg a meglévő Time Series Insights-környezetbe. Válassza ki **összes erőforrás** az Azure portal bal oldali menüben. Válassza ki az Azure Time Series Insights-környezetet.
+1. Keresse meg a meglévő Time Series Insights-környezetbe. Válassza ki **összes erőforrás** az Azure portal bal oldali menüben. Válassza ki az Azure Time Series Insights-környezetet.
 
-3. Alatt a **beállítások** szakaszban kattintson **konfigurálása**.
+1. Alatt a **beállítások** szakaszban kattintson **konfigurálása**.
 
-4. Válassza ki a **adatmegőrzési idő** konfigurálásához a megőrzési ideje a csúszka használatával, vagy adjon meg egy számot a mezőbe.
+1. Válassza ki a **adatmegőrzési idő** konfigurálásához a megőrzési ideje a csúszka használatával, vagy adjon meg egy számot a mezőbe.
 
-5. Megjegyzés: a **kapacitás** beállítást, mivel ez a konfiguráció hatással van a maximális mennyisége adatok események és a teljes tárolási kapacitást az adatok tárolására. 
+1. Megjegyzés: a **kapacitás** beállítást, mivel ez a konfiguráció hatással van a maximális mennyisége adatok események és a teljes tárolási kapacitást az adatok tárolására.
 
-6. Váltás a **tárolási kapacitása túllépve viselkedés** beállítás. Válassza ki **régi adatok törlése** vagy **bejövő szüneteltetése** viselkedését.
+1. Váltás a **tárolási kapacitása túllépve viselkedés** beállítás. Válassza ki **régi adatok törlése** vagy **bejövő szüneteltetése** viselkedését.
 
-7. Válassza ki **mentése** konfigurálása a módosításokat.
+1. Válassza ki **mentése** konfigurálása a módosításokat.
 
 ## <a name="next-steps"></a>További lépések
 

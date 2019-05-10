@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd4c5e1652eb4dbff66591aa4bbe74e51be3e6c0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: adb30cc3af50b71cdc03e41d847bd4d824cffea6
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716719"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236398"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Adathozzáférés-környezetben
 
@@ -34,11 +34,11 @@ Adathozzáférés egy felhasználó rendszerbiztonsági tag az alábbi lépések
 
 1. Válassza ki **az adathozzáférési házirendek**, majd válassza ki **+ Hozzáadás**.
 
-    ![Data-access-one][1]
+    [![Data-access-one](media/data-access/data-access-one.png)](media/data-access/data-access-one.png#lightbox)
 
 1. Válasszon **felhasználó kiválasztása**. Keresse meg a felhasználói név vagy e-mail cím a hozzáadni kívánt felhasználó található. Kattintson a **kiválasztása** a kijelölés megerősítéséhez.
 
-    ![Data-access-two][2]
+    [![Data-access-two](media/data-access/data-access-two.png)](media/data-access/data-access-two.png#lightbox)
 
 1. Válasszon **szerepkör kiválasztása**. Válassza ki a felhasználó a megfelelő hozzáférés-szerepkör:
 
@@ -48,15 +48,15 @@ Adathozzáférés egy felhasználó rendszerbiztonsági tag az alábbi lépések
 
    Válassza ki **OK** szerepkör kiválasztásának megerősítéséhez.
 
-    ![adat-hozzáférési-három][3]
+    [![adat-hozzáférési-három](media/data-access/data-access-three.png)](media/data-access/data-access-three.png#lightbox)
 
 1. Válassza ki **OK** a a **felhasználói szerepkör kiválasztása** lapot.
 
-    ![Data-access-four][4]
+    [![adat-hozzáférési-négy](media/data-access/data-access-four.png)](media/data-access/data-access-four.png#lightbox)
 
 1. Ellenőrizze, hogy a **az adathozzáférési házirendek** lap felsorolja a felhasználók és a szerepkörök minden felhasználó számára.
 
-    ![Data-access-five][5]
+    [![Data-access-five](media/data-access/data-access-five.png)](media/data-access/data-access-five.png#lightbox)
 
 ## <a name="provide-guest-access-from-another-aad-tenant"></a>Adja meg a vendéghozzáférés az AAD-bérlő
 
@@ -66,19 +66,19 @@ Vendég hozzáférést biztosítani más bérlők egy Azure AD-felhasználót a 
 
 1. Válassza ki **az adathozzáférési házirendek**, majd válassza ki **+ meghívása**.
 
-    ![Data-access-six][6]
+    [![Data-access-six](media/data-access/data-access-six.png)](media/data-access/data-access-six.png#lightbox)
 
 1. Adja meg az e-mail-cím a meghívni kívánt felhasználó. Ez az e-mail cím társítva az Azure ad-vel kell lennie. Opcionálisan megadhat egy személyes üzenetet a meghíváshoz.
 
-    ![Data-access-seven][7]
+    [![Data-access-seven](media/data-access/data-access-seven.png)](media/data-access/data-access-seven.png#lightbox)
 
 1. Keresse meg a megerősítő buborékra a képernyőn megjelenő.
 
-    ![Data-access-eight][8]
+    [![Data-access-eight](media/data-access/data-access-eight.png)](media/data-access/data-access-eight.png#lightbox)
 
 1. Válasszon **felhasználó kiválasztása**. Keresse meg a meghívót, keresse meg a hozzáadni kívánt felhasználó vendégfelhasználó e-mail-címét. Kattintson a **kiválasztása** a kijelölés megerősítéséhez.
 
-    ![Data-access-nine][9]
+    [![Data-access-nine](media/data-access/data-access-nine.png)](media/data-access/data-access-nine.png#lightbox)
 
 1. Válasszon **szerepkör kiválasztása**. Válassza ki a megfelelő hozzáférési szerepkört, a Vendég felhasználó:
 
@@ -88,29 +88,29 @@ Vendég hozzáférést biztosítani más bérlők egy Azure AD-felhasználót a 
 
    Válassza ki **OK** szerepkör kiválasztásának megerősítéséhez.
 
-    ![Data-access-ten][10]
+    [![Data-access-ten](media/data-access/data-access-ten.png)](media/data-access/data-access-ten.png#lightbox)
 
 1. Válassza ki **OK** a a **felhasználói szerepkör kiválasztása** lapot.
 
 1. Ellenőrizze, hogy a **az adathozzáférési házirendek** lap felsorolja a Vendég felhasználó és minden vendégfelhasználó szerepköreit.
 
-    ![Data-access-eleven][11]
+    [![Data-access-eleven](media/data-access/data-access-eleven.png)](media/data-access/data-access-eleven.png#lightbox)
 
 1. Most a Vendég felhasználó férhet hozzá a környezethez, az Azure-bérlő, amelyhez meghívót őket található lépéseket kell követnie. Először is, fogadja el a meghívást küldött őket. Ezt a meghívót az 5. lépésben használt e-mail-címre küldött e-mailen keresztül. Kiválasztják **Ismerkedés** fogadására.
 
-    ![Data-access-twelve][12]
+    [![Data-access-twelve](media/data-access/data-access-twelve.png)](media/data-access/data-access-twelve.png#lightbox)
 
 1. Ezután a vendégfelhasználó fogadja el a rendszergazda szervezeti tartozó engedélyeket.
 
-    ![Data-access-thirteen][13]
+    [![Data-access-thirteen](media/data-access/data-access-thirteen.png)](media/data-access/data-access-thirteen.png#lightbox)
 
 1. Miután bejelentkezett a Vendég felhasználó, hogy felkínáljuk számukra, használt e-mail címre, és azok fogadja el a meghívást, insights.azure.com való. Egyszer, akkor jelölje ki a profilképet, az e-mail-cím mellett a képernyő jobb felső sarkában.
 
-    ![Data-access-fourteen][14]
+    [![Data-access-fourteen](media/data-access/data-access-fourteen.png)](media/data-access/data-access-fourteen.png#lightbox)
 
 1. A következő, a Vendég felhasználó által az Azure-bérlőhöz a directory legördülő menüből. Ezt a bérlőt, amelyhez meghívót őket lesz.
 
-    ![Data-access-fifteen][15]
+    [![Data-access-fifteen](media/data-access/data-access-fifteen.png)](media/data-access/data-access-fifteen.png#lightbox)
 
 Után a vendégfelhasználót a bérlőhöz választja, a Time Series Insights-környezet, amelyhez a megadott őket hozzáférés meg. Most már minden olyan funkciót, a megadott őket a szerepkörhöz társított **5. lépés**.
 
@@ -121,20 +121,3 @@ Után a vendégfelhasználót a bérlőhöz választja, a Time Series Insights-k
 * Küldés [az eseményforrás események](./time-series-insights-send-events.md).
 
 * Nézet [a Time Series Insights előzetes verziója Explorer környezetében](./time-series-insights-update-explorer.md).
-
-<!-- Images -->
-[1]: media/data-access/data-access-one.png
-[2]: media/data-access/data-access-two.png
-[3]: media/data-access/data-access-three.png
-[4]: media/data-access/data-access-four.png
-[5]: media/data-access/data-access-five.png
-[6]: media/data-access/data-access-six.png
-[7]: media/data-access/data-access-seven.png
-[8]: media/data-access/data-access-eight.png
-[9]: media/data-access/data-access-nine.png
-[10]: media/data-access/data-access-ten.png
-[11]: media/data-access/data-access-eleven.png
-[12]: media/data-access/data-access-twelve.png
-[13]: media/data-access/data-access-thirteen.png
-[14]: media/data-access/data-access-fourteen.png
-[15]: media/data-access/data-access-fifteen.png

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 209a91453875531e81ddbcead8c1ed2fb309a0a0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 996111fbe23000182dab774ba3bbad0cc6435824
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147449"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412725"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>A távoli figyelési megoldásgyorsító helyileg - IntelliJ telepítése
 
@@ -100,9 +100,9 @@ A következő lépések bemutatják, hogyan az intellij-ben a távoli figyelési
     * WebService (services\iothub-manager)
     * WebService (services\storage-adapter)
 
-Például a következő ábrán látható egy szolgáltatás konfiguráció hozzáadása:
+Tegyük fel, az alábbi képen egy szolgáltatás konfiguráció hozzáadása:
 
-[![Add-Configuration](./media/deploy-locally-intelliJ/run-configurations.png)](./media/deploy-locally-intelliJ/run-configurations.png#lightbox)
+[![Add-Configuration](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
 
 
 #### <a name="create-compound-configuration"></a>Összetett konfiguráció létrehozása
@@ -111,14 +111,11 @@ Például a következő ábrán látható egy szolgáltatás konfiguráció hozz
 1. Adja meg a **neve** és **sbt tevékenységek hozzáadása**
 1. Kattintson a **alkalmaz > Ok** menteni a beállításokat.
 
-Az alábbi képen például minden sbt feladatot ad hozzá egyetlen konfigurációs látható:
+Tegyük fel az alábbi képen látható, minden sbt feladatot ad hozzá egyetlen konfigurációs:
 
+[![Add-All-Services](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
 
-[![Add-All-Services](./media/deploy-locally-intelliJ/all-services.png)](./media/deploy-locally-intelliJ/all-services.png#lightbox)
-
-
-
-1. Kattintson a **futtatása** létrehozását és futtatását a webes szolgáltatások a helyi gépen.
+Kattintson a **futtatása** létrehozását és futtatását a webes szolgáltatások a helyi gépen.
 
 Minden webszolgáltatáshoz nyitja meg egy parancssort, és a webes böngészőablakban. Parancsot a parancssorba láthatja a futó szolgáltatás, és a böngésző ablakához lehetővé teszi, hogy monitorozhatja az állapotát. Ne zárja be a parancs felszólítja vagy weblapokhoz, ez a művelet leállítja a webszolgáltatást.
 

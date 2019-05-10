@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 72505cfc0a86c00882de37c35dff61a12a9c3fbe
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 35fc4e855ef53bd7e667fc8de7146916b4d05acb
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565750"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407079"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-docusign"></a>Oktatóanyag: A DocuSign az Azure Active Directory-integráció
 
@@ -178,7 +178,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés, a DocuSign, hajtsa végre az 
 
     ![Egyszeri bejelentkezés konfigurálása][62]
 
-    i. Válassza ki a mezőt hozzá kívánja rendelni az Azure AD jogcímet. Ebben a példában a **emailaddress** jogcím van leképezve a következő értékkel: **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**. Az alapértelmezett jogcím név, e-mail követelés, majd kattintson az Azure AD-ből **mentése**.
+    i. Válassza ki a mezőt hozzá kívánja rendelni az Azure AD jogcímet. Ebben a példában a **emailaddress** jogcím van leképezve a következő értékkel: **https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**. Az alapértelmezett jogcím név, e-mail követelés, majd kattintson az Azure AD-ből **mentése**.
 
     ![Egyszeri bejelentkezés konfigurálása][57]
 
@@ -260,7 +260,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó a Docusignban jön létr
 >[!Note]
 >Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [DocuSign-ügyfélszolgálathoz](https://support.docusign.com/).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

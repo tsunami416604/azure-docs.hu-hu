@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/05/2019
+ms.date: 05/06/2019
 ms.author: helohr
-ms.openlocfilehash: e550111e04ea77e35a4554bcc6e3bffaf4d543d2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 165980da2b78e7514ea1938bdbeb6fda82dd123d
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924959"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236660"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Gazdagépcsoport létrehozása a PowerShell-lel
 
@@ -100,17 +100,6 @@ Regisztrálja a virtuális asztali Windows-ügynökök, hajtsa végre a művelet
    - Töltse le a [Windows virtuális asztali ügynök Rendszerbetöltőt](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH).
    - Kattintson a jobb gombbal a letöltött telepítőt, jelölje be **tulajdonságok**válassza **feloldása**, majd **OK**. Ez lehetővé teszi a rendszer, hogy bízzon meg a telepítőt.
    - Futtassa a telepítőt.
-4. Telepítse, vagy a Windows Virtual Desktop egymás mellett verem aktiválása. A lépések eltérőek lesznek a virtuális gép használja az operációs rendszer verziójától függően.
-   - Ha a virtuális gép operációs rendszer Windows Server 2016-ra:
-     - Töltse le a [Windows virtuális asztal egymás mellett stack](https://go.microsoft.com/fwlink/?linkid=2084270).
-     - Kattintson a jobb gombbal a letöltött telepítőt, jelölje be **tulajdonságok**válassza **feloldása**, majd **OK**. Ez lehetővé teszi a rendszer, hogy bízzon meg a telepítőt.
-     - Futtassa a telepítőt.
-   - Ha a virtuális gép operációs rendszer Windows 10-es 1809 vagy újabb vagy Windows Server 2019 vagy újabb:
-     - Töltse le a [parancsfájl](https://go.microsoft.com/fwlink/?linkid=2084268) a párhuzamos verem aktiválása.
-     - Kattintson a jobb gombbal a letöltött szkript, jelölje be **tulajdonságok**válassza **feloldása**, majd **OK**. Ez lehetővé teszi a rendszert, hogy bízzon meg a parancsfájl.
-     - Az a **Start** menüben keresse meg a Windows PowerShell ISE-ben, kattintson a jobb gombbal, majd válassza ki **Futtatás rendszergazdaként**.
-     - Válassza ki **fájl**, majd **megnyitása...** , majd keresse meg a PowerShell-parancsprogramot a letöltött fájlokat, és nyissa meg.
-     - Válassza ki a zöld lejátszás gombra a szkript futtatásához.
 
 >[!IMPORTANT]
 >Védelme érdekében az Azure-ban, a Windows virtuális asztali környezetben ajánlott ne nyissa meg a 3389-es porton bejövő a virtuális gépeken. Windows virtuális asztal nyílt bejövő port felhasználók számára hozzáférést a gazdagép-készlet virtuális gépek a 3389-es nem igényel. Ha a 3389-es port hibaelhárítás céljából kell megnyitni, azt javasoljuk, használja [just-in-time VM access](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).

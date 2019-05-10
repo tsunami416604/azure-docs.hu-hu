@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2018
 ms.author: rkarlin
-ms.openlocfilehash: 28a9b90e23d0d182197450e6449b8d3296fe99d6
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 582912160c8ed514401be3522e52dcc6eb45d263
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111389"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235758"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben
 Ez a dokumentum segít az Azure Security Center biztonsági riasztások kezelésére és a riasztásokra való válaszadásra szolgáló funkcióinak használatában.
@@ -67,16 +67,16 @@ Az oldal alsó részén találhatók az egyes riasztások részletei. Rendezés�
 
 ### <a name="alert-severity"></a>Riasztás fontossága
 
-> [!NOTE]
-> Riasztás súlyossága eltérően megjelenik a portálon és a REST API-t, a különbségeket az alábbi listán jeleztük.
-
 -   **Magas**: Nincs nagy valószínűséggel, hogy az erőforrás biztonsága sérül. Meg kell megvizsgáljuk azt azonnal. A Security Center megbízható rendelkezik, mindkét az illető ártó szándékkal és a megállapításokat, a riasztás kiadására szolgál. Ha például egy riasztást, amely észleli az ismert kártékony eszköz például a Mimikatz, a hitelesítő adatok ellopását használt gyakori eszköz végrehajtása. 
--   **Közepes (alacsony, a REST API-ban)**: Ennek oka valószínűleg egy gyanús tevékenységet, amelyek azt jelzik, hogy egy erőforrás biztonsága sérül.
+-   **Közepes**: Ennek oka valószínűleg egy gyanús tevékenységet, amelyek azt jelzik, hogy egy erőforrás biztonsága sérül.
 A Security Center bizalom elemzési vagy keresése a közepes és az illető ártó szándékkal magabiztosan közepes és nagy. Ezek általában lenne, machine learning vagy alapú anomáliadetektálás észleléseket. Ha például egy bejelentkezési kísérlet egy szokatlan helyről.
--   **Alacsony (információk a REST API-ban)**: Ez lehet egy ártalmatlan pozitív és a egy letiltott támadás. 
+-   **Alacsony**: Ez lehet egy ártalmatlan pozitív és a egy letiltott támadás. 
     - A Security Center nem benne, elég, hogy az célja a rosszindulatú és lehet, hogy a tevékenység álcázva. Például a napló törlése egy műveletet, amely akkor fordulhat elő, amikor egy támadó megpróbálja elrejteni a nyomait, de sok esetben egy szokásos műveletet végzi a rendszergazdák.
     - A Security Center nem általában meg, ha letiltott támadásokkal szemben, kivéve, ha egy érdekes eset, javasoljuk, hogy megvizsgáljuk. 
--   **Tájékoztató (csendes mód a REST API-ban)**: Csak akkor jelenik meg tájékoztatási szintű riasztások, amikor egyetlen biztonsági incidensben részletezi, vagy ha a REST API használata egy adott riasztás. Az incidens általában épül fel egy ezek közül néhány jelenhet meg a saját kell csak tájékoztató jellegű, de az egyéb riasztásokat kontextusában lehet közelebbről összefügg riasztások száma. 
+-   **Tájékoztató**: Csak akkor jelenik meg tájékoztatási szintű riasztások, amikor egyetlen biztonsági incidensben részletezi, vagy ha a REST API használata egy adott riasztás. Az incidens általában épül fel egy ezek közül néhány jelenhet meg a saját kell csak tájékoztató jellegű, de az egyéb riasztásokat kontextusában lehet közelebbről összefügg riasztások száma.  
+
+> [!NOTE]
+> Ha használja a **2015-06-01-preview** API-verzió van különbség, mely a riasztás súlyossági típusok alkalmazzák, mely esetben a fenti listában, majd.  
 
 ### <a name="filtering-alerts"></a>A riasztások szűrése
 A riasztások dátum, állapot és súlyosság alapján szűrhetők. A riasztások szűrése olyan esetekben lehet hasznos, amikor szűkíteni kell a megjelenített biztonsági riasztások körét. Például olyankor, ha az elmúlt 24 órában történt biztonsági riasztásokat szeretné kezelni, mert egy, a rendszerbe történő lehetséges behatolást vizsgál.

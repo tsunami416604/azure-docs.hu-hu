@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 414200462d3575aa576b5ef2268a3ac0b01063ba
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 73d97b45217da4bbf4b8c0e857b817911484f29c
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190763"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231093"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>A Microsoft identity platform (2.0-s verzió) – áttekintés
 
@@ -43,7 +43,7 @@ A Microsoft identity platform révén kód megírását, és minden felhasznál�
 
 ## <a name="getting-started"></a>Első lépések
 
-Identitás használatának nehéz nem rendelkezik. Válassza ki a forgatókönyv érvényes Önre – minden egyes forgatókönyv elérési útja a gyors üzembe helyezés és áttekintő oldala, percek alatt ütembe helyezheti az első rendelkezik:
+Nem kell, hogy az identitások használata nehéz legyen. Válassza ki a forgatókönyv érvényes Önre – minden egyes forgatókönyv elérési útja a gyors üzembe helyezés és áttekintő oldala, percek alatt ütembe helyezheti az első rendelkezik:
 
 - [Egyoldalas alkalmazás készítése](scenario-spa-overview.md)
 - [-Webalkalmazás létrehozása, amely képes bejelentkeztetni a felhasználókat](scenario-web-app-sign-user-overview.md)
@@ -56,7 +56,7 @@ Identitás használatának nehéz nem rendelkezik. Válassza ki a forgatókönyv
 
 Az alábbi táblázat ismerteti az általános hitelesítési forgatókönyvek, – használja hivatkozásként van listázva, amikor a Microsoft identity platform integrálják az alkalmazást.
 
-[![Alkalmazás-forgatókönyvek a Microsoft identity platform](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.png#lightbox)
+[![Alkalmazás-forgatókönyvek a Microsoft identity platform](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 
@@ -77,6 +77,6 @@ Amikor készen áll, az alkalmazás indításához egy **éles környezetben**, 
 - Engedélyezése [proxyk és testre szabhatja a HTTP-ügyfelek](msal-net-provide-httpclient.md).
 - Az integráció teszteléséhez a következő a [a Microsoft identity platform integrációs ellenőrzőlista](identity-platform-integration-checklist.md).
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
 
 Ha olyan ügyfelek által használt alkalmazás, amely a közösségi és a helyi identitások bejelentkezik tervezése során, vessen egy pillantást a [áttekintése az Azure AD B2C-vel](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).

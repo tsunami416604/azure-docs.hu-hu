@@ -2,19 +2,19 @@
 title: Rövid útmutató – beállítása és lekérése egy Node-webalkalmazást az Azure Key vault titkos kulcs |} A Microsoft Docs
 description: Ezt a gyorsútmutatót követve állítsa be, és egy Node-webalkalmazást az Azure Key Vault titkos kulcs lekérése
 services: key-vault
-author: mbaldwin
+author: msmbaldwin
 manager: sumedhb
 ms.service: key-vault
 ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: a9b92b691974eb9a14feaf97d760aa056ad21783
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5e8c29e033d895e24047754e686420fb4db86142
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696044"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236639"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Gyors útmutató: Állítsa be, és a egy Node-webalkalmazást az Azure Key Vault titkos kulcs lekérése 
 
@@ -97,7 +97,7 @@ Ez a parancs megjeleníti a titkos információkat, beleértve az URI-t is. A fe
 
 ## <a name="clone-the-repo"></a>Az adattár klónozása
 
-A forrás szerkesztéséhez szükséges helyi másolat létrehozásához klónozza az adattárat. Futtassa az alábbi parancsot:
+A forrás szerkesztéséhez szükséges helyi másolat létrehozásához klónozza az adattárat. Futtassa a következő parancsot:
 
 ```
 git clone https://github.com/Azure-Samples/key-vault-node-quickstart.git
@@ -197,4 +197,4 @@ Ezt követően Ha `https://<app_name>.azurewebsites.net`, láthatja, hogy a titk
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az Azure SDK a Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
+> [Node-hoz készült Azure SDK](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)

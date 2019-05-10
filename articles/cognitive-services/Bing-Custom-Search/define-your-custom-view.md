@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: c4cb93e39a67e13646a339af6ac999a8fd96b383
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 83ae5f923130ecb46b7b94cd8112ee45ae13e3f4
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129640"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236261"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>A Bing egyéni keresés felhasználói beállítása
 
@@ -27,7 +27,7 @@ Ha a webes webterületek definiálása, használja a következő:
 
 | Szelet neve | Leírás                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domain     | Tartomány szelet magában foglalja az internetes tartományban található összes tartalmat. Például: `www.microsoft.com`. Felsorolhatja `www.` hatására a Bing, a tartomány altartományokra is kereshet. Például, ha a megadott `microsoft.com`, a Bing is eredményét adja vissza `support.microsoft.com` vagy `technet.microsoft.com`. |
+| Tartomány     | Tartomány szelet magában foglalja az internetes tartományban található összes tartalmat. Például: `www.microsoft.com`. Felsorolhatja `www.` hatására a Bing, a tartomány altartományokra is kereshet. Például, ha a megadott `microsoft.com`, a Bing is eredményét adja vissza `support.microsoft.com` vagy `technet.microsoft.com`. |
 | Subpage    | Melléklap szelet magában foglalja a Melléklap és elérési utak alatta található összes tartalmat. Legfeljebb két mindegyik lapot tünteti előfordulhat, hogy adja meg az elérési utat. Például: `www.microsoft.com/en-us/windows/`                                                                                                                       |
 | Weblap    | A weblap szelet belefoglalhatja egyéni keresés csak weblapról. Azt igény szerint megadhatja, hogy mindegyik lapot tünteti tartalmazza.                                                                                                                                                                                  |
 
@@ -40,7 +40,7 @@ Az egyéni keresőpéldányok létrehozásakor megadhatja a webes szeleteit: tar
 
 Ha tudja, hogy az egyéni keresőpéldányok szerepeltetni szeretne a szeletek, vegye fel őket a példány **aktív** listája. 
 
-Ha nem biztos abban, hogy mely szeletek tartalmazza, elküldheti a Bing keresési lekérdezések a **előzetes** ablaktáblán, és válassza ki a kívánt szeleteket. Ehhez tegye a következőket: 
+Ha nem biztos abban, hogy mely szeletek tartalmazza, elküldheti a Bing keresési lekérdezések a **előzetes** ablaktáblán, és válassza ki a kívánt szeleteket. Ehhez tegye az alábbiakat: 
 
 1. az előnézeti ablaktáblában láthatja a legördülő listából válassza ki a "Bing", és adja meg a keresési lekérdezést
 
@@ -118,9 +118,9 @@ A portálon is lehetővé teszi használatával adott keresési kifejezéseket, 
 
 Két módon is rögzíthet egy weblap, a lista tetejére:
 
-* Az a **Pinned** lapra, adja meg a felső, és a megfelelő lekérdezés rögzítése a weblap URL-CÍMÉT.
+* Az a **Pinned** lapra, adja meg a felső, és a megfelelő lekérdezés rögzítése a weblap URL-CÍMÉT.
 
-* Az a **előzetes** panelen adjon meg egy keresési lekérdezést, és kattintson a Keresés gombra. Keresse meg a PIN-kód, a lekérdezés, és kattintson a kívánt weblap **felső PIN-kód**. a weblap és a lekérdezés hozzáadódik a **Pinned** listája.
+* Az a **előzetes** panelen adjon meg egy keresési lekérdezést, és kattintson a Keresés gombra. Keresse meg a PIN-kód, a lekérdezés, és kattintson a kívánt weblap **felső PIN-kód**. a weblap és a lekérdezés hozzáadódik a **Pinned** listája.
 
 ### <a name="specify-the-pins-match-condition"></a>Adja meg a PIN-kód egyezési feltételei
 
@@ -133,7 +133,7 @@ Alapértelmezés szerint weblapok csak rögzítve tetején a keresési eredmény
 |---------------|----------------------------------------------------------------------------------|
 | Kezdete | A PIN-kód egyezés, ha a lekérdezési karakterlánc a felhasználó a PIN-kód lekérdezési karakterlánccal kezdődik |
 | Vége   | A PIN-kód egyezés esetén a felhasználói lekérdezési karakterláncot a PIN-kód lekérdezési karakterlánccal végződik.  |
-| Contains    | A PIN-kód egyezés esetén a felhasználói lekérdezési karakterláncot a PIN-kód lekérdezési karakterláncot tartalmaz.   |
+| Tartalmazza    | A PIN-kód egyezés esetén a felhasználói lekérdezési karakterláncot a PIN-kód lekérdezési karakterláncot tartalmaz.   |
 
 
 A PIN-kódot az egyezési feltétellel módosításához kattintson a Szerkesztés ikonra a PIN-kódot. Az a **lekérdezés az egyezési feltétellel** oszlopot, kattintson a legördülő listára, és válassza ki az új feltétel használatához. Ezután kattintson a Mentés ikonra a módosítás mentéséhez.

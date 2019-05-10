@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: bf5126360140580282ebc1cb2bf73e1afa4d8829
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 565bcfa6c2f8a3da2ac16df0016b5adc54e27380
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920528"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407593"
 ---
 # <a name="api-management-transformation-policies"></a>Az API Management átalakítási szabályzatok
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -70,13 +70,13 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Szükséges|
+|Name (Név)|Leírás|Kötelező|
 |----------|-----------------|--------------|
 |json-to-xml|A gyökérelem.|Igen|
 
 ### <a name="attributes"></a>Attribútumok
 
-|Name (Név)|Leírás|Szükséges|Alapértelmezett|
+|Name (Név)|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
 |alkalmaz|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> -mindig - mindig érvényes átalakítás.<br />csak akkor, ha a válasz Content-Type fejléce azt jelzi, hogy jelenléte JSON - tartalom típusa, json - convert.|Igen|–|
 |consider-accept-header|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> átalakítás – igaz - vonatkoznak, ha JSON Accept fejléc kérelem van szükség.<br />-false - mindig érvényes átalakítás.|Nem|true|
@@ -114,13 +114,13 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Szükséges|
+|Name (Név)|Leírás|Kötelező|
 |----------|-----------------|--------------|
 |xml-to-json|A gyökérelem.|Igen|
 
 ### <a name="attributes"></a>Attribútumok
 
-|Name (Név)|Leírás|Szükséges|Alapértelmezett|
+|Name (Név)|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
 |típusa|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> -javascript-barát – az átalakított JSON a JavaScript-fejlesztőinek rövid űrlapot befogadó.<br />a konvertált JSON - közvetlen – jeleníti meg az eredeti XML-dokumentum szerkezete.|Igen|–|
 |alkalmaz|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> -mindig - mindig konvertálni.<br />csak akkor, ha a válasz Content-Type fejléce azt jelzi, hogy jelenléte XML - tartalom típusa, xml - convert.|Igen|–|
@@ -150,15 +150,15 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Szükséges|
+|Name (Név)|Leírás|Kötelező|
 |----------|-----------------|--------------|
 |find-and-replace|A gyökérelem.|Igen|
 
 ### <a name="attributes"></a>Attribútumok
 
-|Name (Név)|Leírás|Szükséges|Alapértelmezett|
+|Name (Név)|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|forrás:|A keresendő karakterlánc.|Igen|–|
+|from|A keresendő karakterlánc.|Igen|–|
 |erre:|A behelyettesítendő karakterlánc. Adja meg a nulla hosszúságú helyettesítő karakterláncok eltávolítása a keresési karakterláncot.|Igen|–|
 
 ### <a name="usage"></a>Használat
@@ -188,7 +188,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Szükséges|
+|Name (Név)|Leírás|Kötelező|
 |----------|-----------------|--------------|
 |redirect-content-urls|A gyökérelem.|Igen|
 
@@ -261,13 +261,13 @@ Ebben a példában a házirend továbbítja a kérést egy service fabric hátt�
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Szükséges|
+|Name (Név)|Leírás|Kötelező|
 |----------|-----------------|--------------|
 |háttér-szolgáltatás beállítása|A gyökérelem.|Igen|
 
 ### <a name="attributes"></a>Attribútumok
 
-|Name (Név)|Leírás|Szükséges|Alapértelmezett|
+|Name (Név)|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
 |alap URL-címet|Új háttérrendszer szolgáltatás kiindulási URL-címe.|Egyik `base-url` vagy `backend-id` jelen kell lennie.|–|
 |backend-id|A háttérrendszer irányíthatja a azonosítója. (Háttérrendszer entitások keresztül felügyelt [API](https://docs.microsoft.com/rest/api/apimanagement/backend) és [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|Egyik `base-url` vagy `backend-id` jelen kell lennie.|–|
@@ -375,7 +375,7 @@ A `set-body` házirend használatára konfigurálható a [Liquid](https://shopif
 #### <a name="convert-json-to-soap-using-a-liquid-template"></a>JSON átalakítása SOAP Liquid-sablon használatával
 ```xml
 <set-body template="liquid">
-    <soap:Envelope xmlns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Envelope xmlns="http://tempuri.org/" xmlns:soap="https://schemas.xmlsoap.org/soap/envelope/">
         <soap:Body>
             <GetOpenOrders>
                 <cust>{{body.getOpenOrders.cust}}</cust>
@@ -397,13 +397,13 @@ A `set-body` házirend használatára konfigurálható a [Liquid](https://shopif
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Szükséges|
+|Name (Név)|Leírás|Kötelező|
 |----------|-----------------|--------------|
 |törzs beállítása|A gyökérelem. A szöveg vagy egy kifejezés, amely visszaadja a szervezet tartalmazza.|Igen|
 
 ### <a name="properties"></a>Tulajdonságok
 
-|Name (Név)|Leírás|Szükséges|Alapértelmezett|
+|Name (Név)|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
 |sablon|Használja a sablonalapú mód, amely a készlet törzs szabályzat módosítása. Jelenleg az egyetlen támogatott érték van:<br /><br />-liquid - törzs-szabály beállítása fogja használni a liquid sablonalapú motor |Nem|folyékony|
 
@@ -504,14 +504,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Szükséges|
+|Name (Név)|Leírás|Kötelező|
 |----------|-----------------|--------------|
 |set-fejléc|A gyökérelem.|Igen|
 |value|Adja meg a fejléc kell beállítani. Az ezzel a névvel több fejlécek hozzá további `value` elemeket.|Igen|
 
 ### <a name="properties"></a>Tulajdonságok
 
-|Name (Név)|Leírás|Szükséges|Alapértelmezett|
+|Name (Név)|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
 |létezik-művelet|Itt adható meg, milyen műveleteket, ha a fejléc már meg van adva. Ez az attribútum a következő értékek egyikét kell rendelkeznie.<br /><br /> -felülbírálás - lecseréli a meglévő fejléc értékét.<br />-skip – nem helyettesíti a meglévő fejléc értéke.<br />-hozzáfűzése - az érték hozzáfűzi a meglévő fejléc értéke.<br />a kérelem - delete - eltávolítja a fejléc.<br /><br /> Ha a beállítása `override` felvétel ugyanazzal a névvel több bejegyzést eredményez az összes bejegyzés (amely lesz látható többször) megfelelően beállítása fejléc; csak a felsorolt értékek jelennek meg az eredményt.|Nem|felülbírálás|
 |név|Kell beállítani a fejléc nevét adja meg.|Igen|–|
@@ -564,14 +564,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Szükséges|
+|Name (Név)|Leírás|Kötelező|
 |----------|-----------------|--------------|
 |set-query-parameter|A gyökérelem.|Igen|
 |value|Adja meg a lekérdezési paraméter kell beállítani. Az ezzel a névvel több lekérdezési paraméterek hozzá további `value` elemeket.|Igen|
 
 ### <a name="properties"></a>Tulajdonságok
 
-|Name (Név)|Leírás|Szükséges|Alapértelmezett|
+|Name (Név)|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
 |létezik-művelet|Itt adható meg, milyen műveleteket, ha a lekérdezési paraméter már meg van adva. Ez az attribútum a következő értékek egyikét kell rendelkeznie.<br /><br /> -felülbírálás - lecseréli a meglévő paraméter értékét.<br />-skip – nem helyettesíti a meglévő lekérdezési paraméter értéke.<br />-hozzáfűzése - az érték hozzáfűzése a meglévő lekérdezési paraméter értéke.<br />-delete - eltávolítja a lekérdezési paraméter a kérelemből.<br /><br /> Ha a beállítása `override` felvétel ugyanazzal a névvel több bejegyzést eredményez a lekérdezési paramétert (amely lesz látható többször) összes bejegyzés megfelelően beállítása; csak a felsorolt értékek jelennek meg az eredményt.|Nem|felülbírálás|
 |név|Itt adható meg kell beállítani a lekérdezési paraméter neve.|Igen|–|
@@ -643,13 +643,13 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Szükséges|
+|Name (Név)|Leírás|Kötelező|
 |----------|-----------------|--------------|
 |újraírási – uri|A gyökérelem.|Igen|
 
 ### <a name="attributes"></a>Attribútumok
 
-|Attribútum|Leírás|Szükséges|Alapértelmezett|
+|Attribútum|Leírás|Kötelező|Alapértelmezett|
 |---------------|-----------------|--------------|-------------|
 |sablon|A tényleges web service URL-CÍMÉT bármely lekérdezési karakterlánc paraméterei. Kifejezések használata esetén az egész érték kifejezésnek kell lennie.|Igen|–|
 |Másolás páratlan paraméterei|Itt adhatja meg, e lekérdezés a bejövő kérelem nem található meg az eredeti URL-sablon a paramétereket az URL-címhez írja át a sablon által definiált|Nem|true|
@@ -712,7 +712,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Szükséges|
+|Name (Név)|Leírás|Kötelező|
 |----------|-----------------|--------------|
 |xsl-transform|A gyökérelem.|Igen|
 |paraméter|Az átalakítás használt változókat határozhat meg segítségével|Nem|

@@ -9,16 +9,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: shlo
-ms.openlocfilehash: 454899cd7cc592b87f96233d73ca8c4ed6ac333f
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: a825982532047f6e311c5508394df243310f02ab
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935767"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233927"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>A Data Factory díjszabása a példákon keresztül ismertetése
 
 Ez a cikk ismerteti, és bemutatja az Azure Data Factory díjszabási modell részletes példák.
+
+> [!NOTE]
+> Az alábbi példákban használt díjak elméleti és jelenti a tényleges díjszabás nem tartozhat.
 
 ## <a name="copy-data-from-aws-s3-to-azure-blob-storage-hourly"></a>Adatok másolása az AWS S3-ból az Azure Blob storage-óránként
 
@@ -122,13 +125,13 @@ Ehhez a forgatókönyvhöz, létrehoz egy folyamatot a következő elemeket kell
   - Folyamat-tevékenység = $0.00003 (Prorated végrehajtási idő 1 perce. az Azure integrációs modul$ 0,002/óra)
   - Külső a folyamatok tevékenységeit = $0.000041 (Prorated végrehajtási idő 10 percig. az Azure integrációs modul$ 0.00025/óra)
 
-## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Leképezési adatok folyamat hibakeresési használja a normál munkanap
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday-preview-pricing"></a>A leképezési adatok folyamat hibakeresési az egy normál workday (előzetes verzió díjszabása)
 
 Egy adat-mérnök, mint Ön felelős tervezése, létrehozása és tesztelése a leképezési adatfolyamok minden nap. Jelentkezzen be az ADF felhasználói felületén a reggel, és az adatok elkezdenek beérkezni a hibakeresési mód engedélyezéséhez. Az alapértelmezett élettartam hibakeresési munkamenetek érték 60 perc. Hogy működik 10 óra, a nap folyamán, így a hibakeresési munkamenet soha nem jár le. Így a díj az adott napra vonatkozóan a következő lesz:
 
 **10 (óra) x 8 (mag) x 0.112 $ $8.96 =**
 
-## <a name="transform-data-in-blob-store-with-mapping-data-flows"></a>Adatok átalakítása a blobtár az adatfolyamok leképezése
+## <a name="transform-data-in-blob-store-with-mapping-data-flows-preview-pricing"></a>Adatok átalakítása a blobtár az adatfolyamok (előzetes verzió díjszabása) leképezése
 
 Ebben a forgatókönyvben a kívánt adatok átalakítása a Blob Store vizuálisan az ADF-leképezés adatfolyamok egy óránkénti ütemezés szerint.
 

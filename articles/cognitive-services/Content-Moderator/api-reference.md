@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: reference
-ms.date: 06/25/2017
+ms.date: 04/30/2019
 ms.author: sajagtap
-ms.openlocfilehash: 320638c958799bbf7fea73880fd3e27b6d598d23
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 19144ae40e67127b656cedd61199b732b1c05e86
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61269525"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236607"
 ---
 # <a name="content-moderator-api-reference"></a>Content Moderator API-referencia
 
-A következő módokon Ismerkedés az Azure Content Moderator API-kat: (Lásd még: [hitelesítő adatok kezelése](review-tool-user-guide/credentials.md).)
+A következő módokon Ismerkedés az Azure Content Moderator API-kat:
 
-- Az Azure Portalon [fizessen elő a Content Moderator API-k](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator).
-- Regisztráljon a [Content Moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/). Lásd: [próbálja ki a Content Moderator, a weben](quick-start.md).
+- Az Azure Portalon [fizessen elő a Content Moderator API](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator).
+- Lásd: [próbálja ki a Content Moderator, a weben](quick-start.md) regisztrálni a [Content Moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/).
 
 ## <a name="moderation-apis"></a>Moderálási API-k
 
@@ -35,7 +35,7 @@ A következő Content Moderator API-k segítségével a jóváhagyás utáni mun
 | **Videomoderálási API**<br /><br />Videók vizsgálata, valamint észlelheti a potenciális felnőtt és szexuális tartalom. <br /><br />Ezen információk használatával közzététele, elvetése, vagy tekintse át a tartalmat a jóváhagyás utáni munkafolyamat.<br /><br /> | [Áttekintő videó moderálási API](video-moderation-api.md "videó moderálási API – áttekintés")   |
 | **Lista felügyeleti API**<br /><br />Létrehozhat és kezelhet, képek és szöveg kizárási és belefoglalási egyedi listákkal. Ha engedélyezve van, a **kép – megfelelő** és **szöveg – a képernyő** operations tegye, hogy a beküldött tartalmat összeveti az egyedi listákkal intelligens megfelelő. <br /><br />A hatékonyság kihagyhatja a machine learning-alapú moderálás lépés.<br /><br /> | [Felügyeleti API-referencia listában](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f675 "lista felügyeleti API-referencia")   |
 
-## <a name="review-api"></a>Felülvizsgálati API
+## <a name="review-apis"></a>API-k áttekintése
 
 A felülvizsgálati API-t a következő összetevőket tartalmazza:
 
@@ -44,5 +44,3 @@ A felülvizsgálati API-t a következő összetevőket tartalmazza:
 | **Feladatok**<br /><br /> Vizsgálat és felülvizsgálati jóváhagyás munkafolyamatokat a lemezkép és a szöveges tartalom kezdeményezni. Moderálás feladat megvizsgálja a tartalmat a lemezkép moderálási API-t és a moderálási API használatával. Moderálás feladatok használata a definiált, és az alapértelmezett létrehozni a felülvizsgálatok munkafolyamatokat. <br /><br />Miután egy emberi moderátor tekintse át az automatikusan hozzárendelt címkék és előrejelzési adatokat, és a tartalom-jóváhagyás döntési elküldött, a felülvizsgálati API az API-végpont összes információt küldi el.<br /><br /> | [Feladat-hivatkozás](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5 "feladat-referencia")   |
 | **Értékelések**<br /><br />Használja a vizsgálóeszközt közvetlenül a lemezkép létrehozása vagy emberi moderátorok felülvizsgálatai szöveg.<br /><br /> Miután egy emberi moderátor tekintse át az automatikusan hozzárendelt címkék és előrejelzési adatokat, és a tartalom-jóváhagyás döntési elküldött, a felülvizsgálati API az API-végpont összes információt küldi el.<br /><br /> | [Tekintse át a hivatkozási](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4 "tekintse át a hivatkozást")   |
 | **Munkafolyamatok**<br /><br />Hozzon létre, frissíthet és részletes információkat az egyéni munkafolyamatokat, amely a csapat hoz létre. A felülvizsgálati eszköz használatával meghatározhatja a munkafolyamatokat. <br /> <br />A munkafolyamatok általában használja a Content Moderator, de bizonyos más API-k érhetők el beépített összekötőkként, a felülvizsgálati eszközben is használhatja.<br /><br /> | [A munkafolyamat referencia](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59 "munkafolyamat-referencia")   |
-
-

@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f259d8438b7500d5d007bbb972f859e187ccd08a
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 9f1e9a48b114d328e0405a2f03764df4ce29b166
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65081030"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407062"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Az MSAL.NET tokengyorsítótárral szerializáció
 Után egy [jogkivonat igényelve](msal-acquire-cache-tokens.md), a Microsoft hitelesítési tár (MSAL) szerint vannak gyorsítótárazva.  Alkalmazáskód egy token beszerzése a gyorsítótárból egy token beszerzése a más módon előtt próbálja meg.  Ez a cikk ismerteti az alapértelmezett és egyéni szerializálás a token gyorsítótár az MSAL.NET.
@@ -290,5 +290,5 @@ A következő példák bemutatják, tokengyorsítótárral szerializálási.
 
 | Sample | Platform | Leírás|
 | ------ | -------- | ----------- |
-|[active-directory-dotnet-desktop-msgraph-v2](http://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | (WPF) asztali | A Microsoft Graph API hívása Windows asztali .NET-(WPF-) alkalmazás. ![Topológia](media/msal-net-token-cache-serialization/topology.png)|
+|[active-directory-dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | (WPF) asztali | A Microsoft Graph API hívása Windows asztali .NET-(WPF-) alkalmazás. ![Topológia](media/msal-net-token-cache-serialization/topology.png)|
 |[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Asztal (konzol) | A Visual Studio megoldáscsomag ábrázoló (használatával ADAL.NET) Azure AD-1.0-s verziójú alkalmazások áttelepítése az Azure AD v2.0-alkalmazások, más néven összevont alkalmazások (az MSAL.NET használatával), különösen [Token gyorsítótár áttelepítése](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|

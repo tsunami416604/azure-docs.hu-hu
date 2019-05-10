@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 8c3ef3f115d37400eb72fdaca5df4f326382df5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a8da60850dae600129e0bc60fb574bfa4d3972db
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60520054"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415898"
 ---
 # <a name="get-started-with-azure-monitor-log-queries"></a>Az Azure Monitor log-lekérdezések használatának első lépései
 
@@ -138,7 +138,7 @@ SecurityEvent
 ### <a name="time-picker"></a>Időpontválasztó
 A időválasztó mellett a Futtatás gombra, és azt jelzi, hogy csak az elmúlt 24 órában a rekordok lekérdezésekor. Ez az összes lekérdezés alkalmazott alapértelmezett időintervallumát. Az elmúlt egy órában csak a rekordok lekéréséhez válassza _utolsó óra_ , és futtassa újra a lekérdezést.
 
-![Időválasztó](media/get-started-queries/timepicker.png)
+![Időpontválasztó](media/get-started-queries/timepicker.png)
 
 
 ### <a name="time-filter-in-query"></a>A lekérdezés Időszűrő
@@ -184,7 +184,7 @@ SecurityEvent
 ```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
-| extend localtime = TimeGenerated-8h
+| extend localtime = TimeGenerated -8h
 ```
 
 ## <a name="summarize-aggregate-groups-of-rows"></a>Összefoglalásképpen: összesített sorcsoportra
@@ -224,7 +224,7 @@ Perf
 ### <a name="summarize-by-a-time-column"></a>Összegzés szempontja-idő típusú oszlop
 Eredmények csoportosítása is alapulhat-idő típusú oszlop, vagy egy másik folyamatos értéket. Egyszerűen összefoglalójához `by TimeGenerated` azonban lenne csoportok létrehozása a minden egyetlen ezredmásodperces az időtartományban, hiszen ezek egyedi értékeket. 
 
-Folyamatos értékek alapján csoportok létrehozásához, célszerű a tartomány megszüntetése használatával kezelhető egységekbe **bin**. A következő lekérdezés elemzi *Teljesítményoptimalizált* rekordokat, amelyek a szabad memória (*rendelkezésre álló memória*) egy adott számítógépen. Mindig kiszámítja az átlagos érték minden egyes időtartam Ha 1 óra, az elmúlt 7 napban:
+Folyamatos értékek alapján csoportok létrehozásához, célszerű a tartomány megszüntetése használatával kezelhető egységekbe **bin**. A következő lekérdezés elemzi *Teljesítményoptimalizált* rekordokat, amelyek a szabad memória (*rendelkezésre álló memória*) egy adott számítógépen. Minden 1 órás időszakban átlagos értékét számítja ki az elmúlt 7 napban:
 
 ```Kusto
 Perf 

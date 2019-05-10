@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 80c98bea08018780ba1d439e369ab42343d1e615
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 83a1026cd9426e1b1651e0ec4f556b8babccb107
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60822632"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236242"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – Big data streamelési platform és eseménybetöltő szolgáltatás
 Az Azure Event Hubs szolgáltatás a big Data típusú adatstreamelési platform és eseményfeldolgozó szolgáltatás. Képes fogadni és feldolgozni másodpercenként több millió. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók.
@@ -86,7 +86,8 @@ Event Hubs használatának első lépései, tekintse meg a **események küldés
 - [Node.js](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C (csak küldése)](event-hubs-c-getstarted-send.md)
-- [Az Apache Storm (csak reecive)](event-hubs-storm-getstarted-receive.md)
+- [Az Apache Storm (csak fogadás)](event-hubs-storm-getstarted-receive.md)
+
 
 Az Event Hubsszal kapcsolatos további információkért olvassa el a következő cikkeket:
 

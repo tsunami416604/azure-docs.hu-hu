@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 05/07/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4850dd82ca52a060c921569433035256f5b74cce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5bb68f3f0139a98f10e28957209f8530a762b76c
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61478760"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413907"
 ---
 # <a name="what-is-azure-importexport-service"></a>Mi az Azure Import/Export szolgáltatás?
 
@@ -29,7 +29,7 @@ Fontolja meg az Azure Import/Export szolgáltatás használatát, amikor feltöl
 
 * **Adatok migrálása a felhőbe**: Nagy mennyiségű adat áthelyezése az Azure-ban gyorsan és költséghatékonyan.
 * **A tartalom terjesztési**: Az ügyfelek telephelyeire pedig gyorsan elküldheti adatait.
-* **biztonsági mentési**: Az Azure Storage szolgáltatásban tárolja a helyszíni adatok biztonsági másolatok készítése.
+* **Biztonsági mentés**: Az Azure Storage szolgáltatásban tárolja a helyszíni adatok biztonsági másolatok készítése.
 * **Adat-helyreállítás**: Nagy mennyiségű storage-ban tárolt adatok helyreállításához és szállítását a helyszíni helyre.
 
 ## <a name="importexport-components"></a>Importálási/exportálási összetevők
@@ -112,7 +112,7 @@ Magas szintű exportálási feladat az alábbi lépésekből áll:
 
 Adatok exportálása részletes utasításokért látogasson el [exportál adatokat az Azure-Blobok](storage-import-export-data-from-blobs.md).
 
-## <a name="region-availability"></a>Régiónkénti elérhetőség 
+## <a name="region-availability"></a>Regionális elérhetőség 
 
 Az Azure Import/Export szolgáltatás támogatja az adatok másolását, és az összes Azure storage-fiók. A felsorolt helyek valamelyikén lemezmeghajtók küldhet el. Ha a tárfiók egy Azure-beli helyen, amely nem szerepel itt, egy másik szállítási címhez tartozó hely áll rendelkezésre a feladat létrehozásakor.
 
@@ -122,13 +122,13 @@ Az Azure Import/Export szolgáltatás támogatja az adatok másolását, és az 
 |Ország  |Ország  |Ország  |Ország  |
 |---------|---------|---------|---------|
 |USA keleti régiója    | Észak-Európa        | Közép-India        |US Gov Iowa         |
-|USA nyugati régiója     |Nyugat-Európa         | Dél-India        | US DoD – Kelet        |
-|USA 2. keleti régiója    | Kelet-Ázsia        |  Nyugat-India        | US DoD – Középső régió        |
-|USA nyugati régiója, 2.     | Délkelet-Ázsia        | Közép-Kanada        | Kelet-Kína         |
+|USA nyugati régiója     |Nyugat-Európa         | Dél-India        | US DoD, kelet        |
+|USA 2. keleti régiója    | Kelet-Ázsia        |  Nyugat-India        | US DoD, közép        |
+|USA 2. nyugati régiója     | Délkelet-Ázsia        | Közép-Kanada        | Kelet-Kína         |
 |USA középső régiója     | Kelet-Ausztrália        | Kelet-Kanada        | Észak-Kína        |
-|USA északi középső régiója     |  Délkelet-Ausztrália       | Dél-Brazília        | Az Egyesült Királyság déli régiója        |
+|USA északi középső régiója     |  Délkelet-Ausztrália       | Dél-Brazília        | Egyesült Királyság déli régiója        |
 |USA déli középső régiója     | Nyugat-Japán        |Korea középső régiója         | Közép-Németország        |
-|USA nyugati középső régiója     |  Kelet-Japán       | USA-beli államigazgatás – Virginia        | Északkelet-Németország        |
+|USA nyugati középső régiója     |  Kelet-Japán       | US Gov Virginia        | Északkelet-Németország        |
 
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
@@ -160,7 +160,7 @@ Amikor Ön az Azure-bA meghajtók, a szállítmányozási kell fizetnie a száll
 
 **Tranzakciós költségek**
 
-Amikor adatokat importál az Azure Storage-ba, nincsenek nincsenek tranzakciós díjak standard tárolási tranzakciós költségek mellett. A standard szintű kimenő adatforgalmi díjak vonatkoznak a Blob storage-ból exportált adatok. Tranzakciós költségek további információkért lásd: [adatátvitel díjszabási.](https://azure.microsoft.com/pricing/details/data-transfers/)
+[Standard szintű tárolási tranzakciós díj](https://azure.microsoft.com/pricing/details/storage/) importálása, valamint az adatok exportálása során. Standard kimenő forgalom költségeit akkor is alkalmazható storage szolgáltatásra vonatkozó forgalmi díjak együtt, ha az adatok exportálása az Azure Storage-ból. A kimenő adatforgalmi költségek további információkért lásd: [adatátvitel díjszabási.](https://azure.microsoft.com/pricing/details/data-transfers/).
 
 
 

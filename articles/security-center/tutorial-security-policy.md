@@ -3,7 +3,7 @@ title: Biztonsági szabályzatok használata |} A Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan működik az Azure Security Centerben a biztonsági házirendeknek.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/28/2019
+ms.date: 5/05/2019
 ms.author: monhaber
-ms.openlocfilehash: 1931026869e930caef2ff2f92fb85dade15a9c8c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 0465f12e3da6acc2ec8f7259ee9f040ccd3ce88e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111510"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236306"
 ---
 # <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
 
@@ -39,7 +39,7 @@ A biztonsági szabályzatokat a biztonsági javaslatokkal kap az Azure Security 
 Ha engedélyezi a Security Center, a Security Center beépített biztonsági házirend, egy beépített kezdeményezés a kategóriában a Security Center Azure Policy is megjelenik. A beépített kezdeményezés automatikusan regisztrálva a Security Center előfizetéseken (ingyenes vagy Standard szinten). A beépített kezdeményezésére csak naplózási házirendeket tartalmaz.
 
 
-### <a name="management-groups"></a>Felügyeleti csoportok
+### <a name="management-groups"></a>Felügyeleti csoport
 Ha a vállalatnak sok előfizetése van, jól jöhet egy módszer, hogy hatékonyan kezelje az előfizetésekhez való hozzáférést, a szabályzatokat és a megfelelőséget. Az Azure Management Groups előfizetések fölötti hatókörszintet biztosít. Az előfizetéseket „felügyeleti csoportok” nevű tárolókba rendezheti, és az irányítási szabályzatokat alkalmazhatja a felügyeleti csoportokra. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott szabályzatokat. Minden címtárhoz tartozik egy legfelső szintű, „gyökér” felügyeleti csoportnak nevezett felügyeleti csoport. Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy minden felügyeleti csoport és előfizetés fölött legyen. Ez a gyökérszintű felügyeleti csoport lehetővé teszi globális szabályzatok és RBAC-hozzárendelések címtárszintű alkalmazását. Felügyeleti csoportok használata az Azure Security Center beállításához, kövesse a [összes bérlőre vonatkozó információk megjelenítése az Azure Security Center](security-center-management-groups.md).
 
 > [!NOTE]
@@ -110,6 +110,9 @@ Javaslatok kapcsolatos további információkért lásd: [biztonsági javaslatok
    ![Csoportházirend kezelése](./media/tutorial-security-policy/policy-management.png)
 
 2. Kattintson az előfizetést vagy felügyeleti csoportot, amelyhez le kívánja tiltani a javaslatot.
+
+   > [!Note]
+   > Ne feledje, hogy a felügyeleti csoport az előfizetések vonatkozik rájuk vonatkozó szabályzatoknak. Ezért ha letiltja az előfizetéshez tartozó házirendet, és az előfizetés tartozik egy felügyeleti csoportot, amely továbbra is ugyanaz a szabályzat, majd továbbra is a szabályzat javaslatokat kapni. A rendszer továbbra is alkalmazza a szabályzatot a felügyeleti szinttől és a javaslatok továbbra is létrejön.
 
 1. Kattintson a hozzárendelt szabályzat.
 
@@ -227,17 +230,17 @@ Ez a példa bemutatja, hogyan-hozzárendelés eltávolítása:
 |----|----|----|
 |SQL-titkosítás |Az Azure Security Centerben a titkosítatlan SQL database monitorozása |sqlEncryptionMonitoringEffect| 
 |SQL Auditing (SQL-naplózás) |Az Azure Security Center nem naplózott SQL database monitorozása |sqlAuditingMonitoringEffect|
-|System updates (Rendszerfrissítések) |Az Azure Security Centerben a hiányzó rendszerfrissítések figyelése |systemUpdatesMonitoringEffect|
+|Rendszerfrissítések |Az Azure Security Centerben a hiányzó rendszerfrissítések figyelése |systemUpdatesMonitoringEffect|
 |Storage-titkosítás |Tárfiókok hiányzó blobtitkosításának naplózása |storageEncryptionMonitoringEffect|
 |JIT hálózati hozzáférés |Az Azure Security Centerben a lehetséges hálózati csak az idő szerinti (JIT) hozzáférés figyelése |jitNetworkAccessMonitoringEffect |
-|Adaptív alkalmazásvezérlők |Alkalmazások az Azure Security Center engedélyezésének figyelése |adaptiveApplicationControlsMonitoringEffect|
-|Network security groups (Hálózati biztonsági csoportok) |Az Azure Security Center megengedő hálózati hozzáférés figyelése |networkSecurityGroupsMonitoringEffect| 
+|Adaptív alkalmazásvezérlés |Alkalmazások az Azure Security Center engedélyezésének figyelése |adaptiveApplicationControlsMonitoringEffect|
+|Hálózati biztonsági csoportok |Az Azure Security Center megengedő hálózati hozzáférés figyelése |networkSecurityGroupsMonitoringEffect| 
 |Biztonsági konfigurációk |Az Azure Security Center az operációs rendszer biztonsági réseinek figyelése |systemConfigurationsMonitoringEffect| 
-|Endpoint protection (Végpontok védelme) |Az Azure Security Centerben a végpontok hiányzó védelmének monitorozása |endpointProtectionMonitoringEffect |
-|Disk encryption (Lemeztitkosítás) |Az Azure Security Center titkosítatlan Virtuálisgép-lemezek monitorozása |diskEncryptionMonitoringEffect|
+|Endpoint Protection |Az Azure Security Centerben a végpontok hiányzó védelmének monitorozása |endpointProtectionMonitoringEffect |
+|Lemeztitkosítás |Az Azure Security Center titkosítatlan Virtuálisgép-lemezek monitorozása |diskEncryptionMonitoringEffect|
 |Sebezhetőségi felmérés |Virtuális gépek biztonsági réseinek figyelése az Azure Security Centerben |vulnerabilityAssessmentMonitoringEffect|
-|Web application firewall (Webalkalmazási tűzfal) |Az Azure Security Center nem védett webalkalmazás figyelése |webApplicationFirewallMonitoringEffect |
-|Next generation firewall (Új generációs tűzfal) |Az Azure Security Center nem védett hálózati végpontok figyelése| |
+|Webalkalmazási tűzfal |Az Azure Security Center nem védett webalkalmazás figyelése |webApplicationFirewallMonitoringEffect |
+|Újgenerációs tűzfal |Az Azure Security Center nem védett hálózati végpontok figyelése| |
 
 
 ### <a name="who-can-edit-security-policies"></a>Ki szerkeszthet biztonsági szabályzatok?

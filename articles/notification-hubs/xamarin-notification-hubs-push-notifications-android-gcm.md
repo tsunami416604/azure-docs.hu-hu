@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/28/2019
+ms.date: 05/01/2019
 ms.author: jowargo
-ms.openlocfilehash: 79913fc300f2ca66a84cf47c0e5b650b9ea2cc59
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 00e62226ee7e2b912a909cfa32a25e4562b99e83
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60423332"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203745"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldésére Xamarin.Android-alkalmazásokkal az Azure Notification Hubs használatával
 
@@ -214,7 +214,6 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
 9. Adja hozzá a következő using utasításokat a `MyFirebaseIIDService.cs`:
 
     ```csharp
-    using Android.App;
     using Android.Util;
     using WindowsAzure.Messaging;
     using Firebase.Iid;
@@ -256,10 +255,8 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
 13. Adja hozzá a következő using utasításokat a `MyFirebaseMessagingService.cs`.
 
     ```csharp
-    using Android.App;
     using Android.Util;
     using Firebase.Messaging;
-    using Android.OS;
     using Android.Support.V4.App;
     using Build = Android.OS.Build;
     ```

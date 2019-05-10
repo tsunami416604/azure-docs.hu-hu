@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: spelluru
-ms.openlocfilehash: 6985bd0bbae858ad258e723ef4d6d6d687b2c86e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9ad6f82d7b9bd7c4957df1dd37d0f2ddf7462e9e
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60695466"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410956"
 ---
 # <a name="enable-and-use-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Engedélyezze, és a távoli asztal használata Linux rendszerű virtuális gépek az Azure Lab Services szolgáltatásban létrehozott tesztkörnyezet
 Ez a cikk bemutatja, hogyan lehet a következő feladatokat végezheti el:
@@ -64,7 +64,7 @@ A labor tulajdonosa (oktatói/professzor) tud csatlakozni egy diák virtuális g
 ## <a name="students-connecting-to-the-student-vm"></a>Csatlakozás a virtuális gép tanulói diákoknak
 Tanulói is a Linux rendszerű virtuális gépekhez az RDP a labor tulajdonosa (oktatói/professzor) után **közzéteszi** a sablon csomagok RDP és a grafikus felhasználói Felülettel rendelkező virtuális gép telepítve van a gépen. A lépések a következők: 
 
-1. Amikor egy tanuló jelentkezik be a Labs portálon közvetlenül (`http://labs.azure.com`) vagy egy regisztrációs hivatkozással (`http://labs.azure.com/register/<registrationCode>`), egy csempe hozzáfér minden labor a tanulói számára jelenik meg. 
+1. Amikor egy tanuló jelentkezik be a Labs portálon közvetlenül (`https://labs.azure.com`) vagy egy regisztrációs hivatkozással (`https://labs.azure.com/register/<registrationCode>`), egy csempe hozzáfér minden labor a tanulói számára jelenik meg. 
 2. A csempére, válassza ki a **Start** Ha a virtuális gép le van állítva. 
 3. Kattintson a **Csatlakozás** gombra. Ez a művelet a gép be RDP-fájljának letöltése. Mentse, és nyissa meg a Linux-gép RDP-n keresztül kapcsolódni. 
 

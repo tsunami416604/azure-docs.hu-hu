@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9c97f23c2dfc2b1c0ff794aa20ffb58cd8b8741a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c49b9d5fdc0c17f16f1c80471a00dd53625dc6e8
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60819285"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236949"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak
 
@@ -430,6 +430,7 @@ Tekintse meg ezeket a notebookokat-betanítás a különböző számítási cél
 ## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: A modell betanítását](tutorial-train-models-with-aml.md) felügyelt számítási célt használja egy modell betanításához.
+* Ismerje meg, hogyan [hatékony hangolása hiperparaméterek](how-to-tune-hyperparameters.md) , hatékonyabb modelleket.
 * Miután a betanított modell, további [hogyan és hol helyezhet üzembe modelleket](how-to-deploy-and-where.md).
 * Nézet a [RunConfiguration osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK-leírás.
 * [Az Azure Machine Learning szolgáltatás használata az Azure Virtual Network szolgáltatással](how-to-enable-virtual-network.md)

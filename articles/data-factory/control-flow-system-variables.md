@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 183c6aea5aaf84c9d0ed635cac55074a5256851e
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 93a83545699e3536eb0045d538225d01cd1a96a2
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872541"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235644"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Az Azure Data Factory által támogatott rendszerváltozók
 Ez a cikk ismerteti az Azure Data Factory által támogatott rendszerváltozók. Ezeket a változókat használhatja kifejezések Data Factory-entitások meghatározásakor.
@@ -45,6 +45,7 @@ Ezeket a rendszer változókat lehet hivatkozni bárhol az eseményindító JSON
 
 ## <a name="tumbling-window-trigger-scope"></a>Az átfedésmentes ablakos eseményindító hatóköre
 Ezeket a rendszer változókat lehet hivatkozni bárhol az eseményindító JSON típusú trigger esetén: "TumblingWindowTrigger."
+(Megjegyzés: Az időbélyeg ISO 8601 formátumú alapértelmezés szerint ki van)
 
 | Változó neve | Leírás |
 | --- | --- |

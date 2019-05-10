@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 6b79a26d63c02dd06b62ea6ad09941f947704dc0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 747e177b0fbbfb9049959c3194ee39c3234bba50
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870489"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234032"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>A diagnosztikai funkcióval kapcsolatos problémák azonosítása
 
@@ -118,7 +118,7 @@ A **-serkenti az eredményt** paraméter is kombinálhatók más választható s
 
 Hiba forgatókönyvek szerint vannak kategóriába sorolva a szolgáltatás belső és külső virtuális asztali Windows.
 
-* Belső hiba: Itt adhatja meg a forgatókönyvek, melyek nem szünteti meg a bérlői rendszergazda és a támogatási problémát, fel kell oldani. Ha egy a jegy létrehozása adja meg a tevékenység azonosítója, a bérlő nevét és hozzávetőleges időkeretre a probléma lépett fel.
+* Belső hiba: Itt adhatja meg a forgatókönyvek, amelyek nem szünteti meg a bérlői rendszergazda és a egy támogatási problémát, fel kell oldani. Ha visszajelzést keresztül a [Windows virtuális asztal technikai Közösség](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop), tartalmazza a tevékenység-Azonosítót, és megbecsülheti időkeretet, ha a probléma lépett fel.
 * Külső probléma: a forgatókönyvek, melyek a rendszergazda enyhíthetők vonatkoznak. Ezek a külső virtuális asztali Windows.
 
 Az alábbi táblázat a gyakori hibák a rendszergazdák mutatjuk be.

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: ea3bb551a32fdfb7e4a378c36858860808e27419
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 132ba922fa73c73d0e001e84659b5a24996d406b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65072764"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235791"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – gyakori kérdések (GYIK)
 
@@ -294,7 +294,7 @@ A következő funkciók jelentek meg a Build 2019 konferencián:
 
 * [V3 API áttelepítési útmutató az előzetes verzió](luis-migration-api-v3.md)
 * [Továbbfejlesztett analytics-irányítópult](luis-how-to-use-dashboard.md)
-* [Előre összeállított tartományok továbbfejlesztett](luis-reference-prebuilt-domains.md) munkahelyi V2 és V3 API-k
+* [Továbbfejlesztett előre összeállított tartományok](luis-reference-prebuilt-domains.md) 
 
 ## <a name="next-steps"></a>További lépések
 

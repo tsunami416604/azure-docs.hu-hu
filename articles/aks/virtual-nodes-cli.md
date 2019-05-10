@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: fe837c4d89a59325040355e35f12c3499aee7d98
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 7631a2d6aef2efedf30c0b9015913c89949d4c29
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65072812"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506962"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Létrehozhat és konfigurálhat egy Azure Kubernetes-szolgáltatások (AKS)-fürtön az Azure CLI használatával virtuális csomópontok használata
 
@@ -20,7 +20,7 @@ Gyorsan méretezhető alkalmazások és szolgáltatások Azure Kubernetes Servic
 
 Ez a cikk bemutatja, hogyan hozzon létre és konfigurálja a virtuális hálózati erőforrások és az AKS-fürtöt, majd engedélyezze a virtuális csomópontok.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Virtuális csomópontok ACI futtató podok és az AKS-fürt közötti hálózati kommunikáció engedélyezéséhez. Ahhoz, hogy ez a kommunikáció, egy virtuális hálózat alhálózatának létrehozása és delegált engedélyek vannak rendelve. Virtuális csomópontok csak dolgozhat használatával létrehozott AKS-fürtök *speciális* hálózati. Alapértelmezés szerint az AKS-fürtök létrehozása a *alapszintű* hálózati. Ez a cikk bemutatja, hogyan hozzon létre egy virtuális hálózatot és alhálózatot, majd a speciális hálózati használó egy AKS-fürt üzembe helyezése.
 
@@ -44,7 +44,7 @@ Ha a szolgáltató állapota *NotRegistered*, regisztrálja a szolgáltatót has
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+## <a name="regional-availability"></a>Regionális elérhetőség
 
 A következő régiók virtuális csomópont központi telepítések támogatottak:
 
@@ -302,7 +302,15 @@ Zárja be a terminál-munkamenetben, a teszt rendelkező podot `exit`. Ha a munk
 
 ## <a name="remove-virtual-nodes"></a>Távolítsa el a virtuális csomópontok
 
-Ha már nem szeretné használni a virtuális csomópontok, letilthatja azokat használja a [az aks disable-bővítmények] [ az aks disable-addons] parancsot. A következő példa letiltja a virtuális Linux-csomópontok:
+Ha már nem szeretné használni a virtuális csomópontok, letilthatja azokat használja a [az aks disable-bővítmények] [ az aks disable-addons] parancsot. 
+
+Először törölje a virtuális csomóponton futó a helloworld-pod:
+
+```azurecli-interactive
+kubectl delete -f virtual-node.yaml
+```
+
+A következő példaparancs letiltja a virtuális Linux-csomópontok:
 
 ```azurecli-interactive
 az aks disable-addons --resource-group myResourceGroup --name myAKSCluster --addons virtual-node
@@ -311,23 +319,29 @@ az aks disable-addons --resource-group myResourceGroup --name myAKSCluster --add
 Most távolítsa el a virtuális hálózati erőforrások és -erőforráscsoport:
 
 ```azurecli-interactive
-# Change the name of your resource group and network resources as needed
+# Change the name of your resource group, cluster and network resources as needed
 RES_GROUP=myResourceGroup
+AKS_CLUSTER=myAKScluster
+AKS_VNET=myVnet
+AKS_SUBNET=myVirtualNodeSubnet
+
+# Get AKS node resource group
+NODE_RES_GROUP=$(az aks show --resource-group $RES_GROUP --name $AKS_CLUSTER --query nodeResourceGroup --output tsv)
 
 # Get network profile ID
-NETWORK_PROFILE_ID=$(az network profile list --resource-group $RES_GROUP --query [0].id --output tsv)
+NETWORK_PROFILE_ID=$(az network profile list --resource-group $NODE_RES_GROUP --query [0].id --output tsv)
 
 # Delete the network profile
 az network profile delete --id $NETWORK_PROFILE_ID -y
 
 # Get the service association link (SAL) ID
-SAL_ID=$(az network vnet subnet show --resource-group $RES_GROUP --vnet-name myVnet --name myVirtualNodeSubnet --query id --output tsv)/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default
+SAL_ID=$(az network vnet subnet show --resource-group $RES_GROUP --vnet-name $AKS_VNET --name $AKS_SUBNET --query id --output tsv)/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default
 
 # Delete the default SAL ID for the subnet
 az resource delete --ids $SAL_ID --api-version 2018-07-01
 
 # Delete the subnet delegation to Azure Container Instances
-az network vnet subnet update --resource-group $RES_GROUP --vnet-name myVnet --name myVirtualNodeSubnet --remove delegations 0
+az network vnet subnet update --resource-group $RES_GROUP --vnet-name $AKS_VNET --name $AKS_SUBNET --remove delegations 0
 ```
 
 ## <a name="next-steps"></a>További lépések

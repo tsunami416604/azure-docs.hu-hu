@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: fe6848caad7cdac98d6717b7cea4860e7ce2db8f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 35d9e953ade337672fd57149e325b507f6ce115f
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725736"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405715"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Az adattárolás és a bejövő forgalom az Azure Time Series Insights előzetes verziója
 
@@ -51,7 +51,7 @@ A Time Series Insights Parquet választottunk, mert az adattömörítés hatéko
 
 Szeretné jobban megismerni a Parquet fájlformátum, lásd: [Parquet dokumentáció](https://parquet.apache.org/documentation/latest/).
 
-## <a name="event-structure-in-parquet"></a>Esemény struktúra a parquet eszközökben
+### <a name="event-structure-in-parquet"></a>Esemény struktúra a parquet eszközökben
 
 A Time Series Insights hoz létre, és a blobok példányban tárolja az alábbi két formátumokban:
 
@@ -79,18 +79,18 @@ Time Series Insights-események vannak leképezve Parquet fájl tartalmát a kö
 
 ## <a name="partitions"></a>Partíciók
 
-Time Series Insights előzetes verziója környezeteket rendelkeznie kell egy Time Series azonosító tulajdonságot és a egy időbélyeg-tulajdonság egyedi azonosítására alkalmas. A Time Series azonosító funkcionál, az adatok logikai partíció, és egy természetes határt a Time Series Insights előzetes verziója környezetet biztosít az adatok eloszthatók a fizikai partíciók. Fizikai partíciók felügyeleti Time Series Insights előzetes verziója kezeli az Azure storage-fiók.
+Time Series Insights előzetes verziója környezeteket rendelkeznie kell egy **Time Series azonosító** tulajdonság és a egy **időbélyeg** tulajdonság egyedi azonosítására alkalmas. A Time Series azonosító funkcionál, az adatok logikai partíció, és egy természetes határt a Time Series Insights előzetes verziója környezetet biztosít az adatok eloszthatók a fizikai partíciók. Fizikai partíciók felügyeleti Time Series Insights előzetes verziója kezeli az Azure storage-fiók.
 
 A Time Series Insights használja a dinamikus particionálás elvetését, majd ismét létrehozza a partíció által és a lekérdezésfeldolgozási teljesítmény optimalizálása érdekében. Az Time Series Insights előzetes verziója dinamikus particionálási algoritmus próbál megakadályozza, hogy egyetlen fizikai partíciók több, az adatok különböző, logikai partíciót. Más szóval a particionálási algoritmus biztosítja, hogy minden adatot adott egy egyetlen alkalommal Azonosítót kizárólag szerepel a Parquet-fájlokat, anélkül, hogy más Time Series-azonosítóval rendelkező közbeékeléses folyamatban van. A dinamikus particionálási algoritmust is megpróbálja megőrizni az eredeti rendelés események egy egyetlen Time Series-azonosító.
 
 Kezdetben bejövő időpontban adatok particionálása a tárhelyek időbélyegző szerint, hogy egy adott időtartományt belül egyetlen, logikai partíció több fizikai partíciók között oszlik el. Egyetlen fizikai partíciók a legtöbb vagy összes logikai partíciót is tartalmazhat. Blob fájlméretre vonatkozó korlátozások mellett is optimális particionálási miatt egyetlen logikai partíciót is foglalhat több fizikai partíciókra.
 
 > [!NOTE]
-> Alapértelmezés szerint az időbélyegző-érték az az üzenet *sorba helyezésekor* a konfigurált eseményből. 
+> Alapértelmezés szerint az időbélyegző-érték az az üzenet *sorba helyezésekor* a konfigurált eseményből.
 
 Ha előzményadatok vagy kötegelt üzenetek videófájl, rendelje hozzá az érték, amely leképezi a megfelelő időbélyeg időbélyeg-tulajdonság az adatokat tárolni szeretné. Az időbélyeg-tulajdonság a kis-és nagybetűket. További információkért lásd: [Idősorozat-modell](./time-series-insights-update-tsm.md).
 
-## <a name="physical-partitions"></a>Fizikai partíciók
+### <a name="physical-partitions"></a>Fizikai partíciók
 
 Egy fizikai partíciónak a storage-fiókban tárolt blokkblobok. A tényleges méret blobok eltérőek lehetnek, mivel a mérete attól függ, a leküldéses sebességét. Azonban várhatóan kell 50 MB-ra körülbelül 20 MB méretű blobok. Az elvárás a Time Series Insights csapata 20 MB-os jelölje ki a lekérdezési teljesítmény optimalizálása mérete vezetett. Ez a méret fájl mérete és az adatok beérkezését sebességének idővel módosulhatnak.
 
@@ -99,7 +99,7 @@ Egy fizikai partíciónak a storage-fiókban tárolt blokkblobok. A tényleges m
 > * Azure-blobok vannak alkalmanként pedig újraparticionálhatók a jobb teljesítmény érdekében által éppen eltávolítja, majd újra létrehozza.
 > * A Time Series Insights ugyanazokat az adatokat is is szerepel a két vagy több blobot.
 
-## <a name="logical-partitions"></a>Logikai partíciók
+### <a name="logical-partitions"></a>Logikai partíciók
 
 A logikai partíció egy partíción belül egy fizikai partíciónak, amely egy adott partíciókulcs-értékhez társított minden adatot tárol. Time Series Insights előzetes verziója logikailag particionálja minden egyes blob két tulajdonság alapján:
 
@@ -110,9 +110,9 @@ Time Series Insights előzetes verziója biztosít nagy teljesítményű lekérd
 
 Fontos, válasszon egy megfelelő idő Azonosítót, egy a tulajdonság nem módosítható, mert. További információkért lásd: [válasszon idő sorozat azonosítók](./time-series-insights-update-how-to-id.md).
 
-## <a name="your-azure-storage-account"></a>Az Azure storage-fiók
+## <a name="azure-storage"></a>Azure Storage tárterület
 
-### <a name="storage"></a>Storage
+### <a name="your-storage-account"></a>A Storage-fiók
 
 Amikor létrehoz egy használatalapú fizetéses Time Series Insights-környezetet, létrehozhat két erőforrás: a Time Series Insights-környezet és az Azure Storage-általános célú V1 fiók az adatok tárolásához. Győződjön meg arról, általános célú Azure Storage V1 az alapértelmezett erőforrás miatt az együttműködés, ára és teljesítménye választottuk. 
 
@@ -132,37 +132,25 @@ Előfordulhat, hogy szeretné elérni a Time Series Insights előzetes verziója
 
 Általános háromféleképpen férhet hozzá az adataihoz:
 
-* A Time Series Insights előzetes verziója Explorerből.
-* Time Series Insights előzetes API-kon keresztül.
-* Közvetlenül az Azure storage-fiók.
-
-#### <a name="from-the-time-series-insights-preview-explorer"></a>A Time Series Insights előzetes verziója Intézőből
-
-A Time Series Insights előzetes verziója Explorer CSV-fájlként is exportálhat adatokat. További információkért lásd: [Time Series Insights előzetes verziója explorer](./time-series-insights-update-explorer.md).
-
-#### <a name="from-the-time-series-insights-preview-apis"></a>Time Series Insights előzetes API-kon keresztül
-
-Az API-végpont címen érhető el `/getRecorded`. Ez az API-val kapcsolatos további tudnivalókért lásd: [Time Series lekérdezés](./time-series-insights-update-tsq.md).
+* A Time Series Insights előzetes verziója Explorerből: a Time Series Insights előzetes verziója Explorer CSV-fájlként is exportálhat adatokat. További információkért lásd: [Time Series Insights előzetes verziója explorer](./time-series-insights-update-explorer.md).
+* A Time Series Insights előzetes API-k a: címen érhető el az API-végpont `/getRecorded`. Ez az API-val kapcsolatos további tudnivalókért lásd: [Time Series lekérdezés](./time-series-insights-update-tsq.md).
+* Közvetlenül az Azure storage-fiók (alább).
 
 #### <a name="from-an-azure-storage-account"></a>Az Azure storage-fiók
 
 * A Time Series Insights-adatokhoz való hozzáféréshez használ fiók olvasási hozzáférése van szüksége. További információkért lásd: [a storage-fiók erőforrásokhoz való hozzáférés kezelése](https://docs.microsoft.com/azure/storage/blobs/storage-manage-access-to-resources).
-
 * Olvassa el az adatok Azure Blob storage-ból való közvetlen módon kapcsolatos további információkért lásd: [az adatok a storage-fiókból mozgatása](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
-
 * Adatok exportálása az Azure storage-fiók:
-
     * Először győződjön meg arról, hogy a fiók megfelel-e az adatexportálási a szükséges követelményeknek. További információkért lásd: [tárolási importálása és exportálása a követelmények](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements).
-
     * Adatok exportálása az Azure storage-fiók egyéb módjaival kapcsolatos további tudnivalókért lásd: [BLOB importálási és exportálási adata](https://docs.microsoft.com/azure/storage/common/storage-import-export-data-from-blobs).
 
 ### <a name="data-deletion"></a>Adatok törlése
 
 Blobok, nem törölhető, mert a Time Series Insights előzetes verziója a benne lévő blobok metaadatait tárolja.
 
-## <a name="ingress"></a>Bejövő forgalom
+## <a name="time-series-insights-data-ingress"></a>Time Series Insights beérkező adatok
 
-### <a name="time-series-insights-ingress-policies"></a>Time Series Insights bejövő házirendek
+### <a name="ingress-policies"></a>Bejövő házirendek
 
 Time Series Insights előzetes verziója, amely a Time Series Insights jelenleg ugyanazon eseményforrásokból és fájltípus esetében támogatja.
 
@@ -184,7 +172,7 @@ Time Series Insights előzetes verziója egy blob-méret optimalizálása strat�
 
 > [!IMPORTANT]
 > * A Time Series Insights általánosan (elérhetővé tétel GA) kiadásban elérhetővé adatok eseményforrás lenyomásával 60 másodpercen belül. 
-> * Az előzetes verzióban várhatóan hosszabb ideig, mielőtt az adatokat szeretné elérhetővé tenni. 
+> * Az előzetes verzióban várhatóan hosszabb ideig, mielőtt az adatokat szeretné elérhetővé tenni.
 > * Ha bármely jelentős késést tapasztal, ügyeljen arra, lépjen kapcsolatba velünk.
 
 ### <a name="scale"></a>Méretezés
