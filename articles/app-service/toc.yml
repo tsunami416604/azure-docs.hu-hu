@@ -9,7 +9,7 @@
     - name: Tudnivalók az App Service-környezetekről
       href: environment/intro.md
     - name: Az üzemeltetési lehetőségek összehasonlítása
-      href: overview-compare.md
+      href: /azure/architecture/guide/technology-choices/compute-decision-tree
 - name: Gyors útmutatók
   expanded: true
   items:

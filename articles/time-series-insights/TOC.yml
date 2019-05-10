@@ -40,6 +40,16 @@
           href: time-series-insights-explorer.md
         - name: Az adatmegőrzés ismertetése
           href: time-series-insights-concepts-retention.md
+        - name: Fejlesztés
+          items:
+            - name: Hitelesítés és engedélyezés
+              href: time-series-insights-authentication-and-authorization.md
+            - name: 'Adatok lekérdezése a C# használatával'
+              href: time-series-insights-query-data-csharp.md
+            - name: 'Referenciaadatok kezelése a C#-ban'
+              href: time-series-insights-manage-reference-data-csharp.md
+            - name: Egyéni nézet megosztása
+              href: time-series-insights-parameterized-urls.md
     - name: Az Azure Time Series Insights előzetes verziója
       items:
         - name: A környezet megtervezése
@@ -54,16 +64,12 @@
           href: time-series-insights-update-tsq.md
         - name: Adatok vizualizációja az Explorer előzetes verziójában
           href: time-series-insights-update-explorer.md
-    - name: Fejlesztés
-      items:
-        - name: Hitelesítés és engedélyezés
-          href: time-series-insights-authentication-and-authorization.md
-        - name: 'Adatok lekérdezése a C# használatával'
-          href: time-series-insights-query-data-csharp.md
-        - name: 'Referenciaadatok kezelése a C#-ban'
-          href: time-series-insights-manage-reference-data-csharp.md
-        - name: Egyéni nézet megosztása
-          href: time-series-insights-parameterized-urls.md
+        - name: Fejlesztés
+          items:
+            - name: Hitelesítés és engedélyezés
+              href: time-series-insights-authentication-and-authorization.md
+            - name: 'Adatok lekérdezése a C# használatával'
+              href: time-series-insights-update-query-data-csharp.md
 - name: Útmutatók
   items:
     - name: Adathozzáférés biztosítása
