@@ -6,14 +6,14 @@ author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 04/25/2019
 ms.author: iainfou
-ms.openlocfilehash: f365fcd61944fbae131ab79a1c3660aaf02fa8d7
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 17bc1d2b7a08314f19f1bf8f87d0c774afc37500
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073931"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508181"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>– Azure Kubernetes Service (AKS) kapcsolatos gyakori kérdések
 
@@ -25,9 +25,7 @@ Az elérhető régiók teljes listáját lásd: [AKS régiók és rendelkezésre
 
 ## <a name="does-aks-support-node-autoscaling"></a>Az AKS támogatja az automatikus skálázás csomópont?
 
-Igen, az automatikus skálázás keresztül érhető el a [Kubernetes méretező] [ auto-scaler] Kubernetes 1.10 kezdődően. A manuális konfigurálása és a fürt automatikus méretező használatához további információkért lásd: [fürt az automatikus skálázás AKS][aks-cluster-autoscale].
-
-Csomópontok szerepkörtípusok (jelenleg előzetes verzióban érhető el az aks-ben) is használhatja a beépített fürt méretező. További információkért lásd: [automatikus méretezése egy fürtöt az aks-ben alkalmazás figyelembevételével][aks-cluster-autoscaler].
+Igen, az automatikus skálázás keresztül érhető el a [Kubernetes méretező] [ auto-scaler] Kubernetes 1.10 kezdődően. Konfigurálása és a fürt automatikus méretező használatához további információkért lásd: [fürt az automatikus skálázás AKS][aks-cluster-autoscale].
 
 ## <a name="does-aks-support-kubernetes-role-based-access-control-rbac"></a>Támogatja az AKS Kubernetes szerepköralapú hozzáférés-vezérlés (RBAC)?
 
@@ -43,17 +41,13 @@ Jelenleg nem. A Kubernetes API-kiszolgálóhoz van közzétéve, mert egy nyilv�
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>AKS-ügyfélcsomóponttal rendelkezik érvényes biztonsági frissítések?
 
-Az Azure automatikusan alkalmazza a Linux-csomópontok a fürtben éjszakai ütemezett biztonsági javítások. Azonban Ön felelős azért, hogy szükséges-e ezen csomópontok újraindulásakor, Linux. A csomópont újraindul végrehajtása több lehetősége van:
+Igen, az Azure automatikusan alkalmazza a biztonsági javítások éjszakai ütemezés szerint a fürt csomópontjaihoz. Azonban Ön felelős azért, hogy csomópontok indulnak újra lesz szükség szerint. A csomópont újraindul végrehajtása több lehetősége van:
 
 - Manuálisan keresztül az Azure portal vagy az Azure parancssori felület.
 - Az AKS-fürt frissítésével. Fürt frissítése automatikusan [Ez a három csomópontunk, és a csomópont kiürítési][cordon-drain], majd hálózatra a legújabb Ubuntu-rendszerképet és a egy új biztonsági javítást vagy egy Kubernetes-alverzió készítsen biztonsági másolatot minden csomóponton. További információkért lásd: [AKS-fürt frissítése][aks-upgrade].
 - Használatával [Kured](https://github.com/weaveworks/kured), egy nyílt forráskódú újraindítás démon a Kubernetes esetében. Kured fut, mint egy [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) , és figyeli a-fájljának jelenlétét, arról, hogy a számítógép újraindítása nem szükséges minden egyes csomópont. Az operációs rendszer-újraindítások felügyelt ugyanazzal a fürtön [Ez a három csomópontunk, és a kiürítési folyamat] [ cordon-drain] mint a fürtfrissítések.
 
 Kured használatával kapcsolatos további információkért lásd: [biztonsági és a kernel-frissítések alkalmazása a csomópontok az aks-ben][node-updates-kured].
-
-### <a name="windows-server-nodes"></a>A Windows Server-csomópontok
-
-A Windows Server-csomópontok (jelenleg előzetes verzióban érhető el az aks-ben) a Windows Update futtatása és automatikusan alkalmazza a legújabb frissítéseket. A Windows Update kiadási ciklus, és a saját érvényesítési folyamat rendszeres időközönként meg kell hajtsa végre a Windows Server-csomóponton vagy tárolókészleteit a frissítés az AKS-fürt. A frissítés során hoz létre a csomópontokat, amelyeken a legújabb Windows Server-rendszerképet és azok javításait, majd eltávolítja a régebbi csomópontok. Ezen folyamatról további információkért lásd: [frissítése az aks-ben csomópontkészletek][nodepool-upgrade].
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Két erőforráscsoport miért jönnek létre az aks-sel?
 
@@ -108,13 +102,24 @@ Az AKS nem natív módon jelenleg az Azure Key Vault integrált. Azonban a [Azur
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>Futtatható Windows Server-tárolók az aks-en?
 
-Igen, a Windows Server-tárolók előzetes verziójában érhető el. Az aks-ben a Windows Server-tárolók futtatásához, a vendég operációs rendszer Windows Server rendszert futtató csomópontot készletet hoz létre. A Windows Server-tárolókat használja a Windows Server 2019. Első lépésként [AKS-fürt létrehozása a Windows Server csomópontkészletek][aks-windows-cli].
-
-Ablak kiszolgáló csomópont készlet támogatás magában foglalja a Kubernetes-projektben a felsőbb rétegbeli Windows Server részét képező bizonyos korlátozások. Ezek a korlátozások további információkért lásd: [AKS korlátozásai a Windows Server-tárolók][aks-windows-limitations].
+A Windows Server-tárolókat futtathat, Windows Server-alapú csomópontokon futtatni kell. A Windows Server-alapú csomópontokat jelenleg nem állnak rendelkezésre az aks-ben. Azonban segítségével Virtual Kubelet Windows-tárolókhoz az Azure Container Instances ütemezheti és kezelheti azokat az AKS-fürt részeként. További információkért lásd: [Virtual Kubelet használata az aks-sel][virtual-kubelet].
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>Az AKS kínál egy szolgáltatói szerződést?
 
 A egy szolgáltatásiszint-szerződés (SLA) a szolgáltató vállalja, hogy megtéríti a szolgáltatás díja a vásárlónak, ha a közzétett szolgáltatási szint nem teljesül. Mivel az AKS maga ingyenes, nincs költség nélkül érhető el, hogy megtéríti, és így nem hivatalos tartozik vállalt SZOLGÁLTATÁSSZINT. Azonban az AKS célja, hogy a Kubernetes API-kiszolgálóhoz legalább 99,5 %-os rendelkezésre állását.
+
+## <a name="why-can-i-not-set-maxpods-below-30"></a>Miért nem állítható `maxPods` 30 alatt?
+
+Az AKS beállítást támogatja a `maxPods` értéke a fürt létrehozáskor az Azure parancssori felület és Azure Resource Manager-sablonok használatával. Van azonban egy *minimális érték* (Létrehozás ideje ellenőrizni) Kubenet és Azure CNI, az alább látható:
+
+| Hálózat | Minimum | Maximum |
+| -- | :--: | :--: |
+| Azure CNI | 30 | 250 |
+| Kubenet | 30 | 110 |
+
+Mivel az AKS egy felügyelt szolgáltatás, bővítmények és a podok, hogy üzembe helyezése és kezelése a fürt részeként biztosítunk. A múltban felhasználók megadására a `maxPods` érték kisebb, mint a felügyelt podok futtatásához szükséges értéket (Példa: 30), az AKS most számítja ki a podok keresztül minimális száma: ((maxPods vagy (maxPods * vm_count)) > felügyelt bővítmény podok minimális.
+
+Felhasználók nem írhatja felül a minimális `maxPods` érvényesítése.
 
 <!-- LINKS - internal -->
 
@@ -128,10 +133,6 @@ A egy szolgáltatásiszint-szerződés (SLA) a szolgáltató vállalja, hogy meg
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [aks-rm-template]: /rest/api/aks/managedclusters/createorupdate#managedcluster
-[aks-cluster-autoscaler]: cluster-autoscaler.md
-[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
-[aks-windows-cli]: windows-container-cli.md
-[aks-windows-limitations]: windows-node-limitations.md
 
 <!-- LINKS - external -->
 

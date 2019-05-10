@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2019
 ms.author: shants
-ms.openlocfilehash: b1764eaf3f496b52bdd73afb5489843ab15cacbd
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.openlocfilehash: 40ae8f0fb9c0c5980c4db1471b2bbad56a57d486
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64993061"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410495"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Tervezett karbantartásával kapcsolatos értesítések Linux rendszerű virtuális gépek kezelése
 
@@ -27,13 +27,13 @@ Az Azure rendszeresen végez frissítéseket a virtuális gépeket futtató infr
 
 - A karbantartás nem igényel újraindítást, ha az Azure a virtuális gép felfüggesztése, amíg frissül a gazdagép helyi áttelepítést használ. Ezek nem rebootful karbantartási műveleteket tartalék tartomány által alkalmazott tartalék tartományt, és folyamatban le van állítva, ha bármilyen figyelmeztetés állapot jelek.
 
-- Ha karbantartási újraindítás szükséges, egy értesítés, amikor a karbantartás tervezett kap. Ezekben az esetekben, kapnak egy olyan időkeretet, ahol elkezdheti a karbantartás saját magának, mikor működik az Ön számára.
+- Ha karbantartási újraindítás szükséges, egy értesítés, amikor a karbantartás tervezett kap. Ezekben az esetekben a egy olyan időkeretet, amely általában 30 nap, elindíthatja a karbantartási feladattal saját maga is működik, ha kapnak.
 
 
 Tervezett karbantartás, hogy újra kell indítani a regisztrálást megelőző szakaszban tanácsos van ütemezve. Egyes szakaszokban eltérő hatókörbe (régió) rendelkezik.
 
 - A szakasz egy értesítés azoknak az ügyfeleknek kezdődik. Alapértelmezés szerint az előfizetés tulajdonosa és a társtulajdonosok értesítést küld. Hozzáadhat további címzetteket, és e-mailben, SMS és webhookok, például üzenetküldési lehetőségeket, az értesítéseket az Azure- [tevékenységnapló-riasztások](../../azure-monitor/platform/activity-logs-overview.md).  
-- Az értesítés időpontban egy *önkiszolgáló ablak* szeretné elérhetővé tenni. Ennek során, amely általában négy héttel, amely a virtuális gépek szerepelnek a wave és proaktív módon indítsa el a saját igényeinek megfelelően ütemezés szerint karbantartási találja.
+- Az értesítés időpontban egy *önkiszolgáló ablak* szeretné elérhetővé tenni. Olyan időszakban, ez pedig általában 30 nap, mely a virtuális gépek szerepelnek a wave, és proaktív módon indítsa el a saját igényeinek megfelelően ütemezés szerint karbantartási találja.
 - Az önkiszolgáló ablak után egy *ütemezett karbantartási időszaknál* kezdődik. Ebben az ablakban egy pontján az Azure ütemezi, és a szükséges karbantartás vonatkozik a virtuális gép. 
 
 A két windows kellene célja, hogy indítsa el a karbantartást, és a virtuális gép újraindítása közben, hogy ha az Azure automatikusan elindul, karbantartási elegendő időt biztosítanak.
@@ -129,7 +129,7 @@ azure compute virtual-machine initiate-maintenance --service-name myService --na
 ```
 
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>gyakori kérdésekben
 
 
 **K: Miért van szüksége, a virtual machines Újraindítás most?**

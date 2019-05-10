@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/22/2019
-ms.openlocfilehash: bdf3d719627673bfb2c6b25957abb849c46d4e9e
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.date: 04/30/2019
+ms.openlocfilehash: dbef7c2cb8de5a1b4bbb3073f694b8f77c9f441b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63767263"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231297"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Oktatóanyag: Szerepköralapú hozzáférés-vezérlés (RBAC) szerepkörök konfigurálása az Azure Kubernetes Service (AKS) az Ansible-lel
 
@@ -32,9 +32,9 @@ Az AKS használatához konfigurálhatók [Azure Active Directory (AD)](/azure/ac
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
-- [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
-- [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 - **Telepítse az RedHat OpenShift könyvtár** - `pip install openshift`
 
 ## <a name="configure-azure-ad-for-aks-authentication"></a>AKS-hitelesítéshez az Azure AD konfigurálása

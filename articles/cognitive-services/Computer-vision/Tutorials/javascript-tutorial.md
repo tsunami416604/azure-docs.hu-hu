@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Hajtsa végre a lemezkép műveletek – JavaScript'
+title: Hajtsa végre a lemezkép műveletek – JavaScript
 titlesuffix: Azure Cognitive Services
 description: Ismerkedés egy alapszintű JavaScript-alkalmazással, amely a Computer Vision API-t használja az Azure Cognitive Services szolgáltatásban. OCR végrehajtása, miniatűrök létrehozása és képek vizuális jellemzőinek használata.
 services: cognitive-services
@@ -7,62 +7,58 @@ author: KellyDF
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: tutorial
-ms.date: 09/19/2017
+ms.topic: conceptual
+ms.date: 04/30/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 7ac8b9e28996c14e702730b72265fd6165798227
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 91af70406590ab8e65a5d4a4b53835e9e4d4ed2a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60201290"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231664"
 ---
-# <a name="tutorial-computer-vision-api-javascript"></a>Oktatóanyag: Számítógép Vision API a JavaScript
+# <a name="use-computer-vision-features-with-the-rest-api-and-javascript"></a>A REST API-t és a JavaScript a Computer Vision funkciók használata
 
-Ez az oktatóanyag az Azure Cognitive Services Computer Vision REST API funkcióit mutatja be.
+Ez az útmutató az Azure Cognitive Services Computer Vision REST API funkcióját ismerteti.
 
 Ismerjen meg egy JavaScript-alkalmazást, amely a Computer Vision REST API segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. Ebben a példában megadhatja egy kép URL-címét elemzés vagy feldolgozás céljából. Ez a nyílt forráskódú példa sablonként használható saját, a Computer Vision REST API használatához készült JavaScript-alkalmazások fejlesztéséhez.
 
-A JavaScript-űrlapalkalmazást már létrehoztuk, azonban még működésképtelen. Ebben az oktatóanyagban a Computer Vision REST API kódját hozzáadva látja el funkciókkal az alkalmazást.
+A JavaScript-űrlapalkalmazást már létrehoztuk, azonban még működésképtelen. Ebben az útmutatóban, adja hozzá a kódot adott a Computer Vision REST API az alkalmazás funkcióinak végrehajtásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="platform-requirements"></a>Platformkövetelmények
 
-Ezt az oktatóanyagot egy egyszerű szövegszerkesztővel hoztuk létre.
+A regisztrálással kapcsolatban ez az útmutató egy egyszerű szövegszerkesztő használatával.
 
-### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Előfizetés a Computer Vision API-ra és egy előfizetési kulcs beszerzése 
+### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Előfizetés a Computer Vision API-ra és egy előfizetési kulcs beszerzése
 
-A példa létrehozása előtt elő kell fizetnie a Computer Vision API-ra, amely az Azure Cognitive Services része. Az előfizetésről és a kulcskezelésről további információt az [Előfizetések](https://azure.microsoft.com/try/cognitive-services/) című témakörben találhat. Ebben az oktatóanyagban az elsődleges és másodlagos kulcsok is használhatók. 
+A példa létrehozása előtt elő kell fizetnie a Computer Vision API-ra, amely az Azure Cognitive Services része. Az előfizetésről és a kulcskezelésről további információt az [Előfizetések](https://azure.microsoft.com/try/cognitive-services/) című témakörben találhat. Az elsődleges és másodlagos kulcsok használata ebben az útmutatóban érvényesek.
 
-## <a name="acquire-the-incomplete-tutorial-project"></a>A nem teljes oktatóprojekt beszerzése
+## <a name="acquire-incomplete-tutorial-project"></a>Hiányos oktatóanyag projektjének szerezni.
 
-### <a name="download-the-tutorial-project"></a>Az oktatóprojekt letöltése
+### <a name="download-the-project"></a>Töltse le a projekt
 
 Klónozza a [Cognitive Services JavaScript Computer Vision oktatóanyagot](https://github.com/Azure-Samples/cognitive-services-javascript-computer-vision-tutorial), vagy töltse le a .zip-fájlt, és csomagolja ki egy üres könyvtárban.
 
-Ha inkább a befejezett oktatóanyaggal szeretne dolgozni, amely minden kódot tartalmaz, használja a **Completed** (Befejezett) mappa fájljait.
+Ha inkább a kész projektet használata hozzáadott minden oktatóprogram kódmintája, használhatja a fájlokat a **befejezve** mappát.
 
-## <a name="add-the-tutorial-code-to-the-project"></a>A oktatóanyag kódjának hozzáadása a projekthez
+## <a name="add-tutorial-code-to-the-project"></a>Az oktatóanyag kód hozzáadása a projekthez
 
-A JavaScript-alkalmazás hat .html-fájlt tartalmaz, függvényenként egyet. Mindegyik fájl egy Computer Vision-függvényt ismertet (elemzés, OCR és hasonlók). A hat oktatószakasz nem függ egymástól, így hozzáadhat oktatókódot csak egyhez egyet, többhöz, vagy akár mind a hathoz is. Ezt bármilyen sorrendben megteheti.
-
-Lássunk neki!
+A JavaScript-alkalmazás hat .html-fájlt tartalmaz, függvényenként egyet. Minden egyes fájl mutatja be egy másik függvény a Computer Vision (elemzése, optikai Karakterfelismerés, stb.). A hat szakaszok nem rendelkezik fennálló függőségeket, így az oktatóprogram kódmintája hozzá egy fájlt, hat fájl összes vagy csak néhány fájlok. Ezt bármilyen sorrendben megteheti.
 
 ### <a name="analyze-an-image"></a>Rendszerkép elemzése
 
-A Computer Vision Elemzés funkciója több mint 2000 felismerhető tárgy, élőlény, táj és cselekvés alapján vizsgálja a képeket. Az elemzés után az Elemzés egy JSON-objektumot hoz létre, amely leíró címkékkel, színelemzéssel, feliratokkal és egyebekkel ismerteti a képet.
+Az elemzés szolgáltatás a Computer Vision megvizsgálja egy könnyen felismerhető névre objektumok, élő dolog, táj és műveletek ezer kép. Az elemzés után az Elemzés egy JSON-objektumot hoz létre, amely leíró címkékkel, színelemzéssel, feliratokkal és egyebekkel ismerteti a képet.
 
-Az oktatóalkalmazás Elemzés funkciójának végrehajtásához tegye a következőket:
+Az alkalmazás az elemzés funkció végrehajtásához hajtsa végre az alábbi lépéseket:
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>Az eseménykezelő kód hozzáadása az űrlap gombjához
+#### <a name="add-the-event-handler-code-for-the-analyze-button"></a>Elemzés gomb az esemény kezelő kód hozzáadása
 
 Nyissa meg az **analyze.html** fájlt egy szövegszerkesztőben, és keresse meg az **analyzeButtonClick** függvényt a fájl alján.
 
-Az **analyzeButtonClick** eseménykezelő függvény törli az űrlapot, megjeleníti az URL-címben megadott képet, majd meghívja az **AnalyzeImage** függvényt a kép elemzéséhez.
-
-Illessze be az alábbi kódot az **analyzeButtonClick** függvénybe.
+Az **analyzeButtonClick** eseménykezelő függvény törli az űrlapot, megjeleníti az URL-címben megadott képet, majd meghívja az **AnalyzeImage** függvényt a kép elemzéséhez. Illessze be az alábbi kódot az **analyzeButtonClick** függvénybe.
 
 ```javascript
 function analyzeButtonClick() {
@@ -154,7 +150,7 @@ function AnalyzeImage(sourceImageUrl, responseTextArea, captionSpan) {
 }
 ```
 
-#### <a name="run-the-application"></a>Az alkalmazás futtatása
+#### <a name="run-the-analyze-function"></a>Az elemzés funkció futtatása
 
 Mentse az **analyze.html** fájlt, és nyissa meg egy webböngészőben. Helyezze el az előfizetési kulcsot az **Előfizetési kulcs** mezőben, majd ellenőrizze, hogy a megfelelő régió van-e beállítva az **Előfizetési régió** mezőben. Adja meg egy elemzendő kép URL-címét, majd kattintson a **Kép elemzése** gombra a kép elemzéséhez és az eredmény megjelenítéséhez.
 
@@ -162,15 +158,13 @@ Mentse az **analyze.html** fájlt, és nyissa meg egy webböngészőben. Helyezz
 
 A Computer Vision Nevezetesség funkciója természetes és mesterséges nevezetességeket (például hegyeket vagy híres épületeket) elemez a képeken. Az elemzés befejezése után a Nevezetesség egy JSON-objektumot eredményez, amely a képen található nevezetességeket azonosítja.
 
-Az oktatóalkalmazás Nevezetesség funkciójának végrehajtásához tegye a következőket:
+Az alkalmazás a tereptárgyak funkció végrehajtásához hajtsa végre az alábbi lépéseket:
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>Az eseménykezelő kód hozzáadása az űrlap gombjához
+#### <a name="add-the-event-handler-code-for-the-landmark-button"></a>Az esemény kezelő kód tereptárgyak gomb hozzáadása
 
 Nyissa meg a **landmark.html** fájlt egy szövegszerkesztőben, és keresse meg a **landmarkButtonClick** függvényt a fájl alján.
 
-A **landmarkButtonClick** eseménykezelő függvény törli az űrlapot, megjeleníti az URL-címben megadott képet, majd meghívja az **IdentifyLandmarks** függvényt a kép elemzéséhez.
-
-Illessze be az alábbi kódot a **landmarkButtonClick** függvénybe.
+A **landmarkButtonClick** eseménykezelő függvény törli az űrlapot, megjeleníti az URL-címben megadott képet, majd meghívja az **IdentifyLandmarks** függvényt a kép elemzéséhez. Illessze be az alábbi kódot a **landmarkButtonClick** függvénybe.
 
 ```javascript
 function landmarkButtonClick() {
@@ -261,7 +255,7 @@ function IdentifyLandmarks(sourceImageUrl, responseTextArea, captionSpan) {
 }
 ```
 
-#### <a name="run-the-application"></a>Az alkalmazás futtatása
+#### <a name="run-the-landmark-function"></a>A környezet függvény futtatása
 
 Mentse a **landmark.html** fájlt, és nyissa meg egy webböngészőben. Helyezze el az előfizetési kulcsot az **Előfizetési kulcs** mezőben, majd ellenőrizze, hogy a megfelelő régió van-e beállítva az **Előfizetési régió** mezőben. Adja meg egy elemzendő kép URL-címét, majd kattintson a **Kép elemzése** gombra a kép elemzéséhez és az eredmény megjelenítéséhez.
 
@@ -269,15 +263,13 @@ Mentse a **landmark.html** fájlt, és nyissa meg egy webböngészőben. Helyezz
 
 A Computer Vision Hírességek funkciója hírességek alapján elemez egy képet. Az elemzés befejezése után a Hírességek egy JSON-objektumot eredményez, amely a képen található hírességeket azonosítja.
 
-Az oktatóalkalmazás Hírességek funkciójának végrehajtásához tegye a következőket:
+Az alkalmazás a Hírességek funkció végrehajtásához hajtsa végre az alábbi lépéseket:
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>Az eseménykezelő kód hozzáadása az űrlap gombjához
+#### <a name="add-the-event-handler-code-for-the-celebrities-button"></a>Adja hozzá a hírességek gomb kezelő kód události
 
 Nyissa meg a **celebrities.html** fájlt egy szövegszerkesztőben, és keresse meg a **celebritiesButtonClick** függvényt a fájl alján.
 
-A **celebritiesButtonClick** eseménykezelő függvény törli az űrlapot, megjeleníti az URL-címben megadott képet, majd meghívja az **IdentifyCelebrities** függvényt a kép elemzéséhez.
-
-Illessze be az alábbi kódot a **celebritiesButtonClick** függvénybe.
+A **celebritiesButtonClick** eseménykezelő függvény törli az űrlapot, megjeleníti az URL-címben megadott képet, majd meghívja az **IdentifyCelebrities** függvényt a kép elemzéséhez. Illessze be az alábbi kódot a **celebritiesButtonClick** függvénybe.
 
 ```javascript
 function celebritiesButtonClick() {
@@ -364,7 +356,7 @@ function IdentifyCelebrities(sourceImageUrl, responseTextArea, captionSpan) {
 }
 ```
 
-#### <a name="run-the-application"></a>Az alkalmazás futtatása
+#### <a name="run-the-celebrities-function"></a>A hírességek függvény futtatása
 
 Mentse a **celebrities.html** fájlt, és nyissa meg egy webböngészőben. Helyezze el az előfizetési kulcsot az **Előfizetési kulcs** mezőben, majd ellenőrizze, hogy a megfelelő régió van-e beállítva az **Előfizetési régió** mezőben. Adja meg egy elemzendő kép URL-címét, majd kattintson a **Kép elemzése** gombra a kép elemzéséhez és az eredmény megjelenítéséhez.
 
@@ -372,15 +364,13 @@ Mentse a **celebrities.html** fájlt, és nyissa meg egy webböngészőben. Hely
 
 A Computer Vision Miniatűr funkciója miniatűrt készít egy képből. Az **intelligens körbevágás** funkció segítségével a Miniatűr funkció azonosítja egy kép lényeges területét, majd ez alapján egy miniatűrt hoz létre, így mindig esztétikusabb miniatűröket készít.
 
-Az oktatóalkalmazás Miniatűr funkciójának végrehajtásához tegye a következőket:
+Az alkalmazás a miniatűr funkció végrehajtásához hajtsa végre az alábbi lépéseket:
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>Az eseménykezelő kód hozzáadása az űrlap gombjához
+#### <a name="add-the-event-handler-code-for-the-thumbnail-button"></a>Adja hozzá a miniatűr gomb kezelő kód události
 
 Nyissa meg a **thumbnail.html** fájlt egy szövegszerkesztőben, és keresse meg a **thumbnailButtonClick** függvényt a fájl alján.
 
-A **thumbnailButtonClick** eseménykezelő függvény törli az űrlapot, megjeleníti az URL-címben megadott képet, majd meghívja kétszer a **getThumbnail** függvényt két miniatűr létrehozásához; egy intelligensen körülvágott és egy körülvágás nélküli képhez.
-
-Illessze be az alábbi kódot a **thumbnailButtonClick** függvénybe.
+A **thumbnailButtonClick** eseménykezelő függvény törli az űrlapot, megjeleníti az URL-címben megadott képet, majd meghívja kétszer a **getThumbnail** függvényt két miniatűr létrehozásához; egy intelligensen körülvágott és egy körülvágás nélküli képhez. Illessze be az alábbi kódot a **thumbnailButtonClick** függvénybe.
 
 ```javascript
 function thumbnailButtonClick() {
@@ -485,7 +475,7 @@ function getThumbnail (sourceImageUrl, smartCropping, imageElement, responseText
 }
 ```
 
-#### <a name="run-the-application"></a>Az alkalmazás futtatása
+#### <a name="run-the-thumbnail-function"></a>A miniatűr függvény futtatása
 
 Mentse a **thumbnail.html** fájlt, és nyissa meg egy webböngészőben. Helyezze el az előfizetési kulcsot az **Előfizetési kulcs** mezőben, majd ellenőrizze, hogy a megfelelő régió van-e beállítva az **Előfizetési régió** mezőben. Adja meg egy elemzendő kép URL-címét, majd kattintson a **Miniatűrök létrehozása** gombra a kép elemzéséhez és az eredmény megtekintéséhez.
 
@@ -493,15 +483,13 @@ Mentse a **thumbnail.html** fájlt, és nyissa meg egy webböngészőben. Helyez
 
 A Computer Vision optikai karakterfelismerés (OCR) funkciója nyomtatott szöveget tartalmazó képeket elemez. Az elemzés befejezése után az OCR egy JSON-objektumot eredményez, amely a szöveget és annak a képen elfoglalt helyét tartalmazza.
 
-Az oktatóalkalmazás OCR funkciójának végrehajtásához tegye a következőket:
+Az alkalmazás a OCR funkció végrehajtásához hajtsa végre az alábbi lépéseket:
 
-### <a name="ocr-step-1-add-the-event-handler-code-for-the-form-button"></a>Optikai Karakterfelismerés 1. lépés: Az eseménykezelő kód hozzáadása az űrlap gombjához
+### <a name="add-the-event-handler-code-for-the-ocr-button"></a>Az esemény kezelő kód OCR gomb hozzáadása
 
 Nyissa meg az **ocr.html** fájlt egy szövegszerkesztőben, és keresse meg az **ocrButtonClick** függvényt a fájl alján.
 
-Az **ocrButtonClick** eseménykezelő függvény törli az űrlapot, megjeleníti az URL-címben megadott képet, majd meghívja az **ReadOcrImage** függvényt a kép elemzéséhez.
-
-Illessze be az alábbi kódot az **ocrButtonClick** függvénybe.
+Az **ocrButtonClick** eseménykezelő függvény törli az űrlapot, megjeleníti az URL-címben megadott képet, majd meghívja az **ReadOcrImage** függvényt a kép elemzéséhez. Illessze be az alábbi kódot az **ocrButtonClick** függvénybe.
 
 ```javascript
 function ocrButtonClick() {
@@ -580,17 +568,17 @@ function ReadOcrImage(sourceImageUrl, responseTextArea) {
 }
 ```
 
-#### <a name="run-the-application"></a>Az alkalmazás futtatása
+#### <a name="run-the-ocr-function"></a>Az optikai Karakterfelismerés függvény futtatása
 
 Mentse az **ocr.html** fájlt, és nyissa meg egy webböngészőben. Helyezze el az előfizetési kulcsot az **Előfizetési kulcs** mezőben, majd ellenőrizze, hogy a megfelelő régió van-e beállítva az **Előfizetési régió** mezőben. Aadja meg egy olvasandó szöveget tartalmazó kép URL-címét, majd kattintson a **Kép felolvasása** gombra a kép elemzéséhez és az eredmény megjelenítéséhez.
 
 ### <a name="read-handwritten-text-handwriting-recognition"></a>Kézzel írt szöveg felolvasása (kézírás-felismerés)
 
-A Computer Vision kézírás-felismerés funkciója egy kézzel írt szöveget tartalmazó képet elemez. Az elemzés befejezése a kézírás-felismerés egy JSON-objektumot eredményez, amely a szöveget és annak a képen elfoglalt helyét tartalmazza.
+A Computer Vision kézírás-felismerés funkciója kézzel írt szöveget tartalmazó képeket elemez. Az elemzés befejezése a kézírás-felismerés egy JSON-objektumot eredményez, amely a szöveget és annak a képen elfoglalt helyét tartalmazza.
 
-Az oktatóalkalmazás kézírás-felismerés funkciójának végrehajtásához tegye a következőket:
+Az alkalmazás a kézírás-felismerés funkció végrehajtásához hajtsa végre az alábbi lépéseket:
 
-#### <a name="add-the-event-handler-code-for-the-form-button"></a>Az eseménykezelő kód hozzáadása az űrlap gombjához
+#### <a name="add-the-event-handler-code-for-the-handwriting-button"></a>Adja hozzá a kézírás-felismerés gomb kezelő kód události
 
 Nyissa meg a **handwriting.html** fájlt egy szövegszerkesztőben, és keresse meg az **handwritingButtonClick** függvényt a fájl alján.
 
@@ -739,11 +727,12 @@ function ReadHandwrittenImage(sourceImageUrl, responseTextArea) {
 }
 ```
 
-#### <a name="run-the-application"></a>Az alkalmazás futtatása
+#### <a name="run-the-handwriting-function"></a>A kézírás-felismerés függvény futtatása
 
 Mentse a **handwriting.html** fájlt, és nyissa meg egy webböngészőben. Helyezze el az előfizetési kulcsot az **Előfizetési kulcs** mezőben, majd ellenőrizze, hogy a megfelelő régió van-e beállítva az **Előfizetési régió** mezőben. Aadja meg egy olvasandó szöveget tartalmazó kép URL-címét, majd kattintson a **Kép felolvasása** gombra a kép elemzéséhez és az eredmény megjelenítéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Computer Vision API CC&#35;-oktatóanyag](CSharpTutorial.md)
-- [Computer Vision API – Python-oktatóanyag](PythonTutorial.md)
+Ebben az útmutatóban használt a Computer Vision API – REST JavaScript a számos elérhető rendszerképet elemzési teszteléséhez. Ezután tekintse meg a hivatkozás dokumentációban talál további információt az API-k vesz részt.
+
+- [Computer Vision API – REST](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)

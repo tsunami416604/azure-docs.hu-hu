@@ -205,6 +205,8 @@
           href: restore-sql-database-azure-vm.md
         - name: Biztonsági másolattal rendelkező SQL Server-adatbázisok kezelése
           href: manage-monitor-sql-database-backup.md
+    - name: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
+      href: backup-azure-sap-hana-database.md
     - name: Windows Server
       items:
         - name: Windows Serveren lévő fájlok és mappák biztonsági mentése

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 05/07/2019
 ms.author: zchia
-ms.openlocfilehash: b7b096bd1ecf0a4df37ed4de0cf618216dccc2bc
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 445579eb780b49f536ef1a9e13e5ca43db6f98f6
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159465"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508595"
 ---
 # <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása üzemeltetőjének jelszókezelő & digitális tároló konfigurálása
 
@@ -84,7 +84,7 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 ### <a name="to-configure-automatic-user-provisioning-for-keeper-password-manager--digital-vault-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus átadása üzemeltetőjének jelszókezelő & digitális Vault az Azure ad-ben:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és válassza ki **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **üzemeltetőjének jelszókezelő & digitális Tároló**.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **vállalati alkalmazások**, majd **minden alkalmazás**.
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
@@ -104,19 +104,19 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 6. Jelentkezzen be a [üzemeltetőjének felügyeleti konzol](https://keepersecurity.com/console/#login). Kattintson a **rendszergazdai** , és válasszon ki egy meglévő csomópontot, vagy hozzon létre egy újat. Keresse meg a **kiépítési** lapot, és válasszon **metódus hozzáadása**.
 
-    ![Üzemeltetőjének felügyeleti konzol](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-admin-console.png)
+    ![Üzemeltetőjének felügyeleti konzol](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-admin-console.png)
 
     Válassza ki **SCIM (a tartományok közötti Identity Management rendszer**.
 
-    ![Üzemeltetőjének SCIM hozzáadása](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-add-scim.png)
+    ![Üzemeltetőjének SCIM hozzáadása](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-add-scim.png)
 
     Kattintson a **kiépítés jogkivonat létrehozása**.
 
-    ![Üzemeltetőjének végpont létrehozása](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-create-endpoint.png)
+    ![Üzemeltetőjének végpont létrehozása](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-endpoint.png)
 
     Másolja le az értékeket a **URL-cím** és **Token** , és illessze be őket **bérlői URL-cím** és **titkos jogkivonat** az Azure ad-ben. Kattintson a **mentése** a kiépítési üzemeltetőjének a telepítés befejezéséhez.
 
-    ![Üzemeltetőjének jogkivonat létrehozása](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-create-token.png)
+    ![Üzemeltetőjének jogkivonat létrehozása](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-create-token.png)
 
 7. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD csatlakozhat üzemeltetőjének jelszókezelő & digitális tároló. Ha a kapcsolat hibája esetén, győződjön meg arról, üzemeltetőjének jelszókezelő & digitális tároló fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
 
@@ -130,19 +130,19 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 10. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók üzemeltetőjének jelszókezelő & digitális tároló**.
 
-    ![Üzemeltetőjének Felhasználóleképezéseket](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-user-mappings.png)
+    ![Üzemeltetőjének Felhasználóleképezéseket](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-mappings.png)
 
 11. Tekintse át a üzemeltetőjének jelszókezelő & digitális Vault az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a frissítési műveletek üzemeltetőjének jelszókezelő & digitális tárolóban levő felhasználói fiókokat. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
 
-    ![Üzemeltetőjének felhasználói attribútumok](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-user-attributes.png)
+    ![Üzemeltetőjének felhasználói attribútumok](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-user-attributes.png)
 
 12. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-csoportok üzemeltetőjének jelszókezelő & digitális tároló**.
 
-    ![Üzemeltetőjének csoport-hozzárendelések](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-group-mappings.png)
+    ![Üzemeltetőjének csoport-hozzárendelések](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-mappings.png)
 
 13. Tekintse át a csoportattribútumok üzemeltetőjének jelszókezelő & digitális Vault az Azure AD-ből szinkronizált a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével megfelelnek a üzemeltetőjének jelszókezelő & digitális tároló frissítési műveletek. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
 
-    ![Üzemeltetőjének csoportattribútumok](media/keeperpasswordmanagerdigitalvault-provisioning-tutorial/keeper-group-attributes.png)
+    ![Üzemeltetőjének csoportattribútumok](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-group-attributes.png)
 
 14. Hatókörszűrő konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -176,7 +176,3 @@ Az Azure AD létesítési naplók olvasása további információkért lásd: [-
 
 * [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../manage-apps/check-status-user-account-provisioning.md)
 
-<!--Image references-->
-[1]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-01.png
-[2]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-02.png
-[3]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-03.png

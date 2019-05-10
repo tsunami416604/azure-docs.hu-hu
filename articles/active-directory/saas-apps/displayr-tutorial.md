@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdb4cc26a435ba161532b324ae5a04fed8eb9437
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9694790ea02bc778bf3b9db212e61fabb90a28a8
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158405"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441428"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-displayr"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Displayr
 
@@ -252,7 +252,7 @@ Engedélyezi az Azure AD-felhasználók, jelentkezzen be a Displayr, hogy azok k
 
     d. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -260,9 +260,9 @@ Ha a hozzáférési panelen a Displayr csempére kattint, meg kell lehet automat
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

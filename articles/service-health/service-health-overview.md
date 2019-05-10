@@ -9,12 +9,12 @@ ms.service: service-health
 ms.topic: article
 ms.workload: Supportability
 ms.date: 03/27/2018
-ms.openlocfilehash: 465e8751d02692648234a7a90b84b68f41522cb2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5385777134b911aa08b751978c44597f79acbc7
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60620804"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442397"
 ---
 # <a name="service-health"></a>Service Health
 A Service Health biztosít egy testreszabható irányítópulton, amely nyomon követi a régiókban, ahol használja azokat az Azure-szolgáltatások állapotát. Ezen az irányítópulton követheti a folyamatban lévő szolgáltatással kapcsolatos problémák, a közelgő tervezett karbantartáshoz vagy a megfelelő állapottanácsadási információk aktív események. Amikor események válnak inaktívvá, azok elhelyezett egészségügyi előzményekben legfeljebb 90 napig. Végül használhatja a Szolgáltatásállapot-irányítópult létrehozása és kezelése a service health-riasztásokat, amelyek proaktívan értesíti, amint a szolgáltatással kapcsolatos problémák hatással vannak.
@@ -60,5 +60,7 @@ Szolgáltatás állapotának megjelenítése az üzleti szempontból kritikus fo
 ## <a name="configure-service-health-alerts"></a>Service health-riasztások konfigurálása
 A Service Health integrálható az Azure Monitor riasztásra, e-mailek, szöveges üzenetben és webhook-értesítésekkel, ha az üzleti szempontból kiemelt fontosságú erőforrásokat érintő eseményekről. Állítsa be a megfelelő service health esemény egy tevékenységnapló-riasztás. A riasztás átirányítása a megfelelő személyeket a szervezetben Műveletcsoportok használatával. További információkért lásd: [riasztásainak konfigurálása a Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md)
 
-# <a name="next-steps"></a>További lépések
-Riasztások beállítása, így állapotbeli probléma értesítést kap. További információkért lásd: [riasztásainak konfigurálása a Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
+
+## <a name="next-steps"></a>További lépések
+Riasztások beállítása, így állapotbeli probléma értesítést kap. További információkért lásd: [ajánlott eljárások az Azure Service Health-riasztások beállításával kapcsolatos](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s). 

@@ -1,6 +1,6 @@
 ---
-title: PaaS üzemelő példányainak biztonságossá tétele |} A Microsoft Docs
-description: " Ismerje meg a biztonsági előnyöket, paas és más felhőalapú szolgáltatás, és biztonságossá tétele az Azure PaaS üzemelő példány vonatkozó ajánlott eljárások megismerése. "
+title: Ajánlott eljárások biztonságos PaaS üzemelő példányok – Microsoft Azure
+description: Ajánlott eljárások az tervezése, létrehozása, és felügyelete biztonságos felhőbeli alkalmazások az Azure-on és más felhőalapú szolgáltatás modelleket és PaaS biztonsági előnyöket ismertetése.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2019
+ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: e833317fa16576fa0006a774226d12974fd93ed8
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 9da7a3b91223b8a6fd25814a10a0cbafd645d132
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107443"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231113"
 ---
 # <a name="securing-paas-deployments"></a>PaaS üzemelő példányainak biztonságossá tétele
 
@@ -29,6 +29,8 @@ Ez a cikk, amely segítséget nyújt információkat:
 - A platform előnyeinek értékelődik ki a platformszolgáltatás (PaaS) és más cloud service-modellek
 - Módosítja a biztonsági fókusz egy hálózati-központú egy identitás-központú szegélyhálózat-alapú biztonsági módszer
 - Általános PaaS biztonsági ajánlott eljárások javaslatok megvalósítása
+
+[Az Azure-ban a biztonságos alkalmazások fejlesztésére](abstract-develop-secure-apps.md) általános útmutatást nyújt a biztonsági kérdéseket és a vezérlőket is mindegyik fázisban, a szoftverek fejlesztési életciklus során megfontolandó a felhőalapú alkalmazások fejlesztésével.
 
 ## <a name="cloud-security-advantages"></a>Felhőbeli biztonsági előnyeit
 Nincsenek biztonsági előnyök, hogy a felhőben. A helyszíni környezetben, valószínűleg a szervezet rendelkezik a teljesítetlen feladatokról, valamint korlátozott erőforrások biztonsági, amely létrehoz egy környezetet, ahol a támadók képesek minden rétegen biztonsági réseit támogatásán érhető el.
@@ -155,6 +157,10 @@ Használat [Azure Application Insights](https://azure.microsoft.com/documentatio
 
 Az Application Insights kiterjedt eszközkészlettel rendelkezik az általa gyűjtött adatok feldolgozásához. Az Application Insights egy általános adattárban tárolja az adatait. Előnyeit, például a riasztások, irányítópultok és a Kusto-lekérdezés nyelvvel mélyelemzés a megosztott funkciót is igénybe vehet.
 
+## <a name="perform-security-penetration-testing"></a>Hajtsa végre a biztonsági behatolásvizsgálat
+Biztonsági védelmekkel ellenőrzése olyan fontos, mint bármely más funkció tesztelése. Győződjön meg arról, [behatolásvizsgálat](azure-security-pen-testing.md) egy standard a buildelési és üzembe helyezési folyamat során. Ütemezheti rendszeres biztonsági vizsgálatok és a biztonsági ellenőrzés a telepített alkalmazások használatát, és figyelje a megnyitott portok, végpontok és támadásokat.
+
+Fuzz tesztelése a program hibák (kód hibák) helytelen formátumú bemeneti adatok elemzése és felhasználását a program felületek (belépési pontok) megadásával kereséséhez módszer. [A Microsoft biztonsági Kockázatészlelés](https://www.microsoft.com/en-us/security-risk-detection/) felhőalapú eszköz, amely segítségével keressen programhibák és más biztonsági réseket a szoftver központi telepítése előtt, az Azure-bA. Az eszköz célja a tényleges biztonsági réseket, így nem kell jelentse, szoftverleállások foglalkozik, vagy a válaszolni a támadás után jelent meg a szoftver szoftverek telepítéséhez.
 
 
 ## <a name="next-steps"></a>További lépések
@@ -166,6 +172,8 @@ Ebben a cikkben összpontosítottunk egy Azure PaaS üzemelő példány és a fe
 - Azure Cache for Redis
 - Azure Service Bus
 - Webalkalmazás-tűzfalak
+
+Lásd: [biztonságos alkalmazásokat az Azure fejlesztésének](abstract-develop-secure-apps.md) biztonsági kérdéseket és a vezérlők is mindegyik fázisban, a szoftverek fejlesztési életciklus során megfontolandó a felhőalapú alkalmazások fejlesztésével.
 
 Lásd: [Azure ajánlott biztonsági eljárások és minták](security-best-practices-and-patterns.md) további ajánlott biztonsági eljárások szeretne használni, amikor a tervezése, telepítése, és a felhőalapú megoldások kezelése az Azure használatával.
 

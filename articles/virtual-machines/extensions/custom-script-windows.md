@@ -8,14 +8,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/15/2019
+ms.date: 05/02/2019
 ms.author: gwallace
-ms.openlocfilehash: e2b36633996f961d100f0a98abb09135fd4393e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b71ba69bcf4965ea607e097c392573e77aab6865
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60869860"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408276"
 ---
 # <a name="custom-script-extension-for-windows"></a>A Windows egyéni szkriptek futtatására szolgáló bővítmény
 
@@ -28,7 +28,7 @@ Ez a dokumentum részletesen használata az egyéni Szkriptbővítmény használ
 > [!NOTE]  
 > Ne használjon egyéni szkriptek futtatására szolgáló bővítmény óta magát a vár az Update-azvm parancsmag futtatásához a virtuális géppel azonos a paraméterként.  
 
-### <a name="operating-system"></a>Operációs rendszer
+### <a name="operating-system"></a>Operációs rendszer:
 
 A Custom Script bővítmény a Windows rendszer további információ a támogatott bővítmény kiterjesztés nyílt forráskódú, futtassa, és ez [Azure-bővítmény által támogatott operációs rendszerek](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems).
 
@@ -133,7 +133,7 @@ Hibakeresés, de hasznos lehet nyilvános beállítások használata javasolt, h
 
 Nyilvános beállításokat a virtuális gép, ahol a parancsfájl végrehajtása szövegként érkeznek.  Védett beállítások vannak titkosítva, csak az Azure és a virtuális gép ismert kulcsot használ. A beállítások lesznek mentve a virtuális géphez, mivel lettek küldve, vagyis ha a beállítások titkosított mentést titkosított a virtuális gépen. A tanúsítvány használatával fejthetők vissza a titkosított értékek tárolja a virtuális gépen, és fejti vissza a futásidejű beállításokat (ha szükséges).
 
-## <a name="template-deployment"></a>Sablonalapú telepítés
+## <a name="template-deployment"></a>Sablon telepítése
 
 Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. JSON-sémáját, amely az előző szakaszban részletes üzembe helyezés során az egyéni szkriptek futtatására szolgáló bővítmény futtatása az Azure Resource Manager-sablon is használható. A következő példák bemutatják, hogyan használja az egyéni szkriptek futtatására szolgáló bővítmény:
 
@@ -207,6 +207,16 @@ Ha azt szeretné, az egyéni szkriptek futtatására szolgáló bővítmény fut
 * A bővítmény **neve** paraméter értéke ugyanaz, mint a bővítmény a korábbi telepítésben.
 * Frissítse a konfigurációt más módon a parancs nem fog újra hajtható végre. Hozzáadhat egy dinamikus tulajdonságban parancsba, például egy időbélyegző.
 
+Másik lehetőségként beállíthatja a [ForceUpdateTag](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension.forceupdatetag) tulajdonságot **igaz**.
+
+### <a name="using-invoke-webrequest"></a>Invoke-WebRequest használatával
+
+Ha használ [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) a szkriptben paramétert meg kell adnia a `-UseBasicParsing` vagy más fog kapni a következő hiba, amikor a részletes állapot ellenőrzése:
+
+```error
+The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
+```
+
 ## <a name="classic-vms"></a>A klasszikus virtuális gépeket
 
 Az egyéni szkriptek futtatására szolgáló bővítmény klasszikus virtuális gépeket üzembe helyezéséhez használhatja az Azure portal vagy a klasszikus Azure PowerShell-parancsmagokat.
@@ -239,7 +249,7 @@ $vm | Update-AzureVM
 
 ## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 
-### <a name="troubleshoot"></a>Hibaelhárítás
+### <a name="troubleshoot"></a>Az eszköz nem tudta a várt módon befejezni a szinkronizálást. A probléma megoldásának módjáról erre az üzenetre kattintva tájékozódhat.
 
 Bővítmény központi telepítések állapotát lehet adatokat beolvasni az Azure Portalról, és az Azure PowerShell-modul segítségével. Adott Virtuálisgép-bővítmények központi telepítési állapotának megtekintéséhez futtassa a következő parancsot:
 

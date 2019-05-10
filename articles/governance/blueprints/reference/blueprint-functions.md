@@ -7,12 +7,12 @@ ms.date: 04/15/2019
 ms.topic: reference
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 0de3e0add804290cdfe27e2e97d8b1a0f240e0a6
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.openlocfilehash: dc72113a8f5ed978d64d35c43e94dc9e19e4cdb1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63769301"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209412"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Functions Azure tervezetek való használatra
 
@@ -41,11 +41,11 @@ Visszaadja, hogy tervezetösszetevők kimenetek egy objektumának tulajdonságai
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-Kimeneti tulajdonságok objektum. A kimeneti tulajdonságok akkor függ a tervezet lehívandó összetevő hivatkozik rá. Minden típus hajtsa végre a formátum:
+Kimeneti tulajdonságok objektum. A **kimenete** a tulajdonságok akkor függ a tervezet lehívandó összetevő hivatkozik rá. Minden típus hajtsa végre a formátum:
 
 ```json
 {
-  "output": {collectionOfOutputProperties}
+  "outputs": {collectionOfOutputProperties}
 }
 ```
 
@@ -53,7 +53,7 @@ Kimeneti tulajdonságok objektum. A kimeneti tulajdonságok akkor függ a tervez
 
 ```json
 {
-    "output": {
+    "outputs": {
         "policyAssignmentId": "{resourceId-of-policy-assignment}",
         "policyAssignmentName": "{name-of-policy-assignment}",
         "policyDefinitionId": "{resourceId-of-policy-definition}",
@@ -63,13 +63,13 @@ Kimeneti tulajdonságok objektum. A kimeneti tulajdonságok akkor függ a tervez
 
 #### <a name="resource-manager-template-artifact"></a>Resource Manager-sablon összetevő
 
-A **kimeneti** a visszaadott objektum tulajdonságainak belül a Resource Manager-sablont, és a központi telepítés által visszaadott.
+A **kimenete** a visszaadott objektum tulajdonságainak belül a Resource Manager-sablont, és a központi telepítés által visszaadott.
 
 #### <a name="role-assignment-artifact"></a>Szerepkör-hozzárendelési összetevője
 
 ```json
 {
-    "output": {
+    "outputs": {
         "roleAssignmentId": "{resourceId-of-role-assignment}",
         "roleDefinitionId": "{resourceId-of-role-definition}",
         "principalId": "{principalId-role-is-being-assigned-to}",
@@ -109,12 +109,12 @@ Néhány példa az adatok beolvasása a _myTemplateArtifact_ minta vannak:
 
 | Kifejezés | Típus | Érték |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").output.myArray]` | Tömb | \["first", "másodperc"\] |
-|`[artifacts("myTemplateArtifact").output.myArray[0]]` | String | "first" |
-|`[artifacts("myTemplateArtifact").output.myString]` | String | "a karakterlánc-érték" |
-|`[artifacts("myTemplateArtifact").output.myObject]` | Object | {"myproperty": "saját érték", "anotherProperty": true} |
-|`[artifacts("myTemplateArtifact").output.myObject.myProperty]` | String | a "value" |
-|`[artifacts("myTemplateArtifact").output.myObject.anotherProperty]` | Bool | True (Igaz) |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Tömb | \["first", "másodperc"\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "first" |
+|`[artifacts("myTemplateArtifact").outputs.myString]` | String | "a karakterlánc-érték" |
+|`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | {"myproperty": "saját érték", "anotherProperty": true} |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | a "value" |
+|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True (Igaz) |
 
 ## <a name="concat"></a>Concat
 
@@ -324,7 +324,7 @@ Ezután a `resourceGroups()` függvény bármely tervezet lehívandó összetev�
 }
 ```
 
-## <a name="subscription"></a>előfizetést
+## <a name="subscription"></a>előfizetés
 
 `subscription()`
 

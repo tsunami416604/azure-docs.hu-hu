@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7aca42aa13ef78647b591eb0be7083f932ce0c35
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f88643000b85965b2f275cc6e7494f427d0fe43e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191030"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231148"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Gyors útmutató: Jelentkezzen be a Microsoft ASP.NET-webalkalmazás hozzáadása
 
@@ -38,7 +38,7 @@ A rövid útmutató végén az alkalmazása el fogja fogadni a bejelentkezéseke
 
 Először is győződjön meg arról, hogy az alábbi előfeltételek teljesülnek:
 
-* A Visual Studio 2015 Update 3 vagy Visual Studio 2019 szükséges. Nincs telepítve? [Töltse le az ingyenes Visual Studio 2019](https://www.visualstudio.com/downloads/)
+* A Visual Studio 2015 Update 3 vagy újabb verziója szükséges. Nincs telepítve? [Töltse le az ingyenes Visual Studio 2019](https://www.visualstudio.com/downloads/)
 
 ## <a name="scenario-sign-in-users-from-work-and-school-accounts-in-your-aspnet-app"></a>Forgatókönyv: A felhasználók a munkahelyi és iskolai fiókjába az ASP.NET-alkalmazás
 
@@ -70,9 +70,10 @@ Ha inkább a minta Visual Studio-projektjét szeretné letölteni, kövesse az a
 ## <a name="step-2-create-your-aspnet-project"></a>2. lépés: Az ASP.NET-projekt létrehozása
 
 1. A Visual Studióban lépjen a **File > New > Project** (Fájl > Új > Projekt) lehetőségre.
-2. A **Visual C#\Web** területen válassza az **ASP.NET Web Application (.NET Framework)** (ASP.NET-webalkalmazás (.NET-keretrendszer)) lehetőséget.
-3. Nevezze el az alkalmazást, és kattintson az **OK** gombra.
-4. Válassza ki az **Empty** (Üres) lehetőséget, majd jelölje be a jelölőnégyzetet az **MVC** hivatkozások hozzáadásához.
+2. A **typ Projektu**válassza **webes**, majd **ASP.NET Web Application (.NET Framework)**.
+3. Adjon nevet az alkalmazásnak, és válassza ki **létrehozás**.
+4. Válassza ki **üres** majd **MVC** alatt **mappák hozzáadása & alapvető hivatkozások** az MVC mutató hivatkozásokat tudjon felvenni.
+5. Kattintson a **Létrehozás** gombra.
 
 ## <a name="step-3-add-authentication-components"></a>3. lépés: Adja hozzá a hitelesítés összetevői
 
@@ -125,7 +126,7 @@ Az OWIN közbenső szoftver *indítási osztályának* létrehozása:
 Hozzon létre egy új vezérlőt a be- és kijelentkezési metódusok felfedéséhez.
 
 1.  Kattintson a jobb gombbal a **Controllers** (Vezérlők) mappára, majd válassza az **Add > Controller** (Hozzáadás > Vezérlő) lehetőséget.
-2.  Válassza az **MVC (.NET version) Controller – Empty** (MVC (.NET verzió) vezérlő – Üres) elemet.
+2.  Válassza az **MVC {version} Controller – Empty** (MVC {verzió} vezérlő – Üres) elemet.
 3.  Válassza a **Hozzáadás** lehetőséget.
 4.  Adja neki a `HomeController` nevet, majd válassza az **Add** (Hozzáadás) lehetőséget.
 5.  Adja hozzá az **OWIN** névtereket az osztályhoz:
@@ -292,7 +293,7 @@ A felhasználói jogcímek megtekintéséhez kattintson a hivatkozásra. Ez a m�
 |---|---|---|
 | Name (Név) | {Felhasználó teljes neve} | A felhasználó vezeték- és utóneve |
 | Felhasználónév | <span>user@domain.com</span> | A bejelentkezett felhasználó azonosítására használt felhasználónév |
-| Tárgy| {Tárgy} |A karakterlánc egyedi azonosítására szolgál a felhasználó bejelentkezési a weben |
+| Tárgy| {Subject} |A karakterlánc egyedi azonosítására szolgál a felhasználó bejelentkezési a weben |
 | Bérlőazonosító | {Guid} | Egy *guid* azonosító, amely egyedileg jelöli a felhasználó Azure AD szervezetét |
 
 Emellett egy táblázatot is látni fog a hitelesítési kérésben található összes felhasználói jogcímmel. Az azonosító jogkivonatokban található jogcímek listáját és a hozzájuk tartozó magyarázatokat lásd: [Az azonosító jogkivonatban előforduló jogcímek listája](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).

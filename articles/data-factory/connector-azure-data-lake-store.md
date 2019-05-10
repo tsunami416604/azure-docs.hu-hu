@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 524842c81380079906c4f8e0a523dfd13f83509d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: HT
+ms.openlocfilehash: 897bcabe36b580a287a85af04bad6458b4282c16
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149729"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228652"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Data Lake Storage Gen1 Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -278,7 +278,7 @@ Adatok másolása az ADLS-Gen1 **Parquet vagy tagolt szövegformátum**, tekints
 | maxConcurrentConnections | A szeretne csatlakozni a storage-tároló egyidejű kapcsolatok száma. Adja meg, csak akkor, ha szeretné korlátozni a egyidejű kapcsolat az adattárba. | Nem                                            |
 
 > [!NOTE]
-> A Parquet vagy tagolt szövegformátum **AzureDataLakeStoreSource** továbbra is támogatott a következő szakaszban említett típusa másolási tevékenység forrása-visszamenőleges kompatibilitásra szolgál. A jövőben az új modell használata javasolt, és ezek a típusok létrehozása a felhasználói felület szerzői ADF változott.
+> A Parquet vagy tagolt szövegformátum **AzureDataLakeStoreSource** továbbra is támogatott a következő szakaszban említett típusa másolási tevékenység forrása – az előző verziókkal való kompatibilitás. A jövőben az új modell használata javasolt, és ezek a típusok létrehozása a felhasználói felület szerzői ADF változott.
 
 **Példa**
 
@@ -379,7 +379,7 @@ Adatok másolása az ADLS-Gen1 **Parquet vagy tagolt szövegformátum**, tekints
 | maxConcurrentConnections | Az adattár egyidejűleg csatlakozni a kapcsolatok száma. Adja meg, csak akkor, ha szeretné korlátozni a egyidejű kapcsolat az adattárba. | Nem       |
 
 > [!NOTE]
-> A Parquet vagy tagolt szövegformátum **AzureDataLakeStoreSink** továbbra is támogatott a következő szakaszban említett típusa másolási tevékenység fogadó-visszamenőleges kompatibilitásra szolgál. A jövőben az új modell használata javasolt, és ezek a típusok létrehozása a felhasználói felület szerzői ADF változott.
+> A Parquet vagy tagolt szövegformátum **AzureDataLakeStoreSink** továbbra is támogatott a következő szakaszban említett típusa másolási tevékenység fogadó-visszamenőleges kompatibilitásra. A jövőben az új modell használata javasolt, és ezek a típusok létrehozása a felhasználói felület szerzői ADF változott.
 
 **Példa**
 

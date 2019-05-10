@@ -7,25 +7,25 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: iainfou
-ms.openlocfilehash: d8e095303161002d10914ca7c3213ac0c6894e5d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5a287a8da884290e94e9ac1c864abe28e47d53d
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467127"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508145"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Előnézet - igények figyelembevételével készült alkalmazás az Azure Kubernetes Service (AKS) egy fürt automatikus méretezése
 
 Tartani az alkalmazások számára az Azure Kubernetes Service (AKS), szükség lehet a számítási feladatokat futtató csomópontok számának beállításához. A fürt méretező összetevő esetében a fürtben, amely korlátozott erőforrások miatt nem lehet ütemezni podok tekintheti meg. Problémák észlelése, a csomópontok számát az alkalmazás igény nő. Csomópontok futtató podok, majd csökkenthető az igény szerint csomópontok hiánya szintén rendszeresen ellenőrzi. Automatikus méretezése felfelé és lefelé az AKS-fürt a csomópontok számát, ez a képesség lehetővé teszi egy hatékony, költségkímélő fürtöt futtat.
 
-Ez a cikk bemutatja, hogyan engedélyezheti és kezelheti a fürt méretező az AKS-fürtben.
+Ez a cikk bemutatja, hogyan engedélyezheti és kezelheti a fürt méretező az AKS-fürtben. Fürt méretező csak egyetlen csomópontkészletek AKS-fürtöket az előzetes verzióban érhető el kell vizsgálni.
 
 > [!IMPORTANT]
 > Az AKS előzetes verziójú funkciók a következők: az önkiszolgáló és vehetnek részt. Visszajelzés és hibák gyűjtsön közösségünkhöz előzetes verziók vannak megadva. Azonban nem támogatja őket az Azure műszaki támogatást. Hozzon létre egy fürtöt, vagy adja hozzá ezeket a funkciókat a meglévő fürtökre, ha a fürt nem támogatott, mindaddig, amíg a funkció már nem előzetes verzióban érhető el és hallgatóknak az általánosan elérhető (GA).
 >
 > Ha az előzetes verziójú szolgáltatásaihoz is problémák merülnek fel [nyisson egy problémát a AKS GitHub-adattárat a] [ aks-github] az előzetes verziójú funkció a bejelentett hiba címét nevére.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk megköveteli, hogy futnak-e az Azure CLI 2.0.55 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
@@ -59,6 +59,12 @@ Ha elkészült, frissítse a regisztrációját a *Microsoft.ContainerService* e
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
+
+## <a name="limitations"></a>Korlátozások
+
+Az alábbi korlátozások érvényesek, ha létrehozásához és kezeléséhez használja a virtual machine scale sets AKS-fürt:
+
+* A HTTP-kérelem útválasztási bővítmény nem használható.
 
 ## <a name="about-the-cluster-autoscaler"></a>Fürt automatikus méretező kapcsolatban
 
@@ -101,7 +107,6 @@ az group create --name myResourceGroup --location canadaeast
 az aks create \
   --resource-group myResourceGroup \
   --name myAKSCluster \
-  --kubernetes-version 1.12.6 \
   --node-count 1 \
   --enable-vmss \
   --enable-cluster-autoscaler \

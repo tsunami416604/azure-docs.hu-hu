@@ -2,19 +2,19 @@
 title: Oktatóanyag – Azure Key Vault használata egy Windows virtuális gép a Pythonban |} A Microsoft Docs
 description: Ebben az oktatóanyagban konfigurál, olvassa el a titkos kulcs a key vaultból egy ASP.NET core-alkalmazást.
 services: key-vault
-author: mbaldwin
+author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 58d1b9d293e88612853aec9303f4c4110d6a5cd2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 985380fd24e0db697f9dc9b1c5b2e5b8af2e6cbf
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701950"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228085"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>Oktatóanyag: Az Azure Key Vault használata egy Windows virtuális gép a Pythonban
 

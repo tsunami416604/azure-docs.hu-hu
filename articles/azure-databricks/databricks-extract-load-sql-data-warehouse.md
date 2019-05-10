@@ -7,18 +7,17 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.workload: Active
-ms.date: 02/15/2019
-ms.openlocfilehash: e306245da2c76560ad447358fa1a57e491c370ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/07/2019
+ms.openlocfilehash: e2110378d16ff5826b8ded4620276b784ef1d68e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60239335"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203358"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Oktatóanyag: A kinyerési, átalakítási és az adatok betöltése az Azure Databricks használatával
 
-Ebben az oktatóanyagban egy ETL (kinyerés, átalakítás és adatok betöltése) hajt végre műveletet az Azure Databricks használatával. Adatok kinyerése az Azure Data Lake Storage Gen2 az Azure Databricksbe, átalakításokat futtat az adatok az Azure Databricksben, és majd betölti az átalakított adatokat az Azure SQL Data Warehouse-bA.
+Ebben az oktatóanyagban egy ETL (kinyerés, átalakítás és adatok betöltése) hajt végre műveletet az Azure Databricks használatával. Adatok kinyerése az Azure Data Lake Storage Gen2 az Azure Databricksbe, átalakításokat futtat az adatok az Azure Databricksben, és betölti az átalakított adatokat az Azure SQL Data Warehouse-bA.
 
 A jelen oktatóanyagban szereplő lépések az Azure Databricks SQL Data Warehouse-összekötőjét használják az adatok Azure Databricksbe való átviteléhez. Az összekötő ezután az Azure Blob Storage-ot használja ideiglenes tárolóként az Azure Databricks-fürt és az Azure SQL Data Warehouse között átvitt adatokhoz.
 
@@ -48,13 +47,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Hajtsa végre ezeket a feladatokat, ez az oktatóanyag megkezdése előtt:
 
-* Hozzon létre egy Azure SQL data warehouse, hozzon létre egy kiszolgálószintű tűzfalszabályt, és csatlakozzon a kiszolgálóhoz kiszolgáló-rendszergazdaként Lásd: [a rövid útmutató: Hozzon létre egy Azure SQL data warehouse](../sql-data-warehouse/create-data-warehouse-portal.md).
+* Hozzon létre egy Azure SQL data warehouse, hozzon létre egy kiszolgálószintű tűzfalszabályt, és csatlakozzon a kiszolgálóhoz kiszolgáló-rendszergazdaként Lásd: [a rövid útmutató: Hozzon létre, és az Azure Portalon, az Azure SQL data warehouse lekérdezéséhez](../sql-data-warehouse/create-data-warehouse-portal.md).
 
 * Hozzon létre egy fő adatbáziskulcsot az Azure SQL data warehouse-hoz. Lásd: [hozzon létre egy fő adatbáziskulcsot](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 
-* Hozzon létre egy Azure Blob Storage-fiókot, benne egy tárolóval. A hozzáférési kulcsot is kérje le a tárfiók eléréséhez. Lásd: [a rövid útmutató: Hozzon létre egy Azure Blob storage-fiók](../storage/blobs/storage-quickstart-blobs-portal.md).
+* Hozzon létre egy Azure Blob Storage-fiókot, benne egy tárolóval. A hozzáférési kulcsot is kérje le a tárfiók eléréséhez. Lásd: [a rövid útmutató: Feltöltése, letöltése és az Azure Portal blobok listázása](../storage/blobs/storage-quickstart-blobs-portal.md).
 
-* Hozzon létre egy Azure Data Lake Storage Gen2 tárfiókot. Lásd: [hozzon létre egy Azure Data Lake Storage Gen2 fiókot](../storage/blobs/data-lake-storage-quickstart-create-account.md).
+* Hozzon létre egy Azure Data Lake Storage Gen2 tárfiókot. Lásd: [a rövid útmutató: Hozzon létre egy Azure Data Lake Storage Gen2 tárfiókot](../storage/blobs/data-lake-storage-quickstart-create-account.md).
 
 *  Hozzon létre egy egyszerű szolgáltatást. Lásd: [hogyan: A portál használatával hozzon létre egy Azure AD alkalmazás és -szolgáltatásnév erőforrások eléréséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
@@ -355,6 +354,11 @@ Ahogy korábban említettük, az SQL Data Warehouse-összekötő használatával
        .mode("overwrite")
        .save()
    ```
+
+   > [!NOTE]
+   > Ebben a példában a `forward_spark_azure_storage_credentials` azt a jelzőt, amely az SQL Data Warehouse hatására adatokhoz való hozzáférésének a hozzáférési kulcs használatával blob storage-ból. Ez a hitelesítés az egyetlen támogatott mód.
+   >
+   > Ha korlátozni, válassza ki a virtuális hálózatok az Azure Blob Storage, SQL Data Warehouse igényel [Felügyeltszolgáltatás-identitás helyett Tárelérési kulcsok](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Ennek következtében a hiba "a kérelem nem jogosult e művelet elvégzéséhez."
 
 6. Az SQL-adatbázishoz csatlakozik, és győződjön meg arról, hogy megjelenik-e egy adatbázist **SampleTable**.
 

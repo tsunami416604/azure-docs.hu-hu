@@ -11,17 +11,17 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 066c3cc0a722ea96ff98aba613b493e2be77df0e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 17f701eb9ad3c083712ddf9e774e6ddbefbe91fd
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60412479"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65227948"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Dinamikus csoportok és az Azure Active Directory B2B-együttműködés
 
 ## <a name="what-are-dynamic-groups"></a>Mik azok a dinamikus csoportok?
-Biztonságicsoport-tagság dinamikus konfigurálása az Azure Active Directory (Azure AD) érhető el a [az Azure Portalon](https://portal.azure.com). Rendszergazdák az Azure AD felhasználói attribútumok (például a userType, részleg vagy ország) alapján létrehozott csoportok feltöltéséhez szabályokat állíthatnak be. Tagok automatikusan lehet hozzáadni vagy attribútumaik alapján biztonsági csoportból eltávolított. Ezeket a csoportokat is hozzáférést biztosít alkalmazások vagy a felhőbeli erőforrások (SharePoint-helyek, dokumentumok) és a licenceket hozzárendelheti a tagokat. További információ a dinamikus csoportok [az Azure Active Directory dedikált](../active-directory-accessmanagement-dedicated-groups.md).
+Biztonságicsoport-tagság dinamikus konfigurálása az Azure Active Directory (Azure AD) érhető el a [az Azure Portalon](https://portal.azure.com). Rendszergazdák az Azure AD felhasználói attribútumok (például a userType, részleg vagy ország/régió) alapján létrehozott csoportok feltöltéséhez szabályokat állíthatnak be. Tagok automatikusan lehet hozzáadni vagy attribútumaik alapján biztonsági csoportból eltávolított. Ezeket a csoportokat is hozzáférést biztosít alkalmazások vagy a felhőbeli erőforrások (SharePoint-helyek, dokumentumok) és a licenceket hozzárendelheti a tagokat. További információ a dinamikus csoportok [az Azure Active Directory dedikált](../active-directory-accessmanagement-dedicated-groups.md).
 
 A megfelelő [licencelése az Azure AD Premium P1 vagy P2](https://azure.microsoft.com/pricing/details/active-directory/) dinamikus csoportok létrehozása és használata szükséges. További információ: a cikk [dinamikus csoport tagságához Attribútumalapú szabályok létrehozása az Azure Active Directoryban](../users-groups-roles/groups-dynamic-membership.md).
 

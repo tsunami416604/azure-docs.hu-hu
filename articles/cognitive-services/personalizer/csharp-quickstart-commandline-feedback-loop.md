@@ -8,25 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 05/08/2019
 ms.author: edjez
-ms.openlocfilehash: f0aca3e387d675064cf798b4efdeb66cfe906520
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 85252680fcc4d2592d242762d01040c3859b14a2
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153553"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442082"
 ---
 # <a name="quickstart-personalize-content-using-c"></a>Gyors útmutató: Személyre szabhatja a tartalom használatávalC# 
 
 Ez a személyre szabott tartalom megjelenítése C# rövid útmutató a Personalizer szolgáltatással.
 
-Ez a minta bemutatja, hogyan használhatja a személyre szabás készült ügyféloldali kódtára C# a következő műveletek végrehajtásához: 
+Ez a minta azt ismerteti, hogyan használható a Personalizer készült ügyféloldali kódtára C# a következő műveletek végrehajtásához: 
 
  * Rangsorolja a testreszabási műveletek listáját.
  * Érdemes lefoglalni a művelet a felhasználó kiválasztott a megadott esemény alapján rangsorolt felső ellenszolgáltatás jelentést.
 
-Ismerkedés a személyre szabása az alábbi lépésekből áll:
+Ismerkedés a Personalizer az alábbi lépésekből áll:
 
 1. Hivatkozás az SDK-ra 
 1. A felhasználók számára megjelenítendő műveletek rangsorolását kód írása
@@ -34,9 +34,15 @@ Ismerkedés a személyre szabása az alábbi lépésekből áll:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Kell egy [Personalizer szolgáltatás](how-to-settings.md) az előfizetést a kulcs és a jogkivonatok kiállításának szolgáltatás URL-címe. 
+* Kell egy [Personalizer szolgáltatás](how-to-settings.md) lekérni az előfizetési kulcs és a végpont URL-címe. 
 * [A Visual Studio 2015 vagy 2017](https://visualstudio.microsoft.com/downloads/).
-* A Microsoft.Azure.CognitiveServices.Personalization SDK NuGet-csomagot. A telepítési utasításokat az alábbiakban találja.
+* A Microsoft.Azure.CognitiveServices.Personalizer SDK NuGet-csomagot. A telepítési utasításokat az alábbiakban találja.
+
+## <a name="change-the-model-update-frequency"></a>A modell frissítési gyakoriság módosítása
+
+Az Azure Portalon Personalizer erőforrások esetén módosítsa a **modell frissítési gyakoriság** 10 másodperc. Ez lesz betanítása a szolgáltatás gyors, így láthatja, hogyan változik a top művelet minden egyes ismétléskor
+
+![Modell frissítési gyakoriság módosítása](./media/settings/configure-model-update-frequency-settings.png)
 
 ## <a name="creating-a-new-console-app-and-referencing-the-personalizer-sdk"></a>Egy új Konzolalkalmazás létrehozása és a hivatkozás a Personalizer SDK-ra 
 
@@ -45,9 +51,9 @@ Get the latest code as a Visual Studio solution from [GitHub] (add link).
 -->
 
 1. A Visual Studióban hozzon létre egy új Visual C#-konzolalkalmazást.
-1. Személyre szabás kódtár NuGet csomag telepítését. Válassza a menü **eszközök**válassza **Nuget package Manager**, majd **NuGet-csomagok kezelése megoldáshoz**.
-1. Válassza ki a **Tallózás** fülre, majd a a **keresési** mezőbe írja be `Microsoft.Azure.CognitiveServices.Personalization`.
-1. Válassza ki **Microsoft.Azure.CognitiveServices.Personalization** mikor jeleníti meg.
+1. Personalizer library NuGet csomag telepítését. Válassza a menü **eszközök**válassza **Nuget package Manager**, majd **NuGet-csomagok kezelése megoldáshoz**.
+1. Válassza ki a **Tallózás** fülre, majd a a **keresési** mezőbe írja be `Microsoft.Azure.CognitiveServices.Personalizer`.
+1. Válassza ki **Microsoft.Azure.CognitiveServices.Personalizer** mikor jeleníti meg.
 1. Jelölje be a projekt neve melletti jelölőnégyzetet, és válassza ki **telepítése**.
 
 ## <a name="add-the-code-and-put-in-your-personalizer-and-azure-keys"></a>Adja hozzá a kódot, és helyezze a Personalizer és az Azure-kulcsok
@@ -62,35 +68,32 @@ Get the latest code as a Visual Studio solution from [GitHub] (add link).
 A következő C# kódja át a felhasználói adatok _features és a tartalommal kapcsolatos információk teljes körét _műveletek_, az SDK-val Personalizer. Personalizer rangsorolt művelet a felhasználó megjelenítendő felső adja vissza.  
 
 ```csharp
-using Microsoft.Azure.CognitiveServices.Personalization;
-using Microsoft.Azure.CognitiveServices.Personalization.Models;
+using Microsoft.Azure.CognitiveServices.Personalizer;
+using Microsoft.Azure.CognitiveServices.Personalizer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 
-namespace PersonalizationExample
+namespace PersonalizerExample
 {
     class Program
     {
-        // The key specific to your personalization service instance; e.g. "0123456789abcdef0123456789ABCDEF"
-        private const string serviceKey = "";
+        // The key specific to your personalizer service instance; e.g. "0123456789abcdef0123456789ABCDEF"
+        private const string ApiKey = "";
 
-        // The endpoint specific to your personalization service instance; e.g. https://westus2.api.cognitive.microsoft.com/
-        private const string serviceEndpoint = "";
+        // The endpoint specific to your personalizer service instance; e.g. https://westus2.api.cognitive.microsoft.com/
+        private const string ServiceEndpoint = "";
 
         static void Main(string[] args)
         {
             int iteration = 1;
             bool runLoop = true;
 
-            Uri url = new Uri(serviceEndpoint);
-
-            // Get the actions list to choose from personalization with their features.
+            // Get the actions list to choose from personalizer with their features.
             IList<RankableAction> actions = GetActions();
 
-            // Initialize Personalization client.
-            PersonalizationClient client = InitializePersonalizationClient(url);
+            // Initialize Personalizer client.
+            PersonalizerClient client = InitializePersonalizerClient(ServiceEndpoint);
 
             do
             {
@@ -106,7 +109,7 @@ namespace PersonalizationExample
                     new { taste = tasteFeature }
                 };
 
-                // Exclude an action for personalization ranking. This action will be held at its current position.
+                // Exclude an action for personalizer ranking. This action will be held at its current position.
                 IList<string> excludeActions = new List<string> { "juice" };
 
                 // Generate an ID to associate with the request.
@@ -116,7 +119,7 @@ namespace PersonalizationExample
                 var request = new RankRequest(actions, currentContext, excludeActions, eventId);
                 RankResponse response = client.Rank(request);
 
-                Console.WriteLine("\nPersonalization service thinks you would like to have: " + response.RewardActionId + ". Is this correct? (y/n)");
+                Console.WriteLine("\nPersonalizer service thinks you would like to have: " + response.RewardActionId + ". Is this correct? (y/n)");
 
                 float reward = 0.0f;
                 string answer = GetKey();
@@ -136,7 +139,7 @@ namespace PersonalizationExample
                     Console.WriteLine("\nEntered choice is invalid. Service assumes that you didn't like the recommended food choice.");
                 }
 
-                Console.WriteLine("\nPersonalization service ranked the actions with the probabilities as below:");
+                Console.WriteLine("\nPersonalizer service ranked the actions with the probabilities as below:");
                 foreach (var rankedResponse in response.Ranking)
                 {
                     Console.WriteLine(rankedResponse.Id + " " + rankedResponse.Probability);
@@ -152,15 +155,14 @@ namespace PersonalizationExample
         }
 
         /// <summary>
-        /// Initializes the personalization client.
+        /// Initializes the personalizer client.
         /// </summary>
         /// <param name="url">Azure endpoint</param>
-        /// <returns>Personalization client instance</returns>
-        static PersonalizationClient InitializePersonalizationClient(Uri url)
+        /// <returns>Personalizer client instance</returns>
+        static PersonalizerClient InitializePersonalizerClient(string url)
         {
-            PersonalizationClient client = new PersonalizationClient(url,
-            new ApiKeyServiceClientCredentials(serviceKey),
-            new DelegatingHandler[] { });
+            PersonalizerClient client = new PersonalizerClient(
+                new ApiKeyServiceClientCredentials(ApiKey)) {Endpoint = url};
 
             return client;
         }
@@ -202,9 +204,9 @@ namespace PersonalizationExample
         }
 
         /// <summary>
-        /// Creates personalization actions feature list.
+        /// Creates personalizer actions feature list.
         /// </summary>
-        /// <returns>List of actions for personalization.</returns>
+        /// <returns>List of actions for personalizer.</returns>
         static IList<RankableAction> GetActions()
         {
             IList<RankableAction> actions = new List<RankableAction>

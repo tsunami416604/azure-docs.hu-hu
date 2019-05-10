@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ad891f99-179e-4487-834d-35f3bc01c1ec
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 05/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fffaa266a29a500f27759adb7526d1aa6d61ccd0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 211e11b5bfd6a8bb7b1d61fec120566d60b9c5c0
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915237"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191210"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cherwell"></a>Oktatóanyag: A Cherwell az Azure Active Directory-integráció
 
@@ -38,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az Azure AD-integráció konfigurálása a Cherwell, a következőkre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
 * Cherwell egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
@@ -67,7 +68,7 @@ Az Azure AD integrálása a Cherwell konfigurálásához hozzá kell Cherwell a 
 
 4. A Keresés mezőbe írja be a **Cherwell**válassza **Cherwell** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-     ![Az eredmények listájában Cherwell](common/search-new-app.png)
+    ![Az eredmények listájában Cherwell](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
@@ -120,13 +121,13 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Cherwell, hajtsa vé
 
     a. Bejelentkezési URL
 
-    b. Azure Ad Identifier
+    b. Azure AD-azonosító
 
     c. Kijelentkezési URL
 
 ### <a name="configure-cherwell-single-sign-on"></a>Cherwell egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **Cherwell** oldalon kell küldenie a letöltött **tanúsítvány (Base64)** és az Azure Portalról másolt URL-címek megfelelő [Cherwell támogatási csapatának](https://csm.cherwell.com/contact). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **Cherwell** oldalon kell küldenie a letöltött **tanúsítvány (Base64)** és az Azure Portalról másolt URL-címek megfelelő [Cherwell támogatási csapatának](https://cherwellsupport.com/CherwellPortal). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 > [!NOTE]
 > A Cherwell támogatási csapat rendelkezik, a tényleges SSO-konfiguráció beállítása. Értesítést fog kapni, amikor az egyszeri bejelentkezés az előfizetés engedélyezve van.
@@ -147,10 +148,9 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. Az a **neve** írja be a következőt **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
+    b. Az a **felhasználónév** mezőbe írja be a `brittasimon\@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com.
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
@@ -176,7 +176,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. Az a **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
 6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
@@ -184,12 +184,12 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 ### <a name="create-cherwell-test-user"></a>Cherwell tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók Cherwell jelentkezzen be, akkor ki kell építeni Cherwell be. Cherwell, esetén a felhasználói fiókokat kell hozható létre a [Cherwell támogatási csapatának](https://csm.cherwell.com/contact).
+Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a Cherwell, akkor ki kell építeni Cherwell be. Cherwell, esetén a felhasználói fiókokat kell hozható létre a [Cherwell támogatási csapatának](https://cherwellsupport.com/CherwellPortal).
 
 > [!NOTE]
 > Bármely más Cherwell felhasználói fiók létrehozása eszközöket használhatja, vagy API-k által biztosított Cherwell üzembe helyezni az Azure Active Directory felhasználói fiókokat.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

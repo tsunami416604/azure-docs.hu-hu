@@ -10,23 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 05/07/2019
 ms.author: abnarain
-ms.openlocfilehash: d63ede800f7e60db44072234f5ec74910e4c70f2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a7daae90254bb4192dbaf13e1c2f9202e2d2baa
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61262087"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232428"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban
 Az integrációs modul (Integration Runtime, IR), az Azure Data Factory által használt számítási infrastruktúra a következő adatintegrációs képességeket biztosítja különböző hálózati környezetekben:
 
+- **Az adatfolyam**: Hajtsa végre egy [adatfolyam](concepts-data-flow-overview.md) felügyelt Azure-beli számítási környezetben.  
 - **Adatáthelyezés**: Adatok másolása az adattárak nyilvános hálózatok adattárai és privát hálózaton (helyszíni vagy virtuális magánhálózat). Támogatást biztosít a beépített összekötőkhöz, a formátum átalakításához, az oszlopleképezéshez és a nagy teljesítményű, méretezhető adatátvitelhez.
-- **Tevékenység küldése**:  A küldő és a figyelő futó átalakítási tevékenységek a különböző számítási szolgáltatások, például Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server és több.
+- **Tevékenység küldése**:  A küldő és a figyelő futó átalakítási tevékenységek a különböző számítási szolgáltatások, például az Azure Databricks, az Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server és több.
 - **SSIS-csomag végrehajtása**: Azure-beli felügyelt számítási környezetben az SQL Server Integration Services (SSIS)-csomagok natív végrehajtására.
 
-A Data Factoryban a végrehajtandó műveletet egy tevékenység határozza meg. A társított szolgáltatások a céladattárat vagy a számítási szolgáltatást határozzák meg. Az integrációs modulok hídként szolgálnak a tevékenység és a társított szolgáltatások között.  A társított szolgáltatás hivatkozik rájuk, és megadja a számítási környezetet, ahol a tevékenység fut, vagy ahonnan a tevékenységet küldik.  Ily módon a tevékenység végrehajtható a céladattárhoz vagy számítási szolgáltatáshoz lehető legközelebb eső régióban, a lehető leghatékonyabban, a biztonsági és megfelelőségi igényeknek is megfelelően.
+A Data Factoryban a végrehajtandó műveletet egy tevékenység határozza meg. A társított szolgáltatások a céladattárat vagy a számítási szolgáltatást határozzák meg. Az integrációs modulok hídként szolgálnak a tevékenység és a társított szolgáltatások között.  A társított szolgáltatás vagy a tevékenység hivatkozik, és megadja a számítási környezetet, ahol a tevékenység fut, vagy küldik. Ily módon a tevékenység végrehajtható a céladattárhoz vagy számítási szolgáltatáshoz lehető legközelebb eső régióban, a lehető leghatékonyabban, a biztonsági és megfelelőségi igényeknek is megfelelően.
 
 ## <a name="integration-runtime-types"></a>Integrációsmodul-típusok
 A Data Factory három típusú integrációs modult ajánl, és ki kell választania azt a típust, amely a leginkább megfelel az adatintegrációsképesség- és hálózatikörnyezet-igényeinek.  A három típus a következő:
@@ -39,7 +40,7 @@ Az alábbi táblázat ismerteti az integrációs modulok egyes típusainak képe
 
 Integrációs modul típusa | Nyilvános hálózat | Magánhálózat
 ------- | -------------- | ---------------
-Azure | Adatáthelyezés<br/>Tevékenység küldése | &nbsp;
+Azure | Az adatfolyam<br/>Adatáthelyezés<br/>Tevékenység küldése | &nbsp;
 Saját üzemeltetésű | Adatáthelyezés<br/>Tevékenység küldése | Adatáthelyezés<br/>Tevékenység küldése
 Azure SSIS | SSIS-csomag végrehajtása | SSIS-csomag végrehajtása
 
@@ -50,20 +51,24 @@ Az alábbi diagram bemutatja, hogyan használhatók a különböző integráció
 ## <a name="azure-integration-runtime"></a>Azure-beli integrációs modul
 Egy Azure-beli integrációs modul a következőkre képes:
 
+- Az Azure-ban futó adatfolyamok 
 - Másolási tevékenység futtatása felhőalapú adattárak között
-- A nyilvános hálózatban az alábbi átalakítási tevékenységek küldése: HDInsight Hive-tevékenység, HDInsight Pig-tevékenység, HDInsight MapReduce-tevékenység, HDInsight Spark-tevékenység, HDInsight Streaming-tevékenység, Machine Learning Batch Execution-tevékenység, Machine Learning Update Resource-tevékenységek, Stored Procedure-tevékenység Data Lake Analytics U-SQL-tevékenység, egyéni .NET-tevékenység, webes tevékenység, keresési tevékenység és metaadatok beolvasása tevékenység.
+- A nyilvános hálózatban az alábbi átalakítási tevékenységek küldése: Databricks-jegyzetfüzet / Jar / Python-tevékenység, HDInsight Hive-tevékenység, HDInsight Pig-tevékenység, HDInsight MapReduce-tevékenység, HDInsight Spark-tevékenység, HDInsight Streaming-tevékenység, Machine Learning Batch Execution-tevékenység, Machine Learning Update Resource tevékenységek, Stored Procedure-tevékenység, Data Lake Analytics U-SQL-tevékenység, egyéni .NET-tevékenység, webes tevékenység, keresési tevékenység és metaadatok beolvasása tevékenység.
 
 ### <a name="azure-ir-network-environment"></a>Azure-beli integrációs modul hálózati környezete
-Az Azure-beli integrációs modul támogatja az adattárak és számítási szolgáltatások összekapcsolását a nyilvános hálózatban nyilvánosan hozzáférhető végpontokkal. Használhat saját üzemeltetésű integrációs modult az Azure Virtual Network-környezethez.
+Az Azure integrációs modul támogatja az adattárak és számítási szolgáltatások nyilvánosan hozzáférhető végpontokkal. Használhat saját üzemeltetésű integrációs modult az Azure Virtual Network-környezethez.
 
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Azure-beli integrációs modul számítási erőforrásai és skálázása
 Az Azure-beli integrációs modul teljesen felügyelt, kiszolgáló nélküli számítást biztosít az Azure-ban.  Nem kell foglalkoznia infrastruktúra létesítésével, szoftver telepítésével, frissítéssel vagy a kapacitás méretezésével.  Ráadásul csak a tényleges használat időtartamára fizet.
 
-Az Azure-beli integrációs modul biztosítja a natív számítást az adatok felhőalapú adattárak közötti biztonságos, megbízható és nagy teljesítményű módon való mozgatásához.  Beállíthatja a másolási tevékenységhez használni kívánt adatintegrálási egységek mennyiségét, és az Azure IR számítási mérete rugalmasan felskálázható vertikálisan ennek megfelelően anélkül, hogy explicit módon módosítania kellene az Azure-beli integrációs modul méretét.
+Az Azure-beli integrációs modul biztosítja a natív számítást az adatok felhőalapú adattárak közötti biztonságos, megbízható és nagy teljesítményű módon való mozgatásához.  Beállíthatja a másolási tevékenységhez használni kívánt adatintegrálási egységek mennyiségét, és az Azure IR számítási mérete rugalmasan felskálázható vertikálisan ennek megfelelően anélkül, hogy explicit módon módosítania kellene az Azure-beli integrációs modul méretét. 
 
 A tevékenységküldés egy könnyen használható művelet a tevékenységnek a cél számítási szolgáltatásba való irányítására, így ehhez a forgatókönyvhöz nincs szükség a számítási méret vertikális felskálázására.
 
 Az Azure integrációs modulok létrehozásáról és konfigurálásáról az Azure IR létrehozása és konfigurálása útmutatóban találhat információkat. 
+
+> [!NOTE] 
+> Azure integrációs modul kapcsolódik az adatfolyam-futtatókörnyezet, amely meghatározza az alapul szolgáló számítási infrastruktúra, a data-folyamatok futtatása a használni kívánt tulajdonságokkal rendelkezik. 
 
 ## <a name="self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul
 Egy saját üzemeltetésű IR a következőkre képes:
@@ -112,7 +117,13 @@ Beállíthat egy adott helyet az Azure-beli integrációs modul számára. Ebben
 Ha úgy dönt, hogy az automatikus feloldásra képes Azure-beli integrációs modult használja, amely az alapértelmezett beállítás: 
 
 - A másolási tevékenység során az ADF mindent megtesz, hogy automatikusan észlelje a fogadó- és forrásadattárat, kiválassza ugyanabban a régióban (ha lehetséges) vagy a legközelebbi azonos földrajzi helyen a legjobb helyet, vagy helyettük az adat-előállító régiót használja, ha ezek nem észlelhetőek.
+
 - Az ADF az integrációs modult a keresési/metaadat-beolvasási tevékenység végrehajtásakor és az átalakítási tevékenység elküldésekor az adat-előállító régióban használja.
+
+- Az adatfolyam ADF fogja használni az integrációs modul az adat-előállító régióját. 
+
+  > [!TIP] 
+  > Érdemes lehet a biztosítják, hogy az adatfolyam fusson a megfelelő adattárakban ugyanabban a régióban (amennyiben lehetséges). Ennek érdekében automatikus feloldása Azure integrációs modul (ha az adatok tárolási helye ugyanaz, mint a Data Factory helyszíneként), vagy hozzon létre egy új Azure integrációs modul példányt az adattárak ugyanabban a régióban, és az adatfolyam végre. 
 
 A folyamattevékenységek monitorozása nézetben a felhasználói felületen vagy a tevékenységfigyelés hasznos adatainál figyelemmel követheti, melyik integrációs modul lép életbe a tevékenység végrehajtása során.
 
@@ -153,8 +164,13 @@ A keresési és metaadat-beolvasási tevékenységet a rendszer az adattár tár
 
 Minden átalakítási tevékenységhez tartozik egy cél számítási társított szolgáltatás, amely egy integrációs modulra mutat. Ez az integrációsmodul-példány az, ahonnan a rendszer küldi az átalakítási tevékenységet.
 
+### <a name="data-flow-activity"></a>Data Flow tevékenység
+
+Data Flow tevékenység a hozzá tartozó integrációs modul hajtja végre. 
+
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
+- [Azure-beli integrációs modul létrehozása](create-azure-integration-runtime.md)
 - [Saját üzemeltetésű integrációs modul létrehozása](create-self-hosted-integration-runtime.md)
 - [Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatás az Azure SQL Database felügyelt példány használatával és az integrációs modul csatlakoztatása virtuális hálózathoz. 

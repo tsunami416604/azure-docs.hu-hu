@@ -10,35 +10,40 @@ ms.reviewer: jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 03/23/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: a9d0743e30c4ae32c052a9f27c9fa22b1036aead
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a8bd4e02b03a20e348feb2d6c9424f5eb6cf5f9e
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681730"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510053"
 ---
-# <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Az Azure Time Series Insights-környezet referenciaadatok kezelése a C# használatával
+# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Az általánosan elérhető referencia-adatok az Azure Time Series Insights-környezet kezeléseC#
 
 Ez a cikk ismerteti egy példa C#-projektben a referencia-adatok az Azure Time Series Insights-környezet kezelése állíthat össze.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Fordítsa le és futtassa a mintakód előtt, kövesse az alábbi lépéseket:
+
 1. [Hozzon létre egy referencia-adatkészlet](time-series-insights-add-reference-data-set.md).
 
-2. Állítsa be az alkalmazás a hitelesítési hozzáférési jogkivonat. Győződjön meg arról, hogy a jogkivonat igényelve, a Azure Active Directory API-n keresztül. Meg kell átadnia a tokent a `Authorization` minden query API-kérelem fejléce. 
- 
+1. Állítsa be az alkalmazás a hitelesítési hozzáférési jogkivonat. Győződjön meg arról, hogy a jogkivonat igényelve, a Azure Active Directory API-n keresztül. Meg kell átadnia a tokent a `Authorization` minden query API-kérelem fejléce.
+
    Nem interaktív alkalmazások beállításával kapcsolatos további információkért lásd: [hitelesítési és engedélyezési](time-series-insights-authentication-and-authorization.md).
 
-3. A mintakód cserélje le a példában állandókat, a kijelölt szerkesztése **DUMMY #**, a kód kezdetét közelében. 
+1. A mintakód cserélje le a példában állandókat, a kijelölt szerkesztése **DUMMY #**, a kód kezdetét közelében.
 
-Ez a példa kód is érhető el: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights)
+> [!NOTE]
+> Megtekintheti a GA mintakódot talál [ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-ga-preview-sample).
 
-## <a name="project-references"></a>Projekt Referenciáihoz
-Adja hozzá a NuGet-csomagok `Microsoft.IdentityModel.Clients.ActiveDirectory` és `Newtonsoft.Json` ebben a példában. 
+## <a name="project-dependencies"></a>Projekt függőségeinek
 
-## <a name="c-sample-code"></a>C#-mintakód 
+Adja hozzá a NuGet-csomagok `Microsoft.IdentityModel.Clients.ActiveDirectory` és `Newtonsoft.Json` ebben a példában.
+
+## <a name="c-sample-code"></a>C#-mintakód
+
 ```csharp
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 
@@ -134,7 +139,7 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
     ""deleteproperties"": [{
         ""key"": {
             ""DeviceId"": ""Fan1""
-        },
+    },
         ""properties"": [""BladeCount""]
     }]
 }";

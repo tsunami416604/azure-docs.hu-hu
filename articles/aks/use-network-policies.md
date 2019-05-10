@@ -5,47 +5,33 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 05/06/2019
 ms.author: iainfou
-ms.openlocfilehash: 29180d6c1bb5f0991a4f33c3b7c9418f84d8260c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a0512806ec797f43fc54d8a28a7cbadf86faf1d9
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61027971"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230015"
 ---
-# <a name="preview---secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Előnézet - podok hálózati házirendek segítségével az Azure Kubernetes Service (AKS) közötti adatforgalom védelme
+# <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Podok hálózati házirendek segítségével az Azure Kubernetes Service (AKS) közötti adatforgalom védelme
 
 A modern, mikroszolgáltatás-alapú alkalmazások a Kubernetesben való futtatásakor gyakran érdemes szabályozhatja, hogy mely összetevők kommunikálhatnak egymással. Hogyan forgalom is az Azure Kubernetes Service (AKS)-fürt podok áramlanak a legalacsonyabb jogosultsági szint elvének kell alkalmazni. Tegyük fel, valószínűleg szeretné tiltani a forgalom közvetlenül a háttér-alkalmazásokhoz. A *hálózati házirend* a Kubernetes szolgáltatás lehetővé teszi egy fürt podok közötti bejövő és kimenő forgalomra vonatkozó szabályok meghatározásához.
 
-Ez a cikk bemutatja, hogyan telepíti a hálózati házirend-motort, és hozhat létre Kubernetes hálózati szabályzatokat, amelyekkel szabályozható a podok az aks-ben közötti forgalmat. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
+Ez a cikk bemutatja, hogyan telepíti a hálózati házirend-motort, és hozhat létre Kubernetes hálózati szabályzatokat, amelyekkel szabályozható a podok az aks-ben közötti forgalmat. A hálózati házirend csak a Linux-alapú csomópontokat és az aks-ben podok használandó.
 
-> [!IMPORTANT]
-> Az AKS előzetes verziójú funkciók a következők: az önkiszolgáló és vehetnek részt. Visszajelzés és hibák gyűjtsön közösségünkhöz előzetes verziók vannak megadva. Azonban nem támogatja őket az Azure műszaki támogatást. Hozzon létre egy fürtöt, vagy adja hozzá ezeket a funkciókat a meglévő fürtökre, ha a fürt nem támogatott, mindaddig, amíg a funkció már nem előzetes verzióban érhető el és hallgatóknak az általánosan elérhető (GA).
->
-> Ha az előzetes verziójú szolgáltatásaihoz is problémák merülnek fel [nyisson egy problémát a AKS GitHub-adattárat a] [ aks-github] az előzetes verziójú funkció a bejelentett hiba címét nevére.
-
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Az Azure CLI 2.0.61 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
-Hozzon létre egy AKS-fürtöt, amelyekkel a hálózati házirend, először engedélyeznie kell az előfizetés szolgáltatásjelzőre. Regisztrálja a *EnableNetworkPolicy* jelző funkciót, használja a [az a funkció regisztrálása] [ az-feature-register] parancsot az alábbi példában látható módon:
-
-```azurecli-interactive
-az feature register --name EnableNetworkPolicy --namespace Microsoft.ContainerService
-```
-
-Az állapot megjelenítése néhány percet vesz igénybe *regisztrált*. A regisztrációs állapot ellenőrzéséhez használatával a [az szolgáltatáslistát] [ az-feature-list] parancsot:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableNetworkPolicy')].{Name:name,State:properties.state}"
-```
-
-Ha elkészült, frissítse a regisztrációját a *Microsoft.ContainerService* erőforrás-szolgáltató használatával a [az provider register] [ az-provider-register] parancsot:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+> [!TIP]
+> Ha a hálózati házirend-szolgáltatás az előzetes verzióban használt, azt javasoljuk, hogy Ön [hozzon létre egy új fürtöt](#create-an-aks-cluster-and-enable-network-policy).
+> 
+> Ha szeretné, hogy tovább használhassa a meglévő tesztfürtök előzetes verzió használata során használt hálózati házirend, a fürt frissítése a legújabb GA kiadás egy új Kubernetes-verziókat, és majd telepíteni kell a következő YAML-jegyzékfájlt, javítsa ki az összeomlott metrikák kiszolgáló és a Kubernetes Az irányítópult. A javítás csak akkor szükséges, használja a Calico hálózati házirend-motor fürtök esetében.
+>
+> Bevált biztonsági gyakorlat [tekintse át a tartalmát a YAML-jegyzékfájlban] [ calico-aks-cleanup] megérteni, milyen helyezünk üzembe az AKS-fürtöt.
+>
+> `kubectl delete -f https://raw.githubusercontent.com/Azure/aks-engine/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml`
 
 ## <a name="overview-of-network-policy"></a>A hálózati házirend áttekintése
 
@@ -76,8 +62,9 @@ A hálózati házirend csak együttműködik az Azure CNI (speciális) lehetős�
 | Támogatott platformok                      | Linux                      | Linux                       |
 | Támogatott hálózati beállítások             | Azure CNI                  | Azure CNI                   |
 | Kubernetes-specifikáció való megfelelés | Minden házirendtípus támogatott |  Minden házirendtípus támogatott |
-| További funkciók                      | None                       | Kiterjesztett házirend modell globális hálózati házirend, a globális hálózati beállítása és a Gazdagéppel. További tájékoztatást a `calicoctl` kezelheti ezeket a funkciókat, kiterjesztett CLI lásd [calicoctl felhasználói referencia][calicoctl]. |
+| További funkciók                      | Egyik sem                       | Kiterjesztett házirend modell globális hálózati házirend, a globális hálózati beállítása és a Gazdagéppel. További tájékoztatást a `calicoctl` kezelheti ezeket a funkciókat, kiterjesztett CLI lásd [calicoctl felhasználói referencia][calicoctl]. |
 | Támogatás                                  | Az Azure-támogatás és a mérnöki csapat által támogatott | Calico közösségi támogatás. További fizetős támogatási további információkért lásd: [projekt Calico támogatási lehetőségek][calico-support]. |
+| Naplózás                                  | Szabályok hozzáadása vagy törölve lesz, engedélyezze az IPTables a minden gazdagép alatt van bejelentkezve */var/log/azure-npm.log* | További információkért lásd: [Calico összetevő naplók][calico-logs] |
 
 ## <a name="create-an-aks-cluster-and-enable-network-policy"></a>AKS-fürt létrehozása és a hálózati házirend engedélyezése
 
@@ -140,7 +127,6 @@ az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $CLUSTER_NAME \
     --node-count 1 \
-    --kubernetes-version 1.12.6 \
     --generate-ssh-keys \
     --network-plugin azure \
     --service-cidr 10.0.0.0/16 \
@@ -478,12 +464,13 @@ Szabályzatokkal kapcsolatos további tudnivalókért lásd: [Kubernetes hálóz
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
-[aks-github]: https://github.com/azure/aks/issues]
+[aks-github]: https://github.com/azure/aks/issues
 [tigera]: https://www.tigera.io/
-[calicoctl]: https://docs.projectcalico.org/v3.5/reference/calicoctl/
+[calicoctl]: https://docs.projectcalico.org/v3.6/reference/calicoctl/
 [calico-support]: https://www.projectcalico.org/support
+[calico-logs]: https://docs.projectcalico.org/v3.6/maintenance/component-logs
+[calico-aks-cleanup]: https://github.com/Azure/aks-engine/blob/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

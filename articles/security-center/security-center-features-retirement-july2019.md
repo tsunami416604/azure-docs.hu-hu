@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: ac677a7f9586dbe893cbcbc480564aceac0149a0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 614dabe842c7fe99da3ddb486c27003c79382ea1
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147924"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231389"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>A Security Center-szolgáltatásokat (július 2019) kivonása
 
@@ -81,6 +81,7 @@ Elemre kattint, a munkaterületen megnyílik a "Identitás- és hozzáférés" l
 ![Alkalmazásidentitás lap - irányítópult][8]
 
 Az összes fenti három képernyővel módosítástól kivezetjük. Az adatok továbbra is elérhető a log analytics biztonsági megoldás, és nem módosulnak vagy eltávolítva.
+A Security Center érhető el az eredeti Log Analytics-lekérdezések, az identitás és hozzáférés irányítópult feltöltéséhez használt [GitHub-adattár](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards).
 
 ### <a name="classic-identity--access-preview---new-experience"></a>Klasszikus identitás és hozzáférés (előzetes verzió) – új felülete
 A Log analytics-irányítópult csak egy adott munkaterület a biztosított elemzések, míg a natív a Security Center képességei az összes előfizetés és az összes munkaterülethez társítva, egy könnyen betekintést biztosítanak-nézet, amely lehetővé teszi a mi összpontosíthat a Fontos, az az identitás és hozzáférés javaslat a biztonságos pontszám alapján.
@@ -96,13 +97,14 @@ A gomb mellett a munkaterület irányítópult elavulásának után törlődni f
 
 Még ma az "Ugrás a biztonsági események térkép" kattintva a Fenyegetésészlelési irányítópult nyílik meg. A fenyegetésészlelési irányítópult kivonjuk a forgalomból.  
 
-![Fenyegetésfelderítési irányítópult][11]
+![Fenyegetésészlelési irányítópult][11]
 
 Ha úgy dönt, hogy a munkaterületet a megfelelő fenyegetésészlelési irányítópult megtekintéséhez, a biztonsági riasztások map(Preview) képernyő *a Log Analytics* nyitja meg. Ez a képernyő kivonjuk a forgalomból.
 
 ![Biztonsági riasztások térkép a Log Analyticsben][12]
 
 A meglévő adatok továbbra is elérhető a log analytics biztonsági megoldás és fog nem lehet módosítani, és nem eltávolítva.
+A Security Center érhető el az eredeti Log Analytics-lekérdezések a Fenyegetésészlelési irányítópult feltöltéséhez használt [GitHub-adattár](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards).
 
 ### <a name="security-events-map---new-experience"></a>Biztonsági események térkép - új felülete
 Azt javasoljuk, hogy ügyfeleink számára, hogy a riasztások térkép a Security Center beépített funkcióinak használata – "a biztonsági riasztások térkép (előzetes verzió)". Ez egy optimalizált felhasználói élményt biztosít, és együttműködés az összes előfizetés és társított munkaterületek, lehetővé téve a makró a környezete megtekintheti, és nem egyetlen munkaterület összpontosíthat.
@@ -165,6 +167,8 @@ A biztonsági irányítópult a Log analytics jelentős biztonsági események �
 
 ### <a name="security--audit-dashboard---new-experience"></a>Biztonság és naplózás irányítópult – új felülete
 Ügyfeleink javasolja, hogy az Azure Security Center, így az azonos biztonsági áttekintése több előfizetések és munkaterületek társítva, a szolgáltatás a levélforgalmi együtt.
+
+A Security Center érhető el az eredeti Log Analytics-lekérdezések segítségével feltölti a biztonsági és auditálási irányítópultján [GitHub-adattár](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards).
 
 ## <a name="next-steps"></a>További lépések
 - Tudjon meg többet [Azure Security Centerben](https://docs.microsoft.com/azure/security-center/)

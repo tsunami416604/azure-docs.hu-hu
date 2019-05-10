@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbebbeaad681618e8420ad842ec370ce62bc9eba
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b3517f90d97a19740f5be8c2a755532d305522d7
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570836"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228172"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication – gyakran ismételt kérdések
 
@@ -146,11 +146,11 @@ Ha a szervezet nem rendelkezik a hagyományos, nem kell engedélyezné a felhasz
 
 **K: A felhasználók tegyük fel, hogy nem néha kapnak a szöveges üzenetet, vagy azok válasz kétirányú szöveges üzenet, de az ellenőrzés túllépi az időkorlátot.**
 
-Szöveges üzenetek kézbesítésének és a kétirányú SMS válaszok átvételét nem garantált, mert ellenőrizhetetlen tényező, amelyek hatással lehetnek a szolgáltatás megbízhatóságát. Ezek a tényezők közé tartozik a cél ország, a mobilszolgáltatók és a jel erőssége.
+Szöveges üzenetek kézbesítésének és a kétirányú SMS válaszok átvételét nem garantált, mert ellenőrizhetetlen tényező, amelyek hatással lehetnek a szolgáltatás megbízhatóságát. Ezek a tényezők közé tartozik a cél az országban vagy régióban, a mobilszolgáltatók és a jel erőssége.
 
 Ha a felhasználók gyakran megbízhatóan a szöveges üzenetek fogadása problémáit, mondja el neki, inkább a mobil alkalmazás vagy a telefonhívásos módszer használata. A mobilalkalmazás fogadhat értesítéseket, mind a mobil- és Wi-Fi-kapcsolatok felett. Emellett a mobilalkalmazást hozhat létre ellenőrző kódok kezelésére, akkor is, ha az eszköz rendelkezik egyáltalán nincs jel. A Microsoft Authenticator alkalmazás érhető el az [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [IOS](https://go.microsoft.com/fwlink/?Linkid=825073), és [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071).
 
-Ha SMS-eket kell használnia, amikor csak lehetséges kétirányú SMS helyett az egyirányú SMS használatát javasoljuk. Egyirányú SMS megbízhatóbb, és megakadályozza, hogy felhasználói költséggel globális SMS szöveges üzenetben küldött, egy másik országból megválaszolása.
+Ha SMS-eket kell használnia, amikor csak lehetséges kétirányú SMS helyett az egyirányú SMS használatát javasoljuk. Egyirányú SMS megbízhatóbb, és megakadályozza, hogy felhasználói költséggel globális SMS szöveges üzenetben küldött, egy másik országból/régióból megválaszolása.
 
 **K: Mennyi ideig kell a felhasználók előtt a rendszer túllépi az időkorlátot adja meg az ellenőrző kódot szöveges üzenetet is módosíthatja?**
 

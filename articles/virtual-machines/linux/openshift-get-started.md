@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/19/2019
+ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 53bed2131e81ee5ed0f46bde389262ee8349339a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c8ebd10544331d3b7d887124542fe4ee2753c714
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60542424"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233141"
 ---
 # <a name="openshift-in-azure"></a>Az OpenShift az Azure-ban
 
@@ -34,15 +34,15 @@ OpenShift Kubernetes tartalmaz, a tárolóvezénylés és a felügyeleti. Fejles
 
 Nincsenek elérhető az OpenShift több verzióját.  Verzió csak két érhetők el még ma az Azure-ban üzembe: OpenShift Tárolóplatform és OKD (korábbi nevén az OpenShift Origin).
 
+## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
+
+A Microsoft Azure Red Hat OpenShift egy teljes körűen felügyelt ajánlat az Azure-ban futó OpenShift. Ez a szolgáltatás közösen kezelt és a Microsoft és a Red Hat által támogatott. Teljes dokumentáció lehet [Itt](https://docs.microsoft.com/azure/openshift/). 
+
 ## <a name="openshift-container-platform"></a>OpenShift tárolóplatform
 
 Container Platform az olyan vállalati felhasználásra kész [kereskedelmi verzió](https://www.openshift.com) származó és a Red Hat által támogatott. Ebben a verzióban az ügyfelek vásárol a szükséges jogosultságok az OpenShift Tárolóplatform, és telepítési és felügyeleti az egész infrastruktúrát ábrázoló felelős.
 
 "Saját" a teljes platform, mert a helyszíni adatközpontját a, vagy a nyilvános felhőben (például az Azure-ra) telepíthetik azt.
-
-## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
-
-Az Azure Red Hat OpenShift egy teljes körűen felügyelt ajánlat az Azure-ban futó OpenShift. Ez a szolgáltatás közösen kezelt és a Microsoft és a Red Hat által támogatott. A fürt az ügyfél Azure-előfizetésben helyezi üzembe helyezni. A szolgáltatás általánosan elérhető körül 2019. május a javítást. Külön dokumentáció a felügyelt szolgáltatás lesz elérhető, ha a szolgáltatás már általánosan elérhető
 
 ## <a name="okd"></a>OKD
 

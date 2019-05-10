@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 17806abe60236a9c9face1ee16e1d9982975fff6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: fb829cc5f1eef9c151a70a6479e419076e1c3b24
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64734704"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65509846"
 ---
 Tárolási optimalizált Virtuálisgép-méretek magas lemez-adatátviteli és i/o-e, és ideálisak a Big Data, SQL, nosql-alapú adatbázisok, az adattárházak és nagy tranzakciós adatbázisok.  Ilyenek például Cassandra, MongoDB, Cloudera vagy Redis. Ez a cikk ismerteti a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint helyi tároló átviteli sebesség és a hálózati sávszélesség optimalizált méreteire vonatkoztatva számát.
 
@@ -40,8 +40,8 @@ Prémium szintű Storage gyorsítótárazást: Nem támogatott
 | Standard_L8s_v2   |  8 |  64 |  80 |  1x1.92 TB  | 400,000 / 2,000 | 8,000/160 | 16 | 2 / 3,200  | 
 | Standard_L16s_v2  | 16 | 128 | 160 |  2x1.92 TB  | 800,000 / 4,000 | 16,000/320 | 32 | 4 / 6,400  | 
 | Standard_L32s_v2  | 32 | 256 | 320 |  4x1.92 TB  | 1,5 MILLIÓ / 8000    | 32,000/640 | 32 | 8 / 12,800 | 
-| Standard_L64s_v2  | 64 | 512 | 640 |  8x1.92 TB  | 2.9 M / 16 000   | 64,000/1,280 | 32 | 8 / 25,600 |
-| Standard_L80s_v2  | 80 | 640 | 800 | 10x1.92TB   | 3.8 M / 20 000   | 80,000/1,400 | 32 | 8 / 32,000 |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8x1.92 TB  | 2.9 M / 16 000   | 64,000/1,280 | 32 | 8 / 16,600+ |
+| Standard_L80s_v2  | 80 | 640 | 800 | 10x1.92TB   | 3.8 M / 20 000   | 80,000/1,400 | 32 | 8 / 16,000+ |
 
 <sup>1</sup> Lsv2 sorozatú virtuális gépek egy standard SCSI-alapú ideiglenes erőforrás lemez az operációs rendszer stránkování/felcserélés fájl használata (a Windows, Linux rendszeren /dev/sdb D:) rendelkezik. Ezt a lemezt biztosít a tároló 80 GB, 4 000 iops-t, és 80 Mbps átviteli sebesség a minden 8 Vcpu (pl. Standard_L80s_v2 biztosít 800 GiB 40 000 IOPS és 800 Mbps). Ez biztosítja, hogy az NVMe-meghajtókkal teljes dedikálhatja alkalmazás használatát. Ez a lemez elmúló, és minden adat el fog veszni a Leállítás/felszabadítás.
 

@@ -3,17 +3,17 @@ title: Térkép stílusok támogatott az Azure Maps |} A Microsoft Docs
 description: Az Azure Maps által támogatott térképstílusok
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 76ab49c7f28260249483bf3bc4387e8cbaca13b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db396ad06bf46cbbaf486696b68393a6a4214c2f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60767212"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230825"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Az Azure Maps támogatott térkép stílusok
 Az Azure Maps számos különféle beépített térkép stílusok támogatja, az alább ismertetett.
@@ -56,6 +56,17 @@ A térkép stílus egy hibrid utak és címkék, műholdas és a légi képanyag
 **Megfelelő API-kat:**
 * A térkép vezérlőelem-JS 
 * Android térkép vezérlőelem
+
+
+## <a name="grayscalelight"></a>grayscale_light
+**szürkeárnyalatos világos** közúti térképes styl világos verziója.
+
+![szürkeárnyalatos világos](./media/supported-map-styles/grayscale_light.png)
+
+**Megfelelő API-kat:**
+* A térkép vezérlőelem-JS
+* Android térkép vezérlőelem
+
 
 ## <a name="night"></a>az éjszakai
 **az éjszakai** színes utak és szimbólumok közúti térképes styl sötét verziója.

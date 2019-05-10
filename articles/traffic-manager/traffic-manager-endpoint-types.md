@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: b609a0ace0b428e1af81634c6a25485e3a5e89bb
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: dc76f56b6c05f22a380ff33715fe22e8c72e4891
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916654"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508433"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager-végpontok
 A Microsoft Azure Traffic Manager lehetővé teszi, hogy vezérelheti a hálózati forgalom hogyan ossza el a különböző adatközpontokban futó alkalmazások központi telepítéseit. A Traffic Manager konfigurálása minden egyes alkalmazás üzembe helyezési-végpontként. Amikor a Traffic Manager DNS-kérelmet kap, azt úgy dönt, a DNS-válaszban visszaadandó elérhető végpontot. A TRAFFIC manager végpont aktuális állapota és a forgalom-útválasztási módszer a kiválasztott adatbázisok. További információkért lásd: [Traffic Manager működése](traffic-manager-how-it-works.md).
 
 A végpont a Traffic Manager által támogatott három típusa van:
 * **Azure-beli** használhatók az Azure-ban üzemeltetett szolgáltatások.
-* **Külső végpontok** IPv4/IPv6-címek esetén, illetve vagy egy másik üzemeltetésszolgáltatónál kívül, amely lehet a helyszíni Azure-ban üzemeltetett szolgáltatások esetében használt.
+* **Külső végpontok** IPv4/IPv6-címek, teljes tartománynevek, vagy az vagy egy másik üzemeltetésszolgáltatónál kívül, amely lehet a helyszíni Azure-ban üzemeltetett szolgáltatások szolgálnak.
 * **A beágyazott végpontokat** egyesítheti a Traffic Manager-profilok létrehozása a rugalmas forgalom-útválasztási rendszerek nagyobb, összetettebb központi telepítések igényeinek támogatásához használt.
 
 Hogyan van összevonva, különböző típusú végpontok egy Traffic Manager-profil korlátozva van. Az egyes profilok végponttípusok bármilyen kombinációját is tartalmazhat.
@@ -46,7 +46,7 @@ Azure-beli használatakor a Traffic Manager észleli, ha a "Klasszikus" IaaS vir
 
 ## <a name="external-endpoints"></a>Külső végpontok
 
-Külső végpontokat használnak, vagy IPv4/IPv6-címek esetén, vagy a szolgáltatások Azure-on kívül. IPv4/IPv6-cím végpontok használata lehetővé teszi a traffic manager anélkül, hogy egy DNS-nevet a számukra a végpontok állapotának ellenőrzéséhez. Ennek eredményeképpen a Traffic Manager válaszolhat A/AAAA rekord lekérdezéseket, hogy a végpont a válasz visszaadásakor. Azure-on kívüli szolgáltatások lehetnek egy üzemeltetett szolgáltatás a helyszíni vagy másik szolgáltatóhoz. Külső végpontok használt egyenként, vagy ugyanazon a Traffic Manager-profil végpontok a megadott IPv4 vagy IPv6-címek, amelyek csak a külső végpontokat is lehet, kivéve az Azure-végpontok kombinálva is. Külső végpontokkal rendelkező Azure-beli kombinálásával lehetővé teszi a különböző forgatókönyvekben:
+Külső végpontokat vagy IPv4-/ IPv6-címek, teljes tartománynevek, vagy az Azure-on kívüli szolgáltatások szolgálnak. IPv4/IPv6-cím végpontok használata lehetővé teszi a traffic manager anélkül, hogy egy DNS-nevet a számukra a végpontok állapotának ellenőrzéséhez. Ennek eredményeképpen a Traffic Manager válaszolhat A/AAAA rekord lekérdezéseket, hogy a végpont a válasz visszaadásakor. Azure-on kívüli szolgáltatások lehetnek egy üzemeltetett szolgáltatás a helyszíni vagy másik szolgáltatóhoz. Külső végpontok használt egyenként, vagy ugyanazon a Traffic Manager-profil végpontok a megadott IPv4 vagy IPv6-címek, amelyek csak a külső végpontokat is lehet, kivéve az Azure-végpontok kombinálva is. Külső végpontokkal rendelkező Azure-beli kombinálásával lehetővé teszi a különböző forgatókönyvekben:
 
 * Nagyobb redundancia-meglévő helyszíni alkalmazásokhoz vagy egy aktív – aktív vagy aktív – passzív feladatátvétel modell biztosítása az Azure. 
 * Forgalom irányítása végpont, amelyek nem rendelkeznek a hozzájuk társított DNS-név. Emellett az összesített DNS-keresési késés csökkentése eltávolítása kell futtatni az első IP-címet, egy DNS-nevet adja vissza a második DNS-lekérdezést. 

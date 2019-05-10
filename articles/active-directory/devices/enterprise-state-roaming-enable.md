@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97d0be1dfd77035a3522ef8a6b3f4ac93ae20741
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e7e665f3124296392c8138f4f2bd3632b56e53de
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60353879"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230929"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>A vállalati állapothordozás engedélyezése az Azure Active Directoryban
 Enterprise State Roaming egy prémium szintű Azure AD vagy Enterprise Mobility + Security (EMS) licenccel rendelkező minden szervezet számára érhető el. Az Azure AD-előfizetés beszerzése További információkért lásd: a [Azure ad-ben termékoldalán](https://azure.microsoft.com/services/active-directory).
@@ -46,9 +46,9 @@ Enterprise State Roaming adatokat egy vagy több üzemeltetett [Azure-régiók](
 
 Ország/régió érték | a data-ban üzemeltetett rendelkezik
 ---------------------|-------------------------
-Franciaország vagy Zambia például az EMEA ország | Egy vagy több Azure-régiót Európán 
-Észak-amerikai országot, például az Egyesült Államok és Kanada | egy vagy több Azure-régiót belül az Egyesült Államok
-Az APAC ország, például az ausztráliai vagy Új-Zéland | egy vagy több Azure-régiót Ázsia belül
+Egy EMEA ország/régió például Franciaország vagy Zambia | Egy vagy több Azure-régiót Európán 
+Például az Egyesült Államok vagy Kanada Észak-amerikai ország/régió | egy vagy több Azure-régiót belül az Egyesült Államok
+Az APAC ország/régió például az ausztráliai vagy Új-Zéland | egy vagy több Azure-régiót Ázsia belül
 Dél-amerikai és Antarktisz régiók | egy vagy több Azure-régióban az Egyesült Államok belül
 
 Ország/régió értékét az Azure AD-címtár létrehozása folyamat részeként van beállítva, és ezt követően nem módosítható. Ha további részleteket az adatok tárolási helye, küldjön el egy jegyet az [az Azure-támogatás](https://azure.microsoft.com/support/options/).
@@ -96,4 +96,4 @@ Az adatmegőrzési házirend érték nem módosítható. Az adatok végleges tö
 * [Beállítások és adatroaming GYIK](enterprise-state-roaming-faqs.md)
 * [Beállítások szinkronizálása tartozó házirend- és mobileszköz-kezelési beállítások](enterprise-state-roaming-group-policy-settings.md)
 * [A Windows 10 roaming beállítások referenciája](enterprise-state-roaming-windows-settings-reference.md)
-* [hibaelhárítással](enterprise-state-roaming-troubleshooting.md)
+* [Hibaelhárítás](enterprise-state-roaming-troubleshooting.md)

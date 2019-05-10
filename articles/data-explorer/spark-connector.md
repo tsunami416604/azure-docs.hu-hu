@@ -7,12 +7,12 @@ ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 4/29/2019
-ms.openlocfilehash: 8cb1489a0663556f9dd9e6026a036df2468d656d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 854e29b67b6e24c583a98b5851bf17551cfcbf61
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64928332"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441349"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark-preview"></a>Az Azure Data Explorer (előzetes verzió) az Apache Spark-összekötő
 
@@ -200,7 +200,7 @@ Azure adatkezelő egyszerű szerepkörökkel kapcsolatos további információk�
     display(df)
     ```
 
-1. Nagy mennyiségű adat olvasásakor átmeneti blob storage-bA kell adni. Adja meg a storage tároló SAS-kulcsot, vagy a tárfiók neve, a fiókkulcsra és a tároló neve. 
+1. Nagy mennyiségű adat olvasásakor átmeneti blob storage-bA kell adni. Adja meg a storage tároló SAS-kulcsot, vagy a tárfiók neve, a fiókkulcsra és a tároló neve. Ez a lépés csak akkor szükséges a Spark-összekötő az aktuális előzetes kiadását.
 
     ```scala
     // Use either container/account-key/account name, or container SaS

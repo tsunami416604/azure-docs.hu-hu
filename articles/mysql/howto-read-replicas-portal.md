@@ -5,17 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: 52f192a179c02e63c394401cce82b51fbe96e92d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: HT
+ms.date: 04/29/2019
+ms.openlocfilehash: b422718a1eaec483acdc2c8ab37442b9aea78aaa
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "61424909"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510764"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Létrehozása és kezelése olvasható replikák az Azure Database MySQL-hez az Azure portal használatával
 
-Ebben a cikkben, megtudhatja, hogyan hozhat létre és kezelhet olvasható replikák az Azure Database for MySQL-szolgáltatás az Azure portal használatával a fő Azure ugyanazon a régión belül. A szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+Ebben a cikkben, megtudhatja, hogyan hozhat létre és kezelhet az Azure Database for MySQL-szolgáltatás az Azure portal használatával olvasható replika.
+
+> [!IMPORTANT]
+> Olvasási replikát hozhat létre, mint a fölérendelt kiszolgáló ugyanabban a régióban, vagy bármely más Azure-régióban a választott. Régiók közötti replikáció jelenleg nyilvános előzetes verzióban érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,9 +41,15 @@ Olvasási kiszolgálót az alábbi lépésekkel hozhatók létre:
 
    ![Azure Database for MySQL - replikáció](./media/howto-read-replica-portal/add-replica.png)
 
-5. Adja meg az adatbázisreplika-kiszolgáló nevét, és kattintson a **OK** , a replika létrehozásának megerősítése.
+5. Adja meg az adatbázisreplika-kiszolgáló nevét.
 
-   ![Azure Database for MySQL – a replika létrehozásához](./media/howto-read-replica-portal/create-replica.png)
+    ![Azure Database for MySQL - replika nevét](./media/howto-read-replica-portal/replica-name.png)
+
+6. Válassza ki az adatbázisreplika-kiszolgáló helyét. Létrehozhat egy replikát bármelyik Azure-régióban. Az alapértelmezett hely a ugyanaz, mint a fölérendelt kiszolgáló
+
+    ![Azure Database for MySQL – a replika helye](./media/howto-read-replica-portal/replica-location.png)
+
+7. Válassza ki **OK** megerősítéséhez, hogy a replika létrehozása.
 
 > [!NOTE]
 > A kiszolgáló konfigurációval megegyező a fő olvasható replikák jönnek létre. A másodpéldány konfigurációjának a létrehozása után módosítható. Javasoljuk, hogy az adatbázisreplika-kiszolgáló konfigurációs kell tárolni annak érdekében, hogy a replika nem tudják tartani a főkiszolgálóval a főkiszolgáló-nál nagyobb vagy egyenlő értéken.
@@ -115,7 +124,7 @@ Az Azure Portalról egy fölérendelt kiszolgáló törléséhez használja a k�
 
 2. Alatt a **figyelés** oldalsávon válassza szakaszában **metrikák**:
 
-3. Válassza ki **replikációs késés másodpercben** az elérhető mérőszámok a legördülő listából. 
+3. Válassza ki **replikációs késés másodpercben** az elérhető mérőszámok a legördülő listából.
 
    ![Válassza ki a replikációs késés](./media/howto-read-replica-portal/monitor-select-replication-lag.png)
 

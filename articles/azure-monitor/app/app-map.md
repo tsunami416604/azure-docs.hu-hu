@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 89aa5006882680205816e7e5d1e7e55b9c4b2ab0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 618453ec9857254fe14608df8091bb79bd3815b7
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60693185"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65509970"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: Az elosztott alkalmazások osztályozása
 
@@ -68,7 +68,7 @@ Válassza ki a teljesítménnyel kapcsolatos hibák elhárítására **teljesít
 
 ### <a name="go-to-details"></a>Részletek megnyitása
 
-Válassza ki **lépjen a részletek** böngészhet a végpontok közötti tranzakció gyakorlat, amely a hívási verem szintre kész nézetek kínálnak.
+Válassza ki **lépjen a részletek** böngészhet a végpontok közötti tranzakció gyakorlat, amely a hívási verem szintre nézetek kínálnak.
 
 ![Képernyőkép a go-Részletek gombra](media/app-map/go-to-details.png)
 

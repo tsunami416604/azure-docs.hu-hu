@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 67016582149824c8deb83b54102190a57bd19383
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d372adf75d46fdedb7a6f2b17e47822475d1f155
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028800"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442363"
 ---
 # <a name="decision-forest-regression-module"></a>Döntési erdő regressziós modul
 
@@ -25,7 +25,7 @@ Ez a modul használatával a döntési fák algoritmus egy közelmúltra alapul�
 
 Miután konfigurálta a modellt, akkor kell betanítja a modellt, címkézett adatkészletet használ, és a [Train Model](./train-model.md) modul.  A betanított modell használható, hogy előrejelzéseket végezzen. 
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>A szolgáltatás működése
 
 Döntési fák algoritmus nem számszerű modellek egyszerű tesztek egy sorozatát végre minden egyes előfordulás esetén áthaladó bináris fa adatstruktúra, amíg el nem levélcsomópont (döntés).
 
@@ -39,7 +39,7 @@ Döntési fák rendelkezik, ezeket az előnyöket:
 
 Itt látható regressziós modell döntési fák részének áll. Egy regressziós döntési erdő fákban Gauss terjesztési jelenít meg, az előrejelzési. Összesítést fák Gauss terjesztési összes fák kombinált eloszlásának legközelebb található a modellben a közelmúltra-n keresztül történik.
 
-Ez az algoritmus és a megvalósítás elméleti keretében kapcsolatos további információkért lásd: Ez a cikk: [Döntési erdő: A besorolás, regressziós, sűrűségű-becslésére, szívócsővezeték tanulási és félig felügyelt tanítás egyesített keretrendszer ](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+Ez az algoritmus és a megvalósítás elméleti keretében kapcsolatos további információkért lásd: Ez a cikk: [Döntési erdő: A besorolás, regressziós, sűrűségű-becslésére, szívócsővezeték tanulási és félig felügyelt tanítás egyesített keretrendszer](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Döntési erdő regressziós modell konfigurálása
 
@@ -53,7 +53,7 @@ Ez az algoritmus és a megvalósítás elméleti keretében kapcsolatos további
 
     - **Replikálása**: Replikáció esetén minden egyes fa be van tanítva, pontosan ugyanazt a bemeneti adatok. A meghatározása, mely split predikátum használt egyes facsomópont véletlenszerű marad, és a fák eltérő lesz.
 
-         További információ a betanítási folyamat, a **replikálása** talál [számítógépes Látástechnológiai és orvosi képelemzés döntési erdő. Criminisi és J. Shotton. Springer 2013. ](http://research.microsoft.com/projects/decisionforests/).
+         További információ a betanítási folyamat, a **replikálása** talál [számítógépes Látástechnológiai és orvosi képelemzés döntési erdő. Criminisi és J. Shotton. Springer 2013. ](https://research.microsoft.com/projects/decisionforests/).
 
 3. Adja meg, hogyan a modellt úgy vélik a **létrehozási trainer módban** lehetőséget.
 

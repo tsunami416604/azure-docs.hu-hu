@@ -4,21 +4,21 @@ description: A tárfiókkulcsok egy zökkenőmentes integráció az Azure Key Va
 ms.topic: conceptual
 services: key-vault
 ms.service: key-vault
-author: mbaldwin
+author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: eefdb4d644c97bb55342e21c9a2fcf0a122a6ec5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 190375700f65cf2d3ea47335a646562eb46b2d49
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724781"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232563"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Az Azure Key Vaultban felügyelt tárfiók – CLI
 
 > [!NOTE]
-> [Az Azure storage-integráció az Azure Active Directory (Azure AD) már előzetes verzióban érhető el](https://docs.microsoft.com/azure/storage/common/storage-auth-aad). A hitelesítéshez és engedélyezéshez, amely az Azure storage, csakúgy, mint az Azure Key Vault OAuth2 jogkivonat-alapú hozzáférést biztosít az Azure AD használatát javasoljuk. Ez lehetővé teszi, hogy:
+> [Azure Active Directory (Azure AD) integrálása az azure storage] a Microsoft felhőalapú identitás- és hozzáférés felügyeleti szolgáltatása. Az Azure AD-integráció a Blob és üzenetsor-szolgáltatás érhető el. (https://docs.microsoft.com/azure/storage/common/storage-auth-aad). A hitelesítéshez és engedélyezéshez, amely az Azure storage, csakúgy, mint az Azure Key Vault OAuth2 jogkivonat-alapú hozzáférést biztosít az Azure AD használatát javasoljuk. Ez lehetővé teszi, hogy:
 > - Hitelesítse az ügyfélalkalmazást, egy alkalmazás vagy felhasználó identitását, helyett a tárfiók hitelesítő adatait. 
 > - Használja az [Azure ad-ben felügyelt identitás](/azure/active-directory/managed-identities-azure-resources/) futtatásakor az Azure-ban. Felügyelt identitások távolítsa el az ügyfél-hitelesítéshez forrásokból együttesen kell és tárolását hitelesítő adatok a, vagy az alkalmazását.
 > - Szerepkör alapú hozzáférés-vezérlés (RBAC) használata a kezeléséhez engedélyezésre, amelynek a Key Vault által is támogatott.

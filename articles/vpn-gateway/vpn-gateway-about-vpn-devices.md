@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: yushwang
-ms.openlocfilehash: 188412130b059cd25952ce9bf570c4e95ebbc43a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 30558300036974a765765fe0eb0181e2a8dc73ca
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60761613"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508366"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Információk a helyek közötti VPN Gateway-kapcsolatok VPN-eszközeinek IPsec/IKE-paramétereiről
 
@@ -45,7 +45,6 @@ A VPN-eszköz konfigurálásához tekintse meg a megfelelő eszközcsaládhoz ta
 | Allied Telesis     |AR sorozatú VPN-útválasztók |AR sorozatú 5.4.7+               |Hamarosan elérhető     |[Konfigurációs útmutató](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
 | Barracuda Networks, Inc. |Barracuda NextGen tűzfal, F sorozat |Házirendalapú: 5.4.3<br>Útvonalalapú: 6.2.0 |[Konfigurációs útmutató](https://techlib.barracuda.com/NGF/AzurePolicyBasedVPNGW) |[Konfigurációs útmutató](https://techlib.barracuda.com/NGF/AzureRouteBasedVPNGW) |
 | Barracuda Networks, Inc. |Barracuda NextGen tűzfal, X sorozat |Barracuda tűzfal, 6.5-ös verzió |[Konfigurációs útmutató](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |Nem kompatibilis |
-| Brocade            |Vyatta 5400 vRouter   |Virtual Router 6.6R3 GA|[Konfigurációs útmutató](http://www1.brocade.com/downloads/documents/html_product_manuals/vyatta/vyatta_5400_manual/wwhelp/wwhimpl/js/html/wwhelp.htm#href=VPN_Site-to-Site%20IPsec%20VPN/Preface.1.1.html) |Nem kompatibilis |
 | Ellenőrzőpont |Biztonsági átjáró |R80.10 |[Konfigurációs útmutató](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[Konfigurációs útmutató](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |Támogatott |[Konfigurációs útmutató*](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/214109-configure-asa-ipsec-vti-connection-to-az.html) |
 | Cisco |ASR |Házirendalapú: IOS 15.1<br>Útvonalalapú: IOS 15.2 |Támogatott |Támogatott |
@@ -67,7 +66,7 @@ A VPN-eszköz konfigurálásához tekintse meg a megfelelő eszközcsaládhoz ta
 | SonicWall |TZ sorozat, NSA sorozat<br>SuperMassive sorozat<br>E-Class NSA sorozat |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Nem kompatibilis |[Konfigurációs útmutató](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG Next Gen tűzfal | XG v17 | | [Konfigurációs útmutató](https://community.sophos.com/kb/127546)<br><br>[Konfigurációs útmutató – több SAs](https://community.sophos.com/kb/en-us/133154) |
 | Ubiquiti | EdgeRouter | EdgeOS v1.10 |  | [Az IPSec vagy IKEv2 BGP](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[Az IPSec vagy IKEv2 VTI](https://help.ubnt.com/hc/en-us/articles/115012305347)
-| WatchGuard |Összes |Fireware XTM<br> Házirendalapú: v11.11.x<br>Útvonalalapú: v11.12.x |[Konfigurációs útmutató](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Konfigurációs útmutató](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
+| WatchGuard |Az összes |Fireware XTM<br> Házirendalapú: v11.11.x<br>Útvonalalapú: v11.12.x |[Konfigurációs útmutató](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Konfigurációs útmutató](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 
 > [!NOTE]
 >
@@ -143,7 +142,7 @@ A következő táblázatokban:
 | SA élettartama (Idő)            |3 600 másodperc  |27 000 másodperc                                |
 | SA élettartama (bájt)           |102 400 000 kB | -                                           |
 | Sérülés utáni titkosságvédelem (PFS) |Nem             |[Útvonalalapú QM SA ajánlatok](#RouteBasedOffers) |
-| Kapcsolat megszakadásának észlelése (DPD)     |Nem támogatott  |Támogatott                                    |
+| Kapcsolat megszakadásának észlelése (DPD)     |Érvénytelen érték  |Támogatott                                    |
 
 
 ### <a name ="RouteBasedOffers"></a>Útvonalalapú VPN IPsec biztonsági társítás (IKE – gyors mód SA) ajánlatai
@@ -154,40 +153,40 @@ Az alábbi táblázat felsorolja az IPsec SA (IKE – gyors mód) ajánlatait. A
 
 |-  |**Titkosítás**|**Hitelesítés**|**PFS-csoport**|
 |---| ---          |---               |---          |
-| 1 |GCM AES256    |GCM (AES256)      |None         |
+| 1. |GCM AES256    |GCM (AES256)      |Egyik sem         |
 | 2 |AES256        |SHA1              |None         |
-| 3 |3DES          |SHA1              |None         |
-| 4 |AES256        |SHA256            |None         |
-| 5 |AES128        |SHA1              |None         |
-| 6 |3DES          |SHA256            |None         |
+| 3 |3DES          |SHA1              |Egyik sem         |
+| 4 |AES256        |SHA256            |Egyik sem         |
+| 5 |AES128        |SHA1              |Egyik sem         |
+| 6 |3DES          |SHA256            |Egyik sem         |
 
 #### <a name="azure-gateway-as-responder"></a>Azure-átjáró, mint válaszadó
 
 |-  |**Titkosítás**|**Hitelesítés**|**PFS-csoport**|
 |---| ---          | ---              |---          |
-| 1 |GCM AES256    |GCM (AES256)      |None         |
+| 1. |GCM AES256    |GCM (AES256)      |Egyik sem         |
 | 2 |AES256        |SHA1              |None         |
-| 3 |3DES          |SHA1              |None         |
-| 4 |AES256        |SHA256            |None         |
-| 5 |AES128        |SHA1              |None         |
-| 6 |3DES          |SHA256            |None         |
-| 7 |DES           |SHA1              |None         |
-| 8 |AES256        |SHA1              |1            |
+| 3 |3DES          |SHA1              |Egyik sem         |
+| 4 |AES256        |SHA256            |Egyik sem         |
+| 5 |AES128        |SHA1              |Egyik sem         |
+| 6 |3DES          |SHA256            |Egyik sem         |
+| 7 |DES           |SHA1              |Egyik sem         |
+| 8 |AES256        |SHA1              |1.            |
 | 9 |AES256        |SHA1              |2            |
 | 10|AES256        |SHA1              |14           |
-| 11|AES128        |SHA1              |1            |
+| 11|AES128        |SHA1              |1.            |
 | 12|AES128        |SHA1              |2            |
 | 13|AES128        |SHA1              |14           |
-| 14|3DES          |SHA1              |1            |
+| 14|3DES          |SHA1              |1.            |
 | 15|3DES          |SHA1              |2            |
 | 16|3DES          |SHA256            |2            |
-| 17|AES256        |SHA256            |1            |
+| 17|AES256        |SHA256            |1.            |
 | 18|AES256        |SHA256            |2            |
 | 19|AES256        |SHA256            |14           |
 | 20|AES256        |SHA1              |24           |
 | 21|AES256        |SHA256            |24           |
-| 22|AES128        |SHA256            |None         |
-| 23|AES128        |SHA256            |1            |
+| 22|AES128        |SHA256            |Egyik sem         |
+| 23|AES128        |SHA256            |1.            |
 | 24|AES128        |SHA256            |2            |
 | 25|AES128        |SHA256            |14           |
 | 26|3DES          |SHA1              |14           |

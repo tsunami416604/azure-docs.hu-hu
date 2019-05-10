@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a723ca6d69d45613636c7659e6566cec19b31d65
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e4746620f083996bf64e77617ec472c3d3894d91
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60364110"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464326"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Eszközök kezelése az Azure IoT Central alkalmazáshoz a
 
@@ -66,7 +66,7 @@ Az alkalmazás eszközök tömeges-regisztrálni:
 
 1. Válassza ki **importálás**.
 
-    ![Importálási művelet](./media/howto-manage-devices/BulkImport1.png)
+    ![Importálási művelet](./media/howto-manage-devices/bulkimport1a.png)
 
 1. Válassza ki a CSV-fájl, amely az importálni kívánt eszközazonosítókat listája szerepel.
 
@@ -74,7 +74,7 @@ Az alkalmazás eszközök tömeges-regisztrálni:
 
 1. Az importálás befejezése után az eszköz rács sikert jelző üzenet jelenik meg.
 
-    ![Sikeres importálás](./media/howto-manage-devices/BulkImport3.png)
+    ![Sikeres importálás](./media/howto-manage-devices/bulkimport3a.png)
 
 Ha az eszköz importálja a művelet sikertelen, egy hibaüzenet jelenik meg az eszköz rács. A hibákat a rögzítés log fájl jön létre, hogy letöltheti.
 
@@ -86,13 +86,13 @@ Eszközök regisztrálása az importálás alatt elindításával **nincs társ�
 
 1. Válassza a bal oldali panelen, **nincs társítva eszközök**:
 
-    ![Társítatlan eszközök](./media/howto-manage-devices/UnassociatedDevices1.png)
+    ![Társítatlan eszközök](./media/howto-manage-devices/unassociateddevices1a.png)
 
 1. A sablon társítani kívánt eszközök kiválasztása:
 
 1. Válassza ki **társítása**:
 
-    ![Eszközök társítása](./media/howto-manage-devices/UnassociatedDevices2.png)
+    ![Eszközök társítása](./media/howto-manage-devices/unassociateddevices2a.png)
 
 1. A sablont a listából a rendelkezésre álló sablonok, és válasszon **társítása**.
 
@@ -113,7 +113,7 @@ Tömeges exportálása eszközök az alkalmazásból:
 
 1. Jelölje ki az eszközöket, amelyet szeretne exportálni, és válassza ki a **exportálása** művelet.
 
-    ![Exportálás](./media/howto-manage-devices/Export1.png)
+    ![Exportálás](./media/howto-manage-devices/export1a.png)
 
 1. Az exportálási folyamat elindul. A rács tetején állapotát nyomon követéséhez.
 
@@ -121,7 +121,7 @@ Tömeges exportálása eszközök az alkalmazásból:
 
 1. Válassza ki a **sikert jelző üzenettel** letölteni a fájlt egy helyi mappába a lemezen.
 
-    ![Sikeres exportálása](./media/howto-manage-devices/Export2.png)
+    ![Sikeres exportálása](./media/howto-manage-devices/export2a.png)
 
 1. Az exportált CSV-fájlt a következő oszlopokat tartalmazza: eszköz azonosítója, az eszköz neve, a eszközkulcsok és a X509 tanúsítvány-ujjlenyomatok:
 

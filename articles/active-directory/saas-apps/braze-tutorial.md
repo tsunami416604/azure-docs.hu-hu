@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2701222df2649ea3de7f15fbffc0c8b62ba0efa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 69dac57118d7876ba08a562f5478b19465b37e07
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158321"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441471"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-braze"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Braze
 
@@ -125,7 +125,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Braze, hajtsa végre
 
     | Name (Név) | Adatforrás-attribútum|
     | -----| --------------- |
-    | e-mail | user.userprincipalname |
+    | e-mailben | user.userprincipalname |
     | first_name| user.givenname|
     | last_name| user.surname|
     | bejelentkezés| user.mail|
@@ -220,7 +220,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Braze hoz létre. Együttműködve [Braze támogatási csapatának](mailto:support@braze.com) a felhasználók hozzáadása az Braze platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -228,8 +228,8 @@ Ha a hozzáférési panelen a Braze csempére kattint, meg kell lehet automatiku
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

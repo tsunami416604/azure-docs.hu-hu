@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 32870f37781b4161de692af91c79fe47efb3737e
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 4022c95bfda8cbdaed75876793bfbba4254a5c54
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65077320"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410251"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---hyperscale-citus-preview"></a>PostgreSQL-bővítmények, Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió)
 
@@ -128,7 +128,7 @@ Az alábbi táblázatok sorolják fel a standard szintű PostgreSQL-bővítmény
 > [!div class="mx-tableFixed"]
 > | **Extension** | **Leírás** |
 > |---|---|
-> | [PostGIS](http://www.postgis.net/), postgis\_topológia, postgis\_tiger\_geocoder, postgis\_sfcgal | Térbeli és földrajzi objektum a PostgreSQL-hez. |
+> | [PostGIS](https://www.postgis.net/), postgis\_topológia, postgis\_tiger\_geocoder, postgis\_sfcgal | Térbeli és földrajzi objektum a PostgreSQL-hez. |
 > | cím\_standardizer, cím\_standardizer\_adatok\_velünk a kapcsolatot | Használja az alkotóelemeket be egy címet elemezni. Támogatja a geokódolás cím normalizálási lépés segítségével. |
 > | postgis\_sfcgal | PostGIS SFCGAL funkciók. |
 > | postgis\_tiger\_geocoder | PostGIS tiger geocoder és fordított geocoder. |

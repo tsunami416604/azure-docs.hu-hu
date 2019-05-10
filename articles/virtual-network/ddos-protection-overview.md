@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/13/2018
 ms.author: kumud
-ms.openlocfilehash: c639bc1edceba9c9da08ee6bcc54c860f857cd33
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 41e9d88df49d153089e6dc7a12c5873ccc167279
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696020"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209461"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Az Azure DDoS Protection Standard áttekintése
 
@@ -29,7 +29,7 @@ Az elosztott szolgáltatásmegtagadásos (DDoS-) támadások az egyik legnagyobb
 Az Azure DDoS protection alkalmazás tervezés – ajánlott eljárások, kombinálva DDoS-támadásokkal szembeni védelmet biztosít. Az Azure DDoS protection az alábbi szolgáltatási szinteken biztosít:
 
 - **Alapszintű**: Az Azure platform részeként automatikusan engedélyezve van. Állandó forgalomfigyelést, és valós idejű csökkenti a hálózati szintű gyakori támadásoktól, adja meg a Microsoft online services által használt azonos védelem. A teljes méretezési csoport az Azure globális hálózatán használható, és csökkentheti a támadási forgalom régiók között elosztva. Védelmet biztosítanak az IPv4 és IPv6-alapú Azure [nyilvános IP-címek](virtual-network-public-ip-address.md).
-- **Standard szintű**: Az alapszintű szolgáltatásszinten kifejezetten az Azure virtuális hálózati erőforrások hangolt további veszélyelhárítási szolgáltatásokat nyújt. DDoS Protection Standard az egyszerű, ha engedélyezni szeretné, és nem kell application módosítani. Az alkalmazásvédelmi szabályzatok hangolt dedikált forgalomfigyelést és gépi tanulási algoritmus segítségével. Társított erőforrások üzembe helyezett virtuális hálózatokon, például az Azure Load Balancer, az Azure Application Gateway és az Azure Service Fabric-példányok, nyilvános IP-szabályzatokkal, de ez a védelem az App Service Environment-környezetek nem vonatkozik. Valós idejű telemetriai támadások során, valamint a korábbi Azure Monitor nézetek érhető el. Gazdag támadási kockázatcsökkentési analytics diagnosztikai beállításokon keresztül érhetők el. Alkalmazásréteg-védelem használatával adhatók hozzá a [Azure Application Gateway webalkalmazásokhoz használható tűzfal](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy a 3. fél tűzfal telepítése az Azure Marketplace-ről. Védelmet biztosítanak a IPv4 Azure [nyilvános IP-címek](virtual-network-public-ip-address.md).
+- **Standard szintű**: Az alapszintű szolgáltatásszinten kifejezetten az Azure virtuális hálózati erőforrások hangolt további veszélyelhárítási szolgáltatásokat nyújt. DDoS Protection Standard az egyszerű, ha engedélyezni szeretné, és nem kell application módosítani. Az alkalmazásvédelmi szabályzatok hangolt dedikált forgalomfigyelést és gépi tanulási algoritmus segítségével. Társított erőforrások üzembe helyezett virtuális hálózatokon, például az Azure Load Balancer, az Azure Application Gateway és az Azure Service Fabric-példányok, nyilvános IP-szabályzatokkal, de ez a védelem az App Service Environment-környezetek nem vonatkozik. Valós idejű telemetriai támadások során, valamint a korábbi Azure Monitor nézetek érhető el. Gazdag támadási kockázatcsökkentési analytics diagnosztikai beállításokon keresztül érhetők el. Alkalmazásréteg-védelem használatával adhatók hozzá a [Azure Application Gateway webalkalmazásokhoz használható tűzfal](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy a 3. fél tűzfal telepítése az Azure Marketplace-ről. Védelmet biztosítanak az IPv4 és IPv6-alapú Azure [nyilvános IP-címek](virtual-network-public-ip-address.md).
 
 ![Az Azure DDoS Protection alapszintű vs. Standard](./media/ddos-protection-overview/ddoscomparison.png)
 
@@ -64,7 +64,7 @@ A DDoS Protection Standard funkciók:
 
 A DDoS Protection Standard tényleges forgalom kihasználtsági figyeli, és folyamatosan összevetett a a DDoS-házirendben meghatározott küszöbértékeket. A forgalom küszöbérték túllépésekor DDoS-támadás kockázatcsökkentése automatikusan kezdeményez. Amikor a forgalom a küszöbérték alá adja vissza, a kockázatcsökkentési törlődik.
 
-![Kezelés](./media/ddos-protection-overview/mitigation.png)
+![Kockázatcsökkentés](./media/ddos-protection-overview/mitigation.png)
 
 Során kockázatcsökkentést a védett erőforrásokhoz irányuló adatforgalmat a rendszer átirányítja a DDoS protection szolgáltatás, és több ellenőrzés történik, mint például a következő ellenőrzések:
 

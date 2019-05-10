@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: normesta
-ms.openlocfilehash: 61d168a5f501923812db5945fa6df439ae7e70f9
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 27adc0eeeabed2b1f2e86f301a60604a3d358b82
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145104"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464723"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 ismert problémái
 
@@ -57,6 +57,7 @@ A következő táblázat sorolja fel, minden más szolgáltatásokat és eszköz
 | **AzCopy** | Verzió-specifikus támogatása <br><br>Csak az AzCopy legújabb verzióját használja ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Az AzCopy AzCopy v8.1, mint a korábbi verziók nem támogatottak.|
 | **Az Azure Blob storage életciklus felügyeleti házirendek** | Még nem támogatott |
 | **Az Azure Content Delivery Network (CDN)** | Még nem támogatott|
+| **Azure Event Grid** | Még nem támogatott |
 | **Az Azure search** |Még nem támogatott|
 | **Azure Storage Explorer** | Verzió-specifikus támogatása <br><br>Csak verziót használja `1.6.0` vagy újabb verziója. <br>Verzió `1.6.0` elérhető egy [ingyenesen letölthető](https://azure.microsoft.com/features/storage-explorer/).|
 | **BLOB-tároló hozzáférés-vezérlési listák** |Még nem támogatott|

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 04/29/2019
-ms.openlocfilehash: 96ee3f5e1b3cfe67cb75e50c6247e41f0d901393
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: d83410efd26f8c2078d3abdb01d061db0b83d33d
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867920"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233729"
 ---
 # <a name="migrate-sql-server-on-premises-to-an-azure-sql-database-managed-instance-using-azure-powershell"></a>Áttelepíteni a helyszíni SQL Server egy Azure SQL Database felügyelt példány az Azure PowerShell-lel
 Ebben a cikkben telepít át a **Adventureworks2016** adatbázis visszaállítva a helyszíni példányát az SQL Server 2005 vagy fent egy Azure SQL Database felügyelt példány a Microsoft Azure PowerShell használatával. Adatbázisok migrálhatók a helyszíni SQL Server-példány, egy Azure SQL Database felügyelt példány használatával az `Az.DataMigration` a Microsoft Azure PowerShell-modulja.
@@ -86,7 +86,7 @@ A következő példában létrehozunk egy elnevezett szolgáltatás *MyDMS* erő
 > Az alábbi kódrészlet olyan offline áttelepítés, amely nem igényel Azure Database Migration Service prémium szintű Termékváltozat alapján egy példányát. Egy online migrálás esetében - Sku paraméter értékét meg kell adni egy prémium szintű Termékváltozat.
 
 ```powershell
- $vNet = Get-AzVirtualNetwork -ResourceGroupName MyDMSResourceGroup -Name MyVNET
+$vNet = Get-AzVirtualNetwork -ResourceGroupName MyDMSResourceGroup -Name MyVNET
 
 $vSubNet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vNet -Name MySubnet
 

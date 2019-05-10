@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/19/2018
 ms.author: rogarana
-ms.openlocfilehash: 7010425ba8acff4ed223e2a402d7a927a91c06b6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: af903ce3ce7cfa165c278e415827dda36630e7b4
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687144"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65209731"
 ---
 # <a name="overview-of-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Az Azure Files (előzetes verzió) SMB-n keresztül az Azure Active Directory-hitelesítés áttekintése
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -50,8 +50,8 @@ Az Azure Files SMB-n keresztül az Azure AD a képest megosztott kulcsos hiteles
 -   **Hozzáférés-vezérlési listák készíteni az adatokkal együtt**  
     Az Azure Files használatával a meglévő helyszíni fájlmegosztások biztonsági mentése. Az Azure Files megőrzi a hozzáférés-vezérlési listák az adatokkal együtt, megosztásakor a fájlmegosztások biztonsági mentése az Azure Files SMB-n keresztül.
 
-## <a name="how-it-works"></a>Működés
-Az Azure Files Azure AD tartományi szolgáltatásokat használja a Kerberos-hitelesítés az Azure AD hitelesítő adatait, tartományhoz csatlakoztatott virtuális gépek. Azure ad-ben az Azure Files használata előtt először az Azure AD tartományi szolgáltatások engedélyezése és a tartományhoz, a virtuális gépekről, amelyből hozzá szeretne férni a fájlokban tárolt adatokhoz. A tartományhoz csatlakoztatott virtuális gép ugyanazon a virtuális hálózaton (VNET), az Azure AD Domain Services kell lennie. 
+## <a name="how-it-works"></a>A szolgáltatás működése
+Az Azure Files Azure AD tartományi szolgáltatásokat használja a Kerberos-hitelesítés az Azure AD hitelesítő adatait, tartományhoz csatlakoztatott virtuális gépek. Azure ad-ben az Azure Files használata előtt először az Azure AD tartományi szolgáltatások engedélyezése és a tartományhoz, a virtuális gépekről, amelyből hozzá szeretne férni a fájlokban tárolt adatokhoz. A tartományhoz csatlakoztatott virtuális gép az Azure AD Domain Services azonos virtuális hálózaton (VNET) kell lennie. 
 
 Amikor a rendszer identitást társít egy virtuális gépen futó alkalmazásokhoz próbál meg hozzáférni az Azure Files adatokhoz, a kérelem érkezik az Azure AD tartományi szolgáltatásokra az identitás hitelesítésére. Sikeres hitelesítés esetén az Azure AD tartományi szolgáltatások Kerberos jogkivonatot ad vissza. Az alkalmazás elküld egy kérelmet, amely tartalmazza a Kerberos-jogkivonatot, és az Azure Files használja ezt a jogkivonatot a kérelem engedélyezéséhez. Az Azure Files csak a jogkivonatot kap, és nem marad meg az Azure AD hitelesítő adatait.
 

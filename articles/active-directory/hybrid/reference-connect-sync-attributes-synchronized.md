@@ -16,12 +16,12 @@ ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d32564808151c4895d2b3802fb48d2bd2d8f753
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e6120637bdf52db4b6863fb87feb1d52c78ca088
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729533"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508107"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Az Azure AD Connect szinkronizálása: Az Azure Active Directoryval szinkronizált attribútumok
 Ez a témakör az Azure AD Connect sync szinkronizált attribútumok listája.  
@@ -48,7 +48,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | pwdLastSet |X |gépi tulajdonság. Ismerje meg, mikor már kiadott jogkivonatokat érvénytelenítéséhez használja. Jelszókivonat szinkronizálása, átmenő hitelesítésének és összevonási is használják. |
 |samAccountName|X| |
 | sourceAnchor |X |gépi tulajdonság. Nem módosítható azonosító karbantartása ADDS és az Azure AD közötti kapcsolat. |
-| usageLocation |X |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
+| usageLocation |X |gépi tulajdonság. A felhasználó országban vagy régióban. A licenc-hozzárendelés használja. |
 | userPrincipalName |X |A bejelentkezési Azonosítót a felhasználó UPN-je. Leggyakrabban a ugyanaz, mint a [mail] érték. |
 
 ## <a name="exchange-online"></a>Exchange Online
@@ -168,7 +168,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | thumbnailphoto |X |X | | |
 | cím |X |X | | |
 | unauthOrig |X |X |X | |
-| usageLocation |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
+| usageLocation |X | | |gépi tulajdonság. A felhasználó országban vagy régióban. A licenc-hozzárendelés használja. |
 | userCertificate |X |X | | |
 | userPrincipalName |X | | |A bejelentkezési Azonosítót a felhasználó UPN-je. Leggyakrabban a ugyanaz, mint a [mail] érték. |
 | userSMIMECertificates |X |X | | |
@@ -251,7 +251,8 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | cím |X |X | | |
 | unauthOrig |X |X |X | |
 | url |X |X | | |
-| usageLocation |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
+| usageLocation |X | | |gépi tulajdonság. A felhasználó ország/régió
+. A licenc-hozzárendelés használja. |
 | userPrincipalName |X | | |A bejelentkezési Azonosítót a felhasználó UPN-je. Leggyakrabban a ugyanaz, mint a [mail] érték. |
 | wWWHomePage |X |X | | |
 
@@ -299,7 +300,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | | |
 | cím |X |X | | |
-| usageLocation |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
+| usageLocation |X | | |gépi tulajdonság. A felhasználó országban vagy régióban. A licenc-hozzárendelés használja. |
 | userPrincipalName |X | | |A bejelentkezési Azonosítót a felhasználó UPN-je. Leggyakrabban a ugyanaz, mint a [mail] érték. |
 | wWWHomePage |X |X | | |
 
@@ -315,7 +316,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | proxyAddresses |X |X |X |gépi tulajdonság. Az Azure AD által használt. A felhasználó az összes másodlagos e-mail-címét tartalmazza. |
 | pwdLastSet |X | | |gépi tulajdonság. Ismerje meg, mikor már kiadott jogkivonatokat érvénytelenítéséhez használja. |
 | sourceAnchor |X |X |X |gépi tulajdonság. Nem módosítható azonosító karbantartása ADDS és az Azure AD közötti kapcsolat. |
-| usageLocation |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
+| usageLocation |X | | |gépi tulajdonság. A felhasználó országban vagy régióban. A licenc-hozzárendelés használja. |
 | userPrincipalName |X | | |Az UPN-je a felhasználó bejelentkezési azonosítója. Leggyakrabban a ugyanaz, mint a [mail] érték. |
 
 ## <a name="intune"></a>Intune
@@ -333,7 +334,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |gépi tulajdonság. Ismerje meg, mikor már kiadott jogkivonatokat érvénytelenítéséhez használja. Jelszókivonat szinkronizálása, átmenő hitelesítésének és összevonási is használják. |
 | sourceAnchor |X |X |X |gépi tulajdonság. Nem módosítható azonosító karbantartása ADDS és az Azure AD közötti kapcsolat. |
-| usageLocation |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
+| usageLocation |X | | |gépi tulajdonság. A felhasználó országban vagy régióban. A licenc-hozzárendelés használja. |
 | userPrincipalName |X | | |A bejelentkezési Azonosítót a felhasználó UPN-je. Leggyakrabban a ugyanaz, mint a [mail] érték. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
@@ -365,7 +366,7 @@ Ebben az esetben indítsa el az ebben a témakörben az attribútumlistát, és 
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
 | cím |X |X | | |
-| usageLocation |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
+| usageLocation |X | | |gépi tulajdonság. A felhasználó országban vagy régióban. A licenc-hozzárendelés használja. |
 | userPrincipalName |X | | |A bejelentkezési Azonosítót a felhasználó UPN-je. Leggyakrabban a ugyanaz, mint a [mail] érték. |
 
 ## <a name="3rd-party-applications"></a>3. fél alkalmazások
@@ -381,6 +382,7 @@ Ez a csoport olyan készlete, az attribútumokat, amelyek is használható, ha a
 | accountEnabled |X | | |Meghatározza, hogy a fiók engedélyezve van. |
 | CN |X | |X | |
 | displayName |X |X |X | |
+| EmployeeID |X |  |  | |
 | givenName |X |X | | |
 | levelezés |X | |X | |
 | managedBy | | |X | |
@@ -391,7 +393,7 @@ Ez a csoport olyan készlete, az attribútumokat, amelyek is használható, ha a
 | pwdLastSet |X | | |gépi tulajdonság. Ismerje meg, mikor már kiadott jogkivonatokat érvénytelenítéséhez használja. Jelszókivonat szinkronizálása, átmenő hitelesítésének és összevonási is használják. |
 | sorozatszám |X |X | | |
 | sourceAnchor |X |X |X |gépi tulajdonság. Nem módosítható azonosító karbantartása ADDS és az Azure AD közötti kapcsolat. |
-| usageLocation |X | | |gépi tulajdonság. A felhasználó országától. A licenc-hozzárendelés használja. |
+| usageLocation |X | | |gépi tulajdonság. A felhasználó országban vagy régióban. A licenc-hozzárendelés használja. |
 | userPrincipalName |X | | |A bejelentkezési Azonosítót a felhasználó UPN-je. Leggyakrabban a ugyanaz, mint a [mail] érték. |
 
 ## <a name="windows-10"></a>Windows 10
@@ -420,7 +422,7 @@ Ezeknek az attribútumoknak **felhasználói** mellett kiválasztott a többi al
 ## <a name="exchange-hybrid-writeback"></a>Az Exchange hibrid visszaírás
 Ezek az attribútumok a rendszer visszaírja Azure AD-ből a helyszíni Active Directoryban való engedélyezéséhez kiválasztásakor **Exchange hibrid**. Az Exchange verziójától függően kevesebb attribútumok szinkronizálása.
 
-| Attribútum neve (Csatlakozás a felhasználói felület) |Attribútum neve (amely helyszíni AD) | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
+| Attribútum neve (amely helyszíni AD) | Attribútum neve (Csatlakozás a felhasználói felület) | Felhasználó | Kapcsolattartó | Csoport | Megjegyzés |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |Származtatott cloudAnchor az Azure ad-ben. Ez az attribútum az Exchange 2016 és Windows Server 2016 AD jelent meg. |
 | msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |Online archívum: Archív tárolási szint mail használatát teszi lehetővé. |
@@ -444,7 +446,7 @@ Ezek az attribútumok az Azure AD-választja ahhoz, hogy a helyszíni Active Dir
 | proxyAddresses | X |  |
 | targetAddress | X |  |
 
-## <a name="device-writeback"></a>Eszközvisszaíró
+## <a name="device-writeback"></a>Eszközvisszaírás
 Eszközobjektumok jönnek létre az Active Directoryban. Ezek az objektumok az Azure ad-hez csatlakoztatott eszközök lehetnek vagy tartományhoz csatlakoztatott Windows 10 rendszerű számítógépeken.
 
 | Attribútum neve | Eszköz | Megjegyzés |

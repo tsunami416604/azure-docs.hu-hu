@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 67fba7a921868d0e5720216208cff7c298c926f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cbf6a44f1a3210906ec7ab0d04eecb997bc2c470
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60838711"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412814"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibaelhárítása az Azure App Service használatával a Visual Studio-
 ## <a name="overview"></a>Áttekintés
@@ -42,7 +42,7 @@ Ebben az oktatóanyagban működik együtt a fejlesztési környezet, a webes pr
 
 Ebben az oktatóanyagban látható a Kódminták C# MVC webalkalmazás számára, de a hibaelhárítási eljárásokkal azonosak, Visual Basic és Web Forms-alkalmazások.
 
-Az oktatóanyag feltételezi, hogy a Visual Studio 2017-et használ. 
+Az oktatóanyag feltételezi, hogy a Visual Studio 2019 használ. 
 
 Ez a funkció a folyamatos átviteli naplók csak akkor működik a .NET-keretrendszer 4-es vagy újabb készített alkalmazások.
 

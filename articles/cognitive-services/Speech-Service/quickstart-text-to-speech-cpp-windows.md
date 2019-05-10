@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 4/03/2019
 ms.author: yinhew
-ms.openlocfilehash: a9613f0839735457cf172fdacb0ef6a943ca27de
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 7e9aebd3a49182f84e05473da9ed166499f34a28
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020800"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465705"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Gyors útmutató: Beszéd, a C++, a Windows szintetizálásához a Speech SDK-val
+
+Rövid útmutatók érhetők el is [beszédfelismerés](quickstart-cpp-windows.md) és [tolmácsolás –](quickstart-translate-speech-cpp-windows.md).
 
 Ebben az útmutatóban egy C++ konzolalkalmazást fog létrehozni a Windowshoz. A Cognitive Services használata [beszéd SDK](speech-sdk.md) szintetizálásához beszéd valós idejű szöveg és a speech játsszon a PC-hangszóró. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: bea4a2472473161619dd61ff206b818f7bfe5b12
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: HT
+ms.openlocfilehash: 3caa30ed0607992960151484fe4711736c304775
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153800"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228577"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Adatok másolása vagy az Azure File Storage az Azure Data Factory használatával
 
@@ -202,7 +202,7 @@ Adatok másolása az Azure File Storage **Parquet vagy tagolt szövegformátum**
 | maxConcurrentConnections | A szeretne csatlakozni a storage-tároló egyidejű kapcsolatok száma. Adja meg, csak akkor, ha szeretné korlátozni a egyidejű kapcsolat az adattárba. | Nem                                            |
 
 > [!NOTE]
-> A Parquet vagy tagolt szövegformátum **FileSystemSource** továbbra is támogatott a következő szakaszban említett típusa másolási tevékenység forrása-visszamenőleges kompatibilitásra szolgál. A jövőben az új modell használata javasolt, és ezek a típusok létrehozása a felhasználói felület szerzői ADF változott.
+> A Parquet vagy tagolt szövegformátum **FileSystemSource** továbbra is támogatott a következő szakaszban említett típusa másolási tevékenység forrása – az előző verziókkal való kompatibilitás. A jövőben az új modell használata javasolt, és ezek a típusok létrehozása a felhasználói felület szerzői ADF változott.
 
 **Példa**
 
@@ -303,7 +303,7 @@ Adatok másolása az Azure File Storage **Parquet vagy tagolt szövegformátum**
 | maxConcurrentConnections | Az adattár egyidejűleg csatlakozni a kapcsolatok száma. Adja meg, csak akkor, ha szeretné korlátozni a egyidejű kapcsolat az adattárba. | Nem       |
 
 > [!NOTE]
-> A Parquet vagy tagolt szövegformátum **FileSystemSink** továbbra is támogatott a következő szakaszban említett típusa másolási tevékenység fogadó-visszamenőleges kompatibilitásra szolgál. A jövőben az új modell használata javasolt, és ezek a típusok létrehozása a felhasználói felület szerzői ADF változott.
+> A Parquet vagy tagolt szövegformátum **FileSystemSink** továbbra is támogatott a következő szakaszban említett típusa másolási tevékenység fogadó-visszamenőleges kompatibilitásra. A jövőben az új modell használata javasolt, és ezek a típusok létrehozása a felhasználói felület szerzői ADF változott.
 
 **Példa**
 

@@ -11,14 +11,16 @@ ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: ee7649dccf1ca50933e29cec9d40e4f5e16bd721
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: e2b25875a0dff12bba32b033bca0c35394d407aa
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074107"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465643"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Gyors útmutató: Hozzon létre egy hang-és felhőközpontú virtuális asszisztensek UWP Speech-SDK-val
+
+Rövid útmutatók érhetők el is [hang-szöveg transzformációs](quickstart-csharp-uwp.md) és [tolmácsolás –](quickstart-translate-speech-uwp.md).
 
 Ebben a cikkben dolgoznia egy C# univerzális Windows Platform (UWP) alkalmazás használatával az [beszéd SDK](speech-sdk.md). A program egy korábban létrehozott és beállított bot ahhoz, hogy egy hang-és felhőközpontú virtuális asszisztensek élmény az ügyfélalkalmazás fog csatlakozni. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
 
@@ -80,16 +82,16 @@ Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy eg
             <MediaElement x:Name="mediaElement"/>
         </Grid>
     </Page>
-        ```
+    ```
 
-1. Open the code-behind source file `MainPage.xaml.cs`. You'll find it grouped under `MainPage.xaml`. Replace the contents with the code below. Here's what this sample covers: 
+1. Nyissa meg a háttérkód forrásfájl `MainPage.xaml.cs`. Megtalálhatja azt alatta `MainPage.xaml`. Cserélje le a tartalmát az alábbi kódot. Itt van ez a minta ismerteti: 
 
-    * Using statements for the Speech and Speech.Dialog namespaces
-    * A simple implementation to ensure microphone access, wired to a button handler
-    * Basic UI helpers to present messages and errors in the application
-    * A landing point for the initialization code path that will be populated later
-    * A helper to play back text-to-speech (without streaming support)
-    * An empty button handler to start listening that will be populated later
+    * Using utasításokat a beszéd- és Speech.Dialog névtér
+    * Egy gomb kezelőnek vezetékes mikrofon-hozzáférés biztosításához egy egyszerű megvalósítása
+    * Az üzenetek és a hibák szerepelnek az alkalmazás alapszintű felhasználói felület segítők
+    * Egy alkotóelemeit pont a inicializálási kódot elérési útja, amely később lesz kitöltve
+    * A segítő lejátszása vissza szöveg-hang transzformációs (nem támogatott az adatfolyam)
+    * Egy üres gomb kezelő megkezdeni a figyelést, amely később lesz kitöltve
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -239,7 +241,7 @@ Ez a rövid útmutató azt ismerteti, lépésről lépésre, hogyan, hogy egy eg
             }
         }
     }
-     ```
+    ```
 
 1. Ezután létre fog hozni a `SpeechBotConnector` az előfizetés adatait. Adja hozzá a következő metódus törzsét `InitializeBotConnector`, kicserélve a karakterláncokat `YourChannelSecret`, `YourSpeechSubscriptionKey`, és `YourServiceRegion` robotja, beszéd-előfizetéssel, a saját értékeire és [régió](regions.md).
 

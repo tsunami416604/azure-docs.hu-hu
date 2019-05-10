@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 90a39693778e01da76baf19765be8801f55813b7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e53f0bd1af3940b4d2f653b5ef43170212c09a43
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683053"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408683"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Gyors útmutató: ASP.NET Core-alkalmazás létrehozása az Azure-alkalmazás konfigurációja
 
@@ -41,7 +41,7 @@ Ez a rövid útmutató elvégzéséhez telepítse a [.NET Core SDK](https://dotn
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza ki **kulcs/érték Explorer** > **+ létrehozás** a következő kulcs-érték párok hozzáadásához:
+6. Válassza ki **konfigurációs Explorer** > **+ létrehozás** a következő kulcs-érték párok hozzáadásához:
 
     | Kulcs | Érték |
     |---|---|
@@ -88,7 +88,7 @@ Adja hozzá a [Secret Manager eszköz](https://docs.microsoft.com/aspnet/core/se
 
 1. Vegyen fel egy hivatkozást a `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet-csomagot a következő parancs futtatásával:
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-007830001
+        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-008520001
 
 2. Futtassa a következő parancsot a projekt-csomagok visszaállítására szolgáló:
 
@@ -102,7 +102,7 @@ Adja hozzá a [Secret Manager eszköz](https://docs.microsoft.com/aspnet/core/se
 
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
 
-    SECRET Manager szolgál arra, hogy csak a webalkalmazás helyi tesztelése. Ha az alkalmazás telepítését, ha például a [Azure App Service](https://azure.microsoft.com/services/app-service/web), egy alkalmazás-beállításához, például használja **kapcsolati karakterláncok** App Service-ben. A kapcsolati karakterlánc Secret Manager helyett ezt a beállítást használja.
+    SECRET Manager szolgál arra, hogy csak a webalkalmazás helyi tesztelése. Ha az alkalmazás telepítését a [Azure App Service](https://azure.microsoft.com/services/app-service/web), például használhat alkalmazás-beállítás **kapcsolati karakterláncok** az App Service helyett a titkos kulcs Managerrel a kapcsolati karakterlánc tárolására.
 
     A titkos kód API-konfigurációval érhető el. Egy kettőspontot (:) a konfiguráció nevét a konfigurációs API-t az összes támogatott platformon működik. Lásd: [környezet konfigurációjának](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0).
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: c8504c6bf25b186a4bc87c4e7565444dd3e57209
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2c1497589153f1dc5a79cc1d3414966deaf11f21
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570497"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228101"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Az Apache Spark REST API használata egy HDInsight Spark-fürt távoli feladatok elküldéséhez
 
@@ -153,13 +153,7 @@ Hajtsa végre az alábbi lépéseket:
 
 ## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>HDInsight 3.5-ös verziójától kezdve Livy-konfiguráció frissítéseit
 
-HDInsight 3.5-fürtök, és a fenti alapértelmezés szerint letiltja a hozzáférést mintaadatfájlok vagy JAR-fájlok kivételével helyi Fájlelérési utak használatát. Javasoljuk, hogy használja a `wasb://` elérési út inkább JAR-fájlok kivételével eléréséhez, vagy a mintaadatok fájlok a fürtből. Amennyiben szeretné, hogy a helyi elérési utat használja, ennek megfelelően frissítse az Ambari-konfiguráció. Ehhez tegye a következőket:
-
-1. Nyissa meg az Ambari portal, a fürt számára. Az Ambari webes felhasználói felület érhető el a HDInsight-fürtön: https://**CLUSTERNAME**. azurehdidnsight.net, ahol CLUSTERNAME a fürt.
-
-2. A bal oldali navigációs sávján kattintson **Livy**, és kattintson a **Configs**.
-
-3. A **livy-alapértelmezett** adja hozzá a tulajdonságnév `livy.file.local-dir-whitelist` és a hozzá tartozó érték beállítása **"/"** Ha azt szeretné, hogy a fájlrendszer a teljes hozzáférést. Ha csak egy adott címtárhoz hozzáférést szeretne, adja meg, hogy a könyvtár elérési útja értéket.
+HDInsight 3.5-fürtök, és a fenti alapértelmezés szerint letiltja a hozzáférést mintaadatfájlok vagy JAR-fájlok kivételével helyi Fájlelérési utak használatát. Javasoljuk, hogy használja a `wasb://` elérési út inkább JAR-fájlok kivételével eléréséhez, vagy a mintaadatok fájlok a fürtből. 
 
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Egy Azure virtuális hálózaton belüli fürt Livy-feladatok elküldése
 

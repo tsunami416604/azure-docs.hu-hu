@@ -9,12 +9,12 @@ ms.date: 09/14/2017
 ms.author: mhopkins
 ms.reviewer: cbrooks
 ms.subservice: queues
-ms.openlocfilehash: db366fea96967559c65559864ff8e367fa12ad65
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: dbaaade278073613a62eaf350146360651350244
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142585"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510228"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Az Azure Queue storage műveleteket az Azure PowerShell használatával
 
@@ -62,7 +62,7 @@ $resourceGroup = "howtoqueuesrg"
 New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 ```
 
-## <a name="create-storage-account"></a>Storage-fiók létrehozása
+## <a name="create-storage-account"></a>Tárfiók létrehozása
 
 Helyileg redundáns tárolás (LRS) használó általános célú standard szintű storage-fiók létrehozása [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount). A tárfiók környezetét, amely meghatározza a használandó tárfiókot beolvasása. Ha a tárfiókokkal való munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat.
 
@@ -103,7 +103,7 @@ Get-AzStorageQueue -Context $ctx | select Name
 
 ## <a name="add-a-message-to-a-queue"></a>Adjon meg egy üzenetet egy üzenetsorba
 
-A tényleges, az üzenetsorban lévő üzenetek befolyásoló műveletek használja a storage .NET ügyféloldali kódtár érhető el a PowerShell. Vegyen fel egy üzenetet egy üzenetsorba, hozzon létre egy új példányát a üzenetobjektum [Microsoft.Azure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage.-ctor?redirectedfrom=MSDN&view=azure-dotnet#Microsoft_WindowsAzure_Storage_Queue_CloudQueueMessage__ctor_System_Byte___) osztály. Ezután hívja meg az [AddMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.addmessage.aspx) módszert. Egy CloudQueueMessage egy karakterláncból (UTF-8 formátumban) vagy Bájttömbbel hozható létre.
+A tényleges, az üzenetsorban lévő üzenetek befolyásoló műveletek használja a storage .NET ügyféloldali kódtár érhető el a PowerShell. Vegyen fel egy üzenetet egy üzenetsorba, hozzon létre egy új példányát a üzenetobjektum [Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue_message) osztály. Ezután hívja meg az [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue.addmessage) módszert. Egy CloudQueueMessage egy karakterláncból (UTF-8 formátumban) vagy Bájttömbbel hozható létre.
 
 A következő példa bemutatja, hogyan adjon meg egy üzenetet az üzenetsorba.
 
@@ -131,7 +131,7 @@ Ha használja a [Azure Storage Explorer](https://storageexplorer.com), csatlakoz
 
 Ez **láthatatlansági időtúllépési** határozza meg, mennyi ideig az üzenet marad láthatatlan mielőtt ismét használható a feldolgozásra. Az alapértelmezett érték 30 másodperc. 
 
-A kód egy üzenetet az üzenetsorból, két lépésben beolvasása. Meghívásakor a [Microsoft.Azure.Storage.Queue.CloudQueue.GetMessage](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage?redirectedfrom=MSDN&view=azure-dotnet#Microsoft_WindowsAzure_Storage_Queue_CloudQueue_GetMessage_System_Nullable_System_TimeSpan__Microsoft_WindowsAzure_Storage_Queue_QueueRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) metódus, a következő üzenetet kap a várólistán. A **GetMessage** módszerrel lekért üzenet láthatatlanná válik az adott üzenetsorban található üzeneteket olvasó többi kód számára. A befejezéshez, az üzenet eltávolítása a sorból, hívja a [Microsoft.Azure.Storage.Queue.CloudQueue.DeleteMessage](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage?redirectedfrom=MSDN&view=azure-dotnet#overloads) metódust. 
+A kód egy üzenetet az üzenetsorból, két lépésben beolvasása. Meghívásakor a [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.GetMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) metódus, a következő üzenetet kap a várólistán. A **GetMessage** módszerrel lekért üzenet láthatatlanná válik az adott üzenetsorban található üzeneteket olvasó többi kód számára. A befejezéshez, az üzenet eltávolítása a sorból, hívja a [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.DeleteMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) metódust. 
 
 A következő példában, olvassa el a három üzenetsorbeli üzenetek, majd várjon 10 másodpercet (az láthatatlansági időkorlátot). Ezután ismét a három üzenetek olvasásához az üzenetek törlése meghívásával elolvasásával **DeleteMessage**. Olvassa el az üzenetsor, az üzenetek törlését követően meg, ha $queueMessage küldi vissza a rendszer null értékű.
 

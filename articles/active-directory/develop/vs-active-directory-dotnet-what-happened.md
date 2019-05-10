@@ -13,12 +13,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd57eadc2c42c17343eee6d813072866e8ea09e3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1e40a1fd72adf353d5c4d856544482cb7bd68f43
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249809"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413987"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Mi történt az MVC-projektemmel (a Visual Studio Azure Active Directory csatlakoztatott szolgáltatás)?
 
@@ -34,7 +34,7 @@ A csatlakoztatott szolgáltatás való használatáról információkért lásd:
 
 A projekt fájlhivatkozásokat *.NET befolyásolja) és `packages.config` (NuGet-hivatkozás).
 
-| Typo | Leírások |
+| Típus | Leírások |
 | --- | --- |
 | .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
 | .NET; NuGet | Microsoft.Owin |
@@ -49,7 +49,7 @@ A projekt fájlhivatkozásokat *.NET befolyásolja) és `packages.config` (NuGet
 
 További hivatkozások, ha bejelölte a **címtáradatok olvasása** lehetőséget:
 
-| Typo | Leírások |
+| Típus | Leírások |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (Visual Studio 2015 only) |
@@ -63,7 +63,7 @@ További hivatkozások, ha bejelölte a **címtáradatok olvasása** lehetőség
 
 A következő hivatkozásokat el lesznek távolítva (ASP.NET 4-projektek, mint a Visual Studio 2015):
 
-| Typo | Leírások |
+| Típus | Leírások |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -145,7 +145,7 @@ További módosításokat, ha bejelölte a **címtáradatok olvasása** lehetős
 
 ### <a name="file-backup-visual-studio-2015"></a>Biztonsági mentés (Visual Studio 2015)
 
-A csatlakoztatott szolgáltatás hozzáadása, ha Visual Studio 2015 eltávolított és a módosított fájlok mentését. A mappa összes érintett fájlok lesznek mentve `Backup/AzureAD`. A Visual Studio 2017 nem hoz létre a biztonsági mentéseket.
+A csatlakoztatott szolgáltatás hozzáadása, ha Visual Studio 2015 eltávolított és a módosított fájlok mentését. A mappa összes érintett fájlok lesznek mentve `Backup/AzureAD`. A Visual Studio 2017-es és újabb verziók nem hoz létre a biztonsági mentéseket.
 
 - `Startup.cs`
 - `App_Start\IdentityConfig.cs`

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2a2df8b47b60f29d8ecd3c040e8ef979ee23afa8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b8caa5cd7476489a92ce97570794a1d397f32630
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575403"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230904"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Az Azure Maps geokódolás lefedettsége
 
 Az Azure Maps hely keresése, ha a keresési szolgáltatás a keresési kifejezéseket lép, és adja vissza a szélességi és hosszúsági koordinátákat a geokódolás nevű folyamat. A Maps azonban nem rendelkezik azonos szintű információkat és az összes régió és ország pontossága. Ez a cikk segítségével határozhatja meg, milyen típusú helyeket megbízhatóan kereshet az egyes régiókban. 
 
-A geocode országban el közúti adatok lefedettsége és a geokódolás pontosságát a geokódolási szolgáltatás függ. Az alábbi kategorizálási szolgálnak az egyes országok adja meg a geokódolás támogatási szint.
+Az országot/régiót a geocode el közúti adatok lefedettsége és a geokódolás pontosságát a geokódolási szolgáltatás függ. Az alábbi kategorizálási használt minden ország/régió geokódolás támogatás szintjét adja meg.
 * **Cím pontok** -címek adatok feloldható legyen a szélesség/hosszúság koordináta a cím csomagonkénti (tulajdonság határához) belül. Más néven "Tetőn használt" pontos. Ez az a legmagasabb szintű rendelkezésre álló címek pontossága. 
 * **Számok House** -címek vannak interpolált való tartozó házszám szélességi és hosszúsági koordinátákkal koordináta.
 * **Utca szint** -címek hozzárendelve az utca, amely tartalmazza a címet a szélességi és hosszúsági koordinátákkal koordinátáját. A házszámát nem dolgozható fel.
@@ -30,7 +30,7 @@ A geocode országban el közúti adatok lefedettsége és a geokódolás pontoss
 | Ország/régió                                       | Cím pontok | Ház számok | Utca szint | Város szint | Hasznos helyek |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Anguilla                                            |                 |                |              |      ✓     |          ✓         |
-| Antarktisz                                          |                 |                |              |      ✓     |          ✓         |
+| Antarktika                                          |                 |                |              |      ✓     |          ✓         |
 | Antigua és Barbuda                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | Argentína                                           |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
 | Aruba                                               |                 |                |              |      ✓     |          ✓         |
@@ -50,7 +50,7 @@ A geocode országban el közúti adatok lefedettsége és a geokódolás pontoss
 | Dominika                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Dominicana                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Ecuador                                             |                 |                |       ✓      |      ✓     |          ✓         |
-| Salvador                                         |                 |                |       ✓      |      ✓     |          ✓         |
+| El Salvador                                         |                 |                |       ✓      |      ✓     |          ✓         |
 | Falkland-szigetek                                    |                 |                |              |      ✓     |          ✓         |
 | Francia Guyana                                       |                 |                |       ✓      |      ✓     |          ✓         |
 | Grenada                                             |                 |                |       ✓      |      ✓     |          ✓         |
@@ -76,7 +76,7 @@ A geocode országban el közúti adatok lefedettsége és a geokódolás pontoss
 | Saint-Pierre és Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Vincent és Grenadine-szigetek                    |                 |                |              |      ✓     |          ✓         |
 | Sint Maarten                                        |                 |                |       ✓      |      ✓     |          ✓         |
-| Déli-Georgia és Déli-Sandwich-szigetek        |                 |                |              |      ✓     |          ✓         |
+| Dél-Georgia és Déli-Sandwich-szigetek        |                 |                |              |      ✓     |          ✓         |
 | Suriname                                            |                 |                |              |      ✓     |          ✓         |
 | Trinidad és Tobago                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | Az Amerikai Egyesült Államok lakatlan külbirtokai                |                 |                |              |      ✓     |          ✓         |
@@ -94,7 +94,7 @@ A geocode országban el közúti adatok lefedettsége és a geokódolás pontoss
 | Ausztrália                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Banglades                                          |                 |                |              |      ✓     |          ✓         |
 | Bhután                                              |                 |                |              |      ✓     |          ✓         |
-| Brit Indiai-óceáni Terület                      |                 |                |              |      ✓     |          ✓         |
+| Brit indiai-óceáni terület                      |                 |                |              |      ✓     |          ✓         |
 | Brunei                                              |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Kambodzsa                                            |                 |                |              |      ✓     |          ✓         |
 | Kína                                               |                 |                |              |      ✓     |          ✓         |
@@ -162,10 +162,10 @@ A geocode országban el közúti adatok lefedettsége és a geokódolás pontoss
 | Belarusz                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Horvátország                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Ciprus                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Cseh Köztársaság                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Csehország                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Dánia                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Észtország                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Feröer-szigetek                                       |                 |                |              |      ✓     |          ✓         |
+| Feröer szigetek                                       |                 |                |              |      ✓     |          ✓         |
 | Finnország                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Franciaország                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Grúzia                                             |        ✓        |        ✓       |              |      ✓     |          ✓         |
@@ -235,7 +235,7 @@ A geocode országban el közúti adatok lefedettsége és a geokódolás pontoss
 | Közép-afrikai Köztársaság                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Csád                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Kongó                                               |                 |                |       ✓      |      ✓     |          ✓         |
-| Côte d’Ivoire                                       |                 |                |       ✓      |      ✓     |          ✓         |
+| Côte d'Ivoire                                       |                 |                |       ✓      |      ✓     |          ✓         |
 | Kongói Demokratikus Köztársaság                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Dzsibuti                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Egyiptom                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |

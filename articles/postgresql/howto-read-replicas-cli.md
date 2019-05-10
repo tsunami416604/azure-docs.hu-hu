@@ -1,21 +1,24 @@
 ---
-title: Olvasási replikák kezelése az Azure Database for postgresql-hez az Azure parancssori felületen
-description: Ismerje meg, hogyan kezelhető az Azure Database olvassa el a replikákat az Azure parancssori felületen, a PostgreSQL-hez.
+title: Olvasási replikák kezelése az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure parancssori felületen
+description: Ismerje meg, hogyan kezelheti a olvasható replikák az Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure parancssori felületen.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: b5e0336a290090ed6bd7f5af508e691677780a80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/6/2019
+ms.openlocfilehash: 9730faf3191ef2e2bd0b6c3caddefa0492b33fc5
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60420240"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510236"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>Hozzon létre, és olvasási replikák kezelése az Azure parancssori felületen
 
 Ebből a cikkből megismerheti, hogyan hozhat létre és kezelheti a olvasható replikák az Azure Database for postgresql-hez az Azure parancssori felületen. Olvasási replikák kapcsolatos további információkért tekintse meg a [áttekintése](concepts-read-replicas.md).
+
+> [!NOTE]
+> Az Azure parancssori felület még nem támogatja a replikák létrehozása a fő kiszolgálóról egy másik régióban. A régiók közötti replika létrehozásához használja a [az Azure portal](howto-read-replicas-portal.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Egy [, Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-up-azure-cli.md) kell a fölérendelt kiszolgáló.

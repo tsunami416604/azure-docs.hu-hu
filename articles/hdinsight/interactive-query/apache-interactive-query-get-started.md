@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/22/2018
-ms.openlocfilehash: c7cee3dfd3b091d75f4dadcaa62513fddf0c0e68
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/07/2019
+ms.openlocfilehash: 9636157182e8b40914bde2515c5b295d0480255a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692144"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511000"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>HDInsight interaktív lekérdezés használata
 Interaktív lekérdezés (más néven az Apache Hive LLAP, vagy [alacsony késés Analytical Processing](https://cwiki.apache.org/confluence/display/Hive/LLAP)) van egy Azure HDInsight [fürt típusa](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Interaktív lekérdezés támogatja a memórián belüli gyorsítótárazáshoz, ami lehetővé teszi az Apache Hive-lekérdezések gyorsabb és interaktívabb sokkal.
@@ -34,10 +34,6 @@ Hive-lekérdezések végrehajtásához a következő lehetőségek állnak rende
 * Microsoft Power BI használata
 
     Lásd: [megjelenítése interaktív lekérdezés Apache Hive-adatok Power BI segítségével az Azure HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md) lásd [megjelenítése a Power bi használatával az Azure HDInsight a big Data típusú adatok](../hadoop/apache-hadoop-connect-hive-power-bi.md).
- 
-* Az Apache Zeppelin használata
-
-    Lásd: [Apache Hive-lekérdezések futtatásához az Azure HDInsight használata az Apache Zeppelin](../hdinsight-connect-hive-zeppelin.md).
 
 * A Visual Studio használata
 
@@ -61,7 +57,7 @@ Hive-lekérdezések végrehajtásához a következő lehetőségek állnak rende
 
 A Java adatbázis-kapcsolat (JDBC) kapcsolati karakterlánc megkeresése:
 
-1. Jelentkezzen be az Apache Ambari az alábbi URL-címet: https://\<fürtnév\>. Azurehdinsight.NET formátumban van.
+1. Jelentkezzen be az Apache Ambari az alábbi URL-cím használatával: `https://<cluster name>.AzureHDInsight.net`.
 2. A bal oldali menüben válassza ki a **Hive**.
 3. Másolja az URL-CÍMÉT, válassza a vágólapra ikont:
    

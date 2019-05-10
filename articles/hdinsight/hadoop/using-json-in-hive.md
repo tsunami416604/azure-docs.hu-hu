@@ -142,7 +142,7 @@ Ez a szkript a Hive-konzol kimenetét:
 Az UDF-ben használt json_tuple a [nézet oldalirányú](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) struktúra, amely lehetővé teszi a json szintaxist\_virtuális tábla létrehozása a UDT függvény az eredeti tábla minden egyes sorára való alkalmazásával a rekordot. A ismételt használata miatt túl nehézkessé válhat összetett JSONs **OLDALNÉZET**. Ezenkívül **JSON_TUPLE** beágyazott JSONs nem tudja kezelni.
 
 ### <a name="use-a-custom-serde"></a>Egy egyéni SerDe használata
-SerDe a legjobb választás beágyazott JSON-dokumentumok elemzését. Lehetővé teszi, hogy a JSON-séma határozza meg, és ezután használhatja a sémát a dokumentumok elemzése. Útmutatásért lásd: [egy egyéni JSON-SerDe használata a Microsoft Azure HDInsight](https://web.archive.org/web/20190217104719/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/).
+SerDe a legjobb választás beágyazott JSON-dokumentumok elemzését. Lehetővé teszi, hogy a JSON-séma határozza meg, és ezután használhatja a sémát a dokumentumok elemzése. Útmutatásért lásd: [egy egyéni JSON-SerDe használata a Microsoft Azure HDInsight](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/).
 
 ## <a name="summary"></a>Összegzés
 Végezetül JSON operátor az Ön által választott Hive típusa a forgatókönyvtől függ. Ha egy egyszerű JSON-dokumentum, és keresse ki csak egy mezőt, válassza ki a Hive-UDF get_json_object használja. Ha egynél több kulcs keressük meg, majd használhatja json_tuple. Ha rendelkezik egy beágyazott dokumentumot, akkor a JSON-SerDe kell használnia.

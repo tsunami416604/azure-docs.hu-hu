@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/22/2019
-ms.openlocfilehash: 3d20a7bb98ba266850baa0512f5b767f8b649767
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 04/30/2019
+ms.openlocfilehash: 846ff510603c0ed0888ec92ece8b86fad0354c19
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707880"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230883"
 ---
 # <a name="tutorial-configure-azure-route-tables-using-ansible"></a>Oktatóanyag: Konfigurálja az Azure útválasztási táblázatban az Ansible-lel
 
@@ -29,8 +29,8 @@ Az Azure automatikusan irányítja az Azure az alhálózatok, virtuális hálóz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
-- [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
 ## <a name="create-a-route-table"></a>Útválasztási táblázat létrehozása
 

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: 65a861c647c2dc92e416fa356075821aa5060042
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 938f13524b22f34f4becc936885d1611cb854df1
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205043"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510493"
 ---
 # <a name="create-and-register-azure-machine-learning-datasets-preview"></a>Hozzon létre és regisztrálja az Azure Machine Learning-adatkészletek (előzetes verzió)
 
@@ -87,10 +87,10 @@ dataset = Dataset.from_delimited_files(datapath)
 dataset.head(5)
 ```
 
-||ID (Azonosító)|Eset száma|Dátum|Letiltás|IUCR|Elsődleges típusa|Leírás|Leírás helye|Letartóztatás|Hazai|...|Ward|Közösségi terület|Az FBI kód|X koordinátáját|Y koordinátája|Év|Frissítés dátuma|Szélesség|Hosszúság|Hely|
+||azonosító|Eset száma|Dátum|Letiltás|IUCR|Elsődleges típusa|Leírás|Leírás helye|Letartóztatás|Hazai|...|Ward|Közösségi terület|Az FBI kód|X koordinátáját|Y koordinátája|Év|Frissítés dátuma|Szélesség|Hosszúság|Hely|
 |--|--|---|---|---|---|----|------|-------|------|-----|---|----|----|-----|-----|------|----|-----|----|----|-----
 |0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|MEGTÉVESZTŐ ELJÁRÁS|PÉNZÜGYI ADATOKKAL VALÓ VISSZAÉLÉS KERESZTÜL 300 USD|EGYÉB|FALSE|FALSE|...|9|50|11|1183356|1831503|2016|5/11/2016 15:48|41.69283384|-87.60431945|(41.692833841, -87.60431945)|
-1|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD ELENTÉS MENTÉSE|890|LOPÁS| FROM BUILDING|RESIDENCE|FALSE|FALSE|...|21|71|6|1166776|1850053|2016|5/12/2016 15:48|41.74410697|-87.66449429|(41.744106973, -87.664494285)
+1.|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD ELENTÉS MENTÉSE|890|LOPÁS| FROM BUILDING|RESIDENCE|FALSE|FALSE|...|21|71|6|1166776|1850053|2016|5/12/2016 15:48|41.74410697|-87.66449429|(41.744106973, -87.664494285)
 2|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTÓI ELENTÉS MENTÉSE|1154|MEGTÉVESZTŐ ELJÁRÁS|PÉNZÜGYI ADATOKKAL VALÓ VISSZAÉLÉS 300 USD MAJD A|RESIDENCE|FALSE|FALSE|...|19|74|11|||2016|5/12/2016 15:50
 3|10519591|HZ261534|4/15/2016 9:00|113XX S VALÓ MENTÉSE|1120|MEGTÉVESZTŐ ELJÁRÁS|FORGERY|RESIDENCE|FALSE|FALSE|...|9|49|10|||2016|5/13/2016 15:51
 4|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE ELENTÉS MENTÉSE|890|LOPÁS|FROM BUILDING|SCHOOL, PUBLIC, BUILDING|FALSE|FALSE|...|40|13|6|||2016|5/25/2016 15:59|
@@ -102,7 +102,6 @@ Használja a [ `register()` ](https://docs.microsoft.com/python/api/azureml-core
 ```Python
 dataset = dataset.register(workspace = workspace,
                            name = 'dataset_crime',
-
                            description = 'Training data',
                            exist_ok = False
                            )
@@ -116,6 +115,9 @@ A `register()` metódus visszaadja a már regisztrált adatkészletek a paramét
 ```Python
 dataset = dataset.register(workspace = workspace,
                            name = 'dataset_crime',
+                           description = 'Training data',
+                           exist_ok = True
+                           )
 ```
 
 Használat `list()` látható az összes, a regisztrált adatkészletek a munkaterületén.

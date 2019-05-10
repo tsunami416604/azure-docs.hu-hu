@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6bda1af8095e7026c79b7d8ffe45b39f6cbb3508
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a8bc46011b00a0c63eddd2799ac1309b5754472e
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028695"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442419"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX és az Azure Machine Learning: Hozzon létre és gépi Tanulási modelleket felgyorsítása
 
@@ -30,7 +30,7 @@ A Microsoft és partnerei Közössége létrehozott ONNX nyílt szabvány, amely
 
 Az ONNX-futtatókörnyezet nagy skálázást a Microsoft Services a Bing, az Office és a Cognitive Services például szolgál. Teljesítménynövekedést számos tényezőtől függ, de ezek a Microsoft a szolgáltatások látott egy __2 x teljesítmény nyereség processzor átlagos__. Az ONNX-modul is szolgál a több száz millió eszközre Windows ML részeként. A modul az Azure Machine Learning-szolgáltatások is használhatja. Az ONNX-modul segítségével élvezheti a széles körű termelési szintű optimalizálást, és a folyamatos fejlesztések.
 
-[![Képzés, a feldolgozók és a központi telepítési ONNX folyamatábrája](media/concept-onnx/onnx.png) ](./media/concept-onnx/onnx.png#lightbox)
+[![Képzés, a feldolgozók és a központi telepítési ONNX folyamatábrája](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>ONNX-modellekkel beolvasása
 

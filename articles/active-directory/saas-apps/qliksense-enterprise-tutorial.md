@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54690386b3654952cc2292963c9bf01dc65e4315
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 31df4cb9163e598bfde0c491d8088398c3204119
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875210"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407994"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>Oktatóanyag: Az Azure Active Directory-integráció, a Qlik Sense Enterprise-zal
 
@@ -183,7 +183,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés, a Qlik Sense vállalati, hajt
 
     e. A **identitásszolgáltató SAML-metaadatok** a korábban szerkesztett fájl a **összevonási metaadatainak szerkesztése az Azure AD-konfigurációból** szakaszban.  **Mielőtt feltöltené a identitásszolgáltató metaadatok, a fájl szerkeszthető kell** között az Azure AD megfelelő működés érdekében adatok eltávolítása és a Qlik Sense kiszolgáló.  **Tekintse meg a fenti utasításokat, ha a fájl még nem szerkeszthető.**  Ha a fájl kattintson a Tallózás gombra, és válassza ki a szerkesztett metaadatok fájlt feltölteni a virtuális proxykonfigurációt.
 
-    f. Adja meg a nevét vagy a séma attribútumhivatkozás jelölő SAML-attribútumot a **UserID** az Azure AD elküldi a Qlik Sense-kiszolgálóhoz.  Az Azure-alkalmazás képernyők post konfigurációs séma referenciainformációk érhető el.  A name attribútum használatához adja meg `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    f. Adja meg a nevét vagy a séma attribútumhivatkozás jelölő SAML-attribútumot a **UserID** az Azure AD elküldi a Qlik Sense-kiszolgálóhoz.  Az Azure-alkalmazás képernyők post konfigurációs séma referenciainformációk érhető el.  A name attribútum használatához adja meg `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     g. Adja meg az értéket a **felhasználói címtárba** , amely csatolva lesz a felhasználók hitelesítéskor Qlik Sense-kiszolgálóhoz az Azure AD-n keresztül.  Nem változtatható értékek kell lennie.%n **szögletes szögletes zárójeleket []**.  Egy attribútum küldi el az Azure AD SAML helyességi feltétel használatához adja meg a nevét, a szövegmezőbe **nélkül** szögletes zárójelek között.
 
@@ -298,7 +298,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy Britta Simon nevű Qlik Sense vállalati felhasználó hoz létre. Együttműködve [Qlik Sense vállalati támogatási csapatának](https://www.qlik.com/us/services/support) a felhasználók hozzáadása a Qlik Sense nagyvállalati platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

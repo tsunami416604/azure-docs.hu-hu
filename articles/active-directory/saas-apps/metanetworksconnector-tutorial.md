@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 95a138a6dd499df18789e9b587e770a9b7bf7dab
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a86e63f17230ed30bd5ae164d2d17d65b5cde745
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279669"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408056"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Oktatóanyag: Meta hálózatok összekötő az Azure Active Directory-integráció
 
@@ -131,8 +131,8 @@ Konfigurálja az Azure AD egyszeri bejelentkezés Meta hálózatok összekötőv
     | ---------------| --------------- | -------- |
     | Keresztnév | user.givenname | |
     | Vezetéknév | user.surname | |
-    | e-mail cím| user.mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | név | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | e-mail cím| user.mail| `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | név | user.userprincipalname| `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | telefon | user.telephonenumber | |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
@@ -268,7 +268,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó Meta hálózatok összek
 >[!Note]
 >Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Meta hálózatokhoz csatlakozó ügyfél-támogatási csapatának](mailto:support@metanetworks.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 03/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: bc54832b300bf7a70d067f07b9eb7cc67404f2e7
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 62d0c7a66e37d0796655bd20f780fa7e0847474c
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496803"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228682"
 ---
 # <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>Biztonsági mentése a PowerShell-lel titkosított Azure virtuális gépeken
 
@@ -48,7 +48,7 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 |---|---| 
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. | 
 | [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) | Létrehoz egy recovery services-tárolót a biztonsági másolatok tárolására. | 
-| [Set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperties) | Csoportok biztonsági mentési tároló tulajdonságainak a Recovery Services-tároló. | 
+| [Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) | Csoportok biztonsági mentési tároló tulajdonságainak a Recovery Services-tároló. | 
 | [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy)| Alkalmazásvédelmi szabályzat ütemezése házirenddel és adatmegőrzési hoz létre a Recovery Services-tárolóban. | 
 | [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) | Beállítja a jogosultságokat a Key Vault-tárolóban, hogy a szolgáltatásnév hozzáférhessen a titkosítási kulcsokhoz. | 
 | [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) | Lehetővé teszi, hogy a megadott biztonsági mentési házirenddel rendelkező elem biztonsági mentését. | 

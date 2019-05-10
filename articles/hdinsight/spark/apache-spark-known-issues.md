@@ -67,7 +67,7 @@ HDInsight Spark-fürtök nem támogatják a Spark-Phoenix-összekötő.
 
 **Megoldás:**
 
-A Spark-HBase-összekötő inkább kell használnia. Az utasításokért lásd: [használata Spark-HBase-összekötő](https://web.archive.org/web/20190112153146/ https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/).
+A Spark-HBase-összekötő inkább kell használnia. Az utasításokért lásd: [használata Spark-HBase-összekötő](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/).
 
 ## <a name="issues-related-to-jupyter-notebooks"></a>A Jupyter notebooks kapcsolatos problémák
 Az alábbiakban néhány, a Jupyter notebookok kapcsolatos ismert problémákat.

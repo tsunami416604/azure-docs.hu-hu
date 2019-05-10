@@ -11,16 +11,16 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 72e43ac295fcb007dd58b2b7792a16c639ee9c08
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 64ba7096f181371a378708e024f46bce17449e98
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023745"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510586"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált Machine Learning-kísérletek konfigurálása a Pythonban
 
-Ebben az útmutatóban megtudhatja, hogyan határozza meg, az automatikus machine learning-példakísérleteket a különböző konfigurációs beállításait a [Azure Machine Learning-SDK](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/intro?view=azure-ml-py). Automatizált machine learning olyan algoritmusai és hiperparaméterek kiválasztja az Ön számára, és készen áll a központi telepítési modell állít elő. Többféle módon automatizált machine learning-példakísérleteket konfigurálásához használhatja.
+Ebben az útmutatóban megtudhatja, hogyan határozza meg, az automatikus machine learning-példakísérleteket a különböző konfigurációs beállításait a [Azure Machine Learning-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Automatizált machine learning olyan algoritmusai és hiperparaméterek kiválasztja az Ön számára, és készen áll a központi telepítési modell állít elő. Többféle módon automatizált machine learning-példakísérleteket konfigurálásához használhatja.
 
 Egy automatizált machine learning-példakísérleteket Példák megtekintése: [oktatóanyag: Egy automatizált gépi tanulással osztályozási modell betanításához](tutorial-auto-train-models.md) vagy [és a felhőben automatizált machine learning-modellek betanításához](how-to-auto-train-remote.md).
 
@@ -368,7 +368,7 @@ Használja az alábbi 2 illesztett modell az első lépés az API-k segítségé
 
 + 1. API: `get_engineered_feature_names()` visszafejtett neveinek listáját adja vissza.
 
-  Használat 
+  Használat: 
   ```python
   fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
   ```
@@ -384,7 +384,7 @@ Használja az alábbi 2 illesztett modell az első lépés az API-k segítségé
 
 + 2. API: `get_featurization_summary()` featurization bemeneti szolgáltatások összegzését adja vissza.
 
-  Használat 
+  Használat: 
   ```python
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```

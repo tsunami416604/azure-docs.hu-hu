@@ -1,6 +1,6 @@
 ---
 title: Gyakori kérdések – a Network Performance Monitor megoldás az Azure-ban |} A Microsoft Docs
-description: Ez a cikk az npm-et az Azure-ban – gyakori kérdések rögzíti. Network Performance monitort (NPM) segítségével, közel valós időben, és keresse meg a hálózatok teljesítményének megfigyelése a teljesítmény szűk hálózati.
+description: Ez a cikk az Azure-ban a Network Performance Monitor – gyakori kérdések rögzíti. Network Performance monitort (NPM) segítségével, a közel valós időben hálózatok teljesítményének megfigyelése felismeri és keresse meg a hálózati teljesítmény szűk keresztmetszeteket.
 services: log-analytics
 documentationcenter: ''
 author: vinynigam
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: d216a26dc01ae3a6946c57138bb124b41f50a151
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d573b7ad9edac6b1502744b61e85cba3402a6f68
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60401450"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232669"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -36,24 +36,24 @@ További információ a különböző funkciók által támogatott [Network Perf
 ### <a name="what-are-the-platform-requirements-for-the-nodes-to-be-used-for-monitoring-by-npm"></a>Mik azok az adott platformok követelményeit, a csomópontok a figyelés npm-et használni?
 Az alábbiakban az adott platformok követelményeit, az NPM képességek:
 
-- NPM Teljesítményfigyelő és szolgáltatás Kapcsolatfigyelő képességeket támogatja mind a Windows server (2008 SP1 vagy újabb) és a Windows asztali számítógépek vagy Windows-ügyfél operációs rendszerek (a Windows 10, Windows 8.1, Windows 8 és Windows 7). 
+- NPM Teljesítményfigyelő és a szolgáltatás Kapcsolatfigyelő funkciókat támogatja a Windows server és a Windows asztali számítógépek vagy Windows-ügyfél operációs rendszerek. Windows server operációs rendszer támogatott verziói 2008 SP1 vagy újabb. Windows asztali számítógépek vagy Windows-ügyfél a támogatott verziók a Windows 10, Windows 8.1, Windows 8 és Windows 7 rendszer. 
 - NPM ExpressRoute-figyelő funkció támogatja a csak a Windows server (2008 SP1 vagy újabb) operációs rendszert.
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Linux rendszerű gépek használják az NPM csomópontok figyelése?
-Linux-alapú csomópontokat használó hálózatok figyelése a funkció jelenleg előzetes verzióban érhető el. Keresse fel a Ügyfélmenedzserével többet. Miután megadta a munkaterület Azonosítóját, hogy lesz lépjen tovább, és a funkció engedélyezéséhez. Linux-ügynökök adja meg a figyelési funkció csak az NPM Teljesítményfigyelő képesség, és nem érhetők el a szolgáltatás Kapcsolatfigyelő és ExpressRoute-figyelő képességei
+Linux-alapú csomópontokat használó hálózatok figyelése a funkció jelenleg előzetes verzióban érhető el. Keresse fel a Ügyfélmenedzserével többet. Linux-ügynökök adja meg a figyelési funkció csak az NPM Teljesítményfigyelő képesség, és nem érhetők el a szolgáltatás Kapcsolatfigyelő és ExpressRoute-figyelő képességei
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Mik a méretét a csomópontok figyeléshez az NPM által használandó?
-A csomópont virtuális gépek, hálózatok figyelése az NPM-megoldást futtatja, a csomópontok legalább 500 MB memória és a egy magot kell rendelkeznie. Nem kell különálló csomópontok használata futtatásához npm-et. A megoldás, amely rendelkezik a rajta futó számítási feladatoktól csomópontján futtathatja. A megoldás a teszi, hogy a monitorozási folyamat leállítása, abban az esetben azt használja, amely több, mint 5 %-ot tartalmaz.
+A csomópont virtuális gépek, hálózatok figyelése az NPM-megoldást futtatja, a csomópontok legalább 500 MB memória és a egy magot kell rendelkeznie. Futtatásához NPM különálló csomópontok használatához nincs szükség. A megoldás, amely rendelkezik a rajta futó számítási feladatoktól csomópontján futtathatja. A megoldás tartalmaz a funkció a monitorozási folyamat leáll, ha használ, amely több, mint 5 %-ot.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Npm-et használja, hogy csatlakozhatok saját csomópontok közvetlen ügynök vagy a System Center Operations Manager használatával?
-A Teljesítményfigyelő és a szolgáltatás Kapcsolatfigyelő képességeket is támogatja a csomópontok [közvetlen ügynökök csatlakoztatott](../../azure-monitor/platform/agent-windows.md) , valamint [szolgáltatást az Operations Manageren keresztül csatlakozó](../../azure-monitor/platform/om-agents.md).
+A Teljesítményfigyelő és a szolgáltatás Kapcsolatfigyelő képességeket is támogatja a csomópontok [közvetlen ügynökök csatlakoztatott](../../azure-monitor/platform/agent-windows.md) és [szolgáltatást az Operations Manageren keresztül csatlakozó](../../azure-monitor/platform/om-agents.md).
 
-Az ExpressRoute-figyelő szolgáltatás az Azure-csomópontok csatlakoznia kell a közvetlen ügynökök, csak. Az Operations Manager keresztül vannak csatlakoztatva az Azure csomópontok nem támogatottak. Helyszíni csomópontokat a közvetlen ügynökök, valamint az Operations Manager csatlakoztatott csomópontok ExpressRoute-kapcsolatcsoport figyelésére használhatók.
+Az ExpressRoute-figyelő szolgáltatás az Azure-csomópontok csatlakoznia kell a közvetlen ügynökök, csak. Az Operations Manager keresztül vannak csatlakoztatva az Azure csomópontok nem támogatottak. Helyszíni csomópontokat a közvetlen ügynökök, és az Operations Manager keresztül csatlakozó csomópontok ExpressRoute-kapcsolatcsoport figyelésére használhatók.
 
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Többek között a TCP és az ICMP protokoll figyelésre kell választani?
-Ha a hálózat, Windows server-alapú csomópontokat használ, javasoljuk, TCP figyelési protokollként használhatja, mivel ez nagyobb pontosságot biztosít. 
+Ha a hálózat használata a Windows server-alapú csomópontokat használja a megfigyeléshez, ajánlott TCP figyelési protokollként használhatja, mivel ez nagyobb pontosságot biztosít. 
 
-ICMP használata ajánlott Windows asztali számítógépek vagy Windows-ügyfél operációs rendszer-alapú csomópontokat. Ezen a platformon nem engedélyezi a TCP-adatok a nyers sockets, az NPM segítségével hálózati topológia felderítése lesz elküldve.
+ICMP használata ajánlott Windows asztali számítógépek vagy Windows-ügyfél operációs rendszer-alapú csomópontokat. A platform does'nt TCP adatok npm-et használó hálózati topológia felderítése nyers szoftvercsatornákon keresztül küldésének engedélyezése.
 
 További részleteket az egyes protokoll relatív előnyeit is megjeleníthet [Itt](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol).
 
@@ -71,8 +71,8 @@ A szkript kizárólag Windows tűzfal helyben konfigurálja. Ha tűzfal vagy a h
 ### <a name="how-many-agents-should-i-use"></a>Hány ügynök használjam?
 Legalább egy ügynököt, amely a figyelni kívánt minden egyes alhálózathoz használjon.
 
-### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--you-have-reached-your-configuration-limit"></a>Mi az ügynökök is használhatok maximális számát, vagy hibát "… elérte a konfigurációs korlátot"?
-Az NPM Munkaállomásonként 5000-es IP-címek IP-címek számát korlátozza. Ha egy csomópont IPv4 és IPv6-címeket is rendelkezik, ez számítanak 2 IP-címek a csomópontra vonatkozóan. Ezért ezt a korlátot, az 5000-es IP-címek akkor döntse el, az ügynökök számának felső korlátja. NPM csomópontok lapján törölheti az inaktív ügynököt >> konfigurálása. Npm-et is fenntartják, minden IP-címekről felhasználónevéhez rendelt minden eddiginél a virtuális Gépet üzemeltető az ügynököt, és ezek szintén számít, hogy felső korlátja 5000-es IP-címek külön IP-címek hozzájáruló előzményeit. Szabadítson fel IP-címek a munkaterülethez, használhatja a csomópontok lap törli az IP-címek, amelyek nem használja.
+### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Mi az az ügynökök is használhatok maximális száma vagy a hiba "... elérte a konfigurációs korlátot"?
+Az NPM Munkaállomásonként 5000-es IP-címek IP-címek számát korlátozza. Ha egy csomópont IPv4 és IPv6-címeket is rendelkezik, ez számítanak 2 IP-címek a csomópontra vonatkozóan. Ezért ezt a korlátot, az 5000-es IP-címek akkor döntse el, az ügynökök számának felső korlátja. NPM csomópontok lapján törölheti az inaktív ügynököt >> konfigurálása. Npm-et is fenntartják, az összes a felhasználónevéhez rendelt minden eddiginél a virtuális Gépet üzemeltető, az ügynök és az egyes IP-címek külön IP hozzájárul, hogy az 5000-es IP-címek felső korlátja számít. Szabadítson fel IP-címek a munkaterülethez, használhatja a csomópontok lap törli az IP-címek, amelyek nem használja.
 
 ## <a name="monitoring"></a>Figyelés
 
@@ -136,16 +136,26 @@ Az NPM figyelheti csatlakozási szolgáltatások a világ bármely részén egy 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Mely régiók támogatottak az NPM ExpressRoute-figyelő?
 Az NPM figyelheti az ExpressRoute-Kapcsolatcsoportok bármely Azure-régióban található. Való előkészítésre NPM, szüksége lesz a Log Analytics-munkaterület, amely az egyik kell elhelyezni a [támogatott régiók](/azure/expressroute/how-to-npm)
 
-## <a name="troubleshoot"></a>Hibaelhárítás
+## <a name="troubleshoot"></a>Az eszköz nem tudta a várt módon befejezni a szinkronizálást. A probléma megoldásának módjáról erre az üzenetre kattintva tájékozódhat.
 
 ### <a name="why-are-some-of-the-hops-marked-as-unidentified-in-the-network-topology-view"></a>Miért vannak egyes az útválasztók ugrásainak a hálózati topológia e nézetében az azonosítatlan megjelölve?
-Npm-et használ a traceroute módosított változatát feltérképezi a forrás-ügynöktől a célhelyre. Az azonosítatlan Ugrás jelöli, hogy a hálózati Ugrás a forrásügynök traceroute kérelem nem válaszolt. Ha 3 egymást követő hálózati útválasztók ugrásainak traceroute az ügynök nem válaszol, a megoldás jelöli meg a nem válaszoló ugrások azonosítatlan, és nem próbál további ugrásai felderítéséhez.
+Npm-et használ a traceroute módosított változatát feltérképezi a forrás-ügynöktől a célhelyre. Az azonosítatlan Ugrás jelöli, hogy a hálózati Ugrás a forrásügynök traceroute kérelem nem válaszolt. Ha három egymást követő hálózati útválasztók ugrásainak traceroute az ügynök nem válaszol, a megoldás jelöli meg a nem válaszoló ugrások azonosítatlan, és nem próbál további ugrásai felderítéséhez.
 
 Hop előfordulhat, hogy egy vagy több, a traceroute válaszol az alábbi forgatókönyvek:
 
 * Az útválasztók beállított ne fedjenek-azonosítót fog kérni.
 * A hálózati eszközök nem ICMP_TTL_EXCEEDED forgalmat engedélyezi.
 * Egy tűzfal blokkolja a hálózati eszköz ICMP_TTL_EXCEEDED válaszát.
+
+### <a name="why-does-my-link-show-unhealthy-but-the-topology-does-not"></a>Miért nem saját kapcsolat megjelenítése nem megfelelő állapotú, de a topológia nem létezik 
+Az NPM figyeli a végpontok közötti, késés és a topológia különböző időközönként. Kimaradások és késések 5 másodpercenként mérjük és percen át 3 percenként összesítve (a Teljesítményfigyelő és az Express Route-figyelő) közben topológia számítja ki a traceroute 10 percenként egyszer. Például 3:44 és a 4:04 közötti topológia frissülhet háromszor (3:44 3:54, 4:04), veszteségének és késleltetésének körülbelül hét alkalommal frissülnek, de (3:44, 3:47., 3:50., 3:53, 3:56, 3:59, 4:02). 3:54 hozza létre a topológia jelenik meg a veszteség és a késés, amely lekérdezi számított 3:56, 3:59. és 4:02. Tegyük fel, hogy az ER-kapcsolatcsoport 3:59 nem megfelelő állapotú volt riasztást kap. Jelentkezzen be az NPM, és próbáljon meg topológia idő – 3:59. Az NPM jelenik meg a topológia 3:54 hozza létre. Szeretné megtudni, a hálózat utolsó ismert topológiája, hasonlítsa össze a mezők TimeProcessed (idő, mely veszteséget és késéseket min), és TracerouteCompletedTime (idő, hogy melyik topológiát min). 
+
+### <a name="what-is-the-difference-between-the-fields-e2emedianlatency-and-avghoplatencylist-in-the-networkmonitoring-table"></a>Mi a különbség a között E2EMedianLatency és AvgHopLatencyList a NetworkMonitoring tábla mezőinek
+E2EMedianLatency a késés percen át 3 percenként 10 percenként traceroute alapján összesíti az eredményeket a tcp-ping teszt, mivel AvgHopLatencyList frissítése után frissíteni kell. Szeretné megtudni, a pontos idő, amikor E2EMedianLatency lett kiszámítva, használja a mező TimeProcessed. Szeretné megtudni, melyik traceroute befejeződött, és a frissített AvgHopLatencyList pontos ideje, használja a mező TracerouteCompletedTime
+
+### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>Miért különbözik Ugrás ugrásra felépülő késésű HopLatencyValues 
+HopLatencyValues a forrás-végpontra.
+Példa: Útválasztók ugrásainak - A, B, c-hez AvgHopLatency - 10,15,20. Ez azt jelenti, hogy A késés a forrás = 10, a forrás és a B késés = 15 20 pedig a forrás és a C késés. Felhasználói felület kiszámítja A-B ugrásonkénti késés, mint 5 a topológia
 
 ### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>A megoldás bemutatja, 100 %-os adatvesztés, de a forrás és cél közötti kapcsolat
 Ez akkor fordulhat elő, ha a gazdagép tűzfal vagy a (hálózati tűzfal vagy Azure NSG-t) a köztes tűzfal blokkolja a forrásügynök és a cél közötti kommunikáció a figyeléshez az NPM által használt porton keresztül (alapértelmezés szerint a port meg 8084, kivéve, ha a ügyfél változott ez).
@@ -199,7 +209,7 @@ Ez akkor fordulhat elő, ha egy vagy több igaz:
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>A szolgáltatás Kapcsolatfigyelő képesség a szolgáltatás válaszideje NA de hálózati adatveszteség, valamint a késés érvényesek
 Ez akkor fordulhat elő, ha a célként megadott szolgáltatás nem egy webalkalmazást, de a teszt van konfigurálva, egy webes tesztet. A test-konfiguráció szerkesztése, és válassza ki a tesztelési hálózati webes helyett.
 
-## <a name="miscellaneous"></a>Egyéb rendelkezések
+## <a name="miscellaneous"></a>Egyéb
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>Van a teljesítményre gyakorolt hatás monitorozásra szolgáló csomóponton?
 Az NPM-folyamat leáll, ha azt használja a gazdagép CPU-erőforrások több mint 5 %-át van konfigurálva. Ez azért szükséges, hogy továbbra is használhatja a csomópontok szokásos számítási feladatai anélkül, hogy befolyásolná a teljesítményt.

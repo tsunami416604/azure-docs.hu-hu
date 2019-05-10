@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/20/2018
+ms.date: 04/30/2019
 ms.author: sajagtap
-ms.openlocfilehash: 43a43ddcbfc656a3eb5a274e1bb63a473b7c89a2
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: a6c467d3153400815e37a5d461766140abd1fa32
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62098201"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228127"
 ---
 # <a name="video-moderation-with-human-review"></a>Az emberi ellenőrző videomoderálás
 
@@ -28,52 +28,53 @@ Videó besorolási gépi támogatású vagy a kép betanított modellek vagy vid
 ## <a name="shot-detection"></a>Felvételészlelés
 
 A besorolási részletek megjelenítése, nagyobb rugalmasság a videók elemzése segít a további videó intelligencia. Ahelyett, hogy csak a keretek ad ki, a Microsoft videomoderálás szolgáltatás biztosít célirányítópultot a kiszolgálószintű információkat túl. Most már lehetőség elemezheti videóit a képernyőkép szint és a keret szintjén.
- 
+
 ## <a name="key-frame-detection"></a>A kulcs keret felismerése
 
 Ahelyett, hogy rendszeres időközönként ad ki a keretek, a videomoderálás szolgáltatás azonosítja, és csak potenciálisan teljes (jó) keretek kimenete. A funkció lehetővé teszi a hatékony keret generációs keret szintű felnőtt és szexuális elemzés céljából.
 
 A következő lehetséges helyességének, a kulcs keretek és a felnőtt és szexuális pontszámok részleges válasz mutat:
 
-    "fragments": [
-    {
-      "start": 0,
-      "duration": 18000
-    },
-    {
-      "start": 18000,
-      "duration": 3600,
-      "interval": 3600,
-      "events": [
-        [
-          {
-            "reviewRecommended": false,
-            "adultScore": 0.00001,
-            "racyScore": 0.03077,
-            "index": 5,
-            "timestamp": 18000,
-            "shotIndex": 0
-          }
-        ]
+```json
+"fragments":[  
+  {  
+    "start":0,
+    "duration":18000
+  },
+  {  
+    "start":18000,
+    "duration":3600,
+    "interval":3600,
+    "events":[  
+      [  
+        {  
+          "reviewRecommended":false,
+          "adultScore":0.00001,
+          "racyScore":0.03077,
+          "index":5,
+          "timestamp":18000,
+          "shotIndex":0
+        }
       ]
-    },
-    {
-      "start": 18386372,
-      "duration": 119149,
-      "interval": 119149,
-      "events": [
-        [
-          {
-            "reviewRecommended": true,
-            "adultScore": 0.00000,
-            "racyScore": 0.91902,
-            "index": 5085,
-            "timestamp": 18386372,
-            "shotIndex": 62
-          }
-        ]
+    ]
+  },
+  {  
+    "start":18386372,
+    "duration":119149,
+    "interval":119149,
+    "events":[  
+      [  
+        {  
+          "reviewRecommended":true,
+          "adultScore":0.00000,
+          "racyScore":0.91902,
+          "index":5085,
+          "timestamp":18386372,
+          "shotIndex":62
+        }
       ]
-
+    ]
+```
 
 ## <a name="visualization-for-human-reviews"></a>Emberi ellenőrző Vizualizáció
 
@@ -101,10 +102,7 @@ Videók általában rendelkeznek hangalapú keresztül, amely is szüksége van 
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerkedés a [videomoderálás rövid](video-moderation-api.md). 
-
-Ismerje meg, hogyan hozhat létre [videót felülvizsgálatok](video-reviews-quickstart-dotnet.md) az emberi véleményező a moderált kimenetből.
-
-Adjon hozzá [videóátiratot felülvizsgálatok](video-transcript-reviews-quickstart-dotnet.md) a videót felülvizsgálatok.
-
-Tekintse meg a részletes oktatóanyag, hogyan hozhat létre egy [videomoderálás megoldás befejezéséhez](video-transcript-moderation-review-tutorial-dotnet.md). 
+- Ismerkedés a [videomoderálás rövid](video-moderation-api.md).
+- Ismerje meg, hogyan hozhat létre [videót felülvizsgálatok](video-reviews-quickstart-dotnet.md) az emberi véleményező a moderált kimenetből.
+- Adjon hozzá [videóátiratot felülvizsgálatok](video-transcript-reviews-quickstart-dotnet.md) a videót felülvizsgálatok.
+- Tekintse meg a részletes oktatóanyag, hogyan hozhat létre egy [videomoderálás megoldás befejezéséhez](video-transcript-moderation-review-tutorial-dotnet.md).

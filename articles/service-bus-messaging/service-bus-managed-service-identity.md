@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
 ms.author: aschhab
-ms.openlocfilehash: 5edeebd9698384785082e5a441c24e136ed22481
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: abba0e15314387aed09e39f05d9127f346f9c799
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61317075"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228396"
 ---
 # <a name="managed-identities-for-azure-resources-with-service-bus"></a>Felügyelt identitások az Azure Service Bus-erőforrások 
 
@@ -29,7 +29,7 @@ A felügyelt identitásokból az Azure platform kezeli a futtatókörnyezet iden
 
 ## <a name="service-bus-roles-and-permissions"></a>A Service Bus-szerepkörök és engedélyek
 
-Hozzáadhat egy felügyelt identitás csak a "Tulajdonos" vagy "Közreműködő" Service Bus-névtér-szerepkörökhöz. Az identitás a névtérben lévő összes entitáshoz teljes hozzáférést ad. Azonban a névtér topológia módosító műveletekre kezdetben felügyeleti támogatott azonban csak az Azure Resource Manager. Nem áll a natív Service Bus REST-felügyeleti felületén keresztül. Ez a támogatás azt is jelenti, hogy nem használható a .NET-keretrendszer ügyfél [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) egy felügyelt identitás-objektummal.
+Hozzáadhat egy felügyelt identitás csak a "Tulajdonos" vagy "Közreműködő" Service Bus-névtér-szerepkörökhöz. Az identitás a névtérben lévő összes entitáshoz teljes hozzáférést ad. Azonban a névtér topológia módosító műveletekre kezdetben felügyeleti támogatott azonban csak az Azure Resource Manager. Nem áll a natív Service Bus REST-felügyeleti felületén keresztül. Ez a támogatás azt is jelenti, hogy nem használható a .NET-keretrendszer ügyfél [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) vagy a .NET Standard ügyféloldali [ManagementClient](/dotnet/api/microsoft.azure.servicebus.management.managementclient) egy felügyelt identitás objektumához.
 
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>A Service Bus felügyelt identitások az Azure-erőforrások
 

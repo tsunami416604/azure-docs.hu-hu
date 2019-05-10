@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f602b5f9809e5bbe0b1efb52cfa66877a31a2170
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f29ab7b908184533885929040ca8eccf56cda92d
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249550"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464418"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directoryval kapcsolatos gyakori kérdések
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
@@ -132,7 +132,7 @@ Azure AD-felhasználók esetében a rendszergazdák a következő módszerek val
 
 
 - - -
-## <a name="security"></a>Biztonság
+## <a name="security"></a>Biztonsági
 **K: Fiók zárolva vannak bizonyos számú sikertelen bejelentkezési kísérletek után, vagy van-e ennél kifinomultabb stratégiát használni?**
 
 A fiókok zárolásához ennél kifinomultabb stratégiát alkalmazunk.  A zárolás a kérés IP-címe és a megadott jelszavak alapján történik. A zárolás időtartama annál hosszabb, minél inkább valószínűsíthető, hogy támadásról van szó.  
@@ -210,4 +210,4 @@ További információ: [A felhasználókiépítés és -megszüntetés automatiz
 - - -
 **K:  Állítható be a biztonságos LDAP-kapcsolatot az Azure ad-vel?**
 
-**V:**  Nem. Az Azure AD nem támogatja az LDAP protokollt. A secure LDAP azonban konfigurálhatja az Azure AD tartományi szolgáltatásokkal.
+**V:**  Nem. Az Azure AD nem támogatja a Lightweight Directory Access Protocol (LDAP) protokollt. Azonban célszerű lehet keresztül az Azure-hálózatot a megfelelően konfigurált hálózati biztonsági csoportokkal az Azure AD Domain Services (Azure AD DS) használatával érhető el LDAP-kapcsolatot. További információkért lásd: https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.

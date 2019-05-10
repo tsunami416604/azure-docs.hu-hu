@@ -12,12 +12,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7b12f5c7736307f0b62b6f6c2b526eb0108569c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 27309c08fe4419197faa17dcceb3645b00387e93
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190184"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65227919"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Mi a helyfeltétel az Azure Active Directory feltételes hozzáférés? 
 
@@ -25,14 +25,14 @@ A [Azure Active Directory (Azure AD) feltételes hozzáférés](../active-direct
 
 Ez a cikk a helyfeltétel konfigurálásához szükséges információkat biztosít.
 
-## <a name="locations"></a>Helyek
+## <a name="locations"></a>Helyszínek
 
 Az Azure AD lehetővé teszi, hogy egyszeri bejelentkezést az eszközöket, alkalmazásokat és szolgáltatásokhoz bárhonnan a nyilvános interneten. A hely a feltétellel a felhőalkalmazásokhoz, a felhasználó hálózati helye alapján szabályozhatja a hozzáférést. A hely feltétel gyakori alkalmazási helyzetek a következők:
 
 - Többtényezős hitelesítés megkövetelése a felhasználók a szolgáltatás elérésére, amelyek a vállalati hálózatról.
 - Blokkolja a hozzáférést a felhasználók bizonyos országokban vagy régiókban a szolgáltatás elérésére.
 
-Egy hely a címkét, egy hálózati helyre, vagy jelöli egy elnevezett helyet, vagy a multi-factor authentication megbízható IP-címek.
+Egy hely egy címkét egy hálózati helyre, vagy az elnevezett hely vagy a multi-factor authentication megbízható IP-címek jelöli.
 
 ## <a name="named-locations"></a>Névvel ellátott helyek
 
@@ -54,7 +54,7 @@ Egy elnevezett helye a következő összetevőket tartalmazza:
 
 - **Megjelölés megbízható helyként** -jelzőt beállíthat egy elnevezett helyet megbízható helyen jelzi. Megbízható helyek jellemzően az IT-részleg által vezérelt hálózati területek. Feltételes hozzáférés mellett megbízható nevesített helyek is használják az Azure Identity Protection és az Azure AD biztonsági jelentések csökkentése érdekében [vakriasztások](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
 - **Országok/régiók** – Ez a beállítás lehetővé teszi egy vagy több országban vagy régióban, adjon meg egy nevesített.
-- **Ismeretlen területek belefoglalása** -néhány IP-címek nincsenek leképezve egy adott országban. Ezzel a beállítással kiválaszthatja, ha az IP-címeket kell szerepelnie a nevű helyen. Használja ezt a beállítást, ha ismeretlen helyekről alkalmazni kell a házirendet, a nevesített hely használatával.
+- **Ismeretlen területek belefoglalása** -néhány IP-címek nincsenek leképezve egy adott ország vagy régió. Ezzel a beállítással kiválaszthatja, ha az IP-címeket kell szerepelnie a nevű helyen. Használja ezt a beállítást, ha ismeretlen helyekről alkalmazni kell a házirendet, a nevesített hely használatával.
 
 Az Azure ad-ben a kapcsolódó objektum mérete konfigurálható nevesített helyek száma korlátozza. Szervezetek is 90 nevesített helyek konfigurálása, akár 12000 IP-címtartományok egyes konfigurálva.
 
@@ -69,7 +69,7 @@ A házirend "Bármely helyre" alkalmazására van konfigurálva, ez a beállít�
 
 A szervezet helyi intranet jelölő IP-címtartományok is konfigurálhatja a [multi-factor authentication szolgáltatás beállításainak](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx). Ez a funkció lehetővé teszi legfeljebb 50 IP-címtartományok. Az IP-címtartományok a CIDR-formátumban vannak. További információkért lásd: [megbízható IP-címek](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
 
-A megbízható IP-címek konfigurálása, ha azok megjelenjen **MFA megbízható IP-CÍMEK** az a hely feltétel helyek listáját.
+Ha megbízható IP-címek konfigurálva van, hogy megjelenjen **MFA megbízható IP-CÍMEK** az a hely feltétel helyek listáját.
 
 ### <a name="skipping-multi-factor-authentication"></a>A multi-factor authentication kihagyása
 

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 51fc47a28cc40d286b5a268d4c42e3531f346c5e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 5ac40e3c98da613b53c06908bcde927cc2e81b08
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796864"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64684759"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>A BitLocker rendszerindítási hibák-beli virtuális gépen
 
  Ez a cikk ismerteti a BitLocker hibák léphetnek fel egy Windows virtuális gép (VM) megnyitásakor a Microsoft Azure-ban.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>Jelenség
 
@@ -34,7 +34,7 @@ ms.locfileid: "59796864"
 
 - Már zárolva van! Adja meg a helyreállítási kulcsot az induláshoz újra (billentyűzetkiosztás módosítása: Egyesült Államok) nem a megfelelő bejelentkezési adatok a megadott túl sokszor, így a számítógép adatainak védelme zárolták. folyamatban van. A helyreállítási kulcs lekéréséhez lépjen a https://windows.microsoft.com/recoverykeyfaq egy másik számítógépen vagy mobileszközön. Abban az esetben szüksége lesz rá, a kulcs azonosítója XXXXXXX. Vagy visszaállíthatja a Számítógépet.
 
-- Adja meg a jelszót, a meghajtó [] tekintse meg a jelszó beírása a Beszúrás billentyű lenyomásával zárolásának feloldásához.
+- Adja meg a jelszót, a meghajtó [] tekintse meg a jelszó beírása a Beszúrás Billentyű Lenyomásával zárolásának feloldásához.
 - Adja meg a helyreállítási kulcs betöltése a helyreállítási kulcsot az USB-eszközt.
 
 ## <a name="cause"></a>Ok
@@ -134,7 +134,7 @@ Ez a módszer nem nem a hárítsa el a problémát, ha manuálisan állítsa vis
         ```powershell
         manage-bde -protectors -disable F: -rc 0
         ```      
-    - Ha azt tervezi, a virtuális gép újraépítése a dytem lemez segítségével, teljes körűen vissza kell fejtenie a meghajtó. Ehhez futtassa az alábbi parancsot:
+    - Ha azt tervezi, a virtuális gép újraépítése a dytem lemez segítségével, teljes körűen vissza kell fejtenie a meghajtó. Ehhez futtassa a következő parancsot:
 
         ```powershell
         manage-bde -off F:
@@ -261,7 +261,7 @@ A Kulcsalapú titkosítás kulcsa esetben kövesse az alábbi lépéseket:
         ```powershell
         manage-bde -protectors -disable F: -rc 0
         ```      
-    - Ha azt tervezi, a virtuális gép újraépítése a dytem lemez segítségével, teljes körűen vissza kell fejtenie a meghajtó. Ehhez futtassa az alábbi parancsot:
+    - Ha azt tervezi, a virtuális gép újraépítése a dytem lemez segítségével, teljes körűen vissza kell fejtenie a meghajtó. Ehhez futtassa a következő parancsot:
 
         ```powershell
         manage-bde -off F:

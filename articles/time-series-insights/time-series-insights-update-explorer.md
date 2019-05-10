@@ -8,92 +8,102 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/03/2018
+ms.date: 05/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: d348592589f448dab9b8b4f3a1a3eb286d464417
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 862465a7611f1a2bc65dbb0c49c4de512bd239de
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64723451"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442101"
 ---
 # <a name="visualize-data-in-the-explorer-preview"></a>Adatok megjelenítése az a explorer előzetes verzió
 
-Ez a cikk azt ismerteti, lehetőségek és beállítások az Azure Time Series Insights előzetes verziója elérhető [explorer webalkalmazás](https://insights.timeseries.azure.com/preview/samples).
+Ez a dokumentum ismerteti a felhasználói felület/UX szolgáltatásokat és az Azure Time Series Insights előzetes verziója felületének [bemutató webalkalmazás](https://insights.timeseries.azure.com/preview/demo). Pontosabban azt tárgyalja, az üzemeltetett minta, felület-testreszabási beállítások és a megadott bemutató navigáláshoz elrendezését.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt használná az Azure Time Series Insights – előzetes explorer, a következőket kell tennie:
+Első lépések az Azure Time Series Insights – előzetes explorer, a következőket kell tennie:
 
-* Állítsa be a Time Series Insights környezettel rendelkezik. További információkért lásd: [oktatóanyag: Az Azure Time Series Insights-előzetes verzió](./time-series-insights-update-create-environment.md).
-* A fiók a Time Series Insights-környezetet, Ön által létrehozott adatok hozzáférést biztosítanak. Parancs saját maga számára hozzáférést is megadhat.
-* Eseményforrás hozzáadása a Time Series Insights környezetet az adatok leküldéséhez a környezetet.
+* Állítsa be a Time Series Insights környezettel rendelkezik. További információ a kiépítése egy példányt próbálkozzon további a [Azure Time Series Insights – előzetes](./time-series-insights-update-create-environment.md) oktatóanyag.
+* [Adja meg az adatok elérése](./time-series-insights-data-access.md) a Time Series Insights környezetet a fiókhoz létrehozott. Parancs saját maga számára hozzáférést is megadhat.
+* Adatok leküldése a környezetet a Time Series Insights környezetet eseményforrás hozzáadása:
+  * Ismerje meg, [hogyan csatlakozhat egy eseményközpontba](./time-series-insights-how-to-add-an-event-source-eventhub.md)
+  * Ismerje meg, [hogyan lehet csatlakozni az IoT hub](./time-series-insights-how-to-add-an-event-source-iothub.md)
 
-## <a name="learn-about-the-azure-time-series-insights-preview-explorer"></a>További tudnivalók az Azure Time Series Insights – előzetes explorer
-
-  ![Explorer egy az egyhez][1]
+## <a name="learn-about-the-preview-explorer"></a>További tudnivalók az előzetes verzió explorer
 
 Az Azure Time Series Insights – előzetes Explorert a következő elemekből áll:
 
-* **Navigációs sáv**: Lehetővé teszi elemzések és a modell lapok közötti váltáshoz.
-* **Hierarchiafája**: Válassza ki a forrásadatok adott adatelem teszi lehetővé.
-* **Jól Time series**: Megjeleníti az aktuálisan kiválasztott adatelemet.
-* **Diagram panel**: Megjeleníti az aktuális működő diagramot.
-* **Idősor**: Módosíthatja a működő azt az időtartományt.
-* **Alkalmazássávon**: A felhasználó olyan felügyeleti lehetőségeket, például az aktuális bérlő tartalmazza, és lehetővé teszi a téma- és nyelvi beállítások módosítása.
+[![A Tallózó nézet](media/v2-update-explorer/explorer-one.png)](media/v2-update-explorer/explorer-one.png#lightbox)
 
-## <a name="time-series-insights-preview-environment-panel"></a>Time Series Insights előzetes környezet panel
+1. <a href="#environment-dropdown">**Környezet panel**</a>: Az Azure TSI-környezetek jeleníti meg.
+1. <a href="#navigation-menu">**Navigációs menü**</a>: Lehetővé teszi, hogy közötti váltás a **elemzés** és **modell** oldalakat.
+1. <a href="#hierarchy-tree">**Hierarchiafája**</a>: Válassza ki az adott modell és a forrásadatok adatelemeket teszi lehetővé.
+1. <a href="#preview-well">**Jól Time series**</a>: Az aktuálisan kiválasztott adatelemet a színkódolás táblázatos formában jeleníti meg.
+1. <a href="#preview-chart">**Diagram panel**</a>:  Megjeleníti az aktuális működő diagramot.
+1. <a href="#time-editor-panel">**Idősor**</a>:  Módosíthatja a működő azt az időtartományt.
+1. <a href="#navigation-panel">**Alkalmazássávon**</a>:  A felhasználó olyan felügyeleti lehetőségeket, például az aktuális bérlő tartalmazza, és lehetővé teszi a téma- és nyelvi beállítások módosítása.
 
-A környezet panel megjeleníti az összes hozzáfér a Time Series Insights környezetet. A lista tartalmazza az utólagos elszámolású környezetek előzetes verziója és az S1/S2 környezetek (elérhetővé tétel GA). Egyszerűen kattintson a használni kívánt Time Series Insights-környezet.
+## <a name="environment-dropdown"></a>Környezetre vonatkozó legördülő menü
 
-  ![a második Explorer][2]
+A környezet legördülő lista összes hozzáfér a Time Series Insights környezetet jelenít meg. A lista tartalmazza a használatalapú környezetek (előzetes verzió) és az S1/S2 környezetek (általános rendelkezésre állás vagy a GA). 
 
-## <a name="time-series-insights-preview-navigation-menu"></a>Time Series Insights előzetes verziója navigációs menü
+1. Egyszerűen kattintson a lefelé mutató nyíl melletti megjelenített környezetében:
 
-  ![Explorer-három][3]
+   [![A Vezérlőpult](media/v2-update-explorer/explorer-two.png)](media/v2-update-explorer/explorer-two.png#lightbox)
 
-A navigációs menüben válthat a Time Series Insights-alkalmazások között:
+1. Ezután válassza ki a kívánt környezetre.
+
+## <a name="navigation-menu"></a>Navigációs menü
+
+  [![A navigációs menü](media/v2-update-explorer/explorer-three.png)](media/v2-update-explorer/explorer-three.png#lightbox)
+
+A navigációs menü két nézet közötti kiválasztását teszi lehetővé:
 
 * **Elemezheti**: Lehetővé teszi a diagram és megoldásban gazdag analitikai hajthatja végre az modellezett vagy unmodeled idősoros adatokat.
-
 * **Modell**: Lehetővé teszi új Time Series Insights előzetes verziója típusok, hierarchiákat és példányok leküldése a Time Series Insights-modellben.
 
-## <a name="time-series-insights-preview-model-authoring"></a>Time Series Insights előzetes verziója modell létrehozásához
+## <a name="hierarchy-tree"></a>Hierarchiafája
 
-Az ehhez az alkalmazáshoz az Idősorozat-modell létrehozási, olvasási, frissítési és törlési (CRUD) műveleteket hajthat végre.  
+A hierarchiafája jeleníti meg a kijelölt adatok elemek többek között a modelleket, meghatározott eszközök és érzékelők az eszközökön.
 
-* **Time Series modelltípus**: Time Series Insights-típusok engedélyezése meghatározó változókat vagy számítások adatelemzésre képleteket. Azok a egy adott Time Series Insights-példány. A típus lehet egy vagy több változót.
-* **Time Series hierarchiája**: A hierarchiák szintekbe az adatok rendszeres szervezetek. Hierarchiák jelzik a Time Series Insights adatait a különböző entitások közötti kapcsolatokat.
-* **Time Series modell példány**: Az idősor magukat a példányai. A legtöbb esetben a DeviceID vagy AssetID, amely a környezetben az eszköz egyedi azonosítója.
-
-Az Idősorozat-modell kapcsolatos további információkért lásd: [alkalommal sorozat modellek](./time-series-insights-update-tsm.md).
-
-## <a name="time-series-insights-preview-model-search-panel"></a>Time Series Insights előzetes verziója modell keresése panel
+### <a name="model-search-panel"></a>Modell keresése panel
 
 A modell keresés panelen lehetővé teszi keresését és keresse meg az Idősorozat-modell hierarchia az adott időpont sorozat példányai a diagramon megjelenítendő található. Amikor kiválasztja a példányok, kerülnek az aktuális diagram és az adatok is.
 
-  ![negyedik Explorer][4]
+  [![A modell keresése panel](media/v2-update-explorer/explorer-four.png)](media/v2-update-explorer/explorer-four.png#lightbox)
 
-## <a name="time-series-insights-preview-well"></a>Jól Time Series Insights előzetes verziója
+### <a name="model-authoring"></a>Modell létrehozásához
 
-A jól szolgáltatáspéldány-mezők és más metaadatokat adott sorozat példányai társított jeleníti meg. Jobb oldalán található jelölőnégyzetek segítségével konkrét példányok az aktuális diagram megjelenítése vagy elrejtése. A piros x vezérlő az elem jobb kattintással is az aktuális adatok alapján is eltávolítása meghatározott elemek.
+Az Azure Time Series Insights előzetes verziója az Idősorozat-modell a teljes körű létrehozási, olvasási, frissítési és törlési (CRUD) műveleteket támogatja.  
 
-  ![Explorer-öt][5]
+* **Time Series modelltípus**: Time Series Insights-típusok engedélyezése meghatározó változókat vagy számítások adatelemzésre képleteket. Azok a egy adott Time Series Insights-példány. A típus lehet egy vagy több változót.
+* **Time Series hierarchiája**: A hierarchiák szintekbe az adatok rendszeres szervezetek. Hierarchiák jelzik a Time Series Insights adatait a különböző entitások közötti kapcsolatokat.
+* **Time Series modell példány**: Az idősor magukat a példányai. A legtöbb esetben vannak a **DeviceID** vagy **AssetID**, azaz a környezetben az eszköz egyedi azonosítója.
 
-A telemetriai adatok panel egy elem jobb függőleges nézet is található az adatok lekérése is kiemelése.
+Az Idősorozat-modell kapcsolatos további információkért lásd: [alkalommal sorozat modellek](./time-series-insights-update-tsm.md).
 
-  ![Explorer-hat][6]
+## <a name="preview-well"></a>Előzetes verzió is
+
+A jól jeleníti meg a szolgáltatáspéldány-mezők és egyéb kiválasztott TSI-példányok társított metaadatokat. A jobb oldalon a jelölőnégyzetek segítségével konkrét példányok az aktuális diagram megjelenítése vagy elrejtése. Is eltávolítható adott elemeket az aktuális adatok alapján a vörös kattintva **törlése** (Kuka) vezérlőelem a bal oldali prvku.
+
+  [![Jól az előzetes verzió](media/v2-update-explorer/explorer-five.png)](media/v2-update-explorer/explorer-five.png#lightbox)
+
+Az elrendezését is újrakonfigurálhatja az **elemzés** diagram lap jobb felső sarkában a három pont ikon kiválasztásával:
+
+  [![Telemetria elrendezési beállítások](media/v2-update-explorer/explorer-six.png)](media/v2-update-explorer/explorer-six.png#lightbox)
 
 > [!NOTE]
 > A következő üzenetet látja, ha a példány nem rendelkezik semmilyen adatot a kiválasztott időtartományon. A probléma megoldásához, időtartamának növelése, vagy győződjön meg arról, hogy a példány küld-e adatokat.
 >
-> ![Explorer-hét][7]
+> ![Nincs adat értesítés](media/v2-update-explorer/explorer-seven.png)
 
-## <a name="time-series-insights-preview-chart"></a>Time Series Insights előzetes verziója diagram
+## <a name="preview-chart"></a>Előnézeti diagramon
 
-A diagram megjelenítheti a vonalakként idő sorozat példányai. A környezet panel adatmodell és idő span Vezérlőpult összecsukódjon a webes szabályozza, hogy a diagram nagyobb kattint.
+A diagram a vonalakként megjelenítheti a TSI-példányok. A környezet panel adatmodell és idő span Vezérlőpult összecsukódjon a webes szabályozza, hogy a diagram nagyobb kattint.
 
-  ![Explorer-nyolc][8]
+  [![Előnézet diagram – áttekintés](media/v2-update-explorer/explorer-eight.png)](media/v2-update-explorer/explorer-eight.png#lightbox)
 
 1. **A kijelölt dátumtartományban**: Szabályozza, mely adatok elemek érhetők el a vizualizációt.
 
@@ -109,23 +119,23 @@ A diagram megjelenítheti a vonalakként idő sorozat példányai. A környezet 
 
 1. **Aktuális adatelem**: A jelenleg kijelölt adatelemének és a kapcsolódó részletes adatait.
 
-Tovább részletezhető egy adott adatszelet kattint, a jelenlegi grafikonon egy adatpontra, és húzza a kijelölt terület a végpontra a választott. Kattintson a jobb gombbal a szürke színnel, a kijelölt területen, majd kattintson a nagyítás, a következő képen látható módon:
+Tovább részletezhető egy adott adatszelet kattint, a jelenlegi grafikonon egy adatpontra, és húzza a kijelölt terület a végpontra a választott. Kattintson a jobb gombbal a szürke színnel, a kijelölt területen, majd kattintson **nagyítás** a következő képen látható módon:
 
-  ![Explorer-kilenc][9]
+  [![Előnézet diagram nagyítás](media/v2-update-explorer/explorer-nine.png)](media/v2-update-explorer/explorer-nine.png#lightbox)
 
-A Nagyítás műveletet hajt végre, miután megjelenik a kiválasztott adatkészlet. Kattintson a Time Series Insights adatait három y tengely megjelenítésének léptetés vezérlő y tengely formázása.
+Végrehajtása után a **nagyítás** művelet, látni fogja a kiválasztott adatkészlet. Kattintson a Time Series Insights adatait három y tengely megjelenítésének léptetés vezérlő y tengely formázása.
 
-  ![Explorer-tíz][10]
+  [![Előnézet diagram y tengely](media/v2-update-explorer/explorer-ten.png)](media/v2-update-explorer/explorer-ten.png#lightbox)
 
 Itt látható egy példa megosztott y tengellyel:
 
-  ![Explorer tizenegy][11]
+  [![Előzetes verziójú közös y tengely](media/v2-update-explorer/explorer-eleven.png)](media/v2-update-explorer/explorer-eleven.png#lightbox)
 
-## <a name="time-series-insights-preview-time-editor-panel"></a>Time Series Insights előzetes verziója idő szerkesztő panel
+## <a name="time-editor-panel"></a>Idő szerkesztő panel
 
 Ha a Time Series Insights előzetes verzió használata során először válassza meg azt az időtartományt. A kiválasztott azt az időtartományt szabályozza az adatkészletet, amely a Time Series Insights előzetes verziója a widgetek esetében adatkezelési érhető el. A következő webes vezérlők kiválasztásakor a működő azt az időtartományt Time Series Insights előzetes verziója érhető el.
 
-  ![Explorer-tizenkét][12]
+  [![Időkiválasztás panel](media/v2-update-explorer/explorer-twelve.png)](media/v2-update-explorer/explorer-twelve.png#lightbox)
 
 1. **Belső dátumtartomány csúszkaeszközt**: A két végpontot vezérlőkkel húzza őket a kívánt időre időtartam. A külső dátumtartomány csúszka vezérlő belső dátumtartomány korlátozza.
 
@@ -135,57 +145,59 @@ Ha a Time Series Insights előzetes verzió használata során először válass
 
 1. **Külső dátumtartomány csúszkavezérlő**: A végpont vezérlők segítségével válassza ki a külső dátum tartományt, amely a belső tartomány-ellenőrzési elérhető lesz.
 
-1. **Gyorshivatkozások dátum tartomány legördülő**: Lehetővé teszi az előre beállított idő span beállításokat is, például az elmúlt 30 percben, az elmúlt 12 órában vagy egy egyéni tartomány között. Ez az érték módosítása módosítja a időköz méretű csúszkaeszközt tárgyalt elérhető időköz tartományok is.
+1. **A legördülő dátumtartomány Gyorshivatkozások**: Lehetővé teszi, hogy előre beállított idő span kijelölések, mint például az utolsó között gyorsan válthat **30 perc**, a **elmúlt 12 órában**, vagy egy **egyéni tartomány**. Ez az érték módosítása módosítja a időköz méretű csúszkaeszközt tárgyalt elérhető időköz tartományok is.
 
 1. **Intervallum méretű csúszkaeszközt**: Nagyítás adataikkal időközök azonos időtartomány keresztül teszi lehetővé. Ez a művelet idő nagy szeletei közötti mozgás pontosabb felügyeletét biztosítja. Kisebb, mint egy ezredmásodperc alatt maradnak, így megjelenik az adatok részletes, nagy felbontású darabok szeletek lefelé zökkenőmentes trendeket jelenít meg. A csúszka alapértelmezett kiindulási pontjaként a választását, amely elosztja a megoldás, a lekérdezés sebessége és a granularitási az adatok a legoptimálisabb nézet van beállítva.
 
 1. **Dátumtartomány és a webes vezérlő**: A webes vezérlő is egyszerűen kattintson és válassza ki a kívánt dátum és idő tartományok. A vezérlőelem használatával váltson a különböző időzónák között. Miután módosításokat végez a alkalmazni az aktuális munkaterületen válassza ki **mentése**.
 
-   ![Explorer tizenhárom][13]
+   [![És onnan időkiválasztás panel](media/v2-update-explorer/explorer-thirteen.png)](media/v2-update-explorer/explorer-thirteen.png#lightbox)
 
-## <a name="time-series-insights-preview-navigation-panel"></a>Time Series Insights előzetes verziója navigációs panel
+## <a name="navigation-panel"></a>Navigációs panel
 
-A Time Series Insights előzetes verziója navigációs panelen a következő szolgáltatásokat nyújtja:
-
-  ![Explorer-tizennégy][14]
+A Time Series Insights előzetes verziója navigációs panel felső részén a TSI alkalmazás jelenik meg. A következő funkciókat biztosítja.
 
 ### <a name="current-session-share-link-control"></a>Aktuális munkamenet megosztási hivatkozás-vezérlő
 
-  ![Explorer-tizenöt][15]
+  [![Megosztás ikon](media/v2-update-explorer/explorer-fifteen.png)](media/v2-update-explorer/explorer-fifteen.png#lightbox)
 
-Jelölje ki a kapcsolat webalkalmazás (kiemelve) mentéséhez, vagy az Azure Time Series Insights működő munkamenet megosztani egy URL-címet generálni tartalmazó:
+Válassza ki az új **megosztása** ikonra kattintva egy URL-Címhivatkozás megosztásra a csapatával.
 
-* Jelenleg kijelölt időtartományban
-* Kijelölt intervallumának mérete
-* Kijelölt adatok jól
+  [![Megosztás a példány URL-címe](media/v2-update-explorer/url-share.png)](media/v2-update-explorer/url-share.png#lightbox)
 
 ### <a name="tenant-section"></a>Bérlő szakasz
 
-  ![Explorer-tizenhat][16]
+  [![Bérlő kiválasztása](media/v2-update-explorer/explorer-sixteen.png)](media/v2-update-explorer/explorer-sixteen.png#lightbox)
 
 * A jelenlegi Time Series Insights bejelentkezési fiók adatait jeleníti meg.
 * Lehetővé teszi, hogy váltani a Time Series Insights elérhető témák között.
+* Lehetővé teszi, hogy az előzetes verzió megtekintéséhez [bemutató webalkalmazás](https://insights.timeseries.azure.com/preview/demo).
 
 ### <a name="theme-selection"></a>Témakijelölést
+
+Válassza ki az új témát, kattintson a profil ikonjára a jobb felső sarokban található. Ezután válassza ki **téma módosítása**.
+
+  [![Témakijelölést](media/v2-update-explorer/theme-selection.png)](media/v2-update-explorer/theme-selection.png#lightbox)
+
+> [!TIP]
+> Nyelv kiválasztása a profil ikonjára kattintva is érhető el.
 
 Az Azure Time Series Insights előzetes verziója támogatja a két témák:
 
 * **Világos téma**: Az alapértelmezett téma jelenik meg ebben a dokumentumban.
 * **Sötét téma**:  Ez a beállítás az Intézőben, itt látható módon:
 
-  ![Explorer-seventeen][17]
-
-Itt is módosíthatja a támogatott nyelvek között.
+  [![A kijelölt sötét téma](media/v2-update-explorer/explorer-seventeen.png)](media/v2-update-explorer/explorer-seventeen.png#lightbox)
 
 ## <a name="s1s2-environment-controls"></a>S1/S2 környezeti vezérlők
 
-### <a name="time-series-insights-preview-terms-panel"></a>Time Series Insights előzetes verziója kifejezések panel
+### <a name="preview-terms-panel"></a>Előzetes verzió kifejezések panel
 
 Ez a rész csak meglévő S1/S2-környezetek, amelyek a frissített felhasználói felületén a kezelővel vonatkozik. Érdemes a GA-termék és az előzetes verzió használata. Hozzáadtunk bizonyos funkciói a meglévő felhasználói felületen a frissített Explorerben, de a teljes felhasználói felület is igénybe a már meglévő Time Series Insights explorer környezetet S1/S2.  
 
 A hierarchia helyett látni fogja a Time Series Insights kifejezések panel, ahol megadhatja a lekérdezések a környezetben. Lehetővé teszi az adatok egy predikátum alapján szűrni.
 
-  ![Explorer-tizennyolc][18]
+  [![Lekérdezés panel](media/v2-update-explorer/explorer-eighteen.png)](media/v2-update-explorer/explorer-eighteen.png#lightbox)
 
 A Time Series Insights előzetes feltételek szerkesztő panelen a következő paramétereket fogadja:
 
@@ -202,17 +214,17 @@ Tudjon meg többet a támogatott lekérdezési műveletek és adattípusok olvas
 
 ### <a name="examples-of-where-clauses"></a>Példák a Where záradékban
 
-  ![Explorer tizenkilenc][19]
+  [![Ahol záradék példák](media/v2-update-explorer/explorer-nineteen.png)](media/v2-update-explorer/explorer-nineteen.png#lightbox)
 
-**Mérték**: A legördülő megjeleníti az összes numerikus oszlopai (**Double típusú értékekkel**) a jelenlegi diagramhoz elemeket is használni.
+**Mérték**: A listából, amely megjeleníti a numerikus oszlopok (**Double típusú értékekkel**) használhat a jelenlegi diagramhoz elemként.
 
 **Felosztási szempont**: A legördülő minden a kategorikus oszlopok (karakterlánc), amely az adatok alapján csoportosíthatja a modell jeleníti meg. Ugyanazt az x tengelyen megtekintéséhez legfeljebb öt feltételeket adhat hozzá. Adja meg a kívánt paramétereket, és válassza ki **Hozzáadás** friss kifejezés hozzáadásához.
 
-  ![Explorer-erdőtopológia][20]
+  [![Az egyik lekérdezett és szűrt nézet](media/v2-update-explorer/explorer-twenty.png)](media/v2-update-explorer/explorer-twenty.png#lightbox)
 
-Megjelenítése, és a diagram panelen elemek elrejtése a látható ikon kiválasztásával az alábbi képen látható módon. Lekérdezések teljes mértékben eltávolíthatja a piros gombra kattintva **x**.
+Megjelenítése, és a diagram panelen elemek elrejtése a látható ikon kiválasztásával az alábbi képen látható módon. Lekérdezések teljes mértékben eltávolíthatja a piros gombra kattintva **X**.
 
-  ![Explorer-erdőtopológia-egy][21]
+  [![A lekérdezett és szűrt nézet két](media/v2-update-explorer/explorer-twenty-one.png)](media/v2-update-explorer/explorer-twenty-one.png#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 
@@ -221,26 +233,3 @@ Megjelenítése, és a diagram panelen elemek elrejtése a látható ikon kivál
 - A Time Series Insights előzetes verziója elolvashassák [adatmodellezés](./time-series-insights-update-tsm.md).
 
 - Ismerje meg, [diagnosztizálása és hibaelhárítása](./time-series-insights-update-how-to-troubleshoot.md) a Time Series Insights-példány.
-
-<!-- Images -->
-[1]: media/v2-update-explorer/explorer-one.png
-[2]: media/v2-update-explorer/explorer-two.png
-[3]: media/v2-update-explorer/explorer-three.png
-[4]: media/v2-update-explorer/explorer-four.png
-[5]: media/v2-update-explorer/explorer-five.png
-[6]: media/v2-update-explorer/explorer-six.png
-[7]: media/v2-update-explorer/explorer-seven.png
-[8]: media/v2-update-explorer/explorer-eight.png
-[9]: media/v2-update-explorer/explorer-nine.png
-[10]: media/v2-update-explorer/explorer-ten.png
-[11]: media/v2-update-explorer/explorer-eleven.png
-[12]: media/v2-update-explorer/explorer-twelve.png
-[13]: media/v2-update-explorer/explorer-thirteen.png
-[14]: media/v2-update-explorer/explorer-fourteen.png
-[15]: media/v2-update-explorer/explorer-fifteen.png
-[16]: media/v2-update-explorer/explorer-sixteen.png
-[17]: media/v2-update-explorer/explorer-seventeen.png
-[18]: media/v2-update-explorer/explorer-eighteen.png
-[19]: media/v2-update-explorer/explorer-nineteen.png
-[20]: media/v2-update-explorer/explorer-twenty.png
-[21]: media/v2-update-explorer/explorer-twenty-one.png

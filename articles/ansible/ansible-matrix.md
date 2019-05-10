@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/22/2019
-ms.openlocfilehash: 721179e12ed7f21312fe848a6bef1a8e19bc8083
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.date: 04/30/2019
+ms.openlocfilehash: b3396b2f4639cc7298b77810dbaafadd308d6b24
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866050"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230981"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Az Ansible modul és verzió mátrix
 
@@ -86,7 +86,7 @@ Ezeket a modulokat az Ansible hivatalos kiadás pedig a következő Microsoft fo
 | azure_rm_virtualnetwork                     | Igen          | Igen                         | Igen          | Igen          | Igen          | Igen          |
 | azure_rm_virtualnetwork_facts               | Igen          | Igen                         | Igen          | Igen          | Igen          | Igen          |
 | azure_rm_virtualnetworkpeering              | -            | -                         | -          | -            | Igen          | Igen          |
-| **Tárolás**                    |           |                          |                          |                            |           |           |
+| **Storage**                    |           |                          |                          |                            |           |           |
 | azure_rm_manageddisk                        | Igen          | Igen                         | Igen          | Igen          | Igen          | Igen          |
 | azure_rm_manageddisk_facts                  | Igen          | Igen                         | Igen          | Igen          | Igen          | Igen          |
 | azure_rm_storageaccount                     | Igen          | Igen                         | Igen          | Igen          | Igen          | Igen          |

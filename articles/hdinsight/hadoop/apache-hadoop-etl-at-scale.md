@@ -127,7 +127,7 @@ Sqoop MapReduce importálása és exportálása az adatok párhuzamos művelet �
 
 Az Apache Flume egy elosztott, megbízható és elérhető szolgáltatás hatékonyan összegyűjtése, összevonása, és nagy mennyiségű Teljesítménynapló-adatok áthelyezését. Flume egy egyszerű és rugalmas architektúra alapján a streamelési adatok folyamatokat tartalmaz. Flume, hatékony és hibatűrő hangolható megbízhatóság mechanizmusok és számos feladatátvételi és helyreállítási mechanizmusokat. Flume, amely lehetővé teszi, hogy az online analitikus alkalmazás egyszerű bővíthető adatok modellt használ.
 
-Az Azure HDInsight az Apache Flume nem használható.  Helyszíni Hadoop telepítés Flume használatával vagy az Azure Storage-Blobokkal, vagy az Azure Data Lake Storage történő adatküldéshez.  További információkért lásd: [Apache Flume használata a HDInsight](https://web.archive.org/web/20190217104751/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
+Az Azure HDInsight az Apache Flume nem használható.  Helyszíni Hadoop telepítés Flume használatával vagy az Azure Storage-Blobokkal, vagy az Azure Data Lake Storage történő adatküldéshez.  További információkért lásd: [Apache Flume használata a HDInsight](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
 
 ## <a name="transform"></a>Átalakítás
 

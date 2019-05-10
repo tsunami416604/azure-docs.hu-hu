@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d481bb32e5265e2b35f0cb311c6ed422b2a166d8
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: ecc90c88d2d5b7381e3c79417b643a048d76339a
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158160"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441488"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-simple-sign"></a>Oktatóanyag: Az egyszerű bejelentkezés az Azure Active Directory-integráció
 
@@ -185,7 +185,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy egyszerű bejelentkezési Britta Simon nevű felhasználói hoz létre. Együttműködve [egyszerű bejelentkezési támogatási csoportjának](mailto:info@simplesign.io) a felhasználók hozzáadása az egyszerű bejelentkezési platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
@@ -193,8 +193,8 @@ Ha a hozzáférési panelen a egyszerű bejelentkezési csempére kattint, meg k
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 539a06398675dc7851017ec5d428e0942e54ce1f
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 480e799e0fe307b39ce8a2f0b026a04f507a6beb
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564765"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408017"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Oktatóanyag: A Tableau Server az Azure Active Directory-integráció
 
@@ -122,7 +122,7 @@ A Tableau Server konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa vé
 
     | Name (Név) | Adatforrás-attribútum | Névtér |
     | ---------------| --------------- | ----------- |
-    | felhasználónév | user.userprincipalname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | username | user.userprincipalname | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | | |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
@@ -183,7 +183,7 @@ A Tableau Server konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa vé
 
     g. Írja be a nevét, az attribútumokat, amelyek az identitásszolgáltató használja, tartsa lenyomva a felhasználónevek, megjelenítendő nevek és e-mail-címek számára.
 
-    h. Kattintson a **Mentés** gombra.
+    h. Kattintson a **Save** (Mentés) gombra
 
     > [!NOTE]
     > Töltse fel a Tableau Server SAML SSO-konfiguráció bármely olyan tanúsítványt kell ügyfél, és figyelmen beolvasni az egyszeri bejelentkezési folyamatban. Ha szüksége a SAML konfigurálása a Tableau Server segítségével, akkor tekintse meg a cikk [SAML konfigurálása](https://onlinehelp.tableau.com/v2018.2/server/en-us/saml_config_steps_tsm_ui.htm).
@@ -248,7 +248,7 @@ A felhasználó felhasználóneve meg kell egyeznie az érték, amely az Azure a
 > [!NOTE]
 > Hozzon létre egy felhasználót manuálisan kell, ha szüksége a Tableau Server rendszergazdától a szervezetben.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

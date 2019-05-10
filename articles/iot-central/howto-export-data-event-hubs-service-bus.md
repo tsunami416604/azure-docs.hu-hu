@@ -8,12 +8,12 @@ ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: b0a34cd8eebdd816cb780b34de936a6cc56d0994
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 78edeb0c418f5c426771d241464d389f8a632e96
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730229"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65463999"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportálhatja az adatokat az Azure IoT Central
 
@@ -64,14 +64,14 @@ Most, hogy az adatok exportálása az Event Hubs és a Service Bus cél, az alá
     > [!Note]
     > Ha nem látja a folyamatos adatexportálás bal oldali menüben lévő, Ön nem rendszergazda az alkalmazásban. Kérdezze meg a rendszergazda állíthatja be az adatok exportálása.
 
-    ![Új cde Eseményközpont létrehozása](media/howto-export-data/export_menu.PNG)
+    ![Új cde Eseményközpont létrehozása](media/howto-export-data/export_menu1.png)
 
 3. Válassza ki a **+ új** gombra a jobb felső sarokban. Válasszon egyet az **Azure Event Hubs** vagy **Azure Service Bus** az exportálás céljaként. 
 
     > [!NOTE] 
     > Export alkalmazásonként maximális száma öt. 
 
-    ![Hozzon létre új folyamatos adatexportálás](media/howto-export-data/export_new.PNG)
+    ![Hozzon létre új folyamatos adatexportálás](media/howto-export-data/export_new1.png)
 
 4. A legördülő listában jelölje ki a **az Event Hubs-névtér/Service Bus-névtér**. A legutóbbi lehetőséget is kiválaszthat a listában, amely **adjon meg egy kapcsolati karakterláncot**. 
 
@@ -81,7 +81,7 @@ Most, hogy az adatok exportálása az Event Hubs és a Service Bus cél, az alá
     > [!NOTE] 
     > Próbaverziós alkalmazások, csak úgy konfigurálja a folyamatos exportálás 7 napon keresztül egy kapcsolati karakterláncot történik. Ennek oka az, 7 napos próbaverziós alkalmazások nem rendelkeznek társított Azure-előfizetéssel.
 
-    ![Új cde Eseményközpont létrehozása](media/howto-export-data/export_create.PNG)
+    ![Új cde Eseményközpont létrehozása](media/howto-export-data/export_create1.png)
 
 5. (Nem kötelező) Ha úgy döntött **adjon meg egy kapcsolati karakterláncot**, egy új mező jelenik meg, hogy illessze be a kapcsolati karakterláncot. Kapcsolati karakterláncára beolvasni a:
     - Az Event Hubs vagy a Service Bus, nyissa meg a névteret, az Azure Portalon.
@@ -95,7 +95,7 @@ Most, hogy az adatok exportálása az Event Hubs és a Service Bus cél, az alá
 
 6. Folyamatos adatexportálás bekapcsolása, ellenőrizze, hogy **adatexportálás** van **a**. Kattintson a **Mentés** gombra.
 
-  ![Folyamatos adatexportálás konfigurálása](media/howto-export-data/export_list.PNG)
+    ![Folyamatos adatexportálás konfigurálása](media/howto-export-data/export_list1.png)
 
 7. Néhány perc elteltével az adatok megjelennek a kiválasztott cél.
 

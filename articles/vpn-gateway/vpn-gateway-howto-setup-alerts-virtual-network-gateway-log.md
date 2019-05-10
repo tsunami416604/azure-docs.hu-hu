@@ -1,5 +1,5 @@
 ---
-title: Az Azure VPN Gateway diagnosztikai napló esemény-riasztások beállítása
+title: Riasztásokat állíthat be a diagnosztikai naplót események Azure VPN Gateway átjárón
 description: A VPN-átjáró diagnosztikai napló események riasztások konfigurálásának lépései
 services: vpn-gateway
 author: anzaman
@@ -7,62 +7,77 @@ ms.service: vpn-gateway
 ms.topic: conceptional
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: 39a6d2e6201dd0635149159cb3727fd3c40f710a
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.openlocfilehash: 3880c847c54136dfd3ba1ecfe0178565091e229f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63769736"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510198"
 ---
-# <a name="setting-up-alerts-on-vpn-gateway-diagnostic-log-events"></a>A VPN-átjáró diagnosztikai napló események riasztások beállítása
+# <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Riasztásokat állíthat be az esemény-diagnosztikai naplót a VPN-átjáró
 
-Ez a cikk segítséget nyújt a VPN-átjáró diagnosztikai napló események alapján riasztásokat állíthat be.
+Ez a cikk segít az Azure VPN Gateway diagnosztikai napló események alapján riasztásokat állíthat be.
 
+## <a name="setup"></a>Riasztások beállítása
 
-## <a name="setup"></a>A portál használatával diagnosztikai napló események alapján az Azure Monitor riasztások beállítása
-
-A példa az alábbi lépéseket site-to-site VPN alagút leválasztási esemény riasztást hoz létre.
-
+A következő példa lépései létrehoz egy riasztást, amely magában foglalja a site-to-site VPN-alagút leválasztási esemény:
 
 
-1. Keressen a "Log Analytics" csoportban az összes szolgáltatás, és válassza ki a "Log Analytics-munkaterületek" ![pont – hely](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "létrehozása")
+1. Az Azure Portalon keresse meg **Log Analytics** alatt **minden szolgáltatás** válassza **Log Analytics-munkaterületek**.
 
-2. A Log Analytics lapon kattintson a "Létrehozás".
-![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "Select")
+   ![Lépjen a Log Analytics-munkaterületek szolgáló kiválasztások](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "létrehozása")
 
-3. Ellenőrizze az "Új létrehozása" munkaterület, és adja meg az adatokat.
-![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Select")
+2. Válassza ki **létrehozás** a a **Log Analytics** lapot.
 
-4. Keresse meg a VPN-átjáró mellett a "figyelés" > "Diagnosztikai beállítások" panelen ![pont – hely](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "kiválasztása")
+   ![Log Analytics lapot a Létrehozás gombbal](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "kiválasztása")
 
-5. Diagnosztika bekapcsolásához kattintson duplán az átjárón, és kattintson a "Diagnosztika bekapcsolása" ![pont – hely](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "kiválasztása")
+3. Válassza ki **hozzon létre új** , és adja meg az adatokat.
 
-6. Adja meg az adatokat, és győződjön meg arról, hogy "Küldés a Log Analytics" és "TunnelDiagnosticLog" ellenőrzi. Válassza ki a 3. lépésben létrehozott Log Analytics-munkaterületet.
-![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Select")
+   ![Log Analytics-munkaterület létrehozásához részletek](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "kiválasztása")
 
-7. Keresse meg a virtuális hálózati átjáró erőforrás-áttekintés, és válassza az "Értesítések" a figyelés lapon, majd hozzon létre egy új riasztási szabály, vagy egy meglévő riasztási szabály szerkesztése.
-![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Select")
+4. Keresse meg a VPN-átjáró a a **figyelő** > **diagnosztikai beállítások** panelen.
 
+   ![A VPN-átjáró megkeresni a diagnosztikai beállítások a választott beállításokat](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "kiválasztása")
+
+5. Engedélyezze a diagnosztikát, kattintson duplán az átjárót, majd **diagnosztika bekapcsolása**.
+
+   ![Diagnosztika bekapcsolása szolgáló kiválasztások](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "kiválasztása")
+
+6. Adja meg az adatokat, és ellenőrizze, hogy **Küldés a Log Analyticsnek** és **TunnelDiagnosticLog** ki van jelölve. Válassza ki a 3. lépésben létrehozott Log Analytics-munkaterületet.
+
+   ![A kijelölt jelölőnégyzetek](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "kiválasztása")
+
+7. Nyissa meg a virtuális hálózati átjáró erőforrás-áttekintés, és válassza ki **riasztások** származó a **figyelés** fülre. Ezután hozzon létre egy új riasztási szabályt, vagy egy meglévő riasztási szabály szerkesztése.
+
+   ![Egy új riasztási szabály létrehozására vonatkozó beállításokat](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "kiválasztása")
+
+   ![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Select")
 8. Válassza ki a Log Analytics-munkaterületet és az erőforrás.
-![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "Select")
 
-9. Válassza "egyéni naplók keresése", a jel logikájának "Feltétel hozzáadása" alatt ![pont – hely](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "kiválasztása")
+   ![Kiválasztott munkaterület és erőforrás](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "kiválasztása")
 
-10. Adja meg a következő lekérdezést a "Keresési lekérdezés" szövegmezőbe, és cserélje le az értékeket szükség szerint <>.
+9. Válassza ki **egyéni naplóbeli keresés** , a jel logikájának alatt **feltétel hozzáadása**.
 
-    AzureDiagnostics |} ahol kategória == "TunnelDiagnosticLog" és az erőforrás-azonosító == toupper ("<RESOURCEID OF GATEWAY>") és TimeGenerated > ago(5m) és remoteIP_s == "<REMOTE IP OF TUNNEL>" és a status_s == "Leválasztott"
+   ![Egyéni Naplókeresés szolgáló kiválasztások](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "kiválasztása")
 
-    A küszöbérték beállítása 0, és kattintson a "Kész" gombra
+10. Adja meg az alábbi lekérdezést a **Keresési lekérdezés** szövegmezőben. Cserélje le az értékeket szükség szerint <>.
 
-    ![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "Select")
+     `AzureDiagnostics |
+     where Category  == "TunnelDiagnosticLog" and ResourceId == toupper("<RESOURCEID OF GATEWAY>") and TimeGenerated > ago(5m) and
+     remoteIP_s == "<REMOTE IP OF TUNNEL>" and status_s == "Disconnected"`
 
-11. A "Létrehozás szabály" lapon kattintson az "Új létrehozása" a MŰVELETCSOPORTOK szakaszában. Adja meg az adatokat, és kattintson az OK gombra
+    A küszöbérték állítsa 0-ra, és válassza ki **kész**.
 
-![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "Select")
+    ![Írja be a lekérdezést, majd válassza a küszöbértéket](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "kiválasztása")
 
-12. A "Létrehozás szabály" lapon adja meg az adatokat az "Action testreszabása", és győződjön meg arról, hogy megjelenik-e a megfelelő műveleti csoport neve az "Műveletcsoport neve" szakaszban. "A riasztási szabály létrehozása" gombra a szabály létrehozásához.
-![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "Select")
+11. A a **létrehozás szabály** lapon jelölje be **hozzon létre új** alatt a **MŰVELETCSOPORTOK** szakaszban. Adja meg a részleteket, és válasszon **OK**.
+
+    ![Új műveletcsoport részletei](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "kiválasztása")
+
+12. A a **szabály létrehozása** lap, adja meg az adatokat a **műveletek testreszabása** , és győződjön meg arról, hogy a megfelelő neve megjelenik a **MŰVELETCSOPORT neve** szakaszban. Válassza ki **riasztási szabály létrehozása** a szabály létrehozásához.
+
+    ![Egy szabály létrehozására vonatkozó beállításokat](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "kiválasztása")
 
 ## <a name="next-steps"></a>További lépések
 
-Riasztások beállítása a alagút metrikák: [a VPN-átjáró metrikák riasztások beállításának módjai](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).
+Riasztások beállítása a alagút metrikák: [riasztásokat állíthat be a VPN Gateway-metrikák](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).

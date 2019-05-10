@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: monhaber
-ms.openlocfilehash: e21ed77a80892da22c380787dc64ea07db756fdf
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a029ad3fc253f35fb34bc2dd0ddbeb9614e5dc33
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917635"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231417"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center egy szolgáltatás, amellyel megelőzését, észlelését és háríthatja el a fenyegetéseket átláthatóbbá és a Microsoft Azure-erőforrások kézben kapcsolatos kérdésekre ad választ.
@@ -323,6 +323,11 @@ A késés, a Security Center átvizsgálja a biztonsági réseket, frissítések
 - Az Endpoint Protection kapcsolatos problémák – 8 órán belül adatainak frissítése
 
 A Security Center általában óránként keres új adatokat, és ennek megfelelően frissíti a javaslatokat. 
+
+> [!NOTE]
+> 2017 júniusának elejétől kezdve a Security Center a Microsoft Monitoring Agent használatával gyűjti össze és tárolja az adatokat. További tudnivalókért lásd: [Azure Security Center Platform Migrálása](security-center-platform-migration.md). A jelen cikkben található információk a Security Center a Microsoft Monitoring Agentre való váltás után elérhető funkcióit ismertetik.
+>
+>
 
 ### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Miért jelenik meg az üzenet "Virtuálisgép-ügynök hiányzik?"
 Virtuális gépek az adatgyűjtés engedélyezése a Virtuálisgép-ügynököt kell telepíteni. Az Azure Marketplace-ről üzembe helyezett virtuális gépek esetében a virtuálisgép-ügynök alapértelmezés szerint telepítve van. Más virtuális gépeken a Virtuálisgép-ügynök telepítésével kapcsolatos információkért lásd: a következő blogbejegyzésben: [Virtuálisgép-ügynök és -bővítmények](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/).

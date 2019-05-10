@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d1c10d9df85b04cf7b8ea7e0020bc8e802a0d5d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 39e9f52948d035c72a6a019558915d8c92ceebeb
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698928"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65463537"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező BlueJeans
 
@@ -102,18 +102,17 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés BlueJeans, hajtsa v�
 
 3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](media/bluejeans-tutorial/edit-urls-bluejeans.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. Az a **alapszintű SAML-konfigurációja** párbeszédpanelen adja meg a következő értékeket:
 
-    ![BlueJeans tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
+    ![BlueJeans tartomány és URL-címeket egyetlen bejelentkezési adatait](media/bluejeans-tutorial/tutorial_bluejeans-basic-configuration.png)
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<companyname>.BlueJeans.com`
-
-    b. Az a **azonosító** szövegmezőbe írja be egy URL-címe: `http://samlsp.bluejeans.com`
-
-    > [!NOTE]
-    > A bejelentkezési URL-érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [BlueJeans ügyfél-támogatási csapatának](https://support.bluejeans.com/contact) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+   - Az a **azonosító** szöveg mezőbe írja be a következőt: `https://samlsp.bluejeans.com`
+    
+   - Az a **bejelentkezési URL-** szövegmezőbe írja be a alkotóelemeit lap URL-címe BlueJeans által biztosított (Ez az érték beszerzéséhez forduljon a [BlueJeans ügyfél-támogatási csapatának](https://support.bluejeans.com/contact)): `https://<companyname>.bluejeans.com`
+    
+   - Kattintson a **Save** (Mentés) gombra.
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
@@ -161,9 +160,9 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés BlueJeans, hajtsa v�
 
     ![Módosítások mentése](./media/bluejeans-tutorial/ic785874.png "módosítások mentése")
 
-    a. Az a **felhasználóazonosító** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    a. Az a **felhasználóazonosító** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
-    b. Az a **E-mail** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    b. Az a **E-mail** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     c. Kattintson a **MENTSE a MÓDOSÍTÁSOKAT**.
 
@@ -261,7 +260,7 @@ Ez a szakasz célja BlueJeans Britta Simon nevű felhasználó létrehozásához
 > [!NOTE]
 > Eszközt is használhat bármilyen más BlueJeans felhasználói fiók létrehozása, vagy az Azure AD-felhasználói fiókok kiépítése BlueJeans által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

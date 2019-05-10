@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: af6d66d2e3eae80477a151323578b930dcd7727a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e8d4ab46c598580a3a87f4344202f2700926bf5c
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60886635"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510325"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>A Windows IoT Core-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
 Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők, a Windows IoT Core-eszköz csatlakoztatása a Microsoft Azure IoT Central alkalmazáshoz.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
@@ -88,7 +88,7 @@ A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz 
 
 ### <a name="telemetry-measurements"></a>Telemetria mérések
 
-| Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
+| Mezőnév     | Mértékegységek  | Minimum | Maximum | Tizedeshelyek |
 | -------------- | ------ | ------- | ------- | -------------- |
 | páratartalom       | %      | 0       | 100     | 0              |
 | TEMP           | °C     | -40     | 120     | 0              |
@@ -98,17 +98,17 @@ A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz 
 
 Numerikus beállításai
 
-| Megjelenített név | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
+| Megjelenítendő név | Mezőnév | Mértékegységek | Tizedeshelyek | Minimum | Maximum | Kezdeti |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Sebesség ventilátor    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Típus            | Megjelenített név | Mező neve | Adattípus |
+| Típus            | Megjelenítendő név | Mezőnév | Adattípus |
 | --------------- | ------------ | ---------- | --------- |
 | Eszköztulajdonság | Die száma   | dieNumber  | szám    |
-| Text            | Location egység     | location   | –       |
+| Text            | Location egység     | hely   | –       |
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte a Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz, a javasolt következő lépésre megtudhatja, hogyan [állítson be egy egyéni sablont](howto-set-up-template.md) a saját IoT-eszköz.
+Most, hogy megismerte a Windows IoT Core-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz, a javasolt következő lépésre megtudhatja, hogyan [állítson be egy egyéni sablont](howto-set-up-template.md) a saját IoT-eszköz.

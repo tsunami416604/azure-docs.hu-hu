@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fb657d2c2cd4eeae0eb96dd37505a1c47278725
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 277e7663c978e64ee1440e14583e884b768b3139
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60247884"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65441634"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Adja hozzá a szervezet Azure Active Directory bejelentkezési oldal arculat megjelenítése
 A vállalat emblémája és egyéni színsémák használatával adjon meg egy egységes megjelenést és a hangulat használatát az Azure Active Directory (Azure AD) bejelentkezési oldalakon. A bejelentkezési oldal jelenik meg, ha a felhasználói bejelentkeznek a munkahelyi webes alkalmazásokhoz, például az Office 365, amely használja az Azure ad-ben az identitás-szolgáltatóként.
@@ -70,7 +70,7 @@ Az egyéni márkajelzési nem jelenik meg azonnal, amikor a helyeket, például 
 
         - **Bejelentkezési oldal háttérszíne.** Adja meg hexadecimális szín (Ha például fehér a #FFFFFF), amely a háttérkép alacsony sávszélességű kapcsolat helyzetekben helyett megjelenítendő. A szalagcímembléma vagy a szervezet színes elsődleges színét használatát javasoljuk.
 
-        - **Négyzetes emblémakép.** Válassza ki a (javasolt) .png vagy .jpg képet a szervezet embléma új Windows 10 Enterprise-eszközök esetén a telepítés során a felhasználók számára megjelenik. Ez a rendszerkép rendszer csak a Windows-hitelesítést használ, és akkor jelenik meg, csak a bérlők által használt [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) telepítéshez vagy a jelszó megadásához egyéb Windows 10-es oldalainak észlel.
+        - **Négyzetes emblémakép.** Válassza ki a (javasolt) .png vagy .jpg képet a szervezet embléma új Windows 10 Enterprise-eszközök esetén a telepítés során a felhasználók számára megjelenik. Ez a rendszerkép rendszer csak a Windows-hitelesítést használ, és akkor jelenik meg, csak a bérlők által használt [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) telepítéshez vagy a jelszó megadásához egyéb Windows 10-es oldalainak észlel. Bizonyos esetekben ez is megjelenhetnek a beleegyezés párbeszédpanelen.
         
             A lemezkép nem lehet nagyobb, mint 240 x 240 képpont méretű, és rendelkeznie kell egy fájl mérete kisebb, mint 10 KB-os. Azt javasoljuk, hogy transzparens rendszerkép használatával, mivel a háttér nem egyeznek az embléma háttér. Emellett javasoljuk, hogy ne adja hozzá a kép körül kitöltési, vagy lehet létrehozni, akkor keresse meg a kis méretű embléma.
     

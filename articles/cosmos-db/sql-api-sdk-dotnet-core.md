@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: bae180e2ceae6fe0768a5f7951c18dc5147870fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4ec9d5e605a2319a04dac4cb52dbe49c77354479
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60626825"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510640"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK-t az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -50,6 +50,20 @@ Az Azure Cosmos DB .NET Core SDK legújabb verziójában funkcióparitás rendel
 * Streamek támogatását.
 * Frissített CosmosResponseMessage állapotkódot adja vissza, és csak throw kivétel, ha nem érkezik válasz-kiszolgálóról.
 
+### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
+
+* SDK-k System.Net.Http verzióegyezéseket határozzák meg a NuGet-csomag
+* A LINQ-lekérdezések a Decimális pontosság mérete nagyobb.
+* Hozzáadott új osztályok CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType és PartitionKeyDefinitionVersion
+* DocumentCollection a hozzáadott TimeToLivePropertyPath
+* A hozzáadott CompositeIndexes és SpatialIndexes IndexPolicy
+* PartitionKeyDefinition új verzióra
+* A PartitionKey nincs hozzáadva
+
+### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
+
+ * A hozzáadott IdleTcpConnectionTimeout, OpenTcpConnectionTimeout, MaxRequestsPerTcpConnection és a ConnectionPolicy MaxTcpConnectionsPerEndpoint.
+ 
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 
 * Diagnosztikai
@@ -237,6 +251,8 @@ Ha ez az SDK kapcsolatos kérdése van, küldése a [StackOverflow](https://stac
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.4.0](#2.4.0) |2019. május 05. |--- |
+| [2.3.0](#2.3.0) |2019. április 04. |--- |
 | [2.2.3](#2.2.3) |2019. márciusi 11. |--- |
 | [2.2.2](#2.2.2) |2019. február 06. |--- |
 | [2.2.1](#2.2.1) |2018. december 24. |--- |

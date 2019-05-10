@@ -12,12 +12,12 @@ author: sharonlo101
 ms.author: shlo
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: d2e51551643e154714b9d2368e63d7af9ebfa204
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b32e4abebdfb93312c60a25ca8b483f071e5e73c
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60592880"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507829"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factoryban vizuális szerzői
 Az Azure Data Factory felhasználói felületen felület (UX) lehetővé teszi, hogy vizuálisan hozhat létre és helyezheti üzembe az erőforrásokat a data Factory kód írása nélkül. Húzza a tevékenységeket a folyamatvásznon, végre, iteratív hibakeresést és üzembe helyezése és a folyamat futásának monitorozása. Kétféleképpen felhasználói a vizuális szerzői műveletek végrehajtásához:
@@ -60,7 +60,7 @@ A panelen látható a következő Azure-Adattárakkal kód adattár beállítás
 
 | Beállítás | Leírás | Érték |
 |:--- |:--- |:--- |
-| **Adattár típusa** | Az Azure-Adattárakkal kódtár típusa.<br/>**Megjegyzés**: GitHub jelenleg nem támogatott. | Az Azure-Adattárakkal Git |
+| **Adattár típusa** | Az Azure-Adattárakkal kódtár típusa.<br/> | Az Azure-Adattárakkal Git |
 | **Azure Active Directory** | Az Azure AD-bérlő neve. | `<your tenant name>` |
 | **Az Azure-Adattárakkal szervezet** | Az Azure-Adattárakkal szervezet neve. : Az Azure-Adattárakkal szervezet nevének megkereséséhez `https://{organization name}.visualstudio.com`. Is [jelentkezzen be a szervezet Azure-Adattárakkal](https://www.visualstudio.com/team-services/git/) érhető el a Visual Studio-profil, és az adattárak és a projekteket. | `<your organization name>` |
 | **ProjectName** | Az Azure-Adattárakkal projekt nevét. Megkeresheti az Azure-Adattárakkal projekt nevét `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |

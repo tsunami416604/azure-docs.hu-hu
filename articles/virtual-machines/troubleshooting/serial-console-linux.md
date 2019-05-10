@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: harijay
-ms.openlocfilehash: 7019d80c05a1953f4e57f0f42d46588310911791
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 9577a81af3da98c6e8802c586ec468a6e44e46cf
+ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141092"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65442045"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linuxhoz készült Azure-soros konzolon
 
-Az Azure Portalon a soros konzol Linux rendszerű virtuális gépek (VM) egy szöveges alapú konzol hozzáférést biztosít, és a virtuális gép méretezési csoport példányaihoz (virtuálisgép-méretezési csoportot). A soros kapcsolat a virtuális gép vagy a virtuális gép méretezési készlet példány, azt a hálózati vagy az operációs rendszer állapotának független való hozzáférés biztosítása a COM1 soros porton csatlakozik. A soros konzol csak lehet hozzáférni az Azure portal használatával, és csak a közreműködői hozzáférés szerepkörrel rendelkező felhasználók számára engedélyezett vagy újabb, a virtuális gép vagy virtuálisgép-méretezési csoporthoz.
+Az Azure Portalon a soros konzol Linux rendszerű virtuális gépek (VM) egy szöveges alapú konzol hozzáférést biztosít, és a virtuális gép méretezési csoport példányaihoz. A soros kapcsolat a virtuális gép vagy a virtuális gép méretezési készlet példány, azt a hálózati vagy az operációs rendszer állapotának független való hozzáférés biztosítása a COM1 soros porton csatlakozik. A soros konzol csak lehet hozzáférni az Azure portal használatával, és csak a közreműködői hozzáférés szerepkörrel rendelkező felhasználók számára engedélyezett vagy újabb, a virtuális gép vagy virtuálisgép-méretezési csoporthoz.
 
 Soros konzol virtuális gépek azonos módon működik, és a virtuális gép méretezési csoport példányaihoz. Ez a dokumentum a virtuális gépek összes említései implicit módon tartalmazza a virtuális gép méretezési csoport példányaihoz Ha másként nincs jelezve.
 
@@ -84,7 +84,7 @@ Soros konzol virtuálisgép-méretezési csoportokhoz tartozó példányonként 
 ## <a name="serial-console-linux-distribution-availability"></a>Soros konzol Linux terjesztési rendelkezésre állása
 A soros konzol megfelelő működéséhez konfigurálni kell a vendég operációs rendszer olvasása és írása az üzenetek konzol a soros port. A legtöbb [Azure által támogatott Linux-disztribúciók](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) a soros konzol alapértelmezés szerint konfigurálva van. Kiválasztásával **soros konzol** a a **támogatás + hibaelhárítás** az Azure Portalon szakasza nyújt a soros konzoljához való hozzáférés.
 
-Disztribúció      | Csatlakozás a soros konzolhoz
+Terjesztési      | Csatlakozás a soros konzolhoz
 :-----------|:---------------------
 Red Hat Enterprise Linux    | Soros hozzáférés alapértelmezés szerint engedélyezve van.
 CentOS      | Soros hozzáférés alapértelmezés szerint engedélyezve van.

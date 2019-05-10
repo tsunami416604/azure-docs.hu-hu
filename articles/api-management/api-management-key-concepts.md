@@ -14,16 +14,18 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 2ed29f50278afe5bf7cd3daabe088cee55caae06
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3934dbb01c3b9f3219c5e649d97371850b8daadc
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60656608"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230624"
 ---
-# <a name="what-is-api-management"></a>Mi az API Management?
+# <a name="about-api-management"></a>Az API Management ismertetése
 
-Az API Management (APIM) segít a szervezeteknek közzétenni az API-kat a külső, a partner- és a belső fejlesztők számára, hogy ki tudják bontakoztatni az adataikban és szolgáltatásaikban rejlő lehetőségeket. A vállalkozások világszerte digitális platformon szeretnék bővíteni a működésüket, új csatornákat szeretnének létrehozni, új ügyfeleket szeretnének találni és mélyíteni szeretnék a meglévő ügyfelekkel kialakított kapcsolatot. Az API Management a fejlesztők bevonásán, az üzleti elemzéseken, a biztonságon és a védelmen keresztül biztosítja az alapvető kompetenciákat az API-program sikeressé tételéhez. Az Azure API Management szolgáltatással bármely háttérrendszer alapján elindíthat egy teljes értékű API-programot.
+API Management (APIM) hozhat létre egységes és modern API-átjárókat meglévő Háttérszolgáltatásokhoz – módja.
+
+Az API Management segít a szervezeteknek közzétenni az API-kat külső, partneri és belső fejlesztők bontakoztatni az adataikban és szolgáltatásaikban. A vállalkozások világszerte digitális platformon szeretnék bővíteni a működésüket, új csatornákat szeretnének létrehozni, új ügyfeleket szeretnének találni és mélyíteni szeretnék a meglévő ügyfelekkel kialakított kapcsolatot. Az API Management a fejlesztők bevonásán, az üzleti elemzéseken, a biztonságon és a védelmen keresztül biztosítja az alapvető kompetenciákat az API-program sikeressé tételéhez. Az Azure API Management szolgáltatással bármely háttérrendszer alapján elindíthat egy teljes értékű API-programot.
 
 Ez a cikk áttekintést nyújt az APIM-ot érintő gyakori forgatókönyvekről.  Emellett rövid áttekintést ad az APIM rendszer főbb összetevőiről. A cikk ezután részletesebben mutatja be az egyes összetevőket.
 

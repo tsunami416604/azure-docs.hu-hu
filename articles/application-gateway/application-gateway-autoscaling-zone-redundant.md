@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/7/2019
 ms.author: victorh
-ms.openlocfilehash: b1cdcfc9e81938f3f562046b971407b31a593525
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: dfb5b8b69b2ca9bea118603406f4747036d2641c
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65202914"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510820"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>Automatikus skálázás és zónaredundáns az Application Gateway 
 
@@ -62,7 +62,7 @@ Számítási egység útmutatást:
 | Standard_v2                                       |    0.20             | 0.0080                          |
 | WAF_v2                                            |    0.36             | 0.0144                          |
 
-A [díjszabását ismertető lapon](https://azure.microsoft.com/en-us/pricing/details/application-gateway/) 2019. május 14. a regionális árakról megfelelően frissülnek. A számlázás a 2019. június 1. történő futásra van ütemezve.
+A [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/application-gateway/) 2019. május 14. a regionális árakról megfelelően frissülnek. A számlázás a 2019. június 1. történő futásra van ütemezve.
 
 **1. példa**
 
@@ -93,7 +93,7 @@ Kapacitás egységár = 744(hours) * Max (számítási egység Max(25/50 for con
 
 Teljes ár = $267.84 + 85.71 $ $353.55 =
 
-A [díjszabását ismertető lapon](https://azure.microsoft.com/en-us/pricing/details/application-gateway/) 2019. május 14. a regionális árakról megfelelően frissülnek. A számlázás a 2019. június 1. történő futásra van ütemezve.
+A [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/application-gateway/) 2019. május 14. a regionális árakról megfelelően frissülnek. A számlázás a 2019. június 1. történő futásra van ütemezve.
 
 ## <a name="scaling-application-gateway-and-waf-v2"></a>Az Application Gateway és a WAF v2 méretezése
 
@@ -124,7 +124,7 @@ Az alábbi táblázat az egyes Termékváltozat szolgáltatásait hasonlítja ö
 | Egyéni hibalapok                                | &#x2713; | &#x2713; |
 | WebSocket támogatás                                 | &#x2713; | &#x2713; |
 | HTTP/2-támogatás                                    | &#x2713; | &#x2713; |
-| Kapcsolatkiürítés                               | &#x2713; | &#x2713; |
+| Kapcsolatok kiürítése                               | &#x2713; | &#x2713; |
 
 > [!NOTE]
 > A Termékváltozat már támogatja az automatikus skálázás v2 [alapértelmezett állapotadat-mintavételek](application-gateway-probe-overview.md#default-health-probe) automatikusan a háttér-készletben található összes erőforrás állapotának figyelésére, és jelölje ki a háttérrendszer a tagokkal, amelyek nem megfelelő állapotú tekinthetők. Az alapértelmezett állapotadat-mintavétel konfigurálása automatikusan történik a háttérrendszerek, amelyek nem rendelkeznek, egyéni mintavétel konfigurációra. További tudnivalókért lásd: [állapotadat-mintavételek az application gatewayben](application-gateway-probe-overview.md).
@@ -134,8 +134,8 @@ Az alábbi táblázat az egyes Termékváltozat szolgáltatásait hasonlítja ö
 |Különbség|Részletek|
 |--|--|
 |Hitelesítési tanúsítvány|Nem támogatott.<br>További információkért lásd: [az Application Gateway teljes körű SSL áttekintése](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
-|Standard_v2 és a Standard Application Gateway keverve ugyanazon az alhálózaton|Nem támogatott|
-|Felhasználó által megadott útvonal (UDR) az Application Gateway-alhálózat|Nem támogatott|
+|Standard_v2 és a Standard Application Gateway keverve ugyanazon az alhálózaton|Érvénytelen érték|
+|Felhasználó által megadott útvonal (UDR) az Application Gateway-alhálózat|Érvénytelen érték|
 |NSG bejövő port-tartomány| -65200 – 65535 Standard_v2 Termékváltozat<br>-65503 65534 Standard Termékváltozat esetében.<br>További információkért lásd: a [– gyakori kérdések](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Teljesítmény az Azure-beli diagnosztikai naplók|Nem támogatott.<br>Az Azure-metrikák kell használni.|
 |Számlázás|A számlázás a tervek szerint indítsa el a 2019. június 1.|

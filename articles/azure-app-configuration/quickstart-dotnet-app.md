@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 33deea0805ffa89bcc6a64f34a97a4e080690da9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: acf1608257bc5416ff52ed9fbd4209008712f2d7
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203658"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408712"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Gyors útmutató: Hozzon létre egy .NET keretrendszerre épülő alkalmazás az Azure-alkalmazás konfigurációja
 
@@ -37,9 +37,9 @@ Ez a rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://v
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza ki **kulcs/érték Explorer** > **+ létrehozás** a következő kulcs-érték párok hozzáadásához:
+6. Válassza ki **konfigurációs Explorer** > **+ létrehozás** a következő kulcs-érték párok hozzáadásához:
 
-    | Kulcs | Value |
+    | Kulcs | Érték |
     |---|---|
     | TestApp:Settings:Message | Azure-alkalmazás-konfigurációs adatait |
 
