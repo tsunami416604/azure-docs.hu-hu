@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/15/2019
+ms.date: 5/8/2019
 ms.author: barclayn
-ms.openlocfilehash: d432dc25a1995a2f0348c7626a051f46ffbf418b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: b73b6bdc0158591565281ca2e86a9a474c4196d9
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62118978"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467724"
 ---
 # <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
@@ -74,8 +74,8 @@ Től március 2019 késői dedikált HSM érhető el az alább felsorolt 14 rég
 * Kelet-Ázsia
 * Észak-Európa
 * Nyugat-Európa
-* Az Egyesült Királyság déli régiója
-* Az Egyesült Királyság nyugati régiója
+* Egyesült Királyság déli régiója
+* Egyesült Királyság nyugati régiója
 * Közép-Kanada
 * Kelet-Kanada
 * Kelet-Ausztrália
@@ -233,7 +233,7 @@ A Microsoft nem tudnak csatlakozni az ügyfelek számára lefoglalt HSM-EK. Ügy
 
 ### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>K: Mi történik, ha szükséges indítsa újra a saját HSM?
 
- A hardveres biztonsági MODULT tartalmaz egy parancssor újraindítási beállítást, és érdemes megjegyezni, hogy a "hardveres újraindítás" beállítást kell használni. Ez bármilyen okból nem sikerül, ha emelni a Microsoft támogatási kérelmet, és az eszköz újraindítása fizikailag is van. 
+A hardveres biztonsági MODULT tartalmaz egy parancssor újraindítási beállítást, azonban azt problémákat tapasztal, amikor újraindítás lefagy megszakad, és Emiatt javasoljuk a legbiztonságosabb az újraindítás, hogy előlépteti a fizikailag újraindítani az eszköznek a Microsoft támogatási kérést. 
 
 ## <a name="cryptography-and-standards"></a>Titkosítás és előírások
 

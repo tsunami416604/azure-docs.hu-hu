@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3168bbbf70c1ffeb3827482459febbcea256eda6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b1edd4777839c947cf8f60bb6857f939553e2603
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60886983"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467615"
 ---
 # <a name="configure-the-application-dashboard"></a>Az irányítópult konfigurálása
 
@@ -26,19 +26,19 @@ A **irányítópult** az oldal, amely betölti, ha az alkalmazáshoz hozzáfér�
 
 Az alábbi képernyőképen az irányítópult látható a létrehozott alkalmazás a **minta Contoso** sablont. Lehetőséggel testre szabhatja az alkalmazás az alapértelmezett irányítópult, **szerkesztése** tetején, az oldal jobb.
 
-![A "Contoso minta" sablonon alapuló alkalmazások irányítópult](media/howto-configure-homepage/image1.png)
+![A "Contoso minta" sablonon alapuló alkalmazások irányítópult](media/howto-configure-homepage/image1a.png)
 
 Kiválasztásával **szerkesztése**, az irányítópult könyvtár panel nyílik meg. A függvénytár tartalmazza a csempék és irányítópult primitívek segítségével testre szabhatja az irányítópultot.
 
-![Irányítópult-könyvtár](media/howto-configure-homepage/image2.png)
+![Irányítópult-könyvtár](media/howto-configure-homepage/image2a.png)
 
 Hozzáadhat például egy **eszközbeállítások, illetve tulajdonságok** mozaiklapra a választott eszköz aktuális beállítások és tulajdonságok értékeit. Ehhez először válassza ki a **eszköz sablon** válassza ki a **eszközpéldány**. Miután egy cím, és kattintson a csempére, adjon egy **beállítás** vagy egy **tulajdonság** megjelenítéséhez. A következő képernyőképen az látható, beállítás- és a csempe hozzáadása kiválasztva. Válassza ki **kész** menteni a módosítást az irányítópulton.
 
-![Részletes beállítások és tulajdonságok "Konfigurálása eszköz részletei" képernyő](media/howto-configure-homepage/image3.png)
+![Részletes beállítások és tulajdonságok "Konfigurálása eszköz részletei" képernyő](media/howto-configure-homepage/image3a.png)
 
 Az operátornak megtekinti az alapértelmezett irányítópult, amikor azok az új csempe jelenik meg a most a **beállítása hőmérséklet** az eszköz beállítása:
 
-![A megjelenített beállítások és tulajdonságok csempe "Az irányítópult" lap](media/howto-configure-homepage/image4.png)
+![A megjelenített beállítások és tulajdonságok csempe "Az irányítópult" lap](media/howto-configure-homepage/image4a.png)
 
 Áttekintheti a többi csempe a könyvtárban a felderítendő típusok az alapértelmezett irányítópult további testreszabásával.
 

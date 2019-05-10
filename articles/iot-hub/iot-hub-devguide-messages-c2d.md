@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: c8424743f30ec1bbf8d8096f6630c7451bc910c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b0c1b877a9468ce9c3b851bce62cb87c64c04260
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61363517"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472735"
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>A felhőből az eszközökre irányuló üzenetek küldése az IoT Hubról
 
@@ -71,10 +71,11 @@ Egy közös üzenetek lejáratkor előnyeit, és elkerülheti az üzeneteket kü
 
 ## <a name="message-feedback"></a>Üzenet visszajelzés
 
-Felhőből az eszközre irányuló üzenet küldése, amikor a szolgáltatás kérhetnek üzenetenkénti visszajelzéseit a végső állapotát az üzenet kézbesítése.
+Felhőből az eszközre irányuló üzenet küldése, amikor a szolgáltatás kérhetnek üzenetenkénti visszajelzéseit a végső állapotát az üzenet kézbesítése. Ez úgy történik a `iothub-ack` alkalmazástulajdonság C2D üzenetben küldött, a következő értékek egyikét:
 
-| Nyugtázási tulajdonság | Viselkedés |
+| Nyugtázási tulajdonság értéke | Viselkedés |
 | ------------ | -------- |
+| **none**     | Az IoT Hub nem ad visszajelzést üzenet (alapértelmezés). |
 | **pozitív** | Ha eléri a felhőből az eszközre irányuló üzenet a **befejezve** állapotba, az IoT Hub egy visszajelzés-üzenetet hoz létre. |
 | **negative** | Ha eléri a felhőből az eszközre irányuló üzenet a **kapcsolat megszakadásának lettered** állapotba, az IoT Hub egy visszajelzés-üzenetet hoz létre. |
 | **full**     | Az IoT Hub egy visszajelzés üzenetet mindkét esetben hoz létre. |

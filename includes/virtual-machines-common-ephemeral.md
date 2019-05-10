@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: d7737f73ee4eb9ae9dc8c4845020b7543a5b3495
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 47407df90a83501b8739a428789e20cddc59e83d
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159165"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65468373"
 ---
 A rövid élettartamú operációsrendszer-lemezek helyi virtuális gép (VM) tárolására létrehozni és a távoli Azure Storage nem megőrzött. A rövid élettartamú operációsrendszer-lemezek is állapot nélküli számítási feladatokhoz, ahol alkalmazások tűri az egyes virtuális gép hibáinak, de nagyobb méretű környezetek esetében szükséges idő- vagy időérték alaphelyzetbe állítja a Virtuálisgép-példányokhoz több ügyféladataikat működik. Emellett akkor is alkalmazásokhoz, a klasszikus üzemi modellel, helyezze át a Resource Manager-alapú üzemi modellbe való telepítése. A rövid élettartamú operációsrendszer-lemezzel megfigyelte lenne kisebb olvasási/írási késés az operációsrendszer-lemez és a gyorsabb, VM-rendszerképeit alaphelyzetbe állítani. Emellett a rövid élettartamú operációsrendszer-lemez szabad, díjak operációsrendszer-lemez tárolási költségek nélkül. 
  
@@ -30,7 +30,7 @@ Ideiglenes lemezek a fő funkciói a következők:
 |                             | Állandó operációsrendszer-lemez                          | Rövid élettartamú operációsrendszer-lemez                              |    |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
 | Maximális operációsrendszer-lemez mérete      | 2 TiB                                                                                        | Gyorsítótár mérete a Virtuálisgép-méretet vagy 2TiB, amelyik érték kisebb - [DS](../articles/virtual-machines/linux/sizes-general.md), [ES](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md), és [GS](../articles/virtual-machines/linux/sizes-memory.md)              |
-| Támogatott Virtuálisgép-méretek          | Összes                                                                                          | DSv1, DSv2, DSv3, Esv2, Fs, FsV2, GS, M                                               |
+| Támogatott Virtuálisgép-méretek          | Az összes                                                                                          | DSv1, DSv2, DSv3, Esv3, Fs, FsV2, GS, M                                               |
 | Lemez típusa támogatása           | Felügyelt és nem felügyelt operációsrendszer-lemez                                                                | Felügyelt operációsrendszer-lemez csak                                                               |
 | Régió támogatása              | Minden régió                                                                                  | Minden régió                              |
 | Adatmegőrzés            | Az operációs rendszer lemez adatait, az operációs rendszer lemezre írt Azure Storage szolgáltatásban tárolódnak                                  | Operációsrendszer-lemezre írt adatok a helyi virtuális gép Storage tárolja, és az Azure Storage nincs megőrizve. |
@@ -48,16 +48,16 @@ Ideiglenes lemezek a fő funkciói a következők:
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-Register-AzRmProviderFeature –FeatureName LocalDiffDiskPreview
+Register-AzProviderFeature –FeatureName LocalDiffDiskPreview -ProviderNamespace Microsoft.Compute
 ```
 
 Annak ellenőrzése, ha regisztrálva van az előzetes verzió:
 
 ```azurepowershell-interactive
-Get-AzRmProviderFeature –FeatureName LocalDiffDiskPreview
+Get-AzProviderFeature –FeatureName LocalDiffDiskPreview -ProviderNamespace Microsoft.Compute
 ```
 
-### <a name="cli"></a>parancssori felület
+### <a name="cli"></a>CLI
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute
@@ -67,7 +67,7 @@ az feature register --namespace Microsoft.Compute --name LocalDiffDiskPreview
 Annak ellenőrzése, ha regisztrálva van az előzetes verzió:
  
 ```azurecli-interactive
-az provider show –namespace ‘Microsoft.Compute’
+az provider show --namespace Microsoft.Compute
 ```
 
 

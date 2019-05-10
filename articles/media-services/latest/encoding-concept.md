@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/08/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 216eae383c704125cd32d9ed4cb1309299af7336
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 937a032bffbad4e8a7d737360aa140e59760f8e2
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153398"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472442"
 ---
 # <a name="encoding-with-media-services"></a>Kódolás a Media Services használatával
 
@@ -86,6 +86,10 @@ A Media Services teljes körűen támogatja az adott kódolási igények és kö
 - [.NET-tel készletek testreszabása](customize-encoder-presets-how-to.md)
 - [CLI-vel beállításkészletek testreszabása](custom-preset-cli-howto.md)
 - [REST-beállításkészletek testreszabása](custom-preset-rest-howto.md)
+
+## <a name="preset-schema"></a>Előre definiált séma
+
+A Media Services v3 készletek típusos entitások az API-t. Ezek az objektumok a "schema" definícióját találja [nyílt API-specifikációnak (vagy a Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Is megtekintheti az előre megadott definíciók (például **StandardEncoderPreset**) az a [REST API-val](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK-val](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (vagy más Media Services v3 SDK-forrásdokumentáció).
 
 ## <a name="scaling-encoding-in-v3"></a>V3 a kódolás méretezése
 

@@ -8,26 +8,26 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3ab3c680f7279ff78e0319f28f67c1cc8c203b47
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e4a63bfd4e82147fe3324e146f2aaff8889da87e
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708030"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472303"
 ---
 # <a name="diagnose-and-troubleshoot"></a>Diagnosztika és hibaelhárítás
 
 Ez a cikk összefoglalja számos gyakori problémák merülhetnek fel az Azure Time Series Insights – előzetes környezettel való munka során. A cikk is ismerteti a lehetséges okait és megoldásait minden probléma.
 
-## <a name="problem-i-cant-find-my-environment-in-the-time-series-insights-preview-explorer"></a>Probléma: A Time Series Insights előzetes verziója Explorer nem találom a saját környezetben
+## <a name="problem-i-cant-find-my-environment-in-the-preview-explorer"></a>Probléma: Az előzetes verzió Explorer nem találom a saját környezetben
 
 Ez a probléma akkor fordulhat elő, ha nem rendelkezik engedélyekkel a Time Series Insights-környezet eléréséhez. Felhasználók megtekintése a Time Series Insights-környezet olvasó szintű hozzáférés szerepkörre van szüksége. Ellenőrizze a jelenlegi hozzáférési szintekkel, és további hozzáférést biztosítani, keresse fel az adathozzáférési házirendek a szakasz a Time Series Insights-erőforrás a a [az Azure portal](https://portal.azure.com/).
 
-  ![Környezet][1]
+  [![környezet](media/v2-update-diagnose-and-troubleshoot/environment.png)](media/v2-update-diagnose-and-troubleshoot/environment.png#lightbox)
 
-## <a name="problem-no-data-is-seen-in-the-time-series-insights-preview-explorer"></a>Probléma: Adatot nem látható a Time Series Insights előzetes verziója Explorerben
+## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>Probléma: adatok nem látható a minta Explorerben
 
 Miért nem láthatja az adatokat számos gyakori oka lehet a [Azure Time Series Insights – előzetes explorer](https://insights.timeseries.azure.com/preview).
 
@@ -35,7 +35,7 @@ Miért nem láthatja az adatokat számos gyakori oka lehet a [Azure Time Series 
 
     Győződjön meg arról, hogy az eseményforrás, amely egy event hubot vagy az IoT hub, a címkék vagy a példányok kapja az adatokat. Győződjön meg arról, hogy nyissa meg az erőforrást az Azure Portal áttekintés oldalán.
 
-    ![Irányítópult – elemzések][2]
+    [![Irányítópult – elemzések](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png)](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png#lightbox)
 
 - Az eseményadatok forrása nem JSON formátumú.
 
@@ -45,12 +45,12 @@ Miért nem láthatja az adatokat számos gyakori oka lehet a [Azure Time Series 
 
   * Egy IoT hubot, meg kell adnia a kulcsot, amelynek **szolgáltatás csatlakozása** engedéllyel.
 
-    ![Konfiguráció][3]
+    [![Konfiguráció](media/v2-update-diagnose-and-troubleshoot/configuration.png)](media/v2-update-diagnose-and-troubleshoot/configuration.png#lightbox)
 
   * A házirendek mindkét az előző képen látható módon **iothubowner** és **szolgáltatás** működik, mert az **szolgáltatás csatlakozása** engedéllyel.
   * Az eseményközpontok felé, meg kell adnia a kulcsot, amelynek **figyelésére** engedéllyel.
   
-    ![Engedélyek][4]
+    [![Engedélyek](media/v2-update-diagnose-and-troubleshoot/permissions.png)](media/v2-update-diagnose-and-troubleshoot/permissions.png#lightbox)
 
   * Mindkét az előző képen látható módon a **olvasási** és **kezelése** házirendek működik, mert az **figyelésére** engedéllyel.
 
@@ -62,7 +62,7 @@ Miért nem láthatja az adatokat számos gyakori oka lehet a [Azure Time Series 
 
     Ez a probléma akkor fordulhat elő, ha a Time Series azonosító tulajdonság helytelenül van konfigurálva a környezet kiépítési időpontjában. További információkért lásd: [ajánlott eljárások a Time Series ID kiválasztására vonatkozó](./time-series-insights-update-how-to-id.md). Jelenleg nem frissíthető, egy meglévő Time Series Insights-környezet használatára egy különböző Time Series azonosítóját.
 
-## <a name="problem-some-data-shows-but-some-is-missing"></a>Probléma: Bizonyos adatokat jeleníti meg, de néhány hiányzik
+## <a name="problem-some-data-shows-but-some-is-missing"></a>Probléma: néhány adatot mutat be, de néhány hiányzik
 
 Előfordulhat, hogy anélkül, hogy a Time Series azonosító. adatokat küldő
 
@@ -73,7 +73,7 @@ Előfordulhat, hogy anélkül, hogy a Time Series azonosító. adatokat küldő
     > [!NOTE]
     > Jelenleg a Time Series Insights támogatja a maximális feldolgozási sebessége 6 MB/s.
 
-## <a name="problem-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>Probléma: A forrás Timestamp tulajdonság neve beállítás nem működik
+## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>Probléma: az eseményforrás időbélyegző-tulajdonság neve nem működik
 
 Győződjön meg arról, hogy a nevét és értékét megfelelnek-e a következő szabályok:
 
@@ -88,34 +88,26 @@ Győződjön meg arról, hogy az időbélyegző-tulajdonság neveként rögzíte
 
 Az időbélyeg-tulajdonság nincs explicit módon meghatározva, ha egy eseményt az IoT hub- vagy event hub sorba helyezésekor használatos, az alapértelmezett időbélyeg.
 
-## <a name="problem-i-cant-edit-or-view-my-time-series-model"></a>Probléma: Nem szerkeszthetők vagy saját Idősorozat-modell megtekintése
+## <a name="problem-i-cant-view-or-edit-my-time-series-model"></a>Probléma: Nem lehet megtekintése vagy szerkesztése a saját Idősorozat-modell
 
 - Lehetséges, hogy a Time Series Insights S1 vagy S2 környezetet használja.
 
    Time Series modellek támogatottak, csak a Használatalapú környezetekben. A Time Series Insights előzetes verziója Explorer az S1/S2 környezet elérésével további információkért lásd: [megjelenítheti az Intéző adatait](./time-series-insights-update-explorer.md).
 
-   ![Hozzáférés][5]
+   [![Access](media/v2-update-diagnose-and-troubleshoot/access.png)](media/v2-update-diagnose-and-troubleshoot/access.png#lightbox)
 
 - Előfordulhat, hogy nincs engedélyek megtekintése és szerkesztése a modellt.
 
    A felhasználóknak kell szerkesztheti és megtekintheti az Idősorozat-modell közreműködője szintű hozzáféréssel. Ellenőrizze a jelenlegi hozzáférési szintekkel, és további hozzáférést biztosítani, keresse fel az adathozzáférési házirendek a szakasz a Time Series Insights-erőforrást az Azure Portalon.
 
-## <a name="problem-all-my-instances-in-the-time-series-insights-preview-explorer-dont-have-a-parent"></a>Probléma: A Time Series Insights előzetes verziója Explorer összes saját példány nem rendelkezik a szülő
+## <a name="problem-all-my-instances-in-the-preview-explorer-lack-a-parent"></a>Probléma: a saját az előzetes verzió explorer szereplő összes példányt szülője nem tartozik
 
 Ez a probléma akkor fordulhat elő, ha a környezet nem rendelkezik meghatározott Idősorozat-modell hierarchiába. További információkért lásd: [Time Series modellek](./time-series-insights-update-how-to-tsm.md).
 
-  ![Time Series modellek][6]
+  [![Time Series modellek](media/v2-update-diagnose-and-troubleshoot/tsm.png)](media/v2-update-diagnose-and-troubleshoot/tsm.png#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 
 - Olvasási [Time Series modellek](./time-series-insights-update-how-to-tsm.md).
 
 - Ismerje meg [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
-
-<!-- Images -->
-[1]: media/v2-update-diagnose-and-troubleshoot/environment.png
-[2]: media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png
-[3]: media/v2-update-diagnose-and-troubleshoot/configuration.png
-[4]: media/v2-update-diagnose-and-troubleshoot/permissions.png
-[5]: media/v2-update-diagnose-and-troubleshoot/access.png
-[6]: media/v2-update-diagnose-and-troubleshoot/tsm.png

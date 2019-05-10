@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 4/9/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: cd7797ae3b79fb874bafc89437943b084020d800
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d7b9673101ed3b6ff85a9981ba061bc870762b1
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60194212"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405686"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
 
@@ -102,13 +102,13 @@ Most hozza létre a helyettesítő és a számítási feladatokat futtató virtu
 2. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet a Kiemeltek listából.
 3. Adja meg a következő értékeket a virtuális gép számára:
 
-   |Beállítás  |Value  |
+   |Beállítás  |Érték  |
    |---------|---------|
    |Erőforráscsoport     |**Test-FW-RG**|
    |Virtuális gép neve     |**SRV-Jump**|
    |Régió     |Ugyanaz, mint a korábbi|
    |Rendszergazdai felhasználónév     |**azureuser**|
-   |Jelszó     |A jelszó **Azure123456!**|
+   |Jelszó     |**Azure123456!**|
 
 4. Alatt **bejövőport-szabályok**, a **nyilvános bejövő portok**válassza **lehetővé teszi a kiválasztott portok**.
 5. A **bejövő portok kiválasztása**válassza **RDP (3389-es)**.
@@ -123,7 +123,7 @@ Most hozza létre a helyettesítő és a számítási feladatokat futtató virtu
 
 Az alábbi táblázat az információk segítségével állítsa be egy másik virtuális gép nevű **Srv-munkahelyi**. A többi beállítás ugyanaz, mint az Srv-Jump virtuális gép esetében.
 
-|Beállítás  |Value  |
+|Beállítás  |Érték  |
 |---------|---------|
 |Alhálózat|**Munkaterhelés-SN**|
 |Nyilvános IP-cím|**Nincsenek**|
@@ -138,13 +138,13 @@ Helyezze üzembe a tűzfalat a virtuális hálózaton.
 3. Válassza ki **tűzfal** majd **létrehozás**.
 4. A **Tűzfal létrehozása** oldalon konfigurálja a tűzfalat a következő táblázatban található értékekkel:
 
-   |Beállítás  |Value  |
+   |Beállítás  |Érték  |
    |---------|---------|
    |Előfizetés     |\<az Ön előfizetése\>|
    |Erőforráscsoport     |**Test-FW-RG** |
    |Name (Név)     |**Test-FW01**|
    |Location egység     |Válassza a korábban használt helyet|
-   |Válasszon egy virtuális hálózatot     |**Meglévő használata**: **Test-FW-VN**|
+   |Virtuális hálózat választása     |**Meglévő használata**: **Test-FW-VN**|
    |Nyilvános IP-cím     |**Új létrehozása**. A nyilvános IP-címnek standard termékváltozat típusúnak kell lennie.|
 
 5. Válassza az **Áttekintés + létrehozás** lehetőséget.
@@ -236,12 +236,12 @@ Most tesztelje le, a tűzfal, ellenőrizze, hogy az elvárt módon működik.
 1. Az Azure Portalon tekintse át az **Srv-Work** virtuális gép hálózati beállításait, és jegyezze fel a gép magánhálózati IP-címét.
 2. Csatlakozzon a távoli asztali **Srv-Jump** virtuális gépet, és jelentkezzen be. Itt, nyissa meg a távoli asztali kapcsolatot a **Srv-munkahelyi** magánhálózati IP-címet.
 
-3. Nyissa meg az Internet Explorert, és navigáljon a következő címre: http://www.google.com.
+3. Nyissa meg az Internet Explorert, és navigáljon a következő címre: https://www.google.com.
 4. Válassza ki **OK** > **Bezárás** a az Internet Explorer biztonsági riasztásokat.
 
    A Google kezdőlapon megtekintheti.
 
-5. Nyissa meg a következő címet: http://www.microsoft.com.
+5. Nyissa meg a következő címet: https://www.microsoft.com.
 
    A tűzfal blokkolja a hozzáférést.
 

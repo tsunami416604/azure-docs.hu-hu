@@ -12,14 +12,14 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: a615ab26e4ea046ced70ce2c154a0c304b741986
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dd7e29f8f37572565e505aade97b964254b6d72c
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60550910"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466561"
 ---
-# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>Biztonságos üzembe helyezési eljárások az Azure Deployment Manager (privát előzetes verzió) engedélyezése
+# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Biztonságos üzembe helyezési eljárások az Azure Deployment Manager (nyilvános előzetes verzió) engedélyezése
 
 A szolgáltatás számos régióban üzembe helyezheti, és ellenőrizze, hogy az egyes régiókban a várt módon fut, az Azure Deployment Manager segítségével egy szakaszos bevezetést a szolgáltatás koordinálja. Ugyanúgy, mint bármely Azure-telepítéshez, az erőforrásokat a szolgáltatáshoz a határoz meg [Resource Manager-sablonok](resource-group-authoring-templates.md). Miután létrehozta a sablonokat, a Deployment Manager a topológia a szolgáltatáshoz, és hogyan azt kell történni használhatja.
 
@@ -200,7 +200,9 @@ A bevezetési sablont hoz létre a bináris fájlok, üzembe kell helyeznie a sz
 
 ### <a name="steps"></a>Lépések
 
-Meghatározhat egy lépés előtt vagy után a központi telepítési művelet végrehajtásához. Jelenleg csak a `wait` lépés érhető el. A várakozási lépés felfüggeszti a telepítés folytatása előtt. Lehetővé teszi, hogy ellenőrizze, hogy a szolgáltatás a következő szolgáltatás egység üzembe helyezése előtt várt módon fut-e. Az alábbi példa bemutatja egy várakozási lépés általános formátumát.
+Meghatározhat egy lépés előtt vagy után a központi telepítési művelet végrehajtásához. Jelenleg csak a `wait` érhetők el a és a "healthCheck" lépést. 
+
+A várakozási lépés felfüggeszti a telepítés folytatása előtt. Lehetővé teszi, hogy ellenőrizze, hogy a szolgáltatás a következő szolgáltatás egység üzembe helyezése előtt várt módon fut-e. Az alábbi példa bemutatja egy várakozási lépés általános formátumát.
 
 ```json
 {
@@ -219,7 +221,7 @@ Meghatározhat egy lépés előtt vagy után a központi telepítési művelet v
 
 Az időtartam tulajdonságot használja [ISO 8601 szabványnak](https://en.wikipedia.org/wiki/ISO_8601#Durations). Az előző példában egy egy perces várakozás megadja.
 
-További információkért lásd: [sablonreferenciája lépések](/azure/templates/Microsoft.DeploymentManager/steps).
+Az állapot-ellenőrzési lépést kapcsolatos további információkért lásd: [ ]() és [ ]() további információkért lásd: [sablonreferenciája lépések](/azure/templates/Microsoft.DeploymentManager/steps).
 
 ### <a name="rollouts"></a>Kibocsátások
 

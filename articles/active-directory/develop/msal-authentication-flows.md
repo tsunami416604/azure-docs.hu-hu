@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7db73ff8bef553b36408cfae90e32014f875bd3
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 39f323c2ac86e8d42319b3d99221f6c20beff3e4
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191009"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406689"
 ---
 # <a name="authentication-flows"></a>Hitelesítési folyamatok
 
@@ -126,11 +126,11 @@ Az alkalmazás az eszköz hitelesítésikód-folyamata segítségével szerzi be
 
 ![Eszközkód folyamata](media/msal-authentication-flows/device-code.png)
 
-1. Felhasználói hitelesítés szükség, amikor az alkalmazás egy kódot biztosít, és megkérdezi a felhasználót, nyissa meg egy URL-címet (például egy internethez csatlakozó okostelefon) egy másik eszköz használatával (például http://microsoft.com/devicelogin), ahol a felhasználó felszólítást kap a kódot. Hogy megtörtént, a weblap irányítja a felhasználót egy normál hitelesítési módszer, beleértve a beleegyezést kérő és a multi-factor Authentication hitelesítés, amennyiben szükséges keresztül.
+1. Felhasználói hitelesítés szükség, amikor az alkalmazás egy kódot biztosít, és megkérdezi a felhasználót, nyissa meg egy URL-címet (például egy internethez csatlakozó okostelefon) egy másik eszköz használatával (például https://microsoft.com/devicelogin), ahol a felhasználó felszólítást kap a kódot. Hogy megtörtént, a weblap irányítja a felhasználót egy normál hitelesítési módszer, beleértve a beleegyezést kérő és a multi-factor Authentication hitelesítés, amennyiben szükséges keresztül.
 
 2. Sikeres hitelesítést követően a parancssori alkalmazást fog kapni a szükséges jogkivonatok, biztonsági csatornán keresztül történik, és fogja használni, a szükséges API-hívások végrehajtásához.
 
-### <a name="constraints"></a>Korlátozások
+### <a name="constraints"></a>Megkötések
 
 - Eszköz kódfolyamat csak nyilvános ügyfélalkalmazások számára érhető el.
 - Amikor hozhat létre, amely a nyilvános ügyfélalkalmazás kell átadni a szolgáltató:
@@ -146,7 +146,7 @@ Az MSAL integrált Windows-hitelesítés (IWA) támogatja az asztali, vagy egy t
 1. Integrált Windows-hitelesítést használó tokenbeolvasás.
 2. Használja a jogkivonatot, hogy az erőforrás kéréseket.
 
-### <a name="constraints"></a>Korlátozások
+### <a name="constraints"></a>Megkötések
 
 Támogatja a IWA **az összevont** csak a felhasználókra.  A felhasználók az Active Directoryban létrehozott, és az Azure Active Directory által támogatott. A felhasználók közvetlenül az Azure AD-ben nélkül AD biztonsági hozott létre (**felügyelt** felhasználók) a hitelesítési folyamat nem használható. Ez a korlátozás nem befolyásolja a [felhasználónév/jelszó folyamat](#usernamepassword).
 
@@ -190,7 +190,7 @@ Ez az beállításának kompatibilis.
 - felhasználók, akik kell tennie a többtényezős hitelesítés nem lesz lehetősége bejelentkezni (mivel nem lett a beavatkozás nélküli)
 - Felhasználók nem tudják az egyszeri bejelentkezés
 
-### <a name="constraints"></a>Korlátozások
+### <a name="constraints"></a>Megkötések
 
 Kivéve a [integrált Windows-hitelesítés megkötések](#integrated-windows-authentication), a következő korlátozások is érvényesek:
 

@@ -643,8 +643,6 @@
                   href: service-fabric-cluster-config-upgrade-azure.md
                 - name: Fürtcsomópontok javítása (Windows)
                   href: service-fabric-patch-orchestration-application.md
-                - name: Fürtcsomópontok javítása (Linux)
-                  href: service-fabric-patch-orchestration-application-linux.md
                 - name: Lemeztitkosítás engedélyezése (Windows)
                   href: service-fabric-enable-azure-disk-encryption-windows.md
                 - name: Lemeztitkosítás engedélyezése (Linux)

@@ -12,15 +12,15 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 02/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7dc07ba7f1d62b49232b1cd892070804099fab8c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e7c330846cd907f35bb23ae5e453383d7c35222e
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024004"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471881"
 ---
 # <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Betölteni, és az Azure Machine Learning Data Prep SDK-adatok olvasása
-Ebben a cikkben megismerheti az Azure Machine Learning Data Prep SDK használata az adatok különböző módszert. Az SDK dokumentációja, olvassa el a [áttekintése](https://aka.ms/data-prep-sdk). Az SDK támogatja a több adat adatfeldolgozási szolgáltatások, például:
+Ebben a cikkben megismerheti az Azure Machine Learning Data Prep SDK használata az adatok különböző módszert.  Az SDK támogatja a több adat adatfeldolgozási szolgáltatások, például:
 
 * Elemzés paraméter következtetésekhez (kódolás, elválasztó, a fejlécek) rendelkező több fájltípus betölthető
 * Típus-átalakítás következtetésekhez használatával fájl betöltése közben
@@ -28,12 +28,13 @@ Ebben a cikkben megismerheti az Azure Machine Learning Data Prep SDK használata
 
 > [!Important]
 > Ha egy új megoldást épít, próbálja meg a [Azure Machine Learning adatkészletek](how-to-explore-prepare-data.md) (előzetes verzió) az adatok feltárása és előkészítéséhez. Az adatkészletek az adatelőkészítés SDK-t, az AI-megoldások adatkészletek kezeléséhez bővített funkciókat kínáló következő verziójában.
+> Ha használja a `azureml-dataprep` az átalakítások használata helyett hozzon létre egy adatfolyam-csomagot a `azureml-datasets` csomagot hozhat létre adatkészletet, nem tud majd pillanatképekkel vagy a verzióval ellátott adatkészletek későbbi használat céljából.
 
 Az alábbi táblázat egy kijelölt adatok betöltése a gyakori fájltípusokból használt funkciók.
 
 | Fájltípus | Függvény | Hivatkozás |
 |-------|-------|-------|
-|Bármelyik|`auto_read_file()`|[reference](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#auto-read-file-path--filepath--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
+|Bármely|`auto_read_file()`|[reference](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#auto-read-file-path--filepath--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
 |Text|`read_lines()`|[reference](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#read-lines-path--filepath--header--azureml-dataprep-api-engineapi-typedefinitions-promoteheadersmode----promoteheadersmode-none--0---encoding--azureml-dataprep-api-engineapi-typedefinitions-fileencoding----fileencoding-utf8--0---skip-rows--int---0--skip-mode--azureml-dataprep-api-engineapi-typedefinitions-skipmode----skipmode-none--0---comment--str---none--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
 |CSV|`read_csv()`|[reference](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#read-csv-path--filepath--separator--str--------header--azureml-dataprep-api-engineapi-typedefinitions-promoteheadersmode----promoteheadersmode-constantgrouped--3---encoding--azureml-dataprep-api-engineapi-typedefinitions-fileencoding----fileencoding-utf8--0---quoting--bool---false--inference-arguments--azureml-dataprep-api-builders-inferencearguments---none--skip-rows--int---0--skip-mode--azureml-dataprep-api-engineapi-typedefinitions-skipmode----skipmode-none--0---comment--str---none--include-path--bool---false--archive-options--azureml-dataprep-api--archiveoption-archiveoptions---none-----azureml-dataprep-api-dataflow-dataflow)|
 |Excel|`read_excel()`|[reference](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep?view=azure-dataprep-py#read-excel-path--filepath--sheet-name--str---none--use-column-headers--bool---false--inference-arguments--azureml-dataprep-api-builders-inferencearguments---none--skip-rows--int---0--include-path--bool---false-----azureml-dataprep-api-dataflow-dataflow)|
@@ -315,5 +316,4 @@ dflow.to_pandas_dataframe().head()
 
 ## <a name="next-steps"></a>További lépések
 
-* Lásd: az SDK [áttekintése](https://aka.ms/data-prep-sdk) tervezési minták és használati példák
 * Tekintse meg az Azure Machine Learning Data Prep SDK [oktatóanyag](tutorial-data-prep.md) példa egy adott forgatókönyv megoldása

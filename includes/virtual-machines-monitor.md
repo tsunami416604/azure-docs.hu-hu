@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 01/27/2019
 ms.author: cynthn
-ms.openlocfilehash: 2978da7f2e7ec27ded6b5994570fa50a9032d0d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ac400c86af8236ff5d67b8b6fbf99f6f4b1d36c9
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473968"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65404951"
 ---
 A virtuális gépek monitorozásához begyűjthetik, megtekintése és elemzése a diagnosztikai számos lehetőségek előnyeit, és az adatok. Ehhez egyszerűen [figyelési](../articles/azure-monitor/overview.md) a virtuális gép is használhatja az Áttekintés képernyő a virtuális gép az Azure Portalon. Használhat [bővítmények](../articles/virtual-machines/windows/extensions-features.md) diagnosztika konfigurálása további metrikai adatok gyűjtésére a virtuális gépeken. Is használhatja fejlett figyelési lehetőségek, például [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) és [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -23,7 +23,7 @@ A virtuális gépek monitorozásához begyűjthetik, megtekintése és elemzése
 
     Virtuális gépek rendszerindítójaként a rendszerindítási diagnosztikai ügynök rögzíti a rendszerindítás kimeneti és az Azure storage-ban tárolja azokat. Ezek az adatok a virtuális gépek rendszerindítási problémáinak hibaelhárításához használhatóak. A rendszerindítási diagnosztika nem engedélyezettek automatikusan, egy virtuális gép létrehozásakor a parancssori eszközök. Ahhoz, hogy a rendszerindítási diagnosztikát engedélyezni lehessen, tárfiókot kell létrehozni a rendszerindítási naplók tárolásához. Ha engedélyezi a rendszerindítási diagnosztika az Azure Portalon, a storage-fiók automatikusan létrejön az Ön számára.
 
-    Ha nem engedélyezte a rendszerindítási diagnosztika a virtuális gép létrehozásakor, mindig engedélyezheti azt később használatával [Azure CLI-vel](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics), [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/az.compute/set-azvmbootdiagnostics), vagy egy [Azure Resource Manager-sablon](../articles/virtual-machines/windows/extensions-diagnostics-template.md).
+    Ha nem engedélyezte a rendszerindítási diagnosztika a virtuális gép létrehozásakor, mindig engedélyezheti azt később használatával [Azure CLI-vel](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics), [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/az.compute/set-azvmbootdiagnostic), vagy egy [Azure Resource Manager-sablon](../articles/virtual-machines/windows/extensions-diagnostics-template.md).
 
 - **A vendég operációs rendszer diagnosztikai adatok gyűjtésének engedélyezéséhez.** Amikor létrehoz egy virtuális Gépet, lehetősége van a vendég operációs rendszer diagnosztika engedélyezése a beállítások képernyőn. Ha engedélyezte a diagnosztikai adatgyűjtés, a [IaaSDiagnostics-bővítmény linuxhoz](../articles/virtual-machines/linux/diagnostic-extension.md) vagy a [Windows IaaSDiagnostics bővítmény](../articles/virtual-machines/windows/ps-extensions-diagnostics.md) adnak hozzá a virtuális gép, amely lehetővé teszi, hogy összegyűjtse a további lemez, a Processzor és memória-adatokat.
 
@@ -33,7 +33,7 @@ A virtuális gépek monitorozásához begyűjthetik, megtekintése és elemzése
 
 Létrehozhat [riasztások](../articles/azure-monitor/platform/alerts-overview.md) meghatározott teljesítmény-mérőszámok alapján. A problémák, akkor is értesítést szeretne többek között az átlagos processzorhasználat meghalad egy bizonyos küszöbértéket, vagy a rendelkezésre álló szabad lemezterület egy adott érték alá csökken. Riasztások konfigurálható a [az Azure portal](../articles/azure-monitor/platform/alerts-classic-portal.md)révén [Azure PowerShell-lel](../articles/azure-monitor/platform/alerts-classic-portal.md#with-powershell), vagy a [Azure CLI-vel](../articles/azure-monitor/platform/alerts-classic-portal.md#with-azure-cli).
 
-## <a name="azure-service-health"></a>Azure Service Health
+## <a name="azure-service-health"></a>Az Azure szolgáltatás állapota irányítópult személyre szabott nézete
 
 [Az Azure Service Health](../articles/service-health/service-health-overview.md) személyre szabott útmutatást és támogatást nyújt az Azure-szolgáltatások Önt érintő problémái, és segít felkészülni a tervezett karbantartások alkalmával kerül. Az Azure Service Health figyelmezteti Önt és munkatársait célzott és rugalmas értesítések útján.
 

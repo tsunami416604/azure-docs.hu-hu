@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9757588b7adb4032600113d2ac948097e8df6c2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7a03bb2626525bf022b109105a7c6bc0dee23aea
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717464"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407016"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező LockPath Keylight
 
@@ -172,11 +172,11 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés LockPath Keylight, h
 
     j. Állítsa be **automatikus üzembe biztonsági konfigurációs**válassza **szabványos felhasználói konfigurációs**.
 
-    k. Az a **E-mail attribútum** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    k. Az a **E-mail attribútum** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    l. Az a **First name attribútum** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    l. Az a **First name attribútum** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    m. Az a **utolsó név attribútum** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    m. Az a **utolsó név attribútum** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
 
     n. Kattintson a **Save** (Mentés) gombra.
 
@@ -234,7 +234,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy Britta Simon nevű felhasználó LockPath Keylight jön létre. LockPath Keylight támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az LockPath Keylight, egy új jön létre a hitelesítés után. Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [LockPath Keylight ügyfél-támogatási csapatának](https://www.lockpath.com/contact/).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

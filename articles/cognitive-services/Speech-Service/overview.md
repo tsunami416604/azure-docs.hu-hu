@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 2e82e033e56af10bd8e676570e9409941753eb38
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
-ms.translationtype: MT
+ms.openlocfilehash: db32124cb4262745bcb2217224124ec444ccc97e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020988"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236854"
 ---
 # <a name="what-are-the-speech-services"></a>Mi az a Speech Services?
 
@@ -28,38 +28,42 @@ Ezeket a funkciókat az Azure Speech Services alkotják. Ebben a táblázatban h
 
 | Szolgáltatás | Szolgáltatás | Leírás | SDK | REST |
 |---------|---------|-------------|-----|------|
-| [Speech-to-Text](speech-to-text.md) | Diktálás | Hang-szöveg transzformációs transcribes audio-adatfolyamokat valós idejű, amelyek az alkalmazások, eszközök és eszközök használata vagy megjelenítendő szöveg. Használja a hang-szöveg transzformációs a [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) átírt beszéd- és hangparancsokra reagálás származtassa felhasználói szándékot. | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Speech-to-Text](speech-to-text.md) | Speech-to-text | Hang-szöveg transzformációs transcribes audio-adatfolyamokat valós idejű, amelyek az alkalmazások, eszközök és eszközök használata vagy megjelenítendő szöveg. Használja a hang-szöveg transzformációs a [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) átírt beszéd- és hangparancsokra reagálás származtassa felhasználói szándékot. | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [A Batch Beszédátírási](batch-transcription.md) | Batch beszédátírási lehetővé teszi nagy mennyiségű adatot az aszinkron hang-szöveg transzformációs beszédátírási. Ez az egy REST-alapú szolgáltatás, amely ugyanazon végpontot használja, mint a Testreszabás és a modellkezelési. | Nem | [Igen](https://westus.cris.ai/swagger/ui/index) |
-| | [Beszélgetés Beszédátírási szolgáltatás](conversation-transcription-service.md) | Lehetővé teszi a beszéd valós idejű felismerés, a beszélő felismerése és diarization. Tökéletes választás, a személyes értekezletek átírás lehetővé teszi az előadók megkülönböztetésére. | Igen | Nem |
-| | [Testreszabás](#customize-your-speech-experience) | Hang-szöveg transzformációs használatakor felismerése és a egy egyedi környezetben beszédátírási létrehozása, és címet a zajszint vagy iparág-specifikus szókincsből eredőket egyéni írásmódja, akusztikai és nyelvi modelleket taníthat be. | Nem | [Igen](https://westus.cris.ai/swagger/ui/index) |
-| [Text-to-Speech](text-to-speech.md) | Szövegfelolvasás | Szöveg-hang transzformációs emberszerű szintetizált alakítja át a bemeneti szöveg. Válasszon a standard szintű beszédhangot és Neurális beszédhangot (lásd: [nyelvi támogatás](language-support.md)). | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| | [Testreszabás](#customize-your-speech-experience) | Hozzon létre egyéni hangtípust egyedi a márkáról vagy termék. | Nem | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Beszédfordítás](speech-translation.md) | Beszédfordítás | Beszédalapú fordítási lehetővé teszi az alkalmazások, eszközök és eszközök beszéd valós idejű, többnyelvű fordítás. A beszédfelismerés beszéd és hang-szöveg transzformációs fordítási szolgáltatás segítségével. | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Nem |
+| | [Beszélgetés Beszédátírási](conversation-transcription-service.md) | Lehetővé teszi a beszéd valós idejű felismerés, a beszélő felismerése és diarization. Tökéletes választás, a személyes értekezletek átírás lehetővé teszi az előadók megkülönböztetésére. | Igen | Nem |
+| | [Egyéni beszédfelismerési modelleket hozhat létre](#customize-your-speech-experience) | Hang-szöveg transzformációs használatakor felismerése és a egy egyedi környezetben beszédátírási létrehozása, és címet a zajszint vagy iparág-specifikus szókincsből eredőket egyéni írásmódja, akusztikai és nyelvi modelleket taníthat be. | Nem | [Igen](https://westus.cris.ai/swagger/ui/index) |
+| [Text-to-Speech](text-to-speech.md) | Text-to-speech | Szöveg-hang transzformációs emberszerű szintetizált alakítja át a bemeneti szöveg. Válasszon a standard szintű beszédhangot és Neurális beszédhangot (lásd: [nyelvi támogatás](language-support.md)). | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| | [Hozzon létre egyéni beszédhangot](#customize-your-speech-experience) | Hozzon létre egyéni hangtípust egyedi a márkáról vagy termék. | Nem | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Beszédfordítás](speech-translation.md) | Tolmácsolás | Beszédalapú fordítási lehetővé teszi az alkalmazások, eszközök és eszközök beszéd valós idejű, többnyelvű fordítás. A beszédfelismerés beszéd és hang-szöveg transzformációs fordítási szolgáltatás segítségével. | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Nem |
+| [Hang-és felhőközpontú virtuális asszisztensek](voice-first-virtual-assistants.md) | Hang-és felhőközpontú virtuális asszisztensek | Az Azure Speech Services segítségével egyéni virtuális asszisztensek amelyekkel a fejlesztők természetes, emberi intelligenciára hasonlító párbeszédfelületeket a saját alkalmazások és az elemek létrehozásához. A Bot Framework közvetlen vonal beszédfelismerő csatornát ezeket a képességeket egy összehangolt, előkészített belépési pontot egy kompatibilis robot, amely lehetővé teszi a beszéd a hangalapú, alacsony késéssel és magas megbízhatósággal-szal való megadásával növeli. | [Igen](voice-first-virtual-assistants.md) | Nem |
 
 ## <a name="news-and-updates"></a>Hírek és frissítések
 
 Ismerje meg, mi az az Azure Speech Services új.
 
+* 2019. május - dokumentációja már elérhető a [beszélgetés Beszédátírási](conversation-transcription-service.md), [Center meghívása átírást](call-center-transcription.md), és [hang-és felhőközpontú virtuális asszisztensek](voice-first-virtual-assistants.md).
 * 2019. május - kiadott SDK 1.5.0 Speech. Frissítéseket, fejlesztéseket és ismert problémák teljes listáját lásd: [kibocsátási megjegyzések](releasenotes.md).
 * Április a 2019 - kiadott beszéd SDK 1.4.0-s C++, a szöveg-hang transzformációs (bétaverzió) támogatásával C#, és a Windows és Linux rendszeren Java használatával. Emellett az SDK mostantól támogatja a MP3 és Opus/Ogg hangformátumok Pro C++ és C# Linux rendszeren. Frissítéseket, fejlesztéseket és ismert problémák teljes listáját lásd: [kibocsátási megjegyzések](releasenotes.md).
 * Március 2019 - szövegfelolvasás, amely egy adott régióban elérhető beszédhangot teljes listáját adja vissza az új végpont már elérhető. Új régiók emellett mostantól használható az szöveg-beszéd átalakítás. További információkért lásd: [szöveg-hang transzformációs API-referencia (REST)](rest-text-to-speech.md).
-* Február a 2019 - kiadott beszéd SDK 1.3.0 támogatása [Unity (bétaverzió)](quickstart-csharp-unity.md). Támogatása hozzáadva a `AudioInput` osztály, amely lehetővé teszi a streamelési forrás Audio kiválasztását. Fejlesztések és ismert problémák teljes listáját lásd: [kibocsátási megjegyzések](releasenotes.md).
-* December 2018 - kiadott beszéd SDK 1.2.0-s vagy annál újabb támogatása [Python](quickstart-python.md) és [Node.js](quickstart-js-node.md), valamint Ubuntu 18.04 LTS. További információkért lásd: [kibocsátási megjegyzések](releasenotes.md).
 
 ## <a name="try-speech-services"></a>Próbálja ki a beszédszolgáltatások
 
 Útmutatók a népszerű programozási nyelvek, minden egyes, a kód futtatása kevesebb mint 10 perc múlva úgy tervezték, hogy biztosítunk. Ez a táblázat tartalmazza a legnépszerűbb rövid útmutatók, az egyes szolgáltatásokhoz. A bal oldali navigációs használatával további nyelvek és platformok.
 
-| Speech-to-text (SDK) | Translation (SDK) | Szöveg-hang transzformációs (REST) | Szöveg-hang transzformációs (SDK) |
-|-------------------|-------------------|-----------------------|-----------------------|
-| [C#, .NET Core (Windows)](quickstart-csharp-dotnet-windows.md) | [Java (Windows, Linux)](quickstart-translate-speech-java-jre.md) | [Python (Windows, Linux, macOS)](quickstart-python-text-to-speech.md) | [C#, .NET-keretrendszer (Windows)](quickstart-text-to-speech-dotnet-windows.md) |
-| [JavaScript (böngésző)](quickstart-js-browser.md) | [C#, .NET Core (Windows)](quickstart-translate-speech-dotnetcore-windows.md) | [C#, .NET Core (Windows, Linux, macOS)](quickstart-dotnet-text-to-speech.md) | [C++ (Windows)](quickstart-text-to-speech-cpp-windows.md) |
-| [Python (Windows, Linux, macOS)](quickstart-python.md) | [C#, .NET-keretrendszer (Windows)](quickstart-translate-speech-dotnetframework-windows.md) | [Node.js (Windows, Linux, macOS)](quickstart-nodejs-text-to-speech.md) | [C++ (Linux)](quickstart-text-to-speech-cpp-linux.md) |
-| [Java (Windows, Linux)](quickstart-java-jre.md) | [C++ (Windows)](quickstart-translate-speech-cpp-windows.md) | |
+| Speech-to-text (SDK) | Szöveg-hang transzformációs (SDK) | Translation (SDK) |
+|----------------------|----------------------|-------------------|
+| [C#, .NET Core (Windows)](quickstart-csharp-dotnet-windows.md) | [C#, .NET-keretrendszer (Windows)](quickstart-text-to-speech-dotnet-windows.md) | [Java (Windows, Linux)](quickstart-translate-speech-java-jre.md) |
+| [JavaScript (böngésző)](quickstart-js-browser.md) | [C++ (Windows)](quickstart-text-to-speech-cpp-windows.md) | [C#, .NET Core (Windows)](quickstart-translate-speech-dotnetcore-windows.md) |
+| [Python (Windows, Linux, macOS)](quickstart-python.md) | [C++ (Linux)](quickstart-text-to-speech-cpp-linux.md) | [C#, .NET-keretrendszer (Windows)](quickstart-translate-speech-dotnetframework-windows.md) |
+| [Java (Windows, Linux)](quickstart-java-jre.md) | | [C++ (Windows)](quickstart-translate-speech-cpp-windows.md) |
+
+> [!NOTE]
+> Hang-szöveg és a szöveg-hang transzformációs is REST-végpontokat és kapcsolódó útmutatók.
 
 Miután már kellett, hogy egy alkalommal a beszédszolgáltatások használatát, a jelen oktatóanyagban, amely bemutatja, hogyan ismerhetik fel a szándék fog vonatkozni, a beszéd, a beszéd SDK és a LUIS segítségével próbálja meg.
 
 * [Oktatóanyag: A beszédfelismerés SDK és a LUIS, beszédfelismerés, szándék felismeréseC#](how-to-recognize-intents-from-speech-csharp.md)
+* [Oktatóanyag: Szöveg fordítása, vélemények elemzése és a lefordított szöveg-beszéd átalakítás, REST szintetizálásához Flask alkalmazás készítése](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 
 ## <a name="get-sample-code"></a>Mintakód letöltése
 

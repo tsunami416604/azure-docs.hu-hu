@@ -1,6 +1,6 @@
 ---
 title: Saját profil (előzetes verzió) portál áttekintése – az Azure Active Directory |} A Microsoft Docs
-description: A saját profil portál, többek között a szolgáltatással kapcsolatos más cikkek hivatkozásainak magas szintű áttekintését.
+description: Egy magas szintű áttekintése és annak szolgáltatásait és a saját profil portálról további információkat megjelenítő hivatkozások megtekintéséhez.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -9,33 +9,30 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/19/2019
+ms.date: 05/08/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d59bd14b52124282e1e07d60daa4b891c2bab938
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c686dc0af893259d942527d318f3dd7d98fd752d
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60475324"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470723"
 ---
 # <a name="my-profile-preview-portal-overview"></a>Saját profil (előzetes verzió) portál áttekintése
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-myprofile.md)]
 
-Használhatja a **profilom** (előzetes verzió) portálon is lehet kezelni a munkahelyi vagy iskolai fiókját:
-
-- Állítsa be, és a kétlépéses ellenőrzés és új jelszó kérése a biztonsági adatok kezelése.
-
-- A csatlakoztatott szervezetek és eszközök kezelésére.
-
-- Megtekintheti, hogyan a szervezete adatait.
+A **profilom** portal (előzetes verzió) segítségével felügyelheti a munkahelyi vagy iskolai fiók beállításával és a biztonsági adatok kezelése, a csatlakoztatott szervezetek és eszközök kezelése és megtekintése, hogy a szervezete adatait.
 
 >[!Important]
 >Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.
 
-## <a name="access-the-my-profile-portal"></a>A saját profil portál elérése
-Szeretné a **profilom** a portál https://myprofile.microsoft.com, az az alábbi böngészők bármelyike jelenlegi verziója:
+![Saját profil portal Áttekintés lapján](media/myprofile-portal/myprofile-portal-overview.png)
+
+## <a name="go-to-the-my-profile-portal"></a>Nyissa meg a profil portált
+
+Szeretné a **profilom** portal (https://myprofile.microsoft.com), az az alábbi böngészők bármelyike jelenlegi verziója:
 
 - Chrome
 - Microsoft Edge
@@ -43,14 +40,13 @@ Szeretné a **profilom** a portál https://myprofile.microsoft.com, az az alább
 - Firefox
 - Internet Explorer 11
 
-    ![Saját profil portal Áttekintés lapján](media/myprofile-portal/myprofile-portal-overview.png)
+## <a name="my-profile-portal-articles"></a>Saját profil portál cikkek
 
-## <a name="in-this-section"></a>Ebben a szakaszban
-Kapcsolatos további információkat talál a **profilom** portál és az oldalak, az alábbi cikkeket.
+A részletes információkat és útmutatást érhető el a **profilom** portal, a következő cikkekben talál:
 
 |Cikk |Leírás |
 |------|------------|
-|[A biztonsági adatok (előzetes verzió) kezelése](user-help-security-info-overview.md)|Ismerteti, hogyan állíthatja be, és a biztonsági adatok kezelése.|
-|[Saját szervezetek kezelése](myprofile-portal-organizations-page.md)|Ismerteti, hogyan kezelheti a szervezetek számára a munkahelyi vagy iskolai fiókkal csatlakozik.|
-|[Csatlakoztatott eszközök kezelése](myprofile-portal-devices-page.md)| Ismerteti, hogyan kezelheti az eszközöket a munkahelyi vagy iskolai fiókjával kapcsolódott.|
-|[Adatvédelemmel kapcsolatos információk megtekintése](myprofile-portal-privacy-page.md)|Ismerteti, hogyan lehet a szervezet célja az adatok megtekintéséhez.|
+|[Biztonsági adatok megadása](user-help-security-info-overview.md)| Számos cikk leírja az ellenőrzési módszerként a Microsoft Authenticator alkalmazást, szöveges üzenetküldés, vagy telefonhívások beállítása. Cikkek adásával kapcsolatos e-mail-címmel vagy előre definiált biztonsági kérdések visszaállíthatja a saját elfelejtett jelszó, így szükség esetén is tartalmaz.|
+|[Megtekintheti, vagy hagyja meg a csatlakoztatott szervezetek](myprofile-portal-organizations-page.md)| Leírja a megtekintése, és hagyja üresen a szervezetek számára a munkahelyi vagy iskolai fiókkal csatlakozik.|
+|[Megtekintéséhez, vagy tiltsa le a csatlakoztatott eszközök](myprofile-portal-devices-page.md)| Hogyan lehet megtekinteni vagy tiltson le minden leírja csatlakozott a munkahelyi vagy iskolai fiókjával.|
+|[Adatvédelemmel kapcsolatos információk megtekintése](myprofile-portal-privacy-page.md)| Útmutatást a nézetet, mely online szolgáltatásokhoz csatlakozik a munkahelyi vagy iskolai fiók, együtt a szervezet használati utasítás használható.|

@@ -4,7 +4,7 @@ description: A vészhelyreállítási megoldások az Azure DNS-ben és a Traffic
 services: dns
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: ec252c1f45e5c27f17b725f6ab68cc94f67897c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a560cc526e73f3ce7e851f2a545f9b16fa53b423
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60507743"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501697"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Vészhelyreállítás az Azure DNS-sel és a Traffic Managerrel
 
@@ -141,7 +141,8 @@ A feladatátvétel konfigurálása az Azure Traffic Managerrel tett lépések a 
 A név contoso123 hozzon létre egy új Azure Traffic manager-profilt, és válassza ki az útválasztási módszer prioritásúként. Ha rendelkezik egy meglévő erőforráscsoportot, amelyet szeretne társítani, majd egy meglévő erőforráscsoportot kiválaszthatja, ellenkező esetben hozzon létre egy új erőforráscsoportot.
 
 ![Traffic Manager-profil létrehozása](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
- *. ábra – Traffic Manager-profil létrehozása*
+
+*. Ábra – Traffic Manager-profil Létrehozása*
 
 ### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>2. lépés: A Traffic Manager-profil belüli végpontok létrehozása
 

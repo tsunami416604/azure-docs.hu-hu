@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 693da06ce14a4854d5db49f588fa29d791060166
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbb5f92258ff31dd7077bb1ade7fa7e5644c8bac
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61445665"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466936"
 ---
 # <a name="add-an-email-action"></a>E-mail-művelet hozzáadása
 
@@ -102,11 +102,11 @@ A következő lépések bemutatják, hogyan állíthatja be, és manuálisan ell
 
 1. Kattintson a **Office 365-összekötő**:
 
-    ![API-kapcsolat](./media/iot-accelerators-remote-monitoring-email-actions/apiconnector.png)
+    ![API-kapcsolat](./media/iot-accelerators-remote-monitoring-email-actions/apiconnector1.png)
 
 1. Kattintson a szalagcímre az engedélyezési folyamat megkezdéséhez:
 
-    ![engedélyezés](./media/iot-accelerators-remote-monitoring-email-actions/connector.png)
+    ![engedélyezés](./media/iot-accelerators-remote-monitoring-email-actions/connector1.png)
 
 1. Kattintson a **engedélyezése**. Kéri, hogy jelentkezzen be. A bejelentkezéshez használt fióknak kell lennie az e-mail-cím az alkalmazás használatával küldjön értesítő:
 
@@ -116,7 +116,7 @@ A következő lépések bemutatják, hogyan állíthatja be, és manuálisan ell
 
 1. Az e-mail-cím, amelyről az értesítéseket küldeni a módosításához kattintson **szerkesztése API-kapcsolat**.
 
-    ![e-mail-cím módosítása](./media/iot-accelerators-remote-monitoring-email-actions/editemail.png)
+    ![e-mail-cím módosítása](./media/iot-accelerators-remote-monitoring-email-actions/editemail1.png)
 
 ### <a name="owner-role-outlook-setup"></a>Tulajdonosi szerepkör Outlook beállítása
 
@@ -142,7 +142,7 @@ A következő lépések segítségével jelentkezzen be, és állítsa be az e-m
 
 A-beépített, a távoli figyelési megoldásgyorsító biztosít egy alapszintű HTML-sablont a művelet e-maileket. Az e-mail-sablont az e-mail-művelet beállítások értékeit használja. Íme egy példa e-mailt:
 
-![e-mail-példa](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate.png)
+![e-mail-példa](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate1.png)
 
 A következő lépések bemutatják, hogyan HTML formátumú e-mailt sablon szerkesztéséhez. Például további információval, vagy adja hozzá az egyéni lemezképek:
 

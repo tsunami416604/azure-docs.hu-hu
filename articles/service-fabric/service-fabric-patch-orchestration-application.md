@@ -14,25 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 6c0aa42cc22d22431d7d0270aca52e089046cb01
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ef2b1bd9cfe9aed1e82335d62bb09b5ffcbe1016
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60773366"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471765"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer a Service Fabric-fürtben
-
-> [!div class="op_single_selector"]
-> * [Windows](service-fabric-patch-orchestration-application.md)
-> * [Linux](service-fabric-patch-orchestration-application-linux.md)
->
->
-
 
 > 
 > [!IMPORTANT]
 > 1.2-es verziója. * nem támogatott a 2019. április 30. történik. Frissítsen a legújabb verzióra.
+
+> 
+> [!IMPORTANT]
+> Elavult a Patch Orchestration-alkalmazás linux rendszeren. Látogasson el [Azure virtuális gép méretezési csoport automatikus operációs rendszer lemezkép frissítéseinek](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) a linux-frissítések vezénylésre.
 
 
 [Azure virtuális gép méretezési csoport automatikus operációs rendszer lemezkép frissítéseinek](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) az ajánlott eljárás, megtartja az operációs rendszerek javítani az Azure-ban, és a Patch Orchestration Application (POA) szolgáltatás hálók RepairManager Systems service – burkolója amely lehetővé teszi, hogy-alapú konfigurációs operációs rendszer javítási ütemezése nem Azure-beli üzemeltetett fürtök esetén. POA nem Azure-beli üzemeltetett fürtök esetén nem kötelező, de a frissítési tartományok szerint javítás telepítésének ütemezése szükség javítások a Service Fabric-fürtök gazdagépek üzemkimaradás nélkül.

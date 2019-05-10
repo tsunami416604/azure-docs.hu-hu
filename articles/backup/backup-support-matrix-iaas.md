@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 05/08/2019
 ms.author: raynew
-ms.openlocfilehash: eaad582dc6484cb62d0bebf1af447ff61301a3bb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2267a4e836fe1aff214f40e34afa830de50fa2d5
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685932"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471650"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM backup-támogatási mátrixa
 Használhatja a [Azure Backup szolgáltatás](backup-overview.md) a helyszíni gépek és a számítási feladatok és Azure-beli virtuális gépek (VM) biztonsági mentése. Ez a cikk összegzi a támogatási beállításait és korlátozások biztonsági mentésekor az Azure-beli virtuális gépek az Azure Backup szolgáltatással.
@@ -41,9 +41,9 @@ További információ a biztonsági mentés [használatával egy biztonsági men
 **Művelet** | **Támogatás**
 --- | ---
 Amikor létrehoz egy Windows Azure virtuális gép biztonsági mentésének engedélyezése | Támogatott:  A Windows Server 2019 (Datacenter/Datacenter mag), a Windows Server 2016 (Core adatközpont vagy Datacenter); A Windows Server 2012 R2 Datacenter; A Windows Server 2008 R2 (RTM és SP1)
-Amikor létrehoz egy Linux rendszerű virtuális gép biztonsági mentésének engedélyezése | Támogatott:<br/><br/> - Ubuntu Server: 1710, 1704, 1604 (LTS), 1404 (LTS)<br/><br/> – A Red Hat: RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4<br/><br/> – SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> -Debian: 8, 9<br/><br/> - CentOS: 6.9, 7.3<br/><br/> - Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
+Amikor létrehoz egy Linux rendszerű virtuális gép biztonsági mentésének engedélyezése | Támogatott:<br/><br/> - Ubuntu Server: 18.04, 17.10, 17.04, 16.04 (LTS), 14.04 (LTS)<br/><br/> – A Red Hat: RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4<br/><br/> – SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> -Debian: 8, 9<br/><br/> - CentOS: 6.9, 7.3<br/><br/> - Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
 Készítsen biztonsági másolatot egy virtuális gép leállítása vagy offline állapotú virtuális gép | Támogatott.<br/><br/> Pillanatkép az összeomlás-konzisztens csak, nem alkalmazáskonzisztens.
-Lemezek biztonsági mentése a managed disks-ba való migrálás után | Támogatott.<br/><br/> Biztonsági mentés továbbra is működni fog. Nincs szükség műveletre.
+Lemezek biztonsági mentése a managed disks-ba való migrálás után | Támogatott.<br/><br/> Biztonsági mentés továbbra is működni fog. Nincs szükség felhasználói műveletre.
 Lemezek biztonsági mentése a felügyelt erőforrászárat csoport engedélyezése után | Nem támogatott.<br/><br/> Az Azure Backup nem lehet törölni a régebbi erőforrás pontokat, és a biztonsági mentések elkezdi sikertelen lehet, ha a visszaállítási pontok maximális korlátot.
 Virtuális gép biztonsági mentési szabályzat módosítása | Támogatott.<br/><br/> A virtuális gép fog készíteni az új szabályzat ütemezése és megőrzése beállításainak használatával. Adatmegőrzési beállítások vannak bővítve, ha a meglévő helyreállítási pontok megjelölve és tartani. Ha Ön csökkenti a meglévő helyreállítási pontok törli a következő tisztítási feladat, és végül törli.
 Biztonsági mentési feladatok megszakítása | Támogatott pillanatkép folyamat során.<br/><br/> Nem támogatott, ha a pillanatkép-tárolóba átvitt.
@@ -61,7 +61,7 @@ A következő táblázat összefoglalja a támogatott operációs rendszerek, am
 
 **Forgatókönyv** | **Operációsrendszer-támogatást**
 --- | ---
-Biztonsági mentés az Azure-beli Virtuálisgép-ügynök bővítmény | Windows-ügyfél: Nem támogatott<br/><br/> A Windows Server 2019 (Datacenter/Datacenter mag), a Windows Server 2016 (Core adatközpont vagy Datacenter); A Windows Server 2012 R2 Datacenter; A Windows Server 2008 R2 (RTM és SP1)
+Biztonsági mentés az Azure-beli Virtuálisgép-ügynök bővítmény | Windows-ügyfél: Érvénytelen érték<br/><br/> A Windows Server 2019 (Datacenter/Datacenter mag), a Windows Server 2016 (Core adatközpont vagy Datacenter); A Windows Server 2012 R2 Datacenter; A Windows Server 2008 R2 (RTM és SP1)
 A MARS-ügynök biztonsági mentése | [Támogatott](backup-support-matrix-mars-agent.md#support-for-direct-backups) operációs rendszereket.
 Biztonsági mentés a DPM/MABS | Biztonsági mentés a támogatott operációs rendszerek [MABS](backup-mabs-protection-matrix.md) és [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807).
 
@@ -150,6 +150,7 @@ Az üzembe helyezett virtuális gépek biztonsági mentése a [Azure Marketplace
 Virtuális gépek biztonsági mentése telepített egyéni rendszerképből (külső) |   Támogatott.<br/><br/> A virtuális gép támogatott operációs rendszernek kell futnia.<br/><br/> A virtuális gép fájljait helyreállításakor visszaállíthatja csak egy kompatibilis operációs rendszer (nem egy korábbi vagy későbbi operációs rendszer).
 Az Azure-bA áttelepített virtuális gépek biztonsági mentése  | Támogatott.<br/><br/> Biztonsági mentése a virtuális Gépet, a Virtuálisgép-ügynök a migrált gépen telepítve van.
 Készítsen biztonsági másolatot a virtuális gépre kiterjedő konzisztencia | Az Azure Backup nem biztosít az adatok és alkalmazások konzisztencia több virtuális gép között.
+A biztonsági mentési [diagnosztikai beállítások](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | nem támogatott. <br/><br/> Ha a visszaállítás, az Azure virtuális gép diagnosztikai beállítások használatával aktivált [hozzon létre új](backup-azure-arm-restore-vms.md#create-a-vm) lehetőséget, majd a visszaállítás sikertelen lesz.
 
 
 ## <a name="vm-storage-support"></a>Virtuálisgép-tároló támogatása
@@ -230,8 +231,8 @@ Backup támogatja a tömörítést, a biztonsági mentési forgalom, a következ
 
 **Gép** | **Tömörítse a MABS és DPM (TCP)** | **A tároló (HTTPS) tömörítése**
 --- | --- | ---
-A helyi Windows számítógépek DPM/MABS nélkül | NA | ![Igen][green]
-Azure-beli virtuális gépek | NA | NA
+A helyi Windows számítógépek DPM/MABS nélkül | n/a | ![Igen][green]
+Azure-beli virtuális gépek | n/a | n/a
 Helyszíni/Azure-beli virtuális gépek DPM-mel | ![Igen][green] | ![Igen][green]
 Helyszíni/Azure-beli virtuális gépek a MABS | ![Igen][green] | ![Igen][green]
 

@@ -10,19 +10,19 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 4416c30f57b469ee125400c696e8b34311a94926
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a200649493354f1264afb0df4cf74acb4a274017
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028185"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406407"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Mi az Azure Blockchain-szolgáltatás?
 
 Az Azure Blockchain-szolgáltatás teljes körűen felügyelt Főkönyv szolgáltatása lehetővé teszi, hogy a felhasználók növekszik, és nagy mennyiségű Azure-beli blockchain hálózatok működtetéséhez. Azáltal, hogy egységes vezérlő az infrastruktúra-felügyelettel és is blockchain hálózati cégirányítási, az Azure Blockchain-szolgáltatás biztosítja:
 
 * Egyszerű hálózat telepítési és műveleti
-* Beépített consortium kezelése
+* Beépített konzorciumkezelés
 * Az intelligens szerződések ismerős fejlesztői eszközökkel fejleszthet.
 
 Az Azure Blockchain-szolgáltatás célja több Főkönyv protokoll támogatása. Jelenleg az Ethereum támogatást biztosít [kvórum](https://www.jpmorgan.com/Quorum) Főkönyv használatával a [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konszenzus mechanizmus.
@@ -55,7 +55,7 @@ Emellett az Azure Blockchain-szolgáltatás mérőszámait gazdag Azure Monitor 
 
 Azure Log Analytics segítségével a felhasználók megtekinthetik a kvórum Főkönyv, vagy más fontos információkat, például próbált kapcsolatot a tranzakció csomópontok kapcsolatos naplókat.
 
-## <a name="built-in-consortium-management"></a>Beépített consortium kezelése
+## <a name="built-in-consortium-management"></a>Beépített konzorciumkezelés
 
 Az első blockchain tag telepítésekor, vagy csatlakozzon, vagy hozzon létre egy új consortium.  Konzorcium egy olyan logikai csoport kezelhetők a cégirányítási és blockchain tagjai, akik több résztvevős folyamat transact közötti kapcsolatot.  Az Azure Blockchain-szolgáltatás biztosít beépített cégirányítási képernyőolvasókkal előre definiált intelligens szerződések, amelyek meghatározzák, hogy mi a consortium műveletek tagjait is igénybe vehet.  Cégirányítási a vezérlőelemek a consortium rendszergazdája szükség szerint testre szabható. Amikor létrehoz egy új consortium, a blockchain tag az alapértelmezett rendszergazdai konzorcium, így lehetővé teszi a consortium csatlakozni más felek meghívása.  Csak akkor, ha korábban meghívót kapott a konzorcium csatlakozhat.  Konzorcium csatlakoztatáskor a blockchain tagja a cégirányítási ellenőrzések bevezetni a consortium rendszergazdája.
 
@@ -65,7 +65,7 @@ Consortium felügyeleti műveleteket, például hozzáadása és eltávolítása
 
 ## <a name="develop-using-familiar-development-tools"></a>Fejlesztés az ismerős fejlesztői eszközökkel
 
-A nyílt forráskódú kvórum Ethereum főkönyv alapján, fejleszthet alkalmazásokat az Azure Blockchain-szolgáltatás ugyanúgy meglévő Ethereum-alkalmazásokat is. Vezető iparági partnerek dolgozik, az Azure Blockchain Development Kit Visual Studio Code-bővítmény lehetővé teszi a fejlesztők így hasznosíthatják a jól ismert eszközökkel, mint például a smart Contract-Truffle Suite. Az Azure Blockchain Development Kit bővítményt használja, fejlesztők létrehozhat, vagy csatlakozhat és a meglévő consortium, hogy megbízható alkalmazásfejlesztést és üzembe helyezése az intelligens szerződések összes egy IDE-ből. Az Azure Blockchain Visual Studio Code-bővítmény használata, hozzon létre vagy egy meglévő consortium kapcsolódni, így létrehozhat és üzembe helyezése az intelligens szerződések összes egy IDE-ből. További információkért lásd: [Azure Blockchain Development Kit a VS Code piactéren](http://aka.ms/vscodebcextension) és a [felhasználói útmutató az Azure Blockchain Development Kit](http://aka.ms/vscodebcextensionwiki ).
+A nyílt forráskódú kvórum Ethereum főkönyv alapján, fejleszthet alkalmazásokat az Azure Blockchain-szolgáltatás ugyanúgy meglévő Ethereum-alkalmazásokat is. Vezető iparági partnerek dolgozik, az Azure Blockchain Development Kit Visual Studio Code-bővítmény lehetővé teszi a fejlesztők így hasznosíthatják a jól ismert eszközökkel, mint például a smart Contract-Truffle Suite. Az Azure Blockchain Development Kit bővítményt használja, fejlesztők létrehozhat, vagy csatlakozhat és a meglévő consortium, hogy megbízható alkalmazásfejlesztést és üzembe helyezése az intelligens szerződések összes egy IDE-ből. Az Azure Blockchain Visual Studio Code-bővítmény használata, hozzon létre vagy egy meglévő consortium kapcsolódni, így létrehozhat és üzembe helyezése az intelligens szerződések összes egy IDE-ből. További információkért lásd: [Azure Blockchain Development Kit a VS Code piactéren](https://aka.ms/vscodebcextension) és a [felhasználói útmutató az Azure Blockchain Development Kit](https://aka.ms/vscodebcextensionwiki ).
 
 ## <a name="support-and-feedback"></a>Támogatás és visszajelzés
 

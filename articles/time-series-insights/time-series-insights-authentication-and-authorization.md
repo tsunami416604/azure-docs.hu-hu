@@ -10,76 +10,88 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/27/2017
+ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 66a3c40bf1e1e1dc6253520a555e19ebf011297c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5fb2802bfe9cc0a4d3297e6fa749e5b94008c616
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698573"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472598"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítés és engedélyezés az Azure Time Series Insights API-hoz
 
 Ez a cikk bemutatja, hogyan konfigurálhatja a hitelesítési és engedélyezési egy egyéni alkalmazást az Azure Time Series Insights API meghívásához használt.
 
+> [!TIP]
+> További információ [adathozzáférés biztosítása](./time-series-insights-data-access.md) a Time Series Insights-környezetbe az Azure Active Directoryban.
+
 ## <a name="service-principal"></a>Szolgáltatásnév
 
-Ez a szakasz ismerteti, hogyan konfigurálhatja a Time Series Insights API elérése az alkalmazás nevében egy alkalmazás. Az alkalmazás és kérdezhet le adatokat, vagy referenciaadatok közzététele a felhasználói hitelesítő adatok helyett az alkalmazás hitelesítő adatait a Time Series Insights-környezet.
+Ez, és a következő szakaszok azt ismertetik, hogyan konfigurálhatja a Time Series Insights API elérése az alkalmazás nevében egy alkalmazás. Az alkalmazás akkor kérdezheti le vagy referenciaadatok közzététele a felhasználói hitelesítő adatok helyett az alkalmazás hitelesítő adatait a Time Series Insights-környezetet.
 
-Ha egy alkalmazás, amely hozzáférési Time Series Insights kell, állítsa be az Azure Active Directory-alkalmazás, és rendelje hozzá az adathozzáférési házirendek a Time Series Insights-környezet. Ez a módszer előnyösebb az alkalmazást a saját hitelesítő adatokkal futtatja, mivel:
+## <a name="best-practices"></a>Ajánlott eljárások
 
-* Az alkalmazás identitást, amelyek eltérnek a saját engedélyek engedélyeket rendelhet hozzá. Általában ezek az engedélyek korlátozva csak meg az alkalmazás által igényelt. Engedélyezheti például az alkalmazás csak az egy adott Time Series Insights-környezetben lévő adatok olvasásához.
-* Nem kell módosítani az alkalmazás hitelesítő adatait, ha az Ön feladatkörei módosítása.
+Ha rendelkezik olyan alkalmazás, amely hozzáférési Time Series Insights kell:
+
+1. Az Azure Active Directory-alkalmazás beállítása.
+1. [Az adathozzáférési házirendek hozzárendelése](./time-series-insights-data-access.md) a Time Series Insights-környezetben.
+
+Az alkalmazás a felhasználói hitelesítő adatait helyett célszerű óta:
+
+* Az alkalmazás identitás, amely nem azonos a saját engedélyek engedélyeket rendelhet hozzá. Általában ezek az engedélyek korlátozva csak meg az alkalmazás által igényelt. Engedélyezheti például az alkalmazás csak az egy adott Time Series Insights-környezetben lévő adatok olvasásához.
+* Nem kell az alkalmazás hitelesítő adatait, módosíthatja, ha az Ön feladatkörei módosítja.
 * Egy tanúsítványt, vagy egy alkalmazáskulcsot segítségével automatizálhatja a hitelesítés, ha felügyelet nélküli szkriptet futtat.
 
-Ez a cikk bemutatja, hogyan hajthat végre ezeket a lépéseket az Azure Portalon keresztül. Egy egybérlős alkalmazást, ahol az alkalmazás futtatásához csak egy szervezet célja összpontosít. Egybérlős alkalmazások az üzleti alkalmazások futtatására, a szervezet általában használnak.
+A következő szakaszok bemutatják, hogyan hajthat végre ezeket a lépéseket az Azure Portalon keresztül. A cikk egy egybérlős alkalmazást, ahol az alkalmazás futtatásához csak egy szervezet célja összpontosít. Egybérlős alkalmazások általában az üzleti alkalmazások futtatására, a szervezet fogja használni.
 
-A beállítási folyamat három magas szintű lépésekből áll:
+## <a name="set-up-summary"></a>Állítsa be a összegzése
+
+A beállítási folyamat három lépésből áll:
 
 1. Alkalmazás létrehozása az Azure Active Directoryban.
-2. Engedélyezi az alkalmazásnak a Time Series Insights-környezet elérésére.
-3. A tokenek beszerzésére alkalmazás Azonosítóját és kulcsát használjuk a `"https://api.timeseries.azure.com/"` célközönségtől vagy erőforrástól. A jogkivonat ezután használható a Time Series Insights API meghívásához.
+1. Engedélyezi az alkalmazásnak a Time Series Insights-környezet elérésére.
+1. Alkalmazás Azonosítóját és kulcsát használjuk a tokenek beszerzésére `https://api.timeseries.azure.com/`. A jogkivonat ezután használható a Time Series Insights API meghívásához.
 
-A részletes lépések a következők:
+## <a name="detailed-setup"></a>Részletes beállítása
 
 1. Az Azure Portalon válassza ki a **Azure Active Directory** > **alkalmazásregisztrációk** > **új alkalmazásregisztráció**.
 
-   ![Új alkalmazás regisztrálása az Azure Active Directoryban](media/authentication-and-authorization/active-directory-new-application-registration.png)  
+   [![Új alkalmazás regisztrálása az Azure Active Directoryban](media/authentication-and-authorization/active-directory-new-application-registration.png)](media/authentication-and-authorization/active-directory-new-application-registration.png#lightbox)
 
-2. Adja meg az alkalmazás nevét, válassza ki a kívánt **webalkalmazás / API**, bármely érvényes URI-JÁNAK kiválasztása **bejelentkezési URL-**, és kattintson a **létrehozás**.
+1. Adja meg az alkalmazás nevét, válassza ki a kívánt **webalkalmazás / API**, bármely érvényes URI-JÁNAK kiválasztása **bejelentkezési URL-**, és kattintson a **létrehozás**.
 
-   ![Az Azure Active Directory-alkalmazás létrehozása](media/authentication-and-authorization/active-directory-create-web-api-application.png)
+   [![Az Azure Active Directory-alkalmazás létrehozása](media/authentication-and-authorization/active-directory-create-web-api-application.png)](media/authentication-and-authorization/active-directory-create-web-api-application.png#lightbox)
 
-3. Válassza ki az újonnan létrehozott alkalmazást, és másolja az alkalmazás azonosítója a kedvenc szövegszerkesztőjével.
+1. Válassza ki az újonnan létrehozott alkalmazást, és másolja az alkalmazás azonosítója a kedvenc szövegszerkesztőjével.
 
-   ![Az Alkalmazásazonosító másolása](media/authentication-and-authorization/active-directory-copy-application-id.png)
+   [![Az Alkalmazásazonosító másolása](media/authentication-and-authorization/active-directory-copy-application-id.png)](media/authentication-and-authorization/active-directory-copy-application-id.png#lightbox)
 
-4. Válassza ki **kulcsok**, adja meg a kulcs nevét, válassza ki az érvényessége, és kattintson a **mentése**.
+1. Válassza ki **kulcsok**, adja meg a kulcs nevét, válassza ki az érvényessége, és kattintson a **mentése**.
 
-   ![Kulcsok – alkalmazás választása](media/authentication-and-authorization/active-directory-application-keys.png)
+   [![Kulcsok – alkalmazás választása](media/authentication-and-authorization/active-directory-application-keys.png)](media/authentication-and-authorization/active-directory-application-keys.png#lightbox)
 
-   ![Adja meg a kulcs nevét és a lejárati, és kattintson a Mentés gombra](media/authentication-and-authorization/active-directory-application-keys-save.png)
+   [![Adja meg a kulcs nevét és a lejárati, és kattintson a Mentés gombra](media/authentication-and-authorization/active-directory-application-keys-save.png)](media/authentication-and-authorization/active-directory-application-keys-save.png#lightbox)
 
-5. Másolja a kulcsot a kedvenc szövegszerkesztőjével.
+1. Másolja a kulcsot a kedvenc szövegszerkesztőjével.
 
-   ![Az alkalmazás-kulcs másolása](media/authentication-and-authorization/active-directory-copy-application-key.png)
+   [![Az alkalmazás-kulcs másolása](media/authentication-and-authorization/active-directory-copy-application-key.png)](media/authentication-and-authorization/active-directory-copy-application-key.png#lightbox)
 
-6. Válassza ki a Time Series Insights-környezet **az adathozzáférési házirendek** kattintson **Hozzáadás**.
+1. Válassza ki a Time Series Insights-környezet **az adathozzáférési házirendek** kattintson **Hozzáadás**.
 
-   ![A Time Series Insights-környezet új adat-hozzáférési szabályzat hozzáadása](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)
+   [![A Time Series Insights-környezet új adat-hozzáférési szabályzat hozzáadása](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-add.png#lightbox)
 
-7. Az a **felhasználó kiválasztása** párbeszédpanelen illessze be az alkalmazás nevét (a 2. lépés) vagy Alkalmazásazonosítót (a 3. lépés).
+1. Az a **felhasználó kiválasztása** párbeszédpanel mezőbe illessze be az alkalmazás nevét (a **2. lépés**) vagy Alkalmazásazonosítót (a **3. lépés**).
 
-   ![Alkalmazás keresése a felhasználó kiválasztása párbeszédpanel](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)
+   [![Alkalmazás keresése a felhasználó kiválasztása párbeszédpanel](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
 
-8. Válassza ki a szerepkört (**olvasó** adatok lekérdezéséhez **közreműködői** adatok lekérdezése és a referenciaadatok módosítása), és kattintson a **Ok**.
+1. Válassza ki a szerepkört (**olvasó** adatok lekérdezéséhez **közreműködői** adatok lekérdezése és a referenciaadatok módosítása), és kattintson a **OK**.
 
-   ![Válassza ki az olvasó vagy a közreműködői szerepkör kiválasztása párbeszédpanel](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)
+   [![Válassza ki az olvasó vagy a közreműködői szerepkör kiválasztása párbeszédpanel](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
 
-9. Mentse a szabályzatot kattintva **Ok**.
+1. Mentse a szabályzatot kattintva **OK**.
 
-10. Használja az Alkalmazásazonosítót (a 3. lépés) és az alkalmazáskulcsot (az 5. lépés) az alkalmazás nevében a token beszerzéséhez. A jogkivonat ezután adhatók át a `Authorization` fejléc, amikor az alkalmazás meghívja a Time Series Insights API.
+1. Használja az Alkalmazásazonosítót (a **3. lépés**) és az alkalmazáskulcsot (a **5. lépés**) beszerezni a jogkivonatot az alkalmazás nevében. A jogkivonat ezután adhatók át a `Authorization` fejléc, amikor az alkalmazás meghívja a Time Series Insights API.
 
     Használata a C#, a következő kódot használhatja az alkalmazás nevében a token beszerzéséhez. A teljes minta: [adatok lekérdezése a C# használatával](time-series-insights-query-data-csharp.md).
 
@@ -92,17 +104,17 @@ A részletes lépések a következők:
 
     AuthenticationResult token = await authenticationContext.AcquireTokenAsync(
         // Set the resource URI to the Azure Time Series Insights API
-        resource: "https://api.timeseries.azure.com/", 
+        resource: "https://api.timeseries.azure.com/",
         clientCredential: new ClientCredential(
             // Application ID of application registered in Azure Active Directory
-            clientId: "1bc3af48-7e2f-4845-880a-c7649a6470b8", 
+            clientId: "YOUR_APPLICATION_ID",
             // Application key of the application that's registered in Azure Active Directory
-            clientSecret: "aBcdEffs4XYxoAXzLB1n3R2meNCYdGpIGBc2YC5D6L2="));
+            clientSecret: "YOUR_CLIENT_APPLICATION_KEY"));
 
     string accessToken = token.AccessToken;
     ```
 
-Használhatja az Azure Time Series Insight-hitelesítést az alkalmazás Azonosítóját és kulcsát az alkalmazásban. 
+Használja a **Alkalmazásazonosító** és **kulcs** az alkalmazás az Azure Time Series Insight-hitelesítést.
 
 ## <a name="next-steps"></a>További lépések
 

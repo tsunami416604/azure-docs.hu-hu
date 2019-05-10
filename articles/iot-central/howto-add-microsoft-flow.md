@@ -8,12 +8,12 @@ ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: 5d1e9941244defbf84b20f95e9f2e0402bbe19f2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c0a03b70c6e5e4742e03d4892b2b5f97c908ab9c
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64693595"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467983"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Hozzon létre munkafolyamatokat az IoT Central-összekötő a Microsoft Flow
 
@@ -43,7 +43,7 @@ Ez a szakasz bemutatja, hogy miként indítható el a Flow mobilalkalmazásnak, 
 
 1. A munkafolyamatok tha férhetnek hozzá, és a csatlakoztatott IoT-központ szabály listáját láthatja. Kattintson a **sablonok böngészése** vagy **új > Létrehozás sablonból** és bármely, a rendelkezésre álló sablonok közül választhat. 
 
-    ![Elérhető a Microsoft Flow sablonok](media/howto-add-microsoft-flow/flowtemplates.png)
+    ![Elérhető a Microsoft Flow sablonok](media/howto-add-microsoft-flow/flowtemplates1.png)
 
 1. Jelentkezzen be a a kiválasztott sablonban fog kérni. Miután az összekötők be van jelentkezve, ekkor megnyílik hozhat létre a munkafolyamat-tervezőben. A munkafolyamat, amely rendelkezik az alkalmazás és a szabály már kitöltött IoT-központ eseményindító tartozik.
 
@@ -52,7 +52,7 @@ Ez a szakasz bemutatja, hogy miként indítható el a Flow mobilalkalmazásnak, 
     > [!NOTE]
     > Válassza ki a **Továbbiak** a dinamikus tartalom ablakban elolvashatja a mérés és tulajdonság értékei, amely kiváltotta a szabály a szöveget.
 
-    ![Folyamatvezérlés dinamikus ablaktáblán nyissa meg a művelet szerkesztése](./media/howto-add-microsoft-flow/flowdynamicpane.png)
+    ![Folyamatvezérlés dinamikus ablaktáblán nyissa meg a művelet szerkesztése](./media/howto-add-microsoft-flow/flowdynamicpane1.png)
 
 1. Ha elkészült a művelet szerkesztése, válassza ki **mentése**. Akkor jut el a munkafolyamatot – áttekintés oldalra. Itt láthatja a futtatási előzményeket, és megoszthatja más munkatársakkal.
 
@@ -79,7 +79,7 @@ Ez a szakasz bemutatja, hogyan használatával hozhat létre egy új eszközt az
 
 1. Válassza ki az eszköz neve mezőt. A dinamikus tartalmú ablaktáblában válassza **eszköznév**. Ez az érték a felhasználó beírja a mobilalkalmazáson keresztül, és az új eszközt az IoT-központ neve a bemeneti átadott. Ebben a példában az egyetlen kötelezően kitöltendő mező az eszköz nevét, a piros csillaggal jelölve. Előfordulhat, hogy egy másik eszköz a sablon ki, hogy hozzon létre egy új eszközt szeretne több kötelező mező.
 
-    ![Folyamat létrehozása eszköz dinamikus műveletpanel](./media/howto-add-microsoft-flow/flowcreatedevice.png)
+    ![Folyamat létrehozása eszköz dinamikus műveletpanel](./media/howto-add-microsoft-flow/flowcreatedevice1.png)
 
 1. (Nem kötelező) Adja meg a többi mező létrehozása új eszközökhöz tetszés szerint.
 
@@ -110,7 +110,7 @@ Ez a szakasz bemutatja, hogyan eszközbeállítások, illetve egy mobileszközö
 
 1. Frissítheti az eszköz nevét. Az eszköz tulajdonságok és a beállítások bármelyikét frissítéséhez válassza ki a frissíteni kívánt az eszköz az eszköz sablon a **eszköz sablon** legördülő listából. A művelet csempe kibontása a tulajdonságok és frissítheti beállítások megjelenítése.
 
-    ![A folyamat eszköz munkafolyamat](./media/howto-add-microsoft-flow/flowupdatedevice.png)
+    ![A folyamat eszköz munkafolyamat](./media/howto-add-microsoft-flow/flowupdatedevice1.png)
 
 1. Válassza ki az egyes tulajdonságok és frissíteni a kívánt beállításokat. A dinamikus tartalmú ablaktábla válassza ki a megfelelő bemenet a trigger által. Ebben a példában a hely érték propagálja le tulajdonság frissítése az eszköz helyét.
 
@@ -126,7 +126,7 @@ Az azonosító használatával eszköz információkat szerezhet a **az Azure Io
 
 Például eszköznév, eszköz sablon neve, tulajdonságértékeket és a munkafolyamat későbbi műveletekben átadása beállításértékeket adatai olvashatók be. Íme egy példa-munkafolyamat, amely továbbítja az ügyfél neve tulajdonság értéke az eszközről a Microsoft Teams.
 
-   ![A folyamat get eszköz munkafolyamat](./media/howto-add-microsoft-flow/flowgetdevice.png)
+   ![A folyamat get eszköz munkafolyamat](./media/howto-add-microsoft-flow/flowgetdevice1.png)
 
 
 ## <a name="run-a-command-on-a-device-in-a-workflow"></a>A munkafolyamat egy eszközön a parancs futtatása
@@ -137,7 +137,7 @@ A parancs futtatható egy eszközön, az azonosító használatával a **Azure I
     
 Kiválaszthatja, hogy a parancs futtatásához, és továbbítja a parancs paraméterei ezt a műveletet. Íme egy példa-munkafolyamat, amely egy újraindítási parancsot futtatja, a Microsoft Flow mobilalkalmazásban egy gomb.
 
-   ![A folyamat get eszköz munkafolyamat](./media/howto-add-microsoft-flow/flowrunacommand.png)
+   ![A folyamat get eszköz munkafolyamat](./media/howto-add-microsoft-flow/flowrunacommand1.png)
 
 ## <a name="delete-a-device-in-a-workflow"></a>A munkafolyamat eszköz törlése
 

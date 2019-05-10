@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7d2920e84e0e1e61627afe1fe029e047e13ed02
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 819f7d12f0554145295a0ec4f1eff7cb404d552d
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60259102"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406982"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező LCVista
 
@@ -140,13 +140,13 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés LCVista, hajtsa vég
 
     c. Nyissa meg a metaadatainak XML-fájlt, amely a Jegyzettömbbe, az Azure Portalról letöltött másolja az értéket **X509Certificate** , és illessze be a **x509 tanúsítvány** szakaszban.
 
-    d. Az a **First name attribútum** szövegmezőjébe illessze be az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    d. Az a **First name attribútum** szövegmezőjébe illessze be az értéket `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    e. Az a **utolsó név attribútum** szövegmezőjébe illessze be az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    e. Az a **utolsó név attribútum** szövegmezőjébe illessze be az értéket `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
 
-    f. Az a **E-mail attribútum** szövegmezőjébe illessze be az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    f. Az a **E-mail attribútum** szövegmezőjébe illessze be az értéket `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    g. Az a **felhasználónév attribútum** szövegmezőjébe illessze be az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    g. Az a **felhasználónév attribútum** szövegmezőjébe illessze be az értéket `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     e. Kattintson a **Mentés** gombra a beállítások mentéséhez.
 
@@ -205,7 +205,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű LCVista hoz létre. Együttműködve [LCVista ügyfél-támogatási csapatának](https://lcvista.com/contact) a felhasználók hozzáadása az LCVista platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

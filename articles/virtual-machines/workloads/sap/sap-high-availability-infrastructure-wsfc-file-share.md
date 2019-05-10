@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58cd76e93b9d0888211e8339ae17170685e71e74
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e1c6b1d55a4fbc673980908a981a9a96c869bee9
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637754"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409615"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>SAP magas rendelkezésre állás egy Windows feladatátvevő fürt és -fájlmegosztást az SAP ASCS/SCS-példányok Azure-infrastruktúra előkészítése
 
@@ -36,6 +36,7 @@ ms.locfileid: "60637754"
 [arm-sofs-s2d-managed-disks]:https://github.com/robotechredmond/301-storage-spaces-direct-md
 [arm-sofs-s2d-non-managed-disks]:https://github.com/Azure/azure-quickstart-templates/tree/master/301-storage-spaces-direct
 [deploy-cloud-witness]:https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness
+[tuning-failover-cluster-network-thresholds]:https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
@@ -341,6 +342,16 @@ Az Azure Resource Manager-sablon üzembe helyezéséhez a közvetlen tárolóhel
 _**2. ábra**: Felhasználói felület képernyő a felügyelt lemezek nélkül Scale-Out File Server Azure Resource Manager-sablon_
 
 Az a **Tárfióktípus** jelölje ki **prémium szintű Storage**. A többi beállítás ugyanazok, mint a felügyelt lemezek beállításai.
+
+## <a name="adjust-cluster-timeout-settings"></a>Fürt időtúllépési beállítások módosítása
+
+A Windows kibővített fájlkiszolgálói fürt sikeres telepítését követően alkalmazkodik a feladatátvételi észleléshez a feltételeknek az Azure-ban időtúllépés küszöbértékeket. A módosítandó paraméterei dokumentálva vannak [finomhangolása a feladatátvevő fürt hálózati küszöbértékek][tuning-failover-cluster-network-thresholds]. Feltételezve, hogy a fürtözött virtuális gépek ugyanazon az alhálózaton találhatók, ezeket az értékeket módosítsa a következő paraméterekkel:
+
+- SameSubNetDelay = 2000
+- SameSubNetThreshold = 15
+- RoutingHistoryLength = 30
+
+Ezek a beállítások tesztelt az ügyfelekkel, és egy jó biztonsági sérülés kínálnak. Elég rugalmas, azonban is biztosítanak a gyors elegendő feladatátvételi hibaállapotok valós vagy virtuális gép hibája.
 
 ## <a name="next-steps"></a>További lépések
 

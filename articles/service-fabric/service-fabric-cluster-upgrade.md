@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: aljo
-ms.openlocfilehash: 3ddda89b19a04bdcd45f392f297ee5e930833538
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8fa461d8c3a70d4b0d2d9973a840ffc7d1ff6470
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60711620"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472769"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>A frissítés és az Azure Service Fabric-fürt frissítése
 
@@ -99,7 +99,7 @@ Adja meg az egyéni állapotházirendeket, vagy tekintse át a jelenlegi beáll�
 Számos különböző konfigurációs beállítások testre szabható a megbízhatósági szint a fürt és a csomópont tulajdonságait, például egy fürtön. További információkért olvassa el [Service Fabric-fürt hálóbeállítások](service-fabric-cluster-fabric-settings.md).
 
 ## <a name="patch-the-os-in-the-cluster-nodes"></a>Az operációs rendszer, a fürtcsomópontok javítása
-A patch orchestration application (POA) a Service Fabric-alkalmazás, amely automatizálja az operációs rendszer javításának Service Fabric-fürt, üzemkimaradás nélkül. A [Patch Orchestration Application for Windows](service-fabric-patch-orchestration-application.md) vagy [Patch Orchestration Application linuxos](service-fabric-patch-orchestration-application-linux.md) is telepíthetők a javítások telepítése összehangolt módon miközben gondoskodik a szolgáltatásokat a fürt rendelkezésre álló kapacitását. 
+A patch orchestration application (POA) a Service Fabric-alkalmazás, amely automatizálja az operációs rendszer javításának Service Fabric-fürt, üzemkimaradás nélkül. A [Patch Orchestration Application for Windows](service-fabric-patch-orchestration-application.md) telepíthetők a javítások telepítése összehangolt módon folyamatosan elérhető szolgáltatások megtartva a fürtön.
 
 
 ## <a name="next-steps"></a>További lépések

@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 719cbe1ec8962b320aa2850053d44cdef7f56a8c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 925ae2dd7b564eece4842cf25cc32b68d9e5c0b6
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60691606"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472037"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Az Application Insights beállítása az ASP.NET-webhelyhez
 
@@ -29,7 +29,7 @@ A telepítés mindössze néhány kattintással végrehajtható a Visual Studió
 Ha hozzá kívánja adni az Application Insights megoldást ASP.NET-webhelyéhez, tegye a következőket:
 
 - Telepítse a [Windowshoz készült Visual Studio 2017](https://www.visualstudio.com/downloads/) szoftvert a következő számítási feladatokkal:
-    - ASP.NET és webfejlesztés
+    - Az ASP.NET és webfejlesztési (ne a választható összetevők)
     - Azure-fejlesztés
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
@@ -101,7 +101,7 @@ A portálon az egyik csempére vagy diagramra kattintva további részleteket te
 
 [További tudnivalók az Application Insights használatáról az Azure Portalon](../../azure-monitor/app/app-insights-dashboards.md).
 
-## <a name="step-4-publish-your-app"></a>4. lépés: Az alkalmazás közzététele
+## <a name="step-4-publish-your-app"></a>4. lépés: Alkalmazás közzététele
 Tegye közzé alkalmazását az IIS-kiszolgálón vagy az Azure-on. Az [Élő mérőszámok streammel](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) ellenőrizheti, hogy minden rendben működik-e.
 
 A telemetria az Application Insights portálon épül fel, ahol figyelheti a mérőszámokat, kereshet a telemetriára és [irányítópultokat](../../azure-monitor/app/app-insights-dashboards.md) állíthat be. Is használhatja a nagy teljesítményű [Kusto-lekérdezés nyelvi](/azure/kusto/query/) a használat és a teljesítmény elemzéséhez, vagy adott események megtalálásához.

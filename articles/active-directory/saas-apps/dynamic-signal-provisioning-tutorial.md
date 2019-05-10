@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 05/07/2019
 ms.author: zchia
-ms.openlocfilehash: fec6a7e3433eb5d657deac8c1b2ceb327f8d32e4
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f79bc083105f997b08f7cfa6f8e08a8f4f455455
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159405"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470549"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>Oktatóanyag: A felhasználók automatikus átadása dinamikus jel konfigurálása
 
@@ -84,7 +84,7 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 ### <a name="to-configure-automatic-user-provisioning-for-dynamic-signal-in-azure-ad"></a>Konfigurálhatja a felhasználók automatikus átadása számára jelzés dinamikus Azure AD-ben:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és válassza ki **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **dinamikus jel**.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki **vállalati alkalmazások**, majd **minden alkalmazás**.
 
     ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
@@ -104,11 +104,11 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 6. A dinamikus jel felügyeleti konzolon lépjen a **Admin > Speciális > API**.
 
-    ![A dinamikus jel kiépítése](./media/dynamicsignal-provisioning-tutorial/secret-token-1.png)
+    ![A dinamikus jel kiépítése](./media/dynamic-signal-provisioning-tutorial/secret-token-1.png)
 
     Másolás a **SCIM API URL-Címének** való **bérlői URL-cím**. Kattintson a **új jogkivonat létrehozása** létrehozni egy **tulajdonosi jogkivonat** , és másolja az értéket a **titkos jogkivonat**.
 
-    ![A dinamikus jel kiépítése](./media/dynamicsignal-provisioning-tutorial/secret-token-2.png)
+    ![A dinamikus jel kiépítése](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
 
 7. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD dinamikus jel csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, a dinamikus jel fiókja rendelkezik rendszergazdai engedélyekkel, és próbálkozzon újra.
 
@@ -122,11 +122,11 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 10. Alatt a **leképezések** szakaszban jelölje be **szinkronizálása az Azure Active Directory-felhasználók a dinamikus jel**.
 
-    ![A dinamikus jel Felhasználóleképezéseket](media/dynamicsignal-provisioning-tutorial/user-mappings.png)
+    ![A dinamikus jel Felhasználóleképezéseket](media/dynamic-signal-provisioning-tutorial/user-mappings.png)
 
 11. Tekintse át a dinamikus jelre az Azure AD-ből szinkronizált felhasználói attribútumok a **attribútumleképzés** szakaszban. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével felel meg a felhasználói fiókok, a dinamikus védelem a frissítési műveleteket. Válassza ki a **mentése** gombra kattintva véglegesítse a módosításokat.
 
-    ![Üzemeltetőjének felhasználói attribútumok](media/dynamicsignal-provisioning-tutorial/user-mapping-attributes.png)
+    ![A dinamikus jel felhasználói attribútumok](media/dynamic-signal-provisioning-tutorial/user-mapping-attributes.png)
 
 12. Hatókörszűrő konfigurálásához tekintse meg a következő utasításokat a [Scoping szűrő oktatóanyag](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -160,7 +160,3 @@ Az Azure AD létesítési naplók olvasása további információkért lásd: [-
 
 * [Tekintse át a naplók és jelentések készítése a tevékenység kiépítése](../manage-apps/check-status-user-account-provisioning.md)
 
-<!--Image references-->
-[1]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-01.png
-[2]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-02.png
-[3]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-03.png

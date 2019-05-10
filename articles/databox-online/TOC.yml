@@ -81,24 +81,28 @@
           href: data-box-edge-technical-specifications-compliance.md
     - name: Útmutató
       items:
-        - name: Számítások kezelése
-          href: data-box-edge-manage-compute.md
         - name: 'C#-modul fejlesztése'
           href: data-box-edge-create-iot-edge-module.md
-        - name: Megosztások kezelése
-          href: data-box-edge-manage-shares.md
-        - name: Felhasználók kezelése
-          href: data-box-edge-manage-users.md
-        - name: Sávszélesség-ütemezések kezelése
-          href: data-box-edge-manage-bandwidth-schedules.md
-        - name: 'Teljesítmény, hozzáférés és kapcsolatok kezelése'
-          href: data-box-edge-manage-access-power-connectivity-mode.md
-        - name: Kezelés a PowerShell használatával
-          href: data-box-edge-connect-powershell-interface.md
+        - name: Kezelés
+          items:
+            - name: Peremhálózati számítás
+              href: data-box-edge-manage-compute.md
+            - name: Megosztások
+              href: data-box-edge-manage-shares.md
+            - name: Felhasználók
+              href: data-box-edge-manage-users.md
+            - name: Sávszélesség-ütemezések
+              href: data-box-edge-manage-bandwidth-schedules.md
+            - name: 'Teljesítmény, hozzáférés és kapcsolatok'
+              href: data-box-edge-manage-access-power-connectivity-mode.md
+            - name: A PowerShell-lel
+              href: data-box-edge-connect-powershell-interface.md
         - name: Hibaelhárítás
           href: data-box-edge-troubleshoot.md
         - name: Figyelés
           href: data-box-edge-monitor.md
+        - name: Eszköz visszaadása
+          href: data-box-edge-return-device.md
     - name: Kibocsátási megjegyzések
       items:
         - name: Általános elérhetőség

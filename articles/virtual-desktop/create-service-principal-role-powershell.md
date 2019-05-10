@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 93725fc9d77552d779378d0c14294a5bbb11c926
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d3357cec426585ba8550301dfa703f583a930ad0
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146145"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236940"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Oktatóanyag: Szolgáltatásnevek létrehozása és szerepkörök hozzárendelése a PowerShell-lel
 
@@ -38,7 +38,7 @@ Szolgáltatásnevek és szerepkör-hozzárendeléseket hozhat létre, mielőtt s
     Install-Module AzureAD
     ```
 
-2. Futtassa a következő parancsmagokat váltotta fel a munkamenethez kapcsolódó értékeket idézőjelek között szereplő értékeket.
+2. Futtassa a következő parancsmagokat váltotta fel a munkamenethez kapcsolódó értékeket idézőjelek között szereplő értékeket. Ha újonnan létrehozott Windows virtuális asztal bérlőjének a a [Windows virtuális asztal oktatóanyag létrehoz egy bérlőt](./tenant-setup-azure-active-directory.md), majd használja az "Alapértelmezett bérlőt csoport" a bérlő-nevet.
 
     ```powershell
     $myTenantGroupName = "<my-tenant-group-name>"
@@ -109,7 +109,7 @@ Az alábbiakban a három hitelesítő adatokat, le kell írni és azok futtatnia
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtudhatta, hogyan egyszerű szolgáltatás létrehozása és bejelentkezés Windows virtuális asztal vele. Bejelentkezés Windows virtuális asztal kapcsolatos további információkért folytassa a csatlakozás a Windows virtuális asztal útmutatók.
+Miután létrehozta az egyszerű szolgáltatás és hozzárendelte egy szerepkört a Windows virtuális asztal bérlő, a gazdagép-készlet létrehozása használhatja. Gazdagép-készletek kapcsolatos további információkért folytassa az oktatóanyag során egy gazdagép-készlet létrehozása a Windows virtuális asztal.
 
-- [Csatlakozás a Windows 10-es vagy Windows 7](connect-windows-7-and-10.md)
-- [Egy webböngészőből csatlakozzon](connect-web.md)
+ > [!div class="nextstepaction"]
+ > [Windows virtuális asztali állomás készlet oktatóanyag](./create-host-pools-azure-marketplace.md)

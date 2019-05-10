@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/08/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: bad64f439d45581f8f4b55ea1ac849db1e27cb76
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b979609374afbd11bde0e15ce540e8930315482f
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024583"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472481"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Az Azure Search-képességek alkalmazási lehetőségét a Cognitive Services-erőforrás csatolása 
 
@@ -60,7 +60,7 @@ Képességek, amelyek a Cognitive Services API-k hívása csak díjkötelesek. N
 
    ![Cognitive Services-erőforrás létrehozása](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Cognitive Services-erőforrás létrehozása")
 
-1. A hely kiválasztása és az Azure Search-régiók között a kimenő sávszélesség díjak elkerülése érdekében ugyanabban a régióban.
+1. A helyen válassza ki az Azure Search és ugyanabban a régióban. Erre azért szükség a megfelelő teljesítmény biztosítása érdekében, de azt régióban is szabadhézag kimenő sávszélesség-költségeket.
 
 1. A tarifacsomag, válassza a **S0** , a Cognitive Services szolgáltatásait, beleértve a biztonsági másolatot az Azure Search által használt, előre megadott képesség látás- és nyelvi funkciók teljes körű gyűjtemény beolvasása. 
 

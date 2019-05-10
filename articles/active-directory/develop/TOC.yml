@@ -342,6 +342,8 @@
               items:
                 - name: Jogkivonat beszerzése a gyorsítótárból
                   href: msal-net-acquire-token-silently.md
+                - name: A jogkivonat-gyorsítótár törlése
+                  href: msal-net-clear-token-cache.md
                 - name: Nyilvános ügyfélalkalmazás példányosítása beállításokkal
                   href: msal-net-instantiate-public-client-config-options.md
                 - name: Bizalmas ügyfélalkalmazás példányosítása beállításokkal

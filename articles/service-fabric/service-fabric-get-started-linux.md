@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 49d06c05af085624a0d495a65e139d3857a13fc4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a063461d9da66d57a7bdc3311ae80dec7f2c98f1
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712619"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470229"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -179,8 +179,8 @@ Az SDK-telepítéssel együtt érkező Service Fabric-futtatókörnyezet az alá
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1.8 | Implicit módon az npm-ből | legújabb |
-RHEL | - | OpenJDK 1.8 | Implicit módon az npm-ből | legújabb |
+Ubuntu | 2.0.0 | AzulJDK 1.8 | Implicit módon az npm-ből | legutóbbi |
+RHEL | - | OpenJDK 1.8 | Implicit módon az npm-ből | legutóbbi |
 
 ## <a name="set-up-a-local-cluster"></a>Helyi fürt beállítása
 Ha a telepítés befejeződött, indítson egy helyi fürtöt.
@@ -334,7 +334,6 @@ A Service Fabric SDK-k eltávolításához futtassa a következő parancsokat.
 * [Linux fejlesztőkörnyezet előkészítése Windowson](service-fabric-local-linux-cluster-windows.md)
 * [Alkalmazások kezelése a Service Fabric parancssori felületével](service-fabric-application-lifecycle-sfctl.md)
 * [Service Fabric – Különbségek Windows és Linux rendszeren](service-fabric-linux-windows-differences.md)
-* [Az operációs rendszer javításának automatizálása a Linux-fürtön](service-fabric-patch-orchestration-application-linux.md)
 * [A Service Fabric parancssori felület használatának első lépései](service-fabric-cli.md)
 
 <!-- Links -->

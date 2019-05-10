@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61c5d60f0c2fab3786aa6adfa194c0716e621ea3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8081be7f411b38d2418d893654a5691bd1ad7cc1
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023649"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65470632"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Mi történt az Azure Machine Learning Workbench alkalmazással?
 
@@ -68,7 +68,7 @@ Indítsa el a modellek betanítása és nyomon követése a futtatási előzmén
 
 A már meglévő adatfájlok előkészítése nem a legújabb verziót a hordozható, mert a Machine Learning Workbench már nincs. De továbbra is előkészítheti bármilyen méretű készlet a modellezési.   
 
-A méretüktől adatkészletekhez a segítségével a [az Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) gyorsan előkészítheti az adatokat a modellezési Python-kód írásával. 
+A méretüktől adatkészletekhez a segítségével a [adat-előkészítési csomagot az Azure Machine Learning](https://aka.ms/data-prep-sdk) gyorsan előkészítheti az adatokat a modellezési Python-kód írásával. 
 
 Követheti [ebben az oktatóanyagban](tutorial-data-prep.md) tudhat meg többet az Azure Machine Learning Data Prep SDK használatával.
 

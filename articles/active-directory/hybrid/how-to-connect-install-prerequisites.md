@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/28/2018
+ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4bf8df2374d373ad36eada8a7de08be76396a76
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 5f7219578932a259f48b0109d433dcba9ff28d1f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190811"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508052"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és az Azure AD Connect hardverkövetelményeit.
@@ -51,6 +51,9 @@ Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
 * Az Azure AD Connect nem telepíthető Small Business Server vagy Windows Server Essentials 2019 előtt (a Windows Server Essentials 2019 támogatott). A kiszolgáló Windows Server standard vagy jobb kell használnia.
 * Az Azure AD Connect telepítése tartományvezérlőn nem ajánlott, mert ajánlott biztonsági eljárások és megakadályozhatja, hogy az Azure AD Connect telepítése megfelelően szigorúbb beállításokat
 * Az Azure AD Connect-kiszolgáló egy teljes grafikus felhasználói Felülettel telepítve kell rendelkeznie. Ez **nem támogatott** telepítése server core-on.
+>[!IMPORTANT]
+>Az Azure AD Connect telepítése small business server, server essentials vagy a server core rendszeren nem támogatott.
+
 * Az Azure AD Connect telepíteni kell a Windows Server 2008 R2 vagy újabb. Ez a kiszolgáló tartományhoz csatlakoztatott és a tartományvezérlő vagy tagkiszolgáló kell lennie.
 * Ha az Azure AD Connect telepíti a Windows Server 2008 R2 rendszeren, majd győződjön meg arról, a alkalmazni a legújabb gyorsjavítások a Windows Update webhelyről. A telepítés nem sikerül veszéllyel kiszolgálóról indítsa el.
 * Ha azt tervezi, hogy a funkció használatához **jelszó-szinkronizálás**, akkor az Azure AD Connect-kiszolgáló kell lennie a Windows Server 2008 R2 SP1 vagy újabb.
@@ -87,7 +90,7 @@ További tudnivalókért lásd:
 * Ha a gyorsbeállítások használata, vagy a frissítés a Dirsync szolgáltatásról, majd rendelkeznie kell egy vállalati rendszergazdai fiók számára a helyszíni Active Directoryban.
 * [Az Active Directory fiókok](reference-connect-accounts-permissions.md) a helyszíni Active Directory használatakor az egyéni beállítások telepítési útvonala vagy vállalati rendszergazdai fiókkal.
 
-### <a name="connectivity"></a>Kapcsolatok
+### <a name="connectivity"></a>Hálózati kapcsolat
 * Az Azure AD Connect-kiszolgáló intranetes és internetes is szüksége van a DNS-feloldását. A DNS-kiszolgáló a névfeloldást mind a helyszíni Active Directory és az Azure AD-végpontok képesnek kell lennie.
 * Ha az intraneten lévő tűzfalak vannak, és az Azure AD Connect kiszolgálók és a tartományvezérlők közötti portok megnyitásához, majd tekintse meg kell [az Azure AD Connect portok](reference-connect-ports.md) további információt.
 * Ha a proxy vagy tűzfal korlátozása, mely URL-címek érhetők el, akkor az URL-címeket részletes ismertetését lásd: [Office 365 URL-címei és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) kell megnyitni.
@@ -135,7 +138,7 @@ További információk, problémák adódnak a kapcsolódással, amikor: [csatla
 Az Azure AD Connect a Microsoft PowerShell és a .NET-keretrendszer 4.5.1-es függ. Ez a verzió vagy újabb verzió van telepítve a kiszolgálón van szüksége. A Windows Server verziójától függően tegye a következőket:
 
 * Windows Server 2012R2
-  * A Microsoft PowerShell alapértelmezés szerint telepítve van. Nincs szükség műveletre.
+  * A Microsoft PowerShell alapértelmezés szerint telepítve van. Nincs szükség felhasználói műveletre.
   * .NET-keretrendszer 4.5.1-es vagy újabb Windows Update szolgáltatáson keresztül érhető el. Győződjön meg arról, hogy telepítette a legújabb frissítéseket a Windows Server, a Vezérlőpulton.
 * Windows Server 2008 R2 és Windows Server 2012
   * A Microsoft PowerShell legújabb verziója érhető el a **Windows Management Framework 4.0**, elérhető [Microsoft Download Center](https://www.microsoft.com/downloads).
@@ -205,7 +208,7 @@ Az alábbiakban látható, amely a kiszolgálón, amelyen telepítve van-e az Az
 ## <a name="hardware-requirements-for-azure-ad-connect"></a>Az Azure AD Connect hardverkövetelményeit
 Az alábbi táblázat az Azure AD Connect szinkronizálási számítógépre vonatkozó minimális követelményeknek.
 
-| Az Active Directory-objektumok száma | CPU | Memory (Memória) | Merevlemez mérete |
+| Az Active Directory-objektumok száma | CPU | Memória | Merevlemez mérete |
 | --- | --- | --- | --- |
 | Kevesebb mint 10 000 |1,6 GHz-es |4 GB |70 GB |
 | 10,000–50,000 |1,6 GHz-es |4 GB |70 GB |

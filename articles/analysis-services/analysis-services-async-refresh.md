@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5e9558eae43b351aa198b64bb2a7903c756064c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 63b64df457af5b7d3d2bd5901f73d89ccd3c913a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61025313"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506976"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>A REST API-val aszinkron Adatfrissítés
 
@@ -201,42 +201,9 @@ A szinkronizálási művelet állapotának ellenőrzéséhez használja a GET-ve
 1.  Klónozza, vagy töltse le a tárházban. Nyissa meg a RestApiSample megoldást.
 2.  Keresse meg a sort **ügyfél. BaseAddress =...** Adja meg a [alap URL](#base-url).
 
-A kódminta használhatja interaktív bejelentkezéshez, a felhasználónév/jelszó, vagy [szolgáltatásnév](#service-principal).
+A kódminta használ [szolgáltatásnév](#service-principal) hitelesítést.
 
-#### <a name="interactive-login-or-usernamepassword"></a>Interaktív bejelentkezés vagy a felhasználónév/jelszó
-
-Az ilyen típusú hitelesítés szükséges Azure-alkalmazások hozhatók létre a szükséges API-engedélyek rendelve. 
-
-1.  Az Azure Portalon, kattintson a **erőforrás létrehozása** > **Azure Active Directory** > **alkalmazásregisztrációk**  >   **Új alkalmazás regisztrálása**.
-
-    ![Új alkalmazás regisztrálása](./media/analysis-services-async-refresh/aas-async-app-reg.png)
-
-
-2.  A **létrehozás**, adjon meg egy nevet, válassza ki **natív** alkalmazástípus. A **átirányítási URI-t**, adja meg **urn: ietf:wg:oauth:2.0:oob**, és kattintson a **létrehozás**.
-
-    ![Beállítások](./media/analysis-services-async-refresh/aas-async-app-reg-name.png)
-
-3.  Válassza ki az alkalmazást majd másolja és mentse a **Alkalmazásazonosító**.
-
-    ![Másolja az alkalmazás azonosítója](./media/analysis-services-async-refresh/aas-async-app-id.png)
-
-4.  A **beállítások**, kattintson a **szükséges engedélyek** > **Hozzáadás**.
-
-    ![API-hozzáférés hozzáadása](./media/analysis-services-async-refresh/aas-async-add.png)
-
-5.  A **API kiválasztása**, típus **Azure Analysis Services** be a keresési mezőbe, majd válassza ki azt.
-
-    ![API kiválasztása](./media/analysis-services-async-refresh/aas-async-select-api.png)
-
-6.  Válassza ki **olvasása és írása az összes modellt**, és kattintson a **kiválasztása**. Amikor mindkét van kijelölve, kattintson a **kész** az engedélyek hozzáadásához. Propagálása néhány percig is eltarthat.
-
-    ![Válassza ki az olvasási és az összes modellek írása](./media/analysis-services-async-refresh/aas-async-select-read.png)
-
-7.  A kódminta, keresse meg a **UpdateToken()** metódust. Tekintse át ezt a módszert a tartalmát.
-8.  Keresés **clientID karakterlánc =...** , majd adja meg a **Alkalmazásazonosító** 3. lépésben kimásolt.
-9.  Futtassa a mintát.
-
-#### <a name="service-principal"></a>Szolgáltatásnév
+### <a name="service-principal"></a>Szolgáltatásnév
 
 Lásd: [szolgáltatásnév létrehozása – Azure portal](../active-directory/develop/howto-create-service-principal-portal.md) és [szolgáltatásnév hozzáadása kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md) további információ az egyszerű szolgáltatás beállítása és a szükséges engedélyeket az Azure-AS . Miután végrehajtotta a lépéseket, hajtsa végre az alábbi kiegészítő lépéseket:
 

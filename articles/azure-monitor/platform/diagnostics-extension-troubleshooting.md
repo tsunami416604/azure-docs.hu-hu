@@ -6,14 +6,14 @@ author: rboucher
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 05/08/2019
 ms.author: robb
-ms.openlocfilehash: 81c93900acf2d75eeb8e4fdc8da7d563f3a59595
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 99ac4ffc288773e52183d371ef2c20f6153bc0f3
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60395050"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471788"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Az Azure Diagnostics hibaelhárítása
 Ez a cikk ismerteti a hibaelhárítási információkat, amelyek megfelelőek az Azure Diagnostics használatával. Az Azure diagnostics kapcsolatos további információkért lásd: [Azure Diagnostics – áttekintés](diagnostics-extension-overview.md).
@@ -29,7 +29,7 @@ Ez a cikk ismerteti a hibaelhárítási információkat, amelyek megfelelőek az
 Az alábbiakban néhány fontos naplókat és az összetevők elérési útja. A dokumentum többi részében ezt az információt nevezzük.
 
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
-| Összetevő | Útvonal |
+| Összetevő | `Path` |
 | --- | --- |
 | **Az Azure Diagnostics-konfigurációs fájl** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\Config.txt |
 | **Naplófájlok** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
@@ -39,8 +39,8 @@ Az alábbiakban néhány fontos naplókat és az összetevők elérési útja. A
 | **Napló gyűjtése segédprogram elérési útja** | %SystemDrive%\Packages\GuestAgent\ |
 | **MonAgentHost naplófájl** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
-### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
-| Összetevő | Útvonal |
+### <a name="virtual-machines"></a>Virtuális gépek
+| Összetevő | `Path` |
 | --- | --- |
 | **Az Azure Diagnostics-konfigurációs fájl** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\RuntimeSettings |
 | **Naplófájlok** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
@@ -48,7 +48,7 @@ Az alábbiakban néhány fontos naplókat és az összetevők elérési útja. A
 | **Figyelési ügynök konfigurációs fájlját** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
 | **Állapotfájl** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\Status |
 | **Az Azure Diagnostics bővítmény csomag** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
-| **Napló gyűjtése segédprogram elérési útja** | C:\WindowsAzure\Packages |
+| **Napló gyűjtése segédprogram elérési útja** | C:\WindowsAzure\Logs\WaAppAgent.log |
 | **MonAgentHost naplófájl** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Metrikaadatok nem jelenik meg az Azure Portalon
@@ -214,7 +214,7 @@ Ez a kód a négy táblát hoz létre:
 | szolgáltató = "prov1" &lt;DefaultEvents /&gt; |WADDefault+MD5("prov1") |
 | szolgáltató = "prov2" &lt;DefaultEvents eventDestination = "dest2" /&gt; |WADdest2 |
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>Diagnosztikai bővítmény konfigurációjának ellenőrzése
 A bővítmény konfigurációjának ellenőrzése a legegyszerűbb módja az, hogy lépjen [Azure erőforrás-kezelő](http://resources.azure.com), és lépjen a virtuális gép vagy a cloud service helye az Azure Diagnostics bővítmény (IaaSDiagnostics / PaaDiagnostics) van.
@@ -232,7 +232,7 @@ A beépülő modul a következő kilépési kódokat ad vissza:
 
 | Kilépési kód | Leírás |
 | --- | --- |
-| 0 |Siker. |
+| 0 |Sikeres művelet. |
 | -1 |Általános hiba. |
 | -2 |Nem sikerült betölteni a rcf fájlt.<p>Ez a belső hiba csak akkor történjen meg, ha a Vendég ügynök beépülő modul indítója manuálisan hív helytelenül a virtuális gépen. |
 | -3 |A diagnosztika konfigurációs fájl nem tölthető be.<p><p>Megoldás: Egy konfigurációs fájl nem továbbítja a séma érvényesítése miatt. A megoldás, ha egy konfigurációs fájl, amely megfelel a séma biztosít. |

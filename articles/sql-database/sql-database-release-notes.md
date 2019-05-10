@@ -8,14 +8,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 05/07/2019
 ms.author: carlrab
-ms.openlocfilehash: e6d702c7a3194f07f9d04139acbc9b6101b296ea
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 923e475cd690902c61c2f89578c2c62effe4cd86
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717429"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406584"
 ---
 # <a name="sql-database-release-notes"></a>Az SQL Database kibocsátási megjegyzései
 
@@ -25,6 +25,7 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 
 | Szolgáltatás | Részletek |
 | ---| --- |
+| Kiszolgáló nélküli számítási szint | További információ: [SQL Database kiszolgáló nélküli (előzetes verzió)](sql-database-serverless.md).|
 | Rugalmas adatbázis-feladatok | További információ: [létrehozását, konfigurálását és kezelését a rugalmas feladatok](elastic-jobs-overview.md) |
 | Rugalmas tranzakciók | [Elosztott tranzakciók több felhőalapú adatbázisban](sql-database-elastic-transactions-overview.md) |
 | Rugalmas lekérdezések | További információ: [rugalmas lekérdezés – áttekintés](sql-database-elastic-query-overview.md) |
@@ -45,6 +46,16 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 |SQL Analytics|További információ: [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)|
 | Felügyelt példányok időzóna támogatása|További információkért lásd: [időzóna az Azure SQL Database felügyelt példánya](sql-database-managed-instance-timezone.md)|
 |||
+
+## <a name="may-2019"></a>2019. május
+
+### <a name="service-improvements"></a>Szolgáltatás fejlesztései
+
+| Szolgáltatás fejlesztései | Részletek |
+| --- | --- |
+|Rugalmas skálázás szolgáltatási szint| További információkért lásd: [akár 100 TB kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md).|
+|Kiszolgáló nélküli számítási szint| További információkért lásd: [SQL Database kiszolgáló nélküli (előzetes verzió)](sql-database-serverless.md).|
+
 
 ## <a name="april-2019"></a>Április 2019
 

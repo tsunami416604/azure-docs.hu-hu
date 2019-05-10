@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: c4ab209d63a01d9e1089eec351eff64fc116f403
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 21979f1dee50fa846fb7888cfc95908b9d833392
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924976"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236795"
 ---
 # <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Oktatóanyag: Gazdagépcsoport létrehozása az Azure Marketplace-en
 
@@ -70,7 +70,7 @@ A Windows virtuális asztal bérlői információk panel:
 
 1. Adja meg a **Windows virtuális asztal bérlői csoportnév** a bérlő csoport, amely tartalmazza a bérlő számára. Ha nem rendelkezik egy adott bérlővel csoportnevet tervezett, hagyja meg az alapértelmezett.
 2. Adja meg a **Windows virtuális asztal bérlőnevet** a bérlő meg hoz létre a gazdagép-készletébe.
-3. Adja meg a hitelesítő adatokat a Windows virtuális asztal bérlő RDS tulajdonosa nevében hitelesítsék magukat használni kívánt típusát. Ha **szolgáltatásnév**, meg kell adni a **az Azure AD-bérlő azonosítója** az egyszerű szolgáltatás társítva.
+3. Adja meg a hitelesítő adatokat a Windows virtuális asztal bérlő RDS tulajdonosa nevében hitelesítsék magukat használni kívánt típusát. Ha befejezte a [egyszerű szolgáltatásnevekről és a szerepkör-hozzárendelések létrehozása a PowerShell-oktatóanyag](./create-service-principal-role-powershell.md)válassza **szolgáltatásnév**. Adja meg most kell a **az Azure AD-bérlő azonosítója** az Azure Active Directory, amely tartalmazza az egyszerű szolgáltatás.
 4. Adja meg a bérlői rendszergazdai fiókkal vagy a hitelesítő adatokat. Csak egy jelszavára vonatkozó hitelesítőadat-szolgáltatásnevek használata támogatott.
 5. Kattintson az **OK** gombra.
 

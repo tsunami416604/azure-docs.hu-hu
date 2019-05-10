@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/30/2019
+ms.date: 05/09/2019
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2e78a837588ef177182f0c13db49e480845f772
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6943ad460bb5d852220e704492f892961992a59f
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918749"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413604"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Gyors útmutató: Alkalmazás regisztrálása a Microsoft identity platform használatával
 
@@ -30,15 +30,11 @@ A nagyvállalati fejlesztők és SaaS-szolgáltatók (szoftverszolgáltatók) a 
 
 Ez a rövid útmutató bemutatja, hogyan adhat hozzá, és regisztrálni egy alkalmazást a a **alkalmazásregisztrációk** élmény az Azure Portalon, hogy az alkalmazás integrálható a Microsoft identitásplatformjához. Az új funkciók és fejlesztések azzal kapcsolatban, az új regisztrációk alkalmazásélményről kapcsolatos további információkért lásd: [ebben a blogbejegyzésben](https://developer.microsoft.com/graph/blogs/new-app-registration/).
 
-## <a name="prerequisite"></a>Előfeltétel
-
-Első lépésként jóvá kell hagynia az előzetes verzió használatát az alkalmazások Azure Portalon való regisztrálására. E rövid útmutató lépései az új felhasználói felületen alapulnak, és csak akkor működnek, ha Ön jóváhagyta az előzetes verzió használatát.
-
 ## <a name="register-a-new-application-using-the-azure-portal"></a>Új alkalmazás regisztrálása az Azure Portal használatával
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-1. A bal oldali navigációs panelen válassza az **Azure Active Directory** szolgáltatást, majd az **Alkalmazásregisztrációk (előzetes verzió) > Új alkalmazás regisztrálása** lehetőséget.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatásra, és válassza ki **alkalmazásregisztrációk > Új regisztrációs**.
 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
 
    - **Név** – az alkalmazás felhasználói számára megjelenített, kifejező alkalmazásnevet adjon meg.

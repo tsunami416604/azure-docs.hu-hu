@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: cc598afbbdf7f3a1b12089b50ba747c5220ba1fa
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ce7eb546c342ffd20557a95d5293d83b39ec3afb
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922930"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507200"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Az Azure Functions Java fejlesztői útmutatója
 
@@ -66,7 +66,7 @@ Egynél több függvényt helyezheti a projektben. Kerülje a functions üzembe 
 
  Az Azure functions, például HTTP-kérést, egy időzítő vagy egy frissítést a data-triggerek által kerül meghívásra. A függvénynek szüksége van, az eseményindító és a egy vagy több kimeneti előállításához bemenetet feldolgozni.
 
-Használja a Java-jegyzetek szerepel a [com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) csomag bemeneti és kimeneti kötést létrehozni a módszereket. További információ: [Java referenciadokumentumok](/java/api/com.microsoft.azure.functions.annotation).
+Használja a Java-jegyzetek szerepel a [com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) csomag bemeneti és kimeneti kötést létrehozni a módszereket. További információkért lásd: [Java referenciadokumentumok](/java/api/com.microsoft.azure.functions.annotation).
 
 > [!IMPORTANT] 
 > Konfigurálnia kell az Azure Storage-fiókot a [local.settings.json](/azure/azure-functions/functions-run-local#local-settings-file) helyi futtatását az Azure Storage-Blob, üzenetsor vagy tábla eseményindítókat.
@@ -112,6 +112,37 @@ Itt látható a létrehozott megfelelő `function.json` által a [azure-function
 Töltse le és használja a [Azul Zulu Enterprise Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8 segítségével a [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) helyi függvény Java-alkalmazások fejlesztéséhez. Az Azure Functions az Azul Java 8 JDK-modul használ, a függvényalkalmazásokat a felhőbe való központi telepítésekor.
 
 [Az Azure-támogatás](https://azure.microsoft.com/support/) a segítségével és a függvény problémáinak alkalmazások érhető el egy [minősített támogatási csomag](https://azure.microsoft.com/support/plans/).
+
+## <a name="customize-jvm"></a>JVM testreszabása
+
+Functions segítségével testre szabhatja a Java virtuális gép (JVM) a Java-függvények végrehajtásához használnak. A [alábbi JVM-beállításokat](https://github.com/Azure/azure-functions-java-worker/blob/master/worker.config.json#L7) alapértelmezés szerint használt:
+
+* `-XX:+TieredCompilation`
+* `-XX:TieredStopAtLevel=1`
+* `-noverify` 
+* `-Djava.net.preferIPv4Stack=true`
+* `-jar`
+
+Megadhat egy alkalmazásban nevű beállításhoz további argumentumok `JAVA_OPTS`. Alkalmazásbeállítások adhat hozzá a függvényalkalmazás üzembe helyezni az Azure a következő módszerek egyikével:
+
+### <a name="azure-portal"></a>Azure Portal
+
+Az a [az Azure portal](https://portal.azure.com), használja a [Alkalmazásbeállítások lapot](functions-how-to-use-azure-function-app-settings.md#settings) hozzáadása a `JAVA_OPTS` beállítás.
+
+### <a name="azure-cli"></a>Azure CLI
+
+A [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) parancs beállításához használható `JAVA_OPTS`, ahogy az alábbi példában:
+
+    ```azurecli-interactive
+    az functionapp config appsettings set --name <APP_NAME> \
+    --resource-group <RESOURCE_GROUP> \
+    --settings "JAVA_OPTS=-Djava.awt.headless=true"
+    ```
+Ebben a példában a távfelügyeleti üzemmód lehetővé teszi. Cserélje le `<APP_NAME>` a függvényalkalmazás nevére és `<RESOURCE_GROUP> ` az erőforráscsoport.
+
+> [!WARNING]  
+> Ha az a egy [Használatalapú csomag](functions-scale.md#consumption-plan), hozzá kell adnia a `WEBSITE_USE_PLACEHOLDER` beállítás értékét a `0`.  
+Ez a beállítás növelje a ritkán használt kezdő időpontjának a Java-függvényeket.
 
 ## <a name="third-party-libraries"></a>Külső gyártó kódtárait 
 
@@ -189,7 +220,7 @@ Ez a függvény meghívása HTTP-kérést.
 - HTTP-kérések forgalma átadott a `String` argumentuma `inputReq`
 - Egy bejegyzés az Azure Table Storage-ból beolvasott, és mint átadott `TestInputData` a argumentum `inputData`.
 
-Bemenetek kötegelt fogadásához kell kötni `String[]`, `POJO[]`, `List<String>` vagy `List<POJO>`.
+Bemenetek kötegelt fogadásához kell kötni `String[]`, `POJO[]`, `List<String>`, vagy `List<POJO>`.
 
 ```java
 @FunctionName("ProcessIotMessages")
@@ -263,7 +294,7 @@ Több kimeneti érték küldeni, használja a `OutputBinding<T>` meghatározott 
     }
 ```
 
-Egy Törzsparaméterei van meghívott függvény felett, és több érték írja az Azure Queue
+Ez a függvény hív meg egy Törzsparaméterei, és az Azure Queue több értéket írja.
 
 ## <a name="httprequestmessage-and-httpresponsemessage"></a>A HttpRequestMessage és HttpResponseMessage
 
@@ -363,7 +394,7 @@ A naplófájlok-ként való letöltéséhez az Azure CLI használatával egyetle
 az webapp log download --resource-group resourcegroupname --name functionappname
 ```
 
-Fájlrendszer naplózása az Azure Portal vagy Azure CLI-vel a parancs futtatása előtt van engedélyezve.
+Fájlrendszer naplózása az Azure Portalon vagy az Azure CLI-vel a parancs futtatása előtt van engedélyezve.
 
 ## <a name="environment-variables"></a>Környezeti változók
 

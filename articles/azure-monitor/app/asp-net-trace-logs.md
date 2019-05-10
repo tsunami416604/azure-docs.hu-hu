@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 74cb1b3ec4e0570aa4316e6f45e99719f36815d1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d366f363b7bd1d5306d598c9b38258eb78076b7c
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150701"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472054"
 ---
 # <a name="explore-netnet-core-trace-logs-in-application-insights"></a>Nyomkövetési naplók az Application Insights.NET/.NET Core bemutatása
 
@@ -177,8 +177,8 @@ Akkor is, például:
 Használja a [Java log adapterek](../../azure-monitor/app/java-trace-logs.md).
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>Nem az Application Insights beállítani a projekt helyi menüjében
-* Győződjön meg arról, hogy az Application Insights Tools telepítve van-e a fejlesztői gépen. A Visual Studio **eszközök** > **bővítmények és frissítések**, keressen **az Application Insights Tools**. Ha a nem a **telepített** lap meg van nyitva a **Online** lapra, és telepítse azt.
-* Ez lehet egy projekt típusa, amely az Application Insights Tools nem támogatja. Használat [manuális telepítés](#manual-installation).
+* Győződjön meg arról, hogy Developer Analytics Tools telepítve van-e a fejlesztői gépen. A Visual Studio **eszközök** > **bővítmények és frissítések**, keressen **Developer Analytics Tools**. Ha a nem a **telepített** lap meg van nyitva a **Online** lapra, és telepítse azt.
+* Ez lehet egy projekt típusa, amely Devloper Analytics Tools nem támogatja. Használat [manuális telepítés](#manual-installation).
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>Nem log adapter beállítani a konfigurációs eszköz
 * Először telepítse a naplózási keretrendszer.

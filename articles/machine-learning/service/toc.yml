@@ -224,7 +224,8 @@
       items:
         - name: Gépi tanulási folyamat létrehozása
           href: how-to-create-your-first-pipeline.md
-        - name: Gépi tanulási modellek betanítása és üzembe helyezése az Azure Pipelines használatával
+        - name: CI/CD a gépi tanulási munkafolyamatokhoz az Azure Pipelines használatával
+          displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?view=azure-devop
           mainContext: true
     - name: Erőforráskvóták kezelése
@@ -238,9 +239,6 @@
     - name: Machine learning SDK
       displayName: api core package python data prep
       href: 'https://aka.ms/aml-sdk'
-    - name: Adat-előkészítési SDK
-      displayName: api core package python data prep
-      href: 'https://aka.ms/data-prep-sdk'
     - name: Monitorozási SDK
       displayName: api package python monitor
       href: 'https://aka.ms/aml-monitoring-sdk'

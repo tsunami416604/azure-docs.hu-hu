@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 1fc4a4024893c29c35b4369d13227830cfbbca84
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 318df03c7c4447d051dfa396098462c0f8bbf423
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943922"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410440"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Deep Learning-Azure-beli virtuális gép kiépítése 
 
@@ -68,7 +68,7 @@ A virtuális gép létrehozása után azokat a rendszergazdai fiók hitelesítő
 
 ### <a name="linux-edition"></a>Linux Edition
 
-Ha a virtuális gép létrejött, bejelentkezhet hozzá SSH használatával. A fiók hitelesítő adataival, amelyet a [ **alapjai** ](#basics) szakasz 3. lépésben a szöveg shell felületén. Azure virtuális gépekre SSH-kapcsolatok kapcsolatos további információkért lásd: [telepítése és konfigurálása az Azure-beli Linuxos virtuális gép kapcsolódni a távoli asztal](/azure/virtual-machines/linux/use-remote-desktop). Egy Windows-ügyfélen, töltse le egy SSH-ügyfél eszköz, például [Putty](http://www.putty.org). Ha inkább egy grafikus desktop (X Windows rendszer), használhatja a Putty-továbbítás X11 vagy X2Go ügyfél telepítése. 
+Ha a virtuális gép létrejött, bejelentkezhet hozzá SSH használatával. A fiók hitelesítő adataival, amelyet a [ **alapjai** ](#basics) szakasz 3. lépésben a szöveg shell felületén. Azure virtuális gépekre SSH-kapcsolatok kapcsolatos további információkért lásd: [telepítése és konfigurálása az Azure-beli Linuxos virtuális gép kapcsolódni a távoli asztal](/azure/virtual-machines/linux/use-remote-desktop). Egy Windows-ügyfélen, töltse le egy SSH-ügyfél eszköz, például [Putty](https://www.putty.org). Ha inkább egy grafikus desktop (X Windows rendszer), használhatja a Putty-továbbítás X11 vagy X2Go ügyfél telepítése. 
 
 > [!NOTE]
 > A X2Go ügyfél jobban teljesített, mint a tesztelés továbbítás X11. Azt javasoljuk, hogy az asztali grafikus felület X2Go ügyfél használatával.

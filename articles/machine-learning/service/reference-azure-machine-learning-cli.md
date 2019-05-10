@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: be3cedc4b496f4f64a52217099f64092dfb49228
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 35e57dfcc7b1fd6f8de265ab75de29dedd8fdfc2
+ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149850"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65501662"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>A CLI-bővítmény használata az Azure Machine Learning szolgáltatáshoz
 
@@ -36,7 +36,11 @@ A CLI nem helyettesíti a az Azure Machine Learning SDK-t. Egy kiegészítő esz
 
 * A [az Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
-## <a name="install-the-extension"></a>A bővítmény telepítése
+## <a name="full-reference-docs"></a>Teljes útmutató dokumentumok
+
+Keresse meg a [referenciadokumentumok az azure-cli-ml-bővítmény az Azure CLI teljes](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/?view=azure-cli-latest).
+
+## <a name="install-the-extension"></a>Bővítmény telepítése
 
 A Machine Learning CLI-bővítmény telepítéséhez használja a következő parancsot:
 
@@ -45,7 +49,7 @@ az extension add -n azure-cli-ml
 ```
 
 > [!TIP]
-> Példa fájlt is használhatja az alábbi parancsok található [Itt](http://aka.ms/azml-deploy-cloud).
+> Példa fájlt is használhatja az alábbi parancsok található [Itt](https://aka.ms/azml-deploy-cloud).
 
 Amikor a rendszer kéri, válassza ki a `y` a bővítmény telepítésére.
 
@@ -55,7 +59,7 @@ Győződjön meg arról, hogy a bővítmény telepítve van-e, használja a köv
 az ml -h
 ```
 
-## <a name="remove-the-extension"></a>A bővítmény eltávolítása
+## <a name="remove-the-extension"></a>Távolítsa el a bővítményt
 
 A CLI-bővítmény eltávolításához használja a következő parancsot:
 
@@ -82,9 +86,12 @@ A következő parancsok bemutatják, hogyan használják az Azure Machine Learni
     További információkért lásd: [az ml-munkaterület létrehozása](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-create).
 
 + A munkaterület-konfiguráció csatolása engedélyezése a parancssori felület környezetfüggő tudatosság mappába.
+
     ```azurecli-interactive
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
+
+    Ez a parancs létrehoz egy `.azureml` példa runconfig és conda-környezet fájljait tartalmazó alkönyvtárat. Emellett tartalmaz egy `config.json` fájl, amellyel kommunikálni az Azure Machine Learning-munkaterületet.
 
     További információkért lásd: [az ml mappát csatolni](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
 
@@ -121,6 +128,13 @@ A következő parancsok bemutatják, hogyan használják az Azure Machine Learni
     az ml run submit-script -c sklearn -e testexperiment train.py
     ```
 
+    > [!TIP]
+    > A `az ml folder attach` parancs létrehoz egy `.azureml` alkönyvtárat két példa runconfig fájlokat tartalmazza. 
+    >
+    > Ha rendelkezik egy Python-szkriptet, amely programozott módon futtatási konfigurációs objektumot hoz létre, akkor használhatja [RunConfig.save()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) runconfig fájlba mentéséhez.
+    >
+    > További példa runconfig fájlok, lásd: [ https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml ](https://github.com/MicrosoftDocs/pipelines-azureml/tree/master/.azureml).
+
     További információkért lásd: [az ml elküldése-parancsfájl futtatása](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
 * Kísérletek listájának megtekintéséhez:
@@ -156,9 +170,26 @@ A következő parancsok bemutatják, hogyan lehet regisztrálni egy betanított 
     az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
     ```
 
+    Az alábbiakban egy példa a `inferenceconfig.json` dokumentum:
+
+    ```json
+    {
+    "entryScript": "score.py",
+    "runtime": "python",
+    "condaFile": "myenv.yml",
+    "extraDockerfileSteps": null,
+    "sourceDirectory": null,
+    "enableGpu": false,
+    "baseImage": null,
+    "baseImageRegistry": null
+    }
+    ```
+
     További információkért lásd: [az gépi tanulási modell-üzembehelyezés](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy).
 
 
 ## <a name="next-steps"></a>További lépések
 
 * [A Machine Learning CLI-bővítmény hivatkozási parancs](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest).
+
+* [Betanítása és használó Folyamatokat az Azure machine learning-modellek üzembe helyezése](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops)

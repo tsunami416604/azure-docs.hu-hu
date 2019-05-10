@@ -10,54 +10,54 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/15/2017
+ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: fcdfc78a62d901bdaf50c18e9286e6f2d30c5b13
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f7d9827b11136370bcb401073a4d9cc4871c1cc9
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714127"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472792"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>A Time Series Insights-környezet méretezése
 
-Ez a cikk bemutatja, hogyan módosíthatja a környezet kapacitása a Time Series Insights-környezet az Azure portal használatával. A kapacitása a alkalmazni a bejövő forgalom, a tárolási kapacitás és a kiválasztott Termékváltozat kapcsolódó költségek szorzó. 
+Ez a cikk bemutatja, hogyan módosíthatja a környezet kapacitása a Time Series Insights-környezet az Azure portal használatával. A kapacitása a alkalmazni a bejövő forgalom, a tárolási kapacitás és a kiválasztott Termékváltozat kapcsolódó költségek szorzó.
 
-Az Azure portal használatával növelheti vagy csökkentheti a belül egy adott díjszabási Termékváltozat kapacitása. 
+Az Azure portal használatával növelheti vagy csökkentheti a belül egy adott díjszabási Termékváltozat kapacitása.
 
-Azonban a tarifacsomag módosítása Termékváltozat nem engedélyezett. Például egy S1 Termékváltozat díjszabása környezet nem lehet konvertálni az S2 szintű, vagy fordítva. 
-
+Azonban a tarifacsomag módosítása Termékváltozat nem engedélyezett. Például egy S1 Termékváltozat díjszabása környezet nem lehet konvertálni az S2 szintű, vagy fordítva.
 
 ## <a name="s1-sku-ingress-rates-and-capacities"></a>S1 Termékváltozat telemetriabevitelt régiójának és kapacitás
 
 | S1 Termékváltozat kapacitása | Bejövő forgalom | Maximális tárolási kapacitás
 | --- | --- | --- |
-| 1 | 1 GB (1 millió esemény) | 30 GB (30 millió esemény) / hó |
+| 1. | 1 GB (1 millió esemény) | 30 GB (30 millió esemény) / hó |
 | 10 | 10 GB-os (10 millió esemény) | 300 GB (300 millió esemény) / hó |
 
 ## <a name="s2-sku-ingress-rates-and-capacities"></a>S2 Termékváltozat telemetriabevitelt régiójának és kapacitás
 
 | S2 Termékváltozat kapacitása | Bejövő forgalom | Maximális tárolási kapacitás
 | --- | --- | --- |
-| 1 | 10 GB-os (10 millió esemény) | 300 GB (300 millió esemény) / hó |
+| 1. | 10 GB-os (10 millió esemény) | 300 GB (300 millió esemény) / hó |
 | 10 | 100 GB (100 millió esemény) | 3 TB (3 milliárd eseményig) / hó |
 
 Kapacitások költségráfordításokkal egyenes arányban, méretezhető, így egy S1 Termékváltozat kapacitása 2 támogatja a 2 GB (2 millió) esemény napi bejövő forgalom és 60 GB (60 millió esemény) / hó.
 
 ## <a name="change-the-capacity-of-your-environment"></a>A környezet a kapacitás módosításához
-1. Az Azure Portalon keresse meg és válassza ki a Time Series Insights-környezetet. 
 
-2. A Time Series Insights-környezethez a menüben válassza ki a **konfigurálása**.
+1. Az Azure Portalon keresse meg és válassza ki a Time Series Insights-környezetet.
 
-   ![configure.png](media/scale-your-environment/configure.png)
+1. A Time Series Insights-környezethez a menüben válassza ki a **konfigurálása**.
 
-3. Módosítsa a **kapacitás** csúszkával válassza ki a kapacitás, amely megfelel a követelményeknek, a bejövő forgalom arányát és a tárolási kapacitást. Figyelje meg a **bejövő forgalom**, **tárolókapacitás**, és **becsült költség** dinamikusan frissülnek a megjelenítése, milyen hatású a változtatás. 
+   [![configure.png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
 
-   ![Csúszka](media/scale-your-environment/slider.png)
+1. Módosítsa a **kapacitás** csúszkával válassza ki a kapacitás, amely megfelel a követelményeknek, a bejövő forgalom arányát és a tárolási kapacitást. Figyelje meg a **bejövő forgalom**, **tárolókapacitás**, és **becsült költség** dinamikusan frissülnek a megjelenítése, milyen hatású a változtatás.
 
-   A kapacitás szorzó száma beírhatja azt is megteheti, a csúszka jobbra a szövegmezőben. 
+   [![Csúszka](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
 
-4. Válassza ki **mentése** a környezet méretezése. A folyamatjelző jelenik meg, amíg a módosítás véglegesítve lesz, rövid ideig. 
+   A kapacitás szorzó száma beírhatja azt is megteheti, a csúszka jobbra a szövegmezőben.
+
+1. Válassza ki **mentése** a környezet méretezése. A folyamatjelző jelenik meg, amíg a módosítás véglegesítve lesz, rövid ideig.
 
 ## <a name="next-steps"></a>További lépések
 

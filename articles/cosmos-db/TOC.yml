@@ -163,6 +163,8 @@
         - name: Az Azure Functions aktiválása
           displayName: change feed
           href: change-feed-functions.md
+    - name: Elemzések az Apache Sparkkal
+      href: spark-api-introduction.md
     - name: Kiszolgálóoldali programozás
       items:
         - name: 'Tárolt eljárások, eseményindítók és felhasználói függvények'
@@ -462,10 +464,6 @@
           href: etcd-api-introduction.md
         - name: Azure Kubernetes az Azure Cosmos DB-vel
           href: bootstrap-kubernetes-cluster.md
-    - name: Spark API
-      items:
-        - name: Bevezetés
-          href: spark-api-introduction.md
 - name: Útmutatók
   items:
     - name: Azure Cosmos-fiók kezelése

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 01/25/2019
+ms.date: 05/08/2019
 ms.author: alkohli
-ms.openlocfilehash: c9cef479c1d4af55ae58c61a07ff1d5348ed7183
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 3fca94a56f80ec520ac6777610a90bdddf1b8988
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868263"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65473265"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Gyakori kérdések
 
@@ -24,7 +24,7 @@ A kérdéseket és a válaszokat az alábbi kategóriák szerint csoportosított
 - Tudnivalók a szolgáltatásról
 - Eszköz rendelése
 - Konfigurálás és csatlakoztatás 
-- Állapot nyomon követése
+- Állapotkövetés
 - Adatok másolása 
 - Eszköz kiszállítása
 - Adatok ellenőrzése és feltöltése 
@@ -36,12 +36,12 @@ A kérdéseket és a válaszokat az alábbi kategóriák szerint csoportosított
 A.  Az Azure Data Box szolgáltatást offline adatbetöltéshez hoztuk létre. A szolgáltatás különböző tárolókapacitású termékek egész tárházát kezeli, amelyek mindegyike adatátvitelhez lett igazítva. 
 
 ### <a name="q-what-is-azure-data-box"></a>K. Mi az az Azure Data Box?
-A. Az Azure Data Box több terabájtnyi adat gyors, költséghatékony és biztonságos adatátvitelét teszi lehetővé az Azure-ba, illetve az Azure-ból. A Data Box eszköz az Azure Portalon keresztül rendelhető meg. A Microsoft, 80 TB felhasználható kapacitás keresztül egy regionális szolgáltatója tárolóeszköz tartalmaz. 
+A. Az Azure Data Box lehetővé teszi, hogy egy gyors, költségkímélő, és biztonságos átvitelét terabájtnyi adatot az Azure-bA. A Data Box eszköz az Azure Portalon keresztül rendelhető meg. A Microsoft, 80 TB felhasználható kapacitás keresztül egy regionális szolgáltatója tárolóeszköz tartalmaz. 
 
 Miután az eszköz megérkezett, gyorsan beállítható a helyi webes felhasználói felülettel. Másolja át a kiszolgálóin található adatokat az eszközre, és küldje vissza az eszközt az Azure-nak. Az Azure-adatközpontban az adatok automatikusan feltöltődnek az eszközről az Azure-ba. A teljes folyamatot végigkövetheti a Data Box szolgáltatásban, az Azure Portalon.
 
 ### <a name="q-when-should-i-use-data-box"></a>K. Mikor érdemes a Data Boxot használni?
-A. Ha 40 és 500 TB közötti mennyiségű adata van, amelyet szeretne átvinni az Azure-ba, akkor hasznos lehet a Data Box használata. 40 TB alatti adatmennyiség esetén a Data Box Disk használata, 500 TB feletti adatmennyiség esetén a Data Box Heavy használata ajánlott.
+A. Ha 40 és 500 TB közötti mennyiségű adata van, amelyet szeretne átvinni az Azure-ba, akkor hasznos lehet a Data Box használata. Adatok méretek < 40 TB-ot, a Data Box-lemezek használata, és az adatok > 500 TB méretű regisztrálhat a [Data Box nehéz](data-box-heavy-overview.md).
 
 ### <a name="q-what-is-the-price-of-data-box"></a>K. Mennyibe kerül a Data Box?
 A. A Data Box 10 napig egy névleges díj fejében érhető el. Amikor az Azure Portalon egy rendelés létrehozásakor kiválaszt egy termékmodellt, megjelenik az eszköz ára. A szállítás is ingyenes, az Azure-tárhely azonban költségekkel jár. További információt [az Azure Data Box díjszabási oldalán](https://azure.microsoft.com/pricing/details/storage/databox/) talál. 
@@ -124,7 +124,7 @@ A. Ha nem fér hozzá a Data Box zárolásfeloldási jelszavához az Azure Porta
 ### <a name="q-is-port-channel-configuration-supported-on-data-box-how-about-mpio"></a>K. Port csatorna konfigurációja támogatott a Data Box? Mi a helyzet MPIO-t?
 A. A Data Box csatorna Portkonfiguráció, többutas I/O (MPIO) konfigurációs vagy vLAN-konfiguráció nem támogatott.
 
-## <a name="track-status"></a>Állapot nyomon követése
+## <a name="track-status"></a>Állapotkövetés
 
 ### <a name="q-how-do-i-track-the-data-box-from-when-i-placed-the-order-to-shipping-the-device-back"></a>K. Hogyan tudom nyomon követni a Data Boxot a megrendelésem feladásától kezdve egészen az eszköz visszaküldéséig? 
 A.  A Data Box-megrendelésének állapotát az Azure Portalon követheti nyomon. A megrendelés létrehozásakor a rendszer egy értesítési e-mail-cím megadását is kéri. Ha adott meg ilyen e-mail-címet, akkor a megrendelés állapotváltozásairól e-mailben is értesíteni fogjuk. További információ az [Értesítési e-mailek beállítása](data-box-portal-ui-admin.md#edit-notification-details) témában.
@@ -135,7 +135,7 @@ A.  A Microsoft megjelenít egy fuvarlevélcímkét az E-ink-megjelenítőn. Ha 
 ### <a name="q-i-received-an-email-notification-that-my-device-has-reached-the-azure-datacenter-how-do-i-find-out-if-the-data-upload-is-in-progress"></a>K. Kaptam egy e-mail-értesítést, hogy az eszközöm elért az Azure-adatközpontba. Hogyan deríthetem ki, hogy az adatok felöltése folyamatban van-e?
 A. Nyissa meg az Azure Portalon a Data Box-megrendelését, majd az **Áttekintést**. Ha az adatok feltöltése már megkezdődött, a jobb oldali panelen látható a másolás folyamatának előrehaladása. 
 
-## <a name="migrate-data"></a>Adatok áttelepítése
+## <a name="migrate-data"></a>Adatok migrálása
 
 ### <a name="q-what-is-the-maximum-data-size-that-can-be-used-with-data-box"></a>K. Legfeljebb mekkora mennyiségű adat esetén használható a Data Box?  
 A.  A Data Box hasznos tárolókapacitása 80 TB. Egyetlen Data Box-eszközön 40 TB és 80 TB közti mennyiségű adatot tárolhat. A nagyobb adathalmazokat akár 500 TB méretű rendezheti több Data Box-eszközre. Az 500 TB-ot meghaladó adatmennyiségek esetén regisztráljon a Data Box Heavy szolgáltatásba.  

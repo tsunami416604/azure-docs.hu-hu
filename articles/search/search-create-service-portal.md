@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 04/05/2019
+ms.date: 05/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c48acf7e9074ac3c5a7d19765a9524a411fa26c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9de8fa297c2b3f89f74b17e0dac3eab007367b9b
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817511"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471602"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Azure Search szolgáltatás létrehozása a portálon
 
@@ -54,11 +54,11 @@ A szolgáltatásnévre vonatkozó követelmények:
 * Kerülje a kötőjel ("-") használatát az első 2 és az utolsó karakterben
 * Sehol sem tartalmazhat két egymást követő kötőjelet ("--")
 
-## <a name="select-a-subscription"></a>Előfizetés kiválasztása
+## <a name="select-a-subscription"></a>Válasszon egy előfizetést
 
 Ha egynél több előfizetéssel rendelkezik, akkor olyat válasszon, amelyhez adat- vagy fájltárolási szolgáltatások is tartoznak. Az Azure Search is a kapcsolatok automatikus észleléssel Azure Table és a Blob storage, SQL Database és Azure Cosmos DB-n keresztül az indexelés [ *indexelők*](search-indexer-overview.md), de csak a szolgáltatások ugyanabban az előfizetésben.
 
-## <a name="select-a-resource-group"></a>Erőforráscsoport kiválasztása
+## <a name="select-a-resource-group"></a>Válasszon ki egy erőforráscsoportot
 
 Az erőforráscsoport együtt használt Azure-szolgáltatások és -erőforrások gyűjteménye. Ha az Azure Search szolgáltatást például egy SQL-adatbázis indexelésére használja, akkor mindkét szolgáltatásnak ugyanabban az erőforráscsoportban kell lennie.
 
@@ -67,11 +67,13 @@ Ha nem kombinálásával erőforrást rendezhet egy csoportba, vagy ha meglévő
 > [!TIP]
 > Egy erőforráscsoport törlésekor a benne lévő szolgáltatások is törölve lesznek. Több szolgáltatást igénybe vevő prototípus-projektek végén könnyebb mindent törölni, ha az összeset egy erőforráscsoportban helyezi el.
 
-## <a name="select-a-hosting-location"></a>Üzemeltetési hely kiválasztása
+## <a name="select-a-location"></a>Válasszon ki egy helyet
 
 Az Azure Search mint Azure-szolgáltatás világszerte sok adatközpontban üzemeltethető. [Árak eltérőek lehetnek](https://azure.microsoft.com/pricing/details/search/) földrajzi hely szerint.
 
-Ha meg vannak az Azure-ban található tartalom indexelése szolgáltatást (Azure storage, Azure Cosmos DB, Azure SQL Database), az Azure Search szolgáltatás létrehozása az adatok sávszélesség díjak elkerülése érdekében ugyanabban a régióban. Nem számítunk fel díjat a kimenő ugyanabban a régióban szolgáltatások esetén.
+Ha egy másik Azure által biztosított adatok meg vannak indexelő szolgáltatás (Azure storage, Azure Cosmos DB, Azure SQL Database), az Azure Search szolgáltatás létrehozása a sávszélesség-díjak elkerülése érdekében ugyanabban a régióban. Nem számítunk fel díjat a kimenő ugyanabban a régióban szolgáltatások esetén.
+
+A kognitív keresés AI végrehajtott információbeolvasás használja, ha a szolgáltatás létrehozása és a Cognitive Services-erőforrás ugyanabban a régióban. A szolgáltatások bérelt az AI-felderítési bővítést működik.
 
 ## <a name="select-a-pricing-tier-sku"></a>Tarifacsomag (SKU) kiválasztása
 

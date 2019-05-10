@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1c24ec49652cfe9105aa66fd1d5e26c81afcd14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 256215b1976598b961ada7210e5ee92c9f72d440
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414825"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506876"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD jelszóvédelem üzembe helyezése
 
@@ -39,6 +39,9 @@ Után a szolgáltatás ésszerű rendszervizsgálati módban futott, válthat a 
 * Minden tartományvezérlő, amely a tartományvezérlő-ügynök szolgáltatást a telepített Azure AD jelszóvédelem futtatnia kell a Windows Server 2012 vagy újabb verziója. Ez a követelmény nem jelenti azt, hogy az Active Directory-tartományban vagy erdőben is kell lennie a Windows Server 2012 tartomány vagy erdő működési szintjén. Az említett [tervezési alapelvek](concept-password-ban-bad-on-premises.md#design-principles), nem minimális működési vagy FFL vagy a tartományvezérlő-ügynök vagy a proxy futtatandó szoftverekhez szükséges.
 * Minden olyan gép, amely a tartományvezérlő-ügynökszolgáltatás telepítve a .NET 4.5-ös verzióját kell rendelkeznie.
 * Összes gép, amely a proxy szolgáltatást, a telepített Azure AD jelszóvédelem futtatnia kell a Windows Server 2012 R2 vagy újabb verziója.
+   > [!NOTE]
+   > Szolgáltatás annak ellenére, hogy a tartományvezérlő esetleg rendelkezik kimenő közvetlen internetkapcsolattal, üzembe helyezéséhez az Azure AD jelszóvédelem kötelezők. 
+   >
 * Minden olyan gép, amelyen telepíteni szeretné az Azure AD-jelszó védelme Proxy szolgáltatás telepítve van a .NET 4.7 kell rendelkeznie.
   .NET 4.7 egy teljesen új Windows Server már telepíthető. Ha nem ez a helyzet, töltse le és futtassa a telepítőt címen található [a .NET-keretrendszer 4.7 offline Windows installer](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
 * Összes gép, a Universal C futásidejű telepített többek között a tartományvezérlők, amely az Azure AD jelszó-védelem összetevői telepítve kell rendelkeznie. A futtatókörnyezet azáltal, hogy meg kell, hogy a Windows Update frissítéseit kérheti le. Vagy egy operációsrendszer-specifikus frissítési csomag beszerezheti azt. További információkért lásd: [frissítése a Windows Universal C futásidejű](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).

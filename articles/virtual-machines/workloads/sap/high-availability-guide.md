@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eaaaa5c2fe87b419bf38d6e6522ef745476ac1ad
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 226986fb7c41c19b58f0163414628ad08ddeda15
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204962"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409982"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Magas rendelkezésre állás az SAP NetWeaver az Azure virtuális gépekhez
 
@@ -470,7 +470,7 @@ Ezek a cikkek az Azure-beli SAP-környezetekhez terjed ki:
 
 A témakör az Azure-beli SAP kapcsolatos alábbi SAP-megjegyzések:
 
-| Megjegyzés száma | Cím |
+| Megjegyzés száma | Beosztás |
 | --- | --- |
 | [1928533] |SAP-alkalmazások az Azure-ban: Támogatott termékek és méretezés |
 | [2015553] |A Microsoft Azure-beli SAP: Támogatás előfeltételei |
@@ -1229,9 +1229,10 @@ Ezeket a feladatokat a fürt tanúsító fájlmegosztás konfigurálása foglalj
 
    _**38. ábra:** Jóváhagyás, hogy a fürt már újra konfigurálni_
 
-A Windows feladatátvevő fürt sikeres telepítés után módosításokat kell tenni bizonyos küszöbértékek igazíthatja a feladatátvétel az észlelési feltételek az Azure-ban. Módosítani a paraméterei dokumentálva vannak ebben a blogbejegyzésben: https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/ . Feltételezve, hogy a két virtuális gépet hozhat létre a Windows-fürt konfigurációját ASCS/SCS ugyanazon az alhálózaton találhatók, a következő paramétereket kell módosítani ezeket az értékeket:
-- SameSubNetDelay = 2
-- SameSubNetThreshold = 15
+A Windows feladatátvevő fürt sikeres telepítés után módosításokat kell tenni bizonyos küszöbértékek igazíthatja a feladatátvétel az észlelési feltételek az Azure-ban. Módosítani a paraméterei dokumentálva vannak ebben a blogbejegyzésben: [ https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834 ](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834). Feltételezve, hogy a két virtuális gépet hozhat létre a Windows-fürt konfigurációját ASCS/SCS ugyanazon az alhálózaton találhatók, a következő paramétereket kell módosítani ezeket az értékeket:  
+- SameSubNetDelay = 2000  
+- SameSubNetThreshold = 15  
+- RoutingHistoryLength = 30  
 
 Ezek a beállítások az ügyfelekkel való tesztelését és egy jó biztonsági sérülés elég rugalmas az egyik oldalon megadott. Másrészről ezeket a beállításokat is biztosít gyors elegendő valós hibaállapotok-feladatátvétel az SAP-szoftver vagy csomópontot vagy Virtuálisgép-hiba. 
 

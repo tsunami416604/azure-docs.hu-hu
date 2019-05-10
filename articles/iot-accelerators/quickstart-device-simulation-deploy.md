@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
-ms.openlocfilehash: 0fcd688c9e5164522a482a4375c524a97a48d400
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 68e0c3c89698bafbab65ca786231e0364900213a
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62105684"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467824"
 ---
 # <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Gyors útmutató: Helyezhet üzembe és futtathat egy IoT-eszköz szimulálása az Azure-ban
 
@@ -36,7 +36,7 @@ Kattintson az **Eszközszimuláció** csempére:
 
 Kattintson a **Kipróbálom most** elemre az Eszközszimuláció leírását tartalmazó lapon:
 
-![Kattintás a Kipróbálom most elemre](./media/quickstart-device-simulation-deploy/devicesimulationPDP.png)
+![Kattintás a Kipróbálom most elemre](./media/quickstart-device-simulation-deploy/devicesimulationpdp1.png)
 
 Az **Eszközszimulációs megoldás létrehozása** oldalon adjon meg egy egyedi **Megoldásnevet**.
 
@@ -58,7 +58,7 @@ Kattintson az **Elfogadás** gombra az engedélykérések elfogadásához. Ekkor
 
 Az első megnyitáskor az Eszközszimuláció irányítópultján lát egy **Első lépések** című útmutatót. Kattintson az első csempére egy mintaszimuláció megnyitásához. Ha bezárja az **Első lépések** című útmutatót, megnyithatja az **Egyszerű mintaszimulációt** az irányítópulton a hozzá tartozó csempére kattintva:
 
-![A megoldás irányítópultja](./media/quickstart-device-simulation-deploy/GettingStarted.png)
+![A megoldás irányítópultja](./media/quickstart-device-simulation-deploy/gettingstarted1.png)
 
 ## <a name="sample-simulation"></a>Mintaszimuláció
 
@@ -72,7 +72,7 @@ A mintaszimulációt nem lehet szerkeszteni. A szimuláció az alábbi beállít
 | Telemetria gyakorisága | 10 másodperc                  |
 | Szimuláció időtartama | Határozatlan ideig fut            |
 
-![Szimuláció konfigurálása](./media/quickstart-device-simulation-deploy/SampleSimulation.png)
+![Szimuláció konfigurálása](./media/quickstart-device-simulation-deploy/samplesimulation1.png)
 
 ## <a name="run-the-simulation"></a>A szimuláció futtatása
 

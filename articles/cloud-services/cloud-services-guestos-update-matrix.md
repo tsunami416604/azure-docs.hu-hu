@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/26/2019
+ms.date: 5/8/2019
 ms.author: raiye
-ms.openlocfilehash: 955ba0aae41d7e555c1248cf04073b1b6e3f2d4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 71f66129aeec4f4c8b470a421caade22960d2d64
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60622966"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65473219"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Az Azure vendég operációs rendszerek kiadásai és SDK-kompatibilitási mátrixot
 Itt, a legújabb Azure vendég operációs rendszer naprakész információkat és a Cloud Services-kiadások. Ez az információ segít a frissítési útvonal megtervezéséhez, mielőtt egy vendég operációs rendszer le van tiltva. Ha a szerepkörök használatára konfigurálja *automatikus* vendég operációs rendszer frissítése leírtak szerint [Azure vendég operációs rendszer frissítési beállítások][Azure Guest OS Update Settings], már nem létfontosságú, hogy elolvasta-e ezen a lapon.
@@ -42,6 +42,9 @@ Itt, a legújabb Azure vendég operációs rendszer naprakész információkat �
 A vendég operációs rendszer frissítése tesztadatkészletén? Ellenőrizze [ez] [ cloud updates] ki.
 
 ## <a name="news-updates"></a>Hírek
+
+###### <a name="may-7-2019"></a>**2019. május 7.**
+Az április vendég operációs rendszer jelent meg.
 
 ###### <a name="march-26-2019"></a>**2019. március 26.**
 A március vendég operációs rendszer jelent meg.
@@ -87,10 +90,11 @@ A szeptember vendég operációs rendszer jelent meg.
 >
 
 
-| Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
+| Konfigurációs karakterlánc | Kiadás dátuma | Tiltsa le a dátum |
 | --- | --- | --- |
+| WA-GUEST-OS-6.6_201904-01 |2019. május 7. |POST 6.8 |
 | WA-GUEST-OS-6.5_201903-01 |2019. március 26. |POST 6.7 |
-| WA-GUEST-OS-6.4_201902-01 |2019. március 12. |POST 6.6. |
+|~~WA-GUEST-OS-6.4_201902-01~~ |2019. március 12. |2019. május 7. |
 |~~WA-GUEST-OS-6.3_201901-01~~ |2019. február 5. |2019. március 26. |
 |~~WA-GUEST-OS-6.2_201812-01~~ |2019. január 24. |2019. március 12. |
 |~~WA-GUEST-OS-6.1_201811-01~~ |2019. január 24. |2019. február 5. |
@@ -105,10 +109,11 @@ A szeptember vendég operációs rendszer jelent meg.
 >
 
 
-| Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
+| Konfigurációs karakterlánc | Kiadás dátuma | Tiltsa le a dátum |
 | --- | --- | --- |
+| WA-GUEST-OS-5.30_201904-01 |2019. május 7. |POST 5.32 |
 | WA-GUEST-OS-5.29_201903-01 |2019. március 26. |POST 5.31 |
-| WA-GUEST-OS-5.28_201902-01 |2019. március 12. |POST 5.30 |
+|~~WA-GUEST-OS-5.28_201902-01~~ |2019. március 12. |2019. május 7. |
 |~~WA-GUEST-OS-5.27_201901-01~~ |2019. február 5. |2019. március 26. |
 |~~WA-GUEST-OS-5.26_201812-01~~ |2019. január 7. |2019. március 12. |
 |~~WA-GUEST-OS-5.25_201811-01~~ |2018. december 14. |2019. február 5. |
@@ -120,10 +125,11 @@ A szeptember vendég operációs rendszer jelent meg.
 
 .NET-keretrendszer: 3.5, 4.5.1
 
-| Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
+| Konfigurációs karakterlánc | Kiadás dátuma | Tiltsa le a dátum |
 | --- | --- | --- |
+| WA-GUEST-OS-4.65_201904-01 |2019. május 7. |POST 4.67 |
 | WA-GUEST-OS-4.64_201903-01 |2019. március 26. |POST 4,66 |
-| WA-GUEST-OS-4.63_201902-01 |2019. március 12. |POST 4.65 |
+|~~WA-GUEST-OS-4.63_201902-01~~ |2019. március 12. |2019. május 7. |
 |~~WA-GUEST-OS-4.62_201901-01~~ |2019. február 5. |2019. március 26. |
 |~~WA-GUEST-OS-4.61_201812-01~~ |2019. január 7. |2019. március 12. |
 |~~WA-GUEST-OS-4.60_201811-01~~ |2018. december 14. |2019. február 5. |
@@ -135,10 +141,11 @@ A szeptember vendég operációs rendszer jelent meg.
 
 .NET-keretrendszer: 3.5, 4.5
 
-| Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
+| Konfigurációs karakterlánc | Kiadás dátuma | Tiltsa le a dátum |
 | --- | --- | --- |
+| WA-GUEST-OS-3.72_201904-01 |2019. május 7. |POST 3.74 |
 | WA-GUEST-OS-3.71_201903-01 |2019. március 26. |POST 3.73 |
-| WA-GUEST-OS-3.70_201902-01 |2019. március 12. |POST 3.72 |
+|~~WA-GUEST-OS-3.70_201902-01~~ |2019. március 12. |2019. május 7. |
 |~~WA-GUEST-OS-3.69_201901-01~~ |2019. február 5. |2019. március 26. |
 |~~WA-GUEST-OS-3.68_201812-01~~ |2019. január 7. |2019. március 12. |
 |~~WA-GUEST-OS-3.67_201811-01~~ |2018. december 14. |2019. február 5. |
@@ -150,10 +157,11 @@ A szeptember vendég operációs rendszer jelent meg.
 
 .NET-keretrendszer: 3.5 (tartalmazza a 2.0 és 3.0 verziót)
 
-| Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
+| Konfigurációs karakterlánc | Kiadás dátuma | Tiltsa le a dátum |
 | --- | --- | --- |
+| WA-GUEST-OS-2.85_201904-01 |2019. május 7. |POST 2.87 |
 | WA-GUEST-OS-2.84_201903-01 |2019. március 26. |POST 2.86 |
-| WA-GUEST-OS-2.83_201902-01 |2019. március 12. |POST 2.85 |
+|~~WA-GUEST-OS-2.83_201902-01~~ |2019. március 12. |2019. május 7. |
 |~~WA-GUEST-OS-2.82_201901-01~~ |2019. február 5. |2019. március 26. |
 |~~WA-GUEST-OS-2.81_201812-01~~ |2019. január 7. |2019. március 12. |
 |~~WA-GUEST-OS-2.80_201811-01~~ |2018. december 14. |2019. február 5. |
@@ -173,7 +181,7 @@ Annak ellenére, hogy a [kivezetési szabályzata, az Azure SDK] [ retire policy
 | 4 |2.1-es vagy újabb |
 | 3 |1.8-as vagy újabb |
 | 2 |1.3-as vagy újabb |
-| 1 |1.0-s vagy újabb |
+| 1. |1.0-s vagy újabb |
 
 ## <a name="guest-os-release-information"></a>A vendég operációs rendszer kiadással kapcsolatos információk
 Vannak a kiadások a vendég operációs rendszer számára fontos három dátumok: **kiadási** dátum, **le van tiltva** dátuma, és **lejárati** dátum. A vendég operációs rendszer elérhető számít, ha a portálon és a vendég operációs rendszer célként választható ki. Ha a vendég operációs rendszer elérte a **le van tiltva** dátuma, a rendszer eltávolítja az Azure. Minden olyan felhőalapú szolgáltatásnak, hogy a vendég operációs rendszer azonban továbbra is működik szokásos módon.

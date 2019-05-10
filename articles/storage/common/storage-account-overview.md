@@ -5,19 +5,19 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/06/2019
+ms.date: 05/06/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 52226d07595120395909dd5f47d5d896f5cdaa75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2eaf819870e2b70cc6238af6d1e9fa1dcb5caab8
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61483646"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236753"
 ---
 # <a name="azure-storage-account-overview"></a>Az Azure storage-fiókok áttekintése
 
-Egy Azure storage-fiókot tartalmazza az összes az Azure Storage-adatobjektumok: blobok, fájlok, üzenetsorok, táblák és lemezek. Az Azure storage-fiókja adatai tartós és magas rendelkezésre állású, biztonságos, nagy mértékben méretezhető és elérhető bárhol a világon HTTP vagy HTTPS.
+Egy Azure storage-fiókot tartalmazza az összes az Azure Storage-adatobjektumok: blobok, fájlok, üzenetsorok, táblák és lemezek. A tárfiók egy egyedi névteret biztosít az Azure Storage-adatok által elérhető, bárhol a világon HTTP vagy HTTPS. Az Azure storage-fiókja adatai tartós és magas rendelkezésre állású, biztonságos és rugalmasan méretezhető.
 
 Ismerje meg, hogyan hozhat létre egy Azure storage-fiókot, lásd: [hozzon létre egy tárfiókot](storage-quickstart-create-account.md).
 
@@ -32,7 +32,7 @@ Ismerje meg, hogyan hozhat létre egy Azure storage-fiókot, lásd: [hozzon lét
 - Blobok (összes típusa: Letilthatja, hozzáfűzése, oldal)
 - Fájlok
 - Lemezek
-- Üzenetsorok
+- Várólisták
 - Táblák
 
 > [!NOTE]
@@ -49,7 +49,7 @@ Ismerje meg, hogyan hozhat létre egy Azure storage-fiókot, lásd: [hozzon lét
 - Blobok (minden esetében)
 - Fájlok
 - Lemezek
-- Üzenetsorok
+- Várólisták
 - Táblák
 
 Míg az általános célú v2-fiókok a legtöbb esetben ajánlott, általános célú v1 fiókok legalkalmasabbak arra, ezek a forgatókönyvek:
@@ -97,7 +97,7 @@ Ha változik az adatok használati módja, bármikor hozzáférési szintek köz
 > [!IMPORTANT]
 > Egy meglévő tárfiókot vagy blob esetében a hozzáférési szint módosítása további díjakat vonhat. További információkért lásd: a [szakasz számlázási tárfiók](#storage-account-billing).
 
-## <a name="replication"></a>Replikáció
+## <a name="replication"></a>Replikálás
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 

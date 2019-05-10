@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 550755b1215dd25045845d78ab3d6248ef840062
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3c62ad66a29943e26d1cb2f15ca71631d2feabe3
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705948"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467430"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Oktatóanyag: Napló hálózati forgalmat, és a egy virtuális gépről az Azure portal használatával
 
@@ -93,10 +93,13 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
     | Erőforráscsoport | Válassza a **Meglévő használata**, majd a **myResourceGroup** lehetőséget. |
 
     A Storage-fiók létrehozása nagyjából egy percet vesz igénybe. Ne folytassa a további lépésekkel, amíg a tárfiók létrehozása be nem fejeződött. Ha meglévő Storage-fiókot használ új létrehozása helyett, győződjön meg arról, hogy olyan fiókot választ, amely esetében a **BEÁLLÍTÁSOK** területen a **Tűzfalak és virtuális hálózatok** beállítása **Minden hálózat** (alapértelmezett).
+    
+    > [!NOTE]
+    > Bár Microsoft.Insight és a Microsoft.Network szolgáltató jelenleg az Azure Storage használata támogatott, hálózati biztonsági csoportok naplóinak még nincs teljesen előkészítve a. Hálózati biztonsági csoportok naplózásának engedélyezése **minden hálózatból elérhető** továbbra is lehet kijelölve, amíg ez a funkció nem teljesen előkészítve. 
 4. Válassza a portál bal felső sarkában található **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Amikor a **Network Watcher** elem megjelenik a keresési eredmények között, válassza ki.
 5. A **NAPLÓK** területen válassza az **NSG-folyamatnaplók** lehetőséget, ahogyan az a következő képen látható:
 
-    ![NSG-k](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
+    ![NSG](./media/network-watcher-nsg-flow-logging-portal/nsgs.png)
 
 6. A hálózati biztonsági csoportok közül válassza a **myVm-nsg** nevű csoportot.
 7. A **Folyamatnaplók beállításai** területen válassza a **Be** lehetőséget.
@@ -201,10 +204,10 @@ A **mac** érték az előző kimenetben azon hálózati adapter MAC-címét jel�
 | ---          | ---                    | ---                                                                                      |
 | 1542110377   | Időbélyeg             | Az az időpont, amikor a forgalom jelentkezett, UNIX EPOCH formátumban. Az előzőben példában látható dátum átalakítva: 2018. május 1. 14:59:05 GMT.                                                                                    |
 | 10.0.0.4  | Forrás IP-címe      | A forrás IP-cím, ahonnan a forgalom érkezett. A 10.0.0.4 a [Virtuális gép létrehozása](#create-a-vm) szakaszban létrehozott virtuális gép magánhálózati IP-címe.
-| 13.67.143.118     | Cél IP-cím | A cél IP-cím, ahová a forgalom tartott.                                                                                  |
+| 13.67.143.118     | Cél IP-címe | A cél IP-cím, ahová a forgalom tartott.                                                                                  |
 | 44931        | Forrásport            | A forrásport, ahonnan a forgalom érkezett.                                           |
-| 443         | Célport       | A célport, ahová a forgalom tartott. Mivel a rendszer felé irányuló 443-as porton, a szabály nevű **UserRule_default-allow-rdp**, a log fájl feldolgozása a folyamatot.                                                |
-| T            | Protocol               | Azt jelöli, hogy a forgalom protokollja TCP (T) vagy UDP (U) volt-e.                                  |
+| 443         | Célhely portja       | A célport, ahová a forgalom tartott. Mivel a rendszer felé irányuló 443-as porton, a szabály nevű **UserRule_default-allow-rdp**, a log fájl feldolgozása a folyamatot.                                                |
+| T?            | Protocol               | Azt jelöli, hogy a forgalom protokollja TCP (T) vagy UDP (U) volt-e.                                  |
 | O            | Direction              | Azt jelöli, hogy a forgalom bejövő (I) vagy kimenő (O) volt-e.                                     |
 | A            | Műveletek                 | Azt jelöli, hogy a forgalom engedélyezve (A) vagy elutasítva (D) lett-e.  
 | C            | A folyamat állapota **csak 2 verzió** | A folyamat állapotát rögzíti. Lehetséges állapotok a következők **B**: Kezdődik, amikor egy folyamat jön létre. Statisztikák nem biztosított. **C**: Egy folyamatban lévő folyamat folytatása. Statisztika 5 perces időközönként állnak rendelkezésre. **E**: Végződik, amikor a folyamat megszakadt. Statisztika állnak rendelkezésre. |

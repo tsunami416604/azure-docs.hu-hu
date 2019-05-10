@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 11d63889555d6899df07e83168813994907476af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 467586fd23332469338dabd2feb6a42ce4b17af5
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60691195"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471847"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>Láthatók a telemetriai adatok némelyike hiányzik
@@ -42,7 +42,7 @@ ms.locfileid: "60691195"
 * Az eszközök által támogatott .NET-projekt nem minden típusú. Webes és WCF-projektek támogatottak. Minden olyan projekt esetében, mint például az asztali vagy service-alkalmazások, akkor is [manuálisan az Application Insights SDK hozzáadása a projekthez](../../azure-monitor/app/windows-desktop.md).
 * Ellenőrizze, hogy [Visual Studio 2013 Update 3 vagy újabb](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs). Developer Analytics eszközök, amelyeket az Application Insights SDK-t adja meg az előre telepített származik.
 * Válassza ki **eszközök**, **bővítmények és frissítések** , és ellenőrizze, hogy **Developer Analytics Tools** telepítve és engedélyezve van. Ha igen, kattintson a **frissítések** , hogy van egy frissítés.
-* Az új projekt párbeszédpanel megnyitásához, és válassza ki az ASP.NET-webalkalmazás. Ha látja az Application Insights lehetőség van, az eszközök vannak telepítve. Ha nem, kísérelje meg eltávolítani, majd telepítse újra az Application Insights Tools.
+* Az új projekt párbeszédpanel megnyitásához, és válassza ki az ASP.NET-webalkalmazás. Ha látja az Application Insights lehetőség van, az eszközök vannak telepítve. Ha nem, próbálkozzon az eltávolításával és újbóli telepítése a Developer Analytics Tools.
 
 ## <a name="q02"></a>Nem sikerült hozzáadni az Application Insights
 *Amikor az Application Insights hozzáadása egy meglévő projektjébe, egy hibaüzenet látható.*
@@ -85,7 +85,7 @@ Javítás:
 * Válassza ki **eszközök**, **bővítmények és frissítések** , és ellenőrizze, hogy **Developer Analytics tools** telepítve és engedélyezve van. Ha igen, kattintson a **frissítések** , hogy van egy frissítés.
 * Kattintson a jobb gombbal a projektre a Megoldáskezelőben. Ha a parancs látható **Application Insights > Application Insights konfigurálása**,-projekt csatlakoztatása az erőforrás az Application Insights szolgáltatás segítségével.
 
-Ellenkező esetben a projekt típusa nem támogatja közvetlenül az Application Insights-eszközökről. A telemetriai adatok megtekintéséhez jelentkezzen be a [az Azure portal](https://portal.azure.com)Application Insights válassza a bal oldali navigációs sávon, majd válassza ki az alkalmazását.
+Ellenkező esetben a projekt típusa nem támogat közvetlenül a Developer Analytics tools. A telemetriai adatok megtekintéséhez jelentkezzen be a [az Azure portal](https://portal.azure.com)Application Insights válassza a bal oldali navigációs sávon, majd válassza ki az alkalmazását.
 
 ## <a name="access-denied-on-opening-application-insights-from-visual-studio"></a>"Hozzáférés megtagadva" a Visual Studio Application Insights megnyitása
 *A "Megnyitás az Application Insights" parancs tart velem az Azure Portalra, de "hozzáférés megtagadva" hibaüzenetet kapok.*

@@ -7,13 +7,13 @@ ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 04/22/2019
-ms.openlocfilehash: a0d0544601bfc6ce0c7ef642f576ed780c8642ba
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 04/30/2019
+ms.openlocfilehash: 083d10de94c39ab134b8e475b66ebf2df30088bc
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720217"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407651"
 ---
 # <a name="quickstart-run-ansible-playbooks-via-bash-in-azure-cloud-shell"></a>Gyors útmutató: Keresztül az Azure Cloud Shell Bash Ansible-forgatókönyvek futtatása
 
@@ -21,7 +21,7 @@ Az Azure Cloud Shell egy interaktív, a böngésző által elérhető shell Azur
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 - **Konfigurálja az Azure Cloud Shell** – Ha most ismerkedik az Azure Cloud Shellt, lásd: [gyors útmutató: az Azure Cloud Shell Bash](https://docs.microsoft.com/azure/cloud-shell/quickstart).
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -43,7 +43,7 @@ Az Azure-előfizetés azonosítója segítségével állítsa be a `AZURE_SUBSCR
 export AZURE_SUBSCRIPTION_ID=<your-subscription-id>
 ```
 
-## <a name="verify-the-configuration"></a>A konfiguráció ellenőrzése
+## <a name="verify-the-configuration"></a>Ellenőrizze
 A sikeres konfigurációjának ellenőrzéséhez az Ansible használatával hozzon létre egy Azure-erőforráscsoportot.
 
 [!INCLUDE [create-resource-group-with-ansible.md](../../includes/ansible-snippet-create-resource-group.md)]

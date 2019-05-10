@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 05/02/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 113c894122fe2b0673dfb47f8a9c0cbecf4c6290
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 45421a249642abf37c89aa33e2e8a1b4a9e5e497
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205065"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507011"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -25,7 +25,7 @@ Ismerje meg, hogyan helyezhet üzembe a gépi tanulási modellt webszolgáltatá
 | Számítási célt | Üzemelő példány típusa | Leírás |
 | ----- | ----- | ----- |
 | [Helyi webszolgáltatás](#local) | Tesztelő-hibakereső | Megfelelő választás a korlátozott tesztelés és hibaelhárítás.
-| [Azure Kubernetes Service (AKS)](#aks) | Valós idejű következtetésekhez | Megfelelő választás a nagy méretű éles környezetekben üzemelő példányok. Automatikus skálázást és gyors válaszidők biztosít. |
+| [Az Azure Kubernetes Service (AKS)](#aks) | Valós idejű következtetésekhez | Megfelelő választás a nagy méretű éles környezetekben üzemelő példányok. Automatikus skálázást és gyors válaszidők biztosít. |
 | [Az Azure Container Instances (aci Szolgáltatásban)](#aci) | Tesztelés | Megfelelő választás a lépték esetén a CPU-alapú számítási feladatok. |
 | [Az Azure Machine Learning Compute](how-to-run-batch-predictions.md) | (Előzetes verzió) A Batch következtetésekhez | Futtassa a kötegelt pontozási a kiszolgáló nélküli számítási. A normál és alacsony prioritású virtuális gépeket támogatja. |
 | [Azure IoT Edge](#iotedge) | (Előzetes verzió) IoT-modul | Üzembe helyezés, és gépi Tanulási modelleket szolgálnak az IoT-eszközökön. |
@@ -42,7 +42,7 @@ Az üzembe helyezést megvalósító munkafolyamat a fogalmakat további inform�
 
 ## <a name="prerequisites-for-deployment"></a>Központi telepítésének előfeltételei
 
-- A modell. Ha nem rendelkezik a betanított modell, a modell használható & függőségi fájlokról megadott [ebben az oktatóanyagban](http://aka.ms/azml-deploy-cloud).
+- A modell. Ha nem rendelkezik a betanított modell, a modell használható & függőségi fájlokról megadott [ebben az oktatóanyagban](https://aka.ms/azml-deploy-cloud).
 
 - A [Machine Learning szolgáltatás az Azure CLI-bővítmény](reference-azure-machine-learning-cli.md), vagy a [Azure Machine Learning Python SDK](https://aka.ms/aml-sdk).
 
@@ -210,8 +210,8 @@ Az alábbi táblázat mutatja be, az egyes számítási célnak üzembe helyezé
 
 | Számítási célt | Központi telepítés konfigurációs példája |
 | ----- | ----- |
-| Helyi | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
-| Azure Container Instance | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
+| helyi | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
+| Azure-tárolópéldány | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
 A következő szakaszok bemutatják, hogyan hozhat létre a telepítési konfigurációt, és, amellyel a webszolgáltatás üzembe helyezése.
@@ -458,7 +458,7 @@ Az Azure Machine Learning Compute tárolók létrehozása és felügyelete az Az
 Az Azure Machine Learning Compute batch következtetésekhez leírását, olvassa el a [futtatása a Batch-előrejelzések hogyan](how-to-run-batch-predictions.md) cikk.
 
 ## <a id="iotedge"></a> Az IoT Edge-ben következtetésekhez
-Az Edge-ben való telepítésének támogatásához az előzetes verzióban. További információkért lásd: a [üzembe helyezése az Azure Machine Learning, az IoT Edge-modul](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-deploy-machine-learning) cikk.
+Az Edge-ben való telepítésének támogatásához az előzetes verzióban. További információkért lásd: a [üzembe helyezése az Azure Machine Learning, az IoT Edge-modul](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-machine-learning) cikk.
 
 ## <a name="next-steps"></a>További lépések
 * [Üzembe helyezés hibáinak elhárítása](how-to-troubleshoot-deployment.md)

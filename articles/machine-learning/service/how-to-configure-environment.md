@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: c8c0291997c1ce301083f7d5c19b5067a85cfd0f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 4d588374c0195e7da373766f93f6829ac2160269
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024959"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471604"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -299,7 +299,7 @@ Ha a fürt már fut, [hozzon létre egy könyvtárat](https://docs.databricks.co
 
 1. Válasszon **csak egy** beállítás (más SDK telepítése nem támogatott)
 
-   |SDK&nbsp;package&nbsp;extras|Forrás|PyPi&nbsp;neve&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+   |SDK&nbsp;package&nbsp;extras|Source|PyPi&nbsp;neve&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |A Databricks| Töltse fel a Python tojás vagy PyPI | azureml-sdk[databricks]|
    |A Databricks - a-<br> automatizált gépi Tanulási képességek| Töltse fel a Python tojás vagy PyPI | azureml-sdk[automl_databricks]|
@@ -396,5 +396,5 @@ Háromféleképpen hozhat létre a konfigurációs fájlban:
 
 - [A modell betanítását](tutorial-train-models-with-aml.md) az Azure Machine Learning a MNIST adatkészlettel
 - Nézet a [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) referencia
-- További információ a [az Azure Machine Learning adat-előkészítési SDK](https://aka.ms/data-prep-sdk)
+- További információ a [adat-előkészítési csomagot az Azure Machine Learning](https://aka.ms/data-prep-sdk)
 - 

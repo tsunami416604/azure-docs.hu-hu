@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 05/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: b80f11ef97a10728f07cebe1fe80b954e506da52
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4c5b30ab075bbca22b6a58ccf65e55d332820937
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147894"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406542"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Fejlesztés a Media Services v3 API-k
 
@@ -25,7 +25,11 @@ Ez a cikk ismerteti a szabályokat, amelyek a alkalmazni az entitások és API-k
 
 ## <a name="accessing-the-azure-media-services-api"></a>Az Azure Media Services API elérése
 
-Az Azure Media Services-erőforrások eléréséhez, használhatja az Azure Active Directory (AD) egyszerű szolgáltatásnév hitelesítésével.
+Azt, hogy a Media Services-erőforrások és a Media Services API eléréséhez, akkor először hitelesíteni kell. A Media Services támogatja a [Azure Active Directory (Azure AD)-alapú](../../active-directory/fundamentals/active-directory-whatis.md) hitelesítést. Két gyakori hitelesítési lehetőségek közül választhat:
+ 
+* **Egyszerű szolgáltatásnév hitelesítése** – szolgáltatás hitelesítéséhez használatos (például: web apps, a függvényalkalmazások, a logic apps, API és mikroszolgáltatás-alapú). Ezt a hitelesítési módszert gyakran használó alkalmazások olyan alkalmazások, amelyeket démonszolgáltatásokat, a középső rétegű services vagy az ütemezett feladatok futtatásához. Például webes alkalmazások nem mindig kell egy középső rétegbeli, amely a Media Services az egyszerű szolgáltatás csatlakozik.
+* **Felhasználói hitelesítés** – az a személy, aki használja az alkalmazást az való kommunikációhoz a Media Services-erőforrások hitelesítéséhez. Az interaktív alkalmazást először kell kérni a felhasználót, a felhasználói hitelesítő adatokat. Ilyen például, a kódolási feladatok figyelésére, vagy az élő adások online közvetítése jogosult felhasználók által használt felügyeleti konzolalkalmazást.
+
 A Media Services API megköveteli, hogy a felhasználó vagy alkalmazás a REST API-t kér a Media Services-fiók erőforrás hozzáférése, és használja a **közreműködői** vagy **tulajdonosa** szerepkör. Az API az elérhető lesz a **olvasó** azonban csak a szerepkör **első** vagy **lista**   művelet elérhető lesz. További információkért lásd: [szerepköralapú hozzáférés-vezérlés a Media Services-fiókok](rbac-overview.md).
 
 Egyszerű szolgáltatás létrehozása helyett érdemes lehet felügyelt identitások az Azure-erőforrások eléréséhez a Media Services API Azure Resource Manageren keresztül. Az Azure-erőforrások felügyelt identitások kapcsolatos további információkért lásd: [Mi az Azure-erőforrások felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md).
@@ -52,6 +56,16 @@ Az alábbi ábrán a számok jelölik a folyamatot a kérelmek időrendi sorrend
 2. Az Azure AD hozzáférési jogkivonatot a középső réteg küld.
 4. A középső réteg kérést küld az Azure Media REST API az Azure AD-jogkivonattal.
 5. A középső réteg vissza az adatok lekérése a Media Services.
+
+### <a name="samples"></a>Minták
+
+Tekintse meg a következő példák azt mutatják be, hogyan csatlakozhat az Azure AD-szolgáltatásnév:
+
+* [Csatlakozás a REST segítségével](media-rest-apis-with-postman.md)  
+* [Kapcsolódás Javával](configure-connect-java-howto.md)
+* [Kapcsolódás .NET-tel](configure-connect-dotnet-howto.md)
+* [Kapcsolódás Node.js-sel](configure-connect-nodejs-howto.md)
+* [Kapcsolódás Pythonnal](configure-connect-python-howto.md)
 
 ## <a name="naming-conventions"></a>Elnevezési konvenciók
 

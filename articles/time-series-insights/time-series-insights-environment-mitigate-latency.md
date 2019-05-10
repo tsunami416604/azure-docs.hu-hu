@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 11/27/2017
+ms.date: 05/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b5cdf8aebdf584216afef9f1d1421eea8c4ba4e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4b2f73013b399dd2ca3d549e2ac2ec4ffba65b81
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685150"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471738"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Figyelheti, és az Azure Time Series Insightsban késés csökkentése érdekében a szabályozás csökkentése
 
@@ -34,21 +34,21 @@ Legnagyobb valószínűséggel késés és a szabályozás, amikor Ön:
 
 ## <a name="video"></a>Videó
 
-### <a name="in-this-video-we-cover-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Ez a videó ismerteti a Time Series Insights bejövő működéshez, és tervezze meg, hogyan.</br>
+### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>További tudnivalók a Time Series Insights bejövő működéshez, és tervezze meg, hogyan.</br>
 
 > [!VIDEO https://www.youtube.com/embed/npeZLAd9lxo]
 
 ## <a name="monitor-latency-and-throttling-with-alerts"></a>Késés és a szabályozás és a riasztások figyelése
 
-Riasztások segíthetnek a környezet által okozott késési problémák diagnosztizálásához és érdekében. 
+Riasztások segíthetnek a környezet által okozott késési problémák diagnosztizálásához és érdekében.
 
-1. Az Azure Portalon kattintson a **metrikák**. 
+1. Az Azure Portalon kattintson a **metrikák**.
 
-   ![Mérőszámok](media/environment-mitigate-latency/add-metrics.png)
+   [![Metrikák](media/environment-mitigate-latency/add-metrics.png)](media/environment-mitigate-latency/add-metrics.png#lightbox)
 
-2. Kattintson a **metrikariasztás hozzáadása**.  
+1. Kattintson a **metrikariasztás hozzáadása**.  
 
-    ![Metrikariasztás hozzáadása](media/environment-mitigate-latency/add-metric-alert.png)
+   [![Metrikariasztás hozzáadása](media/environment-mitigate-latency/add-metric-alert.png)](media/environment-mitigate-latency/add-metric-alert.png#lightbox)
 
 Itt konfigurálhatja a riasztások a következő mérőszámok segítségével:
 
@@ -64,19 +64,19 @@ Itt konfigurálhatja a riasztások a következő mérőszámok segítségével:
 
 ![Késés](media/environment-mitigate-latency/latency.png)
 
-Ha meg van szabályozva, látni fogja a egy értéke a *bejövő érkezett üzenet időeltolódás*, hány másodpercet TSI mögött van a tényleges idő a az üzenet tájékoztat eléri az eseményforrás (kivéve az appx-alapú indexelési idő. 30 – 60 másodpercet).  *Bejövő forgalom Beérkezett üzenetek száma időbeli* értékkel, lehetővé téve annak meghatározására, hogy hány üzenetek mögött található, akkor is kell rendelkeznie.  Az első szerepelnek legegyszerűbben, amely lehetővé teszi a különbség az, hogy a környezet kapacitás bővítéséhez.  
+* Ha meg van szabályozva, látni fogja a egy értéke a *bejövő érkezett üzenet időeltolódás*, hány másodpercet a TSI mögött van, a tényleges idő az üzenet tájékoztat eléri az eseményforrás (kivéve az appx-alapú indexelési idő. 30 – 60 másodpercet).  *Bejövő forgalom Beérkezett üzenetek száma időbeli* értékkel, lehetővé téve annak meghatározására, hogy hány üzenetek mögött található, akkor is kell rendelkeznie.  Az első szerepelnek legegyszerűbben, amely lehetővé teszi a különbség az, hogy a környezet kapacitás bővítéséhez.  
 
-Ha egyetlen egység S1 környezettel rendelkezik, és tekintse meg, hogy nincs-e 5 millió üzenet késéssel, például sikerült hat egységeket a napi körül első szerepelnek a környezet méretének növeléséhez.  Sikerült növelheti még tovább catch fel gyorsabban.  Az utólagos idő pedig gyakran előfordul, kiépítésekor kezdetben környezetekben, különösen akkor, ha csatlakoztatja, amely már rendelkezik az események, az eseményforrás, vagy ha Ön tömeges feltöltés nagy mennyiségű előzményadatok.
+  Ha egyetlen egység S1 környezettel rendelkezik, és tekintse meg, hogy nincs-e 5,000,000 üzenet késéssel, például sikerült hat egységeket a napi körül első szerepelnek a környezet méretének növeléséhez.  Sikerült növelheti még tovább catch fel gyorsabban. Az utólagos idő pedig gyakran előfordul, kiépítésekor kezdetben környezetekben, különösen akkor, ha csatlakoztatja, amely már rendelkezik az események, az eseményforrás, vagy ha Ön tömeges feltöltés nagy mennyiségű előzményadatok.
 
-Egy másik eljárás az, hogy állítsa be egy **belépő tárolt események** riasztás > = némileg alább 2 órán át a teljes környezet kapacitása a küszöbértéket.  Ez a riasztás segíthetnek megérteni, ha Ön folyamatosan kapacitással, amely azt jelzi, hogy a késés nagy valószínűséggel.  
+* Egy másik eljárás az, hogy állítsa be egy **belépő tárolt események** riasztás > = némileg alább 2 órán át a teljes környezet kapacitása a küszöbértéket.  Ez a riasztás segíthetnek megérteni, ha Ön folyamatosan kapacitással, amely azt jelzi, hogy a késés nagy valószínűséggel. 
 
-Például, ha három S1 szintű egységek kiépítése (vagy perces betöltési kapacitás 2100 esemény), beállíthat egy **belépő tárolt események** a riasztási > 1900 események = 2 óra alatt. Ha folyamatosan ezt a küszöbértéket meghaladó, és ezért a a riasztást kiváltó, valószínűleg alatt-regisztrálva van.  
+  Például, ha három S1 szintű egységek kiépítése (vagy perces betöltési kapacitás 2100 esemény), beállíthat egy **belépő tárolt események** a riasztási > 1900 események = 2 óra alatt. Ha folyamatosan ezt a küszöbértéket meghaladó, és ezért a a riasztást kiváltó, valószínűleg alatt-regisztrálva van.  
 
-Is, ha azt gyanítja, hogy van szabályozva, összehasonlíthatja a **bejövő Beérkezett üzenetek** az eseménnyel a forrás egressed az üzeneteket.  Ha az Event Hubs-eseményközpontba bejövő nagyobb, mint a **bejövő Beérkezett üzenetek**, a Time Series Insights valószínűleg szabályozva.
+* Ha azt gyanítja, hogy van szabályozva, összehasonlíthatja a **bejövő Beérkezett üzenetek** az eseménnyel a forrás egressed az üzeneteket.  Ha az Event Hubs-eseményközpontba bejövő nagyobb, mint a **bejövő Beérkezett üzenetek**, a Time Series Insights valószínűleg szabályozva.
 
 ## <a name="improving-performance"></a>A teljesítmény fokozása
 
-Szabályozási vagy tapasztalt késés csökkentése érdekében javítsa ki a legjobb módszer az növeli a kapacitást a környezet. 
+Szabályozási vagy tapasztalt késés csökkentése érdekében javítsa ki a legjobb módszer az növeli a kapacitást a környezet.
 
 Elkerülheti a késés és a sávszélesség-szabályozási adatok elemezni szeretné a környezet megfelelő konfigurálásával. A környezet kapacitása hozzáadása kapcsolatos további információkért lásd: [Skálázhatja környezetét](time-series-insights-how-to-scale-your-environment.md).
 

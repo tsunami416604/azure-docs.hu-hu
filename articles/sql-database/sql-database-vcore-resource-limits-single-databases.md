@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/19/2019
-ms.openlocfilehash: aa9217251965b35dd90e09c619607c9421a9f6f4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 04/22/2019
+ms.openlocfilehash: 7dcbf2733ff23b0454208dbc789599cd372278ec
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572646"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507835"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Az Azure SQL Database Virtuálismag-alapú vásárlási modell korlátok egy önálló adatbázis
 
@@ -50,7 +50,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Tárolási típus|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|
 |IO-késés (becsült)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|
 |Cél IOPS (64 KB)|500|1000|1500|2000|2500|3000|
-|Napló Sebességhatár (MB/s)|2.5|5|7.5|10|12.5|15|
+|Napló Sebességhatár (MB/s)|3.75|7.5|11.25|15|18.75|22.5|
 |Egyidejű feldolgozók (kérelmek) maximális|200|400|600|800|1000|1200|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
 |Replikák száma|1|1|1|1|1|1|
@@ -73,7 +73,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Tárolási típus|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|
 |IO-késés (becsült)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)
 |Cél IOPS (64 KB)|3500|4000|4500|5000|7000|7000|
-|Napló Sebességhatár (MB/s)|17.5|20|20|20|20|20|
+|Napló Sebességhatár (MB/s)|26.25|30|30|30|30|30|
 |Egyidejű feldolgozók (kérelmek) maximális|1400|1600|1800|2000|3200|4800|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
 |Replikák száma|1|1|1|1|1|1|
@@ -95,8 +95,8 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |A TempDB mérete (GB)|64|128|192|256|320|384|384|
 |Tárolási típus|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|
 |IO-késés (becsült)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|
-|Cél IOPS (64 KB)|500|1000|1500|2000|2500|3000|3500|
-|Napló Sebességhatár (MB/s)|2.5|56|7.5|10|12.5|15|17.5|
+|Cél IOPS (64 KB)|1000|2000|3000|4000|5000|6000|7000|
+|Napló Sebességhatár (MB/s)|3.75|7.5|11.25|15|18.75|22.5|26.25|
 |Egyidejű feldolgozók (kérelmek) maximális|200|400|600|800|1000|1200|1400|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|30000|
 |Replikák száma|1|1|1|1|1|1|1|
@@ -118,8 +118,8 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |A TempDB mérete (GB)|384|384|384|384|384|384|384|
 |Tárolási típus|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|
 |IO-késés (becsült)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|
-|Cél IOPS (64 KB)|4000|4500|5000|6000|7000|7000|7000|
-|Napló Sebességhatár (MB/s)|20|20|20|20|20|20|20|
+|Cél IOPS (64 KB)|7000|7000|7000|7000|7000|7000|7000|
+|Napló Sebességhatár (MB/s)|30|30|30|30|30|30|30|
 |Egyidejű feldolgozók (kérelmek) maximális|1600|1800|2000|2400|3200|4000|8000|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|30000|
 |Replikák száma|1|1|1|1|1|1|1|
@@ -127,7 +127,35 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Felskálázás olvasása|–|N/A|N/A|N/A|N/A|N/A|–|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 
-## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Üzleti kritikus fontosságú szolgáltatási szint: Tárterületet és számítási méretek
+### <a name="serverless-compute-tier"></a>Kiszolgáló nélküli számítási szint
+
+A [kiszolgáló nélküli számítási kapacitás](sql-database-serverless.md) nyilvános előzetes verzióban érhető el, és csak az önálló adatbázisok használatával, a virtuális mag vásárlási modell.
+
+#### <a name="generation-5-compute-platform"></a>5. generáció számítási platform
+
+|Számítási mérete|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|
+|:--- | --: |--: |--: |
+|H/W generálása|5|5|5|
+|Min-max virtuális magok|0.5-1|0.5-2|0.5-4|
+|Min-max memória (GB)|2.02-3|2.05-6|2.10-12|
+|Automatikus szüneteltetési minimális késleltetés (óra)|6|6|6|
+|Oszlopcentrikus támogatása|Igen|Igen|Igen|
+|Memóriabeli OLTP storage (GB)|–|N/A|–|
+|Maximális adatméret (GB)|512|1024|1024|
+|Max. napló mérete (GB)|12|24|48|
+|A TempDB mérete (GB)|32|64|128|
+|Tárolási típus|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|
+|IO-késés (becsült)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|
+|Cél IOPS (64 KB)|250|500|1000|
+|Napló Sebességhatár (MB/s)|2.5|5.6|10|
+|Egyidejű feldolgozók (kérelmek) maximális|75|150|300|
+|Maximális engedélyezett munkamenetek|30000|30000|30000|
+|Replikák száma|1|1|1|
+|Több-AZ|–|N/A|–|
+|Felskálázás olvasása|–|N/A|–|
+|Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
+
+## <a name="business-critical-service-tier-for-provisioned-compute-tier"></a>Üzleti kritikus szolgáltatási szinten a kiépített számítási kapacitás
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Üzleti kritikus fontosságú szolgáltatási szint: 4. generációs számítási platform (1. rész)
 
@@ -144,7 +172,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |A TempDB mérete (GB)|32|64|96|128|160|192|
 |IO-késés (becsült)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|
 |Cél IOPS (64 KB)|5000|10000|15 000|20000|25000|30000|
-|Napló Sebességhatár (MB/s)|6|12|18|24|30|36|
+|Napló Sebességhatár (MB/s)|8|16|24|32|40|48|
 |Egyidejű feldolgozók (kérelmek) maximális|200|400|600|800|1000|1200|
 |Egyidejű bejelentkezések maximális száma|200|400|600|800|1000|1200|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
@@ -168,7 +196,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |A TempDB mérete (GB)|224|256|288|320|384|384|
 |IO-késés (becsült)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|
 |Cél IOPS (64 KB)|35000|40000|45000|50000|80000|120000|
-|Napló Sebességhatár (MB/s)|42|48|54|60|64|64|
+|Napló Sebességhatár (MB/s)|56|64|64|64|64|64|
 |Egyidejű feldolgozók (kérelmek) maximális|1400|1600|1800|2000|3200|4800|
 |Egyidejű bejelentkezések maximális száma (kérelmek)|1400|1600|1800|2000|3200|4800|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
@@ -191,8 +219,8 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |A TempDB mérete (GB)|64|128|192|256|320|384|384|
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |IO-késés (becsült)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|
-|Cél IOPS (64 KB)|5000|10000|15 000|20000|25000|30000|35000|
-|Napló Sebességhatár (MB/s)|6|12|18|24|30|36|42|
+|Cél IOPS (64 KB)|8000|16000|24000|32000|40000|48000|56000|
+|Napló Sebességhatár (MB/s)|12|24|36|48|60|72|84|
 |Egyidejű feldolgozók (kérelmek) maximális|200|400|600|800|1000|1200|1400|
 |Egyidejű bejelentkezések maximális száma|200|400|600|800|1000|1200|1400|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|30000|
@@ -215,8 +243,8 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |A TempDB mérete (GB)|384|384|384|384|384|384|384|
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |IO-késés (becsült)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|
-|Cél IOPS (64 KB)|40000|45000|50000|60000|80000|100000|200000|
-|Napló Sebességhatár (MB/s)|48|54|60|72|96|96|96|
+|Cél IOPS (64 KB)|64000|72000|80000|96000|128000|160000|320000|
+|Napló Sebességhatár (MB/s)|96|96|96|96|96|96|96|
 |Egyidejű feldolgozók (kérelmek) maximális|1600|1800|2000|2400|3200|4000|8000|
 |Egyidejű bejelentkezések maximális száma|1600|1800|2000|2400|3200|4000|8000|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|30000|
@@ -225,30 +253,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 
-## <a name="hyperscale-service-tier-preview"></a>Nagy kapacitású szolgáltatási szint (előzetes verzió)
-
-### <a name="generation-4-compute-platform-storage-sizes-and-compute-sizes"></a>4. generációs számítási platform: Tárterületet és számítási méretek
-
-|Teljesítményszint|HS_Gen4_1|HS_Gen4_2|HS_Gen4_4|HS_Gen4_8|HS_Gen4_16|HS_Gen4_24|
-|:--- | --: |--: |--: |--: |--: |--: |
-|H/W generálása|4|4|4|4|4|4|
-|Virtuális magok|1|2|4|8|16|24|
-|Memória (GB)|7|14|28|56|112|168|
-|Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriabeli OLTP storage (GB)|–|N/A|N/A|N/A|N/A|–|
-|Maximális adatméret (TB)|100 |100 |100 |100 |100 |100 |
-|Max. napló mérete (TB)|1 |1 |1 |1 |1 |1 |
-|A TempDB mérete (GB)|32|64|128|256|384|384|
-|Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
-|Cél IOPS (64 KB)|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|
-|IO-késés (becsült)|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|
-|Egyidejű feldolgozók (kérelmek) maximális|200|400|800|1600|3200|4800|
-|Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
-|Replikák száma|2|2|2|2|2|2|
-|Több-AZ|–|N/A|N/A|N/A|N/A|–|
-|Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|
-|Biztonsági mentési tárterület|7|7|7|7|7|7|
-|||
+## <a name="hyperscale-service-tier"></a>Rugalmas skálázás szolgáltatási szint
 
 ### <a name="generation-5-compute-platform"></a>5. generáció számítási platform
 
@@ -260,7 +265,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
 |Memóriabeli OLTP storage (GB)|–|N/A|N/A|N/A|N/A|N/A|N/A|–|
 |Maximális adatméret (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
-|Max. napló mérete (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
+|Max. napló mérete (TB)|1. |1 |1 |1 |1 |1 |1 |1. |
 |A TempDB mérete (GB)|64|128|256|384|384|384|384|384|
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |Cél IOPS (64 KB)|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|
@@ -270,7 +275,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Replikák száma|2|2|2|2|2|2|2|2|
 |Több-AZ|–|N/A|N/A|N/A|N/A|N/A|N/A|–|
 |Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Biztonsági mentési tárterület (előzetes verzió korlát)|7|7|7|7|7|7|7|7|
+|Biztonsági mentési tárterület |7|7|7|7|7|7|7|7|
 |||
 
 ## <a name="next-steps"></a>További lépések

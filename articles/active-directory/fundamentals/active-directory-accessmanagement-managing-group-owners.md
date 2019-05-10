@@ -12,20 +12,20 @@ ms.date: 09/11/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2541a1d76b56f92b250fb422951769db7877213e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd684e1bd48f877a74280b33b4df65d7baaa0fe7
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60249827"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507175"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Hozzáadása vagy eltávolítása a csoportok tulajdonosainak az Azure Active Directoryban
-Az Azure Active Directory (Azure AD-) csoportok tulajdonosai és kezeli a csoport tulajdonosai. Csoporttulajdonosok rendeli hozzá egy csoportot és annak tagjait kezelheti az erőforrás tulajdonosa (rendszergazda). Csoporttulajdonosok lehetnek a csoport tagjai, nem szükséges. Miután a csoport tulajdonosa hozzá lett rendelve, csak egy erőforrás tulajdonosa hozzáadhat vagy eltávolíthat tulajdonosai.
+Az Azure Active Directory (Azure AD-) csoportok tulajdonosai és kezeli a csoport tulajdonosai. Csoporttulajdonosok lehet felhasználók vagy egyszerű szolgáltatások, és kezelhetik a csoport tagságát. Csak a meglévő csoporttulajdonosok vagy a csoport-kezelésével a Rendszergazdák csoport onwers rendelhet hozzá. Csoporttulajdonosok lehetnek a csoport tagjai, nem szükséges.
 
-Bizonyos esetekben a rendszergazda dönthet nem rendelhet hozzá a csoport tulajdonosával. Ebben az esetben a csoport tulajdonosa lesz. Tulajdonosok hozzárendelését is elvégezheti további tulajdonosok folyamatokhoz a csoporthoz, kivéve, ha korlátozott Ez a csoport beállításainál.
+Egy csoportnak nincs tulajdonosa van, amikor a Rendszergazdák csoport kezelésének tudnak továbbra is a csoport kezeléséhez.
 
 ## <a name="add-an-owner-to-a-group"></a>Tulajdonos hozzáadása csoporthoz
-További csoporttulajdonosok hozzáadása egy csoporthoz, az Azure AD használatával.
+Az alábbiakban útmutatást tulajdonosai a felhasználó hozzáadása csoporthoz az Azure AD portálon használja. A csoport tulajdonosai szolgáltatásnév hozzáadásához kövesse az utasításokat ennek a végrehajtására használatával [PowerShell](https://docs.microsoft.com/powershell/module/Azuread/Add-AzureADGroupOwner?view=azureadps-2.0).
 
 ### <a name="to-add-a-group-owner"></a>Csoporttulajdonos hozzáadása
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com).

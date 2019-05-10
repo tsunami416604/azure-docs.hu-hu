@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e20a298c34a7b2723963396f8ccaafaa9472e19a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7ec8b575157dcf2fe8430f554798af62b966c78d
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57888331"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406699"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>Oktatóanyag: Az Azure Active Directory integrációja az AirWatch
 
@@ -207,15 +207,15 @@ Az Azure AD egyszeri bejelentkezés konfigurálása az AirWatch, hajtsa végre a
 
     a. Az a **objektumazonosító** szövegmezőbe írja be `http://schemas.microsoft.com/identity/claims/objectidentifier`.
 
-    b. Az a **felhasználónév** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    b. Az a **felhasználónév** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    c. Az a **megjelenítendő név** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    c. Az a **megjelenítendő név** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    d. Az a **Utónév** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
+    d. Az a **Utónév** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
 
-    e. Az a **Vezetéknév** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
+    e. Az a **Vezetéknév** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`.
 
-    f. Az a **E-mail** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    f. Az a **E-mail** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
     g. Kattintson a **Save** (Mentés) gombra.
 
@@ -297,7 +297,7 @@ Ahhoz, hogy az Azure AD-felhasználók AirWatch jelentkezzen be, akkor ki kell �
 > [!NOTE]
 > Bármely más AirWatch felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését AirWatch által biztosított API-k.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

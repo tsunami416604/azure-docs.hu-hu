@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 05/09/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac94574ac297da7b3555be8d92ba3c5b62a990c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e490ed9d104fc039a79083a94ddaebdeba766d2a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292596"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506641"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Távoli hozzáférés a helyszíni alkalmazások Azure Active Directory Application Proxy használatával 
 
@@ -43,6 +43,8 @@ Az alkalmazásproxy működik együtt:
 * Gazdag ügyfél alkalmazások integrált a az Active Directory Authentication Library (ADAL)
 
 Az alkalmazásproxy egyszeri bejelentkezést támogatja. Támogatott módszerekkel kapcsolatos további információkért lásd: [egyszeri bejelentkezési módszer kiválasztása](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
+
+A belső erőforrásokhoz hozzáférést ad a távoli felhasználók külső Application Proxy használata ajánlott. Az alkalmazásproxy helyettesíti a VPN-t vagy fordított proxy. Nem célja a belső felhasználók számára a vállalati hálózaton.  Belső felhasználók, akik szükségtelenül használja az Application Proxy bevezethet váratlan és nem kívánatos teljesítménybeli problémák.
 
 ## <a name="how-application-proxy-works"></a>Application Proxy működése
 

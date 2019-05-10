@@ -6,15 +6,15 @@ author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 11/14/2018
+ms.date: 05/09/2019
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: 0b7a7ac7b8a71f33871247a1117c16609bbbcd88
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 2728ac93abd18f929dc6e82cfb471ce33fe8866f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191059"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508023"
 ---
 # <a name="quickstart-use-net-to-create-a-blob-in-object-storage"></a>Gyors útmutató: Blob létrehozása objektumtárban .NET használatával
 
@@ -24,7 +24,7 @@ Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre tárolót és bl
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-Ezután töltse le és telepítse a .NET Core 2.0 az operációs rendszernek megfelelő verzióját. Ha Windows rendszert használ, igény szerint telepítheti a Visual Studiót és használhatja a .NET-keretrendszert is. Emellett telepíthet egy, az operációs rendszerrel használható szerkesztőprogramot is.
+Ezután töltse le és telepítse a .NET Core 2.1-es verziója az operációs rendszer. Ha Windows rendszert használ, igény szerint telepítheti a Visual Studiót és használhatja a .NET-keretrendszert is. Emellett telepíthet egy, az operációs rendszerrel használható szerkesztőprogramot is.
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
@@ -288,8 +288,8 @@ Blob Storage-tárolókat alkalmazó .NET-alkalmazások fejlesztéséhez tekintse
 
 ### <a name="binaries-and-source-code"></a>Bináris fájlok és forráskód
 
-- Az Azure Storage-hoz készült [.NET ügyféloldali kódtár](https://www.nuget.org/packages/WindowsAzure.Storage/) legújabb verziójáért töltse le a NuGet-csomagot.
-- A [.NET ügyféloldali kódtár forráskódját](https://github.com/Azure/azure-storage-net) a GitHubon tekintheti meg.
+- A NuGet-csomag legújabb verziójának letöltése a [.NET ügyféloldali kódtár](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) az Azure Blob Storage.
+- Nézet a [.NET-hez készült Microsoft Azure Storage Blob SDK forráskódját](https://github.com/Azure/azure-storage-net/tree/master/Blob) a Githubon.
 
 ### <a name="client-library-reference-and-samples"></a>Ügyféloldali kódtár – referencia és minták
 
@@ -300,10 +300,10 @@ Blob Storage-tárolókat alkalmazó .NET-alkalmazások fejlesztéséhez tekintse
 
 Ennek a rövid útmutatónak a segítségével megismerkedett a blobok a .NET használatával való fel- és letöltésével, valamint kilistázásával.
 
-Ha szeretné megtudni, hogyan lehet olyan webalkalmazásokat létrehozni, amelyek rendszerképeket töltenek fel Blob Storage-tárolókba, lépjen tovább a [rendszerképadatok az Azure Storage segítségével a felhőbe történő feltöltését](storage-upload-process-images.md) ismertető szakaszra.
+Megtudhatja, hogyan hozhat létre egy webalkalmazást, amely feltölt egy képet a Blob storage, továbbra is:
 
 > [!div class="nextstepaction"]
-> [Blob Storage-műveletek használati útmutatója](storage-dotnet-how-to-use-blobs.md)
+> [Feltöltése és feldolgozása a kép](storage-upload-process-images.md)
 
 - A .NET Core keretrendszerrel kapcsolatos további információért lásd [a .NET használatának első lépéseit 10 percben](https://www.microsoft.com/net/learn/get-started/) ismertető szakaszt.
 - Ha szeretne megtekinteni egy olyan mintaalkalmazást, amely a Windowshoz készült Visual Studióból helyezhető üzembe, tekintse meg [az Azure Blob Storage-et használó .NET fényképgaléria-mintawebalkalmazást](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/).
