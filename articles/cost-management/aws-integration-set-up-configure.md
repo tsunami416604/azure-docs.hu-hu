@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: a7a020284f44eda0da62f307866c74b0a8df493d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e87e95ec9e4e20ee4785c2b1f448a7ca5f442b8a
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205702"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409192"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Állítsa be, és az AWS-költségek és a használati jelentés-integráció konfigurálása
 
@@ -38,7 +38,7 @@ Használja a **jelentések** felhasználási és jelentések létrehozásához a
 7. A **támogatásának engedélyezése**, nincs kijelölés nem szükséges.
 8. A **adatfrissítési beállítások**, jelölje be **automatikusan frissítse a költségek &amp; használati jelentés díjak észlelése esetén az előző hónapra lezárt számlák**.
 9. Kattintson a **tovább**.
-10. A **Amazon S3 gyűjtőt**, írja be az Amazon S3 gyűjtőt, jelentés, ahová a nevét, és kattintson a **ellenőrizze**. A gyűjtőhöz, hogy érvényesek legyenek megfelelő engedélyekkel kell rendelkeznie. Engedélyek a gyűjtőbe történő hozzáadásával kapcsolatos további információkért lásd: [beállítása a Bucket és objektum-hozzáférési engedélyek](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/set-permissions.html).
+10. A **Amazon S3 gyűjtőt**, írja be az Amazon S3 gyűjtőt, jelentés, ahová a nevét, és kattintson a **ellenőrizze**. A gyűjtőhöz, hogy érvényesek legyenek megfelelő engedélyekkel kell rendelkeznie. Engedélyek a gyűjtőbe történő hozzáadásával kapcsolatos további információkért lásd: [beállítása a Bucket és objektum-hozzáférési engedélyek](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/set-permissions.html).
 11. A **jelentés elérési út előtagja**, írja be a jelentés elérési út előtagja, amelyet hozzá kíván adni a jelentés nevét.
 12. A **tömörítési**válassza **GZIP**.
 13. Kattintson a **tovább**.

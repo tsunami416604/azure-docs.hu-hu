@@ -10,32 +10,34 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: ecb97860e70141a744833aa9b9a4fcea3f3688f0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1a48f8620fb99f1cf8787dabc738d328a796d093
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149822"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510619"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Ismerkedés az Azure Machine Learning felhőalapú notebook server használatával
 
 Hozzon létre egy felhőalapú notebook kiszolgálót, majd használja azt.  Ez a rövid útmutatóban értékek jelentkezik be a Python-kód futtatása a [Azure Machine Learning szolgáltatás munkaterület](concept-azure-machine-learning-architecture.md). A munkaterület az eligazodást blokk, amellyel kísérletezhet, betanítását és a Machine Learning gépi tanulási modellek üzembe helyezése a felhőben. 
 
 Ez a rövid útmutató bemutatja, hogyan felhőalapú erőforrás létrehozása az Azure Machine Learning-munkaterületet, a konfigurált az Azure Machine Learning futtatásához szükséges Python-környezetet. A saját környezetben használja, lásd: [a rövid útmutató: A saját notebook server használata az Azure Machine Learning használatának első lépései](quickstart-run-local-notebook.md).  
- 
+
 Ebben a rövid útmutatóban tegye a következőket:
 
 * Hozzon létre egy új felhőalapú notebook kiszolgálót a munkaterületén.
 * A Jupyter webes felületének megnyitásához.
 * Nyisson meg egy jegyzetfüzetet, pi, és a naplók a hibákat, minden egyes ismétléskor becslésbe kódot tartalmaz.
 * A jegyzetfüzet futtatásához.
-* A naplózott hiba értékeinek megtekintése a munkaterületén. Ez a példa bemutatja, hogyan segíthet a munkaterület a szkriptben létrehozott információk nyomon követésében. 
+* A naplózott hiba értékeinek megtekintése a munkaterületén. Ez a példa bemutatja, hogyan segíthet a munkaterület a szkriptben létrehozott információk nyomon követésében.
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot megkezdése előtt. Próbálja ki a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
-- Egy Azure Machine Learning-munkaterület.  [A munkaterület létrehozása](setup-create-workspace.md#portal) mostantól, ha nem rendelkezik ilyennel.
+Ha rendelkezik egy Azure Machine Learning szolgáltatás munkaterületén, ugorjon a [következő szakasz](#create-a-cloud-based-notebook-server). Ellenkező esetben hozzon létre egyet most.
+
+[!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
 ## <a name="create-a-cloud-based-notebook-server"></a>Hozzon létre egy felhőalapú notebook kiszolgálót
 
@@ -57,7 +59,6 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot meg
     ![Új virtuális gép létrehozása](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
 1. Várjon körülbelül 4 – 5 percig, amíg a állapota **futó**.
-
 
 ## <a name="launch-jupyter-web-interface"></a>Indítsa el a Jupyter webes felület
 
@@ -102,10 +103,9 @@ Miután a virtuális gép fut, használja a **Notebook virtuális gépek** szaka
 
     A legnagyobb kódcellába, lásd: `run.log` több helyen is használja. Minden egyes `run.log` annak értéket ad hozzá a munkaterülethez.
 
-
 ## <a name="view-logged-values"></a>Naplózott értékek megtekintése
 
-1. A kimenet a `run` cella vissza az Azure Portalon a kísérlet eredmények megtekintése a munkaterület mutató hivatkozást tartalmaz. 
+1. A kimenet a `run` cella vissza az Azure Portalon a kísérlet eredmények megtekintése a munkaterület mutató hivatkozást tartalmaz.
 
     ![Kísérletek megtekintése](./media/quickstart-run-cloud-notebook/view-exp.png)
 
@@ -117,7 +117,7 @@ Miután a virtuális gép fut, használja a **Notebook virtuális gépek** szaka
 
 Mivel a kódot a hozzávetőleges pi véletlenszerű értéket használ, a grafikon különböző értékek jelennek meg.  
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 ### <a name="stop-the-notebook-vm"></a>A notebook virtuális gép leállítása
 

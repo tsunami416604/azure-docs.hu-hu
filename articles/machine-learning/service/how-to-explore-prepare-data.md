@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: f9087d1fda7574043879983e31d7b608dbe58798
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f4e7fcbe403017a6d957a60a8e5664f2e6c5ba26
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204971"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409825"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Ismerje meg, és előkészíti az adatokat az adatkészlet osztályhoz (előzetes verzió)
 
@@ -35,7 +35,7 @@ Ismerje meg, és az adatok előkészítéséhez, lesz szüksége:
 
 * Az Azure Machine Learning SDK Pythonhoz készült (1.0.21 verzió vagy újabb). Telepíteni, vagy frissítsen az SDK legújabb verzióját, lásd: [telepítése vagy frissítése az SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
-* Az Azure Machine Learning Adatelőkészítéshez SDK-t. Telepítse vagy frissítse a legújabb verzióra, lásd: [telepíteni vagy frissíteni a a Data Prep SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py#install).
+* Az Azure Machine Learning Adatelőkészítéshez SDK-t. Telepítse vagy frissítse a legújabb verzióra, lásd: [telepíteni vagy frissíteni a Data Prep SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py#install).
 
 * A példák és kövesse a mintafájlok letöltése: [crime.csv](https://dprepdata.blob.core.windows.net/dataset-sample-files/crime.csv) és [city.json](https://dprepdata.blob.core.windows.net/dataset-sample-files/city.json).
 
@@ -63,10 +63,10 @@ top_n_sample_dataset = dataset.sample('top_n', {'n': 5})
 top_n_sample_dataset.to_pandas_dataframe()
 ```
 
-||ID (Azonosító)|Eset száma|Dátum|Letiltás|IUCR|Elsődleges típusa|...|
+||azonosító|Eset száma|Dátum|Letiltás|IUCR|Elsődleges típusa|...|
 -|--|-----------|----|-----|----|------------|---
 0|10498554|HZ239907|4/4/2016 23:56|007XX E 111TH ST|1153|MEGTÉVESZTŐ ELJÁRÁS|...
-1|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD ELENTÉS MENTÉSE|890|LOPÁS|...
+1.|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD ELENTÉS MENTÉSE|890|LOPÁS|...
 2|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTÓI ELENTÉS MENTÉSE|1154|MEGTÉVESZTŐ ELJÁRÁS|...
 3|10519591|HZ261534|4/15/2016 9:00|113XX S VALÓ MENTÉSE|1120|MEGTÉVESZTŐ ELJÁRÁS|...
 4|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE ELENTÉS MENTÉSE|890|LOPÁS|...
@@ -80,10 +80,10 @@ simple_random_sample_dataset = dataset.sample('simple_random', {'probability':0.
 simple_random_sample_dataset.to_pandas_dataframe()
 ```
 
-||ID (Azonosító)|Eset száma|Dátum|Letiltás|IUCR|Elsődleges típusa|...|
+||azonosító|Eset száma|Dátum|Letiltás|IUCR|Elsődleges típusa|...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD ELENTÉS MENTÉSE|890|LOPÁS|...
-1|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTÓI ELENTÉS MENTÉSE|1154|MEGTÉVESZTŐ ELJÁRÁS|...
+1.|10519196|HZ261252|4/15/2016 10:00|104XX S SACRAMENTÓI ELENTÉS MENTÉSE|1154|MEGTÉVESZTŐ ELJÁRÁS|...
 2|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE ELENTÉS MENTÉSE|890|LOPÁS|...
 
 ### <a name="stratified-sample"></a>Rétegzett minta
@@ -103,10 +103,10 @@ sample_dataset = dataset.sample('stratified', {'columns': ['Primary Type'], 'fra
 sample_dataset.to_pandas_dataframe()
 ```
 
-||ID (Azonosító)|Eset száma|Dátum|Letiltás|IUCR|Elsődleges típusa|...|
+||azonosító|Eset száma|Dátum|Letiltás|IUCR|Elsődleges típusa|...|
 -|--|-----------|----|-----|----|------------|---
 0|10516598|HZ258664|4/15/2016 17:00|082XX S MARSHFIELD ELENTÉS MENTÉSE|890|LOPÁS|...
-1|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE ELENTÉS MENTÉSE|890|LOPÁS|...
+1.|10534446|HZ277630|4/15/2016 10:00|055XX N KEDZIE ELENTÉS MENTÉSE|890|LOPÁS|...
 2|10535059|HZ278872|4/15/2016 4:30|004XX S KILBOURN ELENTÉS MENTÉSE|810|LOPÁS|...
 
 ## <a name="explore-with-summary-statistics"></a>Ismerje meg az összefoglaló statisztikák
@@ -119,7 +119,7 @@ dataset.get_profile()
 
 ||Típus|Min|Max|Darabszám|Hiányzó száma|Nem hiányzó száma|Hiányzó százalék|Hibák száma|Üres száma|0,1 % ki osztóérték|1 % ki osztóérték|5 %-os ki osztóérték|25 %-os ki osztóérték|50 %-os ki osztóérték|75 %-os ki osztóérték|95 %-os ki osztóérték|99 %-os ki osztóérték|99,9 %-os ki osztóérték|középérték|Szórás|Variancia|Döntés|Értékek
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
-ID (Azonosító)|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
+azonosító|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
 Eset száma|FieldType.STRING|HZ239907|HZ278872|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Dátum|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Blokk|FieldType.STRING|004XX S KILBOURN ELENTÉS MENTÉSE|113XX S VALÓ MENTÉSE|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
@@ -127,16 +127,16 @@ IUCR|FieldType.INTEGER|810|1154|10.0|0.0|10.0|0.0|0.0|0.0|810|850|810|890|1136|1
 Elsődleges típusa|FieldType.STRING|MEGTÉVESZTŐ ELJÁRÁS|LOPÁS|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Leírás|FieldType.STRING|HAMIS ELLENŐRZÉSE|500 USD KERESZTÜL|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Leírás helye|FieldType.STRING||SCHOOL, PUBLIC, BUILDING|10.0|0.0|10.0|0.0|0.0|1.0||||||||||||||
-Letartóztatás|FieldType.BOOLEAN|False (Hamis)|False (Hamis)|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
-Hazai|FieldType.BOOLEAN|False (Hamis)|False (Hamis)|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+Letartóztatás|FieldType.BOOLEAN|Hamis|Hamis|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+Hazai|FieldType.BOOLEAN|Hamis|Hamis|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Beat|FieldType.INTEGER|531|2433|10.0|0.0|10.0|0.0|0.0|0.0|531|531|531|614|1318.5|1911|2433|2433|2433|1371.1|692.094|478994|0.105418|-1.60684
 Kerület|FieldType.INTEGER|5|24|10.0|0.0|10.0|0.0|0.0|0.0|5|5|5|6|13|19|24|24|24|13.5|6.94822|48.2778|0.0930109|-1.62325
-Ward|FieldType.INTEGER|1|48|10.0|0.0|10.0|0.0|0.0|0.0|1|5|1|9|22.5|40|48|48|48|24.5|16.2635|264.5|0.173723|-1.51271
+Ward|FieldType.INTEGER|1.|48|10.0|0.0|10.0|0.0|0.0|0.0|1.|5|1.|9|22.5|40|48|48|48|24.5|16.2635|264.5|0.173723|-1.51271
 Közösségi terület|FieldType.INTEGER|4|77|10.0|0.0|10.0|0.0|0.0|0.0|4|8.5|4|24|37.5|71|77|77|77|41.2|26.6366|709.511|0.112157|-1.73379
 Az FBI kód|FieldType.INTEGER|6|11|10.0|0.0|10.0|0.0|0.0|0.0|6|6|6|6|11|11|11|11|11|9.4|2.36643|5.6|-0.702685|-1.59582
 X koordináta|FieldType.INTEGER|1.16309e + 06|1.18336e + 06|10.0|7.0|3.0|0.7|0.0|0.0|1.16309e + 06|1.16309e + 06|1.16309e + 06|1.16401e + 06|1.16678e + 06|1.17921e + 06|1.18336e + 06|1.18336e + 06|1.18336e + 06|1.17108e + 06|10793.5|1.165e + 08|0.335126|-2.33333
 Y koordináta|FieldType.INTEGER|1.8315e + 06|1.908e + 06|10.0|7.0|3.0|0.7|0.0|0.0|1.8315e + 06|1.8315e + 06|1.8315e + 06|1.83614e + 06|1.85005e + 06|1.89352e + 06|1.908e + 06|1.908e + 06|1.908e + 06|1.86319e + 06|39905.2|1.59243e + 09|0.293465|-2.33333
-Év|FieldType.INTEGER|2016|2016|10.0|0.0|10.0|0.0|0.0|0.0|2016|2016|2016|2016|2016|2016|2016|2016|2016|2016|0|0|NaN|NaN
+év|FieldType.INTEGER|2016|2016|10.0|0.0|10.0|0.0|0.0|0.0|2016|2016|2016|2016|2016|2016|2016|2016|2016|2016|0|0|NaN|NaN
 Frissítés dátuma|FieldType.DATE|2016-05-11 15:48:00+00:00|2016-05-27 15:45:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Szélesség|FieldType.DECIMAL|41.6928|41.9032|10.0|7.0|3.0|0.7|0.0|0.0|41.6928|41.6928|41.6928|41.7057|41.7441|41.8634|41.9032|41.9032|41.9032|41.78|0.109695|0.012033|0.292478|-2.33333
 Hosszúság|FieldType.DECIMAL|-87.6764|-87.6043|10.0|7.0|3.0|0.7|0.0|0.0|-87.6764|-87.6764|-87.6764|-87.6734|-87.6645|-87.6194|-87.6043|-87.6043|-87.6043|-87.6484|0.0386264|0.001492|0.344429|-2.33333
@@ -162,11 +162,11 @@ ds_def = ds_def.keep_columns(['ID', 'Arrest', 'Latitude', 'Longitude'])
 ds_def.head(3)
 ```
 
-||ID (Azonosító)|Letartóztatás| Szélesség|Hosszúság|
+||azonosító|Letartóztatás| Szélesség|Hosszúság|
 -|---------|-----|---------|----------|
-|0|10498554|False (Hamis)|41.692834|-87.604319|
-|1|10516598|False (Hamis)| 41.744107 |-87.664494|
-|2|10519196|False (Hamis)| NaN|NaN|
+|0|10498554|Hamis|41.692834|-87.604319|
+|1.|10516598|Hamis| 41.744107 |-87.664494|
+|2|10519196|Hamis| NaN|NaN|
 
 Ezután ellenőrizze a `MEAN` használatával szélességi oszlop értékét a [ `summarize()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow-summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow) függvény. Ez a függvény elfogad egy tömb, az oszlopok a `group_by_columns` paraméterrel adja meg az összesítési szinten. A `summary_columns` paraméterben az `SummaryColumnsValue` függvénynek, amely megadja az aktuális oszlop nevét, az új számított mező neve és a `SummaryFunction` végrehajtásához.
 
@@ -181,7 +181,7 @@ lat_mean.head(1)
 
 ||Letartóztatás|Latitude_MEAN|
 --|-----|--------|
-|0|False (Hamis)|41.780049|
+|0|Hamis|41.780049|
 
 Az értékek imputálására ellenőrizni fogjuk, ha az [ `ImputeMissingValuesBuilder` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.api.builders.imputemissingvaluesbuilder?view=azure-dataprep-py) egy állandó kifejezés, amelyek biztosítják az vagy egy számított oszlopokat további `MIN`, `MAX`, `MEAN` érték, vagy egy `CUSTOM` értéket. Amikor `group_by_columns` van megadva, hiányzó imputálni csoport szerint kell `MIN`, `MAX`, és `MEAN` csoportonként számítja ki.
 
@@ -215,11 +215,11 @@ ds_def.head(3)
 
 Ahogyan az alábbi táblázatban kimeneti, a hiányzó földrajzi szélesség volt imputált a `MEAN` értékét `Arrest==False` -87 a csoportot, és a hiányzó hosszúsági volt imputált.
 
-||ID (Azonosító)|Letartóztatás|Szélesség|Hosszúság
+||azonosító|Letartóztatás|Szélesség|Hosszúság
 -|---------|-----|---------|----------
-0|10498554|False (Hamis)|41.692834|-87.604319
-1|10516598|False (Hamis)|41.744107|-87.664494
-2|10519196|False (Hamis)|41.780049|-87.000000
+0|10498554|Hamis|41.692834|-87.604319
+1.|10516598|Hamis|41.744107|-87.664494
+2|10519196|Hamis|41.780049|-87.000000
 
 Frissítse az adatkészlet-definícióban, [ `update_definition()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#update-definition-definition--definition-update-message-) , hogy az elvégzett Adatátalakítási lépéseket.
 
@@ -228,11 +228,11 @@ dataset = dataset.update_definition(ds_def, 'Impute Missing')
 dataset.head(3)
 ```
 
-||ID (Azonosító)|Letartóztatás|Szélesség|Hosszúság
+||azonosító|Letartóztatás|Szélesség|Hosszúság
 -|---------|-----|---------|----------
-0|10498554|False (Hamis)|41.692834|-87.604319
-1|10516598|False (Hamis)|41.744107|-87.664494
-2|10519196|False (Hamis)|41.780049|-87.000000
+0|10498554|Hamis|41.692834|-87.604319
+1.|10516598|Hamis|41.744107|-87.664494
+2|10519196|Hamis|41.780049|-87.000000
 
 ## <a name="create-assertion-rules"></a>Előfeltétel-szabályok létrehozása
 
@@ -258,8 +258,8 @@ ds_def.get_profile()
 
 ||Típus|Min|Max|Darabszám|Hiányzó száma|Nem hiányzó száma|Hiányzó százalék|Hibák száma|Üres száma|0,1 % ki osztóérték|1 % ki osztóérték|5 %-os ki osztóérték|25 %-os ki osztóérték|50 %-os ki osztóérték|75 %-os ki osztóérték|95 %-os ki osztóérték|99 %-os ki osztóérték|99,9 %-os ki osztóérték|középérték|Szórás|Variancia|Döntés|Értékek
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
-ID (Azonosító)|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
-Letartóztatás|FieldType.BOOLEAN|False (Hamis)|False (Hamis)|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+azonosító|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
+Letartóztatás|FieldType.BOOLEAN|Hamis|Hamis|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Szélesség|FieldType.DECIMAL|41.6928|41.9032|10.0|0.0|10.0|0.0|0.0|0.0|41.6928|41.7185|41.6928|41.78|41.78|41.78|41.9032|41.9032|41.9032|41.78|0.0517107|0.002674|0.837593|1.05
 Hosszúság|FieldType.INTEGER|-87|-87|10.0|0.0|10.0|0.0|3.0|0.0|-87|-87|-87|-87|-87|-87|-87|-87|-87|-87|0|0|NaN|NaN
 
@@ -288,10 +288,10 @@ dataset = Dataset.auto_read_files('./data/crime.csv')
 dataset.head(3)
 ```
 
-||ID (Azonosító)|Eset száma|Dátum|Blokk|...|
+||azonosító|Eset száma|Dátum|Blokk|...|
 -|---------|-----|---------|----|---
 0|10498554|HZ239907|2016-04-04 23:56:00|007XX E 111TH ST|...
-1|10516598|HZ258664|2016-04-15 17:00:00|082XX S MARSHFIELD ELENTÉS MENTÉSE|...
+1.|10516598|HZ258664|2016-04-15 17:00:00|082XX S MARSHFIELD ELENTÉS MENTÉSE|...
 2|10519196|HZ261252|2016-04-15 10:00:00|104XX S SACRAMENTÓI ELENTÉS MENTÉSE|...
 
 Tegyük fel, hogy kell alakítania a dátum és idő formátumot a "2016-04-04 ESTE 10 – 12 AM". Az a [ `derive_column_by_example()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#derive-column-by-example-source-columns--sourcecolumns--new-column-name--str--example-data--exampledata-----azureml-dataprep-api-dataflow-dataflow) argumentum, a kívánt kimenetet a példákban a `example_data` paraméter a következő formátumban: *(eredeti kimeneti, a kívánt kimeneti)*.
@@ -310,10 +310,10 @@ ds_def.keep_columns(['ID','Date','Date_Time_Range']).head(3)
 
 Az alábbi táblázatban figyelje meg, hogy egy olyan új oszlop Date_Time_Range szereplő rekordok a megadott formátumban.
 
-||ID (Azonosító)|Dátum|Date_Time_Range
+||azonosító|Dátum|Date_Time_Range
 -|--------|-----|----
 0|10498554|2016-04-04 23:56:00|2016-04-04 10 PM – 12 AM
-1|10516598|2016-04-15 17:00:00|2016-04-15 4PM-6PM
+1.|10516598|2016-04-15 17:00:00|2016-04-15 4PM-6PM
 2|10519196|2016-04-15 10:00:00|2016-04-15 10 ÓRA ÉS DÉL
 
 ```Python
@@ -338,7 +338,7 @@ dataset.head(5)
 ||inspections.business.business_id|inspections.business_name|inspections.Business.address|inspections.Business.City|...|
 -|-----|-------------------------|------------|--|---
 0|16162|Gyors-N-Ezee indiai élelmiszerek|3861 24th St|SF|...
-1|67565|Thai király nudli Cafe|1541 TARAVAL St|A SAN FRANCISCÓBAN|...
+1.|67565|Thai király nudli Cafe|1541 TARAVAL St|A SAN FRANCISCÓBAN|...
 2|67565|Thai király nudli Cafe|1541 TARAVAL St|A SAN FRANCISCÓBAN|...
 3|68701|Grindz|832 clement St|SF|...
 4|69186|Premier szintű élelmiszer- & események, Inc.|1255 22nd St|S.F.|...
@@ -362,7 +362,7 @@ ds_def.head(5)
 ||inspections.business.business_id|inspections.business_name|inspections.Business.address|inspections.Business.City|city_grouped|similarity_score|...|
 -|-----|-------------------------|------------|--|---|---|---
 0|16162|Gyors-N-Ezee indiai élelmiszerek|3861 24th St|SF|A San Franciscóban|0.814806|...
-1|67565|Thai király nudli Cafe|1541 TARAVAL St|A SAN FRANCISCÓBAN|A San Franciscóban|1.000000|...
+1.|67565|Thai király nudli Cafe|1541 TARAVAL St|A SAN FRANCISCÓBAN|A San Franciscóban|1.000000|...
 2|67565|Thai király nudli Cafe|1541 TARAVAL St|A SAN FRANCISCÓBAN|A San Franciscóban|1.000000|...
 3|68701|Grindz|832 clement St|SF|A San Franciscóban|0.814806|...
 4|69186|Premier szintű élelmiszer- & események, Inc.|1255 22nd St|S.F.|A San Franciscóban|0.814806|...

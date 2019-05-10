@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: raynew
-ms.openlocfilehash: 9b905d532dfe71fea7c4ec0377eb53b9e3073907
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1118d1de72ca7cd44844a0b526efd85eb419bc67
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926591"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65412761"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Azure virtuális gépek replikálása egyik régióból a másikba-támogatási mátrixa
 
@@ -33,7 +33,7 @@ Ez a cikk összegzi támogatási és előfeltételek beállításakor az Azure v
 
 **Erőforrás-művelet** | **Részletek**
 --- | --- | ---
-**Tároló áthelyezése erőforráscsoportok közt** | Nem támogatott
+**Tároló áthelyezése erőforráscsoportok közt** | Érvénytelen érték
 **Számítási és tárolási és hálózati erőforrások áthelyezése erőforráscsoportok közt** | Nem támogatott.<br/><br/> Ha egy virtuális gép vagy a kapcsolódó összetevők, például a tárolási és hálózati után a virtuális gép áll replikálás alatt, kell tiltsa le, majd engedélyezze újra a virtuális gép replikálását.
 **Azure virtuális gépek replikálása egy előfizetésből egy másikba vész-helyreállítási** | Támogatott azonos Azure Active Directory-bérlőben.
 **Virtuális gépek áttelepítése támogatott földrajzi fürtökben (belül és több előfizetés)-régiók között** | Támogatott azonos Azure Active Directory-bérlőben.
@@ -47,7 +47,7 @@ Replikálja, és a virtuális gépek helyreállítása ugyanazon a földrajzi f�
 **Földrajzi fürt** | **Azure-régiók**
 -- | --
 Az Amerikai | Kelet-Kanada, Kanada középső, déli középső RÉGIÓJA, USA nyugati középső RÉGIÓJA, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA középső RÉGIÓJA, USA északi középső RÉGIÓJA
-Európa | Egyesült Királyság nyugati régiója, Egyesült Királyság déli régiója, Észak-Európa, Nyugat-Európa, Franciaország közép-India, Dél-Franciaország
+Európa | Egyesült Királyság nyugati régiója, Egyesült Királyság déli régiója, Észak-Európa, Nyugat-Európa, Franciaország közép-India, Dél-Franciaország, Dél-Afrika nyugati régiója, Dél-Afrika északi régiója
 Ázsia | Dél-India, közép-India, Délkelet-Ázsia, Kelet-Ázsia, kelet-japán, Nyugat-japán, Korea középső régiója, Korea déli régiója
 Ausztrália   | Kelet-Ausztrália, Délkelet-Ausztrália, Ausztrália középső régiója, Ausztrália 2. középső régiója
 Azure Government    | USA-beli Államigazgatás – Virginia, USA-beli Államigazgatás – Iowa, USA-beli államigazgatás – Arizona, USA-beli államigazgatás – Texas, US DOD keleti régiója, USA védelmi Minisztériuma – középső régiója
@@ -150,12 +150,13 @@ Méret | Minden olyan Azure virtuális gép méretét legalább 2 processzormag 
 Rendelkezésre állási csoportok | Támogatott | Ha engedélyezi az alapértelmezett beállításokat az Azure virtuális gép replikációját, a rendelkezésre állási csoport automatikusan jön létre a forrás területi beállításokat. Ezek a beállítások módosítása
 Rendelkezésre állási zónák | Támogatott |
 Hybrid Use Benefit (HUB) | Támogatott | Ha a forrásoldali virtuális gép van engedélyezve, HUB licence feladatátvételi teszt vagy feladatátvétel a virtuális gép is használ a HUB licenc.
-Virtuális gépek méretezési csoportjai | Nem támogatott |
+Virtuális gépek méretezési csoportjai | Érvénytelen érték |
 Azure-katalógus-rendszerképek – a Microsoft közzétett | Támogatott | Támogatott, ha a virtuális Gépet egy támogatott operációs rendszert futtat.
 Azure-katalógus-lemezkép - harmadik féltől származó közzétett | Támogatott | Támogatott, ha a virtuális Gépet egy támogatott operációs rendszert futtat.
 Egyéni lemezkép - harmadik féltől származó közzétett | Támogatott | Támogatott, ha a virtuális Gépet egy támogatott operációs rendszert futtat.
 Virtuális gépek áttelepítése a Site Recovery | Támogatott | Ha VMware virtuális gép vagy fizikai gép lett migrálva az Azure Site Recovery segítségével, távolítsa el a gépen futó mobilitási szolgáltatás régebbi verzióját, és indítsa újra a gépet egy másik Azure-régióban való replikálásához, mielőtt szüksége.
-Az RBAC-szabályzatok | Nem támogatott | A szerepköralapú hozzáférés-vezérlés (RBAC) házirendek a virtuális gépek nem lesznek replikálva a feladatátvételi virtuális Gépen a célrégióban.
+Az RBAC-szabályzatok | Érvénytelen érték | A szerepköralapú hozzáférés-vezérlés (RBAC) házirendek a virtuális gépek nem lesznek replikálva a feladatátvételi virtuális Gépen a célrégióban.
+Kiterjesztések | Érvénytelen érték | Bővítmények a rendszer nem replikálja a feladatátvételi virtuális Gépen a célrégióban. A feladatátvételt követően manuálisan telepíteni kell.
 
 ## <a name="replicated-machines---disk-actions"></a>Replikált gépek - lemez műveletek
 
@@ -175,7 +176,7 @@ Ez a táblázat foglalja össze a Azure virtuális gép operációsrendszer-leme
 **Összetevő** | **Támogatás** | **Részletek**
 --- | --- | ---
 Az operációs rendszer lemez maximális mérete | 2048 GB | [További](../virtual-machines/windows/managed-disks-overview.md) Virtuálisgép-lemezeket.
-Ideiglenes lemez | Nem támogatott | Az ideiglenes lemez mindig ki van zárva a replikációból.<br/><br/> Állandó adatokat ne tároljon az ideiglenes lemezen. [További információk](../virtual-machines/windows/managed-disks-overview.md).
+Ideiglenes lemez | Érvénytelen érték | Az ideiglenes lemez mindig ki van zárva a replikációból.<br/><br/> Állandó adatokat ne tároljon az ideiglenes lemezen. [További információk](../virtual-machines/windows/managed-disks-overview.md).
 Adatlemez maximális mérete | 4095 GB |
 Adatok lemez maximális száma | Egy adott Azure-beli Virtuálisgép-méretet támogatása akár 64, összhangban | [További](../virtual-machines/windows/sizes.md) Virtuálisgép-méretekkel kapcsolatos.
 Lemez adatváltozási sebesség | 10 Mbps for a premium storage lemezenkénti maximális. Legfeljebb 2 MB/s Standard Storage lemezenkénti. | Ha az átlagos adatváltozási sebessége a a lemez folyamatosan magasabb, mint a maximális, replikálása nem történik meg.<br/><br/>  Azonban csak időnként túllépi a maximálisan engedélyezett, ha replikációs legérdekesebb részeit is, de előfordulhat, hogy kissé késleltetett helyreállítási pontok látható.
@@ -185,21 +186,21 @@ Felügyelt lemez – standard | Támogatott az Azure-régióban, amelyben az Azu
 Felügyelt lemez – prémium szintű | Támogatott az Azure-régióban, amelyben az Azure Site Recovery támogatott. |
 Standard SSD | Támogatott |
 Redundancia | Az LRS és a GRS támogatottak.<br/><br/> A ZRS nem támogatott.
-Ritkán használt adatok és a gyakori elérésű tárolási | Nem támogatott | Virtuálisgép-lemezek nem támogatják a ritka és gyakori elérésű tárolási
+Ritkán használt adatok és a gyakori elérésű tárolási | Érvénytelen érték | Virtuálisgép-lemezek nem támogatják a ritka és gyakori elérésű tárolási
 A tárolóhelyek | Támogatott |
 Titkosítás inaktív állapotban (SSE) | Támogatott | Az SSE az alapértelmezett beállítás, a storage-fiókok.   
 Az Azure Disk Encryption (ADE) a Windows operációs rendszer | Engedélyezve van a virtuális gépek [az Azure AD-alkalmazást encryption](https://aka.ms/ade-aad-app) támogatottak |
-Az Azure Disk Encryption (ADE) a Linux operációs rendszer | Nem támogatott |
+Az Azure Disk Encryption (ADE) a Linux operációs rendszer | Érvénytelen érték |
 Gyakori elérésű hozzáadása | Támogatott | Adja hozzá az Azure virtuális gép replikált adatlemez engedélyezése a felügyelt lemezeket használó virtuális gépek esetén támogatott.
-Gyakori elérésű távolítsa el a lemezt | Nem támogatott | Ha eltávolítja az adatlemezt a virtuális gépen, tiltsa le a replikációt, és engedélyezze újra a virtuális gép replikációját szüksége.
+Gyakori elérésű távolítsa el a lemezt | Érvénytelen érték | Ha eltávolítja az adatlemezt a virtuális gépen, tiltsa le a replikációt, és engedélyezze újra a virtuális gép replikációját szüksége.
 Lemez kizárása | Támogatás. Használjon [Powershell](azure-to-azure-exclude-disks.md) konfigurálásához. |  Ideiglenes lemezek alapértelmezés szerint ki vannak zárva.
 Közvetlen tárolóhelyek  | Összeomlás-konzisztens helyreállítási pontok esetében támogatott. Alkalmazás-konzisztens helyreállítási pontok nem támogatottak. |
 Kibővített fájlkiszolgáló  | Összeomlás-konzisztens helyreállítási pontok esetében támogatott. Alkalmazás-konzisztens helyreállítási pontok nem támogatottak. |
 LRS | Támogatott |
 GRS | Támogatott |
 RA-GRS | Támogatott |
-ZRS | Nem támogatott |
-Ritkán használt adatok és a gyakori elérésű tárolási | Nem támogatott | Virtuálisgép-lemezek nem támogatottak a ritkán használt adatok és a gyakori elérésű tárolási
+ZRS | Érvénytelen érték |
+Ritkán használt adatok és a gyakori elérésű tárolási | Érvénytelen érték | Virtuálisgép-lemezek nem támogatottak a ritkán használt adatok és a gyakori elérésű tárolási
 Virtuális hálózatok az Azure Storage-tűzfalak  | Támogatott | Ha a virtuális hálózati hozzáférés korlátozása a storage-fiókokra, lehetővé teszi az [engedélyezése a Microsoft-szolgáltatások megbízható](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 Általános célú V2-tárfiókok (mindkét gyakori és ritka elérésű szint) | Nem | Tranzakciós költségek növelése jelentősen képest általános célú V1-tárfiókok
 
@@ -235,16 +236,16 @@ A hálózati adapter NSG-t | Támogatott | Az NSG-t társítson a hálózati ada
 Az alhálózati NSG | Támogatott | Az NSG-KET társíthat az alhálózat egy Azure Automation-szkript használatával a helyreállítási terv.
 Fenntartott (statikus) IP-cím | Támogatott | Ha a forrásoldali virtuális gép hálózati adapter statikus IP-címmel rendelkezik, és a célként megadott alhálózat az azonos rendelkezésre álló IP-címmel rendelkezik, azt hozzá van rendelve, a feladatátvételen átesett virtuális gép.<br/><br/> Ha a célként megadott alhálózat nem rendelkezik elérhető azonos IP-cím, egy alhálózaton elérhető IP-címek a virtuális gép számára van fenntartva.<br/><br/> Azt is beállíthatja egy rögzített IP-cím és alhálózat **replikált elemek** > **beállítások** > **számítás és hálózat**  >  **Hálózati adapterek**.
 Dinamikus IP-cím | Támogatott | Ha a forrás hálózati adapter dinamikus IP-címzés, a hálózati adapter a feladatátvételen átesett virtuális gép is alapértelmezés szerint dinamikus.<br/><br/> Ez módosítható rögzített IP-címmel, ha szükséges.
-Több IP-cím | Nem támogatott | Amikor feladatátvételt hajt végre egy virtuális Gépet, amely a hálózati adapter több IP-címmel rendelkezik, csak az elsődleges IP-címet a hálózati adapter a forrásrégióban másolatok. Több IP-címet hozzárendelni, adja hozzá a virtuális gépek egy [helyreállítási terv](recovery-plan-overview.md) és csatolása egy parancsfájlt, amely további IP-címek hozzárendelése a csomagot, vagy, a módosítást manuálisan vagy egy parancsfájlt a feladatátvételt követően. 
+Több IP-cím | Érvénytelen érték | Amikor feladatátvételt hajt végre egy virtuális Gépet, amely a hálózati adapter több IP-címmel rendelkezik, csak az elsődleges IP-címet a hálózati adapter a forrásrégióban másolatok. Több IP-címet hozzárendelni, adja hozzá a virtuális gépek egy [helyreállítási terv](recovery-plan-overview.md) és csatolása egy parancsfájlt, amely további IP-címek hozzárendelése a csomagot, vagy, a módosítást manuálisan vagy egy parancsfájlt a feladatátvételt követően. 
 Traffic Manager     | Támogatott | A Traffic Manager előre is megadhatja, hogy a végpont a forrásrégióban rendszeres időközönként, valamint a végponti feladatátvétel esetén a célrégióban adatforgalmat.
 Azure DNS | Támogatott |
 Egyéni DNS  | Támogatott |
 Hitelesített proxykiszolgálói | Támogatott | [Learn more].(site-recovery-azure-to-azure-networking-guidance.md)   
-Authenticated Proxy | Nem támogatott | Ha a virtuális gép egy hitelesített proxyt használ a kimenő hálózati kapcsolatot, azt nem lehet replikálni az Azure Site Recovery használatával.    
+Authenticated Proxy | Érvénytelen érték | Ha a virtuális gép egy hitelesített proxyt használ a kimenő hálózati kapcsolatot, azt nem lehet replikálni az Azure Site Recovery használatával.    
 A helyszíni VPN-helyek közötti kapcsolat<br/><br/>(a vagy ExpressRoute nélkül)| Támogatott | Győződjön meg arról, hogy úgy, hogy a Site Recovery nem adatforgalmat helyszíni az udr-EK és NSG-k vannak konfigurálva. [További információ](site-recovery-azure-to-azure-networking-guidance.md)    
 Virtuális hálózatok közötti kapcsolat | Támogatott | [További információ](site-recovery-azure-to-azure-networking-guidance.md)  
 Virtuális hálózati szolgáltatásvégpontok | Támogatott | Ha a tárfiókok vannak, a virtuális hálózati hozzáférés korlátozása, győződjön meg arról, hogy a megbízható Microsoft-szolgáltatások engedélyezettek-e a tárfiókhoz való hozzáférést.
-Gyorsított hálózatkezelés | Támogatott | A forrásoldali virtuális gép gyorsított hálózatkezelés engedélyezni kell. [További információk](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Felgyorsított hálózat | Támogatott | A forrásoldali virtuális gép gyorsított hálózatkezelés engedélyezni kell. [További információk](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
 
 

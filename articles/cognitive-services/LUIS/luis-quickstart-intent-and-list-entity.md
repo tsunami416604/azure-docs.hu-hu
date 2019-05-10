@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 04/01/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 9083227dd81dca219666e07b70f487069413855d
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: df37e7aad2420d0bc280121634d49675ae29ee5a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521271"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236421"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Oktatóanyag: Pontos szövege egyezik-adatokat kérhet le az utterance (kifejezés)
 
@@ -92,7 +92,7 @@ Az elsődleges _kanonikus_nevű minden elem van a részleg nevét. A szinonimák
 |--|--|
 |Könyvelés|Acct<br>accting<br>3456|
 |Fejlesztési műveletek|Fejlesztés és üzemeltetés<br>4949|
-|Mérnöki tevékenységek|angol<br>naplófeladat<br>4567|
+|Mérnöki tudományok|angol<br>naplófeladat<br>4567|
 |Pénzügy|Pénzügy<br>2020|
 |Információtechnológiai|IT<br>2323|
 |Belső értékesítés|isale<br>insale<br>1414|
@@ -108,11 +108,7 @@ Az elsődleges _kanonikus_nevű minden elem van a részleg nevét. A szinonimák
 
 1. A részleg entitás oldalán `Accounting` új értéket.
 
-    [![Képernyőkép a érték megadása](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "érték megadása képernyőképe")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
-
 1. A szinonimák a szinonimák felvétele a korábbi táblából.
-
-    [![Képernyőkép a szinonimák megadásáról](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "Képernyőkép a szinonimák megadása")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
 
 1. Továbbra is a canonical nevek és a szinonimák hozzáadásával. 
 

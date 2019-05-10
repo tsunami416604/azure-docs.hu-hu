@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 0e5dc73c1f24ccbc2032cecbb857587eb20c6806
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 7c1a13a44d9db8ed029ce798f0bb34944a1a65a7
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026208"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409057"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>Eszköz: Roobo intelligens hang Dev csomag
 
@@ -67,9 +67,9 @@ Ez a cikk az eszköz Roobo intelligens hang fejlesztési készletre vonatkozó i
 
 Fejlesztési kapcsolatos további információkért lásd: a [Roobo – fejlesztési útmutató](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf).
 
-## <a name="audio"></a>Hang
+## <a name="audio"></a>Hanggal
 
-Roobo biztosít olyan eszköz, amely rögzíti az összes hanganyag flash-memória. Hang elhárításának segíthet. Az eszköz egy verzióját minden egyes development kit konfiguráció biztosítunk. Az a [Roobo hely](http://ddk.roobo.com/), válassza ki az eszközt, és válassza a **Roobo eszközök** hivatkozásra a lap alján.
+Roobo biztosít olyan eszköz, amely rögzíti az összes hanganyag flash-memória. Hang elhárításának segíthet. Az eszköz egy verzióját minden egyes development kit konfiguráció biztosítunk. Az a [Roobo hely](https://ddk.roobo.com/), válassza ki az eszközt, és válassza a **Roobo eszközök** hivatkozásra a lap alján.
 
 ## <a name="next-steps"></a>További lépések
 

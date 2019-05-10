@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: 31ca0ee666ff37afa37fb9636860c557d92a52c7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: d0124d6656167af3942e0d054b4e1fa7a2b48e8b
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924789"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410049"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Az Azure virtuális gépek TCP/IP-teljesítményhangolása
 
@@ -178,7 +178,7 @@ Ez a táblázat bemutatja a maximális MB / s sebességet egyetlen TCP-kapcsolat
 | | | | |
 |-|-|-|-|
 |**TCP-ablakméret (bájt)**|**Körbejárási késés (ms)**|**Maximális MB/s átviteli sebesség**|**Maximális megabit/másodperc átviteli sebesség**|
-|65,535|1|65.54|524.29|
+|65,535|1.|65.54|524.29|
 |65,535|30|2.18|17.48|
 |65,535|60|1.09|8.74|
 |65,535|90|.73|5.83|
@@ -237,7 +237,7 @@ Ezek a hatékony TCP beállításait `AutoTuningLevel`:
 | | | | |
 |-|-|-|-|
 |**AutoTuningLevel**|**Méretezési faktor**|**Skálázási szorzót**|**A képlet<br/>maximális méretének kiszámítása**|
-|Letiltva|None|None|Ablakméret|
+|Letiltva|Egyik sem|Egyik sem|Ablakméret|
 |Korlátozott|4|2^4|Ablakméret * (2 ^ 4)|
 |Erősen korlátozott|2|2^2|Ablakméret * (2 ^ 2)|
 |Normál|8|2^8|Ablakméret * (2 ^ 8)|
@@ -256,7 +256,7 @@ Mivel egy nagyobb MTU nagyobb MSS azt jelenti, hogy vezetőnév e MTU növelése
 
 ### <a name="accelerated-networking-and-receive-side-scaling"></a>A gyorsított hálózatkezelés és a fogadóoldali skálázás
 
-#### <a name="accelerated-networking"></a>Gyorsított hálózatkezelés
+#### <a name="accelerated-networking"></a>Felgyorsított hálózat
 
 Virtuális gép hálózati funkciók régebben lett Processzort, a Vendég virtuális Gépen és a hipervizorgazda is. Minden csomagot, amely a gazdagépen keresztül továbbítását a szoftver dolgozza fel a gazdagép CPU-használat, beleértve az összes virtuális hálózati beágyazás és kibontás. Így további áramlik a forgalom, amely a gazdagép, annál magasabb CPU betölteni. És ha a gazdagép Processzorának elfoglalva más műveletekkel, amely is hatással lesz hálózati átviteli sebességgel és késéssel. Az Azure gyorsított hálózatkezeléssel problémát orvosolja.
 
@@ -276,7 +276,7 @@ Gyorsított hálózatkezelés használata, meg kell explicit módon engedélyezi
 
 Méretezés (RSS), amely hatékonyabban osztja el a hálózati forgalom fogadását osztja meg a hálózati illesztőprogram technológia kap feldolgozása több processzor között olyan többprocesszoros rendszerek oldalán kaphat. Egyszerűen fogalmazva az RSS lehetővé teszi a kapott forgalmat több feldolgozni, mert az összes rendelkezésre álló processzorok egy helyett használja a rendszer. További technikai az RSS, lásd: [fogadóoldali skálázás bemutatása](https://docs.microsoft.com/windows-hardware/drivers/network/introduction-to-receive-side-scaling).
 
-A legjobb teljesítmény akkor kaphat, ha a virtuális gépen engedélyezve van a gyorsított hálózatkezelés, akkor engedélyeznie kell az RSS. Az RSS is lehetővé teszi a gyorsított hálózatkezelést előnyei nem használó virtuális gépeken. Annak megállapítása, hogy engedélyezve van-e az RSS- és engedélyezését a áttekintését lásd: [hálózati átviteli sebesség optimalizálása az Azure virtual machines](http://aka.ms/FastVM).
+A legjobb teljesítmény akkor kaphat, ha a virtuális gépen engedélyezve van a gyorsított hálózatkezelés, akkor engedélyeznie kell az RSS. Az RSS is lehetővé teszi a gyorsított hálózatkezelést előnyei nem használó virtuális gépeken. Annak megállapítása, hogy engedélyezve van-e az RSS- és engedélyezését a áttekintését lásd: [hálózati átviteli sebesség optimalizálása az Azure virtual machines](https://aka.ms/FastVM).
 
 ### <a name="tcp-timewait-and-timewait-assassination"></a>TCP TIME_WAIT és TIME_WAIT assassination
 
@@ -316,7 +316,7 @@ Az átviteli sebesség korlát vonatkozik a virtuális géphez. Átviteli sebess
 
 - **Protokoll**: Minden kimenő forgalmat az összes protokollhoz keresztül a határérték felé számolnak.
 
-További információkért lásd: [virtuális gép hálózati sávszélesség](http://aka.ms/AzureBandwidth).
+További információkért lásd: [virtuális gép hálózati sávszélesség](https://aka.ms/AzureBandwidth).
 
 ### <a name="internet-performance-considerations"></a>Internetes teljesítménnyel kapcsolatos szempontok
 

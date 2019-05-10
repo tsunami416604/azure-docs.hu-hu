@@ -67,27 +67,29 @@
                 - name: Lemeztitkosítás a virtuálisgép-méretezési csoportok végrehajtási sorrendbe helyezésével
                   href: azure-security-disk-encryption-extension-sequencing.md
                 - name: Lemeztitkosítás függeléke
-              href: azure-security-disk-encryption-appendix.md
-            - name: Lemeztitkosítás – gyakori kérdések
-              href: azure-security-disk-encryption-faq.md
-            - name: Hibaelhárítás
-              href: azure-security-disk-encryption-tsg.md
-            - name: Azure Disk Encryption Azure AD-alkalmazással (korábbi kiadás)
-              displayName: active directory
-              items:
-                - name: Azure AD-alkalmazással végzett lemeztitkosítás előfeltételei
+                  href: azure-security-disk-encryption-appendix.md
+                - name: Lemeztitkosítás – gyakori kérdések
+                  href: azure-security-disk-encryption-faq.md
+                - name: Hibaelhárítás
+                  href: azure-security-disk-encryption-tsg.md
+                - name: Azure Disk Encryption Azure AD-alkalmazással (korábbi kiadás)
                   displayName: active directory
-                  href: azure-security-disk-encryption-prerequisites-aad.md
-                - name: Lemeztitkosítás Azure AD-alkalmazással Windows rendszerű virtuális gépekhez
-                  displayName: active directory
-                  href: azure-security-disk-encryption-windows-aad.md
-                - name: Lemeztitkosítás Azure AD-alkalmazással Linux rendszerű virtuális gépekhez
-                  displayName: active directory
-                  href: azure-security-disk-encryption-linux-aad.md
+                  items:
+                    - name: Azure AD-alkalmazással végzett lemeztitkosítás előfeltételei
+                      displayName: active directory
+                      href: azure-security-disk-encryption-prerequisites-aad.md
+                    - name: Lemeztitkosítás Azure AD-alkalmazással Windows rendszerű virtuális gépekhez
+                      displayName: active directory
+                      href: azure-security-disk-encryption-windows-aad.md
+                    - name: Lemeztitkosítás Azure AD-alkalmazással Linux rendszerű virtuális gépekhez
+                      displayName: active directory
+                      href: azure-security-disk-encryption-linux-aad.md
     - name: Az Azure Storage biztonsága
       href: security-storage-overview.md
     - name: Biztonsági útmutató a tároláshoz
       href: ../storage/common/storage-security-guide.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Ügyfélszéf
+      href: azure-customer-lockbox-overview.md
 - name: Platform és infrastruktúra
   items:
     - name: Infrastruktúra biztonsága

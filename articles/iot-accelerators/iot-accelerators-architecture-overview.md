@@ -1,6 +1,6 @@
 ---
 title: IoT-megoldásgyorsítók referenciaarchitektúra – Azure |} A Microsoft Docs
-description: További információ az Azure IoT-megoldás megoldásgyorsítók referencia architektúra. A meglévő megoldásgyorsítók kihasználva Ez a referenciaarchitektúra. A referenciaarchitektúra használhatja saját egyéni IoT-megoldások készítése során is.
+description: További információ az Azure IoT-megoldás megoldásgyorsítók referenciaarchitektúra. A meglévő megoldásgyorsítók kihasználva Ez a referenciaarchitektúra. A referenciaarchitektúra használhatja saját egyéni IoT-megoldások készítése során is.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/04/2018
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: philmea
-ms.openlocfilehash: ba5eb50dcf800c186124db348ac584ff6f55cebb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1e3ec677f2c3ce2a7f942c47269fe1f70885ac02
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450303"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466468"
 ---
 # <a name="introduction-to-the-azure-iot-reference-architecture"></a>Az Azure IoT-referenciaarchitektúra bemutatása
 
@@ -38,7 +38,7 @@ A [Azure IoT-referenciaarchitektúra](https://aka.ms/iotrefarchitecture) élő d
 
 A referenciaarchitektúra azonosítja az alapvető alrendszerek az alábbi ábrán látható:
 
-![Core alrendszerek](media/iot-accelerators-architecture-overview/CoreSubsystems.png)
+![Core alrendszerek](media/iot-accelerators-architecture-overview/coresubsystems1.png)
 
 A következő szakaszok ismertetik, hogyan képezze le a távoli figyelési megoldásgyorsító alkotóelemeinek a core alrendszerekhez.
 

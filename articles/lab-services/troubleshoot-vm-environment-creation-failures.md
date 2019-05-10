@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
-ms.openlocfilehash: a653a785e99619c3e256613d6a4d2c7592f54c8c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7baa5e4c113e6c21c6123ac7c8399533a7dfb358
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60848496"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410300"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Végezzen hibaelhárítást a virtuális gép (VM) és a környezet létrehozása sikertelen, az Azure DevTest Labs szolgáltatásban
 DevTest Labs lehetővé teszi, figyelmeztetések, ha egy gép neve érvénytelen, vagy ha a kívánt megsértik a labor házirend. Egyes esetekben látja red `X` mellett a labor virtuális gép vagy a környezet állapotát, amely tájékoztatja, hogy probléma merült fel.  Ez a cikk ismerteti, amellyel az alapul szolgáló problémát talál, és, remélhetőleg, a probléma jövőbeni elkerülése néhány trükköket.
@@ -44,7 +44,7 @@ Ha a hiba a némi várakozás után a virtuális gép vagy a környezet létreho
     ```json
     "properties": {
         "statusCode": "Conflict",
-        "statusMessage": "{\"status\":\"Failed\",\"error\":{\"code\":\"ResourceDeploymentFailure\",\"message\":\"The resource operation completed with terminal provisioning state 'Failed'.\",\"details\":[{\"code\":\"OperationNotAllowed\",\"message\":\"Operation results in exceeding quota limits of Core. Maximum allowed: 100, Current in use: 100, Additional requested: 8. Please read more about quota increase at http://aka.ms/corequotaincrease.\"}]}}",
+        "statusMessage": "{\"status\":\"Failed\",\"error\":{\"code\":\"ResourceDeploymentFailure\",\"message\":\"The resource operation completed with terminal provisioning state 'Failed'.\",\"details\":[{\"code\":\"OperationNotAllowed\",\"message\":\"Operation results in exceeding quota limits of Core. Maximum allowed: 100, Current in use: 100, Additional requested: 8. Please read more about quota increase at https://aka.ms/corequotaincrease.\"}]}}",
     },
     ```
 

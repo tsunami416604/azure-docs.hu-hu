@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: iainfou
-ms.openlocfilehash: 680e087e80d3e9891e201e7cb474ccfcf7fcc70b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d421fad5f574b0d10b24453aca01adf574f493e8
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65072632"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407701"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Csatlakozzon SSH-n keresztül az Azure Kubernetes Service (AKS) karbantartási és hibaelhárítási fürtcsomópontok
 
@@ -20,7 +20,7 @@ Az Azure Kubernetes Service (AKS)-fürt életciklusa során szükség lehet egy 
 
 Ez a cikk bemutatja, hogyan hozhat létre az SSH-kapcsolatot egy AKS-csomópont privát IP-címeik használatával.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 
@@ -69,7 +69,7 @@ Az AKS-csomópontok nyilvánosan nem jelennek meg a az interneten. Az AKS-csomó
 A magánhálózati IP-címe egy AKS fürt csomópont használatával megtekintheti a [az vm list-ip-addresses] [ az-vm-list-ip-addresses] parancsot. Adja meg a saját AKS-fürt erőforrás csoport nevét egy korábbi kapott [az-aks-show] [ az-aks-show] . lépés:
 
 ```azurecli-interactive
-az vm list-ip-addresses --resource-group MC_myAKSCluster_myAKSCluster_eastus -o table
+az vm list-ip-addresses --resource-group MC_myResourceGroup_myAKSCluster_eastus -o table
 ```
 
 Az alábbi példa kimenetében látható, az AKS-csomópontok magánhálózati IP-címei:

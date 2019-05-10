@@ -9,12 +9,12 @@ ms.date: 4/29/2019
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: 130eb9cc8bec4681f5c0d165735c6c3b2357576c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: 560f7eb8a8809cdd6ef410a610be9806f9709754
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148319"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409983"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob storage életciklus kezelése
 
@@ -37,7 +37,7 @@ Az életciklus-kezelési szabályzat érhető el mindkét General Purpose v2 (GP
 
 Az életciklus felügyeleti funkció ingyenesen elérhető. A normál művelet költsége díjszabásának a [Blobok listázása](https://docs.microsoft.com/rest/api/storageservices/list-blobs) és [Blobszint beállítása](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API-hívások. Törlési művelet díjmentes. Díjszabással kapcsolatos további információkért lásd: [Blokkbob-díjszabás](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás 
+## <a name="regional-availability"></a>Regionális elérhetőség 
 Az életciklus szolgáltatást minden nyilvános Azure-régióban érhető el. 
 
 
@@ -87,7 +87,7 @@ Adja meg, és üzembe helyezése ARM-sablonok használatával, az Azure-megoldá
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {
@@ -123,7 +123,7 @@ Adja meg, és üzembe helyezése ARM-sablonok használatával, az Azure-megoldá
 }
 ```
 
-## <a name="policy"></a>Szabályzat
+## <a name="policy"></a>Házirend
 
 Életciklus-kezelési szabályzat szabályok a JSON-dokumentumok gyűjteménye:
 
@@ -148,16 +148,16 @@ Adja meg, és üzembe helyezése ARM-sablonok használatával, az Azure-megoldá
 
 A házirend szabályok gyűjteménye:
 
-| Paraméter neve | Paraméter típusa | Megjegyzések |
+| Paraméternév | Paraméter típusa | Megjegyzések |
 |----------------|----------------|-------|
 | szabályok          | A szabály objektumokból álló tömb | Legalább egy szabályt egy házirendet a szükséges. Egy szabályzatban legfeljebb 100 szabályokat definiálhat.|
 
 A házirend minden egyes szabály több paraméterekkel rendelkezik:
 
-| Paraméter neve | Paraméter típusa | Megjegyzések | Szükséges |
+| Paraméternév | Paraméter típusa | Megjegyzések | Kötelező |
 |----------------|----------------|-------|----------|
 | név           | String |A szabály neve legfeljebb 256 alfanumerikus karaktereket tartalmazhat. Szabály neve a kis-és nagybetűket.  Egy házirend egyedinek kell lennie. | True (Igaz) |
-| enabled | Boolean | Egy nem kötelező logikai érték beolvasása, hogy ideiglenes szabály le van tiltva. Alapértelmezett érték: igaz, ha nincs beállítva. | False (Hamis) | 
+| enabled | Boolean | Egy nem kötelező logikai érték beolvasása, hogy ideiglenes szabály le van tiltva. Alapértelmezett érték: igaz, ha nincs beállítva. | Hamis | 
 | type           | Enum érték | Az aktuális érvényes típus `Lifecycle`. | True (Igaz) |
 | definíció     | Egy objektum, amely meghatározza az életciklus-szabály | Minden egyes definíció épül fel egy szűrő és egy műveletet. | True (Igaz) |
 
@@ -221,9 +221,9 @@ A futtatási feltétel teljesülése esetén a szűrt blobok műveletek lépnek.
 
 | Műveletek        | Alap Blob                                   | Pillanatkép      |
 |---------------|---------------------------------------------|---------------|
-| tierToCool    | Támogatja a gyakori elérésű szint jelenleg a blobokhoz         | Nem támogatott |
-| tierToArchive | Támogatja a gyors vagy lassú elérésű szint jelenleg a blobokhoz | Nem támogatott |
-| delete        | Támogatott                                   | Támogatott     |
+| tierToCool    | Támogatja a gyakori elérésű szint jelenleg a blobokhoz         | Érvénytelen érték |
+| tierToArchive | Támogatja a gyors vagy lassú elérésű szint jelenleg a blobokhoz | Érvénytelen érték |
+| törlés        | Támogatott                                   | Támogatott     |
 
 >[!NOTE] 
 >Ha egynél több művelet ugyanennek a blobnak a definiálja, életciklus-felügyelet a legkevésbé költséges művelet a blob vonatkozik. Ha például a művelet `delete` művelet olcsóbb `tierToArchive`. A művelet `tierToArchive` művelet olcsóbb `tierToCool`.
@@ -346,7 +346,7 @@ Módosítva, és rendszeresen élettartama során elért adatok esetén pillanat
   ]
 }
 ```
-## <a name="faq"></a>GYIK 
+## <a name="faq"></a>gyakori kérdésekben 
 **Létrehozott egy új házirendet, miért van a műveleteket nem azonnali futtatása?**  
 A platform naponta egyszer fut, az életciklus-szabályzat. Után konfigurálhat egy szabályzatot, az első alkalommal történő futtatása bizonyos műveletek (például a rétegezést és törlése) esetében akár 24 óráig is eltarthat.  
 

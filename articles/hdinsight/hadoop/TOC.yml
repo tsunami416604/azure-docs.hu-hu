@@ -106,19 +106,6 @@
               href: apache-hadoop-use-mapreduce-dotnet-sdk.md
             - name: A MapReduce-minták futtatása
               href: apache-hadoop-run-samples-linux.md
-        - name: Az Apache Pig használata az Apache Hadooppal
-          href: hdinsight-use-pig.md
-          items:
-            - name: Az SSH és az Apache Pig használata
-              href: apache-hadoop-use-pig-ssh.md
-            - name: Azure PowerShell használatával
-              href: apache-hadoop-use-pig-powershell.md
-            - name: A .NET-hez készült SDK használata
-              href: apache-hadoop-use-pig-dotnet-sdk.md
-            - name: A cURL használata
-              href: apache-hadoop-use-pig-curl.md
-        - name: Az Apache DataFu használata az Apache Piggel
-          href: apache-hadoop-use-pig-datafu-udf.md
         - name: Apache Hadoop-feladatok elküldése
           href: submit-apache-hadoop-jobs-programmatically.md
     - name: Fejlesztés

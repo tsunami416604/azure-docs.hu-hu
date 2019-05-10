@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 84dddf5ed9c31e8585480319af189d31e39163e5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: ff098ebd23d2ce5a8c9c39f154375be1dae6a262
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998991"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408868"
 ---
-# <a name="tutorial-integrate-with-azure-managed-identities"></a>Oktatóanyag: Integrálása az Azure által felügyelt identitások
+# <a name="integrate-with-azure-managed-identities"></a>Integrálása az Azure által felügyelt identitások
 
 Az Azure Active Directory [felügyelt identitások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) leegyszerűsíti a felhőbeli alkalmazások titkos kódok kezelése. Felügyelt identitással állíthat be a kódot a létrehozott egyszerű szolgáltatás használata az Azure számítási szolgáltatás díjait. Egy külön hitelesítő adatot az Azure Key Vault vagy a helyi kapcsolati karakterlánc helyett használhat egy felügyelt identitás. 
 
@@ -61,7 +61,7 @@ A portálon egy felügyelt identitás beállításához először hozzon létre 
 
 1. Az a [az Azure portal](https://aka.ms/azconfig/portal)válassza **összes erőforrás** , és válassza ki az alkalmazás a konfigurációs adattárolónál a rövid útmutatóban létrehozott.
 
-2. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget.
+2. Válassza ki **hozzáférés-vezérlés (IAM)**.
 
 3. Az a **hozzáférés ellenőrzése** lapon jelölje be **Hozzáadás** a a **szerepkör-hozzárendelés hozzáadása** felhasználói felület kártya.
 

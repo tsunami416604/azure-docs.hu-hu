@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fe7a7a548050d8d5d81ccecf17b4240ebcea10b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8ec5c39342f0477bd2b529da38fd4d1292476c93
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60459835"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416308"
 ---
 A következő táblázat felsorolja a rendelkezésre álló támogatott régiók általánosan elérhető szolgáltatások
 
@@ -28,6 +28,7 @@ A következő táblázat felsorolja a rendelkezésre álló támogatott régiók
 | Ausztrál kormányzati | Ausztrália középső régiója, Ausztrália 2. középső régiója |
 | India | Nyugat-India, Közép-India, Dél-India |
 | Dél-Korea | Korea középső régiója, Korea déli régiója |
+| Dél-Afrika | Dél-Afrika északi régiója, Dél-Afrika nyugati régiója |
 
 * Az ExpressRoute előzetes kapcsolatos információkért lásd: [virtuális WAN és az ExpressRoute - előzetes verzió](../articles/virtual-wan/virtual-wan-expressroute-portal.md#register).
 * A pont – hely előzetes kapcsolatos információkért lásd: [virtuális WAN és pont – hely – az előzetes verziójú](../articles/virtual-wan/virtual-wan-point-to-site-portal.md#register).

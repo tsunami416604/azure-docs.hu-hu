@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fad69c4108d747c44eccf37b81adf2c7c615cb58
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6189ea2866d1c16f994179df0179e29353e6c47d
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65156846"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410718"
 ---
 # <a name="create-a-custom-voice"></a>Hozzon létre egy egyéni beszédfelismerési
 
-A [előkészíti az adatokat az egyéni beszédfelismerési](how-to-custom-voice-prepare-data.md), hogy leírtak segítségével egyéni beszédfelismerési és a különböző formátumkövetelményeknek különböző adattípusok. Miután előkészítette az adatokat, elkezdheti a feltöltik őket a [egyéni beszédfelismerési portál](http://aka.ms/custom-voice-portal), vagy az egyéni beszédfelismerési képzési API-n keresztül. Itt a lépéseket a portálon keresztül egy egyéni beszédfelismerési képzési ismertetünk.
+A [előkészíti az adatokat az egyéni beszédfelismerési](how-to-custom-voice-prepare-data.md), hogy leírtak segítségével egyéni beszédfelismerési és a különböző formátumkövetelményeknek különböző adattípusok. Miután előkészítette az adatokat, elkezdheti a feltöltik őket a [egyéni beszédfelismerési portál](https://aka.ms/custom-voice-portal), vagy az egyéni beszédfelismerési képzési API-n keresztül. Itt a lépéseket a portálon keresztül egy egyéni beszédfelismerési képzési ismertetünk.
 
 > [!NOTE]
 > Ezen a lapon azt feltételezi, hogy elolvasta [Ismerkedés az egyéni beszédfelismerési](how-to-custom-voice.md) és [előkészíti az adatokat az egyéni beszédfelismerési](how-to-custom-voice-prepare-data.md), és létrehozott egy egyéni beszédfelismerési projektet.
@@ -28,7 +28,7 @@ Ellenőrizze az egyéni beszédfelismerési támogatott nyelvek: [nyelvi testres
 
 ## <a name="upload-your-datasets"></a>Az adathalmazok feltöltése
 
-Ha készen áll az adatok feltöltéséhez, nyissa meg a [egyéni beszédfelismerési portál](http://aka.ms/custom-voice-portal). Hozzon létre vagy válasszon ki egy egyéni beszédfelismerési projektet. A projekthez meg kell osztania, a megfelelő nyelvi és a területi és a nemek tulajdonságokat, az adatok a leképezés a hangalapú tanítási használatára. Válassza ki például `en-GB` Ha rendelkezik hangfelvételeket használatával egy UK hangsúlyos angol nyelven történik.
+Ha készen áll az adatok feltöltéséhez, nyissa meg a [egyéni beszédfelismerési portál](https://aka.ms/custom-voice-portal). Hozzon létre vagy válasszon ki egy egyéni beszédfelismerési projektet. A projekthez meg kell osztania, a megfelelő nyelvi és a területi és a nemek tulajdonságokat, az adatok a leképezés a hangalapú tanítási használatára. Válassza ki például `en-GB` Ha rendelkezik hangfelvételeket használatával egy UK hangsúlyos angol nyelven történik.
 
 Nyissa meg a **adatok** fülre, és **adatfeltöltés**. A varázslóban válassza ki a megfelelő adattípust, amely megfelel a mi, készítse elő.
 
@@ -47,8 +47,8 @@ Az alábbi táblázat az importált adatkészletek feldolgozása állapotai:
 | Állapot | Jelentés |
 | ----- | ------- |
 | Feldolgozás | Az adatkészlet megkaptuk, és a feldolgozása folyamatban van. |
-| Sikeres | Az adatkészlet ellenőrzése megtörtént, és előfordulhat, hogy most már használható hangalapú modell létrehozásához. |
-| Meghiúsult | Az adatkészlet nem lett sikerült számos oka lehet, például fájlhibák Konfigurációadatok problémái vagy hálózati problémák miatt a feldolgozás során. |
+| Sikeres művelet | Az adatkészlet ellenőrzése megtörtént, és előfordulhat, hogy most már használható hangalapú modell létrehozásához. |
+| Sikertelen | Az adatkészlet nem lett sikerült számos oka lehet, például fájlhibák Konfigurációadatok problémái vagy hálózati problémák miatt a feldolgozás során. |
 
 Érvényesítés befejezése után láthatja az egyes az adatkészleteket az egyező kimondott szöveg teljes száma a **beszédmódok** oszlop. Ha a kiválasztott adattípus hosszú – hang Szegmentálás igényel, az ebben az oszlopban csak azt, vagy alapján az átiratok vagy a speech beszédátírási szolgáltatással rendelkezik szegmentált megcímkézzen tükrözi. Az adatkészlet érvényesítése sikeresen importálva megcímkézzen részletes eredményét és azok leképezés átiratok megtekintése további töltheti le. Tipp: hosszú – hang Szegmentálás adatfeldolgozási több, mint egy órát is eltarthat.
 
@@ -89,8 +89,8 @@ Az állapot látható voice-modellhez, az adatkészlet átalakításának folyam
 | Állapot | Jelentés |
 | ----- | ------- |
 | Feldolgozás | A szóbeli modell létrehozása folyamatban van. |
-| Sikeres | A szóbeli modell létrehozását, és is üzembe helyezhetők. |
-| Meghiúsult | A beszédfelismerési modell képzés számos oka lehet, például nem látható adatok problémák vagy hálózati problémák miatt leállt. |
+| Sikeres művelet | A szóbeli modell létrehozását, és is üzembe helyezhetők. |
+| Sikertelen | A beszédfelismerési modell képzés számos oka lehet, például nem látható adatok problémák vagy hálózati problémák miatt leállt. |
 
 Idő képzési hang feldolgozott adatok mennyiségétől függően változik. Tipikus alkalommal között tájékozódhat utterances több száz 30 perc a 20 000 utterances 40 óra. Miután a modell betanítása sikerült van, elkezdheti ki.
 

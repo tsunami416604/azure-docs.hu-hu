@@ -4,23 +4,35 @@
   items:
     - name: Tudnivalók az Azure App Configurationről
       href: overview.md
+    - name: GYIK
+      href: faq.md
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: ASP.NET Core-alkalmazás létrehozása
-      href: quickstart-aspnet-core-app.md
-    - name: .NET Core-alkalmazás létrehozása
-      href: quickstart-dotnet-core-app.md
-    - name: .NET-keretrendszerre épülő alkalmazás létrehozása
-      href: quickstart-dotnet-app.md
-    - name: Azure-függvény létrehozása
-      href: quickstart-azure-function-csharp.md
-    - name: Java Spring-alkalmazás létrehozása
-      href: quickstart-java-spring-app.md
+    - name: Konfiguráció
+      items:
+        - name: ASP.NET-mag
+          href: quickstart-aspnet-core-app.md
+        - name: .NET Core
+          href: quickstart-dotnet-core-app.md
+        - name: .NET-keretrendszer
+          href: quickstart-dotnet-app.md
+        - name: Azure Functions a .NET Core-ban
+          href: quickstart-azure-function-csharp.md
+        - name: Java Spring
+          href: quickstart-java-spring-app.md
+    - name: Funkciókezelés
+      items:
+        - name: ASP.NET-mag
+          href: quickstart-feature-flag-aspnet-core.md
 - name: Oktatóanyagok
   items:
     - name: Dinamikus konfiguráció engedélyezése az ASP.NET Core-ban
       href: enable-dynamic-configuration-aspnet-core.md
+    - name: Funkciójelölők használata .NET Core-alkalmazásokban
+      href: use-feature-flags-dotnet-core.md
+    - name: Funkciójelölők kezelése
+      href: manage-feature-flags.md
     - name: Integráció CI-/CD-folyamattal
       href: integrate-ci-cd-pipeline.md
 - name: Példák
@@ -33,24 +45,36 @@
       href: concept-key-value.md
     - name: Adott időpontban készült pillanatképek
       href: concept-point-time-snapshot.md
+    - name: Funkciókezelés
+      href: concept-feature-management.md
 - name: Útmutatók
   items:
     - name: Integráció az Azure Managed Service Identityvel
       href: howto-integrate-azure-managed-service-identity.md
     - name: Konfigurációs adatok importálása vagy exportálása
       href: howto-import-export-data.md
+    - name: Ajánlott eljárások
+      href: howto-best-practices.md
 - name: Referencia
   items:
-    - name: .NET Core-konfigurációszolgáltató
-      href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
-    - name: A .NET-keretrendszer konfigurációkészítője
-      href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
-    - name: Java Spring-konfigurációszolgáltató
-      href: 'https://github.com/Microsoft/spring-cloud-azure/tree/azure-config/spring-cloud-azure-starters/spring-cloud-starter-azure-config'
-    - name: .NET Azure SDK
-      href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/Azure.ApplicationModel.Configuration/data-plane'
-    - name: REST
-      href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
+    - name: Konfiguráció
+      items:
+        - name: .NET Core-konfigurációszolgáltató
+          href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
+        - name: A .NET-keretrendszer konfigurációkészítője
+          href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
+        - name: Java Spring-konfigurációszolgáltató
+          href: 'https://github.com/Microsoft/spring-cloud-azure/tree/azure-config/spring-cloud-azure-starters/spring-cloud-starter-azure-config'
+        - name: .NET Azure SDK
+          href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/Azure.ApplicationModel.Configuration/data-plane'
+        - name: REST
+          href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
+    - name: Funkciókezelés
+      items:
+        - name: .NET Core-kódtár
+          href: 'https://go.microsoft.com/fwlink/?linkid=2091700'
+        - name: ASP.NET Core-kódtár
+          href: 'https://go.microsoft.com/fwlink/?linkid=2091410'
 - name: További források
   items:
     - name: Bevezető videó

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 66d0d791e4f32fc0828d400db7b59d836d221aee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c919d02a72565f42c125e6d123b48e2cedaea508
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60315642"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407979"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TextMagic
 
@@ -116,10 +116,10 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés TextMagic, hajtsa v�
 
     | Name (Név) |   Adatforrás-attribútum| Névtér  |
     | --------------- | --------------- | --------------- |
-    | Vállalati | user.companyname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Keresztnév               | user.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | Vezetéknév            | user.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | telefon               | user.telephonenumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Vállalati | user.companyname | https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Keresztnév               | user.givenname |  https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Vezetéknév            | user.surname |  https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | telefon               | user.telephonenumber |  https://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | | |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
@@ -231,7 +231,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 Alkalmazás által támogatott **csak az idő felhasználókiépítés** , miután a felhasználók hitelesítésére, az alkalmazás automatikusan létrejön. Írja be az adatokat a rendszer az alárendelt fiók aktiválására szolgáló első bejelentkezéskor egyszer kell.
 Nincs meg ebben a szakaszban a művelet elem.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

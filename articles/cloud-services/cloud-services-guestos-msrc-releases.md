@@ -11,21 +11,51 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/26/2019
+ms.date: 5/8/2019
 ms.author: raiye
-ms.openlocfilehash: 42c241ce6b14eac2f76785b7b16b537d3e88bd8d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f63b707f72b6966615d09ef0b86ce3d056a39249
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60623068"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65465552"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure vendég operációs rendszerre alkalmazott frissítések. Ez a cikk meghatározni, ha az adott frissítés alkalmazza a vendég operációs rendszer keresése. Frissítések mindig átviszi az adott [termékcsalád] [ family-explain] azokat a jelentek meg.
 
+## <a name="april-2019-guest-os"></a>Április 2019 vendég operációs rendszer
+
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| --- | --- | --- | --- | --- |
+| Rel 19-04 | [4493509] | A Windows 10 biztonsági | 6.6 | 2019. április 9. |
+| Rel 19-04 | [4493470] | A Windows 10 biztonsági | 5.30 | 2019. április 9. |
+| Rel 19-04 | [4493467] | Windows biztonsági | 4.65 | 2019. április 9. |
+| Rel 19-04 | [4493450] | Windows biztonsági | 3.72 | 2019. április 9. |
+| Rel 19-04 | [4493448] | Windows biztonsági | 2.85 | 2019. április 9. |
+| Rel 19-04 | [4493478] | Flash | 3.72, 4.65, 5.30, 6.6 | 2019. április 9. |
+| Rel 19-04 | [4493435] | Internet Explorer | 2.85, 3.72, 4.65 | 2019. április 9. |
+| Rel 19-04 | [KB4490628] | Karbantartási frissítését | 2.85 | 2019. március 12. |
+| Rel 19-04 | [KB4474419] | SHA2-támogatás | 2.85 | 2019. március 12. |
+| Rel 19-04 | [KB4489878] | Március nem a biztonság összegzése | 2.85 | 2019. március 12. |
+| Rel 19-04 | [KB4489891] | Március nem a biztonság összegzése | 3.72 | 2019. március 12. |
+| Rel 19-04 | [KB4489881] | Március nem a biztonság összegzése | 4.65 | 2019. március 12. |
+
+[4493509]: https://support.microsoft.com/kb/4493509
+[4493470]: https://support.microsoft.com/kb/4493470
+[4493467]: https://support.microsoft.com/kb/4493467
+[4493450]: https://support.microsoft.com/kb/4493450
+[4493448]: https://support.microsoft.com/kb/4493448
+[4493478]: https://support.microsoft.com/kb/4493478
+[4493435]: https://support.microsoft.com/kb/4493435
+[KB4490628]: https://support.microsoft.com/kb/KB4490628
+[KB4474419]: https://support.microsoft.com/kb/KB4474419
+[KB4489878]: https://support.microsoft.com/kb/KB4489878
+[KB4489891]: https://support.microsoft.com/kb/KB4489891
+[KB4489881]: https://support.microsoft.com/kb/KB4489881
+
 ## <a name="march-2019-guest-os"></a>Március 2019 vendég operációs rendszer
 
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | Rel 19-03 | [4489873] | Internet Explorer | 2.84, 3.71, 4.64 | 2019. március 12. |
 | Rel 19-03 | [4489907] | Flash | 3.71, 4.64, 5.29, 6.5 | 2019. március 12. |
@@ -67,7 +97,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 
 ## <a name="february-2019-guest-os"></a>2019. február vendég operációs rendszer
 
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 19-02-rel | [4486474] | Internet Explorer | 2.83, 3.70, 4.63 | 2019. február 12. |
 | 19-02-rel | [4487038] | Flash | 3.70, 4.63, 5.28, 6.4 | 2019. február 12. |
@@ -119,7 +149,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 
 ## <a name="january-2019-guest-os"></a>Január 2019 vendég operációs rendszer
 
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | Rel 19-01 | [4480116] | A Windows 10 biztonsági | 6.3 | 2019. január 8. |
 | Rel 19-01 | [4480961] | A Windows 10 biztonsági | 5.27 | 2019. január 8. |
@@ -171,7 +201,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 
 ## <a name="december-2018-guest-os"></a>A 2018 december vendég operációs rendszer
 
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 18-12-rel | [4471321] | A Windows 10 biztonsági | 5.26 | 2018. december 11. |
 | 18-12-rel | [4471328] | Windows biztonsági   | 2.81 | 2018. december 11. |
@@ -209,7 +239,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 
 ## <a name="november-2018-guest-os"></a>A 2018. november a vendég operációs rendszer
 
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 18-11-rel | [4466536] | Internet Explorer | 2.80, 3.67, 4.60 | 2018. november 13. |
 | 18-11-rel | [4467694] | Flash | 3.67, 4.60, 5.25 | 2018. november 13. |
@@ -241,7 +271,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 
 ## <a name="october-2018-guest-os"></a>2018. október vendég operációs rendszer
 
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 18-10 rel | [4462917] | A Windows 10 biztonsági | 5.24 | 2018. október 9. |
 | 18-10 rel | [4462915] | Windows biztonsági | 2.79 | 2018. október 9. |
@@ -278,7 +308,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 [4457036]: https://support.microsoft.com/kb/4457036
 
 ## <a name="september-2018-guest-os"></a>2018 szeptember vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 18-09-rel | [4457131] | A Windows 10 biztonsági | 5.23 | 2018. szeptember 11. |
 | 18-09-rel | [4457145] | Csak a Windows biztonsági | 2.78 | 2018. szeptember 11. |
@@ -300,7 +330,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – | [4344147] | Augusztus nem biztonsági .NET 4 x rollup | 4.58 | 2018. augusztus 14. |
 
 ## <a name="august-2018-guest-os"></a>2018 augusztus vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | Rel 18-08 | [4343887] | A Windows 10 biztonsági | 5.22 | 2018. augusztus 14. |
 | Rel 18-08 | [4343899] | Csak a Windows biztonsági | 2.77 | 2018. augusztus 14. |
@@ -323,7 +353,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – | [4338415] |Július nem biztonsági .NET 4 x rollup |3.64 | 2018. július 10. |
 
 ## <a name="july-2018-guest-os"></a>2018 július vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | Rel 18-07 | [4338814] |A Windows 10 biztonsági |5.21 |2018. július 10. |
 | Rel 18-07 | [4338823] |Csak a Windows biztonsági |2.76 |2018. július 10. |
@@ -343,7 +373,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – | [4284815] |Június nem a biztonság összegzése |4.56 |2018. június 12. |
 
 ## <a name="june-2018-guest-os"></a>2018 június vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | Rel 18-06 | [4284880] |A Windows 10 biztonsági |5.20 |2018. június 12. |
 | Rel 18-06 | [4284867] |Csak a Windows biztonsági |2.75 |2018. június 12. |
@@ -368,7 +398,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – | [4132216] |Előfordulhat, hogy SSU |5.20 |2018. május 8. |
 
 ## <a name="may-2018-guest-os"></a>2018 május vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 18-05-rel | [4103721], [4103727], [4103723] |A Windows 10 biztonsági |5.19 |2018. május 8. |
 | 18-05-rel | [4103712] |Csak a Windows biztonsági |2.74 |2018. május 8. |
@@ -388,7 +418,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 
 
 ## <a name="april-2018-guest-os"></a>2018 április vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | Rel 18-04 | [4093119] |A Windows 10 biztonsági |5.18 |2018. április 10. |
 | Rel 18-04 | [4093108] |Csak a Windows biztonsági |2.73 |2018. április 10. |
@@ -402,7 +432,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – | [4088876] |Március nem a biztonság összegzése |4.53 |2018. március 13. |
 
 ## <a name="march-2018-guest-os"></a>2018 március vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | Rel 18-03 | [4088787], [4088776] |A Windows 10 biztonsági |5.17 |2018. március 13. |
 | Rel 18-03 | [4088878], [4088880], [4088879] |Csak a Windows biztonsági |2.72, 3.59, 4.52 |2018. március 13. |
@@ -415,7 +445,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 
 
 ## <a name="february-2018-guest-os"></a>2018 február vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 18-02-rel | [4074590], [4074588] |A Windows 10 biztonsági |5.16 |2018. február 13. |
 | 18-02-rel | [4074587], [4074589], [4074597] |Csak a Windows biztonsági |2.71, 3.58, 4.51 |2018. február 13. |
@@ -429,7 +459,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – | [4054177], [4054170] |Január .NET összegzése |4.51 |2018. január 4. |
 
 ## <a name="january-2018-guest-os"></a>2018 január vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | Rel 18-01 | [4056898], [4056897], [4056899] |Csak a Windows biztonsági |2.70, 3.57, 4.50 |2018. január 3. |
 | Rel 18-01 | [4056890], [4056892] |Csak a Windows biztonsági |5.15 |2018. január 3. |
@@ -441,7 +471,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 
 
 ## <a name="december-2017-guest-os"></a>2017 december vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 17-12-rel | [4053579], [4054517] |A Windows 10 biztonsági frissítések |4.49, 5.14 |2017. december 12. |
 | 17-12-rel | [4054521], [4054522], [4054523] |Csak a Windows biztonsági |2.69, 3.56, 4.49 |2017. december 12. |
@@ -453,7 +483,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – | [4049068] |December időzóna frissítése |2.69, 3.56, 4.49 |2017. december 12. |
 
 ## <a name="november-2017-guest-os"></a>2017 november vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 17-11-rel | [4048953] |A Windows 10-frissítések |5.13 |2017. november 14. |
 | 17-11-rel | [4048960], [4048962], [4048961] |Csak a Windows biztonsági |2.68, 3.55, 4.48 |2017. november 14. |
@@ -467,7 +497,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – | [3191564] |A Windows Management Framework 5.1-es frissítés  |4.48 |2017. november 14. |
 
 ## <a name="october-2017-guest-os"></a>2017. október vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 17-10 rel | [4041691] |A Windows 10-frissítések |5.12 |2017. október 10. |
 | 17-10 rel | [4041678], [4041679], [4041687] |Csak a Windows biztonsági |2.67, 3.54, 4.47 |2017. október 10. |
@@ -481,7 +511,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – | [4040981] |Szeptember .NET nem a biztonság összegzése |4.47 |2017. szeptember 12. |
 
 ## <a name="september-2017-guest-os"></a>2017 szeptemberi vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 17-09-rel | [4038782] |A Windows 10-frissítések |5.11 |2017. szeptember 12. |
 | 17-09-rel | [4038779], [4038786], [4038793] |Csak a Windows biztonsági |2.66, 3.53, 4.46 |2017. szeptember 12. |
@@ -493,7 +523,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – | [4034681] |Augusztus nem a biztonság összegzése |4.46 |2017. augusztus 8. |
 
 ## <a name="august-2017-guest-os"></a>2017 augusztus vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 17-07-rel | [4034658] |A Windows 10-frissítések |5.10 |2017. augusztus 8. |
 | 17-07-rel | [4034679] |Csak a Windows biztonsági |2.65 |2017. augusztus 8. |
@@ -507,7 +537,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | 17-07-rel | [4025336] |Július nem a biztonság összegzése |4.45 |2017. július 11. |
 
 ## <a name="july-2017-guest-os"></a>2017 július vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 17-07-rel | [4025339] |A Windows 10-frissítések |5.9 |2017. július 11. |
 | 17-07-rel | [4025337] |Csak a Windows biztonsági |2.64 |2017. július 11. |
@@ -521,7 +551,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – | [4022726] |Június nem a biztonság összegzése |4.44 |2017. június 13. |
 
 ## <a name="june-2017-guest-os"></a>2017 június vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 17-06-rel | [4019472] |WS 2016 operációs rendszer minőségének javítása |5.8 |2017. május 9. |
 | 17-06-rel | [4022722] |Csak a Windows biztonsági |2.63 |2017. június 13. |
@@ -549,7 +579,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – | [4014512] |Előfordulhat, hogy a .NET nem a biztonság összegzése |4.43 |2017. május 9. |
 
 ## <a name="may-2017-guest-os"></a>2017 május vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 17-05-rel | [4019472] |WS 2016 operációs rendszer minőségének javítása |5.7 | 2017. május 9. |
 | 17-05-rel | [4019263] |Csak a Windows biztonsági |2.62 | 2017. május 9. |
@@ -577,7 +607,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | – | [4013418] |Karbantartási frissítését |5.7 | 2017. március 14. |
 
 ## <a name="april-2017-guest-os"></a>2017 április vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 17-04-rel |  [4015217]  |WS 2016 operációs rendszer minőségének javítása | 5.6 | 2017. április 11. |
 | 17-04-rel |  [4015546]  |Csak a Windows biztonsági |2.61 | 2017. április 11. |
@@ -597,7 +627,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | 17-04-rel |  [4012216]  |2017. márciusi biztonsági havi minőségi összegzése Windows 8.1 és Windows Server 2012 R2 rendszerben |4.41 | 2017. április 11. |
 
 ## <a name="march-2017-guest-os"></a>2017. márciusi vendég operációs rendszer
-| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| Termék kategóriája | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 17-03-rel |  [4013429] |Fejlesztések és javítások | 5.5 | 2017. március 14. |
 | 17-03-rel |  [4012212] |2017. márciusi biztonsági csak minőségi frissítés a Windows 7 SP1 és a Windows Server 2008 R2 SP1 |2.60 |2017. március 14. |
@@ -723,7 +753,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | Közlemény azonosítója | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | MS16-035 |[3141780] |Biztonsági frissítés, a biztonsági funkció figyelmen kívül hagyása megoldása érdekében. |4.33, 3.40, 2.52 |2016. június 14-én |
-| Tanácsadás |[3155527] |Frissítse a FalseStart Titkosítócsomagjai |4.33, 3.40 |2016. június 14-én |
+| Tanácsadó |[3155527] |Frissítse a FalseStart Titkosítócsomagjai |4.33, 3.40 |2016. június 14-én |
 | MS16-063 |[3163649] |Összesített frissítés az Internet Explorerben |4.33, 3.40, 2.52 |2016. június 14-én |
 | MS16-069 |[3163640] |JScript és VBScript összesített frissítés |2.52 |2016. június 14-én |
 | MS16-071 |[3164065] |A Microsoft Windows DNS-kiszolgáló biztonsági frissítése |4.33, 3.40 |2016. június 14-én |
@@ -890,7 +920,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | MS15-075 |[3072633] |Az OLE biztonsági rései kiterjesztését |4.22, 3.29, 2.41 |2015. július 14-én |
 | MS15-076 |[3067505] |A Windows távoli eljáráshívás biztonsági rése jogok kiterjesztése |4.22, 3.29, 2.41 |2015. július 14-én |
 | MS15-077 |[3077657] |ATM betűtípus illesztőprogram biztonsági rése jogok kiterjesztése |4.22, 3.29, 2.41 |2015. július 14-én |
-| NA |[3057154] |Frissítés korlátozni a DES-titkosítás |4.22, 3.29, 2.41 |2015. július 14-én |
+| n/a |[3057154] |Frissítés korlátozni a DES-titkosítás |4.22, 3.29, 2.41 |2015. július 14-én |
 
 ## <a name="june-2015-guest-os"></a>2015 június vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
@@ -923,7 +953,7 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | MS15-040 |[3045711] |AD FS a biztonsági résen információk Szivároghatnak |4.20, 3.27, 2.39 |2015. januárban 17. |
 | MS15-041 |[3048010] |A .NET-keretrendszer biztonsági résen információk Szivároghatnak |4.20, 3.27, 2.39 |2015. januárban 17. |
 | MS15-042 |[3047234] |A Windows Hyper-V biztonsági rése szolgáltatásmegtagadás |4.20, 3.27, 2.39 |2015. januárban 17. |
-| NA |[3045755] |Frissítés PKU2U hitelesítési javítása érdekében |4.20, 3.27, 2.39 |2015. januárban 17. |
+| n/a |[3045755] |Frissítés PKU2U hitelesítési javítása érdekében |4.20, 3.27, 2.39 |2015. januárban 17. |
 
 ## <a name="april-2015-guest-os"></a>2015 április vendég operációs rendszer
 | Közlemény azonosítója | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |

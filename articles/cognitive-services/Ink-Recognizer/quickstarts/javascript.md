@@ -9,12 +9,12 @@ ms.subservice: ink-recognizer
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: febc6e72ed40541a230c606a3ec96a8bffef5036
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 651474fd538123e760022ac59efbbaf0b9b83d70
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026377"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519674"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Gyors útmutató: Ismeri fel a digitális ink a szabadkézi felismerő REST API-t és a JavaScript
 
@@ -26,12 +26,12 @@ Ezt az alkalmazást a webböngészőben fut, és a Javascript nyelven van megír
 
 ![írt szöveg felismerése képekből képe](../media/handwriting-sample.jpg)
 
-Ez a rövid útmutató forráskódja találhatók [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502).
+Ez a rövid útmutató forráskódja találhatók [GitHub](https://go.microsoft.com/fwlink/?linkid=2089905).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Egy webes böngésző
-- Ez a rövid útmutató példa ink körvonal adatai találhatók [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502).
+- Ez a rövid útmutató példa ink körvonal adatai találhatók [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json).
 
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
@@ -157,7 +157,7 @@ Ez a rövid útmutató forráskódja találhatók [GitHub](https://go.microsoft.
 
 ## Run the application and view the response
 
-This application can be run within your web browser. A successful response is returned in JSON format. You can also find the JSON response on [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502):
+This application can be run within your web browser. A successful response is returned in JSON format. You can also find the JSON response on [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json):
 
 ## Next steps
 

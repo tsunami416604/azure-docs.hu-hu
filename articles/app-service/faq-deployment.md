@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 9d38e3caf3d835eaf73df90282157eed76c5ea25
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d7fd41657394e006957392f37ec1a258b33c8c6
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61270047"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65413867"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Üzembe helyezés – gyakori kérdések az Azure Web Apps esetében
 
@@ -47,7 +47,7 @@ A probléma megoldásához frissítse a [legújabb SDK](https://azure.microsoft.
 ## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-to-app-service"></a>Hogyan helyezhetek üzembe egy ASP.NET alkalmazás a Visual Studio App Service-ben?
 <a id="deployasp"></a>
 
-Az oktatóanyag [hozzon létre az első ASP.NET-webalkalmazását öt perc alatt az Azure-ban](app-service-web-get-started-dotnet.md) bemutatja, hogyan helyezhet üzembe egy ASP.NET-alkalmazás az App Service webalkalmazásba a Visual Studio 2017 használatával.
+Az oktatóanyag [hozzon létre az első ASP.NET-webalkalmazását öt perc alatt az Azure-ban](app-service-web-get-started-dotnet.md) bemutatja, hogyan helyezhet üzembe egy ASP.NET-alkalmazás az App Service webalkalmazásba a Visual Studio használatával.
 
 ## <a name="what-are-the-different-types-of-deployment-credentials"></a>Mik azok az üzembe helyezési hitelesítő adatokat a különböző típusú?
 

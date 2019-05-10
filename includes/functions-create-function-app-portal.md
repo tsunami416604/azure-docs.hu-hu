@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/05/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 1cecafb013b5d22557961e98935fc9a2fee2a79b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2bfca370e8e89d98f700c8c5adfd29129e810d9b
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65199130"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416301"
 ---
 1. Válassza ki a **erőforrás létrehozása** gomb megtalálható az Azure portal bal felső sarkában majd válassza ki **számítási** > **Függvényalkalmazás**.
 
@@ -41,4 +41,4 @@ ms.locfileid: "65199130"
 
     ![Új függvényalkalmazás-beállítások megadása](./media/functions-create-function-app-portal/function-app-create-notification.png)
 
-5. Az új függvényalkalmazás megtekintéséhez válassza az **Erőforrás megnyitása** lehetőséget.
+5. Az új függvényalkalmazás megtekintéséhez válassza az **Erőforrás megnyitása** lehetőséget. Lehetőség kiválasztásával **rögzítés az irányítópulton**. Rögzítés megkönnyíti az irányítópultról térjen vissza a függvény alkalmazás-erőforrást.

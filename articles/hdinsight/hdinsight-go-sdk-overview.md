@@ -1,23 +1,23 @@
 ---
-title: Az Azure HDInsight Go SDK
-description: Az Azure HDInsight Go SDK-referencia
+title: A Góhoz készült Azure HDInsight SDK
+description: A Góhoz készült Azure HDInsight SDK-referencia
 author: tylerfox
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 05/8/2019
 ms.author: tyfox
 ms.custom: seodec18
-ms.openlocfilehash: 2e5b7816fda89e25dcb0de26f526e5187e0640b9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 113948d77d87a34822f81f020b03f6628b9c5e84
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700606"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466221"
 ---
-# <a name="hdinsight-go-management-sdk-preview"></a>HDInsight Go SDK előzetes verziójának
+# <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK a Go (előzetes verzió)
 
 ## <a name="overview"></a>Áttekintés
-A HDInsight Go SDK nyújt az osztályok, amelyeket a HDInsight-fürtök kezelését teszi lehetővé. Ez magában foglalja a műveletek létrehozása, törlése, frissítése, listázása, átméretezése, parancsfájl műveletek végrehajtása, figyelése, HDInsight-fürtök és egyéb tulajdonságainak beolvasása.
+A Góhoz készült HDInsight SDK nyújt az osztályok, amelyeket a HDInsight-fürtök kezelését teszi lehetővé. Ez magában foglalja a műveletek létrehozása, törlése, frissítése, listázása, átméretezése, parancsfájl műveletek végrehajtása, figyelése, HDInsight-fürtök és egyéb tulajdonságainak beolvasása.
 
 > [!NOTE]  
 >GoDoc referenciaanyag az olyan Ez az SDK egyben [elérhető itt](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight).

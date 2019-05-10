@@ -7,12 +7,12 @@ ms.date: 04/16/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 40d9aba4ff8fd78f6369729ddc16238e65bfc169
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e8f0b9c8bf1bfb846f13306f58bcb1721ed6b422
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60404694"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510530"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Problémák diagnosztizálása és hibaelhárítása az Azure Functions az Azure Cosmos DB-eseményindító használata során
 
@@ -27,17 +27,19 @@ Az Azure Cosmos DB-eseményindító és kötések függ a bővítménycsomagok k
 
 Ez a cikk fog mindig tekintse meg az Azure Functions V2, amikor a futtatókörnyezet említik, kivéve, ha explicit módon megadott.
 
-## <a name="consuming-the-cosmos-db-sdk-separately-from-the-trigger-and-bindings"></a>A Cosmos DB SDK elkülönítve a triggerét és kötéseit felhasználása
+## <a name="consume-the-azure-cosmos-db-sdk-independently"></a>Az Azure Cosmos DB SDK egymástól függetlenül felhasználása
 
 A bővítmény csomag a főbb funkciókat, hogy támogatást nyújt az Azure Cosmos DB triggerét és kötéseit. Ezenkívül tartalmazza a [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md), ez akkor hasznos, ha azt szeretné, programozott módon kezelheti az Azure Cosmos DB a eseményindítók és kötések használata nélkül.
 
-Ha szeretné használni az Azure Cosmos DB SDK, győződjön meg arról, hogy nem ad hozzá a projekt NuGet-csomag egy másik hivatkozást. Ehelyett **lehetővé teszik az SDK-leírás keresztül az Azure Functions-kiterjesztési csomag megoldásához**.
+Ha szeretné használni az Azure Cosmos DB SDK, győződjön meg arról, hogy nem ad hozzá a projekt NuGet-csomag egy másik hivatkozást. Ehelyett **lehetővé teszik az SDK-leírás keresztül az Azure Functions-kiterjesztési csomag megoldásához**. Az Azure Cosmos DB SDK elkülönítve a eseményindítók és kötések használata
 
 Emellett ha manuálisan hoz létre a saját példányát a [Azure Cosmos DB SDK-ügyfél](./sql-api-sdk-dotnet-core.md), kövesse a mintát, hogy az ügyfél csak egy példánya [egyszeres minta módszerével](../azure-functions/manage-connections.md#documentclient-code-example-c) . Ez a folyamat elkerüli a potenciális szoftvercsatorna problémák egy részét a műveletek.
 
-## <a name="common-known-scenarios-and-workarounds"></a>Ismert gyakori forgatókönyvek és megoldások
+## <a name="common-scenarios-and-workarounds"></a>Gyakori forgatókönyvek és megoldások
 
-### <a name="azure-function-fails-with-error-message-either-the-source-collection-collection-name-in-database-database-name-or-the-lease-collection-collection2-name-in-database-database2-name-does-not-exist-both-collections-must-exist-before-the-listener-starts-to-automatically-create-the-lease-collection-set-createleasecollectionifnotexists-to-true"></a>Azure-függvény hibaüzenettel meghiúsul "vagy a forrás gyűjtemény"gyűjtemény-name"(az adatbázis (adatbázis-name)) vagy a bérletek gyűjteményének"2. gyűjtemény-name"(az adatbázis"2. adatbázis-name") nem létezik. Gyűjtemények a figyelő megkezdése előtt léteznie kell. A bérletek gyűjteményének automatikus létrehozásához "CreateLeaseCollectionIfNotExists" beállítása "true" "
+### <a name="azure-function-fails-with-error-message-collection-doesnt-exist"></a>Azure függvény sikertelen lesz, és hiba üzenet gyűjtemény nem létezik.
+
+Azure-függvény hibaüzenettel meghiúsul "vagy a forrás gyűjtemény"gyűjtemény-name"(az adatbázis (adatbázis-name)) vagy a bérletek gyűjteményének"2. gyűjtemény-name"(az adatbázis"2. adatbázis-name") nem létezik. Gyűjtemények a figyelő megkezdése előtt léteznie kell. A bérletek gyűjteményének automatikus létrehozásához "CreateLeaseCollectionIfNotExists" beállítása "true" "
 
 Ez azt jelenti, hogy egyik vagy mindkét az Azure Cosmos-tárolókat az eseményindító működéséhez szükséges nem létezik, vagy nem érhetők el az Azure-függvénynek. **A hiba, maga megtudhatja, melyik Azure-Cosmos-adatbázis, és tárolók az eseményindító keres** a konfiguráció alapján.
 
@@ -78,7 +80,8 @@ Ha a cél-néhány módosítást hiányzik, ez azt jelentheti, hogy-e valamilyen
 
 Ebben az esetben a legjobb megoldás érdekében, hogy adjon hozzá `try/catch blocks` a kódban, és a hurkok, előfordulhat, hogy feldolgozni a módosításokat, minden hiba elemek egy adott alegységénél észlelésére, és ennek megfelelően kezelje azokat belül (elküldheti azokat egy másik tárolási további az elemzés vagy újrapróbálkozási). 
 
-> **Az Azure Cosmos DB-eseményindító, alapértelmezés szerint nem fog újra módosítások kötegelt Ha nem kezelt kivétel történt** a kód végrehajtása során. Ez azt jelenti, hogy az az oka, hogy a módosítások nem érkezett meg a célhelyen, mert, hogy sikertelen feldolgozhassa őket.
+> [!NOTE]
+> Az Azure Cosmos DB-eseményindító, alapértelmezés szerint nem próbálja meg újra módosítások kötegelt Ha nem kezelt kivétel történt a kód végrehajtása során. Ez azt jelenti, hogy az az oka, hogy a módosítások nem érkezett meg a célhelyen, mert, hogy sikertelen feldolgozhassa őket.
 
 Ha úgy találja, hogy néhány módosítást az eseményindító nem érkeztek minden, a leggyakoribb eset, hogy nincs **más Azure-függvényt futtató**. Lehet, hogy egy másik Azure-ban üzembe helyezett Azure-függvény, vagy egy Azure-függvény helyben fut, egy fejlesztői számítógép, amely rendelkezik **pontosan ugyanazt a konfigurációt** (azonos figyelni és a címbérlet-tárolók) és az Azure-függvény ellophatják van egy a módosítások feldolgozása az Azure-függvény hiányol részhalmazát.
 

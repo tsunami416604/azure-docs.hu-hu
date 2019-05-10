@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 04/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 057e8d78b531abc4ee6d1b16c25a1a6f3b382977
-ms.sourcegitcommit: 9ad75f83bbf0fc4623b7995794f33bbf823b31c0
+ms.openlocfilehash: 54493efdc0bffcbb4654b65676554f6707716968
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64537468"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235578"
 ---
 # <a name="resource-providers-for-azure-services"></a>Erőforrás-szolgáltatók az Azure-szolgáltatásokhoz
 
@@ -56,7 +56,7 @@ Ez a cikk bemutatja, hogyan erőforrás-szolgáltatói névterek leképezése az
 | Microsoft.Consumption | [A Cost Management](/azure/cost-management/) |
 | Microsoft.ContainerInstance | [Container Instances szolgáltatásban](/azure/container-instances/) |
 | Microsoft.ContainerRegistry | [Tárolóregisztrációs adatbázis](/azure/container-registry/) |
-| Microsoft.ContainerService | [Azure Kubernetes Service (AKS)](/azure/aks/) |
+| Microsoft.ContainerService | [Az Azure Kubernetes Service (AKS)](/azure/aks/) |
 | Microsoft.ContentModerator | [Azure Content Moderator](../cognitive-services/content-moderator/index.yml) |
 | Microsoft.CostManagement | [A Cost Management](/azure/cost-management/) |
 | Microsoft.CustomerInsights | Customer Insights |
@@ -115,7 +115,7 @@ Ez a cikk bemutatja, hogyan erőforrás-szolgáltatói névterek leképezése az
 | Microsoft.Migrate | [Az Azure Migrate](../migrate/migrate-overview.md) |
 | Microsoft.MixedReality | [Az Azure térbeli horgonyok](/azure/spatial-anchors/) |
 | Microsoft.NetApp | [Azure NetApp-fájlok](../azure-netapp-files/index.yml) |
-| Microsoft.Network | [Virtual Network](../virtual-network/index.yml)<br />[Load Balancer](../load-balancer/index.yml)<br />[Application Gateway](/application-gateway/index.yml)<br />[Azure DNS](../dns/index.yml)<br />[ExpressRoute](../expressroute/index.yml)<br />[VPN Gateway](../vpn-gateway/index.yml)<br />[Traffic Manager](../traffic-manager/index.yml)<br />[A Network Watcher](../network-watcher/index.yml)<br />[Az Azure-tűzfal](../firewall/index.yml)<br />[Az Azure bejárati ajtajának szolgáltatás](../frontdoor/index.yml) |
+| Microsoft.Network | [Virtual Network](../virtual-network/index.yml)<br />[Load Balancer](../load-balancer/index.yml)<br />[Application Gateway](../application-gateway/index.yml)<br />[Azure DNS](../dns/index.yml)<br />[ExpressRoute](../expressroute/index.yml)<br />[VPN Gateway](../vpn-gateway/index.yml)<br />[Traffic Manager](../traffic-manager/index.yml)<br />[A Network Watcher](../network-watcher/index.yml)<br />[Az Azure-tűzfal](../firewall/index.yml)<br />[Az Azure bejárati ajtajának szolgáltatás](../frontdoor/index.yml) |
 | Microsoft.NotificationHubs | [Értesítési központ](../notification-hubs/index.yml) |
 | Microsoft.OffAzure | [Az Azure Migrate](../migrate/migrate-overview.md) |
 | Microsoft.OperationalInsights | [Azure Monitor](../azure-monitor/index.yml) |
@@ -140,8 +140,8 @@ Ez a cikk bemutatja, hogyan erőforrás-szolgáltatói névterek leképezése az
 | Microsoft.Solutions | [Azure Managed Applications](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Database](../sql-database/index.yml) |
 | Microsoft.SqlVirtualMachine | [SQL Server az Azure Virtual Machines szolgáltatásban](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) |
-| Microsoft.Storage | [Tárolás](../storage/index.yml) |
-| Microsoft.StorageSync | [Tárolás](../storage/index.yml) |
+| Microsoft.Storage | [Storage](../storage/index.yml) |
+| Microsoft.StorageSync | [Storage](../storage/index.yml) |
 | Microsoft.StorSimple | [StorSimple](/azure/storsimple/) |
 | Microsoft.StreamAnalytics | [Stream Analytics](../stream-analytics/index.yml) |
 | Microsoft.Subscription | mag |

@@ -2,18 +2,18 @@
 title: Az Azure Monitor - nulla rendszerállapot-alkalmazásfigyelést Kubernetes üzemeltetett alkalmazások |} A Microsoft Docs
 description: Nulla rendszerállapot-alkalmazás az üzemeltetett Kubernetes-alkalmazások figyelése nem egy figyelési megoldás, amely lehetővé teszi a bejövő és kimenő kérelmek, illetve onnan a Kubernetes-fürt által futtató podok tartozó Application Insights telemetria gyűjtése szolgáltatás háló technológiát használó nevű Istio.
 services: application-insights
-author: rishabjolly
+author: tokaplan
 manager: carmonm
 ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: rijolly
-ms.openlocfilehash: 73f95ab75b49fb8ec5b61f6e30080f8f6d474c16
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.author: alkaplan
+ms.openlocfilehash: 42b81ec0fa01841791a5b2651d1c1189db5e27ff
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149878"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408215"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-apps"></a>Nulla instrumentation alkalmazásfigyelés kubernetes üzemeltetett alkalmazások
 
@@ -34,7 +34,7 @@ Az Azure Monitor mostantól service háló tech a Kubernetes-fürtön kívül, a
 - Egy [Application Insights-erőforrás](create-new-resource.md)
 - A szolgáltatás rácsvonal rendelkezik. Ha a fürt nem rendelkezik telepített Istio, megtudhatja hogyan [telepítheti és használhatja az Azure Kubernetes Service Istio](https://docs.microsoft.com/azure/aks/istio-install).
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 
 Nulla rendszerállapot-alkalmazásfigyelést Kubernetes üzemeltetett alkalmazások használatával fogja tudni használni:
 
@@ -130,7 +130,7 @@ Alább a hibaelhárítási folyamat során a telemetriai adatok nem jelenik meg,
    ```
    Keresse meg a hibákat, különösen vonatkozó folytatott kommunikáció *applicationinsightsadapter* adapter.
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>gyakori kérdésekben
 
 A projekt előrehaladását legújabb információkért látogasson el a [Istio Mixer projekt Githubhoz készült Application Insights adapter](https://github.com/Microsoft/Application-Insights-Istio-Adapter/blob/master/SETUP.md#faq).
 

@@ -14,25 +14,25 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbbef13d2e64a5d1b177d8232c5b6ef1e64a1da9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9bea0a870a6ef0685f4f4bce5ad3b0d1ff1f616a
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250975"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65414014"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>A Visual Studio csatlakoztatott szolgáltatásai segítségével egy Azure Active Directory hozzáadása
 
 Az Azure Active Directory (Azure AD) használatával is támogatottak egyszeri bejelentkezéses (SSO) az ASP.NET MVC webes alkalmazásokhoz, vagy az Active Directory-hitelesítést a webes API-szolgáltatást. Azure AD-hitelesítés a felhasználók használhatják fiókjukat az Azure Active Directoryból a szeretne csatlakozni a webes alkalmazások. A webes API-val az Azure AD-hitelesítés előnyei közé tartozik fokozott adatbiztonságot, ha egy API-webalkalmazások is közzéteheti. Az Azure ad-vel nem kell egy külön hitelesítési rendszere a saját fiók és felhasználó management kezeléséhez.
 
-Ez a cikk és a kiegészítő cikkek adja meg az adatait a Visual Studio csatlakoztatott szolgáltatása az Active Directory szolgáltatással. A funkció érhető el a Visual Studio 2017-et és a Visual Studio 2015-ben.
+Ez a cikk és a kiegészítő cikkek adja meg az adatait a Visual Studio csatlakoztatott szolgáltatása az Active Directory szolgáltatással. A szolgáltatás érhető el a Visual Studio 2015-ös és újabb verziói.
 
 Az Active Directory csatlakoztatott szolgáltatás jelenleg nem támogatja az ASP.NET Core-alkalmazások.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-fiók: Ha nem rendelkezik Azure-fiókkal, akkor [regisztráljon egy ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) vagy [aktiválhatja a Visual Studio előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
-- **A Visual Studio 2015** vagy újabb. [A Visual Studio 2017 letöltése](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- **A Visual Studio 2015** vagy újabb. [A Visual Studio letöltése](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 ### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>Csatlakozzon az Azure Active Directory a csatlakoztatott szolgáltatás párbeszédpanelen
 

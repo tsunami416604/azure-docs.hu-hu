@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
-ms.openlocfilehash: 6b617ff99b9183c6b5008292dd3e5d11f2e69da9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b3c967cd43745a4ae87fefc578282f5427a5f79
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776910"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405700"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Tevékenységnapló-riasztások létrehozása szolgáltatási értesítésekhez
 ## <a name="overview"></a>Áttekintés
@@ -36,6 +36,10 @@ Is lehet konfigurálni kell a riasztást küldő:
 A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../../azure-monitor/platform/action-groups.md) szóló cikkben talál.
 
 Health értesítési szolgáltatásriasztások konfigurálása Azure Resource Manager-sablonok használatával kapcsolatos információkért lásd: [Resource Manager-sablonok](alerts-activity-log.md).
+
+### <a name="watch-a-video-on-setting-up-your-first-azure-service-health-alert"></a>Tekintse meg a videót az első Azure Service Health-riasztás beállítása
+
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
 ## <a name="alert-and-new-action-group-using-azure-portal"></a>Az Azure portal segítségével riasztás és az új műveletcsoport
 1. Az a [portál](https://portal.azure.com)válassza **Service Health**.
@@ -195,6 +199,8 @@ Miután létrehozta a riasztást, legyen látható a **riasztások** szakaszába
 * Letiltani vagy engedélyezni, ha szeretné ideiglenesen leállítani, vagy folytathatja a riasztás-mailjeire.
 
 ## <a name="next-steps"></a>További lépések
+- Ismerje meg [ajánlott eljárások az Azure Service Health-riasztások beállítása](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa).
+- Ismerje meg, hogyan [mobil leküldéses értesítéseket az Azure Service Health beállítása](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
 - Ismerje meg, hogyan [konfigurálása webhook-értesítésekkel meglévő probléma felügyeleti rendszerek](../../service-health/service-health-alert-webhook-guide.md).
 - Ismerje meg [szolgáltatás állapotára vonatkozó értesítések](../../azure-monitor/platform/service-notifications.md).
 - Ismerje meg [értesítési sebességkorlátozással](../../azure-monitor/platform/alerts-rate-limiting.md).

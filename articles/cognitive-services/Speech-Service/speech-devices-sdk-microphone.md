@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: c8bc11b8f81fe034ceaa93c7bd8a49771d9407f9
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 63dd64e900cf68e708032569ca75ac2e8b221491
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025779"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65237001"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Beszéd eszközök SDK mikrofon tömb javaslatok
 
@@ -29,9 +29,11 @@ A következő tömb geometriája használata akkor javasolt, a Microsoft hang St
 
 |          | Kör alakú tömb    |       |  Lineáris tömb              |                |
 |----------|-------------------|-------------------|----------------|----------------|
-|          |![7. kör alakú mic-tömb](media/speech-devices-sdk/7-mic-c.png)|![4. kör alakú mic-tömb](media/speech-devices-sdk/4-mic-c.png)|![4 mic lineáris tömb](media/speech-devices-sdk/4-mic-l.png)|![2 mic lineáris tömb](media/speech-devices-sdk/2-mic-l.png)|
+|          |<img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/>|<img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/>|<img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/>|
 | \# Mikrofonok előtt  | 7                 | 4                 | 4              | 2              |
 | geometriai | 6 külső, 1 központ, a Radius 42.5 mm egyenletesen =| 3 külső, 1 központ, a Radius 42.5 mm egyenletesen = | Hossz = 120 mm térköz = 40 mm | Térköz = 40 mm |
+
+Mikrofon csatornák megfelelően minden tömb, 0-tól növelése újabb kitaláltak számozására összefűzve.  A Microsoft hang verem egy további referencia stream hanglejátszás echo megszakítás végrehajtásához szükséges.
 
 ## <a name="component-selection"></a>Összetevő kiválasztása
 
@@ -110,4 +112,4 @@ Nagy sebességű USB hang osztály 2.0 annak érdekében, hogy a szükséges sá
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> Tudjon meg többet a [Speech Devices SDK-val](speech-devices-sdk.md)
+> [További információ a Speech Devices SDK-val](speech-devices-sdk.md)

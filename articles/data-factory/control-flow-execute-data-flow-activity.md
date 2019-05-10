@@ -1,23 +1,21 @@
 ---
 title: Data flow tevékenység végrehajtása az Azure Data Factoryban |} A Microsoft Docs
-description: A végrehajtási adatok folyamat tevékenységeit futtatja adatfolyam-gyűjteményre.
+description: Hogyan hajtható végre az adatok jut el a data factory-folyamatok belül.
 services: data-factory
 documentationcenter: ''
 author: kromerm
-manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: 856f4bd9c2b04ff10ed598c5e641955e1de99398
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e1d4ce355f34014d5099c4b46f4420d032363fce
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60557574"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236673"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Data flow tevékenység végrehajtása az Azure Data Factoryban
 A végrehajtási adatok folyamat tevékenység használatával futtassa az ADF adatfolyama folyamatfuttatások hibakeresési (védőfal), és az aktivált folyamatfuttatások.
@@ -59,15 +57,13 @@ Válassza ki a számítási környezetet Ez az adatfolyam végrehajtásához. Az
 
 ![Hibakeresési gomb](media/data-flow/debugbutton.png "hibakeresési gomb")
 
-A Data Flow Debug használatával az adatfolyamok egy folyamat hibakeresési futtassa interaktív módon tesztelése egy fűtéssel fürtöt használják. Használja a Pipleine hibakeresési lehetőséget található egy folyamatot az adatok folyamatok tesztelése.
+A Data Flow Debug használatával az adatfolyamok egy folyamat hibakeresési futtassa interaktív módon tesztelése egy fűtéssel fürtöt használják. A folyamat Debug lehetőséget használva belül egy folyamatot az adatok folyamatok tesztelése.
 
-### <a name="compute-type"></a>Számítási típus
+### <a name="run-on"></a>Futtatás a következőn:
 
-Választhat, általános célú, Memóriaoptimalizált Compute vagy az optimalizált memóriájú, attól függően, hogy az adatfolyama követelményeinek.
+Ez a mező kitöltése kötelező, amely meghatározza, mely az adatfolyam tevékenység-végrehajtási használandó integrációs modul. Alapértelmezés szerint a Data Factory az alapértelmezett automatikus feloldása Azure integrációs modul fogja használni. A saját Azure integrációs modulok, amelyek adott régiók definiálása, típusát, a magszámot, és a TTL számítási az adatokat a folyamat tevékenységek végrehajtását a is létrehozhat.
 
-### <a name="core-count"></a>Magok száma
-
-Válassza ki, hány magunk szeretne hozzárendelni a feladathoz. A kisebb feladatokat kevesebb maggal jobban működnek.
+Az adatfolyam-végrehajtások alapértelmezett érték 60 perc TTL általános számítási 8 maggal.
 
 ### <a name="staging-area"></a>Átmeneti terület
 
@@ -82,6 +78,8 @@ Paraméteres adatkészleteket használja, ha mindenképpen állítsa be a param�
 ### <a name="debugging-parameterized-data-flows"></a>Hibakeresési paraméteres adatfolyamok
 
 Csak a paraméteres adatkészletekkel való futtatásához a végrehajtási adatok folyamat tevékenységgel folyamat hibakeresési adatfolyamok is hibakeresési. Az ADF adatfolyam interaktív hibakeresési munkamenetek jelenleg nem működik a paraméteres adatkészletek. Folyamat-végrehajtás és hibakeresési futtatások paraméterekkel együtt fog működni.
+
+Bevált gyakorlat, hogy hozhat létre a statikus adatkészlet adatfolyamait, hogy teljes oszlop propagálás elérhető tervezés időpontjában. Ezután cserélje le a statikus adatkészlet dinamikus paraméteres adatkészlet, a flow adatfolyamat üzembe helyezése során.
 
 ## <a name="next-steps"></a>További lépések
 Tekintse meg a többi Data Factory által támogatott átvitelvezérlési tevékenységek: 

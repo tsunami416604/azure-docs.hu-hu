@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: wesmc
-ms.openlocfilehash: 293901aca3fa1a94c9c6340d2e04f47914db0e07
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 00d0e3a749c4af8faacfed5f725ce16e0492c399
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60783338"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409080"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Adafruit Feather HUZZAH ESP8266 csatlakoztatása Azure IoT hubhoz a felhőben
 
@@ -144,7 +144,7 @@ A mintaalkalmazás GitHub-ban üzemel. Klónozza a mintatárházat, amely tartal
 
 2. Nyissa meg egy mappára, ahol a mintaalkalmazás kell tárolni.
 
-3. Futtassa az alábbi parancsot:
+3. Futtassa a következő parancsot:
 
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-feather-huzzah-client-app.git
@@ -169,7 +169,7 @@ A mintaalkalmazás GitHub-ban üzemel. Klónozza a mintatárházat, amely tartal
 9. Az a **felhasználói beállítások** ablakban másolja és illessze be a következő parancsot a fájl vége
 
    ```json
-   "arduino.additionalUrls": "http://arduino.esp8266.com/stable/package_esp8266com_index.json"
+   "arduino.additionalUrls": "https://arduino.esp8266.com/stable/package_esp8266com_index.json"
    ```
 
    ![Arduino csomag URL-cím konfigurálása a VS Code-ban](media/iot-hub-arduino-huzzah-esp8266-get-started/12_vscode-package-url.png)

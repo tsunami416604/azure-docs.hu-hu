@@ -7,18 +7,18 @@ ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: d10ee8c1af85de5eb79cd4a4af6882c7a8f084f1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b0a6c016b2be12ac6686b3748b4b16281899323e
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159555"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65511058"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Hozzon létre egy rendszerképet, és a egy felhasználó által hozzárendelt felügyelt identitás használata fájlok eléréséhez az Azure Storage-ban 
 
 Az Azure az Image Builder támogatja szkriptek használatával, vagy a fájlok másolása több helyről, például a GitHub és az Azure storage stb. Ezek használatához kellett kívülről elérhető-e az Azure az Image Builder, de a SAS-tokeneket használó Azure Storage-blobokat sikerült védelméről.
 
-Ez a cikk bemutatja, hogyan hozhat létre egy testre szabott lemezképet az Azure virtuális gép az Image Builder, ahol a szolgáltatás által használt használatával egy [felügyelt identitás felhasználó által hozzárendelt](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview) fájlok eléréséhez az Azure storage-ban a lemezkép testreszabáshoz nélkül, győződjön meg arról, hogy kellene a fájlok nyilvánosan hozzáférhető, vagy SAS-tokeneket beállítását.
+Ez a cikk bemutatja, hogyan hozhat létre egy testre szabott lemezképet az Azure virtuális gép az Image Builder, ahol a szolgáltatás által használt használatával egy [felügyelt identitás felhasználó által hozzárendelt](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) fájlok eléréséhez az Azure storage-ban a lemezkép testreszabáshoz nélkül, győződjön meg arról, hogy kellene a fájlok nyilvánosan hozzáférhető, vagy SAS-tokeneket beállítását.
 
 Az alábbi példában létrehozhat két erőforráscsoport, egy fogja használni az egyéni rendszerkép és Azure Storage-fiókhoz, a parancsfájl tartalmazza a másik fogja futtatni. Ez szimulálja egy valós forgatókönyv, ahol előfordulhat, hogy build-összetevőket, vagy képfájlokat, különböző tárfiókokban az Image Builder-en kívül. Egy felhasználó által hozzárendelt identitás, majd támogatást, amely olvasási engedéllyel a parancsfájl létrehozza, de bármely nyilvános hozzáférést, amely a fájl nem állítja. A rendszerhéj rendszertestreszabó használandó Ezután töltse le és futtassa a parancsfájlt a tárfiókból.
 
@@ -130,7 +130,7 @@ az role assignment create \
 
 ## <a name="create-user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása
 
-Az identitás létrehozása, és a parancsfájl tárfiókhoz tartozó engedélyeket. További információkért lásd: [User-Assigned felügyelt identitás](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
+Az identitás létrehozása, és a parancsfájl tárfiókhoz tartozó engedélyeket. További információkért lásd: [User-Assigned felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
 
 ```azurecli-interactive
 # Create the user assigned identity 

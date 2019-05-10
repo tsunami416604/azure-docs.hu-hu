@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: pullabhk
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 8d3e3257f16fe4e0f846c2268bfefc2771387de6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ab7d2c0af4bc71733a7995b7e781f0facbfbb29f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60809055"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236438"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Az Azure Backup figyelési feladatok
 
@@ -49,7 +49,7 @@ Riasztások olyan elsősorban olyan forgatókönyvek, ahol felhasználó értes�
 A következő esetekben alertable forgatókönyvek szolgáltatás vannak meghatározva.
 
   - Biztonsági mentési és visszaállítási hibák
-  - Biztonsági mentés sikeres volt, de figyelmeztetésekkel
+  - Biztonsági mentés sikeres volt, figyelmeztetésekkel fejeződött be az Azure Backup ügynök (MAB)
   - Védelem leállítása és megőrizni az adatokat és leállítása a védelmi adatok törlésével
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>Ha a riasztás nem jelenik meg, kivételek
@@ -92,7 +92,7 @@ Amikor értesítés van konfigurálva, egy üdvözlő vagy bevezető e-mailt fog
 Ha gyakoriságát az óránkénti összefoglaló értékre lett beállítva, és riasztást kiváltott és a egy órán belül fog állni, nem lesz a közelgő óránkénti összefoglaló része.
 
 > [!NOTE]
-> 
+>
 > * Ha például egy destruktív művelet **állítsa le a védelmi adatok törlésével** van hajtja végre, riasztást hoz létre, és a egy e-mailt küld az előfizetés-tulajdonosokat, rendszergazdák és társrendszergazdák akkor is, ha a helyreállítás szolgáltatáshoz nem állíthatók be értesítéseket tároló.
 > * A sikeres feladatokra használja az értesítések konfigurálásával [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
 

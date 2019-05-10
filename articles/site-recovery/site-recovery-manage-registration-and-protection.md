@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: c22acb1ae82e5c1e781598e8545c7f1625cc1c09
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1b4cd5bb020e73dc9045eb164ce49931f818f72d
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61277161"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65415487"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Kiszolgálók eltávolítása és a védelem letiltása
 
@@ -150,6 +150,12 @@ Hyper-V gazdagépeket nem VMM által felügyelt Hyper-V hely vannak összegyűjt
 
 > [!NOTE]
 > A mobilitási szolgáltatás nem lesz eltávolítva a védett kiszolgálók mind a beállításokat távolítsa el manuálisan kell. Ha a kiszolgálót ugyanarra a konfigurációs kiszolgálóra újra használatával védeni szeretné, kihagyhatja a mobilitási szolgáltatás eltávolítása.
+
+## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>Tiltsa le a védelmet egy Azure virtuális gép (Azure-bA)
+
+-  A **védett elemek** > **replikált elemek**, kattintson a jobb gombbal a gépre > **tiltsa le a replikációt**.
+> [!NOTE]
+> a mobilitási szolgáltatás nem lesz eltávolítva a védett kiszolgálók, el kell távolítania azt manuálisan. Ha azt tervezi, a kiszolgáló védelme érdekében újra, kihagyhatja a mobilitási szolgáltatás eltávolítása.
 
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>Tiltsa le a védelmet egy Hyper-V virtuális gép (a Hyper-V – Azure)
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 43f783617c36d30aa1fd65cce580bb5e666afed1
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5973cfc955cfce0ec1b073ac96bd68f07f093087
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021475"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409115"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Beszéd Devices SDK-val a licencszerződést.
 
@@ -32,7 +32,7 @@ Ezeket a licencfeltételeket, és a Microsoft Corporation között (vagy annak e
 
     a) általános. Előfordulhat, hogy telepítse, és tetszőleges számú példányt a szoftver használatával az alkalmazások fejlesztése és tesztelése a, kizárólag a célra a fentiek és egyéb, a belső üzleti célokra.
 
-    (b) harmadik féltől származó szoftverekkel. A szoftver tartalmazhat harmadik féltől származó alkalmazások, amelyek licencét a jelen szerződés vagy a saját feltételei biztosítják. Licenc feltételeit, megjegyzések és nyugtázás, ha bármely, a harmadik féltől származó alkalmazások esetében előfordulhat, hogy elérhetők online http://aka.ms/thirdpartynotices és a egy értesítésfájlban. Akkor is, ha az ilyen alkalmazások más, a jogi nyilatkozat, a korlátozások vonatkoznak rájuk, és lehetőségéről az alábbi kizárásokat is alkalmazza a vonatkozó jogszabályok által megengedett mértékig.
+    (b) harmadik féltől származó szoftverekkel. A szoftver tartalmazhat harmadik féltől származó alkalmazások, amelyek licencét a jelen szerződés vagy a saját feltételei biztosítják. Licenc feltételeit, megjegyzések és nyugtázás, ha bármely, a harmadik féltől származó alkalmazások esetében előfordulhat, hogy elérhetők online https://aka.ms/thirdpartynotices és a egy értesítésfájlban. Akkor is, ha az ilyen alkalmazások más, a jogi nyilatkozat, a korlátozások vonatkoznak rájuk, és lehetőségéről az alábbi kizárásokat is alkalmazza a vonatkozó jogszabályok által megengedett mértékig.
 
     c) versenyképes teljesítménytesztek. Ha egy közvetlen versenytárs áll, és eléréséhez, vagy használja a szoftvert versenyképes teljesítménytesztek, elemzés, vagy információszerzés célokra, szemben a Microsoft, leányvállalatai és annak (beleértve a jövőre) vállalatait elengedni bármely versenyképes használja, a hozzáférés és a teszt korlátozások teljesítménytesztek a mértékben a használati feltételeket, a szoftverek vonatkozó használati feltételeiben szereplő, vagy lehet, a Microsoft használati határértéknél erősebb korlátozást jelentő irányul. Ha Ön nem lemond feltételezett korlátozásra a szabályozása a szoftverek használati feltételeiben szereplő, eléréséhez, vagy használhatja a szoftvert nem engedélyezett, és ehhez lesz.
 
@@ -74,13 +74,13 @@ Ezeket a licencfeltételeket, és a Microsoft Corporation között (vagy annak e
 
     e) megosztása, közzététele, terjesztése, vagy tartós bérletbe a szoftvert (kivéve a terjeszthető kód, a fenti feltételek vonatkoznak), adja meg a szoftver egy önálló üzemeltetett megoldás, mások számára is, vagy át a szoftver vagy a jelen szerződés bármely harmadik féltől származó.
 
-1. EXPORTKORLÁTOZÁSOK. Meg kell felelniük minden hazai és nemzetközi exportjogszabályt és ‑előírást az szoftvert, és a célhelyek, a végfelhasználók és a végfelhasználás korlátozásait. További információ az exportkorlátozásokról, látogasson el http://aka.ms/exporting.
+1. EXPORTKORLÁTOZÁSOK. Meg kell felelniük minden hazai és nemzetközi exportjogszabályt és ‑előírást az szoftvert, és a célhelyek, a végfelhasználók és a végfelhasználás korlátozásait. További információ az exportkorlátozásokról, látogasson el https://aka.ms/exporting.
 
 1. TÁMOGATÁSI SZOLGÁLTATÁSOK. A Microsoft nem köteles jelen szerződés a szoftver minden olyan támogatási szolgáltatások keretében. Minden nyújtott támogatás a "adott állapotában", "minden hibájával együtt" és bármiféle garancia nélkül.
 
 1. A FRISSÍTÉSEK. A szoftver rendszeres időközönként keressen frissítéseket, és töltse le és telepíti azokat. Frissítések csak a Microsofttól vagy az engedélyezett forrásoktól szerezheti be. A Microsoft szükség lehet Ön rendszerét a szoftverfrissítések előtt. Ön beleegyezik ezeket az automatikus frissítéseket további értesítés nélkül. Frissítések nem tartalmaznak és támogatja az összes meglévő szoftverfunkciót, szolgáltatások vagy külső eszközökhöz.
 
-1. KÖTÉSI VÁLASZTOTTBÍRÓSÁGI ELJÁRÁS ZÁRADÉKA ÉS PERINDÍTÁSRÓL ÉL. Ez a szakasz vonatkozik, ha él (vagy ha a fő üzleti tevékenysége a) az Egyesült Államokban.  Ha Ön és a Microsoft fióktulajdonosát tekintjük, Ön és a Microsoft vállalja, hogy próbálja ki 60 napig belüli informális megoldására feloldásához. Ha Ön és a Microsoft nem tudja, Ön és a Microsoft vállalja, hogy egyéni választottbírósági előtt a Federal Arbitration Act ("FAA") alapján, és nem tudja bírósági peres eljárást bíró vagy esküdtszék előtt amerikai választottbírósági társítást. Ehelyett egy semleges választottbíró dönt. Perindításról szemben, osztály főügyészi, privát ügyészségekre – általános műveletek és bármely más eljárást, ha valaki látja el egy reprezentatív kapacitás nem engedélyezett. sem a csoportba foglalása egyéni eljárás az összes érintett fél beleegyezése nélkül. A teljes választottbírósági szerződés további feltételeket tartalmaz, és jelenleg http://aka.ms/arb-agreement-1. Ön és a Microsoft elfogadja ezeket a feltételeket.
+1. KÖTÉSI VÁLASZTOTTBÍRÓSÁGI ELJÁRÁS ZÁRADÉKA ÉS PERINDÍTÁSRÓL ÉL. Ez a szakasz vonatkozik, ha él (vagy ha a fő üzleti tevékenysége a) az Egyesült Államokban.  Ha Ön és a Microsoft fióktulajdonosát tekintjük, Ön és a Microsoft vállalja, hogy próbálja ki 60 napig belüli informális megoldására feloldásához. Ha Ön és a Microsoft nem tudja, Ön és a Microsoft vállalja, hogy egyéni választottbírósági előtt a Federal Arbitration Act ("FAA") alapján, és nem tudja bírósági peres eljárást bíró vagy esküdtszék előtt amerikai választottbírósági társítást. Ehelyett egy semleges választottbíró dönt. Perindításról szemben, osztály főügyészi, privát ügyészségekre – általános műveletek és bármely más eljárást, ha valaki látja el egy reprezentatív kapacitás nem engedélyezett. sem a csoportba foglalása egyéni eljárás az összes érintett fél beleegyezése nélkül. A teljes választottbírósági szerződés további feltételeket tartalmaz, és jelenleg https://aka.ms/arb-agreement-1. Ön és a Microsoft elfogadja ezeket a feltételeket.
 
 1. FELMONDÁS. Minden egyéb jogot érinti a Microsoft felmondhatja a szerződést, ha bármely használati vagy feltételeket ahhoz, hogy a feladatokat. Ebben az esetben Ön pedig köteles megsemmisíteni a szoftver összes másolatát és az összes annak összetevőit.
 

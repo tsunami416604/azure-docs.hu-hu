@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: 679a1c60e44694bde86cafba21d7f1d2c6fb94d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 113faffb0ebac50a67c96ce21e0ee2c1564bb4fc
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60616551"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405642"
 ---
 # <a name="creating-and-using-resource-files"></a>Létrehozásával és használatával Erőforrásfájlok
 
@@ -38,7 +38,7 @@ Erőforrás-fájl létrehozásával beállítások:
 
 ### <a name="storage-container-url"></a>Storage-tároló URL-címe
 
-A storage-tároló URL-címe használatával azt jelenti, hogy minden olyan storage-tárolóba az Azure-beli fájlok elérhetők. A megfelelő engedélyekkel
+A storage-tároló URL-címe használatával azt jelenti, hogy minden olyan storage-tárolót az Azure-ban a megfelelő engedélyekkel a fájlok elérhetők.
 
 A jelen C# a példában a fájlokat már feltöltötte egy Azure storage-tároló, blob storage-bA. Egy erőforrás-fájl létrehozásához szükséges adatok eléréséhez, először létre kell érheti el, a storage-tárolót.
 

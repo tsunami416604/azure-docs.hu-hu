@@ -13,19 +13,22 @@ ms.devlang: na
 ms.date: 04/02/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a0730073a8d17e063ee3f1364d5914200259c10f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a4f14a1e68042704ca8e8c49f1bd76b722c90d4d
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880049"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65466300"
 ---
-# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Oktatóanyag: Az Azure Deployment Manager használata a Resource Manager-sablonok (privát előzetes verzió)
+# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Oktatóanyag: Az Azure Deployment Manager használata a Resource Manager-sablonok (nyilvános előzetes verzió)
 
 Ebből a cikkből megtudhatja, hogyan helyezheti üzembe alkalmazásait több régióban az [Azure Deployment Manager](./deployment-manager-overview.md) használatával. Deployment Manager használatához szeretne létrehozni a két sablon:
 
 * **Topológiasablon**: Az alkalmazást alkotó Azure-erőforrásokat és a telepítési helyüket írja le.
 * **Bevezetési sablon**: Az alkalmazások telepítése során végrehajtandó lépéseket írja le.
+
+> [!IMPORTANT]
+> Az előfizetés az új Azure-funkciók teszteléséhez Kanári van megjelölve, ha az Azure Deployment Manager csak használhatja a Tesztcsoportos régiók telepítését. 
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -432,4 +435,4 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag az Azure Deployment Manager használatát mutatta be. További információért tekintse meg [az Azure Resource Manager dokumentációját](/azure/azure-resource-manager/).
+Ez az oktatóanyag az Azure Deployment Manager használatát mutatta be. Állapotfigyelés az Azure Deployment Manager integrálásához tekintse meg [oktatóanyag: Állapot-ellenőrzés használata az Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).

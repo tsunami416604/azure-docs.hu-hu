@@ -54,6 +54,8 @@
       href: resource-network-topologies.md
     - name: Ismert problémák
       items:
+        - name: Gyakori hibák elhárítása
+          href: known-issues-troubleshooting-dms.md
         - name: Ismert problémák – Online migrálás az Azure SQL DB-be
           href: known-issues-azure-sql-online.md
         - name: Ismert problémák – Online migrálás a MySQL-hez készült Azure DB-be

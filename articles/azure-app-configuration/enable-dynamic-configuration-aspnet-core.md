@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: b8a466234489e65458b0136619076154fa4c9f37
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: cae29fe045d1bdc17f414ff016642635b74320df
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688910"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408833"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Oktatóanyag: A dinamikus konfiguráció használata az ASP.NET Core-alkalmazás
 
@@ -166,7 +166,7 @@ Ehhez az oktatóanyaghoz, telepítse a [.NET Core SDK](https://dotnet.microsoft.
 
 4. Jelentkezzen be az [Azure Portalra](https://aka.ms/azconfig/portal). Válassza ki **összes erőforrás**, és válassza ki a konfigurációs tár-példányt, amely a rövid útmutatóban létrehozott.
 
-5. Válassza ki **kulcs/érték Explorer**, és frissítse az értékeket a következő kulcsokat:
+5. Válassza ki **konfigurációs Explorer**, és frissítse az értékeket a következő kulcsokat:
 
     | Kulcs | Érték |
     |---|---|

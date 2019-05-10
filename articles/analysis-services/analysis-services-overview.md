@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8eccc79969ce1a474fe0b22f2c250f8e31281550
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 443d6ca86f8ac40bd2df186fd189a333cb7b7425
+ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61066093"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65416016"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -41,7 +41,7 @@ Az Azure Analysis Services **fejlesztői**, **alap-** és **standard** szinten i
 
 Ezt a szintet kiértékeléshez, valamint fejlesztési és tesztelési forgatókönyvekhez ajánljuk. Egyetlen csomagban tartalmazza a standard szintű csomagéval megegyező funkciókat, de korlátozott feldolgozási teljesítménnyel, QPU-val és memóriamérettel rendelkezik. Kibővített lekérdezésreplika ehhez a szinthez *nem érhető el*. Ehhez a szinthez nem tartozik SLA.
 
-|Felkészülés  |QPU-k  |Memória (GB)  |
+|Csomag  |QPU-k  |Memória (GB)  |
 |---------|---------|---------|
 |D1    |    20     |    3     |
 
@@ -50,7 +50,7 @@ Ezt a szintet kiértékeléshez, valamint fejlesztési és tesztelési forgatók
 
 Ezt a szintet olyan éles környezetben való használatra ajánlunk, amelyben kis méretű táblázatos modellek, korlátozott mennyiségű párhuzamos felhasználó és egyszerűbb adatfrissítési követelmények szerepelnek. Kibővített lekérdezésreplika ehhez a szinthez *nem érhető el*. A perspektívák, a több partíció használata és a DirectQuery táblázatosmodell-funkciók *nem támogatottak* ezen a szinten.  
 
-|Felkészülés  |QPU-k  |Memória (GB)  |
+|Csomag  |QPU-k  |Memória (GB)  |
 |---------|---------|---------|
 |B1    |    40     |    10     |
 |B2    |    80     |    20     |
@@ -59,7 +59,7 @@ Ezt a szintet olyan éles környezetben való használatra ajánlunk, amelyben k
 
 Ez a szint olyan létfontosságú, éles környezetben használt alkalmazásokhoz ideális, amelyek rugalmasságot követelnek meg a párhuzamos felhasználói tevékenységekre vonatkozóan, és amelyek gyorsan növekvő adatmodelleket használnak. Támogatja a speciális adatfrissítést az adatmodellek közel valós idejű frissítése érdekében, valamint az összes táblázatos modellezési funkciót is.
 
-|Felkészülés  |QPU-k  |Memória (GB)  |
+|Csomag  |QPU-k  |Memória (GB)  |
 |---------|---------|---------|
 |S0    |    40     |    10     |
 |S1    |    100     |    25     |
@@ -78,39 +78,39 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 
 |Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
-|Dél-Brazília     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
-|Közép-Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
-|USA keleti régiója     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
+|Dél-Brazília     |    B1, B2, S0, S1, S2, S4, D1     |     1.    |
+|Közép-Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1.    |
+|USA keleti régiója     |     B1, B2, S0, S1, S2, S4, D1    |    1.     |
 |USA 2. keleti régiója     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|USA 2. keleti régiója     |     S8, S9   |    1    |
-|USA északi középső régiója     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
-|USA középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|USA déli középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|USA 2. keleti régiója     |     S8, S9   |    1.    |
+|USA északi középső régiója     |     B1, B2, S0, S1, S2, S4, D1     |    1.     |
+|USA középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1.     |
+|USA déli középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1.     |
 |USA nyugati középső régiója   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |USA nyugati régiója     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
 |USA nyugati régiója     |    S8, S9   |    2  |
 |USA 2. nyugati régiója    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|USA 2. nyugati régiója    |    S8, S9  |    1     |
+|USA 2. nyugati régiója    |    S8, S9  |    1.     |
 
 ### <a name="europe"></a>Európa
 
 |Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Észak-Európa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
-|Az Egyesült Királyság déli régiója     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
+|Egyesült Királyság déli régiója     |    B1, B2, S0, S1, S2, S4, D1      |     1.    |
 |Nyugat-Európa     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Nyugat-Európa    |   S8, S9  |  1  |
+|Nyugat-Európa    |   S8, S9  |  1.  |
 
 ### <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség 
 
 |Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Kelet-Ausztrália     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Kelet-Ausztrália     |    S8, S9    |    1     |
-|Délkelet-Ausztrália     | B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Kelet-Japán     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Délkelet-Ázsia     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   1      |
-|Nyugat-India     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Kelet-Ausztrália     |    S8, S9    |    1.     |
+|Délkelet-Ausztrália     | B1, B2, S0, S1, S2, S4, D1       |    1.     |
+|Kelet-Japán     |   B1, B2, S0, S1, S2, S4, D1       |    1.     |
+|Délkelet-Ázsia     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   1.      |
+|Nyugat-India     |    B1, B2, S0, S1, S2, S4, D1     |    1.     |
 
 ## <a name="scale-to-your-needs"></a>Igényei szerint méretezhető
 
@@ -200,7 +200,7 @@ További információk az Azure Securityről: [Microsoft biztonsági és adatkez
 
 Az ingyenes [Visual Studióhoz készült SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) használatával modelleket fejleszthet és helyezhet üzembe. Az SSDT Analysis Services-projektsablonokat is tartalmaz a gyors üzembe állítás érdekében. Az SSDT már tartalmazza a Tabular 1400-modellekkel használható modern Adatok lekérése adatforrás-lekérdezési és adategyesítési funkciót is. Ha már ismeri a Power BI Desktop és az Excel 2016 Adatok lekérése funkcióját, akkor tudja, milyen egyszerűen hozhat létre nagymértékben testre szabott adatforrás-lekérdezéseket. 
 
-A Visual Studio 2017 használata esetén a Microsoft Analysis Services-projektek ingyenesen telepíthető VSIX-csomagként elérhetők. [Letöltés a Marketplace-ről](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
+Ha a Visual Studio 2017-et használ, vagy később, a Microsoft Analysis Services-projektek telepíthető VSIX ingyenes csomagként érhető el. [Letöltés a Marketplace-ről](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
 
 ### <a name="sql-server-management-studio"></a>Sql Server Management Studio
 

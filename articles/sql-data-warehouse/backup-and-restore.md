@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/01/2019
+ms.date: 04/30/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ebe45bf8f562b5be9ae2afda9d5940296396f155
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 914513bc19cc81da29efef12d50a6485233d169f
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60679307"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236572"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Biztonsági mentés és visszaállítás az Azure SQL Data Warehouse
 
@@ -83,7 +83,7 @@ A teljes költségét az elsődleges adatraktár és a hét napig pillanatkép v
 
 Ha használ georedundáns tárolást, külön tárolási díjat jelenik meg. A georedundáns tárolás az írásvédett Georedundáns Társzolgáltatás (RA-GRS) alapdíjjal számoljuk fel.
 
-További információ az SQL Data Warehouse díjszabása: [SQL Data Warehouse díjszabása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) és [kimenő forgalom díjak](https://azure.microsoft.com/pricing/details/bandwidth/) régiók közötti visszaállításakor.
+Az SQL Data Warehouse díjszabása kapcsolatos további információkért lásd: [az SQL Data Warehouse díjszabása]. Nem terheli a kimenő adatforgalom régióban visszaállításakor.
 
 ## <a name="restoring-from-restore-points"></a>A visszaállítási pontok visszaállítása
 

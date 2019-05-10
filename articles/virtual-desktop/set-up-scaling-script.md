@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 379e73c33aa4570c3e56f902b011d75944c94a8d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7687abf5fc4af0eea9fa6aa210cfd6734cec2b36
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870723"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410572"
 ---
 # <a name="automatically-scale-session-hosts"></a>Munkamenetgazdák automatikus méretezése
 
@@ -26,9 +26,9 @@ A környezetben, ahol a szkript futtatása a következő műveleteket kell rende
 
 - Windows virtuális asztal bérlő és a fiók vagy lekérdezni az adott bérlőn (például a távoli asztali szolgáltatások közreműködő) engedélyekkel egyszerű szolgáltatások.
 - Munkamenet gazdagépre a virtuális gépek készletté konfigurálva, és regisztrálta a Windows virtuális asztal szolgáltatásban.
-- Egy virtuális Gépet, amely futtatja a feladatot a feladat ütemezése és, amely további scaler munkamenet gazdagépek hálózati hozzáféréssel rendelkezik.
-- A Microsoft Azure Resource Manager PowerShell modul telepítve van a virtuális gépen futó, ütemezett feladat.
-- A Windows virtuális asztal PowerShell-modul telepítve van a virtuális gépen futó, ütemezett feladat.
+- Egy további virtuális gép, amely az ütemezett feladat fut a Feladatütemező keresztül, és munkamenet-gazdagépek hálózati hozzáféréssel rendelkezik. Ez a dokumentum későbbi szakaszában a nyújtaniuk scaler VM, lesz.
+- A [a Microsoft Azure Resource Manager PowerShell-modul](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) telepítve az ütemezett feladat fut a virtuális gépen.
+- A [Windows virtuális asztal PowerShell-modul](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) telepítve az ütemezett feladat fut a virtuális gépen.
 
 ## <a name="recommendations-and-limitations"></a>Javaslatok és korlátozások
 
@@ -37,7 +37,7 @@ A méretezési parancsfájl futtatásakor tartsa szem előtt az alábbiakat:
 - Ez a skálázási parancsfájl egy gazdagép-készletet az ütemezett feladat a méretezési parancsfájlt futtató példányonként csak kezelésére is alkalmas.
 - Az ütemezett feladatok, amelyek skálázási szkriptek futtatása virtuális gépen, amely mindig be van kapcsolva kell lennie.
 - Hozzon létre egy külön mappát, a méretezési parancsfájl, és a konfiguráció minden egyes példányánál.
-- Ez a szkript nem támogatja a fiókok a multi-factor Authentication hitelesítéshez. Azt javasoljuk, hogy a virtuális asztali Windows-szolgáltatás és az Azure eléréséhez használt egyszerű szolgáltatásokat.
+- Ez a szkript nem támogatja az Azure AD felhasználói fiókokkal, amelyek a többtényezős hitelesítés megkövetelése Windows virtuális asztali rendszergazdaként jelentkezik be. Azt javasoljuk, hogy a virtuális asztali Windows-szolgáltatás és az Azure eléréséhez használt egyszerű szolgáltatásokat. Hajtsa végre a [ebben az oktatóanyagban](create-service-principal-role-powershell.md) egy egyszerű szolgáltatást, és a egy szerepkör-hozzárendelés létrehozása a PowerShell használatával.
 - Az Azure SLA-garanciára csak a virtuális gépet egy rendelkezésre állási csoportban vonatkozik. A dokumentum aktuális verzióját környezet ismerteti az egyetlen virtuális gép a méretezés során előfordulhat, hogy nem felel meg a rendelkezésre állási követelmények vonatkoznak.
 
 ## <a name="deploy-the-scaling-script"></a>A méretezési parancsfájl központi telepítése
@@ -48,26 +48,34 @@ Az alábbi eljárások megtudhatja, hogyan helyezhet üzembe a méretezési para
 
 Először készítsen elő a környezetet a méretezési parancsfájl:
 
-1. Jelentkezzen be a virtuális gép (**méretezés a virtuális gép**), amely az ütemezett feladat fog futni egy tartományi rendszergazdai fiók.
-2. Hozzon létre egy mappát, amely tárolja a méretezési parancsfájl és annak konfigurációját a méretezési virtuális gépen (például **C:\\skálázás HostPool1**).
-3. Töltse le a **basicScaler.ps1**, **soubor Config.XML v**, és **Functions-PSStoredCredentials.ps1** fájlokat, és a **PowershellModules** a mappa a [parancsprogram-tárház skálázás](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) , és másolja őket abba a mappába, a 2. lépésben létrehozott.
+1. Jelentkezzen be a virtuális gép (scaler VM), amely egy tartományi rendszergazdai fiók az ütemezett feladat fog futni.
+2. Hozzon létre egy mappát a scaler virtuális Géphez a méretezési parancsfájl és konfigurációja tárolására (például **C:\\skálázás HostPool1**).
+3. Töltse le a **basicScale.ps1**, **soubor Config.XML v**, és **Functions-PSStoredCredentials.ps1** fájlokat, és a **PowershellModules** a mappa a [parancsprogram-tárház skálázás](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) , és másolja őket abba a mappába, a 2. lépésben létrehozott. Kétféleképpen elsődleges beszerzése a fájlokat átmásolhatja őket a virtuális gép scaler előtt:
+    - A git-tárház helyi számítógépre történő klónozásához.
+    - Nézet a **Raw** minden egyes fájl verziója másolja és illessze be az egyes fájlok egy szövegszerkesztőbe, majd mentse a fájlokat a megfelelő fájl neve és a fájl típusa. 
 
 ### <a name="create-securely-stored-credentials"></a>Biztonságosan tárolt hitelesítő adatok létrehozása
 
 Következő lépésként hozza létre a biztonságosan tárolt hitelesítő adatokat lesz szüksége:
 
 1. Nyissa meg rendszergazdaként egy PowerShell ISE-ben.
-2. Nyissa meg a Szerkesztés panelre, és a terhelés a **függvény-PSStoredCredentials.ps1** fájlt.
-3. Futtassa a következő parancsmagot:
+2. A távoli asztali szolgáltatások PowerShell-modul importálása a következő parancsmagot:
+
+    ```powershell
+    Install-Module Microsoft.RdInfra.RdPowershell
+    ```
+    
+3. Nyissa meg a Szerkesztés panelre, és a terhelés a **függvény-PSStoredCredentials.ps1** fájlt.
+4. Futtassa a következő parancsmagot:
     
     ```powershell
     Set-Variable -Name KeyPath -Scope Global -Value <LocalScalingScriptFolder>
     ```
     
     Például **változó beállítása – Name KeyPath-globális hatókör-érték "c:\\skálázás HostPool1"**
-4. Futtassa a **New-StoredCredential - KeyPath \$KeyPath** parancsmagot. Amikor a rendszer kéri, adja meg a gazdagép készlet lekérdezése engedélyek Windows virtuális asztal hitelesítő adatait (a gazdagép készlet van megadva a **soubor Config.XML v**).
+5. Futtassa a **New-StoredCredential - KeyPath \$KeyPath** parancsmagot. Amikor a rendszer kéri, adja meg a gazdagép készlet lekérdezése engedélyek Windows virtuális asztal hitelesítő adatait (a gazdagép készlet van megadva a **soubor Config.XML v**).
     - Ha különböző szolgáltatásnevek vagy standard szintű fiókot használ, futtassa a **New-StoredCredential - KeyPath \$KeyPath** parancsmag után minden hozza létre a helyi fiók tárolt hitelesítő adatokat.
-5. Futtatás **Get-StoredCredentials-lista** ellenőrizze a hitelesítő adatok sikeresen létrejöttek.
+6. Futtatás **Get-StoredCredentials-lista** ellenőrizze a hitelesítő adatok sikeresen létrejöttek.
 
 ### <a name="configure-the-configxml-file"></a>Soubor Config.XML v fájl konfigurálása
 
@@ -87,7 +95,7 @@ Adja meg a megfelelő értékek be a soubor Config.XML v méretezési parancsfá
 | BeginPeakTime                 | Amikor használati csúcsidőszak kezdete                                                            |
 | EndPeakTime                   | Ha használat csúcsidőszak vége                                                              |
 | TimeDifferenceInHours         | Időeltérése helyi idő és az UTC-t, (óra)                                   |
-| SessionThresholdPerCPU        | Azt határozza meg, amikor egy új távoli asztali Munkamenetgazda-kiszolgálót kell elindítani alacsony kínálat csúcsidőben CPU küszöbérték-munkamenetek maximális száma.  |
+| SessionThresholdPerCPU        | Azt határozza meg, amikor egy új virtuális gép munkamenetgazda kell elindítani alacsony kínálat csúcsidőben CPU küszöbérték-munkamenetek maximális száma.  |
 | MinimumNumberOfRDSH           | Gazdagép-készlet virtuális gépek futtatásának folytatásához a használat csúcsidőn kívüli időszakban minimális száma             |
 | LimitSecondsToForceLogOffUser | Jelentkezzen ki, hogy a felhasználók időszakát (másodpercben) száma. Ha az értéke 0, a felhasználó nem kényszerítette jelentkezzen ki.  |
 | LogOffMessageTitle            | A felhasználó azokat Ön kényszerített kijelentkezés előtt küldött üzenet címe                  |
@@ -111,11 +119,11 @@ Miután a konfigurációs .xml-fájlt, kell futtatni a basicScaler.ps1 rendszere
 
 Ez a skálázási szkript soubor Config.XML v fájlból, beleértve a kezdő és a nap folyamán csúcs használati időszak vége beállításainak beolvasása.
 
-Csúcs használati idő alatt a parancsfájl ellenőrzi az aktuális száma a munkamenetek és az egyes gyűjtemények aktuális futó távoli asztali Munkamenetgazda kapacitás. Ha a futó távoli asztali Munkamenetgazda-kiszolgálók rendelkezik-e elegendő kapacitással támogatja a meglévő munkameneteket a soubor Config.XML v fájlban meghatározott SessionThresholdPerCPU paraméter alapján számítja ki. Ha nem, a szkript elindít további távoli asztali Munkamenetgazda-kiszolgálók a gyűjteményben.
+Csúcs használati idő alatt a parancsfájl ellenőrzi az aktuális száma a munkamenetek és minden állomás készlet aktuális futó távoli asztali Munkamenetgazda kapacitás. A futó virtuális gépek munkamenetgazda van-e elegendő kapacitással támogatja a meglévő munkameneteket a soubor Config.XML v fájlban meghatározott SessionThresholdPerCPU paraméter alapján számítja ki. Ha nem, a szkript elindít további munkamenetgazda virtuális gépek gazdagép-készletben.
 
-A használat csúcsidőn kívüli időszakban a parancsfájl meghatározza, hogy mely távoli asztali Munkamenetgazda-kiszolgálók állítsa le a MinimumNumberOfRDSH paramétert a soubor Config.XML v fájl alapján. A szkript állítja be a távoli asztali Munkamenetgazda-kiszolgálók kiürítési módot a gazdagép csatlakozik az új munkamenetek elkerülése érdekében. Ha a **LimitSecondsToForceLogOffUser** paramétert a soubor Config.XML v fájlban nullától eltérő pozitív értéket, a parancsfájl értesíti bármelyik mentse munkáját, várjon a beállított időn, és utána a felhasználók jelenleg be van jelentkezve a a felhasználók is jelentkezzen ki. Minden felhasználói munkamenetet egy távoli asztali Munkamenetgazda-kiszolgálón regisztrált, ha a parancsfájl a kiszolgáló leáll.
+A használat csúcsidőn kívüli időszakban a parancsfájl meghatározza, hogy melyik munkamenetgazda, virtuális gépek állítsa le a soubor Config.XML v fájlban az MinimumNumberOfRDSH paraméter alapján. A szkript állítja be a munkamenet a kiürítési módot, hogy az új munkamenetek a gazdagépekhez csatlakozó virtuális gépek kiszolgálására. Ha a **LimitSecondsToForceLogOffUser** paramétert a soubor Config.XML v fájlban nullától eltérő pozitív értéket, a parancsfájl értesíti bármelyik mentse munkáját, várjon a beállított időn, és utána a felhasználók jelenleg be van jelentkezve a a felhasználók is jelentkezzen ki. Után minden felhasználói munkamenetet a virtuális gép munkamenet gazdagépen, a parancsfájl a kiszolgáló leáll.
 
-Ha a **LimitSecondsToForceLogOffUser** nulla soubor Config.XML v fájlban paramétert, a parancsfájl engedélyezi, hogy a munkamenet-konfigurációs beállítás ki a felhasználói munkamenetek aláírási kezelni a gyűjtemény tulajdonságait. Ha egy távoli asztali Munkamenetgazda kiszolgálón minden olyan munkamenetek, akkor hagyja futtató távoli asztali Munkamenetgazda kiszolgálón. Ha nincs minden olyan munkamenetek, a parancsfájl a távoli asztali Munkamenetgazda kiszolgálón leáll.
+Ha a **LimitSecondsToForceLogOffUser** nulla soubor Config.XML v fájlban paramétert, a parancsfájl lehetővé teszi a munkamenet-konfigurációs beállítás, a fogadó kezelni a felhasználói munkamenetek ki aláírási készlet tulajdonságait. Ha egy munkamenetben virtuális gazdagép minden olyan munkamenetek, akkor hagyja a munkamenetgazda virtuális gép futtatása. Ha nincs minden olyan munkamenetek, a parancsfájl a munkamenetgazda virtuális gép leáll.
 
 A parancsprogram futtatása rendszeres időközönként scaler VM-kiszolgálón a Feladatütemező segítségével célja. Válassza ki a megfelelő időtartam alatt a távoli asztali szolgáltatások környezet mérete alapján, és ne feledje, hogy kezdő és a virtuális gépek leállítása eltarthat egy ideig. Azt javasoljuk, hogy a méretezési szkript futtatása 15 percenként.
 
@@ -125,6 +133,6 @@ A méretezési szkript létrehoz két naplófájl **WVDTenantScale.log** és **W
 
 A **WVDTenantUsage.log** fájl lesz felvéve az aktív magok száma és aktív számú virtuális gépet minden alkalommal, amikor a méretezési parancsprogram futtatása. Ezen információk használatával a tényleges használat a Microsoft Azure virtuális gépek és a költségek becslése. A fájl vannak formázva, vesszővel tagolt értékek, az egyes elemek, amely tartalmazza a következő információkat:
 
->idő, a gyűjteményt, a magok, a virtuális gépek
+>idő, a gazdagép-készlet, a magok, a virtuális gépek
 
 A fájl nevét is módosíthatja szeretné, hogy a .csv kiterjesztésre, betölti a Microsoft Excelt, és elemezheti.

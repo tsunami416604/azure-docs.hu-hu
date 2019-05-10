@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4dbd65a391bdc5726436ba461a34e1ca7cab87b0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: c103e6cb3626750414ee5083dad3e34b6be4986c
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129541"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408948"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban
 
@@ -54,7 +54,7 @@ const port = process.env.PORT || 1337;
 
 Az App Service a process.env.PORT változót beilleszti az alkalmazásba, így a kód a változó segítségével tudni fogja, hogy melyik portot kell figyelni. 
 
-Egy terminálablakban keresse meg a minta Node.js-projekt gyökérkönyvtárát (ez tartalmazza az _index.js_ fájlt).
+Egy terminálablakban keresse meg a **gyökérkönyvtár** a minta Node.js-projekt (tartalmazó könyvtárba _index.js_).
 
 ## <a name="run-the-app-locally"></a>Az alkalmazás futtatása helyben
 
@@ -75,7 +75,19 @@ A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolg�
 > [!NOTE]
 > Az Azure App Service-ben az alkalmazás IIS-ben, [iisnode](https://github.com/Azure/iisnode) használatával fut. Az alkalmazás iisnode-dal való futtatásának engedélyezéséhez az alkalmazás gyökérmappája tartalmaz egy web.config fájlt. A fájl IIS-sel olvasható és az iisnode-hoz kapcsolódó beállítások [az iisnode GitHub-adattárban](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config) vannak dokumentálva.
 
-[!INCLUDE [Create ZIP file](../../includes/app-service-web-create-zip.md)]
+## <a name="create-a-project-zip-file"></a>ZIP-fájl létrehozása a projekthez
+
+Még mindig róla, hogy a **gyökérkönyvtár** a minta projekt (tartalmazó könyvtárba _index.js_). Készítsen ZIP-archívumot a projekt minden eleméről. A következő parancs a terminál alapértelmezett eszközét használja:
+
+```
+# Bash
+zip -r myAppFiles.zip .
+
+# PowerShell
+Compress-Archive -Path * -DestinationPath myAppFiles.zip
+```
+
+Később ezt a ZIP-fájlt fogja feltölteni az Azure-ba, majd üzembe helyezni az App Service-ben.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -153,7 +165,7 @@ Egy szövegszerkesztő használatával nyissa meg a Node.js-alkalmazáson belül
 response.end("Hello Azure!");
 ```
 
-Egy helyi terminálablakban keresse meg az alkalmazás gyökérkönyvtárát, majd hozzon létre egy új ZIP-fájlt a frissített projekt számára.
+A helyi terminálablakban keresse meg az alkalmazás **gyökérkönyvtár** (tartalmazó könyvtárba _index.js_), hozzon létre egy új ZIP-fájlt a frissített projekt.
 
 ```azurecli-interactive
 # Bash

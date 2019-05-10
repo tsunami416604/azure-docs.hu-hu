@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fef2d42282291bb0ea6afeea03e60234d3d47a4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 93fae0babdee5eac87d50679fdd5b2b938c4df2e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648788"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236901"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Az SAP számítási feladatok az Azure tervezési és telepítési ellenőrzőlista 
 
@@ -140,9 +140,10 @@ A próbaüzem előtt, vagy projekttervezés és-előkészítés párhuzamosan fu
       2. Annak érdekében, hogy grafikus felhasználói Felülettel időtúllépéssel között egy helyszínen üzembe helyezett SAP grafikus felhasználói felületek és az Azure-ban üzembe helyezett SAP-alkalmazási rétegekben, akkor ellenőrizze-e a következő paraméterek vannak-e beállítva a default.pfl vagy a példány profil:
          1.   rdisp/keepalive_timeout = 3600
          2.   rdisp/életben tartási = 20
-      3. Windows feladatátvevő fürt konfigurációjának használatakor győződjön meg arról, hogy a az időbe nem válaszol csomóponton megfelelően van-e állítva az Azure-hoz. A Microsoft-cikk [finomhangolása a feladatátvevő fürt hálózati küszöbértékek](https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/) paramétereket, és milyen hatással van a feladatátvételi övvisszahúzónál sorolja fel. A felsorolt paraméterek ezen két paramétert kell beállítani, azokra az értékekre:
-         1.   SameSubNetDelay = 2
+      3. Windows feladatátvevő fürt konfigurációjának használatakor győződjön meg arról, hogy a az időbe nem válaszol csomóponton megfelelően van-e állítva az Azure-hoz. A Microsoft-cikk [finomhangolása a feladatátvevő fürt hálózati küszöbértékek](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834) paramétereket, és milyen hatással van a feladatátvételi övvisszahúzónál sorolja fel. Ha a fürtcsomópontok ugyanazon az alhálózaton vannak, a következő paramétereket kell módosítani:
+         1.   SameSubNetDelay = 2000
          2.   SameSubNetThreshold = 15
+         3.   RoutingHistorylength = 30
 4. Tesztelje a magas rendelkezésre állás és vészhelyreállítás helyreállításának folyamata
    1. Feladatátvételi helyzetek szimulálása leáll a virtuális gépek (Windows vendég operációs rendszer) vagy az operációs rendszerek üzembe Pánik módban (Linux vendég operációs rendszer) annak érdekében, hogy döntse el, hogy a feladatátvétel konfigurációk megfelelően működni. 
    2. A feladatátvétel végrehajtásához szükséges idő mérjük. Ha túl hosszú az időpontokat, vegye figyelembe:
@@ -235,7 +236,7 @@ Az éles fázisokban kövesse a forgatókönyvek a korábbi fázisokban adatöss
         2.  Átlagos CPU-idő – minden egyes processzor (tehát 128 processzorok m128 virtuális gépen)
         3.  CPU-idő kernel – minden egyes processzor
         4.  CPU-idő felhasználói – minden egyes processzor
-    5.  Memory (Memória) 
+    5.  Memória 
         1.  Szabad memória
         2.  Memória lap/mp
         3.  Memória lap out/mp

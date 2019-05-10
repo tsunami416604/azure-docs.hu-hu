@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 668862714b416bd89d3b5f82caf8b0305fccae54
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0a7927868a9a4bebc80ec995baefbae4c45d747f
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60363012"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410477"
 ---
 # <a name="example-3-build-a-perimeter-network-to-protect-networks-with-a-firewall-udr-and-nsgs"></a>3. példa: Hozhat létre egy szegélyhálózaton hálózatok egy tűzfal, udr-t és az NSG-k védelme
 
@@ -166,7 +166,7 @@ Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] | `
     Set-AzureIPForwarding -Enable
 ```
 
-## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
+## <a name="network-security-groups"></a>Hálózati biztonsági csoportok
 
 Ebben a példában egy hálózati biztonsági csoport (NSG) hozhat létre, és ezután töltse be egyetlen szabállyal. A példa ezután az NSG-KET csak köti az előtérbeli és háttérbeli alhálózatok (nem a SecNet). A szabály, akkor betöltheti az NSG-t a következőképpen történik:
 
@@ -621,7 +621,7 @@ Idézze is, hogy a hálózati biztonsági csoportok (NSG-k) vannak érvényben a
    1. Tűzfalszabály 10 (Intra-alhálózat) nem vonatkozik. Ugrás a következő szabály.
    1. Tűzfalszabály 11 (az összes elutasítása) a alkalmazni. Forgalom le van tiltva. Állítsa le a szabály feldolgozása.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 Ez a szakasz a következő elemeket tartalmazza:
 
@@ -989,7 +989,7 @@ Futtatás a PowerShell szkriptet helyileg, az internet csatlakoztatott számít�
 Mentse az XML-fájl hely frissítve. Módosítsa a `$NetworkConfigFile` mutató hivatkozást a mentett hálózati konfigurációs fájlban a fenti teljes szkript változóját.
 
 ```xml
-    <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+    <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
           <DnsServers>

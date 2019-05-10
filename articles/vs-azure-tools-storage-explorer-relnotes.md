@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: c6416e36d7d2723577ca0d2009fb7bbad24f3b6a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 18c52a47c291181547a9005c273dc1a329b8c207
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154703"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510953"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>A Microsoft Azure Storage Explorer kibocsátási megjegyzései
 
@@ -44,7 +44,7 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
 * Az AzCopy tölthet fel az alapján számítja ki, és állítsa be az MD5-kivonat jelző engedélyezve van. [#1223](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1223)
 
 
-### <a name="preview-features"></a>Előzetes állapotú szolgáltatások
+### <a name="preview-features"></a>Előnézeti funkciók
 
 * Eszköz kód flow bejelentkezés már elérhető az előzetes verzióra. Az engedélyezéshez, lépjen a "Betekintő" → "Használható eszköz kód folyamat Sign-in". Azt javasoljuk, hogy minden olyan felhasználók, akik rendelkeznek üres jelentkezzen be a windows próbálkozzon ezzel a funkcióval kapcsolatos problémák, előfordulhat, hogy bizonyul megbízhatóbb formájában jelentkezzen be.
 * Az Azcopyval integrált, a Storage Explorer jelenleg érhető el az előzetes verzióra. Az engedélyezéshez nyissa meg a "Betekintő", "Használata az AzCopy a továbbfejlesztett Blob feltöltése és letöltése" →. Az Azcopyval befejezett BLOB átvitelek gyorsabb lehet, és további nagy teljesítményt nyújtva.
@@ -82,7 +82,7 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Storage Explorer linuxon futó szükséges bizonyos függőségekkel, először telepíteni kell. Ellenőrizze a Storage Explorer [hibaelhárítási útmutató](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) további információt.
+* Storage Explorer linuxon futó szükséges bizonyos függőségekkel, először telepíteni kell. Ellenőrizze a Storage Explorer [hibaelhárítási útmutató](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) további információt.
 
 ## <a name="previous-releases"></a>Korábbi kiadások
 
@@ -135,7 +135,7 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
 * Mostantól módosíthatja a tulajdonos és a tulajdonoscsoport, amikor kezelik az ADLS Gen2-tároló, fájlra vagy mappára vonatkozóan.
 * A Windows a Storage Explorer frissítése a terméken belüli már növekményes telepítését. Ennek eredménye egy gyorsabb frissítési élmény. Ha inkább egy tiszta telepítését, akkor letöltheti a [telepítő](https://azure.microsoft.com/features/storage-explorer/) saját maga és manuális telepítése. #1089
 
-### <a name="preview-features"></a>Előzetes állapotú szolgáltatások
+### <a name="preview-features"></a>Előnézeti funkciók
 
 * Eszköz kód flow bejelentkezés már elérhető az előzetes verzióra. Az engedélyezéshez, lépjen a "Betekintő" → "Használható eszköz kód folyamat Sign-in". Azt javasoljuk, hogy minden olyan felhasználók, akik rendelkeznek üres jelentkezzen be a windows próbálkozzon ezzel a funkcióval kapcsolatos problémák, előfordulhat, hogy bizonyul megbízhatóbb formájában jelentkezzen be. #938
 * Az Azcopyval integrált, a Storage Explorer jelenleg érhető el az előzetes verzióra. Az engedélyezéshez nyissa meg a "Betekintő", "Használata az AzCopy a továbbfejlesztett Blob feltöltése és letöltése" →. Az Azcopyval befejezett BLOB átvitelek gyorsabb lehet, és további nagy teljesítményt nyújtva.

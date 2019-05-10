@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 968bb5317e06b5cf9ac1f939eaf56288122a1ae0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 00d40b9910f9b549443373c84b079c543037ce62
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724405"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236324"
 ---
 # <a name="manage-your-application-preferences"></a>Az alkalmazás-beállítások kezelése
 
@@ -23,13 +23,16 @@ IoT-központ rugalmasságot biztosít, és testre szabhatja az alkalmazást az i
 
 ## <a name="changing-language"></a>Nyelv módosítása
 
-IoT-központ több nyelven is támogatott. Elsődleges nyelv használatával válthat a **nyelvválasztó** a beállítások ikonra a felső navigációs sávon. Miután módosította a nyelvet, az IoT-központ megjegyzi a választását, és alkalmazza azt az alkalmazások közötti. Vegye figyelembe, hogy az irányítópult képeket nem honosított alkalmazáson belül testreszabása.
+IoT-központ több nyelven is támogatott. Elsődleges nyelv használatával válthat a **nyelvválasztó** a beállítások ikonra a felső navigációs sávon. Miután módosította a nyelvet, az IoT-központ megjegyzi a választását, és alkalmazza azt az alkalmazások közötti. Az irányítópult képeket nem honosított alkalmazáson belül testreszabása.
 
 ## <a name="changing-theme"></a>Téma módosítása
 
-Támogatja a sötét téma és világos téma van. Alapértelmezés szerint a világos téma pedig módosíthatja ezt a beállítások ikonra a felső navigációs sávban a kiválasztásával.
+Támogatja a sötét téma és világos téma van. Alapértelmezés szerint a világos téma pedig módosíthatja a témát a beállítások ikonra a felső navigációs sávban a kiválasztásával.
 
 ![IoT-központ témaválasztóval](media/howto-manage-preferences/settings.png)
+
+> [!NOTE]
+> Világos és sötét témák választhat a beállítás nem érhető el, ha a rendszergazda által konfigurált az alkalmazás egyéni témát.
 
 ## <a name="next-steps"></a>További lépések
 
