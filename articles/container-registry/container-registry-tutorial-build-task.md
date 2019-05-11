@@ -5,24 +5,26 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 05/04/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5aa637938433eb1f906f0a4d81038cec0d6c6dcc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7a9a1e3d3c92f43d19a75e7cd0e10b3fd395a9b5
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893010"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544990"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Oktatóanyag: Felhőalapú tároló-rendszerképek létrehozásának automatizálása, ha forráskódot véglegesítése
 
-A [gyors feladat](container-registry-tutorial-quick-task.md) mellett az ACR Tasks a Docker tárolórendszerképek automatikus összeállítását is támogatja az *összeállítási feladattal*. Ez az oktatóanyag azt mutatja be, hogyan lehet az Azure CLI használatával olyan feladatot létrehozni, amely automatikusan aktiválja a rendszerképek összeállítását a felhőben, amikor forráskódot véglegesít egy Git-adattárban.
+Mellett egy [gyors feladat](container-registry-tutorial-quick-task.md), ACR feladatok támogatja az automatikus Docker-tároló rendszerképét a felhőben hoz létre, amikor véglegesítése a forráskód Git-tárházba.
 
-Az oktatóanyag-sorozat második része a következő lépésekből áll:
+Ebben az oktatóanyagban az ACR-feladat állít össze, és a egy docker-fájlban megadott véglegesítése a forráskód Git-adattár, akkor egyetlen tárolórendszerkép leküldések. Hozhat létre egy [többlépéses feladat](container-registry-tasks-multi-step.md) egy YAML-fájlt használó hozhat létre, leküldéses, és szükség esetén a kód véglegesítésére több tároló tesztelése, lásd: lépések meghatározásához [oktatóanyag: Többlépéses tároló munkafolyamat futtatása a felhőben, ha forráskódot véglegesíti](container-registry-tutorial-multistep-task.md). ACR-tevékenységek áttekintését lásd: [automatizálása operációs rendszer és a keretrendszer javítása az ACR-feladatok](container-registry-tasks-overview.md)
+
+Ebben az oktatóanyagban:
 
 > [!div class="checklist"]
-> * Tevékenység létrehozása
+> * Feladat létrehozása
 > * A feladat tesztelése
 > * Tevékenységek állapotának megtekintése
 > * A feladat aktiválása kódvéglegesítéssel
@@ -33,51 +35,13 @@ Ez az oktatóanyag feltételezi, hogy elvégezte az [előző oktatóanyag](conta
 
 Ha az Azure CLI-t helyben szeretné használni, az Azure CLI **2.0.46-os** vagy újabb verzióját kell telepítenie, és be kell jelentkeznie az [az login][az-login] paranccsal. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet, olvassa el [az Azure CLI telepítését][azure-cli] ismertető témakört.
 
-## <a name="prerequisites"></a>Előfeltételek
+[!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
-### <a name="get-sample-code"></a>Mintakód letöltése
-
-Ez az oktatóanyag feltételezi, hogy elvégezte az [előző oktatóanyag](container-registry-tutorial-quick-task.md) lépéseit, valamint elágaztatta és klónozta a mintaadattárat. Ha még nem tette meg, hajtsa végre az előző oktatóanyag [Előfeltételek](container-registry-tutorial-quick-task.md#prerequisites) szakaszának lépéseit, mielőtt továbblépne.
-
-### <a name="container-registry"></a>Tárolóregisztrációs adatbázis
-
-Az oktatóanyag elvégzéséhez rendelkeznie kell egy Azure-beli tárolóregisztrációs adatbázissal az Azure-előfizetésében. Ha a beállításjegyzék van szüksége, tekintse meg a [előző oktatóanyagban](container-registry-tutorial-quick-task.md), vagy [a rövid útmutató: Hozzon létre egy tároló-beállításjegyzéket az Azure CLI-vel](container-registry-get-started-azure-cli.md).
-
-## <a name="overview-of-acr-tasks"></a>Az ACR Tasks áttekintése
-
-A feladat egy automatizált összeállítás tulajdonságait határozza meg, beleértve a tárolórendszerkép forráskódjának helyét és az összeállítást kiváltó eseményt. Amikor a feladatban definiált események egyike (például egy véglegesítés egy Git-adattárban) bekövetkezik, az ACR Tasks elindít egy tárolórendszerkép-összeállítást a felhőben. Alapértelmezés szerint a sikeresen összeállított rendszerképet ezután leküldi a feladatban meghatározott Azure-beli tárolóregisztrációs adatbázisba.
-
-Az ACR Tasks jelenleg a következő triggerek használatát támogatja:
-
-* Véglegesítés egy Git-adattárba
-* Az alapként szolgáló rendszerkép frissítése
-
-Ebben az oktatóanyagban az ACR-feladat állít össze, és leküldéses értesítések egy-egy docker-fájlban megadott egyetlen tároló rendszerképét. ACR-feladatokat is futtathat [több lépésből álló feladatokat](container-registry-tasks-multi-step.md), YAML-fájl használatával adja meg a lépés, leküldéses, és választhatóan tesztelheti a több tároló.
-
-## <a name="create-a-build-task"></a>Összeállítási feladat létrehozása
-
-Ebben a szakaszban először egy személyes hozzáférési jogkivonatot (PAT) hoz létre a GitHubban az ACR Tasks szolgáltatással való használathoz. Ezután létrehoz egy feladatot, amely aktivál egy összeállítást, ha valaki kódot véglegesít az adattár adott elágazásában.
-
-### <a name="create-a-github-personal-access-token"></a>Személyes hozzáférési jogkivonat létrehozása a GitHubban
-
-Ahhoz, hogy a Git-adattárban való véglegesítéskor kiválthasson egy összeállítást, az ACR Tasksnak egy személyes hozzáférési jogkivonatra (PAT) van szüksége az adattár eléréséhez. Az alábbi lépéseket követve hozhat végre személyes hozzáférési jogkivonatot a GitHubban:
-
-1. Lépjen a GitHub PAT-létrehozási oldalára a https://github.com/settings/tokens/new címen.
-1. Adja meg a jogkivonat rövid **leírását**, például „ACR Tasks bemutatója”.
-1. A **repo** (adattár) területen jelölje be a **repo:status** és a **public_repo** lehetőséget.
-
-   ![A GitHub személyes hozzáférési jogkivonatok létrehozására szolgáló oldalának képernyőképe][build-task-01-new-token]
-
-1. Kattintson a **Generate token** (Jogkivonat létrehozása) gombra (a rendszer kérheti a jelszó megadását).
-1. Másolja és mentse a létrehozott jogkivonatot egy **biztonságos helyre** (ezt a jogkivonatot egy feladat definiálására fogja használni a következő szakaszban).
-
-   ![A létrehozott személyes hozzáférési jogkivonat képernyőképe a GitHubban][build-task-02-generated-token]
-
-### <a name="create-the-build-task"></a>Az összeállítási feladat létrehozása
+## <a name="create-the-build-task"></a>Az összeállítási feladat létrehozása
 
 Most, miután végrehajtotta az ahhoz szükséges lépéseket, hogy az ACR Tasks olvashassa a véglegesítési állapotokat, és webhookokat hozhasson létre egy adattárban, létrehozhat egy feladatot, amely egy tárolórendszerkép összeállítását váltja ki az adattárban való véglegesítés esetén.
 
-Először lássa el ezeket a rendszerhéj-környezeti változókat a környezetnek megfelelő értékekkel. Ez a lépés nem feltétlenül szükséges, de némileg könnyebbé teszi az oktatóanyagban lévő többsoros Azure CLI-parancsok végrehajtását. Ha nem látja el értékkel ezeket a környezeti változókat, manuálisan kell majd behelyettesítenie az egyes értékeket, amikor megjelennek a példaparancsokban.
+Először lássa el ezeket a rendszerhéj-környezeti változókat a környezetnek megfelelő értékekkel. Ez a lépés nem feltétlenül szükséges, de némileg könnyebbé teszi az oktatóanyagban lévő többsoros Azure CLI-parancsok végrehajtását. Ha ezeket a környezeti változókat nem feltöltéséhez, kézzel kell lecserélnie egyes bárhol a Példaparancsok megjelenik.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -85,7 +49,7 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-Most hozza létre a feladatot az [az acr task create][az-acr-task-create] parancs végrehajtásával:
+Hozza létre a tevékenység az alábbiak végrehajtásával [az acr-feladat létrehozása] [ az-acr-task-create] parancsot:
 
 ```azurecli-interactive
 az acr task create \
@@ -106,14 +70,6 @@ A feladat megadja, hogy minden alkalommal, amikor kódot véglegesítenek a `--c
 A sikeres [az acr task create][az-acr-task-create] parancs kimenete az alábbihoz hasonló:
 
 ```console
-$ az acr task create \
->     --registry $ACR_NAME \
->     --name taskhelloworld \
->     --image helloworld:{{.Run.ID}} \
->     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
->     --branch master \
->     --file Dockerfile \
->     --git-access-token $GIT_PAT
 {
   "agentConfiguration": {
     "cpu": 2
@@ -326,12 +282,11 @@ Ez az oktatóanyag azt mutatta be, hogyan használhatók a feladatok a tárolór
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-task]: /cli/azure/acr
-[az-acr-task-create]: /cli/azure/acr
-[az-acr-task-run]: /cli/azure/acr
-[az-acr-task-list-runs]: /cli/azure/acr
+[az-acr-task]: /cli/azure/acr/task
+[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
+[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
+[az-acr-task-list-runs]: /cli/azure/acr/task#az-acr-task-list-runs
 [az-login]: /cli/azure/reference-index#az-login
 
-<!-- IMAGES -->
-[build-task-01-new-token]: ./media/container-registry-tutorial-build-tasks/build-task-01-new-token.png
-[build-task-02-generated-token]: ./media/container-registry-tutorial-build-tasks/build-task-02-generated-token.png
+
+

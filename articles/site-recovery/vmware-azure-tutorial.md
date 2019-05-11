@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 4/08/2019
+ms.date: 05/10/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 9e8f450825b7b4ad0402b8976d68bc23c18ce855
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e3c645ea748834340a2e6cfb8d3e7e1b1e876dcf
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60565657"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540853"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Az Azure-ba irányuló vészhelyreállítás beállítása helyszíni VMware virtuális gépekhez
 
@@ -172,7 +172,7 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 - A szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval.
 - Alapértelmezés szerint a rendszer a feladat-visszavételhez is automatikusan létrehoz egy megfelelő szabályzatot. Ha például a replikációs szabályzat a **rep-policy**, a feladat-visszavételi szabályzat a **rep-policy-failback** lesz. Ezt a szabályzatot nem használja a rendszer, amíg nem indít el egy feladat-visszavételt az Azure-ból.
 
-## <a name="enable-replication"></a>A replikáció engedélyezése
+## <a name="enable-replication"></a>Replikáció engedélyezése
 
 Virtuális gépek replikálásának engedélyezése a következőképpen:
 
@@ -180,7 +180,7 @@ Virtuális gépek replikálásának engedélyezése a következőképpen:
 1. A **Forrás** mezőben válassza a **Helyszíni** lehetőséget, majd a **Forrás helye** mezőben válassza ki a konfigurációs kiszolgálót.
 1. A **Gép típusa** mezőben válassza a **Virtual Machines** lehetőséget.
 1. A **vCenter/vSphere hipervizor** mezőben válassza ki a vSphere-gazdagépet vagy az azt felügyelő vCenter-kiszolgálót.
-1. Válassza ki a folyamatkiszolgálót (alapértelmezés szerint telepítve van a konfigurációs kiszolgáló virtuális gépén). Ezután kattintson az **OK** gombra.
+1. Válassza ki a folyamatkiszolgálót (alapértelmezés szerint telepítve van a konfigurációs kiszolgáló virtuális gépén). Ezután kattintson az **OK** gombra. Minden folyamatkiszolgáló állapotát jelzi megfelelően ajánlott korlátok és más paramétereket. Válassza ki a megfelelő folyamatkiszolgáló. A [kritikus](vmware-physical-azure-monitor-process-server.md#process-server-alerts) folyamatkiszolgáló nem kell megválasztani. Választhatja [hibaelhárításához és megoldásához](vmware-physical-azure-troubleshoot-process-server.md) a hibák **vagy** beállítása egy [horizontális felskálázási folyamatkiszolgáló](vmware-azure-set-up-process-server-scale.md).
 1. A **Cél** mezőben válassza ki az előfizetést és az erőforráscsoportot, amelyben a feladatátviteli virtuális gépeket létre szeretné hozni. A Resource Manager-alapú üzemi modellt használjuk. 
 1. Válassza ki azt az Azure-hálózatot és alhálózatot, amelyhez a feladatátvétel után létrejövő Azure-beli virtuális gépek csatlakoznak.
 1. Ha a hálózati beállítást minden olyan virtuális gépre alkalmazni szeretné, amelyen engedélyezte a replikációt, válassza a **Beállítás most a kijelölt gépekhez** lehetőséget. Ha az egyes gépeknél külön-külön szeretné beállítani az Azure-hálózatot, kattintson a **Beállítás később** elemre.

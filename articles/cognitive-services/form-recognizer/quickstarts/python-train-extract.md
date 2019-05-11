@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 98d1870105038c4314a6b038ec198342bb2ca1d0
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bbc285c35c010c9c0a38e9b3d6938c5dd3b76fe4
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027186"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544857"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-using-rest-api-with-python"></a>Gyors útmutató: Egy űrlap felismerő modell betanítását, és bontsa ki az űrlapadatok REST API-val, a Python
 
@@ -24,9 +24,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
--  Az űrlap felismerő korlátozott hozzáférésű előzetes hozzáférést kell kap. Az előzetes verzió eléréséhez, kérjük töltse ki és küldje el a [Cognitive Services űrlap felismerő hozzáférési kérelem](https://aka.ms/FormRecognizerRequestAccess) űrlap. 
+- Az űrlap felismerő korlátozott hozzáférésű előzetes hozzáférést kell kap. Az előzetes verzió eléréséhez, kérjük töltse ki és küldje el a [Cognitive Services űrlap felismerő hozzáférési kérelem](https://aka.ms/FormRecognizerRequestAccess) űrlap. 
 - A [Pythonnak](https://www.python.org/downloads/) telepítve kell lennie, ha a mintát helyben szeretné futtatni.
-- Az űrlap felismerő rendelkeznie kell egy előfizetési kulcsot. Az előfizetői azonosító beszerzéséhez lásd az [előfizetői azonosítók beszerzéséről](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) szóló témakört.
+- Az űrlap felismerő rendelkeznie kell egy előfizetési kulcsot. Előfizetés – olyan egyetlen szolgáltatást kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) felismerő képernyő előfizetés és a kulcs beszerzése. Ne használjon a több szolgáltatásos előfizetés, mert ez nem tartalmazza az űrlap felismerő szolgáltatás.
 - Az azonos típusú öt űrlapok csoportját kell rendelkeznie. Használhat egy [mintaadatkészlettel](https://go.microsoft.com/fwlink/?linkid=2090451) ebben a rövid útmutatóban.
 
 ## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása

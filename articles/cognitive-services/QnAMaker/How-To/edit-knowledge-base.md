@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 05/10/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 22d408204b69e0a564103efd29468c6f0d68d93a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c9add80b7494ae2a8e671967a96dc5d3c7307f51
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61374578"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541642"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>A QnA Maker Tudásbázis szerkesztése
 
@@ -72,8 +72,7 @@ Alternatív kérdések hozzáadása egy meglévő QnA pár annak lehetőségét,
 
 ## <a name="add-metadata"></a>metaadatok hozzáadása
 
-
-Adja hozzá a metaadatokat párokat a metaadat ikon kiválasztásával. Metaadatok párban áll egy kulcs és a egy értéke.
+Adja hozzá a metaadatokat párok első kiválasztásával **beállítások megtekintéséhez**, kiválasztja az **megjelenítése metaadatok**. Ez megjeleníti a metaadat-oszlopot. Ezután válassza ki a **+** bejelentkezni egy metaadat-pár hozzáadása. Ez a páros egy kulcs és a egy értéke áll.
 
 ![Metaadatok hozzáadása](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 

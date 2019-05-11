@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 05/10/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 0f94a1fdc01825b5bf78644f84c72e6b031109c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 78c445e70fcf972be81ef6dfd5d675f8e4843621
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61379207"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541511"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Ajánlott eljárások a QnA Maker Tudásbázis
 A [Tudásbázis fejlesztési életciklus](../Concepts/development-lifecycle-knowledge-base.md) végigvezeti Önt a a KB-os kezelése az elejétől a végéig. Ajánlott eljárások használatával növelheti a Tudásbázis, és jobb eredményeket nyújt az application/csevegőrobot a végfelhasználók számára.
@@ -39,18 +39,20 @@ Adjon hozzá annyi másodlagos kérdések van szükség, de egyszerű megtartani
 A legjobb válaszokat már az egyszerű, de nem túl egyszerű, például az Igen és a válaszok. Ha a válasz kell hivatkozni a más forrásokból, vagy egy gazdag felhasználói élményt biztosítson adathordozó és a hivatkozások, [címkézés](../how-to/metadata-generateanswer-usage.md) különbséget tenni a várt válasz típusát, majd küldje el a lekérdezést a helyes válasz verzió beszerzéséhez a címkével.
 
 ## <a name="chit-chat"></a>Csevegési Chit
-A robot, hogy a robot természetes nyelvi, és vonzó, chit csevegési hozzá-kis munkamennyiség. Egyszerűen adja hozzá a 3 előre definiált személyiséghez chit csevegési adatkészleteket a KB-os létrehozásakor, és bármikor módosíthatja őket. Ismerje meg, hogyan [chit csevegési ad hozzá a KB-os](../How-To/chit-chat-knowledge-base.md). 
+A robot, hogy a robot természetes nyelvi, és vonzó, chit csevegési hozzá-kis munkamennyiség. Egyszerűen adja hozzá a csevegési chit adatkészletek az előre definiált személyiséghez a KB-os létrehozásakor, és bármikor módosíthatja őket. Ismerje meg, hogyan [chit csevegési ad hozzá a KB-os](../How-To/chit-chat-knowledge-base.md). 
 
 ### <a name="choosing-a-personality"></a>Egy személy kiválasztása
-Csevegési Chit 3 előre meghatározott személyiséghez támogatott: 
+Számos előre definiált személyiséghez Chit csevegési támogatott: 
 
-|Személyiséghez|
-|--|
-|A Professional|
-|A typu Friend|
-|A Comic|
+|Személy |A QnA Maker adatkészlet fájl |
+|---------|-----|
+|Professzionális |[qna_chitchat_professional.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
+|Rövid |[qna_chitchat_friendly.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
+|Okos |[qna_chitchat_witty.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
+|Ápolásáért |[qna_chitchat_caring.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
+|Lelkes |[qna_chitchat_enthusiastic.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_enthusiastic.tsv) |
 
-A válaszok köre a formális informális és irreverent. Akkor válassza a személy, amely legközelebb eső igazodik a képviselő hangvételét robotjait használni szeretne. Az adatkészlet megtekintése és válasszon, amely a robot alapként szolgál, és azután testre szabhatják a válaszokat. 
+A válaszok köre a formális informális és irreverent. Akkor válassza a személy, amely legközelebb eső igazodik a képviselő hangvételét robotjait használni szeretne. Megtekintheti a [adatkészletek](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets), és válasszon, amely a robot alapként szolgál, és azután testre szabhatják a válaszokat. 
 
 ### <a name="edit-bot-specific-questions"></a>A robot-specifikus kérdések szerkesztése
 Nincsenek robot-specifikus kérdésekre kaphat választ a csevegési chit adatkészlet részét képezik, és általános válaszokat kitöltötte. Ezek a válaszok robot adatait legjobban megfelelően módosítsa. 

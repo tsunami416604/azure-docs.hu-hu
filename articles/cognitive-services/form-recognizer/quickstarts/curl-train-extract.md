@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 36f98a8dea2a732a7f8504b160da895637366fc8
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: f5c87457f5d19b107f5722bc8c6a95174555332a
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471905"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546352"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-using-rest-api-with-curl"></a>Gyors útmutató: Egy űrlap felismerő modell betanítását, és bontsa ki az űrlapadatok REST API használatával a curl használatával
 
@@ -24,10 +24,10 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az űrlap felismerő korlátozott hozzáférésű előzetes hozzáférést kapott. Az előzetes verzió eléréséhez, kérjük töltse ki és küldje el a [Cognitive Services űrlap felismerő hozzáférési kérelem](https://aka.ms/FormRecognizerRequestAccess) űrlap. 
-* Rendelkeznie kell a [cURL-lel](https://curl.haxx.se/windows/).
-* Az űrlap felismerő rendelkeznie kell egy előfizetési kulcsot. Kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) felismerő képernyő előfizetés és a kulcs beszerzése.
-* Az azonos típusú öt űrlapok csoportját kell rendelkeznie. Használhat egy [mintaadatkészlettel](https://go.microsoft.com/fwlink/?linkid=2090451) ebben a rövid útmutatóban.
+- Az űrlap felismerő korlátozott hozzáférésű előzetes hozzáférést kapott. Az előzetes verzió eléréséhez, kérjük töltse ki és küldje el a [Cognitive Services űrlap felismerő hozzáférési kérelem](https://aka.ms/FormRecognizerRequestAccess) űrlap.
+- Rendelkeznie kell a [cURL-lel](https://curl.haxx.se/windows/).
+- Az űrlap felismerő rendelkeznie kell egy előfizetési kulcsot. Előfizetés – olyan egyetlen szolgáltatást kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) felismerő képernyő előfizetés és a kulcs beszerzése. Ne használjon a több szolgáltatásos előfizetés, mert ez nem tartalmazza az űrlap felismerő szolgáltatás.
+- Az azonos típusú öt űrlapok csoportját kell rendelkeznie. Használhat egy [mintaadatkészlettel](https://go.microsoft.com/fwlink/?linkid=2090451) ebben a rövid útmutatóban.
 
 ## <a name="train-a-form-recognizer-model"></a>Egy űrlap felismerő modell betanítása
 

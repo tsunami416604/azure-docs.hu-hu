@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: a755a0bada0dbf6797465ea40ddbb30a84e3f289
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75e52398386e7ef1b338d13a8cfe8f20c06abcc6
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60202053"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541524"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Oktatóanyag: A képek metaadatai létrehozni az Azure Storage használata a Computer Vision
 
@@ -40,17 +40,11 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="create-a-computer-vision-resource"></a>Számítógépes Látástechnológia erőforrás létrehozása
 
-Szüksége lesz az Azure-fiókjával; a Computer Vision erőforrás létrehozása Ezt az erőforrást a hozzáférést az Azure Computer Vision Service kezeli.
+Szüksége lesz az Azure-fiókjával; a Computer Vision erőforrás létrehozása Ezt az erőforrást a hozzáférést az Azure Computer Vision Service kezeli. 
 
-1. Jelentkezzen be a [az Azure portal](https://ms.portal.azure.com) kattintson **erőforrás létrehozása**, utána pedig **mesterséges Intelligencia és Machine Learning** és **Computer Vision**.
+1. Kövesse a [az Azure Cognitive Services-erőforrás létrehozásához](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) számítógépes Látástechnológiai erőforrás létrehozásához.
 
-    ![Computer Vision API új előfizetés létrehozása](../Images/new-vision-api.png)
-
-1. A párbeszédpanelen adja meg az "látás-api-key" az a **neve** mezőbe, majd válasszon **F0** , a **tarifacsomag**. Válassza ki ugyanazt **hely** az Azure Storage-fiók beállításakor kiválasztott. Alatt **erőforráscsoport**válassza **meglévő** , és válassza ki ugyanazt az erőforráscsoportot is. Ellenőrizze a **megerősítem, hogy** mezőbe, majd kattintson a **létrehozás**.
-
-    ![Feliratkozás a Computer Vision API](../Images/create-vision-api.png)
-
-1. Térjen vissza az erőforráscsoport a menüben, majd kattintson az imént létrehozott Computer Vision API-előfizetés. Másolja az URL-CÍMÉT a **végpont** valahol, hogy könnyen hozzáférhet kis idő múlva. Kattintson a **hozzáférési kulcsok megjelenítése**.
+1. Ezután nyissa meg az erőforráscsoport a menüben, majd kattintson az imént létrehozott Computer Vision API-előfizetés. Másolja az URL-CÍMÉT a **végpont** valahol, hogy könnyen hozzáférhet kis idő múlva. Kattintson a **hozzáférési kulcsok megjelenítése**.
 
     ![A végpont URL-címe és hozzáférési kulcsok hivatkozás című rész az Azure portal oldalán](../Images/copy-vision-endpoint.png)
 

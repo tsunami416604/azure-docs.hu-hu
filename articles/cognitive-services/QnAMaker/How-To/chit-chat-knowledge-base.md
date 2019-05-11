@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/10/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 08d09680ee1797e73666c185f4430c7ef3079477
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 5d410e1015b751743c171adabda1d5bcbe68b491
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153687"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540998"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Csevegési Chit Tudásbázis hozzáadása
 
@@ -24,17 +24,19 @@ A robot chit csevegési hozzáadása megkönnyíti több természetes nyelvi és
 
 Ez az adatkészlet több személyeknek, mint például a Professional, a rövid és a Witty hanggal chit csevegési körülbelül 100 forgatókönyvek tartalmaz. Válassza ki a személy, amely leginkább megfelel a robot hangalapú. Adja meg a felhasználó lekérdezése, QnA Maker megpróbálja egyezik, a legközelebbi ismert chit csevegési QnA.  
 
-Az alábbiakban néhány példa a különböző személyiséghez. Láthatja, hogy a személyiséghez részleteivel együtt személyiségelemző adatkészletek [Itt](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets).
+Az alábbiakban néhány példa a különböző személyiséghez. Láthatja, hogy az összes személyes [adatkészletek](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets) a személyiséghez részleteivel együtt.
+
+A felhasználó lekérdezése `When is your birthday?`, minden egyes személy rendelkezik stílussal ellátott választ:
 
 <!-- added quotes so acrolinx doesn't score these sentences -->
-|Felhasználói lekérdezés|Professzionális|Rövid|Okos|
-|--|--|--|--|
-|`You are awesome`|`I aim to serve.`|`Aw, I'm blushing.`|`Flattery. I like it.`|
-|`Are you hungry?`|`I don't need to eat.`|`I only do food for thought.`|`Eating would require a lot of things I don't have. Like a digestive system. And silverware.`|
-|`Sing a song`|`I'm afraid I'm not musically inclined.`|`La la la, tra la la. I'm awesome at this.`|`Those who can, do. Those who can't, don't sing.`|
-|`Will you marry me?`|`I think it's best if we stick to a professional relationship.`|`Definitely didn't see that coming!`|`Sure. Take me to city hall. See what happens.`|
-
-
+|Személy|Példa|
+|--|--|
+|Professzionális|Kor valóban nekem nem vonatkozik.|
+|Rövid|Nem igazán rendelkezem-kor.|
+|Okos|Én vagyok kora ingyenes.|
+|Ápolásáért|Nem rendelkezem-kor.|
+|Lelkes|Robotprogramok, hogy ne kelljen egy kora vagyok.|
+||
 
 > [!NOTE]
 > Chit-csevegéses támogatás csak jelenleg angol nyelven érhető el. 

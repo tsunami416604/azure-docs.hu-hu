@@ -10,21 +10,17 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 05/09/2019
 ms.author: aahi
-ms.openlocfilehash: 9d6dfb79d02df3eebe33e67743ceaf97fc0a2a77
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: fb411b7e36d8658c5f46294a3b7025c3e93928e7
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519348"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540113"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: A Text Analytics kognitív szolgáltatás hívásához Python REST API használatával 
 <a name="HOLTop"></a>
 
 Ez a rövid útmutató segítségével megkezdheti a Text Analytics REST API és a Python nyelv elemzése. Ez a cikk bemutatja, hogyan való [nyelvfelismerés](#Detect), [vélemények elemzése](#SentimentAnalysis), [kinyerheti a kulcskifejezéseket](#KeyPhraseExtraction), és [kapcsolt entitások azonosítása](#Entities).
-
-Ebben a példában a parancssorból vagy egy Jupyter notebookot futtathatja [MyBinder](https://mybinder.org) jelvények Binder indításkor kattintva:
-
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=TextAnalytics.ipynb)
 
 Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.microsoft.com/fwlink/?LinkID=759346).
 
@@ -42,13 +38,7 @@ Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](//go.micro
     pip install --upgrade requests
     ```
 
-* Ha a Binder notebook helyileg futtatja, előfordulhat, hogy frissítenie [IPython](https://ipython.org/install.html):
-    
-    ```console
-    pip install --upgrade IPython
-    ```
-
-* [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 
 ## <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása

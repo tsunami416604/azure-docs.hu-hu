@@ -6,7 +6,7 @@ metadata:
   description: 'Ismerje meg, hogyan használhatja a Microsoft identitásplatformját olyan alkalmazások felépítésére, amely az összes Microsoft-identitás használatával biztonságosan jelentkezteti be a felhasználókat, és jogkivonattal hívja meg a Microsoft Graphot, más Microsoft API-kat vagy olyan API-kat, amelyeket fejlesztők készítettek.'
   services: active-directory
   author: CelesteDG
-  manager: mtillman
+  manager: CelesteDG
   ms.service: active-directory
   ms.subservice: develop
   ms.tgt_pltfrm: na

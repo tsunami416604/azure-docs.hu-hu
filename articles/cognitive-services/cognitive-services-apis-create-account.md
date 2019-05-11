@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: garye
-ms.openlocfilehash: 6950cba5ac958233e7ea77c8dc783ca86cc5a386
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b5adb5b8bddd0f379ac581f3268f0121791cf0bc
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829473"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546368"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Gyors útmutató: Cognitive Services-fiók létrehozása az Azure Portalon
 
@@ -56,7 +56,7 @@ A következő szakaszok végigvezetik egy egyetlen vagy több szolgáltatásos e
     | **Előfizetés** | Válasszon ki egy rendelkezésre álló Azure-előfizetéseit. |
     | **Hely** | A cognitive Services-példány helye. Különböző helyeken a késés bevezetni, de semmilyen hatást nem futásidejű rendelkezésre állását az erőforrást. |
     | **Tarifacsomag** | A Cognitive Services-fiók költsége a választott beállításokat, és a használat függ. További információkért tekintse meg az API-t [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/).
-    | **Erőforráscsoport** | A [Azure-erőforráscsoport](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group) , amely tartalmazza a Cognitive Services-erőforrás. Hozzon létre egy új csoportot, vagy adja hozzá egy meglévő csoportot. |
+    | **Erőforráscsoport** | A [Azure-erőforráscsoport](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group) , amely tartalmazza a Cognitive Services-erőforrás. Hozzon létre egy új csoportot, vagy adja hozzá egy meglévő csoportot. |
 
     ![Erőforrás-létrehozás képernyő](media/cognitive-services-apis-create-account/resource_create_screen_multi.png)
 
@@ -78,7 +78,7 @@ A következő szakaszok végigvezetik egy egyetlen vagy több szolgáltatásos e
     | **Előfizetés** | Válasszon ki egy rendelkezésre álló Azure-előfizetéseit. |
     | **Hely** | A cognitive Services-példány helye. Különböző helyeken a késés bevezetni, de semmilyen hatást nem futásidejű rendelkezésre állását az erőforrást. |
     | **Tarifacsomag** | A Cognitive Services-fiók költsége a választott beállításokat, és a használat függ. További információkért tekintse meg az API-t [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/).
-    | **Erőforráscsoport** | A [Azure-erőforráscsoport](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group) , amely tartalmazza a Cognitive Services-erőforrás. Hozzon létre egy új csoportot, vagy adja hozzá egy meglévő csoportot. |
+    | **Erőforráscsoport** | A [Azure-erőforráscsoport](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group) , amely tartalmazza a Cognitive Services-erőforrás. Hozzon létre egy új csoportot, vagy adja hozzá egy meglévő csoportot. |
 
     ![Erőforrás-létrehozás képernyő](media/cognitive-services-apis-create-account/resource_create_screen.png)
 

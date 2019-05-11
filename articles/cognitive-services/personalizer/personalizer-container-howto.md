@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 05/09/2019
 ms.author: edjez
-ms.openlocfilehash: a197531a7c78823271c0a5fa5413b76746f63a9a
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: b591a8b5c738fd7a23e95fd04af3cc92b6d7d226
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507015"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65538329"
 ---
 # <a name="install-and-run-personalizer-containers"></a>Telepítse és futtassa a Personalizer tárolók
 
@@ -40,9 +40,9 @@ Personalizer Service-tárolók használata előtt a következő előfeltételekn
 
 A **gazdagép** van a számítógépen, amelyen a docker-tárolót. A helyszíni vagy a docker-üzemeltetési szolgáltatás az Azure például egy számítógép lehet:
 
-* [Azure Kubernetes Service](https://docs.microsoft.com/aks/index.yml)
-* [Azure Container Instances](https://docs.microsoft.com/container-instances/index.yml)
-* [Kubernetes](https://kubernetes.io/) fürtben telepített [Azure Stack](https://docs.microsoft.com/azure-stack/index.yml). További információkért lásd: [Kubernetes üzembe helyezése az Azure Stackhez](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
+* [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/)
+* [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/index)
+* [Kubernetes](https://kubernetes.io/) fürtben telepített [Azure Stack](https://docs.microsoft.com/azure-stack/operator/). További információkért lásd: [Kubernetes üzembe helyezése az Azure Stackhez](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
 
 ### <a name="container-requirements-and-recommendations"></a>Tároló-követelményeket és javaslatokat
 

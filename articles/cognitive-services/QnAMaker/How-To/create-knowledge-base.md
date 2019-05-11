@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 05/10/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: ae278ac3e0fd9f93e080da8f52b9728e9c22a436
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6b64315d8639cf8a7204ee809598567ec76fd188
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61373523"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541797"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Gyors útmutató: A QnA Maker API-portál használatával Tudásbázis létrehozása
 
@@ -50,7 +50,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
     - A kívánt kinyert adatokat tölt fel. Tekintse meg a [díjszabási információk](https://aka.ms/qnamaker-pricing) megtekintéséhez, hogy hány dokumentumok adhat hozzá.
     - Ha szeretné manuálisan adja hozzá a QnA-tudásbázisok, akkor kihagyhatja **4. lépés** az előző képen látható.
 
-1. Adjon hozzá **Chit csevegési** a KB. Válassza ki a robot chit csevegési támogatásának hozzáadása a 3 személyiséghez egyik kiválasztásával. 
+1. Adjon hozzá **Chit csevegési** a KB. Válassza ki a robot chit csevegési támogatásának hozzáadása a személyiséghez egyik kiválasztásával. 
 
     ![Adja hozzá a csevegési chit KB](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
 
