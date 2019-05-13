@@ -43,7 +43,7 @@ Hive-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Hive** | Igen |
-| gazdagép | IP-cím vagy a gazdagép a Hive kiszolgáló neve, pontosvesszővel (;) több gazdagépek (amikor csak serviceDiscoveryMode beállítás engedélyezve).  | Igen |
+| host | IP-cím vagy a gazdagép a Hive kiszolgáló neve, pontosvesszővel (;) több gazdagépek (amikor csak serviceDiscoveryMode beállítás engedélyezve).  | Igen |
 | port | A TCP-port a Hive-kiszolgáló által az ügyfélkapcsolatok figyeléséhez. Ha csatlakozik az Azure Hdinsight, meg a 443-as portot. | Igen |
 | serverType | Hive server típusa. <br/>Engedélyezett értékek a következők: **HiveServer1**, **hiveserver2-n keresztül**, **HiveThriftServer** | Nem |
 | thriftTransportProtocol | Az átviteli protokoll használatára a Thrift-rétegben. <br/>Engedélyezett értékek a következők: **Binary**, **SASL**, **HTTP** | Nem |
@@ -51,8 +51,8 @@ Hive-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 | serviceDiscoveryMode | Igaz értéket a szolgáltatással ZooKeeper, false nem jelzi.  | Nem |
 | zooKeeperNameSpace | A névtér a ZooKeeper, mely Hive Server 2 szerint csomópontokat ad hozzá.  | Nem |
 | useNativeQuery | Itt adhatja meg, hogy az illesztőprogram natív HiveQL lekérdezéseket használ, vagy alakítja át őket egy azzal egyenértékű HiveQL űrlapra.  | Nem |
-| felhasználónév | A Hive-kiszolgáló hozzáféréséhez használt felhasználónév.  | Nem |
-| jelszó | A jelszó a felhasználónak megfelelő. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
+| username | A Hive-kiszolgáló hozzáféréséhez használt felhasználónév.  | Nem |
+| password | A jelszó a felhasználónak megfelelő. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
 | httpPath | A részleges tartozó URL-cím a Hive-kiszolgáló.  | Nem |
 | enableSsl | Itt adhatja meg, e-kiszolgálóhoz a rendszer SSL használatával titkosítja. Az alapértelmezett értéke FALSE (hamis).  | Nem |
 | trustedCertPath | A .pem-fájlt tartalmazó ellenőrzésének folyamatát a kiszolgálón, ha SSL-kapcsolaton keresztül kapcsolódik a megbízható Hitelesítésszolgáltatói tanúsítvány teljes elérési útja. Ez a tulajdonság csak akkor állítható, ha SSL-lel a saját üzemeltetésű Az alapértelmezett érték a telepített bemutathatja cacerts.pem fájlt:  | Nem |
@@ -120,7 +120,7 @@ Adatok másolása a Hive, állítsa be a forrás típusaként a másolási tevé
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **HiveSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 
