@@ -45,11 +45,11 @@ A következő tulajdonságok támogatottak az Impala-beli társított szolgálta
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot állítsa **Impala**. | Igen |
-| gazdagép | IP-cím vagy a gazdagép neve az Impala-kiszolgáló (azaz 192.168.222.160).  | Igen |
+| host | IP-cím vagy a gazdagép neve az Impala-kiszolgáló (azaz 192.168.222.160).  | Igen |
 | port | Az Impala-kiszolgáló az ügyfélkapcsolatok figyeléséhez használt TCP portra. Az alapértelmezett 21050 értéke.  | Nem |
 | authenticationType | A használandó hitelesítés típusa. <br/>Engedélyezett értékek a következők **névtelen**, **SASLUsername**, és **UsernameAndPassword**. | Igen |
-| felhasználónév | Az Impala-kiszolgáló eléréséhez használt felhasználónév. Az alapértelmezett érték: névtelen, SASLUsername használatakor.  | Nem |
-| jelszó | A jelszót, amely megfelel a felhasználó nevének UsernameAndPassword használatakor. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
+| username | Az Impala-kiszolgáló eléréséhez használt felhasználónév. Az alapértelmezett érték: névtelen, SASLUsername használatakor.  | Nem |
+| password | A jelszót, amely megfelel a felhasználó nevének UsernameAndPassword használatakor. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
 | enableSsl | Meghatározza, hogy-e a kiszolgálóhoz vannak titkosítása SSL használatával. Az alapértelmezett érték **hamis**.  | Nem |
 | trustedCertPath | A .pem-fájlt, amely tartalmazza a segítségével ellenőrizze a kiszolgálón, ha SSL-kapcsolaton keresztül csatlakozik a megbízható Hitelesítésszolgáltatói tanúsítvány teljes elérési útja. Ez a tulajdonság beállítható csak akkor, ha a helyi integrációs modul az SSL Protokollt használja. Az alapértelmezett érték a cacerts.pem fájlt az integration runtime telepítve.  | Nem |
 | useSystemTrustStore | Megadja, hogy a Hitelesítésszolgáltatói tanúsítvány használatára, a rendszer megbízható áruházból vagy egy adott PEM-fájl. Az alapértelmezett érték **hamis**.  | Nem |
@@ -120,7 +120,7 @@ Adatok másolása az Impala, állítsa be a forrás típusaként a másolási te
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása típusa tulajdonságát állítsa **ImpalaSource**. | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 
