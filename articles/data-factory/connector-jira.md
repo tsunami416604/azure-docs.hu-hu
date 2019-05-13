@@ -45,10 +45,10 @@ Jira-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Jira** | Igen |
-| gazdagép | Az IP-cím vagy a gazdagép a Jira szolgáltatás neve. (például jira.example.com)  | Igen |
+| host | Az IP-cím vagy a gazdagép a Jira szolgáltatás neve. (például jira.example.com)  | Igen |
 | port | A Jira-kiszolgáló az ügyfélkapcsolatok figyeléséhez használt TCP portra. Az alapértelmezett érték 443-as akkor, ha a kapcsolaton keresztül a HTTPS vagy a 8080-as, ha HTTP Protokollon keresztül csatlakozik.  | Nem |
-| felhasználónév | Jira-szolgáltatás eléréséhez használt felhasználónév.  | Igen |
-| jelszó | A felhasználónév mezőben megadott felhasználónév megfelelő jelszava. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| username | Jira-szolgáltatás eléréséhez használt felhasználónév.  | Igen |
+| password | A felhasználónév mezőben megadott felhasználónév megfelelő jelszava. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Megadja, hogy a data source végpontok HTTPS segítségével titkosítja. Az alapértelmezett érték: igaz.  | Nem |
 | useHostVerification | Megadja a kiszolgálói tanúsítvány a kiszolgáló állomásneve megfelelően, ha SSL-kapcsolaton keresztül kapcsolódik az állomás neve kötelező legyen-e. Az alapértelmezett érték: igaz.  | Nem |
 | usePeerVerification | Megadja, hogy ellenőrizze a kiszolgáló identitását, ha SSL-kapcsolaton keresztül kapcsolódik. Az alapértelmezett érték: igaz.  | Nem |
@@ -111,7 +111,7 @@ Adatok másolása Jira, állítsa be a forrás típusaként a másolási tevéke
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **JiraSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 
