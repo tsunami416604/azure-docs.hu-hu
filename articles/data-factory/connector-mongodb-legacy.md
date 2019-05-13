@@ -55,11 +55,11 @@ Mongodb-hez társított szolgáltatás a következő tulajdonságok támogatotta
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type |A type tulajdonságot kell beállítani: **MongoDb** |Igen |
-| kiszolgáló |IP-cím vagy a gazdagép neve a MongoDB-kiszolgáló. |Igen |
+| server |IP-cím vagy a gazdagép neve a MongoDB-kiszolgáló. |Igen |
 | port |A MongoDB-kiszolgáló az ügyfélkapcsolatok figyeléséhez használt TCP-port. |Nem (alapértelmezés szerint a 27017) |
 | databaseName |Az elérni kívánt MongoDB-adatbázis neve. |Igen |
 | authenticationType | A MongoDB-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Alapszintű**, és **névtelen**. |Igen |
-| felhasználónév |Felhasználói fiók MongoDB eléréséhez. |Igen (alapszintű hitelesítés használata esetén). |
+| username |Felhasználói fiók MongoDB eléréséhez. |Igen (alapszintű hitelesítés használata esetén). |
 | password |A felhasználó jelszava. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen (alapszintű hitelesítés használata esetén). |
 | authSource |A MongoDB-adatbázis, amely a hitelesítéshez a hitelesítő adatok ellenőrzésére használni kívánt nevét. |Nem. Az alapszintű hitelesítés alapértelmezés szerint a rendszer a rendszergazdai fiókkal és -databaseName tulajdonsággal megadott adatbázis használata. |
 | enableSsl | Itt adhatja meg, e-kiszolgálóhoz a rendszer SSL használatával titkosítja. Az alapértelmezett értéke FALSE (hamis).  | Nem |
@@ -129,7 +129,7 @@ A következő tulajdonságok támogatottak a másolási tevékenység **forrás*
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **MongoDbSource** | Igen |
-| lekérdezés |Az egyéni SQL-92 lekérdezés segítségével olvassa el az adatokat. Például: válassza ki * from tábla. |Nem (Ha a "collectionName" adatkészlet paraméter van megadva) |
+| query |Az egyéni SQL-92 lekérdezés segítségével olvassa el az adatokat. Például: válassza ki * from tábla. |Nem (Ha a "collectionName" adatkészlet paraméter van megadva) |
 
 **Példa**
 
@@ -176,14 +176,14 @@ Az adatok másolása a mongodb-hez, amikor a következő hozzárendeléseket has
 
 | MongoDB adatok típusa | Data factory közbenső adattípus |
 |:--- |:--- |
-| binary |Byte[] |
+| Binary |Byte[] |
 | Boolean |Boolean |
-| Dátum |DateTime |
+| Date |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |String |
-| Karakterlánc |String |
+| String |String |
 | UUID |Guid |
 | Object |Renormalized be simítja egybe az oszlopok, "_" beágyazott elválasztóként |
 
