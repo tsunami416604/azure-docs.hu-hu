@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Predictix növekedett tervezése az Azure Active Directory-integráció |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Predictix növekedett tervezési között.
+description: Ebben az oktatóanyagban elsajátíthatja fog konfigurálása egyszeri bejelentkezéshez Predictix növekedett tervezési és Azure Active Directory között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,201 +15,199 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c5d2002393165eb734b80e0fbc3677915809ba8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c14362a220cc60b0b8956ca41950faecd0563b3e
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60335317"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560531"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>Oktatóanyag: Predictix növekedett tervezése az Azure Active Directory-integráció
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan integrálható a Predictix növekedett tervezése az Azure Active Directory (Azure AD).
-Az Azure AD integrálása a Predictix növekedett tervezési nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban elsajátíthatja a Predictix növekedett tervezési integrálása az Azure Active Directory (Azure AD) lesz.
+Ez az integráció ezeket az előnyöket biztosítja:
 
-* Szabályozhatja, ki férhet hozzá Predictix növekedett tervezése az Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezett a Predictix növekedett tervezési (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az Azure AD-szabályozza, ki férhet hozzá Predictix növekedett tervezési is használhatja.
+* Engedélyezheti a felhasználók számára, hogy automatikusan jelentkezzenek be a Predictix növekedett tervezési (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen kezelheti: az Azure Portalon.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [egyszeri bejelentkezés alkalmazásokhoz az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a Predictix növekedett tervezést, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása Predictix növekedett tervezésével, szüksége lesz:
 
 * Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
-* Predictix növekedett tervezési egyszeri bejelentkezés engedélyezve van az előfizetés
+* Predictix növekedett tervezési-előfizetés, amely egyszeri bejelentkezés engedélyezve van.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban fogja konfigurálni, és egy tesztelési környezetben az Azure AD egyszeri bejelentkezés tesztelése.
 
-* Támogatja a Predictix növekedett tervezési **SP** által kezdeményezett egyszeri bejelentkezés
+* Predictix növekedett tervezési támogatja az SP által kezdeményezett egyszeri Bejelentkezést.
 
-## <a name="adding-predictix-assortment-planning-from-the-gallery"></a>Predictix növekedett tervezési hozzáadása a katalógusból
+## <a name="add-predictix-assortment-planning-from-the-gallery"></a>Predictix növekedett tervezési hozzáadása a katalógusból
 
-Az Azure AD-be Predictix növekedett tervezési integráció konfigurálásához, hozzá kell Predictix növekedett tervezése a katalógusból a felügyelt SaaS-alkalmazások listájára.
+Predictix növekedett tervezési integrálása az Azure AD beállításához, hozzá kell Predictix növekedett tervezése a galériából a felügyelt SaaS-alkalmazások listájára.
 
-**Predictix növekedett tervezési hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+1. Az a [az Azure portal](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory**:
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+    ![Válassza az Azure Active Directory elemet.](common/select-azuread.png)
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
-
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Lépjen a **vállalati alkalmazások** > **minden alkalmazás**:
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Egy alkalmazás hozzáadásához válassza **új alkalmazás** az ablak tetején:
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Válassza ki az új alkalmazás](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Predictix növekedett tervezési**, jelölje be **Predictix növekedett tervezési** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **Predictix növekedett tervezési**. Válassza ki **Predictix növekedett tervezési** a keresési eredmények, és válassza ki a **Hozzáadás**.
 
-     ![Predictix növekedett a találatok listájában tervezése](common/search-new-app.png)
+     ![Keresési eredmények](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés tervezéssel Predictix növekedett nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Predictix növekedett tervezési hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban fog konfigurálása és tesztelése az Azure AD egyszeri bejelentkezés Predictix növekedett tervezésének Britta Simon nevű tesztfelhasználó használatával.
+Egyszeri bejelentkezés engedélyezéséhez szüksége egy Azure AD-felhasználót és a megfelelő felhasználó közötti kapcsolat létrehozására Predictix növekedett megtervezésekor.
 
-Az Azure AD egyszeri bejelentkezés Predictix növekedett tervezésének tesztelése és konfigurálása, kell hajtsa végre a következő építőelemeket:
+Az Azure AD egyszeri bejelentkezés Predictix növekedett tervezésének tesztelése és konfigurálása, szüksége a lépések elvégzéséhez:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Predictix növekedett tervezési egyszeri bejelentkezés konfigurálása](#configure-predictix-assortment-planning-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre tesztfelhasználót Predictix növekedett tervezési](#create-predictix-assortment-planning-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon Predictix növekedett tervezésének, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  a felhasználók számára a funkció engedélyezéséhez.
+2. **[Predictix növekedett tervezési egyszeri bejelentkezés konfigurálása](#configure-predictix-assortment-planning-single-sign-on)**  az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  ahhoz, hogy az Azure AD egyszeri bejelentkezés a felhasználó számára.
+5. **[Hozzon létre egy Predictix növekedett tervezési tesztfelhasználót](#create-a-predictix-assortment-planning-test-user)**  , amely kapcsolódik a felhasználó Azure ad-ben ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  , hogy működik-e a konfiguráció ellenőrzéséhez.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
 Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés konfigurálása Predictix növekedett tervezésével, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezés konfigurálása Predictix növekedett tervezésével, hajtsa végre ezeket a lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **Predictix növekedett tervezési** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), a a **Predictix növekedett tervezési** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**:
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Válassza ki az egyszeri bejelentkezés](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válasszon **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése:
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon válassza ki a **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel:
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Szerkesztés ikon](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+4. Az a **alapszintű SAML-konfigurációja** párbeszédpanelen töltse ki az alábbi lépéseket.
 
-    ![Predictix növekedett tervezési tartomány és URL-címek egyszeri bejelentkezési adatait](common/sp-identifier.png)
+    ![Alapszintű SAML-konfigurációja párbeszédpanel](common/sp-identifier.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:
+    1. Az a **bejelentkezési URL-cím** mezőbe írjon be egy URL-címe ebben a mintában:
 
-    | |
-    |--|
-    | `https://<sub-domain>.ap.predictix.com/sso/request`|
-    | `https://<sub-domain>.dev.ap.predictix.com/`|
-    | |
+       | |
+        |--|
+        | `https://<sub-domain>.ap.predictix.com/sso/request`|
+        | `https://<sub-domain>.dev.ap.predictix.com/`|
+        | |
 
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím:
+    1. Az a **azonosító (entityid)** mezőbe írjon be egy URL-címe ebben a mintában:
 
-    | |
-    |--|
-    | `https://<sub-domain>.ap.predictix.com`|
-    | `https://<sub-domain>.dev.ap.predictix.com`|
-    | |
+        | |
+        |--|
+        | `https://<sub-domain>.ap.predictix.com`|
+        | `https://<sub-domain>.dev.ap.predictix.com`|
+        | |
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [Predictix növekedett tervezési ügyfél-támogatási csapatának](https://www.infor.com/support) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezeket az értékeket a helyőrzők. Szeretné használni, a tényleges bejelentkezési URL-cím és azonosító. Forduljon a [ügyfélszolgálathoz Predictix növekedett tervezési](https://www.infor.com/support) értékének lekéréséhez. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** párbeszédpanel az Azure Portalon.
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** szakaszban jelölje be a **letöltése** mellett kapcsolni **tanúsítvány (Base64)** , a igényeknek, és mentse el a tanúsítványt a számítógépen:
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![Tanúsítvány letöltésére szolgáló hivatkozásra.](common/certificatebase64.png)
 
-6. Az a **Predictix növekedett tervezési beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+6. Az a **Predictix növekedett tervezési beállítása** területén másolja a megfelelő URL-címeket, a követelmények alapján:
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+    1. **Bejelentkezési URL-cím**.
 
-    b. Azure AD-azonosító
+    1. **Az Azure AD-azonosító**.
 
-    c. Kijelentkezési URL
+    1. **Kijelentkezési URL-címe**.
 
-### <a name="configure-predictix-assortment-planning-single-sign-on"></a>Egyszeri bejelentkezés tervezési Predictix növekedett konfigurálása
+### <a name="configure-predictix-assortment-planning-single-sign-on"></a>Predictix növekedett tervezési egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **Predictix növekedett tervezési** oldalon kell küldenie a letöltött **tanúsítvány (Base64)** és az Azure Portalról másolt URL-címek megfelelő [Predictix Növekedett tervezése támogatási csapatának](https://www.infor.com/support). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+A Predictix növekedett tervezési oldalon konfigurálása egyszeri bejelentkezéshez, kell küldenie a letöltött tanúsítvány és az Azure Portalról másolt URL-címeket a [Predictix növekedett tervezési támogatási csapatával](https://www.infor.com/support). Ez a csapat biztosítja, hogy a SAML SSO-kapcsolat mindkét oldalán megfelelően beállítva.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ebben a szakaszban az Azure Portalon Britta Simon nevű tesztfelhasználó fog létrehozni.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Az Azure Portalon válassza ki a **Azure Active Directory** a bal oldali panelen válassza ki a **felhasználók**, majd válassza ki **minden felhasználó**:
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![Válassza ki az összes felhasználó](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza ki **új felhasználó** a képernyő tetején:
 
-    ![Új felhasználó gomb](common/new-user.png)
+    ![Válassza ki az új felhasználó](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. Az a **felhasználói** párbeszédpanel mezőbe az alábbi lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![Felhasználói párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    1. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
+    1. Az a **felhasználónév** mezőbe írja be **BrittaSimon @\<vállalati_tartomány >.\< bővítmény >**. (Például BrittaSimon@contoso.com.)
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    1. Válassza ki **Show jelszó**, és jegyezze fel az értéket, amely szerepel a **jelszó** mezőbe.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Predictix növekedett megtervezése Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban Britta Simon Predictix növekedett tervezési számára a hozzáférés biztosításával az Azure AD egyszeri bejelentkezés használatához engedélyeznie kell.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Predictix növekedett tervezési**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd válassza ki **Predictix növekedett tervezési**.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások](common/enterprise-applications.png)
 
 2. Az alkalmazások listájában jelölje ki a **Predictix növekedett tervezési**.
 
-    ![Az alkalmazások listáját a Predictix növekedett tervezési hivatkozás](common/all-applications.png)
+    ![Alkalmazások listája](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali panelen válassza ki a **felhasználók és csoportok**:
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Válassza ki **felhasználó hozzáadása**, majd válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel bezárásához.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![Felhasználó hozzáadása kiválasztása](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza ki **Britta Simon** a felhasználók listában, és kattintson a **válassza** gombra a képernyő alján.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha a SAML-előfeltétel szerepkör értéket a várt a **Szerepkörválasztás** párbeszédpanelen jelölje ki a megfelelő szerepkört a felhasználóhoz a listából. Kattintson a **kiválasztása** gombra a képernyő alján.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **hozzárendelése**.
 
-### <a name="create-predictix-assortment-planning-test-user"></a>Hozzon létre tesztfelhasználót Predictix növekedett tervezése
+### <a name="create-a-predictix-assortment-planning-test-user"></a>Predictix növekedett tervezési tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Predictix növekedett tervezési Britta Simon nevű felhasználó hoz létre. Együttműködve [Predictix növekedett tervezési támogatási csapatának](https://www.infor.com/support) a felhasználók hozzáadása az Predictix növekedett tervezési platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ezután szüksége Britta Simon Predictix növekedett tervezési nevű felhasználó létrehozásához. Együttműködik a [ügyfélszolgálathoz Predictix növekedett tervezési](https://www.infor.com/support) adhat hozzá felhasználókat. Felhasználók létrehozása és egyszeri bejelentkezés használata előtt aktiválni kell.
 
 > [!NOTE]
-> Az Azure Active Directory fióktulajdonos kap egy e-mailt, és a egy hivatkozást, mielőtt aktívvá válik, győződjön meg arról, hogy fiókjuk követi.
+> Az Azure ad-ben fióktulajdonos kap egy e-mailt, és mielőtt aktívvá válik, győződjön meg arról, hogy a fiók mutató hivatkozást választja.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Most szüksége az Azure AD egyszeri bejelentkezési konfigurációjának tesztelése a hozzáférési Panel használatával.
 
-Ha a hozzáférési panelen Predictix növekedett tervezési csempére kattint, akkor kell automatikusan megtörténik a Predictix növekedett tervezéséhez, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+A Predictix növekedett tervezési csempe kiválasztásakor a hozzáférési panelen azt kell automatikusan megtörténik a a Predictix növekedett tervezési példányhoz, amelyhez beállítani az egyszeri bejelentkezés Konfigurálásához. További információkért lásd: [alkalmazások használatának és elérésének a saját alkalmazások portál](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory számára oktatóanyagokkal](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

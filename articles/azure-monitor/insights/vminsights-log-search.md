@@ -15,7 +15,7 @@ ms.date: 04/10/2019
 ms.author: magoedte
 ms.openlocfilehash: bca1b96e7dc5673cabef26fe6b2cfb8daa41fbf5
 ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2019
 ms.locfileid: "64702518"
@@ -204,7 +204,7 @@ Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolatt
 | CommandLine_s | A parancssorból |
 | ExecutablePath_s | A végrehajtható fájl elérési útja |
 | WorkingDirectory_s | A munkakönyvtárban |
-| Felhasználónév | A fiók, amely alatt a folyamat végrehajtása |
+| UserName | A fiók, amely alatt a folyamat végrehajtása |
 | UserDomain | A tartományhoz, amelyben a folyamat végrehajtása |
 
 ## <a name="sample-log-searches"></a>Naplókeresési minták

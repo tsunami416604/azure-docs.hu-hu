@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 2352594b168f5d37ddb6a46064f9ac5801fb035f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 8d3e25f8217f3cc8772de9fbbb06a407008ca6f6
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508405"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65593893"
 ---
 # <a name="fine-tune-text-to-speech-output"></a>Szövegfelolvasási kimenet finomhangolása
 
@@ -35,7 +35,7 @@ A szöveg-hang transzformációs kimenetet a hangalapú hangolása eszközzel va
    >Beszéd erőforrás létrehozásakor az Azure Portalon az Azure-beli hely információkat kell felel meg a szöveg-beszéd átalakítás hangalapú régióban. Neurális beszédfelismerő támogat egy sub Azure-helyen. Támogatási teljes listáját lásd: [régiók](regions.md#text-to-speech).
 
    >[!NOTE]
-   >Szüksége lesz egy F0 vagy az Azure Portalon hozza létre a szolgáltatás használata előtt S0 kulcsot. Hangolási hangtípus **nem** támogatja a [30 napos ingyenes próbaverzió kulcs](https://review.docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started?branch=release-build-cogserv-speech-services#free-trial).
+   >Szüksége lesz egy F0 vagy az Azure Portalon hozza létre a szolgáltatás használata előtt S0 kulcsot. Hangolási hangtípus **nem** támogatja a [30 napos ingyenes próbaverzió kulcs](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started?branch=release-build-cogserv-speech-services#free-trial).
 
 4. Jelentkezzen be a [hangalapú hangolása](https://aka.ms/voicetuning) -portálon, és csatlakozzon a Speech Services-előfizetés. Válasszon egy beszédszolgáltatások előfizetéssel, és ezután hozzon létre egy projektet.
 5. Válassza ki **új hangolása**. Ezután kövesse az alábbi lépéseket:
@@ -43,7 +43,7 @@ A szöveg-hang transzformációs kimenetet a hangalapú hangolása eszközzel va
    * Keresse meg és jelölje ki **minden előfizetés**.  
    * Válassza ki **csatlakozás meglévő előfizetés**.  
      ![Csatlakozás a meglévő előfizetés](./media/custom-voice/custom-voice-connect-subscription.png).
-   * Adja meg az Azure Speech Services előfizetési kulcs, majd válassza ki **Hozzáadás**. Az előfizetési kulcsok a Speech testreszabási portálon érhetők el a [előfizetések lapján](https://go.microsoft.com/fwlink/?linkid=2090458). Az erőforrás-kezelés panelről is sikerült beolvasni a kulcsokat a [az Azure portal](https://portal.azure.com/). 
+   * Adja meg az Azure Speech Services előfizetési kulcs, majd válassza ki **Hozzáadás**. Az előfizetési kulcsok a Speech testreszabási portálon érhetők el a [előfizetések lapján](https://go.microsoft.com/fwlink/?linkid=2090458). Az erőforrás-kezelés panelről is sikerült beolvasni a kulcsokat a [az Azure portal](https://portal.azure.com/).
    * Ha több mint beszédszolgáltatások előfizetéssel rendelkezik, amelyet használni szeretne, ismételje meg ezeket a lépéseket minden egyes előfizetés esetén.
 
 ## <a name="customize-the-text-to-speech-output"></a>A szöveg-hang transzformációs kimeneti testreszabása

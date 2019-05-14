@@ -16,6 +16,8 @@
       href: apache-spark-jupyter-spark-sql-use-portal.md
     - name: Apache Spark-fürt létrehozása – PowerShell
       href: apache-spark-jupyter-spark-sql-use-powershell.md
+    - name: Apache Spark-fürt létrehozása – Azure CLI
+      href: apache-spark-create-cluster-cli.md
     - name: Apache Spark-fürt létrehozása – Resource Manager-sablon
       displayName: 'resource manager template, arm template, resource manager group'
       href: apache-spark-jupyter-spark-sql.md
@@ -250,7 +252,7 @@
             - name: A cURL és az Azure REST API használata
               href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
               maintainContext: true
-            - name: Az Azure klasszikus parancssori felületének használata
+            - name: Az Azure parancssori felületének használata
               href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
               maintainContext: true
             - name: Igény szerinti fürtök létrehozása

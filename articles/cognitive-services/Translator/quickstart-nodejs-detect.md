@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: afd6192969243572134b7a7bb965ad80ff9eb39e
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ca05a76520dab673f90f1f5cbf1e60fde2d7d554
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922201"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604239"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-with-nodejs"></a>Gyors útmutató: A Translator Text API segítségével észlelheti a szöveg nyelvét, a node.js használatával
 
@@ -119,7 +119,7 @@ Ha szeretné összevetni a saját kódját a miénkkel, a teljes mintakódot meg
 
 ## <a name="sample-response"></a>Mintaválasz
 
-Az ország rövidítés találja a jelen [nyelvek listája](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+Keresse meg az országot/régiót rövidítés a jelen [nyelvek listája](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ```json
 [

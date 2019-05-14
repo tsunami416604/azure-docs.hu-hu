@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 472ff85adaf72f91948c4072b12cca3ff8e59f37
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6b9c9500423392ec07482f049697d9b49dc060bf
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769983"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603191"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Oktatóanyag: A Java EE-alapú és a Postgres-webalkalmazás létrehozása az Azure-ban
 
@@ -158,7 +158,7 @@ Következő lépésként a Java tranzakció API (JPA) konfiguráció szerkeszté
 
 ## <a name="configure-the-wildfly-application-server"></a>A WildFly-kiszolgáló konfigurálása
 
-Biztosíthatók az újrakonfigurált alkalmazás üzembe helyezése előtt a WildFly alkalmazáskiszolgáló kell frissítjük a Postgres-modult és annak függőségeit. További konfigurációs információkat tekinthet meg [WildFly konfigurálása server](configure-language-java.md#configure-wildfly-server).
+Biztosíthatók az újrakonfigurált alkalmazás üzembe helyezése előtt a WildFly alkalmazáskiszolgáló kell frissítjük a Postgres-modult és annak függőségeit. További konfigurációs információkat tekinthet meg [WildFly konfigurálása server](configure-language-java.md#configure-java-ee-wildfly).
 
 Konfigurálja a kiszolgálót, szükségünk lesz a négy fájlt a `wildfly_config/` könyvtár:
 

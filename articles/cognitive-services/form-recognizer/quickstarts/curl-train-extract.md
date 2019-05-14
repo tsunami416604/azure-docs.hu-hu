@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: A modell betanítását és a cURL - űrlap felismerő használatával űrlap adatokat nyerhet ki'
+title: 'Gyors útmutató: A modell betanítását, és bontsa ki az űrlapadatok cURL - űrlap felismerő használatával'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutatóban a betanítja a modellt, és az adatok kinyerése az űrlapok használandó az űrlap felismerő REST API-t a curl használatával.
+description: Ebben a rövid útmutatóban az űrlap felismerő REST API-t fogjuk a curl használatával betanítja a modellt, és az adatok kinyerése az űrlapok.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,35 +9,35 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: f5c87457f5d19b107f5722bc8c6a95174555332a
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 4a030e1bf35f38b6aba859eb538eb7d7580d255d
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546352"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603124"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-using-rest-api-with-curl"></a>Gyors útmutató: Egy űrlap felismerő modell betanítását, és bontsa ki az űrlapadatok REST API használatával a curl használatával
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Gyors útmutató: Űrlap felismerő modellek betanítása és űrlap adatokat nyerhet ki a REST API-val a curl használatával
 
-Ez a rövid útmutatóban a betanítását és pontozását űrlapok kulcs-érték párok és táblák használandó az űrlap felismerő REST API-t a curl használatával.
+Ez a rövid útmutatóban a betanítását és pontozását űrlapok kulcs-érték párok és táblák használni az Azure űrlap felismerő REST API a curl használatával.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
-
-- Az űrlap felismerő korlátozott hozzáférésű előzetes hozzáférést kapott. Az előzetes verzió eléréséhez, kérjük töltse ki és küldje el a [Cognitive Services űrlap felismerő hozzáférési kérelem](https://aka.ms/FormRecognizerRequestAccess) űrlap.
-- Rendelkeznie kell a [cURL-lel](https://curl.haxx.se/windows/).
-- Az űrlap felismerő rendelkeznie kell egy előfizetési kulcsot. Előfizetés – olyan egyetlen szolgáltatást kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) felismerő képernyő előfizetés és a kulcs beszerzése. Ne használjon a több szolgáltatásos előfizetés, mert ez nem tartalmazza az űrlap felismerő szolgáltatás.
-- Az azonos típusú öt űrlapok csoportját kell rendelkeznie. Használhat egy [mintaadatkészlettel](https://go.microsoft.com/fwlink/?linkid=2090451) ebben a rövid útmutatóban.
+Rövid útmutató elvégzéséhez kell rendelkeznie:
+- Az űrlap felismerő korlátozott hozzáférésű előzetes verzióra való hozzáférést. Töltse ki az előzetes verzió eléréséhez, és küldje el a [űrlap felismerő hozzáférési kérelem](https://aka.ms/FormRecognizerRequestAccess) űrlap.
+- [cURL](https://curl.haxx.se/windows/) telepítve.
+- Az űrlap felismerő egy előfizetési kulcsot. Előfizetés – olyan egyetlen szolgáltatást kövesse a [Cognitive Services-fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#single-service-subscription) felismerő képernyő előfizetés és a kulcs beszerzése. Egy több szolgáltatásos előfizetés nem használható, mert nem tartalmazza az űrlap felismerő szolgáltatás.
+- Az azonos típusú legalább öt űrlapok készlete. Használhat egy [mintaadatkészlettel](https://go.microsoft.com/fwlink/?linkid=2090451) ebben a rövid útmutatóban.
 
 ## <a name="train-a-form-recognizer-model"></a>Egy űrlap felismerő modell betanítása
 
-Először is szüksége lesz betanítási adatok egy készletét. Használhatja a saját helyi betanítási adatok vagy az Azure Blob adatait. Rendelkeznie kell legalább öt mintául szolgáló űrlapok (PDF-dokumentumok és/vagy képek) az azonos típusú/struktúra a fő bemeneti adatként. Másik lehetőségként használhatja az egyetlen üres űrlapon; az űrlap filename "üres" szót tartalmaz
+Először is szüksége lesz betanítási adatok egy készletét. Használhatja a saját helyi betanítási adatok vagy egy Azure-blobból adatait. Rendelkeznie kell legalább öt mintául szolgáló űrlapok (PDF-dokumentumok és/vagy képek) az azonos típusú/struktúra a fő bemeneti adatként. Vagy használhat egy egyetlen üres űrlapot. "Üres" szót tartalmaznia kell az űrlap-fájl neve
 
-Használatával a dokumentumok az Azure Blob-tárolóban űrlap felismerő modell betanításához hívja meg a **betanításához** API az alábbi cURL-parancs végrehajtásával. A parancs futtatása előtt végezze el az alábbi módosításokat:
+A képernyő felismerő modell betanításához az Azure blob-tárolóban a dokumentumok használatával, hívja a **betanításához** API, amely a cURL-parancs futtatásával a következő. Futtassa a parancsot, mielőtt a módosítások:
 
-* Cserélje le `<Endpoint>` kapott, az űrlap felismerő előfizetési kulcs a végponthoz. Az űrlap felismerő erőforrás Áttekintés lapján találja.
-* Cserélje le `<SAS URL>` megosztott egy Azure Blob Storage-tárolóval rendelkező hozzáférési jogosultságkód (SAS) URL-címet, ahol a betanítási adatok megtalálható.  
-* A `<subscription key>` helyére írja be az előfizetési kulcsot.
+1. Cserélje le `<Endpoint>` az űrlap felismerő előfizetési kulcs beszerzett a végponttal. Az űrlap felismerő erőforráson található **áttekintése** fülre.
+1. Cserélje le `<SAS URL>` a egy Azure Blob storage-tároló megosztott hozzáférhetnek a betanítási adatok helye jogosultságkód (SAS) URL-CÍMÉT.  
+1. A `<subscription key>` helyére írja be az előfizetési kulcsot.
 
 ```bash
 curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
@@ -84,17 +84,18 @@ Kapni fog egy `200 (Success)` válasz a következő JSON-kimenetet:
 }
 ```
 
-Jegyezze fel a `"modelId"` érték; a következő lépéseket szükség lesz rá.
+Megjegyzés: a `"modelId"` értéket. A következő lépésekben szüksége lehet.
   
 ## <a name="extract-key-value-pairs-and-tables-from-forms"></a>Kulcs-érték párok és táblák kinyerése űrlapok
 
-Ezután, egy dokumentumot elemzi, és bontsa ki a kulcs-érték párok és táblák belőle. Hívja a **modell – elemzése** API az alábbi cURL-parancs végrehajtásával. A parancs futtatása előtt végezze el az alábbi módosításokat:
+Ezután fog dokumentum elemzése és bontsa ki a kulcs-érték párok és táblák belőle. Hívja a **modell – elemzése** API, amely a cURL-parancs futtatásával a következő. Futtassa a parancsot, mielőtt a módosítások:
 
-* Cserélje le `<Endpoint>` kapott, az űrlap felismerő előfizetési kulcs a végponthoz. Az űrlap felismerő erőforrás megtalálja **áttekintése** fülre.
-* Cserélje le `<modelID>` a modellt, a modell tanítása az előző lépésben kapott azonosítóval.
-* Cserélje le `<path to your form>` való az űrlapot a fájl elérési útját.
-* A `<subscription key>` helyére írja be az előfizetési kulcsot.
-* Cserélje le `<file type>` a fájltípus – a támogatott PDF-dokumentum, kép/jpeg, kép-vagy png.
+1. Cserélje le `<Endpoint>` az űrlap felismerő előfizetési kulcs beszerzett a végponttal. Az űrlap felismerő erőforráson található **áttekintése** fülre.
+1. Cserélje le `<modelID>` , hogy az az előző szakaszban azonosítójú modell.
+1. Cserélje le `<path to your form>` való az űrlapot a fájl elérési útja.
+1. Cserélje le `<file type>` az a fájl típusa. Támogatott típusok: pdf-, kép/jpeg, kép-vagy png.
+1. A `<subscription key>` helyére írja be az előfizetési kulcsot.
+
 
 ```bash
 curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<modelID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@\"<path to your form>\";type=application/<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
@@ -102,7 +103,7 @@ curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<mode
 
 ### <a name="examine-the-response"></a>A válasz vizsgálata
 
-Sikeres válasz JSON formátumban adja vissza, és a kinyert kulcs-érték párok és táblák jelöli az űrlap.
+A sikeres válasz JSON-fájlban. Azt jelöli, a kulcs-érték párok és az űrlap kinyert táblázatok:
 
 ```bash
 {
@@ -427,7 +428,7 @@ Sikeres válasz JSON formátumban adja vissza, és a kinyert kulcs-érték páro
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az útmutatóban használt az űrlap felismerő REST API-k a curl használatával a modell betanítását, majd futtassa azt egy minta esetet. Ezután megismerheti az űrlap felismerő API alaposabban is körüljárják referencia dokumentációjában talál.
+Ez a rövid útmutatóban használt az űrlap felismerő REST API-t a curl használatával a modell betanítását, majd futtassa azt egy mintaforgatókönyv. Ezután megismerheti az űrlap felismerő API alaposabban is körüljárják referencia dokumentációjában talál.
 
 > [!div class="nextstepaction"]
 > [REST API dokumentációja](https://aka.ms/form-recognizer/api)

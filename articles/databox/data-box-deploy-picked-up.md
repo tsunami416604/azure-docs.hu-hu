@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 659dfbec1f73ca713cf03a2945361b794b8aaea6
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 5b43241be4e161cd6051dce02a3574fbdb580f28
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924942"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606225"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Oktatóanyag: Vissza az Azure Data Box, és ellenőrizze az adatok feltöltése az Azure-bA
 
@@ -23,7 +23,7 @@ Ebben az oktatóanyagban az alábbi témaköröket ismerheti meg:
 
 > [!div class="checklist"]
 > * Előfeltételek
-> * A szállítás előkészítése
+> * Szállításra való előkészítés
 > * A Data Box elküldése a Microsoftnak
 > * Az Azure-ba történő adatfeltöltés ellenőrzése
 > * Adatok törlése a Data Boxról
@@ -35,7 +35,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy:
 - Már elvégezte a [oktatóanyag: Adatok másolása az Azure Data Box, és ellenőrizze](data-box-deploy-copy-data.md). 
 - Másolás feladatok elkészültek. Szállításra való nem futtatható, ha a másolási feladat folyamatban van.
 
-## <a name="prepare-to-ship"></a>A szállítás előkészítése
+## <a name="prepare-to-ship"></a>Szállításra való előkészítés
 
 [!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
 
@@ -45,7 +45,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy:
 2. Győződjön meg arról, hogy a fuvarlevélcímke látható az E-ink kijelzőn, és egyeztesse a csomagfelvételt a szállítóval. Ha a címke megsérült vagy elveszett vagy nem jelenik meg az E-ink megjelenő, forduljon a Microsoft Support. A támogatási javasol, akkor elvégezheti **áttekintés > levélcímke letöltése** az Azure Portalon. Töltse le a szállítási címkét, és elhelyezi az eszközön. 
 3. Ha az eszközök visszatérő, ütemezhet a UPS begyűjtést. Ütemezhet begyűjtést:
 
-    - Hívja meg a helyi UPS (országspecifikus díjmentesen ingyenes szám).
+    - Hívja meg a helyi UPS (ország/régió-specifikus díjmentesen ingyenes szám).
     - A hívás az ajánlat a fordított szállítmány követési szám az E-ink megjelenítési vagy a nyomtatott felirat látható módon.
     - A nyomkövetési azonosító szám není uveden v uvozovkách, ha a UPS kell, hogy külön díj fizessen a begyűjtés során.
 
@@ -91,7 +91,7 @@ Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a köv
 
 > [!div class="checklist"]
 > * Előfeltételek
-> * A szállítás előkészítése
+> * Szállításra való előkészítés
 > * A Data Box elküldése a Microsoftnak
 > * Az Azure-ba történő adatfeltöltés ellenőrzése
 > * Adatok törlése a Data Boxról

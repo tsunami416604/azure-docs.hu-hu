@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ea2ead29ba1945213871ab76a65e33a4d7b27cc
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 843a4ef36d633b8b72453ba5eb2b969af4649531
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65441510"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605318"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-templafy"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Templafy
 
@@ -120,20 +120,20 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Templafy, hajtsa vé
 
     | Name (Név) | Adatforrás-attribútum| Névtér  |
     | ---------------| --------------- | --------- |
-    | givenName | user.givenname | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | Vezetéknév | user.surname | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | e-mail cím | user.mail | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`
-    | streetAddress | user.streetaddress | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | city | User.City | `https://schemas.templafy.com/2016/06/identity/claims`|
-    | Irányítószám | user.postalcode | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | stateorprovince | User.state | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | Ország | felhasználó.ország | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | Beosztás | user.jobtitle | `https://schemas.templafy.com/2016/06/identity/claims`|
-    | Szervezeti egység | user.department | `https://schemas.templafy.com/2016/06/identity/claims`|
-    | Telefonszám | user.telephonenumber | `https://schemas.templafy.com/2016/06/identity/claims` |
-    | facsimilenumber | user.facsimiletelephonenumber | `https://schemas.templafy.com/2016/06/identity/claims`|
-    | egyszerű felhasználónév | user.userprincipalname | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
-    | nameidentifier | user.mail | `https://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | givenName | user.givenname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | Vezetéknév | user.surname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | e-mail cím | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`
+    | streetAddress | user.streetaddress | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | city | User.City | `http://schemas.templafy.com/2016/06/identity/claims`|
+    | Irányítószám | user.postalcode | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | stateorprovince | User.state | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | Ország | felhasználó.ország | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | Beosztás | user.jobtitle | `http://schemas.templafy.com/2016/06/identity/claims`|
+    | Szervezeti egység | user.department | `http://schemas.templafy.com/2016/06/identity/claims`|
+    | Telefonszám | user.telephonenumber | `http://schemas.templafy.com/2016/06/identity/claims` |
+    | facsimilenumber | user.facsimiletelephonenumber | `http://schemas.templafy.com/2016/06/identity/claims`|
+    | egyszerű felhasználónév | user.userprincipalname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
+    | nameidentifier | user.mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     | | |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.

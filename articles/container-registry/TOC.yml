@@ -23,8 +23,10 @@
       items:
         - name: 1 – Rendszerképek létrehozása az Azure-ban
           href: container-registry-tutorial-quick-task.md
-        - name: 2 – Rendszerképek létrehozásának automatizálása
+        - name: 2a – Összeállítások automatizálása kódvéglegesítéskor
           href: container-registry-tutorial-build-task.md
+        - name: 2b – Többlépéses feladatok kódvéglegesítéskor
+          href: container-registry-tutorial-multistep-task.md
         - name: 3 – Rendszerkép alapszintű frissítésének létrehozása
           href: container-registry-tutorial-base-image-update.md
     - name: Regisztrációs adatbázis georeplikálása
@@ -84,7 +86,7 @@
               href: container-registry-auth-aci.md
             - name: Hitelesítés az Azure Kubernetes Service-ből (AKS)
               href: container-registry-auth-aks.md
-        - name: Tartalom-megbízhatóság (előzetes verzió)
+        - name: Tartalommegbízhatóság
           href: container-registry-content-trust.md
     - name: Létrehozás és javítás
       items:

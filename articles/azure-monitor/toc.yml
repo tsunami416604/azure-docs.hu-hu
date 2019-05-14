@@ -314,8 +314,9 @@
                 - name: Állapotmonitor
                   href: app/monitor-performance-live-website-now.md
                 - name: Állapotmonitor v2
-                  href: app/status-monitor-v2-overview.md
                   items:
+                    - name: Áttekintés
+                      href: app/status-monitor-v2-overview.md
                     - name: Első lépések
                       href: app/status-monitor-v2-get-started.md
                     - name: Részletes utasítások
@@ -557,7 +558,7 @@
                   href: app/usage-workbooks.md
             - name: Web App Analytics-megoldás
               href: insights/azure-web-apps-analytics.md
-            - name: Kubernetes által üzemeltetett alkalmazások
+            - name: Kubernetes-alkalmazások monitorozása
               href: app/kubernetes.md
         - name: Tárolók figyelése
           items:
@@ -631,8 +632,18 @@
                   href: insights/vminsights-known-issues.md
                 - name: GYIK
                   href: insights/vminsights-faq.md
-                - name: Előkészítés
-                  href: insights/vminsights-onboard.md
+                - name: Monitorozás engedélyezése
+                  items:
+                    - name: Monitorozás engedélyezésének áttekintése
+                      href: insights/vminsights-enable-overview.md
+                    - name: Engedélyezés egyetlen Azure-beli virtuális gépen
+                      href: insights/vminsights-enable-single-vm.md
+                    - name: Engedélyezés az Azure Policyval
+                      href: insights/vminsights-enable-at-scale-policy.md
+                    - name: Engedélyezés az Azure PowerShell-lel
+                      href: insights/vminsights-enable-at-scale-powershell.md
+                    - name: Engedélyezés hibrid környezetben
+                      href: insights/vminsights-enable-hybrid-cloud.md
                 - name: Az állapot monitorozása
                   href: insights/vminsights-health.md
                 - name: Függőségek feltérképezése

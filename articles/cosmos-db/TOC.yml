@@ -163,7 +163,7 @@
         - name: Az Azure Functions aktiválása
           displayName: change feed
           href: change-feed-functions.md
-    - name: Elemzések az Apache Sparkkal
+    - name: Beépített elemzések az Apache Sparkkal
       href: spark-api-introduction.md
     - name: Kiszolgálóoldali programozás
       items:
@@ -517,6 +517,8 @@
           href: how-to-sql-subquery.md
     - name: Változáscsatorna
       items:
+        - name: Az Azure Cosmos DB eseményindító-naplói
+          href: how-to-configure-cosmos-db-trigger-logs.md
         - name: Több Azure Cosmos DB-eseményindító
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Azure Cosmos DB-eseményindítók hibaelhárítása

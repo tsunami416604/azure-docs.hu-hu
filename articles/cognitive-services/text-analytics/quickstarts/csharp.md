@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Használatával C# a szövegelemzési API meghívására.'
+title: 'Gyors útmutató: .NET-hez készült Azure SDK használatával a Text Analytics szolgáltatás hívásához ésC#'
 titleSuffix: Azure Cognitive Services
-description: Ezekkel a rövid útmutatókkal és kódmintákkal gyorsan elsajátíthatja a Text Analytics API használatának alapjait.
+description: Információk és a kód minták segítséget nyújtanak a Text Analytics szolgáltatás használatának megkezdéséhez és C#.
 services: cognitive-services
 author: raymondl
 manager: nitinme
@@ -10,42 +10,45 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 04/29/2019
 ms.author: assafi
-ms.openlocfilehash: c521be03f884227116a21c8c5396d47cdd1ae253
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 44d4a9427fcf6b582d44707127b87c262781520f
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466536"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602359"
 ---
-# <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: Használatával C# a Text Analytics kognitív szolgáltatás hívásához
+# <a name="quickstart-use-the-net-sdk-and-c-to-call-the-text-analytics-service"></a>Gyors útmutató: A .NET SDK használata és C# a Text Analytics szolgáltatás hívásához
 <a name="HOLTop"></a>
 
-Ez a rövid útmutató segítségével megkezdheti a Text Analytics SDK-val nyelvi elemzése C#. Bár a [Szövegelemzés](//go.microsoft.com/fwlink/?LinkID=759711) REST API-val kompatibilis szinte bármelyik programozási nyelvével, az SDK biztosít egy egyszerű módja annak, hogy a szolgáltatás integrálása az alkalmazásokba. Ez a minta forráskódja találhatók [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/TextAnalytics).
+A rövid útmutató segítségével megkezdheti a .NET-hez készült Azure SDK-val és C# nyelvi elemzéséhez. Bár a [Szövegelemzés](//go.microsoft.com/fwlink/?LinkID=759711) REST API-val kompatibilis szinte bármelyik programozási nyelvével, az SDK biztosít egy egyszerű módja annak, hogy a szolgáltatás integrálása az alkalmazásokba.
 
-Az API-k műszaki dokumentációjáért lásd az [API-definíciókat](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
+> [!NOTE]
+> A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/TextAnalytics) érhető el.
+
+A technikai részletekért tekintse meg az SDK a .NET-hez [Szövegelemzés hivatkozhat](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-A regisztráció során létrejött [végponttal és hozzáférési kulccsal](../How-tos/text-analytics-how-to-access-key.md) is rendelkeznie kell.
+Emellett a [végpontját és hozzáférési kulcsát](../How-tos/text-analytics-how-to-access-key.md) létrehozott az Ön számára a regisztrációhoz.
 
 > [!Tip]
->  Bár a [HTTP-végpontokat](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) közvetlenül C#-ból is meg lehet hívni, a Microsoft.Azure.CognitiveServices.Language SDK jelentősen megkönnyíti a szolgáltatás meghívását, mivel nem kell a JSON szerializálásával és deszerializálásával foglalkozni.
+>  Bár a [HTTP-végpontokat](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) közvetlenül C#, a Microsoft.Azure.CognitiveServices.Language SDK megkönnyíti a szolgáltatás hívásához szerializálható és deszerializálható JSON nélkül.
 >
 > Néhány fontos hivatkozás:
-> - [SDK Nuget oldal](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+> - [SDK NuGet-oldalon](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
 > - [SDK-kód](https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
 
 ## <a name="create-the-visual-studio-solution-and-install-the-sdk"></a>A Visual Studio-megoldás létrehozása és az SDK telepítése
 
-1. Hozzon létre egy új Konzolalkalmazás (.NET Core) projektet [Visual Studio](https://visualstudio.microsoft.com/vs/).
-1. Kattintson a jobb gombbal a megoldásra, majd kattintson a **Manage NuGet Packages for Solution** (NuGet-csomagok kezelése a megoldáshoz) parancsra.
-1. Válassza ki a **Browse** (Tallózás) lapot, majd keressen rá a **Microsoft.Azure.CognitiveServices.Language.TextAnalytics** szövegre.
+1. Hozzon létre egy új console app (.NET Core) projektet. [Access Visual Studio](https://visualstudio.microsoft.com/vs/).
+1. Kattintson a jobb gombbal a megoldás, és válassza ki **NuGet-csomagok kezelése megoldáshoz**.
+1. Válassza ki a **Browse** (Tallózás) lapot. Keresse meg **Microsoft.Azure.CognitiveServices.Language.TextAnalytics**.
 
 ## <a name="authenticate-your-credentials"></a>A hitelesítő adatokat
 
-1. Adja hozzá a következő `using` utasítások a fő osztályban fájlba (`Program.cs` alapértelmezés szerint).
+1. Adja hozzá a következő `using` utasítások a fő osztályban fájlba (Ez Program.cs alapértelmezés szerint).
 
     ```csharp
     using System;
@@ -63,7 +66,7 @@ A regisztráció során létrejött [végponttal és hozzáférési kulccsal](..
 
     ```csharp
     /// <summary>
-    /// Allows authentication to the API using a basic apiKey mechanism
+    /// Allows authentication to the API by using a basic apiKey mechanism
     /// </summary>
     class ApiKeyServiceClientCredentials : ServiceClientCredentials
     {
@@ -96,7 +99,7 @@ A regisztráció során létrejött [végponttal és hozzáférési kulccsal](..
     }
     ```
 
-3. Frissítés a `Program` osztályt, és a egy állandó tagot a Text Analytics előfizetési kulcs és egy másikat a a szolgáltatásvégpont hozzáadása. Fontos, hogy a megfelelő Azure-régiót használni a Szövegelemzés előfizetéshez.
+3. Frissítés a `Program` osztály. Adja hozzá a Szövegelemzés előfizetéshez kulcs konstans tagja, és egy másik, a szolgáltatási végpont. Fontos, hogy a megfelelő Azure-régiót használni a Szövegelemzés előfizetéshez.
 
     ```csharp
     private const string SubscriptionKey = "enter-your-key-here";
@@ -104,12 +107,12 @@ A regisztráció során létrejött [végponttal és hozzáférési kulccsal](..
     private const string Endpoint = "enter-your-service-endpoint-here"; // For example: "https://westus.api.cognitive.microsoft.com";
     ```
 > [!Tip]
-> A titkos kulcsok az éles rendszereket a telepítés biztonságának használatát javasoljuk [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net)
+> Titkos kódok biztonságának növelése az éles rendszerekre, érdekében azt javasoljuk, hogy használja [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-net).
 >
 
 ## <a name="create-a-text-analytics-client"></a>A Text Analytics-ügyfél létrehozása
 
-Az a `Main` függvény a projekt hívja meg a minta metódust szeretne meghívni, és adja át a `Endpoint` és `SubscriptionKey` definiált paraméterek.
+Az a `Main` függvény a projekt hívja meg a meghívni kívánt minta metódust. Adja át a `Endpoint` és `SubscriptionKey` meghatározott paraméterek.
 
 ```csharp
     public static void Main(string[] args)
@@ -117,11 +120,11 @@ Az a `Main` függvény a projekt hívja meg a minta metódust szeretne meghívni
         var credentials = new ApiKeyServiceClientCredentials(SubscriptionKey);
         var client = new TextAnalyticsClient(credentials)
         {
-            //Replace 'westus' with the correct region for your Text Analytics subscription
+            //Replace 'westus' with the correct region for your Text Analytics subscription.
             Endpoint = "https://westus.api.cognitive.microsoft.com"
         };
 
-        // Change console encoding to display non-ASCII characters
+        // Change the console encoding to display non-ASCII characters.
         Console.OutputEncoding = System.Text.Encoding.UTF8;
         SentimentAnalysisExample(client).Wait();
         // DetectLanguageExample(client).Wait();
@@ -131,12 +134,12 @@ Az a `Main` függvény a projekt hívja meg a minta metódust szeretne meghívni
     }
 ```
 
-Következő szakasz ismerteti, hogyan lehet hívni az API-szolgáltatások mindegyike.
+A következő szakaszok ismertetik az egyes service-funkció hívása.
 
-## <a name="sentiment-analysis"></a>Hangulatelemzés
+## <a name="perform-sentiment-analysis"></a>Hajtsa végre a hangulatelemzés
 
-1. Hozzon létre egy új függvényt nevű `SentimentAnalysisExample()` az ügyfél korábban létrehozott paraméterrel.
-2. Lista készítése `MultiLanguageInput` objektumokat, az elemezni kívánt dokumentumokat tartalmazó.
+1. Hozzon létre egy új függvényt `SentimentAnalysisExample()` az ügyfél korábban létrehozott paraméterrel.
+2. Lista készítése `MultiLanguageInput` , amely tartalmazza a dokumentumok elemezni kívánt objektumokat.
 
     ```csharp
     public static async Task SentimentAnalysisExample(TextAnalyticsClient client)
@@ -154,7 +157,7 @@ Következő szakasz ismerteti, hogyan lehet hívni az API-szolgáltatások minde
     }
     ```
 
-3. Ugyanabban a függvényben hívja `client.SentimentAsync()` és az eredményt kapja. Ezután Iterál végig az eredményeket, és nyomtassa ki minden egyes dokumentum-Azonosítót és véleménypontszámot. 0 közelebb pontszámot azt jelzi, hogy egy negatív véleményt jelölnek, míg 1 közelebb pontszámot azt jelzi, hogy egy pozitív véleményt.
+3. Ugyanabban a függvényben hívja `client.SentimentAsync()` és az eredményt kapja. Ezután Iterál végig az eredményeket. Minden egyes dokumentum Azonosítóját és a róluk szóló véleményeket pontszám nyomtatása. A pontszám, amely 0 azt jelzi, hogy egy negatívat során pontszámok tartoznak 1 közelebb a pozitív vélemények jelzi.
 
     ```csharp
     var result = await client.SentimentAsync(false, inputDocuments);
@@ -175,10 +178,10 @@ Document ID: 3 , Sentiment Score: 0.44
 Document ID: 4 , Sentiment Score: 1.00
 ```
 
-## <a name="language-detection"></a>Nyelvfelismerés
+## <a name="perform-language-detection"></a>Hajtsa végre a nyelv észlelése
 
-1. Hozzon létre egy új függvényt nevű `DetectLanguageExample()` az ügyfél korábban létrehozott paraméterrel.
-2. Lista készítése `LanguageInput` objektumokat, amely tartalmazza a dokumentumok.
+1. Hozzon létre egy új függvényt `DetectLanguageExample()` az ügyfél korábban létrehozott paraméterrel.
+2. Lista készítése `LanguageInput` , amely tartalmazza a dokumentumok objektumokat.
 
     ```csharp
     public static async Task DetectLanguageExample(TextAnalyticsClient client)
@@ -196,7 +199,7 @@ Document ID: 4 , Sentiment Score: 1.00
     }
     ```
 
-3. Ugyanabban a függvényben hívja `client.DetectLanguageAsync()` és az eredményt kapja. Ezután Iterál végig az eredményeket, és nyomtassa ki minden egyes dokumentum-Azonosítót és az első visszaadott nyelv.
+3. Ugyanabban a függvényben hívja `client.DetectLanguageAsync()` és az eredményt kapja. Ezután Iterál végig az eredményeket. Nyomtassa ki minden egyes dokumentum Azonosítóját és az első visszaadott nyelv.
 
     ```csharp
     var langResults = await client.DetectLanguageAsync(false, inputDocuments);
@@ -217,10 +220,10 @@ Document ID: 2 , Language: Spanish
 Document ID: 3 , Language: Chinese_Simplified
 ```
 
-## <a name="entity-recognition"></a>Entitások felismerése
+## <a name="perform-entity-recognition"></a>Hajtsa végre az entitások felismerése
 
-1. Hozzon létre egy új függvényt nevű `RecognizeEntitiesExample()` az ügyfél korábban létrehozott paraméterrel.
-2. Lista készítése `MultiLanguageBatchInput` objektumokat, amely tartalmazza a dokumentumok.
+1. Hozzon létre egy új függvényt `RecognizeEntitiesExample()` az ügyfél korábban létrehozott paraméterrel.
+2. Lista készítése `MultiLanguageBatchInput` , amely tartalmazza a dokumentumok objektumokat.
 
     ```csharp
     public static async Task RecognizeEntitiesExample(TextAnalyticsClient client)
@@ -237,7 +240,7 @@ Document ID: 3 , Language: Chinese_Simplified
     }
     ```
 
-3. Ugyanabban a függvényben hívja `client.EntitiesAsync()` és az eredményt kapja. Ezután Iterál végig az eredményeket, és nyomtassa ki minden egyes dokumentum azonosítója. Az entitás minden egyes észlel, nyomtatási, a wikipedia neve, a típus és altípusok (ha létezik) valamint a helyeken és az eredeti szöveg.
+3. Ugyanabban a függvényben hívja `client.EntitiesAsync()` és az eredményt kapja. Ezután Iterál végig az eredményeket. Nyomtassa ki minden egyes dokumentum azonosítója. Az egyes észlelt entitásokhoz nyomtassa ki a Wikipedia nevét és típusát és altípus (ha vannak ilyenek) és a helyeken és az eredeti szöveg.
 
     ```csharp
     var entitiesResult = await client.EntitiesAsync(false, inputDocuments);
@@ -290,10 +293,10 @@ Document ID: 2
                         Offset: 88,     Length: 7,      Score: 1.000
 ```
 
-## <a name="key-phrase-extraction"></a>A kulcsfontosságú kifejezések kinyerése
+## <a name="perform-key-phrase-extraction"></a>Hajtsa végre a kulcsfontosságú kifejezések kinyerése
 
-1. Hozzon létre egy új függvényt nevű `KeyPhraseExtractionExample()` az ügyfél korábban létrehozott paraméterrel.
-2. Lista készítése `MultiLanguageBatchInput` objektumokat, amely tartalmazza a dokumentumok.
+1. Hozzon létre egy új függvényt `KeyPhraseExtractionExample()` az ügyfél korábban létrehozott paraméterrel.
+2. Lista készítése `MultiLanguageBatchInput` , amely tartalmazza a dokumentumok objektumokat.
 
     ```csharp
     public static async Task KeyPhraseExtractionExample(TextAnalyticsClient client)
@@ -310,7 +313,7 @@ Document ID: 2
     }
     ```
 
-3. Ugyanabban a függvényben hívja `client.KeyPhrasesAsync()` és az eredményt kapja. Ezután Iterál végig az eredményeket, és nyomtassa ki az egyes dokumentumok azonosítója, és bármely felismert kulcskifejezéseket.
+3. Ugyanabban a függvényben hívja `client.KeyPhrasesAsync()` és az eredményt kapja. Ezután Iterál végig az eredményeket. Nyomtatási egyes dokumentumazonosító és bármely felismert kulcskifejezéseket.
 
     ```csharp
     var kpResults = await client.KeyPhrasesAsync(false, inputDocuments);
@@ -358,4 +361,3 @@ Document ID: 4
 
 * [A Text Analytics áttekintése](../overview.md)
 * [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)
-

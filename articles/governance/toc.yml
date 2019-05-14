@@ -22,25 +22,12 @@
       href: policy/overview.md
     - name: Tervek
       href: blueprints/overview.md
-- name: Megvalósítások
-  expanded: true
+- name: A felhő bevezetésének keretrendszere
   items:
-    - name: A nagyvállalati felhőmegoldások bevezetése
-      items:
-        - name: Mi az a felhőerőforrás-szabályozás?
-          href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
-        - name: Az Azure erőforrás-hozzáférési szabályozása
-          href: /azure/architecture/cloud-adoption/getting-started/azure-resource-access?toc=/azure/governance/toc.json
-        - name: Szabályozási terv egyetlen csapathoz
-          href: /azure/architecture/cloud-adoption/governance/governance-single-team?toc=/azure/governance/toc.json
-        - name: Szabályozási terv több csapathoz
-          href: /azure/architecture/cloud-adoption/governance/governance-multiple-teams?toc=/azure/governance/toc.json
-    - name: Azure Enterprise-szerkezet
-      items:
-        - name: Előíró előfizetés-szabályozás
-          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-        - name: Azure Enterprise-szerkezet implementálása
-          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
+    - name: Áttekintés
+      href: /azure/architecture/cloud-adoption/index?toc=/azure/governance/toc.json
+    - name: Irányítás áttekintése
+      href: /azure/architecture/cloud-adoption/governance/index?toc=/azure/governance/toc.json
 - name: További források
   items:
     - name: Azure-ütemterv

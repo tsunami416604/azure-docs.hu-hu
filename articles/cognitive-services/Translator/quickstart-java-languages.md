@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: erhopf
-ms.openlocfilehash: 8847b5c6e7ceac5bec321ebcf6310a624f16e184
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: c3b80e7aea9add143cf74a21b8023723a1142a9c
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916744"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604309"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-java"></a>Gyors útmutató: Java használatával támogatott nyelvek listáját a Translator Text API használatával
 
@@ -172,7 +172,7 @@ gradle run
 
 ## <a name="sample-response"></a>Mintaválasz
 
-Az ország rövidítés találja a jelen [nyelvek listája](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+Keresse meg az országot/régiót rövidítés a jelen [nyelvek listája](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 

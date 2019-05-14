@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: maheshb
-ms.openlocfilehash: a775c1c864a8a5513be546195da5c0891f8bb1f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 267b50e15d39fc5a0df763cea2e2b79f9b23d151
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61066164"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595804"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Gyors útmutató: A Bing Custom Search-végpontot a hívásC# 
 
@@ -25,10 +25,10 @@ Ez a rövid útmutató segítségével megkezdheti a keresési eredmények kér 
 
 - Bing Custom Search-példány. Lásd: [a rövid útmutató: Az első Bing Custom Search-példány létrehozása](quick-start.md) további információt.
 - Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
-- Bármely kiadása [Visual Studio 2017](https://www.visualstudio.com/downloads/)
+- Bármely kiadása [Visual Studio 2017-es vagy újabb](https://www.visualstudio.com/downloads/)
 - Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
 - Telepített [NuGet Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) csomag. 
-    - A Visual Studio Megoldáskezelőjében kattintson a jobb gombbal a projektre, és válassza a `Manage NuGet Packages` lehetőséget a menüből. Telepítse az `Microsoft.Azure.CognitiveServices.Search.CustomSearch` csomagot. A NuGet Custom Search csomag telepítésekor a következő szerelvények is települnek:
+    - A **Megoldáskezelőben** a Visual Studióban kattintson jobb gombbal a projektre, és válassza ki **NuGet-csomagok kezelése** a menüből. Telepítse az `Microsoft.Azure.CognitiveServices.Search.CustomSearch` csomagot. A NuGet Custom Search csomag telepítésekor a következő szerelvények is települnek:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 7619b8831d75ce639c6f6c773c7c7d491abc93e7
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 636993879422edaf08051be61b9d4770effdcae0
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62116215"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65556074"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure-beli virtuális gépek áthelyezése egy másik régióba
 
@@ -74,7 +74,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
    - [Hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
    - [Terheléselosztók](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
-   - [Nyilvános IP-cím](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+   - [Nyilvános IP-cím](../virtual-network/virtual-network-public-ip-address.md)
     
      Bármely más hálózati összetevők, lásd: a [dokumentáció hálózatkezelés](https://docs.microsoft.com/azure/#pivot=products&panel=network).
 
@@ -106,7 +106,7 @@ A Site Recovery lekéri az előfizetésben és erőforráscsoportban társított
 1. A jelen oktatóanyag esetében fogadja el a többi alapértelmezett értéket.
 1. Válassza ki **engedélyezze a replikációt**. Ebben a lépésben elindít egy feladatot a virtuális gép replikálásának engedélyezéséhez.
 
-    ![A replikáció engedélyezése](media/tutorial-migrate-azure-to-azure/settings.png)
+    ![Replikáció engedélyezése](media/tutorial-migrate-azure-to-azure/settings.png)
 
 ## <a name="test-the-configuration"></a>A konfiguráció tesztelése
 

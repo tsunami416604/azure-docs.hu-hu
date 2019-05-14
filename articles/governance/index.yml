@@ -8,7 +8,7 @@ metadata:
   manager: carmonm
   ms.service: governance
   ms.topic: landing-page
-  ms.date: 09/18/2018
+  ms.date: 05/07/2019
   ms.author: dacoulte
 abstract:
   description: 'Az Azure Governance olyan fogalmak és szolgáltatások gyűjteménye, amelyekkel nagy léptékben is felügyelheti a különböző Azure-erőforrásait. Ezekkel a szolgáltatásokkal logikusan szervezheti és strukturálhatja előfizetéseit, létrehozhatja és üzembe helyezheti a natív Azure-erőforráscsomagokat, meghatározhatja, naplózhatja és szervizelheti az erőforrásait, valamint további funkciókat is használhat. Ezen az oldalon további információkat talál ezekről a fogalmakról és szolgáltatásokról és arról, hogy hogyan engedélyezheti és helyezheti üzembe azokat még ma a saját környezetében.'
@@ -53,16 +53,16 @@ sections:
               alt: Tervek
               src: ./media/blueprints-illustration.svg
             title: Tervek
-  - title: Megvalósítások
+  - title: A felhő bevezetésének keretrendszere
   - items:
       - type: list
         style: cards
         className: cardsZ
         columns: 3
         items:
-          - href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
-            html: '<p>A múltban a tulajdonjog és a felelősség teljes egészében a vállalatokra hárult a technológia minden szintjén, az infrastruktúrától a szoftverekig. A felhővel most új lehetőségek nyílnak meg a vállalatok számára a technológia kiaknázása terén az erőforrások igény szerinti kiépítésének és felhasználásának köszönhetően.</p>'
-            title: A nagyvállalati felhőmegoldások bevezetése
-          - href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-            html: '<p>Lehetővé teszi a rendszergazdáknak, hogy biztosítsák a számítási feladatok minimális szervezeti irányítási követelményeinek teljesítését, azonban nem akadályozza az üzleti csoportokat és fejlesztőket a saját céljaik gyors elérésében.<br /><br /></p>'
-            title: Nagyvállalati szerkezet
+          - href: /azure/architecture/cloud-adoption/index?toc=/azure/governance/toc.json
+            html: '<p>A felhő bevezetésének keretrendszere műszaki útmutatást kínál a Microsoft Azure-hoz. Mivel lehetséges, hogy az ügyfeleink még nem választották ki véglegesen a felhőszolgáltatójukat, ez a keretrendszer a felhőtípustól független útmutatást kínál a lényeges döntésekhez, amikor csak lehetséges.</p>'
+            title: Áttekintés
+          - href: /azure/architecture/cloud-adoption/governance/index?toc=/azure/governance/toc.json
+            html: '<p>Az olyan szervezeteknél, amelyek már rendelkeznek a helyszíni informatikai környezetekre vonatkozó szabályzatokkal, a felhőirányításnak ezeket az üzleti szabályzatokat kell kiegészíteniük.<br /><br /></p>'
+            title: Irányítás áttekintése

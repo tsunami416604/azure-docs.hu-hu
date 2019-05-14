@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: 99b7f05304b48b7d885a80705d05fbe24854150f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0390ef5b9364aaa54c4d46abf3164728b3a4126a
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60708402"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595824"
 ---
 # <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>A Bing Entity Search SDK-keresési kérelem küldéseC#
 
@@ -24,7 +24,7 @@ Kezdje a keresést, a Bing Entity Search SDK rendelkező entitások esetében ez
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Visual Studio 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
+* Bármely kiadása [Visual Studio 2017-es vagy újabb](https://www.visualstudio.com/downloads/).
 * A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető.
 * Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
 * A [Bing News Search SDK NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.EntitySearch/1.2.0). Ez a csomag is telepíti a következő:
@@ -32,7 +32,7 @@ Kezdje a keresést, a Bing Entity Search SDK rendelkező entitások esetében ez
     * Microsoft.Rest.ClientRuntime.Azure
     * Newtonsoft.Json
 
-A Visual Studio-projektben a Bing Entity Search SDK hozzáadásához használja a `Manage NuGet Packages` lehetőséget a Megoldáskezelőben, és adja hozzá a `Microsoft.Azure.CognitiveServices.Search.EntitySearch` csomagot.
+Segítségével adhat hozzá a Bing Entity Search SDK Visual Studio-projektek, a **NuGet-csomagok kezelése** beállítást az **Megoldáskezelőben**, és adja hozzá a `Microsoft.Azure.CognitiveServices.Search.EntitySearch` csomag.
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]

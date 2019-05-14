@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 442551424fea353aa7eddef6e7eba6e934f95691
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ca7cccb1d4f17ff9f80ca006da0ef7ce77109227
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60389198"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595542"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
 
 A Visual Studio alkalmazással olyan projekteket hozhat létre, amelyekkel telepíthető az infrastruktúra és kód az Azure rendszerébe. Meghatározhatja például az alkalmazás webállomását, webhelyét és adatbázisát, továbbá telepítheti az infrastruktúrát a kóddal együtt. A Visual Studio számos különböző kezdősablont kínál a gyakori forgatókönyvek telepítéséhez. Ebben a cikkben egy webapp és egy SQL Database üzembe helyezésének módját ismerheti meg.  
 
-Ez a cikk bemutatja, hogyan használhatja a [Visual Studio 2017-et az Azure-fejlesztéssel és telepített ASP.NET számítási feladatokkal](/dotnet/azure/dotnet-tools). Amennyiben a Visual Studio 2015 2. frissítését és a Microsoft Azure SDK for .NET 2.9-et használja vagy a Visual Studio 2013-as verzióját Azure SDK 2.9-cel, a tapasztalt működés nagyjából azonos lesz.
+Ez a cikk bemutatja, hogyan [Visual Studio 2017-es vagy újabb, az Azure-fejlesztési és telepítve van az ASP.NET-munkaterhelések](/dotnet/azure/dotnet-tools). Amennyiben a Visual Studio 2015 2. frissítését és a Microsoft Azure SDK for .NET 2.9-et használja vagy a Visual Studio 2013-as verzióját Azure SDK 2.9-cel, a tapasztalt működés nagyjából azonos lesz.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -37,7 +37,7 @@ Ebben a szakaszban egy Azure erőforráscsoport-projektet hoz létre egy **Webes
     ![Felhőtelepítési projekt](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
 2. Válassza ki az Azure Resource Managerbe telepíteni kívánt sablont. Figyelje meg, hogy a telepíteni kívánt projekt típusától függően számos különböző lehetőség áll rendelkezésre. Ehhez a cikkhez válassza a **Webapp + SQL** sablont.
    
-    ![Sablon kiválasztása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project.png)
+    ![Válasszon sablont](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project.png)
    
     A kiválasztott sablon csak egy kiindulási pont. A forgatókönyvnek való megfelelés érdekében hozzáadhat és eltávolíthat erőforrásokat.
    

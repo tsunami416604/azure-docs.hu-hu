@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 05d522550b96813c6b8326d83f09d7028466c835
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b0204673c0706403c8c5a7367be19e590d9cb134
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926215"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604092"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box sorrend
 
@@ -62,11 +62,11 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 
 4. Ellenőrizze, hogy a Data Box szolgáltatás elérhető-e a régióban. Adja meg, vagy jelölje ki a következő információkat, majd kattintson az **Alkalmaz** elemre. 
 
-    |Beállítás  |Érték  |
+    |Beállítás  |Value  |
     |---------|---------|
     |Előfizetés     | Válassza ki az EA, CSP vagy az Azure sponsorship-előfizetést a Data Box szolgáltatás. <br> Az előfizetés az Ön számlázási fiókjához lesz társítva.       |
     |Átvitel típusa     | Válassza az **Importálás az Azure-ba** lehetőséget.        |
-    |Forrásország     |   Válassza ki azt az országot, ahol az adatok jelenleg találhatók.         |
+    |Forrásország     |   Válassza ki az országot vagy régiót, ahol az adatokat jelenleg található.         |
     |Azure-beli célrégió     |     Válassza ki azt az Azure-régiót, ahova át szeretné vinni az adatokat.        |
 
 5. Válassza a Data **Box** lehetőséget. A megrendelésenkénti maximális felhasználható kapacitás 80 TB Hellyel. Nagyobb mennyiségű adat esetén több rendelést is létrehozhat.
@@ -88,7 +88,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 
     Data Box segítségével felügyelt lemez gyors létrehozásához a helyi VHD-ből, ha akkor is kell a következő információkat biztosítja:
 
-    |Beállítás  |Érték  |
+    |Beállítás  |Value  |
     |---------|---------|
     |Erőforráscsoportok     | Hozzon létre új erőforrás-csoportokat, ha szeretne felügyelt lemez gyors létrehozásához a helyi VHD-ből. Csak akkor, ha az erőforráscsoport korábban lett létrehozva a Data Box-rendelés felügyelt lemez létrehozásakor Data Box szolgáltatás által használható egy meglévő erőforráscsoportot. <br> Adja meg pontosvesszővel elválasztva több erőforráscsoporthoz. Legfeljebb 10 az erőforrás-csoportok támogatottak.|
 

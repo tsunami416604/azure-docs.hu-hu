@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: cd60129e2da0b0c2130b300159953bd81c4aeb82
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: caa249dda4215dfcef13df96d2dd4245cae49efd
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58077564"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595755"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Oktatóanyag: Szimulált eszköz használata az IoT hub-kapcsolat tesztelése
 
@@ -39,7 +39,7 @@ Az oktatóanyag során futtatott parancssori felületi szkriptek az [Azure CLI-h
 az extension add --name azure-cli-iot-ext
 ```
 
-Az oktatóanyagban futtatott eszközszimulátor alkalmazás Node.js használatával készült. A fejlesztői gépen szükség lesz a Node.js 4.x.x. vagy újabb változatára.
+Az oktatóanyagban futtatott eszközszimulátor alkalmazás Node.js használatával készült. Node.js v10.x.x, vagy később a fejlesztői gépén van szüksége.
 
 A Node.js-t a [nodejs.org](https://nodejs.org) oldalról töltheti le többféle platformra.
 
@@ -154,7 +154,7 @@ Sikeresen hitelesített egy eszközről egy parancssori felületi paranccsal lé
 
 Az eszközök az alábbi protokollok bármelyikével csatlakozhatnak az IoT Hubhoz:
 
-| Protokoll | Kimenő port |
+| Protocol | Kimenő port |
 | --- | --- |
 | MQTT |8883 |
 | MQTT WebSocketen keresztül |443 |

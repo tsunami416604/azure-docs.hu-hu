@@ -1,6 +1,6 @@
 ---
 title: Stream videofájlok az Azure Media Services és az Azure CLI |} A Microsoft Docs
-description: Ezen rövid útmutató lépéseivel egy új Azure Media Services-fiókot hozhat létre, fájlt kódolhat, és streamelheti azt az Azure Media Playerbe.
+description: Kövesse az oktatóanyag egy új Azure Media Services-fiók létrehozásához, egy fájl kódolása és streamelése azt az Azure Media Player.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,24 +9,24 @@ editor: ''
 keywords: azure media services, stream
 ms.service: media-services
 ms.workload: media
-ms.topic: quickstart
+ms.topic: tutorial
 ms.custom: ''
 ms.date: 02/19/2019
 ms.author: juliako
-ms.openlocfilehash: bd818135f289c430416909d16c8568208936a9f8
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: cce424b11cc4cd587c6e7c50bc8bdf988004a43a
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205403"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550203"
 ---
-# <a name="quickstart-stream-video-files---cli"></a>Gyors útmutató: Videófájlok streamelése – parancssori felület
+# <a name="tutorial-stream-video-files---cli"></a>Oktatóanyag: Videófájlok streamelése – parancssori felület
 
-Ez a rövid útmutató bemutatja, hogyan könnyen kódolása és streamelése videók a különböző böngészők és eszközök az Azure Media Services és az Azure CLI használatával. Megadhatja a bemeneti tartalom HTTPS vagy az SAS URL-címek vagy az elérési utak a fájlokat az Azure Blob storage használatával.
+Ez az oktatóanyag bemutatja, hogyan kódolása és streamelése videók a különböző böngészők és eszközök az Azure Media Services és az Azure CLI használatával. Megadhatja a bemeneti tartalom HTTPS vagy az SAS URL-címek vagy az elérési utak a fájlokat az Azure Blob storage használatával.
 
 A példában ez a cikk a tartalmak, hogy az URL-címének HTTPS-en keresztül elérhető kódolja. A Media Services v3 jelenleg nem támogatja a darabolásos átvitel kódolási HTTPS URL-címek keresztül.
 
-Ez a rövid útmutató végéig, képes lesz a videó továbbításához.  
+Ez az oktatóanyag végére, képes lesz a videó továbbításához.  
 
 ![Videó lejátszása](./media/stream-files-dotnet-quickstart/final-video.png)
 
@@ -342,7 +342,7 @@ Például:
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége a az erőforrások az erőforráscsoportban, beleértve a Media Services és a storage-fiókok ebben a rövid útmutatóban létrehozott törölje az erőforráscsoportot.
+Ha már nincs szüksége a az erőforrások az erőforráscsoportban, beleértve a Media Services és a storage-fiókok ebben az oktatóanyagban létrehozott törölje az erőforráscsoportot.
 
 Futtassa a CLI-parancsot:
 
@@ -350,10 +350,7 @@ Futtassa a CLI-parancsot:
 az group delete --name amsResourceGroup
 ```
 
-## <a name="see-also"></a>Lásd még
-
-Lásd: [hibakódok feladat](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
-
 ## <a name="next-steps"></a>További lépések
 
 [Media Services áttekintése](media-services-overview.md)
+

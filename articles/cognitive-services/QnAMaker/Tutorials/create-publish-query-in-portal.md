@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 85f8643a0936209c8f280498df92555a7b40c533
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a80a815d4a1a892b5258aef1c1fc7ef4ab881fe7
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149940"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594161"
 ---
 # <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>Oktatóanyag: A QnA Maker Portalról Tudásbázis létrehozása
 
@@ -68,7 +68,7 @@ Ehhez az oktatóanyaghoz egy meglévő [QnA Maker-szolgáltatásra](../How-To/se
     |--|--|--|
     |URL-cím|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |A megadott URL-címen található GYIK tartalma kérdés-válasz formátumú. A QnA Maker ebből a formátumból tudja kinyerni a kérdéseket és az azokhoz tartozó válaszokat.|
     |Fájl |_ebben az oktatóanyagban nincs használatban_|Itt tölthetők fel a kérdéseket és válaszokat tartalmazó fájlok. |
-    |Chit-chat personality (Csevegő személyisége)|Rövid|Ezzel barátságos, laza stílust kölcsönözhet a gyakori kérdéseknek és válaszoknak. A kérdéseket és válaszokat később szerkesztheti. |
+    |Chit-chat personality (Csevegő személyisége)|Rövid|Ez biztosítja, hogy egy rövid és a magasabb [személyiségelemző](../Concepts/best-practices.md#chit-chat) a gyakori kérdéseket és válaszokat. A kérdéseket és válaszokat később szerkesztheti. |
 
     ![A tudásbázis létrehozásának 4. lépése](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
 

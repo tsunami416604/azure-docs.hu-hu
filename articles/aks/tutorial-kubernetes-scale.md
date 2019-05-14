@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 74cd73cd7f9d5be9da552fb22ef2a2750ddc8321
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ed82c214e2fbb2a1efc5917eb74ffe9b29abb115
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61029856"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560329"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások skálázása az Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ Ha követte az oktatóanyagokat, rendelkezik egy működő Kubernetes-fürttel a
 
 További oktatóanyagok az Azure Vote alkalmazást egy új verzióra frissül.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Az előző oktatóanyagokban egy alkalmazást csomagoltunk egy tárolórendszerképbe. A rendszerképet feltöltöttük az Azure Container Registrybe, és létrehozott egy AKS-fürtöt. Az AKS-fürtöt, majd helyeztünk üzembe az alkalmazást. Ha még nem végezte el ezeket a lépéseket, és szeretné követni, kezdje [1. oktatóanyag – tárolórendszerképek létrehozása][aks-tutorial-prepare-app].
 
@@ -83,7 +83,7 @@ git clone https://github.com/kubernetes-incubator/metrics-server.git
 kubectl create -f metrics-server/deploy/1.8+/
 ```
 
-Az automatikus méretező használatához definiálni kell a podok processzorigényét és korlátait. Az a `azure-vote-front` a központi telepítés, az előtér-tároló már kérelmek 0,25 CPU-használat, a felső korlát pedig 0,5 Processzor. Ezen erőforrás-kérelmek és korlátozások vannak meghatározva, a következő példa kódrészletben látható módon:
+Az automatikus méretező használatához a podok és a podokat megszünteti az összes tárolót processzorigényét és korlátait definiálva kell rendelkeznie. Az a `azure-vote-front` a központi telepítés, az előtér-tároló már kérelmek 0,25 CPU-használat, a felső korlát pedig 0,5 Processzor. Ezen erőforrás-kérelmek és korlátozások vannak meghatározva, a következő példa kódrészletben látható módon:
 
 ```yaml
 resources:

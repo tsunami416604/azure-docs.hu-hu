@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/06/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 023542dbc22234fc57e4ce8b662a9760be4efe04
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8df9c2a5e45cf222debc733b3e051c3f707715c5
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150761"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603082"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Oktatóanyag: Vissza az Azure Data Box-lemezek, és ellenőrizze az adatok feltöltése az Azure-bA
 
@@ -56,7 +56,7 @@ Ha az eszközök visszatérő az Egyesült Államokban és Kanadában, tegye a k
 2. Zárja le a szállítási dobozt, és győződjön meg arról, hogy a visszaküldési fuvarlevélcímke jól látható.
 3. Ütemezhet begyűjtést a UPS. Ütemezhet begyűjtést:
 
-    - Hívja meg a helyi UPS (országspecifikus díjmentesen ingyenes szám).
+    - Hívja meg a helyi UPS (ország/régió-specifikus díjmentesen ingyenes szám).
     - A hívás az ajánlat a fordított szállítmány követési szám a nyomtatott felirat látható módon.
     - A nyomkövetési azonosító szám není uveden v uvozovkách, ha a UPS kell, hogy külön díj fizessen a begyűjtés során.
     - Ahelyett, hogy a begyűjtés ütemezés is húzhatja a Data Box-lemezek, a legközelebbi gyűjtőhely ki.
@@ -78,13 +78,13 @@ Ha az eszköz visszaadása Európában, tegye a következőket.
 
 2. Zárja le a szállítási dobozt, és győződjön meg arról, hogy a visszaküldési fuvarlevélcímke jól látható.
 3. Ha az eszközt Európán belül, DHL-lel szeretné visszaküldeni, látogasson el a DHL webhelyére, kérjen csomagfelvételt, és adja meg a légi fuvarlevél számát.
-4. Lépjen a DHL Express webhelyére, és válassza az **Online futárrendelés > Visszáru online megrendelése** lehetőséget.
+4. Az ország/régió DHL Express webhelyén található, és válassza a **repülőjáratra Courier gyűjtemény > eReturn szállításáról**.
 
     ![DHL visszaszállításhoz](media/data-box-disk-deploy-picked-up/dhl-ship-1.png)
     
 3. Adja meg a fuvarlevél számát, és kattintson a **Futárrendelés** gombra a csomagfelvétel lefoglalásához.
 
-      ![Csomagfelvétel ütemezése](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
+      ![Átvétel ütemezése](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
 
 ### <a name="pick-up-in-asia-pacific-region"></a>Vegye fel az ázsiai és csendes-óceáni régióban
 
@@ -157,7 +157,7 @@ A másolás végeztével a rendelés állapota **Befejezve** értéke vált.
 
 ![Adatok másolása befejezve](media/data-box-disk-deploy-picked-up/data-box-portal-completed.png)
 
-Ellenőrizze, hogy az adatok jelen vannak-e a tárfiók(ok)ban, mielőtt törölné azokat a forrásról. Az adatok lehetnek:
+Mielőtt törölné az eszközről az adatokat, ellenőrizze, hogy azok megtalálhatók-e a tárfiók(ok)ban. Az adatok lehetnek:
 
 - Az Azure Storage-fiókok. A Data Boxra másolt adatok a típusuktól függően a következő elérési utak egyikére lesznek feltöltve az Azure Storage-fiókban.
 

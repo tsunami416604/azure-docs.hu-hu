@@ -28,9 +28,10 @@
       href: user-help-auth-app-overview.md
     - name: Az alkalmazás letöltése és telepítése
       href: user-help-auth-app-download-install.md
-    - name: Fiókok hozzáadásának áttekintése
-      href: user-help-auth-app-add-account-overview.md
+    - name: Fiókok hozzáadása
       items:
+        - name: Áttekintés
+          href: user-help-auth-app-add-account-overview.md
         - name: Munkahelyi vagy iskolai fiók hozzáadása
           href: user-help-auth-app-add-work-school-account.md
         - name: Személyes Microsoft-fiók hozzáadása
@@ -63,9 +64,10 @@
       href: user-help-security-info-overview.md
     - name: Biztonsági adatok hozzáadása bejelentkezéskor
       href: security-info-setup-signin.md
-    - name: Biztonsági adatok hozzáadási vagy frissítési metódusainak áttekintése
-      href: security-info-add-update-methods-overview.md
+    - name: Biztonsági adatok hozzáadási vagy frissítési metódusai
       items:
+        - name: Áttekintés
+          href: security-info-add-update-methods-overview.md
         - name: Hitelesítő alkalmazás beállítása
           href: security-info-setup-auth-app.md
         - name: Szöveges üzenetküldés beállítása

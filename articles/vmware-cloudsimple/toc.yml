@@ -148,10 +148,6 @@
               href: 'https://docs.azure.cloudsimple.com/ha-ensuring/'
         - name: VMware-ökoszisztéma
           items:
-            - name: Vészhelyreállítási megoldások
-              href: 'https://docs.azure.cloudsimple.com/zerto-solutionguide/'
-            - name: Vészhelyreállítás VMware SRM használatával
-              href: 'https://docs.azure.cloudsimple.com/disaster-recovery-srm/'
             - name: Számítási feladatot futtató virtuális gépek biztonsági mentése
               href: 'https://docs.azure.cloudsimple.com/veeam/'
             - name: A VMware Horizon megoldási útmutatója

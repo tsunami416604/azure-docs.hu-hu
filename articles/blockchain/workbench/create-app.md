@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 05/14/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: d9f736b0b976ac6ec0da45a672d2e992405625cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 92a37133d84833c43fff5b1a6c31e003ef53f7de
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829701"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65619751"
 ---
 # <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>Oktatóanyag: A blockchain-alkalmazások létrehozása az Azure Blockchain Workbench használatával
 
@@ -213,7 +213,7 @@ A konfigurációs fájl elejére az alkalmazásadatokat, például az alkalmazá
 
 Az alkalmazás-szerepkörök szakaszban határozza meg a felhasználói szerepkörök, akik működésre vagy részt venni a blockchain-alkalmazáson belül. Ön meghatároz egy olyan különálló szerepkörök, funkciók alapján. A forgatókönyvben a kérés-válasz nincs megkülönböztetve a funkciókat egy entitás, amely a kérelmek, a kérelmező és a egy olyan entitás, amely létrehozza a válaszokat, válaszadó.
 
-### <a name="workflows"></a>Munkafolyamatok
+### <a name="workflows"></a>A munkafolyamatok
 
 A munkafolyamatok határozzák meg, egy vagy több szakaszában, és a szerződés műveleteket. A kérés-válasz a forgatókönyvben az első szakasz (állapot), a munkafolyamat, a kérelmező (szerepkör) végrehajt egy műveletet (átmeneti) (funkce) kérést küldeni. A következő szakaszban (állapot) egy válaszadó (szerepkör) végrehajt egy műveletet (átmeneti) (funkce) választ el. Egy alkalmazás munkafolyamatot magába foglaló tulajdonságainak, functions, és a szükséges állapotok ismertetik a folyamatot egy szerződés. 
 
@@ -271,7 +271,7 @@ Az állapot változói a szerződés hozzáadása a `HelloBlockchain.sol` intell
 
 ### <a name="constructor"></a>A konstruktor
 
-A konstruktor bemeneti paramétereket a munkafolyamat új intelligens szerződés példányát határozza meg. A konstruktor van deklarálva, egy függvény a neve megegyezik a szerződést. A konstruktor szükséges paramétereket a konfigurációs fájlban lévő konstruktor paraméterek vannak meghatározva. A szám, sorrend és paraméterek típusú egyeznie kell mindkét fájlban.
+A konstruktor bemeneti paramétereket a munkafolyamat új intelligens szerződés példányát határozza meg. A konstruktor szükséges paramétereket a konfigurációs fájlban lévő konstruktor paraméterek vannak meghatározva. A szám, sorrend és paraméterek típusú egyeznie kell mindkét fájlban.
 
 A konstruktor függvényben bármely üzleti logika írását a szerződés létrehozása előtt végrehajtására vonatkozó szándékát. Például inicializálni az állapot változói az értékek indítása.
 
@@ -287,7 +287,7 @@ A konstruktor függvény hozzáadása a szerződés a `HelloBlockchain.sol` inte
     }
 ```
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkciók
 
 A függvények olyan végrehajtható a szerződés belüli üzleti logikai egységeket. A függvény kötelező paraméterei függvény paraméterei a konfigurációs fájlban vannak meghatározva. A szám, sorrend és paraméterek típusú egyeznie kell mindkét fájlban. Függvények társítva átmenetek Blockchain Workbenchet munkafolyamatban a konfigurációs fájlban. Áttérés a következő szintre a szerződés határoz meg egy alkalmazás a munkafolyamat végrehajtott művelet.
 

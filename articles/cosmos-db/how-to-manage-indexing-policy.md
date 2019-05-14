@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/06/2019
 ms.author: thweiss
-ms.openlocfilehash: 48d67c765a8a76a6058592f59eb61770e2f23df5
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 0b47ffd77ee23f997bb7de2ea41f83c2854cba72
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068676"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550892"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatok kezelése
 
@@ -22,6 +22,9 @@ Azure Cosmos DB, az adatok indexelését követően [indexelési szabályzataiho
 - Az SDK-k használatával
 
 Egy [indexelési házirend frissítése](index-policy.md#modifying-the-indexing-policy) elindít egy index átalakítást. Az átalakítás előrehaladását is követhetők az SDK-k.
+
+> [!NOTE]
+> Az SDK és -portál verziófrissítés részeként a index házirend, egy új index elrendezést, hogy rendelkezik jelennek meg új tárolók, amelyek összhangban vannak világával. Az új elrendezéssel primitív adattípusokat indexelt tartomány teljes pontossággal (-1). Ezért az index típusú, és pontossága nem jelennek meg a felhasználó többé. A jövőben a felhasználók egyszerűen hozzá az elérési útját a includedPaths szakaszban, és a pontosság és indexKinds figyelmen kívül kell. Ez a változás nem befolyásolja a teljesítményt, és továbbra is ugyanazt a szintaxist használó indexelési szabályzat frissítése. Továbbra is meglévő dokumentációnk az összes minta használatával index szabályzat frissítése.
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 

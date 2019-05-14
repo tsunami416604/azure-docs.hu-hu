@@ -1,6 +1,6 @@
 ---
 title: Videofájlok streamelése az Azure Media Services használatával – .NET | Microsoft Docs
-description: Ezen rövid útmutató lépéseivel egy új Azure Media Services-fiókot hozhat létre, fájlt kódolhat, és streamelheti azt az Azure Media Playerbe.
+description: Kövesse az oktatóanyag egy új Azure Media Services-fiók létrehozásához, egy fájl kódolása és streamelése azt az Azure Media Player.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,23 +9,23 @@ editor: ''
 keywords: azure media services, stream
 ms.service: media-services
 ms.workload: media
-ms.topic: quickstart
+ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/20/2019
 ms.author: juliako
-ms.openlocfilehash: 3a50d78645630e499b11f012da122b12b026ae6b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3834b4f07f6450f498831accfa6640f55bc5855a
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466867"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550178"
 ---
-# <a name="quickstart-stream-video-files---net"></a>Gyors útmutató: Videófájlok streamelése – .NET
+# <a name="tutorial-stream-video-files---net"></a>Oktatóanyag: Videófájlok streamelése – .NET
 
-Ez a rövid útmutató bemutatja, hogy milyen könnyen kezdheti meg a videók kódolását és streamelését számos különféle böngészőben és eszközön az Azure Media Services használatával. A bemenő tartalmak HTTPS- URL- és SAS URL-címekkel vagy az Azure Blob Storage-ban található fájlok elérési útjával határozhatók meg.
+Ez az oktatóanyag bemutatja, hogy mennyire egyszerű is kódolása és videók a böngészők és eszközök az Azure Media Services számos streamelésének megkezdéséhez. A bemenő tartalmak HTTPS- URL- és SAS URL-címekkel vagy az Azure Blob Storage-ban található fájlok elérési útjával határozhatók meg.
 A témakörben szereplő minta olyan tartalmakat kódol, amelyeket HTTPS URL-cím segítségével tehet elérhetővé. Vegye figyelembe, hogy az AMS v3 jelenleg nem támogatja a HTTPS URL-címekkel történő darabolásos átviteli kódolást.
 
-A rövid útmutató végére képes lesz videók streamelésére.  
+Az oktatóanyag végén lesz a videó továbbításához.  
 
 ![Videó lejátszása](./media/stream-files-dotnet-quickstart/final-video.png)
 
@@ -89,7 +89,7 @@ Az Azure Media Player használható tesztelésre, az éles környezetben való h
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az erőforráscsoportjában lévő egyik erőforrásra sem, beleértve a jelen rövid útmutatóban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott teljes erőforráscsoportot.
+Ha már nincs szüksége a az erőforrások az erőforráscsoportban, beleértve a Media Services és a storage-fiókok ebben az oktatóanyagban létrehozott törölje az erőforráscsoportot.
 
 Hajtsa végre a következő CLI-parancsot:
 
@@ -103,7 +103,7 @@ A minta egyes funkcióinak leírásáért vizsgálja meg a kódot, és tekintse 
 
 A [fájlok feltöltésével, kódolásával és streamelésével](stream-files-tutorial-with-api.md) foglalkozó oktatóanyag egy összetettebb streamelési példát biztosít részletesebb magyarázatokkal. 
 
-### <a name="job-error-codes"></a>Feladat-hibakódok
+### <a name="job-error-codes"></a>Feladathibakódok
 
 Lásd: [hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 

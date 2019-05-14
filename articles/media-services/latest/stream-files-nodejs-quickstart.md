@@ -1,6 +1,6 @@
 ---
 title: Az Azure Media Services – Node.js videofájlok Stream |} A Microsoft Docs
-description: Ezen rövid útmutató lépéseivel egy új Azure Media Services-fiókot hozhat létre, fájlt kódolhat, és streamelheti azt az Azure Media Playerbe.
+description: Kövesse az oktatóanyag egy új Azure Media Services-fiók létrehozásához, egy fájl kódolása és streamelése azt az Azure Media Player.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,23 +9,24 @@ editor: ''
 keywords: azure media services, stream
 ms.service: media-services
 ms.workload: media
-ms.topic: quickstart
+ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 22b7f2380b509daa4cb9931d6fc57c1297628e3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3e4172cd149726e28e0c7dff435ec1f7a59ee169
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61233176"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550172"
 ---
-# <a name="quickstart-stream-video-files---nodejs"></a>Gyors útmutató: Videófájlok streamelése – Node.js
+# <a name="tutorial-stream-video-files---nodejs"></a>Oktatóanyag: Videófájlok streamelése – Node.js
 
-Ez a rövid útmutató bemutatja, hogy milyen könnyen kezdheti meg a videók kódolását és streamelését számos különféle böngészőben és eszközön az Azure Media Services használatával. A bemenő tartalmak HTTPS- URL- és SAS URL-címekkel vagy az Azure Blob Storage-ban található fájlok elérési útjával határozhatók meg.
-A témakörben szereplő minta olyan tartalmakat kódol, amelyeket HTTPS URL-cím segítségével tehet elérhetővé. Vegye figyelembe, hogy az AMS v3 jelenleg nem támogatja a HTTPS URL-címekkel történő darabolásos átviteli kódolást.
+Ez az oktatóanyag bemutatja, hogy mennyire egyszerű is kódolása és videók a böngészők és eszközök az Azure Media Services számos streamelésének megkezdéséhez. A bemenő tartalmak HTTPS- URL- és SAS URL-címekkel vagy az Azure Blob Storage-ban található fájlok elérési útjával határozhatók meg.
 
-A rövid útmutató végére képes lesz videók streamelésére.  
+Ebben a cikkben a minta kódolja a tartalmat, hogy az URL-címének HTTPS-en keresztül elérhető. Vegye figyelembe, hogy az AMS v3 jelenleg nem támogatja a HTTPS URL-címekkel történő darabolásos átviteli kódolást.
+
+Az oktatóanyag végén lesz a videó továbbításához.  
 
 ![Videó lejátszása](./media/stream-files-nodejs-quickstart/final-video.png)
 
@@ -71,7 +72,7 @@ A minta a következő műveleteket hajtja végre:
 
 Miután elkészült, futó, kimenetnek kell megjelennie hasonló:
 
-![Futtassa a következőt:](./media/stream-files-nodejs-quickstart/run.png)
+![Futtatás](./media/stream-files-nodejs-quickstart/run.png)
 
 ## <a name="test-with-azure-media-player"></a>Tesztelés az Azure Media Player használatával
 
@@ -90,7 +91,7 @@ Az Azure Media Player használható tesztelésre, az éles környezetben való h
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az erőforráscsoportjában lévő egyik erőforrásra sem, beleértve a jelen rövid útmutatóban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott teljes erőforráscsoportot.
+Ha már nincs szüksége a az erőforrások az erőforráscsoportban, beleértve a Media Services és a storage-fiókok ebben az oktatóanyagban létrehozott törölje az erőforráscsoportot.
 
 Hajtsa végre a következő CLI-parancsot:
 

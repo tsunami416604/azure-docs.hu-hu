@@ -1,8 +1,8 @@
 - name: "Azure HDInsight\_– dokumentáció"
   href: /azure/hdinsight
-- name: HDInsight-alapú Apache HBase
+- name: Áttekintés
   items:
-    - name: Áttekintés
+    - name: Apache HBase a HDInsightban
       href: apache-hbase-overview.md
     - name: HDInsight-alapú Apache Hadoop-összetevők
       href: ../hdinsight-component-versioning.md
@@ -10,6 +10,10 @@
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md
       maintainContext: true
+- name: Gyors útmutatók
+  items:
+    - name: Az Apache HBase lekérdezése – HBase-felület
+      href: ./query-hbase-with-hbase-shell.md
 - name: Bevezetés
   items:
     - name: Első lépések az Apache HBase-ben és a NoSQL-ben

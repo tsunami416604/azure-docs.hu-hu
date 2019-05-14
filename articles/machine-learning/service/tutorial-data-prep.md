@@ -11,12 +11,12 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6e7aa231cabea9fbd76cd028f9fdc698a4dac5d6
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 67f3a0d10490c5c63dfe262d07985f51bb384e34
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470271"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604473"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Oktatóanyag: Adatok előkészítése az regressziós modellezéshez
 
@@ -38,7 +38,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 Ugrás a [a fejlesztési környezet beállítása](#start) olvassa végig a notebook lépéseket, vagy használja az alábbi utasításokat a notebook beszerzése és az Azure notebookok vagy a saját notebook server futtatásához. A jegyzetfüzet futtatásához szüksége lesz:
 
 * Egy Python 3.6-os notebook kiszolgálót a következőkkel:
-    * Az Azure Machine Learning Python SDK Adatelőkészítéshez
+    *  az Azure Machine Learning SDK Pythonhoz készült azureml-adatelőkészítés-csomagot
 * Az oktatóanyag notebook
 
 * Használja a [felhőalapú notebook server a munkaterületen](#azure) 
@@ -56,8 +56,8 @@ Is könnyen a saját felhőalapú notebook server használatának első lépése
 
 Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.  Miután végrehajtotta a lépéseket, futtassa a **oktatóanyagok/regressziós-1-adatok – prep.ipynb** notebookot.
 
-1. Befejeződött a telepítés lépéseit [ [Azure Machine Learning Python rövid](quickstart-run-local-notebook.md) ](setup-create-workspace.md#python) Miniconda környezet kialakításához.  Nyugodtan hagyja ki a **hozzon létre egy munkaterületet** szakaszt, ha kívánja, de szükség lesz rá a [2. rész](tutorial-auto-train-models.md) az oktatóanyag-sorozat.
-1. Az adatok előkészítő SDK telepítése az a környezet használatával `pip install azureml-dataprep`.
+1. Befejeződött a telepítés lépéseit [Azure Machine Learning Python rövid](setup-create-workspace.md#sdk) Miniconda környezet kialakításához.  Nyugodtan hagyja ki a **hozzon létre egy munkaterületet** szakaszt, ha kívánja, de szükség lesz rá a [2. rész](tutorial-auto-train-models.md) az oktatóanyag-sorozat.
+1. A környezet használatával telepítse az azureml-adatelőkészítés `pip install azureml-dataprep`.
 1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
 
     ```

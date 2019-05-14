@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9aa009ed99b2067b5a3cbde910a7265f42ea478f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 395172fc77ff0c2e07658386ba827022af1ad26c
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60917579"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595478"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-c"></a>Gyors útmutató: Képkeresés a Bing-lemezkép keresési készült SDK-valC#
 
@@ -25,10 +25,10 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hajthatja végre első képke
 A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* A [Visual Studio 2017](https://visualstudio.microsoft.com/vs/whatsnew/) bármely kiadása.
+* Bármely kiadása [Visual Studio 2017-es vagy újabb](https://visualstudio.microsoft.com/vs/whatsnew/).
 * A [Cognitive Image Search NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/1.2.0).
 
-A Bing Image Search SDK Visual Studióban való telepítéséhez használja a Visual Studio Megoldáskezelőjében a `Manage NuGet Packages` lehetőséget.
+A Visual Studióban a kép a Bing Search SDK telepítéséhez használja a **NuGet-csomagok kezelése** parancsát **Megoldáskezelőben**.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 

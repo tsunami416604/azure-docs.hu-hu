@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 405b6ebd06091536749751a94362d8c4a6495dbc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7bf8217f5076c0a95d4db6c1c7cbea7bc93b91f3
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605451"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550540"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>A mobileszközök használatra modell exportálása
 
@@ -69,10 +69,10 @@ A modell exportálása után átképezési, használja az alábbi lépéseket:
 
 ## <a name="next-steps"></a>További lépések
 
-Az exportált modell integrálása egy alkalmazásba. Több mintaalkalmazások érhetők el:
+Az exportált modell integrálása egy alkalmazásba elemzésével a következő cikkek vagy minták egyikét:
 
-* Egy minta [az exportált CoreML modell segítségével az IOS-es alkalmazások](https://go.microsoft.com/fwlink/?linkid=857726) a valós idejű képbesorolás Swift
-* IOS-mintaalkalmazást a [modellel az exportált CoreML xamarinnal](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel) a valós idejű képek besorolása 
-* A minta [a Android-alkalmazás az exportált Tensorflow-modell segítségével](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample) a valós idejű képek besorolása 
-* [A Windows a Tensorflow-modell használatával](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-model-python)
-* A minta [az exportált ONNX-modellt használó Windows gépi tanulással](https://azure.microsoft.com/resources/samples/cognitive-services-onnx-customvision-sample/)
+* [A Tensorflow-modell használata Pythonnal](export-model-python.md)
+* [Az ONNX-modell használatához Windows gépi tanulással](custom-vision-onnx-windows-ml.md)
+* Tekintse meg a mintát a [CoreML modell az IOS-es alkalmazások](https://go.microsoft.com/fwlink/?linkid=857726) a valós idejű képbesorolás Swiftet.
+* Tekintse meg a mintát a [Tensorflow modell az Android-alkalmazás](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample) valós idejű képbesorolás az Android esetében.
+* Tekintse meg a mintát a [CoreML modell használatát a Xamarinnal](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel) a valós idejű képek besorolása a Xamarin iOS-alkalmazásokhoz.

@@ -59,6 +59,8 @@
     - name: Virtuálisgép-típusok és -méretek
       href: sizes.md
       items:
+        - name: 2. generációs virtuális gépek
+          href: generation-2.md
         - name: Általános célú
           href: sizes-general.md
           displayName: Dsv3 Dv3 DSv2 Dv2 Av2

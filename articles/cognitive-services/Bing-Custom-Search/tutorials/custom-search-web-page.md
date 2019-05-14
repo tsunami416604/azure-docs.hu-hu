@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 6f44d4e6e5a0ee940394e09ceff8a425700d34e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0870983fe9f0ae64090652f02c526a370064b8ab
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328452"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595887"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Oktatóanyag: Custom Search-webhely létrehozása
 
@@ -35,7 +35,7 @@ Az oktatóanyag az alábbi feladatokat tárgyalja:
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ahhoz, hogy követni tudja az oktatóanyagot, szüksége lesz egy előfizetői azonosítóra a Bing Custom Search API-hoz.  Az előfizetői azonosító beszerzéséhez lásd [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) témakört.
-- Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t.
+- Ha még nem rendelkezik Visual Studio 2017-et vagy újabb verziója van telepítve, letöltheti és használhatja a **ingyenes** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-custom-search-instance"></a>Egyéni keresési példány létrehozása
 

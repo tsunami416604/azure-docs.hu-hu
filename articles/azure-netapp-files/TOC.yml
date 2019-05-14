@@ -21,6 +21,10 @@
       href: azure-netapp-files-metrics.md
     - name: Az Azure NetApp Files teljesítményével kapcsolatos mérőszámok
       href: azure-netapp-files-performance-benchmarks.md
+    - name: Az Azure NetApp Files költségmodellje
+      href: azure-netapp-files-cost-model.md
+    - name: Az Azure NetApp Files hálózattervezési irányelvei
+      href: azure-netapp-files-network-topologies.md
 - name: Útmutatók
   items:
     - name: Regisztrálás az Azure NetApp Filesra

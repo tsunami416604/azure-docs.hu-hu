@@ -7,38 +7,42 @@ ms.author: twhitney
 manager: jeconnoc
 ms.topic: tutorial
 ms.service: openshift
-ms.date: 05/08/2019
-ms.openlocfilehash: baada8a5238725456ca4a2ec7e8257c229066115
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.date: 05/13/2019
+ms.openlocfilehash: dda5df0e5b9b9509482cb6dcdcda242b4daa230f
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466182"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596342"
 ---
-# <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Oktatóanyag: Az Azure Red Hat OpenShift-fürt létrehozása
+# <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift-fürt létrehozása
 
 Ez az oktatóanyag egy sorozat első része. Megtudhatja, hogyan hozzon létre egy Microsoft Azure Red Hat OpenShift-fürtöt az Azure CLI-vel, skálázza fel, majd törölje az erőforrások törlése.
 
 A sorozat első részében, megtudhatja, hogyan lehet:
 
 > [!div class="checklist"]
-> * Az Azure Red Hat OpenShift-fürt létrehozása
+> * Azure Red Hat OpenShift-fürt létrehozása
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * Az Azure Red Hat OpenShift-fürt létrehozása
+> * Azure Red Hat OpenShift-fürt létrehozása
 > * [Azure Red Hat OpenShift-fürt skálázása](tutorial-scale-cluster.md)
 > * [Azure Red Hat OpenShift-fürt törlése](tutorial-delete-cluster.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+> [!IMPORTANT]
+> Ehhez az oktatóanyaghoz az Azure CLI 2.0.65 verziója
+
 Az oktatóanyag elkezdése előtt:
 
 Győződjön meg arról, hogy [a fejlesztési környezet beállítása](howto-setup-environment.md), amely tartalmazza:
-- A legújabb parancssori felület telepítése (2.0.64 verzió vagy újabb)
-- Bérlő létrehozása
-- Egy Azure-alkalmazás objektumának létrehozása
-- Egy a fürtben futó alkalmazásokhoz való bejelentkezéshez használt Active Directory-felhasználó létrehozása.
+- A legújabb parancssori felület telepítése (2.0.65 verzió vagy újabb)
+- Ha még nem rendelkezik egy bérlő létrehozására
+- Ha még nem rendelkezik egy Azure-alkalmazás objektum létrehozását
+- Biztonsági csoport létrehozása
+- Egy Active Directory-felhasználót, jelentkezzen be a fürt létrehozásához.
 
 ## <a name="step-1-sign-in-to-azure"></a>1. lépés: Bejelentkezés az Azure-ba
 
@@ -50,38 +54,36 @@ az login
 
  Ha több előfizetést is hozzáférhet, futtassa `az account set -s {subscription ID}` cseréje `{subscription ID}` a használni kívánt előfizetést.
 
-## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>2. lépés: Az Azure Red Hat OpenShift-fürt létrehozása
+## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>2. lépés: Azure Red Hat OpenShift-fürt létrehozása
 
 A Bash parancssori ablakban állítsa be az alábbi változókat:
 
 > [!IMPORTANT]
-> A fürt neve csak kisbetűket, vagy a fürt létrehozása sikertelen lesz.
+> Válassza ki a nevét, fürt, amely egyedi, és az összes kisbetűt vagy -fürt létrehozása sikertelen lesz.
 
 ```bash
 CLUSTER_NAME=<cluster name in lowercase>
 ```
 
- Használja ugyanazt a nevet a fürt eljárás 6. lépésében megadottal [hozzon létre új alkalmazásregisztráció](howto-aad-app-configuration.md#create-a-new-app-registration).
+Válassza ki azt a helyet, a fürt létrehozásához. Az azure-régiók listáját, amely támogatja az OpenShift az Azure-ban, lásd: [támogatott régiók](supported-resources.md#azure-regions). Például: `LOCATION=eastus`.
 
 ```bash
 LOCATION=<location>
 ```
 
-Válassza ki azt a helyet, a fürt létrehozásához. Az azure-régiók listáját, amely támogatja az OpenShift az Azure-ban, lásd: [támogatott régiók](supported-resources.md#azure-regions). Például: `LOCATION=eastus`.
-
-Állítsa be `FQDN` a fürt teljesen minősített nevére. Ez a név áll a fürt nevét, helyét, és `.cloudapp.azure.com` végén lesz hozzáfűzve. Ez az azonos a bejelentkezési URL-6. lépésében létrehozott [hozzon létre új alkalmazásregisztráció](howto-aad-app-configuration.md#create-a-new-app-registration). Példa:  
-
-```bash
-FQDN=$CLUSTER_NAME.$LOCATION.cloudapp.azure.com
-```
-
-Állítsa be `APPID` a mentett érték a 9. lépés [hozzon létre egy új alkalmazásregisztráció](howto-aad-app-configuration.md#create-a-new-app-registration).  
+Állítsa be `APPID` a mentett érték az 5. lépésében [hozzon létre egy Azure AD-alkalmazás regisztrációjának](howto-aad-app-configuration.md#create-an-azure-ad-app-registration).  
 
 ```bash
 APPID=<app ID value>
 ```
 
-Állítsa be `SECRET` a mentett érték a 6. lépés [hozzon létre egy ügyfélkulcsot](howto-aad-app-configuration.md#create-a-client-secret).  
+10. lépésében mentett "GROUPID" értékre [létrehozása az Azure AD biztonsági csoportok](howto-aad-app-configuration.md#create-an-azure-ad-security-group).
+
+```bash
+GROUPID=<group ID value>
+```
+
+Állítsa be `SECRET` a mentett érték a 8. lépés [hozzon létre egy ügyfélkulcsot](howto-aad-app-configuration.md#create-a-client-secret).  
 
 ```bash
 SECRET=<secret value>
@@ -93,7 +95,7 @@ SECRET=<secret value>
 TENANT=<tenant ID>
 ```
 
-Az erőforráscsoport, a fürt létrehozásához. Futtassa a következő parancs a Bash felületet, amellyel a fenti változókat határozhat meg:
+Az erőforráscsoport, a fürt létrehozásához. Futtassa a következő parancsot az ugyanazon a Bash rendszerhéj, amellyel a fenti változókat határozhat meg:
 
 ```bash
 az group create --name $CLUSTER_NAME --location $LOCATION
@@ -117,33 +119,59 @@ Például:`VNET_ID=$(az network vnet show -n MyVirtualNetwork -g MyResourceGroup
 
 ### <a name="create-the-cluster"></a>A fürt létrehozása
 
-Most már készen áll a fürt létrehozásához.
+Most már készen áll a fürt létrehozásához. A következő létrehozza a fürtöt a megadott Azure ad-bérlőhöz, adja meg az Azure AD alkalmazás-objektum és a titkos kulcsot használja, mint egy rendszerbiztonsági tagot, és a biztonsági csoport, amely tartalmazza a fürt rendszergazdai hozzáféréssel rendelkező tagok.
 
- Ha a virtuális hálózathoz a fürt nem csatlakozik egy meglévő virtuális hálózatot, hagyja ki a záró `--vnet-peer-id $VNET_ID` paraméter a következő példában.
+Ha Ön **nem** a fürt egy virtuális hálózati társviszony használja a következő parancsot:
 
 ```bash
-az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --fqdn $FQDN --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --vnet-peer-id $VNET_ID
+az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID
 ```
 
-Néhány perc múlva `az openshift create` fogja sikeresen befejeződtek, valamint a fürt adatait tartalmazó JSON-választ adja vissza.
+Ha Ön **vannak** a fürt egy virtuális hálózati társviszony használja a következő parancsot, amely hozzáadja a `--vnet-peer` jelző:
+ 
+```bash
+az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --vnet-peer $VNET_ID
+```
 
 > [!NOTE]
-> Ha hiba történt, hogy a gazdagép neve nem érhető el, mert a fürt neve nem egyedi lehet. Próbálja ki az eredeti alkalmazásregisztráció törlése és a lépései [hozzon létre egy új alkalmazásregisztráció] (howto-aad-app-configuration.md#create-a-new-app-registration) (új felhasználó létrehozása óta már létrehozott egyet az utolsó lépés kihagyása) megismétlése egy különböző fürt neve.
+> Ha hiba történt, hogy a gazdagép neve nem érhető el, mert a fürt neve nem egyedi lehet. Próbálja ki az eredeti alkalmazásregisztráció törlése és a lépéseket, a másik fürtnevet a [Create egy új alkalmazásregisztráció] (howto-aad-app-configuration.md#create-a-new-app-registration), egy új felhasználók és biztonsági csoport létrehozása a lépés kihagyása megismétlése.
 
-## <a name="step-3-sign-in-to-the-openshift-console"></a>3. lépés: Jelentkezzen be az OpenShift konzol
+Néhány perc elteltével `az openshift create` fog befejeződni.
+
+### <a name="get-the-sign-in-url-for-your-cluster"></a>A bejelentkezési URL-cím lekérése a fürt
+
+Kérje le a következő parancs futtatásával jelentkezzen be a fürt URL-címe:
+
+```bash
+az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
+```
+
+Keresse meg a `publicHostName` a kimenetben, például: `"publicHostname": "openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io"`
+
+A bejelentkezési URL-címet a fürt számára lesz `https://` követ a `publicHostName` értéket.  Például: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`.  Ez az URI a következő lépésben fogja használni a részeként az alkalmazás regisztrációs átirányítási URI-t.
+
+## <a name="step-3-update-your-app-registration-redirect-uri"></a>3. lépés: Az alkalmazás regisztrációs átirányítási URI-JÁNAK frissítése
+
+Most, hogy a bejelentkezési URL-címben a fürthöz, állítsa be az alkalmazás regisztrációs átirányítási felhasználói felületén:
+
+1. Nyissa meg a [regisztrációk panelére](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview).
+2. Kattintson az alkalmazás regisztrációs objektumon.
+3. Kattintson a **adjon hozzá egy átirányítási URI-JÁNAK**.
+4. Ügyeljen arra, hogy **típus** van **webes** és állítsa be a **ÁTIRÁNYÍTÁSI URI-t** használatával a következő mintának: `https://<public host name>/oauth2callback/Azure%20AD`. Például:`https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io/oauth2callback/Azure%20AD`
+5. Kattintson a **Save** (Mentés) gombra
+
+## <a name="step-4-sign-in-to-the-openshift-console"></a>4. lépés: Jelentkezzen be az OpenShift konzol
 
 Most már készen áll az OpenShift-konzolon az új fürtre való bejelentkezéshez. A [OpenShift Webkonzol](https://docs.openshift.com/aro/architecture/infrastructure_components/web_console.html) jelenítheti meg, keresse meg és kezelheti az OpenShift projektek tartalmát is.
 
-Mint léptetjük a [új Azure AD-felhasználó](howto-aad-app-configuration.md#create-a-new-active-directory-user) tesztelési létrehozott. Ehhez szüksége lesz egy friss böngésző-példányt, amely még nem gyorsítótárazza az identitást, normál esetben használhatja az Azure Portalra való bejelentkezéshez.
+Szüksége lesz egy friss böngésző-példányt, amely még nem gyorsítótárazza az identitást, normál esetben használhatja az Azure Portalra való bejelentkezéshez.
 
 1. Nyissa meg egy *inkognitó* (Chrome) ablakban vagy *InPrivate* (a Microsoft Edge) ablak.
-2. Keresse meg a bejelentkezési URL-6. lépésében létrehozott [hozzon létre egy új alkalmazásregisztráció](howto-aad-app-configuration.md#create-a-new-app-registration). Például: https://constoso.eastus.cloudapp.azure.com
+2. Keresse meg a bejelentkezési URL-beszerzett fent, például: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`
 
-> [!NOTE]
-> Az OpenShift konzol egy önaláírt tanúsítványt használ.
-> Amikor a rendszer kéri a böngészőben, a figyelmeztetés mellőzése, és fogadja el a "nem megbízható" tanúsítványt.
+Jelentkezzen be a felhasználónevet, 3. lépésében létrehozott [hozzon létre egy új Azure Active Directory-felhasználót](howto-aad-app-configuration.md#create-a-new-azure-active-directory-user).
 
-Jelentkezzen be a felhasználónév és jelszó, amelyet [hozzon létre egy új Active Directory-felhasználót](howto-aad-app-configuration.md#create-a-new-active-directory-user) amikor a **kért engedélyeket** párbeszédpanel megjelenésekor válassza **hozzájárul a szervezet nevében**  , majd **fogadja el**.
+A **kért engedélyeket** párbeszédpanel fog megjelenni. Kattintson a **hozzájárul a szervezet nevében** majd **elfogadás**.
 
 Most már jelentkezett be a fürt konzolba.
 
@@ -151,7 +179,7 @@ Most már jelentkezett be a fürt konzolba.
 
  Tudjon meg többet [az OpenShift konzollal](https://docs.openshift.com/aro/getting_started/developers_console.html) hozhat létre és a beépített rendszerképek a [Red Hat OpenShift](https://docs.openshift.com/aro/welcome/index.html) dokumentációját.
 
-## <a name="step-4-install-the-openshift-cli"></a>4. lépés: Telepítse az OpenShift CLI-t
+## <a name="step-5-install-the-openshift-cli"></a>5. lépés: Telepítse az OpenShift CLI-t
 
 A [OpenShift CLI](https://docs.openshift.com/aro/cli_reference/get_started_cli.html) (vagy *c eszközök*) parancsokat biztosít az alkalmazások és a különféle komponenseinek használatát az OpenShift fürt folytatott interakcióra szolgáló alacsonyabb szintű segédprogramok kezeléséhez.
 
@@ -171,7 +199,7 @@ Ha nem sikerült a token értékét használja a fenti lépéseket, get token é
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 
 > [!div class="checklist"]
-> * Az Azure Red Hat OpenShift-fürt létrehozása
+> * Azure Red Hat OpenShift-fürt létrehozása
 
 Folytassa a következő oktatóanyaggal:
 > [!div class="nextstepaction"]

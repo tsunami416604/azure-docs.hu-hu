@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: 261b55f722fdc3c1e8f4b45debc664f49db3f898
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e7bd97d6ab197a061a33620b590e41acb486d934
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61480392"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606840"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>A Stream Analytics-szel telefonhívás-adatok elemzése és megjelenítése a Power BI-irányítópulton eredmények
 
@@ -118,7 +118,7 @@ A TelcoGenerator alkalmazást úgy kell beállítania az indítása előtt, hogy
    |**Rekord**  |**Definíció**  |
    |---------|---------|
    |CallrecTime    |  A hívási kezdési idejét jelölő időbélyegző.       |
-   |SwitchNum     |  A hívás csatlakozásához használt telefonkapcsoló. Ebben a példában a kapcsolók olyan sztringek, amelyek a származási országot jelölik (USA, Kína, Egyesült királyság, Németország vagy Ausztrália).       |
+   |SwitchNum     |  A hívás csatlakozásához használt telefonkapcsoló. Ebben a példában a kapcsolók olyan karakterláncok, amelyek az országban vagy régióban (USA, Kína, Egyesült Királyság, Németország vagy Ausztrália) származási.       |
    |CallingNum     |  A hívó telefonszáma.       |
    |CallingIMSI     |  Az International Mobile Subscriber Identity (IMSI). Ez a hívó egyedi azonosítója.       |
    |CalledNum     |   A hívott fél telefonszáma.      |
@@ -212,7 +212,7 @@ Ebben a példában a csaló hívásokat ugyanaz a felhasználó indítja eltér�
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-   A csaló hívások kereséséhez a `CallRecTime` érték alapján érdemes önillesztést végrehajtania a streamadatokon. Ezután megkeresheti azokat a hívásrekordokat, amelyekben a `CallingIMSI` érték (a származási szám) megegyezik, de a `SwitchNum` érték (származási ország) különbözik. Ha JOIN műveletet használ streamadatokon, az illesztésnek korlátoznia kell az egyező sorok közötti maximális időtartamot. Mivel a streamadatok végtelenek, a kapcsolat időkorlátait az **ON** záradékban kell megadni, a [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) függvénnyel.
+   A csaló hívások kereséséhez a `CallRecTime` érték alapján érdemes önillesztést végrehajtania a streamadatokon. Ezután megkeresheti a hívás rekordokat, ahol a `CallingIMSI` értéket (a származási szám) megegyezik, azonban a `SwitchNum` (ország/régió forrása) értéke nem egyezik. Ha JOIN műveletet használ streamadatokon, az illesztésnek korlátoznia kell az egyező sorok közötti maximális időtartamot. Mivel a streamadatok végtelenek, a kapcsolat időkorlátait az **ON** záradékban kell megadni, a [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) függvénnyel.
 
    Ez a lekérdezés a hagyományos SQL-illesztésekhez hasonlít, kivéve a **DATEDIFF** függvényt. A lekérdezésben használt **DATEDIFF** függvény csak a Streaming Analyticsben használható, és az `ON...BETWEEN` záradékon belül kell megjelennie.
 

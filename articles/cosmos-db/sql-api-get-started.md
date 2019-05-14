@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: sngun
-ms.openlocfilehash: 64aef17663fdc28a467172bbe8954fc06fdb7ff0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7574985dbcc502d03bc886c7651c859b22968c5f
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60686398"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596088"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Adatkezelés az Azure Cosmos DB SQL API-fiók egy .NET-Konzolalkalmazás létrehozása
 
@@ -145,6 +145,20 @@ Most ismerkedjen meg néhány kódírás. A teljes *Project.cs* fájl szerepel e
       {
         client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
       }
+   ```
+
+   Ha szeretne csatlakozni az Azure Cosmos DB egy proxy objektumot használ, Ehelyett használjon a következő kódblokk a DocumentClient objektum létrehozása. Ebben a dokumentumban a minta egy proxy objektumot, nem használ, így csak referenciaként az alábbi példa:
+
+   ```csharp
+   HttpClientHandler handler = new HttpClientHandler()
+   {
+     Proxy = proxyObject
+     UseProxy = true,
+   };
+
+   //Pass handler to the constructor of DocumentClient.
+   DocumentClient client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey, handler);
+   
    ```
    
 1. Adja hozzá a következő kódot a `Main` metódust, hogy futtassa a `GetStartedDemo` feladat. A `Main` metódus kivételek elkapja, és a konzol írja őket.

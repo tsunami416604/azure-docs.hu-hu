@@ -1,5 +1,5 @@
 ---
-title: Mi az űrlap felismerő?
+title: Mi a Form Recognizer?
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan használhatja az űrlap felismerő elemezni az űrlap és a táblák adatait.
 author: PatrickFarley
@@ -9,72 +9,74 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 04/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 2a120a59a58eb8d7a017cce0dd85c21038bdcf51
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8fb382227c71fce7ebe062057adf5edfb90a1a92
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143216"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601623"
 ---
-# <a name="what-is-form-recognizer"></a>Mi az űrlap felismerő?
+# <a name="what-is-form-recognizer"></a>Mi a Form Recognizer?
 
-Azure űrlap felismerő az kognitív szolgáltatás, amely gépi tanulási technológia használatával azonosíthatja és kulcs-érték párok, és a táblák adatainak kinyerése űrlap dokumentumok. Majd exportálja a strukturált adatok, amely tartalmazza a kapcsolatokat az eredeti fájlt. Az egyéni űrlap felismerő modell annak érdekében, hogy csökkenti az összetettséget és könnyedén beépítheti azt a munkafolyamat vagy az alkalmazások egy egyszerű REST API használatával hívható meg. Csak akkor kell öt űrlap dokumentumok vagy egy ugyanolyan típusú, mint a bemeneti anyagot találhat az első lépések üres formájában. Is processzoraival gyors, pontosan, és fenntarthatja az adott tartalomra (nagy erőforrásigényű) kézi beavatkozás vagy kiterjedt data science szakértelem nélkül.
+Az Azure Form Recognizer egy Cognitive Services-szolgáltatás, amely gépi tanulási technológiával azonosítja és nyeri ki a kulcs-érték párokat és táblaadatokat az űrlapdokumentumokból. Ezután strukturált adatokat ad vissza, amelyek tartalmazzák az eredeti fájlban lévő kapcsolatokat. Az egyéni űrlap felismerő modell egy egyszerű REST API használatával csökkenthető, és egyszerűen integrálhatja a munkafolyamat vagy alkalmazás hívása. A kezdéshez csak kell öt űrlap dokumentumok vagy egy ugyanolyan típusú, mint a bemeneti anyagot találhat az üres formájában. Gyorsan hozzáférhet pontos eredményeket, amelyek az adott tartalom (nagy erőforrásigényű) kézi beavatkozás vagy kiterjedt data science szakértelem nélkül.
 
 ## <a name="request-access"></a>Hozzáférés kérése
-Űrlap felismerő egy korlátozott hozzáférésű az előzetes verzióként érhető el. Az előzetes verzió eléréséhez, kérjük töltse ki és küldje el a [Cognitive Services űrlap felismerő hozzáférési kérelem](https://aka.ms/FormRecognizerRequestAccess) űrlap. Az űrlap kér információt, a vállalat és a felhasználói forgatókönyvet, amely űrlap felismerő fog használni. Ha a kérést az Azure Cognitive Services-csapat jóváhagyja, kap egy e-mailt az útmutatást nyújt a szolgáltatás eléréséhez.
+Űrlap felismerő egy korlátozott hozzáférésű előzetes verzióban érhető el. Töltse ki az előzetes verzió eléréséhez, és küldje el a [űrlap felismerő hozzáférési kérelem](https://aka.ms/FormRecognizerRequestAccess) űrlap. Az űrlap kér információt, a vállalat és a felhasználói forgatókönyvet, amely űrlap felismerő fog használni. Ha a kérést az Azure Cognitive Services-csapat jóváhagyja, kap egy e-mailt a szolgáltatás eléréséhez szükséges utasításokat.
 
 ## <a name="what-it-does"></a>Művelet
 
-Amikor a bemeneti adatokat küld, az algoritmus, betanítja, fürtök típusok, az űrlapok felderíti, mely kulcsok és a táblák jelen, és megtanulja kulcsok értékek és táblák bejegyzések. Felügyeletlen learning lehetővé teszi, hogy a modell megértéséhez nélkül az adatok manuális címkézésre, vagy nagy számításigényű kódolása és karbantartási elrendezést és a mezők és bejegyzések közötti kapcsolatokat. Ezzel szemben az előre betanított gépi tanulási modellek szabványos igényelnek, és kevésbé pontosak, a bemeneti anyagot, amely eltér a hagyományos formátumok, mint iparág-specifikus űrlapok.
+Amikor a bemeneti adatokat küld, az algoritmus, betanítja, fürtök típusok, az űrlapok felderíti, mely kulcsok és a táblák jelen, és megtanulja kulcsok értékek és táblák bejegyzések. A nem felügyelt tanítás lehetővé teszi, hogy a modell manuális adatcímkézé, valamint intenzív kódolás és karbantartás nélkül megértse az elrendezést, illetve a mezők és bejegyzések közötti kapcsolatokat. Ezzel szemben az előre betanított machine learning-modellek szabványos igényelnek, és kevésbé pontos bemeneti anyagot, amely eltér a hagyományos formátumok, mint például az iparág-specifikus űrlapok együtt használva.
 
-Miután a modell tanítása, tesztelése, újratanítása és idővel, amellyel igény szerint további űrlapok adatok megbízhatóan kinyerése.
+Után a modell betanítását, tesztelése és újratanítása azt, és végül, amellyel igény szerint további űrlapok adatok megbízhatóan kinyerése.
 
 ## <a name="what-it-includes"></a>Mit tartalmaz?
 
-Űrlap felismerő REST API-ként érhető el. Hozhat létre, betanítását és pontozását egy modellt az API meghívásával, és igény szerint futtathatja a modell egy helyi Docker-tárolóban.
+Űrlap felismerő REST API-ként érhető el. Létrehozását, betanítását és pontozását egy modellt az API meghívásával. Ha azt szeretné, a helyi Docker-tárolóban futtathatja a modellt.
 
 ## <a name="input-requirements"></a>A bemeneti követelmények
 
-Űrlap felismerő működik a bemeneti dokumentumokon, amelyek megfelelnek a következő követelményeknek:
+Űrlap felismerő működik a fenti követelményeknek megfelelő bemeneti dokumentum:
 
-* JPG, PNG vagy PDF formátumban (szöveges vagy beolvasott). Szöveg beágyazott PDF-fájlok előnyösek, mert nem fordulhat elő hiba karakterfelismerés és helyen.
+* Formátumban kell lennie, JPG, PNG vagy PDF-fájl (szöveges vagy beolvasott). Beágyazott szöveg PDF-fájlok nincsenek ajánlott, mert nem fordulhat elő hiba karakterfelismerés és helyen.
 * Fájl mérete kisebb, mint 4 megabájt (MB) kell lennie.
-* Képek dimenziók és kell esnie 50 x 50 4200 x 4200 képpont
-* Nyomtatott dokumentumok gépről beolvasott, ha űrlapok a magas színvonalú vizsgálatok kell lennie
-* A Latin ábécében (angol nyelvű karakter) kell használnia.
-* A nyomtatott adatokat (nem kézzel írott)
-* Tartalmaznia kell a kulcsok és értékek
+* Képek a dimenziók 50 x 50 képpont méretű és 4200 x 4200 képpont között kell lennie.
+* Nyomtatott dokumentumok gépről beolvasott, űrlapok magas színvonalú vizsgálatok kell lennie.
+* Szöveg kell használnia a Latin ábécében (angol nyelvű karakter).
+* Adatok (nem kézzel írott) kell nyomtatni.
+* Kulcsokat és értékeket kell tartalmaznia.
 * Kulcsokkal fölött, vagy az értékek, de nem alábbi balra vagy jobbra is megjelenhetnek.
 
-Ezenkívül űrlap felismerő még nem támogatja a következő típusú bemeneti adatok:
+Űrlap felismerő jelenleg nem támogatja az ilyen típusú bemeneti adatok:
 
-* Összetett táblázatok (beágyazott táblákat, egyesített fejlécek vagy cellák és így tovább) 
-* Jelölőnégyzetek vagy választógomb gomb
-* Több mint 50 oldalak PDF-dokumentumok
+* Összetett táblázatok (beágyazott táblákat, egyesített fejlécek vagy cellák és így tovább).
+* Jelölőnégyzetek vagy választógomb gombot.
+* PDF-dokumentumok hosszabb, mint az 50.
 
 ## <a name="where-do-i-start"></a>Hogyan kezdjek hozzá?
 
 **1. lépés:** Űrlap felismerő erőforrás létrehozása az Azure Portalon.
 
 **2. lépés:** Próbálja ki a rövid útmutató a gyakorlatban használható tapasztalatot:
-* [Rövid útmutató: Egy űrlap felismerő modell betanítását, és bontsa ki az űrlapadatok REST API használatával a curl használatával](quickstarts/curl-train-extract.md)
-* [Rövid útmutató: Egy űrlap felismerő modell betanítását, és bontsa ki az űrlapadatok REST API-val, a Python](quickstarts/python-train-extract.md)
+* [Rövid útmutató: Űrlap felismerő modellek betanítása és űrlap adatokat nyerhet ki a REST API-val a curl használatával](quickstarts/curl-train-extract.md)
+* [Rövid útmutató: Űrlap felismerő modellek betanítása és űrlap adatokat nyerhet ki a REST API a pythonnal](quickstarts/python-train-extract.md)
 
-Azt javasoljuk, az ingyenes szolgáltatás tanulási célokra, de vegye figyelembe, hogy ingyenes oldalak számát havi 500 oldalakra korlátozott.
+Azt javasoljuk, hogy az ingyenes szolgáltatást használja, ha Ön éppen technológia megismerésére, de ne feledje, hogy ingyenes oldalak számát havi 500 oldalak korlátozódik.
 
-**3. lépés:** Tekintse át a REST API-t használja a következő API-k betanítására és strukturált adatok kinyerése az űrlapok.
+**3. lépés:** A REST API-k áttekintése
+
+A következő API-k használatával betanítása és strukturált adatok kinyerése az űrlapok.
 
 | REST API | Leírás |
 |-----|-------------|
-| Betanítás | Az űrlapok használatával ugyanabból a típusú 5 űrlapok vagy egy üres képernyő elemzése új modell betanításához.  |
+| Betanítás | Az űrlapok elemzése ugyanabból a típusú öt űrlapok vagy egy üres képernyő használatával új modell betanításához.  |
 | Elemzés  |Egyetlen dokumentum, kulcs-érték párok és táblák kibontani az űrlapot a egyéni modell adatfolyamként átadott elemzése.  |
 
 Fedezze fel a [REST API-referencia dokumentumban](https://aka.ms/form-recognizer/api). 
 
 ## <a name="data-privacy-and-security"></a>Adatvédelem és biztonság
 
-A szolgáltatás érhető el egy [előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) alatt egy Azure Service a [Online szolgáltatási feltételek](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). Az összes Cognitive Services, az űrlap felismerő szolgáltatással a fejlesztők célszerű tisztában lennie a vásárlói adatokat a Microsoft házirendeket. Tekintse meg a [Cognitive Services-lapra](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) a további Microsoft Trust Center.
+Ez a szolgáltatás érhető el egy [előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) alatt Azure-szolgáltatás a [Online szolgáltatási feltételek](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). Csakúgy, mint a cognitive services összes szolgáltatása, az űrlap felismerő szolgáltatással a fejlesztők célszerű tisztában lennie a Microsoft-házirendek a vásárlói adatokat. Tekintse meg a [Cognitive Services-lapra](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) a további Microsoft Trust Center.
 
 ## <a name="next-steps"></a>További lépések
 
-Hajtsa végre egy [rövid](quickstarts/curl-train-extract.md) használatának megkezdéséhez a [felismerő API](https://aka.ms/form-recognizer/api).
+Végezze el a [rövid](quickstarts/curl-train-extract.md) való használatának első lépései a [felismerő API](https://aka.ms/form-recognizer/api).

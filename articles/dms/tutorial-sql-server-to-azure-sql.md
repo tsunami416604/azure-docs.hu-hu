@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: 22e55379c79678a2792f439137e8d58d03cd8377
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.date: 05/14/2019
+ms.openlocfilehash: 32d8bd528da2823907e4f992f977eef91e55b9b0
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415091"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605491"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>Oktatóanyag: SQL Server migrálása az önálló adatbázis vagy készletezett Azure SQL Database-adatbázis offline a DMS használatával
 
@@ -24,6 +24,7 @@ Az Azure Database Migration Service használatával migrálhatja egy helyszíni 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
+>
 > - A helyszíni adatbázis felmérése a Data Migration Assistant szolgáltatás használatával.
 > - A mintaséma migrálása a Data Migration Assistant szolgáltatás használatával.
 > - Egy Azure Database Migration Service-példány létrehozása.
@@ -63,7 +64,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 - Nyissa meg a Windows tűzfalat, és engedélyezze, hogy az Azure Database Migration Service elérhesse az SQL-kiszolgáló forrását, amely alapértelmezés szerint az 1433-as TCP-port.
 - Ha több megnevezett SQL Server-példányt futtat dinamikus portokkal, előnyös lehet engedélyezni az SQL Browser Service-t, és engedélyezni a tűzfalakon keresztül az 1434-es UDP-porthoz való hozzáférést. Így az Azure Database Migration Service a forráskiszolgálón található megnevezett példányhoz férhet hozzá.
 - Ha tűzfalkészüléket használ a forrásadatbázis(ok) előtt, előfordulhat, hogy tűzfalszabályokat kell hozzáadnia annak engedélyezéséhez, hogy az Azure Database Migration Service a migrálás céljából hozzáférhessen a forrásadatbázis(ok)hoz.
-- Hozzon létre egy kiszolgálószintű IP-cím [tűzfalszabály](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) a céladatbázisok Azure Database Migration Service elérésének engedélyezése az Azure SQL Database-kiszolgáló számára. Adja meg az Azure Database Migration Service-hez használt virtuális hálózat alhálózati tartományát.
+- Hozzon létre egy kiszolgálószintű IP-cím [tűzfalszabály](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) a céladatbázisok Azure Database Migration Service elérésének engedélyezése az Azure SQL Database-kiszolgáló számára. Adja meg az Azure Database Migration Service használt virtuális hálózat alhálózati tartományán.
 - Gondoskodjon róla, hogy a forrásként szolgáló SQL Server-példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkezzenek [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) engedélyekkel.
 - Gondoskodjon róla, hogy a forrásként szolgáló Azure SQL Database-példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkezzenek CONTROL DATABASE engedéllyel a célként szolgáló Azure SQL adatbázisokban.
 
@@ -79,7 +80,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
    - Adatbázis-kompatibilitás ellenőrzése
    - Szolgáltatásparitás ellenőrzése
 
-     Alapértelmezés szerint mindkét jelentéstípus ki van választva.
+    Alapértelmezés szerint mindkét jelentéstípus ki van választva.
 
 3. A Data Migration Assistant programon belül a **Beállítások** ablakban válassza a **Tovább** lehetőséget.
 4. A **Források kiválasztása** képernyőn, a **Kapcsolódás kiszolgálóhoz** párbeszédablakban adja meg az SQL-kiszolgálója adatait, majd válassza a **Csatlakozás** lehetőséget.

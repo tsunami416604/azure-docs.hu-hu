@@ -34,6 +34,8 @@
       href: diagnostics-role-service.md
     - name: Fő VHD-rendszerkép létrehozása és testreszabása
       href: set-up-customize-master-image.md
+    - name: Az Office telepítése egy fő virtuálisgép-rendszerképre
+      href: install-office-on-wvd-master-image.md
     - name: GPU beállítása a Windows Virtual Desktophoz
       href: configure-vm-gpu.md
     - name: Munkamenetgazdák automatikus méretezése

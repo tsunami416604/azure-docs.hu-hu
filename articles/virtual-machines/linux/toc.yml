@@ -66,6 +66,8 @@
     - name: Virtuálisgép-típusok és -méretek
       href: sizes.md
       items:
+        - name: 2. generációs virtuális gépek
+          href: generation-2.md
         - name: Általános célú
           href: sizes-general.md
           items:

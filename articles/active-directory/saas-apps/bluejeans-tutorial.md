@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e9f52948d035c72a6a019558915d8c92ceebeb
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 2830e95f042d5c83d91d6c026d2fa2e70eb3e3b2
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65463537"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601637"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező BlueJeans
 
@@ -108,7 +108,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés BlueJeans, hajtsa v�
 
     ![BlueJeans tartomány és URL-címeket egyetlen bejelentkezési adatait](media/bluejeans-tutorial/tutorial_bluejeans-basic-configuration.png)
 
-   - Az a **azonosító** szöveg mezőbe írja be a következőt: `https://samlsp.bluejeans.com`
+   - Az a **azonosító** szöveg mezőbe írja be a következőt: `http://samlsp.bluejeans.com`
     
    - Az a **bejelentkezési URL-** szövegmezőbe írja be a alkotóelemeit lap URL-címe BlueJeans által biztosított (Ez az érték beszerzéséhez forduljon a [BlueJeans ügyfél-támogatási csapatának](https://support.bluejeans.com/contact)): `https://<companyname>.bluejeans.com`
     
@@ -160,9 +160,9 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés BlueJeans, hajtsa v�
 
     ![Módosítások mentése](./media/bluejeans-tutorial/ic785874.png "módosítások mentése")
 
-    a. Az a **felhasználóazonosító** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    a. Az a **felhasználóazonosító** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
-    b. Az a **E-mail** szövegmezőbe írja be `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    b. Az a **E-mail** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
     c. Kattintson a **MENTSE a MÓDOSÍTÁSOKAT**.
 

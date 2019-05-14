@@ -118,8 +118,8 @@
       href: functions-networking-options.md
     - name: IP-címek
       href: ip-addresses.md
-    - name: Helyszíni függvények
-      href: functions-runtime-overview.md
+    - name: Függvények a Kubernetesben
+      href: functions-kubernetes-keda.md
 - name: Útmutatók
   items:
     - name: Fejlesztés
@@ -142,6 +142,8 @@
           href: create-function-app-linux-app-service-plan.md
         - name: Helyi PowerShell-függvények hibakeresése
           href: functions-debug-powershell-local.md
+        - name: Függőséginjektálás
+          href: functions-dotnet-dependency-injection.md
         - name: Kapcsolatok kezelése
           href: manage-connections.md
         - name: Hibakezelés
@@ -173,6 +175,7 @@
       items:
         - name: Függvényalkalmazás kezelése
           href: functions-how-to-use-azure-function-app-settings.md
+          displayName: 'app setting, application setting'
         - name: Futtatókörnyezet verziójának beállítása
           href: set-runtime-version.md
         - name: Bővítmény manuális regisztrálása

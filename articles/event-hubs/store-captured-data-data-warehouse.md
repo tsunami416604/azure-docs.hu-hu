@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 234febe92727e5a47d4cfc5b836cd5593e99b5b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 90a17839afdddb4d6ad8abfa57963b4c76b100ed
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60369036"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604293"
 ---
 # <a name="migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Rögzített az Event Hubs-adatok áttelepítése SQL Data Warehouse Event Grid és az Azure Functions használatával
 
@@ -39,7 +39,7 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- A [Visual Studio 2017 szoftver 15.3.2-es vagy újabb verziója](https://www.visualstudio.com/vs/). Telepítés közben győződjön meg arról, hogy a következő számítási feladatokat is telepíti: .NET asztali fejlesztés, Azure-fejlesztés, ASP.NET- és webfejlesztés, Node.js-fejlesztés és Python-fejlesztés
+- [A Visual studio 2019](https://www.visualstudio.com/vs/). Telepítés közben győződjön meg arról, hogy a következő számítási feladatokat is telepíti: .NET asztali fejlesztés, Azure-fejlesztés, ASP.NET- és webfejlesztés, Node.js-fejlesztés és Python-fejlesztés
 - Töltse le a [Git-mintát](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo). A mintamegoldás az alábbi összetevőket tartalmazza:
     - *WindTurbineDataGenerator* – Egy egyszerű közzétevő, amely szélturbina-mintaadatokat küld egy olyan eseményközpontnak, amelyen a Capture engedélyezve van
     - *FunctionDWDumper* – Egy Azure-függvény, amely Event Grid-értesítést kap, ha az Azure Storage blobba egy Avro-fájlt rögzít a rendszer. Megkapja a blob URI elérési útvonalát, kiolvassa a tartalmát és közzéteszi ezt az adatot egy SQL Data Warehouse-ba.
@@ -106,7 +106,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 ## <a name="publish-code-to-the-functions-app"></a>Kód közzététele a Functions-alkalmazásba
 
-1. Nyissa meg az *EventHubsCaptureEventGridDemo.sln* megoldást a Visual Studio 2017-ben (15.3.2-es vagy újabb verzió). 
+1. Nyissa meg a megoldást *EventHubsCaptureEventGridDemo.sln* a Visual Studio 2019.
 
 1. A Megoldáskezelőben kattintson a jobb gombbal a *FunctionEGDWDumper* elemre, majd válassza a **Közzététel** lehetőséget.
 

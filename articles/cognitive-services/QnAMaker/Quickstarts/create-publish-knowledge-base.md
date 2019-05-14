@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 04/05/2019
+ms.date: 05/10/2019
 ms.author: diberry
-ms.openlocfilehash: cf6b0cd99254d5b034687598c588ce5ef13dbd53
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1411576d078115921cb04b41347264bccdc390f4
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60914511"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65593976"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>A QnA Maker-tudásbázis létrehozása, betanítása és közzététele
 
@@ -66,7 +66,7 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
 
 1. Válassza az **Inspect** (Vizsgálat) lehetőséget a válasz részletesebb vizsgálatához. A Teszt ablak segítségével tesztelheti a módosításokat a Tudásbázis, mielőtt azok van közzétéve.
 
-    ![Teszt panel](../media/qnamaker-quickstart-kb/inspect-panel.png)
+    ![Teszt panel](../media/qnamaker-quickstart-kb/inspect.png)
 
 1. Válassza ismét a **Test** (Tesztelés) gombot a **Test** (Tesztelés) előugró ablak bezárásához.
 
