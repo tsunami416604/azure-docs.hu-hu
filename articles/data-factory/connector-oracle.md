@@ -284,20 +284,20 @@ Oracle és a másolt adatok, Data Factory-közbenső adattípusok a következő 
 | CHAR |String |
 | CLOB |String |
 | DATE |DateTime |
-| LEBEGŐPONTOS |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
-| INTEGER |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
-| HOSSZÚ |String |
-| MENNYI IDEIG NYERS |Byte[] |
+| FLOAT |Decimal, String (Ha a pontosság > 28) |
+| INTEGER |Decimal, String (Ha a pontosság > 28) |
+| LONG |String |
+| LONG RAW |Byte[] |
 | NCHAR |String |
 | NCLOB |String |
-| SZÁM |Tizedes tört, karakterlánc (Ha a pontosság > 28) |
+| NUMBER |Decimal, String (Ha a pontosság > 28) |
 | NVARCHAR2 |String |
 | RAW |Byte[] |
-| }, ROWID |String |
-| IDŐBÉLYEG |DateTime |
-| A HELYI IDŐZÓNA IDŐBÉLYEG |String |
-| AZ IDŐZÓNA IDŐBÉLYEG |String |
-| ELŐJEL NÉLKÜLI EGÉSZ SZÁM |Szám |
+| ROWID |String |
+| TIMESTAMP |DateTime |
+| TIMESTAMP WITH LOCAL TIME ZONE |String |
+| TIMESTAMP WITH TIME ZONE |String |
+| UNSIGNED INTEGER |Number |
 | VARCHAR2 |String |
 | XML |String |
 
