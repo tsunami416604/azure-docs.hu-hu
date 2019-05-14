@@ -51,7 +51,7 @@ Mongodb-hez társított szolgáltatás a következő tulajdonságok támogatotta
 |:--- |:--- |:--- |
 | type |A type tulajdonságot kell beállítani: **MongoDbV2** |Igen |
 | connectionString |Adja meg például a MongoDB kapcsolati sztring `mongodb://[username:password@]host[:port][/[database][?options]]`. Tekintse meg [kapcsolati karakterláncot a MongoDB manuális](https://docs.mongodb.com/manual/reference/connection-string/) további részletekért. <br/><br />Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
-| adatbázis | Az elérni kívánt adatbázis nevét. | Igen |
+| database | Az elérni kívánt adatbázis nevét. | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 **Példa**
@@ -114,7 +114,7 @@ A következő tulajdonságok támogatottak a másolási tevékenység **forrás*
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **MongoDbV2Source** | Igen |
-| szűrő | Meghatározza a kijelölési szűrő lekérdezés operátorok használata. A gyűjteményben található dokumentumokat adja vissza, hagyja ki ezt a paramétert, vagy adja át egy üres dokumentumot ({}). | Nem |
+| filter | Meghatározza a kijelölési szűrő lekérdezés operátorok használata. A gyűjteményben található dokumentumokat adja vissza, hagyja ki ezt a paramétert, vagy adja át egy üres dokumentumot ({}). | Nem |
 | cursorMethods.project | Itt adhatja meg a dokumentumokat a leképezés a mezők. Minden mező az egyező dokumentumok visszaadandó, hagyja ki ezt a paramétert. | Nem |
 | cursorMethods.sort | Meghatározza azt a sorrendet, amelyben a lekérdezés visszaadja az egyező dokumentumok. Tekintse meg [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nem |
 | cursorMethods.limit | Meghatározza a kiszolgáló visszaadja dokumentumok maximális számát. Tekintse meg [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nem |
