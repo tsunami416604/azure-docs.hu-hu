@@ -56,7 +56,7 @@ ODBC-beli társított szolgáltatás a következő tulajdonságok támogatottak:
 | authenticationType | Az ODBC-adattárban való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Alapszintű** és **névtelen**. | Igen |
 | userName | Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. | Nem |
 | password | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
-| hitelesítő adat | A hozzáférési hitelesítő adatok része, a kapcsolati karakterláncot a megadott illesztőprogram-specifikus tulajdonság-érték formátuma. Példa: `"RefreshToken=<secret refresh token>;"`. Ez a mező jelölhetnek egy SecureString. | Nem |
+| credential | A hozzáférési hitelesítő adatok része, a kapcsolati karakterláncot a megadott illesztőprogram-specifikus tulajdonság-érték formátuma. Példa: `"RefreshToken=<secret refresh token>;"`. Ez a mező jelölhetnek egy SecureString. | Nem |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Egy helyi Integration Runtime szükség, az említett [Előfeltételek](#prerequisites). |Igen |
 
 **1. példa: alapszintű hitelesítést használ.**
@@ -152,7 +152,7 @@ Az adatok másolása az ODBC-kompatibilis adatokat az adattárból, állítsa be
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **RelationalSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 
