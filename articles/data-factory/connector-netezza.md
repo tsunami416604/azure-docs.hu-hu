@@ -43,7 +43,7 @@ A következő tulajdonságok támogatottak a Netezza társított szolgáltatást
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** tulajdonságot állítsa **Netezza**. | Igen |
-| kapcsolati Sztringje | Az ODBC kapcsolati karakterlánc Netezza csatlakozni. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Jelszó az Azure Key Vault és lekéréses is helyezheti a `pwd` konfigurációs ki a kapcsolati karakterláncot. Tekintse meg a következő minták és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. | Igen |
+| connectionString | Az ODBC kapcsolati karakterlánc Netezza csatlakozni. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Jelszó az Azure Key Vault és lekéréses is helyezheti a `pwd` konfigurációs ki a kapcsolati karakterláncot. Tekintse meg a következő minták és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) kapcsolódni az adattárhoz. Választhat egy saját üzemeltetésű integrációs modulok vagy az Azure integrációs modul (ha az adattár nyilvánosan elérhető). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 Egy tipikus kapcsolati karakterlánc `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. A következő táblázat ismerteti, amely lehet további tulajdonságok:
@@ -51,7 +51,7 @@ Egy tipikus kapcsolati karakterlánc `Server=<server>;Port=<port>;Database=<data
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | SecurityLevel | Az adattárban való csatlakozáshoz használja az illesztőprogram (SSL/TLS) biztonsági szintjét. Példa: `SecurityLevel=preferredSecured`. Támogatott értékei a következők:<br/>- **Csak nem biztonságos** (**onlyUnSecured**): Az illesztőprogram nem használ SSL.<br/>- **Előnyben részesített nem biztonságos (preferredUnSecured) (alapértelmezett)**: Ha a kiszolgáló lehetővé teszi a választást, az illesztőprogram az SSL használatára nem. <br/>- **Előnyben részesített (preferredSecured) biztonságos**: Ha a kiszolgáló lehetővé teszi a választást, az illesztőprogram az SSL. <br/>- **Csak a (onlySecured) védett**: Az illesztőprogram nem kapcsolatot, ha SSL-kapcsolat nem érhető el. | Nem |
-| CA-tanúsítványfájl | A kiszolgáló által használt SSL-tanúsítvány teljes elérési útja. Például: `CaCertFile=<cert path>;`| Igen, ha SSL engedélyezve van |
+| CaCertFile | A kiszolgáló által használt SSL-tanúsítvány teljes elérési útja. Például: `CaCertFile=<cert path>;`| Igen, ha SSL engedélyezve van |
 
 **Példa**
 
@@ -145,7 +145,7 @@ Adatok másolása Netezza, állítsa be a **forrás** írja be a másolási tev�
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység forrás tulajdonság **NetezzaSource**. | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"` | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM MyTable"` | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 
