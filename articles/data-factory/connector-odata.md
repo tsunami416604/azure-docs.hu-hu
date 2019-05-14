@@ -51,14 +51,14 @@ Egy társított OData-szolgáltatás a következő tulajdonságok támogatottak:
 | type | A **típus** tulajdonságot állítsa **OData**. |Igen |
 | url | A gyökér URL-címe az OData-szolgáltatás. |Igen |
 | authenticationType | Az OData-forráshoz való kapcsolódáshoz használt hitelesítés típusa. Engedélyezett értékek a következők **névtelen**, **alapszintű**, **Windows**, **AadServicePrincipal**, és **ManagedServiceIdentity** . A felhasználó alapján OAuth nem támogatott. | Igen |
-| Felhasználónév | Adja meg **felhasználónév** alapszintű vagy Windows-hitelesítés használata esetén. | Nem |
-| jelszó | Adja meg **jelszó** a felhasználó számára megadott fiók **felhasználónév**. Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett képes [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
+| userName | Adja meg **felhasználónév** alapszintű vagy Windows-hitelesítés használata esetén. | Nem |
+| password | Adja meg **jelszó** a felhasználó számára megadott fiók **felhasználónév**. Jelölje meg a mező egy **SecureString** típus tárolja biztonságos helyen a Data Factoryban. Emellett képes [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
 | servicePrincipalId | Adja meg az Azure Active Directory-alkalmazás ügyfél-azonosítót. | Nem |
 | aadServicePrincipalCredentialType | Adja meg a szolgáltatás egyszerű hitelesítéshez használandó hitelesítő adatok típusa. Engedélyezett értékek a következők: `ServicePrincipalKey` vagy `ServicePrincipalCert`. | Nem |
 | servicePrincipalKey | Adja meg az Azure Active Directory-alkalmazás kulcsa. Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
 | servicePrincipalEmbeddedCert | Adja meg az alkalmazás az Azure Active Directoryban a base64-kódolású tanúsítványt. Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Nem |
 | servicePrincipalEmbeddedCertPassword | Adja meg a tanúsítvány jelszavát, ha a tanúsítvány jelszóval védett. Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md).  | Nem|
-| bérlő | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Az Azure portal jobb felső sarkában az egér viszi, lekéréséhez. | Nem |
+| tenant | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Az Azure portal jobb felső sarkában az egér viszi, lekéréséhez. | Nem |
 | aadResourceId | Adja meg az AAD erőforrás kért használ a hitelesítéshez.| Nem |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) kapcsolódni az adattárhoz. Kiválaszthatja az Azure integrációs modul vagy a saját üzemeltetésű integrációs modul (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
@@ -198,7 +198,7 @@ Adatok másolása az OData, állítsa be a **típus** tulajdonság, az adatkész
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a tulajdonságot az adatkészlet **ODataResource**. | Igen |
-| elérési út | Az OData-erőforrás elérési útja. | Igen |
+| path | Az OData-erőforrás elérési útja. | Igen |
 
 **Példa**
 
@@ -233,7 +233,7 @@ Adatok másolása az OData, állítsa be a **forrás** írja be a másolási tev
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység forrás tulajdonság **RelationalSource**. | Igen |
-| lekérdezés | Adatok szűrése az OData-lekérdezés beállításai. Példa: `"?$select=Name,Description&$top=5"`.<br/><br/>**Megjegyzés**: Az OData-összekötő adatokat másol a kombinált URL-cím: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. További információkért lásd: [OData URL-címe összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
+| query | Adatok szűrése az OData-lekérdezés beállításai. Példa: `"?$select=Name,Description&$top=5"`.<br/><br/>**Megjegyzés**: Az OData-összekötő adatokat másol a kombinált URL-cím: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. További információkért lásd: [OData URL-címe összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
 
 **Példa**
 
