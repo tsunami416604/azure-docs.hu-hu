@@ -165,7 +165,7 @@
           href: grant-access-to-create-subscription.md
         - name: Hitelesítés bérlőkön keresztül
           href: authenticate-multi-tenant.md
-    - name: Üzembe helyezések naplózása
+    - name: Naplómódosítások
       items:
         - name: Tevékenységnaplók megtekintése
           href: resource-group-audit.md

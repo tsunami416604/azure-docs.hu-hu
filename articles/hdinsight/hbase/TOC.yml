@@ -12,6 +12,8 @@
       maintainContext: true
 - name: Gyors útmutatók
   items:
+    - name: Az Apache HBase lekérdezése – Apache Phoenix
+      href: apache-hbase-phoenix-squirrel-linux.md
     - name: Az Apache HBase lekérdezése – HBase-felület
       href: ./query-hbase-with-hbase-shell.md
 - name: Bevezetés
@@ -52,8 +54,6 @@
         - name: Apache Phoenix a HDInsightban
           href: ../hdinsight-phoenix-in-hdinsight.md
           maintainContext: true
-        - name: Az Apache Phoenix és az SQLLine használata
-          href: apache-hbase-phoenix-squirrel-linux.md
         - name: Az Apache Phoenix-lekérdezéskiszolgáló REST SDK használata
           href: apache-hbase-using-phoenix-query-server-rest-sdk.md
     - name: Big Data típusú adatok elemzése
@@ -115,7 +115,7 @@
             - name: A cURL és az Azure REST API használata
               href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
               maintainContext: true
-            - name: Az Azure klasszikus parancssori felületének használata
+            - name: Az Azure parancssori felületének használata
               href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
               maintainContext: true
             - name: Igény szerinti fürtök létrehozása

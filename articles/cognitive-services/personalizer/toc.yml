@@ -27,9 +27,14 @@
         - name: 'Funkciók: Művelet és környezet'
           href: concepts-features.md
           displayName: 'action, context, feature, namespace, JSON, best practice, set'
+        - name: Jutalmak
+          href: concept-rewards.md
+          displayName: 'reward, wait time, default reward'
         - name: Megerősítő tanulás
           href: concepts-reinforcement-learning.md
           displayName: 'RL, contextual bandits, Vowpal Wabbit'
+        - name: Feltárás
+          href: concepts-exploration.md
     - name: Elemzés
       items:
         - name: Offline értékelés

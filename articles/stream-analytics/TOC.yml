@@ -175,6 +175,8 @@
           href: stream-analytics-troubleshoot-query.md
         - name: Tevékenység és diagnosztikai naplók
           href: stream-analytics-job-diagnostic-logs.md
+        - name: Adathibák
+          href: data-errors.md
     - name: Integráció a Machine Learninggel
       items:
         - name: Hangulatelemzés Machine Learning-modellekkel

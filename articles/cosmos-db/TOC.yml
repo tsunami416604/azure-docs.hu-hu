@@ -512,6 +512,8 @@
           href: data-explorer.md
         - name: Indexelési szabályzatok kezelése
           href: how-to-manage-indexing-policy.md
+        - name: Egyedi kulcsok meghatározása
+          href: how-to-define-unique-keys.md
         - name: Példák SQL-segédlekérdezésekre
           displayName: 'subquery, exists'
           href: how-to-sql-subquery.md

@@ -270,7 +270,7 @@
             - name: A cURL és az Azure REST API használata
               href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
               maintainContext: true
-            - name: Az Azure klasszikus parancssori felületének használata
+            - name: Az Azure parancssori felületének használata
               href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
               maintainContext: true
         - name: HDInsight-fürtök kezelése
@@ -422,7 +422,8 @@
       items:
         - name: HDInsight virtuális hálózati architektúra
           href: ../hdinsight-virtual-network-architecture.md
-          maintainContext: true
+        - name: HDInsight által korlátozott kimenő forgalom
+          href: ../hdinsight-restrict-outbound-traffic.md
         - name: HDInsight az Azure VNetben
           href: ../hdinsight-extend-hadoop-virtual-network.md
           maintainContext: true

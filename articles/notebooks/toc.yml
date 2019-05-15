@@ -44,5 +44,7 @@
       href: work-with-project-data-files.md
     - name: Adatforrások elérése
       href: access-data-resources-jupyter-notebooks.md
+    - name: A Data Science Virtual Machine használata
+      href: use-data-science-virtual-machine.md
     - name: Az Azure Machine Learning-szolgáltatások használata
       href: use-machine-learning-services-jupyter-notebooks.md
