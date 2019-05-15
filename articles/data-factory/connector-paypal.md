@@ -45,7 +45,7 @@ PayPal társított szolgáltatás a következő tulajdonságok támogatottak:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **PayPal** | Igen |
-| gazdagép | A példány URL-címét a PayPal. (azaz api.sandbox.paypal.com)  | Igen |
+| host | A példány URL-címét a PayPal. (azaz api.sandbox.paypal.com)  | Igen |
 | clientId | PayPal az alkalmazáshoz tartozó ügyfél-azonosító.  | Igen |
 | clientSecret | A PayPal az alkalmazáshoz tartozó titkos ügyfélkulcsot. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Megadja, hogy a data source végpontok HTTPS segítségével titkosítja. Az alapértelmezett érték: igaz.  | Nem |
@@ -109,7 +109,7 @@ Adatok másolása PayPal, állítsa be a forrás típusaként a másolási tevé
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **PayPalSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Payment_Experience"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"SELECT * FROM Payment_Experience"`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 **Példa**
 
