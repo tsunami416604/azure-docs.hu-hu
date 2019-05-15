@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/13/2019
 ms.author: diberry
-ms.openlocfilehash: 241bda5c684197a43cc5564e950e924fed668b89
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 87599817ba7b50b941612c13c07842644f979fb7
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147567"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65619710"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Az Azure Cognitive Servicesben tároló támogatása
 
@@ -57,7 +57,7 @@ Az Azure Cognitive Services-tárolók meg azt az alábbi Docker-tárolókat, ame
 |[Arcfelismerés](Face/face-how-to-install-containers.md) |F0, S0|**Arcfelismerés** |Észleli az emberi arcok a képeken, és azonosítja az attribútumokat, (például noses és szemek) arcrészek, nemek, életkor és egyéb gép – előre meghatározott arcjellemzőket sorolják fel. Észlelési, mellett Face is ellenőrizze, hogy két arc ugyanazt a lemezképet vagy különböző képek egy megbízhatósági pontszám használatával azonosak, vagy olyan adatbázison annak ellenőrzéséhez, hogy a hasonló megjelenésű arcokat összehasonlítása vagy azonos face már létezik. Azt is is csoportokba rendezheti a hasonló arcokat keres, közös visual tulajdonságok használatával.<br>[Hozzáférés kérése](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[Űrlap felismerő](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) |F0, S0|**Űrlap felismerő** |Képernyő ismertetése gépi tanulási technológia azonosíthatja és kulcs-érték párok és táblák kinyerése űrlapok vonatkozik.<br>[Hozzáférés kérése](https://aka.ms/FormRecognizerContainerRequestAccess)|
 |[LUIS](LUIS/luis-container-howto.md) |F0, S0|**A LUIS** ([kép](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Betanított vagy közzétett Language Understanding modell, más néven LUIS-alkalmazásokon, tölt be egy docker-tárolót, és hozzáférést biztosít az API-végpontokat a tárolót a lekérdezés előrejelzéseket. Lekérdezés naplók összegyűjtése a tárolóból, és töltse fel ezeket a vissza a [LUIS portál](https://www.luis.ai) való az alkalmazás előrejelzési pontosság növeléséhez.|
-|[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([kép](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Az Azure Personalizer egy felhőalapú API-szolgáltatás, amely lehetővé teszi, hogy válassza ki a legoptimálisabb megjeleníthető valós idejű viselkedésük képzés a felhasználók számára.|
+|[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([kép](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Az Azure Personalizer egy felhőalapú API-szolgáltatás, amellyel a valós idejű viselkedésükből tanulva kiválaszthatja a felhasználók számára megjelenítendő legjobb élményt.|
 |[Speech Service API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0, S0|**Beszédfelismerés** |Folyamatos, valós idejű beszédet szöveggé alakít.<br>[Hozzáférés kérése](https://aka.ms/speechcontainerspreview/)|
 |[Speech Service API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0, S0|**Szövegfelolvasás** |Az írott szöveget természetesnek hangzó beszéddé alakítja.<br>[Hozzáférés kérése](https://aka.ms/speechcontainerspreview/)|
 |[Szövegelemzés](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |F0, S|**Kulcs kulcsszókeresés** ([kép](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) |Kiolvassa a fő pontokat azonosíthatja a kulcskifejezéseket. Például „Az étel finom volt, és a személyzet kedves volt” bemeneti szövegből az API a következő fő pontokat adja vissza: „étel” és „személyzet kedves”. |
@@ -66,17 +66,22 @@ Az Azure Cognitive Services-tárolók meg azt az alábbi Docker-tárolókat, ame
 
 Emellett egyes tárolók támogatottak a Cognitive Services [ **teljes körű ajánlatot** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) erőforrás kulcsainak. Hozzon létre egy egyetlen Cognitive Services teljes körű erőforrást, és használja ugyanazt a számlázási kulcsot keresztül támogatott szolgáltatások a következő szolgáltatásokat:
 
-* Számítógépes látástechnológia
-* Arcfelismerés
+* Computer Vision
+* Face
 * LUIS
-* Szövegelemzés
+* Szövegelemzések
 
 ## <a name="container-availability-in-azure-cognitive-services"></a>Az Azure Cognitive Servicesben tároló elérhetősége
 
 Az Azure Cognitive Services-tárolók nyilvánosan elérhető Azure-előfizetéssel, és Docker-tárolórendszerképekhez lekérhetik a Microsoft Container Registry vagy a Docker Hubból. Használhatja a [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) paranccsal letöltheti egy tárolórendszerképet a megfelelő beállításjegyzékből.
 
 > [!IMPORTANT]
-> Jelenleg, meg kell adnia a regisztrációs folyamaton eléréséhez a [Face](Face/face-how-to-install-containers.md) és [szöveg felismerése](Computer-vision/computer-vision-how-to-install-containers.md) tárolók, amelyben adja meg, és meg, a vállalati és a használati eset kapcsolatos kérdése van a kérdőív beküldése legyen a tárolók megvalósításához. Miután Ön hozzáférést és a megadott hitelesítő adatokat, majd kérheti le a tárolórendszerképeket az Arcfelismerés és szöveg felismerése tárolókhoz az Azure Container Registry által üzemeltetett egy privát tárolójegyzékben.
+> Jelenleg el kell végeznie a regisztrációs folyamat, amelyben adja meg, és küldje el a kérdőívet, a vállalat és a használati eset, amelyhez hozzá szeretné végrehajtani a tárolók kapcsolatos kérdése van a következő tárolók eléréséhez. Miután Ön hozzáférést és a megadott hitelesítő adatokat, majd kérheti le a tárolórendszerképeket az Arcfelismerés és szöveg felismerése tárolókhoz az Azure Container Registry által üzemeltetett egy privát tárolójegyzékben.
+> * [Anomáliadetektálási dectector](Anomaly-Detector/anomaly-detector-container-howto.md#request-access-to-the-container-registry)
+> * [Arcfelismerés](Face/face-how-to-install-containers.md)
+> * [Űrlap felismerő](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)
+> * [Szövegének felismerése](Computer-vision/computer-vision-how-to-install-containers.md)
+> * [Hang-szöveg és a szöveg-hang transzformációs](Speech-Service/speech-container-howto.md#request-access-to-the-container-registry)
 
 ## <a name="prerequisites"></a>Előfeltételek
 

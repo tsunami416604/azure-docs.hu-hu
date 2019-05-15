@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: 1344de526564ab623a51eb903951b6a2e866048d
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 1c5712fa8bbdb158992127f8f48d810a0a9b6f79
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523475"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603482"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>Egyéni hang-és felhőközpontú virtuális asszisztensek előzetes tudnivalók
 
@@ -24,7 +24,9 @@ Az Azure Speech Services segítségével egyéni virtuális asszisztensek amelye
 
    ![A közvetlen vonal speech vezénylési szolgáltatás flow fogalmi diagramja](media/voice-first-virtual-assistants/overview.png "a beszédfelismerő csatornát folyamat")
 
-A közvetlen vonal beszéd- és a kapcsolódó funkciók működését, hang-és felhőközpontú egyéni virtuális asszisztensek az ideális kiegészítés a [virtuális Segéd megoldás](https://docs.microsoft.com/azure/bot-service/bot-builder-virtual-assistant-introduction) és [vállalati sablon](https://docs.microsoft.com/azure/bot-service/bot-builder-virtual-assistant-introduction). Közvetlen vonal Speech dolgozhat bármilyen kompatibilis robot, bár ezeket az erőforrásokat biztosítanak magas színvonalú természetes nyelvi felhasználói környezet, valamint a közös támogató képességek és a modellek az első lépések gyorsan alapkonfigurációt újrafelhasználhatók.
+
+A közvetlen vonal beszéd- és a kapcsolódó funkciók működését, hang-és felhőközpontú egyéni virtuális asszisztensek az ideális kiegészítés a [virtuális Segéd megoldás és a vállalati sablon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). Közvetlen vonal Speech dolgozhat bármilyen kompatibilis robot, bár ezeket az erőforrásokat biztosítanak magas színvonalú természetes nyelvi felhasználói környezet, valamint a közös támogató képességek és a modellek az első lépések gyorsan alapkonfigurációt újrafelhasználhatók.
+
 
 ## <a name="core-features"></a>Alapfunkciók
 

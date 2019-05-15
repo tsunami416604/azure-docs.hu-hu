@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: maheshb
-ms.openlocfilehash: ed34b20073a150e38b5d5992ab4e4b8c80453fb2
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 7a60ea934c6bb9008889992726ddca5dad21a640
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510252"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595613"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>A Bing Custom Search példány meghívása a portálról
 
@@ -26,7 +26,7 @@ Miután konfigurálta az egyéni keresési funkciót, tesztelheti, a Bing Custom
 
 Miután bejelentkezett, a Bing Custom Search [portál](https://customsearch.ai), válassza ki a keresési példányát, és kattintson a **éles** lapon. A **végpontok**, válasszon ki egy API-végpontot (például a webes API). Az előfizetés határozza meg, milyen végpontokat jelennek meg.
 
-Hozzon létre egy keresési lekérdezést, adja meg a paraméterértékeket a végponthoz. Vegye figyelembe, hogy a paraméterek megjelennek a portálon, válassza ki a végpont függően változhat. Tekintse meg a[Custom Search API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) további információt. Az előfizetést, a keresési példányát használja, adja hozzá a megfelelő előfizetést kulcsot, és frissítse a megfelelő piaci és/vagy nyelvi paramétereket.
+Hozzon létre egy keresési lekérdezést, adja meg a paraméterértékeket a végponthoz. Vegye figyelembe, hogy a paraméterek megjelennek a portálon, válassza ki a végpont függően változhat. Tekintse meg a [Custom Search API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) további információt. Az előfizetést, a keresési példányát használja, adja hozzá a megfelelő előfizetést kulcsot, és frissítse a megfelelő piaci és/vagy nyelvi paramétereket.
 
 Néhány fontos paraméter alatt van:
 
@@ -48,6 +48,10 @@ Kattintson a **további paraméterek** tárja fel a következő paraméterekkel:
 |Offset    | A kihagyandó eredmények visszaküldése előtt a keresési eredmények számát. Csak a webes, kép- és végpontok esetén érhető el.        |
     
 Az összes szükséges beállítások megadása után kattintson a **hívás** a JSON-válasz megtekintéséhez a jobb oldali ablaktáblán. Ha a felhasználói felület üzemeltetett végpontot, az alsó ablaktáblán tesztelheti a keresési funkciót.
+
+## <a name="change-your-bing-custom-search-subscription"></a>A Bing egyéni Keresés előfizetés módosítása
+
+Az előfizetés nélkül hozzon létre egy új példányt a Bing Custom Search-példányhoz társított módosíthatja. Ahhoz, hogy az API-hívások küldött és a egy új előfizetésen felüli, a Bing Custom Search új erőforrás létrehozása az Azure Portalon. Az új előfizetési kulcsot használja az API-kérelmek és a példány egyéni konfiguráció azonosítója.
 
 ## <a name="next-steps"></a>További lépések
 

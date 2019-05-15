@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 07fb655af25fe590effcb885e7b366346724b50a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85087ce5a4fa3dd733f47a35bc18d76f1f4bc652
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60642820"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606685"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>A Bing Web Search API válasz struktúra és válasz típusa  
 
@@ -330,7 +330,7 @@ Ha a felhasználó sikeresen megadja egy idő- vagy lekérdezést, a válasz tar
 
 A `timeZone` választ biztosít a megadott helyen a helyen, a jelenlegi UTC szerinti dátuma és ideje nevét, és az UTC eltolás. Ha a hely határain belül több időzónában van, a válasz tartalmazza az aktuális UTC szerinti dátuma és időpontja belül az összes időzóna. Például két időzóna Florida állapot alá tartozik, mert a válasz tartalmazza a helyi dátum és idő mindkét időzónákat.  
 
-A lekérdezési kérelmek az idő, egy állam vagy ország, ha a Bing meghatározza, hogy a hely földrajzi határ elsődleges város, és visszaadja a a `primaryCityTime` mező. Ha a határt több időzónákat tartalmaz, a fennmaradó időzónák rendszer adja vissza a `otherCityTimes` mező.
+Ha a lekérdezési kérelmek az idő, egy állam vagy ország/régió, Bing meghatározza, hogy a hely földrajzi határ elsődleges város, és adja vissza a a `primaryCityTime` mező. Ha a határt több időzónákat tartalmaz, a fennmaradó időzónák rendszer adja vissza a `otherCityTimes` mező.
 
 Ez a példa bemutatja, hogy a visszaadandó lekérdezi a `timeZone` választ.
 

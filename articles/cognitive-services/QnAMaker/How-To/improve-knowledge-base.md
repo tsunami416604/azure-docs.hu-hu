@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 05/13/2019
 ms.author: diberry
-ms.openlocfilehash: 3e54e8dcb6efa9251262c651730376a0d04edcf9
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f80e6a765cc165033a548ba6a5ee7bead0de872e
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65144975"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594069"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Aktív tanulás használatával javíthatja a Tudásbázis
 
@@ -60,7 +60,7 @@ Egy egyszerű számítási közelségi meghatározni az algoritmus nem áll. A t
 
 Aktív tanulás alapértelmezés szerint ki van kapcsolva. Kapcsolja be a javasolt kérdések talál. 
 
-1. Válassza ki **közzététel** a Tudásbázis közzététele. Aktív tanulás lekérdezéseket a rendszer a végpontról GenerateAnswer API előrejelzési csak gyűjti. A teszt panelt a Qna Maker Portal, a lekérdezések nem érinti a aktív tanulás.
+1. Válassza ki **közzététel** a Tudásbázis közzététele. Aktív tanulás lekérdezéseket a rendszer a végpontról GenerateAnswer API előrejelzési csak gyűjti. A teszt panelt a QnA Maker Portal, a lekérdezések nem érinti a aktív tanulás.
 
 1. Aktív tanulás a bekapcsolásához kattintson a a **neve**, lépjen a [ **Szolgáltatásbeállítások** ](https://www.qnamaker.ai/UserSettings) a QnA Maker Portal jobb felső sarokban.  
 
@@ -208,7 +208,7 @@ A sikeres válasz egy 204, és nincs JSON-válasz törzsében állapotát adja v
 
 Ha az alkalmazás rendelkezik aktív tanulás engedélyezve van, és exportálja az alkalmazás a `SuggestedQuestions` oszlop a tsv-fájl az aktív tanulás adatait őrzi meg. 
 
-A `SuggestedQuestions` oszlop egy JSON-objektum adatainak implicit (`autosuggested`), és explicit (`usersuggested`) visszajelzés. A JSON-objektum egyetlen felhasználó által beküldött kérdés, például `help` van:
+A `SuggestedQuestions` oszlop egy JSON-objektum adatainak implicit, `autosuggested`, és csak explicit módon, `usersuggested` visszajelzést. A JSON-objektum egyetlen felhasználó által beküldött kérdés, például `help` van:
 
 ```JSON
 [

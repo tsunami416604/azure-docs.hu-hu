@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: ffa42eb2247d163dd6a146ffb26c1f8cc5cf6d82
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 04b331f3b63ad6400b4bb8efcd053d04ac88989b
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922518"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595843"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Gyors útmutató: Rendellenességek észlelése az Anomáliadetektálási detector használatával REST API használatával az idősoros adatokat, ésC# 
 
@@ -29,13 +29,15 @@ Ez a rövid útmutató segítségével indítsa el a rendellenességek észlelé
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) bármely kiadása.
-- [Newtonsoft.Json](https://www.newtonsoft.com/json)
-    - Telepítése a Newtonsoft.Json NuGet-csomagként a Visual studióban:
-        1. Kattintson a jobb gombbal a **megoldás Manager**
-        2. Kattintson a **NuGet-csomagok kezelése...**
-        3. Keresse meg `Newtonsoft.Json` és telepítse a csomagot
-- Linux/MacOS rendszeren használja, ha az alkalmazás képes futtatni használatával [Mono](https://www.mono-project.com/).
+- Bármely kiadása [Visual Studio 2017-es vagy újabb](https://visualstudio.microsoft.com/downloads/),
+
+- A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető. Telepítése a Newtonsoft.Json NuGet-csomagként a Visual Studióban:
+    
+    1. Kattintson a jobb gombbal a projektjére a **Megoldáskezelőben**.
+    2. Válassza ki **NuGet-csomagok kezelése**.
+    3. Keresse meg *Newtonsoft.Json* és telepítse a csomagot.
+
+- Linux/MacOS rendszeren használja, ha az alkalmazás futtatható-e a [Mono](https://www.mono-project.com/).
 
 - A JSON fájlt tartalmazó idősorozat-adatok mutat. A példaadatokat ebben a rövid útmutatóban található [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
 
