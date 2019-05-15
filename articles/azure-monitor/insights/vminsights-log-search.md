@@ -50,7 +50,7 @@ A következő mezőket és egyezmények a alkalmazni VMConnection és VMBoundPor
 
 Kezelheti a költségeket és összetettséget, csatlakozási rekordjainak nem felelnek meg az egyes fizikai hálózati kapcsolatokat. Több fizikai hálózati kapcsolatot, amely megjelenik majd a megfelelő tábla logikai kapcsolatot vannak csoportosítva.  Ez azt jelenti, rögzíti a *VMConnection* tábla felel meg a logikai csoportosítása és nem az egyes fizikai kapcsolatokat betartását. Egyetlen logikai rekord összesíti ugyanazt az értéket a következő attribútumok megosztása során egy adott egyperces időszakban, a fizikai hálózati kapcsolatot a rendszer *VMConnection*. 
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--|:--|
 |Direction |A kapcsolat irányát, értéke *bejövő* vagy *kimenő* |
 |Gép |A számítógép teljes Tartományneve |
@@ -62,7 +62,7 @@ Kezelheti a költségeket és összetettséget, csatlakozási rekordjainak nem f
 
 A fiókra a csoportosítás a hatását, csoportosított fizikai kapcsolatok számával kapcsolatos információkat a rekord a következő tulajdonságok:
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--|:--|
 |LinksEstablished |A jelentéskészítési időszakban létesített fizikai hálózati kapcsolatok száma |
 |LinksTerminated |A jelentéskészítési időszakban le lett állítva fizikai hálózati kapcsolatok száma |
@@ -73,11 +73,11 @@ A fiókra a csoportosítás a hatását, csoportosított fizikai kapcsolatok sz�
 
 Mellett száma kapcsolati metrika adatmennyiség kapcsolatos információkat küldött, és a egy adott logikai kapcsolat fogadott, vagy hálózati port is szerepelnek a rekord a következő tulajdonságokat:
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--|:--|
 |BytesSent |A jelentéskészítési időszakban elküldött bájtok száma |
 |BytesReceived |A jelentéskészítési időszakban fogadott bájtok teljes száma |
-|Válaszok |A jelentéskészítési időszakban megfigyelt válaszok száma. 
+|Responses |A jelentéskészítési időszakban megfigyelt válaszok száma. 
 |ResponseTimeMax |A legnagyobb válaszideje (ezredmásodperc) észlelt a jelentéskészítési időszakban. Ha nincs érték a tulajdonság értéke üres.|
 |ResponseTimeMin |A legkisebb válaszideje (ezredmásodperc) észlelt a jelentéskészítési időszakban. Ha nincs érték a tulajdonság értéke üres.|
 |ResponseTimeSum |Az összes válaszidők összege a jelentéskészítési időszakban megfigyelt (ezredmásodperc). Ha nincs érték a tulajdonság értéke üres.|
@@ -99,7 +99,7 @@ Az egyszerűség kedvéért egy kapcsolat a távoli vég IP-címét a RemoteIp t
 #### <a name="geolocation"></a>Földrajzi hely
 *VMConnection* is tartalmaz földrajzi adatokat a távoli kapcsolat rekordokban végén a rekord a következő tulajdonságai: 
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--|:--|
 |RemoteCountry |Az üzemeltető RemoteIp ország neve.  Ha például *Egyesült Államok* |
 |RemoteLatitude |A földrajzi szélesség. Ha például *47.68* |
@@ -108,11 +108,11 @@ Az egyszerűség kedvéért egy kapcsolat a távoli vég IP-címét a RemoteIp t
 #### <a name="malicious-ip"></a>Kártékony IP-cím
 Minden RemoteIp tulajdonság *VMConnection* tábla be van jelölve IP-címek összevetéssel az ismert kártékony tevékenységek. Ha a RemoteIp kártevőként azonosított a következő tulajdonságok lesz kitöltve (azok üres, ha a IP-cím nem számít rosszindulatú) a rekord a következő tulajdonságai:
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--|:--|
 |MaliciousIp |A RemoteIp címe |
 |IndicatorThreadType |Észlelt fenyegetés mutató a következő értékek egyike *Botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos* , *MaliciousUrl*, *kártevő*, *adathalász*, *Proxy*, *elleni*, *Megnézendők*.   |
-|Leírás |Az észlelt fenyegetés leírása. |
+|Description |Az észlelt fenyegetés leírása. |
 |TLPLevel |Közlekedési lámpa protokoll (TLP) szint egyike a meghatározott értékeknek *fehér*, *zöld*, *sárga*, *Red*. |
 |Megbízhatóság |Értékek a következők *0 – 100*. |
 |Severity |Értékek a következők *0 – 5*, ahol *5* van a legsúlyosabb és *0* nem súlyos egyáltalán. Alapértelmezett érték *3*.  |
@@ -134,7 +134,7 @@ Egy gép azon portjait, aktívan bejövő forgalmat fogadja el vagy potenciális
 
 Minden rekord VMBoundPort azonosíthatók a következő mezőket: 
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--|:--|
 |Feldolgozás | Identitás, amellyel a port társítva folyamat (vagy a folyamatok csoportok).|
 |IP | IP-cím-portot (lehet helyettesítő karaktert tartalmazó IP-Címek használatához *0.0.0.0*) |
@@ -160,7 +160,7 @@ Az alábbiakban néhány fontos tudnivalók:
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL records
 Típussal rendelkező rekordok *ServiceMapComputer_CL* leltáradatokat a függőségi ügynök esetében van. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--|:--|
 | Típus | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
@@ -185,7 +185,7 @@ Típussal rendelkező rekordok *ServiceMapComputer_CL* leltáradatokat a függő
 ### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL Type records
 Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolattal rendelkező folyamatokat a Hardverleltár-adatait a függőségi ügynököt a kiszolgálón. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--|:--|
 | Típus | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
