@@ -102,7 +102,7 @@ A társított REST-szolgáltatás a következő tulajdonságok támogatottak:
 |:--- |:--- |:--- |
 | servicePrincipalId | Adja meg az Azure Active Directory-alkalmazás ügyfél-azonosítót. | Igen |
 | servicePrincipalKey | Adja meg az Azure Active Directory-alkalmazás kulcsa. Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
-| bérlő | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Az Azure portal jobb felső sarkában az egér viszi, lekéréséhez. | Igen |
+| tenant | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Az Azure portal jobb felső sarkában az egér viszi, lekéréséhez. | Igen |
 | aadResourceId | Adja meg az AAD erőforrás kért használ a hitelesítéshez, pl. `https://management.core.windows.net`.| Igen |
 
 **Példa**
@@ -173,7 +173,7 @@ Adatok másolása REST, a következő tulajdonságok támogatottak:
 | relativeUrl | Az erőforrás, amely tartalmazza az adatok relatív URL-CÍMÉT. Ez a tulajdonság nincs megadva, csak az URL-cím a társított szolgáltatás definíciójában megadott használ. | Nem |
 | requestMethod | A HTTP-metódust. Engedélyezett értékek a következők **első** (alapértelmezett), és **Post**. | Nem |
 | additionalHeaders | További HTTP-kérelemfejlécek. | Nem |
-| RequestBody | A HTTP-kérelem törzsét. | Nem |
+| requestBody | A HTTP-kérelem törzsét. | Nem |
 | paginationRules | A következő lap kérelmek compose tördelés szabályok. Tekintse meg [tördelés támogatása](#pagination-support) szakaszban talál. | Nem |
 
 **1. példa: A Get metódussal a tördelés**
