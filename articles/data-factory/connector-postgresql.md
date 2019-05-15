@@ -51,7 +51,7 @@ PostgreSQL-beli társított szolgáltatás a következő tulajdonságok támogat
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **PostgreSql** | Igen |
-| kapcsolati Sztringje | Az ODBC kapcsolati karakterlánc csatlakozás az Azure Database for postgresql-hez. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Jelszó az Azure Key Vault és lekéréses is helyezheti a `password` konfigurációs ki a kapcsolati karakterláncot. Tekintse meg a következő minták és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. | Igen |
+| connectionString | Az ODBC kapcsolati karakterlánc csatlakozás az Azure Database for postgresql-hez. <br/>Ez a mező jelölhetnek egy SecureString tárolja biztonságos helyen a Data Factoryban. Jelszó az Azure Key Vault és lekéréses is helyezheti a `password` konfigurációs ki a kapcsolati karakterláncot. Tekintse meg a következő minták és [Store hitelesítő adatokat az Azure Key Vaultban](store-credentials-in-key-vault.md) további részleteket a cikkben. | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 Egy tipikus kapcsolati karakterlánc `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. További tulajdonságok beállíthatja, hogy az eset száma:
@@ -176,7 +176,7 @@ Adatok másolása a PostgreSQL, állítsa be a forrás típusaként a másolási
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **RelationalSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
+| query | Az egyéni SQL-lekérdezés segítségével olvassa el az adatokat. Például: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`. | Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
 
 > [!NOTE]
 > Séma-és tábla-és nagybetűk. Tegye őket a `""` (dupla idézőjel) a lekérdezésben.
