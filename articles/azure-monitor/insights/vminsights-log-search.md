@@ -54,7 +54,7 @@ Kezelheti a költségeket és összetettséget, csatlakozási rekordjainak nem f
 |:--|:--|
 |Direction |A kapcsolat irányát, értéke *bejövő* vagy *kimenő* |
 |Gép |A számítógép teljes Tartományneve |
-|Feldolgozás |Identitáskezelési folyamat vagy a csoportok a folyamatok, a kapcsolat kezdeményezése és elfogadása |
+|Process |Identitáskezelési folyamat vagy a csoportok a folyamatok, a kapcsolat kezdeményezése és elfogadása |
 |SourceIp |A forrás IP-címe |
 |DestinationIp |A cél-IP-cím |
 |DestinationPort |A cél-port száma |
@@ -114,7 +114,7 @@ Minden RemoteIp tulajdonság *VMConnection* tábla be van jelölve IP-címek ös
 |IndicatorThreadType |Észlelt fenyegetés mutató a következő értékek egyike *Botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos* , *MaliciousUrl*, *kártevő*, *adathalász*, *Proxy*, *elleni*, *Megnézendők*.   |
 |Description |Az észlelt fenyegetés leírása. |
 |TLPLevel |Közlekedési lámpa protokoll (TLP) szint egyike a meghatározott értékeknek *fehér*, *zöld*, *sárga*, *Red*. |
-|Megbízhatóság |Értékek a következők *0 – 100*. |
+|Confidence |Értékek a következők *0 – 100*. |
 |Severity |Értékek a következők *0 – 5*, ahol *5* van a legsúlyosabb és *0* nem súlyos egyáltalán. Alapértelmezett érték *3*.  |
 |FirstReportedDateTime |Először a szolgáltató jelenteni a kijelző. |
 |LastReportedDateTime |A kijelző Interflow által látott utolsó időpontját. |
@@ -136,8 +136,8 @@ Minden rekord VMBoundPort azonosíthatók a következő mezőket:
 
 | Tulajdonság | Description |
 |:--|:--|
-|Feldolgozás | Identitás, amellyel a port társítva folyamat (vagy a folyamatok csoportok).|
-|IP | IP-cím-portot (lehet helyettesítő karaktert tartalmazó IP-Címek használatához *0.0.0.0*) |
+|Process | Identitás, amellyel a port társítva folyamat (vagy a folyamatok csoportok).|
+|Ip | IP-cím-portot (lehet helyettesítő karaktert tartalmazó IP-Címek használatához *0.0.0.0*) |
 |Port |A Port számát |
 |Protocol | A protokoll.  A példában *tcp* vagy *udp* (csak *tcp* jelenleg támogatott).|
  
