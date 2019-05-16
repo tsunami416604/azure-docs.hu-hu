@@ -53,7 +53,7 @@ Kezelheti a költségeket és összetettséget, csatlakozási rekordjainak nem f
 | Tulajdonság | Description |
 |:--|:--|
 |Direction |A kapcsolat irányát, értéke *bejövő* vagy *kimenő* |
-|Gép |A számítógép teljes Tartományneve |
+|Machine |A számítógép teljes Tartományneve |
 |Process |Identitáskezelési folyamat vagy a csoportok a folyamatok, a kapcsolat kezdeményezése és elfogadása |
 |SourceIp |A forrás IP-címe |
 |DestinationIp |A cél-IP-cím |
