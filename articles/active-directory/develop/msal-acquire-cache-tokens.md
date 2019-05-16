@@ -4,7 +4,7 @@ description: További információ beszerzéséhez és a gyorsítótárazás jog
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d32b56b28d9ce7425e782fc10fa9ffb67047ce0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 7ca011ec7185b084de6d1d346556c1c270c7aee3
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65139129"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546079"
 ---
 # <a name="acquiring-and-caching-tokens-using-msal"></a>Beszerzéséhez, és az MSAL használatával jogkivonatok gyorsítótárazása
 [Hozzáférési jogkivonatokat](access-tokens.md) biztonságos hívása a webes API-k az Azure által védett ügyfelek. Számos módon használja a Microsoft-hitelesítési tár (MSAL) egy token beszerzéséhez. Néhány módszer felhasználói interakció érdekében egy webböngészőn keresztül van szükség. Néhány nem szükséges minden felhasználói interakció érdekében. Általában a jogkivonat-beszerzési módja attól függ, ha az alkalmazás nyilvános ügyfélalkalmazás (asztali vagy mobil alkalmazás) vagy a bizalmas ügyfélalkalmazások (például egy olyan Windows-szolgáltatáshoz webalkalmazás, webes API-t vagy démon alkalmazás)-e.

@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/27/2019
-ms.openlocfilehash: 1fca4f6e3aacfee52f348f338806b98d6e61994b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 15b96d44b1ff78a83a4364579b7984d20e3f4d85
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006424"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597707"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-nodejs"></a>Gyors útmutató: A vezérlőelem egy eszköz csatlakozik az IoT hub (Node.js)
 
@@ -35,7 +35,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutatóban futtatott két mintaalkalmazás a Node.js használatával készült. A fejlesztői gépen szükség lesz a Node.js 4.x.x. vagy újabb változatára.
+A rövid útmutatóban futtatott két mintaalkalmazás a Node.js használatával készült. Node.js v10.x.x, vagy később a fejlesztői gépén van szüksége.
 
 A Node.js-t a [nodejs.org](https://nodejs.org) oldalról töltheti le többféle platformra.
 

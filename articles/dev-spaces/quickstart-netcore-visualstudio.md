@@ -13,12 +13,12 @@ keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárol
 manager: jeconnoc
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 9afca253bd188556ad6a3f6e081fb2eccc4c81cb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 74bf83626ffcbf1625ab24cd9a4b8151b1cce8b0
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60707187"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597017"
 ---
 # <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio-2017"></a>Gyors útmutató: Fejlesztés a .NET Core Kubernetes az Azure fejlesztési szóközöket (a Visual Studio 2017)
 
@@ -97,6 +97,8 @@ Completed warmup for project 'webfrontend' in 125 seconds.
 
 A fenti példában a nyilvános URL-je http://webfrontend.1234567890abcdef1234.eus.azds.io/. Keresse meg a szolgáltatás nyilvános URL-CÍMÉT, és a szolgáltatás fut a fejlesztési tárhely használata.
 
+Ez a folyamat a szolgáltatáshoz való nyilvános hozzáférés letiltotta. A nyilvános hozzáférés engedélyezésére, frissítheti a [bejövő értéket a *values.yaml*][ingress-update].
+
 ## <a name="update-code"></a>Kód frissítése
 
 Ha a Visual Studio 2017 fejlesztői tárhely továbbra is össze van kapcsolva, kattintson a Leállítás gombra. Változtassa meg a 20 sort `Controllers/HomeController.cs` való:
@@ -131,3 +133,5 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 > [!div class="nextstepaction"]
 > [Több tároló használata és fejlesztés csapatban](multi-service-netcore-visualstudio.md)
+
+[ingress-update]: how-dev-spaces-works.md#how-running-your-code-is-configured

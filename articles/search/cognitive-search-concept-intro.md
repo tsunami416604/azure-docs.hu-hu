@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8201b4089759fb55fae12820f7495664c502837e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 24c6df6a06d08249f236fc36d64b4204b0103b3c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023628"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540901"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Mi az Azure Search "cognitive search"?
 
@@ -25,7 +25,7 @@ A kognitív keresés az AI szolgáltatása az Azure Search szolgáltatásban has
 
 + **Képfeldolgozás** képességek közé tartozik [optikai karakterfelismerés (OCR)](cognitive-search-skill-ocr.md) és azonosítása [vizuális jellemzőket](cognitive-search-skill-image-analysis.md), például arcfelismerés, kép értelmezését, felismerés (kép) híres személyek és tereptárgyak felismerése) vagy a színeket vagy a kép tájolásának-attribútumok. Képek tartalmának, kereshető használatával az Azure Search lekérdezési képességek szövegesen hozhat létre.
 
-![A kognitív keresés adatfolyamat ábrája](./media/cognitive-search-intro/cogsearch-architecture.png "Cognitive Search folyamat áttekintése")
+![A kognitív keresés adatfolyamat ábrája](./media/cognitive-search-intro/cogsearch-architecture.png "Cognitive search folyamat áttekintése")
 
 Az Azure Search olyan kognitív machine learning-modellek a Cognitive Services API-k alapul: [Számítógépes Látástechnológia](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) és [Szövegelemzés](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview). 
 
@@ -61,7 +61,7 @@ Belsőleg a folyamat állít elő, képi elemekben gazdag dokumentumok gyűjtem�
 
 [Keresési szolgáltatás REST api-version = a 2019-05-06](search-api-preview.md) szakértelmével olyan knowledgeStore-definícióval, amely egy Azure storage-kapcsolat és a végrehajtott információbeolvasás tárolási módját leíró leképezések terjeszti ki. 
 
-Tudásbázis áruházbeli ad hozzá egy indexmezők teszi lehetővé a teljes szöveges keresés nem forgatókönyvekhez végrehajtott információbeolvasás reprezentációját projekthez. További információkért lásd: [Mi az a Tudásbázis Store](knowledge-store-concept-intro.md).
+Tudásbázis áruházbeli ad hozzá egy indexmezők teszi lehetővé a teljes szöveges keresés nem forgatókönyvekhez végrehajtott információbeolvasás reprezentációját projekthez. További információkért lásd: [mi Tudásbázis áruház](knowledge-store-concept-intro.md).
 
 ### <a name="step-3-search-index-and-query-based-access"></a>3. lépés: Search-index és lekérdezés-alapú hozzáférés
 
@@ -145,5 +145,5 @@ További információ a konkrét kérdések és problémák: [hibaelhárítási 
 + [A kognitív keresés dokumentációja](cognitive-search-resources-documentation.md)
 + [Rövid útmutató: A portál az útmutató a kognitív keresés kipróbálása](cognitive-search-quickstart-blob.md)
 + [Oktatóanyag: Ismerje meg, a cognitive search API-k](cognitive-search-tutorial-blob.md)
-+ [Tudásbázis Store áttekintése](knowledge-store-concept-intro.md)
-+ [Tudásbázis Store forgatókönyv](knowledge-store-howto.md)
++ [Tudásbázis store áttekintése](knowledge-store-concept-intro.md)
++ [Tudásbázis store forgatókönyv](knowledge-store-howto.md)

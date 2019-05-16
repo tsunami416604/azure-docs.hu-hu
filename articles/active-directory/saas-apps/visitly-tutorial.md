@@ -16,11 +16,11 @@ ms.date: 01/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9842c681c655bb2a69126806400d1de8e9779c88
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57860941"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65744552"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-visitly"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Visitly
 
@@ -206,7 +206,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Visitly hoz létre. Együttműködve [Visitly támogatási csapatának](mailto:support@visitly.io) a felhasználók hozzáadása az Visitly platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

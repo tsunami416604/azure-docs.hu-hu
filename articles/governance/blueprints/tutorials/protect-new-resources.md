@@ -7,14 +7,14 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d315fb5fe3ce7844946e6a9405a9a5f6a0be8b9d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b885a90728df8cb15c75141b7bce81aec3968359
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60874529"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779567"
 ---
-# <a name="protect-new-resources-with-azure-blueprints-resource-locks"></a>Az Azure-tervek erőforrászárat új erőforrások védelme
+# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Oktatóanyag: Az Azure-tervek erőforrászárat új erőforrások védelme
 
 Az Azure tervezetek [erőforrászárat](../concepts/resource-locking.md) módosítástól, még akkor is el olyan fiók az újonnan üzembe helyezett erőforrások elleni lehetővé teszik, hogy a _tulajdonosa_ szerepkör. Ez a védelem is hozzáadhatók a tervezet-definícióban egy Resource Manager-sablon összetevő által létrehozott erőforrásokat.
 
@@ -149,10 +149,10 @@ Miután sikeresen befejeződött a tervezetdefiníciót **közzétett**, előfiz
 
      A lehívandó összetevő definiálva van ebben a szakaszban definiált paraméterek érvényesek. Ezek a paraméterek [dinamikus paraméterek](../concepts/parameters.md#dynamic-parameters) mivel azok van megadva a a tervezet-hozzárendelés során. Minden egyes összetevő, állítsa a paraméter értéke határozzák meg a a **érték** oszlop.
 
-     |Elemnév|Összetevő típusa|Paraméter neve|Érték|Leírás|
+     |Elemnév|Összetevő típusa|Paraméternév|Value|Leírás|
      |-|-|-|-|-|
      |RGtoLock erőforráscsoport|Erőforráscsoport|Name (Név)|TestingBPLocks|Meghatározza a tervezet zárolások a alkalmazni az új erőforráscsoport nevét.|
-     |RGtoLock erőforráscsoport|Erőforráscsoport|Location egység|USA nyugati régiója, 2.|Tervrajz zárolások a alkalmazni az új erőforráscsoport helye határozza meg.|
+     |RGtoLock erőforráscsoport|Erőforráscsoport|Location egység|USA 2. nyugati régiója|Tervrajz zárolások a alkalmazni az új erőforráscsoport helye határozza meg.|
      |Tárfiók|Resource Manager-sablon|storageAccountType (StorageAccount)|Standard_GRS|Válassza ki a tároló-Termékváltozat. Alapértelmezett érték _Standard_LRS_.|
 
 1. Után minden paraméter van megadva, válassza a **hozzárendelése** az oldal alján.

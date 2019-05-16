@@ -15,12 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 0a5b7f93f9ac6cc5b1076881727a42fd5b95ff4b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 780a50d9d470e8904e066459f97aa00d34ba1d3c
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306189"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603497"
 ---
 # <a name="what-is-azure-data-box-heavy-preview"></a>Mi az az Azure Data Box Heavy? (Előzetes verzió)
 
@@ -107,9 +107,9 @@ A munkafolyamat általában az alábbi lépésekből áll:
 
 A folyamat alatt minden lépéséről e-mailben kap értesítést. 
 
-## <a name="region-availability"></a>Régiónkénti elérhetőség
+## <a name="region-availability"></a>Regionális elérhetőség
 
-A Data Box Heavy az adatok átvitelét a szolgáltatás üzembehelyezési régiója, az eszköz szállítási célországa és az adatátvitel célját képező Azure-tárfiók alapján végzi. 
+Data Box nagy adatátviteli alapján a régiót, amelyben szolgáltatás üzembe helyezése, ország/régió, amelyhez az eszköz tartalmazza a szükséges, és a célként megadott Azure storage-fiókot, ahol az adatok átvitelét. 
 
 - **A szolgáltatás rendelkezésre állása** – Ebben a kiadásban a Data Box Heavy a következő régiókban érhető el:
     - Az Egyesült Államok minden nyilvánosfelhő-régiója: az USA nyugati középső régiója, az USA 2. nyugati régiója, az USA nyugati régiója, az USA déli középső régiója, az USA középső régiója, az USA északi középső régiója, az USA keleti régiója és az USA 2. keleti régiója.
@@ -119,7 +119,7 @@ A Data Box Heavy az adatok átvitelét a szolgáltatás üzembehelyezési régi�
 
 - **Cél tárfiókok** – Az adatokat tároló tárfiókok az összes olyan Azure-régióban elérhetők, amelyben a szolgáltatás is. 
 
-## <a name="sign-up"></a>Regisztráció
+## <a name="sign-up"></a>Feliratkozás
 
 A Data Box Heavy előzetes verzióban érhető el, és a használatához regisztráció szükséges. A Data Box Heavy szolgáltatáshoz való regisztrációhoz hajtsa végre a következő lépéseket:
 
@@ -136,7 +136,7 @@ A Data Box Heavy előzetes verzióban érhető el, és a használatához regiszt
 
    <!--![The Data Box Heavy sign up 3]()-->
 
-5. Válaszoljon a kérdésekre az adatok tárolási helye szerinti országról, az időkeretről, az adatátviteli cél Azure-szolgáltatásról, a hálózati sávszélességről, valamint az adatátviteli gyakoriságról. Tekintse át az adatvédelmi és felhasználási feltételeket, és a négyzet bejelölésével járuljon hozzá, hogy a Microsoft használhassa az e-mail-címét az Önnel való kapcsolatfelvételhez.
+5. Válaszoljon a kérdésekre vonatkozó adatok tartózkodási ország/régió, időkeretet, cél Azure-szolgáltatás adatátvitel, a hálózati sávszélességet, valamint az adatok átvitele gyakorisága. Tekintse át az adatvédelmi és felhasználási feltételeket, és a négyzet bejelölésével járuljon hozzá, hogy a Microsoft használhassa az e-mail-címét az Önnel való kapcsolatfelvételhez.
 
     <!--![The Data Box Heavy sign up 4]()-->
 

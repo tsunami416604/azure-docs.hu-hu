@@ -5,15 +5,15 @@ metadata:
   title: 'A Bing Entity Search API dokumentációja – oktatóanyagok, rövid útmutatók és API-referencia | Microsoft Docs'
   description: 'Útmutató a Bing Entity Search API használatához a személyekkel, helyekkel vagy más meghatározott alanyokkal kapcsolatos információk keresése céljából. Az oktatóanyagok ismertetik, hogyan hozhat létre a szolgáltatást használó alkalmazásokat.'
   services: cognitive-services
-  author: mikedodaro
-  manager: rosh
+  author: aahill
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-entity-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 02/01/2019
-  ms.author: v-gedod
+  ms.author: aahi
 abstract:
   description: 'A Bing Entity Search API-val az alkalmazások információkhoz juthatnak a keresési lekérdezésekben észlelt entitásokról. Az entitások lehetnek személyek, helyek, médiatartalmak címei és egyebek.'
 sections:

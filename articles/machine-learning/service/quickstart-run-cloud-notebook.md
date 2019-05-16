@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1a48f8620fb99f1cf8787dabc738d328a796d093
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
-ms.translationtype: MT
+ms.openlocfilehash: 4c15b9aa0bde704ad3665375d1c1a5bb8a1d32cf
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510619"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604126"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Ismerkedés az Azure Machine Learning felhőalapú notebook server használatával
 
@@ -131,7 +131,7 @@ Mivel a kódot a hozzávetőleges pi véletlenszerű értéket használ, a grafi
 
 1. Válassza ki **leállítása**.
 
-1. Ha készen áll a felhasználó a kiszolgáló ismét, válassza ki a **Start**.
+1. Ha készen áll a kiszolgáló újra használni, válassza ki a **Start**.
 
 ### <a name="delete-everything"></a>Teljes tartalmának törlése
 

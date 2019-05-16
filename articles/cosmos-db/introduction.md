@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: overview
 ms.date: 04/08/2019
 ms.author: rimman
-ms.openlocfilehash: a965db4334e88d032f767bd7b855dea6f3ff174f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc14f654af80cf599a797b8f16b0e98fe4b3a209
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61042973"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551003"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
@@ -34,7 +34,7 @@ A cosmos DB lehetővé teszi, hogy hozhat létre a rendkívül rugalmas és maga
 
 A cosmos DB teszi lehetővé hozzáadása vagy eltávolítása az Azure-régiók és a Cosmos-fiók bármelyike bármikor, egyetlen kattintással. A cosmos DB zökkenőmentesen replikálja az adatokat a Cosmos-fiókjához társított, miközben az alkalmazás továbbra is magas rendelkezésre állású, Köszönjük minden régióban az *többkiszolgálós* a szolgáltatás funkcióit. További információkért lásd: a [globális terjesztés](distribute-data-globally.md) cikk.
 
-### <a name="always-on"></a>Folyamatos üzem
+### <a name="always-on"></a>Mindig bekapcsolva
 
 Szoros integráció az Azure infrastruktúra-hez tartozó és [transzparens több főkiszolgálós replikációs](global-dist-under-the-hood.md), Cosmos DB biztosítja [99,999 %-os rendelkezésre állással](high-availability.md) mindkét olvasási és írási. A cosmos DB is lehetőséget nyújt a programozott módon (vagy a portálon keresztül) meghívni a regionális feladatátvétel Cosmos-fiókja. Ez a funkció biztosítja, hogy az alkalmazás célja, hogy feladatátvétel esetén a regionális vészhelyreállítás.
 
@@ -44,7 +44,7 @@ A transzparens horizontális particionálást és több főkiszolgálós replik�
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>Garantált alacsony késés 99 százalékon, világszerte
 
-Cosmos DB használatával hozhat létre válaszidejű, globális méretű alkalmazások. Az új több főkiszolgálós replikációs protokollal és zárolástól mentes és [írásra optimalizált adatbázismotort](index-policy.md), Cosmos DB garantálja a kevesebb mint 10 ms késések is, olvassa be és 99 százalékon, a világ minden tájáról írási műveletek (indexelt) . Ez a funkció lehetővé teszi tartósan adatfeldolgozást és villámgyors lekérdezéseket válaszidejű alkalmazások.
+Cosmos DB használatával hozhat létre válaszidejű, globális méretű alkalmazások. Az új több főkiszolgálós replikációs protokollal és zárolástól mentes és [írásra optimalizált adatbázismotort](index-policy.md), Cosmos DB garantálja a kevesebb mint 10 ms késések is, beolvassa (indexelt) és az írási műveleteknél a világ minden tájáról a 99. percentilis . Ez a funkció lehetővé teszi tartósan adatfeldolgozást és villámgyors lekérdezéseket válaszidejű alkalmazások.
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Pontosan definiált konzisztenciaválaszték több
 

@@ -8,13 +8,13 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 05/06/2019
-ms.openlocfilehash: b135baf73e21cd524b6e8fad35452362f36cf0c0
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.date: 05/14/2019
+ms.openlocfilehash: 73d7aebf3dbff59320e0ef92cbd54811503c71b4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080806"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65757617"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Oktatóanyag: Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) használatával a több-bérlős adatbázis tervezése
 
@@ -31,72 +31,7 @@ Ebben az oktatóanyagban használja Azure Database for PostgreSQL – nagy kapac
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
-
-## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
-
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-
-## <a name="create-an-azure-database-for-postgresql"></a>Azure-adatbázis létrehozása PostgreSQL-hez
-
-Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz létrehozásához:
-1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
-2. Az **Új** panelen válassza az **Adatbázisok** lehetőséget, majd az **Adatbázisok** panelen válassza az **Azure-adatbázis PostgreSQL-kiszolgálóhoz** lehetőséget.
-3. Az üzembe helyezési lehetőséget választotta, kattintson a **létrehozás** gomb alatt **nagy kapacitású (Citus) kiszolgálócsoport - előzetes verzió.**
-4. Adja meg az alábbi adatokat az új kiszolgálóűrlapon:
-   - Erőforráscsoport: kattintson a **új létrehozása** a szövegmezőbe, a mező alatti hivatkozás. Írjon be egy nevet, például **myresourcegroup**.
-   - Kiszolgálócsoport neve: Adjon meg egy egyedi nevet az új kiszolgálócsoport, amelyet egy kiszolgáló altartomány is használhat.
-   - Rendszergazdai felhasználónév: Adjon meg egy egyedi felhasználónév, az adatbázishoz való csatlakozáshoz később használandó.
-   - Jelszó: legalább nyolc karakter hosszúságúnak kell lennie, és tartalmaznia kell hármat a következő kategóriákban – angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0 – 9) és nem alfanumerikus karakterek (!, $, #, %, stb.)
-   - Hely: tegye lehetővé számukra a lehető leggyorsabb hozzáférést biztosítsa az adatokhoz a felhasználók legközelebb eső helyet használja.
-
-   > [!IMPORTANT]
-   > A kiszolgáló itt megadott rendszergazdai bejelentkezési nevét és jelszavát kell majd használnia az oktatóanyag későbbi szakaszaiban a kiszolgálóra és az adatbázisaira való bejelentkezéshez. Jegyezze meg vagy jegyezze fel ezt az információt későbbi használatra.
-
-5. Kattintson a **konfigurálása kiszolgálócsoport**. Ebben a szakaszban nem változik, hagyja meg a beállításokat, és kattintson a **mentése**.
-6. Kattintson a **felülvizsgálat + létrehozása** , majd **létrehozás** a kiszolgáló üzembe helyezéséhez. Az üzembe helyezés eltarthat néhány percig.
-7. Az oldal átirányítja központi telepítésének figyeléséhez. Amikor az élő állapota változik **az üzembe helyezés folyamatban van** való **az üzembe helyezés befejeződése**, kattintson a **kimenetek** menüpont az oldal bal oldalán található.
-8. A kimenetek lap tartalmaz egy gomb mellett, hogy az érték másolása a vágólapra a koordinátor állomásnévvel. Jegyezze fel ezt az információt későbbi használatra.
-
-## <a name="configure-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály konfigurálása
-
-Az Azure Database for PostgreSQL szolgáltatás a kiszolgáló szintjén használja a tűzfalat. Alapértelmezés szerint a tűzfal megakadályozza, hogy külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz. Azt hozzá kell adnia egy szabályt, amely egy adott IP-címtartomány számára megnyitja a tűzfalat.
-
-1. Az a **kimenetek** szakaszt, ahol korábban másolt a koordinátor-csomópont állomásnév, kattintson ismét a **áttekintése** menüpontot.
-
-2. Keresse meg a méretezési csoport a központi telepítést, a lista az erőforrások, és kattintson rá. (A név lesz a következő előtaggal "sg –".)
-
-3. Kattintson a **tűzfal** alatt **biztonsági** a bal oldali menüben.
-
-4. Kattintson a hivatkozásra **+ Hozzáadás tűzfalszabályt az aktuális ügyfél IP-cím**. Végül kattintson a **mentése** gombra.
-
-5. Kattintson a **Save** (Mentés) gombra.
-
-   > [!NOTE]
-   > Azure PostgreSQL-kiszolgáló az 5432-es porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 5432-es porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 5432-es portot.
-   >
-
-## <a name="connect-to-the-database-using-psql-in-cloud-shell"></a>Csatlakozás az adatbázishoz a psql használatával a Cloud Shellben
-
-Használjuk a [psql](https://www.postgresql.org/docs/current/app-psql.html) parancssori segédprogramot az Azure Database for PostgreSQL-kiszolgálóhoz való kapcsolódáshoz.
-1. Indítsa el az Azure Cloud Shell-t a felső navigációs ablakban található terminálikonnal.
-
-   ![Azure-adatbázis PostgreSQL-hez - Azure Cloud Shell terminálikon](./media/tutorial-design-database-hyperscale-multi-tenant/psql-cloud-shell.png)
-
-2. Az Azure Cloud Shell megnyílik a böngészőben, amely lehetővé teszi a bash-parancsok beírását.
-
-   ![Azure-adatbázis PostgreSQL-hez - Azure Shell Bash parancssor](./media/tutorial-design-database-hyperscale-multi-tenant/psql-bash.png)
-
-3. A Cloud Shell parancssornál csatlakozzon az Azure-adatbázis PostgreSQL-kiszolgálóhoz a psql-parancsok használatával. A következő formátum segítségével kapcsolódhat egy [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) segédprogrammal rendelkező Azure-adatbázis PostgreSQL-kiszolgálóhoz:
-   ```bash
-   psql --host=<myserver> --username=myadmin --dbname=citus
-   ```
-
-   Például a következő parancsot a nevű alapértelmezett adatbázishoz kapcsolódik **citus** PostgreSQL-kiszolgálón **mydemoserver.postgres.database.azure.com** hozzáférési hitelesítő adatok használatával. Adja meg a kiszolgáló-rendszergazdai jelszavát, amikor a rendszer kéri.
-
-   ```bash
-   psql --host=mydemoserver.postgres.database.azure.com --username=myadmin --dbname=citus
-   ```
+[!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>Hozzon létre egy sémát a psql segédprogram használatával
 
@@ -250,7 +185,7 @@ ORDER BY a.campaign_id, n_impressions desc;
 
 Mostanáig minden tábla rendelkezik lett-e terjesztve `company_id`, de bizonyos adatok nem természetes módon "" minden bérlőhöz tartozik különösen, és megoszthatók. Például az a példában ad platformon minden vállalat érdemes a saját IP-címek alapján célközönség földrajzi információk.
 
-Hozzon létre egy táblát, megosztott földrajzi információk tárolására. Futtassa ezt a psql-jének:
+Hozzon létre egy táblát, megosztott földrajzi információk tárolására. A psql-jének futtassa a következő parancsokat:
 
 ```sql
 CREATE TABLE geo_ips (
@@ -268,7 +203,7 @@ Ezután ellenőrizze `geo_ips` "referenciatábla" másolatot készíteni a tábl
 SELECT create_reference_table('geo_ips');
 ```
 
-Betöltés, a példaadatokat. Fontos, hogy futtassa ezt a könyvtárán belül található a psql, amelyre letöltötte az adatkészletet.
+Betöltés, a példaadatokat. Ne feledje, a parancs futtatásához a psql származó a könyvtárán belül található, ahová letöltötte az adatkészlet.
 
 ```sql
 \copy geo_ips from 'geo_ips.csv' with csv

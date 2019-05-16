@@ -27,6 +27,8 @@
       href: search-fiddler.md
     - name: PowerShell
       href: search-create-index-rest-api.md
+    - name: Python
+      href: search-get-started-python.md
 - name: Oktatóanyagok
   items:
     - name: Az Azure SQL Database indexelése
@@ -322,8 +324,6 @@
           href: 'https://aka.ms/jfkfiles'
         - name: NYC-feladatok bemutató
           href: 'https://aka.ms/azjobsdemo'
-        - name: Search Analyzer bemutató
-          href: 'https://alice.unearth.ai/'
         - name: Használati esetek keresése
           href: 'https://searchsamples.azurewebsites.net/'
     - name: GYIK

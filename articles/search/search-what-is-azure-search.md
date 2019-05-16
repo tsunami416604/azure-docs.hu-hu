@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c3b2134fae86b988fb21e993cd01b77a90bd2896
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 23754a1184f89d1fb563b2d73109f3a10c48920c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467064"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65539323"
 ---
 # <a name="what-is-azure-search"></a>Mi az az Azure Search?
 Az Azure Search egy felhőalapú keresőszolgáltatás, amely olyan API-kat és eszközöket nyújt a fejlesztőknek, amelyek segítségével fejlett keresési funkciókat adhatnak hozzá a privát, heterogén tartalmak keresése érdekében a webes, mobilos és vállalati alkalmazásokhoz. A lekérdezések végrehajtása felhasználó által meghatározott indexen keresztül történik.
@@ -44,7 +44,7 @@ A funkciókat egy egyszerű [REST API-n](/rest/api/searchservice/) vagy [.NET SD
 | Mesterséges Intelligencia&nbsp;Adatbővítés&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Funkciók |
 |-------------------|----------|
 |Bővített AI-dokumentumok | [**A kognitív keresés** ](cognitive-search-concept-intro.md) képi és szöveges analysis is alkalmazható egy szöveges adatok kinyerését nyers tartalom indexelése folyamat esetében. A [beépített képességek](cognitive-search-predefined-skills.md) között szerepel például az optikai karakterfelismerés (beolvasott JPEG-fájlok kereshetővé tétele), az entitásfelismerés (cég vagy intézmény, név vagy hely azonosítása), valamint a kulcskifejezések felismerése. [Egyéni képességeket is kódolhat](cognitive-search-create-custom-skill-example.md), amelyeket a folyamathoz lehet kapcsolni. |
-| Tárolt végrehajtott információbeolvasás elemzés és használat| [**Tudásbázis Store (előzetes verzió)** ](knowledge-store-concept-intro.md) mesterséges intelligencián alapuló indexelő kiterjesztése. Az Azure storage háttérmoduljaként az indexelés során létrehozott végrehajtott információbeolvasás mentheti. Ezek az összetevők szakértelmével jobb tervezési, vagy hozzon létre, alak és struktúra kívül amorf vagy nem egyértelmű adatok segítségével használható. Ezek a struktúrák leképezések is létrehozhat, adott cél adott számítási feladatok vagy a felhasználók. Emellett közvetlenül a kibontott adatok elemzését, vagy betölteni a más alkalmazásokba.<br/><br/> |
+| Tárolt végrehajtott információbeolvasás elemzés és használat| [**Tudásbázis store (előzetes verzió)** ](knowledge-store-concept-intro.md) mesterséges intelligencián alapuló indexelő kiterjesztése. Az Azure storage háttérmoduljaként az indexelés során létrehozott végrehajtott információbeolvasás mentheti. Ezek az összetevők szakértelmével jobb tervezési, vagy hozzon létre, alak és struktúra kívül amorf vagy nem egyértelmű adatok segítségével használható. Ezek a struktúrák leképezések is létrehozhat, adott cél adott számítási feladatok vagy a felhasználók. Emellett közvetlenül a kibontott adatok elemzését, vagy betölteni a más alkalmazásokba.<br/><br/> |
 
 | Adatok&nbsp;importálás/indexelése | Funkciók |
 |----------------------------------|----------|

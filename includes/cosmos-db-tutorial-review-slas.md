@@ -2,23 +2,24 @@
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 03/22/2019
 ms.author: sngun
-ms.openlocfilehash: e07a59ba0484910d87329be94f0fcc58b1011b95
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: b940d7308648a3a55ed031d7d57542f3b31e9f27
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572235"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546782"
 ---
-A fiókjához tartozó erőforrások adatátviteli sebessége, tárolókapacitása, rendelkezésre állása, késleltetése és konzisztenciája az Azure Portalon monitorozható. Vessünk egy pillantást ezekre a metrikákra. 
+Az Azure Portalon a Cosmos DB-fiók átviteli sebesség, a storage, a rendelkezésre állási, a késés és a konzisztencia figyeli. Metrikákhoz kapcsolódó diagramokat egy [Azure Cosmos DB szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) képest a tényleges teljesítmény SLA értéket jeleníti meg. Ez az alkalmazáscsomag metrikák lehetővé teszi, hogy az SLA-k transzparens figyelése.
 
-1. Kattintson a **Metrikák** elemre a navigációs menüben.
+A metrikák és SLA-k áttekintése: 
 
-   ![Mérőszámok az Azure Portalon](./media/cosmos-db-tutorial-review-slas/metrics.png)
-
-2. Kattintson végig az összes lapon, hogy tisztában legyen az Azure Cosmos DB által biztosított metrikákkal. 
-
-    Az [Azure Cosmos DB szolgáltatói szerződéseihez (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) tartozó összes diagram tartalmaz egy-egy vonalat, amely értesít arról, ha bármely SLA-t megsértették. Az Azure Cosmos DB ezekkel a metrikákkal átláthatóvá teszi az SLA-k monitorozását. 
-
+1. Válassza ki **metrikák** a Cosmos DB-fiók navigációs menü.
+   
+2. Válasszon ki egy lapon például **késés**, és válasszon ki egy időkeretet, a jobb oldalon. Hasonlítsa össze a **tényleges** és **SLA** a diagramok a sorokat.
+   
    ![Azure Cosmos DB-metrikák](./media/cosmos-db-tutorial-review-slas/metrics-suite.png)
+   
+3. Tekintse át a metrikákat, a többi lapon. 
+

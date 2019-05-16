@@ -11,20 +11,20 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 0ed1a72a5dc61458200b72c768ad722656b820d8
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 05/16/2019
 ms.locfileid: "65027228"
 ---
-# <a name="what-is-the-ink-recognizer-api"></a>Mi az a szabadkézi felismerő API-t?
+# <a name="what-is-the-ink-recognizer-api"></a>Mi az Ink Recognizer API?
 
 
 A szabadkézi felismerő Cognitive Service felhőalapú REST API-t biztosít elemzéséhez, és ismeri fel a digitális ink tartalmat. Optikai karakterfelismerés (OCR) használó szolgáltatások, ellentétben az API bemenetként digitális ink körvonal adatokra van szüksége. Digitális tollvonások idő rendezett készleteket 2D pontok (X, Y koordinátáit), amelyek a mozgásban lévő bemeneti eszközök, például a digitális tollak vagy adatelemzéseket is. Ezután és alakzatokat és a bemeneti kézzel írt tartalmak, és minden felismert entitásokat tartalmazó JSON-választ adja vissza.
 
 ![Egy leíró küldése az API-t ink körvonal bemenete folyamatábrája](media/ink-recognizer-pen-graph.png)
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 A tinta felismerő API-val könnyen megjegyezhető kézzel írt tartalmak az alkalmazásokban. 
 
@@ -55,8 +55,8 @@ Próbálja ki a rövid útmutató a szabadkézi felismerő API-hívások indít�
 * [JavaScript](quickstarts/csharp.md)
 
 A tinta Recognition API működését egy digitális szabadkézi alkalmazás megtekintéséhez tekintse meg a következő minta alkalmazásokat a Githubon:
-* [C#és az univerzális Windows-Platform(UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
-* [C#és a Windows Presentation Foundation(WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
-* [A JavaScript webböngésző alkalmazás](https://go.microsoft.com/fwlink/?linkid=2089908)       
-* [A Java és az Android mobilalkalmazás](https://go.microsoft.com/fwlink/?linkid=2089906)
-* [SWIFT- és iOS mobilalkalmazás](https://go.microsoft.com/fwlink/?linkid=2089805)
+* [C# és Univerzális Windows-platform (Universal Windows Platform, UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
+* [C# és Windows megjelenítési alaprendszer (Windows Presentation Foundation, WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
+* [JavaScript-webböngészőalkalmazás](https://go.microsoft.com/fwlink/?linkid=2089908)       
+* [Java- és Android-mobilalkalmazás](https://go.microsoft.com/fwlink/?linkid=2089906)
+* [Swift- és iOS-mobilalkalmazás](https://go.microsoft.com/fwlink/?linkid=2089805)

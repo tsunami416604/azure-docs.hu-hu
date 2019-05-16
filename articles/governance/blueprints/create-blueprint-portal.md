@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 28fef394ee400949f9911983bdbca41d6bfcb458
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: acee2aabe94f5d015562bd697d08f657895d3b02
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60683378"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65755936"
 ---
-# <a name="define-and-assign-a-blueprint-in-the-portal"></a>Definiálása és hozzárendelése egy tervezet a portálon
+# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Gyors útmutató: Definiálása és hozzárendelése egy tervezet a portálon
 
 Megismerheti, hogyan hozhat létre és rendelje hozzá a tervek, amikor fejleszthet újrahasznosítható és gyorsan üzembe helyezhető konfigurációk alapján az Azure Resource Manager sablonok, házirend, biztonsági és egyéb gyakori minták adhatja meg. Ebben az oktatóanyagban elsajátíthatja a létrehozása, közzététel és a szervezeten belül egy tervezet hozzárendelése kapcsolódó gyakori feladatok egy részének elvégzése az Azure-tervek használatával. Ezek a feladatok a következők:
 

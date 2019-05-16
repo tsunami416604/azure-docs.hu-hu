@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: magoedte
-ms.openlocfilehash: 70712b68cc26a461f702850dbf6064b65b4ff130
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: afa332b40884a79b5114b3b8093cd27108c39984
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60494669"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780009"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Az Azure Monitor-tárolókhoz gyakran ismételt kérdések
 
@@ -76,6 +76,12 @@ A következő hiba jelenhet meg: **A válasz URL-címe a kérelemben megadott ne
 ## <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Miért nem tudja frissíteni az előkészítés után fürt?
 
 Miután engedélyezte az Azure Monitor-tárolókhoz az AKS-fürt, a Log Analytics-munkaterület törlése a fürt küldte-e az adatokat, a fürt frissítési kísérlet során nem fog működni. Ennek megoldásához be kell letiltani a figyelést, majd újra engedélyeznie azt egy másik érvényes munkaterületet az előfizetésében hivatkozik. Hajtsa végre újra a fürt frissítésének megkísérlésekor azt kell feldolgozni, és sikeresen befejeződik.  
+
+## <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>Mely portok és tartományok van szükségem az open/engedélyezési listára az ügynök számára?
+- *.ods.opinsights.azure.com   443
+- *.oms.opinsights.azure.com   443
+- *.blob.core.windows.net      443
+- dc.services.visualstudio.com 443
 
 ## <a name="next-steps"></a>További lépések
 

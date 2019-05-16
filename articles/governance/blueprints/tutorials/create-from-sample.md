@@ -7,14 +7,14 @@ ms.date: 03/05/2019
 ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 4f400e45d8defc304cf58c4bd05fa19f16d0501b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: b0d5d96ff897ac1710206eb49bca785e8809cb7d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60874665"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65758850"
 ---
-# <a name="create-an-environment-from-a-blueprint-sample"></a>Tervrajz mintából környezet létrehozása
+# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Oktatóanyag: Tervrajz mintából környezet létrehozása
 
 Minta tervezetek példákkal mi teheti meg Azure-tervek használatával. Minden egyes egy adott szándékot vagy céllal rendelkező mintát, de nem a teljes környezet létrehozása önmagukban. Minden egyes szolgál kiindulópontként Ismerkedés az Azure tervek használata a csomagban foglalt összetevők, minták és paraméterek különböző kombinációit.
 
@@ -102,15 +102,15 @@ Miután a tervezet minta másolata sikeresen megtörtént **közzétett**, előf
 
      A lehívandó összetevő definiálva van ebben a szakaszban definiált paraméterek érvényesek. Ezek a paraméterek [dinamikus paraméterek](../concepts/parameters.md#dynamic-parameters) mivel azok van megadva a a tervezet-hozzárendelés során. Minden egyes összetevő, állítsa a paraméter értéke határozzák meg a a **érték** oszlop. A `{Your ID}`, válassza ki az Azure felhasználói fiókot.
 
-     |Elemnév|Összetevő típusa|Paraméter neve|Érték|Leírás|
+     |Elemnév|Összetevő típusa|Paraméternév|Value|Leírás|
      |-|-|-|-|-|
      |ProdRG resource group|Erőforráscsoport|Name (Név)|ProductionRG|Meghatározza az első erőforráscsoport nevét.|
-     |ProdRG resource group|Erőforráscsoport|Location egység|USA nyugati régiója, 2.|Beállítja az első erőforráscsoport helyét.|
-     |Közreműködő|Szerepkör-kijelölés|Felhasználó vagy csoport|{ID}|Határozza meg, mely felhasználó vagy csoport megadását a _közreműködői_ szerepkör-hozzárendelés az első erőforráscsoporton belül.|
+     |ProdRG resource group|Erőforráscsoport|Location egység|USA 2. nyugati régiója|Beállítja az első erőforráscsoport helyét.|
+     |Közreműködő|Szerepkör-hozzárendelés|Felhasználó vagy csoport|{ID}|Határozza meg, mely felhasználó vagy csoport megadását a _közreműködői_ szerepkör-hozzárendelés az első erőforráscsoporton belül.|
      |PreProdRG resource group|Erőforráscsoport|Name (Név)|PreProductionRG|Meghatározza a második erőforráscsoport nevét.|
      |PreProdRG resource group|Erőforráscsoport|Location egység|USA nyugati régiója|A második erőforráscsoport helyét is beállítja.|
-     |Tulajdonos|Szerepkör-kijelölés|Felhasználó vagy csoport|{ID}|Határozza meg, mely felhasználó vagy csoport megadását a _tulajdonosa_ szerepkör-hozzárendelés a második erőforráscsoporton belül.|
-     |Olvasók|Szerepkör-kijelölés|Felhasználó vagy csoport|{ID}|Határozza meg, mely felhasználó vagy csoport megadását a _olvasók_ szerepkör-hozzárendelés a második erőforráscsoporton belül.|
+     |Tulajdonos|Szerepkör-hozzárendelés|Felhasználó vagy csoport|{ID}|Határozza meg, mely felhasználó vagy csoport megadását a _tulajdonosa_ szerepkör-hozzárendelés a második erőforráscsoporton belül.|
+     |Olvasók|Szerepkör-hozzárendelés|Felhasználó vagy csoport|{ID}|Határozza meg, mely felhasználó vagy csoport megadását a _olvasók_ szerepkör-hozzárendelés a második erőforráscsoporton belül.|
 
 1. Után minden paraméter van megadva, válassza a **hozzárendelése** az oldal alján.
 

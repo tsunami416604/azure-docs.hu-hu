@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 6deb3ac0869ba7d8dfb41cc6fac8c30fb035b5a6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7700efb7bfdb60c8f8f82b442cf01aae691f2fc3
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572722"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595577"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Az ASP.NET Core-webalkalmazás monitorozásának indítása
 
@@ -27,7 +27,7 @@ Ez a rövid útmutató végigvezeti az Application Insights SDK hozzáadása egy
 
 A gyorsútmutató elvégzéséhez:
 
-- [Telepítse a Visual Studio 2017](https://www.visualstudio.com/downloads/) szoftvert a következő számítási feladatokkal:
+- [Telepítse a Visual Studio 2019](https://www.visualstudio.com/downloads/) a következő számítási feladatokkal:
   - ASP.NET és webfejlesztés
   - Azure-fejlesztés
 - [A .NET Core 2.0 SDK telepítése](https://www.microsoft.com/net/core)
@@ -51,7 +51,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
     Megjelenik egy konfigurációs mező. Az adatbeviteli mezők kitöltéséhez használja az alábbi táblát.
 
-    | Beállítások        |  Érték           | Leírás  |
+    | Beállítások        |  Value           | Leírás  |
    | ------------- |:-------------|:-----|
    | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
    | **Alkalmazás típusa** | ASP.NET-es webalkalmazás | A figyelt alkalmazás típusa |

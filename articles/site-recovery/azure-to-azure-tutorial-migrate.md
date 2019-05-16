@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 636993879422edaf08051be61b9d4770effdcae0
-ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
-ms.translationtype: MT
+ms.openlocfilehash: 0d446be664d695af946d46abc48389d4f7be92cd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65556074"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65751128"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure-beli virtuális gépek áthelyezése egy másik régióba
 
@@ -56,7 +56,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
     - A Windows rendszerű virtuális gépek esetében az összes új Windows-frissítést telepíteni kell a virtuális gépen, így a megbízható főtanúsítványok mindegyike megtalálható lesz a számítógépen. Leválasztott környezet esetén hajtsa végre a vállalat szabványos Windows Update- és tanúsítványfrissítési folyamatait.
     - Linux rendszerű virtuális gépekhez kövesse az útmutatást, a Linux terjesztőt, hogy a legújabb megbízható főtanúsítványok és a visszavont tanúsítványok listájának lekérése a virtuális gép által biztosított.
 1. Győződjön meg arról, hogy nem használ hitelesítési proxyt hálózati kapcsolatok szabályozásához áthelyezni kívánt virtuális gépek esetében.
-1. Ha az áthelyezni kívánt virtuális gép nem rendelkezik internetkapcsolattal, vagy használ tűzfalproxyt a kimenő hozzáférés vezérléséhez [a követelmények ellenőrzéséhez](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity).
+1. Ha az áthelyezni kívánt virtuális gép nem rendelkezik internetkapcsolattal, vagy használ tűzfalproxyt a kimenő hozzáférés vezérléséhez [a követelmények ellenőrzéséhez](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms).
 1. Azonosítsa a forrás hálózati elrendezés és az aktuálisan használt összes erőforrást. Ez magában foglalja, de nem korlátozódik, terheléselosztók, a hálózati biztonsági csoportok (NSG), és a nyilvános IP-címek.
 
 ## <a name="prepare-the-target-region"></a>Készítse elő a célrégió

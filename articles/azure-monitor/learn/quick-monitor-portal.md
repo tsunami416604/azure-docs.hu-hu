@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: a43ad92181415593b309b9fafb20f9934a997924
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 08745c3ef3d4996340ec40af496f8f0a5e0201c3
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60539794"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595738"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Az ASP.NET-alkalmazás monitorozásának indítása
 
@@ -26,7 +26,7 @@ Ez a rövid útmutató bemutatja, hogyan adhatja hozzá az Application Insightst
 ## <a name="prerequisites"></a>Előfeltételek
 A gyorsútmutató elvégzéséhez:
 
-- Telepítse a [Visual Studio 2017](https://www.visualstudio.com/downloads/) szoftvert a következő számítási feladatokkal:
+- Telepítés [Visual Studio 2019](https://www.visualstudio.com/downloads/) a következő számítási feladatokkal:
     - ASP.NET és webfejlesztés
     - Azure-fejlesztés
 
@@ -35,7 +35,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
 
-1. Nyissa meg a projektjét a Visual Studio 2017-ben.
+1. Nyissa meg a projekt a Visual Studio 2019.
 2. Válassza **Az Application Insights konfigurálása** elemet a Projekt menüben. A Visual Studio hozzáadja az Application Insights SDK-t az alkalmazásához.
 
     > [!IMPORTANT]

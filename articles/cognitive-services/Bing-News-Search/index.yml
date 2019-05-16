@@ -6,15 +6,15 @@ metadata:
   title: 'A Bing News Search API dokumentációja – oktatóanyagok, rövid útmutatók, API-referencia | Microsoft Docs'
   description: 'Ismerje meg, hogyan kereshet híreket az interneten a Bing News Search API-val.'
   services: cognitive-services
-  author: mikedodaro
-  manager: rosh
+  author: aahill
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-video-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/16/2019
-  ms.author: v-gedod
+  ms.author: aahi
 abstract:
   description: 'A Bing News Search API segítségével integrálhatja a Bing hírkeresési képességeit az alkalmazásokba. A lekérdezések API-n keresztüli elküldésével releváns híreket kérhet le több kategóriában és több forrásból, a bing.com/news oldalhoz hasonlóan.'
 sections:

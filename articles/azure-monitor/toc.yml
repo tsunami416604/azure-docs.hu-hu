@@ -557,6 +557,7 @@
             - name: Web App Analytics-megoldás
               href: insights/azure-web-apps-analytics.md
             - name: Kubernetes-alkalmazások monitorozása
+              displayname: 'aks, microservice, istio, service mesh, application monitoring'
               href: app/kubernetes.md
         - name: Tárolók figyelése
           items:

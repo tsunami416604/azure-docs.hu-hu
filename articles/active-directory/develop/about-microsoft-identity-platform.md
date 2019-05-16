@@ -3,8 +3,8 @@ title: A Microsoft identity platform – Azure evolúciója
 description: Ismerje meg a Microsoft identity platform, az Azure Active Directory (Azure AD) identity service és a fejlesztői platform továbbfejlesztett változata.
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,18 +13,18 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0b912b6f3fe42c724468347f9b3a7f0b4efa054
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 03a4702ac0f70e3fc280501cd9524ccbfb528678
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067976"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546251"
 ---
-# <a name="evolution-of-microsoft-identity-platform"></a>A Microsoft identity platform fejlődése
+# <a name="evolution-of-microsoft-identity-platform"></a>A Microsoft identitásplatformjának fejlődése
 
 A Microsoft identitásplatformja az Azure Active Directory (Azure AD) identitásszolgáltatás és fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztők számára, amely a felhasználók, a jogkivonatok kiosztva azon hívja az API-k, például a Microsoft Graph, vagy az API-kat a fejlesztők számára készült alkalmazások. Folyamatautomatizálást olyan hitelesítési szolgáltatás, nyílt forráskódú könyvtáraink, alkalmazásregisztráció és konfigurációja (keresztül a fejlesztői portál és a kérelem API-t), teljes körű fejlesztői dokumentáció, a rövid útmutató minták, Kódminták, oktatóanyagok és útmutatók, és más fejlesztői tartalom. A Microsoft identitásplatformja támogatja a nyílt szabványokat, többek között az OAuth 2.0-t és az OpenID Connectet.
 

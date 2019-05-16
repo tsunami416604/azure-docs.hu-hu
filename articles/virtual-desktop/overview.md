@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 0d606a489a069c4265088d8e07301693dc2f1c83
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b3192d848e77c59d0ff6950e647d1faf172484b5
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694277"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606407"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Mi a Windows virtuális asztal előzetes verziója? 
 
@@ -90,7 +90,7 @@ Windows virtuális asztal magában foglalja a Windows asztali számítógépek �
 Az optimális teljesítmény érdekében győződjön meg arról, hogy a hálózat megfelel a következő követelményeknek:
 
 * Az Azure-régióba gazdagép készletek alkalmazott ahol üzenetváltási (Ezredmásodperc) az ügyfél hálózati késést a kevesebb mint 150 ms kell lennie.
-* Hálózati forgalom előfordulhat, hogy flow ország külső szegélyek, ha asztali környezet és alkalmazások üzemeltető virtuális gépek csatlakozni a felügyeleti szolgáltatáshoz.
+* Hálózati forgalom előfordulhat, hogy flow határokon kívül ország/régió, ha asztali környezet és alkalmazások üzemeltető virtuális gépek csatlakozni a felügyeleti szolgáltatáshoz.
 * A hálózati teljesítmény optimalizálása érdekében azt javasoljuk, hogy az a munkamenetgazda virtuális gépek közös elhelyezésű a rendszer a felügyeleti szolgáltatás és az Azure ugyanabban a régióban.
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 7f6108a5d1e8ee386641c6d1f7c09ea96e12458c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3bfcffacee7df8a5abf59676a1c47fa283dee7b
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60892416"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519025"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-sdk-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra alkalmazás felépítése a Java SDK-t és az Azure Cosmos DB használatával
 
@@ -34,8 +34,7 @@ Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-sz
 
 Emellett szüksége lesz a következőkre:
 
-* [Java fejlesztői készlet (JDK) 1.7+](https://aka.ms/azure-jdks)
-    * Ubuntu rendszeren futtassa az `apt-get install default-jdk` parancsot a JDK telepítéséhez.
+* [Java fejlesztői készlet (JDK) 8-as verzió](https://aka.ms/azure-jdks)
     * Ügyeljen arra, hogy a JAVA_HOME környezeti változó arra a mappára mutasson, ahová a JDK telepítve lett.
 * [Maven](https://maven.apache.org/download.cgi) bináris archívum [letöltése](https://maven.apache.org/install.html) és [telepítése](https://maven.apache.org/)
     * Ubuntu rendszeren futtathatja az `apt-get install maven` parancsot a Maven telepítéséhez.

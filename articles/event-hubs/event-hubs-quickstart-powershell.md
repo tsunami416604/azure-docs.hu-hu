@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: fba0d3ac5a20bd4f10b815450f6ce08e50f88ea0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b3847f798fde8702d6d95450c68fbfbca4c97f9d
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203057"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604470"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Gyors útmutató: Létrehoz egy eseményközpontot, az Azure PowerShell-lel
 
@@ -31,7 +31,7 @@ Ebben a rövid útmutatóban az Azure PowerShell használatával hoz létre esem
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a következőkkel:
 
 - Egy Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot][], mielőtt hozzákezd.
-- [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb.
+- [Visual Studio 2019](https://www.visualstudio.com/vs).
 - A [.NET Standard SDK](https://www.microsoft.com/net/download/windows) 2.0-s vagy újabb verziója.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 6c332861bcaf228e4c1e0a619cf4f84e3be0ba15
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b8d7556607cdb73c3e3ae19109bcbf34b72b0915
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204147"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595343"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Gyors útmutató: Az első Azure Batch-feladat futtatása a .NET API-val
 
@@ -27,7 +27,7 @@ Ez a rövid útmutató egy Azure Batch-feladatot futtat egy, az Azure Batch .NET
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Visual Studio 2017](https://www.visualstudio.com/vs) vagy [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) Linux, macOS vagy Windows rendszeren. 
+* [Visual Studio 2017-es vagy újabb](https://www.visualstudio.com/vs), vagy [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) Linux, macOS vagy Windows. 
 
 * Egy Batch-fiók és egy társított Azure Storage-fiók. A fiókok létrehozásához tekintse meg a Batch az [Azure Portallal](quick-create-portal.md) vagy az [Azure CLI-vel](quick-create-cli.md) történő használatát ismertető rövid útmutatókat. 
 

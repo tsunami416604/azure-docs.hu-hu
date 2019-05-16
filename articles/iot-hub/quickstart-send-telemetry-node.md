@@ -10,12 +10,12 @@ ms.devlang: node
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/22/2019
-ms.openlocfilehash: a4f0761af7da1add6a295b7627783daae6fac07c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b99ed85495e00282c6a27f42b5817e46f4736720
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59007104"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597503"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>Gyors útmutató: Telemetriát küldjön az eszközről az IoT hub és a egy háttér-alkalmazással (Node.js), annak olvasása
 
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A két minta alkalmazás ebben a rövid útmutatóban futtatása a node.js-ben készültek. A fejlesztői gépen szükség lesz a Node.js 4.x.x. vagy újabb változatára.
+A két minta alkalmazás ebben a rövid útmutatóban futtatása a node.js-ben készültek. Node.js v10.x.x, vagy később a fejlesztői gépén van szüksége.
 
 A Node.js-t a [nodejs.org](https://nodejs.org) oldalról töltheti le többféle platformra.
 

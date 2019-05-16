@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 03/18/2019
+ms.date: 05/06/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0573448c753c763e818d641216033dbeacb9e9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01cedadc115496fcf00df986b4ad4b9c5aab5139
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60471488"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606183"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Gyors útmutató: Állítsa be az Office 365-csoportok az Azure Active Directoryban lejár
 
@@ -35,11 +35,11 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisite"></a>Előfeltétel
 
-Egy globális rendszergazdai vagy a felhasználói csoport lejárati beállítása a szervezet kell lennie.
+ Az alacsonyabb szintű szerepkör, csoport lejárati beállításához szükséges a szervezet felhasználói rendszergazdája lesz.
 
 ## <a name="turn-on-user-creation-for-groups"></a>Felhasználói létrehozás bekapcsolása a csoportokhoz
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy olyan fiókkal, amely globális rendszergazda vagy felhasználói rendszergazda a szervezet számára.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) rendszergazdai felhasználói fiókkal.
 
 2. Válassza a **Csoportok**, majd az **Általános** elemet.
   
@@ -80,7 +80,7 @@ Ennyi az egész! Ebben a rövid útmutatóban sikeresen beállította az elévü
 
 ## <a name="next-steps"></a>További lépések
 
-Az elévüléssel kapcsolatos további információért, többek között a technikai korlátozásokról, az egyéni letiltott szavak listájának hozzáadásáról és az Office 365-alkalmazások végfelhasználói élményéről tekintse meg a következő cikket, amely az elévülési szabályzat részleteiről ad tájékoztatást:
+Többek között a PowerShell-utasítások és technikai korlátok miatt lejárati kapcsolatos további információkért lásd a következő cikket:
 
 > [!div class="nextstepaction"]
-> [Az elévülési szabályzat részletei](groups-lifecycle.md)
+> [Elévülési szabályzatot PowerShell](groups-lifecycle.md)

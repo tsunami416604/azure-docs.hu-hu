@@ -1,7 +1,6 @@
 - name: Az Azure Blueprints dokumentációja
   href: index.yml
 - name: Áttekintés
-  expanded: true
   items:
     - name: Az Azure Blueprints áttekintése
       displayName: 'templates, policy, definition, assignment, rbac'
@@ -16,7 +15,6 @@
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
 - name: Oktatóanyagok
-  expanded: true
   items:
     - name: Létrehozás tervmintából
       displayName: 'template, resource group, rbac, role assignment'
@@ -25,7 +23,6 @@
       displayName: 'read only, do not delete, lock assignment'
       href: ./tutorials/protect-new-resources.md
 - name: Példák
-  expanded: true
   items:
     - name: Index
       displayName: 'list, examples'
@@ -53,7 +50,6 @@
           displayName: 'standards, iso, 27001'
           href: ./samples/iso27001-ase-sql-workload/deploy.md
 - name: Alapelvek
-  expanded: true
   items:
     - name: A tervek életciklusa
       displayName: 'publish, edit, delete, assignments'
@@ -71,7 +67,6 @@
       displayName: 'mode, state, read only, edit, denyAssignments'
       href: ./concepts/resource-locking.md
 - name: Útmutatók
-  expanded: true
   items:
     - name: Hozzárendelések kezelése a PowerShell-lel
       displayName: 'create, update, remove'
@@ -85,7 +80,6 @@
   displayName: 'errors, violation'
   href: ./troubleshoot/general.md
 - name: Referencia
-  expanded: true
   items:
     - name: Azure PowerShell
       href: '/powershell/module/az.blueprint/#blueprint'

@@ -3,8 +3,8 @@ title: Hitelesítés a Microsoft identity platform |} Az Azure
 description: További tudnivalók a Microsoft identity platform, az alkalmazás hitelesítési modellezheti, API, a kiépítést, és a leggyakrabban használt hitelesítési forgatókönyvek, hogy a Microsoft identity platform támogatja.
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/05/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d54347b9a3ccc72cfd5b88400d699d93132fbf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c0be7a8b756ee3d1d71b15e10797176e50037a47
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299888"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540150"
 ---
 # <a name="what-is-authentication"></a>Mi a hitelesítés?
 
@@ -87,7 +87,7 @@ A kiépítési folyamat:
 
 |   |   |
 |---|---|
-| 1 | A felhasználó a bérlőtől a B bérlőhöz próbál jelentkezzen be az alkalmazás |
+| 1. | A felhasználó a bérlőtől a B bérlőhöz próbál jelentkezzen be az alkalmazás |
 | 2 | A rendszer kéri és ellenőrzi a felhasználó hitelesítő adatait |
 | 3 | A rendszer kéri a felhasználó hozzájárulását ahhoz, hogy az alkalmazás hozzáférjen a B bérlőhöz |
 | 4 | A Microsoft identity platform használja az alkalmazásobjektum a tervrajz létrehozni egy szolgáltatásnevet a bérlőtől a B bérlőhöz |
@@ -109,7 +109,7 @@ Az egyes biztonsági jogkivonatokban lévő jogcímek a jogkivonat típusától,
 
 Az alábbi táblázat röviden a Microsoft identity platform által kibocsátott jogcímek különböző típusú biztosítja. Részletesebb információkért lásd: a [hozzáférési jogkivonatokat](access-tokens.md) és [azonosító-jogkivonatokat](id-tokens.md) identity platform a Microsoft által kiadott.
 
-| Jogcím | Leírás |
+| Igénylés | Leírás |
 | --- | --- |
 | Alkalmazásazonosító | A jogkivonatot használó alkalmazást azonosítja. |
 | Célközönség | A fogadó erőforrást azonosítja, amelynek a jogkivonat szól. |
@@ -125,7 +125,7 @@ Az alábbi táblázat röviden a Microsoft identity platform által kibocsátott
 | Name (Név) | A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. |
 | Objektumazonosító | Az alany Azure AD-beli megváltoztathatatlan egyedi azonosítóját adja meg. |
 | Szerepkörök | A felhasználónak kiosztott Azure AD-beli alkalmazás-szerepkörök rövid neveit adja meg. |
-| Hatókör | Az ügyfélalkalmazás számára megadott engedélyeket jelzi. |
+| Scope | Az ügyfélalkalmazás számára megadott engedélyeket jelzi. |
 | Tárgy | Azt a szolgáltatásnevet adja meg, amelynek az adatait a jogkivonat hitelesíti. |
 | Bérlőazonosító | A jogkivonatot kibocsátó címtárbérlő megváltoztathatatlan egyedi azonosítóját adja meg. |
 | Jogkivonat élettartama | A jogkivonat érvényességi idejét határozza meg. |

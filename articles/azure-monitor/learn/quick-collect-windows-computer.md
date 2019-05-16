@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 04/09/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 99be0cee9c939ed200bd74c94e88c3fcd989e25b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 15885137b9559bf34fb2b985398401af09caa629
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722894"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602981"
 ---
 # <a name="configure-the-log-analytics-agent-for-windows-computers-in-a-hybrid-environment"></a>Hibrid környezetben a Log Analytics-ügynököket Windows-számítógépek konfigurálása
 [Az Azure Log Analytics](../../azure-monitor/platform/agent-windows.md) tud adatokat gyűjteni közvetlenül a fizikai vagy virtuális Windows-számítógépek egy adattárba, részletes elemzés és összehasonlítás céljából. A log Analytics tud adatokat gyűjteni egy adatközpontban vagy egyéb felhőalapú környezetben. Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a windowsos számítógépekről történő adatgyűjtést néhány egyszerű lépésben.  Azure Windows virtuális gépek kapcsolatos információkért lásd: [Azure-beli virtuális gépek adatainak gyűjtését](../../azure-monitor/learn/quick-collect-azurevm.md).  
@@ -107,8 +107,8 @@ A log Analytics megadott események tud gyűjteni a Windows Eseménynapló és a
 ## <a name="view-collected-data"></a>Gyűjtött adatok megtekintése
 Most, hogy engedélyezte az adatgyűjtést, futtassa egy egyszerű naplóbeli keresés, a célszámtógépekről származó bizonyos adatok megtekintéséhez.  
 
-1. Az Azure Portalon, a kiválasztott munkaterületen válassza ki a **naplóbeli keresés** csempére.  
-2. Az a **naplóbeli keresés** ablaktáblán, a lekérdezés mezőben adja meg **Teljesítményoptimalizált** majd nyomja le az Enter vagy válassza ki a lekérdezési mezőtől jobbra található Keresés gombra:
+1. Az Azure Portalon, a kiválasztott munkaterületen válassza ki a **naplók** csempére.  
+2. Az a **naplóbeli keresés** ablaktáblán, a lekérdezés mezőben adja meg **Teljesítményoptimalizált** kattintson **futtatása** lekérdezésmező felső részén:
  
     ![Log Analytics naplóbeli keresés](media/quick-collect-windows-computer/log-analytics-portal-queryexample.png)
 

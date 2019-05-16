@@ -4,7 +4,7 @@ description: Ismerje meg a szerializálási és az ügyfél szerializálása a M
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f1e9a48b114d328e0405a2f03764df4ce29b166
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: e4a4c4ca1925a501b10cb86a2cf60646af1e5b57
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407062"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544251"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Az MSAL.NET tokengyorsítótárral szerializáció
 Után egy [jogkivonat igényelve](msal-acquire-cache-tokens.md), a Microsoft hitelesítési tár (MSAL) szerint vannak gyorsítótárazva.  Alkalmazáskód egy token beszerzése a gyorsítótárból egy token beszerzése a más módon előtt próbálja meg.  Ez a cikk ismerteti az alapértelmezett és egyéni szerializálás a token gyorsítótár az MSAL.NET.

@@ -275,7 +275,7 @@ A nyomkövetési szint függvény streamnaplókba vizsgálatát teszi lehetővé
 
 | Módszer                 | Leírás                                |
 | ---------------------- | ------------------------------------------ |
-| **Hiba (_üzenet_)**   | Naplózás, vagy alacsonyabb hibaszintet ír.   |
+| **error (_üzenet_)**   | Naplózás, vagy alacsonyabb hibaszintet ír.   |
 | **warn(_message_)**    | Figyelmeztetési szint naplózás vagy alacsonyabb ír. |
 | **info(_message_)**    | Írási és naplózás, vagy alacsonyabb információ szintet.    |
 | **verbose(_message_)** | Részletes webhelyszintű naplózás ír.           |
@@ -354,10 +354,10 @@ A `context.req` (kérelem) objektum a következő tulajdonságokkal rendelkezik:
 | ------------- | -------------------------------------------------------------- |
 | _body_        | Egy objektum, amely tartalmazza a kérelem törzsében.               |
 | _headers_     | Egy objektum, amely tartalmazza a kérelem fejlécében.                   |
-| _Metódus_      | A kérelem HTTP-metódus.                                |
+| _method_      | A kérelem HTTP-metódus.                                |
 | _originalUrl_ | A kérelem URL-címe                                        |
 | _params_      | Egy objektum, amely tartalmazza a kérés útválasztási paramétereit. |
-| _Lekérdezés_       | Egy objektum, amely tartalmazza a lekérdezési paramétereket.                  |
+| _query_       | Egy objektum, amely tartalmazza a lekérdezési paramétereket.                  |
 | _rawBody_     | A karakterláncként az üzenet törzsében.                           |
 
 
@@ -370,7 +370,7 @@ A `context.res` (válasz) objektum a következő tulajdonságokkal rendelkezik:
 | _body_    | Egy objektum, amely a válasz törzse tartalmazza.         |
 | _headers_ | A válaszfejlécek tartalmazó objektum.             |
 | _isRaw_   | Azt jelzi, hogy a válasz formázás kihagyva.    |
-| _Állapot_  | A válasz HTTP-állapotkódot.                     |
+| _status_  | A válasz HTTP-állapotkódot.                     |
 
 ### <a name="accessing-the-request-and-response"></a>A kérés- és hozzáférés 
 

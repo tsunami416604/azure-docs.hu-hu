@@ -13,22 +13,22 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 05/07/2019
+ms.date: 05/13/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 4fb42014e2c5389cf2a849ddf5114ab1f59c9e28
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: b07675e25c0380921e24059ff0107fcfe1bb3873
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65414024"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602099"
 ---
 # <a name="azure-media-services-v3-overview"></a>Az Azure Media Services v3 áttekintése
 
 Az Azure Media Services egy felhőalapú platform, amellyel olyan megoldások hozhatók létre, amelyek lehetővé teszik többek között a médiaszínvonalú videostreamelést, a hozzáférhetőség és terjesztés javítását vagy tartalmak elemzését. Függetlenül attól, hogy Ön alkalmazásfejlesztő, vagy egy ügyfélszolgálat, kormányzati intézmény vagy szórakoztató vállalat munkatársa, a Media Services olyan alkalmazások létrehozásához nyújt segítséget, amelyek kiváló minőségű multimédiás élményt nyújtanak nagy célközönség számára napjaink legnépszerűbb mobileszközein és böngészőiben. 
 
 > [!NOTE]
-> Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](developers-guide.md).
+> Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](media-services-apis-overview.md#sdks).
 
 ## <a name="what-can-i-do-with-media-services"></a>Mire használhatom a Media Services szolgáltatást?
 
@@ -75,7 +75,6 @@ Cikkek tartalmaznak kódmintákkal, amelyek bemutatják, hogyan lehet egy adott 
 
 * [Fiók létrehozása – CLI](create-account-cli-how-to.md)
 * [Hozzáférés API-k – parancssori felület](access-api-cli-how-to.md)
-* [A fejlesztés megkezdése az SDK használatával](developers-guide.md)
 * [Kódolás a HTTPS, a feladat bemeneti – .NET](job-input-from-http-how-to.md)  
 * [A figyelő események – portál](monitor-events-portal-how-to.md)
 * [A többplatformos DRM - .NET dinamikusan titkosítása](protect-with-drm.md) 

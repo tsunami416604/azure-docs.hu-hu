@@ -4,6 +4,7 @@
   items:
     - name: Tudnivalók a HDInsight-alapú Apache Hadoopról
       href: apache-hadoop-introduction.md
+      maintainContext: true
     - name: Apache Hadoop-architektúra a HDInsightban
       href: ../hdinsight-hadoop-architecture.md
       maintainContext: true

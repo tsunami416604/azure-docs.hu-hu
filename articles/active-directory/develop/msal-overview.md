@@ -4,7 +4,7 @@ description: A Microsoft-hitelesítési tár (MSAL) lehetővé teszi az alkalmaz
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2198a5efe276ce872487cde7b2ddb5cb00c58c50
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: bf7aaa0de87ffa8280a6db34c5497779a5ded41c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080897"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545879"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>A Microsoft-hitelesítési tár (MSAL) áttekintése
 A Microsoft-hitelesítési tár (MSAL) lehetővé teszi a fejlesztők beszerezni [jogkivonatok](developer-glossary.md#security-token) a Microsoft identity platform végpont eléréséhez a védett webes API-k. Webes API-k a Microsoft Graph, más Microsoft APIS, külső webes API-k vagy saját webes API-t is lehet. Az MSAL érhető el .NET, JavaScript, Android és iOS-, amely számos különböző architektúrák és platformokat támogatja.
@@ -52,7 +52,7 @@ Az MSAL használható számos alkalmazás-forgatókönyvek, beleértve a követk
 
 ## <a name="languages-and-frameworks"></a>Nyelvek és keretrendszerek
 
-| Kódtár | Támogatott platformok és keretrendszerek|
+| Szalagtár | Támogatott platformok és keretrendszerek|
 | --- | --- | 
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/>[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET-keretrendszer, a .NET Core, Xamarin Android, Xamarin iOS-, univerzális Windows-Platform|
 | ![MSAL.js](media/sample-v2-code/logo_js.png) <br/>[MSAL.js (előzetes verzió)](https://github.com/AzureAD/microsoft-authentication-library-for-js)| JavaScript/TypeScript keretrendszerek, például az AngularJS, az Ember.js vagy Durandal.js|

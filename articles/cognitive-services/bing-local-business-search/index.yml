@@ -6,8 +6,8 @@ metadata:
   title: A Bing Local Business Search API dokumentációja
   description: 'A Bing Local Business Search API egy RESTful szolgáltatás, amellyel az alkalmazások a közeli helyeket és vállalkozásokat találhatnak a keresési lekérdezések alapján.'
   services: cognitive-services
-  author: mikedodaro
-  manager: rosh
+  author: aahill
+  manager: nitinme
   ms.subservice: bing-local-business
   ms.tgt_pltfrm: na
   ms.devlang: na

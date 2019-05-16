@@ -7,14 +7,14 @@ ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1641a88a95d4c056cdd1be8d855482c80b1430cc
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 1a00d237ef94f73ebf59070d8160a7e5144b0ac8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62113750"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65736472"
 ---
-# <a name="create-and-manage-policies-to-enforce-compliance"></a>Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából
+# <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Oktatóanyag: Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából
 
 Fontos megismernie, hogy hogyan hozhat létre és kezelhet szabályzatokat az Azure-ban annak érdekében, hogy megfeleljen a vállalati szabványoknak és a szolgáltatói szerződéseknek. Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Policyt a vállalaton belüli szabályzatok létrehozásához, hozzárendeléséhez és kezeléséhez kapcsolódó gyakori feladatok elvégzésére, például a következőkre:
 
@@ -375,7 +375,7 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
 
 1. Töltse ki a **biztonságossá tétel: Kezdeményezés hozzárendelése** lap a következő példaadatok megadásával. A saját adatait is használhatja.
 
-   - Hatály: A felügyeleti csoport vagy a kezdeményezés mentett előfizetés lesz az alapértelmezett.  A hatókör módosításához mentse a kezdeményezést egy előfizetésbe vagy erőforráscsoportba a mentési helyen belül.
+   - Hatókör: A felügyeleti csoport vagy a kezdeményezés mentett előfizetés lesz az alapértelmezett.  A hatókör módosításához mentse a kezdeményezést egy előfizetésbe vagy erőforráscsoportba a mentési helyen belül.
    - Kizárásokat: Állítsa be, hogy a kezdeményezés-hozzárendelés nem alkalmazható őket a hatókörön belüli erőforrásokat.
    - Kezdeményezési definíció és a hozzárendelés neve: Biztonságos (előre fel van töltve, érvényessége a felhasználóhoz a kezdeményezés nevét) beolvasása.
    - Leírás: Ez a kezdeményezési hozzárendelés személyre szabott Ez a csoport a szabályzatdefiníciók kényszerítése.

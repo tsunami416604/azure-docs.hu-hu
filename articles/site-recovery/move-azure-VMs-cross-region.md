@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 0f73e68fd0c01d4323e8675d3fa12f7ca1051cdb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 10966a7e658e02f04137b594fc12ec09cb676cf8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62119877"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65739601"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure-beli virtuális gépek áthelyezése egy másik régióba
 
@@ -53,7 +53,7 @@ Előfordulhat, hogy áthelyezni kívánt Azure-infrastruktúra szolgáltatási (
     - Windows virtuális gépek esetén telepítse a legújabb Windows-frissítéseket, a megbízható főtanúsítványok legyenek a gépen. Leválasztott környezet esetén hajtsa végre a szabványos Windows Update és a tanúsítvány-update folyamatokat a szervezet számára.
     - Linux rendszerű virtuális gépekhez útmutatást kövesse a Linux terjesztőt, hogy a legújabb megbízható főtanúsítványok és a visszavont tanúsítványok listájának beolvasása.
 2. Győződjön meg arról, hogy nem használ hitelesítési proxyt hálózati kapcsolatok szabályozásához az áthelyezni kívánt virtuális gépek.
-3. Ha az áthelyezni kívánt virtuális gép nem rendelkezik hozzáféréssel az internethez, és használ tűzfalproxyt a kimenő hozzáférés vezérlése, ellenőrizze a [követelmények](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity).
+3. Ha az áthelyezni kívánt virtuális gép nem rendelkezik hozzáféréssel az internethez, és használ tűzfalproxyt a kimenő hozzáférés vezérlése, ellenőrizze a [követelmények](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms).
 4. Dokumentálja a forrás hálózati elrendezés és az összes olyan erőforrást, amely jelenleg használ, beleértve többek között a (,) terheléselosztók, a hálózati biztonsági csoportok és a nyilvános IP-címek az ellenőrzéshez.
 
 ## <a name="prepare-the-target-region"></a>Készítse elő a célrégió
@@ -100,7 +100,7 @@ A Site Recovery lekéri az előfizetésben és erőforráscsoportban társított
 4. Válassza ki az alapértelmezett tároló erőforrásait, vagy azokkal, amelyek az előre létrehozott használatára.
 5. Válassza ki **engedélyezze a replikációt** elindítani a feladatot.
 
-   ![A replikáció engedélyezése](media/tutorial-migrate-azure-to-azure/settings.png)
+   ![Replikáció engedélyezése](media/tutorial-migrate-azure-to-azure/settings.png)
 
  
 

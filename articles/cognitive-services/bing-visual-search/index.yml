@@ -7,7 +7,7 @@ metadata:
   description: 'Útmutató a Bing Visual Search API használatához, amellyel egy képpel kapcsolatos információkat jeleníthet meg.'
   services: cognitive-services
   author: swhite-msft
-  manager: rosh
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-visual-search
   ms.tgt_pltfrm: na

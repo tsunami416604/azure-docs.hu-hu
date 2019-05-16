@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 02cff1be85f4489a9529383d90694581f2599cba
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
-ms.translationtype: MT
+ms.openlocfilehash: ba198cbe0c362055f36cb4bdecf34a0dbad477a8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939178"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65745158"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Oktatóanyag: Data Lake Storage Gen2-adatok elérhetők az Azure Databricks Spark használatával
 
@@ -110,6 +110,32 @@ Ebben a szakaszban létrehoz egy Azure Databricks szolgáltatást az Azure porta
 
     * Válassza a **Fürt létrehozása** lehetőséget. Miután a fürt fut, notebookokat csatlakoztathat hozzá, a fürt, és a Spark-feladatok futtatása.
 
+## <a name="ingest-data"></a>Adatok betöltése
+
+### <a name="copy-source-data-into-the-storage-account"></a>Forrásadatok másolása a tárfiókba
+
+Az AzCopy használata adatokat másolni a *.csv* fájlt a Data Lake Storage Gen2-fiókba.
+
+1. Nyisson meg egy parancssori ablakot, és adja meg a következő parancsot a tárfiók-ba való bejelentkezéshez.
+
+   ```bash
+   azcopy login
+   ```
+
+   Kövesse az utasításokat, amelyek a felhasználói fiók hitelesítéséhez a parancssori ablakban jelennek meg.
+
+2. Adatokat másolni a *.csv* fiókra, adja meg a következő parancsot.
+
+   ```bash
+   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
+   ```
+
+   * Cserélje le a `<csv-folder-path>` helyőrző értékét az elérési útját a *.csv* fájlt.
+
+   * Cserélje le a `<storage-account-name>` helyőrző értéket cserélje a tárfiókja nevére.
+
+   * Cserélje le a `<file-system-name>` bármilyen nevet kíván rendelni a fájlrendszer helyőrzőt.
+
 ## <a name="create-a-file-system-and-mount-it"></a>Hozzon létre egy fájlrendszert és csatlakoztathatom azokat
 
 Ebben a szakaszban fog létrehozni egy fájlrendszert és a egy mappát a storage-fiókban.
@@ -129,9 +155,9 @@ Ebben a szakaszban fog létrehozni egy fájlrendszert és a egy mappát a storag
     ```Python
     configs = {"fs.azure.account.auth.type": "OAuth",
            "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-           "fs.azure.account.oauth2.client.id": "<application-id>",
-           "fs.azure.account.oauth2.client.secret": "<authentication-id>",
-           "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token",
+           "fs.azure.account.oauth2.client.id": "<appId>",
+           "fs.azure.account.oauth2.client.secret": "<password>",
+           "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant>/oauth2/token",
            "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
 
     dbutils.fs.mount(
@@ -140,13 +166,17 @@ Ebben a szakaszban fog létrehozni egy fájlrendszert és a egy mappát a storag
     extra_configs = configs)
     ```
 
-18. A kódblokk, cserélje le a `application-id`, `authentication-id`, `tenant-id`, és `storage-account-name` helyőrző értékeket az előfeltételeket a jelen oktatóanyag végrehajtása során gyűjtött értékek a kód blokk. Cserélje le a `file-system-name` nevét bármilyen, a helyőrző értékét szeretné adni a fájlrendszer.
+18. A kódblokk, cserélje le a `appId`, `password`, `tenant`, és `storage-account-name` helyőrző értékeket az előfeltételeket a jelen oktatóanyag végrehajtása során gyűjtött értékek a kód blokk. Cserélje le a `file-system-name` helyőrző értékét az előző lépésnél az ADLS-fájlrendszer megadott néven.
 
-   * A `application-id`, és `authentication-id` a regisztrált alkalmazást, és az active directory egyszerű szolgáltatás létrehozása során a rendszer.
+Használja ezeket az értékeket cserélje le a említett helyőrzőket.
+
+   * A `appId`, és `password` a regisztrált alkalmazást, és az active directory egyszerű szolgáltatás létrehozása során a rendszer.
 
    * A `tenant-id` az előfizetésből van.
 
    * A `storage-account-name` az Azure Data Lake Storage Gen2 storage-fiók neve.
+
+   * Cserélje le a `file-system-name` bármilyen nevet kíván rendelni a fájlrendszer helyőrzőt.
 
    > [!NOTE]
    > Éles környezetben, fontolja meg, a hitelesítési kulcs tárolása az Azure Databricksben. Ezután adja hozzá egy keresse meg a kulcs a kódblokk, a hitelesítési kulcs helyett. Ez a rövid útmutató befejezése után tekintse meg a [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikk webhelyen az Azure Databricks erre a megközelítésre példa látható.
@@ -154,32 +184,6 @@ Ebben a szakaszban fog létrehozni egy fájlrendszert és a egy mappát a storag
 19. Nyomja le az **SHIFT + ENTER** kulcsok a kód futtatásához a blokk.
 
    Ez a jegyzetfüzet tartsa nyitva, mivel a hozzáadandó parancs azt később.
-
-## <a name="ingest-data"></a>Adatok betöltése
-
-### <a name="copy-source-data-into-the-storage-account"></a>Forrásadatok másolása a tárfiókba
-
-Az AzCopy használata adatokat másolni a *.csv* fájlt a Data Lake Storage Gen2-fiókba.
-
-1. Nyisson meg egy parancssori ablakot, és adja meg a következő parancsot a tárfiók-ba való bejelentkezéshez.
-
-   ```bash
-   azcopy login
-   ```
-
-   Kövesse az utasításokat a megjelenjen a parancssori ablakban, a felhasználói fiók hitelesítéséhez.
-
-2. Adatokat másolni a *.csv* fiókra, adja meg a következő parancsot.
-
-   ```bash
-   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
-   ```
-
-   * Cserélje le a `<csv-folder-path>` helyőrző értékét az elérési útját a *.csv* fájlt.
-
-   * Cserélje le a `storage-account-name` helyőrző értéket cserélje a tárfiókja nevére.
-
-   * Cserélje le a `file-system-name` bármilyen nevet kíván rendelni a fájlrendszer helyőrzőt.
 
 ### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>CSV konvertálása parquetté a Databricks-jegyzetfüzet használatával
 

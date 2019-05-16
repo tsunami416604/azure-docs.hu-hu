@@ -1,5 +1,5 @@
 ---
-title: Tudásbázis Store (előzetes verzió) – Azure Search az első lépések
+title: A Tudásbázis store (előzetes verzió) – Azure Search első lépések
 description: Ismerje meg a lépéseket, képi elemekben gazdag dokumentumok indexelése az Azure storage-fiókban Tudásbázis-áruházban az Azure Search folyamatok AI által létrehozott küldéséhez. Itt megtekintheti, formálja át, és felhasználását, képi elemekben gazdag dokumentumokat az Azure Search és az egyéb alkalmazásokban.
 manager: cgronlun
 author: HeidiSteen
@@ -8,16 +8,20 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.author: heidist
-ms.openlocfilehash: d9006e3fcfc9691b9f3eec4b86c545fd3fea9f8a
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: e7be2dfc811caa087726339846a1de2516f1e2b2
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471744"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540728"
 ---
-# <a name="how-to-get-started-with-knowledge-store"></a>Hogyan kell a Tudásbázis Store használatának első lépései
+# <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>Hogyan lehet az Azure Search Tudásbázis store használatának első lépései
 
-[Tudásbázis Store](knowledge-store-concept-intro.md) az Azure Search szolgáltatásban, amely menti a mesterséges Intelligencia végrehajtott információbeolvasás egy indexelési folyamat Tudásbázis adatbányászatra más alkalmazásokban létrehozott új előzetes verziójú funkció. Mentett végrehajtott információbeolvasás segítségével megismerheti és finomítsa az Azure Search indexelési folyamat.
+> [!Note]
+> Tudásbázis store előzetes állapotban van, nem éles használatra szánt. A [REST API verzióját 2019-05-06-Preview](search-api-preview.md) ezt a szolgáltatást biztosít. Rendszer jelenleg nem .NET SDK-t támogatja.
+>
+
+[Tudásbázis store](knowledge-store-concept-intro.md) AI végrehajtott információbeolvasás alsóbb rétegbeli Tudásbázis adatbányászati más alkalmazásokban az Azure storage-fiók az indexelés során létrehozott menti. Mentett végrehajtott információbeolvasás segítségével megismerheti és finomítsa az Azure Search indexelési folyamat.
 
 Tudásbázis áruházbeli határozza meg a képességek alkalmazási lehetőségét. A normál Azure Search teljes szöveges keresés alkalmazási célját, a képességek alkalmazási lehetőségét AI végrehajtott információbeolvasás kereshetővé tartalom több biztosít. Tudásbázis adatbányászati forgatókönyvek esetén, a képességek alkalmazási lehetőségét a szerepkör létrehozása, feltöltése, és elemzési több adatstruktúrák tárolására vagy más alkalmazások és folyamatok modellezése.
 

@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 05/15/2019
 ms.author: apimpm
-ms.openlocfilehash: 8e3f34210627fbb455a1eca0b415cdd6de9b3681
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2362d06fa0ef795122a2d47a7a621b66fdd9470
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60527814"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780359"
 ---
 # <a name="use-an-external-azure-cache-for-redis-in-azure-api-management"></a>A Redis az Azure API Management egy külső Azure Cache használatához
 
@@ -40,11 +40,6 @@ Ismertetett témák:
 
 > [!div class="checklist"]
 > * Adjon hozzá egy külső gyorsítótár az API Management szolgáltatásban
-
-## <a name="availability"></a>Rendelkezésre állás
-
-> [!NOTE]
-> Ez a funkció jelenleg csak érhető el a **fogyasztás** az Azure API Management szintjéhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -94,6 +89,7 @@ Adjon hozzá egy külső Azure Cache redis az Azure API Management az alábbi l�
 Ha a külső gyorsítótár már konfigurálva van az Azure API Management szolgáltatásban, használat gyorsítótárazási házirendek keresztül. Lásd: [hozzáadása az Azure API Management teljesítményének javításához gyorsítótárazás](api-management-howto-cache.md) a részletes lépéseket.
 
 ## <a name="next-steps"></a>Következő lépések
+
 * További információt a gyorsítótárazási házirendekről az [API Management házirend-referencia][API Management policy reference] oktatóanyag [Gyorsítótárazási házirendek][Caching policies] szakaszában talál.
 * További információ az elemeknek a házirend-kifejezések kulcsával történő gyorsítótárazásáról: [Egyéni gyorsítótárazás az Azure API Management szolgáltatásban](api-management-sample-cache-by-key.md).
 

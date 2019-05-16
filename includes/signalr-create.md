@@ -8,31 +8,31 @@ ms.topic: include
 ms.date: 04/17/2018
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: 57407606214d8d3a305476cfbfdabca9eee937e8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 28d003e123069c47d87d81570b4a5b69b3b9d64b
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60690296"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560702"
 ---
-1. Új Azure SignalR Services-erőforrás létrehozásához először jelentkezzen be az [Azure Portalra](https://portal.azure.com). Kattintson az **+ Erőforrás létrehozása** elemre az oldal bal felső oldalán. A **Keresés a piactéren** mezőbe írja be a **SignalR Service** kifejezést, és nyomja le az **Enter** billentyűt.
+1. Az Azure SignalR Service erőforrás létrehozásához, először jelentkezzen be a [az Azure portal](https://portal.azure.com). Válassza a lap bal felső oldalán **+ erőforrás létrehozása**. Az a **keresés a piactéren** szöveget adja meg **SignalR Service**.
 
-2. Kattintson a **SignalR Service** elemre a találatok között, és kattintson a **Létrehozás** elemre.
+2. Válassza ki **SignalR Service** az eredményeket, és válassza a **létrehozás**.
 
-3. Az új **SignalR** beállítások oldalon adja hozzá a következő beállításokat az új SignalR-erőforráshoz:
+3. Az új **SignalR** beállítások lapon adja hozzá az új SignalR-erőforrás a következő beállításokat:
 
     | Name (Név) | Javasolt érték | Leírás |
     | ---- | ----------------- | ----------- |
-    | Erőforrás neve | *testsignalr* | Írja be a SignalR-erőforráshoz használandó egyedi erőforrásnevet. A névnek 1 és 63 karakter közötti sztringnek kell lennie, és kizárólag számokat, betűket és a `-` karaktert tartalmazhatja. A név nem kezdődhet a `-` karakterrel, és az egymást követő `-` karakterek nem érvényesek.|
-    | Előfizetés | Válassza ki az előfizetését |  Válassza ki a SignalR teszteléséhez használni kívánt Azure-előfizetést. Ha a fiókja csak egyetlen előfizetéssel rendelkezik, automatikusan ez lesz kiválasztva, és az **Előfizetés** legördülő lista nem jelenik meg.|
-    | Erőforráscsoport | Hozzon létre egy új *SignalRTestResources* nevű erőforráscsoportot| Válasszon ki vagy hozzon létre egy erőforráscsoportot a SignalR-erőforráshoz. Ez a csoport több erőforrás rendszerezéséhez hasznos, amelyeket az erőforráscsoport törlésekor egyszerre törölhet. További információk: [Using Resource groups to manage your Azure resources](../articles/azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez). |
-    | Hely | *USA keleti régiója* | A **Hely** beállítással megadhatja a földrajzi helyet, ahol a SignalR-erőforrást üzemeltetni kívánja. A legjobb teljesítmény érdekében azt javasoljuk, hogy az erőforrást ugyanabban a régióban hozza létre, mint az alkalmazás többi összetevőjét. |
-    | Tarifacsomag | *Ingyenes* | Jelenleg az **Ingyenes** és a **Standard** lehetőség érhető el. |
-    | Rögzítés az irányítópulton | ✔ | Jelölje be ezt a jelölőnégyzetet az erőforrás irányítópulton való rögzítéséhez, hogy könnyebben megtalálja. |
+    | Erőforrás neve | *testsignalr* | Írja be a SignalR-erőforráshoz használandó egyedi erőforrásnevet. A neve 1 – 63 karakter karakterláncot, és csak számokat, betűket és kötőjelet tartalmazhat (`-`) karaktert. A név nem kezdődhet vagy végződhet kötőjelet, és egymást követő kötőjel karakterek nem használhatók.|
+    | Előfizetés | Válassza ki az előfizetését |  Válassza ki a SignalR teszteléséhez használni kívánt Azure-előfizetést. Ha a fiókja csak egyetlen előfizetéssel rendelkezik, a rendszer automatikusan kiválasztja és a **előfizetés** legördülő menü nem jelenik meg.|
+    | Erőforráscsoport | Hozzon létre egy erőforráscsoportot *SignalRTestResources*| Válasszon ki vagy hozzon létre egy erőforráscsoportot a SignalR-erőforráshoz. Ennek a csoportnak több erőforrást, amelyeket érdemes az erőforráscsoport törlésével egy időben törlése rendszerezésének szempontjából hasznos. További információk: [Using Resource groups to manage your Azure resources](../articles/azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez). |
+    | Location egység | *USA keleti régiója* | A **Hely** beállítással megadhatja a földrajzi helyet, ahol a SignalR-erőforrást üzemeltetni kívánja. A legjobb teljesítmény érdekében azt javasoljuk, hogy az erőforrást ugyanabban a régióban hozza létre, mint az alkalmazás többi összetevőjét. |
+    | Tarifacsomag | *Ingyenes* | Jelenleg **ingyenes** és **Standard** beállítások érhetők el. |
+    | Rögzítés az irányítópulton | ✔ | Válassza ki ezt a jelölőnégyzetet a az erőforrást, így könnyebben megtalálhatja az irányítópulton rögzítve van. |
 
-4. Kattintson a **Create** (Létrehozás) gombra. Az üzembe helyezés befejezése eltarthat néhány percig.
+4. Kattintson a **Létrehozás** gombra. Az üzembe helyezés eltarthat néhány percig.
 
-5. Az üzembe helyezés befejezése után kattintson a **BEÁLLÍTÁSOK** területen található **Kulcsok** elemre. Másolja ki az elsődleges kulcs kapcsolati sztringjét. Később ezzel fogja konfigurálni, hogy az alkalmazás az Azure SignalR Service-erőforrást használja.
+5. Az üzembe helyezés befejezése után jelölje ki a **kulcsok** alatt **beállítások**. Másolja az elsődleges kulcs kapcsolati karakterláncára. Ez a karakterlánc később fogja használni az Azure SignalR Service erőforrás használatára az alkalmazás konfigurálása.
 
     A kapcsolati sztring a következőképpen fog kinézni:
     

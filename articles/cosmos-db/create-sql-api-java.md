@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: sngun
-ms.openlocfilehash: 0e80fbc96bf1241308c80d108e9f9580122b801b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b826efc770399c9e1ccbbe5ab57318d512bdbf86
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60891140"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519078"
 ---
 # <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Egy Java-alkalmazások Azure Cosmos DB SQL API-fiók használatával
 
@@ -35,8 +35,7 @@ Ez a rövid útmutató azt mutatja be, hogyan hozhatja létre és kezelheti Java
 
 Továbbá: 
 
-* [Java fejlesztői készlet (JDK) 1.8+](https://aka.ms/azure-jdks)
-    * Ubuntu rendszeren futtassa az `apt-get install default-jdk` parancsot a JDK telepítéséhez.
+* [Java fejlesztői készlet (JDK) 8-as verzió](https://aka.ms/azure-jdks)
     * Ügyeljen arra, hogy a JAVA_HOME környezeti változó arra a mappára mutasson, ahová a JDK telepítve lett.
 * [Maven](https://maven.apache.org/download.cgi) bináris archívum [letöltése](https://maven.apache.org/install.html) és [telepítése](https://maven.apache.org/)
     * Ubuntu rendszeren futtathatja az `apt-get install maven` parancsot a Maven telepítéséhez.

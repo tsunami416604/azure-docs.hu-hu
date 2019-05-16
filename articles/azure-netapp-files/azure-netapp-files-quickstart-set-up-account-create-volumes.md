@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 4/16/2019
 ms.author: b-juche
-ms.openlocfilehash: f0f3dea1c30790bb109d7cb7af07abd8fbb1ace4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2bcd8163cb3c6071812d4d247b5b333edcfc89e5
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702878"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523024"
 ---
-# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Gyors útmutató: Állítsa be az Azure NetApp Files és az NFS-kötet létrehozása 
+# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Gyors útmutató: Az Azure NetApp Files beállítása és NFS-kötet létrehozása 
 
 Ez a cikk bemutatja, hogyan gyorsan Azure NetApp fájlok beállítását, és hozzon létre egy kötetet. 
 
@@ -34,9 +34,10 @@ Ebben a rövid, állítsa be a következő elemek:
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előzetes teendők 
+## <a name="before-you-begin"></a>Előkészületek 
 
-Kell tartoznia a nyilvános előzetes program és az engedélyezési listához hozzáadni kívánt Microsoft.NetApp erőforrás-szolgáltató elérésére. A nyilvános előzetes verzió programjához való csatlakozással kapcsolatos részletekért lásd az [Azure NetApp Files nyilvános előzetes verzió regisztrációs lapját](https://aka.ms/nfspublicpreview). 
+> [!IMPORTANT] 
+> Szeretne kapni a NetApp fájlokat az Azure-szolgáltatáshoz való hozzáférést.  Kérjen hozzáférést a szolgáltatásban, lásd: a [Azure NetApp fájlok nagyságától alkalmazásbeküldési oldalára](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u).  Egy hivatalos megerősítő e-mailt a NetApp fájlokat az Azure-csapat meg kell várnia, mielőtt továbblépne. 
 
 ## <a name="register-for-azure-netapp-files-and-netapp-resource-provider"></a>A Azure NetApp-fájlok és a NetApp erőforrás-szolgáltató regisztrálása
 

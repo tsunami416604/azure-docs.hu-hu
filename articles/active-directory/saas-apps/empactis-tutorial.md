@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: d4d9e988f54abc52eedf0dfc26c78a2d16f72032
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59277724"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65737433"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-empactis"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Empactis
 
@@ -178,7 +178,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy felhasználói Britta Simon nevű Empactis hoz létre. Együttműködve [Empactis támogatási csoportjának](mailto:support@empactis.com) a felhasználók hozzáadása az Empactis platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

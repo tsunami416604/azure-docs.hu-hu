@@ -9,19 +9,20 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 04/08/2019
-ms.openlocfilehash: 83842893e0ffc6bb954832cd65b6312b59bbcaa3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 05/16/2019
+ms.openlocfilehash: 8d186ae83e1016de9c4548d4b1c39303025a5270
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60516560"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65758459"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>Gyors útmutató: 1 – az Azure Search-index létrehozásaC#
 > [!div class="op_single_selector"]
 > * [C#](search-create-index-dotnet.md)
 > * [Portál](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
+> * [Python](search-get-started-python.md)
 > * [Postman](search-fiddler.md)
 >*
 
@@ -36,11 +37,11 @@ Ez a cikk végigvezeti a létrehozásának folyamatán [Azure Search-index](sear
 
 Ez a rövid útmutató az alábbi szolgáltatások, eszközök és adatok használatosak. 
 
-[Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben a rövid útmutatóban egy ingyenes szolgáltatás használhatja.
++ [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben a rövid útmutatóban egy ingyenes szolgáltatás használhatja.
 
-[A Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), bármely kiadás esetén. Mintakód és útmutató az ingyenes közösségi kiadása lettek tesztelve.
++ [A Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), bármely kiadás esetén. Mintakód és útmutató az ingyenes közösségi kiadása lettek tesztelve.
 
-[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) biztosít egy .NET Core nyelven írt konzolalkalmazással a Mintamegoldás C#, az Azure-minták GitHub-adattárában található. Töltse le és csomagolja ki a megoldást. Alapértelmezés szerint a megoldások olyan csak olvasható. Kattintson a jobb gombbal a megoldás, és törölje a csak olvasható attribútumot, így módosíthatja a fájlokat. A megoldás adatokat tartalmazza.
++ [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) biztosít egy .NET Core nyelven írt konzolalkalmazással a Mintamegoldás C#, az Azure-minták GitHub-adattárában található. Töltse le és csomagolja ki a megoldást. Alapértelmezés szerint a megoldások olyan csak olvasható. Kattintson a jobb gombbal a megoldás, és törölje a csak olvasható attribútumot, így módosíthatja a fájlokat. A megoldás adatokat tartalmazza.
 
 ## <a name="get-a-key-and-url"></a>Egy kulcsot és egy URL-cím beszerzése
 

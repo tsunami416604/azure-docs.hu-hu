@@ -7,84 +7,19 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/06/2019
-ms.openlocfilehash: 4271d94f07125a870cc4aa859b01db819d583f40
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
-ms.translationtype: MT
+ms.date: 05/14/2019
+ms.openlocfilehash: efc3801ab03f739761a41bec754f975fe43dcd8e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406453"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65757521"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Gyors útmutató: Hozzon létre egy Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) az Azure Portalon
 
-Az Azure Database for PostgreSQL egy felügyelt szolgáltatás, amely lehetővé teszi magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, felügyeletét és skálázását a felhőben. Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) kiszolgáló csoportot az Azure portal használatával. Elosztott adatok fog feltárja: horizontális skálázási táblák történik a csomópontokon, mintául szolgáló adatok bevitele, és több csomóponton végrehajtott lekérdezések futtatása.
+Az Azure Database for PostgreSQL egy felügyelt szolgáltatás, amely lehetővé teszi magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, felügyeletét és skálázását a felhőben. Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) kiszolgáló csoportot az Azure portal használatával. Vizsgáljuk meg, hogy elosztott adatokon: a horizontális skálázás táblák történik a csomópontokon, mintául szolgáló adatok bevitele, és több csomóponton végrehajtott lekérdezések futtatása.
 
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
-
-## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
-
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-
-## <a name="create-an-azure-database-for-postgresql"></a>Azure-adatbázis létrehozása PostgreSQL-hez
-
-Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz létrehozásához:
-1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
-2. Az **Új** panelen válassza az **Adatbázisok** lehetőséget, majd az **Adatbázisok** panelen válassza az **Azure-adatbázis PostgreSQL-kiszolgálóhoz** lehetőséget.
-3. Az üzembe helyezési lehetőséget választotta, kattintson a **létrehozás** gomb alatt **nagy kapacitású (Citus) kiszolgálócsoport - előzetes verzió.**
-4. Adja meg az alábbi adatokat az új kiszolgálóűrlapon:
-   - Erőforráscsoport: kattintson a **új létrehozása** a szövegmezőbe, a mező alatti hivatkozás. Írjon be egy nevet, például **myresourcegroup**.
-   - Kiszolgálócsoport neve: Adjon meg egy egyedi nevet az új kiszolgálócsoport, amelyet egy kiszolgáló altartomány is használhat.
-   - Rendszergazdai felhasználónév: Adjon meg egy egyedi felhasználónév, az adatbázishoz való csatlakozáshoz később használandó.
-   - Jelszó: legalább nyolc karakter hosszúságúnak kell lennie, és tartalmaznia kell hármat a következő kategóriákban – angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0 – 9) és nem alfanumerikus karakterek (!, $, #, %, stb.)
-   - Hely: tegye lehetővé számukra a lehető leggyorsabb hozzáférést biztosítsa az adatokhoz a felhasználók legközelebb eső helyet használja.
-
-   > [!IMPORTANT]
-   > A kiszolgáló itt megadott rendszergazdai bejelentkezési nevét és jelszavát kell majd használnia a rövid útmutató későbbi szakaszaiban a kiszolgálóra és az adatbázisaira való bejelentkezéshez. Jegyezze meg vagy jegyezze fel ezt az információt későbbi használatra.
-
-5. Kattintson a **konfigurálása kiszolgálócsoport**. Ebben a szakaszban nem változik, hagyja meg a beállításokat, és kattintson a **mentése**.
-6. Kattintson a **felülvizsgálat + létrehozása** , majd **létrehozás** a kiszolgáló üzembe helyezéséhez. Az üzembe helyezés eltarthat néhány percig.
-7. Az oldal átirányítja központi telepítésének figyeléséhez. Amikor az élő állapota változik **az üzembe helyezés folyamatban van** való **az üzembe helyezés befejeződése**, kattintson a **kimenetek** menüpont az oldal bal oldalán található.
-8. A kimenetek lap tartalmaz egy gomb mellett, hogy az érték másolása a vágólapra a koordinátor állomásnévvel. Jegyezze fel ezt az információt későbbi használatra.
-
-## <a name="configure-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály konfigurálása
-
-Az Azure-adatbázis PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) szolgáltatást használ a kiszolgálószintű tűzfal. Alapértelmezés szerint a tűzfal megakadályozza, hogy külső alkalmazások és eszközök csatlakozzanak a koordinátor-csomópont és minden olyan kiszolgálón lévő adatbázisokra. Azt hozzá kell adnia egy szabályt, amely egy adott IP-címtartomány számára megnyitja a tűzfalat.
-
-1. Az a **kimenetek** szakaszt, ahol korábban másolt a koordinátor-csomópont állomásnév, kattintson ismét a **áttekintése** menüpontot.
-
-2. Az üzemelő példány méretezési csoport neve lesz a következő előtaggal "sg –". Keresse meg azt az erőforrások listájában, és kattintson rá.
-
-3. Kattintson a **tűzfal** alatt **biztonsági** a bal oldali menüben.
-
-4. Kattintson a hivatkozásra **+ Hozzáadás tűzfalszabályt az aktuális ügyfél IP-cím**. Végül kattintson a **mentése** gombra.
-
-5. Kattintson a **Save** (Mentés) gombra.
-
-   > [!NOTE]
-   > Azure PostgreSQL-kiszolgáló az 5432-es porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 5432-es porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 5432-es portot.
-   >
-
-## <a name="connect-to-the-database-using-psql-in-cloud-shell"></a>Csatlakozás az adatbázishoz a psql használatával a Cloud Shellben
-
-Használjuk a [psql](https://www.postgresql.org/docs/current/app-psql.html) parancssori segédprogramot az Azure Database for PostgreSQL-kiszolgálóhoz való kapcsolódáshoz.
-1. Indítsa el az Azure Cloud Shell-t a felső navigációs ablakban található terminálikonnal.
-
-   ![Azure-adatbázis PostgreSQL-hez - Azure Cloud Shell terminálikon](./media/quickstart-create-hyperscale-portal/psql-cloud-shell.png)
-
-2. Az Azure Cloud Shell megnyílik a böngészőben, amely lehetővé teszi a bash-parancsok beírását.
-
-   ![Azure-adatbázis PostgreSQL-hez - Azure Shell Bash parancssor](./media/quickstart-create-hyperscale-portal/psql-bash.png)
-
-3. A Cloud Shell parancssornál csatlakozzon az Azure-adatbázis PostgreSQL-kiszolgálóhoz a psql-parancsok használatával. A következő formátum segítségével kapcsolódhat egy [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) segédprogrammal rendelkező Azure-adatbázis PostgreSQL-kiszolgálóhoz:
-   ```bash
-   psql --host=<myserver> --username=myadmin --dbname=citus
-   ```
-
-   Például a következő parancsot a nevű alapértelmezett adatbázishoz kapcsolódik **citus** PostgreSQL-kiszolgálón **mydemoserver.postgres.database.azure.com** hozzáférési hitelesítő adatok használatával. Adja meg a kiszolgáló-rendszergazdai jelszavát, amikor a rendszer kéri.
-
-   ```bash
-   psql --host=mydemoserver.postgres.database.azure.com --username=myadmin --dbname=citus
-   ```
+[!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
 ## <a name="create-and-distribute-tables"></a>Létrehozása és terjesztése a táblák
 
@@ -96,11 +31,11 @@ Nagy kapacitású belüli kiszolgálók van háromféle táblák:
 - Referencia táblák (több példányban karbantartása)
 - Helyi táblákkal (gyakran használt belső felügyeleti táblák)
 
-Ebben a rövid útmutatóban elsősorban az fogunk összpontosítani elosztott táblák és az első ismeri azokat.
+Ez a rövid útmutatóban elsősorban az fogunk összpontosítani elosztott táblák és az első ismeri azokat.
 
 Az adatmodell fogunk dolgozni használata egyszerű: a GitHub felhasználói és az esemény adatait. Események közé az elágazásában létrehozása, a git véglegesíti az egy szervezet, és egyéb kapcsolódó.
 
-Amint csatlakozott psql-jén keresztül hozzunk létre a táblázatok. A psql-konzol futtatása:
+Miután csatlakozott a psql-jén keresztül, hozzuk létre a táblázatok. A psql-konzol futtatása:
 
 ```sql
 CREATE TABLE github_events
@@ -127,9 +62,9 @@ CREATE TABLE github_users
 );
 ```
 
-A `payload` mezőjében `github_events` egy JSONB datatype adattípusa. JSONB a JSON-adattípus szerepel a Postgres bináris formátum. Ez megkönnyíti az egy rugalmas séma tárolásához egy oszlopban.
+A `payload` mezőjében `github_events` egy JSONB datatype adattípusa. JSONB a JSON-adattípus szerepel a Postgres bináris formátum. Az adattípus egyszerűen egy rugalmas séma tárolásához egy oszlopban.
 
-Postgres hozhat létre egy `GIN` index nA tomto typu ami indexeli-e minden kulcs és a benne lévő érték. Egy index használatával válik a gyors és egyszerű lekérdezési rendelkező különböző körülmények között. Most pedig hozzon létre néhány indexek, hogy az adatok betöltése előtt. A psql-jének:
+Postgres hozhat létre egy `GIN` index, típus, amely indexeli-e minden kulcs és a benne lévő érték. Az index, válik a gyors és egyszerű lekérdezési rendelkező különböző körülmények között. Most pedig hozzon létre néhány indexek, hogy az adatok betöltése előtt. A psql-jének:
 
 ```sql
 CREATE INDEX event_type_index ON github_events (event_type);
@@ -143,7 +78,14 @@ SELECT create_distributed_table('github_events', 'user_id');
 SELECT create_distributed_table('github_users', 'user_id');
 ```
 
-Készen állunk betölteni az adatokat. Töltse le a két példa fájlt [users.csv](https://examples.citusdata.com/users.csv) és [events.csv](https://examples.citusdata.com/events.csv). Miután letöltötte a fájlokat, csatlakozzon az adatbázishoz a psql, folyamatban van arra, hogy futtassa a letöltött fájlokat tartalmazó könyvtárat psql használatával. Az adatok betöltése a `\copy` parancsot:
+Készen állunk betölteni az adatokat. A psql-jének továbbra is, rendszerhéj a fájlok letöltésére:
+
+```sql
+\! curl -O https://examples.citusdata.com/users.csv
+\! curl -O https://examples.citusdata.com/events.csv
+```
+
+Ezután az adatok betöltése az a fájlokat az elosztott táblák:
 
 ```sql
 \copy github_events from 'events.csv' WITH CSV

@@ -10,19 +10,21 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: ad0d990554d9ff49bed3e9da7097c87c06c7152f
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
-ms.translationtype: MT
+ms.date: 05/16/2019
+ms.openlocfilehash: 3260ffaba2ab91ee561a0430310883bda8f65269
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415537"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65740406"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Oktatóanyag: MongoDB át az Azure Cosmos DB API a mongodb-hez offline a DMS használatával
+
 Az Azure Database Migration Service használatával történő offline áttelepítéshez (egyszeri) az adatbázisok egy helyszíni vagy felhőbeli Azure Cosmos DB API a MongoDB-példány a mongodb-hez.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
+>
 > * Egy Azure Database Migration Service-példány létrehozása.
 > * Migrálási projekt létrehozása az Azure Database Migration Service használatával.
 > * A migrálás futtatása.
@@ -40,7 +42,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
     > [!NOTE]
     > Virtuális hálózathoz a telepítés során, ha az ExpressRoute hálózati a Microsoft társviszony-létesítés használja, hozzá a következő szolgáltatás [végpontok](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) az alhálózathoz, amelyben üzembe fogja helyezni a szolgáltatást:
-
+    >
     > * Cél adatbázis végpont (például SQL-végpont, Cosmos-DB végpont, és így tovább)
     > * Storage-végpont
     > * Service bus-végpont
@@ -115,10 +117,22 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 1. Az a **forrás részletei** képernyőn, adja meg a forráskiszolgáló MongoDB kapcsolati adatait.
 
-   Kapcsolati karakterlánc mód használata is, és adjon meg egy fájl blobtárolóba, amelyben a gyűjtemény adatait szeretné áttelepíteni már kiírt helyét.
+    Van egy forrás csatlakozni három mód:
+   * **Normál módú**, amely fogad egy teljesen minősített tartománynevét vagy IP-cím, Port száma és kapcsolat hitelesítő adatait.
+   * **Kapcsolati karakterlánc mód**, amely fogad egy MongoDB-kapcsolati karakterláncot, a cikkben leírtak szerint [kapcsolati URI karakterláncként](https://docs.mongodb.com/manual/reference/connection-string/).
+   * **Az Azure storage-ból adatokat**, amely elfogadja a blobtároló SAS URL-címet. Válassza ki **Blob tartalmazza a BSON memóriaképek** rendelkezik-e a blob-tároló a MongoDB által előállított BSON memóriaképek [bsondump eszköz](https://docs.mongodb.com/manual/reference/program/bsondump/), és a kijelölését, ha a tároló a JSON-fájlokat tartalmazza.
 
-   > [!NOTE]
-   > Az Azure Database Migration Service migrálhatja bson vagy json-dokumentumokat az Azure Cosmos DB API a MongoDB-gyűjteményt.
+    Ha ezt a lehetőséget választja, lehet, hogy a tárfiók kapcsolati sztringje megjelenik-e a következő formátumban:
+
+     ```
+     https://blobnameurl/container?SASKEY
+     ```
+
+     Emellett az Azure BLOB storage típusú memóriakép információk alapján, tartsa a következő részletességi szem előtt.
+
+     * A BSON memóriaképek blob-tárolóban lévő adatok bsondump formátumúnak kell lennie, hogy adatfájlokat a formátum collection.bson tartalmazó adatbázisai elnevezett mappákba kerülnek. Metaadat-fájlok (ha van ilyen) a következő formátumban kell elnevezni *gyűjtemény*. metadata.json.
+
+     * JSON-memóriaképek blob-tárolóban lévő fájlokat tartalmazó adatbázisok elnevezett mappákba kell elhelyezni. Minden adatbázis mappában található fájlokat kell helyezni egy almappát "adatok" néven, és elnevezett, a következő formátumban *gyűjtemény*.json. Metaadat-fájlok (ha vannak) kell helyezni egy almappát "metaadatok" nevű, és használja ugyanazt a formátumot, nevű *gyűjtemény*.json. A metaadatok fájlok ugyanebben a formátumban kell lennie, mert a MongoDB bsondump eszköz állítja elő.
 
    Amikor a DNS-névfeloldás nem lehetséges, az IP-címet is használhatja.
 

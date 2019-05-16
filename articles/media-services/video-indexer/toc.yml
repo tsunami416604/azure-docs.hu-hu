@@ -46,8 +46,6 @@
       href: video-indexer-view-edit.md
     - name: Szerkesztő használata projektek létrehozásához
       href: use-editor-create-project.md
-    - name: Videóelemzések létrehozása meglévő videókból
-      href: video-indexer-create-new.md
     - name: Widgetek beágyazása az alkalmazásba
       href: video-indexer-embed-widgets.md
     - name: Tartalommodellek testreszabása

@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 7380cf6727817d99edbedf5552c8bea42f177074
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59261683"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65744390"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező N2F - költségjelentés
 
@@ -242,7 +242,7 @@ Ahhoz, hogy az Azure AD-felhasználók N2F - költségjelentések, jelentkezzen 
     > [!NOTE]
     > Ha a felhasználó hozzáadása során fennálló problémák, lépjen kapcsolatba [N2F - költségjelentések támogatási csoport](mailto:support@n2f.com)
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f7adcb7d4516e9013bf87306fff77b566885e018
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 23aeeb8cd14ec2d0654525af42b48f59a6f7564f
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870855"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65520326"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása        
 
@@ -45,7 +45,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
 A replikálási feladat befejeződése után ellenőrizheti a replikálás állapotát, módosíthatja a replikációs beállításokat, és tesztelheti az üzemelő példányt.
 
-1. A Virtuális gép menüben kattintson a **Vészhelyreállítás** elemre.
+1. A **Műveletek** területen kattintson a **Vészhelyreállítás** elemre.
 2. Ellenőrizheti a replikálás állapotát, a létrehozott helyreállítási pontokat, valamint a forrás- és célrégiókat a térképen.
 
    ![A replikálás állapota](media/azure-to-azure-quickstart/replication-status.png)

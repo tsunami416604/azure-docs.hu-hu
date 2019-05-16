@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: overview
 ms.date: 11/20/2017
 ms.author: sngun
-ms.openlocfilehash: 68190ad15ed70ac831c21582d60bc54da5d3c14b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 48c83dd77e12df86ebb68f183ad694bf8439d365
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60913480"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606369"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Bevezetés: az Azure Cosmos DB: Tábla API
 
@@ -25,6 +25,9 @@ Az [Azure Cosmos DB](introduction.md) Table API-t biztosít olyan, az Azure Tabl
 * [Automatikus másodlagos indexelés](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
 
 Ezek az Azure Table Storage számára írt alkalmazások kódmódosítás nélkül migrálhatók az Azure Cosmos DB-be a Table API-val, és ki tudják használni a prémium képességek előnyeit. A Table API a .NET, a Java, a Python és a Node.js környezetekhez is rendelkezik ügyfél-SDK-val.
+
+> [!IMPORTANT]
+> A .NET-keretrendszer SDK [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) van a karbantartás mód, és hamarosan el fognak évülni. Frissítsen az új .NET Standard kódtár [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) továbbra is a legújabb funkciók, a Table API által támogatott.
 
 ## <a name="table-offerings"></a>Table ajánlatok
 Ha jelenleg az Azure Table Storage szolgáltatást használja, az alábbi előnyökben részesülhet az Azure Cosmos DB Table API-ra való áttéréskor:

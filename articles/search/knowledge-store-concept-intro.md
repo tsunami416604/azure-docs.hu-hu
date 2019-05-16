@@ -1,5 +1,5 @@
 ---
-title: Tudásbázis Store bemutatása és áttekintése – Azure Search
+title: Tudásbázis áruház bemutatása és áttekintése (előzetes verzió) – Azure Search
 description: Továbbfejlesztett dokumentumokat küldeni az Azure storage, ahol megtekintheti, formálja át és felhasználását képi elemekben gazdag dokumentumokat az Azure Search és az egyéb alkalmazásokban.
 manager: cgronlun
 author: HeidiSteen
@@ -9,32 +9,36 @@ ms.devlang: NA
 ms.topic: overview
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: 3000016de934aaa3faab96821f9747ea4b571ef7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 4a27e4d8f2fbaafe6d27a3e3cabd31aa715b9d80
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026997"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540752"
 ---
-# <a name="what-is-knowledge-store-in-azure-search"></a>Mit jelent a Tudásbázis Store az Azure Search?
+# <a name="what-is-knowledge-store-in-azure-search"></a>Mi az Azure Search Tudásbázis áruház?
 
-Tudásbázis Store az Azure Search szolgáltatásban választható szolgáltatás jelenleg nyilvános előzetes verzióban, amely menti a jelentéstétellel dokumentumok és metaadat-mesterséges intelligencián alapuló indexelése folyamat által létrehozott [(cognitive search)](cognitive-search-concept-intro.md). Tudásbázis Store alapját a folyamat részeként konfigurálnia az Azure storage-fiókhoz. Ha engedélyezve van, a keresési szolgáltatás ezt a tárfiókot minden egyes képi elemekben gazdag dokumentum reprezentációját gyorsítótárazásához használja. 
+> [!Note]
+> Tudásbázis store előzetes állapotban van, nem éles használatra szánt. A [REST API verzióját 2019-05-06-Preview](search-api-preview.md) ezt a szolgáltatást biztosít. Rendszer jelenleg nem .NET SDK-t támogatja.
+>
+
+Tudásbázis tároló egy olyan opcionális szolgáltatás, amely menti a jelentéstétellel dokumentumok és metaadat-mesterséges intelligencián alapuló indexelése folyamat által létrehozott Azure Search [(cognitive search)](cognitive-search-concept-intro.md). Tudásbázis tároló Azure storage-fiók, amely a folyamat részeként konfigurálnia alapját. Ha engedélyezve van, a keresési szolgáltatás ezt a tárfiókot minden egyes képi elemekben gazdag dokumentum reprezentációját gyorsítótárazásához használja. 
 
 A kognitív keresés korábban már használta, ha már tudja, hogy használható-e a szakértelmével áthelyezése egy dokumentumot keresztül végrehajtott információbeolvasás sorozata. Az eredménye lehet az Azure Search-index, vagy (új az előzetes verzió) leképezések a Tudásbázis-tárolóban.
 
 Leképezések a mechanizmus egy alsóbb rétegbeli alkalmazás felhasználásra adatok rendszerezéséhez. Használhat [Tártallózó](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) az Azure storage, vagy minden olyan alkalmazás, amely csatlakozik az Azure storage számára készült, amelyek új lehetőségeket felhasználásához nyit bővített dokumentumokat. Néhány példa olyan adatelemzési folyamatok és egyéni elemzési.
 
-![Adatfolyamat ábrája a Tudásbázis Store](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Tudásbázis Store a adatfolyamat ábrája")
+![Tudásbázis-tárolójának adatfolyamat ábrája](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Tudásbázis-tárolójának adatfolyamat ábrája")
 
-Tudásbázis Store használatához adjon hozzá egy `knowledgeStore` elem a képességek alkalmazási lehetőségét, amely meghatározza a többlépcsős műveletek egy indexelési folyamat. A futtatás során az Azure Search létrehoz egy tárolóhelyet az Azure storage-fiókban, és a definíciók és a folyamat által létrehozott tartalom alapján tölti ki.
+Tudásbázis tároló használatára, adjon hozzá egy `knowledgeStore` elem a képességek alkalmazási lehetőségét, amely meghatározza a többlépcsős műveletek egy indexelési folyamat. A futtatás során az Azure Search létrehoz egy tárolóhelyet az Azure storage-fiókban, és a definíciók és a folyamat által létrehozott tartalom alapján tölti ki.
 
-## <a name="benefits-of-knowledge-store"></a>Tudásbázis Store előnyei
+## <a name="benefits-of-knowledge-store"></a>Tudásbázis store előnyei
 
 A Tudásbázis biztosít, struktúra, a környezet és a tényleges tartalom - származó strukturálatlan és részben strukturált adatok fájlok, blobok, képfájlokat, amelyek az elemzés, például adatokat, vagy akár strukturált, amely az új űrlapok átalakítja az adatokat tárolja. Az egy [lépésenkénti útmutató](knowledge-store-howto.md) első kézből JSON-dokumentumok sűrű alépítményeit, új struktúrákat, az elkészített particionálva és más módon elérhetővé vált a aktiválásához hogyan látható írt ebben az előzetes verzióban, folyamatok például a machine learning és az adatok adatelemzési számítási feladatokhoz.
 
-Bár kíváncsi a mesterséges intelligencián alapuló indexelése folyamat eredményezhet, a Tudásbázis Store előnye rendszer azon képessége, hogy alakítsa át az adatokat. Kezdje egy egyszerű indexmezők előfordulhat, hogy, és adja hozzá a struktúra, amely új struktúrákat, fogyóeszközök más alkalmazásokban az Azure Search mellett, majd kombinálhatja növekvő mértékű majd megismételheti.
+Bár ez hasznos a mesterséges intelligencián alapuló indexelése folyamat eredményezhet, a Tudásbázis tár előnye rendszer azon képessége, hogy alakítsa át az adatokat. Kezdje egy egyszerű indexmezők előfordulhat, hogy, és adja hozzá a struktúra, amely új struktúrákat, fogyóeszközök más alkalmazásokban az Azure Search mellett, majd kombinálhatja növekvő mértékű majd megismételheti.
 
-A felsorolt, Tudásbázis Store előnyei a következők:
+A felsorolt, Tudásbázis store előnyei a következők:
 
 + A képi elemekben gazdag dokumentumok felhasználására [elemzési és jelentéskészítési eszközökkel](#tools-and-apps) keresési eltérő. A Power BI a Power Query kényszerítő közül választhat, de bármely eszköz vagy alkalmazás, amely képes kapcsolódni az Azure storage által létrehozott Tudásbázis áruházbeli kérheti le.
 
@@ -235,11 +239,11 @@ Több szolgáltatás használatakor az összes szolgáltatását ugyanabban a r�
 
 **4. lépés: [A portál használatának első lépései](cognitive-search-quickstart-blob.md) – vagy – [mintaadatok REST és a Postman használatával – első lépések](knowledge-store-howto.md)** 
 
-Használhatja a többi `api-version=2019-05-06-Preview` egy mesterséges intelligencián alapuló folyamatot, amely tartalmazza a Tudásbázis Store létrehozására. A legújabb előzetes verziója API, a képességek alkalmazási lehetőségét objektum tartalmazza a `knowledgeStore` definíciója.
+Használhatja a többi `api-version=2019-05-06-Preview` egy mesterséges intelligencián alapuló folyamatot, amely tartalmazza a Tudásbázis tároló létrehozására. A legújabb előzetes verziója API, a képességek alkalmazási lehetőségét objektum tartalmazza a `knowledgeStore` definíciója.
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 
-Tudásbázis Store számos előnyt kínál, de nem kizárólag a jelentéstétellel dokumentumok keresési eltérő forgatókönyvekben használatát engedélyezi, vezérlők költség, és eltéréseket a Adatbővítés folyamat kezelése. Ezek a funkciók minden érhetők el egyszerűen egy storage-fiók hozzáadása a képességek alkalmazási lehetőségét, és a frissített kifejezés nyelv használatával leírtak szerint által használandó [hogyan kezdheti el a Tudásbázis Store](knowledge-store-howto.md). 
+Tudásbázis store számos olyan előnyt, de nem korlátozódik a jelentéstétellel dokumentumok keresési eltérő forgatókönyvekben használatát engedélyezi, vezérlők költség, és kezelése a Adatbővítés folyamat eltéréseket. Ezek a funkciók minden érhetők el egyszerűen egy storage-fiók hozzáadása a képességek alkalmazási lehetőségét, és a frissített kifejezés nyelv használatával leírtak szerint által használandó [hogyan kezdheti el a Tudásbázis store](knowledge-store-howto.md). 
 
 ## <a name="next-steps"></a>További lépések
 

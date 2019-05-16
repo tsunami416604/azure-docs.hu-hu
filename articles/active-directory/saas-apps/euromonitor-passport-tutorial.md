@@ -16,11 +16,11 @@ ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1cdf8f78a54c89ac89441a87ca0ba34d61a3d2a2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57888314"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "65740110"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-euromonitor-passport"></a>Oktatóanyag: Az Azure Active Directory-integráció Euromonitor Passport
 
@@ -206,7 +206,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban egy Euromonitor Passport Britta Simon nevű felhasználó létrehozásához. Együttműködve [Euromonitor Passport támogatási csapatának](mailto:passport.support@euromonitor.com) a felhasználók hozzáadása az Euromonitor Passport platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

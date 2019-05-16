@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Tárolók és mikroszolgáltatások az Azure-csapat a Kubernetes-fejlesztés
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
 manager: jeconnoc
-ms.openlocfilehash: 1414cc56809263a90a4bfea16db332e2f6a5e0bc
-ms.sourcegitcommit: e729629331ae10097a081a03029398525f4147a4
-ms.translationtype: MT
+ms.openlocfilehash: 437c6284c563f85e25d2c5b81734ea3bc0507701
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/25/2019
-ms.locfileid: "64514081"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596995"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Gyors útmutató: A Kubernetes Azure-fejlesztési szóközzel csoportos fejlesztése
 
@@ -25,7 +25,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 - A mikroszolgáltatásokat több nagy alkalmazás telepítése egy fejlesztési területre.
 - Egyetlen mikroszolgáltatást tesztelje az alkalmazás teljes környezetében egy elkülönített fejlesztési területen.
 
-![Az Azure fejlesztési tárolóhelyek kerékpárt megosztása mintaalkalmazás](media/quickstart-team-development/bikeshare.png)
+![Az Azure fejlesztői, szóközök csoportos fejlesztése](media/azure-dev-spaces/collaborate-graphic.gif)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -125,7 +125,9 @@ http://dev.bikesharingweb.fedcab0987.eus.azds.io/  Available
 http://dev.gateway.fedcab0987.eus.azds.io/         Available
 ```
 
-Keresse meg a *bikesharingweb* nyissa meg a nyilvános URL-CÍMÉT a szolgáltatás a `azds list-uris` parancsot. A fenti példában, nyilvános URL-CÍMÉT a *bikesharingweb* szolgáltatás *http://dev.bikesharingweb.fedcab0987.eus.azds.io/*. Válassza ki *Aurelia Briggs (ügyfél)* felhasználóként. Ellenőrizze, hogy a szöveg megtekintéséhez *Üdvözöljük Aurelia Briggs |} Kijelentkezés* tetején.
+Keresse meg a *bikesharingweb* nyissa meg a nyilvános URL-CÍMÉT a szolgáltatás a `azds list-uris` parancsot. A fenti példában, nyilvános URL-CÍMÉT a *bikesharingweb* szolgáltatás `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`. Válassza ki *Aurelia Briggs (ügyfél)* felhasználóként. Ellenőrizze, hogy a szöveg megtekintéséhez *Üdvözöljük Aurelia Briggs |} Kijelentkezés* tetején.
+
+![Az Azure fejlesztési tárolóhelyek kerékpárt megosztása mintaalkalmazás](media/quickstart-team-development/bikeshare.png)
 
 ## <a name="create-child-dev-spaces"></a>Gyermek-fejlesztési tárolóhelyek létrehozása
 
@@ -162,7 +164,7 @@ http://azureuser2.s.dev.gateway.fedcab0987.eus.azds.io/         Available
 
 Győződjön meg arról, hogy az URL-címek szerint jelenik meg a `azds list-uris` parancs van a *azureuser2.s.dev* előtag. Ez az előtag megerősíti, hogy van-e az aktuális hely kiválasztott *azureuser2*, azaz gyermeke *fejlesztési*.
 
-Keresse meg a *bikesharingweb* szolgáltatásba a *dev/azureuser2* fejlesztési terület nyissa meg a nyilvános URL-CÍMÉT a `azds list-uris` parancsot. A fenti példában, nyilvános URL-CÍMÉT a *bikesharingweb* szolgáltatás *http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/*. Válassza ki *Aurelia Briggs (ügyfél)* felhasználóként. Ellenőrizze, hogy a szöveg megtekintéséhez *Üdvözöljük Aurelia Briggs |} Kijelentkezés* tetején.
+Keresse meg a *bikesharingweb* szolgáltatásba a *dev/azureuser2* fejlesztési terület nyissa meg a nyilvános URL-CÍMÉT a `azds list-uris` parancsot. A fenti példában, nyilvános URL-CÍMÉT a *bikesharingweb* szolgáltatás `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`. Válassza ki *Aurelia Briggs (ügyfél)* felhasználóként. Ellenőrizze, hogy a szöveg megtekintéséhez *Üdvözöljük Aurelia Briggs |} Kijelentkezés* tetején.
 
 ## <a name="update-code"></a>Kód frissítése
 

@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan kezelje a hibákat és kivételeket, feltétele
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -16,12 +16,12 @@ ms.date: 04/10/2019
 ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 43c98181c926410bea2acf64bf1ed4d588c12616
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f1972a870ac15e1ca8dde963eef6cf7f1caf3039
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138967"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544186"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>Kivételek és hibák az MSAL használatával
 A Microsoft hitelesítési tár (MSAL) kivételek hibaelhárítása alkalmazásfejlesztők számára, és nem a végfelhasználók számára való megjelenítése, készültek. Nem honosított kivétel üzeneteket.
@@ -38,7 +38,7 @@ Ha [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexcep
 ### <a name="common-exceptions"></a>Gyakori kivételek
 Íme a gyakori kivételek, előfordulhat, hogy hibajelzést és néhány lehetséges megoldások.
 
-| Kivétel | Hibakód | Kezelés|
+| Kivétel | Hibakód | Kockázatcsökkentés|
 | --- | --- | --- |
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: A felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás használata a(z) {appName} nevű {appId} Azonosítójú. Küldjön egy interaktív engedélyezési kérést ehhez a felhasználói és erőforráshoz.| Felhasználói beleegyezés első első kell. Ha nem használ a .NET Core (amely nem rendelkezik minden olyan webes felhasználói Felületet), hívja meg (csak egyszer) `AcquireTokeninteractive`. Ha a .NET Core keretrendszert használ, vagy nem szeretné egy `AcquireTokenInteractive`, a felhasználói beleegyezés URL-címre navigálhat: https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read . A hívás `AcquireTokenInteractive`: `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: A felhasználó a multi-factor authentication használata szükséges.| Van nincs megoldás – Ha a többtényezős hitelesítés van konfigurálva a bérlő számára és AAD úgy dönt, kényszeríteni kell, hogy egy interaktív folyamat tartalék például `AcquireTokenInteractive` vagy `AcquireTokenByDeviceCode`.|

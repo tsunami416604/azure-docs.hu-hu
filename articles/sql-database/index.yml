@@ -6,7 +6,7 @@ metadata:
   title: Az Azure SQL Database dokumentációja – oktatóanyagok és API-referencia
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
-  author: CarlRabeler
+  author: stevestein
   manager: craigg
   ms.service: sql-database
   ms.subservice: service
@@ -14,7 +14,7 @@ metadata:
   ms.devlang: null
   ms.topic: overview
   ms.date: 03/04/2019
-  ms.author: carlrab
+  ms.author: sstein
 abstract:
   description: 'Az Azure SQL Database a Microsoft SQL Server-adatbázismotor legújabb, stabil verzióján alapuló, általános célú, szolgáltatásként nyújtott (DBaaS) relációs adatbázis. Az SQL Database egy nagy teljesítményű, megbízható és biztonságos felhőalapú adatbázis, amely segítségével adatvezérelt alkalmazásokat és webhelyeket hozhat létre egy tetszőleges programozási nyelven, infrastruktúrakezelés nélkül. Ismerje meg, hogyan használhatja az Azure SQL Database szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.'
   aside:
@@ -39,17 +39,17 @@ sections:
               src: media/index/i_managed.svg
             title: Teljes körű felügyelet
           - href: /azure/sql-database/sql-database-service-tiers
-            html: <p>A kedvező árú havi 5 dollárostól a nagy teljesítményű 80 magos adatbázisokig terjedő rugalmas szolgáltatásszintekkel igény szerint módosíthatja az ár-teljesítmény arányt.</p>
+            html: <p>A kedvező árú havi 5 dollárostól a nagy teljesítményű 80 magos adatbázisokig terjedő rugalmas szolgáltatási szintekkel igény szerint módosíthatja az ár-teljesítmény arányt.</p>
             image:
               src: media/index/i_perftier.svg
-            title: Ár-/szolgáltatásszintek
+            title: Ár-/szolgáltatási szintek
           - href: /azure/sql-database/sql-database-scalability-index
             html: '<p>Az adatbázisait egyszerűen felskálázhatja vertikálisan vagy horizontálisan, illetve horizontálisan particionálhatja attól függően, hogy mire van szüksége az alkalmazás teljesítményének javításához.</p>'
             image:
               src: media/index/i_scale.svg
             title: Méretezhetőség
           - href: /azure/sql-database/sql-database-single-index
-            html: '<p>Az SQL Database-kiszolgálón futó önálló adatbázist olyan SaaS-alkalmazásokhoz és mikroszolgáltatásokhoz használhatja, amelyek egyetlen önálló adatbázist igényelnek kiszámítható teljesítményszinttel.</p>'
+            html: '<p>Az SQL-adatbáziskiszolgálón futó önálló adatbázist olyan SaaS-alkalmazásokhoz és mikroszolgáltatásokhoz használhatja, amelyek egyetlen önálló adatbázist igényelnek kiszámítható teljesítményszinttel.</p>'
             image:
               src: media/index/i_db.svg
             title: Önálló adatbázis
@@ -134,7 +134,7 @@ sections:
         style: cards
         className: cardsFTitle
         items:
-          - title: Azure SQL Database-adatbázis üzembe helyezése az alkalmazásadatok tárolásához
+          - title: Azure SQL-adatbázis üzembe helyezése az alkalmazásadatok tárolásához
             href: /learn/modules/provision-azure-sql-db/
             image:
               src: /learn/achievements/provision-azure-sql-db.svg

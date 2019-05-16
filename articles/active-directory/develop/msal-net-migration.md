@@ -4,7 +4,7 @@ description: Tudnivalók a Microsoft-hitelesítési tár .NET (MSAL.NET) és az 
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2576121bfc945b90ce8ec0260ea30ec110e14dd8
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: 028c7f5d42587a6b2129bba07831b0e799d607f4
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138828"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544216"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET alkalmazások áttelepítése
 
@@ -129,7 +129,7 @@ Az alkalmazás típusa | Hozzáférés | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
 Web App, Web API, daemon | Ügyfél-hitelesítő adatok | [Ügyfél-hitelesítő adatok elkezdenek beérkezni a ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Ügyfél-hitelesítő adatok elkezdenek beérkezni az MSAL.NET](msal-authentication-flows.md#client-credentials))
 Webes API | Meghatalmazó: | [Szolgáltatások közötti hívások ADAL.NET az a felhasználó nevében](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [Az MSAL.NET nevében](msal-authentication-flows.md#on-behalf-of)
-Webalkalmazás | Auth Code | [Az engedélyezési kódokat a webalkalmazások ADAL.NET-jogkivonatok beszerzésének](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [Az engedélyezési kódokat az A MSAL.NET web Apps-jogkivonatok beszerzésének](msal-authentication-flows.md#authorization-code)
+Web App | Auth Code | [Az engedélyezési kódokat a webalkalmazások ADAL.NET-jogkivonatok beszerzésének](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [Az engedélyezési kódokat az A MSAL.NET web Apps-jogkivonatok beszerzésének](msal-authentication-flows.md#authorization-code)
 
 ### <a name="cache-persistence"></a>Cache megőrzése
 

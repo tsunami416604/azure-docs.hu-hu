@@ -10,12 +10,12 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 0673d97f755d7e01d42d0be7c611720ff1e4ad01
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: MT
+ms.openlocfilehash: 63de2045498b312580640859c1911046f9785d8e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65187774"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65752267"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Nagy mennyiségű véletlenszerű adat párhuzamos feltöltése az Azure Storage-ba
 
@@ -67,14 +67,14 @@ dotnet run
 
 Az alkalmazás öt, véletlenszerűen elnevezett tárolót hoz létre, és megkezdi az átmeneti könyvtárban lévő fájlok feltöltését a tárfiókba. Az alkalmazás a szálak minimális számát 100-ra állítja, a [DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(v=vs.110).aspx) változó értékét pedig 100-ra annak érdekében, hogy az alkalmazás futtatása közben nagy számú párhuzamosan futó kapcsolat legyen futtatható.
 
-A szálkezelési és a kapcsolati korlátozások beállításán felül az [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet) metódus [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet) beállítása úgy van konfigurálva, hogy párhuzamosságot használjon és letiltsa az MD5-kivonat érvényesítését. A fájlok feltöltése 100 MB méretű blokkokban történik. Ez a konfiguráció jobb teljesítményt biztosít, a használata azonban gyengén teljesítő hálózaton nem ajánlott, mert hiba esetén a teljes 100 MB-os blokk feltöltését újra kell kezdeni.
+A szálkezelési és a kapcsolati korlátozások beállításán felül az [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) metódus [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) beállítása úgy van konfigurálva, hogy párhuzamosságot használjon és letiltsa az MD5-kivonat érvényesítését. A fájlok feltöltése 100 MB méretű blokkokban történik. Ez a konfiguráció jobb teljesítményt biztosít, a használata azonban gyengén teljesítő hálózaton nem ajánlott, mert hiba esetén a teljes 100 MB-os blokk feltöltését újra kell kezdeni.
 
 |Tulajdonság|Érték|Leírás|
 |---|---|---|
-|[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount?view=azure-dotnet)| 8| A beállítás feltöltéskor blokkokra töri a blobot. A legjobb teljesítmény érdekében ennek az értéknek a magok számának 8-szorosának kell lennie. |
-|[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| true| Ez a tulajdonság letiltja a feltöltött tartalom MD5-kivonat ellenőrzését. A gyorsabb átvitel érdekében tiltsa le az MD5-ellenőrzést. Így azonban nem biztosított a folyamatban lévő átvitelben érintett fájlok érvényessége vagy integritása.   |
-|[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false| Ez a tulajdonság határozza meg, hogy az MD5 kivonatoló kiszámítása és fájlban való tárolása megtörtént-e.   |
-| [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_RetryPolicy)| 2-second backoff with 10 max retry |A kérések újrapróbálkozási szabályzatát határozza meg. Kapcsolódási hiba esetén a rendszer újra próbálkozik, ebben a példában az [ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry?view=azure-dotnet) szabályzat 2 másodperces leállításra és legfeljebb 10 újrapróbálkozásra van konfigurálva. Ez a beállítás akkor fontos, ha az alkalmazás lassan eléri a [blob storage skálázhatósági célértékét](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).  |
+|[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| A beállítás feltöltéskor blokkokra töri a blobot. A legjobb teljesítmény érdekében ennek az értéknek a magok számának 8-szorosának kell lennie. |
+|[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| Ez a tulajdonság letiltja a feltöltött tartalom MD5-kivonat ellenőrzését. A gyorsabb átvitel érdekében tiltsa le az MD5-ellenőrzést. Így azonban nem biztosított a folyamatban lévő átvitelben érintett fájlok érvényessége vagy integritása.   |
+|[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| Ez a tulajdonság határozza meg, hogy az MD5 kivonatoló kiszámítása és fájlban való tárolása megtörtént-e.   |
+| [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| 2-second backoff with 10 max retry |A kérések újrapróbálkozási szabályzatát határozza meg. Kapcsolódási hiba esetén a rendszer újra próbálkozik, ebben a példában az [ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry) szabályzat 2 másodperces leállításra és legfeljebb 10 újrapróbálkozásra van konfigurálva. Ez a beállítás akkor fontos, ha az alkalmazás lassan eléri a [blob storage skálázhatósági célértékét](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).  |
 
 A következő példában az `UploadFilesAsync` feladat látható:
 

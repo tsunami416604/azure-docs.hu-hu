@@ -3,8 +3,8 @@ title: A Microsoft identity platform (2.0-s verzió) áttekintése – Azure
 description: További tudnivalók a Microsoft identity platform (2.0-s verzió) endpoint és platform.
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d97b45217da4bbf4b8c0e857b817911484f29c
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: dd3a1525d7b1f9c0a0b6516014ea83fb8abd0376
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231093"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544823"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>A Microsoft identity platform (2.0-s verzió) – áttekintés
 

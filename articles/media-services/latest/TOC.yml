@@ -182,7 +182,6 @@
             - name: Kapcsolódás Postmannel
               href: media-rest-apis-with-postman.md
         - name: Fejlesztés SDK-kkal
-          href: developers-guide.md
           items:
             - name: Csatlakozás Javával
               href: configure-connect-java-howto.md
@@ -222,10 +221,13 @@
         - name: Kódolás egyéni átalakítással
           items:
             - name: .NET-tel
+              displayName: 'encode, encoding, custom, transform'
               href: customize-encoder-presets-how-to.md
             - name: Parancssori felülettel
+              displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
             - name: A REST-tel
+              displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
     - name: Az Event Grid használata
       items:

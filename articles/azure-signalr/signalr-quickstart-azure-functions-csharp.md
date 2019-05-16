@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: df1b2cdd265b9cf48801174d1f0cd9936eae5f8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75d9977546c2a085765310a5654897f739a271ae
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325339"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595392"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Gyors útmutató: Csevegőszoba létrehozása az Azure Functions és a SignalR szolgáltatáshoz C használatával\#
 
@@ -20,7 +20,7 @@ Az Azure SignalR szolgáltatás használatával egyszerűen adhat hozzá valós 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
+Ha már nincs telepítve a Visual Studio 2019, letöltheti és használhatja a **ingyenes** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 
 Ebben az oktatóanyagban futtathatja a parancssorból (macOS, Windows vagy Linux) használatával a [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing), a [.NET Core SDK](https://dotnet.microsoft.com/download), és a kedvenc Kódszerkesztő.
 

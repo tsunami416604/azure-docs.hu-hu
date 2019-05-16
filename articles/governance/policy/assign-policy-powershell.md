@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: f07a760153c4ec15cec5c5bc1348e23152c59cb8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 9dd3d40823bcddfd7eb83776d9e92f897fae613b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258334"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65756499"
 ---
-# <a name="create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Azure PowerShell-lel a nem megfelelő erőforrások azonosítására a szabályzat-hozzárendelés létrehozása
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Gyors útmutató: Azure PowerShell-lel a nem megfelelő erőforrások azonosítására a szabályzat-hozzárendelés létrehozása
 
 Az Azure-ral való megfelelőség megértéséhez szükséges első lépés a saját erőforrásai állapotának megállapítása. Ebben a rövid útmutatóban egy felügyelt lemezeket nem használó virtuális gépek azonosítására szolgáló szabályzat-hozzárendelést hoz létre. Amikor végzett, azonosítania kell a virtuális gépek, amelyek *nem megfelelő*.
 

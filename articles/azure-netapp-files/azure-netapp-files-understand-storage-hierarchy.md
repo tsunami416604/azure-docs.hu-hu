@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 04/16/2019
 ms.author: b-juche
-ms.openlocfilehash: fec9e22b15eca3f95be606776066cf573046b5fd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c2984e012ae83a8bc17d72ed4eac0c5c469c2694
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687481"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522870"
 ---
 # <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>Mi az a NetApp Azure-fájlok hierarchiája
 
@@ -40,14 +40,16 @@ Mielőtt létrehozna egy kötetet az Azure NetApp Filesban, meg kell vásárolni
 - Minden kapacitás címkészlet NetApp csak egy fiók is tartozik. Azonban akkor is több kapacitás készletek NetApp-fiókon belül.  
 - A kapacitáskészletek nem mozgathatók a NetApp-fiókok között.   
   Az alábbi, [tárhely-hierarchiát ábrázoló fogalmi diagramon](#conceptual_diagram_of_storage_hierarchy) például az 1. kapacitáskészlet nem helyezhető át az USA keleti régiójában lévő NetApp-fiókból az USA 2. nyugati régiójának NetApp-fiókjába.  
+- Egy kapacitás készlet nem törölhető, amíg a kapacitás a készletben lévő összes kötetet, hogy törölték.
 
 ## <a name="volumes"></a>Kötetek
 
 - A kötet logikai kapacitásfogyasztásának mérjük és skálázható. 
 - A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába.
 - Minden kötet egyetlen készlethez tartozik, de egy készlet több kötetet is tartalmazhat. 
-- Ugyanazon a NetApp-fiókon belül áthelyezheti a köteteket az egyik készletből egy másikba.    
-  Az alábbi, [tárhely-hierarchiát ábrázoló fogalmi diagramon](#conceptual_diagram_of_storage_hierarchy) például áthelyezheti a köteteket az 1. kapacitáskészletből a 2. kapacitáskészletbe.
+- A kötet kapacitása készletek között nem lehet áthelyezni. <!--Within the same NetApp account, you can move a volume across pools.  -->   
+  Például a [fogalmi diagramját, hierarchiája](#conceptual_diagram_of_storage_hierarchy) lent, nem válthat a kötetek kapacitása készlet 1 kapacitás Pool 2.
+- A kötet nem lehet törölni, mindaddig, amíg az összes pillanatképet törölve lett.
 
 ## <a name="conceptual_diagram_of_storage_hierarchy"></a>Tárhely-hierarchia fogalmi diagramja 
 Az alábbi példák az Azure-előfizetés, a NetApp-fiókok, a kapacitáskészletek és a kötetek közötti kapcsolatokat mutatják be.   

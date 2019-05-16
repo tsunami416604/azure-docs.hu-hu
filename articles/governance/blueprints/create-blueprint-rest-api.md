@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 043b67d4b4c708f2d243f9be04fb2a706591947b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 83133629d92abb50d9fd7509cf182282503fc041
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273158"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65755773"
 ---
-# <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Azure Blueprints-tervek definiálása és hozzárendelése a REST API használatával
+# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Gyors útmutató: Azure Blueprints-tervek definiálása és hozzárendelése a REST API használatával
 
 A tervek létrehozásának és hozzárendelésének elsajátítása lehetővé teszi a közös minták definiálását, hogy újrahasználható és gyorsan üzembe helyezhető konfigurációkat dolgozhasson ki Resource Manager-sablonok, szabályzatok, biztonsági és egyéb szempontok alapján. Ez az oktatóanyag bemutatja, hogyan hajthatja végre az Azure Blueprints használatával a tervek a szervezeten belüli létrehozásával, közzétételével és hozzárendelésével kapcsolatos olyan általános feladatokat, mint az alábbiak:
 
@@ -28,7 +28,6 @@ A tervek létrehozásának és hozzárendelésének elsajátítása lehetővé t
 > - Egy előfizetéshez rendelt terv törlése
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
-
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -84,7 +83,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2018-11-01-preview
      ```
 
-   - A kérelem törzse
+   - Kérelem törzse
 
      ```json
      {
@@ -143,7 +142,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/roleContributor?api-version=2018-11-01-preview
      ```
 
-   - A kérelem törzse
+   - Kérelem törzse
 
      ```json
      {
@@ -163,7 +162,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/policyTags?api-version=2018-11-01-preview
      ```
 
-   - A kérelem törzse
+   - Kérelem törzse
 
      ```json
      {
@@ -191,7 +190,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/policyStorageTags?api-version=2018-11-01-preview
      ```
 
-   - A kérelem törzse
+   - Kérelem törzse
 
      ```json
      {
@@ -219,7 +218,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/templateStorage?api-version=2018-11-01-preview
      ```
 
-   - A kérelem törzse
+   - Kérelem törzse
 
      ```json
      {
@@ -305,7 +304,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/roleOwner?api-version=2018-11-01-preview
      ```
 
-   - A kérelem törzse
+   - Kérelem törzse
 
      ```json
      {
@@ -356,7 +355,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
      ```
 
-   - A kérelem törzse
+   - Kérelem törzse
 
      ```json
      {

@@ -9,12 +9,12 @@ ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
-ms.openlocfilehash: d14ef4a59e65ba432b5d04d9f531e4ba639deb8a
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: 0c492424e67853f7cb4a017fb4215d38a555a8a4
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65440946"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545045"
 ---
 # <a name="quickstart-prepare-and-visualize-data-without-writing-code-in-azure-machine-learning"></a>Gyors útmutató: Készítse elő és az adatok megjelenítése az Azure Machine Learning kódírás nélkül
 
@@ -99,13 +99,13 @@ Válassza ki, melyik adatoszlopokat dolgozhat.  Először konfigurálja a modul 
    
 1. Válassza ki a **Select Columns in Dataset** modul.
 
-1. Az a **tulajdonságok** panelen a vásznon, kattintson a jobbra **Oszlopválasztás indítása**.
+1. Az a **tulajdonságok** panelen a vásznon, kattintson a jobbra **oszlopok szerkesztése**.
 
     Az a **oszlopok kijelölése** párbeszédpanelen válassza **minden oszlop** és **minden funkció**. A párbeszédpanel kell kinéznie:
 
      ![oszlop-választó](./media/ui-quickstart-run-experiment/select-all.png)
 
-1. A bal alsó részen válassza a pipa (OK) gombra az Oszlopválasztó bezárásához.
+1. Válassza ki a jobb alsó **OK** az Oszlopválasztó bezárásához.
 
 ## <a name="run-the-experiment"></a>Kísérlet futtatása
 
@@ -146,13 +146,13 @@ Először távolítsa el a **normalized-losses** oszlopot teljesen.
 
 1. Válassza ki a **Select Columns in Dataset** modul.
 
-1. Az a **tulajdonságok** panelen a vásznon, kattintson a jobbra **Oszlopválasztás indítása**.
+1. Az a **tulajdonságok** panelen a vásznon, kattintson a jobbra **oszlopok szerkesztése**.
 
     * Hagyja **szabályokkal** és **minden oszlop** kiválasztott.
 
     * A legördülő listákból válassza az **Exclude** (Kizárás) és a **column names** (oszlopnevek) lehetőséget, majd kattintson a szövegmezőbe. Típus **normalized-losses**.
 
-    * A bal alsó részen válassza a pipa (OK) gombra az Oszlopválasztó bezárásához.
+    * Válassza ki a jobb alsó **OK** az Oszlopválasztó bezárásához.
 
     ![Egy oszlop kizárása](./media/ui-quickstart-run-experiment/exclude-column.png)
         

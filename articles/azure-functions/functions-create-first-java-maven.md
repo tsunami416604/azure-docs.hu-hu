@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 287cab034079c54c027e0dc7b84564458d31fc31
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d9f1cbff0dd79d6c2932428708eb1d097b6d9d63
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696160"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601483"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Az első függvény létrehozása a Java és Maven
 
@@ -29,7 +29,7 @@ Ez a cikk végigvezeti a Maven parancssori eszköz használatával hozhat létre
 
 Fejlesztés Java használatával függvényeket, a következőkkel kell rendelkeznie:
 
-- [Java fejlesztői készlet](https://www.azul.com/downloads/zulu/), 8-as verzió
+- [Java fejlesztői készlet](https://aka.ms/azure-jdks), 8-as verzió
 - [Az Apache Maven](https://maven.apache.org), 3.0-s verzió vagy újabb
 - [Azure CLI](https://docs.microsoft.com/cli/azure)
 - [Az Azure Functions Core Tools](./functions-run-local.md#v2) 2.6.666 verzió vagy újabb
@@ -202,7 +202,7 @@ A következőre:
 return request.createResponse(200, "Hi, " + name);
 ```
 
-Mentse a módosításokat, és helyezze ismét üzembe a terminálon az `azure-functions:deploy` parancs futtatásával, ahogy korábban tette. A függvényalkalmazás frissül, és ez a kérés:
+Mentse a módosításokat. Futtatási mvn tiszta csomag- és ismételt üzembe helyezés futtatásával `azure-functions:deploy` mint korábban a terminálról. A függvényalkalmazás frissül, és ez a kérés:
 
 ```bash
 curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java

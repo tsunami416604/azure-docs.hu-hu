@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: a459473e04f9cbf3b11b75f3b9dbea2732455084
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 8c323475bd5d1633feee45191a16d5af438ebc82
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59005433"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595231"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-nodejs-proxy-application-preview"></a>Gyors útmutató: Az SSH vagy RDP keresztül az IoT Hub eszköz adatfolyamok használata a Node.js-proxyalkalmazást (előzetes verzió)
 
@@ -38,7 +38,7 @@ Előzetes verziójának eszköz Streamek jelenleg csak a az IoT-központok létr
   - **USA középső RÉGIÓJA**
   - **USA középső RÉGIÓJA – EUAP**
 
-Ebben a rövid útmutatóban a szolgáltatás helyi alkalmazás futtatásához szükséges a Node.js 4.x.x vagy újabb verzióját a fejlesztői gépére.
+Ebben a rövid útmutatóban a szolgáltatás helyi alkalmazás futtatásához szükséges a Node.js v10.x.x vagy annál újabb verzió a fejlesztői gépére.
 
 A Node.js-t a [nodejs.org](https://nodejs.org) oldalról töltheti le többféle platformra.
 

@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: lbosq
-ms.openlocfilehash: db931a3a114be101eeb5e14fa7ba100a789e7cf5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 23b8f7db40eb2df063e055c489f11ff1b19dd8d5
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60892357"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519097"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>Gyors útmutató: A gráfadatbázis létrehozásához az Azure Cosmos DB Java SDK-val 
 
@@ -35,8 +35,7 @@ Ez a rövid útmutató létrehoz egy egyszerű gráfadatbázist az Azure Cosmos 
 
 Továbbá:
 
-* [Java fejlesztői készlet (JDK) 1.7+](https://aka.ms/azure-jdks)
-    * Ubuntu rendszeren futtassa az `apt-get install default-jdk` parancsot a JDK telepítéséhez.
+* [Java fejlesztői készlet (JDK) 8-as verzió](https://aka.ms/azure-jdks)
     * Ügyeljen arra, hogy a JAVA_HOME környezeti változó arra a mappára mutasson, ahová a JDK telepítve lett.
 * [Maven](https://maven.apache.org/download.cgi) bináris archívum [letöltése](https://maven.apache.org/install.html) és [telepítése](https://maven.apache.org/)
     * Ubuntu rendszeren futtathatja az `apt-get install maven` parancsot a Maven telepítéséhez.

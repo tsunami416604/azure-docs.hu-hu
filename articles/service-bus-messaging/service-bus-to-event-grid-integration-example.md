@@ -11,71 +11,125 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: conceptual
-ms.date: 09/15/2018
+ms.topic: tutorial
+ms.date: 05/14/2019
 ms.author: spelluru
-ms.openlocfilehash: 4e1ea3d822c8b032617b7f202f1c176aeb966210
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: b29798bb87b7c5c677e7d80e552e45e8d1290541
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60333153"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65754757"
 ---
-# <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Példák Azure Service Bus – Azure Event Grid integrációra
-
-Ebben a cikkben megtudhatja, hogyan állíthat be egy Azure-függvényt és egy logikai alkalmazást, amelyek mindegyike egy Azure Event Grid-esemény fogadása révén fogad üzeneteket. A következőket fogja elvégezni:
+# <a name="respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Válaszoljon az Azure Functions és az Azure Logic Apps használatával az Azure Event Grid-n keresztül fogadott Azure Service Bus-események
+Ebben az oktatóanyagban elsajátíthatja, hogyan válaszol az Azure Service Bus-események Azure Event Grid-n keresztül az Azure Functions és az Azure Logic Apps által kapott. A következőket teheti:
  
-* Hozzon létre egy egyszerű tesztelési Azure-függvényt a hibakereséshez és az Event Grid-eseményfolyam kezdeti folyamat. Ezt a lépést végezze el attól függetlenül, hogy a többi lépést elvégzi-e.
-* Hozzon létre egy Azure-függvényt az Event Grid-események alapján az Azure Service Bus-üzenetek fogadásához és feldolgozásához.
-* Az Azure App Service Logic Apps funkcióját használják.
+- A hibakereséshez és az Event Grid-eseményfolyam kezdeti folyamat tesztelési Azure-függvény létrehozása.
+- Hozzon létre egy Azure-függvényt az Event Grid-események alapján az Azure Service Bus-üzenetek fogadásához és feldolgozásához.
+- Event Grid-események válaszolni a logikai alkalmazás létrehozása
 
-Az Ön által létrehozott példa feltételezi, hogy a Service Bus-témakörnek két előfizetése van. Emellett feltételezi, hogy az Event Grid-előfizetés úgy lett létrehozva, hogy csak egy Service Bus-előfizetés számára küldjön eseményeket. 
+Miután létrehozta a Service Bus Event Grid, Azure Functions és a Logic Apps-összetevők, hajtsa végre a következőket: 
 
-A példában üzeneteket fog küldeni a Service Bus-témakörbe, és ellenőrizni fogja, hogy a Service Bus-előfizetéshez tartozó esemény létrejött-e. A függvény vagy a logikai alkalmazás fogadja az üzeneteket ebből a Service Bus-előfizetésből, és befejezi a feldolgozásukat.
+1. Üzenetek küldése egy Service Bus-témakörbe. 
+2. Győződjön meg arról, hogy az előfizetések a témakörbe beérkezett ezeket az üzeneteket
+3. Győződjön meg arról, hogy a függvény vagy a logikai alkalmazás, amelyre az esemény előfizetett kapott az eseményt. 
 
-## <a name="prerequisites"></a>Előfeltételek
-Mielőtt hozzákezd, mindenképp végezze el a következő két szakasz lépéseit.
+## <a name="create-a-service-bus-namespace"></a>Service Bus-névtér létrehozása
+Ez az oktatóanyag utasításait követve: [Rövid útmutató: Az Azure portal használatával hozzon létre egy Service Bus-témakörbe, és a témakörbe az előfizetések](service-bus-quickstart-topics-subscriptions-portal.md) a következő feladatokat végezheti el:
 
-### <a name="create-a-service-bus-namespace"></a>Service Bus-névtér létrehozása
+- Hozzon létre egy **prémium** Service Bus-névteret. 
+- Kérje le a kapcsolati karakterláncot. 
+- Hozzon létre egy Service Bus-témakörbe.
+- Hozzon létre a témakört két előfizetéssel. 
 
-Hozzon létre egy prémium szintű Service Bus-névteret és egy Service Bus-témakört, amely két előfizetéssel rendelkezik.
-
-### <a name="send-a-message-to-the-service-bus-topic"></a>Üzenet küldése a Service Bus-témakörbe
-
-Az üzenetek Service Bus-témakörbe történő elküldéséhez bármilyen metódust használhat. Az eljárás végén található mintakód feltételezi, hogy Visual Studio 2017 programot használ.
+## <a name="prepare-a-sample-application-to-send-messages"></a>Üzenetek küldése egy mintaalkalmazást előkészítése
+Az üzenetek Service Bus-témakörbe történő elküldéséhez bármilyen metódust használhat. Ez az eljárás végén található mintakód feltételezi, hogy a Visual Studio 2017-et használ.
 
 1. Klónozza az [azure-service-bus GitHub-adattárat](https://github.com/Azure/azure-service-bus/).
-
-1. A Visual Studióban lépjen a *\samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration* mappába és nyissa meg az *SBEventGridIntegration.sln* fájlt.
-
-1. Lépjen a **MessageSender** projekthez, és válassza a **Program.cs** fájlt.
-
-   ![8][]
-
-1. Adja meg a témakör nevét és a kapcsolati sztringet, majd futtassa a következő konzolalkalmazás-kódot:
+2. A Visual Studióban lépjen a *\samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration* mappába és nyissa meg az *SBEventGridIntegration.sln* fájlt.
+3. Lépjen a **MessageSender** projekthez, és válassza a **Program.cs** fájlt.
+4. Adja meg a Service Bus-témakör nevét és az előző lépésben kapott kapcsolati karakterláncot:
 
     ```CSharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     const string TopicName = "YOUR TOPIC NAME";
     ```
+5. Hozhat létre, és futtassa a programot teszt üzeneteket küldeni a Service Bus-témakörbe. 
 
-## <a name="set-up-a-test-function"></a>Tesztfüggvény beállítása
+## <a name="set-up-a-test-function-on-azure"></a>Az Azure-ban tesztfüggvény beállítása 
+Mielőtt a teljes forgatókönyv dolgozik, állítsa be legalább egy rövid tesztet függvény, amely segítségével hibakeresést, és figyelje meg az események átvitele. Kövesse az utasításokat a [az első függvény létrehozása az Azure Portalon](../azure-functions/functions-create-first-azure-function.md) a cikk a következő feladatokat végezheti el: 
 
-A teljes forgatókönyv végrehajtása előtt hozzon létre legalább egy kisebb tesztfüggvényt a hibakereséshez és az eseményfolyam megtekintéséhez.
+1. Hozzon létre egy függvényalkalmazást.
+2. Hozzon létre egy HTTP által aktivált függvényt. 
 
-1. Az Azure Portalon hozzon létre egy új Azure Functions-alkalmazást. Az Azure Functions alapismereteivel kapcsolatban tekintse meg az [Azure Functions dokumentációját](https://docs.microsoft.com/azure/azure-functions/).
+Ezután tegye a következőket: 
 
-1. Az újonnan létrehozott függvényben kattintson a pluszjelre (+) egy HTTP által aktivált függvény hozzáadásához:
 
-    ![2][]
+# <a name="azure-functions-v2tabv2"></a>[Az Azure Functions V2](#tab/v2)
+
+1. Bontsa ki a **funkciók** a fanézetben megtekintheti, és válassza ki a függvényt. Cserélje le a függvény kódját a következő kódot: 
+
+    ```CSharp
+    #r "Newtonsoft.Json"
     
-    Megjelenik az **Első lépések egy előre elkészített függvénnyel** ablak.
+    using System.Net;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Primitives;
+    using Newtonsoft.Json;
+    
+    public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
+    {
+        log.LogInformation("C# HTTP trigger function processed a request.");
+        var content = req.Body;
+        string jsonContent = await new StreamReader(content).ReadToEndAsync();
+        log.LogInformation($"Received Event with payload: {jsonContent}");
+    
+        IEnumerable<string> headerValues;
+        headerValues = req.Headers.GetCommaSeparatedValues("Aeg-Event-Type");
+    
+        if (headerValues.Count() != 0)
+        {
+            var validationHeaderValue = headerValues.FirstOrDefault();
+            if(validationHeaderValue == "SubscriptionValidation")
+            {
+                var events = JsonConvert.DeserializeObject<GridEvent[]>(jsonContent);
+                var code = events[0].Data["validationCode"];
+                log.LogInformation("Validation code: {code}");
+                return (ActionResult) new OkObjectResult(new { validationResponse = code });
+            }
+        }
+    
+        return jsonContent == null
+            ? new BadRequestObjectResult("Please pass a name on the query string or in the request body")
+            : (ActionResult)new OkObjectResult($"Hello, {jsonContent}");
+    }
+    
+    public class GridEvent
+    {
+        public string Id { get; set; }
+        public string EventType { get; set; }
+        public string Subject { get; set; }
+        public DateTime EventTime { get; set; }
+        public Dictionary<string, string> Data { get; set; }
+        public string Topic { get; set; }
+    }
+    
+    ```
+2. Kattintson a **Mentés és futtatás** elemre.
 
-    ![3][]
+    ![Függvény-alkalmazás kimenete](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
+3. Válassza ki **függvény URL-Címének lekérése** és jegyezze fel az URL-címet. 
 
-1. Válassza a **Webhook + API**, a **CSharp**, majd a **Függvény létrehozása** lehetőségeket.
- 
-1. Illessze be a függvénybe a következő kódot:
+    ![Függvény URL-címének beolvasása](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+
+# <a name="azure-functions-v1tabv1"></a>[Azure Functions V1](#tab/v1)
+
+1. Konfigurálja a használni kívánt függvény **V1** verziója: 
+    1. A faszerkezetes nézetben válassza ki a függvényalkalmazást, és válassza ki **Alkalmazásbeállítások függvény**. 
+
+        ![Függvényalkalmazás beállításai]()./media/service-bus-to-event-grid-integration-example/function-app-settings.png)
+    2. Válassza ki **~ 1** a **verze modulu Runtime**. 
+2. Bontsa ki a **funkciók** a fanézetben megtekintheti, és válassza ki a függvényt. Cserélje le a függvény kódját a következő kódot: 
 
     ```CSharp
     #r "Newtonsoft.Json"
@@ -92,18 +146,18 @@ A teljes forgatókönyv végrehajtása előtt hozzon létre legalább egy kisebb
         string jsonContent = await content.ReadAsStringAsync(); 
         log.Info($"Received Event with payload: {jsonContent}");
     
-    IEnumerable<string> headerValues;
-    if (req.Headers.TryGetValues("Aeg-Event-Type", out headerValues))
-    {
-    var validationHeaderValue = headerValues.FirstOrDefault();
-    if(validationHeaderValue == "SubscriptionValidation")
-    {
-    var events = JsonConvert.DeserializeObject<GridEvent[]>(jsonContent);
-         var code = events[0].Data["validationCode"];
-         return req.CreateResponse(HttpStatusCode.OK,
-         new { validationResponse = code });
-    }
-    }
+        IEnumerable<string> headerValues;
+        if (req.Headers.TryGetValues("Aeg-Event-Type", out headerValues))
+        {
+            var validationHeaderValue = headerValues.FirstOrDefault();
+            if(validationHeaderValue == "SubscriptionValidation")
+            {
+            var events = JsonConvert.DeserializeObject<GridEvent[]>(jsonContent);
+                 var code = events[0].Data["validationCode"];
+                 return req.CreateResponse(HttpStatusCode.OK,
+                 new { validationResponse = code });
+            }
+        }
     
         return jsonContent == null
         ? req.CreateResponse(HttpStatusCode.BadRequest, "Pass a name on the query string or in the request body")
@@ -120,102 +174,144 @@ A teljes forgatókönyv végrehajtása előtt hozzon létre legalább egy kisebb
         public string Topic { get; set; }
     }
     ```
+4. Kattintson a **Mentés és futtatás** elemre.
 
-1. Kattintson a **Mentés és futtatás** elemre.
+    ![Függvény-alkalmazás kimenete](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
+4. Válassza ki **függvény URL-Címének lekérése** és jegyezze fel az URL-címet. 
+
+    ![Függvény URL-címének beolvasása](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+
+---
 
 ## <a name="connect-the-function-and-namespace-via-event-grid"></a>A függvény és a névtér összekapcsolása az Event Griden keresztül
+Ebben a szakaszban összekapcsoljuk a függvényt, és a Service Bus-névtér az Azure portal használatával. 
 
-Ebben a szakaszban összekapcsoljuk a függvényt és a Service Bus-névteret. Ebben a példában az Azure Portalt használjuk. Ha az eljárást a PowerShell vagy az Azure CLI segítségével kívánja elvégezni, olvassa el a következő cikket: [Az Azure Service Bus – Azure Event Grid integráció áttekintése](service-bus-to-event-grid-integration-concept.md).
+Az Azure Event Grid-előfizetés létrehozásához kövesse az alábbi lépéseket:
 
-Egy új Azure Event Grid-előfizetés létrehozásához tegye a következőket:
-1. Az Azure Portalon lépjen a névteréhez, majd a bal oldali panelen válassza az **Event Grid** elemet.  
-    Megjelenik a névtér ablaka, a jobb oldali panelen két Event Grid-előfizetéssel.
+1. Az Azure Portalon lépjen a névteréhez, és ezt követően a bal oldali ablaktáblán válassza **események**. Megjelenik a névtér ablaka, a jobb oldali panelen két Event Grid-előfizetéssel. 
+    
+    ![A Service Bus - események lap](./media/service-bus-to-event-grid-integration-example/service-bus-events-page.png)
+2. Válassza ki **+ esemény-előfizetés** az eszköztáron. 
+3. Az a **esemény-előfizetés létrehozása** lapon, tegye a következőket:
+    1. Adjon meg egy **neve** az előfizetéshez. 
+    2. Válassza ki **Webhook** a **típusú végpont**. 
 
-    ![20][]
+        ![A Service Bus – Event Grid-előfizetés](./media/service-bus-to-event-grid-integration-example/event-grid-subscription-page.png)
+    3. Kiválasztott **válasszon végpontot**illessze be a függvény URL-CÍMÉT, és válassza ki **kijelölés megerősítéséhez**. 
 
-1. Válassza az **Esemény-előfizetés** lehetőséget.  
-    Megnyílik az **Esemény-előfizetés** ablak. Az alábbi képen egy űrlap látható az Azure-függvényekre vagy -webhookokra való előfizetéshez szűrők alkalmazása nélkül.
+        ![Függvény - válassza ki a végpontot](./media/service-bus-to-event-grid-integration-example/function-select-endpoint.png)
+    4. Váltson a **szűrők** lapra, adja meg a nevét a **első előfizetés** a Service Bus-témakörbe létrehozott korábbi, és adja meg a **létrehozás** gombra. 
 
-    ![21][]
+        ![Esemény-előfizetés-szűrő](./media/service-bus-to-event-grid-integration-example/event-subscription-filter.png)
+4. Győződjön meg arról, hogy megjelenik-e a listában az esemény-előfizetés.
 
-1. Töltse ki az űrlapot a képen látható módon, és az **Utótagszűrő** mezőben adja meg a megfelelő szűrőt.
+    ![A listában az esemény-előfizetés](./media/service-bus-to-event-grid-integration-example/event-subscription-in-list.png)
 
-1. Kattintson a **Létrehozás** gombra.
+## <a name="send-messages-to-the-service-bus-topic"></a>Üzenetek küldése a Service Bus-témakörbe
+1. Futtatás a .NET C# alkalmazás, amely üzeneteket küld a Service Bus-témakörbe. 
 
-1. Küldjön üzenetet a Service Bus-témakörbe az „Előfeltételek” szakaszban ismertetett módon, majd az Azure Functions monitorozási funkciójával ellenőrizze, hogy megkezdődött-e az események átvitele.
+    ![Alkalmazás konzolkimenet](./media/service-bus-to-event-grid-integration-example/console-app-output.png)
+1. Az Azure-függvényalkalmazás lapon bontsa ki a **funkciók**, bontsa ki a **függvény**, és válassza ki **figyelő**. 
 
-A következő lépés a függvény és a Service Bus-névtér összekapcsolása. Ebben a példában az Azure Portalt használjuk. Ha ezt a lépést a PowerShell vagy az Azure CLI segítségével kívánja elvégezni, olvassa el a következő cikket: [Az Azure Service Bus – Azure Event Grid integráció áttekintése](service-bus-to-event-grid-integration-concept.md).
+    ![A figyelő függvény](./media/service-bus-to-event-grid-integration-example/function-monitor.png)
 
-![9][]
-
-### <a name="receive-messages-by-using-azure-functions"></a>Üzenetek fogadása az Azure Functions használatával
-
+## <a name="receive-messages-by-using-azure-functions"></a>Üzenetek fogadása az Azure Functions használatával
 Az előző szakaszban megtekinthetett egy egyszerű tesztelési és hibakeresési forgatókönyvet, illetve meggyőződhetett az események átvitelének megtörténtéről. 
 
 Ez a szakasz az üzenetek fogadását és feldolgozását ismerteti az események fogadását követően.
 
-Hozzá kell adni egy Azure-függvényt, ahogy az a következő példában is látható, mert az Azure Functions Service Bus-függvényei még nem támogatják natív módon az új Event Grid-integrációt.
-
-1. Ugyanabban a Visual Studio-megoldásban, amelyben az előfeltételeket megnyitotta, jelölje ki a **ReceiveMessagesOnEvent.cs** fájlt. 
-
-    ![10][]
-
-1. Adja meg a kapcsolati sztringet a következő kódban:
+### <a name="publish-a-function-from-visual-studio"></a>Tegyen közzé egy függvényt a Visual Studióból
+1. Ugyanabban a Visual Studio-megoldásban (**SBEventGridIntegration**), amely megnyitotta, jelölje be **ReceiveMessagesOnEvent.cs** a a **SBEventGridIntegration** projekt. 
+2. Adja meg a Service Bus kapcsolati karakterlánc a következő kódot:
 
     ```Csharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     ```
+3. Töltse le a **közzétételi profil** a függvény:
+    1. Válassza ki a függvényalkalmazást. 
+    2. Válassza ki a **áttekintése** lapon, ha még nincs kiválasztva. 
+    3. Válassza ki **közzétételi profil letöltése** az eszköztáron. 
 
-1. Nyissa meg az Azure Portalt, és töltse le a „Tesztfüggvény beállítása” szakaszban létrehozott Azure-függvényhez tartozó közzétételi profilt.
+        ![Közzétételi profil a függvény lekérése](./media/service-bus-to-event-grid-integration-example/function-download-publish-profile.png)
+    4. Mentse a fájlt a projektmappa fájllistájának. 
+4. A Visual Studióban kattintson a jobb gombbal az **SBEventGridIntegration** elemre, és válassza a **Közzététel** lehetőséget. 
+5. Válassza ki *Start** a a **közzététel** lapot. 
+6. Az a **válasszon egy közzétételi célként** lapon, válassza ki a következő lépések **profil importálása**. 
 
-    ![11][]
+    ![A Visual Studio - profil importálása gomb](./media/service-bus-to-event-grid-integration-example/visual-studio-import-profile-button.png)
+7. Válassza ki a **profilfájl közzététele** korábban letöltött. 
+8. Válassza ki **közzététel** a a **közzététel** lapot. 
 
-1. A Visual Studióban kattintson a jobb gombbal az **SBEventGridIntegration** elemre, és válassza a **Közzététel** lehetőséget. 
+    ![Visual Studio - Publish](./media/service-bus-to-event-grid-integration-example/select-publish.png)
+9. Győződjön meg arról, hogy megjelenik-e az új Azure-függvény **ReceiveMessagesOnEvent**. Ha szükséges, frissítse az oldalt. 
 
-1. A korábban letöltött közzétételi profil **Közzététel** paneljén válassza a **Profil importálása** lehetőséget, majd kattintson a **Közzététel** lehetőségre.
+    ![Győződjön meg arról, hogy az új függvény létrehozása](./media/service-bus-to-event-grid-integration-example/function-receive-messages.png)
+10. Az új függvény URL-címére, és jegyezze fel azt le. 
 
-    ![12][]
+### <a name="event-grid-subscription"></a>Event Grid-előfizetés
 
-1. Az új Azure-függvény közzétételét követően hozzon létre egy olyan új Azure Event Grid-előfizetést, amely erre az új függvényre mutat.  
-    Ügyeljen arra, hogy a **Vége** mezőben a helyes szűrőt alkalmazza, amelynek a Service Bus-előfizetés nevének kell lennie.
+1. Törölje a meglévő Event Grid-előfizetést:
+    1. Az a **Service Bus-Namespace** lapon jelölje be **események** a bal oldali menüben. 
+    2. Válassza ki a meglévő esemény-előfizetés. 
+    3. Az a **esemény-előfizetés** lapon jelölje be **törlése**.
+2. Kövesse az utasításokat a [a függvény és a névtér Event Griden keresztül összekapcsolása](#connect-the-function-and-namespace-via-event-grid) szakasz hozhat létre egy Event Grid-előfizetés az új függvény URL-cím használatával.
+3. Kövesse az utasításokat a a [üzeneteket küldeni a Service Bus-témakörbe](#send-messages-to-the-service-bus-topic) szakasz üzenetek küldése az üzenettémához, és figyelheti a függvényt. 
 
-1. Küldjön üzenetet a korábban létrehozott Azure Service Bus-témakörbe, majd az Azure Portalon az Azure Functions naplójában ellenőrizze, hogy megkezdődött-e az események átvitele és fogadása.
+## <a name="receive-messages-by-using-logic-apps"></a>Üzenetek fogadása a Logic Apps használatával
+Logikai alkalmazás csatlakoztatása az Azure Service Bus és az Azure Event Grid az alábbi lépéseket:
 
-    ![12-1][]
+1. Logikai alkalmazás létrehozása az Azure Portalon.
+    1. Válassza ki **+ erőforrás létrehozása**válassza **integrációs**, majd válassza ki **logikai alkalmazás**. 
+    2. Az a **Logikaialkalmazás - létrehozása** lap, adja meg egy **neve** a logikai alkalmazás.
+    3. Jelölje ki az Azure-**előfizetést**. 
+    4. Válassza ki **meglévő használata** számára a **erőforráscsoport**, és válassza ki az erőforráscsoportot, amelyet korábban létrehozott források (pl. Azure-függvény, Service Bus-névtér) használt. 
+    5. Válassza ki a **hely** a logikai alkalmazás. 
+    6. Válassza ki **létrehozás** a logikai alkalmazás létrehozásához. 
+2. Az a **Logic Apps Designerben** lapon jelölje be **üres logikai alkalmazás** alatt **sablonok**. 
+3. A tervezőben tegye a következőket:
+    1. Keresse meg **Event Grid**. 
+    2. Válassza ki **erőforrás-esemény bekövetkezésekor (előzetes verzió) – Azure Event Grid**. 
 
-### <a name="receive-messages-by-using-logic-apps"></a>Üzenetek fogadása a Logic Apps használatával
+        ![Logic Apps Designer – Event Grid eseményindító kiválasztása](./media/service-bus-to-event-grid-integration-example/logic-apps-event-grid-trigger.png)
+4. Válassza ki **jelentkezzen be a**, adja meg Azure hitelesítő adatait, és válassza ki **hozzáférés engedélyezése**. 
+5. Az a **erőforrás-esemény bekövetkezésekor** lapon, tegye a következőket:
+    1. Válassza ki az Azure-előfizetését. 
+    2. A **erőforrástípus**válassza **Microsoft.ServiceBus.Namespaces**. 
+    3. A **erőforrásnév**, válassza ki a Service Bus-névtér. 
+    4. Válassza ki **új paraméter hozzáadása**, és válassza ki **Utótagszűrő**. 
+    5. A **Utótagszűrő**, adja meg a nevét, a második a Service Bus témakör-előfizetésbe. 
 
-Az alábbi utasítások végrehajtásával kapcsolhat össze egy logikai alkalmazást az Azure Service Bus és az Azure Event Grid szolgáltatással:
+        ![Logic Apps Designer – esemény konfigurálása](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
+6. Válassza ki **+ új lépés** a tervezőben, és kövesse az alábbi lépéseket:
+    1. Keresse meg **Service Bus**.
+    2. Válassza ki **a Service Bus** a listában. 
+    3. Válassza a **üzeneteket** a a **műveletek** listája. 
+    4. Válassza ki **üzenetek beolvasása témafeliratkozásból (zárolás betekintésre)**. 
 
-1. Hozzon létre egy új logikai alkalmazást az Azure Portalon, majd kezdő műveletként válassza ki az **Event Grid** szolgáltatást.
+        ![Logic Apps Designer – get-üzenetek művelet](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
+    5. Adjon meg egy **a kapcsolat neve**. Példa: **Üzenetek beolvasása a témakör-előfizetésből**, és válassza ki a Service Bus-névteret. 
 
-    ![13][]
+        ![Logic Apps Designer – válassza ki a Service Bus-névtér](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
+    6. Válassza ki **RootManageSharedAccessKey**.
 
-    Megnyílik a Logic Apps Designer ablaka.
+        ![Logic Apps Designer – válassza ki a közös hozzáférési kulcs](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
+    7. Kattintson a **Létrehozás** gombra. 
+    8. Válassza ki a témakör és előfizetés. 
+    
+        ![Logic Apps Designer – válassza ki a Service Bus-témakör és előfizetés](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
+7. Válassza ki **+ új lépés**, és kövesse az alábbi lépéseket: 
+    1. Válassza a **Service Bus** lehetőséget.
+    2. Válassza ki **egy témakör-előfizetésben lévő üzenet feldolgozottnak** műveletek listájában. 
+    3. Válassza ki a Service Bus **témakör**.
+    4. Válassza ki a második **előfizetés** a témakörbe.
+    5. A **az üzenet zárolási jogkivonata**válassza **zárolási jogkivonat** származó a **dinamikus tartalom**. 
 
-    ![14][]
+        ![Logic Apps Designer – válassza ki a Service Bus-témakör és előfizetés](./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png)
+8. Válassza ki **mentése** a logikai alkalmazás mentéséhez, a Logic Apps Designerben az eszköztáron. 
+9. Kövesse az utasításokat a a [üzeneteket küldeni a Service Bus-témakörbe](#send-messages-to-the-service-bus-topic) szakasz a témakörbe való üzenetküldéshez. 
+10. Váltson a **áttekintése** a logikai alkalmazás lapján. A logikai alkalmazás fog látni a **futtatási előzmények** küldött üzenetek.
 
-1. Adja meg az adatait a következő módon:
-
-    a. Az **Erőforrás neve** mezőben adja meg a saját névtere nevét. 
-
-    b. A **Speciális beállítások** terület **Utótagszűrő** mezőjében adja meg az előfizetéséhez tartozó szűrőt.
-
-1. Adjon hozzá egy Service Bus-műveletet a témakör-előfizetésből történő üzenetfogadáshoz.  
-    Az utolsó műveletet a következő kép mutatja be:
-
-    ![15][]
-
-1. Adjon hozzá egy teljes eseményt a következő képen látható módon:
-
-    ![16][]
-
-1. Mentse a logikai alkalmazást, és küldjön üzenetet a Service Bus-témakörbe az „Előfeltételek” szakaszban ismertetett módon.  
-    Figyelje meg a logikai alkalmazás végrehajtását. A végrehajtás részleteinek megtekintéséhez válassza az **Áttekintés** lehetőséget, majd tekintse meg az adatokat a **Futtatási előzmények** területen.
-
-    ![17][]
-
-    ![18][]
+    ![Logic Apps Designer – logikaialkalmazás-futtatások](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
 
 ## <a name="next-steps"></a>További lépések
 

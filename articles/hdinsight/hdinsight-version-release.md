@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: overview
 ms.date: 04/15/2019
-ms.openlocfilehash: 553f50897afaaf9c677e84f9cfffbff7d2c1e607
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa0d01bfbebd5279b5268bae9d161492f30b81de
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60484904"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546282"
 ---
 # <a name="hdinsight-40-overview"></a>HDInsight 4.0 – áttekintés
 
@@ -90,7 +90,7 @@ Nincs támogatott frissítési útvonal a HDInsight korábbi verzióiról a HDIn
 
 ## <a name="limitations"></a>Korlátozások
 
-* HDInsight 4.0-s verzióját nem támogatja a MapReduce. Használja helyette az Apache Tez. További tudnivalók az [Apache Tezről](https://tez.apache.org/).
+* HDInsight 4.0-s verzióját nem támogatja az Apache Hive MapReduce. Használja helyette az Apache Tez. További tudnivalók az [Apache Tezről](https://tez.apache.org/).
 * HDInsight 4.0-s verzióját nem támogatja az Apache Storm. 
 * Hive-nézet már nem érhető el, a HDInsight 4.0-s verzióját. 
 * Spark- és interaktív lekérdezési fürtökben az Apache Zeppelin nem támogatja a parancshéj-értelmezők használatát.
