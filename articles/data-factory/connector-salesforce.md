@@ -64,7 +64,7 @@ A Salesforce-beli társított szolgáltatás a következő tulajdonságok támog
 |:--- |:--- |:--- |
 | type |A type tulajdonságot állítsa **Salesforce**. |Igen |
 | environmentUrl | Adja meg a Salesforce-példány URL-CÍMÉT. <br> – Alapértelmezett érték a `"https://login.salesforce.com"`. <br> – Adatok másolása a tesztkörnyezetből, adja meg a `"https://test.salesforce.com"`. <br> – Adatok másolása az egyéni tartományt, adja meg, például `"https://[domain].my.salesforce.com"`. |Nem |
-| felhasználónév |Adja meg a felhasználói fiók felhasználói nevét. |Igen |
+| username |Adja meg a felhasználói fiók felhasználói nevét. |Igen |
 | password |Adja meg a felhasználói fiókhoz tartozó jelszót.<br/><br/>Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
 | securityToken |Adja meg a felhasználói fiók biztonsági jogkivonatot. Alaphelyzetbe állítása és a egy biztonsági jogkivonatot beolvasni az utasításokért lásd: [egy biztonsági jogkivonatot beolvasni](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Az általános biztonsági jogkivonatokat kapcsolatos további információkért lásd: [biztonsági és API-val](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm).<br/><br/>Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nincs forrás, Igen a fogadó Ha a forrás-beli társított szolgáltatás nem rendelkezik az integration runtime |
@@ -185,7 +185,7 @@ Adatok másolása a Salesforce-ból, állítsa a forrás típusaként a másolá
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása típusa tulajdonságát állítsa **SalesforceSource**. | Igen |
-| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. Használhat [Salesforce objektum Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) vagy SQL-92 lekérdezés. Tekintse meg a további tippek [lekérdezési tippek](#query-tips) szakaszban. Lekérdezés nem ad meg, ha a rendszer lekéri az "objectApiName" adatkészletben megadott Salesforce-objektum az adatokat. | Nem (ha az adatkészlet "objectApiName" van megadva) |
+| query |Az egyéni lekérdezés segítségével olvassa el az adatokat. Használhat [Salesforce objektum Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) vagy SQL-92 lekérdezés. Tekintse meg a további tippek [lekérdezési tippek](#query-tips) szakaszban. Lekérdezés nem ad meg, ha a rendszer lekéri az "objectApiName" adatkészletben megadott Salesforce-objektum az adatokat. | Nem (ha az adatkészlet "objectApiName" van megadva) |
 | readBehavior | Azt jelzi, hogy a meglévő rekordok lekérdezése, vagy lekérdezheti az összes rekord törölve azokat is beleértve. Ha nincs megadva, a korábbi az alapértelmezett viselkedést. <br>Megengedett értékek: **lekérdezés** (alapértelmezett), **queryAll**.  | Nem |
 
 > [!IMPORTANT]
@@ -315,25 +315,25 @@ Adatok másolása a Salesforce-ból, ha a Data Factory-közbenső adattípusok a
 
 | Salesforce-adatok típusa | Data Factory közbenső adattípus |
 |:--- |:--- |
-| Automatikus száma |String |
-| Jelölőnégyzet |Boolean |
-| Currency (Pénznem) |Decimal |
-| Dátum |DateTime |
-| Dátum/idő |DateTime |
-| E-mail |String |
-| Azonosító |String |
-| Keresési kapcsolat |String |
-| Többszörös kijelöléses értéklista |String |
-| Szám |Decimal |
-| Százalék |Decimal |
-| Telefonszám |String |
-| Értéklista |String |
+| Auto Number |String |
+| Checkbox |Boolean |
+| Currency |Decimal |
+| Date |DateTime |
+| Date/Time |DateTime |
+| Email |String |
+| Id |String |
+| Lookup Relationship |String |
+| Multi-Select Picklist |String |
+| Number |Decimal |
+| Percent |Decimal |
+| Phone |String |
+| Picklist |String |
 | Text |String |
-| Szövegterület |String |
-| Szövegterület (hosszú) |String |
-| Szövegterület (részletes) |String |
-| Szöveg (titkosítva) |String |
-| URL-cím |String |
+| Text Area |String |
+| Text Area (Long) |String |
+| Text Area (Rich) |String |
+| Text (Encrypted) |String |
+| URL |String |
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység, Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
