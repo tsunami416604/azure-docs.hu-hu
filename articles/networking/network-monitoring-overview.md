@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 42fb5d69a1f32d669ad5191e342b3f2f880b8c98
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b112771e8c0f08e6b9a02c2fc5b7e1887b3f2588
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564823"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65620417"
 ---
 # <a name="network-monitoring-solutions"></a>Hálózati megoldások monitorozása 
 
@@ -37,7 +37,7 @@ Network Performance monitort (NPM) olyan képességeit, amelyek mindegyike rész
 
 Teljesítményfigyelő, az ExpressRoute-figyelő és a szolgáltatás Kapcsolatfigyelő NPM képességeire figyeli, és az alábbiakban tekintheti át.
 
-## <a name="performance-monitor"></a>Teljesítménymonitorozás
+## <a name="performance-monitor"></a>Teljesítményfigyelő
 
 A Teljesítményfigyelő az NPM részét képezi, és hálózati felhőalapú, hibrid és helyszíni környezetek figyelése. Fiókirodai és kirendeltségekben, tárolási helyek, az adatközpontok és felhők közötti hálózati kapcsolat követheti nyomon. Hálózati problémák képes észlelni, mielőtt felhasználói panaszok. A fő előnyei a következők:
 
@@ -53,7 +53,9 @@ További információkért tekintse meg a következő cikkeket:
 
 * [A Network Performance Monitor megoldás konfigurálása az Azure Monitor naplóira](../azure-monitor/insights/network-performance-monitor.md) 
 * [Használati esetek](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
-*  Termékfrissítések: [2017 február](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/), [2017. augusztus](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
+* Termékfrissítések:
+  * [2017. február](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
+  * [2017. augusztus](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
 
 ## <a name="expressroute-monitor"></a>ExpressRoute-figyelő
 
@@ -73,7 +75,7 @@ További információkért tekintse át a következő cikkeket:
 * [Network Performance Monitor for ExpressRoute konfigurálása](../expressroute/how-to-npm.md)
 * [Blogbejegyzés](https://aka.ms/NPMExRmonitorGA)
 
-## <a name="service-connectivity-monitor"></a>Szolgáltatáskapcsolati monitor
+## <a name="service-connectivity-monitor"></a>Szolgáltatás-összekapcsolhatósági monitor
 
 Figyelési szolgáltatás kapcsolata, most tesztelheti az alkalmazások lemezekről és a teljesítmény szűk észleléséhez a helyszíni, a szolgáltató hálózatok és a felhő/titkos adatközpontok.
 
@@ -89,7 +91,7 @@ További információkért tekintse át a következő cikkeket:
 * [A Network Performance Monitor konfigurálása Szolgáltatásvégpontok figyeléshez](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
 * [Blogbejegyzés](https://aka.ms/svcendptmonitor)
 
-## <a name="traffic-analytics"></a>Forgalmi elemzések
+## <a name="traffic-analytics"></a>Forgalomelemzés
 A TRAFFIC Analytics egy felhőalapú megoldás, amely a felhőbeli hálózatok felhasználói és alkalmazástevékenységekbe betekintést nyújt. Hálózati biztonsági csoportok naplóinak elemzése, amelyek betekintést nyújtanak:
 
 * A hálózatok között az Azure és az Internet, nyilvános felhő-régiók, virtuális hálózatok és alhálózatok közötti forgalom
@@ -106,7 +108,7 @@ A TRAFFIC Analytics programcsomagok döntéstámogató információkat, hogy seg
 Kapcsolódó hivatkozások:
 * [Blogbejegyzés](https://aka.ms/trafficanalytics), [dokumentáció](https://aka.ms/trafficanalyticsdocs), [– gyakori kérdések](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
 
-## <a name="dns-analytics"></a>DNS-elemzés
+## <a name="dns-analytics"></a>DNS Analytics
 DNS-rendszergazdák számára készült, ez a megoldás gyűjti, elemzi és hátterében a DNS-naplókat biztonsági, a műveletek és a teljesítménnyel kapcsolatos információkat.  Funkciói a következők:
 
 * Azok az ügyfelek feloldják rosszindulatú tartományokat, azonosítása
@@ -120,6 +122,6 @@ DNS-rendszergazdák számára készült, ez a megoldás gyűjti, elemzi és hát
 Kapcsolódó hivatkozások:
 * [Blogbejegyzés](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [dokumentációja](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
-## <a name="miscellaneous"></a>Egyéb rendelkezések
+## <a name="miscellaneous"></a>Egyéb
 
 * [Új díjszabás](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)

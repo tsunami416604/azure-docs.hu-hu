@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: 394ba3b3b8189bbe96137e920745f7b8cdd1cd95
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ccc726f54821d316c745f6af9c63d7ed13986d79
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60863963"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761928"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Különálló fürt védelme a Windows a Windows rendszerbiztonság használatával
 Service Fabric-fürtön való illetéktelen hozzáférés megakadályozása, biztosítania kell a fürtöt. Biztonsági különösen fontos, amikor a fürt futtatása termelési számítási feladatokhoz. Ez a cikk ismerteti a csomópontok közötti és ügyfél-csomópont biztonság konfigurálása a Windows rendszerbiztonság használatával a *ClusterConfig.JSON* fájlt.  A folyamat megfelelő konfigurálás biztonsági lépésére [a Windows rendszert futtató önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md). Hogyan használja a Service Fabric a Windows biztonsági kapcsolatos további információkért lásd: [fürtök – biztonsági helyzetek](service-fabric-cluster-security.md).
@@ -57,11 +57,11 @@ A minta *ClusterConfig.gMSA.Windows.MultiMachine.JSON* együtt letöltött konfi
 | ClustergMSAIdentity |Konfigurálja a csomópont a csomópont közötti biztonsághoz. A csoportosan felügyelt szolgáltatásfiók. |
 | ClusterSPN |Csoportosan felügyelt szolgáltatásfiók egyszerű Szolgáltatásnevének regisztrált|
 | ClientIdentities |Konfigurálja az ügyfél a csomópont közötti biztonsághoz. Ügyfél felhasználói fiókok tömbje. |
-| Identitás |Adja hozzá a tartományi felhasználó, tartomány\felhasználónév ügyfél identitását. |
+| Azonosító |Adja hozzá a tartományi felhasználó, tartomány\felhasználónév ügyfél identitását. |
 | IsAdmin |Adja meg, hogy a tartományi felhasználó rendszergazda ügyfél-hozzáférési és hamis értéket, az ügyfél hozzáférésének felhasználó rendelkezik-e (igaz) értékre. |
 
 > [!NOTE]
-> ClustergMSAIdentity érték nem szerepelhet a tartomány nevét, és csak a csoport felügyelt szolgáltatásfiók neve. I.E. "mysfgmsa" helyességét, és mindkét "tartomany / / mysfgmsa" vagy "mysfgmsa@mydomain" érvénytelenek; a tartomány a gazdagép által implicit módon.
+> Formátumú ClustergMSAIdentity érték lehet "mysfgmsa@mydomain".
 
 [A csomópont security csomópont](service-fabric-cluster-security.md#node-to-node-security) úgy van konfigurálva **ClustergMSAIdentity** amikor szüksége van a service fabric csoportosan felügyelt szolgáltatásfiók alatt szeretné futtatni. Annak érdekében, hogy a csomópontok közötti bizalmi kapcsolatokat hozhat létre, is el kell tisztában egymással. Ez két különböző módon valósítható meg: Adja meg a csoportosan felügyelt szolgáltatásfiók, amely tartalmazza az összes csomóponton a fürtben, vagy adja meg a tartományi számítógép csoportot, amely tartalmazza az összes csomóponton a fürtben. Kifejezetten javasoljuk a [csoportosan felügyelt szolgáltatásfiók (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) megközelítés, különösen a nagyobb fürtök (10-nél több csomópont) vagy a fürtök, amelyek valószínűleg növekedhet és csökkenhet.  
 Ez a módszer nem igényel, amelynek fürt rendszergazdák kapott hozzáférési jogosultsága ahhoz, hozzáadhat és eltávolíthat tagokat tartományi csoport létrehozását. Ezek a fiókok automatikus jelszókezelés is hasznosak. További információkért lásd: [csoportosan felügyelt szolgáltatásfiókok – első lépések](https://technet.microsoft.com/library/jj128431.aspx).  
@@ -109,7 +109,7 @@ Ez a modell hamarosan elavulttá válik. Az ajánljuk, hogy a csoportosan felüg
 | WindowsIdentities |A fürt és az ügyfél identitásokat tartalmaz. |
 | ClusterIdentity |Egy gép csoportnevet domain\machinegroup, használja a csomópontok közötti biztonságának konfigurálása. |
 | ClientIdentities |Konfigurálja az ügyfél a csomópont közötti biztonsághoz. Ügyfél felhasználói fiókok tömbje. |  
-| Identitás |Adja hozzá a tartományi felhasználó, tartomány\felhasználónév ügyfél identitását. |  
+| Azonosító |Adja hozzá a tartományi felhasználó, tartomány\felhasználónév ügyfél identitását. |  
 | IsAdmin |Adja meg, hogy a tartományi felhasználó rendszergazda ügyfél-hozzáférési és hamis értéket, az ügyfél hozzáférésének felhasználó rendelkezik-e (igaz) értékre. |  
 
 [A csomópont security csomópont](service-fabric-cluster-security.md#node-to-node-security) beállítás használatával konfigurálható **ClusterIdentity** Ha azt szeretné, a gép csoportot használja az Active Directory-tartományban. További információkért lásd: [hozzon létre egy gép csoportot az Active Directory](https://msdn.microsoft.com/library/aa545347(v=cs.70).aspx).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: e1b0e49dcc69a7458c22b859df1a4721342f0728
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b5dc885611c6654c1dc1d236e41ed75ef2717cc1
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730143"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605698"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Hajtsa végre a hálózati behatolás felderítése a Network Watcher és a nyílt forráskódú eszközökkel
 
@@ -255,7 +255,7 @@ A saját vizualizációkat, és azokra az érdekes mérőszám vizsgálatára sa
 
 A minta-irányítópult több Vizualizációk Suricata riasztási naplóját biztosítja:
 
-1. Riasztások szerint GeoIP – egy térképként ábrázolja a riasztások azok (IP-cím alapján meghatározott) földrajzi helye alapján származási ország szerint eloszlása
+1. Riasztások szerint GeoIP – egy térkép, amely a terjesztési riasztások azok (IP-cím alapján meghatározott) földrajzi helye alapján származási ország/régió szerint
 
     ![georedundáns ip][3]
 

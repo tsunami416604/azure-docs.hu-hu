@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 02/24/2019
+ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d588374c0195e7da373766f93f6829ac2160269
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 7be6c9eda6d0a70d929efe4c00f661eb67105820
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471604"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606423"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -26,7 +26,7 @@ A fejlesztési környezet csak követelményei a Python 3, az Anaconda (az elkü
 
 Ez a cikk elsősorban a következő környezetekben és eszközöket:
 
-* A saját [felhőalapú notebook server](#notebookvm): A munkaállomás számítási erőforrás használatával futtatása a Jupyter notebooks. Első lépésként a legegyszerűbb módja,, mert az Azure Machine Learning SDK már telepítve van.
+* A saját [notebook felhő alapú virtuális gép](#notebookvm): A munkaállomás számítási erőforrás használatával futtatása a Jupyter notebooks. Első lépésként a legegyszerűbb módja,, mert az Azure Machine Learning SDK már telepítve van.
 
 * [Az adatelemző virtuális gép (DSVM)](#dsvm): Egy előre konfigurált fejlesztői és kísérleti környezet az Azure-felhőben, amely a data science munkahelyi készült, és csak Virtuálisgép-példányok CPU vagy a GPU-alapú példányok is telepíthető. Python 3, Conda, a Jupyter notebookok és az Azure Machine Learning SDK már telepítve vannak. A virtuális gép együttműködik a népszerű machine learning és a deep learning-keretrendszerek, eszközök és -szerkesztők, gépi tanulási megoldások fejlesztéséhez. Fontos valószínűleg a legteljesebb körű fejlesztői környezet, a machine learning az Azure platformon.
 
@@ -42,9 +42,7 @@ Ha már a Python 3-környezettel rendelkezik, vagy csak szeretné, az SDK telep�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az Azure Machine Learning szolgáltatás munkaterületén. A munkaterület létrehozásához lásd: [hozzon létre egy Azure Machine Learning szolgáltatás munkaterület](setup-create-workspace.md).
-
-Munkaterület ennyire szüksége a kezdéshez a saját [felhőalapú notebook server](#notebookvm), amely egy [DSVM](#dsvm), [Azure Databricks](#aml-databricks), vagy [Azure notebookok](#aznotebooks).
+Az Azure Machine Learning szolgáltatás munkaterületén. A munkaterület létrehozásához lásd: [hozzon létre egy Azure Machine Learning szolgáltatás munkaterület](setup-create-workspace.md). Munkaterület ennyire szüksége a kezdéshez a saját [felhőalapú notebook server](#notebookvm), amely egy [DSVM](#dsvm), [Azure Databricks](#aml-databricks), vagy [Azure notebookok](#aznotebooks).
 
 Az SDK környezet telepítése a [helyi számítógép](#local), [Jupyter Notebook server](#jupyter) vagy [Visual Studio Code](#vscode) is szükség van:
 
@@ -57,16 +55,30 @@ Az SDK környezet telepítése a [helyi számítógép](#local), [Jupyter Notebo
 
 - A Windows, a parancssort vagy szükséges Anaconda parancssort (telepített Anaconda és Miniconda).
 
-## <a id="notebookvm"></a>A saját felhőalapú notebook server
+## <a id="notebookvm"></a>A saját felhőalapú notebook VM
 
-Hozzon létre egy jegyzetfüzetet kiszolgáló a legegyszerűbb módja az Azure Machine Learning-fejlesztés – első lépések az Azure Machine Learning-munkaterület.
+A notebook virtuális gép (előzetes verzió) biztonságos, felhőalapú Azure munkaállomás, amely az adatszakértők biztosít egy Jupyter notebook server, a JupyterLab és a egy teljes körűen előkészített ML környezetben. 
 
-* Az Azure Machine Learning SDK már telepítve van.
-* A notebook virtuális gépből álló környezeteket automatikusan konfigurálva van a munkaterülethez.
-* Az erőforrás jön létre a munkaterületet, és nem kezelhetők
+A notebook a virtuális gép van: 
 
-Bevezetés a felhőalapú notebook server történő fejlesztésbe, lásd: [a rövid útmutató: Ismerkedés az Azure Machine Learning felhőalapú notebook server használatával](quickstart-run-cloud-notebook.md).
++ **Biztonságos**. Mivel a virtuális gép és a jegyzetfüzet hozzáférés alapértelmezés szerint a HTTPS és az Azure Active Directory védett, informatikai szakemberek könnyedén kényszeríthetik a egyszeri bejelentkezést és más biztonsági funkciókat, például többtényezős hitelesítést.
 
++ **Előre konfigurált**. A teljes készített Python gépi Tanulási környezetben a származási megrajzolja a népszerű IaaS Data Science virtuális gépről, és tartalmazza:
+  + Azure ML Python SDK (latest)
+  + Dolgozunk a munkaterület automatikus konfiguráció
+  + A Jupyter notebook server
+  + JupyterLab notebook IDE
+  + Előre konfigurált GPU-illesztők 
+  + Egy kijelölt deep learning-keretrendszerek
+ 
+
+  Ha kódjába, a virtuális Gépet tartalmaz, oktatóanyagaink és példáink segítségével ismerje meg, és megtudhatja, hogyan használhatja az Azure Machine Learning szolgáltatást. A mintafüzetek vannak tárolva az Azure Blob Storage-fiók, a virtuális gép között megosztható így munkaterületet. Futtatásakor, azokat is érheti el az adattárak, és számítási erőforrásokat a munkaterületet. 
+
++ **Egyszerű beállítás**: Hozzon létre egyet a bármikor belül az Azure Machine Learning-munkaterületet. Adja meg a csak egy nevet, és adjon meg egy Azure-beli Virtuálisgép-típust. Próbálja ki most a [a rövid útmutató: Ismerkedés az Azure Machine Learning felhőalapú notebook server használatával](quickstart-run-cloud-notebook.md).
+
++ **Testre szabható**. A felügyelt és biztonságos virtuális Gépet, amely, miközben hardvertulajdonságaival való teljes hozzáférés megőrzése, és pedig testreszabjuk, hogy a szív törekszik. Gyorsan hozzon létre például a legújabb NVidia V100 működő virtuális gép újszerű Neurális hálózat-architektúra részletes Hibakeresés végrehajtásához.
+
+Leállítja a költséggel notebook VM, [állítsa le a notebookot a virtuális gép](quickstart-run-cloud-notebook.md#stop-the-notebook-vm). 
 
 ## <a id="dsvm"></a>Adatelemző virtuális gép
 
@@ -283,7 +295,7 @@ Hozzon létre egy [Databricks-fürt](https://docs.microsoft.com/azure/azure-data
 
 Használja ezeket a beállításokat:
 
-| Beállítás |A következőkre vonatkozik| Érték |
+| Beállítás |A következőkre vonatkozik| Value |
 |----|---|---|
 | Fürt neve |mindig| yourclustername |
 | A Databricks futtatókörnyezete |mindig| Any non ML runtime (non ML 4.x, 5.x) |
@@ -397,4 +409,3 @@ Háromféleképpen hozhat létre a konfigurációs fájlban:
 - [A modell betanítását](tutorial-train-models-with-aml.md) az Azure Machine Learning a MNIST adatkészlettel
 - Nézet a [Azure Machine Learning SDK Pythonhoz készült](https://aka.ms/aml-sdk) referencia
 - További információ a [adat-előkészítési csomagot az Azure Machine Learning](https://aka.ms/data-prep-sdk)
-- 

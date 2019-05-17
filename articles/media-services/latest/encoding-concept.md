@@ -9,31 +9,34 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 05/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 937a032bffbad4e8a7d737360aa140e59760f8e2
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 25b3209bed98ea217db9e414caa6f08cee6d8c89
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472442"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761890"
 ---
 # <a name="encoding-with-media-services"></a>Kódolás a Media Services használatával
 
-Az Azure Media Services lehetővé teszi, hogy az kiváló minőségű médiafájlt kódolandó adaptív sávszélességű MP4-fájlokat, így a tartalom a böngészők és eszközök széles lejátszhatók. Egy sikeres Media Services kódolási feladat létrehoz egy kimeneti objektumot az adaptív sávszélességű MP4-és adatfolyam-konfigurációs fájlok. A konfigurációs fájlok közé tartoznak a .ism, .ismc, .mpi és egyéb fájlokat, amelyek nem szabad módosítani. Ha a kódolási feladat elkészült, akkor kihasználhatja [dinamikus csomagolási](dynamic-packaging-overview.md) és streamelésének megkezdéséhez.
+A folyamat digitális videót és/vagy egy másik (a) a fájlok méretének csökkentésével, és/vagy (b) kompatibilis formátumban előállító kirovását szabványos formátumba hangot tartalmazó fájlok átalakítása kifejezés kódolás a Media Services vonatkozik egy eszközök és alkalmazások széles skáláját. Ez a folyamat is nevezik videó tömörítést vagy átkódolása. Tekintse meg a [az adattömörítés](https://en.wikipedia.org/wiki/Data_compression) és a [kódolás és átkódolása mi?](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) további vitafórum a fogalmakat.
 
-Győződjön meg arról, videók, a kimenetben az eszköz érhető el az ügyfelek számára a lejátszás, létre kell hoznia egy **Streamelési lokátor** és létrehozása a streamelési URL-címek. Ezt követően a jegyzékfájlban megadott formátumnak megfelelően, az ügyfelek az adatfolyamban kaphatja a protokoll választotta.
+Videók az eszközök és alkalmazások által általában érkezzenek [progresszív letöltés](https://en.wikipedia.org/wiki/Progressive_download) vagy [adaptív sávszélességű streamelés](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming). 
 
-Az alábbi ábrán látható, a dinamikus csomagolás munkafolyamat igényalapú streameléshez.
+* Továbbítás letöltésen keresztül fokozatos, használhatja az Azure Media Services konvertálni egy a digitális média fájlt (mezzanine)-ba egy [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) -kódolású videó tartalmazó fájl a [H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) kodeket, és hang, amely a kódolású a [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) kodek. A tárfiókban található egy Eszköz a MP4-fájl írása. Használhatja az Azure Storage API-k és SDK-kkal (például [Storage REST API-val](../../storage/common/storage-rest-api-auth.md), [JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md), vagy [.NET SDK-val](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) közvetlenül a fájl letöltéséhez. Ha a kimeneti hozta létre a tároló egy adott tároló nevű eszköz használ erre a helyre. Ellenkező esetben használhatja a Media Services [eszköz tároló url-Címek listája](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
+* Tartalom előkészítése kézbesítési adaptív bitsebességű folyamatos átvitel, a mezzanine-fájlt kell kódolni, több bitsebességre való átkódolása (magastól alacsonyig). Az átviteli sebesség arányában minőségű, biztonságos átállás érdekében így egyedül a videó felbontása. Ennek eredményeként egy úgynevezett kódolási létra – felbontásra és bitsebességre való átkódolása tábláját (lásd: [adaptív sávszélességű automatikusan létrehozott létra](autogen-bitrate-ladder.md)). A Media Services segítségével több bitsebességre való – ennek során átkódolása, a "mezzanine" formátumú fájlok, MP4-fájlokat, és a kapcsolódó streamelési konfigurációs fájlokat az eszköz a tárfiókban lévő írt fog kapni. Ezután a [dinamikus csomagolási](dynamic-packaging-overview.md) , hogy a videó streamelési protokollok, mint például a Media Services képesség [MPEG-DASH](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) és [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming). Ehhez szükséges, hogy hozzon létre egy [Streamelési Lokátor](streaming-locators-concept.md) és létrehozása a streamelési url-Címek, a támogatott protokollok, amelyek majd átadható az eszközök és alkalmazások képességeikkel alapján megfelelő.
 
-![A dinamikus csomagolás](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+Az alábbi ábrán látható, a munkafolyamat igény szerinti Encoding, a dinamikus csomagolás használatával.
+
+![A dinamikus csomagolás](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
 Ez a témakör nyújt útmutatást tartalmait a Media Services v3 kódolással.
 
 ## <a name="transforms-and-jobs"></a>Átalakítások és feladatok
 
-Kódolás a Media Services v3-as, létre kell egy [átalakítása](https://docs.microsoft.com/rest/api/media/transforms) és a egy [feladat](https://docs.microsoft.com/rest/api/media/jobs). Egy-egy átalakítási határozza meg a recept, a kódolási beállítások és kimenetek, és a feladat a recept egy példányát. További információkért lásd: [átalakítások és feladatok](transforms-jobs-concept.md)
+Kódolás a Media Services v3-as, létre kell egy [átalakítása](https://docs.microsoft.com/rest/api/media/transforms) és a egy [feladat](https://docs.microsoft.com/rest/api/media/jobs). Az átalakítás határozza meg a recept, a kódolási beállítások és kimenetek; a feladat egy példányát a recept. További információkért lásd: [átalakítások és feladatok](transforms-jobs-concept.md)
 
 A Media Services encoding, amikor a szolgáltatás használatával ossza meg a kódoló a bemeneti fájlok feldolgozásának módja. Például megadhatja a videó felbontást és/vagy a kívánt hang csatornák száma kódolt tartalmában. 
 

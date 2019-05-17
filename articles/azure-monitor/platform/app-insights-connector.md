@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: aa1bb62e762925dcb5a0ee37b71602094e768137
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c7c0d2e3fb818f74a65502674188c523d23729e8
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60346810"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606741"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-összekötő felügyeleti megoldás (elavult)
 
@@ -181,7 +181,7 @@ Egy rekord egy *típus* , *ApplicationInsights* jön létre az egyes bemeneti ad
 
 ### <a name="generic-fields"></a>Általános mezők
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 | --- | --- |
 | Típus | ApplicationInsights |
 | ClientIP |   |
@@ -192,7 +192,7 @@ Egy rekord egy *típus* , *ApplicationInsights* jön létre az egyes bemeneti ad
 | DeviceType | Ügyféleszközök |
 | ScreenResolution |   |
 | Kontinens | Kontinens, amelyben adja meg a kérelem |
-| Ország | Ország, ahonnan a kérés származik |
+| Ország | Ország/régió, adja meg a kérelem |
 | Megye | Tartomány, állapot vagy a területi beállítás, amelyben adja meg a kérelem |
 | Város | Város vagy a város, amelyben adja meg a kérelem |
 | isSynthetic | Azt jelzi, hogy a kérelem egy felhasználó által vagy automatikus módon hozták-e. = Igaz a felhasználó által vagy a false = az automatikus módszer |
@@ -249,7 +249,7 @@ Egy rekord egy *típus* , *ApplicationInsights* jön létre az egyes bemeneti ad
 
 ### <a name="request-specific-fields"></a>Kérelem-specifikus mezők
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 | --- | --- |
 | Típus | ApplicationInsights |
 | TelemetryType | Kérés |
