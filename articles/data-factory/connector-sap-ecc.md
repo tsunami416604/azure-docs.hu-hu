@@ -56,7 +56,7 @@ SAP ECC társított szolgáltatás a következő tulajdonságok támogatottak:
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **SapEcc** | Igen |
 | url | Az SAP ECC OData-szolgáltatás URL-címe | Igen |
-| felhasználónév | A SAP ECC való kapcsolódáshoz használt felhasználónév. | Nem |
+| username | A SAP ECC való kapcsolódáshoz használt felhasználónév. | Nem |
 | password | A titkosítatlan szöveges jelszó, a SAP ECC csatlakozásra használt. | Nem |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. (Ha az adattár nyilvánosan hozzáférhető) használhatja a helyi Integration Runtime vagy az Azure integrációs modul. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
@@ -91,7 +91,7 @@ Adatok másolása az SAP ECC, állítsa be a type tulajdonság, az adatkészlet 
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| elérési út | Az SAP ECC OData entitás elérési útja. | Igen |
+| path | Az SAP ECC OData entitás elérési útja. | Igen |
 
 **Példa**
 
@@ -122,7 +122,7 @@ Adatok másolása az SAP ECC, állítsa be a forrás típusaként a másolási t
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **SapEccSource** | Igen |
-| lekérdezés | Adatok szűrése OData-lekérdezés beállításai. Example: "$select=Name,Description&$top=10".<br/><br/>SAP ECC összekötő adatokat másol a kombinált URL-cím: (a társított szolgáltatás megadott URL-címe) / (adatkészletben megadott elérési út)? (a másolási tevékenység forrásban megadott lekérdezést). Tekintse meg [OData URL-címe összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
+| query | Adatok szűrése OData-lekérdezés beállításai. Example: "$select=Name,Description&$top=10".<br/><br/>SAP ECC összekötő adatokat másol a kombinált URL-cím: (a társított szolgáltatás megadott URL-címe) / (adatkészletben megadott elérési út)? (a másolási tevékenység forrásban megadott lekérdezést). Tekintse meg [OData URL-címe összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
 
 **Példa**
 
