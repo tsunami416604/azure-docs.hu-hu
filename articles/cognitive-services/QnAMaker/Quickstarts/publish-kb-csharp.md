@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: b832b8e07bb81d670539423dd6ab6cf5d28df837
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 3460424a8d80baef92eb8b29a3be4de5686027c6
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790831"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827574"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Gyors útmutató: Tudásbázis közzététele a QnA Maker használatávalC#
 
@@ -40,7 +40,7 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 
 ## <a name="create-knowledge-base-project"></a>Tudásbázisprojekt létrehozása
 
-1. Nyissa meg a Visual Studio 2017 Community Editiont.
+1. Open Visual Studio 2019 Community edition.
 1. Hozzon létre egy új **Console App (.NET Core)** projektre, és adja a projektnek `QnaMakerQuickstart`. Fogadja el az alapértelmezett értékeket a többi beállításnál.
 
 ## <a name="add-required-dependencies"></a>Szükséges függőségek hozzáadása

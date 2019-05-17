@@ -2,21 +2,21 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 04/25/2019
 ms.author: alkohli
-ms.openlocfilehash: a8070d25e2606d8ad72ac231a0a208072c612c5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1d52117440028c75b249f469f2b3576c2ab1c5c5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60463156"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65815460"
 ---
 Az utolsó lépés az eszköz szállításának előkészítése. Ebben a lépésben az összes eszközmegosztást offline állapotba helyezi. Ez a folyamat elindítását követően, a megosztások nem érhetők el.
 
 > [!IMPORTANT]
 > Szállításra való szükség, ahogy azt a megőrzendő tartalomként jelöli, amely nem felel meg az Azure elnevezési konvencióinak adatokat. Ez a lépés kihagyása lehetséges adatokat eredményez is feltölthet hibák miatt nem megfelelő adatokat.
 
-1. Lépjen a **Prepare to ship** (Szállításra való előkészítés) oldalra, majd kattintson a **Start preparation** (Előkészítés indítása) elemre. Alapértelmezés szerint az ellenőrzőösszegek kiszámítására beágyazva, a szállítás előkészítése során kerül sor. Az ellenőrzőösszeg kiszámítása órát is igénybe vehet attól függően, hogy az adatok mérete nap. 
+1. Lépjen a **Prepare to ship** (Szállításra való előkészítés) oldalra, majd kattintson a **Start preparation** (Előkészítés indítása) elemre. Alapértelmezés szerint ellenőrzőösszegek számítja ki közben az adatok másolásakor. Szállításra való előkészítése az ellenőrzőösszeg kiszámítása befejeződött, és létrehozza a fájlok listáját ( *AJ - fájlok*). Az ellenőrzőösszeg kiszámítása órát is igénybe vehet attól függően, hogy az adatok mérete nap. 
    
     ![A szállítás előkészítése 1](media/data-box-prepare-to-ship/prepare-to-ship1.png)
 
@@ -36,7 +36,7 @@ Az utolsó lépés az eszköz szállításának előkészítése. Ebben a lépé
 
     Ha hiba van ebben a lépésben szüksége lesz a hibanapló letöltéséhez, és javítsa ki a hibákat. Ha a hibák megoldódnak, futtassa **szállításra való**.
 
-4. Miután a szállításra való előkészítés sikeresen befejeződött (a hibák), töltse le a fájlok (más néven a jegyzékfájl) a folyamat másolja. Később ezen lista alapján ellenőrizheti az Azure-ba feltöltött fájlokat.
+4. Miután a szállításra való előkészítés sikeresen befejeződött (a hibák), töltse le a fájlok (más néven a jegyzékfájl) a folyamat másolja. Később ezen lista alapján ellenőrizheti az Azure-ba feltöltött fájlokat. További információkért lásd: [szállításra való előkészítés AJ vizsgálja meg a fájlok](../articles/databox/data-box-logs.md#inspect-bom-during-prepare-to-ship).
         
     ![A szállítás előkészítése 1](media/data-box-prepare-to-ship/prepare-to-ship4.png)
 

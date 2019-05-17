@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: 8e6991201b3cda5699849ac00cc92217c6b7bf72
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: e19523834c0ddb517fa9d15853411c1b58024b43
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65524013"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65833995"
 ---
 # <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Oktatóanyag: Gazdagépcsoport létrehozása az Azure Marketplace-en
 
@@ -58,6 +58,9 @@ A virtuális gépek konfigurálás paneljén:
 ### <a name="virtual-machine-settings"></a>A virtuális gép beállításai
 
 A virtuális gép beállítás panel:
+
+>[!NOTE]
+> Ha a virtuális gépek tartományhoz csatlakoztatja az Azure AD Domain Services-környezetben, győződjön meg arról, győződjön meg arról, hogy a tartományhoz való csatlakozás felhasználó is tagja, a [AAD DC rendszergazdák csoport](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group).
 
 1. Válassza ki a **képforrás** , és adja meg a megfelelő információkat, hogyan találhatja meg, és hogyan kell tárolni. Ha nem használ felügyelt lemezeket, válassza ki azt a .vhd fájlt tartalmazó tárfiókot.
 2. Adja meg az egyszerű felhasználónév és jelszó a tartományi fiók, amely az Active Directory-tartományhoz a virtuális gépek csatlakozni fognak. Ez ugyanaz a felhasználónév és jelszó létrejön a virtuális gépeken, amely a helyi fiók. Ezek a helyi fiókok később visszaállíthatja.

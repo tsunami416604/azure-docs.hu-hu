@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 02/22/2019
 ms.author: dech
-ms.openlocfilehash: 023b344d796ea5297cda202e7baa2f0e0ef5eebd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 366a5512179136987a8fc984136c3c039a5b079d
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61058102"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827278"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Használja az adatok migrálása eszközt az adatok Azure Cosmos DB-be történő migrálásához
 
@@ -85,6 +85,19 @@ Az eszköz telepítése után megkezdheti az adatok importálását. Milyen típ
 A JSON fájl forrás programu Pro import beállítás lehetővé teszi egy importálás vagy további egyetlen dokumentum JSON-fájlokat vagy JSON-fájlokat tartalmazó JSON-dokumentumok tömbjét. Mappák rendelkező JSON-fájlok importálása való hozzáadásakor, lehetősége van a fájlok almappákban lévő keresése rekurzív módon.
 
 ![Képernyőkép a JSON-fájlok importálási beállításairól – Adatbázis-áttelepítési eszközök](./media/import-data/jsonsource.png)
+
+A kapcsolati karakterláncot a következő formátumban kell megadni:
+
+`AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>`
+
+* A `<CosmosDB Endpoint>` az a végpont URI azonosítója. Ezt az értéket kaphat az Azure Portalról. Lépjen az Azure Cosmos-fiókra. Nyissa meg a **áttekintése** ablaktáblán, és másolja a **URI** értéket.
+* A `<AccountKey>` a "jelszó" vagy **elsődleges kulcs**. Ezt az értéket kaphat az Azure Portalról. Lépjen az Azure Cosmos-fiókra. Nyissa meg a **kapcsolati karakterláncok** vagy **kulcsok** ablaktáblán, és másolja a "jelszó" vagy **elsődleges kulcs** értéket.
+* A `<CosmosDB Database>` a CosmosDB-adatbázis neve.
+
+Például: `AccountEndpoint=https://myCosmosDBName.documents.azure.com:443/;AccountKey=wJmFRYna6ttQ79ATmrTMKql8vPri84QBiHTt6oinFkZRvoe7Vv81x9sn6zlVlBY10bEPMgGM982wfYXpWXWB9w==;Database=myDatabaseName`
+
+> [!NOTE]
+> A ellenőrizze paranccsal biztosíthatja, hogy az a Cosmos DB-fiók megadva a kapcsolati karakterlánc típusú is lehet.
 
 Néhány parancssori példa JSON-fájlok importálásához:
 

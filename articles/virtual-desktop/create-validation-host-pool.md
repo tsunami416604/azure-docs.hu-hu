@@ -7,20 +7,20 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 05/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: b654c177accb92d5b9a861f14874e795f4525a43
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 91dd716a595dd56c14b3be0bf11a7b69eeb470d6
+ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65793823"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65834127"
 ---
-# <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Oktatóanyag: Szolgáltatásfrissítések ellenőrzése gazdagép-készlet létrehozása
+# <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Oktatóanyag: Gazdagépcsoport létrehozása a szolgáltatásfrissítések érvényesítéséhez
 
 Gazdagép-készletekre egy gyűjtemény egy vagy több egyforma virtuális gépek virtuális Windows Desktop előzetes verziójához bérlői környezetekben. Gazdagép-készleteket az éles környezetben üzembe helyezése előtt erősen ajánlott érvényesítési gazdagép készletet hoz létre. Frissítés alkalmazza a rendszer érvényesítési gazdagép tárolókészletekben, figyelheti a szolgáltatásfrissítések, mielőtt megvalósítaná azokat az éles környezetben, ami lehetővé teszi. Érvényesítési gazdagép készletek nélkül nem Észreveheti a módosításokat, amelyek bemutatják a hibákat, ami állásidőt jelent a felhasználók számára az éles környezetben.
 
 Ahhoz, hogy az alkalmazásai működését a legújabb frissítésekkel, az érvényesítési gazdagép készletet a gazdagép készletek a lehető az éles környezetben kell lennie. Felhasználók gyakorisággal csatlakoznia az érvényesítési gazdagép-készlet, mint a termelési gazdagép-készlethez. Ha automatizálta a gazdagép készleten tesztelése, tartalmaznia kell az érvényesítési gazdagép készletében automatizált tesztelés.
 
-Ön is a érvényesítési gazdagép készlet a diagnostics szolgáltatással kapcsolatos problémák megoldásában, vagy a [Windows virtuális asztal hibaelhárítási cikkek](https://docs.microsoft.com/Azure/virtual-desktop/troubleshoot-set-up-overview).
+Lehetősége nyílik a hibakeresésére problémák egy részét az ellenőrzés gazdagép készlet mindkettővel [a diagnosztikai funkciót](diagnostics-role-service.md) vagy a [Windows virtuális asztal hibaelhárítási cikkek](https://docs.microsoft.com/Azure/virtual-desktop/troubleshoot-set-up-overview).
 
 >[!NOTE]
 > Azt javasoljuk, hogy hagyja-e az érvényesítési gazdagép készlet összes jövőbeli frissítés tesztelése helyben.

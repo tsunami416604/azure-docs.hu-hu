@@ -2,22 +2,22 @@
 title: Egyszeri bejelentkezés konfigurálása – Azure Active Directory | Microsoft Docs
 description: Ez az oktatóanyag az Azure Portalon konfigurál SAML-alapú egyszeri bejelentkezést egy alkalmazáshoz az Active Directory (Azure AD) használatával.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: tutorial
 ms.workload: identity
 ms.date: 04/08/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3d96799e69e2fdef3a4ffd1a436727e6a58da79
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fa18bc637ec31a1f83b5cab090e008715c5e0c2a
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60442206"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825012"
 ---
 # <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>Oktatóanyag: Az Azure Active Directory a SAML-alapú egyszeri bejelentkezés az alkalmazás konfigurálása
 
@@ -34,7 +34,7 @@ Az oktatóanyag az Azure Portalt használja a következőkhöz:
 > * Az alkalmazás konfigurálása SAML-alapú egyszeri bejelentkezéshez
 > * Az SAML-beállítások tesztelése
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 1. Ha az alkalmazás nincs hozzáadva az Azure AD-bérlővel, [a rövid útmutató: Vegye fel egy alkalmazást az Azure AD-bérlő](add-application-portal.md).
 
@@ -74,11 +74,11 @@ A tartomány és az URL-címek konfigurálása:
 
     | Konfigurációs beállítás | SP által kezdeményezve | Identitásszolgáltató által kezdeményezve | Leírás |
     |:--|:--|:--|:--|
-    | Azonosító (entitásazonosító) | Néhány alkalmazáshoz szükséges | Néhány alkalmazáshoz szükséges | Egyedi módon azonosítja az alkalmazást, amelyhez az egyszeri bejelentkezést konfigurálja. Azure ad-ben az azonosító az alkalmazás SAML-jogkivonat célközönség paraméterként küld. Ellenőrizze, hogy az alkalmazás várható. Ez az érték az alkalmazás által megadott SAML-metaadatok entitásazonosítójaként is megjelenik.|
-    | Válasz URL-cím | Optional | Szükséges | Megadja, hogy az alkalmazás hová várja az SAML-jogkivonatot. A válasz URL-címet más néven a tényfeldolgozó szolgáltatás (Assertion Consumer Service, ACS) URL-címének hívják. |
-    | Bejelentkezési URL-cím | Szükséges | Ne adjon meg | Amikor egy felhasználó megnyitja ezt az URL-címet, a szolgáltató átirányítja az Azure AD-re a felhasználó hitelesítése és beléptetése érdekében. Az Azure AD az URL-cím használatával indítsa el az alkalmazást az Office 365 vagy az Azure AD hozzáférési Panel. Ha üres, az Azure AD egyszeri bejelentkezés elindításához, amikor egy felhasználó elindítja az alkalmazást az identitásszolgáltató támaszkodik.|
-    | Továbbítási állapot | Optional | Optional | Megadja az alkalmazásnak, hogy hová irányítsa át a felhasználót a hitelesítés befejezése után. Az érték általában az alkalmazás érvényes URL-címet. Egyes alkalmazások használják, ez a mező eltérően. További információt az alkalmazás forgalmazójától kérhet.
-    | Kijelentkezési URL | Optional | Optional | Az alkalmazásnak a SAML kijelentkezési válaszok elküldésére használatosak.
+    | Azonosító (EntityID) | Néhány alkalmazáshoz szükséges | Néhány alkalmazáshoz szükséges | Egyedi módon azonosítja az alkalmazást, amelyhez az egyszeri bejelentkezést konfigurálja. Azure ad-ben az azonosító az alkalmazás SAML-jogkivonat célközönség paraméterként küld. Ellenőrizze, hogy az alkalmazás várható. Ez az érték az alkalmazás által megadott SAML-metaadatok entitásazonosítójaként is megjelenik.|
+    | Válasz-URL | Választható | Szükséges | Megadja, hogy az alkalmazás hová várja az SAML-jogkivonatot. A válasz URL-címet más néven a tényfeldolgozó szolgáltatás (Assertion Consumer Service, ACS) URL-címének hívják. |
+    | Bejelentkezési URL | Szükséges | Ne adjon meg | Amikor egy felhasználó megnyitja ezt az URL-címet, a szolgáltató átirányítja az Azure AD-re a felhasználó hitelesítése és beléptetése érdekében. Az Azure AD az URL-cím használatával indítsa el az alkalmazást az Office 365 vagy az Azure AD hozzáférési Panel. Ha üres, az Azure AD egyszeri bejelentkezés elindításához, amikor egy felhasználó elindítja az alkalmazást az identitásszolgáltató támaszkodik.|
+    | Továbbítási állapot | Választható | Választható | Megadja az alkalmazásnak, hogy hová irányítsa át a felhasználót a hitelesítés befejezése után. Az érték általában az alkalmazás érvényes URL-címet. Egyes alkalmazások használják, ez a mező eltérően. További információt az alkalmazás forgalmazójától kérhet.
+    | Kijelentkezési URL | Választható | Választható | Az alkalmazásnak a SAML kijelentkezési válaszok elküldésére használatosak.
 
 
 2. Az alapvető SAML-konfigurációs beállítások szerkesztéséhez válassza ki a **szerkesztése** (a Ceruza) ikonra a jobb felső sarkában a **alapszintű SAML-konfigurációja** szakaszban.
@@ -142,7 +142,7 @@ Már majdnem kész.  Utolsó lépésként szeretne használni az Azure AD SAML i
 2. Ebben a szakaszban szereplő minden sornál másolja az értéket. Ezt követően illessze be az egyes értékek a megfelelő sort a **alapszintű SAML-konfigurációja** szakaszban. Például másolja a **bejelentkezési URL-cím** értéket a **állítsa be a GitHub-tesztelési** szakaszt, és illessze be azt a **bejelentkezési URL-** mezőbe a **alapszintű SAML-konfigurációja**  szakaszt, és így tovább.
 3. Ha korábban beillesztett értékek a megfelelő mezőkbe, **mentése**.
 
-## <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+## <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Készen áll a beállítások teszteléséhez.  
 

@@ -32,8 +32,6 @@
       href: create-host-pools-user-profile.md
     - name: A Windows Virtual Desktop terheléselosztási módjának beállítása
       href: configure-host-pool-load-balancing.md
-    - name: A diagnosztikai funkcióval kapcsolatos problémák azonosítása
-      href: diagnostics-role-service.md
     - name: Fő VHD-rendszerkép létrehozása és testreszabása
       href: set-up-customize-master-image.md
     - name: Az Office telepítése egy fő virtuálisgép-rendszerképre
@@ -54,6 +52,8 @@
   items:
     - name: 'Hibaelhárítási áttekintés, visszajelzés és támogatás'
       href: troubleshoot-set-up-overview.md
+    - name: A diagnosztikai funkcióval kapcsolatos problémák azonosítása
+      href: diagnostics-role-service.md
     - name: Bérlői és gazdagépcsoport létrehozása
       href: troubleshoot-set-up-issues.md
     - name: Munkamenetgazda virtuális gép konfigurációja

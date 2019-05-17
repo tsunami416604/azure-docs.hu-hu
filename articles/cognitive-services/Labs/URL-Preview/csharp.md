@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 0e2d4b783068cfd14385eb1712ea246c94dc9500
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2cb3f1de803b8549a88866da1042f4f32609a601
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61335481"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827152"
 ---
 # <a name="quickstart-url-preview-query-in-c"></a>Gyors útmutató: Lekérdezés URL-cím előnézeteC#
 
@@ -23,7 +23,7 @@ Az alábbi C#-példa létrehoz egy URL-előnézetet a SwiftKey webhelyhez: https
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód Windowson történő futtatásához [Visual Studio 2017](https://www.visualstudio.com/downloads/) szükséges. (Az ingyenes Community Edition is elegendő.)
+Szüksége lesz [Visual Studio 2017-es vagy újabb](https://www.visualstudio.com/downloads/) ezt a kódot futtathatnak Windows. (Az ingyenes Community Edition is elegendő.)
 
 Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához
 
