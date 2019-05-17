@@ -89,6 +89,8 @@
               href: howto-export-data-event-hubs-service-bus.md
             - name: Exportálás a Blob Storage-ba
               href: howto-export-data-blob-storage.md
+        - name: Egyéni szabályok létrehozása
+          href: howto-create-custom-rules.md
         - name: Adatok vizualizációja a Power BI-ban
           href: howto-connect-powerbi.md
         - name: Más IoT-felhők csatlakoztatása

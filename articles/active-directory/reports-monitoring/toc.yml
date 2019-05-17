@@ -31,6 +31,8 @@
       href: concept-audit-logs.md
     - name: Bejelentkezési naplók
       href: concept-sign-ins.md
+    - name: Használati és elemzési jelentés
+      href: concept-usage-insights-report.md
     - name: Kockázatos bejelentkezések
       href: concept-risky-sign-ins.md
     - name: Kockázati események

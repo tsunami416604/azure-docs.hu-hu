@@ -7,115 +7,147 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: DB létrehozása – portál
-      href: quickstart-create-server-database-portal.md
-    - name: DB létrehozása – Azure CLI
-      href: quickstart-create-server-database-azure-cli.md
-    - name: DB létrehozása – Azure CLI „up” parancsa
-      href: quickstart-create-server-up-azure-cli.md
-    - name: Csatlakozás és lekérdezés
+    - name: Egyetlen kiszolgáló
       items:
-        - name: Python
-          href: connect-python.md
-        - name: Node.js
-          href: connect-nodejs.md
-        - name: Java
-          href: connect-java.md
-        - name: Ruby
-          href: connect-ruby.md
-        - name: PHP
-          href: connect-php.md
-        - name: .NET
-          href: connect-csharp.md
-        - name: Indítás
-          href: connect-go.md
+        - name: DB létrehozása – portál
+          href: quickstart-create-server-database-portal.md
+        - name: DB létrehozása – Azure CLI
+          href: quickstart-create-server-database-azure-cli.md
+        - name: DB létrehozása – Azure CLI „up” parancsa
+          href: quickstart-create-server-up-azure-cli.md
+        - name: Csatlakozás és lekérdezés
+          items:
+            - name: Python
+              href: connect-python.md
+            - name: Node.js
+              href: connect-nodejs.md
+            - name: Java
+              href: connect-java.md
+            - name: Ruby
+              href: connect-ruby.md
+            - name: PHP
+              href: connect-php.md
+            - name: .NET
+              href: connect-csharp.md
+            - name: Indítás
+              href: connect-go.md
+    - name: Rugalmas skálázás (Citus)
+      items:
+        - name: DB létrehozása – portál
+          href: quickstart-create-hyperscale-portal.md
 - name: Oktatóanyagok
   items:
-    - name: 1 – Adatbázis-tervezés
+    - name: Egyetlen kiszolgáló
       items:
-        - name: Azure Portal
-          href: tutorial-design-database-using-azure-portal.md
-        - name: Azure CLI
-          href: tutorial-design-database-using-azure-cli.md
-    - name: 2 – Webapptervezés – Python
-      href: ../app-service/containers/tutorial-python-postgresql-app.md
-      maintainContext: true
-    - name: 3 – Monitorozás és hangolás
-      href: tutorial-monitor-and-tune.md
+        - name: 1 – Adatbázis-tervezés
+          items:
+            - name: Azure Portal
+              href: tutorial-design-database-using-azure-portal.md
+            - name: Azure CLI
+              href: tutorial-design-database-using-azure-cli.md
+        - name: 2 – Webapptervezés – Python
+          href: ../app-service/containers/tutorial-python-postgresql-app.md
+          maintainContext: true
+        - name: 3 – Monitorozás és hangolás
+          href: tutorial-monitor-and-tune.md
+    - name: Rugalmas skálázás (Citus)
+      items:
+        - name: Több-bérlős adatbázis tervezése
+          href: tutorial-design-database-hyperscale-multi-tenant.md
+        - name: Valós idejű irányítópult tervezése
+          href: tutorial-design-database-hyperscale-realtime.md
 - name: Példák
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
 - name: Alapelvek
   items:
-    - name: Adatbázis és kiszolgálók
+    - name: Egyetlen kiszolgáló
       items:
-        - name: Kiszolgálók
-          href: concepts-servers.md
-        - name: Támogatott verziók
-          href: concepts-supported-versions.md
-        - name: PostgreSQL-bővítmények
-          href: concepts-extensions.md
-        - name: Magas rendelkezésre állás
-          href: concepts-high-availability.md
-    - name: További források
-      items:
-        - name: Árképzési szintek
-          href: concepts-pricing-tiers.md
-        - name: Korlátok
-          href: concepts-limits.md
-    - name: Adathozzáférés és -biztonság
-      items:
-        - name: Tűzfalszabályok
-          href: concepts-firewall-rules.md
-        - name: Az SSL konfigurálása
-          href: concepts-ssl-connection-security.md
-        - name: Fejlett fenyegetésvédelem
-          href: concepts-data-access-and-security-threat-protection.md
-        - name: VNet
-          href: concepts-data-access-and-security-vnet.md
-    - name: Az üzletmenet folytonossága
-      items:
-        - name: Áttekintés
-          href: concepts-business-continuity.md
-        - name: Biztonsági mentés és visszaállítás
-          href: concepts-backup.md
-    - name: Figyelés és hangolás
-      items:
+        - name: Adatbázisok és kiszolgálók
+          items:
+            - name: Kiszolgálók
+              href: concepts-servers.md
+            - name: Támogatott verziók
+              href: concepts-supported-versions.md
+            - name: PostgreSQL-bővítmények
+              href: concepts-extensions.md
+            - name: Magas rendelkezésre állás
+              href: concepts-high-availability.md
+        - name: További források
+          items:
+            - name: Árképzési szintek
+              href: concepts-pricing-tiers.md
+            - name: Korlátok
+              href: concepts-limits.md
+        - name: Adathozzáférés és -biztonság
+          items:
+            - name: Tűzfalszabályok
+              href: concepts-firewall-rules.md
+            - name: Az SSL konfigurálása
+              href: concepts-ssl-connection-security.md
+            - name: Fejlett fenyegetésvédelem
+              href: concepts-data-access-and-security-threat-protection.md
+            - name: Virtuális hálózat
+              href: concepts-data-access-and-security-vnet.md
+        - name: Az üzletmenet folytonossága
+          items:
+            - name: Áttekintés
+              href: concepts-business-continuity.md
+            - name: Biztonsági mentés és visszaállítás
+              href: concepts-backup.md
         - name: Figyelés és hangolás
-          href: concepts-monitoring.md
-        - name: Kiszolgálói naplók
-          href: concepts-server-logs.md
-        - name: Lekérdezéstár
           items:
+            - name: Figyelés és hangolás
+              href: concepts-monitoring.md
+            - name: Kiszolgálói naplók
+              href: concepts-server-logs.md
             - name: Lekérdezéstár
-              href: concepts-query-store.md
-            - name: Lekérdezéstár – használati forgatókönyvek
-              href: concepts-query-store-scenarios.md
-            - name: Ajánlott eljárások a lekérdezéstár használatához
-              href: concepts-query-store-best-practices.md
-        - name: Lekérdezési terheléselemző
-          href: concepts-query-performance-insight.md
-        - name: Teljesítménnyel kapcsolatos javaslatok
-          href: concepts-performance-recommendations.md
-    - name: Fejlesztés
-      items:
-        - name: Adatkapcsolattárak
-          href: concepts-connection-libraries.md
-        - name: Kapcsolat rugalmassága
-          href: concepts-connectivity.md
-        - name: Fejlesztés az Azure Kubernetes Service (AKS) használatával
-          href: concepts-aks.md
-        - name: Java
+              items:
+                - name: Lekérdezéstár
+                  href: concepts-query-store.md
+                - name: Lekérdezéstár – használati forgatókönyvek
+                  href: concepts-query-store-scenarios.md
+                - name: Ajánlott eljárások a lekérdezéstár használatához
+                  href: concepts-query-store-best-practices.md
+            - name: Lekérdezési terheléselemző
+              href: concepts-query-performance-insight.md
+            - name: Teljesítménnyel kapcsolatos javaslatok
+              href: concepts-performance-recommendations.md
+        - name: Fejlesztés
           items:
-            - name: A Spring Data JDBC konfigurálása
-              href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
-            - name: A Spring Data JPA konfigurálása
-              href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
-    - name: Replikáció
+            - name: Adatkapcsolattárak
+              href: concepts-connection-libraries.md
+            - name: Kapcsolat rugalmassága
+              href: concepts-connectivity.md
+            - name: Fejlesztés az Azure Kubernetes Service (AKS) használatával
+              href: concepts-aks.md
+            - name: Java
+              items:
+                - name: A Spring Data JDBC konfigurálása
+                  href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
+                - name: A Spring Data JPA konfigurálása
+                  href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
+        - name: Replikáció
+          items:
+            - name: Olvasási replikák
+              href: concepts-read-replicas.md
+    - name: Rugalmas skálázás (Citus)
       items:
-        - name: Olvasási replikák
-          href: concepts-read-replicas.md
+        - name: Csomópontok
+          href: concepts-hyperscale-nodes.md
+        - name: Elosztott adatok
+          href: concepts-hyperscale-distributed-data.md
+        - name: Elosztási oszlop kiválasztása
+          href: concepts-hyperscale-choose-distribution-column.md
+        - name: Tábla közös elhelyezése
+          href: concepts-hyperscale-colocation.md
+        - name: PostgreSQL-bővítmények
+          href: concepts-hyperscale-extensions.md
+        - name: További források
+          items:
+            - name: Beállítási lehetőségek
+              href: concepts-hyperscale-configuration-options.md
 - name: Útmutatók
   items:
     - name: Felhasználók létrehozása

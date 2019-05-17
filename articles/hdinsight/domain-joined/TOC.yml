@@ -1,62 +1,51 @@
 - name: "Azure HDInsight\_– dokumentáció"
   href: /azure/hdinsight
-- name: Vállalati biztonság
+- name: Áttekintés
   items:
-    - name: Áttekintés
+    - name: Mi az az Enterprise Security Package a HDInsightban?
       href: apache-domain-joined-introduction.md
+- name: Alapelvek
+  items:
     - name: ESP-fürtök tervezése
       href: apache-domain-joined-architecture.md
     - name: ESP-fürtök konfigurálása az Azure AD DS-sel
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: Azure AD-felhasználók szinkronizálása HDInsight-fürttel
       href: ../hdinsight-sync-aad-users-to-cluster.md
-      maintainContext: true
     - name: Apache Hive-szabályzatok konfigurálása
       href: apache-domain-joined-run-hive.md
     - name: Apache HBase RBAC és Apache Ranger
       href: apache-domain-joined-run-hbase.md
     - name: Apache Kafka RBAC és Apache Ranger
       href: apache-domain-joined-run-kafka.md
-      maintainContext: true
     - name: VSCode használata egy ESP-fürthöz való kapcsolódáshoz
       href: ../hdinsight-for-vscode.md
-      maintainContext: true
     - name: IntelliJ használata egy ESP-fürthöz való kapcsolódáshoz
       href: ../spark/apache-spark-intellij-tool-plugin.md
-      maintainContext: true
     - name: Eclipse használata egy ESP-fürthöz való kapcsolódáshoz
       href: ../spark/apache-spark-eclipse-tool-plugin.md
-      maintainContext: true
     - name: Az Apache Oozie használata ESP-fürtökben
       href: hdinsight-use-oozie-domain-joined-clusters.md
 - name: Adatok védelme
   href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
-  maintainContext: true
 - name: Hálózati hozzáférés
   items:
     - name: HDInsight az Azure VNetben
       href: ../hdinsight-extend-hadoop-virtual-network.md
-      maintainContext: true
     - name: A HDInsight csatlakoztatása a helyszíni hálózathoz
       href: ../connect-on-premises-network.md
-      maintainContext: true
     - name: Az Apache HBase-fürt létrehozása az Azure VNetben
       href: ../hbase/apache-hbase-provision-vnet.md
-      maintainContext: true
     - name: Az Apache HBase-fürt replikációja az Azure VNetben
       href: ../hbase/apache-hbase-replication.md
-      maintainContext: true
 - name: Monitorozás Azure Monitor-naplókkal
   items:
     - name: Az Azure Monitor-naplók használata
       href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-      maintainContext: true
     - name: Lekérdezések használata az Azure Monitor-naplókkal
       href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
-      maintainContext: true
     - name: Fürtteljesítmény monitorozása
       href: ../hdinsight-key-scenarios-to-monitor.md
-      maintainContext: true
 - name: Referencia
   items:
     - name: Kódminták
@@ -86,10 +75,8 @@
       items:
         - name: Aktuális kibocsátási megjegyzések
           href: ../hdinsight-release-notes.md
-          maintainContext: true
         - name: Archivált kibocsátási megjegyzések
           href: ../hdinsight-release-notes-archive.md
-          maintainContext: true
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: Segítség kérése a fórumokon
@@ -102,4 +89,3 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: A HDInsight Windows-eszközei
       href: ../hdinsight-hadoop-windows-tools.md
-      maintainContext: true

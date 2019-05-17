@@ -187,7 +187,7 @@
           href: api-server-authorized-ip-ranges.md
         - name: A fürt szolgáltatásneve hitelesítő adatainak frissítése
           href: update-credentials.md
-        - name: Fürt kimenő forgalmának korlátozása és szabályozása
+        - name: Fürt kimenő forgalmának korlátozása és szabályozása (előzetes verzió)
           href: limit-egress-traffic.md
         - name: Azure Active Directory-integráció engedélyezése
           items:

@@ -50,6 +50,8 @@
       href: app-protection-based-conditional-access.md
     - name: Felügyelt eszközök megkövetelése
       href: require-managed-devices.md
+    - name: Megbízható hálózatok megkövetelése az MFA-regisztrációhoz
+      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: MFA megkövetelése a nem megbízható hálózatokból indított hozzáférési kísérletekhez
       href: untrusted-networks.md
     - name: Használati feltételek megkövetelése

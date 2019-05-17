@@ -25,6 +25,8 @@
       href: azure-netapp-files-cost-model.md
     - name: Az Azure NetApp Files hálózattervezési irányelvei
       href: azure-netapp-files-network-topologies.md
+    - name: Gyakori kérdések az Azure NetApp Filesról
+      href: azure-netapp-files-faqs.md
 - name: Útmutatók
   items:
     - name: Regisztrálás az Azure NetApp Filesra

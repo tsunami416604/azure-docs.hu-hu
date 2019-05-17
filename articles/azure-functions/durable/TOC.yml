@@ -1,4 +1,5 @@
 - name: Tartós függvények – dokumentáció
+  href: durable-functions-overview.md
 - name: Áttekintés
   items:
     - name: Az Azure Functions ismertetése
@@ -7,6 +8,8 @@
       href: durable-functions-overview.md
     - name: Kiszolgáló nélküli összehasonlítás
       href: ../functions-compare-logic-apps-ms-flow-webjobs.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: Előzetes verziójú funkciók
+      href: durable-functions-preview.md
 - name: Gyors útmutatók
   expanded: true
   items:

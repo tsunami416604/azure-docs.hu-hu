@@ -413,7 +413,7 @@
             - name: 'Blobok, üzenetsorok, táblák és fájlok'
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
             - name: Adatáthelyezés
-              href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.datamovement'
+              href: /dotnet/api/microsoft.azure.storage.datamovement
             - name: Resource Manager
               href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
         - name: Java
@@ -475,21 +475,23 @@
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: NuGet-csomagok
           items:
-            - name: Az Azure Storage .NET-hez készült ügyféloldali kódtára
-              href: 'https://www.nuget.org/packages/WindowsAzure.Storage/'
+            - name: Közös Azure Storage-ügyfélkódtár
+              href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/'
+            - name: Azure Blob Storage-ügyfélkódtár
+              href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/'
             - name: Azure Storage adatátviteli könyvtár
               href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
             - name: Azure Configuration Manager
-              href: 'https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/'
+              href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
         - name: Forráskód
           items:
             - name: .NET
               items:
-                - name: 'Blobok, üzenetsorok, táblák és fájlok'
-                  href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
+                - name: 'Blobok, üzenetsorok és fájlok'
+                  href: 'https://github.com/Azure/azure-storage-net'
                 - name: Adatáthelyezés
-                  href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.datamovement'
-                - name: Resource Manager
+                  href: /dotnet/api/microsoft.azure.storage.datamovement
+                - name: Storage Resource Provider
                   href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
             - name: Java
               items:

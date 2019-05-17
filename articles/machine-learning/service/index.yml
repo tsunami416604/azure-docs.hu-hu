@@ -11,7 +11,7 @@ metadata:
   manager: jhubbard
   author: j-martens
   ms.author: jmartens
-  ms.date: 05/06/2019
+  ms.date: 05/14/2019
   ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
@@ -36,6 +36,7 @@ sections:
         items:
           - html: <a href="quickstart-run-cloud-notebook">Kísérlet futtatása a felhőben</a> (nincs szükség telepítésre).
           - html: <a href="quickstart-run-local-notebook">Kísérlet futtatása helyi notebookkiszolgáló használatával</a> (helyi SDK telepítésével).
+          - html: <a href="ui-quickstart-run-experiment">Adatok előkészítése és vizualizálása kód írása nélkül</a> a vizuális felületen.
   - title: Részletes útmutatók
     items:
       - type: paragraph
@@ -45,6 +46,7 @@ sections:
         items:
           - html: Képbesorolási modellek <a href="tutorial-train-models-with-aml">betanítása</a> és <a href="tutorial-deploy-models-with-aml">üzembe helyezése</a> (<b>kétrészes sorozat</b>).
           - html: <a href="tutorial-data-prep">Adatok előkészítése</a> és <a href="tutorial-auto-train-models">automatizált gépi tanulás használata</a> regressziós modellek betanításához és hangolásához (<b>kétrészes sorozat</b>).
+          - html: <a href="ui-tutorial-automobile-price-train-score">Autó árának előrejelzése</a> a vizuális felülettel és a regressziós modell <a href="ui-tutorial-automobile-price-deploy">üzembe helyezése</a>.
   - title: Példák
     items:
       - type: paragraph

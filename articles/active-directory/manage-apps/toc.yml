@@ -167,6 +167,8 @@
           href: application-provisioning-config-problem.md
         - name: Probléma a rendszergazdai hitelesítő adatok mentésekor a felhasználók átadását végző katalógusbeli alkalmazás konfigurálása közben
           href: application-provisioning-config-problem-storage-limit.md
+        - name: Attribútum szinkronizálása leképezéshez – katalógusbeli alkalmazás
+          href: user-provisioning-sync-attributes-for-mapping.md
         - name: A felhasználók átadása nem történik meg – katalógusbeli alkalmazás
           href: application-provisioning-config-problem-no-users-provisioned.md
         - name: Nem a megfelelő felhasználók lettek átadva – katalógusbeli alkalmazás

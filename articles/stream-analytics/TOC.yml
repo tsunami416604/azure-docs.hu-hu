@@ -34,6 +34,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
 - name: Alapelvek
   items:
+    - name: Streaming Analytics-technológia kiválasztása
+      href: streaming-technologies.md
     - name: Feladatok bemenettípusai
       items:
         - name: Bemenetek áttekintése

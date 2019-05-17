@@ -17,6 +17,9 @@
       href: quickstart-assign-role-user-portal.md
     - name: Hozzáférés biztosítása felhasználó számára – PowerShell
       href: tutorial-role-assignments-user-powershell.md
+    - name: Hozzáférés biztosítása felhasználó számára – Resource Manager-sablon
+      displayName: 'ARM, resource manager template'
+      href: tutorial-role-assignments-user-template.md
     - name: Hozzáférés biztosítása csoport számára – PowerShell
       href: tutorial-role-assignments-group-powershell.md
     - name: Egyéni szerepkör létrehozása – PowerShell
@@ -88,6 +91,7 @@
     - name: REST API
       href: /rest/api/authorization/
     - name: Resource Manager-sablonok
+      displayName: ARM
       items:
         - name: Szerepkör-hozzárendelések
           href: /azure/templates/microsoft.authorization/roleassignments

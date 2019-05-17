@@ -368,7 +368,7 @@
   items:
     - name: Áttekintés
       href: sql-database-howto.md
-    - name: Önálló adatbázis
+    - name: Önálló adatbázisok és rugalmas készletek
       items:
         - name: Áttekintés
           href: sql-database-howto-single-database.md
@@ -448,7 +448,7 @@
               href: elastic-jobs-tsql.md
             - name: Migrálás (régi rugalmas feladatokból)
               href: elastic-jobs-migrate.md
-    - name: Felügyelt példány
+    - name: Felügyelt példányok
       items:
         - name: Áttekintés
           href: sql-database-howto-managed-instance.md
@@ -720,6 +720,10 @@
       href: sql-database-glossary-terms.md
     - name: Fejlessze a készségeit a Microsoft Learnnel
       href: /learn/browse/?products=azure-sql-database
+    - name: SQL Server blog
+      href: 'https://cloudblogs.microsoft.com/sqlserver/?product=azure-sql-database'
+    - name: Microsoft Azure blog
+      href: 'https://azure.microsoft.com/blog/'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Nyilvános adatkészletek

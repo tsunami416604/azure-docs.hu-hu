@@ -36,6 +36,8 @@
           items:
             - name: Biztonsági irányelvek megtekintése
               href: data-box-safety.md
+            - name: Nyomon követés és naplózás
+              href: data-box-logs.md
             - name: Követelmények áttekintése
               items:
                 - name: A Data Boxhoz

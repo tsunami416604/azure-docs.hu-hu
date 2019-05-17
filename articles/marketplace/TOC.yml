@@ -463,3 +463,25 @@
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Támogatás igénylése
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
+- name: Kereskedelmi Marketplace-portál a Partnerközpontban
+  items:
+    - name: Áttekintés
+      items:
+        - name: Mi az a Kereskedelmi Marketplace?
+          href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: Fiókkezelés
+      items:
+        - name: Új Partnerközpontfiók létrehozása
+          href: ./partner-center-portal/create-account.md
+        - name: A Partnerközpontfiók kezelése
+          href: ./partner-center-portal/manage-account.md
+        - name: Vállalati munkahelyi fiók megkeresése vagy létrehozása
+          href: ./partner-center-portal/company-work-accounts.md
+    - name: Új ajánlat létrehozása
+      items:
+        - name: SaaS-ajánlat létrehozása
+          href: ./partner-center-portal/create-new-saas-offer.md
+    - name: Közzététel állapota
+      href: ./partner-center-portal/publishing-status.md
+    - name: Létező ajánlatok frissítése
+      href: ./partner-center-portal/update-existing-offer.md

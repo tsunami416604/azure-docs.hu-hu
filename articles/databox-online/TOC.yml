@@ -67,8 +67,10 @@
           href: data-box-edge-deploy-connect-setup-activate.md
         - name: '4 – Hozzáadás, csatlakozás a megosztáshoz'
           href: data-box-edge-deploy-add-shares.md
-        - name: 5 – Számítás konfigurálása
+        - name: 5A – Számítás konfigurálása (egyszerű)
           href: data-box-edge-deploy-configure-compute.md
+        - name: 5B – Számítás konfigurálása (speciális)
+          href: data-box-edge-deploy-configure-compute-advanced.md
     - name: Alapelvek
       items:
         - name: Követelmények áttekintése
