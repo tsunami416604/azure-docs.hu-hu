@@ -59,10 +59,10 @@ SAP HANA-beli társított szolgáltatás a következő tulajdonságok támogatot
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **SapHana** | Igen |
-| kiszolgáló | A kiszolgálóra, amelyen az SAP HANA-példány neve. Ha a kiszolgáló egy egyéni portot használ, adja meg a `server:port`. | Igen |
+| server | A kiszolgálóra, amelyen az SAP HANA-példány neve. Ha a kiszolgáló egy egyéni portot használ, adja meg a `server:port`. | Igen |
 | authenticationType | Az SAP HANA-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Alapszintű**, és **Windows** | Igen |
-| Felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó nevét. | Igen |
-| jelszó | A felhasználó jelszava. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| userName | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó nevét. | Igen |
+| password | A felhasználó jelszava. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Egy helyi Integration Runtime szükség, az említett [Előfeltételek](#prerequisites). |Igen |
 
 **Példa**
@@ -122,7 +122,7 @@ Adatok másolása az SAP HANA, állítsa be a forrás típusaként a másolási 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **RelationalSource** | Igen |
-| lekérdezés | Adja meg az SQL-lekérdezést az SAP HANA-példány adatokat olvasni. | Igen |
+| query | Adja meg az SQL-lekérdezést az SAP HANA-példány adatokat olvasni. | Igen |
 
 **Példa**
 
@@ -165,18 +165,18 @@ Példatípust az adatok SAP HANA-ból, a következő hozzárendeléseket haszná
 | ALPHANUM | String |
 | BIGINT | Int64 |
 | BLOB | Byte[] |
-| LOGIKAI ÉRTÉK | Byte |
+| BOOLEAN | Byte |
 | CLOB | Byte[] |
 | DATE | DateTime |
 | DECIMAL | Decimal |
-| DUPLA | Single |
+| DOUBLE | Single |
 | INT | Int32 |
 | NVARCHAR | String |
-| VALÓDI | Single |
+| REAL | Single |
 | SECONDDATE | DateTime |
 | SMALLINT | Int16 |
 | TIME | TimeSpan |
-| IDŐBÉLYEG | DateTime |
+| TIMESTAMP | DateTime |
 | TINYINT | Byte |
 | VARCHAR | String |
 
