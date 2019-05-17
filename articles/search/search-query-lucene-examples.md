@@ -7,15 +7,15 @@ tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 108dd80aa90772eb01fe3c7f0176ddd37e27acaa
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 467c323a0b669e70e12f801fd8fdd6df119e793d
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024453"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595913"
 ---
 # <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>Példák Lucene-keresési "teljes" szintaxis (speciális lekérdezések az Azure Search) használatával lekérdezése
 
@@ -81,11 +81,11 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 Minden ebben a cikkben szereplő példák adja meg a **queryType = full** keresési paramétert, amely azt jelzi, hogy a teljes szintaxis kezeli a Lucene lekérdezéselemző. 
 
-## <a name="example-1-field-scoped-query"></a>1. példa: A mező-hatáskörű lekérdezések
+## <a name="example-1-query-scoped-to-a-list-of-fields"></a>1. példa: A lekérdezés hatókörét arra a mezők listája
 
-Az első példa nem Lucene-specifikus, de azt vezethet, vezessen be az első lekérdezés alapvető fogalom: tartalmazottsági. Ebben a példában a lekérdezés-végrehajtás és a válasz csak néhány bizonyos mezők hatóköröket. Hogyan építse fel olvasható JSON-választ, hogy akkor fontos, ha az eszköz csak a Postman vagy a keresési explorer. 
+Az első példa nem Lucene-specifikus, de azt vezethet, vezessen be az első lekérdezés alapvető fogalom: hatókör mezőben. Ebben a példában a teljes lekérdezés és a válasz csak néhány bizonyos mezők hatóköröket. Hogyan építse fel olvasható JSON-választ, hogy akkor fontos, ha az eszköz csak a Postman vagy a keresési explorer. 
 
-Kihagytuk, a lekérdezés célozza meg, csak a *business_title* mezőben, majd adja meg a csak üzleti címe adja vissza. Szintaxisa a következő **searchFields** korlátozása csak a business_title mezőre, lekérdezés-végrehajtás és **kiválasztása** , adja meg, hogy mely mezők szerepelnek a válasz.
+Kihagytuk, a lekérdezés célozza meg, csak a *business_title* mezőben, majd adja meg a csak üzleti címe adja vissza. A **searchFields** paraméter korlátozza a lekérdezés-végrehajtás csak a business_title mezőre, és **kiválasztása** Itt adhatja meg, melyik mezők szerepelnek a választ.
 
 ### <a name="partial-query-string"></a>Részleges lekérdezési karakterlánc
 
@@ -99,6 +99,11 @@ Kihagytuk, a lekérdezés célozza meg, csak a *business_title* mezőben, majd a
 search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
 ```
 
+A vessző utáni szóközt nem kötelező.
+
+> [!Tip]
+> Az alkalmazás kódjának a REST API használata esetén ne felejtse el az URL-kódolása paraméterek `$select` és `searchFields`.
+
 ### <a name="full-url"></a>Teljes URL-cím
 
 ```http
@@ -109,41 +114,44 @@ Ez a lekérdezés válasza az alábbi képernyőfelvételhez hasonlóan kell kin
 
   ![Postman mintaválasz](media/search-query-lucene-examples/postman-sample-results.png)
 
-Előfordulhat, hogy észrevette a keresési pontszámtól a válaszban. 1 egységes pontszámok fordulhat elő, esetén nincs rank, vagy mert a keresés nem volt a teljes szöveges keresés, vagy mert a feltétel nem lett alkalmazva. A feltétel nem null értékű Search sorok visszatérhet tetszőleges sorrendben. Is tartalmazó tényleges feltételek, látni fogja a keresési pontszámok jelentéssel bíró értékekké fejlesztheti tovább.
+Előfordulhat, hogy észrevette a keresési pontszámtól a válaszban. 1 egységes pontszámok fordulhat elő, esetén nincs rank, vagy mert a keresés nem volt a teljes szöveges keresés, vagy mert a feltétel nem lett alkalmazva. A feltétel nem null értékű Search sorok visszatérhet tetszőleges sorrendben. Is tartalmazó tényleges keresési feltételeknek, látni fogja a keresési pontszámok jelentéssel bíró értékekké fejlesztheti tovább.
 
-## <a name="example-2-intra-field-filtering"></a>2. példa Mező-on belüli szűrése
+## <a name="example-2-fielded-search"></a>2. példa Fielded keresése
 
-Teljes Lucene szintaxis támogatja a kifejezések mező belül. Ebben a példában a kifejezés vezető őket, de nem kezdő üzleti az adatfeliratokat keres.
+Teljes Lucene-szintaxis egy adott mezőben hatókörkezelési külön keresési kifejezések támogatja. Ebben a példában a kifejezés vezető őket, de nem kezdő üzleti az adatfeliratokat keres.
 
 ### <a name="partial-query-string"></a>Részleges lekérdezési karakterlánc
 
 ```http
-searchFields=business_title&$select=business_title&search=business_title:senior+NOT+junior
+$select=business_title&search=business_title:(senior NOT junior)
 ```
 
 Íme az ugyanabból a lekérdezés több mező.
 
 ```http
-searchFields=business_title, posting_type&$select=business_title, posting_type&search=business_title:senior+NOT+junior AND posting_type:external
+$select=business_title, posting_type&search=business_title:(senior NOT junior) AND posting_type:external
 ```
 
 ### <a name="full-url"></a>Teljes URL-cím
 
 ```GET
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:senior+NOT+junior
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
   ![Postman mintaválasz](media/search-query-lucene-examples/intrafieldfilter.png)
 
-Adjon meg egy **fieldname:searchterm** konstrukció, megadhat egy fielded lekérdezési műveletet, ha a mező kitöltése egyetlen szó, és a keresési kifejezést is egy szót vagy kifejezést, igény szerint a logikai operátorokkal együtt. Néhány példa a következők:
+Meghatározhat egy fielded keresési műveletet a **fieldName:searchExpression** szintaxist, ahol a keresési kifejezés lehet egyetlen szó vagy kifejezés, vagy egy összetettebb kifejezést zárójelben, igény szerint a logikai operátorokkal együtt. Néhány példa a következők:
 
-* business_title:(senior NOT junior)
-* állapot: ("Győr" és "Új Jersey")
-* business_title:(senior NOT junior) és posting_type:external
+- `business_title:(senior NOT junior)`
+- `state:("New York" OR "New Jersey")`
+- `business_title:(senior NOT junior) AND posting_type:external`
 
-Ügyeljen arra, hogy helyezzen több karakterlánc idézőjelek között, ha azt szeretné, hogy mindkét karakterlánc, kiértékelendő egyetlen egységként, ahogy ebben az esetben a két különböző városok a hely mezőben lévő keresése. Arra is ügyeljen az operátor van nagybetű, az nem látható módon és és.
+Ügyeljen arra, hogy helyezze idézőjelek között több karakterlánc, ha azt szeretné, hogy mindkét karakterláncot egyetlen egységként, ebben az esetben két különböző helyen lévő keresése, ki kell értékelni a `state` mező. Arra is ügyeljen az operátor van nagybetű, az nem látható módon és és.
 
-A megadott mező **fieldname:searchterm** kell lennie egy kereshető mező. Lásd: [Index létrehozása (Azure Search szolgáltatás REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) indexattribútumokat használata a Meződefiníciók részleteiért.
+A megadott mező **fieldName:searchExpression** kell lennie egy kereshető mező. Lásd: [Index létrehozása (Azure Search szolgáltatás REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) indexattribútumokat használata a Meződefiníciók részleteiért.
+
+> [!NOTE]
+> A fenti példában, hogy nem kellett használni a `searchFields` paramétere, mert a lekérdezés minden egyes részét explicit módon megadott mező neve van. Azonban továbbra is használhatja a `searchFields` paramétert, ha egy lekérdezést, ahol egy adott mező egyes részeit is meghatározhat, és a többi több mező lehet alkalmazni szeretné. Például a lekérdezés `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` egyezni `senior NOT junior` csak a `business_title` mező, míg az "external" egyezni a `posting_type` mező. A megadott mező neve **fieldName:searchExpression** mindig elsőbbséget élvez a `searchFields` paramétert, ezért az ebben a példában ez nincs szükségünk `business_title` a a `searchFields` paraméter.
 
 ## <a name="example-3-fuzzy-search"></a>3. példa: intelligens keresést
 

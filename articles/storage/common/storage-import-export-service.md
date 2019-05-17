@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 5bb68f3f0139a98f10e28957209f8530a762b76c
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 97a3ac275613b644dfd90144039e4f3127186997
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413907"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603106"
 ---
 # <a name="what-is-azure-importexport-service"></a>Mi az Azure Import/Export szolgáltatás?
 
@@ -74,9 +74,9 @@ Magas szintű az importálási feladat az alábbi lépésekből áll:
 8. A meghajtók mellékelt szolgáltatója, a feladó címe az importálási feladat megadott fiókkal.
 
 > [!NOTE]
-> Ossza meg a belföldi Szállítmányozói fiókjára (belül data center ország) helyi szállításhoz 
+> Ossza meg a belföldi Szállítmányozói fiókjára (belül data center ország/régió) helyi szállításhoz 
 >
-> Ossza meg egy nemzetközi Szállítmányozói fiókjára külföldön (data center ország) kívül eső szállításhoz
+> Ossza meg egy nemzetközi Szállítmányozói fiókjára külföldön (data center ország/régió) kívül eső szállításhoz
 
  ![Ábra 1:Import feladat folyamat](./media/storage-import-export-service/importjob.png)
 
@@ -104,9 +104,9 @@ Magas szintű exportálási feladat az alábbi lépésekből áll:
 10. A meghajtók mellékelt szolgáltatója, a feladó címe az importálási feladat megadott fiókkal.
 
 > [!NOTE]
-> Ossza meg a belföldi Szállítmányozói fiókjára (belül data center ország) helyi szállításhoz 
+> Ossza meg a belföldi Szállítmányozói fiókjára (belül data center ország/régió) helyi szállításhoz 
 >
-> Ossza meg egy nemzetközi Szállítmányozói fiókjára külföldön (data center ország) kívül eső szállításhoz
+> Ossza meg egy nemzetközi Szállítmányozói fiókjára külföldön (data center ország/régió) kívül eső szállításhoz
   
  ![Ábra 2:Export feladat folyamat](./media/storage-import-export-service/exportjob.png)
 
@@ -119,7 +119,7 @@ Az Azure Import/Export szolgáltatás támogatja az adatok másolását, és az 
 ### <a name="supported-shipping-locations"></a>Szállítási helyeken támogatott
 
 
-|Ország  |Ország  |Ország  |Ország  |
+|Ország/régió  |Ország/régió  |Ország/régió  |Ország/régió  |
 |---------|---------|---------|---------|
 |USA keleti régiója    | Észak-Európa        | Közép-India        |US Gov Iowa         |
 |USA nyugati régiója     |Nyugat-Európa         | Dél-India        | US DoD, kelet        |

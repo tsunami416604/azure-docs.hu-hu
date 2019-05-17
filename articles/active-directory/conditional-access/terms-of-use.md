@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/03/2019
+ms.date: 05/15/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1f03cd518a15d08971968e04fa69954951c77e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8659ecab649216650403f3a992cc6e356e5de5d0
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60356982"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823578"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk azt ismerteti, hogyan kezdheti el a használati feltételeket tartalmazó fájl.
@@ -383,6 +383,9 @@ V: Is [felülvizsgálati korábban elfogadott használati feltételeket tartalma
 
 **K: Mi történik, ha az Intune használati feltételeket is használata?**<br />
 V: Ha konfigurálta is az Azure AD használati feltételek és [Intune használati feltételek](/intune/terms-and-conditions-create), a felhasználó köteles fogadnia mindkettőt. További információkért lásd: a [kiválasztani a feltételek megoldást kínál a szervezet blogbejegyzés](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
+
+**K: Milyen végpontokat nem használható szolgáltatási feltételeit használja a hitelesítéshez?**<br />
+V: Használati feltételek használja az alábbi végpontok a hitelesítéshez: https://tokenprovider.termsofuse.identitygovernance.azure.com és https://account.activedirectory.windowsazure.com. Ha a szervezete egy regisztrációs URL-címek engedélyezési listája, szüksége lesz a adja hozzá ezeket a végpontokat az engedélyezési listához, és az Azure ad-ben végpontjainak jelentkezzen be.
 
 ## <a name="next-steps"></a>További lépések
 

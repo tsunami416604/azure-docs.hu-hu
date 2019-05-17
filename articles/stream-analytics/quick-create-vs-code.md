@@ -7,18 +7,18 @@ ms.author: mamccrea
 ms.date: 05/06/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 511dab7090f6114c7769d504166f3e2c137d43ca
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 894f43a7da0abd129123d5c4ddf2bb95347c42c5
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65071838"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825343"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>Gyors útmutató: Az Azure Stream Analytics felhőalapú feladat létrehozása a Visual Studio Code (előzetes verzió)
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre és futtathat a Visual Studio Code az Azure Stream Analytics-bővítmény használata a Stream Analytics-feladat. A példa feladat streamelési adatokat olvas be egy IoT Hub-eszköz. Megadhat egy feladatot, amely kiszámítja az átlaghőmérséklet, ha több mint 27° és a létrejövő kimenet egy új fájlba, az események írása a blob storage.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
@@ -89,7 +89,7 @@ Mielőtt meghatározná a Stream Analytics-feladat, készítse elő az adatokat,
 
 2. Az a **storage-fiók létrehozása** panelen adjon meg egy fiók nevét, helyen és erőforráscsoportban csoportjához. Az IoT Hub létrehozott, válassza az ugyanazon a helyen és erőforráscsoportban. Kattintson a **felülvizsgálat + létrehozása** a fiók létrehozásához.
 
-   ![Storage-fiók létrehozása](./media/quick-create-vs-code/create-storage-account.png)
+   ![Tárfiók létrehozása](./media/quick-create-vs-code/create-storage-account.png)
 
 3. A tárfiók létrehozása után válassza ki a **Blobok** csempét a **áttekintése** ablaktáblán.
 
@@ -142,7 +142,7 @@ Mielőtt meghatározná a Stream Analytics-feladat, készítse elő az adatokat,
    |-------|---------------|-----------|
    |Name (Név)|Input (Bemenet)|Adja meg a feladat bemenetének azonosító nevét.|
    |IotHubNamespace|MyASAIoTHub|Válassza ki vagy adja meg az IoT Hub nevét. Az IoT Hub nevét a rendszer automatikusan észleli, ha ugyanabban az előfizetésben.|
-   |Végpont|Üzenetkezelés| |
+   |Végpont|Üzenetküldés| |
    |SharedAccessPolicyName|iothubowner| |
 
 ## <a name="define-an-output"></a>Kimenet definiálása
@@ -164,7 +164,7 @@ Mielőtt meghatározná a Stream Analytics-feladat, készítse elő az adatokat,
    |Name (Név)|Kimenet| Adja meg a feladat kimenetének azonosító nevét.|
    |Tárfiók|asaquickstartstorage|Válassza ki vagy adja meg a tárfiók nevét. Ha a tárfiókok ugyanahhoz az előfizetéshez tartoznak, a rendszer automatikusan észleli a nevüket.|
    |Tároló|container1|Válassza ki a tárfiókjában létrehozott meglévő tárolót.|
-   |Path Pattern (Elérésiút-minta)|output|Adja meg a tárolón belül létrehozni kívánt elérési út nevét.|
+   |Path Pattern (Elérésiút-minta)|kimenet|Adja meg a tárolón belül létrehozni kívánt elérési út nevét.|
 
 ## <a name="define-the-transformation-query"></a>A transzformációs lekérdezés definiálása
 
@@ -229,7 +229,7 @@ Parancsprogram-fordítási elindítani két módja van:
 
 2. Kattintson a jobb gombbal a projekt nevére. Ezután válassza ki **Start** a helyi menüből.
 
-![Indítsa el a Stream Analytics-feladat a VS Code-ban](./media/quick-create-vs-code/start-asa-job-vs-code.png)
+   ![Indítsa el a Stream Analytics-feladat a VS Code-ban](./media/quick-create-vs-code/start-asa-job-vs-code.png)
 
 3. Válasszon **most** az előugró ablakban indítsa el a feladatot.
 

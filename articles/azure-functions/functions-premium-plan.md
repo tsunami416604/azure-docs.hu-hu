@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: d327146c4a1fa61e55bb904308038c1ce717123d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 75987e7cba9f373af5a434de9f273948c3c9ae75
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61031193"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544769"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Az Azure Functions prémium szintű csomag (előzetes verzió)
 
@@ -34,7 +34,7 @@ Prémium szintű csomagot is létrehozhat az Azure parancssori felületen
 az functionapp plan create -g <resource-group> -n <plan-name> -l <region> --number-of-workers 1 --sku EP1
 ```
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 A következő funkciók érhetők el a függvényalkalmazásokat üzembe helyezett egy prémium szintű csomag.
 
@@ -44,7 +44,7 @@ Ha nincsenek események és a végrehajtás még ma a Használatalapú csomag fe
 
 A prémium szintű csomag az alkalmazás a megadott számú példányok, a csomag minimális méretét akár előmelegíteni is rendelkezhet.  Példányok előre fűtéssel is lehetővé teszi az előre egy alkalmazást, mielőtt nagy terhelés. Az alkalmazás elvégzi a horizontális felskálázást, azt először arányban a előre fűtéssel példányok be. További példányok horizontális fel- és azonnal a következő skálázási művelet előkészítésekor a meleg puffer továbbra is. Előre fűtéssel példányok puffer sablonkonfigurációkat hatékonyan elkerülheti a hidegindítás késéseket.  Előre fűtéssel példányok csak a prémium szintű csomag, a és továbbra is szeretné legalább egy példánya fut és elérhető minden alkalommal a terv aktív.
 
-Konfigurálhatja előzetesen fűtéssel példányok az Azure Portalon kiválasztásával **horizontális Felskálázás** a a **Platformfunkciók** fülre.
+Előre fűtéssel példányok konfigurálhatja az Azure portál a kiválasztott a **Függvényalkalmazás**, hogy bevezetése a **Platformfunkciók** lapra, majd válassza ki a **horizontális Felskálázás**beállítások. A függvény alkalmazás szerkesztése ablakban előre fűtéssel példányok adott alkalmazásra, de a minimális és maximális példányok teljes azokat alkalmazni.
 
 ![Rugalmas méretezés beállításai](./media/functions-premium-plan/scale-out.png)
 
@@ -93,9 +93,9 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Amikor hoz létre, a méretezés a tervet, választhat a három példányméretek.  Díjköteles a magok és a másodpercenként felhasznált memória teljes száma.  Az alkalmazás is automatikusan horizontális felskálázás több példányra igény szerint.  
 
-|SKU|Processzormagok|Memory (Memória)|Storage|
+|Termékváltozat|Magok|Memória|Storage|
 |--|--|--|--|
-|EP1|1|3,5 GB|250 GB|
+|EP1|1.|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
 |EP3|4|14GB|250 GB|
 
@@ -114,11 +114,12 @@ Az alábbiakban a jelenleg támogatott régiókat a nyilvános előzetes verzió
 |Közép-Franciaország|
 |Nyugat-Japán|
 |Korea középső régiója|
+|USA északi középső régiója|
 |Észak-Európa|
 |USA déli középső régiója|
 |Dél-India|
 |Délkelet-Ázsia|
-|Az Egyesült Királyság nyugati régiója|
+|Egyesült Királyság nyugati régiója|
 |Nyugat-Európa|
 |Nyugat-India|
 |USA nyugati régiója|

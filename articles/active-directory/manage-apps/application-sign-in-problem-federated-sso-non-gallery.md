@@ -3,8 +3,8 @@ title: Összevont beállított, egy katalógusban nem szereplő alkalmazásba t�
 description: Útmutató a konfigurált SAML-alapú összevont egyszeri bejelentkezés az Azure AD-alkalmazáshoz való bejelentkezés során fellépő konkrét problémák
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb0139227012be610977df3240f74a03f53be7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 38decf98707231c21427f7a22dd4d12adb41852b
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60440198"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825439"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Egy összevont egyszeri bejelentkezés beállított, katalógusban nem szereplő alkalmazásba történő bejelentkezésnél
 
@@ -58,7 +58,7 @@ Attribútum, az alkalmazás Azure ad-ben az SAML-kérelmet küld a kiállító n
 
 7. Ha az alkalmazás betöltött, kattintson a **egyszeri bejelentkezési** az alkalmazás bal oldali navigációs menüjében.
 
-8. Miután betölti az alkalmazást, nyissa meg a **alapszintű SAML-konfigurációja**. Győződjön meg arról, hogy az azonosító szövegbeviteli mező értéke megegyezik-e értéket az azonosító a jelenik meg a hiba a.
+8. Miután az alkalmazás betöltött, nyissa meg az **SAML-alapkonfiguráció** szakaszt. Győződjön meg arról, hogy az azonosító szövegbeviteli mező értéke megegyezik-e értéket az azonosító a jelenik meg a hiba a.
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>A válaszcím nem egyezik meg a az alkalmazáshoz konfigurált válaszcímekkel. 
 
@@ -88,7 +88,7 @@ Az SAML-kérelmet AssertionConsumerServiceURL értéke nem egyezik, a válasz UR
 
 7. Ha az alkalmazás betöltött, kattintson a **egyszeri bejelentkezési** az alkalmazás bal oldali navigációs menüjében.
 
-8. Miután betölti az alkalmazást, nyissa meg a **alapszintű SAML-konfigurációja**. Győződjön meg arról, vagy frissítse az értéket a megfelelő válasz URL-címe szövegmezőbe a `AssertionConsumerServiceURL` értékét az SAML-kérelmet.    
+8. Miután az alkalmazás betöltött, nyissa meg az **SAML-alapkonfiguráció** szakaszt. Győződjön meg arról, vagy frissítse az értéket a megfelelő válasz URL-címe szövegmezőbe a `AssertionConsumerServiceURL` értékét az SAML-kérelmet.    
     
 Miután frissítette az Azure ad-ben a válasz URL-Címének értékét, és a kulcs megegyezik-e az SAML-kérelmet a az alkalmazás által küldött értékét, jelentkezzen be az alkalmazást, képesnek kell lennie.
 
@@ -188,7 +188,7 @@ A `Issuer` az alkalmazás Azure ad-ben az SAML-kérelmet küldött attribútum n
 
 1.  Válassza ki az egyszeri bejelentkezést a konfigurálni kívánt alkalmazást.
 
-1.  Miután betölti az alkalmazást, nyissa meg a **alapszintű SAML-konfigurációja**. Győződjön meg arról, hogy az azonosító szövegbeviteli mező értéke megegyezik-e értéket az azonosító a jelenik meg a hiba a.
+1.  Miután az alkalmazás betöltött, nyissa meg az **SAML-alapkonfiguráció** szakaszt. Győződjön meg arról, hogy az azonosító szövegbeviteli mező értéke megegyezik-e értéket az azonosító a jelenik meg a hiba a.
 
 ## <a name="certificate-or-key-not-configured"></a>Tanúsítvány és kulcs nincs konfigurálva
 
@@ -222,7 +222,7 @@ Törölje, és hozzon létre egy új tanúsítványt, kövesse az alábbi lépé
 
 9. Válassza ki a lejárati dátumot. Kattintson a **mentéséhez.**
 
-10. Ellenőrizze **új tanúsítvány aktívvá** az aktív tanúsítvány felülbírálásához. Kattintson a **mentése** a panel tetején, és fogadja el a helyettesítő tanúsítvány aktiválását.
+10. Ellenőrizze **új tanúsítvány aktívvá** az aktív tanúsítvány felülbírálásához. Ezután kattintson a panel tetején a **Mentés** gombra, és fogadja el a helyettesítő tanúsítvány aktiválását.
 
 11. Alatt a **SAML-aláíró tanúsítvány** területén kattintson **eltávolítása** eltávolítása a **nem használt** tanúsítványt.
 
@@ -236,7 +236,7 @@ Az Azure AD nem lehet azonosítani az SAML-kérelmet a HTTP-kérelem URL-cím pa
 
 **Felbontás**
 
-A kérelmet kell küldenie az SAML-kérelmet kódolja a location fejlécet, HTTP-n keresztül átirányítani a kötést. A megvalósítása, további információt, olvassa el a HTTP átirányítás kötés szakaszt az a [SAML protokoll specifikáció szerinti dokumentum](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
+A kérelmet kell küldenie az SAML-kérelmet kódolja a location fejlécet, HTTP-n keresztül átirányítani a kötést. Ennek megvalósításáról további információt [az SAML protokoll specifikációját tartalmazó dokumentumban](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf) talál.
 
 ## <a name="azure-ad-is-sending-the-token-to-an-incorrect-endpoint"></a>Azure ad-ben a jogkivonat küld egy nem megfelelő végpont
 
@@ -264,7 +264,7 @@ Törölje a nem használt válasz-URL az alkalmazáshoz konfigurált.
 
 6.  Válassza ki az egyszeri bejelentkezést a konfigurálni kívánt alkalmazást.
 
-7.  Miután betölti az alkalmazást, nyissa meg a **alapszintű SAML-konfigurációja**. Az a **válasz URL-cím (helyességi feltétel fogyasztói szolgáltatás URL-címe)**, a rendszer által létrehozott alapértelmezett válasz URL-címek vagy fel nem használt törlése. Például: `https://127.0.0.1:444/applications/default.aspx`.
+7.  Miután az alkalmazás betöltött, nyissa meg az **SAML-alapkonfiguráció** szakaszt. Az a **válasz URL-cím (helyességi feltétel fogyasztói szolgáltatás URL-címe)**, a rendszer által létrehozott alapértelmezett válasz URL-címek vagy fel nem használt törlése. Például: `https://127.0.0.1:444/applications/default.aspx`.
 
 
 

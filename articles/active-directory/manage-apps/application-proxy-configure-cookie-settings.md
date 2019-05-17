@@ -2,22 +2,22 @@
 title: Application Proxy cookie beállításai – Azure Active Directory |} A Microsoft Docs
 description: Az Azure Active Directory (Azure AD) rendelkezik hozzáférési és munkamenet-cookie-k elérése a helyszíni proxyn keresztül történő alkalmazás. Ebből a cikkből látni fogja, hogyan használhatja, és adja meg a cookie-beállításokat.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/16/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06fd83ee815e9e207c1fa5a1c6767280122c4d0c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2e7f1bb54ce316a10eca0d020519779b0536c9e
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60440530"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825745"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Cookie-k beállításairól a helyszíni alkalmazások az Azure Active Directory eléréséhez
 

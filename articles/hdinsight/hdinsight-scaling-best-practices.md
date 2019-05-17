@@ -1,19 +1,18 @@
 ---
 title: Fürt méretek – Azure HDInsight méretezése
-description: Méretezheti a számítási feladat egy HDInsight-fürtön.
+description: Egy Azure HDInsight-fürtön rugalmasan a számítási feladathoz megfelelő méretezhető.
 author: ashishthaps
+ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.author: ashish
-ms.openlocfilehash: a172024e4662e647b39fe999f1be3cfcef04b5ce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/13/2019
+ms.openlocfilehash: 59b9c2bf6e17dadc0d084d3e3f257f8ad91073ca
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698247"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595855"
 ---
 # <a name="scale-hdinsight-clusters"></a>HDInsight-fürtök méretezése
 
@@ -21,6 +20,7 @@ HDInsight biztosítja a rugalmasságot felkínálva a lehetőséget az növelhet
 
 Például ha van néhány kötegelt feldolgozás naponta egyszer vagy egy hónapban egyszer történik, a HDInsight-fürt is vertikálisan fel néhány percet, hogy az ütemezett esemény előtt, a memória és CPU-számítási teljesítményt.  Később Miután befejeződött a feldolgozás, és a használati újra leáll, vertikális kevesebb munkavégző csomópontot a HDInsight-fürt.
 
+Fürt horizontális fel-manuálisan az alábbi módszerek egyikének használatával, vagy használjon [automatikus skálázási](hdinsight-autoscale-clusters.md) beállítások, a rendszer automatikusan méretezése felfelé és lefelé a CPU, memória és más metrikákkal.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -32,8 +32,8 @@ A Microsoft skálázható fürtök az alábbi segédprogramokat biztosít:
 |---|---|
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) - ClusterName \<fürt neve > - TargetInstanceCount \<NewSize >|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) - ClusterName \<fürt neve > - TargetInstanceCount \<NewSize >|
-|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)|[az hdinsight átméretezése](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --erőforráscsoport \<erőforráscsoport >--neve \<fürt neve > – cél példányszám \<NewSize >|
-|[Az Azure klasszikus parancssori felület](hdinsight-administer-use-command-line.md)|az Azure hdinsight-fürt átméretezése \<clusterName > \<cél példányok száma >|
+|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az hdinsight átméretezése](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --erőforráscsoport \<erőforráscsoport >--neve \<fürt neve > – cél példányszám \<NewSize >|
+|[Az Azure klasszikus parancssori felület](hdinsight-administer-use-command-line.md)|az Azure hdinsight-fürt átméretezése \<clusterName > \<cél példányok száma > |
 |[Azure Portal](https://portal.azure.com)|A HDInsight-fürt panel megnyitásához, jelölje be **fürtméret** a bal oldali menüben, majd a fürt méretének panelen írja be a munkavégző csomópontok számát, és válassza a mentés.|  
 
 ![Fürt méretezése](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
@@ -326,6 +326,6 @@ Az utolsó lehetőség a HDFS megadja a csökkentett mód a ritka esetben kapcso
     
 ## <a name="next-steps"></a>További lépések
 
+* [Az Azure HDInsight-fürtök automatikus méretezése](hdinsight-autoscale-clusters.md)
 * [Az Azure HDInsight bemutatása](hadoop/apache-hadoop-introduction.md)
 * [Fürtök méretezése](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [HDInsight-fürtök kezelése az Apache Ambari webes felületével](hdinsight-hadoop-manage-ambari.md)

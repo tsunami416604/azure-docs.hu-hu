@@ -1,123 +1,173 @@
 ---
-title: Az Azure klasszikus parancssori felület használatával – Azure HDInsight az Apache Hadoop-fürtök létrehozása
-description: Ismerje meg, hogyan hozhat létre HDInsight-fürtöket a platformfüggetlen Azure klasszikus parancssori felület használatával.
+title: Az Azure CLI-vel – Azure HDInsight használata az Apache Hadoop-fürtök létrehozása
+description: Ismerje meg, hogyan hozhat létre HDInsight-fürtök a platformfüggetlen Azure CLI használatával.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/27/2018
+ms.date: 05/10/2019
 ms.author: hrasheed
-ms.openlocfilehash: 21985b009694dc5a21c65d4c9dc9536cf6c01a0e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0a278cd98b0dd6c6d8f0fe9bfee81e5bafd4f543
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727077"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597671"
 ---
-# <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>A klasszikus Azure CLI-vel HDInsight-fürtök létrehozása
+# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Az Azure CLI használatával HDInsight-fürtök létrehozása
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-A klasszikus Azure CLI-vel HDInsight 3.5-ös fürtöt hoz létre a dokumentum útmutatóban leírt lépéseket.
-
-[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
-
-## <a name="prerequisites"></a>Előfeltételek
+A HDInsight 3.6-os fürtöt az Azure CLI használatával hoz létre a dokumentum útmutatóban ismertetett lépések.
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-* **Az Azure klasszikus parancssori felület**. A jelen dokumentumban leírt lépések az Azure klasszikus parancssori felület verziója 0.10.14 utolsó tesztelt.
+## <a name="prerequisites"></a>Előfeltételek
 
-## <a name="log-in-to-your-azure-subscription"></a>Bejelentkezés az Azure-előfizetésbe
+Azure CLI. Ha még nem telepítette az Azure CLI-vel, tekintse meg [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) lépéseit.
 
-Kövesse a leírt lépéseket [csatlakozás az Azure-előfizetés az Azure parancssori felület](/cli/azure/authenticate-azure-cli) , és az előfizetés használatával kapcsolódhat a **bejelentkezési** metódus.
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-cluster"></a>Fürt létrehozása
 
-Például a PowerShell vagy a Bash-parancssorból a következő lépéseket kell végrehajtani.
+1. Jelentkezzen be az Azure-előfizetéshez. Ha azt tervezi, hogy az Azure Cloud Shell használatához, majd egyszerűen válassza **kipróbálás** a kódblokk jobb felső sarkában. Más esetben adja meg az alábbi parancsot:
 
-1. A következő parancs segítségével hitelesíti az Azure-előfizetéshez:
+    ```azurecli-interactive
+    az login
 
-        azure login
+    # If you have multiple subscriptions, set the one to use
+    # az account set --subscription "SUBSCRIPTIONID"
+    ```
 
-    Adja meg a nevét és jelszavát kéri. Ha több Azure-előfizetéssel rendelkezik, használja a `azure account set <subscriptionname>` beállítása az előfizetést, amely a klasszikus parancssori felület parancsai használni.
+2. Állítsa be a környezeti változókat. Ez a cikk a változó használatát Bash alapul. Más környezetek enyhe változata lesz szükség. Lásd: [az hdinsight-create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) a fürtlétrehozáshoz lehetséges paraméterek teljes listája.
 
-2. Váltson Azure Resource Manager módra az alábbi paranccsal:
+    |Paraméter | Leírás |
+    |---|---|
+    |`--size`| A fürtben található munkavégző csomópontok száma. Ez a cikk használja a változó `clusterSizeInNodes` átadott értéket `--size`. |
+    |`--version`| A HDInsight-fürt verziója. Ez a cikk használja a változó `clusterVersion` átadott értéket `--version`. Lásd még: [HDInsight-verziók támogatott](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
+    |`--type`| Írja be a HDInsight-fürt, például: interactivehive, hadoop, hbase, a kafka, storm, spark, az rserver, mlservices.  Ez a cikk használja a változó `clusterType` átadott értéket `--type`. Lásd még: [Fürt típusa és konfigurációs](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types).|
+    |`--component-version`|A különböző Hadoop-összetevők, szóközzel elválasztott verziókban a verziói "összetevő verzió =" formátumban. Ez a cikk használja a változó `componentVersion` átadott értéket `--component-version`. Lásd még: [Hadoop-összetevők](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
 
-        azure config mode arm
+    Cserélje le `RESOURCEGROUPNAME`, `LOCATION`, `CLUSTERNAME`, `STORAGEACCOUNTNAME`, és `PASSWORD` a kívánt értékekkel. Igény szerint a változók értékeit módosíthatja. Ezután írja be a CLI-parancsok.
 
-3. Hozzon létre egy erőforráscsoportot. Ez az erőforráscsoport a HDInsight-fürt található, és a társított storage-fiókot.
+    ```azurecli-interactive
+    export resourceGroupName=RESOURCEGROUPNAME
+    export location=LOCATION
+    export clusterName=CLUSTERNAME
+    export AZURE_STORAGE_ACCOUNT=STORAGEACCOUNTNAME
+    export httpCredential='PASSWORD'
+    export sshCredentials='PASSWORD'
+    
+    export AZURE_STORAGE_CONTAINER=$clusterName
+    export clusterSizeInNodes=1
+    export clusterVersion=3.6
+    export clusterType=hadoop
+    export componentVersion=Hadoop=2.7
+    ```
 
-        azure group create groupname location
+3. [Az erőforráscsoport létrehozásához](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) az alábbi parancs beírásával:
 
-    * Cserélje le `groupname` a csoport, egyedi névvel.
+    ```azurecli-interactive
+    az group create \
+        --location $location \
+        --name $resourceGroupName
+    ```
 
-    * Cserélje le `location` az a földrajzi régióban, amely a csoport létrehozásához.
+    Érvényes helyek listájának megtekintéséhez használja a `az account list-locations` parancsot, és használja a helyek a `name` értéket.
 
-       Érvényes helyek listájának megtekintéséhez használja a `azure location list` parancsot, és használja a helyek a `Name` oszlop.
+4. [Az Azure storage-fiók létrehozása](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) az alábbi parancs beírásával:
 
-4. Tárfiók létrehozása. Ezt a tárfiókot az alapértelmezett tárolóként szolgál a HDInsight-fürt.
+    ```azurecli-interactive
+    # Note: kind BlobStorage is not available as the default storage account.
+    az storage account create \
+        --name $AZURE_STORAGE_ACCOUNT \
+        --resource-group $resourceGroupName \
+        --https-only true \
+        --kind StorageV2 \
+        --location $location \
+        --sku Standard_LRS
+    ```
 
-        azure storage account create -g groupname --sku-name RAGRS -l location --kind Storage storagename
+5. [Bontsa ki az elsődleges kulcsot az Azure storage-fiókból](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list) , és tárolja egy változóban az alábbi parancs beírásával:
 
-    * Cserélje le `groupname` a csoport az előző lépésben létrehozott nevét.
+    ```azurecli-interactive
+    export AZURE_STORAGE_KEY=$(az storage account keys list \
+        --account-name $AZURE_STORAGE_ACCOUNT \
+        --resource-group $resourceGroupName \
+        --query [0].value -o tsv)
+    ```
 
-    * Cserélje le `location` az ugyanazon a helyen az előző lépésben használt.
+6. [Hozzon létre egy Azure storage-tároló](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) az alábbi parancs beírásával:
 
-    * Cserélje le `storagename` a tárfiók egy egyedi névvel.
+    ```azurecli-interactive
+    az storage container create \
+        --name $AZURE_STORAGE_CONTAINER \
+        --account-key $AZURE_STORAGE_KEY \
+        --account-name $AZURE_STORAGE_ACCOUNT
+    ```
 
-        > [!NOTE]  
-        > Ez a parancs paraméterei a további információkat `azure storage account create -h` a parancs súgójának megtekintéséhez.
+7. [A HDInsight-fürt létrehozása](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) a következő parancs beírásával:
 
-5. A tárfiók eléréséhez használt kulcs lekéréséhez.
+    ```azurecli-interactive
+    az hdinsight create \
+        --name $clusterName \
+        --resource-group $resourceGroupName \
+        --type $clusterType \
+        --component-version $componentVersion \
+        --http-password $httpCredential \
+        --http-user admin \
+        --location $location \
+        --size $clusterSizeInNodes \
+        --ssh-password $sshCredentials \
+        --ssh-user sshuser \
+        --storage-account $AZURE_STORAGE_ACCOUNT \
+        --storage-account-key $AZURE_STORAGE_KEY \
+        --storage-default-container $AZURE_STORAGE_CONTAINER \
+        --version $clusterVersion
+    ```
 
-        azure storage account keys list -g groupname storagename
+    > [!IMPORTANT]  
+    > HDInsight fürtöket a különféle, amelyek megfelelnek a számítási feladatok vagy technológia, amely a fürt van hangolva származnak. Nincs támogatott módszer, amely ötvözi az több típus, például a Storm és a egy fürtön a HBase-fürt létrehozásához.
 
-    * Cserélje le `groupname` az az erőforráscsoport nevét.
-    * Cserélje le `storagename` a tárfiók nevére.
+    A Fürtlétrehozási folyamat befejezéséhez több percig is eltarthat. Általában körülbelül 15.
 
-      A visszaadott adatok mentése a `key` értékét `key1`.
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-6. Hozzon létre egy HDInsight-fürtön.
+A cikk befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket.
 
-        azure hdinsight cluster create -g groupname -l location -y Linux --clusterType Hadoop --defaultStorageAccountName storagename.blob.core.windows.net --defaultStorageAccountKey storagekey --defaultStorageContainer clustername --workerNodeCount 3 --userName admin --password httppassword --sshUserName sshuser --sshPassword sshuserpassword clustername
+Adja meg az összes vagy néhány erőforrások eltávolítására a következő parancsokat:
 
-    * Cserélje le `groupname` az az erőforráscsoport nevét.
+```azurecli-interactive
+# Remove cluster
+az hdinsight delete \
+    --name $clusterName \
+    --resource-group $resourceGroupName
 
-    * Cserélje le `Hadoop` a létrehozni kívánt fürt típus. Ha például `Hadoop`, `HBase`, `Kafka`, `Spark`, vagy `Storm`.
+# Remove storage container
+az storage container delete \
+    --account-name $AZURE_STORAGE_ACCOUNT \
+    --name $AZURE_STORAGE_CONTAINER
 
-      > [!IMPORTANT]  
-      > HDInsight fürtöket a különféle, amelyek megfelelnek a számítási feladatok vagy technológia, amely a fürt van hangolva származnak. Nincs támogatott módszer, amely ötvözi az több típus, például a Storm és a egy fürtön a HBase-fürt létrehozásához.
+# Remove storage account
+az storage account delete \
+    --name $AZURE_STORAGE_ACCOUNT \
+    --resource-group $resourceGroupName
 
-    * Cserélje le `location` az előző lépésekben használt ugyanazon a helyen.
+# Remove resource group
+az group delete \
+    --name $resourceGroupName
+```
 
-    * Cserélje le `storagename` az a tárfiók nevét.
+## <a name="troubleshoot"></a>Az eszköz nem tudta a várt módon befejezni a szinkronizálást. A probléma megoldásának módjáról erre az üzenetre kattintva tájékozódhat.
 
-    * Cserélje le `storagekey` az előző lépésben kimásolt kulccsal.
-
-    * Az a `--defaultStorageContainer` paraméter, a neve megegyezik, a fürt használ.
-
-    * Cserélje le `admin` és `httppassword` nevére, illetve a fürt HTTPS-en keresztül elérésekor használni kívánt jelszót.
-
-    * Cserélje le `sshuser` és `sshuserpassword` a felhasználónévvel és a jelszót kívánja használni, amikor a fürthöz SSH használatával éri el
-
-      > [!IMPORTANT]  
-      > Ebben a példában egy fürtöt hoz létre két feldolgozó csomóponttal. A méretezési műveletek végrehajtásával fürt létrehozása után is módosíthatja a munkavégző csomópontok számát. Ha több mint 32 munkavégző csomópontok használatával, majd jelöljön ki egy fő csomópont méretének legalább 8 maggal és 14 GB RAM. Beállíthatja a fő csomópont méretét használatával a `--headNodeSize` paraméter a fürt létrehozásakor.
-      >
-      > További információ a csomópontméretekről és a velük járó költségekről: [A HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
-      
-      A Fürtlétrehozási folyamat befejezéséhez több percig is eltarthat. Általában körülbelül 15.
-
-## <a name="troubleshoot"></a>Hibaelhárítás
-
-Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-hadoop-create-linux-clusters-portal.md).
+Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](./hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy sikeresen létrehozott egy HDInsight-fürtön a klasszikus parancssori felület, megtudhatja, hogyan használható a fürt a következő használatával:
+Most, hogy sikeresen létrehozott egy HDInsight-fürtöt az Azure CLI-vel, megtudhatja, hogyan használható a fürt a következő használatával:
 
 ### <a name="apache-hadoop-clusters"></a>Az Apache Hadoop-fürtök
 

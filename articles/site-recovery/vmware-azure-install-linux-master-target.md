@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 98718709038d7fd753e5eb3d45c130085c5accd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: bcfeca34eb11caaddac06971fe7f825a142586a2
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60600188"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602065"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Telepítse a Linuxos fő célkiszolgáló a feladat-visszavételhez
 Miután átadja a feladatokat a virtuális gépek az Azure-ba, visszaadhatja a virtuális gépek, a helyszíni helyre. Feladat-visszavételt, ismételt védelem a virtuális gép az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége lesz egy a helyszíni fő célkiszolgáló forgalom fogadására. 
@@ -67,7 +67,7 @@ Egy Ubuntu 16.04.2 minimális 64-bit ISO tartsa a DVD-meghajtóba, és indítsa 
 
 1.  Válassza ki **angol** a választott nyelven, és válassza ki, **Enter**.
     
-    ![Válasszon nyelvet](./media/vmware-azure-install-linux-master-target/image1.png)
+    ![Nyelv kiválasztása](./media/vmware-azure-install-linux-master-target/image1.png)
 1. Válassza ki **Ubuntu Server telepítése**, majd válassza ki **Enter**.
 
     ![Válassza ki az Ubuntu Server telepítése](./media/vmware-azure-install-linux-master-target/image2.png)
@@ -83,7 +83,7 @@ Egy Ubuntu 16.04.2 minimális 64-bit ISO tartsa a DVD-meghajtóba, és indítsa 
 1. Válassza ki **nem** (az alapértelmezett beállítás), majd válassza ki **Enter**.
 
      ![A billentyűzet konfigurálása](./media/vmware-azure-install-linux-master-target/image5.png)
-1. Válassza ki **angol (amerikai)** , a billentyűzet, majd válassza ki a származási **Enter**.
+1. Válassza ki **angol (amerikai)** a billentyűzet, majd válassza ki a származási ország/régió szerint **Enter**.
 
 1. Válassza ki **angol (amerikai)** a billentyűzetkiosztás, és válassza ki, **Enter**.
 
@@ -262,7 +262,7 @@ A következő lépések segítségével hozzon létre egy adatmegőrzési lemez:
     
     Válassza ki **beszúrása** a fájl szerkeszthető. Hozzon létre egy új sort, és helyezze be a következő szöveget. Szerkessze a többutas Lemezazonosítót az előző parancs által kiemelt többutas azonosítója alapján.
 
-     **/dev/eseményleképező/ <Retention disks multipath id> /mnt/megőrzési ext4 rw 0 0**
+    **/dev/eseményleképező/\<adatmegőrzési lemez többutas azonosítója >/mnt/megőrzési ext4 rw 0 0**
 
     Válassza ki **Esc**, majd írja be **: wq** (írás és kilépés) gombra kattintva zárja be a szerkesztő ablakot.
 

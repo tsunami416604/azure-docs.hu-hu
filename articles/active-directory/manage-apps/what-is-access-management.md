@@ -3,8 +3,8 @@ title: Az Azure AD-vel az alkalmazásokhoz való hozzáférés kezelése |} A Mi
 description: Ismerteti, hogyan Azure Active Directory lehetővé teszi a szervezetek számára, hogy az alkalmazások, amelyhez hozzáféréssel rendelkezik minden felhasználóhoz adja meg.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2017
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70513675d09a663c65c6f5b3e18059467a8ba388
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 851b9ab3604e851bcaf4f22d031c51558b15e0e6
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60440730"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826005"
 ---
 # <a name="managing-access-to-apps"></a>Alkalmazásokhoz való hozzáférés kezelése
 Folyamatban lévő hozzáférés-kezelés, használati értékelő és jelentéskészítési továbbra is kihívást jelenthet, miután az alkalmazás integrálva van a szervezet identitáskezelő rendszerbe. Sok esetben a rendszergazdák vagy a segélyszolgálat kell elvégeznie az alkalmazásokhoz való hozzáférés kezelése a folyamatban lévő aktív szerepet. Egyes esetekben hozzárendelést egy általános vagy részlegszintű informatikai csapat történik. Gyakran előfordul, a hozzárendelés döntést célja, hogy az üzleti döntéshozó, azok révén az informatikai előtt jóváhagyásra van szükség a delegálható a hozzárendelést.  Integráció a meglévő automatikus identitás- és hozzáférés felügyeleti rendszer, mint a szerepköralapú hozzáférés-vezérlés (RBAC) vagy attribútum-szerepköralapú hozzáférés-vezérlés (ABAC) más szervezetek befektetni. Az integráció és a szabály fejlesztés általában a speciális és költséges lehet. Monitoring, vagy mindkét felügyeleti megközelítés a reporting saját külön, költséges és bonyolult befektetése jelenti.

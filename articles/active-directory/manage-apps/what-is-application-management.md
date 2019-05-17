@@ -2,22 +2,22 @@
 title: Alkalmazások kezelése az Azure Active Directoryban | Microsoft Docs
 description: Ez a cikk az Azure Active Directory helyszíni, felhőbeli és a SaaS-alkalmazásokba történő integrálásának előnyeit mutatja be.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
 ms.date: 10/30/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a65c42ff2d03946c021497e350836623a408ce7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 657527272ccf8b5f69764052a2385ceec57ddc03
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291049"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826033"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Alkalmazáskezelés az Azure Active Directory használatával
 

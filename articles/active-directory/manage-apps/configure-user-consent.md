@@ -2,22 +2,22 @@
 title: Az Azure Active Directory - alkalmazás felhasználói beleegyezés konfigurálása |} A Microsoft Docs
 description: Ismerje meg, hogyan kezelheti a felhasználók engedélyt adjanak az Alkalmazásengedélyek módon. Egyszerűsítheti a felhasználói élmény azáltal, hogy biztosítja a rendszergazdai jóváhagyás. Ezek a metódusok a végfelhasználók számára az Azure Active Directory (Azure AD) bérlő összes vonatkoznak.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d35f8b440fe748f91c9e01003fe83a3a5343c8df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd84b44c89c856036640757b7760d7c10bd36173
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291585"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824843"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>A végfelhasználók beleegyezik abba, hogy egy alkalmazás az Azure Active Directoryban módszer konfigurálása
 Megtudhatja, hogyan konfigurálhatja a felhasználók engedélyt adjanak az Alkalmazásengedélyek módon. Egyszerűsítheti a felhasználói élmény azáltal, hogy biztosítja a rendszergazdai jóváhagyás. Ez a cikk a különböző módokon konfigurálhatja a felhasználói beleegyezés biztosít. A módszerek alkalmazni az Azure Active Directory (Azure AD) bérlő összes végfelhasználók számára. 

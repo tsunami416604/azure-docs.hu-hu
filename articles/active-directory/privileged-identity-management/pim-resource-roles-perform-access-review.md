@@ -16,12 +16,12 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e49f0077444f86eabeed22cc7cecf5e0ac7f8b5
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: ede412292caf682c3078002d23e1956bd68d1378
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141187"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602197"
 ---
 # <a name="review-access-to-azure-resource-roles-in-pim"></a>Tekintse át az Azure-erőforrásszerepkörök az PIM-ben való hozzáférés
 Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) egyszerűbbé teszi a hogyan kezelhetik a vállalatok számára az emelt szintű hozzáférés az erőforrásokhoz az Azure-ban. 
@@ -45,12 +45,12 @@ Kövesse az alábbi lépéseket, és a hozzáférési felülvizsgálat befejezé
 1. Keresse meg az Azure AD PIM alkalmazást.
 2. Válassza ki a **hozzáférés felülvizsgálata** panelen.
 
-   ![Képernyőkép a PIM alkalmazást, tekintse át a hozzáférés panelen kiválasztott](media/azure-pim-resource-rbac/rbac-access-review-complete.png)
+   ![Képernyőkép a PIM alkalmazást, tekintse át a hozzáférés panelen kiválasztott](media/pim-resource-roles-perform-access-review/rbac-access-review-complete.png)
 
 3. Jelölje be a felülvizsgálatot befejezéséhez. 
 4. Válasszon **jóváhagyása** vagy **megtagadása**. Az a **adjon meg egy OK mező**, szüksége lehet a döntést okát tartalmazza.
 
-   ![Képernyőkép a felülvizsgálati Részletek lap](media/azure-pim-resource-rbac/rbac-access-review-choice.png)
+   ![Képernyőkép a felülvizsgálati Részletek lap](media/pim-resource-roles-perform-access-review/rbac-access-review-choice.png)
 
 ## <a name="next-steps"></a>További lépések
 

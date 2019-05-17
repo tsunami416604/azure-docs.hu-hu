@@ -12,12 +12,12 @@ ms.date: 05/09/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb3a3d85c9cac85b6658167806cea59b6d5163de
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c2ecc458183006872d5a4c6712cdf00a97993dbc
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65782851"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825537"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Távoli hozzáférés a helyszíni alkalmazások Azure Active Directory Application Proxy használatával 
 
@@ -44,7 +44,7 @@ Az alkalmazásproxy működik együtt:
 
 Az alkalmazásproxy egyszeri bejelentkezést támogatja. Támogatott módszerekkel kapcsolatos további információkért lásd: [egyszeri bejelentkezési módszer kiválasztása](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
 
-A belső erőforrásokhoz hozzáférést ad a távoli felhasználók külső Application Proxy használata ajánlott. Az alkalmazásproxy helyettesíti a VPN-t vagy fordított proxy. Nem célja a belső felhasználók számára a vállalati hálózaton.  Belső felhasználók, akik szükségtelenül használja az Application Proxy bevezethet váratlan és nem kívánatos teljesítménybeli problémák.
+A belső erőforrásokhoz hozzáférést ad a távoli felhasználók alkalmazásproxy használata ajánlott. Az alkalmazásproxy helyettesíti a VPN-t vagy fordított proxy. Nem célja a belső felhasználók számára a vállalati hálózaton.  Ezek a felhasználók, akik szükségtelenül használja az Application Proxy bevezethet váratlan és nem kívánatos teljesítménybeli problémák.
 
 ## <a name="how-application-proxy-works"></a>Application Proxy működése
 

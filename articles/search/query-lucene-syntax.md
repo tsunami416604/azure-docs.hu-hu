@@ -4,7 +4,7 @@ description: Az Azure Search szolgáltatással használt a teljes Lucene szintax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 05/13/2019
 author: brjohnstmsft
 ms.author: brjohnst
 ms.manager: cgronlun
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b37961f96aca95c0aeaec511411a309d40e990f5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: b051f844b8c221e2e53c5fcf204878f80447cfe8
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024212"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596579"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Lucene lekérdezési szintaxis az Azure Search szolgáltatásban
 Azure Search-lekérdezéseket a gazdag alapján írhat [Lucene lekérdezéselemző](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) Forms speciális lekérdezési szintaxis: helyettesítő karakter, intelligens keresést, közelségi keresésre, reguláris kifejezések összefűzése néhány példa. Nagy része a Lucene lekérdezéselemző szintaxist [átvenni megvalósítása az Azure Search](search-lucene-query-architecture.md), kivéve a *keresések tartomány* az Azure Search révén kialakítani, amely `$filter` kifejezéseket. 
@@ -121,16 +121,19 @@ Használatával `searchMode=all` növeli a lekérdezések a pontosság, többek 
 ##  <a name="bkmk_searchscoreforwildcardandregexqueries"></a> Pontozó helyettesítő és regex lekérdezéseket.
  Az Azure Search használ, a kiértékelés gyakorisága-alapú ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) szöveges lekérdezések. Azonban helyettesítő és regex lekérdezéseket, ahol feltételek hatóköre lehet széleskörű, a gyakoriság tényezőt figyelmen kívül hagyja, hogy az ennek a területnek a hordozóeltolást ritkább feltételek származó egyezések felé. Minden megfelelő elemet a helyettesítő karaktert tartalmazó és a reguláris kifejezés egyaránt kezelik kereséseket.
 
-##  <a name="bkmk_fields"></a> A mező-hatáskörű lekérdezések  
- Megadhat egy `fieldname:searchterm` konstrukció fielded lekérdezési műveletet, ha a mező kitöltése egyetlen szó, és a keresési kifejezést is egy szót vagy kifejezést, igény szerint a logikai operátorokkal együtt meghatározásához. Néhány példa a következők:  
+##  <a name="bkmk_fields"></a> Fielded keresése  
+Meghatározhat egy fielded keresési műveletet a `fieldName:searchExpression` szintaxist, ahol a keresési kifejezés lehet egyetlen szó vagy kifejezés, vagy egy összetettebb kifejezést zárójelben, igény szerint a logikai operátorokkal együtt. Néhány példa a következők:  
 
 - Műfaj: jazz nem előzmények  
 
 - előadók: ("mérföld is" "John Coltrane")
 
-  Ügyeljen arra, hogy helyezzen több karakterlánc idézőjelek között, ha azt szeretné, mindkét karakterlánc, kiértékelendő egyetlen egységként, ebben az esetben a két különböző előadók keresése a `artists` mező.  
+Ügyeljen arra, hogy helyezzen több karakterlánc idézőjelek között, ha azt szeretné, mindkét karakterlánc, kiértékelendő egyetlen egységként, ebben az esetben a két különböző előadók keresése a `artists` mező.  
 
-  A megadott mező `fieldname:searchterm` kell lennie egy `searchable` mező.  Lásd: [a Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) indexattribútumokat használata a Meződefiníciók részleteiért.  
+A megadott mező `fieldName:searchExpression` kell lennie egy `searchable` mező.  Lásd: [a Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) indexattribútumokat használata a Meződefiníciók részleteiért.  
+
+> [!NOTE]
+> Keresési kifejezések használatával fielded, ha nem szeretné használni a `searchFields` mivel egyes fielded keresési kifejezés paraméterének egy explicit módon megadott mező neve. Azonban továbbra is használhatja a `searchFields` paramétert, ha egy lekérdezést, ahol egy adott mező egyes részeit is meghatározhat, és a többi több mező lehet alkalmazni szeretné. Például a lekérdezés `search=genre:jazz NOT history&searchFields=description` egyezni `jazz` csak a `genre` mező, amíg megfelel, `NOT history` együtt a `description` mező. A megadott mező neve `fieldName:searchExpression` mindig elsőbbséget élvez a `searchFields` paramétert, ezért az ebben a példában ez nincs szükségünk `genre` a a `searchFields` paraméter.
 
 ##  <a name="bkmk_fuzzy"></a> intelligens keresést  
  Egy intelligens keresés egyezések megkeresi, hogy rendelkezik egy hasonló konstrukció. / [Lucene dokumentáció](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html), az intelligens keresés alapján [Damerau-Levenshtein távolság](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance). Az intelligens keresés kibontásával 50 feltételek, amelyek megfelelnek a távolság által legfeljebb egy kifejezést. 

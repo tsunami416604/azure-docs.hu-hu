@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b10a91499dbe7e627025be8487efa15890861b9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.openlocfilehash: fae09b5aeed05dfb09f2b998de805ef0607e7f39
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65764726"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823546"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférés beállításainak ismertetése
 
@@ -48,7 +48,6 @@ Feltételes hozzáférési szabályzatot rendelhet a következő felhőalapú al
 - Microsoft Application Insights-elemzési
 - A Microsoft Azure Information Protection - [további](https://docs.microsoft.com/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - A Microsoft Azure Management - [további](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
-- A Microsoft Azure RemoteApp
 - A Microsoft Azure-előfizetések kezelése
 - Microsoft Cloud App Security
 - A Microsoft kereskedelmi eszközök, Access Control portál
@@ -167,7 +166,6 @@ Ez a beállítás hatással van a hozzáférési kísérletek a következő mobi
 
 | Ügyfélalkalmazások | Célként megadott szolgáltatás | Platform |
 | --- | --- | --- |
-| Az Azure távoli alkalmazás | Az Azure távoli App Service-ben | A Windows 10, Windows 8.1, Windows 7, iOS, Android és macOS |
 | Dynamics CRM-alkalmazás | Dynamics CRM | A Windows 10, Windows 8.1, iOS és Android |
 | Mail/naptár/személyek alkalmazást, az Outlook 2016, az Outlook 2013 (a modern hitelesítést)| Az Office 365 Exchange online-hoz | Windows 10 |
 | MFA- és helyszabályzat alkalmazásokhoz. Eszköz alapú szabályzatok nem támogatottak.| Bármely saját alkalmazások app service| Android és iOS |

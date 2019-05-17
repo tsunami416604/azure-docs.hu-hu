@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 961ce4427c509142077c95a6569ad2c444ec0a52
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 53457a044f5c69af7bf68561f24732e8f02219d8
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205950"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603238"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Adatfolyamatok létrehozása a Data Collector API-val
 
@@ -27,7 +27,7 @@ A [Azure Monitor adatgyűjtő API](data-collector-api.md) lehetővé teszi, hogy
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>A példában a probléma
-Ez a cikk további részében hogy megvizsgálja a lapmegtekintések adatainak az Application insights szolgáltatásban. A képzeletbeli esetünkben korrelációját, ha a cél az azonosítása, ahol azt kell lennie költségkeret-beállítási a legtöbbet a világ minden ország népesség tartalmazó egyéni adatok alapértelmezés szerint az Application Insights SDK által gyűjtött földrajzi adatok szeretnénk marketing dollár. 
+Ez a cikk további részében hogy megvizsgálja a lapmegtekintések adatainak az Application insights szolgáltatásban. Elméleti esetünkben a földrajzi adatok a cél az azonosítása, ahol kiadások kell lennie a Microsoft a világ minden ország/régió népessége tartalmazó egyéni adatokat alapértelmezés szerint az Application Insights SDK összegyűjtött összekapcsolását szeretnénk a legtöbb marketing dollár. 
 
 Nyilvános adatforrás például használjuk a [UN világ Population vevőket](https://esa.un.org/unpd/wpp/) erre a célra. Az adatok az alábbi egyszerű sémát fog rendelkezni:
 

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/23/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 6b3b49049ea1ed36a08fad9619183017b0f07d99
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 8ceb84ab9e9c41ff6a9cbde62571fb12ae67d790
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65077740"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596078"
 ---
 # <a name="durable-functions-20-preview-azure-functions"></a>Durable Functions 2.0 – előzetes verzió (az Azure Functions)
 
@@ -26,7 +26,7 @@ Durable Functions az Azure Functions szolgáltatása általánosan elérhető (a
 > [!NOTE]
 > Durable Functions 2.0 kiadás, amely jelenleg ezen előzetes verziójú funkciók tartoznak egy **kiadás az alfa minőségi** a több kompatibilitástörő változásokat. Az Azure Functions tartós kiterjesztési csomagot hoz létre található formájában verzióival nuget.org webhelyen **2.0.0-alpha**. Ezek a buildek nem megfelelő az éles számítási feladatokat, és későbbi kiadásokban további kompatibilitástörő változásokat tartalmazhat.
 
-## <a name="breaking-changes"></a>Kompatibilitástörő változások
+## <a name="breaking-changes"></a>Meghibásodást okozó változások
 
 Durable Functions 2.0 számos kompatibilitástörő változásokat jelennek meg. Meglévő alkalmazások kódmódosítás nélkül Durable Functions 2.0-val kompatibilis nem várt. Ez a szakasz néhány változását ismerteti:
 
@@ -36,7 +36,7 @@ Durable Functions 2.0 támogatása, .NET-keretrendszer (és így függvények 1.
 
 ### <a name="hostjson-schema"></a>Host.json schema
 
-Az alábbi kódrészlet bemutatja az új host.json sémája. Érdemes figyelembe vennie velünk a kapcsolatot a fő módosítás az új `"storageProvider"` szakaszt, és a `"azureStorage"` szakasz alatta. Ez a módosítás azért volt szükség, támogatja a [az eredetitől eltérő tárolási szolgáltatók](durable-functions-preview.md#alternate-storage-providers).
+Az alábbi kódrészlet bemutatja az új host.json sémája. Érdemes figyelembe vennie a fő módosítás az új `"storageProvider"` szakaszt, és a `"azureStorage"` szakasz alatta. Ez a módosítás azért volt szükség, támogatja a [az eredetitől eltérő tárolási szolgáltatók](durable-functions-preview.md#alternate-storage-providers).
 
 ```json
 {
@@ -93,11 +93,12 @@ Abban az esetben, ha az egy absztrakt alaposztálya tartalmazott virtuální met
 
 Entitás függvények határozzák meg a műveletek olvasása és frissítése kisebb kódrészletek, más néven az állapotban *tartós entitások*. Az orchestrator-funkciók, például entitás funkciók a functions és a egy speciális trigger típusa *entitás eseményindító*. Az orchestrator-funkciók, ellentétben entitás függvények nem rendelkezik konkrét kódot korlátozások. Entitás funkciók is állapot kezelése helyett explicit módon implicit módon jelző állapot átvitelvezérlés keresztül.
 
-Az alábbi kód egy egyszerű entitás függvény, amely meghatározza a példája egy *számláló* entitás. A függvény meghatározza a három műveleti `add`, `remove`, és `reset`, minden, ami frissíteni egy egész számot `currentValue`.
+Az alábbi kód egy egyszerű entitás függvény, amely meghatározza a példája egy *számláló* entitás. A függvény meghatározza a három műveleti `add`, `subtract`, és `reset`, minden, ami frissíteni egy egész számot `currentValue`.
 
 ```csharp
+[FunctionName("Counter")]
 public static async Task Counter(
-    [EntityTrigger(EntityName = "Counter")] IDurableEntityContext ctx)
+    [EntityTrigger] IDurableEntityContext ctx)
 {
     int currentValue = ctx.GetState<int>();
     int operand = ctx.GetInput<int>();
@@ -200,21 +201,25 @@ A kritikus szakasza véget ér, és az összes zárolás kiadott, amikor az orch
 Például érdemes lehet folyamattevékenységek vezénylése, amely annak megállapítására, hogy két játékos érhetők el kell, és hozzárendelheti azokat játék mindkettőt. Ez a feladat segítségével valósítható meg a kritikus szakasza a következő:
 
 ```csharp
-
-EntityId player1 = /* ... */;
-EntityId player2 = /* ... */;
-
-using (await ctx.LockAsync(player1, player2))
+[FunctionName("Orchestrator")]
+public static async Task RunOrchestrator(
+    [OrchestrationTrigger] IDurableOrchestrationContext ctx)
 {
-    bool available1 = await ctx.CallEntityAsync<bool>(player1, "is-available");
-    bool available2 = await ctx.CallEntityAsync<bool>(player2, "is-available");
+    EntityId player1 = /* ... */;
+    EntityId player2 = /* ... */;
 
-    if (available1 && available2)
+    using (await ctx.LockAsync(player1, player2))
     {
-        Guid gameId = ctx.NewGuid();
+        bool available1 = await ctx.CallEntityAsync<bool>(player1, "is-available");
+        bool available2 = await ctx.CallEntityAsync<bool>(player2, "is-available");
 
-        await ctx.CallEntityAsync(player1, "assign-game", gameId);
-        await ctx.CallEntityAsync(player2, "assign-game", gameId);
+        if (available1 && available2)
+        {
+            Guid gameId = ctx.NewGuid();
+
+            await ctx.CallEntityAsync(player1, "assign-game", gameId);
+            await ctx.CallEntityAsync(player2, "assign-game", gameId);
+        }
     }
 }
 ```

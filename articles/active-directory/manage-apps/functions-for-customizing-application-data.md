@@ -3,8 +3,8 @@ title: Az Azure Active Directoryban attribútumleképezések kifejezések írás
 description: Ismerje meg, hogyan SaaS-alkalmazás objektumok az Azure Active Directoryban az Automatikus kiépítés során elfogadható formátumot attribútumértékek alakítsa át a kifejezés-leképezések használatával.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
-ms.author: chmutali
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed081b32fd8ac464f7ec66f97c6867708a6f8533
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec1994169891d5256436ac4de741339c865bb268
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291432"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824648"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Az Azure Active Directoryban attribútumleképezések kifejezések írása
 Amikor konfigurál egy SaaS-alkalmazáshoz való üzembe helyezést, az Ön által megadott attribútum-leképezéshez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi, hogy a felhasználók adatokat alakíthatja, amelyek esetében a SaaS-alkalmazás több elfogadható formátumok kell írnia.
@@ -234,7 +234,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **source** |Szükséges |Karakterlánc |Általában az attribútum az az adatforrás-objektum neve |
-| **culture** |Optional |String |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
+| **culture** |Választható |String |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
 
 - - -
 ### <a name="toupper"></a>ToUpper
@@ -247,7 +247,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 | Name (Név) | Szükséges / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **source** |Szükséges |Karakterlánc |Általában az attribútum neve, az adatforrás-objektum. |
-| **culture** |Optional |String |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
+| **culture** |Választható |String |A kulturális környezet neve alapján RFC 4646 formátuma *languagecode2 – ország/regioncode2*, ahol *languagecode2* a kétbetűs nyelvi kódja és *ország/regioncode2*a kétbetűs szubkultúrákhoz kódja. Például ja-JP Japán (japán) és a hu-hu az angol (Egyesült Államok). Azokban az esetekben, ahol a kétbetűs nyelvkód nem érhető el egy ISO 639-2 származó hárombetűs kódot használja.|
 
 ## <a name="examples"></a>Példák
 ### <a name="strip-known-domain-name"></a>Sáv ismert tartománynév

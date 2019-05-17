@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: caeef04a27cec7bbeda5dd96335d9b7bd1a8eca0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d5cfe91cfcc124ef3073cfb6bbeda683505ff8e1
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60716268"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65561382"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Rendszerállapot-jelentések használata a hibaelhárítás során
 Azure Service Fabric-összetevőket meg rendszerállapot-jelentéseket a lehetőségeiből közvetlenül a fürtön lévő összes entitáshoz. A [health Store adatbázisban](service-fabric-health-introduction.md#health-store) hoz létre, és törli az entitásokat a rendszer jelentések alapján. Azt is rendezi őket a hierarchiában, amely entitás interakciót rögzíti.
@@ -632,7 +632,7 @@ A tulajdonság és a szöveg adja meg, melyik API van elakadt. A következő lé
 
 - **IStatefulServiceReplica.Close** és **IStatefulServiceReplica.Abort**: A leggyakoribb eset szolgáltatása nem érvényesítenie a függvénynek átadott megszakítás token `RunAsync`. Lehet, hogy `ICommunicationListener.CloseAsync`, vagy ha bírálja felül, `OnCloseAsync` elakadt.
 
-- **IStatefulServiceReplica.ChangeRole (S)** és **IStatefulServiceReplica.ChangeRole(N)**: A leggyakoribb eset szolgáltatása nem érvényesítenie a függvénynek átadott megszakítás token `RunAsync`.
+- **IStatefulServiceReplica.ChangeRole (S)** és **IStatefulServiceReplica.ChangeRole(N)**: A leggyakoribb eset szolgáltatása nem érvényesítenie a függvénynek átadott megszakítás token `RunAsync`. Ebben az esetben a legjobb megoldás, hogy indítsa újra a replikát.
 
 - **IStatefulServiceReplica.ChangeRole(P)**: A leggyakoribb eset az, hogy a szolgáltatás nem adott vissza egy feladat `RunAsync`.
 

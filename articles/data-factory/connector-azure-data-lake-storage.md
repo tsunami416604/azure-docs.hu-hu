@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 05/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 3fcedc74cde9e26ea53d2475f0e9805788787f2d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 355f61d6282c822e18cf4752044c1e1a5cbbc6a0
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228610"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560790"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Lake Storage Gen2 Azure Data Factory használatával
 
@@ -516,6 +516,66 @@ Ez a szakasz ismerteti az eredményül kapott viselkedéstől a másolási műve
 | false |preserveHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a célmappában mappa1 az alábbi struktúra használatával jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>Fájl3, File4 és File5 Subfolder1 nem mértékének. |
 | false |flattenHierarchy | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | a célmappában mappa1 az alábbi struktúra használatával jön létre: <br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet, a file1 kiszolgálón<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatikusan létrehozott nevet File2<br/><br/>Fájl3, File4 és File5 Subfolder1 nem mértékének. |
 | false |mergeFiles | Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | Az alábbi struktúra használatával jön létre a célmappában mappa1<br/><br/>Mappa1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 tartalma egyesítve egy fájlt egy automatikusan létrehozott nevét. automatikusan létrehozott nevet, a file1 kiszolgálón<br/><br/>Fájl3, File4 és File5 Subfolder1 nem mértékének. |
+
+## <a name="preserve-acls-from-data-lake-storage-gen1"></a>Hozzáférés-vezérlési listák a Data Lake Storage Gen1 megőrzése
+
+>[!TIP]
+>Másolás az Azure Data Lake Storage Gen1 Gen2 az adatok általában lásd [adatok másolása az Azure Data Lake Storage Gen1 az Azure Data factoryval Gen2](load-azure-data-lake-storage-gen2-from-gen1.md) a forgatókönyv és ajánlott eljárások.
+
+Amikor másolási fájlok az Azure Data Lake Storage (ADLS) Gen1 Gen2-re, választhat, megőrizheti a POSIX hozzáférés-vezérlési listák (ACL) adataival együtt. Hozzáférés-vezérlés részletei között talál [hozzáférés-vezérlés az Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md) és [hozzáférés-vezérlés az Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
+
+A következő típusú hozzáférés-vezérlési listák Azure Data Factory másolási tevékenység is meg kell őrizni, kiválaszthatja, hogy egy vagy több típusa:
+
+- **ACL**: Másolja ki és megőrzése **POSIX hozzáférés-vezérlési listák** a fájlok és könyvtárak. A forrás és fogadó-, a teljes meglévő ACL-EK, másolja. 
+- **Tulajdonos**: Másolja ki és megőrzése **a tulajdonos felhasználó** fájlok és könyvtárak. Fogadó ADLS Gen2 felügyelő hozzáférésre szükség.
+- **Csoport**: Másolja ki és megőrzése **a tulajdonoscsoport** fájlok és könyvtárak. A fogadó ADLS Gen2, vagy a tulajdonos (Ha a tulajdonos felhasználó szintén tagja a csoportnak) felügyelő hozzáférésre szükség.
+
+Ha megad egy mappát másol, adat-előállító replikálja, hogy a megadott mappában, valamint a fájlok és könyvtárak alá tartozó ACL-ek (Ha `recursive` értéke igaz). Ha megad egy fájl, az ACL-ek másol a másolja a fájlt.
+
+>[!IMPORTANT]
+>Ha hozzáférés-vezérlési listák megőrzése lehetőséget választja, győződjön meg arról, magas ADF ellen a fogadó ADLS Gen2-fiók megfelelő engedélyeket biztosítson. Például fiók-kulcsos hitelesítést, vagy rendelje hozzá a tárolási Blob adatok tulajdonosi szerepkör egyszerű/felügyelt szolgáltatásidentitás.
+
+Konfigurálásakor forrás ADLS Gen1, a bináris másolat lehetőség/bináris formátum, és a fogadó ADLS Gen2, bináris másolat lehetőség/bináris formátumú, annak **megőrzése** beállítást **másolási adatok eszköz beállításai lapon** vagy a **másolási tevékenység -> Beállítások** lapon találja authoring tevékenység.
+
+![ADLS Gen1 to Gen2 Preserve ACL](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
+
+Íme egy példa JSON konfigurációjának (lásd: `preserve`): 
+
+```json
+"activities":[
+    {
+        "name": "CopyFromGen1ToGen2",
+        "type": "Copy",
+        "typeProperties": {
+            "source": {
+                "type": "AzureDataLakeStoreSource",
+                "recursive": true
+            },
+            "sink": {
+                "type": "AzureBlobFSSink",
+                "copyBehavior": "PreserveHierarchy"
+            },
+            "preserve": [
+                "ACL",
+                "Owner",
+                "Group"
+            ]
+        },
+        "inputs": [
+            {
+                "referenceName": "<Azure Data Lake Storage Gen1 input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<Azure Data Lake Storage Gen2 output dataset name>",
+                "type": "DatasetReference"
+            }
+        ]
+    }
+]
+```
 
 ## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok hozzárendelése
 

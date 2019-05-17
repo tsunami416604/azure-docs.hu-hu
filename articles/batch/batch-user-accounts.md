@@ -15,13 +15,22 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 000495ab84990f15885c254b472be7863c75da58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bd5c16d755ef9b71f36b3d499838b12e6099ba6d
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60549852"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595380"
 ---
+> [!NOTE] 
+> Az ebben a cikkben tárgyalt felhasználói fiókok különböznek a felhasználók a távoli asztal protokoll (RDP) vagy a Secure Shell (SSH), biztonsági okokból használt fiókok. 
+>
+> Egy csomópont futtató Linux rendszerű virtuálisgép-konfiguráció SSH-n keresztül kapcsolódni, lásd: [távoli asztal használata Linux virtuális géphez az Azure-ban](../virtual-machines/virtual-machines-linux-use-remote-desktop.md). A csomópontokon futó Windows RDP-Kapcsolaton keresztül csatlakozni, lásd: [Windows Server virtuális Géphez való csatlakozás](../virtual-machines/windows/connect-logon.md).<br /><br />
+> Egy csomópont a felhőszolgáltatás konfigurációjában futó RDP-n keresztül kapcsolódni, lásd: [távoli asztali kapcsolat engedélyezése egy szerepkörhöz az Azure Cloud Services](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
+>
+>
+
+
 # <a name="run-tasks-under-user-accounts-in-batch"></a>A felhasználói fiókok feladatok futtatása a Batchben
 
 Az Azure Batch-feladat mindig a felhasználói fiók alatt fut. Alapértelmezés szerint a feladatok futnak, a normál felhasználói fiókok rendszergazdai engedélyek nélkül. Ezek alapértelmezett felhasználói fiókot a beállítások általában elegendők. Bizonyos esetekben azonban hasznos lehet a felhasználói fiók, amelyben a feladat futtatása szeretne konfigurálni. A cikkből megtudhatja, milyen típusú felhasználói fiókokat, és hogyan konfigurálhatja őket a forgatókönyvhöz.
@@ -36,14 +45,6 @@ Az Azure Batch két típusú felhasználói fiókok feladatok futtatásához biz
 
 > [!IMPORTANT] 
 > A Batch szolgáltatás verziója 2017-01-01.4.0 vezet be, amely megköveteli, hogy a kódot annak azt a verziót frissíti használhatatlanná tévő változást. Ha Ön egy régebbi verzióját a Batch-áttelepítése kódokat, vegye figyelembe, hogy a **runElevated** tulajdonság már nem támogatott a a REST API vagy a Batch-klienskódtárakkal. Az új **userIdentity** jogosultságszint-emelési szintet adjon meg egy feladat tulajdonságát. Szakaszában [a kód frissítése a legújabb Batch ügyféloldali kódtárral való](#update-your-code-to-the-latest-batch-client-library) a Batch-kód frissítése, ha használja a klienskódtárak egyik gyors szakaszát.
->
->
-
-> [!NOTE] 
-> A felhasználói fiókokat, a cikkben leírtak szerint nem támogatja a távoli asztal protokoll (RDP) vagy a Secure Shell (SSH), biztonsági okokból. 
->
-> Egy csomópont futtató Linux rendszerű virtuálisgép-konfiguráció SSH-n keresztül kapcsolódni, lásd: [távoli asztal használata Linux virtuális géphez az Azure-ban](../virtual-machines/virtual-machines-linux-use-remote-desktop.md). A csomópontokon futó Windows RDP-Kapcsolaton keresztül csatlakozni, lásd: [Windows Server virtuális Géphez való csatlakozás](../virtual-machines/windows/connect-logon.md).<br /><br />
-> Egy csomópont a felhőszolgáltatás konfigurációjában futó RDP-n keresztül kapcsolódni, lásd: [távoli asztali kapcsolat engedélyezése egy szerepkörhöz az Azure Cloud Services](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
 >
 >
 

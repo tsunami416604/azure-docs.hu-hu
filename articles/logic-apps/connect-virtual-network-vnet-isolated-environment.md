@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 8809a2fed5a44910e3a353d9dc5bc41ea964a1ce
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b452485ccf235d1f245989e40840f2f0b3b2ae45
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150556"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544533"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás az Azure virtuális hálózatok az Azure Logic Apps integrációs service-környezet (ISE) használatával
 
@@ -39,7 +39,7 @@ Integrációs service Environment-környezetekkel kapcsolatos további informác
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>.
 
   > [!IMPORTANT]
-  > A Logic apps beépített műveleteket és az ISE-ben futó összekötők használja egy másik díjszabási csomagot, nem a fogyasztás alapú díjszabással. További információkért lásd: [Logic Apps díjszabási](../logic-apps/logic-apps-pricing.md).
+  > A Logic apps, beépített eseményindítók, beépített műveleteket és összekötők, amely az ISE-ben használt árképzési csomag eltér a fogyasztás alapú díjszabással. További információkért lásd: [Logic Apps díjszabási](../logic-apps/logic-apps-pricing.md).
 
 * Egy [az Azure virtual network](../virtual-network/virtual-networks-overview.md). Ha nem rendelkezik virtuális hálózattal, megtudhatja, hogyan [egy Azure virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md). 
 
@@ -69,7 +69,7 @@ A forgalom szabályozása, amelyen központi telepítését az ISE-ben a virtuá
 > [!IMPORTANT]
 > A belső kommunikáció belül az alhálózatokra az ISE-ben szükséges ezekhez az alhálózatokhoz belül minden portok megnyitását.
 
-| Cél | Direction | Portok | Forrás-szolgáltatáscímke | Cél szolgáltatáscímkéje | Megjegyzések |
+| Cél | Direction | Portok | Forrás-szolgáltatáscímke | Cél-szolgáltatáscímke | Megjegyzések |
 |---------|-----------|-------|--------------------|-------------------------|-------|
 | Az Azure Logic Apps-kommunikációt | Kimenő | 80 & 443 | VirtualNetwork | Internet | A külső szolgáltatás, amellyel kommunikál a Logic Apps szolgáltatás függ, hogy a port |
 | Azure Active Directory | Kimenő | 80 & 443 | VirtualNetwork | AzureActiveDirectory | |
@@ -154,7 +154,7 @@ A keresőmezőbe írja be szűrőként "integrációs szolgáltatás környezet"
 
    1. Az a **alhálózatok** panelen válassza a **alhálózati**.
 
-      ![Alhálózat hozzáadása](./media/connect-virtual-network-vnet-isolated-environment/add-subnet.png)
+      ![Alhálózat felvétele](./media/connect-virtual-network-vnet-isolated-environment/add-subnet.png)
 
    1. Az a **alhálózat hozzáadása** panelen adja meg ezt az információt.
 
@@ -199,33 +199,19 @@ Alhálózatok létrehozásával kapcsolatos további információkért lásd: [h
 
 ## <a name="create-logic-app---ise"></a>Logikai alkalmazás létrehozása – ISE-ben
 
-Az integrációs service-környezet (ISE) használó logikai alkalmazások létrehozása, kövesse a [Logic Apps-alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md) , de a következő eltérésekkel: 
-
-* Létrehozásakor a logikai alkalmazást, a a **hely** tulajdonság, válassza ki az ISE-ben a a **integrációs service-környezetek** részben, például:
+Az integrációs service-környezet (ISE), futó logikai alkalmazásokat hozhat létre [a logikai alkalmazások létrehozása a szokásos módon](../logic-apps/quickstart-create-first-logic-app-workflow.md) kivéve, ha a **hely** tulajdonság, válassza ki az ISE-ben a a  **Integráció service-környezetek** részben, például:
 
   ![Válassza ki az integrációs service-környezet](./media/connect-virtual-network-vnet-isolated-environment/create-logic-app-with-integration-service-environment.png)
 
-* Azonos beépített eseményindítók és műveletek, például a HTTP-n, a azonos ISE-ben, a logikai alkalmazás futtatásához, amelyek is használhatja. Az összekötők a **ISE** címkézését is az azonos ISE-ben, a logikai alkalmazás futtatási. Összekötők nélkül a **ISE** címke futtassa a globális Logic Apps szolgáltatásban.
-
-  ![Válassza ki az ISE-összekötők](./media/connect-virtual-network-vnet-isolated-environment/select-ise-connectors.png)
-
-* Miután az ISE szúr be egy Azure-beli virtuális hálózatban, az ISE-ben a logic apps közvetlenül hozzáférhet a virtuális hálózatban lévő erőforrásokra. Egy virtuális hálózathoz csatlakozó helyszíni rendszerekhez behelyezése egy ISE-ben, e hálózat, a logic apps közvetlenül hozzáférhetnek ezekhez a rendszerekhez ezek az elemek egyikének használatával: 
-
-  * ISE-ben, hogy a rendszer, például az SQL Server-összekötő
-  
-  * HTTP-művelet 
-  
-  * Egyéni összekötő
-
-  A helyszíni rendszerek, amelyek nem a virtuális hálózat, vagy nem rendelkezik ISE összekötők, először [beállítása a helyszíni adatátjáró](../logic-apps/logic-apps-gateway-install.md).
+Hogyan eseményindítók és műveletek munkahelyi és hogyan azokat Ön feliratú az ISE-ben a globális Logic Apps szolgáltatáshoz képest használatakor meg különbségeit [elkülönített és globális a az ISE-ben – áttekintés](connect-virtual-network-vnet-isolated-environment-overview.md#difference).
 
 <a name="create-integration-account-environment"></a>
 
 ## <a name="create-integration-account---ise"></a>Integrációs fiók létrehozása – ISE-ben
 
-A logic apps integrációs service-környezet (ISE) az integrációs fiók használatához integrációs fiókhoz kell használnia a *ugyanabban a környezetben* a logic Apps. A Logic apps egy ISE-ben csak integrációs fiókok ugyanazt az ISE-ben is lehet hivatkozni. 
+Ha integrációs fiókot használni a logic apps-integráció service-környezet (ISE) a kívánt, integrációs fiókhoz kell használnia a *ugyanabban a környezetben* a logic Apps. A Logic apps egy ISE-ben csak integrációs fiókok ugyanazt az ISE-ben is lehet hivatkozni.
 
-Hozzon létre egy ISE használó integrációs fiókból, kövesse a [integrációs fiókok létrehozása](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) kivételével a **hely** tulajdonság, a **integrációs service-környezetek**  szakasz jelenik meg. Ehelyett válassza ki az ISE-ben, nem pedig a régiót, például:
+Hozhat létre egy ISE használó integrációs fiókot [az integrációs fiók létrehozása a szokásos módon](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) kivéve, ha a **hely** tulajdonság, válassza ki az ISE-ben a a **integráció környezetek szolgáltatás** részben, például:
 
 ![Válassza ki az integrációs service-környezet](./media/connect-virtual-network-vnet-isolated-environment/create-integration-account-with-integration-service-environment.png)
 

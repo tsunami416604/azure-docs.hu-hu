@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/24/2019
 ms.author: juliako
-ms.openlocfilehash: d99e3661fd51b481a20404cfeb55157ac803c220
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 98e8c0ccd150776341e644f7565696e8fbd63e99
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64706149"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65556271"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Az Azure Media Services v3 – gyakori kérdések
 
@@ -30,7 +30,7 @@ Lásd: [szerepköralapú hozzáférés-vezérlés (RBAC) a Media Services-fióko
 
 ### <a name="how-do-i-configure-media-reserved-units"></a>Hogyan konfigurálhatom a Media szolgáltatás számára fenntartott egységeket?
 
-A Media Services v3 vagy a Video Indexer által aktivált hangelemzési és videoelemzési feladatok esetében javasolt 10 S3 MRU-val ellátni a fiókot. Ha több mint 10 S3-helyet, nyisson meg egy támogatási jegyet a a [az Azure portal](https://portal.azure.com/).
+A hangelemzés és videó elemzési feladatokat a Media Services v3 által aktivált vagy a Video Indexer azt javasoljuk 10 S3 szintű helyet a fiók kiépítése. Ha több mint 10 S3-helyet, nyisson meg egy támogatási jegyet a a [az Azure portal](https://portal.azure.com/).
 
 További információkért lásd: [méretezhető médiafeldolgozás a parancssori felület segítségével](media-reserved-units-cli-how-to.md).
 
@@ -46,7 +46,7 @@ Tördelés használatakor mindig használjon a következő hivatkozás enumerál
 
 További információkért lásd: [megállapodást v2 API-k hézagok funkció](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis).
 
-## <a name="live-streaming"></a>Live streaming (Élő adatfolyam) 
+## <a name="live-streaming"></a>Élő közvetítés 
 
 ###  <a name="how-to-insert-breaksvideos-and-image-slates-during-live-stream"></a>Hogyan szúrhat be a sortöréseket és videók és lemezkép befutók során élő streamet?
 
@@ -81,7 +81,7 @@ További információkért lásd:
 
 ### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Az Azure portal használatával v3-erőforrások kezelése?
 
-Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](developers-guide.md).
+Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](media-services-apis-overview.md#sdks).
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>Van egy AssetFile fogalma a v3-as?
 

@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 10/13/2017
+ms.date: 5/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ec87bdadc0e7f77cdeebb16403758026fd956c30
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 8dffc5b87aefe23953d3a74f1d96b5ee03e0315d
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939853"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597386"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Az Azure Search értékkorlátozás szűrő létrehozása 
 
@@ -37,50 +37,48 @@ További részletek új, a jellemzőalapú navigáció, és szeretné? Lásd: [j
 
 Egyetlen érték mezők, valamint a gyűjtemények értékkorlátozással is vetítve. Mezőkkel, amelyek működnek a legjobban a jellemzőalapú navigáció alacsony Számosság rendelkezik: egy kis számú különböző értékeket, amelyek ismételje meg a keresési forrásgyűjteményébe (például a színeket, országok/régiók vagy márkanevek listájában) található dokumentumok teljes. 
 
-Jellemzőalapú mező szerint alapon engedélyezve van, az index létrehozásakor a következő attribútumok igaz értékre állításával: `filterable`, `facetable`. Csak a szűrhető mezők értéke korlátozható.
+Jellemzőalapú mező szerint történik engedélyezve van, az index létrehozásakor állítsa az `facetable` attribútumot `true`. Általánosan is állítsa be a `filterable` attribútumot `true` például, hogy ezek a mezők alapján, amely a felhasználó kiválasztja értékkorlátozással szűrheti a keresőalkalmazás mezők esetében. 
 
-Bármely [mezőbe írja be](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) , amelyek esetleg használható lenne a jellemzőalapú navigáció "kategorizálható" van megjelölve:
+A REST API használatával bármely index létrehozásakor [mezőbe írja be](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) , amelyek esetleg használható lenne a jellemzőalapú navigáció van megjelölve `facetable` alapértelmezés szerint:
 
-+ Edm.String
-+ Edm.DateTimeOffset
-+ Edm.Boolean
-+ Edm.Collections
-+ A mező numerikus típusok: Edm.Int32, Edm.Int64, Edm.Double
++ `Edm.String`
++ `Edm.DateTimeOffset`
++ `Edm.Boolean`
++ A mező numerikus típusok: `Edm.Int32`, `Edm.Int64`, `Edm.Double`
++ A fenti típusú gyűjtemények (például `Collection(Edm.String)` vagy `Collection(Edm.Double)`)
 
-Jellemzőalapú navigáció Edm.GeographyPoint nem használhat. Értékkorlátozással emberi olvasható szöveget vagy számokat és változóból tevődnek. Értékkorlátozással mint ilyen, a földrajzi koordináták nem támogatottak. Egy hely szerint értékkorlátozás vagy régiót mezőt kell lennie.
+Nem használhat `Edm.GeographyPoint` vagy `Collection(Edm.GeographyPoint)` jellemzőalapú navigációs mezők. Értékkorlátozással működnek a legjobban a mezők alacsony számossága. A földrajzi koordináták felbontása, mert ritka, hogy bármely fordítani két készletnyi egyenlő egy adott adatkészlet lesz. Értékkorlátozással mint ilyen, a földrajzi koordináták nem támogatottak. Egy hely szerint értékkorlátozás vagy régiót mezőt kell lennie.
 
 ## <a name="set-attributes"></a>Attribútumainak beállítása
 
-Vezérelheti a mező használatát index attribútumairól az index egyedi Meződefiníciók kerülnek. A következő példában alacsony számosságú, értékkorlátozás, hasznos, ha a mezők állhat: kategória (Szálloda, amelyben, hostel), eszközök és besorolás. 
-
-A .NET API-t, a szűrési attribútumokhoz explicit módon kell beállítani. A REST API-t, a többnyelvűséget és a szűrés alapértelmezés szerint engedélyezve vannak, ami azt jelenti, hogy csak kell explicit módon attribútumainak beállítása, ha szeretné kikapcsolni őket. Bár ez nem szükséges technikailag, bemutatjuk az adatok az alábbi REST-példában oktatási célokra. 
+Vezérelheti a mező használatát index attribútumairól az index egyedi Meződefiníciók kerülnek. A következő példában alacsony számosságú, értékkorlátozás, hasznos, ha a mezők állhat: `category` (Szálloda, amelyben, hostel) `tags`, és `rating`. Ezeknek a mezőknek a `filterable` és `facetable` attribútumok explicit módon a következő set szemléltető célokra. 
 
 > [!Tip]
-> Ajánlott eljárásként a teljesítmény- és tárolási optimalizálása kikapcsolása jellemzőkezelés értékkorlátozásként soha nem használt mezőket. Különösen a singleton értékek, például egy azonosító vagy a termék nevét, a karakterlánc-mezők "Kategorizálható"-ra kell állítani: False (hamis), hogy azok véletlen (és hatástalan) használja a jellemzőalapú navigáció.
+> Ajánlott eljárásként a teljesítmény- és tárolási optimalizálása kikapcsolása jellemzőkezelés értékkorlátozásként soha nem használt mezőket. Különösen egyedi értékeket, például egy azonosító vagy a termék nevét, a karakterlánc típusú meg `"facetable": false` jellemzőalapú navigációs véletlen (és hatástalan) használati elkerülése érdekében.
 
 
-```http
+```json
 {
-    "name": "hotels",  
-    "fields": [
-        {"name": "hotelId", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
-        {"name": "baseRate", "type": "Edm.Double"},
-        {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
-        {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer": "fr.lucene"},
-        {"name": "hotelName", "type": "Edm.String", "facetable": false},
-        {"name": "category", "type": "Edm.String", "filterable": true, "facetable": true},
-        {"name": "tags", "type": "Collection(Edm.String)", "filterable": true, "facetable": true},
-        {"name": "parkingIncluded", "type": "Edm.Boolean",  "filterable": true, "facetable": true, "sortable": false},
-        {"name": "smokingAllowed", "type": "Edm.Boolean", "filterable": true, "facetable": true, "sortable": false},
-        {"name": "lastRenovationDate", "type": "Edm.DateTimeOffset"},
-        {"name": "rating", "type": "Edm.Int32", "filterable": true, "facetable": true},
-        {"name": "location", "type": "Edm.GeographyPoint"}
-    ]
+  "name": "hotels",  
+  "fields": [
+    { "name": "hotelId", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false },
+    { "name": "baseRate", "type": "Edm.Double" },
+    { "name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false },
+    { "name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer": "fr.lucene" },
+    { "name": "hotelName", "type": "Edm.String", "facetable": false },
+    { "name": "category", "type": "Edm.String", "filterable": true, "facetable": true },
+    { "name": "tags", "type": "Collection(Edm.String)", "filterable": true, "facetable": true },
+    { "name": "parkingIncluded", "type": "Edm.Boolean",  "filterable": true, "facetable": true, "sortable": false },
+    { "name": "smokingAllowed", "type": "Edm.Boolean", "filterable": true, "facetable": true, "sortable": false },
+    { "name": "lastRenovationDate", "type": "Edm.DateTimeOffset" },
+    { "name": "rating", "type": "Edm.Int32", "filterable": true, "facetable": true },
+    { "name": "location", "type": "Edm.GeographyPoint" }
+  ]
 }
 ```
 
 > [!Note]
-> Az index definícióját átmásolva [létrehozása az Azure Search-index REST API használatával](https://docs.microsoft.com/azure/search/search-create-index-rest-api). Ez megegyezik a Meződefiníciók felületi eltérések kivételével. Filterable és kategorizálható attribútumok explicit módon hozzáadódnak a kategória, címkék, parkingIncluded, smokingAllowed és minősítés mezőket. A gyakorlatban szűrhető kap, és a kategorizálható Edm.String Edm.Boolean és Edm.Int32 mezőtípusok az ingyenes. 
+> Az index definícióját átmásolva [létrehozása az Azure Search-index REST API használatával](https://docs.microsoft.com/azure/search/search-create-index-rest-api). Ez megegyezik a Meződefiníciók felületi eltérések kivételével. A `filterable` és `facetable` attribútumok explicit módon kerülnek a `category`, `tags`, `parkingIncluded`, `smokingAllowed`, és `rating` mezőket. A gyakorlatban `filterable` és `facetable` ezen mezők alapértelmezés szerint engedélyezve lenne, ha a REST API használatával. A .NET SDK használata esetén ezek az attribútumok explicit módon engedélyeznie kell.
 
 ## <a name="build-and-load-an-index"></a>Hozhat létre és index betöltése
 
@@ -91,25 +89,26 @@ Egy közbenső (és talán nyilvánvaló) lépés az kell, hogy [hozhat létre, 
 Az alkalmazás kódjában hozhatnak létre egy lekérdezést, amely meghatározza egy érvényes lekérdezést, beleértve a keresési kifejezéseket, értékkorlátozással, szűrőket, pontozási profilok – semmi állítson össze egy kérelmet használt minden része. Az alábbi példa egy kérelmet, amely létrehozza az értékkorlátozó navigációs vendéglátóipar, besorolásával és egyéb készülékek típusa alapján hoz létre.
 
 ```csharp
-SearchParameters sp = new SearchParameters()
+var sp = new SearchParameters()
 {
-  ...
-  // Add facets
-  Facets = new List<String>() { "category", "rating", "parkingIncluded", "smokingAllowed" },
+    ...
+    // Add facets
+    Facets = new[] { "category", "rating", "parkingIncluded", "smokingAllowed" }.ToList()
 };
 ```
 
 ### <a name="return-filtered-results-on-click-events"></a>A visszaadott eredmény kattintási események
 
-A szűrőkifejezés kezeli a kattintás eseményt, értékkorlátozás értéke. Adja meg a kategória értékkorlátozás, kattintson a "amelyben" kategória biztosítják a `$filter` kifejezés, amely az adott típusú szálláshelyigényt kiválasztja. Ha egy felhasználó "motelek" jelzi, hogy megjelenjen-e csak motelek kattint, a következő lekérdezés az alkalmazás elküld tartalmazza-e a $filter = kategória eq 'motelek".
+Amikor a végfelhasználó számára megadott értékkorlátozási értéknek kattint, a kezelő kattintson esemény egy kifejezést használja valósíthat meg a felhasználói szándékot. Megadott egy `category` értékkorlátozás, kattintson a "amelyben" kategória implementálása a `$filter` kifejezés, amely az adott típusú szálláshelyigényt választja ki. Ha egy felhasználó "amelyben" jelzi, hogy megjelenjen-e csak motelek kattint, a következő lekérdezés az alkalmazás elküld tartalmaz `$filter=category eq 'motel'`.
 
 A következő kódrészletet, ha a felhasználó kiválaszt egy értéket a kategória aspektus ad hozzá a szűrő kategória.
 
 ```csharp
-if (categoryFacet != "")
-  filter = "category eq '" + categoryFacet + "'";
+if (!String.IsNullOrEmpty(categoryFacet))
+    filter = $"category eq '{categoryFacet}'";
 ```
-A REST API-val, a kérelem kellene lennie csuklós `$filter=category eq 'c1'`. Ahhoz, hogy a kategória több érték mező, használja a következő szintaxist: `$filter=category/any(c: c eq 'c1')`
+
+Ha a felhasználó a megadott értékkorlátozási értéknek egy gyűjtemény mezőhöz hasonlóan `tags`, például a "készlet" értéket, az alkalmazás a következő szintaxist kell használnia: `$filter=tags/any(t: t eq 'pool')`
 
 ## <a name="tips-and-workarounds"></a>Tippek és megkerülő megoldások
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 881734caf855ccfc4f001693fe261b8448b49bc4
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 06051eff73a83ff97a733d1863580885c5d0e174
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466200"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551726"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Az Azure Red Hat OpenShift – gyakori kérdések
 
@@ -66,3 +66,7 @@ Nem. Az Azure Red Hat OpenShift fürt összes csomópontja az Azure-régióban k
 ## <a name="are-master-and-infrastructure-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>Fő-és infrastruktúra emeli ki nyelvet a lenti listában azok az Azure Kubernetes Service (AKS)?
 
 Nem. Minden erőforrás, beleértve a fürt fő futtassa az ügyfél-előfizetés. Az ilyen típusú erőforrások kerüljenek a csak olvasható erőforráscsoportban.
+
+## <a name="is-open-service-broker-for-azure-osba-supported"></a>Az Open Service Broker for Azure (OSBA) támogatott?
+
+Igen. Az Azure Red Hat OpenShift OSBA is használhatja. Lásd: [Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) további információt.

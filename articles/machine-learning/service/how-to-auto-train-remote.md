@@ -1,7 +1,7 @@
 ---
 title: Automatizált ML távoli számítási célnak
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan hozhat létre automatizált gépi tanulás használatával az Azure Machine Learning szolgáltatással Data Science virtuális gép (DSVM) távoli számítási célt
+description: Ismerje meg, hogyan hozhat létre automatizált gépi tanulás használatával az Azure Machine Learning szolgáltatás egy Azure Machine Learning távoli számítási célnak
 services: machine-learning
 author: nacharya1
 ms.author: nilesha
@@ -12,26 +12,26 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6f2d71abeacee531b21a8276f621367dd39a39d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a18bdf3a2a1ccd60ff20d21ebd99f4f6e15e38f
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60820393"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551341"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>A felhőalapú automatikus machine learning-modellek
 
 Az Azure Machine Learning a számítási erőforrásokat, különböző típusú modellje betanításához. A számítási célnak lehet helyi számítógépen vagy egy számítógép, a felhőben.
 
-Egyszerűen vertikális vagy horizontális felskálázása a machine learning-kísérlet további számítási célnak hozzáadásával. Ubuntu-alapú adatok adatelemzési virtuális gépet (DSVM) vagy az Azure Machine Learning Compute a számítási célt lehetőségek között. A dsvm-hez egy testre szabott Virtuálisgép-lemezkép a Microsoft Azure-felhőben, amelyet kifejezetten adatelemzésre. Számos népszerű adatelemzési és egyéb eszközök, előre telepítve és konfigurálva van.  
+Egyszerűen vertikális vagy horizontális felskálázáshoz a machine learning-kísérlet adjon hozzá további számítási célokhoz, például az Azure Machine Learning Compute (AmlCompute). AmlCompute egy felügyelt számítási infrastruktúra, amely lehetővé teszi, hogy egyszerűen hozzon létre egy egyetlen vagy több csomópontos számítási.
 
-Ebből a cikkből megismerheti, hogyan hozhat létre a DSVM használata automatizált gépi Tanulási modell.
+Ebből a cikkből megismerheti, hogyan hozhat létre automatizált gépi tanulás használatával AmlCompute modell.
 
 ## <a name="how-does-remote-differ-from-local"></a>Miben helyi távoli?
 
-Az oktatóanyag "[egy automatizált gépi tanulással osztályozási modell betanításához](tutorial-auto-train-models.md)" bemutatja, hogyan használja a helyi számítógép automatikus gépi Tanulási modell.  A munkafolyamat betanításakor helyileg is, valamint a távoli tárolókra vonatkozik. Azonban a távoli számítási automatizált gépi Tanulási kísérlet ismétléseinek végrehajtása aszinkron módon történik. Ez a funkció lehetővé teszi, hogy egy adott iterációhoz visszavonja, tekintse meg a végrehajtási állapotát, vagy folytatja a munkát a többi cella Jupyter notebookot. Távolról betanítást, először hozzon létre egy távoli számítási célnak, például egy Azure dsvm-hez.  Ezután konfigurálja a távoli erőforrás, és küldje el a kódot.
+Az oktatóanyag "[egy automatizált gépi tanulással osztályozási modell betanításához](tutorial-auto-train-models.md)" bemutatja, hogyan használja a helyi számítógép automatikus gépi Tanulási modell.  A munkafolyamat betanításakor helyileg is, valamint a távoli tárolókra vonatkozik. Azonban a távoli számítási automatizált gépi Tanulási kísérlet ismétléseinek végrehajtása aszinkron módon történik. Ez a funkció lehetővé teszi, hogy egy adott iterációhoz visszavonja, tekintse meg a végrehajtási állapotát, vagy folytatja a munkát a többi cella Jupyter notebookot. Távolról betanítást, először hozzon létre egy távoli számítási célnak, például a AmlCompute. Ezután konfigurálja a távoli erőforrás, és küldje el a kódot.
 
-Ez a cikk bemutatja az automatizált gépi Tanulási kísérletet futtat egy távoli dsvm-hez szükséges további lépéseket.  A munkaterület objektum `ws`, az oktatóanyag használja Itt a kód egészében.
+Ez a cikk bemutatja az automatizált gépi Tanulási kísérlet futtatása egy távoli AmlCompute cél szükséges további lépéseket. A munkaterület objektum `ws`, az oktatóanyag használja Itt a kód egészében.
 
 ```python
 ws = Workspace.from_config()
@@ -39,67 +39,32 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>Erőforrás létrehozása
 
-A dsvm-hez a munkaterület létrehozása (`ws`) Ha még nem létezik. A DSVM korábban jött létre, ha ez a kód kihagyja a létrehozási folyamat, és betölti azokat a meglévő erőforrás részletei a `dsvm_compute` objektum.  
+Hozza létre a AmlCompute cél a munkaterület (`ws`) Ha még nem létezik.  
 
-**Becsült időtartam**: A virtuális gép létrehozása körülbelül 5 percet vesz igénybe.
-
-```python
-from azureml.core.compute import DsvmCompute
-
-dsvm_name = 'mydsvm' #Name your DSVM
-try:
-    dsvm_compute = DsvmCompute(ws, dsvm_name)
-    print('found existing dsvm.')
-except:
-    print('creating new dsvm.')
-    # Below is using a VM of SKU Standard_D2_v2 which is 2 core machine. You can check Azure virtual machines documentation for additional SKUs of VMs.
-    dsvm_config = DsvmCompute.provisioning_configuration(vm_size = "Standard_D2_v2")
-    dsvm_compute = DsvmCompute.create(ws, name = dsvm_name, provisioning_configuration = dsvm_config)
-    dsvm_compute.wait_for_completion(show_output = True)
-```
-
-Most már használhatja a `dsvm_compute` a távoli számítási célnak az objektumot.
-
-A DSVM alapján való korlátozások a következők:
-+ 64 karakternél rövidebbnek kell lennie.  
-+ Nem tartalmazza a következő karakterek egyikét sem: `\` ~! @ # $ % ^ & * () = + _ [] {} \\ \\ |};: \' \\", < > /?. `
-
->[!Warning]
->Ha létrehozása meghiúsul, és a piactér vásárlás jogosultsági szóló üzenetet:
->    1. Nyissa meg az [Azure Portalt](https://portal.azure.com)
->    1. A DSVM létrehozásának megkezdéséhez 
->    1. Válassza ki "létrehozni kívánt programozott módon" programozott létrehozásának engedélyezése
->    1. Kilépés nélkül valójában a virtuális gép létrehozása
->    1. Futtassa újra a létrehozási kódot
-
-Ez a kód nem hozzon létre egy felhasználói nevet és jelszót, amely ki van építve a dsvm-hez. Ha közvetlenül csatlakozhat a virtuális Gépet szeretne, ugorjon a [az Azure portal](https://portal.azure.com) hitelesítő adatok létrehozásához.  
-
-### <a name="attach-existing-linux-dsvm"></a>Linuxos dsvm-hez meglévő csatolása
-
-A számítási célként egy meglévő Linuxos DSVM is csatolhat. Ebben a példában már használja egy meglévő dsvm-hez, de nem hoz létre egy új erőforrást.
-
-> [!NOTE]
->
-> A következő kódban a [RemoteCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remote.remotecompute?view=azure-ml-py) cél osztály a számítási célnak, meglévő virtuális Géphez csatolni.
-> A [DsvmCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.dsvmcompute?view=azure-ml-py) osztály értéke ebben a kialakítási mintában a jövőbeni kiadásokban elavulttá válik.
-
-Futtassa a következő kódot a számítási célnak létrehozni egy már meglévő Linuxos adatelemző virtuális GÉPET.
+**Becsült időtartam**: A AmlCompute cél létrehozása körülbelül 5 percet vesz igénybe.
 
 ```python
-from azureml.core.compute import ComputeTarget, RemoteCompute 
+from azureml.core.compute import AmlCompute
+from azureml.core.compute import ComputeTarget
 
-attach_config = RemoteCompute.attach_configuration(username='<username>',
-                                                   address='<ip_address_or_fqdn>',
-                                                   ssh_port=22,
-                                                   private_key_file='./.ssh/id_rsa')
-compute_target = ComputeTarget.attach(workspace=ws,
-                                      name='attached-vm',
-                                      attach_configuration=attach_config)
+amlcompute_cluster_name = "automlcl" #Name your cluster
+provisioning_config = AmlCompute.provisioning_configuration(vm_size = "STANDARD_D2_V2", 
+                                                            # for GPU, use "STANDARD_NC6"
+                                                            #vm_priority = 'lowpriority', # optional
+                                                            max_nodes = 6)
 
-compute_target.wait_for_completion(show_output=True)
+compute_target = ComputeTarget.create(ws, amlcompute_cluster_name, provisioning_config)
+    
+# Can poll for a minimum number of nodes and for a specific timeout.
+# If no min_node_count is provided, it will use the scale settings for the cluster.
+compute_target.wait_for_completion(show_output = True, min_node_count = None, timeout_in_minutes = 20)
 ```
 
 Most már használhatja a `compute_target` a távoli számítási célnak az objektumot.
+
+Fürt neve korlátozások a következők:
++ 64 karakternél rövidebbnek kell lennie.  
++ Nem tartalmazza a következő karakterek egyikét sem: `\` ~! @ # $ % ^ & * () = + _ [] {} \\ \\ |};: \' \\", < > /?. `
 
 ## <a name="access-data-using-getdata-file"></a>Get_data fájl használatával érheti el adatait
 
@@ -161,7 +126,7 @@ automl_settings = {
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
-                             compute_target = dsvm_compute,
+                             compute_target = compute_target,
                              data_script=project_folder + "/get_data.py",
                              **automl_settings,
                             )
@@ -175,7 +140,7 @@ automl_config = AutoMLConfig(task='classification',
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
-                             compute_target = dsvm_compute,
+                             compute_target = compute_target,
                              data_script=project_folder + "/get_data.py",
                              **automl_settings,
                              model_explainability=True,
@@ -250,12 +215,12 @@ A DSVM alatt található naplók `/tmp/azureml_run/{iterationid}/azureml-logs`.
 
 Modell magyarázata adatok beolvasása lehetővé teszi a modellek átlátható képet adnak a háttér-futó növelése részletes információinak megtekintéséhez. Ebben a példában csak a legjobb regressziós modellt a modell magyarázatok fogja futtatni. Ha a folyamat minden modell futtat, azt jelentős futási idő eredményez. Modell magyarázata adatokat tartalmazza:
 
-* shap_values: Alakzatadatok lib által létrehozott információk magyarázata
+* shap_values: A létrejövő Alakzatadatok lib magyarázata adatokat.
 * expected_values: A modell X_train adatok beállítása a alkalmazni a várt értékkel.
-* overall_summary: A modell szintű funkció fontossági értékek csökkenő sorrendben rendezve
-* overall_imp: A szolgáltatások neveit, mint overall_summary ugyanabban a sorrendben rendezve
-* per_class_summary: Az osztály szintű funkció fontossági értékek csökkenő sorrendbe rendezve. Csak besorolás esetben érhető el
-* per_class_imp: A szolgáltatások neveit, ugyanabban a sorrendben, ahogy per_class_summary rendezve. Csak besorolás esetben érhető el
+* overall_summary: A modell szintű funkció fontossági értékek csökkenő sorrendbe rendezve.
+* overall_imp: A szolgáltatások neveit, ugyanabban a sorrendben, ahogy overall_summary rendezve.
+* per_class_summary: Az osztály szintű funkció fontossági értékek csökkenő sorrendbe rendezve. Csak a besorolási esethez érhető el.
+* per_class_imp: A szolgáltatások neveit, ugyanabban a sorrendben, ahogy per_class_summary rendezve. Csak a besorolási esethez érhető el.
 
 A következő kód használatával válassza ki a legjobb folyamatot, az ismétlések. A `get_output` metódus visszaadja a legjobb Futtatás és illesztett modell az utolsó hívás szélességhez tartozó.
 
@@ -291,7 +256,7 @@ A munkaterületen belül is a widget felhasználói felület, valamint a webes f
 
 ## <a name="example"></a>Példa
 
-A [how-to-use-azureml/automated-machine-learning/remote-execution/auto-ml-remote-execution.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-execution/auto-ml-remote-execution.ipynb) notebook mutatja be a jelen cikk fogalmait. 
+A [how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) notebook mutatja be a jelen cikk fogalmait. 
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

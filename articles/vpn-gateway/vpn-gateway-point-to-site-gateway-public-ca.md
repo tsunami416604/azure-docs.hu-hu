@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/15/2019
+ms.date: 05/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: ea3ee00e60ae5eaff5c7220e9502da11358c8793
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1d45e1a5e4053ead4330967c5e250c0797c19fe7
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65786732"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827456"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>Váltás nyilvános hitelesítésszolgáltatói átjárótanúsítványra a P2S-kapcsolatok esetében
 
@@ -29,19 +29,7 @@ Korábban az önaláírt tanúsítvány az átjáró (kiadott a színfalak mög�
 Ez a változás által érintett csak a régebbi átjárók. Ha az átjáró tanúsítványt állítjuk át, kommunikációs vagy bejelentési kap az Azure Portalon. Ellenőrizheti, hogy ha az átjáró érinti ez a cikk lépéseit használva talál.
 
 > [!IMPORTANT]
-> **Ez a változás a 2019. május 12. fejeződött be.**
->
-> Az átállás. március 12 2019 18:00 (UTC) már van ütemezve. Ha inkább egy másik időtartomány hozhat létre egy támogatási esetet. Győződjön meg arról, és a kérés véglegesítése legalább 24 óra.  A következő windows kérhet:
->
-> * A február 25 06:00 (UTC)
-> * A február 25 18:00 (UTC)
-> * Március 1-06:00 (UTC)
-> * Március 1-18:00 (UTC)
->
-> Az összes többi átjáró veszi át a március 12 2019 díjtól 18:00 (UTC).
->
-> Ügyfelek fog kapni egy e-mailt, az átjáró az áttérési folyamat befejezése után.
-> 
+> Váltás nyilvános hitelesítésszolgáltató tanúsítványokat a 2019. május 12. fejeződött be. **Ez a dokumentum 2019. május 31-ig. a rendszer eltávolítja.**
 
 ## <a name="1-verify-your-certificate"></a>1. A tanúsítvány
 

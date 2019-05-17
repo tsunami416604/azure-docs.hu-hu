@@ -1,6 +1,6 @@
 ---
 title: Nagy sűrűségű üzemeltetés alkalmazásonkénti használatával méretezés – az Azure App Service |} A Microsoft Docs
-description: Nagy sűrűségű üzemeltetés az Azure App Service szolgáltatásban
+description: Az Azure App Service nagy sűrűségű üzemeltetés
 author: btardif
 manager: erikre
 editor: ''
@@ -12,27 +12,31 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/22/2018
+ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 08d6d0c31e1cff799e952c50bae3446e41477aba
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 824abbdfd1b3980b419e6d6c46814bb0318adf13
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104569"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602326"
 ---
-# <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Nagy sűrűségű üzemeltetés az Azure App Service alkalmazás skálázással
+# <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Az Azure App Service alkalmazás skálázással nagy sűrűségű üzemeltetés
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Alapértelmezés szerint méretezése App Service-alkalmazások történik méretezés a [App Service-csomag](overview-hosting-plans.md) számítógépen futnak. Amikor több alkalmazás futtatása az App Service-csomag, horizontálisan felskálázott példányonként minden alkalmazás fut a terv.
+App Service-ben használatakor méretezhetők az alkalmazások méretezése a [App Service-csomag](overview-hosting-plans.md) számítógépen futnak. Amikor több alkalmazás futtatása az App Service-csomag, horizontálisan felskálázott példányonként minden alkalmazás fut a terv.
 
-Engedélyezheti a *alkalmazásonkénti skálázás* , az App Service csomag szintje. Méretezés egy alkalmazást az App Service-csomag, amelyen azt alkalmazástól függetlenül. Ezzel a módszerrel App Service-csomag 10 példányra skálázhatók, de az alkalmazás csak öt beállítható.
+*Alkalmazásonkénti skálázás* , hogy egymástól függetlenül az App Service-csomag, amelyen ez az alkalmazás méretezése App Service csomag szintjén engedélyezhető. Ezzel a módszerrel App Service-csomag 10 példányra skálázhatók, de az alkalmazás csak öt beállítható.
 
 > [!NOTE]
 > Alkalmazásonkénti skálázás csak érhető el **Standard**, **prémium**, **prémium V2** és **elkülönített** díjcsomagok árából.
 >
+
+Alkalmazások kiosztott elérhető App Service-csomag megközelítéssel ajánlott beavatkozást az egyenletes eloszlás a példányok között. Az egyenletes eloszlás nem garantált, amíg a platform gondoskodik, hogy ugyanazt az alkalmazást két példánya nem lehet üzemeltethetők App Service-csomag ugyanazon.
+
+A platform nem szükséges feldolgozó foglalási vonatkozó metrikákat. Alkalmazások vannak egyensúlyozva olyan események csak példányok hozzáadásakor vagy eltávolításakor az App Service-csomag.
 
 ## <a name="per-app-scaling-using-powershell"></a>Az egyes alkalmazások méretezése a PowerShell használatával
 
@@ -60,10 +64,10 @@ Az alábbi példában az alkalmazás két példánya, függetlenül az alapul sz
 ```powershell
 # Get the app we want to configure to use "PerSiteScaling"
 $newapp = Get-AzWebApp -ResourceGroupName $ResourceGroup -Name $webapp
-    
+
 # Modify the NumberOfWorkers setting to the desired value.
 $newapp.SiteConfig.NumberOfWorkers = 2
-    
+
 # Post updated app back to azure
 Set-AzWebApp $newapp
 ```
@@ -128,17 +132,18 @@ Az App Service-csomag beállítása a **PerSiteScaling** tulajdonság igaz ért�
 ```
 
 ## <a name="recommended-configuration-for-high-density-hosting"></a>Ajánlott konfiguráció, a nagy sűrűségű üzemeltetés
-Egy alkalmazás méretezése funkciója engedélyezve van, mindkét globális Azure-régióban és [App Service Environment-környezetek](environment/app-service-app-service-environment-intro.md). Azonban a javasolt stratégia az App Service Environment-környezetek használata a speciális funkciókat és a nagyobb kapacitás-készleteket.  
 
-Kövesse az alábbi lépéseket az alkalmazások üzemeltetéséhez nagy sűrűségű konfigurálása:
+Egy alkalmazás méretezése funkciója engedélyezve van, mindkét globális Azure-régióban és [App Service Environment-környezetek](environment/app-service-app-service-environment-intro.md). A javasolt stratégia azonban az App Service Environment-környezetek segítségével kihasználhatja a speciális szolgáltatások és az App Service-ben a csomag nagyobb kapacitás.  
 
-1. Az App Service Environment konfigurálása, és válassza ki, amely a nagy sűrűségű üzemeltetés feldolgozókészletek.
-2. Hozzon létre egy egyetlen App Service-csomagot, és skálázza fel a rendelkezésre álló kapacitás a feldolgozókészlet használata.
-3. Állítsa be a `PerSiteScaling` jelzőt igaz értékre az App Service-csomag.
-4. Új alkalmazások létrehozása és az App Service-csomag rendelve a **numberOfWorkers** tulajdonság **1**. A munkavégző készletét. a lehetséges legnagyobb kapacitású használatával Ez a konfiguráció alapján.
-5. Feldolgozók száma egymástól függetlenül konfigurálhatók az egyes alkalmazások igény szerint további erőforrások megadását. Példa:
-    - Egy sokak által használt alkalmazás állíthatja **numberOfWorkers** való **3** rendelkeznie, amelyet az alkalmazás további feldolgozási kapacitás. 
-    - Alacsony használható alkalmazások állíthatja **numberOfWorkers** való **1**.
+Kövesse az alábbi lépéseket az alkalmazások nagy sűrűségű üzemeltetés konfigurálása:
+
+1. App Service-csomag megjelölni a nagy sűrűségű tervet, és skálázza fel horizontálisan a kívánt kapacitást.
+1. Állítsa be a `PerSiteScaling` jelzőt igaz értékre az App Service-csomag.
+1. Új alkalmazások létrehozása és az App Service-csomag rendelve a **numberOfWorkers** tulajdonság **1**.
+   - A lehetséges legnagyobb kapacitású használatával Ez a konfiguráció alapján.
+1. Feldolgozók száma egymástól függetlenül konfigurálhatók az egyes alkalmazások igény szerint további erőforrások megadását. Példa:
+   - Egy sokak által használt alkalmazás állíthatja **numberOfWorkers** való **3** rendelkeznie, amelyet az alkalmazás további feldolgozási kapacitás.
+   - Alacsony használható alkalmazások állíthatja **numberOfWorkers** való **1**.
 
 ## <a name="next-steps"></a>További lépések
 

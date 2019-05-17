@@ -6,13 +6,13 @@ ms.author: twhitney
 ms.service: container-service
 manager: jeconnoc
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: 3c7f0b263cc775b7f9fec62e4d5388250e5124fb
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.date: 05/13/2019
+ms.openlocfilehash: 04d710f4d60b776f8059d87ea4d009bed6f7f8ba
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65079120"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551719"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Az Azure Red Hat OpenShift az Azure AD-bérlő létrehozása
 
@@ -34,7 +34,7 @@ Bérlő létrehozása:
 
     ![A portálon, a jobb felső sarokban a bérlő nevét megjelenítő képernyőkép][tenantcallout]  
 
-8. Jegyezze fel a *bérlőazonosító* így később megadhatja, hová hozza létre az Azure Red Hat OpenShift fürt. A portálon meg kell jelennie az Azure Active Directory áttekintés panelen az új bérlő. Válassza ki **tulajdonságok** , és másolja az értéket a **címtár-azonosító**. Ezt az értéket fogunk hivatkozni a `tenant id` a a [hozzon létre egy Azure Red Hat OpenShift fürtöt](tutorial-create-cluster.md) oktatóanyag.
+8. Jegyezze fel a *bérlőazonosító* így később megadhatja, hová hozza létre az Azure Red Hat OpenShift fürt. A portálon meg kell jelennie az Azure Active Directory áttekintés panelen az új bérlő. Válassza ki **tulajdonságok** , és másolja az értéket a **címtár-azonosító**. Ezt az értéket hivatkozni fogunk `TENANT` a a [hozzon létre egy Azure Red Hat OpenShift fürtöt](tutorial-create-cluster.md) oktatóanyag.
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 

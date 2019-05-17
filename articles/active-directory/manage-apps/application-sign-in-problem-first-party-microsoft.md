@@ -3,8 +3,8 @@ title: Egy Microsoft-alkalmazásba történő bejelentkezésnél |} A Microsoft 
 description: Belső Microsoft Applications (például Office 365) az Azure AD-vel való bejelentkezéskor problémákkal kapcsolatos gyakori problémák elhárítása
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/10/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256ca5c2f26a6bac6bdfd09e4dd6294ec5a569ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 26acb32828ae4829b3da5c3a1181dbde19b23d05
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292197"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825216"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Egy Microsoft-alkalmazásba történő bejelentkezésnél
 
@@ -435,7 +435,7 @@ Ellenőrizze, vagy ellenőrizheti a egyetlen feltételes hozzáférési szabály
 
 6. Jelölje ki az Önt érdeklő vizsgálatával házirendet.
 
-7. Tekintse át, hogy nincsenek-e nincsenek konkrét feltételek, hozzárendelések vagy más beállítást, amellyel a felhasználók hozzáférését blokkolja.
+7. Tekintse át, hogy nincsenek-e nincsenek konkrét feltételek, hozzárendelések vagy letilthatja a felhasználói hozzáférést egyéb beállításait.
 
    >[!NOTE]
    >Érdemes lehet ideiglenesen letiltja ezt a házirendet, győződjön meg arról, nincs hatással a bejelentkezések. Ehhez állítsa be a **házirend engedélyezése** kapcsolót **nem** , és kattintson a **mentése** gombra.
@@ -456,7 +456,7 @@ Ellenőrizze, vagy ellenőrizheti a egyetlen alkalmazás jelenleg a feltételes 
 
 5.  Kattintson a **minden alkalmazás**.
 
-6.  Keresse meg az Önt érdeklő alkalmazás vagy a felhasználó megpróbálja jelentkezzen be az alkalmazás megjelenített neve vagy azonosítója.
+6.  Keresse meg az Önt érdeklő alkalmazás vagy a felhasználó megpróbál bejelentkezni az alkalmazás megjelenítendő neve vagy az alkalmazás azonosítóját.
 
      >[!NOTE]
      >Ha nem látja a keresett alkalmazást, kattintson a **szűrő** gombra, és bontsa ki a lista hatókörét **minden alkalmazás**. Ha meg szeretné tekinteni a több oszlopot, kattintson a **oszlopok** gombra kattintva adhat hozzá további részletek az alkalmazások számára.

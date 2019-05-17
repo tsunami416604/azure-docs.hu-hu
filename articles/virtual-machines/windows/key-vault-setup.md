@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: a8c29f015b6b3652361a886585cb4ccc3f3b7293
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f4344be1ef13daa85477b22aa0434347873aec40
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60563450"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826134"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>A virtuális gépek az Azure Resource Manager Key Vault beállítása
 
@@ -50,7 +50,7 @@ Key vault létrehozása a parancssori felület (CLI) használatával, lásd: [ke
 
 CLI-hez akkor a key vault létrehozása előtt a központi telepítési szabályzatot rendel. Ehhez futtassa az alábbi parancsot:
 
-    az keyvault set-policy ContosoKeyVault –enabled-for-deployment true
+    az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
 
 ## <a name="use-templates-to-set-up-key-vault"></a>A sablonok segítségével a Key Vault beállítása
 Bár egy sablont használ, be kell állítania a `enabledForDeployment` tulajdonságot `true` a Key Vault erőforrás.

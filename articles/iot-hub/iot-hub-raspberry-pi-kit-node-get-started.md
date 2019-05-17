@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: wesmc
-ms.openlocfilehash: d1e9a6da399adcdca87c1d6dc30eaf425ec0541e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 72d7956036404d13849f7c2b08f9df4210f12aa7
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61453600"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597273"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi csatlakoztatása Azure IoT hubhoz (Node.js)
 
@@ -199,10 +199,10 @@ A Pi kapcsolja be a micro USB-kábelen keresztül és a tápegység. Az Ethernet
    node -v
    ```
 
-   Kisebb, mint a 4.x-es verzió esetén, vagy ha nincs Node.js a Pi-on, telepítse a legújabb verziót.
+   Ha verziószáma kisebb, mint a 10.x, vagy ha nincs Node.js a Pi-on, telepítse a legújabb verziót.
 
    ```bash
-   curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash
+   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 

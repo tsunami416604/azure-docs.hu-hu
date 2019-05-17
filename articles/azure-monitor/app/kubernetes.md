@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor - nulla rendszerállapot-alkalmazásfigyelést Kubernetes üzemeltetett alkalmazások |} A Microsoft Docs
-description: Nulla rendszerállapot-alkalmazás az üzemeltetett Kubernetes-alkalmazások figyelése nem egy figyelési megoldás, amely lehetővé teszi a bejövő és kimenő kérelmek, illetve onnan a Kubernetes-fürt által futtató podok tartozó Application Insights telemetria gyűjtése szolgáltatás háló technológiát használó nevű Istio.
+title: Használja az Application Insights az Azure Kubernetes Service (AKS) vagy más Kubernetes üzemeltetett alkalmazások – az Azure Monitor |} A Microsoft Docs
+description: Az Azure Monitor szolgáltatás háló technológiát használ, Istio, alkalmazásfigyelés bármely üzemeltetett Kubernetes-alkalmazás biztosításához a Kubernetes-fürtön. Ez lehetővé teszi a bejövő és kimenő kérelmek, illetve onnan a fürtön futó podok tartozó Application Insights telemetria gyűjtéséhez.
 services: application-insights
 author: tokaplan
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: alkaplan
-ms.openlocfilehash: 42b81ec0fa01841791a5b2651d1c1189db5e27ff
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
-ms.translationtype: HT
+ms.openlocfilehash: c94d589875195207ec6f71c35ad077cac281fda5
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408215"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65555838"
 ---
-# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-apps"></a>Nulla instrumentation alkalmazásfigyelés kubernetes üzemeltetett alkalmazások
+# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Nulla instrumentation alkalmazásfigyelés kubernetes üzemeltetett alkalmazások
 
 > [!IMPORTANT]
 > Ez a funkció jelenleg nyilvános előzetes verzióban érhető el.

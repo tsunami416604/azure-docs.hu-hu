@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: d51eaf71e449301415195e409bec9e944d16e0b9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 592b2c611888623c2753d7c4abc9fe57c28af30e
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800471"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823160"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Gyors útmutató: Az első Resource Graph-lekérdezés futtatása az Azure CLI használatával
 
@@ -81,7 +81,7 @@ Miután az Azure CLI-bővítmény hozzá lett adva a választott környezethez, 
 
 Miután a végső lekérdezés többször is futott, és feltéve, hogy a környezetben semmi sem változik, a visszaadott találatok konzisztensek és a vártnak megfelelőek lesznek – a **Name** tulajdonság szerint lesznek rendezve, és csak az első öt eredmény jelenik meg.
 
-## <a name="cleanup-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha el szeretné távolítani a Resource Graph bővítményt az Azure CLI környezetből, ezt a következő paranccsal teheti meg:
 

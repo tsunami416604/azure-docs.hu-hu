@@ -3,8 +3,8 @@ title: Tiltsa le a felhasználók bejelentkezési folyamatába egy vállalati al
 description: Vállalati alkalmazás letiltása, hogy az egyik felhasználó sem lehet bejelentkezni az Azure Active Directoryban
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a168c3415996ff97137c4e312348f74a48e9531b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 90000f34ff247fdd5939dc19971c170aa4b70386
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291449"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824662"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Tiltsa le a felhasználók bejelentkezési folyamatába egy vállalati alkalmazás az Azure Active Directoryban
 Vállalati alkalmazás letiltásához, ezért nem lehet bejelentkezni, az Azure Active Directoryban (Azure AD) könnyebbé vált. A megfelelő engedélyekkel a vállalati alkalmazások kezelésére van szüksége. És a címtár globális rendszergazdának kell lennie.

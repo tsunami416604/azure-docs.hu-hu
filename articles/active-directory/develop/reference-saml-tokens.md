@@ -2,9 +2,9 @@
 title: Ismerje meg a másik tokent, és az Azure AD által támogatott jogcímtípusok |} A Microsoft Docs
 description: Ismertetése és értékelése a szerint az Azure Active Directory (AAD) kiállított SAML 2.0 és a JSON Web tokenek (JWT) tokenek jogcímeit készült útmutató
 documentationcenter: na
-author: CelesteDG
+author: rwike77
 services: active-directory
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: 166aa18e-1746-4c5e-b382-68338af921e2
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/22/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58a8d3b62fab7614375436846888b78113740ce2
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: a18d0b5ebc9aef1f8fa03d6351e53e4df6d9931f
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406622"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602002"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Az Azure AD SAML-jogkivonatok referenciájából
 
@@ -56,12 +56,12 @@ Az Azure Active Directory (Azure AD) számos különböző típusú feldolgozás
 Ez a minta egy tipikus SAML-jogkivonat.
 
     <?xml version="1.0" encoding="UTF-8"?>
-    <t:RequestSecurityTokenResponse xmlns:t="https://schemas.xmlsoap.org/ws/2005/02/trust">
+    <t:RequestSecurityTokenResponse xmlns:t="http://schemas.xmlsoap.org/ws/2005/02/trust">
       <t:Lifetime>
         <wsu:Created xmlns:wsu="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">2014-12-24T05:15:47.060Z</wsu:Created>
         <wsu:Expires xmlns:wsu="https://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">2014-12-24T06:15:47.060Z</wsu:Expires>
       </t:Lifetime>
-      <wsp:AppliesTo xmlns:wsp="https://schemas.xmlsoap.org/ws/2004/09/policy">
+      <wsp:AppliesTo xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
         <EndpointReference xmlns="https://www.w3.org/2005/08/addressing">
           <Address>https://contoso.onmicrosoft.com/MyWebApp</Address>
         </EndpointReference>
@@ -151,7 +151,7 @@ Ez a minta egy tipikus SAML-jogkivonat.
         </SecurityTokenReference>
       </t:RequestedUnattachedReference>
       <t:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</t:TokenType>
-      <t:RequestType>https://schemas.xmlsoap.org/ws/2005/02/trust/Issue</t:RequestType>
+      <t:RequestType>http://schemas.xmlsoap.org/ws/2005/02/trust/Issue</t:RequestType>
       <t:KeyType>http://schemas.xmlsoap.org/ws/2005/05/identity/NoProofKey</t:KeyType>
     </t:RequestSecurityTokenResponse>
 

@@ -13,17 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 12/13/2018
+ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 0988902e0a2154f2935a01ddcfb6a460be693df3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5ae0e7855db6bec9f48d2b9511f0d0626d883111
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60460045"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65561336"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX feltöltése az Azure előkészítése
-Mielőtt egy Windows virtuális gépek (VM) a helyi Microsoft Azure-bA tölt fel, elő kell készítenie a virtuális merevlemez (VHD vagy vhdx-fájlt). Az Azure támogatja a **csak az 1. generációs virtuális gépeket** , amely a VHD formátumban, és rögzített méretű lemezt. A VHD számára engedélyezett maximális mérete 1,023 GB. Átválthat egy generation 1 VM a vhdx-fájlt a fájlrendszer VHD-t és a egy dinamikusan bővülő rögzített méretű lemezt. De nem módosíthatja a virtuális gép létrehozás. További információkért lásd: [érdemes létrehozni egy 1 vagy 2. generációs virtuális gép a Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+
+Mielőtt egy Windows virtuális gépek (VM) a helyi Microsoft Azure-bA tölt fel, elő kell készítenie a virtuális merevlemez (VHD vagy vhdx-fájlt). Az Azure támogatja az 1. és a 2. generációs virtuális gépek VHD formátumú, és rendelkezik egy rögzített méretű lemezt. A VHD számára engedélyezett maximális mérete 1,023 GB. Átválthat egy generation 1 VM a vhdx-fájlt a fájlrendszer VHD-t és a egy dinamikusan bővülő rögzített méretű lemezt. De nem módosíthatja a virtuális gép létrehozás. További információkért lásd: [érdemes létrehozni egy 1 vagy 2. generációs virtuális gép a Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) és [Generation 2 virtuális gépek az Azure-ban](generation-2.md).
 
 Azure virtuális gép a támogatási házirenddel kapcsolatos további információkért lásd: [Microsoft kiszolgálószoftveres támogatás az Microsoft Azure virtuális gépek](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
 
@@ -42,7 +43,7 @@ Miután konvertálja a lemezt, hozzon létre a konvertált lemezt használó vir
 4. Ha VHDX próbaverzióról van szüksége, válassza ki a **VHD** majd **tovább**.
 5. Ha egy dinamikusan bővülő lemezek konvertálása van szüksége, válassza ki **rögzített méretű** majd **tovább**.
 6. Keresse meg és válassza ki a új virtuális merevlemez fájl elérési útját.
-7. Kattintson a **Befejezés** gombra.
+7. Kattintson a **Befejezés**gombra.
 
 >[!NOTE]
 >Az ebben a cikkben szereplő parancsokkal egy emelt szintű PowerShell-munkamenetben kell futtatni.
@@ -198,7 +199,7 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
 
 9. Ha a virtuális gép lesz része egy tartománynak, ellenőrizze a következő beállításokat, győződjön meg arról, hogy a korábbi beállításokat nem állítja. A házirendekben, amelyek ellenőrizni kell a következők:
     
-    | Cél                                     | Szabályzat                                                                                                                                                       | Value                                                                                    |
+    | Cél                                     | Házirend                                                                                                                                                       | Value                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
     | Az RDP engedélyezve van                           | Computer Configuration\Policies\Windows Settings\Administrative Templates\Components\Remote Desktop Services\Remote Desktop Session Host\Connections         | Lehetővé teszi a felhasználók távolról kapcsolódni a távoli asztal használatával                                  |
     | NLA csoportházirend                         | Settings\Administrative Templates\Components\Remote Desktop Services\Remote Desktop Session Host\Security                                                    | Felhasználói hitelesítés szükséges a távoli kapcsolatokhoz hálózati szintű hitelesítéssel |
@@ -232,7 +233,7 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
    ``` 
 5. Ha a virtuális gép lesz része egy tartománynak, ellenőrizze a következő beállításokat, győződjön meg arról, hogy a korábbi beállításokat nem állítja. Az AD-szabályzatokat, amelyek a ellenőrizni kell a következők:
 
-    | Cél                                 | Szabályzat                                                                                                                                                  | Value                                   |
+    | Cél                                 | Házirend                                                                                                                                                  | Value                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
     | A Windows tűzfal-profilok engedélyezése | Computer Configuration\Policies\Windows Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows Firewall   | Az összes hálózati kapcsolatok védelme         |
     | Engedélyezze az RDP-                           | Computer Configuration\Policies\Windows Settings\Administrative Templates\Network\Network Connection\Windows Firewall\Domain Profile\Windows Firewall   | A bejövő távoli asztali Kivételek tiltása |
@@ -338,7 +339,7 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
 ### <a name="install-windows-updates"></a>Windows-frissítések telepítése
 Az ideális konfiguráció **a javítási szintje a gép legkésőbb**. Ha ez nem lehetséges, győződjön meg arról, hogy telepítve vannak-e a következő frissítéseket:
 
-| Összetevő               | binary         | Windows 7 SP1, Windows Server 2008 R2 SP1 | A Windows 8, Windows Server 2012-ben               | Windows 8.1, Windows Server 2012 R2 rendszerben | A Windows 10 1607-es verzió a Windows Server 2016-ban 1607-es verzió | Windows 10, 1703-as verzió    | A Windows 10 1709-es Windows Server 2016-ban 1709-es | A Windows 10 1803 Windows Server 2016 verziót 1803-as verzióban |
+| Összetevő               | Binary         | Windows 7 SP1, Windows Server 2008 R2 SP1 | A Windows 8, Windows Server 2012-ben               | Windows 8.1, Windows Server 2012 R2 rendszerben | A Windows 10 1607-es verzió a Windows Server 2016-ban 1607-es verzió | Windows 10, 1703-as verzió    | A Windows 10 1709-es Windows Server 2016-ban 1709-es | A Windows 10 1803 Windows Server 2016 verziót 1803-as verzióban |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
 | Storage                 | Disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | Storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
@@ -369,7 +370,7 @@ Az ideális konfiguráció **a javítási szintje a gép legkésőbb**. Ha ez ne
 |                         | Win32k.sys     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726         | 10.0.14393.594 - KB4022715                              | -                          | -                                               | -                                               |
 |                         | rdpdd.dll      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
 |                         | Rdpwd.sys      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
-| Biztonság                | MS17-010       | KB4012212                                 | KB4012213                                   | KB4012213                          | KB4012606                                               | KB4012606                  | -                                               | -                                               |
+| Biztonsági                | MS17-010       | KB4012212                                 | KB4012213                                   | KB4012213                          | KB4012606                                               | KB4012606                  | -                                               | -                                               |
 |                         |                |                                           | KB4012216                                   |                                    | KB4013198                                               | KB4013198                  | -                                               | -                                               |
 |                         |                | KB4012215                                 | KB4012214                                   | KB4012216                          | KB4013429                                               | KB4013429                  | -                                               | -                                               |
 |                         |                |                                           | KB4012217                                   |                                    | KB4013429                                               | KB4013429                  | -                                               | -                                               |

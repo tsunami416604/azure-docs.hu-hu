@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/26/2019
+ms.date: 05/03/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: af67109fb7f55f365cd71714a3eefab2336b636a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2a104c9e41ef1843c377b0406b499ffae504db97
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61301145"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595648"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation futtató fiókok kezelése
 
@@ -38,11 +38,14 @@ Futtató fiókok két típusa van:
   > [!NOTE]
   > Az Azure Cloud Solution Provider (az Azure CSP)-előfizetések támogatása csak az Azure Resource Manager modellel, nem az Azure Resource Manager - szolgáltatások nem érhetők el a programban. Az Azure klasszikus futtató fiók létrehozása nem CSP-előfizetésekben használatakor. Az Azure futtató fiók továbbra is létrejön. Kriptográfiai Szolgáltató az előfizetésekkel kapcsolatos további tudnivalókért lásd: [CSP-előfizetésekben elérhető szolgáltatások](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
 
+  > [!NOTE]
+  > A szolgáltatásnév a futtató fiók nem rendelkezik alapértelmezés szerint az Azure Active Directory olvasási jogosultsággal. Ha szeretne olvasni vagy kezelése az Azure Active directory-engedélyek hozzáadása, szüksége lesz a szolgáltatásnév alatt, hogy engedélyt adni **API-engedélyek**. További tudnivalókért lásd: [webes API-k elérésére vonatkozó engedélyek hozzáadása](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+
 ## <a name="permissions"></a>Engedélyek futtató fiókok beállítása
 
 Hozzon létre, vagy frissíteni egy futtató fiókot, jogosultságokkal és engedélyekkel kell rendelkeznie. Egy globális rendszergazdai vagy Társadminisztrátori elvégezhető összes feladatot. A feladatkörök esetében olyan helyzet az alábbi táblázat mutatja a feladatok, a varázsló használatával egyenértékű parancsmagot és a szükséges engedélyek listája:
 
-|Tevékenység|Parancsmag  |Minimális engedélyek  |Ha az engedélyek beállítása|
+|Feladat|Parancsmag  |Minimális engedélyek  |Ha az engedélyek beállítása|
 |---|---------|---------|---|
 |Az Azure AD-alkalmazás létrehozása|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | Alkalmazás-fejlesztői szerepkör<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Kezdőlap > az Azure Active Directory > Alkalmazásregisztrációk |
 |A hitelesítő adatok hozzáadása az alkalmazáshoz.|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | Alkalmazás-rendszergazda vagy globális RENDSZERGAZDAKÉNT<sup>1</sup>         |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Kezdőlap > az Azure Active Directory > Alkalmazásregisztrációk|

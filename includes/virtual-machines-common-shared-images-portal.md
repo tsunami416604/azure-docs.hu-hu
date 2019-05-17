@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/29/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 9b9b6d08fd14a850838590ce003e889e8e652c7c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 66ec923f12c59d606056d48c09f1ba346e9a4d32
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148045"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827076"
 ---
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
 
@@ -51,7 +51,7 @@ A katalógus rendszerkép definíciójában alapjait az a gyűjtemény létrehoz
 1. A **közzétevő**, típus *myPublisher*. 
 1. A **ajánlat**, típus *myOffer*.
 1. A **Termékváltozat**, típus *mySKU*.
-1. Győződjön meg arról, **Igen** velünk a kapcsolatot a kiválasztott **engedélyezése** majd **felülvizsgálat + létrehozása**.
+1. Amikor végzett, válassza ki a **felülvizsgálat + létrehozása**.
 1. Miután a rendszerkép definíciójában ellenőrzése sikeres, válassza ki **létrehozás**.
 1. Ha a telepítés befejeződött, válassza ki a **erőforrás megnyitása**.
 

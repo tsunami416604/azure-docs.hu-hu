@@ -2,22 +2,22 @@
 title: Egyszeri bejelentkezés – katalógusban nem szereplő alkalmazások – a Microsoft identity platform |} A Microsoft Docs
 description: A Microsoft identity platform (Azure AD) a katalógusban nem szereplő alkalmazásokhoz való egyszeri bejelentkezés (SSO) konfigurálása
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: article
 ms.workload: identity
 ms.date: 01/08/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asmalser,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8459f9704a15614f2c3edaff5758fa534f78cbd9
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8f55de2d081f12f1bddf7e68a795133c4b394823
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65781120"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824993"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>Egyszeri bejelentkezés nem katalógusból származó alkalmazásokhoz a Microsoft identity platform konfigurálása
 

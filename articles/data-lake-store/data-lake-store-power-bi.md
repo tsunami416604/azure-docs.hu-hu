@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b873d90dbc33aff27cd2fc3b5099b08eacf929b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8717b8f365e692b5f27bf8a04d65c5147b8f31b
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60195578"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603214"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Adatok elemzése az Azure Data Lake Storage Gen1 Power BI használatával
 Ebben a cikkben megtudhatja hogyan az Azure Data Lake Storage Gen1 tárolt adatok elemzése és megjelenítése a Power BI Desktop használatával.
@@ -74,23 +74,23 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 14. A lekérdezés frissítése után a **mezők** lapon jelennek meg az új mezők vizuális megjelenítésre.
     
     ![Mezők frissítése](./media/data-lake-store-power-bi/updated-query-fields.png "mezők frissítése")
-15. Hozzunk létre, amelyek az illesztőprogramokat egy adott ország esetében minden egyes városban tortadiagram. Ehhez adja meg a következő beállításokat.
+15. Hozzunk létre, amelyek az illesztőprogramokat egy adott ország/régió esetében minden egyes városban tortadiagram. Ehhez adja meg a következő beállításokat.
     
     1. A Vizualizációk lapon kattintson a kördiagramon.
        
         ![Tortadiagram létrehozása](./media/data-lake-store-power-bi/create-pie-chart.png "diagram létrehozása")
-    2. Az oszlop, amely használni fogjuk **oszlop 4** (az városa neve) és **oszlop 7** (ország neve). Húzza az ezeket az oszlopokat **mezők** lapról **Vizualizációk** lapon az alább látható módon.
+    2. Az oszlop, amely használni fogjuk **oszlop 4** (az városa neve) és **oszlop 7** (ország/régió neve). Húzza az ezeket az oszlopokat **mezők** lapról **Vizualizációk** lapon az alább látható módon.
        
         ![Vizualizációk létrehozása](./media/data-lake-store-power-bi/create-visualizations.png "Vizualizációk létrehozása")
     3. A tortadiagram kell hasonlítania, mint például az alábbi képen látható.
        
         ![Tortadiagram](./media/data-lake-store-power-bi/pie-chart.png "Vizualizációk létrehozása")
-16. Válassza ki az oldalszintű szűrőkkel egy adott országra, most már megtekintheti az egyes városokat a kiválasztott ország illesztőprogramok számát. Például alatt a **Vizualizációk** lap **lapszintű szűrők**válassza **Brazília**.
+16. Válassza ki az oldalszintű szűrőkkel egy adott ország/régió, most már megtekintheti az egyes városokat a kiválasztott ország/régió illesztőprogramok számát. Például alatt a **Vizualizációk** lap **lapszintű szűrők**válassza **Brazília**.
     
-    ![Válasszon egy országot](./media/data-lake-store-power-bi/select-country.png "válasszon egy országot")
+    ![Válasszon egy országot](./media/data-lake-store-power-bi/select-country.png "egy adott ország/régió kiválasztása")
 17. A tortadiagram automatikusan frissül az illesztőprogramokat a várost, Brazília megjelenítéséhez.
     
-    ![Illesztőprogramok országban](./media/data-lake-store-power-bi/driver-per-country.png "illesztőprogramok országonként")
+    ![Illesztőprogramok országban](./media/data-lake-store-power-bi/driver-per-country.png "illesztőprogramok ország/régió szerint")
 18. Az a **fájl** menüben kattintson a **mentése** Power BI Desktop-fájlként a vizualizációt menteni szeretné.
 
 ## <a name="publish-report-to-power-bi-service"></a>Jelentés közzététele a Power BI szolgáltatásban

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: cb7cf932433927d4ead853952ff74d55c55b9cf7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 499aeccdf00980eeb66ac6ee06e45267fd515143
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160020"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546794"
 ---
 Megosztott kép katalógusok lehetővé teszik a megosztás képek RBAC használatával. Az RBAC használatával megoszthatja a bérlőn kívüli lemezképeket a bérlőn belül, és akár egyéni felhasználók számára. De ha meg szeretné osztani a lemezképek kívül az Azure-bérlőhöz, ipari méretekben, hozzunk létre egy alkalmazás regisztrációját a megosztás megkönnyítése érdekében.  Az alkalmazásregisztráció használatával engedélyezheti a összetettebb megosztási helyzetek, például: 
 
@@ -44,7 +44,9 @@ Adjon engedélyt az alkalmazásnak regisztrációs megosztott lemezkép-katalóg
 1. A **válassza**, típus *myGalleryApp* , és jelölje ki, amikor az megjelenik a listában. Amikor elkészült, válassza ki a **mentése**.
 
 
-Hozzon létre egy egyszerű szolgáltatást az alkalmazás eléréséhez egy böngészőben a bejelentkezési igénylésével használandó bérlői 2. Cserélje le *<Tenant2 ID>* bérlőazonosítójú szeretné osztani a lemezkép-katalógusában a bérlőhöz. Cserélje le *< alkalmazás (ügyfél) azonosítója >* a létrehozott alkalmazás regisztráció az alkalmazás azonosítójával. Ha elkészült, így a cserét, illessze be az URL-címet egy böngészőben, és a bejelentkezési utasításokat követve jelentkezzen be a bérlő 2.
+## <a name="give-tenant-2-access"></a>Bérlő 2 hozzáférést
+
+Bérlői 2 hozzáférést biztosít a kérelem kérve egy böngészővel bejelentkezési. Cserélje le *<Tenant2 ID>* bérlőazonosítójú szeretné osztani a lemezkép-katalógusában a bérlőhöz. Cserélje le *< alkalmazás (ügyfél) azonosítója >* a létrehozott alkalmazás regisztráció az alkalmazás azonosítójával. Ha elkészült, így a cserét, illessze be az URL-címet egy böngészőben, és a bejelentkezési utasításokat követve jelentkezzen be a bérlő 2.
 
 ```
 https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Application (client) ID>&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F 

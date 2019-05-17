@@ -9,18 +9,18 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: a013e0091e1a955672c1f16a4ac6300281d277b3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1ae94718aa41c58f4d5e397942492ad8ed643ae3
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573011"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65556204"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Generate and transfer HSM-védelemmel ellátott és hogyan lehet az Azure Key Vault-kulcsok
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A hozzáadott frissítési garanciát biztosító Azure Key Vault használata esetén meg is kulcsok importálását vagy létrehozását hardveres biztonsági modulokban (HSM) a HSM határait betartó. Ebben a forgatókönyvben gyakran nevezik *saját kulcs használata*, azaz BYOK. A hardveres biztonsági modulok a 2. szintű FIPS 140-2 szerint vannak érvényesítve. Az Azure Key Vault Ön kulcsainak védelmét Thales nShield hardveres biztonsági modulok-család használ.
+A hozzáadott frissítési garanciát biztosító Azure Key Vault használata esetén meg is kulcsok importálását vagy létrehozását hardveres biztonsági modulokban (HSM) a HSM határait betartó. Ebben a forgatókönyvben gyakran nevezik *saját kulcs használata*, azaz BYOK. A hardveres biztonsági modulok a 2. szintű FIPS 140-2 szerint vannak érvényesítve. Az Azure Key Vault nCipher nShield hardveres biztonsági modulok-család használ az Ön kulcsainak védelmét.
 
 Ebben a témakörben található információk használatával tervezése, létrehozása, és utána a saját HSM által védett kulcsok az Azure Key Vault használata.
 
@@ -34,16 +34,16 @@ További információ és a egy HSM által védett kulcs átvitele az interneten
 
 * Egy kapcsolat nélküli munkaállomáson, ami csökkenti a támadási felület hozza létre a kulcsot.
 * A kulcs titkosítva van az egy kulcs kulcscserekulcs-(KEK), amely mindaddig, amíg az Azure Key Vault HSM való átvitelig titkosítva marad. Csak a kulcs titkosított verziója hagyja el az eredeti munkaállomást.
-* Az eszközkészlet, amely lekötné a kulcsot az Azure Key Vault biztonsági világába a bérlőkulcs tulajdonságainak beállítása. Így miután az Azure Key Vault HSM kap, és a kulcs visszafejtéséhez, csak a HSM-EK is használható. A kulcs nem exportálható. Ezt a kötést a Thales HSM-EK kikényszeríti a.
-* A kulcscserekulcs (KEK) a kulcs titkosításához használt jön létre az Azure Key Vault HSM belül, és nem exportálható. A HSM-EK kényszerítéséhez, hogy az a HSM-EK kívül a KEK nem létezhet titkosítatlan verziója lehet. Emellett az eszközkészlet tartalmaz igazolási Thales, hogy a KEK nem exportálható, és egy eredeti HSM, amely a Thales által gyártott lett létrehozva.
-* Az eszközkészlet, hogy az Azure Key Vault biztonsági világ szintén létrejött egy eredeti Thales által gyártott HSM a Thales igazolást tartalmaz. Ez a tanúsítvány igazolja, Önnek, hogy a Microsoft eredeti hardvereket használ.
+* Az eszközkészlet, amely lekötné a kulcsot az Azure Key Vault biztonsági világába a bérlőkulcs tulajdonságainak beállítása. Így miután az Azure Key Vault HSM kap, és a kulcs visszafejtéséhez, csak a HSM-EK is használható. A kulcs nem exportálható. Ennek a kötésnek a HSM-EK nCipher kikényszeríti a.
+* A kulcscserekulcs (KEK) a kulcs titkosításához használt jön létre az Azure Key Vault HSM belül, és nem exportálható. A HSM-EK kényszerítéséhez, hogy az a HSM-EK kívül a KEK nem létezhet titkosítatlan verziója lehet. Az eszközkészletben emellett nCipher, hogy a KEK nem exportálható, és egy eredeti HSM nCipher által előállított lett létrehozva igazolást tartalmaz.
+* Az eszközkészlet, hogy az Azure Key Vault biztonsági világ szintén létrejött egy valódi, nCipher által gyártott HSM-en nCipher igazolást tartalmaz. Ez a tanúsítvány igazolja, Önnek, hogy a Microsoft eredeti hardvereket használ.
 * A Microsoft külön kek használja, és biztonsági világot minden egyes földrajzi régióban. Ez a fajta elkülönítés biztosítja, hogy használható-e a kulcsot csak az adatközpontokban a régióban, ahol titkosítva. Például egy Európai ügyfél kulcs nem használható Észak-amerikai vagy ázsiai adatközpontokban.
 
-## <a name="more-information-about-thales-hsms-and-microsoft-services"></a>További információt a Thales HSM-ekről és a Microsoft-szolgáltatások
+## <a name="more-information-about-ncipher-hsms-and-microsoft-services"></a>További információ a HSM-EK nCipher és Microsoft-szolgáltatások
 
-A Thales e-Security vezető globális szolgáltató, amely adattitkosítási és internetes biztonsági megoldásokat a pénzügyi szolgáltatások, a csúcstechnológiai, a gyártási, a kormányzati és a technológiai szektorok részére. Egy 40 éves követése rekord, védi a vállalati és kormányzati információk a Thales megoldásait négy az öt legnagyobb energetikai és a légi közlekedésben cég által használt. Megoldásaikat is használja a 22 NATO országok/régiók és biztonságáról a globális fizetési tranzakciók több mint 80 %-át.
+nCipher Security vezető globális szolgáltató, amely adattitkosítási és internetes biztonsági megoldásokat a pénzügyi szolgáltatások, a csúcstechnológiai, a gyártási, a kormányzati és a technológiai szektorok részére. 40 éves követése rekord, védi a vállalati és kormányzati információk, az nCipher biztonsági titkosítási megoldások négy az öt legnagyobb energetikai és a légi közlekedésben cég által használt. Megoldásaikat is használja a 22 NATO országok/régiók és biztonságáról a globális fizetési tranzakciók több mint 80 %-át.
 
-A Microsoft rendelkezik Thales vállalattal együttműködve folyamatosan javíthatja a legkorszerűbb HSM-eket. Ezeknek a fejlesztéseknek köszönhetően, hogy feláldoznia a kulcsai nélkül üzemeltetett szolgáltatások szokásos előnyeit. Pontosabban a fejlesztéseknek köszönhetően a Microsoft felügyelje a HSM-eket, hogy az nem rendelkezik. Felhőalapú szolgáltatásként az Azure Key Vault felskálázással, a szervezet használati csúcsok növekedésekhez. Egy időben a kulcs HSM által védett: Meg kell őriznie a kulcs életciklusa fölötti ellenőrzés, mert a kulcs létrehozásához, és vigye át a Microsoft HSM-EK.
+Microsoft az nCipher biztonság növelése érdekében a legkorszerűbb HSM-eket tartalmaz közreműködő. Ezeknek a fejlesztéseknek köszönhetően, hogy feláldoznia a kulcsai nélkül üzemeltetett szolgáltatások szokásos előnyeit. Pontosabban a fejlesztéseknek köszönhetően a Microsoft felügyelje a HSM-eket, hogy az nem rendelkezik. Felhőalapú szolgáltatásként az Azure Key Vault felskálázással, a szervezet használati csúcsok növekedésekhez. Egy időben a kulcs HSM által védett: Meg kell őriznie a kulcs életciklusa fölötti ellenőrzés, mert a kulcs létrehozásához, és vigye át a Microsoft HSM-EK.
 
 ## <a name="implementing-bring-your-own-key-byok-for-azure-key-vault"></a>A saját kulcs (használatának BYOK) megvalósítása használata az Azure Key Vault
 
@@ -57,8 +57,8 @@ Tekintse meg az alábbi táblázat a saját kulcs használata (BYOK) for Azure K
 | --- | --- |
 | Azure-előfizetéssel |Hozzon létre egy Azure Key Vaultban, Azure-előfizetés szükséges: [Regisztráljon az ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/) |
 | Az Azure Key Vault Premium szolgáltatási szinten a HSM-védelemmel ellátott kulcsok támogatására |Az Azure Key Vault a szolgáltatási szintek és a képességekkel kapcsolatos további információkért lásd: a [Azure Key Vault díjszabását ismertető](https://azure.microsoft.com/pricing/details/key-vault/) webhelyén. |
-| A Thales HSM, intelligens kártyák és támogatószoftver |A Thales hardveres biztonsági modul és a Thales HSM-EK alapvető ismeretekre hozzáféréssel kell rendelkeznie. Lásd: [Thales hardveres biztonsági modul](https://www.thales-esecurity.com/msrms/buy) kompatibilis modellek vagy HSM vásárlásához, ha nem rendelkezik egy listája. |
-| A következő hardverre és szoftverekre:<ol><li>Egy kapcsolat nélküli x64 munkaállomáson, egy minimális Windows operációs rendszer, legalább Windows 7 és a Thales nShield szoftver verziója 11.50.<br/><br/>Ha ez a munkaállomás Windows 7 fut, meg kell [Microsoft .NET-keretrendszer 4.5-ös verziójának telepítése](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Egy munkaállomás, amely csatlakozik az internethez, és legalább Windows operációs rendszert Windows 7 és [Azure PowerShell-lel](/powershell/azure/overview?view=azps-1.2.0) **minimális 1.1.0-s** telepítve.</li><li>USB-meghajtóra vagy más hordozható tárolóeszköz, amelyen legalább 16 MB szabad tárhely.</li></ol> |Biztonsági okokból javasoljuk, hogy az első munkaállomás nincs csatlakoztatva a hálózathoz. Azonban ez a javaslat nem szoftveres követelmény.<br/><br/>Az alábbi utasításokat, az ezen a munkaállomáson nevezzük a kapcsolat nélküli munkaállomáson.</p></blockquote><br/>Ezenkívül ha a bérlői kulcsot egy éles hálózati környezetben, azt javasoljuk, hogy egy második, különálló munkaállomást használjon az eszközkészlet letöltése, és a bérlőkulcs feltöltésére. De tesztelési célokra használhatja munkaállomást az elsőt.<br/><br/>Az alábbi utasításokat, az erre a második munkaállomásra nevezzük az internetre kapcsolódó munkaállomásra.</p></blockquote><br/> |
+| nCipher nShield hardveres biztonsági modulok, intelligens kártyák és támogatószoftver |Rendelkeznie kell egy hardveres biztonsági modul nCipher hozzáférését és nCipher nShield hardveres biztonsági modulok alapvető ismeretekre. Lásd: [nCipher nShield hardveres biztonsági modul](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy) kompatibilis modellek vagy HSM vásárlásához, ha nem rendelkezik egy listája. |
+| A következő hardverre és szoftverekre:<ol><li>Egy kapcsolat nélküli x64 munkaállomáson, egy minimális legalább Windows 7 és az nCipher nShield szoftver Windows operációs rendszer verziója 11.50.<br/><br/>Ha ez a munkaállomás Windows 7 fut, meg kell [Microsoft .NET-keretrendszer 4.5-ös verziójának telepítése](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Egy munkaállomás, amely csatlakozik az internethez, és legalább Windows operációs rendszert Windows 7 és [Azure PowerShell-lel](/powershell/azure/overview?view=azps-1.2.0) **minimális 1.1.0-s** telepítve.</li><li>USB-meghajtóra vagy más hordozható tárolóeszköz, amelyen legalább 16 MB szabad tárhely.</li></ol> |Biztonsági okokból javasoljuk, hogy az első munkaállomás nincs csatlakoztatva a hálózathoz. Azonban ez a javaslat nem szoftveres követelmény.<br/><br/>Az alábbi utasításokat, az ezen a munkaállomáson nevezzük a kapcsolat nélküli munkaállomáson.</p></blockquote><br/>Ezenkívül ha a bérlői kulcsot egy éles hálózati környezetben, azt javasoljuk, hogy egy második, különálló munkaállomást használjon az eszközkészlet letöltése, és a bérlőkulcs feltöltésére. De tesztelési célokra használhatja munkaállomást az elsőt.<br/><br/>Az alábbi utasításokat, az erre a második munkaállomásra nevezzük az internetre kapcsolódó munkaállomásra.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Hozzon létre, és a kulcs átvitele az Azure Key Vault HSM-be
 
@@ -232,17 +232,17 @@ Másolja a csomagot egy USB-meghajtó vagy más hordozható tárolóeszközre.
 
 A második lépés hajtsa végre a következő eljárások a munkaállomáson, amely nem csatlakozik a hálózathoz (az interneten vagy belső hálózaton).
 
-### <a name="step-21-prepare-the-disconnected-workstation-with-thales-hsm"></a>2.1. lépés: A Thales HSM-mel a kapcsolat nélküli munkaállomás előkészítése
+### <a name="step-21-prepare-the-disconnected-workstation-with-ncipher-nshield-hsm"></a>2.1. lépés: A kapcsolat nélküli munkaállomáson az nCipher nShield HSM előkészítése
 
-Telepítse az nCipher (Thales) egy Windows-számítógépen, majd csatolja a számítógéphez egy Thales HSM.
+Telepítse az nCipher egy Windows-számítógépen, és a egy nCipher nShield HSM majd csatlakoztatni a számítógép.
 
-Győződjön meg arról, hogy a Thales-eszközök az elérési úthoz (**%nfast_home%\bin**). Írja be például a következőket:
+Győződjön meg arról, hogy az nCipher eszközök az elérési úthoz (**%nfast_home%\bin**). Írja be például a következőket:
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
   ```
 
-További információkért tekintse meg a Thales HSM-mel mellékelt felhasználói útmutatót.
+További információkért lásd: a HSM nShield mellékelt felhasználói útmutatót.
 
 ### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>2.2. lépés: A kapcsolat nélküli munkaállomáson a BYOK eszközkészlet telepítése
 
@@ -258,11 +258,11 @@ A harmadik lépést hajtsa végre a következő eljárások a kapcsolat nélkül
 
 ### <a name="step-31-change-the-hsm-mode-to-i"></a>3.1. lépés: A HSM mód megváltoztatása "I"
 
-Ha Edge, a Thales nShield módjának módosításához használja: 1. Jelölje ki a szükséges módot az üzemmód gomb használatával. 2. Néhány másodpercen belül tartsa lenyomva a Törlés gomb egy pár másodpercet. Ha módosítja a módot, az új mód LED villogó leállítja, és megvilágítottnak marad. Az állapot LED szabálytalan flash előfordulhat, hogy néhány másodpercet, és rendszeresen, amikor az eszköz készen áll majd tokenkódot. Ellenkező esetben az eszköz továbbra is az aktuális módban, a megfelelő módot LED bekapcsolásával.
+Ha nCipher nShield Edge, módosíthatja a módot használ: 1. Jelölje ki a szükséges módot az üzemmód gomb használatával. 2. Néhány másodpercen belül tartsa lenyomva a Törlés gomb egy pár másodpercet. Ha módosítja a módot, az új mód LED villogó leállítja, és megvilágítottnak marad. Az állapot LED szabálytalan flash előfordulhat, hogy néhány másodpercet, és rendszeresen, amikor az eszköz készen áll majd tokenkódot. Ellenkező esetben az eszköz továbbra is az aktuális módban, a megfelelő módot LED bekapcsolásával.
 
 ### <a name="step-32-create-a-security-world"></a>3.2. lépés: Biztonsági világ létrehozása
 
-Indítson el egy parancssort, és futtassa a Thales új világot létrehozó programját.
+Indítson el egy parancssort, és futtassa az nCipher új világot létrehozó programját.
 
    ```cmd
     new-world.exe --initialize --cipher-suite=DLf3072s256mRijndael --module=1 --acs-quorum=2/3
@@ -279,14 +279,14 @@ Ezután tegye a következőket:
 
 ### <a name="step-33-change-the-hsm-mode-to-o"></a>3.3. lépés: A HSM mód megváltoztatása "O'
 
-Ha Edge, a Thales nShield módjának módosításához használja: 1. Jelölje ki a szükséges módot az üzemmód gomb használatával. 2. Néhány másodpercen belül tartsa lenyomva a Törlés gomb egy pár másodpercet. Ha módosítja a módot, az új mód LED villogó leállítja, és megvilágítottnak marad. Az állapot LED szabálytalan flash előfordulhat, hogy néhány másodpercet, és rendszeresen, amikor az eszköz készen áll majd tokenkódot. Ellenkező esetben az eszköz továbbra is az aktuális módban, a megfelelő módot LED bekapcsolásával.
+Ha nCipher nShield Edge, módosíthatja a módot használ: 1. Jelölje ki a szükséges módot az üzemmód gomb használatával. 2. Néhány másodpercen belül tartsa lenyomva a Törlés gomb egy pár másodpercet. Ha módosítja a módot, az új mód LED villogó leállítja, és megvilágítottnak marad. Az állapot LED szabálytalan flash előfordulhat, hogy néhány másodpercet, és rendszeresen, amikor az eszköz készen áll majd tokenkódot. Ellenkező esetben az eszköz továbbra is az aktuális módban, a megfelelő módot LED bekapcsolásával.
 
 ### <a name="step-34-validate-the-downloaded-package"></a>3.4. lépés: A letöltött csomag ellenőrzése
 
 Ez a lépés nem kötelező, azonban ajánlott, így ellenőrizheti, hogy a következő:
 
-* Az eszközkészletben található kulcscserekulcs egy eredeti Thales HSM-en lett létrehozva.
-* A biztonsági világának az eszközkészletben található kivonata egy eredeti Thales HSM lett létrehozva.
+* Az eszközkészletben található kulcscserekulcs egy eredeti nCipher nShield HSM-en lett létrehozva.
+* A biztonsági világának az eszközkészletben található kivonata egy eredeti nCipher nShield HSM lett létrehozva.
 * A kulcscserekulcs nem exportálható.
 
 > [!NOTE]
@@ -346,18 +346,18 @@ A letöltött csomag ellenőrzése:
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UK-1 -w BYOK-SecurityWorld-pkg-UK-1
 
      > [!TIP]
-     > A Thales szoftver tartalmaz python %NFAST_HOME%\python\bin címen
+     > Az nCipher nShield szoftver tartalmazza a python %NFAST_HOME%\python\bin címen
      >
      >
 2. Győződjön meg arról, hogy megjelenik-e a következő, az ellenőrzés sikerességét jelző: **Eredmény: SUCCESS**
 
-A parancsfájl ellenőrzi az aláírói láncot egészen a Thales-gyökérkulcsig. Ennek a gyökérkulcsnak a kivonata be van ágyazva a szkriptbe és a hozzá tartozó értéket kell **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Azt is ellenőrizheti ezt az értéket külön-külön meglátogatják a [Thales webhelyén](http://www.thalesesec.com/).
+A parancsfájl ellenőrzi az aláírói láncot egészen a nShield legfelső szintű kulcs. Ennek a gyökérkulcsnak a kivonata be van ágyazva a szkriptbe és a hozzá tartozó értéket kell **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Azt is ellenőrizheti ezt az értéket külön-külön meglátogatják a [nCipher webhely](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation).
 
 Most már készen áll egy új kulcsot létrehozni.
 
 ### <a name="step-35-create-a-new-key"></a>3.5. lépés: Új kulcs létrehozása
 
-Hozzon létre egy kulcsot a Thales használatával **Kulcslétrehozási** program.
+Hozzon létre egy kulcsot az nCipher nShield használatával **Kulcslétrehozási** program.
 
 Futtassa a következő parancsot a kulcs létrehozásához:
 
@@ -367,14 +367,14 @@ Ez a parancs futtatásakor használja a következő utasításokat:
 
 * A paraméter *védelme* értékre kell állítani **modul**látható módon. Ez a modul által védett kulcsot hoz létre. A BYOK eszközkészlet nem támogatja az OCS által védett kulcsokat.
 * Értékét cserélje *contosokey* számára a **ident** és **plainname** rendelkező bármilyen karakterlánc típusú értéket. Az adminisztratív terhek minimalizálása és a hibák kockázatának csökkentése érdekében azt javasoljuk, hogy mindkettőhöz azonos értéket használjon. A **ident** értéknek kell szerepelnie, csak számokat, kötőjeleket és kisbetűket tartalmazhat.
-* A pubexp üresen (alapértelmezett) ebben a példában, de megadhat specifikus értékeket. További információk a Thales dokumentációjában talál.
+* A pubexp üresen (alapértelmezett) ebben a példában, de megadhat specifikus értékeket. További információkért lásd: a [nCipher dokumentációját.](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
 
 Ez a parancs egy tokenekre bontott kulcsfájlt hoz létre az %NFAST_KMDATA%\local mappában, neve **key_simple_**, majd a **ident** , amely a parancsban megadott. Például: **key_simple_contosokey**. Ez a fájl egy titkosított kulcsot tartalmaz.
 
 Készítsen biztonsági másolatot a tokenekre bontott Kulcsfájlról egy biztonságos helyre.
 
 > [!IMPORTANT]
-> Amikor később átviszi a kulcsot az Azure Key Vaultba, a Microsoft nem tudja exportálni ezt a kulcsot vissza, ezért rendkívül fontos, hogy, biztonsági másolatot készítsen a kulcsáról és a biztonsági világáról. Lépjen kapcsolatba a Thales útmutatás és ajánlott eljárások a kulcs biztonsági mentéséről.
+> Amikor később átviszi a kulcsot az Azure Key Vaultba, a Microsoft nem tudja exportálni ezt a kulcsot vissza, ezért rendkívül fontos, hogy, biztonsági másolatot készítsen a kulcsáról és a biztonsági világáról. Kapcsolattartó [nCipher](https://www.ncipher.com/about-us/contact-us) vonatkozó útmutatás és ajánlott eljárások a kulcs biztonsági mentéséről.
 >
 
 
@@ -443,7 +443,7 @@ A rendszer felkéri a security world rendszergazdai kártyák beépülő modul.
 
 A parancs befejeződésekor megjelenik **eredménye: SIKERES** és a kulcs korlátozott engedélyekkel rendelkező másolata a key_xferacId_ nevű fájlban található\<contosokey >.
 
-Előfordulhat, hogy megvizsgálja a következő parancsokat a Thales segédprogramjai használatával hozzáférés-vezérlési LISTÁK használatával:
+Előfordulhat, hogy megvizsgálja a következő parancsokat az nCipher nShield segédprogramok használatával hozzáférés-vezérlési LISTÁK használatával:
 
 * aclprint.PY:
 

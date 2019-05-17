@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0811ce1509b7886bf0061cba955ca5e18990cd1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 3593324523340300279232e0e63392c9c127991d
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920499"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823563"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Az Azure Active Directory rendszergazdája szerepkör engedélyei
 
@@ -163,10 +163,15 @@ A következő rendszergazdai szerepkörök érhetők el:
   * A rendszergazdák az Azure AD-en kívül más szolgáltatásokkal, például Exchange online-hoz, Office biztonsági és megfelelőségi központban és emberi erőforrások rendszerek.
   * A nem rendszergazdák, például a vezetők, a védőt és a személyzeti osztályon dolgozóknak, akik esetleg bizalmas vagy személyes információkhoz való hozzáférés.
 
+
+  > [!NOTE]
+  > Rendszergazdai engedélyek delegálása felhasználók alkészletek keresztül, és házirendek alkalmazása a felhasználók egy alhalmazára minden lehetséges a [felügyeleti egységek (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-administrative-units).
+
+
   > [!NOTE]
   > Ez a szerepkör korábbi neve "jelszókezelő" [az Azure portal](https://portal.azure.com/). Azért módosítottuk a neve "Ügyfélszolgálati adminisztrátor" egyeznie kell az Azure AD PowerShell-lel, az Azure AD Graph API és a Microsoft Graph API a nevével. Egy rövid ideig módosítjuk a neve "(jelszó) ügyfélszolgálati adminisztrátor", "Ügyfélszolgálati adminisztrátor" a változtatás előtt az Azure Portalon.
-  >
-  
+
+
 * **[A Power BI rendszergazdai](#power-bi-service-administrator)**: Az ehhez a szerepkörhöz tartozó felhasználók globális engedélyekkel rendelkeznek a Microsoft Power BI-ban, ha van ilyen szolgáltatásuk, ezenkívül kezelhetik a támogatási jegyeket, és figyelhetik a szolgáltatás állapotát. További információ: [a Power BI rendszergazdai szerepkörét ismertető](https://docs.microsoft.com/power-bi/service-admin-role).
   > [!NOTE]
   > A Microsoft Graph API, Azure AD Graph API és az Azure AD PowerShell a szerepkör azonosítja, "a Power BI-Szolgáltatásadminisztrátor". Az "a Power BI rendszergazdája" a [az Azure portal](https://portal.azure.com).
@@ -189,7 +194,7 @@ A következő rendszergazdai szerepkörök érhetők el:
   Identity Protection Center | A biztonsági olvasó szerepkör összes engedélyt<br>Ezenkívül lehetővé teszi új jelszavak kivételével az összes Identity Protection Centerben műveletek végrehajtásához
   [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | A biztonsági olvasó szerepkör összes engedélyt<br>**Nem lehet** az Azure AD szerepkör-hozzárendelések és beállítások kezelése
   [Az Office 365 Security & Compliance Centerben](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Biztonsági házirendek kezelése<br>Megtekintheti, vizsgálja meg, és a vállalatot érintő biztonsági fenyegetésekre<br>Jelentések megtekintése
-  Azure Komplex veszélyforrások elleni védelem | Megfigyelése és válaszadás a biztonsági gyanús tevékenység
+  Azure Advanced Threat Protection | Megfigyelése és válaszadás a biztonsági gyanús tevékenység
   A Windows Defender ATP-EDR | Szerepkörök hozzárendelése<br>Gép csoportok kezelése<br>Végpont fenyegetések észlelése és automatikus szervizelést konfigurálása<br>Megtekintheti, vizsgálja meg és válaszadás a riasztásokra
   [Intune-ban](https://docs.microsoft.com/intune/role-based-access-control) | Nézetek felhasználói, eszköz, regisztráció, konfigurációs és alkalmazással kapcsolatos adatok<br>Nem hajthat végre változtatásokat az Intune-hoz
   [A cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Adja hozzá a rendszergazdák, szabályzatokat és beállításokat, naplóadatokat tölthetnek fel és irányítási műveleteket hajthatnak végre hozzáadása
@@ -214,7 +219,7 @@ A következő rendszergazdai szerepkörök érhetők el:
   Eleme ennek | Teheti meg
   --- | ---
   [A security center a Microsoft 365](https://protection.office.com) | Biztonsági szabályzatok megtekintése a Microsoft 365-szolgáltatások között<br>Nézet biztonsági fenyegetések és riasztások<br>Jelentések megtekintése
-  Identity Protection Center | Olvassa el a biztonsági jelentések és a beállítási információk biztonsági funkciók<br><ul><li>Levélszemét<li>Titkosítás<li>Adatveszteség-megelőzés<li>Kártevőirtó<li>Speciális fenyegetésvédelem<li>Adathalászat elleni<li>Mailflow szabályok
+  Identity Protection Center | Olvassa el a biztonsági jelentések és a beállítási információk biztonsági funkciók<br><ul><li>Levélszemét<li>Titkosítás<li>Adatveszteség-megelőzés<li>Kártevőirtó<li>Komplex veszélyforrások elleni védelem<li>Adathalászat elleni<li>Mailflow szabályok
   [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Illesztett rendelkezik a csak olvasási hozzáférést minden információt az Azure AD PIM-ben: Szabályzatok és a jelentések az Azure AD szerepkör-hozzárendeléseket, biztonsági áttekinti, és a jövőben olvassa el a hozzáférési házirend adatok és jelentések forgatókönyvek mellett az Azure AD szerepkör-hozzárendelés.<br>**Nem lehet** iratkozzon fel az Azure AD PIM-ben, vagy ne módosítsa. A PIM-portálon vagy a Powershellen keresztül valaki ezt a szerepkört a további szerepkörök (például a globális rendszergazdai vagy a kiemelt szerepkörű rendszergazda), ha a felhasználó nem jogosult a számukra aktiválhatja.
   [Az Office 365 Security & Compliance Centerben](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Biztonsági szabályzatok megtekintése<br>Megtekintheti, és a biztonsági fenyegetések kivizsgálása érdekében<br>Jelentések megtekintése
   A Windows Defender ATP-EDR | Riasztásainak megtekintése és vizsgálata
@@ -772,7 +777,7 @@ Az Azure Information Protection termékkel kapcsolatos összes felügyeleti jogo
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 
-### <a name="intune-service-administrator"></a>Intune szolgáltatás rendszergazdája
+### <a name="intune-service-administrator"></a>Intune-szolgáltatásgazda
 Az Intune termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
@@ -1178,7 +1183,7 @@ Graph-displayName | Az Azure portal megjelenített neve | directoryRoleTemplateI
 Alkalmazás-rendszergazda | Alkalmazás-rendszergazda | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 Alkalmazásfejlesztő | Alkalmazásfejlesztő | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Hitelesítési rendszergazda | Hitelesítési rendszergazda | c4e39bd9-1100-46d3-8c65-fb160da0071f
-Számlázási adminisztrátor | Számlázási rendszergazda | b0f54661-2d74-4c50-afa3-1ec803f12efe
+Számlázási adminisztrátor | Számlázási adminisztrátor | b0f54661-2d74-4c50-afa3-1ec803f12efe
 Asztali elemzési rendszergazda | Asztali elemzési rendszergazda | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
 Felhőalkalmazás-rendszergazda | Felhőalkalmazás-rendszergazda | 158c047a-c907-4556-b7ef-446551a6b5f7
 Felhőeszköz-rendszergazda | Felhőeszköz-rendszergazda | 7698a772-787b-4ac8-901f-60d6b08affd2
@@ -1198,7 +1203,7 @@ Exchange-szolgáltatások rendszergazdája | Exchange-rendszergazda | 29232cdf-9
 Vendég meghívója | Vendég meghívója | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 Ügyfélszolgálati adminisztrátor | Jelszókezelő | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Information Protection-rendszergazda | Azure Information Protection-rendszergazda | 7495fdc4-34c4-4d15-a289-98788ce399fd
-Intune szolgáltatás rendszergazdája | Intune-rendszergazda | 3a2c62db-5318-420d-8d74-23affee5d9d5
+Intune-szolgáltatásgazda | Intune-rendszergazda | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Licencadminisztrátor | Licencadminisztrátor | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Lync-szolgáltatások rendszergazdája | Skype Vállalati verzió rendszergazdája | 75941009-915a-4869-abe7-691bff18279e
 Üzenetközpont-olvasó | Üzenetközpont-olvasó | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
@@ -1210,7 +1215,7 @@ Kiemelt szerepkörű rendszergazda | Kiemelt szerepkörgazda | e8611ab8-c189-46e
 Jelentésolvasó | Jelentésolvasó | 4a5d8f65-41da-4de4-8968-e035b65339cf
 Biztonsági rendszergazda | Biztonsági rendszergazda | 194ae4cb-b126-40b2-bd5b-6091b380977d
 Biztonsági olvasó | Biztonsági olvasó | 5d6b6bb7-de71-4623-b4af-96380a352509
-Szolgáltatástámogatási rendszergazda | Szolgáltatás-rendszergazda | f023fd81-a637-4b56-95fd-791ac0226033
+Szolgáltatástámogatási rendszergazda | Szolgáltatásadminisztrátor | f023fd81-a637-4b56-95fd-791ac0226033
 SharePoint szolgáltatás-rendszergazda | SharePoint-rendszergazda | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
 Csapatok kommunikációs rendszergazdája | Csapatok kommunikációs rendszergazdája | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Teams-kommunikációs támogatási szakember | Teams-kommunikációs támogatási szakember | f70938a0-fc10-4177-9e90-2178f8765737

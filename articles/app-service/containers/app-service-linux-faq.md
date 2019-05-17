@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: 7cc3a4d98901e618369c98ceee8125d2abbe94e3
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: dbf63ff47b11c2e75966b4a4b91fb1b00b40d216
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919972"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594281"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Az Azure App Service linuxon – gyakori kérdések
 
@@ -39,13 +39,15 @@ Az összes Docker-fájlok találhat [GitHub](https://github.com/azure-app-servic
 
 **Mik azok a várt értékek az indítási fájl szakaszt, ha konfigurálható a futtatókörnyezeti verem?**
 
-| Verem     | Várt érték                                                                |
-|-----------|-------------------------------------------------------------------------------|
-| Java SE   | Indítsa el a parancsot a `.jar` alkalmazás                                    |
-| Tomcat    | a parancsfájl végrehajtása a konfigurációkat az alkalmazás helyét          |
-| Node.js   | a PM2-konfigurációs fájl vagy a parancsfájl                                |
-| .Net Core | a lefordított DLL-nevet: `dotnet <myapp>.dll`                                 |
-| Ruby      | a Ruby-szkriptet, amelyet szeretne az alkalmazás inicializálása                     |
+| Verem           | Várt érték                                                                         |
+|-----------------|----------------------------------------------------------------------------------------|
+| Java SE         | a JAR-alkalmazás elindításához a parancs (például `java -jar my-app.jar --server.port=80`) |
+| Tomcat, Wildfly | hajtsa végre a szükséges konfigurációk parancsfájl helyét (például `/home/site/deployments/tools/startup_script.sh`)          |
+| Node.js         | a PM2-konfigurációs fájl vagy a parancsfájl                                |
+| .Net Core       | a lefordított DLL-nevet: `dotnet <myapp>.dll`                                 |
+| Ruby            | a Ruby-szkriptet, amelyet szeretne az alkalmazás inicializálása                     |
+
+Ezek a parancsok vagy parancsfájlok végrehajtása után a beépített Docker-tároló elindult, de mielőtt az alkalmazás kódja elindult.
 
 ## <a name="management"></a>Kezelés
 

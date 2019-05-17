@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: TomSh
-ms.openlocfilehash: 78402d3e388f08eae6652859a71c93ff408a5b0d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f36658d57fb514ff279c39e9cb1644cf56341ec4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152988"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761830"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Hálózati biztonság Azure ajánlott eljárásai
 Ez a cikk ismerteti a hálózati biztonságot Azure – ajánlott eljárások gyűjteménye. Ajánlott eljárások az Azure-hálózatok tapasztalatainkon származnak, és az ügyfelek a funkciókat, például saját magának.
@@ -129,7 +129,7 @@ Számos szervezet választotta, a hibrid informatikai útvonalat. A hibrid infor
 
 A hibrid informatikai forgatókönyv van általában valamilyen típusú létesítmények közötti kapcsolatok. Létesítmények közötti kapcsolat lehetővé teszi, hogy a vállalat a helyszíni hálózatokhoz csatlakozni az Azure virtuális hálózatok. Létesítmények közötti kapcsolat két megoldások érhetők el:
 
-* [Site-to-site VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md). Egy megbízható, megbízható és meglévő technológiai, de a kapcsolat az interneten keresztül történik. Egy legfeljebb körülbelül 200 MB/s sávszélesség korlátozza. Site-to-site VPN kívánatos lehetőség csak bizonyos esetekben.
+* [Site-to-site VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md). Egy megbízható, megbízható és meglévő technológiai, de a kapcsolat az interneten keresztül történik. Legfeljebb körülbelül 1,25 GB/s sávszélesség van korlátozott. Site-to-site VPN kívánatos lehetőség csak bizonyos esetekben.
 * **Azure ExpressRoute**. Javasoljuk, hogy használjon [ExpressRoute](../expressroute/expressroute-introduction.md) a létesítmények közötti kapcsolathoz. Az ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloudba egy privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az expressroute-tal és a Microsoft felhőszolgáltatásai, például Azure, Office 365 és Dynamics 365 kapcsolatokat létesíthet. Az ExpressRoute dedikált WAN a helyszíni helyre vagy az üzemeltetési szolgáltatók a Microsoft Exchange közötti kapcsolat. Mivel ez egy telekommunikációs kapcsolatot, az adatok nem az utazási az interneten keresztül, így a ki nem téve az internetes kommunikáció jelentette lehetséges kockázatokról.
 
 Az ExpressRoute-kapcsolat helyét hatással lehet a tűzfal kapacitás, a méretezhetőség, a megbízhatóság és a hálózati forgalom látható-e. Határozza meg, hol ExpressRoute leállítja a meglévő (helyszíni) hálózatok kell. A következőket teheti:

@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 05/11/2019
-ms.openlocfilehash: 7ab22a1d1b44327b28264ec5bd6ba0c44b1d65a7
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
-ms.translationtype: HT
+ms.openlocfilehash: 72552f6335f3ad6742679708a639634362c49c0b
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65620150"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823320"
 ---
 # <a name="sql-database-serverless-preview"></a>Az SQL Database kiszolgáló nélküli (előzetes verzió)
 
@@ -277,19 +277,21 @@ A számítási számlázzuk a következő metrika tesz elérhetővé:
 
 Ez a mennyiség másodpercenként kiszámítása és összesíti több mint 1 perce.
 
-**Példa**: Fontolja meg egy adatbázist a következő használati egy egy órás időszakban GP_S_Gen5_4 használata:
+Fontolja meg egy 1 perces vcore- és max 4 virtuális magot kapnak a konfigurált kiszolgáló nélküli adatbázis.  Ez körülbelül 3 GB-os minimális memória és a 12 GB maximális memória felel meg.  Tegyük fel, hogy az automatikus szüneteltetési késleltetés értéke 6 óra és az adatbázis-munkaterhelés egy 24 órás időszakban, az első 2 órában aktív és egyéb inaktív.    
 
-|Idő (óra: perc)|app_cpu_billed (virtuális mag másodperc)|
-|---|---|
-|0:01|63|
-|0:02|123|
-|0:03|95|
-|0:04|54|
-|0:05|41|
-|0:06 - 1:00|1255|
-||Összesen: 1631|
+Ebben az esetben az adatbázisban történik számítási és tárolási első 8 órán belül.  Annak ellenére, hogy az adatbázis inaktív kezdődően a 2. óra elteltével, továbbra is számlázzuk számítási az ezt követő 6 órában alapján a minimális számítási kiépítve, miközben az adatbázis online állapotban.  Csak tárolási hátralevő részében az 24 órás időszakban van számlázzuk, míg az adatbázis fel van függesztve.
 
-Tegyük fel, hogy a szolgáltatás $0.000073/vCore/second számítási egység díja. Ezután a számítási, a számlázás az adott egy órás időszakra vonatkozó határozza meg az alábbi képlettel: **$0.000073/vCore/second * 1631 virtuális mag másodperc $0.1191 =**
+Pontosabban a számítási számla ebben a példában a következőképpen alakul:
+
+|Időtartam|a másodpercenként felhasznált virtuális magok|A másodpercenként felhasznált GB|A számlázás dimenzió COMPUTE|Számlázható idő alatt virtuális mag másodperc|
+|---|---|---|---|---|
+|0:00-1:00|4|9|felhasznált virtuális magok|4 vCores * 3600 seconds = 14400 vCore seconds|
+|1:00-2:00|1.|12|Használt memória|12Gb * 1/3 * 3600 seconds = 14400 vCore seconds|
+|2:00-8:00|0|0|Minimális memória kiosztása|3Gb * 1/3 * 21600 seconds = 21600 vCore seconds|
+|8:00-24:00|0|0|Nincs számítás számlázzuk, míg fel van függesztve|0 virtuális mag másodperc|
+|A számlázás 24 órán át összes virtuális mag másodperc||||másodperc 50400 virtuális mag|
+
+Tegyük fel, hogy a szolgáltatás $0.000073/vCore/second számítási egység díja.  A 24 órás időszakban kell fizetnie a számítási válik a számítási egység ár és a virtuális mag másodpercben a számlázás a termék: $0.000073/vCore/second * 50400 virtuális mag másodperc $3.68 =
 
 ## <a name="available-regions"></a>Elérhető régiók
 

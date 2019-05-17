@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: juliako
-ms.openlocfilehash: e64e980d42086603c9eb8ce39a96a9766a78afcb
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 01b386c820a09af0e616698aabc58a886c30bb09
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472465"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550926"
 ---
 # <a name="transforms-and-jobs"></a>Átalakítások és feladatok
 
@@ -55,9 +55,15 @@ A **átalakítása** hozhat létre a recept egyszer (1. lépés), és küldje el
 
 Használat **alakítja át** és videók elemzése gyakori feladatok konfigurálása. Minden egyes **átalakítása** egy módszereivel, vagy egy munkafolyamatot a video- és audiotartalmak fájlok feldolgozása kapcsolatos feladatokat ismerteti. Egyetlen átalakító egynél több szabály is alkalmazhat. Egy-egy átalakítási megadhatja például, hogy minden videó kódolhatók-e a megadott sávszélességű, MP4-fájlokat, és, hogy egy miniatűr képére jöjjön létre a videó első keretből. Az átalakítási szerepeltetni kívánt minden egyes szabály egy TransformOutput bejegyzést jelentene. A szolgáltatás használatával megtekintheti az átalakítás ossza meg a bemeneti fájlok feldolgozásának módja.
 
+### <a name="viewing-schema"></a>Megtekintés séma
+
 A Media Services v3 készletek típusos entitások az API-t. Ezek az objektumok a "schema" definícióját találja [nyílt API-specifikációnak (vagy a Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). Is megtekintheti az előre megadott definíciók (például **StandardEncoderPreset**) az a [REST API-val](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK-val](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (vagy más Media Services v3 SDK-forrásdokumentáció).
 
+### <a name="creating-transforms"></a>Átalakítások létrehozása
+
 Átalakítások használata REST, CLI-t, hozzon létre, vagy használja a közzétett SDK-k valamelyikét. A Media Services v3, így használhatja a Resource Manager-sablonok létrehozása és üzembe helyezése az API által az Azure Resource Manager alkalmazások alakítja át a Media Services-fiók. Szerepköralapú hozzáférés-vezérlés segítségével átalakítások való hozzáférés zárolása.
+
+### <a name="updating-transforms"></a>Átalakítások frissítése
 
 Ha frissíteni szeretné a [átalakítása](https://docs.microsoft.com/rest/api/media/transforms), használja a **frissítése** műveletet. Szánt módosítása a leírást, illetve az alapul szolgáló TransformOutputs prioritásait. Javasoljuk, hogy az ilyen frissítések hajtható végre az összes folyamatban lévő feladatok befejezését. Ha azt tervezi, újraírási a recept, hozzon létre egy új átalakítás szeretne.
 
@@ -71,11 +77,19 @@ A következő ábra azt mutatja a **átalakítása** objektum és az általa hiv
 
 A **feladat** van az Azure Media Services tényleges kérelem a alkalmazni a **átalakítása** egy adott a bemeneti videó vagy hang tartalomhoz. Az átalakítás létrehozása után küldhet feladatokat a Media Services API-k és az egyéb közzétett SDK-k használatával. A **feladat** információkat, például a bemeneti videó helyét, és a kimeneti helyét adja meg. Megadhatja a helyét, a bemeneti videó használatával: HTTPS URL-címek, SAS URL-címeit, vagy [eszközök](https://docs.microsoft.com/rest/api/media/assets).  
 
+### <a name="job-input-from-https"></a>A HTTPS feladat bemenete
+
 Használat [HTTPS bemeneti feladat](job-input-from-http-how-to.md) Ha már egy URL-CÍMEN keresztül érhető el a tartalmat, és nincs szükség a forrás tárolásához az Azure-ban (például S3 szintű importálhat). Ez a módszer akkor is alkalmas, ha rendelkezik a tartalom az Azure Blob storage-ban, de nem szükséges lehet egy eszköz a fájlhoz. Jelenleg ez a módszer csak támogatja egyetlen fájl a bemeneti.
- 
+
+### <a name="asset-as-job-input"></a>Az eszközintelligencia feladat bemenete
+
 Használat [feladat bemeneteként eszköz](job-input-from-local-file-how-to.md) Ha egy eszköz már szerepel a bemeneti tartalom vagy a tartalom helyi fájl tárolja. Emellett akkor is jó választás, ha azt tervezi, hogy a bemeneti objektum közzététele streamelési vagy letöltése (például: szeretne közzétenni a mp4 letölthető, de is szeretné, ha szöveget vagy face észlelési beszédfelismerés). Ez a módszer támogatja a több fájlból eszközök (például adatfolyam-csoportok, amelyek helyileg is kódolású MBR).
- 
+
+### <a name="checking-job-progress"></a>A feladat előrehaladásának ellenőrzése
+
 A folyamat és a feladatok állapotának figyelésével az Event Grid-események szerezhető meg. További információkért lásd: [EventGrid események figyelése](job-state-events-cli-how-to.md).
+
+### <a name="updating-jobs"></a>Feladat frissítése
 
 A frissítési műveletet a [feladat](https://docs.microsoft.com/rest/api/media/jobs) entitás módosításához is használható a *leírás*, és a *prioritású* tulajdonságok a feladat elküldése után. Módosítás a *prioritású* a tulajdonság csak akkor, ha a feladat még mindig aszinkron állapotban van. Ha a feladat már megkezdődött a feldolgozás, vagy véget ért, prioritás módosítása nem befolyásolja.
 

@@ -2,22 +2,22 @@
 title: Egyszeri bejelentkezés az Azure Active Directory-alkalmazást – |} A Microsoft Docs
 description: Ismerje meg, hogyan válassza ki egy egyszeri bejelentkezési módszer, ha alkalmazások konfigurálása az Azure Active Directoryban (Azure AD). Egyszeri bejelentkezés használatára, a felhasználóknak nem kell minden alkalmazáshoz tartozó jelszavakat megjegyezni és fiókkezelési felügyeletének egyszerűsítése érdekében.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.author: celested
+ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12c68a268b901f3525c2af9cd381dc277d6d8167
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 51b3066a529183d7a8a13e4673d7879136aa0d7a
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65770894"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824165"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés az Azure Active Directory-alkalmazások
 

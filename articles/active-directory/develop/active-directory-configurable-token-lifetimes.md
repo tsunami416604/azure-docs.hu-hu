@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/13/2019
+ms.date: 05/15/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0657057ceb3aca674e49a705c52c3b86dda73d98
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: cc81f0a5c75d9aeee39f0633521d692c8d30c474
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545392"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823473"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Az Azure Active Directoryban (előzetes verzió) konfigurálható jogkivonatok élettartama
 
@@ -65,11 +65,11 @@ Nyilvános ügyfelek nem biztonságos tárolása ügyféljelszó (titkos). Péld
 Azonosító-jogkivonatokat a rendszer átadja a websites és a natív ügyfelek. Azonosító-jogkivonatokat a felhasználói profil adatait tartalmazzák. Egy azonosító jogkivonat felhasználói és az ügyfél egy adott kombinációja van kötve. Azonosító-jogkivonatokat a lejáratig érvényes minősülnek. Általában egy webes alkalmazás megfelel-e a felhasználó a munkamenet élettartamára az alkalmazásban az azonosító jogkivonat élettartama kiadott a felhasználó számára. Beállíthatja, hogy milyen gyakran a webes alkalmazás az alkalmazás munkamenet lejár, és milyen gyakran van szükség a felhasználót, hogy az Azure ad-vel (csendes vagy interaktív) hitelesíthető egy azonosító jogkivonat élettartama.
 
 ### <a name="single-sign-on-session-tokens"></a>Egyszeri bejelentkezés munkamenet-jogkivonatok
-Amikor egy felhasználó hitelesíti magát az Azure ad-vel, egy egyszeri bejelentkezési (SSO) munkamenet és a felhasználó a böngésző és az Azure ad-ben. Az SSO-jogkivonat, a cookie-k formájában jelöli ehhez a munkamenethez. Vegye figyelembe, hogy az egyszeri bejelentkezés munkamenet-jogkivonat nincs kötve egy adott erőforrás vagy ügyfélalkalmazás. Egyszeri bejelentkezés munkamenet jogkivonatok visszavonhatók, és azok érvényességi be van jelölve, minden alkalommal használni őket.
+Amikor egy felhasználó hitelesíti magát az Azure ad-vel, egy egyszeri bejelentkezési (SSO) munkamenet és a felhasználó a böngésző és az Azure ad-ben. Az SSO-jogkivonat, a cookie-k formájában jelöli ehhez a munkamenethez. Az egyszeri bejelentkezés munkamenet-azonosító nem egy adott erőforrás vagy ügyfélalkalmazás van kötve. Egyszeri bejelentkezés munkamenet jogkivonatok visszavonhatók, és azok érvényességi be van jelölve, minden alkalommal használni őket.
 
 Az Azure AD egyszeri bejelentkezés munkamenet jogkivonatok kétféle használ: állandó és nem állandó. Állandó munkamenet jogkivonatokat a böngésző maradandó cookie-k formájában tárolja. Nem állandó munkamenetek jogkivonatok munkamenet cookie-k formájában tárolja. (Munkamenet cookie-k elvész, amikor a böngésző be van zárva.) Általában egy nonpersistent munkamenet-azonosító van tárolva. De, amikor a felhasználó kiválasztja az **bejelentkezve szeretnék maradni** egy állandó munkamenet-jogkivonat-hitelesítés során a jelölőnégyzet be van tárolva.
 
-Nem állandó munkamenetek jogkivonatok élettartama pedig 24 óra rendelkezik. Állandó egy élettartama 180 nap lehet. Az egyszeri bejelentkezés munkamenet jogkivonata használja az érvényességi idején belül bármikor a érvényességi időszaka egy másik 24 órás vagy 180 nap, a jogkivonat típusától függően. Ha az egyszeri bejelentkezés munkamenet token nem használatos az érvényességi idején belül, akkor számít a lejárt, és már elfogadták.
+Nem állandó munkamenetek jogkivonatok élettartama pedig 24 óra rendelkezik. Állandó egy élettartama 180 nap lehet. Visszaállít egy egyszeri bejelentkezés munkamenet jogkivonata használja az érvényességi idején belül, az érvényességi időszak ki van bővítve, egy másik 24 órás vagy 180 nap, a jogkivonat típusától függően. Ha az egyszeri bejelentkezés munkamenet token nem használatos az érvényességi idején belül, akkor számít a lejárt, és már elfogadták.
 
 Egy házirend használatával adja meg, miután az első munkamenet-azonosító mellett, amely a munkamenet-jogkivonat már nem elfogadható lett kiállítva. (Ehhez használja a munkamenet-jogkivonat Max-Age tulajdonságot.) Szabályozhatja, mikor és milyen gyakran egy felhasználóra szükség, csendes hitelesített, egy webalkalmazás használata helyett a hitelesítő adatok újbóli egy munkamenet-jogkivonat élettartama módosíthatja.
 
@@ -109,7 +109,7 @@ Alkalmazásobjektumok és egyszerű szolgáltatási objektumok közötti kapcsol
 
 A jogkivonat érvényességi a jogkivonat időben értékeli ki. A szabályzat az alkalmazás, amelyek hozzáférnek a legmagasabb prioritású lép érvénybe.
 
-A C# megfelelően formázott itt használt összes mérföldkövei [TimeSpan](https://msdn.microsoft.com/library/system.timespan) objektum - D.HH:MM:SS.  Így 80 napban és 30 perc lesz `80.00:30:00`.  A vezető, D törölhetők, ha nulla, így 90 perc lesz `00:90:00`.  
+A C# megfelelően formázott itt használt összes mérföldkövei [TimeSpan](/dotnet/api/system.timespan) objektum - D.HH:MM:SS.  Így 80 napban és 30 perc lesz `80.00:30:00`.  A vezető, D törölhetők, ha nulla, így 90 perc lesz `00:90:00`.  
 
 > [!NOTE]
 > Íme egy példa.
@@ -220,11 +220,11 @@ A kezdéshez kövesse az alábbi lépéseket:
     ```
 
 ### <a name="example-manage-an-organizations-default-policy"></a>Példa: A szervezet alapértelmezett házirend kezelése
-Ebben a példában létrehozott egy szabályzatot, amely lehetővé teszi, hogy a felhasználók kevésbé gyakran jelentkezzen be a teljes szervezet számára. Ehhez hozzon létre egy jogkivonat élettartama házirendet egyetlen tényezős frissítési jogkivonatokat, a szervezetben alkalmazott. A szabályzat minden alkalmazásához a szervezetben, és minden egyszerű szolgáltatás, amely még nem rendelkezik beállított házirend érvényes.
+Ebben a példában létrehozott egy szabályzatot, amely lehetővé teszi, hogy a felhasználók bejelentkezési kevésbé gyakran a teljes szervezet számára. Ehhez hozzon létre egy jogkivonat élettartama házirendet egyetlen tényezős frissítési jogkivonatokat, a szervezetben alkalmazott. A szabályzat minden alkalmazásához a szervezetben, és minden egyszerű szolgáltatás, amely még nem rendelkezik beállított házirend érvényes.
 
 1. Hozzon létre egy jogkivonat élettartama szabályzatot.
 
-    1.  Beállítása a többtényezős egyetlen frissítési jogkivonat az "until-visszavonva." A jogkivonat le nem jár, amíg hozzáférést visszavonták. A következő szabályzatdefiníció létrehozása:
+    1. Beállítása a többtényezős egyetlen frissítési jogkivonat az "until-visszavonva." A jogkivonat le nem jár, amíg hozzáférést visszavonták. A következő szabályzatdefiníció létrehozása:
 
         ```powershell
         @('{
@@ -236,16 +236,16 @@ Ebben a példában létrehozott egy szabályzatot, amely lehetővé teszi, hogy 
         }')
         ```
 
-    2.  A szabályzat létrehozásához futtassa a következő parancsot:
+    2. A szabályzat létrehozásához futtassa a következő parancsot:
 
         ```powershell
-        New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
+        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    3.  Az új házirend megtekintéséhez, és hogy lekérje a házirendet **ObjectId**, futtassa a következő parancsot:
+    3. Az új házirend megtekintéséhez, és hogy lekérje a házirendet **ObjectId**, futtassa a következő parancsot:
 
         ```powershell
-        Get-AzureADPolicy
+        Get-AzureADPolicy -Id $policy.Id
         ```
 
 2. A szabályzat frissítése.
@@ -253,7 +253,7 @@ Ebben a példában létrehozott egy szabályzatot, amely lehetővé teszi, hogy 
     Dönthet úgy, hogy az első, ebben a példában a beállított szabályzat ne legyen olyan szigorúak, mint a szolgáltatásnak szüksége van. Ha szeretné beállítani az egyetlen tényezős frissítési jogkivonat két nap múlva lejár, futtassa a következő parancsot:
 
     ```powershell
-    Set-AzureADPolicy -Id <ObjectId FROM GET COMMAND> -DisplayName "OrganizationDefaultPolicyUpdatedScenario" -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
+    Set-AzureADPolicy -Id $policy.Id -DisplayName $policy.DisplayName -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
     ```
 
 ### <a name="example-create-a-policy-for-web-sign-in"></a>Példa: Webes bejelentkezés szabályzat létrehozása
@@ -264,88 +264,98 @@ Ebben a példában létrehozott egy szabályzatot, amely megköveteli a felhaszn
 
     Ezt a házirendet, a webes jelentkezzen be, beállítja a hozzáférési és azonosító jogkivonat élettartama, és a maximális egyetlen tényezős munkamenet jogkivonat élettartama, két óra.
 
-    1.  A szabályzat létrehozásához a következő parancs futtatásával:
+    1. A szabályzat létrehozásához a következő parancs futtatásával:
 
         ```powershell
-        New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
+        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2.  Az új házirend megtekintéséhez, és hogy lekérje a házirendet **ObjectId**, futtassa a következő parancsot:
+    2. Az új házirend megtekintéséhez, és hogy lekérje a házirendet **ObjectId**, futtassa a következő parancsot:
 
         ```powershell
-        Get-AzureADPolicy
+        Get-AzureADPolicy -Id $policy.Id
         ```
 
-2.  A szabályzat hozzárendelése az egyszerű szolgáltatást. Is kell beszereznie a **ObjectId** szolgáltatásneve. 
+2. A szabályzat hozzárendelése az egyszerű szolgáltatást. Is kell beszereznie a **ObjectId** szolgáltatásneve.
 
-    1.  A szervezet szolgáltatásnevek megtekintéséhez lekérdezheti, vagy a [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) vagy a [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Ezenkívül tesztelheti ezt a a [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/), és a [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) az Azure AD-fiók használatával.
-
-    2.  Ha rendelkezik a **ObjectId** szolgáltatásneve, futtassa a következő parancsot:
-
+    1. Használja a [Get-azureadserviceprincipal parancsmagot](/powershell/module/azuread/get-azureadserviceprincipal) parancsmaggal ellenőrizheti a szervezet szolgáltatásnevek vagy egy szolgáltatásnevet.
         ```powershell
-        Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
+        # Get ID of the service principal
+        $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
         ```
 
+    2. Ha az egyszerű szolgáltatást, futtassa a következő parancsot:
+        ```powershell
+        # Assign policy to a service principal
+        Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
+        ```
 
 ### <a name="example-create-a-policy-for-a-native-app-that-calls-a-web-api"></a>Példa: Egy natív alkalmazást, amely meghívja a webes API-k szabályzat létrehozása
 Ebben a példában létrehozhat egy szabályzatot, amely a felhasználók számára a kevésbé gyakran hitelesítést igényel. A szabályzat is hosszabb lesz a idő a felhasználó lehet inaktív, mielőtt a felhasználó ismét hitelesítenie kell magát. A webes API a szabályzat érvényes. Amikor a natív alkalmazás a webes API-erőforrásként, a házirend érvényben van.
 
 1. Hozzon létre egy jogkivonat élettartama szabályzatot.
 
-    1.  Webes API-hoz a szigorú házirend létrehozásához futtassa a következő parancsot:
+    1. Webes API-hoz a szigorú házirend létrehozásához futtassa a következő parancsot:
 
         ```powershell
-        New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"30.00:00:00","MaxAgeMultiFactor":"until-revoked","MaxAgeSingleFactor":"180.00:00:00"}}') -DisplayName "WebApiDefaultPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
+        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"30.00:00:00","MaxAgeMultiFactor":"until-revoked","MaxAgeSingleFactor":"180.00:00:00"}}') -DisplayName "WebApiDefaultPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2.  Az új házirend megtekintéséhez, és hogy lekérje a házirendet **ObjectId**, futtassa a következő parancsot:
+    2. Az új házirend megtekintéséhez futtassa a következő parancsot:
 
         ```powershell
-        Get-AzureADPolicy
+        Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. A szabályzat hozzárendelése a webes API-hoz. Is kell beszereznie a **ObjectId** az alkalmazás. A legjobb módszer az alkalmazás **ObjectId** használata a [az Azure portal](https://portal.azure.com/).
+2. A szabályzat hozzárendelése a webes API-hoz. Is kell beszereznie a **ObjectId** az alkalmazás. Használja a [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) parancsmagot, hogy az alkalmazás **ObjectId**, vagy használja a [az Azure portal](https://portal.azure.com/).
 
-   Ha rendelkezik a **ObjectId** az alkalmazás a következő parancsot:
+    Első a **ObjectId** az alkalmazás és a szabályzat hozzárendelése:
 
-        ```powershell
-        Add-AzureADApplicationPolicy -Id <ObjectId of the Application> -RefObjectId <ObjectId of the Policy>
-        ```
+    ```powershell
+    # Get the application
+    $app = Get-AzureADApplication -Filter "DisplayName eq 'Fourth Coffee Web API'"
 
+    # Assign the policy to your web API.
+    Add-AzureADApplicationPolicy -Id $app.ObjectId -RefObjectId $policy.Id
+    ```
 
 ### <a name="example-manage-an-advanced-policy"></a>Példa: Egy speciális házirend kezelése
-Ebben a példában létrehoz néhány házirendeket, ismerje meg a prioritást rendszer működését. Még több több objektumot alkalmazott házirendek kezelése tudhat meg.
+Ebben a példában megtudhatja, hogyan használható a a prioritás rendszer néhány szabályzatokat hoz létre. Azt is megtudhatja, hogyan több több objektumot alkalmazott házirendek kezelése.
 
 1. Hozzon létre egy jogkivonat élettartama szabályzatot.
 
-    1.  Hozzon létre egy szervezet alapértelmezett szabályzatot, amely az egyetlen tényezős frissítési jogkivonat élettartama 30 napra, futtassa a következő parancsot:
+    1. Hozzon létre egy szervezet alapértelmezett szabályzatot, amely az egyetlen tényezős frissítési jogkivonat élettartama 30 napra, futtassa a következő parancsot:
 
         ```powershell
-        New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
+        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    2.  Az új házirend megtekintéséhez, és hogy lekérje a házirendet **ObjectId**, futtassa a következő parancsot:
+    2. Az új házirend megtekintéséhez futtassa a következő parancsot:
 
         ```powershell
-        Get-AzureADPolicy
+        Get-AzureADPolicy -Id $policy.Id
         ```
 
 2. A szabályzat hozzárendelése egy egyszerű szolgáltatást.
 
     Most hogy egy szabályzatot, amely a teljes szervezetre vonatkozik. Előfordulhat, hogy szeretné megőrizni a 30 napos szabályzat egy adott szolgáltatás egyszerű, de módosítsa a szervezet alapértelmezett házirendet a felső korlátja "until-visszavonva."
 
-    1.  A szervezet szolgáltatásnevek megtekintéséhez lekérdezheti, vagy a [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) vagy a [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Ezenkívül tesztelheti ezt a a [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/), és a [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) az Azure AD-fiók használatával.
+    1. A szervezet szolgáltatásnevek megtekintéséhez használja a [Get-azureadserviceprincipal parancsmagot](/powershell/module/azuread/get-azureadserviceprincipal) parancsmagot.
 
-    2.  Ha rendelkezik a **ObjectId** szolgáltatásneve, futtassa a következő parancsot:
+    2. Ha az egyszerű szolgáltatást, futtassa a következő parancsot:
 
-            ```powershell
-            Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
-            ```
-        
+        ```powershell
+        # Get ID of the service principal
+        $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
+
+        # Assign policy to a service principal
+        Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
+        ```
+
 3. Állítsa be a `IsOrganizationDefault` jelző false értékre:
 
     ```powershell
-    Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
+    Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
     ```
 
 4. Hozzon létre egy új szervezeti alapértelmezett házirend:
@@ -389,7 +399,7 @@ Get-AzureADPolicy
 
 | Paraméterek | Leírás | Példa |
 | --- | --- | --- |
-| <code>&#8209;Id</code> [Opcionális] |**(Azonosító) ObjectId** , a kívánt házirendet. |`-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> [Opcionális] |**Objektumazonosító (azonosító)** , a kívánt házirendet. |`-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -402,7 +412,7 @@ Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 
 | Paraméterek | Leírás | Példa |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**(Azonosító) ObjectId** , a kívánt házirendet. |`-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> |**Objektumazonosító (azonosító)** , a kívánt házirendet. |`-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -415,7 +425,7 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 
 | Paraméterek | Leírás | Példa |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**(Azonosító) ObjectId** , a kívánt házirendet. |`-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> |**Objektumazonosító (azonosító)** , a kívánt házirendet. |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |Karakterlánc, a házirend nevét. |`-DisplayName "MyTokenPolicy"` |
 | <code>&#8209;Definition</code> [Opcionális] |A szabályzat minden olyan szabályokat tartalmaz sztringesített JSON tömbje. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
 | <code>&#8209;IsOrganizationDefault</code> [Opcionális] |Igaz értéke esetén a szabályzat beállítása a szervezet alapértelmezett szabályzat. Ha nem, nem csinál semmit. |`-IsOrganizationDefault $true` |
@@ -433,7 +443,7 @@ A megadott házirend törlése.
 
 | Paraméterek | Leírás | Példa |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**(Azonosító) ObjectId** , a kívánt házirendet. | `-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> |**Objektumazonosító (azonosító)** , a kívánt házirendet. | `-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -449,7 +459,7 @@ Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectI
 
 | Paraméterek | Leírás | Példa |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**(Azonosító) ObjectId** az alkalmazás. | `-Id <ObjectId of Application>` |
+| <code>&#8209;Id</code> |**Objektumazonosító (azonosító)** az alkalmazás. | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |**ObjectId** a szabályzat. | `-RefObjectId <ObjectId of Policy>` |
 
 </br></br>
@@ -463,7 +473,7 @@ Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 
 | Paraméterek | Leírás | Példa |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**(Azonosító) ObjectId** az alkalmazás. | `-Id <ObjectId of Application>` |
+| <code>&#8209;Id</code> |**Objektumazonosító (azonosító)** az alkalmazás. | `-Id <ObjectId of Application>` |
 
 </br></br>
 
@@ -476,7 +486,7 @@ Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectI
 
 | Paraméterek | Leírás | Példa |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**(Azonosító) ObjectId** az alkalmazás. | `-Id <ObjectId of Application>` |
+| <code>&#8209;Id</code> |**Objektumazonosító (azonosító)** az alkalmazás. | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |**ObjectId** a szabályzat. | `-PolicyId <ObjectId of Policy>` |
 
 </br></br>
@@ -493,7 +503,7 @@ Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectI
 
 | Paraméterek | Leírás | Példa |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**(Azonosító) ObjectId** az alkalmazás. | `-Id <ObjectId of Application>` |
+| <code>&#8209;Id</code> |**Objektumazonosító (azonosító)** az alkalmazás. | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |**ObjectId** a szabályzat. | `-RefObjectId <ObjectId of Policy>` |
 
 </br></br>
@@ -507,7 +517,7 @@ Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 
 | Paraméterek | Leírás | Példa |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**(Azonosító) ObjectId** az alkalmazás. | `-Id <ObjectId of Application>` |
+| <code>&#8209;Id</code> |**Objektumazonosító (azonosító)** az alkalmazás. | `-Id <ObjectId of Application>` |
 
 </br></br>
 
@@ -520,5 +530,5 @@ Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -Policy
 
 | Paraméterek | Leírás | Példa |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**(Azonosító) ObjectId** az alkalmazás. | `-Id <ObjectId of Application>` |
+| <code>&#8209;Id</code> |**Objektumazonosító (azonosító)** az alkalmazás. | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |**ObjectId** a szabályzat. | `-PolicyId <ObjectId of Policy>` |

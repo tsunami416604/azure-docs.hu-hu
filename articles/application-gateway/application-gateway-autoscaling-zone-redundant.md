@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 5/7/2019
+ms.date: 5/16/2019
 ms.author: victorh
-ms.openlocfilehash: dfb5b8b69b2ca9bea118603406f4747036d2641c
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 0da5d8a3eec0faa4001ccf229c6748c253f1b6e5
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510820"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827423"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway"></a>Automatikus skálázás és zónaredundáns az Application Gateway 
 
@@ -62,7 +62,7 @@ Számítási egység útmutatást:
 | Standard_v2                                       |    0.20             | 0.0080                          |
 | WAF_v2                                            |    0.36             | 0.0144                          |
 
-A [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/application-gateway/) 2019. május 14. a regionális árakról megfelelően frissülnek. A számlázás a 2019. június 1. történő futásra van ütemezve.
+Díjszabási információkért tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/application-gateway/). A számlázás a 2019. július 1. történő futásra van ütemezve.
 
 **1. példa**
 
@@ -100,7 +100,7 @@ A [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/
 Az Application Gateway és a WAF konfigurálható a méretezési csoport két módban:
 
 - **Az automatikus skálázás** – és az automatikus skálázás engedélyezve van, az Application Gateway és a WAF v2 termékváltozatok kisebbre vagy nagyobbra méretezhetők a alkalmazás forgalom követelményeknek megfelelően. Ebben a módban az alkalmazás nagyobb rugalmasságot biztosít, és szükségtelenné teszi a dolgát, az application gateway méretét vagy példányszámot. Ebben a módban is lehetővé teszi csökkenthetők a költségek átjárók futtatását a maximális kiosztott kapacitás várható maximális forgalmi terhelés nem igényli. Ügyfeleknek meg kell adnia egy minimális és igény szerint maximális példányszámot. Kapacitásérték-minimumot biztosítja, hogy az Application Gateway és a WAF v2-es nem tartoznak a megadott, még akkor is érhető el a forgalmat a példányok minimális száma alatt. A minimális kapacitás, még akkor is érhető el a forgalmat, kell fizetnie. Opcionálisan megadhatja a példányok maximális száma, amely biztosítja, hogy az Application Gateway meghaladja a megadott számú példányok nem méretezhető. Számlázunk az átjáró által kiszolgált forgalom mennyiségének fogja folytatni. A példányok számát 125 0 terjedhet. Az alapértelmezett érték a példányok maximális száma 20 Ha nincs megadva.
-- **Manuális** – másik lehetőségként kiválaszthatja a manuális módban, ahol az átjáró nem fog az automatikus méretezés. Ebben a módban milyen Application Gateway és a WAF rendszer képes legyen kezelni, mint a további adatforgalom esetén azt eredményezheti forgalom adatvesztés. A manuális mód példányszám megadása kötelező. Példányok száma 1 eltérőek lehetnek a 125-példányokhoz.
+- **Manuális** – másik lehetőségként kiválaszthatja a manuális módban, ahol az átjáró nem fog az automatikus méretezés. Ebben a módban Mi az Application Gateway vagy WAF képes kezelni, mint a további adatforgalom esetén azt eredményezheti forgalom adatvesztés. A manuális mód példányszám megadása kötelező. Példányok száma 1 eltérőek lehetnek a 125-példányokhoz.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Termékváltozat v1 és v2 szintű Termékváltozatot közötti funkcióinak összehasonlítása
 

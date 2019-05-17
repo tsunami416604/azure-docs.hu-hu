@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/29/2019
-ms.openlocfilehash: f97c07c522dfb22818aca84d41d30c023f564d84
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e586ab1bdcca9d6109cf42b6341c333fabb02993
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721322"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601683"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -77,7 +77,7 @@ Kövesse a lépéseket ebben a szakaszban egy új HDInsight hozzáadása egy meg
     
     A meglévő biztonsági konfiguráció, használja a következő Azure PowerShell vagy az Azure CLI-parancsokat:
 
-    * Network security groups (Hálózati biztonsági csoportok)
+    * Hálózati biztonsági csoportok
 
         Cserélje le `RESOURCEGROUP` , amely tartalmazza a virtuális hálózathoz, és írja be a parancsot az erőforráscsoport nevét:
     
@@ -258,50 +258,50 @@ Ha hálózati biztonsági csoportokat használ, engedélyeznie kell az Azure ál
 
 1. Mindig engedélyeznie kell a következő IP-címekről érkező forgalmat:
 
-    | Forrás IP-címe | Célport | Direction |
+    | Forrás IP-címe | Célhely  | Direction |
     | ---- | ----- | ----- |
-    | 168.61.49.99 | 443 | Bejövő |
-    | 23.99.5.239 | 443 | Bejövő |
-    | 168.61.48.131 | 443 | Bejövő |
-    | 138.91.141.162 | 443 | Bejövő |
+    | 168.61.49.99 | \*:443 | Bejövő |
+    | 23.99.5.239 | \*:443 | Bejövő |
+    | 168.61.48.131 | \*:443 | Bejövő |
+    | 138.91.141.162 | \*:443 | Bejövő |
 
 2. Ha a HDInsight-fürt a következő régiók valamelyikében van, majd engedélyeznie kell a régió felsorolt IP-címekről érkező forgalmat:
 
     > [!IMPORTANT]  
     > Ha nem szerepel az Azure-régiót használ, csak használja az 1. lépésben négy IP-címek.
 
-    | Ország | Régió | Engedélyezett forrás IP-címei | Engedélyezett a céloldali port | Direction |
+    | Ország | Régió | Engedélyezett forrás IP-címei | Engedélyezett cél | Direction |
     | ---- | ---- | ---- | ---- | ----- |
-    | Ázsia | Kelet-Ázsia | 23.102.235.122</br>52.175.38.134 | 443 | Bejövő |
-    | &nbsp; | Délkelet-Ázsia | 13.76.245.160</br>13.76.136.249 | 443 | Bejövő |
-    | Ausztrália | Kelet-Ausztrália | 104.210.84.115</br>13.75.152.195 | 443 | Bejövő |
-    | &nbsp; | Délkelet-Ausztrália | 13.77.2.56</br>13.77.2.94 | 443 | Bejövő |
-    | Brazília | Dél-Brazília | 191.235.84.104</br>191.235.87.113 | 443 | Bejövő |
-    | Kanada | Kelet-Kanada | 52.229.127.96</br>52.229.123.172 | 443 | Bejövő |
-    | &nbsp; | Közép-Kanada | 52.228.37.66</br>52.228.45.222 | 443 | Bejövő |
-    | Kína | Észak-Kína | 42.159.96.170</br>139.217.2.219</br></br>42.159.198.178</br>42.159.234.157 | 443 | Bejövő |
-    | &nbsp; | Kelet-Kína | 42.159.198.178</br>42.159.234.157</br></br>42.159.96.170</br>139.217.2.219 | 443 | Bejövő |
-    | &nbsp; | Észak-Kína 2 | 40.73.37.141</br>40.73.38.172 | 443 | Bejövő |
-    | &nbsp; | Kelet-Kína 2 | 139.217.227.106</br>139.217.228.187 | 443 | Bejövő |
-    | Európa | Észak-Európa | 52.164.210.96</br>13.74.153.132 | 443 | Bejövő |
-    | &nbsp; | Nyugat-Európa| 52.166.243.90</br>52.174.36.244 | 443 | Bejövő |
-    | Franciaország | Közép-Franciaország| 20.188.39.64</br>40.89.157.135 | 443 | Bejövő |
-    | Németország | Közép-Németország | 51.4.146.68</br>51.4.146.80 | 443 | Bejövő |
-    | &nbsp; | Északkelet-Németország | 51.5.150.132</br>51.5.144.101 | 443 | Bejövő |
-    | India | Közép-India | 52.172.153.209</br>52.172.152.49 | 443 | Bejövő |
-    | &nbsp; | Dél-India | 104.211.223.67<br/>104.211.216.210 | 443 | Bejövő |
-    | Japán | Kelet-Japán | 13.78.125.90</br>13.78.89.60 | 443 | Bejövő |
-    | &nbsp; | Nyugat-Japán | 40.74.125.69</br>138.91.29.150 | 443 | Bejövő |
-    | Korea | Korea középső régiója | 52.231.39.142</br>52.231.36.209 | 433 | Bejövő |
-    | &nbsp; | Korea déli régiója | 52.231.203.16</br>52.231.205.214 | 443 | Bejövő
-    | Egyesült Királyság | Az Egyesült Királyság nyugati régiója | 51.141.13.110</br>51.141.7.20 | 443 | Bejövő |
-    | &nbsp; | Az Egyesült Királyság déli régiója | 51.140.47.39</br>51.140.52.16 | 443 | Bejövő |
-    | Egyesült Államok | USA középső régiója | 13.67.223.215</br>40.86.83.253 | 443 | Bejövő |
-    | &nbsp; | USA keleti régiója | 13.82.225.233</br>40.71.175.99 | 443 | Bejövő |
-    | &nbsp; | USA északi középső régiója | 157.56.8.38</br>157.55.213.99 | 443 | Bejövő |
-    | &nbsp; | USA nyugati középső régiója | 52.161.23.15</br>52.161.10.167 | 443 | Bejövő |
-    | &nbsp; | USA nyugati régiója | 13.64.254.98</br>23.101.196.19 | 443 | Bejövő |
-    | &nbsp; | USA nyugati régiója, 2. | 52.175.211.210</br>52.175.222.222 | 443 | Bejövő |
+    | Ázsia | Kelet-Ázsia | 23.102.235.122</br>52.175.38.134 | \*:443 | Bejövő |
+    | &nbsp; | Délkelet-Ázsia | 13.76.245.160</br>13.76.136.249 | \*:443 | Bejövő |
+    | Ausztrália | Kelet-Ausztrália | 104.210.84.115</br>13.75.152.195 | \*:443 | Bejövő |
+    | &nbsp; | Délkelet-Ausztrália | 13.77.2.56</br>13.77.2.94 | \*:443 | Bejövő |
+    | Brazília | Dél-Brazília | 191.235.84.104</br>191.235.87.113 | \*:443 | Bejövő |
+    | Kanada | Kelet-Kanada | 52.229.127.96</br>52.229.123.172 | \*:443 | Bejövő |
+    | &nbsp; | Közép-Kanada | 52.228.37.66</br>52.228.45.222 |\*: 443 | Bejövő |
+    | Kína | Észak-Kína | 42.159.96.170</br>139.217.2.219</br></br>42.159.198.178</br>42.159.234.157 | \*:443 | Bejövő |
+    | &nbsp; | Kelet-Kína | 42.159.198.178</br>42.159.234.157</br></br>42.159.96.170</br>139.217.2.219 | \*:443 | Bejövő |
+    | &nbsp; | Észak-Kína 2 | 40.73.37.141</br>40.73.38.172 | \*:443 | Bejövő |
+    | &nbsp; | Kelet-Kína 2 | 139.217.227.106</br>139.217.228.187 | \*:443 | Bejövő |
+    | Európa | Észak-Európa | 52.164.210.96</br>13.74.153.132 | \*:443 | Bejövő |
+    | &nbsp; | Nyugat-Európa| 52.166.243.90</br>52.174.36.244 | \*:443 | Bejövő |
+    | Franciaország | Közép-Franciaország| 20.188.39.64</br>40.89.157.135 | \*:443 | Bejövő |
+    | Németország | Közép-Németország | 51.4.146.68</br>51.4.146.80 | \*:443 | Bejövő |
+    | &nbsp; | Északkelet-Németország | 51.5.150.132</br>51.5.144.101 | \*:443 | Bejövő |
+    | India | Közép-India | 52.172.153.209</br>52.172.152.49 | \*:443 | Bejövő |
+    | &nbsp; | Dél-India | 104.211.223.67<br/>104.211.216.210 | \*:443 | Bejövő |
+    | Japán | Kelet-Japán | 13.78.125.90</br>13.78.89.60 | \*:443 | Bejövő |
+    | &nbsp; | Nyugat-Japán | 40.74.125.69</br>138.91.29.150 | \*:443 | Bejövő |
+    | Korea | Korea középső régiója | 52.231.39.142</br>52.231.36.209 | \*:433 | Bejövő |
+    | &nbsp; | Korea déli régiója | 52.231.203.16</br>52.231.205.214 | \*:443 | Bejövő
+    | Egyesült Királyság | Egyesült Királyság nyugati régiója | 51.141.13.110</br>51.141.7.20 | \*:443 | Bejövő |
+    | &nbsp; | Egyesült Királyság déli régiója | 51.140.47.39</br>51.140.52.16 | \*:443 | Bejövő |
+    | Egyesült Államok | USA középső régiója | 13.67.223.215</br>40.86.83.253 | \*:443 | Bejövő |
+    | &nbsp; | USA keleti régiója | 13.82.225.233</br>40.71.175.99 | \*:443 | Bejövő |
+    | &nbsp; | USA északi középső régiója | 157.56.8.38</br>157.55.213.99 | \*:443 | Bejövő |
+    | &nbsp; | USA nyugati középső régiója | 52.161.23.15</br>52.161.10.167 | \*:443 | Bejövő |
+    | &nbsp; | USA nyugati régiója | 13.64.254.98</br>23.101.196.19 | \*:443 | Bejövő |
+    | &nbsp; | USA 2. nyugati régiója | 52.175.211.210</br>52.175.222.222 | \*:443 | Bejövő |
 
     Az IP-címek az Azure Government használatára vonatkozó információért lásd: a [Azure Government intelligencia és elemzés](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) dokumentumot.
 

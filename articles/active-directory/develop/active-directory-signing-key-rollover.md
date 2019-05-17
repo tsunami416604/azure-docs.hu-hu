@@ -3,8 +3,8 @@ title: Az Azure Active Directory Aláírókulcs
 description: Ez a cikk ismerteti az aláíró kulcsváltás ajánlott eljárások az Azure Active Directory
 services: active-directory
 documentationcenter: .net
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82e9941a6c468a3b0ed9d1f22a2970cfa6584617
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b47430b4bd2f7fa6811785247ae6cd4f6df6f8f5
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411232"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546126"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Az Azure Active Directory aláírókulcs
 Ez a cikk ismerteti, mit kell tudni az Azure Active Directory (Azure AD) biztonsági jogkivonatok aláírásához használt nyilvános kulcsok. Fontos megjegyezni, hogy a kulcsok váltása rendszeres időközönként, és a egy robotkart sikerült kell leváltani azonnal. Minden alkalmazás, amely az Azure AD használata programozott módon kezelni a kulcshoz kapcsolódó kulcsváltás folyamat vagy rendszeres manuális váltása folyamatot képesnek kell lennie. Tudni, hogyan működnek a kulcsokat, olvassa tovább az alkalmazás a Váltás hatásainak kiértékelését és frissítheti az alkalmazást, vagy időszakos manuális váltása folyamatot kulcsváltás kezelésére, ha szükséges.

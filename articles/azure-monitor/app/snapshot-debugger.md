@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.reviewer: brahmnes
 ms.date: 03/07/2019
 ms.author: mbullwin
-ms.openlocfilehash: 074b701422f32f4cd18fd2eb05e3453e139e17ae
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 4157285e8af67acd1dc3627bebc12076d7fe072c
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205605"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595550"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazások kivételeinek hibakeresési pillanatképei
 Ha egy kivétel lép fel, automatikusan gyűjtheti hibakereső pillanatképek az élő webalkalmazások. A pillanatkép abban a pillanatban a kivétel történt a Forráskód és a változók állapotát mutatja. A pillanatkép-hibakereső (előzetes verzió) a [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) kivétel telemetriát a webalkalmazás figyeli. Ez adatokat gyűjt a pillanatképek a felső értesítő kivételek, hogy rendelkezik diagnosztizálhatja a problémákat, éles környezetben a szükséges információkat. Tartalmazza a [Snapshot collector NuGet-csomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) az alkalmazásban, és szükség esetén konfigurálja a gyűjtési paramétereket lévő [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). A pillanatképek jelennek meg [kivételek](../../azure-monitor/app/asp-net-exceptions.md) az Application Insights portálon.
 
-A portálon a hibakeresési pillanatfelvételeket megtekintve láthatja a hívásvermet és megvizsgálhatja a változókat az egyes hívásveremkeretekre vonatkozóan. A hatékonyabb hibakeresési környezetben a forráskóddal lekéréséhez nyissa meg a Visual Studio 2017 Enterprise pillanatképeket. A Visual Studióban is [állítsa be az interaktív módon pillanatfelvételeket Snappoints](https://aka.ms/snappoint) kivétel nélkül.
+A portálon a hibakeresési pillanatfelvételeket megtekintve láthatja a hívásvermet és megvizsgálhatja a változókat az egyes hívásveremkeretekre vonatkozóan. A forráskóddal a hatékonyabb hibakeresési tapasztalatokat szerezhet, nyissa meg a Visual Studio 2019 vállalati pillanatképek. A Visual Studióban is [állítsa be az interaktív módon pillanatfelvételeket Snappoints](https://aka.ms/snappoint) kivétel nélkül.
 
 Hibakeresési pillanatképek hét napig tárolja. A megőrzési házirend van beállítva a alkalmazásonként. Ha ez az érték növelése van szüksége, kérheti növelését az Azure Portalon nyissa meg egy támogatási esetet.
 
@@ -81,9 +81,9 @@ A hibakeresési pillanatfelvétel nézetben láthatja a hívási verem és a egy
 A pillanatképek bizalmas információkat tartalmazhatnak, és alapértelmezés szerint nem látható. Pillanatképek megtekintése, rendelkeznie kell a `Application Insights Snapshot Debugger` Önhöz hozzárendelt szerepkörrel.
 
 ## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>A Visual Studio 2017 Enterprise vagy újabb pillanatképeinek megtekintése
-1. Kattintson a **Pillanatfelvétel letöltése** gombra kattintva töltse le a `.diagsession` fájlt, amely a Visual Studio 2017 Enterprise nyithatja meg.
+1. Kattintson a **Pillanatfelvétel letöltése** gombra kattintva töltse le a `.diagsession` fájlt, amely szerint a Visual Studio Enterprise segítségével lehet megnyitni.
 
-2. Megnyitásához a `.diagsession` fájl, rendelkeznie kell a pillanatkép-hibakereső VS összetevő telepítve van. A pillanatkép-hibakereső összetevő egy szükséges összetevő az ASP.net munkaterhelés a VS-ben és a VS-telepítő egyes összetevők listájából választható ki. Ha a Visual Studio 2017 15.5 előtti verziót használ, telepítenie kell a bővítmény a [VS marketplace](https://aka.ms/snapshotdebugger).
+2. Megnyitásához a `.diagsession` fájl, szüksége lesz a Snapshot Debugger Visual Studio-összetevő telepítve van. A pillanatkép-hibakereső összetevő egy szükséges összetevő az ASP.net munkaterhelés, a Visual Studióban, és a Visual Studio telepítőjének egyes összetevők listájából választható ki. A Visual Studio 2017 15.5 verzió előtt a Visual Studio verziójának használatakor, szüksége lesz a bővítmény telepítéséhez a [Visual Studio-piactér](https://aka.ms/snapshotdebugger).
 
 3. A pillanatkép-fájl megnyitása után az tömörített memóriaképet hibakeresés a Visual Studióban megjelenik. Kattintson a **felügyelt kód hibakeresése** a pillanatkép-hibakeresés elindításához. A pillanatkép megnyitása, ahol a kivétel lépett fel, hogy a folyamat aktuális állapota is hibakeresése kódsort.
 

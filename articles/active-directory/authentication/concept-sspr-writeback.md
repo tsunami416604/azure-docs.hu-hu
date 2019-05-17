@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 491545aabd3415850eb1b1d712a46401b73ad845
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 749216d3fe9164857bd4abce7ba7c766e466e7d3
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190733"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823302"
 ---
 # <a name="what-is-password-writeback"></a>Mi a jelszóvisszaíró?
 
@@ -42,9 +42,8 @@ A jelszóvisszaíró biztosítja:
 * **A jelszóvisszaíró támogatja, ha egy rendszergazda visszaállítja azokat az Azure Portalról**: Minden alkalommal, amikor egy rendszergazda visszaállítja-e egy felhasználó jelszavát az a [az Azure portal](https://portal.azure.com), ha a felhasználó vagy Jelszókivonat szinkronizálása, a jelszó van visszaírja a helyszíni. Ez a funkció jelenleg nem támogatott az Office felügyeleti portálon.
 * **Nincs szükség semmilyen bejövő tűzfalszabályokat**: A jelszóvisszaírás egy Azure Service Bus relay használja, mint az alapul szolgáló kommunikációs csatornát. Minden kommunikáció a 443-as porton keresztül akkor kimenő forgalomról beszélünk.
 
-> [!Note]
+> [!NOTE]
 > A jelszóvisszaíró található védett csoportok a helyszíni Active Directoryban lévő felhasználói fiókok nem használható. Rendszergazdai fiókok belül található védett csoportok a helyszíni AD is használható a jelszóvisszaíró használata közben. Védett csoportokkal kapcsolatos további információkért lásd: [védett fiókok és csoportok az Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
->
 
 ## <a name="licensing-requirements-for-password-writeback"></a>Jelszóvisszaíró licencelési követelményeket
 
@@ -52,18 +51,17 @@ A jelszóvisszaíró biztosítja:
 
 A jelszóvisszaíró használandó kell rendelkeznie a következő licenccel, a bérlő egyik:
 
-* Prémium szintű Azure AD P1
-* Prémium szintű Azure AD P2
+* Azure AD Premium P1
+* Azure AD Premium P2
 * Enterprise Mobility + Security E3 vagy A3
 * Enterprise Mobility + Security E5 vagy a5 csomag
 * A Microsoft 365 E3 vagy A3
 * A Microsoft 365 E5 vagy a5 csomag
 * Microsoft 365 F1
-* Microsoft 365 Vállalati verzió
+* Microsoft 365 Business
 
 > [!WARNING]
 > Önálló Office 365 licencelési csomagok *nem támogatják a "Önkiszolgáló jelszó alaphelyzetbe állítása/módosítás /-Zárolásfeloldás helyszíni visszaírással az"* , és rendelkezik a fenti csomagok keretében, az a funkciók működéséhez szükséges.
->
 
 ## <a name="how-password-writeback-works"></a>Jelszóvisszaírás működéséről
 
@@ -90,7 +88,6 @@ Amikor összevont vagy a jelszó kivonatát szinkronizálja a felhasználói kí
 1. Ha a jelszó set művelet sikeres, a felhasználó van, hogy rendelkezik a jelszó megváltozott.
    > [!NOTE]
    > A felhasználó Jelszókivonat a Jelszókivonat-szinkronizálás használatával szinkronizálva az Azure AD, ha esetén megvan az esélye, hogy a helyszíni Jelszóházirend, mint a felhőbeli jelszóházirend gyengébb. Ebben az esetben a helyi házirend van érvényben. Ez a házirend biztosítja, hogy a helyi házirend van érvényben a felhőben, függetlenül attól egyszeri bejelentkezést biztosít a Jelszókivonat-szinkronizálás vagy az összevonási használatakor.
-   >
 
 1. A jelszó beállítása a művelet sikertelen lesz, ha a hiba kéri a felhasználót, próbálkozzon újra. A művelet sikertelen lehet, mert:
     * A szolgáltatás le lett.
@@ -155,6 +152,7 @@ Jelszavak a rendszer visszaírja a következő helyzetekben:
    * Minden rendszergazda önkiszolgáló kényszerített módosítása jelszó művelet, például a jelszó lejárati ideje
    * Minden rendszergazda önkiszolgáló jelszó-visszaállítási származó a [jelszó-visszaállítási portál](https://passwordreset.microsoftonline.com)
    * Minden végfelhasználói rendszergazda által kezdeményezett jelszó-visszaállítás a [Azure Portalon](https://portal.azure.com)
+   * Minden végfelhasználói rendszergazda által kezdeményezett jelszó-visszaállítás a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com)
 
 ## <a name="unsupported-writeback-operations"></a>A visszaírás nem támogatott műveletek
 
@@ -163,11 +161,10 @@ A jelszóban *nem* visszaírja a következő helyzetek egyikében:
 * **Nem támogatott a végfelhasználói műveletek**
    * A végfelhasználók saját jelszó alaphelyzetbe állítása a PowerShell 1-es verzió, a 2-es vagy az Azure AD Graph API használatával
 * **A rendszergazda nem támogatott műveletek**
-   * Minden végfelhasználói rendszergazda által kezdeményezett jelszó-visszaállítás a [Office felügyeleti portálján](https://portal.office.com)
    * Minden végfelhasználói rendszergazda által kezdeményezett jelszó-visszaállítás a PowerShell 1-es verzió, 2-es vagy az Azure AD Graph API
 
 > [!WARNING]
-> A jelölőnégyzet "felhasználónak kell változtatni a jelszót a következő bejelentkezéskor" a helyszíni Active Directory felügyeleti eszközök például az Active Directory – felhasználók és számítógépek vagy az Active Directory felügyeleti központ használata nem támogatott. Ha a jelszó módosítása a helyi ne jelölje be ezt a beállítást. 
+> A jelölőnégyzet "felhasználónak kell változtatni a jelszót a következő bejelentkezéskor" a helyszíni Active Directory felügyeleti eszközök például az Active Directory – felhasználók és számítógépek vagy az Active Directory felügyeleti központ használata nem támogatott. Ha a jelszó módosítása a helyi ne jelölje be ezt a beállítást.
 
 ## <a name="next-steps"></a>További lépések
 

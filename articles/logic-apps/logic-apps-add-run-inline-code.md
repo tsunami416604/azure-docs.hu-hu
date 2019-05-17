@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: derek1ee, LADocs
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 9ef11eb2099ff617fb4da4b9a924dc3f0550f226
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/14/2019
+ms.openlocfilehash: 0bfa98396ee3afb80b486a5a17959664dfbe603c
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160545"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602115"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Adja hozzá, és a kódrészleteket futtat az Azure Logic Apps használatával beágyazott kódot
 
@@ -23,7 +23,10 @@ A logikai alkalmazás belül kódrészleteket futtatni szeretne, ha a beépítet
 * A JavaScript fut. Több nyelv hamarosan elérhető lesz.
 * Öt másodperc vagy kevesebb befejeződik.
 * Kezeli az adatokat legfeljebb 50 MB-nál.
-* Node.js verzió 8.11.1 használja. További információkért lásd: [Standard beépített objektummal](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects).
+* Node.js verzió 8.11.1 használja. További információkért lásd: [Standard beépített objektummal](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects). 
+
+  > [!NOTE]
+  > A require() függvény nem támogatja a **beágyazott kódot** JavaScript futtatása műveletet.
 
 Ez a művelet a kódtöredék fut, és a kimenetet visszaadja, hogy a kódrészlet a nevű jogkivonatként **eredmény**, amely a logikai alkalmazás a következő műveleteket használhatja. Más esetekben, ahol szeretné a kódot a függvény létrehozása, próbálja meg [egy Azure-függvény meghívásával](../logic-apps/logic-apps-azure-functions.md) a logikai alkalmazásban.
 

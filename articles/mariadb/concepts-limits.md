@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: e191c656c5485377f62073f52dec0b3dbee7537b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b78671cc61a4fe755b908ed9f71052cbd0a70b38
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61041275"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550515"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB korlátozásai
 A következő szakaszok ismertetik a kapacitást, motor támogatása, jogosultság támogatja, adatok adatkezelési utasítást, és az adatbázis-szolgáltatás működési korlátai.
@@ -77,11 +77,14 @@ Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
 - A PITR a funkció használatakor az ugyanezzel a konfigurációval, mint a kiszolgáló-alapú, az új kiszolgáló jön létre.
 - Törölt kiszolgáló visszaállítása nem támogatott.
 
-### <a name="subscription-management"></a>Előfizetés-kezelés
+### <a name="subscription-management"></a>Előfizetések kezelése
 - Dinamikusan előfizetést és erőforráscsoportot az előre létrehozott kiszolgálók áthelyezése jelenleg nem támogatott.
 
 ### <a name="vnet-service-endpoints"></a>Virtuális hálózati Szolgáltatásvégpontok
 - Virtuális hálózati Szolgáltatásvégpontok támogatása csak az általános célú és memóriahasználatra optimalizált kiszolgálók esetében érhető el.
+
+### <a name="storage-size"></a>Tároló mérete
+- Tekintse meg [tarifacsomagok](concepts-pricing-tiers.md) a tároló mérete vonatkozó korlátok tarifacsomag.
 
 ## <a name="current-known-issues"></a>Jelenlegi ismert problémák
 - MariaDB-server-példány a megfelelő verziója a kapcsolat létrejötte után jeleníti meg. A megfelelő kiszolgáló példány motor verziója, amelyet a `select version();` parancsot.

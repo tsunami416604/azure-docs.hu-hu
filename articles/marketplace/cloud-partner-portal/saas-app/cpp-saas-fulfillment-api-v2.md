@@ -1,23 +1,22 @@
 ---
 title: SaaS teljesítése API V2 |} Az Azure Marketplace-en
-description: Ismerteti, hogyan hozhat létre egy SaaS-ajánlat az Azure piactéren, a társított teljesítése V2 API-k használatával.
+description: Ismerteti, hogyan hozhat létre egy SaaS-ajánlat az appsource-ban és az Azure Marketplace-en a társított teljesítése V2 API-k használatával.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pabutler
-ms.openlocfilehash: 433059dc1b1567c5cbcb1091f2d616001d1dbf44
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 551f3be2ca23bc18224d28faeea6a6df80eba1db
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65762267"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823536"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS teljesítése API-k 2-es verzió 
 
-Ez a cikk részletesen, amely lehetővé teszi a független szoftvergyártók (ISV) integrálása az SaaS-alkalmazások számára az API az Azure Piactérrel. Ez az API lehetővé teszi, hogy minden engedélyezett kereskedelmi csatornán részt ISV-alkalmazások: a közvetlen partner által irányított (viszonteladói) és a mező által vezetett.  Az API-t annak listaelem transactable SaaS kínál az Azure Marketplace-en.
-
+Ez a cikk ismerteti az API-t, amely lehetővé teszi a független szoftvergyártók (ISV), hogy az SaaS-alkalmazásokat az appsource-ban és az Azure Marketplace-en. Az API-t a SaaS listázásához követelmény kínál az appsource-ban és az Azure Marketplace-en.
 
 ## <a name="managing-the-saas-subscription-lifecycle"></a>Az SaaS-előfizetési életciklus kezelése
 

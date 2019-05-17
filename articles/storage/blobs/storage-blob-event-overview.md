@@ -9,18 +9,18 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: b03d7d98fe43eacab63f45ccacd7d8dea9598c8e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 146b33c1a52838279f000a7f793902e2f35dbfaa
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142158"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826528"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagálás Blob storage-események
 
 Az Azure Storage-események lehetővé teszik az alkalmazások létrehozását és törlését, a korszerű, kiszolgáló nélküli architektúra használatával blobok reagálni. Így összetettebb kódja vagy költséges és hatékony lekérdezési szolgáltatások nélkül hajtja végre.  Ehelyett eseményt leküld [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) például előfizetők [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), vagy akár a saját egyéni http-figyelőt, és csak akkor Mit kell fizetni.
 
-BLOB storage-események megbízhatóan érkeznek a Event grid szolgáltatás, amely gazdag újrapróbálkozási szabályzatok és a kézbesíthetetlen levelek kézbesítési révén az alkalmazások megbízható kézbesítést szolgáltatásokat biztosít.
+BLOB storage-események megbízhatóan érkeznek a Event grid szolgáltatás, amely gazdag újrapróbálkozási szabályzatok és a kézbesíthetetlen levelek kézbesítési révén az alkalmazások megbízható kézbesítést szolgáltatásokat biztosít. További tudnivalókért lásd: [Event Grid az üzenetek kézbesítését, és ismételje meg](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
 
 Blob storage esemény gyakori forgatókönyvek kép vagy videó feldolgozása, keresési indexelő vagy minden fájl alapú munkafolyamat tartalmazza.  Aszinkron fájlfeltöltéseket egy kiválóan alkalmas eseményeket a rendszer.  Módosítások ritkák, de a forgatókönyvhöz szükséges azonnali válaszképességét, eseményalapú architektúrát különösen hatékony is lehet.
 

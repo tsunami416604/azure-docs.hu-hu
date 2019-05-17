@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 68801f888df55924791188a3f4ff5b718798c9f3
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 3082ca34f2bcb71dd7aa02b4539899997374cfc0
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510574"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595159"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
 
@@ -51,11 +51,12 @@ Az oktatóanyag feltételezi, hogy tisztában van az [Azure-felhőszolgáltatás
 
 Helyileg Azure-előfizetés nélkül is futtathatja az alkalmazást, de a felhőben való közzétételhez előfizetés szükséges. Ha nincs fiókja, [aktiválhatja az MSDN előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668), vagy [regisztrálhat egy ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668).
 
-Az oktatóanyag utasításai az alábbi termékek bármelyikére alkalmazhatók:
+Az oktatóanyagban szereplő utasítások használata a következő termékek valamelyikét:
 
 * Visual Studio 2013
 * Visual Studio 2015
 * Visual Studio 2017
+* Visual Studio 2019
 
 Ha egyikkel sem rendelkezik, lehet, hogy az Azure SDK telepítésekor a Visual Studio automatikusan telepítve lesz.
 

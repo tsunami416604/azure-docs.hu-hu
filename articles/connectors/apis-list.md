@@ -8,26 +8,33 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
-ms.date: 08/23/2018
-ms.openlocfilehash: e008d9fd2734af6a355771c321ecaea9150bcc33
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/08/2019
+ms.openlocfilehash: c02361cf69b98da61a0f551ac037e6d35ea42efc
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722992"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551872"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Az Azure Logic Apps összekötői
 
 Összekötők gyors hozzáférést biztosít az Azure Logic Apps események, adatok és műveleteket más alkalmazások, szolgáltatások, rendszerek, protokollok és platformok között. Az összekötők a logic Apps használatával létrehozott és már rendelkezik az adatok a feladatok végrehajtásához a felhőbeli és helyszíni alkalmazások funkcióinak kiterjesztése.
 
-Miközben a Logic Apps-ajánlatok [~ több mint 200 összekötőt](https://docs.microsoft.com/connectors), ez a cikk bemutatja a népszerű és gyakrabban használt összekötők alkalmazások ezrei, és több millió olyan végrehajtás által az adatok és információk feldolgozása sikeresen használt. Keresse meg a teljes listája megtalálható az összekötők és minden összekötőhöz kapcsolódó információk, például a triggereket, műveletek és -korlátok, tekintse át az összekötő referenciaoldalait alatt [összekötők áttekintése](https://docs.microsoft.com/connectors). Ezenfelül bővebben [triggereket és műveleteket](#triggers-actions).
+Miközben a Logic Apps-ajánlatok [~ több mint 200 összekötőt](https://docs.microsoft.com/connectors), ez a cikk bemutatja a népszerű és gyakrabban használt összekötők alkalmazások ezrei, és több millió olyan végrehajtás által az adatok és információk feldolgozása sikeresen használt. Keresse meg a teljes listája megtalálható az összekötők és minden összekötőhöz kapcsolódó információk, például a triggereket, műveletek és -korlátok, tekintse át az összekötő referenciaoldalait alatt [összekötők áttekintése](https://docs.microsoft.com/connectors). Ezenfelül bővebben [triggereket és műveleteket](#triggers-actions), [Logic Apps díjszabási modell](../logic-apps/logic-apps-pricing.md), és [Logic Apps díjszabását](https://azure.microsoft.com/pricing/details/logic-apps/). 
 
 > [!NOTE]
 > Egy szolgáltatás vagy az API-t, amely nem rendelkezik az összekötő integrálása közvetlenül meghívja a szolgáltatást egy például a HTTP protokollon keresztül, vagy hozzon létre egy [egyéni összekötő](#custom).
 
 Az összekötők beépített triggereket és műveleteket vagy felügyelt összekötőkként érhetők el:
 
-* [**Built-ins**](#built-ins): Ezek a beépített műveletek és eseményindítók a "natív" Azure Logic Apps és logic apps, egyéni ütemezések szerint futtatni, kommunikálni más végpontok, fogadni és válaszolni a kérelmekre és az Azure functions, az Azure API Apps (webalkalmazások), a saját API-hívás létrehozásához a felügyelt és a közzétett Azure API Management és a beágyazott logic apps, kérelmek fogadására. Is használhatja a beépített műveletek, amelyek segítségével rendszerezheti és a logikai alkalmazás munkafolyamat vezérlőelemet, és is dolgozhat az adatokkal.
+* [**Built-ins**](#built-ins): Ezek beépített eseményindítók és műveletek a "natív" Azure Logic Apps és logic apps, egyéni ütemezések szerint futtatni, kommunikálni más végpontok, fogadni és válaszolni a kérelmekre és az Azure functions, az Azure API Apps (webalkalmazások), a saját API-hívás létrehozásához a felügyelt és a közzétett Azure API Management és a beágyazott logic apps, kérelmek fogadására. Is használhatja a beépített műveletek, amelyek segítségével rendszerezheti és a logikai alkalmazás munkafolyamat vezérlőelemet, és is dolgozhat az adatokkal.
+
+  > [!NOTE]
+  > A Logic apps belül egy [integrációs service-környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) közvetlenül hozzáférhet az Azure virtuális hálózatban lévő erőforrásokra.
+  > Az ISE használata esetén beépített triggereket és műveleteket, amely megjeleníti a **Core** címke futtatása a logic apps, az azonos ISE-ben. A Logic apps, a beépített eseményindítók és a beépített műveletek is futtatható, az ISE használata egy díjcsomagot eltér a fogyasztás alapú díjszabással.
+  >
+  > ISEs létrehozásával kapcsolatos további információkért lásd: [csatlakozhat az Azure virtuális hálózatok az Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment). 
+  > Díjszabással kapcsolatos további információkért lásd: [Logic Apps díjszabási modell](../logic-apps/logic-apps-pricing.md).
 
 * **Felügyelt összekötők**: Üzembe helyezett, és a Microsoft felügyeli, ezeket az összekötőket biztosítanak, eseményindítók és műveletek eléréséhez a cloud services, a helyszíni rendszerek és egyaránt, beleértve az Office 365, Azure Blob Storage, SQL Server, Dynamics, Salesforce, a SharePoint és egyéb. Egyes összekötők kifejezetten-vállalatközi (B2B) kommunikáció forgatókönyvek támogatásához, és igényelnek- [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , amely kapcsolódik a logikai alkalmazást. Előtt bizonyos összekötők használatával, akkor előfordulhat, hogy először hozzon létre az Azure Logic Apps által felügyelt kapcsolatok. 
 
@@ -36,7 +43,7 @@ Az összekötők beépített triggereket és műveleteket vagy felügyelt össze
 
   Összekötők besorolt Standard vagy Enterprise. 
   [Vállalati összekötők](#enterprise-connectors) hozzáférést a vállalati rendszerek, például SAP, IBM MQ-val és IBM 3270 díjfizetés mellett. Annak megállapításához, hogy egy összekötő Standard vagy Enterprise, tekintse meg a technikai részleteket az egyes összekötők referenciájának oldalát a [összekötők áttekintése](https://docs.microsoft.com/connectors). 
-  
+
   Is azonosíthatja összekötők használatával kategóriára, bár egyes összekötők több kategóriát is adatbázisközi. 
   SAP például egy vállalati összekötők és a egy a helyszíni összekötőhöz:
 
@@ -47,8 +54,15 @@ Az összekötők beépített triggereket és műveleteket vagy felügyelt össze
   | [**Integrációsfiók-összekötők**](#integration-account-connectors) | Rendelkezésre álló létrehozásakor és a egy integrációs fiókban, ezek az összekötők átalakító kell fizetnie, és XML érvényességének ellenőrzése, kódolása és dekódolandó egybesimított fájlok, és vállalatok – feldolgozni (B2B) rendelkező üzenetek AS2, EDIFACT és X12 protokollok. |
   |||
 
-> [!NOTE]
-> A teljes listája megtalálható az összekötők és minden összekötőhöz kapcsolódó információk, például a műveletek és triggerek, amelyek határozza meg az OpenAPI (korábbi nevén Swagger) leírása, valamint bármely korlátok alapján a teljes listát megtalálja a [összekötők áttekintése ](/connectors/). Díjszabási információkért tekintse meg a [Logic Apps díjszabását](https://azure.microsoft.com/pricing/details/logic-apps/) és a [Logic Apps díjszabási modell](../logic-apps/logic-apps-pricing.md). 
+  > [!NOTE]
+  > A Logic apps belül egy [integrációs service-környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) közvetlenül hozzáférhet az Azure virtuális hálózatban lévő erőforrásokra. Az ISE használata esetén Standard és vállalati összekötők, amely megjeleníti a **ISE** címke futtatása a logic apps, az azonos ISE-ben. Ne jelenjen meg az ISE címke összekötőket futtassa a globális Logic Apps szolgáltatásban.
+  >
+  > A helyszíni rendszerek-beli virtuális hálózathoz csatlakozó behelyezése az ISE-ben, e hálózat, a logic apps közvetlenül hozzáférhetnek ezekhez a rendszerekhez vagy egy összekötőt, amelynek használatával egy **ISE** címke, egy HTTP-művelet vagy egy [egyéni összekötő](#custom). Logic apps és összekötők, amely az ISE-ben használt fut, a díjszabás tervezze meg a fogyasztás alapú díjszabással eltérő. 
+  >
+  > ISEs létrehozásával kapcsolatos további információkért lásd: [csatlakozhat az Azure virtuális hálózatok az Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment).
+  > Díjszabással kapcsolatos további információkért lásd: [Logic Apps díjszabási modell](../logic-apps/logic-apps-pricing.md).
+
+  A teljes listája megtalálható az összekötők és minden összekötőhöz kapcsolódó információk, például a műveletek és triggerek, amelyek határozza meg az OpenAPI (korábbi nevén Swagger) leírása, valamint bármely korlátok alapján a teljes listát megtalálja a [összekötők áttekintése ](/connectors/). Díjszabási információkért tekintse meg a [Logic Apps díjszabási modell](../logic-apps/logic-apps-pricing.md), és [Logic Apps díjszabását](https://azure.microsoft.com/pricing/details/logic-apps/). 
 
 <a name="built-ins"></a>
 
@@ -66,7 +80,7 @@ A Logic Apps biztosít beépített eseményindítók és műveletek, ütemezésa
 
 ### <a name="control-workflow"></a>Vezérlési munkafolyamat
 
-Az alábbiakban a beépített műveletek munkatársaként és a műveletek a logikai alkalmazás munkafolyamat szabályozása:
+A Logic Apps biztosít beépített műveleteket a strukturálja, és a műveletek a logikai alkalmazás munkafolyamat ellenőrzése:
 
 |   |   |   |   | 
 |---|---|---|---| 
@@ -77,7 +91,7 @@ Az alábbiakban a beépített műveletek munkatársaként és a műveletek a log
 
 ### <a name="manage-or-manipulate-data"></a>Adatok módosítására vagy kezelésére
 
-Az alábbiakban a beépített műveleteket a kimeneti adatok és a formátumok használata:  
+A Logic Apps biztosít beépített műveleteket a kimeneti adatok és a formátumok használata:  
 
 |   |   | 
 |---|---| 
@@ -90,7 +104,7 @@ Az alábbiakban a beépített műveleteket a kimeneti adatok és a formátumok h
 
 ## <a name="managed-api-connectors"></a>A felügyelt API-összekötők
 
-A további népszerű összekötők automatizálhatja a feladatokat, folyamatok és munkafolyamatok ezen szolgáltatások vagy a rendszerek a következők:
+A Logic Apps biztosítja ezeket a népszerű standard szintű összekötők automatizálhatja a feladatokat, folyamatok és munkafolyamatok ezen szolgáltatásokkal és rendszerekkel.
 
 |   |   |   |   | 
 |---|---|---|---| 
@@ -100,25 +114,25 @@ A további népszerű összekötők automatizálhatja a feladatokat, folyamatok 
 | [![API-ikon][dynamics-365-icon]<br/>**Dynamics 365<br/>CRM Online-hoz**][dynamics-365-doc] | Csatlakozhat a Dynamics 365-fiók létrehozása és kezelése a rekordokat, cikkek és további. | [![API-ikon][ftp-icon]<br/>**FTP**][ftp-doc] | Csatlakozhat FTP-kiszolgálókat az internetről is elérheti, így működhet együtt a fájlokról és mappákról. | 
 | [![API-ikon][salesforce-icon]<br/>**Salesforce-ban**][salesforce-doc] | Salesforce-fiókjához csatlakozhat, így hozhat létre és kezelheti például a rekordokat, feladatok, objektumok és egyéb elemek. | [![API-ikon][twitter-icon]<br/>**Twitter**][twitter-doc] | Twitter-fiókja kapcsolódni, így kezelheti a tweeteket, követők, az ütemterv és egyéb. A tweetek mentése SQL, az Excel vagy SharePoint. | 
 | [![API-ikon][azure-event-hubs-icon]<br/>**Azure Event Hubs**][azure-event-hubs-doc] | Felhasználását, és tegye közzé az eseményeket egy Eseményközpontba. A logikai alkalmazás az Event hubs használatával például lekérheti kimenetét, és küldje el, amelyek kimenete egy valós idejű elemzési szolgáltatónak. | [![API-ikon][azure-event-grid-icon]<br/>**Azure Event**</br>**rács**][azure-event-grid-doc] | Azure-erőforrások vagy külső erőforrások változásakor egy Event Grid, például által közzétett események figyelése | 
-||||| 
+|||||
 
 <a name="on-premises-connectors"></a>
 
 ## <a name="on-premises-connectors"></a>Helyszíni összekötők 
 
-Íme néhány gyakran használt összekötőket biztosítanak az adatokhoz és erőforrásokhoz való hozzáférés a helyszíni rendszerekben. Mielőtt létrehozna egy kapcsolat a helyszíni rendszerre, előbb futtatnia kell [letöltése, telepítése és beállítása egy helyszíni adatátjárót][gateway-doc]. Ezt az átjárót egy biztonságos kommunikációs csatornát biztosít anélkül, hogy a szükséges hálózati infrastruktúra beállításához kellene. 
+Íme néhány gyakran használt standard szintű összekötők, amely a helyszíni rendszerekkel való hozzáféréshez szükséges adatokat és erőforrásokat biztosít a Logic Apps. Mielőtt létrehozna egy kapcsolat a helyszíni rendszerre, előbb futtatnia kell [letöltése, telepítése és beállítása egy helyszíni adatátjárót][gateway-doc]. Ezt az átjárót egy biztonságos kommunikációs csatornát biztosít anélkül, hogy a szükséges hálózati infrastruktúra beállításához kellene. 
 
 |   |   |   |   |   | 
 |---|---|---|---|---| 
-| ![API-ikon][biztalk-server-icon]<br/>**BizTalk**</br> **Kiszolgáló** | [![API-ikon][file-system-icon]<br/>**fájl</br> rendszer**][file-system-doc] | [![API-ikon][ibm-db2-icon]<br/>**IBM DB2-höz**][ibm-db2-doc] | [![API-ikon][ibm-informix-icon]<br/>**IBM** </br> **Informix**][ibm-informix-doc] | ![API-ikon][mysql-icon]<br/>**MySQL** | 
+| ![API-ikon][biztalk-server-icon]<br/>**BizTalk**</br> **Server** | [![API-ikon][file-system-icon]<br/>**fájl</br> rendszer**][file-system-doc] | [![API-ikon][ibm-db2-icon]<br/>**IBM DB2-höz**][ibm-db2-doc] | [![API-ikon][ibm-informix-icon]<br/>**IBM** </br> **Informix**][ibm-informix-doc] | ![API-ikon][mysql-icon]<br/>**MySQL** | 
 | [![API-ikon][oracle-db-icon]<br/>**Oracle DB**][oracle-db-doc] | ![API-ikon][postgre-sql-icon]<br/>**PostgreSQL** | [![API-ikon][sharepoint-server-icon]<br/>**SharePoint</br> kiszolgáló**][sharepoint-server-doc] | [![API-ikon][sql-server-icon]<br/>**SQL</br> kiszolgáló**][sql-server-doc] | ![API-ikon][teradata-icon]<br/>**Teradata** | 
-||||| 
+|||||
 
 <a name="integration-account-connectors"></a>
 
-## <a name="integration-account-connectors"></a>Integrációs fiókok összekötői 
+## <a name="integration-account-connectors"></a>Integrációs fiókok összekötői
 
-Az alábbiakban a vállalatközi (B2B) megoldások fejlesztése a logikai alkalmazások létrehozásakor és kell fizetnie az összekötőket egy [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), amely keresztül az Enterprise Integration Pack (EIP) az Azure-ban érhető el. Ezt a fiókot hozhat létre és tárolja a B2B összetevők, például a kereskedelmi partnerek, szerződések, térképek, sémák, tanúsítványok és így tovább. Ezek az összetevők használatához az integrációs fiók a logic apps társítani. Ha jelenleg használja a BizTalk Server, ezeket az összekötőket tűnhet ismerős már.
+A Logic Apps biztosít a standard szintű összekötők vállalatközi (B2B) megoldások fejlesztése a logikai alkalmazások létrehozásakor és kell fizetnie egy [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), amely az Enterprise Integration Pack (EIP) keresztül érhető el az Azure-ban. Ezt a fiókot hozhat létre és tárolja a B2B összetevők, például a kereskedelmi partnerek, szerződések, térképek, sémák, tanúsítványok és így tovább. Ezek az összetevők használatához az integrációs fiók a logic apps társítani. Ha jelenleg használja a BizTalk Server, ezeket az összekötőket tűnhet ismerős már.
 
 |   |   |   |   | 
 |---|---|---|---| 
@@ -131,7 +145,7 @@ Az alábbiakban a vállalatközi (B2B) megoldások fejlesztése a logikai alkalm
 
 ## <a name="enterprise-connectors"></a>Vállalati összekötők
 
-A logic apps vállalati rendszerek, például az SAP- és IBM MQ-val érhető el:
+A Logic Apps vállalati összekötőket biztosít fér hozzá a vállalati rendszerek, például az SAP- és IBM MQ-val:
 
 |   |   |   | 
 |---|---|---| 
@@ -172,11 +186,13 @@ Kapcsolatok hozzáférhet a célszolgáltatás vagy a rendszer mindaddig, amíg 
 Hívja az API-k, amelyek egyéni kóddal, vagy nem érhetők el beépített összekötőkként, kiterjesztheti a Logic Apps-platformot [egyéni API-alkalmazások létrehozásának](../logic-apps/logic-apps-create-api-app.md). Emellett [egyéni összekötők létrehozása](../logic-apps/custom-connector-overview.md) a *bármely* REST vagy a SOAP-alapú API-k, amelyek API-k számára elérhetővé minden olyan logikai alkalmazást az Azure-előfizetésében.
 Ahhoz, hogy egyéni API-alkalmazások és összekötők bárki használhatja az Azure nyilvános, is [küldje el a Microsofthoz tanúsítás céljából](../logic-apps/custom-connector-submit-certification.md).
 
-## <a name="get-support"></a>Támogatás kérése
-
-* A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-
-* Küldje el, vagy szavazzon ötleteit az Azure Logic Apps és összekötők, látogasson el a [Logic Apps felhasználói visszajelzések oldalon](https://aka.ms/logicapps-wish).
+> [!NOTE]
+> A Logic apps belül egy [integrációs service-környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) közvetlenül hozzáférhet az Azure virtuális hálózatban lévő erőforrásokra.
+> Ha egyéni összekötők a helyszíni adatátjáró igénylő, és létrehozott egy ISE kívül összekötőket, a logic apps egy ISE-ben is használhatja ezeket az összekötőket.
+>
+> Az ISE belül létrehozott egyéni összekötők nem működnek a helyszíni adatátjáróval. Azonban ezeket az összekötőket közvetlenül hozzáférhet az ISE-ben üzemeltető Azure virtuális hálózathoz csatlakozó helyszíni adatforrásokhoz. Tehát az ISE-ben a logic apps valószínűleg nem szükséges az átjáró azokhoz az erőforrásokhoz való kommunikáció során.
+>
+> ISEs létrehozásával kapcsolatos további információkért lásd: [csatlakozhat az Azure virtuális hálózatok az Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment).
 
 ## <a name="next-steps"></a>További lépések
 

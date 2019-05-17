@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ff291bda87ca4b2b4055e36989b035cf410b3b0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 082abd89cd84fc34180f333b54664d7dddfa0ccf
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60744314"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65561207"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Ismertető a service fabric-fürt
 A Service Fabric fürterőforrás-kezelő több mechanizmust nyújt az fürt leírása. Futásidőben a fürterőforrás-kezelő ezeket az adatokat használja a szolgáltatások a fürtben futó magas rendelkezésre állásának biztosításához. Ezek a szabályok fontos kényszerítése, közben is megkísérli a fürtön belüli erőforrás-használat optimalizálása érdekében.
@@ -33,7 +33,7 @@ A fürterőforrás-kezelő számos funkciót, amely a fürt leírása támogatja
 * Csomópont-kapacitás
 
 ## <a name="fault-domains"></a>Tartalék tartományok
-A tartalék tartományok az koordinált hiba minden olyan területéhez. Egyetlen gép egy tartalék tartományt, (mivel, sikertelen lehet a kiemelt ellátási hibák esetén a meghajtó esetén hibás hálózati adapter belső vezérlőprogramjának a saját, a különböző okok miatt). Ugyanazon az Ethernet-kapcsoló csatlakozik gépek mindegyike ugyanabban a tartalék tartományban, a virtuális gépek megosztása egy egyetlen forrásból áramkimaradás vagy egyetlen helyen. Mivel természetes hardverhiba esetén átfedésben vannak, a tartalék tartományok természetüknél fogva hierarchikus és jelentésekként jelennek meg a Service Fabric URI-k.
+A tartalék tartományok az koordinált hiba minden olyan területéhez. Egyetlen gép egy tartalék tartományt, (mivel, sikertelen lehet a kiemelt ellátási hibák esetén a meghajtó esetén hibás hálózati adapter belső vezérlőprogramjának a saját, a különböző okok miatt). Ugyanazon az Ethernet-kapcsoló csatlakozik gépek mindegyike ugyanabban a tartalék tartományban, a virtuális gépek megosztása egy egyetlen forrásból áramkimaradás vagy egyetlen helyen. Mivel természetes hardverhiba esetén átfedésben vannak, a Tartalék Tartományok természetüknél fogva hierarchikus és jelentésekként jelennek meg a Service Fabric uri-k.
 
 Fontos, hogy a tartalék tartomány megfelelően legyenek beállítva, mivel a Service Fabric ezen információk segítségével biztonságosan helyezze el a szolgáltatásokat. A Service Fabric nem szeretné, hogy egy tartalék tartományt (néhány összetevő hibáját okozta) elvesztését rendelkezik, a szolgáltatás leáll, helyezze el szolgáltatások. Az Azure Service Fabric környezet a tartalék tartomány információk segítségével a környezet által biztosított megfelelően konfigurálja a csomópontok a fürtben az Ön nevében. Service Fabric önálló, a tartalék tartományok határozza meg, amelyek a fürt van beállítva 
 
@@ -78,7 +78,7 @@ Az alábbi ábrán látható, három frissítési tartományt szétteríti a há
 ![Tartalék és frissítési tartományokba, az elhelyezési][Image3]
 </center>
 
-Vannak előnyei és hátrányai, hogy nagy számú frissítési tartomány. Több frissítési tartomány azt jelenti, a frissítés lépéseinek részletesebb, és ezért a csomópontok vagy a szolgáltatások kisebb számú érinti. Ennek eredményeképpen kevesebb szolgáltatások át kell helyeznie egyszerre, a rendszer kevesebb lemorzsolódási bemutatása. Ez általában a megbízhatóság javításához, mivel kisebb, a szolgáltatás hatással van minden olyan problémát jelent meg a frissítés során. Több frissítési tartományt is jelenti, hogy kell-e a többi csomóponton a frissítés hatásainak kezeléséhez kevesebb a rendelkezésre álló pufferbe. Például ha öt frissítési tartományok, a csomópontok az egyes kezelik nagyjából 20 %-a forgalmat. Megnőtt a frissítés frissítési tartományban van szüksége, ha a terhelés általában kell valahol meg. Négy fennmaradó frissítési tartomány van, mivel minden hely számára a teljes forgalom körülbelül 5 %-át kell rendelkeznie. Több frissítési tartomány azt jelenti, hogy a fürt csomópontjain kisebb puffer van szüksége. Vegyük példaként 10 frissítési tartományok inkább rendelkezett. Ebben az esetben minden UD volna csak kell kezelése körülbelül 10 %-a teljes forgalom. Ha egy frissítési útmutató részletesen bemutatja a fürt, minden egyes tartományhoz csak kell készül a teljes forgalom 1.1 % elegendő hellyel rendelkezik. További frissítési tartományok általában lehetővé teszi a csomópontok futtassa magasabb kihasználtságát, mivel kevesebb fenntartott kapacitásra van szüksége. Ugyanez igaz a tartalék tartományok.  
+Vannak előnyei és hátrányai, hogy nagy számú frissítési tartomány. Több frissítési tartomány azt jelenti, a frissítés lépéseinek részletesebb, és ezért a csomópontok vagy a szolgáltatások kisebb számú érinti. Ennek eredményeképpen kevesebb szolgáltatások át kell helyeznie egyszerre, a rendszer kevesebb lemorzsolódási bemutatása. Ez általában a megbízhatóság javításához, mivel kisebb, a szolgáltatás hatással van minden olyan problémát jelent meg a frissítés során. Több frissítési tartományt is jelenti, hogy kell-e a többi csomóponton a frissítés hatásainak kezeléséhez kevesebb a rendelkezésre álló pufferbe. Például ha öt Frissítési Tartományok, a csomópontok az egyes kezelik nagyjából 20 %-a forgalmat. Megnőtt a frissítés frissítési tartományban van szüksége, ha a terhelés általában kell valahol meg. Négy fennmaradó frissítési tartomány van, mivel minden hely számára a teljes forgalom körülbelül 5 %-át kell rendelkeznie. Több frissítési tartomány azt jelenti, hogy a fürt csomópontjain kisebb puffer van szüksége. Vegyük példaként 10 frissítési tartományok inkább rendelkezett. Ebben az esetben minden UD volna csak kell kezelése körülbelül 10 %-a teljes forgalom. Ha egy frissítési útmutató részletesen bemutatja a fürt, minden egyes tartományhoz csak kell készül a teljes forgalom 1.1 % elegendő hellyel rendelkezik. További frissítési tartományok általában lehetővé teszi a csomópontok futtassa magasabb kihasználtságát, mivel kevesebb fenntartott kapacitásra van szüksége. Ugyanez igaz a tartalék tartományok.  
 
 A hátránya, hogy hány frissítési tartományok, hogy a frissítések általában hosszabb időt vesz igénybe. Egy rövid idő alatt után egy frissítési tartományban befejeződött, és a következő frissítése előtt ellenőrzi a Service Fabric várakozik. Ezek az késleltetések bevezetett a frissítés előtt a frissítés előrehalad észlelését hibák engedélyezése. Az egyensúlyt a fogadható el, mert megakadályozza, hogy rossz módosítások befolyásolják a szolgáltatás túl sok egyszerre.
 
@@ -95,13 +95,17 @@ Nincs valós egy környezetben, vagy átfedési módjának korlátozásaihoz tar
 ![Tartalék és frissítési tartomány elrendezések][Image4]
 </center>
 
-Nincs a nem a legjobb választ válassza a kívánt elrendezést, mindegyik rendelkezik, és néhány hátrányai. Ha például a 1FD:1UD modellje könnyen beállítható. Az 1 csomópont modell frissítési tartományonként a legtöbb például milyen személyek szolgálnak. Frissítések során minden egyes csomópont frissítése egymástól függetlenül. Ez a rövid hogyan gépek csoportok lettek frissítve manuálisan az elmúlt hasonló. 
+Nincs a nem a legjobb választ válassza a kívánt elrendezést, mindegyik rendelkezik, és néhány hátrányai. Ha például a 1FD:1UD modellje könnyen beállítható. Az 1 csomópont modell frissítési tartományonként a legtöbb például milyen személyek szolgálnak. Frissítések során minden egyes csomópont frissítése egymástól függetlenül. Ez a rövid hogyan gépek csoportok lettek frissítve manuálisan az elmúlt hasonló.
 
 A leggyakrabban használt modell az FD/UD mátrix, ahol a tartalék és frissítési tartománnyal űrlap-tábla és a csomópontok kerülnek a átlós mentén indítása. Ez az alapértelmezés szerint a Service Fabric-fürtök az Azure-ban használt modell. Sok csomóponttal rendelkező fürtök esetében minden említi hasonló sűrű mátrix keresi.
 
+> [!NOTE]
+> Az Azure-ban üzemeltetett Service Fabric-fürtök nem támogatják a alapértelmezett stratégiát. Csak önálló fürtök a testreszabási kínálnak.
+>
+
 ## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>Tartalék és frissítési tartomány korlátozások és az eredményül kapott viselkedés
 ### <a name="default-approach"></a>*Alapértelmezett módszer*
-Alapértelmezés szerint a fürterőforrás-kezelő megőrzi a szolgáltatások tartalék és frissítési tartományok között. Ez van modellezve a [megkötés](service-fabric-cluster-resource-manager-management-integration.md). A tartalék és frissítési tartomány korlátozás állapotok: "Egy adott szolgáltatás partíció soha nem kell különbséget nagyobb, mint egy szolgáltatási objektumok (állapotmentes szolgáltatás példányainak vagy állapotalapú szolgáltatás replikák) ugyanazon a szinten hierarchia két tartomány közötti számú". Tegyük fel, ez a megkötés "legnagyobb különbség a" garantálja. A tartalék és frissítési tartomány korlátozás megakadályozza, hogy bizonyos áthelyezését vagy a szabályok a fenti szabályt megsértő. 
+Alapértelmezés szerint a fürterőforrás-kezelő megőrzi a szolgáltatások tartalék és frissítési tartományok között. Ez van modellezve a [megkötés](service-fabric-cluster-resource-manager-management-integration.md). A tartalék és frissítési tartomány korlátozás állapotok: "Egy adott szolgáltatás partíció soha nem kell különbséget nagyobb, mint egy szolgáltatási objektumok (állapotmentes szolgáltatás példányainak vagy állapotalapú szolgáltatás replikák) ugyanazon a szinten hierarchia két tartomány közötti számú". Tegyük fel, ez a megkötés "legnagyobb különbség a" garantálja. A tartalék és frissítési tartomány korlátozás megakadályozza, hogy bizonyos áthelyezését vagy a szabályok a fenti szabályt megsértő.
 
 Lássunk erre egy példát. Tegyük fel, hogy van-e a hat csomópont révén az öt tartalék tartományokkal és öt frissítési tartományok konfigurált egy fürtöt.
 
@@ -121,12 +125,12 @@ A következő fájt az elrendezést és a tartalék és frissítési tartomány 
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |R1 | | | | |1 |
-| **UD1** | |R2 | | | |1 |
-| **UD2** | | |R3 | | |1 |
-| **UD3** | | | |R4 | |1 |
-| **UD4** | | | | |R5 |1 |
-| **FDTotal** |1 |1 |1 |1 |1 |- |
+| **UD0** |R1 | | | | |1. |
+| **UD1** | |R2 | | | |1. |
+| **UD2** | | |R3 | | |1. |
+| **UD3** | | | |R4 | |1. |
+| **UD4** | | | | |R5 |1. |
+| **FDTotal** |1. |1 |1 |1 |1. |- |
 
 *Elrendezés 1*
 
@@ -137,12 +141,12 @@ Most nézzük, mi történne N6 helyett N2 kellett használtuk. Hogyan szeretné
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |R1 | | | | |1 |
-| **UD1** |R5 | | | | |1 |
-| **UD2** | | |R2 | | |1 |
-| **UD3** | | | |R3 | |1 |
-| **UD4** | | | | |R4 |1 |
-| **FDTotal** |2 |0 |1 |1 |1 |- |
+| **UD0** |R1 | | | | |1. |
+| **UD1** |R5 | | | | |1. |
+| **UD2** | | |R2 | | |1. |
+| **UD3** | | | |R3 | |1. |
+| **UD4** | | | | |R4 |1. |
+| **FDTotal** |2 |0 |1 |1 |1. |- |
 
 *Elrendezés 2*
 
@@ -153,10 +157,10 @@ Ez az elrendezés megsérti a definíció "legnagyobb különbség a" garancia a
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** | | | | | |0 |
 | **UD1** |R5 |R1 | | | |2 |
-| **UD2** | | |R2 | | |1 |
-| **UD3** | | | |R3 | |1 |
-| **UD4** | | | | |R4 |1 |
-| **FDTotal** |1 |1 |1 |1 |1 |- |
+| **UD2** | | |R2 | | |1. |
+| **UD3** | | | |R3 | |1. |
+| **UD4** | | | | |R4 |1. |
+| **FDTotal** |1. |1 |1 |1 |1. |- |
 
 *Elrendezés 3*
 
@@ -214,12 +218,12 @@ Az összes szükséges feltételek teljesülnek, mert a fürterőforrás-kezelő
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |R1 | | | | |1 |
-| **UD1** |R2 | | | | |1 |
+| **UD0** |R1 | | | | |1. |
+| **UD1** |R2 | | | | |1. |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | | | |0 |
-| **UD4** | | | | |R5 |1 |
-| **FDTotal** |2 |1 |1 |0 |1 |- |
+| **UD4** | | | | |R5 |1. |
+| **FDTotal** |2 |1. |1 |0 |1. |- |
 
 *Elrendezés 4*
 
@@ -230,11 +234,11 @@ A negyedik elrendezés és az öt TargetReplicaSetSize szeretnének vissza. N1 a
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |– |N/A |N/A |N/A |N/A |– |
-| **UD1** |R2 | | | | |1 |
+| **UD1** |R2 | | | | |1. |
 | **UD2** | |R3 |R4 | | |2 |
-| **UD3** | | | |R1 | |1 |
-| **UD4** | | | | |R5 |1 |
-| **FDTotal** |1 |1 |1 |1 |1 |- |
+| **UD3** | | | |R1 | |1. |
+| **UD4** | | | | |R5 |1. |
+| **FDTotal** |1. |1 |1 |1 |1. |- |
 
 *Elrendezés 5*
 

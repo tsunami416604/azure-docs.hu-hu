@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 7ad2c9dd89843a36a786eeefee8403d32027e11c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f60236163cd88822c384bd356a1770d616639174
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61444367"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596623"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Töltse fel a fájlokat az eszközről a felhőbe, az IoT hubbal
 
@@ -46,7 +46,7 @@ Ez az oktatóanyag végén két Node.js-konzolalkalmazással futtassa:
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* A Node.js 4.0.x vagy újabb verziója.
+* NODE.js-verzió 10.0.x vagy újabb.
 
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
 

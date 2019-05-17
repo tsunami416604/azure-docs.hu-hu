@@ -9,17 +9,17 @@ services: iot-hub
 ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
-ms.openlocfilehash: baefd05b562d688b662bf988c7b36a0e9cd154b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2c3c3988193242cd0afe0135b019c7e6f73b59c
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61441848"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596719"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>Az IoT Hub (Node) szolgáltatással felhőből az eszközre irányuló üzenetek küldéséhez
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Bemutatás
 Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amellyel engedélyezheti a megbízható és biztonságos kétirányú kommunikációt több millió eszköz között, és megoldást biztosít a háttérrendszer. A [IoT Hub használatának első lépései](quickstart-send-telemetry-node.md) az oktatóanyag bemutatja, hogyan hozzon létre egy IoT hubot, azt az eszközidentitás létrehozását és kód az eszköz a felhőbe irányuló üzeneteket küld egy szimulált eszközalkalmazás.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
@@ -44,7 +44,7 @@ Ez az oktatóanyag végén két Node.js-konzolalkalmazással futtassa:
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* A Node.js 4.0.x vagy újabb verziója.
+* NODE.js-verzió 10.0.x vagy újabb.
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial) mindössze néhány perc alatt.)
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>Üzenetek fogadása a szimulált eszköz alkalmazásban

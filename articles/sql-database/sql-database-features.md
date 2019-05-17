@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: cbdc9ff3fc56b96b6b7817946abc0a8fb0f4259c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/10/2019
+ms.openlocfilehash: 8a7f334984d92707e4afa7cd595197e4dea83f33
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150926"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546495"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Az Azure SQL Database és az SQL Server összehasonlítása
 
@@ -149,7 +149,7 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 | [ideiglenes táblákkal](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql#database-scoped-global-temporary-tables-azure-sql-database) | A helyi és adatbázishoz kötődő globális ideiglenes táblák | Helyi és a példány hatókörű globális ideiglenes táblák |
 | [Historikus táblák](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | [Igen](sql-database-temporal-tables.md) | [Igen](sql-database-temporal-tables.md) |
 | Időzóna kiválasztása | Nem | [Yes(Preview)](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone) |
-| Fenyegetések észlelése|  [Igen](sql-database-threat-detection.md)|[Igen](sql-database-managed-instance-threat-detection.md)|
+| Veszélyforrások detektálása|  [Igen](sql-database-threat-detection.md)|[Igen](sql-database-managed-instance-threat-detection.md)|
 | [Nyomkövetési jelzők](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Nem | Nem |
 | [Változók](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | Igen | Igen |
 | [Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Igen – általános célú és a kritikus fontosságú üzleti szolgáltatásszintek csak| [Igen](transparent-data-encryption-azure-sql.md) |

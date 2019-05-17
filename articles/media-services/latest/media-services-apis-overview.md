@@ -12,14 +12,16 @@ ms.topic: article
 ms.date: 05/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 4c5b30ab075bbca22b6a58ccf65e55d332820937
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 3ce20b56fc2cbebbed4b525eeccc2c12d14cccc3
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406542"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65556241"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Fejlesztés a Media Services v3 API-k
+
+A fejlesztők is használhatja a Media Services [REST API-val](https://aka.ms/ams-v3-rest-ref) vagy klienskódtárak, amelyek lehetővé teszik a REST API használatával hozhat létre egyszerűen, kezelésére és karbantartására használható egyéni multimédiás munkafolyamatokat. A [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API az OpenAPI-specifikáció (korábbi nevén Swagger) alapul.
 
 Ez a cikk ismerteti a szabályokat, amelyek a alkalmazni az entitások és API-k, a Media Services v3 fejlesztése során.
 
@@ -98,6 +100,32 @@ A Media Services a következő hosszú ideig futó műveleteket tartalmazza:
 * Streamvégpontok leállítása
 * Méretezési csoport Streamvégpontok
 
+
+## <a name="sdks"></a>SDK-k
+
+> [!NOTE]
+> Az Azure Media Services v3 SDK-k nem szálbiztos garantáltan. Ha több szálon futó alkalmazás fejlesztése, hozzá kell adnia a saját szál szinkronizálási logika az ügyfél védelméről, vagy használjon egy új AzureMediaServicesClient objektum szálanként. Is kell óvatos, ha az ügyfél (például egy HttpClient-példányt .NET) kódját által biztosított választható objektumok által bevezetett többszálas problémákat.
+
+|SDK|Leírások|
+|---|---|
+|[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-referencia](https://aka.ms/ams-v3-dotnet-ref)|
+|[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java-referencia](https://aka.ms/ams-v3-java-ref)|
+|[Python SDK](https://aka.ms/ams-v3-python-sdk)|[Python-referencia](https://aka.ms/ams-v3-python-ref)|
+|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk) |[Node.js-referencia](https://aka.ms/ams-v3-nodejs-ref)| 
+|[Go SDK](https://aka.ms/ams-v3-go-sdk) |[Go-referencia](https://aka.ms/ams-v3-go-ref)|
+|[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
+
+### <a name="see-also"></a>Lásd még
+
+- [EventGrid .NET SDK-t, amely tartalmazza a Media Services-események](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
+- [A Media Services-események definíciók](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
+
+## <a name="azure-media-services-explorer"></a>Azure Media Services Explorer
+
+[Az Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) egy olyan eszköz, amely számára szeretne további tudnivalók a Media Services Windows-ügyfelek számára érhető el. AMSE egy Winforms /C# feltöltése, letöltése, kódolás, VOD-adatfolyam és tartalmat a Media Services élő alkalmazás. Az AMSE eszköz olyan ügyfelek, akik a Media Services teszteléséhez kód írása nélkül. Az AMSE kódot szeretne kifejleszteni a Media Services használatával ügyfeleink biztosítunk erőforrásként.
+
+AMSE, egy nyílt forráskódú projektje, a Közösség által biztosított támogatás (problémák jelenteni lehet https://github.com/Azure/Azure-Media-Services-Explorer/issues). A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik. További információ: a [Gyakori](https://opensource.microsoft.com/codeofconduct/faq/) , vagy forduljon opencode@microsoft.com a további kérdéseit és észrevételeit.
+
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>A Media Services entitások szűrési, rendezési, stránkování
 
 Lásd: [szűrése, rendezése, az Azure Media Services entitások lapozás](entities-overview.md)
@@ -108,4 +136,7 @@ Tekintse meg a [Azure Media Services-Közösség](media-services-community.md) k
 
 ## <a name="next-steps"></a>További lépések
 
-[A Media Services v3 API SDK-k és eszközök használata a fejlesztés megkezdése](developers-guide.md)
+* [A Java Media Services-csatlakozáshoz](configure-connect-java-howto.md)
+* [.NET-keretrendszerrel történő Media Services-csatlakozáshoz](configure-connect-dotnet-howto.md)
+* [Kapcsolódás a Media Services a node.js használatával](configure-connect-nodejs-howto.md)
+* [A Python a Media Services-csatlakozáshoz](configure-connect-python-howto.md)

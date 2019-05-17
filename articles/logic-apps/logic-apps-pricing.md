@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 03/25/2019
-ms.openlocfilehash: 7e1868dd5ce62c28c9a8aac724862c58a5e0e1da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3d06d3c0f9c86b4fe6495632b48051fd69dc663
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60598463"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544542"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Az Azure Logic Apps díjszabási modell
 
@@ -25,7 +25,7 @@ ms.locfileid: "60598463"
 
 ## <a name="consumption-pricing-model"></a>Használatalapú díjszabási modellje
 
-Új logic Apps, amely a nyilvános vagy "globális" az Azure Logic Apps szolgáltatásban akkor csak azért fizet, használja. Ezek a logic apps fogyasztásalapú terv és díjszabási modell használata. A logikai alkalmazás definíciójában minden lépése egy műveletet. Ha például műveletek a következők: 
+Új logic Apps, amely a nyilvános vagy "globális" az Azure Logic Apps szolgáltatásban akkor csak azért fizet, használja. Ezek a logic apps fogyasztásalapú terv és díjszabási modell használata. A logikai alkalmazás definíciójában minden lépése egy műveletet. Ha például műveletek a következők:
 
 * Eseményindítók, amelyek speciális műveleteket. Minden logikai alkalmazás első lépéseként eseményindító szükséges.
 * "Beépített" vagy a natív műveleteket, például HTTP-hívások Azure Functions és az API Management, és így tovább
@@ -38,12 +38,16 @@ Az Azure Logic Apps-mérőszámai összes műveletet, amely a logikai alkalmazá
 
 ## <a name="fixed-pricing-model"></a>Rögzített díjszabási modell
 
-Egy [ *integrációs szolgáltatás környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) módon biztosít a saját, elkülönített és dedikált hozhat létre és futtassa a logic apps egy Azure virtuális hálózatban lévő erőforrások eléréséhez. Az új logikai alkalmazásokat, amelyek az ISE-ben futtatható a fix havi díja a beépített műveletek, a standard szintű összekötők fizet. Az ISE-ben is tartalmaz egy ingyenes vállalati összekötőt, amely a kívánt számú kapcsolatot foglal magában. További vállalati összekötők használata a vállalati használati díj alapján kell fizetnie. 
+Egy [ *integrációs szolgáltatás környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) módon biztosít a saját, elkülönített és dedikált hozhat létre és futtassa a logic apps egy Azure virtuális hálózatban lévő erőforrások eléréséhez. Az ISE-ben futtatható új logic Apps fizet fix havi díja a beépített műveletek, eseményindítók és a standard szintű összekötők.
 
-Az ISE alapegység javította a kapacitást, ha a kapacitás növelése érdekében van szüksége, [több skálázási egység hozzáadása](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity), vagy a létrehozás során vagy később.
+Az ISE-ben is tartalmaz egy ingyenes vállalati összekötőt, amely a kívánt számú kapcsolatot foglal magában. További vállalati összekötők használata a vállalati használati díj alapján kell fizetnie.
 
 > [!NOTE]
-> Az ISE-ben van [ *nyilvános előzetes verzióban*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Díjszabási információkért tekintse meg a [Azure Logic Apps díjszabási](https://azure.microsoft.com/pricing/details/logic-apps).
+> Az ISE-ben, a beépített eseményindítók és műveletek megjelenítése a **Core** címkét, és futtassa a logic Apps a azonos ISE-ben. Standard és vállalati összekötők, amelyek megjelenítik a **ISE** címke futtatása a logic apps, az azonos ISE-ben. Ne jelenjen meg az ISE címke összekötőket futtassa a globális Logic Apps szolgáltatásban.
+
+Az ISE alapegység javította a kapacitást, ha a kapacitás növelése érdekében van szüksége, [több skálázási egység hozzáadása](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity), vagy a létrehozás során vagy később. 
+
+Díjszabási információkért tekintse meg a [Azure Logic Apps díjszabási](https://azure.microsoft.com/pricing/details/logic-apps).
 
 <a name="connectors"></a>
 
@@ -83,7 +87,7 @@ Hurkok belül futó műveletek, az Azure Logic Apps száma minden műveletet a h
 Le van tiltva a logic apps nem kell fizetnie, mert azok le van tiltva, nem hozható létre új példányokat.
 Miután letiltja az egy logikai alkalmazást, a jelenleg futó példányok eltarthat egy ideig, mielőtt teljes mértékben meggátolni.
 
-## <a name="integration-accounts"></a>Integration-fiókok
+## <a name="integration-accounts"></a>Integrációs fiókok
 
 Használatalapú díjszabás vonatkozik [integrációs fiókok](logic-apps-enterprise-integration-create-integration-account.md) , ismerje meg, fejlesztheti és tesztelheti a [B2B- és EDI](logic-apps-enterprise-integration-b2b.md) és [XML-feldolgozás](logic-apps-enterprise-integration-xml.md) szolgáltatások Azure Logic Apps nélkül További költség.
 Egy integrációs fiókban rendelkezhet minden egyes Azure-régióban. Minden integrációs fiók adott is tárolhatja [összetevők számú](../logic-apps/logic-apps-limits-and-config.md), többek között a kereskedelmi partnerek, szerződések, térképeket, sémákat, szerelvényeket, tanúsítványok, kötegkonfigurációk és így tovább.

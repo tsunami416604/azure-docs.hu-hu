@@ -3,8 +3,8 @@ title: Az Azure hozzáférési Panel bővítmény telepítése Internet Explorer
 description: Hogyan lehet az Internet Explorer-bővítmény a saját alkalmazások portál telepítése a csoportházirenddel.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/08/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7dfdd46714d367b61248d9376ce3e8888bb1ef7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9b6f069489738e9dceeee350a36aa2b45715a314
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292393"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65825034"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>A hozzáférési Panel bővítmény telepítése csoportházirend használatával az Internet Explorer
 Ez az oktatóanyag bemutatja, hogyan csoportházirend használatával távolról telepíteni a felhasználók gépein az Internet Explorer a hozzáférési Panel bővítményt. A bővítmény szükséges az Internet Explorer-felhasználók, akik alkalmazásokat használatával vannak konfigurálva, be kell jelentkeznie az [jelszóalapú egyszeri bejelentkezés](what-is-single-sign-on.md#password-based-sso).

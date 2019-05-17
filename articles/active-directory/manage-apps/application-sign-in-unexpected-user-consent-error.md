@@ -3,8 +3,8 @@ title: Váratlan hiba történt, amikor beleegyezést ad egy alkalmazás |} A Mi
 description: A cikk ismerteti, beleegyezik abba, hogy egy alkalmazás, és mit tehet velük kapcsolatban a folyamat során előforduló hibák
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89c01202e0d7d7ca0f37b89d5473f96873c52606
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6dff3be9a9bc7fd897f340e5fe6a4775a4914810
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292146"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65824940"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Váratlan hiba történt, amikor beleegyezést ad egy alkalmazás
 

@@ -2,41 +2,36 @@
 title: Az Azure-előfizetés tulajdonjogának átruházása másik fiókra |} A Microsoft Docs
 description: Ismerteti, hogyan viheti át az Azure-előfizetés és a egy másik felhasználó a folyamattal kapcsolatos néhány gyakori kérdések (GYIK)
 keywords: átviteli előfizetés azure-előfizetéssel, azure, azure-előfizetés áthelyezése egy másik azure-fiók módosítása előfizetés tulajdonosa, azure-előfizetés átruházása másik fiókra
-services: ''
-documentationcenter: ''
-author: genlin
-manager: adpick
-editor: ''
+author: bandersmsft
+manager: amberb
 tags: billing,top-support-issue
-ms.assetid: c8ecdc1e-c9c5-468c-a024-94ae41e64702
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/16/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ffebdd5b88603113dd7624e97dcf7353ab5d1ba
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: b3f070cafa026679eb9322ac7ba2eafe4c7e233d
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605563"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826745"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés tulajdonjogának átruházása másik fiókra
 
 Az előfizetés egy másik felhasználó módosíthatja a Fiókadminisztrátor és kézi előfizetés számlázási tulajdonjogát át az Account Center webhelyen ruházhatja át. Ha módosítani szeretné az előfizetés egy másik ajánlatra, lásd: [Váltás másik ajánlatra az Azure-előfizetés](billing-how-to-switch-azure-offer.md).
 
 > [!IMPORTANT]
-> 
+>
 > Új Azure AD-előfizetés átvitele esetén a bérlőben, az összes szerepkör-hozzárendelések [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) véglegesen törlődnek a forrás-bérlőből, és nem lesznek áttelepítve a cél-bérlőhöz. Akkor is, manuálisan újra létrehozni a felügyelt identitások az Azure-erőforrásokhoz. További információkért lásd: [– gyakori kérdések és ismert problémái felügyelt identitások](../active-directory/managed-identities-azure-resources/known-issues.md).
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Azure-előfizetés tulajdonjogának átruházása
 
 > [!VIDEO https://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/Transfer-an-Azure-subscription/player]
->
->
+
 
 1. Jelentkezzen be a következő [Azure Account Center](https://account.windowsazure.com/Subscriptions) fiókadminisztrátorként Ismerje meg, hogy ki-e az előfizetés fiókjának rendszergazdája, lásd: [– gyakori kérdések](#faq).
 
@@ -51,7 +46,7 @@ Az előfizetés egy másik felhasználó módosíthatja a Fiókadminisztrátor �
 1. Adja meg a címzettet.
 
    > [!IMPORTANT]
-   > 
+   >
    > Új Azure AD-előfizetés átvitele esetén a bérlőben, az összes szerepkör-hozzárendelések [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) véglegesen törlődnek a forrás-bérlőből, és nem lesznek áttelepítve a cél-bérlőhöz. Akkor is, manuálisan újra létrehozni a felügyelt identitások az Azure-erőforrásokhoz. További információkért lásd: [– gyakori kérdések és ismert problémái felügyelt identitások](../active-directory/managed-identities-azure-resources/known-issues.md).
 
    ![Átviteli előfizetés párbeszédpanel](./media/billing-subscription-transfer/image2.PNG)
@@ -68,22 +63,22 @@ Az előfizetés egy másik felhasználó módosíthatja a Fiókadminisztrátor �
 
 <a id="EA"></a>
 
-## <a name="transfer-subscription-ownership-for-enterprise-agreement-ea-customers"></a>Előfizetés tulajdonjogának átadása az ügyfelek a nagyvállalati szerződés (EA)
+## <a name="transfer-subscription-ownership-for-ea-customers"></a>Nagyvállalati szerződéssel rendelkező ügyfelek az előfizetés tulajdonjogának átadása
 
 A vállalati adminisztrátor átadhatja az előfizetések tulajdonjogát egy adott regisztráción belül. Első lépésként lásd [Transfer fiók tulajdonjogának](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription) az EA-portálon.
 
-## <a name="next-steps-after-accepting-ownership-of-a-subscription"></a>Egy előfizetés tulajdonjogának elfogadásával követő lépések
+## <a name="next-steps-after-accepting-ownership"></a>Tulajdonjog elfogadásával követő lépések
 
 1. Most már áll a fiók rendszergazdája. Tekintse át, és más RBAC-szerepkörök, a szolgáltatás-rendszergazda és Társrendszergazdák frissítése. További tudnivalókért lásd: [hozzáadása vagy módosítása az Azure-előfizetés rendszergazdái](billing-add-change-azure-subscription-administrator.md) és [rbac-RÓL és az Azure portal-hozzáférés kezelése](../role-based-access-control/role-assignments-portal.md).
 1. Ez az előfizetés-szolgáltatások, beleértve a társított hitelesítő adatok frissítése:
    1. Felügyeleti tanúsítvány, amely a felhasználó-előfizetések erőforrásaihoz való rendszergazdai engedélyeket kap. További információkért lásd: [létrehozása és feltöltése, egy felügyeleti tanúsítvány az Azure-hoz](../cloud-services/cloud-services-certs-create.md)
    1. Hozzáférési kulcsok szolgáltatásokhoz, például tárolási. További információkért lásd: [tudnivalók az Azure storage-fiókok](../storage/common/storage-create-storage-account.md)
-   1. Távoli hozzáférési hitelesítő adatok, szolgáltatások, például az Azure Virtual Machines. 
+   1. Távoli hozzáférési hitelesítő adatok, szolgáltatások, például az Azure Virtual Machines.
 1. Ha dolgozik egy partnerrel, fontolja meg a Partnerazonosítót. Ebben az előfizetésben frissítése. A partnerazonosító Társítását a frissítheti a [az Azure portal](https://portal.azure.com).
 
 <a id="supported"></a>
 
-## <a name="whats-supported"></a>Mit támogat:
+## <a name="supported-offers"></a>Támogatott ajánlatok
 
 Önkiszolgáló előfizetés átadása az ajánlatok és az alábbi táblázatban szereplő előfizetés-típusok érhető el. Jelenleg nem tudja áthelyezni egy ingyenes próbaverzióra vagy [Azure a nyílt (aio-ra)](https://azure.microsoft.com/offers/ms-azr-0111p/) előfizetések. Megkerülő megoldásért tekintse meg a [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md). Át más előfizetésekre, például az [szponzorálási](https://azure.microsoft.com/offers/ms-azr-0036p/) vagy támogatási csomagok, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
@@ -119,7 +114,12 @@ Az erőforrások, például virtuális gépek, a lemezek és a websites átvitel
 
 ### <a id="no-button"></a> Miért nem látom, hogy az "Előfizetés átadására" gomb?
 
-Sajnos az önkiszolgáló előfizetés-átadás nem érhető el az ajánlat vagy országát/régióját. Az előfizetés átadására irányuló [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Sajnos az önkiszolgáló előfizetés-átadás nem érhető el az ajánlatot. A támogatott ajánlatok listájának megtekintése a [ajánlatok támogatott](#supported-offers) című szakaszát.
+
+### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>Tudok át a tulajdonjogot egy másik országban fiókja?
+
+Sajnos az Azure nem engedélyezi az adatátvitelt közötti országban. Az előfizetés átadására irányuló ország, platformfüggetlen [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
 
 ### <a name="does-a-subscription-transfer-result-in-any-service-downtime"></a>Az előfizetés átadása bármely szolgáltatás állásidőt eredményez?
 
@@ -175,3 +175,7 @@ Ha az előfizetés tulajdonjogának nem lehet manuálisan áttelepítheti az er�
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolatfelvétel.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+
+## <a name="next-steps"></a>További lépések
+
+- Tekintse át, és más RBAC-szerepkörök, a szolgáltatás-rendszergazda és Társrendszergazdák frissítése. További tudnivalókért lásd: [hozzáadása vagy módosítása az Azure-előfizetés rendszergazdái](billing-add-change-azure-subscription-administrator.md) és [rbac-RÓL és az Azure portal-hozzáférés kezelése](../role-based-access-control/role-assignments-portal.md).

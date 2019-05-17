@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e611f1564896cfdecb3ce34ab7c5361e5200b48a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3306e888970d99132d17d4ccf967f074302412ca
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60254125"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595449"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Ismerkedés az Azure Metrikaböngésző
 
@@ -24,7 +24,7 @@ Az Azure Monitor metrikaböngészőjének összetevő, amely lehetővé teszi a 
 
 1. Próbálja ki [dimenzió szűrők alkalmazása és a felosztás](#apply-dimension-filters-and-splitting). A szűrők és a felosztás, elemezheti, hogy melyik szegmens a mérőszám a teljes metrikaérték hozzájárul, és lehetséges kiugró értékek azonosításához.
 
-1. Használat [speciális beállítások](#advanced-chart-settings-and-next-steps) szabhatja testre a diagram az irányítópultokon rögzítés előtt. [Riasztások beállítása](alerts-metric-overview.md) , hogy értesítést kapjon, amikor metrika értéke meghaladja a, vagy a küszöbérték alá csökken.
+1. Használat [speciális beállítások](#advanced-chart-settings) szabhatja testre a diagram az irányítópultokon rögzítés előtt. [Riasztások beállítása](alerts-metric-overview.md) , hogy értesítést kapjon, amikor metrika értéke meghaladja a, vagy a küszöbérték alá csökken.
 
 ## <a name="create-your-first-metric-chart"></a>Az első metrikadiagram létrehozása
 
@@ -32,7 +32,7 @@ Metrikadiagram, az erőforrás, erőforráscsoport, előfizetés vagy az Azure M
 
 1. Az erőforrás-választó, válassza ki azt az erőforrás, amelynek meg szeretné tekinteni a metrikákat. (Az erőforrás előre kiválasztott, ha megnyitotta **metrikák** keretén belül egy adott erőforrás).
 
-    > ![Erőforrás kiválasztása](./media/metrics-getting-started/resource-picker.png)
+    > ![Válasszon erőforrást](./media/metrics-getting-started/resource-picker.png)
 
 2. Az egyes erőforrásokat válasszon ki egy névteret. A névtér csak egy módja metrikák rendszerezheti, hogy könnyen megtalálhassa őket. Ha például tárfiókban elérhető metrikák fájlok, táblák, Blobok és üzenetsorok tárolására szolgáló különálló névterek. Számos erőforrástípusok csak egy névtérrel rendelkezzen.
 
@@ -61,12 +61,13 @@ Alapértelmezés szerint a diagram bemutatja a metrikák adatait a legutóbbi 24
 
 Lásd: [példák a diagramok](metric-chart-samples.md) , szűrés és a felosztás alkalmazott. A cikk ismerteti a lépéseket a diagramok konfigurálásához használt.
 
-## <a name="advanced-chart-settings-and-next-steps"></a>Speciális diagram beállításai és a további lépésekről
+## <a name="advanced-chart-settings"></a>Speciális diagram beállításai
 
 Diagram stílus, cím, és a speciális diagram beállításainak módosítása. Miután végzett a testreszabás, rögzítheti is egy irányítópultot, hogy mentse a munkáját. Metrikák riasztásokat is lehet konfigurálni. Hajtsa végre a [termékdokumentáció](metrics-charts.md) ezeket és más speciális funkciókat az Azure Monitor metrikaböngészőjének.
 
 ## <a name="next-steps"></a>További lépések
 
+* [Fejlett funkcióira Metrikaböngészőt ismertetése](metrics-charts.md)
+* [Hibaelhárítás a Metrikaböngészőben](metrics-troubleshoot.md)
 * [Rendelkezésre álló metrikák az Azure-szolgáltatások listáját lásd:](metrics-supported.md)
-* [További információ a speciális funkcióit Metrikaböngésző](metrics-charts.md)
 * [Példák: konfigurált diagramok](metric-chart-samples.md)

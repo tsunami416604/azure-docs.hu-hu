@@ -3,8 +3,8 @@ title: Az Azure ad-ben a vállalati alkalmazásokhoz SAML-jogkivonatban kiadott 
 description: Ismerje meg az Azure AD-ben a vállalati alkalmazásokhoz SAML-jogkivonatban kiadott jogcímek testreszabása.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b137b8cd4e3a2b7a308170904e9b3d09b11137f9
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 4c1f8640918d433956935e9428e23aac59e36334
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231342"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65764663"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: Vállalati alkalmazásokhoz SAML-jogkivonatban kiadott jogcímek testreszabása
 
@@ -121,7 +121,7 @@ A jogcímek átalakítások funkciók is használható.
 | **Extract() - egyeztetése előtt** | A karakterláncrészt adja vissza, amíg meg nem találja a megadott értéket.<br/>Például ha a bemeneti érték "BSimon_US", a megfelelő értéke "_US", akkor az a jogcím-kimenet "BSimon". |
 | **Extract() - kapcsolódó között** | A karakterláncrészt adja vissza, amíg meg nem találja a megadott értéket.<br/>Például ha a bemeneti érték "Finance_BSimon_US", az első egyező értéke "Finance_", a második egyező érték "_US", akkor a kimenete a jogcím "BSimon". |
 | **ExtractAlpha() - Prefix** | A karakterlánc a előtag betűrend szerinti rendezés részét adja vissza.<br/>Például ha a bemeneti érték "BSimon_123", majd visszaküldi "BSimon". |
-| **ExtractAlpha() - Suffix** | A karakterlánc utótagja betűrend szerinti rendezés részét adja vissza.<br/>Például ha a bemeneti érték "123_Simon", majd visszaküldi "BSimon". |
+| **ExtractAlpha() - Suffix** | A karakterlánc utótagja betűrend szerinti rendezés részét adja vissza.<br/>Például ha a bemeneti érték "123_Simon", majd visszaküldi "Simon". |
 | **ExtractNumeric() - Prefix** | A karakterlánc a előtag numerikus részét adja vissza.<br/>Például ha a bemeneti érték "123_BSimon", majd visszaküldi "123". |
 | **ExtractNumeric() - Suffix** | A karakterlánc numerikus utótagot részét adja vissza.<br/>Például ha a bemeneti érték "BSimon_123", majd visszaküldi "123". |
 | **IfEmpty()** | Ha a bemeneti adat null értékű vagy üres jelenít meg egy attribútum vagy konstans.<br/>Például, ha azt szeretné, a kimenetben egy extensionattribute tárolva, ha az adott felhasználó számára az employeeid üres attribútum. Ehhez a következő értékek állíthatók be:<br/>A paraméter 1(input): user.employeeid<br/>(Kimenet) 2. paraméter: user.extensionattribute1<br/>(Ha nem egyezik meg a kimenet) 3. paraméter: user.employeeid |

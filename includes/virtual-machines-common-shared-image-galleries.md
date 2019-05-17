@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 0fe1de9bb674c66d1b665de25ee579bc86e42c75
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 4063e79a9415ac35b09cc77d0110c04e191b49c7
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192364"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546784"
 ---
 Megosztott lemezkép-katalógus szolgáltatása segít kialakítani a struktúra és a szervezet a felügyelt VM-rendszerképeit körül. Megosztott kép katalógusok adja meg:
 
@@ -49,7 +49,7 @@ Lemezkép-definíciókat kép verziói logikai jellegű csoportosítását. A re
 
 Minden rendszerkép definíciójában három kombinációja – a használt paraméterek **közzétevő**, **ajánlat** és **Termékváltozat**. Ezek használhatók a keresés egy adott rendszerkép definíciójában. Lemezkép verziója, amelyek egy vagy két, de nem minden három érték lehet.  Ha például az alábbiakban három rendszerkép-definíciók és azok értékeit:
 
-|Rendszerkép-definíció|Közzétevő|Ajánlat|SKU|
+|Rendszerkép-definíció|Gyártó|Ajánlat|Termékváltozat|
 |---|---|---|---|
 |myImage1|Contoso|Pénzügy|Háttérszolgáltatás|
 |myImage2|Contoso|Pénzügy|Előtér|
@@ -78,14 +78,14 @@ Forrásrégiók az alábbi táblázatban láthatók. Az összes nyilvános régi
 | Forrás régiók |
 |---------------------|-----------------|------------------|-----------------|
 | Ausztrália középső régiója   | USA középső régiója – EUAP | Korea középső régiója    | Egyesült Királyság 2. déli régiója      |
-| Ausztrália 2. középső régiója | Kelet-Ázsia       | Korea déli régiója      | Az Egyesült Királyság nyugati régiója         |
+| Ausztrália 2. középső régiója | Kelet-Ázsia       | Korea déli régiója      | Egyesült Királyság nyugati régiója         |
 | Kelet-Ausztrália      | USA keleti régiója         | USA északi középső régiója | USA nyugati középső régiója |
 | Délkelet-Ausztrália | USA 2. keleti régiója       | Észak-Európa     | Nyugat-Európa     |
 | Dél-Brazília        | USA 2. keleti régiója – EUAP  | USA déli középső régiója | Nyugat-India      |
 | Közép-Kanada      | Közép-Franciaország  | Dél-India      | USA nyugati régiója         |
 | Kelet-Kanada         | Dél-Franciaország    | Délkelet-Ázsia   | USA nyugati régiója         |
-| Közép-India       | Kelet-Japán      | Egyesült Királyság északi régiója         | USA nyugati régiója, 2.       |
-| USA középső régiója          | Nyugat-Japán      | Az Egyesült Királyság déli régiója         |                 |
+| Közép-India       | Kelet-Japán      | Egyesült Királyság északi régiója         | USA 2. nyugati régiója       |
+| USA középső régiója          | Nyugat-Japán      | Egyesült Királyság déli régiója         |                 |
 
 
 
@@ -105,7 +105,7 @@ Megosztott lemezkép-katalógus lehetővé teszi, hogy meg szeretné tartani a r
 ![Hogyan méretezhetők a képek bemutató ábra](./media/shared-image-galleries/scaling.png)
 
 
-## <a name="replication"></a>Replikáció
+## <a name="replication"></a>Replikálás
 Megosztott lemezkép-katalógus lehetővé teszi a képek automatikusan replikálja más Azure-régiókban. Minden megosztott lemezkép verziója függően mi értelme a szervezet különböző régiókban lehet replikálni. Egy példa arra, hogy a legújabb lemezkép mindig replikálása több régióban, amíg az összes korábbi verziói csak érhető el 1 régió van. Ez segít mentse a megosztott lemezkép-verziók a tárolási költségekre. 
 
 A rendszer replikálja egy megosztott lemezkép verziója régiók létrehozásának időpontja után lehet frissíteni. A különböző régióban való replikálásához szükséges idő attól függ, másolását adatok mennyisége és a verzió a rendszer replikálja régiók száma. Ez eltarthat néhány óráig bizonyos esetekben. A replikáció történik, amíg a replikáció állapotát megtekintheti a régiónként. A kép replikáció befejezése után egy régióban, telepítheti a virtuális gép vagy a méretezési csoportot, hogy a lemezkép-verziót használó a régióban.
@@ -117,9 +117,9 @@ A rendszer replikálja egy megosztott lemezkép verziója régiók létrehozás�
 
 Mivel a megosztott lemezkép-katalógusában, a megosztott kép és a megosztott lemezkép verziója összes erőforrást, azok megoszthatók a beépített natív Azure RBAC-vezérlők használatával. Az RBAC használatával megoszthatja ezeket az erőforrásokat más felhasználók, az egyszerű szolgáltatások és csoportokat. A hozzáférést a bérlőn belül létrehozták őket kívüli személyek is megoszthatja. Miután egy felhasználó hozzáfér a megosztott lemezkép verziója, azok telepíthet egy virtuális Gépet, vagy egy virtuálisgép-méretezési csoportban.  A megosztási mátrix, amely segít megérteni, hogy mi a felhasználó hozzáférést kap a következő:
 
-| Felhasználóval megosztott     | Megosztott rendszerkép-katalógus | Megosztott kép | Megosztott lemezkép verziója |
+| Felhasználóval megosztott     | Megosztott lemezképkatalógus | Megosztott kép | Megosztott lemezkép verziója |
 |----------------------|----------------------|--------------|----------------------|
-| Megosztott rendszerkép-katalógus | Igen                  | Igen          | Igen                  |
+| Megosztott lemezképkatalógus | Igen                  | Igen          | Igen                  |
 | Megosztott kép         | Nem                   | Igen          | Igen                  |
 | Megosztott lemezkép verziója | Nem                   | Nem           | Igen                  |
 
@@ -266,4 +266,4 @@ Adja meg a közös replika parancssori felületen, használja a **--replika-coun
 
 **K.** Milyen API-verziót használjam hozhat létre közös lemezkép-katalógusában, a rendszerkép definíciójában, a lemezkép verziója és a VM/VMSS kívül a rendszerkép verziószámát?
 
- A. A VM és a Virtual Machine Scale Set-környezetek kép verzióját használja, azt javasoljuk, használjon API-verzió a 2018-04-01-es vagy újabb verziója. Megosztott kép katalógusok, a lemezkép-definíciók és a lemezkép-verzió használatát javasoljuk, használjon API-verzió a 2018-06-01. 
+ A. A VM és a Virtual Machine Scale Set-környezetek kép verzióját használja, azt javasoljuk, használjon API-verzió a 2018-04-01-es vagy újabb verziója. Megosztott kép katalógusok, a lemezkép-definíciók és a lemezkép-verzió használatát javasoljuk, használjon API-verzió a 2018-06-01. Zónaredundáns tárolás (ZRS) van szükség a 2019-03-01-es verzió vagy újabb.

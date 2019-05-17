@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: banders
-ms.openlocfilehash: 8dc5918ac539abde2586e29a1608e9dc496a5e37
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 7caa7df3817c51d63dfa2838e4223d3fba88e529
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794788"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65827375"
 ---
 # <a name="pay-azure-subscription-by-invoice"></a>Azure-előfizetés számlás fizetés
 
@@ -65,14 +65,14 @@ Ha számla ellenében, ez azt jelenti, a számla invoice 30 napon belül kell fi
          (New quota) Requested cores:
          Specific region & series of Subscription:
 
-- A **cégnév** és **cím vállalati** egyeznie kell az Ön által megadott információkat az Azure-fiók.  Megtekintheti, vagy frissítheti az adatokat, lásd: [módosítása az Azure-fiók profiladatait](billing-how-to-change-azure-account-profile.md).
-- Hozzá kell adnia a számlázási forduljon az Azure Portalon előtt jóvá kell hagyni a kreditkorlátot. A kapcsolattartási adatok kulcsoszlopnak kapcsolódnia kell a Kötelezettségkezelő vagy a pénzügyi részleg a cég. A számlázási ügyfél frissítését, [Azure Account Center](https://account.azure.com/Profile).
+    - A **cégnév** és **cím vállalati** egyeznie kell az Ön által megadott információkat az Azure-fiók.  Megtekintheti, vagy frissítheti az adatokat, lásd: [módosítása az Azure-fiók profiladatait](billing-how-to-change-azure-account-profile.md).
+    - Hozzá kell adnia a számlázási forduljon az Azure Portalon előtt jóvá kell hagyni a kreditkorlátot. A kapcsolattartási adatok kulcsoszlopnak kapcsolódnia kell a Kötelezettségkezelő vagy a pénzügyi részleg a cég. A számlázási ügyfél frissítését, [Azure Account Center](https://account.azure.com/Profile).
 
 5. Ellenőrizze a kapcsolattartási adatokat és a kívánt kapcsolatfelvételi módot, majd kattintson a **Létrehozás** lehetőségre.
 
 Szükséges hitelképességét miatt szükséges hitel összegét, küldünk a kreditet, ellenőrizze az alkalmazás.
 
-## <a name="switch-your-azure-subscription-to-invoice-payment"></a>Az Azure-előfizetés fizetési számlához való váltás
+## <a name="switch-to-invoice-pay"></a>Váltás a használatalapú számlázás
 
 Ha jóváhagyja, a számla ellenében, átválthat az Azure-előfizetés a számlás fizetési mód a [az Azure portal](https://portal.azure.com).
 

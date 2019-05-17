@@ -9,12 +9,12 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 description: Ismerje meg, hogyan hozhat létre gyorsan egy Kubernetes-fürtöt az Azure fejlesztési tárolóhelyek engedélyezve közvetlenül a böngészőből bármit telepítése nélkül.
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
-ms.openlocfilehash: bfde055c99a1109a8f71c838b44ed1742e3f06aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cf518fb0062a44619894059a1b7369fc92ba4f5d
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60911634"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597185"
 ---
 # <a name="create-a-kubernetes-cluster-using-azure-cloud-shell"></a>Kubernetes-fürt létrehozása az Azure Cloud Shell-lel
 
@@ -31,7 +31,7 @@ az group create --name MyResourceGroup --location <region>
 Hozzon létre egy Kubernetes-fürtöt az alábbi paranccsal:
 
 ```azurecli-interactive
-az aks create -g MyResourceGroup -n MyAKS --location <region>
+az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
 ```
 
 A fürt létrehozása néhány percet vesz igénybe.  Amikor végzett, a kimenet JSON formátumban jelenik meg. Keressen `provisioningState` , és ellenőrizze, hogy rendelkezik `Succeeded`.

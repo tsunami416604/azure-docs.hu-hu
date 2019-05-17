@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 05/16/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 728d961961250aad1d06067e0264c6b90aca4915
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: f32952dff8f09db5b790818a5f98c527a04c2ef5
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65593829"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823393"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
@@ -81,8 +81,8 @@ A következő táblázat ismerteti a felhasználói fiókok létrehozása és fe
 
 | Tulajdonság | Követelmények |
 | --- | --- |
-| Karakterek használhatók |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li></ul> üres helyet |
-| Karakterek nem használhatók |<ul><li>Unicode-karaktereket.</li><li>Tárolóhelyek.</li><li> A pont karakter nem tartalmazhat "." közvetlenül a "\@ \" szimbólum".</li></ul> |
+| Karakterek használhatók |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li> <li>üres helyet</li></ul> |
+| Karakterek nem használhatók |<ul><li>Unicode-karaktereket.</li><li> A pont karakter nem tartalmazhat "." közvetlenül a "\@ \" szimbólum".</li></ul> |
 | Jelszó-korlátozások |<ul><li>Legalább 8 karakter és legfeljebb 256 karakter.</li><li>Az alábbi három közül négy van szükség:<ul><li>Kisbetűs karaktert.</li><li>Nagybetűs karaktereket.</li><li>Számok (0 – 9).</li><li>A szimbólumok (lásd az előző Jelszó korlátozásai).</li></ul></li></ul> |
 | Jelszó lejárati időtartama |<ul><li>Alapértelmezett érték: **90** nap.</li><li>Az érték konfigurálható használatával a `Set-MsolPasswordPolicy` az Azure Active Directory modul a Windows PowerShell parancsmagot.</li></ul> |
 | Jelszó lejáratáról szóló értesítés |<ul><li>Alapértelmezett érték: **14** nap (elteltével jelszó lejár).</li><li>Az érték konfigurálható használatával a `Set-MsolPasswordPolicy` parancsmagot.</li></ul> |
@@ -99,7 +99,6 @@ Ez az útmutató más szolgáltatók, például az Intune és az Office 365, Azu
 
 > [!NOTE]
 > Csak a címtár-szinkronizálás – nem szinkronizált felhasználói fiókok jelszavainak beállítható úgy, hogy nem járnak le. További információ a címtár-szinkronizálás: [AD az Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
->
 
 ## <a name="set-or-check-the-password-policies-by-using-powershell"></a>Állítsa be, vagy ellenőrizze a jelszóházirendek PowerShell-lel
 
@@ -157,7 +156,7 @@ Első lépésként kell [töltse le és telepítse az Azure AD PowerShell modul]
    ```
 
    > [!WARNING]
-   > Jelszavak beállítása `-PasswordPolicies DisablePasswordExpiration` életkor alapján még a `pwdLastSet` attribútum. Ha soha ne járjon le a felhasználói jelszavakat, és 90 napig folytassa, a jelszavak lejárnak. Alapján a `pwdLastSet` attribútumot, ha módosítja a lejárat `-PasswordPolicies None`, minden jelszót, amely rendelkezik egy `pwdLastSet` régebbi, mint 90 nappal a felhasználónak a következő bejelentkezéskor módosítania őket. Ez a módosítás hatással lehet a felhasználók nagy száma. 
+   > Jelszavak beállítása `-PasswordPolicies DisablePasswordExpiration` életkor alapján még a `pwdLastSet` attribútum. Ha soha ne járjon le a felhasználói jelszavakat, és 90 napig folytassa, a jelszavak lejárnak. Alapján a `pwdLastSet` attribútumot, ha módosítja a lejárat `-PasswordPolicies None`, minden jelszót, amely rendelkezik egy `pwdLastSet` régebbi, mint 90 nappal a felhasználónak a következő bejelentkezéskor módosítania őket. Ez a módosítás hatással lehet a felhasználók nagy száma.
 
 ## <a name="next-steps"></a>További lépések
 

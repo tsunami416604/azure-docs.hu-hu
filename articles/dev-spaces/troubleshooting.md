@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
-ms.openlocfilehash: 508fe597a494ed89b4c2f406337c6b565943387a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d5b08a22aa3896fb7158ef3535b115e3e0189142
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728825"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596987"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -236,7 +236,7 @@ Frissítés a `launch.json` fájlt a `.vscode` alkönyvtára a projektmappába. 
 
 ## <a name="the-type-or-namespace-name-mylibrary-could-not-be-found"></a>A típus vagy névtér nevének "SajátLista" nem található.
 
-### <a name="reason"></a>Ok 
+### <a name="reason"></a>Reason 
 A build-környezet van alapértelmezés szerint a projekt/szolgáltatási szinten, ezért használata hordozhatóosztálytár-projektjének nem található.
 
 ### <a name="try"></a>Próbálja ki:
@@ -251,7 +251,7 @@ Talál példát: https://github.com/sgreenmsft/buildcontextsample
 Szükséges *tulajdonosa* vagy *közreműködői* hozzáférés az Azure fejlesztési tárolóhelyek kezeléséhez az Azure-előfizetés. Előfordulhat, hogy ezt a hibaüzenetet, ha szeretne fejlesztői tárolóhelyek kezeléséhez, és nem rendelkezik *tulajdonosa* vagy *közreműködői* a kapcsolódó Azure-előfizetéshez való hozzáférés.
 `The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.`
 
-### <a name="reason"></a>Ok
+### <a name="reason"></a>Reason
 A kiválasztott Azure-előfizetés nincs regisztrálva a `Microsoft.DevSpaces` névtér.
 
 ### <a name="try"></a>Próbálja ki:
@@ -263,7 +263,7 @@ az provider register --namespace Microsoft.DevSpaces
 
 ## <a name="dev-spaces-times-out-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>A fejlesztői, szóközök túllépi az időkorlátot *Várakozás a tároló-rendszerkép összeállítását...*  az AKS-csomópontok virtuális lépés
 
-### <a name="reason"></a>Ok
+### <a name="reason"></a>Reason
 Ez az időtúllépési akkor fordul elő, amikor megpróbálja futtatni egy szolgáltatás, amely konfigurálva van Futtatás fejlesztési tárolóhelyek használata egy [AKS virtuális csomópont](https://docs.microsoft.com/azure/aks/virtual-nodes-portal). Fejlesztői, szóközök jelenleg nem támogatja az létrehozásához, vagy a virtuális csomópontok szolgáltatások hibakeresésében.
 
 Ha `azds up` az a `--verbose` kapcsoló vagy engedélyezése részletes naplózás a Visual Studióban, további részletek megtekintéséhez:
@@ -295,7 +295,7 @@ Az ügynökcsomópontok általában a fürtben lévő újraindítás megszüntet
 
 ## <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>"Hiba: kiadási azds -\<azonosító\>-\<spacename\>-\<servicename\> nem sikerült: services\<servicename\>"már létezik" vagy "hozzáférés megtagadva a lekéréses \<servicename\>, adattár nem létezik, vagy szükség lehet a"docker login""
 
-### <a name="reason"></a>Ok
+### <a name="reason"></a>Reason
 Ezek a hibák akkor fordulhat elő, ha Ön vegyesen közvetlen Helm-parancsok futtatása (például `helm install`, `helm upgrade`, vagy `helm delete`) fejlesztői, szóközök parancsokkal (például `azds up` és `azds down`) belül az azonos fejlesztési terület. Akkor fordul elő, mert a fejlesztői, szóközök rendelkezik a saját a tiller valóban példányt, amely ütközik a saját az egy fejlesztési helyen futó Tiller-példány.
 
 ### <a name="try"></a>Próbálja ki:
@@ -329,7 +329,7 @@ configurations:
 
 ## <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Hiba történt "nem sikerült belső watch: ENOSPC megtekintése" Hibakeresés a Node.js-alkalmazás csatlakoztatása
 
-### <a name="reason"></a>Ok
+### <a name="reason"></a>Reason
 
 A pod a hibakeresőt a csatlakoztatni kívánt Node.js-alkalmazással futó a csomópont processzorhasználata túllépte a *fs.inotify.max_user_watches* értéket. Bizonyos esetekben [az alapértelmezett érték *fs.inotify.max_user_watches* esetleg túl kicsi, kezelni a hibakeresést közvetlenül egy pod](https://github.com/Azure/AKS/issues/772).
 
@@ -338,7 +338,7 @@ A probléma ideiglenes megoldás az, hogy az értékét növelje *fs.inotify.max
 
 ## <a name="new-pods-are-not-starting"></a>Új podok nem kezdi.
 
-### <a name="reason"></a>Ok
+### <a name="reason"></a>Reason
 
 A Kubernetes-inicializáló a PodSpec az új podok RBAC-engedély módosításai miatt nem tudja alkalmazni a *fürt rendszergazdai* szerepkört a fürtben. Az új podok is előfordulhat, hogy rendelkezik egy érvénytelen PodSpec, például a pod társított szolgáltatás fiók már nem létezik. Megtekintheti, hogy a rendszer a podokat egy *függőben lévő* állapot az inicializáló nem látható probléma miatt, használja a `kubectl get pods` parancsot:
 
@@ -370,7 +370,7 @@ A tartományvezérlő újratelepítése után telepítse újra a podokat.
 
 ## <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Fejlesztői, szóközök vezérlő és API-k hívása a megfelelő RBAC-engedélyek
 
-### <a name="reason"></a>Ok
+### <a name="reason"></a>Reason
 Az Azure fejlesztési tárolóhelyek vezérlő hozzáférő felhasználó rendelkeznie kell olvasási engedélyt a rendszergazdának *kubeconfig* az AKS-fürtön. Például ez az engedély érhető el a [beépített Azure Kubernetes Service fürt rendszergazdai szerepkör](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions). Az Azure fejlesztési tárolóhelyek vezérlő hozzáférő felhasználó is rendelkeznie kell a *közreműködői* vagy *tulajdonosa* RBAC szerepkör a vezérlő.
 
 ### <a name="try"></a>Kipróbálás
@@ -389,3 +389,18 @@ A felhasználó RBAC szerepkör a vezérlő frissítése:
     * A *rendelhet hozzáféréseket* kiválasztása *az Azure AD-felhasználó, csoport vagy szolgáltatásnév*.
     * A *kiválasztása* keresse meg a felhasználót, engedélyeket szeretne.
 1. Kattintson a *Save* (Mentés) gombra.
+
+## <a name="controller-create-failing-due-to-controller-name-length"></a>Vezérlő létrehozása meghiúsul a vezérlő nevének hossza miatt
+
+### <a name="reason"></a>Reason
+Az Azure fejlesztési tárolóhelyek tartományvezérlő neve nem lehet 31 karakternél hosszabb. Ha a tartományvezérlő neve meghaladja a 31-ig karakterek fejlesztési tárolóhelyek engedélyezése az AKS-fürt, vagy hozzon létre egy vezérlőt, kapni fog egy hasonló hibával:
+
+*Nem sikerült létrehozni a fürt egy fejlesztési tárolóhelyek vezérlő "a-controller-name-that-is-way-too-long-aks-east-us": Az Azure fejlesztési tárolóhelyek vezérlő "a-controller-name-that-is-way-too-long-aks-east-us" neve érvénytelen. A feltételek megsértése: Az Azure fejlesztési tárolóhelyek tartományvezérlő neve csak legfeljebb 31 karakter hosszú lehet*
+
+### <a name="try"></a>Kipróbálás
+
+Hozzon létre egy vezérlőt másik nevet:
+
+```cmd
+azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
+```

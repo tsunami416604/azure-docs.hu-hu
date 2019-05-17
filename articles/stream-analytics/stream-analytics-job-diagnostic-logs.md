@@ -7,18 +7,17 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/19/2019
-ms.custom: seodec18
-ms.openlocfilehash: cc62a6b9f03bdd6dc8671a6cf96113a2234fc092
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/15/2019
+ms.openlocfilehash: e784cfd2956479327cff9c97a09dd0ada6a154c2
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61480233"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65826574"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Az Azure Stream Analytics hibáinak elhárítása a diagnosztikai naplók használatával
 
-Néha előfordul Azure Stream Analytics-feladat váratlanul feldolgozása leáll. Fontos, hogy ilyen esetekben hibaelhárítást tudjon végezni. A hibákat váratlan lekérdezési eredmény, az eszközök kapcsolata vagy váratlan szolgáltatásleállás okozhatja. A diagnosztikai naplók a Stream Analytics segítségével, azonosíthatja az okot, problémák, amikor fordulhat elő, és a helyreállítási idő csökkentése.
+Néha előfordul Azure Stream Analytics-feladat váratlanul feldolgozása leáll. Fontos tudni az ilyen esemény hibaelhárítása. A hibákat váratlan lekérdezési eredmény, az eszközök kapcsolata vagy váratlan szolgáltatásleállás okozhatja. A diagnosztikai naplók a Stream Analytics segítségével, azonosíthatja az okot, problémák, amikor fordulhat elő, és a helyreállítási idő csökkentése.
 
 ## <a name="log-types"></a>Napló típusa
 
@@ -83,7 +82,7 @@ Erősen ajánlott bekapcsolni a diagnosztikai naplókat, és elküldi azokat az 
 
 ## <a name="diagnostics-log-categories"></a>Diagnosztikai naplója kategóriák
 
-Jelenleg a Microsoft két kategóriába diagnosztikai naplók rögzítése:
+Az Azure Stream Analytics rögzíti a diagnosztikai naplók két kategóriája:
 
 * **Szerzői**: A szerzői műveletek, például a hozzáadások és törlések bemeneteit és kimeneteit, hozzáadását és a lekérdezés frissítése és indítása vagy a feladat leállítása feladat létrehozásakor feladat kapcsolódó naplózási eseményeket rögzíti.
 
@@ -104,13 +103,13 @@ time | A napló Timestamp (az UTC).
 resourceId | Az, hogy a művelet került sor, nagybetűvel erőforrás azonosítója. Ez magában foglalja az előfizetés-azonosító, az erőforráscsoportot és a feladat nevét. Ha például   **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
 category | Kategória, vagy jelentkezzen **végrehajtási** vagy **szerzői műveletek**.
 operationName | A művelet, amelyet a rendszer neve. Ha például **események küldése: SQL kimeneti hiba írni mysqloutput**.
-status | A művelet állapotát. Ha például **sikertelen** vagy **sikeres**.
+állapot | A művelet állapotát. Ha például **sikertelen** vagy **sikeres**.
 szint | Naplózási szint. Ha például **hiba**, **figyelmeztetés**, vagy **tájékoztató**.
 properties | Napló bejegyzés-specifikus részletei, szerializált JSON-karakterláncot. További információkért lásd: Ez a cikk következő szakaszaiban.
 
 ### <a name="execution-log-properties-schema"></a>Végrehajtási napló tulajdonságok séma
 
-Feladatvégrehajtási naplók rendelkezik, amely a Stream Analytics-feladat végrehajtása során történt eseményekkel kapcsolatos információkat. A séma tulajdonságainak az esemény típusát függően változik. Jelenleg a következő típusú feladatvégrehajtási naplók van:
+Feladatvégrehajtási naplók rendelkezik, amely a Stream Analytics-feladat végrehajtása során történt eseményekkel kapcsolatos információkat. A séma tulajdonságok-e az esemény a adathiba vagy egy általános esemény függően változik.
 
 ### <a name="data-errors"></a>Adathibák
 
@@ -124,10 +123,14 @@ Típus | Hiba típusa. Ha például **DataConversionError**, **CsvParserError**,
 Adatok | Pontosan keresse meg a hiba okának hasznos adatokat tartalmaz. Alá csonkolása méretétől függően.
 
 Attól függően, a **operationName** érték adathibák sémája a következő:
-* **Események szerializálni**. Szerializálható események történnek események az olvasási műveletek során. Ezek fordulhat elő, amikor a bemeneti adatok nem felelnek meg a lekérdezés sémája az alábbi okok valamelyike:
-    * *Adattípus-eltérés (Németország) esemény során szerializálni*: A mező a hibát okozó azonosítja.
-    * *Nem olvasható egy esemény, érvénytelen szerializálási*: Tartalmazza a bemeneti adatokat a hely, ahol a hiba történt. Blob bemeneti eltolás és a egy minta az adatok a blob nevét tartalmazza.
-* **Események küldése**. Írási műveletek során bekövetkező események küldése A streamelési eseményt a hibát okozó azonosítsa azokat.
+
+* **Események szerializálni** esemény olvasási műveletek során. Ezek fordulhat elő, amikor a bemeneti adatok nem felelnek meg a lekérdezés sémája az alábbi okok valamelyike:
+
+   * *Adattípus-eltérés (Németország) esemény során szerializálni*: A mező a hibát okozó azonosítja.
+
+   * *Nem olvasható egy esemény, érvénytelen szerializálási*: Tartalmazza a bemeneti adatokat a hely, ahol a hiba történt. Blob bemeneti eltolás és a egy minta az adatok a blob nevét tartalmazza.
+
+* **Események küldése** írási műveletek során. A streamelési eseményt a hibát okozó azonosítsa azokat.
 
 ### <a name="generic-events"></a>Általános események
 
@@ -136,7 +139,7 @@ Attól függően, a **operationName** érték adathibák sémája a következő:
 Name (Név) | Leírás
 -------- | --------
 Hiba | (nem kötelező) Hiba adatok. Általában Ha ez a kivétel adatai érhető el.
-Üzenet| A fenti üzenet jelenik meg.
+Message| A fenti üzenet jelenik meg.
 Típus | Üzenet típusa. Hibák kategorizálása belső leképezések. Ha például **JobValidationError** vagy **BlobOutputAdapterInitializationFailure**.
 Korrelációs azonosító | [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) , amely egyedileg azonosítja a feladat végrehajtása. Az összes végrehajtás naplóbejegyzések kezdve a feladat elindul mindaddig, amíg a feladat leáll rendelkezik azonos **korrelációs azonosító** értéket.
 
