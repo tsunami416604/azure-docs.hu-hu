@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: form-recognizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 05/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 3f6cc32f6fb2a9fb11220ac1a3134fb3ae4d2f84
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 17cf1d88701370c4f81eab4f0d2df33ee2e94af5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147470"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796381"
 ---
 # <a name="configure-form-recognizer-containers"></a>Űrlap felismerő tárolók konfigurálása
 
@@ -49,7 +49,7 @@ Ez a beállítás a következő helyen található:
 
 * Az Azure Portalon: **Űrlap-felismerő a** áttekintése, címkével `Endpoint`
 
-|Kötelező| Name (Név) | Adattípus | Leírás |
+|Szükséges| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Karakterlánc | A számlázás végpont URI azonosítója<br><br>Példa:<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
 
@@ -60,6 +60,10 @@ Ez a beállítás a következő helyen található:
 ## <a name="fluentd-settings"></a>Fluentd beállításai
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
+
+## <a name="http-proxy-credentials-settings"></a>HTTP-proxybeállításai hitelesítő adatok
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
 ## <a name="logging-settings"></a>Naplózási beállítások
 
@@ -74,9 +78,9 @@ A képernyő felismerő tároló egy bemeneti és kimeneti csatlakoztatási van 
 
 A gazdagép csatlakoztatási helye a pontos szintaxisa a gazdagép operációs rendszere függően változik. Ezenkívül a [gazdaszámítógép](form-recognizer-container-howto.md#the-host-computer)a csatlakoztatási helye nem lehet elérni a Docker szolgáltatás fiókja által használt engedélyek közötti ütközés miatt, és a gazdagép csatlakoztatásához hely engedélyeket.
 
-|Optional| Name (Név) | Adattípus | Leírás |
+|Választható| Name (Név) | Adattípus | Leírás |
 |-------|------|-----------|-------------|
-|Kötelező| `Input` | String | A bemeneti csatlakoztatási célját. Az alapértelmezett érték `/input`.    <br><br>Példa:<br>`--mount type=bind,src=c:\input,target=/input`|
+|Szükséges| `Input` | String | A bemeneti csatlakoztatási célját. Az alapértelmezett érték `/input`.    <br><br>Példa:<br>`--mount type=bind,src=c:\input,target=/input`|
 |Szükséges| `Output` | String | A kimeneti csatlakoztatási célját. Az alapértelmezett érték `/output`.  <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Példa docker-parancsok futtatása
@@ -88,7 +92,7 @@ Az alábbi példák bemutatják, hogyan írhat, és használja a konfigurációs
 
 Cserélje le a(z)_argument_name_} a saját értékeire:
 
-| Helyőrző | Érték |
+| Helyőrző | Value |
 |-------------|-------|
 |{BILLING_KEY} | Ezt a kulcsot szolgál a tárolót, és az Azure Portalon űrlap felismerő kulcsok lapján található.  |
 |{BILLING_ENDPOINT_URI} | A számlázási végpont URI azonosítóját az Azure Portalon az űrlap felismerő áttekintése oldalon érhető el.|

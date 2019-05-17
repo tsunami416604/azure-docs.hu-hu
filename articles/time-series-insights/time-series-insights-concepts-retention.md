@@ -11,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec62639988dca4b216087e8235be6053140644ee
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 443599e1b2876012bcbdf720bef7762a24e1ff90
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406357"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790431"
 ---
-# <a name="understand-data-retention-in-time-series-insights"></a>A Time Series Insightsban az adatmegőrzés ismertetése
+# <a name="understand-data-retention-in-azure-time-series-insights"></a>Az Azure Time Series Insightsban az adatmegőrzés ismertetése
 
-Ez a cikk ismerteti a két beállítás, amely hatással van az adatok megőrzésére a Time Series Insights (TSI) környezetben.
+Ez a cikk ismerteti a két beállítás, amely hatással van az adatok megőrzése az Azure Time Series Insights-környezetet.
 
 ## <a name="video"></a>Videó
 
@@ -36,7 +36,7 @@ Emellett az Azure Time Series környezet rendelkezik egy **tárolási kapacitás
 - **Felfüggesztés bejövő forgalom**
 
 > [!NOTE]
-> Alapértelmezés szerint, egy új környezet létrehozásakor, a megőrzési van konfigurálva **régi adatok törlése**. Ez a beállítás az Azure Portalon, a létrehozás ideje után szükség szerint bekapcsolható az **konfigurálása** lap a TSI-környezet.
+> Alapértelmezés szerint, egy új környezet létrehozásakor, a megőrzési van konfigurálva **régi adatok törlése**. Ez a beállítás az Azure Portalon, a létrehozás ideje után szükség szerint bekapcsolható az **konfigurálása** a Time Series Insights-környezet lapján.
 
 A Váltás megőrzési viselkedések további információért tekintse át [megőrzés konfigurálása a Time Series Insights](time-series-insights-how-to-configure-retention.md).
 
@@ -44,8 +44,8 @@ Hasonlítsa össze az adatok megőrzési viselkedés:
 
 ## <a name="purge-old-data"></a>Régi adatok végleges törlése
 
-- Ez a viselkedés a TSI-környezetek és az azonos viselkedés TSI környezetek felmerült indított nyilvános előzetes verziója óta tárgyi bizonyítékokat alapértelmezett viselkedése.  
-- Ez a viselkedés részesíti előnyben, amikor a felhasználók meg szeretnék bármikor megtekintheti azok *legfrissebb adatok* a TSI környezetben. 
+- Ez a viselkedés a Time Series Insights-környezetek esetében az alapértelmezett viselkedést.  
+- Ez a viselkedés részesíti előnyben, amikor a felhasználók meg szeretnék bármikor megtekintheti azok *legfrissebb adatok* a Time Series Insights környezetben.
 - Ez a viselkedés *kiürítése* adatok egyszer a környezet korlátait (megőrzési idő, méret, vagy count, amelyiket hamarabb elérik) elérésekor. Adatmegőrzési alapértelmezés szerint 30 nap van beállítva.
 - A legrégebbi a feldolgozott adatokat van üríti ki az első (FIFO megközelítés).
 
@@ -75,7 +75,7 @@ Amikor ez a környezet napi bejövő forgalom 0.166 GB meghaladja a napi, adatok
 
 ### <a name="example-three"></a>A példában három
 
-Vegye figyelembe a környezet konfigurálva adatmegőrzési működése **bejövő szüneteltetése**. Ebben a példában a **Adatmegőrzés időtartama** 60 napra van konfigurálva. **Kapacitás** 3 egységet a S1 értékre van állítva. Tegyük fel, ebben a környezetben rendelkezik 2 GB-os adatforgalom minden nap. Ebben a környezetben a bejövő forgalom szüneteltetve van a maximális kapacitás elérésekor.
+Vegye figyelembe a környezet konfigurálva adatmegőrzési működése **bejövő szüneteltetése**. Ebben a példában a **Adatmegőrzés időtartama** 60 napra van konfigurálva. **Kapacitás** S1-egység három (3) értékre van állítva. Tegyük fel, ebben a környezetben rendelkezik 2 GB-os adatforgalom minden nap. Ebben a környezetben a bejövő forgalom szüneteltetve van a maximális kapacitás elérésekor.
 
 Ekkor az a környezet jeleníti meg az ugyanahhoz az adatkészlethez bejövő folytatja, vagy amíg **továbbra is a bejövő forgalom** engedélyezve van (amely a régebbi adatokat, hogy helyet biztosítson az új adatok lenne kiürítése).
 
@@ -91,7 +91,7 @@ Az érintett Event hubs, fontolja meg a **Üzenetmegőrzés** tulajdonságot min
 
 [![Event hub üzenetmegőrzés.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
 
-Ha nincsenek megadva tulajdonságok vannak konfigurálva az eseményforrás (`timeStampPropertyName`), az event hubs, az x tengely érkezés időbélyeg TSI az alapértelmezett érték. Ha `timeStampPropertyName` úgy konfigurálva, hogy bármi más, a beállított környezeti keresi `timeStampPropertyName` adatcsomag esemény értelmezésekor.
+Ha nincsenek megadva tulajdonságok vannak konfigurálva az eseményforrás (`timeStampPropertyName`), Time Series Insights alapértelmezés szerint az event hubs, az x tengely érkezés időbélyeghez. Ha `timeStampPropertyName` úgy konfigurálva, hogy bármi más, a beállított környezeti keresi `timeStampPropertyName` adatcsomag esemény értelmezésekor.
 
 Ha további kapacitást biztosít vagy megnöveli az adatmegőrzés, tekintse meg a környezet vertikális kell [méretezése a Time Series Insights-környezet](time-series-insights-how-to-scale-your-environment.md) további információt.  
 

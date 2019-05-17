@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: a83bc6518409add8a0732e5a0b17ab46c36564af
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4424e53689714625ebc791df250956463452c3cb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60703314"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791498"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Új adatbázis a felhőben – Azure SQL Database-ben az egyetlen vagy készletezett adatbázisok kezelése
 
@@ -127,7 +127,7 @@ Egy másik lehetőség az, hogy kiépítése [fenntartott IP-címek](../virtual-
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>Melyik porton létesíthetek kapcsolatot az SQL Database-be
 
-Port 1433. Az SQL Database ezen a porton keresztül kommunikál. Csatlakozhat a vállalati hálózaton belülről, fel kell vennie az kimenő szabályt a szervezet tűzfalbeállításainál. Iránymutatásként kerülje a 1433-as port közvetlenül az Azure határain kívülre. SSMS az Azure-ban futtatható [Azure RemoteApp](https://www.microsoft.com/cloud-platform/azure-remoteapp-client-apps). Nem igényel, hogy nyissa meg a 1433-as port a kimenő kapcsolatokat, az IP-cím statikus, ezért lehet, hogy az adatbázis csak a RemoteApp megnyitása és Multi Factor Authentication (MFA) támogatja.
+Port 1433. Az SQL Database ezen a porton keresztül kommunikál. Csatlakozhat a vállalati hálózaton belülről, fel kell vennie az kimenő szabályt a szervezet tűzfalbeállításainál. Iránymutatásként kerülje a 1433-as port közvetlenül az Azure határain kívülre.
 
 ### <a name="how-can-i-monitor-and-regulate-activity-on-my-server-and-database-in-sql-database"></a>Hogyan monitorozhatom és szabályozzák a tevékenység a saját kiszolgáló és az SQL Database-adatbázis
 
@@ -135,7 +135,7 @@ Port 1433. Az SQL Database ezen a porton keresztül kommunikál. Csatlakozhat a 
 
 Az SQL Database bekapcsolhatja a naplózást az adatbázissal kapcsolatos események nyomon követéséhez. [Az SQL Database naplózási szolgáltatásával](sql-database-auditing.md) rögzíti az adatbázisok eseményeit, és az Azure Storage-fiók egy naplózási naplófájlba írja őket. Naplózás funkció különösen akkor hasznos, ha azt tervezi, hogy betekintést nyerhet a potenciális biztonsági és a szabályzat megsértése miatt, szabályozásoknak való megfelelőség stb. Lehetővé teszi, hogy meghatározása és konfigurálása az egyes kategóriák eseményeket, amelyek úgy gondolja, hogy kell a naplózást és az alapján, hogy előre konfigurált jelentéseket és a egy irányítópultot, hogy az adatbázisban előforduló eseményeket áttekintést kaphat. Ezek a kiszolgálószintű vagy adatbázisszintű naplózási házirendek is alkalmazhat. A server/database Auditing szolgáltatása bekapcsolása útmutató, lásd: [Engedélyezze az SQL Database naplózási](sql-database-security-tutorial.md#enable-security-features).
 
-#### <a name="threat-detection"></a>Fenyegetések észlelése
+#### <a name="threat-detection"></a>Veszélyforrások detektálása
 
 A [fenyegetésészlelés](sql-database-threat-detection.md), lehetővé teszi számára, hogy nagyon egyszerűen naplózás által észlelt biztonsági vagy házirend megsértésének kap. Nem kell lenniük egy biztonsági szakértői, a rendszer potenciális fenyegetések vagy szabálysértések megoldása érdekében. A fenyegetésészlelés is rendelkezik néhány beépített képességek, mint az SQL-injektálás felderítése. SQL-injektálás alter vagy veszélyeztetheti az adatokat és a egy adatbázis-alkalmazás intézményt általában elég általános módja. A fenyegetésészlelés algoritmusokban, ami észleli a potenciális biztonsági réseket és SQL-injektálásos támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról (például hozzáférés szokatlan helyről vagy résztvevő részéről) több példányban fut. Biztonsági tisztviselők, vagy más kijelölt rendszergazdák e-mailben értesítést kapni, fenyegetés észlelésekor az adatbázison. Minden értesítést a gyanús tevékenységeket és ajánlások részleteit tartalmazza a vonatkozó további vizsgálata és a fenyegetés. Ismerje meg, hogyan kapcsolja be a fenyegetésészlelés, tekintse meg: [Fenyegetésészlelés engedélyezése](sql-database-security-tutorial.md#enable-security-features).
 

@@ -10,18 +10,18 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 1713a05590f389a6de70d72e8d62237c7521d808
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6e0342d876db424454526637322d67d55c0432a8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605119"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797297"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
 
 A készlet más műveletek, a Translator Text API által jelenleg támogatott nyelvek beolvasása. 
 
-## <a name="request-url"></a>Kérés URL-címe
+## <a name="request-url"></a>Lekérdezés URL-címe
 
 Küldjön egy `GET` kérelmet:
 ```HTTP
@@ -40,7 +40,7 @@ A kérelem lekérdezési karakterláncot az átadott paraméterek a következők
     <td><em>Kötelező paraméter</em>.<br/>Az ügyfél által kért API-verzió. Az érték lehet `3.0`.</td>
   </tr>
   <tr>
-    <td>scope</td>
+    <td>hatókör</td>
     <td>*Nem kötelező paraméter*.<br/>Meghatározása a csoporthoz való visszatéréshez nyelveken neveket vesszővel tagolt listája. Engedélyezett a csoport neve: `translation`, `transliteration` és `dictionary`. Ha nincs hatóköre van megadva, akkor az összes csoport ad vissza, amely 03T00 megadásának `scope=translation,transliteration,dictionary`. Annak eldöntéséhez, hogy a támogatott nyelvek körét az adott forgatókönyvnek megfelelő, tekintse meg a leírását az [Válaszobjektum](#response-body).</td>
   </tr>
 </table> 
@@ -251,7 +251,7 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
   <th>Leírás</th>
   <tr>
     <td>200</td>
-    <td>Siker.</td>
+    <td>Sikeres művelet.</td>
   </tr>
   <tr>
     <td>304</td>
@@ -263,7 +263,7 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
   </tr>
   <tr>
     <td>429</td>
-    <td>A hívó túl sok kérelmet küld.</td>
+    <td>A kiszolgáló elutasította a kérelmet, mert az ügyfél túllépte a kérelmekre vonatkozó korlátok.</td>
   </tr>
   <tr>
     <td>500</td>

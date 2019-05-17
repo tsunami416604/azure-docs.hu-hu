@@ -16,18 +16,22 @@ ms.topic: article
 ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 95acda60935e82b226a1a0e860b5fa8effb8e47e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e5a7bfc243fc8c797ffc66b2130756567ddc0fb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325698"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795783"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>SQL Server-adatbázis áttelepítése Azure-beli virtuális gépen futó SQL Serverre
 
 Nincsenek a helyszíni SQL Server felhasználói adatbázis áttelepítése az SQL Server Azure virtuális gép többféle. Ez a cikk röviden ismertetjük a különböző módszereket, és a legjobb módszer különböző célokra ajánljuk.
 
+
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
+
+  > [!NOTE]
+  > Az SQL Server 2008 és az SQL Server 2008 R2 hamarosan eléri a [azok támogatási életciklusa végét](https://www.microsoft.com/sql-server/sql-server-2008) helyszíni-példány esetén. Támogatási kiterjesztéséhez is egy Azure virtuális gép áttelepítése az SQL Server-példányhoz, vagy vásárlás kiegészítő biztonsági frissítések tartja a helyszíni. További információkért lásd: [támogatása az SQL Server 2008 és 2008 R2, az Azure-ral](virtual-machines-windows-sql-server-2008-eos-extend-support.md)
 
 ## <a name="what-are-the-primary-migration-methods"></a>Mik azok az elsődleges áttelepítési módszereinek?
 Az elsődleges migrálás módszerek a következők:

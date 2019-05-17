@@ -3,8 +3,8 @@ title: Az Azure Active Directoryban konfigurálható jogkivonatok élettartamán
 description: Ismerje meg, hogyan állíthatja be az Azure AD által kiállított jogkivonatok élettartamát.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
@@ -12,24 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2018
-ms.author: celested
-ms.custom: aaddev
+ms.date: 04/13/2019
+ms.author: ryanwi
+ms.custom: aaddev, annaba
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7b0242a8e3745a0014e5c2a1289ca2bc8c85c75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0657057ceb3aca674e49a705c52c3b86dda73d98
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411368"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545392"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Az Azure Active Directoryban (előzetes verzió) konfigurálható jogkivonatok élettartama
 
 Az Azure Active Directory (Azure AD) által kiállított jogkivonatok élettartamát is megadhat. Beállíthatja a jogkivonatok élettartamának, a szervezet minden alkalmazás, több-bérlős (több cég) alkalmazás vagy egy adott szolgáltatásnév a szervezetben.
 
 > [!IMPORTANT]
-> Várjuk ügyfeleink az előzetes verzió használata során, miután azt tervezzük, hogy cserélje le ezt a funkciót az Azure Active Directory feltételes hozzáférés új szolgáltatása.  Az új funkció befejeződése után ez a funkció idővel elavulttá válik értesítési idő elteltével.  Ha a jogkivonat élettartama konfigurálható szabályzatot használ, váltson át az új feltételes hozzáférési funkciót, ha érhető el kell készíteni. 
+> Után az előzetes verzióban az ügyfelektől származó várjuk, hogy már cserélni a jogkivonatok élettartamának konfigurálható szolgáltatása, amely rendelkezik [hitelesítési munkamenet felügyeleti képességek](https://go.microsoft.com/fwlink/?linkid=2083106) az Azure AD feltételes hozzáférés. Ez a funkció elavulttá válik, a 2019. November 1. Ha a jogkivonat élettartama konfigurálható szabályzatot használ, váltson át az új feltételes hozzáférési funkciót. 
 
 Az Azure AD-ben a csoportházirend-objektum egy szabálykészletet, a kényszerített egyes alkalmazások, illetve a szervezeten belüli összes alkalmazás jelöli. Minden házirendtípus egy egyedi szerkezetűek, és a egy objektumot, amelyhez hozzá van rendelve alkalmazott tulajdonságkészlettel rendelkezik.
 
@@ -77,7 +77,7 @@ Egy házirend használatával adja meg, miután az első munkamenet-azonosító 
 A jogkivonat élettartama házirend egy csoportházirend-objektum, amely tartalmazza a jogkivonat élettartama szabályok típusú. A házirend tulajdonságainak segítségével szabályozza a megadott jogkivonat élettartama. Ha nincs beállítva szabályzat, a rendszer érvényesíti az alapértelmezett élettartam érték.
 
 ### <a name="configurable-token-lifetime-properties"></a>Konfigurálható jogkivonat élettartama tulajdonságai
-| Tulajdonság | A házirend tulajdonság karakterlánc | Hatással van | Alapértelmezett | Minimális | Maximum |
+| Tulajdonság | A házirend tulajdonság karakterlánc | Hatással van | Alapértelmezett | Minimum | Maximum |
 | --- | --- | --- | --- | --- | --- |
 | Hozzáférési jogkivonat élettartama |AccessTokenLifetime |Hozzáférési jogkivonatok, azonosító-jogkivonatokat, egy SAML2 jogkivonatok |1 óra |10 perc |1 nap |
 | Frissítési jogkivonat maximális inaktív időpont |MaxInactiveTime |Frissítési jogkivonatok |90 nap |10 perc |90 nap |

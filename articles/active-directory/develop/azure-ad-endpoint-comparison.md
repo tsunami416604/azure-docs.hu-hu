@@ -3,8 +3,8 @@ title: Miért érdemes a Microsoft identity platform (2.0-s verzió) való friss
 description: Tudja, a Microsoft identity platform (2.0-s verzió) végpont és az Azure Active Directory (Azure AD) 1.0-s verziójú végpont közötti különbségeket, és frissítése a 2.0-s verziójú előnyeinek megismerése.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, dadobali, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dba74735b4c703123f9ff89b63a57d53faa84fde
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 7389431212fd34960279aad5321ef2eeb70b7790
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138783"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540436"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Miért frissíti a Microsoft identity platform (2.0-s verzió)?
 

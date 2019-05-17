@@ -3,8 +3,8 @@ title: Jelentéskészítés az Azure Active Directory automatikus felhasználói
 description: Ismerje meg, hogyan automatikus felhasználói fiók kiépítése a feladatok állapotát, és az egyes felhasználók átadásának hibaelhárítása.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/09/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e293eb555269a1f8beeeccd74000358abe1ef5c8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 71816c8c7e4213ddea4f08e046dc9224eb52b5fd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721066"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65781002"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Oktatóanyag: -Jelentések automatikus felhasználói fiók kiépítése
 
@@ -37,7 +37,7 @@ Ez a cikk bemutatja, hogyan ellenőrizheti az üzembe helyezés állapotát az f
 
 * **API naplózása** – Azure Active Directory is kínál, amely lehetővé teszi a programozott lekéréséhez a részletes üzembe helyezési naplók naplózási API. Lásd: [API-referencia az Azure Active Directory naplózási](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) az adott használatával az API dokumentációjában. Ez a cikk nem tárgyalja kifejezetten az API használatát, amíg azt a kiépítés események, které jsou zaznamenány v auditovacím protokolu típusú részletesen.
 
-### <a name="definitions"></a>Meghatározások
+### <a name="definitions"></a>Definíciók
 
 Ebben a cikkben alább meghatározott, az alábbi feltételek:
 

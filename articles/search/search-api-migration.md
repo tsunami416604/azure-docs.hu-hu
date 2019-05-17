@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
-ms.openlocfilehash: 286d8bbc01b5916e842c196aed5a49ef1c76bc3c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 85a8ddf4ce87d7ac8ce460c0aff56311a2ea4578
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025200"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540694"
 ---
 # <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>Frissítse a legújabb Azure Search szolgáltatás REST API-verzióra
 Ha egy korábbi verzióját használja, a [Azure Search szolgáltatás REST API](https://docs.microsoft.com/rest/api/searchservice/), ez a cikk segít az alkalmazás használhatja a legújabb általánosan elérhető API-verzió a 2019-05-06 frissítése.
@@ -39,7 +39,7 @@ Verzióját 2019-05-06-a az Azure Search szolgáltatás REST API általánosan e
 
 Több előzetes funkciók kiadása a általánosan elérhető frissítés egybe. Tekintse át az új előzetes verziójú funkciók listáját, tekintse meg [Search REST api-verzió a 2019-05-06-Preview](search-api-preview.md).
 
-## <a name="breaking-changes"></a>Kompatibilitástörő változások
+## <a name="breaking-changes"></a>Meghibásodást okozó változások
 
 Az alábbi funkciókat tartalmazó meglévő kódot megszakítja az api-version = a 2019-05-06.
 
@@ -72,7 +72,9 @@ Ha ezekben a helyzetekben egyikét alkalmazza, majd szükség lehet, ennek megfe
 
 Ha API előzetes verziójáról frissít, a fenti is vonatkozik, de is figyelembe kell venni, hogy bizonyos előzetes verziójú funkciók nem érhetők el a verzió a 2019-05-06:
 
-* ["Nagyobb, mint a" lekérdezések](search-more-like-this.md) csak előzetes funkció továbbra is.
+* ["Több ilyen" lekérdezések](search-more-like-this.md)
+* [Fürt megosztott kötetei szolgáltatás blob-indexelés](search-howto-index-csv-blobs.md)
+* [MongoDB API támogatása a Cosmos DB-indexelő](search-howto-index-cosmosdb.md)
 
 Ha a kódot használja ezeket a funkciókat, nem tudja frissíteni az API-verzió a 2019-05-06 anélkül, hogy eltávolítaná a használatát.
 

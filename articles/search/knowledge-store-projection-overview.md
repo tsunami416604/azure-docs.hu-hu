@@ -1,5 +1,5 @@
 ---
-title: A Tudásbázis-tárolóban – Azure Search leképezések használata
+title: A Tudásbázis-tárolóban (előzetes verzió) – Azure Search leképezések használata
 description: Mentse adatait és olyanná alakíthatja képi elemekben gazdag keresési eltérő híradásoknál AI-indexelési folyamatból
 manager: eladz
 author: vkurpad
@@ -10,18 +10,22 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
 ms.custom: seomay2019
-ms.openlocfilehash: 3ab5ffafd1b20eb0e3e453d3e730840baf9233e1
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f1c7278909557dc92f86c5dfc1f190fddf33f607
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028365"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540806"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>A Tudásbázis-tárolóban az Azure Search leképezések használata
 
+> [!Note]
+> Tudásbázis store előzetes állapotban van, nem éles használatra szánt. A [REST API verzióját 2019-05-06-Preview](search-api-preview.md) ezt a szolgáltatást biztosít. Rendszer jelenleg nem .NET SDK-t támogatja.
+>
+
 Az Azure Search lehetővé teszi, hogy a tartalom Adatbővítés AI kognitív képességeket és indexelő részeként egyéni képesség révén. Végrehajtott információbeolvasás struktúra ad hozzá a dokumentumok és a keresés hatékonyabbá tétele. Sok esetben a jelentéstétellel dokumentumok hasznosak eltérő keresési, például a Tudásbázis adatbányászati forgatókönyvekhez.
 
-Leképezések, részét képező [Tudásbázis store (előzetes verzió)](knowledge-store-concept-intro.md), képi elemekben gazdag azt jelzi, hogy a fizikai tároló Tudásbázis adatbányászati célból menthetők nézet. Egy leképezési "kivetítését" az adatok egy formázásához, amely megfelel az igényeinek, megőrizve a kapcsolatokat, hogy az eszközök, mint például a Power BI tudja olvasni az adatokat, nincs további erőfeszítéssel teszi lehetővé. 
+Leképezések, részét képező [Tudásbázis store](knowledge-store-concept-intro.md), képi elemekben gazdag azt jelzi, hogy a fizikai tároló Tudásbázis adatbányászati célból menthetők nézet. Egy leképezési "kivetítését" az adatok egy formázásához, amely megfelel az igényeinek, megőrizve a kapcsolatokat, hogy az eszközök, mint például a Power BI tudja olvasni az adatokat, nincs további erőfeszítéssel teszi lehetővé. 
 
 Leképezések a sorok és oszlopok az Azure Table storage-ban tárolt adatok, vagy az Azure Blob storage szolgáltatásban tárolt JSON-objektumok táblázatos, lehet. Meghatározhatja az adatok több leképezések, bővített folyamatban van. Ez akkor hasznos, ha azt szeretné, hogy az egyes használati esetek eltérően alakú ugyanazokat az adatokat. 
 

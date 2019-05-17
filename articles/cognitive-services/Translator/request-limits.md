@@ -10,36 +10,47 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 97b0b6256b7aaf7b42565fe9453fb87a0c414569
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 91cc002f373318e5124fc21f76edbfd000d17238
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605211"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796907"
 ---
 # <a name="request-limits-for-translator-text"></a>A Translator Text kérelmekre vonatkozó korlátok
 
 Ez a cikk a Translator Text API a sávszélesség-szabályozási korlátait tartalmazza. Szolgáltatások közé tartoznak a fordítás, átbetűzésű, mondat hossza észlelési, nyelv észlelése és alternatív fordításokat.
 
-## <a name="character-limits-per-request"></a>Kérelem karakter vonatkozó korlátok
+## <a name="character-and-array-limits-per-request"></a>Kérelem karakter és tömb vonatkozó korlátok
 
-Minden egyes kérelme, mert legfeljebb 5000 karakter hosszúságú lehet. A kérések száma nem a karakter, díját. Rövidebb kérelmek küldésére, és szeretné, hogy egyes egy adott időpontban szálankénti függőben lévő kérések ajánlott.
+Minden egyes fordítás kérelme, mert legfeljebb 5000 karakter hosszúságú lehet. A kérések száma nem a karakter, díját. Azt javasoljuk, hogy rövidebb kérelmek küldésére.
 
-A Translator Text API szálankénti függőben lévő kérések száma nincs korlátozva van.
+Az alábbi táblázat listák tömb elem és karakter korlátok, a Translator Text API minden művelethez.
+
+| Művelet | Tömbelem maximális mérete |   Tömb elemek maximális számát |  Kérelem maximális mérete (karakter) |
+|:----|:----|:----|:----|
+| Translate | 5,000 | 100   | 5,000 |
+| Transliterate | 5,000 | 10    | 5,000 |
+| Detect | 10,000 | 100 |   50,000 |
+| BreakSentence | 10,000    | 100 | 5,0000 |
+| Keresés a szótárban| 100 |  10  | 1,000 |
+| Szótár – példák | a szöveg és a fordítás (200 teljes) 100 100| 10|   2,000 |
 
 ## <a name="character-limits-per-hour"></a>Karakter korlátozások / óra
 
-A karakteres korlátot óránként a Translator Text előfizetési szint alapján történik. Ha eléri vagy előremutató ezeket a korlátokat, valószínűleg kap kívüli kvóta választ:
+A karakteres korlátot óránként a Translator Text előfizetési szint alapján történik. Az óránkénti kvóta egyenletesen fel kell használni az óra során. Ha Ön vagy előremutató ezeket a korlátokat, vagy túl nagy a kvóta egy részét, egy rövid idő alatt, valószínűleg kap kívüli kvóta választ. 
 
 | Szint | Karakteres korlátot |
 |------|-----------------|
 | F0 | 2 millió karakter / óra |
 | S1 | 40 millió karakter / óra |
-| S2 | 40 millió karakter / óra |
-| S3 | 120 millió karakter / óra |
-| S4 | óránként 200 millió karakter |
+| S2 / C2 | 40 millió karakter / óra |
+| S3 / C3 | 120 millió karakter / óra |
+| S4 / C4 | óránként 200 millió karakter |
 
-Ezek a korlátok a Microsoft általános rendszerek korlátozódnak. A Microsoft Translator Hub használó egyéni fordítási rendszerek korlátozva, másodpercenként 1,800 karakter.
+Korlátozza a [több szolgáltatásos előfizetések](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) ugyanazok, mint az S1 szintet.
+
+Ezek a korlátok a Microsoft standard fordítói modelljeinek korlátozódnak. Egyéni a fordítót használó egyéni fordítási modellek korlátozva, másodpercenként 1,800 karakter.
 
 ## <a name="latency"></a>Késés
 

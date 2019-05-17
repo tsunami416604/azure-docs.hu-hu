@@ -1,6 +1,6 @@
 ---
 title: A Security Center nyugdíjazási szolgáltatásokat (július 2019) |} A Microsoft Docs
-description: Ez a cikk részletesen szolgáltatások a Security Centerben, amelyek a 2019. július 31-én megszűnik.
+description: Ez a cikk ismerteti a szolgáltatások a Security Centerben, amelyek 2019. július 31-jén kivonjuk a forgalomból.
 services: security-center
 author: yoavfrancis
 ms.service: security-center
@@ -8,21 +8,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 614dabe842c7fe99da3ddb486c27003c79382ea1
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 5ac6603be087e887e3304f6a7e14aa063863e1dd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231389"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796467"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>A Security Center-szolgáltatásokat (július 2019) kivonása
 
-Hajtottunk végre több [fejlesztései](https://azure.microsoft.com/updates/?product=security-center) az Azure Security Center az elmúlt 6 hónapban.  
-A továbbfejlesztett funkciók megszüntetjük 2019. július 31-ig. a Security centerből egy redundáns funkciókat, valamint a kapcsolódó API-k számát.  
+Végeztünk néhány [fejlesztései](https://azure.microsoft.com/updates/?product=security-center) az Azure Security Center az elmúlt hat hónapban.
+Ezekkel a továbbfejlesztett lehetőségekkel azt szeretne eltávolítani egyes redundáns szolgáltatások és a kapcsolódó API-k a Security Centerből a 2019. július 31-ig.  
 
-A megszűnő funkciók a legtöbb lecserélhető az Azure Security Center és a Log Analytics; új funkciói bizonyos funkciók segítségével valósítható meg, és [Azure Sentinel-(előzetes verzió)](https://azure.microsoft.com/services/azure-sentinel/), nemrég megjelent.
+A legtöbb leköszönő szolgáltatás lecserélhető az Azure Security Center vagy az Azure Log Analytics új funkciókat. Egyéb szolgáltatások segítségével valósítható meg [Azure Sentinel-(előzetes verzió)](https://azure.microsoft.com/services/azure-sentinel/).
 
-A Security centerből kivezetjük funkciók listáját tartalmazza:
+A Security Center-szolgáltatások kivezetés előtt a következőket:
 
 - [Események irányítópultja](#menu_events)
 - [Keresés menüpont](#menu_search)
@@ -32,147 +32,160 @@ A Security centerből kivezetjük funkciók listáját tartalmazza:
 - [Gombra a veszélyforrások elleni védelem a biztonsági riasztások vizsgálata](#menu_investigate)
 - [Biztonsági megoldások egy részhalmazát](#menu_solutions)
 - [Biztonsági szabályzatok biztonsági beállításokkal szerkesztése](#menu_securityconfigurations)
-- [Biztonsági és auditálási irányítópultján (az OMS-portált eredetileg használt) Log Analytics-munkaterületeket.](#menu_securityomsdashboard)
+- [Biztonsági és auditálási irányítópultja (az OMS-portált eredetileg használt) a Log Analytics-munkaterületek](#menu_securityomsdashboard)
 
-A részletes információkat alább tartalmaz minden eltávolított funkciót és a lépéseket, amelyeket a csere funkciók használatával.
+Ez a cikk részletes információkat szolgáltat minden eltávolított funkciót és a lépések helyettesítő funkciók implementálását is igénybe vehet.
 
 ## Események irányítópultja<a name="menu_events"></a>
-A Security Center használja a Microsoft Monitoring Agent a gyűjtése a különböző biztonsági konfigurációkat, és eseményként kapcsolódó gépekről származó, és ezeket az eseményeket az Ön munkaterületeire tárolja. A [események irányítópultja](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard) lehetővé teszi, hogy ezek az adatok megtekintése és lényegében biztosít egy másik belépési pont a Log Analytics szolgáltatásba.
 
-Az események irányítópultja módosítástól kivonjuk a forgalomból:
+A Security Center a Microsoft Monitoring Agent használ a különböző biztonsági konfigurációkat és események gyűjtésére a gépek. A munkaterületeken tárolja ezeket az eseményeket. A [események irányítópultja](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard) lehetővé teszi az adatok megtekintését és a egy belépési pont a Log Analytics szolgáltatásba.
 
-![Események munkaterület kiválasztására szolgáló képernyő megjelenítéséhez][1]
-
-Az események irányítópultja, amely akkor jelenik meg, miután a felhasználó rákattint a munkaterülethez, el lesz távolítva:
+Hogy mégy az események irányítópultja jelenik meg, amikor a munkaterület kiválasztása:
 
 ![Események irányítópultja][2]
 
-### <a name="events-dashboard---new-experience"></a>Események irányítópultja – új felülete
+### <a name="events-dashboard---the-new-experience"></a>Események irányítópultja – az új felhasználói felület
 
-Ügyfelek biztatjuk a Log Analytics natív képességek jelentős események megtekintése a saját munkaterületen.
-Már létrehozott egyéni jelentős esemény a Security Centerből, ha ezek elérhetők lesznek Log analytics-kiválasztása > Munkaterület -> mentett keresések. Az adatok nem lehet elvesztése sem módosította. Natív jelentős események is elérhetők az ugyanazon a képernyőn.
+Javasolt azt, hogy az Azure Log Analytics natív képességeit jelentős események a nézeten a munkaterületeket.
+
+Ha a Security Center létrehozott egyéni jelentős esemény, legyenek elérhetők. A Log Analyticsben, Ugrás **válassza ki a munkaterület** > **mentett keresések**. Az adatok nem elvész, vagy módosítani. Natív jelentős események ugyanazon a képernyőn a Log Analytics is elérhetőek.
 
 ![Mentett keresések munkaterület][3]
 
 ## Keresés menüpont<a name="menu_search"></a>
-Az Azure Security Center jelenleg használja a naplók keresése az Azure Monitor és a biztonsági adatok elemzése. Ez a képernyő lényegében szolgál a Log Analytics az előtérrendszer "[keresési](https://docs.microsoft.com/azure/security-center/security-center-search)" lap – így a felhasználók a kijelölt munkaterület keresési lekérdezések futtatására. A Keresés ablak módosítástól kivonjuk a forgalomból:
+
+Az Azure Security Center jelenleg használja a naplók keresése az Azure Monitor és a biztonsági adatok elemzése. Ezen a képernyőn egy Log Analytics keresési ablak szolgál, és lehetővé teszi a felhasználók a kijelölt munkaterület keresési lekérdezések futtatására. További információkért lásd: [az Azure Security Center keresési](https://docs.microsoft.com/azure/security-center/security-center-search). A Keresés ablak mégy azt:
 
 ![Keresés lap][4]
 
-### <a name="search-menu-entry---new-experience"></a>Menüpont – új keresés
+### <a name="search-menu-entry---the-new-experience"></a>Keresés menüpont – az új felhasználói felület
 
-Hogy használni **Log Analytics** natív képességek a munkaterület keresési lekérdezések végrehajtásához. Ehhez, ugorjon az Azure Log analytics, és válassza ki: "Logs":
+Javasoljuk, hogy az Azure Log Analytics natív képességeket használja a-munkaterületek a keresési lekérdezések végrehajtásához. Nyissa meg az Azure Log Analyticshez, és válassza ki **naplók**.
 
 ![Log Analytics naplók lap][5]
 
 ## Klasszikus identitás és hozzáférés (előzetes verzió)<a name="menu_classicidentity"></a>
-"Klasszikus" identitás és hozzáférés felhasználói élménye a Security Center olyan módon, az ügyfelek megtekintéséhez identitás- és hozzáférés-kapcsolódó információkat a log analytics volt megadva. Ez történt, az alábbi kattintással követve:
 
-Kattintson a "Nézet klasszikus identitás és hozzáférés"
+A klasszikus identitás és hozzáférés a Security Center jelenleg a tapasztalat az identitás és hozzáférés irányítópult a Log Analyticsben. Az irányítópult megtekintéséhez:
 
-![Alkalmazásidentitás lap][6]
+1. Válassza ki **klasszikus identitás és hozzáférés megtekintése**.
 
-A képernyő ezen a lapon szeretné megnyitni, valamint "identitás és hozzáférés irányítópult":
+   ![Alkalmazásidentitás lap][6]
 
-![Alkalmazásidentitás lap - munkaterület kiválasztása][7]
+1. Nézet a **identitás és hozzáférés irányítópult**.
 
-Elemre kattint, a munkaterületen megnyílik a "Identitás- és hozzáférés" log analytics-irányítópult ahol ügyfelek identitás megtekinthet és érheti el az adatokat a saját munkaterület:
+    ![Alkalmazásidentitás lap - munkaterület kiválasztása][7]
 
-![Alkalmazásidentitás lap - irányítópult][8]
+1. Válasszon ki egy munkaterületet, nyissa meg a **identitás és hozzáférés** irányítópult a Log Analyticsben identitás megtekinthessék és elérhessék az adatokat a munkaterületen.
 
-Az összes fenti három képernyővel módosítástól kivezetjük. Az adatok továbbra is elérhető a log analytics biztonsági megoldás, és nem módosulnak vagy eltávolítva.
-A Security Center érhető el az eredeti Log Analytics-lekérdezések, az identitás és hozzáférés irányítópult feltöltéséhez használt [GitHub-adattár](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards).
+   ![Alkalmazásidentitás lap - irányítópult][8]
 
-### <a name="classic-identity--access-preview---new-experience"></a>Klasszikus identitás és hozzáférés (előzetes verzió) – új felülete
-A Log analytics-irányítópult csak egy adott munkaterület a biztosított elemzések, míg a natív a Security Center képességei az összes előfizetés és az összes munkaterülethez társítva, egy könnyen betekintést biztosítanak-nézet, amely lehetővé teszi a mi összpontosíthat a Fontos, az az identitás és hozzáférés javaslat a biztonságos pontszám alapján.
-Az identitás- és hozzáférés a Log analytics-irányítópult összes funkcióját a Security Center belül elérhető "Identitás és hozzáférés (előzetes verzió)" kiválasztásával:
+Az előző lépésekben látható összes három képernyővel mégy azt. Az adatok továbbra is elérhető a Log Analytics biztonsági megoldás, és nem módosítható vagy eltávolítva.
+
+### <a name="classic-identity--access-preview---the-new-experience"></a>Klasszikus identitás és hozzáférés (előzetes verzió) – az új felhasználói felület
+
+A Log Analytics-irányítópult insights jelenik meg egyetlen munkaterületen. Azonban a natív a Security Center képességei az összes előfizetés és a hozzájuk társított összes munkaterületet biztosít. Egy könnyen hozzáférhet-nézet, amely lehetővé teszi használata fontos javaslat a biztonságos pontszám alapján összpontosíthat.
+
+Összes funkcióját a **identitás és hozzáférés** kiválasztásával elérhető a Log Analytics irányítópult **identitás és hozzáférés (előzetes verzió)** biztonsági központban.
 
 ![Alkalmazásidentitás lap – klasszikus élmény kivonása][9]
 
 ## Biztonsági események leképezése<a name="menu_securityeventsmap"></a>
-A Security Center a következőket biztosítja egy [térkép](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) , amelyek segítségével azonosíthatja a környezetre leselkedő biztonsági fenyegetéseket. A "Ugrás a biztonsági események térkép" gombra, hogy a leképezés egy irányítópultot, amely lehetővé teszi a nyers biztonsági események megtekintése a kiválasztott munkaterületen vezet.
-A gomb mellett a munkaterület irányítópult elavulásának után törlődni fog.
+
+A Security Center a következőket biztosítja egy [biztonsági riasztások térkép](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) segítségével azonosíthatja a biztonsági fenyegetéseket. A **Ugrás a biztonsági események térkép** a térképen a gombra kattintva megnyithat egy irányítópultot, amely lehetővé teszi, hogy a nyers biztonsági események megtekintése a kiválasztott munkaterületen.
+
+Hogy szeretne eltávolítani a **Ugrás a biztonsági események térkép** gombra, és a munkaterület irányítópulton.
 
 ![Biztonsági riasztások térkép - gomb][10]
 
-Még ma az "Ugrás a biztonsági események térkép" kattintva a Fenyegetésészlelési irányítópult nyílik meg. A fenyegetésészlelési irányítópult kivonjuk a forgalomból.  
+Amikor kiválasztja a **Ugrás a biztonsági események térkép** gombra, a fenyegetésészlelési irányítópult megnyitásakor. Mi a fenyegetésfelderítési irányítópult mégy.  
 
 ![Fenyegetésészlelési irányítópult][11]
 
-Ha úgy dönt, hogy a munkaterületet a megfelelő fenyegetésészlelési irányítópult megtekintéséhez, a biztonsági riasztások map(Preview) képernyő *a Log Analytics* nyitja meg. Ez a képernyő kivonjuk a forgalomból.
+Ha úgy dönt, hogy a munkaterületet a megfelelő fenyegetésészlelési irányítópult megtekintéséhez, nyissa meg a biztonsági riasztások térkép (előzetes verzió) képernyőn a Log Analyticsben. Ez a képernyő mégy azt.
 
 ![Biztonsági riasztások térkép a Log Analyticsben][12]
 
-A meglévő adatok továbbra is elérhető a log analytics biztonsági megoldás és fog nem lehet módosítani, és nem eltávolítva.
-A Security Center érhető el az eredeti Log Analytics-lekérdezések a Fenyegetésészlelési irányítópult feltöltéséhez használt [GitHub-adattár](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards).
+A meglévő adatok továbbra is elérhető a Log Analytics biztonsági megoldás, és nem módosított sem eltávolítva.
 
-### <a name="security-events-map---new-experience"></a>Biztonsági események térkép - új felülete
-Azt javasoljuk, hogy ügyfeleink számára, hogy a riasztások térkép a Security Center beépített funkcióinak használata – "a biztonsági riasztások térkép (előzetes verzió)". Ez egy optimalizált felhasználói élményt biztosít, és együttműködés az összes előfizetés és társított munkaterületek, lehetővé téve a makró a környezete megtekintheti, és nem egyetlen munkaterület összpontosíthat.
+### <a name="security-events-map---the-new-experience"></a>Biztonsági események térkép - az új felhasználói felület
+
+Javasoljuk, hogy a riasztások térkép a Security Center beépített funkcióinak használata: **Biztonsági riasztások térkép (előzetes verzió)**. Ez a funkció egy optimalizált felhasználói élményt biztosít, és minden előfizetések és munkaterületek társított. Azt, magas szintű áttekintést nyújt a környezete, és nem egyetlen munkaterület összpontosítanak.
 
 ## Egyéni riasztási szabályok (előzetes verzió)<a name="menu_customalerts"></a>
-Egyéni riasztások lesz az [elavult](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) 2019. június 30., használatból való kivonást egyaránt az alapul szolgáló infrastruktúra miatt alapján készült. Amíg elavult időkeretét, a felhasználók tudni meglévő egyéni riasztási szabályok szerkesztése, de nem fogja tudni újakat vehet fel. Ahhoz, hogy a felhasználók végigvitelével [Azure Sentinel-](https://azure.microsoft.com/services/azure-sentinel/) automatikus áttelepítése a meglévő figyelmeztetéseket és újakat hoz létre, vagy másik lehetőségként létre újból a figyelmeztetéseket, és az Azure Monitor egy kattintással üzembe helyezésében naplóriasztások.
 
-Tartani a meglévő riasztásokat, és Azure Sentinel-telepítheti át őket, indítsa el az Azure-Sentinel. Első lépésként válassza ki a munkaterületet, az egyéni értesítések tárolására, és válassza a "Analytics" menüpontot a riasztások automatikusan át.
+Sajnáljuk, [kivonása az egyéni riasztások élmény](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) a 2019. június 30., mert az alapul szolgáló infrastruktúra kivonás alatt áll. Addig szerkesztheti a meglévő egyéni riasztási szabályok, de nem újakat adhat hozzá. Javasoljuk, hogy engedélyezze a [Azure Sentinel-](https://azure.microsoft.com/services/azure-sentinel/) automatikus áttelepítése a meglévő riasztásokat, és hozzon létre újakat. Másik lehetőségként a riasztásokat hozhat létre az Azure Monitor riasztások.
+
+Tartani a meglévő riasztásokat, és Azure Sentinel-telepítheti át őket:
+
+1. Nyissa meg az Azure-Sentinel, és válassza ki a munkaterületet, amely tárolja az egyéni riasztások.
+1. Válassza ki **Analytics** automatikusan áttelepíteni a riasztások menüből.
 
 ![Egyéni riasztások][13]
 
-Újra létre kell hoznia a riasztásokat az Azure Monitor riasztások biztatjuk a nem üzembe helyezése az Azure-Sentinel iránt. Útmutatásért tekintse meg: [létrehozása, megtekintése és kezelése az Azure Monitor használatával naplóriasztások](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log). Riasztások létrehozásával kapcsolatos útmutatásért tekintse meg: [Naplóriasztások az Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
+Ha Ön nem érdeklik az Azure-Sentinel transitioning, javasoljuk, hogy a riasztások létrehozása az Azure Monitor riasztások. Útmutatásért lásd: [létrehozása, megtekintése, és a riasztások kezelése az Azure Monitor használatával](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) és [Naplóriasztások az Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log).
 
-Egyéni riasztások használatból való kivonást egyaránt további információkért tekintse meg a [a Security Center egyéni riasztások dokumentáció](https://docs.microsoft.com/azure/security-center/security-center-custom-alert).
+Egyéni riasztások használatból való kivonást egyaránt további információkért lásd: [egyéni riasztási szabályok az Azure Security Centerben (előzetes verzió)](https://docs.microsoft.com/azure/security-center/security-center-custom-alert).
 
 ## Biztonsági riasztások vizsgálat<a name="menu_investigate"></a>
-[A vizsgálati funkciójáról](https://docs.microsoft.com/azure/security-center/security-center-investigation) a Security Center lehetővé teszi, hogy osztályozhatja, feltérképezheti a hatókörüket, és a potenciális biztonsági incidens kiváltó okának. Ez a szolgáltatás eltávolítja a Security Centerből, helyette a továbbfejlesztett élményt [Azure Sentinel-](https://azure.microsoft.com/services/azure-sentinel/).
+
+[A vizsgálati funkciójáról](https://docs.microsoft.com/azure/security-center/security-center-investigation) a Security Center segít a osztályozhatja a potenciális biztonsági incidensek. A funkció lehetővé teszi, hogy az incidens körének ismerete és nyomon követheti az alapvető ok. Azt szeretne eltávolítani ezt a szolgáltatást a Security Centerből, mert a rendszer helyébe-továbbfejlesztett felületet [Azure Sentinel-](https://azure.microsoft.com/services/azure-sentinel/).
 
 ![Biztonsági incidens][14]
 
-Ha a fenti "Vizsgálat" gombra kattint, megnyílik a "vizsgálati irányítópult (előzetes verzió)" a Log Analyticsben. A vizsgálati irányítópult kivonjuk a forgalomból.  
-A meglévő adatok továbbra is elérhető a Log Analytics biztonsági megoldás és fog nem lehet módosítani, és nem eltávolítva.
+Amikor kiválasztja a **vizsgálat** gombra egy **biztonsági incidens** képernyő, a vizsgálati irányítópult (előzetes verzió) nyissa meg a Log Analyticsben. A vizsgálati irányítópult mégy azt.  
+
+A meglévő adatok továbbra is elérhető a Log Analytics biztonsági megoldás, és nem módosított sem eltávolítva.
 
 ![A Log Analytics vizsgálati irányítópult][15]
 
-### <a name="investigation---new-experience"></a>Vizsgálat – új felülete
+### <a name="investigation---the-new-experience"></a>Vizsgálat – az új felhasználói felület
 
-Azt javasoljuk, hogy ügyfeleink számára, hogy előkészítése [Azure Sentinel-](https://azure.microsoft.com/services/azure-sentinel/) részletes vizsgálat biztosítása érdekében, a riasztások hunting szolgáltatás működteti. Az Azure Sentinel hatékony vadászat keresést és lekérdezéseket eszközöket egyszerre a szervezet biztonsági fenyegetések hunt biztosít.  
+Azt javasoljuk, való áttérés [Azure Sentinel-](https://azure.microsoft.com/services/azure-sentinel/) részletes vizsgálat biztosítása érdekében. Az Azure Sentinel egyszerre a szervezet biztonsági fenyegetések hunt való hatékony keresést és lekérdezéseket eszközöket biztosít.  
 
 ## Biztonsági megoldások részhalmazát<a name="menu_solutions"></a>
 
-A Security Center képes engedélyezése [integrált Azure biztonsági megoldásait](https://docs.microsoft.com/azure/security-center/security-center-partner-integration). A következő partneri megoldások lenne távolítva, és a támogatott [Azure Sentinel-](https://azure.microsoft.com/services/azure-sentinel/), valamint további adatforrásokhoz is.
+Engedélyezheti a Security Center [integrált Azure biztonsági megoldásait](https://docs.microsoft.com/azure/security-center/security-center-partner-integration). A következő partnermegoldások a Security Centerből mégy azt. Ezek a megoldások vannak engedélyezve a [Azure Sentinel-](https://azure.microsoft.com/services/azure-sentinel/) együtt egy további adatforrások számát.
 
-- Új generációs tűzfal- és a Web application Firewall megoldások (az Azure-Sentinel [dokumentáció](https://docs.microsoft.com/azure/sentinel/connect-data-sources))
-- A közös esemény (CEF) formátumot támogató biztonsági megoldások integrálása (Azure Sentinel- [dokumentáció](https://docs.microsoft.com/azure/sentinel/connect-common-event-format))
-- Microsoft Advanced Threat Analytics (az Azure Sentinel [dokumentáció](https://docs.microsoft.com/azure/sentinel/connect-azure-atp))
-- Az Azure AD Identity Protection (Azure Sentinel [dokumentáció](https://docs.microsoft.com/azure/sentinel/connect-azure-ad-identity-protection))
+- [Következő generációs tűzfalak és a webes alkalmazás tűzfal megoldások](https://docs.microsoft.com/azure/sentinel/connect-data-sources)
+- [A Common Event Format (CEF) támogató biztonsági megoldások integrálása](https://docs.microsoft.com/azure/sentinel/connect-common-event-format)
+- [Microsoft Advanced Threat Analytics](https://docs.microsoft.com/azure/sentinel/connect-azure-atp)
+- [Azure AD Identity Protection](https://docs.microsoft.com/azure/sentinel/connect-azure-ad-identity-protection)
 
-Az elavulással kapcsolatos, a következő felhasználók nem fognak tudni hozzáadhat új vagy meglévő csatlakoztatott megoldások a típusú említettük, a felhasználói felület és az API-t is módosíthatja.
-A meglévő csatlakoztatott megoldások javasolt, hogy ez az időszak végén az Azure-Sentinel áthelyezése.
+Kivonás, után azonosra felvenni vagy módosítani valamelyik már említettük, az előző listában, vagy a felhasználói felületen vagy az API-t a megoldás típusát.
+
+Ha rendelkezik meglévő csatlakoztatott megoldások, javasoljuk, hogy Azure Sentinel-re.
 
 ![Biztonsági megoldások központok][16]
 
 ## Biztonsági szabályzatok biztonsági beállításokkal szerkesztése<a name="menu_securityconfigurations"></a>
-Az Azure Security Center biztonsági konfigurációk figyeli egy alkalmazásával [több mint 150 ajánlott szabályok](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) az operációs rendszer korlátozására, például a szabályok kapcsolódó tűzfalak, naplózás, jelszóházirendek és egyéb. Ha egy gép sebezhető konfigurációval rendelkezik, a Security Center biztonsági javaslatot hoz létre. A [szerkesztési biztonsági konfigurációs képernyőjén](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) szabhatja testre az alapértelmezett operációs rendszer biztonsági konfigurációs a Security Center lehetővé teszi.
 
-Ez a funkció előzetes verzióban volt, és megszűnik.
+Az Azure Security Center biztonsági konfigurációk figyeli egy alkalmazásával [több mint 150 ajánlott szabályok](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). az operációs rendszer korlátozására. Ezek a szabályok vonatkoznak a tűzfal, naplózás, jelszóházirendek és egyéb. Ha egy gép sebezhető konfigurációval rendelkezik, a Security Center biztonsági javaslatot hoz létre. A [szerkesztési biztonsági konfigurációs képernyőjén](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) szabhatja testre az alapértelmezett operációs rendszer biztonsági konfigurációs a Security Center lehetővé teszi.
+
+Az előzetes verziójú funkció mégy azt.
 
 ![Biztonsági beállítások szerkesztése][17]
 
-### <a name="edit-security-configurations---new-experience"></a>Biztonsági konfigurációk – új felület szerkesztése
+### <a name="edit-security-configurations---the-new-experience"></a>Biztonsági konfigurációk – az új felület szerkesztése
 
-A Security Center támogatja a [konfigurációs vendégügynök](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) a közeljövőben, így sokkal gazdagabb szolgáltatáskészlet – beleértve az egyéb operációs rendszerekhez és az integráció az Azure-szabályzatok (Vendég-konfiguráció támogatása a Vendég-szabályzatokat). Ez lehetővé teszi nagy mennyiségű vezérlőelemet, és automatikusan alkalmazza az új erőforrásokat is biztosít.
+Ahhoz, hogy a Security Center támogatásához tervezzük az [konfigurációs vendégügynök](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration). Az ilyen frissítés lehetővé teszi egy sokkal gazdagabb szolgáltatáskészlet, beleértve a több operációs rendszerek és az Azure a Vendég házirendek Vendég konfigurációk támogatását. Miután ezek a változások engedélyezve vannak, lehetővé teszi nagy mennyiségű konfigurációk vezérlőelemet, és automatikusan alkalmazza őket új erőforrásokat is rendelkezni fog.
 
-## Biztonsági és auditálási irányítópultján (az OMS-portált eredetileg használt) Log Analytics-munkaterületek<a name="menu_securityomsdashboard"></a>
+## A Log Analytics-munkaterületek biztonsági és auditálási irányítópultja<a name="menu_securityomsdashboard"></a>
 
-A biztonsági irányítópult a Log analytics jelentős biztonsági események és fenyegetések, fenyegetésészlelési térkép és identitás és hozzáférés értékelése a munkaterületen mentett biztonsági eseményeket a munkaterület áttekintést nyújt. Az irányítópult eltűnik a jövőben. Ahogy már javasoljuk az irányítópult felhasználói felület, hogy a felhasználók javasolja, hogy az Azure Security Center a jövőben.
+A biztonsági és auditálási irányítópultja az OMS-portált eredetileg használták. A Log Analytics, az irányítópult egy munkaterület áttekintést nyújt az jelentős biztonsági események és fenyegetések, egy fenyegetésfelderítési térkép és biztonsági eseményeket a munkaterületen menti az identitás és hozzáférés értékelését. Hogy még az irányítópult eltávolítása. Ahogy már javasoljuk az irányítópult felhasználói felület, azt javasoljuk, hogy, hogy, hogy az Azure Security Center való áttérés.
 
-![Log analytics-biztonság irányítópult][18]
+![Log Analytics-biztonság irányítópult][18]
 
-### <a name="security--audit-dashboard---new-experience"></a>Biztonság és naplózás irányítópult – új felülete
-Ügyfeleink javasolja, hogy az Azure Security Center, így az azonos biztonsági áttekintése több előfizetések és munkaterületek társítva, a szolgáltatás a levélforgalmi együtt.
+### <a name="security-and-audit-dashboard---the-new-experience"></a>Biztonsági és auditálási irányítópultja – az új felhasználói felület
 
-A Security Center érhető el az eredeti Log Analytics-lekérdezések segítségével feltölti a biztonsági és auditálási irányítópultján [GitHub-adattár](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards).
+Azt javasoljuk, hogy váltson át az Azure Security Center. Több előfizetésre kiterjedő biztosít az ugyanolyan biztonsági szolgáltatásainak áttekintése és a munkaterületekhez társítva, valamint egy gazdagabb szolgáltatáskészleteket.
+
+Az eredeti Log Analytics-lekérdezések, amely feltölti a biztonsági és auditálási irányítópultján megtekintheti a [GitHub-adattár](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards) a Security Center.
 
 ## <a name="next-steps"></a>További lépések
-- Tudjon meg többet [Azure Security Centerben](https://docs.microsoft.com/azure/security-center/)
-- Tudjon meg többet [Azure Sentinel-](https://docs.microsoft.com/azure/sentinel)
+
+- Tudjon meg többet [az Azure Security Center](https://docs.microsoft.com/azure/security-center/).
+- Tudjon meg többet [Azure Sentinel-](https://docs.microsoft.com/azure/sentinel).
 
 <!--Image references - events-->
 [1]: ./media/security-center-features-retirement-july2019/asc_events_dashboard.png

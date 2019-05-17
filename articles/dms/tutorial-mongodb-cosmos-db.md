@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.openlocfilehash: 3260ffaba2ab91ee561a0430310883bda8f65269
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65740406"
+ms.locfileid: "65794081"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Oktatóanyag: MongoDB át az Azure Cosmos DB API a mongodb-hez offline a DMS használatával
 

@@ -3,8 +3,8 @@ title: Az Azure Active Directory Web apps
 description: Protokoll flow, a regisztráció és a jogkivonat lejárati az alkalmazástípushoz a webalkalmazások vannak és alapjainak ismertetése
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea3e1b951a683d7ee1def09024e531e94dd905b4
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: d15d76f4c16fa89b41ebfc10c9617c4709203d38
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918531"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544725"
 ---
 # <a name="web-apps"></a>Webalkalmazások
 
 Web Apps alkalmazások olyan alkalmazások, amelyek egy webalkalmazást egy webböngészőben a felhasználó hitelesítéséhez. Ebben a forgatókönyvben a webes alkalmazás a felhasználó böngészőben jelentkezzen be őket az Azure AD irányítja. Az Azure AD választ jelentkezzen be a felhasználó böngészőjében, amely tartalmazza a biztonsági jogkivonat a felhasználóval kapcsolatos jogcímek keresztül. Ebben a forgatókönyvben támogatja a bejelentkezést az OpenID Connect, SAML 2.0 és WS-Federation protokollal.
 
-## <a name="diagram"></a>Ábra
+## <a name="diagram"></a>Diagram
 
 ![A böngészőben a webalkalmazás a hitelesítési folyamat](./media/authentication-scenarios/web_browser_to_web_api.png)
 

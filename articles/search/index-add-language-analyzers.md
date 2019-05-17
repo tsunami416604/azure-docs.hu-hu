@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 39fbe30ccf4429003dc0c9f11165c5dd057a89cd
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: deea16b8670623acd2ae92ba62f579f5474d12ec
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121792"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790900"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Nyelvi elemzők az Azure Search-index hozzáadása
 
@@ -46,9 +46,6 @@ Az alapértelmezett elemző a Standard Lucene, amely jól az angol nyelvű táj�
 
 + A Microsoft angol nyelvű analyzer morfológiai helyett, amely szerint végzi. Ez azt jelenti, hogy sokkal jobban mi eredményez több megfelelő keresési eredmények ragozott és szabálytalan word űrlapok képes kezelni 
 
-  > [!Tip]
-  > A [keresési Analyzer bemutató](https://alice.unearth.ai/) biztosít a standard Lucene-elemzőt, a Lucene angol nyelvi elemző és a Microsoft természetes angol nyelvű processzor által előállított eredmények összehasonlítása egymás mellett. Az egyes keresési feltétele alapján ad meg, minden egyes analyzer eredményeinek szomszédos ablaktáblán jelennek meg.
-
 ## <a name="configuring-analyzers"></a>Elemzők konfigurálása
 
 Nyelvi elemzők használják-van. Az index definícióját minden egyes mezőjéhez, beállíthatja a **analyzer** -elemző eszköz a neve, a nyelv és a linguistics verem (Microsoft vagy Lucene) tulajdonságot. Az azonos elemző lépnek érvénybe, ha indexelés és keresés, ezt a mezőt. Például rendelkezhet külön mezőkben angol, francia és spanyol Szálloda panelelemek leírását, amely ugyanahhoz az indexhez egymás mellett szerepel. Azt is megteheti, nem pedig **analyzer**, használható **indexAnalyzer** és **searchAnalyzer** szeretné, hogy az indexelést és lekérdezést idő különböző elemző szabályok. 
@@ -64,7 +61,7 @@ Index-tulajdonságokkal kapcsolatos további információkért lásd: [a Create 
 
 |Nyelv|A Microsoft elemző neve|Lucene-elemzőt neve|  
 |--------------|-----------------------------|--------------------------|  
-|arab|ar.microsoft|ar.lucene|  
+|Arab|ar.microsoft|ar.lucene|  
 |örmény||HY.lucene|  
 |Bengáli|bn.microsoft||  
 |baszk||eu.lucene|  
@@ -76,7 +73,7 @@ Index-tulajdonságokkal kapcsolatos további információkért lásd: [a Create 
 |cseh|cs.microsoft|cs.lucene|  
 |dán|da.microsoft|da.lucene|  
 |holland|nl.microsoft|nl.lucene|  
-|Angol|en.microsoft|en.lucene|  
+|angol|en.microsoft|en.lucene|  
 |észt|et.microsoft||  
 |finn|fi.microsoft|fi.lucene|  
 |francia|fr.microsoft|FR.lucene|  

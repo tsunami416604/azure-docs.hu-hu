@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2019
+ms.date: 05/15/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6eb7de7810ce23aed4031cca9f038da7149a6f9c
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 1e95adbd1a564fb34d3f0506ac1cc25bc5a63c62
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153093"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790050"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Inaktív adatok az Azure Storage-titkosítás
 
@@ -51,6 +51,9 @@ Felhasználó által kezelt kulcsok használata az Azure Storage, lásd: egyet a
 - [Ügyfél által felügyelt kulcsok az Azure Portalról az Azure Storage-titkosítás konfigurálása](storage-encryption-keys-portal.md)
 - [Ügyfél által felügyelt kulcsok az Azure Storage-titkosítás a PowerShell konfigurálása](storage-encryption-keys-powershell.md)
 - [Felhasználó által kezelt kulcsok használata az Azure Storage-titkosítás az Azure CLI-vel](storage-encryption-keys-cli.md)
+
+> [!IMPORTANT]
+> Felügyelt identitások az Azure-erőforrásokhoz, a szolgáltatás az Azure Active Directory (Azure AD) támaszkodik ügyfél által felügyelt kulcsokat. Ha Ön előfizetését átadhatja az Azure AD-címtár egy másik, felügyelt identitások nem frissülnek, és a felhasználó által kezelt kulcsokkal nem fognak működni. További információkért lásd: **egy előfizetés átvitele az Azure AD-címtár közötti** a [– gyakori kérdések és ismert problémák által felügyelt identitásokat az Azure-erőforrások](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).  
 
 > [!NOTE]  
 > Felhasználó által kezelt kulcsok használata nem támogatott a [Azure managed disks](../../virtual-machines/windows/managed-disks-overview.md).

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/19
 ms.author: jgao
-ms.openlocfilehash: 1006cc902cf4b6f763d86165a039a1fec5dc97a1
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 41b16498fb79166b2c77c77a517ee5c443ebec75
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467088"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796254"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Vezessen be egészségügyi integrációs Bevezetés az Azure Deployment Manager (nyilvános előzetes verzió)
 
@@ -32,7 +32,7 @@ Annak érdekében, hogy lehető egészségügyi integráció, a Microsoft dolgoz
 
 ## <a name="how-service-health-is-determined"></a>Hogyan határozza meg, a service health
 
-[Állapotfigyelési szolgáltatók](#health-monitoring-providers) szolgáltatások figyelésre és riasztásra service health problémákról több mechanizmust kínálnak. [Az Azure Monitor](/services/monitor/) egy ilyen ajánlat mutat példát. Az Azure Monitor segítségével riasztásokat hozhat létre, amikor a meghatározott küszöbérték túllépése. Például a memória és CPU-kihasználtság hirtelen várt szintek túl új frissítést a szolgáltatáshoz való központi telepítésekor. Az értesítés, amikor javítási műveleteket végezhet.
+[Állapotfigyelési szolgáltatók](#health-monitoring-providers) szolgáltatások figyelésre és riasztásra service health problémákról több mechanizmust kínálnak. [Az Azure Monitor](../azure-monitor/overview.md) egy ilyen ajánlat mutat példát. Az Azure Monitor segítségével riasztásokat hozhat létre, amikor a meghatározott küszöbérték túllépése. Például a memória és CPU-kihasználtság hirtelen várt szintek túl új frissítést a szolgáltatáshoz való központi telepítésekor. Az értesítés, amikor javítási műveleteket végezhet.
 
 Ilyen egészségügyi szolgáltatók általában kínálnak REST API-k, úgy, hogy a szolgáltatás figyelők állapotának programozott módon kell vizsgálni. A REST API-k vagy térjen vissza, az egyszerű megfelelő vagy nem megfelelő jel (határozza meg a HTTP-válaszkód), illetve részletes információkat a jelek fogadja.
 

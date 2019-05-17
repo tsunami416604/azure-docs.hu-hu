@@ -5,21 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/10/2019
+ms.date: 05/14/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 6975bb872e67650b8b5729a4ac66f0825fb9a80f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 521a5f2543b9a4a84d50f8f0e53a6ae5108f760b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61021508"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792875"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Oktatóanyag: Hozzon létre, és az exportált adatok kezelése
 
 Ha elolvasta a Költségelemzés című oktatóanyagot, akkor ismeri a Cost Management-adatok manuális letöltésének módját. Az ismétlődő feladatokat, amelyek automatikusan exportálja a Cost Management adataihoz az Azure storage-napi, heti vagy havi időközönként is létrehozhat. Az exportált adatok CSV formátumúak, és a Cost Management által gyűjtött összes adatot tartalmazzák. Ezt követően az Azure Storage-beli exportált adatokat külső rendszerekkel is használhatja, illetve saját egyéni adataival kombinálhatja őket. Az exportált adatokat külső rendszerben, például egy irányítópulton vagy egyéb pénzügyi rendszerben is használhatja.
+
+Tekintse meg a [ütemezése az Azure Cost Managementbe tárolási exportálja](https://www.youtube.com/watch?v=rWa_xI1aRzo) videó az Azure egy ütemezett exportálása létrehozásával kapcsolatos költségek adatokat az Azure Storage.
 
 Az oktatóanyagban szereplő példák bemutatják, hogyan exportálhatja a Cost Management-adatokat, majd hogyan ellenőrizheti, hogy az adatok exportálása sikeres volt-e.
 
@@ -49,8 +51,8 @@ Létrehozásához vagy egy adatexportálás megtekintéséhez vagy -exportálás
 
 > [!NOTE]
 > Mellett az előfizetések erőforráscsoportok, a fiókok, a szervezeti egységek és a regisztrációk az exportálások hozhat létre. Hatókörök kapcsolatos további információkért lásd: [megismerése és együttműködnek a hatókörök](understand-work-scopes.md).
-> 
-> 
+>
+>
 
 
 Kattintson a **Hozzáadás**, adjon meg egy nevet az exportálás, és válassza a **hónap elejétől számított költségek napi exportálási** lehetőséget. Kattintson a **tovább**.

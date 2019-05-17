@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 6757a038a945bf153cb62662bee8c715c87baf19
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6960c21091e0bc01c198e713c0c276984566ac41
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60829820"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786081"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Bevezetés az Azure Cache redis Cache prémium szint
 A Redis Azure Cache olyan elosztott, felügyelt gyorsítótár, amely segítséget nyújt az adatok a villámgyors adathozzáférésnek köszönhetően gyors és hatékonyan méretezhető alkalmazások készítését. 
@@ -50,7 +50,7 @@ A Basic vagy Standard szintű létrehozott gyorsítótárak elérhetők a nyilv�
 
 További információkért lásd: [annak a virtuális hálózat támogatásának konfigurálása prémium szintű Azure Cache-gyorsítótárhoz Redis](cache-how-to-premium-vnet.md).
 
-## <a name="importexport"></a>Import/Export
+## <a name="importexport"></a>Importálás/exportálás
 Importálás/exportálás szolgáltatás egy Azure Cache, amely lehetővé teszi, hogy az adatok az Azure Cache által importálása és exportálása az Azure Cache Redis adatbázis (RDB) pillanatkép egy prémium szintű gyorsítótár, a redis Azure Cache redis adatok importálása és exportálása a Redis-felügyeleti művelethez egy lapblob egy Azure Storage-fiókban. Ez lehetővé teszi, hogy migrálása másik Azure Cache a Redis-példány között, vagy töltse fel a gyorsítótárat az adatokat, mielőtt használja.
 
 Importálás ahhoz, hogy a Redis-kompatibilis RDB-fájl(ok) minden bármilyen felhőben vagy a környezetben, beleértve a Linux, Windows vagy bármely más szolgáltatónál, például az Amazon Web Services és a többi futó Redis futó Redis-kiszolgálóról is használható. A rendszer egyszerűen hozzon létre egy gyorsítótárat az adatokkal előre feltöltött adatok importálása. Az importálási folyamat során az Azure Cache redis RDB-fájlba való fájlokat az Azure storage-ból betölti a memóriába, és majd szúrja be a kulcsokat a gyorsítótárba.
@@ -63,9 +63,9 @@ További információkért lásd: [adatok importálása, és az adatok exportál
 A prémium szint lehetővé teszi, hogy a gyorsítótár igény szerinti, egy vagy több csomópont újraindítását. Ez lehetővé teszi, hogy tesztelje az alkalmazást a rugalmassághoz meghibásodása. Az alábbi csomópontok indíthatja újra.
 
 * Fő csomóponttal, a gyorsítótár
-* Az alárendelt csomópont a gyorsítótár
-* A gyorsítótár fő és az alárendelt csomópontok
-* Egy prémium szintű gyorsítótár fürtözési használatakor akkor indíthatja újra a fő, az alárendelt vagy mindkét csomópontját az egyes szegmensek a gyorsítótárban
+* Másodlagos csomópontra, a gyorsítótár
+* A gyorsítótár elsődleges és másodlagos csomópontján
+* Egy prémium szintű gyorsítótár fürtözési használatakor akkor indíthatja újra az elsődleges, másodlagos vagy mindkét csomópontját az egyes szegmensek a gyorsítótárban
 
 További információkért lásd: [újraindítás](cache-administration.md#reboot) és [újraindítás – gyakori kérdések](cache-administration.md#reboot-faq).
 

@@ -4,7 +4,7 @@ description: További információ a nyilvános ügyfél és a bizalmas ügyfél
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6197d472bdfaf03c9f99baa7691354e735cc91e
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 2f22ff41e380a16af2aa45df9a61eefbf293ff83
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075805"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544319"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Az ügyfélalkalmazások MSAL.NET használatával inicializálása
 Ez a cikk ismerteti az ügyfél nyilvános és Microsoft-hitelesítési tár .NET (MSAL.NET) használatával bizalmas ügyfélalkalmazások inicializálása.  Az ügyfél alkalmazástípusok és alkalmazáskonfigurációs beállítások kapcsolatos további információkért olvassa el a [áttekintése](msal-client-applications.md).

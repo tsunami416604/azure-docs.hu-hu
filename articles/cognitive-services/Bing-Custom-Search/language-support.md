@@ -3,19 +3,19 @@ title: Nyelvi támogatás – Bing Custom Search API
 titleSuffix: Azure Cognitive Services
 description: Támogatott nyelvek és a Bing Custom Search API régiók listáját.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.author: v-gedod
-ms.openlocfilehash: 1f53dc60a74f0b558525897bef97bf2500442b54
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.author: aahi
+ms.openlocfilehash: 56870a63f42c10b48cc2d8f0ae2995862be46d8f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867829"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790249"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>A Bing Custom Search API nyelvéhez és régiójához támogatása
 
@@ -44,7 +44,7 @@ A `Accept-Language` fejlécet és a `setLang` lekérdezési paraméter, egymást
 |Németország|DE|
 |Hongkong (KKT)|HK|
 |India|IN|
-|Indonézia|ID (Azonosító)|
+|Indonézia|azonosító|
 |Olaszország|IT|
 |Japán|JP|
 |Korea|KR|
@@ -52,7 +52,7 @@ A `Accept-Language` fejlécet és a `setLang` lekérdezési paraméter, egymást
 |Mexikó|MX|
 |Hollandia|NL|
 |Új-Zéland|NZ|
-|Norvégia|NO|
+|Norvégia|NEM|
 |Kína|CN|
 |Lengyelország|PL|
 |Portugália|PT|
@@ -74,12 +74,12 @@ A `Accept-Language` fejlécet és a `setLang` lekérdezési paraméter, egymást
 |Ország/régió|Nyelv|Piaci kód|
 |-------|--------|-----------|
 |Argentína|spanyol|es-AR|
-|Ausztrália|Angol|en-Ausztrália|
+|Ausztrália|angol|en-Ausztrália|
 |Ausztria|német|Németország-AT|
 |Belgium|holland|nl-BE|
 |Belgium|francia|FR-lehet|
 |Brazília|portugál|pt-BR|
-|Kanada|Angol|en-hitelesítésszolgáltató|
+|Kanada|angol|en-hitelesítésszolgáltató|
 |Kanada|francia|FR-hitelesítésszolgáltató|
 |Chile|spanyol|es-CL|
 |Dánia|dán|da-DK|
@@ -87,29 +87,29 @@ A `Accept-Language` fejlécet és a `setLang` lekérdezési paraméter, egymást
 |Franciaország|francia|FR-FR|
 |Németország|német|de-DE|
 |Hongkong (KKT)|Kínai (hagyományos)|zh-HK|
-|India|Angol|en-IN|
-|Indonézia|Angol|en-azonosító|
+|India|angol|en-IN|
+|Indonézia|angol|en-azonosító|
 |Olaszország|olasz|it-IT|
 |Japán|japán|ja-JP|
 |Korea|koreai|ko-KR|
-|Malajzia|Angol|en-MY|
+|Malajzia|angol|en-MY|
 |Mexikó|spanyol|es-MX|
 |Hollandia|holland|NL-NL|
-|Új-Zéland|Angol|en-NZ|
+|Új-Zéland|angol|en-NZ|
 |Norvégia|norvég|no-NO|
 |Kína|kínai|zh-CN|
 |Lengyelország|lengyel|pl-PL|
 |Portugália|portugál|PT-PT|
-|Fülöp-szigetek|Angol|en-PH|
+|Fülöp-szigetek|angol|en-PH|
 |Oroszország|orosz|ru-RU|
-|Szaúd-Arábia|arab|ar-SA|
-|Dél-Afrika|Angol|en-ZA|
+|Szaúd-Arábia|Arab|ar-SA|
+|Dél-Afrika|angol|en-ZA|
 |Spanyolország|spanyol|es-ES|
 |Svédország|svéd|SV-SE|
 |Svájc|francia|FR-CH|
 |Svájc|német|Németország – CH|
 |Tajvan|Kínai (hagyományos)|zh-TW|
 |Törökország|török|tr-TR|
-|Egyesült Királyság|Angol|en-GB|
-|Egyesült Államok|Angol|en-US|
+|Egyesült Királyság|angol|en-GB|
+|Egyesült Államok|angol|en-US|
 |Egyesült Államok|spanyol|es-US|

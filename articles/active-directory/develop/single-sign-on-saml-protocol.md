@@ -3,8 +3,8 @@ title: Az Azure egyszeri bejelentkezési SAML-protokoll |} A Microsoft Docs
 description: Ez a cikk ismerteti az Azure Active Directoryban az egyszeri bejelentkezés a SAML protokoll
 services: active-directory
 documentationcenter: .net
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
-ms.author: celested
+ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 033740d1ae75bb6f6fe8509d9ad123d55d9c6770
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 593f07b27fec16c3df90a073479effb130bc5721
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705007"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545284"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Egyszeri bejelentkezéses SAML-protokoll
 
@@ -49,12 +49,12 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| ID (Azonosító) | Szükséges | Azure ad-ben ezt az attribútumot használja feltölti a `InResponseTo` a visszaadott válasz attribútum. Azonosító kell nem kezdődhet számmal, így egy általános stratégia az, hogy egy karakterlánc, például a "id" egy GUID azonosító karakterlánc-ábrázolásra jogosultságokat. Ha például `id6c1c178c166d486687be4aaf5e482730` van egy érvényes azonosítót. |
+| azonosító | Szükséges | Azure ad-ben ezt az attribútumot használja feltölti a `InResponseTo` a visszaadott válasz attribútum. Azonosító kell nem kezdődhet számmal, így egy általános stratégia az, hogy egy karakterlánc, például a "id" egy GUID azonosító karakterlánc-ábrázolásra jogosultságokat. Ha például `id6c1c178c166d486687be4aaf5e482730` van egy érvényes azonosítót. |
 | Version | Szükséges | Ezt a paramétert kell megadni **2.0**. |
 | IssueInstant | Szükséges | Egy dátum/idő karakterlánc UTC értékkel és [oda-vissza formátumot ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure ad-ben az ilyen típusú dátum/idő értéket vár, de nem értékeli, vagy használja az értéket. |
-| AssertionConsumerServiceUrl | Optional | Ha meg van adva, ezt a paramétert meg kell egyeznie a `RedirectUri` a felhőalapú szolgáltatás, az Azure ad-ben. |
-| ForceAuthn | Optional | Ez egy olyan logikai érték. Ha az értéke igaz, az azt jelenti, hogy a felhasználónak meg kell változtatniuk a újra hitelesíteni kell, még akkor is, ha rendelkezik egy érvényes Azure AD-munkamenetet. |
-| IsPassive | Optional | Ez az egy logikai érték, amely meghatározza, hogy az Azure AD kell hitelesíteni a felhasználót csendes módban, a felhasználó beavatkozása nélkül a munkamenetcookie-t használja, ha van ilyen. Ha ez igaz, az Azure AD megpróbálja hitelesíteni a felhasználót a munkamenet cookie-k használatával. |
+| AssertionConsumerServiceUrl | Választható | Ha meg van adva, ezt a paramétert meg kell egyeznie a `RedirectUri` a felhőalapú szolgáltatás, az Azure ad-ben. |
+| ForceAuthn | Választható | Ez egy olyan logikai érték. Ha az értéke igaz, az azt jelenti, hogy a felhasználónak meg kell változtatniuk a újra hitelesíteni kell, még akkor is, ha rendelkezik egy érvényes Azure AD-munkamenetet. |
+| IsPassive | Választható | Ez az egy logikai érték, amely meghatározza, hogy az Azure AD kell hitelesíteni a felhasználót csendes módban, a felhasználó beavatkozása nélkül a munkamenetcookie-t használja, ha van ilyen. Ha ez igaz, az Azure AD megpróbálja hitelesíteni a felhasználót a munkamenet cookie-k használatával. |
 
 Az összes többi `AuthnRequest` attribútumok, például a jóváhagyás, cél, AssertionConsumerServiceIndex, AttributeConsumerServiceIndex és a ProviderName **figyelmen kívül hagyja**.
 
@@ -166,7 +166,7 @@ Például a kibocsátó elemmel választ az alábbi mintához hasonlóan rákere
 <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
-### <a name="status"></a>status
+### <a name="status"></a>Állapot
 
 A `Status` elem tartalmát, a sikeres vagy sikertelen bejelentkezés. Ez magában foglalja a `StatusCode` elem, amely tartalmazza a kódot vagy egy beágyazott kódot, amely a kérés állapotát jelöli. Ezenkívül tartalmazza a `StatusMessage` elem, amely tartalmazza a bejelentkezési folyamat során létrehozott egyéni hibaüzenetek.
 

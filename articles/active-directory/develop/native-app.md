@@ -3,8 +3,8 @@ title: Az Azure Active Directory natív alkalmazások
 description: Protokoll flow, a regisztráció és a jogkivonat lejárati az alkalmazástípushoz a natív alkalmazások vannak és alapjainak ismertetése
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e37e40cd0dbba7961cbde75b5dde44f2666dc21
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a6bf24124c4b072a64ef59500b2f723ff6abbb0e
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918620"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545845"
 ---
 # <a name="native-apps"></a>A natív alkalmazások
 
 A natív alkalmazások olyan alkalmazások, amelyek egy felhasználó nevében webes API-hívás. Ebben a forgatókönyvben épül az OAuth 2.0 engedélyezési kód engedélyezési típusának nyilvános ügyfél, 4.1 szakaszában leírtak szerint a [OAuth 2.0 ismertetőjének](https://tools.ietf.org/html/rfc6749). A natív alkalmazás az OAuth 2.0 protokoll használatával szerzi be a felhasználó hozzáférési jogkivonatot. Ez a jogkivonat a kérelemben a webes API-t, amely engedélyezi a felhasználó, és adja vissza a kívánt erőforrást elküldi.
 
-## <a name="diagram"></a>Ábra
+## <a name="diagram"></a>Diagram
 
 ![Natív alkalmazás webes API-Diagram](./media/authentication-scenarios/native_app_to_web_api.png)
 

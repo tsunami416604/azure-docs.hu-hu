@@ -3,8 +3,8 @@ title: Az Azure Active Directory Graph API |} A Microsoft Docs
 description: Egy áttekintése és a rövid útmutató az Azure AD Graph API-t, amely lehetővé teszi a programozott hozzáférést az Azure ad-hez REST API-végpontokon keresztül.
 services: active-directory
 documentationcenter: ''
-author: lleonard-msft
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.assetid: 5471ad74-20b3-44df-a2b5-43cde2c0a045
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/01/2019
-ms.author: alleonar
+ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47233d593e9539e5755daf331ce9dbff73207942
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 77730ea7302b4abd6c17ebfe5620c0dc55fa407c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60300427"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544583"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory – Graph API
 
@@ -50,7 +50,7 @@ Ezenfelül más objektumok, például a csoportok és alkalmazások hasonló mű
 
 Az Azure Active Directory Graph API használatának megkezdéséhez tekintse meg a [Azure AD Graph API a rövid útmutató](active-directory-graph-api-quickstart.md), vagy megtekintheti a [interaktív Azure AD Graph API-referenciadokumentáció](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 Az Azure AD Graph API a következő szolgáltatásokat biztosítja:
 
@@ -66,7 +66,7 @@ Az Azure AD Graph API a következő szolgáltatásokat biztosítja:
     
     Mindkét delegált és az Alkalmazásengedélyek felel meg az Azure AD Graph API által elérhetővé tett jogosultság, és igényelhetnek keresztül regisztrációs engedélyeket Alkalmazásfunkciók az ügyfélalkalmazások által az [az Azure portal](https://portal.azure.com). [Az Azure AD Graph API engedélyhatókörök](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) arról nyújt tájékoztatást, mi az az ügyfélalkalmazás által használható.
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
 
 Azure AD Graph API lehetővé teszi, hogy az alkalmazás-forgatókönyvek. A következő forgatókönyvek esetében a leggyakoribb:
 

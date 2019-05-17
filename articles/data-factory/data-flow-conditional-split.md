@@ -3,23 +3,32 @@ title: Az Azure Data Factory-folyamat feltételes Split adatátalakítás lekép
 description: Az Azure Data Factory folyamat feltételes Split átalakítását
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: a4ea79e05165dfae4f79aa6473a07151ba7c00fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f9fd346d4c4eaed0797d564fe52dd44e9f0e240a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60627632"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795640"
 ---
-# <a name="azure-data-factory-mapping-data-flow-conditional-split-transformation"></a>Az Azure Data Factory-folyamat feltételes Split adatátalakítás leképezése
+# <a name="mapping-data-flow-conditional-split-transformation"></a>Leképezés adatfolyam feltételes átalakítási felosztása
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
+![felosztott eszközkészlet feltételes](media/data-flow/conditionalsplit2.png "feltételes eszközkészlet felosztása")
+
 A feltételes Split átalakítást is adatsor átirányítása a adatok tartalma függően különböző Streamek. A feltételes Split átalakítás megvalósítása nagyon hasonlít egy kis döntési struktúra programozási nyelven. Az átalakítás kiértékeli a kifejezések, és az eredmények alapján, arra utasítja a megadott streamet az adatok sor. Az átalakítás is biztosít egy alapértelmezett kimenet, úgy, hogy ha egy sor kifejezés nem egyezik az alapértelmezett kimenet irányítja.
 
-![feltételes split](media/data-flow/cd1.png "feltételes felosztása")
+![feltételes split](media/data-flow/conditionalsplit1.png "feltételes vágási lehetőségek")
+
+## <a name="multiple-paths"></a>Több elérési út
 
 További feltételek hozzáadása, konfigurációs alsó ablaktábláján válassza a "Stream hozzáadása", majd kattintson a Kifejezésszerkesztő szövegmezőben hozhat létre a kifejezés.
+
+![többszörös felosztása feltételes](media/data-flow/conditionalsplit3.png "felosztása több feltételes")
+
+## <a name="next-steps"></a>További lépések
+
+Általános folyamat adatátalakítások feltételes split használják: [Csatlakozzon az átalakítási](data-flow-join.md), [Loopup átalakítási](data-flow-lookup.md), [átalakítási kiválasztása](data-flow-select.md)

@@ -15,12 +15,12 @@ ms.date: 05/o7/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c52f6fc66187d961dc93089a9f81f6de4d67fe41
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: eadcae393128d9721f2c988f713af07913c5fd1d
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075940"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545503"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Asztali alkalmazás, hogy a hívások webes API-k – helykódot
 
@@ -94,12 +94,12 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-### <a name="learn-more"></a>Részletek
+### <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
 
 További az MSAL.NET asztali alkalmazás konfigurálása:
 
-- Az összes elérhető dostupnosti listáját `PublicClientApplicationBuilder`, tekintse meg a dokumentációja [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.appconfig.publicclientapplicationbuilder?view=azure-dotnet-preview#methods)
-- Az elérhető lehetőségekről leírását `PublicClientApplicationOptions` lásd [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.appconfig.publicclientapplicationoptions?view=azure-dotnet-preview), a referencia-dokumentáció
+- Az összes elérhető dostupnosti listáját `PublicClientApplicationBuilder`, tekintse meg a dokumentációja [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)
+- Az elérhető lehetőségekről leírását `PublicClientApplicationOptions` lásd [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions), a referencia-dokumentáció
 
 ## <a name="complete-example-with-configuration-options"></a>A konfigurációs beállítások teljes példát
 

@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: byvinyal
-ms.openlocfilehash: cb0203e3413ab525d6885f23c5936c64e1bef189
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: c8f1eaba726efe72e2b6845beaf1465d047c90d2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233700"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787585"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja az egyes a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem vonatkozik Azure-szolgáltatásokhoz. Az idő múlásával a lista fogja kibontva és a frissített magában foglalja a szolgáltatások további.
@@ -55,6 +55,7 @@ A korlátok a következők közül egy új táblát korlátok a különbségeket
 * [Azure DNS](#azure-dns-limits)
 * [Az Azure-tűzfal](#azure-firewall-limits)
 * [Azure Kubernetes Service](#azure-kubernetes-service-limits)
+* [Azure Machine Learning Service](#azure-machine-learning-service-limits)
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#monitor-limits)
 * [Azure Policy](#azure-policy-limits)
@@ -77,15 +78,22 @@ A korlátok a következők közül egy új táblát korlátok a különbségeket
 * [IoT Hub](#iot-hub-limits)
 * [IoT Hub eszközregisztrációs szolgáltatás](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
-* [Load Balancer](#load-balancer)
 * [Log Analytics](#log-analytics-limits)
 * [Médiaszolgáltatások](#media-services-limits)
 * [Mobile Services](#mobile-services-limits)
 * [Többtényezős hitelesítés](#multi-factor-authentication-limits)
 * [Hálózat](#networking-limits)
-* [A Network Watcher](#network-watcher-limits)
+  * [Application Gateway](#application-gateway-limits)
+  * [Azure DNS](#azure-dns-limits)
+  * [Az Azure bejárati ajtajának szolgáltatás](#azure-front-door-service-limits)
+  * [Az Azure-tűzfal](#azure-firewall-limits)
+  * [ExpressRoute](#expressroute-limits)
+  * [Load Balancer](#load-balancer)
+  * [Nyilvános IP-cím](#publicip-address)
+  * [A Network Watcher](#network-watcher-limits)
+  * [Traffic Manager](#traffic-manager-limits)
+  * [Virtual Network](#networking-limits)
 * [Értesítési központ](#notification-hubs-limits)
-* [Nyilvános IP-cím](#publicip-address)
 * [Erőforráscsoport](#resource-group-limits)
 * [Szerepköralapú hozzáférés-vezérlés](#role-based-access-control-limits)
 * [Scheduler](#scheduler-limits)
@@ -97,7 +105,6 @@ A korlátok a következők közül egy új táblát korlátok a különbségeket
 * [StorSimple rendszerbe](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Előfizetés](#subscription-limits)
-* [Traffic Manager](#traffic-manager-limits)
 * [Virtuális gépek](#virtual-machines-limits)
 * [A Virtual machine scale sets](#virtual-machine-scale-sets-limits)
 
@@ -144,6 +151,11 @@ Az alábbi táblázat ismerteti a funkciókat és korlátokat az alapszintű, St
 
 ### <a name="azure-kubernetes-service-limits"></a>Az Azure Kubernetes Service korlátai
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
+
+### <a name="azure-machine-learning-service-limits"></a>Azure Machine Learning szolgáltatás korlátai
+A legújabb értékeket az Azure Machine Learning Compute kvóták megtalálható a [Azure Machine Learning kvóta lap](../articles/machine-learning/service/how-to-manage-quotas.md)
+
+[!INCLUDE [how-to-manage-quotas](../articles/machine-learning/service/how-to-manage-quotas.md)]
 
 ### <a name="networking-limits"></a>Hálózatkezelési korlátok
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]

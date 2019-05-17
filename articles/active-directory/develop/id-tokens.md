@@ -3,8 +3,8 @@ title: A Microsoft identity platform azonosító jogkivonat-referencia |} A Micr
 description: Ismerje meg, hogyan használhatja az 1.0-s verziójú Azure ad-ben és a Microsoft identity platform (2.0-s verzió) végpontok által kibocsátott id_tokens.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5c296f14fd9fdc3a7555412555ea1a851f9a7b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f2c99caa46522f9b1e5d6334da8f10a0f4039899
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60410042"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540313"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>A Microsoft identity platform azonosító jogkivonatok
 
@@ -55,7 +55,7 @@ Megtekintheti a v2.0-minta lexikális elem szerepel az [jwt.ms](https://jwt.ms/#
 
 ### <a name="header-claims"></a>Fejléc jogcímek
 
-|Jogcím | Formátum | Leírás |
+|Igénylés | Formátum | Leírás |
 |-----|--------|-------------|
 |`typ` | Karakterlánc - mindig "JWT" | Azt jelzi, hogy a jogkivonat jwt-t.|
 |`alg` | String | Azt jelzi, hogy a jogkivonat aláírásához használt algoritmust. Példa: "RS256" |
@@ -66,7 +66,7 @@ Megtekintheti a v2.0-minta lexikális elem szerepel az [jwt.ms](https://jwt.ms/#
 
 Ez a lista tartalmazza, amelyeket a legtöbb id_tokens (jelzés) alapértelmezés szerint.  Azonban az alkalmazás használhat [választható jogcímek](active-directory-optional-claims.md) a id_token a további jogcímek.  Ezek között lehet a `groups` jogcímet a felhasználó nevét kapcsolatos információkat.
 
-|Jogcím | Formátum | Leírás |
+|Igénylés | Formátum | Leírás |
 |-----|--------|-------------|
 |`aud` |  Az Alkalmazásazonosító URI-karakterláncot | A jogkivonat az illetékes címzett azonosítja. A `id_tokens`, a célközönségét az alkalmazás Alkalmazásazonosító, az Azure Portalon az alkalmazáshoz rendelt. Az alkalmazás kell érvényesíteni ezt az értéket, és elutasítja a tokent, ha az érték nem egyezik. |
 |`iss` |  Az STS-URI-karakterláncot | Azonosítja a biztonsági jogkivonat-szolgáltatás (STS) hoz létre, és a jogkivonatot, és az Azure AD-bérlővel, amelyben a felhasználó hitelesítési adja vissza. Ha a jogkivonat bocsátotta a v2.0-végpont, belül véget ér. az URI-t `/v2.0`.  A GUID, amely azt jelzi, hogy a felhasználó Microsoft-fiók fogyasztói felhasználója `9188040d-6c67-4c5b-b112-36a304b66dad`. Az alkalmazás, amely bejelentkezhet az alkalmazásba, ha van ilyen bérlők korlátozni a jogcím GUID részének kell használni. |

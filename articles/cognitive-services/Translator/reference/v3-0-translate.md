@@ -10,18 +10,18 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 593cd83dab6e0cd93cdd1aedac278f4d94a27cc5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e7ab2eba54aafda6bb00696939bf9bc32bb627ca
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722431"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797003"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
 Szöveg lefordítása.
 
-## <a name="request-url"></a>Kérés URL-címe
+## <a name="request-url"></a>Lekérdezés URL-címe
 
 Küldjön egy `POST` kérelmet:
 
@@ -41,7 +41,7 @@ A kérelem lekérdezési karakterláncot az átadott paraméterek a következők
     <td><em>Kötelező paraméter</em>.<br/>Az ügyfél által kért API-verzió. Az érték lehet <code>3.0</code>.</td>
   </tr>
   <tr>
-    <td>forrás:</td>
+    <td>from</td>
     <td><em>Nem kötelező paraméter</em>.<br/>Meghatározza a bemeneti szöveg nyelvét. Milyen nyelveken érhetők el lefordítani a szavazatait található <a href="./v3-0-languages.md">támogatott nyelvek</a> használatával a <code>translation</code> hatókör. Ha a <code>from</code> paraméter nincs megadva, az automatikus nyelvfelismerést a Forrásnyelv alkalmazásával.</td>
   </tr>
   <tr>
@@ -114,7 +114,7 @@ Kérelemfejlécek a következők:
   </tr>
 </table> 
 
-## <a name="request-body"></a>A kérés törzse
+## <a name="request-body"></a>Kérelem törzse
 
 A kérelem törzsében egy JSON-tömböt. Egyes tömbelemeken nevű karakterlánc tulajdonsággal rendelkező JSON-objektum `Text`, amely lefordítja a karakterláncot jelöli.
 
@@ -193,7 +193,7 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
   <th>Leírás</th>
   <tr>
     <td>200</td>
-    <td>Siker.</td>
+    <td>Sikeres művelet.</td>
   </tr>
   <tr>
     <td>400</td>
@@ -213,7 +213,7 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
   </tr>
   <tr>
     <td>429</td>
-    <td>A hívó túl sok kérelmet küld.</td>
+    <td>A kiszolgáló elutasította a kérelmet, mert az ügyfél túllépte a kérelmekre vonatkozó korlátok.</td>
   </tr>
   <tr>
     <td>500</td>

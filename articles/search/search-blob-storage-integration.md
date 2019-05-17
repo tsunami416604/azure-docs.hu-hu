@@ -9,12 +9,12 @@ author: mgottein
 manager: cgronlun
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: b7e7ecd2a82a8d64967288def9c6ede7a292f72a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b6bb70e4c56adb162006d2597d301c73b12d2a8a
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61127593"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540874"
 ---
 # <a name="searching-blob-storage-with-azure-search"></a>Keresés a Blob Storage-tárolókban az Azure Search szolgáltatással
 
@@ -38,14 +38,14 @@ Egy gyakori forgatókönyv, amely megkönnyíti a tartalom típustól blobok vé
 ## <a name="image-search"></a>Képkeresés
 Az Azure Search teljes szöveges keresés, a jellemzőalapú navigáció és rendezési lehetőségeket is érvényesek a metaadatokat a blobokban tárolt képek.
 
-Kognitív keresés például tartalmazza a rendszerkép feldolgozási képességek [optikai karakterfelismerés (OCR)](cognitive-search-skill-ocr.md) és azonosítása [vizuális jellemzőket](cognitive-search-skill-image-analysis.md) , amelyek lehetővé teszik, hogy az egyes vizuális tartalmáról indexelése kép.
+A kognitív keresés például tartalmazza a rendszerkép feldolgozási képességek [optikai karakterfelismerés (OCR)](cognitive-search-skill-ocr.md) és azonosítása [vizuális jellemzőket](cognitive-search-skill-image-analysis.md) , amelyek lehetővé teszik, hogy az egyes vizuális tartalmáról indexelése kép.
 
 ## <a name="index-and-search-through-json-blobs"></a>Index és keresést végezhet a JSON-blobok
 Az Azure Search beállítható úgy, hogy a blobokat tartalmazó JSON-ban található strukturálatlan tartalom kinyeréséhez. Az Azure Search olvashatja a JSON-blobok és a strukturálatlan tartalom használatával elemzi az Azure Search-dokumentum, a megfelelő mezőkbe. Az Azure Search is igénybe vehet a blobokat, amelyekre a JSON-objektumok egy tömbjét tartalmazza, és egyes elemei leképezése egy külön Azure Search-dokumentumot is.
 
 JSON-elemzés nem jelenleg konfigurálható a portálon keresztül. [További információ a JSON-elemzés az Azure Search szolgáltatásban.](https://aka.ms/azsjsonblobindexing)
 
-## <a name="quick-start"></a>Első lépések
+## <a name="quick-start"></a>Gyors üzembe helyezés
 Az Azure Search BLOB közvetlenül a Blob storage portáloldalán a lehet hozzáadni.
 
 ![](./media/search-blob-storage-integration/blob-blade.png)

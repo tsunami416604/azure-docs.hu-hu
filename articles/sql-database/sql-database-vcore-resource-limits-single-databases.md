@@ -7,19 +7,19 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/22/2019
-ms.openlocfilehash: 7dcbf2733ff23b0454208dbc789599cd372278ec
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 15aedaa7eedad4940945e9b1e7eff0e1780da796
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507835"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790386"
 ---
-# <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Az Azure SQL Database Virtuálismag-alapú vásárlási modell korlátok egy önálló adatbázis
+# <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>A Virtuálismag-alapú vásárlási modell segítségével az önálló adatbázisok számára erőforráskorlátok
 
 Ez a cikk a részletes erőforráskorlátok nyújt a Virtuálismag-alapú vásárlási modell használatával Azure SQL Database önálló adatbázisok számára.
 
@@ -129,7 +129,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 
 ### <a name="serverless-compute-tier"></a>Kiszolgáló nélküli számítási szint
 
-A [kiszolgáló nélküli számítási kapacitás](sql-database-serverless.md) nyilvános előzetes verzióban érhető el, és csak az önálló adatbázisok használatával, a virtuális mag vásárlási modell.
+A [kiszolgáló nélküli számítási kapacitás](sql-database-serverless.md) előzetes verzióban érhető el, és csak az önálló adatbázisok használatával, a virtuális mag vásárlási modell.
 
 #### <a name="generation-5-compute-platform"></a>5. generáció számítási platform
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 01/09/2019
+ms.date: 05/15/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 20b8d7a6a7d6da639481045d9462c484b820a4df
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 194f2b80e9cbf3a69fef6ce382e6755934f1d5bd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575826"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787434"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk-lemez?
 
@@ -76,35 +76,20 @@ További információt az [Azure Data Box biztonsága és adatvédelme](data-box
 
 | Specifikációk                                          | Leírás              |
 |---------------------------------------------------------|--------------------------|
-| Tömeg                                                  | < 2 lb dobozonként. A mezőbe legfeljebb 5 lemezek                |
+| Súlyozás                                                  | < 2 lb dobozonként. A mezőbe legfeljebb 5 lemezek                |
 | Dimenziók                                              | Lemez – 2,5 inch SSD |            
 | Kábelek                                                  | 1 USB 3.1 kábel lemezenként|
 | Tárolási kapacitás megrendelésenként                              | 40 TB (használható ~ 35 TB)|
 | Lemezek tárkapacitása                                   | 8 TB (használható ~ 7 TB)|
 | Adatinterfész                                          | USB   |
-| Biztonság                                                | Előre titkosítva BitLocker és biztonságos frissítés használatával <br> Hozzáférési kulcs által védett lemezek <br> Mindig titkosított adatok  |
+| Biztonsági                                                | Előre titkosítva BitLocker és biztonságos frissítés használatával <br> Hozzáférési kulcs által védett lemezek <br> Mindig titkosított adatok  |
 | Adatátviteli sebesség                                      | maximum 430 MBps a fájlmérettől függően      |
 |Kezelés                                               | Azure Portal |
 
 
-## <a name="region-availability"></a>Régiónkénti elérhetőség
+## <a name="region-availability"></a>Regionális elérhetőség
 
-Jelenleg Data Box-lemezek adatokat adhatnak át a következő Azure-régiókhoz:
-
-
-|Azure-régió  |Azure-régió  |
-|---------|---------|
-|USA nyugati középső régiója     |Közép-Kanada       |        
-|USA 2. nyugati régiója     |Kelet-Kanada         |     
-|USA nyugati régiója     | Nyugat-Európa        |      
-|USA déli középső régiója   |Észak-Európa     |         
-|USA középső régiója     |Kelet-Ausztrália|
-|USA északi középső régiója  |Délkelet-Ausztrália   |
-|USA keleti régiója      |Ausztrália középső régiója |
-|USA 2. keleti régiója     |Ausztrália 2. középső régiója|
-|Kelet-Japán     |Korea középső régiója |
-|Nyugat-Japán     |Korea déli régiója |
-|Délkelet-Ázsia |
+Információk a régiók rendelkezésre állása, [elérhető Azure-termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
 
 
 ## <a name="pricing"></a>Díjszabás

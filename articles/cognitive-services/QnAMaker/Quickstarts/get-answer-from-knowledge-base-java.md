@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 746551cf05634427f839bf33af641bc4615179fa
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6d49ce71959f80a96731046475c3de5737bf7d46
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916894"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796191"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Válaszok a kérdést a Tudásbázis javával
 
@@ -98,4 +98,4 @@ Hozhat létre, és a program futtatása a parancssorból. A kérelem automatikus
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

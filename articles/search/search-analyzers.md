@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: e3738980206277587ca367339d75da4f3faa643a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f76d944f614f07a4428d4e4100f6a08a375d96dc
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61316829"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795799"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Az Azure Search szövegfeldolgozást elemzők
 
@@ -92,10 +92,6 @@ Az indexkészítés felülbírálja a szabványos elemző szükséges. Ha lehets
 ### <a name="inspect-tokenized-terms"></a>A feltételek tokenekre vizsgálata
 
 A keresés nem várt eredményeket adjon vissza, ha a legvalószínűbb token fenntartásában kifejezés bemenetei között a lekérdezésre, és az index tokenekre feltételek között. Ha a jogkivonatok nem ugyanaz, egyezések tényleges táblává alakíthatóak sikertelen. Vizsgálhatja meg a kimeneti tokenizer, javasoljuk a [elemezheti API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) vizsgálati eszköz. A válasz tokenek, áll, például egy adott elemző eszköz által létrehozott.
-
-### <a name="compare-english-analyzers"></a>Angol nyelvű elemzők összehasonlítása
-
-A [keresési Analyzer bemutató](https://alice.unearth.ai/) egy külső bemutató alkalmazás egy egymás mellett hasonlítja, a standard Lucene-elemzőt, a Lucene angol nyelvi elemző és a Microsoft természetes angol nyelvű processzor. Az index rögzített; egy népszerű történetet szöveget tartalmaz. Az egyes keresési feltétele alapján ad meg, az egyes analyzer eredmények jelennek meg a szomszédos csomópontoknak, így jobban, hogy minden egyes analyzer miként dolgozza fel ugyanazt a karakterláncot. 
 
 <a name="examples"></a>
 
@@ -348,8 +344,6 @@ Hozzon létre egy [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microso
 + Ismerje meg, hogyan alkalmazhatja a [nyelvspecifikus lexikai elemzőket](index-add-language-analyzers.md).
 
 + [Egyéni elemzők konfigurálása](index-add-custom-analyzers.md) minimális feldolgozás vagy specializált feldolgozási az egyes mezőket.
-
-+ [Hasonlítsa össze a standard és az angol nyelvű elemzők](https://alice.unearth.ai/) bemutató webhelyhez a szomszédos ablaktáblán. 
 
 ## <a name="see-also"></a>Lásd még
 

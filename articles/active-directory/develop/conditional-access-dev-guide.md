@@ -3,9 +3,9 @@ title: Feltételes hozzáférés az Azure Active Directory fejlesztői útmutat�
 description: Fejlesztői útmutatás és az Azure AD feltételes hozzáférési forgatókönyvek
 services: active-directory
 keywords: ''
-author: CelesteDG
-manager: mtillman
-ms.author: celested
+author: rwike77
+manager: CelesteDG
+ms.author: ryanwi
 ms.reviewer: dadobali
 ms.date: 02/28/2019
 ms.service: active-directory
@@ -15,18 +15,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3346f7a5af2a22cb7b7ece312fc367a874095668
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 071acb5ae24cff3e07fe9d4a6d35cdc93348d60f
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60410724"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544541"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Feltételes hozzáférés az Azure Active Directory fejlesztői útmutatója
 
 Az Azure Active Directoryban (Azure AD) feltételes hozzáférés funkciójának kínál, amellyel az alkalmazás biztonságos és védelme a szolgáltatás számos módon. Feltételes hozzáférés lehetővé teszi a fejlesztők és a nagyvállalati vásárlók többféle, beleértve a szolgáltatások védelme érdekében:
 
-* Multi-Factor Authentication
+* Többtényezős hitelesítés
 * Így csak az Intune-ban regisztrált eszközök adott szolgáltatásokhoz való hozzáférést
 * Korlátozhatja a felhasználó tartózkodási helye és IP-címtartományok
 
@@ -86,7 +86,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 A fejlesztők mutatták igénybe és fűzze hozzá egy új kérelmet az Azure AD-be. Ebben az állapotban passing kéri a végfelhasználó számára, amelyek szükségesek ahhoz a feltételes hozzáférési szabályzat bármely művelet elvégzésére. A következő esetekben a hiba, és hogyan lehet kigyűjteni a paraméter tulajdonságairól magyarázata.
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
 
 ### <a name="prerequisites"></a>Előfeltételek
 

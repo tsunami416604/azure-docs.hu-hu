@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 4a4677b5db730001df75d201d8e6d3149cb928e6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 0418d325f3b3719549181a48fc0432a677f695d5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409846"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65795902"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure Operational Security – ajánlott eljárások
 Ez a cikk az adatok, alkalmazások és más Azure-beli eszközök védelmére gyakorlati tanácsok az üzemeltetéshez ismertet.
@@ -153,7 +153,7 @@ Használhat [Azure Resource Manager](https://azure.microsoft.com/documentation/a
 **Részletes**: [Az Azure folyamatok](https://docs.microsoft.com/azure/devops/pipelines/index?azure-devops) több lépésből álló üzembe helyezésének automatizálása, és a kibocsátási folyamat kezeléséhez egy megoldás. Gyors, könnyen és gyakran felszabadítása felügyelt folyamatos üzembe helyezés folyamatokat hozhat létre. Az Azure-folyamatok a kibocsátási folyamat automatizálható, és képes jóváhagyási munkafolyamatokat előre. Helyszíni üzembe helyezése és kiterjesztése a felhőbe, és szükség szerint testre szabhatja.
 
 **Ajánlott eljárás**: Ellenőrizze, hogy az alkalmazás teljesítményében előtt indítsa el az eszközt, vagy az éles környezetben telepítheti a frissítéseket.  
-**Részletes**: Futtassa a felhő alapú [terheléses teszteket](https://docs.microsoft.com/azure/devops/test/load-test/overview.md?view=azure-devops#alternatives) való:
+**Részletes**: Futtassa a felhő alapú [terheléses teszteket](/azure/devops/test/load-test/overview#alternatives) való:
 
 - Keresse meg a teljesítményproblémákat okozhat az alkalmazásban.
 - Üzembe helyezés minőségének javítására.

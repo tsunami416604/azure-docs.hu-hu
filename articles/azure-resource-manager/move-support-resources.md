@@ -4,14 +4,14 @@ description: Az Azure-erőforrástípus, amely egy új erőforráscsoportot vagy
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 03/22/2019
+ms.date: 5/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: d44b1bf778c7ec9551e2fd30f67083f8dded22d1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d662607eaaabb8ccfad89f625165c542af81b0fa
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60729290"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794519"
 ---
 # <a name="move-operation-support-for-resources"></a>Művelet támogatási erőforrások áthelyezése
 Ez a cikk felsorolja egy Azure-erőforrás az áthelyezési művelet támogatja-e. Bár egy erőforrás támogatja az áthelyezési művelet, előfordulhat, hogy feltételeket, amelyek megakadályozhatja, hogy az erőforrás áthelyezett lehet. Feltételeket, amelyek hatással vannak az áthelyezési műveleteket kapcsolatos részletekért lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](resource-group-move-resources.md).
@@ -28,6 +28,11 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | ------------- | ----------- | ---------- |
 | Bérlők | Nem | Nem |
 
+## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
+| Erőforrás típusa | Erőforráscsoport | Előfizetés |
+| ------------- | ----------- | ---------- |
+| actionrules | Igen | Igen |
+
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
@@ -37,6 +42,11 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
 | szolgáltatás | Igen | Igen |
+
+## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
+| Erőforrás típusa | Erőforráscsoport | Előfizetés |
+| ------------- | ----------- | ---------- |
+| configurationstores | Igen | Igen |
 
 ## <a name="microsoftappservice"></a>Microsoft.AppService
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -98,7 +108,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
-| blockchainmembers | Nem | Nem |
+| blockchainmembers | Igen | Igen |
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -157,7 +167,9 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | katalógusok | Nem | Nem |
 | galériák vagy-képekből | Nem | Nem |
 | galériák/képek/verziója | Nem | Nem |
-| images | Igen | Igen |
+| hostgroups | Nem | Nem |
+| hostgroups /-gazdagépek | Nem | Nem |
+| rendszerképek | Igen | Igen |
 | proximityplacementgroups | Nem | Nem |
 | restorepointcollections | Nem | Nem |
 | sharedvmimages | Nem | Nem |
@@ -182,7 +194,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | ------------- | ----------- | ---------- |
 | beállításjegyzékek | Igen | Igen |
 | registries/buildtasks | Igen | Igen |
-| beállításjegyzékek/replikációk | Nem | Nem |
+| beállításjegyzékek/replikációk | Igen | Igen |
 | beállításjegyzékek/feladatok | Igen | Igen |
 | beállításjegyzékek és webhookok | Igen | Igen |
 
@@ -232,6 +244,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
 | katalógusok | Igen | Igen |
+| datacatalogs | Nem | Nem |
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -287,16 +300,17 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | ------------- | ----------- | ---------- |
 | servergroups | Nem | Nem |
 | kiszolgáló | Igen | Igen |
+| serversv2 | Igen | Igen |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
-| artifactsources | Nem | Nem |
-| Kibocsátások | Nem | Nem |
-| servicetopologies | Nem | Nem |
-| servicetopologies/szolgáltatások | Nem | Nem |
-| servicetopologies/services/serviceunits | Nem | Nem |
-| lépések | Nem | Nem |
+| artifactsources | Igen | Igen |
+| Kibocsátások | Igen | Igen |
+| servicetopologies | Igen | Igen |
+| servicetopologies/szolgáltatások | Igen | Igen |
+| servicetopologies/services/serviceunits | Igen | Igen |
+| lépések | Igen | Igen |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -316,9 +330,10 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | ------------- | ----------- | ---------- |
 | labcenters | Nem | Nem |
 | Laborgyakorlatok | Igen | Nem |
+| laborok/környezetek | Igen | Igen |
 | labs/servicerunners | Igen | Igen |
 | laborok/virtuális gép | Igen | Nem |
-| Ütemezések | Nem | Nem |
+| Ütemezések | Igen | Igen |
 
 ## <a name="microsoftdns"></a>microsoft.dns
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -342,6 +357,11 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
 | tartományok | Igen | Igen |
+
+## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
+| Erőforrás típusa | Erőforráscsoport | Előfizetés |
+| ------------- | ----------- | ---------- |
+| services | Igen | Igen |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -369,6 +389,16 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
 | Fürtök | Igen | Igen |
+
+## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
+| Erőforrás típusa | Erőforráscsoport | Előfizetés |
+| ------------- | ----------- | ---------- |
+| services | Igen | Igen |
+
+## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
+| Erőforrás típusa | Erőforráscsoport | Előfizetés |
+| ------------- | ----------- | ---------- |
+| gép | Nem | Nem |
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -422,7 +452,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
-| labaccounts | Nem | Nem |
+| labaccounts | Igen | Igen |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -432,7 +462,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
-| fiókok | Igen | Igen |
+| fiókok | Nem | Nem |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -458,12 +488,12 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
-| fiókok | Igen | Igen |
-| fiókok és munkaterületek | Igen | Igen |
-| fiókok/munkaterületeket és projekteket | Igen | Igen |
-| teamaccounts | Igen | Igen |
-| teamaccounts/munkaterületek | Igen | Igen |
-| teamaccounts/munkaterületeket és projekteket | Igen | Igen |
+| fiókok | Nem | Nem |
+| fiókok és munkaterületek | Nem | Nem |
+| fiókok/munkaterületeket és projekteket | Nem | Nem |
+| teamaccounts | Nem | Nem |
+| teamaccounts/munkaterületek | Nem | Nem |
+| teamaccounts/munkaterületeket és projekteket | Nem | Nem |
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -483,7 +513,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
-| userassignedidentities | Igen | Igen |
+| userassignedidentities | Nem | Nem |
 
 ## <a name="microsoftmaps"></a>Microsoft.Maps
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -522,6 +552,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
 | applicationgateways | Nem | Nem |
+| applicationgatewaywebapplicationfirewallpolicies | Nem | Nem |
 | applicationsecuritygroups | Igen | Igen |
 | azurefirewalls | Igen | Igen |
 | bastionhosts | Nem | Nem |
@@ -535,7 +566,6 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | expressrouteports | Nem | Nem |
 | frontdoorok | Igen | Igen |
 | frontdoorwebapplicationfirewallpolicies | Igen | Igen |
-| interfaceendpoints | Nem | Nem |
 | loadbalancers | Igen | Igen |
 | localnetworkgateways | Igen | Igen |
 | natgateways | Igen | Igen |
@@ -548,12 +578,15 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | networkwatchers/átvilágított felülettel | Igen | Igen |
 | networkwatchers/pingmeshes | Igen | Igen |
 | p2svpngateways | Nem | Nem |
+| privatednszones | Igen | Igen |
+| privatednszones/virtualnetworklinks | Igen | Igen |
+| privateendpoints | Nem | Nem |
 | privatelinkservices | Nem | Nem |
 | publicipaddresses | Igen | Igen |
 | publicipprefixes | Igen | Igen |
 | routefilters | Nem | Nem |
 | routetables | Igen | Igen |
-| securegateways | Nem | Nem |
+| securegateways | Igen | Igen |
 | serviceendpointpolicies | Igen | Igen |
 | trafficmanagerprofiles | Igen | Igen |
 | virtualhubs | Nem | Nem |
@@ -562,7 +595,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | virtualnetworktaps | Nem | Nem |
 | virtualwans | Nem | Nem |
 | vpngateways | Nem | Nem |
-| vpnsites | Igen | Igen |
+| vpnsites | Nem | Nem |
 | webapplicationfirewallpolicies | Igen | Igen |
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
@@ -582,6 +615,11 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | managementconfigurations | Igen | Igen |
 | megoldások | Igen | Igen |
 | megtekintés | Igen | Igen |
+
+## <a name="microsoftpeering"></a>Microsoft.Peering
+| Erőforrás típusa | Erőforráscsoport | Előfizetés |
+| ------------- | ----------- | ---------- |
+| társviszonyok | Nem | Nem |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -634,6 +672,11 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | ------------- | ----------- | ---------- |
 | searchservices | Igen | Igen |
 
+## <a name="microsoftsecurity"></a>Microsoft.Security
+| Erőforrás típusa | Erőforráscsoport | Előfizetés |
+| ------------- | ----------- | ---------- |
+| iotsecuritysolutions | Igen | Igen |
+
 ## <a name="microsoftservermanagement"></a>Microsoft.ServerManagement
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
@@ -655,7 +698,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | edgeclusters | Nem | Nem |
 | Hálózatok | Nem | Nem |
 | secretstores | Nem | Nem |
-| volumes | Nem | Nem |
+| kötetek | Nem | Nem |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -665,7 +708,7 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Átjárók | Igen | Igen |
 | Hálózatok | Igen | Igen |
 | titkos kódok | Igen | Igen |
-| volumes | Igen | Igen |
+| kötetek | Igen | Igen |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -689,13 +732,12 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
+| instancepools | Igen | Igen |
 | managedinstances | Igen | Igen |
 | managedinstances/adatbázis | Igen | Igen |
 | kiszolgáló | Igen | Igen |
 | kiszolgálók és adatbázisok | Igen | Igen |
 | servers/elasticpools | Igen | Igen |
-| kiszolgálók/jobaccounts | Nem | Nem |
-| kiszolgálók/jobagents | Nem | Nem |
 | virtualclusters | Igen | Igen |
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
@@ -713,6 +755,11 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
 | tárfiókok | Igen | Igen |
+
+## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
+| Erőforrás típusa | Erőforráscsoport | Előfizetés |
+| ------------- | ----------- | ---------- |
+| Gyorsítótárak | Nem | Nem |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -761,6 +808,11 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | környezetek/eventsources | Igen | Igen |
 | környezetek/referencedatasets | Igen | Igen |
 
+## <a name="microsofttoken"></a>Microsoft.Token
+| Erőforrás típusa | Erőforráscsoport | Előfizetés |
+| ------------- | ----------- | ---------- |
+| tárolók | Nem | Nem |
+
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
@@ -769,9 +821,16 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
-| account | Igen | Igen |
+| fiók | Igen | Igen |
 | fiók/bővítmény | Igen | Igen |
 | fiók és a projekt | Igen | Igen |
+
+## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
+| Erőforrás típusa | Erőforráscsoport | Előfizetés |
+| ------------- | ----------- | ---------- |
+| dedicatedcloudnodes | Igen | Igen |
+| dedicatedcloudservices | Igen | Igen |
+| virtuális gép | Igen | Igen |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -790,6 +849,13 @@ Első ugyanazokat az adatokat egy vesszővel tagolt formátumú fájlt, töltse 
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | ----------- | ---------- |
 | deviceservices | Igen | Igen |
+
+## <a name="microsoftwindowsvirtualdesktop"></a>Microsoft.WindowsVirtualDesktop
+| Erőforrás típusa | Erőforráscsoport | Előfizetés |
+| ------------- | ----------- | ---------- |
+| applicationgroups | Nem | Nem |
+| hostpools | Nem | Nem |
+| munkaterületek | Nem | Nem |
 
 ## <a name="third-party-services"></a>Külső szolgáltatások
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 41f62d095c1a0cbdd0a888326b263a3294066637
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 1bcadc18172535649a0ceb482939ca6a75477e25
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60118601"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794770"
 ---
 ### <a name="what-is-expressroute-direct"></a>Mi az az ExpressRoute közvetlen?
 
@@ -30,15 +30,21 @@ A rendelkezésre álló portok dinamikus lesz, és a kapacitás megtekintéséhe
 * Amszterdam
 * Canberra
 * Chicago
-* Washington, D.C.
+* Washington DC
 * Dallas 
 * Hongkong (KKT)
+* London
 * Los Angeles
 * New York City
 * Párizs
+* Perth
+* Toronto
 * A San Antonio
+* Seattle
+* Szöul
 * Szilícium-völgy
 * Szingapúr 
+* Sydney
 
 ### <a name="what-is-the-sla-for-expressroute-direct"></a>Mi az a szolgáltatói szerződés tartalmazza az ExpressRoute közvetlen?
 

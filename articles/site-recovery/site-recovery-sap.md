@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 68efc039c5de5d7f61b7ce34e74c6c2cf4bad027
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0848738b71a605d8baf049847daa3ae2428a7abe
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61471607"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793678"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Set up disaster recovery for a multi-tier SAP NetWeaver app deployment
 
@@ -166,5 +166,5 @@ További információkért lásd: [az Azure-bA a Site Recovery feladatátvételi
 További információkért lásd: [feladatátvétel a Site Recoveryben](site-recovery-failover.md).
 
 ## <a name="next-steps"></a>További lépések
-* A Site Recovery használatával egy vészhelyreállítási megoldás az SAP NetWeaver-telepítések létrehozásával kapcsolatos további tudnivalókért lásd: a letölthető tanulmány [SAP NetWeaver: Létrehozását olyan vész-helyreállítási megoldást az Azure Site Recovery](https://aka.ms/asr-sap). A tanulmány különböző SAP-architektúrák vonatkozó javaslatokat tárgyalja, sorolja fel az támogatott alkalmazások és a virtuális gépek típusai az Azure-beli SAP és a vész-helyreállítási megoldás tesztelési terv beállításait ismerteti.
+* A Site Recovery használatával egy vészhelyreállítási megoldás az SAP NetWeaver-telepítések létrehozásával kapcsolatos további tudnivalókért lásd: a letölthető tanulmány [SAP NetWeaver: Létrehozását olyan vész-helyreállítási megoldást az Azure Site Recovery](https://aka.ms/asr_sap). A tanulmány különböző SAP-architektúrák vonatkozó javaslatokat tárgyalja, sorolja fel az támogatott alkalmazások és a virtuális gépek típusai az Azure-beli SAP és a vész-helyreállítási megoldás tesztelési terv beállításait ismerteti.
 * Tudjon meg többet [más munkaterhelések replikálásához](site-recovery-workload.md) Site Recovery használatával.

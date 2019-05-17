@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/25/2017
-ms.openlocfilehash: 15166d3943bc72a2eeff3580cefdd264ecaba61d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9bc34110b85119c7b8b303774b585d03ce9d3a0f
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60346219"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596643"
 ---
 # <a name="get-started-with-device-management-node"></a>Ismerkedés az eszközfelügyelettel (Node)
 
@@ -35,7 +35,7 @@ Ez az oktatóanyag végén két Node.js-konzolalkalmazással fog rendelkezni:
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* A Node.js 4.0.x vagy újabb verziója. [A fejlesztési környezet előkészítését](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) ismerteti, hogyan telepítse a Node.js ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
+* NODE.js-verzió 10.0.x vagy újabb. [A fejlesztési környezet előkészítését](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) ismerteti, hogyan telepítse a Node.js ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
 
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
 

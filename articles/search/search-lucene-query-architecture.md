@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: cb8e42400847ba9fb13568d05dffac86d9cec85f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bc183cb8ac2155b8dd31dc603d70506ad3d5e20a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024621"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797481"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Teljes szöveges keresés működése az Azure Search szolgáltatásban
 
@@ -253,9 +253,9 @@ Gyakori, de nem szükséges, a Keresés és a műveletek indexelő, így a leké
 
 Térjen vissza a jelen példában a **cím** mező, a fordított index néz ki:
 
-| Időtartam | Dokumentumok listájához |
+| Időszak | Dokumentumok listájához |
 |------|---------------|
-| atman | 1 |
+| atman | 1. |
 | Beach | 2 |
 | Szálloda | 1, 3 |
 | óceán | 4  |
@@ -267,14 +267,14 @@ A cím mező csak a *Szálloda* megjelenik-e két dokumentumot: 1, 3.
 
 Az a **leírás** mező, az index a következőképpen történik:
 
-| Időtartam | Dokumentumok listájához |
+| Időszak | Dokumentumok listájához |
 |------|---------------|
 | vezeték nélkül | 3
 | és | 4
-| Beach | 1
+| Beach | 1.
 | megfelel | 3
 | kényelmes | 3
-| távolságskála | 1
+| távolságskála | 1.
 | sziget | 2
 | kauaʻi | 2
 | található | 2
@@ -286,11 +286,11 @@ Az a **leírás** mező, az index a következőképpen történik:
 | termek  | 1, 3
 | secluded | 4
 | part | 2
-| Ahhoz | 1
+| Ahhoz | 1.
 | a | 1, 2
-| erre: | 1
+| erre: | 1.
 | megtekintés | 1, 2, 3
-| walking | 1
+| walking | 1.
 | a következővel: | 3
 
 
@@ -392,8 +392,6 @@ Ebben a cikkben bemutattuk az Azure Search kontextusában a teljes szöveges ker
 + Ismerje meg, hogyan alkalmazhatja a [nyelvspecifikus lexikai elemzőket](https://docs.microsoft.com/rest/api/searchservice/language-support).
 
 + [Egyéni elemzők konfigurálása](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) minimális feldolgozás vagy adott mezők speciális terhelése.
-
-+ [Hasonlítsa össze a standard és az angol nyelvű elemzők](https://alice.unearth.ai/)) egymás mellett a bemutató webhelyről. 
 
 ## <a name="see-also"></a>Lásd még
 

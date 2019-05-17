@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: fc95ce4aad4e8597b02b9c862be33bfcf6185541
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 12565d2b8004a5119add25473e5b088c9162035f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073800"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780498"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Telepítheti és használhatja Istio Azure Kubernetes Service (AKS)
 
@@ -36,11 +36,11 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * A bővítmények elérése
 > * Az AKS Istio eltávolítása
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ebben a cikkben részletes lépései azt feltételezik, hogy létrehozott egy AKS-fürt (Kubernetes `1.11` és újabb, az RBAC engedélyezve), és kiépített egy `kubectl` kapcsolatot a fürttel. Ha ezek az elemek bármelyikét segítségre van szüksége, tekintse meg a [AKS gyors][aks-quickstart].
 
-Szüksége lesz [Helm] [ helm] kövesse ezeket az utasításokat, és Istio telepítéséhez. Javasoljuk, hogy a verzió `2.12.2` vagy később megfelelően telepítette és konfigurálta a fürtben. Ha a telepítése Helm segítségre van szüksége, tekintse meg a [AKS Helm telepítéssel kapcsolatos útmutató][helm-install]. Az összes Istio podok is kell ütemezni Linux-csomópontokon való futtatáshoz.
+Szüksége lesz [Helm] [ helm] kövesse ezeket az utasításokat, és Istio telepítéséhez. Javasoljuk, hogy a verzió `2.12.2` vagy később megfelelően telepítette és konfigurálta a fürtben. Ha a telepítése Helm segítségre van szüksége, tekintse meg a [AKS Helm telepítéssel kapcsolatos útmutató][helm-install].
 
 Ez a cikk elkülöníti a Istio telepítéssel kapcsolatos útmutató több különálló lépésekre. A végeredmény megegyezik a hivatalos Istio telepítése struktúra [útmutatást][istio-install-helm].
 
@@ -195,7 +195,7 @@ Bash
 kubectl get crds | grep 'istio.io' | wc -l
 ```
 
-PowerShell
+Powershell
 
 ```powershell
 (kubectl get crds | Select-String -Pattern 'istio.io').Count
@@ -324,7 +324,7 @@ helm install install/kubernetes/helm/istio --name istio --namespace istio-system
   --set kiali.enabled=true
 ```
 
-PowerShell
+Powershell
 
 ```powershell
 helm install install/kubernetes/helm/istio --name istio --namespace istio-system `
@@ -336,9 +336,6 @@ helm install install/kubernetes/helm/istio --name istio --namespace istio-system
 ```
 
 A `istio` Helm-diagramot helyez üzembe egy nagy számú objektumok. Láthatja, hogy a lista és a kimenetét a `helm install` a fenti parancsot. Az összetevők telepítési állapotát a Istio fürt a környezettől függően 4 – 5 percet is igénybe vehet.
-
-> [!NOTE]
-> Az összes Istio podok Linux-csomópontokon való futtatáshoz kell ütemezni. Ha a Windows Server csomópontkészletek mellett Linux csomópontkészleteit a fürtön, győződjön meg arról, hogy az összes Istio podok Linux-csomópontokon való futáshoz van ütemezve.
 
 Ezen a ponton Istio telepítette az AKS-fürt. Győződjön meg arról, hogy van-e Istio sikeres telepítéséhez, a továbbvezet a következő szakaszban [Istio telepítésének ellenőrzése](#validate-the-istio-installation).
 
@@ -517,7 +514,7 @@ Bash
 kubectl get crds -o name | grep 'istio.io' | xargs -n1 kubectl delete
 ```
 
-PowerShell
+Powershell
 ```powershell
 kubectl get crds -o name | Select-String -Pattern 'istio.io' |% { kubectl delete $_ }
 ```
@@ -535,6 +532,9 @@ Ismerje meg az Istio további telepítési és konfigurációs lehetőségeket, 
 - [Istio - Helm-telepítési beállítások][istio-install-helm-options]
 
 További forgatókönyvek használatával is követheti a [Istio Bookinfo alkalmazás például][istio-bookinfo-example].
+
+Megtudhatja, hogyan figyelheti az AKS-alkalmazást az Application Insights és Istio, tekintse meg a következő Azure Monitor dokumentációja ismerteti:
+- [Nulla instrumentation alkalmazásfigyelés kubernetes üzemeltetett alkalmazások][app-insights]
 
 <!-- LINKS - external -->
 [istio]: https://istio.io
@@ -561,6 +561,8 @@ További forgatókönyvek használatával is követheti a [Istio Bookinfo alkalm
 [prometheus]: https://prometheus.io/
 [jaeger]: https://www.jaegertracing.io/
 [kiali]: https://www.kiali.io/
+
+[app-insights]: https://docs.microsoft.com/azure/azure-monitor/app/kubernetes
 
 <!-- LINKS - internal -->
 [aks-quickstart]: ./kubernetes-walkthrough.md

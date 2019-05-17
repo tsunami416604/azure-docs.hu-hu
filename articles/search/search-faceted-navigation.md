@@ -6,20 +6,20 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 43c072cb72935a80da0e48e6b8343f38ee08876b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c032dbc528ed5034280d0ecb4c95700b51869991
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023960"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793628"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jellemzőalapú navigáció megvalósítása az Azure Search-ben
 Jellemzőalapú navigáció egy szűrési mechanizmus, amely alkalmazások keresése az önállóan irányított drilldown navigációs biztosít. A kifejezés "jellemzőalapú navigáció" ismeretlen, de valószínűleg felhasználta előtt. Ahogy az alábbi példa bemutatja, a jellemzőalapú navigáció má hodnotu nothing több, mint az eredmények szűréséhez használt kategóriák.
 
- ![Az Azure Search feladat portál bemutató][1]
+ ![Az Azure Search feladat portál bemutató](media/search-faceted-navigation/azure-search-faceting-example.png "portál bemutató az Azure Search-feladat")
 
 Jellemzőalapú navigáció egy másik belépési pont keresése. Ez egy kényelmes alternatívát nyújt a kézzel beírja az összetett keresési kifejezéseket. Értékkorlátozással segítségével keresse meg azt, amit keres, közben biztosítva, hogy eredmény nem kap. A fejlesztők értékkorlátozással lehetővé teszik elérhetővé a leghasznosabb keresési feltételeknek való navigáláshoz az search-index. Online kereskedelmi alkalmazások, a jellemzőalapú navigáció gyakran beépített márkákat, szervezeti egységek (gyerek a cipőeladásai), méret, ár, népszerűsége és minősítések keresztül. 
 
@@ -308,7 +308,7 @@ Figyelje meg értékkorlátozás eredményeket és a keresési eredmények köz�
   Bemutató kódban látnia kell egy count paraméter a omezující podmínka eredmények számát jeleníti meg. Az értékkorlátozás eredményeket száma, amelyek megfelelnek a dimenzió kifejezés vagy a tartomány a dokumentumok számát jelzi.
 * `&facet=City,count:12`<br/>
   A facet lekérdezésben beállíthat száma értékre.  Az alapértelmezett érték 10-es, de magasabbra vagy alacsonyabbra állíthatja. Beállítás `count:12` lekérdezi az első 12 megfelelő értékkorlátozás eredményeket a dokumentum száma szerint.
-* „`@odata.count`”<br/>
+* "`@odata.count`"<br/>
   A lekérdezésekre adott válaszok Ez az érték azt jelzi, hogy a keresési eredmények megfelelő elemek száma. Átlagosan együttesen elemek, amelyek megfelelnek a keresési kifejezést, mert az összes értékkorlátozás eredményeket összege nagyobb, de rendelkezik nincs értékkorlátozás értéke megegyezik.
 
 **Értékkorlátozás eredményeket kaphat száma**
@@ -341,7 +341,7 @@ Az Azure Search egyszerűbbé teszi a tartomány konstrukció számítástechnik
 **2. módszer: Értékek listáját használja**  
 Numerikus adatok, az értékek listáját is használhatja.  Fontolja meg értékkorlátozás tartományát egy `listPrice` mezőben jelenik meg a következők szerint:
 
-  ![Minta értékek listája][5]
+  ![Minta értékek listáján](media/search-faceted-navigation/Facet-5-Prices.PNG "minta értékek listája")
 
 Adja meg az előző képernyőképen látható egy hasonló értékkorlátozás széles, használja az értékek listáját:
 
@@ -352,7 +352,7 @@ Minden tartomány 0 használja kiindulási pontként egy értéket végpontként
 ### <a name="build-a-filter-for-a-range"></a>Szűrheti a tartomány létrehozása
 Dokumentumok választja számos alapján szűrheti, használhatja a `"ge"` és `"lt"` szűrése, amely meghatározza a tartomány a végpontok kétlépéses kifejezésben operátorok. Például, ha úgy dönt, hogy 10-25 tartományát egy `listPrice` mező, a szűrő lenne `$filter=listPrice ge 10 and listPrice lt 25`. A mintakód a szűrőkifejezés használ **priceFrom** és **priceTo** paraméterek a végpontok beállításához. 
 
-  ![Különböző értékeket, lekérdezés][6]
+  ![Értéktartomány lekérdezésének](media/search-faceted-navigation/Facet-6-buildfilter.PNG "különböző értékeket, lekérdezés")
 
 <a name="geofacets"></a> 
 
@@ -385,57 +385,21 @@ Végzett munka, a keresési eredmények között, nézze meg az URL-cím lekérd
    
    A keresési eredmények között is is visszaad egy jellemzőalapú navigációs struktúrát. A keresési eredmények oldalon a jellemzőalapú navigációs struktúrát tartalmaz darabszáma – minden értékkorlátozás eredmény. Nincs értékkorlátozással van jelölve, így az összes megfelelő eredményeket ad vissza.
    
-   ![Keresési eredmények értékkorlátozással kiválasztása előtt][11]
+   ![Keresési eredmények értékkorlátozással kiválasztása előtt](media/search-faceted-navigation/faceted-search-before-facets.png "keresési eredmények értékkorlátozással kiválasztása előtt")
 
 4. Kattintson egy üzleti cím, a hely vagy a minimális fizetés. Értékkorlátozással voltak a kezdeti Search null értékű, de értékek igénybe vehet, mivel a keresési eredmények között már nem megfelelő elemek lesz.
    
-   ![Keresési eredmények értékkorlátozással kiválasztása után][12]
+   ![Keresési eredmények értékkorlátozással kiválasztása után](media/search-faceted-navigation/faceted-search-after-facets.png "keresési eredmények értékkorlátozással kiválasztása után")
 
 5. Úgy, hogy próbálja meg más lekérdezési viselkedés a jellemzőalapú lekérdezés törléséhez kattintson a `[X]` után törölje a értékkorlátozással kiválasztott aspektusait.
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
 Tekintse meg [részletes ismertetése az Azure Search](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). 45:25, jelenleg nincs egy bemutatót értékkorlátozással megvalósítása.
 
 A további elemzés, a jellemzőalapú navigáció tervezési elvek javasoljuk, hogy az alábbi hivatkozásokat:
 
-* [Jellemzőalapú keresés tervezése](http://www.uie.com/articles/faceted_search/)
 * [Tervezési minták: Jellemzőalapú navigáció](https://alistapart.com/article/design-patterns-faceted-navigation)
-
-
-<!--Anchors-->
-[How to build it]: #howtobuildit
-[Build the presentation layer]: #presentationlayer
-[Build the index]: #buildindex
-[Check for data quality]: #checkdata
-[Build the query]: #buildquery
-[Tips on how to control faceted navigation]: #tips
-[Faceted navigation based on range values]: #rangefacets
-[Faceted navigation based on GeoPoints]: #geofacets
-[Try it out]: #tryitout
-
-<!--Image references-->
-[1]: ./media/search-faceted-navigation/azure-search-faceting-example.PNG
-[2]: ./media/search-faceted-navigation/Facet-2-CSHTML.PNG
-[3]: ./media/search-faceted-navigation/Facet-3-schema.PNG
-[4]: ./media/search-faceted-navigation/Facet-4-SearchMethod.PNG
-[5]: ./media/search-faceted-navigation/Facet-5-Prices.PNG
-[6]: ./media/search-faceted-navigation/Facet-6-buildfilter.PNG
-[7]: ./media/search-faceted-navigation/Facet-7-appstart.png
-[8]: ./media/search-faceted-navigation/Facet-8-appbike.png
-[9]: ./media/search-faceted-navigation/Facet-9-appbikefaceted.png
-[10]: ./media/search-faceted-navigation/Facet-10-appTitle.png
-[11]: ./media/search-faceted-navigation/faceted-search-before-facets.png
-[12]: ./media/search-faceted-navigation/faceted-search-after-facets.png
-
-<!--Link references-->
-[Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
-[Design Patterns: Faceted Navigation]: https://alistapart.com/article/design-patterns-faceted-navigation
-[Create your first application]: search-create-first-solution.md
-[OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
-[Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
-[https://www.odata.org/documentation/odata-version-2-0/overview/]: https://www.odata.org/documentation/odata-version-2-0/overview/ 
-[Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
-[Search Documents (Azure Search API)]: https://docs.microsoft.com/rest/api/searchservice/Search-Documents
+* [Az előtérbeli aggályokat megvalósításához Többszempontú keresés – 1. rész ](https://articles.uie.com/faceted_search2/)
 

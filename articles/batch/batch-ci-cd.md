@@ -7,12 +7,12 @@ ms.date: 03/28/2019
 ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
-ms.openlocfilehash: 5b7c44d3ea3394ff728adfb9d9fd72293138fb2e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a811a9cb1b124aff7c64d25cf71a1b84bff0c173
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880858"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541753"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Azure folyamatok használatával hozhat létre és HPC-megoldások üzembe helyezése
 
@@ -26,7 +26,7 @@ Ebben a példában a rendszer létrehoz egy build és kibocsátásában üzembe 
 
 ![A folyamat üzembe helyezési folyamatot bemutató ábra.](media/batch-ci-cd/DeploymentFlow.png)
 
-### <a name="setup"></a>Beállítás
+### <a name="setup"></a>Telepítés
 
 A jelen cikkben ismertetett lépések követéséhez szüksége van egy Azure DevOps-szervezet és a egy csoportprojektet.
 
@@ -361,9 +361,9 @@ Ebben a példában fogunk dolgozni a **hpc-alkalmazás** mappát. A **hpc-alkalm
 > [!NOTE]
 > Ha egy ügyfélalkalmazás segítségével hajtsa végre az HPC Batch-alkalmazás, az adott alkalmazáshoz külön builddefiníció létrehozása szeretné. Útmutatók a számos annak a [Azure folyamatok](https://docs.microsoft.com/azure/devops/pipelines/get-started/index?view=azure-devops) dokumentációját.
 
-## <a name="continuous-deployment"></a>Folyamatos üzembe helyezés
+## <a name="continuous-deployment"></a>Folyamatos telepítés
 
-Az Azure folyamatok is telepítheti az alkalmazást, és az alapul szolgáló infrastruktúra. [Folyamatok felszabadítása](https://docs.microsoft.com/azure/devops/pipelines/release/what-is-release-management?view=azure-devops) az a komponens, amely lehetővé teszi a folyamatos üzembe helyezést, és a kibocsátási folyamat automatizálható.
+Az Azure folyamatok is telepítheti az alkalmazást, és az alapul szolgáló infrastruktúra. [Folyamatok felszabadítása](https://docs.microsoft.com/azure/devops/pipelines/release) az a komponens, amely lehetővé teszi a folyamatos üzembe helyezést, és a kibocsátási folyamat automatizálható.
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>Az alkalmazás üzembe helyezése és az alapul szolgáló infrastruktúra
 

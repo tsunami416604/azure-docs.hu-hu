@@ -3,8 +3,8 @@ title: Azure ad-ben az SAML protokollt használja, hogyan |} A Microsoft Docs
 description: Ez a cikk az Azure Active Directoryban az egyszeri bejelentkezést és egyszeri kijelentkezéses SAML profilok áttekintést nyújt.
 services: active-directory
 documentationcenter: .net
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 88125cfc-45c1-448b-9903-a629d8f31b01
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2018
-ms.author: celested
+ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35c231f043261b65baa40eff32535eeab014bee9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 07d07f73412e889b018c1f667a500d7625912751
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299923"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546147"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Hogyan használja az Azure AD a SAML-protokollt
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: a5cc6bfca67f3d90467fa2339bc991c1f0bbeadf
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4d1ef650a3f12d8b97cbad3e9aecf31c8b81a038
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148953"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796149"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL lekérdezési példák
 
@@ -139,7 +139,7 @@ A lekérdezés eredményeit a következők:
     }]
 ```
 
-A következő lekérdezés a család adja vissza a megadott nevek a gyermekek amelynek `id` megegyezik `WakefieldFamily`, a tartózkodási város szerint rendezett.
+A következő lekérdezés a család adja vissza a megadott nevek a gyermekek amelynek `id` megegyezik `WakefieldFamily`, város szerint rendezett.
 
 ```sql
     SELECT c.givenName
@@ -588,7 +588,7 @@ Logikai operátorok a logikai értékek művelethez. Az alábbi táblázatokban 
 | --- | --- |
 | True (Igaz) |False (Hamis) |
 | False (Hamis) |True (Igaz) |
-| Meghatározatlan |Nem definiált |
+| Meghatározatlan |Meghatározatlan |
 
 ## <a name="between-keyword"></a>Kulcsszó között
 
@@ -867,6 +867,13 @@ Az eredmények a következők:
         ]
       }
     ]
+```
+
+A következő SQL-lekérdezést egy másik példa a segédlekérdezésekben belül tömb használatára. A lekérdezés lekérdezi a distinct megadott nevek egy arrary gyermek.
+
+```sql
+SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
+FROM f
 ```
 
 

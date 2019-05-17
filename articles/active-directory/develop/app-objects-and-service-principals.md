@@ -2,8 +2,8 @@
 title: Alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban
 description: Ismerje meg az alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directory közötti kapcsolat.
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 services: active-directory
 editor: ''
 ms.assetid: adfc0569-dc91-48fe-92c3-b5b4833703de
@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/13/2019
-ms.author: celested
+ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cee05b1ff6c63aae07b9c04435e4ff3ae4d07ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 47626cbd8d5b8a5ddf7cc5c6ea42fb9453e5bfb2
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411148"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540672"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban
 
@@ -43,7 +43,7 @@ Egy [OAuth 2.0 engedélyezési Grant flow](developer-glossary.md#authorization-g
 
 A következő szakaszokban láthatja, hogyan jelöli az Azure AD-alkalmazásmodell a tervezési idejű és futtatható alkalmazás.
 
-## <a name="application-registration"></a>Alkalmazásregisztráció
+## <a name="application-registration"></a>Alkalmazás regisztrálása
 
 Amikor regisztrál az Azure AD-alkalmazást a [az Azure portal][AZURE-Portal], két objektum az Azure AD-bérlőben jönnek létre:
 
@@ -89,7 +89,7 @@ A példában:
 
 | Lépés | Leírás |
 |------|-------------|
-| 1    | Az a folyamat, az alkalmazás és egyszerű szolgáltatási objektumok létrehozása a az alkalmazás saját bérlőjén. |
+| 1.    | Az a folyamat, az alkalmazás és egyszerű szolgáltatási objektumok létrehozása a az alkalmazás saját bérlőjén. |
 | 2    | A Contoso és Fabrikam rendszergazdák befejezése után a jóváhagyás, egy szolgáltatásnév-objektum létrejön a vállalat az Azure AD-bérlőben, és az engedélyeket, a rendszergazda adta meg. Vegye figyelembe, hogy a HR-alkalmazást konfigurált/célja lehet, hogy a hozzájárulási a felhasználók egyéni használatra is. |
 | 3    | A fogyasztói bérlők, a HR kérelem (Contoso és Fabrikam) minden egyes rendelkezik saját szolgáltatásnév-objektumot. Minden egyes jelöli használata során az alkalmazás a futásideje, az engedélyek szabályozzák egy példányát hagyta jóvá a megfelelő rendszergazda. |
 

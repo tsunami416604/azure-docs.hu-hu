@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: eac5e43c69cc09c5945316827a35f729c158d47a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8ff3c497372a761bd8a02ae81bc897c8ee297bd0
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61431242"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794869"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Exportálás-importálás segítségével Tudásbázis áttelepítése
 
@@ -56,7 +56,7 @@ Tudásbázis áttelepítése igényel, egy Tudásbázis exportálása, majd egy 
     Ezen a ponton minden a Tudásbázis-tartalmat – kérdések, válaszok és metaadatokat, és a forrásfájlok az URL-címeket, nevét és az új Tudásbázis importálásakor. 
 
 ## <a name="chat-logs-and-alterations"></a>Csevegési naplók és változásokból
-Kis-és változásokból (szinonimák) nem lesznek automatikusan importálva. Használja a [V2 API-k](https://aka.ms/qnamaker-v2-apis) exportálhatja a módosításokat a régi ismereteket és a [V4 API-k](https://aka.ms/qnamaker-v4-apis) áthelyezése a módosításokat a új Tudásbázis.
+Kis-és változásokból (szinonimák) nem lesznek automatikusan importálva. Használja a [V4 API-k](https://go.microsoft.com/fwlink/?linkid=2092179) áthelyezése a módosításokat a új Tudásbázis.
 
 Nincs semmilyen módon nem lehet áttelepíteni a csevegési naplók, mivel az új Tudásbázis az Application Insights a csevegési naplók tárolásához. 
 

@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/01/2019
+ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fc26c0357dcb071c4c75e8684fe47144a04177e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ac34f1d1e7fc2a967c7608f31f3b943f9380d01
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880249"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786190"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Az Azure Automation változó adategységek
 
@@ -42,7 +42,7 @@ Egy tömb vagy kivonattábla létrehozásával és mentésével, a változó vá
 Elérhető az Automation változó típusainak listáját a következők:
 
 * String
-* Egész szám
+* Integer
 * DateTime
 * Boolean
 * Null
@@ -135,45 +135,6 @@ for ($i = 1; $i -le $NumberOfIterations; $i++) {
     Write-Output "$i`: $SampleMessage"
 }
 Set-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
-```
-
-#### <a name="setting-and-retrieving-a-complex-object-in-a-variable"></a>Beállítás és a egy összetett objektumot egy változóban beolvasása
-
-Az alábbi mintakód bemutatja, hogyan frissítheti egy változót egy összetett értéket képviselő szöveges runbookok. Ebben a példában az Azure virtuális gép kérhető le **Get-AzureVM** és a egy meglévő Automation változó mentve.  A [változótípusok](#variable-types), ez egy PSCustomObject van tárolva.
-
-```powershell
-$vm = Get-AzureVM -ServiceName "MyVM" -Name "MyVM"
-Set-AutomationVariable -Name "MyComplexVariable" -Value $vm
-```
-
-Az alábbi kódban értékét olvassa be a változót, és a virtuális gép indításához használt.
-
-```powershell
-$vmObject = Get-AutomationVariable -Name "MyComplexVariable"
-if ($vmObject.PowerState -eq 'Stopped') {
-    Start-AzureVM -ServiceName $vmObject.ServiceName -Name $vmObject.Name
-}
-```
-
-#### <a name="setting-and-retrieving-a-collection-in-a-variable"></a>Beállítás és a egy változóban gyűjtemény beolvasása
-
-Az alábbi mintakód bemutatja, hogyan használhat egy változót az összetett értékek a szöveges runbookok. Ebben a példában a több Azure-beli virtuális gépek a blobnevet **Get-AzureVM** és a egy meglévő Automation változó mentve. A [változótípusok](#variable-types), a tárolás PSCustomObjects gyűjteménye.
-
-```powershell
-$vms = Get-AzureVM | Where -FilterScript {$_.Name -match "my"}
-Set-AutomationVariable -Name 'MyComplexVariable' -Value $vms
-```
-
-Az alábbi kódot a gyűjtemény olvassa be a változót, és minden virtuális gép indításához használt.
-
-```powershell
-$vmValues = Get-AutomationVariable -Name "MyComplexVariable"
-ForEach ($vmValue in $vmValues)
-{
-    if ($vmValue.PowerState -eq 'Stopped') {
-        Start-AzureVM -ServiceName $vmValue.ServiceName -Name $vmValue.Name
-    }
-}
 ```
 
 #### <a name="setting-and-retrieving-a-variable-in-python2"></a>És a Python2-változó beolvasása

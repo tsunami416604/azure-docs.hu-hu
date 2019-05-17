@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 2893960c3351b1f8a5caf0c69ca961851528007d
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 26055727e308f8c05aece31746434d7e9a0a5abd
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510843"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65555945"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync – hibaelhárítás
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -300,6 +300,17 @@ Szinkronizálási munkamenetek sikertelen lehet a különböző okok miatt, bele
 | **Szervizelés szükséges** | Nem |
 
 Semmit nem kell; a kiszolgáló újra fog próbálkozni. Ha ezt a hibát néhány óránál hosszabb ideig továbbra is fennáll, hozzon létre egy támogatási kérést.
+
+<a id="-2134364043"></a>**Szinkronizálás le van tiltva, utáni helyreállítás befejeződéséig címváltozásának felderítését**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83075 |
+| **HRESULT (decimális)** | -2134364043 |
+| **Hibakarakterlánc** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
+| **Szervizelés szükséges** | Nem |
+
+Nincs szükség felhasználói műveletre. Ha egy fájl vagy a fájl megosztása (felhőbeli végpont) visszaállítása az Azure Backup használatával, a szinkronizálás le van tiltva, az Azure-fájlmegosztás címváltozásának felderítését befejeződéséig. Címváltozásának felderítését a visszaállítás befejeződött, és a időtartama alapján a fájlmegosztásban található fájlok száma után azonnal fut.
 
 <a id="-2134364065"></a>**Szinkronizálás az a felhőbeli végpont a megadott Azure-fájlmegosztás nem érhető el.**  
 

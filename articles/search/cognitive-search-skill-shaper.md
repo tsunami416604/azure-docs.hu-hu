@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 5267f81c9886e2d1d8d62c134156aedb3b2b8763
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 058b6c979346d9dcce36940432d0e222e919dba9
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023736"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540827"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper cognitive szakértelem
 
@@ -29,7 +29,7 @@ Az API-verzió határozza meg, megfelelő átalakítását, mélysége érheti e
 | A REST API-t a 2019-05-06-preview verzióját (a .NET SDK-t nem támogatott) | Összetett objektumok több, a mély egy szinttel **Shaper** szakértelem definíciója. |
 | a 2019-05-06 ** (általánosan elérhető), 2017. 11. 11 – előzetes verzió| Összetett objektumok egy szintnél mélyebb. Egy többszintes alakzat szükséges együtt láncolási shaper számos lépést.|
 
-Az előzetes verzió **Shaper** szakértelem, ahogyan [3. forgatókönyv](#nested-complex-types), hozzáad egy új nem kötelező *sourceContext* a bemeneti tulajdonság. A *forrás* és *sourceContext* a tulajdonságok akkor kölcsönösen kizárják egymást. Ha a bemeneti képzettség a környezetben, egyszerűen felhasználhatja *forrás*. Ha a bemenet egy *különböző* környezet szakértelem összefüggésben használja, mint a *sourceContext*. A *sourceContext* kell megadni egy beágyazott bemeneti javítása folyamatban, mint a forrás az adott elemhez. 
+Által biztosított módon `api-version=2019-05-06-Preview`, a **Shaper** szakértelem szemlélteti az [3. forgatókönyv](#nested-complex-types) hozzáad egy új nem kötelező *sourceContext* a bemeneti tulajdonság. A *forrás* és *sourceContext* a tulajdonságok akkor kölcsönösen kizárják egymást. Ha a bemeneti képzettség a környezetben, egyszerűen felhasználhatja *forrás*. Ha a bemenet egy *különböző* környezet szakértelem összefüggésben használja, mint a *sourceContext*. A *sourceContext* kell megadni egy beágyazott bemeneti javítása folyamatban, mint a forrás az adott elemhez. 
 
 Minden API-verzióhoz, a válaszban a kimeneti név mindig "kimeneti". Belsőleg, a folyamat leképezhet egy másik nevet, például a "analyzedText", az alábbi példákban szemléltetett módon, de a **Shaper** szakértelem magát a választ adja vissza "kimeneti". Ez lehet fontos Ha képi elemekben gazdag dokumentumok hibakeresést, és figyelje meg, hogy az elnevezési eltérés, vagy ha egyéni műveleteket hozhat létre, és vannak strukturálja a válasz saját magának.
 
@@ -196,7 +196,7 @@ Ebben az esetben a **Shaper** lapossá teszi az összes fejezet címek hozzon l�
 ## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>3. forgatókönyv: a bemeneti összevonása a beágyazott környezetekben
 
 > [!NOTE]
-> Az api-Version paraméter támogatott struktúrák beágyazott = a 2019-05-06-Preview használható egy [Tudásbázis store](knowledge-store-concept-intro.md) vagy az Azure Search-index.
+> A támogatott struktúrák beágyazott a [REST API verzióját 2019-05-06-Preview](search-api-preview.md) is használható egy [Tudásbázis store](knowledge-store-concept-intro.md) vagy az Azure Search-index.
 
 Tegyük fel, a cím, a fejezetek és a egy könyv tartalmát, és futtatta entitások felismerése és a kulcs kifejezések tartalma és az most kell az eredményeket összesítheti a különböző képességek a fejezet nevét, az entitások és a kulcsfontosságú kifejezéseket, így az egyetlen alakzattá.
 
@@ -265,4 +265,4 @@ Ebben az esetben a **Shaper** összetett típus. Ez a struktúra létezik a mem�
 + [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
 + [Összetett típusok használata](search-howto-complex-data-types.md)
 + [Tudásbázis store áttekintése](knowledge-store-concept-intro.md)
-+ [Hogyan kell a Tudásbázis Store használatának első lépései](knowledge-store-howto.md)
++ [Hogyan kell a Tudásbázis store használatának első lépései](knowledge-store-howto.md)

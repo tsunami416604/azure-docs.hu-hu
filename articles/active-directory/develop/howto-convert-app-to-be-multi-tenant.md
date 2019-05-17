@@ -3,8 +3,8 @@ title: Hogyan hozhat létre egy alkalmazást, amely képes az Azure AD-felhaszn�
 description: Bemutatja, hogyan hozhat létre egy több-bérlős alkalmazás, amely egy Azure Active Directory felhasználói bejelentkezhet.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2054a873d73bce7048ef9e48adabf3fb5279df9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68973d3a88791bcfffc8183f5e3a16975fe15742
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60410484"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540451"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával
 
@@ -150,7 +150,7 @@ Ezt mutatják be egy natív ügyfél többszintű, webes API-minta hívja meg a 
 
 Hasonló eset akkor fordul elő, ha egy alkalmazás különböző rétegek regisztrálva lettek a különböző bérlők. Vegyük példaként a kis-és a egy natív ügyfélalkalmazás, amely meghívja ezt az Office 365 Exchange Online API létrehozásához. Fejlesztés a natív alkalmazás, és újabb verzióiban a natív alkalmazás ügyfél-bérlőben futtatásához, az Exchange online-hoz egyszerű szolgáltatás jelen kell lennie. Ebben az esetben a fejlesztői és az ügyfél kell vásárolnia az Exchange Online hozhatók létre a bérlőknek az egyszerű szolgáltatás.
 
-Ha Microsofton kívül más szervezetek által készített API-k, a fejlesztői API-ügyfelek számára, akik az alkalmazást az ügyfeleik bérlők jóváhagyást lehetőséget biztosíthat kell. A javasolt tervezési van a külső fejlesztők az API-t hozhat létre, így is működhetnek a webes ügyfél-előfizetési megvalósításához. Ehhez tegye a következőket:
+Ha Microsofton kívül más szervezetek által készített API-k, a fejlesztői API-ügyfelek számára, akik az alkalmazást az ügyfeleik bérlők jóváhagyást lehetőséget biztosíthat kell. A javasolt tervezési van a külső fejlesztők az API-t hozhat létre, így is működhetnek a webes ügyfél-előfizetési megvalósításához. Ehhez tegye az alábbiakat:
 
 1. Kövesse a korábbi szakaszokban, annak érdekében, hogy az API-t valósít meg a több-bérlős alkalmazás regisztrációs/kód követelményeknek.
 2. Mellett is közzéteheti az API-k hatóköröket vagy szerepköröket, ellenőrizze, hogy a regisztráció tartalmaz a "Bejelentkezés és felhasználói profil olvasása" engedéllyel (alapértelmezés szerint biztosított).

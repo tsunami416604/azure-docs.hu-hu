@@ -15,368 +15,363 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: jeedes
-ms.openlocfilehash: e94fe3156677a507eab91eee339ed29bf7b4ad2e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9e7993ee1cb439ebeaa9f64bee55429aa54f9cee
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59257637"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65776170"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-fiori"></a>Oktatóanyag: Az Azure Active Directory-integráció az SAP Fiori
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan SAP Fiori integrálása az Azure Active Directory (Azure AD).
-Az SAP Fiori integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-* Szabályozhatja, ki férhet hozzá az SAP Fiori Azure AD-ben.
-* Engedélyezheti a felhasználókat, hogy a rendszer automatikusan bejelentkezve SAP Fiori (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+Az SAP Fiori integrálása az Azure AD kínál fel a következő előnyökkel jár:
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+* Az Azure AD, hogy ki férhet hozzá az SAP Fiori is használhatja.
+* Felhasználók is automatikusan megtörténik a SAP Fiori-, a saját Azure AD-fiókok (egyszeri bejelentkezés).
+* A fiókok egyetlen központi helyen, az Azure Portalon kezelheti.
+
+Az Azure ad-vel szoftverként (saas biztosított) alkalmazás integrációja szoftverrel kapcsolatos további információkért lásd: [egyszeri bejelentkezés alkalmazásokhoz az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Konfigurálja az Azure AD-integráció az SAP Fiori, a következőkre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* Az SAP Fiori egyszeri bejelentkezés engedélyezve van az előfizetés
-* Az SAP Fiori V7.20 legalább szükséges
+* Az Azure AD-előfizetés. Ha nem rendelkezik Azure AD előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
+* Egy SAP Fiori-előfizetés az egyszeri bejelentkezés engedélyezve van.
+* 7.20 vagy újabb SAP Fiori megadása kötelező.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálni és a egy tesztkörnyezetben az Azure AD egyszeri bejelentkezés tesztelése és SAP Fiori integrálása az Azure ad-ben.
 
-* Támogatja az SAP Fiori **SP** által kezdeményezett egyszeri bejelentkezés
+Az SAP Fiori támogatja a következő funkciókat:
 
-## <a name="adding-sap-fiori-from-the-gallery"></a>Az SAP Fiori hozzáadása a katalógusból
+* **SP által kezdeményezett egyszeri bejelentkezés**
 
-Az Azure AD-be SAP Fiori-integráció konfigurálásához, hozzá kell SAP Fiori a galériából a felügyelt SaaS-alkalmazások listájára.
+## <a name="add-sap-fiori-in-the-azure-portal"></a>Az SAP Fiori hozzáadása az Azure Portalon
 
-**Az SAP Fiori hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+SAP Fiori integrálható az Azure ad-vel, hozzá kell adnia az SAP Fiori a felügyelt SaaS-alkalmazások listájában.
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+1. A bal oldali menüben válassza ki a **Azure Active Directory**.
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+    ![Az Azure Active Directoryval opciót.](common/select-azuread.png)
+
+1. Válassza ki **vállalati alkalmazások** > **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+1. Egy alkalmazás hozzáadásához válassza **új alkalmazás**.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az új alkalmazás-beállítás](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **SAP Fiori**válassza **SAP Fiori** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A Keresés mezőbe írja be a **SAP Fiori**. A keresési eredmények között, válassza ki a **SAP Fiori**, majd válassza ki **Hozzáadás**.
 
-     ![Az SAP Fiori a találatok listájában](common/search-new-app.png)
+    ![Az SAP Fiori a találatok listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az SAP Fiori nevű tesztfelhasználó alapján **Britta Simon**.
-Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó, az SAP Fiori hivatkozás kapcsolata kell hozható létre.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az SAP Fiori nevű tesztfelhasználó alapján **Britta Simon**. Az egyszeri bejelentkezés működéséhez az SAP Fiori kell egy Azure AD-felhasználót és a kapcsolódó felhasználó között társított kapcsolat létrehozására.
 
-Az Azure AD egyszeri bejelentkezés az SAP Fiori tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezés az SAP Fiori tesztelése és konfigurálása, a következő építőelemeit kell elvégeznie:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az SAP Fiori egyszeri bejelentkezés konfigurálása](#configure-sap-fiori-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre SAP Fiori-tesztfelhasználót](#create-sap-fiori-test-user)**  – a felhasználó Azure ad-ben reprezentációja kapcsolódó SAP Fiori-megfelelője a Britta Simon rendelkeznie.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+| Feladat | Leírás |
+| --- | --- |
+| **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)** | Lehetővé teszi a felhasználók a funkció használatához. |
+| **[Az SAP Fiori egyszeri bejelentkezés konfigurálása](#configure-sap-fiori-single-sign-on)** | Az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazásban. |
+| **[Hozzon létre egy Azure ad-ben tesztfelhasználó számára](#create-an-azure-ad-test-user)** | Tesztek az Azure AD egyszeri bejelentkezés egy felhasználó nevű Britta Simon. |
+| **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assign-the-azure-ad-test-user)** | Britta Simon az Azure AD egyszeri bejelentkezés használata lehetővé teszi. |
+| **[Hozzon létre egy SAP Fiori-tesztfelhasználó számára](#create-an-sap-fiori-test-user)** | A felhasználó Azure ad-ben reprezentációja kapcsolódó SAP Fiori-megfelelője a Britta Simon hoz létre. |
+| **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** | Ellenőrzi, hogy működik-e a konfiguráció. |
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban konfigurálja az Azure AD egyszeri bejelentkezés az SAP Fiori az Azure Portalon.
 
-Konfigurálja az Azure AD egyszeri bejelentkezés az SAP Fiori, hajtsa végre az alábbi lépéseket:
+1. Nyisson meg egy új böngészőablakban, és jelentkezzen be rendszergazdaként a SAP Fiori-vállalati hely.
 
-1. Nyisson meg egy új böngészőablakban, és jelentkezzen be rendszergazdaként a SAP Fiori-vállalati hely
+1. Győződjön meg arról, hogy **http** és **https** szolgáltatások aktívak, és a megfelelő portok vannak rendelve a tranzakció kódot **SMICM**.
 
-2. Győződjön meg arról, hogy **http** és **https** szolgáltatások aktívak, és a megfelelő portok vannak hozzárendelve az **SMICM** T-kódot.
+1. Jelentkezzen be az SAP Business ügyfél SAP-rendszer **T01**, ahol az egyszeri bejelentkezés szükséges. HTTP biztonsági munkamenet-kezelés, majd aktiválja.
 
-3. Jelentkezzen be a vállalati ügyfél SAP-rendszer (T01), ahol egyszeri bejelentkezés szükség, és aktiválja a HTTP biztonsági munkamenet felügyeleti.
+    1. Lépjen a tranzakció kódot **SICF_SESSIONS**. Az összes releváns profil paramétereinek aktuális értékekkel jelennek meg. Az alábbi példa néznek ki:
 
-    a. Lépjen a tranzakció kódot **SICF_SESSIONS**. Megjeleníti az összes releváns profil paramétereinek aktuális értékekkel. Azok az alábbihoz hasonlóan:-
-    ```
-    login/create_sso2_ticket = 2
-    login/accept_sso2_ticket = 1
-    login/ticketcache_entries_max = 1000
-    login/ticketcache_off = 0  login/ticket_only_by_https = 0 
-    icf/set_HTTPonly_flag_on_cookies = 3
-    icf/user_recheck = 0  http/security_session_timeout = 1800
-    http/security_context_cache_size = 2500
-    rdisp/plugin_auto_logout = 1800
-    rdisp/autothtime = 60
-    ```
-    >[!NOTE]
-    > Állítsa be a fenti paraméterek beállításával a szervezet követelményeinek, a fenti paraméterek vannak megadva itt csak jelzése.
+        ```
+        login/create_sso2_ticket = 2
+        login/accept_sso2_ticket = 1
+        login/ticketcache_entries_max = 1000
+        login/ticketcache_off = 0  login/ticket_only_by_https = 0 
+        icf/set_HTTPonly_flag_on_cookies = 3
+        icf/user_recheck = 0  http/security_session_timeout = 1800
+        http/security_context_cache_size = 2500
+        rdisp/plugin_auto_logout = 1800
+        rdisp/autothtime = 60
+        ```
 
-    b. Ha szükséges, módosítsa a paraméterek, a példány/alapértelmezett profil az SAP-rendszerhez, és indítsa újra az SAP-rendszerhez.
+        >[!NOTE]
+        > Módosítsa a paramétereket a szervezeti követelmények alapján. A fenti paraméterek csak példaként kapnak.
 
-    c. Kattintson duplán a megfelelő ügyfél HTTP biztonsági munkamenet engedélyezése.
+    1. Ha szükséges, módosítsa a paramétereket a példány (alapértelmezés) profilban, az SAP-rendszer, és indítsa újra az SAP-rendszerhez.
 
-    ![A tanúsítvány letöltési hivatkozás](./media/sapfiori-tutorial/tutorial-sapnetweaver-profileparameter.png)
+    1. Kattintson duplán a megfelelő ügyfél ahhoz, hogy egy biztonsági HTTP-munkamenetben.
 
-    d. Alább SICF szolgáltatások aktiválása:
-    ```
-    /sap/public/bc/sec/saml2
-    /sap/public/bc/sec/cdc_ext_service
-    /sap/bc/webdynpro/sap/saml2
-    /sap/bc/webdynpro/sap/sec_diag_tool (This is only to enable / disable trace)
-    ```
-4. Lépjen a tranzakció kódot **egy SAML2** üzleti ügyfél SAP-rendszer [T01/122]. Egy felhasználói felületet a böngészőben megnyílik. Ebben a példában az SAP business ügyfélként azt feltételezni 122.
+        ![Az aktuális értékek a megfelelő profil paramétereinek oldal az SAP-ben](./media/sapfiori-tutorial/tutorial-sapnetweaver-profileparameter.png)
 
-    ![A tanúsítvány letöltési hivatkozás](./media/sapfiori-tutorial/tutorial-sapnetweaver-sapbusinessclient.png)
+    1. A következő SICF szolgáltatások aktiválása:
 
-5. Adja meg a felhasználónevét és jelszavát adja meg a felhasználói felületen, és kattintson a **szerkesztése**.
+        ```
+        /sap/public/bc/sec/saml2
+        /sap/public/bc/sec/cdc_ext_service
+        /sap/bc/webdynpro/sap/saml2
+        /sap/bc/webdynpro/sap/sec_diag_tool (This is only to enable / disable trace)
+        ```
 
-    ![A tanúsítvány letöltési hivatkozás](./media/sapfiori-tutorial/tutorial-sapnetweaver-userpwd.png)
+1. Lépjen a tranzakció kódot **egy SAML2** az SAP-rendszerhez üzleti ügyfél [**T01/122**]. A konfigurációs felhasználói felület egy új böngészőablakban nyílik meg. Ebben a példában a vállalati ügyfél SAP-rendszer 122 használjuk.
 
-6. Cserélje le **szolgáltatónevet** T01122, a `http://T01122` , majd kattintson a **mentése**.
+    ![Az SAP Fiori üzleti ügyfél bejelentkezési oldal](./media/sapfiori-tutorial/tutorial-sapnetweaver-sapbusinessclient.png)
+
+1. Adja meg a felhasználónevét és jelszavát, és válassza ki **bejelentkezés**.
+
+    ![Az SAP-ben az SAML 2.0 konfigurációs, ABAP rendszer T01/122 oldal](./media/sapfiori-tutorial/tutorial-sapnetweaver-userpwd.png)
+
+1. Az a **szolgáltatónevet** mezőben cserélje le **T01122** a **http:\//T01122**, majd válassza ki **mentése**.
 
     > [!NOTE]
-    > Alapértelmezett szolgáltató neve szerint jár <sid> <client> formátumban, de az Azure AD nevet vár az formátumban <protocol>://<name>, szolgáltató neve megegyezik a https:// fenntartásához ajánló<sid> <client> , hogy több SAP Fiori ABAP motorok konfigurálása az Azure ad-ben.
+    > Alapértelmezés szerint a szolgáltató neve a következő formátumban van \<sid >\<ügyfél >. Az Azure AD nevét várja, a következő formátumban \<protokoll > ://\<neve >. Azt javasoljuk, hogy továbbra is a szolgáltató neve, mint a https\://\<sid >\<ügyfél >, hogy konfigurálhassa több SAP Fiori ABAP-motor az Azure ad-ben.
 
-    ![A tanúsítvány letöltési hivatkozás](./media/sapfiori-tutorial/tutorial-sapnetweaver-providername.png)
+    ![Az SAP-ben az SAML 2.0 konfigurációs, ABAP rendszer T01/122 oldalon a frissített szolgáltatójának neve](./media/sapfiori-tutorial/tutorial-sapnetweaver-providername.png)
 
-7. **Service Provider metaadatok generálása**: – Miután konfigurálásával készen vagyunk a **helyi szolgáltató** és **megbízható szolgáltatók** lenne, a SAML 2.0-s felhasználói felület, a következő lépés beállítások Hozzon létre a szolgáltató metaadatait tartalmazó fájl (amely tartalmazná beállításokról, hitelesítési környezetek és egyéb konfigurációk, az SAP-ben). Ha ez a fájl jön létre, fel kell töltenie az Azure ad-ben kell.
+1. Válassza ki **helyi szolgáltató lap** > **metaadatok**.
 
-    ![A tanúsítvány letöltési hivatkozás](./media/sapfiori-tutorial/tutorial-sapnetweaver-generatesp.png)
+1. Az a **SAML 2.0-metaadatokat** párbeszédpanelen, a generált metaadatainak XML-fájl letöltése és mentse azt a számítógépen.
 
-    a. Lépjen a **helyi szolgáltató lap**.
+    ![A metaadatok letöltése hivatkozásra az SAP SAML 2.0-metaadatokat párbeszédpanel](./media/sapfiori-tutorial/tutorial-sapnetweaver-generatesp.png)
 
-    b. Kattintson a **metaadatok**.
+1. Az a [az Azure portal](https://portal.azure.com/), a a **SAP Fiori** application integration ablaktáblában válassza **egyszeri bejelentkezési**.
 
-    c. Mentse a létrejövő **metaadatainak XML-fájl** a számítógépen, és töltse fel a **alapszintű SAML-konfigurációja** szakasz automatikus feltöltéséhez az **azonosító** és  **Válasz URL-cím** értékeket az Azure Portalon.
+    ![Az egyszeri bejelentkezési beállítás](common/select-sso.png)
 
-8. Az a [az Azure portal](https://portal.azure.com/), az a **SAP Fiori** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-9. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+1. Az a **egyszeri bejelentkezési módszer** ablaktáblán válassza ki az **SAML** vagy **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
     ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-10. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+1. Az a **állítsa be egyszeri bejelentkezést az SAML** ablaktáblán válassza **szerkesztése** (a ceruza ikon) nyissa meg a **alapszintű SAML-konfigurációja** ablaktáblán.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-11. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **alapszintű SAML-konfigurációja** területén kövesse az alábbi lépéseket:
 
-    a. Kattintson a **metaadatfájl feltöltése** feltölteni a **szolgáltató metaadatait tartalmazó fájl** , amelyeket korábban szerzett be.
+    1. Válassza ki **metaadatfájl feltöltése**.
 
-    ![Metaadatfájl feltöltése](common/upload-metadata.png)
+        ![Metaadatok feltöltés beállítást](common/upload-metadata.png)
 
-    b. Kattintson a **mappa embléma** válassza ki a metaadat-fájlt, és kattintson a **feltöltése**.
+   1. Válassza ki a metaadatait tartalmazó fájl, a mappa ikonra, és válassza **feltöltése**.
 
-    ![metaadatfájl kiválasztása](common/browse-upload-metadata.png)
+       ![Válassza ki a metaadat-fájlt, majd a feltöltés gombbal](common/browse-upload-metadata.png)
 
-    c. A metaadatfájl sikeres feltöltése után a **azonosítója** és **válasz URL-cím** értékeket automatikusan az első **alapszintű SAML-konfigurációja** szövegmező szakaszban látható módon alább:
+1. Ha sikeresen feltöltötte a metaadat-fájlt, a **azonosító** és **válasz URL-cím** értékeket automatikusan fel van töltve a a **alapszintű SAML-konfigurációja** ablaktáblán. Az a **bejelentkezési URL-cím** mezőbe írjon be egy URL-címet, amely rendelkezik a következő mintának: https:\//\<SAP Fiori-vállalati példányát\>.
 
     ![Az SAP Fiori-tartomány és URL-címek egyszeri bejelentkezési adatait](common/sp-identifier-reply.png)
 
-    d. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<your company instance of SAP Fiori>`
-
     > [!NOTE]
-    > Tapasztalataink szerint valamilyen hiba helytelen válasz URL-cím az áttelepített példány konfigurált jelentéskészítési néhány ügyfélnek. Ha bármely ilyen hibaüzenetet kapja, segítségével a következő PowerShell-parancsfájl, munkahelyi körülbelül állítsa be a helyes válasz URL-cím a példány.:
-    ```
-    Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls "<Your Correct Reply URL(s)>"
-    ``` 
-    > ServicePrincipal objektumot azonosító először be kell állítani a saját maga, vagy átadható, amely szintén itt.
+    > Néhány ügyfelek jelentés kapcsolatos hibák helytelenül konfigurált **válasz URL-cím** értékeket. Ha ezt a hibát látja, a következő PowerShell-parancsfájl segítségével állítsa be a helyes válasz URL-cím a példány:
+    >
+    > ```
+    > Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls "<Your Correct Reply URL(s)>"
+    > ``` 
+    > 
+    > Beállíthatja a `ServicePrincipal` objektumazonosító: saját maga a parancsfájl futtatása előtt, illetve itt adhat át.
 
-12. SAP Fiori-alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+1. Az SAP Fiori-alkalmazás a SAML helyességi feltételek egy meghatározott formátumban kell megadni. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezeket az attribútumértékeket kezelhet a **állítsa be egyszeri bejelentkezést az SAML** ablaktáblán válassza **szerkesztése**.
 
-    ![image](common/edit-attribute.png)
+    ![A felhasználói attribútumok ablaktáblából.](common/edit-attribute.png)
 
-13. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
+1. Az a **felhasználói attribútumok & jogcímek** panelen konfigurálja az SAML-jogkivonat attribútumai, az előző képen látható módon. Ezután kövesse az alábbi lépéseket:
 
-    a. Kattintson a **Szerkesztés ikon** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+    1. Válassza ki **szerkesztése** megnyitásához a **kezelheti a felhasználói jogcímek** ablaktáblán.
 
-    ![image](./media/sapfiori-tutorial/nameidattribute.png)
+    1. Az a **átalakítási** listáról válassza ki **ExtractMailPrefix()**.
 
-    ![image](./media/sapfiori-tutorial/nameidattribute1.png)
+    1. Az a **paraméter 1** listáról válassza ki **user.userprinicipalname**.
 
-    b. Az a **átalakítási** listáról válassza ki **ExtractMailPrefix()**.
+    1. Kattintson a **Mentés** gombra.
 
-    c. Az a **paraméter 1** listáról válassza ki **user.userprinicipalname**.
+       ![A kezelés felhasználói jogcímek panel](./media/sapfiori-tutorial/nameidattribute.png)
 
-    d. Kattintson a **Save** (Mentés) gombra.
+       ![A kezelés felhasználói jogcímek panelen transzformációs szakaszából](./media/sapfiori-tutorial/nameidattribute1.png)
 
-14. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+1. Az a **állítsa be egyszeri bejelentkezést az SAML** ablaktáblán, a a **SAML-aláíró tanúsítvány** szakaszban jelölje be **letöltése** melletti **összevonási metaadatainak XML**. Válassza ki a letöltési lehetőséget igényei alapján. Mentse a tanúsítványt a számítógépen.
 
-15. Az a **SAP Fiori beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+    ![A tanúsítvány a letöltési lehetőséget](common/metadataxml.png)
+
+1. Az a **SAP Fiori beállítása** területén másolja a következő URL-címek igényei alapján:
+
+    * Bejelentkezési URL
+    * Azure AD-azonosító
+    * Kijelentkezési URL
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+### <a name="configure-sap-fiori-single-sign-on"></a>Az SAP Fiori egyszeri bejelentkezés konfigurálása
 
-    b. Azure AD-azonosító
+1. Jelentkezzen be az SAP-rendszerhez, és nyissa meg a tranzakció kódja **egy SAML2**. A SAML konfigurálása lapon megnyílik egy új böngészőablakban.
 
-    c. Kijelentkezési URL
+1. Végpontok konfigurálása egy megbízható identitásszolgáltatóra (Azure AD), válassza ki a **megbízható szolgáltatók** fülre.
 
-### <a name="configure-sap-fiori-single-sign-on"></a>Az SAP Fiori-egyszeri bejelentkezés konfigurálása
+    ![Az SAP megbízható szolgáltatók lapot](./media/sapfiori-tutorial/tutorial-sapnetweaver-samlconfig.png)
 
-1. Jelentkezzen be SAP-rendszerhez, és nyissa meg a tranzakció kódja egy SAML2. Új böngészőablakban nyílik SAML konfigurációs képernyőjén.
+1. Válassza ki **Hozzáadás**, majd válassza ki **metaadatfájl feltöltése** a helyi menüből.
 
-2. Megbízható identitás végpontok konfigurálása (Azure AD-) szolgáltató keresse **megbízható szolgáltatók** fülre.
+    ![A Hozzáadás és a metaadatfájl feltöltése beállítás, az SAP-ben](./media/sapfiori-tutorial/tutorial-sapnetweaver-uploadmetadata.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/tutorial-sapnetweaver-samlconfig.png)
+1. A letöltött az Azure Portalon metaadatfájl feltöltése. Kattintson a **Tovább** gombra.
 
-3. Nyomja meg **Hozzáadás** válassza **metaadatfájl feltöltése** a helyi menüből.
+    ![Válassza ki a metaadatfájl feltöltése az SAP-ben](./media/sapfiori-tutorial/tutorial-sapnetweaver-metadatafile.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/tutorial-sapnetweaver-uploadmetadata.png)
+1. A következő oldalon található a **Alias** aliasneve. Adja meg. Ha például **aadsts**. Kattintson a **Tovább** gombra.
 
-4. Az Azure Portalról letöltött metaadatfájl feltöltése.
+    ![Az Alias mezőbe az SAP-ben](./media/sapfiori-tutorial/tutorial-sapnetweaver-aliasname.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/tutorial-sapnetweaver-metadatafile.png)
+1. Győződjön meg arról, hogy az értéket a **kivonatoló algoritmus** mező **SHA-256**. Kattintson a **Tovább** gombra.
 
-5. A következő képernyőn írja be a Alias nevét. Például a aadsts, és nyomja meg **tovább** folytatásához.
+    ![Ellenőrizze a kivonatoló algoritmus érték az SAP-ben](./media/sapfiori-tutorial/tutorial-sapnetweaver-identityprovider.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/tutorial-sapnetweaver-aliasname.png)
+1. A **egyszeri bejelentkezési végpont**válassza **HTTP POST**, majd válassza ki **tovább**.
 
-6. Győződjön meg arról, hogy a **kivonatoló algoritmus** kell **SHA-256** , és nem igényel változtatásokat, és nyomja le az **tovább**.
+    ![Az SAP egyszeri bejelentkezési végpont beállításai](./media/sapfiori-tutorial/tutorial-sapnetweaver-httpredirect.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/tutorial-sapnetweaver-identityprovider.png)
+1. Alatt **egyszeri kijelentkezési végpont**válassza **HTTP-átirányítás**, majd válassza ki **tovább**.
 
-7. A **egyszeri bejelentkezési végpont**, használjon **HTTP POST** kattintson **tovább** folytatásához.
+    ![Az SAP egyszeri kijelentkezési végpont beállításai](./media/sapfiori-tutorial/tutorial-sapnetweaver-httpredirect1.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/tutorial-sapnetweaver-httpredirect.png)
+1. Alatt **összetevő végpontok**válassza **tovább** folytatásához.
 
-8. A **egyszeri kijelentkezési végpont** kiválasztása **HTTPRedirect** kattintson **tovább** folytatásához.
+    ![A SAP összetevő-végpontok beállításai](./media/sapfiori-tutorial/tutorial-sapnetweaver-artifactendpoint.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/tutorial-sapnetweaver-httpredirect1.png)
+1. A **hitelesítési követelmények**válassza **Befejezés**.
 
-9. A **összetevő végpontok**, nyomja le az **tovább** folytatásához.
+    ![Hitelesítési követelményeknek lehetőségeket és a Befejezés beállítást, az SAP-ben](./media/sapfiori-tutorial/tutorial-sapnetweaver-authentication.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/tutorial-sapnetweaver-artifactendpoint.png)
+1. Válassza ki **szolgáltató megbízható** > **identitás-összevonási** (a lap alján). Válassza a **Szerkesztés** elemet.
 
-10. A **hitelesítési követelmények**, kattintson a **Befejezés**.
+    ![A megbízható szolgáltatót és az identitás-összevonási lapok az SAP-ben](./media/sapfiori-tutorial/tutorial-sapnetweaver-trustedprovider.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/tutorial-sapnetweaver-authentication.png)
+1. Válassza a **Hozzáadás** lehetőséget.
 
-11. Lépjen a lap **szolgáltató megbízható** > **identitás-összevonási** (a képernyő aljáról). Kattintson a **Szerkesztés** gombra.
+    ![Az identitás-összevonási lapon Hozzáadás pontját](./media/sapfiori-tutorial/tutorial-sapnetweaver-addidentityprovider.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/tutorial-sapnetweaver-trustedprovider.png)
+1. Az a **támogatott NameID-formátumok** párbeszédpanelen jelölje ki **meghatározatlan**. Kattintson az **OK** gombra.
 
-12. Kattintson a **Hozzáadás** alatt a **identitás-összevonási** lap (alsó ablakban).
+    ![A párbeszédpanel támogatott NameID-formátumok és a SAP-beállításai](./media/sapfiori-tutorial/tutorial-sapnetweaver-nameid.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/tutorial-sapnetweaver-addidentityprovider.png)
+    A tartozó értékeket **felhasználói azonosító forrás** és **felhasználói azonosító leképezési módban** határozza meg az SAP-felhasználó és az Azure ad-ben jogcím közötti kapcsolat.  
 
-13. Az előugró ablakban válassza **meghatározatlan** származó a **NameID támogatott formátumok** kattintson az OK gombra.
+    **1. forgatókönyv**: SAP-felhasználó számára az Azure AD-felhasználó-hozzárendelés
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/tutorial-sapnetweaver-nameid.png)
+    1. Az SAP-ben a **részletei a NameID-formátum "nem meghatározott"**, vegye figyelembe a részletek:
 
-14. Vegye figyelembe, hogy **felhasználói azonosító forrás** és **felhasználói azonosító leképezés módban** határozza meg, hogy SAP-felhasználó és az Azure ad-ben jogcím közötti kapcsolat.  
+        ![A részleteket a NameID-formátum "Ismeretlen" párbeszédpanel az SAP-ben](./media/sapfiori-tutorial/nameiddetails.png)
 
-    #### <a name="scenario-sap-user-to-azure-ad-user-mapping"></a>Forgatókönyv: SAP-felhasználó, az Azure AD-felhasználó-hozzárendelés.
+    1. Az Azure Portalon alatt **felhasználói attribútumok & jogcímek**, vegye figyelembe a szükséges jogcímek, az Azure ad-ből.
 
-    a. SAP-NameID a részletek képernyőkép.
+        ![A felhasználói attribútumok és a jogcímek párbeszédpanelen, az Azure Portalon](./media/sapfiori-tutorial/claimsaad1.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/nameiddetails.png)
+    **2. forgatókönyv**: Válassza ki az SAP felhasználói azonosító alapján SU01 a beállított e-mail-címét. Ebben az esetben az e-mail-Azonosítót kell konfigurálni a SU01 minden felhasználóhoz, aki az egyszeri bejelentkezés szükséges.
 
-    b. Képernyőkép a megemlítve szükséges jogcímek, az Azure ad-ből.
+    1.  Az SAP-ben a **részletei a NameID-formátum "nem meghatározott"**, vegye figyelembe a részletek:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/claimsaad1.png)
+        ![A részleteket a NameID-formátum "Ismeretlen" párbeszédpanel az SAP-ben](./media/sapfiori-tutorial/tutorial-sapnetweaver-nameiddetails1.png)
 
-    #### <a name="scenario-select-sap-user-id-based-on-configured-email-address-in-su01-in-this-case-email-id-should-be-configured-in-su01-for-each-user-who-requires-sso"></a>Forgatókönyv: Válassza ki az SAP felhasználói azonosító alapján SU01 beállított e-mail-címét. E-mail-azonosító ebben az esetben az összes felhasználója számára szükséges SSO su01 kell konfigurálni.
+    1. Az Azure Portalon alatt **felhasználói attribútumok & jogcímek**, vegye figyelembe a szükséges jogcímek, az Azure ad-ből.
 
-    a.  SAP-NameID a részletek képernyőkép.
+       ![A felhasználói attribútumok és a jogcímek párbeszédpanelen, az Azure Portalon](./media/sapfiori-tutorial/claimsaad2.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/tutorial-sapnetweaver-nameiddetails1.png)
+1. Válassza ki **mentése**, majd válassza ki **engedélyezése** az identitásszolgáltató engedélyezéséhez.
 
-    b. Képernyőkép a megemlítve szükséges jogcímek, az Azure ad-ből.
+    ![A Mentés és engedélyezése a beállítások az SAP-ben](./media/sapfiori-tutorial/configuration1.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/claimsaad2.png)
+1. Válassza ki **OK** amikor a rendszer kéri.
 
-15. Kattintson a **mentése** majd **engedélyezése** identitásszolgáltató engedélyezéséhez.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/configuration1.png)
-
-16. Kattintson a **OK** egyszer kéri.
-
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/configuration2.png)
+    ![Az OK lehetőséget az SAP-ben az SAML 2.0 konfigurálása párbeszédpanel](./media/sapfiori-tutorial/configuration2.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az Azure Portalon.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Az Azure Portalon válassza ki a **Azure Active Directory** > **felhasználók** > **minden felhasználó**.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A felhasználók és az összes felhasználói beállítások](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+1. Válassza ki **új felhasználó**.
 
-    ![Új felhasználó gomb](common/new-user.png)
+    ![Az új felhasználói beállítás](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+1. Az a **felhasználói** panelen a következő lépéseket:
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    1. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com.
+    1. Az a **felhasználónév** mezőbe írja be **brittasimon\@\<a vállalati tartomány >.\< bővítmény >**. Ha például **brittasimon\@contoso.com**.
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    1. Válassza ki a **Show jelszó** jelölőnégyzetet. Írja le az értéket, a megjelenő a **jelszó** mezőbe.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    1. Kattintson a **Létrehozás** gombra.
+
+    ![A felhasználói panelen](common/user-properties.png)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés SAP Fiori Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban hozzáférést adhat a Britta Simon SAP Fiori így ő Azure egyszeri bejelentkezéshez használható.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **SAP Fiori**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások** > **minden alkalmazás** > **SAP Fiori**.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **SAP Fiori**.
+1. Az alkalmazások listájában jelölje ki a **SAP Fiori**.
 
-    ![Az SAP Fiori-hivatkozás alkalmazásainak listájában](common/all-applications.png)
+    ![Az SAP Fiori-alkalmazásainak listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+1. Válassza a menüben **felhasználók és csoportok**.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A felhasználók és csoportok lehetőség](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Válassza ki **felhasználó hozzáadása**. Ezt követően a a **-hozzárendelés hozzáadása** ablaktáblán válassza előbb **felhasználók és csoportok**.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzáadás hozzárendelési ablaktáblán](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+1. Az a **felhasználók és csoportok** ablaktáblán válassza **Britta Simon** felhasználók listájában. Válassza a **Kiválasztás** lehetőséget
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+1. Ha az a SAML-előfeltétel szerepkör értéket várt a **szerepkör kiválasztása** ablaktáblán válassza ki a megfelelő szerepkört a felhasználóhoz a listából. Válassza a **Kiválasztás** lehetőséget
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+1. Az a **hozzárendelés hozzáadása** ablaktáblán válassza előbb **hozzárendelése**.
 
-### <a name="create-sap-fiori-test-user"></a>Az SAP Fiori-tesztfelhasználó létrehozása
+### <a name="create-an-sap-fiori-test-user"></a>Hozzon létre egy SAP Fiori-tesztfelhasználó számára
 
-Ebben a szakaszban egy Britta Simon nevű SAP Fiori-a felhasználó hoz létre. A házon belül SAP szakértői csapat működik, vagy a felhasználók hozzáadása az SAP Fiori-platformon, a szervezet SAP partnerrel együttműködve.
+Ebben a szakaszban az SAP Fiori Britta Simon nevű felhasználó létrehozásához. Az SAP csapat szakértők vagy a szervezet SAP partneri a felhasználó hozzáadása az SAP Fiori-platformon működik.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
-1. Miután az identitásszolgáltató az Azure AD lett aktiválva, próbálja alatt ellenőrizze az egyszeri bejelentkezési URL-cím elérése (hiba fog kérés nem felhasználónév és jelszó)
+1. Az identitásszolgáltató az Azure AD az SAP Fiori aktiválása után próbálja meg elérni az egyszeri bejelentkezés (nem ajánlott rákérdez a felhasználónév és jelszó) teszteléséhez a következő URL-címek valamelyikét:
 
-    `https://<sapurl>/sap/bc/bsp/sap/it00/default.htm`
-
-    (vagy) az alábbi URL-cím használata
-
-    `https://<sapurl>/sap/bc/bsp/sap/it00/default.htm`
+    * https:\//\<sapurl\>/sap/bc/bsp/sap/it00/default.htm
+    * https:\//\<sapurl\>/sap/bc/bsp/sap/it00/default.htm
 
     > [!NOTE]
-    > Cserélje le tényleges SAP állomásnév sapurl.
+    > Cserélje le *sapurl* SAP tényleges állomásnevét.
 
-2. A fenti URL-címet kell venniük, hogy említett képernyő alatt. Ha tudja elérni, akár az alábbi lapon, az Azure AD egyszeri bejelentkezés beállítása sikeresen történik.
+1. A tesztcélú URL-cím kell venniük, az alábbi tesztelési alkalmazás lapot az SAP-ben. Ha a lapon nyílik meg, az Azure AD egyszeri bejelentkezés sikeres beállítása.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/sapfiori-tutorial/testingsso.png)
+    ![A standard SAP alkalmazások lap tesztelése](./media/sapfiori-tutorial/testingsso.png)
 
-3. Felhasználónév és jelszó kérése esetén a probléma diagnosztizálásához szerint engedélyezze a nyomkövetés, az alábbi URL-címe
+1. Ha felhasználónevet és jelszót kéri, engedélyezze a nyomkövetési a probléma diagnosztizálása érdekében. A nyomkövetés a következő URL-cím használata: https:\//\<sapurl\>/sap/bc/webdynpro/sap/sec_diag_tool? az sap-ügyfél 122 és sap-nyelv = = EN #.
 
-    `https://<sapurl>/sap/bc/webdynpro/sap/sec_diag_tool?sap-client=122&sap-language=EN#`
+## <a name="next-steps"></a>További lépések
 
-## <a name="additional-resources"></a>További források
+További információkért tekintse át a következő cikkeket:
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-
+- [Az Azure Active Directory SaaS-alkalmazások integrálását ismertető oktatóanyagok listáját](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Egyszeri bejelentkezés az Azure Active Directory-alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

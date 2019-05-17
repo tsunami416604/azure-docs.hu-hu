@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ff9ad850b111cf080447b699d35b4ef8205e006
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 45ea34a673b46dda2ec9606952c707a13d1b72d9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190225"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65766867"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Hitelesítési munkamenet-kezelés konfigurálása a feltételes hozzáférés
 
@@ -80,7 +80,7 @@ Konfigurálta a különböző bejelentkezési gyakoriság az ugyanazon böngész
 1. Válassza ki az összes szükséges feltételeket.
 
    > [!NOTE]
-   > Vegye figyelembe, hogy ez a vezérlő kiválasztása a "Minden felhőalapú alkalmazásra" vonatkozó feltételben előírja
+   > Vegye figyelembe, hogy ez a vezérlő kiválasztása a "Minden felhőalapú alkalmazásra" vonatkozó feltételben előírja. Böngésző-munkamenet megőrzését hitelesítési tokenu relace vezérli. Böngésző-munkamenet az összes lap egy munkamenet-jogkivonat megosztása, és ezért az összes kell oszthatnak meg megőrzési állapotban.
 
 1. Lépjen a **hozzáférés-vezérlés** > **munkamenet** kattintson **állandó böngésző-munkamenet**
 1. Válasszon ki egy értéket a legördülő listából
@@ -91,7 +91,7 @@ Konfigurálta a különböző bejelentkezési gyakoriság az ugyanazon böngész
 > [!NOTE]
 > Az Azure AD feltételes hozzáférési állandó böngésző-munkamenet-konfiguráció felülírja a "tartózkodási jelentkezett be?" a vállalati arculat megjelenítése a panel az adott felhasználó számára az Azure Portalon, ha már konfigurálta a mindkét házirend beállításával.
 
-## <a name="validation"></a>Ellenőrzés
+## <a name="validation"></a>Érvényesítés
 
 A Lehetőségelemzési eszközzel szimulálása a célalkalmazás és egyéb feltételek alapján hogyan konfigurálta a házirend a felhasználói bejelentkezés. A hitelesítési munkamenet felügyeleti vezérlők az eszköz az eredmény jelenik meg.
 

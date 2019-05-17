@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: f892ded46f7124237fd80fbe1e3f5e866c12f0d5
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.openlocfilehash: 160d494eea4bd597725a4e7c21ad9b763502bee6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64993069"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792097"
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás
 
@@ -119,7 +119,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 > [!NOTE]
 > Levél csomópontok a `format=json` nem működik. A lekérdezések `format=text` explicit módon kell megadni az alapértelmezett formátum json-e.
 
-### <a name="security"></a>Biztonság
+### <a name="security"></a>Biztonsági
 
 Instance Metadata szolgáltatás végpont elérésére csak a futó virtuálisgép-példány nem átirányítható IP-címen belül. Emellett a kérelmet egy `X-Forwarded-For` fejléc elutasította a szolgáltatást.
 Kérelmek is tartalmaznia kell egy `Metadata: true` fejléc, győződjön meg arról, hogy a tényleges kérelmező közvetlenül: tervezett és nem véletlen átirányítás része.
@@ -128,11 +128,11 @@ Kérelmek is tartalmaznia kell egy `Metadata: true` fejléc, győződjön meg ar
 
 Ha nem található egy adatelemre, vagy hibás kérés, a Instance Metadata szolgáltatás standard HTTP-hibák adja vissza. Példa:
 
-HTTP-állapotkód | Ok
+HTTP-állapotkód | Reason
 ----------------|-------
 200 OK |
 400 Hibás kérés | Hiányzó `Metadata: true` fejléc, vagy hiányzik a formátum Levélcsomópont lekérdezésekor
-404 – Nem található | A kért elem nem létezik.
+404 Nem található | A kért elem nem létezik.
 405 Metoda není Povolena | Csak `GET` és `POST` kérelmek támogatottak.
 429 túl sok kérelem | Az API jelenleg legfeljebb 5 lekérdezések másodpercenként
 500 Service Error     | Némi várakozás után próbálkozzon újra
@@ -357,12 +357,12 @@ Adatok | Leírás | Bevezetett verzió
 -----|-------------|-----------------------
 azEnvironment | Ahol a virtuális gép fut az Azure-környezet | 2018-10-01
 a customData | Lásd: [egyéni adatok](#custom-data) | 2019-02-01
-location | Azure-régió, a virtuális gép fut. | 2017-04-02
+hely | Azure-régió, a virtuális gép fut. | 2017-04-02
 név | A virtuális gép neve | 2017-04-02
-az ajánlat | A Virtuálisgép-lemezkép információkat kínálnak. Ez az érték csak megtalálható az Azure lemezkép-katalógus-ről üzembe helyezett rendszerképeket. | 2017-04-02
+az ajánlat | A Virtuálisgép-lemezkép információkat kínálnak, és lemezképek csak jelenleg telepítve van az Azure rendszerkép-katalógusában | 2017-04-02
 osType | Linux vagy Windows | 2017-04-02
 placementGroupId | [Elhelyezési csoport](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) a virtuálisgép-méretezési csoport beállítása | 2017-08-01
-csomag | [Terv](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) a virtuális gép az Azure Piactéri lemezkép neve, a termékek és a közzétevő tartalmaz | 2018-04-02
+csomag | [Csomag](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) tartalmazó neve, termék és Virtuálisgép-közzétevő, ha az Azure Marketplace-lemezkép | 2018-04-02
 platformUpdateDomain |  [Frissítési tartomány](manage-availability.md) a virtuális gép fut. | 2017-04-02
 platformFaultDomain | [Tartalék tartomány](manage-availability.md) a virtuális gép fut. | 2017-04-02
 szolgáltató | A virtuális gép szolgáltató | 2018-10-01
@@ -371,7 +371,7 @@ publisher | A Virtuálisgép-lemezkép közzétevője | 2017-04-02
 resourceGroupName | [Erőforráscsoport](../../azure-resource-manager/resource-group-overview.md) a virtuális gép | 2017-08-01
 termékváltozat | Adott Termékváltozat a Virtuálisgép-lemezkép | 2017-04-02
 subscriptionId | A virtuális gép Azure-előfizetés | 2017-08-01
-tags | [A címkék](../../azure-resource-manager/resource-group-using-tags.md) a virtuális gép  | 2017-08-01
+címkék | [A címkék](../../azure-resource-manager/resource-group-using-tags.md) a virtuális gép  | 2017-08-01
 version | A Virtuálisgép-lemezkép verziója | 2017-04-02
 vmId | [Egyedi azonosító](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) a virtuális gép | 2017-04-02
 vmScaleSetName | [Virtuálisgép-méretezési csoport neve](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) a virtuálisgép-méretezési csoport beállítása | 2017-12-01
@@ -688,9 +688,17 @@ route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
 ### <a name="custom-data"></a>Egyéni adatok
-Instance Metadata szolgáltatás lehetővé teszi a virtuális gép rendelkezik hozzáféréssel a saját egyéni adataihoz. A bináris adatok 64 KB-nál kisebbnek kell lennie, és a virtuális gép base64-kódolású formában megadott. További információ a virtuális gép létrehozása egyéni adatokkal: [virtuális gép üzembe helyezése a CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+Instance Metadata szolgáltatás lehetővé teszi a virtuális gép rendelkezik hozzáféréssel a saját egyéni adataihoz. A bináris adatok 64 KB-nál kisebbnek kell lennie, és a virtuális gép base64-kódolású formában megadott.
+
+Az Azure egyéni adatok beszúrásával a virtuális Gépeket a REST API-k, PowerShell-parancsmagok, az Azure parancssori felület (CLI) vagy egy ARM-sablon.
+
+Az Azure parancssori felület példa: [egyéni adatokról és a Microsoft Azure Cloud-Init](https://azure.microsoft.com/blog/custom-data-and-cloud-init-on-windows-azure/).
+
+ARM-sablon Példaként tekintse meg a [virtuális gép üzembe helyezése a CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
 
 Egyéni adatok minden, a virtuális gépen futó folyamatok számára érhető el. Javasoljuk, hogy ügyfeleink nem titkos adatokat beszúrni egyéni adatok.
+
+Jelenleg egyéni adatok garantáltan rendelkezésre álló virtuális gépek rendszerindítási során. Ha például a lemezek hozzáadása a virtuális gép végrehajtott frissítéseket, vagy a virtuális gép átméretezése, Instance Metadata szolgáltatás nem nyújt egyéni adatok. Egyéni adatokat tartósan keresztül Instance Metadata szolgáltatás jelenleg folyamatban van.
 
 #### <a name="retrieving-custom-data-in-virtual-machine"></a>A virtuális gép egyéni adatok beolvasása
 Instance Metadata szolgáltatás egyéni adatokat biztosít a virtuális géphez a base64-kódolású képernyőn. Az alábbi példa a base64-kódolású karakterlánc dekódolása.
@@ -715,7 +723,7 @@ My custom data.
 Nyelv | Példa
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
-Indítás  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
+Ugrás  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
@@ -727,7 +735,7 @@ Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
 Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 Puppet | https://github.com/keirans/azuremetadata
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>gyakori kérdésekben
 
 1. A hibaüzenetet kapok `400 Bad Request, Required metadata header not specified`. Ez mit jelent?
    * A Instance Metadata szolgáltatás szükséges a fejléc `Metadata: true` átadni a kérelmet. Ezt a fejlécet ad át a REST-hívást lehetővé teszi a Instance Metadata szolgáltatás elérését.

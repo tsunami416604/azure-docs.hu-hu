@@ -7,17 +7,17 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 05/10/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: f540bc304920073bcd823adcf6c9dd47cb2cf93b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a59deed4ac0cec669ddc5e0335f7274586c702e8
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159750"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541766"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-9"></a>Az Azure Search .NET SDK 9-es verzió frissítése
+# <a name="upgrade-to-the-azure-search-net-sdk-version-9"></a>Az Azure Search .NET SDK 9-es verzió frissítése
 
 Ha a 7.0-preview jelű verziót vagy a régebbi verziót használja a [Azure Search .NET SDK](https://aka.ms/search-sdk), ez a cikk segít az alkalmazás használhatja a 9-es verzió frissítése.
 
@@ -70,7 +70,7 @@ Miután már kijavított bármely fordítási hibákat vagy figyelmeztetéseket,
 > [!NOTE]
 > Azokat a változásokat az alábbi tehát nem tekinthető teljesnek. Néhány módosítást valószínűleg nem eredményez fordítási hibákat, de a rendszer technikailag használhatatlanná tévő, mivel azok felosztása, szerelvényeket, amelyek függnek az Azure Search .NET SDK-szerelvények korábbi verzióiban a bináris kompatibilitás. Az ilyen változások alább nem láthatók. Építse újra az alkalmazás bináris kompatibilitási problémák elkerülése érdekében 9-verzióra történő frissítése során.
 
-### <a name="making-properties-immutable"></a>Így nem módosítható tulajdonságok
+### <a name="immutable-properties"></a>Nem módosítható tulajdonságok
 
 Több modell osztályok nyilvános tulajdonságainak immár nem módosítható. Ha ezeket az osztályokat tesztelési egyéni példányainak van szüksége, használhatja az új paraméteres konstruktorok:
 
@@ -103,7 +103,7 @@ Ennek oka, hogy ezek a Tulajdonságok most kell `null` összetett mezők esetén
 
 Az a paraméter nélküli konstruktor `Field` lett végrehajtva `internal`. Mostantól minden `Field` igényel explicit nevét és adattípusát konstrukció időpontjában.
 
-### <a name="simplification-of-batch-and-results-types"></a>Batch-és eredmények egyszerűsítése
+### <a name="simplified-batch-and-results-types"></a>Egyszerűsített batch és az eredmények típus
 
 A 7.0-preview és a korábbi verziókban a különböző osztályok, amely magába foglalja a csoportok a dokumentumok is strukturált történő párhuzamos osztály hierarchiák:
 
@@ -118,7 +118,7 @@ A származtatott típusok általános típusú paraméter nélkül volt "dinamik
 
 8.0. dátumú előzetes sémaverzióra kezdve az alaposztályok és nem általános származtatott osztályainak összes el lettek távolítva. Dinamikusan gépelt forgatókönyvek esetén használható `IndexBatch<Document>`, `DocumentSearchResult<Document>`, és így tovább.
  
-### <a name="removal-of-extensibleenum"></a>ExtensibleEnum eltávolítása
+### <a name="removed-extensibleenum"></a>Eltávolított ExtensibleEnum
 
 A `ExtensibleEnum` alaposztály el lett távolítva. Minden osztály, amely abból származó immár struktúrák, mint például `AnalyzerName`, `DataType`, és `DataSourceType` például. Saját `Create` módszereket is el lett távolítva. Csak távolítsa el a hívások `Create` mivel ezek a típusok konvertálható erre a karakterláncokat. Ha, amely fordítási hibákat eredményez, az átalakítás operátor döntő keresztül könnyen pontosítani lehet típusok explicit módon hívhat meg. Módosíthatja például ehhez hasonló kódok:
 
@@ -150,7 +150,7 @@ var index = new Index()
 
 Nem kötelező a következő típusú értékek tárolt tulajdonságokat most már explicit módon típusú nullázható, ezek továbbra is választható.
 
-### <a name="removal-of-facetresults-and-hithighlights"></a>FacetResults és HitHighlights eltávolítása
+### <a name="removed-facetresults-and-hithighlights"></a>Eltávolított FacetResults és HitHighlights
 
 A `FacetResults` és `HitHighlights` osztályok el lett távolítva. Most már típusú értékkorlátozás eredményeket `IDictionary<string, IList<FacetResult>>` , és nyomja le kiemeli `IDictionary<string, IList<string>>`. Ez a módosítás bevezetett fordítási hibákat oldja meg gyorsan az, hogy hozzáadása `using` aliasok felső részén, hogy az eltávolított típusok használja. Példa:
 

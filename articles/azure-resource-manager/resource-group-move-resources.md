@@ -1,23 +1,17 @@
 ---
 title: Azure-erőforrások áthelyezése új vagy erőforráscsoportonként csoportba |} A Microsoft Docs
 description: Azure Resource Manager segítségével az erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe.
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-ms.assetid: ab7d42bd-8434-4026-a892-df4a97b60a9b
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 05/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4e94bc7686203bfbcd93200e5a1fb65b43ceeb91
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 076d120d9c02b15837e92b71bc2a015377f54594
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698492"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792698"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -25,7 +19,7 @@ Ez a cikk bemutatja, hogyan Azure-erőforrások áthelyezése egy másik Azure-e
 
 Mind a forrás és a cél csoport írásvédett az áthelyezési művelet során. Írási és törlési műveletek az áthelyezés befejezéséig az erőforráscsoportok elakad. A zárolás azt jelenti, hogy a nem hozzáadása, frissítése vagy törlése az erőforráscsoportok erőforrásaihoz, de ez nem jelenti azt, az erőforrások szüneteltetve legyenek. Ha például egy SQL Server és az adatbázis áthelyezése egy új erőforráscsoportot, ha nem az adatbázist használó alkalmazások teljesen állásidő nélkül. Továbbra is olvasni és írni az adatbázisba.
 
-Az erőforrás áthelyezése csak egy új erőforráscsoportba helyezi azt. Az áthelyezési művelet nem módosítja az erőforrás helyét. Az új erőforráscsoportot egy másik helyre azonban lehet, hogy az erőforrás helye nem változik.
+Erőforrások áthelyezése csak áthelyezi egy új erőforráscsoportot. Az áthelyezési művelet nem módosítja az erőforrás helyét. Az új erőforráscsoportot egy másik helyre azonban lehet, hogy az erőforrás helye nem változik.
 
 > [!NOTE]
 > Ez a cikk ismerteti az erőforrások áthelyezése a meglévő Azure-előfizetések között. Ha valójában szeretné frissíteni (például a használatalapú fizetéses előfizetésre vált az ingyenes) Azure-előfizetése, az előfizetés konvertálnia kell.
@@ -74,8 +68,8 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Tartalomkézbesítési hálózat (CDN)
 * Cloud Services – lásd: [klasszikus üzembe helyezési korlátozásoknak](#classic-deployment-limitations)
 * Cognitive Services
-* Container Registry
-* Tartalommoderátor
+* Tárolóregisztrációs adatbázis
+* Content Moderator
 * Cost Management
 * Customer Insights
 * Data Catalog
@@ -97,14 +91,14 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Felügyelt identitás - felhasználó által hozzárendelt
 * Media Services
 * Győződjön meg arról, hogy új előfizetésbe való áthelyezését figyelője – nem lehet [előfizetési kvóták](../azure-subscription-service-limits.md#monitor-limits)
-* Notification Hubs
+* Értesítési központok
 * Operational Insights
 * Operations Management
 * Portál irányítópultok
 * A Power BI - mind a Power BI Embedded és a Power BI-munkaterület-csoport
 * Nyilvános IP - áthelyezhetők az alapszintű Termékváltozat nyilvános IP-Címére. Standard Termékváltozat nyilvános IP-cím nem lehet áthelyezni.
 * A Recovery Services-tároló – regisztráljon egy [előzetes](#recovery-services-limitations).
-* Azure-beli SAP HANA-szolgáltatás
+* SAP HANA on Azure
 * Scheduler
 * Keresés –, erőforrások nem helyezhetők át több keresési különböző régiókban lévő több műveletet. Helyezze át őket a különböző műveletek.
 * Service Bus
@@ -113,6 +107,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * SignalR szolgáltatás
 * Storage - tárfiókok különböző régiókban lévő műveletben nem lehet áthelyezni. Ehelyett használjon minden régióhoz külön műveletnek.
 * Tekintse meg a tároló (klasszikus) – [klasszikus üzembe helyezési korlátozásoknak](#classic-deployment-limitations)
+* Társzinkronizálási szolgáltatás
 * Stream Analytics - feladatok nem lehet áthelyezni, ha a futó Stream Analytics állapot.
 * Az SQL Database server - adatbázis és a kiszolgáló ugyanabban az erőforráscsoportban kell lennie. Ha áthelyezi SQL-kiszolgáló, az összes hozzá tartozó adatbázisok is kerülnek. Ez a viselkedés az Azure SQL Database és az Azure SQL Data Warehouse-adatbázisok vonatkozik.
 * Time Series Insights
@@ -147,7 +142,7 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 * A Lab Services – osztályterem-tesztkörnyezetek nem lehet áthelyezni egy új erőforráscsoportot vagy előfizetést. DevTest Labs szolgáltatásban egy új erőforráscsoport ugyanabban az előfizetésben, de az előfizetések között nem helyezheti át.
 * Felügyelt alkalmazások
 * Microsoft Genomics
-* Biztonság
+* Biztonsági
 * Site Recovery
 * StorSimple-Eszközkezelő
 * Tekintse meg a virtuális hálózatok (klasszikus) – [klasszikus üzembe helyezési korlátozásoknak](#classic-deployment-limitations)

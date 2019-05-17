@@ -10,10 +10,10 @@ ms.author: rajanaki
 ms.custom: MVC
 ms.openlocfilehash: 7562d720b200e127fbfd56c403f0e29e28b3b5d8
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65759330"
+ms.locfileid: "65793737"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Az Azure virtuális gépek áthelyezése a rendelkezésre állási zónában történő
 Az Azure-beli rendelkezésre állási zónák segítségével az alkalmazások és adatok védelme az Adatközpont meghibásodása. Minden rendelkezésre állási zónában egy vagy több független áramellátással, hűtéssel és hálózattal rendelkező adatközpont található. Rugalmasság biztosítása érdekében legalább három különálló zónát, az összes engedélyezett régióban van. Egy adott régión belül a rendelkezésre állási zónák fizikai elválasztása megvédi alkalmazásait és adatait a adatközpont meghibásodása. A rendelkezésre állási zónákban az Azure kínál egy szolgáltatásiszint-szerződés (SLA 99,99 %-os üzemidő a virtuális gépek (VM) esetében). A rendelkezésre állási zónák a leírtak szerint bizonyos régiókban támogatottak [Mik az Azure-beli rendelkezésre állási zónák?](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones).

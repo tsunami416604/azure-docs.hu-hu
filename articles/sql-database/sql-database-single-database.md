@@ -7,17 +7,17 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: 4406789e3f9a10ff814aca0c2fd114de8a2abb69
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 36b1fb96ac1dd89375588a65063ce729f6ac825d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572671"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794389"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Mi az az Azure SQL Database egy adatbázis
 
@@ -30,7 +30,7 @@ Egyetlen adatbázis-telepítési beállítás saját erőforráskészlettel az A
 
 ## <a name="dynamic-scalability"></a>A dinamikus méretezhetőség
 
-Létrehozhatja első alkalmazását egy egyedülálló, kisméretű adatbázis alacsony áron alacsony ár-teljesítmény szolgáltatási szinten a havonta, majd [módosíthatja a szolgáltatásszintet](sql-database-single-database-scale.md) manuálisan vagy programon keresztül bármikor thehigher ár-teljesítmény Service szint, hogy a megoldás igényeinek. Úgy módosíthatja a teljesítményt, hogy az nem jár leállással az alkalmazás vagy az ügyfelek számára. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre, és lehetővé teszi, hogy csak azokért az erőforrásokért fizessen, amelyekre és amikor szüksége van.
+A kiépített számítási rétegben kisméretű számítási mérete vagy a kiszolgáló nélküli (előzetes verzió) számítási kapacitás az alacsony költségű, egyedülálló, kisméretű adatbázison is hozza létre első alkalmazását. Módosítja a [számítási és a szolgáltatási szint](sql-database-single-database-scale.md) manuálisan vagy programon keresztül bármikor, ha a megoldás. Úgy módosíthatja a teljesítményt, hogy az nem jár leállással az alkalmazás vagy az ügyfelek számára. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre, és lehetővé teszi, hogy csak azokért az erőforrásokért fizessen, amelyekre és amikor szüksége van.
 
 ## <a name="single-databases-and-elastic-pools"></a>Önálló adatbázisok és rugalmas készletek
 
@@ -51,7 +51,7 @@ Emellett vannak bizonyos funkciók és a szintaxis, amely nem támogatott egyál
 
 További információkért lásd: [feloldása Transact-SQL különbségek az SQL Database áttelepítése során](sql-database-transact-sql-information.md).
 
-## <a name="security"></a>Biztonság
+## <a name="security"></a>Biztonsági
 
 Az SQL Database biztosít széles körű [beépített biztonsági és megfelelőségi](sql-database-security-overview.md) szolgáltatásokat, amelyek segítik a különféle biztonsági és megfelelőségi követelmények alkalmazását.
 

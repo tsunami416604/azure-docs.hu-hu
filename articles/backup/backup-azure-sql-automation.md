@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pullabhk
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 3a424335a1e7d7775f6be0980e7009669e354ea7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6d17d5c2c0eaebc694abe820318f6ac0c70b0be8
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717907"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544610"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>Biztonsági mentése és visszaállítása az SQL-adatbázisok Azure-beli virtuális gépeken a PowerShell-lel
 
@@ -110,7 +110,7 @@ A Recovery Services-tároló, a Resource Manager-erőforrással, így a erőforr
 3. Adja meg a tároló tárolására a redundancia típusát.
 
     * Használhat [helyileg redundáns tárolás](../storage/common/storage-redundancy-lrs.md) vagy [georedundáns tárolás](../storage/common/storage-redundancy-grs.md).
-    * A következő példa készletek a **- BackupStorageRedundancy** első számú megoldás a[Set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperties?view=azps-1.4.0) a cmd **testvault** beállítása  **GeoRedundant**.
+    * A következő példa készletek a **- BackupStorageRedundancy** első számú megoldás a[Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) a cmd **testvault** beállítása  **GeoRedundant**.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -530,7 +530,7 @@ $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppC
 
 Fontos megjegyezni, hogy az Azure Backup csak nyomon követi a felhasználó által aktivált SQL biztonsági mentési feladatok. Ütemezett biztonsági mentések (beleértve a naplóalapú biztonsági mentések) nem láthatók a portal/PowerShell használatával. Azonban, ha minden ütemezett feladat sikertelen, egy [biztonsági mentési riasztás](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) jön létre, és látható a portálon. [Az Azure Monitor használata](backup-azure-monitoring-use-azuremonitor.md) nyomon követéséhez az ütemezett feladatok és az egyéb kapcsolódó információkat.
 
-Felhasználók nyomon követheti a JobID, a visszaadott ad hoc ad hoc és a felhasználók által aktivált műveletek a [kimeneti](#on-demand-backup) aszinkron feladatok, mint a biztonsági mentés. Használat [Get-AzRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetails?view=azps-1.5.0) PS-parancsmag segítségével nyomon követheti a feladat és a részletek.
+Felhasználók nyomon követheti a JobID, a visszaadott ad hoc ad hoc és a felhasználók által aktivált műveletek a [kimeneti](#on-demand-backup) aszinkron feladatok, mint a biztonsági mentés. Használat [Get-AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) PS-parancsmag segítségével nyomon követheti a feladat és a részletek.
 
 ````powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID

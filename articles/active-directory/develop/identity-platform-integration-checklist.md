@@ -3,8 +3,8 @@ title: Integráció a Microsoft identity platform |} Az Azure
 description: Ismerje ajánlott eljárásokról és a közös figyelmetlenség integrálása a Microsoft identity platform (2.0-s verzió).
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: 1f5a6d7501fd387548b111fcb0888515c8f8db25
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: e9070127780659142ab8f956a8016622ecfea144
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65076405"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540160"
 ---
 # <a name="microsoft-identity-platform-integration-checklist"></a>A Microsoft identity platform integrációs ellenőrzőlista
 
@@ -58,7 +58,7 @@ A következő ellenőrzőlista segítségével győződjön meg arról, hogy az 
 |---|---|
 | ![Jelölőnégyzet](./media/active-directory-integration-checklist/checkbox-two.svg) | Az alkalmazás használati és az adatvédelmi nyilatkozat mutató hivatkozásokat tartalmaznak. |
 
-### <a name="security"></a>Biztonság
+### <a name="security"></a>Biztonsági
 
 |   |   |
 |---|---|
@@ -70,7 +70,7 @@ A következő ellenőrzőlista segítségével győződjön meg arról, hogy az 
 | ![Jelölőnégyzet](./media/active-directory-integration-checklist/checkbox-two.svg) | Győződjön meg arról, hogy az alkalmazás a legalacsonyabb jogosultsági engedélyt kér. Csak az alkalmazása feltétlenül szükséges engedélyekkel, és csak akkor kérjen szüksége lesz rájuk. Megismerheti a különböző [típusú engedélyeket](v1-permissions-and-consent.md#types-of-permissions). Csak az Alkalmazásengedélyek; szükség esetén használja delegált engedélyeket használ, ahol csak lehetséges. A Microsoft Graph-engedélyek teljes listáját lásd: Ez [engedélyek referencia](https://docs.microsoft.com/graph/permissions-reference). |
 | ![Jelölőnégyzet](./media/active-directory-integration-checklist/checkbox-two.svg) | Ha egy API-t a Microsoft identity platform biztonságáról, gondosan végiggondoljon az engedélyeket kell elérhetővé tennie. Fontolja meg, mi a megoldás a megfelelő részletességgel, és mely eke rendszergazdai jóváhagyásra van szükség. Ellenőrizze a bejövő jogkivonatot az várt engedélyek engedélyezési döntések meghozatala előtt. |
 
-### <a name="implementation"></a>Megvalósítás
+### <a name="implementation"></a>Implementáció
 
 |   |   |
 |---|---|

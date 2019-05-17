@@ -3,8 +3,8 @@ title: További tudnivalók a Microsoft identity platform által támogatott hit
 description: A Microsoft identity platform végpont által támogatott az OAuth 2.0 és OpenID Connect protokollok útmutatóját.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 5fb4fa1b-8fc4-438e-b3b0-258d8c145f22
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d509e9f3cabcd588d539d42b8cce022e17a1222
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 536210922d13f66aaa5a09bd87bd2d92da8d416c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65139213"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546116"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>A Microsoft identity platform protokollok
 
@@ -64,7 +64,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 Ha a `{tenant}` négy különböző értékek valamelyikét hajthatja végre:
 
-| Érték | Leírás |
+| Value | Leírás |
 | --- | --- |
 | `common` | Lehetővé teszi, hogy a személyes Microsoft-fiókok és a munkahelyi vagy iskolai fiókokkal rendelkező felhasználók jelentkezhetnek be az alkalmazás Azure AD-ből. |
 | `organizations` | Lehetővé teszi, hogy csak a munkahelyi vagy iskolai fiókkal rendelkező felhasználók jelentkezhetnek be az alkalmazás Azure AD-ből. |

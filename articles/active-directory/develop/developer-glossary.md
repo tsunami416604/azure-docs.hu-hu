@@ -3,8 +3,8 @@ title: A Microsoft identity platform fejlesztői szószedet |} Az Azure
 description: A gyakran használt Microsoft identity platform fejlesztői alapfogalmait és jellemzőit neveinek listáját.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/13/2019
-ms.author: celested
+ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma, dadobali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 968da9212b52c1e7ea09d1472b312671c7a73449
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 89ea1dba09173b20d11a5022e6666e6c865ead62
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60410384"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540095"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>A Microsoft identity platform fejlesztői szószedet
 
@@ -156,7 +156,7 @@ Erőforrás-kiszolgáló API-kat, és érvényesíti a keresztül védett erőfo
 
 Csakúgy, mint egy ügyfélalkalmazás erőforrás-alkalmazás identitását konfigurációs keresztül létrehozott [regisztrációs](#application-registration) az Azure AD-bérlővel, így az alkalmazás és a szolgáltatásnév-objektumot. Bizonyos Microsoft által biztosított API-k, például az Azure AD Graph API-t, előre regisztrált egyszerű szolgáltatások elérhetők a bérlőknek üzembe helyezés során.
 
-## <a name="roles"></a>roles
+## <a name="roles"></a>szerepkörök
 
 Például [hatókörök](#scopes), szerepkörök lehetőséget biztosíthat egy [erőforrás-kiszolgáló](#resource-server) a védett erőforrásokhoz való hozzáférés szabályozására. Két típusa van: "felhasználói" szerepkör valósítja meg a szerepköralapú hozzáférés-vezérlést, míg az "alkalmazás" szerepkör valósít meg ugyanezt az erőforráshoz hozzáférést igénylő felhasználók/csoportok [ügyfélalkalmazások](#client-application) , amelyek hozzáférést igényelnek.
 

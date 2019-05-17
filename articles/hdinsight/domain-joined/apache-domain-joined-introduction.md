@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: deff2aa3cd475a3ed37adc4408a133ed1fd0757e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8142caf867ffe811726677fb1dcbadc7d1458251
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64716660"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793553"
 ---
-# <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Bevezetés az Apache Hadoop-biztonság, a vállalati biztonsági csomag
+# <a name="what-is-enterprise-security-package-in-azure-hdinsight"></a>Mi az az Azure HDInsight vállalati biztonsági csomag
 
 Múltbeli időpont, az Azure HDInsight támogatott csak egyetlen felhasználó: helyi rendszergazdaként. Ez remekül működött a kisebb alkalmazásfejlesztő csapatoknál vagy részlegeknél. Ahogy az Apache Hadoop-alapú számítási feladatok nagyobb népszerűségre tettek a vállalati szektorban, szükség van a nagyvállalati szintű szolgáltatásokat, például az Active Directory-alapú hitelesítéshez, többfelhasználós támogatja, és a szerepköralapú hozzáférés-vezérlés egyre inkább fontosabbá váltak. 
 

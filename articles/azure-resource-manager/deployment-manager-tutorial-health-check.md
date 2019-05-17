@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 05/06/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4f3f43ba063ed25389860183576c4dbd94e2bfcd
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 8ffc64359faab539ab74e354caad4081f31fcd43
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466323"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790128"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Oktatóanyag: Állapot-ellenőrzése az Azure Deployment Manager (nyilvános előzetes verzió) használata
 
@@ -59,7 +59,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 A következő két fájlt az Azure-függvény üzembe helyezésére szolgálnak. Nem kell letölteni ezeket a fájlokat az oktatóanyagot.
 
 * A Resource Manager-sablon található [ https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json ](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json). Azure-függvény létrehozása a sablon központi telepítése.  
-* Az Azure-függvény-forráskódot zip-fájlban [ https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip ](https://armtutorials.blob.core.windows.net/admtutorial/RestHealthTest.zip). A zip nevű hívja meg a Resource Manager-sablon.
+* Az Azure-függvény-forráskódot zip-fájlban [ http://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip ](http://armtutorials.blob.core.windows.net/admtutorial/RestHealthTest.zip). A zip nevű hívja meg a Resource Manager-sablon.
 
 Az Azure-függvény üzembe helyezéséhez válassza **kipróbálás** nyissa meg az Azure Cloud shellt, és illessze be a következő szkriptet a shell ablakába.  Illessze be a kódot, kattintson a jobb gombbal a rendszerhéj ablakát, és jelölje ki **illessze be**. 
 

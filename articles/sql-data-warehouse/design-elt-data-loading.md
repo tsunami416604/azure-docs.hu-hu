@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 04/12/2019
+ms.date: 05/10/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 2e65c1a33a60e19538a26e0f47f205235dd1695c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db397ae43d1c134823abfc7004f1f3490addeb06
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60731770"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550611"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse PolyBase-adatbetöltés stratégia tervezése
 
@@ -49,8 +49,32 @@ A forrásrendszerben adatokat első attól függ, hogy a tárolási helyét.  A 
 
 ### <a name="polybase-external-file-formats"></a>A PolyBase külső fájlformátum
 
-A PolyBase adatokat tölt be az UTF-8 és UTF-16 kódolású, elválasztójellel tagolt szöveges fájlok. A tagolt szöveges fájlok mellett betölti a Hadoop-fájl formátumok RC fájlt, a ORC és a parquet eszközökben. A PolyBase Gzip és Snappy tömörített fájlokból is betöltheti adatokat. A PolyBase jelenleg nem támogatja a kiterjesztett ASCII, formátum rögzített szélességű és beágyazott formátumban például WinZip, JSON- és XML. Ha az SQL Serverből exportálja, [bcp parancssori eszköz](/sql/tools/bcp-utility) exportálja az adatokat, elválasztójellel tagolt szöveges fájlok.
+A PolyBase adatokat tölt be az UTF-8 és UTF-16 kódolású, elválasztójellel tagolt szöveges fájlok. A tagolt szöveges fájlok mellett betölti a Hadoop-fájl formátumok RC fájlt, a ORC és a parquet eszközökben. A PolyBase Gzip és Snappy tömörített fájlokból is betöltheti adatokat. A PolyBase jelenleg nem támogatja a kiterjesztett ASCII, formátum rögzített szélességű és beágyazott formátumban például WinZip, JSON- és XML. Ha az SQL Serverből exportálja, [bcp parancssori eszköz](/sql/tools/bcp-utility) exportálja az adatokat, elválasztójellel tagolt szöveges fájlok. A parquet vagy egyéb SQL DW adattípus-hozzárendelés el a következőket:
 
+| **Parquet adattípus** |                      **SQL Data Type**                       |
+| :-------------------: | :----------------------------------------------------------: |
+|        tinyint        |                           tinyint                            |
+|       smallint        |                           smallint                           |
+|          int          |                             int                              |
+|        bigint         |                            bigint                            |
+|        logikai        |                             bit                              |
+|        double         |                            lebegőpontos                             |
+|         lebegőpontos         |                             real                             |
+|        double         |                            money                             |
+|        double         |                          pénz                          |
+|        string         |                            nchar                             |
+|        string         |                           nvarchar                           |
+|        string         |                             char                             |
+|        string         |                           varchar                            |
+|        binary         |                            binary                            |
+|        binary         |                          Varbinary                           |
+|       időbélyeg       |                             date                             |
+|       időbélyeg       |                        smalldatetime                         |
+|       időbélyeg       |                          datetime2                           |
+|       időbélyeg       |                           datetime                           |
+|       időbélyeg       |                             time                             |
+|       date        | Int és a Date cast (1) betöltése </br> 2.) [használata az Azure Databricks SQL DW connector](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse#load-data-into-azure-sql-data-warehouse) az </br> spark.conf.set( "spark.sql.parquet.writeLegacyFormat", "true" ) </br> (**frissítése hamarosan**) |
+|        tizedes tört        | [Az Azure Databricks SQL DW-összekötő használatára](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse#load-data-into-azure-sql-data-warehouse) az </br> spark.conf.set( "spark.sql.parquet.writeLegacyFormat", "true" ) </br> (**frissítése hamarosan**) |
 
 ## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. Megnyitja az adatok Azure Blob storage vagy az Azure Data Lake Store-bA
 

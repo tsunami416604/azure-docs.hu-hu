@@ -4,18 +4,19 @@ ms.service: container-instances
 ms.topic: include
 ms.date: 04/26/2019
 ms.author: danlep
-ms.openlocfilehash: 974126b27f65da674b93878074a453e117615366
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5fa4d76656f6000745291230025a50d3e1fb6fc4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65070988"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794280"
 ---
 ### <a name="regions-and-resource-availability"></a>Régiók és az erőforrás rendelkezésre állása
 
 | Location egység | Operációs rendszer | CPU | Memória (GB) |
 | -------- | :---: | :---: | :-----------: |
-| Észak-Európa, Délkelet-Ázsia, USA középső RÉGIÓJA, USA keleti RÉGIÓJA 2, USA nyugati RÉGIÓJA 2, kelet-japán | Linux | 4 | 16 |
+| Észak-Európa, Délkelet-Ázsia, USA középső RÉGIÓJA, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA déli középső RÉGIÓJA, USA 2. nyugati | Linux | 4 | 16 |
 | Nyugat-Európa | Linux | 4 | 14 |
-| USA keleti RÉGIÓJA, USA nyugati RÉGIÓJA | Linux | 2 | 3.5 |
-| Kelet-Ausztrália | Linux | 1 | 1.5 |
+| Kelet-Japán | Linux | 2 | 8 |
+| Dél-India, USA északi középső RÉGIÓJA, USA nyugati RÉGIÓJA | Linux | 2 | 3.5 |
+| Ausztrália keleti régiója, USA nyugati középső RÉGIÓJA | Linux | 1. | 1.5 |

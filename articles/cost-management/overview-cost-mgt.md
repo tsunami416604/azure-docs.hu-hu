@@ -5,21 +5,25 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 05/14/2019
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 69f91949347eadcffb3c0d3ff833a40b5e483e24
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6615c6d8912195dbecda727bbdb31dcf04898ea2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61035735"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792810"
 ---
 # <a name="what-is-azure-cost-management"></a>Mi az Azure Cost Management?
 
 A Cost management hatékonyan tervezési és részt az üzleti költségek ellenőrzése során a rendszer. A költségkezelési feladatokat általában pénzügyi, felügyeleti és az alkalmazásokat kezelő csapatok végzik. Az Azure Cost Management segít a szervezeteknek költség szem előtt tervezze. Emellett segít hatékonyan elemezheti a költségek, és optimalizálhatja a felhő művelet költségeit. Ha több információra van szüksége arról, hogy szervezetileg hogyan közelíthető meg a költségkezelés, tekintse meg a következő cikket: [Az Azure Cost Management ajánlott eljárásai](cost-mgt-best-practices.md).
+
+Tekintse meg a [Azure Cost Management áttekintő videó](https://www.youtube.com/watch?v=el4yN5cHsJ0) hogyan Azure Cost Management segít Önnek pénzt takaríthat meg az Azure-ban gyors áttekintését.
+
+>[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
 Habár kapcsolódik hozzá, a számlázás eltér a költségkezeléstől. A számlázás a számlák kiállításának folyamata az ügyfelek részére árucikkekről vagy szolgáltatásokról, valamint a kereskedelmi kapcsolat kezelése.  A számlázási feladatokat általában a beszerzés és a pénzügyi csapatok végzik.
 
@@ -42,6 +46,10 @@ Ha külső rendszereket használ a költségadatokhoz való hozzáféréshez vag
 ## <a name="consider-cloudyn"></a>Fontolja meg a Cloudyn használatát
 
 A [Cloudyn](overview.md) egy, a Cost Managementhez kapcsolódó Azure-szolgáltatás. A Cloudyn használatával nyomon követheti Azure-erőforrásai felhőhasználatát és költségeit. Ezenkívül támogatja az egyéb felhőszolgáltatókat, beleértve az AWS-t és a Google-t. A könnyen értelmezhető irányítópult-jelentések segítenek a költséglefoglalásban és a költséghelyi visszacsatolásban/elszámolásban. A Cost Management jelenleg nem támogatja költséghelyi visszacsatolásos/elszámolásos, valamint az egyéb felhőszolgáltatókat. Azonban a Cloudyn _igen_. Jelenleg nem támogatja a Cost Management Microsoft Felhőszolgáltató (CSP) fiókok, azonban a Cloudyn nem. Ha rendelkezik a CSP-partnerek vagy költséghelyi visszacsatolási és költséghelyi elszámolás használni kívánt, használhatja a Cloudyn költségek kezelése érdekében.
+
+Tekintse meg a [Azure Cost Management és a Cloudyn videó](https://www.youtube.com/watch?v=PmwFWwSluh8) javaslatok megtekintéséhez, mikor használja az Azure Cost Management vagy a Cloudyn, a üzleti igények alapján.
+
+>[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
 
 ## <a name="additional-azure-tools"></a>További Azure-eszközök
 

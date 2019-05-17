@@ -1,6 +1,6 @@
 ---
-title: Mobilalkalmazás, hogy a hívások webes API-k – az alkalmazás egy token beszerzése |} A Microsoft identity platform
-description: Ismerje meg a mobilalkalmazások, amely meghívja a webes API-k (tokenbeolvasás az alkalmazás)
+title: A mobilalkalmazás, hogy a hívások webes API-k – az alkalmazás jogkivonatának beolvasása |} A Microsoft identity platform
+description: Ismerje meg, hogyan hozhat létre, amely meghívja a webes API-kat (az alkalmazás egy token beszerzése) mobilalkalmazás
 services: active-directory
 documentationcenter: dev-center-name
 author: danieldobalian
@@ -15,43 +15,43 @@ ms.date: 05/07/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6933bfbbff574495655ef9065a786fa313b02bd6
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 88c9215ed221e24099eeb219a4db599a1955920a
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65075175"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550340"
 ---
-# <a name="mobile-app-that-calls-web-apis---acquire-a-token"></a>Mobilalkalmazás, amely meghívja a webes API - jogkivonat beszerzése
+# <a name="mobile-app-that-calls-web-apis---get-a-token"></a>Mobilalkalmazás, amely meghívja a webes API-k – egy token beszerzése
 
-Megkezdéséhez hívása a védett webes API-k, az alkalmazás kell egy hozzáférési jogkivonatot. Ez a szakasz végigvezeti a folyamatot a Microsoft-hitelesítési tár (MSAL) használatával jogkivonat beszerzéséhez.
+Megkezdéséhez hívása a védett webes API-k, az alkalmazás kell egy hozzáférési jogkivonatot. Ez a cikk végigvezeti a folyamat az első egy tokent a Microsoft-hitelesítési tár (MSAL) használatával.
 
 ## <a name="scopes-to-request"></a>Hatókörök kérni
 
-Ha kéri a jogkivonatokat, hatókör mindig szükség. A hatókör határozza meg, hogy az alkalmazás hozzáférhessen-adatokat.  
+Ha egy tokent kér, kell hatókör meghatározása. A hatókör határozza meg, hogy az alkalmazás hozzáférhessen-adatokat.  
 
-A legegyszerűbb úgy, hogy a kívánt webes API-k `App ID URI` a hatókörrel rendelkező `.default`. Közli a Microsoft identity az adott alkalmazáshoz szükséges a portálon beállított összes hatókör.
+A legegyszerűbb megközelítés, ha a kívánt webes API-kat kombinálja `App ID URI` a hatókörrel rendelkező `.default`. Ezzel arra utasítja a Microsoft identity platform adott alkalmazáshoz szükséges összes hatókör beállítása a portálon.
 
-Android
+#### <a name="android"></a>Android
 ```Java
 String[] SCOPES = {"https://graph.microsoft.com/.default"};
 ```
 
-iOS
+#### <a name="ios"></a>iOS
 ```swift
 let scopes: [String] = ["https://graph.microsoft.com/.default"]
 ```
 
-Xamarin
+#### <a name="xamarin"></a>Xamarin
 ```CSharp 
 var scopes = new [] {"https://graph.microsoft.com/.default"};
 ```
 
-## <a name="acquiring-tokens"></a>-Jogkivonatok beszerzésének
+## <a name="get-tokens"></a>A jogkivonatok lekérésére
 
-### <a name="via-msal"></a>via MSAL
+### <a name="via-msal"></a>Via MSAL
 
-Az MSAL lehetővé teszi, hogy a tokenek beszerzésére, csendes és interaktív alkalmazásokhoz. Csak az ezen módszerek hívja, és az MSAL vissza egy hozzáférési jogkivonatot ad vissza a kért hatókörhöz. A megfelelő mintára a beavatkozás nélküli kérelem és a egy interaktív kérelemre tartalék végrehajtásához.
+Az MSAL lehetővé teszi, hogy a tokenek beszerzésére, csendes és interaktív alkalmazásokhoz. Csak az ezen módszerek hívja, és az MSAL adja vissza egy hozzáférési jogkivonatot a kért hatókörhöz. A helyes mintát, hogy hajtsa végre a beavatkozás nélküli kérést, és egy interaktív kérelem térhet vissza.
 
 #### <a name="android"></a>Android
 
@@ -61,32 +61,32 @@ PublicClientApplication sampleApp = new PublicClientApplication(
                     this.getApplicationContext(),
                     R.raw.auth_config);
 
-// Check if there are any accounts we can sign in silently
-// Result is in our silent callback (success or error)
+// Check if there are any accounts we can sign in silently.
+// Result is in the silent callback (success or error).
 sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
     @Override
     public void onAccountsLoaded(final List<IAccount> accounts) {
 
         if (accounts.isEmpty() && accounts.size() == 1) {
-            // TODO: Create a silent callback to catch successful or failed request
+            // TODO: Create a silent callback to catch successful or failed request.
             sampleApp.acquireTokenSilentAsync(SCOPES, accounts.get(0), getAuthSilentCallback());
         } else {
-            /* No accounts or >1 account */
+            /* No accounts or > 1 account. */
         }
     }
 });    
 
 [...]
 
-// No accounts found, interactively request a token 
-// TODO: Create an interactive callback to catch successful or failed request
+// No accounts found. Interactively request a token.
+// TODO: Create an interactive callback to catch successful or failed request.
 sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());        
 ```
 
 #### <a name="ios"></a>iOS
 
 ```swift
-// Initialize our app 
+// Initialize the app.
 guard let authorityURL = URL(string: kAuthority) else {
     self.loggingText.text = "Unable to create authority URL"
     return
@@ -95,14 +95,14 @@ let authority = try MSALAADAuthority(url: authorityURL)
 let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, redirectUri: nil, authority: authority)
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 
-// Get tokens
+// Get tokens.
 let parameters = MSALSilentTokenParameters(scopes: kScopes, account: account)
 applicationContext.acquireTokenSilent(with: parameters) { (result, error) in
     if let error = error {
         let nsError = error as NSError
 
-        // interactionRequired means we need to ask the user to sign-in. This usually happens
-        // when the user's Refresh Token is expired or if the user has changed their password
+        // interactionRequired means you need to ask the user to sign in. This usually happens
+        // when the user's refresh token is expired or when the user has changed the password,
         // among other possible reasons.
         if (nsError.domain == MSALErrorDomain) {
             if (nsError.code == MSALError.interactionRequired.rawValue) {    
@@ -136,7 +136,7 @@ applicationContext.acquireTokenSilent(with: parameters) { (result, error) in
         return
     }
 
-    // Token is ready via silent acquisition 
+    // Token is ready via silent acquisition.
     self.accessToken = result.accessToken
 }
 ```
@@ -160,13 +160,13 @@ catch(MsalUiRequiredException e)
 }
 ```
 
-### <a name="via-protocol"></a>Protokoll segítségével
+### <a name="via-the-protocol"></a>A protokoll segítségével
 
-Nem ajánlott közvetlenül a protokoll szemben. Az alkalmazás nem lesz képes a számos egyszeri bejelentkezéses (SSO) forgatókönyvek, és nem lesz képes Eszközkezelés és a feltételes hozzáférési forgatókönyvek támogatásához.
+Nem ajánlott közvetlenül a protokoll használatával. Ha így tesz, az alkalmazás nem támogatja a bizonyos egyszeri bejelentkezés (SSO), eszközkezelés, és a feltételes hozzáférési forgatókönyvek.
 
-A mobile apps, a protokollal a jogkivonatok lekérésének lépéseiről, ha 2 kéréseit kell: hozzáférési kód beszerzése és az exchange-, a jogkivonat. 
+A protokoll használatával tokenekhez mobilalkalmazásokhoz, amikor két kérést kell: hozzáférési kód beszerzése és az exchange-, a jogkivonat.
 
-#### <a name="getting-authorization-code"></a>Engedélyezési kód beolvasása
+#### <a name="get-authorization-code"></a>Engedélyezési kód beszerzése
 
 ```Text
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -178,7 +178,7 @@ client_id=<CLIENT_ID>
 &state=12345
 ```
 
-#### <a name="getting-access-and-refresh-token"></a>Hozzáférés és a frissítési jogkivonat beolvasása
+#### <a name="get-access-and-refresh-token"></a>Hozzáférés és a frissítési token beszerzése
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1

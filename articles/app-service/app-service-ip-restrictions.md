@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/22/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 558b67b5b0e1ce4f452ce2ca2e97dd7e785c80b6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: de898a7ebb9611f469f42bb23774b3b0a0c2410d
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728705"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65541676"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Az Azure App Service-ben korlátozza a hozzáférést #
 
@@ -32,7 +32,7 @@ Amikor kérelem érkezik, az alkalmazáshoz, a feladó címe az IP-cím szabály
 
 A hozzáférési korlátozások funkciójával a App Service-ben előtér-szerepkörök, amelyek a feldolgozó gazdagépeket, ahol a kódja fut, a felsőbb rétegbeli van megvalósítva. Ezért korlátozza a hozzáférést lényegében hálózati hozzáférés-vezérlési listák.
 
-Lehetővé teszi a webes alkalmazás való hozzáférés korlátozása egy Azure virtuális hálózat (VNet) nevezzük [szolgáltatásvégpontokat][serviceendpoints]. A Szolgáltatásvégpontok lehetővé teszi több-bérlős szolgáltatás való hozzáférés korlátozása a kiválasztott alhálózat. Engedélyezni kell a mind a hálózati oldalon, valamint a szolgáltatás, amely a rendszer engedélyez. 
+Lehetővé teszi a webes alkalmazás való hozzáférés korlátozása egy Azure virtuális hálózat (VNet) nevezzük [szolgáltatásvégpontokat][serviceendpoints]. A Szolgáltatásvégpontok lehetővé teszi több-bérlős szolgáltatás való hozzáférés korlátozása a kiválasztott alhálózat. Engedélyezni kell a mind a hálózati oldalon, valamint a szolgáltatás, amely a rendszer engedélyez. Nem működik az App Service Environment-környezetben üzemeltetett alkalmazások korlátozzák a forgalmat.  Ha Ön App Service Environment-környezetben, szabályozhatja a hozzáférést az alkalmazás IP-cím szabályokkal.
 
 ![hozzáférési korlátozások folyamat](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
@@ -59,6 +59,8 @@ Szabályok létrehozásakor ki kell választania, engedélyezni vagy letiltani, 
 ![egy virtuális hálózati hozzáférés-korlátozási szabály hozzáadása](media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
 
 A hozzáférés korlátozása a kiválasztott alhálózat, válassza ki a fajta virtuális hálózatot. Alatta fogja adhatnak meg az előfizetés, virtuális hálózat és engedélyezi vagy megtagadja a kívánt alhálózatot. Szolgáltatásvégpontok nem már engedélyezettek a Microsoft.Web a kiválasztott alhálózat, ha azt automatikusan engedélyezve lesz, kivéve, ha nem szeretne ehhez jelölőnégyzetet. A helyzetet, ahol szeretné engedélyezni az alkalmazást, de nem az alhálózat nagymértékben kapcsolódik, ha az engedélyek az alhálózat szolgáltatásvégpontjainak engedélyezéséhez, vagy nem rendelkezik. Ha valaki más engedélyezéséhez az alhálózat első van szüksége, jelölje be a jelölőnégyzetet, és az alkalmazás várható az alhálózaton található később engedélyezve a Szolgáltatásvégpontok konfigurálva van. 
+
+A Szolgáltatásvégpontok az App Service Environment-környezetben futó alkalmazásokhoz való hozzáférés korlátozása nem használható. Ha az alkalmazás az App Service-környezet, szabályozhatja a hozzáférést az alkalmazáshoz, az IP-hozzáférési szabályok. 
 
 Kattintson a minden sor egy meglévő hozzáférés-korlátozási szabály szerkesztése. Módosítások hatékony azonnal többek között a módosítások prioritási sorrendben.
 

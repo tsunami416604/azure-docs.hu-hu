@@ -7,16 +7,16 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
-ms.openlocfilehash: e85cfb6d7b44924ce7f17fdedb7f1b52350ab598
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e8a85319a12f04a11e3914716d9ff84cdb6de8d8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60392398"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787865"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>Tulajdonságok és metaadatok beállítása és lekérése
 
-Azure Storage támogatási Rendszertulajdonságok és a felhasználó által definiált metaadatok mellett az adatokat tartalmazó objektumot. Ez a cikk ismerteti a kezelését Rendszertulajdonságok és a felhasználó által definiált metaadatok a [Azure Storage ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/WindowsAzure.Storage/).
+Azure Storage támogatási Rendszertulajdonságok és a felhasználó által definiált metaadatok mellett az adatokat tartalmazó objektumot. Ez a cikk ismerteti a kezelését Rendszertulajdonságok és a felhasználó által definiált metaadatok a [Azure Storage ügyféloldali kódtára a .NET-hez](/dotnet/api/overview/azure/storage/client).
 
 * **A Rendszertulajdonságok**: Rendszertulajdonságok minden egyes tárolási erőforrás található. Némelyike olvasása vagy beállítása, míg mások csak olvasható. A háttérben néhány Rendszertulajdonságok bizonyos szabványos HTTP-fejlécek felelnek meg. Az Azure Storage ügyfélkódtáraival ezeket a tulajdonságokat fenntartani az Ön számára.
 
@@ -99,5 +99,8 @@ public static async Task ListContainerMetadataAsync(CloudBlobContainer container
 ```
 
 ## <a name="next-steps"></a>További lépések
-* [Az Azure Storage ügyféloldali kódtára a .NET-referencia](/dotnet/api/?term=Microsoft.WindowsAzure.Storage)
-* [Az Azure Storage ügyféloldali kódtára a .NET NuGet-csomag](https://www.nuget.org/packages/WindowsAzure.Storage/)
+* [Az Azure Storage ügyféloldali kódtára a .NET-referencia](/dotnet/api/?term=Microsoft.Azure.Storage)
+* [Az Azure Blob storage ügyféloldali kódtára a .NET-csomaghoz](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+* [Az Azure Queue storage ügyféloldali kódtára a .NET-csomaghoz](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
+* [Az Azure File storage ügyféloldali kódtára a .NET-csomaghoz](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/)
+

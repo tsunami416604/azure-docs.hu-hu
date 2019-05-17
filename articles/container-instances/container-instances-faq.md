@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: dekapur
-ms.openlocfilehash: 5657ac9f10c42c2201641c9af447b7ad2e6a3507
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 99882bd23d7b94afc550247172e5b70deb23bec9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65079015"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791401"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Container Instances kapcsolatos gyakori kérdések
 
@@ -77,7 +77,7 @@ még nem. Jelenleg ezek a egy tárolócsoport megtervezésekor. Különleges kö
 
 ### <a name="when-will-aci-be-in-a-specific-region"></a>Mikor lesz ACI egy adott régióban?
 
-Aktuális régiók rendelkezésre állása közzé van téve [Itt](container-instances-region-availability.md#availability---general), és naprakész információk keresztül érhető el a [szolgáltatásai](/rest/api/container-instances/listcapabilities) API-t. Ha egy adott régióhoz követelmény, forduljon az Azure ügyfélszolgálatához.
+Aktuális régiók rendelkezésre állása közzé van téve [Itt](container-instances-region-availability.md#availability---general). Ha egy adott régióhoz követelmény, forduljon az Azure ügyfélszolgálatához.
 
 ## <a name="features-and-scenarios"></a>Funkciók és alkalmazási helyzetek
 
