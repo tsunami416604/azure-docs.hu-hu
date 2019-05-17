@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 05/13/2019
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: c0d5108ee235be74f6188bfc8b590069a4e790b5
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 88bf81852a4501f4fc5807d865214d57dbc0aab3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192639"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794495"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Az Azure-lapblobok áttekintése
 
@@ -22,13 +22,14 @@ Az Azure Storage a blob storage háromféle kínál: Blokkblobokat, hozzáfűző
 
 A lapblobok 512 bájtos lapok, amely lehetővé teszi, hogy olvasási/írási bájt tetszőleges címtartományok gyűjteményei. Ezért lapblobok ideális megoldást jelentenek a virtuális gépek és adatbázisok index és a ritka adatstruktúrák például az operációs rendszer és az adatlemezek tárolása. Például Azure SQL DB használja a lapblobok az alapul szolgáló állandó tárolóként az adatbázisok számára. Ezenkívül lapblobok is gyakran használják tartományalapú frissítésekkel rendelkező fájlokat.  
 
-Azure lapblobok fő funkciói a következők: a REST-felület, a tartósságra az alapul szolgáló tárolóról, és a zökkenőmentes áttelepítési képességek az Azure-bA. Ezek a szolgáltatások további részleteket a következő szakasz tárgyalja. Emellett oldala az Azure-blobok jelenleg a következőkön támogatottak két tárolási típust kínál: A Premium Storage- és Standard tárterület. A Premium Storage kifejezetten konzisztens nagy teljesítményű és kis késésű, így a prémium szintű lapblobok ideális a nagy teljesítményű adatokat tároló adatbázis igénylő számítási feladatokhoz készült.  Standard szintű Storage jelenleg költséghatékonyabb késleltetést toleráló számítási feladatok futtatásához.
+Azure lapblobok fő funkciói a következők: a REST-felület, a tartósságra az alapul szolgáló tárolóról, és a zökkenőmentes áttelepítési képességek az Azure-bA. Ezek a szolgáltatások további részleteket a következő szakasz tárgyalja. Emellett oldala az Azure-blobok jelenleg a következőkön támogatottak két tárolási típust kínál: A Premium Storage- és Standard tárterület. A Premium Storage kifejezetten konzisztens nagy teljesítményű és kis késésű, így a prémium szintű lapblobok ideális a nagy teljesítményű tárolási forgatókönyveket igénylő számítási feladatokhoz készült. A standard szintű tárfiókok költséghatékonyabb késleltetést toleráló számítási feladatok futtatásához.
 
 ## <a name="sample-use-cases"></a>Példa használati esetek
 
 Vizsgáljuk meg néhány használati esetek kezdve az Azure IaaS-lemezek lapblobok esetében. Azure lapblobok az Azure IaaS virtuális lemezek platform gerincét. Az Azure-OS és az adatlemezeket is az adatokat, az Azure Storage-platformon tartósan tárolja és kézbesítését a virtuális gépekhez, a maximális teljesítmény virtuális lemezek vannak megvalósítva. Az Azure Disks megmaradnak a Hyper-V [VHD formátumú](https://technet.microsoft.com/library/dd979539.aspx) tárolt, és a egy [lapblob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) az Azure Storage-ban. Virtuális lemezek az Azure IaaS virtuális gépek használatán, a lapblobok PaaS és DBaaS forgatókönyvek, például az Azure SQL Database szolgáltatást, amely a jelenleg használt lapblobok az adatbázis a gyors, véletlenszerű olvasási és írási műveletek engedélyezése az SQL-adatok tárolására szolgáló is engedélyezheti. Egy másik példa lenne, ha egy PaaS-szolgáltatás megosztott media Access for videó szerkesztési alkalmazások által biztosított együttműködési környezettel rendelkezik, a lapblobok véletlenszerű helyeken és az adathordozó gyors hozzáférés engedélyezése. Azt is lehetővé teszi, hogy gyors és hatékony szerkesztését, és a több felhasználó által ugyanazon adathordozó egyesítését. 
 
 Belső Microsoft-szolgáltatások, az Azure Site Recovery, Azure biztonsági mentés, valamint számos külső fejlesztők valósította olyan piacvezető innovációkat lapblob a REST-felület használatával. Az alábbiakban néhány, az Azure-ban megvalósított egyedi forgatókönyvekről: 
+
 * Alkalmazás által vezérelt növekményes pillanatkép-kezelés: Alkalmazások lap tárolóblob-pillanatképek és a REST API-k használhatnak anélkül költséges másolása az adatok az alkalmazás ellenőrzőpontokat mentéséhez. Az Azure Storage támogatja a helyi pillanatképek a lapblobokhoz, amelyek nem igényelnek, a teljes blob másolása. Ezek nyilvános pillanatkép API-k is engedélyezheti elérése és -pillanatképek közötti eltérések szinte azonnali másolását.
 * Élő áttelepítés alkalmazás és az adatok a helyszínről a felhőbe: Az a helyszíni adatok másolása, és REST API-k segítségével közvetlenül során a helyszíni virtuális gép továbbra is fut egy oldala az Azure-blobba írni. Ha a cél rendelkezik szerepelnek, is gyorsan használatával az adatokat az Azure virtuális géphez feladatátvétel. Ezzel a módszerrel a virtuális gépeket telepíthet át, és virtuális lemezeket a helyszínen a felhőbe minimális állásidővel, mivel az adatok migrálása a háttérben történik, miközben továbbra is használhatja a virtuális gép és a feladatátvételhez szükséges állásidő (percben) rövid lesz.
 * [SAS-alapú](../common/storage-dotnet-shared-access-signature-part-1.md) megosztott hozzáférés, amely lehetővé teszi a több-olvasók és a egy-író egyidejűség-vezérlés támogatása.
@@ -36,21 +37,26 @@ Belső Microsoft-szolgáltatások, az Azure Site Recovery, Azure biztonsági men
 ## <a name="page-blob-features"></a>Lapblobok funkciói
 
 ### <a name="rest-api"></a>REST API
+
 Első lépések az alábbi dokumentumában [fejlődő lapblobok használatával](storage-dotnet-how-to-use-blobs.md). Tegyük fel tekintse meg a .NET-keretrendszerhez készült Storage ügyféloldali kódtár használatával lapblobok elérése. 
 
 A következő ábra a partner, a tárolók és a lapblobokat általános kapcsolatai ismerteti.
 
-![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure1.png)
+![Fiók, a tárolók és a lapblobokat közötti kapcsolatokat ábrázoló képernyőfelvétel](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure1.png)
 
 #### <a name="creating-an-empty-page-blob-of-a-specified-size"></a>Egy megadott méretű üres lapblob létrehozása
-Lapblob, hogy először hozzon létre egy **CloudBlobClient** , a blob storage, a tárfiók eléréséhez használt alap URI-azonosítójú objektum (*pbaccount* az 1. ábra) együtt a  **StorageCredentialsAccountAndKey** objektumot, az alábbi példában látható módon. A példa megjeleníti a hivatkozás létrehozása egy **CloudBlobContainer** objektumot, és ezután hozza létre a tárolót (*testvhds*) Ha még nem létezik. Majd használja a **CloudBlobContainer** objektumazonosító, hozzon létre egy hivatkozást egy **CloudPageBlob** objektum eléréséhez az oldal a blob nevét (os4.vhd) megadásával. A lapblob létrehozásához hívja [CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Create_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) ad át a maximális mérete a létrehozni kívánt blob. A *blobSize* 512 bájt többszöröse lehet.
+
+Lapblob, hogy először hozzon létre egy **CloudBlobClient** , a blob storage, a tárfiók eléréséhez használt alap URI-azonosítójú objektum (*pbaccount* az 1. ábra) együtt a  **StorageCredentialsAccountAndKey** objektumot, az alábbi példában látható módon. A példa megjeleníti a hivatkozás létrehozása egy **CloudBlobContainer** objektumot, és ezután hozza létre a tárolót (*testvhds*) Ha még nem létezik. Majd használja a **CloudBlobContainer** objektumazonosító, hozzon létre egy hivatkozást egy **CloudPageBlob** objektum eléréséhez az oldal a blob nevét (os4.vhd) megadásával. A lapblob létrehozásához hívja [CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create), a maximális mérete a létrehozni kívánt blob passzok. A *blobSize* 512 bájt többszöröse lehet.
 
 ```csharp
-using Microsoft.WindowsAzure.StorageClient;
+using Microsoft.Azure;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Blob;
+
 long OneGigabyteAsBytes = 1024 * 1024 * 1024;
 // Retrieve storage account from connection string.
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
 // Create the blob client.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
@@ -66,13 +72,16 @@ pageBlob.Create(16 * OneGigabyteAsBytes);
 ```
 
 #### <a name="resizing-a-page-blob"></a>Lapblob átméretezése
-Méretezze át egy lapblob létrehozása után, használja a [átméretezése](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.resize?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_Resize_System_Int64_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) API-t. A kért méret 512 bájt többszöröse lehet.
+
+Méretezze át egy lapblob létrehozása után, használja a [átméretezése](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.resize) metódust. A kért méret 512 bájt többszöröse lehet.
+
 ```csharp
-pageBlob.Resize(32 * OneGigabyteAsBytes); 
+pageBlob.Resize(32 * OneGigabyteAsBytes);
 ```
 
 #### <a name="writing-pages-to-a-page-blob"></a>Lapok, egy lapblob írása
-Írási oldalak, használja a [CloudPageBlob.WritePages](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.beginwritepages?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_BeginWritePages_System_IO_Stream_System_Int64_System_String_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_System_AsyncCallback_System_Object_) metódust.  Ez lehetővé teszi, hogy legfeljebb 4MBs szekvenciális meg írni. Az eltolás ír egy 512 bájtos határhoz kell kezdődniük (startingOffset % 512 == 0), és a egy 512 határon – 1 teljes.  Az alábbi példakód bemutatja, hogyan hívhat meg **WritePages** egy BLOB:
+
+Írási oldalak, használja a [CloudPageBlob.WritePages](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.beginwritepages) metódust.  Ez lehetővé teszi, hogy legfeljebb 4MBs szekvenciális meg írni. Az eltolás ír egy 512 bájtos határhoz kell kezdődniük (startingOffset % 512 == 0), és a egy 512 határon – 1 teljes.  Az alábbi példakód bemutatja, hogyan hívhat meg **WritePages** egy BLOB:
 
 ```csharp
 pageBlob.WritePages(dataStream, startingOffset); 
@@ -88,47 +97,56 @@ Az alábbi ábrán látható külön 2 írási műveletek:
 2.  Kezdőár írási művelet 1024 hosszának 4096 eltolása 
 
 #### <a name="reading-pages-from-a-page-blob"></a>Lapblob lapok olvasása
-Lapok olvasása, használja a [CloudPageBlob.DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.icloudblob.downloadrangetobytearray?view=azure-dotnet) bájttartomány olvasni a lapblob metódust. Ez lehetővé teszi, hogy töltse le a teljes blob vagy bájttartomány kezdve minden olyan eltolás a blobban. Olvasásakor, az eltolás nem rendelkezik az 512 többszöröse elindításához. Olvasott bájtok NUL oldal, ha a szolgáltatás nulla bájtot ad vissza.
+
+Lapok olvasása, használja a [CloudPageBlob.DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.icloudblob.downloadrangetobytearray) bájttartomány olvasni a lapblob metódust. Ez lehetővé teszi, hogy töltse le a teljes blob vagy bájttartomány kezdve minden olyan eltolás a blobban. Olvasásakor, az eltolás nem rendelkezik az 512 többszöröse elindításához. Olvasott bájtok NUL oldal, ha a szolgáltatás nulla bájtot ad vissza.
+
 ```csharp
 byte[] buffer = new byte[rangeSize];
 pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, pageBlobOffset, rangeSize); 
 ```
-A következő ábrán látható 256 és a 4352 rangeSize BlobOffSet egy olvasási műveletet. Visszaadott adatok narancssárga van kiemelve. Nullák NUL oldalakat adja vissza
+
+A következő ábrán látható egy olvasási művelet az eltolás 256 és a egy 4352 tartomány méretét. Visszaadott adatok narancssárga van kiemelve. Nullák NUL oldalakat adja vissza.
 
 ![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
 
-Ha egy ritkásan feltöltött blobot, érdemes csak töltse le a érvényes régiók elkerülje 0 bájt egressing és letöltési késés csökkentése érdekében.  Annak megállapításához, hogy mely lapok élvezik adatokat, használjon [CloudPageBlob.GetPageRanges](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.getpageranges?view=azure-dotnet). Ezután a visszaadott tartományok enumerálásakor, és töltse le az adatokat az összes tartományt. 
+Ha egy ritkásan feltöltött blobot, érdemes csak töltse le a érvényes régiók elkerülje 0 bájt egressing és letöltési késés csökkentése érdekében.  Annak megállapításához, hogy mely lapok élvezik adatokat, használjon [CloudPageBlob.GetPageRanges](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.getpageranges). Ezután a visszaadott tartományok enumerálásakor, és töltse le az adatokat az összes tartományt. 
+
 ```csharp
 IEnumerable<PageRange> pageRanges = pageBlob.GetPageRanges();
 
 foreach (PageRange range in pageRanges)
 {
-    // Calculate the rangeSize
+    // Calculate the range size
     int rangeSize = (int)(range.EndOffset + 1 - range.StartOffset);
 
     byte[] buffer = new byte[rangeSize];
 
-    // Read from the correct starting offset in the page blob and place the data in the bufferOffset of the buffer byte array
+    // Read from the correct starting offset in the page blob and
+    // place the data in the bufferOffset of the buffer byte array
     pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, range.StartOffset, rangeSize); 
 
-    // TODO: use the buffer for the page range just read
-} 
+    // Then use the buffer for the page range just read
+}
 ```
 
 #### <a name="leasing-a-page-blob"></a>Bérlési egy lapblob
+
 A Blobbérlet műveletet hoz létre, és egy BLOB egy zár kezeli az írási és törlési műveletek. Ez a művelet egy lapblob annak érdekében, hogy csak egy ügyfél egyszerre írhat a blob több ügyfél hozzáférnek ahol forgatókönyvekben hasznos. Azure-os lemezekre, például használja a bérlési mechanizmus biztosítására, hogy a lemez csak egyetlen virtuális gép kezeli. A Zárolás időtartama 15 és 60 másodperc is lehet, vagy lehet végtelen. A dokumentációt [Itt](/rest/api/storageservices/lease-blob) további részletekért.
 
 Mellett részletes REST API-k a lapblobok azt is megadhatja, közös hozzáférésű, tartósság és fokozott biztonságot. Ezek az előnyök részletesebben a következő bekezdésekben erről. 
 
 ### <a name="concurrent-access"></a>Egyidejű hozzáférés
+
 A lapblobok REST API-t, és a bérlési mechanizmus lehetővé teszi az alkalmazások a lapblob érhetnek el több ügyfelet. Például tegyük fel, hogy egy elosztott felhőszolgáltatás, amely több felhasználó és a tárolási objektum közös kell létrehoznia. Egy webalkalmazás, a képek gyűjteménye szolgáltató több felhasználó lehet. Ennek megvalósításához az egyik lehetőség, hogy csatlakoztatott adatlemezekkel rendelkező virtuális Gépet használ. Több szempontból sem ajánlott a következők lehetnek az (i) a korlátozást, hogy a lemez így korlátozhatja a skálázhatóságot, rugalmasságot és kockázatok növelése egyetlen virtuális gép csak csatolható. Ha a probléma a virtuális gép vagy a szolgáltatás a virtuális gépen, majd a bérlet miatt a lemezkép nem érhető el addig, amíg a bérlet jár, vagy sérült; és (ii), hogy egy IaaS-beli virtuális gép további költség. 
 
 Egy másik lehetőség, hogy közvetlenül az Azure Storage REST API-kon keresztül, a lapblobokat használnak. Ezt a beállítást kiküszöböli a költséges IaaS virtuális gépek, több ügyfél közvetlen hozzáférés teljes rugalmasságot kínál, a klasszikus üzemi modell leegyszerűsíti, így nem kell lemezek csatolása/leválasztása és megszünteti a virtuális gép problémák kockázatát. És a véletlenszerű olvasási és írási műveletek teljesítményének lemezként azonos szintű biztosít
 
 ### <a name="durability-and-high-availability"></a>Tartósság és magas rendelkezésre állás
-Standard és prémium szintű storage olyan tartós tárolási, ahol a lap Blobadatok mindig replikáljuk, tartósság és magas rendelkezésre állás. Az Azure-tárhely-redundancia kapcsolatos további információkért lásd a [dokumentáció](../common/storage-redundancy.md). Az Azure rendelkezik következetesen szállított nagyvállalati szintű tartósságot IaaS-lemezek és lapblobok, az iparágvezető nulla % [érvényes évesített Hibaarány](https://en.wikipedia.org/wiki/Annualized_failure_rate). Azt jelenti az Azure soha nem megszakadt a felhasználói oldalon blob adatokat. 
+
+Standard és prémium szintű storage olyan tartós tárolási, ahol a lap Blobadatok mindig replikáljuk, tartósság és magas rendelkezésre állás. Az Azure-tárhely-redundancia kapcsolatos további információkért lásd a [dokumentáció](../common/storage-redundancy.md). Az Azure-az IaaS-lemezek és lapblobok, az iparágvezető nulla %-os nagyvállalati szintű tartósságot következetesen rendelkezik i [érvényes évesített Hibaarány](https://en.wikipedia.org/wiki/Annualized_failure_rate).
 
 ### <a name="seamless-migration-to-azure"></a>Zökkenőmentes áttelepítés az Azure-bA
+
 Az ügyfelek és a fejlesztőknek szól, akik a saját testre szabott biztonsági mentési megoldás megvalósítása az Azure-ban is elérhető növekményes pillanatképek csak tartsa meg az eltéréseket. Ez a funkció a kezdeti teljes másolat, ami jelentősen csökkenti a biztonsági mentési költségeinek elkerülhető. Hatékony olvasási és másolási különbözeti adatokat képes, és ez az egy másik hatékony képesség, amely lehetővé teszi a fejlesztők, vezető kategóriaelső a biztonsági mentési és vész-helyreállítási tapasztalattal az Azure-ban még több innovációkat. Beállíthatja a saját biztonsági mentési vagy a Vészhelyreállítási megoldást az Azure-beli virtuális gépek [Blob-pillanatkép](/rest/api/storageservices/snapshot-blob) együtt a [laptartomány-beolvasási](/rest/api/storageservices/get-page-ranges) API és a [növekményes másolás Blob](/rest/api/storageservices/incremental-copy-blob) API-t, amelyet használja a növekményes adatok könnyen másolni a vészhelyreállítás. 
 
 Ezen kívül sok vállalat rendelkezik a helyszíni adatközpontokban már futó kritikus fontosságú számítási feladatokhoz. A számítási feladatok a felhőbe való migrálás, az egyik fő fontos szempont a váltás után az adatok és az előre nem látható problémák kockázatát másolása szükséges állásidő lenne. Sok esetben az állásidő lehet egy showstopper a felhőbe való migrálásra. REST API használatával az oldal blobok, -címek a probléma az Azure felhőbe a kritikus fontosságú munkaterhelésekhez minimális megszakítás való migrálást engedélyezésével. 

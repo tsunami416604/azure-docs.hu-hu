@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 71856f9de3d67590d524fa8bb1119a384d156d2e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3d9a5ebb2e25cfbabf8cfdbd94c2d1d04ae1bbee
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700146"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788456"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager-sablonok használatával a resource health-riasztások konfigurálása
 
@@ -31,7 +31,7 @@ Az alábbi utasításokat, lesz szüksége az előzetesen beállításához néh
 1. Telepítenie kell a [Azure PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 2. Kell [létrehozása vagy újbóli műveletcsoport](../azure-monitor/platform/action-groups.md) arra az esetre, konfigurálva
 
-## <a name="instructions"></a>Utasítások
+## <a name="instructions"></a>Útmutatás
 1. PowerShell használatával jelentkezzen be Azure-fiókjával, és válassza ki az előfizetést, amellyel kommunikálni szeretne
 
         Login-AzAccount
@@ -43,7 +43,7 @@ Az alábbi utasításokat, lesz szüksége az előzetesen beállításához néh
 
         (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
-3. Hozzon létre és mentsen egy Resource Manager-sablon, a Resource Health-riasztások `resourcehealthalert.json` ([lásd lejjebb](#resource-manager-template-for-resource-health-alerts))
+3. Hozzon létre és mentsen egy Resource Manager-sablon, a Resource Health-riasztások `resourcehealthalert.json` ([lásd lejjebb](#resource-manager-template-options-for-resource-health-alerts))
 
 4. Hozzon létre egy új Azure Resource Manager-alapú, ez a sablon használatával
 
@@ -76,7 +76,7 @@ Az alábbi utasításokat, lesz szüksége az előzetesen beállításához néh
 
 Ne feledje, hogy ha azt tervezi, a teljes automatizálása, egyszerűen csak az 5. lépésben szereplő értékek nem kér a Resource Manager-sablon szerkesztéséhez.
 
-## <a name="resource-manager-template-for-resource-health-alerts"></a>Resource Manager-sablon a Resource Health-riasztások
+## <a name="resource-manager-template-options-for-resource-health-alerts"></a>Resource Manager sablon lehetőségei a Resource Health-riasztások
 
 Ez a alapvető sablon kiindulási pontként használhatja a Resource Health-riasztások létrehozásához. Ez a sablon írt módon fog működni, illetve fog regisztrálhatnak, értesítést az újonnan aktivált erőforrás minden hálózatállapot-események között egy előfizetésben található összes erőforrást.
 
@@ -284,7 +284,9 @@ Azonban amikor egy erőforrást az "Ismeretlen" jelenti, valószínű, hogy a me
 },
 ```
 
-Ebben a példában azt is csak értesítése az eseményeket, ahol a jelenlegi és korábbi működési állapota nem rendelkezik "Ismeretlen". Ez a változás lehet egy hasznos hozzáadása, ha a riasztásokat közvetlenül mobiltelefonját vagy e-mailek érkeznek.
+Ebben a példában azt is csak értesítése az eseményeket, ahol a jelenlegi és korábbi működési állapota nem rendelkezik "Ismeretlen". Ez a változás lehet egy hasznos hozzáadása, ha a riasztásokat közvetlenül mobiltelefonját vagy e-mailek érkeznek. 
+
+Vegye figyelembe, hogy NULL értékűre az egyes események currentHealthStatus és previousHealthStatus tulajdonságokat. Ha például egy frissített esemény bekövetkezésekor valószínű, hogy állapotát az erőforrás nem változott az utolsó jelentés óta érhető el, hogy további események adatait csak (pl. miatt). Ezért a fenti záradék használatával eredményezhet egyes riasztásokban nem aktiválása, mert a properties.currentHealthStatus és properties.previousHealthStatus értékeket állít null értékre.
 
 ### <a name="adjusting-the-alert-to-avoid-user-initiated-events"></a>Felhasználó által kezdeményezett események elkerülése érdekében a riasztás beállítása
 
@@ -304,12 +306,12 @@ Ez Gyerekjáték csak ilyen típusú események szűrése a riasztás konfigurá
     ]
 }
 ```
+Vegye figyelembe, hogy a OK mező lehet az egyes események null értékű. Azt jelenti egészségügyi áttérés kerül sor (pl. érhető el, nem érhető el), és az eseményt a rendszer naplózza azonnal késlelteti bejelentés elkerülése érdekében. Ezért a fenti záradék használatával eredményezhet riasztást nem aktiválása, mert a properties.clause tulajdonság értéke lesz null értékre.
 
-## <a name="recommended-resource-health-alert-template"></a>Ajánlott a Resource Health értesítési sablon
+## <a name="complete-resource-health-alert-template"></a>Befejeződött a Resource Health értesítési sablon
 
-Használja a különböző szükséges az előző szakaszban leírt, létrehozhatunk egy átfogó riasztási sablon, amely maximalizálja a jel zaj viszony van konfigurálva.
+A különböző szükséges az előző szakaszban leírt, itt használata mintasablon, amely maximalizálja a jel zaj viszony van konfigurálva. Figyelembe kell vennie az korlátozásokkal, ahol a currentHealthStatus previousHealthStatus és tulajdonságértékeket ok lehet null értékű, az egyes események fentebb feltüntetett.
 
-Íme, mi javasoljuk, hogy használja:
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

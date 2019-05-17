@@ -5,23 +5,23 @@ services: search
 author: HeidiSteen
 ms.service: search
 ms.topic: include
-ms.date: 04/04/2018
+ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
-ms.openlocfilehash: 0da7ad35f6efc031a52ef43caa514559c08c94fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1e147e8bd9260cd1ece60b70641968a229995ec1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61464787"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65211981"
 ---
 Létrehozhat egy előfizetésen belül több szolgáltatást is. Egyenként is üzembe helyezve egy konkrét csomagot kiválasztani. Minden egyes rétegben engedélyezett szolgáltatások számának csak korlátot jelent. Például létrehozhat legfeljebb 12 szolgáltatások, az alapszintű csomag és az S1 szintet ugyanazon az előfizetésen belül egy másik 12 szolgáltatásokhoz. Rétegek kapcsolatos további információkért lásd: [-Termékváltozat vagy termékváltozat-csomag kiválasztása az Azure Search](../articles/search/search-sku-tier.md).
 
 Maximális Szolgáltatáskorlátok kérésre lehet megemelni. Ha ugyanazon az előfizetésen belül több szolgáltatás van szüksége, forduljon az Azure ügyfélszolgálatához.
 
-| Erőforrás            | Ingyenes<sup>1</sup> | Alapszintű | S1  | S2 | S3 | S3&nbsp;HD | L1 | 2. |
+| Resource            | Ingyenes<sup>1</sup> | Alapszintű | S1  | S2 | S3 | S3&nbsp;HD | L1 | 2. |
 | ------------------- | ---- | ----- | --- | -- | -- | ----- | -- | -- |
-| Maximális szolgáltatások    |1     | 12    | 12  | 6  | 6  | 6     | 6  | 6  |
+| Maximális szolgáltatások    |1.     | 16    | 16  | 8  | 6  | 6     | 6  | 6  |
 | Maximális méret esetén keresési egységek (SU)<sup>2</sup> |– |3 SU |36 SU |36 SU |36 SU |36 SU |36 SU |36 SU |
 
 <sup>1</sup> ingyenes megosztott, nem dedikált erőforrások alapján. Vertikális felskálázás nem támogatott a megosztott erőforrások.

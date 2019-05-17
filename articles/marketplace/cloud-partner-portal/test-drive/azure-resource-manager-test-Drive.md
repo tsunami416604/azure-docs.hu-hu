@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 7665050dfc9a561f42fec00c40d0a40dfa5cc183
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 92c55c7f15b3f350ad802157bf401f3e75983789
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941579"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606434"
 ---
-# <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager – Tesztverzió
+# <a name="azure-resource-manager-test-drive"></a>Az Azure Resource Manager kipróbálása
 
 Ez a cikk a kiadók, akik az ajánlatot az Azure piactéren, illetve akik az appsource-on rendelkezik, de létre szeretné hozni a Test Drive csak Azure-erőforrásokkal való szól.
 
@@ -382,7 +382,7 @@ Máskülönben hozzon létre egy új bérlőt az Azure Active Directoryban.
 
 ![A lista az Azure Active Directory-bérlők](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-![Az Azure AD-bérlő a szervezet, a tartomány és az ország megadása](./media/azure-resource-manager-test-drive/subdetails5.png)
+![Az Azure AD-bérlő a szervezet, a tartomány és az ország/régió megadása](./media/azure-resource-manager-test-drive/subdetails5.png)
 
 ![A kijelölés megerősítéséhez](./media/azure-resource-manager-test-drive/subdetails6.png)
 

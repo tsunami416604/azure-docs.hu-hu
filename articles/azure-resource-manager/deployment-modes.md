@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/08/2019
+ms.date: 05/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: d2de802b2170feb6130cdce8007e16cc37561f5e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4d3a9c5e985949d813b638806f60bc86f5a163a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60550580"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789272"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Az Azure Resource Manager üzembe helyezési mód
 
@@ -46,7 +46,9 @@ Ha az erőforráscsoport [zárolva](resource-group-lock-resources.md), teljes k�
 
 ## <a name="incremental-mode"></a>Növekményes mód
 
-Erőforrás-kezelő a növekményes módban **hagyja változatlanul** erőforráscsoportban létezik, de nem a sablonban megadott erőforrások. Ha újbóli üzembe helyezés növekményes módban egy erőforrást, adja meg az erőforrást, nem csak a kapcsolatok, amikor frissít minden tulajdonság értékét. Bizonyos tulajdonságokat nem adja meg, ha a Resource Manager értelmezi a frissítést, ezek az értékek felülírják.
+Erőforrás-kezelő a növekményes módban **hagyja változatlanul** erőforráscsoportban létezik, de nem a sablonban megadott erőforrások.
+
+Viszont ha újbóli üzembe helyezés növekményes módban meglévő erőforrást, az eredménye, egy másik. Adja meg az összes tulajdonság az erőforrás, nem csak a kapcsolatok, amikor frissít. Egy gyakori félreértés, hogy úgy gondolja, hogy, amelyek nincsenek megadva tulajdonságok változatlanul. Bizonyos tulajdonságokat nem adja meg, ha a Resource Manager értelmezi a frissítést, ezek az értékek felülírják.
 
 ## <a name="example-result"></a>Példa eredménye
 

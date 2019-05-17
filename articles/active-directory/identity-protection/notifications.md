@@ -18,12 +18,12 @@ ms.date: 12/07/2017
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 482b69752cc889ff99c3d9082d3bc20a7caa6d76
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0065ec03695ee977133ae2ec43aafba7d5bfff78
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294486"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784348"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Az Azure Active Directory Identity Protection-értesítések
 
@@ -39,6 +39,8 @@ Ez a cikk mindkét értesítő e-mailek áttekintést nyújt.
 
 Egy észlelt kockázati-fiókot választ, az Azure AD Identity Protection az e-mailek riasztást állít elő **észlelt kockázatos felhasználókat** tulajdonosaként. Az e-mail tartalmaz egy hivatkozást a **[kockázatosként megjelölt felhasználók](../reports-monitoring/concept-user-at-risk.md)** jelentést. Ajánlott eljárásként azonnal kell vizsgálni az érintett felhasználók.
 
+Ez a riasztás konfigurációját adja meg, milyen felhasználói kockázati szinten a riasztást generáló teszi lehetővé. Az e-mailt fog készülni, amikor a felhasználó kockázati szint eléri a mi megadott; azonban nem fog kapni, a felhasználó esetében észlelt kockázati e-mailes riasztásokhoz új felhasználók azokat a felhasználói kockázat szintjének való áthelyezése után. Például ha a riasztást a közepes felhasználói kockázat és John Közepes kockázatot jelentő helyezi át a felhasználói házirend, kapni fog e-mail észlelt kockázattal érintett felhasználókról John a. Azonban nem észlelt kockázati a riasztás egy második felhasználókról fog kapni, ha John majd magas kockázatú helyezi át, vagy további kockázati események.
+
 ![Érintett felhasználók e-mail észlelt](./media/notifications/01.png)
 
 
@@ -46,7 +48,7 @@ Egy észlelt kockázati-fiókot választ, az Azure AD Identity Protection az e-m
 
 A rendszergazdák állíthatja be:
 
-- **A kockázati szintje, amely az e-mailt generációja** – alapértelmezés szerint a kockázati szintje "Nagy" kockázatot.
+- **A felhasználói kockázat szintje, amely az e-mailt generációja** – alapértelmezés szerint a kockázati szintje "Nagy" kockázatot.
 - **Ez az e-mail címzettjeinek** – alapértelmezés szerint a címzettek minden globális rendszergazdát tartalmazza. A globális rendszergazdák más a globális rendszergazdák, biztonsági rendszergazdák, biztonsági olvasók, a címzettek is hozzáadhat.  
 
 
@@ -60,7 +62,7 @@ A kapcsolódó párbeszédpanel megnyitásához kattintson a **riasztások** a a
 Heti összefoglaló e-mail új kockázati események összegzését tartalmazza.  
 Ezek a következők:
 
-- Veszélyeztetett felhasználók
+- Érintett felhasználók
 
 - Gyanús tevékenységek feldolgozása
 

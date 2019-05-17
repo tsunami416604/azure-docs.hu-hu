@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: bd9df12cbe941b868c769daccd02c1d81b39f7bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ca3c69178dde830e226812da34917246781c1ee
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776490"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65762158"
 ---
 # <a name="security-model-of-azure-notification-hubs"></a>Biztonsági modell az Azure Notification hubs használatával
 
@@ -43,10 +43,12 @@ Fontos megérteni, hogy a figyelési hozzáféréssel rendelkező kulcs lehetőv
 
 Más entitásokhoz hasonlóan Notification Hub-műveletek engedélyezett három biztonsági jogcímek: Figyeljen, küldése és kezelése.
 
-| Jogcím   | Leírás                                          | Engedélyezett műveletek |
+| Igénylés   | Leírás                                          | Engedélyezett műveletek |
 | ------- | ---------------------------------------------------- | ------------------ |
 | Figyelés  | Létrehozni vagy frissíteni, olvassa el, és egyetlen regisztrációkat törölhet | Regisztrációs létrehozása vagy frissítése<br><br>Regisztráció olvasása<br><br>Olvassa el a vonatkozó leírót az összes regisztrációk<br><br>Regisztráció törlése |
 | Küldés    | Üzenetek küldése az értesítési központhoz                | Üzenet küldése |
-| Kezelés  | A Notification Hubs (beleértve a PNS hitelesítő adatainak és a biztonsági kulcsok frissítése) és a címkék alapján olvasási regisztrációk cRUDs |Létrehozása/frissítése/olvasása/törlése a notification hubs<br><br>Olvassa el a regisztrációk címke szerint |
+| Felügyelet  | A Notification Hubs (beleértve a PNS hitelesítő adatainak és a biztonsági kulcsok frissítése) és a címkék alapján olvasási regisztrációk cRUDs |Létrehozása/frissítése/olvasása/törlése a notification hubs<br><br>Olvassa el a regisztrációk címke szerint |
 
 A Notification Hubs nyújtani a Microsoft Azure hozzáférés-vezérlés tokeneket, és hozza létre az értesítési központ közvetlenül a konfigurált megosztott kulcsokat jogosultságkódok jogkivonataival jogcímeket fogadjon el.
+
+Nem alkalmas egynél több névteret értesítést küldeni. Névterek logikai tároló, a notification hubs szolgáltatásra, és nem vesz részt az értesítések küldéséhez. A névtér-szintű hozzáférési szabályzatok (hitelesítő adatok) is használható névtérszintű műveletekhez, például: a notification hubs listázása, létrehozása vagy törlése a notification hubs, stb. Csak a hub szintű hozzáférést szeretne szabályzatokkal értesítéseket küldeni.

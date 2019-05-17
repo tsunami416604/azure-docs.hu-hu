@@ -10,12 +10,12 @@ ms.date: 09/27/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 40a1356c9a7300a44087efdd1ab4762826da5a3f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 8e09e2c33359c94275d9819b335544d15d4c7d78
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148998"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790089"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Adatok áthelyezése az a Microsoft Azure Storage adatátviteli könyvtár
 
@@ -43,7 +43,7 @@ Ez a dokumentum azt ismerteti, hogyan hozzon létre egy .NET Core-konzolalkalmaz
 >
 >
 
-## <a name="setup"></a>Beállítás
+## <a name="setup"></a>Telepítés
 
 1. Látogasson el a [.NET Core telepítési útmutató](https://www.microsoft.com/net/core) .NET Core telepítéséhez. A környezet kiválasztásakor válassza ki a parancssori kapcsolót.
 2. A parancssorból hozzon létre egy könyvtárat a projekthez. Keresse meg az ebben a könyvtárban, majd írja be `dotnet new console -o <sample-project-name>` C# konzol projekt létrehozásához.
@@ -81,9 +81,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Diagnostics;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.DataMovement;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Blob;
+using Microsoft.Azure.Storage.DataMovement;
 
 namespace DMLibSample
 {

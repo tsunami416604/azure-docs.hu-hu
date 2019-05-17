@@ -3,25 +3,25 @@ title: Azure-alkalmazáshoz identitás létrehozása a portálon |} A Microsoft 
 description: Ismerteti, hogyan hozzon létre egy új Azure Active Directory-alkalmazás és egyszerű szolgáltatás, amely a szerepköralapú hozzáférés-vezérlés az Azure Resource Manager-erőforrásokhoz való hozzáférés kezelésére használható.
 services: active-directory
 documentationcenter: na
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/08/2019
-ms.author: celested
+ms.date: 05/14/2019
+ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9affec9ccc1b87f36d6f30aff4795d85532be8c1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d0208d25e4583672ad2110d959f8e255affbf3e0
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60300855"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65764921"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: Az Azure AD-alkalmazás és -erőforrások elérésére képes egyszerű szolgáltatás létrehozása a portál használatával
 
@@ -66,7 +66,7 @@ Beállíthatja a hatókör szintjén is az előfizetés, erőforráscsoport vagy
 
    Ha nem látja a keresett előfizetéshez, válasszon **globális előfizetés-szűrő**. Ellenőrizze, hogy az előfizetés ki van jelölve a portálon. 
 
-1. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget.
+1. Válassza ki **hozzáférés-vezérlés (IAM)**.
 1. Válassza ki **szerepkör-hozzárendelés hozzáadása**.
 
    ![Válassza ki a szerepkör-hozzárendelés hozzáadása](./media/howto-create-service-principal-portal/select-add.png)
@@ -104,20 +104,20 @@ Az alkalmazás és a hitelesítési kulcs Azonosítóját is szükséges. Az ér
 
 1. Másolja ki az **Alkalmazásazonosítót**, és tárolja az alkalmazás kódjában.
 
-   ![Ügyfél-azonosító](./media/howto-create-service-principal-portal/copy-app-id.png)
+   ![Ügyfélazonosító](./media/howto-create-service-principal-portal/copy-app-id.png)
 
-1. Válassza ki **beállítások**.
+1. Válassza ki **tanúsítványok és titkos kulcsok**.
 
-   ![beállítások kiválasztása](./media/howto-create-service-principal-portal/select-settings.png)
+   ![beállítások kiválasztása](./media/howto-create-service-principal-portal/select-certs-secrets.png)
 
-1. Válassza a **Kulcsok** elemet.
-1. Adjon meg egy leírást és egy időtartamot a kulcshoz. Ha elkészült, kattintson a **Mentés** elemre.
+1. Válassza ki **ügyfél titkos kódok -> Új titkos ügyfélkulcsot**.
+1. Adjon meg egy leírást a titkos kulcsot és egy időtartamot. Ha elkészült, válassza **Hozzáadás**.
 
-   ![kulcs mentése](./media/howto-create-service-principal-portal/save-key.png)
+   ![Titkos kulcs mentése](./media/howto-create-service-principal-portal/save-secret.png)
 
-   A kulcs mentése után megjelenik a kulcs értéke. Másolja ezt az értéket, mert nem sikerült beolvasni a kulcsot később. A kulcs értékét az alkalmazás azonosítójával jelentkezzen be az alkalmazást, hogy adja meg. A kulcsértéket olyan helyen tárolja, ahonnan az alkalmazás le tudja kérni.
+   Az ügyfél titkos kulcsát a mentés után jelenik meg a titkos ügyfélkulcsot értékét. Másolja ezt az értéket, mert nem sikerült beolvasni a kulcsot később. A kulcs értékét az alkalmazás azonosítójával jelentkezzen be az alkalmazást, hogy adja meg. A kulcsértéket olyan helyen tárolja, ahonnan az alkalmazás le tudja kérni.
 
-   ![mentett kulcs](./media/howto-create-service-principal-portal/copy-key.png)
+   ![Titkos kulcs másolása](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
@@ -146,7 +146,7 @@ Az Azure-előfizetésében, a fióknak rendelkeznie kell `Microsoft.Authorizatio
 
 Ellenőrizze előfizetése engedélyei között:
 
-1. Válassza ki a fiók jobb felső sarokban, majd válassza ki **saját engedélyek**.
+1. Válassza ki a fiók jobb felső sarokban, majd válassza ki **… -> saját engedélyek**.
 
    ![Válassza ki a felhasználói engedélyek](./media/howto-create-service-principal-portal/select-my-permissions.png)
 
@@ -154,7 +154,7 @@ Ellenőrizze előfizetése engedélyei között:
 
    ![felhasználó keresése](./media/howto-create-service-principal-portal/view-details.png)
 
-1. A hozzárendelt szerepkörök megtekintése, és határozza meg, hogy rendelkezik-e megfelelő engedélyekkel AD-alkalmazás hozzárendelése szerepkörhöz. Ha nem, kérje meg az előfizetés adminisztrátorát, hogy vegye fel Önt a felhasználói hozzáférés rendszergazdájának szerepköre. Az alábbi ábrán a felhasználó a tulajdonos szerepkör, ami azt jelenti, hogy a felhasználó rendelkezik megfelelő engedélyekkel van rendelve.
+1. Válassza ki **szerepkör-hozzárendelések** a hozzárendelt szerepkörök megtekintése, és határozza meg, hogy rendelkezik-e megfelelő engedélyekkel AD-alkalmazás hozzárendelése szerepkörhöz. Ha nem, kérje meg az előfizetés adminisztrátorát, hogy vegye fel Önt a felhasználói hozzáférés rendszergazdájának szerepköre. Az alábbi ábrán a felhasználó a tulajdonos szerepkör, ami azt jelenti, hogy a felhasználó rendelkezik megfelelő engedélyekkel van rendelve.
 
    ![engedélyek megjelenítése](./media/howto-create-service-principal-portal/view-user-role.png)
 

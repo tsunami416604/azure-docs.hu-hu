@@ -12,18 +12,18 @@ ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: 95d1681c9ff9981990d873a58a2d01833d690e0f
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 61f6c25031c4906e65c2f75a7679600741e8311a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65411986"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791375"
 ---
 # <a name="delete-subnet-after-deleting-azure-sql-database-managed-instance"></a>Alhálózat törlése az Azure SQL Database felügyelt példány törlése
 
 A cikk ismerteti iránymutatásokat manuálisan törölni az alhálózatot, miután törli a legutóbbi Azure SQL Database felügyelt példány szereplő, hogyan.
 
-A [virtuális fürt](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) rendelkezik, amely tartalmazza a törölt felügyelt példány folyamatosan 12 órán át a példány törlését. A virtuális fürt ugyanazon az alhálózaton lévő felügyelt példányok gyorsabb létrehozását lehetővé elvárt másolatok életben. Ebben az időszakban a virtuális fürthöz társított alhálózat nem lehet törölni.
+A [virtuális fürt](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) rendelkezik, amely tartalmazza a törölt felügyelt példány folyamatosan 12 órán át a példány törlését. A virtuális fürt ugyanazon az alhálózaton lévő felügyelt példányok gyorsabb létrehozását lehetővé elvárt másolatok életben. Egy üres virtuális fürt tartja az ingyenesen elérhető. Ebben az időszakban a virtuális fürthöz társított alhálózat nem lehet törölni.
 
 Azonnali kiadásában az üres virtuális fürt által használt alhálózat a virtuális fürt manuális törlését keresztül. A virtuális fürt törlése az Azure Portalon vagy a virtuális fürtök API érhető el.
 

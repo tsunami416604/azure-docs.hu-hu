@@ -1,25 +1,18 @@
 ---
 title: Kérelmekre vonatkozó korlátok és sávszélesség-szabályozási – Azure Resource Manager
 description: Ismerteti, hogyan használható az Azure Resource Manager által szabályozás előfizetési korlátok elérésekor.
-services: azure-resource-manager
-documentationcenter: na
-author: rockboyfor
-ms.assetid: e1047233-b8e4-4232-8919-3268d93a3824
+author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-origin.date: 03/05/2019
-ms.date: 03/18/2019
-ms.author: v-yeche
+ms.date: 05/14/2019
+ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 91a776ba13ffaeeb4f8184371ae45a80d829ae46
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fc731b1abec9c101356a0fa57eef498b58612ab9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60389729"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791361"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager-kérelmek szabályozása
 
@@ -33,7 +26,7 @@ Ha az alkalmazást vagy parancsfájlt eléri az ezeket a korlátokat, akkor a k�
 
 Ha eléri a korlátot, kap-e a HTTP-állapotkódot **429 túl sok kérelem**.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Az Azure Erőforrás-grafikon korlátozza a műveleteire kérések száma. A cikkben található lépések meghatározásához, a fennmaradó kérelmeket, és hogyan reagáljon a korlát elérésekor Erőforrás-grafikon is vonatkozik. Erőforrás-grafikon azonban a saját korlátozása és a visszaállítási arány állítja be. További információkért lásd: [szabályozása az Azure-erőforrás Graph](../governance/resource-graph/overview.md#throttling).
 
 ## <a name="remaining-requests"></a>Fennmaradó kérelmek
 Megadhatja, hogy a fennmaradó kérések száma válaszfejlécek megvizsgálásával. Olvasási kérelmek ad vissza értéket, a fennmaradó olvasási kérelmek száma a fejlécében. Az írási kérések tartalmazzák a fennmaradó írási kérelmek száma értékét. A következő táblázat ismerteti a válaszfejlécek ezekhez az értékekhez ellenőrizheti:
@@ -61,7 +54,7 @@ response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetVal
 A **PowerShell**, Invoke-WebRequest művelet lekérése a fejléc értéke.
 
 ```powershell
-$r = Invoke-WebRequest -Uri https://management.chinacloudapi.cn/subscriptions/{guid}/resourcegroups?api-version=2016-09-01 -Method GET -Headers $authHeaders
+$r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/resourcegroups?api-version=2016-09-01 -Method GET -Headers $authHeaders
 $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 ```
 
@@ -89,7 +82,7 @@ x-ms-ratelimit-remaining-subscription-reads: 11999
 Írási korlátok lekéréséhez használja az írási művelet: 
 
 ```powershell
-New-AzResourceGroup -Name myresourcegroup -Location chinanorth -Debug
+New-AzResourceGroup -Name myresourcegroup -Location westus -Debug
 ```
 
 Több értékhez, többek között a következő értékeket ad vissza:
@@ -128,7 +121,7 @@ msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-reads': '11998'
 Írási korlátok lekéréséhez használja az írási művelet: 
 
 ```azurecli
-az group create -n myresourcegroup --location chinanorth --verbose --debug
+az group create -n myresourcegroup --location westus --verbose --debug
 ```
 
 Több értékhez, többek között a következő értékeket ad vissza:
@@ -152,5 +145,3 @@ Ha egyenlege eléri a kérelmi korlátjának, erőforrás-kezelő adja vissza a 
 * Teljes PowerShell-példa: [Resource Manager korlátok ellenőrzése egy előfizetés](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
 * Korlátok és kvóták kapcsolatos további információkért lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md).
 * Aszinkron REST-kérések kezelésével kapcsolatos további információkért lásd: [Azure aszinkron műveletek követése](resource-manager-async-operations.md).
-
-<!--Update_Description: update meta properties, update cmdlet -->

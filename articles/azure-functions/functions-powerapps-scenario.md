@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: afb97c1c14422f15a3fc2c00b2101c4a36675556
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 26f6502f63b39d3f1ecf8dfeb09c8df4daa63b68
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61025717"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786117"
 ---
 # <a name="call-a-function-from-powerapps"></a>Függvény hívása a PowerAppsből
 A [PowerApps](https://powerapps.microsoft.com) platform benne hagyományos alkalmazáskódot nélküli alkalmazásokat hozhat létre üzleti szakértők lett tervezve. Professzionális fejlesztők számára az Azure Functions használatával kiterjesztheti a PowerApps képességeit a technikai részleteket a PowerApps alkalmazáskészítők sikerei védelme során.
@@ -39,8 +39,7 @@ Ebben a témakörben megtudhatja, hogyan lehet:
 > * A vezérlőelemek a függvény meghívása és az adatok megjelenítéséhez.
 > * Futtassa az alkalmazást, annak megállapításához, hogy egy javítási költséghatékony.
 
-> [!IMPORTANT]
-> Az OpenAPI-funkció jelenleg előzetes verzióban és csak verzió érhető el az Azure Functions futtatókörnyezet 1.x.
+[!INCLUDE [functions-openapi-note](../../includes/functions-openapi-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -101,13 +100,13 @@ Most már készen áll az alkalmazás létrehozása a powerapps szolgáltatásba
 
     1. Az a **adatok** panelen, kattintson a **statikus adatok felvétele az alkalmazásba**.
 
-        ![Adatforrás hozzáadása](media/functions-powerapps-scenario/add-static-data.png)
+        ![Adatforrás felvétele](media/functions-powerapps-scenario/add-static-data.png)
 
         Általában akkor olvassa el, és külső forrásból származó adatok írása, de adja hozzá az Excel-adatok statikus adatok, mert ez csupán egy példa.
 
     1. Keresse meg a mentett Excel-fájlt, jelölje be a **turbina** táblát, és kattintson a **Connect**.
 
-        ![Adatforrás hozzáadása](media/functions-powerapps-scenario/choose-table.png)
+        ![Adatforrás felvétele](media/functions-powerapps-scenario/choose-table.png)
 
 
 1. Adja hozzá az egyéni API-k adatforrásként.

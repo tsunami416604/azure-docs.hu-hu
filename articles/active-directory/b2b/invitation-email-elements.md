@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7015abcfe3c53e2180d617bd2c78ecd44c42af7a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3f93586d46aa01116990f8f02f344c6952d3c1b1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60412836"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65768371"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>A B2B együttműködés meghívót tartalmazó e - Azure Active Directory elemei
 
@@ -53,7 +53,7 @@ Ha még állított be a profilképét, a meghívót küldő személy monogramja 
 
   ![Képernyőfelvétel: a meghívó a meghívót küldő személy a megjelenített monogramja](media/invitation-email-elements/inviters-initials.png)
 
-### <a name="body"></a>Törzs
+### <a name="body"></a>Szövegtörzs
 A törzse tartalmazza az üzenetet, hogy a meghívót küldő személy composes mikor [vendégfelhasználók a könyvtárban, csoport vagy alkalmazás](add-users-administrator.md) vagy [a meghívó API használatával](customize-invitation-api.md). Egy szövegterület, így nem dolgozza fel biztonsági okokból HTML-címkéket.
 
   ![Képernyőfelvétel: a meghívást tartalmazó e-mail törzse](media/invitation-email-elements/invitation-email-body.png)

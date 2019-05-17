@@ -16,11 +16,11 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 828de7e3e91a0ccdc123dc893dce158d644c5d38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60284688"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65813225"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adoddle-csaas-platform"></a>Oktatóanyag: Adoddle cSaas Platform az Azure Active Directory-integráció
 
@@ -180,7 +180,7 @@ Ebben a szakaszban engedélyezze Britta Simon Adoddle cSaas Platform, a hozzáf�
 
 Ebben a szakaszban egy Britta Simon nevű felhasználó Adoddle cSaas Platform jön létre. Adoddle cSaas Platform által támogatott **just-in-time-kiépítés**, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az Adoddle cSaas Platform, amikor megpróbálja elérni Adoddle cSaas Platform egy új jön létre.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

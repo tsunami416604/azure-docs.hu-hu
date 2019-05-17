@@ -10,18 +10,18 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: fa618c5c623a631e7a88f8235a0b7b16fcb2bc88
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ea8fe989dd0ef7026957153fb5c9836742d008dd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60605240"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797499"
 ---
 # <a name="translator-text-api-30-detect"></a>Translator Text API 3.0: Detect
 
 Egy adott szöveg nyelvét adja meg.
 
-## <a name="request-url"></a>Kérés URL-címe
+## <a name="request-url"></a>Lekérdezés URL-címe
 
 Küldjön egy `POST` kérelmet:
 
@@ -65,7 +65,7 @@ Kérelemfejlécek a következők:
   </tr>
 </table> 
 
-## <a name="request-body"></a>A kérés törzse
+## <a name="request-body"></a>Kérelem törzse
 
 A kérelem törzsében egy JSON-tömböt. Egyes tömbelemeken nevű karakterlánc tulajdonsággal rendelkező JSON-objektum `Text`. Nyelv észlelése alkalmazott értékét a `Text` tulajdonság. Minta kéréstörzs hasonlóan néz ki:
 
@@ -142,7 +142,7 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
   <th>Leírás</th>
   <tr>
     <td>200</td>
-    <td>Siker.</td>
+    <td>Sikeres művelet.</td>
   </tr>
   <tr>
     <td>400</td>
@@ -158,7 +158,7 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
   </tr>
   <tr>
     <td>429</td>
-    <td>A hívó túl sok kérelmet küld.</td>
+    <td>A kiszolgáló elutasította a kérelmet, mert az ügyfél túllépte a kérelmekre vonatkozó korlátok.</td>
   </tr>
   <tr>
     <td>500</td>

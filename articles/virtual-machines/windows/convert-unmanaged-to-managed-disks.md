@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 21505da414b29f2ae9eeea7f9fcad9db2e57c4fe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3c45c8587e3ca19b32ccd8dc66575333622b3cf1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702829"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796584"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows virtuális gép átalakítása nem felügyeltről felügyelt a managed Disks szolgáltatásba
 
@@ -28,7 +28,7 @@ Ha rendelkezik meglévő Windows virtuális gépek (VM), amely a nem felügyelt 
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 
 * Felülvizsgálat [tervezze meg a migrálás a Managed Disks szolgáltatásba](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
@@ -99,7 +99,6 @@ Ha az átalakítani kívánt virtuális gépek felügyelt lemezeket egy rendelke
 Ha a konvertálás során hiba történik, vagy ha a virtuális gép egy korábbi konverziós a problémák miatt a hibás állapotban van, futtassa a `ConvertTo-AzVMManagedDisk` újra a parancsmagot. Egy egyszerű újra általában feloldja a helyzet.
 Átalakítás, előtt ellenőrizze a Virtuálisgép-bővítmények "A kiépítés sikeres" állapotban van, vagy az átalakítás sikertelen lesz a következő hibakóddal: 409.
 
-
 ## <a name="convert-using-the-azure-portal"></a>Konvertálja az Azure portal használatával
 
 Nem felügyelt lemezek is konvertálása felügyelt lemezeket az Azure portal használatával.
@@ -108,7 +107,7 @@ Nem felügyelt lemezek is konvertálása felügyelt lemezeket az Azure portal ha
 2. A portál virtuális gépek listájából válassza ki a virtuális gép.
 3. Válassza ki a virtuális gép paneljén **lemezek** a menüből.
 4. Felső részén a **lemezek** panelen válassza ki **áttelepítése a managed Disks szolgáltatásba**.
-5. Ha a virtuális gép egy rendelkezésre állási csoportban van, lesz egy figyelmeztetés a a **áttelepítése a managed Disks szolgáltatásba** panel, amelyen a rendelkezésre állási csoportot, először konvertálnia kell. A figyelmeztetés rendelkeznie kell egy hivatkozást is kattinthat a rendelkezésre állási csoport konvertálásához. Miután dátumformátumra alakítja át a rendelkezésre állási csoport, vagy ha a virtuális gép nem egy rendelkezésre állási csoportban, kattintson a **áttelepítése** a lemezek a managed Disks szolgáltatásba való migrálásának a folyamat elindításához. 
+5. Ha a virtuális gép egy rendelkezésre állási csoportban van, lesz egy figyelmeztetés a a **áttelepítése a managed Disks szolgáltatásba** panel, amelyen a rendelkezésre állási csoportot, először konvertálnia kell. A figyelmeztetés rendelkeznie kell egy hivatkozást is kattinthat a rendelkezésre állási csoport konvertálásához. Miután dátumformátumra alakítja át a rendelkezésre állási csoport, vagy ha a virtuális gép nem egy rendelkezésre állási csoportban, kattintson a **áttelepítése** a lemezek a managed Disks szolgáltatásba való migrálásának a folyamat elindításához.
 
 A virtuális gép leáll és újraindul a migrálás befejezése után.
 

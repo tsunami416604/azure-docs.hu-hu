@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e09435b09811ef31057f4dc257fc55fa72909d83
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f5e56d4953eecdb488d5dadd4497b1c42b932f35
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714916"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65812568"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -23,7 +23,7 @@ ms.locfileid: "64714916"
 
 Felhasználói utak explicit elérési utak, amelyen keresztül egy szabályzatot a szerezze be a kívánt jogcím egy felhasználó egy függő fél alkalmazást lehetővé teszi, hogy adja meg. A felhasználó lekéréséhez, amelyeket a függő entitás számára megjelenő veszi az elérési utak keresztül. Más szóval felhasználói utak meghatározása egy végfelhasználó halad át az Azure AD B2C-vel identitás-kezelőfelületi keretrendszer folyamatok, a kérelem üzleti logikáját.
 
-Ezek az felhasználói utak elérhető a különféle függő entitások felek a Közösség fontos a mag igényeinek kielégítése sablonok tekinthető meg. Felhasználói utak lehetővé teszik a definíció egy szabályzatot a függő entitás részét. Egy házirend több felhasználói utak adhatja meg. Minden egyes felhasználói interakciósorozat vezénylési lépéseit.
+Ezek az felhasználói utak elérhető a különféle függő felek a Közösség fontos a mag igényeinek kielégítése sablonok tekinthető meg. Felhasználói utak lehetővé teszik a szabályzat a függő entitás részét definíciója. Egy házirend több felhasználói utak adhatja meg. Minden egyes felhasználói interakciósorozat vezénylési lépéseit.
 
 A szabályzat által támogatott felhasználói út meghatározása egy **UserJourneys** elem kerül a házirend-fájl a legfelső szintű elem alatt. 
 
@@ -49,7 +49,7 @@ A **UserJourney** elem a következő elemeket tartalmazza:
 
 Felhasználói út jelenik meg egy vezénylési feladatütemezés sikeres tranzakció kell követnie. Ha valamelyik lépés meghiúsul, a tranzakció sikertelen lesz. Vezénylési lépések hivatkozhat mindkét építőelemeket, és a Jogcímszolgáltatók engedélyezett a házirend-fájlban. Bármely vezénylési lépés, amelyek felelős megjelenítése vagy jelennek meg a felhasználói élmény is tartalmaz egy hivatkozást a megfelelő tartalomdefiníció-azonosítóval.
 
-Vezénylési lépésekből feltételesen hajtható végre, a vezénylési lépés elemben definiált előfeltételeket alapján. Például ellenőrizheti, hogy egy vezénylési lépés végrehajtása csak akkor, ha egy adott jogcímek létezik, vagy ha jogcím értéke, vagy nem a megadott érték. 
+Vezénylési lépésekből feltételesen hajthatók végre a szükséges előfeltételeket a vezénylési lépés elemben definiált alapján. Ha például ellenőrizheti, hogy egy vezénylési lépés végrehajtása csak akkor, ha egy adott jogcímek létezik, vagy ha jogcím értéke, vagy nem a megadott érték. 
 
 A vezénylési lépésekből, rendezett listáját adja meg egy **OrchestrationSteps** elem kerül a szabályzat részeként. Ez az elem megadása kötelező.
 
@@ -65,7 +65,7 @@ A **OrchestrationStep** elem tartalmazza a következő attribútumokat:
 | --------- | -------- | ----------- |
 | `Order` | Igen | A vezénylési lépéseinek sorrendjét. | 
 | `Type` | Igen | A vezénylési lépés típusát. Érvényes értékek: <ul><li>**Hiányzik a ClaimsProviderSelection** -azt jelzi, hogy megjelennek-e a vezénylési lépés különböző jogcímszolgáltatóktól a felhasználó kiválaszthat egy számára.</li><li>**CombinedSignInAndSignUp** -azt jelzi, hogy a vezénylési lépés bemutatja egy kombinált közösségi szolgáltató be- és a helyi fiók regisztrálási oldala.</li><li>**ClaimsExchange** -azt jelzi, hogy a vezénylési lépés adatcseréihez használható-e jogcímeket egy jogcímszolgáltatótól.</li><li>**SendClaims** -azt jelzi, hogy a vezénylési lépés a jogcímek kiállítója által kiállított jogkivonatok küld a jogcímeket a függő entitáshoz.</li></ul> | 
-| ContentDefinitionReferenceId | Nem | Az azonosítója a [definíciós tartalom](contentdefinitions.md) a vezénylési lépés társított. Általában a tartalomdefiníció Referenciaazonosító definiálva van az önellenőrzött technikai profilban. De vannak bizonyos esetekben az Azure AD B2C-vel valami technikai profil nélkül megjeleníthető van szükség. Nincsenek két példa, ha a vezénylési lépés típusát a következők egyikét: `ClaimsProviderSelection` vagy `CombinedSignInAndSignUp`. Az Azure AD B2C kell megjeleníteni az identity provider kijelölés technikai profil nélkül. | 
+| ContentDefinitionReferenceId | Nem | Az azonosítója a [definíciós tartalom](contentdefinitions.md) a vezénylési lépés társított. Általában a tartalomdefiníció Referenciaazonosító definiálva van az önellenőrzött technikai profilban. De vannak bizonyos esetekben az Azure AD B2C-vel valami technikai profil nélkül megjeleníthető van szükség. Nincsenek két példa –, ha a vezénylési lépés típusát a következők egyikét: `ClaimsProviderSelection` vagy `CombinedSignInAndSignUp`, Azure AD B2C-vel kell megjeleníteni az identity provider kijelölés technikai profil nélkül. | 
 | CpimIssuerTechnicalProfileReferenceId | Nem | A vezénylési lépés típusa `SendClaims`. Ez a tulajdonság határozza meg, hogy a jogcímszolgáltató jogcímszolgáltató-kibocsátja a jogkivonatot a függő entitás technikai profil azonosítója.  Ha hiányoznak, nem megbízható függő entitás jogkivonat jön létre. |
 
 
@@ -88,7 +88,7 @@ A **előfeltételeket** elem tartalmazza a következő elemet:
 
 #### <a name="precondition"></a>Előfeltétel
 
-A **előfeltétel** elem tartalmazza a következő attribútumot:
+A **előfeltétel** elem tartalmazza a következő attribútumokat:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
@@ -99,7 +99,7 @@ A **előfeltétel** elemeket a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| Érték | 1:n | A lekérdezendő ClaimTypeReferenceId. Egy másik értéket elem tartalmazza az ellenőrizendő értékkel.</li></ul>|
+| Value | 1:n | A lekérdezendő ClaimTypeReferenceId. Egy másik értéket elem tartalmazza az ellenőrizendő értékkel.</li></ul>|
 | Műveletek | 1:1 | Az előfeltétel-ellenőrzés belül egy vezénylési lépés teljesülése esetén végrehajtandó művelet. Ha az érték a `Action` értékre van állítva `SkipThisOrchestrationStep`, a társított `OrchestrationStep` nem hajtható végre. | 
 
 #### <a name="preconditions-examples"></a>Az Előfeltételek példák
@@ -121,7 +121,7 @@ Az alábbi előfeltételeket ellenőrzi, hogy létezik-e a felhasználó objectI
 </OrchestrationStep>
 ```
 
-Az alábbi előfeltételeket ellenőrzi-e a felhasználó be egy közösségi fiókkal jelentkezett-e. Kísérlet történik meg a felhasználói fiókot a címtárban. Ha a felhasználó bejelentkezik, vagy helyi fiókkal regisztrál kihagyja, az előkészítési lépés.
+Az alábbi előfeltételeket ellenőrzi-e a felhasználó be egy közösségi fiókkal jelentkezett-e. Kísérlet történik meg a felhasználói fiókot a címtárban. Ha a felhasználó bejelentkezik, vagy a helyi fiókkal regisztrál, hagyja ki a vezénylési lépés.
 
 ```XML
 <OrchestrationStep Order="3" Type="ClaimsExchange">
@@ -177,7 +177,7 @@ A **hiányzik a ClaimsProviderSelection** elem tartalmazza a következő attrib�
 
 ### <a name="claimsproviderselection-example"></a>Hiányzik a ClaimsProviderSelection példa
 
-A következő vezénylési lépés a felhasználó választhatja ki, jelentkezzen be, a Facebook, LinkedIn, Twitter, Google vagy helyi fiók. Ha a felhasználó egy közösségi identitásszolgáltatóval, a második vezénylési lépés szoftverrel végrehajtja a megadott jogcímértékeket exchange, a `TargetClaimsExchangeId` attribútum. A második vezénylési lépés a felhasználó a bejelentkezési folyamat befejezéséhez a közösségi identitásszolgáltató irányítja át. Ha a felhasználó úgy dönt, hogy jelentkezzen be a helyi fiókkal, az Azure AD B2C-vel (a azonos előfizetéshez vagy a bejelentkezési oldalon) azonos vezénylési lépés marad, és kihagyja a második vezénylési lépés.
+A következő vezénylési lépés a felhasználó választhatja ki, jelentkezzen be a Facebook, LinkedIn, Twitter, Google vagy helyi fiók. Ha a felhasználó egy közösségi identitásszolgáltatóval, a második vezénylési lépés szoftverrel végrehajtja a megadott jogcímértékeket exchange, a `TargetClaimsExchangeId` attribútum. A második vezénylési lépés a felhasználó a bejelentkezési folyamat befejezéséhez a közösségi identitásszolgáltató irányítja át. Ha a felhasználó úgy dönt, hogy jelentkezzen be a helyi fiókkal, az Azure AD B2C-vel (a azonos előfizetéshez vagy a bejelentkezési oldalon) azonos vezénylési lépés marad, és kihagyja a második vezénylési lépés.
 
 ```XML
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">

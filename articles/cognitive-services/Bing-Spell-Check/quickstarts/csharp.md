@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: 5a80f0feec6985129f78ee0b034746aa77f2e271
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 102fd27c25052f4f5b3c3c469447b8488171f644
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64876618"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798477"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Gyors útmutató: Ellenőrizze a helyesírást és a Bing Spell Check REST API és aC#
 
@@ -23,9 +23,9 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Visual Studio 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
+* Bármely kiadása [Visual Studio 2017-es vagy újabb](https://www.visualstudio.com/downloads/).
 * A telepítendő `Newtonsoft.Json` a Visual studióban NuGet csomag:
-    1. A Megoldáskezelőben, a jobb gombbal a megoldásfájlt.
+    1. A **Megoldáskezelőben**, kattintson a jobb gombbal a megoldásfájlt.
     1. Válassza ki **NuGet-csomagok kezelése megoldáshoz**.
     1. Keresse meg `Newtonsoft.Json` és telepítse a csomagot.
 * Linux/MacOS rendszeren használja, ha az alkalmazás használatával futtatható [Mono](https://www.mono-project.com/).

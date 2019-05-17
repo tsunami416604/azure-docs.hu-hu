@@ -5,17 +5,17 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.topic: tutorial
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 3b802573bfc1eba74217d01005a2f232ff575fda
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a13d1f843604025ee0f843c0770b3d11b53dd837
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730395"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65762878"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Oktatóanyag: Egyetlen adatbázisban az SSMS használatával Azure SQL Database relációs adatbázis tervezése
 
@@ -150,7 +150,7 @@ A [Transact-SQL](/sql/t-sql/language-reference) használatával hozzon létre eg
 
 - Személy
 - Kurzus
-- Hallgató
+- Tanuló
 - Kreditösszeg
 
 Az alábbi ábrán látható, hogyan kapcsolódnak ezek a táblázatok egymáshoz. Ezen táblázatok némelyike más táblák oszlopaira hivatkozik. Például a *tanulói* táblára hivatkozik az *PersonId* oszlopa a *személy* tábla. Tanulmányozza a diagramot az ebben az oktatóanyagban szereplő táblák kapcsolatainak megértéséhez. A hatékony adatbázistáblák létrehozásának részleteiért lásd: [Hatékony adatbázistáblák létrehozása](https://msdn.microsoft.com/library/cc505842.aspx). Az adattípusok kiválasztására vonatkozó további információkért lásd: [Adattípusok](/sql/t-sql/data-types/data-types-transact-sql).
@@ -205,7 +205,7 @@ Az alábbi ábrán látható, hogyan kapcsolódnak ezek a táblázatok egymásho
    )
    ```
 
-   ![Táblázatok létrehozása](./media/sql-database-design-first-database/create-tables.png)
+   ![Táblák létrehozása](./media/sql-database-design-first-database/create-tables.png)
 
 3. Bontsa ki a **táblák** csomópont alatt *yourDatabase* a a **Object Explorer** létrehozott táblák megtekintéséhez.
 

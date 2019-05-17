@@ -7,18 +7,18 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pabutler
-ms.openlocfilehash: 32002f8b88a2fbeba29f15b3b9289ecf3d7560d0
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: c639389fdd0d4624152fcdfa4432be09a18a97bc
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64942735"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794344"
 ---
 # <a name="prepare-your-container-technical-assets"></a>A tároló technikai eszközök előkészítése
 
 Ez a cikk ismerteti a lépéseket és a egy tárolót az ajánlat az Azure Marketplace-en követelmények.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Tekintse át a [Azure Container Instances](https://docs.microsoft.com/azure/container-instances) dokumentáció, amellyel az útmutatóink, Oktatóanyagaink és Példáink segítségével.
 
@@ -53,9 +53,10 @@ Emellett javasoljuk, hogy az elérhető eszközök áttekintése a [Azure fejles
 
 ## <a name="create-the-container-image"></a>Hozza létre a tárolórendszerképet
 
-- Hozzon létre, és konfigurálja a virtuális merevlemez (VHD) a tároló virtuális gép (VM). Ez a VHD operációs rendszert (Windows, Linux és Ubuntu) tároló tartalmazza. További adatlemezek lehet szükség.
-- Konfigurálja a virtuális gép operációs rendszerének, a virtuális gép mérete, a portok megnyitásához és a bármely más csatolt lemez.
-- Telepítse az alkalmazás és más szoftverek, amelyek az ajánlat szükséges. Például: adatbázis-szoftver, harmadik féltől származó szoftverekkel, vagy egy egyéni alkalmazást.
+További információ a következő jelenik meg:
+
+* [Oktatóanyag: Hozzon létre egy tárolórendszerképet az Azure Container Instances szolgáltatásban való üzembe helyezéshez](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
+* [Oktatóanyag: Hozhat létre és helyezhet üzembe rendszerképeket az Azure Container Registry feladatokat a felhőben](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)
 
 ## <a name="next-steps"></a>További lépések
 

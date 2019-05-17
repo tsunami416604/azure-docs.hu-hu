@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: a878ab1937b06f06a27b18f793fc1bfa190969ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 56ec4d867abd5f2767c64b0800eeb017c0fb9923
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60627046"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793002"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET-módosítási hírcsatorna SDK processzor: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -40,6 +40,11 @@ ms.locfileid: "60627046"
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="v2-builds"></a>v2 buildek
+
+### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
+* Az összes bérleteket beolvasásakor továbbfejlesztett terheléselosztási forgatókönyvhöz stratégia is tartanak, mint a címbérlet lejárati időközét, például a hálózati problémák miatt:
+  * Ebben a forgatókönyvben betölteni a bérletek lopásának megjelölése okozó aktív tulajdonosok tévesen lejártként, fontolja meg a bérletek használt terheléselosztási algoritmust. Ezt elindíthatja a szükségtelen újbóli terheléselosztási bérleteket rengeteg.
+  * A probléma javítva a kiadásban az ütközés újrapróbálkozási lehetőleg ne melyik tulajdonosa nem módosult a lejárt bérlet beszerzése és posponing beszerzése a lejárt bérleti tovább terheléselosztási ismétlés során.
 
 ### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
 * A megfigyelő kivételek jobb kezelése.
@@ -163,6 +168,7 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.2.7](#2.2.7) |2019. Május 14. |--- |
 | [2.2.6](#2.2.6) |2019. január 29. |--- |
 | [2.2.5](#2.2.5) |2018. december 13. |--- |
 | [2.2.4](#2.2.4) |November 29, 2018 |--- |
@@ -178,7 +184,7 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 | [1.0.0](#1.0.0) |2017. július 07. |--- |
 
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>gyakori kérdésekben
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Lásd még

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 09/12/2018
+ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 6c28b02d68239bac658954caf447b6ff738c1b65
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 668c380f38f410083ffe7d2cd6690be447f614dc
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122523"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798335"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Oktatóanyag: Hozzon létre egy egyoldalas alkalmazást, a Bing Web Search API használatával
 
@@ -287,7 +287,7 @@ function handleBingResponse() {
 
 Az előző két függvény kódjainak nagy része a hibakezelésért felel. A következő fázisoknál léphetnek fel hibák:
 
-| Fázis | Lehetséges hiba vagy hibák | Kezelő |
+| Szakasz | Lehetséges hiba vagy hibák | Kezelő |
 |-------|--------------------|------------|
 | A kérésobjektum elkészítése | Érvénytelen URL-cím | `try` / `catch` blokk |
 | Kérés végrehajtása | Hálózati hibák, megszakított kapcsolatok | `error` és `abort` eseménykezelők |

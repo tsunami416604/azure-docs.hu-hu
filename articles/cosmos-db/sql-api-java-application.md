@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: ramkris
-ms.openlocfilehash: a915792ad5cd1352c666f8224345c54e278ab899
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e276980235494f7f808510889bda91761cb76544
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870099"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794605"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Java-webalkalmazás létrehozása az Azure Cosmos DB és az SQL API használatával
 
@@ -50,7 +50,7 @@ Az alkalmazásfejlesztési oktatóanyag elkezdéséhez az alábbiakkal kell rend
 * [Eclipse IDE for Java EE Developers.](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Engedélyezett Java-futtatókörnyezettel (pl. Tomcat vagy Jetty) rendelkező Azure-webhely.](../app-service/app-service-web-get-started-java.md)
 
-Ha először telepíti ezeket az eszközöket, coreservlets.com webhelyen a telepítési folyamat a gyors üzembe helyezés szakaszában azok [oktatóanyag: Tomcat 7 telepítéssel és az eclipse-szel](https://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) cikk.
+Ha először telepíti ezeket az eszközöket, coreservlets.com webhelyen a telepítési folyamat a gyors üzembe helyezés szakaszában azok [oktatóanyag: Tomcat 7 telepítéssel és az eclipse-szel](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) cikk.
 
 ## <a id="CreateDB"></a>1. lépés: Azure Cosmos DB-fiók létrehozása
 Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik fiókkal, vagy ha használ az Azure Cosmos DB Emulatort ehhez az oktatóanyaghoz, továbbléphet a [2. lépés: Új Java JSP-alkalmazás létrehozása](#CreateJSP).

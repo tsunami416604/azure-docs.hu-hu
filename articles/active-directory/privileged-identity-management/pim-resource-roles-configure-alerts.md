@@ -15,29 +15,29 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09e04e6b61d3387cb8c50c2af4eef2cfb4bec196
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c15e4080308c3e7e2ff54312cd91fa1f3d68668a
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60437839"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602423"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>Az Azure-erőforrások szerepköreihez tartozó biztonsági riasztások konfigurálása az PIM-ben
 Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) riasztásokat állít elő, ha bármi gyanúsat vagy nem biztonságos tevékenységre van a környezetben. Riasztást vált ki, amikor megjelenik a riasztások lapon. 
 
-![Riasztások lap](media/azure-pim-resource-rbac/RBAC-alerts-home.png)
+![Riasztások lap](media/pim-resource-roles-configure-alerts/rbac-alerts-page.png)
 
 ## <a name="review-alerts"></a>Riasztások áttekintése
 Válasszon ki egy riasztást, a felhasználók vagy szerepkör, amely kiváltotta a riasztást, valamint szervizelési tanácsokat felsoroló jelentés megtekintéséhez.
 
-![Riasztási jelentés](media/azure-pim-resource-rbac/rbac-alert-info.png)
+![Riasztási jelentés](media/pim-resource-roles-configure-alerts/rbac-alert-info.png)
 
 ## <a name="alerts"></a>Riasztások
 | Riasztás | Severity | Eseményindító | Ajánlás |
 | --- | --- | --- | --- |
-| **Túl sok tulajdonos van hozzárendelve egy erőforráshoz** |Közepes |Túl sok felhasználót a tulajdonosi szerepkörrel rendelkezik. |Tekintse át a felhasználókat a listában, és néhány kisebb a kiemelt szerepkörökhöz való átrendelése. |
-| **Túl sok állandó tulajdonos van hozzárendelve egy erőforráshoz** |Közepes |Túl sok felhasználó véglegesen egy szerepkörhöz vannak hozzárendelve. |Tekintse át a felhasználókat a listában, és rendelje hozzá néhányat a aktiválni kell szerepkört használni. |
-| **Ismétlődő szerepkör létrehozása** |Közepes |Több szerepkör rendelkezik ugyanezeket a feltételeket. |Ezek a szerepkörök egyikét használhatja. |
+| **Túl sok tulajdonos van hozzárendelve egy erőforráshoz** |Közepesen súlyos |Túl sok felhasználót a tulajdonosi szerepkörrel rendelkezik. |Tekintse át a felhasználókat a listában, és néhány kisebb a kiemelt szerepkörökhöz való átrendelése. |
+| **Túl sok állandó tulajdonos van hozzárendelve egy erőforráshoz** |Közepesen súlyos |Túl sok felhasználó véglegesen egy szerepkörhöz vannak hozzárendelve. |Tekintse át a felhasználókat a listában, és rendelje hozzá néhányat a aktiválni kell szerepkört használni. |
+| **Ismétlődő szerepkör létrehozása** |Közepesen súlyos |Több szerepkör rendelkezik ugyanezeket a feltételeket. |Ezek a szerepkörök egyikét használhatja. |
 
 
 ### <a name="severity"></a>Severity
@@ -47,10 +47,10 @@ Válasszon ki egy riasztást, a felhasználók vagy szerepkör, amely kiváltott
 
 ## <a name="configure-security-alert-settings"></a>Biztonsági riasztási beállításainak konfigurálása
 Lépjen a riasztások oldaláról **beállítások**.
-![Beállítások](media/azure-pim-resource-rbac/rbac-navigate-settings.png)
+![Beállítások](media/pim-resource-roles-configure-alerts/rbac-navigate-settings.png)
 
 A különböző riasztások beállításai a környezetet és biztonsági célok testreszabásához.
-![A beállítások testre szabása](media/azure-pim-resource-rbac/rbac-alert-settings.png)
+![A beállítások testre szabása](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
 ## <a name="next-steps"></a>További lépések
 

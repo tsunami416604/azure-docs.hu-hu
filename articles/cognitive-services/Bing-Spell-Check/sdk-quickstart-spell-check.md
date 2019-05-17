@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Ellenőrizze a helyesírást, a Bing helyesírás-elle
 titlesuffix: Azure Cognitive Services
 description: Ismerkedés a Bing Spell Check REST API használatával a helyesírás-és nyelvtani.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
-ms.author: v-gedod
-ms.openlocfilehash: 3487656f72f315aa15ce003a8dfd279c45d1f992
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: aahi
+ms.openlocfilehash: adbb60c7ddbc72b8b7e5cb31c6909117ce3a10cb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60766015"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798365"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Gyors útmutató: Ellenőrizze a helyesírást, a Bing helyesírás-ellenőrzése SDK forC#
 
@@ -23,10 +23,10 @@ Ez a rövid útmutató segítségével megkezdheti a helyesírás-ellenőrzést,
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 
-* A [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) bármely kiadása.
+* Bármely kiadása [Visual Studio 2017-es vagy újabb](https://visualstudio.microsoft.com/downloads/).
 * A Bing Spell Check [NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck)
 
-A Bing helyesírás-ellenőrzése SDK hozzáadása a projekthez, kattintson a `Manage NuGet Packages` a Visual Studio Megoldáskezelőjében. Vegye fel a `Microsoft.Azure.CognitiveServices.Language.SpellCheck` csomagot. A csomag is települ a következő függőségeket:
+A Bing helyesírás-ellenőrzése SDK hozzáadása a projekthez, válassza ki a **NuGet-csomagok kezelése** a **Megoldáskezelőben** a Visual Studióban. Vegye fel a `Microsoft.Azure.CognitiveServices.Language.SpellCheck` csomagot. A csomag is települ a következő függőségeket:
 
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure

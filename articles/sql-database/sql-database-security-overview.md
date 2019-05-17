@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 04/26/2019
-ms.openlocfilehash: 584f30cc12aee722aed1079d5cefaee06d403cba
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.date: 05/14/2019
+ms.openlocfilehash: 7916e9493a5d572f844bca23a1dd7806e5fbe572
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867668"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790166"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database biztonsági lehetőségeinek áttekintése
 
@@ -78,7 +78,7 @@ Sorszintű biztonság lehetővé teszi, hogy az ügyfelek számára, hogy szabá
 
 ![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
 
-## <a name="threat-protection"></a>Fenyegetések elleni védelem
+## <a name="threat-protection"></a>Veszélyforrások elleni védelem
 
 Az SQL Database naplózási és fenyegetésészlelési képességek biztosításával védi a vásárlói adatokat.
 
@@ -86,7 +86,7 @@ Az SQL Database naplózási és fenyegetésészlelési képességek biztosítás
 
 Az SQL Database naplózási szolgáltatása nyomon követi az adatbázis-tevékenységekről, és segít fenntartani a biztonsági szabványoknak való megfelelőség rögzíti az adatbázissal kapcsolatos események egy naplófájlba, jelentkezzen be egy ügyfél saját Azure storage-fiók. Naplózás lehetővé teszi, hogy a felhasználók számára az adatbázisban folyamatban lévő tevékenységeket, figyelése, valamint elemezheti és kivizsgálhatja a azonosíthatja a potenciális fenyegetések vagy gyanús visszaélések és szabálysértések. További információ: Ismerkedés az [SQL Database naplózási szolgáltatásával](sql-database-auditing.md).  
 
-### <a name="advanced-threat-protection"></a>Fejlett fenyegetésvédelem
+### <a name="advanced-threat-protection"></a>Advanced Threat Protection
 
 Komplex veszélyforrások elleni védelem elemzi az SQL Server-naplók szokatlan jelenség és vélhetően kárt okozó kísérleteket az adatbázisokat elérni vagy kiaknázni észleléséhez. Riasztás gyanús tevékenységek esetén jönnek létre például SQL-injektálás, a lehetséges adatok beszivárgás és találgatásos támadások kényszerítése vagy rendellenességeket a hozzáférési minták olvasásra jogosultság megemeléséről és szegve hitelesítő adatokat használja. A riasztások tekinthetők meg a [az Azure Security Center](https://azure.microsoft.com/services/security-center/), amelyben a gyanús tevékenységek részletes információkat, és javaslatokat további műveletek mellett a fenyegetés megadott vizsgálatra. Komplex veszélyforrások elleni védelem egy további díj kiszolgálónként lehet engedélyezni. További információkért lásd: [Ismerkedés az SQL adatbázis komplex veszélyforrások elleni védelem](sql-database-threat-detection.md).
 
@@ -125,17 +125,11 @@ Az Azure-ban alapértelmezés szerint minden újonnan létrehozott SQL-adatbázi
 
 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) hozzáférést az adott adatbázis oszlopaiban tárolt bizalmas adatok védelme érdekében olyan szolgáltatás (például hitelkártyaszámokat tartalmazó, különféle nemzeti azonosítószámokat vagy az adatok egy _ismernie kell_ alapja). Ez magában foglalja az adatbázis-rendszergazdák vagy más kiemelt jogosultságú felhasználók, akik jogosultak a felügyeleti feladatokat hajthat végre, de kell érniük az adott a titkosított oszlopokban szereplő üzleti az adatbázis eléréséhez. Az adatok mindig titkosítva, ami azt jelenti, hogy a titkosított adatok csak a feldolgozás visszafejti ügyfél alkalmazások hozzáférése a titkosítási kulcshoz.  A titkosítási kulcs sosem hagyja el az SQL és tárolt vagy a [Windows tanúsítvány Store](sql-database-always-encrypted.md) vagy a [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md).
 
-### <a name="masking"></a>Maszkolási
+### <a name="dynamic-data-masking"></a>Dinamikus adatmaszkolás
 
 ![azure-database-ddm.png](media/sql-database-security-overview/azure-database-ddm.png)
 
-#### <a name="dynamic-data-masking"></a>Dinamikus adatmaszkolás
-
 Az SQL Database dinamikus adatmaszkolása korlátozza a bizalmas adatok adatmaszkolás segít Önnek nem kiemelt jogosultságú felhasználók által. Dinamikus adatmaszkolás automatikusan észleli a potenciálisan bizalmas adatokat az Azure SQL Database és az alkalmazásrétegre gyakorolt minimális hatás mellett, ezen mezők maszkolására úgy végrehajtható javaslatokat tesz. Rejtjelezi a bizalmas adatokat egy kijelölt adatbázismezőkön végrehajtott lekérdezés eredményhalmazában, miközben az adatbázis adatait nem módosítja. További információkért lásd: [Ismerkedés az SQL Database dinamikus adatmaszkolása](sql-database-dynamic-data-masking-get-started.md).
-
-#### <a name="static-data-masking"></a>Statikus adatok maszkolása
-
-[Statikus Adatmaszkolási](/sql/relational-databases/security/static-data-masking) érhető el egy ügyféloldali eszköz [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 18,0 preview 5 és újabb verziók.  Statikus adatok maszkolása lehetővé teszi a felhasználóknak egy másolatot készít egy adatbázisról, a kijelölt oszlopokban szereplő adatok maszkolva véglegesen lett. A rendelkezésre álló maszkolási NULL maszkolási, egyetlen érték maszkolási, shuffle és maszkolás csoport shuffle, és összetett maszkolási karakterlánc. A maszkolt másolatot készít az adatbázisról, az olyan vállalatok, amelyek külön termelési és tesztelési környezetek a maszkolt példány megosztása. A bizalmas adatok megfelelően védett, és minden más adatbázis jellemzőit megmaradnak. Adatbázisok maszkolás ajánlott, ha adatbázisokhoz való külső hozzáférés szükség.
 
 ## <a name="security-management"></a>Biztonság kezelése
 
