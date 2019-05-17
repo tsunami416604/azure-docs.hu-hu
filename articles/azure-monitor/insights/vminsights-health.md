@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2019
 ms.author: magoedte
-ms.openlocfilehash: f2a0d64da5a88e82c0ae1fd893af52f2070268f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 45c9a8da8344aa6aaaa19b534451a7276e96911a
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60402147"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522193"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Az Azure-beli virtuális gépek állapotának ismertetése
 
@@ -28,13 +28,13 @@ Megtekintése az Azure virtuális gép összesített állapotát és operációs
 
 Ez a cikk segítséget nyújt a megtudhatja, hogyan mérheti fel gyorsan, kivizsgálásán és elhárításán észlelt állapotbeli problémák.
 
-A virtuális gépek az Azure Monitor konfigurálásával kapcsolatos további információkért lásd: [engedélyezése az Azure Monitor-beli virtuális gépek](vminsights-onboard.md).
+A virtuális gépek az Azure Monitor konfigurálásával kapcsolatos további információkért lásd: [engedélyezése az Azure Monitor-beli virtuális gépek](vminsights-enable-overview.md).
 
 ## <a name="monitoring-configuration-details"></a>Figyelési konfiguráció részletei
 
 Ez a rész bemutatja az Azure Windows és Linux rendszerű virtuális gépek figyelése meghatározott alapértelmezett állapotára vonatkozó feltételek. Az összes állapotára vonatkozó feltételek riasztás előre konfigurálva, a nem megfelelő állapotú feltétel teljesülése esetén. 
 
-### <a name="windows-vms"></a>Windows rendszerű virtuális gépek
+### <a name="windows-vms"></a>Windows VMs
 
 - A memória érhető el (MB) 
 - (A logikai lemez) Írásonkénti átlagos másodperc
@@ -65,7 +65,7 @@ Ez a rész bemutatja az Azure Windows és Linux rendszerű virtuális gépek fig
 - Windows tűzfal szolgáltatásának állapota
 - Windows távoli felügyeleti szolgáltatásának állapota
 
-### <a name="linux-vms"></a>Linux rendszerű virtuális gépek
+### <a name="linux-vms"></a>Linux VMs
 - Lemez átlagos Lemez mp/átvitel 
 - Lemez átlagos Lemez mp/Olvasás 
 - Lemez átlagos Lemez mp/írás 
@@ -178,7 +178,7 @@ Egy állapotára vonatkozó feltételek állapotát határozza meg a négy álla
 Diagnosztikai állapotlap három fő részből áll:
 
 * Összetevőmodell 
-* Állapotra vonatkozó feltételek
+* Üzemállapot-feltételek
 * Állapotváltozások 
 
 ![Szakaszait állapotának diagnosztikája lap](./media/vminsights-health/health-diagnostics-page-02.png)

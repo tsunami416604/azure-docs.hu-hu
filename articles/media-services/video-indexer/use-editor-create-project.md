@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: a9d6396cab560a201b98497e787af4b6c7c2dabb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 725e265bb7f8c98db19971c50e690974cb38a0d2
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60560814"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518137"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>A Video Indexer-szerkesztő segítségével hozható létre
 
@@ -76,7 +77,7 @@ Ha minden videó jobb oldalán lévő lefelé mutató nyílra kattint, ekkor meg
 1. Az adott klipek lekérdezések létrehozásához használja a keresési mezőbe, amely szerint a "Keresés a szövegben, vizuális szöveg, személyek és címkék a".
 1. Vegyen fel szűrőket annak további adja meg a részleteket a milyen kiválasztásával keresett jelenetek **szűrési lehetőségek**.
 
-    ![Szűrési lehetőségek](./media/video-indexer-view-edit/filter-options.png)
+    ![Szűrőbeállítások](./media/video-indexer-view-edit/filter-options.png)
 
     Például érdemes, ahol említett GitHub, a képernyőn megjelenő Donovan Brown pedig klipek megtekintéséhez. Ehhez hozzá kell egy "include" szűrőt, amely rendelkezik a "Felhasználók" insight típusaként. Szeretne írja be a "Donovan Brown" kifejezést a keresőmezőbe, a szűrő.
     
@@ -95,7 +96,7 @@ Ha minden videó jobb oldalán lévő lefelé mutató nyílra kattint, ekkor meg
 > [!TIP]
 > Kiválasztása, és a klipek rendezése, megtekintheti az oldal jobb oldalán a lejátszóban a videó. 
 
-![Előzetes verzió](./media/video-indexer-view-edit/preview.png)
+![Előnézet](./media/video-indexer-view-edit/preview.png)
 
 Ne felejtse el menteni a projekthez, ha megváltozik kiválasztásával **mentés projekt**. 
 
