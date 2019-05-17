@@ -44,7 +44,7 @@ A következő tulajdonságok SAP-felhő az ügyfélszolgálat társított támog
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **SapCloudForCustomer**. | Igen |
 | url | Az SAP C4C OData-szolgáltatás URL-címe | Igen |
-| felhasználónév | Adja meg a felhasználónevet, a SAP C4C csatlakozni. | Igen |
+| username | Adja meg a felhasználónevet, a SAP C4C csatlakozni. | Igen |
 | password | Adja meg a felhasználónév megadott felhasználói fiók jelszavát. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nincs forrás, a fogadó Igen |
 
@@ -83,7 +83,7 @@ Adatok másolása az SAP-felhő ügyfél, állítsa be a type tulajdonság, az a
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adatkészlet értékre kell állítani: **SapCloudForCustomerResource** |Igen |
-| elérési út | Adja meg az SAP C4C OData entitás elérési útját. |Igen |
+| path | Adja meg az SAP C4C OData entitás elérési útját. |Igen |
 
 **Példa**
 
@@ -114,7 +114,7 @@ Adatok másolása az SAP Cloud ügyfél, állítsa be a forrás típusaként a m
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **SapCloudForCustomerSource**  | Igen |
-| lekérdezés | Adja meg az egyéni OData-lekérdezés adatokat olvasni. | Nem |
+| query | Adja meg az egyéni OData-lekérdezés adatokat olvasni. | Nem |
 
 Adatok beszerzése egy adott nap mintalekérdezés: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
