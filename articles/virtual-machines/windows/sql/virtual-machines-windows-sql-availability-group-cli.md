@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 1c5c5f4c8125f801edc89d47851871d8eb06a2f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5efbe874bbf3c1c4081eb7a2c76c1be5a3358ec8
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60591295"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518979"
 ---
 # <a name="use-azure-sql-vm-cli-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Azure SQL virtuális gép CLI használatával az Azure virtuális Gépeken futó SQL Server AlwaysOn rendelkezésre állási csoport konfigurálása
 Ez a cikk ismerteti, hogyan használható [Azure SQL virtuális gép CLI](/cli/azure/sql/vm?view=azure-cli-latest/) való üzembe helyezése a Windows feladatátvevő fürt (WSFC), és az SQL Server virtuális gépek hozzáadása a fürthöz, valamint a belső Load Balancer és a egy Always On rendelkezésre állási csoport figyelőjének létrehozásához.  Az Always On rendelkezésre állási csoport a tényleges telepítési továbbra is végezhető el manuálisan az SQL Server Management Studio (SSMS) keresztül. 
@@ -42,7 +42,7 @@ Az Always On rendelkezésre állási csoport konfigurálása Azure SQL virtuáli
 A fürt egy storage-fiókot, hogy működjön, a felhőbeli tanúsító van szüksége. Minden olyan meglévő tárfiókot is használhat, vagy létrehozhat egy új tárfiókot. Ha egy meglévő tárfiókot használni kívánt, folytassa a következő szakaszra. 
 
 A következő kódrészletet a storage-fiókot hoz létre: 
-```azurecli
+```azurecli-interactive
 # Create the storage account
 # example: az storage account create -n 'cloudwitness' -g SQLVM-RG -l 'West US' `
 #  --sku Standard_LRS --kind StorageV2 --access-tier Hot --https-only true
@@ -58,7 +58,7 @@ az storage account create -n <name> -g <resource group name> -l <region ex:eastu
 Az Azure SQL virtuális gép CLI [az sql virtuális gép csoport](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest) parancsot a Windows feladatátvevő fürt (WSFC) szolgáltatás, amely futtatja a rendelkezésre állási csoport metaadatainak kezel. Fürt metaadatait az Active Directory-tartománynak, a fürt fiókok, a storage-fiókok használhatók a felhőbeli tanúsító, és az SQL Server-verzió magában foglalja. Használat [az sql virtuálisgép-csoport létrehozása](https://docs.microsoft.com/cli/azure/sql/vm/group?view=azure-cli-latest#az-sql-vm-group-create) definiálható a metaadatokat a WSFC az, hogy az első SQL Server virtuális gép hozzáadásakor, a fürt létrehozása meghatározottak szerint. 
 
 A következő kódrészletet a fürt metaadatainak határozza meg:
-```azurecli
+```azurecli-interactive
 # Define the cluster metadata
 # example: az sql vm group create -n Cluster -l 'West US' -g SQLVM-RG `
 #  --image-offer SQL2017-WS2016 --image-sku Enterprise --domain-fqdn domain.com `
@@ -79,7 +79,7 @@ Az első SQL Server virtuális gép felvétele a fürtbe létrehozza a fürtöt.
 
 A következő kódrészlet létrehozza a fürtöt, és az első SQL Server virtuális gép hozzá: 
 
-```azurecli
+```azurecli-interactive
 # Add SQL Server VMs to cluster
 # example: az sql vm add-to-group -n SQLVM1 -g SQLVM-RG --sqlvm-group Cluster `
 #  -b Str0ngAzur3P@ssword! -p Str0ngAzur3P@ssword! -s Str0ngAzur3P@ssword!
@@ -105,7 +105,7 @@ Az Always On rendelkezésre állási csoport (rendelkezésre állási csoport) f
 
 A következő kódrészletet a belső terheléselosztót hoz létre:
 
-```azurecli
+```azurecli-interactive
 # Create the Internal Load Balancer
 # example: az network lb create --name sqlILB -g SQLVM-RG --sku Standard `
 # --vnet-name SQLVMvNet --subnet default
@@ -133,7 +133,7 @@ A rendelkezésre állási csoport manuális létrehozása után a figyelő haszn
 
 A következő kódrészlet létrehozza a rendelkezésre állási csoport figyelőjének:
 
-```azurecli
+```azurecli-interactive
 # Create the AG listener
 # example: az sql vm group ag-listener create -n AGListener -g SQLVM-RG `
 #  --ag-name SQLAG --group-name Cluster --ip-address 10.0.0.27 `
@@ -157,7 +157,7 @@ Van egy réteggel összetettségét is, amikor üzembe helyezése egy rendelkez�
 Új replikát a rendelkezésre állási csoport hozzáadásához tegye a következőket:
 
 1. Az SQL Server rendszerű virtuális gép hozzáadása a fürthöz:
-   ```azurecli
+   ```azurecli-interactive
    # Add SQL Server VM to the Cluster
    # example: az sql vm add-to-group -n SQLVM3 -g SQLVM-RG --sqlvm-group Cluster `
    # -b Str0ngAzur3P@ssword! -p Str0ngAzur3P@ssword! -s Str0ngAzur3P@ssword!
@@ -167,7 +167,7 @@ Van egy réteggel összetettségét is, amikor üzembe helyezése egy rendelkez�
    ```
 1. Az SQL Server Management Studio (SSMS) használatával adja hozzá az SQL Server-példány replikaként a rendelkezésre állási csoporton belül.
 1. A figyelő az SQL Server rendszerű virtuális gép metaadatainak hozzáadása:
-   ```azurecli
+   ```azurecli-interactive
    # Update the listener metadata with the new VM
    # example: az sql vm group ag-listener update -n AGListener `
    # -g sqlvm-rg --group-name Cluster --sqlvms sqlvm1 sqlvm2 sqlvm3
@@ -182,7 +182,7 @@ A rendelkezésre állási csoport egy replika eltávolításához tegye a követ
 
 1. Távolítsa el a replikát a rendelkezésre állási csoportból az SQL Server Management Studio (SSMS) használatával. 
 1. A figyelő az SQL Server rendszerű virtuális gép metaadatainak eltávolítása:
-   ```azurecli
+   ```azurecli-interactive
    # Update the listener metadata by removing the VM from the SQLVMs list
    # example: az sql vm group ag-listener update -n AGListener `
    # -g sqlvm-rg --group-name Cluster --sqlvms sqlvm1 sqlvm2
@@ -191,7 +191,7 @@ A rendelkezésre állási csoport egy replika eltávolításához tegye a követ
    -g <RG name> --group-name <cluster name> --sqlvms <SQL VMs that remain>
    ```
 1. Az SQL Server rendszerű virtuális gép eltávolítása a fürtből:
-   ```azurecli
+   ```azurecli-interactive
    # Remove SQL VM from cluster
    # example: az sql vm remove-from-group --name SQLVM3 --resource-group SQLVM-RG
 
@@ -203,7 +203,7 @@ Ha később el szeretné eltávolítani a rendelkezésre állási csoport figyel
 
 A következő kódrészlet törli az SQL rendelkezésre állási csoport figyelőjének, mind az SQL erőforrás-szolgáltató és a rendelkezésre állási csoportból: 
 
-```azurecli
+```azurecli-interactive
 # Remove the AG listener
 # example: az sql vm group ag-listener delete --group-name Cluster --name AGListener --resource-group SQLVM-RG
 

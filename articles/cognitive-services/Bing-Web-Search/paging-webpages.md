@@ -9,14 +9,14 @@ ms.assetid: 26CA595B-0866-43E8-93A2-F2B5E09D1F3B
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 68b99e7f0763f46c705a1ff2ba3a0e90216429c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fa02c0913329ec740e3066b05b2e44a36ad379ce
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60648856"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65797810"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>A Bing Web Search API az eredmények között
 
@@ -24,7 +24,7 @@ A Web Search API hívásakor a Bing-eredmények listáját adja vissza. A lista 
 
 A következő példa bemutatja a `totalEstimatedMatches` mező, amely egy webes válasz tartalmazza.  
 
-```
+```json
 {
     "_type" : "SearchResponse",
     "webPages" : {
@@ -65,3 +65,7 @@ Ha megad a `responseFilter` lekérdezési paraméter, és nem szerepel a lista w
 
 > [!NOTE]
 > A `TotalEstimatedAnswers` mező elszámolás kérheti le az aktuális lekérdezés keresési eredmények teljes száma.  Ha `count` és `offset` paraméterek, a `TotalEstimatedAnswers` száma változhat. 
+
+## <a name="next-steps"></a>További lépések
+
+* [Mi az a Bing Web Search API](overview.md)?

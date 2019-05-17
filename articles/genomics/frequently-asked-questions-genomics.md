@@ -9,26 +9,26 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 7198e64a11a3aa23643cc2bfb5ecff884c6a1b48
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2bcbf9d145d9b8b5a3c42893235906d24516405c
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60445549"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792619"
 ---
 # <a name="microsoft-genomics-common-questions"></a>A Microsoft Genomics: Gyakori kérdések
 
 Ez a cikk a leggyakoribb lekérdezések, előfordulhat, hogy rendelkezik a Microsoft Genomics kapcsolódó sorolja fel. A Microsoft Genomics szolgáltatásba további információkért lásd: [Mi a Microsoft Genomics?](overview-what-is-genomics.md). Hibaelhárítással kapcsolatos további információkért lásd: a [hibaelhárítási útmutatója](troubleshooting-guide-genomics.md). 
 
 ## <a name="what-is-the-microsoft-genomics-service-gatk-4-promotion"></a>Mi a Microsoft Genomics szolgáltatás GATK 4 előléptetés?
-2018 a naptári év végéig 20 WGS fut GATK4 költségek nélkül kínál a Microsoft Genomics szolgáltatással. Ez az ajánlat register részt [Itt](https://aka.ms/msgatk4). 
+2019. június 30-ig a Microsoft Genomics szolgáltatásba 20 WGS fut GATK4 költségek nélkül kínál. Ez az ajánlat register részt [Itt](https://aka.ms/msgatk4). 
 
 ### <a name="what-are-the-common-issues-i-might-encounter-while-running-the-microsoft-genomics-service-gatk4-promotion"></a>Mik azok a gyakori problémák jutok előfordulhat, hogy a futtatásakor a Microsoft Genomics szolgáltatás GATK4 támogatása
 Itt látható az esetleg felmerülő gyakori hibák és a megoldást ajánlott alkalmazni:
 
 | **üzenet**                                                                                                                                                                                    | **OK**                                                                                                    | **Felbontás**                                                                                                                                                                                                       |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `gatk4-promo` a fiók nincs engedélyezve. További információkért lásd: https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics                               | Próbált GATK4 a munkafolyamatok futtatásához a Microsoft Genomics szolgáltatással aktiválás nélkül.       | Látogasson el [Itt](https://aka.ms/msgatk4) a fiók aktiválásához. Vegye figyelembe, hogy a próbaidőszak végén található a 2018-as év. Nem tudja aktiválni a saját fiókját a promóciós fut ezen időpont utáni. |
+| `gatk4-promo` a fiók nincs engedélyezve. További információkért lásd: https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics                               | Próbált GATK4 a munkafolyamatok futtatásához a Microsoft Genomics szolgáltatással aktiválás nélkül.       | Látogasson el [Itt](https://aka.ms/msgatk4) a fiók aktiválásához. Vegye figyelembe, hogy a próbaidőszak 2019. június 30. Nem tudja aktiválni a saját fiókját a promóciós fut ezen időpont utáni. |
 | Köszönjük, hogy közben `gatk4-promo`. A próbaidőszak véget ért. További információ https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics                  | Az év végén a GATK4 próbaverzió lejárt, és szeretne meghívni a `gatk4-promo` folyamat_neve.  | Váltson a folyamat_neve paraméter, `gatk4`, hanem `gatk4-promo`. Ez a hivatalos gatk4 verziót, és a munkafolyamat számítjuk fel, ha ezt a paramétert használja.                                         |
 | Köszönjük, hogy közben `gatk4-promo` minden, a lefoglalt futtatások használja. További információkért lásd: https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics | Sikeresen elküldte az összes a promóciós 20 GATK4 futtat.                               | Küldje el minden olyan új gatk4 fut, folyamat_neve argumentum értéke `gatk4` helyett `gatk4-promo`. Ez a paraméter használata esetén a munkafolyamat lesznek számlázva.                                                          |        
 

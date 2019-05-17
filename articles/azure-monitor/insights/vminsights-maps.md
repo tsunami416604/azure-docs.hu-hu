@@ -11,19 +11,19 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 05/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 34e6ce7f3b38dfd583aa557d2f1d7340ea444da9
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 792c2bd02b666cd656f1df368a7a60db44ccf8c4
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62115774"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522178"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Az Azure Monitor használatával virtuális gépek (előzetes verzió) térkép az alkalmazás-összetevők ismertetése
-Megtekintés a detektált alkalmazás-összetevők a környezet figyelhető meg az Azure Monitor szolgáltatással kétféleképpen virtuális gépek esetén közvetlenül a virtuális gépről vagy virtuális gépek az Azure Monitor csoportokhoz Azure-ban futó Windows és Linux rendszerű virtuális gépeken. 
+Megtekintés a detektált alkalmazás-összetevők a Windows és Linux rendszerű virtuális gépek futtatása az Azure-ban a környezet figyelhető meg az Azure Monitor szolgáltatással kétféleképpen virtuális gépek esetén közvetlenül a virtuális gépről vagy virtuális gépek az Azure Monitor csoportok között. 
 
-Ez a cikk segít megérteni a felhasználói élményt a két perspektíva adatai és a térkép funkció használata között. A virtuális gépek az Azure Monitor konfigurálásával kapcsolatos további információkért lásd: [engedélyezése az Azure Monitor-beli virtuális gépek](vminsights-onboard.md).
+Ez a cikk segít megérteni a felhasználói élményt a két perspektíva adatai és a térkép funkció használata között. A virtuális gépek az Azure Monitor konfigurálásával kapcsolatos további információkért lásd: [engedélyezése az Azure Monitor-beli virtuális gépek](vminsights-enable-overview.md).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
@@ -97,6 +97,21 @@ Térkép megjeleníti a virtuális gépek függőségeit, futtató csoportosítj
 
 ![Közvetlen virtuális gépek – áttekintés](./media/vminsights-maps/map-direct-vm-01.png)
 
+## <a name="view-map-directly-from-a-virtual-machine-scale-set"></a>Térkép megtekintése közvetlenül a virtuálisgép-méretezési csoportot beállítása
+
+Az Azure Monitor-beli virtuális gépek közvetlenül elérhetők egy virtuálisgép-méretezési csoportot, hajtsa végre a következő.
+
+1. Az Azure Portalon válassza ki a **a Virtual machine scale sets**.
+2. A listából válassza ki a virtuális gép és a a **figyelés** szakaszban válasszon **Insights (előzetes verzió)**.  
+3. Válassza ki a **térkép** fülre.
+
+Térkép megjeleníti az összes példánya a méretezési csoport csomópontot a csoport függőségeivel együtt. A kibontott csomópontok a pöccintéssel görgetheti végig tíz egy méretezési csoportban lévő példányok sorolja fel. A térkép egy adott példány betöltése, válassza ki, hogy a példány a térképen, és kattintson a három pontra a megfelelő, és válassza a **Kiszolgálótérkép betöltése**. Ez betölti a térképen az adott példány, így megjelenik egy megadott időtartományt keresztül folyamat csoportok és az aktív hálózati kapcsolatokkal rendelkező folyamatokat. Alapértelmezés szerint a térképen jeleníti meg az elmúlt 30 percben. Használatával a **TimeRange** választó lekérdezhető múltbéli tartományokat, akár egy óráig bemutatják, hogyan függőségek kikeresi az elmúlt (például az incidens alatt vagy előtt történt változás).  
+
+![Közvetlen virtuális gépek – áttekintés](./media/vminsights-maps/map-direct-vmss-01.png)
+
+>[!NOTE]
+>Egy adott példányt leképezést a példányok nézetből a virtuális gép méretezési csoporthoz is elérheti. Navigáljon a **példányok** alatt a **beállítások** szakaszt, és válassza a **Insights (előzetes verzió)**.
+
 ## <a name="view-map-from-azure-monitor"></a>Az Azure Monitor térkép megtekintése
 Az Azure Monitor a térkép funkciót biztosít a virtuális gépek és azok függőségeit tartalmazó globális nézet.  A térkép-funkció eléréséhez az Azure Monitor, hajtsa végre a következő. 
 
@@ -106,7 +121,7 @@ Az Azure Monitor a térkép funkciót biztosít a virtuális gépek és azok fü
 
 ![Az Azure virtuális gépre kiterjedő térkép – áttekintés](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
-Az a **munkaterület** , az oldal tetején található választóval, ha egynél több Log Analytics-munkaterületen válassza a munkaterület, amely a megoldás engedélyezve van, és virtuális gépek jelent. A **csoport** választóval adja vissza az előfizetések, erőforráscsoportok, [számítógépcsoportok](../../azure-monitor/platform/computer-groups.md), és a Virtuálisgép-méretezési csoportok a kijelölt munkaterülethez kapcsolódó számítógépek. A kijelölt csak a térkép funkció vonatkozik, és nem elterjednek teljesítmény vagy a térképen.
+Az a **munkaterület** , az oldal tetején található választóval, ha egynél több Log Analytics-munkaterületen válassza a munkaterület, amely a megoldás engedélyezve van, és virtuális gépek jelent. A **csoport** választóval adja vissza az előfizetések, erőforráscsoportok, [számítógépcsoportok](../../azure-monitor/platform/computer-groups.md), és a kijelölt munkaterülethez kapcsolódó számítógépek virtuálisgép-méretezési csoportok. A kijelölt csak a térkép funkció vonatkozik, és nem elterjednek teljesítmény vagy a térképen.
 
 Alapértelmezés szerint a térképen jeleníti meg az elmúlt 30 percben. Használatával a **TimeRange** választó, lekérdezheti, akár egy óráig bemutatják, hogyan függőségek kikeresi az elmúlt (például az incidens alatt vagy előtt módosítás történt) múltbéli címtartományok esetében.   
 

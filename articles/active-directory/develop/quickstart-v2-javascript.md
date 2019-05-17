@@ -16,16 +16,14 @@ ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 605206682cb70d430773cdbf9ff746eabf594103
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 23003186aa413e313578c57616ae03c435f140e1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190845"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785405"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application-spa"></a>Gyors útmutató: A felhasználók és a JavaScript-egyoldalas alkalmazás (SPA) hozzáférési jogkivonat beszerzése
-
-[!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 Ez a rövid útmutatóban megismerheti, hogyan használhat egy kódmintát, amely bemutatja, hogyan egy JavaScript egyoldalas alkalmazás (SPA) jelentkezzen be személyes, munkahelyi és iskolai fiókok és a Microsoft Graph API vagy minden olyan webes API hívása hozzáférési jogkivonatot kapjon a lesz.
 
@@ -140,7 +138,7 @@ var msalConfig = {
 
 Miután a böngésző betölti az alkalmazást, kattintson a **bejelentkezés**.  Az első alkalommal jelentkezik be, amely kéri, hogy Ön hozzájárul ahhoz, hogy az alkalmazás eléréséhez a profil és a bejelentkezéshez adja meg. A felhasználói profil adatait az oldalon megjelenített megtekintheti a sikeres bejelentkezés.
 
-## <a name="more-information"></a>További információ
+## <a name="more-information"></a>További információk
 
 ### <a name="msaljs"></a>*msal.js*
 
@@ -178,7 +176,7 @@ var msalConfig = {
 var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Ahol  |  |
+> |Ahol (a(z)  |  |
 > |---------|---------|
 > |`ClientId`     |Az Azure Portalon regisztrált alkalmazás azonosítója|
 > |`authority`    | (Nem kötelező) A szolgáltató URL-CÍMÉT a fenti konfigurációs szakaszban leírtak szerint fióktípusok támogatására. Az alapértelmezett szolgáltató van `https://login.microsoftonline.com/common`. |
@@ -203,7 +201,7 @@ myMSALObj.loginPopup(requestObj).then(function (loginResponse) {
 });
 ```
 
-> |Ahol  |  |
+> |Ahol (a(z)  |  |
 > |---------|---------|
 > | `scopes`   | (Nem kötelező) A kért felhasználói beleegyezés bejelentkezési időpontban hatókörök tartalmazza. Például `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni Web API-k (azaz `api://<Application ID>/access_as_user` ). |
 
@@ -231,7 +229,7 @@ myMSALObj.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 });
 ```
 
-> |Ahol  |  |
+> |Ahol (a(z)  |  |
 > |---------|---------|
 > | `scopes`   | A hozzáférési jogkivonatot adott vissza API-hoz, a kért hatóköröket tartalmazza. Például `[ "user.read" ]` Microsoft Graph vagy `[ "<Application ID URL>/scope" ]` egyéni Web API-k (azaz `api://<Application ID>/access_as_user`).|
 

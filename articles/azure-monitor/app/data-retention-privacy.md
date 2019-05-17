@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 05/09/2019
 ms.author: mbullwin
-ms.openlocfilehash: c6a5ec8685de53d7a611328025d5da8e5ce698a3
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 38723a5dd306c2a4b594d95e5cc660d117966bc4
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204891"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518840"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
 
@@ -86,6 +86,9 @@ Ez akkor lehetséges, ha egy [telemetriai processzor beépülő modul](../../azu
 A nyers adatpontokat (vagyis a cikkek, amelyek Analytics-lekérdezést, és vizsgálja meg a keresés) legfeljebb 90 napig őrzi meg. Ha szeretné megőrizni az adatokat, amelyek hosszabb, akkor használhatja [a folyamatos exportálás](../../azure-monitor/app/export-telemetry.md) másolja azt a tárfiókot.
 
 Összesített adatok (azt jelenti, számát, átlagokat és egyéb statisztikai adatok Metrikaböngésző látható), egy 90 napig 1 perces időfelbontási szint megmaradnak.
+
+> [!NOTE]
+> Az Application Insights változó megőrzési már előzetes verzióban érhető el. További információkat [itt](https://feedback.azure.com/forums/357324-application-insights/suggestions/17454031) talál. 
 
 [Hibakeresési pillanatképei](../../azure-monitor/app/snapshot-debugger.md) tizenöt napig tárolja. A megőrzési házirend van beállítva a alkalmazásonként. Ha ez az érték növelése van szüksége, kérheti növelését az Azure Portalon nyissa meg egy támogatási esetet.
 
@@ -190,7 +193,7 @@ Nem javasoljuk, hogy explicit módon beállítása az alkalmazás csak a TLS 1.2
 
 ### <a name="platformlanguage-specific-guidance"></a>Konkrét útmutatást platformon és nyelven
 
-|Platformon és nyelven | Támogatás | További információ |
+|Platformon és nyelven | Támogatás | További információk |
 | --- | --- | --- |
 | Azure App Services  | Támogatott konfigurációra lehet szükség. | Támogatás a 2018 április mutattuk be. A bejelentés a [konfigurációs részletek](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/).  |
 | Azure Function Apps | Támogatott konfigurációra lehet szükség. | Támogatás a 2018 április mutattuk be. A bejelentés a [konfigurációs részletek](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/). |
@@ -237,9 +240,9 @@ Az SDK-k platformok közötti eltérőek lehetnek, és több összetevőt, amely
 
 | A művelet | (Lásd a következő tábla) gyűjtött adatok osztályok |
 | --- | --- |
-| [Application Insights SDK hozzáadása egy .NET webes projekthez][greenbrown] |ServerContext<br/>Következtetni<br/>Teljesítményszámlálók<br/>Kérelmek<br/>**Kivételek**<br/>Munkamenet<br/>felhasználók |
+| [Application Insights SDK hozzáadása egy .NET webes projekthez][greenbrown] |ServerContext<br/>Következtetni<br/>Teljesítményszámlálók<br/>Kérelmek<br/>**Kivételek**<br/>Munkamenet<br/>Felhasználók |
 | [Telepítse az Állapotfigyelőt az IIS-kiszolgálón][redfield] |Függőségek<br/>ServerContext<br/>Következtetni<br/>Teljesítményszámlálók |
-| [Application Insights SDK hozzáadása a Java-webalkalmazás][java] |ServerContext<br/>Következtetni<br/>Kérés<br/>Munkamenet<br/>felhasználók |
+| [Application Insights SDK hozzáadása a Java-webalkalmazás][java] |ServerContext<br/>Következtetni<br/>Lekérés<br/>Munkamenet<br/>Felhasználók |
 | [A JavaScript SDK-t adhat a weblap][client] |ClientContext <br/>Következtetni<br/>Oldal<br/>ClientPerf<br/>Ajax |
 | [Alapértelmezett tulajdonságainak meghatározása][apiproperties] |**Tulajdonságok** összes szabványos és egyéni esemény |
 | [Hívás TrackMetric][api] |Numerikus értékek<br/>**Tulajdonságok** |
@@ -268,7 +271,7 @@ A [platformokhoz készült SDK-k][platforms], tekintse meg a dokumentumokat.
 | Függőségek |Típus (SQL, a HTTP,...), a kapcsolati karakterlánc vagy URI-t, szinkronizálási vagy aszinkron, időtartama, sikeres, SQL-utasítás (az Állapotfigyelőt) |
 | **Kivételek** |Típus, **üzenet**, zásobníky volání, a forrás-fájl és a sor száma, hozzászóláslánc azonosítója |
 | Összeomlások |Id procesu, szülőfolyamat azonosítója, összeomlási szálazonosító; alkalmazás-javítás, a-azonosító, a build;  Kivétel típusa, cím, reason; rejtjelezett szimbólumok, és regisztrál, bináris kezdő és záró címet, bináris fájl neve és elérési útja, cpu-típus |
-| Nyomkövetés |**Üzenet** és súlyossági szint |
+| Híváslánc |**Üzenet** és súlyossági szint |
 | Teljesítményszámlálók |Processzor kihasználtsága, rendelkezésre álló memória, kérelmek gyakorisága, kivételek gyakorisága, folyamat saját bájtjai, átviteli sebessége, kérelem idejével, kérelem-várólista hossza |
 | Rendelkezésre állás |Webes teszt válaszkód, az időtartamot mindegyik teszt. lépés, teszt neve, timestamp, sikeres, válaszideje, teszt helye |
 | SDK-diagnosztika |Nyomkövetési üzenet vagy kivétel |

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: e12b89d0469587d7d7326bbee30f6467ada06bd5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7f184178343f69f522148777752c51afc5c5dcb6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574082"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65790415"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Az Azure SQL adatbázis Premium RS szolgáltatási szint (előzetes verzió) kivezetjük - áttelepítési lehetőségek
 
@@ -27,7 +27,7 @@ A migrálás célhelyek és díjszabási lehetőségeit, amely lehet prémium RS
 
 - szolgáltatásszintek virtuális mag
 
-  A **általános célú** és **üzletileg kritikus fontosságú** a szolgáltatáshoz a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md). Ezek a két szolgáltatási csomagok lehet az általánosan elérhető. A Virtuálismag-alapú vásárlási modell is kínál a **nagy kapacitású** szolgáltatásréteg (nyilvános előzetes verzióban elérhető), amely alkalmazkodik a számítási feladat igényeinek megfelelően az automatikus skálázást adatbázisonként legfeljebb 100 TB-os igény. A nagy kapacitású szolgáltatásszint összehasonlítható a prémium szintű szolgáltatási rétegben lévő i/o-teljesítményt nyújt a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) áron közelebb a prémium RS szolgáltatási szintre.
+  A **általános célú** és **üzletileg kritikus fontosságú** a szolgáltatáshoz a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md). Ezek a két szolgáltatási csomagok lehet az általánosan elérhető. A Virtuálismag-alapú vásárlási modell is kínál a **nagy kapacitású** szolgáltatási rétegben, amely alkalmazkodik a számítási feladat igényeinek megfelelően az automatikus skálázást adatbázisonként legfeljebb 100 TB-os igény. A nagy kapacitású szolgáltatásszint összehasonlítható a prémium szintű szolgáltatási rétegben lévő i/o-teljesítményt nyújt a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) áron közelebb a prémium RS szolgáltatási szintre.
 - Dev/Test-díjszabás
 
   [Dev/test díjszabása](https://azure.microsoft.com/pricing/dev-test/) és díjszabás licenccel akár 55 % megtakarítás biztosít a Visual Studio-előfizetésében.
@@ -70,10 +70,10 @@ Azt javasoljuk, hogy az i/o-igényes egyetlen adatbázisok migrálását a Virtu
 
 |**Ha jelenleg...**|**Át összehasonlítható Virtuálismag-alapú...**|**Át összehasonlítható DTU-alapú...**|
 |---|---|---|
-|1 prémium RS|(Előzetes verzió) Nagy kapacitású 1 virtuális mag (Gen4) vagy a kritikus fontosságú üzleti-1 virtuális mag (Gen4)|1 prémium|
-|2. prémium RS|(Előzetes verzió) Nagy kapacitású 2 virtuális mag (Gen4) vagy üzleti kritikus 2 virtuális mag (Gen4|Premium 2|
-|Prémium RS 4|(Előzetes verzió) Nagy kapacitású 4 virtuális magra jogosult (Gen4) vagy üzleti kritikus 4 virtuális magra jogosult (Gen4)|Prémium szintű 4
-|Prémium RS 6|(Előzetes verzió) Nagy kapacitású 6 virtuális magra jogosult (Gen4) vagy a kritikus fontosságú üzleti-6 virtuális magra jogosult (Gen4)|Prémium szintű 6|
+|1 prémium RS| Nagy kapacitású 1 virtuális mag (Gen4) vagy a kritikus fontosságú üzleti-1 virtuális mag (Gen4)|1 prémium|
+|2. prémium RS| Nagy kapacitású 2 virtuális mag (Gen4) vagy üzleti kritikus 2 virtuális mag (Gen4|Premium 2|
+|Prémium RS 4| Nagy kapacitású 4 virtuális magra jogosult (Gen4) vagy üzleti kritikus 4 virtuális magra jogosult (Gen4)|Prémium szintű 4
+|Prémium RS 6| Nagy kapacitású 6 virtuális magra jogosult (Gen4) vagy a kritikus fontosságú üzleti-6 virtuális magra jogosult (Gen4)|Prémium szintű 6|
 
 |**Ha jelenleg...**|**Át összehasonlítható Virtuálismag-alapú...**|**Át összehasonlítható DTU-alapú...**|
 |---|---|---|

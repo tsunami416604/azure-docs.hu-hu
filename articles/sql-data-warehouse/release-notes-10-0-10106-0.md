@@ -5,27 +5,48 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 04/10/2019
+ms.date: 05/13/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 4c5279d1ddf3153493ebc01dc010114ff7e6b5e7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 519cec0951305db60e0994134f8c680f6c560752
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917229"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792416"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Az Azure SQL Data Warehouse kibocsátási megjegyzései
 
 Ez a cikk összefoglalja a új funkciókat és fejlesztéseket a legutóbbi kiadásaiban [Azure SQL Data Warehouse](sql-data-warehouse-overview-what-is.md). A cikk is jelentős tartalmi frissítések, amelyek nem közvetlenül a kiadásra, hanem az időkeretből közzétett sorolja fel. Más Azure-szolgáltatások fejlesztései, lásd: [Szolgáltatásfrissítésekkel](https://azure.microsoft.com/updates).
 
+## <a name="check-your-azure-sql-data-warehouse-version"></a>Az Azure SQL Data Warehouse-verzió ellenőrzése
+
+Az adatraktár SQL Server Management Studio (SSMS) használatával csatlakozhat, és futtassa a következő szintaxist az SQL Data Warehouse aktuális verzióját.
+
+```sql
+SELECT @@VERSION AS 'SQL Data Warehouse';
+```
+
+Példa a kimenetre: ![Az SQL Data Warehouse-verzió](./media/release-notes/sql_data_warehouse_version.png)
+
+Az Azure SQL Data Warehouse használata az azonosított, erősítse meg, amely a kiadási dátum alkalmazták.
+
+## <a name="may-2019"></a>2019. május
+
+| Szolgáltatás fejlesztései | Részletek |
+| --- | --- |
+|**Dinamikus adatmaszkolás (előzetes verzió)**|Dinamikus adatok maszkolása (DDM) megakadályozza a jogosulatlan elérését, a bizalmas adatok az adattárház által obfuscating, a működés közbeni a lekérdezési eredményekben, megadhat maszkolási szabályok alapján. További információkért lásd: [SQL Database dinamikus adatmaszkolása](/azure/sql-database/sql-database-dynamic-data-masking-get-started).|
+|**Számítási feladatok fontossági már általánosan elérhető**|Számítási feladat felügyeleti besorolást és a fontosság teszi lehetővé a lekérdezések futtatása sorrendje befolyásolja. A számítási feladatok fontossági további információkért lásd: a [besorolási](sql-data-warehouse-workload-classification.md) és [fontosság](sql-data-warehouse-workload-importance.md) című áttekintő cikkeket a dokumentációban. Tekintse meg a [MUNKATERHELÉS-OSZTÁLYOZÓ létrehozása](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) doc is.<br/><br/>Tekintse meg a számítási feladatok fontossági in action rendezvényen a videók alatt:<br/> -[Számítási feladatok tartománykezelési fogalmaival](https://www.youtube.com/embed/QcCRBAhoXpM)<br/> -[Munkaterhelés-felügyeleti forgatókönyvek](https://www.youtube.com/embed/_2rLMljOjw8)|
+|**A bővítés T-SQL**|A T-SQL nyelv támadási SQL Data warehouse-hoz kibővített közé tartozik a támogatása: </br> - [IDŐZÓNA:](/sql/t-sql/queries/at-time-zone-transact-sql?view=azure-sqldw-latest)</br> - [TRIM](/sql/t-sql/functions/trim-transact-sql?view=azure-sqldw-latest)|
+|**JSON-függvények**|Üzleti elemzők használhatják a jól ismert T-SQL nyelv lekérdezése és kezelik a JSON-adatok a következő új JSON-funkciók használata az Azure Data Warehouse-ként formázott dokumentumok:</br> - [ISJSON](/sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest)</br> - [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest)</br> -  [JSON_MODIFY](/sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest)</br> - [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest)|
+|**Gyorsítótár-(előzetes verzió) eredménye**|Eredményhalmaz gyorsítótárazás lehetővé teszi, hogy miközben idő-elemzés az üzleti adatelemzők és jelentéskészítő felhasználók azonnali lekérdezések válaszidejét. További információkért lásd:</br> - [ALTER DATABASE (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest)</br> - [Az ALTER DATABASE SET beállításai (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)</br> - [SET RESULT SET CACHING (Transact-SQL)](/sql/t-sql/statements/set-result-set-caching-transact-sql?view=azure-sqldw-latest)</br> - [SET Statement (Transact-SQL)](/sql/t-sql/statements/set-statements-transact-sql)</br> - [sys.databases (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?view=azure-sqldw-latest)|
+
 ## <a name="march-2019"></a>2019. március
 
 | Szolgáltatás fejlesztései | Részletek |
 | --- | --- |
-|**Számítási feladatok fontossági immár Gen2 előzetes verzió**|Számítási feladatok fontossági kérelmek besorolása fontosság használatával lehetővé teszi az adatmérnökök. A magasabb fontossági kérelmek garantáltan gyorsabb hozzáférés az erőforrásokhoz, SLA betartása segíti.  Számítási feladatok fontossági lehetővé teszi, hogy a nagy üzleti érték munka SLA betartása kevesebb erőforrást, megosztott környezetben.<br/><br/>Számítási feladat felügyeleti besorolást és a fontosság preview buildek 2019. április 9-es vagy újabb kiadás dátummal rendelkező szól. Felhasználók ne buildek ennél a dátumnál korábban munkaterhelés-kezelés teszteléshez. Ha a build megadása nem képes a számítási feladatok kezeléséhez megállapításához futtassa `select @@version` az SQL Data Warehouse-példányhoz való csatlakozáskor.</br></br>A számítási feladatok fontossági további információkért lásd: a [besorolási](sql-data-warehouse-workload-classification.md) és [fontosság](sql-data-warehouse-workload-importance.md) című áttekintő cikkeket a dokumentációban. Tekintse meg a [MUNKATERHELÉS-OSZTÁLYOZÓ létrehozása](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) doc is.<br/><br/>Tekintse meg a számítási feladatok fontossági in action rendezvényen a videók alatt:<br/>[Számítási feladatok tartománykezelési fogalmaival](  https://www.youtube.com/embed/QcCRBAhoXpM)<br/>[Munkaterhelés-felügyeleti forgatókönyvek](https://www.youtube.com/embed/_2rLMljOjw8)|
 |**Adatfelderítés és besorolás**|Nyilvános előzetes verzióban elérhető az Adatfelderítés és besorolás az Azure SQL Data Warehouse-ban. Bizalmas adatok és az adatvédelmet, az ügyfelek védelme rendkívül fontos. Növekedésével az üzleti és az ügyfél-adategységeket, akkor válik Kezelhetetlen felderítésére, besorolására és az adatok védelme. Bevezetünk natív módon az Azure SQL Data Warehouse az adatok felderítése és besorolása funkció révén könnyebben kezelhető az adatok védelmének. Ennek a funkciónak az alábbi előnyei vannak:<br/>&bull; &nbsp; Értekezlet data adatvédelmi szabványok és az előírt megfelelőségi követelmények teljesítését.<br/>&bull; &nbsp; Hozzáférés korlátozása és adatok biztonságának megerősítése warehouses tartalmazó, szigorúan bizalmas adatokhoz.<br/>&bull; &nbsp; Figyelés és riasztás a bizalmas adatokhoz való rendellenes hozzáférést.<br/>&bull; &nbsp; A Vizualizáció egy központi irányítópulton, az Azure Portalon tárolt bizalmas adatait. </br></br>Adatfelderítés és besorolás érhető el az Azure SQL Data Warehouse minden Azure-régióban, beleértve a biztonságirés-értékelési és fenyegetés-észlelési speciális adatbiztonság része. Adatfelderítés és besorolás kapcsolatos további információkért lásd: a [blogbejegyzés](https://azure.microsoft.com/blog/announcing-public-preview-of-data-discovery-classification-for-microsoft-azure-sql-data-warehouse/) és tájékoztatást az online [dokumentáció](/azure/sql-database/sql-database-data-discovery-and-classification).|
 |**CSOPORTOSÍTÁSI SZEMPONT ÖSSZEGZÉSE**|ÖSSZESÍTŐ már a csoportosítás lehetőségét támogatja az Azure Data Warehouse.   CSOPORT által összesítése csoportot hoz létre minden egyes kombinációjához oszlop kifejezésében. A GROUP BY is "összesíti" az eredmények rész- és végösszegek be. A GROUP BY függvény dolgozza fel a jobbról balra, amelyen létrehozza csoportok és aggregation(s) oszlop kifejezések számának csökkentésével.  Az oszlopok sorrendjét hatással van az összesítő kimeneti, és hatással lehet az eredményhalmaz sorok számát.<br/><br/>A csoport által összesítése további információkért lásd: [GROUP BY (Transact-SQL)](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest)
 |**Alkalmazott DWU-és CPU-portál mérőszámai pontosság jobb legyen**|Az SQL Data Warehouse jelentősen javítja a metrika pontosságát az Azure Portalon.  Ebben a kiadásban a Processzor és a DWU használt metrikai definíciója a számítási feladat megfelelően megfelelően az összes számítási csomópont tartalmazza. A javítás előtt metrikaértékek undereported volt folyamatban. Várt alkalmazott DWU növelését és a CPU-metrikák az Azure Portalon. |

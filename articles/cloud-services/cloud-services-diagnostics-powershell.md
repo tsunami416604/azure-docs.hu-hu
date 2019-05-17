@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: jeconnoc
-ms.openlocfilehash: b20fa7a1f43369cde85c2535637eec7ceb1d3c29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 13a855c5770281e2578523bfc1813b2e03df6651
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60337297"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65539235"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Diagnosztika engedélyezése az Azure Cloud Services szolgáltatással a PowerShell használatával
 Alkalmazásnaplók, például a diagnosztikai adatokat gyűjthet a teljesítményszámlálók stb egy felhőalapú szolgáltatásából, az Azure Diagnostics bővítmény használatával. Ez a cikk ismerteti az Azure diagnosztikai bővítmény engedélyezése egy felhőszolgáltatás, PowerShell-lel.  Lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview) esetében ez a cikk szükséges előfeltételeket.
@@ -85,7 +85,7 @@ foreach ($extPath in $diagnosticsExtensions)
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration $diagnosticsConfigurations
 ```
 
-A Visual Studio online-hoz hasonló megközelítést alkalmaz a diagnosztikai bővítményt a Felhőszolgáltatások automatikus központi telepítéséhez. Lásd: [Publish-AzureCloudDeployment.ps1](https://github.com/Microsoft/vso-agent-tasks/blob/master/Tasks/AzureCloudPowerShellDeployment/Publish-AzureCloudDeployment.ps1) kapcsolatos átfogó példát.
+A Visual Studio online-hoz hasonló megközelítést alkalmaz a diagnosztikai bővítményt a Felhőszolgáltatások automatikus központi telepítéséhez. Lásd: [Publish-AzureCloudDeployment.ps1](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureCloudPowerShellDeploymentV1/Publish-AzureCloudDeployment.ps1) kapcsolatos átfogó példát.
 
 Ha nincs `StorageAccount` volt megadva a diagnosztikai konfiguráció, akkor kell megadni a *StorageAccountName* paramétert a parancsmaghoz. Ha a *StorageAccountName* paraméter meg van adva, akkor a parancsmag mindig a paramétert, és nem az egyik a diagnosztikai konfigurációs fájlban megadott megadott storage-fiókot fogja használni.
 
@@ -120,13 +120,13 @@ Get-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
 ## <a name="remove-diagnostics-extension"></a>A diagnosztikai bővítmény eltávolítása
-Egy felhőszolgáltatás, használhatja a diagnosztika kikapcsolása az [Remove-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0) parancsmagot.
+Kapcsolja ki a felhőszolgáltatások diagnosztikai, használhatja a [Remove-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0) parancsmagot.
 
 ```powershell
 Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
-Ha engedélyezte a diagnosztikai bővítmény használatával *Set-AzureServiceDiagnosticsExtension* vagy a *New-AzureServiceDiagnosticsExtensionConfig* nélkül a *szerepkör*paramétert, akkor eltávolíthatja a bővítmény használatával *Remove-AzureServiceDiagnosticsExtension* nélkül a *szerepkör* paraméter. Ha a *szerepkör* paraméter lett megadva, amikor engedélyezi a bővítményt, akkor azt is használnia kell a bővítmény eltávolításakor.
+Ha engedélyezte a diagnosztikai bővítmény használatával *Set-AzureServiceDiagnosticsExtension* vagy a *New-AzureServiceDiagnosticsExtensionConfig* nélkül a *szerepkör*paramétert, akkor eltávolíthatja a bővítmény használatával *Remove-AzureServiceDiagnosticsExtension* nélkül a *szerepkör* paraméter. Ha a *szerepkör* paraméter lett megadva, a bővítmény engedélyezésekor, akkor azt is használnia kell a bővítmény eltávolításakor.
 
 A diagnosztika bővítmény egyes szerepkörökből való eltávolítása:
 

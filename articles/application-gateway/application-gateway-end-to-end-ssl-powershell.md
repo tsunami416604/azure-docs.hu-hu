@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: a4ce1ad347742886e7d89a32bbeb60c2e0281409
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 8c715cb84dff6e2e739de59aba33041ec1b8db52
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198563"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786284"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Végpontok közötti SSL konfigurálása az Application Gateway a PowerShell használatával
 
@@ -38,7 +38,7 @@ Ebben a forgatókönyvben lesz:
 * Hozzon létre két alhálózattal nevű **appgwsubnet** és **appsubnet**.
 * Hozzon létre egy kis application gateway támogató végpontok közötti SSL-titkosítást, a korlátok az SSL protokoll verziója és a titkosító csomagok.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -231,6 +231,69 @@ Az application gateway az előző lépések segítségével hozzon létre. Az á
 $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
 ```
 
+## <a name="apply-a-new-certificate-if-the-back-end-certificate-is-expired"></a>Egy új tanúsítványt is érvényesek, ha a háttér-tanúsítvány lejárt
+
+Ez az eljárás használatával új tanúsítványt is érvényesek, ha a háttér-tanúsítvány lejárt.
+
+1. Az Alkalmazásátjáró frissítése lekéréséhez.
+
+   ```powershell
+   $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
+   ```
+   
+2. A .cer fájlt, amely tartalmazza a tanúsítvány nyilvános kulcsát az új tanúsítvány-erőforrás hozzáadása, és ugyanazt a tanúsítványt a figyelőhöz, az application gateway SSL-lezárást a hozzáadott is lehet.
+
+   ```powershell
+   Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
+   ```
+    
+3. Az új hitelesítési tanúsítvány objektum lekérése egy változóba (típusnév: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate).
+
+   ```powershell
+   $AuthCert = Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name NewCert
+   ```
+ 
+ 4. Rendelje hozzá az új tanúsítványt a **BackendHttp** beállítást, majd tekintse át, a $AuthCert változókhoz. (Adja meg a HTTP-beállítás neve, amelyet módosítani szeretne.)
+ 
+   ```powershell
+   $out= Set-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $gw -Name "HTTP1" -Port 443 -Protocol "Https" -CookieBasedAffinity Disabled -AuthenticationCertificates $Authcert
+   ```
+    
+ 5. Véglegesítse a módosítást az application gatewayre, és adja át az új konfigurációt tartalmazott a $out változóhoz.
+ 
+   ```powershell
+   Set-AzApplicationGateway -ApplicationGateway $gw  
+   ```
+
+## <a name="remove-an-unused-expired-certificate-from-http-settings"></a>A fel nem használt lejárt tanúsítvány eltávolítása HTTP-beállítások
+
+Ezzel az eljárással nem használt lejárt tanúsítvány eltávolítása HTTP-beállítások.
+
+1. Az Alkalmazásátjáró frissítése lekéréséhez.
+
+   ```powershell
+   $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
+   ```
+   
+2. Listázza a hitelesítési tanúsítvány, amely az eltávolítani kívánt nevét.
+
+   ```powershell
+   Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw | select name
+   ```
+    
+3. Távolítsa el a hitelesítési tanúsítvány egy application gateway.
+
+   ```powershell
+   $gw=Remove-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name ExpiredCert
+   ```
+ 
+ 4. Véglegesítse a módosítást.
+ 
+   ```powershell
+   Set-AzApplicationGateway -ApplicationGateway $gw
+   ```
+
+   
 ## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>A meglévő application gateway SSL-protokollverziók korlátozása
 
 Az előző lépések végrehajtásának egy alkalmazás létrehozásának teljes körű SSL-lel, és bizonyos SSL-protokollverziók letiltása. A következő példa letiltja az egyes SSL-szabályzatokat egy meglévő alkalmazásátjárón.

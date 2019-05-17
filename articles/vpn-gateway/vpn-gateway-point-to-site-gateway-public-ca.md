@@ -2,18 +2,17 @@
 title: Nyilvános hitelesítésszolgáltató tanúsítványokat P2S átjárók való áttérés |} Az Azure VPN Gateway |} A Microsoft Docs
 description: Ez a cikk segít sikeres átállás alapjai P2S átjárók új nyilvános hitelesítésszolgáltató tanúsítványokat.
 services: vpn-gateway
-author: WenJason
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-origin.date: 03/12/2019
-ms.date: 04/29/2019
-ms.author: v-jay
-ms.openlocfilehash: 29f2aeee53e07adfeafb8017c489c0b830f24b36
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 03/15/2019
+ms.author: cherylmc
+ms.openlocfilehash: ea3ee00e60ae5eaff5c7220e9502da11358c8793
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60859647"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786732"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>Váltás nyilvános hitelesítésszolgáltatói átjárótanúsítványra a P2S-kapcsolatok esetében
 
@@ -30,6 +29,8 @@ Korábban az önaláírt tanúsítvány az átjáró (kiadott a színfalak mög�
 Ez a változás által érintett csak a régebbi átjárók. Ha az átjáró tanúsítványt állítjuk át, kommunikációs vagy bejelentési kap az Azure Portalon. Ellenőrizheti, hogy ha az átjáró érinti ez a cikk lépéseit használva talál.
 
 > [!IMPORTANT]
+> **Ez a változás a 2019. május 12. fejeződött be.**
+>
 > Az átállás. március 12 2019 18:00 (UTC) már van ütemezve. Ha inkább egy másik időtartomány hozhat létre egy támogatási esetet. Győződjön meg arról, és a kérés véglegesítése legalább 24 óra.  A következő windows kérhet:
 >
 > * A február 25 06:00 (UTC)
@@ -37,7 +38,7 @@ Ez a változás által érintett csak a régebbi átjárók. Ha az átjáró tan
 > * Március 1-06:00 (UTC)
 > * Március 1-18:00 (UTC)
 >
-> **Az összes többi átjáró veszi át a március 12 2019 18:00 UTC díjtól**.
+> Az összes többi átjáró veszi át a március 12 2019 díjtól 18:00 (UTC).
 >
 > Ügyfelek fog kapni egy e-mailt, az átjáró az áttérési folyamat befejezése után.
 > 

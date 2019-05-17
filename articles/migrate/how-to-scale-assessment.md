@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: raynew
-ms.openlocfilehash: 1b03cf648ad65960cce4ffc874cf32ad91ef7dc1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fe86c758dbf05f91d53cb918b7794c12ab3f39bc
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596732"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518759"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Nagy méretű VMware-környezet felderítése és értékelése
 
@@ -52,13 +52,13 @@ A virtuális gépek felderítése kíván száma alapján, hozzon létre több p
 Egyszeri felderítés (most már elavult), a felderítés tűz működik, és felejtse el modell, miután megtörtént egy felderítési, használhatja ugyanazt a gyűjtő adatokat gyűjteni a különböző vCenter-kiszolgáló, vagy annak elküldése egy másik migrálási projekt.
 
 > [!NOTE]
-> A felderítés egyszeri felderítés berendezés elavulttá vált, ez a módszer támaszkodtak a vCenter Server statisztikai beállításait teljesítmény adatok pont rendelkezésre állását és virtuális gépek áttelepítése az Azure-ba való korrigáljuk méretezésének eredményezett átlagos teljesítményszámlálók gyűjtése. Javasoljuk, hogy helyezze át a felderítés egyszeri felderítés berendezésre.
+> A felderítés egyszeri felderítés berendezés elavulttá vált, ez a módszer támaszkodtak a vCenter Server statisztikai beállításait teljesítmény adatok pont rendelkezésre állását és virtuális gépek áttelepítése az Azure-ba való korrigáljuk méretezésének eredményezett átlagos teljesítményszámlálók gyűjtése. Javasoljuk, hogy helyezze át a folyamatos felderítési berendezésre.
 
 Tervezze meg a felderítések és értékelések az alábbi korlátok alapján:
 
 | **Entitás** | **Gép korlátja** |
 | ---------- | ----------------- |
-| Project    | 1,500             |
+| PROJEKT    | 1,500             |
 | Detektálás  | 1,500             |
 | Értékelés | 1,500             |
 

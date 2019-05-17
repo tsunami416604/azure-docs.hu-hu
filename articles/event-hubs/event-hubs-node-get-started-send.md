@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: spelluru
-ms.openlocfilehash: f03bfde8f7ea37989756ad47678369e94b831438
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e67be59e0ed78b2080986acb73a33fc87599c9d3
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203227"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65539344"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs"></a>Események küldése vagy események fogadása az Azure Event Hubs Node.js használatával
 
@@ -34,185 +34,145 @@ Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szükség
 - NODE.js-verzió 8.x és a magasabb. Töltse le a legújabb LTS verziót [ https://nodejs.org ](https://nodejs.org).
 - A Visual Studio Code-ot (ajánlott) vagy bármely más IDE
 - **Event Hubs-névtér és eseményközpont létrehozása**. Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és eseményközpont létrehozásához hajtsa végre az eljárást a [Ez a cikk](event-hubs-create.md), majd folytassa a következő lépéseket ebben az oktatóanyagban. Ezt követően a kapcsolati sztring lekérése az eseményközpont-névtér kövesse a cikkben szereplő: [Kapcsolati sztring lekérése](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Az oktatóanyag későbbi részében használja a kapcsolati karakterláncot.
-- Klónozás a [minta GitHub-adattárban](https://github.com/Azure/azure-event-hubs-node) a gépen. 
 
 
-## <a name="send-events"></a>Események küldése
-Ez a szakasz bemutatja, hogyan hozhat létre egy Node.js-alkalmazás, amely elküldi az eseményeket egy eseményközpontba. 
-
-### <a name="install-nodejs-package"></a>Node.js-csomag telepítése
-Telepítse a Node.js-csomagot az Azure Event hubs a gépen. 
+### <a name="install-npm-package"></a>Telepítse az npm-csomag
+Telepítése a [npm-csomag az Event Hubs](https://www.npmjs.com/package/@azure/event-hubs), nyisson meg egy parancssort, amelynek `npm` annak elérési úton, módosítsa a könyvtárat a mappára, ahol szeretné a mintákban rendelkezik, és futtassa a parancsot
 
 ```shell
 npm install @azure/event-hubs
 ```
 
-Ha a Git-tárház még nem klónozható, az előfeltételek között ismertetett módon, töltse le a [minta](https://github.com/Azure/azure-event-hubs-node/tree/master/client/examples) a Githubról. 
-
-Az SDK-val rendelkeznie klónozta tartalmaz több minták azt mutatják be, hogyan küldhet eseményeket egy eseményközpontba node.js használatával. Ez a rövid a **simpleSender.js** példa. Figyelje meg a fogadott események, nyisson meg egy másik terminál, és események fogadása használatával a [mintát kapni](event-hubs-node-get-started-receive.md).
-
-1. Nyissa meg a projekt a Visual Studio Code-ot. 
-2. Hozzon létre egy fájlt **.env** alatt a **ügyfél** mappát. Másolja és illessze be a minta környezeti változókat a **sample.env** a gyökérmappában.
-3. Az eseményközpont kapcsolati karakterláncával, a eseményközpont neve és a storage-végpont konfigurálása. Az eseményközpont kapcsolati karakterlánc beszerzésével kapcsolatban [kapcsolati sztring lekérése](event-hubs-create.md#create-an-event-hubs-namespace).
-4. Az Azure CLI-t, navigáljon a **ügyfél** mappa elérési útja. Csomópont-csomagok telepítéséhez, és állítsa össze a projektet a következő parancsok futtatásával:
-
-    ```shell
-    npm i
-    npm run build
-    ```
-5. Indítsa el az események küldése a következő parancs futtatásával: 
-
-    ```shell
-    node dist/examples/simpleSender.js
-    ```
-
-
-### <a name="review-the-sample-code"></a>Tekintse át a mintakódot 
-Tekintse át a mintakódot a simpleSender.js fájlban, az eseményeket küld egy eseményközpontnak.
-
-```javascript
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const lib_1 = require("../lib");
-const dotenv = require("dotenv");
-dotenv.config();
-const connectionString = "EVENTHUB_CONNECTION_STRING";
-const entityPath = "EVENTHUB_NAME";
-const str = process.env[connectionString] || "";
-const path = process.env[entityPath] || "";
-
-async function main() {
-    const client = lib_1.EventHubClient.createFromConnectionString(str, path);
-    const data = {
-        body: "Hello World!!"
-    };
-    const delivery = await client.send(data);
-    console.log(">>> Sent the message successfully: ", delivery.tag.toString());
-    console.log(delivery);
-    console.log("Calling rhea-promise sender close directly. This should result in sender getting reconnected.");
-    await Object.values(client._context.senders)[0]._sender.close();
-    // await client.close();
-}
-
-main().catch((err) => {
-    console.log("error: ", err);
-});
-
-```
-
-Fontos, hogy állítsa be a környezeti változókat a parancsfájl futtatása előtt. A parancssorban a következő példában látható módon konfigurálhatja őket, vagy a [dotenv csomag](https://www.npmjs.com/package/dotenv#dotenv). 
-
-```shell
-// For windows
-set EVENTHUB_CONNECTION_STRING="<your-connection-string>"
-set EVENTHUB_NAME="<your-event-hub-name>"
-
-// For linux or macos
-export EVENTHUB_CONNECTION_STRING="<your-connection-string>"
-export EVENTHUB_NAME="<your-event-hub-name>"
-```
-
-## <a name="receive-events"></a>Események fogadása
-Ez az oktatóanyag bemutatja, hogyan események fogadása az event hubs az Azure [EventProcessorHost](event-hubs-event-processor-host.md) Node.js-alkalmazásokban. Az EventProcessorHost (EPH) segítségével hatékonyan események fogadása az event hubs az eseményközpont fogyasztói csoportja összes partíciójára fogadók létrehozásával. Ez az ellenőrzőpontok metaadatait a fogadott üzenetek rendszeres időközönként egy Azure Storage-blobba. Ez a megközelítés egyszerűen folytatja az üzenetek fogadása kitöltését egy későbbi időpontban.
-
-Ez a rövid útmutató kódja megtalálható [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/processor).
-
-### <a name="clone-the-git-repository"></a>A Git-tárház klónozása
-Töltse le vagy klónozza a [minta](https://github.com/Azure/azure-event-hubs-node/tree/master/processor/examples/) a Githubról. 
-
-### <a name="install-the-eventprocessorhost"></a>Az EventProcessorHost telepítése
-Az EventProcessorHost az Event Hubs-modul telepítése. 
+Telepítése a [npm-csomag az Event Processor Host](https://www.npmjs.com/package/@azure/event-processor-host)futtassa az alábbi parancs helyett
 
 ```shell
 npm install @azure/event-processor-host
 ```
 
-### <a name="receive-events-using-eventprocessorhost"></a>Események fogadása EventProcessorHost használatával
-Az SDK-val rendelkeznie klónozta tartalmaz több minták azt mutatják be, hogyan események fogadása az event hubs Node.js használatával. Ez a rövid a **singleEPH.js** példa. Figyelje meg a fogadott események, nyisson meg egy másik terminál, és események a [küldjön mintául szolgáló](event-hubs-node-get-started-send.md).
+## <a name="send-events"></a>Események küldése
 
-1. Nyissa meg a projekt a Visual Studio Code-ot. 
-2. Hozzon létre egy fájlt **.env** alatt a **processzor** mappát. Másolja és illessze be a minta környezeti változókat a **sample.env** a gyökérmappában.
-3. Az eseményközpont kapcsolati karakterláncával, a eseményközpont neve és a storage-végpont konfigurálása. Az eseményközpont a kapcsolati karakterlánc másolhatja **kapcsolati karakterlánc – elsődleges** kulcsot **RootManageSharedAccessKey** az Event Hub oldalon az Azure Portalon. Részletes lépéseiért lásd: [kapcsolati sztring lekérése](event-hubs-create.md#create-an-event-hubs-namespace).
-4. Az Azure CLI-t, navigáljon a **processzor** mappa elérési útja. Csomópont-csomagok telepítéséhez, és állítsa össze a projektet a következő parancsok futtatásával:
+Ez a szakasz bemutatja, hogyan hozhat létre egy Node.js-alkalmazás, amely elküldi az eseményeket egy eseményközpontba. 
 
-    ```shell
-    npm i
-    npm run build
+1. Nyissa meg a kedvenc szerkesztőjében, például [Visual Studio Code](https://code.visualstudio.com). 
+2. Hozzon létre egy fájlt nevű `send.js` , és illessze be az alábbi kódot oda.
+    ```javascript
+    const { EventHubClient } = require("@azure/event-hubs");
+
+    // Define connection string and the name of the Event Hub
+    const connectionString = "";
+    const eventHubsName = "";
+
+    async function main() {
+      const client = EventHubClient.createFromConnectionString(connectionString, eventHubsName);
+
+      for (let i = 0; i < 100; i++) {
+        const eventData = {body: `Event ${i}`};
+        console.log(`Sending message: ${eventData.body}`);
+        await client.send(eventData);
+      }
+
+      await client.close();
+    }
+
+    main().catch(err => {
+      console.log("Error occurred: ", err);
+    });
     ```
-5. Események fogadása az event processzor gazdagéppel a következő parancs futtatásával:
+3. Adja meg a fenti kód a kapcsolati karakterláncot, és az Eseményközpont neve
+4. Ezután futtassa a parancsot `node send.js` hajtsa végre a fájlt a parancssorban. Ez 100 eseményeket küld az Event Hubs
 
-    ```shell
-    node dist/examples/singleEph.js
+Gratulálunk! Események küldött egy eseményközpontba.
+
+
+## <a name="receive-events"></a>Események fogadása
+
+Ez a szakasz bemutatja, hogyan hozhat létre egy Node.js-alkalmazás, amely fogadja az eseményeket az eseményközpontban az alapértelmezett felhasználói csoport egyetlen partícióról. 
+
+1. Nyissa meg a kedvenc szerkesztőjében, például [Visual Studio Code](https://code.visualstudio.com). 
+2. Hozzon létre egy fájlt nevű `receive.js` , és illessze be az alábbi kódot oda.
+    ```javascript
+    const { EventHubClient, delay } = require("@azure/event-hubs");
+
+    // Define connection string and related Event Hubs entity name here
+    const connectionString = "";
+    const eventHubsName = "";
+
+    async function main() {
+      const client = EventHubClient.createFromConnectionString(connectionString, eventHubsName);
+      const allPartitionIds = await client.getPartitionIds();
+      const firstPartitionId = allPartitionIds[0];
+
+      const receiveHandler = client.receive(firstPartitionId, eventData => {
+        console.log(`Received message: ${eventData.body} from partition ${firstPartitionId}`);
+      }, error => {
+        console.log('Error when receiving message: ', error)
+      });
+
+      // Sleep for a while before stopping the receive operation.
+      await delay(15000);
+      await receiveHandler.stop();
+
+      await client.close();
+    }
+
+    main().catch(err => {
+      console.log("Error occurred: ", err);
+    });
     ```
+3. Adja meg a kapcsolati karakterláncot, és az Eseményközpont nevével, a fenti kódban.
+4. Ezután futtassa a parancsot `node receive.js` hajtsa végre a fájlt a parancssorban. Ez eseményeit fogja megkapni a partíciók az Eseményközpont alapértelmezett felhasználói csoport egyik
 
-### <a name="review-the-sample-code"></a>Tekintse át a mintakódot 
-A következő mintakód segítségével események fogadása az event hubs node.js használatával. Manuálisan hozzon létre egy sampleEph.js fájlt, és futtatni egy eseményközpontba események fogadására. 
+Gratulálunk! Sikeresen fogadott események eseményközpontból.
 
-  ```javascript
-  const { EventProcessorHost, delay } = require("@azure/event-processor-host");
+## <a name="receive-events-using-event-processor-host"></a>Események fogadása Event Processor Host használatával
 
-  const path = process.env.EVENTHUB_NAME;
-  const storageCS = process.env.STORAGE_CONNECTION_STRING;
-  const ehCS = process.env.EVENTHUB_CONNECTION_STRING;
-  const storageContainerName = "test-container";
-  
-  async function main() {
-    // Create the Event Processor Host
-    const eph = EventProcessorHost.createFromConnectionString(
-      EventProcessorHost.createHostName("my-host"),
-      storageCS,
-      storageContainerName,
-      ehCS,
-      {
-        eventHubPath: path,
-        onEphError: (error) => {
-          console.log("This handler will notify you of any internal errors that happen " +
-          "during partition and lease management: %O", error);
+Ez a szakasz bemutatja, hogyan események fogadása az event hubs az Azure [EventProcessorHost](event-hubs-event-processor-host.md) Node.js-alkalmazásokban. Az EventProcessorHost (EPH) segítségével hatékonyan események fogadása az event hubs az eseményközpont fogyasztói csoportja összes partíciójára fogadók létrehozásával. Ez az ellenőrzőpontok metaadatait a fogadott üzenetek rendszeres időközönként egy Azure Storage-blobba. Ez a megközelítés egyszerűen folytatja az üzenetek fogadása kitöltését egy későbbi időpontban.
+
+1. Nyissa meg a kedvenc szerkesztőjében, például [Visual Studio Code](https://code.visualstudio.com). 
+2. Hozzon létre egy fájlt nevű `receiveAll.js` , és illessze be az alábbi kódot oda.
+    ```javascript
+    const { EventProcessorHost, delay } = require("@azure/event-processor-host");
+
+    // Define connection string and related Event Hubs entity name here
+    const eventHubConnectionString = "";
+    const eventHubName = "";
+    const storageConnectionString = "";
+
+    async function main() {
+      const eph = EventProcessorHost.createFromConnectionString(
+        "my-eph",
+        storageConnectionString,
+        "my-storage-container-name",
+        eventHubConnectionString,
+        {
+          eventHubPath: eventHubName,
+          onEphError: (error) => {
+            console.log("[%s] Error: %O", error);
+          }
         }
-      }
-    );
-    let count = 0;
-    // Message event handler
-    const onMessage = async (context/*PartitionContext*/, data /*EventData*/) => {
-      console.log(">>>>> Rx message from '%s': '%s'", context.partitionId, data.body);
-      count++;
-      // let us checkpoint every 100th message that is received across all the partitions.
-      if (count % 100 === 0) {
-        return await context.checkpoint();
-      }
-    };
-    // Error event handler
-    const onError = (error) => {
-      console.log(">>>>> Received Error: %O", error);
-    };
-    // start the EPH
-    await eph.start(onMessage, onError);
-    // After some time let' say 2 minutes
-    await delay(120000);
-    // This will stop the EPH.
-    await eph.stop();
-  }
-  
-  main().catch((err) => {
-    console.log(err);
-  });
-      
-  ```
+      );
 
-Fontos, hogy állítsa be a környezeti változókat a parancsfájl futtatása előtt. Ez a parancssorban a következő példában látható módon konfigurálhatja, vagy a [dotenv csomag](https://www.npmjs.com/package/dotenv#dotenv). 
 
-```shell
-// For windows
-set EVENTHUB_CONNECTION_STRING="<your-connection-string>"
-set EVENTHUB_NAME="<your-event-hub-name>"
+      eph.start((context, eventData) => {
+        console.log(`Received message: ${eventData.body} from partition ${context.partitionId}`);
+      }, error => {
+        console.log('Error when receiving message: ', error)
+      });
 
-// For linux or macos
-export EVENTHUB_CONNECTION_STRING="<your-connection-string>"
-export EVENTHUB_NAME="<your-event-hub-name>"
-```
+      // Sleep for a while before stopping the receive operation.
+      await delay(15000);
+      await eph.stop();
+    }
 
-További minták annak [Itt](https://github.com/Azure/azure-event-hubs-node/tree/master/processor/examples).
+    main().catch(err => {
+      console.log("Error occurred: ", err);
+    });
 
+    ```
+3. Adja meg a kapcsolati karakterláncot, és az Eseményközpont nevével együtt kapcsolati karakterláncot a fenti kód egy Azure Blob Storage
+4. Ezután futtassa a parancsot `node receiveAll.js` hajtsa végre a fájlt a parancssorban.
+
+Gratulálunk! Sikeresen fogadott események eseményközpontból Event Processor Host használatával. Ez eseményeit fogja megkapni az alapértelmezett felhasználói csoport, az eseményközpont összes partíciója
 
 ## <a name="next-steps"></a>További lépések
 Olvassa el a következő cikkeket:
@@ -220,4 +180,4 @@ Olvassa el a következő cikkeket:
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Funkciók és az Azure Event Hubs terminológiája](event-hubs-features.md)
 - [Event Hubs – gyakori kérdések](event-hubs-faq.md)
-- Figyelmébe más Node.js-minták az Event Hubs az [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client/examples/).
+- Tekintse meg az egyéb Node.js-minták [az Event Hubs](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples) és [Event Processor Host](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-processor-host/samples) a Githubon

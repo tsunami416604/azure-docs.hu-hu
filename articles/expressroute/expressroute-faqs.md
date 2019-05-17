@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/12/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 17f596abda4febbd6e532adcb44d544cd4d104df
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: e4d4ac45ad0ba9516d863682015b9c07096ae106
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924673"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65794753"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -79,7 +79,7 @@ Az ExpressRoute támogatja [három útválasztási tartományt](expressroute-cir
 
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Dynamics 365 
-* Power BI
+* Tekintse meg a Power BI – elérhető az Azure regionális közösségi [Itt](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) megállapítása a régióját, a Power BI-bérlője számára. 
 * Azure Active Directory
 * [Az Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (globális Azure-szolgáltatások közösségi)
 * Az Azure-szolgáltatások többsége támogatottak. Tekintse meg közvetlenül a kívánt ellenőrizheti a támogatási szolgáltatással.<br><br>**A következő szolgáltatások nem támogatottak**:
@@ -152,7 +152,7 @@ Ha a szolgáltató biztosít ExpressRoute mindkét helyen, a szolgáltatónál d
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Használhatok több ExpressRoute-kapcsolatcsoporttal a az azonos metro? Is lehet hivatkozni őket az ugyanazon a virtuális hálózaton?
 
-Igen. Használhat több ExpressRoute-Kapcsolatcsoportok azonos vagy eltérő szolgáltatókkal. Ha a metro rendelkezik több ExpressRoute-társviszony-létesítési helyszínek, és a Kapcsolatcsoportok hozhatók létre, különböző társviszony-létesítési helyszínek, az azonos virtuális hálózatban csatolhatja őket. A Kapcsolatcsoportok társviszony-létesítési ugyanott lehet létrehozni, ha továbbra is kapcsolat őket az azonos virtuális hálózatban, de csak legfeljebb 4 ExpressRoute-Kapcsolatcsoportok mindegyik társviszony-létesítési helyen. Például válassza ki a társviszony-létesítési helyszínek "Szingapúr" és "Szingapúr2", és a Kapcsolatcsoportok csatlakozzon az egyes ugyanahhoz a virtuális hálózathoz. 
+Igen. Használhat több ExpressRoute-Kapcsolatcsoportok azonos vagy eltérő szolgáltatókkal. Ha a metro rendelkezik több ExpressRoute-társviszony-létesítési helyszínek, és a Kapcsolatcsoportok hozhatók létre, különböző társviszony-létesítési helyszínek, az azonos virtuális hálózatban csatolhatja őket. Ha a Kapcsolatcsoportok társviszony-létesítési ugyanott lehet létrehozni, akár 4 Kapcsolatcsoportok hozzákapcsolhatja ugyanahhoz a virtuális hálózathoz.
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Hogyan létesíthetek kapcsolatot a virtuális hálózatok csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz
 
@@ -190,7 +190,7 @@ Nem. Az útválasztási szempontjából minden, az ugyanahhoz az ExpressRoute-ka
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>Használhatok egy virtuális hálózatot több ExpressRoute-kapcsolatcsoporthoz csatlakozik?
 
-Igen. Egyetlen virtuális hálózattal az ExpressRoute-Kapcsolatcsoportok legfeljebb négy kapcsolat. Négy különböző keresztül kell rendelni [ExpressRoute-helyek](expressroute-locations.md).
+Igen. Kapcsolat az azonos vagy eltérő társviszony-létesítési helyszínek legfeljebb négy ExpressRoute-Kapcsolatcsoportok az egyetlen virtuális hálózaton. 
 
 ### <a name="can-i-access-the-internet-from-my-virtual-networks-connected-to-expressroute-circuits"></a>A saját virtuális hálózatok összekötése ExpressRoute-kapcsolatcsoportokkal csatlakoztatott elérhető számomra az interneten?
 

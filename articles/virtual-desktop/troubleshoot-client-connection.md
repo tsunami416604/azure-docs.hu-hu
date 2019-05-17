@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: troubleshoot
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: c5a67e22c301a2afc73a46a6def9a514426c497f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 99295fd4581cd81751f7d64b694c853efe51a106
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64928047"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522941"
 ---
-# <a name="remote-desktop-client-connections"></a>Távoli asztali kapcsolatok
+# <a name="remote-desktop-client-connections"></a>Távoli asztali ügyfélkapcsolatok
 
 Ez a cikk segítségével Windows virtuális asztali kapcsolatok problémáinak megoldásához.
 
@@ -108,22 +108,21 @@ Kövesse az alábbi általános hibaelhárítási utasításokat az ügyfél csa
 1. Erősítse meg a felhasználónevet és az idő, amikor probléma lépett fel.
 2. Nyissa meg **PowerShell** , valamint a Windows virtuális asztal bérlőhöz, ahol a hiba történt a következő kapcsolat.
 3. Ellenőrizze a kapcsolatot a megfelelő bérlő **Get-RdsTenant.**
-4. Ha szükséges, állítsa be a bérlő csoport-környezet **Set-RdsContext – TenantGroupt\<TenantGroup\>**.
-5. Használatával **Get-RdsHostPool** és **Get-RdsSessionHost** parancsmagok, győződjön meg arról, hogy hibaelhárítási történik a megfelelő gazdagép készleten.
-6. Hajtsa végre az alábbi parancsot a megadott időtartomány típusú kapcsolat összes sikertelen tevékenységek listájának lekérése:
+4. Használatával **Get-RdsHostPool** és **Get-RdsSessionHost** parancsmagok, győződjön meg arról, hogy hibaelhárítási történik a megfelelő gazdagép készleten.
+5. Hajtsa végre az alábbi parancsot a megadott időtartomány típusú kapcsolat összes sikertelen tevékenységek listájának lekérése:
 
     ```cmd
      Get-RdsDiagnosticActivities -TenantName <TenantName> -username <UPN> -StartTime
      "11/21/2018 1:07:03 PM" -EndTime "11/21/2018 1:27:03 PM" -Outcome Failure -ActivityType Connection
     ```
 
-7. Használatával a **ActivityId** az előző parancsmag kimenetében, futtassa az alábbi parancsot:
+6. Használatával a **ActivityId** az előző parancsmag kimenetében, futtassa az alábbi parancsot:
 
     ```
     (Get-RdsDiagnosticActivities -TenantName $tenant -ActivityId <ActivityId> -Detailed).Errors
     ```
 
-8. A parancs az alábbi kimeneti hasonló kimenetet eredményez. Használat **ErrorCodeSymbolic** és **ErrorMessage** hibaelhárítása a hiba okát.
+7. A parancs az alábbi kimeneti hasonló kimenetet eredményez. Használat **ErrorCodeSymbolic** és **ErrorMessage** hibaelhárítása a hiba okát.
 
     ```
     ErrorSource       : <Source>

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: 4e9bd4e9ea467446c2814cdb8956a40b1503b027
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e15d6ad445c3fdde0632c3ad468eee7da836a394
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61020485"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785963"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Az Azure Functions kapcsolatok kezelése
 
@@ -21,7 +21,7 @@ A függvényalkalmazás függvénye ossza meg erőforrásait. Megosztott erőfor
 
 ## <a name="connection-limit"></a>Kapcsolathoz megadott korlátot
 
-A rendelkezésre álló kapcsolatok száma korlátozva, részben mivel a függvényalkalmazás egy [próbakörnyezetben](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). A védőfal ró a kód korlátozások egyike egy [korlát (jelenleg a 600 aktív kapcsolatok és 1200 kapcsolatainak száma összesen) kapcsolatok száma](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits) példányonként. Ha eléri a korlátot, a functions futtatókörnyezete létrehoz egy naplófájlt a következő üzenettel: `Host thresholds exceeded: Connections`.
+A rendelkezésre álló kapcsolatok száma korlátozva, részben mivel a függvényalkalmazás egy [próbakörnyezetben](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). A korlátozásokat, amelyek a tesztkörnyezet a kódot ír elő egyik, a korlát (jelenleg a 600 aktív kapcsolatok és 1200 kapcsolatainak száma összesen) kapcsolatok száma példányonként. Ha eléri a korlátot, a functions futtatókörnyezete létrehoz egy naplófájlt a következő üzenettel: `Host thresholds exceeded: Connections`.
 
 Ezt a határt egy példány van.  Ha a [méretezési vezérlő hozzáad függvény alkalmazáspéldány](functions-scale.md#how-the-consumption-and-premium-plans-work) további kérések kezelésére, mindegyik példány rendelkezik egy független kapcsolathoz megadott korlátot. Azt jelenti, hogy a nem globális kapcsolat korlátozott, és sokkal több mint 600 aktív kapcsolatok is rendelkezik az összes aktív példányok között.
 

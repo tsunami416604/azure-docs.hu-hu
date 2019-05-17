@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6fb95d43bff79ca91988549114daa91e5d41f358
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f034f31f2c8c49bbdfb88e2ba0a009ff5b795fa2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60649786"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789600"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek az Azure Backup Server biztonsági mentése
 
@@ -39,7 +39,7 @@ Alapértelmezés szerint az Azure Backup Server kommunikál a VMware-kiszolgál�
 
 ### <a name="before-you-start"></a>Előkészületek
 
-- Ha nem szeretné HTTPS protokoll használatára is [tiltsa le az alapértelmezett beállítás](backup-azure-backup-server-vmware.md).
+- Ha nem szeretné HTTPS protokoll használatára is [tiltsa le a HTTPS-tanúsítvány érvényesítése a VMware-kiszolgálókon](backup-azure-backup-server-vmware.md#disable-https-certificate-validation).
 - Általában csatlakoztat egy böngészőből az Azure Backup Server gépet, a vCenter/ESXi-kiszolgálóhoz, a vSphere webes ügyfélben használatával. Először ezt megteheti a kapcsolat nem biztonságos, és a következőképpen fog megjelenni.
 - Fontos tudni, hogyan kezeli az Azure Backup Server a biztonsági mentéseket.
     - Első lépésként az Azure Backup Server biztonsági másolatot készít adatokat a helyi lemezes tárterületet. Az Azure Backup Server használ a tárolókészlethez, a lemezeket és köteteket, amelyeken az Azure Backup Server tárolja a védett adatokhoz tartozó lemez-helyreállítási pontok. A tárolókészlet közvetlenül csatlakoztatott tárolóval (DAS), a fiber channel SAN, vagy iSCSI-tárolóeszköz vagy TÁROLÓHÁLÓZAT is lehet. Fontos győződjön meg arról, hogy elegendő tárhely helyi biztonsági a VMware virtuális gép adatait.
@@ -101,7 +101,7 @@ Az alábbiak szerint állíthatja biztonságos csatorna:
 
 
 
-### <a name="disable-default-https"></a>Alapértelmezett HTTPS letiltása
+### <a name="disable-https-certificate-validation"></a>Tiltsa le a HTTPS-tanúsítvány érvényesítése
 
 Ha biztonságos határai a szervezeten belül, és nem szeretné használni a HTTPS protokollt közötti, VMware-kiszolgálók és az Azure Backup Server gépet, tiltsa le a HTTPS a következő: u
 1. Másolja és illessze be a következő szöveg egy .txt fájlt.
@@ -124,7 +124,7 @@ Az Azure Backup Server van szüksége a Vcenter-kiszolgáló elérésére jogosu
 1. Jelentkezzen be a vCenter-kiszolgáló (vagy az ESXi-állomáson, ha nem használ vCenter-kiszolgáló).
 2. Az a **kezelő** panelen, kattintson a **felügyeleti**.
 
-    ![Adminisztráció](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
+    ![Felügyelet](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
 3. A **felügyeleti** > **szerepkörök**, kattintson a Hozzáadás szerepkör ikonra (a + szimbólumra).
 

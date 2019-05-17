@@ -11,10 +11,10 @@ ms.reviewer: cbrooks
 ms.custom: mvc
 ms.openlocfilehash: 8e56b02b84c0324f723ead1bbf156c847edbbeb5
 ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2019
-ms.locfileid: "65743292"
+ms.locfileid: "65787987"
 ---
 # <a name="secure-access-to-an-applications-data-in-the-cloud"></a>Biztonságos hozzáférés egy alkalmazás adataihoz a felhőben
 

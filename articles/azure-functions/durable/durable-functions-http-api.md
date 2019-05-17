@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5bd977826f489ca8452432babe6126b8553450fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2f0b01601dfb28b2b6b8ee8ca53398ec3dccb803
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730707"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787286"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) HTTP API-k
 
@@ -104,7 +104,7 @@ A következő néhány szakaszban terjed ki az adott HTTP API-k a bővítmény �
 
 Egy megadott vezénylési példány állapotát olvassa be.
 
-#### <a name="request"></a>Kérés
+#### <a name="request"></a>Lekérés
 
 A verzió a Functions-futtatókörnyezet, a kérelem 1.x-es (több sorok jelennek meg az átláthatóság érdekében) a következők szerint van formázva:
 
@@ -134,7 +134,7 @@ A kérelem paraméterekkel az API az alapértelmezett készlet korábban már em
 
 | Mező                   | Paraméter típusa  | Leírás |
 |-------------------------|-----------------|-------------|
-| **`instanceId`**        | URL-cím             | Az orchestration-példány azonosítója. |
+| **`instanceId`**        | URL             | Az orchestration-példány azonosítója. |
 | **`showInput`**         | Lekérdezési sztring    | Nem kötelező paraméter. Ha beállítása `false`, a függvény bemeneti nem fog szerepelni a válasz hasznos adatban.|
 | **`showHistory`**       | Lekérdezési sztring    | Nem kötelező paraméter. Ha beállítása `true`, a vezénylési futtatási előzményei fog szerepelni a válasz hasznos adatban.|
 | **`showHistoryOutput`** | Lekérdezési sztring    | Nem kötelező paraméter. Ha beállítása `true`, a függvény kimenete fog szerepelni a vezénylési futtatási előzményei.|
@@ -228,7 +228,7 @@ Minden példány állapotának eltávolításával is lekérdezheti a `instanceI
 Ne feledje, hogy az egyik dolog, hogy `connection` és `code` megadása nem kötelező. Ha a függvény a névtelen hitelesítés kód nincs szükség.
 Ha nem szeretné használni a különböző tárolási kapcsolati karakterlánc nem definiált AzureWebJobsStorage Alkalmazásbeállítás, majd biztonságosan figyelmen kívül hagyhatja a kapcsolat lekérdezésisztring-paraméter.
 
-#### <a name="request"></a>Kérés
+#### <a name="request"></a>Lekérés
 
 A verzió a Functions-futtatókörnyezet, a kérelem 1.x-es (több sorok jelennek meg az átláthatóság érdekében) a következők szerint van formázva:
 
@@ -262,7 +262,7 @@ A kérelem paraméterekkel az API az alapértelmezett készlet korábban már em
 
 | Mező                   | Paraméter típusa  | Leírás |
 |-------------------------|-----------------|-------------|
-| **`instanceId`**        | URL-cím             | Az orchestration-példány azonosítója. |
+| **`instanceId`**        | URL             | Az orchestration-példány azonosítója. |
 | **`showInput`**         | Lekérdezési sztring    | Nem kötelező paraméter. Ha beállítása `false`, a függvény bemeneti nem fog szerepelni a válasz hasznos adatban.|
 | **`showHistory`**       | Lekérdezési sztring    | Nem kötelező paraméter. Ha beállítása `true`, a vezénylési futtatási előzményei fog szerepelni a válasz hasznos adatban.|
 | **`showHistoryOutput`** | Lekérdezési sztring    | Nem kötelező paraméter. Ha beállítása `true`, a függvény kimenete fog szerepelni a vezénylési futtatási előzményei.|
@@ -336,7 +336,7 @@ Ha a folytatási token értékét állítja be a következő kérés fejlécébe
 
 Törli az előzmények és a egy megadott vezénylési példányhoz kapcsolódó összetevők felhasználásával.
 
-#### <a name="request"></a>Kérés
+#### <a name="request"></a>Lekérés
 
 A verzió a Functions-futtatókörnyezet, a kérelem 1.x-es (több sorok jelennek meg az átláthatóság érdekében) a következők szerint van formázva:
 
@@ -360,7 +360,7 @@ A kérelem paraméterekkel az API az alapértelmezett készlet korábban már em
 
 | Mező             | Paraméter típusa  | Leírás |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | URL-cím             | Az orchestration-példány azonosítója. |
+| **`instanceId`**  | URL             | Az orchestration-példány azonosítója. |
 
 #### <a name="response"></a>Válasz
 
@@ -387,7 +387,7 @@ A válasz-adattartalomra vonatkozó a **HTTP 200** esetben egy JSON-objektum a k
 
 Törölheti is az előzmények és a egy feladat központ belül több példány esetén kapcsolódó összetevők eltávolításával a `{instanceId}` a "Egypéldányos előzmények törlése" kérelemből. Szelektív törlése példány előzményei, használja a "Get minden példány állapota" kérelem ismertetett ugyanazokat a szűrőket.
 
-#### <a name="request"></a>Kérés
+#### <a name="request"></a>Lekérés
 
 A verzió a Functions-futtatókörnyezet, a kérelem 1.x-es (több sorok jelennek meg az átláthatóság érdekében) a következők szerint van formázva:
 
@@ -417,11 +417,9 @@ A kérelem paraméterekkel az API az alapértelmezett készlet korábban már em
 
 | Mező                 | Paraméter típusa  | Leírás |
 |-----------------------|-----------------|-------------|
-| **`createdTimeFrom`** | Lekérdezési sztring    | Nem kötelező paraméter. Adja meg, amikor a példányok törlődnek, vagy a megadott időbélyegnél ISO8601 létrehozott listájának szűrése.|
+| **`createdTimeFrom`** | Lekérdezési sztring    | Példányok törlődnek, vagy a megadott időbélyegnél ISO8601 létrehozott listájának szűrése.|
 | **`createdTimeTo`**   | Lekérdezési sztring    | Nem kötelező paraméter. Adja meg, amikor a példányok törlődnek, vagy a megadott időbélyegnél ISO8601 létrehozott listájának szűrése.|
 | **`runtimeStatus`**   | Lekérdezési sztring    | Nem kötelező paraméter. Megadása esetén a példányok törlődnek a lista alapján szűri futásidejű állapotát. Lehetséges futásidejű állapot értékek listáját, olvassa el a [példányok lekérdezése](durable-functions-instance-management.md) témakör. |
-
-Ha nincsenek paraméterek meg van adva, a feladat hub szereplő összes példányt lesz kiürítve.
 
 > [!NOTE]
 > Ez a művelet teljesítményigényesek lehetnek Azure tárolási i/o-tekintetében van-e sokkal azoknak a soroknak a példányok és/vagy előzmények táblák. Ezek a táblák a további részletek találhatók a [teljesítményt és méretet (az Azure Functions) Durable Functions](durable-functions-perf-and-scale.md#instances-table) dokumentációját.
@@ -451,7 +449,7 @@ A válasz-adattartalomra vonatkozó a **HTTP 200** esetben egy JSON-objektum a k
 
 Egy esemény értesítési üzenetet küld egy futó vezénylési példány.
 
-#### <a name="request"></a>Kérés
+#### <a name="request"></a>Lekérés
 
 A verzió a Functions-futtatókörnyezet, a kérelem 1.x-es (több sorok jelennek meg az átláthatóság érdekében) a következők szerint van formázva:
 
@@ -475,8 +473,8 @@ A kérelem paraméterekkel az API az alapértelmezett készlet korábban már em
 
 | Mező             | Paraméter típusa  | Leírás |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | URL-cím             | Az orchestration-példány azonosítója. |
-| **`eventName`**   | URL-cím             | Az eseményt, amely a célpéldány vezénylési vár a neve. |
+| **`instanceId`**  | URL             | Az orchestration-példány azonosítója. |
+| **`eventName`**   | URL             | Az eseményt, amely a célpéldány vezénylési vár a neve. |
 | **`{content}`**   | Tartalomkérelem | A JSON-formátumú eseménytartalom. |
 
 #### <a name="response"></a>Válasz
@@ -504,7 +502,7 @@ Az API-hoz a válaszok nem tartalmaznak minden tartalom.
 
 Egy futó vezénylési példány leáll.
 
-#### <a name="request"></a>Kérés
+#### <a name="request"></a>Lekérés
 
 A verzió a Functions-futtatókörnyezet, a kérelem 1.x-es (több sorok jelennek meg az átláthatóság érdekében) a következők szerint van formázva:
 
@@ -530,7 +528,7 @@ Kérelem, az API paraméternek számít a korábban már említettük, valamint 
 
 | Mező             | Paraméter típusa  | Leírás |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | URL-cím             | Az orchestration-példány azonosítója. |
+| **`instanceId`**  | URL             | Az orchestration-példány azonosítója. |
 | **`reason`**      | Lekérdezési sztring    | Választható. Az orchestration-példány leállításához okát. |
 
 #### <a name="response"></a>Válasz
@@ -553,7 +551,7 @@ Az API-hoz a válaszok nem tartalmaznak minden tartalom.
 
 A futtatási állapot egy sikertelen vezénylési példány visszaállítja a legutóbbi sikertelen műveletek visszajátszása alapján.
 
-### <a name="request"></a>Kérés
+### <a name="request"></a>Lekérés
 
 A verzió a Functions-futtatókörnyezet, a kérelem 1.x-es (több sorok jelennek meg az átláthatóság érdekében) a következők szerint van formázva:
 
@@ -579,7 +577,7 @@ Kérelem, az API paraméternek számít a korábban már említettük, valamint 
 
 | Mező             | Paraméter típusa  | Leírás |
 |-------------------|-----------------|-------------|
-| **`instanceId`**  | URL-cím             | Az orchestration-példány azonosítója. |
+| **`instanceId`**  | URL             | Az orchestration-példány azonosítója. |
 | **`reason`**      | Lekérdezési sztring    | Választható. A vezénylési példány visszatekerése okát. |
 
 ### <a name="response"></a>Válasz

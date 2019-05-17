@@ -10,14 +10,20 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: d10a1df402fc4931c4d6cc513aa5e22cfe7ec2ba
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 07989b06b756e1e360ac3c37927a8267c84d9162
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024723"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522839"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Az Azure Search-indexelők használatával a Cosmos DB indexelése
+
+
+> [!Note]
+> MongoDB API támogatása előzetes állapotban van, nem éles használatra szánt. A [REST API verzióját 2019-05-06-Preview](search-api-preview.md) ezt a szolgáltatást biztosít. Nincs portál vagy .NET SDK-támogatása jelenleg.
+>
+> Az SQL API szolgáltatás általánosan elérhető.
 
 Ez a cikk bemutatja, hogyan konfigurálhatja egy Azure Cosmos DB [indexelő](search-indexer-overview.md) bontsa ki a tartalmat, és lehetővé teszi az Azure Search kereshető. Ezt a munkafolyamatot hoz létre az Azure Search-index, és betölti azt az Azure Cosmos DB-ből kinyert szöveget. 
 
@@ -26,7 +32,7 @@ Terminológiai zavaró lehet, mert fontos megjegyezni, hogy [Azure Cosmos DB-ind
 Használhatja a [portál](#cosmos-indexer-portal), REST API-k, vagy a .NET SDK Cosmos tartalmának. A Cosmos DB-indexelő az Azure Search szolgáltatás be tud járni [Azure Cosmos-elemek](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) ezeket a protokollokat keresztül érhetők el:
 
 * [SQL API-HOZ](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
-* [MongoDB API-val](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) (Azure Search támogatását az API-t a nyilvános előzetes verzióban érhető el)  
+* [MongoDB API (előzetes verzió)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)
 
 > [!Note]
 > User Voice további API-támogatás a meglévő elemeket tartalmaz. A Cosmos szeretné tekintse meg az Azure Search támogatott API-k szavazat is leadott: [Table API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab), [Graph API](https://feedback.azure.com/forums/263029-azure-search/suggestions/13285011-add-graph-databases-to-your-data-sources-eg-neo4), [Apache Cassandra API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32857525-indexer-crawler-for-apache-cassandra-api-in-azu).
@@ -118,7 +124,7 @@ Indexelő befejeződése után használhatja [keresési ablak](search-explorer.m
 
 A REST API-t indexet az Azure Cosmos DB-adatai, az Azure Search szolgáltatásban az összes indexelőre közös Háromrészes munkafolyamat következő használható: hozzon létre egy adatforrást, hozzon létre egy index, indexelő létrehozása. Adatok kinyerése Cosmos-storage-ból az indexelő létrehozása kérés benyújtása következik be. A kérelem teljesítése után a lekérdezhető index. 
 
-Ha kipróbálja a mongodb-hez, az adatforrás létrehozása a REST API-t kell használnia.
+Ha kipróbálja a MongoDB, a többi kell használnia `api-version=2019-05-06-Preview` az adatforrás létrehozásához.
 
 A Cosmos DB-fiók választhatja ki kívánja-e a gyűjtemény összes dokumentum automatikusan indexelése. Alapértelmezés szerint minden dokumentum automatikusan indexelt, de a felhasználók bármikor kikapcsolhatják az automatikus indexeléshez. Ha az indexelés ki van kapcsolva, dokumentumok csak keresztül elérhető azok önmagukra mutató hivatkozások, vagy a lekérdezések használatával, hogy a dokumentum azonosítója. Az Azure Search van szükség a Cosmos DB automatikus indexelést, a gyűjtemény, amely indexelését az Azure Search által működnie kell. 
 
@@ -279,7 +285,7 @@ Az indexelő API létrehozása a további részletekért tekintse meg [indexelő
 
 ## <a name="use-net"></a>A .NET használata
 
-A .NET SDK-t teljes mértékben paritásos REST API-val rendelkezik. Azt javasoljuk, hogy tekintse át az előző REST API-val szakaszban megismerheti a fogalmak, a munkafolyamat és a követelményeket. Ezután hivatkozni lehet a következő .NET API dokumentációja egy JSON-indexelő felügyelt programkódban implementálni.
+Általánosan elérhető a .NET SDK teljes paritásos általánosan elérhető REST API-val rendelkezik. Azt javasoljuk, hogy tekintse át az előző REST API-val szakaszban megismerheti a fogalmak, a munkafolyamat és a követelményeket. Ezután hivatkozni lehet a következő .NET API dokumentációja egy JSON-indexelő felügyelt programkódban implementálni.
 
 + [microsoft.azure.search.models.datasource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
 + [microsoft.azure.search.models.datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
@@ -354,12 +360,6 @@ Az alábbi példa egy helyreállítható törlési házirendet hoz létre egy ad
             "softDeleteMarkerValue": "true"
         }
     }
-
-## <a name="watch-this-video"></a>Videó megtekintése
-
-Ez némileg régebbi 7 perces videó az Azure Cosmos DB Programigazgatója Andrew Liu Azure Search-index hozzáadása egy Azure Cosmos DB-tárolók mutatja be. A portál oldalain látható a videó elavult, de az adatokat továbbra is megfelelő.
-
->[!VIDEO https://www.youtube.com/embed/OyoYu1Wzk4w]
 
 ## <a name="NextSteps"></a>Következő lépések
 

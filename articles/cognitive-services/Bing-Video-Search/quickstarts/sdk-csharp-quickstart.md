@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Keressen videókat a Bing Video Search SDK használat�
 titleSuffix: Azure Cognitive Services
 description: Ez a rövid útmutató segítségével a Bing Video Search SDK használatával videókeresési-kérelmeket küldjön C#.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
-ms.author: rosh
-ms.openlocfilehash: f94db7a29827a80307f4a081d93744c5edc59edb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: aahi
+ms.openlocfilehash: e10d9088f6de3b7a3a638cdbe18f51425d206b7b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473280"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798186"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-c"></a>Gyors útmutató: Hajtsa végre a videókeresési Bing Video Search készült SDK-valC#
 
@@ -23,10 +23,10 @@ Ez a rövid útmutató segítségével kezdeni a keresést hírkeresés a Bing V
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) bármely kiadása.
+* Bármely kiadása [Visual Studio 2017-es vagy újabb](https://visualstudio.microsoft.com/downloads/).
 * A Json.NET keretrendszert, a rendelkezésre álló [NuGet-csomagként](https://www.nuget.org/packages/Newtonsoft.Json/).
 
-A Bing Video Search SDK hozzáadása a projekthez, keresse meg a `Manage NuGet Packages` lehetőség a Visual Studio Megoldáskezelőjében.  Vegye fel a `Microsoft.Azure.CognitiveServices.Search.VideoSearch` csomagot.
+A Bing Video Search SDK hozzáadása a projekthez, válassza ki a **NuGet-csomagok kezelése** a **Megoldáskezelőben** a Visual Studióban. Vegye fel a `Microsoft.Azure.CognitiveServices.Search.VideoSearch` csomagot.
 
 Telepíti a [[NuGet Video Search SDK csomagot]](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0) is telepíti a következő függőségeket:
 

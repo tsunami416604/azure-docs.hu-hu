@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: f5e75b30a7c196bb238c7bcb9c4704c1aec5e771
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e657c4678c76e8ff667c1a3f30409fc157f52d16
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61430919"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65798240"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>A Bing Web Search API nyelvéhez és régiójához támogatása
 
@@ -42,7 +42,7 @@ Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és 
 |Németország|DE|
 |Hongkong (KKT)|HK|
 |India|IN|
-|Indonézia|ID (Azonosító)|
+|Indonézia|azonosító|
 |Olaszország|IT|
 |Japán|JP|
 |Korea|KR|
@@ -50,7 +50,7 @@ Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és 
 |Mexikó|MX|
 |Hollandia|NL|
 |Új-Zéland|NZ|
-|Norvégia|NO|
+|Norvégia|NEM|
 |Kína|CN|
 |Lengyelország|PL|
 |Portugália|PT|
@@ -71,12 +71,12 @@ Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és 
 |Ország/régió|Nyelv|Piaci kód|
 |-------|--------|-----------|
 |Argentína|spanyol|es-AR|
-|Ausztrália|Angol|en-Ausztrália|
+|Ausztrália|angol|en-Ausztrália|
 |Ausztria|német|Németország-AT|
 |Belgium|holland|nl-BE|
 |Belgium|francia|FR-lehet|
 |Brazília|portugál|pt-BR|
-|Kanada|Angol|en-hitelesítésszolgáltató|
+|Kanada|angol|en-hitelesítésszolgáltató|
 |Kanada|francia|FR-hitelesítésszolgáltató|
 |Chile|spanyol|es-CL|
 |Dánia|dán|da-DK|
@@ -84,29 +84,33 @@ Másik lehetőségként megadhatja a piac a `mkt` lekérdezési paraméter, és 
 |Franciaország|francia|FR-FR|
 |Németország|német|de-DE|
 |Hongkong (KKT)|Kínai (hagyományos)|zh-HK|
-|India|Angol|en-IN|
-|Indonézia|Angol|en-azonosító|
+|India|angol|en-IN|
+|Indonézia|angol|en-azonosító|
 |Olaszország|olasz|it-IT|
 |Japán|japán|ja-JP|
 |Korea|koreai|ko-KR|
-|Malajzia|Angol|en-MY|
+|Malajzia|angol|en-MY|
 |Mexikó|spanyol|es-MX|
 |Hollandia|holland|NL-NL|
-|Új-Zéland|Angol|en-NZ|
+|Új-Zéland|angol|en-NZ|
 |Norvégia|norvég|no-NO|
 |Kína|kínai|zh-CN|
 |Lengyelország|lengyel|pl-PL|
 |Portugália|portugál|PT-PT|
-|Fülöp-szigetek|Angol|en-PH|
+|Fülöp-szigetek|angol|en-PH|
 |Oroszország|orosz|ru-RU|
-|Szaúd-Arábia|arab|ar-SA|
-|Dél-Afrika|Angol|en-ZA|
+|Szaúd-Arábia|Arab|ar-SA|
+|Dél-Afrika|angol|en-ZA|
 |Spanyolország|spanyol|es-ES|
 |Svédország|svéd|SV-SE|
 |Svájc|francia|FR-CH|
 |Svájc|német|Németország – CH|
 |Tajvan|Kínai (hagyományos)|zh-TW|
 |Törökország|török|tr-TR|
-|Egyesült Királyság|Angol|en-GB|
-|Egyesült Államok|Angol|en-US|
+|Egyesült Királyság|angol|en-GB|
+|Egyesült Államok|angol|en-US|
 |Egyesült Államok|spanyol|es-US|
+
+## <a name="next-steps"></a>További lépések
+
+* [Bing Image Search API – referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

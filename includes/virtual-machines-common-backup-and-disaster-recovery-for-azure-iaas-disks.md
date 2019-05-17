@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 570330f47d2c610032c9c6646231c2320b2257be
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d242b2815d59676432beb878bbc955a9f39de0f1
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64732664"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65535878"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Biztonsági mentési és vész-helyreállítási Azure IaaS-lemezek
 
@@ -21,7 +21,7 @@ Ez a cikk a biztonsági mentési és vész-helyreállítási iaas-beli virtuáli
 
 Először is ismerteti a beépített hibatűrési képességeket az Azure platformon, amely segít megvédeni a helyi hibák ellen. Ezután bemutatjuk a vészhelyreállítási forgatókönyveket, a beépített funkciók nem teljesen hatálya alá. Azt is megmutatjuk, néhány példa munkaterhelés-forgatókönyvek, ahol különböző biztonsági mentési és Vészhelyreállítási szempontok is alkalmazhatja. Hogy tekintse át a DR az IaaS-lemezek lehetséges megoldásokat.
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Bemutatás
 
 Az Azure platform különböző módszereket a redundancia és a hibatűrést használ a helyi hardverhibák felhasználók védelme érdekében. Helyi hibák lehetnek a problémák az Azure Storage server-gép, amely tárolja az adatokat egy virtuális lemez része, vagy egy SSD vagy HDD hibák az adott kiszolgálón. Az ilyen elkülönített összetevő hardverhibák fordulhat elő, a normál működés során.
 
@@ -148,7 +148,7 @@ Kövesse az alábbi lépéseket a virtuális gépek biztonsági másolatainak en
 
     b. A a **Recovery Services-tárolók** menüben kattintson a **Hozzáadás** kövesse a lépéseket egy új tárolót ugyanabban a régióban, mint a virtuális gép létrehozásához. Például ha a virtuális gép az USA nyugati régiójában, válasszon USA nyugati RÉGIÓJA a tárolóhoz.
 
-1.  Ellenőrizze a tárreplikáció az újonnan létrehozott tároló. Hozzáférést a tárolóhoz a **Recovery Services-tárolók** , majd **beállítások** > **biztonsági mentés konfigurációja**. Győződjön meg, hogy a **georedundáns tárolás** beállítás alapértelmezés szerint. Ez a beállítás biztosítja, hogy a rendszer automatikusan replikálja a tároló egy másodlagos adatközpontba. A tárolót az USA nyugati RÉGIÓJA, USA keleti RÉGIÓJA például automatikusan replikálja.
+1.  Ellenőrizze a tárreplikáció az újonnan létrehozott tároló. Hozzáférést a tárolóhoz a **Recovery Services-tárolók** , majd **tulajdonságok** > **biztonsági mentés konfigurációja** > **Update** . Győződjön meg, hogy a **georedundáns tárolás** beállítás alapértelmezés szerint. Ez a beállítás biztosítja, hogy a rendszer automatikusan replikálja a tároló egy másodlagos adatközpontba. A tárolót az USA nyugati RÉGIÓJA, USA keleti RÉGIÓJA például automatikusan replikálja.
 
 1.  A biztonsági mentési szabályzat konfigurálása, és válassza ki a virtuális gép ugyanazon a felhasználói felületről.
 

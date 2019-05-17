@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/10/2019
+ms.date: 04/11/2019
 ms.author: mimart
 author: msmimart
-manager: celested
+manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef0a4e4a05427b1ed83b017b7a49862596aaf50a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 66b3e68ff2199c6a8bf4da9e02caaf93ee69342b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60414561"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65812833"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Active Directory B2B együttműködés felhasználók hozzáadása az Azure Portalon
 
@@ -27,11 +27,15 @@ Vendégfelhasználó felvétele a címtárban, vagy elküldheti a vendégfelhasz
 > [!IMPORTANT]
 > Kövesse a lépéseket a [Útmutató: Adja hozzá a szervezet adatvédelmi információ az Azure Active Directoryban](https://aka.ms/adprivacystatement) hozzáadása a szervezet adatvédelmi nyilatkozat URL-CÍMÉT. Az első alkalommal meghívó érvényesítési folyamat részeként egy meghívott felhasználó jóvá kell hagynia az adatvédelmi szabályzat feltételeit a folytatáshoz. 
 
+## <a name="before-you-begin"></a>Előkészületek
+
+Győződjön meg arról, hogy a szervezet külső együttműködési beállítások vannak konfigurálva, hogy Ön jogosult-e meghívhatnak vendégeket. Alapértelmezés szerint felhasználók és rendszergazdák is meghívhatnak vendégeket. Azonban a szervezet szabályzatait a külső együttműködés is konfigurálhatók, hogy a felhasználók vagy rendszergazdák a meghívó vendégek bizonyos típusú. Ismerje meg, megtekintése, és állítsa be ezeket a szabályzatokat, lásd: [külső B2B-együttműködés segítségével engedélyezheti és kezelheti, akik vendégek küldhetnek meghívót](delegate-invitations.md).
+
 ## <a name="add-guest-users-to-the-directory"></a>Vendég felhasználók hozzáadása a címtárhoz
 
 B2B-együttműködés felhasználók hozzáadása a címtárhoz, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy felhasználó, aki a hozzárendelt bármelyik a korlátozott rendszergazda címtárbeli szerepkörök.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) egy korlátozott rendszergazda címtárszerepkört vagy a Vendégmeghívó szerepkörrel felruházott felhasználó.
 2. A navigációs panelen válassza ki **Azure Active Directory**.
 3. A **Kezelés** alatt válassza a **Felhasználókat**.
 4. Válassza az **Új vendégfelhasználót**.
@@ -56,7 +60,7 @@ Miután elküldte a meghívót, a felhasználói fiók automatikusan hozzáadód
 ![Megjeleníti a B2B-felhasználó a Vendég felhasználó típusa](./media/add-users-administrator/GuestUserType.png)  
 
 ## <a name="add-guest-users-to-a-group"></a>Vendégfelhasználók hozzáadása csoporthoz
-Ha a B2B-együttműködés felhasználók manuális hozzáadása egy csoporthoz, az Azure AD-rendszergazdaként van szüksége, kövesse az alábbi lépéseket:
+Ha a B2B-együttműködés felhasználók manuális hozzáadása egy csoporthoz van szüksége, kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com) Azure AD rendszergazdaként.
 2. A navigációs panelen válassza ki **Azure Active Directory**.
@@ -73,7 +77,7 @@ Dinamikus csoportok Azure AD B2B együttműködés is használhatja. További in
 
 ## <a name="add-guest-users-to-an-application"></a>Vendég felhasználók hozzáadása az alkalmazáshoz
 
-B2B együttműködési felhasználókat ad hozzá egy alkalmazást az Azure AD-rendszergazdaként, kövesse az alábbi lépéseket:
+B2B-együttműködés felhasználók alkalmazáshoz való hozzáadásához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com) Azure AD rendszergazdaként.
 2. A navigációs panelen válassza ki **Azure Active Directory**.

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/26/2019
+ms.date: 05/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2e783a7c34216624126946eef84f56977d4c049
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 60453c320a66a8eebd7460b3930241f9e81b8a1b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572414"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784325"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -42,6 +42,17 @@ Letöltés |} [Töltse le az Azure AD Connect](https://go.microsoft.com/fwlink/?
 >Közzétesz egy új verziója, az Azure AD Connect folyamat, amely a művelet a szolgáltatás működésének biztosítása több minőség-ellenőrzési lépést igényel, és közben meg is vagyunk a folyamat során a verziószám az új kiadás, valamint a kiadási állapota frissülni fog a legutóbbi állapot megfelelően.
 Miközben a a folyamat során, hogy a kiadás verziószáma jelenik meg a kisebb kiadás száma pozícióját, mint "1.3.X.0" - "x" Ez azt jelzi, hogy a kibocsátási megjegyzéseket, a jelen dokumentum "1.3." kezdve az összes verzió érvényes. Amint azt a kibocsátási folyamat véglegesítése a legutóbb kiadott verziót frissíti a kiadási verziószámát, és a kiadási állapota frissülni fog "A letöltésről és automatikus frissítés engedélyezett" értékre.
 Az Azure AD Connect nem minden verziókban lesz elérhető az automatikus frissítés. A kiadási állapota e kiadás legyen elérhető, az automatikus frissítés, vagy csak le fogja jelezni. Ha az automatikus frissítés engedélyezése az Azure AD Connect-kiszolgálón majd, hogy a kiszolgáló automatikusan frissíti az Azure AD Connect automatikus frissítéshez kiadott a legújabb verzióra. Ne feledje, hogy az Azure AD Connect-konfigurációk nem mindegyike automatikus frissítésre jogosult. Kövesse ezt a hivatkozást tudjon meg többet az [automatikus frissítés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
+
+## <a name="13210"></a>1.3.21.0
+
+### <a name="release-status"></a>Kiadási állapot 
+
+05/14/2019: TBD
+
+
+### <a name="fixed-issues"></a>Hibák kijavítva: 
+
+- Kijavítva a jogok kiterjesztését, hogy a Microsoft Azure Active Directory Connect build 1.3.20.0 megtalálható.  Biztonsági rést, bizonyos körülmények között előfordulhat, hogy egy támadó egy rendszerjogosultságú fiók környezetében két powershell-parancsmagok végrehajtásához, és privilegizált műveletek elvégzéséhez.  A biztonsági frissítés a probléma tiltsa le ezeket a parancsmagokat. További információ: [biztonsági frissítés](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1000).
 
 ## <a name="13200"></a>1.3.20.0 
 
@@ -406,13 +417,13 @@ A beállítások a az AD DS-fiók megerősítéséhez futtathatja [a PowerShell-
 
 A PowerShell-parancsprogram használatával alkalmazni ezeket a beállításokat egy már meglévő AD DS-fiókot (a szervezet biztosítja nekik vagy az Azure AD Connect egy előző telepítés által létrehozott távolítsuk töltse le a parancsfájlt a fenti hivatkozásra.
 
-##### <a name="usage"></a>Használat
+##### <a name="usage"></a>Használat:
 
 ```powershell
 Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
 ```
 
-Ahol 
+Ahol (a(z) 
 
 **$ObjectDN** = az Active Directory-fiók, amelynek engedélyeket kell megfeszíteni kell.
 
@@ -730,9 +741,9 @@ CBool(
     |CertFriendlyName|certThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Válassza ezt:|
-    |CertKeyAlgorithmParams|CertHashString|Ahol|
-    |||A következővel:|
+    |CertVersion|CertSignatureAlgorithmOid|Kiválasztás|
+    |CertKeyAlgorithmParams|CertHashString|Ahol (a(z)|
+    |||A következővel: |
 
 * Lehetővé teszi ügyfeleink számára hozzon létre egyéni szinkronizálási szabályok sAMAccountName domainNetBios és csoport objektumainak domainFQDN, valamint a felhasználói objektumok distinguishedName folyamat következő sémaváltozások vezettek be:
 
@@ -894,7 +905,7 @@ AD FS-kezelőben
 * Kijavítva egy probléma, amely a meghiúsuljon, ha haladnak keresztül hitelesítés van beállítva, de az összekötő regisztrálása meghiúsul az Azure AD Connect varázsló okoz.
 * Kijavítva egy probléma milyen okok Ha asztali egyszeri bejelentkezés szolgáltatás engedélyezve van a kijelölt bejelentkezési módszert ellenőrzésének kihagyását az Azure AD Connect varázslót.
 
-Új jelszó kérése
+Jelszó visszaállítása
 * Kijavítva egy probléma miatt előfordulhat, hogy a Azure AAD Connect-kiszolgáló kísérelje meg ismét csatlakozni, ha a kapcsolat egy tűzfal vagy proxy lett állítva.
 
 **Új funkciók és fejlesztések:**
@@ -909,7 +920,7 @@ AD FS-kezelőben
 * Mostantól megadhatja meglévő csoportosan felügyelt szolgáltatásfiókok (csoportosan felügyelt szolgáltatásfiók) az AD FS telepítése során.
 * A aláírás-kivonatoló algoritmus az Azure AD függő entitás megbízhatóságaként, mostantól konfigurálhatja az SHA-256.
 
-Új jelszó kérése
+Jelszó visszaállítása
 * Lehetővé teszi a funkció a termék szigorúbb tűzfalszabályokkal környezetekben fejlesztései bevezetésre.
 * Továbbfejlesztett kapcsolat megbízhatóságát, az Azure Service Bus.
 

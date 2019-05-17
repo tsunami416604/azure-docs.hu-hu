@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 31e18285bf6211e73d994e037a91adc396972715
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: d3e777b5611dec382dc4eaaac5ec1594abcdab31
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62106970"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787673"
 ---
 # <a name="call-a-function-from-microsoft-flow"></a>Függvény meghívása a Microsoft Flow-ból
 
@@ -36,6 +36,8 @@ Ebben a témakörben megtudhatja, hogyan lehet:
 > * E-mail küldése, ha egy javítása költséghatékony folyamat létrehozása.
 > * A folyamat futtatása.
 
+[!INCLUDE [functions-openapi-note](../../includes/functions-openapi-note.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 + Az aktív [Microsoft Flow-fiók](https://flow.microsoft.com/documentation/sign-up-sign-in/) az Azure-fiók azonos bejelentkezési hitelesítő adatait. 
@@ -48,7 +50,7 @@ Először létrehoz egy listát, amely a folyamat adatforrásként használja. A
 | Listaoszlop     | Adattípus           | Megjegyzések                                    |
 |-----------------|---------------------|------------------------------------------|
 | **Cím**           | Egysoros szöveg | A turbina neve                      |
-| **LastServiceDate** | Dátum                |                                          |
+| **LastServiceDate** | Date                |                                          |
 | **MaxOutput**       | Szám              | Kimenet a turbina kWh-ban            |
 | **ServiceRequired** | Igen/nem              |                                          |
 | **EstimatedEffort** | Szám              | A javítás becsült ideje (óra) |
@@ -224,7 +226,7 @@ Most, hogy a folyamat befejeződött, adjon hozzá egy sort a SharePoint-listáh
 
 2. Adja meg a következő értékeket a Szerkesztés rácsban.
 
-    | Listaoszlop     | Érték           |
+    | Listaoszlop     | Value           |
     |-----------------|---------------------|
     | **Cím**           | 60 turbina |
     | **LastServiceDate** | 08/04/2017 |

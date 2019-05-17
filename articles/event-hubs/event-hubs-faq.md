@@ -8,14 +8,14 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 05/15/2019
 ms.author: shvija
-ms.openlocfilehash: ce9c6a83d664bc9ad1798792f7762556c9a0d541
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: acc756ac04e5127d07760746bd0178f0f6cb1d6f
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690273"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789248"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Az Event Hubs – gyakori kérdések
 
@@ -23,6 +23,15 @@ ms.locfileid: "64690273"
 
 ### <a name="what-is-an-event-hubs-namespace"></a>Mi az Event Hubs-névtér?
 A névtér egy hatókörkezelési tároló az Event Hub és Kafka-témakörökhöz a. Biztosít egy egyedi [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Egy névtér szolgál egy alkalmazástárolót, amelynek több Event Hub és Kafka-témaköröket is tartalmazhat. 
+
+### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>Amikor hozható létre egy új névteret, és használja egy meglévő névtér?
+A kapacitás kiosztásokat ([átviteli egységek (átviteli egységek)](#throughput-units)) számlázása a névterek szintjén. Névtér nem is egy régió tartozik.
+
+Előfordulhat, hogy szeretne létrehozni egy már meglévő egy az az alábbi esetekben használata helyett egy új névteret: 
+
+- Szüksége lesz egy Eseményközpont új régióban társított.
+- Szüksége lesz egy egy másik előfizetéshez tartozó Eseményközpontot.
+- A különböző kapacitás lefoglalása az Eseményközpontok felé kell (azt jelenti, a kapacitás szükséges a az új event hubs-névtér túllépné a 40 átviteli egység küszöbértéket, és nem kívánja nyissa meg a dedikált fürt)  
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Mi a különbség az alapszintű Event Hubs és a Standard szint között?
 

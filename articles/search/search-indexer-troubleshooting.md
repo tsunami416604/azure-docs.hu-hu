@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 81987115ba0406e704f2198061c6ee3cae8a72df
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 256a38320c9b3ca826ee9c12ac0a437957f988e2
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024694"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65539277"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Az Azure Search gyakori indexelő hibáinak elhárítása
 
@@ -27,7 +27,7 @@ Az indexelők számos olyan problémák futtathatja, ha az adatok indexelése az
 
 ## <a name="data-source-connection-errors"></a>Adatok forrás csatlakozási hibák
 
-### <a name="blob-storage"></a>Blob Storage
+### <a name="blob-storage"></a>Blobtároló
 
 #### <a name="storage-account-firewall"></a>Storage-fiók tűzfal
 
@@ -42,7 +42,7 @@ Ellenőrizheti, hogy a tűzfal engedélyezve van a [portál](https://docs.micros
 
 `nslookup <service name>.search.windows.net`
 
-Kivételek nem működnek a [Cognitive Search](cognitive-search-concept-intro.md). Az egyetlen megkerülő megoldás, hogy a tűzfal letiltása.
+Kivételek nem működnek a [cognitive search](cognitive-search-concept-intro.md). Az egyetlen megkerülő megoldás, hogy a tűzfal letiltása.
 
 ### <a name="cosmos-db"></a>Cosmos DB
 
@@ -71,7 +71,7 @@ api-key: [admin key]
 
 A blob indexelőjével [megkeresi és szöveges állomány kinyerésére tárolóban lévő blobokat](search-howto-indexing-azure-blob-storage.md#how-azure-search-indexes-blobs). Szöveg kibontása kapcsolatos problémákat a következők:
 
-* A dokumentum csak beolvasott lemezképet tartalmaz. PDF-blobok, amelyek nem szöveges tartalmak, például a beolvasott képeket (alakíthatóak), a szokásos blob indexelési folyamat nem eredményt. Ha szöveges elemek-kép tartalmához, használhat [Cognitive Search](cognitive-search-concept-image-scenarios.md) keresse meg és bontsa ki a szöveget.
+* A dokumentum csak beolvasott lemezképet tartalmaz. PDF-blobok, amelyek nem szöveges tartalmak, például a beolvasott képeket (alakíthatóak), a szokásos blob indexelési folyamat nem eredményt. Ha szöveges elemek-kép tartalmához, használhat [cognitive search](cognitive-search-concept-image-scenarios.md) keresse meg és bontsa ki a szöveget.
 * A blob indexelőjével csak index metaadatainak van konfigurálva. A tartalom kibontása a blob indexelőjével kell állítani [bontsa ki a tartalom és metaadatok is](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed):
 
 ```
@@ -94,5 +94,5 @@ Az indexelők a dokumentumok keresése egy [adatforrás](https://docs.microsoft.
 * A dokumentum még nem lett indexelve. Ellenőrizze a portálon egy indexelő sikeres Futtatás esetében.
 * A dokumentum frissítve lett az indexelő futtatása után. Ha az indexelő egy [ütemezés](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule), csupán végül futtassa újra a, és vegye fel a dokumentumot.
 * A [lekérdezés](https://docs.microsoft.com/rest/api/searchservice/create-data-source#request-body-syntax) adatban megadott adatforrás nem tartalmazza a dokumentumot. Az indexelők dokumentumok, amelyek nem részei az adatforrás nem tud indexelni.
-* [Mezőleképezéseivel](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) vagy [Cognitive Search](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) megváltoztak a dokumentumot, és különböző a vártnál.
+* [Mezőleképezéseivel](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) vagy [cognitive search](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) megváltoztak a dokumentumot, és különböző a vártnál.
 * Használja a [keresési dokumentum API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) a dokumentumban található.

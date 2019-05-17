@@ -1,6 +1,6 @@
 ---
-title: Media Encoder Standard-formátumok és -kodekek – Azure
-description: Ez a témakör áttekintést nyújt a Media Encoder Standard-formátumok és -kodekek.
+title: Standard szintű Encoder formátumai és kodekei – Azure
+description: Ez a témakör áttekintést nyújt a standard szintű Encoder formátumai és kodekei.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 4c7e0e091aeecb205c63b8fa7e97d7592f15b856
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 730ff68e70999307417eea276761d56f4a44046a
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322267"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65520014"
 ---
-# <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard-formátumok és -kodekek
+# <a name="standard-encoder-formats-and-codecs"></a>Standard szintű Encoder formátumai és kodekei
 
 Ez a cikk megtalálhatja a legismertebb importálható és exportálható fájlformátumokat is használhatja az [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset). Információk segítségével egyéni beállításkészletek létrehozása **StandardEncoderPreset**, lásd: [hozzon létre egy egyéni előbeállítás átalakító](customize-encoder-presets-how-to.md).
 
@@ -41,12 +41,12 @@ Ez a cikk megtalálhatja a legismertebb importálható és exportálható fájlf
 | QuickTime (.mov) |Igen |
 
 > [!NOTE]
-> Egy lista a leggyakrabban előforduló fájlkiterjesztéseket újabb verziója. Media Encoder Standard támogatja sokan mások is (például: .m2ts, .mpeg2video és .qt formátumokat). Ha egy fájl kódolása próbál, és a formátum nem támogatott kapcsolatos hibaüzenet kap, adjon visszajelzéseket [Itt](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/).
 > 
 > 
 
 ### <a name="audio-formats-in-input-containers"></a>Hangformátumok a bemeneti tárolók
-Media Encoder Standard támogatja a következő hangformátumok a bemeneti tárolók végrehajtása:
+
+Standard szintű Encoder támogatja a következő hangformátumok a bemeneti tárolók végrehajtása:
 
 * MXF, GXF és QuickTime fájlok, amelyek hangsávval rendelkező időosztásos sztereó vagy 5.1 minták
 

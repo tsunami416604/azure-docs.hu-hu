@@ -9,18 +9,18 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 48ebbabca8d38db3a7c1344981f79991de29df80
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 3d5bfa2426d58fa5a09d2203272536eec7fa9c55
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154397"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789958"
 ---
 # <a name="azure-storage-security-guide"></a>Az Azure Storage biztonsági útmutatóját
 
 Az Azure Storage biztonsági képességeket, amelyek együttesen lehetővé teszik a fejlesztők számára biztonságos alkalmazások széles választékát nyújtja:
 
-- Azure Storage tárterületre írt összes adat automatikusan titkosítva lesznek használatával [Storage Service Encryption (SSE)](storage-service-encryption.md). További információkért lásd: [bejelentése alapértelmezés titkosításának Azure-Blobok, fájlok, Table és Queue Storage](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
+- Azure Storage tárterületre írt összes adat (beleértve a metaadatok) automatikusan titkosítva lesznek használatával [Storage Service Encryption (SSE)](storage-service-encryption.md). További információkért lásd: [bejelentése alapértelmezés titkosításának Azure-Blobok, fájlok, Table és Queue Storage](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
 - Az Azure Active Directory (Azure AD) és a szerepköralapú hozzáférés-vezérlés (RBAC) támogatottak az Azure Storage erőforrás-felügyeleti műveletek és a műveletekhez, a következő:   
     - Hatóköre a storage-fiók erőforrás felügyeleti műveleteket, mint a kulcskezelés engedélyezésére rendszerbiztonsági tagok és az Azure AD RBAC-szerepkörök rendelhet hozzá.
     - Az Azure AD-integrációs blob és üzenetsor Adatműveletek esetén támogatott. RBAC-szerepkör hatóköre egy előfizetés, erőforráscsoport, tárfiók, vagy egy tároló vagy üzenetsor egy rendszerbiztonsági tag vagy egy felügyelt identitás, az Azure-erőforrások rendelhet hozzá. További információkért lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory használatával](storage-auth-aad.md).   
@@ -238,10 +238,9 @@ További információt a közös hozzáférési aláírások és a tárolt hozz�
     Ez a cikk példákat blobok, az üzenetsorbeli üzenetek számára, a tábla tartományokkal és a fájlok szolgáltatásszintű SAS használatával.
   * [A szolgáltatásalapú SAS létrehozása](https://msdn.microsoft.com/library/dn140255.aspx)
   * [Egy fiók SAS létrehozása](https://msdn.microsoft.com/library/mt584140.aspx)
-* Ezek a közös hozzáférési aláírások és a tárolt hozzáférési szabályzatok létrehozása a .NET ügyféloldali kódtár használatával kapcsolatos.
 
+* Ez az oktatóanyag a közös hozzáférési aláírások és a tárolt hozzáférési szabályzatok létrehozása a .NET ügyféloldali kódtár használatával.
   * [Közös hozzáférésű Jogosultságkódok (SAS) használata](../storage-dotnet-shared-access-signature-part-1.md)
-  * [A közös hozzáférésű Jogosultságkódot, 2. rész: Hozzon létre, és használhatja az SAS-a Blob Service-szel](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 
     Ez a cikk a SAS-modell példák a közös hozzáférésű Jogosultságkódokat egy leírását tartalmazza, és az ajánlott eljárás javaslatok SAS használja. Azt is ismertetjük, a megadott engedélyeket visszavonását.
 

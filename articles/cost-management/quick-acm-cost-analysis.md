@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 05/14/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 881abf48a1dda3b008e5946096cdcadb1f157d25
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b4302713188237b97ffbe8473f6a37edd6741b36
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682632"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65793097"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Gyors útmutató: Vizsgálata és elemzése a költségeket a költségelemzés
 
@@ -69,7 +69,7 @@ A kezdő költségelemzési nézet a következő területeket foglalja magába:
 
 ## <a name="customize-cost-views"></a>Költségnézetek testreszabása
 
-Költségelemzés négy beépített nézetek, a leggyakoribb célokat optimalizálva van: 
+Költségelemzés négy beépített nézetek, a leggyakoribb célokat optimalizálva van:
 
 Nézet | Válaszoljon a kérdésekre, mint...
 --- | ---
@@ -96,7 +96,7 @@ Emellett a **napi** nézet használatával az egyes napok költségeit is megtek
 
 **Csoportosítás** bontja a költségek és az általános tulajdonságok leggyakoribb közreműködők. Erőforrás-címkék szerint kell csoportosítani, válassza ki például a címke kulcs szerint kell csoportosítani szeretné. Költségek szerint egyes címkeértékkel rendelkező erőforrások, amelyek nem rendelkeznek a alkalmazni a címkét egy extra szegmens bontásban.
 
-A legtöbb [Azure-erőforrások támogatja a címkézést](../azure-resource-manager/tag-support.md), azonban az egyes címkék nem Költségkezelés szerepel a számlázási. Ezenkívül a csoport az erőforráscímkék nem támogatottak. A Cost Management csak a dátum, a címkék közvetlenül az erőforrás érvényesek az erőforráscímkék támogatja.
+A legtöbb [Azure-erőforrások támogatja a címkézést](../azure-resource-manager/tag-support.md), azonban az egyes címkék nem Költségkezelés szerepel a számlázási. Ezenkívül a csoport az erőforráscímkék nem támogatottak. A Cost Management csak a dátum, a címkék közvetlenül az erőforrás érvényesek az erőforráscímkék támogatja. Tekintse meg a [címkézési házirendek az Azure Cost Managementbe felülvizsgálata](https://www.youtube.com/watch?v=nHQYcYGKuyw) videó további információ a címke az Azure policyval költség adatok láthatóságának javítása érdekében.
 
 Íme egy példa az elmúlt havi Azure-szolgáltatási költségeket bemutató nézetről.
 

@@ -1,6 +1,6 @@
 ---
 title: Feltételes cognitive search szakértelem (Azure Search) |} A Microsoft Docs
-description: Feltételes szakértelem, amely lehetővé teszi a szűrés, az alapértelmezett érték létrehozása és értékek egyesítése.
+description: A feltételes szakértelem lehetővé teszi a szűrés, az alapértelmezett érték létrehozása és értékek egyesítése.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,18 +10,18 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: luisca
-ms.openlocfilehash: 6a203a38437ccb6a9c325e6594289744e0148c84
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 149b701d4a1700787656448e2bdd0d92d2a93844
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028425"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791521"
 ---
 #   <a name="conditional-skill"></a>Feltételes szakértelem
 
-A **feltételes szakértelem** lehetővé teszi, hogy egy logikai művelet dönthet arról, hogy hozzá kell rendelni egy kimeneti adatokat olyan forgatókönyvek száma különböző. Ilyen például, amikor: szűrés, egy alapértelmezett értéket, és adatok egyesítése egy feltétel alapján.
+A *feltételes szakértelem* meghatározni az adatokat egy kimeneti hozzárendelése logikai művelet igénylő Azure Search olyan forgatókönyveket tesz lehetővé. Ezek a forgatókönyvek között megtalálható a szűrést, a hozzárendelése egy alapértelmezett értéket, és a egy feltétel alapján adatok egyesítése.
 
-A következő pseudocode ismerteti, mi a feltételes szakértelem műveleteket hajtja végre:
+A következő pseudocode mutat be, hogy mi a feltételes szakértelem műveleteket hajtja végre:
 
 ```
 if (condition) 
@@ -31,7 +31,7 @@ else
 ```
 
 > [!NOTE]
-> Szakértelem nincs kötve a Cognitive Services API-t, és nem terheli útmutatójához. Továbbra is ajánlott [Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md), azonban felül a **ingyenes** erőforrás beállítás, amely korlátozza, hogy naponta napi végrehajtott információbeolvasás kis számú.
+> Szakértelem az Azure Cognitive Services API nincs kötve, és nem kell fizetnie, a. Azonban továbbra is ajánlott [Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md) felül az "Ingyenes" erőforrás-beállítás, amely korlátozza, hogy naponta végrehajtott információbeolvasás kis számú.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ConditionalSkill
@@ -41,9 +41,10 @@ Microsoft.Skills.Util.ConditionalSkill
 
 Szakértelem különleges, mert a hozzá tartozó bemenetek kiértékelt mezőket.
 
-Egy kifejezés érvényes értékei a következők:
+A következő elemekre egy kifejezés érvényes értékek:
 
--   Jegyzetek elérési utak (kifejezések szereplő elérési utakat kell elválasztani "$(" and ")") <br/>
+-   Jegyzetek elérési utak (kifejezések szereplő elérési utakat kell elválasztani "$(" and ")")
+ <br/>
     Példák:
     ```
         "= $(/document)"
@@ -53,13 +54,13 @@ Egy kifejezés érvényes értékei a következők:
 -  Literálok (karakterláncokat, számok, true, false, NULL értékű) <br/>
     Példák:
     ```
-       "= 'this is a string'"   // string, note the single quotes
+       "= 'this is a string'"   // string (note the single quotation marks)
        "= 34"                   // number
-       "= true"                 // boolean
+       "= true"                 // Boolean
        "= null"                 // null value
     ```
 
--  Egy összehasonlító operátort tartalmazó kifejezések (==,! =, > =, >, < =, <) <br/>
+-  Összehasonlító operátorok tartalmazó kifejezések (==,! =, > =, >, < =, <) <br/>
     Példák:
     ```
         "= $(/document/language) == 'en'"
@@ -73,7 +74,7 @@ Egy kifejezés érvényes értékei a következők:
         "= !true"
     ```
 
--   Egy numerikus operátort tartalmazó kifejezések (+, -, \*, /, %) <br/>
+-   Numerikus operátorokat tartalmazó kifejezések (+, -, \*, /, %) <br/>
     Példák: 
     ```
         "= $(/document/sentiment) + 0.5"         // addition
@@ -81,25 +82,25 @@ Egy kifejezés érvényes értékei a következők:
         "= $(/document/lengthInMeters) / 0.3049" // division
     ```
 
-Az értékelés támogatott, mert a feltételes szakértelem kisebb adatátalakításhoz is használható. Tekintse meg a minta [szakértelem definíció 4](#transformation-examples) példaként.
+Mivel a feltételes szakértelem értékelési támogatja, használhatja a kisebb adatátalakításhoz. Lásd a [szakértelem definíció 4](#transformation-example).
 
 ## <a name="skill-inputs"></a>Ismeretek bemenetek
 Bemenet-és nagybetűk.
 
-| Bemenetek      | Leírás |
+| Input (Bemenet)   | Leírás |
 |-------------|-------------|
-| feltétel   | A bemeneti egy [értékeli ki a mező](#evaluated-fields) , amely jelzi, hogy a feltétel kiértékelése. Ez a feltétel ki kell értékelni a logikai érték (IGAZ vagy hamis).   <br/>  Példák: <br/> "= true" <br/> "= $(/document/language) =='fr'" <br/> "= $(/ /dokumentumoldal/\*/language) == $(/ dokumentum/expectedLanguage)" <br/> |
-| whenTrue    | A bemeneti egy [értékeli ki a mező](#evaluated-fields). A visszatérési érték, ha a feltétel kiértékelése történik az igaz. Állandók karakterláncok vissza kell adni a "" idézőjelek között. <br/>Példaértékek: <br/> "a"szerződés"="<br/>"= $(/document/contractType)" <br/> "= $(/dokumentum/entitások/\*)" <br/> |
-| whenFalse   | A bemeneti egy [értékeli ki a mező](#evaluated-fields). A visszaadandó értéket, ha a feltétel hamis kiértékelése történik.  <br/>Példaértékek: <br/> "a"szerződés"="<br/>"= $(/document/contractType)" <br/> "= $(/dokumentum/entitások/\*)" <br/>
+| condition   | A bemeneti egy [értékeli ki a mező](#evaluated-fields) , amely jelzi, hogy a feltétel kiértékelése. Ez a feltétel ki kell értékelni a logikai érték (*igaz* vagy *hamis*).   <br/>  Példák: <br/> "= true" <br/> "= $(/document/language) =='fr'" <br/> "= $(/ /dokumentumoldal/\*/language) == $(/ dokumentum/expectedLanguage)" <br/> |
+| whenTrue    | A bemeneti egy [értékeli ki a mező](#evaluated-fields) , amely képviseli, a visszatérési érték, ha a feltétel értékelése van *igaz*. Állandók karakterláncokat a rendszer visszalépteti szimpla idézőjelek ("és"). <br/>Példaértékek: <br/> "a"szerződés"="<br/>"= $(/document/contractType)" <br/> "= $(/dokumentum/entitások/\*)" <br/> |
+| whenFalse   | A bemeneti egy [értékeli ki a mező](#evaluated-fields) , amely képviseli, a visszatérési érték, ha a feltétel értékelése van *hamis*. <br/>Példaértékek: <br/> "a"szerződés"="<br/>"= $(/document/contractType)" <br/> "= $(/dokumentum/entitások/\*)" <br/>
 
 ## <a name="skill-outputs"></a>Ismeretek kimenetek
-A "kimeneti" nevű egyetlen kimeneti van. Ha a feltétel hamis whenFalse vagy whenTrue értéke a feltétel teljesülése esetén ad vissza.
+Van egy egyetlen kimeneti, amelynek a neve egyszerűen "kimeneti." A visszatérési érték *whenFalse* Ha a feltétel hamis vagy *whenTrue* a feltétel teljesülése esetén.
 
 ## <a name="examples"></a>Példák
 
-### <a name="sample-skill-definition-1-filtering-documents-to-return-only-french-documents"></a>Minta szakértelem 1 definíciója: Dokumentumok a csak a "Franciaország" dokumentumokat szűrése
+### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>Minta szakértelem 1 definíciója: Dokumentumok a csak francia dokumentumokat szűrése
 
-A következő kimenet egy tömb a mondatok ("/ dokumentum/frenchSentences") Ha a nyelv, a dokumentum francia adja vissza. Ha a nyelv nem francia, ezt az értéket fogja beállítani a null.
+A következő kimenet ("/ dokumentum/frenchSentences") mondatokat tömbjét adja eredményül, ha a nyelv, a dokumentum francia. A nyelv nem francia, ha az értéke *null*.
 
 ```json
 {
@@ -113,12 +114,12 @@ A következő kimenet egy tömb a mondatok ("/ dokumentum/frenchSentences") Ha a
     "outputs": [ { "name": "output", "targetName": "frenchSentences" } ]
 }
 ```
-Ha "/ dokumentum/frenchSentences" lesz a *környezet* egy másik szakértelem, szakértelem csak akkor fog futni, ha a "/ dokumentum/frenchSentences" értéke nem null
+Ha a "/ dokumentum/frenchSentences" szolgál a *környezet* egy másik szaktudás, szakértelem csak akkor fut, ha "/ dokumentum/frenchSentences" beállítása nem *null*.
 
 
-### <a name="sample-skill-definition-2-setting-a-default-value-when-it-does-not-exist"></a>Minta szakértelem 2 definíciója: Ha még nem létezik a beállítás alapértelmezett értéke.
+### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>Minta szakértelem 2 definíciója: Egy érték, amely nem létezik az alapértelmezett érték
 
-A következő kimenet jegyzet ("/ dokumentum/languageWithDefault"), amely a dokumentum a nyelv, vagy az "es" értékre van állítva, ha nincs megadva a nyelv hoz létre.
+A következő kimenet jegyzet ("/ dokumentum/languageWithDefault"), és állítsa be a dokumentum a nyelvet, vagy "es" Ha a nyelv nem hoz létre.
 
 ```json
 {
@@ -133,9 +134,9 @@ A következő kimenet jegyzet ("/ dokumentum/languageWithDefault"), amely a doku
 }
 ```
 
-### <a name="sample-skill-definition-3-merging-values-from-two-different-fields-into-a-single-field"></a>Minta szakértelem 3 definíciója: Két különböző mezők értékeit egyesítése egyetlen mező
+### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>Minta szakértelem 3 definíciója: Egy két mező értékeit egyesítése
 
-Ebben a példában az egyes mondatokat rendelkezik egy *frenchSentiment* tulajdonság. Minden alkalommal, amikor a *frenchSentiment* tulajdonság null értékű, szeretnénk használni a *englishSentiment* értéket. Egyszerűen nevű tag azt rendelje a kimenetet *vélemények* ("/ dokumentum-/ vélemények / * / vélemények").
+Ebben a példában az egyes mondatokat rendelkezik egy *frenchSentiment* tulajdonság. Minden alkalommal, amikor a *frenchSentiment* tulajdonság null értékű, szeretnénk használni a *englishSentiment* értéket. Azt rendelje a kimenetet, amelynek a neve tag *vélemények* ("/ dokumentum-/ vélemények / * / vélemények").
 
 ```json
 {
@@ -150,12 +151,12 @@ Ebben a példában az egyes mondatokat rendelkezik egy *frenchSentiment* tulajdo
 }
 ```
 
-## <a name="transformation-examples"></a>Átalakítás példák
-### <a name="sample-skill-definition-4-performing-data-transformations-on-a-single-field"></a>Minta szakértelem 4 definíciója: Egyetlen mező adatátalakítások végrehajtása
+## <a name="transformation-example"></a>Átalakítás példa
+### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>Minta szakértelem 4 definíciója: Adatátalakítás egyetlen mező
 
-Ebben a példában egy 0 és 1 közötti vélemények érkező, és szeretnénk, hogy 1 és 1 közötti átalakítás során. Ez az, hogy javítanunk kell a feltételes szakértelem használatával kis matematikai átalakítást.
+Ebben a példában az általunk kapott egy *vélemények* 0 és 1 közötti. Szeretnénk őket 1 és 1 közé kell esnie. A feltételes szakértelem használatával hajtsa végre a kisebb átalakításában.
 
-Ebben a példában soha nem használjuk a szakértelem feltételes aspektusa, a feltétel mindig értéke igaz. 
+Ebben a példában nem vesszük a szakértelem feltételes aspektusa mivel a feltétel mindig *igaz*.
 
 ```json
 {
@@ -170,9 +171,8 @@ Ebben a példában soha nem használjuk a szakértelem feltételes aspektusa, a 
 }
 ```
 
-
 ## <a name="special-considerations"></a>Különleges szempontok
-Vegye figyelembe, hogy egyes paraméterek értékeli ki, ezért ügyeljen arra, különösen a dokumentált minta a következő kell. Kifejezések egy egyenlő bejelentkezési "=" kell kezdődnie, és elérési utak elválasztva kell "$(" and ")". Ellenőrizze, hogy a karakterláncok put "szimpla idézőjelben", a gyűjteménykiértékelő karakterláncok és a útvonalakat és a kezelők között, amelyek segítségével. Ne felejtse el az operátorok körül egy szóközt (például egy * az elérési utat, mint a szorzás operátor eltérő jelentéssel rendelkezik).
+Egyes paraméterek értékeli ki, így különösen ügyeljen a dokumentált mintát követik a szükséges. Kifejezések egyenlőségjellel kell kezdődnie. Egy elérési utat kell elválasztani "$(" and ")". Ellenőrizze, hogy a karakterláncok put szimpla idézőjelek között. A gyűjteménykiértékelő karakterláncok és a útvonalakat és a kezelők között, amelyek segítségével. Ne felejtse el az operátorok körüli üres terület (például egy "*" elérési út azt jelenti, hogy más, mint a multiply).
 
 
 ## <a name="next-steps"></a>További lépések
