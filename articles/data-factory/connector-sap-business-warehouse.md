@@ -61,11 +61,11 @@ SAP Business Warehouse (BW) társított szolgáltatás a következő tulajdonsá
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **SapBw** | Igen |
-| kiszolgáló | A kiszolgálóra, amelyen az SAP BW-példány neve. | Igen |
+| server | A kiszolgálóra, amelyen az SAP BW-példány neve. | Igen |
 | systemNumber | Az SAP BW-rendszer rendszer száma.<br/>Érték engedélyezett: kétjegyű tizedes tört egy karakterláncból. | Igen |
 | clientId | Az SAP W rendszerben az ügyfél ügyfél-azonosítója.<br/>Érték engedélyezett: háromjegyű tizedes tört egy karakterláncból. | Igen |
-| Felhasználónév | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó nevét. | Igen |
-| jelszó | A felhasználó jelszava. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| userName | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó nevét. | Igen |
+| password | A felhasználó jelszava. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Egy helyi Integration Runtime szükség, az említett [Előfeltételek](#prerequisites). |Igen |
 
 **Példa**
@@ -126,7 +126,7 @@ Adatok másolása az SAP BW, állítsa be a forrás típusaként a másolási te
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **RelationalSource** | Igen |
-| lekérdezés | Meghatározza az MDX-lekérdezés adatokat olvasni az SAP BW-példány. | Igen |
+| query | Meghatározza az MDX-lekérdezés adatokat olvasni az SAP BW-példány. | Igen |
 
 **Példa**
 
@@ -176,7 +176,7 @@ Ha az adatok másolása az SAP BW, a következő hozzárendeléseket a rendszer 
 | INT1 | Byte |
 | INT2 | Int16 |
 | INT4 | Int |
-| NYELV | String |
+| LANG | String |
 | LCHR | String |
 | LRAW | Byte[] |
 | PREC | Int16 |
@@ -184,7 +184,7 @@ Ha az adatok másolása az SAP BW, a következő hozzárendeléseket a rendszer 
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
 | STRING | String |
-| EGYSÉG | String |
+| UNIT | String |
 | DATS | String |
 | NUMC | String |
 | TIMS | String |
