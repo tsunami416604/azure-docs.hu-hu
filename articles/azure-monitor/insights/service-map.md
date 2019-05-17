@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 0c654070e2bbeb8ee5dbc64fe9b4f58ee97f2e47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 09755922da78a3e856c491c01ce9f34f50063d71
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60404431"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606507"
 ---
 # <a name="using-service-map-solution-in-azure"></a>A Service Map megoldást használ az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. A Service Map használatával a kiszolgálókat úgy tekintheti meg, ahogyan azt el szoktuk képzelni: egymással összekapcsolt rendszereket, amelyek kritikus fontosságú szolgáltatásokat tesznek elérhetővé. A Service Map megmutatja a kiszolgálók közötti kapcsolatokat, a folyamatokat, a bejövő és a kimenő kapcsolatok késéseit, valamint minden TCP-vel csatlakoztatott architektúra portjait, és ehhez konfigurációra sincs szükség, csupán telepíteni kell az ügynököt.
@@ -255,7 +255,7 @@ Windows:
 
 Linux:
 - Processor(*)\\processzoridő
-- Memory(*)\\foglalt memória %
+- Memory(*)\\Foglalt Memória %
 - Hálózati Adapter(*)\\küldött bájtok/s
 - Hálózati Adapter(*)\\fogadott bájtok/mp
 
@@ -348,7 +348,7 @@ Az egyszerűség kedvéért egy kapcsolat a távoli vég IP-címét a RemoteIp t
 
 | Tulajdonság | Leírás |
 |:--|:--|
-| `RemoteCountry` |Az üzemeltető RemoteIp ország neve.  Ha például *Egyesült Államok* |
+| `RemoteCountry` |Az országot vagy régiót futtató RemoteIp neve.  Ha például *Egyesült Államok* |
 | `RemoteLatitude` |A földrajzi szélesség.  Ha például *47.68* |
 | `RemoteLongitude` |A földrajzi hosszúság.  Ha például *-122.12* |
 
@@ -431,7 +431,7 @@ ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | proj
 ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>A parancssorban keresse meg az "sql" összes folyamat
-ServiceMapProcess_CL |} ahol CommandLine_s contains_cs "sql" |} Összegzés arg_max(TimeGenerated, *) erőforrás-azonosító szerint
+ServiceMapProcess_CL |} ahol CommandLine_s contains_cs "sql" |} összegzés arg_max(TimeGenerated, *) erőforrás-Azonosító szerint
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Keresse meg a gép (legutóbbi rekord) erőforrás szerint
 search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId

@@ -8,17 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 0981f4d5d9d5fcb243fc7ead6f4b529c096935d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 479edc11604670189b0accba67aa8f345f6260cd
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60646730"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551370"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Az Azure Backup – gyakori kérdések
 Ez a cikk az Azure Backup szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="recovery-services-vault"></a>Recovery Services-tároló
+## <a name="recovery-services-vault"></a>Helyreállítási tár
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription"></a>Az egyes Azure-előfizetésekben létrehozható tárolók száma korlátozott?
 Igen. Legfeljebb 500 Recovery Services-tárolók száma előfizetésenként az Azure Backup szolgáltatás, a támogatott régióban hozhat létre. Ha több tárolóra van szüksége, hozzon létre egy további előfizetést.
@@ -174,8 +174,8 @@ Nem. A legrégebbi helyreállítási ideje és a legújabb pont megegyezik. Mind
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>Ha minden helyreállítási pont olyan, mint egy teljes pont, ez befolyásolja a teljes számlázandó biztonsági mentési tárolást?
 A tipikus hosszú távú megtartási pontok az adatok biztonsági másolatát teljes pontokként tárolják.
 
-    - A teljes pontok tárolás szempontjából *nem hatékonyak*, azonban könnyebben és gyorsabban visszaállíthatók.
-    - Növekményes másolatok tárolás szempontjából *hatékony* , de egy adatlánc, amely befolyásolja a helyreállítási időt visszaállítását
+- A teljes pontok tárolás szempontjából *nem hatékonyak*, azonban könnyebben és gyorsabban visszaállíthatók.
+- Növekményes másolatok tárolás szempontjából *hatékony* , de egy adatlánc, amely befolyásolja a helyreállítási időt visszaállítását
 
 Az Azure Backup tárolási architektúrája ezen két megoldás előnyeit ötvözi az adatok optimális tárolásával a gyors visszaállítás érdekében és alacsony tárolási költségekkel. Ez biztosítja, hogy a bejövő és kimenő sávszélesség hatékonyan van felhasználva. Az adattárolás és az adatok helyreállításához szükséges idő mennyisége minimális másolatok. Tudjon meg többet [növekményes biztonsági mentések](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/).
 

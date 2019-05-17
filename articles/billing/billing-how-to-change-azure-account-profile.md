@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74afb98387172f6c58398673862274c7b1880d86
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6280068303e66ca9a930f94d9a754afe1f88f4f2
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922957"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604263"
 ---
 # <a name="change-your-azure-account-profile-information"></a>Az Azure-fiók profilinformációinak módosítása
 
@@ -51,9 +51,9 @@ A profil e-mail-címének frissítése nem frissíti a bejelentkezési e-mail-c�
 
 A számlázási információk frissítésével kapcsolatban lásd: [Azure-előfizetés díjfizetéséhez használt bankkártya módosítása](billing-how-to-change-credit-card.md).
 
-### <a name="you-cant-update-your-country"></a>Nem lehet frissíteni az ország
+### <a name="you-cant-update-your-countryregion"></a>Nem lehet frissíteni az ország/régió
 
-Technikai korlátok miatt nem lehet módosítani egy meglévő fiókon az országot. Azonban a kívánt országban-fiók létrehozása és, forduljon a fiók át a szolgáltatásokat az Azure ügyfélszolgálatától.
+Technikai korlátok miatt nem lehet módosítani egy meglévő fiókon az országban vagy régióban. Azonban egy fiók létrehozásához a kívánt ország/régió és, forduljon a fiók át a szolgáltatásokat az Azure ügyfélszolgálatától.
 
 ## <a name="service-and-marketing-emails"></a>Szolgáltatás- és marketing-e-mailek
 
@@ -98,7 +98,7 @@ Lemond marketing e-mailek fogadó:
 
 Ha egy e-mail-címet a kommunikációhoz, kapni fog a szolgáltatási értesítések, a fiók alapján. Ha Ön az elutasítás, Ön csak lemondja a marketing-kommunikáció – szolgáltatási értesítések továbbra is megjelenik.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolatfelvétel.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 02/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e12b3cbcb8f7a433b37c450c84bd34745f68a22d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9c08b5b5278045341ed86d987557d03cb46754e6
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711507"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601594"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Oktatóanyag: Felhasználói folyamatok létrehozása az Azure Active Directory B2C-vel
 
@@ -76,7 +76,7 @@ A regisztráció és bejelentkezés a felhasználói folyamatot egyetlen konfigu
 4. Adja meg egy érvényes e-mail címet, és kattintson a **ellenőrző kód küldése**, majd adja meg az ellenőrzőkódot tartalmazó kap.
 5. Adjon meg egy új jelszót, és erősítse meg a jelszót.
 6. Adja meg a kívánt nevet jelenik meg, válassza ki az ország és régió, adja meg az irányítószámot és kattintson a **létrehozás**. A jogkivonat visszaadott `https://jwt.ms` és üzenetnek kell megjelennie az Ön számára.
-7. Mostantól a felhasználói folyamat ismét futtathatja, és, jelentkezzen be azzal a fiókkal létrehozott képesnek kell lennie. A visszaadott jogkivonat neve, ország és postai irányítószám kiválasztott jogcímeket tartalmaz.
+7. Mostantól a felhasználói folyamat ismét futtathatja, és, jelentkezzen be azzal a fiókkal létrehozott képesnek kell lennie. A visszaadott jogkivonat neve, ország/régió és postai irányítószám kiválasztott jogcímeket tartalmaz.
 
 ## <a name="create-a-profile-editing-user-flow"></a>Profilszerkesztési felhasználói folyamata létrehozása
 

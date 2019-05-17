@@ -3,8 +3,8 @@ title: Webes API-alkalmazások az Azure Active Directoryban
 description: Mik azok a webes API-alkalmazások és az alapokat ismerteti protokoll flow, a regisztráció és a jogkivonat lejárati az alkalmazástípushoz.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f344a4f928030c07f59c2f7aba201d153da123f1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 484e6b4c5f0e064254c957b07b8ba15ef98f2634
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918718"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545212"
 ---
 # <a name="web-api"></a>Webes API
 
@@ -33,7 +33,7 @@ Webes API-alkalmazások olyan webes alkalmazások, a webes API-k erőforrások l
 
 Az alkalmazás azonosítóját és a delegált felhasználói identitás típusai a folyamat az alábbi tárgyalja. A fő különbség az, hogy a delegált felhasználó identitását először kell szerezni az engedélyezési kódot, mielőtt a felhasználó bejelentkezhet és a webes API-k eléréséhez.
 
-## <a name="diagram"></a>Ábra
+## <a name="diagram"></a>Diagram
 
 ![Webalkalmazás, webes API-diagram](./media/authentication-scenarios/web_app_to_web_api.png)
 

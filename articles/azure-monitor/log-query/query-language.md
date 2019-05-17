@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: ecbea91cef69c80975dd105c35f526b357033a6b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6fae245e4d72f7f6f7809d85da17023deb1518e5
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61425962"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560855"
 ---
 # <a name="azure-monitor-log-queries"></a>Az Azure Monitor log-lekérdezések
 Az Azure Monitor naplóira Azure adatkezelő épül, és az Azure Monitor log-lekérdezések használata az azonos Kusto-lekérdezési nyelv. A [Kusto-lekérdezés nyelvi dokumentáció](/azure/kusto/query) rendelkezik az összes részletes adat a nyelv és kell lennie az Azure Monitor log-lekérdezések írására szolgáló elsődleges erőforrás. Ez a lap egyéb forrásokra mutató hivatkozásokat biztosít, megtudhatja, hogyan kell lekérdezéseket írni és a különbség az Azure Monitor megvalósításra, a nyelv.
@@ -61,7 +61,7 @@ Az Azure Monitor naplóira Azure adatkezelő épül, és az Azure Monitor log-le
 ## <a name="cheatsheets"></a>Hasznos tanácsok
 
 -  [SQL-t az Azure Monitor naplólekérdezés](sql-cheatsheet.md) segít a felhasználóknak, akik már jól ismert SQL-lel.
--  [Az Azure Monitor log-lekérdezéshez Splunk](sql-cheatsheet.md) segít a felhasználóknak, akik már ismerik az Splunk.
+-  [Az Azure Monitor log-lekérdezéshez Splunk](splunk-cheatsheet.md) segít a felhasználóknak, akik már ismerik az Splunk.
  
 ## <a name="next-steps"></a>További lépések
 

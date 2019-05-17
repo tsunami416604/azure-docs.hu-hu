@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: 46df484303237722f4eb66099748f2fcef8240b4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 322d5630daeedaa671f994b1374f15f655811de5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205830"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796090"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Nagy partíciókulccsal rendelkező tárolók létrehozása
 
@@ -54,6 +54,7 @@ A nagyméretű partíciókulcsok SDK-k az alábbi minimális verziók támogatot
 |.Net     |    1.18     |
 |Java-szinkronizálás     |   2.4.0      |
 |Java Async   |  2.5.0        |
+| REST API | verziója magasabb, mint `2017-05-03` használatával a `x-ms-version` kérés fejlécéhez.|
  
 ## <a name="next-steps"></a>További lépések
 

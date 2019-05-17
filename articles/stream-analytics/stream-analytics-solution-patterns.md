@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 4f4f22628d2c2a6beb7974aa9b776a2148a3fee0
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 80843abe130f1388a5d4081adab7b9128446763b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65238062"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761978"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Az Azure Stream Analytics megoldás minták
 
@@ -58,7 +58,7 @@ Például az irányítópult egyéni valós idejű megjelenítéseket is létreh
 
 A legtöbb web services és a webalkalmazások még ma kérés/válasz mintát használja a megjelenítési réteg kiszolgálására. A kérelem/válasz a minta akkor egyszerűen hozhat létre, és a egy állapot nélküli előtér- és skálázható tárolók, például a Cosmos DB használatával válaszidő alacsony egyszerűen skálázhatók.
 
-A nagy adatmennyiség CRUD-alapú rendszerekben gyakran a teljesítmény szűk hoz létre. A [event sourcing minta megoldás](/azure/architecture/patterns/event-sourcing.md) a teljesítmény szűk szolgál. A historikus mintákat és összefüggéseket: is nehéz és hatékony kinyeréséhez egy hagyományos adatokat az adattárból. A modern nagy mennyiségű adatvezérelt alkalmazások gyakran fogad el egy adatfolyam-alapú architektúrát. Az Azure Stream Analytics, a számítási motor a mozgásban lévő adatok egy fonalgyártójának az architektúrában.
+A nagy adatmennyiség CRUD-alapú rendszerekben gyakran a teljesítmény szűk hoz létre. A [event sourcing minta megoldás](/azure/architecture/patterns/event-sourcing) a teljesítmény szűk szolgál. A historikus mintákat és összefüggéseket: is nehéz és hatékony kinyeréséhez egy hagyományos adatokat az adattárból. A modern nagy mennyiségű adatvezérelt alkalmazások gyakran fogad el egy adatfolyam-alapú architektúrát. Az Azure Stream Analytics, a számítási motor a mozgásban lévő adatok egy fonalgyártójának az architektúrában.
 
 ![ASA-események forráskezelése alkalmazás](media/stream-analytics-solution-patterns/eventsourcingapp.png)
 

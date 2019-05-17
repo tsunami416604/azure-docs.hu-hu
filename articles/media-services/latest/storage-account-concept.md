@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 05/11/2019
 ms.author: juliako
-ms.openlocfilehash: 96c3a3eb5e4c07ad9cad8ea5060a27c0c33eec5f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9cbb995eb3310a2263185d6fd6dba20efce37f38
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61466816"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65550149"
 ---
 # <a name="cloud-upload-and-storage"></a>Felhőbe történő feltöltés és tárolás
 
@@ -51,6 +51,17 @@ Az inaktív eszközök védelmére, titkosítani kell az eszközök által a sto
 |[Storage ügyféloldali titkosítás](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Az Azure storage, a Key Vault az ügyfél által felügyelt kulcs által kínált ügyféloldali titkosítás|Nem támogatott|
 
 <sup>1</sup> a Media Services v3, tárolás titkosítása (AES-256 titkosítás) van csak támogatott a visszamenőleges kompatibilitás a Media Services v2 létrehozásakor a rendszer az eszközöket. Tehát v3 együttműködik a meglévő tárhely eszközök titkosított, de nem teszi meg újakat.
+
+## <a name="storage-account-errors"></a>Tárfiók kapcsolatos hibák
+
+A "Leválasztott" Media Services-fiók azt jelzi, hogy a fiók már nem rendelkezik hozzáféréssel egy vagy több, a csatolt storage-fiókok megváltozása miatt a tárelérési kulcsok a. Naprakész tárelérési kulcsok a fiókban lévő feladatok végrehajtásához szükséges a Media Services által.
+
+Az alábbiakban az elsődleges forgatókönyvet, amely a Media Services-fiók nem férhető hozzá csatolt storage-fiókok eredményezne. 
+
+|Probléma|Megoldás|
+|---|---|
+|A Media Services-fiók vagy csatolt tárfiók(ok) előfizetések külön lett migrálva. |Telepítse át a tárfiók(ok) vagy a Media Services-fiókot, hogy azok ugyanabban az előfizetésben. |
+|A Media Services-fiók használ egy csatolt storage-fiók egy másik előfizetésben található korai Media Services-fiók állapotukkal, ahol ez volt támogatott. Korai Media Services-fiókok átalakítottunk modern Azure erőforrások Manager (ARM) alapú fiókok és a leválasztott állapotban lesz. |Telepítse át a storage-fiók vagy a Media Services-fiókot, hogy azok ugyanabban az előfizetésben.|
 
 ## <a name="next-steps"></a>További lépések
 

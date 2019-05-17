@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 04/26/2019
+ms.date: 05/10/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 22d3bdf8c60e6682c360395b44fe6f1dcc1207b0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 767f087910136ce558d71602a1c4c632090168cd
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925524"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540620"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -41,7 +41,7 @@ Bármilyen alkalmazást vagy a VMware virtuális gép, amely megfelel az számí
 ### <a name="can-i-use-a-guest-os-server-license-on-azure"></a>Használható az Azure-ban egy vendég operációs rendszer kiszolgálói licenc?
 Igen, a Microsoft frissítési garanciával rendelkező ügyfelek használhatják a [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) menteni a licencelési költségei **Windows Serveres gépek** , amely az Azure-ba, vagy használhatja az Azure-vész-helyreállítási lesznek áttelepítve.
 
-## <a name="security"></a>Biztonság
+## <a name="security"></a>Biztonsági
 
 ### <a name="what-access-does-site-recovery-need-to-vmware-servers"></a>Milyen hozzáférést kell a Site Recovery VMware-kiszolgálók?
 A Site Recoverynek hozzáféréssel kell rendelkeznie a VMware-kiszolgálókhoz az alábbiak érdekében:
@@ -117,7 +117,7 @@ Igen, egyszerűen [felügyelt lemez típusának módosítása](https://docs.micr
 
 Nem, a nem felügyelt való váltás felügyelt nem támogatott.
 
-## <a name="replication"></a>Replikáció
+## <a name="replication"></a>Replikálás
 
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Mik azok a replikált virtuális gépek követelményeinek?
@@ -251,13 +251,13 @@ A Recovery Services-tárolóban kattintson **konfigurációs kiszolgálók** a *
 
 ## <a name="process-server"></a>Folyamatkiszolgáló
 
-### <a name="unable-to-select-process-server-during-enable-replication"></a>Válassza ki a folyamatkiszolgálót a replikáció engedélyezése során nem sikerült
+### <a name="why-am-i-unable-to-select-process-server-during-enable-replication"></a>Miért vagyok jelölje be a folyamatkiszolgáló során nem engedélyezhető a replikáció?
 
-9.24 verzióról fejlesztések lettek végrehajtva adja meg [kiszolgálóriasztások feldolgozni](vmware-physical-azure-monitor-process-server.md#process-server-alerts) a horizontális felskálázási folyamatkiszolgáló beállításának. Ez a folyamat kiszolgáló szabályozás elkerülése és a folyamatkiszolgáló nem megfelelő állapotú használatának elkerülése érdekében.
+Megjelenítendő végrehajtott fejlesztések 9.24 verzióról [állapotát, a replikáció engedélyezése során folyamatkiszolgáló](vmware-azure-enable-replication.md#enable-replication). Ez a folyamat kiszolgáló szabályozás elkerülése, és minimalizálja a nem megfelelő állapotú folyamatkiszolgálók használatát.
 
-### <a name="what-should-i-do-to-obtain-accurate-health-status-of-process-server"></a>Mit tegyen a folyamatkiszolgáló pontos állapotának megszerzése?
+### <a name="what-is-meant-by-upgrading-process-server-to-924-or-higher-versions-for-accurate-health"></a>Mit jelent a folyamatkiszolgáló pontos Health 9.24 vagy újabb verziójára történő frissítés?
 
-Frissítse a Site Recovery-összetevőit a [legújabb verziókat](service-updates-how-to.md#links-to-currently-supported-update-rollups) (legalább 9.24 vagy újabb).
+A [9.24 verziók](service-updates-how-to.md#links-to-currently-supported-update-rollups), további riasztások jelennek meg a folyamatkiszolgáló, állapotriasztások növelése érdekében. Site Recovery-összetevők 9.24 verzió vagy újabb frissítése az összes riasztás jöjjön létre.
 
 ## <a name="failover-and-failback"></a>Feladatátvétel és feladat-visszavétel
 ### <a name="can-i-use-the-process-server-at-on-premises-for-failback"></a>Használható a folyamatkiszolgálót a helyszínen, a feladat-visszavételhez?

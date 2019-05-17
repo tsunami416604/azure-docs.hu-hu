@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 4/12/2019
+ms.date: 5/10/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 1c772756a90c3eee4e2b3fb4fd4a0ec9e98fa0da
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: fba5119feb1ff7a0170a573371e479caa5fc33eb
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919089"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544480"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure Portalon a műveleti csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés ##
@@ -26,8 +26,8 @@ Ez a cikk bemutatja, hogyan hozhat létre és kezelheti az Azure Portalon Művel
 Minden művelet a következő tulajdonságok tevődik össze:
 
 * **Név**: A műveletcsoport belül egyedi azonosítója.  
-* **Művelet típusa**: A művelet végre. Ilyenek például a voice hívás, SMS, e-mailt küld; vagy automatizált műveletek különböző típusú elindítása. Tekintse meg a cikk későbbi részében típusokat. 
-* **Részletek**: A vonatkozó részletekkel, végezhet *művelettípus*. 
+* **Művelet típusa**: A művelet végre. Ilyenek például a voice hívás, SMS, e-mailt küld; vagy automatizált műveletek különböző típusú elindítása. Tekintse meg a cikk későbbi részében típusokat.
+* **Részletek**: A vonatkozó részletekkel, végezhet *művelettípus*.
 
 Műveletcsoportok konfigurálása Azure Resource Manager-sablonok használatáról további információért lásd: [műveleti csoport Resource Manager-sablonok](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
@@ -69,7 +69,7 @@ Miután létrehozta a műveletcsoport, is látható, az a **Műveletcsoportok** 
 > [!NOTE]
 > Lásd: [előfizetési szolgáltatási korlátok a figyelés](https://docs.microsoft.com/azure/azure-subscription-service-limits#monitor-limits) numerikus korlátait az alábbi elemek mindegyike számára.  
 
-**Azure-alkalmazás leküldéses** – az Azure app-műveletek csak korlátozott számú műveletcsoport használhat. Jelenleg az Azure-alkalmazás a művelet csak ServiceHealth riasztások támogatja. Bármely más riasztástípus figyelmen kívül lesz hagyva. Lásd: [riasztások konfigurálása, ha a szolgáltatás állapotával kapcsolatos értesítés közzétételekor](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+**Azure-alkalmazás leküldéses** – előfordulhat, hogy az Azure app-műveletek csak korlátozott számú tartalmaz műveletcsoport.
 
 **E-mailek** -e-mailt küld a következő e-mail-címekről. Győződjön meg arról, hogy az e-mailek szűrése megfelelően vannak konfigurálva
 - azure-noreply@microsoft.com
@@ -101,6 +101,7 @@ Forrás IP-címtartományok
  - 13.106.38.148
  - 13.106.57.196
  - 52.244.68.117
+ - 52.244.65.137
  - 51.4.138.199
  - 51.5.148.86
  - 51.5.149.19

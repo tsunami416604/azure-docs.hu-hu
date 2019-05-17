@@ -13,12 +13,12 @@ ms.date: 01/08/2019
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 8efab173f464b67c0c88c87ee28ea7fa19980501
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a1ff700bece2d64451294e72ebdf3c771ee644f8
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60373216"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604192"
 ---
 # <a name="impact-analysis-with-application-insights"></a>A hatáselemzés az Application insights segítségével
 
@@ -63,7 +63,7 @@ Hatás támogatja a standard és egyéni tulajdonságokat és a mértékek. Hasz
 2. Válassza ki a "Ország vagy régió" a **elemzése hogyan annak** legördülő menü
 3. Az a **hatással van a használatát** legördülő menüben válassza az 1. lépésben kiválasztott egy felhasználói felületi elemre az oldal nézet a megfelelő, egyéni eseményt.
 
-Ebben az esetben az eredmények már nem fér folyamatos x tengellyel modellbe, akárcsak az első példában. Ehelyett egy szegmentált tölcsérhez hasonlít egy Vizualizáció jelenik meg. Rendezés **használati** megtekintéséhez az egyéni esemény ország alapján átalakítása változata.
+Ebben az esetben az eredmények már nem fér folyamatos x tengellyel modellbe, akárcsak az első példában. Ehelyett egy szegmentált tölcsérhez hasonlít egy Vizualizáció jelenik meg. Rendezés **használati** megtekintéséhez az egyéni esemény ország/régió alapján átalakítása változata.
 
 
 ## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Hogyan nem a hatás eszköz számítja ki az átalakítás díjszabása?

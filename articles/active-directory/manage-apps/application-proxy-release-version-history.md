@@ -4,7 +4,7 @@ description: Ez a cikk az Azure AD-alkalmazásproxy összes kiadása, és ismert
 services: active-directory
 documentationcenter: ''
 author: msmimart
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -16,19 +16,19 @@ ms.date: 04/05/2019
 ms.subservice: manage-apps
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf9ee43c6c6b332c05286da8e330812d7e0db6c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7af05769861f98ec192789d90f8a61f5b6638d1d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60441661"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65783293"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD Application Proxy: Verziókiadások előzményei
 Ez a cikk felsorolja és funkciókról az Azure Active Directory (Azure AD) Application Proxy kiadott. Az Azure AD csapata rendszeresen frissíti Application Proxy új szolgáltatásait és funkcióit. Alkalmazásproxy-összekötők automatikusan frissülnek, amikor egy új verziója.
 
 Kapcsolódó erőforrások listáját a következő:
 
-Erőforrás |  Részletek
+Resource |  Részletek
 --------- | --------- |
 Alkalmazásproxy engedélyezése | Alkalmazásproxy engedélyezése, telepítése és egy összekötő regisztrálása Előfeltételek leírását a jelen [oktatóanyag](application-proxy-add-on-premises-application.md).
 Az Azure AD-alkalmazásproxy-összekötők ismertetése | Tudjon meg többet [összekötő felügyeleti](application-proxy-connectors.md) , és hogyan összekötők [automatikus frissítési](application-proxy-connectors.md#automatic-updates).

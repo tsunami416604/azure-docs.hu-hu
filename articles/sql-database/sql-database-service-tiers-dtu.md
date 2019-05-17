@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/25/2019
-ms.openlocfilehash: 57a20ac29ec3a15db26e0ab2c0b61b57ab3a5882
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 5/10/2019
+ms.openlocfilehash: 5d769e2198b714d611b3004e11ccc624d4c6acdf
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60709059"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546448"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Szolgáltatási szinten a DTU-alapú vásárlási modell
 
@@ -36,7 +36,7 @@ Szolgáltatásszint kiválasztása elsődlegesen az üzleti folytonosság, táro
 | :-- | --: |--:| --:|
 |Egyes számítási feladatokhoz|Fejlesztési és éles környezetek|Fejlesztési és éles környezetek|Fejlesztési és éles környezetek|
 |SLA-ban garantált üzemidő|99.99%|99.99%|99.99%|
-|Biztonsági mentés megőrzése|7 nap|35 napon belül|35 napon belül|
+|Biztonsági másolat megőrzése|7 nap|35 napon belül|35 napon belül|
 |CPU|Alacsony|Alacsony, közepes, nagy|Közepes, nagy|
 |IO-átviteli sebesség (becsült) |2,5 dtu-k IOPS| 2,5 dtu-k IOPS | Dtu-k 48 IOPS|
 |IO-késés (becsült)|5 ezredmásodperc (olvasás), 10 ms (írás)|5 ezredmásodperc (olvasás), 10 ms (írás)|2 ms (olvasás/írás)|

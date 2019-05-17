@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 22db43413b5c752decf6785a75dff22ff4a68039
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 057ec69db300c3ec95cbc63bd5056a78c24d5660
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596672"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601661"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Ajánlott eljárások az Azure PaaS-adatbázisok védelme
 
@@ -78,7 +78,7 @@ Az Azure SQL TDE kulcs kapcsolódó problémák kezeli. A TDE, a helyszíni spec
 
 Az Azure SQL keresztül oszlopokhoz titkosítást nyújt [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine). Ez lehetővé teszi a bizalmas oszlopok csak jogosult alkalmazások elérését. Az ilyen típusú titkosítás használata korlátozza a titkosított oszlopokban értékek egyenlőség-alapú SQL-lekérdezéseket.
 
-Alkalmazás a blokkszintű titkosítás szelektív adatokat kell is használható. Adatok szuverenitását aggályokat néha enyhíthetők egy kulcsot, amely a megfelelő országot maradjanak az adatok titkosításához. Ez megakadályozza, hogy még véletlen adatátvitel problémát okoz, mivel nem lehet visszafejteni az adatokat, hogy a kulcs, feltéve, hogy egy erős algoritmust használja (például AES-256).
+Alkalmazás a blokkszintű titkosítás szelektív adatokat kell is használható. Adatok szuverenitását aggályokat néha enyhíthetők adatok titkosítása az, hogy a megfelelő országot/régiót a kulccsal. Ez megakadályozza, hogy még véletlen adatátvitel problémát okoz, mivel nem lehet visszafejteni az adatokat, hogy a kulcs, feltéve, hogy egy erős algoritmust használja (például AES-256).
 
 További óvintézkedéseket segítségével biztonságossá tétele az adatbázis, például a biztonságos rendszerek tervezése során, a bizalmas eszközök titkosítása és az adatbázis-kiszolgálók körül tűzfal létrehozásához.
 

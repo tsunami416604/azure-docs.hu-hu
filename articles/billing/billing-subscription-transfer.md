@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9af3b1b9c267bc09b370717913722a6c53ad5a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2ffebdd5b88603113dd7624e97dcf7353ab5d1ba
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60371110"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605563"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés tulajdonjogának átruházása másik fiókra
 
@@ -64,7 +64,7 @@ Az előfizetés egy másik felhasználó módosíthatja a Fiókadminisztrátor �
    ![Első előfizetési átadás weblapot](./media/billing-subscription-transfer/image4.png)
 
    ![Második előfizetés-átadási weblap](./media/billing-subscription-transfer/image5.png)
-1. Sikerült! Az előfizetések átvitele esetén.
+1. Siker! Az előfizetések átvitele esetén.
 
 <a id="EA"></a>
 
@@ -87,10 +87,10 @@ A vállalati adminisztrátor átadhatja az előfizetések tulajdonjogát egy ado
 
 Önkiszolgáló előfizetés átadása az ajánlatok és az alábbi táblázatban szereplő előfizetés-típusok érhető el. Jelenleg nem tudja áthelyezni egy ingyenes próbaverzióra vagy [Azure a nyílt (aio-ra)](https://azure.microsoft.com/offers/ms-azr-0111p/) előfizetések. Megkerülő megoldásért tekintse meg a [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md). Át más előfizetésekre, például az [szponzorálási](https://azure.microsoft.com/offers/ms-azr-0036p/) vagy támogatási csomagok, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-| Csomag neve                                                                             | Csomag száma |
+| Ajánlat neve                                                                             | Csomag száma |
 |----------------------------------------------------------------------------------------|--------------|
 | [Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*|MS-AZR-0017P        |
-| [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)          | MS-AZR-0025P        |
+| [A Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)          | MS-AZR-0025P        |
 | [MSDN-platformok](https://azure.microsoft.com/offers/ms-azr-0062p/)                     | MS-AZR-0062P        |
 | [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0003p/)                      | MS-AZR-0003P        |
 | [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)             | MS-AZR-0023P        |
@@ -119,7 +119,7 @@ Az erőforrások, például virtuális gépek, a lemezek és a websites átvitel
 
 ### <a id="no-button"></a> Miért nem látom, hogy az "Előfizetés átadására" gomb?
 
-Sajnos az önkiszolgáló előfizetés-átadás nem érhető el az ajánlat vagy ország. Az előfizetés átadására irányuló [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Sajnos az önkiszolgáló előfizetés-átadás nem érhető el az ajánlat vagy országát/régióját. Az előfizetés átadására irányuló [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="does-a-subscription-transfer-result-in-any-service-downtime"></a>Az előfizetés átadása bármely szolgáltatás állásidőt eredményez?
 
@@ -156,9 +156,9 @@ A küldő fizetési addig a pontig, hogy befejeződött-e az átvitel jelentett 
 
 Az ajánlat azonosnak kell maradnia. Ha módosítani szeretné az ajánlatot, tekintse meg a [Váltás másik ajánlatra az Azure-előfizetés](billing-how-to-switch-azure-offer.md).
 
-### <a name="can-i-transfer-a-subscription-to-a-user-account-in-another-country"></a>Átvihető-e egy előfizetés egy felhasználói fiókot egy másik országban?
+### <a name="can-i-transfer-a-subscription-to-a-user-account-in-another-countryregion"></a>Átvihető-e egy előfizetés egy felhasználói fiókot egy másik országban/régióban?
 
-Előfizetés átvitele egy felhasználói fiókot egy másik országban nem, nem támogatott. A címzett felhasználói fióknak ugyanabban az országban kell lennie.
+Előfizetés átvitele egy felhasználói fiókot egy másik országban/régióban nem, nem támogatott. A címzett felhasználói fiók ebben az ugyanazon országban vagy régióban kell lennie.
 
 ### <a name="can-the-recipient-use-a-different-payment-method"></a>A címzett használható egy másik fizetési mód?
 
@@ -172,6 +172,6 @@ Egy előfizetés-átadás elfogadásához hitelkártya vagy hasonló fizetési m
 
 Ha az előfizetés tulajdonjogának nem lehet manuálisan áttelepítheti az erőforrások. Lásd: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md).
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolatfelvétel.
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

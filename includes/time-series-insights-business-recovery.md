@@ -8,12 +8,12 @@ ms.service: time-series-insights
 author: kingdomofends
 ms.author: adgera
 ms.date: 04/29/2019
-ms.openlocfilehash: cf07d19966c08a63b9aa50475622aa0a1e5e1600
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: e87a82e985ed1d1794f9da00546f167ef01e1779
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236506"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65815457"
 ---
 ## <a name="business-disaster-recovery"></a>Üzleti katasztrófa utáni helyreállítás
 
@@ -48,10 +48,10 @@ Más szolgáltatások integrálása a Time Series Insights további vész helyre
 
 Többféleképpen is lehet a Time Series Insights adatait, az alkalmazások és a szolgáltatásait, még akkor is, ha azok még szakadhat meg. Dönthet úgy is, hogy az Azure Time Series-környezet teljes körű, ismétlődő, biztonsági mentési másolatot szükség:
 
-1. A TSI-specifikus, **Feladatátvevőfürt-példány** átirányíthatja az adatokat, és a forgalmat.
+1. Egy Time Series Insights-specifikus, **Feladatátvevőfürt-példány** átirányíthatja az adatokat, és a forgalmat.
 1. Naplózás és az adatok megőrzését céljából.
 
-Ismétlődő a TSI-környezet a legjobb módszer általában egy második TSI-környezet létrehozása a biztonsági másolat az Azure-régióban. Események az elsődleges esemény forrásból is küldése a másodlagos ebben a környezetben. Győződjön meg arról, hogy egy második, dedikált és fogyasztói csoportot használja, és hajtsa végre az adott forrás üzleti vész helyreállítási irányelveinek (fent).
+Ismétlődő egy Time Series Insights-környezet a legjobb módszer általában egy második Time Series Insights-környezet létrehozása a biztonsági másolat az Azure-régióban. Események az elsődleges esemény forrásból is küldése a másodlagos ebben a környezetben. Győződjön meg arról, hogy egy második, dedikált és fogyasztói csoportot használja, és hajtsa végre az adott forrás üzleti vész helyreállítási irányelveinek (fent).
 
 Pontosabban a duplikált környezetet hozhat létre:
 
@@ -63,7 +63,7 @@ Pontosabban a duplikált környezetet hozhat létre:
 A végső lépés:
 
 * Ha az elsődleges régióban egy vészhelyreállítási incidens van hatással, irányítsa át a műveletek a biztonsági mentési Time Series Insights-környezetbe.
-* Biztonsági mentése és helyreállítása minden TSI telemetriai és adatok lekérdezése a második régiót használni.
+* A második régiót segítségével biztonsági mentése és helyreállítása minden Time Series Insights telemetriai és a lekérdezés adatait.
 
 > [!IMPORTANT]
 > * Vegye figyelembe, hogy a késés előfordulhat, hogy észlelt feladatátvétel esetén.

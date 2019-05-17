@@ -1,6 +1,6 @@
 ---
-title: Egyszeri bejelentkezés – katalógusban nem szereplő alkalmazások – Azure Active Directory |} A Microsoft Docs
-description: Egyszeri bejelentkezés (SSO) a katalógusban nem szereplő alkalmazásokhoz az Azure Active Directoryban (Azure AD) konfigurálása
+title: Egyszeri bejelentkezés – katalógusban nem szereplő alkalmazások – a Microsoft identity platform |} A Microsoft Docs
+description: A Microsoft identity platform (Azure AD) a katalógusban nem szereplő alkalmazásokhoz való egyszeri bejelentkezés (SSO) konfigurálása
 services: active-directory
 author: CelesteDG
 manager: mtillman
@@ -12,46 +12,58 @@ ms.date: 01/08/2019
 ms.author: celested
 ms.reviewer: asmalser,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f003ec847ab3777a2174a1078a2d07eb012bb34
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8459f9704a15614f2c3edaff5758fa534f78cbd9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292087"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65781120"
 ---
-# <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés nem katalógusból származó alkalmazások az Azure Active Directory konfigurálása
+# <a name="configure-single-sign-on-to-non-gallery-applications-in-microsoft-identity-platform"></a>Egyszeri bejelentkezés nem katalógusból származó alkalmazásokhoz a Microsoft identity platform konfigurálása
 
-Ez a cikk egy szolgáltatás, amely lehetővé teszi a rendszergazdák egyszeri bejelentkezés alkalmazásokhoz nincs jelen az Azure Active Directory alkalmazásgyűjtemény tárgya *kódírás nélkül*. Ha inkább az egyéni alkalmazások integrálása az Azure AD-kódon keresztül: Fejlesztői útmutató keres, tekintse meg [hitelesítési forgatókönyvek az Azure ad-ben](../develop/authentication-scenarios.md).
+Ez a cikk egy szolgáltatás, amely lehetővé teszi a rendszergazdák egyszeri bejelentkezést az alkalmazások nem jelenik meg a Microsoft identity platform alkalmazásgyűjtemény tárgya *kódírás nélkül*.
 
-Az Azure Active Directory alkalmazáskatalógusában felsorolja a alkalmazások ismert támogatja az egyszeri bejelentkezés az Azure Active Directoryval, az űrlap leírtak szerint [Ez a cikk](what-is-single-sign-on.md). Ha (a egy informatikai specialistája vagy támaszkodva a szervezetben) megtalálta az alkalmazást, amelyhez csatlakozni, az egyszeri bejelentkezés engedélyezése az Azure Portalon megjelenő részletes utasításokat követve kezdheti.
+Ha inkább az egyéni alkalmazások integrálása az Azure AD-kódon keresztül: Fejlesztői útmutató keres, tekintse meg [hitelesítési forgatókönyvek az Azure ad-ben](../develop/authentication-scenarios.md).
 
-Ezek a képességek is elérhetők, a licencszerződésben. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/active-directory/) olvasható. 
+A Microsoft identity platform alkalmazáskatalógusában felsorolja a alkalmazások ismert támogatja az egyszeri bejelentkezés a Microsoft identity platform révén az űrlap leírtak szerint [Ez a cikk](what-is-single-sign-on.md). Ha (a egy informatikai specialistája vagy támaszkodva a szervezetben) megtalálta az alkalmazást, amelyhez csatlakozni, az egyszeri bejelentkezés engedélyezése az Azure Portalon megjelenő részletes utasításokat követve kezdheti.
 
+Ezek a képességek is elérhetők, a licencszerződésben. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/active-directory/) olvasható.
+
+- Például egy modern protokollt használó alkalmazás önkiszolgáló integrációja [OpenId Connect vagy OAuth](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols) annak a felhasználók hitelesítéséhez és a jogkivonatok lekérésére [Microsoft Graph](https://graph.microsoft.com).
 - Önkiszolgáló integrációja bármilyen alkalmazás, amely támogatja az SAML 2.0 identitásszolgáltató (SP által kezdeményezett vagy identitásszolgáltató által kezdeményezett)
 - Bármely, amely rendelkezik egy a bejelentkezési oldal HTML-alapú webes alkalmazás önkiszolgáló integrációja [jelszóalapú egyszeri bejelentkezés](what-is-single-sign-on.md#password-based-sso)
 - A felhasználókiépítés az SCIM-protokollt használó alkalmazások önkiszolgáló kapcsolat ([az itt leírtak szerint](use-scim-to-provision-users-and-groups.md))
-- Lehetővé teszi, hogy minden olyan alkalmazáshoz, a hivatkozások a [Office 365 appindítóban](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) vagy a [Azure AD hozzáférési panel](what-is-single-sign-on.md#linked-sso)
+- Lehetővé teszi, hogy minden olyan alkalmazáshoz, a hivatkozások a [Office 365 appindítóban](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) vagy a [Azure AD hozzáférési panel](what-is-single-sign-on.md#linked-sign-on)
 
 Ez nem csupán a SaaS-alkalmazásokhoz, amelyek használják, de rendelkezik nem még lett bevezetve, az Azure AD alkalmazáskatalógusában, de a szervezet azt szabályozza, a felhőben vagy a helyszíni kiszolgálókra telepített külső webes alkalmazásokat tartalmazza.
 
-Ezek a képességek, más néven *integrációs alkalmazássablonok*, szabványokon alapuló kapcsolódási pontok SAML, SCIM vagy űrlapalapú hitelesítést támogató alkalmazások esetében, és foglalják rugalmas lehetőségek és beállítások számára kompatibilitás az alkalmazások széles körű száma. 
+Ezek a képességek, más néven *integrációs alkalmazássablonok*, szabványokon alapuló kapcsolódási pontok SAML, SCIM vagy űrlapalapú hitelesítést támogató alkalmazások esetében, és foglalják rugalmas lehetőségek és beállítások számára kompatibilitás az alkalmazások széles körű száma.
 
 ## <a name="adding-an-unlisted-application"></a>Egy listán nem szereplő alkalmazás hozzáadása
-Egy alkalmazás egy alkalmazás-integráció sablon használatával csatlakozhat, jelentkezzen be az Azure Portalon az Azure Active Directory-rendszergazdai fiók használatával. Keresse meg a **Active Directory > Vállalati alkalmazások > új alkalmazás > katalógusban nem szereplő alkalmazás** szakaszban jelölje be **Hozzáadás**, majd **alkalmazás hozzáadása a katalógusból** .
 
-  ![Alkalmazás hozzáadása](./media/configure-single-sign-on-non-gallery-applications/customapp1.png)
+A Microsoft Identity platform az alkalmazásregisztrációt kétféle módszer biztosítja.
 
-Az alkalmazáskatalógusban, kiválasztásával adhat hozzá egy listán nem szereplő alkalmazást a **katalógusban nem szereplő alkalmazás** csempét, amely a keresési eredmények között látható, ha a kívánt alkalmazás nem található. Miután megadta az alkalmazás nevét, konfigurálhatja az egyszeri bejelentkezésre vonatkozó beállításokat és viselkedését. 
+Például egy modern protokollt használó alkalmazás [OpenId Connect vagy OAuth](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols) , a felhasználók hitelesítésére van regisztrálva használatával a [alkalmazásregisztráció portál](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-register-an-app).
 
-**Gyors tipp**:  Ajánlott eljárásként a keresési funkció segítségével ellenőrizze, hogy ha az alkalmazás már létezik-e az alkalmazás-katalógusában. Ha az alkalmazás megtalálható, és egyszeri bejelentkezés említi a leírását, majd az alkalmazás már támogatja az összevont egyszeri bejelentkezést.
+Minden más típusú használó alkalmazások regisztrációs [támogatott hitelesítési mechanizmusok](what-is-single-sign-on.md) hasonlóan a [SAML](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol) protokoll használatát a **vállalati alkalmazások** panel Csatlakozás a Microsoft Identity platform magukat.
 
-  ![Keresés](./media/configure-single-sign-on-non-gallery-applications/customapp2.png)
+Egy alkalmazás egy alkalmazás-integráció sablon használatával csatlakozhat, jelentkezzen be az Azure Portalon, a Microsoft identity platform rendszergazdai fiók használatával. Keresse meg a **Active Directory > Vállalati alkalmazások > új alkalmazás > katalógusban nem szereplő alkalmazás** szakaszban jelölje be **Hozzáadás**, majd **alkalmazás hozzáadása a katalógusból** .
+
+![Alkalmazás hozzáadása](./media/configure-single-sign-on-non-gallery-applications/customapp1.png)
+
+Az alkalmazáskatalógusban, kiválasztásával adhat hozzá egy listán nem szereplő alkalmazást a **katalógusban nem szereplő alkalmazás** csempét, amely a keresési eredmények között látható, ha a kívánt alkalmazás nem található. Miután megadta az alkalmazás nevét, konfigurálhatja az egyszeri bejelentkezésre vonatkozó beállításokat és viselkedését.
+
+> [!TIP]
+> Ajánlott eljárásként a keresési funkció segítségével ellenőrizze, hogy ha az alkalmazás már létezik-e az alkalmazás-katalógusában. Ha az alkalmazás megtalálható, és egyszeri bejelentkezés említi a leírását, majd az alkalmazás már támogatja az összevont egyszeri bejelentkezést.
+
+![Keresés](./media/configure-single-sign-on-non-gallery-applications/customapp2.png)
 
 Ezzel a módszerrel egy alkalmazás hozzáadása egy előre integrált alkalmazások számára elérhető hasonló élményt nyújt. Válassza **konfigurálása egyszeri bejelentkezéshez** , vagy kattintson az **egyszeri bejelentkezési** az alkalmazás bal oldali navigációs menüjében. A következő képernyőn kapcsolódhatnak az egyszeri bejelentkezés konfigurálásához. A beállítások a következő szakaszban Ez a cikk ismerteti.
   
 ![Beállítási lehetőségek](./media/configure-single-sign-on-non-gallery-applications/customapp3.png)
 
 ## <a name="saml-based-single-sign-on"></a>SAML-alapú egyszeri bejelentkezés
+
 Válassza ki ezt a beállítást, az alkalmazás SAML-alapú hitelesítés konfigurálása. Ehhez az szükséges, hogy az alkalmazás támogatja-e a SAML 2.0. Információkat gyűjtenek a folytatás előtt az alkalmazás SAML funkcióinak használatát. Hajtsa végre a következő szakaszok konfigurálása egyszeri bejelentkezéshez az alkalmazások és az Azure AD között.
 
 ### <a name="enter-basic-saml-configuration"></a>Adja meg az alapszintű SAML-konfigurációja
@@ -65,7 +77,7 @@ Az Azure AD beállításához, adja meg az alapszintű SAML-konfigurációja. Ma
 
     Az alábbiakban látható egy példát, hogyan az azonosító vagy a kiállító szerepel-e az alkalmazás az Azure AD által küldött SAML-kérelem:
 
-    ```
+    ```XML
     <samlp:AuthnRequest
     xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
     ID="id6c1c178c166d486687be4aaf5e482730"
@@ -86,7 +98,7 @@ Az Azure AD beállításához, adja meg az alapszintű SAML-konfigurációja. Ma
     Set-AzureADServicePrincipal -ObjectId $sp.ObjectId -ReplyUrls "<ReplyURLs>"
     ```
 
-További információkért lásd: [SAML 2.0-s hitelesítési kérelmek és válaszok, amely támogatja az Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML)
+További információkért lásd: [SAML 2.0-s hitelesítési kérelmek és válaszok, amely támogatja a Microsoft identity platform (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML)
 
 
 ### <a name="review-or-customize-the-claims-issued-in-the-saml-token"></a>Tekintse át, vagy a SAML-jogkivonatban kiadott jogcímek testreszabása
@@ -100,11 +112,9 @@ Megtekintheti és szerkesztheti a jogcímek, az alkalmazásnak a SAML-jogkivonat
 Előfordulhat, hogy miért a SAML-jogkivonatban kiadott jogcímek szerkesztése kell két oka van:
 
 - Az alkalmazás eltérő szabályzatkészletet jogcím URI-k vagy a jogcímértékek lett írva.
-- Az alkalmazás telepítése úgy, hogy a NameIdentifier jogcím verziójáétól eltérő a felhasználónevet (AVAGY egyszerű felhasználónév), az Azure Active Directoryban tárolt igényel. 
+- Az alkalmazás telepítése úgy, hogy a NameIdentifier jogcím verziójáétól eltérő a felhasználónevet (vagyis a felhasználó egyszerű neve) a Microsoft identity platform tárolva van szükség.
 
 További információkért lásd: [vállalati alkalmazásokhoz SAML-jogkivonatban kiadott jogcímek testreszabása](./../develop/../develop/active-directory-saml-claims-customization.md). 
-
-
 
 ### <a name="review-certificate-expiration-data-status-and-email-notification"></a>Felülvizsgálat tanúsítvány lejárati dátum, állapot és e-mail-értesítés
 
@@ -120,7 +130,7 @@ Ellenőrizze a tanúsítvány rendelkezik-e:
 - Aktív állapotú. Ha az állapot inaktív, állapotúra, aktív. Ha módosítani szeretné az állapot, ellenőrizze **aktív** , és mentse a konfigurációt. 
 - A megfelelő értesítési e-mailt. Ha az aktív tanúsítvány lejárati dátuma közel, akkor az Azure AD értesítést küld az ebben a mezőben beállított e-mail-címre.  
 
-További információkért lásd: [összevont egyszeri bejelentkezés az Azure Active Directory-tanúsítványok kezelése](manage-certificates-for-federated-single-sign-on.md).
+További információkért lásd: [összevont egyszeri bejelentkezés a Microsoft identitásplatformja tanúsítványainak kezelése](manage-certificates-for-federated-single-sign-on.md).
 
 ### <a name="set-up-target-application"></a>Cél-alkalmazás beállítása
 
@@ -145,7 +155,7 @@ Egy felhasználó számára a felhasználói jogkivonatok kiállítása az Azure
 
 ### <a name="test-the-saml-application"></a>Az SAML-alkalmazás tesztelése
 
-A SAML-kérelem-beli tesztelése előtt, az alkalmazás az Azure AD beállítása, és a felhasználók vagy csoportok hozzárendelve az alkalmazáshoz. Tekintse meg az SAML-alkalmazás teszteléséhez [SAML-alapú egyszeri bejelentkezés az Azure Active Directory-alkalmazások hibakeresése](../develop/howto-v1-debug-saml-sso-issues.md).
+A SAML-kérelem-beli tesztelése előtt, az alkalmazás az Azure AD beállítása, és a felhasználók vagy csoportok hozzárendelve az alkalmazáshoz. Tekintse meg az SAML-alkalmazás teszteléséhez [SAML-alapú egyszeri bejelentkezés a Microsoft identity platform alkalmazások hibakeresése](../develop/howto-v1-debug-saml-sso-issues.md).
 
 ## <a name="password-single-sign-on"></a>Jelszavas egyszeri bejelentkezés
 
@@ -169,6 +179,7 @@ Kiválasztása után **tovább**, meg kell adnia összekapcsolása az alkalmazá
 >
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
+
 - [Az előre integrált alkalmazások SAML-jogkivonatban kiadott jogcímek testreszabása](../develop/active-directory-saml-claims-customization.md)
 - [SAML-alapú egyszeri bejelentkezés hibaelhárítása](../develop/howto-v1-debug-saml-sso-issues.md)
-
+- [A Microsoft identity platform (az Azure Active Directory fejlesztők számára](https://aka.ms/aaddev)

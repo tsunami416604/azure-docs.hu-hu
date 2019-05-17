@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
-ms.openlocfilehash: cb5e41feb9be978592a1c1708ade0188ba20d504
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 7415e13a445a73af197362c6cfbd3a865a2fea02
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64873150"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604051"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Az Azure Data Explorer idősoros elemzés
 
@@ -34,7 +34,7 @@ Az eredményül kapott tábla időbélyegző-oszlopa, három környezetfüggő d
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
-|   | Időbélyeg | BrowserVer | OsVer | Ország |
+|   | Időbélyeg | BrowserVer | OsVer | Ország/régió |
 |   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | Egyesült Királyság |
 |   | 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
 |   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | Egyesült Királyság |
@@ -144,7 +144,7 @@ demo_series3
 | --- | --- | --- | --- |
 |   | időszakok | Pontszámok | nap |
 |   | 84 | 0.820622786055595 | 7 |
-|   | 12 | 0.764601405803502 | 1 |
+|   | 12 | 0.764601405803502 | 1. |
 
 A függvény a napi és heti szezonalitás észleli. A napi kisebb, mint a heti pontszámmodell, mivel hétvégi napok különböznek a weekdays is.
 
@@ -180,7 +180,7 @@ demo_many_series1
 
 |   |   |   |   |   |   |
 | --- | --- | --- | --- | --- | --- |
-|   | IDŐBÉLYEG | hely | anonOp | DB | DataRead |
+|   | TIMESTAMP | hely | anonOp | DB | DataRead |
 |   | 2016-09-11 21:00:00.0000000 | Hely 9 | 5117853934049630089 | 262 | 0 |
 |   | 2016-09-11 21:00:00.0000000 | Hely 9 | 5117853934049630089 | 241 | 0 |
 |   | 2016-09-11 21:00:00.0000000 | Hely 9 | -865998331941149874 | 262 | 279862 |
@@ -222,7 +222,7 @@ demo_many_series1
 
 |   |   |
 | --- | --- |
-|   | Darabszám |
+|   | Count |
 |   | 18339 |
 
 Most fogunk olvasási száma mérőszám 18339 idősorozat csoportját hozhatja létre. Adjuk hozzá a `by` záradékot a márka sorozat utasítás lineáris regressziós érvényesek, és válassza a felső két idősorozat, akinek a legjelentősebb csökkenő trend:

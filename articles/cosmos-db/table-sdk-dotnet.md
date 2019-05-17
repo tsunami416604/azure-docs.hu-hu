@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 506f623fe928cf122a16630844996c981cc20e9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db7cc556525ab57f14984232bf1797764865fca3
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60330346"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606255"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Az Azure Cosmos DB Table .NET API: Töltse le és kibocsátási megjegyzések
 
@@ -33,6 +33,8 @@ ms.locfileid: "60330346"
 |**Aktuális támogatott keretrendszer**|[A Microsoft .NET-keretrendszer 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
 
 > [!IMPORTANT]
+> A .NET-keretrendszer SDK [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) van a karbantartás mód, és hamarosan el fognak évülni. Frissítsen az új .NET Standard kódtár [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) továbbra is a legújabb funkciók, a Table API által támogatott.
+
 > Ha az előzetes verzióban hozta létre a Table API-fiókot, hozzon létre egy [új Table API-fiókot](create-table-dotnet.md#create-a-database-account), amely használható az általánosan elérhető Table API SDK-kkal.
 >
 
@@ -75,22 +77,22 @@ ms.locfileid: "60330346"
 
 A Microsoft biztosít értesítési legalább **12 hónapig** kivonása egy SDK-t kiegyenlítse az a és újabb támogatott verzióra váltás előtt.
 
-A [WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) előzetes csomag elavult, és váltotta fel a [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) csomagot. 2018. November 15. a WindowsAzure.Storage-PremiumTable SDK-t kivezetjük, mely arra kéri, a kivont SDK nem fog tudni. A `Microsoft.Azure.CosmosDB.Table` csak jelenleg elérhető a .NET Standard kódtár, akkor még nem áll rendelkezésre a .NET Core.
+A `Microsoft.Azure.CosmosDB.Table` függvénytár jelenleg elérhető .NET-keretrendszer csak, és a karbantartási módban van, és hamarosan elavulttá válik. Új szolgáltatások és funkciók és optimalizálási lehetőségek csak hozzáadódnak a .NET Standard kódtár [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table), mert az ilyen frissítése a javasolt [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table).
 
-Új szolgáltatások és funkciók és optimalizálási lehetőségek csak hozzá az aktuális SDK-hoz, ezért javasoljuk, hogy mindig a legújabb SDK verzióra frissít leghamarabb lehető. 
+A [WindowsAzure.Storage-PremiumTable](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable/0.1.0-preview) előzetes csomag elavult. 2018. November 15. a WindowsAzure.Storage-PremiumTable SDK-t kivezetjük, mely arra kéri, a kivont SDK nem fog tudni. 
 
 Az Azure Cosmos DB egy kivont SDK használatával bármilyen kérelmeket a szolgáltatás által a rendszer elutasítja.
 <br/>
 
 | Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
-| [2.1.0](#2.1.0) |2019. január 22.|--- |
-| [2.0.0](#2.0.0) |2018. szeptember 26.|--- |
-| [1.1.3](#1.1.3) |2018. július 17.|--- |
-| [1.1.1](#1.1.1) |2018. március 26.|--- |
-| [1.1.0](#1.1.0) |2018. február 21.|--- |
-| [1.0.0](#1.0.0) |2017. november 15.|--- |
-| 0.9.0-Preview |2017. november 11. |--- |
+| [2.1.0](#2.1.0) |2019. január 22.|2020. április 01. |
+| [2.0.0](#2.0.0) |2018. szeptember 26.|2020. március 01. |
+| [1.1.3](#1.1.3) |2018. július 17.|2019. december 01. |
+| [1.1.1](#1.1.1) |2018. március 26.|2019. december 01. |
+| [1.1.0](#1.1.0) |2018. február 21.|2019. december 01. |
+| [1.0.0](#1.0.0) |2017. november 15.|2019. november 15. |
+| 0.9.0-Preview |2017. november 11. |2019. november 11. |
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -112,7 +114,7 @@ használja a Microsoft.Azure.CosmosDB.Table NuGet-csomagot próbál, ha a probl�
     
 * Az előnyben részesített NuGet Csomagkezelő eszközt használja, telepítse a Microsoft.Azure.Storage.Common NuGet-csomag Microsoft.Azure.CosmosDB.Table telepítése előtt.
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>gyakori kérdésekben
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

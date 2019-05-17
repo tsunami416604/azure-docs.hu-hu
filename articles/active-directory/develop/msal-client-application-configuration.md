@@ -4,7 +4,7 @@ description: Ismerje meg a nyilvános ügyfél és a bizalmas ügyfél beállít
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a48eea9fedd2d82f44693d58b31ee0d5c8c288d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4d731a8153dc6a70382c0d87cc20d8c961d9fe24
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138536"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546013"
 ---
 # <a name="application-configuration-options"></a>Alkalmazás-konfigurációs beállításai
 
@@ -95,7 +95,7 @@ Az egyetlen módszer a felhasználók csak személyes Microsoft-fiókokba való 
 - Állítsa be az alkalmazás regisztrációs célközönség "Munkahelyi és iskolai fiókokhoz és személyes fiókok", és
 - és állítsa be a közönség a kódban / konfiguráció `AadAuthorityAudience.PersonalMicrosoftAccount` (vagy `TenantID `= "felhasználók")
 
-## <a name="client-id"></a>Ügyfél-azonosító
+## <a name="client-id"></a>Ügyfélazonosító
 Ha az alkalmazás regisztrálva lett az Azure AD által az alkalmazáshoz rendelt egyedi alkalmazás (ügyfél) azonosítója.
 
 ## <a name="redirect-uri"></a>Átirányítási URI
@@ -124,7 +124,7 @@ A web apps az átirányítási URI-t (vagy a válasz URI), akkor az URI-t, amell
 
 Démon alkalmazások esetében nem kell átirányítási URI-t adja meg.
 
-## <a name="client-secret"></a>Titkos ügyfélkulcs
+## <a name="client-secret"></a>Titkos ügyfélkód
 A titkos ügyfélkulcsot a bizalmas ügyfél alkalmazáshoz. A titkos kód (alkalmazás jelszó) az alkalmazásregisztrációs portálon által biztosított, vagy az PowerShell AzureAD, az PowerShell AzureRM vagy az Azure CLI az Azure AD az alkalmazás regisztrációja során megadott.
 
 ## <a name="logging"></a>Naplózás

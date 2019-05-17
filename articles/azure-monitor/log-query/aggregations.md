@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 864e9586082ed95bf17135414ec4b879e3034ace
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fd8e886a78d0689ca60d8ea7c4d16639c81d5733
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589641"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602735"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Az Azure monitorban összesítések lekérdezések naplózását.
 
@@ -31,7 +31,7 @@ Ez a cikk ismerteti az összesítő függvényektől az Azure Monitor log lekér
 
 ## <a name="counts"></a>Darabszámok
 
-### <a name="count"></a>count
+### <a name="count"></a>darab
 Szűrők alkalmazása után az eredményhalmazban sorok számát. Az alábbi példa adja vissza a sorok száma a _Teljesítményoptimalizált_ táblát az elmúlt 30 percben. Az eredményt adja vissza egy adott nevű oszlopban *count_* , kivéve, ha egy adott nevét rendelje hozzá:
 
 
@@ -79,7 +79,7 @@ Heartbeat
 ```
 
 ### <a name="evaluating-subgroups"></a>Alcsoportok kiértékelése
-Egy szám vagy más összesítéseket végre az adatok az alcsoportok, használja a `by` kulcsszót. Például különböző Linux rendszerű számítógépek számlálása az egyes országok számát:
+Egy szám vagy más összesítéseket végre az adatok az alcsoportok, használja a `by` kulcsszót. Ha például a szívverések küldése minden ország/régió a különböző Linux-számítógépek számát:
 
 ```Kusto
 Heartbeat 
@@ -96,7 +96,7 @@ Heartbeat
 |Hollandia      | 2                   |
 
 
-Elemezheti az adatokat még kisebb alcsoportok, adjon hozzá további oszlopok az `by` szakaszban. Például előfordulhat, hogy szeretné az egyes országból / OSType különböző számítógépek száma:
+Elemezheti az adatokat még kisebb alcsoportok, adjon hozzá további oszlopok az `by` szakaszban. Például előfordulhat, hogy szeretné az egyes országból/régióból OSType kiszolgálónként eltérő számítógépek száma:
 
 ```Kusto
 Heartbeat 

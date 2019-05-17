@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Ismerteti a folyamatok, a power Azure fejlesztési területek, és azok miként vannak konfigurálva a azds.yaml konfigurációs fájlban
 keywords: azds.yaml, az Azure fejlesztési tárolóhelyek, fejlesztői, szóközök, Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 494dd3774ec47598a95c6e20de6283abc2e4ff94
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f7cf5ae875fa0fb87322052df036d35e8e5e89a4
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60687190"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605410"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Hogyan Azure fejlesztési tárolóhelyek működik, és van konfigurálva
 
@@ -29,7 +29,7 @@ Ez a cikk ismerteti a folyamatok, a power Azure fejlesztési területek és a fo
 
 * [Java és a CLI és Visual Studio Code-ot](quickstart-java.md)
 * [.NET core és a CLI és Visual Studio Code-ot](quickstart-netcore.md)
-* [.NET core és a Visual Studio 2017](quickstart-netcore-visualstudio.md)
+* [A .NET core Visual studióval](quickstart-netcore-visualstudio.md)
 * [NODE.js és a CLI és Visual Studio Code-ot](quickstart-nodejs.md)
 
 ## <a name="how-azure-dev-spaces-works"></a>Azure fejlesztői tárolóhelyek működése
@@ -66,7 +66,7 @@ Az alkalmazás futása közben, az ügyféloldali eszközök is:
 Az ügyféloldali részeként parancssori eszközöket is használhat a `azds` parancsot. Az ügyféloldali rendelkező eszközök is használhatja:
 
 * A Visual Studio Code használatával a [Azure fejlesztési tárolóhelyek bővítmény](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds).
-* Visual Studio 2017 [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools).
+* A Visual Studio [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools).
 
 A következő használt alapvető folyamat beállítása és használata az Azure fejlesztési tárolóhelyek:
 1. Az AKS-fürt előkészítése az Azure fejlesztési tárolóhelyek
@@ -337,7 +337,7 @@ A *install.set* tulajdonság lehetővé teszi, hogy egy vagy több értéket sze
 
 A fenti példában a *install.set.replicaCount* tulajdonság arra utasítja a vezérlő hány példányt az alkalmazás futtatása a fejlesztési tárhelyre. A forgatókönyvtől függően megnövelheti ezt az értéket, de azt a hibakeresést az alkalmazáspodot hatással lesz. További információkért lásd: a [hibaelhárításról szóló cikk](troubleshooting.md).
 
-A létrehozott Helm-diagramot a tárolórendszerkép értéke *{{. Values.Image.Repository}} :{{. Values.Image.tag}}*. A `azds.yaml` fájl határozza meg *install.set.image.tag* tulajdonság *$(tag)* alapértelmezés szerint, amely használatos értékeként *{{. Values.Image.tag}}*. Beállításával a *install.set.image.tag* tulajdonság ezzel a módszerrel, lehetővé teszi, hogy az alkalmazás kell futtatásakor az Azure fejlesztési tárolóhelyek címkézett eltérő módon a tároló rendszerképét. Ebben az esetben, a lemezkép címkével  *<value from image.repository>: $(tag)*. Kell használnia a *$(tag)* változó értékeként *install.set.image.tag* ahhoz, hogy a fejlesztői, szóközök ismeri fel, és keresse meg a tároló az AKS-fürtöt.
+A létrehozott Helm-diagramot a tárolórendszerkép értéke *{{. Values.Image.Repository}} :{{. Values.Image.tag}}*. A `azds.yaml` fájl határozza meg *install.set.image.tag* tulajdonság *$(tag)* alapértelmezés szerint, amely használatos értékeként *{{. Values.Image.tag}}*. Beállításával a *install.set.image.tag* tulajdonság ezzel a módszerrel, lehetővé teszi, hogy az alkalmazás kell futtatásakor az Azure fejlesztési tárolóhelyek címkézett eltérő módon a tároló rendszerképét. Ebben az esetben, a lemezkép címkével  *\<image.repository értéket >: $(tag)*. Kell használnia a *$(tag)* változó értékeként *install.set.image.tag* ahhoz, hogy a fejlesztői, szóközök ismeri fel, és keresse meg a tároló az AKS-fürtöt.
 
 A fenti példában `azds.yaml` meghatározása *install.set.ingress.hosts*. A *install.set.ingress.hosts* tulajdonság határozza meg a gazdagép nevének formátumát a nyilvános végpontokat. Ez a tulajdonság is használ *$(spacePrefix)*, *$(rootSpacePrefix)*, és *$(hostSuffix)*, melyek a vezérlő által megadott értékek. 
 
@@ -404,11 +404,11 @@ ingress:
 
 ## <a name="debug-your-code"></a>A kód hibakeresése
 
-A Java, .NET és a Node.js-alkalmazások esetén is hibakeresése az alkalmazást közvetlenül a Visual Studio Code-ot vagy a Visual Studio 2017 használatával fejlesztési tárhelyre. A Visual Studio Code és a Visual Studio 2017 adja meg azokat az eszközöket a fejlesztési tárhely csatlakozni, az alkalmazás indításához és csatoljon egy hibakeresőt. Futtatás után `azds prep`, megnyithatja a projekt a Visual Studio Code-ot vagy a Visual Studio 2017-ben. A Visual Studio Code-ot vagy a Visual Studio 2017 hoz létre a saját konfigurációs fájlok csatlakozás lehetőségét, amely elkülönül futó `azds prep`. A Visual Studio Code-ot vagy a Visual Studio 2017 belül is állítson be töréspontokat és indítsa el az alkalmazást a fejlesztési tárhelyre.
+Java, .NET és Node.js alkalmazások hibakeresése is közvetlenül a Visual Studio Code-ot vagy a Visual Studio dev tárhely futtató alkalmazás. A Visual Studio Code és a Visual Studio adja meg azokat az eszközöket a fejlesztési tárhely csatlakozni, az alkalmazás indításához és csatoljon egy hibakeresőt. Futtatás után `azds prep`, megnyithatja a projekt a Visual Studio Code-ot vagy a Visual Studióban. A Visual Studio Code-ot vagy a Visual Studio hoz létre a saját konfigurációs fájlok csatlakozás lehetőségét, amely elkülönül futó `azds prep`. A Visual Studio Code-ot vagy a Visual Studióban is állítson be töréspontokat és indítsa el az alkalmazást a fejlesztési tárhelyre.
 
 ![A kód hibakeresése](media/get-started-node/debug-configuration-nodejs2.png)
 
-Az alkalmazás hibakeresés a Visual Studio Code-ot vagy a Visual Studio 2017 használatával indíthatja el, ha kezelni nyisson meg, és ugyanúgy fut, a fejlesztői tárhely csatlakozik `azds up`. Az ügyféloldali eszközök a Visual Studio Code és a Visual Studio 2017-hibakeresési információkat kiegészítő paraméterrel is biztosítanak. A paraméter tartalmazza a hibakeresőt lemezkép, a hibakereső belül ladicího programu lemezkép helyét, és a célhelyen, az alkalmazás tárolóban csatlakoztatása a hibakeresőt mappa nevét. 
+Ha elindítja az alkalmazás hibakeresés a Visual Studio Code-ot vagy a Visual Studio használatával, kezelni nyisson meg, és ugyanúgy fut, a fejlesztői tárhely csatlakozik `azds up`. Az ügyféloldali eszközök a Visual Studio Code és a Visual Studio hibakeresési információkat egy kiegészítő paraméterrel is biztosítanak. A paraméter tartalmazza a hibakeresőt lemezkép, a hibakereső belül ladicího programu lemezkép helyét, és a célhelyen, az alkalmazás tárolóban csatlakoztatása a hibakeresőt mappa nevét. 
 
 A hibakereső kép automatikusan határozza meg az ügyféloldali eszközök. Hasonló a docker-fájlban során használt módszert használ, és a Helm-diagramot hoz létre, futtatásakor `azds prep`. A hibakereső van csatlakoztatva, az alkalmazás-lemezkép, miután használatával fut `azds exec`.
 
@@ -433,12 +433,12 @@ Ismerkedés az Azure-fejlesztési szóközzel, tekintse meg az alábbi rövid ú
 
 * [Java és a CLI és Visual Studio Code-ot](quickstart-java.md)
 * [.NET core és a CLI és Visual Studio Code-ot](quickstart-netcore.md)
-* [.NET core és a Visual Studio 2017](quickstart-netcore-visualstudio.md)
+* [A .NET core Visual studióval](quickstart-netcore-visualstudio.md)
 * [NODE.js és a CLI és Visual Studio Code-ot](quickstart-nodejs.md)
 
 Első lépések a fejlesztési csapat, tekintse meg az alábbi útmutatók:
 
 * [Csoportos fejlesztése – Java és a CLI és Visual Studio Code-ot](team-development-java.md)
 * [Csoportos fejlesztése – .NET Core és a CLI és Visual Studio Code-ot](team-development-netcore.md)
-* [Csoportos fejlesztése – .NET Core és a Visual Studio 2017](team-development-netcore-visualstudio.md)
+* [Csoportos fejlesztése – .NET Core Visual studióval](team-development-netcore-visualstudio.md)
 * [Csoportos fejlesztése – Node.js és a CLI és Visual Studio Code-ot](team-development-nodejs.md)

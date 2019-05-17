@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/29/2019
+ms.date: 05/16/2019
 ms.author: mlottner
-ms.openlocfilehash: 3ef3891ac2b0423688f49ae034331935b1b0cd6c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 7030ae1c3a28cdd74671dc95dce59cf86cacf4c9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192494"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786157"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Gyors útmutató: Az IoT Hub szolgáltatás engedélyezése
 
@@ -30,7 +30,7 @@ ms.locfileid: "65192494"
 Ez a cikk az Azure Security Center (ASC) az IoT hub IoT-előzetes szolgáltatás engedélyezése a magyarázattal szolgál.  
 
 > [!NOTE]
-> Az Azure Security Center az IoT jelenleg csak a standard szintű és a magasabb szintű IoT-központok támogatja.
+> Az Azure Security Center az IoT jelenleg csak a standard szintű IoT-központok támogatja.
 > Az Azure Security Center az IoT hub egyetlen megoldás is. Ha több van szüksége, több megoldás szükség. 
 
 ## <a name="prerequisites-for-enabling-the-service"></a>A szolgáltatás engedélyezéséhez szükséges előfeltételek
@@ -38,8 +38,12 @@ Ez a cikk az Azure Security Center (ASC) az IoT hub IoT-előzetes szolgáltatás
 - Log Analytics-munkaterület
   - Két típusú adatok tárolódnak a Log Analytics-munkaterület az ASC alapértelmezés szerint az IoT; **biztonsági riasztások** és **javaslatok**. 
   - Dönthet úgy, hogy adjon hozzá további információk típusa, a storage **nyers események**. Vegye figyelembe, hogy tárolására **nyers események** a Log Analytics sorozatéhoz további tárolási költségeket. 
-- Az IoT Hub (standard szintű vagy újabb)
-- Igazíthatja [prerequities szolgáltatás](service-prerequisites.md) 
+- IoT Hub (standard tier)
+- Igazíthatja [szolgáltatás előfeltételei](service-prerequisites.md) 
+- Támogatott szolgáltatási régiók
+  - USA középső régiója
+  - Northern Europe
+  - Délkelet-Ázsia
 
 ## <a name="enable-asc-for-iot-on-your-iot-hub"></a>Az IoT hub IoT ASC engedélyezése 
 

@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a50dadb7ae401a5655745a799e6e9fcebb8bb886
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 455be9ba95975ba5c3bd870cbe01ca916d85ef41
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935927"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544424"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
@@ -44,8 +44,8 @@ Ezen a lapon havonta frissül, így rendszeresen ellenőrizni. Ha a keresett ele
 ### <a name="azure-active-directory-azure-ad-entitlement-management-is-now-available-public-preview"></a>Az Azure Active Directory (Azure AD) tagjogosultság-kezelés már elérhető (nyilvános előzetes verzió)
 
 **Írja be:** Új funkció  
-**Szolgáltatás kategóriája:** Identitáskezelést  
-**A termék szolgáltatás:** Identitáskezelést
+**Szolgáltatás kategóriája:** Identity Governance  
+**A termék szolgáltatás:** Identity Governance
 
 Az Azure AD tagjogosultság-kezelés, mostantól nyilvános előzetes verzióban elérhető segítségével az ügyfelek és delegálja a felügyeleti csomagok hozzáférést, amely meghatározza, hogy alkalmazottai és partnerei üzleti kérhet a hozzáférést, aki jóvá kell hagynia és mennyi ideig hozzáféréssel rendelkeznek. Hozzáférési csomagok kezelheti az Azure AD-tagság és a Office 365-csoportok, a szerepkör-hozzárendeléseit a vállalati alkalmazásokban és a szerepkör-hozzárendeléseit a SharePoint Online-webhelyekkel. További információ: tagjogosultság-kezelés a [tagjogosultság-kezelés az Azure AD áttekintést](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview). További információ a technológiai spektrumunk kihasználtságának növelését az Azure AD Identity Cégirányítási szolgáltatásait, beleértve a Privileged Identity Management, a hozzáférési felülvizsgálatok és a használati feltételeket, [Mi az Azure AD Identity Cégirányítási?](../governance/identity-governance-overview.md).
 
@@ -97,7 +97,7 @@ További információkért lásd: [használata az Azure Monitor-munkafüzetek a 
 
 Április 2019 tettünk elérhetővé az alkalmazáskatalógusban támogatja az összevonási 21-én új alkalmazásokról:
 
-[Az SAP Fiori](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-fiori-tutorial), [HRworks Single Sign-On](https://docs.microsoft.com/azure/active-directory/saas-apps/hrworks-single-sign-on-tutorial), [Szűrjön át](https://docs.microsoft.com/azure/active-directory/saas-apps/percolate-tutorial), [MobiControl](https://docs.microsoft.com/azure/active-directory/saas-apps/mobicontrol--tutorial), [Citrix NetScaler](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial), [ Shibumi](https://docs.microsoft.com/azure/active-directory/saas-apps/shibumi-tutorial), [Benchling](https://docs.microsoft.com/azure/active-directory/saas-apps/benchling-tutorial), [MileIQ](https://mileiq.onelink.me/991934284/7e980085), [PageDNA](https://docs.microsoft.com/azure/active-directory/saas-apps/pagedna-tutorial), [EduBrite LMS](https://docs.microsoft.com/azure/active-directory/saas-apps/edubrite-lms-tutorial), [RStudio Csatlakozás](https://docs.microsoft.com/azure/active-directory/saas-apps/rstudio-connect-tutorial), [AMMS](https://docs.microsoft.com/azure/active-directory/saas-apps/amms-tutorial), [Mitel csatlakozás](https://docs.microsoft.com/azure/active-directory/saas-apps/mitel-connect-tutorial), [Alibaba felhő (Role-based SSO)](https://docs.microsoft.com/azure/active-directory/saas-apps/alibaba-cloud-service-role-based-sso-tutorial), [Certent tőke felügyeleti](https://docs.microsoft.com/azure/active-directory/saas-apps/certent-equity-management-tutorial), [Sectigo Tanúsítványkezelő](https://docs.microsoft.com/azure/active-directory/saas-apps/sectigo-certificate-manager-tutorial), [GreenOrbit](https://docs.microsoft.com/azure/active-directory/saas-apps/greenorbit-tutorial), [Workgrid](https://docs.microsoft.com/azure/active-directory/saas-apps/workgrid-tutorial), [monday.com](https://docs.microsoft.com/azure/active-directory/saas-apps/mondaycom-tutorial), [ Surveymonkey-beli vállalati](https://docs.microsoft.com/azure/active-directory/saas-apps/surveymonkey-enterprise-tutorial), [Indiggo](https://indiggolead.com/)
+[Az SAP Fiori](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-fiori-tutorial), [HRworks Single Sign-On](https://docs.microsoft.com/azure/active-directory/saas-apps/hrworks-single-sign-on-tutorial), [Szűrjön át](https://docs.microsoft.com/azure/active-directory/saas-apps/percolate-tutorial), [MobiControl](https://docs.microsoft.com/azure/active-directory/saas-apps/mobicontrol-tutorial), [Citrix NetScaler](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial), [ Shibumi](https://docs.microsoft.com/azure/active-directory/saas-apps/shibumi-tutorial), [Benchling](https://docs.microsoft.com/azure/active-directory/saas-apps/benchling-tutorial), [MileIQ](https://mileiq.onelink.me/991934284/7e980085), [PageDNA](https://docs.microsoft.com/azure/active-directory/saas-apps/pagedna-tutorial), [EduBrite LMS](https://docs.microsoft.com/azure/active-directory/saas-apps/edubrite-lms-tutorial), [RStudio Csatlakozás](https://docs.microsoft.com/azure/active-directory/saas-apps/rstudio-connect-tutorial), [AMMS](https://docs.microsoft.com/azure/active-directory/saas-apps/amms-tutorial), [Mitel csatlakozás](https://docs.microsoft.com/azure/active-directory/saas-apps/mitel-connect-tutorial), [Alibaba felhő (Role-based SSO)](https://docs.microsoft.com/azure/active-directory/saas-apps/alibaba-cloud-service-role-based-sso-tutorial), [Certent tőke felügyeleti](https://docs.microsoft.com/azure/active-directory/saas-apps/certent-equity-management-tutorial), [Sectigo Tanúsítványkezelő](https://docs.microsoft.com/azure/active-directory/saas-apps/sectigo-certificate-manager-tutorial), [GreenOrbit](https://docs.microsoft.com/azure/active-directory/saas-apps/greenorbit-tutorial), [Workgrid](https://docs.microsoft.com/azure/active-directory/saas-apps/workgrid-tutorial), [monday.com](https://docs.microsoft.com/azure/active-directory/saas-apps/mondaycom-tutorial), [ Surveymonkey-beli vállalati](https://docs.microsoft.com/azure/active-directory/saas-apps/surveymonkey-enterprise-tutorial), [Indiggo](https://indiggolead.com/)
 
 Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial). Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kapcsolatos további információkért lásd: [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](https://aka.ms/azureadapprequest).
 
@@ -107,7 +107,7 @@ Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrá
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** Hozzáférési felülvizsgálatok  
-**A termék szolgáltatás:** Identitáskezelést
+**A termék szolgáltatás:** Identity Governance
 
 Új frissítések az Azure AD hozzáférési felülvizsgálatokkal teszi lehetővé:
 
@@ -286,8 +286,8 @@ Megakadályozza, hogy a rendszergazdák véletlenül zárolás maguk ki saját b
 ### <a name="improved-end-user-terms-of-use-experiences-on-mobile-devices"></a>Továbbfejlesztett végfelhasználói használati funkciók használatának meggátolása a mobil eszközök használata
 
 **Írja be:** Megváltozott funkció  
-**Szolgáltatás kategóriája:** Használati feltételek  
-**A termék szolgáltatás:** Szabályozás
+**Szolgáltatás kategóriája:** használati feltételeit  
+**A termék szolgáltatás:** Cégirányítás
 
 Frissítettük a meglévő feltételek használata élményt, tekintse át, és hogyan a használati feltételeket a mobileszközökön való hozzájárulás javítása érdekében. Ezután nagyíthat és, lépjen vissza, töltse le az adatokat, és válassza ki a hivatkozások. A frissített használati feltételek kapcsolatos további információkért lásd: [Azure Active Directory használati feltételek funkció](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#what-terms-of-use-looks-like-for-users).
 
@@ -349,7 +349,7 @@ Az SAML-jogkivonat titkosítása konfigurálásával kapcsolatos további inform
 
 **Írja be:** Új funkció  
 **Szolgáltatás kategóriája:** Hozzáférési felülvizsgálatok  
-**A termék szolgáltatás:** Szabályozás
+**A termék szolgáltatás:** Cégirányítás
 
 Most már megadhat több csoportot, vagy egyetlen Azure AD-alkalmazások hozzáférési felülvizsgálat csoporttagság vagy alkalmazás-hozzárendelés. Hozzáférési felülvizsgálatok több csoportokkal vagy alkalmazások beállítása ugyanazokkal a beállításokkal, és az összes belefoglalt véleményezők egy időben értesítést kap.
 
@@ -496,7 +496,7 @@ Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrá
 ### <a name="new-azure-ad-identity-protection-enhancements-public-preview"></a>Új Azure AD Identity Protection-funkciók (nyilvános előzetes verzió)
 
 **Írja be:** Megváltozott funkció  
-**Szolgáltatás kategóriája:** Identity Protection  
+**Szolgáltatás kategóriája:** Identitásvédelem  
 **A termék szolgáltatás:** Identitásbiztonság és -védelem
 
 Örömmel jelentjük, hogy lehetőségekkel bővült az alábbi fejlesztéseket tartalmazzák az Azure AD Identity Protection nyilvános előzetes ajánlat, többek között:
@@ -543,7 +543,7 @@ További információkért lásd: [PIM az Azure-erőforrások szerepköreihez ta
 
 **Írja be:** Rögzített  
 **Szolgáltatás kategóriája:** Felhasználókezelés  
-**A termék szolgáltatás:** Címtár
+**A termék szolgáltatás:** Könyvtár
 
 >[!Important]
 >Hogy vezetünk, és megismerheti az as gazdasági válság után a javítás miatt. Ezért azt már vissza a módosítás addig, hogy mi megkönnyítheti a javítás, hogy Megvalósíthat a szervezetben.
@@ -580,21 +580,21 @@ Adunk hozzá egy új **művelettípus** az erőforráson végrehajtott mezőben 
 #### <a name="changed-fields-in-the-audit-schema"></a>A naplózási sémában módosult mezők
 A naplózási sémában módosítja a következő mezőket:
 
-|Mező neve|Mi változott|Régi értékek|Új érték|
+|Mezőnév|Mi változott|Régi értékek|Új érték|
 |----------|------------|----------|----------|
 |Category|Ez volt a **szolgáltatásnév** mező. Most már a **naplózási kategóriát** mező. **Szolgáltatásnév** kapott a **loggedByService** mező.|<ul><li>Fiók kiépítése</li><li>Alapvető könyvtár</li><li>Az önkiszolgáló jelszó-visszaállítás</li></ul>|<ul><li>Felhasználókezelés</li><li>Csoportkezelés</li><li>Alkalmazáskezelés</li></ul>|
-|targetResources|Tartalmazza a **TargetResourceType** a legfelső szinten.|&nbsp;|<ul><li>Szabályzat</li><li>Alkalmazás</li><li>Felhasználó</li><li>Csoport</li></ul>|
+|targetResources|Tartalmazza a **TargetResourceType** a legfelső szinten.|&nbsp;|<ul><li>Házirend</li><li>Alkalmazás</li><li>Felhasználó</li><li>Csoport</li></ul>|
 |loggedByService|A szolgáltatás által generált a napló nevét itt.|Null|<ul><li>Fiók kiépítése</li><li>Alapvető könyvtár</li><li>Új jelszó önkiszolgáló kérése</li></ul>|
-|Eredmény|Az eredményét, a naplók. Korábban ez volt számba, de most bemutatjuk a tényleges érték.|<ul><li>0</li><li>1</li></ul>|<ul><li>Sikeres</li><li>Hiba</li></ul>|
+|Eredmény|Az eredményét, a naplók. Korábban ez volt számba, de most bemutatjuk a tényleges érték.|<ul><li>0</li><li>1.</li></ul>|<ul><li>Siker</li><li>Hiba</li></ul>|
 
 #### <a name="changed-fields-in-the-sign-in-schema"></a>A bejelentkezési sémában módosult mezők
 A bejelentkezési sémában módosítja a következő mezőket:
 
-|Mező neve|Mi változott|Régi értékek|Új érték|
+|Mezőnév|Mi változott|Régi értékek|Új érték|
 |----------|------------|----------|----------|
-|appliedConditionalAccessPolicies|Ez volt a **conditionalaccessPolicies** mező. Most már a **appliedConditionalAccessPolicies** mező.|Nem változott|Nem változott|
-|conditionalAccessStatus|Az eredményét, a feltételes hozzáférési szabályzat állapota, jelentkezzen be. Korábban ez volt számba, de most bemutatjuk a tényleges érték.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Sikeres</li><li>Hiba</li><li>Nem alkalmazott</li><li>Letiltva</li></ul>|
-|appliedConditionalAccessPolicies: result|Az eredményét, az egyes feltételes hozzáférési szabályzat állapota, jelentkezzen be. Korábban ez volt számba, de most bemutatjuk a tényleges érték.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Sikeres</li><li>Hiba</li><li>Nem alkalmazott</li><li>Letiltva</li></ul>|
+|appliedConditionalAccessPolicies|Ez volt a **conditionalaccessPolicies** mező. Most már a **appliedConditionalAccessPolicies** mező.|Nincs változás|Nincs változás|
+|conditionalAccessStatus|Az eredményét, a feltételes hozzáférési szabályzat állapota, jelentkezzen be. Korábban ez volt számba, de most bemutatjuk a tényleges érték.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Siker</li><li>Hiba</li><li>Nem alkalmazott</li><li>Letiltva</li></ul>|
+|appliedConditionalAccessPolicies: result|Az eredményét, az egyes feltételes hozzáférési szabályzat állapota, jelentkezzen be. Korábban ez volt számba, de most bemutatjuk a tényleges érték.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Siker</li><li>Hiba</li><li>Nem alkalmazott</li><li>Letiltva</li></ul>|
 
 A séma kapcsolatos további információkért lásd: [értelmezése az Azure AD naplózási sémát naplók az Azure Monitor (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema)
 
@@ -603,7 +603,7 @@ A séma kapcsolatos további információkért lásd: [értelmezése az Azure AD
 ### <a name="identity-protection-improvements-to-the-supervised-machine-learning-model-and-the-risk-score-engine"></a>A felügyelt gépi tanulási modell és a kockázatipontszám-motor új Identity Protectionfunkciókkal bővült
 
 **Írja be:** Megváltozott funkció  
-**Szolgáltatás kategóriája:** Identity Protection  
+**Szolgáltatás kategóriája:** Identitásvédelem  
 **A termék szolgáltatás:** Kockázati pontszámok
 
 Az Identity Protection kapcsolatos felhasználói, és jelentkezzen be kockázati assessment motor fejlesztései segíthet növelni a felhasználói kockázat pontosság és lefedettségét. A rendszergazdák, hogy felhasználói kockázati szint már nem közvetlenül kapcsolódik az adott észlelések kockázati szintjét, és, hogy nincs-e számát és a kockázatos bejelentkezési események szintjét növekedését tapasztalhatja.
@@ -624,7 +624,7 @@ Az Azure AD-rendszergazdák mostantól alaphelyzetbe állíthatja a saját jelsz
 
 - Egyéb mobil hitelesítő alkalmazás / hardver jogkivonat-kód
 
-- E-mail
+- E-mail-cím
 
 - Telefonhívás
 
@@ -661,8 +661,8 @@ Tisztában vagyunk vele, hogy idővel kell frissíteni, és a szervezet eszköz�
 ### <a name="administrators-can-require-users-to-accept-a-terms-of-use-on-each-device"></a>A rendszergazdák minden eszközön megkövetelhetik a felhasználóktól a használati feltételek elfogadását
 
 **Írja be:** Új funkció  
-**Szolgáltatás kategóriája:** Használati feltételek  
-**A termék szolgáltatás:** Szabályozás
+**Szolgáltatás kategóriája:** használati feltételeit  
+**A termék szolgáltatás:** Cégirányítás
  
 A rendszergazdák mostantól bekapcsolhatja a **kérése a felhasználóktól minden eszközön jóváhagyást** a felhasználókat, hogy fogadja el a használati feltételeket minden eszközön, akkor használja a bérlő megkövetelése lehetőséggel.
 
@@ -673,8 +673,8 @@ További információkért lásd: a [eszközszintű feltételek az Azure Active 
 ### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-a-recurring-schedule"></a>A rendszergazdák ismétlődő ütemezés alapján konfigurálhatják a használati feltételek elévülését
 
 **Írja be:** Új funkció  
-**Szolgáltatás kategóriája:** Használati feltételek  
-**A termék szolgáltatás:** Szabályozás
+**Szolgáltatás kategóriája:** használati feltételeit  
+**A termék szolgáltatás:** Cégirányítás
  
 
 A rendszergazdák mostantól bekapcsolhatja a **címtárbérlőhöz lejár** beállítás, a használati feltételeket a felhasználók a megadott, ismétlődő ütemezésen alapuló összes lejár. Az ütemezés évente, bi évente, negyedévente, vagy lehet havonta. Miután lejár a használati feltételeket, a felhasználók hatókörébe kell.
@@ -686,8 +686,8 @@ További információkért lásd: a [feltételek hozzáadása az Azure Active Di
 ### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-each-users-schedule"></a>A rendszergazdák az egyes felhasználók ütemezése alapján konfigurálhatják a Használati feltételek elévülését
 
 **Írja be:** Új funkció  
-**Szolgáltatás kategóriája:** Használati feltételek  
-**A termék szolgáltatás:** Szabályozás
+**Szolgáltatás kategóriája:** használati feltételeit  
+**A termék szolgáltatás:** Cégirányítás
 
 A rendszergazdák mostantól megadhatják az időtartamot, hogy a felhasználó a használati feltételeket kell hatókörébe. A rendszergazdák például megadhatja, hogy a felhasználók kell hatókörébe használati feltételeket a 90 naponta.
 
@@ -721,7 +721,7 @@ A PIM és a rendelkezésre álló e-mail-értesítések kapcsolatos további inf
 
 **Írja be:** Megváltozott funkció  
 **Szolgáltatás kategóriája:** Egyéb  
-**A termék szolgáltatás:** Címtár
+**A termék szolgáltatás:** Könyvtár
 
 Csoportalapú licencelés kívül esik a nyilvános előzetes és általánosan elérhető. Az általános kiadás részeként azt jobban skálázható adathalmaza e funkció, és újból feldolgozza a Csoportalapú licencelés hozzárendelését az olyan egyetlen lehetősége és használhatja a Csoportalapú licencelés az Office 365 E3 vagy A3 licencek hozzáadása.
 
@@ -787,7 +787,7 @@ További információkért lásd: [értesítési beállítások az Azure AD tart
 
 **Írja be:** Megváltozott funkció  
 **Szolgáltatás kategóriája:** Címtárkezelés  
-**A termék szolgáltatás:** Címtár
+**A termék szolgáltatás:** Könyvtár
 
 Örömmel jelentjük, hogy mostantól használhatja a ForceDelete tartomány API aszinkron módon átnevezésével, mint például a felhasználók, csoportok és alkalmazások az egyéni tartománynevet (contoso.com) a biztonsági mutató hivatkozásokat a kezdeti alapértelmezett tartomány nevét (az egyéni tartománynevek törlése contoso.onmicrosoft.com).
 

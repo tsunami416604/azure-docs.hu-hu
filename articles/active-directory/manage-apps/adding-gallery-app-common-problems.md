@@ -3,8 +3,8 @@ title: Egy Azure AD katalógusából származó alkalmazás hozzáadása során 
 description: A gyakori problémák személyek face megismerheti az Azure AD katalógusából származó alkalmazásokat, és mit tehet a problémák megoldásához hozzáadásakor
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a898b5b235099109fcfeaaa4d647493e54caf57e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b2b42880f99f3e87d75854166047896860f9eb14
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60438795"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784428"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Egy Azure AD katalógusából származó alkalmazás hozzáadása során
 
@@ -40,7 +40,7 @@ Ha hibát tapasztal, amikor kattint a **Hozzáadás** gomb, látni fog egy **ér
 
 ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Nem tudom, hogyan állítható be az alkalmazásom, miután hozzá van adva
 
-Ha alkalmazások megismerése segítségre van szüksége a [oktatóanyagok listája SaaS-alkalmazások integrálása az Azure Active Directoryval való](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) cikk egy nagyszerű hely az induláshoz.
+Ha az alkalmazások, megismerését segítségre van szüksége a [oktatóanyagok listája SaaS-alkalmazások integrálása az Azure Active Directoryval való](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) cikk egy nagyszerű hely az induláshoz.
 
 Emellett a [az Azure AD-alkalmazások dokumentumtár](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) segítséget nyújt további információt az egyszeri bejelentkezés az Azure ad-vel, és hogyan működik.
 
@@ -93,7 +93,7 @@ Az alábbi leírásokat, az értesítések kapcsolatos további részletekért t
 
   -   Példa – **2017-03-23T19:50:43.7583681Z**
 
-- **Belső Tranzakcióazonosító** – belső azonosítója használhatjuk rendszereinkben keresse ki a hibát
+- **Belső Tranzakcióazonosító** – használatával rendszereinkben keresse ki a hibát a belső azonosítója
 
   -   Example – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 

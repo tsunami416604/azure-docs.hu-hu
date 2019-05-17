@@ -1,5 +1,5 @@
 ---
-title: Modell üzembe helyezése deep learning GPU-következtetési hogyan
+title: A GPU-következtetési modell üzembe helyezése
 titleSuffix: Azure Machine Learning service
 description: Megtudhatja, hogyan szeretné üzembe helyezni a deep learning-modell, egy webszolgáltatás, amelyet egy GPU következtetési használ. Ebben a cikkben egy Tensorflow modell üzembe lett helyezve az Azure Kubernetes Service-fürthöz. A fürt a gazdagép a webszolgáltatás és a pontszám következtetési érkező GPU-kompatibilis virtuális gép használ.
 services: machine-learning
@@ -10,33 +10,30 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 05/02/2019
-ms.openlocfilehash: 5cc0fe0526937245d3ca913afc477f0259e2afd4
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 7796e8dc07889c9816e4227f3b38904d91a24da3
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65515174"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595679"
 ---
-# <a name="how-to-do-gpu-inferencing"></a>GPU-következtetési módjáról.
+# <a name="deploy-a-deep-learning-model-for-inferencing-with-gpu"></a>Modell üzembe helyezése deep learning GPU-következtetési
 
 Ismerje meg, egy gépi tanulási modellt webszolgáltatásként üzembe helyezett GPU következtetési használata. Ebből a cikkből elsajátíthatja példát Tensorflow deep learning-modell üzembe helyezése az Azure Machine Learning szolgáltatás használatával. A modell üzembe lett helyezve, GPU-kompatibilis virtuális gépek üzemeltetéséhez a szolgáltatást használó Azure Kubernetes Service (AKS)-fürthöz. Amikor kérések érkeznek a szolgáltatáshoz, a modellt használ a GPU következtetési végrehajtásához.
 
 Gpu-kat kínálnak processzorokat a magas párhuzamosítható számítási teljesítményt nyújtanak. Betanítási vagy következtetési deep learning-modellek (különösen a nagy váró kérelmek) is a GPU-k a kiváló példák.  
 
-Ebben a példában bemutatják, hogyan helyezhet üzembe egy mentett TensorFlow modell Azure Machine Learning. 
+Ez a példa bemutatja, hogyan modell üzembe helyezése mentett tensorflow-hoz az Azure Machine Learning szerint:
+* GPU-kompatibilis az AKS-fürt létrehozása
+* Tensorflow-GPU modell üzembe helyezése
 
-## <a name="goals-and-prerequisites"></a>Célok és Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
-Kövesse az utasításokat:
-* Hozzon létre egy gpu-t tartalmazó AKS-fürt
-* Modell üzembe helyezése Tensorflow-grafikus processzort tartalmaz
-
-Előfeltételek:
 * Az Azure Machine Learning-szolgáltatások munkaterület
 * Python
 * Tensorflow SavedModel regisztrálva. Megtudhatja, hogyan regisztrálhat modellek lásd [modellek üzembe helyezése](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#registermodel)
 
-Ez a cikk alapján [Tensorflow-modellek üzembe helyezése az aks](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/production-deploy-to-aks-gpu/production-deploy-to-aks-gpu.ipynb), TensorFlow mentett használó modellek és a egy AKS-fürtöt helyezünk üzembe a. Azonban a kis változtatások a pontozófájl és a környezet fájl bármilyen machine learning-keretrendszerek gpu-kat támogató alkalmazható.  
+Ez a cikk alapján Jupyter notebookot, [Tensorflow-modellek üzembe helyezése az aks](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/production-deploy-to-aks-gpu/production-deploy-to-aks-gpu.ipynb), TensorFlow mentett használó modellek és a egy AKS-fürtöt helyezünk üzembe a. Azonban a kis változtatások a pontozófájl és a környezet fájl bármilyen machine learning-keretrendszerek gpu-kat támogató alkalmazható.  
 
 ## <a name="provision-aks-cluster-with-gpus"></a>AKS-fürt üzembe helyezése gpu-kkal
 Az Azure rendelkezik több GPU lehetőség, amelyek mindegyike következtetési is használható. Lásd: [a lista N-sorozat](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series) a képességeit és a költségek teljes áttekintését. 

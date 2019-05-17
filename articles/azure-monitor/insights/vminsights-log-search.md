@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: bca1b96e7dc5673cabef26fe6b2cfb8daa41fbf5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: HT
+ms.openlocfilehash: 38979aa5cbb7eff0a949dfb77d6a29b2cdb5c67b
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702518"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602078"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Az Azure Monitor naplók lekérdezni a virtuális gépek (előzetes verzió)
 A virtuális gépek az Azure Monitor teljesítmény és a kapcsolati metrika, a számítógép és a folyamat leltáradatok és a állapotinformációkat gyűjt, és továbbítja azokat a Log Analytics-munkaterületet az Azure monitorban.  Ezek az adatok érhető el [lekérdezés](../../azure-monitor/log-query/log-query-overview.md) az Azure monitorban. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
@@ -101,7 +101,7 @@ Az egyszerűség kedvéért egy kapcsolat a távoli vég IP-címét a RemoteIp t
 
 | Tulajdonság | Description |
 |:--|:--|
-|RemoteCountry |Az üzemeltető RemoteIp ország neve.  Ha például *Egyesült Államok* |
+|RemoteCountry |Az országot vagy régiót futtató RemoteIp neve.  Ha például *Egyesült Államok* |
 |RemoteLatitude |A földrajzi szélesség. Ha például *47.68* |
 |RemoteLongitude |A földrajzi hosszúság. Ha például *-122.12* |
 
@@ -130,7 +130,7 @@ Egy gép azon portjait, aktívan bejövő forgalmat fogadja el vagy potenciális
 >- USA keleti régiója  
 >- Nyugat-Európa
 >
-> Az adatgyűjtés engedélyezve van a többi [támogatott régiók](vminsights-onboard.md#log-analytics) Azure Monitor-beli virtuális gépek számára. 
+> Az adatgyűjtés engedélyezve van a többi [támogatott régiók](vminsights-enable-overview.md#log-analytics) Azure Monitor-beli virtuális gépek számára. 
 
 Minden rekord VMBoundPort azonosíthatók a következő mezőket: 
 

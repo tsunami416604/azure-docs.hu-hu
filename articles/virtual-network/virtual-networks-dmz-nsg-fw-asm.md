@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: e0271c9212b093bd803518ebeaa4b7d9682cc773
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c1c64945aaa0bc4cd83cc769dab1c2a755896c01
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60868348"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603428"
 ---
 # <a name="example-2-build-a-perimeter-network-to-protect-applications-with-a-firewall-and-nsgs"></a>2. példa Szegélyhálózaton védheti alkalmazásait egy tűzfallal és NSG-k létrehozása
 [Térjen vissza a Microsoft cloud services és a hálózati biztonság lap][HOME]
@@ -64,7 +64,7 @@ A szkript sikeres futtatása után is elvégezheti ezeket a lépéseket:
 
 Ez a szakasz azt ismerteti, hogy kapcsolódik az NSG-ket a parancsprogram-utasítások a legtöbb.
 
-## <a name="nsgs"></a>NSG-k
+## <a name="nsgs"></a>NSG
 Ebben a példában egy NSG-csoport beépített, és aztán betölti a hat szabályokkal.
 
 > [!TIP]
@@ -233,7 +233,7 @@ Ez a példa bemutatja az alkalmazás egy tűzfal védelme, és a bejövő forgal
 
 Talál további példákat és a hálózat áttekintése biztonsági határokat [Itt][HOME].
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 ### <a name="full-script-and-network-config"></a>Teljes szkript és a hálózati konfiguráció
 Mentse a teljes szkriptet egy PowerShell-parancsfájlt. Mentse a hálózati konfigurációs parancsfájl NetworkConf2.xml nevű fájlt.
 Szükség szerint változtassa meg a felhasználó definiált-változókat. Futtassa a szkriptet, és kövesse az utasításokat, ez a cikk "Tűzfalszabályok" szakaszában.
@@ -550,7 +550,7 @@ Ez a PowerShell-szkript helyileg kell futtatnia egy internetkapcsolattal rendelk
 Mentse az XML-fájlt a frissített helyek, és adja hozzá a hivatkozás ehhez a fájlhoz, az előző szkriptben $NetworkConfigFile változóban.
 
 ```xml
-    <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+    <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
           <DnsServers>

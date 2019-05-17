@@ -9,15 +9,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2018
+ms.date: 05/13/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: dd7e29f8f37572565e505aade97b964254b6d72c
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: d93d9999c407e64658b88025feda48d33e1a5ad1
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466561"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595787"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Biztonságos üzembe helyezési eljárások az Azure Deployment Manager (nyilvános előzetes verzió) engedélyezése
 
@@ -38,15 +38,11 @@ A bevezetési sablon üzembe helyezése előtt telepíti a topológia sablont.
 
 Az Azure Deployment Manager REST API-referenciában találhat [Itt](https://docs.microsoft.com/rest/api/deploymentmanager/).
 
-## <a name="supported-locations"></a>A támogatott helyek
-
-Az előzetes verzióra a Deployment Manager-erőforrásokat az USA középső RÉGIÓJA és USA keleti RÉGIÓJA 2 támogatottak. A topológia és a bevezetés sablonok, például a szolgáltatás egységek, összetevő forrásai és az ebben a cikkben leírt kibocsátások az erőforrások meghatározása során meg kell adnia a helyét a díjmentességük egyikét. Azonban úgy, hogy a szolgáltatás, például a virtual machines, a storage-fiókok és a web apps szolgáltatásban, hozzon létre az erőforrások által támogatott összes azok [nem szabványos helyekre](https://azure.microsoft.com/global-infrastructure/services/?products=all).  
-
 ## <a name="identity-and-access"></a>Identitás- és hozzáférés-kezelés
 
 A Deployment Manager egy [felhasználó által hozzárendelt felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) az üzembe helyezési műveleteket hajtja végre. Ez az identitás a telepítés megkezdése előtt hozzon létre. Ez az előfizetés, a szolgáltatás telepíti, és a telepítés befejezéséhez szükséges engedélyeket hozzáféréssel kell rendelkeznie. A szerepkörök megadás műveleteivel kapcsolatos információkért lásd: [beépített szerepkörök az Azure-erőforrások](../role-based-access-control/built-in-roles.md).
 
-Az identitás a támogatott helyek a Deployment Manager kell lennie, és a bevezetés ugyanazon a helyen kell lennie.
+Az identitás a bevezetés megegyező helyen kell lennie.
 
 ## <a name="topology-template"></a>Topológia sablon
 
@@ -221,7 +217,9 @@ A várakozási lépés felfüggeszti a telepítés folytatása előtt. Lehetőv�
 
 Az időtartam tulajdonságot használja [ISO 8601 szabványnak](https://en.wikipedia.org/wiki/ISO_8601#Durations). Az előző példában egy egy perces várakozás megadja.
 
-Az állapot-ellenőrzési lépést kapcsolatos további információkért lásd: [ ]() és [ ]() további információkért lásd: [sablonreferenciája lépések](/azure/templates/Microsoft.DeploymentManager/steps).
+Az állapot-ellenőrzési lépést kapcsolatos további információkért lásd: [bevezetni egészségügyi integrációs Bevezetés az Azure Deployment Manager](./deployment-manager-health-check.md) és [oktatóanyag: Állapot-ellenőrzés használata az Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
+
+További információkért lásd: [sablonreferenciája lépések](/azure/templates/Microsoft.DeploymentManager/steps).
 
 ### <a name="rollouts"></a>Kibocsátások
 

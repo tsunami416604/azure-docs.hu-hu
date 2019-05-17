@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64bd2247a3437a2cc960da1820d9be417eedff8e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8d4d02f9e99acb68db126ccde465f73cc2294e06
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60285182"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65594017"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Az Azure Active Directory jelentéskészítés késése
 
@@ -41,10 +41,10 @@ A következő táblázat felsorolja a késési adatok tevékenységre vonatkozó
 > **Késés (95. százalékérték)** hivatkozik az idő, mely szerint a 95 %-át a naplókat kerülnek, és **késés (99. percentilis)** hivatkozik az idő, amely szerint a naplók 99 %-át lesz jelentve. 
 >
 
-| Jelentés | Késés (95. százalékérték) |Késés (99. percentilis)|Naplók kerülnek időtartomány|
-| :-- | --- | --- | --- |
-| Naplók | 2 perc  | 5 perc  | 2 – 60 perc |
-| Bejelentkezések | 2 perc  | 5 perc | 2 – 120 perc |
+| Jelentés | Késés (95. százalékérték) |Késés (99. percentilis)|
+| :-- | --- | --- |
+| Naplók | 2 perc  | 5 perc  |
+| Bejelentkezések | 2 perc  | 5 perc |
 
 ### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Hogy mikor is tevékenységek adatainak megtekintéséhez prémium licencre első után?
 
@@ -59,9 +59,9 @@ Biztonsági jelentések két típusa van:
 
 A következő táblázat felsorolja a biztonsági jelentések késési adatok.
 
-| Jelentés | Minimális | Átlag | Maximum |
+| Jelentés | Minimum | Átlag | Maximum |
 | :-- | --- | --- | --- |
-| Veszélyeztetett felhasználók          | 5 perc   | 15 perc  | 2 óra  |
+| Érintett felhasználók          | 5 perc   | 15 perc  | 2 óra  |
 | Kockázatos bejelentkezések         | 5 perc   | 15 perc  | 2 óra  |
 
 ## <a name="risk-events"></a>Kockázati események
@@ -70,10 +70,10 @@ Azure ad-ben az adaptív gépi tanulási algoritmusok és heurisztika segítség
 
 A következő táblázat felsorolja a kockázati események késési adatok.
 
-| Jelentés | Minimális | Átlag | Maximum |
+| Jelentés | Minimum | Átlag | Maximum |
 | :-- | --- | --- | --- |
-| Bejelentkezések névtelen IP-címről |5 perc |15 perc |2 óra |
-| Bejelentkezések ismeretlen helyekről |5 perc |15 perc |2 óra |
+| Névtelen IP-címről történő bejelentkezések |5 perc |15 perc |2 óra |
+| Ismeretlen helyekről történt bejelentkezések |5 perc |15 perc |2 óra |
 | Felhasználók, akiknek kiszivárogtak a hitelesítő adatai |2 óra |4 óra |8 óra |
 | Bejelentkezés szokatlan helyekről |5 perc |1 óra |8 óra  |
 | Bejelentkezések fertőzött eszközökről |2 óra |4 óra |8 óra  |

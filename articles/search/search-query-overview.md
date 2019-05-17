@@ -7,14 +7,14 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 7ed675e4c6988cf4c1340613323440de55a36843
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 95f5dde12ad9e34a0a04c988a816538ac30e01e6
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024468"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595977"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Hogyan lehet lekérdezést adhat az Azure Search szolgáltatásban
 
@@ -122,7 +122,7 @@ Az Azure Search lekérdezési típusokra széles skáláját támogatja.
 | Szűrt keresése | [OData szűrési kifejezés](query-odata-filter-orderby-syntax.md) és vagy elemző | Szűrő lekérdezés egy logikai kifejezés kiértékelése összes *szűrhető* index mezőire. Keres a szűrő-lekérdezés megegyezik a kisbetű/nagybetű megkülönböztetése a karakterlánc-mezők például mező pontos tartalmával kell. Egy másik különbség, hogy az OData-szűrőszintaxis ki, a szűrőlekérdezések. <br/>[Szűrési kifejezés példa](search-query-simple-examples.md#example-3-filter-queries) |
 | Földrajzi keresés | [Edm.GeographyPoint típus](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) a mezőt, a szűrőkifejezés és vagy elemző | Tároló-Edm.GeographyPoint kellene mezőt koordináták, a "Keresés a közelben" vagy a térképes keressen vezérlőket. <br/>[Földrajzi keresés példa](search-query-simple-examples.md#example-5-geo-search)|
 | Tartomány keresése | szűrési kifejezés, és egyszerű elemző | Az Azure Search szolgáltatásban lekérdezések beépített a szűrő paraméter használatával. <br/>[Példa a tartomány szűrő](search-query-simple-examples.md#example-4-range-filters) | 
-| [Mező-on belüli szűrése](query-lucene-syntax.md#bkmk_fields) | Keresési paramétert, és teljes elemző | Hozhat létre egy egyetlen mező célzó összetett lekérdezési kifejezésben. <br/>[Mező-on belüli szűrési példát](search-query-lucene-examples.md#example-2-intra-field-filtering) |
+| [Fielded keresése](query-lucene-syntax.md#bkmk_fields) | Keresési paramétert, és teljes elemző | Hozhat létre egy egyetlen mező célzó összetett lekérdezési kifejezésben. <br/>[Fielded keresést](search-query-lucene-examples.md#example-2-fielded-search) |
 | [intelligens keresést](query-lucene-syntax.md#bkmk_fuzzy) | Keresési paramétert, és teljes elemző | Megegyezik a hasonló konstrukció kellene vagy helyesírási feltételeket. <br/>[Intelligens keresést](search-query-lucene-examples.md#example-3-fuzzy-search) |
 | [közelségi keresésre](query-lucene-syntax.md#bkmk_proximity) | Keresési paramétert, és teljes elemző | A dokumentum egymás közelében lévő keresése feltételek. <br/>[Közelségi keresés példa](search-query-lucene-examples.md#example-4-proximity-search) |
 | [kiemelési távú](query-lucene-syntax.md#bkmk_termboost) | Keresési paramétert, és teljes elemző | Ha a gyorsított időszak alatt, viszonyítva, míg mások nem tartalmaz, rangsorolja a magasabb dokumentumot. <br/>[Kifejezés-kiemelés példa](search-query-lucene-examples.md#example-5-term-boosting) |

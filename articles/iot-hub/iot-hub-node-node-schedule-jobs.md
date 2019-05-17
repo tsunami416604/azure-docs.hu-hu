@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 10/06/2017
-ms.openlocfilehash: 1f357ed60e9d9f020d5a80ac9349eb65577521e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1a42b590fc83b89cd9f90998f835fc58f84ea960
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61442747"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65597403"
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>Feladatok ütemezése és kiküldése (Node)
 
@@ -50,7 +50,7 @@ Ez az oktatóanyag végén van két Node.js-alkalmazások:
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* NODE.js-verzió 4.0.x vagy újabb [a fejlesztési környezet előkészítését](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) ismerteti, hogyan telepítse a Node.js ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
+* NODE.js-verzió 10.0.x vagy újabb [a fejlesztési környezet előkészítését](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) ismerteti, hogyan telepítse a Node.js ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
 
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
 

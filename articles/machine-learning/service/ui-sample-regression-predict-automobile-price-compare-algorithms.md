@@ -1,7 +1,7 @@
 ---
 title: 'Regresszió: Ár előrejelzése és algoritmusok összehasonlítása'
 titleSuffix: Azure Machine Learning service
-description: A vizuális felhasználói felületet mintakísérlet mutatja be két előre jelezni egy autó árát regressziós modellek teljesítményének összehasonlítását. A folyamat magában foglalja a képzés, a tesztelés és a Automobile price data (Raw) adatkészlet a modell kiértékelése.
+description: Ez a cikk bemutatja, hogyan hozhat létre egy összetett gépi tanulási kísérletet a vizuális felhasználói felületének használatával egyetlen kódsor megírása nélkül. Ismerje meg, hogyan betanítása és a egy autó árát, műszaki jellemzők alapján előre több regressziós modell összehasonlítására
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,23 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: 2a4a9e74fa7f56b67f0f4a64f6619db1c5c69a2c
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.date: 05/10/2019
+ms.openlocfilehash: c8c813a2304797e71499a916e29c18f8bec2b389
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442114"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787796"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>2 – regressziós. példa: Ár előrejelzése és algoritmusok összehasonlítása
 
-A vizuális felhasználói felületet mintakísérlet mutatja be két előre jelezni egy autó árát regressziós modellek teljesítményének összehasonlítását. A folyamat magában foglalja a képzés, a tesztelés és a modell értékelése használatával a **Automobile price data (Raw)** adatkészlet.
+Ismerje meg, hogyan hozhat létre egy összetett gépi tanulási kísérletet a vizuális felhasználói felületének használatával egyetlen kódsor megírása nélkül. Ez a példa betanítja és hasonlítja össze több regressziós modell előre jelezni egy autó árát annak műszaki jellemzők alapján. A közösségértékek biztosítunk a kiválasztott lehetőségeket ehhez a kísérlethez, így Ön is saját machine learning problémák kiszolgálókon.
+
+Most csak ismerkedik a machine learninggel, ha akkor is vessen egy pillantást a [Alapverzió](ui-sample-regression-predict-automobile-price-basic.md) ezzel a kísérlettel egy alapszintű regressziós kísérlet megtekintéséhez.
+
+A befejezett graph ehhez a kísérlethez itt látható:
+
+[![A kísérlet diagram](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,10 +35,6 @@ A vizuális felhasználói felületet mintakísérlet mutatja be két előre jel
 
     ![Nyissa meg a kísérlet](media/ui-sample-regression-predict-automobile-price-compare-algorithms/open-sample2.png)
 
-## <a name="related-sample"></a>Kapcsolódó minta
-
-[1 – regressziós. példa: Autó árának előrejelzése (alapszintű)](ui-sample-regression-predict-automobile-price-basic.md) biztosít egy egyszerűbb kísérletet, amely ehhez a kísérlethez azonos problémával megoldja, de csak egy regressziós modellt használja. Tekintse meg, ha alapszintű mintái regressziós keres.
-
 ## <a name="experiment-summary"></a>Kísérlet összegzése
 
 Ezeket a lépéseket a kísérletet használjuk:
@@ -41,11 +43,6 @@ Ezeket a lépéseket a kísérletet használjuk:
 1. Előzetesen feldolgozni az adatokat.
 1. A modell betanításához.
 1. Tesztelheti, kiértékelheti és a modell összehasonlítására.
-
-Itt látható a teljes grafikon a kísérlet:
-
-[![A kísérlet diagram](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png#lightbox)
-
 
 ## <a name="get-the-data"></a>Az adatok lekérése
 

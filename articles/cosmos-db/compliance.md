@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: c8a74df19c012613807d39fb3ee529173e82d5ba
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: bbfc31e5eab2c2beb232a9ec2e0d5e11e4107be5
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128821"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606285"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Az Azure Cosmos DB megfelelőség 
 
@@ -28,7 +28,7 @@ Az Azure Cosmos DB az összes Azure-régióban érhető el. A Microsoft elérhet
 
 * **Az Azure Government a védelmi Minisztérium** két régióban, az USA védelmi Minisztériumának az Egyesült Államokban érhető el.
 
-Felel meg a saját megfelelőségi kötelezettségeket szabályozott iparágakban és piacon világszerte ügyfelek érdekében az Azure kezeli a tekintetében egyaránt és teljes mértékű (ajánlatok teljes száma) (az ügyfelek által használt száma az ágazat legnagyobb megfelelőségi portfóliójával szolgáltatások értékelés hatókörébe).  Az Azure megfelelőségi ajánlatainak négy szegmensek - globálisan érvényes, US Government, iparág-specifikus, és a régió vagy adott országban vannak csoportosítva.  A különböző típusú biztosítékok, beleértve a hivatalos minősítései, tanúsítványok, ellenőrzés, engedélyek és értékelések független, külső naplózási cégek, valamint szerződéses módosítások által előállított alapuló megfelelőségi ajánlatok önértékelésekben, és a Microsoft által gyártott felhasználói útmutatót.
+Felel meg a saját megfelelőségi kötelezettségeket szabályozott iparágakban és piacon világszerte ügyfelek érdekében az Azure kezeli a tekintetében egyaránt és teljes mértékű (ajánlatok teljes száma) (az ügyfelek által használt száma az ágazat legnagyobb megfelelőségi portfóliójával szolgáltatások értékelés hatókörébe).  Az Azure megfelelőségi ajánlatainak négy szegmensek - globálisan érvényes, US Government, iparág-specifikus, és a régió vagy adott ország/régió vannak csoportosítva.  A különböző típusú biztosítékok, beleértve a hivatalos minősítései, tanúsítványok, ellenőrzés, engedélyek és értékelések független, külső naplózási cégek, valamint szerződéses módosítások által előállított alapuló megfelelőségi ajánlatok önértékelésekben, és a Microsoft által gyártott felhasználói útmutatót.
 
 ## <a name="azure-cosmos-db-certifications"></a>Azure Cosmos DB-minősítések  
 

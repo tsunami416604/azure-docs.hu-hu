@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 6dcec5b72be8868a83a5760ef95117d3e751bcc3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9100a764ba3922e0254b7fa5cd03b18e204925f
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60399442"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65596015"
 ---
 # <a name="get-started-with-device-management-java"></a>Ismerkedés az eszközfelügyelettel (Java)
 
@@ -57,7 +57,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * Maven 3  <br/> [A fejlesztési környezet előkészítését](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md) telepítése [Maven](https://maven.apache.org/what-is-maven.html) ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
 
-* [A node.js verzió: 0.10.0-s vagy újabb](https://nodejs.org).
+* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 

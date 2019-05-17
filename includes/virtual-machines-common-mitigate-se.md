@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/14/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: be8c3d3be4410d15ba132a24a417e7a7b0418352
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: ba41f6cce5233491020a0b42f4fd40dac060be57
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65620263"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65815633"
 ---
 **Utolsó dokumentum-frissítés**: 14 május 10:00 Csendes-ÓCEÁNI 2019.
 
@@ -29,7 +29,7 @@ További információ a security hogyan integrált az Azure platformba érhető 
 > Ez a dokumentum először lett közzétéve, mivel ez az osztály biztonsági rések több változatának közzétették. A Microsoft erősen az ügyfeleink védelme, és útmutatást nyújtunk a befektettek továbbra is. Ezen a lapon frissül, továbbra is, hogy további javításokat kiadás. 
 > 
 > A 2019. május 14. [nyilvánosságra Intel](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html) spekulatív végrehajtás kockázatának csökkentése ügyféloldali csatorna biztonsági rés ismert mikroarchitekturális adat-mintavételezés új készletét (MDS, tekintse meg a Microsoft biztonsági útmutatója [ADV190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)), amely hozzá lett rendelve több CVEs: 
-> - CVE – 2018-11091 - mikroarchitekturális adatok mintavételezésének Uncacheable memória (MDSUM)
+> - CVE – a 2019-11091 - mikroarchitekturális adatok mintavételezésének Uncacheable memória (MDSUM)
 > - CVE – 2018-12126 - mikroarchitekturális Store puffer adatok mintavételezésének (MSBDS) 
 > - CVE – 2018-12127 - mikroarchitekturális terhelés Port adatok mintavételezésének (MLPDS)
 > - CVE – 2018-12130 - mikroarchitekturális kitöltés puffer adatok mintavételezésének (MFBDS)
@@ -123,7 +123,7 @@ A kimenet látható `MDS mitigation is enabled: False`, kérjük [Azure támogat
 <a name="linux"></a>További biztonsági funkciók belül engedélyezése megköveteli, hogy a cél operációs rendszer teljes mértékben naprakész. Bizonyos megoldások alapértelmezés szerint engedélyezve lesz. Az alábbi szakasz az a Funkciók, amelyek vannak kapcsolva, alapértelmezés szerint, illetve tartománybeli hardvertámogatásra (mikrokód). Ezek a szolgáltatások engedélyezését okozhat teljesítménycsökkenést. Az operációs rendszer szolgáltató referenciadokumentációt további útmutatás
 
 
-**1. lépés: Tiltsa le a virtuális gép a Hyper-Threading technológia** – a nem megbízható kód egy virtuális gép Hyper-Threading technológia letiltása, vagy áthelyezés virtuális Gépre nem hiperszálas kell hiperszálas futtató ügyfeleknek.  Ellenőrizze, hogy a hiperszálas, virtuális gép fut-e, futtassa a `lspcu` parancsot a Linux rendszerű virtuális gépen. 
+**1. lépés: Tiltsa le a virtuális gép a Hyper-Threading technológia** – a nem megbízható kód egy virtuális gép Hyper-Threading technológia letiltása, vagy áthelyezés virtuális Gépre nem hiperszálas kell hiperszálas futtató ügyfeleknek.  Ellenőrizze, hogy a hiperszálas, virtuális gép fut-e, futtassa a `lscpu` parancsot a Linux rendszerű virtuális gépen. 
 
 Ha `Thread(s) per core = 2`, akkor a Hyper-Threading technológia engedélyezve van. 
 
@@ -146,7 +146,7 @@ NUMA node(s):          1
 
 ```
 
-Ha egy virtuális gép hiperszálas futtatja, [Azure támogatási](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) beolvasni a Hyper-Threading le van tiltva technológia.  Megjegyzés: Hyper-Threading technológia le van tiltva, miután **támogatási lesz szükség a teljes virtuális gép újraindítását**.
+Ha egy virtuális gép hiperszálas futtatja, [Azure támogatási](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical) beolvasni a Hyper-Threading le van tiltva technológia.  Hyper-Threading technológia le van tiltva, miután **támogatási lesz szükség a teljes virtuális gép újraindítását**.
 
 
 **2. lépés**: Bármely csökkentése érdekében az alábbi spekulatív végrehajtás kockázatának csökkentése ügyféloldali-csatorna biztonsági résekről, tekintse meg az operációs rendszer konfigurációszolgáltató dokumentációját:   
@@ -159,18 +159,18 @@ Ha egy virtuális gép hiperszálas futtatja, [Azure támogatási](https://aka.m
 
 Ez a cikk útmutatást nyújt a spekulatív végrehajtás kockázatának csökkentése ügyféloldali-csatorna támadások számos modern processzorok befolyásoló alábbi:
 
-[A spectre Meltdown](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV180002):
+[A spectre Meltdown](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180002):
 - CVE – 2017-5715 - ág cél injektálási (BTI)  
 - CVE – 2017-5754 - Kernel lap tábla elkülönítési (KPTI)
 - CVE-2018-3639 – spekulatív Store Mellőzés (KPTI) 
  
-[L1 A Terminálszolgáltatások tartalék (L1TF)](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV180018):
+[L1 A Terminálszolgáltatások tartalék (L1TF)](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180018):
 - CVE – 2018-3615 - Intel Guard Szoftverbővítmények (Intel SGX)
 - CVE – 2018-3620 – operációs rendszer (OS) és a rendszer felügyeleti mód (SMM)
 - CVE – 2018-3646 – hatással van a Virtual Machine Manager (VMM)
 
-[Mikroarchitekturális adat-mintavételezés](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV190013): 
-- CVE – 2018-11091 - mikroarchitekturális adatok mintavételezésének Uncacheable memória (MDSUM)
+[Mikroarchitekturális adat-mintavételezés](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190013): 
+- CVE – a 2019-11091 - mikroarchitekturális adatok mintavételezésének Uncacheable memória (MDSUM)
 - CVE – 2018-12126 - mikroarchitekturális Store puffer adatok mintavételezésének (MSBDS)
 - CVE – 2018-12127 - mikroarchitekturális terhelés Port adatok mintavételezésének (MLPDS)
 - CVE – 2018-12130 - mikroarchitekturális kitöltés puffer adatok mintavételezésének (MFBDS)

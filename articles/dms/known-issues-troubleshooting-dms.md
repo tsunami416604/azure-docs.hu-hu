@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 05/09/2019
-ms.openlocfilehash: 7b470c20397aac456d34d5e3b877c7d4126d8279
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.date: 05/14/2019
+ms.openlocfilehash: dc8ba315d08f3a130ff0adf91afc90f545baf4e4
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465110"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604435"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Gyakori Azure Database Migration Service-problémák és hibák elhárítása
 
@@ -24,7 +24,7 @@ Ez a cikk azt ismerteti, néhány gyakori problémák és hibák, amelyek az Azu
 
 ## <a name="migration-activity-in-queued-state"></a>Az áttelepítési tevékenység várólistára
 
-Azure Database Migration Service-projekt létrehozásakor új tevékenységek a tevékenységek várólistára maradnak.
+Az Azure Database Migration Service-projekt létrehozásakor új tevékenységek a tevékenységek várólistára helyezett állapot maradnak.
 
 | Ok         | Feloldás |
 | ------------- | ------------- |
@@ -44,13 +44,13 @@ A következő hiba akkor fordul elő, amikor a tevékenység áthelyezése az Az
 
 Telepít át MySQL az Azure Database for MySQL, Azure Database Migration Service segítségével, az áttelepítési tevékenység sikertelen lesz, a következő hibával:
 
-* **Hiba**: Hiba: Adatbázis-migrálási hiba – a feladat "TaskID" [n] helyreállítási egymást követő hibák miatt fel lett függesztve.
+* **Hiba**: Adatbázis-migrálási hiba – a feladat "TaskID" [n] helyreállítási egymást követő hibák miatt fel lett függesztve.
 
 | Ok         | Feloldás |
 | ------------- | ------------- |
-| Ez a hiba akkor fordulhat elő, ha a felhasználó elvégezni a migrálást hiányzik a ReplicationAdmin szerepkörrel és/vagy jogosultságokkal replikációs ügyfél, a REPLIKÁCIÓ REPLIKA és a SUPER (MySQL 5.6.6 rendszernél korábbi verzió esetén).<br> <br><br><br> <br> <br> <br> <br> <br> <br> | Győződjön meg arról, hogy a [előfeltételként jogosultságokkal](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites) a felhasználóhoz tartozó fiókot kell konfigurálni, pontosan Azure MySQL-példányt. Például a következő lépések szükséges jogosultságokkal rendelkező "migrateuser" nevű felhasználó létrehozásához:<br>1. FELHASZNÁLÓ létrehozása migrateuser@'% "azonosított szerint"secret"; <br>2. a "secret"; által azonosított migrateuser'@'% db_name.* az összes jogosultságok engedélyezése Ismételje meg ezt a lépést hozzáférést biztosít a több adatbázis <br>3. a a támogatás replikációs alárendelt *.* a "secret"; által azonosított migrateuser'@'%<br>4. engedélyezés replikációs ügyfél *.* a "secret"; által azonosított migrateuser'@'%<br>5. jogosultságokkal; ürítése |
+| Ez a hiba akkor fordulhat elő, ha a felhasználó elvégezni a migrálást hiányzik a ReplicationAdmin szerepkörrel és/vagy jogosultságokkal replikációs ügyfél, a REPLIKÁCIÓ REPLIKA és a SUPER (MySQL 5.6.6 rendszernél korábbi verzió esetén).<br> <br><br><br> <br> <br> <br> <br> <br> <br> | Győződjön meg arról, hogy a [előfeltételként jogosultságokkal](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites) a felhasználóhoz tartozó fiókot kell konfigurálni, pontosan az Azure Database for MySQL-példányt. Például a következő lépések szükséges jogosultságokkal rendelkező "migrateuser" nevű felhasználó létrehozásához:<br>1. FELHASZNÁLÓ létrehozása migrateuser@'% "azonosított szerint"secret"; <br>2. A "secret"; által azonosított migrateuser'@'% db_name.* az összes jogosultságok engedélyezése Ismételje meg ezt a lépést hozzáférést biztosít a több adatbázis <br>3. A Grant replikációs alárendelt *.* a "secret"; által azonosított migrateuser'@'%<br>4. Engedélyezés replikációs ügyfél *.* a "secret"; által azonosított migrateuser'@'%<br>5. Jogosultságok; ürítése |
 
-## <a name="error-when-attempting-to-stop-the-azure-database-migration-service-instance"></a>Az Azure Database Migration Service-példány leállítására tett kísérlet közben hiba
+## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>Azure Database Migration Service leállítására tett kísérlet közben hiba
 
 Hiba történt a következő amikor megjelenik az Azure Database Migration Service-példány leállítása:
 
@@ -60,7 +60,7 @@ Hiba történt a következő amikor megjelenik az Azure Database Migration Servi
 | ------------- | ------------- |
 | Ez a hiba a szolgáltatáspéldány leállítani a végrehajtani kívánt olyan tevékenységeket foglal magába, amelyek továbbra is futnak, vagy jelenleg a migrálási projekt jelenít meg. <br><br><br><br><br><br> | Győződjön meg arról, hogy nincsenek-e az Azure Database Migration Service leállítani kívánt példányát futtató tevékenységek. Törölheti is a tevékenységek vagy projektekhez előtt állítsa le a szolgáltatást. A következő lépések bemutatják, hogyan törlésével az összes futó feladatot az áttelepítés szolgáltatáspéldány karbantartása projektek eltávolítása:<br>1. Install-Module -Name AzureRM.DataMigration <br>2. Login-AzureRmAccount <br>3. Select-AzureRmSubscription -SubscriptionName "<subName>" <br> 4. Remove-AzureRmDataMigrationProject -Name <projectName> -ResourceGroupName <rgName> -ServiceName <serviceName> -DeleteRunningTask |
 
-## <a name="error-restoring-database-while-migrating-from-sql-server-to-an-azure-sql-database-managed-instance"></a>Adatbázis visszaállítása, amíg a migrálás SQL Serverről az Azure SQL Database felügyelt példány hiba
+## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>Adatbázis visszaállítása közben az Azure SQL-adatbázis áttelepítése SQL felügyelt példánya hiba
 
 Amikor egy online migrálás SQL Serverről az Azure SQL Database felügyelt példány végez, az átállás meghiúsul a következő hiba:
 
@@ -88,11 +88,11 @@ Próbál csatlakozni, az Azure Database Migration service-projekt varázsló a f
 | ------------- | ------------- |
 | Használata esetén [ExpressRoute](https://azure.microsoft.com/services/expressroute/), Azure Database Migration Service [igényel](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) három szolgáltatásvégpontokat a virtuális hálózat alhálózatához társított a szolgáltatás kiépítése:<br> --Service Bus-végpont<br> – Storage-végpont<br> --Cél adatbázis végpont (például SQL-végpont, Cosmos-DB végpont)<br><br><br><br> | [Engedélyezése](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) a szükséges Szolgáltatásvégpontok az ExpressRoute-kapcsolat forrás- és az Azure Database Migration Service között. <br><br><br><br><br><br><br><br> |
 
-## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-database-for-mysql"></a>Időtúllépési hiba a MySQL-adatbázis áttelepítése az Azure Database for MySQL-hez
+## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-mysql"></a>Ha a MySQL-adatbázis áttelepítése az Azure-beli MySQL időtúllépési hiba
 
 Amikor egy MySQL-adatbázist telepít át egy Azure Database for MySQL-példányt, Azure Database Migration Service-n keresztül, az áttelepítés sikertelen lesz, a következő időtúllépési hiba:
 
-    * **Hiba**: Hiba: Adatbázis-migrálási hiba – nem sikerült betölteni a fájl – nem sikerült elindítani a betöltési folyamat fájl n RetCode: SQL_ERROR SqlState: HY000 NativeError: 1205 üzenetet: [MySQL] [ODBC-illesztő] [mysqld] zárolás várakozási időkorlátja lejárt; Próbálja meg újraindítani a tranzakció
+* **Hiba**: Adatbázis-migrálási hiba – nem sikerült betölteni a fájl – nem sikerült elindítani a betöltési folyamat fájl n RetCode: SQL_ERROR SqlState: HY000 NativeError: 1205 üzenetet: [MySQL] [ODBC-illesztő] [mysqld] zárolás várakozási időkorlátja lejárt; Próbálja meg újraindítani a tranzakció
 
 | Ok         | Feloldás    |
 | ------------- | ------------- |
@@ -100,13 +100,13 @@ Amikor egy MySQL-adatbázist telepít át egy Azure Database for MySQL-példány
 
 ## <a name="additional-known-issues"></a>További ismert problémák
 
-* [Ismert problémák/migrálási korlátok az Azure SQL DB-be irányuló online migrálások során](https://docs.microsoft.com/azure/dms/known-issues-azure-sql-online)
-* [Ismert problémák és a migrálás korlátozások az online migrálást az Azure-adatbázis MySQL-hez](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
-* [Ismert problémák és a migrálás korlátozások az online migrálást az Azure-adatbázis PostgreSQL-hez](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
+* [Ismert problémák és a migrálás korlátozások az online migrálást az Azure SQL Database](https://docs.microsoft.com/azure/dms/known-issues-azure-sql-online)
+* [Ismert problémák és a migrálás korlátozások az online migrálást az Azure Database MySQL-hez](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
+* [Ismert problémák és a migrálás az Azure Database for postgresql-hez online áttelepítések vonatkozó korlátozások](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
 
-## <a name="additional-resources"></a>További források
+## <a name="next-steps"></a>További lépések
 
-* [Azure Database Migrálási szolgáltatás PowerShell](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)
-* [Hogyan lehet a kiszolgáló paramétereinek konfigurálása az Azure Database for MySQL-hez az Azure portal használatával](https://docs.microsoft.com/azure/mysql/howto-server-parameters)
-* [Azure Database Migration Service használatára vonatkozó előfeltételek áttekintése](https://docs.microsoft.com/azure/dms/pre-reqs)
-* [Azure Database Migration Service használatával kapcsolatos gyakori kérdések](https://docs.microsoft.com/azure/dms/faq)
+* A cikk [Azure Database Migrálási szolgáltatás PowerShell](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration).
+* A cikk [kiszolgáló paramétereinek konfigurálása az Azure Database for MySQL-hez az Azure portal segítségével hogyan](https://docs.microsoft.com/azure/mysql/howto-server-parameters).
+* A cikk [Azure Database Migration Service használatára vonatkozó előfeltételek áttekintése](https://docs.microsoft.com/azure/dms/pre-reqs).
+* Tekintse meg a [Azure Database Migration Service használatával kapcsolatos gyakori kérdések](https://docs.microsoft.com/azure/dms/faq).

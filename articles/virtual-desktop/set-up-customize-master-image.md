@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 58471dc539f72c49b041638e928dda751f4bf5a2
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 9df4be5534a1cbe6aa4ffb9c60bb180fd4587d32
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410597"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551025"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Fő VHD-rendszerkép létrehozása és testreszabása
 
-Ebben a cikkben megtudhatja, hogyan készülhet fel a fő virtuális merevlemez (VHD) Rendszerkép feltöltése az Azure-ba, beleértve a virtuális gépek (VM) létrehozása és telepítése és rajtuk szoftver konfigurálása. Ezeket az utasításokat, amelyek a szervezet meglévő folyamatok használható Windows virtuális asztal előzetes jellemző konfiguráció esetén is.
+Ez a cikk bemutatja, hogyan készülhet fel a fő virtuális merevlemez (VHD) Rendszerkép feltöltése az Azure-ba, beleértve az virtuális gépek (VM) létrehozása és telepítése rajtuk. Ezeket az utasításokat, amelyek a szervezet meglévő folyamatok használható Windows virtuális asztal előzetes jellemző konfiguráció esetén is.
 
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
@@ -24,11 +24,11 @@ Az Azure lemezkép-katalógusában a Windows 10 Enterprise több munkamenet érh
 
 Az első lehetőség az, hogy a virtuális gép (VM) üzembe helyezése az Azure-ban utasításait követve [virtuális gép létrehozása felügyelt rendszerképből](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed), majd lépjen tovább, és [szoftver előkészítési és -telepítési](set-up-customize-master-image.md#software-preparation-and-installation).
 
-A második lehetőség, hogy a lemezkép létrehozásának helyileg letölteni a képet, a Hyper-V virtuális gépek üzembe helyezésével és szabja testre az igényeinek, amely a következő szakaszban lesz szó.
+A második lehetőség, hogy a lemezkép létrehozásának helyileg letölteni a képet, a Hyper-V virtuális gépek üzembe helyezésével és szabja testre az igényeinek, amely a következő szakasz ismerteti.
 
 ### <a name="local-image-creation"></a>Helyi kép létrehozása
 
-A kép letöltése egy helyi helyre, után nyissa meg a **Hyper-V Manager** hozhat létre virtuális Gépet az imént másolt virtuális merevlemez. Az alábbi egyszerű verziója nem, de a részletes utasításokat talál [hozzon létre egy virtuális gépet a Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v).
+A kép letöltése egy helyi helyre, után nyissa meg a **Hyper-V Manager** a VHD-t másolta a virtuális gép létrehozásához. Az alábbi utasításokat követve egy egyszerű verziója, de a részletes utasításokat talál [hozzon létre egy virtuális gépet a Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v).
 
 Virtuális gép létrehozása a másolt VHD-vel:
 
@@ -62,101 +62,11 @@ Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.
 
 ## <a name="software-preparation-and-installation"></a>Szoftver-előkészítési és -telepítés
 
-Ez a szakasz bemutatja, hogyan készítheti elő és az Office 365 ProPlus, a OneDrive, FSLogix, a Windows Defender és egyéb gyakori alkalmazások telepítéséhez. Ha a felhasználók bizonyos LOB-alkalmazások eléréséhez szükséges, javasoljuk ebben a szakaszban utasítások végrehajtása után telepítse őket.
+Ez a szakasz bemutatja, hogyan készítheti elő és FSLogix, a Windows Defender és egyéb gyakori alkalmazások telepítése. 
 
-Ebben a szakaszban feltételezi, hogy emelt szintű hozzáférés a virtuális gépen, hogy annak kiépítése az Azure vagy Hyper-V kezelőjét.
+Ha a virtuális Gépen telepít az Office 365 ProPlus és a onedrive vállalati verzió [telepítése Office egy fő VHD-rendszerképet a](install-office-on-wvd-master-image.md). A hivatkozásra kattintva térjen vissza a cikkhez, és a fő virtuális merevlemez folyamat befejezéséhez a cikk a következő lépésben.
 
-### <a name="install-office-in-shared-computer-activation-mode"></a>Telepítse az Office megosztott számítógép aktiválási módban
-
-Használja a [Office-telepítő eszköz](https://www.microsoft.com/download/details.aspx?id=49117) Office telepítéséhez. Windows 10 Enterprise több munkamenet csak az Office 365 ProPlus, Office 2019 Perpetual támogatja.
-
-Az Office-telepítő eszköz egy konfigurációs XML-fájl szükséges. Testre szabhatja a következő mintát, tekintse meg a [beállítási lehetőségei az Office-telepítő eszköz](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool).
-
-Megadtuk az XML konfigurációs rendszer tegye a következőket:
-
-- A Insiders csatornáról telepíti az Office, és juttathatja a Insiders csatornáról vagyunk végrehajtásakor.
-- Használja a x64 architektúra.
-- Az automatikus frissítések letiltásához.
-- A Visio és a projekt telepítése.
-- Távolítsa el minden meglévő telepítéseit, Office, és azok a beállítások áttelepítéséhez.
-- Terminálkiszolgáló környezetben művelet licencelési megosztott számítógép engedélyezése.
-
-Itt nem ez a minta XML konfiguráció nem:
-
-- Telepítse a Skype for Business
-- Onedrive vállalati verzió telepítését felhasználónkénti módban. További tudnivalókért lásd: [onedrive vállalati verzió telepítéséhez a gépenkénti módban](#install-onedrive-in-per-machine-mode).
-
->[!NOTE]
->Megosztott használt számítógép licencelése csoportházirend-objektumok (GPO) vagy a beállításjegyzék-beállításokat is beállítható. A csoportházirend-objektum a következő helyen található **számítógép konfigurációja\\házirendek\\felügyeleti sablonok\\a Microsoft Office 2016 (számítógép)\\licencelési beállítások**
-
-Az Office-telepítő eszköz setup.exe tartalmazza. Office telepítéséhez futtassa a következő parancsot a parancssorban:
-
-```batch
-Setup.exe /configure configuration.xml
-```
-
-#### <a name="sample-configurationxml"></a>Sample configuration.xml
-
-A következő XML-minta a insider program résztvevői kiadott, más néven insider – gyors vagy Insiders fő fogja telepíteni.
-
-```xml
-<Configuration>
-    <Add OfficeClientEdition="64" SourcePath="https://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f">
-        <Product ID="O365ProPlusRetail">
-            <Language ID="en-US" />
-            <Language ID="MatchOS" Fallback = "en-US"/>
-            <Language ID="MatchPreviousMSI" />
-            <ExcludeApp ID="Groove" />
-            <ExcludeApp ID="Lync" />
-            <ExcludeApp ID="OneDrive" />
-            <ExcludeApp ID="Teams" />
-        </Product>
-        <Product ID="VisioProRetail">
-            <Language ID="en-US" />
-            <Language ID="MatchOS" Fallback = "en-US"/>
-            <Language ID="MatchPreviousMSI" />
-            <ExcludeApp ID="Teams" /> 
-        </Product>
-        <Product ID="ProjectProRetail">
-            <Language ID="en-US" />
-            <Language ID="MatchOS" Fallback = "en-US"/>
-            <Language ID="MatchPreviousMSI" />
-            <ExcludeApp ID="Teams" />
-        </Product>
-    </Add>
-    <RemoveMSI All="True" />
-    <Updates Enabled="FALSE" UpdatePath="https://officecdn.microsoft.com/pr/5440fd1f-7ecb-4221-8110-145efaa6372f" />
-    <Display Level="None" AcceptEULA="TRUE" />
-    <Logging Level="Verbose" Path="%temp%\WVDOfficeInstall" />
-    <Property Value="TRUE" Name="FORCEAPPSHUTDOWN"/>
-    <Property Value="1" Name="SharedComputerLicensing"/>
-    <Property Value="TRUE" Name="PinIconsToTaskbar"/>
-</Configuration>
-```
-
->[!NOTE]
->Az Office-csapattól érkezik a 64 bites telepítése használatát javasolja a **OfficeClientEdition** paraméter.
-
-Miután telepítette az Office, Office alapértelmezés frissítheti. Futtassa az alábbi parancsokat egyenként, vagy frissíteni a viselkedés fájlt egy kötegfájlban.
-
-```batch
-rem Mount the default user registry hive
-reg load HKU\TempDefault C:\Users\Default\NTUSER.DAT
-rem Must be executed with default registry hive mounted.
-reg add HKU\TempDefault\SOFTWARE\Policies\Microsoft\office\16.0\common /v InsiderSlabBehavior /t REG_DWORD /d 2 /f
-rem Set Outlook's Cached Exchange Mode behavior
-rem Must be executed with default registry hive mounted.
-reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v enable /t REG_DWORD /d 1 /f
-reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v syncwindowsetting /t REG_DWORD /d 1 /f
-reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v CalendarSyncWindowSetting /t REG_DWORD /d 1 /f
-reg add "HKU\TempDefault\software\policies\microsoft\office\16.0\outlook\cached mode" /v CalendarSyncWindowSettingMonths  /t REG_DWORD /d 1 /f
-rem Unmount the default user registry hive
-reg unload HKU\TempDefault
-
-rem Set the Office Update UI behavior.
-reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hideupdatenotifications /t REG_DWORD /d 1 /f
-reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hideenabledisableupdates /t REG_DWORD /d 1 /f
-```
+Ha a felhasználók bizonyos LOB-alkalmazások eléréséhez szükséges, javasoljuk ebben a szakaszban utasítások végrehajtása után telepítse őket.
 
 ### <a name="disable-automatic-updates"></a>Az automatikus frissítések letiltásához
 
@@ -179,63 +89,13 @@ Adjon meg egy kezdő elrendezés Windows 10 rendszerű számítógépen a követ
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
 ```
 
-### <a name="install-onedrive-in-per-machine-mode"></a>Onedrive vállalati verzió telepítését a gépenkénti módban
-
-Onedrive vállalati verzió felhasználónként megfelelően telepítve. Ebben a környezetben kell lennie a gépenkénti telepítve.
-
-Íme a onedrive vállalati verzió telepítését a gépenkénti módban:
-
-1. Először hozzon létre egy helyet a onedrive vállalati verzió telepítő előkészítéséhez. Egy helyi mappát vagy [\\\\unc] (file://unc) helye nem okoz gondot.
-
-2. Töltse le a OneDriveSetup.exe a manuálisan előkészített helyre a következő hivatkozást: <https://aka.ms/OneDriveWVD-Installer>
-
-3. Ha az office a onedrive vállalati verziója, kihagyva  **\<ExcludeApp ID = "Onedrive vállalati verzió" /\>**, távolítsa el az összes meglévő onedrive vállalati verzió felhasználói telepítés a következő futtatásával egy rendszergazda jogú parancssorból a parancs:
-    
-    ```batch
-    "[staged location]\OneDriveSetup.exe" /uninstall
-    ```
-
-4. Futtassa a következő parancsot egy rendszergazda jogú parancssorból beállítása a **AllUsersInstall** beállításazonosító:
-
-    ```batch
-    REG ADD "HKLM\Software\Microsoft\OneDrive" /v "AllUsersInstall" /t REG_DWORD /d 1 /reg:64
-    ```
-
-5. Onedrive vállalati verzió telepítését a gépenkénti módban a következő parancs futtatásával:
-
-    ```batch
-    Run "[staged location]\OneDriveSetup.exe" /allusers
-    ```
-
-6. Konfigurálása a onedrive vállalati verzió indítás bejelentkezés az összes felhasználó számára a következő parancs futtatásával:
-
-    ```batch
-    REG ADD "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v OneDrive /t REG_SZ /d "C:\Program Files (x86)\Microsoft OneDrive\OneDrive.exe /background" /f
-    ```
-
-7. Engedélyezése **csendes módban a felhasználói fiók konfigurálása** a következő parancs futtatásával.
-
-    ```batch
-    REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "SilentAccountConfig" /t REG_DWORD /d 1 /f
-    ```
-
-8. Átirányítási, és helyezze át a Windows ismert mappák a onedrive-ra a következő parancs futtatásával.
-
-    ```batch
-    REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
-    ```
-
-### <a name="teams-and-skype"></a>Csoportok és Skype
-
-Windows virtuális asztal hivatalosan nem támogatja a Skype és csoportokat.
-
 ### <a name="set-up-user-profile-container-fslogix"></a>Állítsa be a felhasználói profil tároló (FSLogix)
 
 A lemezkép részeként adja meg a FSLogix tároló, kövesse a [állítsa be a felhasználói állomás készlet megosztásának](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). Tesztelheti a FSLogix tároló működésének [ebben a rövid útmutatóban](https://docs.fslogix.com/display/20170529/Profile+Containers+-+Quick+Start).
 
 ### <a name="configure-windows-defender"></a>A Windows Defender konfigurálása
 
-Ha a Windows Defender van konfigurálva a virtuális gépen, győződjön meg arról, azt úgy konfigurálva, hogy nem vizsgálat VHD és vhdx formátumú teljes tartalmát ugyanezt a melléklet során.
+Ha a Windows Defender van konfigurálva a virtuális gépen, győződjön meg arról, azt úgy konfigurálva, hogy nem vizsgálat VHD és vhdx formátumú teljes tartalmát a melléklet során.
 
 Ez a konfiguráció csak eltávolítja a VHD és VHDX-fájlok vizsgálata során a mellékletet, de nincsenek hatással a valós idejű vizsgálatát.
 
@@ -308,7 +168,7 @@ Ez a cikk nem tárgyalja a nyelvi és területi támogatási konfigurálása. To
 Ez a szakasz ismerteti az alkalmazás és az operációs rendszer konfigurálása. Ebben a szakaszban az összes konfiguráció a beállításjegyzék bejegyzéseit, amelyek parancssori által futtatható keresztül történik, és regedit eszközök.
 
 >[!NOTE]
->Ajánlott eljárások az általános csoportházirend-objektumok (GPO) vagy a beállításjegyzék-import-konfiguráció valósítható meg. A rendszergazdák kiválaszthatják, vagy a szervezeti követelmények alapján lehetőséget.
+>Ajánlott eljárások a csoportházirend-objektumok (GPO) vagy a beállításjegyzék-import-konfiguráció valósítható meg. A rendszergazdák kiválaszthatják, vagy a szervezeti követelmények alapján lehetőséget.
 
 Visszajelzési központ gyűjteménye, telemetriai adatokat a Windows 10 Enterprise több munkamenet a következő parancs futtatásával:
 

@@ -13,36 +13,41 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: 23e072369aa8ac6ca6ada5ec185df1a8d7e03c5b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f929369030b6f0a634eb2c84e33eee24af8cb6a2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61477178"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787516"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Az SQL Server használata Azure virtuális gép kibocsátási megjegyzései
 
 Az Azure lehetővé teszi, hogy az SQL Server beépített rendszerképpel rendelkező virtuális gép üzembe helyezése. Ez a cikk összefoglalja a új funkciókat és fejlesztéseket a legutóbbi kiadásaiban [Azure virtuális gépeken futó SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/). A cikk nem közvetlenül kapcsolódó kiadására, de az időkeretből közzétett jelentős tartalomfrissítéseket is megjeleníti. Más Azure-szolgáltatások fejlesztései, lásd: [szolgáltatási hírek](https://azure.microsoft.com/updates)
 
-## <a name="march-2019"></a>2019. március
+## <a name="april-2019"></a>Április 2019
 
 ### <a name="service-improvements"></a>Szolgáltatás fejlesztései
 
 | Szolgáltatás fejlesztései | Részletek |
 | --- | --- |
-| **Egyéni rendszerkép támogatási lehetőségek** | Most már telepítheti a [SQL IaaS-bővítményt](virtual-machines-windows-sql-server-agent-extension.md#installation) egyéni operációs rendszer és az SQL-rendszerképek, amelyek kínál korlátozott működésének [rugalmas licencelési](virtual-machines-windows-sql-ahb.md). Ha az egyéni rendszerkép Regisztrálás az SQL erőforrás-szolgáltató adja meg a licenc típusa "AHUB" Ellenkező esetben a regisztráció sikertelen lesz.  | 
-| **Nevesített példány támogatási lehetőségek** | Mostantól használhat a [SQL IaaS-bővítményt](virtual-machines-windows-sql-server-agent-extension.md#installation) nevesített példánnyal, ha az alapértelmezett példány megfelelően el lett távolítva. | 
-| **Portál a fejlesztés** | Az SQL Server virtuális gép üzembe helyezése az Azure portal felületének rendelkezik lett technológiájú, használhatóság javítása érdekében. További információkért lásd: a tájékoztatót [rövid](quickstart-sql-vm-create-portal.md) és alaposabb [útmutató](virtual-machines-windows-portal-sql-server-provision.md) útmutató, amellyel egy SQL Server virtuális gép üzembe helyezése. |
+| **Az SQL Server 2008/2008R2 támogatásának kiterjesztése** | [Támogatás kiterjesztése](virtual-machines-windows-sql-server-2008-eos-extend-support.md) SQL Server 2008 és az SQL Server 2008 R2 áttelepítése révén *,-van* egy Azure virtuális géphez. | 
 | &nbsp; | &nbsp; |
 
 ### <a name="documentation-improvements"></a>Dokumentáció fejlesztései
 
-None
+Egyik sem
+
+## <a name="march-2019"></a>2019. március
+
+| Szolgáltatás fejlesztései | Részletek |
+| --- | --- |
+| **Egyéni rendszerkép támogatási lehetőségek** | Most már telepítheti a [SQL IaaS-bővítményt](virtual-machines-windows-sql-server-agent-extension.md#installation) egyéni operációs rendszer és az SQL-rendszerképek, amelyek kínál korlátozott működésének [rugalmas licencelési](virtual-machines-windows-sql-ahb.md). Ha az egyéni rendszerkép Regisztrálás az SQL erőforrás-szolgáltató adja meg a licenc típusa "AHUB" Ellenkező esetben a regisztráció sikertelen lesz.  | 
+| **Nevesített példány támogatási lehetőségek** | Mostantól használhat a [SQL IaaS-bővítményt](virtual-machines-windows-sql-server-agent-extension.md#installation) nevesített példánnyal, ha az alapértelmezett példány megfelelően el lett távolítva. | 
+| **Portál a fejlesztés** | Az SQL Server virtuális gép üzembe helyezése az Azure portal felületének rendelkezik lett technológiájú, használhatóság javítása érdekében. További információkért lásd: a tájékoztatót [rövid](quickstart-sql-vm-create-portal.md) és alaposabb [útmutató](virtual-machines-windows-portal-sql-server-provision.md) útmutató, amellyel egy SQL Server virtuális gép üzembe helyezése.|
+| &nbsp; | &nbsp; |
 
 
 ## <a name="february-2019"></a>2019. február
-
-### <a name="service-improvements"></a>Szolgáltatás fejlesztései
 
 | Szolgáltatás fejlesztései | Részletek |
 | --- | --- |

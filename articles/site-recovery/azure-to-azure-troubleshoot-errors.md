@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sujayt
-ms.openlocfilehash: fafa791039397e93e9bf8ab6be04a2190e8ed784
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3c87e159022b6dcf13daf2a2659c88c0529a8f48
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699083"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796432"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure – Azure virtuális gép replikálási problémák elhárítása
 
@@ -232,10 +232,10 @@ Választhat a lemezek védelméhez, vagy figyelmen kívül hagyhatja a figyelmez
  ![add_disks](./media/azure-to-azure-troubleshoot-errors/add-disk.png)
 2. A figyelmeztető üzenet elvetéséhez. Lépjen a replikált elemek > virtuális gép > kattintson az Áttekintés szakaszban Elvetés riasztásához.
 ![dismiss_warning](./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png)
-## <a name="unable-to-see-the-azure-vm-for-selection-in-enable-replication"></a>Nem látja az Azure virtuális gép kiválasztása a "replikáció engedélyezése"
+## <a name="unable-to-see-the-azure-vm-or-resource-group--for-selection-in-enable-replication"></a>Nem látja az Azure virtuális Gépen vagy az erőforrás csoport kiválasztása a "replikáció engedélyezése"
 
  **1. ok:  Erőforráscsoport és a forrás virtuális gép máshol helyezkedik el** <br>
-Az Azure Site Recovery jelenleg meghatalmazott, hogy régió erőforráscsoportot és a virtuális gépek ugyanazon a helyen legyen. Ha ez nem így majd akkor nem tudná az védelem alatt a virtuális gép található.
+Az Azure Site Recovery jelenleg, amely forrás régió erőforráscsoportot és a virtuális gépek megbízások kell ugyanazon a helyen. Ha ez nem így majd akkor nem tudná az védelem alatt a virtuális gép található. Áthidaló megoldásként engedélyezheti a replikációt a virtuális gépről a Recovery services-tároló helyett. Lépjen a Sourece virtuális gépek > Tulajdonságok > vészhelyreállítás és a replikáció engedélyezése.
 
 **2. ok: Erőforráscsoport nem része a kiválasztott előfizetéshez** <br>
 Meg nem találja az erőforráscsoport a védelem idején, ha nem az adott előfizetés részeként. Győződjön meg arról, hogy az erőforráscsoport tartozik-e az előfizetés, amely használatban van.
@@ -252,7 +252,7 @@ Ha nem látja a virtuális gép replikációs engedélyezni szeretné, akkor el�
 >
 >Ne feledje frissíteni a "" AzureRM.Resources"" modul használata előtt az alábbi szkriptet.
 
-Használhat [távolítsa el az elavult automatikus konfigurációs szkript](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412) , és távolítsa el az elavult a Site Recovery konfigurálása az Azure virtuális gépen. A virtuális gép láthatja a elavult konfiguráció eltávolítása után kell lennie.
+Használhat [távolítsa el az elavult automatikus konfigurációs szkript](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1) , és távolítsa el az elavult a Site Recovery konfigurálása az Azure virtuális gépen. A virtuális gép láthatja a elavult konfiguráció eltávolítása után kell lennie.
 
 ## <a name="unable-to-select-virtual-machine-for-protection"></a>Válassza ki a virtuális gép védelemre nem sikerült
  **1. ok:  Virtuális gép rendelkezik néhány bővítmény telepítve állapota sikertelen, vagy nem válaszol** <br>

@@ -4,7 +4,7 @@ description: Ismerje meg a Microsoft-hitelesítési tár használatával (MSAL.j
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7990566ca9cd93e79b8356cfd15fda03a7469695
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: cd26f36356affbc8c272bd093757a8482773baf2
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138303"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544031"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Az ügyfélalkalmazások MSAL.js használatával inicializálása
 Ez a cikk ismerteti inicializálása során Microsoft-hitelesítési tár JavaScript (MSAL.js) az olyan felhasználói ügynököt alkalmazás egy példányát. A felhasználói ügynök alkalmazás, amelyben az Ügyfélkód hajtja végre a felhasználó például egy webes böngésző ügynök egy nyilvános ügyfélalkalmazás egy formája. Ezek az ügyfelek ne tárolja a titkos adatait, mert némelyik érhető el a böngésző környezetet. Az ügyfél alkalmazástípusok és alkalmazáskonfigurációs beállítások kapcsolatos további információkért olvassa el a [áttekintése](msal-client-applications.md).

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 77c2cd9e0eac6717d91a73a6fc033dcaa2390444
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 976545f588895421e7c2be7e18b844d7994bc1ff
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145030"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779994"
 ---
 # <a name="status-monitor-v2"></a>Állapotmonitor v2
 
@@ -34,7 +34,7 @@ Telemetriát küld az Azure Portalon ahol [figyelő](https://docs.microsoft.com/
 https://www.powershellgallery.com/packages/Az.ApplicationMonitor
 
 
-## <a name="instructions"></a>Utasítások
+## <a name="instructions"></a>Útmutatás
 - Tekintse át a [első lépések útmutató](status-monitor-v2-get-started.md) tömör Kódminták a kezdéshez.
 - Tekintse át a [részletes utasítások](status-monitor-v2-detailed-instructions.md) az első lépésekről részletes bemutatása.
 
@@ -48,11 +48,11 @@ https://www.powershellgallery.com/packages/Az.ApplicationMonitor
 - [Set-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-set-config.md)
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-- [hibaelhárítással](status-monitor-v2-troubleshoot.md)
+- [Hibaelhárítás](status-monitor-v2-troubleshoot.md)
 - [Ismert problémák](status-monitor-v2-troubleshoot.md#known-issues)
 
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>gyakori kérdésekben
 
 - Támogatja az Állapotfigyelőt v2 proxy telepítések?
 
@@ -61,6 +61,11 @@ https://www.powershellgallery.com/packages/Az.ApplicationMonitor
 - Az engedélyezés ellenőrzése sikeres volt?
 
    A parancsmag nem rendelkezünk, ellenőrizze, hogy engedélyezése sikeres volt. Azt javasoljuk, [élő mérőszámok](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) gyorsan megfigyelni, ha az alkalmazás USA telemetriai adatokat küldenek.
+
+   Is [Analytics](../log-query/get-started-portal.md) minden jelenleg a telemetriai adatokat küldenek a felhőalapú szerepkörök listáját.
+   ```Kusto
+   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
+   ```
 
 ## <a name="next-steps"></a>További lépések
 

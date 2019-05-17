@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3de444d509684f0b4227abe91ec3c967f2bf8f03
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6fd9ce1947b8207aced44204fc2989622a1998f2
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926282"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65761925"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Az Azure Disk Encryption IaaS virtuális gépekhez – gyakori kérdések
 
@@ -59,12 +59,7 @@ Nem támogatott az Azure-ban Linux rendszerű kiszolgáló disztribúciók nem t
 | CentOS | 7.4 | Operációsrendszer- és lemez |
 | CentOS | 7.3 | Operációsrendszer- és lemez |
 | CentOS | 7.2n | Operációsrendszer- és lemez |
-| CentOS | 6.8 | Operációsrendszer- és lemez |
-| CentOS | 7.1 | Adatlemez |
-| CentOS | 7.0 | Adatlemez |
-| CentOS | 6.7 | Adatlemez |
-| CentOS | 6.6 | Adatlemez |
-| CentOS | 6.5 | Adatlemez |
+| CentOS | 6.8 | Adatlemez |
 | openSUSE | 42.3 | Adatlemez |
 | SLES | 12-SP4 | Adatlemez |
 | SLES | 12-SP3 | Adatlemez |
@@ -158,7 +153,7 @@ A Windows, ADE használ a BitLocker AES256 titkosítási módszert (a Windows Se
 Nem, adatokat a rendszer nem törli a már Azure Disk Encryption használatával titkosított meghajtók. Hogyan EncryptFormatAll nem újratitkosítása az operációs rendszer meghajtójának hasonlóan, nem fog újra már a titkosított adatok meghajtójának titkosításához. További információkért lásd: a [EncryptFormatAll feltételek](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).        
 
 ## <a name="is-xfs-filesystem-supported"></a>XFS fájlrendszer támogatott?
-Lemez adattitkosítás csak a EncryptFormalAll XFS köteteket támogatja. Ez formázza újra a kötetet, bármely meglévő adatok törlése korábban már létezik. További információkért lásd: a [EncryptFormatAll feltételek](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).
+Lemez adattitkosítás csak a EncryptFormatAll XFS köteteket támogatja. Ez formázza újra a kötetet, bármely meglévő adatok törlése korábban már létezik. További információkért lásd: a [EncryptFormatAll feltételek](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Biztonsági mentése és visszaállítása egy titkosított virtuális gép? 
 

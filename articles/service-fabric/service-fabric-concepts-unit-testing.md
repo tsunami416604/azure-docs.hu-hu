@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: atsenthi
-ms.openlocfilehash: ca473b9947a9b0df610a9c3dac66914b06cc9217
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ad7cf3a1dfcef8795ceb378a59a1cf0b2010293e
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60881453"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595499"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>A Service Fabric állapotalapú szolgáltatások egységtesztelés
 
@@ -36,7 +36,7 @@ Fedje fel néhány gyakori hibák fordulnak elő, akkor nem feltétlenül kell �
 
 ## <a name="common-practices"></a>Gyakori eljárások
 
-Az alábbi szakasz tanácsolja egységtesztelés az állapotalapú szolgáltatások esetében a leggyakoribb eljárásait. Tanácsolja is mi egy utánzási réteg kell rendelkeznie a Service Fabric vezénylési és állapot-felügyeleti szorosan igazodva. Utánzási kódtárak léteznek-kódtárak együttese ezt a funkciót. [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) kezdődően 3.3.0 vagy újabb verzió van egy ilyen kódtár, amely az ajánlott utánzási funkciókat biztosít, és az alább ismertetett eljárásokat követi.
+Az alábbi szakasz tanácsolja egységtesztelés az állapotalapú szolgáltatások esetében a leggyakoribb eljárásait. Tanácsolja is mi egy utánzási réteg kell rendelkeznie a Service Fabric vezénylési és állapot-felügyeleti szorosan igazodva. [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) kezdődően 3.3.0 vagy újabb verzió van egy ilyen kódtár, amely az ajánlott utánzási funkciókat biztosít, és az alább ismertetett eljárásokat követi.
 
 ### <a name="arrangement"></a>Elrendezés
 

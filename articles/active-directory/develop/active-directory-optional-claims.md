@@ -2,9 +2,9 @@
 title: Ismerje meg, hogyan választható jogcímek, az Azure AD-alkalmazás megadása |} A Microsoft Docs
 description: Útmutató egyéni vagy további jogcímek, az Azure Active Directory által kibocsátott SAML 2.0 és a JSON Web tokenek (JWT) tokenek hozzáadásához.
 documentationcenter: na
-author: CelesteDG
+author: rwike77
 services: active-directory
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/27/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fd7b05a5411c03e1324871fbff3c29061ce7b3d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 593289e64c0f9cd13251a0f7b47b860158100b36
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65139244"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544567"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Útmutató: Adja meg a választható jogcímeket, az Azure AD-alkalmazás
 
@@ -91,7 +91,7 @@ Ezeket a jogcímeket 1.0-s verziójú Azure AD-jogkivonatok mindig szerepel, de 
 | `nickname`    | Becenév.                        | A felhasználó, az első vagy utolsó külön további neve. | 
 | `family_name` | Vezetéknév                       | Az utolsó neve, Vezetéknév vagy felhasználó családnév biztosít a user objektum a. <br>"family_name":"Miller" | Az MSA és aad-ben támogatott   |
 | `given_name`  | Utónév                      | Itt az első vagy az "adott" a felhasználó nevét a user objektum készletként.<br>"given_name": "Frank"                   | Az MSA és aad-ben támogatott  |
-| `upn`         | Felhasználó egyszerű neve | Egy azonosítóval, a felhasználó a username_hint paraméterrel használható.  A felhasználó nem egy tartós azonosítót, és nem használható a fontos adatokat. | Lásd: [további tulajdonságok](#additional-properties-of-optional-claims) alább a jogcím-konfigurációhoz. |
+| `upn`         | Egyszerű felhasználónév | Egy azonosítóval, a felhasználó a username_hint paraméterrel használható.  A felhasználó nem egy tartós azonosítót, és nem használható a fontos adatokat. | Lásd: [további tulajdonságok](#additional-properties-of-optional-claims) alább a jogcím-konfigurációhoz. |
 
 ### <a name="additional-properties-of-optional-claims"></a>Nem kötelező jogcímek további tulajdonságok
 
@@ -247,7 +247,7 @@ Ez a szakasz ismerteti a konfigurációs beállítások módosítása a csoport 
    }
    ```
 
-   | Nem kötelező jogcímek séma | Érték |
+   | Nem kötelező jogcímek séma | Value |
    |----------|-------------|
    | **név:** | "Csoportok" kell lennie. |
    | **Forrás:** | Nincs használatban. Nincs megadva vagy null értéket adjon meg |

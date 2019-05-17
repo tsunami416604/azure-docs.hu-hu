@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 6179086c6a2cf187c976ff23bf24180257023d28
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: e5acb8e0f8805da7f14bbce58b4bfd2acdc24f23
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289172"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65815569"
 ---
 # <a name="secure-your-internet-of-things-iot-deployment"></a>Az eszközök internetes hálózata (IoT) üzemelő példány biztonságos
 
@@ -21,11 +21,11 @@ Ez a cikk a következő részletességi szintje az Azure IoT-alapú eszközök i
 
 Az Azure IoT-környezet biztonságossá tétele a következő három biztonsági területre osztható:
 
-* **Eszközbiztonság**: az IoT eszköz védelme közben van üzembe helyezve a helyettesítő karakterek.
+* **Eszközbiztonság**: Biztonságossá tétele az IoT-eszköz, amíg van üzembe helyezve a helyettesítő karakterek.
 
-* **Kapcsolatbiztonság**: bizalmas és hamisíthatatlan biztosítása az IoT eszköz és az IoT Hub között továbbított összes adat.
+* **Kapcsolatbiztonság**: Az IoT eszköz és az IoT Hub között továbbított összes adat biztosítva, bizalmas és hamisíthatatlan.
 
-* **Cloud Security**: keresztül halad át, és a felhőben tárolt adatok védelmét biztosítani.
+* **Cloud Security**: Miközben keresztül halad át, és a felhőben tárolt adatok védelmét biztosítani.
 
 ![A három biztonsági terület](./media/iot-secure-your-deployment/overview.png)
 
@@ -35,7 +35,7 @@ Az IoT-megoldásgyorsítók biztonságos IoT-eszközök az alábbi két módszer
 
 * Azáltal, hogy egy egyedi azonosító kulcsot (biztonsági jogkivonatokat) minden egyes eszközhöz, amely az eszköz által az IoT hubbal való kommunikációhoz használható.
 
-* Az eszközön futó használatával [X.509-tanúsítvány](http://www.itu.int/rec/T-REC-X.509-201210-I/en) és hitelesíteni az eszközt az IoT hubhoz eszközként titkos kulcs. Ez a hitelesítési módszer biztosítja, hogy a titkos kulcs az eszközön nem ismert kívül az eszköz bármikor magasabb szintű biztonságot biztosít.
+* Az eszközön futó használatával [X.509-tanúsítvány](https://www.itu.int/rec/T-REC-X.509-201210-S) és hitelesíteni az eszközt az IoT hubhoz eszközként titkos kulcs. Ez a hitelesítési módszer biztosítja, hogy a titkos kulcs az eszközön nem ismert kívül az eszköz bármikor magasabb szintű biztonságot biztosít.
 
 A biztonsági jogkivonat módszert biztosít a hitelesítést minden egyes híváshoz az eszköz által az IoT hubhoz a szimmetrikus kulcs az egyes műveletmeghívásokhoz társításával. X.509-alapú hitelesítés lehetővé teszi, hogy az IoT-eszközök hitelesítési TLS kapcsolat létrehozásának részeként a fizikai rétegben. A biztonsági jogkivonat-alapú módszer az X.509-hitelesítéssel, amelyek kevésbé biztonságos minta anélkül is használható. A választás a két módszer elsődlegesen szabja meg hogyan biztonságos eszköz hitelesítési kell lennie, és biztonságos tárolási (így biztonságosan tárolhatja a titkos kulcsot) az eszközön rendelkezésre állását.
 
@@ -53,9 +53,9 @@ Minden IoT-központ rendelkezik egy [eszközidentitás-jegyzék](../articles/iot
 
 [IoT Hub által támogatott protokollok, például MQTT, AMQP és a HTTP](../articles//iot-hub/iot-hub-devguide-security.md). Eltérően használja ezeket a protokollokat mindegyike biztonsági jogkivonatokat az IoT-eszközről az IoT hubhoz:
 
-* Az AMQP: SASL egyszerű, és AMQP jogcímalapú biztonsági (`{policyName}@sas.root.{iothubName}` IoT hub-szintű jogkivonatokkal; `{deviceId}` eszköz hatókörű jogkivonatokkal).
+* AMQP: SASL egyszerű, és AMQP jogcímalapú biztonsági (`{policyName}@sas.root.{iothubName}` IoT hub-szintű jogkivonatokkal; `{deviceId}` eszköz hatókörű jogkivonatokkal).
 
-* MQTT: Csatlakozás csomagot használ `{deviceId}` , a `{ClientId}`, `{IoThubhostname}/{deviceId}` a a **felhasználónév** mezőt és a egy SAS-tokent a a **jelszó** mező.
+* MQTT-RŐL: Csatlakozás csomagot használ `{deviceId}` , a `{ClientId}`, `{IoThubhostname}/{deviceId}` a a **felhasználónév** mezőt és a egy SAS-tokent a a **jelszó** mező.
 
 * HTTP: Érvényes token az engedélyezési kérés fejlécében.
 
@@ -101,15 +101,15 @@ Az Azure IoT Hub és egyéb szolgáltatások, amelyek a megoldás részét képe
 
 Azure IoT Hub által betöltött adatok különböző szolgáltatások, például az Azure Stream Analytics és az Azure blob storage képes használni. Ezek a szolgáltatások felügyeleti hozzáférés engedélyezése. További információ ezen szolgáltatásokkal és az elérhető lehetőségek közül:
 
-* [Az Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/): méretezhető, teljes körűen indexelt adatbázis-szolgáltatás, amely felügyeli az eszközök metaadatait, részben strukturált adatok számára hozza létre, például az attribútumokat, konfigurációs és biztonsági tulajdonságait. Az Azure Cosmos DB kínál a nagy teljesítményű és nagy átviteli sebességű feldolgozására, sémafüggetlen indexelését, adatok és a egy részletes SQL-lekérdezési felületet.
+* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/): Méretezhető és teljes indexelése adatbázis-szolgáltatás, amely felügyeli az eszközök metaadatait, részben strukturált adatok számára hozza létre, például az attribútumokat, konfigurációs és biztonsági tulajdonságait. Az Azure Cosmos DB kínál a nagy teljesítményű és nagy átviteli sebességű feldolgozására, sémafüggetlen indexelését, adatok és a egy részletes SQL-lekérdezési felületet.
 
-* [Az Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/): valós idejű streamfeldolgozás a felhőben, amely lehetővé teszi, hogy gyors fejlesztése és üzembe helyezése egy alacsony költségű analytics megoldás a valós idejű feltárásában eszközök, érzékelők, az infrastruktúra és alkalmazások. E teljes körűen felügyelt szolgáltatás az adatokat tetszőleges adatmennyiséghez a nagy átviteli sebességet, közel valós idejű és rugalmasság méretezheti.
+* [Az Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/): Valós idejű streamfeldolgozás a felhőben, amely lehetővé teszi, hogy gyors fejlesztése és üzembe helyezése egy alacsony költségű analytics megoldás a valós idejű feltárásában eszközök, érzékelők, az infrastruktúra és alkalmazások. E teljes körűen felügyelt szolgáltatás az adatokat tetszőleges adatmennyiséghez a nagy átviteli sebességet, közel valós idejű és rugalmasság méretezheti.
 
-* [Az Azure App Services](https://azure.microsoft.com/services/app-service/): egy felhőalapú platform, amely hatékony webes és mobilalkalmazások bárhol adatokat; a felhőben vagy a helyszínen. Vonzó alkalmazások készítése iOS, Android és Windows rendszerre. Integrálható a szoftvert, mint a szoftverszolgáltatások (SaaS) és a vállalati alkalmazásait-az-a – azonnali kapcsolódás több tucat felhőalapú szolgáltatáshoz és vállalati alkalmazáshoz. Kedvenc nyelvének és integrált Fejlesztőkörnyezetének (.NET, Node.js, PHP, Python vagy Java) hozhat létre webalkalmazásokat és API-k minden eddiginél gyorsabban, a kód.
+* [Az Azure App Services](https://azure.microsoft.com/services/app-service/): Egy felhőalapú platform, amely hatékony webes és mobilalkalmazások, amelyek bárhol; kapcsolódhatnak az adatokhoz a felhőben vagy a helyszínen. Vonzó alkalmazások készítése iOS, Android és Windows rendszerre. Integrálható a szoftvert, mint a szoftverszolgáltatások (SaaS) és a vállalati alkalmazásait-az-a – azonnali kapcsolódás több tucat felhőalapú szolgáltatáshoz és vállalati alkalmazáshoz. Kedvenc nyelvének és integrált Fejlesztőkörnyezetének (.NET, Node.js, PHP, Python vagy Java) hozhat létre webalkalmazásokat és API-k minden eddiginél gyorsabban, a kód.
 
-* [A Logic Apps](https://azure.microsoft.com/services/app-service/logic/): az Azure App Service Logic Apps funkciója segít integrálni az IoT-megoldás a meglévő üzleti rendszerekhez és a munkafolyamatok automatizálása. A Logic Apps segítségével a fejlesztők olyan egy eseményindítóval kezdődnek, majd végrehajtanak bizonyos lépéseket munkafolyamatokat – szabályok és műveletek, amely integrálható az üzleti folyamatok hatékony összekötők használatával. A Logic Apps-az-– azonnali kapcsolatok beépítésével az SaaS, felhőalapú, és kínál a helyszíni alkalmazásokat.
+* [A Logic Apps](https://azure.microsoft.com/services/app-service/logic/): Az Azure App Service Logic Apps szolgáltatása segít integrálni az IoT-megoldás a meglévő üzleti rendszerekhez és a munkafolyamatok automatizálása. A Logic Apps segítségével a fejlesztők olyan egy eseményindítóval kezdődnek, majd végrehajtanak bizonyos lépéseket munkafolyamatokat – szabályok és műveletek, amely integrálható az üzleti folyamatok hatékony összekötők használatával. A Logic Apps-az-– azonnali kapcsolatok beépítésével az SaaS, felhőalapú, és kínál a helyszíni alkalmazásokat.
 
-* [Az Azure Blob storage](https://azure.microsoft.com/services/storage/): megbízható, gazdaságos felhőalapú tárolás az adatok, amelyek az eszközök küldenek a felhőbe.
+* [Az Azure Blob storage](https://azure.microsoft.com/services/storage/): Megbízható, gazdaságos felhőalapú tárolás az adatok, amelyek az eszközök küldenek a felhőbe.
 
 ## <a name="conclusion"></a>Összegzés
 

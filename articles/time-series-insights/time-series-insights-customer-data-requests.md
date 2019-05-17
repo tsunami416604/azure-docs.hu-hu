@@ -4,17 +4,17 @@ description: Az Azure Time Series Insights vásárlói adatok funkciók összefo
 author: ashannon7
 ms.author: anshan
 manager: cshankar
-ms.date: 05/17/2018
+ms.date: 05/08/2019
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 30f6b1fd953f89170a18d56bf0353c643853074e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67aea6b3d535eeb0838da4ac6990c50e607617bf
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880708"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546389"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Vásárlói adatok funkciók összefoglalása
 
@@ -65,3 +65,11 @@ További információkért lásd: [Azure Time Series Insights explorer](time-ser
 A Time Series Insights jelenleg nem támogatja az adatok részletes törlését. Azonban a Time Series Insights távolítsa el a vásárlói adatokat tárolja a Time Series Insights adatmegőrzési szabályzatok konfigurálásával lehetővé teszi lehetővé. Módosíthatja a megőrzési idő, a teljes Time Series Insights környezetet tetszőleges számú napig törlés igényeinek támogatásához.
 
 További információkért lásd: [megőrzés konfigurálása a Time Series Insights](time-series-insights-how-to-configure-retention.md).
+
+## <a name="next-steps"></a>További lépések
+
+* Tudjon meg többet [adat a TSI-környezet hozzáférést adna](./time-series-insights-data-access.md).
+
+* Nézet a [Azure Time Series Insights explorer](time-series-insights-explorer.md).
+
+* Ismerje meg [megőrzés konfigurálása a Time Series Insights](time-series-insights-how-to-configure-retention.md).

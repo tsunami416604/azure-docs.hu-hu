@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f9a33b6bce8cef5bf790efeb43259dfb8013487
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b32ef37c6d61c88a18acd5ddc80cc6154369ca29
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472453"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780523"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Rendszergazdaként az Azure Active Directoryban egy nem felügyelt könyvtár átvétele
 
@@ -37,7 +37,7 @@ A rendszergazdai átvétel során az [Egyéni tartománynév hozzáadása az Azu
 
 Egyes termékek, amelyek tartalmazzák a SharePoint és onedrive vállalati verzió, például az Office 365, nem támogatja a külső átvételt. Ha ez a forgatókönyv, vagy ha a rendszergazda, és a egy nem felügyelt átvenni szeretné, vagy "árnyékmásolat" bérlő létrehozása a felhasználók, akik önkiszolgáló bejelentkezést használt a, ezt megteheti egy belső rendszergazdai átvétellel.
 
-1. Hozzon létre egy felhasználói környezetben keresztül, mint a Power BI regisztráció a nem felügyelt bérlőt. Példa kényelmi célokat szolgál ezek a lépések feltételezik, hogy az elérési út.
+1. Hozzon létre egy felhasználói környezetben a nem felügyelt bérlőt a Power bi-ban való regisztráláskor keresztül. Példa kényelmi célokat szolgál ezek a lépések feltételezik, hogy az elérési út.
 
 2. Nyissa meg a [Power BI-webhelyén](https://powerbi.com) válassza **ingyenes próba megkezdése**. Adjon meg egy felhasználói fiókot, amely a szervezet; tartománynevet használja: Ha például `admin@fourthcoffee.xyz`. Az ellenőrző kód megadása után ellenőrizze az e-mailben a megerősítő kód.
 

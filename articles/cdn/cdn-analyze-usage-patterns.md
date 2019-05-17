@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 6eb0fe592196466f7f49c21ce38afdf13b254d86
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 88cbd942413757388278d69d728d407271e4c4a3
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61061544"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606391"
 ---
 # <a name="core-reports-from-verizon"></a>Alapvető jelentések a Verizontól
 
@@ -27,7 +27,7 @@ ms.locfileid: "61061544"
 
 A Verizon alapvető jelentések a kezelés portálján a Verizon profilok, a CDN az alábbi jelentések a használati minták láthatja:
 
-* Bandwidth
+* Sávszélesség
 * Átvitt adatok
 * Találatok
 * Gyorsítótárak Allapota
@@ -50,7 +50,7 @@ A Verizon alapvető jelentések a kezelés portálján a Verizon profilok, a CDN
 
 4. Ha azt szeretné, exportálhatja az adatokat az Excel-formátumban, kattintson a fenti Excelben ikonra a **Go** gombra.
 
-## <a name="bandwidth"></a>Bandwidth
+## <a name="bandwidth"></a>Sávszélesség
 A sávszélesség-jelentést a graph és az adatok táblázatként, amely azt jelzi, hogy a CDN sávszélesség-használat a HTTP és HTTPS egy adott idő alatt (Mbps) áll. A sávszélesség-használat összes POP vagy egy adott POP tekintheti meg. Ez a jelentés lehetővé teszi a forgalomnövekedések és a POP-disztribúciója megtekintését.
 
 Az a **Élcsomópontok** listáról válassza ki **összes Élcsomópontok** , tekintse meg a forgalmat az összes csomóponton, vagy válasszon ki egy adott régióban.
@@ -119,7 +119,7 @@ A jelentés a következő részleteket biztosítja:
 
 A jelentés nem tartalmazza:
 
-* Ország szűrési beállítások miatt elutasított kérelmek.
+* Ország/régió szűrési beállítások miatt elutasított kérelmek.
 * Eszközök fejlécekhez azt jelzik, hogy azok nem gyorsítótárazza a kérelmeket. Ha például `Cache-Control: private`, `Cache-Control: no-cache`, vagy `Pragma: no-cache` fejlécek egy eszköz megakadályozza a gyorsítótárba.
 * Bájt tartomány kérelmek részlegesen gyorsítótárazott tartalom.
 

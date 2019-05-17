@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 75fe965a04bd02a1086551053c28d2072eae6468
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: f87667516d6c76bc1c21ba5e175b3b2a7ebc3f39
+ms.sourcegitcommit: 9e8dfa1169a55c3c8af93a6c5f4e0dace4de48b2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869515"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65556328"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Az Azure CDN szabálymotorral feltételeknek megfelelő 
 Ez a cikk felsorolja az elérhető egyezési feltételei számára az Azure Content Delivery Network (CDN) a részletes leírását [szabálymotorral](cdn-rules-engine.md).
@@ -101,8 +101,11 @@ Name (Név) | Cél
 
 
 ## <a name="reference-for-rules-engine-match-conditions"></a>Szabálymotor egyezési feltételei referenciája
+
 <a name="main"></a>
+
 ---
+
 ### <a name="always"></a>Mindig
 
 A mindig az egyezési feltétellel alapértelmezés szerinti szolgáltatások összes kérelemre érvényes legyen.
@@ -752,7 +755,7 @@ Legfontosabb tudnivalókat:
 
 A minta konfigurációkat az alábbi táblázat azt feltételezik, hogy a match feltétel teljesül-e, amikor egy kérelem megfelel a megadott URL-minta:
 
-Érték                   | A viszonyítva    | Eredmény 
+Value                   | A viszonyítva    | Eredmény 
 ------------------------|----------------|-------
 */test.html */test.php  | Legfelső szintű vagy a forrás | Ez a minta egyezik "test.html" vagy "test.php" bármelyik mappájában nevű eszközök kérelmek szerint.
 /80ABCD/origin/text/*   | Gyökér           | Ez a minta egyezik, ha a kért objektum megfelel a következő feltételeknek: <br />-Kell lennie, egy ügyfél forrás neve "origin". <br />– A relatív elérési út "szöveg." nevű mappát kell kezdődnie. A kért objektumhoz, vagy lehetnek a "text" mappában vagy egy rekurzív almappája.
@@ -784,7 +787,7 @@ Legfontosabb tudnivalókat:
 
    Karakter | URL-Címének kódolása
    ----------|---------
-   Űr     | %20
+   Szóköz     | %20
    &         | %25
 
 - A módját, mely gyorsítótárban beállítások nyomon követi, mert ez az egyezési feltétellel nem kompatibilis a a következő funkciókat:
@@ -820,7 +823,7 @@ Legfontosabb tudnivalókat:
 
        Karakter | URL-Címének kódolása
        ----------|---------
-       Űr     | %20
+       Szóköz     | %20
        &         | %25
 
 - Adja meg a lekérdezési karakterlánc paraméter több értéket határoló egyenként a szóköz. Amikor egy kérés a megadott név-érték párok kombinációk egyikét tartalmazza a match feltétel teljesül.
@@ -868,11 +871,11 @@ Legfontosabb tudnivalókat:
 #### <a name="sample-scenarios"></a>Használati példák
 A következő példa bemutatja, hogy ez a beállítás működéséről adott helyzetekben:
 
-Name (Név)  | Érték |  Eredmény
+Name (Név)  | Value |  Eredmény
 ------|-------|--------
 Felhasználó  | János   | Ez a minta egyezik a kért URL-cím lekérdezési karakterlánc esetén "? felhasználói János =."
 Felhasználó  | *     | Ez a minta egyezik, ha a kért URL-cím lekérdezési karakterláncot tartalmaz egy felhasználó paramétert.
-E-mail | János\* | Ez a minta egyezik, ha a kért URL-cím lekérdezési karakterláncot tartalmaz egy e-mailek paraméter, amely elindítja a "János".
+E-mail-cím | János\* | Ez a minta egyezik, ha a kért URL-cím lekérdezési karakterláncot tartalmaz egy e-mailek paraméter, amely elindítja a "János".
 
 [Vissza a tetejére](#main)
 
@@ -895,9 +898,9 @@ Legfontosabb tudnivalókat:
     
 - Bizonyos karakterek megkövetelése URL-Címének kódolása. A százalékos szimbólum URL-címét használja a következő karakterek kódolása:
 
-   Karakter | URL-Címének kódolása | Érték
+   Karakter | URL-Címének kódolása | Value
    ----------|--------------|------
-   Űr     | %20          | \%20
+   Szóköz     | %20          | \%20
    &         | %25          | \%25
 
    Vegye figyelembe, hogy százalékos szimbólumok escape-karakterrel.
@@ -906,7 +909,7 @@ Legfontosabb tudnivalókat:
 
    Példa:
 
-   Érték | -Ként 
+   Value | -Ként 
    ------|---------------
    \\+    | +
    \\\\+   | \\+
@@ -939,7 +942,7 @@ Legfontosabb tudnivalókat:
 
      Karakter | URL-Címének kódolása
      ----------|---------
-     Űr     | %20
+     Szóköz     | %20
      &         | %25
 
 - Adja meg az egy szóköz pedig külön határoló több érték.

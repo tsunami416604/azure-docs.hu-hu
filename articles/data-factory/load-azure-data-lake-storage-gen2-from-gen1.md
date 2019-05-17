@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 05/13/2019
 ms.author: jingwang
-ms.openlocfilehash: e3a27ab15c72289dd28e31d832b81407a66dc754
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d6e09ec1f070f9ee0f4162524e4bd80d1f81adc3
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60546276"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560643"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Adatok másolása az Azure Data Lake Storage Gen1 Gen2-re az Azure Data Factoryvel
 
@@ -132,12 +132,47 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Ha másolja a nagy volumenű adatok fájlalapú adattárból, akkor javasolt a:
+Annak ellenőrzéséhez, hogy a frissítés az Azure Data Lake Storage (ADLS) Gen1 Gen2-re általában, tekintse meg [a big data-elemzési megoldások az Azure Data Lake Storage Gen1 frissítése az Azure Data Lake Storage Gen2-re](../storage/blobs/data-lake-storage-upgrade.md). Az alábbi szakaszok az ADF használatával adatok verzióról Gen1 Gen2-re vonatkozó ajánlott eljárások vezetnek be.
 
-- A fájlok particionálása be 10 TB-os, 30TB fileset.
-- Nem indítja el a forrás és fogadó adattárakból származó szabályozás elkerülése érdekében túl sok egyidejű másolási futtatások. Egy példány futtatása és figyelése az átviteli sebességet, majd fokozatosan adjon hozzá további igény szerint.
+### <a name="data-partition-for-historical-data-copy"></a>Adatok partícióra másolásához a korábbi adatok alapján
+
+- Ha az ADLS Gen1 a tárolt adatok mérete kisebb, mint **30TB** és a fájlok száma kisebb, mint **1 millió**, minden adatokat másolhat egy másolási tevékenység futtatási.
+- Ha az adatok másolása nagyobb méretű, vagy azt szeretné, a rugalmasságot, és kötegekben adatok áttelepítésének kezelése, és azok egy adott időzítési időkereten belül fejeződött be, akkor javasolt az adatok particionálásához, ebben az esetben azt is is kockázatának csökkentése érdekében minden nem várt iss UE.
+
+A PoC (a koncepció igazolása) erősen ajánlott annak érdekében, hogy ellenőrizze a teljes körű megoldást, és a példány átviteli sebesség tesztelése a környezetben. Megvalósíthatósági vizsgálat állapotát fő lépést: 
+
+1. Hozzon létre egy ADF folyamatot egy másolási tevékenységgel az ADLS Gen1 több TB-osra bővül az adatok másolása másolási teljesítmény alapvető, kezdve az ADLS Gen2 [(DIUs) integrációs adategységek](copy-activity-performance.md#data-integration-units) mint 128. 
+2. #1. lépésben kap másolási teljesítmény alapján, kiszámíthatja az összes adatát áttelepítés szükséges becsült idő. 
+3. (Nem kötelező) Vezérlő tábla létrehozása, és adja meg a fájl szűrő az áttelepítendő fájlok particionálásához. A módszer particionálja a fájlokat, a következőket: 
+
+    - A (javasolt) helyettesítő karaktert tartalmazó szűrő dokumentumtárolási mappa- vagy mappanév 
+    - Utolsó módosítás időpontja a fájl segítségével 
+
+### <a name="network-bandwidth-and-storage-io"></a>Hálózati sávszélességet és a tárolási I/O 
+
+Az egyidejűség az ADF másolási feladatokat, amely adatokat olvas az ADLS Gen1 és adatokat írni az ADLS Gen2, szabályozhatja, hogy a tárolási i/o-használatának kezelheti annak érdekében, hogy nem érinti a normál üzleti munkát, az ADLS Gen1 az áttelepítés során.
+
+### <a name="permissions"></a>Engedélyek 
+
+A Data Factoryban [ADLS Gen1 összekötő](connector-azure-data-lake-store.md) egyszerű szolgáltatás és a felügyelt identitást támogatja az Azure-erőforrás-hitelesítés; [ADLS Gen2 összekötő](connector-azure-data-lake-storage.md) támogatja a fiókkulcs, egyszerű szolgáltatás és a felügyelt identitást a Azure-erőforrás hitelesítéséről. Navigálhat a Data Factory és az összes fájl/ACL-EK és győződjön meg arról, magas a fiók megfelelő engedélyeket biztosítson másolási való hozzáférés/olvasási/írási megadja az összes fájlt, és ACL-ek beállítása, ha úgy dönt, hogy. Javasoljuk, biztosítania super-felhasználók vagy tulajdonosi szerepkört, az áttelepítés során. 
+
+### <a name="preserve-acls-from-data-lake-storage-gen1"></a>Hozzáférés-vezérlési listák a Data Lake Storage Gen1 megőrzése
+
+Ha meg szeretné replikálni a hozzáférés-vezérlési listák data fájlokkal együtt, a Data Lake Storage Gen1 Gen2-re történő frissítés során, olvassa el [megőrzése hozzáférés-vezérlési listák a Data Lake Storage Gen1](connector-azure-data-lake-storage.md#preserve-acls-from-data-lake-storage-gen1). 
+
+### <a name="incremental-copy"></a>A növekményes másolási 
+
+Több megközelítés közül csak az új vagy frissített fájlok betöltése az ADLS Gen1 használható:
+
+- Új vagy frissített fájlok betöltése idő particionált fájl vagy mappa neve, pl./2019/05/13 / *;
+- Új vagy frissített fájlok LastModifiedDate; betöltése
+- Új vagy frissített fájlok azonosítása-3. fél eszköz/megoldással, majd a fájl vagy mappa neve át ADF folyamat paraméter vagy egy tábla és fájl használatával.  
+
+Növekményes betöltés ehhez a megfelelő gyakoriságát ADLS Gen1 lévő fájlok teljes száma és a kötetet, nem tölthető be minden alkalommal új vagy frissített fájl függ.  
 
 ## <a name="next-steps"></a>További lépések
 
-* [Másolási tevékenység áttekintése](copy-activity-overview.md)
-* [Azure Data Lake Storage Gen2-összekötő](connector-azure-data-lake-storage.md)
+> [!div class="nextstepaction"]
+> [Másolási tevékenység áttekintése](copy-activity-overview.md)
+> [Azure Data Lake Storage Gen1 összekötő](connector-azure-data-lake-store.md)
+> [Azure Data Lake Storage Gen2-összekötő](connector-azure-data-lake-storage.md)

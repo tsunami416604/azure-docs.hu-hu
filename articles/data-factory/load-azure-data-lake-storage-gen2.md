@@ -9,20 +9,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 05/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 8e3a23b38dc95f05ed9a6d99d303f3d86eac60ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f8af34207eddb613f7a59bd3e3d300555e10f985
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60547662"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560734"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Adatok betöltése az Azure Data Lake Storage Gen2 az Azure Data Factoryvel
 
 Az Azure Data Lake Storage Gen2 egy olyan dedikált big data-analitika, beépített képességei [Azure Blob storage](../storage/blobs/storage-blobs-introduction.md). Lehetővé teszi az adatok használata mindkét fájl rendszer és a objektum tárolási paradigmákat csatoló.
 
-Az Azure Data Factory egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás az. A szolgáltatás segítségével feltölti a lake széles helyszíni adataival és a felhőalapú adatokat tárolja, és ezzel időt takaríthat az elemzési megoldások készítése során. Támogatott összekötők részletes listáját lásd a táblázat az [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+Az Azure Data Factory (ADF) egy teljes körűen felügyelt felhőalapú adatintegrációs szolgáltatás. A szolgáltatás segítségével feltölti a lake széles helyszíni adataival és a felhőalapú adatokat tárolja, és ezzel időt takaríthat az elemzési megoldások készítése során. Támogatott összekötők részletes listáját lásd a táblázat az [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
 
 Az Azure Data Factory adatáthelyezési horizontális felskálázás, felügyelt adatok megoldást kínál. Az ADF kibővített architektúrája miatt, betöltheti az adatokat nagy adatátviteli kapacitással. További információkért lásd: [másolási tevékenység](copy-activity-performance.md).
 
@@ -130,13 +130,6 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
     ![A figyelő tevékenységfuttatás részletei](./media/load-azure-data-lake-storage-gen2/monitor-activity-run-details.png)
 
 16. Győződjön meg arról, hogy az adatok Data Lake Storage Gen2-fiókjába másolja.
-
-## <a name="best-practices"></a>Ajánlott eljárások
-
-Ha másolja a nagy volumenű adatok fájlalapú adattárból, akkor javasolt a:
-
-- A fájlok particionálása be 10 TB-os, 30TB fileset.
-- Nem indítja el a forrás és fogadó adattárakból származó szabályozás elkerülése érdekében túl sok egyidejű másolási futtatások. Egy példány futtatása és figyelése az átviteli sebességet, majd fokozatosan adjon hozzá további igény szerint.
 
 ## <a name="next-steps"></a>További lépések
 

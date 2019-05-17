@@ -2,23 +2,23 @@
 title: Az Azure AD-bérlő (nyilvános előzetes verzió) egy adott alkalmazáshoz tartozó jogkivonatok a kibocsátott jogcímek testreszabása
 description: Ezen a lapon jogcímtársítások az Azure Active Directory ismerteti.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2076aec1585ff8b60ee2b593621b75abfaeaa1ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8b770ee476fc5c1c334f53904539cc34cf962c62
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60300478"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65546202"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Útmutató: A bérlőben (előzetes verzió) egy adott alkalmazáshoz tartozó jogkivonatok kibocsátott jogcímek testreszabása
 
@@ -97,7 +97,7 @@ Vannak bizonyos csoportok, amelyek meghatározzák, hogy mikor és hogyan haszn�
 | domain_dns_name |
 | domain_netbios_name |
 | e_exp |
-| e-mail |
+| email |
 | endpoint |
 | enfpolids |
 | Exp |
@@ -105,7 +105,7 @@ Vannak bizonyos csoportok, amelyek meghatározzák, hogy mikor és hogyan haszn�
 | grant_type |
 | gráf |
 | group_sids |
-| csoportok |
+| Csoportok |
 | hasgroups |
 | hash_alg |
 | home_oid |
@@ -158,8 +158,8 @@ Vannak bizonyos csoportok, amelyek meghatározzák, hogy mikor és hogyan haszn�
 | request_nonce |
 | erőforrás |
 | szerepkör |
-| roles |
-| scope |
+| szerepkörök |
+| hatókör |
 | scp |
 | biztonsági azonosító |
 | aláírás |
@@ -177,7 +177,7 @@ Vannak bizonyos csoportok, amelyek meghatározzák, hogy mikor és hogyan haszn�
 | unique_name |
 | egyszerű felhasználónév |
 | user_setting_sync_url |
-| felhasználónév |
+| username |
 | uti |
 | ver |
 | verified_primary_email |
@@ -284,14 +284,14 @@ Az azonosító elem azonosítja, mely tulajdonság a forrás az értéket ad meg
 
 #### <a name="table-3-valid-id-values-per-source"></a>3. táblázat: Forrás azonosítója érvényes értéket
 
-| Forrás | ID (Azonosító) | Leírás |
+| Source | azonosító | Leírás |
 |-----|-----|-----|
 | Felhasználó | Vezetéknév | Család neve |
-| Felhasználó | givenName | utónév; |
-| Felhasználó | DisplayName | Megjelenítendő név |
+| Felhasználó | givenName | Utónév |
+| Felhasználó | DisplayName | Megjelenített név |
 | Felhasználó | objektumazonosító | ObjectID |
 | Felhasználó | levelezés | E-mail-cím |
-| Felhasználó | userprincipalname | Felhasználó egyszerű neve |
+| Felhasználó | userprincipalname | Egyszerű felhasználónév |
 | Felhasználó | Szervezeti egység|Részleg|
 | Felhasználó | onpremisessamaccountname | A helyi SAM-fiók neve |
 | Felhasználó | netbiosname| NetBios-név |
@@ -321,14 +321,14 @@ Az azonosító elem azonosítja, mely tulajdonság a forrás az értéket ad meg
 | Felhasználó | othermail | Egyéb E-mail |
 | Felhasználó | Ország | Ország |
 | Felhasználó | city | Város |
-| Felhasználó | state | Állapot |
+| Felhasználó | állapot | Állapot |
 | Felhasználó | Beosztás | Beosztás |
 | Felhasználó | EmployeeID | Alkalmazott azonosítója |
 | Felhasználó | facsimiletelephonenumber | Fax telefonszáma |
-| alkalmazás, erőforrás, célközönség | DisplayName | Megjelenítendő név |
+| alkalmazás, erőforrás, célközönség | DisplayName | Megjelenített név |
 | alkalmazás, erőforrás, célközönség | hozzáadást | ObjectID |
-| alkalmazás, erőforrás, célközönség | tags | Egyszerű szolgáltatás címke |
-| Vállalat | tenantcountry | Bérlő országában |
+| alkalmazás, erőforrás, célközönség | címkék | Egyszerű szolgáltatás címke |
+| Cég | tenantcountry | Bérlő országában |
 
 **TransformationID:** A TransformationID elemhez kötelező megadni, csak akkor, ha a forrás elem "átalakítás" értékre van állítva.
 
@@ -384,10 +384,10 @@ A kiválasztott módszert alapján, bemenetek és kimenetek várható. A bemenet
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>5. táblázat: Az SAML NameID adatforrásként engedélyezett attribútumok
 
-|Forrás|ID (Azonosító)|Leírás|
+|Source|azonosító|Leírás|
 |-----|-----|-----|
 | Felhasználó | levelezés|E-mail-cím|
-| Felhasználó | userprincipalname|Felhasználó egyszerű neve|
+| Felhasználó | userprincipalname|Egyszerű felhasználónév|
 | Felhasználó | onpremisessamaccountname|A helyi Sam-fiók neve|
 | Felhasználó | EmployeeID|Alkalmazott azonosítója|
 | Felhasználó | extensionattribute1 | Mellék attribútum 1 |
@@ -410,7 +410,7 @@ A kiválasztott módszert alapján, bemenetek és kimenetek várható. A bemenet
 
 | TransformationMethod | Korlátozások |
 | ----- | ----- |
-| ExtractMailPrefix | None |
+| ExtractMailPrefix | Egyik sem |
 | Csatlakozás | Az utótag csatlakoztatott folyamatban van az erőforrás-bérlőkulcs ellenőrzött tartományt kell lennie. |
 
 ### <a name="custom-signing-key"></a>Egyéni kulcs aláírása

@@ -3,26 +3,26 @@ title: Az Azure Active Directory Service-to-service-alkalmazások
 description: Protokoll flow, a regisztráció és az alkalmazástípushoz jogkivonat lejárati azt ismerteti, milyen szolgáltatások, alkalmazások és az alapokat.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 09/24/2018
-ms.date: 11/07/2018
-ms.author: v-junlch
+ms.date: 09/24/2018
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: e0ced89ce97d5f22270d9968fdeb0ddb3fad1e4e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 683664b3172cb12ba6adf6c8006e9685a6d1ec35
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60252038"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540292"
 ---
 # <a name="service-to-service-apps"></a>Szolgáltatások – alkalmazások
 
@@ -36,7 +36,7 @@ Szolgáltatások – alkalmazások lehet egy démon, vagy a kiszolgáló alkalma
 
     Ebben a forgatókönyvben tegyük fel, hogy a felhasználó a natív alkalmazások hitelesítette, és a natív alkalmazásnak kell webes API-hívás. Az Azure AD kibocsát egy JWT jogkivonat a webes API meghívásához. Ha a webes API meghívása egy másik alsóbb rétegbeli webes API-t, a alapú meghatalmazásos folyamat használhatja a felhasználói identitás delegálásához, és a második szintű webes API hitelesítésére.
 
-## <a name="diagram"></a>Ábra
+## <a name="diagram"></a>Diagram
 
 ![Démon, vagy az webes API-diagram](./media/authentication-scenarios/daemon_server_app_to_web_api.png)
 
@@ -63,8 +63,8 @@ Tekintse meg a Kódminták démon vagy kiszolgálói alkalmazás webes API-forga
 
 ## <a name="app-registration"></a>Appok regisztrálása
 
-- Egyetlen bérlő – az alkalmazás azonosítóját és a delegált felhasználó identitás esetben a démon, vagy server alkalmazást regisztrálni kell ugyanabban a címtárban az Azure ad-ben. A webes API elérhetővé engedélykészletet, amelyek segítségével korlátozhatja a démon, vagy az erőforrásokhoz való hozzáférése konfigurálható. Ha egy meghatalmazott felhasználói identitástípus használatban van, a kiszolgálói alkalmazás kell válassza ki a kívánt engedélyekkel a "Engedélyeket az egyéb alkalmazások" legördülő menüből az Azure Portalon. Ebben a lépésben nincs szükség, ha az identitás alkalmazástípus használatban van.
-- Több-bérlős-First, a démon vagy kiszolgálói alkalmazás jelzi a megfelelő működéséhez szükséges engedélyekkel van konfigurálva. Szükséges engedélyek listája egy párbeszédpanel jelenik meg, amikor egy felhasználó vagy rendszergazda a célkönyvtárban duplikátum beleegyezésével az alkalmazáshoz, ami lehetővé teszi a szervezet számára elérhető. Egyes alkalmazások csak a felhasználói szintű engedélyeket, amelyeket a szervezet bármely felhasználója jóváhagyhat van szükségük. Más alkalmazások szükséges rendszergazdai engedélyekkel, amelyek a szervezet egy felhasználója nem járulhatnak hozzá. Csak egy könyvtár rendszergazda engedélyezheti, hogy ez a jogosultsági szint szükséges alkalmazásokat. Amikor a felhasználó vagy rendszergazda hozzájárul, mind a webes API-k a címtárban van regisztrálva.
+* Egyetlen bérlő – az alkalmazás azonosítóját és a delegált felhasználó identitás esetben a démon, vagy server alkalmazást regisztrálni kell ugyanabban a címtárban az Azure ad-ben. A webes API elérhetővé engedélykészletet, amelyek segítségével korlátozhatja a démon, vagy az erőforrásokhoz való hozzáférése konfigurálható. Ha egy meghatalmazott felhasználói identitástípus használatban van, a kiszolgálói alkalmazás kell válassza ki a kívánt engedélyekkel a "Engedélyeket az egyéb alkalmazások" legördülő menüből az Azure Portalon. Ebben a lépésben nincs szükség, ha az identitás alkalmazástípus használatban van.
+* Több-bérlős-First, a démon vagy kiszolgálói alkalmazás jelzi a megfelelő működéséhez szükséges engedélyekkel van konfigurálva. Szükséges engedélyek listája egy párbeszédpanel jelenik meg, amikor egy felhasználó vagy rendszergazda a célkönyvtárban duplikátum beleegyezésével az alkalmazáshoz, ami lehetővé teszi a szervezet számára elérhető. Egyes alkalmazások csak a felhasználói szintű engedélyeket, amelyeket a szervezet bármely felhasználója jóváhagyhat van szükségük. Más alkalmazások szükséges rendszergazdai engedélyekkel, amelyek a szervezet egy felhasználója nem járulhatnak hozzá. Csak egy könyvtár rendszergazda engedélyezheti, hogy ez a jogosultsági szint szükséges alkalmazásokat. Amikor a felhasználó vagy rendszergazda hozzájárul, mind a webes API-k a címtárban van regisztrálva.
 
 ## <a name="token-expiration"></a>Jogkivonat lejáratáról
 
@@ -74,4 +74,3 @@ Az első alkalmazás eléréséhez a JWT jogkivonat a hozzáférési kód haszn�
 
 - További információk egyéb [alkalmazástípusok és forgatókönyvek](app-types.md)
 - További tudnivalók az Azure AD [hitelesítés alapjai](authentication-scenarios.md)
-

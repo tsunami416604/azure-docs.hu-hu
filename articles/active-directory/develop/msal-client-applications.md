@@ -4,7 +4,7 @@ description: További információ a nyilvános és bizalmas ügyfélprogram alk
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
-manager: celested
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f21aa62bae7599cf586ccf6f885ad9f58c148d1f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 9e0300ec0ef4ee67b06acb85514ae898bbd0a830
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65077140"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65544296"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Nyilvános ügyfél és a bizalmas ügyfélalkalmazások
 A Microsoft-hitelesítési tár (MSAL) határozza meg az ügyfelek kétféle: nyilvános ügyfelek és a bizalmas ügyfelek. A két ügyféltípusok különbözteti meg a biztonságos hitelesítést az engedélyezési kiszolgálón, és bizalmasan ügyfél hitelesítő adataikkal tudnak.  Ezzel szemben az Azure AD Authentication Library (ADAL) rendelkezik a hitelesítési környezetet (amely egy kapcsolatot az Azure AD) fogalmát.

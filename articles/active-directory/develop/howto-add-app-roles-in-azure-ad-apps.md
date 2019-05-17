@@ -4,7 +4,7 @@ description: Alkalmazás-szerepkörök felvétele az Azure Active Directoryban r
 services: active-directory
 documentationcenter: ''
 author: kkrishna
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df0d0b02efe7e99253b64ba02a5d9e77bb968993
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: fd78e98c37bea0fed1787e1e07a026fa35597f47
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138356"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65593913"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Útmutató: Alkalmazás-szerepkörök hozzáadása az alkalmazásban, és fogadhatók a jogkivonat
 
@@ -62,7 +62,7 @@ E alkalmazás-szerepkörök vannak meghatározva a [az Azure portal](https://por
 A következő példa bemutatja a `appRoles` , amelyeket hozzárendelhet a `users`.
 
 > [!NOTE]
->  A `id` egyedi GUID azonosítónak kell lennie.
+>A `id` egyedi GUID azonosítónak kell lennie.
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -80,6 +80,9 @@ A következő példa bemutatja a `appRoles` , amelyeket hozzárendelhet a `users
   ],
 "availableToOtherTenants": false,
 ```
+
+> [!NOTE]
+>A `displayName` nem tartalmazhat szóközt.
 
 Cél meghatározhatja az alkalmazás-szerepkörök `users`, `applications`, vagy mindkettőt. Ha az elérhető `applications`, alkalmazás-szerepkörök jelennek meg Alkalmazásengedélyek, az a **szükséges engedélyek** panelen. Az alábbi példa bemutatja egy alkalmazás-szerepkör céloz egy `Application`.
 
@@ -99,6 +102,8 @@ Cél meghatározhatja az alkalmazás-szerepkörök `users`, `applications`, vagy
   ],
 "availableToOtherTenants": false,
 ```
+
+Megadott szerepkörök száma a korlátokat, amely rendelkezik az alkalmazás jegyzékfájlja van hatással. Ezek rendelkezik lett cikkben talál részletes információkat a a [korlátok manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits) lap.
 
 ### <a name="assign-users-and-groups-to-roles"></a>Felhasználók és csoportok hozzárendelése szerepkörökhöz
 

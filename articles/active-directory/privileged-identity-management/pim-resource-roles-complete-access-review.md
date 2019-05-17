@@ -15,12 +15,12 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a310770f26a1c40682791582a05a9bb4c47a42d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: aee8ac3c2638ede559f8a1f9c51f2d6e62604998
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141029"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602295"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-pim"></a>A PIM az Azure-erőforrásszerepkörök hozzáférési felülvizsgálat befejezése
 A kiemelt szerepkörű rendszergazdák tekintheti át az emelt szintű hozzáférés után egy [el lett indítva a hozzáférési felülvizsgálat](pim-resource-roles-start-access-review.md). Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) automatikusan küld egy e-mailt, amely kéri a felhasználóktól, tekintse át a hozzáférésüket. Ha a felhasználó nem kap egy e-mailt, küldhet nekik az utasításokat [hozzáférési felülvizsgálat végrehajtása](pim-resource-roles-perform-access-review.md).
@@ -33,18 +33,18 @@ A hozzáférési felülvizsgálati időszak után, vagy ha minden felhasználó 
 2. Válassza ki az erőforrást.
 
 3. Válassza ki a **hozzáférési felülvizsgálatokkal** szakasz az irányítópult.
-![Hozzáférési felülvizsgálatok](media/azure-pim-resource-rbac/rbac-access-review-home-list.png)
+![Hozzáférési felülvizsgálatok](media/pim-resource-roles-complete-access-review/rbac-access-review-home-list.png)
 
 4. Válassza ki a hozzáférési felülvizsgálatot, amelyet kezelni szeretne.
 
 A hozzáférési felülvizsgálat részletei panelen számos kezelése, tekintse át a beállításokat. A beállítások a következők:
 
-![Felülvizsgálat kezelésének lehetőségei](media/azure-pim-resource-rbac/rbac-access-review-menu.png)
+![Felülvizsgálat kezelésének lehetőségei](media/pim-resource-roles-complete-access-review/rbac-access-review-menu.png)
 
 ### <a name="stop"></a>Leállítás
 Minden hozzáférési felülvizsgálatok a befejező dátum rendelkezik, de használhatja a **leállítása** gomb korai befejezéséhez. Minden felhasználó, aki még nem fejeződött be a felülvizsgálatot, az időpontig nem fog tudni a felülvizsgálat leállítása után fejezze be. Felülvizsgálat nem indítható újra, miután van állítva.
 
-### <a name="reset"></a>Alaphelyzetbe állítás
+### <a name="reset"></a>Visszaállítás
 Alaphelyzetbe állíthatja a hozzáférési felülvizsgálat rajta az összes döntések eltávolítása. Miután ezzel alaphelyzetbe állítja a hozzáférési felülvizsgálat, minden felhasználó be vannak-e megjelölve felülvizsgálatát újra. 
 
 ### <a name="apply"></a>Alkalmaz
@@ -55,11 +55,11 @@ Ha nem szeretne a felülvizsgálat kapcsolatban, törölje azt. A **törlése** 
 
 ## <a name="results"></a>Results (Eredmények)
 Az a **eredmények** lapon megtekintheti, letöltheti a felülvizsgálati eredmények listáját. 
-![Eredmények lap](media/azure-pim-resource-rbac/rbac-access-review-results.png)
+![Eredmények lap](media/pim-resource-roles-complete-access-review/rbac-access-review-results.png)
 
 ## <a name="reviewers"></a>Felülvizsgálók
 Megtekintheti, és a felülvizsgálók hozzáadása a meglévő hozzáférési felülvizsgálatot. Az ellenőrzések elvégzéséhez Véleményező emlékeztesse.
-![Felülvizsgálók hozzáadása](media/azure-pim-resource-rbac/rbac-access-review-reviewers.png)
+![Felülvizsgálók hozzáadása](media/pim-resource-roles-complete-access-review/rbac-access-review-reviewers.png)
 
 ## <a name="next-steps"></a>További lépések
 

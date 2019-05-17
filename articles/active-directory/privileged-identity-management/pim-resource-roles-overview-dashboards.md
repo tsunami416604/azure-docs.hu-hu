@@ -16,12 +16,12 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37057e531ea8387fbed84c9b03bbfb9c14d160ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5404d1b85821458aedef64b72ae635ea49aa1ff
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60287574"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65602462"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review-in-pim"></a>Hozzáférési felülvizsgálat végrehajtása a PIM erőforrás irányítópultok segítségével
 
@@ -31,9 +31,9 @@ Egy erőforrás Irányítópult segítségével hajtsa végre a hozzáférési f
 - Két diagram, amely a szerepkör-hozzárendelések terjesztési hozzárendelés-típus szerinti megjelenítéséhez.
 - Egy új szerepkör-hozzárendelések kérelmekre vonatkozó adatok területen.
 
-![Képernyőkép az adminisztrátori nézet irányítópult gráfokat és diagramokat](media/azure-pim-resource-rbac/rbac-overview-top.png)
+![Képernyőkép az adminisztrátori nézet irányítópult gráfokat és diagramokat](media/pim-resource-roles-overview-dashboards/rbac-overview-top.png)
 
-![Képernyőfelvétel a felügyelet nézet irányítópult adatok listája:](media/azure-pim-resource-rbac/role-settings.png)
+![Képernyőfelvétel a felügyelet nézet irányítópult adatok listája:](media/pim-resource-roles-overview-dashboards/role-settings.png)
 
 A grafikus ábrázolását erőforrás szerepkör-aktiválások az elmúlt hét napban ismerteti. Ezeket az adatokat a kiválasztott erőforrás hatókörét, és megjeleníti a leggyakrabban használt szerepkörök (tulajdonos, közreműködő, felhasználói hozzáférés rendszergazdája), és az összes szerepköre kombinált aktiválások.
 

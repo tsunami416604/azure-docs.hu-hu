@@ -1,5 +1,5 @@
 ---
-title: Webszolgáltatások biztonságossá tétele SSL használatával
+title: Biztonságos webszolgáltatások SSL-lel
 titleSuffix: Azure Machine Learning service
 description: Ismerje meg, hogyan teheti biztonságossá a HTTPS engedélyezésével az Azure Machine Learning szolgáltatással telepített webes szolgáltatás. HTTPS védi a transport layer security (TLS), helyettesíti a biztonságos szoftvercsatorna-réteg (SSL) használó ügyfelek által küldött adatokat. Azt is szolgál az ügyfelek által a web service identitásának ellenőrzéséhez.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 04/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 50e42172af6ca6b966f9f60d3e037f9ae3dc5cbe
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 0487fe0331bfce3d0302fe997562cb124ac317d6
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023764"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65561065"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>SSL használatával biztonságossá tétele az Azure Machine Learning szolgáltatás a webszolgáltatások
 
@@ -72,36 +72,10 @@ A tanúsítvány igénylésekor meg kell adni a teljesen minősített tartomány
 
 Üzembe helyezése (vagy ismételt telepítése) SSL engedélyezve van a szolgáltatást, állítsa be a `ssl_enabled` paramétert `True`, bárhol is alkalmazható. Állítsa be a `ssl_certificate` paraméter értékét a __tanúsítvány__ fájl és a `ssl_key` értékéhez a __kulcs__ fájlt.
 
-+ **Vizuális interface - biztonságos Azure Kubernetes Service (AKS) központi telepítés létrehozása** 
-    
-    Tekintse meg a, ha biztonságos üzembe helyezése számítási vizuális felhasználói felületet a létrehozni kívánt. Az AKS-fürt kiépítésekor SSL kapcsolatos paraméterek értékének megadására, majd hozzon létre egy új AKS.  Tekintse meg alább a kódrészlet:
-    
-
-    > [!TIP]
-    >  Ha nem ismeri a Python SDK-t, indítsa el a [Azure Machine Learning Python SDK-t áttekintése.](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-
-
-    ```python
-    from azureml.core.compute import AksCompute, ComputeTarget
-
-    # Provide SSL-related parameters when provisioning the AKS cluster
-    prov_config = AksCompute.provisioning_configuration(ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")   
- 
-    aks_name = 'secure-aks'
-    # Create the cluster
-    aks_target = ComputeTarget.create(workspace = ws,
-                                        name = aks_name,
-                                        provisioning_configuration = prov_config)
-    
-    # Wait for the create process to complete
-    aks_target.wait_for_completion(show_output = True)
-    print(aks_target.provisioning_state)
-    print(aks_target.provisioning_errors)
-    ```
-    
-   
-
 + **Az Azure Kubernetes Service (AKS) üzembe helyezése és az FPGA**
+
+  > [!NOTE]
+  > Ebben a szakaszban található információk is vonatkozik, a vizuális felhasználói felületet a biztonságos webszolgáltatás üzembe helyezésekor. Ha nem ismeri a Python SDK-val, tekintse meg a [Azure Machine Learning Python SDK-t áttekintése.](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
   Amikor üzembe az aks-ben, hozzon létre egy új AKS-fürtöt, vagy csatlakoztasson egy már meglévőt. Új fürt létrehozásának használ [AksCompute.provisionining_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none-) használja egy meglévő fürt csatlakoztatása közben [AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none-). Mindkét adja vissza egy konfigurációs objektumot, amely rendelkezik egy `enable_ssl` metódust.
 
@@ -119,23 +93,26 @@ A tanúsítvány igénylésekor meg kell adni a teljesen minősített tartomány
     ```python
     from azureml.core.compute import AksCompute
     # Config used to create a new AKS cluster and enable SSL
-    provisioning_config = AksCompute.provisioning_configuration().enable_ssl(leaf_domain_label = "myservice")
+    provisioning_config = AksCompute.provisioning_configuration()
+    provisioning_config.enable_ssl(leaf_domain_label = "myservice")
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
-                                          cluster_name = cluster_name).enable_ssl(leaf_domain_label = "myservice")
+                                          cluster_name = cluster_name)
+    attach_config.enable_ssl(leaf_domain_label = "myservice")
     ```
 
-  * Használata esetén __vásárolt tanúsítványt__, használja a `ssl_cert_pem_file`, `ssl_key_pem_file`, és `ssl_cname` paramétereket.  A következő példa bemutatja, hogyan hozhat létre egy SSL-tanúsítvány használatával adnia használó konfigurációk `.pem` fájlok:
+  * Használata esetén __vásárolt tanúsítványt__, használja a `ssl_cert_pem_file`, `ssl_key_pem_file`, és `ssl_cname` paramétereket. A következő példa bemutatja, hogyan hozhat létre egy SSL-tanúsítvány használatával adnia használó konfigurációk `.pem` fájlok:
 
     ```python
     from azureml.core.compute import AksCompute
     # Config used to create a new AKS cluster and enable SSL
-    provisioning_config = AksCompute.provisioning_configuration(ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
-    provisioning_config = AksCompute.provisioning_configuration().enable_ssl(ssl_cert_pem_file="cert.pem",
+    provisioning_config = AksCompute.provisioning_configuration()
+    provisioning_config.enable_ssl(ssl_cert_pem_file="cert.pem",
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
-                                         cluster_name = cluster_name).enable_ssl(ssl_cert_pem_file="cert.pem",
+                                         cluster_name = cluster_name)
+    attach_config.enable_ssl(ssl_cert_pem_file="cert.pem",
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 

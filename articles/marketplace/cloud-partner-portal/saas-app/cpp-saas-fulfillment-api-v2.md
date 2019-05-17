@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pabutler
-ms.openlocfilehash: e1715c2cb66398ff7ca55c0ccdbfe50685fae76e
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 433059dc1b1567c5cbcb1091f2d616001d1dbf44
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64941981"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65762267"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS teljesítése API-k 2-es verzió 
 
@@ -30,7 +30,7 @@ Microsoft SaaS Service egy SaaS-előfizetés megvásárlása teljes életciklus�
 
 A következő táblázat felsorolja a kiépítési állapotok SaaS-előfizetéssel, többek között a leírása és sorrendje diagram egyes (ha van). 
 
-#### <a name="provisioning"></a>Kiépítés
+#### <a name="provisioning"></a>Kiépítés folyamatban
 
 Ha egy ügyfél kezdeményezi a beszerzés, a független Szoftvergyártók ezt az információt a vásárlói interaktív weblap URL-cím paraméter használatával egy hitelesítési kód fogadása. Például: `https://contoso.com/signup?token=..`, ahol a partner center alkotóelemeit oldal URL-címet szolgáltató `https://contoso.com/signup`. A hitelesítési kódot érvényesítése és a részletes mit ki kell építeni a megoldásához API meghívásával kell cserélni.  Végeztével a SaaS-szolgáltatás kiépítése, küld egy aktiválás hívás, hogy jelezze, hogy a teljesítése befejeződött, és az ügyfél is számlázzuk.  Az alábbi ábrán látható az üzembe helyezési forgatókönyv esetén az API-hívások sorrendjét.  
 
@@ -176,7 +176,7 @@ A közzétevő SaaS-előfizetések listája.
 
 *Válaszkódot:*
 
-Kód: 200<br>
+Kód: 200 <br/>
 A hitelesítési jogkivonat alapján, beszerezheti a közzétevő és a kiadó, amelyek megfelelő előfizetések.<br> Válasz tartalma:<br>
 
 ```json
@@ -207,7 +207,6 @@ A hitelesítési jogkivonat alapján, beszerezheti a közzétevő és a kiadó, 
 ```
 
 A folytatási token csak akkor van jelen, ha nincsenek további "lapok" lekérdezni a csomagokat. 
-
 
 Kód: 403 <br>
 Nem engedélyezett. A hitelesítési token nem lett megadva, az érvénytelen, vagy a kérelem próbál hozzáférni, amely nem tartozik a jelenlegi közzétevő beszerzés. 
@@ -374,7 +373,7 @@ Belső kiszolgálóhiba<br>
 
 *Válaszkódot:*
 
-Kód: 202<br>
+Kód: 200<br>
 Aktiválja az előfizetést.<br>
 
 Kód: 404<br>
@@ -554,7 +553,7 @@ Előfizetés lemondása, és törölje a megadott előfizetéshez.
 
 *Válaszkódot:*
 
-Kód: 200<br>
+Kód: 202<br>
 ISV által kezdeményezett hívás jelzésére leiratkozási egy adott SaaS-előfizetés.<br>
 
 Kód: 404<br>
@@ -786,25 +785,29 @@ A közzétevő meg kell valósítania egy webhook proaktívan értesíti a felha
     "action": "Subscribe",
     "timeStamp": "2018-12-01T00:00:00"
 }
-
-Where action can be one of these: 
-       Subscribe, (When the resource has been activated)
-       Unsubscribe, (When the resource has been deleted)
-       ChangePlan, (When the change plan operation has completed)
-       ChangeQuantity, (When the change quantity operation has completed),
-       Suspend, (When resource has been suspended)
-       Reinstate, (When resource has been reinstated after suspension)
 ```
+
+Ha a művelet lehet ezek egyikét: 
+- `Subscribe`  (Ha az erőforrás aktiválva van)
+- `Unsubscribe` (Ha az erőforrás törlése)
+- `ChangePlan` (Ha befejeződött a terv műveletet)
+- `ChangeQuantity` (Ha befejeződött a mennyiség műveletet)
+- `Suspend` (Ha az erőforrás fel lett függesztve)
+- `Reinstate` (Ha erőforrás rendelkezik lett vizsgadíj felfüggesztés után)
 
 
 ## <a name="mock-api"></a>API utánzása
 
 Utánzatként funkcionáló Jaink használatával segítséget nyújtanak fejlesztési feladatokhoz, különösen prototípus-készítéshez, használatának első lépései, és a tesztelés projektek. 
 
-Gazdagép-végpont: `https://marketplaceapi.microsoft.com/api` API-verzió: `2018-09-15` Nincs hitelesítés szükséges a minta Uri: `https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15`
+Gazdagép-végpont: `https://marketplaceapi.microsoft.com/api` <br/>
+API-verzió: `2018-09-15` <br/>
+Nincs szükség hitelesítésre. <br/>
+Minta Uri: `https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15` <br/>
 
-Ebben a cikkben az API-hívások bármelyikét a utánzatként funkcionáló gazdagép-végpontra is végezhető. Várható utánzatként funkcionáló adatok vissza válaszként.
+Az API-végpont elérési utak azonosak helyettem és a valós API-kat, de az API-verziókban eltérőek. A 2018-09-15 helyettem és a 2018-08-31 éles verziójának nem. 
 
+Ebben a cikkben az API-hívások bármelyikét a utánzatként funkcionáló gazdagép-végpontra is végezhető. Várható utánzatként funkcionáló adatok vissza válaszként. Felvértezve helyezheti általánosságban véve utánzatként funkcionáló adatok vissza válaszként. A frissítés előfizetés metódusok utánzatként funkcionáló API bármikor visszatérhet az 500-as. 
 
 ## <a name="next-steps"></a>További lépések
 

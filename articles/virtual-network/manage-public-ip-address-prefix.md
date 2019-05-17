@@ -10,23 +10,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 05/13/2019
 ms.author: anavin
-ms.openlocfilehash: ece6a6efa2f4424fb1c9d7f5a7e12a4e707faf45
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 82ee9d04785fc0f6ac534428bf411ca0fe3204ad
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649305"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65601514"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Létrehozása, módosítása vagy törlése egy nyilvános IP-cím előtagja
 
 További tudnivalók a nyilvános IP-címelőtag és létrehozása, módosítása és törlése egy. Egy nyilvános IP-címelőtag címek megadott nyilvános IP-címek száma szerint egybefüggő tartományát. Az előfizetés a címek vannak hozzárendelve. Amikor létrehoz egy nyilvános IP-cím erőforrás, egy statikus nyilvános IP-cím hozzárendelését az előtag, és társítsa a címet a virtuális gépek, a terheléselosztók vagy a más erőforrások, az internet-kapcsolat. Ha még nem ismeri a nyilvános IP-címelőtagokat, [nyilvános IP-cím cím előtag – áttekintés](public-ip-address-prefix.md)
 
 ## <a name="before-you-begin"></a>Előkészületek
-
-> [!IMPORTANT]
-> Nyilvános IP-előtag van, korlátozott számú régióban egy nyilvános előzetes verzióban érhető el. Is [ismerje meg, hogy mit jelent az előzetes verzióban](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Nyilvános IP-előtag jelenleg érhető el: USA nyugati középső RÉGIÓJA, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA középső RÉGIÓJA, Észak-Európa, Nyugat-Európa és Délkelet-Ázsia. Régiók frissített listáját, tekintse meg [Azure-frissítések](https://azure.microsoft.com/updates/?product=virtual-network).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -60,7 +57,7 @@ Nyilvános IP-címelőtagokat díj rendelkezik. További információkért lásd
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network public-IP-előtag létrehozása](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
+|CLI|[az network public-IP-előtag létrehozása](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
 |PowerShell|[New-AzPublicIpPrefix](/powershell/module/az.network/new-azpublicipprefix)|
 
 ## <a name="create-a-static-public-ip-address-from-a-prefix"></a>Hozzon létre egy statikus nyilvános IP-címet az előtag
@@ -68,7 +65,7 @@ Miután létrehozta az előtag, az előtag a statikus IP-címeket kell létrehoz
 
 1. A szöveget tartalmazó mezőbe *erőforrások keresése* írja be az Azure portal tetején *nyilvános ip-címelőtag*. Amikor **nyilvános IP-címelőtagokat** jelennek meg a keresési eredmények közül válassza ki azt.
 2. Válassza ki a nyilvános IP-címek a létrehozni kívánt előtagot.
-3. Amikor megjelenik a keresési eredmények között, válassza ki, és kattintson a **+ IP-cím hozzáadása** az Áttekintés szakaszban. Abban az esetben ez nem látható, ellenőrizze, hogy előzetes használja a megfelelő hivatkozásra: https://aka.ms/publicipprefixportal
+3. Amikor megjelenik a keresési eredmények között, válassza ki, és kattintson a **+ IP-cím hozzáadása** az Áttekintés szakaszban.
 4. Adja meg vagy válassza ki a következő beállítások alatt értékeket **nyilvános IP-cím létrehozása**. Mivel egy előtagot a Standard Termékváltozat, IPv4, és a statikus, csak adja meg a következő információkat kell:
 
    |Beállítás|Kötelező?|Részletek|
@@ -89,7 +86,7 @@ Miután létrehozta az előtag, az előtag a statikus IP-címeket kell létrehoz
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network public-IP-előtag lista](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) nyilvános IP-címeinek listáját, hogy [az network public-IP-előtag show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) ; beállítások megjelenítése [az network public-IP-előtag frissítés](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) frissítése; [az network public-IP-előtag delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) törlése|
+|CLI|[az network public-IP-előtag lista](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) nyilvános IP-címeinek listáját, hogy [az network public-IP-előtag show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) ; beállítások megjelenítése [az network public-IP-előtag frissítés](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) frissítése; [az network public-IP-előtag delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) törlése|
 |PowerShell|[Get-AzPublicIpPrefix](/powershell/module/az.network/get-azpublicipprefix) és egy nyilvános IP-címobjektumot, beállítások megtekintéséhez [Set-AzPublicIpPrefix](/powershell/module/az.network/set-azpublicipprefix) ;-beállítások frissítése [Remove-AzPublicIpPrefix](/powershell/module/az.network/remove-azpublicipprefix) törlése|
 
 ## <a name="permissions"></a>Engedélyek

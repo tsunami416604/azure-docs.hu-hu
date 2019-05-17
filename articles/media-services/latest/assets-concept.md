@@ -9,30 +9,27 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 05/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 0fc44bfdb98b81bf218cb2f1824f0f1bb14de4fa
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 2afcf2066238414cd08e32901ffccf2a44718b6d
+ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235681"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65551758"
 ---
 # <a name="assets"></a>Objektumok
 
-Az Azure Media Services- [eszköz](https://docs.microsoft.com/rest/api/media/assets) mindezen fájlok metaadatait és a digitális fájlok (beleértve a videót, hangot, képeket, miniatűröket, szövegsávok és feliratfájlok) tartalmaz. Miután a digitális fájlok feltöltése egy adategységbe, azok a Media Services encoding, streaming, tartalom munkafolyamatok elemzése használható. További információkért lásd: a [digitális fájlok feltöltése eszközök](#upload-digital-files-into-assets) szakaszt.
+Az Azure Media Services- [eszköz](https://docs.microsoft.com/rest/api/media/assets) digitális fájlok (beleértve a videót, hangot, képeket, miniatűröket, szövegsávok és feliratfájlok) Azure Storage-ban tárolt információkat tartalmaz. 
 
 Egy eszköz található blob-tárolóra lesz leképezve a [Azure Storage-fiók](storage-account-concept.md) és az adategységben található fájlokat a tárolóban blokkblobként vannak tárolva. A Media Services támogatja a Blob-rétegek, ha a fiók használ az általános célú v2 (GPv2) storage. A GPv2, helyezze át a fájlok [ritka elérésű vagy archív tárolási](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers). **Archív** storage alacsony költségű forrásfájlokat, ha már nincs szükség (például, miután azok kódolású) ideális választás.
 
 A **archív** tárolási réteg csak ajánlott nagyon nagy méretű forrásfájlokat, amely már kódolva, és a kódolási feladat kimenetének okot egy kimeneti blob-tárolóban. A blobok a kimeneti tárolóhoz, hogy egy eszköz és -felhasználási streamelésére, vagy a tartalomelemzés társítani kívánt léteznie kell egy **interaktív** vagy **ritkán használt adatok** tárolási szinten.
 
-> [!NOTE]
-> A dátum/idő típus objektum tulajdonságait mindig UTC formátumban vannak.
-
 ## <a name="upload-digital-files-into-assets"></a>Eszközök digitális fájlok feltöltése
 
-A gyakori munkafolyamatokat a Media Services egyik feltöltése, kódolása és streamelése egy fájlt. Ez a szakasz az általános lépéseket ismerteti.
+Miután a digitális fájlok feltöltése a storage-ba, és az eszközhöz társított, akkor a Media Services encoding, streaming, tartalom munkafolyamatok elemzése használható. A gyakori munkafolyamatokat a Media Services egyik feltöltése, kódolása és streamelése egy fájlt. Ez a szakasz az általános lépéseket ismerteti.
 
 > [!TIP]
 > Fejlesztés megkezdése előtt tekintse át a [fejlesztés a Media Services v3 API-k](media-services-apis-overview.md) (tartalmazza a eléréséről az API-k elnevezési konvenciók stb.)
@@ -54,6 +51,9 @@ A gyakori munkafolyamatokat a Media Services egyik feltöltése, kódolása és 
 A teljes .NET-példa bemutatja, hogyan: hozható létre az eszköz, írható SAS URL-cím lekérése a storage-tárolóba az eszköz, a fájl feltöltése a tárolóba, a storage, az SAS URL-cím használatával, lásd: [hozzon létre egy feladat bemenete egy helyi fájlból](job-input-from-local-file-how-to.md).
 
 ### <a name="create-a-new-asset"></a>Új eszköz létrehozása
+
+> [!NOTE]
+> A dátum/idő típus objektum tulajdonságait mindig UTC formátumban vannak.
 
 #### <a name="rest"></a>REST
 

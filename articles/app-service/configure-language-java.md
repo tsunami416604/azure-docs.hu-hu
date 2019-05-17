@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: jafreebe;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: efeab014c7d92a6c19d516a121fbc4436925be75
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 82e8936a888cbc99088ab18423e55dd57a3c2e77
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60850988"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604141"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurálja a Windows Azure App Service-Java-alkalmazás
 
@@ -27,7 +27,7 @@ Azure App Service használatával gyorsan elkészítheti, telepítheti és mére
 Ez az útmutató a főbb fogalmakat és használata App Service-ben Java-fejlesztőknek készült utasításokat tartalmaz. Ha korábban nem használta az Azure App Service, olvassa végig a [Java rövid](app-service-web-get-started-java.md) első. Általános kérdések az App Service használatával kapcsolatban, amelyek nem a Java fejlesztési adott válaszok a [App Service Windows – gyakori kérdések](faq-configuration-and-management.md).
 
 > [!NOTE]
-> Nem találja, amit keres? Tekintse át a [Windows nyílt Forráskódú – gyakori kérdések](faq-configuration-and-management.md) vagy a [Linuxos Java-beállítási útmutató](containers/app-service-linux-java.md) üzembe helyezése és a Java-alkalmazás biztonságossá tétele kapcsolatos információkat.
+> Nem találja, amit keres? Tekintse át a [Windows nyílt Forráskódú – gyakori kérdések](faq-configuration-and-management.md) vagy a [Linuxos Java-beállítási útmutató](containers/configure-language-java.md) üzembe helyezése és a Java-alkalmazás biztonságossá tétele kapcsolatos információkat.
 
 ## <a name="configuring-tomcat"></a>Tomcat konfigurálása
 

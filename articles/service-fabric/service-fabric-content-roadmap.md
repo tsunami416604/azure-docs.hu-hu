@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: atsenthi
-ms.openlocfilehash: dfe08152f986ccac3dabe7b3bb21e7653ee812a4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a95baeb60ddff38e2aa1e36e7728c012d9d44930
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394404"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65540705"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Így biztosan ismerje meg a Service Fabric?
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  A Service Fabric rendelkezik egy nagy támadási azonban és sok további.  Ez a cikk egy szinopszist, Service fabric biztosítja, és ismerteti az alapfogalmakat, programozási modelleket, alkalmazás-életciklus során, tesztelés, fürtök és az állapotmonitorozást. Olvassa el a [áttekintése](service-fabric-overview.md) és [Mik azok a mikroszolgáltatások?](service-fabric-overview-microservices.md) bevezetést, és hogyan a Service Fabric mikroszolgáltatások létrehozására használható. Ez a cikk egy átfogó tartalmak listája nem tartalmaz, de a hivatkozások áttekintése és első lépéseket bemutató cikkekben a Service Fabric minden területéhez. 
@@ -30,7 +30,7 @@ Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a sk
 ### <a name="design-time-application-type-service-type-application-package-and-manifest-service-package-and-manifest"></a>Tervezési idő: alkalmazástípus, szolgáltatástípus, virtuálisalkalmazás-csomag és a jegyzékfájl, szolgáltatáscsomag és manifest
 Az alkalmazástípus hozzárendeli egy gyűjteményhez típusú szolgáltatás neve/verziója. Van definiálva: egy *ApplicationManifest.xml* fájlt, amely egy alkalmazás-csomag könyvtárában van beágyazva. Az alkalmazáscsomag majd át lesznek másolva a Service Fabric-fürt lemezképtárolójába. Tento typ aplikace, majd futtatja a fürtön belül, amely ezután létrehozhat egy elnevezett alkalmazást. 
 
-A szolgáltatás típus egy szolgáltatás kódcsomagok, adatok csomagokat és konfigurációs csomagokat rendelt neve/verziója. A ServiceManifest.xml fájlban van ágyazva egy szolgáltatási csomag könyvtárában van definiálva. A szolgáltatási csomag könyvtárában majd hivatkozik egy alkalmazáscsomagot *ApplicationManifest.xml* fájlt. A fürtön belüli után egy elnevezett alkalmazást hozhat létre egy elnevezett szolgáltatás az alkalmazástípus szolgáltatás típusok közül. A szolgáltatás írja le annak *ServiceManifest.xml* fájlt. A szolgáltatás típusának végrehajtható kód szolgáltatás konfigurációs beállításokat, amelyek futási időben töltődnek be, és a statikus adatok, amelyek a szolgáltatás által felhasznált tevődik össze.
+A szolgáltatás típus egy szolgáltatás kódcsomagok, adatok csomagokat és konfigurációs csomagokat rendelt neve/verziója. A ServiceManifest.xml fájlban van ágyazva egy szolgáltatási csomag könyvtárában van definiálva. A szolgáltatási csomag könyvtárában majd hivatkozik egy alkalmazáscsomagot *ApplicationManifest.xml* fájlt. A fürtön belüli után egy elnevezett alkalmazást hozhat létre egy elnevezett szolgáltatás az alkalmazástípus szolgáltatás típusok közül. A szolgáltatás írja le annak *ServiceManifest.xml* fájlt. A szolgáltatás típusának végrehajtható kód és a szolgáltatás konfigurációs beállítások, amelyek a futási időben töltődnek be, és a statikus adatok, amelyek a szolgáltatás által felhasznált tevődik össze.
 
 ![A Service Fabric alkalmazás és szolgáltatás típusainak][cluster-imagestore-apptypes]
 
@@ -84,7 +84,7 @@ Alapértelmezés szerint a Service Fabric üzembe helyezi, és aktiválja a szol
 ### <a name="reliable-actors"></a>Reliable Actors
 A Reliable Services-ra épülő a [Reliable Actor](service-fabric-reliable-actors-introduction.md) keretrendszer áll-e alkalmazás-keretrendszer, amely megvalósítja a virtuális Aktor mintában szereplő tervezési minta alapján. A Reliable Actors keretrendszerben független egység a számítási műveletek és az állapot nevű actors egyszálas végrehajtási használ. A Reliable Actor-keretrendszert biztosít az actors kommunikációt épül, és előre beállított állapot megőrzését és a horizontális felskálázást konfigurációk.
 
-### <a name="aspnet-core"></a>ASP.NET-mag
+### <a name="aspnet-core"></a>ASP.NET Core
 Integrálható a Service Fabric [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) , webes és API-alkalmazások kialakításához első osztályú programozási modellt.  ASP.NET Core a Service Fabric két különböző módon használható:
 
 - Az üzemeltetett és a Vendég végrehajtható fájlja. Ez elsősorban meglévő ASP.NET Core-alkalmazások futtatását a Service Fabric programkód módosítása nélkül.

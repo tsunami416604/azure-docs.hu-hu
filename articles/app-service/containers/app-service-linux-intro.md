@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu;yili
 ms.custom: seodec18
-ms.openlocfilehash: 22c4096711bbc1d47ff6684e38ac829d77681a9f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8d40b28103e24214ef00864b032266cc95889eff
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60850417"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65780333"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>A Linuxon futó Azure App Service bemutatása
 
@@ -33,14 +33,14 @@ Az Linuxon futó App Service számos beépített rendszerképet támogat a fejle
 
 | Nyelv | Támogatott verziók |
 |---|---|
-| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 8.11, 9.4, 10.1,10.10 |
+| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 8.11, 9.4, 10.1,10.10, 10.14 |
 | Java* | A tomcat 8.5, 9.0 Java SE, WildFly 14 (összes futó JRE 8) |
 | PHP | 5.6, 7.0, 7.2 |
-| Python (előzetes verzió) | 2.7, 3.6, 3.7 |
-| .NET Core | 1.0, 1.1, 2.0, 2.1 |
-| Ruby | 2.3 |
+| Python | 2.7, 3.6, 3.7 |
+| .NET Core | 1.0, 1.1, 2.0, 2.1, 2.2 |
+| Ruby | 2.3, 2.4 |
 
-## <a name="deployments"></a>Központi telepítés
+## <a name="deployments"></a>Üzemelő példányok
 
 * FTP
 * Helyi Git
@@ -55,7 +55,7 @@ Az Linuxon futó App Service számos beépített rendszerképet támogat a fejle
 ## <a name="console-publishing-and-debugging"></a>Konzol, közzététel és hibakeresés
 
 * Környezetek
-* Központi telepítés
+* Üzemelő példányok
 * Alapszintű konzol
 * SSH
 
@@ -63,7 +63,7 @@ Az Linuxon futó App Service számos beépített rendszerképet támogat a fejle
 
 * Az [App Service-csomag](https://docs.microsoft.com/azure/app-service/overview-hosting-plans?toc=%2fazure%2fapp-service-web%2ftoc.json) szintjének megváltoztatásával az ügyfelek le- és felskálázhatják webalkalmazásaikat
 
-## <a name="locations"></a>Helyek
+## <a name="locations"></a>Helyszínek
 
 Ellenőrizze az [Azure állapot-irányítópultját](https://azure.microsoft.com/status).
 
@@ -71,9 +71,9 @@ Ellenőrizze az [Azure állapot-irányítópultját](https://azure.microsoft.com
 
 Az Azure Portal megjeleníti a Web App for Containers szolgáltatással jelenleg működő funkciókat. A további funkciók engedélyezésével azok megjelennek a portálon.
 
-A Linuxon futó App Service szolgáltatást csak az [Alapszintű, a Standard és a Prémium](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service-csomagok támogatják, és nem rendelkezik [Ingyenes vagy Közös](https://azure.microsoft.com/pricing/details/app-service/plans/) szinttel. Nem hozhat létre Web App for Containers szolgáltatást olyan App Service-csomagban, amely már üzemeltet nem Linuxos webalkalmazásokat.  
+A linuxon futó App Service-ben csak támogatott [ingyenes, alapszintű, Standard és prémium szintű](https://azure.microsoft.com/pricing/details/app-service/plans/) app service-csomagok, és nem rendelkezik egy [megosztott](https://azure.microsoft.com/pricing/details/app-service/plans/) szint. Nem hozható létre egy Linuxos webalkalmazásokat az App Service-csomag, amely már üzemeltet nem Linuxos webalkalmazásokat.  
 
-Alapján a jelenlegi korlátozás miatt azonban nem használhatók vegyesen ugyanabban az erőforráscsoportban lévő Windows és Linux rendszerű alkalmazásokat.
+A jelenlegi korlátozás alapján az ugyanabban az erőforráscsoportban nem használhat egyidejűleg ugyanabban a régióban a Windows és Linux-alkalmazások.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
