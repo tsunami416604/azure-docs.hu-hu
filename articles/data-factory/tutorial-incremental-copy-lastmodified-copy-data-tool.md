@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 8308190e0e68365343fb50ca33f9bea75c3e4e66
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3865bb10346c4a55adbf94a7df225eacf2c11252
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61098739"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519132"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Növekményes másolása az adatok másolása eszköz használatával LastModifiedDate alapján új és módosított fájlok
 
 Ebben az oktatóanyagban az Azure Portalon való egy adat-előállító létrehozásához használni kívánt. Ezt követően használni az adatok másolása eszközzel létrehoz egy folyamatot, amely alapján növekményes másol csak, új és módosított fájlok azok **LastModifiedDate** Azure Blob storage Azure Blob Storage-ból.
+
+Ezzel a módszerrel ADF lesz a forrás-tárolóból a fájlok vizsgálata, azok LastModifiedDate fájl szűrés alkalmazása és utolsó óta másolja az új és frissített fájlt a cél tároló.  Vegye figyelembe, hogy lehetővé teszik az ADF vizsgálat hatalmas mennyiségű, fájlokat, de csak néhány fájlok másolása a cél az, ha továbbra is hiányol, valamint időt vehet igénybe a hosszú időtartam fájlok ellenőrzése miatt.   
 
 > [!NOTE]
 > Ha még csak ismerkedik az Azure Data Factory használatával, olvassa el [az Azure Data Factory használatának első lépéseit](introduction.md) ismertető cikket.

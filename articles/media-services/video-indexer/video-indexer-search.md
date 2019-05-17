@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 07b3c806dc5df5f93bee3206cbca53485675e7dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 93376059dac2a8336e581269d8289d893779b291
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60560357"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799095"
 ---
 # <a name="find-exact-moments-within-videos"></a>Pontos időpontok keresése videókban
 
@@ -49,7 +50,7 @@ Ez a témakör bemutatja, hogy a keresési lehetőségeket, amelyek lehetővé t
 
 Miután megtalálta a videót, amelyben dolgozni szeretne, továbbra is a videó feldolgozása ezek témakörökben ismertetett módon: 
 
-- [A meglévő videóhoz alapján új videóelemzések létrehozása](video-indexer-create-new.md)
+- [A videók részletes elemzések használata](use-editor-create-project.md)
 - [Tartalomfeldolgozás a Video Indexer REST API-val](video-indexer-use-apis.md)
 - [Vizuális widgetek beágyazása egy saját alkalmazásba](video-indexer-embed-widgets.md)
 

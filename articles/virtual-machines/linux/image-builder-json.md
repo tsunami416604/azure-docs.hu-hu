@@ -3,16 +3,16 @@ title: Hozzon létre egy Azure Image Builder-sablon (előzetes verzió)
 description: Ismerje meg, hogyan hozzon létre egy sablont az Azure az Image Builder használandó.
 author: cynthn
 ms.author: cynthn
-ms.date: 05/02/2019
+ms.date: 05/10/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: b4646879eb7eeecf41852baab7ab64e4053b05e1
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: cf8264cbad3c5c88c58cff3b95cb5c68adf0686c
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159600"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65538292"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Az Azure az Image Builder-sablon létrehozása 
 
@@ -32,7 +32,7 @@ Ez a alapvető sablon formátuma:
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
-        "<build timeout in minutes>": {}, 
+        "buildTimeoutInMinutes": <minutes>, 
         "build": {}, 
         "customize": {}, 
         "distribute": {} 
@@ -59,7 +59,7 @@ A hely az a régió, ahol létrejön az egyéni rendszerképet. Az Image Builder
 - USA 2. keleti régiója
 - USA nyugati középső régiója
 - USA nyugati régiója
-- USA nyugati régiója, 2.
+- USA 2. nyugati régiója
 
 
 ```json
@@ -76,7 +76,7 @@ Ez az opcionális szakasz segítségével győződjön meg arról, hogy a függ�
 
 További információkért lásd: [meghatározása az erőforrás-függőségek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson).
 
-## <a name="identity"></a>Identitás
+## <a name="identity"></a>Azonosító
 Alapértelmezés szerint a szkriptek használatával, vagy a fájlok másolása több helyről, például a GitHub és az Azure storage az Image Builder támogatja. Ezek használatához nyilvánosan hozzáférhetőnek kell lenniük.
 
 Azure User-Assigned felügyelt identitást, Ön által meghatározott használatával hozzáférést az Image Builder Azure Storage, mindaddig, amíg a kapott "Storage-Blobadatok olvasója" legalább az Azure storage-fiókban. Ez azt jelenti, hogy nem kell, hogy a storage-blobokat kívülről elérhető-e, vagy a telepítő SAS-tokeneket.

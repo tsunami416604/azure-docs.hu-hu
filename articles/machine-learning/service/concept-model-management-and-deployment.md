@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 18a80af8422e30ce3e87395449fca7b5f6a73762
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: d02318db4deae6f0a6acdae9382ce47116c95110
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025016"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800872"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>MLOps: Kezelheti, telepítheti és figyelheti a modellek az Azure Machine Learning szolgáltatás
 
@@ -34,11 +34,14 @@ Az egyes lépések egymástól függetlenül vagy, egyetlen paranccsal hajtható
 
 [!["Az azure Machine Learning folyamatos integráció/folyamatos készregyártás (CI/CD) ciklus:](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
-> [!VIDEO https://www.youtube.com/embed/0MaHb070H_8]
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GX]
 
 ## <a name="step-1-register-model"></a>1. lépés: Modell regisztrálása
 
 Modell regisztrálását segítségével tárolja és verzió a modellek az Azure-felhőben, a munkaterületén. A modell beállításjegyzék megkönnyíti a betanított modellek rendszerezéséhez és nyomon követésére.
+
+> [!TIP]
+> Az Azure Machine Learning szolgáltatás kívül betanított modellek is rögzítheti.
  
 A regisztrált modellek nevét és verzióját azonosítja. Minden alkalommal, amikor egy modell regisztrálni a neve megegyezik egy meglévő, a beállításjegyzék növeli a verziót. Használható kereséskor a modellek regisztrálása során is megadható további metaadat-címkéket. Az Azure Machine Learning szolgáltatásban minden olyan modell, amely lehet betölteni a Python 3.5.2-es verzióját használja, vagy magasabb támogatja.
 
@@ -56,7 +59,7 @@ Gépi tanulási modelleket webszolgáltatásként, az IoT Edge-eszközökön, va
 
 Használhatja a modellek **webszolgáltatások** számítási célok a következők:
 
-* Azure Container Instance
+* Azure-tárolópéldány
 * Azure Kubernetes Service
 
 A modellt webszolgáltatásként üzembe helyezéséhez meg kell adnia a következőket:
@@ -92,5 +95,7 @@ Központi telepítések explicit módon kell frissíteni. További információk
 ## <a name="next-steps"></a>További lépések
 
 Tudjon meg többet [hol és hogyan telepítheti a modellek](how-to-deploy-and-where.md) az Azure Machine Learning szolgáltatással. A központi telepítés egy példa: [oktatóanyag: Egy kép besorolási modell az Azure Container Instancesben üzembe](tutorial-deploy-models-with-aml.md).
+
+Ismerje meg, hogyan hozhat létre [folyamatos integrációs és üzembe helyezési rendelkező Azure Machine Learning modellek](/azure/devops/pipelines/targets/azure-machine-learning). 
 
 Ismerje meg, hogyan hozhat létre ügyfél alkalmazások és szolgáltatások, amelyek [webszolgáltatásként üzembe helyezett modell felhasználása](how-to-consume-web-service.md).

@@ -1,6 +1,6 @@
 ---
 title: Valós idejű naplók megtekintése az Azure Monitor-tárolókhoz |} A Microsoft Docs
-description: Ez a cikk bemutatja a tároló naplóinak (stdout/stderr), a valós idejű nézet kubectl használata az Azure Monitor szolgáltatással tárolók nélkül.
+description: Ez a cikk bemutatja a tároló naplóinak (stdout/stderr) és az események valós idejű nézet kubectl használata az Azure Monitor szolgáltatással tárolók nélkül.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -11,85 +11,101 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/09/2019
+ms.date: 05/10/2019
 ms.author: magoedte
-ms.openlocfilehash: c8baa4d2355adf99ce188d632ac50901db29a758
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 376a7f3f83cc7fcf7490675d9c0aef1513862e8a
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60497665"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521730"
 ---
-# <a name="how-to-view-container-logs-real-time-with-azure-monitor-for-containers-preview"></a>Tároló naplók valós időben az Azure Monitor szolgáltatással tárolók (előzetes verzió) megtekintése
-Ez a szolgáltatás, amely jelenleg előzetes verzióban érhető el, az Azure Kubernetes Service (AKS) tároló naplóinak (stdout/stderr) valós idejű betekintést biztosít a kubectl-parancsok futtatása nélkül. Ezt a beállítást, ha új panelen megjelenik a tárolók teljesítmény adattábla alább a **tárolók** megtekintése.  További segítség valós időben kapcsolatos hibák elhárítása a tároló motor által generált élő naplózási jeleníti meg. **Közreműködői** fürterőforrás való hozzáférésre szüksége a funkció működéséhez.
+# <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Naplók és események megtekintése a valós idejű (előzetes verzió)
+-Tárolókhoz az Azure Monitor tartalmaz egy szolgáltatást, amely jelenleg előzetes verziójú, amely az Azure Kubernetes Service (AKS) tároló naplóinak (stdout/stderr) és az események élő betekintést biztosít a kubectl-parancsok futtatása nélkül. Bármelyik lehetőséget választja, amikor egy új panel jelenik meg a teljesítmény adattábla a a **csomópontok**, **tartományvezérlők**, és **tárolók** megtekintése. Azt mutatja, élő naplózás és a tároló motor további segítik a hibaelhárítást a valós idejű által előállított eseményeket. 
+
+>[!NOTE]
+>**Közreműködői** fürterőforrás való hozzáférésre szüksége a funkció működéséhez.
+>
 
 Élő naplók által támogatott három különböző módszereket a naplók elérése:
 
 1. Az AKS nélküli Kubernetes RBAC-hitelesítés engedélyezve 
 2. Az AKS Kubernetes RBAC-hitelesítés engedélyezve
-3. Az AKS engedélyezve van az Azure Active Directory (AD) SAML egyszeri bejelentkezést a alapján. 
+3. Az AKS az Azure Active Directory (AD) SAML-alapú egyszeri bejelentkezés engedélyezve 
 
 ## <a name="kubernetes-cluster-without-rbac-enabled"></a>Kubernetes-fürt nélkül RBAC engedélyezve
  
 Ha egy Kubernetes-fürtöt, amely nincs beállítva a Kubernetes RBAC-hitelesítés vagy az Azure AD egyszeri bejelentkezéses integrálva van, nem kell az alábbi lépésekkel. Mivel a Kubernetes engedélyezési a kube-API-t használ, csak olvasható engedélyek szükségesek.
 
 ## <a name="kubernetes-rbac-authorization"></a>Kubernetes RBAC-hitelesítés
-Ha engedélyezte a Kubernetes RBAC-hitelesítés, szüksége lesz a alkalmazni a fürt szerepkör-kötés. A következő példa lépései bemutatják, hogyan konfigurálhatja a fürt szerepkör-kötés yaml konfigurációs sablon alapján.   
+Ha engedélyezte a Kubernetes RBAC-hitelesítés, szüksége lesz a alkalmazni a fürt szerepkör-kötés. A következő példa lépései bemutatják, hogyan konfigurálhatja a fürt szerepkör-kötés yaml konfigurációs sablon alapján. 
 
 1. Másolja és illessze be a yaml-fájlt, és mentse LogReaderRBAC.yaml.  
 
-   ```
-   apiVersion: rbac.authorization.k8s.io/v1 
-   kind: ClusterRole 
-   metadata: 
-      name: containerHealth-log-reader 
-   rules: 
-      - apiGroups: [""] 
-        resources: ["pods/log"] 
-        verbs: ["get"] 
-   --- 
-   apiVersion: rbac.authorization.k8s.io/v1 
-   kind: ClusterRoleBinding 
-   metadata: 
-      name: containerHealth-read-logs-global 
-   roleRef: 
-       kind: ClusterRole 
+    ```
+    apiVersion: rbac.authorization.k8s.io/v1 
+    kind: ClusterRole 
+    metadata: 
        name: containerHealth-log-reader 
-       apiGroup: rbac.authorization.k8s.io 
-   subjects: 
-      - kind: User 
-        name: clusterUser 
+    rules: 
+       - apiGroups: [""] 
+         resources: ["pods/log", "events"] 
+         verbs: ["get", "list"]  
+    --- 
+    apiVersion: rbac.authorization.k8s.io/v1 
+    kind: ClusterRoleBinding 
+    metadata: 
+       name: containerHealth-read-logs-global 
+    roleRef: 
+        kind: ClusterRole 
+        name: containerHealth-log-reader 
         apiGroup: rbac.authorization.k8s.io 
-   ```
+    subjects: 
+       - kind: User 
+         name: clusterUser 
+         apiGroup: rbac.authorization.k8s.io
+    ```
 
-2. A fürt szabály kötést létrehozni a következő parancs futtatásával: `kubectl create -f LogReaderRBAC.yaml`. 
+2. Ha első alkalommal konfigurál, a következő parancs futtatásával hozzon létre a fürt szabály kötést: `kubectl create -f LogReaderRBAC.yaml`. Ha korábban engedélyezte a támogatás az élő naplók megtekintése előtt vezettünk be az élő eseménynaplójában, frissítse a konfigurációt, futtassa a következő parancsot: `kubectl apply -f LiveLogRBAC.yml`. 
 
 ## <a name="configure-aks-with-azure-active-directory"></a>Az AKS konfigurálása az Azure Active Directoryval
 Az AKS beállítható úgy, hogy a felhasználók hitelesítéséhez az Azure Active Directory (AD) használja. Ha első alkalommal konfigurál, [integrálása az Azure Active Directory és az Azure Kubernetes Service](../../aks/azure-ad-integration.md). A lépések létrehozása során a [ügyfélalkalmazás](../../aks/azure-ad-integration.md#create-client-application) , és adja meg a **átirányítási URI-**, másik URI hozzáadása a listához kell `https://ininprodeusuxbase.microsoft.com/*`.  
 
 >[!NOTE]
->Az egyszeri bejelentkezést az Azure Active Directory konfigurálása hitelesítési csak egy új AKS-fürt kezdeti telepítése során is elvégezhető. Egy már üzembe helyezte az AKS-fürtöt az egyszeri bejelentkezés nem állíthatja be.  
+>Az egyszeri bejelentkezést az Azure Active Directory konfigurálása hitelesítési csak egy új AKS-fürt kezdeti telepítése során is elvégezhető. Egy már üzembe helyezte az AKS-fürtöt az egyszeri bejelentkezés nem állíthatja be. Konfigurálnia kell a hitelesítési **alkalmazásregisztráció (örökölt)** lehetőség támogatja a helyettesítő karakter használatát az URI-ban, és miközben Azure AD-ben hozzáadná a listában, regisztrálnia kell, mint egy **natív** alkalmazást.
 > 
 
-## <a name="view-live-logs"></a>Élő naplók megtekintése
-Amikor megtekintésekor **tárolók**, is **Zobrazit Kontejner naplók** vagy **élő tárolónaplók megtekintése**.  Ha bejelöli **nézet élő tárolónaplók**, egy új panel jelenik meg a tárolók teljesítmény adattábla és bemutató élő naplózás valós időben kapcsolatos hibák elhárítása További segítség a tároló motor által generált.  
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
-2. Az a **Microsoft Azure** menüjében válassza **figyelő** majd **tárolók**.  
-3. Jelöljön ki egy tárolót a listában a **tárolók figyelt** megtekintése.  
-4. Válassza ki a **tárolók** nézet és a egy kiválasztott tárolóban, a hivatkozásra a Tulajdonságok panelen **élő tárolónaplók megtekintése** szerepel a listán.  
-5. Ha az AKS-fürtöt az egyszeri bejelentkezési AAD használatával van konfigurálva, a böngésző-munkamenet során először használ hitelesítésre kéri. Válassza ki a fiókot és a hitelesítés befejezéséhez az Azure-ral.  
+## <a name="view-live-logs-and-events"></a>Élő naplók megtekintése és események
+
+Megtekintheti a valós idejű alkalmazásnapló-események az azok létrejöttekor a tároló motor által a **csomópontok**, **tartományvezérlők**, és **tárolók** megtekintése. A Tulajdonságok panelen válassza ki **megtekintheti az élő adatok (előzetes verzió)** lehetőséget és a egy ablaktábla, ahol megtekintheti napló- és események folyamatos továbbítása a teljesítmény adattábla következőkben. 
+
+![Csomópont tulajdonságai panelen nézet élő naplók lehetőség](./media/container-insights-live-logs/node-properties-live-logs-01.png)  
+
+Napló- és eseményt üzenetek pedig csak a nézetben kiválasztott erőforrás típusa alapján.
+
+| Nézet | Erőforrás típusa | Napló vagy esemény | Megjelenített adatokhoz |
+|------|---------------|--------------|----------------|
+| Csomópontok | Csomópont | Esemény | Ha egy csomópont van kiválasztva események sincs szűrve, és a Kubernetes-fürtre kiterjedő események megjelenítése. Panel címe a fürt nevét jeleníti meg. |
+| Csomópontok | Pod | Esemény | A pod kiválasztásakor események a névtérhez vannak szűrve. A panel címsorában a pod névtere. | 
+| Vezérlők | Pod | Esemény | A pod kiválasztásakor események a névtérhez vannak szűrve. A panel címsorában a pod névtere. |
+| Vezérlők | Vezérlő | Esemény | A vezérlő kiválasztásakor a névtér események vannak szűrve. A panel címsorában a névteret a vezérlő. |
+| Csomópontok és vezérlők és tárolók | Tároló | Naplók | A panel címsorában a pod a tároló nevére van csoportosítva. |
+
+Ha az AKS-fürtöt az egyszeri bejelentkezési AAD használatával van konfigurálva, a böngésző-munkamenet során először használ hitelesítésre kéri. Válassza ki a fiókot és a hitelesítés befejezéséhez az Azure-ral.  
 
 A sikeres hitelesítés után az élő napló panel alsó részén a középső ablaktáblán megjelenik. A fetch állapotjelzője mutatja egy zöld pipa, amely a panel jobb, ha az azt jelenti, és képes lekérni az adatokat.
     
   ![Élő naplók panel az adatok lekérése](./media/container-insights-live-logs/live-logs-pane-01.png)  
 
-A keresősávba szűrhet égbe tör kiemelheti a szöveg a naplóban.   
+A keresősávba kiemelheti a szöveg a napló vagy eseményt, és a keresősávba, a jobb szélen kulcs szó szerint szűrheti, azt jeleníti meg, hány eredményt egyezik meg a szűrő.   
 
-  ![Élő naplók panelen szűrő példa](./media/container-insights-live-logs/live-logs-pane-filter-01.png)
+  ![Élő naplók panelen szűrő példa](./media/container-insights-live-logs/live-logs-pane-filter-example-01.png)
 
-Automatikus görgetés felfüggesztése és a panelen viselkedését vezérli, és lehetővé teszi, hogy manuálisan Görgessen végig a új naplóadatokat, olvassa el, kattintson a a **görgessen** lehetőséget.  Automatikus görgetés újbóli engedélyezéséhez egyszerűen kattintson a **görgessen** újra lehetőséget.  Naplóadatok lekérése kattintva is felfüggesztheti a **szüneteltetése** lehetőséget, és ha készen áll a folytatásához, egyszerűen kattintson **lejátszása**.  
+Automatikus görgetés felfüggesztése és a panelen viselkedését vezérli, és lehetővé teszi, hogy manuálisan Görgessen végig az új adatok, olvassa el, kattintson a a **görgessen** lehetőséget. Automatikus görgetés újbóli engedélyezéséhez egyszerűen kattintson a **görgessen** újra lehetőséget. Napló vagy esemény adatok lekérésének kattintva is felfüggesztheti a **szüneteltetése** lehetőséget, és ha készen áll a folytatásához, egyszerűen kattintson **lejátszása**.  
 
 ![Élő naplók panelen szüneteltetése élő megtekintése](./media/container-insights-live-logs/live-logs-pane-pause-01.png)
+
+Nyissa meg az Azure Monitor naplóira kiválasztásával megtekintheti a korábbi tárolónaplók **tárolónaplók megtekintése** a legördülő listából **megtekintés az analyticsben**.
 
 ## <a name="next-steps"></a>További lépések
 - Megtudhatja, hogyan kell használni az Azure Monitor és egyéb monitorozhatja az AKS-fürt a folytatáshoz tekintse meg a [megtekintése az Azure Kubernetes Service health](container-insights-analyze.md).

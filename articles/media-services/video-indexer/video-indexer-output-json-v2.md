@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 04/07/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: d55e246e6fc3a5eeb182a49d1e159887f66d6872
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 205dc7d9e69788ea29a48ff342844a4b74e143bd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60560019"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799087"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Az API által előállított Videóindexelő kimenetének vizsgálata
 
@@ -35,13 +36,13 @@ Ez a cikk által visszaadott JSON-tartalmak megvizsgálja a **első videó Index
 |Name (Név)|Leírás|
 |---|---|
 |accountId|A lista VI fiók azonosítóját írja.|
-|id|A lista azonosítóját.|
+|azonosító|A lista azonosítóját.|
 |név|A lista neve.|
 |description|A lista leírása.|
 |userName|A felhasználó, aki létrehozta a lista neve.|
 |létrehozva|A lista létrehozási ideje.|
 |privacyMode|A lista adatvédelmi üzemmód (privát vagy nyilvános).|
-|state|A lista (feltöltött, feldolgozás, feldolgozás, sikertelen, karanténba helyezett).|
+|állapot|A lista (feltöltött, feldolgozás, feldolgozás, sikertelen, karanténba helyezett).|
 |isOwned|Azt jelzi, hogy a lista az aktuális felhasználó hozta-e.|
 |isEditable|Azt jelzi, hogy a jelenlegi felhasználó jogosult a lista szerkesztése.|
 |isBase|Azt jelzi, hogy a lista a kiindulási lista (videó) vagy egy listát alkotó más videók (származtatott).|
@@ -75,7 +76,7 @@ Ez a szakasz az insights összegzését jeleníti meg.
 |Attribútum | Leírás|
 |---|---|
 |név|A videó neve. Ha például az Azure Monitor.|
-|id|A videó azonosítója. Ha például 63c6d532ff.|
+|azonosító|A videó azonosítója. Ha például 63c6d532ff.|
 |privacyMode|A részletezése a következő módok egyike lehet: **Privát**, **nyilvános**. **Nyilvános** – a videót a fiókját, és bárki, amely rendelkezik a videóra mutató hivatkozást mindenki számára látható-e. **Privát** – a videót a fiókjában mindenki számára látható-e.|
 |időtartam|Egy időtartam, amely leírja a időpontja egy elemzést tartalmaz. Időtartam másodpercen belül van.|
 |thumbnailVideoId|A videót, amelyből a miniatűr hibaállapota azonosítója.
@@ -95,9 +96,9 @@ Ez a szakasz az insights összegzését jeleníti meg.
 |Name (Név)|Leírás|
 |---|---|
 |accountId|A videó VI fiók azonosítóját írja.|
-|id|A videó azonosítóját.|
+|azonosító|A videó azonosítóját.|
 |név|A videó neve.
-|state|A videó állapota (feltöltött, feldolgozás, feldolgozás, sikertelen, karanténba helyezett).|
+|állapot|A videó állapota (feltöltött, feldolgozás, feldolgozás, sikertelen, karanténba helyezett).|
 |processingProgress|A feldolgozási folyamat (például 20 %-os) feldolgozása közben.|
 |failureCode|Ha nem tudta feldolgozni (például UnsupportedFileType) hibakód.|
 |failureMessage|Ha nem tudta feldolgozni a hibaüzenet.|
@@ -192,14 +193,14 @@ Példa:
 
 Attribútum | Leírás
 ---|---
-id|A blokk-azonosítója.|
+azonosító|A blokk-azonosítója.|
 példányok|A blokk időtartományok listája.|
 
 #### <a name="transcript"></a>a szövegben
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A sor azonosítója.|
+|azonosító|A sor azonosítója.|
 |szöveg|Az átirat magát.|
 |language|A szöveges nyelvet. Szánt támogatásához, átirat, ahol az egyes sorok rendelkezhet egy másik nyelvet.|
 |példányok|Amikor ezt a sort jelent meg időt a tartományok listája. Ha a példány a szövegben, 1 példánnyal fog rendelkezni.|
@@ -237,7 +238,7 @@ Példa:
 
 |Name (Név)|Leírás|
 |---|---|
-|id|Az optikai Karakterfelismerés sor azonosítója.|
+|azonosító|Az optikai Karakterfelismerés sor azonosítója.|
 |szöveg|Az optikai Karakterfelismerés szöveg.|
 |magabiztosan|Elismerés magabiztosan.|
 |language|Az optikai Karakterfelismerés nyelv.|
@@ -272,7 +273,7 @@ Példa:
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A kulcsszó-azonosítót.|
+|azonosító|A kulcsszó-azonosítót.|
 |szöveg|A kulcsszó szöveg.|
 |magabiztosan|A kulcsszó felismerés magabiztosan.|
 |language|A kulcsszó nyelv (Ha a fordítás melyik változatot).|
@@ -303,7 +304,7 @@ Példa:
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A face azonosítója.|
+|azonosító|A face azonosítója.|
 |név|A face neve. Lehet "Ismeretlen #0, az azonosított hírességek vagy ügyfél betanított személy.|
 |magabiztosan|Arcok azonosítása magabiztosan.|
 |description|A hírességek leírása. |
@@ -348,7 +349,7 @@ Példa:
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A címke azonosítója.|
+|azonosító|A címke azonosítója.|
 |név|A címke nevét (például "Számítógép", "TV").|
 |language|A címke neve nyelv, (Ha a fordítás melyik változatot). BCP-47|
 |példányok|Amikor ezt a címkét jelent meg időt a tartományok listája (címkék többször is megjelenhetnek). Minden példány egy megbízhatósági mező tartozik. |
@@ -407,7 +408,7 @@ Példa:
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A helyszín azonosítója.|
+|azonosító|A helyszín azonosítója.|
 |példányok|A helyszín (jelenet legfeljebb 1 példány) időtartományok listája.|
 
 ```json
@@ -440,7 +441,7 @@ Példa:
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A képernyőkép-azonosítót.|
+|azonosító|A képernyőkép-azonosítót.|
 |Kulcsképek|A képernyőkép-készítés (megvannak-azonosító és példányok idő tartományok listája) belül kulcsképek listája. Minden egyes Kulcsképkocka-példány rendelkezik egy thumbnailId mező, amely tartalmazza a Kulcsképkocka miniatűr-azonosító.|
 |példányok|A képernyőkép-készítés (a képernyőkép-készítés legfeljebb 1 példány) az idő a tartományok listája.|
 
@@ -490,12 +491,12 @@ Példa:
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A márka azonosítója.|
+|azonosító|A márka azonosítója.|
 |név|A márka neve.|
 |referenceId | A márka wikipedia URL-címének utótagja. Például a "Target_Corporation" pedig az utótag [ https://en.wikipedia.org/wiki/Target_Corporation ](https://en.wikipedia.org/wiki/Target_Corporation).
 |referenceUrl | A márka a Wikipedia URL-címet, ha létezik. Például: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |description|A márka leírása.|
-|tags|Előre definiált ez csökkenése társított címkék listája.|
+|címkék|Előre definiált ez csökkenése társított címkék listája.|
 |magabiztosan|A Video Indexer márka detector használatával (0-1) megbízhatósági értéke.|
 |példányok|A márka időtartományok listája. Minden példány egy brandType, ami azt jelzi, hogy ez csökkenése jelentek meg a szöveges vagy OCR rendelkezik.|
 
@@ -559,7 +560,7 @@ Példa:
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A hang érvénybe azonosítója.|
+|azonosító|A hang érvénybe azonosítója.|
 |type|A hang hatás típusa (például Clapping, beszédfelismerés, csend).|
 |példányok|Amikor jelent meg a hang hatás időtartományok listája.|
 
@@ -588,7 +589,7 @@ Példa:
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A róluk szóló véleményeket azonosítója.|
+|azonosító|A róluk szóló véleményeket azonosítója.|
 |Átlag |Az összes pontszámok szoftverpéldányok száma a róluk szóló véleményeket típusa – pozitív/Neutral/negatív átlaga|
 |példányok|Amikor a véleményt jelent meg időt a tartományok listája.|
 |sentimentType |A típus "Pozitív", "Semleges" vagy "Negatív" lehet.|
@@ -627,7 +628,7 @@ Lehet, hogy videókat, amelyek tartalmazzák a felnőtt vagy pikáns tartalmak c
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A vizuális tartalom-jóváhagyás azonosítója.|
+|azonosító|A vizuális tartalom-jóváhagyás azonosítója.|
 |adultScore|A felnőtt pontszám (a content moderator).|
 |racyScore|A pikáns pontszám (a tartalom-jóváhagyás).|
 |példányok|Amikor jelent meg a vizuális tartalom-jóváhagyás időtartományok listája.|
@@ -663,7 +664,7 @@ Lehet, hogy videókat, amelyek tartalmazzák a felnőtt vagy pikáns tartalmak c
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A szöveges tartalom-jóváhagyás azonosítója.|
+|azonosító|A szöveges tartalom-jóváhagyás azonosítója.|
 |bannedWordsCount |A kitiltott szavak számát.|
 |bannedWordsRatio |A aránya az összes szó.|
 
@@ -673,7 +674,7 @@ Video Indexer – érzelmek beszéd- és audio jelek alapján azonosítja. Az az
 
 |Name (Név)|Leírás|
 |---|---|
-|id|Az emotion azonosítója.|
+|azonosító|Az emotion azonosítója.|
 |type|Az emotion videórészletet azonosított beszéd- és audiotartalmak jelek alapján. Az érzelmek a következők lehetnek: öröm, szomorúság, harag vagy félelem.|
 |példányok|Amikor jelent meg az emotion időtartományok listája.|
 
@@ -763,7 +764,7 @@ Video Indexer – lehetővé teszi a legfontosabb témakörök az átiratok köv
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A témakör azonosítóját.|
+|azonosító|A témakör azonosítóját.|
 |név|A témakör neve, például: "Pharmaceuticals".|
 |referenceId|A témakörök hierarchia tükröző útkövetés. Példa: "Állapotát és jólétének / orvosi és egészségügyi / Pharmaceuticals".|
 |magabiztosan|A [0,1] tartományban konfidencia-pontszám. Újabb sokkal magabiztosabb a munkában.|

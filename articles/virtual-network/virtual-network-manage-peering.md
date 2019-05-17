@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: 18d913339556c0d4b0a06bd62f4495da6a4d4223
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: ee7ffba182cdbc2a77df5edf112e29c49cd610ad
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925930"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519656"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Létrehozása, módosítása vagy egy virtuális hálózati társviszony törlése
 
 Ismerje meg, hogyan létrehozása, módosítása vagy egy virtuális hálózati társviszony törlése. Virtuális hálózatok közötti társviszony lehetővé teszi, hogy a virtuális hálózatok ugyanabban a régióban, és (más néven globális virtuális társhálózatok létesítésének)-régiók között az Azure gerinchálózatán keresztül. Társviszonyba a virtuális hálózatok továbbra is külön erőforrásként kezelhetők. Ha most ismerkedik a virtuális hálózatok közötti társviszony, többet is megtudhat a kapcsolatos a [társviszony-létesítés virtuális hálózatok áttekintése](virtual-network-peering-overview.md) vagy; Ehhez hajtsa végre egy [oktatóanyag](tutorial-connect-virtual-networks-portal.md).
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -146,7 +146,7 @@ Ha a fiókjához nincs hozzárendelve egy előző szerepköröket, akkor hozzá 
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Szükséges egy társviszony-létesítés létrehozása A virtuális hálózatról virtuális hálózatra b virtuális hálózat egy virtuális hálózatot (Resource Manager) kell lennie          |
 | Microsoft.Network/virtualNetworks/peer/action                   | A virtuális hálózathoz a B (Resource Manager) virtuális hálózati társviszony-létesítés szükséges                                                       |
-| Microsoft.ClassicNetwork/virtualNetworks/peer                   | A virtuális hálózathoz a B (klasszikus) virtuális hálózati társviszony-létesítés szükséges                                                                |
+| Microsoft.ClassicNetwork/virtualNetworks/peer/action                   | A virtuális hálózathoz a B (klasszikus) virtuális hálózati társviszony-létesítés szükséges                                                                |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/read   | Olvassa el a virtuális hálózatok közötti társviszony   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/delete | Egy virtuális hálózati társviszony törlése |
 

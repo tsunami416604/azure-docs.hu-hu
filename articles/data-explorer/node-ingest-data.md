@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/25/2018
-ms.openlocfilehash: d530ed3710a3406e5cd8115d615e91d5056a5f8c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 42a4d2e34eab3679f98d5a62099ab57e5924fcc3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60827187"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800427"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>Gyors útmutató: Az Azure Data Explorer csomópontja library használata az adatok betöltése
 
@@ -33,7 +33,7 @@ A rövid útmutató elvégzéséhez az Azure-előfizetés mellett szüksége les
 Az *azure kusto-ingest* és az *azure kusto-data* telepítése
 
 ```bash
-npm i --save azure-kusto-ingest azure-kusto-data
+npm i azure-kusto-ingest azure-kusto-data
 ```
 
 ## <a name="add-import-statements-and-constants"></a>Importálási utasítások és állandók hozzáadása

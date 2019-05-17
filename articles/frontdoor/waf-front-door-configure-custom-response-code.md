@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2019
 ms.author: tyao;kumud
-ms.openlocfilehash: 2d16893420f27caf4f8b00dc32069e3296d7c236
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7a167deb511347798fa609e2aca2a19f8bf12d21
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61459776"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523723"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall"></a>Egyéni válasz for Azure webalkalmazási tűzfal konfigurálása
 
@@ -52,11 +52,11 @@ New-AzResourceGroup -Name myResourceGroupWAF
 
 ## <a name="create-a-new-waf-policy-with-custom-response"></a>Hozzon létre egy új WAF házirendet egyéni válasz 
 
-Az alábbi példában az egyéni válasz állapotkódja 405-ös és az üzenethez, és állítsa be az új WAF-házirend létrehozása, **le vannak tiltva.** using [New-AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/new-azfrontdoorfirewallPolicy).
+Az alábbi példában az egyéni válasz állapotkódja 405-ös és az üzenethez, és állítsa be az új WAF-házirend létrehozása, **le vannak tiltva.** használatával [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```azurepowershell
 # WAF policy setting
-New-AzFrontDoorFireWallPolicy `
+New-AzFrontDoorWafPolicy `
 -Name myWAFPolicy `
 -ResourceGroupName myResourceGroupWAF `
 -EnabledState enabled `

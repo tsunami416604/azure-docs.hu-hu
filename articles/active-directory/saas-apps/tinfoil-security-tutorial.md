@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 135b5719422d1b28a82ac2eda06f76d6dd746800
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60339306"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65813733"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>Oktatóanyag: A TINFOIL SECURITY szolgáltatással az Azure Active Directory-integráció
 
@@ -243,7 +243,7 @@ Ahhoz, hogy jelentkezzen be a TINFOIL SECURITY az Azure AD-felhasználók, akkor
 > TINFOIL SECURITY felhasználói fiók létrehozása eszközöket és teljesíteni a TINFOIL SECURITY által biztosított API-k segítségével az Azure AD-felhasználói fiókok kiépítése.
 > 
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

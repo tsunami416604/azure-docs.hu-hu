@@ -5,42 +5,42 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 04/10/2019
+ms.date: 05/15/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 79c4530878783cbdb62cac630d81b65dc73c52a4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8cee74696d9636a8ac1d6fcbab493f18184355e1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64733813"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787651"
 ---
-<a name="virtual-networking-limits-classic"></a>Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése előfizetésenként, a klasszikus üzemi modellel történik. Ismerje meg, hogyan [megtekintheti az aktuális erőforrás-használat elleni az előfizetési korlátok](../articles/networking/check-usage-against-limits.md).
+<a name="virtual-networking-limits-classic"></a>Az alábbi korlátozások érvényesek, csak a hálózati erőforrások kezelhető a **klasszikus** előfizetésenként üzemi modellel. Ismerje meg, hogyan [megtekintheti az aktuális erőforrás-használat elleni az előfizetési korlátok](../articles/networking/check-usage-against-limits.md).
 
-| Erőforrás | Alapértelmezett korlát | Felső korlát |
+| Resource | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
 | Virtuális hálózatok |50 |100 |
 | Helyi hálózati helyek |20 |Forduljon a támogatási szolgálathoz. |
 | DNS-kiszolgálók száma virtuális hálózatonként |20 |20 |
 | Magánhálózati IP-címek száma virtuális hálózatonként |4,096 |4,096 |
 | Egyidejű TCP vagy UDP-folyamatok egy virtuális gép vagy szerepkörpéldány adapterenként |500 000, legfeljebb 1 000 000 két vagy több hálózati adapter esetében. |500 000, legfeljebb 1 000 000 két vagy több hálózati adapter esetében. |
-| Hálózati biztonsági csoportok (NSG-k) |100 |200 |
-| NSG-ben szereplő NSG-szabályok |200 |1,000 |
-| Felhasználó által megadott útvonaltáblák |100 |200 |
-| Felhasználó által megadott útvonalak száma útvonaltáblánként |100 |400 |
-| Nyilvános IP-címek (dinamikus) |5 |Forduljon a támogatási szolgálathoz. |
-| Fenntartott nyilvános IP-címek |20 |Forduljon a támogatási szolgálathoz. |
-| Nyilvános virtuális IP-címek száma üzemelő példányonként |5 |Forduljon a támogatási szolgálathoz. |
-| Privát VIP (belső terheléselosztás) száma üzemelő példányonként |1 |1 |
+| Hálózati biztonsági csoportok (NSG-k) |200 |200 |
+| NSG-ben szereplő NSG-szabályok |1,000 |1,000 |
+| Felhasználó által megadott útvonaltáblák |200 |200 |
+| Felhasználó által megadott útvonalak száma útvonaltáblánként |400 |400 |
+| Nyilvános IP-címek (dinamikus) |5 |Kapcsolatfelvétel az ügyfélszolgálattal |
+| Fenntartott nyilvános IP-címek |20 |Kapcsolatfelvétel az ügyfélszolgálattal |
+| Nyilvános virtuális IP-címek száma üzemelő példányonként |5 |Kapcsolatfelvétel az ügyfélszolgálattal |
+| Privát VIP (belső terheléselosztás) száma üzemelő példányonként |1. |1. |
 | Végponthozzáférés-vezérlési listák (ACL) |50 |50 |
 
 #### <a name="azure-resource-manager-virtual-networking-limits"></a>Hálózatkezelési korlátok – Azure Resource Manager
-Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése régiónként és előfizetésenként, az Azure Resource Managerrel történik. Ismerje meg, hogyan [megtekintheti az aktuális erőforrás-használat elleni az előfizetési korlátok](../articles/networking/check-usage-against-limits.md).
+Az alábbi korlátozások érvényesek, csak a hálózati erőforrások kezelhető **Azure Resource Manager** régiónként és előfizetésenként. Ismerje meg, hogyan [megtekintheti az aktuális erőforrás-használat elleni az előfizetési korlátok](../articles/networking/check-usage-against-limits.md).
 
 > [!NOTE]
 > A Microsoft a közelmúltban növelte az összes alapértelmezett korlátok a maximális korlátig való. Ha egyetlen oszlop sincs maximális korlátot, akkor az erőforrás nem állítható korlátokkal rendelkeznek. Ha növelni a múltban támogatja ezeket a korlátokat, és nem jelenik meg a frissített korlátait az alábbi táblázatban [nyisson meg egy online támogatási kérést díj nélkül](../articles/azure-resource-manager/resource-manager-quota-errors.md)
 
-| Erőforrás | Alapértelmezett korlát/maximális korlát | 
+| Resource | Alapértelmezett/maximális korlát | 
 | --- | --- |
 | Virtuális hálózatok |1,000 |
 | Alhálózatok száma virtuális hálózatonként |3,000 |
@@ -51,7 +51,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Magánhálózati IP-címek virtuális gépenként |256 |
 | Egyidejű TCP vagy UDP-folyamatok egy virtuális gép vagy szerepkörpéldány adapterenként |500,000 |
 | Hálózati adapterek |65,536 |
-| Network Security Groups (Hálózati biztonsági csoportok) |5000 |
+| Network Security Groups (Hálózati biztonsági csoportok) |5,000 |
 | NSG-ben szereplő NSG-szabályok |1,000 |
 | IP-címek és a forrás vagy cél egyetlen biztonsági csoportba tartozó megadott tartományok |4,000 |
 | Alkalmazásbiztonsági csoportok |3,000 |
@@ -65,17 +65,17 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Hálózati adapter KOPPINTSON konfigurációk száma virtuális hálózatonként KOPPINTSON |100 |
 
 #### <a name="publicip-address"></a>Nyilvános IP-cím korlátok
-| Erőforrás | Alapértelmezett korlát | Felső korlát |
+| Resource | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
 | Nyilvános IP-címek – dinamikus | Alapszintű 1000. |Forduljon a támogatási szolgálathoz. |
 | Nyilvános IP-címek – statikus | Alapszintű 1000. |Forduljon a támogatási szolgálathoz. |
 | Nyilvános IP-címek – statikus | a standard szintű 200.|Forduljon a támogatási szolgálathoz. |
-| Nyilvános IP-előtag méretét (előzetes verzió) | /28 | /28 |
+| Nyilvános IP-előtag méretét (előzetes verzió) | /28 | Forduljon a támogatási szolgálathoz. |
 
 #### <a name="load-balancer"></a>Load balancer korlátok
 Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése régiónként és előfizetésenként, az Azure Resource Managerrel történik. Ismerje meg, hogyan [megtekintheti az aktuális erőforrás-használat elleni az előfizetési korlátok](../articles/networking/check-usage-against-limits.md).
 
-| Erőforrás | Alapértelmezett korlát |
+| Resource | Alapértelmezett/maximális korlát |
 | --- | --- |
 | Terheléselosztók | 1,000 | 
 | Erőforrásonként alapszintű szabályok | 250 |

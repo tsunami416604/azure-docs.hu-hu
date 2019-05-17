@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
-ms.date: 12/04/2018
+ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: aa425b6dfeb076448d14fc35cbea964516d603b0
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.openlocfilehash: f9734a5d8f34536558fbf0c861889f3c7d6719da
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63765876"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523987"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Kezelését és kérését kvóták az Azure-erőforrásokhoz
 
@@ -52,9 +52,9 @@ Magkvóta korlátozásának még részletesebb és naprakészebb listája, ellen
 Az Azure Machine Learning Compute a magok számát és a egy előfizetésben régiónként engedélyezett egyedi számítási erőforrások számát az alapértelmezett kvóta korlátozva van. Ez a kvóta a Virtuálisgép-magkvóta fenti elkülönül, és a core korlátok nem megosztott jelenleg két erőforrástípusok.
 
 Rendelkezésre álló erőforrások:
-+ Dedikált magok száma a régióban van egy alapértelmezett korlát a 10-24.  Az előfizetésenként dedikált magok száma növelhető. Lépjen kapcsolatba a növelési lehetőségek tekintetében az Azure ügyfélszolgálatától.
++ Dedikált magok régiónként legfeljebb alapértelmezett 24 – 300 attól függően, az előfizetési ajánlat típusát.  Az előfizetésenként dedikált magok száma növelhető. Lépjen kapcsolatba a növelési lehetőségek tekintetében az Azure ügyfélszolgálatától.
 
-+ Alacsony prioritású magok régiónként legfeljebb alapértelmezett 10 – 24.  Előfizetésenként az alacsony prioritású Processzormagok száma növelhető. Lépjen kapcsolatba a növelési lehetőségek tekintetében az Azure ügyfélszolgálatától.
++ Alacsony prioritású magok régiónként legfeljebb alapértelmezett 24 – 300 az előfizetési ajánlat típusától függően.  Előfizetésenként az alacsony prioritású Processzormagok száma növelhető. Lépjen kapcsolatba a növelési lehetőségek tekintetében az Azure ügyfélszolgálatától.
 
 + Fürt régiónként rendelkezik, egy alapértelmezett korlát 100 és legfeljebb 200. Ha meghaladja ezt a korlátot növelni szeretné, lépjen kapcsolatba az Azure-támogatás.
 
@@ -66,12 +66,14 @@ Rendelkezésre álló erőforrások:
 | Egyetlen Azure Machine Learning Compute (AmlCompute) erőforrást a csomópontok maximális száma | 100 csomópont |
 | Maximális GPU MPI folyamatok száma csomópontonként | 1 – 4 |
 | Csomópontonkénti maximális GPU-feldolgozók | 1 – 4 |
-| Maximális élettartama | 7 nap<sup>1</sup> |
+| Maximális élettartama | 90 napig<sup>1</sup> |
+| Alacsony prioritású csomóponton maximális élettartama | 1 nap<sup>2</sup> |
 | Csomópontonkénti maximális paraméter-kiszolgálók | 1 |
 
 <sup>1</sup> maximális élettartamát hivatkozik, amely egy Futtatás elindításához, és a Befejezés után. Befejezett futtatások korlátlan ideig megőrződnek; a maximális élettartamon belül nem befejezett futtatások adatait nem érhető el.
+<sup>2</sup> csomóponton alacsony prioritású feladatok sikerült pre-empted bármikor kapacitás megkötés van. Javasoljuk, hogy a feladat végrehajtása a ellenőrzőpontok használata.
 
-### <a name="container-instances"></a>Container Instances szolgáltatásban
+### <a name="container-instances"></a>Tárolópéldányok
 
 Emellett van egy a container Instances szolgáltatásban, regisztrálhat egy adott időszakban (óránként hatóköre) vagy a teljes előfizetés számára vonatkozó határértéket.
 
@@ -80,20 +82,20 @@ Emellett van egy a container Instances szolgáltatásban, regisztrálhat egy ado
 Magkvóta korlátozásának még részletesebb és naprakészebb listája, ellenőrizze az Azure kiterjedő kvóta cikk [Itt](https://docs.microsoft.com/azure/azure-subscription-service-limits#container-instances-limits).
 
 ### <a name="storage"></a>Storage
-Storage-fiókok, valamint az adott előfizetésben régiónként száma korlátozva van. Az alapértelmezett korlátja 200, és tartalmazza a Standard és prémium szintű Storage-fiókok. Ha egy adott régióban több mint 200 tárfiókra van szüksége, győződjön meg a kérést [Azure-támogatási](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). Az Azure Storage csapata áttekinti az üzleti esetekhez, és jóváhagyhat legfeljebb 250 tárfiókot az adott régió.
+Storage-fiókok, valamint az adott előfizetésben régiónként száma korlátozva van. Az alapértelmezett korlátja 200, és tartalmazza a Standard és prémium szintű Storage-fiókok. Ha egy adott régióban több mint 200 tárfiókra van szüksége, győződjön meg a kérést [Azure-támogatási](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). Az Azure Storage csapata áttekinti az üzleti esetekhez, és jóváhagyhat legfeljebb 250 tárfiókot az adott régió.
 
 
 ## <a name="find-your-quotas"></a>Keresse meg a kvóták
 
 A különböző erőforrások, például a virtuális gépek, tárolási, hálózati, a kvóta megtekintése is egyszerűen az Azure Portalon keresztül.
 
-1. A bal oldali panelén válassza **minden szolgáltatás** majd **előfizetések** az általános kategória alapján.
+1. A bal oldali panelén válassza **minden szolgáltatás** majd **előfizetések** az általános kategória alapján.
 
 1. Előfizetések listájából válassza ki az előfizetést, amelynek Ön által keresett kvótát.
 
    **Van egy kikötést**, kifejezetten a megtekintése az Azure Machine Learning Compute kvótát. Ahogy említettük, a kvóta elkülönül az előfizetéshez, a számítási kvótával.
 
-1. A bal oldali panelen válassza ki a **Machine Learning szolgáltatás** , majd a megjelenő listában minden munkaterület
+1. A bal oldali panelen válassza ki a **Machine Learning szolgáltatás** , majd a megjelenő listában minden munkaterület
 
 1. A következő panelen alatt a **támogatás és hibaelhárítás szakaszhoz** kiválasztása **használat + kvóták** a jelenlegi kvóta korlátozásának emelése és használati megtekintéséhez.
 
@@ -102,7 +104,7 @@ A különböző erőforrások, például a virtuális gépek, tárolási, háló
 
 ## <a name="request-quota-increases"></a>Kérelem kvótanövelésre
 
-Ha azt szeretné, a korlát vagy az alapértelmezett korlát feletti kvóta emelése [nyisson meg egy támogatási kérést online](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/) díjmentesen.
+Ha azt szeretné, a korlát vagy az alapértelmezett korlát feletti kvóta emelése [nyisson meg egy támogatási kérést online](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/) díjmentesen.
 
 A korlátok nem léptethető a fenti táblázatokban látható a maximális határértéket. Ha nincs maximális korlát, az erőforrás állítható korlátok nem rendelkezik. [Ez](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors) a cikk ismerteti a kvóta növelését folyamat részletesebben.
 

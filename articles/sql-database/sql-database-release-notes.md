@@ -2,20 +2,20 @@
 title: Az Azure SQL Database kibocsátási megjegyzései |} A Microsoft Docs
 description: Ismerje meg az új funkciók és fejlesztések az Azure SQL Database szolgáltatás és az Azure SQL Database-dokumentáció
 services: sql-database
-author: CarlRabeler
+author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/07/2019
-ms.author: carlrab
-ms.openlocfilehash: 923e475cd690902c61c2f89578c2c62effe4cd86
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.date: 05/15/2019
+ms.author: sstein
+ms.openlocfilehash: d527c4fed9c43e62d815078c049d4d8e6f8a46b7
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406584"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787715"
 ---
 # <a name="sql-database-release-notes"></a>Az SQL Database kibocsátási megjegyzései
 
@@ -25,27 +25,26 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 
 | Szolgáltatás | Részletek |
 | ---| --- |
+| Az önálló adatbázisok és rugalmas készletek gyorsított adatbázis-helyreállítás | További információ: [gyorsított adatbázis-helyreállítás](sql-database-accelerated-database-recovery.md).|
+|Különböző hozzávetőleges száma|További információ: [hozzávetőleges eltérők darabszáma](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing).|
+|(A kompatibilitási szint 150) Sortárindex kötegelt mód|További információ: [Sortárindex kötegelt módban](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore).|
+| Adatfelderítés és besorolás  |További információ: [Azure SQL Database és az SQL Data Warehouse adatfelderítés és besorolás](sql-database-data-discovery-and-classification.md).|
+| Rugalmas adatbázis-feladatok | További információ: [létrehozását, konfigurálását és kezelését, az elastic jobs](elastic-jobs-overview.md). |
+| Rugalmas lekérdezések | További információ: [rugalmas lekérdezés – áttekintés](sql-database-elastic-query-overview.md). |
+| Rugalmas tranzakciók | [Elosztott tranzakciók több felhőalapú adatbázisban](sql-database-elastic-transactions-overview.md). |
+| Felügyelt példányokkal rendelkező példány rendezése |További információ: [a PowerShell szolgáltatás használatával az Azure SQL Database felügyelt példány létrehozása az Azure Resource Manager-sablon](./scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md).|
+|A visszajelzés memóriabeli ideiglenes (sor mód) (a kompatibilitási szint 150)|További információ: [(sor mód) visszajelzés memóriabeli ideiglenes](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback).|
+| A Lekérdezésszerkesztő az Azure Portalon |További információ: [csatlakozás és adatok lekérdezése az Azure portal SQL-Lekérdezésszerkesztő használatával](sql-database-connect-query-portal.md).|
+| Az R services / gépi tanulás az önálló adatbázisok és rugalmas készletek |További információ: [Machine Learning-szolgáltatások az Azure SQL Database](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database).|
+| Hozza létre újra a felügyelt példányok eldobott adatbázisok |További információ: [hozza létre újból eldobott adatbázisok az Azure SQL felügyelt példánya](https://medium.com/azure-sqldb-managed-instance/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266).|
+| Replikáció a felügyelt példány |További információ: [-replikálás konfigurálása az Azure SQL Database felügyelt példány adatbázisa a](replication-with-sql-database-managed-instance.md).|
 | Kiszolgáló nélküli számítási szint | További információ: [SQL Database kiszolgáló nélküli (előzetes verzió)](sql-database-serverless.md).|
-| Rugalmas adatbázis-feladatok | További információ: [létrehozását, konfigurálását és kezelését a rugalmas feladatok](elastic-jobs-overview.md) |
-| Rugalmas tranzakciók | [Elosztott tranzakciók több felhőalapú adatbázisban](sql-database-elastic-transactions-overview.md) |
-| Rugalmas lekérdezések | További információ: [rugalmas lekérdezés – áttekintés](sql-database-elastic-query-overview.md) |
-| Replikáció a felügyelt példány |További információ: [-replikálás konfigurálása a egy Azure SQL Database felügyelt példány adatbázisa](replication-with-sql-database-managed-instance.md)|
-| Felügyelt példányokkal rendelkező példány rendezése |További információ: [a PowerShell szolgáltatás használatával az Azure SQL Database felügyelt példány létrehozása Azure Resource Manager-sablonnal](./scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)|
-| Az R services / gépi tanulás az önálló adatbázisok és rugalmas készletek |További információ: [Machine Learning-szolgáltatások az Azure SQL Database-ben](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)|
-| Az önálló adatbázisok és rugalmas készletek gyorsított adatbázis-helyreállítás | További információ: [gyorsított adatbázis-helyreállítás](sql-database-accelerated-database-recovery.md)|
-| Adatfelderítés és besorolás  |További információ: [Azure SQL Database és az SQL Data Warehouse adatfelderítés és besorolás](sql-database-data-discovery-and-classification.md)|
-| Transzparens adattitkosítás (TDE) a Bring Your Own Key (BYOK) felügyelt példányok |További információ: [Azure SQL transzparens adattitkosítás az ügyfél által felügyelt kulcsok Azure Key vaultban: Bring Your Own Key-támogatás](transparent-data-encryption-byok-azure-sql.md)|
-| Hozza létre újra a felügyelt példányok eldobott adatbázisok |További információ: [hozza létre újból eldobott adatbázisok az Azure SQL felügyelt példánya](https://medium.com/azure-sqldb-managed-instance/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266)|
-| A felügyelt példány fenyegetésészlelési |További információ: [fenyegetésészlelés konfigurálása az Azure SQL Database felügyelt példánya](sql-database-managed-instance-threat-detection.md)|
-| Nagy kapacitású szolgáltatási szintekről az önálló adatbázisok |További információ: [akár 100 TB kapacitású szolgáltatási szintjei](sql-database-service-tier-hyperscale.md)|
-| A Lekérdezésszerkesztő az Azure Portalon |További információ: [csatlakozás és adatok lekérdezése az Azure portal SQL-Lekérdezésszerkesztő használatával](sql-database-connect-query-portal.md)|
-|Különböző hozzávetőleges száma|További információ: [hozzávetőleges eltérők darabszáma](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing)|
-|(A kompatibilitási szint 150) Sortárindex kötegelt mód|További információ: [Sortárindex kötegelt mód](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)|
-|A visszajelzés memóriabeli ideiglenes (sor mód) (a kompatibilitási szint 150)|További információ: [Memóriaengedély visszajelzését (sor mód)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)|
-|Tábla változó a Funkciófrissítéseket fordítási (a kompatibilitási szint 150)|További információ: [tábla változó a Funkciófrissítéseket fordítás](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation)|
-|SQL Analytics|További információ: [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)|
-| Felügyelt példányok időzóna támogatása|További információkért lásd: [időzóna az Azure SQL Database felügyelt példánya](sql-database-managed-instance-timezone.md)|
-|||
+|SQL Analytics|További információ: [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).|
+|Tábla változó a Funkciófrissítéseket fordítási (a kompatibilitási szint 150)|További információ: [tábla változó a Funkciófrissítéseket fordítási](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation).|
+| A felügyelt példány fenyegetésészlelési |További információ: [fenyegetésészlelés konfigurálása az Azure SQL Database felügyelt példány](sql-database-managed-instance-threat-detection.md).|
+| Felügyelt példányok időzóna támogatása|További információkért lásd: [időzóna az Azure SQL Database felügyelt példányába](sql-database-managed-instance-timezone.md).|
+| Transzparens adattitkosítás (TDE) a Bring Your Own Key (BYOK) felügyelt példányok |További információ: [Azure SQL transzparens adattitkosítás az ügyfél által felügyelt kulcsok Azure Key vaultban: Bring Your Own Key-támogatás](transparent-data-encryption-byok-azure-sql.md).|
+| &nbsp; |
 
 ## <a name="may-2019"></a>2019. május
 
@@ -53,9 +52,18 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 
 | Szolgáltatás fejlesztései | Részletek |
 | --- | --- |
-|Rugalmas skálázás szolgáltatási szint| További információkért lásd: [akár 100 TB kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md).|
-|Kiszolgáló nélküli számítási szint| További információkért lásd: [SQL Database kiszolgáló nélküli (előzetes verzió)](sql-database-serverless.md).|
+|Végleges változata nagy kapacitású szolgáltatásszint| További információkért lásd: [akár 100 TB kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md) és [nagy teljesítményű, nagy kapacitású az Azure database számítási feladatok skálázása első](https://azure.microsoft.com/blog/get-high-performance-scaling-for-your-azure-database-workloads-with-hyperscale/).|
+|Kiszolgáló nélküli számítási kapacitás, amely a nyilvános előzetes verzió | További információkért lásd: [SQL Database kiszolgáló nélküli (előzetes verzió)](sql-database-serverless.md).|
+| A Virtuálismag-alapú vásárlási modellt használó adatbázisok tranzakciós napló sebességet és a cél IOPS nőtt| További információkért lásd: [erőforrás korlátozza az önálló adatbázisok használata a Virtuálismag-alapú vásárlási modell](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases) és [erőforrás korlátozza az önálló adatbázisok használata a DTU-alapú vásárlási modell](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-single-databases).
+| &nbsp; |
 
+### <a name="documentation-improvements"></a>Dokumentáció fejlesztései
+
+| Dokumentáció fejlesztései | Részletek |
+| --- | --- |
+| Nagy kapacitású szolgáltatási szint docs frissült a GA kiadás| További információkért lásd: [akár 100 TB kapacitású szolgáltatásszint](sql-database-service-tier-hyperscale.md).|
+|Kiszolgáló nélküli számítási réteg docs, amely a nyilvános előzetes verzió| További információkért lásd: [SQL Database kiszolgáló nélküli (előzetes verzió)](sql-database-serverless.md).|
+| &nbsp; |
 
 ## <a name="april-2019"></a>Április 2019
 
@@ -63,15 +71,18 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 
 | Szolgáltatás fejlesztései | Részletek |
 | --- | --- |
-| Felügyelt példány nyilvános végpontok | További információkért lásd: [használata Azure SQL Database felügyelt példány nyilvános végponttal rendelkező biztonságos](sql-database-managed-instance-public-endpoint-securely.md)
-| Felügyelt példány időzóna támogatása | További információkért lásd: [időzóna az Azure SQL Database felügyelt példányain (előzetes verzió)](sql-database-managed-instance-timezone.md)
+| Felügyelt példány nyilvános előzetes verzióban érhető el nyilvános végpontok| További információkért lásd: [használata Azure SQL Database felügyelt példány nyilvános végponttal rendelkező biztonságosan](sql-database-managed-instance-public-endpoint-securely.md).|
+| Időzóna támogatása felügyelt példány nyilvános előzetes verzióban érhető el| További információkért lásd: [időzóna az Azure SQL Database felügyelt példányába](sql-database-managed-instance-timezone.md).|
+| A második nyilvános előzetes verzióban érhető el a felügyelt identitásokból biztonságossá tétele az Azure SQL Database kiadás| Lásd: [biztonságossá tétele az Azure SQL Database felügyelt identitások jelentősen egyszerűbbé](https://azure.microsoft.com/blog/securing-azure-sql-databases-with-managed-identities-just-got-easier/).|
+| &nbsp; |
 
 ### <a name="documentation-improvements"></a>Dokumentáció fejlesztései
 
 | Dokumentáció fejlesztései | Részletek |
 | --- | --- |
-| Felügyelt példány nyilvános végpontok | További információkért lásd: [használata Azure SQL Database felügyelt példány nyilvános végponttal rendelkező biztonságos](sql-database-managed-instance-public-endpoint-securely.md)
-| Felügyelt példány időzóna támogatása | További információkért lásd: [időzóna az Azure SQL Database felügyelt példányain (előzetes verzió)](sql-database-managed-instance-timezone.md)
+| Felügyelt példány nyilvános előzetes verzióban érhető el nyilvános végpontok| További információkért lásd: [használata Azure SQL Database felügyelt példány nyilvános végponttal rendelkező biztonságosan](sql-database-managed-instance-public-endpoint-securely.md).|
+| Időzóna támogatása felügyelt példány nyilvános előzetes verzióban érhető el| További információkért lásd: [időzóna az Azure SQL Database felügyelt példányába](sql-database-managed-instance-timezone.md). |
+| Az Azure SQL Database erőforrás-szabályozása | További információkért lásd: [az Azure SQL Database erőforrás-szabályozás](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/). || &nbsp; |
 
 ## <a name="march-2019"></a>2019. március
 
@@ -79,14 +90,13 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 
 | Szolgáltatás fejlesztései | Részletek |
 | --- | --- |
-| Általános elérhetőség: Olvasásra optimalizált felskálázás támogatása az Azure SQL Database-nél | További információkért lásd: [olvasási horizontális felskálázás](sql-database-read-scale-out.md)|
+| Olvassa el a horizontális felskálázás támogatása az Azure SQL Database végleges változata | További információkért lásd: [olvasási kibővített](sql-database-read-scale-out.md).|
 | &nbsp; |
 
 ### <a name="documentation-improvements"></a>Dokumentáció fejlesztései
 
 | Dokumentáció fejlesztései | Részletek |
 | --- | --- |
-| Felügyelt példányok időzóna támogatása|További információkért lásd: [időzóna az Azure SQL Database felügyelt példánya](sql-database-managed-instance-timezone.md)|
 | A hozzáadott log egyetlen adatbázisok korlátai|További információkért lásd: [egyetlen adatbázis virtuális mag erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md).|
 | Hozzáadott log rugalmas készletek és a készletezett adatbázisok korlátai|További információkért lásd: [rugalmas adatbáziskészletekhez virtuális mag erőforráskorlátok](sql-database-vcore-resource-limits-elastic-pools.md).|
 | A hozzáadott tranzakciós napló arány cégirányítási| Hozzáadott új tartalmak [tranzakciós napló arány cégirányítási](sql-database-resource-limits-database-server.md#transaction-log-rate-governance).|
@@ -102,7 +112,7 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 |A folytatható online index létrehozását már általánosan elérhető| További információkért lásd: [a Create Index](https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql).|
 |Felügyelt példány támogatása továbbfejlesztett útvonaltáblák| További információkért lásd: [hálózati követelmények](sql-database-managed-instance-connectivity-architecture.md#network-requirements).|
 |Adatbázis átnevezése támogatja a felügyelt példány | További részletekért tekintse meg a [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) és [sp_rename szintaxis](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql) szintaxist.|
-|SQL-adatbázis a Stream Analytics referenciaadatok forrásaként. | További információkért lásd: [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/).|
+|SQL-adatbázis a Stream Analytics referenciaadatok forrásaként. | További információkért lásd: [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) és [Azure Stream Analytics mostantól támogatja az Azure SQL Database-t referenciaadat-bemenetek](https://azure.microsoft.com/blog/azure-stream-analytics-now-supports-azure-sql-database-as-reference-data-input/).|
 |Data Migration Assistant felügyelt példányt támogat. |További információkért lásd: [What's new in DMA](https://docs.microsoft.com/sql/dma/dma-whatsnew).|
 |Az SQL Server Migration Assistant szolgáltatást támogat a felügyelt példány cél readiness assessment. | További információkért lásd: [SQL Server Migration Assistant](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant).
 |Adatok áttelepítése szolgáltatás támogatja az Amazon RDS felügyelt példányába történő migrálás | További információkért lásd: [oktatóanyag: A távoli asztali szolgáltatások SQL Server migrálása az Azure SQL Database vagy Azure SQL Database felügyelt példány online DMS használatával](../dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md).|
@@ -116,7 +126,6 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 |DTU-alapú vásárlási modell frissített tempdb méretei | További információkért lásd: [Tempdb-adatbázis az SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).|
 |Frissített importálása és exportálása a felügyelt példány támogatás bacpac-fájlba| További információkért lásd: [importálás BACPAC a](sql-database-import.md) és [exportálása BACPAC](sql-database-export.md). |
 | &nbsp; |
-
 
 ## <a name="january-2019"></a>2019. január
 
@@ -133,12 +142,12 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 
 | Dokumentáció fejlesztései | Részletek |
 | --- | --- |
-| Felügyelt példányok és a tranzakciós replikáció | Új cikk használatáról [tranzakciós replikáció, a felügyelt példány](replication-with-sql-database-managed-instance.md) |
+| Felügyelt példányok és a tranzakciós replikáció | Új cikk használatáról [tranzakciós replikáció, a felügyelt példányok](replication-with-sql-database-managed-instance.md). |
 | Új Azure ad-ben a felügyelt példány – oktatóanyag | Ez [Azure AD a felügyelt példány](sql-database-managed-instance-aad-security-tutorial.md) oktatóanyag azt mutatja be, tesztelése és konfigurálása kell felügyelt példány biztonsági az Azure AD bejelentkezési adatok használata. |
-| Frissített tartalom a Transact-SQL-parancsfájlok használatával feladatok automatizálásához | Frissítve, és a tartalom egyértelművé [feladat automatizálása a Transact-SQL-parancsfájlok használatával](sql-database-job-automation-overview.md) önálló adatbázisok, rugalmas készletek és a felügyelt példány |
-| Biztonsági tartalom felügyelt példányok frissítése | Frissítve, és egyértelművé tartalmát a [felügyelt példányok biztonsági modell](sql-database-security-overview.md), és jelentkezzen be a biztonsági modell önálló adatbázisokhoz és rugalmas készletek szokásos testhelyzetből |
-| Frissítve az összes útmutatóink és oktatóanyagaink segítségével | A rövid útmutatók és oktatóanyagok az összes a [dokumentáció](https://docs.microsoft.com/azure/sql-database) frissítve, és frissül, hogy megfeleljen a módosításokat az Azure Portalon |
-| A hozzáadott gyors áttekintés útmutatók | Hozzáadott egy áttekintés gyorsútmutató [önálló adatbázisok](sql-database-quickstart-guide.md) és [felügyelt példányai](sql-database-managed-instance-quickstart-guide.md) |
+| Frissített tartalom a Transact-SQL-parancsfájlok használatával feladatok automatizálásához | Frissítve, és a tartalom egyértelművé [feladat automatizálása a Transact-SQL-parancsfájlok használatával](sql-database-job-automation-overview.md) önálló adatbázisok, rugalmas készletek és a felügyelt példányok. |
+| Biztonsági tartalom felügyelt példányok frissítése | Frissítve, és egyértelművé tartalmát a [felügyelt példányok biztonsági modell](sql-database-security-overview.md), és jelentkezzen be a biztonsági modell önálló adatbázisokhoz és rugalmas készletek szokásos testhelyzetből. |
+| Frissítve az összes útmutatóink és oktatóanyagaink segítségével | A rövid útmutatók és oktatóanyagok az összes a [dokumentáció](https://docs.microsoft.com/azure/sql-database) frissítve, és frissül, hogy megfeleljen a módosításokat az Azure Portalon. |
+| A hozzáadott gyors áttekintés útmutatók | Hozzáadott egy áttekintés gyorsútmutató [önálló adatbázisok](sql-database-quickstart-guide.md) és [felügyelt példányai](sql-database-managed-instance-quickstart-guide.md). |
 | Új SQL Database szószedet | Ez [feltételek szószedet](sql-database-glossary-terms.md) cikk SQL-adatbázis használati és az elsődleges fogalmi oldal, amely ismerteti a környezetben kifejezés mutató hivatkozások végleges listáját tartalmazza. |
 | &nbsp; |
 

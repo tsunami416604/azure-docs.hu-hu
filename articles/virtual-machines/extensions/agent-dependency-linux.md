@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 16491ccc8a9cdc24b82c4c4e27705fa30da61088
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 750393e6dba17ab8ba024f9f1fbb2f9127dd81ab
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60800231"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521702"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Az Azure Figyelőfüggőség virtuálisgép-bővítmény linuxhoz
 
@@ -30,7 +30,7 @@ Virtuális gépek térkép funkció az Azure Monitor az adatok lekérése a Micr
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-Az Azure virtuális gép függőségi ügynök-bővítmény linuxhoz is futtatható a felsorolt támogatott operációs rendszerek a [támogatott operációs rendszerek](../../azure-monitor/insights/vminsights-onboard.md#supported-operating-systems) virtuális gépek üzembe helyezés a cikkhez az Azure Monitor szakaszában.
+Az Azure virtuális gép függőségi ügynök-bővítmény linuxhoz is futtatható a felsorolt támogatott operációs rendszerek a [támogatott operációs rendszerek](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) virtuális gépek üzembe helyezés a cikkhez az Azure Monitor szakaszában.
 
 ## <a name="extension-schema"></a>Bővítményséma
 
@@ -81,7 +81,7 @@ A következő JSON Azure Linux virtuális gép az Azure virtuális gép függős
 | type | DependencyAgentLinux |
 | typeHandlerVersion | 9.5 |
 
-## <a name="template-deployment"></a>Sablonalapú telepítés
+## <a name="template-deployment"></a>Sablon telepítése
 
 Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Az előző szakaszban részletes JSON-sémájában az Azure Resource Manager-sablon használható az Azure virtuális gép függőségi ügynök bővítmény futtatásához az Azure Resource Manager-sablon telepítése során. 
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/16/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: e0ad1e85a4cd47de823bc4f224b5a8834b1068b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3701a69ab72abf20a4f1608a1cee56c9cea38aca
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61459317"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523641"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Webes alkalmazás arány korlát tűzfalszabály konfigurálása az Azure PowerShell-lel
 Az Azure-alapú webes alkalmazás tűzfal (WAF) arány korlátozó szabály Azure bejárati ajtajának szabályozza az egyetlen ügyfél IP-cím egy egy perces időszakra engedélyezett kérelmek száma.
@@ -55,17 +55,17 @@ Install-Module -Name Az.FrontDoor
 Hozzon létre egy bejárati ajtajának profilt leírt utasítások alapján [a rövid útmutató: Bejárati ajtajának profil létrehozása](quickstart-create-front-door.md)
 
 ## <a name="define-url-match-conditions"></a>Adja meg az URL-cím egyezési feltételei
-Adja meg az URL-címe (URL-címet tartalmaz /promo) egyeztetési feltételt használatával [New-AzFrontDoorMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoormatchconditionobject).
+Adja meg az URL-címe (URL-címet tartalmaz /promo) egyeztetési feltételt használatával [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject).
 A következő példa megegyezik */promo* értékeként a *RequestUri* változó:
 
 ```powershell-interactive
-   $promoMatchCondition = New-AzFrontDoorMatchConditionObject `
+   $promoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
      -MatchVariable RequestUri `
      -OperatorProperty Contains `
      -MatchValue "/promo"
 ```
 ## <a name="create-a-custom-rate-limit-rule"></a>Hozzon létre egy egyéni arány korlát szabályt
-Nastavit pomocí arány korlátot [New-AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-AzFrontDoorCustomRuleObject). A következő példában a korlát beállításé pedig 1000 van beállítva. Bármely ügyfél kéréseit, a promóciós oldalra, egy perc alatt 1000 meghaladó le lesznek tiltva, amíg el nem kezdi a következő percben.
+Nastavit pomocí arány korlátot [New-AzFrontDoorCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject). A következő példában a korlát beállításé pedig 1000 van beállítva. Bármely ügyfél kéréseit, a promóciós oldalra, egy perc alatt 1000 meghaladó le lesznek tiltva, amíg el nem kezdi a következő percben.
 
 ```powershell-interactive
    $promoRateLimitRule = New-AzFrontDoorCustomRuleObject `
@@ -79,14 +79,14 @@ Nastavit pomocí arány korlátot [New-AzFrontDoorCustomRuleObject](/powershell/
 
 ## <a name="configure-a-security-policy"></a>Biztonsági szabályzat konfigurálása
 
-Keresse meg az erőforráscsoport, amely tartalmazza a bejárati ajtajának profil használatával `Get-AzureRmResourceGroup`. Ezután konfigurálja a biztonsági szabályzat szabállyal egy egyéni arány korlát [New-AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/new-azfrontdoorfirewallPolicy) , amely tartalmazza a bejárati ajtajának profil megadott erőforráscsoportban.
+Keresse meg az erőforráscsoport, amely tartalmazza a bejárati ajtajának profil használatával `Get-AzureRmResourceGroup`. Ezután konfigurálja a biztonsági szabályzat szabállyal egy egyéni arány korlát [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) , amely tartalmazza a bejárati ajtajának profil megadott erőforráscsoportban.
 
 Az alábbi példában az erőforráscsoport nevét használja *myResourceGroupFD1* feltételezve, hogy létrehozta a bejárati ajtó profil szereplő utasítások segítségével a [a rövid útmutató: Hozzon létre egy bejárati ajtajának](quickstart-create-front-door.md) cikk.
 
- using [New-AzFrontDoorFireWallPolicy](/powershell/module/Az.FrontDoor/New-AzFrontDoorFireWallPolicy).
+ használatával [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```powershell-interactive
-   $ratePolicy = New-AzFrontDoorFireWallPolicy `
+   $ratePolicy = New-AzFrontDoorWafPolicy `
      -Name "RateLimitPolicyExamplePS" `
      -resourceGroupName myResourceGroupFD1 `
      -Customrule $promoRateLimitRule `

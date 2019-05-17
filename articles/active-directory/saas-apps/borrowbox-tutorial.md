@@ -16,11 +16,11 @@ ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d11c6472265d7efca98a7e822ca8b8945a13c2ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60282368"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65813270"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező BorrowBox
 
@@ -195,7 +195,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó BorrowBox jön létre. B
 > [!Note]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [BorrowBox támogatási csapatának](mailto:borrowbox@bolinda.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

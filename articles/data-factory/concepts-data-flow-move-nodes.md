@@ -1,18 +1,17 @@
 ---
 title: Az Azure Data Factory adatokat folyamat áthelyezési csomópontok
-description: Hogyan kívánja áthelyezni a csomópontok a egy Azure Data Factory adatokat folyamatábrája
+description: Hogyan kívánja áthelyezni a csomópontok a egy Azure Data Factory leképezési adatok folyamatábrája
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: c41ab1c0c8a26488c476d187fbc1bcac2e624ac8
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
-ms.translationtype: HT
+ms.openlocfilehash: 951a5d4fcbd561b085b0377bde48e820dc8972a2
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65472027"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519972"
 ---
 # <a name="mapping-data-flow-move-nodes"></a>Leképezés Adatcsomópontok folyamat áthelyezése
 
@@ -24,8 +23,14 @@ Az Azure Data Factory adatfolyam tervezőfelületére az a "fejlesztés" felüle
 
 Tehát nélkül egy fogd és vidd paradigm, az átalakítási csomópont, "áthelyezése" módja módosítani a beérkező streamben. Ehelyett mozgatnia átalakítások a "bejövő streamet" módosításával.
 
-Az Azure Data Factory adatfolyam Streamek jelölik az adatok áramlását. Átalakítási beállítások panelen megjelenik egy "Bejövő Stream" mezőt. Ez jelzi, mely beérkező adatfolyam van számból az átalakítás. Az átalakítási csomópont a diagramon használt fizikai helynek bejövő Stream nevére kattint, és a egy másik adatfolyam kiválasztásával módosíthatja. Az aktuális átalakítás együtt az adott adatfolyam minden ezt követő átalakítások majd áthelyezi az új helyen.
+## <a name="streams-of-data-inside-of-data-flow"></a>Adatok folyamaton adatfolyam
+
+Az Azure Data Factory adatfolyam Streamek jelölik az adatok áramlását. Átalakítási beállítások panelen megjelenik egy "Bejövő Steam" mezőt. Ez jelzi, mely beérkező adatfolyam van számból az átalakítás. Az átalakítási csomópont a diagramon használt fizikai helynek bejövő Stream nevére kattint, és a egy másik adatfolyam kiválasztásával módosíthatja. Az aktuális átalakítás együtt az adott adatfolyam minden ezt követő átalakítások majd áthelyezi az új helyen.
 
 Egy vagy több átalakítások átalakításban utána áthelyezéséhez, majd az új hely az adatok az adatfolyam tartományhoz fog csatlakozni egy új ág keresztül.
 
 Ha nincsenek további átalakítások után a kiválasztott csomópontot, majd csak az adott átalakítási át az új helyen.
+
+## <a name="next-steps"></a>További lépések
+
+Miután befejezte az adatfolyam-Tervező, kapcsolja be a hibakeresési gombra és a tesztelés közben ki hibakeresési módban vagy közvetlenül a [adatok folyamattervezőben](concepts-data-flow-debug-mode.md) vagy [folyamat hibakeresési](control-flow-execute-data-flow-activity.md).

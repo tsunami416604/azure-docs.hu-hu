@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f29ab7b908184533885929040ca8eccf56cda92d
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 06112361434a8217df6714a70d0059c175e98ac8
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464418"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521722"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directoryval kapcsolatos gyakori kérdések
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
@@ -210,4 +210,4 @@ További információ: [A felhasználókiépítés és -megszüntetés automatiz
 - - -
 **K:  Állítható be a biztonságos LDAP-kapcsolatot az Azure ad-vel?**
 
-**V:**  Nem. Az Azure AD nem támogatja a Lightweight Directory Access Protocol (LDAP) protokollt. Azonban célszerű lehet keresztül az Azure-hálózatot a megfelelően konfigurált hálózati biztonsági csoportokkal az Azure AD Domain Services (Azure AD DS) használatával érhető el LDAP-kapcsolatot. További információkért lásd: https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.
+**V:**  Nem. Az Azure AD nem támogatja a Lightweight Directory Access Protocol (LDAP) protokollt vagy a Secure LDAP-Címtárral közvetlenül. Azonban célszerű lehet engedélyezni az Azure AD-bérlőhöz, vagyis a megfelelően konfigurált hálózati biztonsági csoportokkal keresztül LDAP-kapcsolat eléréséhez az Azure-hálózatot az Azure AD tartományi szolgáltatások (Azure AD DS) példány. További információkért lásd: https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
-ms.openlocfilehash: 9b779021eca11638e8ee52ec11d082e5b0e89cd4
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 0d2c080be727d2ae13d6d9e5274f17cadffbe640
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506682"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786461"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Házirendek támogatása az Azure Kubernetes Service-ben
 
@@ -146,7 +146,7 @@ Előzetes verziójú funkciók vagy a szolgáltatás-jelző funkciók nem éles 
 
 Nyilvános előzetes verzióban érhető el a szolgáltatások olyan "ajánlott beavatkozást" támogatás keretében tartoznak, ezek a szolgáltatások előzetes verzióként érhetők el és nem éles céljára, és csak munkaidőben az AKS technikai támogatási csapat által támogatott. További információért tekintse meg:
 
-* [Az Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/en-us/support/faq/)
+* [Az Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/)
 
 > [!NOTE]
 > Előzetes verziójú funkciók az Azure érvénybe *előfizetés* szintjét. Ne telepítse az előzetes verziójú funkciók egy éles előfizetésre. Egy adott éles előfizetés előzetes verziójú funkciók API alapértelmezés módosíthatja, és befolyásolja a normál működést.

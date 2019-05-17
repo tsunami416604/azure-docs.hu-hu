@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 1515a026ae297a960f220a97449d2258c0b75e58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 37aef7c0ae06aefc69b8a72a80c8ade3951e8b0d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60553605"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799513"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>A Video Indexer-fiókot az Azure-hoz csatlakoztatott kezelése
 
@@ -55,13 +56,13 @@ A **beállítások** lap lehetővé teszi, hogy állítsa be az automatikus ská
 
 Automatikus skálázás nem méretezhető alább 1 RU vagy meghaladja az alapértelmezett a Media Services-fiók. Annak érdekében, hogy a korlát növelését, hozzon létre egy szolgáltatási kérelmet. Kvóták és korlátozások és a egy támogatási jegyet kapcsolatos információkért lásd: [kvóták és korlátozások](../../media-services/previous/media-services-quotas-and-limitations.md).
 
-![Regisztráció](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
+![Feliratkozás](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
 
 ## <a name="errors-and-warnings"></a>Hibák és figyelmeztetések
 
 Ha a fiók néhány van szüksége, lát kapcsolódó hibák és figyelmeztetések a fiók konfigurálásával kapcsolatban a a **beállítások** lap. Az üzeneteket az Azure Portalon pontos helyeket, ahol módosításokat szeretne hivatkozásokat tartalmaznak. Ez a szakasz további tájékoztatást nyújt a hibaüzenetek és figyelmeztető üzenetek.
 
-* Event Grid
+* Eseményrács
 
     Az Azure portal használatával EventGrid erőforrás-szolgáltatót regisztrálnia kell. Az a [az Azure portal](https://portal.azure.com/), lépjen a **előfizetések** > [. előfizetés] > **ResourceProviders** > **Microsoft.EventGrid**. Ha nem található a **regisztrált** állapotban van, kattintson a **regisztrálása**. Néhány perc alatt regisztrálni vesz igénybe. 
 
@@ -69,7 +70,7 @@ Ha a fiók néhány van szüksége, lát kapcsolódó hibák és figyelmeztetés
 
     Ellenőrizze, hogy az alapul szolgáló Media Services-fiók rendelkezik az alapértelmezett **folyamatos átviteli végponton** egy elindított állapotú. Ellenkező esetben nem lesz nézhet videókat a Media Services-fiók vagy a Video Indexer található.
 
-* Media szolgáltatás számára fenntartott egységek 
+* Fenntartott médiaegységek 
 
     A Media szolgáltatás számára fenntartott egységek érdekében, hogy az index videókat a Media szolgáltatás erőforráson kell lefoglalni. Az optimális indexelési teljesítmény érdekében javasoljuk, hogy legalább 10 S3 fenntartott egységek lefoglalása. Díjszabási információkért tekintse meg a gyakori kérdésekkel foglalkozó szakaszban, a [Media Services-díjszabás](https://azure.microsoft.com/pricing/details/media-services/) lapot.   
 

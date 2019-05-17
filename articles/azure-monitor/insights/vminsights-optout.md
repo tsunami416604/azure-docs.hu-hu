@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
-ms.openlocfilehash: c6a8322998b391b9021292a3a7213ded56b67feb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0f35ea3e35277ee7f1afd8278a31f45ed20c6995
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61386444"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522122"
 ---
 # <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>Hogyan tilthatja le a virtuális gépek figyelése és az Azure Monitor-beli virtuális gépek (előzetes verzió)
 
@@ -56,7 +56,7 @@ A következő lépések bemutatják, hogyan történő teljes eltávolításáho
 5. Megoldások listájából válassza ki **InfrastructureInsights (a munkaterület neve)**, majd a a **áttekintése** a megoldás oldalára, kattintson **törlése**.  Amikor a rendszer kéri, erősítse meg, kattintson a **Igen**.  
 6. Megoldások listájából válassza ki a **ServiceMap (a munkaterület neve)**, majd a a **áttekintése** a megoldás oldalára, kattintson **törlése**.  Amikor a rendszer kéri, erősítse meg, kattintson a **Igen**.  
 
-Ha az Azure Monitor-beli virtuális gépek előkészítése, mielőtt nem [engedélyezve van a teljesítményszámlálók gyűjtése](vminsights-onboard.md?toc=/azure/azure-monitor/toc.json#performance-counters-enabled) a Windows vagy Linux-alapú virtuális gépeket a munkaterületen, le kell tiltania ezeket a szabályokat a leírtlépéseketkövetve[Itt](../../azure-monitor/platform/data-sources-performance-counters.md?toc=/azure/azure-monitor/toc.json#configuring-performance-counters) Windows és Linux rendszeren.
+Ha az Azure Monitor-beli virtuális gépek előkészítése, mielőtt nem [engedélyezve van a teljesítményszámlálók gyűjtése](vminsights-enable-overview.md#performance-counters-enabled) a Windows vagy Linux-alapú virtuális gépeket a munkaterületen, le kell tiltania ezeket a szabályokat a leírtlépéseketkövetve[Itt](../platform/data-sources-performance-counters.md#configuring-performance-counters) Windows és Linux rendszeren.
 
 ## <a name="disable-monitoring-for-an-azure-vm-and-retain-workspace"></a>Tiltsa le egy Azure virtuális gép figyelését és a munkaterület megőrzése  
 

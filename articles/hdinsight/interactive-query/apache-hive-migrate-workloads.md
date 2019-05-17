@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: howto
 ms.date: 04/24/2019
-ms.openlocfilehash: b181edc08c51a5afa8682858b330acc84da7d73d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b39279e560cb1738ff9b33ec587562efd2ed4e8d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707012"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800950"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6-os Hive számítási feladatok migrálása HDInsight 4.0-s
 
@@ -29,8 +29,8 @@ Ez a cikk ismerteti az alábbiakat:
 
 Hive egyik előnye a külső adatbázishoz (néven a Hive-Metaadattár) metaadatainak exportálásához lehetővé teszi. A **Hive-Metaadattár** felelős tábla statisztikai adatait, beleértve a tábla tárolási helye, oszlopnevek és tábla index adatainak tárolására. A metaadattár adatbázisséma eltér a Hive-verziók között. Tegye a következőket, a HDInsight 3.6-os Hive-Metaadattár frissítése, hogy a HDInsight 4.0 rendszerrel kompatibilis legyen.
 
-1. Hozzon létre egy új példányt a külső metaadattár. HDInsight 3.6-os és a HDInsight 4.0 különböző metaadattár sémákra van szükség, és nem oszthat meg egyetlen metaadattár.
-1. A metaadattár új másolatának csatolása a) egy meglévő HDInsight 4.0-fürthöz, vagy (b) egy fürtöt, amely az első alkalommal hoz létre. Lásd: [külső metaadat-tárolók az Azure HDInsight használata](../hdinsight-use-external-metadata-stores.md) tudhat meg többet a külső metaadattár csatolása egy HDInsight-fürtön. A Metaadattár csatolást, automatikusan alakítja át a 4.0-kompatibilis metaadattár.
+1. Hozzon létre egy új példányt a külső metaadattár. HDInsight 3.6-os és a HDInsight 4.0 különböző metaadattár sémákra van szükség, és nem oszthat meg egyetlen metaadattár. Lásd: [külső metaadat-tárolók az Azure HDInsight használata](../hdinsight-use-external-metadata-stores.md) tudhat meg többet a külső metaadattár csatolása egy HDInsight-fürtön. 
+2. Indítsa el a ellen a HDI 3.6-fürt, a "Fő csomópont" szkriptműveletet végrehajtási csomópont típusaként. Illessze be a következő URI Azonosítót, a szövegmezőbe "Bash parancsfájl URI" jelölésű: https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh. A szövegmező "Argumentum" jelölésű, adja meg a kiszolgálónév, adatbázis, felhasználónevét és jelszavát a **másolt** Hive-metaadattár, szóközzel elválasztva. Nem tartalmazzák az ". database.windows.net" kiszolgálónév megadása esetén.
 
 > [!Warning]
 > A frissítés, amely a HDInsight 3.6-os metaadatok séma alakítja át a HDInsight 4.0 séma nem fordítható vissza.

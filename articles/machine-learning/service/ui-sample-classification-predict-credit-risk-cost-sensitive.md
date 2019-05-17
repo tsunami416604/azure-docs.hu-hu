@@ -1,7 +1,7 @@
 ---
 title: 'Besorolás: Hitelkockázatot (költség-és nagybetűket)'
 titleSuffix: Azure Machine Learning service
-description: A vizuális felhasználói felületet mintakísérlet bemutatja, hogyan hajtsa végre a költségérzékeny bináris osztályozási egy egyéni Python-szkript használatával. Hitelkockázat hitelkérelemben megadott információ alapján előrejelzi azt.
+description: Ez a cikk bemutatja, hogyan hozhat létre olyan összetett gépi tanulási kísérlet eredménye a vizuális felhasználói felületén. Egyéni Python-szkriptek végrehajtása és a legjobb lehetőség kiválasztása a több modell összehasonlítására is mutatja.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,26 +9,25 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: 433c258f86705f66e0163100407be7996d68bc6b
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.date: 05/10/2019
+ms.openlocfilehash: d714756c19b94eafc40cc0dbeffbc07704e8f94e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65440958"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787813"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>4 – besorolási. példa: Hitelkockázatot (költség-és nagybetűket)
 
-A vizuális felhasználói felületet mintakísérlet bemutatja, hogyan hajtsa végre a költségérzékeny bináris osztályozási egy egyéni Python-szkript használatával. A pozitív példák misclassifying költsége ötször mennyibe kerül a misclassifying a negatív minták.
+Ez a cikk bemutatja, hogyan hozhat létre olyan összetett gépi tanulási kísérlet eredménye a vizuális felhasználói felületén. Python-szkriptekkel egyéni logikát alkalmazzák, és a legjobb lehetőség kiválasztása a több modell összehasonlítására is mutatja.
 
-Ez a minta előrejelzi hitelkérelemben, figyelembe véve a téves besorolás költségek ismertetett információk alapján.
+Ez a minta betanítja a hitelkockázatot a kredit alkalmazással kapcsolatos adatok, például a kreditelőzmények életkor és a hitelkártya száma használatával besorolás. Ebben a cikkben, amelynek célja a saját machine learning problémák fogalmakat is alkalmazhat.
 
-Ez a kísérlet a probléma megoldásához modellek létrehozásának két különböző megközelítést összehasonlítva:
+Most csak ismerkedik a machine learninggel, ha akkor is vessen egy pillantást a [alapszintű osztályozó által igénybe vett minta](ui-sample-classification-predict-credit-risk-basic.md) első.
 
-- Képzés és az eredeti adathalmazból.
-- Az adatkészlet replikált képzést.
+A befejezett graph ehhez a kísérlethez itt látható:
 
-Mindkét módszer azt a modellek használatával tesztelési adathalmazon replikációs győződjön meg arról, hogy eredmények összhangban legyenek a költségek függvény kiértékelése. Mindkét módszerénél a két osztályozó teszteljük: **Kétosztályos támogató Vektorgép** és **Kétosztályos gyorsított döntési fa**.
+[![A kísérlet diagram](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,15 +37,18 @@ Mindkét módszer azt a modellek használatával tesztelési adathalmazon replik
 
     ![Nyissa meg a kísérlet](media/ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
 
-## <a name="related-sample"></a>Kapcsolódó minta
-
-Lásd: [minta 3 - besorolás: Hitelkockázat-becslés (alapszintű)](ui-sample-classification-predict-churn.md) téves besorolás költségek nélkül beállítása, amely ehhez a kísérlethez azonos problémával megoldja alapszintű kísérlethez.
-
 ## <a name="data"></a>Adatok
 
 A Németországi hitelkártya adatkészlet a UC Irvine adattárból használjuk. Ez az adatkészlet 20 funkciók és 1 címkével 1000 mintákat tartalmazza. Minden minta egy személyt jelöl. 20 szolgáltatásai közé tartozik a numerikus és a kategorikus funkciókat. Tekintse meg a [UCI webhely](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29) az adatkészlet további információt. Az utolsó oszlop, a címke, amely azt jelzi, hogy a hitelkockázat kiszámításához, és csak két lehetséges értékek: magas hitelkockázat = 2, és alacsony hitelkockázat = 1.
 
 ## <a name="experiment-summary"></a>Kísérlet összegzése
+
+Ez a kísérlet a probléma megoldásához modellek létrehozásának két különböző megközelítést összehasonlítva:
+
+- Képzés és az eredeti adathalmazból.
+- Az adatkészlet replikált képzést.
+
+Mindkét módszer azt a modellek használatával tesztelési adathalmazon replikációs győződjön meg arról, hogy eredmények összhangban legyenek a költségek függvény kiértékelése. Mindkét módszerénél a két osztályozó teszteljük: **Kétosztályos támogató Vektorgép** és **Kétosztályos gyorsított döntési fa**.
 
 Egy magas, alacsony kockázatú példa misclassifying költségének értéke 1, és egy, alacsony kockázatú példa misclassifying költsége 5. Használjuk egy **Python-szkript végrehajtására** fiókra a helytelen osztályozásra költsége a modult.
 
@@ -71,7 +73,7 @@ Költség függvény megfelelően, hogy egy új adatkészlet hozzon létre. Az �
 
 A magas kockázatú az adatok replikálása, tárgyaljuk, a Python-kód be egy **Python-szkript végrehajtására** modul:
 
-```
+```Python
 import pandas as pd
 
 def azureml_main(dataframe1 = None, dataframe2 = None):
@@ -104,12 +106,11 @@ A standard szintű kísérleti munkafolyamat létrehozását, betanítását és
 
 1. A tanulási algoritmusokat használ inicializálása **Kétosztályos támogató Vektorgép** és **két osztályú súlyozott döntési fa**.
 1. Használat **tanítási modell** a alkalmazni az algoritmus az adatokat, és a tényleges modell létrehozása.
-3. Használat **Score Model** pontszámok előállításához a tesztelési példák segítségével.
+1. Használat **Score Model** pontszámok előállításához a tesztelési példák segítségével.
 
 Az alábbi ábrán látható egy részét, amelyben az eredeti és replikált képzési csoportok segítségével két különböző SVM modelleket taníthat be ehhez a kísérlethez. **Modell betanításához** a gyakorlókészlethez csatlakozik és **Score Model** csatlakoztatva van a vizsgálat beállítása.
 
 ![Kísérlet diagram](media/ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
-
 
 A kiértékelés fázisban a kísérlet azt a számítási négy a modell pontosságát. Ehhez a kísérlethez használjuk **Evaluate Model** költség összehasonlítására példa, amelyek az ugyanazon téves besorolás rendelkezik.
 
@@ -121,7 +122,7 @@ Figyelje meg, hogy a replikált tesztadatkészlet használja-e a bemeneti **Scor
 
 A **Evaluate Model** modul egyetlen sor, amely tartalmazza a különböző mérőszámokat tartalmazó táblát hoz létre. Az eredmények pontosságának egyetlen készlet létrehozásához, először használjuk **sorok hozzáadása** úgy, hogy az eredmények ezeket egyetlen táblában. Használjuk majd a következő Python-szkriptet a **Python-szkript végrehajtására** az eredmények táblázatát adja meg a modell neve és a képzési megközelítés minden egyes sorára modult:
 
-```
+```Python
 import pandas as pd
 
 def azureml_main(dataframe1 = None, dataframe2 = None):
@@ -138,7 +139,6 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     result = pd.concat([new_cols, dataframe1], axis=1)
     return result,
 ```
-
 
 ## <a name="results"></a>Results (Eredmények)
 

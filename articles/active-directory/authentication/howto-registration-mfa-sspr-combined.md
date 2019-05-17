@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/1/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3baf2690ae07b87bb4d5dba30fcd20f62a1a4506
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: abe9cba604100a42a4cd29ccd5af47e8898ea409
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60358089"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65812923"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Kombinált engedélyezése biztonsági információk regisztrációs (előzetes verzió)
 
@@ -51,6 +51,37 @@ Ha konfigurálta a zónákhoz való társításának listája a hely az Internet
 * [https://mysignins.microsoft.com](https://mysignins.microsoft.com)
 * [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)
 
+## <a name="conditional-access-policies-for-combined-registration"></a>Egyesített regisztrációs vonatkozó feltételes hozzáférési szabályzatok
+
+Annak biztosítása, mikor és hogyan az Azure multi-factor Authentication és az önkiszolgáló jelszó-visszaállítás felhasználók Regisztráljon most már minden lehetséges a feltételes hozzáférési szabályzat felhasználói műveletek. Az előzetes verziójú funkció érhető el a szervezetek számára, akik engedélyezték a [kombinált regisztrációs előzetes](../authentication/concept-registration-mfa-sspr-combined.md). Ez a funkció engedélyezett a felhasználók regisztráljanak az Azure multi-factor Authentication és a egy központi helyről, például a megbízható hálózati helyekkel SSPR a HR-előkészítés során haszált szervezetek lehet. Feltételes hozzáférés a megbízható helyek létrehozásával kapcsolatos további információkért tekintse meg a cikket [a helyfeltétel Mi az Azure Active Directory feltételes hozzáférés?](../conditional-access/location-condition.md#named-locations)
+
+### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Hozzon létre egy megbízható helyről regisztráció megkövetelése
+
+A következő szabályzatot a kijelölt felhasználókkal, akik próbál meg regisztrálni, használja a kombinált regisztrációs felületet, és blokkolja a hozzáférést, kivéve, ha csatlakozik a megbízható hálózat megjelölve egy helyre vonatkozik.
+
+![Biztonsági adatok regisztrálása szabályozhatja egy feltételes hozzáférési szabályzat létrehozása](media/howto-registration-mfa-sspr-combined/conditional-access-register-security-info.png)
+
+1. Az a **az Azure portal**, keresse meg a **Azure Active Directory** > **feltételes hozzáférés**
+1. Válassza az **Új szabályzat** lehetőséget.
+1. A név adja meg a szabályzat nevét. Ha például **Security Info regisztrációs kombinált megbízható hálózatokon**
+1. A **hozzárendelések**, kattintson a **felhasználók és csoportok**, és válassza ki a felhasználókat és csoportokat szeretné a szabályzatot a alkalmazni
+
+   > [!WARNING]
+   > Felhasználók engedélyezni kell a [kombinált regisztrációs előzetes](../authentication/howto-registration-mfa-sspr-combined.md).
+
+1. A **alkalmazások vagy műveleteket a felhő**válassza **felhasználói műveletek**, ellenőrizze **regisztrálja biztonsági információit (előzetes verzió)**
+1. A **feltételek** > **helyek**
+   1. Konfigurálása **Igen**
+   1. Például **bármely helyre**
+   1. Kizárandó **minden megbízható hely**
+   1. Kattintson a **kész** a helyek panelen
+   1. Kattintson a **kész** a feltételek panelen
+1. A **hozzáférés-vezérlés** > **megadása**
+   1. Kattintson a **hozzáférés letiltása**
+   1. Kattintson a **kiválasztása**
+1. Állítsa be **házirend engedélyezése** való **a**
+1. Kattintson a **létrehozása**
+
 ## <a name="next-steps"></a>További lépések
 
 [A multi-factor Authentication és az SSPR elérhető módszerek](concept-authentication-methods.md)
@@ -60,3 +91,5 @@ Ha konfigurálta a zónákhoz való társításának listája a hely az Internet
 [Az Azure multi-factor Authentication konfigurálása](howto-mfa-getstarted.md)
 
 [Hibaelhárítási kombinált biztonsági adatok regisztrálása](howto-registration-mfa-sspr-combined-troubleshoot.md)
+
+[Mi a helyfeltétel az Azure Active Directory feltételes hozzáférés?](../conditional-access/location-condition.md)

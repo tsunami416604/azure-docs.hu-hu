@@ -13,19 +13,19 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: zhshang
-ms.openlocfilehash: 236bb39125ec03a9652a57f9cd4aaa5da2695452
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 1d87439b7afeb946fd37c468a0853adcb674ee5a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553743"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787653"
 ---
-| Erőforrás | Alapértelmezett korlát | Felső korlát | 
+| Resource | Alapértelmezett korlát | Felső korlát | 
 | --- | --- | --- |
-| Az Azure SignalR Service egységek példányonként az ingyenes díjcsomag |1 |1 |
+| Az Azure SignalR Service egységek példányonként az ingyenes díjcsomag |1. |1. |
 | Az Azure SignalR Service egységek Standard csomag esetében példányonként |100 |100 |
 | Az ingyenes csomag az Azure SignalR Service egységek előfizetésenként és régiónként|5 |5 |
-| Az Azure SignalR Service összes egység száma előfizetésenként és régiónként |50 |Korlátlan |
+| Az Azure SignalR Service összes egység száma előfizetésenként és régiónként |150 |Korlátlan |
 | Kapcsolatok / egység / nap ingyenes díjcsomag |20 |20 |
 | / Egység / nap a Standard szintű kapcsolatok |1,000 |1,000|
 | Az ingyenes díjcsomag tartalmaz üzenetek / egység / nap|20,000 |20,000 |

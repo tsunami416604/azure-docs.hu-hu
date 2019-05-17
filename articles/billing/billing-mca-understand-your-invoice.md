@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: ee6317f61f95b19effd64308b88f53c027582b63
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aee51793c66ae57f740300797b8fdc1799e685cd
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60371433"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604035"
 ---
 # <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>A Microsoft Ügyfélszerződéséhez számla feltételeinek értelmezése
 
@@ -41,7 +41,7 @@ A **számla Invoice Summary** az első lap tetején, és a számlázási profilj
 
 ![Számla összefoglalás szakasza](./media/billing-understand-your-invoice-mca/invoicesummary.png)
 
-| Időtartam | Leírás |
+| Időszak | Leírás |
 | --- | --- |
 | Sold to (Vevő) |A jogi személy, található a fióktulajdonságok számlázási címe|
 | Bill to (Számlázási cím) |Számlázási cím a számlázási profil, a számla számlázási profiltulajdonságok található fogadása|
@@ -57,13 +57,13 @@ A **számlázási összefoglalás** bemutatja a számlázási profilja alapján 
 
 ![A számlázás összefoglalás szakasza](./media/billing-understand-your-invoice-mca/billingsummary.png)
 
-| Időtartam | Leírás |
+| Időszak | Leírás |
 | --- | --- |
 | Díjak|A Microsoft a díjat a számlázási profil óta az utolsó számlázási időszakban száma összesen |
 | Stáblisták |Értéket ad eredményül kapott kreditek |
 | Alkalmazza az Azure-kreditek | Azure-kreditet, amely automatikusan érvénybe lépnek az Azure díjat minden elszámolási időszak |
 | Részösszeg |Az üzem előtti adó összege miatt |
-| Adó |A típus és szoftverhasználatért, attól függően, az ország, a számlázási profilja adó összegét. Ha nem rendelkezik adót megfizetni, akkor a számla adója nem jelenik meg. |
+| Adó |A típus és szoftverhasználatért, attól függően, az országban vagy régióban, a számlázási profilja adó összegét. Ha nem rendelkezik adót megfizetni, akkor a számla adója nem jelenik meg. |
 | Becsült teljes megtakarítás |A becsült teljes összeget, hatékony kedvezmény mentette. Ha van ilyen, hatékony kedvezményes díjszabás alapján vannak listázva alatt a vásárlás részletei elemek számla szakaszban. |
 
 ### <a name="invoice-sections"></a>Számlaszakaszok
@@ -82,15 +82,15 @@ A fizetendő összeg esetében minden egyes szolgáltatás család különbsége
 
 ![Számla szakasz részletei](./media/billing-understand-your-invoice-mca/invoicesectiondetails.png)
 
-| Időtartam |Leírás |
+| Időszak |Leírás |
 | --- | --- |
 | Egységár | A szolgáltatás (a pénznem díjszabása), amely hatékony egység árát a használat gyakorisága használt. Ez egy termék, szolgáltatás család, mérőszámok és ajánlat esetében egyedi legyen. |
 | Mennyiség | Vásárolt, vagy az elszámolási időszakban felhasznált mennyiség |
 | Díjak/kreditek | Nettó összeg díjak kreditek/visszatérítések alkalmazása után |
 | Azure-Kredit | A díjak kreditek alkalmazza az Azure-kreditek mennyiségét|
-| Adó mértéke | Attól függően, ország OK |
+| Adó mértéke | Ország/régió függően OK |
 | Adó összege | Adó mértéke alapján meg kell vásárolnia a alkalmazni adó összege |
-| Összes | A fizetendő összeg vásárlására |
+| Összeg | A fizetendő összeg vásárlására |
 
 ### <a name="how-to-pay"></a>Fizetési
 
@@ -103,7 +103,7 @@ Ha külső szolgáltatások szerepel a számlán, nevét és címét, mindegyik 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>A Microsoft Ügyfélszerződéséhez való hozzáférés ellenőrzése
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolat
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Lépjen kapcsolatba velünk
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 

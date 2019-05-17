@@ -12,12 +12,12 @@ ms.workload: search
 ms.date: 05/02/2019
 ms.author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 91c58507d8758a65772110afba71354deecd3b12
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5374ff896613dd8f8563a2054be8a92103e63fbb
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024285"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523902"
 ---
 # <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>Az Azure Search szolgáltatás REST api-verzió a 2019-05-06-előzetes verzió
 Ez a cikk ismerteti a `api-version=2019-05-06-Preview` verzióját az Azure Search szolgáltatás REST API-t kínáló kísérleti funkciók nem általánosan érhetők el.
@@ -37,6 +37,8 @@ Ez a cikk ismerteti a `api-version=2019-05-06-Preview` verzióját az Azure Sear
 A korábbi előzetes verziók bejelentett funkciók vannak nyilvános előzetes verzióként. Ha egy korábbi előzetes api-verzióval rendelkező API hívása, akkor továbbra is azt a verziót, vagy váltson `2019-05-06-Preview` várt viselkedés módosítása nélkül.
 
 + [moreLikeThis lekérdezési paraméter](search-more-like-this.md) talál, amely egy adott dokumentum a dokumentumokat. Ez a funkció a korábbi verziókra lett. 
+* [Fürt megosztott kötetei szolgáltatás blob-indexelés](search-howto-index-csv-blobs.md) szöveges blob kiszolgálónként egy dokumentum figyelésekor soronként egy új dokumentumot hoz létre.
+* [MongoDB API támogatása a Cosmos DB-indexelő](search-howto-index-cosmosdb.md) előzetes verzióban érhető el.
 
 
 ## <a name="how-to-call-a-preview-api"></a>Egy előzetes verziójú API meghívása

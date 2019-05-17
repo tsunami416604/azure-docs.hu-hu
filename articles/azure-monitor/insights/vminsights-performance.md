@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2019
+ms.date: 05/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 4fa2553622d5ef2d08ec148b6a70aab6de257407
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c83a862a37dbf28c6933877bf4a0aecc4364e6c5
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61385920"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522091"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Hogyan diagram teljesítmény és az Azure Monitor-beli virtuális gépek (előzetes verzió)
 Az Azure Monitor-beli virtuális gépek több fő teljesítménymutatók (KPI-k) segítségével eldöntheti, milyen jól a virtuális gép működik-e a cél teljesítménydiagramok készletét tartalmazza. A diagramok megjelenítése az erőforrás-használatot egy időszakon belül, így azonosíthatja a szűk keresztmetszeteket, a rendellenességeket, vagy váltson át az egyes gépek megtekintése a kiválasztott metrika alapján erőforrás-használat listázása egy perspektíva. Áll számos elemet kell figyelembe venni a teljesítmény esetén, amelyek az Azure Monitor a virtuális gépek figyelők legfontosabb operációs rendszer teljesítménymutatókat kapcsolódó processzor, memória, hálózati adapter és lemezhasználat. Teljesítmény egészíti ki a állapotát a figyelési funkció, és tegye elérhetővé a problémákat, amelyek jelzik, hogy egy lehetséges rendszer összetevő hibája, támogatási finomhangolása és optimalizálási hatékonyság elérése érdekében, vagy támogatja a kapacitástervezés segít.  
@@ -105,6 +105,21 @@ A következő kapacitás kihasználtsága diagramok áll rendelkezésre:
 Tekinthetők a kijelölt diagram az utolsó Azure-irányítópultra a felső sarkában az diagramok PIN-kód egyik PIN-kód ikonra kattint. Az irányítópultról, átméretezheti és áthelyezheti a diagramot. Jelölje ki a diagram az irányítópulton a rendszer átirányítja Önt az Azure Monitor-beli virtuális gépek, és betölti a teljesítmény részletes nézete a virtuális gép.  
 
 ![Virtuális gép insights teljesítmény közvetlenül a virtuális gép megtekintése](./media/vminsights-performance/vminsights-performance-directvm-01.png)
+
+## <a name="view-performance-directly-from-an-azure-virtual-machine-scale-set"></a>Egy Azure-beli virtuálisgép-méretezési csoportot közvetlenül a teljesítmény megtekintése
+Elérheti az Azure-beli virtuálisgép-méretezési csoportot, hajtsa végre az alábbi lépéseket.
+
+1. Az Azure Portalon válassza ki a **a Virtual machine scale sets**.
+2. A listából válassza ki a virtuális gép és a a **figyelés** rész válassza **Insights (előzetes verzió)** megtekintéséhez a **teljesítmény** fülre.
+
+Ez az oldal az Azure Monitor teljesítmény nézeténél például hatóköre a kiválasztott méretezési tölti be. Ez lehetővé teszi, tekintse meg a felső N-példányok a méretezési csoportban lévő figyelt metrika szétosztva, a teljes méretezési összesített teljesítményadatainak megtekintése és a trendek kijelölt metrikákhoz megtekintheti az egyes példányok n, a méretezési csoport beállítása. Válassza ki egy példányt a listanézet lehetővé teszi annak térkép betöltése, és keresse meg azt a példányt részletes teljesítmény nézetet.
+
+Tekinthetők a kijelölt diagram az utolsó Azure-irányítópultra a felső sarkában az diagramok PIN-kód egyik PIN-kód ikonra kattint. Az irányítópultról, átméretezheti és áthelyezheti a diagramot. Jelölje ki a diagram az irányítópulton a rendszer átirányítja Önt az Azure Monitor-beli virtuális gépek, és betölti a teljesítmény részletes nézete a virtuális gép.  
+
+![Virtuális gép insights teljesítmény közvetlenül a virtuálisgép-méretezési csoport beállítása megtekintése](./media/vminsights-performance/vminsights-performance-directvmss-01.png)
+
+>[!NOTE]
+>Egy adott példányt részletes teljesítmény nézetet a példányok nézetből a méretezési csoporthoz is elérhető. Navigáljon a **példányok** alatt a **beállítások** szakaszt, és válassza a **Insights (előzetes verzió)**.
 
 ## <a name="alerts"></a>Riasztások  
 Előre konfigurált riasztási szabályok engedélyezve van az Azure Monitor részeként a virtuális gépek teljesítmény-mérőszámok nem tartalmazzák. Nincsenek [állapotriasztások](vminsights-health.md#alerts) megfelelő teljesítménnyel kapcsolatos problémák az Azure virtuális gépen észlelt, például a magas CPU-kihasználtság, kevés a szabad memória érhető el, kevés lemezterület, stb.  Ezek állapotriasztások azonban csak alkalmazni az összes virtuális gépen engedélyezve van az Azure Monitor-beli virtuális gépek. 

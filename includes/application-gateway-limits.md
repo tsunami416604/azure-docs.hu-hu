@@ -4,14 +4,14 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 3/26/2019
 ms.author: victorh
-ms.openlocfilehash: 5ad1339c04444bcb4cc550be26e239e65227d2ce
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: e35f01cc5479a5d27d92c9ed74a12bc44db673cd
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58494969"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65754048"
 ---
-| Erőforrás | Alapértelmezett korlát | Megjegyzés |
+| Resource | Alapértelmezett/maximális korlát | Megjegyzés |
 | --- | --- | --- |
 | Azure Application Gateway |előfizetésenként 1000 | |
 | Előtérbeli IP-konfigurációk |2 |1 nyilvános és 1 magán |
@@ -27,8 +27,8 @@ ms.locfileid: "58494969"
 | Megbízható legfelső szintű tanúsítványok |100 | |
 | Minimális kérés időtúllépése |1 másodperc | |
 | Kérelem maximális időtúllépése |24 óra | |
-| Helyek száma |100<sup>1</sup> |HTTP-figyelőnként 1 |
-| URL-címleképezések száma figyelő |1 | |
+| Webhelyek száma |100<sup>1</sup> |HTTP-figyelőnként 1 |
+| URL-címleképezések száma figyelő |1. | |
 | URL-cím maximális-alapú szabályt leképezése|100||
 | Az átirányítási konfigurációk |100<sup>1</sup>| |
 | WebSocket egyidejű kapcsolat |Medium gateways 20k<br> Nagy átjárók 50k| |

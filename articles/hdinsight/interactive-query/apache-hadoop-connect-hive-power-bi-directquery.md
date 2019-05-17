@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/25/2018
-ms.openlocfilehash: 657f8df959ccda5d51748ef5fbfc2e280f7d2c2e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: fb4e16c8be5344c5b9947758b6a09845b470196d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714813"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800992"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>A Microsoft Power BI közvetlen lekérdezés használatával az Azure HDInsight interaktív lekérdezés Apache Hive-adatok megjelenítése
 
@@ -79,7 +79,7 @@ Továbbra is az előző eljárást.
 Ebben a cikkben megismerkedett a Microsoft Power BI használatával HDInsight adatok vizualizálásához.  Adatmegjelenítés további információkért lásd a következő cikkeket:
 
 * [A Microsoft Power BI ODBC segítségével az Azure HDInsight az Apache Hive-adatok megjelenítése](../hadoop/apache-hadoop-connect-hive-power-bi.md). 
-* [Az Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához](./../hdinsight-connect-hive-zeppelin.md).
+* [Az Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához](../interactive-query/hdinsight-connect-hive-zeppelin.md).
 * [Excel csatlakoztatása a Microsoft Hive ODBC illesztőprogram segítségével a HDInsight](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
 * [Excel Power Query használatával csatlakozni az Apache Hadoop](../hadoop/apache-hadoop-connect-excel-power-query.md).
 * [Csatlakozás az Azure HDInsight és a Data Lake Tools for Visual Studio használatával, az Apache Hive-lekérdezések futtatása](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).

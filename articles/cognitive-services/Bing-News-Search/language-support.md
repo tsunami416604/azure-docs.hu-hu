@@ -3,19 +3,19 @@ title: Nyelvi támogatás – Bing News Search API
 titleSuffix: Azure Cognitive Services
 description: Természetes nyelvek, ország és a Bing News Search API által támogatott régiók listáját.
 services: cognitive-services
-author: MikeDodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
-ms.author: v-gedod
-ms.openlocfilehash: f94ebb9b46ade0c03f65fdeb78bc7be96794a3d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: aahi
+ms.openlocfilehash: e8a7f6d20ed36c4b3e900602fb52e31dceefae88
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60201414"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799326"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>A Bing News Search API nyelvéhez és régiójához támogatása
 
@@ -37,20 +37,20 @@ Az ország/régió listáját, amelyek kódjai, előfordulhat, hogy adja meg a `
 |Ausztria|német|Németország-AT|
 |Svájc|német|Németország – CH|
 |Németország|német|de-DE|
-|Ausztrália|Angol|en-Ausztrália|
-|Kanada|Angol|en-hitelesítésszolgáltató|
-|Egyesült Királyság|Angol|en-GB|
-|Indonézia|Angol|en-azonosító|
-|Írország|Angol|en-IE|
-|India|Angol|en-IN|
-|Malajzia|Angol|en-MY|
-|Új-Zéland|Angol|en-NZ|
-|Fülöp-szigeteki Köztársaság|Angol|en-PH|
-|Szingapúr|Angol|en-SG|
-|Egyesült Államok|Angol|en-US|
-|Angol|Általános|en-WW|
-|Angol|Általános|en-XA|
-|Dél-Afrika|Angol|en-ZA|
+|Ausztrália|angol|en-Ausztrália|
+|Kanada|angol|en-hitelesítésszolgáltató|
+|Egyesült Királyság|angol|en-GB|
+|Indonézia|angol|en-azonosító|
+|Írország|angol|en-IE|
+|India|angol|en-IN|
+|Malajzia|angol|en-MY|
+|Új-Zéland|angol|en-NZ|
+|Fülöp-szigeteki Köztársaság|angol|en-PH|
+|Szingapúr|angol|en-SG|
+|Egyesült Államok|angol|en-US|
+|angol|Általános|en-WW|
+|angol|Általános|en-XA|
+|Dél-Afrika|angol|en-ZA|
 |Argentína|spanyol|es-AR|
 |Chile|spanyol|es-CL|
 |Spanyolország|spanyol|es-ES|
@@ -84,10 +84,10 @@ Az ország/régió listáját, amelyek kódjai, előfordulhat, hogy adja meg a `
 |---------------------|--------------|-----------------|
 |Dánia|dán|da-DK|
 |Németország|német|de-DE|
-|Ausztrália|Angol|en-Ausztrália|
-|Egyesült Királyság|Angol|en-GB|
-|Egyesült Államok|Angol|en-US|
-|Angol|Általános|en-WW|
+|Ausztrália|angol|en-Ausztrália|
+|Egyesült Királyság|angol|en-GB|
+|Egyesült Államok|angol|en-US|
+|angol|Általános|en-WW|
 |Chile|spanyol|es-CL|
 |Mexikó|spanyol|es-MX|
 |Egyesült Államok|spanyol|es-US|
@@ -106,11 +106,11 @@ Az ország/régió listáját, amelyek kódjai, előfordulhat, hogy adja meg a `
 |Ország/régió|Nyelv|Piaci kód|  
 |---------------------|--------------|-----------------|
 |Németország|német|de-DE|
-|Ausztrália|Angol|en-Ausztrália|
-|Egyesült Királyság|Angol|en-GB|
-|Egyesült Államok|Angol|en-US|
-|Kanada|Angol|en-hitelesítésszolgáltató|
-|India|Angol|en-IN|
+|Ausztrália|angol|en-Ausztrália|
+|Egyesült Királyság|angol|en-GB|
+|Egyesült Államok|angol|en-US|
+|Kanada|angol|en-hitelesítésszolgáltató|
+|India|angol|en-IN|
 |Franciaország|francia|FR-FR|
 |Kanada|francia|FR-hitelesítésszolgáltató|
 |Brazília|portugál|pt-BR|
@@ -137,7 +137,7 @@ Az alábbiakban a ország/régió kódokat, amelyeket lehet, hogy a `cc` lekérd
 |Németország|DE|  
 |Hongkong (KKT)|HK|  
 |India|IN|  
-|Indonézia|ID (Azonosító)|  
+|Indonézia|azonosító|  
 |Olaszország|IT|  
 |Japán|JP|  
 |Korea|KR|  
@@ -145,7 +145,7 @@ Az alábbiakban a ország/régió kódokat, amelyeket lehet, hogy a `cc` lekérd
 |Mexikó|MX|  
 |Hollandia|NL|  
 |Új-Zéland|NZ|  
-|Norvégia|NO|  
+|Norvégia|NEM|  
 |Kínai Népköztársaság|CN|  
 |Lengyelország|PL|  
 |Portugália|PT|  

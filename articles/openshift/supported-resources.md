@@ -7,13 +7,13 @@ ms.author: twhitney
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 22cc195b7808ad4a9111aafcf883a68c51f3709f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 05/15/2019
+ms.openlocfilehash: 5182a5e325bd7883af1a7d102d3e02b277a5089e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65076105"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788699"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Red Hat Openshiftet Azure-erőforrások
 
@@ -21,17 +21,7 @@ Ez a témakör felsorolja az Azure-régiók és a Microsoft Azure Red Hat OpenSh
 
 ## <a name="azure-regions"></a>Azure-régiók
 
-Az Azure Red Hat OpenShift fürtök a következő Azure-régiókban világszerte telepítheti:
-
-|Régió|CLI-kód|
-|-|-|
-|🇦🇺 Kelet-Ausztrália|`australiaeast`|
-|🇨🇦 Közép-Kanada|`canadacentral`|
-|🇨🇦 Canada East|`canadaeast`|
-|🇺🇸 USA keleti RÉGIÓJA|`eastus`|
-|🇺🇸 USA nyugati RÉGIÓJA|`westus`|
-|🇪🇺 Nyugat-Európa|`westeurope`|
-|🇪🇺 Észak-Európa|`northeurope`|
+Lásd: [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) fürtök régióban, ahol telepítheti az Azure Red Hat OpenShift aktuális listáját.
 
 ## <a name="virtual-machine-sizes"></a>Virtuálisgép-méretek
 

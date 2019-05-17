@@ -1,5 +1,5 @@
 ---
-title: Titkosítás inaktív ügyfél által kezelt kulcsok használata az Azure Key Vault – Azure Search
+title: Titkosítás inaktív ügyfél által kezelt kulcsok használata az Azure Key Vault (előzetes verzió) – Azure Search
 description: Kiegészítés a kiszolgálóoldali titkosítás az indexeket és a kulcsok létrehozása és kezelése az Azure Key Vault révén az Azure Search szinonimatérképet keresztül.
 author: NatiNimni
 manager: jlembicz
@@ -9,14 +9,19 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: ''
-ms.openlocfilehash: 987b56a9571fd50f605dbe6fb4112ef857021530
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 9d2cd2a2f4b3143d58d0ef03d67de094ea03303e
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029175"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523095"
 ---
 # <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Az Azure Search encryption ügyfél által kezelt kulcsok használata az Azure Key Vaultban
+
+> [!Note]
+> Az ügyfél által felügyelt kulcsok titkosítási előzetes állapotban van, nem éles használatra szánt. A [REST API verzióját 2019-05-06-Preview](search-api-preview.md) ezt a szolgáltatást biztosít. A .NET SDK 8.0. dátumú előzetes sémaverzióra is használhatja.
+>
+> Ez a szolgáltatás ingyenes szolgáltatásokhoz nem érhető el. Ekkor vagy később a 2019-01-01 létrehozott számlázható keresési szolgáltatás kell használnia. Rendszer jelenleg nem portál támogatja.
 
 Alapértelmezés szerint az Azure Search titkosítja az inaktív felhasználói tartalom [szolgáltatás által kezelt kulcsokkal](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest#data-encryption-models). Egy további titkosítási réteget kulcsok létrehozása és kezelése az Azure Key Vault használata az alapértelmezett titkosítási egészítheti ki. Ez a cikk végigvezeti a lépéseken.
 
@@ -26,20 +31,17 @@ Az ügyfél által felügyelt kulcsok titkosítási index vagy szinten szinonim�
 
 A Key vault-kulcstartók különböző különböző kulcsokat is használhat. Ez azt jelenti, hogy egyetlen keresési szolgáltatás több titkosított indexes\synonym térképek, minden egyes titkosítva, esetlegesen különböző ügyfél által felügyelt kulcsot használ, indexes\synonym leképezések nem titkosított ügyfél által kezelt kulcsok használata mellett is üzemeltethet. 
 
->[!Note]
-> **A szolgáltatás rendelkezésre állási**: Ügyfél által felügyelt kulcsokkal titkosítás a egy előzetes verziójú funkció, amely nem érhető el az ingyenes szolgáltatások. A díjköteles szolgáltatások esetében csak akkor érhető keresési szolgáltatásokat létrehozott vagy későbbi verzióját 2019-01-01, a legújabb előzetes api-verzió (api-version = a 2019-05-06-előzetes verzió). Jelenleg nincs ennek a funkciónak portál támogatás.
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ebben a példában a következő szolgáltatásokat használja. 
 
-[Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben az oktatóanyagban egy ingyenes szolgáltatás használhatja.
++ [Az Azure Search szolgáltatás létrehozása](search-create-service-portal.md) vagy [keresse meg a meglévő service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) az aktuális előfizetésben. Ebben az oktatóanyagban egy ingyenes szolgáltatás használhatja.
 
-[Hozzon létre egy Azure Key Vault-erőforrást](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) vagy nem található az előfizetéshez tartozó meglévő-tároló.
++ [Hozzon létre egy Azure Key Vault-erőforrást](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) vagy nem található az előfizetéshez tartozó meglévő-tároló.
 
-[Az Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) vagy [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli) -konfigurációs feladatokhoz használatos.
++ [Az Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) vagy [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli) -konfigurációs feladatokhoz használatos.
 
-[Postman](search-fiddler.md), [Azure PowerShell-lel](search-create-index-rest-api.md) és [Azure Search SDK](https://aka.ms/search-sdk-preview) hívja az előzetes verziójú REST API segítségével. Nincs portál vagy ügyfél által felügyelt titkosítás jelenleg .NET SDK-val támogatása.
++ [Postman](search-fiddler.md), [Azure PowerShell-lel](search-create-index-rest-api.md) és [Azure Search SDK](https://aka.ms/search-sdk-preview) hívja az előzetes verziójú REST API segítségével. Nincs portál vagy ügyfél által felügyelt titkosítás jelenleg .NET SDK-val támogatása.
 
 ## <a name="1---enable-key-recovery"></a>1 - kulcs-helyreállítási engedélyezése
 

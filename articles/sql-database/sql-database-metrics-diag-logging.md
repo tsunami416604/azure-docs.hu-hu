@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: fe53dd4419c06d376a1cc46db0d2621ccbc06f23
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 089f5335a65151c9c576346995f0bee34b5d10b4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548636"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65791897"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás
 
@@ -64,7 +64,7 @@ A következő diagnostics telemetriai adatainak gyűjtéséhez állíthat be az 
 
 | Telemetria adatbázisok figyelése | Önálló adatbázis és a készletezett adatbázisok támogatása | Példány adatbázisok támogatása |
 | :------------------- | ----- | ----- |
-| [Minden metrika](#all-metrics): Dtu-k/Processzorhasználat (%), a dtu-k/CPU-korlát, a fizikai tartalmaz napló írási adatok olvasása a százalékos aránya, százalékos aránya, sikeres/sikertelen/letiltott által tűzfalkapcsolatok, munkamenetek százaléka, feldolgozók százalékos aránya, storage, storage, és XTP tároló (%). | Igen | Nem |
+| [Alapvető metrikák](#basic-metrics): Dtu-k/Processzorhasználat (%), a dtu-k/CPU-korlát, a fizikai tartalmaz napló írási adatok olvasása a százalékos aránya, százalékos aránya, sikeres/sikertelen/letiltott által tűzfalkapcsolatok, munkamenetek százaléka, feldolgozók százalékos aránya, storage, storage, és XTP tároló (%). | Igen | Nem |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): A lekérdezések futásidejének statisztikai adatait, például a CPU-használat és a lekérdezés időtartama statisztikai információkat tartalmaz. | Igen | Igen |
 | [QueryStoreWaitStatistics](#query-store-wait-statistics): A lekérdezés várakozási statisztika (Mi a lekérdezések megvárta) kapcsolatos információkat tartalmaz például a Processzor, a napló és a ZÁROLÁS is. | Igen | Igen |
 | [Hibák](#errors-dataset): Az adatbázisok SQL-hibákkal kapcsolatos információkat tartalmaz. | Igen | Igen |
@@ -91,9 +91,9 @@ Használhatja a **diagnosztikai beállítások** menüje minden egyes, a készle
 
 A következő diagnostics telemetriai adatainak gyűjtéséhez állíthat be egy rugalmas készlet egyenlő erőforrás:
 
-| Erőforrás | Telemetriai adatok figyelése |
+| Resource | Telemetriai adatok figyelése |
 | :------------------- | ------------------- |
-| **Rugalmas készlet** | [Minden metrika](sql-database-metrics-diag-logging.md#all-metrics) eDTU/Processzorhasználat (%), eDTU/CPU-korlát, fizikai tartalmazza az beolvasott adatok százalékos aránya, napló írási százalékos, munkamenetek százaléka, feldolgozók százalékos, storage, tárolási százalékos, tárolási kapacitása és XTP tárolási százalékos aránya. |
+| **Rugalmas készlet** | [Alapvető metrikák](sql-database-metrics-diag-logging.md#basic-metrics) eDTU/Processzorhasználat (%), eDTU/CPU-korlát, fizikai tartalmazza az beolvasott adatok százalékos aránya, napló írási százalékos, munkamenetek százaléka, feldolgozók százalékos, storage, tárolási százalékos, tárolási kapacitása és XTP tárolási százalékos aránya. |
 
 Adatfolyam-telemetria diagnosztikai a rugalmas készletek és rugalmas készletekben található adatbázisokat konfigurálásához kell külön konfigurálni **mindkét** a következők közül:
 
@@ -113,7 +113,7 @@ Rugalmas készlet erőforrás diagnostics telemetriai adatainak streamelésének
 1. Adja meg a saját referenciaként a beállítás nevét.
 1. Válasszon ki egy cél-erőforrást, a streamelési diagnosztikai adatok: **Archiválás tárfiókba**, **egy eseményközpontba Stream**, vagy **Küldés a Log Analyticsnek**.
 1. Válassza ki a log Analytics, **konfigurálása** , és hozzon létre egy új munkaterületet kiválasztásával **+ létrehozás új munkaterület**, vagy válasszon ki egy meglévő munkaterületet.
-1. Válassza ki a rugalmas készlet diagnostics telemetriai adatainak jelölőnégyzetét: **AllMetrics**.
+1. Válassza ki a rugalmas készlet diagnostics telemetriai adatainak jelölőnégyzetét: **Alapszintű** metrikákat.
    ![Rugalmas készletek diagnosztika konfigurálása](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 1. Kattintson a **Mentés** gombra.
 1. Emellett konfigurálhatja adatfolyam-diagnosztika telemetria hajtsa végre a következő szakaszban leírt figyelni szeretné a rugalmas készleten belül minden egyes adatbázishoz.
@@ -137,7 +137,7 @@ Az önálló vagy készletezett adatbázisok diagnostics telemetriai adatainak s
 1. Adja meg a saját referenciaként a beállítás nevét.
 1. Válasszon ki egy cél-erőforrást, a streamelési diagnosztikai adatok: **Archiválás tárfiókba**, **egy eseményközpontba Stream**, vagy **Küldés a Log Analyticsnek**.
 1. A standard szintű, esemény-alapú figyelési környezetet válassza az alábbi jelölőnégyzetek az adatbázis diagnosztikai naplózási telemetriai adatok: **SQLInsights**, **AutomaticTuning**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics**, **hibák** , **DatabaseWaitStatistics**, **időtúllépések**, **blokkok**, és **holtpontok**.
-1. Egy speciális, egy perc-alapú figyelési környezetet, válassza a jelölőnégyzet **AllMetrics**.
+1. Egy speciális, egy perc-alapú figyelési környezetet, válassza a jelölőnégyzet **alapszintű** metrikákat.
    ![Egyetlen diagnosztika konfigurálása, a készletezett vagy adatbázis-példány](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 1. Kattintson a **Mentés** gombra.
 1. Ismételje meg ezeket a lépéseket minden egyes figyelni kívánt adatbázist.
@@ -153,7 +153,7 @@ Az önálló vagy készletezett adatbázisok diagnostics telemetriai adatainak s
 
 A következő diagnostics telemetriai adatainak gyűjtéséhez állíthat be a felügyelt példány erőforrás:
 
-| Erőforrás | Telemetriai adatok figyelése |
+| Resource | Telemetriai adatok figyelése |
 | :------------------- | ------------------- |
 | **Felügyelt példány** | [ResourceUsageStats](#resource-usage-stats-for-managed-instance) virtuális magok száma, átlagos Processzorhasználat (%), i/o-kérelmek, bájtot írt vagy olvasott, foglalt tárhely tartalmaz, és a használt tárterület. |
 
@@ -385,7 +385,7 @@ Vagy egyszerűen több:
 insights-{metrics|logs}-{category name}/resourceId=/{resource Id}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-Például az összes metrikát a blobnév lehet:
+Például lehet alapvető mérőszámait a blob nevét:
 
 ```powershell
 insights-metrics-minute/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.SQL/ servers/Server1/databases/database1/y=2016/m=08/d=22/h=18/m=00/PT1H.json
@@ -411,23 +411,26 @@ Az Azure SQL Analytics használja, ha az adathasználat Adatbetöltési a megold
 
 Figyelés elérhető telemetriai adatokat az Azure SQL Database, a rugalmas készletek és a felügyelt példány van leírása az alábbiakban található. Az SQL Analytics belül gyűjtött figyelési telemetriai is használható a saját egyéni elemzési és a fejlesztési használó [Azure Monitor log-lekérdezések](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) nyelv.
 
-## <a name="all-metrics"></a>Az összes metrikák
+## <a name="basic-metrics"></a>Alapmetrikák
 
-Tekintse meg az összes metrikák részleteit az alábbi táblázatok erőforrás szerint.
+Tekintse meg az alapvető metrikák részleteit az alábbi táblázatok erőforrás szerint.
 
-### <a name="all-metrics-for-elastic-pools"></a>Rugalmas készletek minden metrika
+> [!NOTE]
+> Alapvető metrikák lehetőség volt nevén összes metrikát. A változás csak az elnevezési volt, és nem változott, a figyelt metrikák. Ez a változás, hogy a jövőben további metrika kategóriát bevezetéséhez kezdeményezték.
+
+### <a name="basic-metrics-for-elastic-pools"></a>Rugalmas készletek alapszintű metrikák
 
 |**Erőforrás**|**Metrikák**|
 |---|---|
 |Rugalmas készlet|eDTU százalékos értéke, eDTU használja, az eDTU-korlát, processzor, fizikai adatok olvasási százalékos aránya, napló írási százalékos, munkamenetek százaléka, feldolgozók százalékos, tárhely, tárolási százalékos, tárolási kapacitása, XTP tárolási százalékos aránya |
 
-### <a name="all-metrics-for-azure-sql-databases"></a>Az Azure SQL Database összes metrikák
+### <a name="basic-metrics-for-azure-sql-databases"></a>Az Azure SQL Database alapmetrikák
 
 |**Erőforrás**|**Metrikák**|
 |---|---|
-|Azure SQL-adatbázis|Napló írási DTU százalékos értéke, dtu-k használt, DTU-korlát, processzor, fizikai adatok olvasási százalékos aránya, százalékos aránya, a sikeres/sikertelen/letiltott tűzfalkapcsolatok, munkamenetek százaléka, feldolgozók százalékos aránya, storage, tárolási százalékos aránya, XTP tárolási százalékos aránya, és holtpontok |
+|Azure SQL Database|Napló írási DTU százalékos értéke, dtu-k használt, DTU-korlát, processzor, fizikai adatok olvasási százalékos aránya, százalékos aránya, a sikeres/sikertelen/letiltott tűzfalkapcsolatok, munkamenetek százaléka, feldolgozók százalékos aránya, storage, tárolási százalékos aránya, XTP tárolási százalékos aránya, és holtpontok |
 
-## <a name="all-logs"></a>Az összes napló
+## <a name="basic-logs"></a>Alapszintű naplók
 
 Elérhető az összes napló telemetriai adatait az alábbi táblázatban szerepelnek. Lásd: [támogatja a diagnosztikai naplózás](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases) megismerni, hogy milyen naplókat támogatottak egy adott adatbázis íz – egyetlen, az Azure SQL készletezésük, vagy adatbázis-példány.
 
@@ -438,13 +441,13 @@ Elérhető az összes napló telemetriai adatait az alábbi táblázatban szerep
 |TenantId|A bérlő azonosítója |
 |SourceSystem|Mindig: Azure|
 |TimeGenerated [UTC]|Mikor lett rögzítve a napló időbélyeg |
-|Typo|Mindig: AzureDiagnostics |
+|Típus|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQL |
-|Kategória|A kategória nevét. Mindig: ResourceUsageStats |
-|Erőforrás|Az erőforrás neve |
-|ResourceType|Az erőforrástípus neve. Mindig: MANAGEDINSTANCES |
-|SubscriptionId|Az adatbázis-előfizetés GUID azonosítója |
-|ResourceGroup|Az adatbázis az erőforráscsoport neve |
+|Category|A kategória nevét. Mindig: ResourceUsageStats |
+|Resource|Az erőforrás neve |
+|Erőforrástípus|Az erőforrástípus neve. Mindig: MANAGEDINSTANCES |
+|Előfizetés-azonosító|Az adatbázis-előfizetés GUID azonosítója |
+|Erőforráscsoport|Az adatbázis az erőforráscsoport neve |
 |LogicalServerName_s|A felügyelt példány neve |
 |ResourceId|Erőforrás-URI |
 |SKU_s|Felügyelt példány termékváltozat |
@@ -463,14 +466,14 @@ Elérhető az összes napló telemetriai adatait az alábbi táblázatban szerep
 |TenantId|A bérlő azonosítója |
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|Mikor lett rögzítve a napló időbélyeg |
-|Typo|Mindig: AzureDiagnostics |
+|Típus|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQL |
-|Kategória|A kategória nevét. Mindig: QueryStoreRuntimeStatistics |
+|Category|A kategória nevét. Mindig: QueryStoreRuntimeStatistics |
 |OperationName|A művelet neve. Mindig: QueryStoreRuntimeStatisticsEvent |
-|Erőforrás|Az erőforrás neve |
-|ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
-|SubscriptionId|Az adatbázis-előfizetés GUID azonosítója |
-|ResourceGroup|Az adatbázis az erőforráscsoport neve |
+|Resource|Az erőforrás neve |
+|Erőforrástípus|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
+|Előfizetés-azonosító|Az adatbázis-előfizetés GUID azonosítója |
+|Erőforráscsoport|Az adatbázis az erőforráscsoport neve |
 |LogicalServerName_s|Az adatbázis a kiszolgáló neve |
 |ElasticPoolName_s|Az adatbázis, ha van ilyen, a rugalmas készlet neve |
 |DatabaseName_s|Az adatbázis neve |
@@ -514,14 +517,14 @@ Tudjon meg többet [Query Store futásidejű statisztikai adatok](https://docs.m
 |TenantId|A bérlő azonosítója |
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|Mikor lett rögzítve a napló időbélyeg |
-|Typo|Mindig: AzureDiagnostics |
+|Típus|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQL |
-|Kategória|A kategória nevét. Mindig: QueryStoreWaitStatistics |
+|Category|A kategória nevét. Mindig: QueryStoreWaitStatistics |
 |OperationName|A művelet neve. Mindig: QueryStoreWaitStatisticsEvent |
-|Erőforrás|Az erőforrás neve |
-|ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
-|SubscriptionId|Az adatbázis-előfizetés GUID azonosítója |
-|ResourceGroup|Az adatbázis az erőforráscsoport neve |
+|Resource|Az erőforrás neve |
+|Erőforrástípus|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
+|Előfizetés-azonosító|Az adatbázis-előfizetés GUID azonosítója |
+|Erőforráscsoport|Az adatbázis az erőforráscsoport neve |
 |LogicalServerName_s|Az adatbázis a kiszolgáló neve |
 |ElasticPoolName_s|Az adatbázis, ha van ilyen, a rugalmas készlet neve |
 |DatabaseName_s|Az adatbázis neve |
@@ -552,19 +555,19 @@ Tudjon meg többet [Query Store várjon statisztikai adatok](https://docs.micros
 |TenantId|A bérlő azonosítója |
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|Mikor lett rögzítve a napló időbélyeg |
-|Typo|Mindig: AzureDiagnostics |
+|Típus|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQ |
-|Kategória|A kategória nevét. Mindig: Hibák |
+|Category|A kategória nevét. Mindig: Hibák |
 |OperationName|A művelet neve. Mindig: ErrorEvent |
-|Erőforrás|Az erőforrás neve |
-|ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
-|SubscriptionId|Az adatbázis-előfizetés GUID azonosítója |
-|ResourceGroup|Az adatbázis az erőforráscsoport neve |
+|Resource|Az erőforrás neve |
+|Erőforrástípus|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
+|Előfizetés-azonosító|Az adatbázis-előfizetés GUID azonosítója |
+|Erőforráscsoport|Az adatbázis az erőforráscsoport neve |
 |LogicalServerName_s|Az adatbázis a kiszolgáló neve |
 |ElasticPoolName_s|Az adatbázis, ha van ilyen, a rugalmas készlet neve |
 |DatabaseName_s|Az adatbázis neve |
 |ResourceId|Erőforrás-URI |
-|Üzenet|Egyszerű szöveges hibaüzenet |
+|Message|Egyszerű szöveges hibaüzenet |
 |user_defined_b|Hiba történt a felhasználó által definiált bites |
 |error_number_d|Hibakód |
 |Severity|A hiba súlyossága |
@@ -581,14 +584,14 @@ Tudjon meg többet [SQL Server-hibaüzenetek](https://msdn.microsoft.com/library
 |TenantId|A bérlő azonosítója |
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|Mikor lett rögzítve a napló időbélyeg |
-|Typo|Mindig: AzureDiagnostics |
+|Típus|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQL |
-|Kategória|A kategória nevét. Mindig: DatabaseWaitStatistics |
+|Category|A kategória nevét. Mindig: DatabaseWaitStatistics |
 |OperationName|A művelet neve. Mindig: DatabaseWaitStatisticsEvent |
-|Erőforrás|Az erőforrás neve |
-|ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
-|SubscriptionId|Az adatbázis-előfizetés GUID azonosítója |
-|ResourceGroup|Az adatbázis az erőforráscsoport neve |
+|Resource|Az erőforrás neve |
+|Erőforrástípus|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
+|Előfizetés-azonosító|Az adatbázis-előfizetés GUID azonosítója |
+|Erőforráscsoport|Az adatbázis az erőforráscsoport neve |
 |LogicalServerName_s|Az adatbázis a kiszolgáló neve |
 |ElasticPoolName_s|Az adatbázis, ha van ilyen, a rugalmas készlet neve |
 |DatabaseName_s|Az adatbázis neve |
@@ -610,14 +613,14 @@ Tudjon meg többet [adatbázis-wait statisztika](https://docs.microsoft.com/sql/
 |TenantId|A bérlő azonosítója |
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|Mikor lett rögzítve a napló időbélyeg |
-|Typo|Mindig: AzureDiagnostics |
+|Típus|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQL |
-|Kategória|A kategória nevét. Mindig: Időtúllépések |
+|Category|A kategória nevét. Mindig: Időtúllépések |
 |OperationName|A művelet neve. Mindig: TimeoutEvent |
-|Erőforrás|Az erőforrás neve |
-|ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
-|SubscriptionId|Az adatbázis-előfizetés GUID azonosítója |
-|ResourceGroup|Az adatbázis az erőforráscsoport neve |
+|Resource|Az erőforrás neve |
+|Erőforrástípus|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
+|Előfizetés-azonosító|Az adatbázis-előfizetés GUID azonosítója |
+|Erőforráscsoport|Az adatbázis az erőforráscsoport neve |
 |LogicalServerName_s|Az adatbázis a kiszolgáló neve |
 |ElasticPoolName_s|Az adatbázis, ha van ilyen, a rugalmas készlet neve |
 |DatabaseName_s|Az adatbázis neve |
@@ -633,14 +636,14 @@ Tudjon meg többet [adatbázis-wait statisztika](https://docs.microsoft.com/sql/
 |TenantId|A bérlő azonosítója |
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|Mikor lett rögzítve a napló időbélyeg |
-|Typo|Mindig: AzureDiagnostics |
+|Típus|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQL |
-|Kategória|A kategória nevét. Mindig: blokkok |
+|Category|A kategória nevét. Mindig: blokkok |
 |OperationName|A művelet neve. Mindig: BlockEvent |
-|Erőforrás|Az erőforrás neve |
-|ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
-|SubscriptionId|Az adatbázis-előfizetés GUID azonosítója |
-|ResourceGroup|Az adatbázis az erőforráscsoport neve |
+|Resource|Az erőforrás neve |
+|Erőforrástípus|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
+|Előfizetés-azonosító|Az adatbázis-előfizetés GUID azonosítója |
+|Erőforráscsoport|Az adatbázis az erőforráscsoport neve |
 |LogicalServerName_s|Az adatbázis a kiszolgáló neve |
 |ElasticPoolName_s|Az adatbázis, ha van ilyen, a rugalmas készlet neve |
 |DatabaseName_s|Az adatbázis neve |
@@ -657,14 +660,14 @@ Tudjon meg többet [adatbázis-wait statisztika](https://docs.microsoft.com/sql/
 |TenantId|A bérlő azonosítója |
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC] |Mikor lett rögzítve a napló időbélyeg |
-|Typo|Mindig: AzureDiagnostics |
+|Típus|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQL |
-|Kategória|A kategória nevét. Mindig: Holtpontok |
+|Category|A kategória nevét. Mindig: Holtpontok |
 |OperationName|A művelet neve. Mindig: DeadlockEvent |
-|Erőforrás|Az erőforrás neve |
-|ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
-|SubscriptionId|Az adatbázis-előfizetés GUID azonosítója |
-|ResourceGroup|Az adatbázis az erőforráscsoport neve |
+|Resource|Az erőforrás neve |
+|Erőforrástípus|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
+|Előfizetés-azonosító|Az adatbázis-előfizetés GUID azonosítója |
+|Erőforráscsoport|Az adatbázis az erőforráscsoport neve |
 |LogicalServerName_s|Az adatbázis a kiszolgáló neve |
 |ElasticPoolName_s|Az adatbázis, ha van ilyen, a rugalmas készlet neve |
 |DatabaseName_s|Az adatbázis neve |
@@ -678,13 +681,13 @@ Tudjon meg többet [adatbázis-wait statisztika](https://docs.microsoft.com/sql/
 |TenantId|A bérlő azonosítója |
 |SourceSystem|Mindig: Azure |
 |TimeGenerated [UTC]|Mikor lett rögzítve a napló időbélyeg |
-|Typo|Mindig: AzureDiagnostics |
+|Típus|Mindig: AzureDiagnostics |
 |ResourceProvider|Az erőforrás-szolgáltató neve. Mindig: MICROSOFT.SQL |
-|Kategória|A kategória nevét. Mindig: AutomaticTuning |
-|Erőforrás|Az erőforrás neve |
-|ResourceType|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
-|SubscriptionId|Az adatbázis-előfizetés GUID azonosítója |
-|ResourceGroup|Az adatbázis az erőforráscsoport neve |
+|Category|A kategória nevét. Mindig: AutomaticTuning |
+|Resource|Az erőforrás neve |
+|Erőforrástípus|Az erőforrástípus neve. Mindig: KISZOLGÁLÓK ÉS ADATBÁZISOK |
+|Előfizetés-azonosító|Az adatbázis-előfizetés GUID azonosítója |
+|Erőforráscsoport|Az adatbázis az erőforráscsoport neve |
 |LogicalServerName_s|Az adatbázis a kiszolgáló neve |
 |LogicalDatabaseName_s|Az adatbázis neve |
 |ElasticPoolName_s|Az adatbázis, ha van ilyen, a rugalmas készlet neve |

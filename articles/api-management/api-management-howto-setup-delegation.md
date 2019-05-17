@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 796bea3c64ef7fc03367707461d13e0ea2514b8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4db99f23019b34e7361e3ead4096939b9499320d
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657736"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518094"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Annak a felhasználói és termékelőfizetés delegálása
 
@@ -130,7 +130,7 @@ Ezután győződjön meg, hogy a delegálási végpont does a következő művel
      > 
    * Hasonlítsa össze a fenti kiszámított kivonat értékéhez a **sig** lekérdezési paraméter. Ha a két kivonatok megegyeznek, léphet tovább a következő lépéssel, ellenkező esetben visszautasítja a kérelmüket.
 3. A kért művelet típusa alapján termék-előfizetés feldolgozását **művelet** – például számlázás, további kérdéseket, és így tovább.
-4. Sikeresen megtörtént a felhasználó feliratkoztatása a saját rendszerében a termék, a Feliratkozás a felhasználó által az API Management-termékhez [a REST API hívásának a termék-előfizetés].
+4. Sikeresen megtörtént a felhasználó feliratkoztatása a saját rendszerében a termék, a Feliratkozás a felhasználó által az API Management-termékhez [az előfizetések a REST API meghívása].
 
 ## <a name="delegate-example-code"> </a> Példakód
 
@@ -186,7 +186,7 @@ A delegálás további információkért tekintse meg a következő videót:
 [Delegating product subscription]: #delegate-product-subscription
 [egyszeri bejelentkezéses (SSO) jogkivonat kérése]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
 [Felhasználó létrehozása]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
-[a REST API hívásának a termék-előfizetés]: https://docs.microsoft.com/rest/api/apimanagement/productsubscriptions
+[az előfizetések a REST API meghívása]: https://docs.microsoft.com/rest/api/apimanagement/subscription/createorupdate
 [Next steps]: #next-steps
 [alábbi példakód]: #delegate-example-code
 

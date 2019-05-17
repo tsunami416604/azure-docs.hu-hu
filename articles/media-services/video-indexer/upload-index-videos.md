@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 89903d3f65c74da6903e53284f168d2d6a12168a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e92086ca18887b9b2c2362e97d855c33834b83bb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719658"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799192"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -61,15 +62,15 @@ Egy URL-címet, amellyel az ügyfél (a POST-kérés használatával) a követke
     
         |Name (Név)|Leírás|
         |---|---|
-        |id|A videó azonosítója|
-        |state|A videó állapota|  
+        |azonosító|A videó azonosítója|
+        |állapot|A videó állapota|  
     - Például: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - A videóban azonosított személy:
   - Tulajdonságok
     
       |Name (Név)|Leírás|
       |---|---|
-      |id| A videó azonosítója|
+      |azonosító| A videó azonosítója|
       |faceId|A face ID, hogy megjelenik a videók indexe|
       |knownPersonId|A egy oldallal modellen belül egyedi személy azonosítója|
       |PersonName|Annak a személynek a nevét|

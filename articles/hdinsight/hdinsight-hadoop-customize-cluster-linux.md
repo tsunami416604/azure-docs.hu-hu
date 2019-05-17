@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: e67e41d5e423e07371fbce06066076ab809f60df
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 63f81c331db619323f74b77e48627fd8b432565f
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545331"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65518894"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Az Azure HDInsight-fürtök testreszabása szkriptműveletek használatával
 
@@ -45,23 +45,21 @@ További információ a hozzáférés-kezelés használatával:
 Szkriptműveletet egy HDInsight-fürt csomópontjain futó Bash-szkript. Jellemzők és szkriptműveletek funkciói a következők:
 
 * A HDInsight-fürt által elérhető, egy URI-t kell tárolni. A lehetséges tárolási helyek a következők:
+    
+    * A normál fürtök:
+    
+      * ADLS Gen1: HDInsight Data Lake Storage elérésére használja a szolgáltatásnév a parancsfájl olvasási hozzáféréssel kell rendelkeznie. Az URI-t a Data Lake Storage Gen1 tárolt parancsfájlokat formátuma `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
+      
+      * A blobok Azure Storage-fiók, amely kisebb, mint az elsődleges vagy a további tárfiókot a HDInsight-fürt. HDInsight hozzáférést kap mindkét említett típusú tárfiókok fürt létrehozása során.
 
-    * Egy Azure Data Lake Storage-fiók, amely a HDInsight-fürt által elérhető. Az Azure Data Lake Storage használata a HDInsight további információkért lásd: [a rövid útmutató: A HDInsight-fürtök beállítása](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
-
-        Az URI-t a Data Lake Storage Gen1 tárolt parancsfájlokat formátuma `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
-
-        > [!NOTE]  
-        > HDInsight Data Lake Storage elérésére használja a szolgáltatásnév a parancsfájl olvasási hozzáféréssel kell rendelkeznie.
-
-    * A blobok Azure Storage-fiók, amely kisebb, mint az elsődleges vagy a további tárfiókot a HDInsight-fürt. HDInsight hozzáférést kap mindkét említett típusú tárfiókok fürt létrehozása során.
-
-    * Egy nyilvános fájlmegosztási szolgáltatást. Példák az Azure Blob, a GitHub, a onedrive vállalati verzió és a Dropbox.
+      * Egy nyilvános fájlmegosztás n keresztül elérhető szolgáltatások http:// elérési utak. Példák az Azure Blob, GitHub, onedrive vállalati verzió.
 
         Például az URI-k, lásd: [parancsfájl művelet parancsfájlpéldákat](#example-script-action-scripts).
 
-        > [!WARNING]  
-        > HDInsight Blob csak támogatja az Azure Storage-fiókokat az standard teljesítménnyel csomagot. 
-
+     * ESP-fürtök:
+         
+         * A wasb [s] :// vagy http [s] :// URI-k használata támogatott.
+            
 * Korlátozhatja az egyes csomóponttípusok futtatásához. Például a fő csomópontok vagy a munkavégző csomópontok.
 
 * Megőrzött vagy alkalmi is lehet.
@@ -173,7 +171,7 @@ Ez a szakasz ismerteti a különböző módokon használhatja a Parancsfájlműv
 
     A következő táblázat ismerteti az elemeket az űrlapon:
 
-    | Tulajdonság | Érték |
+    | Tulajdonság | Value |
     | --- | --- |
     | Szkript kiválasztása | A saját parancsfájl használatára, válassza ki a __egyéni__. Ellenkező esetben válassza a megadott szkriptek közül. |
     | Name (Név) |Adja meg a parancsfájlművelet nevét. |
@@ -255,7 +253,7 @@ Nyissa meg a [az Azure portal](https://portal.azure.com):
 
     A következő táblázat ismerteti az elemeket az űrlapon:
 
-    | Tulajdonság | Érték |
+    | Tulajdonság | Value |
     | --- | --- |
     | Szkript kiválasztása | A saját parancsfájl használatára, válassza ki a __egyéni__. Ellenkező esetben válassza ki a megadott parancsfájlt. |
     | Name (Név) |Adja meg a parancsfájlművelet nevét. |

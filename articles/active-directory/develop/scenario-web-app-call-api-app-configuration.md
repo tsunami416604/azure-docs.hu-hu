@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95a5e1ed89b6330a0b6a49cb20d8bf0ef3587d48
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: bd7f393f889facf147cf25625d5c3b20f886ddf5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074740"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784945"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Webalkalmazás, hogy a hívások webes API-k – helykódot
 
@@ -184,7 +184,7 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 
 ### <a name="msalnet-token-cache-for-a-aspnet-core-web-app"></a>MSAL.NET jogkivonat-gyorsítótár-(mag) az ASP.NET-webalkalmazás
 
-Web apps (vagy webes API-k csupán néhány (tény)), a token gyorsítótár megvalósítási eltér az asztali alkalmazások tokengyorsítótárral megvalósításokhoz (amely általában [fájlalapú](scenario-desktop-acquire-token.md#file-based-token-cache). A ASP.NET/ASP.NET Core munkamenet vagy egy redis Cache gyorsítótárhoz, vagy egy adatbázis, vagy még akkor is, az Azure Blog storage képes használni. A kód a fenti kódrészletben olyan objektum, az a `EnablePersistence(HttpContext, clientApp.UserTokenCache, clientApp.AppTokenCache);` metódushívás, amely összeköti a gyorsítótár-szolgáltatás. Mi az a részletességi történik itt van ez a forgatókönyv az útmutató hatókörén kívül esik, de a hivatkozások az alábbiakban találhatók.
+Web apps (vagy webes API-k csupán néhány (tény)), a token gyorsítótár megvalósítási eltér az asztali alkalmazások tokengyorsítótárral megvalósításokhoz (amely általában [fájlalapú](scenario-desktop-acquire-token.md#file-based-token-cache). A ASP.NET/ASP.NET Core munkamenet vagy egy redis Cache gyorsítótárhoz, vagy egy adatbázis, vagy még akkor is, az Azure Blob storage képes használni. A kód a fenti kódrészletben olyan objektum, az a `EnablePersistence(HttpContext, clientApp.UserTokenCache, clientApp.AppTokenCache);` metódushívás, amely összeköti a gyorsítótár-szolgáltatás. Mi az a részletességi történik itt van ez a forgatókönyv az útmutató hatókörén kívül esik, de a hivatkozások az alábbiakban találhatók.
 
 > [!IMPORTANT]
 > Egy nagyon fontos, vegye figyelembe, hogy webalkalmazások és webes API-kat, nem kell egy tokengyorsítótárral felhasználónként (fiók). Az egyes fiókok számára tokengyorsítótárral szerializálni kell.

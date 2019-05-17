@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: 938f13524b22f34f4becc936885d1611cb854df1
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: d3502219f03d4ad076a693ab990f2fadb0b5d558
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510493"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800827"
 ---
 # <a name="create-and-register-azure-machine-learning-datasets-preview"></a>Hozzon létre és regisztrálja az Azure Machine Learning-adatkészletek (előzetes verzió)
 
@@ -33,6 +33,9 @@ Létrehozására és regisztrálására adatkészletek lesz szüksége:
 * Az Azure Machine Learning szolgáltatás munkaterületén. Lásd: [hozzon létre egy Azure Machine Learning szolgáltatás munkaterület](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace).
 
 * Az Azure Machine Learning SDK Pythonhoz készült. Telepíteni, vagy frissítsen az SDK legújabb verzióját, lásd: [telepítése vagy frissítése az SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+
+> [!Note]
+> Néhány adatkészlet osztályok (előzetes verzió) függőségekkel rendelkezik a [azureml-adatelőkészítés](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) csomag (elérhetővé tétel GA). A Linux-felhasználók ezeket az osztályokat csak a következő disztribúciók a támogatják:  Red Hat Enterprise Linux, Ubuntu, Fedora, and CentOS.
 
 ## <a name="create-datasets-from-local-files"></a>A helyi fájlokból-adatkészletek létrehozása
 

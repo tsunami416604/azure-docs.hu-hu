@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: magoedte
-ms.openlocfilehash: ab5cbf6e24d6e7b5530addcee655e1cc4621d042
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 86a56e71b89e7408d1bc8ca0ee1dc8112bea368f
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875970"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522145"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>A virtuális gépek (előzetes verzió) az Azure Monitor szolgáltatással kapcsolatos ismert problémák
 
 Ez a cikk ismerteti az Azure Monitor szolgáltatással kapcsolatos ismert problémák a virtuális gépek esetében az Azure-ban, amely ötvözi az állapotot, az alkalmazás-összetevők felderítése és az Azure virtuális gép operációs rendszerének alkalmazásteljesítmény-figyelő megoldás. 
 
-## <a name="health"></a>Állapot 
+## <a name="health"></a>Egészségügy 
 Az alábbi ismert problémák az állapotfigyelő szolgáltatás jelenlegi kiadása:
 
 - Egy Azure virtuális gép eltávolítása vagy törlése, ha egy ideig a virtuális gép nézetben jelenik meg. Ezenkívül egy eltávolított vagy törölt virtuális gép állapotát kattintva megnyílik a **egészségügyi diagnosztikai** megtekintheti, és ezután kezdeményezi a betöltés hurkot. A törölt virtuális gép nevét kiválasztva megnyílik egy ablaktábla és a egy üzenet, amely megállapítja, hogy a virtuális gép törölve lett.
@@ -35,4 +35,4 @@ Az alábbi ismert problémák az állapotfigyelő szolgáltatás jelenlegi kiad�
 - A megoldás-összetevők eltávolítása a munkaterületről, után előfordulhat, hogy továbbra is megjelenik az Azure virtuális gépek; állapot kifejezetten teljesítmény és a térkép-adatok, nyissa meg a portálon vagy nézetet. Adatok végül le fog állni jelennek meg a kis idő múlva; a teljesítményt és a térkép megtekintése állapot megjelenítése a virtuális gépek azonban továbbra is az állapotmegtekintő nézet. A **kipróbálása** lehetőség lesz elérhető a helyreállítási környezet előkészítése a csak a teljesítmény és a térkép nézetek.
 
 ## <a name="next-steps"></a>További lépések
-A követelmények és engedélyezésének a virtuális gépek figyelése módszerekkel, tekintse át [-beli virtuális gépek üzembe helyezése az Azure Monitor](vminsights-onboard.md).
+A követelmények és engedélyezésének a virtuális gépek figyelése módszerekkel, tekintse át [engedélyezése az Azure Monitor-beli virtuális gépek](vminsights-enable-overview.md).

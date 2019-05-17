@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 028c7f5d42587a6b2129bba07831b0e799d607f4
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
-ms.translationtype: HT
+ms.openlocfilehash: f9be13ac22e6eda32668d635032ebcccf417b6c7
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544216"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785206"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET alkalmazások áttelepítése
 
@@ -192,7 +192,7 @@ Ennek oka, hogy a Resource Manager API-t vár a célközönség jogcím perjelle
 Az Azure AD által használt logikai a következő:
 - Adal-t (1.0-s verzió) végpont egy 1.0-s verziójú hozzáférési jogkivonattal (az egyetlen lehetséges), aud erőforrás =
 - A hozzáférési jogkivonat kérése egy erőforrást, 2.0-s verziójú jogkivonatok, aud elfogadásával MSAL (v2.0-végpont) erőforrást =. Alkalmazásazonosító
-- Az MSAL (v2.0-végpontra) egy hozzáférési jogkivonatot kér egy erőforrást egy 1.0-s verziójú hozzáférési jogkivonat (amely a fenti eset) elfogadása az Azure AD a kért hatókörhöz a kívánt célközönség elemzi a minden, a legutóbbi / előtti és használhatná az erőforrás-azonosítója alapján. Ezért ha https://database.windows.net közönség vár "https://database.windows.net/", szüksége lesz egy hatókörének kérése https://database.windows.net//.default. Lásd: # is kiadhatnak[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Erőforrás URL-cím, záró perjellel hiányzik, amely az sql-hitelesítési hiba #747 okozza
+- Az MSAL (v2.0-végpontra) egy hozzáférési jogkivonatot kér egy erőforrást egy 1.0-s verziójú hozzáférési jogkivonat (amely a fenti eset) elfogadása az Azure AD a kért hatókörhöz a kívánt célközönség elemzi a minden, a legutóbbi / előtti és használhatná az erőforrás-azonosítója alapján. Ezért ha https:\//database.windows.net közönség vár "https://database.windows.net/", a https hatókörének kérése kell:\//database.windows.net//.default. Lásd: # is kiadhatnak[747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Erőforrás URL-cím, záró perjellel hiányzik, amely az sql-hitelesítési hiba #747 okozza
 
 
 ### <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Hatókörök igényelhet hozzáférést egy 1.0-s verziójú alkalmazás minden engedély

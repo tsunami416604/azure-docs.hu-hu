@@ -5,17 +5,17 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 04/29/2019
+ms.date: 05/14/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: d20e266d1331fc15e65b2d119468483ff53a4c06
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: ee8ff3529524a63ca2e54a64327570197f363538
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64951533"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787604"
 ---
-| Erőforrás | Alapszintű | Standard | Prémium |
+| Resource | Alapszintű | Standard | Prémium |
 |---|---|---|---|
 | Tárolási<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
 | Maximális képméret réteg | 200 GiB | 200 GiB | 200 GiB |
@@ -25,7 +25,7 @@ ms.locfileid: "64951533"
 | Töltse fel a sávszélesség MB/s<sup>2</sup> | 10 | 20 | 50 |
 | Webhookok | 2 | 10 | 100 |
 | Georeplikáció | – | – | [Támogatott][geo-replication] |
-| Tartalom-megbízhatóság (előzetes verzió) | – | – | [Támogatott][content-trust] |
+| Tartalommegbízhatóság | – | – | [Támogatott][content-trust] |
 
 <sup>1</sup>a megadott tárolási korlátok a következők mennyisége *foglalt* storage az egyes rétegekhez. Egy további napi díj / GIB-ra a fenti ezeket a korlátokat képtárolás díjkötelesek. Forgalmi információkért lásd: [Azure Container Registry díjszabás][pricing].
 

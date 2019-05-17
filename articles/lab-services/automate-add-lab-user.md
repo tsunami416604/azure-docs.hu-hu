@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 0eed874d405fcf99241a702292f8ceadae6c5a07
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
+ms.openlocfilehash: 2ad81ae97414abbf3266cc5728febf9abe836151
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65502029"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522959"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>A lab-felhasználó hozzáadása Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet automatizálása
 Az Azure DevTest Labs lehetővé teszi az önkiszolgáló fejlesztési-tesztelési környezetek gyors létrehozását az Azure portal használatával. Azonban ha több különböző csapatok és több DevTest Labs-példánnyal rendelkezik, a létrehozási folyamat automatizálása időt takaríthat meg. [Az Azure Resource Manager-sablonok](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) hozhat létre a labs, labor virtuális gépeken, egyéni rendszerképen, képleteket, és felhasználók hozzáadása az automatizált módon zajlik. Ez a cikk kifejezetten azzal foglalkozik, a felhasználók hozzáadása a DevTest Labs-példányra.
@@ -85,7 +85,7 @@ A következő minta Resource Manager-sablon hozzá kell adni a felhasználó meg
 
 ```
 
-Ha a szerepkör, amely a labor hoz létre ugyanabban a sablonban használt hozzárendelése, ne felejtse el hozzáadni a szerepkör-hozzárendelés erőforrás és a tesztkörnyezet közötti függőség. További információkért lásd: [függőségek meghatározása az Azure Resource Manager-sablonok](/azure-resource-manager/resource-group-define-dependencies.md) cikk.
+Ha a szerepkör, amely a labor hoz létre ugyanabban a sablonban használt hozzárendelése, ne felejtse el hozzáadni a szerepkör-hozzárendelés erőforrás és a tesztkörnyezet közötti függőség. További információkért lásd: [függőségek meghatározása az Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-define-dependencies.md) cikk.
 
 ### <a name="role-assignment-resource-information"></a>Szerepkör-hozzárendelés erőforrásadatok
 A szerepkör-hozzárendelés erőforrás számára meg kell adni a típusa és neve.

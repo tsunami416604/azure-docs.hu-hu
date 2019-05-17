@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: alkohli
-ms.openlocfilehash: b3d53b7d5fceb303259823198731b5198cfce82c
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: fcd6fc95adc892885fd8471e622ce3b04258d8b5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508272"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800540"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Oktatóanyag: Adatok másolása az Azure Data Box Blob storage REST API-kon keresztül  
 
@@ -152,6 +152,7 @@ Miután csatlakozott a Data Box Blob Storage, a következő lépés az adatok m�
 - Adatok feltöltése folyamatban van a Data Box, Data Box-en kívül más alkalmazás egyidejűleg fel, ha lehetséges, hogy emiatt feltöltési feladat hibák és az adatok sérülését.
 
 Ebben az oktatóanyagban az AzCopy segítségével adatmásolás a Data Box blobtárolóba. Használhatja az Azure Storage Explorer (Ha inkább a GUI-alapú eszköz) vagy egy partneri szoftver az adatok másolásához.
+
 A másolási eljárás rendelkezik az alábbi lépéseket:
 
 - Tároló létrehozása
@@ -215,6 +216,8 @@ Ha csak azokat az erőforrásokat szeretné átmásolni a forrásból, amelyek n
 #### <a name="windows"></a>Windows
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+
+Ha a csatlakozás vagy másolási művelet során bármilyen hiba merül fel, tekintse meg [Data Box Blob storage-problémák hibaelhárítása](data-box-troubleshoot-rest.md).
 
 Következő lépés, hogy az eszköz szállításra való előkészítése.
 

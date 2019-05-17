@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
 ms.author: narayan;aglick
-ms.openlocfilehash: f8068524a33c6d29056af456a26b8bd87fc3e3d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68a9523dcc9c4dd84399c68fc7e31a692c011487
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60742706"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523254"
 ---
 # <a name="virtual-network--business-continuity"></a>Virtuális hálózat – üzletmenet-folytonossági
 
 ## <a name="overview"></a>Áttekintés
 Virtuális hálózat (VNet) a felhőbeli hálózatának logikai megfelelője. Lehetővé teszi a saját privát IP-címteret és a hálózat szegmentálása alhálózatra. Virtuális hálózatok egy megbízhatósági kapcsolat határán a számítási erőforrások, például az Azure Virtual Machines és Cloud Services (webes/feldolgozói szerepkörök) üzemeltetésére szolgál. Virtuális hálózat lehetővé teszi a közvetlen saját integrációs csomaggal folytatott kommunikációhoz a benne lévő üzemeltetett erőforrások között. A helyszíni hálózathoz egy VPN-átjáró vagy ExpressRoute virtuális hálózati kapcsolat.
 
-Virtuális hálózat egy régió hatókörén belül jön létre. Virtuális hálózatok azonos címtartomány (például USA keleti régiója, USA nyugati régiója) két különböző régióban hozhat létre, de nem kapcsolhatja össze azokat. 
+Virtuális hálózat egy régió hatókörén belül jön létre. Is *létrehozása* egyező virtuális hálózat címtere (például USA keleti régiója, USA nyugati régiója) két különböző régióban, de mivel ugyanazt a címtartományt, akkor nem kapcsolhatja össze azokat. 
 
 ## <a name="business-continuity"></a>Üzleti folytonosság
 

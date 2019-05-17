@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2018
+ms.date: 05/09/2019
 ms.author: bwren
-ms.openlocfilehash: a8da60850dae600129e0bc60fb574bfa4d3972db
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
-ms.translationtype: HT
+ms.openlocfilehash: 105454205c0fe3a0020693a1289a65cecd2bf57b
+ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415898"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65519015"
 ---
 # <a name="get-started-with-azure-monitor-log-queries"></a>Az Azure Monitor log-lekérdezések használatának első lépései
 
@@ -179,12 +179,12 @@ SecurityEvent
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
 ```
 
-**kiterjesztheti** összes eredeti oszlopot tartja az eredményhalmaz és újak határozza meg. Az alábbi lekérdezés használ **kiterjesztése** hozzáadása egy *konvertálásának* oszlopot, amely honosított TimeGenerated értéket tartalmaz.
+**kiterjesztheti** összes eredeti oszlopot tartja az eredményhalmaz és újak határozza meg. Az alábbi lekérdezés használ **kiterjesztése** hozzáadása a *EventCode* oszlop. Vegye figyelembe, hogy ez az oszlop hibásan jelenhet meg a végén a táblázat az eredmények ebben az esetben meg kell bontsa ki a rekordok részletei pedig megtekintheti azokat.
 
 ```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
-| extend localtime = TimeGenerated -8h
+| extend EventCode=substring(Activity, 0, 4)
 ```
 
 ## <a name="summarize-aggregate-groups-of-rows"></a>Összefoglalásképpen: összesített sorcsoportra

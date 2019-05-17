@@ -3,19 +3,19 @@ title: 'Gyors útmutató: A Bing Visual Search SDK használatával kép elemzés
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan tölthet fel képeket a Bing Visual Search SDK használatával, és nyerjen kapcsolatos.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 05/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: a7fc4686ec31b4c3a23d3e0ff72e5e2a270015b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 130c8d94f3651caf9b8754569b67966af929ce46
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60831809"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65796647"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>Gyors útmutató: A Bing Visual Search SDK használatával kép elemzések lekéréseC#
 

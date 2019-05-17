@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/04/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: c1d8104f94d3f215108000b904848f3b968492ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 458d587c7ac73f7c8dacdceae3c9f923263533b3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61372834"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792545"
 ---
 # <a name="how-to-manage-keys-in-qna-maker"></a>A QnA Maker kulcsok kezelése
 
@@ -24,7 +24,7 @@ A QnA Maker szolgáltatás kezelje a kulcs, kétféle **előfizetési kulcsok** 
 
 ![Kulcskezelés](../media/qnamaker-how-to-key-management/key-management.png)
 
-1. **Előfizetői azonosítók**: Ezekkel a kulcsokkal való hozzáférést a [QnA Maker management szolgáltatás API-k](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff). Ezen API-k lehetővé teszik a Tudásbázis szerkesztéséhez.  
+1. **Előfizetői azonosítók**: Ezekkel a kulcsokkal való hozzáférést a [QnA Maker management szolgáltatás API-k](https://go.microsoft.com/fwlink/?linkid=2092179). Ezen API-k lehetővé teszik a Tudásbázis szerkesztéséhez.  
 
 2. **Végpont kulcsok**: Ezekkel a kulcsokkal kapott választ a felhasználó kérdés Tudásbázis-végpontot. Általában akkor érdemes használnia ezt a végpontot a csevegőrobot, vagy az ügyfél alkalmazáskóddal, amelyhez a QnA Maker szolgáltatást használ fel.
  

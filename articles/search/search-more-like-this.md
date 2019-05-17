@@ -10,21 +10,23 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: d18069335bb20f78a5bcda85eb6fcb2a5abe75f7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5723f1ab7258a9e0d672b5c0fd9fd0b9c4dc8721
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024669"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522926"
 ---
-# <a name="morelikethis-in-azure-search-preview"></a>moreLikeThis az Azure Search (előzetes verzió)
+# <a name="morelikethis-in-azure-search"></a>az Azure Search moreLikeThis
+
+> [!Note]
+> moreLikeThis előzetes állapotban van, nem éles használatra szánt. A [REST API verzióját 2019-05-06-Preview](search-api-preview.md) ezt a szolgáltatást biztosít. Rendszer jelenleg nem .NET SDK-t támogatja.
 
 `moreLikeThis=[key]` a lekérdezési paraméter a [Search API-dokumentumok](https://docs.microsoft.com/rest/api/searchservice/search-documents) , amely olyan dokumentumokat keres a dokumentumot, a dokumentum kulcsaként által megadott hasonló. Ha egy keresési kérelmet a `moreLikeThis`, egy lekérdezés jön létre keresési feltételeket az adott dokumentum kinyert legjobban leíró dokumentum. A létrehozott lekérdezést a keresés kérés majd szolgál. Alapértelmezés szerint az összes kereshető mező tartalmát minősülnek, mínusz a megadott használatával korlátozott mezőket a `searchFields` paraméter. A `moreLikeThis` paraméter nem használható a keresési paraméterrel, `search=[string]`.
 
 Alapértelmezés szerint minden felső szintű kereshető mező tartalmát minősülnek. Ha szeretné inkább adja meg az adott mezők, használhatja a `searchFields` paraméter. 
 
-> [!NOTE]
-> `moreLikeThis` előzetes verzió nem használható a kereshető almező egy [komplex típus](search-howto-complex-data-types.md).
+A kereshető almező moreLikeThis nem használható egy [komplex típus](search-howto-complex-data-types.md).
 
 ## <a name="examples"></a>Példák 
 
@@ -42,9 +44,6 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
     }
 ```
 
-## <a name="feature-availability"></a>Szolgáltatások rendelkezésre állása
-
-A `moreLikeThis` paraméter csak REST API-k előzetes verzióban érhető el (`api-version=2019-05-06-Preview`).
 
 ## <a name="next-steps"></a>További lépések
 

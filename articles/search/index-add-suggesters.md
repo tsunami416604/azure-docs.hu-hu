@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 400b1613a87d4de65879a512642e16884c7d03b4
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: eb6667a1429382ed566826de64ad7ffbe83183cf
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021882"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521890"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Az Azure Search typeahead indexet javaslattevők hozzáadása
 
@@ -119,7 +119,7 @@ Fent említetteknek használhatja a javaslattevő javasolt lekérdezések, az au
 
 A javaslattevő együtt a műveletet a kérésben hivatkozott. Ha például egy GET REST hívást, adja meg vagy `suggest` vagy `autocomplete` a dokumentumok gyűjteményen. A REST, a javaslattevő létrehozása után használja a [javaslatok API](https://docs.microsoft.com/rest/api/searchservice/suggestions) vagy a [automatikus kiegészítés API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) a lekérdezés logikában.
 
-A .NET-hez, használjon [SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet-preview) vagy [AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet).
+A .NET-hez, használjon [SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet) vagy [AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet).
 
 Mindkét kérelmek bemutatására egy példa: [példa hozzáadása az automatikus kiegészítés és javaslatok az Azure Search](search-autocomplete-tutorial.md).
 

@@ -1,7 +1,7 @@
 ---
 title: 'Regresszió: Ár előrejelzése'
 titleSuffix: Azure Machine Learning service
-description: A vizuális felhasználói felületet mintakísérlet mutatja be egy autó árát előrejelzésére regressziós modell létrehozása. A folyamat magában foglalja a képzés, a tesztelés és a Automobile price data (Raw) adatkészlet a modell kiértékelése.
+description: Ismerje meg, hogyan hozhat létre egy gépi tanulási modellt az autó árát előrejelzésére egy egyetlen sor kód írása nélkül.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,30 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: fa9b9179cda767d69d08dcd357a03123bde901cb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 05/10/2019
+ms.openlocfilehash: 9dfa4b62f5cb79a5716f6f29651e85d0f8a3a409
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028890"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787846"
 ---
 # <a name="sample-1---regression-predict-price"></a>1 – regressziós. példa: Ár előrejelzése
 
-Ez a mintakísérlet vizuális felhasználói felületet egy autó árát előrejelzésére regressziós modell létrehozása mutatja be. A folyamat magában foglalja a képzés, a tesztelés és a modell értékelése használatával a **Automobile price data (Raw)** adatkészlet.
+Ismerje meg, hogyan hozhat létre egy gépi tanulási regressziós modellt a vizuális felhasználói felületének használatával egyetlen kódsor megírása nélkül.
+
+Ez vonatok kísérletezhet egy **döntési erdő regressor erre** előrejelzésére egy autó az ár műszaki szolgáltatások, például márkája, típusa, lóerő és méretét. Mivel tudjuk "Mennyi?" kérdésre próbál Ezt nevezzük regressziós probléma. Azonban ez a kísérlet, amelynek célja a machine learning probléma bármilyen típusú, legyen szó regressziós, besorolás, fürtözés, és így tovább az alapvető lépéseket alkalmazhatja.
+
+Az egy képzési gépi tanulási modellt az alapvető lépések a következők:
+
+1. Az adatok lekérése
+1. Az adatok előzetes feldolgozása
+1. A modell betanítása
+1. A modell értékelése
+
+A végső, befejezett grafikon a kísérlet azt fogjuk projekten dolgozik, az itt látható. Biztosítunk a közösségértékek modulhoz tartozó összes, így is döntéseket hasonló saját maga.
+
+![A kísérlet diagram](media/ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,23 +41,6 @@ Ez a mintakísérlet vizuális felhasználói felületet egy autó árát előre
 4. Válassza ki a **nyílt** gomb a minta 1 kísérlet:
 
     ![Nyissa meg a kísérlet](media/ui-sample-regression-predict-automobile-price-basic/open-sample1.png)
-
-## <a name="related-sample"></a>Kapcsolódó minta
-
-[2 – regressziós. példa: Autó árának előrejelzése (összehasonlítása algoritmusok)](ui-sample-regression-predict-automobile-price-compare-algorithms.md) nyújt bonyolultabb mintakísérlet, oldja meg az ehhez a kísérlethez azonos problémával két különböző regressziós modell használatával. Ez bemutatja, hogyan pillanatok alatt összehasonlíthatja a különböző algoritmusokat. Ismerje meg, ha egy speciális mintát keres.
-
-## <a name="experiment-summary"></a>Kísérlet összegzése
-
-Ezeket a lépéseket a kísérletet használjuk:
-
-1. Az adatok lekérése.
-1. Előzetesen feldolgozni az adatokat.
-1. A modell betanításához.
-1. Tesztelheti, kiértékelheti és a modell összehasonlítására.
-
-Itt látható a teljes grafikon a kísérlet:
-
-![A kísérlet diagram](media/ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
 ## <a name="get-the-data"></a>Az adatok lekérése
 
@@ -59,6 +55,7 @@ Használjuk a **Select Columns in Dataset** normalized-losses oszlop kizárása 
 ![Üzem előtti adatfeldolgozás](./media/ui-sample-regression-predict-automobile-price-basic/data-processing.png)
 
 ## <a name="train-the-model"></a>A modell betanítása
+
 Machine learning problémák eltérőek lehetnek. Általános gépi tanulási feladatok közé tartozik a besorolás, fürtözés, regressziós és ajánló rendszerek, amelyek mindegyike egy teljesen más algoritmust is szükség lehet. A választott algoritmust gyakran a használati eset követelményeinek függ. Miután egy algoritmus kiválasztásához kell hangolása paramétereket egy pontosabb modell betanításához. Kell például a pontosságot, a képminőséget és a hatékonyság teljesítménymetrikák alapján minden modelleket szeretne értékelni.
 
 Mivel ez a kísérlet célja az, hogy autó árának előrejelzése, és a egy regressziós modell akkor hasznos, mert a címke (ár) oszlopot tartalmaz valós számmá. Figyelembe véve, hogy a szolgáltatások száma viszonylag kicsi (kevesebb mint 100), és ezeket a funkciókat nem ritka, a döntési határ várhatóan nem lineáris. Ezért használjuk a **döntési erdő regressziós** ehhez a kísérlethez.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: 7f585c496328fef3e3d7dbb300fc4f07167fd55d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 3b4c5e4700b0ef718a6b079ecc6ab3ad80f4eab6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192467"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786187"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Gyors útmutató: Egyéni riasztások létrehozása
 
@@ -50,13 +50,12 @@ Biztonsági csoportok segítségével az eszközök csoport logikai kategóriák
 ## <a name="customize-an-alert"></a>Riasztás testreszabása
 
 1. Nyissa meg az IoT hubnak. 
-2. Válassza ki **biztonsági**, majd **egyéni riasztások**. 
-3. Válassza ki a biztonsági csoportokat a testreszabása a alkalmazni kíván. 
-4. Kattintson a **egy egyéni riasztás hozzáadása**
-5. Adja meg a riasztás nevét. (vegye figyelembe, hogy a riasztás neve létrehozása után nem módosítható). 
-6. A legördülő listából válassza ki egy egyéni riasztás viselkedése. 
-7. A szükséges tulajdonságait szerkesztheti, és kattintson a **OK**.
-8. Győződjön meg arról, hogy kattintson **mentése**. Nem mentette az új riasztás, a riasztás a következő alkalommal, zárja be az IoT Hub törlődnek.
+2. Kattintson a **egyéni riasztások** a a **biztonsági** szakaszban. 
+3. Válassza ki egy biztonsági csoportot a testreszabása a alkalmazni kíván. 
+4. Kattintson a **egy egyéni riasztás hozzáadása** 
+5. A legördülő listából válassza ki egy egyéni riasztás viselkedése. 
+6. A szükséges tulajdonságait szerkesztheti, és kattintson a **OK**.
+7. Győződjön meg arról, hogy kattintson **mentése**. Nem mentette az új riasztás, a riasztás a következő alkalommal, zárja be az IoT Hub törlődnek.
 
  
 ## <a name="alerts-available-for-customization"></a>Elérhető a testreszabáshoz riasztások
@@ -65,25 +64,25 @@ Az alábbi táblázat a testreszabáshoz elérhető riasztások összegzését t
 
 | Severity | Name (Név)                                                                                                    | Adatforrás | Leírás                                                                                                                                     |
 |----------|---------------------------------------------------------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| Alacsony      | Egyéni riasztási - felhőszolgáltatás eszköz üzenetek az AMQP protokollt nem szerepel a megengedett tartományon          | IoT Hub     | A felhő eszköz üzeneteit (AMQP protokoll) egy olyan időkeretet mennyisége nem szerepel a megengedett tartományon beállított                                  |
-| Alacsony      | Egyéni riasztási – elutasított felhőszolgáltatás eszköz üzenetek az AMQP protokollt nem szerepel a megengedett tartományon | IoT Hub     | A felhőbe való eszközüzenetek (AMQP protokoll) egy olyan időkeretet az eszköz által elutasított mennyisége nem szerepel a megengedett tartományon beállított |
-| Alacsony      | Egyéni riasztási - eszközt a felhőbe irányuló üzenetek AMQP protokoll száma nem szerepel a megengedett tartományon          | IoT Hub     | A felhőbe irányuló üzenetek (AMQP protokoll) egy olyan időkeretet az eszköz mennyisége nem szerepel a megengedett tartományon beállított                                  |
-| Alacsony      | Egyéni riasztási - száma közvetlen metódus meghívása nem szerepel a megengedett tartományon                              | IoT Hub     | Közvetlen metódus mennyisége elindítja az ablak nem szerepel a megengedett tartományon beállított idő                                                     |
-| Alacsony      | Egyéni riasztási - fájlfeltöltések száma nem szerepel a megengedett tartományon                                       | IoT Hub     | Fájlok feltöltése egy időtartományban mennyisége nem szerepel a megengedett tartományon beállított                                                              |
-| Alacsony      | Egyéni riasztás – a HTTP protokoll eszközüzenetek felhő száma nem szerepel a megengedett tartományon          | IoT Hub     | A felhő eszköz üzeneteit (HTTP-protokoll) egy olyan időkeretet mennyisége nem szerepel a megengedett tartományon beállított                                  |
-| Alacsony      | Egyéni riasztási – elutasított felhőszolgáltatás eszköz üzeneteit a HTTP protokollt nem szerepel a megengedett tartományon | IoT Hub     | A felhőbe való eszközüzenetek (HTTP-protokoll) egy olyan időkeretet az eszköz által elutasított mennyisége nem szerepel a megengedett tartományon beállított |
-| Alacsony      | Egyéni riasztási – HTTP-protokoll az üzenetek felhőből eszközre száma nem szerepel a megengedett tartományon          | IoT Hub     | A felhőbe irányuló üzenetek (HTTP-protokoll) egy olyan időkeretet az eszköz mennyisége nem szerepel a megengedett tartományon beállított                                  |
-| Alacsony      | Egyéni riasztási - felhőszolgáltatás az MQTT protokoll eszköz üzenetek nem szerepel a megengedett tartományon          | IoT Hub     | A felhő eszköz üzeneteit (MQTT protokoll) egy olyan időkeretet mennyisége nem szerepel a megengedett tartományon beállított                                  |
-| Alacsony      | Egyéni riasztási – elutasított felhőszolgáltatás eszköz üzenetek az MQTT protokoll nem szerepel a megengedett tartományon | IoT Hub     | A felhőbe való eszközüzenetek (MQTT protokoll) egy olyan időkeretet az eszköz által elutasított mennyisége nem szerepel a megengedett tartományon beállított |
-| Alacsony      | Egyéni riasztási - MQTT protokoll az üzenetek felhőből eszközre száma nem szerepel a megengedett tartományon          | IoT Hub     | A felhőbe irányuló üzenetek (MQTT protokoll) egy olyan időkeretet az eszköz mennyisége nem szerepel a megengedett tartományon beállított                                  |
-| Alacsony      | Egyéni riasztási - parancs várólista pon száma nem szerepel a megengedett tartományon                               | IoT Hub     | A parancs várólista mennyisége kiürítése ablak nem szerepel a megengedett tartományon beállított idő                                                      |
-| Alacsony      | Egyéni riasztási - ikereszköz-frissítések száma nem szerepel a megengedett tartományon                                       | IoT Hub     | Egy olyan időkeretet az ikereszköz-frissítések mennyisége nem szerepel a megengedett tartományon beállított                                                              |
-| Alacsony      | Egyéni riasztási – nem engedélyezett műveletek számát nem szerepel a megengedett tartományon                            | IoT Hub     | Egy olyan időkeretet jogosulatlan műveletek mennyisége nem szerepel a megengedett tartományon beállított                                                   |
-| Alacsony      | Egyéni riasztási – aktív kapcsolatok nem a megengedett tartományon                                        | Ügynök       | Egy olyan időkeretet aktív kapcsolat mennyisége nem szerepel a megengedett tartományon beállított                                                        |
-| Alacsony      | Egyéni riasztási - IP-címet, amely nem engedélyezett kimenő kapcsolat létrejött                              | Ügynök       | Egy kimenő kapcsolatot, amely nem engedélyezett egy IP-cím létrehozása                                                                                  |
-| Alacsony      | Egyéni riasztás – helyi sikertelen bejelentkezések száma nem szerepel a megengedett tartományon                                | Ügynök       | Egy olyan időkeretet sikertelen helyi bejelentkezési mennyisége nem szerepel a megengedett tartományon beállított                                                       |
-| Alacsony      | Egyéni riasztási – nem engedélyezett felhasználó bejelentkezési                                                      | Ügynök       | Az eszköz bejelentkezett egy helyi felhasználót, hogy nem engedélyezett                                                                                        |
-| Alacsony      | Egyéni riasztási – nem engedélyezett egy folyamat végrehajtása                                               | Ügynök       | Egy folyamat, amely nem engedélyezett végre lett hajtva az eszközön |          |
+| Kicsi      | Egyéni riasztási - felhőszolgáltatás eszköz üzenetek az AMQP protokollt nem szerepel a megengedett tartományon          | IoT Hub     | A felhő eszköz üzeneteit (AMQP protokoll) egy olyan időkeretet mennyisége nem szerepel a megengedett tartományon beállított                                  |
+| Kicsi      | Egyéni riasztási – elutasított felhőszolgáltatás eszköz üzenetek az AMQP protokollt nem szerepel a megengedett tartományon | IoT Hub     | A felhőbe való eszközüzenetek (AMQP protokoll) egy olyan időkeretet az eszköz által elutasított mennyisége nem szerepel a megengedett tartományon beállított |
+| Kicsi      | Egyéni riasztási - eszközt a felhőbe irányuló üzenetek AMQP protokoll száma nem szerepel a megengedett tartományon          | IoT Hub     | A felhőbe irányuló üzenetek (AMQP protokoll) egy olyan időkeretet az eszköz mennyisége nem szerepel a megengedett tartományon beállított                                  |
+| Kicsi      | Egyéni riasztási - száma közvetlen metódus meghívása nem szerepel a megengedett tartományon                              | IoT Hub     | Közvetlen metódus mennyisége elindítja az ablak nem szerepel a megengedett tartományon beállított idő                                                     |
+| Kicsi      | Egyéni riasztási - fájlfeltöltések száma nem szerepel a megengedett tartományon                                       | IoT Hub     | Fájlok feltöltése egy időtartományban mennyisége nem szerepel a megengedett tartományon beállított                                                              |
+| Kicsi      | Egyéni riasztás – a HTTP protokoll eszközüzenetek felhő száma nem szerepel a megengedett tartományon          | IoT Hub     | A felhő eszköz üzeneteit (HTTP-protokoll) egy olyan időkeretet mennyisége nem szerepel a megengedett tartományon beállított                                  |
+| Kicsi      | Egyéni riasztási – elutasított felhőszolgáltatás eszköz üzeneteit a HTTP protokollt nem szerepel a megengedett tartományon | IoT Hub     | A felhőbe való eszközüzenetek (HTTP-protokoll) egy olyan időkeretet az eszköz által elutasított mennyisége nem szerepel a megengedett tartományon beállított |
+| Kicsi      | Egyéni riasztási – HTTP-protokoll az üzenetek felhőből eszközre száma nem szerepel a megengedett tartományon          | IoT Hub     | A felhőbe irányuló üzenetek (HTTP-protokoll) egy olyan időkeretet az eszköz mennyisége nem szerepel a megengedett tartományon beállított                                  |
+| Kicsi      | Egyéni riasztási - felhőszolgáltatás az MQTT protokoll eszköz üzenetek nem szerepel a megengedett tartományon          | IoT Hub     | A felhő eszköz üzeneteit (MQTT protokoll) egy olyan időkeretet mennyisége nem szerepel a megengedett tartományon beállított                                  |
+| Kicsi      | Egyéni riasztási – elutasított felhőszolgáltatás eszköz üzenetek az MQTT protokoll nem szerepel a megengedett tartományon | IoT Hub     | A felhőbe való eszközüzenetek (MQTT protokoll) egy olyan időkeretet az eszköz által elutasított mennyisége nem szerepel a megengedett tartományon beállított |
+| Kicsi      | Egyéni riasztási - MQTT protokoll az üzenetek felhőből eszközre száma nem szerepel a megengedett tartományon          | IoT Hub     | A felhőbe irányuló üzenetek (MQTT protokoll) egy olyan időkeretet az eszköz mennyisége nem szerepel a megengedett tartományon beállított                                  |
+| Kicsi      | Egyéni riasztási - parancs várólista pon száma nem szerepel a megengedett tartományon                               | IoT Hub     | A parancs várólista mennyisége kiürítése ablak nem szerepel a megengedett tartományon beállított idő                                                      |
+| Kicsi      | Egyéni riasztási - ikereszköz-frissítések száma nem szerepel a megengedett tartományon                                       | IoT Hub     | Egy olyan időkeretet az ikereszköz-frissítések mennyisége nem szerepel a megengedett tartományon beállított                                                              |
+| Kicsi      | Egyéni riasztási – nem engedélyezett műveletek számát nem szerepel a megengedett tartományon                            | IoT Hub     | Egy olyan időkeretet jogosulatlan műveletek mennyisége nem szerepel a megengedett tartományon beállított                                                   |
+| Kicsi      | Egyéni riasztási – aktív kapcsolatok nem a megengedett tartományon                                        | Ügynök       | Egy olyan időkeretet aktív kapcsolat mennyisége nem szerepel a megengedett tartományon beállított                                                        |
+| Kicsi      | Egyéni riasztási - IP-címet, amely nem engedélyezett kimenő kapcsolat létrejött                              | Ügynök       | Egy kimenő kapcsolatot, amely nem engedélyezett egy IP-cím létrehozása                                                                                  |
+| Kicsi      | Egyéni riasztás – helyi sikertelen bejelentkezések száma nem szerepel a megengedett tartományon                                | Ügynök       | Egy olyan időkeretet sikertelen helyi bejelentkezési mennyisége nem szerepel a megengedett tartományon beállított                                                       |
+| Kicsi      | Egyéni riasztási – nem engedélyezett felhasználó bejelentkezési                                                      | Ügynök       | Az eszköz bejelentkezett egy helyi felhasználót, hogy nem engedélyezett                                                                                        |
+| Kicsi      | Egyéni riasztási – nem engedélyezett egy folyamat végrehajtása                                               | Ügynök       | Egy folyamat, amely nem engedélyezett végre lett hajtva az eszközön |          |
 
 ## <a name="next-steps"></a>További lépések
 

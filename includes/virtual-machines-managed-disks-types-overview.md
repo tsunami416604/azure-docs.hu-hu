@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6eae536bd19a2c0e5707d8e0b379774b6eb2707a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d2daafa6bf5f9a28ad2b61a97e7a8bd2246ae18d
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60618036"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65538411"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Milyen lemeztípusok érhetők el az Azure-ban?
 
@@ -44,6 +44,7 @@ Az Ultranagy SSD néhány főbb funkciók a következők:
 - Lemez kapacitása: Ultranagy SSD kapacitása címtartományok 4 GiB akár 64 Tib-ra.
 - A lemez iops-érték: Ultranagy SSD támogatja a 300 IOPS/GIB-ra, egy 160 KB IOPS lemezenként maximum IOPS-korlátok. Elérése érdekében az Ön által üzembe helyezett iops-érték, győződjön meg arról, hogy a kiválasztott lemez iops-érték kisebb, mint a virtuális gépek iops-érték. A minimális IOPS lemez 100 IOPS.
 - Lemez átviteli sebesség: Ultranagy SSD, az átviteli sebesség egyetlen határérték 256 KiB/s minden egyes üzembe helyezett IOPS, legfeljebb 2000 MB/s lemezenként (ahol MBps = 10 ^ 6 bájt / másodperc). A minimális átviteli sebesség 1 MiB.
+- Ultranagy SSD-k támogatják a lemez teljesítménye (IOPS és átviteli sebesség) attribútumok beállítása futásidőben anélkül, hogy a lemez leválasztása a virtuális gép. Ha egy lemez teljesítménye átméretezési művelet a lemezen van kiadva, is igénybe vehet a módosítás érvénybe valójában egy órát.
 
 ### <a name="disk-size"></a>Lemezméret
 
@@ -58,6 +59,10 @@ Az Ultranagy SSD néhány főbb funkciók a következők:
 |256     |76,800         |2,000         |
 |512     |80,000         |2,000         |
 |1024-65,536 (ebben a tartományban, 1 Tib-ra egységnyi növekményekben növelése mérete)     |160,000         |2,000         |
+
+### <a name="transactions"></a>Tranzakciók
+
+Ultranagy SSD-k, az egyes i/o műveletek kisebb vagy egyenlő, mint 256 átviteli KiB számít egy egyetlen i/o-művelet. Az átviteli sebesség nagyobb, mint 256 KiB műveletei számítanak több i/o-mérete 256 KiB.
 
 ### <a name="preview-scope-and-limitations"></a>Előzetes verzió hatókör és korlátozások
 

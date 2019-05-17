@@ -1,6 +1,6 @@
 ---
-title: Hogyan előkészítése az Azure Monitor-tárolókhoz |} A Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan fogunk előkészíteni és az Azure Monitor konfigurálása tárolókhoz, így az képes megérteni, hogyan működik-e a tároló és a teljesítménnyel kapcsolatos problémákat azonosítottuk.
+title: Az Azure Monitor engedélyezése a tárolókhoz |} A Microsoft Docs
+description: Ez a cikk bemutatja, hogyan lehetővé, és az Azure Monitor konfigurálása tárolókhoz, így az képes megérteni, hogyan működik-e a tároló és a teljesítménnyel kapcsolatos problémákat azonosítottuk.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: magoedte
-ms.openlocfilehash: 10b80a9749c5698195ac5d3493ac3b07fd6e24e1
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5e149fa96e0a62656804906b52adf10273321d17
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073310"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521903"
 ---
-# <a name="how-to-onboard-azure-monitor-for-containers"></a>Hogyan előkészítése az Azure Monitor for containers szolgáltatásban  
+# <a name="how-to-enable-azure-monitor-for-containers"></a>Tárolók az Azure Monitor engedélyezése  
 
 Ez a cikk áttekintést állíthatja be az Azure Monitor for containers szolgáltatásban üzembe helyezett Kubernetes-környezetben és lévő üzemeltetett számítási feladatok teljesítményének figyelése rendelkezésre álló beállítások [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
 

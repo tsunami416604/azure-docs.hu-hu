@@ -5,16 +5,16 @@ services: storage
 author: mhopkins-msft
 ms.service: storage
 ms.topic: conceptual
-ms.date: 4/29/2019
+ms.date: 05/09/2019
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: 560f7eb8a8809cdd6ef410a610be9806f9709754
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
-ms.translationtype: HT
+ms.openlocfilehash: 26ff592ea0d0a57049ae11a981fe8d8e77ca876f
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409983"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606942"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob storage életciklus kezelése
 
@@ -27,23 +27,30 @@ Az életciklus-kezelési szabályzat lehetővé teszi:
 - A storage-fiók szintjén naponta egyszer futtatni szabályok definiálása
 - Tárolók és blobok (használatával előtagok szűrők) egy részét a szabályok alkalmazása
 
-Fontolja meg a forgatókönyv, ahol egy adatkészlet a gyakori hozzáférést kap a korai fázisában – az életciklus során azonban majd csak alkalmanként két hét után. Az első hónapon túli ritkán hozzáfért az adatkészlet. Ebben a forgatókönyvben a gyakori elérésű tárolási a legcélszerűbb kezdeti szakaszában. Ritkán használt adatok tárolási alkalmi hozzáférést igénylő leginkább megfelelő, és az archive storage a legjobb szint lehetőség az adatok életkorának után több mint egy hónapja. Tárolási rétegek adatok korát tekintetben fokozottabban tervezhet a legkevésbé költséges tárolási lehetőség az igényeinek. Az átállás eléréséhez életciklus felügyeletiházirend-szabályok elévülési adatok áthelyezése az alacsonyabb szinten érhető el.
+Példaként vegyünk egy forgatókönyvet, ahol adatok a gyakori hozzáférést kap az életciklus, de csak kezdeti szakaszában alkalmanként két hét után. Az első hónapon túli ritkán hozzáfért az adatkészlet. Ebben a forgatókönyvben a gyakori elérésű tárolási a legcélszerűbb kezdeti szakaszában. Ritkán használt adatok tárolási leginkább megfelelő alkalmi hozzáférést. Az Archive storage a lehetőség ajánlott réteg az adatok életkorának után több mint egy hónapja. Tárolási rétegek adatok korát tekintetben fokozottabban tervezhet a legkevésbé költséges tárolási lehetőség az igényeinek. Az átállás eléréséhez életciklus felügyeletiházirend-szabályok elévülési adatok áthelyezése az alacsonyabb szinten érhető el.
 
 ## <a name="storage-account-support"></a>Storage-fiókok támogatása
 
-Az életciklus-kezelési szabályzat érhető el mindkét General Purpose v2 (GPv2-) fiókok és a Blob storage-fiókok. Az Azure Portalon frissítheti meglévő általános célú (GPv1-) fiók egy egyszerű, egykattintásos folyamat keresztül GPv2-fiókra. További információ a tárfiókokról: [Az Azure-tárfiókok áttekintése](../common/storage-account-overview.md).  
+Az életciklus-kezelési szabályzat érhető el mindkét General Purpose v2 (GPv2-) fiókok és a Blob storage-fiókok. Az Azure Portalon egy meglévő általános célú (GPv1-) fiók válthat GPv2-fiókra. További információ a tárfiókokról: [Az Azure-tárfiókok áttekintése](../common/storage-account-overview.md).  
 
-## <a name="pricing"></a>Díjszabás 
+## <a name="pricing"></a>Díjszabás
 
 Az életciklus felügyeleti funkció ingyenesen elérhető. A normál művelet költsége díjszabásának a [Blobok listázása](https://docs.microsoft.com/rest/api/storageservices/list-blobs) és [Blobszint beállítása](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API-hívások. Törlési művelet díjmentes. Díjszabással kapcsolatos további információkért lásd: [Blokkbob-díjszabás](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="regional-availability"></a>Regionális elérhetőség 
-Az életciklus szolgáltatást minden nyilvános Azure-régióban érhető el. 
+## <a name="regional-availability"></a>Regionális elérhetőség
 
+Az életciklus-felügyeleti szolgáltatás az összes globális Azure-régióban érhető el.
 
-## <a name="add-or-remove-a-policy"></a>Adja hozzá, vagy távolítsa el a szabályzat 
+## <a name="add-or-remove-a-policy"></a>Adja hozzá, vagy távolítsa el a szabályzat
 
-Hozzáadása, szerkesztése vagy eltávolítani egy házirendet az Azure portal használatával [Azure PowerShell-lel](https://github.com/Azure/azure-powershell/releases), az Azure CLI- [REST API-k](https://docs.microsoft.com/rest/api/storagerp/managementpolicies), vagy az ügyféleszközökben. Ez a cikk bemutatja, hogyan házirend kezelése a portálon és a PowerShell-módszer használatával.  
+Is hozzáadhat, szerkeszthet és eltávolíthat egy házirendet a következő módszerek egyikével:
+
+* [Azure Portal](https://portal.azure.com)
+* [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+* [REST API-k](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
+
+Ez a cikk bemutatja, hogyan házirend kezelése a portálon és a PowerShell-módszer használatával.  
 
 > [!NOTE]
 > Ha engedélyezi a tűzfalszabályok a tárfiók, lifecycle management kérelmek blokkolhatja. Ezek a kérelmek azáltal, hogy kivételek blokkolásának feloldásához. A szükséges Mellőzés vannak: `Logging,  Metrics,  AzureServices`. További információkért tekintse meg a kivételek szakaszában [tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
@@ -56,14 +63,51 @@ Hozzáadása, szerkesztése vagy eltávolítani egy házirendet az Azure portal 
 
 3. Alatt **Blob Service**válassza **életciklus-felügyelet** megtekintése vagy módosítása a szabályzatban.
 
+4. A következő JSON-ja egy szabályt, amely illeszthető be egy példát a **életciklus-felügyelet** portáloldalán.
+
+   ```json
+   {
+     "rules": [
+       {
+         "name": "ruleFoo",
+         "enabled": true,
+         "type": "Lifecycle",
+         "definition": {
+           "filters": {
+             "blobTypes": [ "blockBlob" ],
+             "prefixMatch": [ "container1/foo" ]
+           },
+           "actions": {
+             "baseBlob": {
+               "tierToCool": { "daysAfterModificationGreaterThan": 30 },
+               "tierToArchive": { "daysAfterModificationGreaterThan": 90 },
+               "delete": { "daysAfterModificationGreaterThan": 2555 }
+             },
+             "snapshot": {
+               "delete": { "daysAfterCreationGreaterThan": 90 }
+             }
+           }
+         }
+       }
+     ]
+   }
+   ```
+
+5. Ez a példa JSON kapcsolatos további információkért lásd: a [házirend](#policy) és [szabályok](#rules) szakaszokat.
+
 ### <a name="powershell"></a>PowerShell
+
+A következő PowerShell-parancsfájl segítségével házirend hozzáadása a tárfiókhoz. A `$rgname` változót inicializálni kell az erőforrás-csoport nevét. A `$accountName` változót inicializálni kell a a tárfiók nevét.
 
 ```powershell
 #Install the latest module
-Install-Module -Name Az -Repository PSGallery 
+Install-Module -Name Az -Repository PSGallery
+
+#Initialize the following with your resource group and storage account names
+$rgname = ""
+$accountName = ""
 
 #Create a new action object
-
 $action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 2555
 $action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 90
 $action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -BaseBlobAction TierToCool -daysAfterModificationGreaterThan 30
@@ -71,23 +115,23 @@ $action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -Snaps
 
 # Create a new filter object
 # PowerShell automatically sets BlobType as “blockblob” because it is the only available option currently
-$filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch ab,cd 
+$filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch ab,cd
 
 #Create a new rule object
 #PowerShell automatically sets Type as “Lifecycle” because it is the only available option currently
 $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
 
-#Set the policy 
+#Set the policy
 $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
-
 ```
-## <a name="arm-template-with-lifecycle-management-policy"></a>Életciklus-kezelési szabályzat ARM-sablonnal
 
-Adja meg, és üzembe helyezése ARM-sablonok használatával, az Azure-megoldás központi telepítésének részeként életciklus-felügyeletét. A követés mintasablon üzembe helyezéséhez egy életciklus-kezelési szabályzat az RA-GRS GPv2-tárfiókra. 
+## <a name="azure-resource-manager-template-with-lifecycle-management-policy"></a>Az Azure Resource Manager-sablon az életciklus-kezelési szabályzat
+
+Életciklus-kezelés az Azure Resource Manager-sablonok használatával határozhatja meg. Íme egy minta sablon üzembe helyezéséhez az RA-GRS GPv2-tárfiók életciklus-kezelési házirendjével.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {
@@ -145,28 +189,28 @@ Adja meg, és üzembe helyezése ARM-sablonok használatával, az Azure-megoldá
 }
 ```
 
-
 A házirend szabályok gyűjteménye:
 
 | Paraméternév | Paraméter típusa | Megjegyzések |
 |----------------|----------------|-------|
-| szabályok          | A szabály objektumokból álló tömb | Legalább egy szabályt egy házirendet a szükséges. Egy szabályzatban legfeljebb 100 szabályokat definiálhat.|
+| `rules`        | A szabály objektumokból álló tömb | Legalább egy szabályt egy házirendet a szükséges. Egy szabályzatban legfeljebb 100 szabályokat definiálhat.|
 
 A házirend minden egyes szabály több paraméterekkel rendelkezik:
 
-| Paraméternév | Paraméter típusa | Megjegyzések | Kötelező |
+| Paraméternév | Paraméter típusa | Megjegyzések | Szükséges |
 |----------------|----------------|-------|----------|
-| név           | String |A szabály neve legfeljebb 256 alfanumerikus karaktereket tartalmazhat. Szabály neve a kis-és nagybetűket.  Egy házirend egyedinek kell lennie. | True (Igaz) |
-| enabled | Boolean | Egy nem kötelező logikai érték beolvasása, hogy ideiglenes szabály le van tiltva. Alapértelmezett érték: igaz, ha nincs beállítva. | Hamis | 
-| type           | Enum érték | Az aktuális érvényes típus `Lifecycle`. | True (Igaz) |
-| definíció     | Egy objektum, amely meghatározza az életciklus-szabály | Minden egyes definíció épül fel egy szűrő és egy műveletet. | True (Igaz) |
+| `name`         | String |A szabály neve legfeljebb 256 alfanumerikus karaktereket tartalmazhat. Szabály neve a kis-és nagybetűket.  Egy házirend egyedinek kell lennie. | True (Igaz) |
+| `enabled`      | Boolean | Egy nem kötelező logikai érték beolvasása, hogy ideiglenes szabály le van tiltva. Alapértelmezett érték: igaz, ha nincs beállítva. | Hamis | 
+| `type`         | Enum érték | Az aktuális érvényes típus `Lifecycle`. | True (Igaz) |
+| `definition`   | Egy objektum, amely meghatározza az életciklus-szabály | Minden egyes definíció épül fel egy szűrő és egy műveletet. | True (Igaz) |
 
 ## <a name="rules"></a>Szabályok
 
 Minden egyes szabály definíciója tartalmaz egy szűrő és egy műveletet. A [set szűrése](#rule-filters) szabály műveletek a tárolóban lévő objektumok meghatározott készlete, vagy ha objektumok nevét. A [művelet set](#rule-actions) vonatkozik a réteg vagy törlési műveleteket az objektumok szűrt készlete.
 
 ### <a name="sample-rule"></a>Mintául szolgáló szabály
-A következő példa szabály szűri a fiók a műveletek futtatásához objektumon belül létező `container1` **és** kezdődnie `foo`.  
+
+A következő példa szabály szűri a fiók a műveletek futtatásához objektumon belül létező `container1` és kezdődhet `foo`.  
 
 - Réteg blob ritka elérésű szint utolsó módosítása után 30 nappal
 - Réteg blob az archív szint utolsó módosítása után 90 napig
@@ -199,19 +243,18 @@ A következő példa szabály szűri a fiók a műveletek futtatásához objektu
     }
   ]
 }
-
 ```
 
 ### <a name="rule-filters"></a>A szabály szűrők
 
 Szűrők Szabályműveletek a tárfiókban található blobok egy részhalmazára korlátozza. Ha egynél több szűrő van megadva, a logikai `AND` futtat az összes szűrőt.
 
-Érvényes szűrők a következők:
+A szűrők a következők:
 
 | Szűrő neve | Szűrő típusa | Megjegyzések | Kötelező |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Előre definiált enum értékek tömbje. | A jelenlegi kiadásban támogatja a `blockBlob`. | Igen |
-| prefixMatch | Meg kell egyeznie az előtagok karakterláncok tömbje. Minden szabály legfeljebb 10 előtagok adhatja meg. Előtag-karakterláncra tárolónévnek kell kezdődnie. Például, ha az összes BLOB alapján egyeztetni kívánt "https://myaccount.blob.core.windows.net/container1/foo/..." a szabály a prefixMatch van `container1/foo`. | Ha nem ad meg prefixMatch, a szabály vonatkozik a tárfiókban lévő összes BLOB.  | Nem |
+| prefixMatch | Meg kell egyeznie az előtagok karakterláncok tömbje. Minden szabály legfeljebb 10 előtagok adhatja meg. Előtag-karakterláncra tárolónévnek kell kezdődnie. Például, ha az összes BLOB alapján egyeztetni kívánt `https://myaccount.blob.core.windows.net/container1/foo/...` egy szabályban a prefixMatch van `container1/foo`. | Ha nem ad meg prefixMatch, a szabály vonatkozik a tárfiókban lévő összes BLOB.  | Nem |
 
 ### <a name="rule-actions"></a>A szabály műveletek
 
@@ -225,17 +268,18 @@ A futtatási feltétel teljesülése esetén a szűrt blobok műveletek lépnek.
 | tierToArchive | Támogatja a gyors vagy lassú elérésű szint jelenleg a blobokhoz | Érvénytelen érték |
 | törlés        | Támogatott                                   | Támogatott     |
 
->[!NOTE] 
+>[!NOTE]
 >Ha egynél több művelet ugyanennek a blobnak a definiálja, életciklus-felügyelet a legkevésbé költséges művelet a blob vonatkozik. Ha például a művelet `delete` művelet olcsóbb `tierToArchive`. A művelet `tierToArchive` művelet olcsóbb `tierToCool`.
 
 A futtatási feltételek kora alapulnak. Alap blobok az utolsó módosítás időpontja segítségével nyomon követheti a életkor és pillanatképek használatát a pillanatkép-létrehozás ideje blob-kor nyomon követéséhez.
 
-| A művelet futtatása feltétel | A feltétel értéke | Leírás |
-|----------------------------|-----------------|-------------|
-| daysAfterModificationGreaterThan | Egész érték, amely jelzi a kora napokban | Az alap blob műveletekhez érvényes feltétel |
-| daysAfterCreationGreaterThan     | Egész érték, amely jelzi a kora napokban | Blob pillanatkép műveletek esetében érvényes feltétel | 
+| A művelet futtatása feltétel             | A feltétel értéke                          | Leírás                             |
+|----------------------------------|------------------------------------------|-----------------------------------------|
+| daysAfterModificationGreaterThan | Egész érték, amely jelzi a kora napokban | Alap blob művelet feltételét     |
+| daysAfterCreationGreaterThan     | Egész érték, amely jelzi a kora napokban | Blob pillanatkép művelet feltételét |
 
 ## <a name="examples"></a>Példák
+
 Az alábbi példák bemutatják, hogyan lehet gyakori helyzetek meg életciklus-szabályzat előírásainak.
 
 ### <a name="move-aging-data-to-a-cooler-tier"></a>Egy írásként elévülési adatok áthelyezése
@@ -266,7 +310,7 @@ Ez a példa bemutatja, hogyan előtaggal van ellátva a blokkblobok használatá
 }
 ```
 
-### <a name="archive-data-at-ingest"></a>Betöltés adatok archiválása 
+### <a name="archive-data-at-ingest"></a>Betöltés adatok archiválása
 
 Néhány adatot tétlen marad, a felhőben és a ritkán, ha követően tárolja. A következő életciklus-szabályzat van konfigurálva, az adatok archiválása, miután az adatbetöltés sebességétől. Ebben a példában átmenetek letiltása a tárfiók tárolóban lévő blobok `archivecontainer` be az archív tárolási szintről. Az átállás a blobok eljáró 0 nap utolsó módosítás időpontja után végezhető el:
 
@@ -296,7 +340,7 @@ Néhány adatot tétlen marad, a felhőben és a ritkán, ha követően tárolja
 
 ### <a name="expire-data-based-on-age"></a>Hamarosan lejár kora alapján
 
-Bizonyos adatok várhatóan napok vagy akár hónapokat, csökkentheti a költségeket vagy kormányzati követelményeinek létrehozása után lejár. Konfigurálhatja egy életciklus-kezelési szabályzat által adatok életkor alapján törlés adatok lejár. Az alábbi példa bemutatja egy szabályzatot, amely törli az összes blokkblobok (a nem megadott előtag) 365 napnál régebbi.
+Bizonyos adatok várhatóan napok vagy hónapok létrehozása után lejár. Konfigurálhatja egy életciklus-kezelési szabályzat által adatok életkor alapján törlés adatok lejár. Az alábbi példa bemutatja egy szabályzatot, amely törli az összes blokkblobok 365 napnál régebbi.
 
 ```json
 {
@@ -330,7 +374,7 @@ Módosítva, és rendszeresen élettartama során elért adatok esetén pillanat
     {
       "name": "snapshotRule",
       "enabled": true,
-      "type": "Lifecycle",      
+      "type": "Lifecycle",
     "definition": {
         "filters": {
           "blobTypes": [ "blockBlob" ],
@@ -346,9 +390,11 @@ Módosítva, és rendszeresen élettartama során elért adatok esetén pillanat
   ]
 }
 ```
-## <a name="faq"></a>gyakori kérdésekben 
+
+## <a name="faq"></a>gyakori kérdésekben
+
 **Létrehozott egy új házirendet, miért van a műveleteket nem azonnali futtatása?**  
-A platform naponta egyszer fut, az életciklus-szabályzat. Után konfigurálhat egy szabályzatot, az első alkalommal történő futtatása bizonyos műveletek (például a rétegezést és törlése) esetében akár 24 óráig is eltarthat.  
+A platform naponta egyszer fut, az életciklus-szabályzat. Után konfigurálhat egy szabályzatot, az egyes műveletek futtatása az első alkalommal akár 24 órát is igénybe vehet.  
 
 ## <a name="next-steps"></a>További lépések
 

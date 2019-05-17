@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fba0a9bc0886b9487b0c61b6091bd122fe6e370d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 04dde608f5885cdafe18b49a388de8dbb596cbfe
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191543"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65539357"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A rendszer a tartományok közötti Identity Management (SCIM) használatával automatikus kiépítésére a felhasználók és csoportok alkalmazásokhoz az Azure Active Directoryból
 
@@ -202,7 +202,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="create-user"></a>Felhasználó létrehozása
 
-###### <a name="request"></a>Kérés
+###### <a name="request"></a>Lekérés
 *POST/felhasználók*
 ```json
 {
@@ -259,7 +259,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="get-user"></a>Felhasználó beolvasása
 
-###### <a name="request"></a>Kérés
+###### <a name="request"></a>Lekérés
 *GET /Users/5d48a0a8e9f04aa38008* 
 
 ###### <a name="response"></a>Válasz
@@ -290,7 +290,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 ```
 #### <a name="get-user-by-query"></a>A lekérdezés által felhasználó beolvasása
 
-##### <a name="request"></a>Kérés
+##### <a name="request"></a>Lekérés
 *GET /Users?filter=userName eq "Test_User_dfeef4c5-5681-4387-b016-bdf221e82081"*
 
 ##### <a name="response"></a>Válasz
@@ -329,7 +329,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="get-user-by-query---zero-results"></a>Felhasználó által a lekérdezés - eredmény beolvasása
 
-##### <a name="request"></a>Kérés
+##### <a name="request"></a>Lekérés
 *GET/felhasználók? filter = felhasználónév-eq "felhasználó nem létező"*
 
 ##### <a name="response"></a>Válasz
@@ -347,7 +347,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="update-user-multi-valued-properties"></a>Felhasználó frissítése [többértékű tulajdonságai]
 
-##### <a name="request"></a>Kérés
+##### <a name="request"></a>Lekérés
 *PATCH /Users/6764549bef60420686bc HTTP/1.1*
 ```json
 {
@@ -396,7 +396,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="update-user-single-valued-properties"></a>Felhasználó frissítése [egyértékű tulajdonságai]
 
-##### <a name="request"></a>Kérés
+##### <a name="request"></a>Lekérés
 *PATCH /Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
 {
@@ -439,7 +439,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="delete-user"></a>Felhasználó törlése
 
-##### <a name="request"></a>Kérés
+##### <a name="request"></a>Lekérés
 *DELETE /Users/5171a35d82074e068ce2 HTTP/1.1*
 
 ##### <a name="response"></a>Válasz
@@ -454,13 +454,12 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="create-group"></a>Csoport létrehozása
 
-##### <a name="request"></a>Kérés
+##### <a name="request"></a>Lekérés
 *POST/groups HTTP/1.1-es*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group", "http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/2.0/Group"],
     "externalId": "8aa1a0c0-c4c3-4bc0-b4a5-2ef676900159",
-    "id": "c4d56c3c-bf3b-4e96-9b64-837018d6060e",
     "displayName": "displayName",
     "members": [],
     "meta": {
@@ -489,7 +488,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="get-group"></a>Csoport beolvasása
 
-##### <a name="request"></a>Kérés
+##### <a name="request"></a>Lekérés
 *GET /Groups/40734ae655284ad3abcc?excludedAttributes=members HTTP/1.1*
 
 ##### <a name="response"></a>Válasz
@@ -510,7 +509,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="get-group-by-displayname"></a>DisplayName Get-csoportosítás
 
-##### <a name="request"></a>Kérés
+##### <a name="request"></a>Lekérés
 *GET /Groups?excludedAttributes=members&filter=displayName eq "displayName" HTTP/1.1*
 
 ##### <a name="response"></a>Válasz
@@ -537,7 +536,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 ```
 #### <a name="update-group-non-member-attributes"></a>Frissítési csoport [harmadik attribútumok]
 
-##### <a name="request"></a>Kérés
+##### <a name="request"></a>Lekérés
 *PATCH /Groups/fa2ce26709934589afc5 HTTP/1.1*
 ```json
 {
@@ -555,7 +554,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 ### <a name="update-group-add-members"></a>Frissítési csoport [tagok hozzáadása]
 
-##### <a name="request"></a>Kérés
+##### <a name="request"></a>Lekérés
 *PATCH /Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
 {
@@ -576,7 +575,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="update-group-remove-members"></a>Frissítési csoport [Remove tagok]
 
-##### <a name="request"></a>Kérés
+##### <a name="request"></a>Lekérés
 *PATCH /Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
 {
@@ -597,7 +596,7 @@ Ez a szakasz tartalmazza az Azure AD SCIM-ügyfél és a példa által kibocsát
 
 #### <a name="delete-group"></a>Csoport törlése
 
-##### <a name="request"></a>Kérés
+##### <a name="request"></a>Lekérés
 *DELETE /Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
 ##### <a name="response"></a>Válasz
@@ -1170,10 +1169,10 @@ SCIM szolgáltatás létrehozásához a Microsoft által biztosított a CLI-kód
   
    * ResourceIdentifier.Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
    * ResourceIdentifier.SchemaIdentifier: "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"
-   * (Mint PatchRequest2 PatchRequest). Operations.Count: 1
+   * (Mint PatchRequest2 PatchRequest). Operations.Count: 1.
    * (Mint PatchRequest2 PatchRequest). Operations.ElementAt(0). OperationName: OperationName.Add
    * (Mint PatchRequest2 PatchRequest). Operations.ElementAt(0). Path.AttributePath: "manager"
-   * (Mint PatchRequest2 PatchRequest). Operations.ElementAt(0). Value.Count: 1
+   * (Mint PatchRequest2 PatchRequest). Operations.ElementAt(0). Value.Count: 1.
    * (Mint PatchRequest2 PatchRequest). Operations.ElementAt(0). Value.ElementAt(0). Referencia: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
    * (Mint PatchRequest2 PatchRequest). Operations.ElementAt(0). Value.ElementAt(0). Érték: 2819c223-7f76-453a-919d-413861904646
 

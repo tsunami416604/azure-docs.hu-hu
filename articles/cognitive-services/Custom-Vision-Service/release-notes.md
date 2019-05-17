@@ -9,14 +9,32 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 2b0d8b8a86c3105b1bda7fb0d72cbcb72ed82995
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4b4e449b9260debbe90523141cacc4ed76219490
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60816388"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787957"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service kibocsátási megjegyzései
+
+## <a name="may-2-2019-and-may-10-2019"></a>2019. május 2. és a 2019. május 10.
+
+- Bugfixes és a háttérkiszolgáló fejlesztései
+
+## <a name="may-23-2019"></a>2019. május 23.
+
+- Azure-előfizetések, így könnyebben válassza ki az Azure-címtárak kapcsolatos felhasználói élmény továbbfejlesztett portálon.
+
+## <a name="april-18-2019"></a>2019. április 18. 
+
+- A Vision AI Dev csomag hozzáadott Objektumfelismerés exportálását.
+- Honlap, beleértve a projekt keresése.
+
+## <a name="april-3-2019"></a>2019. április 3.
+
+- Növelni a rendszerkép 200 határoló dobozok számára vonatkozó határértéket. 
+- Bugfixes, beleértve a modellek teljesítményének jelentős frissítés exportált tensorflow-hoz. 
 
 ## <a name="march-26-2019"></a>2019. március 26.
 

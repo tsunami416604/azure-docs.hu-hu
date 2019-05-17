@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: e8148e3a26a236039736dede5a7fbc79075731ce
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: e1a110abf8e057034043da34455bf678277c6cb4
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938147"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799949"
 ---
 # <a name="virtual-machine-skus-tab"></a>Virtuális gép termékváltozatok lap
 
@@ -55,7 +55,7 @@ A következő táblázat ismerteti a célja, a tartalmát, és ezek a mezők for
 | **Operációsrendszer-család\*** | Azt jelzi, hogy a megoldás virtuális gép Windows - vagy Linux-alapú. |
 | **Válassza ki az operációs rendszer típusa** | Adott gyártó vagy a megadott operációs rendszer kiadása. |
 | **Operációs rendszer rövid neve\*** | Operációs rendszer neve megjelenik az ügyfelek számára.  |
-| **Javasolt Virtuálisgép-méretek\*** | Lehetővé teszi, hogy legfeljebb hat javasolt Virtuálisgép-méretek egy szabványosított listából választott.  Bár ezek a javaslatok ezzel a beállítással hangsúlyosan jelennek meg a lehetséges ügyfelek, azok bármely Virtuálisgép-méret, amely kompatibilis a megoldás kép megadhat. | 
+| **Javasolt Virtuálisgép-méretek\*** | Lehetővé teszi, hogy legfeljebb hat javasolt Virtuálisgép-méretek egy szabványosított listából választott.  Ez a lista az Azure portal és a Microsoft piacterein átadott mentén.  Ebben a listában, amely érvényes (az adott ügyfél-előfizetés, régió, zóna stb.) első virtuális gép méretét, hogy a lehetséges ügyfelek alapértelmezés szerint van beállítva.  A felhasználó módosíthatja ezt a méretet a megoldás kép minden kompatibilis. | 
 | **Nyitott portok**| A portok megnyitásához, és támogatja a termékváltozat-protokollt.  Ezek a konfigurációk meg kell egyeznie a virtuális hálózatot, konfigurálta a hálózat VM-megoldás. Ezek a beállítások során a virtuális gép üzembe helyezésének lép érvénybe. Portbeállítások azonban módosítható egy Termékváltozat a közzététel után. További információkért lásd: [hogyan nyithat meg portokat a virtuális gép az Azure Portallal](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal). <br/>A következő alapértelmezett hálózatleképezések kerülnek az összes virtuális gépre. &emsp; Windows: 3389-es 3389-es TCP ->, az 5986-os 5986-os TCP -> &emsp; Linux: 22 -&GT; 22-ES, A TCP-(SSH). |
 | **Lemez verziója**  | Kapcsolódó megoldás virtuális Gépen lemez verziószám és lemez URL-cím által megadott. A lemez kell lennie a [sémantická verze](https://semver.org/) formátum: `<major>.<minor>.<patch>`.  Az URL-je a közös hozzáférésű jogosultságkód URI-t az operációs rendszer virtuális Merevlemeze számára létrehozott.  Bár a Termékváltozat száma nyolc lemez verziók adhat hozzá, csak a legmagasabb szintű lemez verziószám-termékváltozat jelennek meg az Azure Marketplace-en. Az egyéb verziói csak akkor látható, API-kon keresztül.  <!--TD: Add more specific link to API --> <br/> A **új adatlemez** accordion szakasz lehetővé teszi, hogy akár 15 adatlemezeket csatlakoztathat a virtuális gép.  Miután egy adott virtuális gép verzióját, és a társított adatlemezek Termékváltozat tesz közzé, amelyet ez a konfiguráció nem módosítható.  Ha további VM-verziók hozzáadja a termékváltozatra, azok azonos számú adatlemezeket is támogatnia kell. <br/> Ha nem hozott létre az Azure-alapú Virtuálisgép-rendszerképeket, hozzáadhat, később frissíteni ezt a mezőt.  A társított virtuális gép erőforrás létrehozásával kapcsolatos információkért lásd: a szakasz [hozzon létre virtuális gép technikai eszközök](./cpp-create-technical-assets.md).  
 |  |  |

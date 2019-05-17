@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 41b35324ccca8cf40edbc53ed25a2d8615a9294e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729346"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65813630"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>Oktatóanyag: Az Azure Active Directory-integráció az mártás Labs - mobil- és webalkalmazás tesztelése
 
@@ -204,7 +204,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó mártás Labs - mobil- �
 > [!Note]
 > Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [mártás Labs - mobil- és webes tesztelés támogatási csoportjának](mailto:support@saucelabs.com).
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

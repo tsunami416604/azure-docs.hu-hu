@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: raynew
-ms.openlocfilehash: 78aed4fceab83d942927486cd7ae46a32dd6ca09
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 6f501e251f0b006bbbb4f64090cac5c3d61b7bf2
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64927552"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523549"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Tudnivalók a Site Recovery-összetevők (konfigurációs, folyamat, fő célkiszolgáló)
 
@@ -28,7 +28,7 @@ A helyszíni VMware virtuális gépek és fizikai kiszolgálók vészhelyreáll�
 **Szerepkör** | A konfigurációs kiszolgáló koordinálja a helyszíni rendszer és az Azure közötti kommunikációt, és felügyeli az adatreplikációt. | További információ az architektúrát [VMware](vmware-azure-architecture.md) és [fizikai kiszolgáló](physical-azure-architecture.md) vészhelyreállítás az Azure-bA.
 **A VMware követelményeinek** | A helyszíni VMware virtuális gépek vész-helyreállítási telepítse és futtassa a konfigurációs kiszolgáló, egy helyszíni, magas rendelkezésre állású VMware virtuális gép. | [Ismerje meg](vmware-azure-deploy-configuration-server.md#prerequisites) az előfeltételeket.
 **VMware-telepítés** | Azt javasoljuk, hogy a konfigurációs kiszolgáló OVA letöltött sablon használatával helyezze üzembe. Ezzel a módszerrel egy egyszerűen állítható be a konfigurációs kiszolgáló, amely megfelel az összes követelmények és előfeltételek.<br/><br/> Ha valamilyen okból nem tud a VMware virtuális gép üzembe helyezése egy OVA-sablonnal, állíthat be a konfigurációs kiszolgáló gépek manuálisan, a fizikai gépek vészhelyreállítására alább leírt módon. | [Üzembe helyezése](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template) OVA-sablonnal.
-**Fizikai kiszolgáló követelmények** | Vész-helyreállítási a helyszíni fizikai kiszolgálókon, akkor a konfigurációs kiszolgáló telepítése manuálisan. | [Ismerje meg](/physical-azure-set-up-source.md#prerequisites) az előfeltételeket.
+**Fizikai kiszolgáló követelmények** | Vész-helyreállítási a helyszíni fizikai kiszolgálókon, akkor a konfigurációs kiszolgáló telepítése manuálisan. | [Ismerje meg](physical-azure-set-up-source.md#prerequisites) az előfeltételeket.
 **Fizikai kiszolgáló telepítése** | Ha VMware virtuális gépként nem telepíthető, telepítheti egy fizikai kiszolgálón. | [Üzembe helyezése](physical-azure-set-up-source.md#set-up-the-source-environment) a konfigurációs kiszolgálót manuálisan.
 
 
@@ -51,5 +51,5 @@ A fő célkiszolgáló az Azure-ból történő feladat-visszavétel során keze
 
 
 ## <a name="next-steps"></a>További lépések
-- Tekintse át a [architektúra](/vmware-azure-architecture.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók.
+- Tekintse át a [architektúra](vmware-azure-architecture.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók.
 - Tekintse át a [követelmények és előfeltételek](vmware-physical-azure-support-matrix.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-bA. 

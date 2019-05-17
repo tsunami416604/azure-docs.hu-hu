@@ -3,19 +3,19 @@ title: 'Gyors útmutató: A Bing Entity Search SDK-val keresési kérés küldé
 titleSuffix: Azure Cognitive Services
 description: Ez a rövid útmutató segítségével keresse meg a Bing Entity Search SDK-val entitásokat a node.js-ben
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
-ms.author: v-gedod
-ms.openlocfilehash: 015a2d344b066bd7b65c3228a2795c3395793f2b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: aahi
+ms.openlocfilehash: 9c178b8278dd7854e4f79fbfae1bafc117a1970e
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60737040"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65813669"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-nodejs"></a>Gyors útmutató: A Bing Entity Search SDK-val keresési kérés küldése a node.js-ben
 

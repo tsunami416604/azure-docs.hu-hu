@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: e24c5b2be1df41d84fa4461250f51cb009f77529
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: ddd3b0889eedd55f809dbb57b2ef41a2ae3f9c94
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60737192"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65521397"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>az Azure Functions – Host.JSON referencia 2.x  
 
@@ -35,7 +35,6 @@ Egyes host.json beállításai csak a helyi futtatásakor használt a [local.set
 ## <a name="sample-hostjson-file"></a>Mintafájl host.json
 
 Az alábbi minta *host.json* fájlok a megadott összes lehetséges lehetősége van.
-
 
 ```json
 {
@@ -82,7 +81,10 @@ Az alábbi minta *host.json* fájlok a megadott összes lehetséges lehetősége
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ]
+    "watchDirectories": [ "Shared", "Test" ],
+    "managedDependency": {
+        "enabled": true
+    }
 }
 ```
 
@@ -194,6 +196,9 @@ A függvényalkalmazás, beleértve az Application Insights naplózási viselked
       "Function.MyFunction": "Information",
       "default": "None"
     },
+    "console": {
+        ...
+    },
     "applicationInsights": {
         ...
     }
@@ -274,6 +279,18 @@ Egy [megosztott kód könyvtárak](functions-reference-csharp.md#watched-directo
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="manageddependency"></a>managedDependency
+
+Felügyelt függőség, amely jelenleg előzetes verziójú funkció csak a támogatott PowerShell-alapú funkciók. Lehetővé teszi, hogy lehet a szolgáltatás automatikusan kezeli. Ha az engedélyezett tulajdonság értéke igaz, a [requirements.psd1](functions-reference-powershell.md#dependency-management) fájlt fogja feldolgozni. Bármely alverziók megjelenésekor a függőségek frissülni fog.
+
+```json
+{
+    "managedDependency": {
+        "enabled": true
+    }
 }
 ```
 

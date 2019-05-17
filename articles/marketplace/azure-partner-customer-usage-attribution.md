@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: cfe9b469cfac848c9e57f1fc10193208722be109
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: dcab4d24ca948980f28483fd09f29588e0329b63
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935704"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800976"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése
 
@@ -247,7 +247,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>Jelentés
 
-A jelentés az ügyfél használati tesznek elérhetővé; ilyenek a Partner Center elemzése irányítópultján található. ([https://partner.microsoft.com/en-us/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)).
+A jelentés az ügyfél használati tesznek elérhetővé; ilyenek a Partner Center elemzése irányítópultján található. ([https://partner.microsoft.com/en-us/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Annak érdekében, hogy a jelentés megtekintéséhez, akkor a Partner Center hitelesítő adatok használatával jelentkezzen be. Ha problémába ütközik a jelentéssel együtt, vagy jelentkezzen be, hozzon létre egy támogatási kérést, a Get-támogatás szakaszban a következő.
 
 A Partner társítási típust a jelentés megtekintéséhez a legördülő listában válassza ki a sablonnal követni.
 
@@ -266,6 +266,10 @@ Ez a sablon telepítésekor lehet azonosítani a telepítés,-e a Microsoft \<PA
 Üzembe helyezésekor \<PARTNER > szoftver, a Microsoft a telepítésének azonosítani tudja \<PARTNER > az Azure-erőforrások, központilag telepített szoftvereket. A Microsoft is képes az Azure-erőforrások, amelyek támogatják a szoftver összekapcsolását. A Microsoft ezeket az információkat a lehető legjobb élményt biztosíthat a termékeiket és üzleti működésre gyűjt. Az adatok gyűjtése és található a Microsoft adatvédelmi irányelvei szabályozzák https://www.microsoft.com/trustcenter.
 
 ## <a name="get-support"></a>Támogatás kérése
+
+Ha a jelentés vagy jelentkezzen be a Partnerközpontba problémát tapasztal, hozzon létre egy támogatási kérést Itt a Partnerközpont támogatási csapatával: [https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support)
+
+![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
 Ha segítségre van szüksége a Marketplace-en bevezetési és/vagy az ügyfél használati tesznek elérhetővé; ilyenek, kövesse az alábbi lépéseket.
 
@@ -312,7 +316,7 @@ Képernyőképeket, részletes útmutató megtekintéséhez [ https://aka.ms/Tec
 
 Akkor lesz felveszi Önnel a kapcsolatot egy Microsoft Partner technikai tanácsadó állíthat be egy hívás hatókörének beállításához az igényeinek.
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>gyakori kérdésekben
 
 **Mi az az előnye, hogy a GUID azonosító hozzáadása a sablonhoz?**
 

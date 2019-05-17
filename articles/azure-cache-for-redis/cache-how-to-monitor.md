@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 32d0fb2ba17d322c0a273ebaf0a21d2b3ca0668f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2cfd5a99144af1120afbf06fe6222228a9332bb6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60830695"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787426"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>A Redis Azure Cache figyelése
 Az Azure Cache Redis felhasználásra [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) biztosít a cache-példány figyelése számos lehetőség közül választhat. Meg is metrikákat tekinthet meg, rögzítheti a kezdőpulton mérőszámdiagramok, testre szabhatja a dátum- és időtartományt figyelési diagramok, hozzáadása és metrikák eltávolítása a diagramok és riasztásokat állíthat be adott feltételek teljesülése esetén. Ezek az eszközök lehetővé teszik az Azure Cache Redis-példány és a gyorsítótárazás alkalmazások kezeléséhez segítségért állapotának monitorozásához.
@@ -105,7 +105,7 @@ Mindegyik metrikát két verzióját tartalmazza. Egy metrika méri a teljesítm
 | Gyorsítótár-írás |A gyorsítótár (MB) a megadott (MB/s) másodpercenként írt adatok mennyisége jelentési időköz. Ez az érték a hálózati kártyák, amelyek támogatják a virtuális gép, amely üzemelteti a gyorsítótárban, és nem adott Redis származik. Ez az érték megfelel a hálózati sávszélesség a gyorsítótárhoz az ügyfélről küldött adatok. |
 | Csatlakoztatott ügyfélrendszerek |A megadott jelentési időszak során a gyorsítótárhoz ügyfélkapcsolatok száma. Ez leképezhető `connected_clients` a Redis INFO parancsát. Miután a [kapcsolathoz megadott korlátot](cache-configure.md#default-redis-server-configuration) van, a gyorsítótár lesz elérte későbbi csatlakozási kísérletekhez sikertelen lesz. Vegye figyelembe, hogy akkor sem, ha nincs aktív ügyfélalkalmazások, lehet, hogy van még néhány példányait kapcsolódó ügyfelek a belső folyamatok és kapcsolatok miatt lehet. |
 | CPU |A CPU-kihasználtság az Azure Cache a Redis-kiszolgáló százalékos jelentés a megadott intervallumban. Ezt az értéket rendeli az operációs rendszer `\Processor(_Total)\% Processor Time` teljesítményadatait mutatja. |
-| Hibák | Adott hibáiról és teljesítményproblémáiról, amely a gyorsítótár sikerült esetlegesen tapasztalt megadott jelentési időtartam alatt. Ez a metrika nyolc dimenzió különböző alkalmazáshiba-típusok jelölő rendelkezik, de sikerült több hozzáadta a jövőben. Most már jelölt alkalmazáshiba-típusok a következők: <br/><ul><li>**Feladatátvétel** – Ha a gyorsítótár átadja a feladatokat (fő elősegíti az alárendelt)</li><li>**Az összeomlási** – Ha a csomópontok egyikét a váratlanul összeomlik, a gyorsítótár</li><li>**Dataloss** – Ha a gyorsítótár dataloss</li><li>**UnresponsiveClients** – Ha az ügyfelek vannak nem adatok beolvasása a kiszolgálóról elég gyorsan</li><li>**AOF** – amikor az adatmegőrzés AOF kapcsolatos probléma</li><li>**RDB-fájlba való** – Ha RDB-fájlba való megőrzését kapcsolatos probléma</li><li>**Importálás** – amikor az importálás RDB kapcsolatos probléma</li><li>**Exportálás** – Ha RDB-fájlba való exportálása kapcsolatos probléma</li></ul> |
+| Hibák | Adott hibáiról és teljesítményproblémáiról, amely a gyorsítótár sikerült esetlegesen tapasztalt megadott jelentési időtartam alatt. Ez a metrika nyolc dimenzió különböző alkalmazáshiba-típusok jelölő rendelkezik, de sikerült több hozzáadta a jövőben. Most már jelölt alkalmazáshiba-típusok a következők: <br/><ul><li>**Feladatátvétel** – Ha a gyorsítótár átadja a feladatokat (alárendelt elősegíti a master)</li><li>**Az összeomlási** – Ha a csomópontok egyikét a váratlanul összeomlik, a gyorsítótár</li><li>**Dataloss** – Ha a gyorsítótár dataloss</li><li>**UnresponsiveClients** – Ha az ügyfelek vannak nem adatok beolvasása a kiszolgálóról elég gyorsan</li><li>**AOF** – amikor az adatmegőrzés AOF kapcsolatos probléma</li><li>**RDB-fájlba való** – Ha RDB-fájlba való megőrzését kapcsolatos probléma</li><li>**Importálás** – amikor az importálás RDB kapcsolatos probléma</li><li>**Exportálás** – Ha RDB-fájlba való exportálása kapcsolatos probléma</li></ul> |
 | Kizárt kulcsok |A gyorsítótárból oka az, hogy a megadott jelentési időszak során kizárt elemek száma a `maxmemory` korlátot. Ez leképezhető `evicted_keys` a Redis INFO parancsát. |
 | Lejárt kulcsok |Azon elemek száma a megadott jelentési időszak során lejárt a gyorsítótárból. Ezt az értéket képez `expired_keys` a Redis INFO parancsát.|
 | Lekérdezések |A megadott jelentési időszak során a gyorsítótárból a get műveletek száma. Az értéket nem egyezik meg a következő értékeket a Redis ADATAIT minden parancs: `cmdstat_get`, `cmdstat_hget`, `cmdstat_hgetall`, `cmdstat_hmget`, `cmdstat_mget`, `cmdstat_getbit`, és `cmdstat_getrange`, és egyenértékű a gyorsítótár-találatok és tévesztések összege a jelentéskészítési intervallumban. |

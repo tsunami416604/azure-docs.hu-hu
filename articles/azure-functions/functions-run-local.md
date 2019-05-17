@@ -9,20 +9,32 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 03/13/2019
 ms.author: glenga
-ms.openlocfilehash: 55c5a61be8dadd538b73bd6378c030b98d837341
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.custom: 80e4ff38-5174-43
+ms.openlocfilehash: 7c6e7d8bb407b0ffeb320ebfe9e2639feb303800
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508230"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603413"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
 Az Azure Functions Core Tools lehetővé teszi a fejlesztés és tesztelés a helyi számítógépen a parancssorba vagy terminálba az a funkciók. A helyi függvények élő Azure-szolgáltatások is csatlakozhat, és akkor is a függvények hibakeresése a helyi számítógépen a teljes Functions futtatókörnyezete használatával. Akkor is telepítheti egy függvényalkalmazást az Azure-előfizetéshez.
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
+
+Függvények a helyi számítógépen, és ezek közzététele az Azure-bA Core Tools használatával a következő alapvető lépéseket:
+
+> [!div class="checklist"]
+> * [A Core Tools és függőségeinek telepítéséhez.](#v2)
+> * [Függvényalkalmazás-projekt létrehozása egy nyelvspecifikus sablon alapján.](#create-a-local-functions-project)
+> * [Regisztrálja az eseményindítót és a kötési bővítményeket.](#register-extensions)
+> * [Adja meg a tárolási és egyéb kapcsolatok.](#local-settings-file)
+> * [Függvény létrehozása egy eseményindító és egy nyelvspecifikus sablont.](#create-func)
+> * [A függvény helyi futtatása](#start)
+> * [A projekt közzététele az Azure-bA](#publish)
 
 ## <a name="core-tools-versions"></a>Core Tools-verzió
 
@@ -41,9 +53,6 @@ Ha másként nincs jelezve, az ebben a cikkben szereplő példák verziójára v
 ### <a name="v2"></a>Verzió 2.x
 
 Verzió 2.x-es eszközök használja az Azure Functions runtime 2.x verziója a .NET Core-alapú. Ez a verzió a platformfüggetlen .NET Core 2.x támogatja, beleértve a támogatott [Windows](#windows-npm), [macOS](#brew), és [Linux](#linux). Először telepítenie kell a .NET Core 2.x SDK.
-
-> [!IMPORTANT]
-> Ha engedélyezi a projektfájlban host.json bővítmény csomagok, nem kell telepíteni a .NET Core 2.x SDK. További információkért lásd: [helyi fejlesztés és az Azure Functions Core Tools bővítmény csomagok ](functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles). Bővítmény-csomagok a Core Tools 2.6.1071 verzióját vagy újabb verzió szükséges.
 
 #### <a name="windows-npm"></a>Windows
 
@@ -186,14 +195,20 @@ A fájl local.settings.json Alkalmazásbeállítások, a kapcsolati karakterlán
 
 | Beállítás      | Leírás                            |
 | ------------ | -------------------------------------- |
-| **`IsEncrypted`** | Ha a beállítása `true`, minden értéket a helyi gép kulcsa segítségével titkosítja. A használt `func settings` parancsokat. Alapértelmezett érték `true`. Amikor `true`, minden-beállítások használatával `func settings add` a helyi gép kulcsa segítségével titkosítja. Ez tükrözi, hogy hogyan függvényalkalmazás-beállításokat Alkalmazásbeállítások az Azure-ban vannak tárolva. Titkosított helyi beállításértékeket további védelmet biztosít értékes adatait a local.settings.json nyilvánosan láthatók.  |
+| **`IsEncrypted`** | Ha a beállítása `true`, minden értéket a helyi gép kulcsa segítségével titkosítja. A használt `func settings` parancsokat. Alapértelmezett érték `false`. |
 | **`Values`** | Alkalmazásbeállítások és a helyi futtatás során használt kapcsolati karakterláncok gyűjteménye. Ezeket az értékeket felelnek meg az alkalmazásbeállításokat a függvényalkalmazáshoz az Azure-ban, mint például [ `AzureWebJobsStorage` ]. Számos eseményindítók és kötések rendelkezik olyan tulajdonságot, amely hivatkozik a kapcsolati karakterlánc Alkalmazásbeállítás, például `Connection` számára a [Blob storage-eseményindító](functions-bindings-storage-blob.md#trigger---configuration). Az ilyen tulajdonságok szüksége lesz a megadott alkalmazás-beállítás a `Values` tömb. <br/>[`AzureWebJobsStorage`] az eseményindítók nem HTTP beállítás kötelező alkalmazást. <br/>Verzió 2.x verzióját a Functions futtatókörnyezete van szükség a [ `FUNCTIONS_WORKER_RUNTIME` ] beállítást, amely a projekt Core Tools által generált. <br/> Ha rendelkezik a [az Azure storage emulator](../storage/common/storage-use-emulator.md) telepítve helyben, beállíthatja [ `AzureWebJobsStorage` ] való `UseDevelopmentStorage=true` és Core Tools használja az emulátorban. Ez akkor hasznos, a fejlesztés során, de a telepítés előtt egy tényleges storage-kapcsolattal kell tesztelni. |
 | **`Host`** | Ebben a szakaszban beállítások testre szabhatja a Functions gazdafolyamat helyi futtatás során. |
 | **`LocalHttpPort`** | Beállítja az alapértelmezett portot használja, amikor a függvények helyi állomás (`func host start` és `func run`). A `--port` parancssori kapcsoló elsőbbséget élvez ezt az értéket. |
 | **`CORS`** | Meghatározza az engedélyezett eredetek [eltérő eredetű erőforrások megosztása (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Források szóközök nélküli szövegláncként egy vesszővel tagolt lista formájában vannak megadva. A helyettesítő karaktert tartalmazó értéket (\*) támogatott, amely lehetővé teszi a kérelmek bármilyen forrásból. |
 | **`ConnectionStrings`** | Ne használja a gyűjtemény a kapcsolati karakterláncokat a függvénykötésnek használják. Ez a gyűjtemény csak használják, amely általában a kapcsolati karakterláncok keretrendszereket a `ConnectionStrings` szakaszában egy konfigurációs fájlba, például [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Kapcsolati karakterláncok ezt az objektumot a rendszer felveszi a környezetbe, a szolgáltató típusát [System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx). Ebben a gyűjteményben lévő elemek az Azure-ban nincs közzétéve a többi alkalmazás beállításokkal. Ezekre az értékekre, explicit módon kell hozzáadnia a `Connection strings` gyűjteménye, a függvényalkalmazás-beállításokat. Létrehozásakor egy [ `SqlConnection` ](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) a függvénykódban, tárolja a kapcsolati karakterlánc értékét a **Alkalmazásbeállítások** a portálon a kapcsolatokkal. |
 
-[!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
+A függvény alkalmazás beállítások értékeit is elolvashatja a kódban környezeti változókként. További információkért tekintse meg a környezeti változók szakaszban az alábbi nyelvspecifikus referencia-témakörök:
+
+* [C# előre lefordított](functions-dotnet-class-library.md#environment-variables)
+* [C# script (.csx)](functions-reference-csharp.md#environment-variables)
+* [F#parancsprogram (.fsx)](functions-reference-fsharp.md#environment-variables)
+* [Java](functions-reference-java.md#environment-variables)
+* [JavaScript](functions-reference-node.md#environment-variables)
 
 Ha nincs érvényes tárolási kapcsolati karakterlánc beállítása a [ `AzureWebJobsStorage` ] és az emulatort használja, a következő hibaüzenet jelenik meg:
 
@@ -307,7 +322,6 @@ A `host` parancs csak szükséges verzió 1.x.
 | **`--script-root --prefix`** | Itt adhatja meg, amely kell futtatni, vagy üzembe helyezett függvényalkalmazás a gyökér elérési útját. Ez szolgál, amely a projektfájlok almappáiba lefordított projektekhez. Például ha hoz létre egy C# osztálytár projektet, a host.json, local.settings.json és function.json fájlok jönnek létre a egy *legfelső szintű* elérési úttal rendelkező almappát, például `MyProject/bin/Debug/netstandard2.0`. Ebben az esetben állítsa be az előtagja, mint `--script-root MyProject/bin/Debug/netstandard2.0`. Erre a függvényalkalmazás a gyökér, ha az Azure-ban. |
 | **`--timeout -t`** | Az a funkciók gazdagép indítása, másodpercek alatt időtúllépése. Alapértelmezett: 20 másodperc.|
 | **`--useHttps`** | Kösse `https://localhost:{port}` helyett a `http://localhost:{port}`. Alapértelmezés szerint ez a beállítás a számítógép megbízható tanúsítványt hoz létre.|
-| **`--enableAuth`** | Engedélyezze a teljes hitelesítési folyamat kezelésére.|
 
 Esetében a C# hordozhatóosztálytár-projektjének (.csproj), meg kell adni a `--build` létrehozni a szalagtár .dll fájl.
 
@@ -474,7 +488,6 @@ Az Application Insights engedélyezése a függvényalkalmazás számára:
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
 További tudnivalókért lásd: [figyelése az Azure Functions](functions-monitoring.md).
-
 ## <a name="next-steps"></a>További lépések
 
 Az Azure Functions Core Tools van [nyílt forráskód és a Githubon található](https://github.com/azure/azure-functions-cli).  

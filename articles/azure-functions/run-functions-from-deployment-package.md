@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: glenga
-ms.openlocfilehash: 57126c87879da9f99d224457433bbbd5f95ef021
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 88e5f1ac7834caa32302a3817e1779d0d733a7b3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325628"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65787541"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Az Azure Functions futtatása egy csomagfájlt
 
@@ -64,6 +64,13 @@ Az alábbiakban látható egy függvényalkalmazást az Azure Blob storage-ban �
 ## <a name="adding-the-websiterunfrompackage-setting"></a>A WEBSITE_RUN_FROM_PACKAGE beállítás hozzáadása
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+- Futtassa a csomag lehetővé teszi `wwwroot` csak olvasható, ezért a fájlok a könyvtárban való írás esetén egy hibaüzenetet fog kapni.
+- Tar és gzip formátumokat nem támogatottak.
+- Ez a szolgáltatás nem a helyi gyorsítótár compose.
+- Hidegindítási jobb teljesítmény érdekében használja a helyi Zip-beállítást (`WEBSITE_RUN_FROM_PACKAGE`= 1).
 
 ## <a name="next-steps"></a>További lépések
 

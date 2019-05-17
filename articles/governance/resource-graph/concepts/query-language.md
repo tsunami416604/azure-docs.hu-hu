@@ -3,17 +3,17 @@ title: A lekérdezési nyelv ismertetése
 description: Ismerteti az elérhető Kusto-operátorok és funkciók lehet majd használni az Azure Erőforrás-grafikon.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/11/2018
+ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 08e4f09665a3501073f55b7f5b82bf51cf508ea9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: dcb21a6aedf16b034fad4f0822e22758dda03c33
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276677"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800509"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure-erőforrás Graph lekérdezési nyelv ismertetése
 
@@ -52,6 +52,38 @@ A következő erőforrás Graph támogatott funkciók listáját:
 - [isnotempty()](/azure/kusto/query/isnotemptyfunction)
 - [ToString()](/azure/kusto/query/tostringfunction)
 - [zip()](/azure/kusto/query/zipfunction)
+
+## <a name="escape-characters"></a>Escape karakter
+
+Néhány tulajdonság nevét, például azokkal, amelyek tartalmazzák a `.` vagy `$`, kell csomagolni, vagy escape-karakterrel a lekérdezés vagy a tulajdonság neve nem megfelelően értelmezi, és nem az elvárt eredményeket biztosít.
+
+- `.` -Wrap ilyen tulajdonság neve: `['propertyname.withaperiod']`
+  
+  Példa lekérdezés, amely a tulajdonság _odata.type_:
+
+  ```kusto
+  where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
+  ```
+
+- `$` -A a tulajdonságnév karakterek elkerülésére. Az escape-karaktert használja az Erőforrás-grafikon fut shell függ.
+
+  - **bash** - `\`
+
+    Példalekérdezést, amely lehet kilépni a tulajdonság  _\$típus_ a bash:
+
+    ```kusto
+    where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
+    ```
+
+  - **cmd** -escape nem a `$` karakter.
+
+  - **PowerShell** - ``` ` ```
+
+    Példalekérdezést, amely lehet kilépni a tulajdonság  _\$típus_ a PowerShellben:
+
+    ```kusto
+    where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type
+    ```
 
 ## <a name="next-steps"></a>További lépések
 

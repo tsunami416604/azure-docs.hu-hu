@@ -15,18 +15,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dedef2d22df9c8c81410296bdb0c4814bd98b80
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f62cf65e275d8a9b909bf60103ccbd84e91e4574
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507130"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785052"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>Webes API-t, hogy a hívások webes API-k – helykódot
 
 A webes API regisztrálása után beállíthatja az alkalmazás kódját.
 
-A kódot a webes API konfigurálása, hogy az alsóbb rétegbeli webes API-k meghívja a webes API-t a projekt használt kódot épül. További információ: [védett webes API - alkalmazás konfigurációja](scenario-protected-web-api-app-configuration.md).
+A kódot a webes API konfigurálása, hogy az alsóbb rétegbeli webes API-k meghívja a webes API védelmére szolgáló kód épül. További információ: [védett webes API - alkalmazás konfigurációja](scenario-protected-web-api-app-configuration.md).
 
 ## <a name="code-subscribed-to-ontokenvalidated"></a>Az előfizetett OnTokenValidated kód
 
@@ -74,7 +74,7 @@ A AddAccountToCacheFromJwt() módszert kell:
 
 ### <a name="instantiate-a-confidential-client-application"></a>Bizalmas ügyfélalkalmazást hozható létre
 
-Ez a folyamat csak érhető el a bizalmas ügyfél folyamatban a védett webes API ügyfél-hitelesítő adatok (titkos Ügyfélkód vagy tanúsítvány) biztosít így a [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.appconfig.confidentialclientapplicationbuilder?view=azure-dotnet-preview) keresztül a `WithClientSecret` vagy `WithCertificate`módszereket, illetve.
+Ez a folyamat csak érhető el a bizalmas ügyfél folyamatban a védett webes API ügyfél-hitelesítő adatok (titkos Ügyfélkód vagy tanúsítvány) biztosít így a [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) keresztül a `WithClientSecret` vagy `WithCertificate`módszereket, illetve.
 
 ![image](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
@@ -96,7 +96,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 ### <a name="how-to-call-on-behalf-of"></a>A alapú meghatalmazásos meghívása
 
-A--meghatalmazásos (OBO) hívás meghívásával történik a [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.apiconfig.acquiretokenonbehalfofparameterbuilder?view=azure-dotnet-preview) metódust a `IConfidentialClientApplication` felületet.
+A--meghatalmazásos (OBO) hívás meghívásával történik a [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) metódust a `IConfidentialClientApplication` felületet.
 
 A `ClientAssertion` által a webes API-t a saját ügyfelektől fogadott tulajdonosi jogkivonat alapján készült. Nincsenek [két konstruktorral](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet), amely egy JWT tulajdonosi jogkivonat vesz igénybe, a másikat, amely a felhasználó helyességi feltétel bármilyen típusú (más típusú biztonsági jogkivonat, egy kiegészítő paraméterrel nevű majd megadott típusának `assertionType`).
 

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 25b6f2b1e79cb6efdcb9d7ee0e956648673e48c0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 957725d40c66ffe9d8d7ce1362279c2bb4d4fded
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60512445"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65788737"
 ---
 # <a name="deprecated-introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>(ELAVULT) Docker tárolóüzemeltetési megoldás az Azure Container Service bemutatása 
 
@@ -45,7 +45,7 @@ A DC/OS egy olyan elosztott operációs rendszer, amely az Apache Mesos elosztot
 A DC/OS és az Apache Mesos lenyűgöző szolgáltatáskészletet tesz elérhetővé:
 
 * Bizonyított méretezhetőség
-* Apache Zookeepert használó, nagy hibatűrésű replikált főkiszolgáló és alkiszolgálók
+* Elsődleges és másodlagos adatbázisok használatával, az Apache ZooKeeper hibatűrésű replikált
 * Docker formátumú tárolók támogatása
 * Feladatok közötti natív elkülönítés Linux-tárolókkal
 * Többforrású ütemezés (memória, processzor, lemez és portok)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 68ca35590aaadba431d5f1dc06e0405162ebc69f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 23cd77d4a2d0c8203670039dd44c878bf7217fd3
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154486"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799105"
 ---
 # <a name="public-ip-address-prefix"></a>Nyilvános IP-cím előtagja
 
@@ -43,7 +43,7 @@ Nyilvános IP-cím erőforrás létrehozásakor az Azure hozzárendelhetők elé
 - A címeket, létrehozhatja az előtag-címeket rendelhet bármely Azure-erőforrások, amelyeket hozzárendelhet egy nyilvános IP-címet.
 - Könnyen látható, amely IP-címek vannak lefoglalva, és még ki nem adott tartományon belül.
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
 Az előtag a következő erőforrások társítható egy statikus nyilvános IP-cím:
 
 |Resource|Forgatókönyv|Lépések|
@@ -52,10 +52,10 @@ Az előtag a következő erőforrások társítható egy statikus nyilvános IP-
 | Terheléselosztók | Társítja a nyilvános IP-címek az előtag, az előtérbeli IP-konfiguráció vagy a terheléselosztó kimenő szabály biztosítja, hogy az Azure nyilvános IP-címtér egyszerűsítését. A forgatókönyv egyszerűsítheti karcsúsítási kimenő kapcsolatokat lehet egy nyilvános IP-címelőtag által meghatározott folytonos IP-címek tartományának származik. | IP-címek társításához az előtag a terheléselosztóhoz: 1. [Hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) 2. [Hozzon létre egy IP-cím előtag.](manage-public-ip-address-prefix.md) 3. A terheléselosztó létrehozásakor válassza ki, vagy frissítse a IP-címet az előtérbeli IP-címét a terheléselosztó a fenti 2. lépésben létrehozott. |
 | Azure Firewall | Kimenő SNAT az előtag nyilvános IP-cím használható. Ez azt jelenti, hogy az összes kimenő virtuális hálózati forgalom fordítja le a [Azure tűzfal](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nyilvános IP-cím. Mivel az IP egy előre meghatározott előtag származik, célszerű rendkívül könnyen lehet előre tudni az Azure-ban a nyilvános IP-erőforrásigénye fog kinézni. | 1. [Hozzon létre egy előtagot.](manage-public-ip-address-prefix.md) 2. [Hozzon létre egy IP-cím előtag.](manage-public-ip-address-prefix.md) 3. Ha Ön [üzembe helyezése az Azure-tűzfalon](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall), ügyeljen arra, hogy válassza ki a korábban kiosztott IP-cím előtag.|
 
-## <a name="constraints"></a>Korlátozások
+## <a name="constraints"></a>Megkötések
 
 - Az IP-címek a előtag nem adható meg. Az Azure az előtag, az Ön által megadott méret alapján foglal le IP-címeket.
-- Az alapértelmezett előtag mérete/28 vagy 16 nyilvános IP-címek.
+- Létrehozhat egy, legfeljebb 16 IP-címet vagy egy/28-előtagot. További információkért lásd: [Azure korlátai](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 - A tartomány az előtag létrehozását követően nem módosítható.
 - Csak az IPv4-címek tartománya. A tartomány nem tartalmaz IPv6-címek.
 - Csak statikus nyilvános IP-címeket a Standard Termékváltozat létrehozott hozzárendelhetők az előtag a tartományból. További információ a nyilvános IP-cím termékváltozatok kapcsolatban lásd: [nyilvános IP-cím](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).

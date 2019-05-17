@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: helohr
-ms.openlocfilehash: 165980da2b78e7514ea1938bdbeb6fda82dd123d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8e6783bb56f55949824e4ce94c85145f53dd9f4b
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236660"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523957"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Gazdagépcsoport létrehozása a PowerShell-lel
 
@@ -26,12 +26,6 @@ Futtassa a következő parancsmagot a Windows virtuális asztali környezetben v
 
 ```powershell
 Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com
-```
-
-Ezt követően állítsa be a környezetet a bérlő csoporthoz a következő parancsmag futtatásával. Nem rendelkezik a bérlő csoport nevére, a bérlő-e nagy valószínűséggel az "alapértelmezett bérlőt csoportban található,", akkor kihagyhatja ezt a parancsmagot.
-
-```powershell
-Set-RdsContext -TenantGroupName <tenantgroupname>
 ```
 
 Ezután futtassa ezt a parancsmagot új gazdagép-készlet létrehozása a Windows virtuális asztal bérlő:

@@ -18,12 +18,12 @@ ms.date: 12/14/2018
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f95fd85b5a0fd9e905b93b9b90f18f963dbf1690
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9da23b0c0b0b0c0bfc238b1504811a9c1c55a9ef
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60355735"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785383"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Mik azok a feltételek az Azure Active Directory feltételes hozzáférés? 
 
@@ -57,29 +57,23 @@ Ha Ön **felhasználók és csoportok kiválasztása**, beállíthatja a követk
 
 * **Felhasználók és csoportok** célozza meg a felhasználók adott részhalmazához. Például kiválaszthatja a HR alkalmazás a cloud app választásakor a HR-osztály minden tagját tartalmazó csoport. Egy csoport is lehet bármilyen típusú csoportja az Azure Active Directory, beleértve a dinamikus vagy hozzárendelt biztonsági és terjesztési csoportok.
 
-A szabályzat alól is konkrét felhasználókkal vagy csoportokkal is kizárhat. Egy gyakori használati eset szolgáltatásfiókok esetén a szabályzat kötelezővé teszi a többtényezős hitelesítés (MFA). 
+A szabályzat alól is konkrét felhasználókkal vagy csoportokkal is kizárhat. Egy gyakori használati eset szolgáltatásfiókok esetén a szabályzat kötelezővé teszi a többtényezős hitelesítés (MFA).
 
-Felhasználók adott részhalmazához célzó hasznos a központi telepítés egy új szabályzat. Egy új szabályzat érvényesítéséhez a csoportházirend-viselkedés felhasználók csak egy kezdeti készleteinek célozhat meg kell. 
+Felhasználók adott részhalmazához célzó hasznos a központi telepítés egy új szabályzat. Egy új szabályzat érvényesítéséhez a csoportházirend-viselkedés felhasználók csak egy kezdeti készleteinek célozhat meg kell.
 
+## <a name="cloud-apps-and-actions"></a>Felhőalapú alkalmazások és műveletek
 
+A cloud app egy webhely, szolgáltatás vagy az Azure AD Application Proxy által védett végpont. Támogatott felhőbeli részletes ismertetését lásd: [felhőalapú alkalmazások hozzárendelések](technical-reference.md#cloud-apps-assignments). A **alkalmazások vagy műveleteket a felhő** feltétel megadása kötelező a feltételes hozzáférési szabályzat. A házirendben válassza ki is **az összes felhőalapú alkalmazások** , vagy adja meg az alkalmazások **alkalmazások kiválasztása**.
 
-## <a name="cloud-apps"></a>Felhőalkalmazások 
+Szervezetek számára az alábbiak közül választhat:
 
-Egy felhőalapú alkalmazás esetében, egy webhelyre vagy szolgáltatásba. Webhelyek az Azure AD Application Proxy által védett felhőalapú alkalmazások is. Támogatott felhőbeli részletes ismertetését lásd: [felhőalapú alkalmazások hozzárendelések](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#cloud-apps-assignments). 
+* **Az összes felhőalapú alkalmazások** alapkonfiguráció szabályzatok hatálya alá, a teljes szervezet számára alkalmazásakor. Használja ezt a lehetőséget a házirendekben, amelyek a többtényezős hitelesítés megkövetelése bejelentkezési kockázat észlelésekor bármely felhőalapú alkalmazás esetében. Minden felhőalapú alkalmazásra alkalmazott házirend érvényes hozzáférési összes webhelyek és szolgáltatások. Ez a beállítás nem korlátozódik a felhőalkalmazásokhoz, válassza ki az alkalmazáslistában megjelenő.
+* **Alkalmazások kiválasztása** célként megadott konkrét szolgáltatások a szabályzat által. Ha például szükség lehet a felhasználókat, hogy a megfelelő eszköz a SharePoint Online-hoz. A házirend más szolgáltatások is érvényben van, a SharePoint-tartalmakhoz férhetnek. Ilyen például a Microsoft Teams.
 
-A **felhőalkalmazások** feltétel megadása kötelező a feltételes hozzáférési szabályzat. A házirendben válassza ki is **az összes felhőalapú alkalmazások** vagy konkrét alkalmazások kiválasztása.
+> [!NOTE]
+> Konkrét alkalmazások kizárhat a szabályzat alól. Ezek az alkalmazások azonban továbbra is a alkalmazni szabályzatokat az elért szolgáltatások is.
 
-![Tartalmazza a felhőalapú alkalmazások](./media/conditions/03.png)
-
-A következők szerint válasszon:
-
-- **Az összes felhőalapú alkalmazások** alapkonfiguráció-szabályzatokhoz, a teljes szervezetre érvényesek. Használja ezt a lehetőséget a házirendekben, amelyek a többtényezős hitelesítés megkövetelése bejelentkezési kockázat észlelésekor bármely felhőalapú alkalmazás esetében. Alkalmazott házirend **az összes felhőalapú alkalmazások** hozzáférés vonatkozik az összes webhelyek és szolgáltatások. Ez a beállítás nem jelenik meg a felhőalkalmazások korlátozódik a **alkalmazások kiválasztása** listája. 
-
-- **Alkalmazások kiválasztása** célként megadott konkrét szolgáltatások a szabályzat által. Ha például szükség lehet a felhasználókat, hogy egy [szabályzatnak megfelelő eszköz](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) a SharePoint Online-hoz. A házirend más szolgáltatások is érvényben van, a SharePoint-tartalmakhoz férhetnek. Ilyen például a Microsoft Teams. 
-
-Konkrét alkalmazások kizárhat a szabályzat alól. Ezek az alkalmazások azonban továbbra is a alkalmazni szabályzatokat az elért szolgáltatások is. 
-
-
+**Felhasználói műveletek** felhasználó által végrehajtott feladatokat. Csak a jelenleg támogatott művelet **regisztrálja biztonsági információit (előzetes verzió)**, amely lehetővé teszi, hogy a feltételes hozzáférési szabályzatot, ha a felhasználó regisztrálja az adataik biztonsági vonatkozóan.
 
 ## <a name="sign-in-risk"></a>Bejelentkezési kockázat
 
@@ -119,7 +113,7 @@ Az eszköz Eszközállapot-feltételt nem tartalmazza a hibrid Azure AD-hoz csat
 
 Ez az állapot akkor hasznos, ha a szabályzat csak további munkamenetek biztonsága nem felügyelt eszközről kell alkalmazni. Ha például csak a Microsoft Cloud App Security munkamenet-vezérlő érvényesítési Ha egy eszköz nem felügyelt. 
 
-## <a name="locations"></a>Helyek
+## <a name="locations"></a>Helyszínek
 
 A helyek, ahol kísérlet történt a kapcsolat alapján feltételeket adhat meg. 
 

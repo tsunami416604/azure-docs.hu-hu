@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: bb43a75b6a221c15c8724302797d04c22e04c8d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 25cae58663f6fa7ef27995c10509eb33e49dd4c7
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61086129"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65522818"
 ---
 # <a name="create-a-netapp-account"></a>NetApp-fiók létrehozása
 A NetApp-fiókok létrehozásával lehetősége lesz kapacitáskészleteket beállítani, majd azt követően köteteket létrehozni. NetApp-fiókokat az Azure NetApp Files panelen hozhat létre.
 
-## <a name="before-you-begin"></a>Előzetes teendők
-Az előfizetést a NetApp erőforrás-szolgáltató és a nyilvános előzetes verziójú funkció használatával van regisztrálva.
+## <a name="before-you-begin"></a>Előkészületek
+Kell kapott e-mailt az Azure NetApp fájlok csapat megerősíti, hogy rendelkezik a szolgáltatáshoz való hozzáférést. Lásd: [igényelnie nagyságától a szolgáltatás elérésével](azure-netapp-files-register.md#waitlist).
 
-[Regisztráljon a Azure NetApp-fájlok](azure-netapp-files-register.md)
+Kell is regisztrálta az előfizetést a NetApp erőforrás-szolgáltató használatával. Lásd: [a NetApp erőforrás-szolgáltató regisztrálása](azure-netapp-files-register.md#resource-provider).
 
 ## <a name="steps"></a>Lépések 
 
@@ -56,6 +56,11 @@ Az előfizetést a NetApp erőforrás-szolgáltató és a nyilvános előzetes v
 
 5. Kattintson a **Create** (Létrehozás) gombra.     
    A létrehozott NetApp-fiók megjelenik az Azure NetApp Files panelen. 
+
+> [!NOTE] 
+> Ha Ön nem kapott hozzáférést az Azure NetApp Files szolgáltatásba, a következő hibaüzenetet kap az első NetApp fiók létrehozásakor:  
+>
+> `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 
 ## <a name="next-steps"></a>További lépések  
 

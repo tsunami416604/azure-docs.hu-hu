@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
-ms.openlocfilehash: 21374e20a2ba2c9134ed12e4b1072ff5c320c75e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: d72901653e995e811a1d3e89cef8a5f77a9ea8bd
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149783"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65523806"
 ---
 # <a name="api-versions-in-azure-search"></a>Az Azure Search API-verziók
 Az Azure Search rendszeresen funkciófrissítések bevezetésekor. Előfordulhat, de nem mindig a frissítések megkövetelik az előző verziókkal való kompatibilitás megőrzése érdekében API új verziója. Közzététel az új verzió lehetővé teszi szabályozhatja, mikor és hogyan keresési szolgáltatásfrissítések integrálása a kódban.
@@ -30,12 +30,12 @@ Ugyanaz a szabály vonatkozik, az SDK-frissítések. Az Azure Search SDK követi
 Alább van az aktuális verziók az összes pillanatképet alkalmazásprogramozási felület az Azure Search.
 
 
-| Adapterek | Legutóbbi főverzió | status |
+| Adapterek | Legutóbbi főverzió | Állapot |
 | --- | --- | --- |
 | [.NET SDK](https://aka.ms/search-sdk) |9.0 |Általánosan elérhető, nyilvánosan 2019. május |
-| [.NET SDK előzetes verzió](https://aka.ms/search-sdk-preview) |8.0.0-preview |Április 2019 kiadott előzetes |
+| [.NET SDK előzetes verzió](https://aka.ms/search-sdk-preview) |8.0 – előzetes verzió |Április 2019 kiadott előzetes |
 | [Szolgáltatás REST API-ja](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Mindenki számára elérhető |
-| [Szolgáltatási REST API-t a 2019-05-06-Preview](search-api-preview.md) |A 2019-05-06-előzetes verzió |Előzetes verzió |
+| [Szolgáltatási REST API-t a 2019-05-06-Preview](search-api-preview.md) |A 2019-05-06-előzetes verzió |Előnézet |
 | [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Mindenki számára elérhető |
 | [Kezelési REST API](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Mindenki számára elérhető |
 

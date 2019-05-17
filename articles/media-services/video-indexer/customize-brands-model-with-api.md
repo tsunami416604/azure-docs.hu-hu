@@ -6,15 +6,16 @@ services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: df77a745ef6508b15b5a8bcde5eede0e06eb1afc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8d0806bc0262cd45a49e4f97ea629683ac239aa8
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60583723"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65799642"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>A Video Indexer API márkái modell testreszabása
 
@@ -28,7 +29,7 @@ A Video Indexer API-k segítségével létrehozását, használatát és egyéni
 
 Ez létrehoz egy új egyéni márka, és hozzáadja azt a megadott fiók egyéni márkái modelljére.
 
-### <a name="request-url"></a>Kérés URL-címe
+### <a name="request-url"></a>Lekérdezés URL-címe
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
@@ -40,11 +41,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
-|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
+|hely|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountId|string|Igen|A fiók globálisan egyedi azonosító|
-|hozzáférési tokent|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
+|accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
 
-### <a name="request-body"></a>A kérés törzse
+### <a name="request-body"></a>Kérelem törzse
 
 Mellett ezeket a paramétereket meg kell adni a kérelem törzsében JSON-objektum, amely információt nyújt a formátuma a következő példa a következő új márka.
 
@@ -90,7 +91,7 @@ A válasz a márka, amely az újonnan létrehozott az alábbi példa formátuma 
 
 Egy adott márkához eltávolítja a megadott fiók egyéni márkái modellből. A fiók szerepel a **accountId** paraméter. Miután sikeresen nevű, a márka már nem található a *Belefoglalás* vagy *kizárása* védjegyzéssel listák.
 
-### <a name="request-url"></a>Kérés URL-címe
+### <a name="request-url"></a>Lekérdezés URL-címe
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
@@ -102,12 +103,12 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
-|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
+|hely|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountId|string|Igen|A fiók globálisan egyedi azonosító|
-|id|egész szám|Igen|A márkaazonosító (jönnek létre, ha a márka lett létrehozva)|
-|hozzáférési tokent|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
+|azonosító|egész szám|Igen|A márkaazonosító (jönnek létre, ha a márka lett létrehozva)|
+|accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
 
-### <a name="request-body"></a>A kérés törzse
+### <a name="request-body"></a>Kérelem törzse
 
 További az e híváshoz szükséges a kérelem törzsében.
 
@@ -119,7 +120,7 @@ Nincs visszaadott tartalom van, amikor a márka törlése sikerült.
 
 Ez lehetővé teszi, keresse meg az egyéni márkái modell a megadott fiók használatával a márkaazonosító fórummárka részleteit.
 
-### <a name="request-url"></a>Kérés URL-címe
+### <a name="request-url"></a>Lekérdezés URL-címe
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
@@ -131,12 +132,12 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
-|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
+|hely|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountId|string|Igen|A fiók globálisan egyedi azonosító|
-|id|egész szám|Igen|A Márkaazonosító (jönnek létre, ha a márka lett létrehozva)|
-|hozzáférési tokent|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
+|azonosító|egész szám|Igen|A Márkaazonosító (jönnek létre, ha a márka lett létrehozva)|
+|accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
 
-### <a name="request-body"></a>A kérés törzse
+### <a name="request-body"></a>Kérelem törzse
 
 További az e híváshoz szükséges a kérelem törzsében.
 
@@ -169,7 +170,7 @@ A válasz a márka (használatával Márkaazonosító) keres tájékoztatást ny
 
 Ez lehetővé teszi, keresse meg a megadott fiók azonosítójával a márka egyéni márkái modellben egy adott márkához részletei
 
-### <a name="request-url"></a>Kérés URL-címe
+### <a name="request-url"></a>Lekérdezés URL-címe
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
@@ -181,12 +182,12 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
-|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
+|hely|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountId|string|Igen|A fiók globálisan egyedi azonosító|
-|id|egész szám|Igen|A Márkaazonosító (jönnek létre, ha a márka lett létrehozva)|
-|hozzáférési tokent|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
+|azonosító|egész szám|Igen|A Márkaazonosító (jönnek létre, ha a márka lett létrehozva)|
+|accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
 
-### <a name="request-body"></a>A kérés törzse
+### <a name="request-body"></a>Kérelem törzse
 
 Ezeket a paramétereket, valamint meg kell adnia a kérelem törzsében JSON-objektum által biztosított frissített adatokat a márka, amely az alábbi példa formátuma a következő frissíteni szeretné a.
 
@@ -232,7 +233,7 @@ A válasz a márka, az alábbi példa formátuma a következő frissített a fri
 
 Ez ad vissza, a márka mindegyikét az egyéni márkái modell, függetlenül attól, hogy a márka szinkronban kell lennie a megadott fiók a *Belefoglalás* vagy *kizárása* márkájú-listában.
 
-### <a name="request-url"></a>Kérés URL-címe
+### <a name="request-url"></a>Lekérdezés URL-címe
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
@@ -244,11 +245,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
-|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
+|hely|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountId|string|Igen|A fiók globálisan egyedi azonosító|
-|hozzáférési tokent|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
+|accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
 
-### <a name="request-body"></a>A kérés törzse
+### <a name="request-body"></a>Kérelem törzse
 
 További az e híváshoz szükséges a kérelem törzsében.
 
@@ -292,7 +293,7 @@ A válasz a márka, a fiókban lévő összes és azok adatai az alábbi példa 
 
 Ez a megadott fiókot a márka modelljének beállításait adja vissza. A modellbeállítások a márka jelölik, a Bing márkái adatbázisból észlelés engedélyezve van-e. A Bing márkái nincs engedélyezve, ha a Video Indexer csak észleli márka egyéni márkái modellből a megadott fiók.
 
-### <a name="request-url"></a>Kérés URL-címe
+### <a name="request-url"></a>Lekérdezés URL-címe
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
@@ -304,11 +305,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
-|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
+|hely|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountId|string|Igen|A fiók globálisan egyedi azonosító|
-|hozzáférési tokent|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
+|accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
 
-### <a name="request-body"></a>A kérés törzse
+### <a name="request-body"></a>Kérelem törzse
 
 További az e híváshoz szükséges a kérelem törzsében.
 
@@ -341,11 +342,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands
 
 |**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
 |---|---|---|---|
-|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
+|hely|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
 |accountId|string|Igen|A fiók globálisan egyedi azonosító|
-|hozzáférési tokent|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
+|accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
 
-### <a name="request-body"></a>A kérés törzse
+### <a name="request-body"></a>Kérelem törzse
 
 Mellett ezeket a paramétereket meg kell adni a kérelem törzsében JSON-objektum, amely információt nyújt a formátuma a következő példa a következő új márka.
 

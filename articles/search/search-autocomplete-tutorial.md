@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: f3e7cc2ed71dda0eb34328432b26a4016b62be1c
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 9385ed5127b8cc1aaf84c887b652fd8970883ba6
+ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466422"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "65524028"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Az Azure Search-alkalmazás javaslata vagy az automatikus kiegészítés hozzáadása
 
@@ -164,7 +164,7 @@ Nyissa meg a **HomeController.cs** fájlt a tartományvezérlők a könyvtárban
 
 Először is Észreveheti a nevű osztály tetején módszer `InitSearch`. Ez hitelesített HTTP-indexügyfelet hoz létre az Azure Search szolgáltatáshoz. További információkért lásd: [használata az Azure Search .NET-alkalmazásból](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
 
-41. sorban figyelje meg, hogy a javaslat funkciót. -Alapú, a [DocumentsOperationsExtensions.Suggest metódus](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet-preview).
+41. sorban figyelje meg, hogy a javaslat funkciót. -Alapú, a [DocumentsOperationsExtensions.Suggest metódus](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet).
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -198,7 +198,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 
 A Suggest függvény két paramétert vesz fel, amelyek meghatározzák, hogy a rendszer a találatok kiemeléseit adja vissza, vagy intelligens egyeztetést használ a keresési kifejezés bevitele mellett. A módszer létrehoz egy [SuggestParameters objektum](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet), amelyet majd átad a javaslat API. A rendszer az eredményt ezután JSON-kifejezéssé alakítja, hogy meg lehessen jeleníteni az ügyfélnek.
 
-69. sor figyelje meg, hogy az automatikus kiegészítés funkció. -Alapú, a [DocumentsOperationsExtensions.Autocomplete metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet-preview).
+69. sor figyelje meg, hogy az automatikus kiegészítés funkció. -Alapú, a [DocumentsOperationsExtensions.Autocomplete metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet).
 
 ```csharp
 public ActionResult AutoComplete(string term)
