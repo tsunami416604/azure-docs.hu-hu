@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0c59e892c8fd5a8bcc74d23e16eaabf1dc1a08f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 06337fef1a9d9b41fd41ff7c67611581639adc0a
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61272517"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65619720"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Az Azure App Service egyéni tartománynév vásárlása
 
-App Service-tartományok (előzetes verzió) olyan legfelső szintű tartományok, közvetlenül az Azure-ban kezelt. Megkönnyítik az egyéni tartományainak felügyeletét [Azure App Service](overview.md). Ez az oktatóanyag bemutatja, hogyan App Service-tartományok vásárlása és DNS-nevek hozzárendelése az Azure App Service-ben.
+App Service-tartományok találhatók a legfelső szintű tartományok, közvetlenül az Azure-ban kezelt. Megkönnyítik az egyéni tartományainak felügyeletét [Azure App Service](overview.md). Ez az oktatóanyag bemutatja, hogyan App Service-tartományok vásárlása és DNS-nevek hozzárendelése az Azure App Service-ben.
 
 Azure virtuális gépek és Azure Storage: [rendelje hozzá az App Service-tartomány Azure virtuális Gépen vagy az Azure Storage](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/31/assign-app-service-domain-to-azure-vm-or-azure-storage/). A Cloud Services esetében lásd: [Azure cloud Services számára egyéni tartománynév beállítása](../cloud-services/cloud-services-custom-domain-name-portal.md).
 
@@ -80,7 +80,7 @@ Amikor megjelenik a következő értesítés, a skálázási művelet befejeződ
 ## <a name="buy-the-domain"></a>A tartomány vásárlása
 
 ### <a name="pricing-information"></a>Díjszabási információk
-Díjszabási információk az Azure App Service-tartományok, látogasson el a [App Service díjszabási oldalát](https://azure.microsoft.com/pricing/details/app-service/windows/) , és görgessen le az App Service-tartomány.
+Díjszabási információk az Azure App Service-tartományok, a [App Service díjszabási oldalát](https://azure.microsoft.com/pricing/details/app-service/windows/) , és görgessen le az App Service-tartomány.
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 Nyissa meg az [Azure Portalt](https://portal.azure.com/), majd jelentkezzen be az Azure-fiókjával.
@@ -118,7 +118,7 @@ Ezután válassza ki a kívánt beállításokat a tartomány. Tekintse meg az a
 
 | Beállítás | Ajánlott érték | Leírás |
 |-|-|-|
-|Adatvédelem | Bekapcsolás | Részvétel a "Adatvédelem", amely szerepel a vételár _ingyenes_. Néhány legfelső szintű tartományok, amelyek nem támogatják az adatvédelmet regisztráló szervezetek által kezelt, és ezek jelennek meg a **adatvédelmet** lapot. |
+|Adatvédelem | Engedélyezés | Részvétel a "Adatvédelem", amely szerepel a vételár _ingyenes_. Néhány legfelső szintű tartományok, amelyek nem támogatják az adatvédelmet regisztráló szervezetek által kezelt, és ezek jelennek meg a **adatvédelmet** lapot. |
 | Alapértelmezett állomásnevek hozzárendelése | **www** és **\@** | Ha szükséges, válassza ki a kívánt gazdagépnévvel kötéseket. A tartomány beszerzési művelet befejeződése után az alkalmazás a kijelölt állomásnevek címen érhető el. Ha az alkalmazás mögötti [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), nem jelenik meg a beállítást, a gyökértartomány hozzárendelése (@), mert a Traffic Manager does nem támogatja A-rekordokat. A tartomány vásárlás befejezése után módosíthatja a hostname-hozzárendeléseket. |
 
 ### <a name="accept-terms-and-purchase"></a>Fogadja el a feltételeket, és vásárolja meg
@@ -150,7 +150,7 @@ A gazdanév teszteléséhez nyissa meg a listában szereplő állomásnevek a b�
 
 ## <a name="assign-hostnames-to-app"></a>Alkalmazás állomásnevek hozzárendelése
 
-Ha úgy dönt, hogy nem az alkalmazás egy vagy több alapértelmezett állomásnevek hozzárendelése a vásárlás során, vagy ha hozzá kell rendelnie egy állomásnév nem szerepel a listán, hozzárendelheti egy állomásnevet, bármikor.
+Ha úgy dönt, hogy nem az alkalmazás egy vagy több alapértelmezett állomásnevek hozzárendelése a vásárlás során, vagy ha hozzá kell rendelnie egy állomásnév nem szerepel a listán, bármikor hozzárendelhet egy állomásnevet.
 
 Gazdanév található az App Service-tartomány bármely más alkalmazáshoz is rendelhet. A lépései attól függnek, hogy az App Service-tartomány és az alkalmazás tartozik ugyanahhoz az előfizetéshez.
 
@@ -278,7 +278,3 @@ A művelet befejezése után a tartományban kiadott az előfizetésből, és ú
 ## <a name="direct-default-url-to-a-custom-directory"></a>Egyéni könyvtár közvetlen alapértelmezett URL-címe
 
 Az App Service alapértelmezés szerint az alkalmazáskód gyökérkönyvtárára irányítja a webes kérelmeket. Például a közvetlen őket egy alkönyvtár `public`, lásd: [alapértelmezett URL-címe, egyéni könyvtár közvetlen](app-service-web-tutorial-custom-domain.md#virtualdir).
-
-## <a name="more-resources"></a>További erőforrások
-
-[GYAKORI KÉRDÉSEK: App Service-tartomány (előzetes verzió) és az egyéni tartományok](https://blogs.msdn.microsoft.com/appserviceteam/2017/08/08/faq-app-service-domain-preview-and-custom-domains/)

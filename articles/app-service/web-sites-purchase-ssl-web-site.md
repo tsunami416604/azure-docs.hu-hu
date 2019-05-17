@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b561091eedb43e1c77f3c97951beeb92bfcf4751
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 15441f70052950748f07b96ff234557462f268cd
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65202922"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786329"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Vásárlása és konfigurálása az Azure App Service SSL-tanúsítvány
 
@@ -113,7 +113,7 @@ Használja az alábbi táblázat segítségével konfigurálja a kötés a **SSL
 
 | Beállítás | Leírás |
 |-|-|
-| Gazdanév | Az SSL-kötés hozzáadása a tartomány neve. |
+| Állomásnév | Az SSL-kötés hozzáadása a tartomány neve. |
 | Privát tanúsítvány ujjlenyomata | Kösse a tanúsítványt. |
 | SSL-típus | <ul><li>**SNI SSL** – több SNI-alapú SSL-kötés adható hozzá. Ez a beállítás lehetővé teszi, hogy több SSL-tanúsítvány biztosítson védelmet több tartomány számára ugyanazon az IP-címen. A legtöbb modern böngésző (beleértve az Internet Explorert, a Chrome-ot, a Firefox-ot és az Operát) támogatja az SNI-t (átfogóbb böngészőtámogatási információkat a [Kiszolgálónév jelzése](https://wikipedia.org/wiki/Server_Name_Indication) című szakaszban talál).</li><li>**IP-based SSL** (IP-alapú SSL) – Csak egy IP-alapú SSL-kötés adható hozzá. Ez a beállítás csak egy SSL-tanúsítványnak engedélyezi egy dedikált nyilvános IP-cím védelmét. Miután konfigurálta a kötés, kövesse a [a rekord újbóli leképezése az IP SSL-hez](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl). </li></ul> |
 
@@ -166,4 +166,4 @@ A megújítási művelet befejeződése után kattintson a **szinkronizálási**
 * [HTTPS kényszerítése](app-service-web-tutorial-custom-ssl.md#enforce-https)
 * [A TLS 1.1/1.2 kényszerítése](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [SSL-tanúsítvány használata az alkalmazáskódban az Azure App Service-ben](app-service-web-ssl-cert-load.md)
-* [GYAKORI KÉRDÉSEK: App Service-tanúsítványok](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)
+* [GYAKORI KÉRDÉSEK: App Service-tanúsítványok](https://docs.microsoft.com/en-us/azure/app-service/faq-configuration-and-management/)

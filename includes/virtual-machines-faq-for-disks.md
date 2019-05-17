@@ -5,21 +5,21 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/28/2018
+ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6cd0c72f94c020f9243a1a95faa799f1f798f36c
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 0ad006ca966cfcc2c817ae4e8bfd3dc2d477259e
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65199112"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65607066"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gépek és a felügyelt és nem felügyelt prémium szintű lemezek – gyakori kérdések
 
 Ebben a cikkben megválaszolunk néhány gyakori kérdés az Azure Managed Disks és az Azure prémium szintű SSD-lemezeket.
 
-## <a name="managed-disks"></a>Felügyelt lemezek
+## <a name="managed-disks"></a>Managed Disks
 
 **Mi az Azure Managed Disks?**
 
@@ -201,7 +201,7 @@ Standard SSD-lemez nem felügyelt lemezként csak érhetők el.
 **Standard SSD-lemez támogatják a "egypéldányos virtuális gép SLA"?**
 Standard SSD-k nem, nem kell egypéldányos virtuális gép SLA-t. Prémium szintű SSD-lemezeket egypéldányos virtuális gép SLA-t használja.
 
-## <a name="migrate-to-managed-disks"></a>Migrálás felügyelt lemezekre
+## <a name="migrate-to-managed-disks"></a>Migrálás a Managed Disks szolgáltatásba
 
 **A migrálás a Managed Disks teljesítményére hatással van?**
 
@@ -365,7 +365,7 @@ Vagy leállíthatja, és indítsa el a virtuális Gépet, amely a lemez csatlako
 
 **Mely régiók TiB 8, 16 Tib-ra, a felügyelt lemez méretét, és támogatja a 32 Tib-ra?**
 
-A 8 Tib-ra, 16 TiB és 32 TiB lemez termékváltozatok támogatottak a globális Azure minden régióban. A Microsoft Azure Government és Azure China 21Vianet támogatása még nem érhető el.
+A 8 Tib-ra, 16 TiB és 32 TiB lemez termékváltozatok támogatottak a globális Azure, Microsoft Azure Government és Azure China 21Vianet minden régióban.
 
 **Hogy támogatják-állomás gyorsítótárazásának engedélyezése az összes lemezméretek?**
 

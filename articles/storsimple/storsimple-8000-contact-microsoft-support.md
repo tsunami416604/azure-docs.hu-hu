@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli;
-ms.openlocfilehash: fb8cfd4767f6bb9afe1b5731d3b4db1c68a73056
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 77050ad37862394785cf348a242f585cc089ba26
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60362563"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606860"
 ---
 # <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
 
@@ -31,7 +31,7 @@ A StorSimple-Eszközkezelő lehetővé teszi, hogy **egy új támogatási jegyet
 
 Tekintse át a [StorSimple 8000 sorozat támogatási SLA-k és információk](https://msdn.microsoft.com/library/mt433077.aspx) támogatási kérések létrehozása előtt.
 
-## <a name="create-a-support-request"></a>Támogatási kérelem létrehozása
+## <a name="create-a-support-request"></a>Támogatáskérés létrehozása
 
 Attól függően, hogy a [támogatási csomag](https://azure.microsoft.com/support/plans/), a StorSimple eszközön a StorSimple-Eszközkezelő szolgáltatás összefoglalás panelén közvetlenül a is létrehozhat támogatási jegyeket, egy adott probléma megoldásához. A következő lépésekkel hozzon létre egy támogatási kérést:
 
@@ -64,7 +64,7 @@ Attól függően, hogy a [támogatási csomag](https://azure.microsoft.com/suppo
 4. Az a **új támogatási kérelem** panelen kattintson a **lépés 3 elérhetőségi adatok**. Az a **kapcsolattartási adatok** panelen tegye a következőket:
 
    1. Az a **kapcsolatfelvételi lehetőségek**, adja meg az elsődleges kapcsolattartási módszer (telefonon vagy e-mailben) és a nyelvet. A válaszidő automatikusan ki van jelölve, az előfizetési csomag alapján.
-   2. Adja meg a nevét, e-mail, ügyfél nem kötelező, ország az elérhetőségi adatok. Válassza ki a **kapcsolattartási adatok módosításainak mentése a későbbi támogatási kérelmekhez** jelölőnégyzetet.
+   2. Adja meg a nevét, e-mail, ügyfél nem kötelező, ország/régió az elérhetőségi adatok. Válassza ki a **kapcsolattartási adatok módosításainak mentése a későbbi támogatási kérelmekhez** jelölőnégyzetet.
    3. Kattintson a **Create** (Létrehozás) gombra.
    
        ![Forduljon az MS támogatás az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   

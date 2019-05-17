@@ -2,21 +2,21 @@
 title: Alkalmazás hozzáadása az Azure Active Directory-bérlőhöz | Microsoft Docs
 description: Ebben a rövid útmutatóban egy katalógusbeli alkalmazást adhat hozzá az Azure Portalon az Azure Active Directory- (Azure AD-) bérlőhöz.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/09/2019
-ms.author: celested
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15842d7157e8e5a691f37f846dd424bf308eae3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8d3e79b00545f76dff9442a11864701d6d61f057
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60294183"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784572"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Gyors útmutató: Az Azure Active Directory-bérlőhöz alkalmazás hozzáadása
 
@@ -27,7 +27,7 @@ Miután hozzáadta az alkalmazást az Azure AD-bérlőhöz, a következőket teh
 - Az alkalmazáshoz való felhasználói hozzáférés kezelése feltételes hozzáférési szabályzattal.
 - Felhasználók konfigurálása az alkalmazásba való egyszeri bejelentkezésre az Azure AD-fiókkal.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ahhoz, hogy hozzáadhasson egy alkalmazást a bérlőhöz, a következőkre van szüksége:
 
@@ -58,7 +58,7 @@ Katalógusbeli alkalmazás hozzáadása az Azure AD-bérlőhöz:
 
 1. Egy alkalmazáshoz, a Keresés **Hozzáadás a katalógusból**, írja be a hozzáadni kívánt alkalmazás nevét. Válassza ki az alkalmazást az eredményeket, és válassza ki a **Hozzáadás**. A következő példa bemutatja a **alkalmazás hozzáadása** keresése a github.com után megjelenő képernyőn.
 
-    ![Alkalmazás hozzáadása](media/add-application-portal/add-an-application.png)
+    ![Alkalmazás felvétele](media/add-application-portal/add-an-application.png)
 
 1. Az alkalmazásspecifikus űrlapon módosíthatja a tulajdonságokat. Például szerkesztheti az alkalmazás nevét, hogy az megfeleljen a vállalat igényeinek. Ebben a példában a **GitHub-test** nevet használjuk.
 
@@ -122,7 +122,7 @@ Alkalmazás tulajdonságainak szerkesztése:
 
        | Alkalmazás tulajdonságainak beállításai | | | Felhasználói élmény – nem hozzárendelt felhasználók | |
        |---|---|---|---|---|
-       | Engedélyezett a felhasználók számára a bejelentkezés? | Felhasználó-hozzárendelés szükséges? | Felhasználók számára látható? | Bejelentkezhetnek a nem hozzárendelt felhasználók? | Látható az alkalmazás a nem hozzárendelt felhasználók számára?* |
+       | Engedélyezett a felhasználók számára a bejelentkezés? | Kell felhasználó-hozzárendelés? | Felhasználók számára látható? | Bejelentkezhetnek a nem hozzárendelt felhasználók? | Látható az alkalmazás a nem hozzárendelt felhasználók számára?* |
        | igen | igen | igen | nem  | nem   |
        | igen | igen | nem  | nem  | nem   |
        | igen | nem  | igen | igen | nem   |

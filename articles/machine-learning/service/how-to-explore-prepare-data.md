@@ -11,19 +11,19 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/19
-ms.openlocfilehash: f4e7fcbe403017a6d957a60a8e5664f2e6c5ba26
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 70712605cc97670b625d32052bb79b4a666e4281
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409825"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65603153"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Ismerje meg, és előkészíti az adatokat az adatkészlet osztályhoz (előzetes verzió)
 
 Ismerje meg, és adat-előkészítés a [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). A [adatkészlet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) osztály (előzetes verzió) segítségével megvizsgálhatja és készítse elő adatait funkciók megadásával: mintavétel, összefoglaló statisztikák és intelligens átalakításokat. Adatátalakítási lépéseket mentett [az adatkészlet-definíciók](how-to-manage-dataset-definitions.md) az képes a más sémák több nagy fájlok nagy mértékben skálázható módon.
 
 > [!Important]
-> Néhány adatkészlet osztályok (előzetes verzió) a Data Prep SDK (GA) függőségekkel rendelkeznek. Miközben átalakítási függvényeket közvetlenül a GA'ed elvégezhető [Data Prep SDK-függvények](how-to-transform-data.md), azt javasoljuk, hogy az adatkészlet csomag burkolókat ebben a cikkben ismertetett, ha egy új megoldást épít. Az Azure Machine Learning-adatkészletek (előzetes verzió) lehetővé teszi nemcsak az adatátalakítás, hanem [-pillanatkép adatainak](how-to-create-dataset-snapshots.md) és tárolása [rendszerverzióval ellátott adatkészlet-definíciókban](how-to-manage-dataset-definitions.md). Az adatkészletek az adatkészleteket az AI-megoldások kezelésével kapcsolatos bővített funkciókat kínál a Data Prep SDK következő verziójában.
+> Néhány adatkészlet osztályok (előzetes verzió) függőségekkel rendelkezik a [azureml-adatelőkészítés](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) csomag (elérhetővé tétel GA). Miközben átalakítási függvényeket közvetlenül a GA'ed elvégezhető [Data Prep funkciók](how-to-transform-data.md), azt javasoljuk, hogy az adatkészlet csomag burkolókat ebben a cikkben ismertetett, ha egy új megoldást épít. Az Azure Machine Learning-adatkészletek (előzetes verzió) lehetővé teszi nemcsak az adatátalakítás, hanem [-pillanatkép adatainak](how-to-create-dataset-snapshots.md) és tárolása [rendszerverzióval ellátott adatkészlet-definíciókban](how-to-manage-dataset-definitions.md). Az adatkészletek az adatkészleteket az AI-megoldások kezelésével kapcsolatos bővített funkciókat kínál a Data Prep SDK következő verziójában.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -121,7 +121,7 @@ dataset.get_profile()
 -|----|---|---|-----|-------------|-----------------|---------------|-----------|-----------|-------------|-----------|-----------|------------|------------|------------|------------|------------|--------------|----|------------------|--------|--------|--------
 azonosító|FieldType.INTEGER|1.04986e + 07|1.05351e + 07|10.0|0.0|10.0|0.0|0.0|0.0|1.04986e + 07|1.04992e + 07|1.04986e + 07|1.05166e + 07|1.05209e + 07|1.05259e + 07|1.05351e + 07|1.05351e + 07|1.05351e + 07|1.05195e + 07|12302.7|1.51358e + 08|-0.495701|-1.02814
 Eset száma|FieldType.STRING|HZ239907|HZ278872|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
-Dátum|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
+Date|FieldType.DATE|2016-04-04 23:56:00+00:00|2016-04-15 17:00:00+00:00|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 Blokk|FieldType.STRING|004XX S KILBOURN ELENTÉS MENTÉSE|113XX S VALÓ MENTÉSE|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
 IUCR|FieldType.INTEGER|810|1154|10.0|0.0|10.0|0.0|0.0|0.0|810|850|810|890|1136|1153|1154|1154|1154|1058.5|137.285|18847.2|-0.785501|-1.3543
 Elsődleges típusa|FieldType.STRING|MEGTÉVESZTŐ ELJÁRÁS|LOPÁS|10.0|0.0|10.0|0.0|0.0|0.0||||||||||||||
@@ -310,7 +310,7 @@ ds_def.keep_columns(['ID','Date','Date_Time_Range']).head(3)
 
 Az alábbi táblázatban figyelje meg, hogy egy olyan új oszlop Date_Time_Range szereplő rekordok a megadott formátumban.
 
-||azonosító|Dátum|Date_Time_Range
+||azonosító|Date|Date_Time_Range
 -|--------|-----|----
 0|10498554|2016-04-04 23:56:00|2016-04-04 10 PM – 12 AM
 1.|10516598|2016-04-15 17:00:00|2016-04-15 4PM-6PM

@@ -8,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/16/2016
-ms.openlocfilehash: af55c161944447f2e6e2245fbb920803779984ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 611439802c200b30586b73b82d0a4bbbc857e114
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61399896"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606715"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Azure Data Lake Tools for Visual Studio használatával – Adateltérés problémák megoldásához
 
@@ -36,7 +36,7 @@ Nincs hatással az üzleti logikát, ha előre szűrheti a nagyobb gyakoriságot
 
 ### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>Option 2: Válasszon egy másik partíció vagy terjesztési kulcs
 
-Az előző példában ha azt szeretné, csak a adó-naplózási munkaterhelés bármely országban, ellenőrizze, növelheti az adatok terjesztési a kulcsként a azonosítószámát kiválasztásával. Egy másik partíció vagy terjesztési kulcs kiadási is egyes esetekben az adatokat egyenletesebben osszák, de győződjön meg arról, hogy ez a választás nem érinti az üzleti logikát kell. Például az adó összege az egyes állapotokhoz kiszámításához, érdemes kijelölni _állapot_ partíciókulcsként. Ha a probléma továbbra is, próbálja meg a beállítást 3.
+Az előző példában ha csak a adó-naplózási munkaterhelés feldolgozza az országban vagy régióban, ellenőrizze növelheti az adatok terjesztési a kulcsként a azonosítószámát kiválasztásával. Egy másik partíció vagy terjesztési kulcs kiadási is egyes esetekben az adatokat egyenletesebben osszák, de győződjön meg arról, hogy ez a választás nem érinti az üzleti logikát kell. Például az adó összege az egyes állapotokhoz kiszámításához, érdemes kijelölni _állapot_ partíciókulcsként. Ha a probléma továbbra is, próbálja meg a beállítást 3.
 
 ### <a name="option-3-add-more-partition-or-distribution-keys"></a>3. lehetőség: Több partíció vagy terjesztési kulcsok hozzáadása
 

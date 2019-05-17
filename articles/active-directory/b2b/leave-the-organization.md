@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f75f91c037a2f05c999d388ce7bb16ad2d0c9cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4f5164130c5850b37d1e1323d172f9f9c46b4b30
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60412657"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65768303"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Egy szervezet meg vendégként
 
@@ -46,7 +46,7 @@ Hogy egy szervezet, kövesse az alábbi lépéseket.
 
 Amikor egy felhasználó elhagyja a szervezetet, a felhasználói fiók "törölték" a címtárban. Alapértelmezés szerint a felhasználói objektum átkerül a **törölt felhasználók** terület az Azure ad-ben de ez nem végleges törlése 30 napig. A helyreállítható törlés lehetővé teszi a rendszergazdák állítsa vissza a felhasználói fiók (beleértve a csoportok és engedélyek), ha a felhasználó kérést küld a fiók visszaállítása a 30 napos időszakon belül.
 
-Igény szerint egy Bérlői rendszergazda véglegesen törölheti a fiókot a 30 napos időszakban bármikor. Ehhez tegye a következőket:
+Igény szerint egy Bérlői rendszergazda véglegesen törölheti a fiókot a 30 napos időszakban bármikor. Ehhez tegye az alábbiakat:
 
 1. Az a [az Azure portal](https://portal.azure.com)válassza **Azure Active Directory**.
 2. A **Kezelés** alatt válassza a **Felhasználókat**.

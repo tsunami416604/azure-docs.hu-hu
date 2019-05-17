@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6eaace7589488a9466e78597e0091c84dabb5155
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a64c58d23543279a3a32d2d7b612b43dee8741eb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685293"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65768012"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Adja hozzá a jogcímeket, és testre szabhatja a felhasználói bevitel, az Azure Active Directory B2C-vel egyéni szabályzatok használatával
 
@@ -29,12 +29,12 @@ A cikkben leírtak elvégzése [Ismerkedés az egyéni szabályzatok](active-dir
 
 ## <a name="add-claims"></a>Jogcím hozzáadása
 
-A felhasználók kezdeti adatgyűjtést érhető el, a regisztrálási vagy bejelentkezési felhasználói interakciósorozat használatával. További jogcímek később gyűjthetők a felhasználói út profil szerkesztése. Bármikor az Azure AD B2C-vel információt gyűjt közvetlenül a felhasználó interaktív módon, akkor az identitás-kezelőfelületi keretrendszer a selfasserted-szolgáltatóját használja.
+A felhasználók kezdeti adatgyűjtést érhető el, a regisztrálási vagy bejelentkezési felhasználói interakciósorozat használatával. További jogcímek később gyűjthetők a felhasználói út profil szerkesztése. Bármikor az Azure AD B2C-vel információt gyűjt közvetlenül a felhasználó interaktív módon, az identitás-kezelőfelületi keretrendszer a önellenőrzött szolgáltatóját használja.
 
 
 ### <a name="define-the-claim"></a>Az igényt definiálása
 
-Lehetővé teszi, hogy a felhasználó kérése az városa. Adja hozzá a következő elemet, a **ClaimsSchema** elem a TrustFrameworkBase házirend fájlban:
+A felhasználó pedig kérjen az városa. Adja hozzá a következő elemet, a **ClaimsSchema** elem a TrustFrameworkBase házirend fájlban:
 
 ```xml
 <ClaimType Id="city">
@@ -51,7 +51,7 @@ A következő elemeket a jogcím meghatározásához használják:
 - **UserHelpText** -segít a szükséges ismertetése.
 - **UserInputType** – egy szövegmező, választógomb kijelölés, a legördülő listából válassza ki vagy többszörös kijelölés is lehet.
 
-#### <a name="textbox"></a>TextBox
+#### <a name="textbox"></a>Szövegmező
 
 ```xml
 <ClaimType Id="city">

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: b8caa5cd7476489a92ce97570794a1d397f32630
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: a5e5f4ab286289e223a2fe10ff8cf45f43309f04
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230904"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785944"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Az Azure Maps geokódolás lefedettsége
 
@@ -83,8 +83,8 @@ Az országot/régiót a geocode el közúti adatok lefedettsége és a geokódol
 | Amerikai Egyesült Államok                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Uruguay                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
-| Virgin-szigetek – brit                            |                 |                |              |      ✓     |          ✓         |
-| Virgin-szigetek – Amerikai Egyesült Államok                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Brit Virgin-szigetek                              |                 |                |              |      ✓     |          ✓         |
+| USA Virgin-szigetek                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 
 ## <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség
 
@@ -293,7 +293,6 @@ Az országot/régiót a geocode el közúti adatok lefedettsége és a geokódol
 | Tunézia                                             |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Uganda                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Egyesült Arab Emírségek                                |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Ciszjordániai                                           |                 |                |              |      ✓     |          ✓         |
 | Jemen                                               |                 |                |              |      ✓     |          ✓         |
 | Zambia                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Zimbabwe                                            |                 |                |       ✓      |      ✓     |          ✓         |

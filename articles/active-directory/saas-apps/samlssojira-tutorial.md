@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 943131bc746b5d2a1fd95a26a6a6c9f3bb6b9e57
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 020e0395c7678f6856a293c8386a44d7a959bc06
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65509959"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65786531"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Oktatóanyag: Feloldási GmbH által az Azure Active Directory-integráció a Jira SAML SSO-val
 
@@ -168,7 +168,7 @@ Konfigurálja az egyszeri bejelentkezést a Jira SAML SSO-val feloldási GmbH, h
     
     d. Kattintson a **tovább**.
     
-11. Az a a **identitás-szolgáltató konfigurációjának** kattintson **tovább**.
+11. Az a **identitás-szolgáltató konfigurációjának** kattintson **tovább**.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon5b.png)
 

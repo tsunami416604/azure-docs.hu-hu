@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 77e58ea830de1e8ab7e3643ee5694a5e3f609c53
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: dda1447a049071a0871079f2cabd046ed7c479d6
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564917"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65770152"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező FM:Systems
 
@@ -107,7 +107,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés FM:Systems, hajtsa v
     Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<companyname>.fmshosted.com/fminteract/ConsumerService2.aspx`
     
     > [!NOTE]
-    > Az érték nem valódi. Ez az érték frissítse a tényleges válasz URL-cím. Kapcsolattartó [FM:Systems ügyfél-támogatási csapatának](https://fmsystems.com/ask-us/) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Az érték nem valódi. Ez az érték frissítse a tényleges válasz URL-cím. Kapcsolattartó [FM:Systems ügyfél-támogatási csapatának](https://fmsystems.com/support-services/) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
 5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
@@ -125,7 +125,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés FM:Systems, hajtsa v
 
 ### <a name="configure-fmsystems-single-sign-on"></a>FM:Systems egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **FM:Systems** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [FM:Systems támogatási csapatának](https://fmsystems.com/ask-us/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **FM:Systems** oldalon kell küldenie a letöltött **összevonási metaadatainak XML** és az Azure Portalról másolt URL-címek megfelelő [FM:Systems támogatási csapatának](https://fmsystems.com/support-services/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -197,7 +197,7 @@ Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejel
    
     b. Kattintson a **tovább**.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

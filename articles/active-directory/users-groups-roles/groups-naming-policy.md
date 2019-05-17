@@ -1,5 +1,5 @@
 ---
-title: Kényszerítése csoportelnevezési házirend – Office 365-csoportok – Azure Active Directory |} A Microsoft Docs
+title: Az Office 365-csoportok – Azure Active Directory csoportelnevezési házirend kényszerítése |} A Microsoft Docs
 description: Az Azure Active Directoryban (előzetes verzió) az Office 365-csoportok elnevezési szabályzat beállítása
 services: active-directory
 documentationcenter: ''
@@ -10,19 +10,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/22/2019
+ms.date: 05/06/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 846eb3a43955fe05531f619869878b3978ad5b9d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9d21616938978e501cc112fde105be4db4499b2a
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690241"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605555"
 ---
-# <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory"></a>Az Azure Active Directory az Office 365-csoportokra vonatkozó elnevezési szabályzat kényszerítése
+# <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Az Office 365-csoportok az Azure Active Directoryban elnevezési szabályzat kényszerítése
 
 Az Office 365-csoportokat a felhasználók által létrehozott vagy módosított egységes elnevezési konvenciók kényszerítéséhez állítsa be a csoportelnevezési házirend a bérlők számára az Azure Active Directoryban (Azure AD). Például használhatja a kiosztási szabályzat való kommunikációra, a függvény egy csoport, a tagsági, a földrajzi régióban, vagy ki hozta létre a csoportot. A kiosztási szabályzat kategorizálása a címjegyzékben csoportok segítségével is használhat. A házirend segítségével adott szó azoktól van használatban a csoporthoz tartozó nevek és aliasok letiltása.
 
@@ -76,7 +76,7 @@ Kijelölt rendszergazdák kivonhatók a ezek a házirendek összes csoport szám
 - Felhasználói adminisztrátor
 - Címtárírók
 
-## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal-preview"></a>Az Azure portal (előzetes verzió) használatával egy bérlő csoportelnevezési házirend konfigurálása
+## <a name="configure-naming-policy-in-azure-portal-preview"></a>Kiosztási szabályzat konfigurálása az Azure Portalon (előzetes verzió)
 
 1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com) rendszergazdai felhasználói fiókkal.
 1. Válassza ki **csoportok**, majd **elnevezési szabályzatában foglalt** elnevezési szabályzat lapjának megnyitásához.
@@ -90,7 +90,7 @@ Kijelölt rendszergazdák kivonhatók a ezek a házirendek összes csoport szám
 1. Elő- vagy utótag eltávolítása a listából, válassza ki a előtag vagy utótag, majd jelölje ki **törlése**. Egyszerre több elem is lehet törölni.
 1. Mentse a módosításokat az új házirend érvénybe kiválasztásával megnyithatja az **mentése**.
 
-### <a name="view-or-edit-the-custom-blocked-words"></a>Zobrazí nebo upraví egyéni letiltott szavakat
+### <a name="edit-custom-blocked-words"></a>Egyéni letiltott szavakat szerkesztése
 
 1. Az a **elnevezési szabályzatában foglalt** lapon jelölje be **letiltott szavakat**.
 
@@ -100,35 +100,36 @@ Kijelölt rendszergazdák kivonhatók a ezek a házirendek összes csoport szám
 1. A fájl ikonra kattintva töltse fel az új egyéni letiltott szavak listáját.
 1. Mentse a módosításokat az új házirend érvénybe kiválasztásával megnyithatja az **mentése**.
 
-## <a name="install-powershell-cmdlets-to-configure-a-naming-policy"></a>A kiosztási szabályzat konfigurálása a PowerShell-parancsmagjainak telepítése
+## <a name="install-powershell-cmdlets"></a>PowerShell-parancsmagok telepítése
 
 A PowerShell-parancsok futtatása előtt mindenképpen távolítsa el a Windows PowerShellhez készült Azure Active Directory PowerShell for Graph modul összes régebbi verzióját, és telepítse az [Azure Active Directory PowerShell for Graph 2.0.0.137-es nyilvános előzetes kiadását](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
 
 1. Nyissa meg a Windows PowerShell alkalmazást rendszergazdaként.
 2. Távolítsa el az AzureADPreview korábbi verzióit.
   
-   ```powershell
+   ``` PowerShell
    Uninstall-Module AzureADPreview
    ```
 
 3. Telepítse az AzureADPreview legújabb verzióját.
   
-   ```powershell
+   ``` PowerShell
    Install-Module AzureADPreview
    ```
 
    Ha egy nem megbízható adattár elérése kéri, adja meg a **Y**. Az új modul telepítése igénybe vehet néhány percet.
 
-## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-ad-powershell"></a>A bérlő Azure AD PowerShell-lel csoportelnevezési házirend konfigurálása
+## <a name="configure-naming-policy-in-powershell"></a>A PowerShellben elnevezési szabályzat konfigurálása
 
 1. Nyisson meg egy Windows PowerShell-ablakot a számítógépen. Azt is nyissa meg emelt szintű jogosultságok nélkül.
 
 1. Futtassa a következő parancsokat a parancsmagok futtatásának előkészítéséhez.
   
-   ```powershell
+   ``` PowerShell
    Import-Module AzureADPreview
    Connect-AzureAD
    ```
+
    A megjelenő **Bejelentkezés a fiókba** párbeszédpanelen adja meg a rendszergazdai fiókot és jelszót, hogy kapcsolatot létesítsen a szolgáltatással, majd válassza a **Bejelentkezés** lehetőséget.
 
 1. Kövesse az [Azure Active Directory-parancsmagok a csoportbeállítások konfigurálásához](groups-settings-cmdlets.md) című rész lépéseit a bérlő csoportbeállításainak létrehozásához.
@@ -137,13 +138,13 @@ A PowerShell-parancsok futtatása előtt mindenképpen távolítsa el a Windows 
 
 1. Beolvassa az aktuális csoportelnevezési házirend, a jelenlegi beállítások megtekintéséhez.
   
-   ```powershell
+   ``` PowerShell
    $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
    ```
   
 1. Jelenítse meg az aktuális csoportbeállításokat.
   
-   ```powershell
+   ``` PowerShell
    $Setting.Values
    ```
   
@@ -151,38 +152,38 @@ A PowerShell-parancsok futtatása előtt mindenképpen távolítsa el a Windows 
 
 1. Állítsa be a csoportnév előtagjait és utótagjait az Azure AD PowerShellben. A funkció megfelelő működéséhez [GroupName] szerepelnie kell a beállítást.
   
-   ```powershell
+   ``` PowerShell
    $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
    ```
   
 1. Állítsa be az egyéni letiltott szavakat, amelyek használatát korlátozni szeretné. A következő példa szemlélteti, hogyan adhatja hozzá saját egyéni szavait.
   
-   ```powershell
+   ``` PowerShell
    $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
    ```
   
 1. Mentse a beállításokat az új házirend a lép érvénybe, mint például az alábbi példában.
   
-   ```powershell
+   ``` PowerShell
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
   
 Ennyi az egész. Hogy a kiosztási szabályzat beállítása és a letiltott szavakat hozzáadva.
 
-## <a name="export-or-import-the-list-of-custom-blocked-words-using-azure-ad-powershell"></a>Exportálása és importálása az Azure AD PowerShell-lel egyéni letiltott szavakat listája
+## <a name="export-or-import-custom-blocked-words"></a>Exportál vagy importál egyéni letiltott szavakat
 
 További információkért tekintse meg a cikket [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](groups-settings-cmdlets.md).
 
 Íme egy példa a PowerShell-parancsfájl exportálása letiltott szavakat több:
 
-```powershell
+``` PowerShell
 $Words = (Get-AzureADDirectorySetting).Values | Where-Object -Property Name -Value CustomBlockedWordsList -EQ 
 Add-Content "c:\work\currentblockedwordslist.txt" -Value $words.value.Split(",").Replace("`"","")  
 ```
 
 Íme egy példa a PowerShell-parancsprogram több letiltott szó importálása:
 
-```powershell
+``` PowerShell
 $BadWords = Get-Content "C:\work\currentblockedwordslist.txt"
 $BadWords = [string]::join(",", $BadWords)
 $Settings = Get-AzureADDirectorySetting | Where-Object {$_.DisplayName -eq "Group.Unified"}
@@ -192,7 +193,6 @@ if ($Settings.Count -eq 0)
     New-AzureADDirectorySetting -DirectorySetting $Settings
     $Settings = Get-AzureADDirectorySetting | Where-Object {$_.DisplayName -eq "Group.Unified"}}
 $Settings["CustomBlockedWordsList"] = $BadWords
-$Settings["EnableMSStandardBlockedWords"] = $True
 Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings 
 ```
 
@@ -203,34 +203,34 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 1. Az a **elnevezési szabályzatában foglalt** lapon jelölje be **házirend törlése**.
 1. Miután meggyőződött a törlés, a kiosztási szabályzat törlődik a, beleértve az összes előtag-utótag elnevezési házirend és egyéni letiltott szavakat.
 
-### <a name="remove-the-naming-policy-using-azure-ad-powershell"></a>Távolítsa el a kiosztási szabályzat Azure AD Powershell-lel
+### <a name="remove-the-naming-policy-using-azure-ad-powershell"></a>Távolítsa el a kiosztási szabályzat Azure AD PowerShell-lel
 
 1. A csoport előtagok és az Azure AD PowerShell utótagok üres.
   
-   ```powershell
+   ``` PowerShell
    $Setting["PrefixSuffixNamingRequirement"] =""
    ```
   
 1. Az egyéni letiltott szavakat üres.
   
-   ```powershell
+   ``` PowerShell
    $Setting["CustomBlockedWordsList"]=""
    ```
   
 1. A beállítások mentéséhez.
   
-   ```powershell
+   ``` PowerShell
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
 
-## <a name="naming-policy-experiences-across-office-365-apps"></a>Kiosztási szabályzat élményt Office 365-alkalmazások között
+## <a name="experience-across-office-365-apps"></a>Office 365-alkalmazások élmény
 
 Miután beállította a csoportelnevezési házirend az Azure ad-ben, amikor egy felhasználó létrehoz egy csoportot az Office 365 alkalmazásokban láthatják:
 
 - A előzetes verziója a nevét (a előtagot és utótagot), a csoportelnevezési házirend szerint, amint a felhasználó begépeli a csoport neve
 - Ha a felhasználó sikeresen megadja a letiltott szavakat, megjelennek egy hibaüzenet, eltávolíthatják a letiltott szavakat.
 
-Számítási feladat | Megfelelőség
+Alkalmazások és szolgáltatások | Megfelelőség
 ----------- | -------------------------------
 Az Azure Active Directory portálok | Az Azure ad-ben és a hozzáférési Panel portálhoz az elnevezési szabályzat érvénybe léptetését nevének megjelenítése, amikor a felhasználó egy csoportnevet létrehozása vagy egy csoport szerkesztése során. Amikor a felhasználó egy egyéni letiltott szó, egy hibaüzenet jelenik meg a letiltott szó jelenik meg, hogy a felhasználó el is távolíthatja.
 Outlook Web Access (OWA) | Az Outlook Web Access jeleníti meg, a csoportelnevezési házirend kényszerítve a neve, amikor a felhasználó egy csoport neve vagy a csoport aliasa. Amikor egy felhasználó egyéni tiltott szót, egy hibaüzenet jelenik meg a felhasználói felület és a letiltott szó, hogy a felhasználó távolíthatja el.

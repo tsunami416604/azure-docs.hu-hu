@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 56a11a17de3c66a3d45edb71c72be20ce1a1c89e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8ed9d84cba7cb9eeca94a1376fc03f1d256afa85
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683755"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779218"
 ---
-# <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Machine Learning-szolgáltatások és a nyílt forráskódú R funkciókat biztosít a HDInsight bemutatása
+# <a name="what-is-ml-services-in-azure-hdinsight"></a>Mi a Machine Learning-szolgáltatások az Azure HDInsight
 
 > [!NOTE]  
 > 2017 szeptemberi, a Microsoft R Server jelent meg új neve alatt megjelenő **Microsoft Machine Learning-kiszolgáló** vagy a Machine Learning-kiszolgáló. Ennek következtében, a HDInsight R Server-fürt új neve **Machine Learning-szolgáltatások** vagy **ML szolgáltatásokkal** a HDInsight-fürt. Az R Server névváltozásai további információkért lásd: [Microsoft R Server már Microsoft Machine Learning-kiszolgáló](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server#get-support-for-r-server).

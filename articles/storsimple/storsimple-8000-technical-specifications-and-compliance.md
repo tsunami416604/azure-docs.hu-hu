@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: b36d721896bd7b4f95d831eded500a96969937c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 33becd46747f957cce67fb7b2ace170a9aa402ff
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60631889"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606934"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Műszaki specifikációkról és a StorSimple-eszköz megfelelőségének
 
@@ -104,7 +104,7 @@ Az alábbi táblázat a ház milliméterben és hüvelyk méretét.
 
 A konfigurációtól függően egy teljesen betöltött elsődleges ház is 33 kgs a 21 mérjük, és Felkészült rá két személyek igényli.
 
-| Rendszerház | Tömeg |
+| Rendszerház | Súlyozás |
 | --- | --- |
 | Maximális súly (konfigurációjától függ) |30 kg – 33 kg |
 | Üres (nincs felszerelt meghajtók) |21 – 23 kg |
@@ -173,7 +173,7 @@ Az eszköz megfelel-e az EN55024.
 
 ## <a name="ac-power-cord-compliance"></a>AC teljesítmény kapcsolatai megfelelőség
 
-A Plug and és a teljes körű power kábellel szerelvény meg kell felelnie az előírásoknak megfelelő, az ország, ahol az eszközt használja, és biztonsági jóváhagyások, amelyek elfogadható ebben az országban kell rendelkezniük. Az alábbi táblázatok sorolják fel az USA és Európa szabványainak.
+A Plug and és a teljes körű power kábellel szerelvény meg kell felelnie az előírásoknak megfelelő, az országot vagy régiót, amelyben az eszköz van használatban, és biztonsági jóváhagyások, amelyek az adott ország/régió elfogadható kell rendelkezniük. Az alábbi táblázatok sorolják fel az USA és Európa szabványainak.
 
 ### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>AC power cords - USA (must be NRTL listed)
 

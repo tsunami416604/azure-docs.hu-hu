@@ -3,8 +3,8 @@ title: Hogyan kell kitölteni egy egyénileg fejlesztett alkalmazásba az adott 
 description: Meghatározott mezők kitöltéséhez, amikor regisztrál egy egyéni fejlesztésű alkalmazás az Azure AD útmutatást
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: celested
+ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e4362e45ff8eee13b9203b9103266c60b4833a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a8b93f26080229e980b680c157f59db4edf33e7a
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299056"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545485"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Hogyan kell kitölteni egy egyénileg fejlesztett alkalmazásba az adott mezők
 
@@ -44,7 +44,7 @@ Ez a cikk röviden a az alkalmazás regisztrációs űrlapot az összes elérhet
 | Name (Név)             | Az alkalmazás neve. Ennek tartalmaznia kell legalább 4 karakterből kell állnia.                |
 | Alkalmazás típusa | **Webalkalmazást vagy webes API**: Egy webalkalmazás, webes API vagy mindkettő minősülő alkalmazás 
 | |**Natív**: Olyan alkalmazás, amely a felhasználó eszközére vagy számítógépére telepíthető           |
-| Bejelentkezési URL-cím      | Az URL-címet, ahol felhasználók bejelentkezhetnek az alkalmazás használata                                  |
+| Bejelentkezési URL      | Az URL-címet, ahol felhasználók bejelentkezhetnek az alkalmazás használata                                  |
 
 Miután megadta a fenti mezőket, az alkalmazás regisztrálva van az Azure Portalon, és a rendszer átirányítja az alkalmazás lapot. A **beállítások** gombra az alkalmazás panelen megnyílik a beállítások lapot, amely rendelkezik, további testre szabhatja az alkalmazást. Az alábbi táblázat ismerteti a beállítások lapon az összes mezőt. Vegye figyelembe, hogy csak itt jelennének meg ezeket a mezőket, attól függően, hogy létrehozott egy webalkalmazást vagy natív alkalmazások egy része.
 

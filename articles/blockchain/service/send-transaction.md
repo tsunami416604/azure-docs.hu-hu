@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: d3ad4cdfe33948c04c278ed3dfef7aa6fda637ab
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 0b5e39e9cf2fc3ffe91db6587bc1ed1bab079e93
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026808"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65777325"
 ---
 # <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>Oktatóanyag: Az Azure Blockchain-szolgáltatás használatával tranzakciók küldése
 
@@ -82,7 +82,7 @@ Folytathatja az oktatóanyag során a csomópontok lettek létrehozva. Amikor a 
 
     Truffle létrehoz egy helyi fejlesztési blockchain, és a egy interaktív konzolt kínál.
 
-## <a name="connect-to-transaction-node"></a>Tranzakció a csomóponthoz csatlakozás
+## <a name="connect-to-transaction-node"></a>Csatlakozás tranzakciós csomóponthoz
 
 Az alapértelmezett tranzakció csomópont csatlakozhat, és hozzon létre egy fiókot használja a weben 3. Megtekintheti a weben 3 kapcsolati karakterláncot az Azure Portalról.
 
@@ -128,7 +128,7 @@ A nyilvános kulcsot beszerezheti a tranzakció csomópont listából. Másolja 
 ### <a name="transaction-node-endpoint-addresses"></a>Tranzakció csomópont végpontcímeket
 
 1. Az Azure Portalon minden egyes tranzakció csomópontjának, és válassza ki **tranzakció csomópontok > kapcsolati karakterláncok**.
-1. Másolja ki és mentse a végponti URL-cím a ** HTTPS (hozzáférési kulcs: 1) minden egyes tranzakció csomópont esetében. Az oktatóanyag későbbi részében szüksége az intelligens szerződés konfigurációs fájlt a végponti címeket.
+1. Másolja ki és mentse a végponti URL-cím a **HTTPS (hozzáférési kulcs: 1)** minden tranzakció csomópont esetében. Az oktatóanyag későbbi részében szüksége az intelligens szerződés konfigurációs fájlt a végponti címeket.
 
     ![Tranzakció-végpont címe](./media/send-transaction/endpoint.png)
 
@@ -223,7 +223,7 @@ module.exports = function(deployer) {
 
 Cserélje le a csúcsos zárójeleket értékeit.
 
-| Érték | Leírás
+| Value | Leírás
 |-------|-------------
 | \<az alfa csomópont nyilvános kulcs\> | Az alfa csomópont nyilvános kulcs
 | \<Fiók címe\> | Az alapértelmezett tranzakció csomópontjában létrehozott fiók címét.
@@ -395,7 +395,7 @@ module.exports = function(done) {
 
 Cserélje le a csúcsos zárójeleket értékeit, majd mentse a fájlt.
 
-| Érték | Leírás
+| Value | Leírás
 |-------|-------------
 | \<az alfa csomópont nyilvános kulcs\> | Az alfa csomópont nyilvános kulcs
 | \<Fiók címe\> | Az alapértelmezett tranzakció csomópontjában létrehozott fiók címét.

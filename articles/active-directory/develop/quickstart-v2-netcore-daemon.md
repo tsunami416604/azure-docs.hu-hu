@@ -17,16 +17,14 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44161e689645c3feb2efbd80b825b9285c1bdfc9
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 3851e53bb648811b46ec69d9c4fc91b920ce80fb
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918593"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784953"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Gyors útmutató: Egy token beszerzéséhez és a Microsoft Graph API hívása egy konzolalkalmazás használatával az alkalmazás-identitást
-
-[!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 Ebből a gyorsútmutatóból megtudhatja, hogyan írhat olyan .NET Core-alkalmazást, amely ezután hívja meg a Microsoft Graph API megjelenítéséhez és az alkalmazás saját identitással hozzáférési jogkivonatot kapjon a [felhasználók listája](https://docs.microsoft.com/graph/api/user-list) a címtárban. Ebben a forgatókönyvben hasznos olyan esetekben, ahol távfelügyelt, a felügyelet nélküli feladat vagy egy windows-szolgáltatás futtatásához szükséges egy alkalmazás identitással helyett a felhasználó identitását.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 91db42a003bdbb7614faba2122c30826b62ee20f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: df4acf72a1a6ea134e1192512fda1d8cf1e92f0a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698663"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65767991"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>AD FS egyéni szabályzatok használatával az Azure Active Directory B2C egy SAML-identitásszolgáltató hozzáadása
 
@@ -35,7 +35,7 @@ Kell tárolnia a tanúsítványt az Azure AD B2C-bérlőben.
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő tartalmazó könyvtárba. Válassza ki a **címtár és előfizetés-szűrő** a felső menüben, és válassza ki a bérlő tartalmazó könyvtárra.
 3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
-4. Az Áttekintés oldalon válassza ki a **identitás-kezelőfelületi keretrendszer – előzetes verzió**.
+4. Az Áttekintés oldalon válassza ki a **identitás-kezelőfelületi keretrendszer**.
 5. Válassza ki **Szabályzatbejegyzések** majd **Hozzáadás**.
 6. A **beállítások**, válassza a `Upload`.
 7. Adjon meg egy **neve** a házirend-kulcs. Például: `SamlCert`. Az előtag `B2C_1A_` automatikusan hozzáadódik a kulcs neve.
@@ -170,9 +170,9 @@ Nyisson meg egy böngészőt, és keresse meg az URL-címet. Győződjön meg r�
     | LDAP attribútum | A kimenő jogcím típusa |
     | -------------- | ------------------- |
     | User-Principal-Name | userPrincipalName |
-    | vezetéknév; | family_name |
+    | Vezetéknév | family_name |
     | Given-Name | given_name |
-    | E-Mail-Address | e-mail |
+    | E-Mail-Address | email |
     | Megjelenítendő neve | név |
     
 12.  A tanúsítvány típusa alapján, szükség lehet a KIVONATOLÓ algoritmus beállítása. A függő entitás megbízhatósági (B2C bemutató) tulajdonságai ablakban válassza ki a **speciális** lapon, és módosítsa a **biztonságos kivonatoló algoritmus** való `SHA-256`, és kattintson a **Ok**.  

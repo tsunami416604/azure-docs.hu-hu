@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/18/2018
-ms.openlocfilehash: 4b193dd41c137907e56e2bf38b18ebcf2f2b481a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8e8baf9ba8fca2966825620d0588ab005abd37b9
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692250"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604377"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Az Azure Cosmos DB tábla .NET Standard API: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -63,6 +63,8 @@ ms.locfileid: "64692250"
 ## <a name="release-and-retirement-dates"></a>Kiadás és kivezetési dátuma
 A Microsoft biztosít értesítési legalább **12 hónapig** kivonása egy SDK-t kiegyenlítse az a és újabb támogatott verzióra váltás előtt.
 
+A platformfüggetlen .NET Standard kódtár [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) lecseréli a .NET-keretrendszer library [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table).
+
 | Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
 | [1.0.1](#1.0.1) |2019. április 19. |--- |
@@ -73,7 +75,7 @@ A Microsoft biztosít értesítési legalább **12 hónapig** kivonása egy SDK-
 | [0.9.1-Preview](#0.9.1-preview) |2018. október 18. |--- |
 
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>gyakori kérdésekben
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

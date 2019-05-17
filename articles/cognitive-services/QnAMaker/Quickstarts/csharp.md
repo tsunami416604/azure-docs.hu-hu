@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: c7f0afb2776f11ac9406fced1209dfedd769a96f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cf801b8b6b458104a469932487860285102a641b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60913790"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65777638"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-c"></a>A QnA Maker – REST API használataC# 
 <a name="HOLTop"></a>
@@ -50,7 +50,7 @@ Egy **Microsoft QnA Maker API-t** tartalmazó [Cognitive Services API-fiókkal](
 
 ## <a name="create-knowledge-base"></a>Tudásbázis létrehozása
 
-A következő kód egy új tudásbázist hoz létre a [Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) metódussal.
+A következő kód egy új tudásbázist hoz létre a [Create](https://go.microsoft.com/fwlink/?linkid=2092179) metódussal.
 
 1. Hozzon létre egy új C#-projektet a kedvenc IDE-jében.
 2. Adja hozzá az alábbi kódot.
@@ -87,7 +87,7 @@ namespace QnAMaker
   'qnaList': [
     {
       'id': 0,
-      'answer': 'You can use our REST APIs to manage your Knowledge Base. See here for details: https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600',
+      'answer': 'You can use our REST APIs to manage your Knowledge Base. See here for details: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update',
       'source': 'Custom Editorial',
       'questions': [
         'How do I programmatically update my Knowledge Base?'
@@ -247,7 +247,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="update-knowledge-base"></a>Tudásbázis frissítése
 
-A következő kód egy meglévő tudásbázist frissít az [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) metódussal.
+A következő kód egy meglévő tudásbázist frissít az [Update](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update) metódussal.
 
 1. Hozzon létre egy új C#-projektet a kedvenc IDE-jében.
 2. Adja hozzá az alábbi kódot.
@@ -287,7 +287,7 @@ namespace QnAMaker
     'qnaList': [
       {
         'id': 1,
-        'answer': 'You can change the default message if you use the QnAMakerDialog. See this for details: https://docs.botframework.com/en-us/azure-bot-service/templates/qnamaker/#navtitle',
+        'answer': 'You can change the default message if you use the QnAMakerDialog. See this for details: https://docs.botframework.com/azure-bot-service/templates/qnamaker/#navtitle',
         'source': 'Custom Editorial',
         'questions': [
           'How can I change the default message from QnA Maker?'
@@ -441,7 +441,7 @@ Press any key to continue.
 
 ## <a name="get-request-status"></a>Kérés állapotának lekérése
 
-Az [Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) metódussal ellenőrizheti a kérések állapotát egy tudásbázis létrehozásához vagy frissítéséhez. A metódus használatának megismeréséhez tekintse meg a [Create](#Create) vagy az [Update](#Update) metódus mintakódját.
+Az [Operation](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails) metódussal ellenőrizheti a kérések állapotát egy tudásbázis létrehozásához vagy frissítéséhez. A metódus használatának megismeréséhez tekintse meg a [Create](#Create) vagy az [Update](#Update) metódus mintakódját.
 
 [Vissza a tetejére](#HOLTop)
 
@@ -449,7 +449,7 @@ Az [Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf8
 
 ## <a name="publish-knowledge-base"></a>Tudásbázis közzététele
 
-A következő kód egy meglévő tudásbázist tesz közzé a [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) metódussal.
+A következő kód egy meglévő tudásbázist tesz közzé a [Publish](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) metódussal.
 
 1. Hozzon létre egy új C#-projektet a kedvenc IDE-jében.
 2. Adja hozzá az alábbi kódot.
@@ -544,7 +544,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="replace-knowledge-base"></a>Tudásbázis cseréje
 
-A következő kód cseréli a megadott tudásbázis tartalmát a [Replace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) metódus használatával.
+A következő kód cseréli a megadott tudásbázis tartalmát a [Replace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace) metódus használatával.
 
 1. Hozzon létre egy új C#-projektet a kedvenc IDE-jében.
 2. Adja hozzá az alábbi kódot.
@@ -583,7 +583,7 @@ namespace QnAMaker
   'qnaList': [
     {
       'id': 0,
-      'answer': 'You can use our REST APIs to manage your Knowledge Base. See here for details: https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600',
+      'answer': 'You can use our REST APIs to manage your Knowledge Base. See here for details: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update',
       'source': 'Custom Editorial',
       'questions': [
         'How do I programmatically update my Knowledge Base?'
@@ -661,7 +661,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="download-the-contents-of-a-knowledge-base"></a>Tudásbázis tartalmának letöltése
 
-A következő kód letölti a megadott tudásbázis tartalmát a [Download knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) metódus használatával.
+A következő kód letölti a megadott tudásbázis tartalmát a [Download knowledge base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download) metódus használatával.
 
 1. Hozzon létre egy új C#-projektet a kedvenc IDE-jében.
 2. Adja hozzá az alábbi kódot.
@@ -746,7 +746,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
   "qnaDocuments": [
     {
       "id": 1,
-      "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600",
+      "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update",
       "source": "Custom Editorial",
       "questions": [
         "How do I programmatically update my Knowledge Base?"
@@ -881,7 +881,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="get-information-about-a-knowledge-base"></a>Tudásbázis adatainak lekérése
 
-A következő kód információkat kér le a megadott tudásbázissal kapcsolatban a [Get knowledge base details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) metódus használatával.
+A következő kód információkat kér le a megadott tudásbázissal kapcsolatban a [Get knowledge base details](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/getdetails) metódus használatával.
 
 1. Hozzon létre egy új C#-projektet a kedvenc IDE-jében.
 2. Adja hozzá az alábbi kódot.
@@ -981,7 +981,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="get-all-knowledge-bases-for-a-user"></a>Egy felhasználó összes tudásbázisának lekérése
 
-A következő kód információkat kér le egy megadott felhasználó összes tudásbázisával kapcsolatban a [Get knowledge bases for user](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) metódus használatával.
+A következő kód információkat kér le egy megadott felhasználó összes tudásbázisával kapcsolatban a [Get knowledge bases for user](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/listall) metódus használatával.
 
 1. Hozzon létre egy új C#-projektet a kedvenc IDE-jében.
 2. Adja hozzá az alábbi kódot.
@@ -1094,7 +1094,7 @@ Press any key to continue.
 
 ## <a name="delete-a-knowledge-base"></a>Tudásbázis törlése
 
-A következő kód törli a megadott tudásbázist a [Delete knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) metódus használatával.
+A következő kód törli a megadott tudásbázist a [Delete knowledge base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/delete) metódus használatával.
 
 1. Hozzon létre egy új C#-projektet a kedvenc IDE-jében.
 2. Adja hozzá az alábbi kódot.
@@ -1188,7 +1188,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="get-endpoint-keys"></a>Végponti kulcsok lekérése
 
-A következő kód lekéri a jelenlegi végponti kulcsokat a [Get endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) metódus használatával.
+A következő kód lekéri a jelenlegi végponti kulcsokat a [Get endpoint keys](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/endpointkeys/getkeys) metódus használatával.
 
 1. Hozzon létre egy új C#-projektet a kedvenc IDE-jében.
 2. Adja hozzá az alábbi kódot.
@@ -1273,7 +1273,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="refresh-endpoint-keys"></a>Végponti kulcsok frissítése
 
-A következő kód újra létrehozza a jelenlegi végponti kulcsokat a [Refresh endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) metódus használatával.
+A következő kód újra létrehozza a jelenlegi végponti kulcsokat a [Refresh endpoint keys](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/endpointkeys/refreshkeys) metódus használatával.
 
 1. Hozzon létre egy új C#-projektet a kedvenc IDE-jében.
 2. Adja hozzá az alábbi kódot.
@@ -1361,7 +1361,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="get-word-alterations"></a>Szóváltozatok lekérése
 
-A következő kód lekéri a jelenlegi szóváltozatokat a [Download alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) metódus használatával.
+A következő kód lekéri a jelenlegi szóváltozatokat a [Download alterations](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/get) metódus használatával.
 
 1. Hozzon létre egy új C#-projektet a kedvenc IDE-jében.
 2. Adja hozzá az alábbi kódot.
@@ -1452,7 +1452,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="replace-word-alterations"></a>Szóváltoztatások cseréje
 
-A következő kód lecseréli a jelenlegi szóváltozatokat a [Replace alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) metódus használatával.
+A következő kód lecseréli a jelenlegi szóváltozatokat a [Replace alterations](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) metódus használatával.
 
 1. Hozzon létre egy új C#-projektet a kedvenc IDE-jében.
 2. Adja hozzá az alábbi kódot.
@@ -1568,7 +1568,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)
 
 ## <a name="see-also"></a>Lásd még 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 402cd4723791c0bc33db22c8857d1b785862f596
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5843ee11a615a2780e9fea2d89f7b18fb45706d8
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60614505"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604354"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Az Azure monitorban gyűjtése IIS-naplók
 Az Internet Information Services (IIS) felhasználói tevékenység tárolja az Azure Monitor által összegyűjtött és tárolt és naplófájlok [adatok](data-platform.md).
@@ -51,7 +51,7 @@ Az IIS-naplóbejegyzések rendelkezik olyan típusú **W3CIISLog** , és a tulaj
 | csUriStem |Például egy weblap címe |
 | csUriQuery |Lekérdezés, ha vannak, hogy az ügyfél által megkísérelt művelet. |
 | ManagementGroupName |Az Operations Manager-ügynököket a felügyeleti csoport neve.  Más ügynökök esetén ez AOI -\<munkaterület azonosítója\> |
-| RemoteIPCountry |Ország, az ügyfél IP-címét. |
+| RemoteIPCountry |Ország vagy régió az ügyfél IP-cím. |
 | RemoteIPLatitude |Az ügyfél IP-cím szélességét. |
 | RemoteIPLongitude |Az ügyfél IP-cím hosszúságát. |
 | scStatus |HTTP-állapotkódot. |

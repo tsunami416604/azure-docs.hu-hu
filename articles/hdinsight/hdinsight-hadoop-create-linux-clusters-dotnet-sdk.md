@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: mamccrea
-ms.openlocfilehash: 04760ab570ffc213950c28c22c499d8e9252d574
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 42c3f0ce70467c6a90bcc4e2e6b8a21d7570edc4
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690187"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606182"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Linux-alapú fürtök létrehozása a HDInsight .NET SDK használatával
 
@@ -33,11 +33,11 @@ Ismerje meg, hogyan hozhat létre egy [Apache Hadoop](https://hadoop.apache.org/
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * **Az Azure storage-fiók**. Lásd: [hozzon létre egy tárfiókot](../storage/common/storage-quickstart-create-account.md).
-* **A Visual Studio 2013, Visual Studio 2015 vagy Visual Studio 2017**.
+* **Visual Studio**.
 
 ## <a name="create-clusters"></a>Fürtök létrehozása
 
-1. Nyissa meg a Visual Studio 2017-et.
+1. Nyissa meg a Visual Studiót.
 2. Hozzon létre egy új Visual C# konzolalkalmazást.
 3. Az a **eszközök** menüben kattintson a **NuGet-Csomagkezelő**, és kattintson a **Package Manager Console**.
 4. A konzolon a csomagok telepítéséhez futtassa a következő parancsot:
@@ -364,7 +364,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="troubleshoot"></a>Hibaelhárítás
+## <a name="troubleshoot"></a>Az eszköz nem tudta a várt módon befejezni a szinkronizálást. A probléma megoldásának módjáról erre az üzenetre kattintva tájékozódhat.
 
 Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](hdinsight-hadoop-create-linux-clusters-portal.md).
 

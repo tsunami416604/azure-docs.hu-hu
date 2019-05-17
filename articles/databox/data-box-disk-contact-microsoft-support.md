@@ -8,12 +8,12 @@ ms.subservice: ''
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: d62ad37e6bbe9c89ef803cefc43f373e287a7af7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5b392fecd75f5c18793a6122b8d5d967a2e54afa
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60462386"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65604439"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Nyisson egy támogatási jegyet az Azure Data Box 
 
@@ -22,7 +22,7 @@ Ez a cikk az Azure Data Box és az Azure Data Box-lemezek, mindkettő az Azure D
 * Hogyan hozzon létre egy támogatási kérést.
 * Hogyan lehet egy támogatási kérést az életciklusnak a kezelésében a portálon belül.
 
-## <a name="create-a-support-request"></a>Támogatási kérelem létrehozása
+## <a name="create-a-support-request"></a>Támogatáskérés létrehozása
 
 A következő lépésekkel hozzon létre egy támogatási kérést:
 
@@ -56,7 +56,7 @@ A következő lépésekkel hozzon létre egy támogatási kérést:
 4. A **új támogatási kérelem**, kattintson a **lépés 3 elérhetőségi adatok**. A **kapcsolattartási adatok**, tegye a következőket:
 
    1. Az a **kapcsolatfelvételi lehetőségek**, adja meg az elsődleges kapcsolattartási módszer (telefonon vagy e-mailben) és a nyelvet. A válaszidő automatikusan ki van jelölve, az előfizetési csomag alapján.
-   2. Az a **kapcsolattartási adatok**, adja meg a nevét, e-mail, ügyfél nem kötelező, ország. Válassza ki **kapcsolattartási adatok módosításainak mentése a későbbi támogatási kérelmekhez**.
+   2. Az a **kapcsolattartási adatok**, adja meg a nevét, e-mail, ügyfél nem kötelező, ország/régió. Válassza ki **kapcsolattartási adatok módosításainak mentése a későbbi támogatási kérelmekhez**.
    3. Kattintson a **Create** (Létrehozás) gombra.
    
        ![Kapcsolattartási adatok](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   

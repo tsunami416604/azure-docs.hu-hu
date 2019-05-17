@@ -8,25 +8,28 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: d27adadc9720dd2ad6a0dd133524bfaf32e63045
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f8d7b00de24c566cab204c66371dac9b569c42c9
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65227992"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65619998"
 ---
 # <a name="action-rules-preview"></a>Műveleti szabályokban (előzetes verzió)
 
-A cikkből megtudhatja, Mik azok a műveleti szabályokban, és hogyan konfigurálhatja és kezelheti őket.
-
-## <a name="what-are-action-rules"></a>Mik a műveleti szabályokban?
-
 Műveleti szabályokban engedélyezése, hogy meghatározza a műveletek (vagy tiltási műveletek) minden olyan erőforrás-kezelő hatókörben (előfizetés, erőforráscsoport, vagy az erőforrás). Szűrők, amelyek lehetővé teszik, hogy el szeretné végezni a riasztási példányok adott részhalmazára leszűkíthető különböző rendelkeznek. 
 
-Műveleti szabályokban segítségével:
+## <a name="why-and-when-should-you-use-action-rules"></a>Miért és mikor érdemes műveleti szabályokban használni?
 
-* Mellőzheti műveletek és az értesítések tervezett karbantartási időszakokat, vagy a hétvégi/ünnepnapok, ahelyett, hogy tiltsa le az egyes riasztási szabály külön-külön.
-* Adja meg a műveleteket, és értesítéseket méretezve: Nem kell külön-külön az egyes riasztási szabály műveletcsoport határozza meg, most már minden hatókörben létrehozott riasztások vonatkozóan a műveletcsoport adhatja meg. Választhatom is például ahhoz, hogy a művelet csoport "ContosoActionGroup" eseményindító minden riasztás az előfizetésen belül jön létre.
+### <a name="suppression-of-alerts"></a>A riasztások letiltása
+
+Vannak gyakran számos forgatókönyv, ahol hasznos lenne, a riasztások, amelynek az elnyomási során munkaidőn kívüli tervezett karbantartási időszak közbeni elnyomáshoz terjedhet által generált értesítéseinek elrejtése. Például: ContosoVM"felelős csapat szeretné a közelgő hétvégi a riasztási értesítéseinek elrejtése, mivel"ContosoVM"egy tervezett karbantartás alatt áll. Bár a következőkre tiltsa le minden riasztási szabály manuálisan konfigurált "ContosoVM" (, majd engedélyezze újra azt közzé a karbantartás), nem egy egyszerű felületet. Műveleti szabályokban és rugalmasan állítsa be a tiltási lehetővé teszi nagy mennyiségű riasztás letiltása meghatározása teszi lehetővé. Lépjen vissza az előző példában, a csapat megadhatja azokat a "ContosoVM", amely letilt minden riasztási értesítéseket a hétvégi a szabály egy művelet.
+
+
+### <a name="actions-at-scale"></a>Műveletek ipari méretekben
+
+Bár a riasztási szabályok lehetővé teszik, hogy meghatározza a műveletcsoport, amely a riasztást aktivál, ügyfeleink gyakran általában egy közös műveletcsoportot hatókörébe tartozó műveletek teljes rendelkezik. Például az erőforráscsoport "ContosoRG" felelős csapat valószínűleg meghatároz az azonos műveletcsoportot "ContosoRG" meghatározott összes riasztási szabályt. Műveleti szabályokban lehetővé teszik, hogy a műveletcsoport is elindítható a hatókörnek a létrehozott bármely riasztás azáltal, hogy felvázolhassa ipari méretekben, a folyamat leegyszerűsítése érdekében. Lépjen vissza az előző példában, a csapat megadhatja azokat a "ContosoRG", amelyek kiváltják a benne létrehozott összes riasztás azonos műveletcsoportot egy művelet szabályt.
+
 
 ## <a name="configuring-an-action-rule"></a>Egy művelet szabály konfigurálása
 

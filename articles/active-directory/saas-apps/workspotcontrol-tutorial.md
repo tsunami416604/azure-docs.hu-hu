@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 92173e760cf8207a15c643ca75913145ed343b55
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 41d8d05cf5f900c7fcd5640f8896c715640ebcab
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65517747"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65772795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Oktatóanyag: Az Azure Active Directory-integráció Workspot vezérlővel
 
@@ -240,12 +240,12 @@ Ahhoz, hogy jelentkezzen be a Workspot vezérlés az Azure AD-felhasználók, ak
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításainak keresztül teszteljük *hozzáférési Panel*.
 
-Amikor rákattint a **Workspot vezérlő** csempére a hozzáférési panelen, meg kell hogy automatikusan jelentkezzenek be a Workspot vezérlőelemet, amelynek beállítása egyszeri bejelentkezés. További információkért lásd: [Bevezetés a Hozzáférési panel használatába](https://docs.microsoft.com/en-us/azure/active-directory/user-help/my-apps-portal-end-user-access).
+Amikor rákattint a **Workspot vezérlő** csempére a hozzáférési panelen, meg kell hogy automatikusan jelentkezzenek be a Workspot vezérlőelemet, amelynek beállítása egyszeri bejelentkezés. További információkért lásd: [Bevezetés a Hozzáférési panel használatába](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory számára oktatóanyagokkal](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory számára oktatóanyagokkal](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
 
-- [Egyszeri bejelentkezés az Azure Active Directory-alkalmazások](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Egyszeri bejelentkezés az Azure Active Directory-alkalmazások](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

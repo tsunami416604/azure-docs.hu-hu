@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0783251eaeef188c49c5b3aa61b5ecaec48127b7
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: b9fe723ca13cbee0e31b14e60a6bd740d2a282df
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506695"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779292"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -238,7 +238,7 @@ A feltétel-e egy **mező** vagy a **érték** hozzáférő megfelel bizonyos fe
 Használatakor a **például** és **notLike** , feltételek meg helyettesítő karakter `*` értéke.
 Az érték nem tartalmazhat egynél több helyettesítő `*`.
 
-Használatakor a **megfelelő** és **notMatch** adja meg a feltételeket, `#` számjegy, megfelelő `?` betűvel, a `.` megfelelően az összes karaktert, és bármely más karakter megfelelően a tényleges karakter.
+Használatakor a **egyeznie** és **notMatch** adja meg a feltételeket, `#` számjegy, megfelelő `?` betűvel, a `.` bármilyen karaktert, és bármely más karakter megfelelően megfelelően a tényleges karakter.
 **megfelelő** és **notMatch** kis-és nagybetűket. Kis-és alternatív megoldások érhetők el a **matchInsensitively** és **notMatchInsensitively**. Példák: [lehetővé teszik több név minták](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Mezők
@@ -293,7 +293,7 @@ A következő példában `concat` a címkék a mező keresési értékét nevű 
 }
 ```
 
-### <a name="value"></a>Érték
+### <a name="value"></a>Value
 
 Feltételek is alakítható használatával **érték**. **érték** feltételek alapján ellenőrzi [paraméterek](#parameters), [sablonfüggvények támogatott](#policy-functions), vagy literálok lehetnek.
 **érték** van párosítva bármely támogatott [feltétel](#conditions).

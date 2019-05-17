@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e87a4c7ebafd8ddcfa54c87b189316b0ce98b0f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 3b10a91499dbe7e627025be8487efa15890861b9
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60301266"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65764726"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférés beállításainak ismertetése
 
@@ -33,7 +33,7 @@ Ha ez nem az Ön által keresett információkat,. Ez a cikk végén található
 
 ## <a name="cloud-apps-assignments"></a>Felhőalapú alkalmazás-hozzárendelések
 
-Feltételes hozzáférési szabályzatok, szabályozhatja, hogy a felhasználók hogyan férhetnek hozzá a [felhőalkalmazások](conditions.md#cloud-apps). Egy feltételes hozzáférési házirendjének konfigurálásakor kell választania legalább egy felhőalkalmazást. 
+Feltételes hozzáférési szabályzatok, szabályozhatja, hogy a felhasználók hogyan férhetnek hozzá a [felhőalkalmazások](conditions.md#cloud-apps-and-actions). Egy feltételes hozzáférési házirendjének konfigurálásakor kell választania legalább egy felhőalkalmazást. 
 
 ![Válassza ki a felhőalkalmazásokat a szabályzat](./media/technical-reference/09.png)
 
@@ -141,18 +141,18 @@ A bővítmény telepítéséről automatikusan Chrome böngészők, hozzon létr
 
 |    |    |
 | --- | --- |
-| Útvonal | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Name (Név) | 1 |
-| Typo | REG_SZ (String) |
+| `Path` | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| Name (Név) | 1. |
+| Típus | REG_SZ (String) |
 | Adatok | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
 
 Támogatja a Chrome **7 és Windows 8.1**, hozza létre a következő beállításkulcsot:
 
 |    |    |
 | --- | --- |
-| Útvonal | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Name (Név) | 1 |
-| Typo | REG_SZ (String) |
+| `Path` | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| Name (Név) | 1. |
+| Típus | REG_SZ (String) |
 | Adatok | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
 A böngészők eszközhitelesítés lehetővé teszi az eszköz azonosítani és egy házirend kialakításnak támogatja. Az eszköz-ellenőrzés sikertelen lesz, ha a böngészőt privát üzemmódban fut-e.
@@ -190,7 +190,7 @@ Ez a beállítás hatással van a hozzáférési kísérletek a következő mobi
 
 Kiválasztásával **más ügyfelek**, megadhat egy feltételt, amely hatással van a levelezési protokollok IMAP, MAPI, a jelenléti pontra Irányíthatja, SMTP és ne a modern hitelesítést használó régebbi Office-alkalmazások például az alapszintű hitelesítést használó alkalmazásokhoz.  
 
-![Más ügyfelek](./media/technical-reference/11.png)
+![Egyéb ügyfelek](./media/technical-reference/11.png)
 
 További információkért lásd: [ügyfélalkalmazás](conditions.md#client-apps).
 
@@ -203,6 +203,7 @@ A feltételes hozzáférési házirendben megkövetelheti, hozzáférési kísé
 Ez a beállítás a következő ügyfél-alkalmazásokra vonatkozik:
 
 - Microsoft Azure Information Protection
+- Microsoft Bookings
 - Microsoft Edge
 - Microsoft Excel
 - Microsoft Flow

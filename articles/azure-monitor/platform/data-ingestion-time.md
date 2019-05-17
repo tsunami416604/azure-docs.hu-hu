@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: ba9a0ab775e062f21a058b537e289fe3ea2b40bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d508ce217e3a97b3399435cb63295eb28965359a
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61093964"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65605602"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Naplózási adatok betöltési idő, az Azure monitorban
 Az Azure Monitor egy nagy méretű szolgáltatás, amely több ezer ügyfelünk egyre bővülő ütemben havonta terabájtnyi adatot küldő szolgál. Vannak gyakran kérdések mennyi időt vesz igénybe a naplózási adatokat a begyűjtésük után lesz elérhető. Ez a cikk ismerteti a különböző tényező befolyásolja, a késés.
@@ -104,7 +104,7 @@ Heartbeat
 | render timechart  
 ```
  
-Számítógép betöltési idő megjelenítése az ország, találhatók az IP-címüket alapuló használja a következő lekérdezést: 
+Használja a következő lekérdezés találhatók az IP-címüket alapuló az ország/régió szerint számítógép betöltési idő megjelenítése: 
 
 ``` Kusto
 Heartbeat 

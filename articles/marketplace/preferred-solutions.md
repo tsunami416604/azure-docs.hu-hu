@@ -7,15 +7,13 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: ellacroi
-ms.openlocfilehash: 886bd96b78edc704e53d5b7a3460bfa0f522e05e
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 225ed171599e3f822fc869c97a1c7d91f9107b1d
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937818"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779796"
 ---
 # <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Előnyben részesített megoldások az Azure Marketplace és appsource-ban
 
-A Microsoft az előnyben részesített megoldás kiválasztva a minőségi, a teljesítmény és a egy bizonyos iparági függőleges vagy megoldás terület cím ügyféligények lehetővé teszi a felhőalapú alkalmazások. A Microsoft iparági és értékesítési szakértőkből álló csapat kiválasztja megoldásokat kínálnak a [gold kompetenciaszintű](https://partner.microsoft.com/membership/competencies) a Microsoft Partner Network. Ezek a megoldások a felhőbeli piactér kirakattípus Reflektorfényben Az Azure Marketplace és appsource-ban. Előnyben részesített megoldás az appsource-ban könnyen megtalálhatók legyenek iparági referenciaegyenesen, amíg az Azure Marketplace-en belül megoldás kategóriák kattinthat.
-
-A Microsoft kapcsolatba lép a szolgáltatást nyújtó vállalkozásoknak, ha egy vagy több saját megoldáshoz választott ki előnyben részesített megoldás.
+A Microsoft az előnyben részesített megoldás kiválasztva a minőségi, a teljesítmény és a egy bizonyos iparági függőleges vagy megoldás terület cím ügyféligények lehetővé teszi a felhőalapú alkalmazások. A Microsoft-szakértőkből álló csapat ellenőrzi a meghatározott kipróbált kompetenciák és képességek partnerektől származó megoldások. Ezek a megoldások kiemelt vannak, a felhőbeli piactér kirakattípus, Azure Marketplace és appsource-ban, valamint az Azure Portalon. Az appsource-on előnyben részesített megoldások iparág referenciaegyenesen könnyen megtalálhatók legyenek. Az Azure Marketplace-en és az Azure Portalon előnyben részesített megoldás között a vízszintes megoldás könnyen megtalálhatók legyenek.

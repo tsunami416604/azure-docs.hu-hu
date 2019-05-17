@@ -1,7 +1,7 @@
 ---
 title: 'Besorolás: Hitelkockázat előrejelzése'
 titleSuffix: Azure Machine Learning service
-description: A vizuális felhasználói felületet mintakísérlet bemutatja, hogyan hajtsa végre a bináris osztályozási megjósolni a hitelkérelemben megadott adatok alapján.
+description: Ismerje meg, hogyan hozhat létre a machine learning-osztályozó a vizuális felhasználói felületének használatával egyetlen kódsor megírása nélkül.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,23 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: 3d4ec3c71aaed6bddb012fb17ee5bb96da00cd76
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 05/10/2019
+ms.openlocfilehash: f37c945758cfbd03889d79acf764e7f67022267a
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028530"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789405"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>Mintául szolgáló 3 - besorolás: Hitelkockázat előrejelzése
 
-A vizuális felhasználói felületet mintakísérlet bemutatja, hogyan hajtsa végre a bináris osztályozási megjósolni a hitelkérelemben megadott adatok alapján. Bemutatja, hogyan is hajtja végre az alapszintű besorolását, beleértve az adatfeldolgozási műveletekből, az adatkészlet felosztása tanítási és tesztelési csoportok, a modell betanítását, a tesztelési adatkészletnél pontszám, és kiértékelheti az előrejelzés.
+Ismerje meg, hogyan hozhat létre a machine learning-osztályozó a vizuális felhasználói felületének használatával egyetlen kódsor megírása nélkül. Ez a minta betanítja a **kétosztályos gyorsított döntési fa** előre jelezni a kredit (nagyon vagy kevésbé gyakori) kockázati kredit alkalmazással kapcsolatos adatok, például a kreditelőzmények életkor és a hitelkártya száma alapján.
+
+Mivel tudjuk visszaszerezni a választ a kérdésre "Melyiket?" Ezt hívják besorolás probléma. Az ugyanazon alapvető folyamat, amelynek célja a machine learning probléma bármilyen típusú, legyen szó regressziós, besorolás, fürtözés, és így tovább is alkalmazhat.
+
+A befejezett graph ehhez a kísérlethez itt látható:
+
+![A kísérlet diagram](media/ui-sample-classification-predict-credit-risk-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +46,6 @@ Az adatkészlet 20 funkciók és 1 címkével 1000 mintákat tartalmazza. Minden
 
 ## <a name="experiment-summary"></a>Kísérlet összegzése
 
-
 Hogy kövesse az alábbi lépéseket a megoldás létrehozásához:
 
 1. A Németországi UCI adatok adatkészlet modul húzza a kísérletvászonra.
@@ -50,11 +55,10 @@ Hogy kövesse az alábbi lépéseket a megoldás létrehozásához:
 1. Adjon hozzá egy **tanítási modell** modul. Az előző lépésben az osztályozó által igénybe vett bal oldali bemeneti portjával csatlakozni a **tanítási modell**. Adja hozzá a gyakorlókészlethez (a bal oldali kimeneti portját a **Split Data**) jobb oldali bemeneti portjával a **tanítási modell**. A **Train Model** lesz az osztályozó által igénybe vett betanításához.
 1. Adjon hozzá egy **Score Model** modul, és csatlakozzon a **tanítási modell** modul rá. Majd adja hozzá a teszt csoportot (a jobb oldali portját a **Split Data**), a **Score Model**. A **Score Model** fog előrejelzéseket. A kimeneti portra, az előrejelzéseket és a pozitív osztály valószínűségek választhat.
 1. Adjon hozzá egy **Evaluate Model** modul és a bal oldali bemeneti portját a pontozott adatkészlet csatlakozik. A kiértékelés eredményeinek megtekintéséhez válassza ki a kimeneti portjára, a **Evaluate Model** modul, és válassza ki **Visualize**.
-    
+
 Itt látható a teljes kísérlet diagram:
 
 ![A kísérlet diagram](media/ui-sample-classification-predict-credit-risk-basic/overall-graph.png)
-
 
 ## <a name="results"></a>Results (Eredmények)
 

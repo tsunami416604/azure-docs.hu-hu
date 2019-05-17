@@ -4,7 +4,7 @@ description: Ez a cikk ismerteti a HTTP-üzenetek használata a szolgáltatások
 services: active-directory
 documentationcenter: .net
 author: navyasric
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53f8ec8a6833446663d7f142deefd595eed13136
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a2983980786fc706d103c0147a0776f2ff8c2d4f
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250876"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545476"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Szolgáltatások közötti hívások használat meghatalmazott felhasználói identitás az On-meghatalmazásos folyamat
 
@@ -116,7 +116,7 @@ A közös titkos kulcsot használja, amikor egy szolgáltatások közötti hozz�
 | client_secret |szükséges | A kulcsot az Azure AD-ben regisztrált a hívó szolgáltatás. Ez az érték rendelkezik lett jegyezni a regisztrációs idején. |
 | erőforrás |szükséges | Az app ID URI-ját a fogadó szolgáltatást (védett erőforrás). Az Azure Portalon az alkalmazás Alkalmazásazonosító URI megkereséséhez válassza ki a **Active Directory** , és jelölje ki azt a könyvtárat. Válassza ki az alkalmazás nevét, válassza a **minden beállítás**, majd válassza ki **tulajdonságok**. |
 | requested_token_use |szükséges | Itt adhatja meg, hogyan kell feldolgozni a kérelmet. Az On-meghatalmazásos folyamat, az értéke nem lehet **on_behalf_of**. |
-| scope |szükséges | Szóközzel elválasztott a jogkivonat kérése hatókörök listája. Az OpenID Connect, a hatókör **openid** meg kell adni.|
+| hatókör |szükséges | Szóközzel elválasztott a jogkivonat kérése hatókörök listája. Az OpenID Connect, a hatókör **openid** meg kell adni.|
 
 #### <a name="example"></a>Példa
 
@@ -151,7 +151,7 @@ A service to service hozzáférési jogkivonat kérése tanúsítvánnyal az al�
 | client_assertion |szükséges | A JSON Web Token létrehozott és a tanúsítvány aláírására regisztrált hitelesítő adatként az alkalmazáshoz. Lásd: [hitelesítő tanúsítvány](active-directory-certificate-credentials.md) további helyességi feltétel formátum és a tanúsítvány regisztrálása ismerteti.|
 | erőforrás |szükséges | Az app ID URI-ját a fogadó szolgáltatást (védett erőforrás). Az Azure Portalon az alkalmazás Alkalmazásazonosító URI megkereséséhez válassza ki a **Active Directory** , és jelölje ki azt a könyvtárat. Válassza ki az alkalmazás nevét, válassza a **minden beállítás**, majd válassza ki **tulajdonságok**. |
 | requested_token_use |szükséges | Itt adhatja meg, hogyan kell feldolgozni a kérelmet. Az On-meghatalmazásos folyamat, az értéke nem lehet **on_behalf_of**. |
-| scope |szükséges | Szóközzel elválasztott a jogkivonat kérése hatókörök listája. Az OpenID Connect, a hatókör **openid** meg kell adni.|
+| hatókör |szükséges | Szóközzel elválasztott a jogkivonat kérése hatókörök listája. Az OpenID Connect, a hatókör **openid** meg kell adni.|
 
 Ezeket a paramétereket szinte teljesen megegyezik a kérés által kivételével, amelyek a közös titkos kulcsot a rendszer a `client_secret parameter` helyébe a két paramétert: `client_assertion_type` és `client_assertion`.
 
@@ -183,7 +183,7 @@ Sikerességi válasz az JSON OAuth 2.0 választ az alábbi paraméterekkel:
 | Paraméter | Leírás |
 | --- | --- |
 | token_type |Typ tokenu értékét jelöli. Az egyetlen típus, amely az Azure AD által támogatott **tulajdonosi**. További információ a tulajdonosi jogkivonatokat: a [OAuth 2.0 engedélyezési keretrendszer: Tulajdonosi jogkivonat-használat (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
-| scope |Megadja a hozzáférést a jogkivonat hatókörét. |
+| hatókör |Megadja a hozzáférést a jogkivonat hatókörét. |
 | expires_in |Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben). |
 | expires_on |A hozzáférési jogkivonat lejáratának időpontja. A dátum jelenik meg a másodpercek számát, 1970-01-01T0:0:0Z UTC a lejárati időpontig. Ez az érték a gyorsítótárazott jogkivonatok élettartama meghatározására szolgál. |
 | erőforrás |Az app ID URI-ját a fogadó szolgáltatást (védett erőforrás). |
@@ -274,7 +274,7 @@ A válasz egy SAML-jogkivonatban kódolt UTF8 és Base64url tartalmaz.
 | Paraméter | Leírás |
 | --- | --- |
 | token_type |Typ tokenu értékét jelöli. Az egyetlen típus, amely az Azure AD által támogatott **tulajdonosi**. További információ a tulajdonosi jogkivonatokat: [OAuth 2.0 engedélyezési keretrendszer: Tulajdonosi jogkivonat-használat (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
-| scope |Megadja a hozzáférést a jogkivonat hatókörét. |
+| hatókör |Megadja a hozzáférést a jogkivonat hatókörét. |
 | expires_in |Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben). |
 | expires_on |A hozzáférési jogkivonat lejáratának időpontja. A dátum jelenik meg a másodpercek számát, 1970-01-01T0:0:0Z UTC a lejárati időpontig. Ez az érték a gyorsítótárazott jogkivonatok élettartama meghatározására szolgál. |
 | erőforrás |Az app ID URI-ját a fogadó szolgáltatást (védett erőforrás). |

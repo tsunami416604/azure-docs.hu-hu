@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: e23297d8cd6cab5abeedc1a12fa1a37c93e94283
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 8b3447b8094eb95bd2f61baed7371bf718fdf730
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943622"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606903"
 ---
 <a name="seller-insights-definitions"></a>Értékesítői Insights definíciók
 =======================
@@ -37,7 +37,7 @@ Az alábbi táblázatban számos, az értékesítői Insights használt kifejez�
 | **Ügyfél városa**  | A város nevét, az ügyfél által biztosított. Ez lehet egy ügyfél az Azure-előfizetés az városa eltér.  |
 | **Ügyfél-kommunikáció nyelv**        | A nyelv, az ügyfél-kommunikációhoz ajánlott.                                  |
 | **Ügyfél cég neve**                  | A vállalat nevét az ügyfél által biztosított. Ez lehet egy ügyfél az Azure-előfizetés az városa eltér.                                  |
-| **Vevői ország**                       | Az ügyfél által megadott ország neve.  Ez lehet egy ügyfél az Azure-előfizetés az ország eltér.                               |
+| **Vevői ország**                       | Az ügyfél által megadott ország/régió neve.  Ez lehet egy ügyfél az Azure-előfizetés ország/régió eltér.                               |
 | **Ügyfél pénznem (CC)**                 | Az ügyfél előnyben részesített árak és számlázás pénzneme.                            |
 | **Ügyfél e-mailben**                         | A végfelhasználó ügyfél által biztosított e-mail-címe.  Ez lehet egy ügyfél az Azure-előfizetés az e-mail-cím eltér.                   |
 | **Ügyfél első neve**                              | Az Utónév, az ügyfél által biztosított.  Ez lehet egy ügyfél az Azure-előfizetéshez biztosított helyadatbáziséval.                    |

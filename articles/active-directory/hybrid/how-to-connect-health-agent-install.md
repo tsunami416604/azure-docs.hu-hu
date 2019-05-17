@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2be8455a3fb0a60cea056e9bda1f41b076dfec9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c3d1a8afdbad1878f4ce134edeeb95dad79e98a1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60350839"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65784819"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Az Azure AD Connect Health-ügynök telepítése
 
@@ -45,7 +45,7 @@ Az alábbi táblázat az Azure AD Connect Health használatának követelményei
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Kimenő kapcsolódás az Azure szolgáltatásvégpontokra
 
- A telepítés és a futásidő során az ügynöknek kapcsolódnia kell az Azure AD Connect Health szolgáltatás végpontjaihoz. Amennyiben blokkolta a kimenő kapcsolatot tűzfalakat használ, győződjön meg arról, hogy az a következő URL-címek nem blokkolja-e alapértelmezett. Ne tiltsa le a biztonsági monitoringgal vagy az alábbi URL-címek vizsgálata, de a őket, mint más internetes forgalmat. Az Azure AD Connect Health szolgáltatás végpontjaihoz kommunikációt engedélyezze azokat. További információ a [kimenő kapcsolódás ellenőrzéséről](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)
+ A telepítés és a futásidő során az ügynöknek kapcsolódnia kell az Azure AD Connect Health szolgáltatás végpontjaihoz. Amennyiben blokkolta a kimenő kapcsolatot tűzfalakat használ, győződjön meg arról, hogy az a következő URL-címek nem blokkolja-e alapértelmezett. Ne tiltsa le a biztonsági monitoringgal vagy az alábbi URL-címek vizsgálata, de a őket, mint más internetes forgalmat. Az Azure AD Connect Health szolgáltatás végpontjaihoz kommunikációt engedélyezze azokat. Ismerje meg, hogyan [Test-azureadconnecthealthconnectivity parancsmag futtatása a kimenő kapcsolódás ellenőrzéséről](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#test-connectivity-to-azure-ad-connect-health-service).
 
 | Tartománykörnyezet | Szükséges Azure-szolgáltatásvégpontok |
 | --- | --- |

@@ -9,17 +9,25 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: 1cb533348236905b7c4e9b58968041745af0e71b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 05/10/2019
+ms.openlocfilehash: 42724f5fcb3101015cef0d218a3d548f349646be
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028440"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65785818"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>5 – besorolási. példa: Előrejelezheti a forgalom szolgáltatóváltást és felfelé értékesítése 
 
-Ez a mintakísérlet vizuális felhasználói felületet, szolgáltatóváltást és a fel-értékesítési, az Ügyfélkapcsolat-kezelés (CRM) gyakori feladat bináris osztályozó előrejelzését mutatja.
+Ismerje meg, hogyan hozhat létre egy összetett gépi tanulási kísérletet a vizuális felhasználói felületének használatával egyetlen kódsor megírása nélkül.
+
+Ezzel a kísérlettel betanítja három, **kétosztályos gyorsított döntési fa** előre jelezni az Ügyfélkapcsolat-kezelő (CRM) rendszerben kapcsolódó gyakori feladatok deklarációkkal: lemorzsolódási szolgáltatóváltást és felfelé értékesítése. Az adatok értékeit és címkék elosztja a több adatforrást és ügyfél-információkat anonimizálási betűtípus, azonban továbbra is használhatjuk a vizuális felhasználói felületet adatkészletek kombinálhatja, és a titkosított értékeket használó modell betanításához.
+
+Mivel tudjuk visszaszerezni a választ a kérdésre "Melyiket?" Ezt hívják besorolás probléma. Azonban ez a kísérlet, amelynek célja a machine learning probléma bármilyen típusú, legyen szó regressziós, besorolás, fürtözés, és így tovább ugyanazokat a lépéseket alkalmazhatja.
+
+A befejezett graph ehhez a kísérlethez itt látható:
+
+![Kísérlet diagram](./media/ui-sample-classification-predict-churn/experiment-graph.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,13 +39,11 @@ Ez a mintakísérlet vizuális felhasználói felületet, szolgáltatóváltást
 
 ## <a name="data"></a>Adatok
 
-Az adatok, ehhez a kísérlethez használjuk a évi Versenysorozatából Cup 2009. Az adatkészlet 50 000 sort és oszlopot. a szolgáltatás 230. rendelkezik. A feladat, hogy előrejelzése lemorzsolódási szolgáltatóváltást és fel értékesítési ezeket a funkciókat használó ügyfelek számára. Tekintse meg a [évi Versenysorozatából webhely](https://www.kdd.org/kdd-cup/view/kdd-cup-2009) az adatok és a feladat kapcsolatos további részletekért.
+Az adatok, ehhez a kísérlethez használjuk a évi Versenysorozatából Cup 2009. Az adatkészlet 50 000 sort és oszlopot. a szolgáltatás 230. rendelkezik. A feladat, hogy előrejelzése lemorzsolódási szolgáltatóváltást és fel értékesítési ezeket a funkciókat használó ügyfelek számára. Az adatok és a feladat kapcsolatos további információkért lásd: a [évi Versenysorozatából webhely](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
 
 ## <a name="experiment-summary"></a>Kísérlet összegzése
 
-Itt látható a teljes kísérlet diagram:
-
-![Kísérlet diagram](./media/ui-sample-classification-predict-churn/experiment-graph.png)
+A vizuális felhasználói felületet mintakísérlet lemorzsolódási szolgáltatóváltást és felfelé – értékesítés, az Ügyfélkapcsolat-kezelés (CRM) gyakori feladat bináris osztályozó előrejelzését mutatja.
 
 Első lépésként végzünk néhány egyszerű adatfeldolgozás.
 
@@ -46,11 +52,10 @@ Első lépésként végzünk néhány egyszerű adatfeldolgozás.
     ![Az Adatkészlet törlése](./media/ui-sample-classification-predict-churn/cleaned-dataset.png)
 
 - Az funkciók és a megfelelő adatváltozás, szolgáltatóváltást, és fel értékesítési címkék különböző adatkészleteket. Használjuk a **oszlopok hozzáadása** modul a címke oszlopok hozzáfűzése a szolgáltatás oszlopokat. Az első oszlop **Col1**, a címke oszlop. A többi oszlop, **Var1**, **Var2**, és így tovább, a szolgáltatás oszlop.
- 
+
     ![Az oszlop adatkészlet hozzáadása](./media/ui-sample-classification-predict-churn/added-column1.png)
 
 - Használjuk a **Split Data** modul az adatkészlet felosztása tanítási és tesztelje a csoportok.
-
 
     Ezt követően segítségével a súlyozott döntési fa bináris osztályozó az alapértelmezett paraméterek a prediktív modellek létrehozása. Feladatonként, hogy egy modell előre jelezni az fel értékesítési szolgáltatóváltást és adatváltozás egyes egy modell készítünk.
 

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9cdf99884845a9cb83ac26723c3ea0e7a779ebff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e06313cf83768421bedc6c7baddd30c2ef2e4846
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60771817"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65789421"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Az Azure Stream Analytics egyéni blob kimeneti particionálása
 
@@ -26,7 +26,7 @@ Egyéni mező vagy a bemeneti attribútumok aktiválásához adatfeldolgozási �
 
 ### <a name="partition-key-options"></a>Partíciós kulcs beállítások
 
-A partíciós kulcs, vagy a bemeneti adatok particionálásához használt oszlopnév alfanumerikus karaktereket és kötőjeleket, aláhúzásjeleket és szóközöket tartalmazhat. Nem alkalmas beágyazott mezői használja partíciókulcsként, kivéve, ha az aliasok együtt használható.
+A partíciós kulcs, vagy a bemeneti adatok particionálásához használt oszlopnév alfanumerikus karaktereket és kötőjeleket, aláhúzásjeleket és szóközöket tartalmazhat. Nem alkalmas beágyazott mezői használja partíciókulcsként, kivéve, ha az aliasok együtt használható. A partíciókulcs NVARCHAR(MAX) kell lennie.
 
 ### <a name="example"></a>Példa
 
@@ -58,11 +58,11 @@ Figyelje meg, hogy a blobban lévő minden egyes rekord tartalmazza-e egy **clie
    * cluster1/{date}/{aFieldInMyData}  
    * cluster1/{time}/{aFieldInMyData}  
    * cluster1/{aFieldInMyData}  
-   * cluster1/{date}/{time}/{aFieldInMyData}  
-
+   * cluster1/{date}/{time}/{aFieldInMyData} 
+   
 2. Partíciókulcsok olyan kis-és nagybetűket, így például a "János" és "János" partíciókulcsok egyenértékűek. Kifejezések is, mint a partíciókulcsok nem használható. Ha például **{columnA + columnB}** nem működik.  
 
-3. Ha egy bemeneti stream áll rögzíti a partíciós kulcs számosságuk a 8000-es, a rekordok meglévő blobok lesz hozzáfűzve, és csak a szükség esetén új blobok létrehozása. Ha a számosság keresztül van 8000-es nem garantált, meglévő blobok lesz írva, és új blobok nem hozható létre tetszőleges számú rekord ugyanazzal a partíciókulccsal rendelkező.  
+3. Ha egy bemeneti stream áll rögzíti a partíciós kulcs számosságuk a 8000-es, a rekordok meglévő blobok lesz hozzáfűzve, és csak a szükség esetén új blobok létrehozása. Ha a számosság keresztül van 8000-es nem garantált, meglévő blobok lesz írva, és új blobok nem hozható létre tetszőleges számú rekord ugyanazzal a partíciókulccsal rendelkező.
 
 ## <a name="custom-datetime-path-patterns"></a>Egyéni dátum/idő elérésiút-minták
 

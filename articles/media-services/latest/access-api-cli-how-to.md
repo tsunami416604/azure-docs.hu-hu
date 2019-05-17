@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: mvc
-ms.date: 05/01/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: a27f7597ddc934b925d63507a816ac5816b682d6
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 5dbcf446a609adcd0f1902fcca2ac19ad87f17b1
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65151043"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65779675"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>Hozzáférés az Azure Media Services API-t az Azure CLI-vel
  
@@ -45,14 +45,15 @@ Ellenőrizze, hogy ne felejtse el az értékeket, amelyeket meg az erőforráscs
 ## <a name="see-also"></a>Lásd még
 
 - [Scale a Media szolgáltatás számára fenntartott egység – CLI](media-reserved-units-cli-how-to.md)
-- [Egy Media Services-fiók létrehozása – CLI](./scripts/cli-create-account.md) 
-- [Alaphelyzetbe fiókhitelesítő adatai – CLI](./scripts/cli-reset-account-credentials.md)
-- [Eszközök – parancssori felület létrehozása](./scripts/cli-create-asset.md)
-- [CLI - fájl feltöltése](./scripts/cli-upload-file-asset.md)
-- [Átalakítások – parancssori felület létrehozása](./scripts/cli-create-transform.md)
-- [Hozzon létre feladatokat – CLI](./scripts/cli-create-jobs.md)
-- [EventGrid - létrehozása a parancssori felület](./scripts/cli-create-event-grid.md)
-- [Teszi közzé az objektumot – CLI](./scripts/cli-publish-asset.md)
+- [Egy Media Services-fiók létrehozása – CLI](create-account-cli-how-to.md) 
+- [Alaphelyzetbe fiókhitelesítő adatai – CLI](cli-reset-account-credentials.md)
+- [Eszközök – parancssori felület létrehozása](cli-create-asset.md)
+- [CLI - fájl feltöltése](cli-upload-file-asset.md)
+- [Átalakítások – parancssori felület létrehozása](cli-create-transform.md)
+- [Az egyéni átalakítási – parancssori felület kódolása](custom-preset-cli-howto.md)
+- [Hozzon létre feladatokat – CLI](cli-create-jobs.md)
+- [EventGrid - létrehozása a parancssori felület](job-state-events-cli-how-to.md)
+- [Teszi közzé az objektumot – CLI](cli-publish-asset.md)
 - [Szűrő – CLI](filters-dynamic-manifest-cli-howto.md)
 - [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
@@ -60,5 +61,5 @@ Ellenőrizze, hogy ne felejtse el az értékeket, amelyeket meg az erőforráscs
 
 A folyamatos átviteli végponton, ahonnan tartalomstreameléshez rendelkezik a futó állapotot. A következő CLI-parancs elindítja az alapértelmezett Streaming Endpoint:
 
-
 `az ams streaming-endpoint start -n default -a <amsaccount> -g <amsResourceGroup>`
+

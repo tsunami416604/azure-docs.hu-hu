@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/01/2019
 ms.author: aljo
-ms.openlocfilehash: d6860cdfb2e453a2151b4c5e425cfe0b12d88f8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c199bd7314cb076def497bc18030f783eb23f4be
+ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387187"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65620222"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>A tanúsítvány-ujjlenyomat fürt módosítása köznapi név
 Nincs két tanúsítványt ugyanazzal az ujjlenyomattal, ami megnehezíti a fürt tanúsítványváltás vagy felügyeleti is rendelkezhet. Több tanúsítvány, azonban lehet a ugyanazzal a névvel vagy a tulajdonos.  Egy tanúsítvány-ujjlenyomatok a tanúsítvány köznapi nevek használatával üzembe helyezett fürt közötti váltás révén jóval egyszerűbb tanúsítványkezelés. Ez a cikk ismerteti a tanúsítvány köznapi nevét használja a tanúsítvány-ujjlenyomat helyett a futó Service Fabric-fürt frissítése.
@@ -127,7 +127,7 @@ Ezután nyissa meg a sablon fájlt egy szövegszerkesztőben, és három frissí
     },
     ```
 
-    Emellett érdemes eltávolítani a *certificateThumbprint*, előfordulhat, hogy már nem lesz szükség.
+    Emellett érdemes eltávolítani a *certificateThumbprint*, azt már nem lehet hivatkozni a Resource Manager-sablonban.
 
 2. Az a **Microsoft.Compute/virtualMachineScaleSets** erőforrás, a köznapi név használata helyett az ujjlenyomat tanúsítványbeállítások virtuálisgép-bővítmény frissítése.  A **virtualMachineProfile**->**extensionProfile**->**bővítmények**->**tulajdonságok** -> **beállítások**->**tanúsítvány**, adjon hozzá `"commonNames": ["[parameters('certificateCommonName')]"],` , és távolítsa el `"thumbprint": "[parameters('certificateThumbprint')]",`.
     ```json

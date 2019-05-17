@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
-ms.reviewer: sasubram
+manager: celestedg
+ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4466e4ac7a4e818da6332254e3094eccbaf2b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b1416dacd65024457e713547223f5c35290b3d15
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60355528"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65768167"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Egy Azure Active Directory B2B együttműködés felhasználó tulajdonságai
 
@@ -68,7 +68,7 @@ Ez a tulajdonság azt jelzi, hogy a felhasználót, hogy a gazdagép bérlős ka
   > [!NOTE]
   > A UserType nem rendelkezik kapcsolattal, hogy a felhasználó bejelentkezik, a címtár szerepkörrel, a felhasználó, és így tovább. Ez a tulajdonság csak azt jelzi, hogy a felhasználó kapcsolat a gazdagép-szervezethez, és lehetővé teszi, hogy a szervezet, amely ezt a tulajdonságot függ házirendeknek az érvényesítését.
 
-### <a name="source"></a>Forrás
+### <a name="source"></a>Source
 Ez a tulajdonság azt jelzi, hogy a felhasználó bejelentkezik.
 
 - A meghívott felhasználó: Ez a felhasználó kapott meghívót, de még nem még sikerült beváltani a meghívót.
